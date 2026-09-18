@@ -1,0 +1,8 @@
+{
+  "name": "O Quarto dos Brinquedos",
+  "description": "Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
