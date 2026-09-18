@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>O Quarto dos Brinquedos - Mana Style</title>
+  <link rel="stylesheet" href="src/css/styles.css" />
+</head>
+<body>
+  <div id="game-container">
+    <div id="start-overlay" aria-label="Tela de início">
+      <div class="start-card">
+        <span class="start-badge">O Quarto dos Brinquedos</span>
+        <h1>Toque aqui para jogar</h1>
+      </div>
+    </div>
+
+    <div id="ui-feedback">Toque na tela para dar um pulinho e seguir a fadinha</div>
+    <canvas id="gameCanvas" width="960" height="540"></canvas>
+  </div>
+
+  <script type="module" src="src/js/main.js"></script>
+</body>
+</html>

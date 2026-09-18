@@ -1,0 +1,158 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+body,
+html {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #08070b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Georgia', serif;
+}
+
+#game-container {
+  position: relative;
+  width: 100%;
+  max-width: 980px;
+  aspect-ratio: 16 / 9;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95);
+  border-radius: 12px;
+  overflow: hidden;
+  background: #121017;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+#ui-feedback {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  font-size: 15px;
+  font-weight: 500;
+  color: #e2dcd0;
+  pointer-events: none;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  letter-spacing: 0.6px;
+  transition: opacity 0.4s ease;
+}
+
+#start-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    radial-gradient(circle at center, rgba(74, 48, 126, 0.35), rgba(5, 5, 10, 0.9) 55%),
+    rgba(10, 8, 14, 0.75);
+  backdrop-filter: blur(5px);
+  z-index: 30;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+#start-overlay::before,
+#start-overlay::after {
+  content: "";
+  position: absolute;
+  inset: auto;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 192, 203, 0.26), rgba(0, 245, 255, 0.12), transparent 70%);
+  animation: pulseAura 5s ease-in-out infinite alternate;
+}
+
+#start-overlay::before {
+  transform: translate(-180px, -120px);
+}
+
+#start-overlay::after {
+  transform: translate(190px, 120px);
+  animation-delay: 1s;
+}
+
+#start-overlay.hidden {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+
+.start-card {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 30px 42px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, rgba(24, 16, 35, 0.9), rgba(44, 27, 62, 0.82));
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.08),
+    0 0 25px rgba(255, 110, 190, 0.25),
+    0 0 40px rgba(0, 245, 255, 0.18),
+    0 28px 60px rgba(0, 0, 0, 0.6);
+  text-align: center;
+  transform: translateY(0);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#start-overlay:hover .start-card {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.12),
+    0 0 35px rgba(255, 110, 190, 0.35),
+    0 0 55px rgba(0, 245, 255, 0.22),
+    0 32px 70px rgba(0, 0, 0, 0.7);
+}
+
+#start-overlay:active .start-card {
+  transform: scale(0.98);
+}
+
+.start-badge {
+  font-size: 10px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #facc15;
+  text-shadow: 0 0 12px rgba(250, 204, 21, 0.8);
+}
+
+.start-card h1 {
+  font-size: clamp(1.6rem, 2vw, 3rem);
+  color: #f9f5ff;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-shadow: 0 0 18px rgba(255, 255, 255, 0.25), 0 0 32px rgba(250, 204, 21, 0.2);
+}
+
+.fade-out {
+  opacity: 0.4;
+}
+
+@keyframes pulseAura {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
