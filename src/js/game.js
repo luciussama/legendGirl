@@ -1,29 +1,269 @@
-import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats } from './config.js';
+import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioSystem } from './audio.js';
 import { bindInput } from './input.js';
+import { createToyRoom } from './toyRoom.js';
 
-export function createGame(canvas, uiFeedback) {
+export function createGame(canvas, uiFeedback, callbacks = {}) {
   const ctx = canvas.getContext('2d');
   const audio = createAudioSystem();
   const baby = createBabyState();
   const fairy = createFairyState();
 
+  baby.facing = 1; // 1 = facing right, -1 = facing left
+  baby.isShocked = false;
+  baby.isLyingDown = false;
+  baby.isCrouching = true;
+  baby.controlsLocked = true;
+
+  let currentPhaseMode = 'bedroom'; // 'bedroom' | 'toy-room'
+  let toyRoomInstance = null;
+
   let cameraX = 0;
+  let cameraY = 0;
+  let targetCameraY = 0;
   let cameraZoom = 1.0;
   let targetCameraZoom = 1.0;
+  let isPortrait = false;
   let gameWon = false;
+  let isGameOver = false;
+  let gameStarted = false;
+  let loopStarted = false;
+  let lastJumpTime = 0;
+  let lastDialogueAdvanceTime = 0;
+  let lastTime = performance.now();
+  const TARGET_FPS = 60;
+  const STEP_MS = 1000 / TARGET_FPS;
   let failMessageTimer = null;
   let firstPlatformCleared = false;
   let tick = 0;
 
-  // Cutscene State
+  // --- STANDBY & DIEGETIC PREPARATION STATE ---
+  let isStandbyActive = false;
+  let isStandbyTransitioning = false;
+  let standbyTransitionTimer = 0;
+  let standbyTransitionProgress = 0;
+  let standbyStandUpProgress = 0;
+  let standbyDialogueAlpha = 1.0;
+  let standbyActivatedTime = 0;
+  let lastUsedInputDevice = 'keyboard'; // 'keyboard' | 'gamepad' | 'touch'
+
+  function setLastInputDevice(dev) {
+    if (dev === 'keyboard' || dev === 'gamepad' || dev === 'touch') {
+      lastUsedInputDevice = dev;
+    }
+  }
+
+  function getActivePromptDevice() {
+    if (lastUsedInputDevice === 'gamepad') return 'gamepad';
+    if (lastUsedInputDevice === 'touch') return 'touch';
+    if (typeof window !== 'undefined') {
+      try {
+        const gps = navigator.getGamepads ? navigator.getGamepads() : null;
+        if (gps && Array.from(gps).some(gp => gp && gp.connected)) {
+          if (lastUsedInputDevice === 'gamepad') return 'gamepad';
+        }
+      } catch (e) {}
+      if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+        return 'touch';
+      }
+    }
+    return 'keyboard';
+  }
+
+  function startStandbyPreparation() {
+    isStandbyActive = true;
+    isStandbyTransitioning = false;
+    standbyTransitionTimer = 0;
+    standbyTransitionProgress = 0;
+    standbyStandUpProgress = 0;
+    standbyDialogueAlpha = 1.0;
+    standbyActivatedTime = performance.now();
+
+    baby.vx = 0;
+    baby.vy = 0;
+    baby.isCrouching = true;
+    baby.controlsLocked = true;
+    baby.onGround = true;
+    baby.respawnLandingPending = false;
+    baby.animTime = 0;
+
+    // Position fairy hovering right above the baby emitting comforting light
+    const fairyOffsetX = baby.facing === -1 ? -18 : 18;
+    fairy.x = baby.x + fairyOffsetX;
+    fairy.y = baby.y - 75;
+    fairy.vx = 0;
+    fairy.vy = 0;
+    fairy.spinAnim = 0;
+
+    targetCameraZoom = 1.25;
+    cameraZoom = 1.25;
+    const targetCam = baby.x - (canvas.width > 600 ? canvas.width * 0.35 : canvas.width * 0.25);
+    cameraX = targetCam;
+
+    audio.playFairyVoiceBlip(780);
+  }
+
+  function confirmStandby() {
+    if (!isStandbyActive || isStandbyTransitioning) return;
+    isStandbyActive = false;
+    isStandbyTransitioning = true;
+    standbyTransitionTimer = 0;
+    standbyTransitionProgress = 0;
+    standbyStandUpProgress = 0;
+    standbyDialogueAlpha = 1.0;
+
+    // Diegetic gesture of encouragement: graceful pirouette and sparkle burst
+    fairy.spinAnim = 3.2;
+    fairy.vy = -2.8;
+    spawnFairySparkles(fairy.x, fairy.y, 22);
+    audio.playFairyVoiceBlip(980);
+  }
+
+  // Rigid reset of physics components to prevent vector accumulation or delta spikes
+  function resetBabyPhysicsBody(targetX, targetY, facing = 1) {
+    baby.x = targetX;
+    baby.y = targetY;
+    // 1. Rigid zeroing of linear velocity and external forces
+    baby.vx = 0;
+    baby.vy = 0;
+    baby.facing = facing;
+    baby.isShocked = false;
+    baby.isLyingDown = false;
+    // 2. Physics Grounded state must ONLY be validated once the collision solver confirms floor/platform contact
+    baby.onGround = false;
+    baby.respawnLandingPending = true;
+    baby.controlsLocked = false;
+    // Clear impulse buffers and active motion ribbons
+    speedRibbons.length = 0;
+    babyJumpDust.length = 0;
+    // 3. Grace cooldown (240ms) preventing input buffering or click bleedthrough into a jump
+    lastJumpTime = performance.now() + 240;
+    // 4. Reset delta time clock to strictly eliminate any delta time spikes
+    lastTime = performance.now();
+  }
+
+  function triggerGameOver() {
+    if (isGameOver) return;
+    isGameOver = true;
+    // Immediately stop runaway velocity on death
+    baby.vx = 0;
+    baby.vy = 0;
+    baby.onGround = false;
+    baby.respawnLandingPending = true;
+    audio.clearActiveSounds();
+    audio.playFallFailSound();
+    uiFeedback.innerText = 'Você não conseguiu sair do quarto.';
+    uiFeedback.style.color = '#f87171';
+
+    const overlay = document.getElementById('gameover-overlay');
+    if (overlay) {
+      overlay.classList.remove('hidden');
+    }
+    if (callbacks && callbacks.onGameOver) {
+      callbacks.onGameOver();
+    }
+  }
+
+  function retryGame() {
+    isGameOver = false;
+    const overlay = document.getElementById('gameover-overlay');
+    if (overlay) {
+      overlay.classList.add('hidden');
+    }
+    audio.clearActiveSounds();
+    audio.startMusic();
+    lastTime = performance.now();
+    // Checkpoint retry: reinicia o jogador diretamente no início da seção da Fase 3 sem som de falha redundante
+    resetToStart(true, false);
+  }
+
+  function restartToTitle() {
+    isGameOver = false;
+    gameStarted = false;
+    if (toyRoomInstance) {
+      toyRoomInstance.destroy();
+      toyRoomInstance = null;
+    }
+    currentPhaseMode = 'bedroom';
+    audio.stopToyRoomMusic();
+    const overlay = document.getElementById('gameover-overlay');
+    if (overlay) {
+      overlay.classList.add('hidden');
+    }
+    audio.stopAllAudio(); // Interrompe imediatamente trilha sonora e efeitos
+    resetToStart(false, false);
+    uiFeedback.innerText = 'Toque na tela para dar um pulinho e seguir a fadinha';
+    uiFeedback.style.color = '#e2dcd0';
+    if (callbacks && callbacks.onRestartToTitle) {
+      callbacks.onRestartToTitle();
+    }
+  }
+
+  function startToyRoomPhase() {
+    isGameOver = false;
+    gameWon = false;
+    gameStarted = true;
+    audio.stopAllAudio();
+    audio.clearActiveSounds();
+
+    if (toyRoomInstance) {
+      toyRoomInstance.destroy();
+      toyRoomInstance = null;
+    }
+
+    currentPhaseMode = 'toy-room';
+    toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
+      restartToTitle();
+    });
+
+    audio.startToyRoomMusic();
+    if (!loopStarted) {
+      loopStarted = true;
+      requestAnimationFrame(loop);
+    }
+  }
+
+  // Persistent offscreen canvas for dark atmosphere lighting (avoids GC per-frame allocations)
+  const darkCanvas = document.createElement('canvas');
+  const dctx = darkCanvas.getContext('2d');
+
+  // Viewport and Resolution Adaptation (Zero distortion on Mobile Portrait and Desktop Landscape)
+  function handleResize() {
+    const rect = (canvas && typeof canvas.getBoundingClientRect === 'function') ? canvas.getBoundingClientRect() : null;
+    const w = (rect && rect.width > 0) ? rect.width : (window.innerWidth || 960);
+    const h = (rect && rect.height > 0) ? rect.height : (window.innerHeight || 540);
+    const aspect = (w > 0 && h > 0) ? (w / h) : (16 / 9);
+    isPortrait = aspect < 1.15;
+
+    if (isPortrait) {
+      // Mobile / Portrait: Maintain wide FoV (width 540) and scale height orthographically
+      canvas.width = 540;
+      canvas.height = Math.round(540 / aspect) || 960;
+    } else {
+      // Desktop / Landscape: Base height 540 and scale width orthographically
+      canvas.height = 540;
+      canvas.width = Math.round(540 * aspect) || 960;
+    }
+
+    darkCanvas.width = canvas.width;
+    darkCanvas.height = canvas.height;
+  }
+
+  window.addEventListener('resize', handleResize);
+  if (window.ResizeObserver && canvas.parentElement) {
+    const ro = new ResizeObserver(() => handleResize());
+    ro.observe(canvas.parentElement);
+  }
+  handleResize();
+
+  // Cutscene State (Fase 1 -> Fase 2 Castle)
   let cutsceneActive = false;
   let cutsceneTriggered = false;
   let cutsceneCompleted = false;
   let cutsceneStep = 1;
   let cutsceneTimer = 0;
 
-  // Escape Mode State (Progressive Jump Ability & Speed)
+  // Escape Mode State (Fase 2 - 12 Plataformas Subindo para a Direita)
   let isEscapeMode = false;
   let escapeLevel = 0; // 0 to 11
   let currentScrollSpeed = 1.5;
@@ -31,6 +271,46 @@ export function createGame(canvas, uiFeedback) {
   let escapeBannerTimer = 0;
   let escapeBannerText = '';
   const speedRibbons = [];
+  const babyJumpDust = [];
+
+  // FASE 3 & PLOT TWIST STATE
+  let isPhase3 = false;
+  let phase3Level = 0; // 0 to 14 (15 plataformas de brinquedos)
+  let plotTwistActive = false;
+  let plotTwistTriggered = false;
+  let plotTwistStep = 0; // 1: queda da porta e tombo, 2: fadinha desce para checar, 3: fadinha sobe alto/close-up, 4: fala da criança, 5: vaivém e fala da fadinha
+  let plotTwistTimer = 0;
+  let fakeDoorRevealed = false;
+  let fakeDoorSlideY = 0;
+  let fakeDoorRotation = 0;
+  let phase3TutorialActive = false;
+  let phase3TutorialProgress = 0;
+  let truePortalTransitionActive = false;
+  let truePortalTransitionTimer = 0;
+  let trueDoorOpenAngle = 0;
+  let transitionWipeAlpha = 0;
+
+  function startTruePortalTransition() {
+    if (truePortalTransitionActive) return;
+    truePortalTransitionActive = true;
+    truePortalTransitionTimer = 0;
+    trueDoorOpenAngle = 0;
+    transitionWipeAlpha = 0;
+
+    // Immediately lock side-scroller jump input
+    baby.controlsLocked = true;
+    baby.vx = -1.2;
+    baby.vy = 0;
+    baby.facing = -1;
+
+    audio.clearActiveSounds();
+    audio.playLevelUpChime(14);
+
+    uiFeedback.innerText = '✨ O Verdadeiro Portal dos Sonhos se abriu!';
+    uiFeedback.style.color = '#fde047';
+
+    spawnFairySparkles(trueExitDoor.x + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2, 40);
+  }
 
   function showFailMessage() {
     uiFeedback.innerText = 'Falhou ao seguir a fadinha... Ela voltou para esperar você.';
@@ -47,6 +327,7 @@ export function createGame(canvas, uiFeedback) {
   }
 
   function startCastleCutscene() {
+    audio.clearActiveSounds();
     cutsceneActive = true;
     cutsceneTriggered = true;
     cutsceneStep = 1;
@@ -72,6 +353,7 @@ export function createGame(canvas, uiFeedback) {
   }
 
   function finishCutscene() {
+    audio.clearActiveSounds();
     cutsceneActive = false;
     cutsceneCompleted = true;
     isEscapeMode = true;
@@ -95,49 +377,141 @@ export function createGame(canvas, uiFeedback) {
     spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 30);
   }
 
-  function resetToStart(failedMidClimb = false) {
-    if (cutsceneCompleted || isEscapeMode) {
+  // --- PLOT TWIST CINEMATIC (FASE 3 TRANSITION) ---
+  function startPlotTwistCutscene() {
+    audio.clearActiveSounds();
+    plotTwistActive = true;
+    plotTwistTriggered = true;
+    plotTwistStep = 1; // 1: Porta falsa escorrega e descola; menina cai
+    plotTwistTimer = 0;
+    fakeDoorRevealed = true;
+    fakeDoorSlideY = 0;
+    fakeDoorRotation = 0;
+
+    baby.isShocked = true;
+    baby.isLyingDown = false;
+    baby.vx = 0;
+    baby.vy = 2.2;
+    baby.onGround = false;
+    baby.controlsLocked = true;
+    targetCameraZoom = 1.25;
+
+    audio.playTapeRipSound();
+    audio.playDramaticTumbleSound();
+
+    uiFeedback.innerText = 'Espere... A porta está deslizando pela parede?!';
+    uiFeedback.style.color = '#f87171';
+  }
+
+  function advancePlotTwist() {
+    if (plotTwistStep === 4) {
+      // Avança para o diálogo e vaivém da fadinha no ar
+      plotTwistStep = 5;
+      plotTwistTimer = 0;
+      fairy.pacingPhase = 0;
+      audio.playFairyFrustratedSound();
+      uiFeedback.innerText = 'A fadinha está procurando outro caminho!';
+      uiFeedback.style.color = '#fef08a';
+    } else if (plotTwistStep === 5) {
+      finishPlotTwistAndStartTutorial();
+    }
+  }
+
+  function finishPlotTwistAndStartTutorial() {
+    audio.clearActiveSounds();
+    plotTwistActive = false;
+    plotTwistStep = 0;
+    isPhase3 = true;
+    isEscapeMode = false;
+
+    // A menina se levanta do chão e permanece parada com controles bloqueados
+    baby.isShocked = false;
+    baby.isLyingDown = false;
+    baby.facing = -1; // Inverte orientação: voltada para a esquerda!
+    baby.x = 4640;
+    baby.y = FLOOR_Y - baby.h;
+    baby.vx = 0;
+    baby.vy = 0;
+    baby.onGround = true;
+    baby.currentPlatformIndex = -1;
+    baby.controlsLocked = true; // Bloqueio temporário durante demonstração visual
+
+    phase3TutorialActive = true;
+    phase3TutorialProgress = 0;
+
+    targetCameraZoom = 1.0;
+    cameraZoom = 1.0;
+    cameraX = baby.x - (canvas.width > 600 ? canvas.width - 250 : canvas.width - 150);
+
+    fairy.x = baby.x - 20;
+    fairy.y = baby.y - 15;
+    fairy.vx = 0;
+    fairy.vy = 0;
+
+    audio.playPhase3StartFanfare();
+    escapeBannerTimer = 220;
+    escapeBannerText = '🌪️ FASE 3: A SUBIDA CAÓTICA! ESCALADA RUMO À ESQUERDA!';
+    uiFeedback.innerText = '✨ Observe a fadinha indicando a trajetória do salto...';
+    uiFeedback.style.color = '#fef08a';
+
+    spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 35);
+  }
+
+  function resetToStart(failedMidClimb = false, shouldPlayFailSound = true) {
+    audio.clearActiveSounds();
+    // Reset lighting on all platforms so they return to penumbra state
+    platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
+    phase3Platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
+
+    if (failedMidClimb && isPhase3) {
+      // Checkpoint: recomeça do ponto em que a menina se levanta no início dessa subida
+      resetBabyPhysicsBody(4640, FLOOR_Y - baby.h, -1);
+      baby.currentPlatformIndex = -1;
+      phase3TutorialActive = false;
+
+      phase3Level = 0;
+      const stats = getPhase3Stats(0);
+      baby.jumpPower = stats.jumpPower;
+      currentScrollSpeed = stats.scrollSpeed;
+      targetScrollSpeed = stats.scrollSpeed;
+
+      if (shouldPlayFailSound) {
+        audio.playFallFailSound();
+      }
+
+      startStandbyPreparation();
+      return;
+    }
+
+    if (failedMidClimb && (cutsceneCompleted || isEscapeMode)) {
       // Checkpoint: Topo do Castelo (Plataforma 9)
       const castle = platforms[9];
-      baby.x = castle.x + 35;
-      baby.y = castle.y - baby.h;
-      baby.vy = 0;
+      castle.isLanded = true;
+      castle.lightAlpha = 1.0;
+      resetBabyPhysicsBody(castle.x + 35, castle.y - baby.h, 1);
       escapeLevel = 0;
       const stats = getEscapeStats(0);
-      baby.vx = stats.runVx;
       baby.jumpPower = stats.jumpPower;
       baby.currentPlatformIndex = 9;
-      baby.onGround = true;
       baby.longJumpUnlocked = true;
       baby.isEscaping = true;
       isEscapeMode = true;
       currentScrollSpeed = stats.scrollSpeed;
       targetScrollSpeed = stats.scrollSpeed;
-      targetCameraZoom = 1.0;
-      cameraZoom = 1.0;
-      cameraX = castle.x - 140;
 
-      fairy.x = castle.x + 60;
-      fairy.y = castle.y - 45;
-      fairy.vx = 0;
-      fairy.vy = 0;
-      fairy.particles = [];
-
-      if (failedMidClimb) {
+      if (shouldPlayFailSound) {
         audio.playFallFailSound();
-        uiFeedback.innerText = 'Cuidado com o abismo! Mantenha o ritmo e sinta o pulo crescer!';
-        uiFeedback.style.color = '#f87171';
       }
+
+      startStandbyPreparation();
       return;
     }
 
-    baby.x = 60;
-    baby.y = FLOOR_Y - baby.h;
+    resetBabyPhysicsBody(60, FLOOR_Y - baby.h, 1);
+    baby.vx = 0;
     baby.vy = 0;
-    baby.vx = baby.baseVx;
     baby.jumpPower = -7.2;
     baby.currentPlatformIndex = -1;
-    baby.onGround = true;
     baby.longJumpUnlocked = false;
     baby.isEscaping = false;
     isEscapeMode = false;
@@ -148,81 +522,268 @@ export function createGame(canvas, uiFeedback) {
     cutsceneActive = false;
     cutsceneTriggered = false;
     cutsceneCompleted = false;
-    targetCameraZoom = 1.0;
-    cameraZoom = 1.0;
-
-    // Reset fairy near the baby
-    fairy.x = 110;
-    fairy.y = FLOOR_Y - 90;
-    fairy.vx = 0;
-    fairy.vy = 0;
-    fairy.targetX = 160;
-    fairy.targetY = FLOOR_Y - 90;
-    fairy.particles = [];
-    fairy.dartTimer = 0;
-    fairy.dartOffsetX = 0;
-    fairy.dartOffsetY = 0;
+    plotTwistActive = false;
+    plotTwistTriggered = false;
+    plotTwistStep = 0;
+    phase3TutorialActive = false;
+    isPhase3 = false;
+    truePortalTransitionActive = false;
+    truePortalTransitionTimer = 0;
+    trueDoorOpenAngle = 0;
+    transitionWipeAlpha = 0;
+    fakeDoorRevealed = false;
+    fakeDoorSlideY = 0;
+    fakeDoorRotation = 0;
 
     if (failedMidClimb) {
-      audio.playFallFailSound();
-      showFailMessage();
+      if (shouldPlayFailSound) {
+        audio.playFallFailSound();
+      }
     }
+
+    startStandbyPreparation();
   }
 
   function doJump() {
     audio.initAudio();
 
-    if (gameWon) {
-      gameWon = false;
-      resetToStart(false);
-      uiFeedback.innerText = 'Toque na tela para dar um pulinho e seguir a fadinha';
+    if (isGameOver || !gameStarted) {
       return;
     }
 
-    // Advance cutscene on touch
+    const now = performance.now();
+
+    // Standby confirmation: Space, Button X, or Touch to commence gameplay
+    if (isStandbyActive) {
+      if (now - standbyActivatedTime < 220) return;
+      confirmStandby();
+      return;
+    }
+
+    if (isStandbyTransitioning) {
+      return;
+    }
+
+    if (gameWon) {
+      if (now - lastJumpTime < 400) return;
+      lastJumpTime = now;
+      gameWon = false;
+      resetToStart(false, false);
+      return;
+    }
+
+    // Advance cutscene on touch with anti-spam cooldown
     if (cutsceneActive) {
+      if (now - lastDialogueAdvanceTime < 320) return;
+      lastDialogueAdvanceTime = now;
       advanceCutscene();
       return;
     }
 
-    if (baby.onGround) {
-      if (baby.longJumpUnlocked) {
-        const stats = getEscapeStats(escapeLevel);
-        baby.vy = stats.jumpPower;
-        baby.vx = stats.airVx; // Dynamic forward momentum impulse matching level
-        baby.onGround = false;
-        audio.playLongJumpSound(escapeLevel / 11);
-        fairy.vy -= 2.8;
-        fairy.spinAnim = 1.6;
+    // Advance plot twist cutscene on touch (only during dialogue steps 4 and 5) with anti-spam cooldown
+    if (plotTwistActive) {
+      if (plotTwistStep >= 4) {
+        if (now - lastDialogueAdvanceTime < 320) return;
+        lastDialogueAdvanceTime = now;
+        advancePlotTwist();
+      }
+      return;
+    }
 
-        // Visual sparkles burst scaled to progressive strength
-        const burstCount = 6 + escapeLevel * 2;
-        spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
-      } else {
-        baby.vy = baby.jumpPower;
-        baby.onGround = false;
-        audio.playJumpSound();
-        fairy.vy -= 2.2;
-        fairy.spinAnim = 1.0;
-        spawnFairySparkles(fairy.x, fairy.y, 6);
+    // Check if controls are locked or if baby is still settling from respawn or crouching
+    if (baby.controlsLocked || baby.respawnLandingPending || baby.isCrouching) {
+      return;
+    }
+
+    // Grounded check: strictly require onGround confirmed by collision solver
+    if (!baby.onGround) {
+      return;
+    }
+
+    // Physics jump with input debounce lock
+    if (now - lastJumpTime < 160) {
+      return;
+    }
+    lastJumpTime = now;
+
+    // Immediately clear onGround to prevent multiple jump inputs stacking in a single frame
+    baby.onGround = false;
+
+    if (isPhase3) {
+      const currentLvl = Math.max(0, Math.min(14, phase3Level || 0));
+      const stats = getPhase3Stats(currentLvl);
+      baby.vy = stats.jumpPower;
+      baby.vx = stats.airVx; // Dynamic forward momentum impulse towards the left
+      audio.playLongJumpSound(currentLvl / 14);
+      fairy.vy -= 2.8;
+      fairy.spinAnim = 1.6;
+
+      // Visual sparkles burst & jump puff
+      spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 6 + currentLvl);
+      const burstCount = 6 + currentLvl * 2;
+      spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
+    } else if (baby.longJumpUnlocked) {
+      const currentLvl = Math.max(0, Math.min(11, escapeLevel || 0));
+      const stats = getEscapeStats(currentLvl);
+      baby.vy = stats.jumpPower;
+      baby.vx = stats.airVx; // Dynamic forward momentum impulse matching level
+      audio.playLongJumpSound(currentLvl / 11);
+      fairy.vy -= 2.8;
+      fairy.spinAnim = 1.6;
+
+      // Visual sparkles burst & jump puff
+      spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 6 + currentLvl);
+      const burstCount = 6 + currentLvl * 2;
+      spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
+    } else {
+      baby.vy = baby.jumpPower;
+      audio.playJumpSound();
+      fairy.vy -= 2.2;
+      fairy.spinAnim = 1.0;
+      spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 5);
+      spawnFairySparkles(fairy.x, fairy.y, 6);
+    }
+  }
+
+  // --- FAIRY MAGIC DUST SYSTEM ---
+  function spawnFairyFlightDust(fx, fy, fvx, fvy) {
+    const fairyHues = [48, 52, 192, 330, 280]; // Warm Gold, Ethereal Cyan, Rose, Violet
+    const chosenHue = fairyHues[Math.floor(Math.random() * fairyHues.length)];
+    const angle = Math.random() * Math.PI * 2;
+    const driftSpeed = 0.2 + Math.random() * 0.45;
+
+    fairy.particles.push({
+      x: fx + (Math.random() - 0.5) * 8,
+      y: fy + (Math.random() - 0.5) * 8,
+      vx: -fvx * 0.22 + Math.cos(angle) * driftSpeed,
+      vy: -fvy * 0.18 + Math.sin(angle) * driftSpeed + 0.08,
+      size: 1.4 + Math.random() * 2.2,
+      hue: chosenHue,
+      twinkle: Math.random() > 0.45,
+      wobble: Math.random() * Math.PI * 2,
+      wobbleSpeed: 0.06 + Math.random() * 0.06,
+      life: 1.0,
+      decay: 0.018 + Math.random() * 0.015
+    });
+  }
+
+  function spawnFairySparkles(x, y, count = 2) {
+    const fairyHues = [48, 52, 192, 330, 280];
+    for (let i = 0; i < count; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const speed = 0.5 + Math.random() * 1.6;
+      const chosenHue = fairyHues[Math.floor(Math.random() * fairyHues.length)];
+      fairy.particles.push({
+        x: x + (Math.random() - 0.5) * 10,
+        y: y + (Math.random() - 0.5) * 10,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed + 0.15,
+        size: 1.8 + Math.random() * 2.4,
+        hue: chosenHue,
+        twinkle: Math.random() > 0.4,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.08 + Math.random() * 0.08,
+        life: 1.0,
+        decay: 0.02 + Math.random() * 0.02
+      });
+    }
+  }
+
+  function updateFairyParticles() {
+    for (let i = fairy.particles.length - 1; i >= 0; i--) {
+      const p = fairy.particles[i];
+      p.wobble = (p.wobble || 0) + (p.wobbleSpeed || 0.06);
+      p.x += p.vx + Math.sin(p.wobble) * 0.25;
+      p.y += p.vy;
+      p.life -= p.decay;
+      if (p.life <= 0) {
+        fairy.particles.splice(i, 1);
       }
     }
   }
 
-  function spawnFairySparkles(x, y, count = 2) {
+  // --- SUBTLE BABY JUMP TRAIL SYSTEM ---
+  function spawnBabyJumpDust(bx, by, bw, bh, bvx, bvy) {
+    const palette = [
+      '254, 240, 138', // Golden fairy dust
+      '233, 213, 255', // Dreamy lavender
+      '186, 230, 253', // Soft celestial cyan
+      '251, 207, 232', // Soft pastel pink
+      '255, 255, 255'  // Sparkle white
+    ];
+    const count = isEscapeMode ? (escapeLevel >= 6 ? 2 : 1) : 1;
     for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 0.5 + Math.random() * 1.5;
-      fairy.particles.push({
-        x: x + (Math.random() - 0.5) * 8,
-        y: y + (Math.random() - 0.5) * 8,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed + 0.3,
-        size: 1.8 + Math.random() * 2.5,
-        hue: 45 + Math.random() * 290,
+      const rgb = palette[Math.floor(Math.random() * palette.length)];
+      babyJumpDust.push({
+        x: bx + bw * (0.2 + Math.random() * 0.6),
+        y: by + bh - 2 + (Math.random() - 0.5) * 3,
+        vx: -bvx * (0.22 + Math.random() * 0.18) + (Math.random() - 0.5) * 0.35,
+        vy: -0.12 + (Math.random() - 0.5) * 0.35,
+        size: 1.3 + Math.random() * 1.5,
+        rgb,
+        twinkle: Math.random() > 0.6,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.05 + Math.random() * 0.05,
         life: 1.0,
-        decay: 0.02 + Math.random() * 0.025
+        decay: 0.024 + Math.random() * 0.016
       });
+    }
+  }
+
+  function spawnBabyJumpPuff(x, y, count = 5) {
+    const palette = ['254, 240, 138', '233, 213, 255', '186, 230, 253', '255, 255, 255'];
+    for (let i = 0; i < count; i++) {
+      const rgb = palette[Math.floor(Math.random() * palette.length)];
+      const angle = Math.PI + (Math.random() - 0.5) * 1.6;
+      const speed = 0.4 + Math.random() * 1.1;
+      babyJumpDust.push({
+        x: x + (Math.random() - 0.5) * 10,
+        y: y - 2 + (Math.random() - 0.5) * 3,
+        vx: Math.cos(angle) * speed,
+        vy: Math.sin(angle) * speed - 0.15,
+        size: 1.4 + Math.random() * 1.5,
+        rgb,
+        twinkle: Math.random() > 0.5,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.06 + Math.random() * 0.05,
+        life: 1.0,
+        decay: 0.028 + Math.random() * 0.018
+      });
+    }
+  }
+
+  function spawnBabyLandingPuff(x, y) {
+    const palette = ['254, 240, 138', '186, 230, 253', '255, 255, 255'];
+    for (let i = 0; i < 5; i++) {
+      const rgb = palette[Math.floor(Math.random() * palette.length)];
+      const dir = Math.random() > 0.5 ? 1 : -1;
+      babyJumpDust.push({
+        x: x + dir * (3 + Math.random() * 7),
+        y: y - 2,
+        vx: dir * (0.5 + Math.random() * 0.8),
+        vy: -0.2 - Math.random() * 0.5,
+        size: 1.3 + Math.random() * 1.3,
+        rgb,
+        twinkle: Math.random() > 0.5,
+        wobble: Math.random() * Math.PI * 2,
+        wobbleSpeed: 0.06 + Math.random() * 0.06,
+        life: 1.0,
+        decay: 0.035 + Math.random() * 0.02
+      });
+    }
+  }
+
+  function updateBabyJumpDust() {
+    for (let i = babyJumpDust.length - 1; i >= 0; i--) {
+      const p = babyJumpDust[i];
+      p.wobble += p.wobbleSpeed;
+      p.x += p.vx + Math.sin(p.wobble) * 0.2;
+      p.y += p.vy;
+      p.vy += 0.01;
+      p.life -= p.decay;
+      if (p.life <= 0) {
+        babyJumpDust.splice(i, 1);
+      }
     }
   }
 
@@ -230,13 +791,13 @@ export function createGame(canvas, uiFeedback) {
   function drawBackgroundWall(camX) {
     // Deep atmospheric nursery background
     ctx.fillStyle = '#110e19';
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    ctx.fillRect(0, -600, canvas.width, canvas.height + 1200);
 
     // Wallpaper stripes & diamond pattern with parallax
     const bgOffset = (camX * 0.15) % 80;
     ctx.fillStyle = '#161220';
     for (let x = -80; x < canvas.width + 80; x += 80) {
-      ctx.fillRect(x - bgOffset, 0, 40, FLOOR_Y);
+      ctx.fillRect(x - bgOffset, -400, 40, FLOOR_Y + 400);
     }
 
     // Faint golden wallpaper stars
@@ -528,7 +1089,7 @@ export function createGame(canvas, uiFeedback) {
 
     // --- FLOOR & BASEBOARDS ---
     ctx.fillStyle = '#1c1726';
-    ctx.fillRect(0, FLOOR_Y, canvas.width, canvas.height - FLOOR_Y);
+    ctx.fillRect(0, FLOOR_Y, canvas.width, canvas.height - FLOOR_Y + 700);
 
     // Dark wood baseboard molding
     ctx.fillStyle = '#2b2138';
@@ -547,7 +1108,7 @@ export function createGame(canvas, uiFeedback) {
       const sx = x - (camX % 70);
       ctx.beginPath();
       ctx.moveTo(sx, FLOOR_Y);
-      ctx.lineTo(sx - 28, canvas.height);
+      ctx.lineTo(sx - 28, canvas.height + 700);
       ctx.stroke();
     }
   }
@@ -1067,7 +1628,8 @@ export function createGame(canvas, uiFeedback) {
   // --- PLATFORM DRAWING WITH DEDICATED THEMES ---
   function drawPlatforms(camX) {
     ctx.save();
-    platforms.forEach((p, idx) => {
+    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
+    activePlatforms.forEach((p, idx) => {
       const sx = p.x - camX;
       if (sx + p.w < -80 || sx > canvas.width + 80) return;
 
@@ -1943,12 +2505,374 @@ export function createGame(canvas, uiFeedback) {
           break;
         }
 
+        // ==========================================
+        // FASE 3: PLATAFORMAS CAÓTICAS (15 BRINQUEDOS)
+        // ==========================================
+        case 'toppled_blocks': {
+          // 1/15 Pilha de Blocos Tombada
+          ctx.fillStyle = '#ef4444';
+          ctx.fillRect(sx, p.y, 44, 22);
+          ctx.fillStyle = '#06b6d4';
+          ctx.fillRect(sx + 40, p.y - 4, 46, 26);
+          ctx.fillStyle = '#facc15';
+          ctx.fillRect(sx + 82, p.y + 2, p.w - 82, 20);
+
+          ctx.fillStyle = '#ffffff';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText('A', sx + 16, p.y + 16);
+          ctx.fillText('B', sx + 58, p.y + 14);
+          ctx.fillText('C', sx + 98, p.y + 17);
+          break;
+        }
+
+        case 'floppy_ragdoll': {
+          // 2/15 Boneca de Pano Desconjuntada
+          ctx.fillStyle = '#be185d';
+          ctx.beginPath();
+          ctx.ellipse(sx + p.w / 2, p.y + 12, p.w / 2, 10, -0.05, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Button eyes
+          ctx.fillStyle = '#18181b';
+          ctx.beginPath();
+          ctx.arc(sx + 24, p.y + 8, 3.5, 0, Math.PI * 2);
+          ctx.arc(sx + 36, p.y + 8, 3.5, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Red yarn hair
+          ctx.strokeStyle = '#dc2626';
+          ctx.lineWidth = 2.2;
+          for (let h = 0; h < 6; h++) {
+            ctx.beginPath();
+            ctx.moveTo(sx + 14 + h * 5, p.y + 4);
+            ctx.lineTo(sx + 10 + h * 5, p.y - 8);
+            ctx.stroke();
+          }
+
+          // Striped legs
+          ctx.fillStyle = '#fbbf24';
+          ctx.fillRect(sx + p.w - 32, p.y + 12, 28, 8);
+          ctx.fillStyle = '#3b82f6';
+          ctx.fillRect(sx + p.w - 24, p.y + 12, 8, 8);
+          break;
+        }
+
+        case 'spilled_crayons_box': {
+          // 3/15 Caixa de Giz de Cera Aberta
+          ctx.fillStyle = '#ca8a04';
+          ctx.fillRect(sx, p.y, p.w, 14);
+          ctx.fillStyle = '#eab308';
+          ctx.fillRect(sx + 4, p.y + 2, p.w - 8, 10);
+
+          // Wax crayons rolling out
+          const crayonColors = ['#ec4899', '#06b6d4', '#10b981', '#a855f7'];
+          crayonColors.forEach((c, idx) => {
+            ctx.fillStyle = c;
+            ctx.fillRect(sx + 10 + idx * 24, p.y + 12, 18, 5);
+            ctx.beginPath();
+            ctx.moveTo(sx + 10 + idx * 24, p.y + 12);
+            ctx.lineTo(sx + 6 + idx * 24, p.y + 14.5);
+            ctx.lineTo(sx + 10 + idx * 24, p.y + 17);
+            ctx.closePath();
+            ctx.fill();
+          });
+          break;
+        }
+
+        case 'crooked_fairytales': {
+          // 4/15 Pilha Torta de Contos de Fada
+          const bookHues = ['#4338ca', '#b91c1c', '#047857', '#6b21a8'];
+          bookHues.forEach((bh, bIdx) => {
+            const shift = (bIdx % 2 === 0 ? 3 : -3);
+            ctx.fillStyle = bh;
+            ctx.fillRect(sx + shift, p.y + bIdx * 6, p.w - 4, 6);
+            ctx.fillStyle = '#fef08a';
+            ctx.fillRect(sx + p.w - 12 + shift, p.y + bIdx * 6 + 1, 8, 4);
+          });
+          break;
+        }
+
+        case 'dented_drum': {
+          // 5/15 Tamborzinho Amassado
+          ctx.fillStyle = '#dc2626';
+          ctx.fillRect(sx + 6, p.y + 6, p.w - 12, 14);
+          // Golden rim
+          ctx.fillStyle = '#facc15';
+          ctx.fillRect(sx, p.y, p.w, 6);
+          // Crossed wooden sticks
+          ctx.strokeStyle = '#d97706';
+          ctx.lineWidth = 2;
+          ctx.beginPath();
+          ctx.moveTo(sx + 12, p.y + 3); ctx.lineTo(sx + p.w - 12, p.y - 6);
+          ctx.moveTo(sx + 12, p.y - 6); ctx.lineTo(sx + p.w - 12, p.y + 3);
+          ctx.stroke();
+          break;
+        }
+
+        case 'slumped_bear': {
+          // 6/15 Urso de Pelúcia Desmoronado
+          ctx.fillStyle = '#92400e';
+          ctx.beginPath();
+          ctx.ellipse(sx + p.w / 2, p.y + 10, p.w / 2, 9, 0, 0, Math.PI * 2);
+          ctx.fill();
+          // Velvet ears
+          ctx.fillStyle = '#78350f';
+          ctx.beginPath();
+          ctx.arc(sx + 12, p.y + 2, 6, 0, Math.PI * 2);
+          ctx.arc(sx + p.w - 12, p.y + 2, 6, 0, Math.PI * 2);
+          ctx.fill();
+          // Snout
+          ctx.fillStyle = '#fde68a';
+          ctx.beginPath();
+          ctx.arc(sx + p.w / 2, p.y + 11, 4, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        }
+
+        case 'tilted_xylophone': {
+          // 7/15 Xilofone Colorido Inclinado
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(sx, p.y + 8, p.w, 4);
+          const rainbow = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#3b82f6'];
+          rainbow.forEach((col, i) => {
+            const barW = Math.max(8, (p.w - 12) / rainbow.length);
+            ctx.fillStyle = col;
+            ctx.fillRect(sx + 4 + i * barW, p.y, barW - 2, 10 - i * 0.8);
+          });
+          break;
+        }
+
+        case 'derailed_train': {
+          // 8/15 Locomotiva Descarrilada
+          ctx.fillStyle = '#1e293b';
+          ctx.fillRect(sx, p.y + 2, p.w - 14, 14);
+          // Chimney
+          ctx.fillStyle = '#f59e0b';
+          ctx.fillRect(sx + 8, p.y - 7, 7, 9);
+          // Red wheels
+          ctx.fillStyle = '#dc2626';
+          ctx.beginPath();
+          ctx.arc(sx + 14, p.y + 18, 5, 0, Math.PI * 2);
+          ctx.arc(sx + p.w - 22, p.y + 18, 5, 0, Math.PI * 2);
+          ctx.fill();
+          break;
+        }
+
+        case 'wobbly_card_house': {
+          // 9/15 Castelo de Cartas Bamboleante
+          const sway = Math.sin(tick * 0.15) * 2;
+          ctx.fillStyle = '#f8fafc';
+          ctx.strokeStyle = '#dc2626';
+          ctx.lineWidth = 1;
+          // Angled leaning cards
+          ctx.beginPath();
+          ctx.moveTo(sx + 4 + sway, p.y + 14);
+          ctx.lineTo(sx + p.w / 2, p.y);
+          ctx.lineTo(sx + p.w - 4 - sway, p.y + 14);
+          ctx.stroke();
+          // Heart symbol
+          ctx.fillStyle = '#ef4444';
+          ctx.font = '10px sans-serif';
+          ctx.fillText('♥', sx + p.w / 2 - 4, p.y + 11);
+          break;
+        }
+
+        case 'leaning_music_box': {
+          // 10/15 Caixa de Música Desregulada
+          ctx.fillStyle = '#451a03';
+          ctx.fillRect(sx, p.y + 4, p.w, 14);
+          ctx.fillStyle = '#facc15';
+          // Golden ballerina silhouette
+          ctx.beginPath();
+          ctx.arc(sx + p.w / 2, p.y - 2, 3, 0, Math.PI * 2);
+          ctx.rect(sx + p.w / 2 - 2, p.y + 1, 4, 5);
+          ctx.fill();
+          break;
+        }
+
+        case 'loose_robot': {
+          // 11/15 Robô de Lata Desparafusado
+          ctx.fillStyle = '#0891b2';
+          ctx.fillRect(sx, p.y, p.w, 12);
+          // Antenna with glowing ball
+          ctx.strokeStyle = '#cbd5e1';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          ctx.moveTo(sx + p.w / 2, p.y); ctx.lineTo(sx + p.w / 2, p.y - 7);
+          ctx.stroke();
+          ctx.fillStyle = '#ef4444';
+          ctx.beginPath();
+          ctx.arc(sx + p.w / 2, p.y - 8, 2.5, 0, Math.PI * 2);
+          ctx.fill();
+          // Eye meters
+          ctx.fillStyle = '#facc15';
+          ctx.fillRect(sx + 8, p.y + 3, 5, 4);
+          ctx.fillRect(sx + p.w - 13, p.y + 3, 5, 4);
+          break;
+        }
+
+        case 'spinning_top': {
+          // 12/15 Pião de Madeira Rodopiante
+          const topPhase = Math.sin(tick * 0.3) * 3;
+          ctx.fillStyle = '#f59e0b';
+          ctx.beginPath();
+          ctx.moveTo(sx + p.w / 2 + topPhase, p.y - 6);
+          ctx.lineTo(sx + p.w - 4, p.y + 5);
+          ctx.lineTo(sx + p.w / 2, p.y + 15);
+          ctx.lineTo(sx + 4, p.y + 5);
+          ctx.closePath();
+          ctx.fill();
+          // Ring stripe
+          ctx.strokeStyle = '#ec4899';
+          ctx.lineWidth = 2;
+          ctx.stroke();
+          break;
+        }
+
+        case 'floating_spool': {
+          // 13/15 Carretel com Fita Flutuante
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(sx, p.y, p.w, 4);
+          ctx.fillRect(sx, p.y + 12, p.w, 4);
+          // Wound purple thread
+          ctx.fillStyle = '#a855f7';
+          ctx.fillRect(sx + 4, p.y + 4, p.w - 8, 8);
+          // Floating ribbon
+          ctx.strokeStyle = '#f472b6';
+          ctx.lineWidth = 1.4;
+          ctx.beginPath();
+          const rPhase = Math.sin(tick * 0.18) * 5;
+          ctx.moveTo(sx + p.w - 4, p.y + 4);
+          ctx.quadraticCurveTo(sx + p.w + 10, p.y - 8 + rPhase, sx + p.w + 16, p.y - 18);
+          ctx.stroke();
+          break;
+        }
+
+        case 'unbalanced_mobile': {
+          // 14/15 Móbile Desequilibrado
+          ctx.strokeStyle = '#facc15';
+          ctx.lineWidth = 1.8;
+          ctx.beginPath();
+          ctx.moveTo(sx, p.y);
+          ctx.lineTo(sx + p.w, p.y + 3);
+          ctx.stroke();
+          // Hanging dangling star
+          ctx.fillStyle = '#fef08a';
+          ctx.font = '10px sans-serif';
+          ctx.fillText('★', sx + p.w / 2 - 4, p.y + 14);
+          break;
+        }
+
+        case 'levitating_grimoire': {
+          // 15/15 Livro de Feitiços no Vácuo (O Salto Quase Impossível!)
+          const gPulse = Math.sin(tick * 0.2) * 3;
+          // Luminous aura
+          ctx.fillStyle = 'rgba(253, 224, 71, 0.45)';
+          ctx.beginPath();
+          ctx.arc(sx + p.w / 2, p.y + 6, p.w / 2 + 8, 0, Math.PI * 2);
+          ctx.fill();
+
+          // Grimoire cover
+          ctx.fillStyle = '#701a75';
+          ctx.beginPath();
+          ctx.roundRect(sx, p.y + gPulse, p.w, 12, 3);
+          ctx.fill();
+
+          // Gold pages
+          ctx.fillStyle = '#fef08a';
+          ctx.fillRect(sx + 3, p.y + 3 + gPulse, p.w - 6, 6);
+
+          // Mystical rune floating above
+          ctx.fillStyle = '#fde047';
+          ctx.font = 'bold 11px sans-serif';
+          ctx.fillText('⚡', sx + p.w / 2 - 5, p.y - 4 + gPulse);
+          break;
+        }
+
+        case 'true_portal_balcony': {
+          // Balcão do Verdadeiro Portal dos Sonhos (Destino da Fase 3)
+          ctx.fillStyle = '#18182e';
+          ctx.fillRect(sx, p.y, p.w, p.h);
+
+          // Gilded marble terrace
+          ctx.fillStyle = '#facc15';
+          ctx.fillRect(sx - 10, p.y - 4, p.w + 20, 10);
+          ctx.fillStyle = '#78350f';
+          ctx.fillRect(sx - 6, p.y + 6, p.w + 12, 6);
+
+          // Runes & text
+          ctx.fillStyle = '#fef08a';
+          ctx.font = 'bold 12px Palatino, Georgia, serif';
+          ctx.textAlign = 'center';
+          ctx.fillText('✦   O  VERDADEIRO  PORTAL  DOS  SONHOS   ✦', sx + p.w / 2, p.y + 36);
+
+          // Crystal beacon torches
+          const t1 = sx + 25;
+          const t2 = sx + p.w - 25;
+          [t1, t2].forEach(tx => {
+            ctx.fillStyle = '#475569';
+            ctx.fillRect(tx - 5, p.y - 24, 10, 24);
+            ctx.fillStyle = '#38bdf8';
+            ctx.beginPath();
+            ctx.arc(tx, p.y - 28, 7, 0, Math.PI * 2);
+            ctx.fill();
+          });
+          break;
+        }
+
         default: {
           ctx.fillStyle = '#1c1924';
           ctx.fillRect(sx, p.y, p.w, p.h);
           break;
         }
       }
+
+      // Iluminação Dinâmica dos Obstáculos: Penumbra na Borda Superior e Revelação Gradual ao Pousar
+      ctx.save();
+      const isMagicalPhase = isPhase3;
+      const alpha = p.lightAlpha || 0;
+
+      // Estado Ativado: Revelação visual suave e gradual do corpo do brinquedo/objeto por inteiro ao pousar
+      if (alpha > 0.01) {
+        const bodyGlow = ctx.createLinearGradient(sx, p.y, sx, p.y + p.h);
+        if (isMagicalPhase) {
+          bodyGlow.addColorStop(0, `rgba(233, 213, 255, ${0.28 * alpha})`);
+          bodyGlow.addColorStop(1, `rgba(168, 85, 247, ${0.09 * alpha})`);
+        } else {
+          bodyGlow.addColorStop(0, `rgba(254, 240, 138, ${0.30 * alpha})`);
+          bodyGlow.addColorStop(1, `rgba(245, 158, 11, ${0.09 * alpha})`);
+        }
+        ctx.fillStyle = bodyGlow;
+        ctx.fillRect(sx, p.y, p.w, p.h);
+      }
+
+      // Brilho Direcional sutil e suave restrito EXCLUSIVAMENTE à borda superior
+      if (alpha > 0.05) {
+        // Estado ativado ao pousar: confirmação acolhedora e calorosa
+        ctx.strokeStyle = isMagicalPhase
+          ? `rgba(245, 208, 254, ${0.45 + 0.50 * alpha})`
+          : `rgba(254, 240, 138, ${0.45 + 0.50 * alpha})`;
+        ctx.lineWidth = 1.8;
+        ctx.shadowColor = isMagicalPhase
+          ? 'rgba(216, 180, 254, 0.75)'
+          : 'rgba(250, 204, 21, 0.85)';
+        ctx.shadowBlur = 6 * alpha;
+      } else {
+        // Estado inicial na penumbra: luz guia direcional sutil para cálculo do salto
+        ctx.strokeStyle = isMagicalPhase
+          ? 'rgba(233, 213, 255, 0.38)'
+          : 'rgba(254, 240, 138, 0.38)';
+        ctx.lineWidth = 1.2;
+        ctx.shadowColor = isMagicalPhase
+          ? 'rgba(192, 132, 252, 0.22)'
+          : 'rgba(250, 204, 21, 0.22)';
+        ctx.shadowBlur = 2.5;
+      }
+      ctx.beginPath();
+      ctx.moveTo(sx + 1, p.y + 0.7);
+      ctx.lineTo(sx + p.w - 1, p.y + 0.7);
+      ctx.stroke();
+      ctx.restore();
 
       // Little sparkling indicator for next target
       if (idx === baby.currentPlatformIndex + 1) {
@@ -1961,49 +2885,210 @@ export function createGame(canvas, uiFeedback) {
     ctx.restore();
   }
 
-  // --- EXIT DOOR (PORTA MÁGICA DOS SONHOS) ---
+  // --- EXIT DOOR (PORTA MÁGICA DOS SONHOS / QUADRO FALSO) ---
   function drawExitDoor(camX) {
     const sx = exitDoor.x - camX;
-    if (sx < -180 || sx > canvas.width + 180) return;
+    if (sx < -200 || sx > canvas.width + 200) return;
 
     ctx.save();
 
-    const pulse = Math.sin(tick * 0.05) * 18;
+    if (fakeDoorRevealed) {
+      // Wall outline with peeling tape marks & silly drawing
+      ctx.fillStyle = 'rgba(254, 243, 199, 0.15)';
+      ctx.fillRect(sx, exitDoor.y, exitDoor.w, exitDoor.h);
+      ctx.strokeStyle = 'rgba(250, 204, 21, 0.35)';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(sx, exitDoor.y, exitDoor.w, exitDoor.h);
+
+      // 4 yellowed masking tape remnants stuck to the wall
+      ctx.fillStyle = '#fef08a';
+      ctx.fillRect(sx - 4, exitDoor.y - 4, 18, 8);
+      ctx.fillRect(sx + exitDoor.w - 14, exitDoor.y - 4, 18, 8);
+      ctx.fillRect(sx - 4, exitDoor.y + exitDoor.h - 4, 18, 8);
+      ctx.fillRect(sx + exitDoor.w - 14, exitDoor.y + exitDoor.h - 4, 18, 8);
+
+      // Crayon handwriting on empty wall
+      ctx.fillStyle = 'rgba(239, 68, 68, 0.75)';
+      ctx.font = 'bold 11px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.fillText('ERA SÓ UM QUADRO!', sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2);
+
+      // Peeling poster falling down
+      ctx.save();
+      ctx.translate(sx + exitDoor.w / 2, exitDoor.y + fakeDoorSlideY + exitDoor.h / 2);
+      ctx.rotate(fakeDoorRotation);
+      ctx.translate(-exitDoor.w / 2, -exitDoor.h / 2);
+
+      // Poster paper shadow
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
+      ctx.fillRect(4, 6, exitDoor.w, exitDoor.h);
+
+      // Poster paper back curled
+      ctx.fillStyle = '#f5f5f4';
+      ctx.fillRect(0, 0, exitDoor.w, exitDoor.h);
+
+      // Door illustration painted on the poster
+      ctx.fillStyle = '#db2777';
+      ctx.fillRect(4, 4, exitDoor.w - 8, exitDoor.h - 8);
+      const vitral = ctx.createLinearGradient(0, 0, 0, exitDoor.h);
+      vitral.addColorStop(0, '#fde047');
+      vitral.addColorStop(0.5, '#f43f5e');
+      vitral.addColorStop(1, '#8b5cf6');
+      ctx.fillStyle = vitral;
+      ctx.fillRect(10, 10, exitDoor.w - 20, exitDoor.h - 20);
+
+      // Curled dog-eared corner
+      ctx.fillStyle = '#e7e5e4';
+      ctx.beginPath();
+      ctx.moveTo(exitDoor.w - 16, 0);
+      ctx.lineTo(exitDoor.w, 16);
+      ctx.lineTo(exitDoor.w - 16, 16);
+      ctx.closePath();
+      ctx.fill();
+
+      ctx.restore();
+    } else {
+      // Normal majestic glowing exit door
+      const pulse = Math.sin(tick * 0.05) * 18;
+      const glow = ctx.createRadialGradient(
+        sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 12,
+        sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 140 + pulse
+      );
+      glow.addColorStop(0, 'rgba(255, 240, 160, 0.95)');
+      glow.addColorStop(0.35, 'rgba(255, 80, 200, 0.55)');
+      glow.addColorStop(0.7, 'rgba(0, 230, 255, 0.3)');
+      glow.addColorStop(1, 'rgba(0,0,0,0)');
+      ctx.fillStyle = glow;
+      ctx.fillRect(sx - 100, exitDoor.y - 80, exitDoor.w + 200, exitDoor.h + 160);
+
+      // Carved door frame
+      ctx.fillStyle = '#db2777';
+      ctx.strokeStyle = '#facc15';
+      ctx.lineWidth = 4.5;
+      ctx.beginPath();
+      ctx.roundRect(sx, exitDoor.y, exitDoor.w, exitDoor.h, [42, 42, 6, 6]);
+      ctx.fill();
+      ctx.stroke();
+
+      // Stained glass arch
+      const vitral = ctx.createLinearGradient(sx, exitDoor.y, sx, exitDoor.y + exitDoor.h);
+      vitral.addColorStop(0, '#fde047');
+      vitral.addColorStop(0.3, '#f43f5e');
+      vitral.addColorStop(0.65, '#8b5cf6');
+      vitral.addColorStop(1, '#06b6d4');
+      ctx.fillStyle = vitral;
+      ctx.beginPath();
+      ctx.roundRect(sx + 8, exitDoor.y + 12, exitDoor.w - 16, exitDoor.h - 18, [34, 34, 4, 4]);
+      ctx.fill();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = '22px sans-serif';
+      ctx.fillText('✨', sx + exitDoor.w / 2 - 12, exitDoor.y + 40);
+      ctx.fillText('🌿', sx + exitDoor.w / 2 - 12, exitDoor.y + 82);
+    }
+
+    ctx.restore();
+  }
+
+  // --- TRUE EXIT DOOR (O VERDADEIRO PORTAL DOS SONHOS NA FASE 3) ---
+  function drawTrueExitDoor(camX) {
+    const sx = trueExitDoor.x - camX;
+    if (sx < -200 || sx > canvas.width + 200) return;
+
+    ctx.save();
+    const pulse = Math.sin(tick * 0.08) * 22;
     const glow = ctx.createRadialGradient(
-      sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 12,
-      sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 140 + pulse
+      sx + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2, 16,
+      sx + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2, 170 + pulse
     );
-    glow.addColorStop(0, 'rgba(255, 240, 160, 0.95)');
-    glow.addColorStop(0.35, 'rgba(255, 80, 200, 0.55)');
-    glow.addColorStop(0.7, 'rgba(0, 230, 255, 0.3)');
+    glow.addColorStop(0, 'rgba(255, 245, 180, 0.98)');
+    glow.addColorStop(0.3, 'rgba(168, 85, 247, 0.65)');
+    glow.addColorStop(0.65, 'rgba(56, 189, 248, 0.4)');
     glow.addColorStop(1, 'rgba(0,0,0,0)');
     ctx.fillStyle = glow;
-    ctx.fillRect(sx - 100, exitDoor.y - 80, exitDoor.w + 200, exitDoor.h + 160);
+    ctx.fillRect(sx - 120, trueExitDoor.y - 100, trueExitDoor.w + 240, trueExitDoor.h + 200);
 
-    // Carved door frame
-    ctx.fillStyle = '#db2777';
+    // Cosmic portal archway
+    ctx.fillStyle = '#4c1d95';
     ctx.strokeStyle = '#facc15';
-    ctx.lineWidth = 4.5;
+    ctx.lineWidth = 5;
     ctx.beginPath();
-    ctx.roundRect(sx, exitDoor.y, exitDoor.w, exitDoor.h, [42, 42, 6, 6]);
+    ctx.roundRect(sx, trueExitDoor.y, trueExitDoor.w, trueExitDoor.h, [48, 48, 8, 8]);
     ctx.fill();
     ctx.stroke();
 
-    // Stained glass arch
-    const vitral = ctx.createLinearGradient(sx, exitDoor.y, sx, exitDoor.y + exitDoor.h);
-    vitral.addColorStop(0, '#fde047');
-    vitral.addColorStop(0.3, '#f43f5e');
-    vitral.addColorStop(0.65, '#8b5cf6');
-    vitral.addColorStop(1, '#06b6d4');
-    ctx.fillStyle = vitral;
+    // Swirling portal vortex
+    const vortex = ctx.createLinearGradient(sx, trueExitDoor.y, sx, trueExitDoor.y + trueExitDoor.h);
+    vortex.addColorStop(0, '#fde047');
+    vortex.addColorStop(0.25, '#c084fc');
+    vortex.addColorStop(0.6, '#38bdf8');
+    vortex.addColorStop(1, '#1e1b4b');
+    ctx.fillStyle = vortex;
     ctx.beginPath();
-    ctx.roundRect(sx + 8, exitDoor.y + 12, exitDoor.w - 16, exitDoor.h - 18, [34, 34, 4, 4]);
+    ctx.roundRect(sx + 8, trueExitDoor.y + 12, trueExitDoor.w - 16, trueExitDoor.h - 18, [38, 38, 6, 6]);
     ctx.fill();
 
+    // Opening door animation during the level transition into the Toy Room
+    if (trueDoorOpenAngle > 0.02) {
+      // 1. Radiant volumetric sunlight beams fanning out across the platform
+      const beamCount = 6;
+      for (let b = 0; b < beamCount; b++) {
+        const bAngle = -0.35 + (b / (beamCount - 1)) * 0.7;
+        const bLen = 140 + Math.sin(tick * 0.15 + b) * 20;
+        const beamGrad = ctx.createLinearGradient(
+          sx + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2,
+          sx + trueExitDoor.w / 2 + Math.sin(bAngle) * bLen,
+          trueExitDoor.y + trueExitDoor.h + Math.cos(bAngle) * 35
+        );
+        beamGrad.addColorStop(0, `rgba(255, 250, 200, ${0.75 * trueDoorOpenAngle})`);
+        beamGrad.addColorStop(0.6, `rgba(250, 204, 21, ${0.45 * trueDoorOpenAngle})`);
+        beamGrad.addColorStop(1, 'rgba(250, 204, 21, 0)');
+
+        ctx.fillStyle = beamGrad;
+        ctx.beginPath();
+        ctx.moveTo(sx + 16, trueExitDoor.y + trueExitDoor.h - 10);
+        ctx.lineTo(sx + trueExitDoor.w - 16, trueExitDoor.y + trueExitDoor.h - 10);
+        ctx.lineTo(sx + trueExitDoor.w / 2 + Math.sin(bAngle) * bLen + 40, trueExitDoor.y + trueExitDoor.h + 40);
+        ctx.lineTo(sx + trueExitDoor.w / 2 + Math.sin(bAngle) * bLen - 40, trueExitDoor.y + trueExitDoor.h + 40);
+        ctx.closePath();
+        ctx.fill();
+      }
+
+      // 2. Glimpse into the sunlit, vibrant Toy Room inside the doorway
+      const roomGlimpse = ctx.createLinearGradient(sx, trueExitDoor.y, sx, trueExitDoor.y + trueExitDoor.h);
+      roomGlimpse.addColorStop(0, '#fef08a');
+      roomGlimpse.addColorStop(0.4, '#fcd34d');
+      roomGlimpse.addColorStop(0.7, '#6ee7b7');
+      roomGlimpse.addColorStop(1, '#bbf7d0');
+      ctx.fillStyle = roomGlimpse;
+      ctx.beginPath();
+      ctx.roundRect(sx + 10, trueExitDoor.y + 14, trueExitDoor.w - 20, trueExitDoor.h - 22, [36, 36, 4, 4]);
+      ctx.fill();
+
+      // 3. Ornate arched door leaves swinging open with perspective
+      const leafW = Math.max(2, (trueExitDoor.w / 2 - 12) * (1 - trueDoorOpenAngle));
+      // Left door leaf
+      ctx.fillStyle = '#b45309';
+      ctx.strokeStyle = '#fde047';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.roundRect(sx + 10, trueExitDoor.y + 14, leafW, trueExitDoor.h - 22, [32, 4, 4, 4]);
+      ctx.fill();
+      ctx.stroke();
+
+      // Right door leaf
+      ctx.beginPath();
+      ctx.roundRect(sx + trueExitDoor.w - 10 - leafW, trueExitDoor.y + 14, leafW, trueExitDoor.h - 22, [4, 32, 4, 4]);
+      ctx.fill();
+      ctx.stroke();
+    }
+
+    // Floating golden stars in portal
+    const sBob = Math.sin(tick * 0.12) * 5;
     ctx.fillStyle = '#ffffff';
-    ctx.font = '22px sans-serif';
-    ctx.fillText('✨', sx + exitDoor.w / 2 - 12, exitDoor.y + 40);
-    ctx.fillText('🌿', sx + exitDoor.w / 2 - 12, exitDoor.y + 82);
+    ctx.font = '24px sans-serif';
+    ctx.fillText('⭐', sx + trueExitDoor.w / 2 - 12, trueExitDoor.y + 44 + sBob);
+    ctx.fillText('✨', sx + trueExitDoor.w / 2 - 12, trueExitDoor.y + 88 - sBob);
 
     ctx.restore();
   }
@@ -2013,12 +3098,357 @@ export function createGame(canvas, uiFeedback) {
     ctx.save();
     const bx = baby.x - camX;
     const by = baby.y;
+
+    if (baby.isLyingDown) {
+      // Menina visivelmente estirada e esparramada no chão após o tombo
+      const floorContactY = by + baby.h - 4;
+      ctx.translate(bx + baby.w / 2, floorContactY);
+      const sprawlDir = baby.facing === -1 ? -1 : 1;
+      ctx.scale(sprawlDir, 1);
+
+      // Sombra suave da criança caída no chão
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.45)';
+      ctx.beginPath();
+      ctx.ellipse(0, 2, 28, 7, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Sapatinhos amarelos deitados para trás no chão
+      ctx.fillStyle = '#ffd000';
+      ctx.strokeStyle = '#c98a00';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.ellipse(-18, -3, 5.5, 3.5, -0.2, 0, Math.PI * 2);
+      ctx.ellipse(-11, -4, 5.5, 3.5, 0.1, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Túnica e corpo estirado horizontalmente
+      const bodyGrad = ctx.createLinearGradient(-15, -12, 15, 0);
+      bodyGrad.addColorStop(0, '#ff2a85');
+      bodyGrad.addColorStop(1, '#d80064');
+      ctx.fillStyle = bodyGrad;
+      ctx.strokeStyle = '#8a003d';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.ellipse(-3, -7, 15, 8.5, -0.05, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Faixa ciano e detalhe dourado na túnica
+      ctx.strokeStyle = '#00f5ff';
+      ctx.lineWidth = 2.4;
+      ctx.beginPath();
+      ctx.moveTo(-11, -6); ctx.lineTo(3, -6);
+      ctx.stroke();
+
+      // Bracinhos estendidos para frente no chão
+      ctx.fillStyle = '#ff3d94';
+      ctx.strokeStyle = '#8a003d';
+      ctx.lineWidth = 1.1;
+      ctx.beginPath();
+      ctx.ellipse(9, -3, 7.5, 3.5, 0.15, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#ffe0cb';
+      ctx.beginPath();
+      ctx.arc(16, -3, 3.2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cabeça descansando no chão virada de frente
+      const headX = 14;
+      const headY = -12;
+      const faceGrad = ctx.createRadialGradient(headX, headY, 2, headX, headY, 14);
+      faceGrad.addColorStop(0, '#fff1e6');
+      faceGrad.addColorStop(0.85, '#fcd2be');
+      faceGrad.addColorStop(1, '#f7bca1');
+      ctx.fillStyle = faceGrad;
+      ctx.strokeStyle = '#9c5a3d';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.arc(headX, headY, 12, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Cabelo lilás espalhado pelo chão ao redor da cabeça
+      ctx.fillStyle = '#8b5cf6';
+      ctx.strokeStyle = '#4c1d95';
+      ctx.lineWidth = 1.3;
+      ctx.beginPath();
+      ctx.arc(headX, headY - 4, 11.5, Math.PI * 0.8, Math.PI * 2.2);
+      ctx.quadraticCurveTo(headX + 16, headY - 12, headX + 6, headY - 14);
+      ctx.quadraticCurveTo(headX - 6, headY - 13, headX - 8, headY - 4);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Faixinha ciano no cabelo
+      ctx.fillStyle = '#06b6d4';
+      ctx.fillRect(headX - 8, headY - 8, 16, 3.2);
+
+      // Olhos atordoados / tontos de surpresa
+      ctx.fillStyle = '#1e1b4b';
+      ctx.beginPath();
+      ctx.arc(headX - 4, headY + 1, 2.4, 0, Math.PI * 2);
+      ctx.arc(headX + 5, headY + 1, 2.4, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(headX - 4.8, headY, 1.0, 0, Math.PI * 2);
+      ctx.arc(headX + 4.2, headY, 1.0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Bochechinhas coradas de impacto
+      ctx.fillStyle = 'rgba(255, 60, 110, 0.55)';
+      ctx.beginPath();
+      ctx.arc(headX - 5.5, headY + 5, 2.8, 0, Math.PI * 2);
+      ctx.arc(headX + 5.5, headY + 5, 2.8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Boquinha perplexa / confusa
+      ctx.fillStyle = '#991b1b';
+      ctx.beginPath();
+      ctx.ellipse(headX + 0.5, headY + 6.5, 2.2, 1.8, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Gotinha de suor/susto
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.arc(headX + 13, headY - 6, 2, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Estrelinhas orbitando a cabeça da menina estirada
+      const starTime = tick * 0.08;
+      for (let s = 0; s < 3; s++) {
+        const starAng = starTime + s * (Math.PI * 2 / 3);
+        const sx = headX + Math.cos(starAng) * 15;
+        const sy = headY - 17 + Math.sin(starAng) * 4;
+        ctx.fillStyle = '#facc15';
+        ctx.beginPath();
+        ctx.arc(sx, sy, 2, 0, Math.PI * 2);
+        ctx.fill();
+      }
+
+      ctx.restore();
+      return;
+    }
+
+    if (baby.isCrouching) {
+      // Menina abaixada/agachada no chão, recuperando o fôlego
+      const standUpT = isStandbyTransitioning ? Math.min(1.0, standbyStandUpProgress) : 0;
+      const floorContactY = by + baby.h - 2;
+      const crouchDrop = (1 - standUpT) * 11;
+      const leanAngle = (1 - standUpT) * 0.22;
+      const breath = Math.sin(tick * 0.08) * (1 - standUpT) * 1.6;
+
+      ctx.translate(bx + baby.w / 2, floorContactY - baby.h / 2 + crouchDrop / 2 + breath);
+      if (baby.facing === -1) {
+        ctx.scale(-1, 1);
+      }
+      ctx.rotate(leanAngle);
+
+      // Sombra suave no chão
+      ctx.save();
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.42)';
+      ctx.beginPath();
+      ctx.ellipse(0, baby.h / 2 - crouchDrop / 2 - breath, 16 + (1 - standUpT) * 4, 4.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Perninhas dobradas / agachadas
+      const kneeBendAngle = (1 - standUpT) * 0.85;
+
+      // Perna esquerda (trás)
+      ctx.save();
+      ctx.translate(-5, 9 - (1 - standUpT) * 4);
+      ctx.rotate(kneeBendAngle);
+      ctx.fillStyle = '#ffd000';
+      ctx.strokeStyle = '#c98a00';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.ellipse(0, 3, 4.0, 4.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(2, 6, 4.2, 3.0, 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+
+      // Perna direita (frente)
+      ctx.save();
+      ctx.translate(5, 9 - (1 - standUpT) * 4);
+      ctx.rotate(-kneeBendAngle * 0.6);
+      ctx.fillStyle = '#ffd000';
+      ctx.strokeStyle = '#c98a00';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      ctx.ellipse(0, 3, 4.0, 4.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.beginPath();
+      ctx.ellipse(2, 6, 4.2, 3.0, 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.restore();
+
+      // Túnica recolhida / agachada com detalhes mágicos
+      const bodyGrad = ctx.createLinearGradient(-12, -4, 12, 12);
+      bodyGrad.addColorStop(0, '#ff2a85');
+      bodyGrad.addColorStop(1, '#d80064');
+      ctx.fillStyle = bodyGrad;
+      ctx.strokeStyle = '#8a003d';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.ellipse(0, 1 + (1 - standUpT) * 2, 12.5, 11 - (1 - standUpT) * 1.5, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Faixa ciano e detalhe dourado na túnica
+      ctx.strokeStyle = '#00f5ff';
+      ctx.lineWidth = 2.4;
+      ctx.lineCap = 'round';
+      ctx.beginPath();
+      ctx.arc(0, -1 + (1 - standUpT) * 2, 9, 0.3, Math.PI - 0.3);
+      ctx.stroke();
+
+      // Bracinhos: apoiados nos joelhos recuperando o fôlego
+      const armAngle = (1 - standUpT) * 0.45;
+      ctx.fillStyle = '#ff3d94';
+      ctx.strokeStyle = '#8a003d';
+      ctx.lineWidth = 1.2;
+
+      // Braço esquerdo
+      ctx.save();
+      ctx.translate(-9, -2 + (1 - standUpT) * 3);
+      ctx.rotate(armAngle);
+      ctx.beginPath();
+      ctx.ellipse(0, 4, 3.2, 5.0, -0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#ffe0cb';
+      ctx.beginPath();
+      ctx.arc(0, 8, 2.8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Braço direito (apoiado no joelho à frente)
+      ctx.save();
+      ctx.translate(9, -2 + (1 - standUpT) * 3);
+      ctx.rotate(-armAngle * 0.8);
+      ctx.fillStyle = '#ff3d94';
+      ctx.beginPath();
+      ctx.ellipse(0, 4, 3.2, 5.0, 0.2, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+      ctx.fillStyle = '#ffe0cb';
+      ctx.beginPath();
+      ctx.arc(0, 8, 2.8, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.restore();
+
+      // Rostinho: olhando para cima em direção à fadinha com carinho
+      const headY = -11 + (1 - standUpT) * 2;
+      const faceGrad = ctx.createRadialGradient(0, headY, 2, 0, headY, 14);
+      faceGrad.addColorStop(0, '#fff1e6');
+      faceGrad.addColorStop(0.85, '#fcd2be');
+      faceGrad.addColorStop(1, '#f7bca1');
+      ctx.fillStyle = faceGrad;
+      ctx.strokeStyle = '#9c5a3d';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.arc(0, headY, 12.5, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.stroke();
+
+      // Bochechas coradas de esforço/recuperação
+      ctx.fillStyle = 'rgba(255, 60, 110, 0.52)';
+      ctx.beginPath();
+      ctx.arc(-7.5, headY + 3, 3.8, 0, Math.PI * 2);
+      ctx.arc(7.5, headY + 3, 3.8, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Olhos: olhando suavemente para cima (em direção à fadinha)
+      if (standUpT < 0.6) {
+        ctx.fillStyle = '#21102e';
+        ctx.beginPath();
+        ctx.ellipse(-4.5, headY - 1, 3.0, 3.8, 0, 0, Math.PI * 2);
+        ctx.ellipse(4.5, headY - 1, 3.0, 3.8, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#7c3aed';
+        ctx.beginPath();
+        ctx.ellipse(-4.5, headY - 1.8, 2.0, 2.3, 0, 0, Math.PI * 2);
+        ctx.ellipse(4.5, headY - 1.8, 2.0, 2.3, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Brilho nos olhos
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(-5.4, headY - 2.8, 1.3, 0, Math.PI * 2);
+        ctx.arc(3.6, headY - 2.8, 1.3, 0, Math.PI * 2);
+        ctx.fill();
+
+        // Boquinha respirando suavemente
+        ctx.fillStyle = '#991b1b';
+        ctx.beginPath();
+        ctx.ellipse(0, headY + 5.2, 1.8, 1.4, 0, 0, Math.PI * 2);
+        ctx.fill();
+      } else {
+        // Sorriso animado ao se levantar
+        ctx.fillStyle = '#21102e';
+        ctx.beginPath();
+        ctx.ellipse(-4.5, headY - 1, 3.2, 4.2, 0, 0, Math.PI * 2);
+        ctx.ellipse(4.5, headY - 1, 3.2, 4.2, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#7c3aed';
+        ctx.beginPath();
+        ctx.ellipse(-4.5, headY - 1, 2.2, 2.6, 0, 0, Math.PI * 2);
+        ctx.ellipse(4.5, headY - 1, 2.2, 2.6, 0, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.fillStyle = '#ffffff';
+        ctx.beginPath();
+        ctx.arc(-5.6, headY - 2.5, 1.4, 0, Math.PI * 2);
+        ctx.arc(3.4, headY - 2.5, 1.4, 0, Math.PI * 2);
+        ctx.fill();
+
+        ctx.strokeStyle = '#c0264b';
+        ctx.lineWidth = 1.4;
+        ctx.beginPath();
+        ctx.arc(0, headY + 5, 2.4, 0.1, Math.PI - 0.1);
+        ctx.stroke();
+      }
+
+      // Cabelo lilás
+      ctx.fillStyle = '#8b5cf6';
+      ctx.strokeStyle = '#4c1d95';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.arc(0, headY - 6, 10, Math.PI * 0.9, Math.PI * 2.1);
+      ctx.quadraticCurveTo(8, headY - 14, -2, headY - 15);
+      ctx.quadraticCurveTo(-11, headY - 13, -9, headY - 6);
+      ctx.closePath();
+      ctx.fill();
+      ctx.stroke();
+
+      // Faixinha de cabelo ciano
+      ctx.fillStyle = '#06b6d4';
+      ctx.fillRect(-8, headY - 10, 16, 3.2);
+
+      ctx.restore();
+      return;
+    }
+
     const t = baby.animTime;
     const stepSwing = Math.sin(t);
     const bob = baby.onGround ? Math.abs(Math.sin(t * 2)) * 3 : 0;
     const tilt = baby.onGround ? Math.sin(t) * 0.08 : -0.15;
 
     ctx.translate(bx + baby.w / 2, by + baby.h / 2 + bob);
+    if (baby.facing === -1) {
+      ctx.scale(-1, 1);
+    }
     ctx.rotate(tilt);
 
     const legLeftAngle = baby.onGround ? stepSwing * 0.6 : 0.4;
@@ -2133,31 +3563,69 @@ export function createGame(canvas, uiFeedback) {
     ctx.arc(7.5, -8, 3.8, 0, Math.PI * 2);
     ctx.fill();
 
-    // Big anime eyes
-    ctx.fillStyle = '#21102e';
-    ctx.beginPath();
-    ctx.ellipse(-4.5, -12, 3.2, 4.2, 0, 0, Math.PI * 2);
-    ctx.ellipse(4.5, -12, 3.2, 4.2, 0, 0, Math.PI * 2);
-    ctx.fill();
+    if (baby.isShocked) {
+      // Wide startled round eyes
+      ctx.fillStyle = '#1e1b4b';
+      ctx.beginPath();
+      ctx.ellipse(-5, -12, 4.2, 5.0, 0, 0, Math.PI * 2);
+      ctx.ellipse(5, -12, 4.2, 5.0, 0, 0, Math.PI * 2);
+      ctx.fill();
 
-    ctx.fillStyle = '#7c3aed';
-    ctx.beginPath();
-    ctx.ellipse(-4.5, -11, 2.2, 2.6, 0, 0, Math.PI * 2);
-    ctx.ellipse(4.5, -11, 2.2, 2.6, 0, 0, Math.PI * 2);
-    ctx.fill();
+      // Big pupils
+      ctx.fillStyle = '#7c3aed';
+      ctx.beginPath();
+      ctx.arc(-5, -12, 2.5, 0, Math.PI * 2);
+      ctx.arc(5, -12, 2.5, 0, Math.PI * 2);
+      ctx.fill();
 
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.arc(-5.6, -13.5, 1.4, 0, Math.PI * 2);
-    ctx.arc(3.4, -13.5, 1.4, 0, Math.PI * 2);
-    ctx.fill();
+      // Gleam
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(-6.2, -13.5, 1.6, 0, Math.PI * 2);
+      ctx.arc(3.8, -13.5, 1.6, 0, Math.PI * 2);
+      ctx.fill();
 
-    // Cute smile
-    ctx.strokeStyle = '#c0264b';
-    ctx.lineWidth = 1.4;
-    ctx.beginPath();
-    ctx.arc(0, -6, 2.4, 0.1, Math.PI - 0.1);
-    ctx.stroke();
+      // Shocked small round questioning mouth
+      ctx.fillStyle = '#991b1b';
+      ctx.beginPath();
+      ctx.ellipse(0, -6, 2.5, 3.2, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Sweat drop of bewilderment
+      ctx.fillStyle = '#38bdf8';
+      ctx.beginPath();
+      ctx.moveTo(9, -21);
+      ctx.lineTo(12, -15);
+      ctx.arc(10.5, -14, 2, 0, Math.PI);
+      ctx.closePath();
+      ctx.fill();
+    } else {
+      // Big anime eyes
+      ctx.fillStyle = '#21102e';
+      ctx.beginPath();
+      ctx.ellipse(-4.5, -12, 3.2, 4.2, 0, 0, Math.PI * 2);
+      ctx.ellipse(4.5, -12, 3.2, 4.2, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#7c3aed';
+      ctx.beginPath();
+      ctx.ellipse(-4.5, -11, 2.2, 2.6, 0, 0, Math.PI * 2);
+      ctx.ellipse(4.5, -11, 2.2, 2.6, 0, 0, Math.PI * 2);
+      ctx.fill();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.beginPath();
+      ctx.arc(-5.6, -13.5, 1.4, 0, Math.PI * 2);
+      ctx.arc(3.4, -13.5, 1.4, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Cute smile
+      ctx.strokeStyle = '#c0264b';
+      ctx.lineWidth = 1.4;
+      ctx.beginPath();
+      ctx.arc(0, -6, 2.4, 0.1, Math.PI - 0.1);
+      ctx.stroke();
+    }
 
     // Mana hair
     ctx.fillStyle = '#8b5cf6';
@@ -2184,13 +3652,39 @@ export function createGame(canvas, uiFeedback) {
   function drawFairy(camX) {
     ctx.save();
 
-    // Draw fairy magic dust particles
-    fairy.particles.forEach((p) => {
-      ctx.fillStyle = `hsla(${p.hue}, 100%, 75%, ${p.life})`;
+    // Draw fairy magic dust particles with luminous aura and twinkling star glints
+    for (let i = 0; i < fairy.particles.length; i++) {
+      const p = fairy.particles[i];
+      const sx = p.x - camX;
+      const sy = p.y;
+      if (sx < -40 || sx > canvas.width + 40) continue;
+
+      // Soft luminous aura
+      const glowSize = p.size * (1.8 + Math.sin(p.wobble || 0) * 0.4) * p.life;
+      ctx.fillStyle = `hsla(${p.hue}, 100%, 75%, ${p.life * 0.38})`;
       ctx.beginPath();
-      ctx.arc(p.x - camX, p.y, p.size * p.life, 0, Math.PI * 2);
+      ctx.arc(sx, sy, glowSize, 0, Math.PI * 2);
       ctx.fill();
-    });
+
+      // Core bright starlet
+      ctx.fillStyle = `hsla(${p.hue}, 100%, 90%, ${p.life * 0.95})`;
+      ctx.beginPath();
+      ctx.arc(sx, sy, Math.max(0.8, p.size * 0.65 * p.life), 0, Math.PI * 2);
+      ctx.fill();
+
+      // 4-point star sparkle glint for twinkling motes
+      if (p.twinkle && p.life > 0.25) {
+        const glintArm = p.size * (1.8 + Math.sin((p.wobble || 0) * 2.5) * 0.6) * p.life;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.life * 0.85})`;
+        ctx.lineWidth = 0.9;
+        ctx.beginPath();
+        ctx.moveTo(sx - glintArm, sy);
+        ctx.lineTo(sx + glintArm, sy);
+        ctx.moveTo(sx, sy - glintArm);
+        ctx.lineTo(sx, sy + glintArm);
+        ctx.stroke();
+      }
+    }
 
     const fx = fairy.x - camX;
     const fy = fairy.y;
@@ -2315,34 +3809,144 @@ export function createGame(canvas, uiFeedback) {
   }
 
   // --- ATMOSPHERIC DYNAMIC LIGHTING ---
-  function applyDarkAtmosphereWithLights(camX) {
-    ctx.save();
-    ctx.globalCompositeOperation = 'multiply';
+  function applyDarkAtmosphereWithLights(camX, camY = 0) {
+    dctx.clearRect(0, 0, darkCanvas.width, darkCanvas.height);
 
-    const darkCanvas = document.createElement('canvas');
-    darkCanvas.width = canvas.width;
-    darkCanvas.height = canvas.height;
-    const dctx = darkCanvas.getContext('2d');
+    if (isStandbyActive || isStandbyTransitioning) {
+      // Pulsação sutil e acolhedora de luz que ilumina apenas a menina e a fadinha no quarto escuro
+      dctx.fillStyle = '#05040a';
+      dctx.fillRect(0, 0, canvas.width, canvas.height);
+      dctx.globalCompositeOperation = 'destination-out';
+
+      const bx = baby.x - camX + baby.w / 2;
+      const by = baby.y - camY + baby.h / 2;
+      const fx = fairy.x - camX;
+      const fy = fairy.y - camY;
+
+      // Pulsação suave (senoidal) da fadinha acolhedora
+      const pulse = Math.sin(tick * 0.06) * 14;
+      const midX = (bx + fx) / 2;
+      const midY = (by + fy) / 2;
+      const cozyRadius = 150 + pulse;
+
+      // Luz acolhedora envolvente das duas
+      const cozySpot = dctx.createRadialGradient(midX, midY, 15, midX, midY, cozyRadius);
+      cozySpot.addColorStop(0, 'rgba(0,0,0,1)');
+      cozySpot.addColorStop(0.5, 'rgba(0,0,0,0.85)');
+      cozySpot.addColorStop(0.85, 'rgba(0,0,0,0.4)');
+      cozySpot.addColorStop(1, 'rgba(0,0,0,0)');
+      dctx.fillStyle = cozySpot;
+      dctx.beginPath();
+      dctx.arc(midX, midY, cozyRadius, 0, Math.PI * 2);
+      dctx.fill();
+
+      // Luz pontual brilhante da fadinha
+      const fairySpot = dctx.createRadialGradient(fx, fy, 5, fx, fy, 95 + pulse * 0.5);
+      fairySpot.addColorStop(0, 'rgba(0,0,0,1)');
+      fairySpot.addColorStop(0.6, 'rgba(0,0,0,0.8)');
+      fairySpot.addColorStop(1, 'rgba(0,0,0,0)');
+      dctx.fillStyle = fairySpot;
+      dctx.beginPath();
+      dctx.arc(fx, fy, 95 + pulse * 0.5, 0, Math.PI * 2);
+      dctx.fill();
+
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.drawImage(darkCanvas, 0, 0);
+
+      // Vignette suave ao redor da tela
+      const vignette = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, canvas.width * 0.25,
+        canvas.width / 2, canvas.height / 2, canvas.width * 0.65
+      );
+      vignette.addColorStop(0, 'rgba(0,0,0,0)');
+      vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
+      ctx.fillStyle = vignette;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+      return;
+    }
+
+    if (plotTwistActive) {
+      // Cinematic penumbra: surroundings are plunged into deep dark penumbra
+      dctx.fillStyle = '#030208';
+      dctx.fillRect(0, 0, canvas.width, canvas.height);
+      dctx.globalCompositeOperation = 'destination-out';
+
+      const bx = baby.x - camX + baby.w / 2;
+      const by = baby.y - camY + baby.h / 2;
+
+      if (plotTwistStep === 2) {
+        // Dramatic isolated spotlight solely on the startled baby's face on the floor
+        const spot = dctx.createRadialGradient(bx, by, 10, bx, by, 140);
+        spot.addColorStop(0, 'rgba(0,0,0,1)');
+        spot.addColorStop(0.5, 'rgba(0,0,0,0.85)');
+        spot.addColorStop(1, 'rgba(0,0,0,0)');
+        dctx.fillStyle = spot;
+        dctx.beginPath();
+        dctx.arc(bx, by, 140, 0, Math.PI * 2);
+        dctx.fill();
+      } else {
+        // Spotlight on both child and the worried pacing fairy
+        const spotBaby = dctx.createRadialGradient(bx, by, 10, bx, by, 150);
+        spotBaby.addColorStop(0, 'rgba(0,0,0,1)');
+        spotBaby.addColorStop(0.55, 'rgba(0,0,0,0.8)');
+        spotBaby.addColorStop(1, 'rgba(0,0,0,0)');
+        dctx.fillStyle = spotBaby;
+        dctx.beginPath();
+        dctx.arc(bx, by, 150, 0, Math.PI * 2);
+        dctx.fill();
+
+        const fx = fairy.x - camX;
+        const fy = fairy.y - camY;
+        const spotFairy = dctx.createRadialGradient(fx, fy, 8, fx, fy, 130);
+        spotFairy.addColorStop(0, 'rgba(0,0,0,1)');
+        spotFairy.addColorStop(0.6, 'rgba(0,0,0,0.75)');
+        spotFairy.addColorStop(1, 'rgba(0,0,0,0)');
+        dctx.fillStyle = spotFairy;
+        dctx.beginPath();
+        dctx.arc(fx, fy, 130, 0, Math.PI * 2);
+        dctx.fill();
+      }
+
+      ctx.save();
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      ctx.globalCompositeOperation = 'multiply';
+      ctx.drawImage(darkCanvas, 0, 0);
+
+      // Deep dramatic edge shadow
+      const dramaticVignette = ctx.createRadialGradient(
+        canvas.width / 2, canvas.height / 2, canvas.width * 0.2,
+        canvas.width / 2, canvas.height / 2, canvas.width * 0.6
+      );
+      dramaticVignette.addColorStop(0, 'rgba(0,0,0,0)');
+      dramaticVignette.addColorStop(1, 'rgba(0,0,0,0.92)');
+      ctx.fillStyle = dramaticVignette;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.restore();
+      return;
+    }
 
     dctx.fillStyle = '#0a0812';
     dctx.fillRect(0, 0, canvas.width, canvas.height);
     dctx.globalCompositeOperation = 'destination-out';
 
-    // Light around baby
+    // Light around baby (always tracking vertical camera position)
     const bx = baby.x - camX + baby.w / 2;
-    const by = baby.y + baby.h / 2;
-    const babyLight = dctx.createRadialGradient(bx, by, 12, bx, by, 170);
-    babyLight.addColorStop(0, 'rgba(0,0,0,0.95)');
-    babyLight.addColorStop(0.5, 'rgba(0,0,0,0.65)');
+    const by = baby.y - camY + baby.h / 2;
+    const babyLight = dctx.createRadialGradient(bx, by, 12, bx, by, 175);
+    babyLight.addColorStop(0, 'rgba(0,0,0,0.96)');
+    babyLight.addColorStop(0.5, 'rgba(0,0,0,0.68)');
     babyLight.addColorStop(1, 'rgba(0,0,0,0)');
     dctx.fillStyle = babyLight;
     dctx.beginPath();
-    dctx.arc(bx, by, 170, 0, Math.PI * 2);
+    dctx.arc(bx, by, 175, 0, Math.PI * 2);
     dctx.fill();
 
     // Vibrant light aura around the fairy
     const fx = fairy.x - camX;
-    const fy = fairy.y;
+    const fy = fairy.y - camY;
     const fairyLight = dctx.createRadialGradient(fx, fy, 8, fx, fy, 160);
     fairyLight.addColorStop(0, 'rgba(0,0,0,0.96)');
     fairyLight.addColorStop(0.4, 'rgba(0,0,0,0.75)');
@@ -2352,23 +3956,73 @@ export function createGame(canvas, uiFeedback) {
     dctx.arc(fx, fy, 160, 0, Math.PI * 2);
     dctx.fill();
 
-    // Exit door beacon light
-    const px = exitDoor.x - camX + exitDoor.w / 2;
-    const py = exitDoor.y + exitDoor.h / 2;
-    const doorLight = dctx.createRadialGradient(px, py, 20, px, py, 280);
-    doorLight.addColorStop(0, 'rgba(0,0,0,1)');
-    doorLight.addColorStop(0.6, 'rgba(0,0,0,0.7)');
-    doorLight.addColorStop(1, 'rgba(0,0,0,0)');
-    dctx.fillStyle = doorLight;
-    dctx.beginPath();
-    dctx.arc(px, py, 280, 0, Math.PI * 2);
-    dctx.fill();
+    // Iluminação Dinâmica dos Obstáculos: Penumbra inicial com luz guia no topo e ativação gradual ao pousar
+    const activePlats = isPhase3 ? phase3Platforms : platforms;
+    for (let i = 0; i < activePlats.length; i++) {
+      const p = activePlats[i];
+      const leftX = p.x - camX;
+      const topY = p.y - camY;
+      if (leftX + p.w < -120 || leftX > canvas.width + 120) continue;
+
+      const alpha = p.lightAlpha || 0;
+
+      // 1. Estado Inicial (Penumbra com Luz Guia no Topo):
+      // Fenda muito sutil e estreita restrita exclusivamente à borda superior
+      const topSlit = dctx.createLinearGradient(0, topY - 2, 0, topY + 6);
+      topSlit.addColorStop(0, 'rgba(0,0,0,0)');
+      topSlit.addColorStop(0.5, 'rgba(0,0,0,0.36)');
+      topSlit.addColorStop(1, 'rgba(0,0,0,0)');
+      dctx.fillStyle = topSlit;
+      dctx.fillRect(leftX, topY - 2, p.w, 8);
+
+      // 2. Estado Ativado (Iluminação Total ao Pousar):
+      // Fade-in de luz quente/pontual revelando o corpo do objeto por inteiro
+      if (alpha > 0.01) {
+        const cx = leftX + p.w / 2;
+        const cy = topY + p.h * 0.45;
+        const rad = Math.max(54, p.w * 0.72 + 28);
+        const spot = dctx.createRadialGradient(cx, cy, 6, cx, cy, rad);
+        spot.addColorStop(0, `rgba(0,0,0,${0.92 * alpha})`);
+        spot.addColorStop(0.55, `rgba(0,0,0,${0.60 * alpha})`);
+        spot.addColorStop(1, 'rgba(0,0,0,0)');
+        dctx.fillStyle = spot;
+        dctx.beginPath();
+        dctx.arc(cx, cy, rad, 0, Math.PI * 2);
+        dctx.fill();
+      }
+    }
+
+    if (isPhase3) {
+      // Beacon light for the True Exit Door on the far left terrace
+      const tx = trueExitDoor.x - camX + trueExitDoor.w / 2;
+      const ty = trueExitDoor.y - camY + trueExitDoor.h / 2;
+      const trueDoorLight = dctx.createRadialGradient(tx, ty, 25, tx, ty, 300);
+      trueDoorLight.addColorStop(0, 'rgba(0,0,0,1)');
+      trueDoorLight.addColorStop(0.65, 'rgba(0,0,0,0.75)');
+      trueDoorLight.addColorStop(1, 'rgba(0,0,0,0)');
+      dctx.fillStyle = trueDoorLight;
+      dctx.beginPath();
+      dctx.arc(tx, ty, 300, 0, Math.PI * 2);
+      dctx.fill();
+    } else {
+      // Exit door beacon light (Phase 1 & 2)
+      const px = exitDoor.x - camX + exitDoor.w / 2;
+      const py = exitDoor.y - camY + exitDoor.h / 2;
+      const doorLight = dctx.createRadialGradient(px, py, 20, px, py, 280);
+      doorLight.addColorStop(0, 'rgba(0,0,0,1)');
+      doorLight.addColorStop(0.6, 'rgba(0,0,0,0.7)');
+      doorLight.addColorStop(1, 'rgba(0,0,0,0)');
+      dctx.fillStyle = doorLight;
+      dctx.beginPath();
+      dctx.arc(px, py, 280, 0, Math.PI * 2);
+      dctx.fill();
+    }
 
     // Mushroom lamp glow
     const mushPlat = platforms.find(p => p.style === 'mushroom_lamp');
     if (mushPlat) {
       const mx = mushPlat.x - camX + mushPlat.w / 2;
-      const my = mushPlat.y + 12;
+      const my = mushPlat.y - camY + 12;
       const mushLight = dctx.createRadialGradient(mx, my, 6, mx, my, 90);
       mushLight.addColorStop(0, 'rgba(0,0,0,0.85)');
       mushLight.addColorStop(1, 'rgba(0,0,0,0)');
@@ -2378,6 +4032,9 @@ export function createGame(canvas, uiFeedback) {
       dctx.fill();
     }
 
+    ctx.save();
+    ctx.setTransform(1, 0, 0, 1, 0, 0);
+    ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(darkCanvas, 0, 0);
 
     // Warm atmospheric vignette
@@ -2389,7 +4046,6 @@ export function createGame(canvas, uiFeedback) {
     vignette.addColorStop(1, 'rgba(3,2,6,0.8)');
     ctx.fillStyle = vignette;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-
     ctx.restore();
   }
 
@@ -2414,29 +4070,71 @@ export function createGame(canvas, uiFeedback) {
     ctx.restore();
   }
 
-  // --- ESCAPE MODE HUD BANNER & SPEED LINES ---
+  // --- SUBTLE JUMP TRAIL RENDERING ---
+  function drawBabyJumpDust(camX) {
+    if (babyJumpDust.length === 0) return;
+    ctx.save();
+    for (let i = 0; i < babyJumpDust.length; i++) {
+      const p = babyJumpDust[i];
+      const sx = p.x - camX;
+      const sy = p.y;
+      if (sx < -30 || sx > canvas.width + 30) continue;
+
+      // Soft ethereal outer aura
+      ctx.fillStyle = `rgba(${p.rgb}, ${p.life * 0.32})`;
+      ctx.beginPath();
+      ctx.arc(sx, sy, p.size * (1.7 + Math.sin(p.wobble) * 0.3) * p.life, 0, Math.PI * 2);
+      ctx.fill();
+
+      // Crisp luminous core mote
+      ctx.fillStyle = `rgba(${p.rgb}, ${p.life * 0.92})`;
+      ctx.beginPath();
+      ctx.arc(sx, sy, Math.max(0.6, p.size * 0.68 * p.life), 0, Math.PI * 2);
+      ctx.fill();
+
+      // Micro 4-point sparkle for twinkling motes
+      if (p.twinkle && p.life > 0.35) {
+        const glintArm = p.size * (1.5 + Math.sin(p.wobble * 2) * 0.5) * p.life;
+        ctx.strokeStyle = `rgba(255, 255, 255, ${p.life * 0.75})`;
+        ctx.lineWidth = 0.8;
+        ctx.beginPath();
+        ctx.moveTo(sx - glintArm, sy);
+        ctx.lineTo(sx + glintArm, sy);
+        ctx.moveTo(sx, sy - glintArm);
+        ctx.lineTo(sx, sy + glintArm);
+        ctx.stroke();
+      }
+    }
+    ctx.restore();
+  }
+
+  // --- ESCAPE MODE & PHASE 3 HUD BANNER & SPEED LINES ---
   function drawEscapeBanner() {
-    if (!isEscapeMode) return;
+    if (!isEscapeMode && !isPhase3) return;
 
     ctx.save();
     // Top right urgency badge with progressive jump meter
-    const badgeW = 250;
+    const badgeW = 270;
     const badgeH = 42;
     const badgeX = canvas.width - badgeW - 16;
     const badgeY = 14;
 
-    ctx.fillStyle = 'rgba(15, 12, 24, 0.90)';
-    ctx.strokeStyle = escapeLevel >= 11 ? '#fde047' : '#f59e0b';
-    ctx.lineWidth = escapeLevel >= 11 ? 2.2 : 1.5;
+    ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
+    ctx.strokeStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#c084fc') : (escapeLevel >= 11 ? '#fde047' : '#f59e0b'));
+    ctx.lineWidth = (isPhase3 ? (phase3Level >= 14 ? 2.4 : 1.6) : (escapeLevel >= 11 ? 2.2 : 1.5));
     ctx.beginPath();
     ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 12);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = escapeLevel >= 11 ? '#fde047' : '#fef08a';
+    ctx.fillStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#f5d0fe') : (escapeLevel >= 11 ? '#fde047' : '#fef08a'));
     ctx.font = 'bold 12px sans-serif';
     ctx.textAlign = 'left';
-    ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14, badgeY + 18);
+    if (isPhase3) {
+      ctx.fillText(`🌪️ SUBIDA CAÓTICA: NÍVEL ${phase3Level + 1}/15`, badgeX + 14, badgeY + 18);
+    } else {
+      ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14, badgeY + 18);
+    }
 
     // Mini progress bar for jump evolution
     const pBarX = badgeX + 14;
@@ -2446,11 +4144,19 @@ export function createGame(canvas, uiFeedback) {
     ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
     ctx.fillRect(pBarX, pBarY, pBarW, pBarH);
 
-    const progFill = ((escapeLevel + 1) / 12) * pBarW;
+    const maxLevels = isPhase3 ? 15 : 12;
+    const currentLevel = isPhase3 ? phase3Level + 1 : escapeLevel + 1;
+    const progFill = (currentLevel / maxLevels) * pBarW;
     const barGrad = ctx.createLinearGradient(pBarX, pBarY, pBarX + pBarW, pBarY);
-    barGrad.addColorStop(0, '#38bdf8');
-    barGrad.addColorStop(0.5, '#facc15');
-    barGrad.addColorStop(1, '#ec4899');
+    if (isPhase3) {
+      barGrad.addColorStop(0, '#c084fc');
+      barGrad.addColorStop(0.5, '#f472b6');
+      barGrad.addColorStop(1, '#fde047');
+    } else {
+      barGrad.addColorStop(0, '#38bdf8');
+      barGrad.addColorStop(0.5, '#facc15');
+      barGrad.addColorStop(1, '#ec4899');
+    }
     ctx.fillStyle = barGrad;
     ctx.fillRect(pBarX, pBarY, progFill, pBarH);
 
@@ -2458,194 +4164,756 @@ export function createGame(canvas, uiFeedback) {
     if (escapeBannerTimer > 0) {
       escapeBannerTimer--;
       const alpha = Math.min(1.0, escapeBannerTimer / 30);
-      ctx.fillStyle = `rgba(0, 0, 0, ${0.55 * alpha})`;
-      ctx.fillRect(0, 66, canvas.width, 54);
+      ctx.fillStyle = `rgba(0, 0, 0, ${0.65 * alpha})`;
+      ctx.fillRect(0, 64, canvas.width, 56);
 
       ctx.fillStyle = `rgba(254, 240, 138, ${alpha})`;
-      ctx.font = 'bold 20px Palatino, Georgia, serif';
+      ctx.font = 'bold 19px Palatino, Georgia, serif';
       ctx.textAlign = 'center';
-      ctx.fillText(escapeBannerText, canvas.width / 2, 100);
+      ctx.fillText(escapeBannerText, canvas.width / 2, 99);
     }
 
     // Dynamic wind speed streaks across screen scaling with scroll speed
-    ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.min(0.16, (escapeLevel / 11) * 0.14)})`;
-    ctx.lineWidth = 1.4 + (escapeLevel / 11) * 0.8;
-    const speedTime = tick * (12 + currentScrollSpeed * 3);
-    const streakCount = 5 + Math.floor(escapeLevel * 0.4);
+    const intensityFactor = isPhase3 ? (phase3Level / 14) : (escapeLevel / 11);
+    ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.min(0.18, intensityFactor * 0.14)})`;
+    ctx.lineWidth = 1.4 + intensityFactor * 0.9;
+    const speedTime = tick * (12 + Math.abs(currentScrollSpeed) * 3);
+    const streakCount = 5 + Math.floor(intensityFactor * 4);
     for (let i = 0; i < streakCount; i++) {
       const sx = (speedTime + i * 140) % (canvas.width + 220) - 100;
       const sy = 50 + i * 65;
-      const streakLen = 60 + currentScrollSpeed * 18;
+      const streakLen = 60 + Math.abs(currentScrollSpeed) * 18;
       ctx.beginPath();
-      ctx.moveTo(canvas.width - sx, sy);
-      ctx.lineTo(canvas.width - sx - streakLen, sy);
+      if (isPhase3) {
+        // Streaks moving towards right as camera moves left
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx + streakLen, sy);
+      } else {
+        ctx.moveTo(canvas.width - sx, sy);
+        ctx.lineTo(canvas.width - sx - streakLen, sy);
+      }
       ctx.stroke();
     }
 
-    // Warning left-edge night shadow if baby is lagging behind the accelerated camera
-    const distToLeft = baby.x - cameraX;
-    if (distToLeft < 170) {
-      const danger = (170 - distToLeft) / 170;
-      const shadowGrad = ctx.createLinearGradient(0, 0, 130, 0);
-      shadowGrad.addColorStop(0, `rgba(220, 38, 38, ${0.48 * danger})`);
-      shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = shadowGrad;
-      ctx.fillRect(0, 0, 130, canvas.height);
+    if (isPhase3) {
+      // In Phase 3: player moving left, camera moving left. If player lags behind to the right:
+      const distToRight = (cameraX + canvas.width) - baby.x;
+      if (distToRight < 170) {
+        const danger = (170 - distToRight) / 170;
+        const shadowGrad = ctx.createLinearGradient(canvas.width, 0, canvas.width - 130, 0);
+        shadowGrad.addColorStop(0, `rgba(220, 38, 38, ${0.48 * danger})`);
+        shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = shadowGrad;
+        ctx.fillRect(canvas.width - 130, 0, 130, canvas.height);
+      }
+    } else {
+      // In Phase 2: Warning left-edge night shadow if baby is lagging behind the accelerated camera
+      const distToLeft = baby.x - cameraX;
+      if (distToLeft < 170) {
+        const danger = (170 - distToLeft) / 170;
+        const shadowGrad = ctx.createLinearGradient(0, 0, 130, 0);
+        shadowGrad.addColorStop(0, `rgba(220, 38, 38, ${0.48 * danger})`);
+        shadowGrad.addColorStop(1, 'rgba(0,0,0,0)');
+        ctx.fillStyle = shadowGrad;
+        ctx.fillRect(0, 0, 130, canvas.height);
+      }
     }
 
     ctx.restore();
   }
 
+  // --- UNIFIED DIALOGUE PORTRAIT RENDERER ---
+  function drawDialoguePortrait(pCtx, charType, px, py, radius, mood = 'normal') {
+    pCtx.save();
+    // 1. Ethereal ambient halo behind portrait frame
+    const glow = pCtx.createRadialGradient(px, py, radius * 0.3, px, py, radius + 6);
+    if (charType === 'fairy') {
+      glow.addColorStop(0, '#fef08a');
+      glow.addColorStop(0.5, '#ec4899');
+      glow.addColorStop(1, '#06b6d4');
+    } else {
+      glow.addColorStop(0, '#fed7aa');
+      glow.addColorStop(0.6, '#f472b6');
+      glow.addColorStop(1, '#8b5cf6');
+    }
+    pCtx.fillStyle = glow;
+    pCtx.beginPath();
+    pCtx.arc(px, py, radius + 4, 0, Math.PI * 2);
+    pCtx.fill();
+
+    // 2. Deep mystical background disc
+    pCtx.fillStyle = '#161024';
+    pCtx.beginPath();
+    pCtx.arc(px, py, radius, 0, Math.PI * 2);
+    pCtx.fill();
+
+    // 3. Ornate golden bezel rings
+    pCtx.strokeStyle = charType === 'fairy' ? '#fde047' : '#f472b6';
+    pCtx.lineWidth = 2.4;
+    pCtx.stroke();
+
+    pCtx.strokeStyle = 'rgba(255, 255, 255, 0.4)';
+    pCtx.lineWidth = 1;
+    pCtx.beginPath();
+    pCtx.arc(px, py, radius - 3, 0, Math.PI * 2);
+    pCtx.stroke();
+
+    if (charType === 'fairy') {
+      // Animated fluttering gossamer wings
+      const wingFlap = Math.sin(tick * 0.35) * 8;
+      pCtx.fillStyle = 'rgba(6, 182, 212, 0.85)';
+      pCtx.beginPath();
+      pCtx.ellipse(px - 11, py - 6, 12, 4 + Math.abs(wingFlap), -0.28, 0, Math.PI * 2);
+      pCtx.ellipse(px + 11, py - 6, 12, 4 + Math.abs(wingFlap), 0.28, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Golden fairy head & face
+      pCtx.fillStyle = '#fef08a';
+      pCtx.beginPath();
+      pCtx.arc(px, py - 2, 9.5, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Soft fairy blush
+      pCtx.fillStyle = 'rgba(244, 114, 182, 0.65)';
+      pCtx.beginPath();
+      pCtx.arc(px - 6, py + 1, 2.2, 0, Math.PI * 2);
+      pCtx.arc(px + 6, py + 1, 2.2, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Anime eyes with specular catchlights
+      pCtx.fillStyle = '#311042';
+      pCtx.beginPath();
+      pCtx.ellipse(px - 3.8, py - 3, 1.8, 2.2, 0, 0, Math.PI * 2);
+      pCtx.ellipse(px + 3.8, py - 3, 1.8, 2.2, 0, 0, Math.PI * 2);
+      pCtx.fill();
+
+      pCtx.fillStyle = '#ffffff';
+      pCtx.beginPath();
+      pCtx.arc(px - 4.2, py - 3.6, 0.75, 0, Math.PI * 2);
+      pCtx.arc(px + 3.4, py - 3.6, 0.75, 0, Math.PI * 2);
+      pCtx.fill();
+
+      if (mood === 'annoyed' || mood === 'determined') {
+        // Exasperated brow & determined mouth
+        pCtx.strokeStyle = '#991b1b';
+        pCtx.lineWidth = 1.3;
+        pCtx.beginPath();
+        pCtx.moveTo(px - 6, py - 6.5); pCtx.lineTo(px - 1.5, py - 4.5);
+        pCtx.moveTo(px + 6, py - 6.5); pCtx.lineTo(px + 1.5, py - 4.5);
+        pCtx.stroke();
+
+        pCtx.strokeStyle = '#dc2626';
+        pCtx.lineWidth = 1.2;
+        pCtx.beginPath();
+        pCtx.arc(px, py + 1.2, 3.2, Math.PI + 0.3, Math.PI * 2 - 0.3);
+        pCtx.stroke();
+      } else {
+        // Cheerful fairy smile
+        pCtx.strokeStyle = '#db2777';
+        pCtx.lineWidth = 1.2;
+        pCtx.beginPath();
+        pCtx.arc(px, py - 0.5, 3.2, 0.2, Math.PI - 0.2);
+        pCtx.stroke();
+      }
+
+      // Corner twinkle sparkle on portrait frame
+      const starPhase = (tick * 0.1) % (Math.PI * 2);
+      pCtx.fillStyle = '#ffffff';
+      pCtx.beginPath();
+      pCtx.arc(px + radius - 4, py - radius + 5, 1.8 + Math.sin(starPhase) * 0.8, 0, Math.PI * 2);
+      pCtx.fill();
+    } else {
+      // Baby Girl Avatar (Shocked / Inquiring)
+      pCtx.fillStyle = '#ffe0cb';
+      pCtx.beginPath();
+      pCtx.arc(px, py + 2, 15, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Lilac hair & cyan hairband
+      pCtx.fillStyle = '#8b5cf6';
+      pCtx.beginPath();
+      pCtx.arc(px, py - 5, 13, Math.PI, Math.PI * 2);
+      pCtx.fill();
+      pCtx.fillStyle = '#06b6d4';
+      pCtx.fillRect(px - 10, py - 7, 20, 3.2);
+
+      // Wide shocked anime eyes
+      pCtx.fillStyle = '#1e1b4b';
+      pCtx.beginPath();
+      pCtx.ellipse(px - 5, py + 1, 3.5, 4.2, 0, 0, Math.PI * 2);
+      pCtx.ellipse(px + 5, py + 1, 3.5, 4.2, 0, 0, Math.PI * 2);
+      pCtx.fill();
+      pCtx.fillStyle = '#ffffff';
+      pCtx.beginPath();
+      pCtx.arc(px - 6, py - 1, 1.4, 0, Math.PI * 2);
+      pCtx.arc(px + 4, py - 1, 1.4, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Bewildered questioning open mouth
+      pCtx.fillStyle = '#991b1b';
+      pCtx.beginPath();
+      pCtx.ellipse(px, py + 9, 2.4, 3, 0, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Blushed cheeks
+      pCtx.fillStyle = 'rgba(244, 114, 182, 0.6)';
+      pCtx.beginPath();
+      pCtx.arc(px - 8, py + 5, 2.5, 0, Math.PI * 2);
+      pCtx.arc(px + 8, py + 5, 2.5, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Sweat droplet
+      pCtx.fillStyle = '#38bdf8';
+      pCtx.beginPath();
+      pCtx.arc(px + 11, py - 2, 1.8, 0, Math.PI * 2);
+      pCtx.fill();
+    }
+    pCtx.restore();
+  }
+
+  // Helper to split text into wrapped lines fitting within maxWidth
+  function wrapDialogueText(pCtx, text, maxWidth) {
+    const words = text.split(' ');
+    const lines = [];
+    let currentLine = '';
+
+    for (let i = 0; i < words.length; i++) {
+      const word = words[i];
+      const testLine = currentLine ? `${currentLine} ${word}` : word;
+      const testWidth = pCtx.measureText(testLine).width;
+      if (testWidth > maxWidth && currentLine) {
+        lines.push(currentLine);
+        currentLine = word;
+      } else {
+        currentLine = testLine;
+      }
+    }
+    if (currentLine) {
+      lines.push(currentLine);
+    }
+    return lines;
+  }
+
   // --- CUTSCENE DIALOGUE WINDOW & CINEMATIC BARS ---
   function drawCutsceneDialogue() {
-    if (!cutsceneActive) return;
+    const isStandbyShowing = isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);
+    // Only show dialogue when cutscene is active, during standby, or during plot twist steps 4 (Baby) and 5 (Fairy)
+    if (!cutsceneActive && (!plotTwistActive || plotTwistStep < 4) && !isStandbyShowing) return;
 
     ctx.save();
+    if (isStandbyShowing) {
+      ctx.globalAlpha = standbyDialogueAlpha;
+    }
+
     // 1. Cinematic letterbox bars
     ctx.fillStyle = '#06040a';
-    ctx.fillRect(0, 0, canvas.width, 46);
-    ctx.fillRect(0, canvas.height - 46, canvas.width, 46);
+    ctx.fillRect(0, 0, canvas.width, 42);
+    ctx.fillRect(0, canvas.height - 42, canvas.width, 42);
 
     ctx.strokeStyle = 'rgba(250, 204, 21, 0.45)';
     ctx.lineWidth = 1;
     ctx.beginPath();
-    ctx.moveTo(0, 46);
-    ctx.lineTo(canvas.width, 46);
-    ctx.moveTo(0, canvas.height - 46);
-    ctx.lineTo(canvas.width, canvas.height - 46);
+    ctx.moveTo(0, 42);
+    ctx.lineTo(canvas.width, 42);
+    ctx.moveTo(0, canvas.height - 42);
+    ctx.lineTo(canvas.width, canvas.height - 42);
     ctx.stroke();
 
-    // 2. Dialogue Box
-    const boxW = Math.min(canvas.width - 80, 800);
-    const boxH = 114;
-    const boxX = (canvas.width - boxW) / 2;
-    const boxY = canvas.height - 150;
+    // Determine active dialogue speaker, text, and mood
+    let speaker = 'fairy';
+    let speakerName = '✦ FADINHA ✦';
+    let speakerColor = '#fef08a';
+    let mood = 'normal';
+    let dialogueText = '';
+    let advancePrompt = 'Toque / Espaço / (X) ➔';
 
+    if (isStandbyShowing) {
+      speaker = 'fairy';
+      speakerName = '✦ FADINHA ✦';
+      speakerColor = '#fef08a';
+      mood = 'normal';
+      dialogueText = '"Você está bem? Vamos tentar novamente!"';
+      const activeDev = getActivePromptDevice();
+      if (activeDev === 'gamepad') {
+        advancePrompt = '(X) para continuar ➔';
+      } else if (activeDev === 'keyboard') {
+        advancePrompt = 'Espaço para continuar ➔';
+      } else if (activeDev === 'touch') {
+        advancePrompt = 'Toque na tela para continuar ➔';
+      } else {
+        advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
+      }
+    } else if (plotTwistActive && plotTwistStep === 4) {
+      speaker = 'baby';
+      speakerName = '✦ MENININHA ✦';
+      speakerColor = '#fed7aa';
+      mood = 'shocked';
+      dialogueText = '"Mas ali não era a porta...?"';
+      advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
+    } else if (plotTwistActive && plotTwistStep === 5) {
+      speaker = 'fairy';
+      speakerName = '✦ FADINHA ✦';
+      speakerColor = '#fef08a';
+      mood = 'annoyed';
+      dialogueText = '"Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!"';
+      advancePrompt = 'Toque / Espaço / (X) para iniciar a subida ➔';
+    } else if (cutsceneStep === 1) {
+      speaker = 'fairy';
+      speakerName = '✦ FADINHA ✦';
+      speakerColor = '#fef08a';
+      mood = 'normal';
+      dialogueText = '"O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo isso?"';
+      advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
+    } else if (cutsceneStep === 2) {
+      speaker = 'fairy';
+      speakerName = '✦ FADINHA ✦';
+      speakerColor = '#fef08a';
+      mood = 'normal';
+      dialogueText = '"Claro que fomos nós duas brincando! *risos*. Mas não vamos mais perder tempo. A saída é logo ali."';
+      advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
+    }
+
+    // 2. Adaptive container sizing & Word wrapping to prevent any overflow
+    const boxW = Math.min(canvas.width - 24, 760);
+    const boxX = (canvas.width - boxW) / 2;
+    const portR = isPortrait ? 28 : 32;
+    const portPadX = isPortrait ? 12 : 18;
+    const textX = boxX + portPadX + portR * 2 + 16;
+    const textMaxW = boxW - (textX - boxX) - 20;
+
+    // Dynamic font scaling & word wrap
+    let fontSize = isPortrait ? 14.5 : 16;
+    ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
+    let lines = wrapDialogueText(ctx, dialogueText, textMaxW);
+
+    // Auto-fit: scale font down if text exceeds 3 lines on landscape or 4 on portrait
+    const maxAllowedLines = isPortrait ? 4 : 3;
+    while (lines.length > maxAllowedLines && fontSize > 12) {
+      fontSize -= 0.5;
+      ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
+      lines = wrapDialogueText(ctx, dialogueText, textMaxW);
+    }
+
+    const lineHeight = Math.round(fontSize * 1.44);
+    const contentH = lines.length * lineHeight;
+    const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
+    const boxY = canvas.height - boxH - 12;
+
+    // Draw Dialogue Box Container
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);
-    bgGrad.addColorStop(0, 'rgba(26, 20, 38, 0.96)');
-    bgGrad.addColorStop(1, 'rgba(13, 9, 20, 0.98)');
+    bgGrad.addColorStop(0, 'rgba(26, 20, 38, 0.97)');
+    bgGrad.addColorStop(1, 'rgba(13, 9, 20, 0.99)');
     ctx.fillStyle = bgGrad;
     ctx.beginPath();
     ctx.roundRect(boxX, boxY, boxW, boxH, 12);
     ctx.fill();
 
-    ctx.strokeStyle = '#d97706';
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = (plotTwistActive ? '#ef4444' : '#d97706');
+    ctx.lineWidth = 2.4;
     ctx.stroke();
 
     ctx.strokeStyle = '#fde047';
-    ctx.lineWidth = 1.2;
+    ctx.lineWidth = 1.0;
     ctx.beginPath();
     ctx.roundRect(boxX + 4, boxY + 4, boxW - 8, boxH - 8, 8);
     ctx.stroke();
 
     // Corner decorative gems
     const corners = [
-      { x: boxX + 8, y: boxY + 8 },
-      { x: boxX + boxW - 8, y: boxY + 8 },
-      { x: boxX + 8, y: boxY + boxH - 8 },
-      { x: boxX + boxW - 8, y: boxY + boxH - 8 }
+      { x: boxX + 7, y: boxY + 7 },
+      { x: boxX + boxW - 7, y: boxY + 7 },
+      { x: boxX + 7, y: boxY + boxH - 7 },
+      { x: boxX + boxW - 7, y: boxY + boxH - 7 }
     ];
     ctx.fillStyle = '#facc15';
     corners.forEach(c => {
       ctx.beginPath();
-      ctx.arc(c.x, c.y, 3, 0, Math.PI * 2);
+      ctx.arc(c.x, c.y, 2.8, 0, Math.PI * 2);
       ctx.fill();
     });
 
-    // 3. Fairy Portrait (Left side)
-    const portX = boxX + 54;
-    const portY = boxY + boxH / 2 - 4;
-    const portR = 34;
+    // 3. Draw Portrait & Badge with guaranteed visual consistency
+    const portX = boxX + portPadX + portR;
+    const portY = boxY + portR + 14;
+    drawDialoguePortrait(ctx, speaker, portX, portY, portR, mood);
 
-    const portGlow = ctx.createRadialGradient(portX, portY, 8, portX, portY, portR + 4);
-    portGlow.addColorStop(0, '#fef08a');
-    portGlow.addColorStop(0.5, '#ec4899');
-    portGlow.addColorStop(1, '#06b6d4');
-    ctx.fillStyle = portGlow;
-    ctx.beginPath();
-    ctx.arc(portX, portY, portR + 3, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#1e1429';
-    ctx.beginPath();
-    ctx.arc(portX, portY, portR, 0, Math.PI * 2);
-    ctx.fill();
-
-    // Fairy portrait avatar
-    const portWing = Math.sin(tick * 0.4) * 8;
-    ctx.fillStyle = 'rgba(6, 182, 212, 0.85)';
-    ctx.beginPath();
-    ctx.ellipse(portX - 10, portY - 6, 11, 4 + Math.abs(portWing), -0.3, 0, Math.PI * 2);
-    ctx.ellipse(portX + 10, portY - 6, 11, 4 + Math.abs(portWing), 0.3, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#fef08a';
-    ctx.beginPath();
-    ctx.arc(portX, portY - 2, 9, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#4c1d95';
-    ctx.beginPath();
-    ctx.arc(portX - 3.5, portY - 3, 1.6, 0, Math.PI * 2);
-    ctx.arc(portX + 3.5, portY - 3, 1.6, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.strokeStyle = '#db2777';
-    ctx.lineWidth = 1.2;
-    ctx.beginPath();
-    ctx.arc(portX, portY - 1, 3.5, 0.2, Math.PI - 0.2);
-    ctx.stroke();
-
-    ctx.fillStyle = '#ffffff';
-    ctx.beginPath();
-    ctx.arc(portX + 14, portY + 6, 2.2, 0, Math.PI * 2);
-    ctx.fill();
-
-    ctx.fillStyle = '#fef08a';
-    ctx.font = 'bold 11px Palatino, Georgia, serif';
+    ctx.fillStyle = speakerColor;
+    ctx.font = 'bold 10px Palatino, Georgia, serif';
     ctx.textAlign = 'center';
-    ctx.fillText('✦ FADINHA ✦', portX, boxY + boxH - 10);
+    ctx.fillText(speakerName, portX, portY + portR + 13);
 
-    // 4. Text lines
-    const textX = boxX + 114;
-    const textY = boxY + 36;
+    // 4. Draw Wrapped Dialogue Text Lines with *risos* highlighting
+    const textStartY = boxY + 28;
     ctx.textAlign = 'left';
+    ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
 
-    if (cutsceneStep === 1) {
-      ctx.fillStyle = '#fef9c3';
-      ctx.font = '16px Palatino, Georgia, serif';
-      ctx.fillText('"O quarto está escuro, mas lá fora temos muita coisa pra ver.', textX, textY);
-      ctx.fillText('Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo isso?"', textX, textY + 26);
-    } else if (cutsceneStep === 2) {
-      ctx.fillStyle = '#fef9c3';
-      ctx.font = '16px Palatino, Georgia, serif';
-      ctx.fillText('"Claro que fomos nós duas brincando! ', textX, textY);
-      const prefixWidth = ctx.measureText('"Claro que fomos nós duas brincando! ').width;
-      ctx.fillStyle = '#f472b6';
-      ctx.font = 'bold 16px Palatino, Georgia, serif';
-      ctx.fillText('*risos*', textX + prefixWidth, textY);
-      ctx.fillStyle = '#fef9c3';
-      ctx.font = '16px Palatino, Georgia, serif';
-      ctx.fillText('. Mas não vamos mais perder tempo.', textX + prefixWidth + 50, textY);
-      ctx.fillStyle = '#fde047';
-      ctx.fillText('A saída é logo ali."', textX, textY + 26);
-    }
+    lines.forEach((lineStr, lineIdx) => {
+      const curY = textStartY + lineIdx * lineHeight;
+      if (lineStr.includes('*risos*')) {
+        const parts = lineStr.split('*risos*');
+        let curX = textX;
+        if (parts[0]) {
+          ctx.fillStyle = '#fef9c3';
+          ctx.fillText(parts[0], curX, curY);
+          curX += ctx.measureText(parts[0]).width;
+        }
+        ctx.fillStyle = '#f472b6';
+        ctx.font = `bold italic ${fontSize}px Palatino, Georgia, serif`;
+        ctx.fillText('*risos*', curX, curY);
+        curX += ctx.measureText('*risos*').width;
+        ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
+        if (parts[1]) {
+          ctx.fillStyle = '#fef9c3';
+          ctx.fillText(parts[1], curX, curY);
+        }
+      } else {
+        ctx.fillStyle = (speaker === 'fairy' && mood === 'annoyed' && lineIdx === 0) ? '#fde047' : '#fef9c3';
+        ctx.fillText(lineStr, textX, curY);
+      }
+    });
 
-    // 5. Prompt to advance
+    // 5. Advance prompt (dedicated bottom right corner, guaranteed non-overlapping)
     const blink = Math.sin(tick * 0.1) * 0.3 + 0.7;
     ctx.fillStyle = `rgba(253, 224, 71, ${blink})`;
-    ctx.font = 'bold 12.5px sans-serif';
+    ctx.font = 'bold 11.5px sans-serif';
     ctx.textAlign = 'right';
-    ctx.fillText('Toque para continuar ➔', boxX + boxW - 20, boxY + boxH - 14);
+    ctx.fillText(advancePrompt, boxX + boxW - 14, boxY + boxH - 10);
+
+    ctx.restore();
+  }
+
+  // --- TUTORIAL VISUAL GUIDE (PRIMEIRA PLATAFORMA DA FASE 3) ---
+  function drawTutorialArrow(camX) {
+    if (!isPhase3 || baby.currentPlatformIndex >= 0 || phase3Platforms.length === 0) return;
+    const p0 = phase3Platforms[0];
+    const sx = p0.x - camX + p0.w / 2;
+    const sy = p0.y;
+
+    ctx.save();
+    // Glowing pulsing landing target zone on the first platform
+    const pulse = Math.sin(tick * 0.1) * 0.3 + 0.7;
+    ctx.fillStyle = `rgba(250, 204, 21, ${0.4 * pulse})`;
+    ctx.beginPath();
+    ctx.ellipse(sx, sy + 6, p0.w * 0.42, 8, 0, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Floating bouncing guide arrow
+    const bob = Math.sin(tick * 0.12) * 5;
+    const arrowY = sy - 26 + bob;
+
+    // Tag bubble
+    ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
+    ctx.strokeStyle = '#facc15';
+    ctx.lineWidth = 1.4;
+    ctx.beginPath();
+    ctx.roundRect(sx - 52, arrowY - 22, 104, 22, 6);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#fef08a';
+    ctx.font = 'bold 10.5px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('▼ SUBA AQUI!', sx, arrowY - 7);
+
+    // Downward triangle
+    ctx.fillStyle = '#facc15';
+    ctx.beginPath();
+    ctx.moveTo(sx - 7, arrowY + 3);
+    ctx.lineTo(sx + 7, arrowY + 3);
+    ctx.lineTo(sx, arrowY + 11);
+    ctx.closePath();
+    ctx.fill();
 
     ctx.restore();
   }
 
   // --- GAME UPDATE LOOP ---
-  function update() {
+  function update(dt = 1.0) {
     tick++;
+    if (!gameStarted) return;
     if (gameWon) return;
+    if (isGameOver) return;
+
+    // Platform lighting fade-in transition
+    const allPlatforms = isPhase3 ? phase3Platforms : platforms;
+    for (let i = 0; i < allPlatforms.length; i++) {
+      const p = allPlatforms[i];
+      if (p.lightAlpha === undefined) p.lightAlpha = 0;
+      const targetA = p.isLanded ? 1.0 : 0.0;
+      p.lightAlpha += (targetA - p.lightAlpha) * 0.08;
+    }
+
+    // --- STANDBY PREPARATION & RESPAWN (FADINHA INTERATIVA) ---
+    if (isStandbyActive) {
+      baby.vx = 0;
+      baby.vy = 0;
+      baby.animTime = 0;
+      baby.onGround = true;
+
+      // Fadinha flutua acima dela emitindo pulsação suave
+      const hoverX = baby.x + (baby.facing === -1 ? -18 : 18);
+      const hoverY = baby.y - 75 + Math.sin(tick * 0.05) * 5;
+      fairy.x += (hoverX - fairy.x) * 0.1;
+      fairy.y += (hoverY - fairy.y) * 0.1;
+      fairy.flutterPhase += 0.3;
+
+      if (tick % 5 === 0) {
+        spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.2);
+      }
+
+      // Câmera acolhedora nas duas
+      targetCameraZoom = 1.25;
+      cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
+      const targetCam = baby.x - (canvas.width > 600 ? canvas.width * 0.35 : canvas.width * 0.25);
+      cameraX += (targetCam - cameraX) * 0.08;
+
+      updateFairyParticles();
+      updateBabyJumpDust();
+      return;
+    }
+
+    if (isStandbyTransitioning) {
+      standbyTransitionTimer += dt;
+      standbyTransitionProgress = Math.min(1.0, standbyTransitionTimer / 24);
+      standbyStandUpProgress = standbyTransitionProgress;
+      standbyDialogueAlpha = Math.max(0, 1.0 - standbyTransitionProgress * 1.5);
+
+      // Pirueta e faíscas da fadinha
+      fairy.spinAnim = Math.max(0, fairy.spinAnim - 0.08);
+      fairy.flutterPhase += 0.55;
+      fairy.y += Math.sin(standbyTransitionProgress * Math.PI) * -0.4;
+
+      if (tick % 3 === 0 && standbyTransitionProgress < 0.8) {
+        spawnFairySparkles(fairy.x, fairy.y, 2);
+      }
+
+      // Câmera retorna ao zoom normal
+      targetCameraZoom = 1.0;
+      cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
+      const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
+      cameraX += (targetCam - cameraX) * 0.08;
+
+      if (standbyTransitionProgress >= 1.0) {
+        isStandbyTransitioning = false;
+        baby.isCrouching = false;
+        baby.controlsLocked = false;
+        baby.onGround = true;
+        baby.respawnLandingPending = false;
+
+        if (isPhase3) {
+          const stats = getPhase3Stats(0);
+          baby.vx = stats.runVx;
+        } else if (isEscapeMode) {
+          const stats = getEscapeStats(escapeLevel);
+          baby.vx = stats.runVx || 2.4;
+        } else {
+          baby.vx = baby.baseVx;
+        }
+        lastTime = performance.now();
+      }
+
+      updateFairyParticles();
+      updateBabyJumpDust();
+      return;
+    }
+
+    // --- PLOT TWIST CUTSCENE SEQUENCER ---
+    if (plotTwistActive) {
+      if (plotTwistStep === 1) {
+        // Step 1: Porta falsa escorrega e descola; menina cai desequilibrada
+        fakeDoorSlideY += 6.5;
+        fakeDoorRotation += 0.024;
+        baby.isShocked = true;
+        baby.isLyingDown = false;
+        baby.onGround = false;
+        baby.vx = 0;
+        baby.vy += 0.55;
+        baby.y += baby.vy;
+        baby.animTime += 0.22;
+        targetCameraZoom = 1.35;
+        cameraZoom += (targetCameraZoom - cameraZoom) * 0.09;
+        const camTarget = baby.x - (canvas.width > 600 ? 220 : 130);
+        cameraX += (camTarget - cameraX) * 0.09;
+
+        // Fadinha acompanha em susto no alto
+        fairy.x += (baby.x - 25 - fairy.x) * 0.08;
+        fairy.y += (baby.y - 45 - fairy.y) * 0.08;
+        fairy.flutterPhase += 0.45;
+
+        // A queda deve finalizar por completo no chão antes de qualquer fala ou diálogo
+        if (baby.y + baby.h >= FLOOR_Y) {
+          baby.y = FLOOR_Y - baby.h;
+          baby.vy = 0;
+          baby.onGround = true;
+          baby.isLyingDown = true; // Visivelmente estirada e esparramada no chão!
+          spawnBabyLandingPuff(baby.x + baby.w / 2, baby.y + baby.h);
+          audio.playBabyThudSound();
+          plotTwistStep = 2; // Passa para a checagem da fadinha no chão
+          plotTwistTimer = 0;
+        }
+      } else if (plotTwistStep === 2) {
+        // Step 2: Menina estirada no chão. A fadinha desce ao chão perto dela para checar o que aconteceu.
+        plotTwistTimer++;
+        baby.isShocked = true;
+        baby.isLyingDown = true;
+        baby.onGround = true;
+        baby.vx = 0;
+        baby.vy = 0;
+
+        targetCameraZoom = 1.55;
+        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
+        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
+        cameraX += (targetCam - cameraX) * 0.08;
+
+        // Fadinha desce até a altura do chão ao lado da menina
+        const targetFairyX = baby.x + 35;
+        const targetFairyY = FLOOR_Y - 22;
+        fairy.x += (targetFairyX - fairy.x) * 0.09;
+        fairy.y += (targetFairyY - fairy.y) * 0.09;
+        fairy.flutterPhase += 0.35;
+
+        if (tick % 3 === 0) {
+          spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.4);
+        }
+
+        // Após checar a menina no chão (~1.3s), a fadinha voa para cima
+        if (plotTwistTimer > 80) {
+          plotTwistStep = 3;
+          plotTwistTimer = 0;
+        }
+      } else if (plotTwistStep === 3) {
+        // Step 3: A fadinha voa para cima, posicionando-se acima da altura da cabeça da menina.
+        plotTwistTimer++;
+        baby.isShocked = true;
+        baby.isLyingDown = true;
+        baby.onGround = true;
+        baby.vx = 0;
+        baby.vy = 0;
+
+        targetCameraZoom = 1.35;
+        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
+        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
+        cameraX += (targetCam - cameraX) * 0.08;
+
+        // A fadinha sobe alto acima da cabeça da menina
+        const targetFairyX = baby.x + 10;
+        const targetFairyY = baby.y - 105;
+        fairy.x += (targetFairyX - fairy.x) * 0.08;
+        fairy.y += (targetFairyY - fairy.y) * 0.08;
+        fairy.flutterPhase += 0.45;
+
+        if (tick % 2 === 0) {
+          spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.5);
+        }
+
+        // Quando a fadinha atinge a altura acima da cabeça, inicia o diálogo da menina
+        if (plotTwistTimer > 70) {
+          plotTwistStep = 4;
+          plotTwistTimer = 0;
+          audio.playBabyShockVoice();
+          uiFeedback.innerText = 'Mas ali não era a porta...? A criança pergunta estirada no chão!';
+          uiFeedback.style.color = '#fef08a';
+        }
+      } else if (plotTwistStep === 4) {
+        // Step 4: Menina estirada no chão e fada no alto: diálogo da menina
+        plotTwistTimer++;
+        baby.isShocked = true;
+        baby.isLyingDown = true;
+        baby.onGround = true;
+
+        targetCameraZoom = 1.35;
+        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
+        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
+        cameraX += (targetCam - cameraX) * 0.08;
+
+        // Fadinha flutua suavemente no alto, desobstruída acima da UI
+        fairy.x += (baby.x + 10 - fairy.x) * 0.07;
+        fairy.y += (baby.y - 105 - fairy.y) * 0.07;
+        fairy.flutterPhase += 0.35;
+
+        if (plotTwistTimer > 320) {
+          advancePlotTwist();
+        }
+      } else if (plotTwistStep === 5) {
+        // Step 5: Fadinha expressa frustração ("Droga! Como se virar em toda essa bagunça?...") e voa de um lado para o outro no ar
+        plotTwistTimer++;
+        baby.isShocked = true;
+        baby.isLyingDown = true;
+        baby.onGround = true;
+
+        targetCameraZoom = 1.35;
+        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
+        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
+        cameraX += (targetCam - cameraX) * 0.08;
+
+        fairy.pacingPhase = (fairy.pacingPhase || 0) + 0.065;
+        const pacingDist = Math.sin(fairy.pacingPhase) * 65;
+        const targetFairyX = baby.x + pacingDist;
+        const targetFairyY = baby.y - 105 + Math.abs(Math.sin(fairy.pacingPhase * 2)) * 6;
+        fairy.vx += (targetFairyX - fairy.x) * 0.12;
+        fairy.vy += (targetFairyY - fairy.y) * 0.12;
+        fairy.vx *= 0.85;
+        fairy.vy *= 0.85;
+        fairy.x += fairy.vx;
+        fairy.y += fairy.vy;
+        fairy.flutterPhase += 0.55;
+
+        if (tick % 2 === 0) {
+          spawnFairyFlightDust(fairy.x, fairy.y, Math.cos(fairy.pacingPhase) * 1.5, 0);
+        }
+
+        if (plotTwistTimer > 380) {
+          finishPlotTwistAndStartTutorial();
+        }
+      }
+
+      updateFairyParticles();
+      updateBabyJumpDust();
+      return;
+    }
+
+    // --- FASE 3 TUTORIAL DEMONSTRATION (FADINHA SIMULA TRAJETÓRIA DO PRIMEIRO SALTO) ---
+    if (phase3TutorialActive) {
+      phase3TutorialProgress += 0.010; // ~2.5s de demonstração suave e clara
+      const p0 = phase3Platforms[0];
+      const startX = baby.x - 20;
+      const startY = baby.y - 20;
+      const endX = p0.x + p0.w / 2;
+      const endY = p0.y - 30;
+
+      // Trajetória em arco parabólico suave da fada voando até a primeira plataforma
+      const t = Math.min(1.0, phase3TutorialProgress);
+      const arcHeight = 110;
+      fairy.x = startX + (endX - startX) * t;
+      fairy.y = startY + (endY - startY) * t - Math.sin(t * Math.PI) * arcHeight;
+      fairy.flutterPhase += 0.45;
+
+      if (tick % 2 === 0) {
+        spawnFairyFlightDust(fairy.x, fairy.y, -1.6, -0.3);
+      }
+      if (tick % 4 === 0) {
+        spawnFairySparkles(fairy.x, fairy.y, 2);
+      }
+
+      // Câmera enquadra a demonstração com suavidade
+      const tutorialCam = (baby.x * (1 - t * 0.7) + fairy.x * (t * 0.7)) - (canvas.width > 600 ? canvas.width * 0.45 : canvas.width * 0.4);
+      cameraX += (tutorialCam - cameraX) * 0.08;
+
+      updateFairyParticles();
+      updateBabyJumpDust();
+
+      if (phase3TutorialProgress >= 1.0) {
+        // Demonstração finalizada: libera controles e inicia a corrida no chão livre
+        phase3TutorialActive = false;
+        baby.controlsLocked = false;
+        const stats = getPhase3Stats(0);
+        baby.vx = stats.runVx;
+        uiFeedback.innerText = '⚡ Corra para a esquerda e salte na primeira plataforma!';
+        uiFeedback.style.color = '#fde047';
+        audio.playLevelUpChime(0);
+      }
+      return;
+    }
 
     // --- CUTSCENE SEQUENCER ---
     if (cutsceneActive) {
@@ -2671,8 +4939,8 @@ export function createGame(canvas, uiFeedback) {
         fairy.y += fairy.vy;
         fairy.flutterPhase += 0.35;
 
-        if (tick % 3 === 0) {
-          spawnFairySparkles(fairy.x, fairy.y, 1);
+        if (tick % 2 === 0) {
+          spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
         }
         if (cutsceneTimer > 450) {
           advanceCutscene();
@@ -2691,24 +4959,85 @@ export function createGame(canvas, uiFeedback) {
         fairy.y += fairy.vy;
 
         if (tick % 2 === 0) {
-          spawnFairySparkles(fairy.x, fairy.y, 2);
+          spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
         }
         if (cutsceneTimer > 420) {
           finishCutscene();
         }
       }
 
-      // Update fairy particles during cutscene
-      for (let i = fairy.particles.length - 1; i >= 0; i--) {
-        const p = fairy.particles[i];
-        p.x += p.vx;
-        p.y += p.vy;
-        p.life -= p.decay;
-        if (p.life <= 0) {
-          fairy.particles.splice(i, 1);
-        }
+      // Update particles during cutscene
+      updateFairyParticles();
+      updateBabyJumpDust();
+
+      return;
+    }
+
+    // --- TRUE PORTAL TOY ROOM TRANSITION SEQUENCER ---
+    if (truePortalTransitionActive) {
+      truePortalTransitionTimer += dt;
+
+      // Rigid lock on baby side-scroller jump input and physics
+      baby.controlsLocked = true;
+      baby.vy = 0;
+      baby.onGround = true;
+      baby.facing = -1;
+
+      // Baby walks steadily toward the portal doorway
+      const targetBabyX = trueExitDoor.x + 24;
+      if (baby.x > targetBabyX) {
+        baby.x -= 1.4 * dt;
+        baby.walkCycle = (baby.walkCycle || 0) + 0.2 * dt;
+      } else {
+        baby.walkCycle = 0;
       }
 
+      // Smooth camera pan centering on the grand portal opening
+      const targetCamX = trueExitDoor.x - canvas.width * 0.36;
+      cameraX += (targetCamX - cameraX) * 0.08 * dt;
+
+      // Open the ornate portal doors
+      if (trueDoorOpenAngle < 1.0) {
+        trueDoorOpenAngle = Math.min(1.0, trueDoorOpenAngle + 0.018 * dt);
+      }
+
+      // Fairy flutters in front of the door, then flies inside happily
+      if (truePortalTransitionTimer < 65) {
+        const fairyTargetX = trueExitDoor.x + 46;
+        const fairyTargetY = trueExitDoor.y + 40;
+        fairy.x += (fairyTargetX - fairy.x) * 0.1 * dt;
+        fairy.y += (fairyTargetY - fairy.y) * 0.1 * dt;
+        uiFeedback.innerText = '✨ O Verdadeiro Portal dos Sonhos se abriu!';
+        uiFeedback.style.color = '#fde047';
+      } else {
+        const fairyTargetX = trueExitDoor.x - 35;
+        const fairyTargetY = trueExitDoor.y + 25;
+        fairy.x += (fairyTargetX - fairy.x) * 0.1 * dt;
+        fairy.y += (fairyTargetY - fairy.y) * 0.1 * dt;
+        uiFeedback.innerText = '✨ Entrando na Sala de Brinquedos...';
+        uiFeedback.style.color = '#a7f3d0';
+      }
+      fairy.flutterPhase += 0.5 * dt;
+
+      if (tick % 2 === 0) {
+        spawnFairySparkles(fairy.x, fairy.y, 2);
+        spawnFairyFlightDust(fairy.x, fairy.y, -1.2, 0);
+      }
+
+      // Golden light iris wipe expands across screen
+      if (truePortalTransitionTimer > 60) {
+        transitionWipeAlpha = Math.min(1.0, transitionWipeAlpha + 0.02 * dt);
+      }
+
+      // Transition complete: launch the Toy Room top-down phase
+      if (truePortalTransitionTimer >= 125) {
+        truePortalTransitionActive = false;
+        startToyRoomPhase();
+        return;
+      }
+
+      updateFairyParticles();
+      updateBabyJumpDust();
       return;
     }
 
@@ -2717,13 +5046,39 @@ export function createGame(canvas, uiFeedback) {
     cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
 
     // Baby physics
-    baby.x += baby.vx;
-    baby.animTime += 0.15;
-    baby.vy += baby.gravity;
-    baby.y += baby.vy;
+    baby.x += baby.vx * dt;
+    baby.animTime += 0.15 * dt;
+    baby.vy += baby.gravity * dt;
+    baby.y += baby.vy * dt;
 
-    // Spawn long jump speed ribbons scaling with escape level
-    if (isEscapeMode && !baby.onGround) {
+    // Subtle magic dust trail behind the little girl during jumps
+    if (!baby.onGround) {
+      if (tick % 2 === 0) {
+        spawnBabyJumpDust(baby.x, baby.y, baby.w, baby.h, baby.vx, baby.vy);
+      }
+    }
+
+    // Spawn speed ribbons scaling with escape level or Phase 3 level
+    if (isPhase3 && !baby.onGround) {
+      const ribbonRate = phase3Level >= 10 ? 1 : 2;
+      if (tick % ribbonRate === 0) {
+        const stats = getPhase3Stats(phase3Level);
+        const palette = ['#c084fc', '#f472b6', '#38bdf8', '#facc15', '#34d399'];
+        const chosenColor = palette[Math.floor(Math.random() * Math.min(palette.length, 2 + Math.floor(phase3Level / 4)))];
+        for (let s = 0; s < stats.trailIntensity; s++) {
+          speedRibbons.push({
+            x: baby.x + baby.w + Math.random() * 8,
+            y: baby.y + baby.h - 6 + (Math.random() - 0.5) * 6,
+            vx: Math.abs(baby.vx) * (0.35 + Math.random() * 0.25),
+            vy: (Math.random() - 0.5) * 1.5,
+            size: 3.5 + Math.random() * (3 + phase3Level * 0.35),
+            color: chosenColor,
+            life: 1.0,
+            decay: 0.038
+          });
+        }
+      }
+    } else if (isEscapeMode && !baby.onGround) {
       const ribbonRate = escapeLevel >= 8 ? 1 : 2;
       if (tick % ribbonRate === 0) {
         const stats = getEscapeStats(escapeLevel);
@@ -2749,22 +5104,40 @@ export function createGame(canvas, uiFeedback) {
     fairy.flutterPhase += 0.35;
 
     // Target scouting calculation
-    const nextIndex = baby.currentPlatformIndex + 1;
     let targetX, targetY;
 
-    if (nextIndex < platforms.length) {
-      const nextPlat = platforms[nextIndex];
-      const isCloseToNext = (baby.x > nextPlat.x - 120);
-      if (isCloseToNext) {
-        targetX = nextPlat.x + 35;
-        targetY = nextPlat.y - 45;
+    if (isPhase3) {
+      const nextIndex = baby.currentPlatformIndex + 1;
+      if (nextIndex < phase3Platforms.length) {
+        const nextPlat = phase3Platforms[nextIndex];
+        const isCloseToNext = (baby.x < nextPlat.x + nextPlat.w + 120);
+        if (isCloseToNext) {
+          targetX = nextPlat.x + nextPlat.w / 2;
+          targetY = nextPlat.y - 45;
+        } else {
+          targetX = baby.x - 75;
+          targetY = baby.y - 50;
+        }
       } else {
-        targetX = baby.x + (isEscapeMode ? 80 : 65);
-        targetY = baby.y - 50;
+        targetX = trueExitDoor.x + 40;
+        targetY = trueExitDoor.y + 45;
       }
     } else {
-      targetX = exitDoor.x + 30;
-      targetY = exitDoor.y + 40;
+      const nextIndex = baby.currentPlatformIndex + 1;
+      if (nextIndex < platforms.length) {
+        const nextPlat = platforms[nextIndex];
+        const isCloseToNext = (baby.x > nextPlat.x - 120);
+        if (isCloseToNext) {
+          targetX = nextPlat.x + 35;
+          targetY = nextPlat.y - 45;
+        } else {
+          targetX = baby.x + (isEscapeMode ? 80 : 65);
+          targetY = baby.y - 50;
+        }
+      } else {
+        targetX = exitDoor.x + 30;
+        targetY = exitDoor.y + 40;
+      }
     }
 
     // Erratic micro-darts simulating insect / sprite curiosity
@@ -2796,24 +5169,23 @@ export function createGame(canvas, uiFeedback) {
     fairy.x += fairy.vx;
     fairy.y += fairy.vy;
 
+    // Fairy flight dust trail that floats and swirls behind her
     if (tick % 2 === 0) {
-      spawnFairySparkles(fairy.x, fairy.y, 1);
+      spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
+    }
+    if (Math.hypot(fairy.vx, fairy.vy) > 2.2 && tick % 2 === 1) {
+      spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
     }
 
-    for (let i = fairy.particles.length - 1; i >= 0; i--) {
-      const p = fairy.particles[i];
-      p.x += p.vx;
-      p.y += p.vy;
-      p.life -= p.decay;
-      if (p.life <= 0) {
-        fairy.particles.splice(i, 1);
-      }
-    }
+    updateFairyParticles();
+    updateBabyJumpDust();
 
     // --- PLATFORM COLLISION & LANDING ---
+    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
+    const wasInAir = !baby.onGround;
     let landedIdx = -1;
-    for (let i = 0; i < platforms.length; i++) {
-      const p = platforms[i];
+    for (let i = 0; i < activePlatforms.length; i++) {
+      const p = activePlatforms[i];
       if (
         baby.x + baby.w > p.x &&
         baby.x < p.x + p.w &&
@@ -2827,13 +5199,55 @@ export function createGame(canvas, uiFeedback) {
     }
 
     if (landedIdx !== -1) {
-      baby.y = platforms[landedIdx].y - baby.h;
+      const landedPlat = activePlatforms[landedIdx];
+      landedPlat.isLanded = true;
+      baby.y = activePlatforms[landedIdx].y - baby.h;
       baby.vy = 0;
       baby.onGround = true;
+      baby.respawnLandingPending = false;
       baby.currentPlatformIndex = landedIdx;
 
-      // Re-establish horizontal speed upon landing and update progressive stats
-      if (baby.isEscaping) {
+      if (wasInAir) {
+        spawnBabyLandingPuff(baby.x + baby.w / 2, baby.y + baby.h);
+      }
+
+      if (isPhase3) {
+        // Phase 3 progressive difficulty evolution across 15 platforms
+        const newLevel = Math.min(14, Math.max(0, landedIdx));
+        if (newLevel > phase3Level) {
+          phase3Level = newLevel;
+          const stats = getPhase3Stats(phase3Level);
+          targetScrollSpeed = stats.scrollSpeed;
+          baby.vx = stats.runVx;
+          audio.playLevelUpChime(phase3Level);
+          spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 14 + phase3Level * 2);
+
+          if (phase3Level === 14) {
+            uiFeedback.innerText = '⭐ TERRAÇO DO CASTELO ALCANÇADO! O Verdadeiro Portal está à vista!';
+            uiFeedback.style.color = '#fde047';
+            escapeBannerTimer = 180;
+            escapeBannerText = '⭐ SUBIDA FINAL (NÍVEL 15/15): O VERDADEIRO PORTAL!';
+          } else if (phase3Level >= 10) {
+            uiFeedback.innerText = `🌪️ Plataformas Instáveis (Nível ${phase3Level + 1}/15): Alta precisão necessária!`;
+            uiFeedback.style.color = '#f472b6';
+          } else if (phase3Level >= 5) {
+            uiFeedback.innerText = `⚡ Escalada Acelerando (Nível ${phase3Level + 1}/15): Ritmo e saltos aumentando!`;
+            uiFeedback.style.color = '#c084fc';
+          } else {
+            uiFeedback.innerText = `Subida Caótica (Nível ${phase3Level + 1}/15): Saltando pelos brinquedos!`;
+            uiFeedback.style.color = '#fef08a';
+          }
+        } else {
+          const stats = getPhase3Stats(phase3Level);
+          baby.vx = stats.runVx;
+          targetScrollSpeed = stats.scrollSpeed;
+        }
+
+        if (landedIdx === 15) {
+          spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 28);
+        }
+      } else if (baby.isEscaping) {
+        // Re-establish horizontal speed upon landing and update progressive stats
         if (landedIdx >= 9) {
           const newLevel = Math.min(11, Math.max(0, landedIdx - 9));
           if (newLevel > escapeLevel) {
@@ -2861,73 +5275,131 @@ export function createGame(canvas, uiFeedback) {
         }
       }
 
-      if (landedIdx === 0) {
+      if (!isPhase3 && landedIdx === 0) {
         firstPlatformCleared = true;
       }
 
       // Cutscene Trigger: Topo do Castelo de Blocos (Plataforma 9)
-      if (landedIdx === 9 && !cutsceneTriggered) {
+      if (!isPhase3 && landedIdx === 9 && !cutsceneTriggered) {
         startCastleCutscene();
         return;
       }
 
       // Climax celebration when landing on the 12th escape platform (grand portal pedestal)
-      if (landedIdx === 21) {
+      if (!isPhase3 && landedIdx === 21) {
         spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 24);
       }
     } else if (baby.y + baby.h >= FLOOR_Y) {
       if (baby.currentPlatformIndex >= 0) {
-        resetToStart(true);
+        triggerGameOver();
         return;
       }
 
       baby.y = FLOOR_Y - baby.h;
       baby.vy = 0;
       baby.onGround = true;
+      baby.respawnLandingPending = false;
       baby.currentPlatformIndex = -1;
+
+      // Ground running speed in Phase 3
+      if (isPhase3 && !baby.controlsLocked) {
+        const stats = getPhase3Stats(phase3Level);
+        baby.vx = stats.runVx;
+      }
+
+      if (wasInAir) {
+        spawnBabyLandingPuff(baby.x + baby.w / 2, baby.y + baby.h);
+      }
     } else {
       baby.onGround = false;
     }
 
     // Check if walked past first platform without jumping
-    const firstPlatform = platforms[0];
-    if (!firstPlatformCleared && baby.x > firstPlatform.x + firstPlatform.w) {
-      resetToStart(true);
-      return;
-    }
-
-    if (baby.y > FLOOR_Y + 90) {
-      resetToStart(true);
-      return;
-    }
-
-    // Check victory condition at Exit Door
-    if (baby.x >= exitDoor.x + 12) {
-      gameWon = true;
-      uiFeedback.innerText = 'A porta mágica se abriu! Toque para sonhar novamente.';
-      uiFeedback.style.color = '#fef08a';
-      audio.initAudio();
-    }
-
-    // Screen movement & Camera tracking
-    if (isEscapeMode) {
-      // Screen autoscrolls forward with gradual progression
-      currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.05;
-      cameraX += currentScrollSpeed;
-      const targetCamX = baby.x - 170;
-      if (targetCamX > cameraX) {
-        cameraX += (targetCamX - cameraX) * 0.09;
-      }
-
-      // If player lags too far behind the moving screen, reset to castle checkpoint
-      if (baby.x < cameraX - 25) {
-        resetToStart(true);
+    if (!isPhase3) {
+      const firstPlatform = platforms[0];
+      if (!firstPlatformCleared && baby.x > firstPlatform.x + firstPlatform.w) {
+        triggerGameOver();
         return;
       }
     } else {
-      let targetCamX = baby.x - 180;
+      // In Phase 3: Menina se deslocando para a esquerda no chão.
+      // A regra de falha/reset só é acionada caso o jogador ultrapasse a primeira plataforma depois que ela for devidamente alcançada sem subir nela.
+      const p0 = phase3Platforms[0];
+      if (baby.currentPlatformIndex < 0 && baby.onGround && baby.x + baby.w < p0.x - 20) {
+        triggerGameOver();
+        return;
+      }
+    }
+
+    if (baby.y > FLOOR_Y + 90) {
+      triggerGameOver();
+      return;
+    }
+
+    // Check victory condition or Plot Twist trigger
+    if (isPhase3) {
+      if (baby.x <= trueExitDoor.x + 55 && !truePortalTransitionActive) {
+        startTruePortalTransition();
+        return;
+      }
+    } else {
+      // Reaching the exit door in Phase 1 / Phase 2: triggers Plot Twist!
+      if (baby.x >= exitDoor.x - 10 && !plotTwistTriggered) {
+        startPlotTwistCutscene();
+        return;
+      }
+    }
+
+    // Screen movement & Camera tracking
+    if (isPhase3) {
+      // Leftward autoscroll: targetScrollSpeed is negative (e.g. -1.8 to -4.4)
+      currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.05 * dt;
+      cameraX += currentScrollSpeed * dt;
+      const targetCamX = baby.x - (canvas.width > 600 ? canvas.width - 250 : canvas.width - 160);
+      cameraX += (targetCamX - cameraX) * 0.08 * dt;
+
+      // If player lags too far behind to the right of the moving screen, trigger Game Over
+      if (baby.x > cameraX + canvas.width + 50) {
+        triggerGameOver();
+        return;
+      }
+    } else if (isEscapeMode) {
+      // Screen autoscrolls forward with gradual progression
+      currentScrollSpeed += (targetScrollSpeed - currentScrollSpeed) * 0.05 * dt;
+      cameraX += currentScrollSpeed * dt;
+      const targetCamX = baby.x - (canvas.width > 600 ? 170 : 120);
+      if (targetCamX > cameraX) {
+        cameraX += (targetCamX - cameraX) * 0.09 * dt;
+      }
+
+      // If player lags too far behind the moving screen, trigger Game Over
+      if (baby.x < cameraX - 25) {
+        triggerGameOver();
+        return;
+      }
+    } else {
+      let targetCamX = baby.x - (canvas.width > 600 ? 180 : 120);
       if (targetCamX < 0) targetCamX = 0;
       cameraX += (targetCamX - cameraX) * 0.08;
+    }
+
+    // Vertical camera tracking with dynamic headroom (keeps baby safely framed in illuminated area)
+    const minCeilingHeadroom = isPortrait ? 130 : 90;
+    let baseFloorCamY = 0;
+    if (isPortrait && canvas.height > FLOOR_Y + 90) {
+      baseFloorCamY = FLOOR_Y - (canvas.height - 110);
+    }
+
+    // Dynamic vertical tracking: if baby jumps or reaches high platforms, camera smoothly ascends
+    const babyApexTargetY = baby.y - minCeilingHeadroom;
+    targetCameraY = Math.min(baseFloorCamY, babyApexTargetY);
+    cameraY += (targetCameraY - cameraY) * 0.12;
+
+    // Hard visual ceiling clamp: guarantees the character sprite NEVER leaves the illuminated viewport
+    const ceilingClampY = cameraY + 44;
+    if (baby.y < ceilingClampY) {
+      baby.y = ceilingClampY;
+      if (baby.vy < 0) baby.vy = 0;
     }
   }
 
@@ -2939,26 +5411,73 @@ export function createGame(canvas, uiFeedback) {
     // Cinematic camera zoom during cutscene
     if (cameraZoom !== 1.0) {
       const focusX = (baby.x + fairy.x) / 2 - cameraX;
-      const focusY = (baby.y + fairy.y) / 2;
+      const focusY = (baby.y + fairy.y) / 2 - cameraY;
       ctx.translate(focusX, focusY);
       ctx.scale(cameraZoom, cameraZoom);
       ctx.translate(-focusX, -focusY);
     }
+    ctx.translate(0, -cameraY);
 
     drawBackgroundWall(cameraX);
     drawSceneryItems(cameraX);
     drawPlatforms(cameraX);
     drawExitDoor(cameraX);
+    if (isPhase3) {
+      drawTrueExitDoor(cameraX);
+      drawTutorialArrow(cameraX);
+    }
     drawSpeedRibbons(cameraX);
+    drawBabyJumpDust(cameraX);
     drawFairy(cameraX);
     drawBabyManaStyle(cameraX);
-    applyDarkAtmosphereWithLights(cameraX);
+    applyDarkAtmosphereWithLights(cameraX, cameraY);
 
     ctx.restore();
 
     // UI overlays rendered in crisp screen coordinates
     drawEscapeBanner();
     drawCutsceneDialogue();
+
+    // True portal transition iris wipe (golden light envelope into Toy Room)
+    if (transitionWipeAlpha > 0) {
+      ctx.save();
+      const originX = trueExitDoor.x + trueExitDoor.w / 2 - cameraX;
+      const originY = trueExitDoor.y + trueExitDoor.h / 2 - cameraY;
+      const maxDist = Math.hypot(canvas.width, canvas.height);
+      const radius = maxDist * Math.min(1.0, transitionWipeAlpha * 1.25);
+
+      const wipeGrad = ctx.createRadialGradient(originX, originY, 0, originX, originY, Math.max(1, radius));
+      wipeGrad.addColorStop(0, 'rgba(255, 255, 255, 1)');
+      wipeGrad.addColorStop(0.35, 'rgba(254, 240, 138, 0.98)');
+      wipeGrad.addColorStop(0.75, 'rgba(251, 191, 36, 0.95)');
+      wipeGrad.addColorStop(0.95, 'rgba(217, 119, 6, 0.9)');
+      wipeGrad.addColorStop(1, 'rgba(217, 119, 6, 0)');
+
+      ctx.fillStyle = wipeGrad;
+      ctx.beginPath();
+      ctx.arc(originX, originY, radius, 0, Math.PI * 2);
+      ctx.fill();
+
+      if (transitionWipeAlpha > 0.6) {
+        const fullAlpha = (transitionWipeAlpha - 0.6) / 0.4;
+        ctx.fillStyle = `rgba(255, 250, 230, ${fullAlpha})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+      }
+
+      // Floating celebratory ascension sparkles
+      const pCount = 20;
+      for (let i = 0; i < pCount; i++) {
+        const angle = (i / pCount) * Math.PI * 2 + tick * 0.05;
+        const dist = (radius * 0.42) + Math.sin(tick * 0.1 + i) * 25;
+        const px = originX + Math.cos(angle) * dist;
+        const py = originY + Math.sin(angle) * dist;
+        ctx.fillStyle = i % 2 === 0 ? '#ffffff' : '#fef08a';
+        ctx.beginPath();
+        ctx.arc(px, py, 2.5 + (i % 3), 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.restore();
+    }
 
     if (gameWon) {
       ctx.save();
@@ -2968,29 +5487,77 @@ export function createGame(canvas, uiFeedback) {
       ctx.fillStyle = '#db2777';
       ctx.font = 'bold 30px Palatino, Georgia, serif';
       ctx.textAlign = 'center';
-      ctx.fillText('A SAÍDA DOS SONHOS FOI ALCANÇADA!', canvas.width / 2, canvas.height / 2 - 25);
+      ctx.fillText('O VERDADEIRO PORTAL DOS SONHOS FOI ALCANÇADO!', canvas.width / 2, canvas.height / 2 - 25);
 
       ctx.fillStyle = '#26242c';
       ctx.font = '17px Palatino, Georgia, serif';
-      ctx.fillText('A menininha e a fada superaram o grande abismo e atravessaram o portal!', canvas.width / 2, canvas.height / 2 + 18);
-      ctx.fillText('Toque na tela para brincar de novo.', canvas.width / 2, canvas.height / 2 + 56);
+      ctx.fillText('A menininha e a fada venceram a grande bagunça e atravessaram para o mundo dos sonhos!', canvas.width / 2, canvas.height / 2 + 18);
+      ctx.fillText('Toque na tela para brincar novamente desde o começo.', canvas.width / 2, canvas.height / 2 + 56);
       ctx.restore();
     }
   }
 
-  function loop() {
-    update();
+  function loop(currentTime = performance.now()) {
+    const elapsed = currentTime - lastTime;
+    lastTime = currentTime;
+
+    // Strict delta time clamp:
+    // Limit delta time ratio between 0.5 and 1.2 to prevent delta time spikes from pause/reload/lag
+    const rawDt = elapsed / STEP_MS;
+    const dt = Math.max(0.5, Math.min(1.2, isNaN(rawDt) || rawDt <= 0 ? 1.0 : rawDt));
+
+    // Zero-latency gamepad input polling (Xbox Controller Button X) aligned with game loop
+    if (inputHandler && typeof inputHandler.pollGamepad === 'function') {
+      inputHandler.pollGamepad();
+    }
+
+    if (currentPhaseMode === 'toy-room' && toyRoomInstance) {
+      toyRoomInstance.update(dt);
+      toyRoomInstance.render();
+      requestAnimationFrame(loop);
+      return;
+    }
+
+    update(dt);
     render();
     requestAnimationFrame(loop);
   }
 
-  bindInput({ doJump });
+  const inputHandler = bindInput({
+    doJump,
+    isGrounded: () => Boolean(baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
+    isCutsceneActive: () => Boolean(cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
+    isGameOver: () => isGameOver,
+    isToyRoomMode: () => currentPhaseMode === 'toy-room',
+    setLastInputDevice
+  });
+
+  // Initial draw so the canvas renders the scene behind the title screen
+  render();
 
   return {
     start() {
-      loop();
+      gameStarted = true;
+      startStandbyPreparation();
+      if (currentPhaseMode === 'toy-room') {
+        audio.startToyRoomMusic();
+      } else {
+        audio.startMusic();
+      }
+      if (!loopStarted) {
+        loopStarted = true;
+        requestAnimationFrame(loop);
+      }
     },
     doJump,
-    resetToStart
+    isGrounded: () => Boolean(baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
+    isCutsceneActive: () => Boolean(cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
+    setLastInputDevice,
+    resetToStart,
+    retry: retryGame,
+    restartToTitle,
+    isGameOver: () => isGameOver,
+    startToyRoomPhase,
+    isToyRoomMode: () => currentPhaseMode === 'toy-room'
   };
 }

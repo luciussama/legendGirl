@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>O Quarto dos Brinquedos - Mana Style</title>
+  <title>O Quarto dos Brinquedos</title>
   <meta name="description" content="Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia." />
-  <meta property="og:title" content="O Quarto dos Brinquedos - Mana Style" />
+  <meta property="og:title" content="O Quarto dos Brinquedos" />
   <meta property="og:description" content="Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia." />
   <link rel="stylesheet" href="src/css/styles.css" />
 </head>
@@ -18,7 +18,20 @@
       </div>
     </div>
 
-    <div id="ui-feedback">Toque na tela para dar um pulinho e seguir a fadinha</div>
+    <!-- Game Over Screen -->
+    <div id="gameover-overlay" class="hidden" aria-label="Tela de Game Over">
+      <div class="gameover-card">
+        <span class="gameover-badge">✦ QUARTO ESCURO ✦</span>
+        <h2 class="gameover-title">Você não conseguiu sair do quarto.</h2>
+        <p class="gameover-sub">A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.</p>
+        <div class="gameover-buttons">
+          <button id="btn-retry" class="gameover-btn btn-primary" type="button">Tentar de novo</button>
+          <button id="btn-restart" class="gameover-btn btn-secondary" type="button">Reiniciar</button>
+        </div>
+      </div>
+    </div>
+
+    <div id="ui-feedback" class="hidden" style="display: none !important;" aria-hidden="true"></div>
     <canvas id="gameCanvas" width="960" height="540"></canvas>
   </div>
 

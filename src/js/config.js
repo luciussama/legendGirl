@@ -30,7 +30,9 @@ export function createBabyState() {
 
 export const CUTSCENE_DIALOGUE = {
   step1: "O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo isso?",
-  step2: "Claro que fomos nós duas brincando! *risos*. Mas não vamos mais perder tempo. A saída é logo ali."
+  step2: "Claro que fomos nós duas brincando! *risos*. Mas não vamos mais perder tempo. A saída é logo ali.",
+  plotTwistBaby: "Mas ali não era a porta...?",
+  plotTwistFairy: "Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!"
 };
 
 /**
@@ -44,12 +46,31 @@ export function getEscapeStats(level) {
   const t = lvl / 11; // 0.0 to 1.0
   return {
     levelIndex: lvl,
-    jumpPower: -7.30 - t * 2.45,       // -7.30 to -9.75
-    airVx: 2.10 + t * 2.90,           // 2.10 to 5.00 px/frame
+    jumpPower: -7.20 - t * 2.10,       // -7.20 to -9.30 px/frame (controlled vertical apex)
+    airVx: 2.10 + t * 3.10,           // 2.10 to 5.20 px/frame
     runVx: 1.65 + t * 1.10,           // 1.65 to 2.75 px/frame
     scrollSpeed: 1.50 + t * 2.25,     // 1.50 to 3.75 px/frame
     pitchMult: 1.0 + t * 0.55,        // 1.0x to 1.55x audio pitch
     trailIntensity: 1 + Math.floor(t * 3) // 1 to 4 particles per burst
+  };
+}
+
+/**
+ * Progressive stats for the 15-platform chaotic climb sequence (Fase 3).
+ * Moves from Right to Left (airVx and runVx and scrollSpeed are NEGATIVE).
+ * level: 0 to 14 (15 platforms)
+ */
+export function getPhase3Stats(level) {
+  const lvl = Math.max(0, Math.min(14, Math.floor(level)));
+  const t = lvl / 14; // 0.0 to 1.0
+  return {
+    levelIndex: lvl,
+    jumpPower: -7.40 - t * 2.20,       // -7.40 to -9.60 px/frame (smooth, elegant arc without ceiling escape)
+    airVx: -(2.60 + t * 4.60),         // -2.60 to -7.20 px/frame (responsive horizontal leap)
+    runVx: -(1.90 + t * 1.60),         // -1.90 to -3.50 px/frame
+    scrollSpeed: -(1.80 + t * 2.40),   // -1.80 to -4.20 px/frame
+    pitchMult: 1.0 + t * 0.65,
+    trailIntensity: 1 + Math.floor(t * 4)
   };
 }
 
@@ -121,7 +142,77 @@ export const exitDoor = {
   h: 120
 };
 
+// ==========================================
+// FASE 3: A SUBIDA CAÓTICA (DIREITA PARA A ESQUERDA)
+// Exatamente 15 plataformas até a nova porta no topo
+// ==========================================
+export const phase3Platforms = [
+  // PLATAFORMAS INICIAIS (1 A 5):
+  // Zona segura com grande buffer de chão plano antes da primeira plataforma (x = 4040, baby surge em 4640).
+  // Saltos seguros, apoios largos e tolerância generosa para assimilação do sentido e controle do pulo.
+  // 1/15 (Início da escalada nos brinquedos caídos)
+  { x: 4040, y: 420, w: 130, h: 50, style: 'toppled_blocks', label: '1/15 Pilha de Blocos Tombada' },
+  // 2/15 (gap 72px, alcance perfeito com nível 0)
+  { x: 3848, y: 402, w: 120, h: 68, style: 'floppy_ragdoll', label: '2/15 Boneca de Pano Desconjuntada' },
+  // 3/15 (gap 95px, alcance seguro com nível 1)
+  { x: 3638, y: 384, w: 115, h: 86, style: 'spilled_crayons_box', label: '3/15 Caixa de Giz de Cera Aberta' },
+  // 4/15 (gap 118px, alcance seguro com nível 2)
+  { x: 3410, y: 366, w: 110, h: 104, style: 'crooked_fairytales', label: '4/15 Pilha Torta de Contos de Fada' },
+  // 5/15 (gap 145px, alcance seguro com nível 3)
+  { x: 3160, y: 348, w: 105, h: 122, style: 'dented_drum', label: '5/15 Tamborzinho Amassado' },
+
+  // PLATAFORMAS INTERMEDIÁRIAS (6 A 10):
+  // Exigência moderada de timing e espaçamento dinâmico, sem exigir o limite exato do pulo.
+  // 6/15 (gap 170px, transição fluida com nível 4)
+  { x: 2892, y: 330, w: 98, h: 140, style: 'slumped_bear', label: '6/15 Urso de Pelúcia Desmoronado' },
+  // 7/15 (gap 200px, ritmo intermediário com nível 5)
+  { x: 2602, y: 313, w: 90, h: 157, style: 'tilted_xylophone', label: '7/15 Xilofone Colorido Inclinado' },
+  // 8/15 (gap 230px, ritmo firme com nível 6)
+  { x: 2288, y: 296, w: 84, h: 174, style: 'derailed_train', label: '8/15 Locomotiva Descarrilada' },
+  // 9/15 (gap 260px, ritmo acelerado com nível 7)
+  { x: 1950, y: 279, w: 78, h: 191, style: 'wobbly_card_house', label: '9/15 Castelo de Cartas Bamboleante' },
+  // 10/15 (gap 290px, ritmo empolgante com nível 8)
+  { x: 1586, y: 263, w: 74, h: 207, style: 'leaning_music_box', label: '10/15 Caixa de Música Desregulada' },
+
+  // PLATAFORMAS FINAIS (11 A 15):
+  // Desafiadoras com margem de erro reduzida (exigindo o limite do alcance), rigorosamente testadas pela física da parábola.
+  // 11/15 (gap 324px, alta velocidade com nível 9)
+  { x: 1192, y: 247, w: 70, h: 223, style: 'loose_robot', label: '11/15 Robô de Lata Desparafusado' },
+  // 12/15 (gap 355px, timing refinado com nível 10)
+  { x: 772, y: 231, w: 65, h: 239, style: 'spinning_top', label: '12/15 Pião de Madeira Rodopiante' },
+  // 13/15 (gap 390px, salto largo com nível 11)
+  { x: 322, y: 216, w: 60, h: 254, style: 'floating_spool', label: '13/15 Carretel com Fita Flutuante' },
+  // 14/15 (gap 425px, limiar de precisão com nível 12)
+  { x: -159, y: 201, w: 56, h: 269, style: 'unbalanced_mobile', label: '14/15 Móbile Desequilibrado' },
+  // 15/15 (gap 460px, o grande salto culminante com nível 13)
+  { x: -669, y: 187, w: 50, h: 283, style: 'levitating_grimoire', label: '15/15 Livro de Feitiços no Vácuo (O Grande Salto!)' },
+
+  // Plataforma do Portal Definitivo (onde repousa a Verdadeira Porta) (gap 480px, pouso triunfante no terraço)
+  { x: -1419, y: 144, w: 270, h: 326, style: 'true_portal_balcony', label: 'O Verdadeiro Portal dos Sonhos' }
+];
+
+export const trueExitDoor = {
+  x: -1334,
+  y: 144 - 120,
+  w: 92,
+  h: 120
+};
+
 export const roomScenery = [
+  // Ala esquerda caótica (Fase 3)
+  { x: -1700, type: 'striped_rug' },
+  { x: -1550, type: 'open_story_book' },
+  { x: -1400, type: 'spilled_marbles' },
+  { x: -1250, type: 'retro_robot' },
+  { x: -1100, type: 'toy_soldier' },
+  { x: -950, type: 'fluffy_rug' },
+  { x: -800, type: 'cardboard_box_floor' },
+  { x: -650, type: 'wooden_horse' },
+  { x: -500, type: 'spilled_crayons' },
+  { x: -350, type: 'toy_car' },
+  { x: -200, type: 'striped_socks' },
+  { x: -50, type: 'fluffy_rug' },
+  // Ala central e direita (Fases 1 e 2)
   { x: 90, type: 'fluffy_rug' },
   { x: 130, type: 'dropped_sweater' },
   { x: 170, type: 'spilled_crayons' },
