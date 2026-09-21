@@ -14,7 +14,7 @@ export class GameState {
     this.uiFeedback = uiFeedback;
     this.callbacks = callbacks;
 
-    // Initialize all default state variables
+    // Inicializa todas as variáveis padrão de estado
     Object.assign(this, createDefaultStateVariables());
   }
 
@@ -113,7 +113,7 @@ export class GameState {
     this.baby.respawnLandingPending = false;
     this.baby.animTime = 0;
 
-    // Position fairy hovering right above the baby emitting comforting light
+    // Posiciona a fadinha flutuando logo acima da menininha, emitindo luz reconfortante
     const fairyOffsetX = this.baby.facing === -1 ? -18 : 18;
     this.fairy.x = this.baby.x + fairyOffsetX;
     this.fairy.y = this.baby.y - 75;
@@ -140,7 +140,7 @@ export class GameState {
     this.standbyStandUpProgress = 0;
     this.standbyDialogueAlpha = 1.0;
 
-    // Diegetic gesture of encouragement: graceful pirouette and sparkle burst
+    // Gesto diegético de encorajamento: pirueta graciosa e explosão de brilhos
     this.fairy.spinAnim = 3.2;
     this.fairy.vy = -2.8;
     this.spawnFairySparkles(this.fairy.x, this.fairy.y, 22);
@@ -152,29 +152,29 @@ export class GameState {
   resetBabyPhysicsBody(targetX, targetY, facing = 1) {
     this.baby.x = targetX;
     this.baby.y = targetY;
-    // 1. Rigid zeroing of linear velocity and external forces
+    // 1. Zeração rígida de velocidade linear e forças externas
     this.baby.vx = 0;
     this.baby.vy = 0;
     this.baby.facing = facing;
     this.baby.isShocked = false;
     this.baby.isLyingDown = false;
-    // 2. Physics Grounded state must ONLY be validated once the collision solver confirms floor/platform contact
+    // 2. O estado de apoio no chão (onGround) SÓ deve ser validado após o solucionador de colisão confirmar contato com piso/plataforma
     this.baby.onGround = false;
     this.baby.respawnLandingPending = true;
     this.baby.controlsLocked = false;
-    // Clear impulse buffers and active motion ribbons
+    // Limpa buffers de impulso e fitas de movimento ativas
     this.speedRibbons.length = 0;
     this.babyJumpDust.length = 0;
-    // 3. Grace cooldown (240ms) preventing input buffering or click bleedthrough into a jump
+    // 3. Tempo de tolerância (240ms) prevenindo acúmulo de entrada de pulo ou clique acidental no renascimento
     this.lastJumpTime = performance.now() + 240;
-    // 4. Reset delta time clock to strictly eliminate any delta time spikes
+    // 4. Reinicia o relógio de delta time para eliminar picos de frame rate
     this.lastTime = performance.now();
   }
 
   triggerGameOver(audio) {
     if (this.isGameOver) return;
     this.isGameOver = true;
-    // Immediately stop runaway velocity on death
+    // Interrompe imediatamente qualquer velocidade de queda na derrota
     this.baby.vx = 0;
     this.baby.vy = 0;
     this.baby.onGround = false;
@@ -391,7 +391,7 @@ export class GameState {
     this.truePortalTransitionTimer = 0;
     this.trueDoorOpenAngle = 0;
     this.transitionWipeAlpha = 0;
-    // Immediately lock side-scroller jump input
+    // Bloqueia imediatamente as entradas de pulo no modo de rolagem lateral
     this.baby.controlsLocked = true;
     this.baby.vx = -1.2;
     this.baby.vy = 0;
@@ -409,7 +409,7 @@ export class GameState {
 
   resetToStart(failedMidClimb = false, shouldPlayFailSound = true, audio) {
     if (audio) audio.clearActiveSounds();
-    // Reset lighting on all platforms so they return to penumbra state
+    // Redefine a iluminação em todas as plataformas para retornarem ao estado de penumbra
     platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
     phase3Platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
 

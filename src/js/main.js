@@ -20,6 +20,7 @@ const uiFeedback = document.getElementById('ui-feedback') || {
   style: {}
 };
 const startOverlay = document.getElementById('start-overlay');
+const btnSkipPhase2 = document.getElementById('btn-skip-phase2');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
 const btnRestart = document.getElementById('btn-restart');
@@ -67,7 +68,7 @@ let lastActionTime = 0;
 
 const game = createGame(canvas, uiFeedback, {
   onGameOver: () => {
-    // Re-enable buttons and display overlay cleanly
+    // Reativa os botões e exibe a tela de sobreposição de forma limpa
     isActionLocked = false;
     if (btnRetry) btnRetry.disabled = false;
     if (btnRestart) btnRestart.disabled = false;
@@ -128,7 +129,7 @@ function handleRetry(event) {
   isActionLocked = true;
   lastActionTime = now;
 
-  // Immediately disable buttons to prevent spamming
+  // Desativa imediatamente os botões para evitar cliques repetidos acidentais
   if (btnRetry) btnRetry.disabled = true;
   if (btnRestart) btnRestart.disabled = true;
 
@@ -158,7 +159,7 @@ function handleRestart(event) {
   isActionLocked = true;
   lastActionTime = now;
 
-  // Immediately disable buttons to prevent spamming
+  // Desativa imediatamente os botões para evitar cliques repetidos acidentais
   if (btnRetry) btnRetry.disabled = true;
   if (btnRestart) btnRestart.disabled = true;
 
@@ -175,7 +176,7 @@ function handleRestart(event) {
   }, 450);
 }
 
-// Helper to bind events safely across pointerdown and click without duplicate invocations
+// Utilitário para vincular eventos de forma segura entre pointerdown e click sem disparos duplicados
 function addSafeAction(element, handler) {
   if (!element) return;
   let lastEventTime = 0;
@@ -225,8 +226,19 @@ function handleToyRoomSwitch(event) {
   }, 450);
 }
 
+if (btnSkipPhase2) {
+  addSafeAction(btnSkipPhase2, (e) => {
+    handleToyRoomSwitch(e);
+  });
+}
+
 if (startOverlay) {
-  addSafeAction(startOverlay, startGame);
+  addSafeAction(startOverlay, (e) => {
+    if (e && e.target && e.target.closest('#btn-skip-phase2')) {
+      return;
+    }
+    startGame(e);
+  });
 }
 
 if (btnRetry) {
@@ -238,12 +250,12 @@ if (btnRestart) {
 }
 
 window.addEventListener('keydown', (event) => {
-  // Prevent key repeat spam
+  // Evita disparo contínuo por repetição de tecla pressionada
   if (event.repeat) {
     return;
   }
 
-  // Quick switch shortcut to test Toy Room directly
+  // Atalho de troca rápida para testar a Sala de Brinquedos diretamente
   if (event.code === 'KeyT' || event.code === 'Digit4') {
     handleToyRoomSwitch(event);
     return;
@@ -265,7 +277,7 @@ window.addEventListener('keydown', (event) => {
   }
 });
 
-// Gamepad navigation for Start / Game Over screens (Xbox Button X and Button A)
+// Navegação via Gamepad para telas de Início e Fim de Jogo (Botão X e Botão A do controle Xbox)
 let prevOverlayButtonX = false;
 let prevOverlayButtonA = false;
 
@@ -305,4 +317,8 @@ function pollOverlayGamepad() {
 }
 
 setInterval(pollOverlayGamepad, 80);
+
+if (typeof window !== 'undefined') {
+  window.game = game;
+}
 

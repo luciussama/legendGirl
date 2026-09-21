@@ -1,15 +1,15 @@
 /**
  * HudRenderer.js
- * Renders high-resolution screen-space HUD components:
- * - Escape Mode & Phase 3 urgency badges with jump progress bars
- * - Level-up announcements and powerup banners
- * - Dynamic wind streak speed lines scaling with scroll velocity
- * - Screen-edge danger gradients warning when player lags behind
+ * Renderiza componentes de HUD de alta resolução no espaço de tela:
+ * - Indicadores de urgência do Modo Fuga e Fase 3 com barra de evolução do pulo
+ * - Banners de aumento de nível e melhorias
+ * - Linhas dinâmicas de vento e velocidade proporcionais à velocidade da rolagem
+ * - Gradientes de perigo nas bordas da tela alertando quando o jogador fica para trás
  */
 
 export class HudRenderer {
   /**
-   * Renders the Escape Mode and Phase 3 HUD banners and speed lines
+   * Renderiza os banners de HUD e linhas de velocidade do Modo Fuga e Fase 3
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {object} state
@@ -29,7 +29,7 @@ export class HudRenderer {
     const tick = state.tick || 0;
 
     ctx.save();
-    // Top right urgency badge with progressive jump meter
+    // Emblema de urgência no canto superior direito com medidor progressivo de pulo
     const badgeW = 270;
     const badgeH = 42;
     const badgeX = canvas.width - badgeW - 16;
@@ -52,7 +52,7 @@ export class HudRenderer {
       ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14, badgeY + 18);
     }
 
-    // Mini progress bar for jump evolution
+    // Mini barra de progresso para a evolução do pulo
     const pBarX = badgeX + 14;
     const pBarY = badgeY + 25;
     const pBarW = badgeW - 28;
@@ -76,7 +76,7 @@ export class HudRenderer {
     ctx.fillStyle = barGrad;
     ctx.fillRect(pBarX, pBarY, progFill, pBarH);
 
-    // Initial / Level-up powerup banner
+    // Banner de inicialização / subida de nível
     if (state.escapeBannerTimer > 0) {
       state.escapeBannerTimer--;
       const alpha = Math.min(1.0, state.escapeBannerTimer / 30);
@@ -89,7 +89,7 @@ export class HudRenderer {
       ctx.fillText(escapeBannerText, canvas.width / 2, 99);
     }
 
-    // Dynamic wind speed streaks across screen scaling with scroll speed
+    // Linhas dinâmicas de vento na tela proporcionais à velocidade de rolagem
     const intensityFactor = isPhase3 ? (phase3Level / 14) : (escapeLevel / 11);
     ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.min(0.18, intensityFactor * 0.14)})`;
     ctx.lineWidth = 1.4 + intensityFactor * 0.9;
@@ -101,7 +101,7 @@ export class HudRenderer {
       const streakLen = 60 + Math.abs(currentScrollSpeed) * 18;
       ctx.beginPath();
       if (isPhase3) {
-        // Streaks moving towards right as camera moves left
+        // Linhas se movendo para a direita à medida que a câmera se desloca para a esquerda
         ctx.moveTo(sx, sy);
         ctx.lineTo(sx + streakLen, sy);
       } else {
@@ -112,7 +112,7 @@ export class HudRenderer {
     }
 
     if (isPhase3) {
-      // In Phase 3: player moving left, camera moving left. If player lags behind to the right:
+      // Na Fase 3: jogadora se move para a esquerda, câmera para a esquerda. Se ficar para trás à direita:
       const distToRight = (cameraX + canvas.width) - (baby.x || 0);
       if (distToRight < 170) {
         const danger = (170 - distToRight) / 170;
@@ -123,7 +123,7 @@ export class HudRenderer {
         ctx.fillRect(canvas.width - 130, 0, 130, canvas.height);
       }
     } else {
-      // In Phase 2: Warning left-edge night shadow if baby is lagging behind the accelerated camera
+      // Na Fase 2: Alerta sombrio na borda esquerda se o bebê estiver ficando para trás da câmera acelerada
       const distToLeft = (baby.x || 0) - cameraX;
       if (distToLeft < 170) {
         const danger = (170 - distToLeft) / 170;

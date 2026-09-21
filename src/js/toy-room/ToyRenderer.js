@@ -1,16 +1,16 @@
 /**
  * ToyRenderer.js
- * Renders individual handcrafted interactive toys in Legend of Mana aesthetic:
- * - Teddy bear, wooden locomotive, turquoise retro robot, pastel bunny, royal rubber duck,
- *   rainbow blocks, enchanted marching drum, jester Jack-in-the-box.
- * - Interactive golden pulse auras and bouncing "▼ PEGAR" pointer glyphs.
+ * Renderiza brinquedos interativos individuais no estilo estético de Legend of Mana:
+ * - Ursinho de pelúcia, locomotiva de madeira, robô retro turquesa, coelhinho pastel, patinho real de borracha,
+ *   torre de blocos coloridos, tamborzinho encantado, palhacinho na caixa de surpresa.
+ * - Auras de pulso dourado interativas e indicadores visuais "▼ PEGAR".
  */
 
 export class ToyRenderer {
   /**
-   * Renders an individual toy item
+   * Renderiza um brinquedo individual
    * @param {CanvasRenderingContext2D} ctx
-   * @param {object} t Toy data object
+   * @param {object} t Objeto de dados do brinquedo
    * @param {number} playerX
    * @param {number} playerY
    * @param {boolean} isCarrying
@@ -23,11 +23,11 @@ export class ToyRenderer {
     const tx = t.x;
     const ty = t.y;
 
-    // Check distance to player for interactive highlight glow
+    // Verifica a distância até a jogadora para exibir o brilho de destaque interativo
     const distToPlayer = Math.hypot(playerX - tx, playerY - ty);
-    const isTargeted = !isCarrying && distToPlayer < 55;
+    const isTargeted = !isCarrying && distToPlayer < 88;
 
-    // Soft drop shadow if on floor
+    // Sombra suave no chão se o brinquedo não estiver sendo carregado
     if (!t.isCarried) {
       ctx.fillStyle = 'rgba(100, 45, 10, 0.3)';
       ctx.beginPath();
@@ -35,7 +35,7 @@ export class ToyRenderer {
       ctx.fill();
     }
 
-    // Interactive Golden Pulse Aura & Bouncing Indicator Glyph
+    // Aura interativa dourada pulsante e indicador flutuante
     if (isTargeted) {
       const pulse = Math.sin(time * 0.008) * 4;
       ctx.strokeStyle = '#facc15';
@@ -44,7 +44,7 @@ export class ToyRenderer {
       ctx.arc(tx, ty, 30 + pulse, 0, Math.PI * 2);
       ctx.stroke();
 
-      // Bouncing "▼ PEGAR" Pointer
+      // Indicador flutuante "▼ PEGAR"
       const bounceY = ty - 42 + Math.sin(time * 0.01) * 4;
       ctx.fillStyle = '#1e1b4b';
       ctx.fillRect(tx - 32, bounceY - 14, 64, 20);
@@ -58,9 +58,9 @@ export class ToyRenderer {
       ctx.fillText('▼ PEGAR', tx, bounceY);
     }
 
-    // Draw individual toy artwork
+    // Desenho artístico de cada brinquedo
     if (t.type === 'teddy') {
-      // Ursinho Felpudo (Teddy Bear)
+      // Ursinho Felpudo
       ctx.fillStyle = '#b45309';
       ctx.beginPath();
       ctx.arc(tx - 14, ty - 16, 8, 0, Math.PI * 2);
@@ -95,7 +95,7 @@ export class ToyRenderer {
       ctx.closePath();
       ctx.fill();
     } else if (t.type === 'train') {
-      // Wooden Train Locomotive
+      // Locomotiva de Trem de Madeira
       ctx.fillStyle = '#2563eb';
       ctx.fillRect(tx - 20, ty - 14, 20, 26);
       ctx.fillStyle = '#dc2626';
@@ -110,7 +110,7 @@ export class ToyRenderer {
       ctx.arc(tx + 10, ty + 14, 7, 0, Math.PI * 2);
       ctx.fill();
     } else if (t.type === 'robot') {
-      // Retro Star Robot Faísca
+      // Robô Retrô Faísca
       ctx.fillStyle = '#06b6d4';
       ctx.fillRect(tx - 14, ty - 18, 28, 24);
 
@@ -131,7 +131,7 @@ export class ToyRenderer {
       ctx.arc(tx, ty + 16, 5, 0, Math.PI * 2);
       ctx.fill();
     } else if (t.type === 'bunny') {
-      // Plush Bunny
+      // Coelhinho de Pelúcia
       ctx.fillStyle = '#fbcfe8';
       ctx.beginPath();
       ctx.ellipse(tx - 8, ty - 24, 6, 16, -0.2, 0, Math.PI * 2);
@@ -153,7 +153,7 @@ export class ToyRenderer {
       ctx.arc(tx, ty - 4, 2.5, 0, Math.PI * 2);
       ctx.fill();
     } else if (t.type === 'duck') {
-      // Royal Rubber Duck
+      // Patinho Real de Borracha
       ctx.fillStyle = '#facc15';
       ctx.beginPath();
       ctx.arc(tx, ty - 6, 14, 0, Math.PI * 2);
@@ -175,7 +175,7 @@ export class ToyRenderer {
       ctx.closePath();
       ctx.fill();
     } else if (t.type === 'blocks') {
-      // Rainbow Block Stack
+      // Torre de Blocos Coloridos
       ctx.fillStyle = '#ef4444';
       ctx.fillRect(tx - 16, ty + 8, 32, 14);
       ctx.fillStyle = '#facc15';
@@ -190,7 +190,7 @@ export class ToyRenderer {
       ctx.closePath();
       ctx.fill();
     } else if (t.type === 'drum') {
-      // Enchanted Toy Drum
+      // Tamborzinho Encantado
       ctx.fillStyle = '#ef4444';
       ctx.beginPath();
       ctx.ellipse(tx, ty + 8, 18, 8, 0, 0, Math.PI * 2);
@@ -211,7 +211,7 @@ export class ToyRenderer {
       ctx.lineTo(tx + 14, ty + 8);
       ctx.stroke();
     } else if (t.type === 'jack') {
-      // Jack-in-the-Box
+      // Palhacinho na Caixa de Surpresa
       ctx.fillStyle = '#8b5cf6';
       ctx.fillRect(tx - 14, ty + 2, 28, 24);
 

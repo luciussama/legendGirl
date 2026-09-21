@@ -14,11 +14,14 @@
     <div id="start-overlay" aria-label="Tela de início">
       <div class="start-card">
         <span class="start-badge">O Quarto dos Brinquedos</span>
-        <h1>Toque aqui para jogar</h1>
+        <h1 id="start-title">Toque aqui para jogar</h1>
+        <button id="btn-skip-phase2" class="start-skip-btn" type="button" aria-label="Pular para a segunda fase">
+          ⚡ Pular para a segunda fase
+        </button>
       </div>
     </div>
 
-    <!-- Game Over Screen -->
+    <!-- Tela de Fim de Jogo (Game Over) -->
     <div id="gameover-overlay" class="hidden" aria-label="Tela de Game Over">
       <div class="gameover-card">
         <span class="gameover-badge">✦ QUARTO ESCURO ✦</span>
@@ -33,7 +36,7 @@
 
     <div id="ui-feedback" class="hidden" style="display: none !important;" aria-hidden="true"></div>
 
-    <!-- Sound Mute/Unmute Toggle -->
+    <!-- Botão de Alternância de Som (Mudo / Ativado) -->
     <button id="btn-sound-toggle" class="sound-toggle-btn" type="button" aria-label="Alternar som" title="Mudo / Ativar Som (M)">
       <span id="sound-icon" class="sound-icon">🔊</span>
     </button>

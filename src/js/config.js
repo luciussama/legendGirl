@@ -36,39 +36,39 @@ export const CUTSCENE_DIALOGUE = {
 };
 
 /**
- * Progressive stats for the 12-platform escape sequence.
- * level: 0 to 11
- * Level 0 is when standing at Castle (platform 9), leaping to 1/12.
- * Level 11 is when standing at Wardrobe Ledge (platform 20), leaping to the Grand Portal (platform 21).
+ * Atributos progressivos para a sequência de fuga com 12 plataformas (Fase 2).
+ * nível: 0 a 11
+ * Nível 0 ocorre ao estar sobre o Castelo (plataforma 9), saltando para a plataforma 1/12.
+ * Nível 11 ocorre na borda do Guarda-Roupa (plataforma 20), saltando para o Grande Portal (plataforma 21).
  */
 export function getEscapeStats(level) {
   const lvl = Math.max(0, Math.min(11, Math.floor(level)));
-  const t = lvl / 11; // 0.0 to 1.0
+  const t = lvl / 11; // 0.0 a 1.0
   return {
     levelIndex: lvl,
-    jumpPower: -7.20 - t * 2.10,       // -7.20 to -9.30 px/frame (controlled vertical apex)
-    airVx: 2.10 + t * 3.10,           // 2.10 to 5.20 px/frame
-    runVx: 1.65 + t * 1.10,           // 1.65 to 2.75 px/frame
-    scrollSpeed: 1.50 + t * 2.25,     // 1.50 to 3.75 px/frame
-    pitchMult: 1.0 + t * 0.55,        // 1.0x to 1.55x audio pitch
-    trailIntensity: 1 + Math.floor(t * 3) // 1 to 4 particles per burst
+    jumpPower: -7.20 - t * 2.10,       // -7.20 a -9.30 px/frame (ápice vertical controlado)
+    airVx: 2.10 + t * 3.10,           // 2.10 a 5.20 px/frame
+    runVx: 1.65 + t * 1.10,           // 1.65 a 2.75 px/frame
+    scrollSpeed: 1.50 + t * 2.25,     // 1.50 a 3.75 px/frame
+    pitchMult: 1.0 + t * 0.55,        // multiplicador de tom sonoro de 1.0x a 1.55x
+    trailIntensity: 1 + Math.floor(t * 3) // 1 a 4 partículas por emissão
   };
 }
 
 /**
- * Progressive stats for the 15-platform chaotic climb sequence (Fase 3).
- * Moves from Right to Left (airVx and runVx and scrollSpeed are NEGATIVE).
- * level: 0 to 14 (15 platforms)
+ * Atributos progressivos para a sequência de subida caótica com 15 plataformas (Fase 3).
+ * Movimento da Direita para a Esquerda (airVx, runVx e scrollSpeed são NEGATIVOS).
+ * nível: 0 a 14 (15 plataformas)
  */
 export function getPhase3Stats(level) {
   const lvl = Math.max(0, Math.min(14, Math.floor(level)));
-  const t = lvl / 14; // 0.0 to 1.0
+  const t = lvl / 14; // 0.0 a 1.0
   return {
     levelIndex: lvl,
-    jumpPower: -7.40 - t * 2.20,       // -7.40 to -9.60 px/frame (smooth, elegant arc without ceiling escape)
-    airVx: -(2.60 + t * 4.60),         // -2.60 to -7.20 px/frame (responsive horizontal leap)
-    runVx: -(1.90 + t * 1.60),         // -1.90 to -3.50 px/frame
-    scrollSpeed: -(1.80 + t * 2.40),   // -1.80 to -4.20 px/frame
+    jumpPower: -7.40 - t * 2.20,       // -7.40 a -9.60 px/frame (arco suave e elegante sem ultrapassar o teto)
+    airVx: -(2.60 + t * 4.60),         // -2.60 a -7.20 px/frame (salto horizontal responsivo)
+    runVx: -(1.90 + t * 1.60),         // -1.90 a -3.50 px/frame
+    scrollSpeed: -(1.80 + t * 2.40),   // -1.80 a -4.20 px/frame
     pitchMult: 1.0 + t * 0.65,
     trailIntensity: 1 + Math.floor(t * 4)
   };

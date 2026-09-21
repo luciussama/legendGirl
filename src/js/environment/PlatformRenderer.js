@@ -1,7 +1,7 @@
 /**
  * PlatformRenderer.js
- * Renders the 20+ uniquely styled interactive platforms, the exit door (fake poster/drawing),
- * the celestial True Exit Door (Phase 3 dream portal), and the Phase 3 tutorial guide arrow.
+ * Renderiza as 20+ plataformas interativas de estilo único, a porta de saída (pôster falso/desenho),
+ * o celestial Verdadeiro Portal de Saída (portal dos sonhos da Fase 3) e a seta guia tutorial da Fase 3.
  */
 
 import {
@@ -18,7 +18,7 @@ export class PlatformRenderer {
   }
 
   /**
-   * Renders platforms according to their individual theme styles
+   * Renderiza plataformas de acordo com seus estilos visuais temáticos individuais
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} camX
@@ -53,7 +53,7 @@ export class PlatformRenderer {
           ctx.roundRect(sx, p.y, p.w, p.h + 20, [30, 30, 8, 8]);
           ctx.fill();
 
-          // Felt ear with cross-stitches on left
+          // Orelha de feltro com pontos cruzados à esquerda
           ctx.fillStyle = '#92400e';
           ctx.beginPath();
           ctx.arc(sx + 18, p.y - 6, 16, 0, Math.PI * 2);
@@ -69,7 +69,7 @@ export class PlatformRenderer {
           ctx.moveTo(sx + 22, p.y - 9); ctx.lineTo(sx + 14, p.y - 3);
           ctx.stroke();
 
-          // Felt ear on right
+          // Orelha de feltro à direita
           ctx.fillStyle = '#92400e';
           ctx.beginPath();
           ctx.arc(sx + p.w - 18, p.y - 6, 16, 0, Math.PI * 2);
@@ -79,7 +79,7 @@ export class PlatformRenderer {
           ctx.arc(sx + p.w - 18, p.y - 6, 9, 0, Math.PI * 2);
           ctx.fill();
 
-          // Big black button eye visible on side
+          // Olho de botão preto visível na lateral
           ctx.fillStyle = '#18181b';
           ctx.beginPath();
           ctx.arc(sx + 35, p.y + 22, 6, 0, Math.PI * 2);
@@ -89,7 +89,7 @@ export class PlatformRenderer {
           ctx.arc(sx + 33, p.y + 20, 2, 0, Math.PI * 2);
           ctx.fill();
 
-          // Soft embroidered muzzle
+          // Focinho bordado macio
           ctx.fillStyle = '#fef3c7';
           ctx.beginPath();
           ctx.ellipse(sx + p.w / 2, p.y + 36, 22, 14, 0, 0, Math.PI * 2);
@@ -99,7 +99,7 @@ export class PlatformRenderer {
           ctx.arc(sx + p.w / 2, p.y + 32, 5, 0, Math.PI * 2);
           ctx.fill();
 
-          // Red satin ribbon bow
+          // Laço de fita de cetim vermelho
           ctx.fillStyle = '#dc2626';
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y + p.h + 8, 8, 0, Math.PI * 2);
@@ -109,30 +109,30 @@ export class PlatformRenderer {
 
         case 'open_books': {
           // 2. Pilha de Livros Ilustrados
-          // Book 1 (bottom green book)
+          // Livro 1 (livro verde inferior)
           ctx.fillStyle = '#065f46';
           ctx.fillRect(sx - 4, p.y + 36, p.w + 8, p.h - 36);
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx - 2, p.y + 38, 5, p.h - 40);
 
-          // Book 2 (middle crimson leather book)
+          // Livro 2 (livro intermediário de couro carmesim)
           ctx.fillStyle = '#991b1b';
           ctx.fillRect(sx + 4, p.y + 18, p.w - 2, 20);
           ctx.fillStyle = '#fef9c3';
           ctx.fillRect(sx + 6, p.y + 20, p.w - 12, 16);
           ctx.fillStyle = '#7f1d1d';
-          ctx.fillRect(sx + 2, p.y + 18, 8, 20); // spine
+          ctx.fillRect(sx + 2, p.y + 18, 8, 20); // lombada
 
-          // Book 3 (top sapphire fairy tale book)
+          // Livro 3 (livro de contos de fadas safira superior)
           ctx.fillStyle = '#1e40af';
           ctx.beginPath();
           ctx.roundRect(sx, p.y, p.w, 18, [4, 4, 0, 0]);
           ctx.fill();
-          // Gold foil title & stars on cover
+          // Título em folha dourada e estrelas na capa
           ctx.fillStyle = '#facc15';
           ctx.font = 'bold 9px Georgia, serif';
           ctx.fillText('✦ CONTOS DE NINAR ✦', sx + 8, p.y + 12);
-          // Silk bookmark ribbon hanging down
+          // Fita marcadora de seda pendurada
           ctx.fillStyle = '#e11d48';
           ctx.fillRect(sx + p.w - 24, p.y + 16, 6, 24);
           break;
@@ -140,13 +140,13 @@ export class PlatformRenderer {
 
         case 'vanity_table': {
           // 3. Penteadeira com Espelho Encantado
-          // Wooden carved table base
+          // Base de madeira entalhada da mesa
           ctx.fillStyle = '#581c87';
           ctx.fillRect(sx, p.y + 20, p.w, p.h - 20);
           ctx.fillStyle = '#6b21a8';
           ctx.fillRect(sx - 4, p.y + 12, p.w + 8, 10);
 
-          // Ornate Oval Mirror standing up at the back
+          // Espelho oval trabalhado erguido ao fundo
           ctx.fillStyle = '#e9d5ff';
           ctx.strokeStyle = '#c084fc';
           ctx.lineWidth = 3;
@@ -155,7 +155,7 @@ export class PlatformRenderer {
           ctx.fill();
           ctx.stroke();
 
-          // Magical reflection inside mirror
+          // Reflexo mágico dentro do espelho
           const mirrorGrad = ctx.createLinearGradient(sx + 20, p.y - 40, sx + p.w - 20, p.y + 10);
           mirrorGrad.addColorStop(0, 'rgba(192, 132, 252, 0.4)');
           mirrorGrad.addColorStop(0.5, 'rgba(255, 255, 255, 0.85)');
@@ -165,13 +165,13 @@ export class PlatformRenderer {
           ctx.ellipse(sx + p.w / 2, p.y - 14, 24, 28, 0, 0, Math.PI * 2);
           ctx.fill();
 
-          // Little perfume bottles on table top
+          // Pequenos frascos de perfume sobre o tampo da mesa
           ctx.fillStyle = '#ec4899';
           ctx.fillRect(sx + 8, p.y + 2, 7, 10);
           ctx.fillStyle = '#06b6d4';
           ctx.fillRect(sx + p.w - 16, p.y + 2, 8, 10);
 
-          // Pearl necklace draped over drawer
+          // Colar de pérolas pendurado sobre a gaveta
           ctx.fillStyle = '#f8fafc';
           for (let b = 0; b < 7; b++) {
             ctx.beginPath();
@@ -189,7 +189,7 @@ export class PlatformRenderer {
           ctx.lineWidth = 2;
           ctx.strokeRect(sx, p.y + 10, p.w, p.h - 10);
 
-          // Cardboard flaps open forming the top walking surface
+          // Abas da caixa de papelão abertas formando a superfície de apoio
           ctx.fillStyle = '#b45309';
           ctx.beginPath();
           ctx.moveTo(sx - 8, p.y);
@@ -201,14 +201,14 @@ export class PlatformRenderer {
           ctx.fill();
           ctx.stroke();
 
-          // "FRÁGIL" tape and stickers
+          // Fita "FRÁGIL" e adesivos
           ctx.fillStyle = '#fee2e2';
           ctx.fillRect(sx + 14, p.y + 28, 42, 14);
           ctx.fillStyle = '#dc2626';
           ctx.font = 'bold 8px sans-serif';
           ctx.fillText('FRÁGIL ⬆', sx + 18, p.y + 38);
 
-          // Plush bear arm peeking out
+          // Bracinho de ursinho de pelúcia espiando
           ctx.fillStyle = '#78350f';
           ctx.beginPath();
           ctx.ellipse(sx + p.w - 18, p.y + 6, 9, 5, -0.4, 0, Math.PI * 2);
@@ -218,11 +218,11 @@ export class PlatformRenderer {
 
         case 'messy_blocks': {
           // 5. Pilha Desordenada de Blocos ABC
-          // Jumbled stack of giant wooden toy blocks
+          // Pilha empilhada de grandes blocos de madeira
           const bW = 36;
           const bH = 34;
 
-          // Block 1: Red 'A'
+          // Bloco 1: Vermelho 'A'
           ctx.fillStyle = '#ef4444';
           ctx.fillRect(sx + 4, p.y + 24, bW, bH);
           ctx.strokeStyle = '#b91c1c';
@@ -232,7 +232,7 @@ export class PlatformRenderer {
           ctx.font = 'bold 16px sans-serif';
           ctx.fillText('A', sx + 14, p.y + 48);
 
-          // Block 2: Blue 'B'
+          // Bloco 2: Azul 'B'
           ctx.fillStyle = '#3b82f6';
           ctx.fillRect(sx + 42, p.y + 28, bW, bH);
           ctx.strokeStyle = '#1d4ed8';
@@ -240,7 +240,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#ffffff';
           ctx.fillText('B', sx + 52, p.y + 52);
 
-          // Block 3: Yellow 'C'
+          // Bloco 3: Amarelo 'C'
           ctx.fillStyle = '#eab308';
           ctx.fillRect(sx + 80, p.y + 24, bW - 4, bH);
           ctx.strokeStyle = '#a16207';
@@ -248,7 +248,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#1e1b4b';
           ctx.fillText('C', sx + 88, p.y + 48);
 
-          // Top walking platform block
+          // Bloco superior de plataforma de apoio
           ctx.fillStyle = '#10b981';
           ctx.fillRect(sx + 16, p.y, p.w - 32, 24);
           ctx.strokeStyle = '#047857';
@@ -261,11 +261,11 @@ export class PlatformRenderer {
 
         case 'toy_drum': {
           // 6. Tamborito de Marcha
-          // Drum body
+          // Corpo do tambor
           ctx.fillStyle = '#b91c1c';
           ctx.fillRect(sx, p.y + 14, p.w, p.h - 14);
 
-          // Zigzag tension cords
+          // Cordas de tensão em zigue-zague
           ctx.strokeStyle = '#fef08a';
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -274,17 +274,17 @@ export class PlatformRenderer {
           }
           ctx.stroke();
 
-          // Brass bottom rim
+          // Aro inferior de latão
           ctx.fillStyle = '#f59e0b';
           ctx.fillRect(sx - 2, p.y + p.h - 12, p.w + 4, 10);
 
-          // Top white drumhead (landing surface)
+          // Pele superior branca do tambor (superfície de pouso)
           ctx.fillStyle = '#f8fafc';
           ctx.fillRect(sx, p.y + 4, p.w, 10);
           ctx.fillStyle = '#f59e0b';
           ctx.fillRect(sx - 4, p.y, p.w + 8, 6);
 
-          // Crossed wooden drumsticks
+          // Baquetas de madeira cruzadas
           ctx.strokeStyle = '#78350f';
           ctx.lineWidth = 2.5;
           ctx.beginPath();
@@ -296,7 +296,7 @@ export class PlatformRenderer {
 
         case 'satin_cushion': {
           // 7. Almofadão de Veludo com Borlas
-          // Plush tufted velvet cushion
+          // Almofadão fofo de veludo capitonê
           const cushGrad = ctx.createRadialGradient(
             sx + p.w / 2, p.y + 16, 12,
             sx + p.w / 2, p.y + 16, p.w / 2
@@ -309,14 +309,14 @@ export class PlatformRenderer {
           ctx.roundRect(sx, p.y, p.w, p.h, 16);
           ctx.fill();
 
-          // Golden tufted buttons
+          // Botões dourados de capitonê
           ctx.fillStyle = '#facc15';
           const btnX = [sx + 24, sx + p.w / 2, sx + p.w - 24];
           btnX.forEach(bx => {
             ctx.beginPath();
             ctx.arc(bx, p.y + 18, 3.5, 0, Math.PI * 2);
             ctx.fill();
-            // Creases radiating from button
+            // Rugas e dobras irradiando a partir do botão
             ctx.strokeStyle = 'rgba(74, 4, 78, 0.4)';
             ctx.lineWidth = 1.2;
             ctx.beginPath();
@@ -325,7 +325,7 @@ export class PlatformRenderer {
             ctx.stroke();
           });
 
-          // Gold corner tassels
+          // Borlas douradas nos cantos
           ctx.fillStyle = '#facc15';
           ctx.beginPath();
           ctx.arc(sx + 4, p.y + 4, 4, 0, Math.PI * 2);
@@ -336,11 +336,11 @@ export class PlatformRenderer {
 
         case 'stepped_dresser': {
           // 8. Gavetas da Cômoda como Degraus
-          // Dresser frame
+          // Estrutura da cômoda
           ctx.fillStyle = '#451a03';
           ctx.fillRect(sx, p.y, p.w, p.h);
 
-          // Top open drawer (highest step)
+          // Gaveta superior aberta (degrau mais alto)
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx - 6, p.y, p.w + 12, 18);
           ctx.fillStyle = '#facc15';
@@ -348,10 +348,10 @@ export class PlatformRenderer {
           ctx.arc(sx + p.w / 2, p.y + 9, 3, 0, Math.PI * 2);
           ctx.fill();
 
-          // Second drawer pulled out forward
+          // Segunda gaveta puxada para a frente
           ctx.fillStyle = '#5f2709';
           ctx.fillRect(sx + 8, p.y + 24, p.w - 8, 22);
-          // Colorful socks hanging from drawer
+          // Meias coloridas penduradas na gaveta
           ctx.fillStyle = '#06b6d4';
           ctx.fillRect(sx + 22, p.y + 36, 12, 14);
           ctx.fillStyle = '#f43f5e';
@@ -361,23 +361,23 @@ export class PlatformRenderer {
 
         case 'music_box': {
           // 9. Caixa de Música da Bailarina
-          // Mahogany box
+          // Caixa de mogno
           ctx.fillStyle = '#422006';
           ctx.fillRect(sx, p.y + 16, p.w, p.h - 16);
           ctx.strokeStyle = '#78350f';
           ctx.lineWidth = 2;
           ctx.strokeRect(sx, p.y + 16, p.w, p.h - 16);
 
-          // Golden musical clef & notes carved on front
+          // Clave de sol dourada e notas musicais entalhadas na frente
           ctx.fillStyle = '#facc15';
           ctx.font = '14px sans-serif';
           ctx.fillText('♫ 𝄞 ♬', sx + p.w / 2 - 20, p.y + 44);
 
-          // Top brass platform
+          // Plataforma superior de latão
           ctx.fillStyle = '#d97706';
           ctx.fillRect(sx - 2, p.y + 8, p.w + 4, 8);
 
-          // Rotating gold key on the side
+          // Chave dourada de corda giratória na lateral
           const keyAngle = tick * 0.05;
           ctx.save();
           ctx.translate(sx - 8, p.y + 32);
@@ -390,14 +390,14 @@ export class PlatformRenderer {
           ctx.stroke();
           ctx.restore();
 
-          // Spinning miniature porcelain ballerina
+          // Bailarina de porcelana em miniatura rodopiando
           const bPhase = Math.sin(tick * 0.08);
           ctx.fillStyle = '#fce7f3';
           ctx.beginPath();
-          // Tutu
+          // Tutu da bailarina
           ctx.ellipse(sx + p.w / 2, p.y + 2, 12 * Math.abs(bPhase) + 4, 5, 0, 0, Math.PI * 2);
           ctx.fill();
-          // Ballerina torso & head
+          // Tronco e cabeça da bailarina
           ctx.fillStyle = '#fdf2f8';
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y - 10, 4, 0, Math.PI * 2);
@@ -410,21 +410,21 @@ export class PlatformRenderer {
           ctx.fillStyle = '#475569';
           ctx.fillRect(sx, p.y + 12, p.w, p.h - 12);
 
-          // Turret battlements along top
+          // Ameias da torre ao longo do topo
           ctx.fillStyle = '#334155';
           const crenWidth = 14;
           for (let cx = 0; cx < p.w; cx += crenWidth * 2) {
             ctx.fillRect(sx + cx, p.y, crenWidth, 14);
           }
 
-          // Arched doorway
+          // Porta em arco
           ctx.fillStyle = '#0f172a';
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y + p.h - 16, 12, Math.PI, 0);
           ctx.rect(sx + p.w / 2 - 12, p.y + p.h - 16, 24, 16);
           ctx.fill();
 
-          // Waving blue banner flag
+          // Estandarte azul ondulando
           ctx.fillStyle = '#0284c7';
           const flagWave = Math.sin(tick * 0.08) * 3;
           ctx.beginPath();
@@ -443,27 +443,27 @@ export class PlatformRenderer {
 
         case 'train_trestle': {
           // 11. Pista Elevada do Trenzinho
-          // Wooden railway trestle bents
+          // Pilares de cavalete de madeira da ferrovia
           ctx.strokeStyle = '#78350f';
           ctx.lineWidth = 3;
           ctx.beginPath();
           ctx.moveTo(sx + 16, p.y + 12); ctx.lineTo(sx + 16, p.y + p.h);
           ctx.moveTo(sx + p.w - 16, p.y + 12); ctx.lineTo(sx + p.w - 16, p.y + p.h);
-          // Diagonal cross braces
+          // Travessas diagonais cruzadas
           ctx.moveTo(sx + 16, p.y + 20); ctx.lineTo(sx + p.w - 16, p.y + 50);
           ctx.moveTo(sx + p.w - 16, p.y + 20); ctx.lineTo(sx + 16, p.y + 50);
           ctx.stroke();
 
-          // Wooden rails & ties
+          // Dormentes de madeira
           ctx.fillStyle = '#92400e';
           for (let rx = 0; rx < p.w; rx += 14) {
             ctx.fillRect(sx + rx, p.y + 4, 10, 8);
           }
-          // Steel track rails
+          // Trilhos de aço
           ctx.fillStyle = '#cbd5e1';
           ctx.fillRect(sx, p.y, p.w, 4);
 
-          // Parked colorful toy locomotive
+          // Locomotiva de brinquedo colorida estacionada
           ctx.fillStyle = '#dc2626';
           ctx.fillRect(sx + p.w / 2 - 14, p.y - 14, 28, 14);
           ctx.fillStyle = '#facc15';
@@ -473,13 +473,13 @@ export class PlatformRenderer {
 
         case 'wall_shelf': {
           // 12. Prateleira de Brinquedos da Parede
-          // Heavy pine shelf
+          // Prateleira robusta de pinho
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx, p.y, p.w, 14);
           ctx.fillStyle = '#92400e';
           ctx.fillRect(sx, p.y + 14, p.w, p.h - 14);
 
-          // Wrought iron scrollwork brackets
+          // Suportes decorativos de ferro forjado
           ctx.strokeStyle = '#18181b';
           ctx.lineWidth = 2.5;
           ctx.beginPath();
@@ -489,8 +489,8 @@ export class PlatformRenderer {
           ctx.quadraticCurveTo(sx + p.w - 24, p.y + 36, sx + p.w - 14, p.y + 50);
           ctx.stroke();
 
-          // Decorative items on shelf
-          // Snowglobe
+          // Itens decorativos sobre a prateleira
+          // Globo de neve
           ctx.fillStyle = 'rgba(255, 255, 255, 0.2)';
           ctx.strokeStyle = '#93c5fd';
           ctx.lineWidth = 1;
@@ -498,7 +498,7 @@ export class PlatformRenderer {
           ctx.arc(sx + 28, p.y - 12, 10, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-          // Alarm clock
+          // Relógio despertador
           ctx.fillStyle = '#f59e0b';
           ctx.beginPath();
           ctx.arc(sx + p.w - 26, p.y - 9, 8, 0, Math.PI * 2);
@@ -508,7 +508,7 @@ export class PlatformRenderer {
 
         case 'mushroom_lamp': {
           // 13. Abajur Cogumelo Brilhante
-          // Glowing polka-dot mushroom cap
+          // Chapéu brilhante do cogumelo com bolinhas
           const lampGrad = ctx.createRadialGradient(
             sx + p.w / 2, p.y + 10, 10,
             sx + p.w / 2, p.y + 10, p.w / 2
@@ -521,7 +521,7 @@ export class PlatformRenderer {
           ctx.ellipse(sx + p.w / 2, p.y + 12, p.w / 2, 16, 0, 0, Math.PI * 2);
           ctx.fill();
 
-          // White polka dots
+          // Bolinhas brancas
           ctx.fillStyle = '#fff1f2';
           const dots = [
             { x: sx + 22, y: p.y + 8, r: 4 },
@@ -535,13 +535,13 @@ export class PlatformRenderer {
             ctx.fill();
           });
 
-          // Soft light bulb glow beneath cap
+          // Brilho suave da lâmpada sob o chapéu do cogumelo
           ctx.fillStyle = 'rgba(254, 240, 138, 0.35)';
           ctx.beginPath();
           ctx.ellipse(sx + p.w / 2, p.y + 18, p.w / 2 - 8, 8, 0, 0, Math.PI * 2);
           ctx.fill();
 
-          // Mushroom stalk
+          // Haste do cogumelo
           ctx.fillStyle = '#fdf4ff';
           ctx.fillRect(sx + p.w / 2 - 12, p.y + 20, 24, p.h - 20);
           break;
@@ -549,11 +549,11 @@ export class PlatformRenderer {
 
         case 'dollhouse_roof': {
           // 14. Telhado da Casa de Bonecas
-          // Scalloped shingle roof
+          // Telhado de telhas onduladas
           ctx.fillStyle = '#be123c';
           ctx.fillRect(sx, p.y, p.w, p.h);
 
-          // Miniature scalloped shingles
+          // Telhas em miniatura onduladas
           ctx.fillStyle = '#9f1239';
           for (let sy = p.y + 8; sy < p.y + p.h; sy += 12) {
             for (let shx = sx; shx < sx + p.w; shx += 16) {
@@ -563,13 +563,13 @@ export class PlatformRenderer {
             }
           }
 
-          // Miniature brick chimney
+          // Chaminé de tijolos em miniatura
           ctx.fillStyle = '#b91c1c';
           ctx.fillRect(sx + p.w - 24, p.y - 18, 16, 24);
           ctx.fillStyle = '#450a0a';
           ctx.fillRect(sx + p.w - 26, p.y - 20, 20, 4);
 
-          // Dormer window
+          // Mansarda / claraboia
           ctx.fillStyle = '#fef08a';
           ctx.beginPath();
           ctx.arc(sx + 30, p.y + 16, 8, Math.PI, 0);
@@ -602,14 +602,14 @@ export class PlatformRenderer {
           ctx.fillStyle = '#5c2b10';
           ctx.fillRect(sx + 20, p.y + p.h - 32, p.w - 40, 14);
 
-          // Brass semi-meridian arch
+          // Arco semi-meridiano de latão
           ctx.strokeStyle = '#eab308';
           ctx.lineWidth = 3.5;
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y + 44, 34, 0.4, Math.PI - 0.4);
           ctx.stroke();
 
-          // Globe sphere
+          // Esfera do globo
           const gx = sx + p.w / 2;
           const gy = p.y + 42;
           const globeGrad = ctx.createRadialGradient(gx - 8, gy - 8, 4, gx, gy, 30);
@@ -621,14 +621,14 @@ export class PlatformRenderer {
           ctx.arc(gx, gy, 28, 0, Math.PI * 2);
           ctx.fill();
 
-          // Green continents
+          // Continentes verdes
           ctx.fillStyle = '#22c55e';
           ctx.beginPath();
           ctx.ellipse(gx - 8, gy - 6, 10, 7, 0.3, 0, Math.PI * 2);
           ctx.ellipse(gx + 10, gy + 8, 8, 5, -0.2, 0, Math.PI * 2);
           ctx.fill();
 
-          // Top platform brass bar
+          // Barra superior de latão da plataforma
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx + 4, p.y, p.w - 8, 12);
           ctx.fillStyle = '#ca8a04';
@@ -677,7 +677,7 @@ export class PlatformRenderer {
           ctx.closePath();
           ctx.fill();
 
-          // Bamboo crossed struts
+          // Varetas cruzadas de bambu
           ctx.strokeStyle = '#fef08a';
           ctx.lineWidth = 1.8;
           ctx.beginPath();
@@ -687,7 +687,7 @@ export class PlatformRenderer {
           ctx.lineTo(kx + p.w / 2 - 6, ky);
           ctx.stroke();
 
-          // Trailing ribbon tail
+          // Cauda de fita ondulando
           ctx.strokeStyle = 'rgba(255, 255, 255, 0.7)';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
@@ -711,20 +711,20 @@ export class PlatformRenderer {
           ctx.roundRect(sx, p.y, p.w, 14, [4, 4, 2, 2]);
           ctx.fill();
 
-          // Gilded page block
+          // Bloco de páginas douradas
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx + 6, p.y + 3, p.w - 12, 8);
 
-          // Open parchment pages
+          // Páginas abertas de pergaminho
           ctx.fillStyle = '#fdf4ff';
           ctx.fillRect(sx + 8, p.y + 4, (p.w - 20) / 2, 6);
           ctx.fillRect(sx + p.w / 2 + 2, p.y + 4, (p.w - 20) / 2, 6);
 
-          // Spine ribbing
+          // Nervuras da lombada
           ctx.fillStyle = '#500724';
           ctx.fillRect(sx + p.w / 2 - 3, p.y, 6, 14);
 
-          // Trailing golden bookmark ribbon
+          // Fita marcadora de página dourada ondulando
           ctx.strokeStyle = '#f59e0b';
           ctx.lineWidth = 2.4;
           ctx.beginPath();
@@ -732,7 +732,7 @@ export class PlatformRenderer {
           ctx.quadraticCurveTo(sx + p.w / 2 + 8, p.y + 35, sx + p.w / 2 - 4, p.y + 50);
           ctx.stroke();
 
-          // Floating fairy runes
+          // Runas feéricas flutuantes
           ctx.fillStyle = 'rgba(254, 240, 138, 0.75)';
           ctx.font = '10px sans-serif';
           ctx.fillText('✧', sx + 12, p.y - 6);
@@ -747,7 +747,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#ca8a04';
           ctx.fillRect(sx, p.y + 12, p.w, 5);
 
-          // Hanging multifaceted crystals
+          // Cristais multifacetados pendurados
           for (let cx = sx + 8; cx <= sx + p.w - 8; cx += 13) {
             ctx.fillStyle = 'rgba(224, 242, 254, 0.88)';
             ctx.strokeStyle = '#bae6fd';
@@ -762,7 +762,7 @@ export class PlatformRenderer {
             ctx.stroke();
           }
 
-          // Candle flames
+          // Chamas das velas
           const flame = Math.sin(tick * 0.25) * 2;
           ctx.fillStyle = '#f97316';
           ctx.beginPath();
@@ -779,14 +779,14 @@ export class PlatformRenderer {
           ctx.fillStyle = '#b45309';
           ctx.fillRect(sx, p.y + 10, p.w, 4);
 
-          // Golden finials
+          // Ponteiras douradas decorativas
           ctx.fillStyle = '#f59e0b';
           ctx.beginPath();
           ctx.arc(sx - 4, p.y + 5, 7, 0, Math.PI * 2);
           ctx.arc(sx + p.w + 4, p.y + 5, 7, 0, Math.PI * 2);
           ctx.fill();
 
-          // Velvet curtain swag
+          // Bandô de cortina de veludo
           ctx.fillStyle = '#1e1b4b';
           ctx.beginPath();
           ctx.moveTo(sx + 4, p.y + 14);
@@ -809,7 +809,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#92400e';
           ctx.fillRect(sx + 6, p.y + 12, p.w - 12, p.h - 12);
 
-          // Clock face
+          // Mostrador do relógio
           ctx.fillStyle = '#fef3c7';
           ctx.strokeStyle = '#b45309';
           ctx.lineWidth = 1.8;
@@ -818,7 +818,7 @@ export class PlatformRenderer {
           ctx.fill();
           ctx.stroke();
 
-          // Hands
+          // Ponteiros
           ctx.strokeStyle = '#18181b';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
@@ -828,7 +828,7 @@ export class PlatformRenderer {
           ctx.lineTo(sx + p.w / 2 + 7, p.y + 40);
           ctx.stroke();
 
-          // Bird door
+          // Portinha do cuco
           ctx.fillStyle = '#451a03';
           ctx.fillRect(sx + p.w / 2 - 8, p.y + 14, 16, 11);
           ctx.fillStyle = '#facc15';
@@ -836,7 +836,7 @@ export class PlatformRenderer {
           ctx.arc(sx + p.w / 2, p.y + 19, 4, 0, Math.PI * 2);
           ctx.fill();
 
-          // Swinging pendulum
+          // Pêndulo balançando
           const pendAngle = Math.sin(tick * 0.08) * 0.28;
           const pendLen = 30;
           const px = sx + p.w / 2 + Math.sin(pendAngle) * pendLen;
@@ -861,12 +861,12 @@ export class PlatformRenderer {
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx - 4, p.y, p.w + 8, 10);
 
-          // Brass corner reinforcements
+          // Reforços de canto em latão
           ctx.fillStyle = '#eab308';
           ctx.fillRect(sx, p.y + 10, 8, 8);
           ctx.fillRect(sx + p.w - 8, p.y + 10, 8, 8);
 
-          // Climax warning text
+          // Aviso de clímax
           ctx.fillStyle = '#fef08a';
           ctx.font = 'bold 11px sans-serif';
           ctx.textAlign = 'center';
@@ -879,13 +879,13 @@ export class PlatformRenderer {
           ctx.fillStyle = '#1e1b4b';
           ctx.fillRect(sx, p.y, p.w, p.h);
 
-          // Upper golden terrace
+          // Terraço dourado superior
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx - 8, p.y - 4, p.w + 16, 12);
           ctx.fillStyle = '#ca8a04';
           ctx.fillRect(sx - 4, p.y + 8, p.w + 8, 8);
 
-          // Gilded Mana Runes along the terrace
+          // Runas Mana folheadas a ouro ao longo do terraço
           ctx.strokeStyle = '#fde047';
           ctx.lineWidth = 2;
           ctx.strokeRect(sx + 12, p.y + 22, p.w - 24, 30);
@@ -895,7 +895,7 @@ export class PlatformRenderer {
           ctx.textAlign = 'center';
           ctx.fillText('✧   O   GRANDE   PORTAL   DOS   SONHOS   ✧', sx + p.w / 2, p.y + 42);
 
-          // Beacon pillars on both sides
+          // Pilares e tocheiras nas duas extremidades
           const torchLeftX = sx + 22;
           const torchRightX = sx + p.w - 22;
           [torchLeftX, torchRightX].forEach(tx => {
@@ -936,14 +936,14 @@ export class PlatformRenderer {
           ctx.ellipse(sx + p.w / 2, p.y + 12, p.w / 2, 10, -0.05, 0, Math.PI * 2);
           ctx.fill();
 
-          // Button eyes
+          // Olhos de botão
           ctx.fillStyle = '#18181b';
           ctx.beginPath();
           ctx.arc(sx + 24, p.y + 8, 3.5, 0, Math.PI * 2);
           ctx.arc(sx + 36, p.y + 8, 3.5, 0, Math.PI * 2);
           ctx.fill();
 
-          // Red yarn hair
+          // Cabelo de fios de lã vermelha
           ctx.strokeStyle = '#dc2626';
           ctx.lineWidth = 2.2;
           for (let h = 0; h < 6; h++) {
@@ -953,7 +953,7 @@ export class PlatformRenderer {
             ctx.stroke();
           }
 
-          // Striped legs
+          // Perninhas listradas
           ctx.fillStyle = '#fbbf24';
           ctx.fillRect(sx + p.w - 32, p.y + 12, 28, 8);
           ctx.fillStyle = '#3b82f6';
@@ -968,7 +968,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#eab308';
           ctx.fillRect(sx + 4, p.y + 2, p.w - 8, 10);
 
-          // Wax crayons rolling out
+          // Bastões de giz de cera rolando para fora
           const crayonColors = ['#ec4899', '#06b6d4', '#10b981', '#a855f7'];
           crayonColors.forEach((c, idx) => {
             ctx.fillStyle = c;
@@ -1000,10 +1000,10 @@ export class PlatformRenderer {
           // 5/15 Tamborzinho Amassado
           ctx.fillStyle = '#dc2626';
           ctx.fillRect(sx + 6, p.y + 6, p.w - 12, 14);
-          // Golden rim
+          // Aro dourado
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx, p.y, p.w, 6);
-          // Crossed wooden sticks
+          // Baquetas de madeira cruzadas
           ctx.strokeStyle = '#d97706';
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -1019,13 +1019,13 @@ export class PlatformRenderer {
           ctx.beginPath();
           ctx.ellipse(sx + p.w / 2, p.y + 10, p.w / 2, 9, 0, 0, Math.PI * 2);
           ctx.fill();
-          // Velvet ears
+          // Orelhas de veludo
           ctx.fillStyle = '#78350f';
           ctx.beginPath();
           ctx.arc(sx + 12, p.y + 2, 6, 0, Math.PI * 2);
           ctx.arc(sx + p.w - 12, p.y + 2, 6, 0, Math.PI * 2);
           ctx.fill();
-          // Snout
+          // Focinho
           ctx.fillStyle = '#fde68a';
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y + 11, 4, 0, Math.PI * 2);
@@ -1050,10 +1050,10 @@ export class PlatformRenderer {
           // 8/15 Locomotiva Descarrilada
           ctx.fillStyle = '#1e293b';
           ctx.fillRect(sx, p.y + 2, p.w - 14, 14);
-          // Chimney
+          // Chaminé
           ctx.fillStyle = '#f59e0b';
           ctx.fillRect(sx + 8, p.y - 7, 7, 9);
-          // Red wheels
+          // Rodas vermelhas
           ctx.fillStyle = '#dc2626';
           ctx.beginPath();
           ctx.arc(sx + 14, p.y + 18, 5, 0, Math.PI * 2);
@@ -1068,13 +1068,13 @@ export class PlatformRenderer {
           ctx.fillStyle = '#f8fafc';
           ctx.strokeStyle = '#dc2626';
           ctx.lineWidth = 1;
-          // Angled leaning cards
+          // Cartas inclinadas apoiadas
           ctx.beginPath();
           ctx.moveTo(sx + 4 + sway, p.y + 14);
           ctx.lineTo(sx + p.w / 2, p.y);
           ctx.lineTo(sx + p.w - 4 - sway, p.y + 14);
           ctx.stroke();
-          // Heart symbol
+          // Símbolo de copas
           ctx.fillStyle = '#ef4444';
           ctx.font = '10px sans-serif';
           ctx.fillText('♥', sx + p.w / 2 - 4, p.y + 11);
@@ -1086,7 +1086,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#451a03';
           ctx.fillRect(sx, p.y + 4, p.w, 14);
           ctx.fillStyle = '#facc15';
-          // Golden ballerina silhouette
+          // Silhueta da bailarina dourada
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y - 2, 3, 0, Math.PI * 2);
           ctx.rect(sx + p.w / 2 - 2, p.y + 1, 4, 5);
@@ -1098,7 +1098,7 @@ export class PlatformRenderer {
           // 11/15 Robô de Lata Desparafusado
           ctx.fillStyle = '#0891b2';
           ctx.fillRect(sx, p.y, p.w, 12);
-          // Antenna with glowing ball
+          // Antena com esfera brilhante
           ctx.strokeStyle = '#cbd5e1';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
@@ -1108,7 +1108,7 @@ export class PlatformRenderer {
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y - 8, 2.5, 0, Math.PI * 2);
           ctx.fill();
-          // Eye meters
+          // Medidores dos olhos
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx + 8, p.y + 3, 5, 4);
           ctx.fillRect(sx + p.w - 13, p.y + 3, 5, 4);
@@ -1126,7 +1126,7 @@ export class PlatformRenderer {
           ctx.lineTo(sx + 4, p.y + 5);
           ctx.closePath();
           ctx.fill();
-          // Ring stripe
+          // Faixa circular
           ctx.strokeStyle = '#ec4899';
           ctx.lineWidth = 2;
           ctx.stroke();
@@ -1138,10 +1138,10 @@ export class PlatformRenderer {
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx, p.y, p.w, 4);
           ctx.fillRect(sx, p.y + 12, p.w, 4);
-          // Wound purple thread
+          // Linha roxa enrolada
           ctx.fillStyle = '#a855f7';
           ctx.fillRect(sx + 4, p.y + 4, p.w - 8, 8);
-          // Floating ribbon
+          // Fita flutuante
           ctx.strokeStyle = '#f472b6';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
@@ -1160,7 +1160,7 @@ export class PlatformRenderer {
           ctx.moveTo(sx, p.y);
           ctx.lineTo(sx + p.w, p.y + 3);
           ctx.stroke();
-          // Hanging dangling star
+          // Estrela pendurada balançando
           ctx.fillStyle = '#fef08a';
           ctx.font = '10px sans-serif';
           ctx.fillText('★', sx + p.w / 2 - 4, p.y + 14);
@@ -1170,23 +1170,23 @@ export class PlatformRenderer {
         case 'levitating_grimoire': {
           // 15/15 Livro de Feitiços no Vácuo (O Salto Quase Impossível!)
           const gPulse = Math.sin(tick * 0.2) * 3;
-          // Luminous aura
+          // Aura luminosa
           ctx.fillStyle = 'rgba(253, 224, 71, 0.45)';
           ctx.beginPath();
           ctx.arc(sx + p.w / 2, p.y + 6, p.w / 2 + 8, 0, Math.PI * 2);
           ctx.fill();
 
-          // Grimoire cover
+          // Capa do grimório
           ctx.fillStyle = '#701a75';
           ctx.beginPath();
           ctx.roundRect(sx, p.y + gPulse, p.w, 12, 3);
           ctx.fill();
 
-          // Gold pages
+          // Páginas douradas
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx + 3, p.y + 3 + gPulse, p.w - 6, 6);
 
-          // Mystical rune floating above
+          // Runa mística flutuando acima
           ctx.fillStyle = '#fde047';
           ctx.font = 'bold 11px sans-serif';
           ctx.fillText('⚡', sx + p.w / 2 - 5, p.y - 4 + gPulse);
@@ -1198,19 +1198,19 @@ export class PlatformRenderer {
           ctx.fillStyle = '#18182e';
           ctx.fillRect(sx, p.y, p.w, p.h);
 
-          // Gilded marble terrace
+          // Terraço de mármore dourado
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx - 10, p.y - 4, p.w + 20, 10);
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx - 6, p.y + 6, p.w + 12, 6);
 
-          // Runes & text
+          // Runas e inscrição
           ctx.fillStyle = '#fef08a';
           ctx.font = 'bold 12px Palatino, Georgia, serif';
           ctx.textAlign = 'center';
           ctx.fillText('✦   O  VERDADEIRO  PORTAL  DOS  SONHOS   ✦', sx + p.w / 2, p.y + 36);
 
-          // Crystal beacon torches
+          // Tocheiras de farol de cristal
           const t1 = sx + 25;
           const t2 = sx + p.w - 25;
           [t1, t2].forEach(tx => {
@@ -1278,7 +1278,7 @@ export class PlatformRenderer {
       ctx.stroke();
       ctx.restore();
 
-      // Little sparkling indicator for next target
+      // Pequeno indicador cintilante para o próximo alvo
       if (idx === baby.currentPlatformIndex + 1) {
         const bounce = Math.sin(tick * 0.1) * 4;
         ctx.fillStyle = '#fef08a';
@@ -1290,7 +1290,7 @@ export class PlatformRenderer {
   }
 
   /**
-   * Renders the Exit Door (Platform 9 bedroom portal / peel-off fake picture)
+   * Renderiza a Porta de Saída (portal do quarto na Plataforma 9 / quadro falso descascando)
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} camX
@@ -1310,41 +1310,41 @@ export class PlatformRenderer {
     ctx.save();
 
     if (fakeDoorRevealed) {
-      // Wall outline with peeling tape marks & silly drawing
+      // Contorno da parede com marcas de fita adesiva descascada e desenho engraçado
       ctx.fillStyle = 'rgba(254, 243, 199, 0.15)';
       ctx.fillRect(sx, exitDoor.y, exitDoor.w, exitDoor.h);
       ctx.strokeStyle = 'rgba(250, 204, 21, 0.35)';
       ctx.lineWidth = 2;
       ctx.strokeRect(sx, exitDoor.y, exitDoor.w, exitDoor.h);
 
-      // 4 yellowed masking tape remnants stuck to the wall
+      // 4 pedaços amarelados de fita crepe colados na parede
       ctx.fillStyle = '#fef08a';
       ctx.fillRect(sx - 4, exitDoor.y - 4, 18, 8);
       ctx.fillRect(sx + exitDoor.w - 14, exitDoor.y - 4, 18, 8);
       ctx.fillRect(sx - 4, exitDoor.y + exitDoor.h - 4, 18, 8);
       ctx.fillRect(sx + exitDoor.w - 14, exitDoor.y + exitDoor.h - 4, 18, 8);
 
-      // Crayon handwriting on empty wall
+      // Escrita a giz de cera na parede vazia
       ctx.fillStyle = 'rgba(239, 68, 68, 0.75)';
       ctx.font = 'bold 11px sans-serif';
       ctx.textAlign = 'center';
       ctx.fillText('ERA SÓ UM QUADRO!', sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2);
 
-      // Peeling poster falling down
+      // Pôster descolando e caindo
       ctx.save();
       ctx.translate(sx + exitDoor.w / 2, exitDoor.y + fakeDoorSlideY + exitDoor.h / 2);
       ctx.rotate(fakeDoorRotation);
       ctx.translate(-exitDoor.w / 2, -exitDoor.h / 2);
 
-      // Poster paper shadow
+      // Sombra do papel do pôster
       ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
       ctx.fillRect(4, 6, exitDoor.w, exitDoor.h);
 
-      // Poster paper back curled
+      // Verso enrolado do papel do pôster
       ctx.fillStyle = '#f5f5f4';
       ctx.fillRect(0, 0, exitDoor.w, exitDoor.h);
 
-      // Door illustration painted on the poster
+      // Ilustração da porta pintada no pôster
       ctx.fillStyle = '#db2777';
       ctx.fillRect(4, 4, exitDoor.w - 8, exitDoor.h - 8);
       const vitral = ctx.createLinearGradient(0, 0, 0, exitDoor.h);
@@ -1354,7 +1354,7 @@ export class PlatformRenderer {
       ctx.fillStyle = vitral;
       ctx.fillRect(10, 10, exitDoor.w - 20, exitDoor.h - 20);
 
-      // Curled dog-eared corner
+      // Canto dobrado em orelha de livro
       ctx.fillStyle = '#e7e5e4';
       ctx.beginPath();
       ctx.moveTo(exitDoor.w - 16, 0);
@@ -1365,7 +1365,7 @@ export class PlatformRenderer {
 
       ctx.restore();
     } else {
-      // Normal majestic glowing exit door
+      // Porta de saída normal majestosa e brilhante
       const pulse = Math.sin(tick * 0.05) * 18;
       const glow = ctx.createRadialGradient(
         sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 12,
@@ -1378,7 +1378,7 @@ export class PlatformRenderer {
       ctx.fillStyle = glow;
       ctx.fillRect(sx - 100, exitDoor.y - 80, exitDoor.w + 200, exitDoor.h + 160);
 
-      // Carved door frame
+      // Moldura entalhada da porta
       ctx.fillStyle = '#db2777';
       ctx.strokeStyle = '#facc15';
       ctx.lineWidth = 4.5;
@@ -1387,7 +1387,7 @@ export class PlatformRenderer {
       ctx.fill();
       ctx.stroke();
 
-      // Stained glass arch
+      // Arco de vitral colorido
       const vitral = ctx.createLinearGradient(sx, exitDoor.y, sx, exitDoor.y + exitDoor.h);
       vitral.addColorStop(0, '#fde047');
       vitral.addColorStop(0.3, '#f43f5e');
@@ -1408,7 +1408,7 @@ export class PlatformRenderer {
   }
 
   /**
-   * Renders the celestial True Exit Door portal of Phase 3
+   * Renderiza o celestial Verdadeiro Portal de Saída da Fase 3
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} camX
@@ -1436,7 +1436,7 @@ export class PlatformRenderer {
     ctx.fillStyle = glow;
     ctx.fillRect(sx - 120, trueExitDoor.y - 100, trueExitDoor.w + 240, trueExitDoor.h + 200);
 
-    // Cosmic portal archway
+    // Arco do portal cósmico
     ctx.fillStyle = '#4c1d95';
     ctx.strokeStyle = '#facc15';
     ctx.lineWidth = 5;
@@ -1445,7 +1445,7 @@ export class PlatformRenderer {
     ctx.fill();
     ctx.stroke();
 
-    // Swirling portal vortex
+    // Vórtice giratório do portal
     const vortex = ctx.createLinearGradient(sx, trueExitDoor.y, sx, trueExitDoor.y + trueExitDoor.h);
     vortex.addColorStop(0, '#fde047');
     vortex.addColorStop(0.25, '#c084fc');
@@ -1456,9 +1456,9 @@ export class PlatformRenderer {
     ctx.roundRect(sx + 8, trueExitDoor.y + 12, trueExitDoor.w - 16, trueExitDoor.h - 18, [38, 38, 6, 6]);
     ctx.fill();
 
-    // Opening door animation during the level transition into the Toy Room
+    // Animação da porta abrindo durante a transição de fase para o Quarto de Brinquedos
     if (trueDoorOpenAngle > 0.02) {
-      // 1. Radiant volumetric sunlight beams fanning out across the platform
+      // 1. Raios volumétricos radiantes de sol se espalhando em leque pela plataforma
       const beamCount = 6;
       for (let b = 0; b < beamCount; b++) {
         const bAngle = -0.35 + (b / (beamCount - 1)) * 0.7;
@@ -1482,7 +1482,7 @@ export class PlatformRenderer {
         ctx.fill();
       }
 
-      // 2. Glimpse into the sunlit, vibrant Toy Room inside the doorway
+      // 2. Vislumbre do Quarto de Brinquedos vibrante e ensolarado dentro do vão da porta
       const roomGlimpse = ctx.createLinearGradient(sx, trueExitDoor.y, sx, trueExitDoor.y + trueExitDoor.h);
       roomGlimpse.addColorStop(0, '#fef08a');
       roomGlimpse.addColorStop(0.4, '#fcd34d');
@@ -1493,9 +1493,9 @@ export class PlatformRenderer {
       ctx.roundRect(sx + 10, trueExitDoor.y + 14, trueExitDoor.w - 20, trueExitDoor.h - 22, [36, 36, 4, 4]);
       ctx.fill();
 
-      // 3. Ornate arched door leaves swinging open with perspective
+      // 3. Folhas ornadas da porta em arco abrindo em perspectiva
       const leafW = Math.max(2, (trueExitDoor.w / 2 - 12) * (1 - trueDoorOpenAngle));
-      // Left door leaf
+      // Folha esquerda da porta
       ctx.fillStyle = '#b45309';
       ctx.strokeStyle = '#fde047';
       ctx.lineWidth = 2;
@@ -1504,14 +1504,14 @@ export class PlatformRenderer {
       ctx.fill();
       ctx.stroke();
 
-      // Right door leaf
+      // Folha direita da porta
       ctx.beginPath();
       ctx.roundRect(sx + trueExitDoor.w - 10 - leafW, trueExitDoor.y + 14, leafW, trueExitDoor.h - 22, [4, 32, 4, 4]);
       ctx.fill();
       ctx.stroke();
     }
 
-    // Floating golden stars in portal
+    // Estrelas douradas flutuando no portal
     const sBob = Math.sin(tick * 0.12) * 5;
     ctx.fillStyle = '#ffffff';
     ctx.font = '24px sans-serif';
@@ -1522,7 +1522,7 @@ export class PlatformRenderer {
   }
 
   /**
-   * Renders the tutorial visual guide pointing to the first platform in Phase 3
+   * Renderiza o guia visual do tutorial apontando para a primeira plataforma na Fase 3
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} camX
@@ -1541,18 +1541,18 @@ export class PlatformRenderer {
     const sy = p0.y;
 
     ctx.save();
-    // Glowing pulsing landing target zone on the first platform
+    // Zona alvo de pouso pulsante luminosa na primeira plataforma
     const pulse = Math.sin(tick * 0.1) * 0.3 + 0.7;
     ctx.fillStyle = `rgba(250, 204, 21, ${0.4 * pulse})`;
     ctx.beginPath();
     ctx.ellipse(sx, sy + 6, p0.w * 0.42, 8, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    // Floating bouncing guide arrow
+    // Seta guia flutuante quicando
     const bob = Math.sin(tick * 0.12) * 5;
     const arrowY = sy - 26 + bob;
 
-    // Tag bubble
+    // Balão de etiqueta
     ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
     ctx.strokeStyle = '#facc15';
     ctx.lineWidth = 1.4;
@@ -1566,7 +1566,7 @@ export class PlatformRenderer {
     ctx.textAlign = 'center';
     ctx.fillText('▼ SUBA AQUI!', sx, arrowY - 7);
 
-    // Downward triangle
+    // Triângulo apontando para baixo
     ctx.fillStyle = '#facc15';
     ctx.beginPath();
     ctx.moveTo(sx - 7, arrowY + 3);

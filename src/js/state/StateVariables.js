@@ -1,37 +1,37 @@
 import { createBabyState, createFairyState } from '../config.js';
 
 /**
- * Default initial values and structures for GameState
+ * Estruturas e valores iniciais padrão para o GameState
  */
 export function createDefaultStateVariables() {
   const baby = createBabyState();
   const fairy = createFairyState();
 
-  baby.facing = 1; // 1 = facing right, -1 = facing left
+  baby.facing = 1; // 1 = olhando para a direita, -1 = olhando para a esquerda
   baby.isShocked = false;
   baby.isLyingDown = false;
   baby.isCrouching = true;
   baby.controlsLocked = true;
 
   return {
-    // Player and Guide Entities
+    // Entidades do Jogador e da Guia
     baby,
     fairy,
 
-    // Phase and Room modes
+    // Modos de Fase e Sala
     currentPhaseMode: 'bedroom', // 'bedroom' | 'toy-room'
     toyRoomInstance: null,
     isEscapeMode: false,
-    escapeLevel: 0, // 0 to 11
+    escapeLevel: 0, // 0 a 11
     currentScrollSpeed: 1.5,
     targetScrollSpeed: 1.5,
     escapeBannerTimer: 0,
     escapeBannerText: '',
     firstPlatformCleared: false,
 
-    // Phase 3 & Plot Twist
+    // Fase 3 e Reviravolta (Plot Twist)
     isPhase3: false,
-    phase3Level: 0, // 0 to 14
+    phase3Level: 0, // 0 a 14
     plotTwistActive: false,
     plotTwistTriggered: false,
     plotTwistStep: 0,
@@ -46,14 +46,14 @@ export function createDefaultStateVariables() {
     trueDoorOpenAngle: 0,
     transitionWipeAlpha: 0,
 
-    // Cutscene (Phase 1 -> Phase 2 Castle)
+    // Cinemática (Fase 1 -> Castelo da Fase 2)
     cutsceneActive: false,
     cutsceneTriggered: false,
     cutsceneCompleted: false,
     cutsceneStep: 1,
     cutsceneTimer: 0,
 
-    // Camera & Viewport
+    // Câmera e Viewport
     cameraX: 0,
     cameraY: 0,
     targetCameraY: 0,
@@ -61,7 +61,7 @@ export function createDefaultStateVariables() {
     targetCameraZoom: 1.0,
     isPortrait: false,
 
-    // Standby & Diegetic Preparation
+    // Prontidão (Standby) e Preparação Diegética
     isStandbyActive: false,
     isStandbyTransitioning: false,
     standbyTransitionTimer: 0,
@@ -71,7 +71,7 @@ export function createDefaultStateVariables() {
     standbyActivatedTime: 0,
     lastUsedInputDevice: 'keyboard', // 'keyboard' | 'gamepad' | 'touch'
 
-    // Game lifecycle & Timers
+    // Ciclo de Vida do Jogo e Temporizadores
     gameWon: false,
     isGameOver: false,
     gameStarted: false,
@@ -82,7 +82,7 @@ export function createDefaultStateVariables() {
     lastDialogueAdvanceTime: 0,
     failMessageTimer: null,
 
-    // Particle & Trail Buffers
+    // Buffers de Partículas e Rastros de Movimento
     speedRibbons: [],
     babyJumpDust: []
   };

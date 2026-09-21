@@ -1,7 +1,7 @@
 /**
  * AudioController.js
- * Unified audio controller managing sound effects and soundtrack,
- * browser visibility / minimize mute handling, and master volume controls.
+ * Controlador unificado de áudio responsável pelos efeitos sonoros e trilha musical,
+ * gerenciamento de mudo em segundo plano/mudança de visibilidade da aba e controles de volume master.
  */
 
 import { createAudioSystem } from '../audio.js';
@@ -55,7 +55,11 @@ export class AudioController {
   onBackground() {
     if (this.isTabHidden) return;
     this.isTabHidden = true;
-    // Mute underlying system when game is minimized or switched to background
+    // Pausa a execução contínua de áudio quando a aba perde o foco ou é minimizada
+    if (this.system && typeof this.system.pauseMusic === 'function') {
+      this.system.pauseMusic();
+    }
+    // Silencia o sistema quando o jogo é minimizado ou enviado para segundo plano
     if (this.system && typeof this.system.setMuted === 'function') {
       this.system.setMuted(true);
     }
@@ -64,10 +68,14 @@ export class AudioController {
   onForeground() {
     if (!this.isTabHidden) return;
     this.isTabHidden = false;
-    // Restore sound if user hasn't explicitly muted it
-    if (!this.isMutedByUser && this.system && typeof this.system.setMuted === 'function') {
-      this.system.setMuted(false);
-      if (typeof this.system.initAudio === 'function') {
+    // Restaura o som e retoma a reprodução da trilha sonora se o jogador não tiver mutado explicitamente
+    if (!this.isMutedByUser) {
+      if (this.system && typeof this.system.setMuted === 'function') {
+        this.system.setMuted(false);
+      }
+      if (this.system && typeof this.system.resumeMusic === 'function') {
+        this.system.resumeMusic();
+      } else if (typeof this.system.initAudio === 'function') {
         this.system.initAudio();
       }
     }
@@ -103,7 +111,7 @@ export class AudioController {
     return this.setMuted(!this.isMutedByUser);
   }
 
-  // --- Sound & Music delegations ---
+  // --- Delegações de Sons e Músicas ---
   initAudio() {
     if (this.system && typeof this.system.initAudio === 'function') {
       this.system.initAudio();
@@ -228,6 +236,25 @@ export class AudioController {
     if (this.system && typeof this.system.stopToyRoomMusic === 'function') {
       this.system.stopToyRoomMusic();
     }
+  }
+
+  pauseMusic() {
+    if (this.system && typeof this.system.pauseMusic === 'function') {
+      this.system.pauseMusic();
+    }
+  }
+
+  resumeMusic() {
+    if (this.system && typeof this.system.resumeMusic === 'function') {
+      this.system.resumeMusic();
+    }
+  }
+
+  getToyRoomAudioElement() {
+    if (this.system && typeof this.system.getToyRoomAudioElement === 'function') {
+      return this.system.getToyRoomAudioElement();
+    }
+    return null;
   }
 
   playPickUpSound() {

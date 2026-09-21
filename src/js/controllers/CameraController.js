@@ -1,7 +1,7 @@
 /**
  * CameraController.js
- * Manages viewport framing, dynamic zoom levels, smooth camera tracking,
- * vertical headroom adjustment, and canvas matrix transformations.
+ * Gerencia o enquadramento do viewport, níveis de zoom dinâmico, rastreamento suave da câmera,
+ * ajuste de folga vertical (headroom) e transformações de matriz do canvas.
  */
 
 export class CameraController {
@@ -32,6 +32,7 @@ export class CameraController {
   }
 
   setPosition(x, y, immediate = false) {
+    this.targetZoom = immediate ? this.zoom : this.targetZoom;
     if (immediate) {
       this.x = x;
       this.y = y;
@@ -42,11 +43,11 @@ export class CameraController {
   }
 
   /**
-   * Updates camera framing, horizontal/vertical tracking, and zoom interpolation
-   * @param {number} dt Delta time factor
-   * @param {object} state Current GameState instance
-   * @param {HTMLCanvasElement} canvas Canvas reference
-   * @param {object} callbacks Callbacks like onLagBehind / onGameOver
+   * Atualiza o enquadramento da câmera, rastreamento horizontal/vertical e interpolação de zoom
+   * @param {number} dt Fator delta time
+   * @param {object} state Instância atual do GameState
+   * @param {HTMLCanvasElement} canvas Referência do Canvas
+   * @param {object} callbacks Callbacks como onLagBehind / onGameOver
    */
   update(dt, state, canvas, callbacks = {}) {
     if (!state || !canvas) return;
@@ -55,7 +56,7 @@ export class CameraController {
     const fairy = state.fairy;
     const isWide = canvas.width > 600;
 
-    // 1. Standby state framing
+    // 1. Enquadramento no estado de prontidão (Standby)
     if (state.isStandbyActive) {
       this.targetZoom = 1.25;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
@@ -65,7 +66,7 @@ export class CameraController {
       return;
     }
 
-    // 2. Standby transition return to normal zoom
+    // 2. Transição de prontidão retornando ao zoom normal
     if (state.isStandbyTransitioning) {
       this.targetZoom = 1.0;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
@@ -75,7 +76,7 @@ export class CameraController {
       return;
     }
 
-    // 3. Castle Cutscene Framing
+    // 3. Enquadramento na Cinemática do Castelo
     if (state.cutsceneActive) {
       this.targetZoom = 1.45;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
@@ -85,7 +86,7 @@ export class CameraController {
       return;
     }
 
-    // 4. Plot Twist Cutscene Framing
+    // 4. Enquadramento na Cinemática da Reviravolta (Plot Twist)
     if (state.plotTwistActive) {
       this.targetZoom = 1.25;
       this.zoom += (this.targetZoom - this.zoom) * 0.07;
@@ -95,7 +96,7 @@ export class CameraController {
       return;
     }
 
-    // 5. Phase 3 Tutorial Framing
+    // 5. Enquadramento no Tutorial da Fase 3
     if (state.phase3TutorialActive) {
       this.targetZoom = 1.0;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
@@ -105,7 +106,7 @@ export class CameraController {
       return;
     }
 
-    // 6. True Portal Transition Framing
+    // 6. Enquadramento na Transição para o Portal Verdadeiro
     if (state.truePortalTransitionActive) {
       this.targetZoom = 1.25;
       this.zoom += (this.targetZoom - this.zoom) * 0.06;
@@ -116,19 +117,19 @@ export class CameraController {
       return;
     }
 
-    // 7. Normal Gameplay Zoom Recovery
+    // 7. Recuperação do Zoom do Gameplay Normal
     this.targetZoom = 1.0;
     this.zoom += (this.targetZoom - this.zoom) * 0.08;
 
-    // 8. Horizontal Tracking & Autoscroll per Phase
+    // 8. Rastreamento Horizontal e Rolagem Automática por Fase
     if (state.isPhase3) {
-      // Phase 3: Leftward chaotic climb
+      // Fase 3: Subida caótica para a esquerda
       state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
       this.x += state.currentScrollSpeed * dt;
       const targetCamX = baby.x - (isWide ? canvas.width - 250 : canvas.width - 160);
       this.x += (targetCamX - this.x) * 0.08 * dt;
 
-      // Check if baby fell too far behind the moving screen to the right
+      // Verifica se a menininha ficou muito para trás da tela em movimento para a direita
       if (baby.x > this.x + canvas.width + 50) {
         if (typeof callbacks.onLagBehind === 'function') {
           callbacks.onLagBehind();
@@ -137,7 +138,7 @@ export class CameraController {
         return;
       }
     } else if (state.isEscapeMode) {
-      // Phase 2: Forward autoscroll escape
+      // Fase 2: Fuga com rolagem automática para frente
       state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
       this.x += state.currentScrollSpeed * dt;
       const targetCamX = baby.x - (isWide ? 170 : 120);
@@ -145,7 +146,7 @@ export class CameraController {
         this.x += (targetCamX - this.x) * 0.09 * dt;
       }
 
-      // Check if baby fell behind the moving screen to the left
+      // Verifica se a menininha ficou para trás da tela em movimento para a esquerda
       if (baby.x < this.x - 25) {
         if (typeof callbacks.onLagBehind === 'function') {
           callbacks.onLagBehind();
@@ -154,13 +155,13 @@ export class CameraController {
         return;
       }
     } else {
-      // Phase 1: Standard smooth forward tracking
+      // Fase 1: Rastreamento frontal suave padrão
       let targetCamX = baby.x - (isWide ? 180 : 120);
       if (targetCamX < 0) targetCamX = 0;
       this.x += (targetCamX - this.x) * 0.08;
     }
 
-    // 9. Vertical tracking with dynamic headroom
+    // 9. Rastreamento vertical com margem dinâmica de teto (headroom)
     const minCeilingHeadroom = state.isPortrait ? 130 : 90;
     let baseFloorCamY = 0;
     if (state.isPortrait && canvas.height > this.floorY + 90) {
@@ -171,7 +172,7 @@ export class CameraController {
     this.targetY = Math.min(baseFloorCamY, babyApexTargetY);
     this.y += (this.targetY - this.y) * 0.12;
 
-    // Hard visual ceiling clamp: guarantees player never ascends beyond the illuminated viewport
+    // Limite visual rígido no teto: garante que o jogador nunca ascenda além da área visível iluminada
     const ceilingClampY = this.y + this.ceilingClampOffset;
     if (baby.y < ceilingClampY) {
       baby.y = ceilingClampY;
@@ -200,11 +201,11 @@ export class CameraController {
   }
 
   /**
-   * Applies camera transformation (zoom centering + translation) to the Canvas 2D Context
+   * Aplica a transformação da câmera (centralização do zoom + translação) ao Contexto 2D do Canvas
    * @param {CanvasRenderingContext2D} ctx 
    * @param {HTMLCanvasElement} canvas 
-   * @param {object} baby Player state
-   * @param {object} fairy Fairy state
+   * @param {object} baby Estado do jogador
+   * @param {object} fairy Estado da fadinha
    */
   applyTransform(ctx, canvas, baby, fairy) {
     if (!ctx) return;

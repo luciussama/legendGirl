@@ -1,13 +1,13 @@
 /**
  * BabyRenderer.js
- * Responsible for the high-fidelity Mana-style character rendering of the protagonist baby.
- * Handles lying down (post-bump sprawled), crouching (standby), transition stand-up,
- * running, jumping, and facial expressions.
+ * Responsável pela renderização de alta fidelidade no estilo Mana da menininha protagonista.
+ * Gerencia os estados deitada (esparramada pós-tombo), agachada (em prontidão), transição levantando,
+ * correndo, saltando e expressões faciais.
  */
 
 export class BabyRenderer {
   /**
-   * Render the Mana-style baby sprite
+   * Renderiza a sprite da menininha no estilo Mana
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} baby
    * @param {object} state
@@ -411,7 +411,7 @@ export class BabyRenderer {
     ctx.stroke();
     ctx.restore();
 
-    // Body & tunic
+    // Tronco e túnica mágica
     const bodyGrad = ctx.createLinearGradient(-12, -4, 12, 12);
     bodyGrad.addColorStop(0, '#ff2a85');
     bodyGrad.addColorStop(1, '#d80064');
@@ -468,7 +468,7 @@ export class BabyRenderer {
     ctx.fill();
     ctx.restore();
 
-    // Face
+    // Rosto
     const faceGrad = ctx.createRadialGradient(0, -11, 2, 0, -11, 14);
     faceGrad.addColorStop(0, '#fff1e6');
     faceGrad.addColorStop(0.85, '#fcd2be');
@@ -481,7 +481,7 @@ export class BabyRenderer {
     ctx.fill();
     ctx.stroke();
 
-    // Blushing cheeks
+    // Bochechas coradas
     ctx.fillStyle = 'rgba(255, 60, 110, 0.45)';
     ctx.beginPath();
     ctx.arc(-7.5, -8, 3.8, 0, Math.PI * 2);
@@ -489,34 +489,34 @@ export class BabyRenderer {
     ctx.fill();
 
     if (baby.isShocked) {
-      // Wide startled round eyes
+      // Olhos arregalados e surpresos
       ctx.fillStyle = '#1e1b4b';
       ctx.beginPath();
       ctx.ellipse(-5, -12, 4.2, 5.0, 0, 0, Math.PI * 2);
       ctx.ellipse(5, -12, 4.2, 5.0, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Big pupils
+      // Pupilas grandes
       ctx.fillStyle = '#7c3aed';
       ctx.beginPath();
       ctx.arc(-5, -12, 2.5, 0, Math.PI * 2);
       ctx.arc(5, -12, 2.5, 0, Math.PI * 2);
       ctx.fill();
 
-      // Gleam
+      // Brilho nos olhos
       ctx.fillStyle = '#ffffff';
       ctx.beginPath();
       ctx.arc(-6.2, -13.5, 1.6, 0, Math.PI * 2);
       ctx.arc(3.8, -13.5, 1.6, 0, Math.PI * 2);
       ctx.fill();
 
-      // Shocked small round questioning mouth
+      // Boquinha redonda de perplexidade e questionamento
       ctx.fillStyle = '#991b1b';
       ctx.beginPath();
       ctx.ellipse(0, -6, 2.5, 3.2, 0, 0, Math.PI * 2);
       ctx.fill();
 
-      // Sweat drop of bewilderment
+      // Gota de suor de espanto e perplexidade
       ctx.fillStyle = '#38bdf8';
       ctx.beginPath();
       ctx.moveTo(9, -21);
@@ -525,7 +525,7 @@ export class BabyRenderer {
       ctx.closePath();
       ctx.fill();
     } else {
-      // Big anime eyes
+      // Olhos grandes expressivos em estilo anime
       ctx.fillStyle = '#21102e';
       ctx.beginPath();
       ctx.ellipse(-4.5, -12, 3.2, 4.2, 0, 0, Math.PI * 2);
@@ -544,7 +544,7 @@ export class BabyRenderer {
       ctx.arc(3.4, -13.5, 1.4, 0, Math.PI * 2);
       ctx.fill();
 
-      // Cute smile
+      // Sorriso meigo
       ctx.strokeStyle = '#c0264b';
       ctx.lineWidth = 1.4;
       ctx.beginPath();
@@ -552,7 +552,7 @@ export class BabyRenderer {
       ctx.stroke();
     }
 
-    // Mana hair
+    // Cabelo lilás estilo Mana
     ctx.fillStyle = '#8b5cf6';
     ctx.strokeStyle = '#4c1d95';
     ctx.lineWidth = 1.4;
@@ -564,7 +564,7 @@ export class BabyRenderer {
     ctx.fill();
     ctx.stroke();
 
-    // Hairband
+    // Faixinha de cabelo
     ctx.fillStyle = '#06b6d4';
     ctx.beginPath();
     ctx.roundRect(-9.5, -19, 19, 3.5, 2);

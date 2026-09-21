@@ -19,13 +19,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const baby = state.baby;
   const fairy = state.fairy;
 
-  baby.facing = 1; // 1 = facing right, -1 = facing left
+  baby.facing = 1; // 1 = virada para a direita, -1 = virada para a esquerda
   baby.isShocked = false;
   baby.isLyingDown = false;
   baby.isCrouching = true;
   baby.controlsLocked = true;
 
-  let currentPhaseMode = 'bedroom'; // 'bedroom' | 'toy-room'
+  let currentPhaseMode = 'bedroom'; // 'bedroom' (quarto) | 'toy-room' (sala de brinquedos)
   let toyRoomInstance = null;
 
   let cameraX = 0;
@@ -47,7 +47,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   let firstPlatformCleared = false;
   let tick = 0;
 
-  // --- STANDBY & DIEGETIC PREPARATION STATE ---
+  // --- ESTADO DE PREPARAÇÃO DIALÓGICA E STANDBY ---
   let isStandbyActive = false;
   let isStandbyTransitioning = false;
   let standbyTransitionTimer = 0;
@@ -55,7 +55,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   let standbyStandUpProgress = 0;
   let standbyDialogueAlpha = 1.0;
   let standbyActivatedTime = 0;
-  let lastUsedInputDevice = 'keyboard'; // 'keyboard' | 'gamepad' | 'touch'
+  let lastUsedInputDevice = 'keyboard'; // 'keyboard' (teclado) | 'gamepad' (controle) | 'touch' (toque)
 
   function syncStateToLocals() {
     currentPhaseMode = state.currentPhaseMode;
@@ -186,7 +186,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals();
   }
 
-  // Rigid reset of physics components to prevent vector accumulation or delta spikes
+  // Reinicialização rígida dos componentes de física para evitar acúmulo vetorial ou picos de delta
   function resetBabyPhysicsBody(targetX, targetY, facing = 1) {
     syncLocalsToState();
     state.resetBabyPhysicsBody(targetX, targetY, facing);
@@ -235,11 +235,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   }
 
-  // Persistent offscreen canvas for dark atmosphere lighting (avoids GC per-frame allocations)
+  // Canvas persistente fora da tela para iluminação atmosférica escura (evita alocações no garbage collector)
   const darkCanvas = document.createElement('canvas');
   const dctx = darkCanvas.getContext('2d');
 
-  // Viewport and Resolution Adaptation (Zero distortion on Mobile Portrait and Desktop Landscape)
+  // Adaptação de Resolução e Viewport (Zero distorção em Dispositivos Móveis e Desktop)
   function handleResize() {
     const rect = (canvas && typeof canvas.getBoundingClientRect === 'function') ? canvas.getBoundingClientRect() : null;
     const w = (rect && rect.width > 0) ? rect.width : (window.innerWidth || 960);
@@ -248,11 +248,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isPortrait = aspect < 1.15;
 
     if (isPortrait) {
-      // Mobile / Portrait: Maintain wide FoV (width 540) and scale height orthographically
+      // Mobile / Retrato: Mantém FoV amplo (largura 540) e dimensiona a altura ortograficamente
       canvas.width = 540;
       canvas.height = Math.round(540 / aspect) || 960;
     } else {
-      // Desktop / Landscape: Base height 540 and scale width orthographically
+      // Desktop / Paisagem: Altura base de 540 e dimensiona a largura ortograficamente
       canvas.height = 540;
       canvas.width = Math.round(540 * aspect) || 960;
     }
@@ -269,16 +269,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
   handleResize();
 
-  // Cutscene State (Fase 1 -> Fase 2 Castle)
+  // Estado de Cena Cinemática (Fase 1 -> Castelo da Fase 2)
   let cutsceneActive = false;
   let cutsceneTriggered = false;
   let cutsceneCompleted = false;
   let cutsceneStep = 1;
   let cutsceneTimer = 0;
 
-  // Escape Mode State (Fase 2 - 12 Plataformas Subindo para a Direita)
+  // Estado do Modo de Fuga (Fase 2 - 12 Plataformas Subindo para a Direita)
   let isEscapeMode = false;
-  let escapeLevel = 0; // 0 to 11
+  let escapeLevel = 0; // 0 a 11
   let currentScrollSpeed = 1.5;
   let targetScrollSpeed = 1.5;
   let escapeBannerTimer = 0;
@@ -286,9 +286,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const speedRibbons = state.speedRibbons;
   const babyJumpDust = state.babyJumpDust;
 
-  // FASE 3 & PLOT TWIST STATE
+  // ESTADO DA FASE 3 E DA REVIRAVOLTA (PLOT TWIST)
   let isPhase3 = false;
-  let phase3Level = 0; // 0 to 14 (15 plataformas de brinquedos)
+  let phase3Level = 0; // 0 a 14 (15 plataformas de brinquedos)
   let plotTwistActive = false;
   let plotTwistTriggered = false;
   let plotTwistStep = 0; // 1: queda da porta e tombo, 2: fadinha desce para checar, 3: fadinha sobe alto/close-up, 4: fala da criança, 5: vaivém e fala da fadinha
@@ -365,7 +365,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     const now = performance.now();
 
-    // Standby confirmation: Space, Button X, or Touch to commence gameplay
+    // Confirmação de standby: Espaço, Botão X ou Toque na tela para iniciar a jogabilidade
     if (isStandbyActive) {
       if (now - standbyActivatedTime < 220) return;
       confirmStandby();
@@ -384,7 +384,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // Advance cutscene on touch with anti-spam cooldown
+    // Avança cena cinemática com toque na tela respeitando tempo de recarga
     if (cutsceneActive) {
       if (now - lastDialogueAdvanceTime < 320) return;
       lastDialogueAdvanceTime = now;
@@ -392,7 +392,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // Advance plot twist cutscene on touch (only during dialogue steps 4 and 5) with anti-spam cooldown
+    // Avança cena da reviravolta no toque (apenas durante os diálogos dos passos 4 e 5) com recarga anti-spam
     if (plotTwistActive) {
       if (plotTwistStep >= 4) {
         if (now - lastDialogueAdvanceTime < 320) return;
@@ -402,35 +402,35 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // Check if controls are locked or if baby is still settling from respawn or crouching
+    // Verifica se os controles estão travados ou se a menina ainda está se levantando/agachada
     if (baby.controlsLocked || baby.respawnLandingPending || baby.isCrouching) {
       return;
     }
 
-    // Grounded check: strictly require onGround confirmed by collision solver
+    // Verificação de chão: requer estritamente onGround confirmado pelo resolvedor de colisões
     if (!baby.onGround) {
       return;
     }
 
-    // Physics jump with input debounce lock
+    // Salto físico com bloqueio de debounce para entrada
     if (now - lastJumpTime < 160) {
       return;
     }
     lastJumpTime = now;
 
-    // Immediately clear onGround to prevent multiple jump inputs stacking in a single frame
+    // Limpa imediatamente onGround para evitar acúmulo de múltiplos saltos em um único frame
     baby.onGround = false;
 
     if (isPhase3) {
       const currentLvl = Math.max(0, Math.min(14, phase3Level || 0));
       const stats = getPhase3Stats(currentLvl);
       baby.vy = stats.jumpPower;
-      baby.vx = stats.airVx; // Dynamic forward momentum impulse towards the left
+      baby.vx = stats.airVx; // Impulso horizontal dinâmico em direção à esquerda
       audio.playLongJumpSound(currentLvl / 14);
       fairy.vy -= 2.8;
       fairy.spinAnim = 1.6;
 
-      // Visual sparkles burst & jump puff
+      // Explosão visual de faíscas e poeirinha do pulo
       spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 6 + currentLvl);
       const burstCount = 6 + currentLvl * 2;
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
@@ -438,12 +438,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       const currentLvl = Math.max(0, Math.min(11, escapeLevel || 0));
       const stats = getEscapeStats(currentLvl);
       baby.vy = stats.jumpPower;
-      baby.vx = stats.airVx; // Dynamic forward momentum impulse matching level
+      baby.vx = stats.airVx; // Impulso horizontal dinâmico proporcional ao nível
       audio.playLongJumpSound(currentLvl / 11);
       fairy.vy -= 2.8;
       fairy.spinAnim = 1.6;
 
-      // Visual sparkles burst & jump puff
+      // Explosão visual de faíscas e poeirinha do pulo
       spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 6 + currentLvl);
       const burstCount = 6 + currentLvl * 2;
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
@@ -457,7 +457,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   }
 
-  // --- FAIRY MAGIC DUST SYSTEM ---
+  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---
   function spawnFairyFlightDust(fx, fy, fvx, fvy) {
     state.spawnFairyFlightDust(fx, fy, fvx, fvy);
   }
@@ -470,7 +470,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.updateFairyParticles();
   }
 
-  // --- SUBTLE BABY JUMP TRAIL SYSTEM ---
+  // --- SISTEMA DE RASTRO SUTIL DO SALTO DA MENINA ---
   function spawnBabyJumpDust(bx, bw, by, bh, bvx) {
     particles.spawnBabyJumpDust(bx, bw, by, bh, bvx, isEscapeMode, escapeLevel);
   }
@@ -487,7 +487,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     particles.updateBabyJumpDust(dt);
   }
 
-  // --- ENVIRONMENT RENDERERS (Modularized in /environment) ---
+  // --- RENDERIZADORES DE CENÁRIO (Modularizados em /environment) ---
   function drawBackgroundWall(camX) {
     backgroundRenderer.renderWall(ctx, canvas, camX, { tick });
   }
@@ -523,7 +523,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
-  // --- CHARACTER ENTITY RENDERERS (Modularized in /entities) ---
+  // --- RENDERIZADORES DE ENTIDADES E PERSONAGENS (Modularizados em /entities) ---
   function drawBabyManaStyle(camX) {
     syncLocalsToState();
     babyRenderer.render(ctx, baby, state, camX);
@@ -534,7 +534,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     fairyRenderer.render(ctx, fairy, state, camX, { canvas, baby, platforms });
   }
 
-  // --- ATMOSPHERIC DYNAMIC LIGHTING (Modularized in /environment) ---
+  // --- ILUMINAÇÃO DINÂMICA ATMOSFÉRICA (Modularizada em /environment) ---
   function applyDarkAtmosphereWithLights(camX, camY = 0) {
     syncLocalsToState();
     lighting.apply(ctx, canvas, state, baby, fairy, camX, camY, {
@@ -545,7 +545,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
-  // --- PARTICLE EFFECTS RENDERING (Modularized in /effects) ---
+  // --- RENDERIZAÇÃO DE EFEITOS DE PARTÍCULAS (Modularizada em /effects) ---
   function drawSpeedRibbons(camX) {
     particles.renderSpeedRibbons(ctx, canvas, camX);
   }
@@ -554,7 +554,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     particles.renderBabyJumpDust(ctx, canvas, camX);
   }
 
-  // --- UI & HUD RENDERING (Modularized in /ui) ---
+  // --- RENDERIZAÇÃO DE INTERFACE E HUD (Modularizada em /ui) ---
   function drawEscapeBanner() {
     hudRenderer.renderEscapeBanner(ctx, canvas, state, cameraX, baby);
   }
@@ -573,7 +573,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
-  // --- TUTORIAL VISUAL GUIDE (Modularized in /environment) ---
+  // --- GUIA VISUAL DE TUTORIAL (Modularizado em /environment) ---
   function drawTutorialArrow(camX) {
     platformRenderer.renderTutorialArrow(ctx, canvas, camX, {
       isPhase3,
@@ -583,14 +583,14 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
-  // --- GAME UPDATE LOOP ---
+  // --- LOOP DE ATUALIZAÇÃO DO JOGO ---
   function update(dt = 1.0) {
     tick++;
     if (!gameStarted) return;
     if (gameWon) return;
     if (isGameOver) return;
 
-    // Platform lighting fade-in transition
+    // Transição gradual de iluminação das plataformas
     const allPlatforms = isPhase3 ? phase3Platforms : platforms;
     for (let i = 0; i < allPlatforms.length; i++) {
       const p = allPlatforms[i];
@@ -871,18 +871,18 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // --- CUTSCENE SEQUENCER ---
+    // --- SEQUENCIADOR DA CENA CINEMÁTICA ---
     if (cutsceneActive) {
       cutsceneTimer++;
       targetCameraZoom = 1.45;
       cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
 
-      // Focus camera between fairy and baby
+      // Foca a câmera suavemente entre a fada e a menina
       const cutsceneCamTarget = (baby.x + fairy.x) / 2 - 200;
       cameraX += (cutsceneCamTarget - cameraX) * 0.08;
 
       if (cutsceneStep === 1) {
-        // Fairy flies above the child's head, looking around investigatively
+        // Fada voa acima da cabeça da criança, olhando ao redor com curiosidade
         fairy.investigateAngle = (fairy.investigateAngle || 0) + 0.038;
         const targetHoverX = baby.x + Math.sin(fairy.investigateAngle * 1.5) * 55;
         const targetHoverY = baby.y - 44 + Math.cos(fairy.investigateAngle * 3.0) * 14;
@@ -902,7 +902,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
           advanceCutscene();
         }
       } else if (cutsceneStep === 2) {
-        // Fairy hovers to the right of baby pointing wand to the right
+        // Fada paira à direita da menina apontando a varinha para a direita
         fairy.flutterPhase += 0.45;
         const targetHoverX = baby.x + 65;
         const targetHoverY = baby.y - 42;
@@ -922,24 +922,24 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         }
       }
 
-      // Update particles during cutscene
+      // Atualiza partículas durante a cena cinemática
       updateFairyParticles();
       updateBabyJumpDust();
 
       return;
     }
 
-    // --- TRUE PORTAL TOY ROOM TRANSITION SEQUENCER ---
+    // --- SEQUENCIADOR DE TRANSIÇÃO DO VERDADEIRO PORTAL PARA A SALA DE BRINQUEDOS ---
     if (truePortalTransitionActive) {
       truePortalTransitionTimer += dt;
 
-      // Rigid lock on baby side-scroller jump input and physics
+      // Bloqueio rígido de comandos e física de pulo lateral da menina
       baby.controlsLocked = true;
       baby.vy = 0;
       baby.onGround = true;
       baby.facing = -1;
 
-      // Baby walks steadily toward the portal doorway
+      // Menina caminha com firmeza em direção ao portal
       const targetBabyX = trueExitDoor.x + 24;
       if (baby.x > targetBabyX) {
         baby.x -= 1.4 * dt;
@@ -948,16 +948,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         baby.walkCycle = 0;
       }
 
-      // Smooth camera pan centering on the grand portal opening
+      // Movimento suave de câmera centralizando na abertura do grande portal
       const targetCamX = trueExitDoor.x - canvas.width * 0.36;
       cameraX += (targetCamX - cameraX) * 0.08 * dt;
 
-      // Open the ornate portal doors
+      // Abre as portas ornamentadas do portal
       if (trueDoorOpenAngle < 1.0) {
         trueDoorOpenAngle = Math.min(1.0, trueDoorOpenAngle + 0.018 * dt);
       }
 
-      // Fairy flutters in front of the door, then flies inside happily
+      // Fada adeja em frente à porta e voa alegremente para dentro
       if (truePortalTransitionTimer < 65) {
         const fairyTargetX = trueExitDoor.x + 46;
         const fairyTargetY = trueExitDoor.y + 40;
@@ -980,12 +980,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         spawnFairyFlightDust(fairy.x, fairy.y, -1.2, 0);
       }
 
-      // Golden light iris wipe expands across screen
+      // Efeito de íris de luz dourada se expande pela tela
       if (truePortalTransitionTimer > 60) {
         transitionWipeAlpha = Math.min(1.0, transitionWipeAlpha + 0.02 * dt);
       }
 
-      // Transition complete: launch the Toy Room top-down phase
+      // Transição concluída: inicia a fase de visão superior da Sala de Brinquedos
       if (truePortalTransitionTimer >= 125) {
         truePortalTransitionActive = false;
         startToyRoomPhase();
@@ -997,35 +997,35 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // Ease camera zoom back to normal after cutscene
+    // Suaviza o zoom da câmera de volta ao normal após a cena
     targetCameraZoom = 1.0;
     cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
 
-    // Baby physics
+    // Física da menina
     baby.x += baby.vx * dt;
     baby.animTime += 0.15 * dt;
     baby.vy += baby.gravity * dt;
     baby.y += baby.vy * dt;
 
-    // Subtle magic dust trail behind the little girl during jumps
+    // Rastro de poeira mágica sutil atrás da garotinha durante os saltos
     if (!baby.onGround) {
       if (tick % 2 === 0) {
         spawnBabyJumpDust(baby.x, baby.y, baby.w, baby.h, baby.vx, baby.vy);
       }
     }
 
-    // Spawn speed ribbons scaling with escape level or Phase 3 level
+    // Emite faixas de velocidade proporcionais ao nível de fuga ou da Fase 3
     if (isPhase3 && !baby.onGround) {
       particles.spawnPhase3Ribbons(baby, phase3Level, getPhase3Stats(phase3Level), tick);
     } else if (isEscapeMode && !baby.onGround) {
       particles.spawnEscapeRibbons(baby, escapeLevel, getEscapeStats(escapeLevel), tick);
     }
 
-    // --- ORGANIC FAIRY BEHAVIOR & GUIDING SYSTEM ---
+    // --- COMPORTAMENTO ORGÂNICO E SISTEMA GUIA DA FADA ---
     fairy.floatAngle += 0.05;
     fairy.flutterPhase += 0.35;
 
-    // Target scouting calculation
+    // Cálculo da posição de exploração do alvo
     let targetX, targetY;
 
     if (isPhase3) {
@@ -1062,7 +1062,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       }
     }
 
-    // Erratic micro-darts simulating insect / sprite curiosity
+    // Micro-movimentos rápidos simulando a curiosidade natural de uma fada
     fairy.dartTimer--;
     if (fairy.dartTimer <= 0) {
       fairy.dartTimer = 60 + Math.floor(Math.random() * 80);
@@ -1070,7 +1070,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       fairy.dartOffsetY = (Math.random() - 0.5) * 18;
     }
 
-    // Multi-harmonic organic floating oscillations
+    // Oscilações orgânicas multifrequenciais de flutuação
     const organicOscY =
       Math.sin(fairy.floatAngle * 2.8) * 8 +
       Math.cos(fairy.floatAngle * 4.9) * 4 +
@@ -1091,7 +1091,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     fairy.x += fairy.vx;
     fairy.y += fairy.vy;
 
-    // Fairy flight dust trail that floats and swirls behind her
+    // Rastro de poeira luminosa que paira e rodopia atrás da fada
     if (tick % 2 === 0) {
       spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
     }
@@ -1102,7 +1102,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     updateFairyParticles();
     updateBabyJumpDust();
 
-    // --- PLATFORM COLLISION & LANDING ---
+    // --- COLISÃO COM PLATAFORMAS E ATERRISSAGEM ---
     const activePlatforms = isPhase3 ? phase3Platforms : platforms;
     const wasInAir = !baby.onGround;
     let landedIdx = -1;
@@ -1134,7 +1134,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       }
 
       if (isPhase3) {
-        // Phase 3 progressive difficulty evolution across 15 platforms
+        // Evolução progressiva de dificuldade da Fase 3 ao longo de 15 plataformas
         const newLevel = Math.min(14, Math.max(0, landedIdx));
         if (newLevel > phase3Level) {
           phase3Level = newLevel;
@@ -1169,7 +1169,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
           spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 28);
         }
       } else if (baby.isEscaping) {
-        // Re-establish horizontal speed upon landing and update progressive stats
+        // Restabelece a velocidade horizontal ao pousar e atualiza atributos progressivos
         if (landedIdx >= 9) {
           const newLevel = Math.min(11, Math.max(0, landedIdx - 9));
           if (newLevel > escapeLevel) {
@@ -1201,13 +1201,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         firstPlatformCleared = true;
       }
 
-      // Cutscene Trigger: Topo do Castelo de Blocos (Plataforma 9)
+      // Gatilho de Cena Cinemática: Topo do Castelo de Blocos (Plataforma 9)
       if (!isPhase3 && landedIdx === 9 && !cutsceneTriggered) {
         startCastleCutscene();
         return;
       }
 
-      // Climax celebration when landing on the 12th escape platform (grand portal pedestal)
+      // Celebração de ápice ao aterrissar na 12ª plataforma de fuga (pedestal do grande portal)
       if (!isPhase3 && landedIdx === 21) {
         spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 24);
       }
@@ -1223,7 +1223,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.respawnLandingPending = false;
       baby.currentPlatformIndex = -1;
 
-      // Ground running speed in Phase 3
+      // Velocidade de corrida no chão na Fase 3
       if (isPhase3 && !baby.controlsLocked) {
         const stats = getPhase3Stats(phase3Level);
         baby.vx = stats.runVx;
@@ -1236,7 +1236,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.onGround = false;
     }
 
-    // Check if walked past first platform without jumping
+    // Verifica se passou direto da primeira plataforma sem pular
     if (!isPhase3) {
       const firstPlatform = platforms[0];
       if (!firstPlatformCleared && baby.x > firstPlatform.x + firstPlatform.w) {
@@ -1244,7 +1244,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         return;
       }
     } else {
-      // In Phase 3: Menina se deslocando para a esquerda no chão.
+      // Na Fase 3: Menina se deslocando para a esquerda no chão.
       // A regra de falha/reset só é acionada caso o jogador ultrapasse a primeira plataforma depois que ela for devidamente alcançada sem subir nela.
       const p0 = phase3Platforms[0];
       if (baby.currentPlatformIndex < 0 && baby.onGround && baby.x + baby.w < p0.x - 20) {
@@ -1258,21 +1258,21 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // Check victory condition or Plot Twist trigger
+    // Verifica condição de vitória ou gatilho da reviravolta
     if (isPhase3) {
       if (baby.x <= trueExitDoor.x + 55 && !truePortalTransitionActive) {
         startTruePortalTransition();
         return;
       }
     } else {
-      // Reaching the exit door in Phase 1 / Phase 2: triggers Plot Twist!
+      // Alcançar a porta de saída na Fase 1 / Fase 2: ativa a reviravolta!
       if (baby.x >= exitDoor.x - 10 && !plotTwistTriggered) {
         startPlotTwistCutscene();
         return;
       }
     }
 
-    // Screen movement & Camera tracking via CameraController
+    // Movimento de tela e rastreamento de câmera via CameraController
     syncLocalsToState();
     camera.syncFromState(state);
     camera.update(dt, state, canvas, {
@@ -1283,7 +1283,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals();
   }
 
-  // --- RENDER ---
+  // --- RENDERIZAÇÃO ---
   function render() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -1306,11 +1306,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     ctx.restore();
 
-    // UI overlays rendered in crisp screen coordinates
+    // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
     drawEscapeBanner();
     drawCutsceneDialogue();
 
-    // True portal transition iris wipe (golden light envelope into Toy Room)
+    // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)
     transitionEffects.renderPortalWipe(ctx, canvas, cameraX, cameraY, trueExitDoor, transitionWipeAlpha, tick);
 
     if (gameWon) {
@@ -1335,12 +1335,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     const elapsed = currentTime - lastTime;
     lastTime = currentTime;
 
-    // Strict delta time clamp:
-    // Limit delta time ratio between 0.5 and 1.2 to prevent delta time spikes from pause/reload/lag
+    // Limite estrito de delta time:
+    // Limita a razão de delta time entre 0.5 e 1.2 para prevenir picos causados por pausa, recarga ou lag
     const rawDt = elapsed / STEP_MS;
     const dt = Math.max(0.5, Math.min(1.2, isNaN(rawDt) || rawDt <= 0 ? 1.0 : rawDt));
 
-    // Zero-latency gamepad input polling (Xbox Controller Button X) aligned with game loop
+    // Leitura de gamepad com latência zero (Botão X do controle) sincronizada ao loop do jogo
     if (inputHandler && typeof inputHandler.pollGamepad === 'function') {
       inputHandler.pollGamepad();
     }
@@ -1368,7 +1368,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     toggleMute: () => audio.toggleMute()
   });
 
-  // Initial draw so the canvas renders the scene behind the title screen
+  // Desenho inicial para renderizar o cenário por trás da tela de título
   render();
 
   return {
@@ -1383,6 +1383,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     hud: hudRenderer,
     dialogue: dialogueRenderer,
     input: inputHandler,
+    audio,
+    pauseMusic: () => audio && typeof audio.pauseMusic === 'function' && audio.pauseMusic(),
+    resumeMusic: () => audio && typeof audio.resumeMusic === 'function' && audio.resumeMusic(),
     setMasterVolume: (v) => audio.setMasterVolume(v),
     getMasterVolume: () => audio.getMasterVolume(),
     setMuted: (m) => audio.setMuted(m),

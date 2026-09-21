@@ -32,7 +32,7 @@ html {
   align-items: center;
 }
 
-/* Desktop & Widescreen Displays: Elegant 16:9 frame with border-radius */
+/* Telas de Desktop e Widescreen: Moldura elegante 16:9 com bordas arredondadas */
 @media (min-width: 860px) and (min-aspect-ratio: 1.25) {
   #game-container {
     width: 100%;
@@ -45,7 +45,7 @@ html {
   }
 }
 
-/* Mobile & Portrait Displays: Fills 100% of the screen without black letterbox bars */
+/* Telas Mobile e Retrato: Preenche 100% da tela sem barras pretas */
 @media (max-aspect-ratio: 1.24) {
   #game-container {
     width: 100vw;
@@ -164,6 +164,42 @@ canvas {
   text-shadow: 0 0 18px rgba(255, 255, 255, 0.25), 0 0 32px rgba(250, 204, 21, 0.2);
 }
 
+.start-skip-btn {
+  margin-top: 8px;
+  padding: 12px 24px;
+  min-height: 44px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  color: #fef08a;
+  background: rgba(234, 179, 8, 0.16);
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  border-radius: 12px;
+  cursor: pointer;
+  pointer-events: auto;
+  z-index: 2;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3), 0 0 14px rgba(250, 204, 21, 0.15);
+  transition: all 0.2s ease;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.start-skip-btn:hover {
+  background: rgba(234, 179, 8, 0.28);
+  border-color: rgba(250, 204, 21, 0.75);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4), 0 0 20px rgba(250, 204, 21, 0.3);
+}
+
+.start-skip-btn:active {
+  transform: translateY(0) scale(0.98);
+  background: rgba(234, 179, 8, 0.36);
+}
+
 .fade-out {
   opacity: 0.4;
 }
@@ -179,7 +215,7 @@ canvas {
   }
 }
 
-/* --- GAME OVER OVERLAY & CARD --- */
+/* --- TELA E CARTÃO DE FIM DE JOGO (GAME OVER) --- */
 #gameover-overlay {
   position: absolute;
   inset: 0;
@@ -325,7 +361,7 @@ canvas {
   box-shadow: none !important;
 }
 
-/* Sound Mute / Unmute Toggle Button */
+/* Botão de Alternância de Som (Mudo / Ativado) */
 .sound-toggle-btn {
   position: absolute;
   top: 14px;

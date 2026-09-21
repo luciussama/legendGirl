@@ -1,9 +1,9 @@
 /**
  * ParticleSystem.js
- * Particle simulation and rendering engine for:
- * - Baby jump trails & dust motes
- * - Landing and takeoff puffs with celestial 4-point twinkling sparkles
- * - High-speed celestial ribbons for Escape Mode and Phase 3
+ * Motor de simulação e renderização de partículas para:
+ * - Rastros de pulo e partículas de poeira do bebê
+ * - Nuvenzinhas de aterrissagem e decolagem com brilhos estelares cintilantes de 4 pontas
+ * - Fitas celestiais de alta velocidade para o Modo Fuga e Fase 3
  */
 
 export class ParticleSystem {
@@ -13,7 +13,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Resets all active particles
+   * Redefine todas as partículas ativas
    */
   clear() {
     this.babyJumpDust.length = 0;
@@ -21,15 +21,15 @@ export class ParticleSystem {
   }
 
   /**
-   * Spawns floating celestial dust behind baby while jumping/running
+   * Gera poeira celestial flutuante atrás do bebê enquanto pula/corre
    */
   spawnBabyJumpDust(bx, bw, by, bh, bvx, isEscapeMode = false, escapeLevel = 0) {
     const palette = [
-      '254, 240, 138', // Soft warm golden
-      '233, 213, 255', // Soft fairy purple
-      '186, 230, 253', // Soft celestial cyan
-      '251, 207, 232', // Soft pastel pink
-      '255, 255, 255'  // Sparkle white
+      '254, 240, 138', // Dourado quente suave
+      '233, 213, 255', // Roxo suave de fada
+      '186, 230, 253', // Ciano celestial suave
+      '251, 207, 232', // Rosa pastel suave
+      '255, 255, 255'  // Branco brilhante
     ];
     const count = isEscapeMode ? (escapeLevel >= 6 ? 2 : 1) : 1;
     for (let i = 0; i < count; i++) {
@@ -51,7 +51,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Spawns an ethereal puff of dust when launching into a jump
+   * Gera uma nuvenzinha etérea de poeira ao iniciar um pulo
    */
   spawnBabyJumpPuff(x, y, count = 5) {
     const palette = ['254, 240, 138', '233, 213, 255', '186, 230, 253', '255, 255, 255'];
@@ -76,7 +76,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Spawns bilateral dust puff when landing on platform
+   * Gera nuvenzinha bilateral de poeira ao aterrissar em uma plataforma
    */
   spawnBabyLandingPuff(x, y, count = 5) {
     const palette = ['254, 240, 138', '186, 230, 253', '255, 255, 255'];
@@ -100,7 +100,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Spawns speed ribbons in Phase 3
+   * Gera fitas de velocidade na Fase 3
    */
   spawnPhase3Ribbons(baby, phase3Level, stats, tick) {
     const ribbonRate = stats?.ribbonRate ?? 2;
@@ -124,7 +124,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Spawns speed ribbons in Escape Mode
+   * Gera fitas de velocidade no Modo Fuga
    */
   spawnEscapeRibbons(baby, escapeLevel, stats, tick) {
     const ribbonRate = stats?.ribbonRate ?? 2;
@@ -148,7 +148,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Physics update for all active particles
+   * Atualização de física para todas as partículas ativas
    */
   update(dt = 1.0) {
     this.updateBabyJumpDust(dt);
@@ -182,7 +182,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Draws speed ribbons with soft additive glow
+   * Desenha fitas de velocidade com brilho aditivo suave
    */
   renderSpeedRibbons(ctx, canvas, camX) {
     if (!ctx || this.speedRibbons.length === 0) return;
@@ -202,7 +202,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Draws baby jump dust motes with soft outer aura and 4-point twinkling glints
+   * Desenha partículas de poeira de pulo do bebê com aura exterior suave e cintilações de 4 pontas
    */
   renderBabyJumpDust(ctx, canvas, camX) {
     if (!ctx || this.babyJumpDust.length === 0) return;
@@ -213,19 +213,19 @@ export class ParticleSystem {
       const sy = p.y;
       if (canvas && (sx < -30 || sx > canvas.width + 30)) continue;
 
-      // Soft ethereal outer aura
+      // Aura exterior etérea suave
       ctx.fillStyle = `rgba(${p.rgb}, ${p.life * 0.32})`;
       ctx.beginPath();
       ctx.arc(sx, sy, p.size * (1.7 + Math.sin(p.wobble) * 0.3) * p.life, 0, Math.PI * 2);
       ctx.fill();
 
-      // Crisp luminous core mote
+      // Núcleo luminoso nítido da partícula
       ctx.fillStyle = `rgba(${p.rgb}, ${p.life * 0.92})`;
       ctx.beginPath();
       ctx.arc(sx, sy, Math.max(0.6, p.size * 0.68 * p.life), 0, Math.PI * 2);
       ctx.fill();
 
-      // Micro 4-point sparkle for twinkling motes
+      // Microbrilho estelar de 4 pontas para partículas cintilantes
       if (p.twinkle && p.life > 0.35) {
         const glintArm = p.size * (1.5 + Math.sin(p.wobble * 2) * 0.5) * p.life;
         ctx.strokeStyle = `rgba(255, 255, 255, ${p.life * 0.75})`;
@@ -242,7 +242,7 @@ export class ParticleSystem {
   }
 
   /**
-   * Renders all particle layers
+   * Renderiza todas as camadas de partículas
    */
   render(ctx, canvas, camX) {
     this.renderSpeedRibbons(ctx, canvas, camX);

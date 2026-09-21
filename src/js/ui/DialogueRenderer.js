@@ -1,18 +1,18 @@
 /**
  * DialogueRenderer.js
- * Victorian cutscene dialogue renderer:
- * - Hand-crafted illustrated character portraits (Baby Mana, Fairy Guide) with expressive moods
- * - Intelligent dialogue text-wrapping engine
- * - Semi-translucent dark velvet dialogue frame with golden filigree accents
- * - Cinematic letterbox bars
- * - Dynamic device-aware input prompt icons (Xbox Button X, Spacebar, Tap)
+ * Renderizador de diálogos vitorianos e cutscenes:
+ * - Retratos ilustrados desenhados à mão dos personagens (Bebê Mana, Fadinha Guia) com expressões e estados de humor
+ * - Motor inteligente de quebra e ajuste de linhas de texto
+ * - Moldura de veludo escuro semitranslúcido com detalhes ornamentados em dourado
+ * - Faixas pretas cinematográficas (letterbox)
+ * - Prompts dinâmicos com ícones sensíveis ao dispositivo conectado (Botão X do Xbox, Barra de Espaço, Toque na tela)
  */
 
 export class DialogueRenderer {
   /**
-   * Draws illustrated vector character portrait with expressive mood states
+   * Desenha o retrato vetorial ilustrado do personagem com expressões de humor
    * @param {CanvasRenderingContext2D} pCtx
-   * @param {string} charType 'fairy' or 'baby'
+   * @param {string} charType 'fairy' ou 'baby'
    * @param {number} px
    * @param {number} py
    * @param {number} radius
@@ -21,7 +21,7 @@ export class DialogueRenderer {
    */
   drawPortrait(pCtx, charType, px, py, radius, mood = 'normal', tick = 0) {
     pCtx.save();
-    // 1. Ethereal ambient halo behind portrait frame
+    // 1. Halo ambiente etéreo atrás da moldura do retrato
     const glow = pCtx.createRadialGradient(px, py, radius * 0.3, px, py, radius + 6);
     if (charType === 'fairy') {
       glow.addColorStop(0, '#fef08a');
@@ -37,13 +37,13 @@ export class DialogueRenderer {
     pCtx.arc(px, py, radius + 4, 0, Math.PI * 2);
     pCtx.fill();
 
-    // 2. Deep mystical background disc
+    // 2. Disco de fundo místico escuro
     pCtx.fillStyle = '#161024';
     pCtx.beginPath();
     pCtx.arc(px, py, radius, 0, Math.PI * 2);
     pCtx.fill();
 
-    // 3. Ornate golden bezel rings
+    // 3. Anéis ornamentados dourados de moldura
     pCtx.strokeStyle = charType === 'fairy' ? '#fde047' : '#f472b6';
     pCtx.lineWidth = 2.4;
     pCtx.stroke();
@@ -55,7 +55,7 @@ export class DialogueRenderer {
     pCtx.stroke();
 
     if (charType === 'fairy') {
-      // Animated fluttering gossamer wings
+      // Asas diáfanas esvoaçantes animadas
       const wingFlap = Math.sin(tick * 0.35) * 8;
       pCtx.fillStyle = 'rgba(6, 182, 212, 0.85)';
       pCtx.beginPath();
@@ -63,20 +63,20 @@ export class DialogueRenderer {
       pCtx.ellipse(px + 11, py - 6, 12, 4 + Math.abs(wingFlap), 0.28, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Golden fairy head & face
+      // Cabecinha e rosto dourados da fada
       pCtx.fillStyle = '#fef08a';
       pCtx.beginPath();
       pCtx.arc(px, py - 2, 9.5, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Soft fairy blush
+      // Rubor suave nas bochechas da fada
       pCtx.fillStyle = 'rgba(244, 114, 182, 0.65)';
       pCtx.beginPath();
       pCtx.arc(px - 6, py + 1, 2.2, 0, Math.PI * 2);
       pCtx.arc(px + 6, py + 1, 2.2, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Anime eyes with specular catchlights
+      // Olhos expressivos estilo anime com pontos de brilho
       pCtx.fillStyle = '#311042';
       pCtx.beginPath();
       pCtx.ellipse(px - 3.8, py - 3, 1.8, 2.2, 0, 0, Math.PI * 2);
@@ -90,7 +90,7 @@ export class DialogueRenderer {
       pCtx.fill();
 
       if (mood === 'annoyed' || mood === 'determined') {
-        // Exasperated brow & determined mouth
+        // Sobrancelha zangada e boquinha determinada
         pCtx.strokeStyle = '#991b1b';
         pCtx.lineWidth = 1.3;
         pCtx.beginPath();
@@ -104,7 +104,7 @@ export class DialogueRenderer {
         pCtx.arc(px, py + 1.2, 3.2, Math.PI + 0.3, Math.PI * 2 - 0.3);
         pCtx.stroke();
       } else {
-        // Cheerful fairy smile
+        // Sorriso alegre da fada
         pCtx.strokeStyle = '#db2777';
         pCtx.lineWidth = 1.2;
         pCtx.beginPath();
@@ -112,20 +112,20 @@ export class DialogueRenderer {
         pCtx.stroke();
       }
 
-      // Corner twinkle sparkle on portrait frame
+      // Brilho estelar no canto da moldura do retrato
       const starPhase = (tick * 0.1) % (Math.PI * 2);
       pCtx.fillStyle = '#ffffff';
       pCtx.beginPath();
       pCtx.arc(px + radius - 4, py - radius + 5, 1.8 + Math.sin(starPhase) * 0.8, 0, Math.PI * 2);
       pCtx.fill();
     } else {
-      // Baby Girl Avatar (Shocked / Inquiring)
+      // Avatar da Bebê (Chocada / Curiosa)
       pCtx.fillStyle = '#ffe0cb';
       pCtx.beginPath();
       pCtx.arc(px, py + 2, 15, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Lilac hair & cyan hairband
+      // Cabelo lilás e faixa ciano
       pCtx.fillStyle = '#8b5cf6';
       pCtx.beginPath();
       pCtx.arc(px, py - 5, 13, Math.PI, Math.PI * 2);
@@ -133,7 +133,7 @@ export class DialogueRenderer {
       pCtx.fillStyle = '#06b6d4';
       pCtx.fillRect(px - 10, py - 7, 20, 3.2);
 
-      // Wide shocked anime eyes
+      // Olhos arregalados e surpresos
       pCtx.fillStyle = '#1e1b4b';
       pCtx.beginPath();
       pCtx.ellipse(px - 5, py + 1, 3.5, 4.2, 0, 0, Math.PI * 2);
@@ -145,20 +145,20 @@ export class DialogueRenderer {
       pCtx.arc(px + 4, py - 1, 1.4, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Bewildered questioning open mouth
+      // Boquinha aberta intrigada e confusa
       pCtx.fillStyle = '#991b1b';
       pCtx.beginPath();
       pCtx.ellipse(px, py + 9, 2.4, 3, 0, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Blushed cheeks
+      // Bochechas rosadas
       pCtx.fillStyle = 'rgba(244, 114, 182, 0.6)';
       pCtx.beginPath();
       pCtx.arc(px - 8, py + 5, 2.5, 0, Math.PI * 2);
       pCtx.arc(px + 8, py + 5, 2.5, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Sweat droplet
+      // Gotinha de suor
       pCtx.fillStyle = '#38bdf8';
       pCtx.beginPath();
       pCtx.arc(px + 11, py - 2, 1.8, 0, Math.PI * 2);
@@ -168,7 +168,7 @@ export class DialogueRenderer {
   }
 
   /**
-   * Splits dialogue strings cleanly across lines without breaking words
+   * Divide strings de diálogo com segurança entre as linhas sem quebrar palavras
    * @param {CanvasRenderingContext2D} pCtx
    * @param {string} text
    * @param {number} maxWidth
@@ -197,7 +197,7 @@ export class DialogueRenderer {
   }
 
   /**
-   * Renders the cutscene dialogue window, standby tutorial prompts, and cinematic bars
+   * Renderiza a janela de diálogo da cutscene, prompts de tutorial no modo de espera e faixas cinematográficas
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {object} state
@@ -221,7 +221,7 @@ export class DialogueRenderer {
     const wrapDialogueText = (pCtx, text, maxWidth) => this.wrapText(pCtx, text, maxWidth);
 
     const isStandbyShowing = isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);
-    // Only show dialogue when cutscene is active, during standby, or during plot twist steps 4 (Baby) and 5 (Fairy)
+    // Exibe diálogo apenas quando cutscene estiver ativa, durante standby ou nos passos 4 (Bebê) e 5 (Fada) da reviravolta
     if (!cutsceneActive && (!plotTwistActive || plotTwistStep < 4) && !isStandbyShowing) return;
 
     ctx.save();
@@ -229,7 +229,7 @@ export class DialogueRenderer {
       ctx.globalAlpha = standbyDialogueAlpha;
     }
 
-    // 1. Cinematic letterbox bars
+    // 1. Faixas pretas cinematográficas (letterbox)
     ctx.fillStyle = '#06040a';
     ctx.fillRect(0, 0, canvas.width, 42);
     ctx.fillRect(0, canvas.height - 42, canvas.width, 42);
@@ -243,7 +243,7 @@ export class DialogueRenderer {
     ctx.lineTo(canvas.width, canvas.height - 42);
     ctx.stroke();
 
-    // Determine active dialogue speaker, text, and mood
+    // Determina o interlocutor ativo, texto e expressão
     let speaker = 'fairy';
     let speakerName = '✦ FADINHA ✦';
     let speakerColor = '#fef08a';
@@ -297,7 +297,7 @@ export class DialogueRenderer {
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     }
 
-    // 2. Adaptive container sizing & Word wrapping to prevent any overflow
+    // 2. Dimensionamento adaptativo do container e quebra de palavras para evitar transbordamento
     const boxW = Math.min(canvas.width - 24, 760);
     const boxX = (canvas.width - boxW) / 2;
     const portR = isPortrait ? 28 : 32;
@@ -305,12 +305,12 @@ export class DialogueRenderer {
     const textX = boxX + portPadX + portR * 2 + 16;
     const textMaxW = boxW - (textX - boxX) - 20;
 
-    // Dynamic font scaling & word wrap
+    // Escala dinâmica de tamanho de fonte e quebra de linha
     let fontSize = isPortrait ? 14.5 : 16;
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
     let lines = wrapDialogueText(ctx, dialogueText, textMaxW);
 
-    // Auto-fit: scale font down if text exceeds 3 lines on landscape or 4 on portrait
+    // Ajuste automático: reduz fonte caso o texto ultrapasse 3 linhas (horizontal) ou 4 (vertical)
     const maxAllowedLines = isPortrait ? 4 : 3;
     while (lines.length > maxAllowedLines && fontSize > 12) {
       fontSize -= 0.5;
@@ -323,7 +323,7 @@ export class DialogueRenderer {
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
     const boxY = canvas.height - boxH - 12;
 
-    // Draw Dialogue Box Container
+    // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);
     bgGrad.addColorStop(0, 'rgba(26, 20, 38, 0.97)');
     bgGrad.addColorStop(1, 'rgba(13, 9, 20, 0.99)');
@@ -342,7 +342,7 @@ export class DialogueRenderer {
     ctx.roundRect(boxX + 4, boxY + 4, boxW - 8, boxH - 8, 8);
     ctx.stroke();
 
-    // Corner decorative gems
+    // Joias decorativas nos cantos
     const corners = [
       { x: boxX + 7, y: boxY + 7 },
       { x: boxX + boxW - 7, y: boxY + 7 },
@@ -356,7 +356,7 @@ export class DialogueRenderer {
       ctx.fill();
     });
 
-    // 3. Draw Portrait & Badge with guaranteed visual consistency
+    // 3. Desenha retrato e distintivo do nome com consistência visual
     const portX = boxX + portPadX + portR;
     const portY = boxY + portR + 14;
     drawDialoguePortrait(ctx, speaker, portX, portY, portR, mood);
@@ -366,7 +366,7 @@ export class DialogueRenderer {
     ctx.textAlign = 'center';
     ctx.fillText(speakerName, portX, portY + portR + 13);
 
-    // 4. Draw Wrapped Dialogue Text Lines with *risos* highlighting
+    // 4. Desenha as linhas de texto com destaque especial para *risos*
     const textStartY = boxY + 28;
     ctx.textAlign = 'left';
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
@@ -396,7 +396,7 @@ export class DialogueRenderer {
       }
     });
 
-    // 5. Advance prompt (dedicated bottom right corner, guaranteed non-overlapping)
+    // 5. Prompt de avanço (posicionado no canto inferior direito sem sobreposição)
     const blink = Math.sin(tick * 0.1) * 0.3 + 0.7;
     ctx.fillStyle = `rgba(253, 224, 71, ${blink})`;
     ctx.font = 'bold 11.5px sans-serif';

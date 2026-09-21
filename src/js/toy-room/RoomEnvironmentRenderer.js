@@ -1,18 +1,18 @@
 /**
  * RoomEnvironmentRenderer.js
- * Hand-painted 2D Top-Down Playroom environment in Legend of Mana aesthetic:
- * - Honey-oak hardwood planks with organic grain knots
- * - Sunny rose/peach wallpaper with floral stencils and carved baseboard
- * - Arched stained-glass windows casting volumetric sunlight beams
- * - Glowing entrance portal threshold
- * - Ornate woven rugs (Mandala sunburst, floral play mat, bedside fringe rug)
- * - Wooden train track circuit
- * - Solid handcrafted furniture items (Toy chest with opening lid, bookshelf, plush armchair, fortress, table, rocking horse, wardrobe)
+ * Cenário 2D visto de cima da Sala de Brinquedos estilo Legend of Mana:
+ * - Tábuas de piso em carvalho dourado com nós e veios orgânicos de madeira
+ * - Papel de parede ensolarado em tons de rosa e pêssego com estêncil floral e rodapé esculpido
+ * - Janelas em arco com vitrais projetando feixes volumétricos de luz solar
+ * - Portal de entrada iluminado
+ * - Tapetes ornamentados (Mandala radiante, tapete de brincar floral e tapete de cabeceira com franjas)
+ * - Circuito de trilhos de trem de madeira
+ * - Móveis robustos e detalhados (Baú com tampa móvel, estante de livros, poltrona, fortaleza, mesa, cavalinho de pau, armário)
  */
 
 export class RoomEnvironmentRenderer {
   /**
-   * Renders the room floor, walls, windows, portals, rugs, and tracks
+   * Renderiza o piso, paredes, janelas, portais, tapetes e trilhos do quarto
    * @param {CanvasRenderingContext2D} ctx
    * @param {number} roomW
    * @param {number} roomH
@@ -20,17 +20,17 @@ export class RoomEnvironmentRenderer {
   renderBackground(ctx, roomW, roomH) {
     if (!ctx) return;
 
-    // Floor: Golden honey-oak planks with hand-drawn grain
+    // Piso: Tábuas de carvalho dourado com veios desenhados à mão
     ctx.fillStyle = '#fef3c7';
     ctx.fillRect(0, 0, roomW, roomH);
 
-    // Hardwood floor plank lines
+    // Linhas de tábuas de madeira no chão
     const plankHeight = 48;
     for (let y = 240; y < roomH; y += plankHeight) {
       ctx.fillStyle = (y / plankHeight) % 2 === 0 ? '#fde68a' : '#fef08a';
       ctx.fillRect(0, y, roomW, plankHeight);
 
-      // Plank separator groove
+      // Ranhura divisória da tábua
       ctx.strokeStyle = '#d97706';
       ctx.lineWidth = 1.5;
       ctx.beginPath();
@@ -38,7 +38,7 @@ export class RoomEnvironmentRenderer {
       ctx.lineTo(roomW, y);
       ctx.stroke();
 
-      // Handcrafted organic wood knots & grain accents
+      // Nós orgânicos e detalhes de veios de madeira
       ctx.strokeStyle = 'rgba(217, 119, 6, 0.22)';
       ctx.lineWidth = 1.0;
       for (let x = (y * 7) % 120; x < roomW; x += 180) {
@@ -48,7 +48,7 @@ export class RoomEnvironmentRenderer {
       }
     }
 
-    // Top Wallpaper (Sunny coral/peach watercolor wall with whimsical floral patterns)
+    // Papel de Parede Superior (Aquarela coral/pêssego ensolarada com padrões florais)
     const wallGrad = ctx.createLinearGradient(0, 0, 0, 240);
     wallGrad.addColorStop(0, '#f472b6');
     wallGrad.addColorStop(0.5, '#fb923c');
@@ -56,7 +56,7 @@ export class RoomEnvironmentRenderer {
     ctx.fillStyle = wallGrad;
     ctx.fillRect(0, 0, roomW, 240);
 
-    // Whimsical floral stencils on wallpaper
+    // Estêncil floral decorativo no papel de parede
     ctx.fillStyle = 'rgba(255, 255, 255, 0.28)';
     for (let wx = 60; wx < roomW; wx += 90) {
       for (let wy = 40; wy < 210; wy += 60) {
@@ -72,7 +72,7 @@ export class RoomEnvironmentRenderer {
       }
     }
 
-    // Carved Wooden Baseboard separating wall and floor
+    // Rodapé de madeira esculpido separando parede e piso
     ctx.fillStyle = '#b45309';
     ctx.fillRect(0, 228, roomW, 16);
     ctx.fillStyle = '#78350f';
@@ -80,30 +80,30 @@ export class RoomEnvironmentRenderer {
     ctx.fillStyle = '#fde68a';
     ctx.fillRect(0, 226, roomW, 2);
 
-    // Left, Right and Bottom Outer Wall Moldings
+    // Molduras externas das paredes esquerda, direita e inferior
     ctx.fillStyle = '#92400e';
     ctx.fillRect(0, 0, 50, roomH);
     ctx.fillRect(roomW - 50, 0, 50, roomH);
     ctx.fillRect(0, roomH - 50, roomW, 50);
 
-    // Gold trim inner border
+    // Borda interna com detalhes dourados
     ctx.strokeStyle = '#f59e0b';
     ctx.lineWidth = 4;
     ctx.strokeRect(50, 246, roomW - 100, roomH - 296);
 
-    // Arched Windows in the Wall letting in brilliant golden daylight
+    // Janelas em arco na parede trazendo iluminação dourada natural
     this.drawArchedWindow(ctx, 520, 30);
     this.drawArchedWindow(ctx, 1280, 30);
 
-    // Open Doorway on the Left (from which the girl emerged)
+    // Porta aberta à esquerda (por onde a garotinha emergiu)
     this.drawEntrancePortal(ctx, 50, 550);
 
-    // Ornate Woven Rugs on the Floor
+    // Tapetes decorativos no chão
     this.drawCentralMandalaRug(ctx, 800, 700);
     this.drawFloralPlayMat(ctx, 1180, 520);
     this.drawBedsideFringeRug(ctx, 280, 920);
 
-    // Train Track Corridor Loop
+    // Circuito de trilhos de trem de madeira
     this.drawTrainTracks(ctx);
   }
 
@@ -147,7 +147,7 @@ export class RoomEnvironmentRenderer {
     ctx.lineTo(wx + 150, wy + 170);
     ctx.fill();
 
-    // Volumetric Sunlight Beam casting diagonally onto floor
+    // Feixe de luz solar volumétrico projetando diagonalmente no chão
     const beamGrad = ctx.createLinearGradient(wx + 80, wy + 160, wx - 180, wy + 620);
     beamGrad.addColorStop(0, 'rgba(254, 240, 138, 0.38)');
     beamGrad.addColorStop(0.4, 'rgba(253, 224, 71, 0.18)');
@@ -300,32 +300,32 @@ export class RoomEnvironmentRenderer {
   }
 
   /**
-   * Renders a specific furniture obstacle
+   * Renderiza um obstáculo ou móvel específico
    * @param {CanvasRenderingContext2D} ctx
-   * @param {object} f Furniture object
+   * @param {object} f Objeto do móvel
    */
   renderFurniture(ctx, f) {
     if (!ctx || !f) return;
 
     ctx.save();
-    // Drop Shadow
+    // Sombra projetada no chão
     ctx.fillStyle = 'rgba(80, 35, 10, 0.35)';
     ctx.beginPath();
     ctx.ellipse(f.x + f.w / 2, f.y + f.h - 4, f.w / 2 + 12, 18, 0, 0, Math.PI * 2);
     ctx.fill();
 
     if (f.type === 'chest') {
-      // Base Box
+      // Caixa base do baú
       ctx.fillStyle = '#92400e';
       ctx.fillRect(f.x, f.y + 25, f.w, f.h - 25);
 
-      // Gold Corner Plates & Studs
+      // Placas e tachas douradas nos cantos
       ctx.fillStyle = '#facc15';
       ctx.fillRect(f.x, f.y + 25, 18, f.h - 25);
       ctx.fillRect(f.x + f.w - 18, f.y + 25, 18, f.h - 25);
       ctx.fillRect(f.x + f.w / 2 - 12, f.y + 25, 24, f.h - 25);
 
-      // Front Lock plate & Keyhole
+      // Placa de fechadura frontal e buraco da chave
       ctx.fillStyle = '#eab308';
       ctx.beginPath();
       ctx.arc(f.x + f.w / 2, f.y + 55, 16, 0, Math.PI * 2);
@@ -336,7 +336,7 @@ export class RoomEnvironmentRenderer {
       ctx.rect(f.x + f.w / 2 - 3, f.y + 53, 6, 12);
       ctx.fill();
 
-      // Rounded Lid
+      // Tampa arredondada do baú
       const lidLift = (f.lidOpen || 0) * 25;
       ctx.fillStyle = '#b45309';
       ctx.beginPath();

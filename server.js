@@ -8,10 +8,10 @@ const __dirname = path.dirname(__filename);
 const app = express();
 const PORT = 3000;
 
-// Serve static assets from root directory
+// Fornece arquivos estáticos a partir do diretório raiz
 app.use(express.static(__dirname));
 
-// Fallback to index.html for SPA/client routing
+// Redirecionamento fallback para index.html em roteamento de cliente/SPA
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });

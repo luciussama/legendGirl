@@ -1,14 +1,14 @@
 /**
  * TransitionEffects.js
- * Renders cinematic scene transitions:
- * - Golden Iris Wipe (expanding radiant circle that envelops the screen)
- * - Celebratory Ascension Sparkles orbiting the portal
- * - Full-screen soft light flush
+ * Renderiza transições de cena cinematográficas:
+ * - Iris Dourada (círculo radiante expansivo que envolve a tela)
+ * - Fagulhas e partículas celestiais comemorativas orbitando o portal
+ * - Brilho suave preenchendo a tela inteira
  */
 
 export class TransitionEffects {
   /**
-   * Renders the true portal golden iris wipe and orbiting ascension sparkles
+   * Renderiza a transição de íris dourada do portal e as partículas de ascensão em órbita
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} cameraX
@@ -44,7 +44,7 @@ export class TransitionEffects {
       ctx.fillRect(0, 0, canvas.width, canvas.height);
     }
 
-    // Floating celebratory ascension sparkles
+    // Partículas flutuantes de ascensão comemorativa
     const pCount = 20;
     for (let i = 0; i < pCount; i++) {
       const angle = (i / pCount) * Math.PI * 2 + tick * 0.05;

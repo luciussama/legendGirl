@@ -1,14 +1,14 @@
 /**
  * FairyRenderer.js
- * Responsible for rendering the ethereal guide fairy, her luminous wings,
- * pulsating halo, stardust particles trail, and cutscene guide beam.
+ * Responsável pela renderização da fadinha guia etérea, suas asas luminosas,
+ * auréola pulsante, rastro de poeira estelar e feixe guia da cinemática.
  */
 
 import { platforms as defaultPlatforms } from '../config.js';
 
 export class FairyRenderer {
   /**
-   * Render the fairy and her particle effects
+   * Renderiza a fadinha e seus efeitos de partículas
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} fairy
    * @param {object} state
@@ -28,27 +28,27 @@ export class FairyRenderer {
 
     ctx.save();
 
-    // Draw fairy magic dust particles with luminous aura and twinkling star glints
+    // Desenha partículas de poeira mágica da fada com aura luminosa e brilhos cintilantes em estrela
     for (let i = 0; i < fairy.particles.length; i++) {
       const p = fairy.particles[i];
       const sx = p.x - camX;
       const sy = p.y;
       if (sx < -40 || sx > canvas.width + 40) continue;
 
-      // Soft luminous aura
+      // Aura luminosa suave
       const glowSize = p.size * (1.8 + Math.sin(p.wobble || 0) * 0.4) * p.life;
       ctx.fillStyle = `hsla(${p.hue}, 100%, 75%, ${p.life * 0.38})`;
       ctx.beginPath();
       ctx.arc(sx, sy, glowSize, 0, Math.PI * 2);
       ctx.fill();
 
-      // Core bright starlet
+      // Estrela brilhante central
       ctx.fillStyle = `hsla(${p.hue}, 100%, 90%, ${p.life * 0.95})`;
       ctx.beginPath();
       ctx.arc(sx, sy, Math.max(0.8, p.size * 0.65 * p.life), 0, Math.PI * 2);
       ctx.fill();
 
-      // 4-point star sparkle glint for twinkling motes
+      // Brilho cintilante de estrela de 4 pontas para partículas cintilantes
       if (p.twinkle && p.life > 0.25) {
         const glintArm = p.size * (1.8 + Math.sin((p.wobble || 0) * 2.5) * 0.6) * p.life;
         ctx.strokeStyle = `rgba(255, 255, 255, ${p.life * 0.85})`;
@@ -65,7 +65,7 @@ export class FairyRenderer {
     const fx = fairy.x - camX;
     const fy = fairy.y;
 
-    // Golden & Cyan Aura Halo
+    // Auréola Dourada e Ciano
     const haloRadius = 16 + Math.sin(fairy.floatAngle * 3) * 3;
     const fairyAura = ctx.createRadialGradient(fx, fy, 2, fx, fy, haloRadius);
     fairyAura.addColorStop(0, 'rgba(254, 240, 138, 0.9)');
@@ -76,7 +76,7 @@ export class FairyRenderer {
     ctx.arc(fx, fy, haloRadius, 0, Math.PI * 2);
     ctx.fill();
 
-    // Subtle guide sparkles pointing toward the next platform
+    // Faíscas guias sutis apontando para a próxima plataforma
     if (tick % 4 === 0) {
       const nextP = platforms[baby.currentPlatformIndex + 1];
       if (nextP) {
@@ -93,35 +93,35 @@ export class FairyRenderer {
       }
     }
 
-    // Wings with rapid dynamic flutter tied to speed
+    // Asas com batimento dinâmico rápido vinculado à velocidade
     const flutterSpeed = 0.35 + Math.hypot(fairy.vx, fairy.vy) * 0.15;
     const wingFlap = Math.sin(fairy.flutterPhase) * 10;
 
-    // Translucent gossamer wings
+    // Asas translúcidas delicadas
     ctx.fillStyle = 'rgba(6, 182, 212, 0.85)';
     ctx.beginPath();
-    // Top wings
+    // Asas superiores
     ctx.ellipse(fx - 4, fy - 6, 9, 3.5 + Math.abs(wingFlap), -0.4, 0, Math.PI * 2);
     ctx.ellipse(fx + 4, fy - 6, 9, 3.5 + Math.abs(wingFlap), 0.4, 0, Math.PI * 2);
-    // Lower secondary wings
+    // Asas secundárias inferiores
     ctx.ellipse(fx - 5, fy + 3, 6, 2.2 + Math.abs(wingFlap) * 0.7, 0.35, 0, Math.PI * 2);
     ctx.ellipse(fx + 5, fy + 3, 6, 2.2 + Math.abs(wingFlap) * 0.7, -0.35, 0, Math.PI * 2);
     ctx.fill();
 
-    // Wing edge sparkles
+    // Brilhos na ponta das asas
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(fx - 9, fy - 7 - Math.abs(wingFlap) * 0.5, 1.4, 0, Math.PI * 2);
     ctx.arc(fx + 9, fy - 7 - Math.abs(wingFlap) * 0.5, 1.4, 0, Math.PI * 2);
     ctx.fill();
 
-    // Fairy golden glowing head
+    // Cabeça brilhante dourada da fada
     ctx.fillStyle = '#fef08a';
     ctx.beginPath();
     ctx.arc(fx, fy - 3, 4.8, 0, Math.PI * 2);
     ctx.fill();
 
-    // Fairy dress / tunic
+    // Vestido / túnica da fada
     ctx.fillStyle = '#ec4899';
     ctx.beginPath();
     ctx.moveTo(fx, fy - 1);
@@ -130,20 +130,20 @@ export class FairyRenderer {
     ctx.closePath();
     ctx.fill();
 
-    // Fairy tiny magic wand pointing ahead
+    // Varinha mágica diminuta apontando à frente
     ctx.strokeStyle = '#fde047';
     ctx.lineWidth = 1.2;
     ctx.beginPath();
     ctx.moveTo(fx + 3, fy + 3);
     ctx.lineTo(fx + 11, fy + 1);
     ctx.stroke();
-    // Wand star tip
+    // Estrela na ponta da varinha
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(fx + 12, fy + 1, 1.8, 0, Math.PI * 2);
     ctx.fill();
 
-    // Cutscene Step 1: Investigative curiosity sparkles & question mark
+    // Etapa 1 da Cinemática: Faíscas de curiosidade investigativa e ponto de interrogação
     if (cutsceneActive && cutsceneStep === 1) {
       const qFloat = Math.sin(tick * 0.12) * 3;
       ctx.fillStyle = '#fde047';
@@ -156,7 +156,7 @@ export class FairyRenderer {
       ctx.fill();
     }
 
-    // Cutscene Step 2: Guiding beam pointing to the exit ("A saída é logo ali!")
+    // Etapa 2 da Cinemática: Feixe guia apontando para a saída ("A saída é logo ali!")
     if (cutsceneActive && cutsceneStep === 2) {
       const beamGrad = ctx.createLinearGradient(fx + 12, fy + 1, fx + 220, fy + 1);
       beamGrad.addColorStop(0, 'rgba(254, 240, 138, 0.95)');

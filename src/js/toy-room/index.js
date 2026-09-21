@@ -1,6 +1,6 @@
 /**
  * toy-room/index.js
- * Central module entry point for the Toy Room Phase.
+ * Ponto de entrada central do módulo da Sala de Brinquedos.
  */
 
 export { ToyRenderer, toyRenderer } from './ToyRenderer.js';

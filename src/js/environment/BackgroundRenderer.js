@@ -1,7 +1,7 @@
 /**
  * BackgroundRenderer.js
- * Renders the atmospheric Victorian nursery background wall, wainscoting,
- * wallpaper patterns, windows, and detailed room scenery items.
+ * Renderiza a parede de fundo atmosférica do berçário vitoriano, lambris de madeira,
+ * padrões de papel de parede, janelas e itens decorativos detalhados do quarto.
  */
 
 import { FLOOR_Y, roomScenery as defaultRoomScenery } from '../config.js';
@@ -12,7 +12,7 @@ export class BackgroundRenderer {
   }
 
   /**
-   * Renders the Victorian nursery wallpaper, wood paneling, windows, and floor
+   * Renderiza o papel de parede do berçário vitoriano, painéis de madeira, janelas e piso
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {number} camX
@@ -23,18 +23,18 @@ export class BackgroundRenderer {
     const FLOOR_Y = this.floorY;
     const tick = options.tick || 0;
 
-    // Deep atmospheric nursery background
+    // Fundo atmosférico profundo do berçário
     ctx.fillStyle = '#110e19';
     ctx.fillRect(0, -600, canvas.width, canvas.height + 1200);
 
-    // Wallpaper stripes & diamond pattern with parallax
+    // Listras do papel de parede e padrão de losangos com paralaxe
     const bgOffset = (camX * 0.15) % 80;
     ctx.fillStyle = '#161220';
     for (let x = -80; x < canvas.width + 80; x += 80) {
       ctx.fillRect(x - bgOffset, -400, 40, FLOOR_Y + 400);
     }
 
-    // Faint golden wallpaper stars
+    // Estrelas douradas suaves no papel de parede
     ctx.fillStyle = 'rgba(250, 204, 21, 0.07)';
     for (let x = -80; x < canvas.width + 80; x += 80) {
       const sx = x - bgOffset + 20;
@@ -45,7 +45,7 @@ export class BackgroundRenderer {
       }
     }
 
-    // Bunting garland / pennant flags hanging across the room
+    // Guirlanda de bandeirolas pendurada pelo quarto
     const garlandOffset = (camX * 0.2) % 360;
     ctx.strokeStyle = 'rgba(120, 100, 150, 0.4)';
     ctx.lineWidth = 1.2;
@@ -56,7 +56,7 @@ export class BackgroundRenderer {
       ctx.quadraticCurveTo(sx + 90, 110, sx + 180, 70);
       ctx.stroke();
 
-      // Colorful hanging pennant triangles
+      // Triângulos coloridos de bandeirolas penduradas
       const colors = ['#f43f5e', '#facc15', '#06b6d4', '#a855f7', '#10b981', '#fb923c'];
       for (let p = 0; p < 5; p++) {
         const t = (p + 0.5) / 5;
@@ -72,13 +72,13 @@ export class BackgroundRenderer {
       }
     }
 
-    // Windows to starry night sky
+    // Janelas para o céu estrelado da noite
     const windowLocations = [780, 1950];
     windowLocations.forEach((wx) => {
       const sx = wx - camX * 0.3;
       if (sx < -140 || sx > canvas.width + 140) return;
 
-      // Window frame
+      // Moldura da janela
       ctx.fillStyle = '#1c152b';
       ctx.strokeStyle = '#42335f';
       ctx.lineWidth = 3;
@@ -87,13 +87,13 @@ export class BackgroundRenderer {
       ctx.fill();
       ctx.stroke();
 
-      // Glasspane midnight sky
+      // Vidro com o céu da meia-noite
       ctx.fillStyle = '#06050e';
       ctx.beginPath();
       ctx.roundRect(sx + 6, 86, 78, 118, [40, 40, 2, 2]);
       ctx.fill();
 
-      // Crescent Moon
+      // Lua Crescente
       ctx.fillStyle = '#fef08a';
       ctx.beginPath();
       ctx.arc(sx + 35, 115, 12, 0, Math.PI * 2);
@@ -103,14 +103,14 @@ export class BackgroundRenderer {
       ctx.arc(sx + 39, 113, 10, 0, Math.PI * 2);
       ctx.fill();
 
-      // Twinkling stars in window
+      // Estrelas cintilando na janela
       ctx.fillStyle = '#ffffff';
       const tw = Math.sin(tick * 0.05 + wx) * 0.5 + 0.5;
       ctx.fillRect(sx + 60, 110, 2, 2);
       ctx.fillRect(sx + 22, 145, 1.5, 1.5);
       ctx.fillRect(sx + 65, 160, 2 * tw, 2 * tw);
 
-      // Window cross panes
+      // Divisórias em cruz da vidraça
       ctx.strokeStyle = '#322549';
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -120,7 +120,7 @@ export class BackgroundRenderer {
       ctx.lineTo(sx + 84, 140);
       ctx.stroke();
 
-      // Sheer lilac curtains with soft folds
+      // Cortinas translúcidas lilases com dobras suaves
       ctx.fillStyle = 'rgba(168, 85, 247, 0.28)';
       ctx.beginPath();
       ctx.moveTo(sx - 4, 80);
@@ -137,7 +137,7 @@ export class BackgroundRenderer {
       ctx.fill();
     });
 
-    // Wall peg hooks with hanging items
+    // Ganchos de parede com itens pendurados
     const wallPegs = [
       { x: 300, item: 'wizard_hat' },
       { x: 1250, item: 'cape' },
@@ -147,14 +147,14 @@ export class BackgroundRenderer {
       const sx = peg.x - camX * 0.45;
       if (sx < -60 || sx > canvas.width + 60) return;
 
-      // Wooden peg knob
+      // Puxador/gancho de madeira
       ctx.fillStyle = '#854d0e';
       ctx.beginPath();
       ctx.arc(sx, 165, 4, 0, Math.PI * 2);
       ctx.fill();
 
       if (peg.item === 'wizard_hat') {
-        // Pointy child wizard hat with yellow stars
+        // Chapéu pontudo de bruxinho infantil com estrelas amarelas
         ctx.fillStyle = '#6b21a8';
         ctx.beginPath();
         ctx.ellipse(sx, 205, 16, 5, 0, 0, Math.PI * 2);
@@ -168,7 +168,7 @@ export class BackgroundRenderer {
         ctx.fillStyle = '#facc15';
         ctx.fillRect(sx, 186, 3, 3);
       } else if (peg.item === 'cape') {
-        // Little hero cape
+        // Capinha de herói infantil
         ctx.fillStyle = '#e11d48';
         ctx.beginPath();
         ctx.moveTo(sx, 165);
@@ -177,7 +177,7 @@ export class BackgroundRenderer {
         ctx.closePath();
         ctx.fill();
       } else {
-        // Striped winter scarf
+        // Cachecol listrado de inverno
         ctx.fillStyle = '#0284c7';
         ctx.fillRect(sx - 4, 168, 8, 38);
         ctx.fillStyle = '#fef08a';
@@ -186,7 +186,7 @@ export class BackgroundRenderer {
       }
     });
 
-    // Framed children's crayon drawings on the wall
+    // Desenhos em giz de cera emoldurados na parede
     const wallDrawings = [
       { x: 420, y: 140, type: 'sun' },
       { x: 980, y: 130, type: 'castle' },
@@ -197,15 +197,15 @@ export class BackgroundRenderer {
       const sx = d.x - camX * 0.45;
       if (sx < -70 || sx > canvas.width + 70) return;
 
-      // Wooden picture frame
+      // Moldura de madeira do quadro
       ctx.fillStyle = '#451a03';
       ctx.fillRect(sx - 2, d.y - 2, 48, 44);
-      // Paper sheet
+      // Folha de papel
       ctx.fillStyle = '#fdfbf7';
       ctx.fillRect(sx + 2, d.y + 2, 40, 36);
 
       if (d.type === 'sun') {
-        // Big yellow smiley sun with crayon rays
+        // Sol amarelo sorridente com raios de giz de cera
         ctx.fillStyle = '#facc15';
         ctx.beginPath();
         ctx.arc(sx + 22, d.y + 20, 8, 0, Math.PI * 2);
@@ -219,7 +219,7 @@ export class BackgroundRenderer {
           ctx.lineTo(sx + 22 + Math.cos(ang) * 14, d.y + 20 + Math.sin(ang) * 14);
           ctx.stroke();
         }
-        // Smiley face
+        // Rostinho sorridente
         ctx.fillStyle = '#1e1b4b';
         ctx.fillRect(sx + 19, d.y + 18, 1.5, 1.5);
         ctx.fillRect(sx + 24, d.y + 18, 1.5, 1.5);
@@ -227,7 +227,7 @@ export class BackgroundRenderer {
         ctx.arc(sx + 22, d.y + 21, 3, 0.2, Math.PI - 0.2);
         ctx.stroke();
       } else if (d.type === 'castle') {
-        // Little purple crayon castle
+        // Castelo roxo em giz de cera
         ctx.fillStyle = '#8b5cf6';
         ctx.fillRect(sx + 10, d.y + 14, 24, 18);
         ctx.fillStyle = '#ec4899';
@@ -238,7 +238,7 @@ export class BackgroundRenderer {
         ctx.closePath();
         ctx.fill();
       } else if (d.type === 'rainbow') {
-        // Crayon rainbow
+        // Arco-íris em giz de cera
         ctx.lineWidth = 2;
         const colors = ['#ef4444', '#f59e0b', '#10b981', '#3b82f6'];
         colors.forEach((c, idx) => {
@@ -248,12 +248,12 @@ export class BackgroundRenderer {
           ctx.stroke();
         });
       } else {
-        // Crayon cat
+        // Gatinho em giz de cera
         ctx.fillStyle = '#f97316';
         ctx.beginPath();
         ctx.arc(sx + 22, d.y + 22, 7, 0, Math.PI * 2);
         ctx.fill();
-        // Ears
+        // Orelhas
         ctx.beginPath();
         ctx.moveTo(sx + 17, d.y + 17);
         ctx.lineTo(sx + 15, d.y + 11);
@@ -265,16 +265,16 @@ export class BackgroundRenderer {
       }
     });
 
-    // High floating wall shelf with miniature toys
+    // Prateleira alta flutuante na parede com brinquedos em miniatura
     const wallShelves = [580, 1400, 2100];
     wallShelves.forEach(wx => {
       const sx = wx - camX * 0.4;
       if (sx < -120 || sx > canvas.width + 120) return;
 
-      // Wooden shelf board
+      // Prancha de madeira da prateleira
       ctx.fillStyle = '#312117';
       ctx.fillRect(sx, 160, 95, 8);
-      // Metal shelf bracket supports
+      // Mão-francesa / suportes metálicos da prateleira
       ctx.strokeStyle = '#1e140d';
       ctx.lineWidth = 2;
       ctx.beginPath();
@@ -286,13 +286,13 @@ export class BackgroundRenderer {
       ctx.lineTo(sx + 69, 168);
       ctx.stroke();
 
-      // Books leaning on shelf
+      // Livros inclinados na prateleira
       ctx.fillStyle = '#0284c7';
       ctx.fillRect(sx + 12, 134, 7, 26);
       ctx.fillStyle = '#e11d48';
       ctx.fillRect(sx + 20, 138, 6, 22);
 
-      // Glass snowglobe
+      // Globo de neve de vidro
       ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
       ctx.strokeStyle = '#93c5fd';
       ctx.lineWidth = 1;
@@ -303,7 +303,7 @@ export class BackgroundRenderer {
       ctx.fillStyle = '#451a03';
       ctx.fillRect(sx + 38, 154, 14, 6);
 
-      // Miniature wooden sailboat
+      // Barco à vela de madeira em miniatura
       ctx.fillStyle = '#854d0e';
       ctx.beginPath();
       ctx.moveTo(sx + 68, 156);
@@ -321,11 +321,11 @@ export class BackgroundRenderer {
       ctx.fill();
     });
 
-    // --- FLOOR & BASEBOARDS ---
+    // --- PISO E RODAPÉS ---
     ctx.fillStyle = '#1c1726';
     ctx.fillRect(0, FLOOR_Y, canvas.width, canvas.height - FLOOR_Y + 700);
 
-    // Dark wood baseboard molding
+    // Moldura do rodapé de madeira escura
     ctx.fillStyle = '#2b2138';
     ctx.fillRect(0, FLOOR_Y - 8, canvas.width, 8);
     ctx.strokeStyle = '#3e3152';
@@ -335,7 +335,7 @@ export class BackgroundRenderer {
     ctx.lineTo(canvas.width, FLOOR_Y - 8);
     ctx.stroke();
 
-    // Wooden plank seams on floor
+    // Junções das tábuas de madeira no chão
     ctx.strokeStyle = '#15111e';
     ctx.lineWidth = 2;
     for (let x = -80; x < canvas.width + 80; x += 70) {
@@ -348,7 +348,7 @@ export class BackgroundRenderer {
   }
 
   /**
-   * Renders toys, rugs, books, and scattered clutter across the floor
+   * Renderiza brinquedos, tapetes, livros e objetos espalhados pelo chão
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {Array} [scenery]
@@ -367,7 +367,7 @@ export class BackgroundRenderer {
 
       switch (item.type) {
         case 'fluffy_rug': {
-          // Large round pastel mandala rug on floor
+          // Grande tapete mandala pastel redondo no chão
           ctx.fillStyle = '#4a2840';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y + 18, 55, 16, 0, 0, Math.PI * 2);
@@ -383,7 +383,7 @@ export class BackgroundRenderer {
         }
 
         case 'striped_rug': {
-          // Oval striped runner rug
+          // Passadeira oval listrada
           ctx.fillStyle = '#1e293b';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y + 20, 60, 15, 0, 0, Math.PI * 2);
@@ -399,7 +399,7 @@ export class BackgroundRenderer {
         }
 
         case 'dropped_sweater': {
-          // Dropped kid's soft cozy knit sweater
+          // Suéter infantil de tricô macio e quentinho jogado
           ctx.fillStyle = '#ec4899';
           ctx.strokeStyle = '#9d174d';
           ctx.lineWidth = 1.2;
@@ -407,13 +407,13 @@ export class BackgroundRenderer {
           ctx.ellipse(sx, FLOOR_Y - 9, 16, 9, 0.15, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-          // Crumpled sleeves
+          // Mangas amassadas
           ctx.beginPath();
           ctx.ellipse(sx - 14, FLOOR_Y - 5, 8, 4.5, -0.4, 0, Math.PI * 2);
           ctx.ellipse(sx + 14, FLOOR_Y - 6, 8, 4.5, 0.4, 0, Math.PI * 2);
           ctx.fill();
           ctx.stroke();
-          // Little buttons
+          // Botõezinhos
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx - 1, FLOOR_Y - 12, 2, 2);
           ctx.fillRect(sx - 1, FLOOR_Y - 7, 2, 2);
@@ -421,13 +421,13 @@ export class BackgroundRenderer {
         }
 
         case 'striped_socks': {
-          // Pair of colorful kid socks tossed on floor
+          // Par de meias infantis coloridas jogadas no chão
           ctx.fillStyle = '#06b6d4';
           ctx.beginPath();
           ctx.roundRect(sx - 8, FLOOR_Y - 6, 14, 6, 3);
           ctx.roundRect(sx + 6, FLOOR_Y - 8, 12, 6, 3);
           ctx.fill();
-          // Stripes
+          // Listras
           ctx.fillStyle = '#facc15';
           ctx.fillRect(sx - 4, FLOOR_Y - 6, 3, 6);
           ctx.fillRect(sx + 10, FLOOR_Y - 8, 3, 6);
@@ -435,8 +435,8 @@ export class BackgroundRenderer {
         }
 
         case 'spilled_crayons': {
-          // Box of crayons tipped over with crayons rolled out & scribbles
-          // Crayon scribble on the floor
+          // Caixa de giz de cera tombada com gizes rolando e rabiscos
+          // Rabisco de giz de cera no chão
           ctx.strokeStyle = 'rgba(239, 68, 68, 0.45)';
           ctx.lineWidth = 2;
           ctx.beginPath();
@@ -445,7 +445,7 @@ export class BackgroundRenderer {
           ctx.lineTo(sx + 12, FLOOR_Y - 1);
           ctx.stroke();
 
-          // Yellow box
+          // Caixa amarela
           ctx.fillStyle = '#eab308';
           ctx.strokeStyle = '#854d0e';
           ctx.lineWidth = 1;
@@ -454,7 +454,7 @@ export class BackgroundRenderer {
           ctx.fillStyle = '#1e3a8a';
           ctx.fillRect(sx - 18, FLOOR_Y - 10, 18, 3);
 
-          // Individual crayons rolling on the floor
+          // Gizes de cera individuais rolando pelo chão
           const crayonColors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'];
           crayonColors.forEach((col, idx) => {
             ctx.fillStyle = col;
@@ -469,7 +469,7 @@ export class BackgroundRenderer {
         }
 
         case 'paper_airplane': {
-          // White paper glider resting nose-down
+          // Aviãozinho de papel branco pousado de bico
           ctx.fillStyle = '#f8fafc';
           ctx.strokeStyle = '#94a3b8';
           ctx.lineWidth = 1;
@@ -491,7 +491,7 @@ export class BackgroundRenderer {
         }
 
         case 'toy_car': {
-          // Wooden retro red toy racecar
+          // Carro de corrida retrô de madeira vermelho
           ctx.fillStyle = '#dc2626';
           ctx.beginPath();
           ctx.roundRect(sx - 14, FLOOR_Y - 12, 28, 9, [4, 4, 2, 2]);
@@ -500,7 +500,7 @@ export class BackgroundRenderer {
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 8, 4, 0, Math.PI * 2);
           ctx.fill();
-          // Black wooden wheels
+          // Rodas de madeira pretas
           ctx.fillStyle = '#18181b';
           ctx.beginPath();
           ctx.arc(sx - 8, FLOOR_Y - 3, 4, 0, Math.PI * 2);
@@ -510,7 +510,7 @@ export class BackgroundRenderer {
         }
 
         case 'scattered_blocks': {
-          // Scattered wooden alphabet blocks
+          // Blocos de madeira com letras espalhados
           const blocks = [
             { x: sx - 10, y: FLOOR_Y - 14, col: '#ef4444', letter: 'A' },
             { x: sx + 4, y: FLOOR_Y - 12, col: '#3b82f6', letter: 'B' },
@@ -530,13 +530,13 @@ export class BackgroundRenderer {
         }
 
         case 'cardboard_box_floor': {
-          // Open cardboard box on the floor with plushies peeking out
+          // Caixa de papelão aberta no chão com bichinhos de pelúcia espiando
           ctx.fillStyle = '#926038';
           ctx.strokeStyle = '#5f3c1f';
           ctx.lineWidth = 1.4;
           ctx.fillRect(sx - 20, FLOOR_Y - 26, 40, 26);
           ctx.strokeRect(sx - 20, FLOOR_Y - 26, 40, 26);
-          // Open flaps
+          // Abas abertas
           ctx.beginPath();
           ctx.moveTo(sx - 20, FLOOR_Y - 26);
           ctx.lineTo(sx - 28, FLOOR_Y - 34);
@@ -545,7 +545,7 @@ export class BackgroundRenderer {
           ctx.lineTo(sx + 28, FLOOR_Y - 34);
           ctx.lineTo(sx + 10, FLOOR_Y - 26);
           ctx.stroke();
-          // Cute teddy bear head inside
+          // Cabecinha fofa de ursinho de pelúcia dentro
           ctx.fillStyle = '#b45309';
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 28, 8, 0, Math.PI * 2);
@@ -553,7 +553,7 @@ export class BackgroundRenderer {
           ctx.arc(sx - 6, FLOOR_Y - 34, 3.5, 0, Math.PI * 2);
           ctx.arc(sx + 6, FLOOR_Y - 34, 3.5, 0, Math.PI * 2);
           ctx.fill();
-          // Label tape
+          // Fita com etiqueta
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx - 12, FLOOR_Y - 16, 24, 7);
           ctx.fillStyle = '#1e1b4b';
@@ -563,19 +563,19 @@ export class BackgroundRenderer {
         }
 
         case 'dinosaur_felt': {
-          // Little green felt dinosaur toy
+          // Dinossaurinho de brinquedo de feltro verde
           ctx.fillStyle = '#16a34a';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y - 10, 14, 9, 0, 0, Math.PI * 2);
           ctx.fill();
-          // Neck & head
+          // Pescoço e cabeça
           ctx.beginPath();
           ctx.moveTo(sx + 8, FLOOR_Y - 12);
           ctx.lineTo(sx + 14, FLOOR_Y - 24);
           ctx.arc(sx + 16, FLOOR_Y - 24, 4, 0, Math.PI * 2);
           ctx.lineTo(sx + 10, FLOOR_Y - 8);
           ctx.fill();
-          // Yellow back spikes
+          // Espinhos amarelos no dorso
           ctx.fillStyle = '#facc15';
           for (let s = 0; s < 4; s++) {
             ctx.beginPath();
@@ -588,7 +588,7 @@ export class BackgroundRenderer {
         }
 
         case 'slinky': {
-          // Rainbow coil slinky stretched on floor
+          // Mola maluca espiral arco-íris esticada no chão
           const slinkyColors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#8b5cf6'];
           ctx.lineWidth = 1.8;
           for (let i = 0; i < 10; i++) {
@@ -601,7 +601,7 @@ export class BackgroundRenderer {
         }
 
         case 'wooden_spinning_top': {
-          // Colorful spinning top with wound string
+          // Pião de madeira colorido com cordão enrolado
           ctx.fillStyle = '#e11d48';
           ctx.beginPath();
           ctx.moveTo(sx - 9, FLOOR_Y - 18);
@@ -617,18 +617,18 @@ export class BackgroundRenderer {
         }
 
         case 'plush_bunny': {
-          // Soft plush bunny with floppy ears
+          // Coelhinho de pelúcia fofo com orelhas caídas
           ctx.fillStyle = '#f1f5f9';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y - 10, 11, 9, 0, 0, Math.PI * 2);
           ctx.arc(sx + 8, FLOOR_Y - 18, 7, 0, Math.PI * 2);
           ctx.fill();
-          // Long floppy ear
+          // Orelha longa caída
           ctx.fillStyle = '#fed7aa';
           ctx.beginPath();
           ctx.ellipse(sx + 4, FLOOR_Y - 27, 3, 8, -0.3, 0, Math.PI * 2);
           ctx.fill();
-          // Eye & pink nose
+          // Olho e narizinho cor-de-rosa
           ctx.fillStyle = '#db2777';
           ctx.beginPath();
           ctx.arc(sx + 14, FLOOR_Y - 18, 1.5, 0, Math.PI * 2);
@@ -637,7 +637,7 @@ export class BackgroundRenderer {
         }
 
         case 'puzzle_pieces': {
-          // Scattered jigsaw puzzle pieces
+          // Peças de quebra-cabeça espalhadas
           const pCols = ['#3b82f6', '#ec4899', '#10b981', '#f59e0b'];
           pCols.forEach((col, i) => {
             ctx.fillStyle = col;
@@ -650,15 +650,15 @@ export class BackgroundRenderer {
         }
 
         case 'toy_train': {
-          // Classic wooden toy locomotive
+          // Locomotiva de madeira clássica de brinquedo
           ctx.fillStyle = '#1d4ed8';
           ctx.fillRect(sx - 14, FLOOR_Y - 16, 22, 12);
           ctx.fillStyle = '#dc2626';
           ctx.fillRect(sx + 8, FLOOR_Y - 22, 10, 18);
-          // Smokestack
+          // Chaminé
           ctx.fillStyle = '#eab308';
           ctx.fillRect(sx - 10, FLOOR_Y - 22, 5, 7);
-          // Wheels
+          // Rodas
           ctx.fillStyle = '#18181b';
           ctx.beginPath();
           ctx.arc(sx - 6, FLOOR_Y - 4, 4, 0, Math.PI * 2);
@@ -669,7 +669,7 @@ export class BackgroundRenderer {
         }
 
         case 'open_story_book': {
-          // Open picture book on floor with ribbon bookmark
+          // Livro de histórias aberto no chão com fita marcadora
           ctx.fillStyle = '#f8fafc';
           ctx.beginPath();
           ctx.moveTo(sx, FLOOR_Y - 4);
@@ -683,7 +683,7 @@ export class BackgroundRenderer {
           ctx.lineTo(sx + 22, FLOOR_Y - 1);
           ctx.lineTo(sx, FLOOR_Y - 1);
           ctx.fill();
-          // Red bookmark ribbon
+          // Fita marcadora vermelha
           ctx.strokeStyle = '#dc2626';
           ctx.lineWidth = 1.5;
           ctx.beginPath();
@@ -694,7 +694,7 @@ export class BackgroundRenderer {
         }
 
         case 'spilled_marbles': {
-          // Translucent glass marbles reflecting light
+          // Bolinhas de gude de vidro translúcido refletindo a luz
           const mColors = ['#06b6d4', '#f43f5e', '#a855f7', '#22c55e', '#eab308'];
           mColors.forEach((mc, i) => {
             const mx = sx - 15 + i * 8;
@@ -703,7 +703,7 @@ export class BackgroundRenderer {
             ctx.beginPath();
             ctx.arc(mx, my, 3.5, 0, Math.PI * 2);
             ctx.fill();
-            // Highlight
+            // Brilho especular
             ctx.fillStyle = '#ffffff';
             ctx.beginPath();
             ctx.arc(mx - 1, my - 1, 1, 0, Math.PI * 2);
@@ -713,29 +713,29 @@ export class BackgroundRenderer {
         }
 
         case 'toy_soldier': {
-          // Tin guard with red coat and tall black bearskin hat
-          ctx.fillStyle = '#1e1b4b'; // tall hat
+          // Soldadinho de chumbo com casaca vermelha e barretina alta
+          ctx.fillStyle = '#1e1b4b'; // barretina alta
           ctx.fillRect(sx - 3, FLOOR_Y - 32, 6, 12);
-          ctx.fillStyle = '#fed7aa'; // face
+          ctx.fillStyle = '#fed7aa'; // rosto
           ctx.fillRect(sx - 3, FLOOR_Y - 20, 6, 5);
-          ctx.fillStyle = '#dc2626'; // coat
+          ctx.fillStyle = '#dc2626'; // casaca
           ctx.fillRect(sx - 4, FLOOR_Y - 15, 8, 8);
-          ctx.fillStyle = '#facc15'; // belt
+          ctx.fillStyle = '#facc15'; // cinto
           ctx.fillRect(sx - 4, FLOOR_Y - 11, 8, 2);
-          ctx.fillStyle = '#1e293b'; // boots
+          ctx.fillStyle = '#1e293b'; // botas
           ctx.fillRect(sx - 3, FLOOR_Y - 7, 6, 7);
           break;
         }
 
         case 'retro_robot': {
-          // Mint green tin robot with winding key & antenna
+          // Robô de lata retrô verde com chave de corda e antena
           ctx.fillStyle = '#0d9488';
-          ctx.fillRect(sx - 7, FLOOR_Y - 24, 14, 12); // head
-          ctx.fillRect(sx - 9, FLOOR_Y - 12, 18, 10); // body
-          // Yellow dial
+          ctx.fillRect(sx - 7, FLOOR_Y - 24, 14, 12); // cabeça
+          ctx.fillRect(sx - 9, FLOOR_Y - 12, 18, 10); // corpo
+          // Mostrador amarelo
           ctx.fillStyle = '#fef08a';
           ctx.fillRect(sx - 4, FLOOR_Y - 10, 8, 6);
-          // Antenna with red bead
+          // Antena com ponta vermelha
           ctx.strokeStyle = '#94a3b8';
           ctx.lineWidth = 1.2;
           ctx.beginPath();
@@ -750,20 +750,20 @@ export class BackgroundRenderer {
         }
 
         case 'jack_in_box': {
-          // Jack in the box clown
+          // Palhaço da caixa de surpresa
           ctx.fillStyle = '#8b5cf6';
           ctx.fillRect(sx - 12, FLOOR_Y - 20, 24, 20);
           ctx.strokeStyle = '#facc15';
           ctx.lineWidth = 1.2;
           ctx.strokeRect(sx - 12, FLOOR_Y - 20, 24, 20);
-          // Spring
+          // Mola
           ctx.strokeStyle = '#94a3b8';
           ctx.beginPath();
           for (let s = 0; s < 4; s++) {
             ctx.lineTo(sx + (s % 2 === 0 ? -6 : 6), FLOOR_Y - 20 - s * 5);
           }
           ctx.stroke();
-          // Clown head
+          // Cabeça do palhaço
           ctx.fillStyle = '#fdf4ff';
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 44, 7, 0, Math.PI * 2);
@@ -776,7 +776,7 @@ export class BackgroundRenderer {
         }
 
         case 'rattle': {
-          // Pastel baby rattle
+          // Chocalho de bebê pastel
           ctx.fillStyle = '#ec4899';
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 18, 8, 0, Math.PI * 2);
@@ -791,17 +791,17 @@ export class BackgroundRenderer {
         }
 
         case 'windup_mouse': {
-          // Tiny grey clockwork mouse with brass winding key
+          // Ratinho cinza de corda com chave de latão
           ctx.fillStyle = '#64748b';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y - 6, 9, 6, 0, 0, Math.PI * 2);
           ctx.fill();
-          // Round ear
+          // Orelha redonda
           ctx.fillStyle = '#f472b6';
           ctx.beginPath();
           ctx.arc(sx - 4, FLOOR_Y - 10, 3, 0, Math.PI * 2);
           ctx.fill();
-          // Winding key
+          // Chave de corda
           ctx.strokeStyle = '#facc15';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
@@ -813,23 +813,23 @@ export class BackgroundRenderer {
         }
 
         case 'cradle': {
-          // Antique wooden rocking cradle
+          // Berço de balanço de madeira antigo
           ctx.fillStyle = '#451a03';
           ctx.fillRect(sx - 24, FLOOR_Y - 35, 48, 26);
-          // Rocker curved base
+          // Base curvada do balanço
           ctx.strokeStyle = '#78350f';
           ctx.lineWidth = 3;
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 5, 28, 0.2, Math.PI - 0.2);
           ctx.stroke();
-          // Pillow & blanket
+          // Travesseiro e cobertor
           ctx.fillStyle = '#fce7f3';
           ctx.fillRect(sx - 20, FLOOR_Y - 32, 40, 10);
           break;
         }
 
         case 'giant_spool': {
-          // Giant spool of thread
+          // Carretel gigante de linha
           ctx.fillStyle = '#78350f';
           ctx.fillRect(sx - 14, FLOOR_Y - 24, 28, 4);
           ctx.fillRect(sx - 14, FLOOR_Y - 4, 28, 4);
@@ -839,12 +839,12 @@ export class BackgroundRenderer {
         }
 
         case 'wooden_horse': {
-          // Rocking horse on floor
+          // Cavalinho de pau / balanço no chão
           ctx.fillStyle = '#b45309';
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y - 18, 16, 9, 0, 0, Math.PI * 2);
           ctx.fill();
-          // Horse head
+          // Cabeça do cavalo
           ctx.beginPath();
           ctx.moveTo(sx + 10, FLOOR_Y - 20);
           ctx.lineTo(sx + 18, FLOOR_Y - 36);
@@ -852,7 +852,7 @@ export class BackgroundRenderer {
           ctx.lineTo(sx + 16, FLOOR_Y - 16);
           ctx.closePath();
           ctx.fill();
-          // Rocker runners
+          // Lâminas curvadas do balanço
           ctx.strokeStyle = '#dc2626';
           ctx.lineWidth = 2.5;
           ctx.beginPath();
@@ -870,7 +870,7 @@ export class BackgroundRenderer {
   }
 
   /**
-   * Convenience render method that draws both background wall and room clutter
+   * Método de renderização conveniente que desenha a parede de fundo e os objetos do quarto
    */
   render(ctx, canvas, camX = 0, options = {}) {
     this.renderWall(ctx, canvas, camX, options);

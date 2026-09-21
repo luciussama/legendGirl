@@ -1,16 +1,16 @@
 /**
  * ToyRoomEntities.js
- * Renders characters in the 2.5D top-down Mana style:
- * - Little Girl: Animated walking bob, feet swing, coral dress with embroidered apron,
- *   warm peach cheeks with rosy blush, dark chestnut hair with bouncing pigtails and yellow ribbons,
- *   directional eyes (down, left, right), and arms held overhead when carrying toys.
- * - Companion Fairy: Radial golden aura, translucent fluttering wings with sinusoidal flap,
- *   golden glowing core.
+ * Renderiza personagens no estilo 2.5D visto de cima (Mana):
+ * - Menininha: Animação de caminhar, balanço dos pezinhos, vestido coral com avental bordado,
+ *   bochechas coradas, cabelo castanho com maria-chiquinhas e fitinhas amarelas,
+ *   olhar direcional e bracinhos erguidos ao carregar brinquedos.
+ * - Fadinha Companheira: Aura radial dourada, asas diáfanas esvoaçantes com bater sinusoidal,
+ *   núcleo radiante iluminado.
  */
 
 export class ToyRoomEntities {
   /**
-   * Draws the top-down little girl
+   * Desenha a garotinha vista de cima
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} player
    */
@@ -21,17 +21,17 @@ export class ToyRoomEntities {
     const px = player.x;
     const py = player.y;
 
-    // Drop Shadow on floor
+    // Sombra no chão
     ctx.fillStyle = 'rgba(70, 30, 10, 0.35)';
     ctx.beginPath();
     ctx.ellipse(px, py + 14, 18, 8, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    // Walking animation sway
+    // Oscilação da animação de caminhada
     const walkBob = player.isMoving ? Math.sin((player.animTime || 0) * 2) * 2.5 : 0;
     const stepSwing = player.isMoving ? Math.sin((player.animTime || 0) * 2) * 4 : 0;
 
-    // Shoes & Little Feet
+    // Sapatinhos e pezinhos
     ctx.fillStyle = '#78350f';
     if (player.facing === 'left' || player.facing === 'right') {
       ctx.beginPath();
@@ -45,7 +45,7 @@ export class ToyRoomEntities {
       ctx.fill();
     }
 
-    // Little Dress (Warm Coral Red with delicate golden embroidery)
+    // Vestidinho (Vermelho coral caloroso com bordado dourado sutil)
     const dressGrad = ctx.createLinearGradient(px, py - 12 + walkBob, px, py + 12 + walkBob);
     dressGrad.addColorStop(0, '#f43f5e');
     dressGrad.addColorStop(1, '#e11d48');
@@ -59,7 +59,7 @@ export class ToyRoomEntities {
     ctx.closePath();
     ctx.fill();
 
-    // White Apron Overlay
+    // Avental branco sobre o vestido
     ctx.fillStyle = '#fef3c7';
     ctx.fillRect(px - 7, py - 4 + walkBob, 14, 12);
     ctx.fillStyle = '#fde047';
@@ -67,20 +67,20 @@ export class ToyRoomEntities {
     ctx.arc(px, py + 2 + walkBob, 3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Round Head
+    // Cabecinha redonda
     ctx.fillStyle = '#ffedd5';
     ctx.beginPath();
     ctx.arc(px, py - 16 + walkBob, 14, 0, Math.PI * 2);
     ctx.fill();
 
-    // Rosy cheeks
+    // Bochechas rosadas
     ctx.fillStyle = 'rgba(251, 113, 133, 0.45)';
     ctx.beginPath();
     ctx.arc(px - 7, py - 14 + walkBob, 3, 0, Math.PI * 2);
     ctx.arc(px + 7, py - 14 + walkBob, 3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Eyes depending on facing
+    // Olhos dependendo da direção para a qual está olhando
     if (player.facing === 'down') {
       ctx.fillStyle = '#1e1b4b';
       ctx.beginPath();
@@ -105,7 +105,7 @@ export class ToyRoomEntities {
       ctx.fill();
     }
 
-    // Hair & Pigtails (Dark Chestnut)
+    // Cabelo e maria-chiquinhas (Castanho escuro)
     ctx.fillStyle = '#78350f';
     ctx.beginPath();
     ctx.arc(px, py - 21 + walkBob, 14, Math.PI, 0, false);
@@ -118,14 +118,14 @@ export class ToyRoomEntities {
     ctx.ellipse(px + 16, py - 16 + walkBob - pigtailWave, 6, 9, 0.3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Yellow ribbons in pigtails
+    // Lacinhos amarelos nas maria-chiquinhas
     ctx.fillStyle = '#facc15';
     ctx.beginPath();
     ctx.arc(px - 13, py - 21 + walkBob, 3.5, 0, Math.PI * 2);
     ctx.arc(px + 13, py - 21 + walkBob, 3.5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Arms: If carrying a toy, arms are held straight up holding the toy!
+    // Braços: Se estiver carregando um brinquedo, os bracinhos ficam erguidos segurando o item!
     ctx.fillStyle = '#ffedd5';
     if (player.carriedItem) {
       ctx.beginPath();
@@ -143,7 +143,7 @@ export class ToyRoomEntities {
   }
 
   /**
-   * Draws the companion fairy
+   * Desenha a fadinha companheira
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} fairy
    */
@@ -154,7 +154,7 @@ export class ToyRoomEntities {
     const fx = fairy.x;
     const fy = fairy.y;
 
-    // Glowing Golden Aura
+    // Aura dourada brilhante
     const aura = ctx.createRadialGradient(fx, fy, 4, fx, fy, 24);
     aura.addColorStop(0, 'rgba(255, 255, 255, 0.95)');
     aura.addColorStop(0.4, 'rgba(254, 240, 138, 0.75)');
@@ -164,7 +164,7 @@ export class ToyRoomEntities {
     ctx.arc(fx, fy, 24, 0, Math.PI * 2);
     ctx.fill();
 
-    // Translucent Fairy Wings with fluttering animation
+    // Asas diáfanas da fada com animação esvoaçante
     const wingFlap = Math.sin((fairy.flutterTime || 0) * 0.4) * 6;
     ctx.fillStyle = 'rgba(199, 210, 254, 0.85)';
     ctx.beginPath();
@@ -172,13 +172,13 @@ export class ToyRoomEntities {
     ctx.ellipse(fx + 7, fy - 4, 7, 12 + wingFlap, 0.4, 0, Math.PI * 2);
     ctx.fill();
 
-    // Glowing Fairy Body
+    // Corpinho brilhante da fada
     ctx.fillStyle = '#fef08a';
     ctx.beginPath();
     ctx.arc(fx, fy, 5.5, 0, Math.PI * 2);
     ctx.fill();
 
-    // Bright inner core
+    // Núcleo interno reluzente
     ctx.fillStyle = '#ffffff';
     ctx.beginPath();
     ctx.arc(fx, fy, 3, 0, Math.PI * 2);

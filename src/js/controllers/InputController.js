@@ -1,16 +1,16 @@
 /**
  * InputController.js
- * Abstraction of Keyboard, Gamepad (Xbox), and Mobile Touch events
- * with debouncing, spam prevention, and primary pointer filtering.
+ * Abstração de eventos de Teclado, Gamepad (Xbox) e Toque Móvel
+ * com debounce, prevenção de disparo acidental e filtragem de ponteiro primário.
  */
 
 export class InputController {
   constructor(game, options = {}) {
     this.game = game;
-    this.minInputInterval = options.minInputInterval || 140; // Cooldown against input spam (ms)
+    this.minInputInterval = options.minInputInterval || 140; // Intervalo mínimo contra toques repetidos (ms)
     this.lastInputTime = 0;
 
-    // Track previous button states per gamepad to enforce clean single-press (edge-triggered) jumps
+    // Rastreia o estado anterior dos botões por gamepad para garantir pulo único por pressionamento (borda de subida)
     this.prevGamepadButtonX = new Map();
     this.gamepadPollRafId = null;
     this.isDestroyed = false;
@@ -36,7 +36,7 @@ export class InputController {
   triggerJump() {
     if (!this.game) return;
 
-    // Ignore input if game is over or in Toy Room mode
+    // Ignora entrada se o jogo terminou ou se estiver no modo Quarto de Brinquedos
     if ((this.game.isGameOver && this.game.isGameOver()) || (this.game.isToyRoomMode && this.game.isToyRoomMode())) {
       return;
     }
@@ -46,7 +46,7 @@ export class InputController {
       return;
     }
 
-    // In normal gameplay (outside cutscenes and standby state), ensure character is grounded to prevent mid-air multi-jumps
+    // No gameplay normal (fora de cutscenes e do modo de prontidão), garante que a personagem esteja no chão para evitar pulo duplo no ar
     const inCutscene = typeof this.game.isCutsceneActive === 'function' && this.game.isCutsceneActive();
     if (!inCutscene && typeof this.game.isGrounded === 'function' && !this.game.isGrounded()) {
       return;
@@ -64,18 +64,18 @@ export class InputController {
       return;
     }
 
-    // Record device type
+    // Registra o tipo de dispositivo
     if (typeof this.game.setLastInputDevice === 'function') {
       const isTouch = event.pointerType === 'touch' || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
       this.game.setLastInputDevice(isTouch ? 'touch' : 'keyboard');
     }
 
-    // Only process primary pointer (prevents multi-touch gesture spam)
+    // Processa apenas o ponteiro primário (previne disparo por múltiplos toques)
     if (event.isPrimary === false) {
       return;
     }
 
-    // Prevent interfering with UI buttons or overlay dialogs
+    // Evita interferir em botões de interface ou janelas de sobreposição
     if (event.target && (
       event.target.tagName === 'BUTTON' ||
       event.target.closest('button') ||
@@ -92,7 +92,7 @@ export class InputController {
   }
 
   handleKeyDown(event) {
-    // Ignore keyboard auto-repeat when holding down a key
+    // Ignora repetição automática do teclado ao segurar a tecla
     if (event.repeat) {
       return;
     }
@@ -101,7 +101,7 @@ export class InputController {
       this.game.setLastInputDevice('keyboard');
     }
 
-    // Toggle mute on 'M' key
+    // Alterna mudo na tecla 'M'
     if (event.code === 'KeyM' || event.key === 'm' || event.key === 'M') {
       if (this.game && typeof this.game.toggleMute === 'function') {
         this.game.toggleMute();
@@ -113,7 +113,7 @@ export class InputController {
       return;
     }
 
-    // Mapped: Space bar (standard jump key) as requested, plus ArrowUp
+    // Mapeamento: Barra de espaço (tecla padrão de pulo) e Seta para Cima
     if (event.code === 'Space' || event.key === ' ' || event.code === 'ArrowUp') {
       if (event.cancelable) {
         event.preventDefault();
@@ -122,12 +122,12 @@ export class InputController {
     }
   }
 
-  // --- GAMEPAD (XBOX CONTROLLER) POLLING ---
-  // Standard W3C mapping for Xbox / XInput controllers:
-  // Button 0: A (Bottom)
-  // Button 1: B (Right)
-  // Button 2: X (Left) -> Requested Jump Button
-  // Button 3: Y (Top)
+  // --- LEITURA DO GAMEPAD (CONTROLE XBOX) ---
+  // Mapeamento padrão W3C para controles Xbox / XInput:
+  // Botão 0: A (Inferior)
+  // Botão 1: B (Direita)
+  // Botão 2: X (Esquerda) -> Botão de Pulo Solicitado
+  // Botão 3: Y (Superior)
   pollGamepad() {
     if (this.isDestroyed) return;
     if (typeof navigator === 'undefined' || typeof navigator.getGamepads !== 'function') {
@@ -147,7 +147,7 @@ export class InputController {
       const gp = gamepads[i];
       if (!gp || !gp.connected || !gp.buttons) continue;
 
-      // Xbox X button is button index 2
+      // O botão X do Xbox é o índice 2
       const btnX = gp.buttons[2];
       const isPressed = Boolean(btnX && (btnX.pressed || btnX.value > 0.5));
       const wasPressed = this.prevGamepadButtonX.get(i) || false;
@@ -156,11 +156,11 @@ export class InputController {
         if (this.game && typeof this.game.setLastInputDevice === 'function') {
           this.game.setLastInputDevice('gamepad');
         }
-        // Edge triggered: fired exactly once upon button down
+        // Borda de subida: acionado exatamente uma vez ao pressionar o botão
         this.prevGamepadButtonX.set(i, true);
         this.triggerJump();
       } else if (!isPressed && wasPressed) {
-        // Button released
+        // Botão liberado
         this.prevGamepadButtonX.set(i, false);
       }
     }
@@ -200,7 +200,7 @@ export class InputController {
 }
 
 /**
- * Functional factory for backwards compatibility
+ * Fábrica funcional para retrocompatibilidade
  */
 export function bindInput(game) {
   const controller = new InputController(game);

@@ -28,7 +28,7 @@ export function createAudioSystem() {
       state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * effectiveVol));
     }
     if (toyRoomAudio) {
-      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.5 * effectiveVol));
+      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol));
     }
   }
 
@@ -208,7 +208,7 @@ export function createAudioSystem() {
       const now = state.audioCtx.currentTime;
       const pitchScale = 1.0 + Math.max(0, Math.min(1, progress)) * 0.48;
 
-      // Layer 1: Airy deep sweep, ascending higher as jump power upgrades
+      // Camada 1: Varredura profunda e suave, ascendendo à medida que a potência do salto evolui
       const osc1 = state.audioCtx.createOscillator();
       const gain1 = state.audioCtx.createGain();
       osc1.type = 'sine';
@@ -222,7 +222,7 @@ export function createAudioSystem() {
       osc1.start(now);
       osc1.stop(now + 0.25);
 
-      // Layer 2: Shimmering high harmonics
+      // Camada 2: Harmônicos agudos cintilantes
       const osc2 = state.audioCtx.createOscillator();
       const gain2 = state.audioCtx.createGain();
       osc2.type = 'triangle';
@@ -243,7 +243,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
 
       const now = state.audioCtx.currentTime;
-      const baseFreq = 587 + Math.min(level, 11) * 45; // D5 up to high notes
+      const baseFreq = 587 + Math.min(level, 11) * 45; // Ré5 até notas mais agudas
       const freqs = [baseFreq, baseFreq * 1.25, baseFreq * 1.5];
 
       freqs.forEach((f, i) => {
@@ -317,7 +317,7 @@ export function createAudioSystem() {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
 
-      const chords = [523.25, 659.25, 783.99, 1046.5]; // C5 major triumphant fanfarre
+      const chords = [523.25, 659.25, 783.99, 1046.5]; // Fanfarra triunfante em Dó Maior (C5)
       const baseTime = state.audioCtx.currentTime;
 
       chords.forEach((freq, idx) => {
@@ -368,7 +368,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Filtered noise burst simulating paper tape peeling off wall
+      // Rajada de ruído filtrado simulando o descolar de fita adesiva da parede
       const bufferSize = Math.floor(state.audioCtx.sampleRate * 0.18);
       const buffer = state.audioCtx.createBuffer(1, bufferSize, state.audioCtx.sampleRate);
       const data = buffer.getChannelData(0);
@@ -403,7 +403,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Descending whistle / swoosh
+      // Assobio descendente e swoosh de queda
       const osc = state.audioCtx.createOscillator();
       const gain = state.audioCtx.createGain();
 
@@ -450,7 +450,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Innocent questioning high chirp
+      // Piu agudo inocente de questionamento
       const freqs = [620, 780];
       freqs.forEach((f, idx) => {
         const startTime = now + idx * 0.08;
@@ -475,7 +475,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Hurried, annoyed high staccato flutter
+      // Batimento rápido e agitado em staccato agudo
       const notes = [1046, 880, 1174, 783, 987];
       notes.forEach((f, idx) => {
         const startTime = now + idx * 0.045;
@@ -499,7 +499,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Dramatic minor-to-major mystical fanfare for the chaotic climb
+      // Fanfarra mística dramática de menor para maior para a subida caótica
       const chords = [440, 554, 659, 880, 1108];
       chords.forEach((freq, idx) => {
         const startTime = now + idx * 0.07;
@@ -518,36 +518,44 @@ export function createAudioSystem() {
     } catch (e) {}
   }
 
-  // --- SEGUNDA FASE: SALA DE BRINQUEDOS / SALA ILUMINADA (TRILHA ANEXADA) ---
+  // --- SEGUNDA FASE: SALA DE BRINQUEDOS / SALA ILUMINADA (TRILHA OFICIAL) ---
   let toyRoomAudio = null;
+  let wasToyRoomAudioPlaying = false;
+  let wasMusicTrackPlaying = false;
 
   function getToyRoomAudioElement() {
     if (!toyRoomAudio) {
       try {
-        const fallbackUrl = new URL('../audio/toy_room_theme.mp3', import.meta.url).href;
-        const primaryUrl = '/assets/audio/toy_room_theme.mp3';
+        const fallbackUrl = new URL('../audio/The%20Circle%20Game.mp3', import.meta.url).href;
+        const primaryUrl = '/assets/audio/The%20Circle%20Game.mp3';
+        const secondaryFallbackUrl = '/src/audio/The%20Circle%20Game.mp3';
+
         toyRoomAudio = new Audio(primaryUrl);
         toyRoomAudio.onerror = () => {
-          if (toyRoomAudio && toyRoomAudio.src !== fallbackUrl) {
-            toyRoomAudio.src = fallbackUrl;
-            if (isToyRoomMusicWanted) {
+          if (toyRoomAudio) {
+            if (toyRoomAudio.src !== fallbackUrl) {
+              toyRoomAudio.src = fallbackUrl;
+            } else if (toyRoomAudio.src !== secondaryFallbackUrl) {
+              toyRoomAudio.src = secondaryFallbackUrl;
+            }
+            if (isToyRoomMusicWanted && !isMuted) {
               toyRoomAudio.play().catch(() => {});
             }
           }
         };
         toyRoomAudio.loop = true;
-        toyRoomAudio.volume = 0.58;
+        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume)));
         toyRoomAudio.preload = 'auto';
 
         // Loop contínuo e sem interrupções
         toyRoomAudio.addEventListener('ended', () => {
-          if (isToyRoomMusicWanted) {
+          if (isToyRoomMusicWanted && !isMuted) {
             toyRoomAudio.currentTime = 0;
             toyRoomAudio.play().catch(() => {});
           }
         });
       } catch (err) {
-        console.warn('Trilha da sala de brinquedos não pôde ser inicializada:', err);
+        console.warn('Trilha da Fase 2 (The Circle Game.mp3) não pôde ser inicializada:', err);
       }
     }
     return toyRoomAudio;
@@ -555,7 +563,8 @@ export function createAudioSystem() {
 
   function startToyRoomMusic() {
     isToyRoomMusicWanted = true;
-    stopMusic(); // Interrompe a trilha do quarto escuro
+    stopMusic(); // Interrompe qualquer trilha da fase anterior
+    clearActiveSounds(); // Limpa efeitos sonoros remanescentes da fase anterior
 
     if (state.audioCtx && state.audioCtx.state === 'suspended') {
       state.audioCtx.resume().catch(() => {});
@@ -563,10 +572,11 @@ export function createAudioSystem() {
 
     const audioEl = getToyRoomAudioElement();
     if (audioEl) {
-      audioEl.volume = 0.58;
-      if (audioEl.paused) {
+      audioEl.loop = true;
+      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume)));
+      if (audioEl.paused && !isMuted) {
         audioEl.play().catch(() => {
-          // Bloqueio de autoplay prevenido
+          // Bloqueio de reprodução automática prevenido até a primeira interação
         });
       }
     }
@@ -574,6 +584,7 @@ export function createAudioSystem() {
 
   function stopToyRoomMusic() {
     isToyRoomMusicWanted = false;
+    wasToyRoomAudioPlaying = false;
     if (toyRoomAudio) {
       try {
         toyRoomAudio.pause();
@@ -582,13 +593,43 @@ export function createAudioSystem() {
     }
   }
 
+  function pauseMusic() {
+    if (toyRoomAudio && !toyRoomAudio.paused) {
+      wasToyRoomAudioPlaying = true;
+      try {
+        toyRoomAudio.pause();
+      } catch (e) {}
+    }
+    if (state.musicTrack && !state.musicTrack.paused) {
+      wasMusicTrackPlaying = true;
+      try {
+        state.musicTrack.pause();
+      } catch (e) {}
+    }
+  }
+
+  function resumeMusic() {
+    if (isMuted) return;
+    if (isToyRoomMusicWanted && toyRoomAudio) {
+      if (wasToyRoomAudioPlaying || toyRoomAudio.paused) {
+        toyRoomAudio.play().catch(() => {});
+        wasToyRoomAudioPlaying = false;
+      }
+    } else if (isMusicWanted && state.musicTrack) {
+      if (wasMusicTrackPlaying || state.musicTrack.paused) {
+        state.musicTrack.play().catch(() => {});
+        wasMusicTrackPlaying = false;
+      }
+    }
+  }
+
   function playPickUpSound() {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Cheerful rising 3-tone arpeggio
-      const notes = [523.25, 659.25, 783.99]; // C5, E5, G5
+      // Arpejo alegre ascendente de 3 tons
+      const notes = [523.25, 659.25, 783.99]; // Dó5, Mi5, Sol5
       notes.forEach((freq, idx) => {
         const startTime = now + idx * 0.055;
         const osc = state.audioCtx.createOscillator();
@@ -612,7 +653,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Soft organic toy placement thud
+      // Toque suave e orgânico ao pousar o brinquedo no chão
       const osc = state.audioCtx.createOscillator();
       const gain = state.audioCtx.createGain();
       osc.type = 'triangle';
@@ -635,8 +676,8 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Sparkling magical chime when putting toy in the toy chest
-      const chord = [523.25, 659.25, 783.99, 1046.5]; // C major glockenspiel
+      // Sino mágico cintilante ao guardar o brinquedo dentro do baú
+      const chord = [523.25, 659.25, 783.99, 1046.5]; // Glockenspiel em Dó maior
       chord.forEach((freq, idx) => {
         const startTime = now + idx * 0.06;
         const osc = state.audioCtx.createOscillator();
@@ -661,7 +702,7 @@ export function createAudioSystem() {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
 
-      // Triumphant playful fanfare
+      // Fanfarra triunfante e festiva
       const notes = [
         { f: 523.25, t: 0.0, d: 0.18 },
         { f: 659.25, t: 0.16, d: 0.18 },
@@ -711,6 +752,9 @@ export function createAudioSystem() {
     playPhase3StartFanfare,
     startToyRoomMusic,
     stopToyRoomMusic,
+    pauseMusic,
+    resumeMusic,
+    getToyRoomAudioElement,
     playPickUpSound,
     playDropSound,
     playOrganizeChime,

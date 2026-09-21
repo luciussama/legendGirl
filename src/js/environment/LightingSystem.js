@@ -1,8 +1,8 @@
 /**
  * LightingSystem.js
- * Manages the offscreen darkness canvas buffer and renders volumetric
- * dynamic penumbra, cozy reading lamp halos, flashlight illumination,
- * and magical dream portal light leaks.
+ * Gerencia o buffer de canvas fora da tela de escuridão e renderiza
+ * penumbra dinâmica volumétrica, auréolas acolhedoras de abajur, iluminação de lanterna
+ * e vazamentos mágicos de luz do portal dos sonhos.
  */
 
 import {
@@ -21,7 +21,7 @@ export class LightingSystem {
   }
 
   /**
-   * Resizes the internal darkCanvas buffer to match main canvas
+   * Redimensiona o buffer interno darkCanvas para coincidir com o canvas principal
    * @param {number} width
    * @param {number} height
    */
@@ -33,14 +33,14 @@ export class LightingSystem {
   }
 
   /**
-   * Applies the dark atmosphere and cuts out volumetric light cones and halos
-   * @param {CanvasRenderingContext2D} ctx Main canvas context
-   * @param {HTMLCanvasElement} canvas Main canvas element
-   * @param {object} state Global game state
-   * @param {object} baby Protagonist state
-   * @param {object} fairy Fairy guide state
-   * @param {number} [camX] Horizontal camera offset
-   * @param {number} [camY] Vertical camera offset
+   * Aplica a atmosfera de escuridão e recorta cones de luz volumétricos e auréolas
+   * @param {CanvasRenderingContext2D} ctx Contexto do canvas principal
+   * @param {HTMLCanvasElement} canvas Elemento do canvas principal
+   * @param {object} state Estado global do jogo
+   * @param {object} baby Estado da protagonista
+   * @param {object} fairy Estado da fadinha guia
+   * @param {number} [camX] Deslocamento horizontal da câmera
+   * @param {number} [camY] Deslocamento vertical da câmera
    * @param {object} [options]
    */
   apply(ctx, canvas, state = {}, baby = {}, fairy = {}, camX = 0, camY = 0, options = {}) {
@@ -136,7 +136,7 @@ export class LightingSystem {
     }
 
     if (plotTwistActive) {
-      // Cinematic penumbra: surroundings are plunged into deep dark penumbra
+      // Penumbra cinematográfica: o ambiente ao redor mergulha em escuridão profunda
       dctx.fillStyle = '#030208';
       dctx.fillRect(0, 0, canvas.width, canvas.height);
       dctx.globalCompositeOperation = 'destination-out';
@@ -145,7 +145,7 @@ export class LightingSystem {
       const by = baby.y - camY + baby.h / 2;
 
       if (plotTwistStep === 2) {
-        // Dramatic isolated spotlight solely on the startled baby's face on the floor
+        // Holofote dramático isolado focado exclusivamente no rosto assustado da menina no chão
         const spot = dctx.createRadialGradient(bx, by, 10, bx, by, 140);
         spot.addColorStop(0, 'rgba(0,0,0,1)');
         spot.addColorStop(0.5, 'rgba(0,0,0,0.85)');
@@ -155,7 +155,7 @@ export class LightingSystem {
         dctx.arc(bx, by, 140, 0, Math.PI * 2);
         dctx.fill();
       } else {
-        // Spotlight on both child and the worried pacing fairy
+        // Holofote iluminando tanto a menina quanto a fadinha agitada e preocupada
         const spotBaby = dctx.createRadialGradient(bx, by, 10, bx, by, 150);
         spotBaby.addColorStop(0, 'rgba(0,0,0,1)');
         spotBaby.addColorStop(0.55, 'rgba(0,0,0,0.8)');
@@ -182,7 +182,7 @@ export class LightingSystem {
       ctx.globalCompositeOperation = 'multiply';
       ctx.drawImage(darkCanvas, 0, 0);
 
-      // Deep dramatic edge shadow
+      // Sombra dramática pronunciada nas bordas
       const dramaticVignette = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, canvas.width * 0.2,
         canvas.width / 2, canvas.height / 2, canvas.width * 0.6
@@ -199,7 +199,7 @@ export class LightingSystem {
     dctx.fillRect(0, 0, canvas.width, canvas.height);
     dctx.globalCompositeOperation = 'destination-out';
 
-    // Light around baby (always tracking vertical camera position)
+    // Luz em volta da menininha (sempre acompanhando a posição vertical da câmera)
     const bx = baby.x - camX + baby.w / 2;
     const by = baby.y - camY + baby.h / 2;
     const babyLight = dctx.createRadialGradient(bx, by, 12, bx, by, 175);
@@ -211,7 +211,7 @@ export class LightingSystem {
     dctx.arc(bx, by, 175, 0, Math.PI * 2);
     dctx.fill();
 
-    // Vibrant light aura around the fairy
+    // Aura vibrante de luz ao redor da fadinha
     const fx = fairy.x - camX;
     const fy = fairy.y - camY;
     const fairyLight = dctx.createRadialGradient(fx, fy, 8, fx, fy, 160);
@@ -260,7 +260,7 @@ export class LightingSystem {
     }
 
     if (isPhase3) {
-      // Beacon light for the True Exit Door on the far left terrace
+      // Luz de farol para o Verdadeiro Portal de Saída no terraço à extrema esquerda
       const tx = trueExitDoor.x - camX + trueExitDoor.w / 2;
       const ty = trueExitDoor.y - camY + trueExitDoor.h / 2;
       const trueDoorLight = dctx.createRadialGradient(tx, ty, 25, tx, ty, 300);
@@ -272,7 +272,7 @@ export class LightingSystem {
       dctx.arc(tx, ty, 300, 0, Math.PI * 2);
       dctx.fill();
     } else {
-      // Exit door beacon light (Phase 1 & 2)
+      // Luz de farol da porta de saída (Fases 1 e 2)
       const px = exitDoor.x - camX + exitDoor.w / 2;
       const py = exitDoor.y - camY + exitDoor.h / 2;
       const doorLight = dctx.createRadialGradient(px, py, 20, px, py, 280);
@@ -285,7 +285,7 @@ export class LightingSystem {
       dctx.fill();
     }
 
-    // Mushroom lamp glow
+    // Brilho do abajur de cogumelo
     const mushPlat = platforms.find(p => p.style === 'mushroom_lamp');
     if (mushPlat) {
       const mx = mushPlat.x - camX + mushPlat.w / 2;
@@ -304,7 +304,7 @@ export class LightingSystem {
     ctx.globalCompositeOperation = 'multiply';
     ctx.drawImage(darkCanvas, 0, 0);
 
-    // Warm atmospheric vignette
+    // Vinheta atmosférica calorosa
     const vignette = ctx.createRadialGradient(
       canvas.width / 2, canvas.height / 2, canvas.width * 0.35,
       canvas.width / 2, canvas.height / 2, canvas.width * 0.65
