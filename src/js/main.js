@@ -23,6 +23,42 @@ const startOverlay = document.getElementById('start-overlay');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
 const btnRestart = document.getElementById('btn-restart');
+const btnSoundToggle = document.getElementById('btn-sound-toggle');
+const soundIcon = document.getElementById('sound-icon');
+
+function updateSoundButtonState() {
+  const isMuted = game.isMuted && game.isMuted();
+  if (btnSoundToggle) {
+    if (isMuted) {
+      btnSoundToggle.classList.add('muted');
+      btnSoundToggle.title = 'Ativar Som (M)';
+      btnSoundToggle.setAttribute('aria-label', 'Ativar som');
+      if (soundIcon) soundIcon.textContent = '🔇';
+    } else {
+      btnSoundToggle.classList.remove('muted');
+      btnSoundToggle.title = 'Mudo (M)';
+      btnSoundToggle.setAttribute('aria-label', 'Desativar som');
+      if (soundIcon) soundIcon.textContent = '🔊';
+    }
+  }
+}
+
+if (btnSoundToggle) {
+  btnSoundToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (typeof game.toggleMute === 'function') {
+      game.toggleMute();
+      updateSoundButtonState();
+    }
+  });
+}
+
+window.addEventListener('keydown', (e) => {
+  if (e.code === 'KeyM' || e.key === 'm' || e.key === 'M') {
+    setTimeout(updateSoundButtonState, 10);
+  }
+});
 
 let started = false;
 let isStarting = false;

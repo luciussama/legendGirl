@@ -324,3 +324,43 @@ canvas {
   transform: none !important;
   box-shadow: none !important;
 }
+
+/* Sound Mute / Unmute Toggle Button */
+.sound-toggle-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  z-index: 45;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: rgba(18, 16, 23, 0.75);
+  border: 1px solid rgba(250, 204, 21, 0.35);
+  color: #facc15;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: transform 0.15s ease, background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+}
+
+.sound-toggle-btn:hover {
+  background: rgba(28, 25, 36, 0.95);
+  border-color: rgba(250, 204, 21, 0.85);
+  transform: scale(1.08);
+}
+
+.sound-toggle-btn:active {
+  transform: scale(0.92);
+}
+
+.sound-toggle-btn.muted {
+  opacity: 0.65;
+  border-color: rgba(255, 255, 255, 0.2);
+  color: #94a3b8;
+}
+

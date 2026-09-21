@@ -1,8 +1,66 @@
 export function createAudioSystem() {
   const state = {
     audioCtx: null,
-    musicTrack: null
+    musicTrack: null,
+    masterGainNode: null
   };
+
+  let masterVolume = 1.0;
+  let isMuted = false;
+
+  function getDestination() {
+    if (!state.audioCtx) return null;
+    if (!state.masterGainNode) {
+      try {
+        state.masterGainNode = state.audioCtx.createGain();
+        state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+        state.masterGainNode.connect(state.audioCtx.destination);
+      } catch (e) {
+        return state.audioCtx.destination;
+      }
+    }
+    return state.masterGainNode;
+  }
+
+  function updateMusicVolumes() {
+    const effectiveVol = isMuted ? 0 : masterVolume;
+    if (state.musicTrack) {
+      state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * effectiveVol));
+    }
+    if (toyRoomAudio) {
+      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.5 * effectiveVol));
+    }
+  }
+
+  function setMasterVolume(vol) {
+    masterVolume = Math.max(0, Math.min(1, typeof vol === 'number' ? vol : 1.0));
+    if (state.audioCtx && state.masterGainNode) {
+      state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+    }
+    updateMusicVolumes();
+    return masterVolume;
+  }
+
+  function getMasterVolume() {
+    return masterVolume;
+  }
+
+  function setMuted(muted) {
+    isMuted = Boolean(muted);
+    if (state.audioCtx && state.masterGainNode) {
+      state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+    }
+    updateMusicVolumes();
+    return isMuted;
+  }
+
+  function toggleMute() {
+    return setMuted(!isMuted);
+  }
+
+  function getIsMuted() {
+    return isMuted;
+  }
 
   let isMusicWanted = false;
   let isToyRoomMusicWanted = false;
@@ -45,7 +103,7 @@ export function createAudioSystem() {
           }
         };
         state.musicTrack.loop = true;
-        state.musicTrack.volume = 0.55;
+        state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * (isMuted ? 0 : masterVolume)));
         state.musicTrack.preload = 'auto';
 
         // Evento de continuidade de loop seguro
@@ -96,7 +154,7 @@ export function createAudioSystem() {
 
       const track = getMusicTrack();
       if (track) {
-        track.volume = 0.55;
+        track.volume = Math.max(0, Math.min(1, 0.55 * (isMuted ? 0 : masterVolume)));
         if (track.paused) {
           track.play().catch(() => {});
         }
@@ -136,7 +194,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.15);
@@ -159,7 +217,7 @@ export function createAudioSystem() {
       gain1.gain.setValueAtTime(0.16, now);
       gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
       osc1.connect(gain1);
-      gain1.connect(state.audioCtx.destination);
+      gain1.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc1);
       osc1.start(now);
       osc1.stop(now + 0.25);
@@ -173,7 +231,7 @@ export function createAudioSystem() {
       gain2.gain.setValueAtTime(0.09, now);
       gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
       osc2.connect(gain2);
-      gain2.connect(state.audioCtx.destination);
+      gain2.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc2);
       osc2.start(now);
       osc2.stop(now + 0.22);
@@ -196,7 +254,7 @@ export function createAudioSystem() {
         gain.gain.setValueAtTime(0.08, now + i * 0.045);
         gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.045 + 0.18);
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(now + i * 0.045);
         osc.stop(now + i * 0.045 + 0.2);
@@ -220,7 +278,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.07);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.08);
@@ -247,7 +305,7 @@ export function createAudioSystem() {
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.1);
 
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.12);
@@ -274,7 +332,7 @@ export function createAudioSystem() {
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.45);
 
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.5);
@@ -298,7 +356,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.4);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.42);
@@ -332,7 +390,7 @@ export function createAudioSystem() {
 
       noise.connect(filter);
       filter.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
 
       registerActiveNode(noise);
       noise.start(now);
@@ -357,7 +415,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.58);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.6);
@@ -380,7 +438,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.26);
@@ -404,7 +462,7 @@ export function createAudioSystem() {
         gain.gain.setValueAtTime(0.15, startTime);
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.12);
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.14);
@@ -428,7 +486,7 @@ export function createAudioSystem() {
         gain.gain.setValueAtTime(0.12, startTime);
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.07);
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.08);
@@ -452,7 +510,7 @@ export function createAudioSystem() {
         gain.gain.setValueAtTime(0.16, startTime);
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.4);
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.45);
@@ -541,7 +599,7 @@ export function createAudioSystem() {
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.18);
 
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.2);
@@ -565,7 +623,7 @@ export function createAudioSystem() {
       gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
 
       osc.connect(gain);
-      gain.connect(state.audioCtx.destination);
+      gain.connect(getDestination() || state.audioCtx.destination);
       registerActiveNode(osc);
       osc.start(now);
       osc.stop(now + 0.13);
@@ -590,7 +648,7 @@ export function createAudioSystem() {
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + 0.45);
 
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + 0.5);
@@ -623,7 +681,7 @@ export function createAudioSystem() {
         gain.gain.exponentialRampToValueAtTime(0.001, startTime + n.d);
 
         osc.connect(gain);
-        gain.connect(state.audioCtx.destination);
+        gain.connect(getDestination() || state.audioCtx.destination);
         registerActiveNode(osc);
         osc.start(startTime);
         osc.stop(startTime + n.d + 0.05);
@@ -656,6 +714,12 @@ export function createAudioSystem() {
     playPickUpSound,
     playDropSound,
     playOrganizeChime,
-    playToyRoomVictory
+    playToyRoomVictory,
+    setMasterVolume,
+    getMasterVolume,
+    setMuted,
+    isMuted: getIsMuted,
+    toggleMute,
+    getAudioContext: () => state.audioCtx
   };
 }
