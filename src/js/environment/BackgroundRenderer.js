@@ -23,19 +23,27 @@ export class BackgroundRenderer {
     const FLOOR_Y = this.floorY;
     const tick = options.tick || 0;
 
-    // Fundo atmosférico profundo do berçário
-    ctx.fillStyle = '#110e19';
+    // Fundo atmosférico profundo do berçário, mantendo a assinatura lúdica da playroom em tom escuro
+    ctx.fillStyle = '#0d0a14';
     ctx.fillRect(0, -600, canvas.width, canvas.height + 1200);
 
     // Listras do papel de parede e padrão de losangos com paralaxe
     const bgOffset = (camX * 0.15) % 80;
-    ctx.fillStyle = '#161220';
+    ctx.fillStyle = '#17131d';
     for (let x = -80; x < canvas.width + 80; x += 80) {
       ctx.fillRect(x - bgOffset, -400, 40, FLOOR_Y + 400);
     }
 
-    // Estrelas douradas suaves no papel de parede
-    ctx.fillStyle = 'rgba(250, 204, 21, 0.07)';
+    // Acento de luz dourada e lilás para preservar a mesma assinatura visual da playroom em clima de quarto escuro
+    const topGlow = ctx.createLinearGradient(0, 0, 0, FLOOR_Y);
+    topGlow.addColorStop(0, 'rgba(250, 204, 21, 0.10)');
+    topGlow.addColorStop(0.38, 'rgba(168, 85, 247, 0.07)');
+    topGlow.addColorStop(1, 'rgba(13, 10, 20, 0)');
+    ctx.fillStyle = topGlow;
+    ctx.fillRect(0, 0, canvas.width, FLOOR_Y + 50);
+
+    // Estrelas douradas suaves no papel de parede, com brilho mais íntimo e velado
+    ctx.fillStyle = 'rgba(250, 204, 21, 0.065)';
     for (let x = -80; x < canvas.width + 80; x += 80) {
       const sx = x - bgOffset + 20;
       for (let y = 50; y < FLOOR_Y; y += 65) {
@@ -78,33 +86,33 @@ export class BackgroundRenderer {
       const sx = wx - camX * 0.3;
       if (sx < -140 || sx > canvas.width + 140) return;
 
-      // Moldura da janela
-      ctx.fillStyle = '#1c152b';
-      ctx.strokeStyle = '#42335f';
+      // Moldura da janela em tom mais profundo, mantendo o visual delicado do berçário
+      ctx.fillStyle = '#1a1325';
+      ctx.strokeStyle = '#4d3c68';
       ctx.lineWidth = 3;
       ctx.beginPath();
       ctx.roundRect(sx, 80, 90, 130, [45, 45, 4, 4]);
       ctx.fill();
       ctx.stroke();
 
-      // Vidro com o céu da meia-noite
-      ctx.fillStyle = '#06050e';
+      // Vidro com o céu da meia-noite em azul nocturno sutil
+      ctx.fillStyle = '#090b14';
       ctx.beginPath();
       ctx.roundRect(sx + 6, 86, 78, 118, [40, 40, 2, 2]);
       ctx.fill();
 
-      // Lua Crescente
-      ctx.fillStyle = '#fef08a';
+      // Lua Crescente com o mesmo brilho quente da playroom em versão mais sombria
+      ctx.fillStyle = '#fef3c7';
       ctx.beginPath();
       ctx.arc(sx + 35, 115, 12, 0, Math.PI * 2);
       ctx.fill();
-      ctx.fillStyle = '#06050e';
+      ctx.fillStyle = '#090b14';
       ctx.beginPath();
       ctx.arc(sx + 39, 113, 10, 0, Math.PI * 2);
       ctx.fill();
 
       // Estrelas cintilando na janela
-      ctx.fillStyle = '#ffffff';
+      ctx.fillStyle = '#f8fafc';
       const tw = Math.sin(tick * 0.05 + wx) * 0.5 + 0.5;
       ctx.fillRect(sx + 60, 110, 2, 2);
       ctx.fillRect(sx + 22, 145, 1.5, 1.5);
@@ -120,8 +128,8 @@ export class BackgroundRenderer {
       ctx.lineTo(sx + 84, 140);
       ctx.stroke();
 
-      // Cortinas translúcidas lilases com dobras suaves
-      ctx.fillStyle = 'rgba(168, 85, 247, 0.28)';
+      // Cortinas translúcidas lilases com dobras suaves e tom mais elegante
+      ctx.fillStyle = 'rgba(168, 85, 247, 0.20)';
       ctx.beginPath();
       ctx.moveTo(sx - 4, 80);
       ctx.quadraticCurveTo(sx + 15, 140, sx + 5, 215);

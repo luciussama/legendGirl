@@ -81,7 +81,7 @@ export class LightingSystem {
 
     if (isStandbyActive || isStandbyTransitioning) {
       // Pulsação sutil e acolhedora de luz que ilumina apenas a menina e a fadinha no quarto escuro
-      dctx.fillStyle = '#05040a';
+      dctx.fillStyle = '#090611';
       dctx.fillRect(0, 0, canvas.width, canvas.height);
       dctx.globalCompositeOperation = 'destination-out';
 
@@ -90,7 +90,7 @@ export class LightingSystem {
       const fx = fairy.x - camX;
       const fy = fairy.y - camY;
 
-      // Pulsação suave (senoidal) da fadinha acolhedora
+      // Pulsação suave (senoidal) da fadinha acolhedora, em tom quente e lilás
       const pulse = Math.sin(tick * 0.06) * 14;
       const midX = (bx + fx) / 2;
       const midY = (by + fy) / 2;
@@ -122,12 +122,22 @@ export class LightingSystem {
       ctx.globalCompositeOperation = 'multiply';
       ctx.drawImage(darkCanvas, 0, 0);
 
-      // Vignette suave ao redor da tela
+      // Preserva a assinatura visual da playroom com uma luz quente, suave e acolhedora em volta das protagonistas
+      const warmGlow = ctx.createRadialGradient(midX, midY, 20, midX, midY, 220);
+      warmGlow.addColorStop(0, 'rgba(254, 240, 138, 0.10)');
+      warmGlow.addColorStop(0.35, 'rgba(196, 181, 253, 0.08)');
+      warmGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = warmGlow;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Vignette suave ao redor da tela, mantendo a luz familiar da playroom e a atmosfera do quarto
       const vignette = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, canvas.width * 0.25,
         canvas.width / 2, canvas.height / 2, canvas.width * 0.65
       );
       vignette.addColorStop(0, 'rgba(0,0,0,0)');
+      vignette.addColorStop(0.72, 'rgba(9, 7, 15, 0.35)');
       vignette.addColorStop(1, 'rgba(0,0,0,0.85)');
       ctx.fillStyle = vignette;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -182,6 +192,15 @@ export class LightingSystem {
       ctx.globalCompositeOperation = 'multiply';
       ctx.drawImage(darkCanvas, 0, 0);
 
+      // Mantém o gesto visual da playroom mesmo em cena dramática, com luz quente a destacar a menina e a fada
+      const focusGlow = ctx.createRadialGradient(bx, by, 25, bx, by, 220);
+      focusGlow.addColorStop(0, 'rgba(254, 240, 138, 0.09)');
+      focusGlow.addColorStop(0.35, 'rgba(192, 132, 252, 0.07)');
+      focusGlow.addColorStop(1, 'rgba(0, 0, 0, 0)');
+      ctx.globalCompositeOperation = 'screen';
+      ctx.fillStyle = focusGlow;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
       // Sombra dramática pronunciada nas bordas
       const dramaticVignette = ctx.createRadialGradient(
         canvas.width / 2, canvas.height / 2, canvas.width * 0.2,
@@ -195,11 +214,11 @@ export class LightingSystem {
       return;
     }
 
-    dctx.fillStyle = '#0a0812';
+    dctx.fillStyle = '#0b0912';
     dctx.fillRect(0, 0, canvas.width, canvas.height);
     dctx.globalCompositeOperation = 'destination-out';
 
-    // Luz em volta da menininha (sempre acompanhando a posição vertical da câmera)
+    // Luz em volta da menininha em tom quente e acolhedor, mesmo no quarto escuro
     const bx = baby.x - camX + baby.w / 2;
     const by = baby.y - camY + baby.h / 2;
     const babyLight = dctx.createRadialGradient(bx, by, 12, bx, by, 175);
