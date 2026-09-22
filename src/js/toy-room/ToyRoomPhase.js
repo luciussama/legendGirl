@@ -36,6 +36,9 @@ export class ToyRoomPhase {
     this.environmentTrain = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
       x: 689, y: 76, width: 116, height: 88
     });
+    this.environmentTable = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 548, y: 44, width: 137, height: 119
+    });
     this.environmentDetails = this.assets ? [
       {
         image: this.assets.getRegion('toy-room-environment-sheet', { x: 832, y: 482, width: 45, height: 45 }),
@@ -898,7 +901,8 @@ export class ToyRoomPhase {
       const node = renderList[i];
       if (node.type === 'furniture') {
         roomEnvironmentRenderer.renderFurniture(ctx, node.item, {
-          environmentChest: this.environmentChest
+          environmentChest: this.environmentChest,
+          environmentTable: this.environmentTable
         });
       } else if (node.type === 'toy') {
         toyRenderer.renderToy(ctx, node.item, this.player.x, this.player.y, Boolean(this.player.carriedItem), now, {

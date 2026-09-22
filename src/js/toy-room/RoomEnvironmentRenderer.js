@@ -39,6 +39,32 @@ export class RoomEnvironmentRenderer {
       ctx.fillRect(0, 0, roomW, roomH);
     }
 
+    const frameGradient = ctx.createLinearGradient(0, 0, 0, 54);
+    frameGradient.addColorStop(0, '#5b2d16');
+    frameGradient.addColorStop(0.45, '#8a4a20');
+    frameGradient.addColorStop(1, '#3b1d12');
+    ctx.fillStyle = frameGradient;
+    ctx.fillRect(0, 0, roomW, 54);
+    ctx.fillRect(0, roomH - 54, roomW, 54);
+    ctx.fillRect(0, 0, 54, roomH);
+    ctx.fillRect(roomW - 54, 0, 54, roomH);
+
+    ctx.strokeStyle = 'rgba(255, 214, 126, 0.38)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(27, 27, roomW - 54, roomH - 54);
+    ctx.strokeStyle = 'rgba(45, 20, 10, 0.7)';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(58, 58, roomW - 116, roomH - 116);
+
+    for (let x = 72; x < roomW - 72; x += 128) {
+      ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
+      ctx.fillRect(x, 17, 84, 3);
+      ctx.fillStyle = 'rgba(255, 201, 106, 0.16)';
+      ctx.fillRect(x + 4, 21, 76, 2);
+      ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
+      ctx.fillRect(x, roomH - 21, 84, 3);
+    }
+
     // Linhas de tábuas de madeira no chão
     const plankHeight = 48;
     for (let y = 240; y < roomH; y += plankHeight) {
@@ -64,48 +90,10 @@ export class RoomEnvironmentRenderer {
       }
     }
 
-    // Papel de Parede Superior (Aquarela coral/pêssego ensolarada com padrões florais)
-    const wallGrad = ctx.createLinearGradient(0, 0, 0, 240);
-    wallGrad.addColorStop(0, '#f472b6');
-    wallGrad.addColorStop(0.5, '#fb923c');
-    wallGrad.addColorStop(1, '#fde047');
-    ctx.fillStyle = wallGrad;
-    ctx.fillRect(0, 0, roomW, 240);
-
-    // Estêncil floral decorativo no papel de parede
-    ctx.fillStyle = 'rgba(255, 255, 255, 0.28)';
-    for (let wx = 60; wx < roomW; wx += 90) {
-      for (let wy = 40; wy < 210; wy += 60) {
-        ctx.beginPath();
-        ctx.arc(wx, wy, 8, 0, Math.PI * 2);
-        ctx.fill();
-        ctx.beginPath();
-        ctx.arc(wx + 10, wy, 4, 0, Math.PI * 2);
-        ctx.arc(wx - 10, wy, 4, 0, Math.PI * 2);
-        ctx.arc(wx, wy + 10, 4, 0, Math.PI * 2);
-        ctx.arc(wx, wy - 10, 4, 0, Math.PI * 2);
-        ctx.fill();
-      }
-    }
-
-    // Rodapé de madeira esculpido separando parede e piso
-    ctx.fillStyle = '#b45309';
-    ctx.fillRect(0, 228, roomW, 16);
-    ctx.fillStyle = '#78350f';
-    ctx.fillRect(0, 240, roomW, 6);
-    ctx.fillStyle = '#fde68a';
-    ctx.fillRect(0, 226, roomW, 2);
-
-    // Molduras externas das paredes esquerda, direita e inferior
-    ctx.fillStyle = '#92400e';
-    ctx.fillRect(0, 0, 50, roomH);
-    ctx.fillRect(roomW - 50, 0, 50, roomH);
-    ctx.fillRect(0, roomH - 50, roomW, 50);
-
-    // Borda interna com detalhes dourados
-    ctx.strokeStyle = '#f59e0b';
-    ctx.lineWidth = 4;
-    ctx.strokeRect(50, 246, roomW - 100, roomH - 296);
+    ctx.fillStyle = '#6b3518';
+    ctx.fillRect(54, 74, roomW - 108, 9);
+    ctx.fillStyle = '#d18a3b';
+    ctx.fillRect(54, 74, roomW - 108, 2);
 
     // Janelas em arco na parede trazendo iluminação dourada natural
     this.drawArchedWindow(ctx, 520, 30);
@@ -305,23 +293,42 @@ export class RoomEnvironmentRenderer {
 
   drawFloralPlayMat(ctx, rx, ry) {
     ctx.save();
-    ctx.fillStyle = 'rgba(120, 53, 15, 0.2)';
-    ctx.fillRect(rx - 8, ry - 8, 266, 186);
+    ctx.fillStyle = 'rgba(53, 24, 11, 0.34)';
+    ctx.beginPath();
+    ctx.ellipse(rx + 125, ry + 88, 135, 84, 0, 0, Math.PI * 2);
+    ctx.fill();
 
-    ctx.fillStyle = '#8b5cf6';
-    ctx.fillRect(rx, ry, 250, 170);
+    ctx.fillStyle = '#bd3f54';
+    ctx.beginPath();
+    ctx.ellipse(rx + 125, ry + 80, 128, 78, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#6f2c25';
+    ctx.lineWidth = 7;
+    ctx.stroke();
 
-    ctx.fillStyle = '#c084fc';
-    ctx.fillRect(rx + 10, ry + 10, 230, 150);
+    ctx.fillStyle = '#198b91';
+    ctx.beginPath();
+    ctx.ellipse(rx + 125, ry + 80, 103, 59, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#d58b39';
+    ctx.lineWidth = 3;
+    ctx.stroke();
 
-    const colors = ['#f43f5e', '#38bdf8', '#facc15', '#10b981'];
-    for (let x = rx + 20; x < rx + 220; x += 45) {
-      for (let y = ry + 20; y < ry + 140; y += 40) {
-        ctx.fillStyle = colors[((x + y) / 20) % colors.length | 0];
-        ctx.beginPath();
-        ctx.arc(x + 12, y + 12, 10, 0, Math.PI * 2);
-        ctx.fill();
-      }
+    ctx.fillStyle = '#e7ad43';
+    ctx.beginPath();
+    ctx.ellipse(rx + 125, ry + 80, 63, 37, 0, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.strokeStyle = '#8f4b28';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    ctx.strokeStyle = 'rgba(111, 44, 37, 0.62)';
+    ctx.lineWidth = 2;
+    for (let angle = 0; angle < Math.PI * 2; angle += Math.PI / 8) {
+      ctx.beginPath();
+      ctx.moveTo(rx + 125 + Math.cos(angle) * 12, ry + 80 + Math.sin(angle) * 8);
+      ctx.lineTo(rx + 125 + Math.cos(angle) * 50, ry + 80 + Math.sin(angle) * 29);
+      ctx.stroke();
     }
     ctx.restore();
   }
@@ -331,10 +338,17 @@ export class RoomEnvironmentRenderer {
     ctx.fillStyle = 'rgba(120, 53, 15, 0.2)';
     ctx.fillRect(bx - 4, by - 4, 188, 128);
 
-    ctx.fillStyle = '#10b981';
+    ctx.fillStyle = '#2f8d79';
     ctx.fillRect(bx, by, 180, 120);
+    ctx.strokeStyle = '#174f4b';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(bx + 3, by + 3, 174, 114);
 
-    ctx.fillStyle = '#fef08a';
+    ctx.strokeStyle = 'rgba(254, 240, 138, 0.35)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(bx + 12, by + 12, 156, 96);
+
+    ctx.fillStyle = '#f2c05e';
     for (let fx = bx + 6; fx < bx + 174; fx += 8) {
       ctx.fillRect(fx, by - 6, 4, 6);
       ctx.fillRect(fx, by + 120, 4, 6);
@@ -344,8 +358,8 @@ export class RoomEnvironmentRenderer {
 
   drawTrainTracks(ctx) {
     ctx.save();
-    ctx.strokeStyle = '#d97706';
-    ctx.lineWidth = 14;
+    ctx.strokeStyle = 'rgba(53, 24, 11, 0.38)';
+    ctx.lineWidth = 24;
     ctx.lineCap = 'round';
     ctx.lineJoin = 'round';
 
@@ -361,9 +375,21 @@ export class RoomEnvironmentRenderer {
     ctx.quadraticCurveTo(320, 420, 350, 420);
     ctx.stroke();
 
-    ctx.strokeStyle = '#fef3c7';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = '#6f351b';
+    ctx.lineWidth = 8;
+    ctx.translate(0, -7);
     ctx.stroke();
+    ctx.translate(0, 14);
+    ctx.stroke();
+
+    ctx.translate(0, -7);
+    ctx.strokeStyle = '#d58b39';
+    ctx.lineWidth = 2;
+    ctx.setLineDash([10, 28]);
+    ctx.stroke();
+    ctx.translate(0, 14);
+    ctx.stroke();
+    ctx.setLineDash([]);
     ctx.restore();
   }
 
@@ -377,6 +403,17 @@ export class RoomEnvironmentRenderer {
 
     if (f.type === 'chest' && options.environmentChest) {
       ctx.drawImage(options.environmentChest, f.x - 4, f.y - 10, f.w + 8, f.h + 22);
+      return;
+    }
+
+    if (f.type === 'table' && options.environmentTable) {
+      ctx.save();
+      ctx.fillStyle = 'rgba(53, 24, 11, 0.3)';
+      ctx.beginPath();
+      ctx.ellipse(f.x + f.w / 2, f.y + f.h - 2, f.w / 2 + 18, 16, 0, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.drawImage(options.environmentTable, f.x - 4, f.y - 16, f.w + 8, f.h + 28);
+      ctx.restore();
       return;
     }
 
