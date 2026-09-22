@@ -14,8 +14,41 @@ export class ToyRoomEntities {
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} player
    */
-  renderPlayer(ctx, player) {
+  renderPlayer(ctx, player, options = {}) {
     if (!ctx || !player) return;
+
+    const walkFrame = player.isMoving ? Math.floor((player.animTime || 0) * 0.9) % 3 + 1 : 0;
+    const direction = player.facing;
+    const imageKey = player.carriedItem
+      ? 'toy-room-player-carry'
+      : direction === 'down' && walkFrame > 0
+        ? `toy-room-player-down-${walkFrame}`
+        : direction === 'up' && walkFrame > 0
+          ? `toy-room-player-up-${walkFrame}`
+          : direction === 'left' && walkFrame > 0
+        ? `toy-room-player-right-${walkFrame}`
+        : direction === 'right' && walkFrame > 0
+          ? `toy-room-player-left-${walkFrame}`
+          : ({ up: 'toy-room-player-up', left: 'toy-room-player-right', right: 'toy-room-player-left' }[direction] || 'toy-room-player');
+    const playerImage = options.assets && options.assets.get(imageKey);
+    if (playerImage) {
+      const walkPhase = (player.animTime || 0) * 1.8;
+      const walkBob = player.isMoving ? Math.abs(Math.sin(walkPhase)) * 2.2 : 0;
+      const bodySway = player.isMoving ? Math.sin(walkPhase) * 0.035 : 0;
+
+      ctx.save();
+      ctx.translate(player.x, player.y + 28);
+      ctx.rotate(bodySway);
+      ctx.drawImage(
+        playerImage,
+        -30,
+        -80 - walkBob,
+        60,
+        80
+      );
+      ctx.restore();
+      return;
+    }
 
     ctx.save();
     const px = player.x;
@@ -147,8 +180,14 @@ export class ToyRoomEntities {
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} fairy
    */
-  renderFairy(ctx, fairy) {
+  renderFairy(ctx, fairy, options = {}) {
     if (!ctx || !fairy) return;
+
+    const fairyImage = options.assets && options.assets.get('toy-room-fairy');
+    if (fairyImage) {
+      ctx.drawImage(fairyImage, fairy.x - 30, fairy.y - 30, 60, 60);
+      return;
+    }
 
     ctx.save();
     const fx = fairy.x;

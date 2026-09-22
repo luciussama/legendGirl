@@ -17,16 +17,29 @@ export class RoomEnvironmentRenderer {
    * @param {number} roomW
    * @param {number} roomH
    */
-  renderBackground(ctx, roomW, roomH) {
+  renderBackground(ctx, roomW, roomH, options = {}) {
     if (!ctx) return;
 
+    const floorTile = options.assets && options.assets.get('toy-room-floor-tile');
+
+    if (floorTile) {
+      const pattern = ctx.createPattern(floorTile, 'repeat');
+      if (pattern) {
+        ctx.fillStyle = pattern;
+        ctx.fillRect(0, 240, roomW, roomH - 240);
+      }
+    }
+
     // Piso: Tábuas de carvalho dourado com veios desenhados à mão
-    ctx.fillStyle = '#fef3c7';
-    ctx.fillRect(0, 0, roomW, roomH);
+    if (!floorTile) {
+      ctx.fillStyle = '#fef3c7';
+      ctx.fillRect(0, 0, roomW, roomH);
+    }
 
     // Linhas de tábuas de madeira no chão
     const plankHeight = 48;
     for (let y = 240; y < roomH; y += plankHeight) {
+      if (floorTile) continue;
       ctx.fillStyle = (y / plankHeight) % 2 === 0 ? '#fde68a' : '#fef08a';
       ctx.fillRect(0, y, roomW, plankHeight);
 

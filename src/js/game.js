@@ -8,9 +8,12 @@ import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
 import { createParticleSystem, transitionEffects } from './effects/index.js';
 import { hudRenderer, dialogueRenderer } from './ui/index.js';
+import { createAssetManager } from './assets/index.js';
 
 export function createGame(canvas, uiFeedback, callbacks = {}) {
   const ctx = canvas.getContext('2d');
+  const assets = createAssetManager();
+  const assetsReady = assets.loadManifest().then(() => assets.preload());
   const audio = createAudioController();
   const state = createGameState(canvas, uiFeedback, callbacks);
   const camera = createCameraController({ floorY: FLOOR_Y });
@@ -226,7 +229,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     currentPhaseMode = 'toy-room';
     toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
       restartToTitle();
-    });
+    }, { assets });
 
     audio.startToyRoomMusic();
     if (!loopStarted) {
@@ -1382,6 +1385,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     platforms: platformRenderer,
     hud: hudRenderer,
     dialogue: dialogueRenderer,
+    assets,
+    assetsReady,
     input: inputHandler,
     audio,
     pauseMusic: () => audio && typeof audio.pauseMusic === 'function' && audio.pauseMusic(),

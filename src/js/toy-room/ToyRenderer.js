@@ -16,7 +16,7 @@ export class ToyRenderer {
    * @param {boolean} isCarrying
    * @param {number} [time]
    */
-  renderToy(ctx, t, playerX = 0, playerY = 0, isCarrying = false, time = performance.now()) {
+  renderToy(ctx, t, playerX = 0, playerY = 0, isCarrying = false, time = performance.now(), options = {}) {
     if (!ctx || !t || t.isOrganized) return;
 
     ctx.save();
@@ -56,6 +56,13 @@ export class ToyRenderer {
       ctx.font = 'bold 11px Georgia, serif';
       ctx.textAlign = 'center';
       ctx.fillText('▼ PEGAR', tx, bounceY);
+    }
+
+    const teddyImage = options.assets && options.assets.get('toy-room-teddy');
+    if (t.type === 'teddy' && teddyImage) {
+      ctx.drawImage(teddyImage, tx - 32, ty - 38, 64, 75);
+      ctx.restore();
+      return;
     }
 
     // Desenho artístico de cada brinquedo

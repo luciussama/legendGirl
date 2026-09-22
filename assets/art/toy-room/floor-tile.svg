@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="256" height="128" viewBox="0 0 256 128">
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d99a43"/>
+      <stop offset="0.5" stop-color="#b86f2c"/>
+      <stop offset="1" stop-color="#8c4d20"/>
+    </linearGradient>
+  </defs>
+  <rect width="256" height="128" fill="url(#wood)"/>
+  <path d="M0 2h256M0 64h256M0 126h256" stroke="#5e3018" stroke-opacity=".5" stroke-width="3"/>
+  <path d="M18 24c22-10 38 12 57 0M142 36c24-12 40 11 78-4M38 96c26-12 40 10 70-2M174 112c20-8 42 8 62-4" fill="none" stroke="#6b3519" stroke-opacity=".45" stroke-width="3" stroke-linecap="round"/>
+  <ellipse cx="104" cy="40" rx="18" ry="5" fill="none" stroke="#713b1d" stroke-opacity=".5" stroke-width="2"/>
+</svg>

@@ -1,0 +1,1 @@
+export { AssetManager, createAssetManager } from './AssetManager.js';

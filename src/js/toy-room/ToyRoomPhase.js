@@ -11,12 +11,13 @@ import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
 
 export class ToyRoomPhase {
-  constructor(canvas, audio, uiFeedback, onReturnToTitle) {
+  constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
     this.canvas = canvas;
     this.ctx = canvas.getContext('2d');
     this.audio = audio;
     this.uiFeedback = uiFeedback;
     this.onReturnToTitle = onReturnToTitle;
+    this.assets = options.assets || null;
 
     // Dimensões da Sala
     this.ROOM_W = 1600;
@@ -797,7 +798,9 @@ export class ToyRoomPhase {
     ctx.translate(-this.cameraX, -this.cameraY);
 
     // 1. Cenário de Fundo
-    roomEnvironmentRenderer.renderBackground(ctx, this.ROOM_W, this.ROOM_H);
+    roomEnvironmentRenderer.renderBackground(ctx, this.ROOM_W, this.ROOM_H, {
+      assets: this.assets
+    });
 
     // 2. Poeirinhas de passos
     for (let i = 0; i < this.footstepPuffs.length; i++) {
@@ -844,17 +847,21 @@ export class ToyRoomPhase {
       if (node.type === 'furniture') {
         roomEnvironmentRenderer.renderFurniture(ctx, node.item);
       } else if (node.type === 'toy') {
-        toyRenderer.renderToy(ctx, node.item, this.player.x, this.player.y, Boolean(this.player.carriedItem), now);
+        toyRenderer.renderToy(ctx, node.item, this.player.x, this.player.y, Boolean(this.player.carriedItem), now, {
+          assets: this.assets
+        });
       } else if (node.type === 'player') {
-        toyRoomEntities.renderPlayer(ctx, this.player);
+        toyRoomEntities.renderPlayer(ctx, this.player, { assets: this.assets });
         if (this.player.carriedItem) {
-          toyRenderer.renderToy(ctx, this.player.carriedItem, this.player.x, this.player.y, true, now);
+          toyRenderer.renderToy(ctx, this.player.carriedItem, this.player.x, this.player.y, true, now, {
+            assets: this.assets
+          });
         }
       }
     }
 
     // 4. Fadinha companheira
-    toyRoomEntities.renderFairy(ctx, this.fairy);
+    toyRoomEntities.renderFairy(ctx, this.fairy, { assets: this.assets });
 
     // 5. Rastro de brilho da fada
     for (let i = 0; i < this.fairy.particles.length; i++) {
@@ -935,8 +942,8 @@ export class ToyRoomPhase {
   }
 }
 
-export function createToyRoom(canvas, audio, uiFeedback, onReturnToTitle) {
-  const toyRoom = new ToyRoomPhase(canvas, audio, uiFeedback, onReturnToTitle);
+export function createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options) {
+  const toyRoom = new ToyRoomPhase(canvas, audio, uiFeedback, onReturnToTitle, options);
   return {
     update: (dt) => toyRoom.update(dt),
     render: () => toyRoom.render(),
