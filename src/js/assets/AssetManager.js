@@ -53,9 +53,16 @@ export class AssetManager {
     return new Promise((resolve, reject) => {
       const image = new Image();
       image.onload = () => {
-        this.images.set(key, image);
+        const processedImage = key === 'toy-room-player-sheet'
+          ? this.removeSolidBackground(image)
+          : key === 'toy-room-environment-sheet'
+            ? this.removeSolidBackground(image, 'dark')
+          : key === 'toy-room-player-back-sheet'
+            ? this.normalizeCharacterPalette(image)
+            : image;
+        this.images.set(key, processedImage);
         this.statuses.set(key, 'ready');
-        resolve(image);
+        resolve(processedImage);
       };
       image.onerror = () => {
         this.statuses.set(key, 'error');
@@ -63,6 +70,73 @@ export class AssetManager {
       };
       image.src = source;
     });
+  }
+
+  removeSolidBackground(image, background = 'light') {
+    if (typeof document === 'undefined') return image;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = image.naturalWidth || image.width;
+    canvas.height = image.naturalHeight || image.height;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) return image;
+
+    context.drawImage(image, 0, 0);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+    for (let index = 0; index < pixels.data.length; index += 4) {
+      const red = pixels.data[index];
+      const green = pixels.data[index + 1];
+      const blue = pixels.data[index + 2];
+      const whiteness = Math.min(red, green, blue);
+      const darkness = Math.max(red, green, blue);
+
+      if (background === 'dark' && darkness <= 18) {
+        pixels.data[index + 3] = 0;
+      } else if (background === 'dark' && darkness <= 38 && Math.max(red, green, blue) - Math.min(red, green, blue) < 18) {
+        pixels.data[index + 3] = Math.round((38 - darkness) / 20 * 255);
+      } else if (whiteness >= 245) {
+        pixels.data[index + 3] = 0;
+      } else if (whiteness >= 220 && Math.max(red, green, blue) - whiteness < 18) {
+        pixels.data[index + 3] = Math.round((245 - whiteness) / 25 * 255);
+      }
+    }
+    context.putImageData(pixels, 0, 0);
+    return canvas;
+  }
+
+  getRegion(key, region) {
+    const source = this.images.get(key);
+    if (!source || typeof document === 'undefined') return null;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = region.width;
+    canvas.height = region.height;
+    const context = canvas.getContext('2d');
+    if (!context) return null;
+    context.drawImage(source, region.x, region.y, region.width, region.height, 0, 0, region.width, region.height);
+    return canvas;
+  }
+
+  normalizeCharacterPalette(image) {
+    if (typeof document === 'undefined') return image;
+
+    const canvas = document.createElement('canvas');
+    canvas.width = image.naturalWidth || image.width;
+    canvas.height = image.naturalHeight || image.height;
+    const context = canvas.getContext('2d', { willReadFrequently: true });
+    if (!context) return image;
+
+    context.drawImage(image, 0, 0);
+    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
+    const lift = 0.1;
+    for (let index = 0; index < pixels.data.length; index += 4) {
+      if (pixels.data[index + 3] === 0) continue;
+      pixels.data[index] += Math.round((255 - pixels.data[index]) * lift);
+      pixels.data[index + 1] += Math.round((255 - pixels.data[index + 1]) * lift);
+      pixels.data[index + 2] += Math.round((255 - pixels.data[index + 2]) * lift);
+    }
+    context.putImageData(pixels, 0, 0);
+    return canvas;
   }
 
   get(key) {

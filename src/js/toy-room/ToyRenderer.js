@@ -58,9 +58,15 @@ export class ToyRenderer {
       ctx.fillText('▼ PEGAR', tx, bounceY);
     }
 
-    const teddyImage = options.assets && options.assets.get('toy-room-teddy');
+    const teddyImage = options.environmentTeddy || (options.assets && options.assets.get('toy-room-teddy'));
     if (t.type === 'teddy' && teddyImage) {
-      ctx.drawImage(teddyImage, tx - 32, ty - 38, 64, 75);
+      ctx.drawImage(teddyImage, tx - 32, ty - 38, 64, 90);
+      ctx.restore();
+      return;
+    }
+
+    if (t.type === 'train' && options.environmentTrain) {
+      ctx.drawImage(options.environmentTrain, tx - 42, ty - 30, 84, 64);
       ctx.restore();
       return;
     }

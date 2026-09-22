@@ -21,9 +21,12 @@ export class RoomEnvironmentRenderer {
     if (!ctx) return;
 
     const floorTile = options.assets && options.assets.get('toy-room-floor-tile');
+    const environmentTile = options.environmentSheet;
 
-    if (floorTile) {
-      const pattern = ctx.createPattern(floorTile, 'repeat');
+    if (environmentTile) {
+      this.renderPerspectiveFloor(ctx, environmentTile, roomW, roomH);
+    } else if (floorTile) {
+      const pattern = ctx.createPattern(environmentTile || floorTile, 'repeat');
       if (pattern) {
         ctx.fillStyle = pattern;
         ctx.fillRect(0, 240, roomW, roomH - 240);
@@ -109,15 +112,63 @@ export class RoomEnvironmentRenderer {
     this.drawArchedWindow(ctx, 1280, 30);
 
     // Porta aberta à esquerda (por onde a garotinha emergiu)
-    this.drawEntrancePortal(ctx, 50, 550);
+    this.drawEntrancePortal(ctx, 50, 550, options.environmentDoor);
 
     // Tapetes decorativos no chão
-    this.drawCentralMandalaRug(ctx, 800, 700);
+    if (options.environmentRug) {
+      ctx.drawImage(options.environmentRug, 650, 555, 300, 255);
+    } else {
+      this.drawCentralMandalaRug(ctx, 800, 700);
+    }
     this.drawFloralPlayMat(ctx, 1180, 520);
     this.drawBedsideFringeRug(ctx, 280, 920);
 
     // Circuito de trilhos de trem de madeira
     this.drawTrainTracks(ctx);
+
+    if (options.environmentDetails) {
+      options.environmentDetails.forEach((detail) => {
+        if (detail.image) {
+          ctx.drawImage(detail.image, detail.x, detail.y, detail.width, detail.height);
+        }
+      });
+    }
+  }
+
+  renderPerspectiveFloor(ctx, tile, roomW, roomH) {
+    const floorTop = 240;
+    const floorHeight = roomH - floorTop;
+    const bandCount = 18;
+
+    ctx.save();
+    ctx.beginPath();
+    ctx.rect(0, floorTop, roomW, floorHeight);
+    ctx.clip();
+
+    for (let band = 0; band < bandCount; band++) {
+      const near = band / bandCount;
+      const far = (band + 1) / bandCount;
+      const y = floorTop + floorHeight * near;
+      const nextY = floorTop + floorHeight * far;
+      const depthScale = 0.52 + near * 0.95;
+      const tileWidth = tile.width * depthScale;
+      const tileHeight = Math.max(1, nextY - y + 1);
+
+      for (let x = -tileWidth; x < roomW + tileWidth; x += tileWidth) {
+        ctx.drawImage(tile, x, y, tileWidth + 1, tileHeight);
+      }
+
+      ctx.fillStyle = `rgba(72, 35, 16, ${0.12 - near * 0.06})`;
+      ctx.fillRect(0, y, roomW, 1.5);
+    }
+
+    const depthShade = ctx.createLinearGradient(0, floorTop, 0, roomH);
+    depthShade.addColorStop(0, 'rgba(42, 20, 10, 0.22)');
+    depthShade.addColorStop(0.45, 'rgba(255, 201, 106, 0.02)');
+    depthShade.addColorStop(1, 'rgba(68, 26, 10, 0.12)');
+    ctx.fillStyle = depthShade;
+    ctx.fillRect(0, floorTop, roomW, floorHeight);
+    ctx.restore();
   }
 
   drawArchedWindow(ctx, wx, wy) {
@@ -176,7 +227,11 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
-  drawEntrancePortal(ctx, dx, dy) {
+  drawEntrancePortal(ctx, dx, dy, environmentDoor = null) {
+    if (environmentDoor) {
+      ctx.drawImage(environmentDoor, dx, dy, 88, 136);
+      return;
+    }
     ctx.save();
     ctx.fillStyle = '#92400e';
     ctx.beginPath();
@@ -317,8 +372,13 @@ export class RoomEnvironmentRenderer {
    * @param {CanvasRenderingContext2D} ctx
    * @param {object} f Objeto do móvel
    */
-  renderFurniture(ctx, f) {
+  renderFurniture(ctx, f, options = {}) {
     if (!ctx || !f) return;
+
+    if (f.type === 'chest' && options.environmentChest) {
+      ctx.drawImage(options.environmentChest, f.x - 4, f.y - 10, f.w + 8, f.h + 22);
+      return;
+    }
 
     ctx.save();
     // Sombra projetada no chão

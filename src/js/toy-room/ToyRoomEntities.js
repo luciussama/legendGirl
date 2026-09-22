@@ -17,6 +17,42 @@ export class ToyRoomEntities {
   renderPlayer(ctx, player, options = {}) {
     if (!ctx || !player) return;
 
+    const sheetImage = options.assets && options.assets.get('toy-room-player-sheet');
+    if (sheetImage) {
+      const frameWidth = Math.floor((sheetImage.width || sheetImage.naturalWidth) / 4);
+      const frameHeight = Math.floor((sheetImage.height || sheetImage.naturalHeight) / 4);
+      const frame = player.isMoving ? Math.floor((player.animTime || 0) * 0.9) % 4 : 0;
+      const backSheet = options.assets && options.assets.get('toy-room-player-back-sheet');
+      const isBack = !player.carriedItem && player.facing === 'up' && backSheet;
+      const activeSheet = isBack ? backSheet : sheetImage;
+      const activeFrameWidth = isBack ? Math.floor((backSheet.width || backSheet.naturalWidth) / 4) : frameWidth;
+      const activeFrameHeight = isBack ? (backSheet.height || backSheet.naturalHeight) : frameHeight;
+      const row = player.carriedItem ? 2 : ({ down: 0, up: 1, left: 3, right: 3 }[player.facing] ?? 0);
+      const isRight = player.facing === 'right';
+      const bob = player.isMoving ? Math.abs(Math.sin((player.animTime || 0) * 1.8)) * 1.5 : 0;
+      const sourceInset = 3;
+      const sourceTopInset = !isBack && row === 3 ? 12 : sourceInset;
+
+      ctx.save();
+      ctx.translate(player.x, player.y + 28);
+      if (isRight) {
+        ctx.scale(-1, 1);
+      }
+      ctx.drawImage(
+        activeSheet,
+        frame * activeFrameWidth + sourceInset,
+        (isBack ? 0 : row * activeFrameHeight) + sourceTopInset,
+        activeFrameWidth - sourceInset * 2,
+        activeFrameHeight - sourceTopInset - sourceInset,
+        -32,
+        -81 - bob,
+        64,
+        82
+      );
+      ctx.restore();
+      return;
+    }
+
     const walkFrame = player.isMoving ? Math.floor((player.animTime || 0) * 0.9) % 3 + 1 : 0;
     const direction = player.facing;
     const imageKey = player.carriedItem

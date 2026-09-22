@@ -18,6 +18,54 @@ export class ToyRoomPhase {
     this.uiFeedback = uiFeedback;
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
+    this.environmentFloorTile = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 27, y: 151, width: 186, height: 48
+    });
+    this.environmentTeddy = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 424, y: 44, width: 86, height: 120
+    });
+    this.environmentRug = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 39, y: 355, width: 291, height: 247
+    });
+    this.environmentDoor = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 304, y: 158, width: 88, height: 136
+    });
+    this.environmentChest = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 551, y: 192, width: 138, height: 128
+    });
+    this.environmentTrain = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 689, y: 76, width: 116, height: 88
+    });
+    this.environmentDetails = this.assets ? [
+      {
+        image: this.assets.getRegion('toy-room-environment-sheet', { x: 832, y: 482, width: 45, height: 45 }),
+        x: 1350,
+        y: 470,
+        width: 34,
+        height: 34
+      },
+      {
+        image: this.assets.getRegion('toy-room-environment-sheet', { x: 878, y: 482, width: 54, height: 45 }),
+        x: 1430,
+        y: 615,
+        width: 42,
+        height: 34
+      },
+      {
+        image: this.assets.getRegion('toy-room-environment-sheet', { x: 839, y: 555, width: 50, height: 52 }),
+        x: 1180,
+        y: 930,
+        width: 42,
+        height: 44
+      },
+      {
+        image: this.assets.getRegion('toy-room-environment-sheet', { x: 1038, y: 561, width: 66, height: 63 }),
+        x: 220,
+        y: 520,
+        width: 54,
+        height: 52
+      }
+    ] : [];
 
     // Dimensões da Sala
     this.ROOM_W = 1600;
@@ -799,7 +847,11 @@ export class ToyRoomPhase {
 
     // 1. Cenário de Fundo
     roomEnvironmentRenderer.renderBackground(ctx, this.ROOM_W, this.ROOM_H, {
-      assets: this.assets
+      assets: this.assets,
+      environmentSheet: this.environmentFloorTile,
+      environmentRug: this.environmentRug,
+      environmentDoor: this.environmentDoor,
+      environmentDetails: this.environmentDetails
     });
 
     // 2. Poeirinhas de passos
@@ -845,16 +897,22 @@ export class ToyRoomPhase {
     for (let i = 0; i < renderList.length; i++) {
       const node = renderList[i];
       if (node.type === 'furniture') {
-        roomEnvironmentRenderer.renderFurniture(ctx, node.item);
+        roomEnvironmentRenderer.renderFurniture(ctx, node.item, {
+          environmentChest: this.environmentChest
+        });
       } else if (node.type === 'toy') {
         toyRenderer.renderToy(ctx, node.item, this.player.x, this.player.y, Boolean(this.player.carriedItem), now, {
-          assets: this.assets
+          assets: this.assets,
+          environmentTeddy: this.environmentTeddy,
+          environmentTrain: this.environmentTrain
         });
       } else if (node.type === 'player') {
         toyRoomEntities.renderPlayer(ctx, this.player, { assets: this.assets });
         if (this.player.carriedItem) {
           toyRenderer.renderToy(ctx, this.player.carriedItem, this.player.x, this.player.y, true, now, {
-            assets: this.assets
+            assets: this.assets,
+            environmentTeddy: this.environmentTeddy,
+            environmentTrain: this.environmentTrain
           });
         }
       }
