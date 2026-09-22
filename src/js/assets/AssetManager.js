@@ -1,4 +1,4 @@
-const DEFAULT_MANIFEST_URL = '/assets/manifest.json';
+const DEFAULT_MANIFEST_URL = './assets/manifest.json';
 
 export class AssetManager {
   constructor(options = {}) {

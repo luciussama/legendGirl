@@ -91,8 +91,8 @@ export function createAudioSystem() {
   function getMusicTrack() {
     if (!state.musicTrack) {
       try {
-        const fallbackUrl = new URL('../audio/High-Frequency%20Violin.mp3', import.meta.url).href;
-        const primaryUrl = '/assets/audio/High-Frequency%20Violin.mp3';
+        const fallbackUrl = new URL('../../assets/audio/High-Frequency%20Violin.mp3', import.meta.url).href;
+        const primaryUrl = new URL('../../assets/audio/High-Frequency%20Violin.mp3', import.meta.url).href;
         state.musicTrack = new Audio(primaryUrl);
         state.musicTrack.onerror = () => {
           if (state.musicTrack && state.musicTrack.src !== fallbackUrl) {
@@ -527,7 +527,7 @@ export function createAudioSystem() {
     if (!toyRoomAudio) {
       try {
         const fallbackUrl = new URL('../audio/The%20Circle%20Game.mp3', import.meta.url).href;
-        const primaryUrl = '/assets/audio/The%20Circle%20Game.mp3';
+        const primaryUrl = new URL('../../assets/audio/The%20Circle%20Game.mp3', import.meta.url).href;
         const secondaryFallbackUrl = '/src/audio/The%20Circle%20Game.mp3';
 
         toyRoomAudio = new Audio(primaryUrl);
