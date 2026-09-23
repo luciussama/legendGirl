@@ -81,3 +81,148 @@ ornamentos são decoração. Halos claros e fragmentos presentes nos recortes
 originais permanecem como trabalho de arte, sem ampliar o escopo desta correção.
 Antes de regenerar os assets com scripts antigos, revisar suas associações:
 esses scripts não foram executados nem modificados nesta correção.
+
+## Revisão sequencial — 23/09/2026
+
+Retomada após a almofada (índice 6). Revisadas nesta rodada: cômoda (7),
+caixa de música (8), castelo (9) e trem (10). Cada alteração foi seguida pelos
+verificadores de física e pelo teste no navegador antes de avançar.
+
+- Cômoda: proporção preservada; contato dos sapatos corrigido no renderizador
+  da personagem. O ponto mais baixo da sola acompanha a superfície durante
+  toda a passada, incluindo rotação e contorno, nos dois sentidos.
+- Caixa de música: acrescentado móvel de sustentação visual até o chão.
+- Castelo: removida associação residual do atlas com a imagem de uma cômoda.
+  Mantido desenho procedural; torre e brilho indicam os 28 px do apoio real.
+- Trem: recorte de renderização exclui fragmentos da imagem vizinha, com suporte
+  até o piso e travessa horizontal coincidente com o apoio. PNG original intacto.
+- Corrigidas as associações invertidas entre pipa e livro no manifesto e atlas.
+
+`npm run verify:dark-room` executa também `test-foot-contact.js`: 5.280 poses
+checadas pelas elipses e transformações reais de Canvas. O teste principal
+valida proporção dos sprites sem floorFit e dimensões dos arquivos de origem.
+Resultado: 666 verificações de hitbox/render e 66 travessias; a bateria antiga
+continua passando 293 verificações. A referência de física não foi alterada.
+
+`npm run review:dark-room -- 10` verifica sequencialmente até o trem; substituir
+10 por 21 executa a regressão nas 22 plataformas. Requer servidor em :3000 e
+Chrome de teste com depuração em :9222. Além dos saltos, verifica queda no centro
+e nas duas bordas, mantendo o apoio por oito atualizações em dt 0,5/1/1,2.
+A regressão completa passou 66 saltos e 198 quedas. As cenas do castelo e portal
+ficam desativadas nesta página para isolar o apoio; não equivale a uma partida
+completa com entrada do usuário e diálogos. As capturas ficam em
+`tmp/dark-room/review/NN-{scene,hitbox}.png`.
+
+**Ponto de retomada daquela rodada: prateleira (11).** O sucesso da regressão
+nas plataformas posteriores não constitui aprovação visual de seus contornos.
+
+
+## Continuação sequencial — plataformas 11 a 14
+
+Aprovadas na ordem, com inspeção de tamanho/proporção, pés no centro e nas
+bordas, verificadores Node e saltos de entrada/saída no navegador após cada
+alteração. A física e sua referência permanecem intactas.
+
+| Índice | Objeto | Apoio | Ajuste visual |
+| --- | --- | --- | --- |
+| 11 | Prateleira | 110 px em y=236 | Borda horizontal e exclusão de fragmentos do recorte vizinho; enfeites preservados. |
+| 12 | Abajur cogumelo | 65 px em y=224 | Coroa recortada na renderização com acabamento plano; móvel de sustentação até o piso. |
+| 13 | Casa de bonecas | 100 px em y=210 | Escala uniforme pela cumeeira, em vez da largura dos beirais; fachada até o piso. |
+| 14 | Globo | 95 px em y=218 | Esfera proporcional preservada; armação com travessa de latão para apoio e móvel até o piso. |
+
+Os PNGs originais não foram alterados. As novas superfícies e partes da
+fachada/armação são desenhadas pelo renderizador de produção.
+
+O teste de navegador agora salva, por plataforma:
+- `NN-scene.png` e `NN-hitbox.png`: objeto no cenário real.
+- `NN-support.png`: pés à esquerda, centro e direita, sem iluminação escura
+  nem linha de debug encobrindo o contato.
+- `NN-results.json`: resultados acumulados e salto para a plataforma seguinte.
+
+Além da física, `visibleSupport` renderiza em Canvas transparente e verifica
+opacidade em toda a largura das superfícies com acabamento (`cap`). Nas quatro
+plataformas desta rodada, são 370 pixels de apoio, sem lacunas. Verifica também
+que os fragmentos excluídos da prateleira não continuam aparecendo. Plataformas
+sem esse acabamento retornam `checked:false`; isso não é aprovação visual.
+
+Resultados finais: 666 verificações de hitbox/render, 66 travessias simuladas,
+5.280 contatos dos sapatos e 293 verificações da bateria anterior passaram.
+No navegador: 66 saltos e 198 quedas passaram na regressão completa, com apoio
+por oito atualizações após cada pouso. Saltos de saída de 11, 12, 13 e 14 também
+passaram em dt 0,5, 1 e 1,2. Lint, sintaxe e 56 assets passaram.
+As cenas continuam desativadas apenas no ambiente de teste.
+
+**Ponto de retomada daquela rodada: pipa (15).** A revisão visual desta rodada
+não aprova automaticamente os objetos posteriores, mesmo com a física passando.
+
+
+## Revisão individual — pipa (15)
+
+A avaliação inicial passou na física, mas reprovou no apoio visual: os pés
+atravessavam a parte superior do tecido, sem uma superfície horizontal visível.
+
+Correção: travessa de bambu com 90 px de largura em y=196, ligada à armação por
+linhas de amarração. O sprite foi alinhado abaixo da travessa, com escala uniforme
+90/155: 285 × 187 px incluindo a cauda. A proporção e o PNG foram preservados;
+a cauda continua decorativa, sem ampliar a colisão. Nenhuma outra plataforma
+foi editada nesta rodada.
+
+Validação após a correção:
+- Inspeção do objeto no cenário e dos sapatos à esquerda, centro e direita.
+- Três saltos globo → pipa e três pipa → livro: dt 0,5; 1; 1,2.
+- Nove quedas na pipa: três posições por dt, com oito atualizações de apoio estável.
+- Canvas transparente: todos os 90 pixels da linha de apoio são opacos.
+- Verificador geral: 666 checks de hitbox/render, 66 travessias e 5.280 contatos
+  da animação dos sapatos; bateria anterior: 293 checks. Todos passaram.
+
+Evidências: `tmp/dark-room/review/15-{scene,hitbox,support}.png` e
+`tmp/dark-room/review/15-results.json`. As cenas ficam desativadas no teste de
+apoio; não foi simulada uma partida completa com diálogos.
+
+**Pipa aprovada nos critérios desta revisão. Próxima: livro flutuante (16).**
+
+
+## Revisão individual — livro flutuante (16)
+
+Preferência visual definida pelo usuário: a menina caminha SOBRE as páginas,
+aceitando a sobreposição dos pés com a ilustração. Não adicionar travessa,
+acabamento reto nem recortar as páginas para impor um topo plano.
+
+O acabamento anterior foi removido e o sprite voltou a ser desenhado inteiro.
+A referência visual de contato passou de y=45 para y=90 no PNG, colocando os
+sapatos dentro da área ilustrada das páginas. A escala uniforme 85/240
+(145 × 99 px), o PNG e a física permanecem intactos: apoio de 85 px em y=184.
+
+A inspeção das capturas confirmou esse resultado à esquerda, no centro e à
+direita. Passaram três saltos pipa → livro, três livro → lustre e nove quedas,
+em dt 0,5/1/1,2, mantendo apoio por oito atualizações após cada pouso.
+A bateria geral passou 666 verificações de hitbox/render, 66 travessias e
+5.280 contatos dos sapatos; a bateria anterior passou 293 verificações.
+O teste de borda opaca retorna `checked:false`, pois não existe mais acabamento
+plano: a coerência visual deste livro segue a preferência acima.
+
+Evidências atualizadas: `tmp/dark-room/review/16-{scene,hitbox,support}.png` e
+`tmp/dark-room/review/16-results.json`. As cenas ficam isoladas nos testes.
+
+**Próxima plataforma a revisar: lustre (17).**
+
+
+## Correção solicitada — mesa à frente do abajur (12)
+
+Substitui a solução anterior de cortar a coroa do cogumelo. O abajur é desenhado
+inteiro, em escala uniforme (66 × 78 px), com a base alinhada ao tampo, atrás da
+mesa e da personagem. A mesa alta tem tampo de 105 px, saia frontal, gaveta,
+pernas e travessa até o piso. O caminho é sobre a mesa, não sobre o cogumelo.
+
+A área física foi ampliada de x=2277/w=65 para x=2257/w=105, mantendo y=224.
+A referência de física foi atualizada deliberadamente apenas nesses dois
+campos da plataforma 12, pois o tampo maior solicitado precisa ser utilizável
+por inteiro. O chapéu e a haste são cenário, sem colisão adicional. As demais
+plataformas e os atributos dos saltos não foram alterados.
+
+Passaram seis saltos de entrada/saída e nove quedas na mesa, em dt 0,5/1/1,2,
+com oito atualizações de apoio estável após cada pouso. A checagem de Canvas
+confirmou 105 pixels opacos no tampo. Foram inspecionadas as capturas atualizadas
+`12-scene.png` e `12-support.png`, com a menina nas duas bordas e no centro.
+Os verificadores gerais passaram: 666 checks de hitbox/render, 66 travessias,
+5.280 contatos dos sapatos e 293 checks da bateria anterior.

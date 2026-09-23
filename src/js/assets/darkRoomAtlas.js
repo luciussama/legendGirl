@@ -5,7 +5,7 @@
  */
 
 export const SHEET_WIDTH = 2048;
-export const SHEET_HEIGHT = 4137;
+export const SHEET_HEIGHT = 3927;
 export const SPRITESHEET_PATH = 'assets/art/dark-room/production-spritesheet.png';
 
 export const darkRoomAtlas = {
@@ -72,212 +72,205 @@ export const darkRoomAtlas = {
     "height": 322,
     "file": "assets/art/dark-room/sprites/block_castle.png"
   },
-  "block_castle": {
+  "stepped_dresser": {
     "x": 275,
     "y": 2118,
     "width": 304,
     "height": 351,
     "file": "assets/art/dark-room/platforms/stepped_dresser.png"
   },
-  "stepped_dresser": {
-    "x": 587,
-    "y": 2118,
-    "width": 304,
-    "height": 351,
-    "file": "assets/art/dark-room/sprites/music_box.png"
-  },
   "train_trestle": {
-    "x": 899,
+    "x": 587,
     "y": 2118,
     "width": 464,
     "height": 350,
     "file": "assets/art/dark-room/sprites/train_trestle.png"
   },
   "wall_shelf": {
-    "x": 1371,
+    "x": 1059,
     "y": 2118,
     "width": 392,
     "height": 286,
     "file": "assets/art/dark-room/sprites/wall_shelf.png"
   },
   "mushroom_lamp": {
-    "x": 8,
-    "y": 2477,
+    "x": 1459,
+    "y": 2118,
     "width": 288,
     "height": 342,
     "file": "assets/art/dark-room/sprites/mushroom_lamp.png"
   },
   "dollhouse_roof": {
-    "x": 304,
+    "x": 8,
     "y": 2477,
     "width": 582,
     "height": 337,
     "file": "assets/art/dark-room/sprites/dollhouse_roof.png"
   },
   "wardrobe_portal": {
-    "x": 894,
+    "x": 598,
     "y": 2477,
     "width": 560,
     "height": 200,
     "file": "assets/art/dark-room/sprites/wardrobe_portal.png"
   },
   "spinning_globe": {
-    "x": 1462,
+    "x": 1166,
     "y": 2477,
     "width": 214,
     "height": 309,
     "file": "assets/art/dark-room/sprites/spinning_globe.png"
   },
   "floating_books": {
-    "x": 8,
-    "y": 2827,
+    "x": 1388,
+    "y": 2477,
     "width": 410,
     "height": 279,
     "file": "assets/art/dark-room/sprites/kite_frame.png"
   },
   "kite_frame": {
-    "x": 426,
-    "y": 2827,
+    "x": 8,
+    "y": 2822,
     "width": 490,
     "height": 322,
     "file": "assets/art/dark-room/sprites/floating_books.png"
   },
   "chandelier_crystals": {
-    "x": 924,
-    "y": 2827,
+    "x": 506,
+    "y": 2822,
     "width": 292,
     "height": 335,
     "file": "assets/art/dark-room/sprites/chandelier_crystals.png"
   },
   "curtain_rod": {
-    "x": 1224,
-    "y": 2827,
+    "x": 806,
+    "y": 2822,
     "width": 491,
     "height": 351,
     "file": "assets/art/dark-room/sprites/curtain_rod.png"
   },
   "cuckoo_clock": {
-    "x": 1723,
-    "y": 2827,
+    "x": 1305,
+    "y": 2822,
     "width": 196,
     "height": 334,
     "file": "assets/art/dark-room/sprites/cuckoo_clock.png"
   },
   "salto_final_sign": {
-    "x": 8,
-    "y": 3186,
+    "x": 1509,
+    "y": 2822,
     "width": 327,
     "height": 304,
     "file": "assets/art/dark-room/sprites/salto_final_sign.png"
   },
   "grand_portal_pedestal": {
-    "x": 343,
-    "y": 3186,
+    "x": 8,
+    "y": 3181,
     "width": 518,
     "height": 365,
     "file": "assets/art/dark-room/sprites/grand_portal_pedestal.png"
   },
   "mandala_rug": {
-    "x": 869,
-    "y": 3186,
+    "x": 534,
+    "y": 3181,
     "width": 469,
     "height": 470,
     "file": "assets/art/dark-room/sprites/mandala_rug.png"
   },
   "false_door": {
-    "x": 1346,
-    "y": 3186,
+    "x": 1011,
+    "y": 3181,
     "width": 292,
     "height": 382,
     "file": "assets/art/dark-room/sprites/false_door.png"
   },
   "floor_tiles": {
-    "x": 8,
-    "y": 3664,
+    "x": 1311,
+    "y": 3181,
     "width": 457,
     "height": 465,
     "file": "assets/art/dark-room/sprites/floor_tiles.png"
   },
   "retro_robot": {
-    "x": 473,
-    "y": 3664,
+    "x": 1776,
+    "y": 3181,
     "width": 174,
     "height": 311,
     "file": "assets/art/dark-room/sprites/retro_robot.png"
   },
   "plush_bunny": {
-    "x": 655,
-    "y": 3664,
+    "x": 8,
+    "y": 3659,
     "width": 223,
     "height": 260,
     "file": "assets/art/dark-room/sprites/plush_bunny.png"
   },
   "wardrobe_ledge": {
-    "x": 894,
+    "x": 598,
     "y": 2477,
     "width": 560,
     "height": 200,
     "file": "assets/art/dark-room/sprites/wardrobe_portal.png"
   },
   "true_portal": {
-    "x": 343,
-    "y": 3186,
+    "x": 8,
+    "y": 3181,
     "width": 518,
     "height": 365,
     "file": "assets/art/dark-room/sprites/grand_portal_pedestal.png"
   },
   "trueExitDoor": {
-    "x": 343,
-    "y": 3186,
+    "x": 8,
+    "y": 3181,
     "width": 518,
     "height": 365,
     "file": "assets/art/dark-room/sprites/grand_portal_pedestal.png"
   },
   "fake_exit_poster": {
-    "x": 1346,
-    "y": 3186,
+    "x": 1011,
+    "y": 3181,
     "width": 292,
     "height": 382,
     "file": "assets/art/dark-room/sprites/false_door.png"
   },
   "exitDoor": {
-    "x": 1346,
-    "y": 3186,
+    "x": 1011,
+    "y": 3181,
     "width": 292,
     "height": 382,
     "file": "assets/art/dark-room/sprites/false_door.png"
   },
   "room_door": {
-    "x": 1346,
-    "y": 3186,
+    "x": 1011,
+    "y": 3181,
     "width": 292,
     "height": 382,
     "file": "assets/art/dark-room/sprites/false_door.png"
   },
   "rug": {
-    "x": 869,
-    "y": 3186,
+    "x": 534,
+    "y": 3181,
     "width": 469,
     "height": 470,
     "file": "assets/art/dark-room/sprites/mandala_rug.png"
   },
   "rugs": {
-    "x": 869,
-    "y": 3186,
+    "x": 534,
+    "y": 3181,
     "width": 469,
     "height": 470,
     "file": "assets/art/dark-room/sprites/mandala_rug.png"
   },
   "fluffy_rug": {
-    "x": 869,
-    "y": 3186,
+    "x": 534,
+    "y": 3181,
     "width": 469,
     "height": 470,
     "file": "assets/art/dark-room/sprites/mandala_rug.png"
   },
   "room_scenery": {
-    "x": 473,
-    "y": 3664,
+    "x": 1776,
+    "y": 3181,
     "width": 174,
     "height": 311,
     "file": "assets/art/dark-room/sprites/retro_robot.png"

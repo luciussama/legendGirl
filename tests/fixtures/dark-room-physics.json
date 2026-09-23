@@ -151,9 +151,9 @@
       "style": "mushroom_lamp",
       "label": "3/12 Abajur Cogumelo",
       "standRegion": {
-        "x": 2277,
+        "x": 2257,
         "y": 224,
-        "w": 65,
+        "w": 105,
         "h": 250
       }
     },

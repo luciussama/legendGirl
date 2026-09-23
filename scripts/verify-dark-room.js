@@ -116,16 +116,40 @@ const renderer=new PlatformRenderer({assets});
 for(const p of platforms){
   const before=JSON.stringify(p);
   let calls=0;
-  const ctx={save(){},restore(){},beginPath(){},rect(){},clip(){},fillRect(){},drawImage(sprite,...rect){
+  const ctx={save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,...rect){
     assert(rect.every(Number.isFinite));assert(rect[2]>0&&rect[3]>0);calls++;
+    const calibration=PLATFORM_SURFACES[p.style];
+    assert.equal(sprite.width,calibration.origW,`${p.style}: source width`);
+    assert.equal(sprite.height,calibration.origH,`${p.style}: source height`);
+    if(!calibration.floorFit) {
+      assert(Math.abs(rect[3]-sprite.height*rect[2]/sprite.width)<=1,
+        `${p.style}: sprite must preserve its proportions`);
+    }
   }};
+  if (p.style === 'block_castle') {
+    assert.equal(assets.get('dark-room-sprite-block-castle'), null);
+    assert.equal(darkRoomAtlas.block_castle, undefined);
+    assert.equal(renderer.drawAtlasPlatformSprite(ctx,assets,p.style,p.x,p), false);
+    const blocks=[];
+    const procedural=new Proxy({fillRect(...r){blocks.push(r);}}, {
+      get:(o,k)=>k in o?o[k]:()=>{}
+    });
+    renderer.renderPlatforms(procedural,{width:10000},0,{platforms:[p]});
+    const top=surface(p);
+    assert(blocks.some(([x,y,w])=>x===top.x&&y===top.y&&w===top.w),
+      'The castle tower must visibly support the real landing region');
+    assert(!blocks.some(([x,y,w])=>y===top.y&&(x<top.x||x+w>top.x+top.w)),
+      'The castle must not draw a false wide landing surface');
+    checks+=3;
+    continue; // Deliberate procedural castle, without a raster sprite.
+  }
   assert(renderer.drawAtlasPlatformSprite(ctx,assets,p.style,p.x,p));
   assert.equal(calls,1);assert.equal(JSON.stringify(p),before);checks++;
   const calibration=PLATFORM_SURFACES[p.style], support=surface(p);
   for(const camX of [0,123.4,p.x-40]) {
     for(const atlasOnly of [false,true]) {
       const selectedAssets=atlasOnly?{get(){return null;},getRegion:assets.getRegion.bind(assets)}:assets;
-      const aligned={save(){},restore(){},beginPath(){},rect(){},clip(){},fillRect(){},drawImage(sprite,dx,dy,dw,dh){
+      const aligned={save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,dx,dy,dw,dh){
         // Rounding of raster placement may differ by less than one pixel.
         assert(Math.abs(dx+calibration.surfaceX*dw/sprite.width-(support.x-camX))<1);
         assert(Math.abs(dy+calibration.surfaceY*dh/sprite.height-support.y)<1);
@@ -135,7 +159,7 @@ for(const p of platforms){
     }
   }
 }
-for(const name of ['stepped_dresser','music_box','block_castle','kite_frame','floating_books']) {
+for(const name of ['stepped_dresser','music_box','kite_frame','floating_books']) {
   assert.equal(manifest.images['dark-room-sprite-'+name.replaceAll('_','-')],'./'+darkRoomAtlas[name].file);
   const sprite=assets.get('dark-room-sprite-'+name.replaceAll('_','-'));
   assert.equal(sprite.width,darkRoomAtlas[name].width);

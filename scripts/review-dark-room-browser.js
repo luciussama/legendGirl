@@ -1,6 +1,7 @@
 // Requires the dev server on :3000 and a dedicated Chrome with --remote-debugging-port=9222.
 import fs from 'node:fs/promises';
 const target=Number(process.argv[2]??0);
+if(!Number.isInteger(target)||target<0||target>21)throw Error('Platform index must be 0..21');
 const pages=await (await fetch('http://127.0.0.1:9222/json')).json();
 const page=pages.find(p=>p.type==='page');
 if(!page)throw Error('No test Chrome page');
@@ -17,13 +18,22 @@ try{
   if(!await evaluate('Boolean(window.review)'))throw Error('Review page did not initialize');
   const results=[];
   // Gate every earlier platform before proceeding to the requested one.
-  for(let i=0;i<=target;i++)for(const dt of [0.5,1,1.2])results.push(await evaluate(`window.review.run(${i},${dt})`));
+  for(let i=0;i<=target;i++)for(const dt of [0.5,1,1.2]){
+    results.push({jump:await evaluate(`window.review.run(${i},${dt})`),
+      contacts:await evaluate(`window.review.contacts(${i},${dt})`),
+      visual:await evaluate(`window.review.visibleSupport(${i})`)});
+  }
   await fs.mkdir('tmp/dark-room/review',{recursive:true});
   for(const debug of [false,true]){
     await evaluate(`window.review.show(${target},${debug})`);
     const {data}=await send('Page.captureScreenshot',{format:'png'});
     await fs.writeFile(`tmp/dark-room/review/${String(target).padStart(2,'0')}-${debug?'hitbox':'scene'}.png`,Buffer.from(data,'base64'));
   }
+  const detail=await evaluate(`window.review.detail(${target})`);
+  await fs.writeFile(`tmp/dark-room/review/${String(target).padStart(2,'0')}-support.png`,Buffer.from(detail,'base64'));
+  const outgoing=[];
+  if(target<21)for(const dt of [0.5,1,1.2])outgoing.push(await evaluate(`window.review.run(${target+1},${dt})`));
+  await fs.writeFile(`tmp/dark-room/review/${String(target).padStart(2,'0')}-results.json`,JSON.stringify({results,outgoing},null,2)+'\n');
   await fs.writeFile('tmp/dark-room/review/results.json',JSON.stringify(results,null,2)+'\n');
   console.log(JSON.stringify({passed:results.length,last:results.slice(-3)},null,2));
 }finally{ws.close();}

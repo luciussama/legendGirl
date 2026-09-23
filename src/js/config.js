@@ -183,7 +183,8 @@ export const platforms = [
     h: 250,
     style: 'mushroom_lamp',
     label: '3/12 Abajur Cogumelo',
-    standRegion: { x: 2277, y: 224, w: 65, h: 250 }
+    // The entire table is walkable; the lamp is scenery behind it.
+    standRegion: { x: 2257, y: 224, w: 105, h: 250 }
   },
   // 4/12 (gap 105px)
   { x: 2467, y: 210, w: 100, h: 264, style: 'dollhouse_roof', label: '4/12 Telhado da Casa de Bonecas' },

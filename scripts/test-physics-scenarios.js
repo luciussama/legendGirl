@@ -224,8 +224,8 @@ for (let i = 0; i < platforms.length; i++) {
 
   if (p.style === 'mushroom_lamp') {
     assert(Boolean(p.standRegion), `[mushroom_lamp] standRegion específica deve existir`);
-    assert(p.standRegion.w < p.w, `[mushroom_lamp] Chapéu visual (${p.w}px) deve ser maior que a área navegável (${p.standRegion.w}px)`);
-    assert(p.standRegion.y === 224, `[mushroom_lamp] standRegion.y deve ser exatamente o topo utilizável do chapéu (224)`);
+    assert(p.standRegion.w === p.w && p.standRegion.x === p.x, `[mushroom_lamp] Todo o tampo da mesa deve ser navegável`);
+    assert(p.standRegion.y === 224, `[mushroom_lamp] standRegion.y deve ser exatamente o tampo da mesa (224)`);
 
     // Validação específica: Bordas artísticas não participam da colisão
     const leftBrimBaby = { x: platX - BABY_W, y: platY - 20, vx: 0, vy: 2, w: BABY_W, h: BABY_H, onGround: false };

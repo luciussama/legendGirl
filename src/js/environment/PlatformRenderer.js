@@ -24,15 +24,17 @@ export const PLATFORM_SURFACES = {
   toy_drum: { surfaceY: 100, surfaceX: 35, surfaceW: 210, origW: 292, origH: 296, support: 'stand' },
   satin_cushion: { surfaceY: 145, surfaceX: 550, surfaceW: 880, origW: 1983, origH: 793, bottom: 660, support: 'stand' },
   stepped_dresser: { surfaceY: 88, surfaceX: 30, surfaceW: 260, origW: 304, origH: 351, trimAboveSupport: true, cap: 'wood', support: 'stand' },
-  music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322 },
+  music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322, support: 'stand' },
   block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
-  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350 },
-  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286 },
-  mushroom_lamp: { surfaceY: 2, surfaceX: 54, surfaceW: 176, origW: 288, origH: 342 },
-  dollhouse_roof: { surfaceY: 104, surfaceX: 2, surfaceW: 578, origW: 582, origH: 337 },
-  spinning_globe: { surfaceY: 34, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309 },
-  kite_frame: { surfaceY: 75, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322 },
-  floating_books: { surfaceY: 45, surfaceX: 95, surfaceW: 240, origW: 410, origH: 279 },
+  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, bottom: 290, clipBottom: 290, support: 'stand', cap: 'wood' },
+  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, cap: 'wood', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
+  // The complete lamp sits behind the walkable table, aligned by its base.
+  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'foreground-table', cap: 'wood' },
+  dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: 'roof' },
+  spinning_globe: { surfaceY: 0, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309, support: 'stand', frame: 'brass', cap: 'brass' },
+  kite_frame: { surfaceY: 0, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322, cap: 'bamboo' },
+  // Feet sit within the illustrated pages; their curvature is intentionally decorative.
+  floating_books: { surfaceY: 90, surfaceX: 95, surfaceW: 240, origW: 410, origH: 279 },
   chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
   curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
   cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
@@ -125,21 +127,103 @@ export class PlatformRenderer {
       ctx.fillRect(left + 4, top + 8, width - 8, 2);
     }
 
+    if (s.support === 'house') {
+      // The roof belongs to a dollhouse rooted on the floor. Draw its facade
+      // behind the sloping eaves; it is scenery, not another landing area.
+      const left = dx + 13, width = dw - 26;
+      const top = dy + Math.round(dh * 0.72);
+      ctx.fillStyle = '#b98d70';ctx.fillRect(left, top, width, this.floorY - top);
+      ctx.fillStyle = '#77503b';
+      ctx.fillRect(left, top, 5, this.floorY - top);
+      ctx.fillRect(left + width - 5, top, 5, this.floorY - top);
+      for (let y = top + 18; y < this.floorY - 50; y += 49) {
+        ctx.fillStyle = '#78513c';ctx.fillRect(left + 4, y + 32, width - 8, 4);
+        for (const x of [left + 17, left + width - 35]) {
+          ctx.fillStyle = '#533b38';ctx.fillRect(x - 2, y - 2, 22, 28);
+          ctx.fillStyle = '#f1c778';ctx.fillRect(x, y, 18, 24);
+          ctx.fillStyle = '#9e7150';ctx.fillRect(x + 8, y, 2, 24);ctx.fillRect(x, y + 11, 18, 2);
+        }
+      }
+      ctx.fillStyle = '#634638';ctx.fillRect(left + width / 2 - 13, this.floorY - 38, 26, 38);
+      ctx.fillStyle = '#e7bf71';ctx.fillRect(left + width / 2 + 6, this.floorY - 20, 3, 3);
+      ctx.fillStyle = '#876047';ctx.fillRect(left - 3, this.floorY - 4, width + 6, 4);
+    }
+
     // Suporte sutil de sombra/madeira até o piso para plataformas altas
-    if (dy + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean)) {
+    if (dy + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean) && s.support !== 'stand') {
       ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
       ctx.fillRect(sx + 8, dy + dh - 4, p.w - 16, this.floorY - (dy + dh - 4));
     }
 
-    if (s.trimAboveSupport) {
-      ctx.save();ctx.beginPath();ctx.rect(dx, platY, dw, dh);ctx.clip();
+    if (s.frame === 'brass') {
+      // A flat handle carried by the globe's frame. The sphere stays round;
+      // the brass crossbar, not empty space above its curved sides, is walkable.
+      const frameBottom = dy + Math.round(dh * 0.80);
+      ctx.fillStyle = '#77512b';
+      ctx.fillRect(sxSurface, platY + 5, 4, frameBottom - platY - 5);
+      ctx.fillRect(sxSurface + platW - 4, platY + 5, 4, frameBottom - platY - 5);
+      ctx.fillRect(sxSurface, frameBottom - 4, platW, 4);
+      ctx.fillStyle = '#d4a457';
+      ctx.fillRect(sxSurface + 1, platY + 5, 1, frameBottom - platY - 5);
+      ctx.fillRect(sxSurface + platW - 3, platY + 5, 1, frameBottom - platY - 5);
+    }
+
+    const clipSprite = s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
+    if (clipSprite) {
+      const clipTop = s.trimAboveSupport ? platY : dy;
+      const clipEnd = dy + (s.clipBottom ?? spriteH) * scaleY;
+      ctx.save();ctx.beginPath();ctx.rect(dx, clipTop, dw, clipEnd - clipTop);
+      // Exclude neighbouring objects baked into an atlas cutout, without
+      // stretching the artwork or touching the collision geometry.
+      for (const [x, y, w, h] of s.excludeRects || []) {
+        ctx.rect(dx + x * dw / spriteW, dy + y * dh / spriteH,
+          w * dw / spriteW, h * dh / spriteH);
+      }
+      ctx.clip('evenodd');
     }
     ctx.drawImage(sprite, dx, dy, dw, dh);
-    if (s.trimAboveSupport) ctx.restore();
+    if (clipSprite) ctx.restore();
+    if (s.support === 'foreground-table') {
+      // Draw after the lamp so the front apron occludes its base. The character
+      // is rendered later, walking along the table in front of the whole lamp.
+      const legTop = platY + 12;
+      ctx.fillStyle = '#4c3025';
+      for (const x of [sxSurface + 7, sxSurface + platW - 18]) {
+        ctx.fillRect(x, legTop, 11, this.floorY - legTop);
+        ctx.fillStyle = '#987044';ctx.fillRect(x + 2, legTop, 3, this.floorY - legTop - 5);
+        ctx.fillStyle = '#4c3025';
+      }
+      ctx.fillStyle = '#67482e';ctx.fillRect(sxSurface + 5, platY + 7, platW - 10, 22);
+      ctx.fillStyle = '#aa8050';ctx.fillRect(sxSurface + 10, platY + 11, platW - 20, 2);
+      ctx.fillStyle = '#3b281f';ctx.fillRect(sxSurface + 10, platY + 24, platW - 20, 3);
+      ctx.fillStyle = '#d5af6d';ctx.fillRect(sxSurface + platW / 2 - 4, platY + 16, 8, 3);
+      ctx.fillStyle = '#67482e';ctx.fillRect(sxSurface + 14, this.floorY - 38, platW - 28, 6);
+    }
+    if (s.cap === 'bamboo') {
+      // The enchanted kite carries a horizontal bamboo spar. Bridle lines
+      // attach it to the existing frame; the tail remains purely decorative.
+      const knotX = dx + 85 * dw / spriteW;
+      const knotY = dy + 78 * dh / spriteH;
+      ctx.save();ctx.strokeStyle = '#c8a568';ctx.lineWidth = 1.5;
+      ctx.beginPath();ctx.moveTo(sxSurface + 3, platY + 5);
+      ctx.lineTo(knotX, knotY);ctx.lineTo(sxSurface + platW - 3, platY + 5);
+      ctx.stroke();ctx.restore();
+    }
     if (s.cap) {
-      ctx.fillStyle = '#68462c';ctx.fillRect(sxSurface, platY, platW, 5);
-      ctx.fillStyle = '#b38b50';ctx.fillRect(sxSurface, platY, platW, 1.5);
-      ctx.fillStyle = '#2e1c1b';ctx.fillRect(sxSurface, platY + 5, platW, 2);
+      const colors = s.cap === 'roof' ? ['#a84e2a', '#ed9c59', '#71351f']
+        : s.cap === 'brass' ? ['#a67b3d', '#edc781', '#674624']
+        : s.cap === 'bamboo' ? ['#ae833d', '#efd392', '#76522b']
+        : ['#68462c', '#b38b50', '#2e1c1b'];
+      ctx.fillStyle = colors[0];ctx.fillRect(sxSurface, platY, platW, 5);
+      ctx.fillStyle = colors[1];ctx.fillRect(sxSurface, platY, platW, 1.5);
+      ctx.fillStyle = colors[2];ctx.fillRect(sxSurface, platY + 5, platW, 2);
+      if (s.cap === 'bamboo') {
+        // Nodes stay below the contact line so they do not suggest extra height.
+        ctx.fillStyle = '#76522b';
+        for (const fraction of [0.08, 0.35, 0.65, 0.92]) {
+          ctx.fillRect(sxSurface + Math.round(platW * fraction), platY + 1.5, 2, 5.5);
+        }
+      }
     }
     return true;
   }
@@ -632,38 +716,35 @@ export class PlatformRenderer {
         }
 
         case 'block_castle': {
-          // 10. Castelinho de Blocos
-          ctx.fillStyle = '#475569';
-          ctx.fillRect(sx, p.y + 12, p.w, p.h - 12);
-
-          // Ameias da torre ao longo do topo
-          ctx.fillStyle = '#334155';
-          const crenWidth = 14;
-          for (let cx = 0; cx < p.w; cx += crenWidth * 2) {
-            ctx.fillRect(sx + cx, p.y, crenWidth, 14);
-          }
-
-          // Porta em arco
-          ctx.fillStyle = '#0f172a';
-          ctx.beginPath();
-          ctx.arc(sx + p.w / 2, p.y + p.h - 16, 12, Math.PI, 0);
-          ctx.rect(sx + p.w / 2 - 12, p.y + p.h - 16, 24, 16);
-          ctx.fill();
-
-          // Estandarte azul ondulando
-          ctx.fillStyle = '#0284c7';
-          const flagWave = Math.sin(tick * 0.08) * 3;
-          ctx.beginPath();
-          ctx.moveTo(sx + 14, p.y - 16);
-          ctx.quadraticCurveTo(sx + 26, p.y - 16 + flagWave, sx + 34, p.y - 12);
-          ctx.lineTo(sx + 14, p.y - 6);
-          ctx.closePath();
-          ctx.fill();
-          ctx.strokeStyle = '#94a3b8';
-          ctx.lineWidth = 1.5;
-          ctx.beginPath();
-          ctx.moveTo(sx + 14, p.y + 4); ctx.lineTo(sx + 14, p.y - 18);
-          ctx.stroke();
+          // The narrow central tower is the only landing area. Lower wings
+          // remain visibly below it instead of suggesting a 150px-wide top.
+          const support = p.standRegion || p;
+          const top = p.surfaceTopY ?? support.y ?? p.y;
+          const base = Math.min(FLOOR_Y, p.y + p.h);
+          const tier = (x, y, w, h) => {
+            ctx.fillStyle = '#756575'; ctx.fillRect(x, y, w, h);
+            ctx.fillStyle = '#a09199'; ctx.fillRect(x, y, w, 3);
+            ctx.fillStyle = '#43374a'; ctx.fillRect(x + w - 5, y + 3, 5, h - 3);
+            ctx.strokeStyle = '#544557'; ctx.lineWidth = 1;
+            for (let row = y + 14; row < y + h; row += 14) {
+              ctx.beginPath(); ctx.moveTo(x, row); ctx.lineTo(x + w, row); ctx.stroke();
+              for (let col = x + (Math.round((row-y)/14)%2 ? 9 : 18); col < x+w-5; col += 18) {
+                ctx.beginPath();ctx.moveTo(col,row-13);ctx.lineTo(col,row);ctx.stroke();
+              }
+            }
+          };
+          tier(sx, top + 105, p.w, base - top - 105);
+          tier(sx + 22, top + 62, p.w - 44, base - top - 62);
+          const towerX = sx + support.x - p.x;
+          tier(towerX, top, support.w, base - top);
+          ctx.fillStyle = '#c1a286';ctx.fillRect(towerX,top,support.w,3);
+          ctx.fillStyle = '#241f32';
+          for (const y of [top+24,top+65,top+106]) ctx.fillRect(towerX+support.w/2-3,y,6,12);
+          ctx.fillStyle = '#302839';ctx.fillRect(sx+p.w/2-12,base-38,24,38);
+          ctx.strokeStyle = '#a8bac3';ctx.lineWidth = 2;
+          ctx.beginPath();ctx.moveTo(sx+12,top+105);ctx.lineTo(sx+12,top+69);ctx.stroke();
+          ctx.fillStyle = '#2582a9';ctx.beginPath();ctx.moveTo(sx+13,top+69);
+          ctx.lineTo(sx+32,top+75+Math.sin(tick*0.08)*2);ctx.lineTo(sx+13,top+82);ctx.fill();
           break;
         }
 
@@ -1473,7 +1554,7 @@ export class PlatformRenderer {
           bodyGlow.addColorStop(1, `rgba(245, 158, 11, ${0.09 * alpha})`);
         }
         ctx.fillStyle = bodyGlow;
-        ctx.fillRect(sx, p.y, p.w, p.h);
+        ctx.fillRect(sxBox, platY, platW, platH);
       }
 
       // Brilho Direcional sutil e suave restrito EXCLUSIVAMENTE à borda superior
@@ -1499,8 +1580,8 @@ export class PlatformRenderer {
         ctx.shadowBlur = 2.5;
       }
       ctx.beginPath();
-      ctx.moveTo(sx + 1, p.y + 0.7);
-      ctx.lineTo(sx + p.w - 1, p.y + 0.7);
+      ctx.moveTo(sxBox + 1, platY + 0.7);
+      ctx.lineTo(sxBox + platW - 1, platY + 0.7);
       ctx.stroke();
       ctx.restore();
 
@@ -1509,7 +1590,7 @@ export class PlatformRenderer {
         const bounce = Math.sin(tick * 0.1) * 4;
         ctx.fillStyle = '#fef08a';
         ctx.font = '16px sans-serif';
-        ctx.fillText('▼', sx + p.w / 2 - 6, p.y - 16 + bounce);
+        ctx.fillText('▼', sxBox + platW / 2 - 6, platY - 16 + bounce);
       }
     });
     ctx.restore();

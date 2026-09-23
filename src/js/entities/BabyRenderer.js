@@ -370,14 +370,25 @@ export class BabyRenderer {
     const bob = baby.onGround ? Math.abs(Math.sin(t * 2)) * 3 : 0;
     const tilt = baby.onGround ? Math.sin(t) * 0.08 : -0.15;
 
-    ctx.translate(bx + baby.w / 2, by + baby.h / 2 + bob);
+    // Anchor the lowest animated shoe (including its outline) to the physical
+    // feet. Body bob/rotation must never push a planted sole through a platform.
+    const legLeftAngle = baby.onGround ? stepSwing * 0.6 : 0.4;
+    const legRightAngle = baby.onGround ? -stepSwing * 0.6 : -0.5;
+    const soleBottom = (legX, angle) => {
+      const x = legX + 1.5 * Math.cos(angle) - 10 * Math.sin(angle);
+      const y = 10 + 1.5 * Math.sin(angle) + 10 * Math.cos(angle);
+      const rotation = tilt + angle + 0.2;
+      return x * Math.sin(tilt) + y * Math.cos(tilt)
+        + Math.hypot(4.5 * Math.sin(rotation), 3.2 * Math.cos(rotation)) + 0.6;
+    };
+    const centerY = baby.onGround
+      ? by + baby.h - Math.max(soleBottom(-6, legLeftAngle), soleBottom(6, legRightAngle))
+      : by + baby.h / 2 + bob;
+    ctx.translate(bx + baby.w / 2, centerY);
     if (baby.facing === -1) {
       ctx.scale(-1, 1);
     }
     ctx.rotate(tilt);
-
-    const legLeftAngle = baby.onGround ? stepSwing * 0.6 : 0.4;
-    const legRightAngle = baby.onGround ? -stepSwing * 0.6 : -0.5;
 
     ctx.save();
     ctx.translate(-6, 10);
