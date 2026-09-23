@@ -6,6 +6,7 @@ export class AssetManager {
     this.manifest = { version: 1, images: {}, spritesheets: {} };
     this.images = new Map();
     this.statuses = new Map();
+    this.regionCache = new Map();
     this.manifestStatus = 'idle';
   }
 
@@ -45,28 +46,34 @@ export class AssetManager {
 
     if (typeof Image === 'undefined') {
       this.statuses.set(key, 'unsupported');
-      return Promise.reject(new Error(`Image loading is unavailable for asset: ${key}`));
+      return Promise.resolve(null);
     }
 
     this.statuses.set(key, 'loading');
 
-    return new Promise((resolve, reject) => {
+    return new Promise((resolve) => {
       const image = new Image();
       image.onload = () => {
-        const processedImage = key === 'toy-room-player-sheet'
-          ? this.removeSolidBackground(image)
-          : key === 'toy-room-environment-sheet'
-            ? this.removeSolidBackground(image, 'dark')
-          : key === 'toy-room-player-back-sheet'
-            ? this.normalizeCharacterPalette(image)
-            : image;
-        this.images.set(key, processedImage);
-        this.statuses.set(key, 'ready');
-        resolve(processedImage);
+        try {
+          const processedImage = key === 'toy-room-player-sheet'
+            ? this.removeSolidBackground(image)
+            : key === 'toy-room-environment-sheet'
+              ? this.removeSolidBackground(image, 'dark')
+            : key === 'toy-room-player-back-sheet'
+              ? this.normalizeCharacterPalette(image)
+              : image;
+          this.images.set(key, processedImage);
+          this.statuses.set(key, 'ready');
+          resolve(processedImage);
+        } catch {
+          this.statuses.set(key, 'error');
+          resolve(null);
+        }
       };
       image.onerror = () => {
         this.statuses.set(key, 'error');
-        reject(new Error(`Image asset failed to load: ${key}`));
+        // Permite fallback gracioso sem rejeitar a promessa geral de pré-carregamento
+        resolve(null);
       };
       image.src = source;
     });
@@ -75,9 +82,13 @@ export class AssetManager {
   removeSolidBackground(image, background = 'light') {
     if (typeof document === 'undefined') return image;
 
+    const width = image.naturalWidth || image.width || 0;
+    const height = image.naturalHeight || image.height || 0;
+    if (width <= 0 || height <= 0) return image;
+
     const canvas = document.createElement('canvas');
-    canvas.width = image.naturalWidth || image.width;
-    canvas.height = image.naturalHeight || image.height;
+    canvas.width = width;
+    canvas.height = height;
     const context = canvas.getContext('2d', { willReadFrequently: true });
     if (!context) return image;
 
@@ -90,10 +101,10 @@ export class AssetManager {
       const whiteness = Math.min(red, green, blue);
       const darkness = Math.max(red, green, blue);
 
-      if (background === 'dark' && darkness <= 18) {
+      if (background === 'dark' && darkness <= 20) {
         pixels.data[index + 3] = 0;
       } else if (background === 'dark' && darkness <= 38 && Math.max(red, green, blue) - Math.min(red, green, blue) < 18) {
-        pixels.data[index + 3] = Math.round((38 - darkness) / 20 * 255);
+        pixels.data[index + 3] = Math.round((darkness - 20) / 18 * 255);
       } else if (whiteness >= 245) {
         pixels.data[index + 3] = 0;
       } else if (whiteness >= 220 && Math.max(red, green, blue) - whiteness < 18) {
@@ -106,14 +117,34 @@ export class AssetManager {
 
   getRegion(key, region) {
     const source = this.images.get(key);
-    if (!source || typeof document === 'undefined') return null;
+    if (!source || typeof document === 'undefined' || !region) return null;
+
+    const sourceWidth = source.naturalWidth || source.width || 0;
+    const sourceHeight = source.naturalHeight || source.height || 0;
+    if (sourceWidth <= 0 || sourceHeight <= 0) return null;
+
+    const rx = region.x || 0;
+    const ry = region.y || 0;
+    const rw = region.width;
+    const rh = region.height;
+
+    if (!rw || !rh || rw <= 0 || rh <= 0) return null;
+    if (rx < 0 || ry < 0 || rx >= sourceWidth || ry >= sourceHeight) return null;
+    if (rx + rw > sourceWidth || ry + rh > sourceHeight) return null;
+
+    const cacheKey = `${key}:${rx},${ry},${rw},${rh}`;
+    if (this.regionCache.has(cacheKey)) {
+      return this.regionCache.get(cacheKey);
+    }
 
     const canvas = document.createElement('canvas');
-    canvas.width = region.width;
-    canvas.height = region.height;
+    canvas.width = rw;
+    canvas.height = rh;
     const context = canvas.getContext('2d');
     if (!context) return null;
-    context.drawImage(source, region.x, region.y, region.width, region.height, 0, 0, region.width, region.height);
+    context.drawImage(source, rx, ry, rw, rh, 0, 0, rw, rh);
+
+    this.regionCache.set(cacheKey, canvas);
     return canvas;
   }
 
@@ -151,8 +182,15 @@ export class AssetManager {
     return this.statuses.get(key) || 'missing';
   }
 
-  isReady() {
+  isReady(key) {
+    if (key) {
+      return this.statuses.get(key) === 'ready' && !!this.images.get(key);
+    }
     return this.manifestStatus === 'ready';
+  }
+
+  clearRegionCache() {
+    this.regionCache.clear();
   }
 }
 

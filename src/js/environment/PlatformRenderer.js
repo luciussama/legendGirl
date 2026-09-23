@@ -9,12 +9,109 @@ import {
   platforms as defaultPlatforms,
   phase3Platforms as defaultPhase3Platforms,
   exitDoor as defaultExitDoor,
-  trueExitDoor as defaultTrueExitDoor
+  trueExitDoor as defaultTrueExitDoor,
+  DEBUG_COLLISIONS
 } from '../config.js';
+import { darkRoomAtlas } from '../assets/index.js';
 
 export class PlatformRenderer {
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
+    this.assets = options.assets || null;
+  }
+
+  setAssets(assets) {
+    this.assets = assets;
+  }
+
+  /**
+   * Renderiza a plataforma utilizando o spritesheet dark-room/environment-assets.png se disponível.
+   * Retorna true se o asset foi desenhado com sucesso, ou false caso contrário (ativando fallback).
+   */
+  drawAtlasPlatformSprite(ctx, assets, style, sx, p, tick = 0) {
+    if (!assets) return false;
+    const styleClean = (style || '').toLowerCase();
+    const individualKey = 'dark-room-sprite-' + styleClean.replace(/_/g, '-');
+    let sprite = assets.get(individualKey);
+    let region = darkRoomAtlas && (darkRoomAtlas[styleClean] || darkRoomAtlas[style]);
+
+    if (!sprite && region) {
+      sprite = assets.getRegion('dark-room-production-spritesheet', region) ||
+               assets.getRegion('dark-room-environment-sheet', region);
+    }
+    if (!sprite) return false;
+
+    // A FÍSICA É A FONTE DA VERDADE ABSOLUTA:
+    // O sprite se adapta com precisão milimétrica à hitbox física (p.x, p.y, p.w, p.h).
+    // A superfície de apoio visual (walkable surface) do sprite DEVE coincidir exatamente com:
+    // - Início horizontal = sx (p.x - camX)
+    // - Fim horizontal    = sx + p.w
+    // - Altura de apoio   = p.y
+    // Nenhuma posição, altura, distância ou área de pouso é alterada.
+    const surfaces = {
+      giant_bear: { surfaceY: 2, surfaceX: 1, surfaceW: 349, origW: 352, origH: 432 },
+      open_books: { surfaceY: 2, surfaceX: 2, surfaceW: 272, origW: 276, origH: 300 },
+      vanity_table: { surfaceY: 250, surfaceX: 2, surfaceW: 294, origW: 298, origH: 475 },
+      small_dresser: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
+      cardboard_box: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
+      messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253 },
+      toy_drum: { surfaceY: 62, surfaceX: 50, surfaceW: 180, origW: 292, origH: 296 },
+      satin_cushion: { surfaceY: 15, surfaceX: 130, surfaceW: 148, origW: 408, origH: 298 },
+      stepped_dresser: { surfaceY: 2, surfaceX: 1, surfaceW: 433, origW: 436, origH: 572 },
+      music_box: { surfaceY: 96, surfaceX: 31, surfaceW: 258, origW: 304, origH: 351 },
+      block_castle: { surfaceY: 3, surfaceX: 80, surfaceW: 47, origW: 259, origH: 322 },
+      train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350 },
+      wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286 },
+      mushroom_lamp: { surfaceY: 2, surfaceX: 54, surfaceW: 176, origW: 288, origH: 342 },
+      dollhouse_roof: { surfaceY: 104, surfaceX: 2, surfaceW: 578, origW: 582, origH: 337 },
+      spinning_globe: { surfaceY: 34, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309 },
+      kite_frame: { surfaceY: 3, surfaceX: 3, surfaceW: 402, origW: 410, origH: 279 },
+      floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 485, origW: 490, origH: 322 },
+      chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
+      curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
+      cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
+      wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
+      grand_portal_pedestal: { surfaceY: 140, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365 }
+    };
+
+    const spriteW = sprite.naturalWidth || sprite.width || (region ? region.width : p.w);
+    const spriteH = sprite.naturalHeight || sprite.height || (region ? region.height : p.h);
+
+    const s = surfaces[styleClean] || {
+      surfaceY: 0,
+      surfaceX: 0,
+      surfaceW: spriteW,
+      origW: spriteW,
+      origH: spriteH
+    };
+
+    const platX = p.standRegion ? p.standRegion.x : p.x;
+    const platW = p.standRegion ? p.standRegion.w : p.w;
+    const platY = (p.surfaceTopY !== undefined)
+      ? p.surfaceTopY
+      : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
+    const camXFromSx = p.x - sx;
+    const sxSurface = platX - camXFromSx;
+
+    // Escala estritamente calibrada pela largura da superfície de apoio em relação a platW
+    const scale = platW / (s.surfaceW || spriteW);
+    const dw = Math.round(spriteW * scale);
+    const dh = Math.round(spriteH * scale);
+
+    // O início horizontal da superfície de apoio coincide com sx (ou sxSurface com standRegion)
+    const dx = Math.round(sxSurface - (s.surfaceX * scale));
+
+    // A superfície de apoio do sprite coincide exatamente com a altura platY
+    const dy = Math.round(platY - (s.surfaceY * scale));
+
+    // Suporte sutil de sombra/madeira até o piso para plataformas altas
+    if (p.y + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean)) {
+      ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
+      ctx.fillRect(sx + 8, p.y + dh - 4, p.w - 16, this.floorY - (p.y + dh - 4));
+    }
+
+    ctx.drawImage(sprite, dx, dy, dw, dh);
+    return true;
   }
 
   /**
@@ -30,6 +127,7 @@ export class PlatformRenderer {
     const activePlatforms = options.platforms || (isPhase3 ? defaultPhase3Platforms : defaultPlatforms);
     const baby = options.baby || {};
     const tick = options.tick || 0;
+    const assets = options.assets || this.assets || null;
     const FLOOR_Y = this.floorY;
 
     ctx.save();
@@ -37,6 +135,67 @@ export class PlatformRenderer {
       const sx = p.x - camX;
       if (sx + p.w < -80 || sx > canvas.width + 80) return;
 
+      const isDebugHitbox = (typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean')
+        ? window.DEBUG_COLLISIONS
+        : (typeof DEBUG_COLLISIONS === 'boolean' ? DEBUG_COLLISIONS : false);
+
+      const platX = p.standRegion ? p.standRegion.x : p.x;
+      const platW = p.standRegion ? p.standRegion.w : p.w;
+      const platY = (p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y;
+      const platH = (p.standRegion && p.standRegion.h !== undefined) ? p.standRegion.h : p.h;
+      const sxBox = platX - camX;
+
+      // 1. Debug overlay: Desenha a plataforma física em verde por baixo
+      if (isDebugHitbox) {
+        ctx.save();
+        // Área sólida da hitbox física em verde translúcido
+        ctx.fillStyle = 'rgba(34, 197, 94, 0.45)';
+        ctx.fillRect(sxBox, platY, platW, platH);
+        ctx.strokeStyle = '#16a34a';
+        ctx.lineWidth = 1.5;
+        ctx.strokeRect(sxBox, platY, platW, platH);
+        ctx.restore();
+      }
+
+      // 2. Sprite renderizado por cima da plataforma física
+      const renderedSprite = this.drawAtlasPlatformSprite(ctx, assets, p.style, sx, p, tick);
+
+      // 3. Validação do topo da hitbox: traço verde luminoso na superfície de pouso
+      if (isDebugHitbox) {
+        ctx.save();
+        // Linha da superfície física de aterrissagem (y = platY)
+        ctx.strokeStyle = '#22c55e';
+        ctx.lineWidth = 3;
+        ctx.beginPath();
+        ctx.moveTo(sxBox, platY);
+        ctx.lineTo(sxBox + platW, platY);
+        ctx.stroke();
+
+        // Marcadores nos limites exatos esquerdo e direito de pouso
+        ctx.lineWidth = 2;
+        ctx.beginPath();
+        ctx.moveTo(sxBox, platY - 6);
+        ctx.lineTo(sxBox, platY + 6);
+        ctx.moveTo(sxBox + platW, platY - 6);
+        ctx.lineTo(sxBox + platW, platY + 6);
+        ctx.stroke();
+
+        // Rótulo da plataforma para inspeção rigorosa
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#052e16';
+        ctx.lineWidth = 2.5;
+        ctx.font = 'bold 9.5px monospace';
+        const label = `${p.style} [y:${platY} w:${platW}]`;
+        ctx.strokeText(label, sxBox + 4, platY - 8);
+        ctx.fillText(label, sxBox + 4, platY - 8);
+        ctx.restore();
+      }
+
+      if (renderedSprite) {
+        return;
+      }
+
+      // 2. Fallback procedimental caso o asset ainda não esteja carregado
       switch (p.style) {
         case 'giant_bear': {
           // 1. Cabeça do Urso de Pelúcia Gigante
@@ -181,38 +340,75 @@ export class PlatformRenderer {
           break;
         }
 
+        case 'small_dresser':
         case 'cardboard_box': {
-          // 4. Caixa de Papelão Aberta
-          ctx.fillStyle = '#a16207';
-          ctx.fillRect(sx, p.y + 10, p.w, p.h - 10);
-          ctx.strokeStyle = '#713f12';
+          // 4. Cômoda Pequena de Madeira Nobre (Topo Plano e Estável)
+          const woodDark = '#3b180a';
+          const woodMid = '#6c2e12';
+          const woodLight = '#9a431c';
+          const woodHighlight = '#c2622d';
+          const brassColor = '#f59e0b';
+          const brassDark = '#b45309';
+
+          // Corpo da cômoda
+          ctx.fillStyle = woodMid;
+          ctx.fillRect(sx + 2, p.y + 12, p.w - 4, p.h - 12);
+          ctx.strokeStyle = woodDark;
           ctx.lineWidth = 2;
-          ctx.strokeRect(sx, p.y + 10, p.w, p.h - 10);
+          ctx.strokeRect(sx + 2, p.y + 12, p.w - 4, p.h - 12);
 
-          // Abas da caixa de papelão abertas formando a superfície de apoio
-          ctx.fillStyle = '#b45309';
-          ctx.beginPath();
-          ctx.moveTo(sx - 8, p.y);
-          ctx.lineTo(sx + p.w / 2, p.y + 10);
-          ctx.lineTo(sx + p.w + 8, p.y);
-          ctx.lineTo(sx + p.w, p.y + 12);
-          ctx.lineTo(sx, p.y + 12);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
+          // Pés de suporte robustos (bracket feet)
+          ctx.fillStyle = woodDark;
+          ctx.fillRect(sx + 4, p.y + p.h - 8, 14, 8);
+          ctx.fillRect(sx + p.w - 18, p.y + p.h - 8, 14, 8);
 
-          // Fita "FRÁGIL" e adesivos
-          ctx.fillStyle = '#fee2e2';
-          ctx.fillRect(sx + 14, p.y + 28, 42, 14);
-          ctx.fillStyle = '#dc2626';
-          ctx.font = 'bold 8px sans-serif';
-          ctx.fillText('FRÁGIL ⬆', sx + 18, p.y + 38);
+          // Gavetas decorativas (3 gavetas elegantes)
+          const drawerCount = 3;
+          const drawerH = Math.floor((p.h - 26) / drawerCount);
+          for (let d = 0; d < drawerCount; d++) {
+            const dy = p.y + 16 + d * (drawerH + 3);
+            ctx.fillStyle = woodLight;
+            ctx.fillRect(sx + 8, dy, p.w - 16, drawerH);
+            ctx.strokeStyle = woodDark;
+            ctx.lineWidth = 1.5;
+            ctx.strokeRect(sx + 8, dy, p.w - 16, drawerH);
 
-          // Bracinho de ursinho de pelúcia espiando
-          ctx.fillStyle = '#78350f';
-          ctx.beginPath();
-          ctx.ellipse(sx + p.w - 18, p.y + 6, 9, 5, -0.4, 0, Math.PI * 2);
-          ctx.fill();
+            // Puxadores de latão dourado polido
+            const pullY = dy + drawerH / 2;
+            ctx.fillStyle = brassColor;
+            ctx.strokeStyle = brassDark;
+            ctx.lineWidth = 1;
+            // Puxador esquerdo
+            ctx.beginPath();
+            ctx.arc(sx + 26, pullY, 3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+            // Puxador direito
+            ctx.beginPath();
+            ctx.arc(sx + p.w - 26, pullY, 3, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.stroke();
+
+            // Buraco de fechadura decorativo no centro
+            ctx.fillStyle = '#1e0802';
+            ctx.beginPath();
+            ctx.arc(sx + p.w / 2, pullY - 1, 1.5, 0, Math.PI * 2);
+            ctx.rect(sx + p.w / 2 - 1, pullY, 2, 2.5);
+            ctx.fill();
+          }
+
+          // Topo de madeira polida COMPLETAMENTE PLANO onde a personagem pisa (p.y)
+          ctx.fillStyle = woodHighlight;
+          ctx.fillRect(sx - 2, p.y, p.w + 4, 12);
+          ctx.strokeStyle = woodDark;
+          ctx.lineWidth = 2;
+          ctx.strokeRect(sx - 2, p.y, p.w + 4, 12);
+
+          // Linha de reflexo dourado suave na superfície horizontal
+          ctx.fillStyle = '#fef08a';
+          ctx.globalAlpha = 0.5;
+          ctx.fillRect(sx, p.y + 1, p.w, 2);
+          ctx.globalAlpha = 1.0;
           break;
         }
 

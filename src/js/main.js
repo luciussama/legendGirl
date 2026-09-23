@@ -12,6 +12,7 @@ window.addEventListener('error', (event) => {
 });
 
 import { createGame } from './game.js';
+import { DEBUG_COLLISIONS } from './config.js';
 
 const canvas = document.getElementById('gameCanvas');
 const uiFeedback = document.getElementById('ui-feedback') || {
@@ -20,12 +21,50 @@ const uiFeedback = document.getElementById('ui-feedback') || {
   style: {}
 };
 const startOverlay = document.getElementById('start-overlay');
+const btnStartPhase1 = document.getElementById('btn-start-phase1');
 const btnSkipPhase2 = document.getElementById('btn-skip-phase2');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
 const btnRestart = document.getElementById('btn-restart');
 const btnSoundToggle = document.getElementById('btn-sound-toggle');
 const soundIcon = document.getElementById('sound-icon');
+const btnPauseToggle = document.getElementById('btn-pause-toggle');
+const pauseIcon = document.getElementById('pause-icon');
+// DEBUG_COLLISIONS = false: nenhuma hitbox, nome ou coordenada deve ser visível para o jogador
+window.DEBUG_COLLISIONS = false;
+window.SHOW_HITBOXES = false;
+
+function updatePauseButtonState() {
+  const isPaused = game.isPaused && game.isPaused();
+  if (btnPauseToggle) {
+    if (isPaused) {
+      btnPauseToggle.classList.add('paused');
+      btnPauseToggle.title = 'Continuar Jogo (P)';
+      btnPauseToggle.setAttribute('aria-label', 'Continuar jogo');
+      if (pauseIcon) pauseIcon.textContent = '▶️';
+    } else {
+      btnPauseToggle.classList.remove('paused');
+      btnPauseToggle.title = 'Pausar Jogo (P)';
+      btnPauseToggle.setAttribute('aria-label', 'Pausar jogo');
+      if (pauseIcon) pauseIcon.textContent = '⏸️';
+    }
+  }
+}
+
+function toggleGamePause() {
+  if (typeof game.togglePause === 'function') {
+    game.togglePause();
+    updatePauseButtonState();
+  }
+}
+
+if (btnPauseToggle) {
+  btnPauseToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleGamePause();
+  });
+}
 
 function updateSoundButtonState() {
   const isMuted = game.isMuted && game.isMuted();
@@ -58,6 +97,9 @@ if (btnSoundToggle) {
 window.addEventListener('keydown', (e) => {
   if (e.code === 'KeyM' || e.key === 'm' || e.key === 'M') {
     setTimeout(updateSoundButtonState, 10);
+  } else if (e.code === 'KeyP' || e.key === 'p' || e.key === 'P' || e.key === 'Pause') {
+    e.preventDefault();
+    toggleGamePause();
   }
 });
 
@@ -70,9 +112,12 @@ const game = createGame(canvas, uiFeedback, {
   onGameOver: () => {
     // Reativa os botões e exibe a tela de sobreposição de forma limpa
     isActionLocked = false;
+    updatePauseButtonState();
     if (btnRetry) btnRetry.disabled = false;
     if (btnRestart) btnRestart.disabled = false;
     if (gameoverOverlay) {
+      gameoverOverlay.style.display = 'flex';
+      gameoverOverlay.style.pointerEvents = 'auto';
       gameoverOverlay.classList.remove('hidden');
     }
   },
@@ -80,9 +125,16 @@ const game = createGame(canvas, uiFeedback, {
     started = false;
     isStarting = false;
     isActionLocked = false;
+    updatePauseButtonState();
     if (btnRetry) btnRetry.disabled = false;
     if (btnRestart) btnRestart.disabled = false;
+    if (gameoverOverlay) {
+      gameoverOverlay.style.pointerEvents = 'none';
+      gameoverOverlay.classList.add('hidden');
+      gameoverOverlay.style.display = 'none';
+    }
     if (startOverlay) {
+      startOverlay.style.display = 'flex';
       startOverlay.style.pointerEvents = 'auto';
       startOverlay.classList.remove('hidden');
     }
@@ -106,6 +158,7 @@ function startGame(event) {
   if (startOverlay) {
     startOverlay.style.pointerEvents = 'none';
     startOverlay.classList.add('hidden');
+    startOverlay.style.display = 'none';
   }
 
   game.start();
@@ -134,7 +187,9 @@ function handleRetry(event) {
   if (btnRestart) btnRestart.disabled = true;
 
   if (gameoverOverlay) {
+    gameoverOverlay.style.pointerEvents = 'none';
     gameoverOverlay.classList.add('hidden');
+    gameoverOverlay.style.display = 'none';
   }
 
   game.retry();
@@ -164,7 +219,9 @@ function handleRestart(event) {
   if (btnRestart) btnRestart.disabled = true;
 
   if (gameoverOverlay) {
+    gameoverOverlay.style.pointerEvents = 'none';
     gameoverOverlay.classList.add('hidden');
+    gameoverOverlay.style.display = 'none';
   }
 
   game.restartToTitle();
@@ -203,6 +260,11 @@ function handleToyRoomSwitch(event) {
     event.stopPropagation();
   }
 
+  // Proteção absoluta: impede mudar de fase se o jogo já estiver rodando ou o menu estiver fechado
+  if (started || isStarting || (startOverlay && (startOverlay.classList.contains('hidden') || startOverlay.style.display === 'none'))) {
+    return;
+  }
+
   const now = performance.now();
   if (isActionLocked || now - lastActionTime < 450) {
     return;
@@ -213,9 +275,12 @@ function handleToyRoomSwitch(event) {
   if (startOverlay) {
     startOverlay.style.pointerEvents = 'none';
     startOverlay.classList.add('hidden');
+    startOverlay.style.display = 'none';
   }
   if (gameoverOverlay) {
+    gameoverOverlay.style.pointerEvents = 'none';
     gameoverOverlay.classList.add('hidden');
+    gameoverOverlay.style.display = 'none';
   }
 
   started = true;
@@ -226,6 +291,12 @@ function handleToyRoomSwitch(event) {
   }, 450);
 }
 
+if (btnStartPhase1) {
+  addSafeAction(btnStartPhase1, (e) => {
+    startGame(e);
+  });
+}
+
 if (btnSkipPhase2) {
   addSafeAction(btnSkipPhase2, (e) => {
     handleToyRoomSwitch(e);
@@ -234,7 +305,7 @@ if (btnSkipPhase2) {
 
 if (startOverlay) {
   addSafeAction(startOverlay, (e) => {
-    if (e && e.target && e.target.closest('#btn-skip-phase2')) {
+    if (e && e.target && (e.target.closest('#btn-skip-phase2') || e.target.closest('#btn-start-phase1'))) {
       return;
     }
     startGame(e);
@@ -262,7 +333,7 @@ window.addEventListener('keydown', (event) => {
   }
 
   if (!started) {
-    if (event.code === 'Space' || event.code === 'ArrowUp' || event.code === 'Enter') {
+    if (event.code === 'Space' || event.code === 'ArrowUp' || event.code === 'Enter' || event.code === 'Digit1') {
       startGame(event);
     }
     return;

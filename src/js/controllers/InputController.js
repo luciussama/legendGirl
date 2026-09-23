@@ -75,13 +75,18 @@ export class InputController {
       return;
     }
 
-    // Evita interferir em botões de interface ou janelas de sobreposição
-    if (event.target && (
-      event.target.tagName === 'BUTTON' ||
-      event.target.closest('button') ||
-      event.target.closest('#start-overlay') ||
-      event.target.closest('#gameover-overlay')
-    )) {
+    // Se o clique for diretamente nos botões superiores de pausa ou som, não interfere
+    if (event.target && event.target.closest('.top-controls-bar')) {
+      return;
+    }
+
+    // Se um overlay interativo estiver realmente visível e ativo, ignora o pulo
+    const startOv = document.getElementById('start-overlay');
+    const goOv = document.getElementById('gameover-overlay');
+    const isStartVisible = startOv && !startOv.classList.contains('hidden') && startOv.style.display !== 'none';
+    const isGameOverVisible = goOv && !goOv.classList.contains('hidden') && goOv.style.display !== 'none';
+
+    if (isStartVisible || isGameOverVisible) {
       return;
     }
 

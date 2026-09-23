@@ -8,12 +8,22 @@ import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
 import { createParticleSystem, transitionEffects } from './effects/index.js';
 import { hudRenderer, dialogueRenderer } from './ui/index.js';
-import { createAssetManager } from './assets/index.js';
+import { createAssetManager, darkRoomAtlas } from './assets/index.js';
+import { createAtlasDebugger } from './debug/AtlasDebugger.js';
 
 export function createGame(canvas, uiFeedback, callbacks = {}) {
   const ctx = canvas.getContext('2d');
   const assets = createAssetManager();
   const assetsReady = assets.loadManifest().then(() => assets.preload());
+  const atlasDebugger = createAtlasDebugger({ assets });
+  assetsReady.then(() => {
+    atlasDebugger.setAssets(assets);
+  });
+  if (typeof window !== 'undefined') {
+    window.darkRoomAtlas = darkRoomAtlas;
+  }
+  platformRenderer.setAssets?.(assets);
+  backgroundRenderer.setAssets?.(assets);
   const audio = createAudioController();
   const state = createGameState(canvas, uiFeedback, callbacks);
   const camera = createCameraController({ floorY: FLOOR_Y });
@@ -203,12 +213,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function retryGame() {
+    isPaused = false;
+    state.isPaused = false;
     syncLocalsToState();
     state.retryGame(audio);
     syncStateToLocals();
   }
 
   function restartToTitle() {
+    isPaused = false;
+    state.isPaused = false;
     syncLocalsToState();
     state.restartToTitle(audio);
     syncStateToLocals();
@@ -452,6 +466,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
     } else {
       baby.vy = baby.jumpPower;
+      const nextIdx = baby.currentPlatformIndex + 1;
+      if (nextIdx < platforms.length) {
+        const nextP = platforms[nextIdx];
+        const nextX = nextP.standRegion ? nextP.standRegion.x + nextP.standRegion.w / 2 : nextP.x + nextP.w / 2;
+        const currentX = baby.x + baby.w / 2;
+        const dist = nextX - currentX;
+        if (dist > 0) {
+          baby.vx = Math.max(baby.baseVx, Math.min(2.8, dist / 46));
+        }
+      }
       audio.playJumpSound();
       fairy.vy -= 2.2;
       fairy.spinAnim = 1.0;
@@ -492,11 +516,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- RENDERIZADORES DE CENÁRIO (Modularizados em /environment) ---
   function drawBackgroundWall(camX) {
-    backgroundRenderer.renderWall(ctx, canvas, camX, { tick });
+    backgroundRenderer.renderWall(ctx, canvas, camX, { tick, assets });
   }
 
   function drawSceneryItems(camX) {
-    backgroundRenderer.renderScenery(ctx, canvas, roomScenery, camX);
+    backgroundRenderer.renderScenery(ctx, canvas, roomScenery, camX, { assets });
   }
 
   function drawPlatforms(camX) {
@@ -504,7 +528,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       isPhase3,
       platforms: isPhase3 ? phase3Platforms : platforms,
       baby,
-      tick
+      tick,
+      assets
     });
   }
 
@@ -514,7 +539,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       fakeDoorRevealed,
       fakeDoorSlideY,
       fakeDoorRotation,
-      tick
+      tick,
+      assets
     });
   }
 
@@ -522,7 +548,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     platformRenderer.renderTrueExitDoor(ctx, canvas, camX, {
       trueExitDoor,
       trueDoorOpenAngle,
-      tick
+      tick,
+      assets
     });
   }
 
@@ -1111,11 +1138,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     let landedIdx = -1;
     for (let i = 0; i < activePlatforms.length; i++) {
       const p = activePlatforms[i];
+      const platX = p.standRegion ? p.standRegion.x : p.x;
+      const platW = p.standRegion ? p.standRegion.w : p.w;
+      const platY = (p.surfaceTopY !== undefined)
+        ? p.surfaceTopY
+        : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
       if (
-        baby.x + baby.w > p.x &&
-        baby.x < p.x + p.w &&
-        baby.y + baby.h >= p.y &&
-        baby.y + baby.h <= p.y + 16 &&
+        baby.x + baby.w > platX &&
+        baby.x < platX + platW &&
+        baby.y + baby.h >= platY &&
+        baby.y + baby.h <= platY + 16 &&
         baby.vy >= 0
       ) {
         landedIdx = i;
@@ -1126,8 +1158,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (landedIdx !== -1) {
       const landedPlat = activePlatforms[landedIdx];
       landedPlat.isLanded = true;
-      baby.y = activePlatforms[landedIdx].y - baby.h;
+      const landingY = (landedPlat.surfaceTopY !== undefined)
+        ? landedPlat.surfaceTopY
+        : ((landedPlat.standRegion && landedPlat.standRegion.y !== undefined)
+          ? landedPlat.standRegion.y
+          : landedPlat.y);
+      baby.y = landingY - baby.h;
       baby.vy = 0;
+      if (!isEscapeMode && !isPhase3) {
+        baby.vx = baby.baseVx;
+      }
       baby.onGround = true;
       baby.respawnLandingPending = false;
       baby.currentPlatformIndex = landedIdx;
@@ -1334,9 +1374,43 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   }
 
+  let isPaused = false;
+
+  function togglePause() {
+    isPaused = !isPaused;
+    state.isPaused = isPaused;
+    if (isPaused) {
+      if (audio && typeof audio.pauseMusic === 'function') {
+        audio.pauseMusic();
+      }
+    } else {
+      lastTime = performance.now();
+      if (audio && typeof audio.resumeMusic === 'function') {
+        audio.resumeMusic();
+      }
+    }
+    return isPaused;
+  }
+
+  function setPaused(value) {
+    const shouldPause = Boolean(value);
+    if (isPaused === shouldPause) return isPaused;
+    return togglePause();
+  }
+
   function loop(currentTime = performance.now()) {
     const elapsed = currentTime - lastTime;
     lastTime = currentTime;
+
+    if (isPaused) {
+      if (currentPhaseMode === 'toy-room' && toyRoomInstance) {
+        toyRoomInstance.render();
+      } else {
+        render();
+      }
+      requestAnimationFrame(loop);
+      return;
+    }
 
     // Limite estrito de delta time:
     // Limita a razão de delta time entre 0.5 e 1.2 para prevenir picos causados por pausa, recarga ou lag
@@ -1387,6 +1461,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     dialogue: dialogueRenderer,
     assets,
     assetsReady,
+    darkRoomAtlas,
+    atlasDebugger,
     input: inputHandler,
     audio,
     pauseMusic: () => audio && typeof audio.pauseMusic === 'function' && audio.pauseMusic(),
@@ -1396,6 +1472,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     setMuted: (m) => audio.setMuted(m),
     isMuted: () => audio.isMuted(),
     toggleMute: () => audio.toggleMute(),
+    isPaused: () => isPaused,
+    togglePause,
+    setPaused,
     destroy() {
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
       if (audio && typeof audio.destroy === 'function') audio.destroy();

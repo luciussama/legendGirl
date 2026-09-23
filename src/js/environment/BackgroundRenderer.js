@@ -5,10 +5,135 @@
  */
 
 import { FLOOR_Y, roomScenery as defaultRoomScenery } from '../config.js';
+import { darkRoomAtlas } from '../assets/index.js';
 
 export class BackgroundRenderer {
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
+    this.assets = options.assets || null;
+  }
+
+  setAssets(assets) {
+    this.assets = assets;
+  }
+
+  /**
+   * Renderiza item de cenário utilizando os sprites de environment-assets.png se disponíveis.
+   * Retorna true se o item foi desenhado com sucesso, ou false caso contrário (ativando fallback).
+   */
+  drawAtlasSceneryItem(ctx, assets, type, sx, item, floorY) {
+    if (!assets || !darkRoomAtlas) return false;
+    const sheetKey = 'dark-room-environment-sheet';
+
+    let region = null;
+    let dw = 40;
+    let dh = 40;
+    let yOffset = 0;
+
+    switch (type) {
+      case 'fluffy_rug': {
+        region = darkRoomAtlas.rugs?.roundSmall || darkRoomAtlas.rugs;
+        dw = 140;
+        dh = 54;
+        yOffset = -12;
+        break;
+      }
+      case 'striped_rug': {
+        region = darkRoomAtlas.rugs?.largeVictorian || darkRoomAtlas.rugs;
+        dw = 220;
+        dh = 70;
+        yOffset = -14;
+        break;
+      }
+      case 'toy_car': {
+        region = darkRoomAtlas.roomScenery?.items?.toy_car;
+        dw = 48;
+        dh = 40;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'paper_airplane': {
+        region = darkRoomAtlas.roomScenery?.items?.paper_airplane;
+        dw = 38;
+        dh = 40;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'spilled_crayons': {
+        region = darkRoomAtlas.roomScenery?.items?.spilled_crayons;
+        dw = 50;
+        dh = 35;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'scattered_blocks': {
+        region = darkRoomAtlas.roomScenery?.items?.scattered_blocks;
+        dw = 52;
+        dh = 42;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'striped_socks': {
+        region = darkRoomAtlas.roomScenery?.items?.striped_socks;
+        dw = 38;
+        dh = 34;
+        yOffset = -dh + 3;
+        break;
+      }
+      case 'toy_soldier': {
+        region = darkRoomAtlas.roomScenery?.items?.toy_soldier;
+        dw = 36;
+        dh = 44;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'wooden_spinning_top': {
+        region = darkRoomAtlas.roomScenery?.items?.wooden_spinning_top;
+        dw = 36;
+        dh = 44;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'spilled_marbles': {
+        region = darkRoomAtlas.roomScenery?.items?.spilled_marbles;
+        dw = 44;
+        dh = 48;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'retro_robot': {
+        region = darkRoomAtlas.roomScenery?.items?.retro_robot;
+        dw = 38;
+        dh = 50;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'plush_bunny': {
+        region = darkRoomAtlas.roomScenery?.items?.plush_bunny;
+        dw = 38;
+        dh = 40;
+        yOffset = -dh + 4;
+        break;
+      }
+      case 'puzzle_pieces': {
+        region = darkRoomAtlas.roomScenery?.items?.puzzle_pieces;
+        dw = 44;
+        dh = 48;
+        yOffset = -dh + 4;
+        break;
+      }
+      default:
+        return false;
+    }
+
+    if (!region) return false;
+    const sprite = assets.get('dark-room-sprite-' + type.replace(/_/g, '-')) ||
+                   assets.getRegion('dark-room-production-spritesheet', region) ||
+                   assets.getRegion(sheetKey, region);
+    if (!sprite) return false;
+
+    ctx.drawImage(sprite, Math.round(sx - dw / 2), Math.round(floorY + yOffset), dw, dh);
+    return true;
   }
 
   /**
@@ -333,6 +458,19 @@ export class BackgroundRenderer {
     ctx.fillStyle = '#1c1726';
     ctx.fillRect(0, FLOOR_Y, canvas.width, canvas.height - FLOOR_Y + 700);
 
+    const assets = options.assets || this.assets || null;
+    const floorTileRegion = darkRoomAtlas && (darkRoomAtlas.floorTiles?.plank || darkRoomAtlas.floorTiles);
+    const floorTileSprite = assets && floorTileRegion && assets.getRegion('dark-room-environment-sheet', floorTileRegion);
+
+    if (floorTileSprite) {
+      const tileW = 140;
+      const tileH = Math.round(tileW * (floorTileRegion.height / floorTileRegion.width));
+      const tileOffset = (camX * 0.8) % tileW;
+      for (let tx = -tileW; tx < canvas.width + tileW; tx += tileW) {
+        ctx.drawImage(floorTileSprite, tx - tileOffset, FLOOR_Y, tileW, tileH);
+      }
+    }
+
     // Moldura do rodapé de madeira escura
     ctx.fillStyle = '#2b2138';
     ctx.fillRect(0, FLOOR_Y - 8, canvas.width, 8);
@@ -343,15 +481,17 @@ export class BackgroundRenderer {
     ctx.lineTo(canvas.width, FLOOR_Y - 8);
     ctx.stroke();
 
-    // Junções das tábuas de madeira no chão
-    ctx.strokeStyle = '#15111e';
-    ctx.lineWidth = 2;
-    for (let x = -80; x < canvas.width + 80; x += 70) {
-      const sx = x - (camX % 70);
-      ctx.beginPath();
-      ctx.moveTo(sx, FLOOR_Y);
-      ctx.lineTo(sx - 28, canvas.height + 700);
-      ctx.stroke();
+    // Junções das tábuas de madeira no chão (quando em fallback procedimental)
+    if (!floorTileSprite) {
+      ctx.strokeStyle = '#15111e';
+      ctx.lineWidth = 2;
+      for (let x = -80; x < canvas.width + 80; x += 70) {
+        const sx = x - (camX % 70);
+        ctx.beginPath();
+        ctx.moveTo(sx, FLOOR_Y);
+        ctx.lineTo(sx - 28, canvas.height + 700);
+        ctx.stroke();
+      }
     }
   }
 
@@ -361,11 +501,13 @@ export class BackgroundRenderer {
    * @param {HTMLCanvasElement} canvas
    * @param {Array} [scenery]
    * @param {number} [camX]
+   * @param {object} [options]
    */
-  renderScenery(ctx, canvas, scenery = defaultRoomScenery, camX = 0) {
+  renderScenery(ctx, canvas, scenery = defaultRoomScenery, camX = 0, options = {}) {
     if (!ctx || !canvas || !Array.isArray(scenery)) return;
     const roomScenery = scenery;
     const FLOOR_Y = this.floorY;
+    const assets = options.assets || this.assets || null;
 
     roomScenery.forEach((item) => {
       const sx = item.x - camX;
@@ -373,6 +515,13 @@ export class BackgroundRenderer {
 
       ctx.save();
 
+      // 1. Tenta desenhar com o sprite do atlas de arte do dark-room
+      if (this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
+        ctx.restore();
+        return;
+      }
+
+      // 2. Fallback procedimental
       switch (item.type) {
         case 'fluffy_rug': {
           // Grande tapete mandala pastel redondo no chão

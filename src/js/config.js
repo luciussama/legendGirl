@@ -1,3 +1,5 @@
+export const DEBUG_COLLISIONS = false;
+
 export const GAME_CONFIG = {
   canvasWidth: 960,
   canvasHeight: 540,
@@ -98,23 +100,91 @@ export const platforms = [
   // 10 primeiras plataformas até o topo do castelo (0 a 9)
   { x: 220, y: 435, w: 120, h: 45, style: 'giant_bear', label: 'Cabeça do Urso de Pelúcia' },
   { x: 380, y: 414, w: 110, h: 65, style: 'open_books', label: 'Pilha de Livros Ilustrados' },
-  { x: 530, y: 393, w: 125, h: 85, style: 'vanity_table', label: 'Penteadeira Encantada' },
-  { x: 695, y: 372, w: 115, h: 105, style: 'cardboard_box', label: 'Caixa de Papelão Aberta' },
-  { x: 850, y: 351, w: 120, h: 125, style: 'messy_blocks', label: 'Pilha de Blocos ABC' },
-  { x: 1010, y: 330, w: 115, h: 145, style: 'toy_drum', label: 'Tamborito de Marcha' },
-  { x: 1165, y: 309, w: 120, h: 165, style: 'satin_cushion', label: 'Almofadão de Veludo' },
+  { x: 530, y: 393, w: 125, h: 85, surfaceTopY: 393, style: 'vanity_table', label: 'Penteadeira Encantada' },
+  { x: 695, y: 372, w: 115, h: 105, style: 'small_dresser', label: 'Cômoda Pequena de Madeira' },
+  {
+    x: 850,
+    y: 351,
+    w: 120,
+    h: 125,
+    surfaceTopY: 351,
+    style: 'messy_blocks',
+    label: 'Pilha de Blocos ABC',
+    standRegion: { x: 881, y: 351, w: 50, h: 125 }
+  },
+  {
+    x: 1010,
+    y: 330,
+    w: 115,
+    h: 145,
+    surfaceTopY: 330,
+    style: 'toy_drum',
+    label: 'Tamborito de Marcha',
+    standRegion: { x: 1030, y: 330, w: 71, h: 145 }
+  },
+  {
+    x: 1165,
+    y: 309,
+    w: 120,
+    h: 165,
+    surfaceTopY: 309,
+    style: 'satin_cushion',
+    label: 'Almofadão de Veludo',
+    standRegion: { x: 1203, y: 309, w: 44, h: 165 }
+  },
   { x: 1325, y: 288, w: 125, h: 185, style: 'stepped_dresser', label: 'Gavetas da Cômoda' },
-  { x: 1490, y: 267, w: 120, h: 205, style: 'music_box', label: 'Caixa de Música da Bailarina' },
-  { x: 1650, y: 246, w: 140, h: 228, style: 'block_castle', label: 'Castelinho de Blocos (Cena Cinemática)' },
+  {
+    x: 1475,
+    y: 267,
+    w: 115,
+    h: 205,
+    style: 'music_box',
+    label: 'Caixa de Música da Bailarina',
+    standRegion: { x: 1485, y: 267, w: 90, h: 205 }
+  },
+  {
+    x: 1588,
+    y: 236,
+    w: 154,
+    h: 244,
+    surfaceTopY: 236,
+    style: 'block_castle',
+    label: 'Castelinho de Blocos (Cena Cinemática)',
+    standRegion: { x: 1636, y: 236, w: 28, h: 244 }
+  },
 
   // SEQUÊNCIA EXATA DE 12 PLATAFORMAS DEPOIS DA CENA
   // Espaçamento e altitude matematicamente proporcionais à evolução do pulo:
   // 1/12 (gap 70px)
-  { x: 1860, y: 244, w: 115, h: 230, style: 'train_trestle', label: '1/12 Pista Elevada do Trem' },
+  {
+    x: 1860,
+    y: 244,
+    w: 115,
+    h: 230,
+    style: 'train_trestle',
+    label: '1/12 Pista Elevada do Trem',
+    standRegion: { x: 1860, y: 244, w: 115, h: 230 }
+  },
   // 2/12 (gap 80px)
-  { x: 2055, y: 236, w: 110, h: 238, style: 'wall_shelf', label: '2/12 Prateleira de Brinquedos' },
+  {
+    x: 2055,
+    y: 236,
+    w: 110,
+    h: 238,
+    style: 'wall_shelf',
+    label: '2/12 Prateleira de Brinquedos',
+    standRegion: { x: 2055, y: 236, w: 110, h: 238 }
+  },
   // 3/12 (gap 92px)
-  { x: 2257, y: 224, w: 105, h: 250, style: 'mushroom_lamp', label: '3/12 Abajur Cogumelo' },
+  {
+    x: 2257,
+    y: 224,
+    w: 105,
+    h: 250,
+    style: 'mushroom_lamp',
+    label: '3/12 Abajur Cogumelo',
+    standRegion: { x: 2277, y: 224, w: 65, h: 250 }
+  },
   // 4/12 (gap 105px)
   { x: 2467, y: 210, w: 100, h: 264, style: 'dollhouse_roof', label: '4/12 Telhado da Casa de Bonecas' },
   // 5/12 (gap 120px)
