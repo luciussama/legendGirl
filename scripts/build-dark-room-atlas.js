@@ -4,8 +4,10 @@ import {PNG} from 'pngjs';
 import {darkRoomAtlas} from '../src/js/assets/darkRoomAtlas.js';
 const manifest=JSON.parse(fs.readFileSync('assets/manifest.json'));
 const regions={}, packed=new Map(), width=2048, padding=8;
+const stylesWithoutProductionSprite = new Set(['block_castle']);
 let x=padding,y=padding,rowH=0;
 for(const [name,old] of Object.entries(darkRoomAtlas)){
+  if (stylesWithoutProductionSprite.has(name)) continue;
   const file=(manifest.images['dark-room-sprite-'+name.replaceAll('_','-')]??old.file).replace(/^\.\//,'');
   if(!packed.has(file)){
     const png=PNG.sync.read(fs.readFileSync(file));
