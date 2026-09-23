@@ -1,0 +1,361 @@
+{
+  "platforms": [
+    {
+      "x": 220,
+      "y": 410,
+      "w": 120,
+      "h": 60,
+      "style": "giant_bear",
+      "label": "Cabe\u00e7a do Urso de Pel\u00facia"
+    },
+    {
+      "x": 380,
+      "y": 414,
+      "w": 110,
+      "h": 65,
+      "style": "open_books",
+      "label": "Pilha de Livros Ilustrados"
+    },
+    {
+      "x": 530,
+      "y": 393,
+      "w": 125,
+      "h": 85,
+      "surfaceTopY": 393,
+      "style": "vanity_table",
+      "label": "Penteadeira Encantada"
+    },
+    {
+      "x": 695,
+      "y": 372,
+      "w": 115,
+      "h": 105,
+      "style": "small_dresser",
+      "label": "C\u00f4moda Pequena de Madeira"
+    },
+    {
+      "x": 850,
+      "y": 351,
+      "w": 120,
+      "h": 125,
+      "surfaceTopY": 351,
+      "style": "messy_blocks",
+      "label": "Pilha de Blocos ABC",
+      "standRegion": {
+        "x": 881,
+        "y": 351,
+        "w": 50,
+        "h": 125
+      }
+    },
+    {
+      "x": 1010,
+      "y": 330,
+      "w": 115,
+      "h": 145,
+      "surfaceTopY": 330,
+      "style": "toy_drum",
+      "label": "Tamborito de Marcha",
+      "standRegion": {
+        "x": 1030,
+        "y": 330,
+        "w": 71,
+        "h": 145
+      }
+    },
+    {
+      "x": 1165,
+      "y": 309,
+      "w": 120,
+      "h": 165,
+      "surfaceTopY": 309,
+      "style": "satin_cushion",
+      "label": "Almofad\u00e3o de Veludo",
+      "standRegion": {
+        "x": 1203,
+        "y": 309,
+        "w": 44,
+        "h": 165
+      }
+    },
+    {
+      "x": 1325,
+      "y": 288,
+      "w": 125,
+      "h": 185,
+      "style": "stepped_dresser",
+      "label": "Gavetas da C\u00f4moda"
+    },
+    {
+      "x": 1475,
+      "y": 267,
+      "w": 115,
+      "h": 205,
+      "style": "music_box",
+      "label": "Caixa de M\u00fasica da Bailarina",
+      "standRegion": {
+        "x": 1485,
+        "y": 267,
+        "w": 90,
+        "h": 205
+      }
+    },
+    {
+      "x": 1588,
+      "y": 236,
+      "w": 154,
+      "h": 244,
+      "surfaceTopY": 236,
+      "style": "block_castle",
+      "label": "Castelinho de Blocos (Cena Cinem\u00e1tica)",
+      "standRegion": {
+        "x": 1636,
+        "y": 236,
+        "w": 28,
+        "h": 244
+      }
+    },
+    {
+      "x": 1860,
+      "y": 244,
+      "w": 115,
+      "h": 230,
+      "style": "train_trestle",
+      "label": "1/12 Pista Elevada do Trem",
+      "standRegion": {
+        "x": 1860,
+        "y": 244,
+        "w": 115,
+        "h": 230
+      }
+    },
+    {
+      "x": 2055,
+      "y": 236,
+      "w": 110,
+      "h": 238,
+      "style": "wall_shelf",
+      "label": "2/12 Prateleira de Brinquedos",
+      "standRegion": {
+        "x": 2055,
+        "y": 236,
+        "w": 110,
+        "h": 238
+      }
+    },
+    {
+      "x": 2257,
+      "y": 224,
+      "w": 105,
+      "h": 250,
+      "style": "mushroom_lamp",
+      "label": "3/12 Abajur Cogumelo",
+      "standRegion": {
+        "x": 2277,
+        "y": 224,
+        "w": 65,
+        "h": 250
+      }
+    },
+    {
+      "x": 2467,
+      "y": 210,
+      "w": 100,
+      "h": 264,
+      "style": "dollhouse_roof",
+      "label": "4/12 Telhado da Casa de Bonecas"
+    },
+    {
+      "x": 2687,
+      "y": 218,
+      "w": 95,
+      "h": 256,
+      "style": "spinning_globe",
+      "label": "5/12 Globo Terrestre Ilustrado"
+    },
+    {
+      "x": 2917,
+      "y": 196,
+      "w": 90,
+      "h": 278,
+      "style": "kite_frame",
+      "label": "6/12 Pipa Encantada de Bambu"
+    },
+    {
+      "x": 3159,
+      "y": 184,
+      "w": 85,
+      "h": 290,
+      "style": "floating_books",
+      "label": "7/12 Livro de Gravuras Flutuante"
+    },
+    {
+      "x": 3414,
+      "y": 168,
+      "w": 80,
+      "h": 306,
+      "style": "chandelier_crystals",
+      "label": "8/12 Lustre de Cristais"
+    },
+    {
+      "x": 3686,
+      "y": 158,
+      "w": 76,
+      "h": 316,
+      "style": "curtain_rod",
+      "label": "9/12 Var\u00e3o de Cortina Estrelada"
+    },
+    {
+      "x": 3980,
+      "y": 168,
+      "w": 75,
+      "h": 306,
+      "style": "cuckoo_clock",
+      "label": "10/12 Rel\u00f3gio Cuco Vintage"
+    },
+    {
+      "x": 4300,
+      "y": 156,
+      "w": 72,
+      "h": 318,
+      "style": "wardrobe_ledge",
+      "label": "11/12 Beiral do Grande Guarda-Roupa"
+    },
+    {
+      "x": 4650,
+      "y": 148,
+      "w": 270,
+      "h": 326,
+      "style": "grand_portal_pedestal",
+      "label": "12/12 O Portal dos Sonhos (Sa\u00edda)"
+    }
+  ],
+  "baby": {
+    "x": 60,
+    "y": 426,
+    "w": 38,
+    "h": 44,
+    "vx": 1.42,
+    "baseVx": 1.42,
+    "escapeVx": 2.9,
+    "vy": 0,
+    "gravity": 0.28,
+    "jumpPower": -7.2,
+    "escapeJumpPower": -8.6,
+    "onGround": true,
+    "animTime": 0,
+    "currentPlatformIndex": -1,
+    "isEscaping": false,
+    "longJumpUnlocked": false
+  },
+  "escape": [
+    {
+      "levelIndex": 0,
+      "jumpPower": -7.2,
+      "airVx": 2.1,
+      "runVx": 1.65,
+      "scrollSpeed": 1.5,
+      "pitchMult": 1,
+      "trailIntensity": 1
+    },
+    {
+      "levelIndex": 1,
+      "jumpPower": -7.390909090909091,
+      "airVx": 2.381818181818182,
+      "runVx": 1.75,
+      "scrollSpeed": 1.7045454545454546,
+      "pitchMult": 1.05,
+      "trailIntensity": 1
+    },
+    {
+      "levelIndex": 2,
+      "jumpPower": -7.581818181818182,
+      "airVx": 2.663636363636364,
+      "runVx": 1.8499999999999999,
+      "scrollSpeed": 1.9090909090909092,
+      "pitchMult": 1.1,
+      "trailIntensity": 1
+    },
+    {
+      "levelIndex": 3,
+      "jumpPower": -7.772727272727273,
+      "airVx": 2.9454545454545453,
+      "runVx": 1.95,
+      "scrollSpeed": 2.1136363636363633,
+      "pitchMult": 1.15,
+      "trailIntensity": 1
+    },
+    {
+      "levelIndex": 4,
+      "jumpPower": -7.963636363636364,
+      "airVx": 3.2272727272727275,
+      "runVx": 2.05,
+      "scrollSpeed": 2.3181818181818183,
+      "pitchMult": 1.2,
+      "trailIntensity": 2
+    },
+    {
+      "levelIndex": 5,
+      "jumpPower": -8.154545454545454,
+      "airVx": 3.5090909090909093,
+      "runVx": 2.15,
+      "scrollSpeed": 2.5227272727272725,
+      "pitchMult": 1.25,
+      "trailIntensity": 2
+    },
+    {
+      "levelIndex": 6,
+      "jumpPower": -8.345454545454546,
+      "airVx": 3.790909090909091,
+      "runVx": 2.25,
+      "scrollSpeed": 2.727272727272727,
+      "pitchMult": 1.3,
+      "trailIntensity": 2
+    },
+    {
+      "levelIndex": 7,
+      "jumpPower": -8.536363636363637,
+      "airVx": 4.072727272727272,
+      "runVx": 2.35,
+      "scrollSpeed": 2.9318181818181817,
+      "pitchMult": 1.35,
+      "trailIntensity": 2
+    },
+    {
+      "levelIndex": 8,
+      "jumpPower": -8.727272727272727,
+      "airVx": 4.354545454545455,
+      "runVx": 2.45,
+      "scrollSpeed": 3.1363636363636367,
+      "pitchMult": 1.4,
+      "trailIntensity": 3
+    },
+    {
+      "levelIndex": 9,
+      "jumpPower": -8.918181818181818,
+      "airVx": 4.636363636363637,
+      "runVx": 2.55,
+      "scrollSpeed": 3.340909090909091,
+      "pitchMult": 1.4500000000000002,
+      "trailIntensity": 3
+    },
+    {
+      "levelIndex": 10,
+      "jumpPower": -9.10909090909091,
+      "airVx": 4.918181818181818,
+      "runVx": 2.65,
+      "scrollSpeed": 3.5454545454545454,
+      "pitchMult": 1.5,
+      "trailIntensity": 3
+    },
+    {
+      "levelIndex": 11,
+      "jumpPower": -9.3,
+      "airVx": 5.2,
+      "runVx": 2.75,
+      "scrollSpeed": 3.75,
+      "pitchMult": 1.55,
+      "trailIntensity": 4
+    }
+  ]
+}

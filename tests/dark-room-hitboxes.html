@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="pt-BR">
+<meta charset="utf-8">
+<base href="../">
+<title>Inspeção das plataformas dark-room</title>
+<style>body{margin:0;background:#131121;color:#eee;font:14px sans-serif}h1,p{margin:16px}canvas{display:block}</style>
+<h1>Dark-room — superfícies de apoio</h1>
+<p>Verde: hitbox real. Branco: corpo de 38 × 44 px no centro do apoio. Imagens e renderizador de produção.</p>
+<canvas width="1360" height="1740"></canvas>
+<script type="module">
+import {platforms,createBabyState} from '../src/js/config.js';
+import {PlatformRenderer} from '../src/js/environment/PlatformRenderer.js';
+import {AssetManager} from '../src/js/assets/AssetManager.js';
+const assets=new AssetManager();
+await assets.loadManifest();
+await Promise.all(Object.entries(assets.manifest.images).filter(([k])=>k.startsWith('dark-room')).map(([k,v])=>assets.loadImage(k,v)));
+const renderer=new PlatformRenderer({assets});
+const canvas=document.querySelector('canvas'),ctx=canvas.getContext('2d');
+window.DEBUG_COLLISIONS=true;
+for(let i=0;i<platforms.length;i++){
+  const p=platforms[i],x=i%4*340,y=Math.floor(i/4)*290;
+  const sx=p.standRegion?.x??p.x,sw=p.standRegion?.w??p.w;
+  const sy=p.surfaceTopY??p.standRegion?.y??p.y;
+  ctx.save();ctx.beginPath();ctx.rect(x,y,340,290);ctx.clip();
+  ctx.fillStyle=i%2?'#211b2d':'#191725';ctx.fillRect(x,y,340,290);
+  ctx.fillStyle='#eee';ctx.font='14px sans-serif';ctx.fillText(`${i}: ${p.style}`,x+12,y+20);
+  ctx.translate(x+170-(sx+sw/2),y+135-sy);
+  renderer.renderPlatforms(ctx,{width:10000},0,{platforms:[p]});
+  const b=createBabyState();ctx.strokeStyle='#fff';ctx.lineWidth=1;
+  ctx.strokeRect(sx+(sw-b.w)/2,sy-b.h,b.w,b.h);
+  ctx.restore();
+}
+document.body.dataset.ready='true';
+</script>
+</html>

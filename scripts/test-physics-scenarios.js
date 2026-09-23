@@ -15,9 +15,10 @@
  * - largura visual coincide com p.w
  */
 
-import { platforms, FLOOR_Y, getEscapeStats } from '../src/js/config.js';
+import { PLATFORM_SURFACES as surfaces } from '../src/js/environment/PlatformRenderer.js';
+import { createBabyState, platforms, FLOOR_Y, getEscapeStats } from '../src/js/config.js';
 
-const BABY_W = 28;
+const BABY_W = createBabyState().w;
 const BABY_H = 44;
 const GRAVITY = 0.28;
 
@@ -40,32 +41,7 @@ function assert(condition, message) {
 }
 
 // Configuração das superfícies do PlatformRenderer
-const surfaces = {
-  giant_bear: { surfaceY: 2, surfaceX: 1, surfaceW: 349, origW: 352, origH: 432 },
-  open_books: { surfaceY: 2, surfaceX: 2, surfaceW: 272, origW: 276, origH: 300 },
-  vanity_table: { surfaceY: 250, surfaceX: 2, surfaceW: 294, origW: 298, origH: 475 },
-  small_dresser: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
-  cardboard_box: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
-  messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253 },
-  toy_drum: { surfaceY: 62, surfaceX: 50, surfaceW: 180, origW: 292, origH: 296 },
-  satin_cushion: { surfaceY: 15, surfaceX: 130, surfaceW: 148, origW: 408, origH: 298 },
-  stepped_dresser: { surfaceY: 2, surfaceX: 1, surfaceW: 433, origW: 436, origH: 572 },
-  music_box: { surfaceY: 96, surfaceX: 31, surfaceW: 258, origW: 304, origH: 351 },
-  block_castle: { surfaceY: 3, surfaceX: 80, surfaceW: 47, origW: 259, origH: 322 },
-  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350 },
-  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286 },
-  mushroom_lamp: { surfaceY: 2, surfaceX: 54, surfaceW: 176, origW: 288, origH: 342 },
-  dollhouse_roof: { surfaceY: 104, surfaceX: 2, surfaceW: 578, origW: 582, origH: 337 },
-  wardrobe_portal: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
-  spinning_globe: { surfaceY: 34, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309 },
-  kite_frame: { surfaceY: 3, surfaceX: 3, surfaceW: 402, origW: 410, origH: 279 },
-  floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 485, origW: 490, origH: 322 },
-  chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
-  curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
-  cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
-  wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
-  grand_portal_pedestal: { surfaceY: 140, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365 }
-};
+
 
 for (let i = 0; i < platforms.length; i++) {
   const p = platforms[i];

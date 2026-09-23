@@ -456,6 +456,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       const stats = getEscapeStats(currentLvl);
       baby.vy = stats.jumpPower;
       baby.vx = stats.airVx; // Impulso horizontal dinâmico proporcional ao nível
+      // O apoio estreito do castelo deixa um vão de 196 px até o trem.
+      // Impulso exclusivo desta saída: mantém arco, hitboxes e níveis seguintes.
+      if (baby.currentPlatformIndex === 9 && currentLvl === 0) {
+        baby.vx = 3.6;
+      }
       audio.playLongJumpSound(currentLvl / 11);
       fairy.vy -= 2.8;
       fairy.spinAnim = 1.6;

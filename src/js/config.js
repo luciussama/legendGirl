@@ -98,7 +98,7 @@ export function createFairyState() {
 
 export const platforms = [
   // 10 primeiras plataformas até o topo do castelo (0 a 9)
-  { x: 220, y: 435, w: 120, h: 45, style: 'giant_bear', label: 'Cabeça do Urso de Pelúcia' },
+  { x: 220, y: 410, w: 120, h: 60, style: 'giant_bear', label: 'Cabeça do Urso de Pelúcia' },
   { x: 380, y: 414, w: 110, h: 65, style: 'open_books', label: 'Pilha de Livros Ilustrados' },
   { x: 530, y: 393, w: 125, h: 85, surfaceTopY: 393, style: 'vanity_table', label: 'Penteadeira Encantada' },
   { x: 695, y: 372, w: 115, h: 105, style: 'small_dresser', label: 'Cômoda Pequena de Madeira' },

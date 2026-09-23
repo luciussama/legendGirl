@@ -14,6 +14,32 @@ import {
 } from '../config.js';
 import { darkRoomAtlas } from '../assets/index.js';
 
+export const PLATFORM_SURFACES = {
+  giant_bear: { surfaceY: 139, surfaceX: 460, surfaceW: 1000, origW: 1922, origH: 818, bottom: 755, floorFit: true },
+  open_books: { surfaceY: 2, surfaceX: 2, surfaceW: 272, origW: 276, origH: 300, floorFit: true },
+  vanity_table: { surfaceY: 250, surfaceX: 2, surfaceW: 294, origW: 298, origH: 475, floorFit: true },
+  small_dresser: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411, floorFit: true },
+  cardboard_box: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
+  messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253, floorFit: true },
+  toy_drum: { surfaceY: 100, surfaceX: 35, surfaceW: 210, origW: 292, origH: 296, support: 'stand' },
+  satin_cushion: { surfaceY: 145, surfaceX: 550, surfaceW: 880, origW: 1983, origH: 793, bottom: 660, support: 'stand' },
+  stepped_dresser: { surfaceY: 88, surfaceX: 30, surfaceW: 260, origW: 304, origH: 351, trimAboveSupport: true, cap: 'wood', support: 'stand' },
+  music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322 },
+  block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
+  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350 },
+  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286 },
+  mushroom_lamp: { surfaceY: 2, surfaceX: 54, surfaceW: 176, origW: 288, origH: 342 },
+  dollhouse_roof: { surfaceY: 104, surfaceX: 2, surfaceW: 578, origW: 582, origH: 337 },
+  spinning_globe: { surfaceY: 34, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309 },
+  kite_frame: { surfaceY: 75, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322 },
+  floating_books: { surfaceY: 45, surfaceX: 95, surfaceW: 240, origW: 410, origH: 279 },
+  chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
+  curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
+  cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
+  wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
+  grand_portal_pedestal: { surfaceY: 140, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365 }
+};
+
 export class PlatformRenderer {
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
@@ -48,36 +74,12 @@ export class PlatformRenderer {
     // - Fim horizontal    = sx + p.w
     // - Altura de apoio   = p.y
     // Nenhuma posição, altura, distância ou área de pouso é alterada.
-    const surfaces = {
-      giant_bear: { surfaceY: 2, surfaceX: 1, surfaceW: 349, origW: 352, origH: 432 },
-      open_books: { surfaceY: 2, surfaceX: 2, surfaceW: 272, origW: 276, origH: 300 },
-      vanity_table: { surfaceY: 250, surfaceX: 2, surfaceW: 294, origW: 298, origH: 475 },
-      small_dresser: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
-      cardboard_box: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
-      messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253 },
-      toy_drum: { surfaceY: 62, surfaceX: 50, surfaceW: 180, origW: 292, origH: 296 },
-      satin_cushion: { surfaceY: 15, surfaceX: 130, surfaceW: 148, origW: 408, origH: 298 },
-      stepped_dresser: { surfaceY: 2, surfaceX: 1, surfaceW: 433, origW: 436, origH: 572 },
-      music_box: { surfaceY: 96, surfaceX: 31, surfaceW: 258, origW: 304, origH: 351 },
-      block_castle: { surfaceY: 3, surfaceX: 80, surfaceW: 47, origW: 259, origH: 322 },
-      train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350 },
-      wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286 },
-      mushroom_lamp: { surfaceY: 2, surfaceX: 54, surfaceW: 176, origW: 288, origH: 342 },
-      dollhouse_roof: { surfaceY: 104, surfaceX: 2, surfaceW: 578, origW: 582, origH: 337 },
-      spinning_globe: { surfaceY: 34, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309 },
-      kite_frame: { surfaceY: 3, surfaceX: 3, surfaceW: 402, origW: 410, origH: 279 },
-      floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 485, origW: 490, origH: 322 },
-      chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
-      curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
-      cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
-      wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
-      grand_portal_pedestal: { surfaceY: 140, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365 }
-    };
+
 
     const spriteW = sprite.naturalWidth || sprite.width || (region ? region.width : p.w);
     const spriteH = sprite.naturalHeight || sprite.height || (region ? region.height : p.h);
 
-    const s = surfaces[styleClean] || {
+    const s = PLATFORM_SURFACES[styleClean] || {
       surfaceY: 0,
       surfaceX: 0,
       surfaceW: spriteW,
@@ -96,21 +98,49 @@ export class PlatformRenderer {
     // Escala estritamente calibrada pela largura da superfície de apoio em relação a platW
     const scale = platW / (s.surfaceW || spriteW);
     const dw = Math.round(spriteW * scale);
-    const dh = Math.round(spriteH * scale);
+    const scaleY = s.floorFit ? Math.min(scale, (this.floorY - platY) / ((s.bottom ?? spriteH) - s.surfaceY)) : scale;
+    const dh = Math.round(spriteH * scaleY);
 
     // O início horizontal da superfície de apoio coincide com sx (ou sxSurface com standRegion)
     const dx = Math.round(sxSurface - (s.surfaceX * scale));
 
     // A superfície de apoio do sprite coincide exatamente com a altura platY
-    const dy = Math.round(platY - (s.surfaceY * scale));
+    const dy = Math.round(platY - (s.surfaceY * scaleY));
 
-    // Suporte sutil de sombra/madeira até o piso para plataformas altas
-    if (p.y + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean)) {
-      ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
-      ctx.fillRect(sx + 8, p.y + dh - 4, p.w - 16, this.floorY - (p.y + dh - 4));
+    // Furniture under the object is scenery, never an extra landing surface.
+    if (s.support === 'stand') {
+      const left = dx + 4, width = dw - 8, top = dy + Math.round((s.bottom ?? spriteH) * scaleY) - 2;
+      const legHeight = Math.max(0, this.floorY - top - 8);
+      ctx.fillStyle = '#291b20';
+      ctx.fillRect(left + 8, top + 7, 7, legHeight);
+      ctx.fillRect(left + width - 15, top + 7, 7, legHeight);
+      ctx.fillStyle = '#61402d';
+      ctx.fillRect(left + 9, top + 7, 2, legHeight);
+      ctx.fillRect(left + width - 14, top + 7, 2, legHeight);
+      ctx.fillStyle = '#493022';
+      ctx.fillRect(left, top, width, 9);
+      ctx.fillStyle = '#957044';
+      ctx.fillRect(left, top, width, 2);
+      ctx.fillStyle = '#21151b';
+      ctx.fillRect(left + 4, top + 8, width - 8, 2);
     }
 
+    // Suporte sutil de sombra/madeira até o piso para plataformas altas
+    if (dy + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean)) {
+      ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
+      ctx.fillRect(sx + 8, dy + dh - 4, p.w - 16, this.floorY - (dy + dh - 4));
+    }
+
+    if (s.trimAboveSupport) {
+      ctx.save();ctx.beginPath();ctx.rect(dx, platY, dw, dh);ctx.clip();
+    }
     ctx.drawImage(sprite, dx, dy, dw, dh);
+    if (s.trimAboveSupport) ctx.restore();
+    if (s.cap) {
+      ctx.fillStyle = '#68462c';ctx.fillRect(sxSurface, platY, platW, 5);
+      ctx.fillStyle = '#b38b50';ctx.fillRect(sxSurface, platY, platW, 1.5);
+      ctx.fillStyle = '#2e1c1b';ctx.fillRect(sxSurface, platY + 5, platW, 2);
+    }
     return true;
   }
 
@@ -141,7 +171,7 @@ export class PlatformRenderer {
 
       const platX = p.standRegion ? p.standRegion.x : p.x;
       const platW = p.standRegion ? p.standRegion.w : p.w;
-      const platY = (p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y;
+      const platY = p.surfaceTopY ?? p.standRegion?.y ?? p.y;
       const platH = (p.standRegion && p.standRegion.h !== undefined) ? p.standRegion.h : p.h;
       const sxBox = platX - camX;
 

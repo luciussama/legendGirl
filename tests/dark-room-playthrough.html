@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><base href="../">
+<title>Revisão sequencial — dark-room</title>
+<style>body{margin:0;background:#14101e;color:#eee;font:14px sans-serif}canvas{display:block}p{margin:8px}</style>
+<canvas id="game" width="960" height="540"></canvas><p id="feedback"></p>
+<script type="module">
+// Test-only instrumentation: the shipped game has no teleport or clock controls.
+// Import the real game, exposing its update/render closures only in this page.
+import {platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
+let source=await (await fetch('/src/js/game.js')).text();
+source=source.replace(/from '(\.\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/game.js')}'`);
+const marker='  return {\n    state,\n    audio,';
+if(!source.includes(marker))throw Error('Game review instrumentation marker missing');
+source=source.replace(marker,`  return {
+    review: {
+      prepare(index, x) {
+        const p=platforms[index];
+        const y=p ? (p.surfaceTopY ?? p.standRegion?.y ?? p.y) : FLOOR_Y;
+        Object.assign(baby,createBabyState(),{x,y:y-44,currentPlatformIndex:index,
+          controlsLocked:false,isCrouching:false,respawnLandingPending:false,
+          isEscaping:index>=9,longJumpUnlocked:index>=9});
+        Object.assign(state,{gameStarted:true,gameWon:false,isGameOver:false,
+          isStandbyActive:false,isStandbyTransitioning:false,cutsceneActive:false,
+          cutsceneTriggered:true,cutsceneCompleted:index>=9,isEscapeMode:index>=9,
+          escapeLevel:Math.max(0,index-9),isPhase3:false,plotTwistActive:false,
+          firstPlatformCleared:index>=0,truePortalTransitionActive:false,
+          cameraX:x-250,cameraY:0,targetCameraY:0,cameraZoom:1,targetCameraZoom:1,
+          lastJumpTime:-10000});
+        syncStateToLocals();camera.syncFromState(state);
+      },
+      step(dt=1){update(dt);syncLocalsToState();},
+      jump(){lastJumpTime=-10000;doJump();syncLocalsToState();},
+      draw(){cameraX=baby.x-350;cameraY=0;cameraZoom=1;
+        syncLocalsToState();camera.syncFromState(state);render();}
+    },
+    state,
+    audio,`);
+const {createGame}=await import(URL.createObjectURL(new Blob([source],{type:'text/javascript'})));
+const game=createGame(document.querySelector('canvas'),document.querySelector('#feedback'));
+await game.assetsReady;game.setMuted(true);
+const support=p=>({x:p.standRegion?.x??p.x,w:p.standRegion?.w??p.w,y:p.surfaceTopY??p.standRegion?.y??p.y});
+window.review={game,platforms,results:[],
+  run(target,dt=1){
+    const from=target? support(platforms[target-1]):{x:60,w:160,y:FLOOR_Y};
+    const positions=Array.from({length:Math.floor(from.w)},(_,i)=>from.x+i);
+    positions.sort((a,b)=>Math.abs(a-(from.x+(from.w-38)/2))-Math.abs(b-(from.x+(from.w-38)/2)));
+    for(const x of positions){
+      game.review.prepare(target-1,x);game.review.jump();
+      if(game.state.baby.onGround)throw Error('Jump did not start');
+      for(let frame=0;frame<220;frame++){
+        game.review.step(dt);
+        const b=game.state.baby;
+        if(game.isGameOver())break;
+        if(b.onGround){
+          if(b.currentPlatformIndex===target){
+            const p=support(platforms[target]);
+            if(Math.abs(b.y+b.h-p.y)>0.001)throw Error('Feet are not on support');
+            const result={target,style:platforms[target].style,dt,launchX:x,frames:frame+1,feet:b.y+b.h,surface:p.y};
+            this.results.push(result);game.review.draw();return result;
+          }break;
+        }
+      }
+    }
+    throw Error('No successful real-game jump to '+target+' '+platforms[target].style);
+  },
+  show(index,debug=false){const s=support(platforms[index]);game.review.prepare(index,s.x+(s.w-38)/2);
+    game.state.baby.vx=0;window.DEBUG_COLLISIONS=debug;game.review.draw();}
+};
+document.body.dataset.ready='true';
+</script></html>
