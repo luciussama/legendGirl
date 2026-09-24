@@ -1,0 +1,31 @@
+{
+  "timestamp": "2026-09-23T19:47:56.829Z",
+  "mechanic": "Efeito de gameplay escondido para transição da Parte 2",
+  "platformSource": {
+    "index": 9,
+    "style": "block_castle",
+    "standRegion": {
+      "x": 1636,
+      "y": 236,
+      "w": 28,
+      "h": 244
+    }
+  },
+  "platformTarget": {
+    "index": 10,
+    "style": "train_trestle",
+    "x": 1860,
+    "w": 115,
+    "surfaceY": 244
+  },
+  "babyFinalState": {
+    "x": 1890.919098463621,
+    "y": 200,
+    "vx": 1.75,
+    "vy": 0,
+    "onGround": true,
+    "currentPlatformIndex": 10,
+    "feetContactY": 244
+  },
+  "successGuarantee": true
+}

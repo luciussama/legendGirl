@@ -1,0 +1,864 @@
+{
+  "timestamp": "2026-09-23T18:15:57.790Z",
+  "totalPlatforms": 22,
+  "platforms": [
+    {
+      "index": 0,
+      "style": "giant_bear",
+      "label": "Cabeça do Urso de Pelúcia",
+      "geometry": {
+        "x": 220,
+        "y": 410,
+        "w": 120,
+        "h": 60
+      },
+      "support": {
+        "x": 220,
+        "w": 120,
+        "y": 410
+      },
+      "positions": {
+        "start": {
+          "x": 220,
+          "y": 366
+        },
+        "middle": {
+          "x": 261,
+          "y": 366
+        },
+        "end": {
+          "x": 302,
+          "y": 366
+        }
+      },
+      "files": [
+        "00-00-painel-consolidado.png",
+        "00-01-cenario-geral.png",
+        "00-02-garota-inicio.png",
+        "00-03-garota-meio.png",
+        "00-04-garota-fim.png",
+        "00-05-apoio-detalhe.png",
+        "00-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 1,
+      "style": "open_books",
+      "label": "Pilha de Livros Ilustrados",
+      "geometry": {
+        "x": 380,
+        "y": 414,
+        "w": 110,
+        "h": 65
+      },
+      "support": {
+        "x": 380,
+        "w": 110,
+        "y": 414
+      },
+      "positions": {
+        "start": {
+          "x": 380,
+          "y": 370
+        },
+        "middle": {
+          "x": 416,
+          "y": 370
+        },
+        "end": {
+          "x": 452,
+          "y": 370
+        }
+      },
+      "files": [
+        "01-00-painel-consolidado.png",
+        "01-01-cenario-geral.png",
+        "01-02-garota-inicio.png",
+        "01-03-garota-meio.png",
+        "01-04-garota-fim.png",
+        "01-05-apoio-detalhe.png",
+        "01-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 2,
+      "style": "vanity_table",
+      "label": "Penteadeira Encantada",
+      "geometry": {
+        "x": 530,
+        "y": 393,
+        "w": 125,
+        "h": 85
+      },
+      "support": {
+        "x": 530,
+        "w": 125,
+        "y": 393
+      },
+      "positions": {
+        "start": {
+          "x": 530,
+          "y": 349
+        },
+        "middle": {
+          "x": 573.5,
+          "y": 349
+        },
+        "end": {
+          "x": 617,
+          "y": 349
+        }
+      },
+      "files": [
+        "02-00-painel-consolidado.png",
+        "02-01-cenario-geral.png",
+        "02-02-garota-inicio.png",
+        "02-03-garota-meio.png",
+        "02-04-garota-fim.png",
+        "02-05-apoio-detalhe.png",
+        "02-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 3,
+      "style": "small_dresser",
+      "label": "Cômoda Pequena de Madeira",
+      "geometry": {
+        "x": 695,
+        "y": 372,
+        "w": 115,
+        "h": 105
+      },
+      "support": {
+        "x": 695,
+        "w": 115,
+        "y": 372
+      },
+      "positions": {
+        "start": {
+          "x": 695,
+          "y": 328
+        },
+        "middle": {
+          "x": 733.5,
+          "y": 328
+        },
+        "end": {
+          "x": 772,
+          "y": 328
+        }
+      },
+      "files": [
+        "03-00-painel-consolidado.png",
+        "03-01-cenario-geral.png",
+        "03-02-garota-inicio.png",
+        "03-03-garota-meio.png",
+        "03-04-garota-fim.png",
+        "03-05-apoio-detalhe.png",
+        "03-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 4,
+      "style": "messy_blocks",
+      "label": "Pilha de Blocos ABC",
+      "geometry": {
+        "x": 850,
+        "y": 351,
+        "w": 120,
+        "h": 125
+      },
+      "support": {
+        "x": 881,
+        "w": 50,
+        "y": 351
+      },
+      "positions": {
+        "start": {
+          "x": 881,
+          "y": 307
+        },
+        "middle": {
+          "x": 887,
+          "y": 307
+        },
+        "end": {
+          "x": 893,
+          "y": 307
+        }
+      },
+      "files": [
+        "04-00-painel-consolidado.png",
+        "04-01-cenario-geral.png",
+        "04-02-garota-inicio.png",
+        "04-03-garota-meio.png",
+        "04-04-garota-fim.png",
+        "04-05-apoio-detalhe.png",
+        "04-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 5,
+      "style": "toy_drum",
+      "label": "Tamborito de Marcha",
+      "geometry": {
+        "x": 1010,
+        "y": 330,
+        "w": 115,
+        "h": 145
+      },
+      "support": {
+        "x": 1030,
+        "w": 71,
+        "y": 330
+      },
+      "positions": {
+        "start": {
+          "x": 1030,
+          "y": 286
+        },
+        "middle": {
+          "x": 1046.5,
+          "y": 286
+        },
+        "end": {
+          "x": 1063,
+          "y": 286
+        }
+      },
+      "files": [
+        "05-00-painel-consolidado.png",
+        "05-01-cenario-geral.png",
+        "05-02-garota-inicio.png",
+        "05-03-garota-meio.png",
+        "05-04-garota-fim.png",
+        "05-05-apoio-detalhe.png",
+        "05-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 6,
+      "style": "satin_cushion",
+      "label": "Almofadão de Veludo",
+      "geometry": {
+        "x": 1165,
+        "y": 309,
+        "w": 120,
+        "h": 165
+      },
+      "support": {
+        "x": 1203,
+        "w": 44,
+        "y": 309
+      },
+      "positions": {
+        "start": {
+          "x": 1203,
+          "y": 265
+        },
+        "middle": {
+          "x": 1206,
+          "y": 265
+        },
+        "end": {
+          "x": 1209,
+          "y": 265
+        }
+      },
+      "files": [
+        "06-00-painel-consolidado.png",
+        "06-01-cenario-geral.png",
+        "06-02-garota-inicio.png",
+        "06-03-garota-meio.png",
+        "06-04-garota-fim.png",
+        "06-05-apoio-detalhe.png",
+        "06-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 7,
+      "style": "stepped_dresser",
+      "label": "Gavetas da Cômoda",
+      "geometry": {
+        "x": 1325,
+        "y": 288,
+        "w": 125,
+        "h": 185
+      },
+      "support": {
+        "x": 1325,
+        "w": 125,
+        "y": 288
+      },
+      "positions": {
+        "start": {
+          "x": 1325,
+          "y": 244
+        },
+        "middle": {
+          "x": 1368.5,
+          "y": 244
+        },
+        "end": {
+          "x": 1412,
+          "y": 244
+        }
+      },
+      "files": [
+        "07-00-painel-consolidado.png",
+        "07-01-cenario-geral.png",
+        "07-02-garota-inicio.png",
+        "07-03-garota-meio.png",
+        "07-04-garota-fim.png",
+        "07-05-apoio-detalhe.png",
+        "07-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 8,
+      "style": "music_box",
+      "label": "Caixa de Música da Bailarina",
+      "geometry": {
+        "x": 1475,
+        "y": 267,
+        "w": 115,
+        "h": 205
+      },
+      "support": {
+        "x": 1485,
+        "w": 90,
+        "y": 267
+      },
+      "positions": {
+        "start": {
+          "x": 1485,
+          "y": 223
+        },
+        "middle": {
+          "x": 1511,
+          "y": 223
+        },
+        "end": {
+          "x": 1537,
+          "y": 223
+        }
+      },
+      "files": [
+        "08-00-painel-consolidado.png",
+        "08-01-cenario-geral.png",
+        "08-02-garota-inicio.png",
+        "08-03-garota-meio.png",
+        "08-04-garota-fim.png",
+        "08-05-apoio-detalhe.png",
+        "08-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 9,
+      "style": "block_castle",
+      "label": "Castelinho de Blocos (Cena Cinemática)",
+      "geometry": {
+        "x": 1588,
+        "y": 236,
+        "w": 154,
+        "h": 244
+      },
+      "support": {
+        "x": 1636,
+        "w": 28,
+        "y": 236
+      },
+      "positions": {
+        "start": {
+          "x": 1636,
+          "y": 192
+        },
+        "middle": {
+          "x": 1631,
+          "y": 192
+        },
+        "end": {
+          "x": 1626,
+          "y": 192
+        }
+      },
+      "files": [
+        "09-00-painel-consolidado.png",
+        "09-01-cenario-geral.png",
+        "09-02-garota-inicio.png",
+        "09-03-garota-meio.png",
+        "09-04-garota-fim.png",
+        "09-05-apoio-detalhe.png",
+        "09-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 10,
+      "style": "train_trestle",
+      "label": "1/12 Pista Elevada do Trem",
+      "geometry": {
+        "x": 1860,
+        "y": 244,
+        "w": 115,
+        "h": 230
+      },
+      "support": {
+        "x": 1860,
+        "w": 115,
+        "y": 244
+      },
+      "positions": {
+        "start": {
+          "x": 1860,
+          "y": 200
+        },
+        "middle": {
+          "x": 1898.5,
+          "y": 200
+        },
+        "end": {
+          "x": 1937,
+          "y": 200
+        }
+      },
+      "files": [
+        "10-00-painel-consolidado.png",
+        "10-01-cenario-geral.png",
+        "10-02-garota-inicio.png",
+        "10-03-garota-meio.png",
+        "10-04-garota-fim.png",
+        "10-05-apoio-detalhe.png",
+        "10-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 11,
+      "style": "wall_shelf",
+      "label": "2/12 Prateleira de Brinquedos",
+      "geometry": {
+        "x": 2055,
+        "y": 236,
+        "w": 110,
+        "h": 238
+      },
+      "support": {
+        "x": 2055,
+        "w": 110,
+        "y": 236
+      },
+      "positions": {
+        "start": {
+          "x": 2055,
+          "y": 192
+        },
+        "middle": {
+          "x": 2091,
+          "y": 192
+        },
+        "end": {
+          "x": 2127,
+          "y": 192
+        }
+      },
+      "files": [
+        "11-00-painel-consolidado.png",
+        "11-01-cenario-geral.png",
+        "11-02-garota-inicio.png",
+        "11-03-garota-meio.png",
+        "11-04-garota-fim.png",
+        "11-05-apoio-detalhe.png",
+        "11-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 12,
+      "style": "mushroom_lamp",
+      "label": "3/12 Abajur Cogumelo",
+      "geometry": {
+        "x": 2257,
+        "y": 224,
+        "w": 105,
+        "h": 250
+      },
+      "support": {
+        "x": 2257,
+        "w": 105,
+        "y": 224
+      },
+      "positions": {
+        "start": {
+          "x": 2257,
+          "y": 180
+        },
+        "middle": {
+          "x": 2290.5,
+          "y": 180
+        },
+        "end": {
+          "x": 2324,
+          "y": 180
+        }
+      },
+      "files": [
+        "12-00-painel-consolidado.png",
+        "12-01-cenario-geral.png",
+        "12-02-garota-inicio.png",
+        "12-03-garota-meio.png",
+        "12-04-garota-fim.png",
+        "12-05-apoio-detalhe.png",
+        "12-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 13,
+      "style": "dollhouse_roof",
+      "label": "4/12 Telhado da Casa de Bonecas",
+      "geometry": {
+        "x": 2467,
+        "y": 210,
+        "w": 100,
+        "h": 264
+      },
+      "support": {
+        "x": 2467,
+        "w": 100,
+        "y": 210
+      },
+      "positions": {
+        "start": {
+          "x": 2467,
+          "y": 166
+        },
+        "middle": {
+          "x": 2498,
+          "y": 166
+        },
+        "end": {
+          "x": 2529,
+          "y": 166
+        }
+      },
+      "files": [
+        "13-00-painel-consolidado.png",
+        "13-01-cenario-geral.png",
+        "13-02-garota-inicio.png",
+        "13-03-garota-meio.png",
+        "13-04-garota-fim.png",
+        "13-05-apoio-detalhe.png",
+        "13-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 14,
+      "style": "spinning_globe",
+      "label": "5/12 Globo Terrestre Ilustrado",
+      "geometry": {
+        "x": 2687,
+        "y": 218,
+        "w": 95,
+        "h": 256
+      },
+      "support": {
+        "x": 2687,
+        "w": 95,
+        "y": 218
+      },
+      "positions": {
+        "start": {
+          "x": 2687,
+          "y": 174
+        },
+        "middle": {
+          "x": 2715.5,
+          "y": 174
+        },
+        "end": {
+          "x": 2744,
+          "y": 174
+        }
+      },
+      "files": [
+        "14-00-painel-consolidado.png",
+        "14-01-cenario-geral.png",
+        "14-02-garota-inicio.png",
+        "14-03-garota-meio.png",
+        "14-04-garota-fim.png",
+        "14-05-apoio-detalhe.png",
+        "14-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 15,
+      "style": "kite_frame",
+      "label": "6/12 Pipa Encantada de Bambu",
+      "geometry": {
+        "x": 2917,
+        "y": 196,
+        "w": 90,
+        "h": 278
+      },
+      "support": {
+        "x": 2917,
+        "w": 90,
+        "y": 196
+      },
+      "positions": {
+        "start": {
+          "x": 2917,
+          "y": 152
+        },
+        "middle": {
+          "x": 2943,
+          "y": 152
+        },
+        "end": {
+          "x": 2969,
+          "y": 152
+        }
+      },
+      "files": [
+        "15-00-painel-consolidado.png",
+        "15-01-cenario-geral.png",
+        "15-02-garota-inicio.png",
+        "15-03-garota-meio.png",
+        "15-04-garota-fim.png",
+        "15-05-apoio-detalhe.png",
+        "15-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 16,
+      "style": "floating_books",
+      "label": "7/12 Livro de Gravuras Flutuante",
+      "geometry": {
+        "x": 3159,
+        "y": 184,
+        "w": 85,
+        "h": 290
+      },
+      "support": {
+        "x": 3159,
+        "w": 85,
+        "y": 184
+      },
+      "positions": {
+        "start": {
+          "x": 3159,
+          "y": 140
+        },
+        "middle": {
+          "x": 3182.5,
+          "y": 140
+        },
+        "end": {
+          "x": 3206,
+          "y": 140
+        }
+      },
+      "files": [
+        "16-00-painel-consolidado.png",
+        "16-01-cenario-geral.png",
+        "16-02-garota-inicio.png",
+        "16-03-garota-meio.png",
+        "16-04-garota-fim.png",
+        "16-05-apoio-detalhe.png",
+        "16-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 17,
+      "style": "chandelier_crystals",
+      "label": "8/12 Lustre de Cristais",
+      "geometry": {
+        "x": 3414,
+        "y": 168,
+        "w": 80,
+        "h": 306
+      },
+      "support": {
+        "x": 3414,
+        "w": 80,
+        "y": 168
+      },
+      "positions": {
+        "start": {
+          "x": 3414,
+          "y": 124
+        },
+        "middle": {
+          "x": 3435,
+          "y": 124
+        },
+        "end": {
+          "x": 3456,
+          "y": 124
+        }
+      },
+      "files": [
+        "17-00-painel-consolidado.png",
+        "17-01-cenario-geral.png",
+        "17-02-garota-inicio.png",
+        "17-03-garota-meio.png",
+        "17-04-garota-fim.png",
+        "17-05-apoio-detalhe.png",
+        "17-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 18,
+      "style": "curtain_rod",
+      "label": "9/12 Varão de Cortina Estrelada",
+      "geometry": {
+        "x": 3686,
+        "y": 158,
+        "w": 76,
+        "h": 316
+      },
+      "support": {
+        "x": 3686,
+        "w": 76,
+        "y": 158
+      },
+      "positions": {
+        "start": {
+          "x": 3686,
+          "y": 114
+        },
+        "middle": {
+          "x": 3705,
+          "y": 114
+        },
+        "end": {
+          "x": 3724,
+          "y": 114
+        }
+      },
+      "files": [
+        "18-00-painel-consolidado.png",
+        "18-01-cenario-geral.png",
+        "18-02-garota-inicio.png",
+        "18-03-garota-meio.png",
+        "18-04-garota-fim.png",
+        "18-05-apoio-detalhe.png",
+        "18-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 19,
+      "style": "cuckoo_clock",
+      "label": "10/12 Relógio Cuco Vintage",
+      "geometry": {
+        "x": 3980,
+        "y": 168,
+        "w": 75,
+        "h": 306
+      },
+      "support": {
+        "x": 3980,
+        "w": 75,
+        "y": 168
+      },
+      "positions": {
+        "start": {
+          "x": 3980,
+          "y": 124
+        },
+        "middle": {
+          "x": 3998.5,
+          "y": 124
+        },
+        "end": {
+          "x": 4017,
+          "y": 124
+        }
+      },
+      "files": [
+        "19-00-painel-consolidado.png",
+        "19-01-cenario-geral.png",
+        "19-02-garota-inicio.png",
+        "19-03-garota-meio.png",
+        "19-04-garota-fim.png",
+        "19-05-apoio-detalhe.png",
+        "19-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 20,
+      "style": "wardrobe_ledge",
+      "label": "11/12 Beiral do Grande Guarda-Roupa",
+      "geometry": {
+        "x": 4300,
+        "y": 156,
+        "w": 72,
+        "h": 318
+      },
+      "support": {
+        "x": 4300,
+        "w": 72,
+        "y": 156
+      },
+      "positions": {
+        "start": {
+          "x": 4300,
+          "y": 112
+        },
+        "middle": {
+          "x": 4317,
+          "y": 112
+        },
+        "end": {
+          "x": 4334,
+          "y": 112
+        }
+      },
+      "files": [
+        "20-00-painel-consolidado.png",
+        "20-01-cenario-geral.png",
+        "20-02-garota-inicio.png",
+        "20-03-garota-meio.png",
+        "20-04-garota-fim.png",
+        "20-05-apoio-detalhe.png",
+        "20-06-cenario-hitbox.png"
+      ]
+    },
+    {
+      "index": 21,
+      "style": "grand_portal_pedestal",
+      "label": "12/12 O Portal dos Sonhos (Saída)",
+      "geometry": {
+        "x": 4650,
+        "y": 148,
+        "w": 270,
+        "h": 326
+      },
+      "support": {
+        "x": 4650,
+        "w": 270,
+        "y": 148
+      },
+      "positions": {
+        "start": {
+          "x": 4650,
+          "y": 104
+        },
+        "middle": {
+          "x": 4766,
+          "y": 104
+        },
+        "end": {
+          "x": 4882,
+          "y": 104
+        }
+      },
+      "files": [
+        "21-00-painel-consolidado.png",
+        "21-01-cenario-geral.png",
+        "21-02-garota-inicio.png",
+        "21-03-garota-meio.png",
+        "21-04-garota-fim.png",
+        "21-05-apoio-detalhe.png",
+        "21-06-cenario-hitbox.png"
+      ]
+    }
+  ]
+}

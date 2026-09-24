@@ -23,6 +23,11 @@
             ⚡ Pular para a segunda fase
           </button>
         </div>
+        <div class="start-download-container">
+          <a id="btn-start-download-zip" class="start-download-btn" href="/api/download-zip" target="_blank" rel="noopener noreferrer" download="o-quarto-dos-brinquedos.zip" aria-label="Baixar ZIP do projeto completo (51.5 MB)" title="Baixar arquivo ZIP com todas as modificações do projeto (51.5 MB)">
+            📦 Baixar ZIP do Projeto (51.5 MB)
+          </a>
+        </div>
       </div>
     </div>
 
@@ -41,8 +46,97 @@
 
     <div id="ui-feedback" class="hidden" style="display: none !important;" aria-hidden="true"></div>
 
-    <!-- Botões de Controle Superior (Pausa e Som) -->
+    <!-- Modal Central de Download do Projeto -->
+    <div id="download-modal" class="hidden" aria-label="Central de Download do Projeto" role="dialog" aria-modal="true">
+      <div class="download-modal-card">
+        <div class="download-modal-header">
+          <span class="download-modal-badge">✦ PACOTE COMPLETO DO PROJETO ✦</span>
+          <button id="modal-btn-close-x" class="download-modal-close-x" type="button" aria-label="Fechar janela de download">✕</button>
+        </div>
+
+        <h2 class="download-modal-title">📦 Download O Quarto dos Brinquedos</h2>
+        <p class="download-modal-desc">
+          Pacote ZIP verificado contendo todo o código-fonte, spritesheets de alta resolução da Fase 1 e Fase 2, áudios MP3 originais e testes (<strong>51.5 MB</strong>).
+        </p>
+
+        <div class="download-modal-options">
+          <!-- Opção 1: Nova Aba (Garantido contra restrições de sandbox de iframe do AI Studio) -->
+          <div class="download-option-card highlight">
+            <div class="download-option-header">
+              <span class="option-tag recommended">⭐ Recomendado (Fora do Iframe)</span>
+              <span class="option-filesize">51.5 MB</span>
+            </div>
+            <p class="download-option-hint">
+              Como o preview do AI Studio roda em um <code>&lt;iframe&gt;</code>, navegadores como Chrome bloqueiam a gravação direta no disco. Abrir o download em uma nova aba transfere o arquivo direto para a sua pasta de Downloads.
+            </p>
+            <div class="download-actions-row">
+              <a id="modal-btn-download-tab" class="modal-action-btn btn-primary" href="/api/download-zip" target="_blank" rel="noopener noreferrer">
+                🚀 Baixar ZIP em Nova Aba
+              </a>
+              <a id="modal-btn-download-page" class="modal-action-btn btn-accent" href="/baixar" target="_blank" rel="noopener noreferrer">
+                🌐 Abrir Página de Download
+              </a>
+            </div>
+          </div>
+
+          <!-- Opção 2: Copiar Link de Download Direto -->
+          <div class="download-option-card">
+            <div class="download-option-header">
+              <span class="option-tag">📋 Link de Download Direto</span>
+            </div>
+            <div class="download-copy-row">
+              <input id="modal-direct-url-input" type="text" readonly class="modal-copy-input" value="" />
+              <button id="modal-btn-copy-url" type="button" class="modal-copy-btn">
+                Copiar Link
+              </button>
+            </div>
+            <span id="modal-copy-url-feedback" class="modal-feedback-text"></span>
+          </div>
+
+          <!-- Opção 3: Download Direto no Navegador (Blob Stream) -->
+          <div class="download-option-card">
+            <div class="download-option-header">
+              <span class="option-tag">💾 Salvar pelo Navegador (Stream)</span>
+            </div>
+            <p class="download-option-hint">Tenta ler o stream do ZIP e salvar em memória local:</p>
+            <button id="modal-btn-stream-download" type="button" class="modal-action-btn btn-secondary">
+              ⬇️ Iniciar Download no Navegador
+            </button>
+            <div id="modal-stream-progress" class="modal-progress-container hidden">
+              <div id="modal-stream-fill" class="modal-progress-fill"></div>
+              <span id="modal-stream-text" class="modal-progress-text">0%</span>
+            </div>
+            <div id="modal-stream-status" class="modal-status-text"></div>
+          </div>
+
+          <!-- Opção 4: Comando cURL / Terminal -->
+          <div class="download-option-card">
+            <div class="download-option-header">
+              <span class="option-tag">💻 Terminal (cURL / PowerShell)</span>
+            </div>
+            <div class="download-copy-row">
+              <input id="modal-curl-command-input" type="text" readonly class="modal-copy-input code-font" value="" />
+              <button id="modal-btn-copy-curl" type="button" class="modal-copy-btn">
+                Copiar cURL
+              </button>
+            </div>
+            <span id="modal-copy-curl-feedback" class="modal-feedback-text"></span>
+          </div>
+        </div>
+
+        <div class="download-modal-footer">
+          <button id="modal-btn-close-footer" class="modal-close-btn" type="button">
+            Voltar ao Jogo
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Botões de Controle Superior (Pausa, Som e Download do Código em ZIP) -->
     <div class="top-controls-bar">
+      <a id="btn-download-zip" class="control-btn download-zip-btn" href="/api/download-zip" target="_blank" rel="noopener noreferrer" download="o-quarto-dos-brinquedos.zip" aria-label="Baixar projeto em ZIP" title="Baixar ZIP do projeto com todas as alterações">
+        <span id="download-icon" class="control-icon">📦</span>
+      </a>
       <button id="btn-pause-toggle" class="control-btn pause-toggle-btn" type="button" aria-label="Pausar jogo" title="Pausar / Continuar (P)">
         <span id="pause-icon" class="control-icon">⏸️</span>
       </button>

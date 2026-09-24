@@ -45,8 +45,9 @@ Object.assign(state.baby,createBabyState(),{x:1636,y:192,currentPlatformIndex:9,
 state.finishCutscene();
 assert.equal(state.escapeLevel,0);
 assert.equal(state.baby.longJumpUnlocked,true);
+assert.equal(state.baby.vx,0); // Espera o pulo do jogador sem andar previamente
 jump(state.baby,platforms,getEscapeStats,getPhase3Stats);
-assert.equal(state.baby.vx,3.6);
+assert(Math.abs(state.baby.vx - 5.09) < 0.05, 'Jump from castle must have calibrated velocity to reach platform 10');
 assert.equal(state.baby.vy,getEscapeStats(0).jumpPower);
 checks++;
 for(const guard of ['controlsLocked','respawnLandingPending','isCrouching']) {

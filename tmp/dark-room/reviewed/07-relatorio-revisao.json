@@ -1,0 +1,32 @@
+{
+  "plataforma": 7,
+  "estilo": "stepped_dresser",
+  "label": "Gavetas da Cômoda",
+  "suporte": {
+    "x": 1325,
+    "w": 125,
+    "y": 288
+  },
+  "posicoes": {
+    "inicio": {
+      "x": 1325,
+      "y": 244
+    },
+    "meio": {
+      "x": 1368.5,
+      "y": 244
+    },
+    "fim": {
+      "x": 1412,
+      "y": 244
+    }
+  },
+  "melhorias": [
+    "Móvel ampliado com 6 gavetas totais alcançando o chão (floorY = 450)",
+    "Pés esculpidos bracket assentados firmemente no chão",
+    "Tampa chanfrada inteira sem cortes ou barras horizontais artificiais",
+    "Perspectiva diagonal isométrica preservada com mogno maciço e verniz acetinado",
+    "Pé da personagem garantido 100% dentro dos limites do móvel (início a 12px da borda esquerda, fim a 19px antes da borda direita)",
+    "Física e jogabilidade inalteradas com todos os testes de estabilidade aprovados"
+  ]
+}

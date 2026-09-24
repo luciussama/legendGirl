@@ -139,6 +139,15 @@ export class CameraController {
       }
     } else if (state.isEscapeMode) {
       // Fase 2: Fuga com rolagem automática para frente
+      // Efeito escondido no castelo (início da segunda parte): aguarda o jogador realizar o primeiro salto
+      if (baby.currentPlatformIndex === 9 && baby.onGround) {
+        this.targetZoom = 1.0;
+        this.zoom += (this.targetZoom - this.zoom) * 0.08;
+        const targetCamX = baby.x - (isWide ? 190 : 130);
+        this.x += (targetCamX - this.x) * 0.08 * dt;
+        this.syncToState(state);
+        return;
+      }
       state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
       this.x += state.currentScrollSpeed * dt;
       const targetCamX = baby.x - (isWide ? 170 : 120);

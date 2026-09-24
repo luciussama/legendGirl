@@ -23,7 +23,7 @@ export const PLATFORM_SURFACES = {
   messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253, floorFit: true },
   toy_drum: { surfaceY: 100, surfaceX: 35, surfaceW: 210, origW: 292, origH: 296, support: 'stand' },
   satin_cushion: { surfaceY: 145, surfaceX: 550, surfaceW: 880, origW: 1983, origH: 793, bottom: 660, support: 'stand' },
-  stepped_dresser: { surfaceY: 88, surfaceX: 30, surfaceW: 260, origW: 304, origH: 351, trimAboveSupport: true, cap: 'wood', support: 'stand' },
+  stepped_dresser: { surfaceY: 46, surfaceX: 25, surfaceW: 250, origW: 304, origH: 484, floorFit: true },
   music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322, support: 'stand' },
   block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
   train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, bottom: 290, clipBottom: 290, support: 'stand', cap: 'wood' },
@@ -111,20 +111,80 @@ export class PlatformRenderer {
 
     // Furniture under the object is scenery, never an extra landing surface.
     if (s.support === 'stand') {
-      const left = dx + 4, width = dw - 8, top = dy + Math.round((s.bottom ?? spriteH) * scaleY) - 2;
-      const legHeight = Math.max(0, this.floorY - top - 8);
-      ctx.fillStyle = '#291b20';
-      ctx.fillRect(left + 8, top + 7, 7, legHeight);
-      ctx.fillRect(left + width - 15, top + 7, 7, legHeight);
-      ctx.fillStyle = '#61402d';
-      ctx.fillRect(left + 9, top + 7, 2, legHeight);
-      ctx.fillRect(left + width - 14, top + 7, 2, legHeight);
-      ctx.fillStyle = '#493022';
-      ctx.fillRect(left, top, width, 9);
-      ctx.fillStyle = '#957044';
-      ctx.fillRect(left, top, width, 2);
-      ctx.fillStyle = '#21151b';
-      ctx.fillRect(left + 4, top + 8, width - 8, 2);
+      if (styleClean === 'music_box') {
+        const top = dy + Math.round(282 * scaleY);
+        const legHeight = Math.max(0, this.floorY - top);
+        const legW = Math.max(7, Math.round(11 * scale));
+        const leg1X = dx + Math.round(39 * scale);
+        const leg2X = dx + Math.round(151 * scale);
+
+        for (const legX of [leg1X, leg2X]) {
+          // Bloco superior de fixação sob a gaveta
+          ctx.fillStyle = '#3a1f14';
+          ctx.fillRect(legX, top, legW, 10);
+          ctx.fillStyle = '#613821';
+          ctx.fillRect(legX + 1, top, 2, 10);
+
+          // Haste torneada de madeira nobre
+          const shaftW = legW - 2;
+          const shaftX = legX + 1;
+          ctx.fillStyle = '#2b150c';
+          ctx.fillRect(shaftX, top + 10, shaftW, legHeight - 20);
+          ctx.fillStyle = '#542d18';
+          ctx.fillRect(shaftX + 1, top + 10, 2, legHeight - 20);
+          ctx.fillStyle = '#7a4225';
+          ctx.fillRect(shaftX + shaftW - 2, top + 10, 1, legHeight - 20);
+
+          // Anéis ornamentais torneados
+          for (const ringY of [top + 24, top + 60, top + 98]) {
+            if (ringY < this.floorY - 20) {
+              ctx.fillStyle = '#7a4225';
+              ctx.fillRect(shaftX - 1, ringY, shaftW + 2, 4);
+              ctx.fillStyle = '#a66138';
+              ctx.fillRect(shaftX - 1, ringY, shaftW + 2, 1);
+              ctx.fillStyle = '#1e0c06';
+              ctx.fillRect(shaftX - 1, ringY + 3, shaftW + 2, 1);
+            }
+          }
+
+          // Pata torneada apoiada no chão
+          ctx.fillStyle = '#422213';
+          ctx.fillRect(legX - 1, this.floorY - 10, legW + 2, 10);
+          ctx.fillStyle = '#7a4225';
+          ctx.fillRect(legX - 1, this.floorY - 10, legW + 2, 2);
+          ctx.fillStyle = '#1a0b06';
+          ctx.fillRect(legX - 1, this.floorY - 2, legW + 2, 2);
+        }
+
+        // Travessa / prateleira inferior de madeira conectando as pernas
+        const shelfY = this.floorY - 30;
+        ctx.fillStyle = '#3a1f14';
+        ctx.fillRect(leg1X + legW, shelfY, leg2X - (leg1X + legW), 5);
+        ctx.fillStyle = '#6e3c23';
+        ctx.fillRect(leg1X + legW, shelfY, leg2X - (leg1X + legW), 1);
+        ctx.fillStyle = '#1e0c06';
+        ctx.fillRect(leg1X + legW, shelfY + 4, leg2X - (leg1X + legW), 1);
+
+        // Sombra sutil de contato no piso
+        ctx.fillStyle = 'rgba(15, 9, 22, 0.4)';
+        ctx.fillRect(leg1X - 3, this.floorY, legW + 6, 3);
+        ctx.fillRect(leg2X - 3, this.floorY, legW + 6, 3);
+      } else {
+        const left = dx + 4, width = dw - 8, top = dy + Math.round((s.bottom ?? spriteH) * scaleY) - 2;
+        const legHeight = Math.max(0, this.floorY - top - 8);
+        ctx.fillStyle = '#291b20';
+        ctx.fillRect(left + 8, top + 7, 7, legHeight);
+        ctx.fillRect(left + width - 15, top + 7, 7, legHeight);
+        ctx.fillStyle = '#61402d';
+        ctx.fillRect(left + 9, top + 7, 2, legHeight);
+        ctx.fillRect(left + width - 14, top + 7, 2, legHeight);
+        ctx.fillStyle = '#493022';
+        ctx.fillRect(left, top, width, 9);
+        ctx.fillStyle = '#957044';
+        ctx.fillRect(left, top, width, 2);
+        ctx.fillStyle = '#21151b';
+        ctx.fillRect(left + 4, top + 8, width - 8, 2);
+      }
     }
 
     if (s.support === 'house') {
@@ -150,7 +210,7 @@ export class PlatformRenderer {
     }
 
     // Suporte sutil de sombra/madeira até o piso para plataformas altas
-    if (dy + dh < this.floorY && ['stepped_dresser', 'train_trestle'].includes(styleClean) && s.support !== 'stand') {
+    if (dy + dh < this.floorY && ['train_trestle'].includes(styleClean) && s.support !== 'stand') {
       ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
       ctx.fillRect(sx + 8, dy + dh - 4, p.w - 16, this.floorY - (dy + dh - 4));
     }

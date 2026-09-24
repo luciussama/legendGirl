@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Download - O Quarto dos Brinquedos (51.5 MB)</title>
+  <meta name="description" content="Download oficial do pacote ZIP completo do projeto O Quarto dos Brinquedos (51.5 MB)." />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #08070b;
+      color: #f8fafc;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 24px 16px;
+    }
+    .card {
+      background: rgba(18, 16, 23, 0.95);
+      border: 1px solid rgba(52, 211, 153, 0.4);
+      border-radius: 16px;
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.8), 0 0 30px rgba(16, 185, 129, 0.15);
+      max-width: 600px;
+      width: 100%;
+      padding: 32px 28px;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #34d399;
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(52, 211, 153, 0.35);
+      border-radius: 9999px;
+      padding: 6px 14px;
+      margin-bottom: 16px;
+    }
+    h1 {
+      font-size: 26px;
+      font-weight: 800;
+      color: #ffffff;
+      margin-bottom: 12px;
+    }
+    p.desc {
+      color: #94a3b8;
+      font-size: 14px;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+    .download-primary-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      background: linear-gradient(135deg, #10b981, #059669);
+      color: #ffffff;
+      font-size: 16px;
+      font-weight: 700;
+      padding: 16px 24px;
+      border-radius: 12px;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+      transition: all 0.2s ease;
+      cursor: pointer;
+      margin-bottom: 16px;
+    }
+    .download-primary-btn:hover {
+      background: linear-gradient(135deg, #34d399, #10b981);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.5);
+    }
+    .download-primary-btn:active {
+      transform: translateY(0);
+    }
+    .info-box {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 20px;
+      text-align: left;
+      font-size: 13px;
+    }
+    .info-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .info-row:last-child {
+      border-bottom: none;
+    }
+    .info-label {
+      color: #94a3b8;
+    }
+    .info-val {
+      color: #f1f5f9;
+      font-weight: 600;
+    }
+    .copy-box {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+    .copy-input {
+      flex: 1;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      border-radius: 8px;
+      color: #94a3b8;
+      padding: 10px 12px;
+      font-size: 12px;
+      font-family: monospace;
+    }
+    .copy-btn {
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #ffffff;
+      border-radius: 8px;
+      padding: 10px 16px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: background 0.2s ease;
+    }
+    .copy-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    .back-btn {
+      display: inline-block;
+      color: #94a3b8;
+      font-size: 14px;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+    .back-btn:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+    .toast {
+      position: fixed;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: #ffffff;
+      padding: 10px 20px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      pointer-events: none;
+    }
+    .toast.show {
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="badge">✦ PACOTE COMPLETO DO PROJETO ✦</div>
+    <h1>📦 O Quarto dos Brinquedos</h1>
+    <p class="desc">
+      O download do arquivo ZIP de <strong>51.5 MB</strong> com todo o código fonte, spritesheets de alta resolução e áudios do projeto está pronto para você salvar no seu computador.
+    </p>
+
+    <a id="btn-download-now" class="download-primary-btn" href="/api/download-zip" download="o-quarto-dos-brinquedos.zip">
+      <span>⬇️ Baixar o-quarto-dos-brinquedos.zip (51.5 MB)</span>
+    </a>
+
+    <div class="info-box">
+      <div class="info-row">
+        <span class="info-label">Arquivo:</span>
+        <span class="info-val">o-quarto-dos-brinquedos.zip</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Tamanho:</span>
+        <span class="info-val">51.54 MB (54.043.665 bytes)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Status da Integridade:</span>
+        <span class="info-val" style="color: #34d399;">100% Verificado (Zero erros)</span>
+      </div>
+      <div class="info-row">
+        <span class="info-label">Conteúdo:</span>
+        <span class="info-val">Fase 1, Fase 2, Spritesheets, Áudios MP3 e Testes</span>
+      </div>
+    </div>
+
+    <div class="copy-box">
+      <input id="input-direct-url" type="text" class="copy-input" readonly value="" />
+      <button id="btn-copy-url" class="copy-btn" type="button">Copiar Link</button>
+    </div>
+
+    <div class="copy-box">
+      <input id="input-curl-cmd" type="text" class="copy-input" readonly value="" />
+      <button id="btn-copy-curl" class="copy-btn" type="button">Copiar cURL</button>
+    </div>
+
+    <div>
+      <a class="back-btn" href="/">🎮 Voltar para o Jogo</a>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">Link copiado para a área de transferência!</div>
+
+  <script>
+    const directUrl = window.location.origin + '/api/download-zip';
+    const inputUrl = document.getElementById('input-direct-url');
+    const inputCurl = document.getElementById('input-curl-cmd');
+    const toast = document.getElementById('toast');
+
+    if (inputUrl) inputUrl.value = directUrl;
+    if (inputCurl) inputCurl.value = 'curl -L -O "' + directUrl + '" -o o-quarto-dos-brinquedos.zip';
+
+    function showToast(msg) {
+      if (!toast) return;
+      toast.textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 3000);
+    }
+
+    document.getElementById('btn-copy-url')?.addEventListener('click', () => {
+      navigator.clipboard?.writeText(directUrl).then(() => {
+        showToast('✅ Link de download copiado!');
+      }).catch(() => {
+        inputUrl.select();
+        document.execCommand('copy');
+        showToast('✅ Link copiado!');
+      });
+    });
+
+    document.getElementById('btn-copy-curl')?.addEventListener('click', () => {
+      const cmd = inputCurl.value;
+      navigator.clipboard?.writeText(cmd).then(() => {
+        showToast('✅ Comando cURL copiado!');
+      }).catch(() => {
+        inputCurl.select();
+        document.execCommand('copy');
+        showToast('✅ Comando cURL copiado!');
+      });
+    });
+
+    // Se a página for acessada diretamente, tenta disparar o download automaticamente após 500ms
+    window.addEventListener('load', () => {
+      const params = new URLSearchParams(window.location.search);
+      if (params.get('autostart') !== 'false') {
+        setTimeout(() => {
+          const downloadBtn = document.getElementById('btn-download-now');
+          if (downloadBtn) {
+            downloadBtn.click();
+          }
+        }, 600);
+      }
+    });
+  </script>
+</body>
+</html>

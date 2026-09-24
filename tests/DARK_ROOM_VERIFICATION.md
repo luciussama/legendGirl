@@ -226,3 +226,32 @@ confirmou 105 pixels opacos no tampo. Foram inspecionadas as capturas atualizada
 `12-scene.png` e `12-support.png`, com a menina nas duas bordas e no centro.
 Os verificadores gerais passaram: 666 checks de hitbox/render, 66 travessias,
 5.280 contatos dos sapatos e 293 checks da bateria anterior.
+
+
+## Refinamento solicitado — Caixa de Música da Bailarina (8)
+
+Eliminação do contorno branco anômalo na figura da bailarina e refinamento visual
+completo da mesa de apoio, preservando rigorosamente a hitbox física (x=1485,
+y=267, w=90, h=205) e as proporções do móvel sem estilização nova:
+
+1. **Contorno branco da bailarina eliminado**:
+   - Remoção de 14.655 pixels de papel sólido retidos dentro da redoma e de
+     halos perimetrais causados por anti-aliasing contra fundo claro.
+   - A redoma de vidro agora apresenta acabamento translúcido cristalino com
+     arcos de reflexo especular suaves, revelando a bailarina de porcelana,
+     seu tutu rosa e seu pedestal com nitidez sobre o fundo escuro do quarto.
+2. **Desenho da mesa refinado e integrado**:
+   - Remoção de artefato espúrio do lado direito da folha original (x >= 196),
+     restaurando a simetria perfeita da caixa de música e do móvel.
+   - Mesa de cabeceira em mogno clássico com tampo chanfrado polido, gaveta
+     entalhada com puxador em latão antigo e duas pernas torneadas clássicas
+     alinhadas à geometria do móvel, com anéis ornamentais, travessa inferior
+     e sapatas firmemente assentadas no chão (floorY = 470).
+   - Vão livre de 62 px preservado até a plataforma adjacente do castelo de blocos.
+3. **Física e hitbox**:
+   - Hitbox física (standRegion: 1485x267, w=90, h=205) inalterada.
+   - 100% de aprovação nos testes automatizados: 666 checks de hitbox/render,
+     66 travessias físicas de saltos e 5.280 contatos dos sapatos.
+   - Evidências salvas em `tmp/dark-room/reviewed/08-*`: painel consolidado 2x2,
+     cenário geral, início/meio/fim, close-up de apoio e visualização de hitbox.
+

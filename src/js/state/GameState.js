@@ -293,15 +293,28 @@ export class GameState {
     const stats = getEscapeStats(0);
     this.baby.isEscaping = true;
     this.baby.longJumpUnlocked = true;
-    this.baby.vx = stats.runVx;
+    // Efeito de gameplay escondido para a segunda parte:
+    // Posiciona no topo estreito do castelo e aguarda a pessoa apertar para o pulo
+    const castle = platforms[9];
+    const castleCenterX = castle.standRegion ? castle.standRegion.x + castle.standRegion.w / 2 : castle.x + castle.w / 2;
+    this.baby.x = castleCenterX - this.baby.w / 2;
+    this.baby.y = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y) - this.baby.h;
+    this.baby.vx = 0;
+    this.baby.vy = 0;
+    this.baby.onGround = true;
+    this.baby.controlsLocked = false;
+    this.baby.isCrouching = false;
+    this.baby.respawnLandingPending = false;
+    this.baby.currentPlatformIndex = 9;
     this.baby.jumpPower = stats.jumpPower;
-    this.currentScrollSpeed = stats.scrollSpeed;
-    this.targetScrollSpeed = stats.scrollSpeed;
+    this.currentScrollSpeed = 0;
+    this.targetScrollSpeed = 0;
+    this.lastJumpTime = performance.now() + 240;
     if (audio) audio.playEscapePowerUp();
-    this.escapeBannerTimer = 220;
+    this.escapeBannerTimer = 180;
     this.escapeBannerText = '⚡ MODO FUGA ATIVADO! PULO PROGRESSIVO DESBLOQUEADO!';
     if (this.uiFeedback) {
-      this.uiFeedback.innerText = '⚡ MODO FUGA! A cada plataforma o seu pulo e a velocidade aumentam!';
+      this.uiFeedback.innerText = '⚡ MODO FUGA! Toque na tela para saltar no trem!';
       this.uiFeedback.style.color = '#fef08a';
     }
     this.spawnFairySparkles(this.baby.x + this.baby.w / 2, this.baby.y + this.baby.h / 2, 30);
@@ -435,7 +448,9 @@ export class GameState {
       const castle = platforms[9];
       castle.isLanded = true;
       castle.lightAlpha = 1.0;
-      this.resetBabyPhysicsBody(castle.x + 35, castle.y - this.baby.h, 1);
+      const castleCenterX = castle.standRegion ? castle.standRegion.x + castle.standRegion.w / 2 : castle.x + castle.w / 2;
+      const castleY = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y);
+      this.resetBabyPhysicsBody(castleCenterX - this.baby.w / 2, castleY - this.baby.h, 1);
       this.escapeLevel = 0;
       const stats = getEscapeStats(0);
       this.baby.jumpPower = stats.jumpPower;
@@ -443,8 +458,12 @@ export class GameState {
       this.baby.longJumpUnlocked = true;
       this.baby.isEscaping = true;
       this.isEscapeMode = true;
-      this.currentScrollSpeed = stats.scrollSpeed;
-      this.targetScrollSpeed = stats.scrollSpeed;
+      this.baby.vx = 0;
+      this.baby.vy = 0;
+      this.currentScrollSpeed = 0;
+      this.targetScrollSpeed = 0;
+      this.escapeBannerTimer = 0;
+      this.escapeBannerText = '';
       if (shouldPlayFailSound && audio) {
         audio.playFallFailSound();
       }

@@ -1,0 +1,33 @@
+{
+  "plataforma": 8,
+  "estilo": "music_box",
+  "label": "Caixa de Música da Bailarina",
+  "suporte": {
+    "x": 1485,
+    "w": 90,
+    "y": 267
+  },
+  "posicoes": {
+    "inicio": {
+      "x": 1485,
+      "y": 223
+    },
+    "meio": {
+      "x": 1511,
+      "y": 223
+    },
+    "fim": {
+      "x": 1537,
+      "y": 223
+    }
+  },
+  "melhorias": [
+    "Eliminação total do contorno branco anômalo (14.655px de fundo de papel sólido retidos dentro da redoma e halos perimetrais removidos)",
+    "Redoma de vidro translúcida cristalina com brilhos especulares suaves em vez de massa branca opaca",
+    "Remoção de artefato espúrio lateral direito da folha original (x >= 196), restaurando a simetria perfeita da caixa de música",
+    "Mesa de cabeceira refinada com tampo de mogno chanfrado, gaveta entalhada e puxador em latão antigo",
+    "Pernas torneadas clássicas com anéis decorativos e sapatas que tocam o chão com firmeza (floorY = 470)",
+    "Vão livre de 62px garantido entre a mesa da bailarina e o castelo de blocos subsequente",
+    "Hitbox física (standRegion: 1485x267 w=90 h=205) e proporções 100% preservadas e verificadas"
+  ]
+}

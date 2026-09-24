@@ -406,6 +406,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       if (now - lastDialogueAdvanceTime < 320) return;
       lastDialogueAdvanceTime = now;
       advanceCutscene();
+      lastJumpTime = now + 240;
       return;
     }
 
@@ -451,15 +452,36 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 6 + currentLvl);
       const burstCount = 6 + currentLvl * 2;
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
-    } else if (baby.longJumpUnlocked) {
+    } else if (baby.longJumpUnlocked || (typeof isEscapeMode !== 'undefined' && isEscapeMode)) {
       const currentLvl = Math.max(0, Math.min(11, escapeLevel || 0));
       const stats = getEscapeStats(currentLvl);
       baby.vy = stats.jumpPower;
       baby.vx = stats.airVx; // Impulso horizontal dinâmico proporcional ao nível
+      // Efeito de gameplay escondido para o início da segunda parte:
       // O apoio estreito do castelo deixa um vão de 196 px até o trem.
-      // Impulso exclusivo desta saída: mantém arco, hitboxes e níveis seguintes.
-      if (baby.currentPlatformIndex === 9 && currentLvl === 0) {
-        baby.vx = 3.6;
+      // Primeiro pulo 100% calibrado para pousar com perfeição no centro da pista do trem (plataforma 10)
+      if (baby.currentPlatformIndex === 9) {
+        const nextP = platforms[10];
+        const nextCenterX = nextP.standRegion ? nextP.standRegion.x + nextP.standRegion.w / 2 : nextP.x + nextP.w / 2;
+        const targetX = nextCenterX - baby.w / 2;
+        const targetY = (nextP.surfaceTopY !== undefined)
+          ? nextP.surfaceTopY
+          : ((nextP.standRegion && nextP.standRegion.y !== undefined) ? nextP.standRegion.y : nextP.y);
+        const deltaY = (targetY - baby.h) - baby.y;
+        const grav = baby.gravity || 0.28;
+        const disc = Math.max(0, baby.vy * baby.vy + 2 * grav * deltaY);
+        const flightTime = (-baby.vy + Math.sqrt(disc)) / grav;
+        if (flightTime > 0) {
+          baby.vx = (targetX - baby.x) / flightTime;
+        } else {
+          baby.vx = 5.09;
+        }
+        if (typeof targetScrollSpeed !== 'undefined') {
+          targetScrollSpeed = stats.scrollSpeed;
+        }
+        if (typeof currentScrollSpeed !== 'undefined') {
+          currentScrollSpeed = stats.scrollSpeed;
+        }
       }
       audio.playLongJumpSound(currentLvl / 11);
       fairy.vy -= 2.8;
@@ -471,16 +493,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
     } else {
       baby.vy = baby.jumpPower;
-      const nextIdx = baby.currentPlatformIndex + 1;
-      if (nextIdx < platforms.length) {
-        const nextP = platforms[nextIdx];
-        const nextX = nextP.standRegion ? nextP.standRegion.x + nextP.standRegion.w / 2 : nextP.x + nextP.w / 2;
-        const currentX = baby.x + baby.w / 2;
-        const dist = nextX - currentX;
-        if (dist > 0) {
-          baby.vx = Math.max(baby.baseVx, Math.min(2.8, dist / 46));
-        }
-      }
+      baby.vx = baby.baseVx;
       audio.playJumpSound();
       fairy.vy -= 2.2;
       fairy.spinAnim = 1.0;
@@ -695,8 +708,15 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
           const stats = getPhase3Stats(0);
           baby.vx = stats.runVx;
         } else if (isEscapeMode) {
-          const stats = getEscapeStats(escapeLevel);
-          baby.vx = stats.runVx || 2.4;
+          if (baby.currentPlatformIndex === 9) {
+            // Efeito escondido: no castelo, aguarda o jogador apertar para dar o pulo
+            baby.vx = 0;
+            currentScrollSpeed = 0;
+            targetScrollSpeed = 0;
+          } else {
+            const stats = getEscapeStats(escapeLevel);
+            baby.vx = stats.runVx || 2.4;
+          }
         } else {
           baby.vx = baby.baseVx;
         }
@@ -1036,9 +1056,21 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     targetCameraZoom = 1.0;
     cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
 
-    // Física da menina
+    // Física da menina: na plataforma 9 (castelinho pequeno), aguarda pausada a interação do jogador sem andar sozinha
+    if (isEscapeMode && baby.currentPlatformIndex === 9 && baby.onGround) {
+      const castle = platforms[9];
+      const castleCenterX = castle.standRegion ? castle.standRegion.x + castle.standRegion.w / 2 : castle.x + castle.w / 2;
+      const castleTopY = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y);
+      baby.x = castleCenterX - baby.w / 2;
+      baby.y = castleTopY - baby.h;
+      baby.vx = 0;
+      baby.vy = -baby.gravity;
+      baby.animTime = 0;
+      currentScrollSpeed = 0;
+      targetScrollSpeed = 0;
+    }
     baby.x += baby.vx * dt;
-    baby.animTime += 0.15 * dt;
+    baby.animTime += (baby.vx !== 0 ? 0.15 : 0) * dt;
     baby.vy += baby.gravity * dt;
     baby.y += baby.vy * dt;
 
@@ -1159,6 +1191,15 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         break;
       }
     }
+    // Garantia de 100% de acerto no primeiro salto do castelo para a pista do trem (plataforma 10)
+    const isEscapingState = (typeof isEscapeMode !== 'undefined' ? isEscapeMode : Boolean(baby.isEscaping || baby.longJumpUnlocked));
+    if (!isPhase3 && isEscapingState && baby.currentPlatformIndex === 9 && wasInAir && baby.vy >= 0) {
+      const p10 = platforms[10];
+      const p10Y = (p10.surfaceTopY !== undefined) ? p10.surfaceTopY : p10.y;
+      if (baby.x + baby.w >= p10.x && baby.x <= p10.x + p10.w + 20 && baby.y + baby.h >= p10Y - 4 && baby.y + baby.h <= p10Y + 28) {
+        landedIdx = 10;
+      }
+    }
 
     if (landedIdx !== -1) {
       const landedPlat = activePlatforms[landedIdx];
@@ -1219,28 +1260,39 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       } else if (baby.isEscaping) {
         // Restabelece a velocidade horizontal ao pousar e atualiza atributos progressivos
         if (landedIdx >= 9) {
-          const newLevel = Math.min(11, Math.max(0, landedIdx - 9));
-          if (newLevel > escapeLevel) {
-            escapeLevel = newLevel;
-            const stats = getEscapeStats(escapeLevel);
-            targetScrollSpeed = stats.scrollSpeed;
-            baby.vx = stats.runVx;
-            audio.playLevelUpChime(escapeLevel);
-            spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 14 + escapeLevel * 2);
-
-            if (escapeLevel === 11) {
-              uiFeedback.innerText = '⚡ PULO MÁXIMO ATINGIDO! Salte no limite para alcançar o Portal!';
-              uiFeedback.style.color = '#fde047';
-              escapeBannerTimer = 160;
-              escapeBannerText = '⚡ PULO MÁXIMO (NÍVEL 12/12): O GRANDE SALTO!';
-            } else {
-              uiFeedback.innerText = `⚡ Pulo Evoluído (Nível ${escapeLevel + 1}/12): Pulo mais alto e veloz!`;
-              uiFeedback.style.color = '#fef08a';
-            }
+          if (landedIdx === 9) {
+            // Efeito escondido na plataforma 9 (castelo estreito):
+            // A personagem NÃO deve andar sozinha de forma alguma.
+            // Fica pausada (vx = 0, scroll = 0) aguardando a interação do jogador!
+            baby.vx = 0;
+            baby.vy = 0;
+            baby.animTime = 0;
+            currentScrollSpeed = 0;
+            targetScrollSpeed = 0;
           } else {
-            const stats = getEscapeStats(escapeLevel);
-            baby.vx = stats.runVx;
-            targetScrollSpeed = stats.scrollSpeed;
+            const newLevel = Math.min(11, Math.max(0, landedIdx - 9));
+            if (newLevel > escapeLevel) {
+              escapeLevel = newLevel;
+              const stats = getEscapeStats(escapeLevel);
+              targetScrollSpeed = stats.scrollSpeed;
+              baby.vx = stats.runVx;
+              audio.playLevelUpChime(escapeLevel);
+              spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h / 2, 14 + escapeLevel * 2);
+
+              if (escapeLevel === 11) {
+                uiFeedback.innerText = '⚡ PULO MÁXIMO ATINGIDO! Salte no limite para alcançar o Portal!';
+                uiFeedback.style.color = '#fde047';
+                escapeBannerTimer = 160;
+                escapeBannerText = '⚡ PULO MÁXIMO (NÍVEL 12/12): O GRANDE SALTO!';
+              } else {
+                uiFeedback.innerText = `⚡ Pulo Evoluído (Nível ${escapeLevel + 1}/12): Pulo mais alto e veloz!`;
+                uiFeedback.style.color = '#fef08a';
+              }
+            } else {
+              const stats = getEscapeStats(escapeLevel);
+              baby.vx = stats.runVx;
+              targetScrollSpeed = stats.scrollSpeed;
+            }
           }
         }
       }
@@ -1318,6 +1370,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         startPlotTwistCutscene();
         return;
       }
+    }
+
+    // Contagem regressiva suave do banner de fuga / subida de nível
+    if (escapeBannerTimer > 0) {
+      escapeBannerTimer--;
     }
 
     // Movimento de tela e rastreamento de câmera via CameraController
