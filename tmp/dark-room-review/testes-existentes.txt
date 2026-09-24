@@ -1,0 +1,95 @@
+┌─────────┬──────────────────────────────────────────┬────────┬──────────┐
+│ (index) │ target                                   │ waitMs │ windowMs │
+├─────────┼──────────────────────────────────────────┼────────┼──────────┤
+│ 0       │ 'Cabeça do Urso de Pelúcia'              │ 717    │ 1167     │
+│ 1       │ 'Pilha de Livros Ilustrados'             │ 500    │ 850      │
+│ 2       │ 'Penteadeira Encantada'                  │ 550    │ 783      │
+│ 3       │ 'Cômoda Pequena de Madeira'              │ 750    │ 800      │
+│ 4       │ 'Pilha de Blocos ABC'                    │ 1000   │ 433      │
+│ 5       │ 'Tamborito de Marcha'                    │ 533    │ 317      │
+│ 6       │ 'Almofadão de Veludo'                    │ 783    │ 367      │
+│ 7       │ 'Gavetas da Cômoda'                      │ 467    │ 350      │
+│ 8       │ 'Caixa de Música da Bailarina'           │ 900    │ 867      │
+│ 9       │ 'Castelinho de Blocos (Cena Cinemática)' │ 583    │ 533      │
+└─────────┴──────────────────────────────────────────┴────────┴──────────┘
+PASS: 9 continuous approaches, castle pause and first escape jump.
+┌─────────┬─────┬─────────────────────────┬──────────┬───────┬──────┐
+│ (index) │ dt  │ target                  │ launches │ first │ last │
+├─────────┼─────┼─────────────────────────┼──────────┼───────┼──────┤
+│ 0       │ 0.5 │ 'giant_bear'            │ 99       │ 121   │ 219  │
+│ 1       │ 0.5 │ 'open_books'            │ 72       │ 268   │ 339  │
+│ 2       │ 0.5 │ 'vanity_table'          │ 68       │ 422   │ 489  │
+│ 3       │ 0.5 │ 'small_dresser'         │ 69       │ 586   │ 654  │
+│ 4       │ 0.5 │ 'messy_blocks'          │ 38       │ 772   │ 809  │
+│ 5       │ 0.5 │ 'toy_drum'              │ 28       │ 903   │ 930  │
+│ 6       │ 0.5 │ 'satin_cushion'         │ 33       │ 1068  │ 1100 │
+│ 7       │ 0.5 │ 'stepped_dresser'       │ 31       │ 1216  │ 1246 │
+│ 8       │ 0.5 │ 'music_box'             │ 74       │ 1376  │ 1449 │
+│ 9       │ 0.5 │ 'block_castle'          │ 45       │ 1530  │ 1574 │
+│ 10      │ 0.5 │ 'train_trestle'         │ 28       │ 1636  │ 1663 │
+│ 11      │ 0.5 │ 'wall_shelf'            │ 73       │ 1902  │ 1974 │
+│ 12      │ 0.5 │ 'mushroom_lamp'         │ 67       │ 2098  │ 2164 │
+│ 13      │ 0.5 │ 'dollhouse_roof'        │ 62       │ 2300  │ 2361 │
+│ 14      │ 0.5 │ 'spinning_globe'        │ 57       │ 2510  │ 2566 │
+│ 15      │ 0.5 │ 'kite_frame'            │ 51       │ 2731  │ 2781 │
+│ 16      │ 0.5 │ 'floating_books'        │ 46       │ 2961  │ 3006 │
+│ 17      │ 0.5 │ 'chandelier_crystals'   │ 41       │ 3203  │ 3243 │
+│ 18      │ 0.5 │ 'curtain_rod'           │ 38       │ 3456  │ 3493 │
+│ 19      │ 0.5 │ 'cuckoo_clock'          │ 37       │ 3725  │ 3761 │
+│ 20      │ 0.5 │ 'wardrobe_ledge'        │ 35       │ 4020  │ 4054 │
+│ 21      │ 0.5 │ 'grand_portal_pedestal' │ 31       │ 4341  │ 4371 │
+│ 22      │ 1   │ 'giant_bear'            │ 99       │ 121   │ 219  │
+│ 23      │ 1   │ 'open_books'            │ 72       │ 268   │ 339  │
+│ 24      │ 1   │ 'vanity_table'          │ 67       │ 423   │ 489  │
+│ 25      │ 1   │ 'small_dresser'         │ 67       │ 588   │ 654  │
+│ 26      │ 1   │ 'messy_blocks'          │ 36       │ 774   │ 809  │
+│ 27      │ 1   │ 'toy_drum'              │ 27       │ 904   │ 930  │
+│ 28      │ 1   │ 'satin_cushion'         │ 31       │ 1070  │ 1100 │
+│ 29      │ 1   │ 'stepped_dresser'       │ 29       │ 1218  │ 1246 │
+│ 30      │ 1   │ 'music_box'             │ 72       │ 1378  │ 1449 │
+│ 31      │ 1   │ 'block_castle'          │ 45       │ 1530  │ 1574 │
+│ 32      │ 1   │ 'train_trestle'         │ 28       │ 1636  │ 1663 │
+│ 33      │ 1   │ 'wall_shelf'            │ 71       │ 1904  │ 1974 │
+│ 34      │ 1   │ 'mushroom_lamp'         │ 65       │ 2100  │ 2164 │
+│ 35      │ 1   │ 'dollhouse_roof'        │ 60       │ 2302  │ 2361 │
+│ 36      │ 1   │ 'spinning_globe'        │ 54       │ 2513  │ 2566 │
+│ 37      │ 1   │ 'kite_frame'            │ 50       │ 2732  │ 2781 │
+│ 38      │ 1   │ 'floating_books'        │ 45       │ 2962  │ 3006 │
+│ 39      │ 1   │ 'chandelier_crystals'   │ 38       │ 3206  │ 3243 │
+│ 40      │ 1   │ 'curtain_rod'           │ 37       │ 3457  │ 3493 │
+│ 41      │ 1   │ 'cuckoo_clock'          │ 33       │ 3729  │ 3761 │
+│ 42      │ 1   │ 'wardrobe_ledge'        │ 31       │ 4024  │ 4054 │
+│ 43      │ 1   │ 'grand_portal_pedestal' │ 29       │ 4343  │ 4371 │
+│ 44      │ 1.2 │ 'giant_bear'            │ 97       │ 123   │ 219  │
+│ 45      │ 1.2 │ 'open_books'            │ 71       │ 269   │ 339  │
+│ 46      │ 1.2 │ 'vanity_table'          │ 67       │ 423   │ 489  │
+│ 47      │ 1.2 │ 'small_dresser'         │ 67       │ 588   │ 654  │
+│ 48      │ 1.2 │ 'messy_blocks'          │ 36       │ 774   │ 809  │
+│ 49      │ 1.2 │ 'toy_drum'              │ 27       │ 904   │ 930  │
+│ 50      │ 1.2 │ 'satin_cushion'         │ 31       │ 1070  │ 1100 │
+│ 51      │ 1.2 │ 'stepped_dresser'       │ 29       │ 1218  │ 1246 │
+│ 52      │ 1.2 │ 'music_box'             │ 72       │ 1378  │ 1449 │
+│ 53      │ 1.2 │ 'block_castle'          │ 43       │ 1532  │ 1574 │
+│ 54      │ 1.2 │ 'train_trestle'         │ 28       │ 1636  │ 1663 │
+│ 55      │ 1.2 │ 'wall_shelf'            │ 70       │ 1905  │ 1974 │
+│ 56      │ 1.2 │ 'mushroom_lamp'         │ 65       │ 2100  │ 2164 │
+│ 57      │ 1.2 │ 'dollhouse_roof'        │ 60       │ 2302  │ 2361 │
+│ 58      │ 1.2 │ 'spinning_globe'        │ 53       │ 2514  │ 2566 │
+│ 59      │ 1.2 │ 'kite_frame'            │ 48       │ 2734  │ 2781 │
+│ 60      │ 1.2 │ 'floating_books'        │ 44       │ 2963  │ 3006 │
+│ 61      │ 1.2 │ 'chandelier_crystals'   │ 37       │ 3207  │ 3243 │
+│ 62      │ 1.2 │ 'curtain_rod'           │ 34       │ 3460  │ 3493 │
+│ 63      │ 1.2 │ 'cuckoo_clock'          │ 33       │ 3729  │ 3761 │
+│ 64      │ 1.2 │ 'wardrobe_ledge'        │ 30       │ 4025  │ 4054 │
+│ 65      │ 1.2 │ 'grand_portal_pedestal' │ 29       │ 4343  │ 4371 │
+└─────────┴─────┴─────────────────────────┴──────────┴───────┴──────┘
+PASS: 1150 hitbox/render checks; geometry/config baseline unchanged.
+PASS: 66 reachable transition/timestep combinations.
+PASS: 5280 rendered shoe contacts across 22 platforms, both facings and 120 animation frames.
+--- TESTE: Comportamento da Plataforma 9 (Pausa e Pulo 100% de Acerto) ---
+✓ PASSOU: 300 frames (5s) em repouso absoluto na plataforma 9 sem andar ou cair.
+Impulso de pulo calculado: vx=5.094, vy=-7.2, flightTime=52.52f
+✓ Aterrissou com sucesso na plataforma 10 no frame 50! x=1890.8, y=200
+--- TESTE: Checkpoint de Renascimento no Castelo (Plataforma 9) ---
+✓ PASSOU: Checkpoint de respawn na plataforma 9 mantém pausa absoluta aguardando pulo.
+TODOS OS TESTES PASSARAM COM SUCESSO!

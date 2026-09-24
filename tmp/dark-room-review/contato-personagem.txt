@@ -1,0 +1,1 @@
+PASS: 9120 rendered shoe contacts across 38 platforms, both facings and 120 animation frames.

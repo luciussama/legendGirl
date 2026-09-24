@@ -1,0 +1,45 @@
+<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Auditoria de plataformas</title><style>body{font:16px system-ui;margin:32px;background:#211b2d;color:#eee}a{color:#b7ddff}img{max-width:100%;height:auto}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #777}</style><h1>Auditoria de plataformas — somente documentação</h1><p>38 plataformas. Geometria: 17 válidas, 17 suspeitas, 4 inválidas. Alcance: 37 válidas, 1 suspeita. Nenhum parâmetro foi alterado.</p><p><a href="RELATORIO.md">Relatório detalhado</a> · <a href="transicoes.csv">Métricas CSV</a> · <a href="metricas-saltos.json">Dados de todos os lançamentos</a> · <a href="integridade-final.json">Verificação de integridade</a></p><table><tr><th>Fase / índice</th><th>Objeto</th><th>Visual</th><th>Salto</th><th>Evidência</th></tr>
+<tr><td>1 / 0</td><td>giant_bear</td><td>Válida</td><td>Válida</td><td>Contato central e faixa de apoio coerentes; laterais arredondadas e orelhas não são apoio adicional.</td></tr>
+<tr><td>1 / 1</td><td>open_books</td><td>Suspeita</td><td>Válida</td><td>Topo ilustrado irregular: apenas 24,5% das colunas têm pixel opaco a até 1 px do apoio. Em colunas extremas, a arte está até 26 px abaixo; 3 colunas não têm opacidade suficiente em ±32 px.</td></tr>
+<tr><td>1 / 2</td><td>vanity_table</td><td>Válida</td><td>Válida</td><td>Tampo acompanha o apoio. Espelho e objetos são decoração atravessável.</td></tr>
+<tr><td>1 / 3</td><td>small_dresser</td><td>Suspeita</td><td>Válida</td><td>Bordas do tampo chanfradas: regiões do apoio chegam a 10 px acima da arte; cobertura próxima de 81,7%.</td></tr>
+<tr><td>1 / 4</td><td>messy_blocks</td><td>Suspeita</td><td>Válida</td><td>Topo do bloco A oblíquo: apoio horizontal de 50 px, cobertura próxima de 58%; separação até 9 px em parte das colunas.</td></tr>
+<tr><td>1 / 5</td><td>toy_drum</td><td>Válida</td><td>Válida</td><td>Faixa do tambor coincide com apoio; baquetas elevadas são decoração.</td></tr>
+<tr><td>1 / 6</td><td>satin_cushion</td><td>Válida</td><td>Válida</td><td>Contato próximo do topo da almofada, dentro de 1 px em toda a faixa.</td></tr>
+<tr><td>1 / 7</td><td>stepped_dresser</td><td>Suspeita</td><td>Válida</td><td>Contato predominantemente contínuo (99,2%), mas 1 coluna chega a 10 px de separação. Arte do fundo do móvel cruza a altura física: opacidade não prova que seja tampo.</td></tr>
+<tr><td>1 / 8</td><td>music_box</td><td>Válida</td><td>Válida</td><td>Contato na caixa; bailarina e vidro são decoração.</td></tr>
+<tr><td>1 / 9</td><td>block_castle</td><td>Válida</td><td>Válida</td><td>Torre estreita de 28 px tem topo visual horizontal coincidente. Pausa e salto assistido documentados.</td></tr>
+<tr><td>2 / 10</td><td>train_trestle</td><td>Válida</td><td>Válida</td><td>Frente da mesa contínua; trem desenhado atrás, sem colisão própria.</td></tr>
+<tr><td>2 / 11</td><td>wall_shelf</td><td>Válida</td><td>Válida</td><td>Frente da prateleira contínua; relógio e globo ao fundo.</td></tr>
+<tr><td>2 / 12</td><td>mushroom_lamp</td><td>Válida</td><td>Válida</td><td>Borda da prateleira de madeira corresponde ao apoio; abajur atrás da personagem.</td></tr>
+<tr><td>2 / 13</td><td>dollhouse_roof</td><td>Válida</td><td>Válida</td><td>Travessa horizontal visível sobre o telhado sustenta a faixa física; telhado inclinado é decorativo.</td></tr>
+<tr><td>2 / 14</td><td>spinning_globe</td><td>Válida</td><td>Válida</td><td>Travessa da armação de metal corresponde à hitbox; não se caminha na esfera.</td></tr>
+<tr><td>2 / 15</td><td>kite_frame</td><td>Válida</td><td>Válida</td><td>Travessa de bambu corresponde à faixa física; corpo e cauda da pipa não são apoio.</td></tr>
+<tr><td>2 / 16</td><td>floating_books</td><td>Suspeita</td><td>Válida</td><td>Livro aberto inclinado/curvo: há pixels em toda a linha física, mas a personagem aparece dentro do desenho das páginas, não em um contorno superior horizontal. Evidência visual, offset de borda semântico não isolável por alfa.</td></tr>
+<tr><td>2 / 17</td><td>chandelier_crystals</td><td>Suspeita</td><td>Válida</td><td>Lustre não oferece superfície horizontal contínua: cobertura 68,8%, offsets próximos -3 a +6 px e uma coluna vazia em ±32 px.</td></tr>
+<tr><td>2 / 18</td><td>curtain_rod</td><td>Suspeita</td><td>Válida</td><td>Varão possui ornamentação curva: cobertura 77,6%, até 4 px de separação; uma coluna vazia em ±32 px.</td></tr>
+<tr><td>2 / 19</td><td>cuckoo_clock</td><td>Suspeita</td><td>Válida</td><td>Telhado pontudo do cuco cruza a linha horizontal: cobertura 69,3%, offsets próximos -9 a +11 px; topo e corpo são atravessados pela linha de pouso.</td></tr>
+<tr><td>2 / 20</td><td>wardrobe_ledge</td><td>Válida</td><td>Válida</td><td>Faixa do beiral visualmente coerente; variação raster até 1 px.</td></tr>
+<tr><td>2 / 21</td><td>grand_portal_pedestal</td><td>Inválida</td><td>Válida</td><td>Apoio y=148 atravessa o interior do arco/efeito do portal, acima do pedestal desenhado. Centro da personagem flutua dentro do arco. A cobertura alfa de 86,7% inclui brilho, não superfície sólida; 22 colunas vazias em ±32 px. Recorte também contém fragmentos de outro objeto no canto superior direito.</td></tr>
+<tr><td>3 / 0</td><td>toppled_blocks</td><td>Suspeita</td><td>Válida</td><td>Blocos têm topos em y, y−4 e y+2; colisão permanece em y. Afundamento local de 4 px no bloco central e flutuação de 2 px no direito.</td></tr>
+<tr><td>3 / 1</td><td>floppy_ragdoll</td><td>Suspeita</td><td>Válida</td><td>Corpo elíptico em y+12, raio vertical 10: centro do corpo ~2 px abaixo dos pés. Lã chega a y−8. Apoio cobre também regiões vazias laterais; cobertura 18,3%.</td></tr>
+<tr><td>3 / 2</td><td>spilled_crayons_box</td><td>Válida</td><td>Válida</td><td>Borda horizontal da caixa em y cobre a largura física.</td></tr>
+<tr><td>3 / 3</td><td>crooked_fairytales</td><td>Suspeita</td><td>Válida</td><td>Livro superior desenhado de x+3 a x+w−1; hitbox começa em x. Excedente físico de 3 px à esquerda e 1 px à direita; livros inferiores são deslocados.</td></tr>
+<tr><td>3 / 4</td><td>dented_drum</td><td>Válida</td><td>Válida</td><td>Aro horizontal em y cobre a largura; baquetas decorativas acima.</td></tr>
+<tr><td>3 / 5</td><td>slumped_bear</td><td>Suspeita</td><td>Válida</td><td>Corpo oval começa em y+1 no centro e desce nas bordas; só 55,1% do apoio fica junto à arte. Orelhas sobem até y−4 e não mudam o apoio.</td></tr>
+<tr><td>3 / 6</td><td>tilted_xylophone</td><td>Suspeita</td><td>Válida</td><td>Lâminas separadas por vãos de 2 px; base em y+8. Faixa física contínua inclui os vãos e margens sem lâmina.</td></tr>
+<tr><td>3 / 7</td><td>derailed_train</td><td>Inválida</td><td>Válida</td><td>Corpo do trem começa em y+2 e termina em x+w−14. Colisão em y e largura w: excedente vazio de 14 px à direita e flutuação de 2 px sobre o corpo. Chaminé isolada não sustenta o resto da faixa.</td></tr>
+<tr><td>3 / 8</td><td>wobbly_card_house</td><td>Inválida</td><td>Válida</td><td>Duas linhas de cartas encontram-se só no centro em y; extremidades ficam em y+14. Faixa física plana cobre espaço vazio acima das cartas (87,2% fora da vizinhança de 1 px). Balanço não acompanha a colisão.</td></tr>
+<tr><td>3 / 9</td><td>leaning_music_box</td><td>Inválida</td><td>Válida</td><td>Tampo da caixa desenhado em y+4, colisão em y. Personagem fica 4 px acima da caixa; pequena bailarina central é a única arte próxima do plano físico.</td></tr>
+<tr><td>3 / 10</td><td>loose_robot</td><td>Válida</td><td>Válida</td><td>Corpo retangular do robô em y acompanha o apoio. Antena é decoração elevada.</td></tr>
+<tr><td>3 / 11</td><td>spinning_top</td><td>Suspeita</td><td>Válida</td><td>Pião triangular tem vértice em y−6, laterais em y+5 e recuo de 4 px em cada lado. Apoio horizontal atravessa a forma; animação desloca o vértice em ±3 px.</td></tr>
+<tr><td>3 / 12</td><td>floating_spool</td><td>Válida</td><td>Válida</td><td>Topo retangular do carretel em y; fita é decoração sem apoio.</td></tr>
+<tr><td>3 / 13</td><td>unbalanced_mobile</td><td>Suspeita</td><td>Válida</td><td>Haste vai de y a y+3; hitbox permanece horizontal. Diferença geométrica chega a 3 px à direita, reduzida no raster pela espessura de 1,8 px.</td></tr>
+<tr><td>3 / 14</td><td>levitating_grimoire</td><td>Suspeita</td><td>Válida</td><td>Capa oscila verticalmente em ±3 px (sin(tick*0.2)*3), hitbox permanece em y. Aura translúcida interfere na opacidade: alfa 100% no plano não valida contato com a capa.</td></tr>
+<tr><td>3 / 15</td><td>true_portal_balcony</td><td>Suspeita</td><td>Suspeita</td><td>Terraço desenhado em x−10..x+w+10 e y−4; colisão x..x+w, y. Faixa visível não colide nos 10 px laterais e pés afundam 4 px no topo. Último salto também tem margem temporal crítica.</td></tr>
+</table>
+<h2>Grupo 0</h2><img src="visual-grupo-0.png" alt="Plataformas auditadas no grupo 0">
+<h2>Grupo 1</h2><img src="visual-grupo-1.png" alt="Plataformas auditadas no grupo 1">
+<h2>Grupo 2</h2><img src="visual-grupo-2.png" alt="Plataformas auditadas no grupo 2">
+<h2>Grupo 3</h2><img src="visual-grupo-3.png" alt="Plataformas auditadas no grupo 3">
+</html>
