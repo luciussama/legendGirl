@@ -146,4 +146,34 @@ window.review={game,platforms,results:[],
     game.state.baby.vx=0;window.DEBUG_COLLISIONS=debug;game.review.draw();}
 };
 document.body.dataset.ready='true';
+// Optional headless review entry point: exercise the actual update loop and
+// show contact close-ups without adding debug controls to the shipped game.
+if (new URLSearchParams(location.search).has('verify')) {
+  try {
+    for (const dt of [0.5, 1, 1.2]) {
+      for (let target=0; target<=21; target++) window.review.run(target,dt);
+      game.review.prepare(9,1631);
+      for (let frame=0; frame<300; frame++) {
+        game.review.step(dt);
+        const b=game.state.baby;
+        if (!b.onGround || b.x!==1631 || b.y!==192 || b.vx!==0)
+          throw Error(`Castle pause failed at dt=${dt}, frame=${frame}`);
+      }
+      game.review.jump();
+      for(let frame=0;frame<240 && !game.state.baby.onGround;frame++) game.review.step(dt);
+      if(game.state.baby.currentPlatformIndex!==10)throw Error('Castle jump missed train');
+    }
+    const gallery=document.createElement('div');
+    for (const index of [10,11,12]) {
+      const img=new Image();img.src='data:image/png;base64,'+window.review.detail(index);
+      img.style.width='960px';img.style.display='block';gallery.append(img);
+    }
+    document.querySelector('canvas').remove();document.body.prepend(gallery);
+    document.querySelector('#feedback').textContent='PASS: real updates, 66 jumps and 900 castle pause frames';
+    document.body.dataset.result='passed';
+  } catch(error) {
+    document.body.dataset.result='failed';
+    document.querySelector('#feedback').textContent=error.stack;
+  }
+}
 </script></html>

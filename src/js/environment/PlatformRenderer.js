@@ -26,10 +26,10 @@ export const PLATFORM_SURFACES = {
   stepped_dresser: { surfaceY: 46, surfaceX: 25, surfaceW: 250, origW: 304, origH: 484, floorFit: true },
   music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322, support: 'stand' },
   block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
-  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, bottom: 290, clipBottom: 290, support: 'stand', cap: 'wood' },
-  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, cap: 'wood', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
-  // The complete lamp sits behind the walkable table, aligned by its base.
-  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'foreground-table', cap: 'wood' },
+  train_trestle: { surfaceY: 205, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, clipBottom: 205, support: 'foreground-table' },
+  wall_shelf: { surfaceY: 205, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, clipBottom: 205, support: 'foreground-shelf', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
+  // The lamp stands behind a wooden shelf; its own front edge is walkable.
+  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'foreground-shelf' },
   dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: 'roof' },
   spinning_globe: { surfaceY: 0, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309, support: 'stand', frame: 'brass', cap: 'brass' },
   kite_frame: { surfaceY: 0, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322, cap: 'bamboo' },
@@ -228,6 +228,14 @@ export class PlatformRenderer {
       ctx.fillRect(sxSurface + platW - 3, platY + 5, 1, frameBottom - platY - 5);
     }
 
+    if (s.support === 'foreground-table' || s.support === 'foreground-shelf') {
+      ctx.fillStyle = '#b88953';
+      ctx.fillRect(sxSurface, platY - 9, platW, 9);
+      if (styleClean === 'mushroom_lamp') {
+        ctx.fillStyle = '#493023';ctx.fillRect(sxSurface + 2, platY - 11, platW - 4, 2);
+        ctx.fillStyle = '#d2a36b';ctx.fillRect(sxSurface + 2, platY - 8, platW - 4, 2);
+      }
+    }
     const clipSprite = s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
     if (clipSprite) {
       const clipTop = s.trimAboveSupport ? platY : dy;
@@ -258,6 +266,43 @@ export class PlatformRenderer {
       ctx.fillStyle = '#3b281f';ctx.fillRect(sxSurface + 10, platY + 24, platW - 20, 3);
       ctx.fillStyle = '#d5af6d';ctx.fillRect(sxSurface + platW / 2 - 4, platY + 16, 8, 3);
       ctx.fillStyle = '#67482e';ctx.fillRect(sxSurface + 14, this.floorY - 38, platW - 28, 6);
+    }
+    if (s.support === 'foreground-table' || s.support === 'foreground-shelf') {
+      // A frente do móvel começa exatamente na superfície caminhável. Os
+      // brinquedos ficam atrás, sem uma faixa atravessando sua ilustração.
+      const lampShelf = styleClean === 'mushroom_lamp';
+      ctx.fillStyle = '#b88953';ctx.fillRect(sxSurface, platY, platW, 6);
+      ctx.fillStyle = '#795035';ctx.fillRect(sxSurface, platY + 6, platW, 9);
+      ctx.fillStyle = '#493023';ctx.fillRect(sxSurface, platY + 15, platW, 3);
+      if (lampShelf) {
+        // Warm outlined wood, bevels and subtle grain match the room furniture.
+        ctx.fillStyle = '#e0b477';ctx.fillRect(sxSurface, platY, platW, 2);
+        ctx.fillStyle = '#4a2d20';
+        ctx.fillRect(sxSurface, platY + 2, 2, 13);
+        ctx.fillRect(sxSurface + platW - 2, platY + 2, 2, 13);
+        ctx.fillStyle = '#986a42';ctx.fillRect(sxSurface + 3, platY + 7, platW - 6, 2);
+        ctx.save();ctx.lineWidth = 0.8;ctx.strokeStyle = '#5b3828';
+        for (const [offset, width, y] of [[9, 29, 11], [46, 20, 12], [73, 23, 10]]) {
+          ctx.beginPath();ctx.moveTo(sxSurface + offset, platY + y);
+          ctx.lineTo(sxSurface + offset + width * 0.5, platY + y - 1);
+          ctx.lineTo(sxSurface + offset + width, platY + y);ctx.stroke();
+        }
+        ctx.restore();
+      }
+      if (s.support === 'foreground-shelf') {
+        for (const x of [sxSurface + 10, sxSurface + platW - 19]) {
+          const bracketY = platY + 18;
+          ctx.fillStyle = '#493023';ctx.fillRect(x, bracketY, 9, 26);
+          ctx.fillStyle = '#9b724b';ctx.fillRect(x + 2, bracketY, 3, 23);
+          if (lampShelf) {
+            ctx.save();ctx.lineWidth = 5;ctx.strokeStyle = '#493023';
+            ctx.beginPath();ctx.moveTo(x + 6, bracketY + 19);
+            ctx.lineTo(x + 16, bracketY + 1);ctx.stroke();
+            ctx.lineWidth = 2;ctx.strokeStyle = '#b88953';ctx.stroke();ctx.restore();
+            ctx.fillStyle = '#d4a361';ctx.fillRect(x + 3, bracketY + 3, 2, 2);
+          }
+        }
+      }
     }
     if (s.cap === 'bamboo') {
       // The enchanted kite carries a horizontal bamboo spar. Bridle lines

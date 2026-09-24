@@ -49,7 +49,9 @@ export function getEscapeStats(level) {
   return {
     levelIndex: lvl,
     jumpPower: -7.20 - t * 2.10,       // -7.20 a -9.30 px/frame (ápice vertical controlado)
-    airVx: 2.10 + t * 3.10,           // 2.10 a 5.20 px/frame
+    // Alcance fixo por nível, calibrado para janelas de saída cada vez menores.
+    airVx: [1.85, 2.176, 2.255, 2.354, 2.360, 2.627, 2.703,
+      2.886, 3.082, 3.288, 3.732, 4.080][lvl],
     runVx: 1.65 + t * 1.10,           // 1.65 a 2.75 px/frame
     scrollSpeed: 1.50 + t * 2.25,     // 1.50 a 3.75 px/frame
     pitchMult: 1.0 + t * 0.55,        // multiplicador de tom sonoro de 1.0x a 1.55x

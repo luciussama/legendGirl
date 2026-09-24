@@ -493,7 +493,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
     } else {
       baby.vy = baby.jumpPower;
-      baby.vx = baby.baseVx;
+      // Velocidade fixa por saída: o clique determina o alcance, sem mirar
+      // automaticamente o centro do próximo apoio. Só o castelo tem assistência.
+      baby.vx = baby.currentPlatformIndex === 4 ? 1.8
+        : baby.currentPlatformIndex === 5 ? 1.95
+        : baby.baseVx;
       audio.playJumpSound();
       fairy.vy -= 2.2;
       fairy.spinAnim = 1.0;
@@ -1064,7 +1068,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.x = castleCenterX - baby.w / 2;
       baby.y = castleTopY - baby.h;
       baby.vx = 0;
-      baby.vy = -baby.gravity;
+      // Cancela exatamente a gravidade deste frame, inclusive com dt variável.
+      baby.vy = -baby.gravity * dt;
       baby.animTime = 0;
       currentScrollSpeed = 0;
       targetScrollSpeed = 0;
@@ -1195,8 +1200,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     const isEscapingState = (typeof isEscapeMode !== 'undefined' ? isEscapeMode : Boolean(baby.isEscaping || baby.longJumpUnlocked));
     if (!isPhase3 && isEscapingState && baby.currentPlatformIndex === 9 && wasInAir && baby.vy >= 0) {
       const p10 = platforms[10];
-      const p10Y = (p10.surfaceTopY !== undefined) ? p10.surfaceTopY : p10.y;
-      if (baby.x + baby.w >= p10.x && baby.x <= p10.x + p10.w + 20 && baby.y + baby.h >= p10Y - 4 && baby.y + baby.h <= p10Y + 28) {
+      const support = p10.standRegion || p10;
+      const p10Y = p10.surfaceTopY ?? support.y ?? p10.y;
+      if (baby.y + baby.h >= p10Y) {
+        // Somente a saída do castelo tem pouso assistido. Mantém a hitbox real
+        // do trem e finaliza o arco no centro, mesmo com variação de frames.
+        baby.x = support.x + (support.w - baby.w) / 2;
         landedIdx = 10;
       }
     }

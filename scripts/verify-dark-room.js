@@ -50,6 +50,18 @@ jump(state.baby,platforms,getEscapeStats,getPhase3Stats);
 assert(Math.abs(state.baby.vx - 5.09) < 0.05, 'Jump from castle must have calibrated velocity to reach platform 10');
 assert.equal(state.baby.vy,getEscapeStats(0).jumpPower);
 checks++;
+// Assisted landing belongs only to the castle. All later launches keep the
+// exact progressive jump strength and horizontal speed from the level config.
+for (let index = 10; index <= 20; index++) {
+  const support = surface(platforms[index]);
+  const b = {...createBabyState(), x:support.x, y:support.y-44,
+    currentPlatformIndex:index, longJumpUnlocked:true, isEscaping:true};
+  jump(b,platforms,getEscapeStats,getPhase3Stats);
+  const stats = getEscapeStats(index-9);
+  assert.equal(b.vx,stats.airVx);
+  assert.equal(b.vy,stats.jumpPower);
+  checks += 2;
+}
 for(const guard of ['controlsLocked','respawnLandingPending','isCrouching']) {
   const b={...createBabyState(),[guard]:true};
   const before={...b};jump(b,platforms,getEscapeStats,getPhase3Stats);
@@ -86,6 +98,16 @@ for (const dt of [0.5, 1, 1.2]) {
 for(let target=0;target<platforms.length;target++) {
   const from=target===0?{x:60,w:160,y:FLOOR_Y}:surface(platforms[target-1]);
   const successful=[];
+  if (target !== 10) {
+    const early = {...createBabyState(), x:from.x, y:from.y-44,
+      currentPlatformIndex:target-1, longJumpUnlocked:target>=10};
+    const late = {...early, x:from.x+from.w-1};
+    jump(early,platforms,getEscapeStats,getPhase3Stats);
+    jump(late,platforms,getEscapeStats,getPhase3Stats);
+    assert.equal(early.vx,late.vx,`Target ${target}: launch position must not auto-aim`);
+    assert.equal(early.vy,late.vy);
+    checks += 2;
+  }
   for(let x=Math.ceil(from.x);x<from.x+from.w;x++) {
     const b={...createBabyState(),x,y:from.y-44,currentPlatformIndex:target-1,
       longJumpUnlocked:target>=10};
@@ -99,9 +121,87 @@ for(let target=0;target<platforms.length;target++) {
   }
   routes.push({dt,target:platforms[target].style,launches:successful.length,
     first:successful[0]??null,last:successful.at(-1)??null});
+  if (target !== 10) {
+    assert(successful.length >= 8,
+      `Target ${target}: timing window too narrow (dt=${dt})`);
+    assert(successful.length < from.w,
+      `Target ${target}: every launch succeeds (dt=${dt})`);
+    checks++;
+  }
+  if (target >= 12) {
+    const previous = routes.at(-2);
+    const window = successful.length / getEscapeStats(target-10).runVx;
+    const previousWindow = previous.launches / getEscapeStats(target-11).runVx;
+    assert(window < previousWindow,
+      `Target ${target}: escape timing must tighten as running speed increases (dt=${dt})`);
+    checks++;
+  }
 }
 
 }
+
+// Follow real landings through the approach, without teleporting to the next
+// launch. Sample early, middle and late inputs within each successful window.
+const approachTiming = [];
+for (const dt of [0.5, 1, 1.2]) {
+  for (const timing of [0.25, 0.5, 0.75]) {
+    let baby = createBabyState();
+    for (let target = 0; target <= 9; target++) {
+      const candidates = [];
+      const from = target === 0 ? null : surface(platforms[target - 1]);
+      const endX = from ? from.x + from.w : platforms[0].x;
+      let attempts = 0;
+      for (let x = baby.x; x < endX; x += baby.baseVx * dt) {
+        const trial = {...baby, x};
+        jump(trial, platforms, getEscapeStats, getPhase3Stats);
+        let hit = -1;
+        for (let frame = 0; frame < 240; frame++) {
+          movement(trial, dt);
+          hit = landing(trial, platforms);
+          if (hit >= 0 || trial.y > FLOOR_Y) break;
+        }
+        if (hit === target) candidates.push({waitFrames: attempts, baby: trial});
+        attempts++;
+      }
+      const windowMs = candidates.length * dt * 1000 / 60;
+      assert(windowMs >= 100,
+        `Approach ${target}: needs a usable timing window (dt=${dt}, timing=${timing})`);
+      assert.equal(candidates.at(-1).waitFrames - candidates[0].waitFrames + 1,
+        candidates.length, `Approach ${target}: fragmented launch window`);
+      if (dt === 1 && timing === 0.5) {
+        approachTiming.push({target: platforms[target].label,
+          waitMs: Math.round(candidates[0].waitFrames * 1000 / 60),
+          windowMs: Math.round(windowMs)});
+      }
+      const selected = candidates[Math.floor((candidates.length - 1) * timing)];
+      baby = {...selected.baby, y: surface(platforms[target]).y - baby.h,
+        vy: 0, vx: baby.baseVx, onGround: true, currentPlatformIndex: target};
+      checks += 2;
+    }
+    const transition = new GameState({width:960}, null);
+    Object.assign(transition.baby, baby);
+    transition.startCastleCutscene();
+    assert.equal(transition.cutsceneActive, true);
+    transition.advanceCutscene();
+    transition.advanceCutscene();
+    assert.equal(transition.cutsceneActive, false);
+    assert.equal(transition.baby.longJumpUnlocked, true);
+    assert.equal(transition.escapeLevel, 0);
+    assert.equal(transition.baby.vx, 0);
+    assert.equal(transition.currentScrollSpeed, 0);
+    jump(transition.baby, platforms, getEscapeStats, getPhase3Stats);
+    let hit = -1;
+    for (let frame = 0; frame < 240; frame++) {
+      movement(transition.baby, dt);
+      hit = landing(transition.baby, platforms);
+      if (hit >= 0 || transition.baby.y > FLOOR_Y) break;
+    }
+    assert.equal(hit, 10, `Castle → train after cutscene (dt=${dt}, timing=${timing})`);
+    checks += 7;
+  }
+}
+console.table(approachTiming);
+console.log('PASS: 9 continuous approaches, castle pause and first escape jump.');
 
 // Exercise the real renderer with actual PNG dimensions. Detect missing assets,
 // non-finite placement and accidental physics mutation during rendering.
