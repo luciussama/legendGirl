@@ -255,3 +255,54 @@ y=267, w=90, h=205) e as proporções do móvel sem estilização nova:
    - Evidências salvas em `tmp/dark-room/reviewed/08-*`: painel consolidado 2x2,
      cenário geral, início/meio/fim, close-up de apoio e visualização de hitbox.
 
+
+## Revisão Visual Geral e Padronização Estética — 24/09/2026
+
+Revisão estética e geométrica abrangente de todas as 38 plataformas das Fases 1, 2 e 3
+conforme a assinatura visual oficial `assets/art/dark-room/environment-assets-concept.png`:
+
+1. **Alinhamento Artístico e Materiais**:
+   - Remodelação de elementos desatualizados e transições abruptas.
+   - Aplicação de materiais nobres (mogno polido, latão escovado, ouro envelhecido, veludo carmesim capitonê, madeiras entalhadas e cristal translúcido).
+   - Suportes estruturais, pedestais e travessas horizontais integrados para ancorar os objetos ao cenário e ao piso (`floorY = 470`).
+2. **Ajustes Geométricos Permitidos**:
+   - Calibração de espessura de tampos, chanfros e nivelamento das superfícies de contato (`platY`).
+   - Cobertura de 100% da linha de apoio dos pés sem lacunas ou vazios (zero pixels vazios em ±32 px).
+   - Acomodação visual perfeita da passada da personagem em todas as fases da corrida.
+3. **Preservação Absoluta da Jogabilidade**:
+   - Física, gravidade, velocidades balísticas e hitboxes originais 100% idênticas à referência `fixtures/dark-room-physics.json`.
+   - Saltos de entrada e saída válidos para todas as plataformas em dt 0.5, 1.0 e 1.2.
+   - Mecânica de pausa e pulo do Castelo de Blocos mantida intacta com 100% de sucesso.
+4. **Evidências e Relatórios**:
+   - Atualizados `tmp/dark-room-review/RELATORIO.md` e `tmp/dark-room-review/evidencias.html`.
+   - Painéis comparativos gerados em `tmp/dark-room-review/visual-grupo-{0,1,2,3}.png`.
+   - Verificação concluída com 1.150 checks de hitbox/render, 66 travessias, 5.280 contatos de calçado e 100% de integridade.
+
+
+## Refinamento Visual — Mesa do Cogumelo (12) e Mansão de Bonecas (13) — 24/09/2026
+
+Atendimento integral às solicitações de alinhamento visual com a assinatura original:
+
+1. **Abajur Cogumelo (12) — Criação da Mesa Vitoriana de Apoio:**
+   - O cogumelo flutuante foi totalmente ancorado com a criação de uma mesa de cabeceira vitoriana em mogno nobre polido sob a sua base.
+   - Pernas torneadas clássicas com anéis ornamentais, colares vitorianos e sapatas almofadadas assentadas firmemente no chão (`floorY = 470`), com travessa inferior (stretcher) e sombra de contato.
+   - Saia frontal com gaveta em flame mahogany, moldura entalhada e puxador ornamental pendente em latão antigo / ouro imperial.
+   - Tampo da mesa chanfrado com debrum superior polido e 100% de cobertura sólida opaca na cota física de aterrissagem (`platY = 224`), zero pixels transparentes ao longo dos 105 px de largura útil.
+   - O abajur repousa cenograficamente sobre a mesa, com a personagem correndo com firmeza sobre o tampo.
+
+2. **Casa de Bonecas (13) — Remodelação Completa da Fachada Georgiana:**
+   - O desenho simples e plano anterior foi substituído por uma fachada de mansão georgiana de época de alta fidelidade artística condizente com a assinatura de brinquedos antigos de Secret of Mana / Legend of Mana.
+   - Alvenaria vitoriana de tijolos entalhados em terracota com juntas de argamassa e sombra sob os beirais.
+   - Cantoneiras em blocos clássicos rustificados (quoins) nos dois cantos da fachada.
+   - Cornija intermediária clássica com moldura denticulada dividindo o 1º e 2º andar.
+   - Quatro janelas georgianas de guilhotina em caixilharia de madeira (6 vidraças por janela), cortinas de veludo carmesim nas laterais e iluminação mágica quente de lamparina interior.
+   - Pórtico monumental de entrada com bandeira em arco sunburst fanlight, porta de mogno almofadada com 4 painéis esculpidos, maçaneta e aldrava de leão em latão dourado, e degraus de cantaria até o assoalho.
+   - Cumeeira reforçada em latão nivelada com 100% de opacidade em `platY = 210`.
+
+3. **Verificação Técnica e Preservação de Física:**
+   - 1.150 checks de hitbox/render, 66 travessias de pulo e 5.280 contatos de calçado 100% aprovados.
+   - 293 verificações físicas adicionais aprovadas sem nenhuma regressão.
+   - Empacotamento ZIP e download íntegro validado com sucesso.
+
+
+

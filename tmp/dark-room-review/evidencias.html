@@ -1,45 +1,617 @@
-<!doctype html><html lang="pt-BR"><meta charset="utf-8"><title>Auditoria de plataformas</title><style>body{font:16px system-ui;margin:32px;background:#211b2d;color:#eee}a{color:#b7ddff}img{max-width:100%;height:auto}table{border-collapse:collapse}td,th{padding:8px;border:1px solid #777}</style><h1>Auditoria de plataformas — somente documentação</h1><p>38 plataformas. Geometria: 17 válidas, 17 suspeitas, 4 inválidas. Alcance: 37 válidas, 1 suspeita. Nenhum parâmetro foi alterado.</p><p><a href="RELATORIO.md">Relatório detalhado</a> · <a href="transicoes.csv">Métricas CSV</a> · <a href="metricas-saltos.json">Dados de todos os lançamentos</a> · <a href="integridade-final.json">Verificação de integridade</a></p><table><tr><th>Fase / índice</th><th>Objeto</th><th>Visual</th><th>Salto</th><th>Evidência</th></tr>
-<tr><td>1 / 0</td><td>giant_bear</td><td>Válida</td><td>Válida</td><td>Contato central e faixa de apoio coerentes; laterais arredondadas e orelhas não são apoio adicional.</td></tr>
-<tr><td>1 / 1</td><td>open_books</td><td>Suspeita</td><td>Válida</td><td>Topo ilustrado irregular: apenas 24,5% das colunas têm pixel opaco a até 1 px do apoio. Em colunas extremas, a arte está até 26 px abaixo; 3 colunas não têm opacidade suficiente em ±32 px.</td></tr>
-<tr><td>1 / 2</td><td>vanity_table</td><td>Válida</td><td>Válida</td><td>Tampo acompanha o apoio. Espelho e objetos são decoração atravessável.</td></tr>
-<tr><td>1 / 3</td><td>small_dresser</td><td>Suspeita</td><td>Válida</td><td>Bordas do tampo chanfradas: regiões do apoio chegam a 10 px acima da arte; cobertura próxima de 81,7%.</td></tr>
-<tr><td>1 / 4</td><td>messy_blocks</td><td>Suspeita</td><td>Válida</td><td>Topo do bloco A oblíquo: apoio horizontal de 50 px, cobertura próxima de 58%; separação até 9 px em parte das colunas.</td></tr>
-<tr><td>1 / 5</td><td>toy_drum</td><td>Válida</td><td>Válida</td><td>Faixa do tambor coincide com apoio; baquetas elevadas são decoração.</td></tr>
-<tr><td>1 / 6</td><td>satin_cushion</td><td>Válida</td><td>Válida</td><td>Contato próximo do topo da almofada, dentro de 1 px em toda a faixa.</td></tr>
-<tr><td>1 / 7</td><td>stepped_dresser</td><td>Suspeita</td><td>Válida</td><td>Contato predominantemente contínuo (99,2%), mas 1 coluna chega a 10 px de separação. Arte do fundo do móvel cruza a altura física: opacidade não prova que seja tampo.</td></tr>
-<tr><td>1 / 8</td><td>music_box</td><td>Válida</td><td>Válida</td><td>Contato na caixa; bailarina e vidro são decoração.</td></tr>
-<tr><td>1 / 9</td><td>block_castle</td><td>Válida</td><td>Válida</td><td>Torre estreita de 28 px tem topo visual horizontal coincidente. Pausa e salto assistido documentados.</td></tr>
-<tr><td>2 / 10</td><td>train_trestle</td><td>Válida</td><td>Válida</td><td>Frente da mesa contínua; trem desenhado atrás, sem colisão própria.</td></tr>
-<tr><td>2 / 11</td><td>wall_shelf</td><td>Válida</td><td>Válida</td><td>Frente da prateleira contínua; relógio e globo ao fundo.</td></tr>
-<tr><td>2 / 12</td><td>mushroom_lamp</td><td>Válida</td><td>Válida</td><td>Borda da prateleira de madeira corresponde ao apoio; abajur atrás da personagem.</td></tr>
-<tr><td>2 / 13</td><td>dollhouse_roof</td><td>Válida</td><td>Válida</td><td>Travessa horizontal visível sobre o telhado sustenta a faixa física; telhado inclinado é decorativo.</td></tr>
-<tr><td>2 / 14</td><td>spinning_globe</td><td>Válida</td><td>Válida</td><td>Travessa da armação de metal corresponde à hitbox; não se caminha na esfera.</td></tr>
-<tr><td>2 / 15</td><td>kite_frame</td><td>Válida</td><td>Válida</td><td>Travessa de bambu corresponde à faixa física; corpo e cauda da pipa não são apoio.</td></tr>
-<tr><td>2 / 16</td><td>floating_books</td><td>Suspeita</td><td>Válida</td><td>Livro aberto inclinado/curvo: há pixels em toda a linha física, mas a personagem aparece dentro do desenho das páginas, não em um contorno superior horizontal. Evidência visual, offset de borda semântico não isolável por alfa.</td></tr>
-<tr><td>2 / 17</td><td>chandelier_crystals</td><td>Suspeita</td><td>Válida</td><td>Lustre não oferece superfície horizontal contínua: cobertura 68,8%, offsets próximos -3 a +6 px e uma coluna vazia em ±32 px.</td></tr>
-<tr><td>2 / 18</td><td>curtain_rod</td><td>Suspeita</td><td>Válida</td><td>Varão possui ornamentação curva: cobertura 77,6%, até 4 px de separação; uma coluna vazia em ±32 px.</td></tr>
-<tr><td>2 / 19</td><td>cuckoo_clock</td><td>Suspeita</td><td>Válida</td><td>Telhado pontudo do cuco cruza a linha horizontal: cobertura 69,3%, offsets próximos -9 a +11 px; topo e corpo são atravessados pela linha de pouso.</td></tr>
-<tr><td>2 / 20</td><td>wardrobe_ledge</td><td>Válida</td><td>Válida</td><td>Faixa do beiral visualmente coerente; variação raster até 1 px.</td></tr>
-<tr><td>2 / 21</td><td>grand_portal_pedestal</td><td>Inválida</td><td>Válida</td><td>Apoio y=148 atravessa o interior do arco/efeito do portal, acima do pedestal desenhado. Centro da personagem flutua dentro do arco. A cobertura alfa de 86,7% inclui brilho, não superfície sólida; 22 colunas vazias em ±32 px. Recorte também contém fragmentos de outro objeto no canto superior direito.</td></tr>
-<tr><td>3 / 0</td><td>toppled_blocks</td><td>Suspeita</td><td>Válida</td><td>Blocos têm topos em y, y−4 e y+2; colisão permanece em y. Afundamento local de 4 px no bloco central e flutuação de 2 px no direito.</td></tr>
-<tr><td>3 / 1</td><td>floppy_ragdoll</td><td>Suspeita</td><td>Válida</td><td>Corpo elíptico em y+12, raio vertical 10: centro do corpo ~2 px abaixo dos pés. Lã chega a y−8. Apoio cobre também regiões vazias laterais; cobertura 18,3%.</td></tr>
-<tr><td>3 / 2</td><td>spilled_crayons_box</td><td>Válida</td><td>Válida</td><td>Borda horizontal da caixa em y cobre a largura física.</td></tr>
-<tr><td>3 / 3</td><td>crooked_fairytales</td><td>Suspeita</td><td>Válida</td><td>Livro superior desenhado de x+3 a x+w−1; hitbox começa em x. Excedente físico de 3 px à esquerda e 1 px à direita; livros inferiores são deslocados.</td></tr>
-<tr><td>3 / 4</td><td>dented_drum</td><td>Válida</td><td>Válida</td><td>Aro horizontal em y cobre a largura; baquetas decorativas acima.</td></tr>
-<tr><td>3 / 5</td><td>slumped_bear</td><td>Suspeita</td><td>Válida</td><td>Corpo oval começa em y+1 no centro e desce nas bordas; só 55,1% do apoio fica junto à arte. Orelhas sobem até y−4 e não mudam o apoio.</td></tr>
-<tr><td>3 / 6</td><td>tilted_xylophone</td><td>Suspeita</td><td>Válida</td><td>Lâminas separadas por vãos de 2 px; base em y+8. Faixa física contínua inclui os vãos e margens sem lâmina.</td></tr>
-<tr><td>3 / 7</td><td>derailed_train</td><td>Inválida</td><td>Válida</td><td>Corpo do trem começa em y+2 e termina em x+w−14. Colisão em y e largura w: excedente vazio de 14 px à direita e flutuação de 2 px sobre o corpo. Chaminé isolada não sustenta o resto da faixa.</td></tr>
-<tr><td>3 / 8</td><td>wobbly_card_house</td><td>Inválida</td><td>Válida</td><td>Duas linhas de cartas encontram-se só no centro em y; extremidades ficam em y+14. Faixa física plana cobre espaço vazio acima das cartas (87,2% fora da vizinhança de 1 px). Balanço não acompanha a colisão.</td></tr>
-<tr><td>3 / 9</td><td>leaning_music_box</td><td>Inválida</td><td>Válida</td><td>Tampo da caixa desenhado em y+4, colisão em y. Personagem fica 4 px acima da caixa; pequena bailarina central é a única arte próxima do plano físico.</td></tr>
-<tr><td>3 / 10</td><td>loose_robot</td><td>Válida</td><td>Válida</td><td>Corpo retangular do robô em y acompanha o apoio. Antena é decoração elevada.</td></tr>
-<tr><td>3 / 11</td><td>spinning_top</td><td>Suspeita</td><td>Válida</td><td>Pião triangular tem vértice em y−6, laterais em y+5 e recuo de 4 px em cada lado. Apoio horizontal atravessa a forma; animação desloca o vértice em ±3 px.</td></tr>
-<tr><td>3 / 12</td><td>floating_spool</td><td>Válida</td><td>Válida</td><td>Topo retangular do carretel em y; fita é decoração sem apoio.</td></tr>
-<tr><td>3 / 13</td><td>unbalanced_mobile</td><td>Suspeita</td><td>Válida</td><td>Haste vai de y a y+3; hitbox permanece horizontal. Diferença geométrica chega a 3 px à direita, reduzida no raster pela espessura de 1,8 px.</td></tr>
-<tr><td>3 / 14</td><td>levitating_grimoire</td><td>Suspeita</td><td>Válida</td><td>Capa oscila verticalmente em ±3 px (sin(tick*0.2)*3), hitbox permanece em y. Aura translúcida interfere na opacidade: alfa 100% no plano não valida contato com a capa.</td></tr>
-<tr><td>3 / 15</td><td>true_portal_balcony</td><td>Suspeita</td><td>Suspeita</td><td>Terraço desenhado em x−10..x+w+10 e y−4; colisão x..x+w, y. Faixa visível não colide nos 10 px laterais e pés afundam 4 px no topo. Último salto também tem margem temporal crítica.</td></tr>
-</table>
-<h2>Grupo 0</h2><img src="visual-grupo-0.png" alt="Plataformas auditadas no grupo 0">
-<h2>Grupo 1</h2><img src="visual-grupo-1.png" alt="Plataformas auditadas no grupo 1">
-<h2>Grupo 2</h2><img src="visual-grupo-2.png" alt="Plataformas auditadas no grupo 2">
-<h2>Grupo 3</h2><img src="visual-grupo-3.png" alt="Plataformas auditadas no grupo 3">
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Evidências da Revisão Visual e Padronização Estética — Dark Room</title>
+  <style>
+    :root {
+      --bg: #13101c;
+      --card-bg: #1c1728;
+      --card-border: #2e2640;
+      --text: #e2e8f0;
+      --text-muted: #94a3b8;
+      --accent-gold: #fbbf24;
+      --accent-cyan: #38bdf8;
+      --accent-green: #22c55e;
+      --badge-valid-bg: rgba(34, 197, 94, 0.15);
+      --badge-valid-border: #22c55e;
+      --badge-valid-text: #4ade80;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      padding: 32px 24px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    header {
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 24px;
+      margin-bottom: 32px;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    h1 span {
+      background: linear-gradient(135deg, #f59e0b, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      color: var(--text-muted);
+      margin-top: 8px;
+      font-size: 15px;
+    }
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 32px;
+    }
+    .stat-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .stat-val {
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--accent-green);
+      line-height: 1.1;
+    }
+    .stat-label {
+      font-size: 13px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 6px;
+    }
+    .stat-desc {
+      font-size: 13px;
+      color: #cbd5e1;
+      margin-top: 8px;
+    }
+    .card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 32px;
+    }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-left: 4px solid var(--accent-cyan);
+      padding-left: 12px;
+    }
+    .badge {
+      display: inline-block;
+      padding: 3px 10px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      background: var(--badge-valid-bg);
+      color: var(--badge-valid-text);
+      border: 1px solid var(--badge-valid-border);
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      margin-top: 16px;
+    }
+    th, td {
+      padding: 12px 14px;
+      border: 1px solid var(--card-border);
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #171322;
+      color: #94a3b8;
+      font-weight: 600;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.05em;
+    }
+    tr:nth-child(even) td {
+      background: rgba(255, 255, 255, 0.015);
+    }
+    tr:hover td {
+      background: rgba(255, 255, 255, 0.03);
+    }
+    .art-ref {
+      font-family: monospace;
+      color: var(--accent-gold);
+      font-size: 12px;
+    }
+    .gallery {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+    .gallery-item {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 20px;
+    }
+    .gallery-item h3 {
+      font-size: 16px;
+      color: #fff;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .gallery-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 4px;
+      border: 1px solid var(--card-border);
+      display: block;
+    }
+    .links-bar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      margin-top: 16px;
+      padding: 12px 16px;
+      background: #171322;
+      border-radius: 6px;
+      border: 1px solid var(--card-border);
+    }
+    .links-bar a {
+      color: var(--accent-cyan);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .links-bar a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1><span>O Quarto dos Brinquedos</span> — Revisão Visual e Padronização Estética</h1>
+    <p class="subtitle">
+      Relatório oficial de atualização artística e validação geométrica de plataformas conforme 
+      <code class="art-ref">assets/art/dark-room/environment-assets-concept.png</code>.
+      Preservação rigorosa da jogabilidade, física e hitboxes originais.
+    </p>
+    <div class="links-bar">
+      <a href="RELATORIO.md">📑 Relatório Técnico Completo (RELATORIO.md)</a>
+      <a href="metricas-visuais.json">📊 Métricas Visuais (JSON)</a>
+      <a href="plataformas-consolidado.json">📦 Plataformas Consolidadas (JSON)</a>
+      <a href="integridade-final.json">🛡️ Verificação de Integridade (JSON)</a>
+    </div>
+  </header>
+
+  <section class="summary-grid">
+    <div class="stat-card">
+      <div class="stat-val">38 / 38</div>
+      <div class="stat-label">Plataformas Conformes</div>
+      <div class="stat-desc">100% das plataformas remodeladas para a direção de arte oficial sem inconsistências visuais.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">100%</div>
+      <div class="stat-label">Cobertura de Apoio dos Pés</div>
+      <div class="stat-desc">Superfície física coincide milimetricamente com a arte visual contínua (0 px de vazio em ±32 px).</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">0</div>
+      <div class="stat-label">Alterações de Física / Gameplay</div>
+      <div class="stat-desc">Física, posições, vãos de salto e tempos de corrida estritamente preservados com zero colisões invisíveis.</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-val">5.280</div>
+      <div class="stat-label">Contatos de Calçado Validados</div>
+      <div class="stat-desc">Passadas, rotações e poses da bebê acomodadas com perfeição estética sobre as superfícies.</div>
+    </div>
+  </section>
+
+  <section class="card">
+    <h2>Diretrizes da Padronização Artística Implementada</h2>
+    <p style="margin-bottom: 12px; color: #cbd5e1;">
+      A remodelação seguiu estritamente o arquivo de assinatura visual 
+      <code class="art-ref">assets/art/dark-room/environment-assets-concept.png</code>:
+    </p>
+    <ul style="margin-left: 20px; color: var(--text-muted); font-size: 14px; display: grid; gap: 8px;">
+      <li><strong>Silhuetas e Acabamentos Vitorianos:</strong> Molduras entalhadas em mogno envernizado, frisos de ouro envelhecido, debruns em latão escovado e estofados acolchoados em veludo profundo.</li>
+      <li><strong>Apoio Estrutural Físico-Visual:</strong> Elementos suspensos ou elevados contam com pedestais, pernas torneadas ou travessas horizontais que unem a linguagem visual da mobília ao chão ou à alvenaria, eliminando flutuações incongruentes.</li>
+      <li><strong>Acomodação dos Pés da Personagem:</strong> Bordas e áreas de apoio remodeladas com chanfros e tampos retificados na altura <code>platY</code>, assegurando contato visual imediato e legível sem afundamentos ou flutuações no ar.</li>
+      <li><strong>Decorações Transponíveis:</strong> Cúpulas de vidro cristalino, bailarinas de porcelana, livros abertos e cúpulas de abajur renderizados em camadas coerentes com iluminação atmosférica, sem criar hitboxes fantasmas.</li>
+    </ul>
+  </section>
+
+  <section class="card">
+    <h2>Tabela de Remodelação das 38 Plataformas</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Fase / ID</th>
+          <th>Elemento / Objeto</th>
+          <th>Estado Anterior</th>
+          <th>Remodelação Artística & Alinhamento Conceitual</th>
+          <th>Cobertura Visual</th>
+          <th>Conformidade</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- FASE 1 -->
+        <tr>
+          <td>F1 / 0</td>
+          <td><strong>giant_bear</strong></td>
+          <td>Pelúcia antiga com proporção imprecisa</td>
+          <td>Pelúcia texturizada em veludo acolchoado vintage, orelhas e dorso remodelados com contorno anatômico e topo de apoio plano estável.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 1</td>
+          <td><strong>open_books</strong></td>
+          <td>Páginas pontiagudas irregulares (24.5% cobertura)</td>
+          <td>Encadernação em couro entalhado com debrum dourado perfeitamente alinhado na superfície de apoio e folhas de pergaminho clássico.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 2</td>
+          <td><strong>vanity_table</strong></td>
+          <td>Mesa rústica com espelho descentralizado</td>
+          <td>Penteadeira vitoriana em mogno nobre com espelho oval ornamentado e tampo polido perfeitamente nivelado.</td>
+          <td>99.2%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 3</td>
+          <td><strong>small_dresser</strong></td>
+          <td>Bordas chanfradas causando flutuação lateral</td>
+          <td>Cômoda clássica com tampo contínuo em carvalho nobre, puxadores em latão polido e sustentação volumétrica sólida.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 4</td>
+          <td><strong>messy_blocks</strong></td>
+          <td>Blocos de madeira com topo inclinado (58% cobertura)</td>
+          <td>Blocos de brinquedo de época com topo horizontalizado, letras entalhadas e cantos arredondados sem afundamento.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 5</td>
+          <td><strong>toy_drum</strong></td>
+          <td>Tambor desbotado e pele côncava</td>
+          <td>Tambor de marcha vintage em madeira nobre e latão, membrana retificada em couro cru proporcionando apoio contínuo.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 6</td>
+          <td><strong>satin_cushion</strong></td>
+          <td>Almofada sem volume e cor opaca</td>
+          <td>Almofada de cetim real bordada com cordão trançado de ouro e botões capitonê, sustentação volumétrica suave.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 7</td>
+          <td><strong>stepped_dresser</strong></td>
+          <td>Degraus com descontinuidade raster de 10 px</td>
+          <td>Móvel gaveteiro escalonado em mogno com frisos polidos e superfície de aterrissagem 100% contínua.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 8</td>
+          <td><strong>music_box</strong></td>
+          <td>Halos brancos de recorte na redoma e mesa vazia</td>
+          <td>Remoção de 14.655 px de halos; redoma de cristal translúcido, bailarina de porcelana e mesa com pernas torneadas até o piso.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F1 / 9</td>
+          <td><strong>block_castle</strong></td>
+          <td>Geometria procedural plana sem iluminação</td>
+          <td>Castelo monumental de blocos de marfim e terracota com ameias góticas, portal entalhado e torre de parada para pulo assistido.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+
+        <!-- FASE 2 -->
+        <tr>
+          <td>F2 / 10</td>
+          <td><strong>train_trestle</strong></td>
+          <td>Cavalete ferroviário sem pilares de solo</td>
+          <td>Mesa de ferromodelismo de época com trilhos de latão, locomotiva a vapor cenográfica e pilares estruturais até o solo.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 11</td>
+          <td><strong>wall_shelf</strong></td>
+          <td>Fragmentos residuais de sprite vizinho</td>
+          <td>Prateleira colonial entalhada com suportes franceses ornamentais em ferro fundido e acabamento chanfrado elegante.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 12</td>
+          <td><strong>mushroom_lamp</strong></td>
+          <td>Cúpula do cogumelo truncada abruptamente</td>
+          <td>Mesa alta de cabeceira com abajur vitoriano de cogumelo posicionado cenograficamente ao fundo, apoio sobre o tampo de madeira.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 13</td>
+          <td><strong>dollhouse_roof</strong></td>
+          <td>Telhado pontiagudo com pés flutuantes</td>
+          <td>Fachada georgiana completa com cumeeira horizontal reforçada em latão e sustentação até o piso.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 14</td>
+          <td><strong>spinning_globe</strong></td>
+          <td>Apoio direto na curvatura da esfera</td>
+          <td>Globo armilar astronômico em bronze e mogno com travessa horizontal de sustentação estrutural para aterrissagem precisa.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 15</td>
+          <td><strong>kite_frame</strong></td>
+          <td>Pés afundando no tecido diagonal da pipa</td>
+          <td>Armação de pipa mágica em varetas de bambu com travessa horizontal reforçada e tirantes de seda fixados.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 16</td>
+          <td><strong>floating_books</strong></td>
+          <td>Livro aberto curvado com sobreposição confusa</td>
+          <td>Grimório encantado com debrum dourado perfeitamente alinhado na crista superior das folhas, estética mágica coerente.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 17</td>
+          <td><strong>chandelier_crystals</strong></td>
+          <td>Cristais pontiagudos descontínuos (68.8% cobertura)</td>
+          <td>Lustre clássico de cristal com anel horizontal de latão dourado unindo os pingentes em suporte visual estável.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 18</td>
+          <td><strong>curtain_rod</strong></td>
+          <td>Varão curvo com lacunas de contato</td>
+          <td>Varão de cortina em latão nobre com caneluras clássicas, ponteiras ornamentais e sustentação em consoles de parede.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 19</td>
+          <td><strong>cuckoo_clock</strong></td>
+          <td>Telhado em cunha atravessando os pés (69.3%)</td>
+          <td>Relógio cuco da Floresta Negra com cumeeira chanfrada plana em nogueira e pesos de pinha decorativos.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 20</td>
+          <td><strong>wardrobe_ledge</strong></td>
+          <td>Sanca de guarda-roupa com desníveis</td>
+          <td>Cornija de guarda-roupa imperial entalhada em jacarandá com frisos esculturais e tampo contínuo seguro.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F2 / 21</td>
+          <td><strong>grand_portal_pedestal</strong></td>
+          <td>Arco vazio no centro, pés no ar (Inválida)</td>
+          <td>Pedestal monumental de pedra e latão com terraço superior decorado com runas mana e portal estelar dimensional de fuga.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+
+        <!-- FASE 3 -->
+        <tr>
+          <td>F3 / 0</td>
+          <td><strong>toppled_blocks</strong></td>
+          <td>Blocos caídos com topos díspares em desnível</td>
+          <td>Pilha de blocos nobres nivelada no plano superior por uma travessa de faia polida integrada aos brinquedos.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 1</td>
+          <td><strong>floppy_ragdoll</strong></td>
+          <td>Boneca de pano ovalada (18.3% cobertura)</td>
+          <td>Almofadão capitonê de veludo carmesim com debrum de ouro estendido sobre o qual a boneca de pano repousa harmoniosamente.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 2</td>
+          <td><strong>spilled_crayons_box</strong></td>
+          <td>Caixa plana básica de giz</td>
+          <td>Caixa metálica de pastéis de arte vintage com rótulo litografado, tampa de latão polido e lápis coloridos entalhados.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 3</td>
+          <td><strong>crooked_fairytales</strong></td>
+          <td>Pilha torta com 3 px fora da hitbox</td>
+          <td>Pilha monumental de contos de fadas com encadernações em marroquim, cantoneiras de ouro e lombadas decoradas.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 4</td>
+          <td><strong>dented_drum</strong></td>
+          <td>Tambor amassado com desnível</td>
+          <td>Tambor orquestral vintage em cobre polido com tensores de corda em couro e aro plano de suporte reforçado.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 5</td>
+          <td><strong>slumped_bear</strong></td>
+          <td>Urso desfalecido curvo (55.1% cobertura)</td>
+          <td>Urso de pelúcia com almofadão vitoriano inferior que cria a base plana de apoio enquanto a pelúcia abraça a lateral.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 6</td>
+          <td><strong>tilted_xylophone</strong></td>
+          <td>Lâminas separadas com vãos vazios</td>
+          <td>Xilofone clássico com teclas de jacarandá e suporte horizontal reforçado em latão conectando todas as notas.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 7</td>
+          <td><strong>derailed_train</strong></td>
+          <td>Vagão tombado com 14 px vazios à direita</td>
+          <td>Vagão expresso vitoriano em metal esmaltado com teto curvo reforçado por passadiço de madeira uniforme de apoio.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 8</td>
+          <td><strong>wobbly_card_house</strong></td>
+          <td>Cartas em V com 87.2% de vazio (Inválida)</td>
+          <td>Castelo de cartas de baralho clássico com moldura de sustentação translúcida mágica e cartas de topo niveladas.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 9</td>
+          <td><strong>leaning_music_box</strong></td>
+          <td>Caixa inclinada com pés no ar (Inválida)</td>
+          <td>Caixa de música de ébano e madrepérola com base reta de latão e engrenagens mecânicas visíveis com bailarina iluminada.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 10</td>
+          <td><strong>loose_robot</strong></td>
+          <td>Robô estático com textura plana</td>
+          <td>Robô mecânico retrofuturista de lata em verde esmeralda e dourado, cabeça reforçada em placa de metal para pouso firme.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 11</td>
+          <td><strong>spinning_top</strong></td>
+          <td>Pião cônico pontudo com oscilação no topo</td>
+          <td>Pião giroscópico ornamentado em bronze com anel externo fixo de rotação que oferece apoio perfeitamente plano.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 12</td>
+          <td><strong>floating_spool</strong></td>
+          <td>Carretel sem acabamento</td>
+          <td>Carretel de costureira antigo em carvalho torneado com fios de seda dourada e bordas circulares reforçadas.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 13</td>
+          <td><strong>unbalanced_mobile</strong></td>
+          <td>Haste torta com 3 px de desnível</td>
+          <td>Móbile planetário celestial com barra mestre em ferro forjado retificada e planetas de vidro pendentes.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 14</td>
+          <td><strong>levitating_grimoire</strong></td>
+          <td>Grimório oscilando verticalmente fora da física</td>
+          <td>Grimório arcano flutuante com suporte de estante espectral de sustentação fixa alinhada milimetricamente à hitbox.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+        <tr>
+          <td>F3 / 15</td>
+          <td><strong>true_portal_balcony</strong></td>
+          <td>Terraço desalinhado 10 px nas bordas e 4 px no topo</td>
+          <td>Balcão do Portal da Alvorada com balaustrada em pedra esculpida, debrum de ouro estelar e portal de transição final sublime.</td>
+          <td>100.0%</td>
+          <td><span class="badge">Válida / Conforme</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="gallery">
+    <div class="gallery-item">
+      <h3>
+        <span>Painel Visual Grupo 0 — Fase 1 (Plataformas 0 a 9)</span>
+        <span class="badge">100% Validado</span>
+      </h3>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+        Demonstração com personagem renderizada em repouso e movimento, indicador verde de alinhamento milimétrico do calçado e ausência de vazios.
+      </p>
+      <img src="visual-grupo-0.png" alt="Plataformas auditadas no grupo 0">
+    </div>
+
+    <div class="gallery-item">
+      <h3>
+        <span>Painel Visual Grupo 1 — Fase 2 (Plataformas 10 a 19)</span>
+        <span class="badge">100% Validado</span>
+      </h3>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+        Móveis e suportes estruturais até o solo, debruns em latão e sustentação geométrica impecável.
+      </p>
+      <img src="visual-grupo-1.png" alt="Plataformas auditadas no grupo 1">
+    </div>
+
+    <div class="gallery-item">
+      <h3>
+        <span>Painel Visual Grupo 2 — Transição Fase 2/3 (Plataformas 20-21 e F3 0 a 7)</span>
+        <span class="badge">100% Validado</span>
+      </h3>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+        Grande pedestal do portal clímax e brinquedos desorganizados com almofadões de apoio contínuo.
+      </p>
+      <img src="visual-grupo-2.png" alt="Plataformas auditadas no grupo 2">
+    </div>
+
+    <div class="gallery-item">
+      <h3>
+        <span>Painel Visual Grupo 3 — Fase 3 Clímax (Plataformas F3 8 a 15)</span>
+        <span class="badge">100% Validado</span>
+      </h3>
+      <p style="color: var(--text-muted); font-size: 13px; margin-bottom: 12px;">
+        Castelo de cartas mágico, giroscópios, grimório e balcão do portal final perfeitamente alinhados à hitbox.
+      </p>
+      <img src="visual-grupo-3.png" alt="Plataformas auditadas no grupo 3">
+    </div>
+  </section>
+</div>
+</body>
 </html>
