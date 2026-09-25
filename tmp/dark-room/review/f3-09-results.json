@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:15.763Z",
+  "phase": 3,
+  "index": 9,
+  "geometry": {
+    "x": 1586,
+    "y": 263,
+    "w": 74,
+    "h": 207,
+    "style": "leaning_music_box",
+    "label": "10/15 Caixa de Música Desregulada",
+    "lightAlpha": 0.9998960891235358,
+    "isLanded": true,
+    "support": {
+      "x": 1586,
+      "y": 263,
+      "w": 74
+    }
+  },
+  "jumps": [
+    {
+      "target": 9,
+      "phase": 3,
+      "style": "leaning_music_box",
+      "dt": 0.5,
+      "launchX": 1970,
+      "frames": 119,
+      "feet": 263,
+      "surface": 263
+    },
+    {
+      "target": 9,
+      "phase": 3,
+      "style": "leaning_music_box",
+      "dt": 1,
+      "launchX": 1970,
+      "frames": 60,
+      "feet": 263,
+      "surface": 263
+    },
+    {
+      "target": 9,
+      "phase": 3,
+      "style": "leaning_music_box",
+      "dt": 1.2,
+      "launchX": 1970,
+      "frames": 50,
+      "feet": 263,
+      "surface": 263
+    }
+  ],
+  "contacts": null
+}

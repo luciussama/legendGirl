@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:16.403Z",
+  "phase": 3,
+  "index": 12,
+  "geometry": {
+    "x": 322,
+    "y": 216,
+    "w": 60,
+    "h": 254,
+    "style": "floating_spool",
+    "label": "13/15 Carretel com Fita Flutuante",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": 322,
+      "y": 216,
+      "w": 60
+    }
+  },
+  "jumps": [
+    {
+      "target": 12,
+      "phase": 3,
+      "style": "floating_spool",
+      "dt": 0.5,
+      "launchX": 782,
+      "frames": 129,
+      "feet": 216,
+      "surface": 216
+    },
+    {
+      "target": 12,
+      "phase": 3,
+      "style": "floating_spool",
+      "dt": 1,
+      "launchX": 779,
+      "frames": 64,
+      "feet": 216,
+      "surface": 216
+    },
+    {
+      "target": 12,
+      "phase": 3,
+      "style": "floating_spool",
+      "dt": 1.2,
+      "launchX": 777,
+      "frames": 53,
+      "feet": 216,
+      "surface": 216
+    }
+  ],
+  "contacts": null
+}

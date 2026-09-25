@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:15.370Z",
+  "phase": 3,
+  "index": 7,
+  "geometry": {
+    "x": 2288,
+    "y": 296,
+    "w": 84,
+    "h": 174,
+    "style": "derailed_train",
+    "label": "8/15 Locomotiva Descarrilada",
+    "lightAlpha": 0.9998286302970473,
+    "isLanded": true,
+    "support": {
+      "x": 2288,
+      "y": 296,
+      "w": 84
+    }
+  },
+  "jumps": [
+    {
+      "target": 7,
+      "phase": 3,
+      "style": "derailed_train",
+      "dt": 0.5,
+      "launchX": 2628,
+      "frames": 114,
+      "feet": 296,
+      "surface": 296
+    },
+    {
+      "target": 7,
+      "phase": 3,
+      "style": "derailed_train",
+      "dt": 1,
+      "launchX": 2628,
+      "frames": 57,
+      "feet": 296,
+      "surface": 296
+    },
+    {
+      "target": 7,
+      "phase": 3,
+      "style": "derailed_train",
+      "dt": 1.2,
+      "launchX": 2628,
+      "frames": 47,
+      "feet": 296,
+      "surface": 296
+    }
+  ],
+  "contacts": null
+}

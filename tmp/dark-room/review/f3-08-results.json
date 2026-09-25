@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:15.563Z",
+  "phase": 3,
+  "index": 8,
+  "geometry": {
+    "x": 1950,
+    "y": 279,
+    "w": 78,
+    "h": 191,
+    "style": "wobbly_card_house",
+    "label": "9/15 Castelo de Cartas Bamboleante",
+    "lightAlpha": 0.9998665564687472,
+    "isLanded": true,
+    "support": {
+      "x": 1950,
+      "y": 279,
+      "w": 78
+    }
+  },
+  "jumps": [
+    {
+      "target": 8,
+      "phase": 3,
+      "style": "wobbly_card_house",
+      "dt": 0.5,
+      "launchX": 2311,
+      "frames": 117,
+      "feet": 279,
+      "surface": 279
+    },
+    {
+      "target": 8,
+      "phase": 3,
+      "style": "wobbly_card_house",
+      "dt": 1,
+      "launchX": 2311,
+      "frames": 58,
+      "feet": 279,
+      "surface": 279
+    },
+    {
+      "target": 8,
+      "phase": 3,
+      "style": "wobbly_card_house",
+      "dt": 1.2,
+      "launchX": 2311,
+      "frames": 49,
+      "feet": 279,
+      "surface": 279
+    }
+  ],
+  "contacts": null
+}

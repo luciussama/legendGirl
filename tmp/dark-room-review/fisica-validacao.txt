@@ -1,6 +1,2 @@
-src/js/game.js: OK
-src/js/config.js: OK
-src/js/state/GameState.js: OK
-src/js/state/StateVariables.js: OK
-src/js/entities/BabyRenderer.js: OK
-tests/fixtures/dark-room-physics.json: OK
+153 arquivos protegidos: OK
+[][]

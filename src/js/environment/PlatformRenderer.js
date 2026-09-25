@@ -32,13 +32,13 @@ export const PLATFORM_SURFACES = {
   // The complete lamp sits behind the walkable table, aligned by its base.
   mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'shelf', cap: true },
   dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: true },
-  spinning_globe: { surfaceY: 0, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309, support: 'stand' },
-  kite_frame: { surfaceY: 0, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322 },
+  spinning_globe: { surfaceY: 863, surfaceX: 50, surfaceW: 1145, origW: 1245, origH: 1263 },
+  kite_frame: { surfaceY: -275, surfaceX: 0, surfaceW: 490, origW: 490, origH: 322, support: 'shelf' },
   // Feet sit within the illustrated pages; their curvature is intentionally decorative.
   floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 406, origW: 410, origH: 279 },
   chandelier_crystals: { surfaceY: 205, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
   curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
-  cuckoo_clock: { surfaceY: 0, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
+  cuckoo_clock: { surfaceY: -60, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
   wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
   grand_portal_pedestal: { surfaceY: 330, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365, excludeRects: [[404, 0, 114, 34]] }
 };
@@ -100,9 +100,9 @@ export class PlatformRenderer {
 
     // Escala estritamente calibrada pela largura da superfície de apoio em relação a platW
     const scale = platW / (s.surfaceW || spriteW);
-    const dw = Math.round(spriteW * scale);
+    const dw = styleClean === 'spinning_globe' ? spriteW * scale : Math.round(spriteW * scale);
     const scaleY = s.floorFit ? Math.min(scale, (this.floorY - platY) / ((s.bottom ?? spriteH) - s.surfaceY)) : scale;
-    const dh = Math.round(spriteH * scaleY);
+    const dh = styleClean === 'spinning_globe' ? spriteH * scaleY : Math.round(spriteH * scaleY);
 
     // O início horizontal da superfície de apoio coincide com sx (ou sxSurface com standRegion)
     const dx = Math.round(sxSurface - (s.surfaceX * scale));
@@ -575,7 +575,65 @@ export class PlatformRenderer {
       ctx.fillRect(sx + 8, dy + dh - 4, p.w - 16, this.floorY - (dy + dh - 4));
     }
 
+    if (styleClean === 'wardrobe_ledge') {
+      // Wall-mounted cabinet beneath the existing cornice. The cornice keeps
+      // its original landing plane; the doors and mounting hardware are scenery.
+      const left=sxSurface+3, top=platY+8, width=platW-6, height=128;
+      const wood=ctx.createLinearGradient(left,top,left+width,top);
+      wood.addColorStop(0,'#382419');wood.addColorStop(.18,'#98643b');
+      wood.addColorStop(.5,'#634025');wood.addColorStop(.86,'#855431');
+      wood.addColorStop(1,'#342218');ctx.fillStyle=wood;
+      ctx.fillRect(left,top,width,height);
+      ctx.fillStyle='#241b17';ctx.fillRect(left+5,top+7,width-10,height-16);
+      const doorW=(width-15)/2;
+      for(let door=0;door<2;door++) {
+        const x=left+6+door*(doorW+3);
+        const face=ctx.createLinearGradient(x,top,x+doorW,top);
+        face.addColorStop(0,'#a57346');face.addColorStop(.3,'#704729');
+        face.addColorStop(1,'#493021');ctx.fillStyle=face;
+        ctx.fillRect(x,top+8,doorW,height-18);
+        for(const [offset,panelH] of [[15,48],[70,35]]) {
+          ctx.fillStyle='#b17c49';ctx.fillRect(x+3,top+offset,doorW-6,panelH);
+          ctx.fillStyle='#38251c';ctx.fillRect(x+4,top+offset+1,doorW-8,panelH-2);
+          ctx.fillStyle='#795030';ctx.fillRect(x+5,top+offset+3,doorW-10,panelH-6);
+          for(let grain=0;grain<3;grain++) {
+            ctx.beginPath();ctx.moveTo(x+7+grain*4,top+offset+6);
+            ctx.lineTo(x+6+grain*4,top+offset+panelH-8);
+            ctx.strokeStyle='#654029';ctx.lineWidth=.7;ctx.stroke();
+          }
+        }
+        const handleX=door===0?x+doorW-4:x+2;
+        ctx.fillStyle='#342b20';ctx.fillRect(handleX-1,top+58,4,8);
+        ctx.fillStyle='#c19b57';ctx.fillRect(handleX,top+59,2,5);
+        for(const y of [top+22,top+94]) {
+          ctx.fillStyle='#a48550';ctx.fillRect(door===0?x:x+doorW-2,y,2,6);
+        }
+      }
+      ctx.fillStyle='#a67546';ctx.fillRect(left,top+height-5,width,3);
+      ctx.fillStyle='#3d291e';ctx.fillRect(left+2,top+height-2,width-4,5);
+      for(const x of [left+7,left+width-11]) {
+        ctx.fillStyle='#55402b';ctx.fillRect(x,top+height+3,4,9);
+        ctx.fillStyle='#a8874c';ctx.fillRect(x+1,top+height+6,2,2);
+      }
+    }
+
     const falseDoorPedestal = style === 'grand_portal_pedestal';
+    if (styleClean === 'cuckoo_clock') {
+      // Wall mounting rail and corbels are behind the suspended clock.
+      ctx.fillStyle='#493022';ctx.fillRect(sxSurface+5,platY+7,platW-10,14);
+      ctx.fillStyle='#805334';ctx.fillRect(sxSurface+7,platY+9,platW-14,9);
+      for (const x of [sxSurface+10,sxSurface+platW-12]) {
+        ctx.beginPath();ctx.moveTo(x,platY+9);ctx.lineTo(x,platY+31);
+        ctx.lineTo(x+6,platY+12);
+        ctx.strokeStyle='#3d291e';ctx.lineWidth=5;ctx.stroke();
+        ctx.strokeStyle='#8d603d';ctx.lineWidth=2;ctx.stroke();
+        ctx.fillStyle='#b39a68';ctx.fillRect(x-1,platY+13,2,2);
+      }
+      const center=sxSurface+platW/2;
+      ctx.beginPath();ctx.moveTo(center,platY+15);ctx.lineTo(center,dy+10);
+      ctx.strokeStyle='#463b2a';ctx.lineWidth=3;ctx.stroke();
+      ctx.strokeStyle='#ad8c4e';ctx.lineWidth=1;ctx.stroke();
+    }
     const clipSprite = falseDoorPedestal || s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
     if (clipSprite) {
       const clipTop = (falseDoorPedestal || s.trimAboveSupport) ? platY : dy;
@@ -623,7 +681,7 @@ export class PlatformRenderer {
       ctx.fillStyle = '#1c0c06';
       ctx.fillRect(ridgeX, ridgeY + 3, ridgeW, 1);
     }
-    if (s.support === 'shelf') {
+    if (s.support === 'shelf' && styleClean !== 'kite_frame') {
       drawContactEdge(ctx,sxSurface,platY,platW,'wood',12);
       for (const xx of [sxSurface+9,sxSurface+platW-17]) {
         ctx.fillStyle='#493021';ctx.fillRect(xx,platY+12,8,26);
@@ -633,22 +691,43 @@ export class PlatformRenderer {
         ctx.lineWidth=1.5;ctx.strokeStyle='#b6854e';ctx.stroke();
       }
     }
-    if (styleClean === 'spinning_globe') {
-      const endY=dy+dh*.78;
-      ctx.fillStyle='#80603c';ctx.fillRect(sxSurface,platY,3,endY-platY);
-      ctx.fillRect(sxSurface+platW-3,platY,3,endY-platY);
-      drawContactEdge(ctx,sxSurface,endY,platW,'brass',3);
-    }
     if (styleClean === 'kite_frame') {
-      ctx.beginPath();ctx.moveTo(sxSurface+2,platY+4);
-      ctx.lineTo(sxSurface+platW*.5,platY+32);ctx.lineTo(sxSurface+platW-2,platY+4);
-      ctx.strokeStyle='#c3a36c';ctx.lineWidth=1;ctx.stroke();
+      // A coat-rack shelf: visible backing board, metal hooks and a loop
+      // connecting the kite to the left hook. All hardware stays below support.
+      const wood = ctx.createLinearGradient(0,platY+10,0,platY+34);
+      wood.addColorStop(0,'#684327');wood.addColorStop(.45,'#8b5a32');
+      wood.addColorStop(1,'#42291e');ctx.fillStyle=wood;
+      ctx.fillRect(sxSurface+3,platY+10,platW-6,24);
+      for (let row=0;row<5;row++) {
+        ctx.beginPath();ctx.moveTo(sxSurface+6,platY+15+row*3);
+        ctx.lineTo(sxSurface+platW-7,platY+16+row*3);
+        ctx.strokeStyle=row%2?'#704527':'#986337';ctx.lineWidth=.6;ctx.stroke();
+      }
+      // Deep wooden tabletop, with no separate landing guide over its surface.
+      drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
+      for (const offset of [13,platW/2,platW-13]) {
+        const x=sxSurface+offset;
+        ctx.fillStyle='#382f25';ctx.fillRect(x-3,platY+15,6,12);
+        ctx.fillStyle='#9a8054';ctx.fillRect(x-2,platY+16,4,9);
+        ctx.fillStyle='#322b24';ctx.fillRect(x-.7,platY+17,1.4,1.4);
+        ctx.beginPath();ctx.moveTo(x,platY+23);ctx.lineTo(x,platY+30);
+        ctx.lineTo(x-2,platY+32);ctx.lineTo(x-4,platY+30);ctx.lineTo(x-4,platY+27);
+        ctx.strokeStyle='#30291f';ctx.lineWidth=3;ctx.stroke();
+        ctx.strokeStyle='#b29a6b';ctx.lineWidth=1.3;ctx.stroke();
+      }
+      // The closed loop is distinct from the bracket and reaches the kite tip.
+      const tipX=dx+38*scale, tipY=dy+3*scaleY;
+      const hookX=sxSurface+11;
+      ctx.beginPath();ctx.moveTo(tipX,tipY);
+      ctx.lineTo(hookX-3,platY+36);ctx.lineTo(hookX-3,platY+30);
+      ctx.lineTo(hookX,platY+28);ctx.lineTo(hookX+3,platY+31);
+      ctx.lineTo(hookX+2,platY+37);ctx.lineTo(tipX,tipY);
+      ctx.strokeStyle='#d1b37b';ctx.lineWidth=1;ctx.stroke();
     }
     if (styleClean === 'cuckoo_clock') {
-      for (const xx of [sxSurface+4,sxSurface+platW-9]) {
-        ctx.fillStyle='#6d4429';ctx.fillRect(xx,platY+3,5,24);
-        ctx.fillStyle='#c29454';ctx.fillRect(xx+1,platY+3,1,24);
-      }
+      // This substantial wooden cap is part of the wall mount, not a jump guide.
+      drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
+      ctx.fillStyle='#513420';ctx.fillRect(sxSurface+3,platY+10,platW-6,3);
     }
     return true;
   }

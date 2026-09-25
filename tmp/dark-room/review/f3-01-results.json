@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:14.130Z",
+  "phase": 3,
+  "index": 1,
+  "geometry": {
+    "x": 3848,
+    "y": 402,
+    "w": 120,
+    "h": 68,
+    "style": "floppy_ragdoll",
+    "label": "2/15 Boneca de Pano Desconjuntada",
+    "lightAlpha": 0.9994933683836561,
+    "isLanded": true,
+    "support": {
+      "x": 3848,
+      "y": 402,
+      "w": 120
+    }
+  },
+  "jumps": [
+    {
+      "target": 1,
+      "phase": 3,
+      "style": "floppy_ragdoll",
+      "dt": 0.5,
+      "launchX": 4086,
+      "frames": 100,
+      "feet": 402,
+      "surface": 402
+    },
+    {
+      "target": 1,
+      "phase": 3,
+      "style": "floppy_ragdoll",
+      "dt": 1,
+      "launchX": 4086,
+      "frames": 50,
+      "feet": 402,
+      "surface": 402
+    },
+    {
+      "target": 1,
+      "phase": 3,
+      "style": "floppy_ragdoll",
+      "dt": 1.2,
+      "launchX": 4086,
+      "frames": 41,
+      "feet": 402,
+      "surface": 402
+    }
+  ],
+  "contacts": null
+}

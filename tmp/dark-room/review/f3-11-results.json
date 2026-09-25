@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:16.185Z",
+  "phase": 3,
+  "index": 11,
+  "geometry": {
+    "x": 772,
+    "y": 231,
+    "w": 65,
+    "h": 239,
+    "style": "spinning_top",
+    "label": "12/15 Pião de Madeira Rodopiante",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": 772,
+      "y": 231,
+      "w": 65
+    }
+  },
+  "jumps": [
+    {
+      "target": 11,
+      "phase": 3,
+      "style": "spinning_top",
+      "dt": 0.5,
+      "launchX": 1208,
+      "frames": 127,
+      "feet": 231,
+      "surface": 231
+    },
+    {
+      "target": 11,
+      "phase": 3,
+      "style": "spinning_top",
+      "dt": 1,
+      "launchX": 1207,
+      "frames": 63,
+      "feet": 231,
+      "surface": 231
+    },
+    {
+      "target": 11,
+      "phase": 3,
+      "style": "spinning_top",
+      "dt": 1.2,
+      "launchX": 1204,
+      "frames": 52,
+      "feet": 231,
+      "surface": 231
+    }
+  ],
+  "contacts": null
+}

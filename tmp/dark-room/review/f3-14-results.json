@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:16.847Z",
+  "phase": 3,
+  "index": 14,
+  "geometry": {
+    "x": -669,
+    "y": 187,
+    "w": 50,
+    "h": 283,
+    "style": "levitating_grimoire",
+    "label": "15/15 Livro de Feitiços no Vácuo (O Grande Salto!)",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": -669,
+      "y": 187,
+      "w": 50
+    }
+  },
+  "jumps": [
+    {
+      "target": 14,
+      "phase": 3,
+      "style": "levitating_grimoire",
+      "dt": 0.5,
+      "launchX": -159,
+      "frames": 134,
+      "feet": 187,
+      "surface": 187
+    },
+    {
+      "target": 14,
+      "phase": 3,
+      "style": "levitating_grimoire",
+      "dt": 1,
+      "launchX": -166,
+      "frames": 66,
+      "feet": 187,
+      "surface": 187
+    },
+    {
+      "target": 14,
+      "phase": 3,
+      "style": "levitating_grimoire",
+      "dt": 1.2,
+      "launchX": -166,
+      "frames": 55,
+      "feet": 187,
+      "surface": 187
+    }
+  ],
+  "contacts": null
+}

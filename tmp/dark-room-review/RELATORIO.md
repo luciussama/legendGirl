@@ -1,92 +1,64 @@
-# Revisão artística e validação funcional
+## Plataforma 20 — armário de parede completo
 
-## Resultado atual
+O beiral existente agora integra um armário suspenso de madeira com duas portas, painéis, dobradiças, puxadores e fixações inferiores. O desenho do beiral e o apoio físico permanecem na posição original: x=4300, y=156, largura=72. Não foram criadas novas colisões ou linhas auxiliares de pouso.
 
-As 38 plataformas foram revistas segundo `assets/art/dark-room/environment-assets-concept.png`. Castelo e pião receberam PNGs novos; os elementos procedurais da fase 3 foram redesenhados com materiais, contornos, texturas e detalhes. Assets recentes adequados foram mantidos. Foram preservados os detalhes de mobiliário que entraram na revisão `7579102` durante o trabalho.
+Capturas atualizadas: `../dark-room/review/20-scene.png`, `20-hitbox.png`, `20-support.png`. Suíte aprovada (`testes-armario.txt`); 63 cenários até a plataforma 20 e três saídas para a 21 aprovados no navegador. Física e estados preservados por SHA-256.
 
-A linguagem adotada usa luz âmbar, madeira escura, tecidos envelhecidos, papel creme, cantaria e latão. Não foram recebidos anexos adicionais nesta rodada; a comparação usa o conceito oficial e as capturas existentes.
+## Relógio cuco (19) — apoio integrado à fixação
 
-**Física preservada byte a byte:** `game.js`, `config.js`, os dois módulos de estado, `BabyRenderer.js` e a referência de física. Nenhuma hitbox, coordenada funcional, gravidade, velocidade ou janela de salto foi alterada. Mudanças estão nos renderizadores, manifesto, assets, testes e evidências.
+Relógio suspenso por fixação central sob uma estrutura de madeira com travessa, parafusos e mãos-francesas. O tampo dessa estrutura serve de apoio para os pés, conforme exceção visual autorizada. Apoio físico preservado em x=3980, y=168, largura=75. A métrica visual da auditoria anterior para o cuco está superada.
 
-## Validações
+Capturas atuais: `../dark-room/review/19-scene.png`, `19-hitbox.png` e `19-support.png`. Suíte aprovada (`testes-cuco.txt`); 60 cenários de chegada e três saídas para a plataforma 20 aprovados no navegador. Física e estados preservados por SHA-256.
 
-- 114 transições no loop real: 38 destinos × dt 0,5/1/1,2, incluindo fase 3.
-- 900 frames de espera no castelo e salto assistido exclusivo dessa saída passaram.
-- 38 superfícies × 3 ticks: 100% das colunas com arte opaca a até 1 px da linha física. Complementado por inspeção visual: alfa sozinho não prova material sólido.
-- Testes de hitbox, progressão, contato dos sapatos e manifesto passaram.
-- As 22 revisões antigas foram regeneradas em `../dark-room/review`, incluindo cenas, hitboxes, detalhes e JSONs. Fase 3 nas capturas 2/3 e em `runtime-metricas.json`.
+## Fixação da pipa — referência com ganchos
 
-## Limitação preservada por exigência funcional
+A plataforma 15 recebeu uma tábua traseira sob o tampo, três ganchos metálicos e uma alça visível conectando a ponta da pipa ao gancho esquerdo. A pipa foi afastada do tampo para tornar a suspensão legível. O apoio continua em x=2917, y=196, largura=90. Capturas `15-scene.png`, `15-hitbox.png` e `15-support.png` atualizadas. Suíte de testes aprovada, 48 cenários de chegada e três de saída aprovados. Física e estados preservados por SHA-256.
 
-A colisão existente admite apoio por pequena sobreposição do corpo mesmo quando os sapatos estão fora da borda (5,44–8,44 px de separação na pose medida). Não foi alterada porque isso mudaria a jogabilidade. O contato central e os apoios locais foram alinhados; não se afirma que todos os pousos extremos dessa tolerância herdada tenham contato visual perfeito. O salto final da fase 3 mantém a margem anterior de 71–119 ms.
+## Atualização posterior — pipa guardada sob prateleira (plataforma 15)
 
-## Comparação por elemento
+A pipa existente foi preservada e reposicionada visualmente abaixo de uma prateleira sólida de madeira, presa por um cordão curto. A personagem caminha no tampo da prateleira. Apoio físico inalterado: x=2917, y=196, largura=90. Sem marcadores de salto sobrepostos ao desenho. A classificação visual histórica da pipa abaixo refere-se ao estado anterior.
 
-|Fase/índice|Elemento|Auditoria anterior|Atualização e motivo|
-|---|---|---|---|
-|1/0|giant_bear|Válida|Mantido: urso ilustrado recente.|
-|1/1|open_books|Suspeita|Borda de papel nivelada com páginas texturizadas.|
-|1/2|vanity_table|Válida|Mantido: tampo e acessórios ilustrados recentes.|
-|1/3|small_dresser|Suspeita|Acabamento de madeira no plano do tampo.|
-|1/4|messy_blocks|Suspeita|Face de apoio do bloco A nivelada nos 50 px existentes.|
-|1/5|toy_drum|Válida|Mantido: aro e tambor ilustrado.|
-|1/6|satin_cushion|Válida|Mantido: veludo recente e apoio revalidado.|
-|1/7|stepped_dresser|Suspeita|Acabamento do tampo alinhado a toda a largura física.|
-|1/8|music_box|Válida|Mantido: caixa, bailarina e vidro recentes.|
-|1/9|block_castle|Válida|Novo PNG de cantaria ilustrada e bandeira; torre central mantém apoio de 28 px.|
-|2/10|train_trestle|Válida|Trem atrás de tampo contínuo; detalhes da mesa nova preservados.|
-|2/11|wall_shelf|Válida|Prateleira com frente contínua e suportes abaixo dos brinquedos.|
-|2/12|mushroom_lamp|Válida|Abajur atrás de prateleira de madeira, com suportes abaixo.|
-|2/13|dollhouse_roof|Válida|Fachada detalhada da revisão recente preservada; cumeeira revalidada.|
-|2/14|spinning_globe|Válida|Travessa ligada a uma armação de latão.|
-|2/15|kite_frame|Válida|Travessa ligada à pipa por amarrações.|
-|2/16|floating_books|Suspeita|Livro remodelado com capa, páginas, lombada e marcador, sem apoio no vazio.|
-|2/17|chandelier_crystals|Suspeita|Aro alinhado aos pés; velas atrás e cristais abaixo.|
-|2/18|curtain_rod|Suspeita|Varão de latão nivelado.|
-|2/19|cuckoo_clock|Suspeita|Apoio de madeira com suportes ligados ao corpo do relógio.|
-|2/20|wardrobe_ledge|Válida|Mantido: beiral recente.|
-|2/21|grand_portal_pedestal|Inválida|Pedestal alinhado aos pés, arco acima e recorte vizinho removido.|
-|3/0|toppled_blocks|Suspeita|Blocos com pintura gasta, letras, madeira e faces niveladas.|
-|3/1|floppy_ragdoll|Suspeita|Boneca com rosto, lã, tecido sombreado e costuras; vestido dobrado como apoio.|
-|3/2|spilled_crayons_box|Válida|Caixa de madeira com giz revestido em papel e sombreado.|
-|3/3|crooked_fairytales|Suspeita|Capas, páginas, cantoneiras e topo contínuo.|
-|3/4|dented_drum|Válida|Corpo, cordas e aros de latão texturizados.|
-|3/5|slumped_bear|Suspeita|Urso ilustrado oficial reaproveitado na escala local.|
-|3/6|tilted_xylophone|Suspeita|Lâminas envelhecidas, fixações e base de madeira contínua.|
-|3/7|derailed_train|Inválida|Trem ilustrado sobre pequeno estrado.|
-|3/8|wobbly_card_house|Inválida|Cartas com volume e teto de carta horizontal.|
-|3/9|leaning_music_box|Inválida|Caixa com painel, ornamentos dourados e tampa nivelada.|
-|3/10|loose_robot|Válida|Metal envelhecido, olhos de vidro, rebites e topo plano.|
-|3/11|spinning_top|Suspeita|Novo PNG de madeira e latão com topo adaptado à hitbox.|
-|3/12|floating_spool|Válida|Madeira, fio texturizado e fita abaixo da tampa estável.|
-|3/13|unbalanced_mobile|Suspeita|Travessa estável com ornamentos animados abaixo.|
-|3/14|levitating_grimoire|Suspeita|Capa, páginas, marcador e cantoneiras; somente o brilho oscila.|
-|3/15|true_portal_balcony|Suspeita|Portal ilustrado substitui retângulos antigos; pedestal no apoio existente.|
+Evidências atuais: `../dark-room/review/15-scene.png`, `15-hitbox.png` e `15-support.png`. Suíte `verify:dark-room` aprovada; navegador: 48 cenários até a plataforma 15 e três saídas para a 16 aprovados. Contato dos pés confirmado nas três posições de apoio. Física e arquivos de estado idênticos por SHA-256. Registro: `testes-pipa.txt`.
 
-## Evidências
+## Atualização posterior — globo sobre mesa (plataforma 14)
 
-- [Galeria antes/depois](evidencias.html).
-- `visual-grupo-0.png` a `visual-grupo-3.png`: todas as plataformas atualizadas.
-- `antes/`: comparação histórica com a auditoria original.
-- `metricas-visuais.json`: dados novos por coluna/tick; `plataformas-consolidado.json`: alterações por elemento.
-- `metricas-saltos.json` e `transicoes.csv`: medidas anteriores revalidadas por identidade do código físico e testes de navegação.
-- `runtime-metricas.json`: 114 aterrissagens observadas no navegador.
-- `integridade-final.json` e `fisica-validacao.txt`: prova da preservação funcional.
+Novo sprite baseado na referência enviada: globo azul e oliva com suporte dourado sobre mesa de madeira. A personagem caminha na frente do globo, sobre o tampo. Apoio físico preservado: x=2687, y=218, largura=95. Nenhum traço auxiliar foi acrescentado. Capturas atuais: `../dark-room/review/14-scene.png`, `14-hitbox.png` e `14-support.png`. A medição visual histórica de 9,5% abaixo refere-se ao sprite anterior e está superada por esta atualização; não representa a mesa atual.
 
-## Produção da arte e limites
+Validação: suíte `verify:dark-room` aprovada; 45 cenários de chegada até a plataforma 14 e três cenários de saída para a 15 aprovados no navegador. Física e arquivos de estado preservados por comparação SHA-256. Testes em `testes-globo.txt`.
 
-Gerados `assets/art/dark-room/modern/block_castle.png` e `spinning_top.png` pela imagegen integrada. A ferramenta atingiu o limite depois dessas duas imagens; o restante foi concluído com sprites oficiais e desenhos nativos do Canvas. Nenhuma API alternativa foi usada. Prompts e proveniência em `assets/art/dark-room/modern/README.md`.
+# Avaliação das condições atuais
 
-A cobertura raster usa três instantes de animação, não prova todas as oclusões/câmeras. Os testes de navegador buscam uma saída válida por transição; as taxas do CSV vêm da varredura de posições anterior, não de testes humanos. A limitação corporal de borda acima continua documentada, apesar da melhora do apoio visual.
+Coleta: 2026-09-25T15:44:07.610933+00:00. Nenhum código, sprite, parâmetro físico ou hitbox foi alterado nesta revisão. O caminho `src/tmp` não existe neste checkout; as evidências atuais estão em `tmp/dark-room` e `tmp/dark-room-review`.
 
-## Porta falsa aprovada — aplicada
+## Cobertura e método
 
-O quadro `assets/art/dark-room/corrections/false_door.png` substitui o portal luminoso da primeira saída. O arco decorativo antigo foi removido nessa plataforma; a base e sua linha de apoio em y=148 permanecem. O quadro mantém sua proporção original e acompanha os valores existentes de rotação e queda durante a revelação. O portal verdadeiro da fase 3 conserva seu desenho.
+38 plataformas: 22 nas fases 1/2 e 16 na fase 3. Cada uma possui captura de cenário, hitbox e detalhe dos pés nas posições esquerda/centro/direita. As primeiras 22 também possuem painéis e imagens individuais de posição em `gameplay-inspection`. A saída do castelo inclui espera, decolagem, voo e pouso em `reviewed`.
 
-Evidência atual: `../dark-room/review/21-scene.png`, `21-hitbox.png` e `21-support.png`. Validação: 66 cenários de salto no navegador até a primeira saída, todos aprovados; contato final dos pés em y=148. `npm run verify:dark-room` e `npm run check-assets` aprovados. Os seis arquivos protegidos pelo manifesto `fisica-antes.sha256` continuam com hashes idênticos. Registro dos testes: `testes-porta.txt`.
+As capturas usam o jogo real com instrumentação de inspeção já existente, que posiciona a personagem nos estados avaliados. Não representam uma partida humana contínua. Linhas verdes são sobreposições técnicas de diagnóstico; as imagens `*-scene.png` estão sem elas. Os painéis de grupos isolam plataformas; a porta falsa aparece nas capturas de cenário da plataforma 21.
 
-## Remoção de traços artificiais sobre os objetos
+114 cenários de salto (38 destinos × dt 0,5 / 1 / 1,2) encontraram pouso válido, com os pés físicos na altura de apoio. A varredura adicional testa lançamentos a cada 1 px, incluindo sobreposição corporal de 37 px nas bordas. Todos os destinos são alcançáveis na amostragem. A taxa geométrica não é taxa de sucesso de jogadores e não comprova dificuldade adequada. Dados completos em `metricas-saltos.json` e `transicoes.csv`.
 
-Removida a aplicação genérica de barras de contato sobre sprites (incluindo livros, banquinho, ABC e estante), assim como a linha luminosa auxiliar dos desenhos procedurais. Os tampos e prateleiras estruturais permanecem. A proibição de acrescentar marcadores de pouso sobre ilustrações foi registrada em `AGENTS.md`.
+No último salto da fase 3, a taxa geométrica varia de 17,24% a 28,74%; a faixa entre o primeiro e o último lançamento bem-sucedido varia de 14 a 24 px.
 
-Verificação: suíte `verify:dark-room` aprovada (`testes-sem-tracos.txt`); 15 cenários de salto no navegador até os blocos ABC aprovados; imagem atual em `../dark-room/review/04-scene.png`. Os seis hashes de física protegidos permanecem idênticos.
+## Discrepâncias visuais observadas
+
+A medição procura pixels com alfa ≥128 em cada coluna do apoio, nos ticks 0, 8 e 24, até 32 px acima ou abaixo. Cobertura menor que 99% é sinalizada como suspeita para inspeção visual, sem declarar automaticamente colisão inválida. Valores positivos de offset indicam pixels abaixo da linha física. Não foram adicionadas barras para ocultar diferenças.
+
+| Fase | Índice | Objeto | Cobertura em ±1 px | Offset mínimo/máximo (px) |
+|---|---:|---|---:|---:|
+| 1 | 1 | open_books | 24.5% | 0 / 26 |
+| 1 | 3 | small_dresser | 81.7% | 0 / 10 |
+| 1 | 4 | messy_blocks | 58.0% | 0 / 9 |
+| 2 | 14 | spinning_globe | 9.5% | 0 / 32 |
+| 2 | 15 | kite_frame | 0.0% | 2 / 22 |
+| 2 | 17 | chandelier_crystals | 98.8% | 0 / 1 |
+| 2 | 18 | curtain_rod | 77.6% | 0 / 4 |
+| 2 | 19 | cuckoo_clock | 1.3% | 1 / 30 |
+| 2 | 21 | grand_portal_pedestal | 95.9% | 0 / 10 |
+| 3 | 15 | true_portal_balcony | 95.9% | 0 / 10 |
+
+Demais plataformas: cobertura ≥99% nesta amostragem, sem garantia de coincidência em todas as poses. Pixels decorativos podem interferir na métrica; as imagens devem ser avaliadas junto dos dados. Não foi medida taxa humana nem margem temporal de reação.
+
+## Verificação
+
+`npm run verify:dark-room` e `npm run check-assets` aprovados. Integridade comparada ao início desta execução em `integridade-final.json`. Evidências antigas de comparação foram retiradas para evitar mistura de estados; os relatórios e as capturas atuais substituem os anteriores. Nenhuma correção foi executada.

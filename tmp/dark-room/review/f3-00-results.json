@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:13.910Z",
+  "phase": 3,
+  "index": 0,
+  "geometry": {
+    "x": 4040,
+    "y": 420,
+    "w": 130,
+    "h": 50,
+    "style": "toppled_blocks",
+    "label": "1/15 Pilha de Blocos Tombada",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": 4040,
+      "y": 420,
+      "w": 130
+    }
+  },
+  "jumps": [
+    {
+      "target": 0,
+      "phase": 3,
+      "style": "toppled_blocks",
+      "dt": 0.5,
+      "launchX": 4292,
+      "frames": 94,
+      "feet": 420,
+      "surface": 420
+    },
+    {
+      "target": 0,
+      "phase": 3,
+      "style": "toppled_blocks",
+      "dt": 1,
+      "launchX": 4289,
+      "frames": 46,
+      "feet": 420,
+      "surface": 420
+    },
+    {
+      "target": 0,
+      "phase": 3,
+      "style": "toppled_blocks",
+      "dt": 1.2,
+      "launchX": 4288,
+      "frames": 38,
+      "feet": 420,
+      "surface": 420
+    }
+  ],
+  "contacts": null
+}

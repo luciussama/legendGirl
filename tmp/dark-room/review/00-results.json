@@ -1,99 +1,58 @@
 {
-  "results": [
+  "capturedAt": "2026-09-25T15:41:07.390Z",
+  "phase": 1,
+  "index": 0,
+  "geometry": {
+    "x": 220,
+    "y": 410,
+    "w": 120,
+    "h": 60,
+    "style": "giant_bear",
+    "label": "Cabeça do Urso de Pelúcia",
+    "lightAlpha": 0.999999998764606,
+    "isLanded": true,
+    "support": {
+      "x": 220,
+      "y": 410,
+      "w": 120
+    }
+  },
+  "jumps": [
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 0.5,
-        "launchX": 121,
-        "frames": 86,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 0.5,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 0,
+      "phase": 1,
+      "style": "giant_bear",
+      "dt": 0.5,
+      "launchX": 121,
+      "frames": 86,
+      "feet": 410,
+      "surface": 410
     },
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 1,
-        "launchX": 121,
-        "frames": 43,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 1,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 0,
+      "phase": 1,
+      "style": "giant_bear",
+      "dt": 1,
+      "launchX": 121,
+      "frames": 43,
+      "feet": 410,
+      "surface": 410
     },
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 1.2,
-        "launchX": 123,
-        "frames": 35,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 1.2,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 0,
+      "phase": 1,
+      "style": "giant_bear",
+      "dt": 1.2,
+      "launchX": 123,
+      "frames": 35,
+      "feet": 410,
+      "surface": 410
     }
   ],
-  "outgoing": [
-    {
-      "target": 1,
-      "phase": 1,
-      "style": "open_books",
-      "dt": 0.5,
-      "launchX": 268,
-      "frames": 105,
-      "feet": 414,
-      "surface": 414
-    },
-    {
-      "target": 1,
-      "phase": 1,
-      "style": "open_books",
-      "dt": 1,
-      "launchX": 268,
-      "frames": 53,
-      "feet": 414,
-      "surface": 414
-    },
-    {
-      "target": 1,
-      "phase": 1,
-      "style": "open_books",
-      "dt": 1.2,
-      "launchX": 269,
-      "frames": 43,
-      "feet": 414,
-      "surface": 414
-    }
-  ]
+  "contacts": {
+    "target": 0,
+    "dt": 1,
+    "drops": 3,
+    "stableFrames": 8
+  }
 }

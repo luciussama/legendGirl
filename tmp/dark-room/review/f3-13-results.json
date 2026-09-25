@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:16.614Z",
+  "phase": 3,
+  "index": 13,
+  "geometry": {
+    "x": -159,
+    "y": 201,
+    "w": 56,
+    "h": 269,
+    "style": "unbalanced_mobile",
+    "label": "14/15 Móbile Desequilibrado",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": -159,
+      "y": 201,
+      "w": 56
+    }
+  },
+  "jumps": [
+    {
+      "target": 13,
+      "phase": 3,
+      "style": "unbalanced_mobile",
+      "dt": 0.5,
+      "launchX": 325,
+      "frames": 131,
+      "feet": 201,
+      "surface": 201
+    },
+    {
+      "target": 13,
+      "phase": 3,
+      "style": "unbalanced_mobile",
+      "dt": 1,
+      "launchX": 322,
+      "frames": 65,
+      "feet": 201,
+      "surface": 201
+    },
+    {
+      "target": 13,
+      "phase": 3,
+      "style": "unbalanced_mobile",
+      "dt": 1.2,
+      "launchX": 320,
+      "frames": 54,
+      "feet": 201,
+      "surface": 201
+    }
+  ],
+  "contacts": null
+}

@@ -1,162 +1,58 @@
 {
-  "results": [
+  "capturedAt": "2026-09-25T15:41:07.637Z",
+  "phase": 1,
+  "index": 1,
+  "geometry": {
+    "x": 380,
+    "y": 414,
+    "w": 110,
+    "h": 65,
+    "style": "open_books",
+    "label": "Pilha de Livros Ilustrados",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": 380,
+      "y": 414,
+      "w": 110
+    }
+  },
+  "jumps": [
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 0.5,
-        "launchX": 121,
-        "frames": 86,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 0.5,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 1,
+      "phase": 1,
+      "style": "open_books",
+      "dt": 0.5,
+      "launchX": 268,
+      "frames": 105,
+      "feet": 414,
+      "surface": 414
     },
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 1,
-        "launchX": 121,
-        "frames": 43,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 1,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 1,
+      "phase": 1,
+      "style": "open_books",
+      "dt": 1,
+      "launchX": 268,
+      "frames": 53,
+      "feet": 414,
+      "surface": 414
     },
     {
-      "jump": {
-        "target": 0,
-        "phase": 1,
-        "style": "giant_bear",
-        "dt": 1.2,
-        "launchX": 123,
-        "frames": 35,
-        "feet": 410,
-        "surface": 410
-      },
-      "contacts": {
-        "target": 0,
-        "dt": 1.2,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
-    },
-    {
-      "jump": {
-        "target": 1,
-        "phase": 1,
-        "style": "open_books",
-        "dt": 0.5,
-        "launchX": 268,
-        "frames": 105,
-        "feet": 414,
-        "surface": 414
-      },
-      "contacts": {
-        "target": 1,
-        "dt": 0.5,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
-    },
-    {
-      "jump": {
-        "target": 1,
-        "phase": 1,
-        "style": "open_books",
-        "dt": 1,
-        "launchX": 268,
-        "frames": 53,
-        "feet": 414,
-        "surface": 414
-      },
-      "contacts": {
-        "target": 1,
-        "dt": 1,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
-    },
-    {
-      "jump": {
-        "target": 1,
-        "phase": 1,
-        "style": "open_books",
-        "dt": 1.2,
-        "launchX": 269,
-        "frames": 43,
-        "feet": 414,
-        "surface": 414
-      },
-      "contacts": {
-        "target": 1,
-        "dt": 1.2,
-        "drops": 3,
-        "stableFrames": 8
-      },
-      "visual": {
-        "checked": false
-      }
+      "target": 1,
+      "phase": 1,
+      "style": "open_books",
+      "dt": 1.2,
+      "launchX": 269,
+      "frames": 43,
+      "feet": 414,
+      "surface": 414
     }
   ],
-  "outgoing": [
-    {
-      "target": 2,
-      "phase": 1,
-      "style": "vanity_table",
-      "dt": 0.5,
-      "launchX": 422,
-      "frames": 99,
-      "feet": 393,
-      "surface": 393
-    },
-    {
-      "target": 2,
-      "phase": 1,
-      "style": "vanity_table",
-      "dt": 1,
-      "launchX": 423,
-      "frames": 49,
-      "feet": 393,
-      "surface": 393
-    },
-    {
-      "target": 2,
-      "phase": 1,
-      "style": "vanity_table",
-      "dt": 1.2,
-      "launchX": 423,
-      "frames": 41,
-      "feet": 393,
-      "surface": 393
-    }
-  ]
+  "contacts": {
+    "target": 1,
+    "dt": 1,
+    "drops": 3,
+    "stableFrames": 8
+  }
 }

@@ -1,3 +1,4 @@
+Coleta atual: 2026-09-25T15:44:07.610933+00:00
 
 > o-quarto-dos-brinquedos@1.0.0 verify:dark-room
 > node scripts/verify-dark-room.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js

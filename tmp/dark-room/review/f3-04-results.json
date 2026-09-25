@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:14.734Z",
+  "phase": 3,
+  "index": 4,
+  "geometry": {
+    "x": 3160,
+    "y": 348,
+    "w": 105,
+    "h": 122,
+    "style": "dented_drum",
+    "label": "5/15 Tamborzinho Amassado",
+    "lightAlpha": 0.9996928013855909,
+    "isLanded": true,
+    "support": {
+      "x": 3160,
+      "y": 348,
+      "w": 105
+    }
+  },
+  "jumps": [
+    {
+      "target": 4,
+      "phase": 3,
+      "style": "dented_drum",
+      "dt": 0.5,
+      "launchX": 3446,
+      "frames": 107,
+      "feet": 348,
+      "surface": 348
+    },
+    {
+      "target": 4,
+      "phase": 3,
+      "style": "dented_drum",
+      "dt": 1,
+      "launchX": 3446,
+      "frames": 53,
+      "feet": 348,
+      "surface": 348
+    },
+    {
+      "target": 4,
+      "phase": 3,
+      "style": "dented_drum",
+      "dt": 1.2,
+      "launchX": 3446,
+      "frames": 44,
+      "feet": 348,
+      "surface": 348
+    }
+  ],
+  "contacts": null
+}

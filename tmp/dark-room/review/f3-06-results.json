@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:15.156Z",
+  "phase": 3,
+  "index": 6,
+  "geometry": {
+    "x": 2602,
+    "y": 313,
+    "w": 90,
+    "h": 157,
+    "style": "tilted_xylophone",
+    "label": "7/15 Xilofone Colorido Inclinado",
+    "lightAlpha": 0.9997975310692903,
+    "isLanded": true,
+    "support": {
+      "x": 2602,
+      "y": 313,
+      "w": 90
+    }
+  },
+  "jumps": [
+    {
+      "target": 6,
+      "phase": 3,
+      "style": "tilted_xylophone",
+      "dt": 0.5,
+      "launchX": 2922,
+      "frames": 112,
+      "feet": 313,
+      "surface": 313
+    },
+    {
+      "target": 6,
+      "phase": 3,
+      "style": "tilted_xylophone",
+      "dt": 1,
+      "launchX": 2922,
+      "frames": 56,
+      "feet": 313,
+      "surface": 313
+    },
+    {
+      "target": 6,
+      "phase": 3,
+      "style": "tilted_xylophone",
+      "dt": 1.2,
+      "launchX": 2922,
+      "frames": 46,
+      "feet": 313,
+      "surface": 313
+    }
+  ],
+  "contacts": null
+}

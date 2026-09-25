@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:17.145Z",
+  "phase": 3,
+  "index": 15,
+  "geometry": {
+    "x": -1419,
+    "y": 144,
+    "w": 270,
+    "h": 326,
+    "style": "true_portal_balcony",
+    "label": "O Verdadeiro Portal dos Sonhos",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": -1419,
+      "y": 144,
+      "w": 270
+    }
+  },
+  "jumps": [
+    {
+      "target": 15,
+      "phase": 3,
+      "style": "true_portal_balcony",
+      "dt": 0.5,
+      "launchX": -682,
+      "frames": 130,
+      "feet": 144,
+      "surface": 144
+    },
+    {
+      "target": 15,
+      "phase": 3,
+      "style": "true_portal_balcony",
+      "dt": 1,
+      "launchX": -689,
+      "frames": 64,
+      "feet": 144,
+      "surface": 144
+    },
+    {
+      "target": 15,
+      "phase": 3,
+      "style": "true_portal_balcony",
+      "dt": 1.2,
+      "launchX": -692,
+      "frames": 53,
+      "feet": 144,
+      "surface": 144
+    }
+  ],
+  "contacts": null
+}

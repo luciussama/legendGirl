@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:14.532Z",
+  "phase": 3,
+  "index": 3,
+  "geometry": {
+    "x": 3410,
+    "y": 366,
+    "w": 110,
+    "h": 104,
+    "style": "crooked_fairytales",
+    "label": "4/15 Pilha Torta de Contos de Fada",
+    "lightAlpha": 0.9996370526767379,
+    "isLanded": true,
+    "support": {
+      "x": 3410,
+      "y": 366,
+      "w": 110
+    }
+  },
+  "jumps": [
+    {
+      "target": 3,
+      "phase": 3,
+      "style": "crooked_fairytales",
+      "dt": 0.5,
+      "launchX": 3676,
+      "frames": 105,
+      "feet": 366,
+      "surface": 366
+    },
+    {
+      "target": 3,
+      "phase": 3,
+      "style": "crooked_fairytales",
+      "dt": 1,
+      "launchX": 3676,
+      "frames": 52,
+      "feet": 366,
+      "surface": 366
+    },
+    {
+      "target": 3,
+      "phase": 3,
+      "style": "crooked_fairytales",
+      "dt": 1.2,
+      "launchX": 3676,
+      "frames": 43,
+      "feet": 366,
+      "surface": 366
+    }
+  ],
+  "contacts": null
+}

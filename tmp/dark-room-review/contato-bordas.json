@@ -1,2358 +1,610 @@
-[
-  {
-    "phase": 1,
-    "index": 0,
-    "style": "giant_bear",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 183,
-        "shoeLeft": 189.44411509630416,
-        "shoeRight": 211.55588490369584,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.44411509630416
+{
+  "capturedAt": "2026-09-25T15:44:07.610933+00:00",
+  "method": "Capturas esquerda/centro/direita em *-support.png. Checagem dinâmica de três quedas e oito frames estáveis nas primeiras 22 plataformas; fase 3 documentada por capturas e saltos. Sem inferir que todos os pixels dos sapatos estão apoiados.",
+  "platforms": [
+    {
+      "phase": 1,
+      "index": 0,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 261,
-        "shoeLeft": 267.4441150963042,
-        "shoeRight": 289.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 339,
-        "shoeLeft": 345.4441150963042,
-        "shoeRight": 367.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304188
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 183,
-        "shoeLeft": 192.44411509630416,
-        "shoeRight": 214.55588490369584,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304159
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 261,
-        "shoeLeft": 270.4441150963042,
-        "shoeRight": 292.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 339,
-        "shoeLeft": 348.4441150963042,
-        "shoeRight": 370.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304188
+      "dynamicContacts": {
+        "target": 0,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 1,
-    "style": "open_books",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 343,
-        "shoeLeft": 349.4441150963042,
-        "shoeRight": 371.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304188
+    },
+    {
+      "phase": 1,
+      "index": 1,
+      "visual": {
+        "coverageWithin1pxPct": 24.545454545454547,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 26,
+        "missingWithin32px": 3,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 416,
-        "shoeLeft": 422.4441150963042,
-        "shoeRight": 444.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 489,
-        "shoeLeft": 495.4441150963042,
-        "shoeRight": 517.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304188
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 343,
-        "shoeLeft": 352.4441150963042,
-        "shoeRight": 374.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304188
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 416,
-        "shoeLeft": 425.4441150963042,
-        "shoeRight": 447.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 489,
-        "shoeLeft": 498.4441150963042,
-        "shoeRight": 520.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304188
+      "dynamicContacts": {
+        "target": 1,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 2,
-    "style": "vanity_table",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 493,
-        "shoeLeft": 499.4441150963042,
-        "shoeRight": 521.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 2,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 1,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 573.5,
-        "shoeLeft": 579.9441150963041,
-        "shoeRight": 602.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 654,
-        "shoeLeft": 660.4441150963041,
-        "shoeRight": 682.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 493,
-        "shoeLeft": 502.4441150963042,
-        "shoeRight": 524.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 573.5,
-        "shoeLeft": 582.9441150963041,
-        "shoeRight": 605.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 654,
-        "shoeLeft": 663.4441150963041,
-        "shoeRight": 685.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 2,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 3,
-    "style": "small_dresser",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 658,
-        "shoeLeft": 664.4441150963041,
-        "shoeRight": 686.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 3,
+      "visual": {
+        "coverageWithin1pxPct": 81.73913043478261,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 10,
+        "missingWithin32px": 0,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 733.5,
-        "shoeLeft": 739.9441150963041,
-        "shoeRight": 762.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 809,
-        "shoeLeft": 815.4441150963041,
-        "shoeRight": 837.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 658,
-        "shoeLeft": 667.4441150963041,
-        "shoeRight": 689.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 733.5,
-        "shoeLeft": 742.9441150963041,
-        "shoeRight": 765.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 809,
-        "shoeLeft": 818.4441150963041,
-        "shoeRight": 840.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 3,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 4,
-    "style": "messy_blocks",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 844,
-        "shoeLeft": 850.4441150963041,
-        "shoeRight": 872.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 4,
+      "visual": {
+        "coverageWithin1pxPct": 58,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 9,
+        "missingWithin32px": 0,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 887,
-        "shoeLeft": 893.4441150963041,
-        "shoeRight": 915.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 930,
-        "shoeLeft": 936.4441150963041,
-        "shoeRight": 958.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 844,
-        "shoeLeft": 853.4441150963041,
-        "shoeRight": 875.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 887,
-        "shoeLeft": 896.4441150963041,
-        "shoeRight": 918.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 930,
-        "shoeLeft": 939.4441150963041,
-        "shoeRight": 961.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 4,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 5,
-    "style": "toy_drum",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 993,
-        "shoeLeft": 999.4441150963041,
-        "shoeRight": 1021.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 5,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1046.5,
-        "shoeLeft": 1052.9441150963041,
-        "shoeRight": 1075.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1100,
-        "shoeLeft": 1106.4441150963041,
-        "shoeRight": 1128.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 993,
-        "shoeLeft": 1002.4441150963041,
-        "shoeRight": 1024.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1046.5,
-        "shoeLeft": 1055.9441150963041,
-        "shoeRight": 1078.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1100,
-        "shoeLeft": 1109.4441150963041,
-        "shoeRight": 1131.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 5,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 6,
-    "style": "satin_cushion",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1166,
-        "shoeLeft": 1172.4441150963041,
-        "shoeRight": 1194.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 6,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 1,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1206,
-        "shoeLeft": 1212.4441150963041,
-        "shoeRight": 1234.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1246,
-        "shoeLeft": 1252.4441150963041,
-        "shoeRight": 1274.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1166,
-        "shoeLeft": 1175.4441150963041,
-        "shoeRight": 1197.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1206,
-        "shoeLeft": 1215.4441150963041,
-        "shoeRight": 1237.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1246,
-        "shoeLeft": 1255.4441150963041,
-        "shoeRight": 1277.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 6,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 7,
-    "style": "stepped_dresser",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1288,
-        "shoeLeft": 1294.4441150963041,
-        "shoeRight": 1316.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 7,
+      "visual": {
+        "coverageWithin1pxPct": 99.2,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 10,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1368.5,
-        "shoeLeft": 1374.9441150963041,
-        "shoeRight": 1397.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1449,
-        "shoeLeft": 1455.4441150963041,
-        "shoeRight": 1477.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1288,
-        "shoeLeft": 1297.4441150963041,
-        "shoeRight": 1319.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1368.5,
-        "shoeLeft": 1377.9441150963041,
-        "shoeRight": 1400.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1449,
-        "shoeLeft": 1458.4441150963041,
-        "shoeRight": 1480.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 7,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 8,
-    "style": "music_box",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1448,
-        "shoeLeft": 1454.4441150963041,
-        "shoeRight": 1476.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 8,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1511,
-        "shoeLeft": 1517.4441150963041,
-        "shoeRight": 1539.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1574,
-        "shoeLeft": 1580.4441150963041,
-        "shoeRight": 1602.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1448,
-        "shoeLeft": 1457.4441150963041,
-        "shoeRight": 1479.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1511,
-        "shoeLeft": 1520.4441150963041,
-        "shoeRight": 1542.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1574,
-        "shoeLeft": 1583.4441150963041,
-        "shoeRight": 1605.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 8,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 1,
-    "index": 9,
-    "style": "block_castle",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1599,
-        "shoeLeft": 1605.4441150963041,
-        "shoeRight": 1627.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 1,
+      "index": 9,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1631,
-        "shoeLeft": 1637.4441150963041,
-        "shoeRight": 1659.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1663,
-        "shoeLeft": 1669.4441150963041,
-        "shoeRight": 1691.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1599,
-        "shoeLeft": 1608.4441150963041,
-        "shoeRight": 1630.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1631,
-        "shoeLeft": 1640.4441150963041,
-        "shoeRight": 1662.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1663,
-        "shoeLeft": 1672.4441150963041,
-        "shoeRight": 1694.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 9,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 10,
-    "style": "train_trestle",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1823,
-        "shoeLeft": 1829.4441150963041,
-        "shoeRight": 1851.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 2,
+      "index": 10,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1898.5,
-        "shoeLeft": 1904.9441150963041,
-        "shoeRight": 1927.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1974,
-        "shoeLeft": 1980.4441150963041,
-        "shoeRight": 2002.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1823,
-        "shoeLeft": 1832.4441150963041,
-        "shoeRight": 1854.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1898.5,
-        "shoeLeft": 1907.9441150963041,
-        "shoeRight": 1930.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1974,
-        "shoeLeft": 1983.4441150963041,
-        "shoeRight": 2005.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+      "dynamicContacts": {
+        "target": 10,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 11,
-    "style": "wall_shelf",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2018,
-        "shoeLeft": 2024.4441150963041,
-        "shoeRight": 2046.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
+    },
+    {
+      "phase": 2,
+      "index": 11,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2091,
-        "shoeLeft": 2097.4441150963044,
-        "shoeRight": 2119.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2164,
-        "shoeLeft": 2170.4441150963044,
-        "shoeRight": 2192.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2018,
-        "shoeLeft": 2027.4441150963041,
-        "shoeRight": 2049.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2091,
-        "shoeLeft": 2100.4441150963044,
-        "shoeRight": 2122.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2164,
-        "shoeLeft": 2173.4441150963044,
-        "shoeRight": 2195.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 11,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 12,
-    "style": "mushroom_lamp",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2220,
-        "shoeLeft": 2226.4441150963044,
-        "shoeRight": 2248.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 12,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2290.5,
-        "shoeLeft": 2296.9441150963044,
-        "shoeRight": 2319.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2361,
-        "shoeLeft": 2367.4441150963044,
-        "shoeRight": 2389.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2220,
-        "shoeLeft": 2229.4441150963044,
-        "shoeRight": 2251.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2290.5,
-        "shoeLeft": 2299.9441150963044,
-        "shoeRight": 2322.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2361,
-        "shoeLeft": 2370.4441150963044,
-        "shoeRight": 2392.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 12,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 13,
-    "style": "dollhouse_roof",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2430,
-        "shoeLeft": 2436.4441150963044,
-        "shoeRight": 2458.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 13,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2498,
-        "shoeLeft": 2504.4441150963044,
-        "shoeRight": 2526.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2566,
-        "shoeLeft": 2572.4441150963044,
-        "shoeRight": 2594.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2430,
-        "shoeLeft": 2439.4441150963044,
-        "shoeRight": 2461.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2498,
-        "shoeLeft": 2507.4441150963044,
-        "shoeRight": 2529.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2566,
-        "shoeLeft": 2575.4441150963044,
-        "shoeRight": 2597.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 13,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 14,
-    "style": "spinning_globe",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2650,
-        "shoeLeft": 2656.4441150963044,
-        "shoeRight": 2678.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 14,
+      "visual": {
+        "coverageWithin1pxPct": 9.473684210526315,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 32,
+        "missingWithin32px": 6,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2715.5,
-        "shoeLeft": 2721.9441150963044,
-        "shoeRight": 2744.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2781,
-        "shoeLeft": 2787.4441150963044,
-        "shoeRight": 2809.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2650,
-        "shoeLeft": 2659.4441150963044,
-        "shoeRight": 2681.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2715.5,
-        "shoeLeft": 2724.9441150963044,
-        "shoeRight": 2747.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2781,
-        "shoeLeft": 2790.4441150963044,
-        "shoeRight": 2812.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 14,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 15,
-    "style": "kite_frame",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2880,
-        "shoeLeft": 2886.4441150963044,
-        "shoeRight": 2908.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 15,
+      "visual": {
+        "coverageWithin1pxPct": 0,
+        "nearestOpaqueMin": 2,
+        "nearestOpaqueMax": 22,
+        "missingWithin32px": 2,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2943,
-        "shoeLeft": 2949.4441150963044,
-        "shoeRight": 2971.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3006,
-        "shoeLeft": 3012.4441150963044,
-        "shoeRight": 3034.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2880,
-        "shoeLeft": 2889.4441150963044,
-        "shoeRight": 2911.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2943,
-        "shoeLeft": 2952.4441150963044,
-        "shoeRight": 2974.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3006,
-        "shoeLeft": 3015.4441150963044,
-        "shoeRight": 3037.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 15,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 16,
-    "style": "floating_books",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3122,
-        "shoeLeft": 3128.4441150963044,
-        "shoeRight": 3150.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 16,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3182.5,
-        "shoeLeft": 3188.9441150963044,
-        "shoeRight": 3211.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3243,
-        "shoeLeft": 3249.4441150963044,
-        "shoeRight": 3271.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3122,
-        "shoeLeft": 3131.4441150963044,
-        "shoeRight": 3153.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3182.5,
-        "shoeLeft": 3191.9441150963044,
-        "shoeRight": 3214.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3243,
-        "shoeLeft": 3252.4441150963044,
-        "shoeRight": 3274.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 16,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 17,
-    "style": "chandelier_crystals",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3377,
-        "shoeLeft": 3383.4441150963044,
-        "shoeRight": 3405.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 17,
+      "visual": {
+        "coverageWithin1pxPct": 98.75,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 1,
+        "missingWithin32px": 1,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3435,
-        "shoeLeft": 3441.4441150963044,
-        "shoeRight": 3463.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3493,
-        "shoeLeft": 3499.4441150963044,
-        "shoeRight": 3521.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3377,
-        "shoeLeft": 3386.4441150963044,
-        "shoeRight": 3408.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3435,
-        "shoeLeft": 3444.4441150963044,
-        "shoeRight": 3466.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3493,
-        "shoeLeft": 3502.4441150963044,
-        "shoeRight": 3524.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 17,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 18,
-    "style": "curtain_rod",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3649,
-        "shoeLeft": 3655.4441150963044,
-        "shoeRight": 3677.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 18,
+      "visual": {
+        "coverageWithin1pxPct": 77.63157894736842,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 4,
+        "missingWithin32px": 1,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3705,
-        "shoeLeft": 3711.4441150963044,
-        "shoeRight": 3733.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3761,
-        "shoeLeft": 3767.4441150963044,
-        "shoeRight": 3789.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3649,
-        "shoeLeft": 3658.4441150963044,
-        "shoeRight": 3680.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3705,
-        "shoeLeft": 3714.4441150963044,
-        "shoeRight": 3736.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3761,
-        "shoeLeft": 3770.4441150963044,
-        "shoeRight": 3792.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 18,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 19,
-    "style": "cuckoo_clock",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3943,
-        "shoeLeft": 3949.4441150963044,
-        "shoeRight": 3971.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+    },
+    {
+      "phase": 2,
+      "index": 19,
+      "visual": {
+        "coverageWithin1pxPct": 1.3333333333333333,
+        "nearestOpaqueMin": 1,
+        "nearestOpaqueMax": 30,
+        "missingWithin32px": 6,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3998.5,
-        "shoeLeft": 4004.9441150963044,
-        "shoeRight": 4027.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 4054,
-        "shoeLeft": 4060.4441150963044,
-        "shoeRight": 4082.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3943,
-        "shoeLeft": 3952.4441150963044,
-        "shoeRight": 3974.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3998.5,
-        "shoeLeft": 4007.9441150963044,
-        "shoeRight": 4030.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 4054,
-        "shoeLeft": 4063.4441150963044,
-        "shoeRight": 4085.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
+      "dynamicContacts": {
+        "target": 19,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 20,
-    "style": "wardrobe_ledge",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 4263,
-        "shoeLeft": 4269.444115096304,
-        "shoeRight": 4291.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096303904
+    },
+    {
+      "phase": 2,
+      "index": 20,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 1,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 4317,
-        "shoeLeft": 4323.444115096304,
-        "shoeRight": 4345.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 4371,
-        "shoeLeft": 4377.444115096304,
-        "shoeRight": 4399.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096303904
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 4263,
-        "shoeLeft": 4272.444115096304,
-        "shoeRight": 4294.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096303904
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 4317,
-        "shoeLeft": 4326.444115096304,
-        "shoeRight": 4348.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 4371,
-        "shoeLeft": 4380.444115096304,
-        "shoeRight": 4402.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096303904
+      "dynamicContacts": {
+        "target": 20,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 2,
-    "index": 21,
-    "style": "grand_portal_pedestal",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 4613,
-        "shoeLeft": 4619.444115096304,
-        "shoeRight": 4641.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096303904
+    },
+    {
+      "phase": 2,
+      "index": 21,
+      "visual": {
+        "coverageWithin1pxPct": 95.92592592592592,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 10,
+        "missingWithin32px": 6,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
       },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 4766,
-        "shoeLeft": 4772.444115096304,
-        "shoeRight": 4794.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 4919,
-        "shoeLeft": 4925.444115096304,
-        "shoeRight": 4947.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096303904
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 4613,
-        "shoeLeft": 4622.444115096304,
-        "shoeRight": 4644.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096303904
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 4766,
-        "shoeLeft": 4775.444115096304,
-        "shoeRight": 4797.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 4919,
-        "shoeLeft": 4928.444115096304,
-        "shoeRight": 4950.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096303904
+      "dynamicContacts": {
+        "target": 21,
+        "dt": 1,
+        "drops": 3,
+        "stableFrames": 8
       }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 0,
-    "style": "toppled_blocks",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 4003,
-        "shoeLeft": 4009.4441150963044,
-        "shoeRight": 4031.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 4086,
-        "shoeLeft": 4092.4441150963044,
-        "shoeRight": 4114.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 4169,
-        "shoeLeft": 4175.444115096304,
-        "shoeRight": 4197.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096303904
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 4003,
-        "shoeLeft": 4012.4441150963044,
-        "shoeRight": 4034.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 4086,
-        "shoeLeft": 4095.4441150963044,
-        "shoeRight": 4117.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 4169,
-        "shoeLeft": 4178.444115096304,
-        "shoeRight": 4200.555884903696,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096303904
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 1,
-    "style": "floppy_ragdoll",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3811,
-        "shoeLeft": 3817.4441150963044,
-        "shoeRight": 3839.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3889,
-        "shoeLeft": 3895.4441150963044,
-        "shoeRight": 3917.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3967,
-        "shoeLeft": 3973.4441150963044,
-        "shoeRight": 3995.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3811,
-        "shoeLeft": 3820.4441150963044,
-        "shoeRight": 3842.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3889,
-        "shoeLeft": 3898.4441150963044,
-        "shoeRight": 3920.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3967,
-        "shoeLeft": 3976.4441150963044,
-        "shoeRight": 3998.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 2,
-    "style": "spilled_crayons_box",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3601,
-        "shoeLeft": 3607.4441150963044,
-        "shoeRight": 3629.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3676.5,
-        "shoeLeft": 3682.9441150963044,
-        "shoeRight": 3705.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3752,
-        "shoeLeft": 3758.4441150963044,
-        "shoeRight": 3780.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3601,
-        "shoeLeft": 3610.4441150963044,
-        "shoeRight": 3632.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3676.5,
-        "shoeLeft": 3685.9441150963044,
-        "shoeRight": 3708.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3752,
-        "shoeLeft": 3761.4441150963044,
-        "shoeRight": 3783.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 3,
-    "style": "crooked_fairytales",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3373,
-        "shoeLeft": 3379.4441150963044,
-        "shoeRight": 3401.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3446,
-        "shoeLeft": 3452.4441150963044,
-        "shoeRight": 3474.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3519,
-        "shoeLeft": 3525.4441150963044,
-        "shoeRight": 3547.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3373,
-        "shoeLeft": 3382.4441150963044,
-        "shoeRight": 3404.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3446,
-        "shoeLeft": 3455.4441150963044,
-        "shoeRight": 3477.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3519,
-        "shoeLeft": 3528.4441150963044,
-        "shoeRight": 3550.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 4,
-    "style": "dented_drum",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 3123,
-        "shoeLeft": 3129.4441150963044,
-        "shoeRight": 3151.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 3193.5,
-        "shoeLeft": 3199.9441150963044,
-        "shoeRight": 3222.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 3264,
-        "shoeLeft": 3270.4441150963044,
-        "shoeRight": 3292.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 3123,
-        "shoeLeft": 3132.4441150963044,
-        "shoeRight": 3154.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 3193.5,
-        "shoeLeft": 3202.9441150963044,
-        "shoeRight": 3225.0558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 3264,
-        "shoeLeft": 3273.4441150963044,
-        "shoeRight": 3295.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 5,
-    "style": "slumped_bear",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2855,
-        "shoeLeft": 2861.4441150963044,
-        "shoeRight": 2883.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2922,
-        "shoeLeft": 2928.4441150963044,
-        "shoeRight": 2950.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2989,
-        "shoeLeft": 2995.4441150963044,
-        "shoeRight": 3017.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2855,
-        "shoeLeft": 2864.4441150963044,
-        "shoeRight": 2886.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2922,
-        "shoeLeft": 2931.4441150963044,
-        "shoeRight": 2953.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2989,
-        "shoeLeft": 2998.4441150963044,
-        "shoeRight": 3020.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 6,
-    "style": "tilted_xylophone",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2565,
-        "shoeLeft": 2571.4441150963044,
-        "shoeRight": 2593.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2628,
-        "shoeLeft": 2634.4441150963044,
-        "shoeRight": 2656.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2691,
-        "shoeLeft": 2697.4441150963044,
-        "shoeRight": 2719.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2565,
-        "shoeLeft": 2574.4441150963044,
-        "shoeRight": 2596.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2628,
-        "shoeLeft": 2637.4441150963044,
-        "shoeRight": 2659.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2691,
-        "shoeLeft": 2700.4441150963044,
-        "shoeRight": 2722.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 7,
-    "style": "derailed_train",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 2251,
-        "shoeLeft": 2257.4441150963044,
-        "shoeRight": 2279.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 2311,
-        "shoeLeft": 2317.4441150963044,
-        "shoeRight": 2339.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2371,
-        "shoeLeft": 2377.4441150963044,
-        "shoeRight": 2399.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 2251,
-        "shoeLeft": 2260.4441150963044,
-        "shoeRight": 2282.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304358
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 2311,
-        "shoeLeft": 2320.4441150963044,
-        "shoeRight": 2342.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2371,
-        "shoeLeft": 2380.4441150963044,
-        "shoeRight": 2402.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304358
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 8,
-    "style": "wobbly_card_house",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1913,
-        "shoeLeft": 1919.4441150963041,
-        "shoeRight": 1941.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1970,
-        "shoeLeft": 1976.4441150963041,
-        "shoeRight": 1998.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 2027,
-        "shoeLeft": 2033.4441150963041,
-        "shoeRight": 2055.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1913,
-        "shoeLeft": 1922.4441150963041,
-        "shoeRight": 1944.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1970,
-        "shoeLeft": 1979.4441150963041,
-        "shoeRight": 2001.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 2027,
-        "shoeLeft": 2036.4441150963041,
-        "shoeRight": 2058.5558849036956,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 9,
-    "style": "leaning_music_box",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1549,
-        "shoeLeft": 1555.4441150963041,
-        "shoeRight": 1577.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1604,
-        "shoeLeft": 1610.4441150963041,
-        "shoeRight": 1632.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1659,
-        "shoeLeft": 1665.4441150963041,
-        "shoeRight": 1687.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1549,
-        "shoeLeft": 1558.4441150963041,
-        "shoeRight": 1580.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1604,
-        "shoeLeft": 1613.4441150963041,
-        "shoeRight": 1635.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1659,
-        "shoeLeft": 1668.4441150963041,
-        "shoeRight": 1690.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 10,
-    "style": "loose_robot",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 1155,
-        "shoeLeft": 1161.4441150963041,
-        "shoeRight": 1183.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 1208,
-        "shoeLeft": 1214.4441150963041,
-        "shoeRight": 1236.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 1261,
-        "shoeLeft": 1267.4441150963041,
-        "shoeRight": 1289.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 1155,
-        "shoeLeft": 1164.4441150963041,
-        "shoeRight": 1186.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 1208,
-        "shoeLeft": 1217.4441150963041,
-        "shoeRight": 1239.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 1261,
-        "shoeLeft": 1270.4441150963041,
-        "shoeRight": 1292.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 11,
-    "style": "spinning_top",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 735,
-        "shoeLeft": 741.4441150963041,
-        "shoeRight": 763.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 785.5,
-        "shoeLeft": 791.9441150963041,
-        "shoeRight": 814.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 836,
-        "shoeLeft": 842.4441150963041,
-        "shoeRight": 864.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 735,
-        "shoeLeft": 744.4441150963041,
-        "shoeRight": 766.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 785.5,
-        "shoeLeft": 794.9441150963041,
-        "shoeRight": 817.0558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 836,
-        "shoeLeft": 845.4441150963041,
-        "shoeRight": 867.5558849036959,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 12,
-    "style": "floating_spool",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": 285,
-        "shoeLeft": 291.4441150963042,
-        "shoeRight": 313.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304188
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": 333,
-        "shoeLeft": 339.4441150963042,
-        "shoeRight": 361.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": 381,
-        "shoeLeft": 387.4441150963042,
-        "shoeRight": 409.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304188
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": 285,
-        "shoeLeft": 294.4441150963042,
-        "shoeRight": 316.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304188
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": 333,
-        "shoeLeft": 342.4441150963042,
-        "shoeRight": 364.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": 381,
-        "shoeLeft": 390.4441150963042,
-        "shoeRight": 412.5558849036958,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304188
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 13,
-    "style": "unbalanced_mobile",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": -196,
-        "shoeLeft": -189.55588490369584,
-        "shoeRight": -167.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.44411509630416
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": -150,
-        "shoeLeft": -143.55588490369584,
-        "shoeRight": -121.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": -104,
-        "shoeLeft": -97.55588490369584,
-        "shoeRight": -75.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304159
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": -196,
-        "shoeLeft": -186.55588490369584,
-        "shoeRight": -164.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304159
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": -150,
-        "shoeLeft": -140.55588490369584,
-        "shoeRight": -118.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": -104,
-        "shoeLeft": -94.55588490369584,
-        "shoeRight": -72.44411509630416,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.44411509630416
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 14,
-    "style": "levitating_grimoire",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": -706,
-        "shoeLeft": -699.5558849036959,
-        "shoeRight": -677.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": -663,
-        "shoeLeft": -656.5558849036959,
-        "shoeRight": -634.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": -620,
-        "shoeLeft": -613.5558849036959,
-        "shoeRight": -591.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": -706,
-        "shoeLeft": -696.5558849036959,
-        "shoeRight": -674.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": -663,
-        "shoeLeft": -653.5558849036959,
-        "shoeRight": -631.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": -620,
-        "shoeLeft": -610.5558849036959,
-        "shoeRight": -588.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  },
-  {
-    "phase": 3,
-    "index": 15,
-    "style": "true_portal_balcony",
-    "samples": [
-      {
-        "edge": "left",
-        "facing": -1,
-        "bodyX": -1456,
-        "shoeLeft": -1449.5558849036959,
-        "shoeRight": -1427.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": -1,
-        "bodyX": -1303,
-        "shoeLeft": -1296.5558849036959,
-        "shoeRight": -1274.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": -1,
-        "bodyX": -1150,
-        "shoeLeft": -1143.5558849036959,
-        "shoeRight": -1121.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "left",
-        "facing": 1,
-        "bodyX": -1456,
-        "shoeLeft": -1446.5558849036959,
-        "shoeRight": -1424.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 5.444115096304131
-      },
-      {
-        "edge": "center",
-        "facing": 1,
-        "bodyX": -1303,
-        "shoeLeft": -1293.5558849036959,
-        "shoeRight": -1271.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 0
-      },
-      {
-        "edge": "right",
-        "facing": 1,
-        "bodyX": -1150,
-        "shoeLeft": -1140.5558849036959,
-        "shoeRight": -1118.4441150963041,
-        "verticalOffset": 0,
-        "horizontalGapFromSupport": 8.444115096304131
-      }
-    ],
-    "artRevisionValidation": "Renderer da personagem e colisão intactos por SHA-256; offsets herdados permanecem."
-  }
-]
+    },
+    {
+      "phase": 3,
+      "index": 0,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 1,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 2,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 3,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 4,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 5,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 6,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 7,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 8,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 9,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 10,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 11,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 12,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 13,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 14,
+      "visual": {
+        "coverageWithin1pxPct": 100,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 0,
+        "missingWithin32px": 0,
+        "classification": "Válida na amostragem",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    },
+    {
+      "phase": 3,
+      "index": 15,
+      "visual": {
+        "coverageWithin1pxPct": 95.92592592592592,
+        "nearestOpaqueMin": 0,
+        "nearestOpaqueMax": 10,
+        "missingWithin32px": 6,
+        "classification": "Suspeita",
+        "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+      },
+      "dynamicContacts": null
+    }
+  ]
+}

@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:14.953Z",
+  "phase": 3,
+  "index": 5,
+  "geometry": {
+    "x": 2892,
+    "y": 330,
+    "w": 98,
+    "h": 140,
+    "style": "slumped_bear",
+    "label": "6/15 Urso de Pelúcia Desmoronado",
+    "lightAlpha": 0.9997399870927641,
+    "isLanded": true,
+    "support": {
+      "x": 2892,
+      "y": 330,
+      "w": 98
+    }
+  },
+  "jumps": [
+    {
+      "target": 5,
+      "phase": 3,
+      "style": "slumped_bear",
+      "dt": 0.5,
+      "launchX": 3193,
+      "frames": 109,
+      "feet": 330,
+      "surface": 330
+    },
+    {
+      "target": 5,
+      "phase": 3,
+      "style": "slumped_bear",
+      "dt": 1,
+      "launchX": 3193,
+      "frames": 54,
+      "feet": 330,
+      "surface": 330
+    },
+    {
+      "target": 5,
+      "phase": 3,
+      "style": "slumped_bear",
+      "dt": 1.2,
+      "launchX": 3193,
+      "frames": 45,
+      "feet": 330,
+      "surface": 330
+    }
+  ],
+  "contacts": null
+}

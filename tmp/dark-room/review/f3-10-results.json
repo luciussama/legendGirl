@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:15.963Z",
+  "phase": 3,
+  "index": 10,
+  "geometry": {
+    "x": 1192,
+    "y": 247,
+    "w": 70,
+    "h": 223,
+    "style": "loose_robot",
+    "label": "11/15 Robô de Lata Desparafusado",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
+      "x": 1192,
+      "y": 247,
+      "w": 70
+    }
+  },
+  "jumps": [
+    {
+      "target": 10,
+      "phase": 3,
+      "style": "loose_robot",
+      "dt": 0.5,
+      "launchX": 1604,
+      "frames": 124,
+      "feet": 247,
+      "surface": 247
+    },
+    {
+      "target": 10,
+      "phase": 3,
+      "style": "loose_robot",
+      "dt": 1,
+      "launchX": 1600,
+      "frames": 61,
+      "feet": 247,
+      "surface": 247
+    },
+    {
+      "target": 10,
+      "phase": 3,
+      "style": "loose_robot",
+      "dt": 1.2,
+      "launchX": 1602,
+      "frames": 51,
+      "feet": 247,
+      "surface": 247
+    }
+  ],
+  "contacts": null
+}

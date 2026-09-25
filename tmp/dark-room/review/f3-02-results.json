@@ -1,0 +1,53 @@
+{
+  "capturedAt": "2026-09-25T15:41:14.331Z",
+  "phase": 3,
+  "index": 2,
+  "geometry": {
+    "x": 3638,
+    "y": 384,
+    "w": 115,
+    "h": 86,
+    "style": "spilled_crayons_box",
+    "label": "3/15 Caixa de Giz de Cera Aberta",
+    "lightAlpha": 0.9995711869999265,
+    "isLanded": true,
+    "support": {
+      "x": 3638,
+      "y": 384,
+      "w": 115
+    }
+  },
+  "jumps": [
+    {
+      "target": 2,
+      "phase": 3,
+      "style": "spilled_crayons_box",
+      "dt": 0.5,
+      "launchX": 3889,
+      "frames": 102,
+      "feet": 384,
+      "surface": 384
+    },
+    {
+      "target": 2,
+      "phase": 3,
+      "style": "spilled_crayons_box",
+      "dt": 1,
+      "launchX": 3889,
+      "frames": 51,
+      "feet": 384,
+      "surface": 384
+    },
+    {
+      "target": 2,
+      "phase": 3,
+      "style": "spilled_crayons_box",
+      "dt": 1.2,
+      "launchX": 3889,
+      "frames": 42,
+      "feet": 384,
+      "surface": 384
+    }
+  ],
+  "contacts": null
+}

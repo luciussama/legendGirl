@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-09-23T19:47:56.829Z",
+  "timestamp": "2026-09-25T15:42:27.471Z",
   "mechanic": "Efeito de gameplay escondido para transição da Parte 2",
   "platformSource": {
     "index": 9,
@@ -19,7 +19,7 @@
     "surfaceY": 244
   },
   "babyFinalState": {
-    "x": 1890.919098463621,
+    "x": 1898.5,
     "y": 200,
     "vx": 1.75,
     "vy": 0,

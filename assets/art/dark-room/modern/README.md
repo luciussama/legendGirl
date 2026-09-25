@@ -44,3 +44,7 @@ is one game asset, not a scene or sheet.
 A geometria final do desenho foi conferida no jogo, em vez de pressupor que a
 posição solicitada no prompt foi obedecida exatamente. As regiões de apoio de
 produção não foram alteradas.
+
+
+### globe_table.png
+Sprite gerado com imagegen a partir da referência do globo sobre mesa enviada pelo usuário. Fundo transparente; globo atrás de uma faixa livre do tampo. Calibração visual: apoio do PNG em x=50..1195, y=863; resolução 1245×1263. A largura de jogo continua em 95 px. Sem linha de marcação de salto sobreposta.

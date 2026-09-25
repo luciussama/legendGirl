@@ -1,32 +1,238 @@
 {
-  "plataforma": 7,
-  "estilo": "stepped_dresser",
-  "label": "Gavetas da Cômoda",
-  "suporte": {
+  "capturedAt": "2026-09-25T15:41:09.400Z",
+  "phase": 1,
+  "index": 7,
+  "geometry": {
     "x": 1325,
+    "y": 288,
     "w": 125,
-    "y": 288
-  },
-  "posicoes": {
-    "inicio": {
+    "h": 185,
+    "style": "stepped_dresser",
+    "label": "Gavetas da Cômoda",
+    "lightAlpha": 0.9999999999999993,
+    "isLanded": true,
+    "support": {
       "x": 1325,
-      "y": 244
-    },
-    "meio": {
-      "x": 1368.5,
-      "y": 244
-    },
-    "fim": {
-      "x": 1412,
-      "y": 244
+      "y": 288,
+      "w": 125
     }
   },
-  "melhorias": [
-    "Móvel ampliado com 6 gavetas totais alcançando o chão (floorY = 450)",
-    "Pés esculpidos bracket assentados firmemente no chão",
-    "Tampa chanfrada inteira sem cortes ou barras horizontais artificiais",
-    "Perspectiva diagonal isométrica preservada com mogno maciço e verniz acetinado",
-    "Pé da personagem garantido 100% dentro dos limites do móvel (início a 12px da borda esquerda, fim a 19px antes da borda direita)",
-    "Física e jogabilidade inalteradas com todos os testes de estabilidade aprovados"
+  "jumps": [
+    {
+      "target": 7,
+      "phase": 1,
+      "style": "stepped_dresser",
+      "dt": 0.5,
+      "launchX": 1216,
+      "frames": 100,
+      "feet": 288,
+      "surface": 288
+    },
+    {
+      "target": 7,
+      "phase": 1,
+      "style": "stepped_dresser",
+      "dt": 1,
+      "launchX": 1218,
+      "frames": 49,
+      "feet": 288,
+      "surface": 288
+    },
+    {
+      "target": 7,
+      "phase": 1,
+      "style": "stepped_dresser",
+      "dt": 1.2,
+      "launchX": 1218,
+      "frames": 41,
+      "feet": 288,
+      "surface": 288
+    }
+  ],
+  "contacts": {
+    "target": 7,
+    "dt": 1,
+    "drops": 3,
+    "stableFrames": 8
+  },
+  "visual": {
+    "coverageWithin1pxPct": 99.2,
+    "nearestOpaqueMin": 0,
+    "nearestOpaqueMax": 10,
+    "missingWithin32px": 0,
+    "classification": "Válida na amostragem",
+    "method": "Pixels opacos junto ao apoio; não equivale a medição anatômica dos pés ou validação artística completa."
+  },
+  "jumpSampling": [
+    {
+      "phase": 1,
+      "target": 7,
+      "style": "stepped_dresser",
+      "dt": 0.5,
+      "from": {
+        "x": 1203,
+        "w": 44,
+        "y": 309
+      },
+      "to": {
+        "x": 1325,
+        "w": 125,
+        "y": 288
+      },
+      "horizontalGap": 78,
+      "verticalRise": 21,
+      "sampled": 81,
+      "successCount": 31,
+      "successPct": 38.27160493827161,
+      "launchMin": 1216,
+      "launchMax": 1246,
+      "successfulLaunches": [
+        1216,
+        1217,
+        1218,
+        1219,
+        1220,
+        1221,
+        1222,
+        1223,
+        1224,
+        1225,
+        1226,
+        1227,
+        1228,
+        1229,
+        1230,
+        1231,
+        1232,
+        1233,
+        1234,
+        1235,
+        1236,
+        1237,
+        1238,
+        1239,
+        1240,
+        1241,
+        1242,
+        1243,
+        1244,
+        1245,
+        1246
+      ],
+      "airSpeed": 1.42,
+      "classification": "Válida (alcançável)"
+    },
+    {
+      "phase": 1,
+      "target": 7,
+      "style": "stepped_dresser",
+      "dt": 1,
+      "from": {
+        "x": 1203,
+        "w": 44,
+        "y": 309
+      },
+      "to": {
+        "x": 1325,
+        "w": 125,
+        "y": 288
+      },
+      "horizontalGap": 78,
+      "verticalRise": 21,
+      "sampled": 81,
+      "successCount": 29,
+      "successPct": 35.80246913580247,
+      "launchMin": 1218,
+      "launchMax": 1246,
+      "successfulLaunches": [
+        1218,
+        1219,
+        1220,
+        1221,
+        1222,
+        1223,
+        1224,
+        1225,
+        1226,
+        1227,
+        1228,
+        1229,
+        1230,
+        1231,
+        1232,
+        1233,
+        1234,
+        1235,
+        1236,
+        1237,
+        1238,
+        1239,
+        1240,
+        1241,
+        1242,
+        1243,
+        1244,
+        1245,
+        1246
+      ],
+      "airSpeed": 1.42,
+      "classification": "Válida (alcançável)"
+    },
+    {
+      "phase": 1,
+      "target": 7,
+      "style": "stepped_dresser",
+      "dt": 1.2,
+      "from": {
+        "x": 1203,
+        "w": 44,
+        "y": 309
+      },
+      "to": {
+        "x": 1325,
+        "w": 125,
+        "y": 288
+      },
+      "horizontalGap": 78,
+      "verticalRise": 21,
+      "sampled": 81,
+      "successCount": 29,
+      "successPct": 35.80246913580247,
+      "launchMin": 1218,
+      "launchMax": 1246,
+      "successfulLaunches": [
+        1218,
+        1219,
+        1220,
+        1221,
+        1222,
+        1223,
+        1224,
+        1225,
+        1226,
+        1227,
+        1228,
+        1229,
+        1230,
+        1231,
+        1232,
+        1233,
+        1234,
+        1235,
+        1236,
+        1237,
+        1238,
+        1239,
+        1240,
+        1241,
+        1242,
+        1243,
+        1244,
+        1245,
+        1246
+      ],
+      "airSpeed": 1.42,
+      "classification": "Válida (alcançável)"
+    }
   ]
 }
