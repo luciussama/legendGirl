@@ -1,3 +1,4 @@
+import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
 import { createCameraController } from './controllers/CameraController.js';
@@ -1099,71 +1100,76 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     fairy.floatAngle += 0.05;
     fairy.flutterPhase += 0.35;
 
-    // Cálculo da posição de exploração do alvo
-    let targetX, targetY;
-
-    if (isPhase3) {
-      const nextIndex = baby.currentPlatformIndex + 1;
-      if (nextIndex < phase3Platforms.length) {
-        const nextPlat = phase3Platforms[nextIndex];
-        const isCloseToNext = (baby.x < nextPlat.x + nextPlat.w + 120);
-        if (isCloseToNext) {
-          targetX = nextPlat.x + nextPlat.w / 2;
-          targetY = nextPlat.y - 45;
-        } else {
-          targetX = baby.x - 75;
-          targetY = baby.y - 50;
-        }
-      } else {
-        targetX = trueExitDoor.x + 40;
-        targetY = trueExitDoor.y + 45;
-      }
+    if (isEscapeMode && !isPhase3) {
+      updateEscapeFairyGuide(fairy, getEscapeGuideTarget(baby, platforms, exitDoor), dt);
     } else {
-      const nextIndex = baby.currentPlatformIndex + 1;
-      if (nextIndex < platforms.length) {
-        const nextPlat = platforms[nextIndex];
-        const isCloseToNext = (baby.x > nextPlat.x - 120);
-        if (isCloseToNext) {
-          targetX = nextPlat.x + 35;
-          targetY = nextPlat.y - 45;
+      // Cálculo da posição de exploração do alvo
+      let targetX, targetY;
+
+      if (isPhase3) {
+        const nextIndex = baby.currentPlatformIndex + 1;
+        if (nextIndex < phase3Platforms.length) {
+          const nextPlat = phase3Platforms[nextIndex];
+          const isCloseToNext = (baby.x < nextPlat.x + nextPlat.w + 120);
+          if (isCloseToNext) {
+            targetX = nextPlat.x + nextPlat.w / 2;
+            targetY = nextPlat.y - 45;
+          } else {
+            targetX = baby.x - 75;
+            targetY = baby.y - 50;
+          }
         } else {
-          targetX = baby.x + (isEscapeMode ? 80 : 65);
-          targetY = baby.y - 50;
+          targetX = trueExitDoor.x + 40;
+          targetY = trueExitDoor.y + 45;
         }
       } else {
-        targetX = exitDoor.x + 30;
-        targetY = exitDoor.y + 40;
+        const nextIndex = baby.currentPlatformIndex + 1;
+        if (nextIndex < platforms.length) {
+          const nextPlat = platforms[nextIndex];
+          const isCloseToNext = (baby.x > nextPlat.x - 120);
+          if (isCloseToNext) {
+            targetX = nextPlat.x + 35;
+            targetY = nextPlat.y - 45;
+          } else {
+            targetX = baby.x + (isEscapeMode ? 80 : 65);
+            targetY = baby.y - 50;
+          }
+        } else {
+          targetX = exitDoor.x + 30;
+          targetY = exitDoor.y + 40;
+        }
       }
+
+      // Micro-movimentos rápidos simulando a curiosidade natural de uma fada
+      fairy.dartTimer--;
+      if (fairy.dartTimer <= 0) {
+        fairy.dartTimer = 60 + Math.floor(Math.random() * 80);
+        fairy.dartOffsetX = (Math.random() - 0.5) * 26;
+        fairy.dartOffsetY = (Math.random() - 0.5) * 18;
+      }
+
+      // Oscilações orgânicas multifrequenciais de flutuação
+      const organicOscY =
+        Math.sin(fairy.floatAngle * 2.8) * 8 +
+        Math.cos(fairy.floatAngle * 4.9) * 4 +
+        Math.sin(fairy.floatAngle * 1.2) * 6;
+
+      const organicOscX =
+        Math.cos(fairy.floatAngle * 2.1) * 7 +
+        Math.sin(fairy.floatAngle * 3.6) * 3;
+
+      const finalTargetX = targetX + organicOscX + fairy.dartOffsetX;
+      const finalTargetY = targetY + organicOscY + fairy.dartOffsetY;
+
+      fairy.vx += (finalTargetX - fairy.x) * 0.045;
+      fairy.vy += (finalTargetY - fairy.y) * 0.045;
+      fairy.vx *= 0.86;
+      fairy.vy *= 0.86;
+
+      fairy.x += fairy.vx;
+      fairy.y += fairy.vy;
+
     }
-
-    // Micro-movimentos rápidos simulando a curiosidade natural de uma fada
-    fairy.dartTimer--;
-    if (fairy.dartTimer <= 0) {
-      fairy.dartTimer = 60 + Math.floor(Math.random() * 80);
-      fairy.dartOffsetX = (Math.random() - 0.5) * 26;
-      fairy.dartOffsetY = (Math.random() - 0.5) * 18;
-    }
-
-    // Oscilações orgânicas multifrequenciais de flutuação
-    const organicOscY =
-      Math.sin(fairy.floatAngle * 2.8) * 8 +
-      Math.cos(fairy.floatAngle * 4.9) * 4 +
-      Math.sin(fairy.floatAngle * 1.2) * 6;
-
-    const organicOscX =
-      Math.cos(fairy.floatAngle * 2.1) * 7 +
-      Math.sin(fairy.floatAngle * 3.6) * 3;
-
-    const finalTargetX = targetX + organicOscX + fairy.dartOffsetX;
-    const finalTargetY = targetY + organicOscY + fairy.dartOffsetY;
-
-    fairy.vx += (finalTargetX - fairy.x) * 0.045;
-    fairy.vy += (finalTargetY - fairy.y) * 0.045;
-    fairy.vx *= 0.86;
-    fairy.vy *= 0.86;
-
-    fairy.x += fairy.vx;
-    fairy.y += fairy.vy;
 
     // Rastro de poeira luminosa que paira e rodopia atrás da fada
     if (tick % 2 === 0) {

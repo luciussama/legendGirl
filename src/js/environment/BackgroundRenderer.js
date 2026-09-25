@@ -1,3 +1,4 @@
+import { NIGHT_WINDOWS } from './nightWindows.js';
 /**
  * BackgroundRenderer.js
  * Renderiza a parede de fundo atmosférica do berçário vitoriano, lambris de madeira,
@@ -159,10 +160,10 @@ export class BackgroundRenderer {
       ctx.fillRect(x - bgOffset, -400, 40, FLOOR_Y + 400);
     }
 
-    // Acento de luz dourada e lilás para preservar a mesma assinatura visual da playroom em clima de quarto escuro
+    // Reflexo ambiente frio quase imperceptível; a luz principal permanece localizada.
     const topGlow = ctx.createLinearGradient(0, 0, 0, FLOOR_Y);
-    topGlow.addColorStop(0, 'rgba(250, 204, 21, 0.10)');
-    topGlow.addColorStop(0.38, 'rgba(168, 85, 247, 0.07)');
+    topGlow.addColorStop(0, 'rgba(150, 175, 220, 0.015)');
+    topGlow.addColorStop(0.38, 'rgba(135, 145, 200, 0.012)');
     topGlow.addColorStop(1, 'rgba(13, 10, 20, 0)');
     ctx.fillStyle = topGlow;
     ctx.fillRect(0, 0, canvas.width, FLOOR_Y + 50);
@@ -206,7 +207,7 @@ export class BackgroundRenderer {
     }
 
     // Janelas para o céu estrelado da noite
-    const windowLocations = [780, 1950];
+    const windowLocations = NIGHT_WINDOWS;
     windowLocations.forEach((wx) => {
       const sx = wx - camX * 0.3;
       if (sx < -140 || sx > canvas.width + 140) return;
@@ -226,8 +227,8 @@ export class BackgroundRenderer {
       ctx.roundRect(sx + 6, 86, 78, 118, [40, 40, 2, 2]);
       ctx.fill();
 
-      // Lua Crescente com o mesmo brilho quente da playroom em versão mais sombria
-      ctx.fillStyle = '#fef3c7';
+      // Lua crescente prateada, coerente com os feixes frios das janelas.
+      ctx.fillStyle = '#dce7f5';
       ctx.beginPath();
       ctx.arc(sx + 35, 115, 12, 0, Math.PI * 2);
       ctx.fill();
