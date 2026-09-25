@@ -364,6 +364,9 @@ export class GameState {
 
   finishPlotTwistAndStartTutorial(audio) {
     if (audio) audio.clearActiveSounds();
+    // Keep the shared arrays, but discard visual trails from the previous stage.
+    this.babyJumpDust.length = 0;
+    this.speedRibbons.length = 0;
     this.plotTwistActive = false;
     this.plotTwistStep = 0;
     this.isPhase3 = true;

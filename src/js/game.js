@@ -534,7 +534,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function updateBabyJumpDust(dt = 1.0) {
-    particles.updateBabyJumpDust(dt);
+    // Age both dust and speed trails, including during cutscenes/tutorials.
+    particles.update(dt);
   }
 
   // --- RENDERIZADORES DE CENÁRIO (Modularizados em /environment) ---

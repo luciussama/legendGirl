@@ -65,7 +65,8 @@
     "toy-room-player-carry": "./assets/art/toy-room/player-carry.svg",
     "toy-room-fairy": "./assets/art/toy-room/fairy.svg",
     "dark-room-modern-castle": "./assets/art/dark-room/modern/block_castle.png",
-    "dark-room-modern-spinning-top": "./assets/art/dark-room/modern/spinning_top.png"
+    "dark-room-modern-spinning-top": "./assets/art/dark-room/modern/spinning_top.png",
+    "official-character": "./assets/art/dark-room/sprites/official-character.png"
   },
   "spritesheets": {}
 }

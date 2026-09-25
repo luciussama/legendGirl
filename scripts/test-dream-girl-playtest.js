@@ -58,7 +58,7 @@ const idleBaby = { ...createBabyState(), vx: 0, vy: 0, onGround: true, animTime:
 const idleRes = renderer.resolveAnimationState(idleBaby, { tick: 30 });
 assert.equal(idleRes.state, 'idle');
 report.movement.idle = true;
-console.log('✓ Idle validado com sucesso (8 frames animados).');
+console.log('✓ Idle validado com sucesso (9 frames oficiais).');
 
 // 2. TESTE DE CORRIDA (RUNNING)
 console.log('--- Testando Corrida (Running) ---');
@@ -66,7 +66,7 @@ const runBaby = { ...createBabyState(), vx: 1.65, vy: 0, onGround: true, animTim
 const runRes = renderer.resolveAnimationState(runBaby, { tick: 60 });
 assert.equal(runRes.state, 'run');
 report.movement.running = true;
-console.log('✓ Running validado com sucesso (8 frames de ciclo contínuo).');
+console.log('✓ Running validado com sucesso (9 frames oficiais).');
 
 // 3. TESTE DE DASH NA VELOCIDADE MÁXIMA DE FUGA
 console.log('--- Testando Dash na Velocidade Máxima de Fuga ---');

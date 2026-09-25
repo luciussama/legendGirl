@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
-    "verify:dark-room": "node scripts/verify-dark-room.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js",
+    "verify:dark-room": "node scripts/verify-dark-room.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js && node scripts/test-official-character.js && node scripts/test-phase3-particles.js",
     "test": "npm run verify:dark-room",
     "dev": "node server.js",
     "build": "node -e \"console.log('Build complete')\"",
