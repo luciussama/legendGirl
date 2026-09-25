@@ -20,7 +20,7 @@
     "dark-room-sprite-stepped-dresser": "./assets/art/dark-room/platforms/stepped_dresser.png",
     "dark-room-sprite-music-box": "./assets/art/dark-room/sprites/block_castle.png",
     "dark-room-sprite-train-trestle": "./assets/art/dark-room/sprites/train_trestle.png",
-    "dark-room-sprite-false-door": "./assets/art/dark-room/sprites/false_door.png",
+    "dark-room-sprite-false-door": "./assets/art/dark-room/corrections/false_door.png",
     "dark-room-sprite-wall-shelf": "./assets/art/dark-room/sprites/wall_shelf.png",
     "dark-room-sprite-mushroom-lamp": "./assets/art/dark-room/sprites/mushroom_lamp.png",
     "dark-room-sprite-dollhouse-roof": "./assets/art/dark-room/sprites/dollhouse_roof.png",
@@ -56,7 +56,9 @@
     "toy-room-player-right-2": "./assets/art/toy-room/player-right-2.svg",
     "toy-room-player-right-3": "./assets/art/toy-room/player-right-3.svg",
     "toy-room-player-carry": "./assets/art/toy-room/player-carry.svg",
-    "toy-room-fairy": "./assets/art/toy-room/fairy.svg"
+    "toy-room-fairy": "./assets/art/toy-room/fairy.svg",
+    "dark-room-modern-castle": "./assets/art/dark-room/modern/block_castle.png",
+    "dark-room-modern-spinning-top": "./assets/art/dark-room/modern/spinning_top.png"
   },
   "spritesheets": {}
 }

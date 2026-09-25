@@ -1,0 +1,5 @@
+
+> o-quarto-dos-brinquedos@1.0.0 check-assets
+> node scripts/check-assets.js
+
+Asset check passed: 58 registered assets.

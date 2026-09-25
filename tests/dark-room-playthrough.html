@@ -6,7 +6,7 @@
 <script type="module">
 // Test-only instrumentation: the shipped game has no teleport or clock controls.
 // Import the real game, exposing its update/render closures only in this page.
-import {platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
+import {platforms,phase3Platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
 import {PlatformRenderer,PLATFORM_SURFACES} from '../src/js/environment/PlatformRenderer.js';
 import {BabyRenderer} from '../src/js/entities/BabyRenderer.js';
 let source=await (await fetch('/src/js/game.js')).text();
@@ -15,16 +15,16 @@ const marker='  return {\n    state,\n    audio,';
 if(!source.includes(marker))throw Error('Game review instrumentation marker missing');
 source=source.replace(marker,`  return {
     review: {
-      prepare(index, x) {
-        const p=platforms[index];
+      prepare(index, x, phase3 = false) {
+        const p=(phase3 ? phase3Platforms : platforms)[index];
         const y=p ? (p.surfaceTopY ?? p.standRegion?.y ?? p.y) : FLOOR_Y;
         Object.assign(baby,createBabyState(),{x,y:y-44,currentPlatformIndex:index,
           controlsLocked:false,isCrouching:false,respawnLandingPending:false,
-          isEscaping:index>=9,longJumpUnlocked:index>=9});
+          isEscaping:!phase3&&index>=9,longJumpUnlocked:!phase3&&index>=9});
         Object.assign(state,{gameStarted:true,gameWon:false,isGameOver:false,
           isStandbyActive:false,isStandbyTransitioning:false,cutsceneActive:false,
-          cutsceneTriggered:true,cutsceneCompleted:index>=9,isEscapeMode:index>=9,
-          escapeLevel:Math.max(0,index-9),isPhase3:false,plotTwistActive:false,plotTwistTriggered:true,
+          cutsceneTriggered:true,cutsceneCompleted:index>=9,isEscapeMode:!phase3&&index>=9,
+          escapeLevel:Math.max(0,index-9),isPhase3:phase3,phase3Level:Math.max(0,index),phase3TutorialActive:false,plotTwistActive:false,plotTwistTriggered:true,
           firstPlatformCleared:index>=0,truePortalTransitionActive:false,
           cameraX:x-250,cameraY:0,targetCameraY:0,cameraZoom:1,targetCameraZoom:1,
           lastJumpTime:-10000});
@@ -45,12 +45,14 @@ const game=createGame(document.querySelector('canvas'),document.querySelector('#
 await game.assetsReady;game.setMuted(true);
 const support=p=>({x:p.standRegion?.x??p.x,w:p.standRegion?.w??p.w,y:p.surfaceTopY??p.standRegion?.y??p.y});
 window.review={game,platforms,results:[],
-  run(target,dt=1){
-    const from=target? support(platforms[target-1]):{x:60,w:160,y:FLOOR_Y};
-    const positions=Array.from({length:Math.floor(from.w)},(_,i)=>from.x+i);
+  run(target,dt=1,phase3=false){
+    const active=phase3?phase3Platforms:platforms;
+    const from=target? support(active[target-1]):phase3?{x:4170,w:470,y:FLOOR_Y}:{x:60,w:160,y:FLOOR_Y};
+    const leftOverlap=phase3&&target>0?37:0;
+    const positions=Array.from({length:Math.floor(from.w)+leftOverlap},(_,i)=>from.x-leftOverlap+i);
     positions.sort((a,b)=>Math.abs(a-(from.x+(from.w-38)/2))-Math.abs(b-(from.x+(from.w-38)/2)));
     for(const x of positions){
-      game.review.prepare(target-1,x);game.review.jump();
+      game.review.prepare(target-1,x,phase3);game.review.jump();
       if(game.state.baby.onGround)throw Error('Jump did not start');
       for(let frame=0;frame<220;frame++){
         game.review.step(dt);
@@ -58,15 +60,15 @@ window.review={game,platforms,results:[],
         if(game.isGameOver())break;
         if(b.onGround){
           if(b.currentPlatformIndex===target){
-            const p=support(platforms[target]);
+            const p=support(active[target]);
             if(Math.abs(b.y+b.h-p.y)>0.001)throw Error('Feet are not on support');
-            const result={target,style:platforms[target].style,dt,launchX:x,frames:frame+1,feet:b.y+b.h,surface:p.y};
+            const result={target,phase:phase3?3:target<10?1:2,style:active[target].style,dt,launchX:x,frames:frame+1,feet:b.y+b.h,surface:p.y};
             this.results.push(result);game.review.draw();return result;
           }break;
         }
       }
     }
-    throw Error('No successful real-game jump to '+target+' '+platforms[target].style);
+    throw Error('No successful real-game jump to '+target+' '+active[target].style);
   },
   contacts(index,dt=1){
     const s=support(platforms[index]);
@@ -152,6 +154,7 @@ if (new URLSearchParams(location.search).has('verify')) {
   try {
     for (const dt of [0.5, 1, 1.2]) {
       for (let target=0; target<=21; target++) window.review.run(target,dt);
+      for (let target=0; target<=15; target++) window.review.run(target,dt,true);
       game.review.prepare(9,1631);
       for (let frame=0; frame<300; frame++) {
         game.review.step(dt);
@@ -169,7 +172,7 @@ if (new URLSearchParams(location.search).has('verify')) {
       img.style.width='960px';img.style.display='block';gallery.append(img);
     }
     document.querySelector('canvas').remove();document.body.prepend(gallery);
-    document.querySelector('#feedback').textContent='PASS: real updates, 66 jumps and 900 castle pause frames';
+    document.querySelector('#feedback').textContent='PASS: real updates, 114 jumps and 900 castle pause frames';
     document.body.dataset.result='passed';
   } catch(error) {
     document.body.dataset.result='failed';

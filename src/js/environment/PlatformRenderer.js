@@ -13,6 +13,7 @@ import {
   DEBUG_COLLISIONS
 } from '../config.js';
 import { darkRoomAtlas } from '../assets/index.js';
+import { drawStorybookPlatform, drawContactEdge } from './StorybookPlatforms.js';
 
 export const PLATFORM_SURFACES = {
   giant_bear: { surfaceY: 139, surfaceX: 460, surfaceW: 1000, origW: 1922, origH: 818, bottom: 755, floorFit: true },
@@ -26,20 +27,20 @@ export const PLATFORM_SURFACES = {
   stepped_dresser: { surfaceY: 46, surfaceX: 25, surfaceW: 250, origW: 304, origH: 484, floorFit: true },
   music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322, support: 'stand' },
   block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
-  train_trestle: { surfaceY: 160, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, bottom: 290, clipBottom: 290, support: 'stand' },
-  wall_shelf: { surfaceY: 168, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
+  train_trestle: { surfaceY: 205, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, clipBottom: 205, support: 'table' },
+  wall_shelf: { surfaceY: 205, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, clipBottom: 205, support: 'shelf', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
   // The complete lamp sits behind the walkable table, aligned by its base.
-  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'table', cap: true },
+  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'shelf', cap: true },
   dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: true },
   spinning_globe: { surfaceY: 0, surfaceX: 0, surfaceW: 212, origW: 214, origH: 309, support: 'stand' },
   kite_frame: { surfaceY: 0, surfaceX: 20, surfaceW: 155, origW: 490, origH: 322 },
   // Feet sit within the illustrated pages; their curvature is intentionally decorative.
-  floating_books: { surfaceY: 90, surfaceX: 95, surfaceW: 240, origW: 410, origH: 279 },
-  chandelier_crystals: { surfaceY: 130, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
+  floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 406, origW: 410, origH: 279 },
+  chandelier_crystals: { surfaceY: 205, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
   curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
-  cuckoo_clock: { surfaceY: 66, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
+  cuckoo_clock: { surfaceY: 0, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
   wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
-  grand_portal_pedestal: { surfaceY: 140, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365 }
+  grand_portal_pedestal: { surfaceY: 330, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365, excludeRects: [[404, 0, 114, 34]] }
 };
 
 export class PlatformRenderer {
@@ -58,7 +59,7 @@ export class PlatformRenderer {
    */
   drawAtlasPlatformSprite(ctx, assets, style, sx, p, tick = 0) {
     if (!assets) return false;
-    const styleClean = (style || '').toLowerCase();
+    const styleClean = style === 'true_portal_balcony' ? 'grand_portal_pedestal' : (style || '').toLowerCase();
     const individualKey = 'dark-room-sprite-' + styleClean.replace(/_/g, '-');
     let sprite = assets.get(individualKey);
     let region = darkRoomAtlas && (darkRoomAtlas[styleClean] || darkRoomAtlas[style]);
@@ -187,7 +188,7 @@ export class PlatformRenderer {
       }
     }
 
-    if (s.support === 'table' || styleClean === 'mushroom_lamp') {
+    if (s.support === 'table') {
       // Mesa alta de cabeceira vitoriana em mogno nobre com pernas torneadas até o piso (floorY)
       // O abajur cogumelo repousa sobre o tampo sólido no plano de apoio (platY = 224).
       const tabX = sxSurface;
@@ -569,19 +570,20 @@ export class PlatformRenderer {
     }
 
     // Suporte sutil de sombra/madeira até o piso para plataformas altas
-    if (dy + dh < this.floorY && ['train_trestle'].includes(styleClean) && s.support !== 'stand') {
+    if (dy + dh < this.floorY && ['train_trestle'].includes(styleClean) && !s.support) {
       ctx.fillStyle = 'rgba(20, 14, 28, 0.45)';
       ctx.fillRect(sx + 8, dy + dh - 4, p.w - 16, this.floorY - (dy + dh - 4));
     }
 
-    const clipSprite = s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
+    const falseDoorPedestal = style === 'grand_portal_pedestal';
+    const clipSprite = falseDoorPedestal || s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
     if (clipSprite) {
-      const clipTop = s.trimAboveSupport ? platY : dy;
+      const clipTop = (falseDoorPedestal || s.trimAboveSupport) ? platY : dy;
       const clipEnd = dy + (s.clipBottom ?? spriteH) * scaleY;
       ctx.save();ctx.beginPath();ctx.rect(dx, clipTop, dw, clipEnd - clipTop);
       // Exclude neighbouring objects baked into an atlas cutout, without
       // stretching the artwork or touching the collision geometry.
-      for (const [x, y, w, h] of s.excludeRects || []) {
+      for (const [x, y, w, h] of (falseDoorPedestal ? [] : s.excludeRects) || []) {
         ctx.rect(dx + x * dw / spriteW, dy + y * dh / spriteH,
           w * dw / spriteW, h * dh / spriteH);
       }
@@ -620,6 +622,33 @@ export class PlatformRenderer {
       ctx.fillRect(ridgeX + 10, ridgeY, ridgeW - 20, 1);
       ctx.fillStyle = '#1c0c06';
       ctx.fillRect(ridgeX, ridgeY + 3, ridgeW, 1);
+    }
+    if (s.support === 'shelf') {
+      drawContactEdge(ctx,sxSurface,platY,platW,'wood',12);
+      for (const xx of [sxSurface+9,sxSurface+platW-17]) {
+        ctx.fillStyle='#493021';ctx.fillRect(xx,platY+12,8,26);
+        ctx.fillStyle='#b6854e';ctx.fillRect(xx+1,platY+12,2,23);
+        ctx.beginPath();ctx.moveTo(xx+6,platY+33);ctx.lineTo(xx+16,platY+12);
+        ctx.lineWidth=4;ctx.strokeStyle='#493021';ctx.stroke();
+        ctx.lineWidth=1.5;ctx.strokeStyle='#b6854e';ctx.stroke();
+      }
+    }
+    if (styleClean === 'spinning_globe') {
+      const endY=dy+dh*.78;
+      ctx.fillStyle='#80603c';ctx.fillRect(sxSurface,platY,3,endY-platY);
+      ctx.fillRect(sxSurface+platW-3,platY,3,endY-platY);
+      drawContactEdge(ctx,sxSurface,endY,platW,'brass',3);
+    }
+    if (styleClean === 'kite_frame') {
+      ctx.beginPath();ctx.moveTo(sxSurface+2,platY+4);
+      ctx.lineTo(sxSurface+platW*.5,platY+32);ctx.lineTo(sxSurface+platW-2,platY+4);
+      ctx.strokeStyle='#c3a36c';ctx.lineWidth=1;ctx.stroke();
+    }
+    if (styleClean === 'cuckoo_clock') {
+      for (const xx of [sxSurface+4,sxSurface+platW-9]) {
+        ctx.fillStyle='#6d4429';ctx.fillRect(xx,platY+3,5,24);
+        ctx.fillStyle='#c29454';ctx.fillRect(xx+1,platY+3,1,24);
+      }
     }
     return true;
   }
@@ -668,7 +697,8 @@ export class PlatformRenderer {
       }
 
       // 2. Sprite renderizado por cima da plataforma física
-      const renderedSprite = this.drawAtlasPlatformSprite(ctx, assets, p.style, sx, p, tick);
+      const renderedSprite = drawStorybookPlatform(ctx, assets, p, sx, tick) ||
+        this.drawAtlasPlatformSprite(ctx, assets, p.style, sx, p, tick);
 
       // 3. Validação do topo da hitbox: traço verde luminoso na superfície de pouso
       if (isDebugHitbox) {
@@ -2407,32 +2437,6 @@ export class PlatformRenderer {
         ctx.fillRect(sxBox, platY, platW, platH);
       }
 
-      // Brilho Direcional sutil e suave restrito EXCLUSIVAMENTE à borda superior
-      if (alpha > 0.05) {
-        // Estado ativado ao pousar: confirmação acolhedora e calorosa
-        ctx.strokeStyle = isMagicalPhase
-          ? `rgba(245, 208, 254, ${0.45 + 0.50 * alpha})`
-          : `rgba(254, 240, 138, ${0.45 + 0.50 * alpha})`;
-        ctx.lineWidth = 1.8;
-        ctx.shadowColor = isMagicalPhase
-          ? 'rgba(216, 180, 254, 0.75)'
-          : 'rgba(250, 204, 21, 0.85)';
-        ctx.shadowBlur = 6 * alpha;
-      } else {
-        // Estado inicial na penumbra: luz guia direcional sutil para cálculo do salto
-        ctx.strokeStyle = isMagicalPhase
-          ? 'rgba(233, 213, 255, 0.38)'
-          : 'rgba(254, 240, 138, 0.38)';
-        ctx.lineWidth = 1.2;
-        ctx.shadowColor = isMagicalPhase
-          ? 'rgba(192, 132, 252, 0.22)'
-          : 'rgba(250, 204, 21, 0.22)';
-        ctx.shadowBlur = 2.5;
-      }
-      ctx.beginPath();
-      ctx.moveTo(sxBox + 1, platY + 0.7);
-      ctx.lineTo(sxBox + platW - 1, platY + 0.7);
-      ctx.stroke();
       ctx.restore();
 
       // Pequeno indicador cintilante para o próximo alvo
@@ -2459,7 +2463,9 @@ export class PlatformRenderer {
     const fakeDoorRevealed = Boolean(options.fakeDoorRevealed);
     const fakeDoorSlideY = options.fakeDoorSlideY || 0;
     const fakeDoorRotation = options.fakeDoorRotation || 0;
-    const tick = options.tick || 0;
+    const assets = options.assets || this.assets;
+    const sprite = assets?.get('dark-room-sprite-false-door');
+    if (!sprite) return;
 
     const sx = exitDoor.x - camX;
     if (sx < -200 || sx > canvas.width + 200) return;
@@ -2487,79 +2493,17 @@ export class PlatformRenderer {
       ctx.textAlign = 'center';
       ctx.fillText('ERA SÓ UM QUADRO!', sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2);
 
-      // Pôster descolando e caindo
-      ctx.save();
-      ctx.translate(sx + exitDoor.w / 2, exitDoor.y + fakeDoorSlideY + exitDoor.h / 2);
-      ctx.rotate(fakeDoorRotation);
-      ctx.translate(-exitDoor.w / 2, -exitDoor.h / 2);
-
-      // Sombra do papel do pôster
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.35)';
-      ctx.fillRect(4, 6, exitDoor.w, exitDoor.h);
-
-      // Verso enrolado do papel do pôster
-      ctx.fillStyle = '#f5f5f4';
-      ctx.fillRect(0, 0, exitDoor.w, exitDoor.h);
-
-      // Ilustração da porta pintada no pôster
-      ctx.fillStyle = '#db2777';
-      ctx.fillRect(4, 4, exitDoor.w - 8, exitDoor.h - 8);
-      const vitral = ctx.createLinearGradient(0, 0, 0, exitDoor.h);
-      vitral.addColorStop(0, '#fde047');
-      vitral.addColorStop(0.5, '#f43f5e');
-      vitral.addColorStop(1, '#8b5cf6');
-      ctx.fillStyle = vitral;
-      ctx.fillRect(10, 10, exitDoor.w - 20, exitDoor.h - 20);
-
-      // Canto dobrado em orelha de livro
-      ctx.fillStyle = '#e7e5e4';
-      ctx.beginPath();
-      ctx.moveTo(exitDoor.w - 16, 0);
-      ctx.lineTo(exitDoor.w, 16);
-      ctx.lineTo(exitDoor.w - 16, 16);
-      ctx.closePath();
-      ctx.fill();
-
-      ctx.restore();
-    } else {
-      // Porta de saída normal majestosa e brilhante
-      const pulse = Math.sin(tick * 0.05) * 18;
-      const glow = ctx.createRadialGradient(
-        sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 12,
-        sx + exitDoor.w / 2, exitDoor.y + exitDoor.h / 2, 140 + pulse
-      );
-      glow.addColorStop(0, 'rgba(255, 240, 160, 0.95)');
-      glow.addColorStop(0.35, 'rgba(255, 80, 200, 0.55)');
-      glow.addColorStop(0.7, 'rgba(0, 230, 255, 0.3)');
-      glow.addColorStop(1, 'rgba(0,0,0,0)');
-      ctx.fillStyle = glow;
-      ctx.fillRect(sx - 100, exitDoor.y - 80, exitDoor.w + 200, exitDoor.h + 160);
-
-      // Moldura entalhada da porta
-      ctx.fillStyle = '#db2777';
-      ctx.strokeStyle = '#facc15';
-      ctx.lineWidth = 4.5;
-      ctx.beginPath();
-      ctx.roundRect(sx, exitDoor.y, exitDoor.w, exitDoor.h, [42, 42, 6, 6]);
-      ctx.fill();
-      ctx.stroke();
-
-      // Arco de vitral colorido
-      const vitral = ctx.createLinearGradient(sx, exitDoor.y, sx, exitDoor.y + exitDoor.h);
-      vitral.addColorStop(0, '#fde047');
-      vitral.addColorStop(0.3, '#f43f5e');
-      vitral.addColorStop(0.65, '#8b5cf6');
-      vitral.addColorStop(1, '#06b6d4');
-      ctx.fillStyle = vitral;
-      ctx.beginPath();
-      ctx.roundRect(sx + 8, exitDoor.y + 12, exitDoor.w - 16, exitDoor.h - 18, [34, 34, 4, 4]);
-      ctx.fill();
-
-      ctx.fillStyle = '#ffffff';
-      ctx.font = '22px sans-serif';
-      ctx.fillText('✨', sx + exitDoor.w / 2 - 12, exitDoor.y + 40);
-      ctx.fillText('🌿', sx + exitDoor.w / 2 - 12, exitDoor.y + 82);
     }
+
+    // The approved painting follows the existing reveal animation. Its aspect
+    // ratio and the gameplay arrival rectangle remain independent.
+    const height = exitDoor.h;
+    const width = height * (sprite.naturalWidth || sprite.width) /
+      (sprite.naturalHeight || sprite.height);
+    ctx.translate(sx + exitDoor.w / 2,
+      exitDoor.y + height / 2 + (fakeDoorRevealed ? fakeDoorSlideY : 0));
+    ctx.rotate(fakeDoorRevealed ? fakeDoorRotation : 0);
+    ctx.drawImage(sprite, -width / 2, -height / 2, width, height);
 
     ctx.restore();
   }

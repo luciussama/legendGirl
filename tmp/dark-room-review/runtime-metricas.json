@@ -1,0 +1,1142 @@
+[
+  {
+    "target": 0,
+    "phase": 1,
+    "style": "giant_bear",
+    "dt": 0.5,
+    "launchX": 121,
+    "frames": 86,
+    "feet": 410,
+    "surface": 410
+  },
+  {
+    "target": 1,
+    "phase": 1,
+    "style": "open_books",
+    "dt": 0.5,
+    "launchX": 268,
+    "frames": 105,
+    "feet": 414,
+    "surface": 414
+  },
+  {
+    "target": 2,
+    "phase": 1,
+    "style": "vanity_table",
+    "dt": 0.5,
+    "launchX": 422,
+    "frames": 99,
+    "feet": 393,
+    "surface": 393
+  },
+  {
+    "target": 3,
+    "phase": 1,
+    "style": "small_dresser",
+    "dt": 0.5,
+    "launchX": 586,
+    "frames": 100,
+    "feet": 372,
+    "surface": 372
+  },
+  {
+    "target": 4,
+    "phase": 1,
+    "style": "messy_blocks",
+    "dt": 0.5,
+    "launchX": 772,
+    "frames": 100,
+    "feet": 351,
+    "surface": 351
+  },
+  {
+    "target": 5,
+    "phase": 1,
+    "style": "toy_drum",
+    "dt": 0.5,
+    "launchX": 903,
+    "frames": 99,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 1,
+    "style": "satin_cushion",
+    "dt": 0.5,
+    "launchX": 1068,
+    "frames": 100,
+    "feet": 309,
+    "surface": 309
+  },
+  {
+    "target": 7,
+    "phase": 1,
+    "style": "stepped_dresser",
+    "dt": 0.5,
+    "launchX": 1216,
+    "frames": 100,
+    "feet": 288,
+    "surface": 288
+  },
+  {
+    "target": 8,
+    "phase": 1,
+    "style": "music_box",
+    "dt": 0.5,
+    "launchX": 1376,
+    "frames": 100,
+    "feet": 267,
+    "surface": 267
+  },
+  {
+    "target": 9,
+    "phase": 1,
+    "style": "block_castle",
+    "dt": 0.5,
+    "launchX": 1530,
+    "frames": 96,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 10,
+    "phase": 2,
+    "style": "train_trestle",
+    "dt": 0.5,
+    "launchX": 1636,
+    "frames": 105,
+    "feet": 244,
+    "surface": 244
+  },
+  {
+    "target": 11,
+    "phase": 2,
+    "style": "wall_shelf",
+    "dt": 0.5,
+    "launchX": 1902,
+    "frames": 106,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 12,
+    "phase": 2,
+    "style": "mushroom_lamp",
+    "dt": 0.5,
+    "launchX": 2098,
+    "frames": 108,
+    "feet": 224,
+    "surface": 224
+  },
+  {
+    "target": 13,
+    "phase": 2,
+    "style": "dollhouse_roof",
+    "dt": 0.5,
+    "launchX": 2300,
+    "frames": 110,
+    "feet": 210,
+    "surface": 210
+  },
+  {
+    "target": 14,
+    "phase": 2,
+    "style": "spinning_globe",
+    "dt": 0.5,
+    "launchX": 2510,
+    "frames": 118,
+    "feet": 218,
+    "surface": 218
+  },
+  {
+    "target": 15,
+    "phase": 2,
+    "style": "kite_frame",
+    "dt": 0.5,
+    "launchX": 2731,
+    "frames": 113,
+    "feet": 196,
+    "surface": 196
+  },
+  {
+    "target": 16,
+    "phase": 2,
+    "style": "floating_books",
+    "dt": 0.5,
+    "launchX": 2961,
+    "frames": 119,
+    "feet": 184,
+    "surface": 184
+  },
+  {
+    "target": 17,
+    "phase": 2,
+    "style": "chandelier_crystals",
+    "dt": 0.5,
+    "launchX": 3203,
+    "frames": 120,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 18,
+    "phase": 2,
+    "style": "curtain_rod",
+    "dt": 0.5,
+    "launchX": 3456,
+    "frames": 125,
+    "feet": 158,
+    "surface": 158
+  },
+  {
+    "target": 19,
+    "phase": 2,
+    "style": "cuckoo_clock",
+    "dt": 0.5,
+    "launchX": 3725,
+    "frames": 132,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 20,
+    "phase": 2,
+    "style": "wardrobe_ledge",
+    "dt": 0.5,
+    "launchX": 4020,
+    "frames": 130,
+    "feet": 156,
+    "surface": 156
+  },
+  {
+    "target": 21,
+    "phase": 2,
+    "style": "grand_portal_pedestal",
+    "dt": 0.5,
+    "launchX": 4341,
+    "frames": 133,
+    "feet": 148,
+    "surface": 148
+  },
+  {
+    "target": 0,
+    "phase": 3,
+    "style": "toppled_blocks",
+    "dt": 0.5,
+    "launchX": 4292,
+    "frames": 94,
+    "feet": 420,
+    "surface": 420
+  },
+  {
+    "target": 1,
+    "phase": 3,
+    "style": "floppy_ragdoll",
+    "dt": 0.5,
+    "launchX": 4086,
+    "frames": 100,
+    "feet": 402,
+    "surface": 402
+  },
+  {
+    "target": 2,
+    "phase": 3,
+    "style": "spilled_crayons_box",
+    "dt": 0.5,
+    "launchX": 3889,
+    "frames": 102,
+    "feet": 384,
+    "surface": 384
+  },
+  {
+    "target": 3,
+    "phase": 3,
+    "style": "crooked_fairytales",
+    "dt": 0.5,
+    "launchX": 3676,
+    "frames": 105,
+    "feet": 366,
+    "surface": 366
+  },
+  {
+    "target": 4,
+    "phase": 3,
+    "style": "dented_drum",
+    "dt": 0.5,
+    "launchX": 3446,
+    "frames": 107,
+    "feet": 348,
+    "surface": 348
+  },
+  {
+    "target": 5,
+    "phase": 3,
+    "style": "slumped_bear",
+    "dt": 0.5,
+    "launchX": 3193,
+    "frames": 109,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 3,
+    "style": "tilted_xylophone",
+    "dt": 0.5,
+    "launchX": 2922,
+    "frames": 112,
+    "feet": 313,
+    "surface": 313
+  },
+  {
+    "target": 7,
+    "phase": 3,
+    "style": "derailed_train",
+    "dt": 0.5,
+    "launchX": 2628,
+    "frames": 114,
+    "feet": 296,
+    "surface": 296
+  },
+  {
+    "target": 8,
+    "phase": 3,
+    "style": "wobbly_card_house",
+    "dt": 0.5,
+    "launchX": 2311,
+    "frames": 117,
+    "feet": 279,
+    "surface": 279
+  },
+  {
+    "target": 9,
+    "phase": 3,
+    "style": "leaning_music_box",
+    "dt": 0.5,
+    "launchX": 1970,
+    "frames": 119,
+    "feet": 263,
+    "surface": 263
+  },
+  {
+    "target": 10,
+    "phase": 3,
+    "style": "loose_robot",
+    "dt": 0.5,
+    "launchX": 1604,
+    "frames": 124,
+    "feet": 247,
+    "surface": 247
+  },
+  {
+    "target": 11,
+    "phase": 3,
+    "style": "spinning_top",
+    "dt": 0.5,
+    "launchX": 1208,
+    "frames": 127,
+    "feet": 231,
+    "surface": 231
+  },
+  {
+    "target": 12,
+    "phase": 3,
+    "style": "floating_spool",
+    "dt": 0.5,
+    "launchX": 782,
+    "frames": 129,
+    "feet": 216,
+    "surface": 216
+  },
+  {
+    "target": 13,
+    "phase": 3,
+    "style": "unbalanced_mobile",
+    "dt": 0.5,
+    "launchX": 325,
+    "frames": 131,
+    "feet": 201,
+    "surface": 201
+  },
+  {
+    "target": 14,
+    "phase": 3,
+    "style": "levitating_grimoire",
+    "dt": 0.5,
+    "launchX": -159,
+    "frames": 134,
+    "feet": 187,
+    "surface": 187
+  },
+  {
+    "target": 15,
+    "phase": 3,
+    "style": "true_portal_balcony",
+    "dt": 0.5,
+    "launchX": -682,
+    "frames": 130,
+    "feet": 144,
+    "surface": 144
+  },
+  {
+    "target": 0,
+    "phase": 1,
+    "style": "giant_bear",
+    "dt": 1,
+    "launchX": 121,
+    "frames": 43,
+    "feet": 410,
+    "surface": 410
+  },
+  {
+    "target": 1,
+    "phase": 1,
+    "style": "open_books",
+    "dt": 1,
+    "launchX": 268,
+    "frames": 53,
+    "feet": 414,
+    "surface": 414
+  },
+  {
+    "target": 2,
+    "phase": 1,
+    "style": "vanity_table",
+    "dt": 1,
+    "launchX": 423,
+    "frames": 49,
+    "feet": 393,
+    "surface": 393
+  },
+  {
+    "target": 3,
+    "phase": 1,
+    "style": "small_dresser",
+    "dt": 1,
+    "launchX": 588,
+    "frames": 49,
+    "feet": 372,
+    "surface": 372
+  },
+  {
+    "target": 4,
+    "phase": 1,
+    "style": "messy_blocks",
+    "dt": 1,
+    "launchX": 774,
+    "frames": 49,
+    "feet": 351,
+    "surface": 351
+  },
+  {
+    "target": 5,
+    "phase": 1,
+    "style": "toy_drum",
+    "dt": 1,
+    "launchX": 904,
+    "frames": 49,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 1,
+    "style": "satin_cushion",
+    "dt": 1,
+    "launchX": 1070,
+    "frames": 49,
+    "feet": 309,
+    "surface": 309
+  },
+  {
+    "target": 7,
+    "phase": 1,
+    "style": "stepped_dresser",
+    "dt": 1,
+    "launchX": 1218,
+    "frames": 49,
+    "feet": 288,
+    "surface": 288
+  },
+  {
+    "target": 8,
+    "phase": 1,
+    "style": "music_box",
+    "dt": 1,
+    "launchX": 1378,
+    "frames": 49,
+    "feet": 267,
+    "surface": 267
+  },
+  {
+    "target": 9,
+    "phase": 1,
+    "style": "block_castle",
+    "dt": 1,
+    "launchX": 1530,
+    "frames": 48,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 10,
+    "phase": 2,
+    "style": "train_trestle",
+    "dt": 1,
+    "launchX": 1636,
+    "frames": 52,
+    "feet": 244,
+    "surface": 244
+  },
+  {
+    "target": 11,
+    "phase": 2,
+    "style": "wall_shelf",
+    "dt": 1,
+    "launchX": 1904,
+    "frames": 52,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 12,
+    "phase": 2,
+    "style": "mushroom_lamp",
+    "dt": 1,
+    "launchX": 2100,
+    "frames": 53,
+    "feet": 224,
+    "surface": 224
+  },
+  {
+    "target": 13,
+    "phase": 2,
+    "style": "dollhouse_roof",
+    "dt": 1,
+    "launchX": 2302,
+    "frames": 54,
+    "feet": 210,
+    "surface": 210
+  },
+  {
+    "target": 14,
+    "phase": 2,
+    "style": "spinning_globe",
+    "dt": 1,
+    "launchX": 2513,
+    "frames": 58,
+    "feet": 218,
+    "surface": 218
+  },
+  {
+    "target": 15,
+    "phase": 2,
+    "style": "kite_frame",
+    "dt": 1,
+    "launchX": 2732,
+    "frames": 56,
+    "feet": 196,
+    "surface": 196
+  },
+  {
+    "target": 16,
+    "phase": 2,
+    "style": "floating_books",
+    "dt": 1,
+    "launchX": 2962,
+    "frames": 59,
+    "feet": 184,
+    "surface": 184
+  },
+  {
+    "target": 17,
+    "phase": 2,
+    "style": "chandelier_crystals",
+    "dt": 1,
+    "launchX": 3206,
+    "frames": 59,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 18,
+    "phase": 2,
+    "style": "curtain_rod",
+    "dt": 1,
+    "launchX": 3457,
+    "frames": 62,
+    "feet": 158,
+    "surface": 158
+  },
+  {
+    "target": 19,
+    "phase": 2,
+    "style": "cuckoo_clock",
+    "dt": 1,
+    "launchX": 3729,
+    "frames": 65,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 20,
+    "phase": 2,
+    "style": "wardrobe_ledge",
+    "dt": 1,
+    "launchX": 4024,
+    "frames": 64,
+    "feet": 156,
+    "surface": 156
+  },
+  {
+    "target": 21,
+    "phase": 2,
+    "style": "grand_portal_pedestal",
+    "dt": 1,
+    "launchX": 4343,
+    "frames": 66,
+    "feet": 148,
+    "surface": 148
+  },
+  {
+    "target": 0,
+    "phase": 3,
+    "style": "toppled_blocks",
+    "dt": 1,
+    "launchX": 4289,
+    "frames": 46,
+    "feet": 420,
+    "surface": 420
+  },
+  {
+    "target": 1,
+    "phase": 3,
+    "style": "floppy_ragdoll",
+    "dt": 1,
+    "launchX": 4086,
+    "frames": 50,
+    "feet": 402,
+    "surface": 402
+  },
+  {
+    "target": 2,
+    "phase": 3,
+    "style": "spilled_crayons_box",
+    "dt": 1,
+    "launchX": 3889,
+    "frames": 51,
+    "feet": 384,
+    "surface": 384
+  },
+  {
+    "target": 3,
+    "phase": 3,
+    "style": "crooked_fairytales",
+    "dt": 1,
+    "launchX": 3676,
+    "frames": 52,
+    "feet": 366,
+    "surface": 366
+  },
+  {
+    "target": 4,
+    "phase": 3,
+    "style": "dented_drum",
+    "dt": 1,
+    "launchX": 3446,
+    "frames": 53,
+    "feet": 348,
+    "surface": 348
+  },
+  {
+    "target": 5,
+    "phase": 3,
+    "style": "slumped_bear",
+    "dt": 1,
+    "launchX": 3193,
+    "frames": 54,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 3,
+    "style": "tilted_xylophone",
+    "dt": 1,
+    "launchX": 2922,
+    "frames": 56,
+    "feet": 313,
+    "surface": 313
+  },
+  {
+    "target": 7,
+    "phase": 3,
+    "style": "derailed_train",
+    "dt": 1,
+    "launchX": 2628,
+    "frames": 57,
+    "feet": 296,
+    "surface": 296
+  },
+  {
+    "target": 8,
+    "phase": 3,
+    "style": "wobbly_card_house",
+    "dt": 1,
+    "launchX": 2311,
+    "frames": 58,
+    "feet": 279,
+    "surface": 279
+  },
+  {
+    "target": 9,
+    "phase": 3,
+    "style": "leaning_music_box",
+    "dt": 1,
+    "launchX": 1970,
+    "frames": 60,
+    "feet": 263,
+    "surface": 263
+  },
+  {
+    "target": 10,
+    "phase": 3,
+    "style": "loose_robot",
+    "dt": 1,
+    "launchX": 1600,
+    "frames": 61,
+    "feet": 247,
+    "surface": 247
+  },
+  {
+    "target": 11,
+    "phase": 3,
+    "style": "spinning_top",
+    "dt": 1,
+    "launchX": 1207,
+    "frames": 63,
+    "feet": 231,
+    "surface": 231
+  },
+  {
+    "target": 12,
+    "phase": 3,
+    "style": "floating_spool",
+    "dt": 1,
+    "launchX": 779,
+    "frames": 64,
+    "feet": 216,
+    "surface": 216
+  },
+  {
+    "target": 13,
+    "phase": 3,
+    "style": "unbalanced_mobile",
+    "dt": 1,
+    "launchX": 322,
+    "frames": 65,
+    "feet": 201,
+    "surface": 201
+  },
+  {
+    "target": 14,
+    "phase": 3,
+    "style": "levitating_grimoire",
+    "dt": 1,
+    "launchX": -166,
+    "frames": 66,
+    "feet": 187,
+    "surface": 187
+  },
+  {
+    "target": 15,
+    "phase": 3,
+    "style": "true_portal_balcony",
+    "dt": 1,
+    "launchX": -689,
+    "frames": 64,
+    "feet": 144,
+    "surface": 144
+  },
+  {
+    "target": 0,
+    "phase": 1,
+    "style": "giant_bear",
+    "dt": 1.2,
+    "launchX": 123,
+    "frames": 35,
+    "feet": 410,
+    "surface": 410
+  },
+  {
+    "target": 1,
+    "phase": 1,
+    "style": "open_books",
+    "dt": 1.2,
+    "launchX": 269,
+    "frames": 43,
+    "feet": 414,
+    "surface": 414
+  },
+  {
+    "target": 2,
+    "phase": 1,
+    "style": "vanity_table",
+    "dt": 1.2,
+    "launchX": 423,
+    "frames": 41,
+    "feet": 393,
+    "surface": 393
+  },
+  {
+    "target": 3,
+    "phase": 1,
+    "style": "small_dresser",
+    "dt": 1.2,
+    "launchX": 588,
+    "frames": 41,
+    "feet": 372,
+    "surface": 372
+  },
+  {
+    "target": 4,
+    "phase": 1,
+    "style": "messy_blocks",
+    "dt": 1.2,
+    "launchX": 774,
+    "frames": 41,
+    "feet": 351,
+    "surface": 351
+  },
+  {
+    "target": 5,
+    "phase": 1,
+    "style": "toy_drum",
+    "dt": 1.2,
+    "launchX": 904,
+    "frames": 41,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 1,
+    "style": "satin_cushion",
+    "dt": 1.2,
+    "launchX": 1070,
+    "frames": 41,
+    "feet": 309,
+    "surface": 309
+  },
+  {
+    "target": 7,
+    "phase": 1,
+    "style": "stepped_dresser",
+    "dt": 1.2,
+    "launchX": 1218,
+    "frames": 41,
+    "feet": 288,
+    "surface": 288
+  },
+  {
+    "target": 8,
+    "phase": 1,
+    "style": "music_box",
+    "dt": 1.2,
+    "launchX": 1378,
+    "frames": 41,
+    "feet": 267,
+    "surface": 267
+  },
+  {
+    "target": 9,
+    "phase": 1,
+    "style": "block_castle",
+    "dt": 1.2,
+    "launchX": 1532,
+    "frames": 39,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 10,
+    "phase": 2,
+    "style": "train_trestle",
+    "dt": 1.2,
+    "launchX": 1636,
+    "frames": 43,
+    "feet": 244,
+    "surface": 244
+  },
+  {
+    "target": 11,
+    "phase": 2,
+    "style": "wall_shelf",
+    "dt": 1.2,
+    "launchX": 1905,
+    "frames": 43,
+    "feet": 236,
+    "surface": 236
+  },
+  {
+    "target": 12,
+    "phase": 2,
+    "style": "mushroom_lamp",
+    "dt": 1.2,
+    "launchX": 2100,
+    "frames": 44,
+    "feet": 224,
+    "surface": 224
+  },
+  {
+    "target": 13,
+    "phase": 2,
+    "style": "dollhouse_roof",
+    "dt": 1.2,
+    "launchX": 2302,
+    "frames": 45,
+    "feet": 210,
+    "surface": 210
+  },
+  {
+    "target": 14,
+    "phase": 2,
+    "style": "spinning_globe",
+    "dt": 1.2,
+    "launchX": 2514,
+    "frames": 48,
+    "feet": 218,
+    "surface": 218
+  },
+  {
+    "target": 15,
+    "phase": 2,
+    "style": "kite_frame",
+    "dt": 1.2,
+    "launchX": 2734,
+    "frames": 46,
+    "feet": 196,
+    "surface": 196
+  },
+  {
+    "target": 16,
+    "phase": 2,
+    "style": "floating_books",
+    "dt": 1.2,
+    "launchX": 2963,
+    "frames": 49,
+    "feet": 184,
+    "surface": 184
+  },
+  {
+    "target": 17,
+    "phase": 2,
+    "style": "chandelier_crystals",
+    "dt": 1.2,
+    "launchX": 3207,
+    "frames": 49,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 18,
+    "phase": 2,
+    "style": "curtain_rod",
+    "dt": 1.2,
+    "launchX": 3460,
+    "frames": 51,
+    "feet": 158,
+    "surface": 158
+  },
+  {
+    "target": 19,
+    "phase": 2,
+    "style": "cuckoo_clock",
+    "dt": 1.2,
+    "launchX": 3729,
+    "frames": 54,
+    "feet": 168,
+    "surface": 168
+  },
+  {
+    "target": 20,
+    "phase": 2,
+    "style": "wardrobe_ledge",
+    "dt": 1.2,
+    "launchX": 4025,
+    "frames": 53,
+    "feet": 156,
+    "surface": 156
+  },
+  {
+    "target": 21,
+    "phase": 2,
+    "style": "grand_portal_pedestal",
+    "dt": 1.2,
+    "launchX": 4343,
+    "frames": 55,
+    "feet": 148,
+    "surface": 148
+  },
+  {
+    "target": 0,
+    "phase": 3,
+    "style": "toppled_blocks",
+    "dt": 1.2,
+    "launchX": 4288,
+    "frames": 38,
+    "feet": 420,
+    "surface": 420
+  },
+  {
+    "target": 1,
+    "phase": 3,
+    "style": "floppy_ragdoll",
+    "dt": 1.2,
+    "launchX": 4086,
+    "frames": 41,
+    "feet": 402,
+    "surface": 402
+  },
+  {
+    "target": 2,
+    "phase": 3,
+    "style": "spilled_crayons_box",
+    "dt": 1.2,
+    "launchX": 3889,
+    "frames": 42,
+    "feet": 384,
+    "surface": 384
+  },
+  {
+    "target": 3,
+    "phase": 3,
+    "style": "crooked_fairytales",
+    "dt": 1.2,
+    "launchX": 3676,
+    "frames": 43,
+    "feet": 366,
+    "surface": 366
+  },
+  {
+    "target": 4,
+    "phase": 3,
+    "style": "dented_drum",
+    "dt": 1.2,
+    "launchX": 3446,
+    "frames": 44,
+    "feet": 348,
+    "surface": 348
+  },
+  {
+    "target": 5,
+    "phase": 3,
+    "style": "slumped_bear",
+    "dt": 1.2,
+    "launchX": 3193,
+    "frames": 45,
+    "feet": 330,
+    "surface": 330
+  },
+  {
+    "target": 6,
+    "phase": 3,
+    "style": "tilted_xylophone",
+    "dt": 1.2,
+    "launchX": 2922,
+    "frames": 46,
+    "feet": 313,
+    "surface": 313
+  },
+  {
+    "target": 7,
+    "phase": 3,
+    "style": "derailed_train",
+    "dt": 1.2,
+    "launchX": 2628,
+    "frames": 47,
+    "feet": 296,
+    "surface": 296
+  },
+  {
+    "target": 8,
+    "phase": 3,
+    "style": "wobbly_card_house",
+    "dt": 1.2,
+    "launchX": 2311,
+    "frames": 49,
+    "feet": 279,
+    "surface": 279
+  },
+  {
+    "target": 9,
+    "phase": 3,
+    "style": "leaning_music_box",
+    "dt": 1.2,
+    "launchX": 1970,
+    "frames": 50,
+    "feet": 263,
+    "surface": 263
+  },
+  {
+    "target": 10,
+    "phase": 3,
+    "style": "loose_robot",
+    "dt": 1.2,
+    "launchX": 1602,
+    "frames": 51,
+    "feet": 247,
+    "surface": 247
+  },
+  {
+    "target": 11,
+    "phase": 3,
+    "style": "spinning_top",
+    "dt": 1.2,
+    "launchX": 1204,
+    "frames": 52,
+    "feet": 231,
+    "surface": 231
+  },
+  {
+    "target": 12,
+    "phase": 3,
+    "style": "floating_spool",
+    "dt": 1.2,
+    "launchX": 777,
+    "frames": 53,
+    "feet": 216,
+    "surface": 216
+  },
+  {
+    "target": 13,
+    "phase": 3,
+    "style": "unbalanced_mobile",
+    "dt": 1.2,
+    "launchX": 320,
+    "frames": 54,
+    "feet": 201,
+    "surface": 201
+  },
+  {
+    "target": 14,
+    "phase": 3,
+    "style": "levitating_grimoire",
+    "dt": 1.2,
+    "launchX": -166,
+    "frames": 55,
+    "feet": 187,
+    "surface": 187
+  },
+  {
+    "target": 15,
+    "phase": 3,
+    "style": "true_portal_balcony",
+    "dt": 1.2,
+    "launchX": -692,
+    "frames": 53,
+    "feet": 144,
+    "surface": 144
+  }
+]

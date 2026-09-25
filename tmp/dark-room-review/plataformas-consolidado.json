@@ -14,8 +14,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
+          0,
+          0,
           0,
           0,
           0,
@@ -141,8 +141,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
+          0,
+          0,
           0,
           0,
           0,
@@ -268,8 +268,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
+          0,
+          0,
           0,
           0,
           0,
@@ -390,7 +390,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: urso ilustrado recente.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -753,7 +759,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Borda de papel nivelada com páginas texturizadas.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -767,13 +779,11 @@
     "samples": [
       {
         "tick": 0,
-        "coverageWithin1pxPct": 99.2,
+        "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          2,
           1,
           1,
-          1,
           0,
           0,
           0,
@@ -894,18 +904,18 @@
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0
         ]
       },
       {
         "tick": 8,
-        "coverageWithin1pxPct": 99.2,
+        "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          2,
           1,
           1,
-          1,
           0,
           0,
           0,
@@ -1026,18 +1036,18 @@
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0
         ]
       },
       {
         "tick": 24,
-        "coverageWithin1pxPct": 99.2,
+        "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          2,
           1,
           1,
-          1,
           0,
           0,
           0,
@@ -1158,10 +1168,18 @@
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: tampo e acessórios ilustrados recentes.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -1539,7 +1557,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Acabamento de madeira no plano do tampo.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -1722,7 +1746,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Face de apoio do bloco A nivelada nos 50 px existentes.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -1968,7 +1998,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: aro e tambor ilustrado.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -1985,26 +2021,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
@@ -2017,18 +2035,36 @@
           1,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       {
@@ -2036,26 +2072,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
@@ -2068,18 +2086,36 @@
           1,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       },
       {
@@ -2087,26 +2123,8 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
-          1,
-          1,
           0,
           0,
-          0,
-          0,
-          0,
-          0,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
@@ -2119,21 +2137,45 @@
           1,
           1,
           1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
           0,
           0,
           0,
           0,
-          1
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: veludo recente e apoio revalidado.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -2541,7 +2583,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Acabamento do tampo alinhado a toda a largura física.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -2844,7 +2892,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: caixa, bailarina e vidro recentes.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 1,
@@ -2961,7 +3015,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Novo PNG de cantaria ilustrada e bandeira; torre central mantém apoio de 28 px.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-0.png"
   },
   {
     "phase": 2,
@@ -3339,7 +3399,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Trem atrás de tampo contínuo; detalhes da mesa nova preservados.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -3702,7 +3768,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Prateleira com frente contínua e suportes abaixo dos brinquedos.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -4050,7 +4122,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Abajur atrás de prateleira de madeira, com suportes abaixo.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -4383,7 +4461,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Fachada detalhada da revisão recente preservada; cumeeira revalidada.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -4701,7 +4785,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Travessa ligada a uma armação de latão.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -5004,7 +5094,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Travessa ligada à pipa por amarrações.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -5292,7 +5388,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Livro remodelado com capa, páginas, lombada e marcador, sem apoio no vazio.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -5565,7 +5667,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Aro alinhado aos pés; velas atrás e cristais abaixo.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -5826,7 +5934,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Varão de latão nivelado.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -6084,7 +6198,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Apoio de madeira com suportes ligados ao corpo do relógio.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-1.png"
   },
   {
     "phase": 2,
@@ -6101,6 +6221,7 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
+          1,
           0,
           0,
           0,
@@ -6171,8 +6292,7 @@
           0,
           0,
           0,
-          0,
-          0
+          1
         ]
       },
       {
@@ -6180,6 +6300,7 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
+          1,
           0,
           0,
           0,
@@ -6250,8 +6371,7 @@
           0,
           0,
           0,
-          0,
-          0
+          1
         ]
       },
       {
@@ -6259,6 +6379,7 @@
         "coverageWithin1pxPct": 100,
         "noOpaqueWithin32px": 0,
         "nearestOpaqueOffsets": [
+          1,
           0,
           0,
           0,
@@ -6329,11 +6450,16 @@
           0,
           0,
           0,
-          0,
-          0
+          1
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Mantido: beiral recente.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 2,
@@ -7176,7 +7302,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Inválida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Pedestal alinhado aos pés, arco acima e recorte vizinho removido.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -7599,7 +7731,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Blocos com pintura gasta, letras, madeira e faces niveladas.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -7992,7 +8130,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Boneca com rosto, lã, tecido sombreado e costuras; vestido dobrado como apoio.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -8370,7 +8514,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Caixa de madeira com giz revestido em papel e sombreado.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -8733,7 +8883,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Capas, páginas, cantoneiras e topo contínuo.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -9081,7 +9237,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Corpo, cordas e aros de latão texturizados.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -9408,7 +9570,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Urso ilustrado oficial reaproveitado na escala local.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -9711,7 +9879,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Lâminas envelhecidas, fixações e base de madeira contínua.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -9996,7 +10170,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Inválida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Trem ilustrado sobre pequeno estrado.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-2.png"
   },
   {
     "phase": 3,
@@ -10263,7 +10443,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Inválida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Cartas com volume e teto de carta horizontal.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -10518,7 +10704,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Inválida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Caixa com painel, ornamentos dourados e tampa nivelada.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -10761,7 +10953,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Metal envelhecido, olhos de vidro, rebites e topo plano.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -10989,7 +11187,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Novo PNG de madeira e latão com topo adaptado à hitbox.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -11202,7 +11406,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Válida",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Madeira, fio texturizado e fita abaixo da tampa estável.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -11403,7 +11613,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Travessa estável com ornamentos animados abaixo.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -11586,7 +11802,13 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Capa, páginas, marcador e cantoneiras; somente o brilho oscila.",
+    "jumpClassification": "Válida",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   },
   {
     "phase": 3,
@@ -12429,6 +12651,12 @@
           0
         ]
       }
-    ]
+    ],
+    "previousVisualClassification": "Suspeita",
+    "visualClassification": "Válida no apoio local",
+    "visualEvidence": "Portal ilustrado substitui retângulos antigos; pedestal no apoio existente.",
+    "jumpClassification": "Suspeita",
+    "generalEdgeIssue": "Tolerância corporal anterior preservada: sapatos podem ficar fora da borda em sobreposições mínimas.",
+    "screenshot": "visual-grupo-3.png"
   }
 ]

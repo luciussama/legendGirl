@@ -44434,5 +44434,12 @@
         }
       ]
     }
-  ]
+  ],
+  "artRevisionValidation": {
+    "physicsUnchanged": true,
+    "sourceHashProof": "fisica-validacao.txt",
+    "browserEvidence": "runtime-metricas.json",
+    "browserTransitions": 114,
+    "note": "Taxas e janelas preservadas; atualização exclusivamente visual."
+  }
 }

@@ -217,7 +217,7 @@ const renderer=new PlatformRenderer({assets});
 for(const p of platforms){
   const before=JSON.stringify(p);
   let calls=0;
-  const ctx={save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,...rect){
+  const ctx={createLinearGradient(){return {addColorStop(){}};},save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,...rect){
     assert(rect.every(Number.isFinite));assert(rect[2]>0&&rect[3]>0);calls++;
     const calibration=PLATFORM_SURFACES[p.style];
     assert.equal(sprite.width,calibration.origW,`${p.style}: source width`);
@@ -232,7 +232,7 @@ for(const p of platforms){
     assert.equal(darkRoomAtlas.block_castle, undefined);
     assert.equal(renderer.drawAtlasPlatformSprite(ctx,assets,p.style,p.x,p), false);
     const blocks=[];
-    const procedural=new Proxy({fillRect(...r){blocks.push(r);}}, {
+    const procedural=new Proxy({createLinearGradient(){return {addColorStop(){}};},fillRect(...r){blocks.push(r);}}, {
       get:(o,k)=>k in o?o[k]:()=>{}
     });
     renderer.renderPlatforms(procedural,{width:10000},0,{platforms:[p]});
@@ -242,7 +242,7 @@ for(const p of platforms){
     assert(!blocks.some(([x,y,w])=>y===top.y&&(x<top.x||x+w>top.x+top.w)),
       'The castle must not draw a false wide landing surface');
     checks+=3;
-    continue; // Deliberate procedural castle, without a raster sprite.
+    continue; // Modern castle uses a separate sprite and the same narrow contact edge.
   }
   assert(renderer.drawAtlasPlatformSprite(ctx,assets,p.style,p.x,p));
   assert.equal(calls,1);assert.equal(JSON.stringify(p),before);checks++;
@@ -250,7 +250,7 @@ for(const p of platforms){
   for(const camX of [0,123.4,p.x-40]) {
     for(const atlasOnly of [false,true]) {
       const selectedAssets=atlasOnly?{get(){return null;},getRegion:assets.getRegion.bind(assets)}:assets;
-      const aligned={save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,dx,dy,dw,dh){
+      const aligned={createLinearGradient(){return {addColorStop(){}};},save(){},restore(){},beginPath(){},moveTo(){},lineTo(){},stroke(){},rect(){},clip(){},fillRect(){},drawImage(sprite,dx,dy,dw,dh){
         // Rounding of raster placement may differ by less than one pixel.
         assert(Math.abs(dx+calibration.surfaceX*dw/sprite.width-(support.x-camX))<1);
         assert(Math.abs(dy+calibration.surfaceY*dh/sprite.height-support.y)<1);
@@ -269,7 +269,7 @@ for(const name of ['stepped_dresser','music_box','kite_frame','floating_books'])
 // Debug must show the same surfaceTopY override used by rendering and landing.
 globalThis.window={DEBUG_COLLISIONS:true};
 const debugRects=[];
-const ctx=new Proxy({fillRect(...r){debugRects.push(r);}}, {get:(o,k)=>k in o?o[k]:()=>{}});
+const ctx=new Proxy({createLinearGradient(){return {addColorStop(){}};},fillRect(...r){debugRects.push(r);}}, {get:(o,k)=>k in o?o[k]:()=>{}});
 renderer.renderPlatforms(ctx,{width:1000},0,{platforms:[{
   x:10,y:200,w:100,h:40,style:'open_books',surfaceTopY:150,
   standRegion:{x:20,y:180,w:60,h:30}
