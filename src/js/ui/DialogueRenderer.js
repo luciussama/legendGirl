@@ -119,50 +119,83 @@ export class DialogueRenderer {
       pCtx.arc(px + radius - 4, py - radius + 5, 1.8 + Math.sin(starPhase) * 0.8, 0, Math.PI * 2);
       pCtx.fill();
     } else {
-      // Avatar da Bebê (Chocada / Curiosa)
-      pCtx.fillStyle = '#ffe0cb';
+      // Avatar da Dream Girl (Menina protagonista - Expressões e Close-ups)
+      // Rosto delicado cor de pêssego
+      pCtx.fillStyle = '#fde0cb';
       pCtx.beginPath();
       pCtx.arc(px, py + 2, 15, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Cabelo lilás e faixa ciano
-      pCtx.fillStyle = '#8b5cf6';
+      // Cabelo castanho quente e franja meiga
+      pCtx.fillStyle = '#4a2518';
       pCtx.beginPath();
-      pCtx.arc(px, py - 5, 13, Math.PI, Math.PI * 2);
+      pCtx.arc(px, py - 5, 13, Math.PI * 0.9, Math.PI * 2.1);
       pCtx.fill();
-      pCtx.fillStyle = '#06b6d4';
-      pCtx.fillRect(px - 10, py - 7, 20, 3.2);
+      // Franja suave sobre a testa
+      pCtx.beginPath();
+      pCtx.arc(px - 5, py - 3, 4.5, 0, Math.PI * 2);
+      pCtx.arc(px, py - 4, 5.0, 0, Math.PI * 2);
+      pCtx.arc(px + 5, py - 3, 4.5, 0, Math.PI * 2);
+      pCtx.fill();
 
-      // Olhos arregalados e surpresos
-      pCtx.fillStyle = '#1e1b4b';
+      // Rabo de cavalo alto no topo com laço de fita vermelho rubi
+      pCtx.fillStyle = '#dc2626';
+      pCtx.beginPath();
+      pCtx.arc(px - 8, py - 13, 4.5, 0, Math.PI * 2);
+      pCtx.fill();
+      pCtx.fillStyle = '#b91c1c';
+      pCtx.beginPath();
+      pCtx.arc(px - 11, py - 11, 3.5, 0, Math.PI * 2);
+      pCtx.arc(px - 5, py - 15, 3.5, 0, Math.PI * 2);
+      pCtx.fill();
+      // Mecha do rabo de cavalo ondulando para trás
+      pCtx.fillStyle = '#4a2518';
+      pCtx.beginPath();
+      pCtx.ellipse(px - 14, py - 9, 7.5, 4.5, -0.4, 0, Math.PI * 2);
+      pCtx.fill();
+
+      // Gola e babados do vestido creme vintage na base do avatar
+      pCtx.fillStyle = '#faf7f0';
+      pCtx.beginPath();
+      pCtx.ellipse(px, py + 16, 12, 4.5, 0, 0, Math.PI * 2);
+      pCtx.fill();
+      pCtx.strokeStyle = '#be1824';
+      pCtx.lineWidth = 1.2;
+      pCtx.stroke();
+
+      // Olhos castanhos escuros expressivos estilo anime
+      pCtx.fillStyle = '#28140e';
       pCtx.beginPath();
       pCtx.ellipse(px - 5, py + 1, 3.5, 4.2, 0, 0, Math.PI * 2);
       pCtx.ellipse(px + 5, py + 1, 3.5, 4.2, 0, 0, Math.PI * 2);
       pCtx.fill();
+      // Brilho nos olhos
       pCtx.fillStyle = '#ffffff';
       pCtx.beginPath();
       pCtx.arc(px - 6, py - 1, 1.4, 0, Math.PI * 2);
       pCtx.arc(px + 4, py - 1, 1.4, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Boquinha aberta intrigada e confusa
+      // Boquinha meiga / intrigada
       pCtx.fillStyle = '#991b1b';
       pCtx.beginPath();
-      pCtx.ellipse(px, py + 9, 2.4, 3, 0, 0, Math.PI * 2);
+      pCtx.ellipse(px, py + 9, 2.4, 2.6, 0, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Bochechas rosadas
-      pCtx.fillStyle = 'rgba(244, 114, 182, 0.6)';
+      // Bochechinhas coradas rosadas
+      pCtx.fillStyle = 'rgba(244, 114, 133, 0.6)';
       pCtx.beginPath();
-      pCtx.arc(px - 8, py + 5, 2.5, 0, Math.PI * 2);
-      pCtx.arc(px + 8, py + 5, 2.5, 0, Math.PI * 2);
+      pCtx.arc(px - 8, py + 5, 2.8, 0, Math.PI * 2);
+      pCtx.arc(px + 8, py + 5, 2.8, 0, Math.PI * 2);
       pCtx.fill();
 
-      // Gotinha de suor
-      pCtx.fillStyle = '#38bdf8';
-      pCtx.beginPath();
-      pCtx.arc(px + 11, py - 2, 1.8, 0, Math.PI * 2);
-      pCtx.fill();
+      // Gotinha de suor / espanto suave
+      if (mood === 'shocked' || mood === 'confused') {
+        pCtx.fillStyle = '#38bdf8';
+        pCtx.beginPath();
+        pCtx.arc(px + 11, py - 2, 1.8, 0, Math.PI * 2);
+        pCtx.fill();
+      }
     }
     pCtx.restore();
   }

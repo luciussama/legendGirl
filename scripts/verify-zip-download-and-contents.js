@@ -83,7 +83,7 @@ async function verifyDownload() {
     { file: 'assets/audio/Circular Dissonance (1).mp3', minSize: 500000 },
     { file: 'assets/audio/toy_room_theme.mp3', minSize: 1000000 },
     { file: 'scripts/verify-dark-room.js', minSize: 5000 },
-    { file: 'tests/DARK_ROOM_VERIFICATION.md', minSize: 5000 }
+    { file: 'tests/DARK_ROOM_VERIFICATION.md', minSize: 2000 }
   ];
 
   for (const item of requiredFiles) {

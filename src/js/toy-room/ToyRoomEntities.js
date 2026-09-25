@@ -114,10 +114,10 @@ export class ToyRoomEntities {
       ctx.fill();
     }
 
-    // Vestidinho (Vermelho coral caloroso com bordado dourado sutil)
+    // Vestidinho Vintage Creme com babados e debrum vermelho da Dream Girl
     const dressGrad = ctx.createLinearGradient(px, py - 12 + walkBob, px, py + 12 + walkBob);
-    dressGrad.addColorStop(0, '#f43f5e');
-    dressGrad.addColorStop(1, '#e11d48');
+    dressGrad.addColorStop(0, '#fcf9f2');
+    dressGrad.addColorStop(1, '#ede4d3');
     ctx.fillStyle = dressGrad;
 
     ctx.beginPath();
@@ -128,13 +128,17 @@ export class ToyRoomEntities {
     ctx.closePath();
     ctx.fill();
 
-    // Avental branco sobre o vestido
-    ctx.fillStyle = '#fef3c7';
-    ctx.fillRect(px - 7, py - 4 + walkBob, 14, 12);
-    ctx.fillStyle = '#fde047';
-    ctx.beginPath();
-    ctx.arc(px, py + 2 + walkBob, 3, 0, Math.PI * 2);
-    ctx.fill();
+    // Babados delicados na barra do vestido
+    ctx.fillStyle = '#ffffff';
+    for (let bx = -12; bx <= 12; bx += 4) {
+      ctx.beginPath();
+      ctx.arc(px + bx, py + 12 + walkBob, 2.2, 0, Math.PI);
+      ctx.fill();
+    }
+
+    // Fita/cinto vermelho rubi na cintura
+    ctx.fillStyle = '#be1824';
+    ctx.fillRect(px - 9, py + 2 + walkBob, 18, 2.5);
 
     // Cabecinha redonda
     ctx.fillStyle = '#ffedd5';
@@ -149,9 +153,9 @@ export class ToyRoomEntities {
     ctx.arc(px + 7, py - 14 + walkBob, 3, 0, Math.PI * 2);
     ctx.fill();
 
-    // Olhos dependendo da direção para a qual está olhando
+    // Olhos castanhos escuros
     if (player.facing === 'down') {
-      ctx.fillStyle = '#1e1b4b';
+      ctx.fillStyle = '#28140e';
       ctx.beginPath();
       ctx.ellipse(px - 5, py - 17 + walkBob, 2.5, 3.5, 0, 0, Math.PI * 2);
       ctx.ellipse(px + 5, py - 17 + walkBob, 2.5, 3.5, 0, 0, Math.PI * 2);
@@ -163,31 +167,41 @@ export class ToyRoomEntities {
       ctx.arc(px + 4, py - 18 + walkBob, 1, 0, Math.PI * 2);
       ctx.fill();
     } else if (player.facing === 'left') {
-      ctx.fillStyle = '#1e1b4b';
+      ctx.fillStyle = '#28140e';
       ctx.beginPath();
       ctx.ellipse(px - 7, py - 17 + walkBob, 2.5, 3.5, 0, 0, Math.PI * 2);
       ctx.fill();
     } else if (player.facing === 'right') {
-      ctx.fillStyle = '#1e1b4b';
+      ctx.fillStyle = '#28140e';
       ctx.beginPath();
       ctx.ellipse(px + 7, py - 17 + walkBob, 2.5, 3.5, 0, 0, Math.PI * 2);
       ctx.fill();
     }
 
-    // Cabelo e maria-chiquinhas (Castanho escuro)
-    ctx.fillStyle = '#78350f';
+    // Cabelo castanho quente e rabo de cavalo alto
+    ctx.fillStyle = '#4a2518';
     ctx.beginPath();
     ctx.arc(px, py - 21 + walkBob, 14, Math.PI, 0, false);
     ctx.fill();
 
-    const pigtailWave = player.isMoving ? Math.sin((player.animTime || 0) * 2.5) * 3 : 0;
-    ctx.fillStyle = '#92400e';
+    // Franja suave sobre a testa
     ctx.beginPath();
-    ctx.ellipse(px - 16, py - 16 + walkBob + pigtailWave, 6, 9, -0.3, 0, Math.PI * 2);
-    ctx.ellipse(px + 16, py - 16 + walkBob - pigtailWave, 6, 9, 0.3, 0, Math.PI * 2);
+    ctx.arc(px - 5, py - 19 + walkBob, 4, 0, Math.PI * 2);
+    ctx.arc(px, py - 20 + walkBob, 4.5, 0, Math.PI * 2);
+    ctx.arc(px + 5, py - 19 + walkBob, 4, 0, Math.PI * 2);
     ctx.fill();
 
-    // Lacinhos amarelos nas maria-chiquinhas
+    // Rabo de cavalo alto com laço vermelho rubi
+    const ponyWave = player.isMoving ? Math.sin((player.animTime || 0) * 2.5) * 3 : 0;
+    ctx.fillStyle = '#dc2626';
+    ctx.beginPath();
+    ctx.arc(px - 9, py - 25 + walkBob, 4, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#4a2518';
+    ctx.beginPath();
+    ctx.ellipse(px - 14, py - 22 + walkBob + ponyWave, 5, 8, -0.4, 0, Math.PI * 2);
+    ctx.fill();
     ctx.fillStyle = '#facc15';
     ctx.beginPath();
     ctx.arc(px - 13, py - 21 + walkBob, 3.5, 0, Math.PI * 2);

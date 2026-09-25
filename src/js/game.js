@@ -24,6 +24,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
   platformRenderer.setAssets?.(assets);
   backgroundRenderer.setAssets?.(assets);
+  babyRenderer.setAssets?.(assets);
   const audio = createAudioController();
   const state = createGameState(canvas, uiFeedback, callbacks);
   const camera = createCameraController({ floorY: FLOOR_Y });
@@ -578,7 +579,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   // --- RENDERIZADORES DE ENTIDADES E PERSONAGENS (Modularizados em /entities) ---
   function drawBabyManaStyle(camX) {
     syncLocalsToState();
-    babyRenderer.render(ctx, baby, state, camX);
+    babyRenderer.render(ctx, baby, state, camX, { assets });
   }
 
   function drawFairy(camX) {

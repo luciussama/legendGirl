@@ -8,7 +8,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000;
 const ZIP_FILE_PATH = path.join(__dirname, 'o-quarto-dos-brinquedos.zip');
 
 // Middleware global de CORS para permitir acesso seguro a partir de qualquer contexto/iframe
