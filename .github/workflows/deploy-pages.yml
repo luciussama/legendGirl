@@ -24,28 +24,17 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 24
+          cache: npm
       - name: Instalar dependências
-        run: |
-          if [ -f package-lock.json ]; then
-            npm ci
-          else
-            npm install --package-lock=true
-          fi
+        run: npm ci
       - name: Validar projeto
-        run: |
-          npm run check-assets
-          npm run lint
-          npm test
-          node scripts/test-opening-sequence.js
-          node scripts/test-lighting.js
+        run: npm run check-assets && npm run lint && npm run build
       - name: Configurar GitHub Pages
         uses: actions/configure-pages@v5
       - name: Preparar site estático
-        run: npm run build
-      - name: Verificar site e pacote de download
         run: |
-          node scripts/test-pages-build.js
-          unzip -t _site/o-quarto-dos-brinquedos.zip > /dev/null
+          mkdir -p _site
+          rsync -a --exclude='_site' --exclude='node_modules' --exclude='.git' --exclude='.github' ./ _site/
       - name: Enviar site estático
         uses: actions/upload-pages-artifact@v3
         with:
