@@ -64,7 +64,7 @@ export class GameState {
   }
 
   spawnFairyFlightDust(fx, fy, fvx, fvy) {
-    const fairyHues = [48, 52, 192, 330, 280]; // Warm Gold, Ethereal Cyan, Rose, Violet
+    const fairyHues = [48, 52, 192, 330, 280]; // Dourado quente, ciano etéreo, rosa, violeta
     const chosenHue = fairyHues[Math.floor(Math.random() * fairyHues.length)];
     const angle = Math.random() * Math.PI * 2;
     const driftSpeed = 0.2 + Math.random() * 0.45;
@@ -364,7 +364,7 @@ export class GameState {
 
   finishPlotTwistAndStartTutorial(audio) {
     if (audio) audio.clearActiveSounds();
-    // Keep the shared arrays, but discard visual trails from the previous stage.
+    // Mantém os vetores compartilhados, mas descarta os rastros visuais da fase anterior.
     this.babyJumpDust.length = 0;
     this.speedRibbons.length = 0;
     this.plotTwistActive = false;

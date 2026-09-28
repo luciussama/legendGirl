@@ -1,0 +1,21 @@
+
+> o-quarto-dos-brinquedos@1.0.0 test
+> npm run verify:dark-room
+
+
+> o-quarto-dos-brinquedos@1.0.0 verify:dark-room
+> node scripts/verify-dark-room.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js && node scripts/test-official-character.js && node scripts/test-phase3-particles.js && node scripts/test-escape-fairy-guide.js
+
+<anonymous_script>:15
+    if (opening.active) return;
+    ^
+
+ReferenceError: opening is not defined
+    at doJump (eval at <anonymous> (file:///Users/sergio/repos/legendGirl/scripts/verify-dark-room.js:22:14), <anonymous>:15:5)
+    at eval (eval at <anonymous> (file:///Users/sergio/repos/legendGirl/scripts/verify-dark-room.js:22:14), <anonymous>:149:3)
+    at file:///Users/sergio/repos/legendGirl/scripts/verify-dark-room.js:49:1
+    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)
+    at async node:internal/modules/esm/loader:650:26
+    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)
+
+Node.js v26.5.0

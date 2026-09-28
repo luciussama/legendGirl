@@ -63,10 +63,10 @@ function composeGrid(imgScene, imgStart, imgMid, imgEnd) {
     }
   }
 
-  blit(p1, 0, 0);     // Top-left: Cenário Geral
-  blit(p2, w, 0);     // Top-right: Início
-  blit(p3, 0, h);     // Bottom-left: Meio
-  blit(p4, w, h);     // Bottom-right: Fim
+  blit(p1, 0, 0);     // Superior esquerdo: Cenário Geral
+  blit(p2, w, 0);     // Superior direito: Início
+  blit(p3, 0, h);     // Inferior esquerdo: Meio
+  blit(p4, w, h);     // Inferior direito: Fim
 
   return PNG.sync.write(composite);
 }

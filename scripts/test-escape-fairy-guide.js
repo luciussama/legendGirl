@@ -19,8 +19,8 @@ for (let index=9; index<platforms.length-1; index++) for(const dt of [0.5,1,1.2]
     vy+=baby.gravity*dt;y+=vy*dt;
     if(landed===null&&vy>0&&y+baby.h>=target.landingY)landed=t;
   }
-  assert(arrived!==null&&landed!==null&&arrived<landed,`Platform ${index}: fairy ${arrived}, descent ${landed}`);
-  assert(Math.hypot(fairy.x-target.x,fairy.y-target.y)<0.01,'Wait at landing without random drift');
+  assert(arrived!==null&&landed!==null&&arrived<landed,`Plataforma ${index}: chegada da fada ${arrived}, descida ${landed}`);
+  assert(Math.hypot(fairy.x-target.x,fairy.y-target.y)<0.01,'Espera no apoio sem deslocamento aleatório');
   assert.equal(JSON.stringify(baby),babyBefore);
   maxArrival=Math.max(maxArrival,arrived);checks++;
 }
@@ -28,6 +28,6 @@ const target={x:300,y:200};
 const a={x:0,y:0,vx:0,vy:0,flutterPhase:0},b={...a};
 for(let i=0;i<20;i++)updateEscapeFairyGuide(a,target,1);
 for(let i=0;i<40;i++)updateEscapeFairyGuide(b,target,0.5);
-assert(Math.hypot(a.x-b.x,a.y-b.y)<1e-8,'Frame-rate independent navigation');
+assert(Math.hypot(a.x-b.x,a.y-b.y)<1e-8,'Navegação independente da taxa de quadros');
 assert.equal(JSON.stringify(platforms),before);
-console.log(`PASS: ${checks} escape targets; fairy arrives before descending child (max ${maxArrival.toFixed(1)} frames), waits, preserves player/platform state.`);
+console.log(`APROVADO: ${checks} alvos de fuga; a fada chega antes da descida da criança (máximo de ${maxArrival.toFixed(1)} quadros), espera e preserva o estado da personagem e das plataformas.`);

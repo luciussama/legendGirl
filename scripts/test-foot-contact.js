@@ -4,7 +4,7 @@ import { PNG } from 'pngjs';
 import { BabyRenderer } from '../src/js/entities/BabyRenderer.js';
 import { createBabyState, platforms } from '../src/js/config.js';
 
-// Measure the lowest opaque source pixel through the actual drawImage transform.
+// Mede o pixel opaco mais baixo da imagem de origem usando a transformação real de drawImage.
 const renderer = new BabyRenderer();
 const atlas = PNG.sync.read(fs.readFileSync('assets/art/dark-room/sprites/official-character.png'));
 const assets = {get: key => key === 'official-character' ? atlas : null};
@@ -20,12 +20,12 @@ for (const p of platforms) for (const facing of [-1, 1]) for (let frame = 0; fra
       let last=-1;
       for(let y=0;y<sh;y++)for(let x=0;x<sw;x++)if(image.data[((sy+y)*image.width+sx+x)*4+3])last=y;
       bottom=feetY+dy+(last+1)*dh/sh;
-      assert(Math.abs(dw/sw-dh/sh)<1e-10,'Uniform scale preserves anatomy');
+      assert(Math.abs(dw/sw-dh/sh)<1e-10,'A escala uniforme preserva a anatomia');
     }};
   renderer.render(ctx,baby,{tick:frame},0,{assets});
   assert.notEqual(bottom,null);
-  assert(Math.abs(bottom-supportY)<1e-8,`${p.style}, facing ${facing}, frame ${frame}: shoe contact`);
-  assert.deepEqual(baby,before,'Rendering must not change physics');
+  assert(Math.abs(bottom-supportY)<1e-8,`${p.style}, direção ${facing}, quadro ${frame}: contato do sapato`);
+  assert.deepEqual(baby,before,'A renderização não deve alterar a física');
   checks++;
 }
-console.log(`PASS: ${checks} official sprite foot contacts across platforms and both facings.`);
+console.log(`APROVADO: ${checks} contatos dos pés do sprite oficial nas plataformas e nas duas direções.`);

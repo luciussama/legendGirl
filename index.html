@@ -31,8 +31,8 @@
       </div>
     </div>
 
-    <!-- Tela de Fim de Jogo (Game Over) -->
-    <div id="gameover-overlay" class="hidden" aria-label="Tela de Game Over">
+    <!-- Tela de Fim de Jogo -->
+    <div id="gameover-overlay" class="hidden" aria-label="Tela de fim de jogo">
       <div class="gameover-card">
         <span class="gameover-badge">✦ QUARTO ESCURO ✦</span>
         <h2 class="gameover-title">Você não conseguiu sair do quarto.</h2>
@@ -56,7 +56,7 @@
 
         <h2 class="download-modal-title">📦 Download O Quarto dos Brinquedos</h2>
         <p class="download-modal-desc">
-          Pacote ZIP verificado contendo todo o código-fonte, spritesheets de alta resolução da Fase 1 e Fase 2, áudios MP3 originais e testes (<strong>51.5 MB</strong>).
+          Pacote ZIP verificado contendo todo o código-fonte, pranchas de sprites de alta resolução da Fase 1 e Fase 2, áudios MP3 originais e testes (<strong>51.5 MB</strong>).
         </p>
 
         <div class="download-modal-options">
@@ -67,7 +67,7 @@
               <span class="option-filesize">51.5 MB</span>
             </div>
             <p class="download-option-hint">
-              Como o preview do AI Studio roda em um <code>&lt;iframe&gt;</code>, navegadores como Chrome bloqueiam a gravação direta no disco. Abrir o download em uma nova aba transfere o arquivo direto para a sua pasta de Downloads.
+              Como a prévia do AI Studio roda em um <code>&lt;iframe&gt;</code>, navegadores como Chrome bloqueiam a gravação direta no disco. Abrir o download em uma nova aba transfere o arquivo direto para a sua pasta de Downloads.
             </p>
             <div class="download-actions-row">
               <a id="modal-btn-download-tab" class="modal-action-btn btn-primary" href="/api/download-zip" target="_blank" rel="noopener noreferrer">
@@ -93,12 +93,12 @@
             <span id="modal-copy-url-feedback" class="modal-feedback-text"></span>
           </div>
 
-          <!-- Opção 3: Download Direto no Navegador (Blob Stream) -->
+          <!-- Opção 3: Download Direto no Navegador (fluxo de dados binários) -->
           <div class="download-option-card">
             <div class="download-option-header">
               <span class="option-tag">💾 Salvar pelo Navegador (Stream)</span>
             </div>
-            <p class="download-option-hint">Tenta ler o stream do ZIP e salvar em memória local:</p>
+            <p class="download-option-hint">Tenta ler o fluxo de dados do ZIP e salvar em memória local:</p>
             <button id="modal-btn-stream-download" type="button" class="modal-action-btn btn-secondary">
               ⬇️ Iniciar Download no Navegador
             </button>

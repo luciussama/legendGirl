@@ -20,7 +20,7 @@ export class BackgroundRenderer {
 
   /**
    * Renderiza item de cenário utilizando os sprites de environment-assets.png se disponíveis.
-   * Retorna true se o item foi desenhado com sucesso, ou false caso contrário (ativando fallback).
+   * Retorna true se o item foi desenhado com sucesso, ou false caso contrário (ativando a alternativa).
    */
   drawAtlasSceneryItem(ctx, assets, type, sx, item, floorY) {
     if (!assets || !darkRoomAtlas) return false;
@@ -482,7 +482,7 @@ export class BackgroundRenderer {
     ctx.lineTo(canvas.width, FLOOR_Y - 8);
     ctx.stroke();
 
-    // Junções das tábuas de madeira no chão (quando em fallback procedimental)
+    // Junções das tábuas de madeira no chão (quando utiliza a alternativa procedural)
     if (!floorTileSprite) {
       ctx.strokeStyle = '#15111e';
       ctx.lineWidth = 2;
@@ -522,7 +522,7 @@ export class BackgroundRenderer {
         return;
       }
 
-      // 2. Fallback procedimental
+      // 2. Alternativa procedural
       switch (item.type) {
         case 'fluffy_rug': {
           // Grande tapete mandala pastel redondo no chão

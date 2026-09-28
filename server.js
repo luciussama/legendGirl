@@ -160,12 +160,12 @@ app.get(['/baixar', '/download-direct', '/download-center'], (req, res) => {
 // Fornece arquivos estáticos a partir do diretório raiz
 app.use(express.static(__dirname));
 
-// Redirecionamento fallback para index.html em roteamento de cliente/SPA
+// Redirecionamento alternativo para index.html em roteamento de cliente/SPA
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server running on http://0.0.0.0:${PORT}`);
+  console.log(`Servidor em execução em http://0.0.0.0:${PORT}`);
 });
 

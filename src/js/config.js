@@ -157,7 +157,7 @@ export const platforms = [
 
   // SEQUÊNCIA EXATA DE 12 PLATAFORMAS DEPOIS DA CENA
   // Espaçamento e altitude matematicamente proporcionais à evolução do pulo:
-  // 1/12 (gap 70px)
+  // 1/12 (distância livre de 70px)
   {
     x: 1860,
     y: 244,
@@ -167,7 +167,7 @@ export const platforms = [
     label: '1/12 Pista Elevada do Trem',
     standRegion: { x: 1860, y: 244, w: 115, h: 230 }
   },
-  // 2/12 (gap 80px)
+  // 2/12 (distância livre de 80px)
   {
     x: 2055,
     y: 236,
@@ -177,7 +177,7 @@ export const platforms = [
     label: '2/12 Prateleira de Brinquedos',
     standRegion: { x: 2055, y: 236, w: 110, h: 238 }
   },
-  // 3/12 (gap 92px)
+  // 3/12 (distância livre de 92px)
   {
     x: 2257,
     y: 224,
@@ -185,26 +185,26 @@ export const platforms = [
     h: 250,
     style: 'mushroom_lamp',
     label: '3/12 Abajur Cogumelo',
-    // The entire table is walkable; the lamp is scenery behind it.
+    // Todo o tampo da mesa aceita apoio; o abajur é um elemento de cenário atrás dele.
     standRegion: { x: 2257, y: 224, w: 105, h: 250 }
   },
-  // 4/12 (gap 105px)
+  // 4/12 (distância livre de 105px)
   { x: 2467, y: 210, w: 100, h: 264, style: 'dollhouse_roof', label: '4/12 Telhado da Casa de Bonecas' },
-  // 5/12 (gap 120px)
+  // 5/12 (distância livre de 120px)
   { x: 2687, y: 218, w: 95, h: 256, style: 'spinning_globe', label: '5/12 Globo Terrestre Ilustrado' },
-  // 6/12 (gap 135px)
+  // 6/12 (distância livre de 135px)
   { x: 2917, y: 196, w: 90, h: 278, style: 'kite_frame', label: '6/12 Pipa Encantada de Bambu' },
-  // 7/12 (gap 152px)
+  // 7/12 (distância livre de 152px)
   { x: 3159, y: 184, w: 85, h: 290, style: 'floating_books', label: '7/12 Livro de Gravuras Flutuante' },
-  // 8/12 (gap 170px)
+  // 8/12 (distância livre de 170px)
   { x: 3414, y: 168, w: 80, h: 306, style: 'chandelier_crystals', label: '8/12 Lustre de Cristais' },
-  // 9/12 (gap 192px)
+  // 9/12 (distância livre de 192px)
   { x: 3686, y: 158, w: 76, h: 316, style: 'curtain_rod', label: '9/12 Varão de Cortina Estrelada' },
-  // 10/12 (gap 218px)
+  // 10/12 (distância livre de 218px)
   { x: 3980, y: 168, w: 75, h: 306, style: 'cuckoo_clock', label: '10/12 Relógio Cuco Vintage' },
-  // 11/12 (gap 245px)
+  // 11/12 (distância livre de 245px)
   { x: 4300, y: 156, w: 72, h: 318, style: 'wardrobe_ledge', label: '11/12 Beiral do Grande Guarda-Roupa' },
-  // 12/12 (gap 278px: o grande abismo final vencido no ápice do Pulo Máximo)
+  // 12/12 (distância livre de 278px: o grande abismo final vencido no ápice do Pulo Máximo)
   { x: 4650, y: 148, w: 270, h: 326, style: 'grand_portal_pedestal', label: '12/12 O Portal dos Sonhos (Saída)' }
 ];
 
@@ -225,42 +225,42 @@ export const phase3Platforms = [
   // Saltos seguros, apoios largos e tolerância generosa para assimilação do sentido e controle do pulo.
   // 1/15 (Início da escalada nos brinquedos caídos)
   { x: 4040, y: 420, w: 130, h: 50, style: 'toppled_blocks', label: '1/15 Pilha de Blocos Tombada' },
-  // 2/15 (gap 72px, alcance perfeito com nível 0)
+  // 2/15 (distância livre de 72px, alcance perfeito com nível 0)
   { x: 3848, y: 402, w: 120, h: 68, style: 'floppy_ragdoll', label: '2/15 Boneca de Pano Desconjuntada' },
-  // 3/15 (gap 95px, alcance seguro com nível 1)
+  // 3/15 (distância livre de 95px, alcance seguro com nível 1)
   { x: 3638, y: 384, w: 115, h: 86, style: 'spilled_crayons_box', label: '3/15 Caixa de Giz de Cera Aberta' },
-  // 4/15 (gap 118px, alcance seguro com nível 2)
+  // 4/15 (distância livre de 118px, alcance seguro com nível 2)
   { x: 3410, y: 366, w: 110, h: 104, style: 'crooked_fairytales', label: '4/15 Pilha Torta de Contos de Fada' },
-  // 5/15 (gap 145px, alcance seguro com nível 3)
+  // 5/15 (distância livre de 145px, alcance seguro com nível 3)
   { x: 3160, y: 348, w: 105, h: 122, style: 'dented_drum', label: '5/15 Tamborzinho Amassado' },
 
   // PLATAFORMAS INTERMEDIÁRIAS (6 A 10):
   // Exigência moderada de timing e espaçamento dinâmico, sem exigir o limite exato do pulo.
-  // 6/15 (gap 170px, transição fluida com nível 4)
+  // 6/15 (distância livre de 170px, transição fluida com nível 4)
   { x: 2892, y: 330, w: 98, h: 140, style: 'slumped_bear', label: '6/15 Urso de Pelúcia Desmoronado' },
-  // 7/15 (gap 200px, ritmo intermediário com nível 5)
+  // 7/15 (distância livre de 200px, ritmo intermediário com nível 5)
   { x: 2602, y: 313, w: 90, h: 157, style: 'tilted_xylophone', label: '7/15 Xilofone Colorido Inclinado' },
-  // 8/15 (gap 230px, ritmo firme com nível 6)
+  // 8/15 (distância livre de 230px, ritmo firme com nível 6)
   { x: 2288, y: 296, w: 84, h: 174, style: 'derailed_train', label: '8/15 Locomotiva Descarrilada' },
-  // 9/15 (gap 260px, ritmo acelerado com nível 7)
+  // 9/15 (distância livre de 260px, ritmo acelerado com nível 7)
   { x: 1950, y: 279, w: 78, h: 191, style: 'wobbly_card_house', label: '9/15 Castelo de Cartas Bamboleante' },
-  // 10/15 (gap 290px, ritmo empolgante com nível 8)
+  // 10/15 (distância livre de 290px, ritmo empolgante com nível 8)
   { x: 1586, y: 263, w: 74, h: 207, style: 'leaning_music_box', label: '10/15 Caixa de Música Desregulada' },
 
   // PLATAFORMAS FINAIS (11 A 15):
   // Desafiadoras com margem de erro reduzida (exigindo o limite do alcance), rigorosamente testadas pela física da parábola.
-  // 11/15 (gap 324px, alta velocidade com nível 9)
+  // 11/15 (distância livre de 324px, alta velocidade com nível 9)
   { x: 1192, y: 247, w: 70, h: 223, style: 'loose_robot', label: '11/15 Robô de Lata Desparafusado' },
-  // 12/15 (gap 355px, timing refinado com nível 10)
+  // 12/15 (distância livre de 355px, timing refinado com nível 10)
   { x: 772, y: 231, w: 65, h: 239, style: 'spinning_top', label: '12/15 Pião de Madeira Rodopiante' },
-  // 13/15 (gap 390px, salto largo com nível 11)
+  // 13/15 (distância livre de 390px, salto largo com nível 11)
   { x: 322, y: 216, w: 60, h: 254, style: 'floating_spool', label: '13/15 Carretel com Fita Flutuante' },
-  // 14/15 (gap 425px, limiar de precisão com nível 12)
+  // 14/15 (distância livre de 425px, limiar de precisão com nível 12)
   { x: -159, y: 201, w: 56, h: 269, style: 'unbalanced_mobile', label: '14/15 Móbile Desequilibrado' },
-  // 15/15 (gap 460px, o grande salto culminante com nível 13)
+  // 15/15 (distância livre de 460px, o grande salto culminante com nível 13)
   { x: -669, y: 187, w: 50, h: 283, style: 'levitating_grimoire', label: '15/15 Livro de Feitiços no Vácuo (O Grande Salto!)' },
 
-  // Plataforma do Portal Definitivo (onde repousa a Verdadeira Porta) (gap 480px, pouso triunfante no terraço)
+  // Plataforma do Portal Definitivo (onde repousa a Verdadeira Porta) (distância livre de 480px, pouso triunfante no terraço)
   { x: -1419, y: 144, w: 270, h: 326, style: 'true_portal_balcony', label: 'O Verdadeiro Portal dos Sonhos' }
 ];
 

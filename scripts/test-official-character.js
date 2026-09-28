@@ -35,4 +35,4 @@ for(const pose of ['idle','run','jump','jump_short','high_jump','fall','dash','t
  }row+=pose==='teleport'?130:Math.max(...list.map(f=>f.h))*2+8;
 }
 fs.writeFileSync('tmp/official-character-review/crops.png',PNG.sync.write(review));
-console.log(`PASS: ${checked} opaque pixels identical to source; all official poses draw atlas crops.`);
+console.log(`APROVADO: ${checked} pixels opacos idênticos à origem; todas as poses oficiais desenham recortes do atlas.`);

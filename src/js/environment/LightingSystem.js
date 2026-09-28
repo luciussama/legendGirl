@@ -1,5 +1,5 @@
 import { getEscapeGuideTarget } from '../controllers/EscapeFairyGuide.js';
-/** Local moonlight and fairy light; render-only, with no gameplay state writes. */
+/** Luz local da lua e da fada; atua somente na renderização, sem modificar o estado do jogo. */
 import {
   platforms as defaultPlatforms,
   phase3Platforms as defaultPhase3Platforms,
@@ -35,8 +35,8 @@ export class LightingSystem {
     const fx = fairy.x - camX, fy = fairy.y;
     const bx = baby.x - camX + baby.w / 2, by = baby.y + baby.h / 2;
 
-    // Rebuild every frame. Leaving destination-out active here gradually erased
-    // the old darkness mask and made the entire room uniformly bright.
+    // Reconstrói a cada quadro. Manter destination-out ativo aqui apagava gradualmente
+    // a máscara de escuridão anterior e deixava todo o quarto uniformemente claro.
     mask.save();
     mask.setTransform(1, 0, 0, 1, 0, 0);
     mask.globalCompositeOperation = 'source-over';
@@ -44,8 +44,8 @@ export class LightingSystem {
     mask.clearRect(0, 0, canvas.width, canvas.height);
     mask.fillStyle = dramatic ? '#080b14' : '#101522';
     mask.fillRect(0, 0, canvas.width, canvas.height);
-    // Use the actual scene transform so light stays attached during camera zoom
-    // and vertical travel, including the third stage and cinematic close-ups.
+    // Usa a transformação real da cena para que a luz acompanhe a ampliação da câmera
+    // e o deslocamento vertical, incluindo a terceira fase e os enquadramentos próximos das cenas.
     const transform = ctx.getTransform?.();
     if (transform) mask.setTransform(transform.a, transform.b, transform.c, transform.d, transform.e, transform.f);
     else mask.translate(0, -camY);
@@ -66,8 +66,8 @@ export class LightingSystem {
       mask.restore();
     };
 
-    // Broad, very faint material visibility, never a landing line or a rim drawn
-    // over the illustration. Existing activation is read, not changed.
+    // Visibilidade ampla e muito sutil do material, sem desenhar linha de pouso ou contorno
+    // sobre a ilustração. O estado de ativação existente é apenas lido, sem alteração.
     for (const p of active) {
       const x = p.x - camX + p.w / 2;
       if (x < -p.w - 180 || x > canvas.width + p.w + 180) continue;
@@ -75,18 +75,18 @@ export class LightingSystem {
         0.17 + Math.min(1, p.lightAlpha || 0) * 0.055);
     }
 
-    // The fairy is the strongest nearby source. No cone or hard spotlight.
+    // A fada é a fonte próxima mais intensa. Não há cone de luz nem foco com bordas rígidas.
     const breath = Math.sin(tick * 0.025) * 3;
     pool(fx, fy, 162 + breath, 140 + breath, 0.94);
     pool(fx, fy, 32, 32, 0.7);
-    // During the escape, project the fairy's guidance ahead immediately while
-    // she travels. Soft pools reveal existing artwork, never draw landing marks.
+    // Durante a fuga, projeta imediatamente a orientação da fada à frente enquanto
+    // ela se desloca. Áreas suaves de luz revelam a arte existente, sem desenhar marcas de pouso.
     if (state.isEscapeMode && !state.isPhase3 && !state.plotTwistActive) {
       const target = getEscapeGuideTarget(baby, active, options.exitDoor || defaultExitDoor);
       pool(target.x - camX, target.landingY + 6, 102, 75, 0.68);
       pool((bx + target.x - camX) / 2, Math.min(by, target.y) - 15, 110, 70, 0.20);
     }
-    // Small silhouette lift only; the child does not illuminate the room.
+    // Apenas um leve realce da silhueta; a criança não ilumina o quarto.
     pool(bx, by, 37, 49, 0.48);
 
     for (const wx of NIGHT_WINDOWS) {
@@ -107,8 +107,8 @@ export class LightingSystem {
     ctx.drawImage(this.darkCanvas, 0, 0);
     ctx.restore();
 
-    // Silver airborne light, confined to the existing windows. Layered beams
-    // feather the sides; their opacity falls to zero before reaching the floor.
+    // Luz prateada suspensa, restrita às janelas existentes. Os feixes em camadas
+    // suavizam as laterais; sua opacidade cai a zero antes de atingir o piso.
     ctx.save();
     ctx.globalCompositeOperation = 'screen';
     for (const wx of NIGHT_WINDOWS) {
@@ -129,7 +129,7 @@ export class LightingSystem {
         ctx.closePath();
         ctx.fill();
       }
-      // Deterministic dust: visual time only, no shared random/gameplay state.
+      // Poeira determinística: usa somente o tempo visual, sem compartilhar aleatoriedade ou estado do jogo.
       for (let i = 0; i < 12; i++) {
         const t = ((i * 0.083 + tick * 0.00045) % 1);
         const xDust = x + 28 + t * 72 + Math.sin(i * 9.7) * 23;

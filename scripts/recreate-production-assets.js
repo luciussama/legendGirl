@@ -1,9 +1,9 @@
 /**
  * scripts/recreate-production-assets.js
- * Processes the 5 newly generated AAA storybook sheets, isolates each asset
- * with clean alpha transparency (unmultiplying white edges for zero halo),
- * exports each individual sprite to assets/art/dark-room/sprites/,
- * packs them into the master production spritesheet and updates the atlas.
+ * Processa as cinco pranchas recém-geradas com qualidade AAA e estilo de livro ilustrado; isola cada recurso
+ * com transparência alfa limpa (removendo a influência do branco nas bordas para eliminar halos),
+ * exporta cada sprite individual para assets/art/dark-room/sprites/,
+ * agrupa-os na prancha principal de produção e atualiza o atlas.
  */
 
 import fs from 'fs';
@@ -76,7 +76,7 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
   const isOutside = new Uint8Array(cw * ch);
   const queue = [];
 
-  // Seed boundary of crop
+  // Inicializa os pontos de partida na borda do recorte.
   for (let x = 0; x < cw; x++) {
     for (const y of [0, ch - 1]) {
       const idx = ((cy + y) * sheetW + (cx + x)) * 4;
@@ -98,7 +98,7 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
     }
   }
 
-  // Flood fill outside
+  // Preenchimento por propagação na região externa
   let qHead = 0;
   while (qHead < queue.length) {
     const qx = queue[qHead++];
@@ -119,7 +119,7 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
     }
   }
 
-  // Build RGBA with unmultiplied alpha along the edge
+  // Monta a imagem RGBA removendo a influência do fundo branco nas bordas semitransparentes.
   const rawRgba = new Uint8Array(cw * ch * 4);
   let minX = cw, maxX = 0, minY = ch, maxY = 0;
   let hasContent = false;
@@ -139,7 +139,7 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
         rawRgba[dIdx + 2] = 0;
         rawRgba[dIdx + 3] = 0;
       } else {
-        // Check if on boundary for anti-aliasing
+        // Verifica se o pixel está na borda para aplicar suavização.
         let nearOutside = false;
         for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
           const nx = x + dx, ny = y + dy;
@@ -154,10 +154,10 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
         if (nearOutside && brightness > 210) {
-          // Smooth alpha transition to prevent any white edge halo
+          // Suaviza a transição de alfa para evitar halos brancos nas bordas.
           alpha = Math.max(0, Math.min(255, Math.round(255 * (1 - (brightness - 210) / 45))));
           if (alpha > 0) {
-            // Unmultiply white
+            // Remove a contribuição do branco na composição.
             const aNorm = alpha / 255;
             outR = Math.min(255, Math.max(0, Math.round((r - 255 * (1 - aNorm)) / aNorm)));
             outG = Math.min(255, Math.max(0, Math.round((g - 255 * (1 - aNorm)) / aNorm)));
@@ -185,7 +185,7 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
     return { width: cw, height: ch, data: rawRgba };
   }
 
-  // Trim transparent padding with 2px safety border
+  // Recorta a margem transparente mantendo uma borda de segurança de 2 px.
   const pad = 2;
   minX = Math.max(0, minX - pad);
   minY = Math.max(0, minY - pad);
@@ -213,20 +213,20 @@ function savePng(filename, width, height, data) {
 }
 
 async function run() {
-  console.log('Recreating individual production assets from generated sheets...');
+  console.log('Recriando recursos individuais de produção a partir das pranchas geradas...');
   const outDir = 'assets/art/dark-room/sprites';
   fs.mkdirSync(outDir, { recursive: true });
 
   const extractedSprites = [];
 
   for (const sheet of SHEETS) {
-    console.log(`Loading sheet: ${sheet.path}...`);
+    console.log(`Carregando prancha: ${sheet.path}...`);
     const imgData = fs.readFileSync(sheet.path);
     const decoded = jpeg.decode(imgData, { useTArray: true });
     const { width: sw, height: sh, data } = decoded;
 
     for (const item of sheet.items) {
-      console.log(`  Extracting ${item.name}...`);
+      console.log(`  Extraindo ${item.name}...`);
       const sprite = extractSprite(data, sw, sh, item.crop);
       const outPath = path.join(outDir, `${item.name}.png`);
       savePng(outPath, sprite.width, sprite.height, sprite.data);
@@ -238,12 +238,12 @@ async function run() {
         data: sprite.data,
         file: outPath
       });
-      console.log(`    Saved ${outPath} (${sprite.width}x${sprite.height})`);
+      console.log(`    Arquivo salvo: ${outPath} (${sprite.width}x${sprite.height})`);
     }
   }
 
-  // Pack into clean master spritesheet
-  console.log(`Packing ${extractedSprites.length} assets into master production spritesheet...`);
+  // Agrupa os sprites limpos na prancha principal.
+  console.log(`Agrupando ${extractedSprites.length} recursos na prancha principal de produção...`);
   const SHEET_W = 1600;
   const pad = 8;
   let curX = pad;
@@ -267,7 +267,7 @@ async function run() {
   }
 
   const SHEET_H = curY + rowH + pad;
-  console.log(`Master spritesheet dimensions: ${SHEET_W}x${SHEET_H}`);
+  console.log(`Dimensões da prancha principal de sprites: ${SHEET_W}x${SHEET_H}`);
 
   const masterRgba = new Uint8Array(SHEET_W * SHEET_H * 4);
   for (const s of placedSprites) {
@@ -281,9 +281,9 @@ async function run() {
   const masterPath = 'assets/art/dark-room/production-spritesheet.png';
   savePng(masterPath, SHEET_W, SHEET_H, masterRgba);
   savePng('assets/art/dark-room/environment-assets.png', SHEET_W, SHEET_H, masterRgba);
-  console.log(`Saved master spritesheets to ${masterPath} and environment-assets.png`);
+  console.log(`Pranchas principais salvas em ${masterPath} e environment-assets.png`);
 
-  // Build Atlas Dictionary
+  // Monta o dicionário do atlas.
   const atlas = {};
   for (const s of placedSprites) {
     atlas[s.alias] = {
@@ -298,7 +298,7 @@ async function run() {
     }
   }
 
-  // Aliases for complete engine compatibility
+  // Nomes alternativos para compatibilidade completa com o motor do jogo.
   const aliases = {
     wardrobe_ledge: 'wardrobe_portal',
     true_portal: 'grand_portal_pedestal',
@@ -317,16 +317,16 @@ async function run() {
     }
   }
 
-  // Write JSON atlas
+  // Grava o atlas em JSON.
   fs.writeFileSync('assets/art/dark-room/darkRoomAtlas.json', JSON.stringify({
     sheet: masterPath,
     width: SHEET_W,
     height: SHEET_H,
     sprites: atlas
   }, null, 2));
-  console.log('Saved assets/art/dark-room/darkRoomAtlas.json');
+  console.log('Arquivo salvo: assets/art/dark-room/darkRoomAtlas.json');
 
-  // Write JS atlas
+  // Grava o atlas em JavaScript.
   const jsAtlas = `/**
  * darkRoomAtlas.js
  * Dicionário canônico de produção com todos os sprites isolados
@@ -360,7 +360,7 @@ export function getDarkRoomAtlasRegion(key) {
 }
 `;
   fs.writeFileSync('src/js/assets/darkRoomAtlas.js', jsAtlas);
-  console.log('Updated src/js/assets/darkRoomAtlas.js');
+  console.log('Arquivo atualizado: src/js/assets/darkRoomAtlas.js');
 }
 
 run().catch(console.error);

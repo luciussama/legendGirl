@@ -4,7 +4,7 @@ import { platforms, phase3Platforms } from '../src/js/config.js';
 import { PlatformRenderer } from '../src/js/environment/PlatformRenderer.js';
 import { SoftwareCanvas } from './software-canvas.js';
 
-// Mock AssetManager that returns PNGs using pngjs
+// Simulação de AssetManager que retorna PNGs usando pngjs.
 const manifest = JSON.parse(fs.readFileSync('assets/manifest.json', 'utf8'));
 const imageCache = new Map();
 
@@ -16,7 +16,7 @@ for (const [k, relPath] of Object.entries(manifest.images)) {
       const png = PNG.sync.read(data);
       imageCache.set(k, png);
     } catch (e) {
-      // ignore
+      // Ignora a falha.
     }
   }
 }

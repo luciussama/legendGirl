@@ -29,12 +29,12 @@ export const PLATFORM_SURFACES = {
   block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
   train_trestle: { surfaceY: 205, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, clipBottom: 205, support: 'table' },
   wall_shelf: { surfaceY: 205, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, clipBottom: 205, support: 'shelf', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
-  // The complete lamp sits behind the walkable table, aligned by its base.
+  // O abajur completo fica atrás da mesa que serve de apoio, alinhado pela base.
   mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'shelf', cap: true },
   dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: true },
   spinning_globe: { surfaceY: 863, surfaceX: 50, surfaceW: 1145, origW: 1245, origH: 1263 },
   kite_frame: { surfaceY: -275, surfaceX: 0, surfaceW: 490, origW: 490, origH: 322, support: 'shelf' },
-  // Feet sit within the illustrated pages; their curvature is intentionally decorative.
+  // Os pés ficam dentro das páginas ilustradas; a curvatura delas é intencionalmente decorativa.
   floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 406, origW: 410, origH: 279 },
   chandelier_crystals: { surfaceY: 205, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
   curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
@@ -55,7 +55,7 @@ export class PlatformRenderer {
 
   /**
    * Renderiza a plataforma utilizando o spritesheet dark-room/environment-assets.png se disponível.
-   * Retorna true se o asset foi desenhado com sucesso, ou false caso contrário (ativando fallback).
+   * Retorna true se o asset foi desenhado com sucesso, ou false caso contrário (ativando a alternativa).
    */
   drawAtlasPlatformSprite(ctx, assets, style, sx, p, tick = 0) {
     if (!assets) return false;
@@ -72,7 +72,7 @@ export class PlatformRenderer {
 
     // A FÍSICA É A FONTE DA VERDADE ABSOLUTA:
     // O sprite se adapta com precisão milimétrica à hitbox física (p.x, p.y, p.w, p.h).
-    // A superfície de apoio visual (walkable surface) do sprite DEVE coincidir exatamente com:
+    // A superfície de apoio visual (superfície de apoio) do sprite DEVE coincidir exatamente com:
     // - Início horizontal = sx (p.x - camX)
     // - Fim horizontal    = sx + p.w
     // - Altura de apoio   = p.y
@@ -110,7 +110,7 @@ export class PlatformRenderer {
     // A superfície de apoio do sprite coincide exatamente com a altura platY
     const dy = Math.round(platY - (s.surfaceY * scaleY));
 
-    // Furniture under the object is scenery, never an extra landing surface.
+    // A mobília sob o objeto faz parte do cenário e nunca constitui uma superfície extra de pouso.
     if (s.support === 'stand') {
       if (styleClean === 'music_box') {
         const top = dy + Math.round(282 * scaleY);
@@ -197,7 +197,7 @@ export class PlatformRenderer {
       const tabFloor = this.floorY;
       const legHeight = Math.max(0, tabFloor - (tabY + 36));
 
-      // 1. Pernas Torneadas Vitorianas (Turned Legs down to FLOOR_Y)
+      // 1. Pernas Torneadas Vitorianas (pernas torneadas até FLOOR_Y)
       const legW = 12;
       const leg1X = tabX + 9;
       const leg2X = tabX + tabW - 21;
@@ -256,7 +256,7 @@ export class PlatformRenderer {
         ctx.fillRect(lx - 3, tabFloor, legW + 6, 3);
       }
 
-      // 2. Travessa inferior de sustentação (stretcher) conectando as pernas
+      // 2. Travessa inferior de sustentação travessa de sustentação conectando as pernas
       const stretcherY = tabFloor - 32;
       ctx.fillStyle = '#3a1f14';
       ctx.fillRect(leg1X + legW, stretcherY, leg2X - (leg1X + legW), 6);
@@ -316,7 +316,7 @@ export class PlatformRenderer {
       ctx.fillStyle = '#160803';
       ctx.fillRect(handleCenterX - 5, handleCenterY + 6, 10, 1);
 
-      // 4. Tampo da Mesa Sólido e Polido (Tabletop em y = platY)
+      // 4. Tampo da Mesa Sólido e Polido (tampo em y = platY)
       // 100% de cobertura sólida opaca ao longo de toda a largura platW (105 px)
       ctx.fillStyle = '#9e5a32';
       ctx.fillRect(tabX, tabY, tabW, 2);
@@ -343,7 +343,7 @@ export class PlatformRenderer {
       // Fachada cenográfica rica em detalhes de época: alvenaria de tijolos entalhados,
       // pilastras clássicas com cantoneiras de cantaria, cornija intermediária em dente de serra,
       // quatro janelas de guilhotina com iluminação mágica quente de lamparina interior e cortinas,
-      // e pórtico de entrada clássico com porta de mogno almofadada, bandeira em arco (fanlight) e puxadores de latão.
+      // e pórtico de entrada clássico com porta de mogno almofadada, bandeira em arco bandeira semicircular e puxadores de latão.
       const left = dx + 13, width = dw - 26;
       const top = dy + Math.round(dh * 0.72);
       const floor = this.floorY;
@@ -353,7 +353,7 @@ export class PlatformRenderer {
       ctx.fillStyle = '#642f23';
       ctx.fillRect(left, top, width, houseH);
 
-      // Textura de fiadas de tijolos / clapboard com iluminação e chanfros horizontais
+      // Textura de fiadas de tijolos / tábuas sobrepostas com iluminação e chanfros horizontais
       for (let y = top + 4; y < floor - 8; y += 7) {
         ctx.fillStyle = '#7a3b2c';
         ctx.fillRect(left + 8, y, width - 16, 5);
@@ -394,7 +394,7 @@ export class PlatformRenderer {
         }
       }
 
-      // 3. Cornija Intermediária Clássica (Dentil Cornice entre o 1º e 2º Andar)
+      // 3. Cornija Intermediária Clássica (cornija denticulada entre o 1º e 2º Andar)
       const corniceY = top + Math.round(houseH * 0.44);
       ctx.fillStyle = '#26120b';
       ctx.fillRect(left + 2, corniceY - 1, width - 4, 10);
@@ -482,7 +482,7 @@ export class PlatformRenderer {
         ctx.fillRect(wx - 4, wy + wh + 2, ww + 8, 2);
       }
 
-      // 5. Entrada Principal Majestosa (Grand Georgian Entrance)
+      // 5. Entrada Principal Majestosa (entrada georgiana imponente)
       const doorW = 26;
       const doorX = left + Math.round((width - doorW) / 2);
       const doorTop = corniceY + 12;
@@ -576,8 +576,8 @@ export class PlatformRenderer {
     }
 
     if (styleClean === 'wardrobe_ledge') {
-      // Wall-mounted cabinet beneath the existing cornice. The cornice keeps
-      // its original landing plane; the doors and mounting hardware are scenery.
+      // Armário fixado à parede abaixo da cornija existente. A cornija mantém
+      // seu plano original de pouso; as portas e ferragens de fixação fazem parte do cenário.
       const left=sxSurface+3, top=platY+8, width=platW-6, height=128;
       const wood=ctx.createLinearGradient(left,top,left+width,top);
       wood.addColorStop(0,'#382419');wood.addColorStop(.18,'#98643b');
@@ -619,7 +619,7 @@ export class PlatformRenderer {
 
     const falseDoorPedestal = style === 'grand_portal_pedestal';
     if (styleClean === 'cuckoo_clock') {
-      // Wall mounting rail and corbels are behind the suspended clock.
+      // O trilho de fixação à parede e as mísulas ficam atrás do relógio suspenso.
       ctx.fillStyle='#493022';ctx.fillRect(sxSurface+5,platY+7,platW-10,14);
       ctx.fillStyle='#805334';ctx.fillRect(sxSurface+7,platY+9,platW-14,9);
       for (const x of [sxSurface+10,sxSurface+platW-12]) {
@@ -639,8 +639,8 @@ export class PlatformRenderer {
       const clipTop = (falseDoorPedestal || s.trimAboveSupport) ? platY : dy;
       const clipEnd = dy + (s.clipBottom ?? spriteH) * scaleY;
       ctx.save();ctx.beginPath();ctx.rect(dx, clipTop, dw, clipEnd - clipTop);
-      // Exclude neighbouring objects baked into an atlas cutout, without
-      // stretching the artwork or touching the collision geometry.
+      // Exclui os objetos vizinhos incorporados ao recorte do atlas, sem
+      // esticar a ilustração nem alterar a geometria de colisão.
       for (const [x, y, w, h] of (falseDoorPedestal ? [] : s.excludeRects) || []) {
         ctx.rect(dx + x * dw / spriteW, dy + y * dh / spriteH,
           w * dw / spriteW, h * dh / spriteH);
@@ -692,8 +692,8 @@ export class PlatformRenderer {
       }
     }
     if (styleClean === 'kite_frame') {
-      // A coat-rack shelf: visible backing board, metal hooks and a loop
-      // connecting the kite to the left hook. All hardware stays below support.
+      // Prateleira com cabideiro: painel traseiro visível, ganchos de metal e uma argola
+      // que conecta a pipa ao gancho esquerdo. Todas as ferragens ficam abaixo do apoio.
       const wood = ctx.createLinearGradient(0,platY+10,0,platY+34);
       wood.addColorStop(0,'#684327');wood.addColorStop(.45,'#8b5a32');
       wood.addColorStop(1,'#42291e');ctx.fillStyle=wood;
@@ -703,7 +703,7 @@ export class PlatformRenderer {
         ctx.lineTo(sxSurface+platW-7,platY+16+row*3);
         ctx.strokeStyle=row%2?'#704527':'#986337';ctx.lineWidth=.6;ctx.stroke();
       }
-      // Deep wooden tabletop, with no separate landing guide over its surface.
+      // Tampo espesso de madeira, sem guia de pouso separado sobre a superfície.
       drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
       for (const offset of [13,platW/2,platW-13]) {
         const x=sxSurface+offset;
@@ -715,7 +715,7 @@ export class PlatformRenderer {
         ctx.strokeStyle='#30291f';ctx.lineWidth=3;ctx.stroke();
         ctx.strokeStyle='#b29a6b';ctx.lineWidth=1.3;ctx.stroke();
       }
-      // The closed loop is distinct from the bracket and reaches the kite tip.
+      // A argola fechada é distinta do suporte e alcança a ponta da pipa.
       const tipX=dx+38*scale, tipY=dy+3*scaleY;
       const hookX=sxSurface+11;
       ctx.beginPath();ctx.moveTo(tipX,tipY);
@@ -725,7 +725,7 @@ export class PlatformRenderer {
       ctx.strokeStyle='#d1b37b';ctx.lineWidth=1;ctx.stroke();
     }
     if (styleClean === 'cuckoo_clock') {
-      // This substantial wooden cap is part of the wall mount, not a jump guide.
+      // Este tampo robusto de madeira faz parte da fixação à parede, não é uma guia de salto.
       drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
       ctx.fillStyle='#513420';ctx.fillRect(sxSurface+3,platY+10,platW-6,3);
     }
@@ -763,7 +763,7 @@ export class PlatformRenderer {
       const platH = (p.standRegion && p.standRegion.h !== undefined) ? p.standRegion.h : p.h;
       const sxBox = platX - camX;
 
-      // 1. Debug overlay: Desenha a plataforma física em verde por baixo
+      // 1. Sobreposição de depuração: Desenha a plataforma física em verde por baixo
       if (isDebugHitbox) {
         ctx.save();
         // Área sólida da hitbox física em verde translúcido
@@ -814,11 +814,11 @@ export class PlatformRenderer {
         return;
       }
 
-      // 2. Fallback procedimental caso o asset ainda não esteja carregado
+      // 2. Alternativa procedural caso o asset ainda não esteja carregado
       switch (p.style) {
         case 'giant_bear': {
           // 1. Cabeça do Urso de Pelúcia Gigante
-          // Rounded plush head
+          // Cabeça arredondada de pelúcia
           const bearGrad = ctx.createRadialGradient(
             sx + p.w / 2, p.y + 35, 10,
             sx + p.w / 2, p.y + 35, 65
@@ -1238,7 +1238,7 @@ export class PlatformRenderer {
           ctx.ellipse(sx + p.w / 2, base - 2, p.w / 2 + 10, 6, 0, 0, Math.PI * 2);
           ctx.fill();
 
-          // Helper para desenhar bloco de madeira entalhada com chanfro e veios artesanais
+          // Função auxiliar para desenhar bloco de madeira entalhada com chanfro e veios artesanais
           const drawWoodBlock = (bx, by, bw, bh, woodType = 0) => {
             const palettes = [
               { base: '#422213', hi: '#7a4225', lo: '#241007', grain: '#542d18', warm: '#96532d' },
@@ -1276,7 +1276,7 @@ export class PlatformRenderer {
             }
             ctx.stroke();
 
-            // Highlight dourado sutil no canto superior-esquerdo
+            // Realce dourado sutil no canto superior-esquerdo
             ctx.fillStyle = pal.warm;
             ctx.fillRect(bx + 2, by + 2, Math.min(8, bw - 4), 1);
           };
@@ -1351,7 +1351,7 @@ export class PlatformRenderer {
           // Bloco do corpo intermediário
           drawWoodBlock(midX, midY + 10, midW, midH - 10, 1);
 
-          // Ameias torneadas de madeira (crenels) nas alas laterais
+          // Ameias torneadas de madeira ameias nas alas laterais
           const battlementW = 9;
           const battlementH = 10;
           // Ala esquerda
@@ -1819,7 +1819,7 @@ export class PlatformRenderer {
           ctx.fillStyle = '#2c1c15';
           ctx.fillRect(doorX - 4, FLOOR_Y - 4, doorW + 8, 4);
 
-          // Telhado (walkable surface at p.y)
+          // Telhado (superfície de apoio em p.y)
           ctx.fillStyle = '#9f1239';
           ctx.fillRect(sx, p.y, p.w, p.h);
           ctx.fillStyle = '#be123c';
@@ -1910,7 +1910,7 @@ export class PlatformRenderer {
           const kx = sx + p.w / 2;
           const ky = p.y + 24;
           ctx.save();
-          // 4 vivid segments
+          // 4 segmentos de cores vivas
           ctx.fillStyle = '#f43f5e';
           ctx.beginPath();
           ctx.moveTo(kx, ky - 18);
@@ -2574,8 +2574,8 @@ export class PlatformRenderer {
 
     }
 
-    // The approved painting follows the existing reveal animation. Its aspect
-    // ratio and the gameplay arrival rectangle remain independent.
+    // A pintura aprovada acompanha a animação de revelação existente. Sua proporção
+    // e o retângulo de chegada do jogo permanecem independentes.
     const height = exitDoor.h;
     const width = height * (sprite.naturalWidth || sprite.width) /
       (sprite.naturalHeight || sprite.height);

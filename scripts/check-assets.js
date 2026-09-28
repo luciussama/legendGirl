@@ -14,7 +14,7 @@ const missing = [];
 
 for (const [key, source] of entries) {
   if (typeof source !== 'string' || !source.trim()) {
-    missing.push(`${key}: invalid path`);
+    missing.push(`${key}: caminho inválido`);
     continue;
   }
 
@@ -27,9 +27,9 @@ for (const [key, source] of entries) {
 }
 
 if (missing.length > 0) {
-  console.error('Asset check failed:');
+  console.error('Falha na verificação dos recursos:');
   for (const entry of missing) console.error(`- ${entry}`);
   process.exitCode = 1;
 } else {
-  console.log(`Asset check passed: ${entries.length} registered assets.`);
+  console.log(`Verificação aprovada: ${entries.length} recursos registrados.`);
 }

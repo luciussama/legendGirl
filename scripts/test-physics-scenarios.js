@@ -47,7 +47,7 @@ for (let i = 0; i < platforms.length; i++) {
   const p = platforms[i];
   console.log(`[Plataforma #${i}] ${p.style} (x:${p.x}, y:${p.y}, w:${p.w}, h:${p.h})`);
 
-  // --- VALIDAÇÃO DE ALINHAMENTO DA HITBOX / STAND REGION ---
+  // --- VALIDAÇÃO DE ALINHAMENTO DA ÁREA DE COLISÃO / REGIÃO DE APOIO ---
   const platX = p.standRegion ? p.standRegion.x : p.x;
   const platW = p.standRegion ? p.standRegion.w : p.w;
   const platY = (p.surfaceTopY !== undefined)

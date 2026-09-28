@@ -1,4 +1,4 @@
-/** Extracts existing pixels only. Never generates or redraws character artwork. */
+/** Extrai somente pixels existentes. Nunca gera nem redesenha a ilustração da personagem. */
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import jpeg from 'jpeg-js';
@@ -7,7 +7,7 @@ import { PNG } from 'pngjs';
 const sourcePath = 'assets/art/dark-room/official-sprites.png';
 const bytes = fs.readFileSync(sourcePath);
 const source = bytes[0] === 0xff ? jpeg.decode(bytes) : PNG.sync.read(bytes);
-if (source.width !== 1024 || source.height !== 682) throw new Error('Expected official 1024×682 sheet; review crop coordinates for other sizes.');
+if (source.width !== 1024 || source.height !== 682) throw new Error('Esperada a prancha oficial de 1024×682; revise as coordenadas de recorte para outros tamanhos.');
 const rows = (edges, top, bottom) => edges.slice(0, -1).map((x, i) => [x + 2, top, edges[i + 1] - 2, bottom]);
 const cells = {
   idle: rows([562,610,659,707,755,803,852,900,948,994], 62, 114),
@@ -30,8 +30,8 @@ for (const [state, rects] of Object.entries(cells)) {
     const w = right-left, h = bottom-top;
     const pixels = new PNG({width:w,height:h});
     PNG.bitblt(source,pixels,left,top,w,h,0,0);
-    // Flood only parchment connected to the crop border. RGB values of retained
-    // pixels are copied verbatim; no repainting, palette changes or decontamination.
+    // Propaga o preenchimento somente pelo pergaminho conectado à borda do recorte. Os valores RGB dos pixels
+    // retidos são copiados exatamente, sem repintura, alteração de paleta ou descontaminação.
     const border=[];
     for(let x=0;x<w;x++){border.push(x,(h-1)*w+x);}
     for(let y=1;y<h-1;y++){border.push(y*w,y*w+w-1);}
@@ -60,13 +60,13 @@ for (const [state, rects] of Object.entries(cells)) {
     return frame;
   });
 }
-// No supplied lying, pushing-without-box or rear-walking frames: reuse official
-// poses without transforming anatomy or synthesizing missing animation.
+// Não há quadros fornecidos deitada, empurrando sem caixa ou andando de costas: reutiliza poses
+// oficiais sem transformar a anatomia nem sintetizar animações ausentes.
 frames.lying_down=[frames.fall[5]];
 frames.crouch=[frames.jump[0]];
 frames.push=[frames.idle[0]];
 frames.climb=[frames.idle[0]];
 const output='assets/art/dark-room/sprites/official-character.png';
 fs.writeFileSync(output,PNG.sync.write(atlas));
-fs.writeFileSync('src/js/assets/officialCharacter.js',`// Extracted from the official sheet by scripts/generate-dream-girl-sprites.js\nexport const OFFICIAL_SOURCE_SHA256 = '${crypto.createHash('sha256').update(bytes).digest('hex')}';\nexport const OFFICIAL_FRAMES = ${JSON.stringify(frames,null,2)};\n`);
-console.log(`Extracted official frames to ${output}`);
+fs.writeFileSync('src/js/assets/officialCharacter.js',`// Extraído da prancha oficial por scripts/generate-dream-girl-sprites.js\nexport const OFFICIAL_SOURCE_SHA256 = '${crypto.createHash('sha256').update(bytes).digest('hex')}';\nexport const OFFICIAL_FRAMES = ${JSON.stringify(frames,null,2)};\n`);
+console.log(`Quadros oficiais extraídos para ${output}`);

@@ -1,18 +1,18 @@
 <!doctype html>
 <html lang="pt-BR"><meta charset="utf-8"><base href="../">
-<title>Revisão sequencial — dark-room</title>
+<title>Revisão sequencial — quarto escuro</title>
 <style>body{margin:0;background:#14101e;color:#eee;font:14px sans-serif}canvas{display:block}p{margin:8px}</style>
 <canvas id="game" width="960" height="540"></canvas><p id="feedback"></p>
 <script type="module">
-// Test-only instrumentation: the shipped game has no teleport or clock controls.
-// Import the real game, exposing its update/render closures only in this page.
+// Instrumentação exclusiva de testes: o jogo distribuído não possui controles de teletransporte ou de relógio.
+// Importa o jogo real e expõe suas funções de atualização e renderização somente nesta página.
 import {platforms,phase3Platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
 import {PlatformRenderer,PLATFORM_SURFACES} from '../src/js/environment/PlatformRenderer.js';
 import {BabyRenderer} from '../src/js/entities/BabyRenderer.js';
 let source=await (await fetch('/src/js/game.js')).text();
 source=source.replace(/from '(\.\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/game.js')}'`);
 const marker='  return {\n    state,\n    audio,';
-if(!source.includes(marker))throw Error('Game review instrumentation marker missing');
+if(!source.includes(marker))throw Error('Marcador de instrumentação da revisão do jogo não encontrado');
 source=source.replace(marker,`  return {
     review: {
       prepare(index, x, phase3 = false) {
@@ -53,7 +53,7 @@ window.review={game,platforms,results:[],
     positions.sort((a,b)=>Math.abs(a-(from.x+(from.w-38)/2))-Math.abs(b-(from.x+(from.w-38)/2)));
     for(const x of positions){
       game.review.prepare(target-1,x,phase3);game.review.jump();
-      if(game.state.baby.onGround)throw Error('Jump did not start');
+      if(game.state.baby.onGround)throw Error('O salto não começou');
       for(let frame=0;frame<220;frame++){
         game.review.step(dt);
         const b=game.state.baby;
@@ -61,18 +61,18 @@ window.review={game,platforms,results:[],
         if(b.onGround){
           if(b.currentPlatformIndex===target){
             const p=support(active[target]);
-            if(Math.abs(b.y+b.h-p.y)>0.001)throw Error('Feet are not on support');
+            if(Math.abs(b.y+b.h-p.y)>0.001)throw Error('Os pés não estão sobre o apoio');
             const result={target,phase:phase3?3:target<10?1:2,style:active[target].style,dt,launchX:x,frames:frame+1,feet:b.y+b.h,surface:p.y};
             this.results.push(result);game.review.draw();return result;
           }break;
         }
       }
     }
-    throw Error('No successful real-game jump to '+target+' '+active[target].style);
+    throw Error('Nenhum salto bem-sucedido no jogo real até '+target+' '+active[target].style);
   },
   contacts(index,dt=1){
     const s=support(platforms[index]);
-    const cases=[['left',s.x],['center',s.x+(s.w-38)/2],['right',s.x+s.w-38]];
+    const cases=[['esquerda',s.x],['centro',s.x+(s.w-38)/2],['direita',s.x+s.w-38]];
     for(const [name,x] of cases){
       game.review.prepare(index,x);
       const b=game.state.baby;
@@ -81,15 +81,15 @@ window.review={game,platforms,results:[],
       for(let frame=0;frame<120;frame++){
         b.vx=0;game.review.step(dt);
         if(b.onGround){
-          if(b.currentPlatformIndex!==index)throw Error(`${index}: ${name} landed on wrong platform`);
-          if(Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: ${name} feet mismatch`);
+          if(b.currentPlatformIndex!==index)throw Error(`${index}: ${name} pousou na plataforma errada`);
+          if(Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: ${name} desalinhamento dos pés`);
           landed=true;break;
         }
       }
-      if(!landed)throw Error(`${index}: ${name} drop failed`);
+      if(!landed)throw Error(`${index}: ${name} falha na queda`);
       for(let frame=0;frame<8;frame++){
         b.vx=0;game.review.step(dt);
-        if(!b.onGround||Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: unstable ${name} support`);
+        if(!b.onGround||Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: apoio instável em ${name}`);
       }
     }
     return {target:index,dt,drops:3,stableFrames:8};
@@ -105,16 +105,16 @@ window.review={game,platforms,results:[],
       renderer.renderPlatforms(ctx,{width:10000},0,{platforms:[p]});ctx.restore();
       const pixels=ctx.getImageData(100,120,s.w,1).data;
       for(let x=0;x<s.w;x++)if(pixels[x*4+3]!==255){
-        throw Error(`${index}: transparent visual support at x=${x}`);
+        throw Error(`${index}: apoio visual transparente em x=${x}`);
       }
-      // Check removed atlas fragments on an otherwise transparent canvas.
+      // Verifica os fragmentos removidos do atlas em uma área de desenho transparente.
       const scale=s.w/calibration.surfaceW;
       const dw=Math.round(calibration.origW*scale),dh=Math.round(calibration.origH*scale);
       const dx=Math.round(100-calibration.surfaceX*scale),dy=Math.round(120-calibration.surfaceY*scale);
       for(const [x,y,w,h] of calibration.excludeRects||[]){
         const px=Math.floor(dx+(x+w/2)*dw/calibration.origW);
         const py=Math.floor(dy+(y+h/2)*dh/calibration.origH);
-        if(ctx.getImageData(px,py,1,1).data[3]!==0)throw Error(`${index}: atlas fragment still visible`);
+        if(ctx.getImageData(px,py,1,1).data[3]!==0)throw Error(`${index}: fragmento do atlas ainda visível`);
       }
       return {checked:true,opaqueSupportPixels:s.w,excludedFragments:calibration.excludeRects?.length||0};
     } finally {window.DEBUG_COLLISIONS=previous;}
@@ -134,7 +134,7 @@ window.review={game,platforms,results:[],
         renderer.renderPlatforms(ctx,{width:10000},0,{platforms:[p]});
         const b={...createBabyState(),x,y:s.y-44,animTime:0,onGround:true};
         character.render(ctx,b);
-        // Mark only the ends, leaving the actual shoe/object contact visible.
+        // Marca somente as extremidades, mantendo visível o contato real entre o sapato e o objeto.
         ctx.strokeStyle='#4ade80';ctx.lineWidth=1;
         for(const edge of [s.x,s.x+s.w]){
           ctx.beginPath();ctx.moveTo(edge,s.y-6);ctx.lineTo(edge,s.y+8);ctx.stroke();
@@ -148,8 +148,8 @@ window.review={game,platforms,results:[],
     game.state.baby.vx=0;window.DEBUG_COLLISIONS=debug;game.review.draw();}
 };
 document.body.dataset.ready='true';
-// Optional headless review entry point: exercise the actual update loop and
-// show contact close-ups without adding debug controls to the shipped game.
+// Ponto de entrada opcional para revisão sem interface gráfica: exercita o ciclo real de atualização e
+// mostra detalhes dos contatos sem adicionar controles de depuração ao jogo distribuído.
 if (new URLSearchParams(location.search).has('verify')) {
   try {
     for (const dt of [0.5, 1, 1.2]) {
@@ -160,11 +160,11 @@ if (new URLSearchParams(location.search).has('verify')) {
         game.review.step(dt);
         const b=game.state.baby;
         if (!b.onGround || b.x!==1631 || b.y!==192 || b.vx!==0)
-          throw Error(`Castle pause failed at dt=${dt}, frame=${frame}`);
+          throw Error(`Falha na pausa do castelo em dt=${dt}, quadro=${frame}`);
       }
       game.review.jump();
       for(let frame=0;frame<240 && !game.state.baby.onGround;frame++) game.review.step(dt);
-      if(game.state.baby.currentPlatformIndex!==10)throw Error('Castle jump missed train');
+      if(game.state.baby.currentPlatformIndex!==10)throw Error('O salto do castelo não alcançou o trem');
     }
     const gallery=document.createElement('div');
     for (const index of [10,11,12]) {
@@ -172,7 +172,7 @@ if (new URLSearchParams(location.search).has('verify')) {
       img.style.width='960px';img.style.display='block';gallery.append(img);
     }
     document.querySelector('canvas').remove();document.body.prepend(gallery);
-    document.querySelector('#feedback').textContent='PASS: real updates, 114 jumps and 900 castle pause frames';
+    document.querySelector('#feedback').textContent='APROVADO: atualizações reais, 114 saltos e 900 quadros de pausa no castelo';
     document.body.dataset.result='passed';
   } catch(error) {
     document.body.dataset.result='failed';

@@ -230,7 +230,7 @@ export class DialogueRenderer {
   }
 
   /**
-   * Renderiza a janela de diálogo da cutscene, prompts de tutorial no modo de espera e faixas cinematográficas
+   * Renderiza a janela de diálogo da cena, prompts de tutorial no modo de espera e faixas cinematográficas
    * @param {CanvasRenderingContext2D} ctx
    * @param {HTMLCanvasElement} canvas
    * @param {object} state

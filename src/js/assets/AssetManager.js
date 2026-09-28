@@ -16,7 +16,7 @@ export class AssetManager {
     try {
       const response = await fetch(url, { cache: 'no-cache' });
       if (!response.ok) {
-        throw new Error(`Asset manifest request failed: ${response.status}`);
+        throw new Error(`Falha na solicitação do manifesto de recursos: ${response.status}`);
       }
 
       const manifest = await response.json();
@@ -72,7 +72,7 @@ export class AssetManager {
       };
       image.onerror = () => {
         this.statuses.set(key, 'error');
-        // Permite fallback gracioso sem rejeitar a promessa geral de pré-carregamento
+        // Permite recuperação controlada sem rejeitar a promessa geral de pré-carregamento
         resolve(null);
       };
       image.src = source;

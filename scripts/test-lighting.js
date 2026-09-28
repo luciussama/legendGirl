@@ -26,11 +26,11 @@ for(const flags of [{},{isPhase3:true},{plotTwistActive:true},{isStandbyActive:t
     mask.calls.length=0;
     lighting.apply(scene,canvas,state,baby,fairy,400,-90);
     const clear=mask.calls.findIndex(c=>c[0]==='clear');
-    assert.equal(mask.calls[clear][1],'source-over','Mask must rebuild rather than erase itself');
+    assert.equal(mask.calls[clear][1],'source-over','A máscara deve ser reconstruída em vez de apagar a si mesma');
     assert.equal(mask.calls[clear+1][1],'source-over');
-    assert(mask.calls.some(c=>JSON.stringify(c)===JSON.stringify(['transform',1.3,0,0,1.3,-40,73])), 'Light follows exact camera transform');
+    assert(mask.calls.some(c=>JSON.stringify(c)===JSON.stringify(['transform',1.3,0,0,1.3,-40,73])), 'A luz acompanha a transformação exata da câmera');
     assert.equal(scene.globalCompositeOperation,'source-over');
-    assert.equal(JSON.stringify({state,baby,fairy}),before,'Lighting cannot mutate gameplay');
+    assert.equal(JSON.stringify({state,baby,fairy}),before,'A iluminação não pode alterar o estado do jogo');
   }
 }
-console.log('PASS: darkness rebuilt every frame; camera alignment and read-only lighting in all phase modes.');
+console.log('APROVADO: escuridão reconstruída a cada quadro; alinhamento da câmera e iluminação sem alteração de estado em todos os modos de fase.');

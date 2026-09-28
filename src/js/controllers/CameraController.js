@@ -44,10 +44,10 @@ export class CameraController {
 
   /**
    * Atualiza o enquadramento da câmera, rastreamento horizontal/vertical e interpolação de zoom
-   * @param {number} dt Fator delta time
+   * @param {number} dt Fator de variação de tempo
    * @param {object} state Instância atual do GameState
    * @param {HTMLCanvasElement} canvas Referência do Canvas
-   * @param {object} callbacks Callbacks como onLagBehind / onGameOver
+   * @param {object} callbacks Funções de retorno como onLagBehind / onGameOver
    */
   update(dt, state, canvas, callbacks = {}) {
     if (!state || !canvas) return;
