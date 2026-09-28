@@ -177,7 +177,7 @@
       O download do arquivo ZIP de <strong>51.5 MB</strong> com todo o código fonte, pranchas de sprites de alta resolução e áudios do projeto está pronto para você salvar no seu computador.
     </p>
 
-    <a id="btn-download-now" class="download-primary-btn" href="/api/download-zip" download="o-quarto-dos-brinquedos.zip">
+    <a id="btn-download-now" class="download-primary-btn" href="./o-quarto-dos-brinquedos.zip" download="o-quarto-dos-brinquedos.zip">
       <span>⬇️ Baixar o-quarto-dos-brinquedos.zip (51.5 MB)</span>
     </a>
 
@@ -211,14 +211,15 @@
     </div>
 
     <div>
-      <a class="back-btn" href="/">🎮 Voltar para o Jogo</a>
+      <a class="back-btn" href="./index.html">🎮 Voltar para o Jogo</a>
     </div>
   </div>
 
   <div id="toast" class="toast">Link copiado para a área de transferência!</div>
 
   <script>
-    const directUrl = window.location.origin + '/api/download-zip';
+    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    const directUrl = window.location.origin + basePath + 'o-quarto-dos-brinquedos.zip';
     const inputUrl = document.getElementById('input-direct-url');
     const inputCurl = document.getElementById('input-curl-cmd');
     const toast = document.getElementById('toast');

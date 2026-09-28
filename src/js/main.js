@@ -54,8 +54,9 @@ const modalStreamStatus = document.getElementById('modal-stream-status');
 function openDownloadModal() {
   if (!downloadModal) return;
   const origin = window.location.origin;
-  const directUrl = `${origin}/api/download-zip`;
-  const pageUrl = `${origin}/baixar`;
+  const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+  const directUrl = `${origin}${basePath}o-quarto-dos-brinquedos.zip`;
+  const pageUrl = `${origin}${basePath}baixar.html`;
   const curlCmd = `curl -L -O "${directUrl}" -o o-quarto-dos-brinquedos.zip`;
 
   if (modalDirectUrlInput) modalDirectUrlInput.value = directUrl;
@@ -167,10 +168,15 @@ async function performStreamDownloadInModal() {
   try {
     let response;
     try {
-      response = await fetch('/api/download-zip');
+      response = await fetch('./o-quarto-dos-brinquedos.zip');
       if (!response.ok) throw new Error(`Status ${response.status}`);
     } catch (_err) {
-      response = await fetch('/o-quarto-dos-brinquedos.zip');
+      try {
+        response = await fetch('api/download-zip');
+        if (!response.ok) throw new Error(`Status ${response.status}`);
+      } catch (_err2) {
+        response = await fetch('o-quarto-dos-brinquedos.zip');
+      }
     }
 
     if (!response.ok) {
@@ -268,14 +274,16 @@ window.addEventListener('keydown', (e) => {
 
 if (modalBtnCopyUrl) {
   modalBtnCopyUrl.addEventListener('click', () => {
-    const url = modalDirectUrlInput ? modalDirectUrlInput.value : `${window.location.origin}/api/download-zip`;
+    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    const url = modalDirectUrlInput ? modalDirectUrlInput.value : `${window.location.origin}${basePath}o-quarto-dos-brinquedos.zip`;
     copyToClipboard(url, modalCopyUrlFeedback, '✅ Link copiado!');
   });
 }
 
 if (modalBtnCopyCurl) {
   modalBtnCopyCurl.addEventListener('click', () => {
-    const cmd = modalCurlCommandInput ? modalCurlCommandInput.value : `curl -L -O "${window.location.origin}/api/download-zip" -o o-quarto-dos-brinquedos.zip`;
+    const basePath = window.location.pathname.substring(0, window.location.pathname.lastIndexOf('/') + 1);
+    const cmd = modalCurlCommandInput ? modalCurlCommandInput.value : `curl -L -O "${window.location.origin}${basePath}o-quarto-dos-brinquedos.zip" -o o-quarto-dos-brinquedos.zip`;
     copyToClipboard(cmd, modalCopyCurlFeedback, '✅ Comando cURL copiado!');
   });
 }
