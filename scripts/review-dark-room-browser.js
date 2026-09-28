@@ -1,10 +1,10 @@
-// Requires the dev server on :3000 and a dedicated Chrome with --remote-debugging-port=9222.
+// Requer o servidor de desenvolvimento na porta 3000 e um Chrome dedicado com --remote-debugging-port=9222.
 import fs from 'node:fs/promises';
 const target=Number(process.argv[2]??0);
-if(!Number.isInteger(target)||target<0||target>21)throw Error('Platform index must be 0..21');
+if(!Number.isInteger(target)||target<0||target>21)throw Error('O índice da plataforma deve estar entre 0 e 21');
 const pages=await (await fetch('http://127.0.0.1:9222/json')).json();
 const page=pages.find(p=>p.type==='page');
-if(!page)throw Error('No test Chrome page');
+if(!page)throw Error('Nenhuma página de teste do Chrome encontrada');
 const ws=new WebSocket(page.webSocketDebuggerUrl);
 await new Promise((resolve,reject)=>{ws.onopen=resolve;ws.onerror=reject;});
 let sequence=0;const pending=new Map();
@@ -15,9 +15,9 @@ try{
   await send('Page.enable');await send('Emulation.setDeviceMetricsOverride',{width:960,height:580,deviceScaleFactor:1,mobile:false});
   await send('Page.navigate',{url:'http://127.0.0.1:3000/tests/dark-room-playthrough.html'});
   for(let i=0;i<100;i++){if(await evaluate('document.body?.dataset.ready === "true"'))break;await new Promise(r=>setTimeout(r,100));}
-  if(!await evaluate('Boolean(window.review)'))throw Error('Review page did not initialize');
+  if(!await evaluate('Boolean(window.review)'))throw Error('A página de revisão não foi inicializada');
   const results=[];
-  // Gate every earlier platform before proceeding to the requested one.
+  // Valida todas as plataformas anteriores antes de avançar para a solicitada.
   for(let i=0;i<=target;i++)for(const dt of [0.5,1,1.2]){
     results.push({jump:await evaluate(`window.review.run(${i},${dt})`),
       contacts:await evaluate(`window.review.contacts(${i},${dt})`),

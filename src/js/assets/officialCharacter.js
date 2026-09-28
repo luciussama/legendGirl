@@ -1,4 +1,4 @@
-// Extracted from the official sheet by scripts/generate-dream-girl-sprites.js
+// Extraído da prancha oficial por scripts/generate-dream-girl-sprites.js
 export const OFFICIAL_SOURCE_SHA256 = 'be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627';
 export const OFFICIAL_FRAMES = {
   "idle": [

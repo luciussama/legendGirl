@@ -17,7 +17,7 @@ assert.equal(state.speedRibbons, particles.speedRibbons);
 assert.equal(particles.babyJumpDust.length, 0);
 assert.equal(particles.speedRibbons.length, 0);
 
-// Fresh trails still render in phase 3 and expire instead of accumulating.
+// Os novos rastros continuam sendo renderizados na fase 3 e expiram em vez de se acumularem.
 particles.spawnPhase3Ribbons(state.baby, 0, { ribbonRate: 1, trailIntensity: 2 }, 0);
 particles.spawnBabyJumpPuff(100, 200);
 assert(particles.speedRibbons.length > 0);
@@ -26,4 +26,4 @@ for (let i = 0; i < 240; i++) particles.update(0.5);
 assert.equal(particles.babyJumpDust.length, 0);
 assert.equal(particles.speedRibbons.length, 0);
 assert.deepEqual(state.baby, babyBefore);
-console.log('PASS: phase 3 clears old shared trails; new effects expire without changing player physics.');
+console.log('APROVADO: a fase 3 limpa os rastros compartilhados antigos; os novos efeitos expiram sem alterar a física da personagem.');

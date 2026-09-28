@@ -1,4 +1,4 @@
-// Pack the canonical manifest images. Does not regenerate or rename artwork.
+// Agrupa as imagens do manifesto canônico. Não gera novamente nem renomeia as ilustrações.
 import fs from 'node:fs';
 import {PNG} from 'pngjs';
 import {darkRoomAtlas} from '../src/js/assets/darkRoomAtlas.js';
@@ -11,7 +11,7 @@ for(const [name,old] of Object.entries(darkRoomAtlas)){
   const file=(manifest.images['dark-room-sprite-'+name.replaceAll('_','-')]??old.file).replace(/^\.\//,'');
   if(!packed.has(file)){
     const png=PNG.sync.read(fs.readFileSync(file));
-    if(png.width+padding*2>width)throw Error('Sprite too wide: '+file);
+    if(png.width+padding*2>width)throw Error('Sprite largo demais: '+file);
     if(x+png.width+padding>width){x=padding;y+=rowH+padding;rowH=0;}
     packed.set(file,{png,x,y});x+=png.width+padding;rowH=Math.max(rowH,png.height);
   }

@@ -20,21 +20,21 @@ state.baby.onGround = true;
 
 // Inicia cutscene
 state.startCastleCutscene();
-assert.equal(state.cutsceneActive, true, 'Cutscene deve iniciar');
-assert.equal(state.baby.vx, 0, 'vx deve ser 0 na cutscene');
+assert.equal(state.cutsceneActive, true, 'A cena deve iniciar');
+assert.equal(state.baby.vx, 0, 'vx deve ser 0 na cena');
 
 // Avança cutscene passo 1 -> 2
 state.advanceCutscene();
-assert.equal(state.cutsceneStep, 2, 'Cutscene deve avançar para passo 2');
+assert.equal(state.cutsceneStep, 2, 'A cena deve avançar para passo 2');
 
 // Conclui cutscene
 state.advanceCutscene();
-assert.equal(state.cutsceneActive, false, 'Cutscene deve estar finalizada');
+assert.equal(state.cutsceneActive, false, 'A cena deve estar finalizada');
 assert.equal(state.isEscapeMode, true, 'Modo fuga deve estar ativo');
 assert.equal(state.baby.currentPlatformIndex, 9, 'Deve permanecer na plataforma 9');
-assert.equal(state.baby.vx, 0, 'vx deve ser 0 ao sair da cutscene');
-assert.equal(state.currentScrollSpeed, 0, 'Velocidade de scroll deve ser 0');
-assert.equal(state.targetScrollSpeed, 0, 'Alvo de scroll deve ser 0');
+assert.equal(state.baby.vx, 0, 'vx deve ser 0 ao sair da cena');
+assert.equal(state.currentScrollSpeed, 0, 'Velocidade de deslocamento da câmera deve ser 0');
+assert.equal(state.targetScrollSpeed, 0, 'Deslocamento desejado da câmera deve ser 0');
 
 // 2. Simula 300 frames (5 segundos) SEM interação do jogador
 const initialX = state.baby.x;
@@ -80,13 +80,13 @@ for (let frame = 0; frame < 300; frame++) {
     state.targetScrollSpeed = 0;
   }
 
-  assert.equal(state.baby.x, initialX, `Frame ${frame}: A menina NÃO deve se mover horizontalmente`);
-  assert.equal(state.baby.y, initialY, `Frame ${frame}: A menina NÃO deve cair`);
-  assert.equal(state.baby.vx, 0, `Frame ${frame}: vx deve permanecer 0`);
-  assert.equal(state.currentScrollSpeed, 0, `Frame ${frame}: scroll deve permanecer 0`);
+  assert.equal(state.baby.x, initialX, `Quadro ${frame}: A menina NÃO deve se mover horizontalmente`);
+  assert.equal(state.baby.y, initialY, `Quadro ${frame}: A menina NÃO deve cair`);
+  assert.equal(state.baby.vx, 0, `Quadro ${frame}: vx deve permanecer 0`);
+  assert.equal(state.currentScrollSpeed, 0, `Quadro ${frame}: o deslocamento da câmera deve permanecer 0`);
 }
 
-console.log('✓ PASSOU: 300 frames (5s) em repouso absoluto na plataforma 9 sem andar ou cair.');
+console.log('✓ PASSOU: 300 quadros (5 s) em repouso absoluto na plataforma 9 sem andar ou cair.');
 
 // 3. O jogador agora clica para pular
 const stats = getEscapeStats(0);
@@ -107,7 +107,7 @@ state.baby.vx = (targetX - state.baby.x) / flightTime;
 state.targetScrollSpeed = stats.scrollSpeed;
 state.currentScrollSpeed = stats.scrollSpeed;
 
-console.log(`Impulso de pulo calculado: vx=${state.baby.vx.toFixed(3)}, vy=${state.baby.vy}, flightTime=${flightTime.toFixed(2)}f`);
+console.log(`Impulso de pulo calculado: vx=${state.baby.vx.toFixed(3)}, vy=${state.baby.vy}, tempo de voo=${flightTime.toFixed(2)} quadros`);
 
 // 4. Simula o voo parabólico até aterrissar na plataforma 10
 let landedOn10 = false;
@@ -134,7 +134,7 @@ for (let f = 0; f < 80; f++) {
     const nextStats = getEscapeStats(1);
     state.baby.vx = nextStats.runVx;
     state.targetScrollSpeed = nextStats.scrollSpeed;
-    console.log(`✓ Aterrissou com sucesso na plataforma 10 no frame ${f}! x=${state.baby.x.toFixed(1)}, y=${state.baby.y}`);
+    console.log(`✓ Aterrissou com sucesso na plataforma 10 no quadro ${f}! x=${state.baby.x.toFixed(1)}, y=${state.baby.y}`);
     break;
   }
 }
@@ -150,15 +150,15 @@ for (let f = 0; f < 60; f++) {
 assert(state.baby.x > targetX, 'A menina deve prosseguir correndo normalmente na plataforma 10');
 
 // 6. Teste de Checkpoint (renascimento na plataforma 9 após queda posterior)
-console.log('--- TESTE: Checkpoint de Renascimento no Castelo (Plataforma 9) ---');
+console.log('--- TESTE: Ponto de Retomada do Renascimento no Castelo (Plataforma 9) ---');
 state.isEscapeMode = true;
 state.cutsceneCompleted = true;
 state.resetToStart(true, false);
 
 assert.equal(state.baby.currentPlatformIndex, 9, 'Deve renascer na plataforma 9');
 assert.equal(state.baby.vx, 0, 'vx deve ser 0 no renascimento');
-assert.equal(state.currentScrollSpeed, 0, 'Scroll deve ser 0 no renascimento');
-assert.equal(state.targetScrollSpeed, 0, 'Target scroll deve ser 0 no renascimento');
+assert.equal(state.currentScrollSpeed, 0, 'O deslocamento da câmera deve ser 0 no renascimento');
+assert.equal(state.targetScrollSpeed, 0, 'O deslocamento desejado da câmera deve ser 0 no renascimento');
 assert.equal(state.baby.x, initialX, 'Deve renascer centralizada na plataforma 9');
 assert.equal(state.baby.y, initialY, 'Deve renascer na superfície da plataforma 9');
 
@@ -177,8 +177,8 @@ for (let f = 0; f < 180; f++) {
   state.baby.vy += state.baby.gravity;
   state.baby.y += state.baby.vy;
 }
-assert.equal(state.baby.x, initialX, 'Após 180 frames de respawn, a menina não deve se mover');
-assert.equal(state.baby.y, initialY, 'Após 180 frames de respawn, a menina não deve cair');
+assert.equal(state.baby.x, initialX, 'Após 180 quadros desde o renascimento, a menina não deve se mover');
+assert.equal(state.baby.y, initialY, 'Após 180 quadros desde o renascimento, a menina não deve cair');
 
-console.log('✓ PASSOU: Checkpoint de respawn na plataforma 9 mantém pausa absoluta aguardando pulo.');
+console.log('✓ PASSOU: Ponto de retomada do renascimento na plataforma 9 mantém pausa absoluta aguardando pulo.');
 console.log('TODOS OS TESTES PASSARAM COM SUCESSO!');

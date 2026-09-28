@@ -1,3 +1,9 @@
+# Idioma do projeto
+
+- Escrever comentários, documentação, mensagens de interface, registros, diagnósticos de testes e descrições de automações em português do Brasil.
+- Preservar nomes de APIs, identificadores, comandos, caminhos, formatos e referências técnicas que dependam da grafia original.
+- Não traduzir dependências externas nem reescrever registros históricos de execução para alterar o idioma das evidências.
+
 # Direção visual das plataformas
 
 - Não adicionar traços, linhas, barras ou realces sobre superfícies ilustradas para delimitar áreas de pulo ou hitboxes durante o jogo.

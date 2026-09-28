@@ -1,0 +1,1 @@
+PASS: opening timeline, all poses, responsive dialogue, interruption, persistent completion and storage fallback.

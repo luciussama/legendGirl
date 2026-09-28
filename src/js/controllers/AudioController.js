@@ -124,6 +124,8 @@ export class AudioController {
     }
   }
 
+  playOpeningAmbience() { this.system?.playOpeningAmbience?.(); }
+
   startMusicBox() {
     if (this.system && typeof this.system.startMusicBox === 'function') {
       this.system.startMusicBox();

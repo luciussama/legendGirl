@@ -1,3 +1,5 @@
+import { OpeningSequence } from './cinematics/OpeningSequence.js';
+import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
 import { createCameraController } from './controllers/CameraController.js';
@@ -70,6 +72,34 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   let standbyDialogueAlpha = 1.0;
   let standbyActivatedTime = 0;
   let lastUsedInputDevice = 'keyboard'; // 'keyboard' (teclado) | 'gamepad' (controle) | 'touch' (toque)
+
+  const opening = new OpeningSequence({
+    onReveal: beginOpeningGameplay,
+    onComplete: () => { lastTime = performance.now(); },
+    onCue: name => {
+      if (name === 'ambience') { audio.initAudio(); audio.pauseMusic(); audio.playOpeningAmbience(); }
+      else if (name === 'wake') { audio.playLevelUpChime(0); audio.startMusic(); }
+      else audio.playFairyVoiceBlip(name === 'shout' ? 1180 : 780);
+    }
+  });
+
+  function beginOpeningGameplay() {
+    // A sequência nunca move o corpo físico real. Libera-o na mesma
+    // coordenada inicial existente, com a velocidade normal de corrida já definida.
+    isStandbyActive = false;
+    isStandbyTransitioning = false;
+    baby.isCrouching = false;
+    baby.controlsLocked = false;
+    baby.respawnLandingPending = false;
+    baby.onGround = true;
+    baby.vx = baby.baseVx;
+    cameraX = 0; cameraY = 0; cameraZoom = 1; targetCameraZoom = 1;
+    fairy.x = baby.x + 65; fairy.y = baby.y - 50;
+    fairy.vx = 0; fairy.vy = 0;
+    syncLocalsToState(); camera.syncFromState(state);
+    if (uiFeedback) uiFeedback.innerText = GAME_CONFIG.uiMessage;
+    lastTime = performance.now();
+  }
 
   function syncStateToLocals() {
     currentPhaseMode = state.currentPhaseMode;
@@ -222,6 +252,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function restartToTitle() {
+    opening.cancel();
     isPaused = false;
     state.isPaused = false;
     syncLocalsToState();
@@ -349,7 +380,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals();
   }
 
-  // --- PLOT TWIST CINEMATIC (FASE 3 TRANSITION) ---
+  // --- CENA DA REVIRAVOLTA (TRANSIÇÃO PARA A FASE 3) ---
   function startPlotTwistCutscene() {
     syncLocalsToState();
     state.startPlotTwistCutscene(audio);
@@ -375,6 +406,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function doJump() {
+    if (opening.active) return;
     audio.initAudio();
 
     if (isGameOver || !gameStarted) {
@@ -534,7 +566,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function updateBabyJumpDust(dt = 1.0) {
-    // Age both dust and speed trails, including during cutscenes/tutorials.
+    // Avança o tempo de vida da poeira e dos rastros de velocidade, inclusive durante cenas e tutoriais.
     particles.update(dt);
   }
 
@@ -644,6 +676,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (gameWon) return;
     if (isGameOver) return;
 
+    if (opening.active) {
+      // Aguarda o recurso real; nunca encerra uma abertura não exibida durante o carregamento.
+      if (assets.get('opening-waking-up')) opening.update(dt);
+      return;
+    }
+
     // Transição gradual de iluminação das plataformas
     const allPlatforms = isPhase3 ? phase3Platforms : platforms;
     for (let i = 0; i < allPlatforms.length; i++) {
@@ -653,7 +691,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       p.lightAlpha += (targetA - p.lightAlpha) * 0.08;
     }
 
-    // --- STANDBY PREPARATION & RESPAWN (FADINHA INTERATIVA) ---
+    // --- PREPARAÇÃO, PRONTIDÃO E RENASCIMENTO (FADINHA INTERATIVA) ---
     if (isStandbyActive) {
       baby.vx = 0;
       baby.vy = 0;
@@ -734,7 +772,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // --- PLOT TWIST CUTSCENE SEQUENCER ---
+    // --- SEQUENCIADOR DA CENA DA REVIRAVOLTA ---
     if (plotTwistActive) {
       if (plotTwistStep === 1) {
         // Step 1: Porta falsa escorrega e descola; menina cai desequilibrada
@@ -889,7 +927,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       return;
     }
 
-    // --- FASE 3 TUTORIAL DEMONSTRATION (FADINHA SIMULA TRAJETÓRIA DO PRIMEIRO SALTO) ---
+    // --- DEMONSTRAÇÃO DO TUTORIAL DA FASE 3 (FADINHA SIMULA TRAJETÓRIA DO PRIMEIRO SALTO) ---
     if (phase3TutorialActive) {
       phase3TutorialProgress += 0.010; // ~2.5s de demonstração suave e clara
       const p0 = phase3Platforms[0];
@@ -1099,71 +1137,76 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     fairy.floatAngle += 0.05;
     fairy.flutterPhase += 0.35;
 
-    // Cálculo da posição de exploração do alvo
-    let targetX, targetY;
-
-    if (isPhase3) {
-      const nextIndex = baby.currentPlatformIndex + 1;
-      if (nextIndex < phase3Platforms.length) {
-        const nextPlat = phase3Platforms[nextIndex];
-        const isCloseToNext = (baby.x < nextPlat.x + nextPlat.w + 120);
-        if (isCloseToNext) {
-          targetX = nextPlat.x + nextPlat.w / 2;
-          targetY = nextPlat.y - 45;
-        } else {
-          targetX = baby.x - 75;
-          targetY = baby.y - 50;
-        }
-      } else {
-        targetX = trueExitDoor.x + 40;
-        targetY = trueExitDoor.y + 45;
-      }
+    if (isEscapeMode && !isPhase3) {
+      updateEscapeFairyGuide(fairy, getEscapeGuideTarget(baby, platforms, exitDoor), dt);
     } else {
-      const nextIndex = baby.currentPlatformIndex + 1;
-      if (nextIndex < platforms.length) {
-        const nextPlat = platforms[nextIndex];
-        const isCloseToNext = (baby.x > nextPlat.x - 120);
-        if (isCloseToNext) {
-          targetX = nextPlat.x + 35;
-          targetY = nextPlat.y - 45;
+      // Cálculo da posição de exploração do alvo
+      let targetX, targetY;
+
+      if (isPhase3) {
+        const nextIndex = baby.currentPlatformIndex + 1;
+        if (nextIndex < phase3Platforms.length) {
+          const nextPlat = phase3Platforms[nextIndex];
+          const isCloseToNext = (baby.x < nextPlat.x + nextPlat.w + 120);
+          if (isCloseToNext) {
+            targetX = nextPlat.x + nextPlat.w / 2;
+            targetY = nextPlat.y - 45;
+          } else {
+            targetX = baby.x - 75;
+            targetY = baby.y - 50;
+          }
         } else {
-          targetX = baby.x + (isEscapeMode ? 80 : 65);
-          targetY = baby.y - 50;
+          targetX = trueExitDoor.x + 40;
+          targetY = trueExitDoor.y + 45;
         }
       } else {
-        targetX = exitDoor.x + 30;
-        targetY = exitDoor.y + 40;
+        const nextIndex = baby.currentPlatformIndex + 1;
+        if (nextIndex < platforms.length) {
+          const nextPlat = platforms[nextIndex];
+          const isCloseToNext = (baby.x > nextPlat.x - 120);
+          if (isCloseToNext) {
+            targetX = nextPlat.x + 35;
+            targetY = nextPlat.y - 45;
+          } else {
+            targetX = baby.x + (isEscapeMode ? 80 : 65);
+            targetY = baby.y - 50;
+          }
+        } else {
+          targetX = exitDoor.x + 30;
+          targetY = exitDoor.y + 40;
+        }
       }
+
+      // Micro-movimentos rápidos simulando a curiosidade natural de uma fada
+      fairy.dartTimer--;
+      if (fairy.dartTimer <= 0) {
+        fairy.dartTimer = 60 + Math.floor(Math.random() * 80);
+        fairy.dartOffsetX = (Math.random() - 0.5) * 26;
+        fairy.dartOffsetY = (Math.random() - 0.5) * 18;
+      }
+
+      // Oscilações orgânicas multifrequenciais de flutuação
+      const organicOscY =
+        Math.sin(fairy.floatAngle * 2.8) * 8 +
+        Math.cos(fairy.floatAngle * 4.9) * 4 +
+        Math.sin(fairy.floatAngle * 1.2) * 6;
+
+      const organicOscX =
+        Math.cos(fairy.floatAngle * 2.1) * 7 +
+        Math.sin(fairy.floatAngle * 3.6) * 3;
+
+      const finalTargetX = targetX + organicOscX + fairy.dartOffsetX;
+      const finalTargetY = targetY + organicOscY + fairy.dartOffsetY;
+
+      fairy.vx += (finalTargetX - fairy.x) * 0.045;
+      fairy.vy += (finalTargetY - fairy.y) * 0.045;
+      fairy.vx *= 0.86;
+      fairy.vy *= 0.86;
+
+      fairy.x += fairy.vx;
+      fairy.y += fairy.vy;
+
     }
-
-    // Micro-movimentos rápidos simulando a curiosidade natural de uma fada
-    fairy.dartTimer--;
-    if (fairy.dartTimer <= 0) {
-      fairy.dartTimer = 60 + Math.floor(Math.random() * 80);
-      fairy.dartOffsetX = (Math.random() - 0.5) * 26;
-      fairy.dartOffsetY = (Math.random() - 0.5) * 18;
-    }
-
-    // Oscilações orgânicas multifrequenciais de flutuação
-    const organicOscY =
-      Math.sin(fairy.floatAngle * 2.8) * 8 +
-      Math.cos(fairy.floatAngle * 4.9) * 4 +
-      Math.sin(fairy.floatAngle * 1.2) * 6;
-
-    const organicOscX =
-      Math.cos(fairy.floatAngle * 2.1) * 7 +
-      Math.sin(fairy.floatAngle * 3.6) * 3;
-
-    const finalTargetX = targetX + organicOscX + fairy.dartOffsetX;
-    const finalTargetY = targetY + organicOscY + fairy.dartOffsetY;
-
-    fairy.vx += (finalTargetX - fairy.x) * 0.045;
-    fairy.vy += (finalTargetY - fairy.y) * 0.045;
-    fairy.vx *= 0.86;
-    fairy.vy *= 0.86;
-
-    fairy.x += fairy.vx;
-    fairy.y += fairy.vy;
 
     // Rastro de poeira luminosa que paira e rodopia atrás da fada
     if (tick % 2 === 0) {
@@ -1401,6 +1444,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- RENDERIZAÇÃO ---
   function render() {
+    if (opening.active && !opening.revealing) {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      opening.render(ctx, canvas, {assets, lighting, fairyRenderer,
+        drawRoom: () => { drawBackgroundWall(0); drawSceneryItems(0); drawPlatforms(0); }
+      });
+      return;
+    }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     ctx.save();
@@ -1425,6 +1475,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
     drawEscapeBanner();
     drawCutsceneDialogue();
+    if (opening.active) opening.renderFade(ctx, canvas);
 
     // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)
     transitionEffects.renderPortalWipe(ctx, canvas, cameraX, cameraY, trueExitDoor, transitionWipeAlpha, tick);
@@ -1510,8 +1561,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   const inputHandler = bindInput({
     doJump,
-    isGrounded: () => Boolean(baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
-    isCutsceneActive: () => Boolean(cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
+    isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
+    isCutsceneActive: () => Boolean(opening.active || cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
     isGameOver: () => isGameOver,
     isToyRoomMode: () => currentPhaseMode === 'toy-room',
     setLastInputDevice,
@@ -1549,16 +1600,17 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     togglePause,
     setPaused,
     destroy() {
+      opening.cancel();
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
     start() {
       gameStarted = true;
       state.gameStarted = true;
-      startStandbyPreparation();
       if (currentPhaseMode === 'toy-room') {
         audio.startToyRoomMusic();
-      } else {
+      } else if (!opening.start()) {
+        beginOpeningGameplay();
         audio.startMusic();
       }
       if (!loopStarted) {
@@ -1568,8 +1620,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       }
     },
     doJump,
-    isGrounded: () => Boolean(baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
-    isCutsceneActive: () => Boolean(cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
+    isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
+    isCutsceneActive: () => Boolean(opening.active || cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
     setLastInputDevice,
     resetToStart,
     retry: retryGame,

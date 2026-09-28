@@ -1,0 +1,1 @@
+PASS: 5280 official sprite foot contacts across platforms and both facings.

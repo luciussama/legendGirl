@@ -75,7 +75,7 @@ export class SoftwareCanvas {
   }
 
   rotate(rad) {
-    // Rotation stub - maintains current scale and translation
+    // Simulação de rotação: mantém a escala e a translação atuais.
   }
 
   setTransform(a, b, c, d, e, f) {
@@ -141,7 +141,7 @@ export class SoftwareCanvas {
   }
 
   roundRect(x, y, w, h, radii) {
-    // Approximated as rect for hit testing / fill
+    // Aproximado por um retângulo para teste de contato e preenchimento.
     this._path = [
       { type: 'rect', x: this._tx + x * this._sx, y: this._ty + y * this._sy, w: w * this._sx, h: h * this._sy }
     ];
@@ -268,7 +268,7 @@ export class SoftwareCanvas {
     const normA = ca / 255;
     const lw = Math.max(1, Math.round(this.lineWidth * Math.abs(this._sx)));
 
-    // Line segments
+    // Segmentos de linha
     let lastX = 0, lastY = 0;
     for (const item of this._path) {
       if (item.type === 'move') {
@@ -358,7 +358,7 @@ export class SoftwareCanvas {
   }
 
   fillText(text, x, y) {
-    // Fill text stub for visual labeling
+    // Simulação de preenchimento de texto para identificação visual.
   }
 
   clip() {}

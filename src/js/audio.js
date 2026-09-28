@@ -262,6 +262,24 @@ export function createAudioSystem() {
     } catch (e) {}
   }
 
+  function playOpeningAmbience() {
+    try {
+      if (!state.audioCtx || state.audioCtx.state !== 'running') return;
+      const now = state.audioCtx.currentTime;
+      for (const frequency of [146.83, 220]) {
+        const oscillator = state.audioCtx.createOscillator();
+        const gain = state.audioCtx.createGain();
+        oscillator.type = 'sine';
+        oscillator.frequency.setValueAtTime(frequency, now);
+        gain.gain.setValueAtTime(0, now);
+        gain.gain.linearRampToValueAtTime(0.012, now + 1.5);
+        gain.gain.linearRampToValueAtTime(0, now + 4);
+        oscillator.connect(gain); gain.connect(getDestination());
+        registerActiveNode(oscillator); oscillator.start(now); oscillator.stop(now + 4.1);
+      }
+    } catch {}
+  }
+
   function playFairyVoiceBlip(freq = 920) {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
@@ -741,6 +759,7 @@ export function createAudioSystem() {
     playLongJumpSound,
     playLevelUpChime,
     playFairyVoiceBlip,
+    playOpeningAmbience,
     playFairyLaugh,
     playEscapePowerUp,
     playFallFailSound,

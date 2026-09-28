@@ -11,7 +11,7 @@ function copyNonTransparent(srcPng, sx, sy, sw, sh, dstPng, dx, dy) {
       const dIdx = ((dy + y) * dstPng.width + (dx + x)) * 4;
       const sa = srcPng.data[sIdx + 3];
       if (sa > 15) {
-        // Alpha blend over background
+        // Composição alfa sobre o fundo.
         const da = dstPng.data[dIdx + 3] / 255;
         const normSa = sa / 255;
         const outA = normSa + da * (1 - normSa);
@@ -75,7 +75,7 @@ copyNonTransparent(src, 0, 224, W, 82, dst, 0, 290);
 // Gaveta inferior fechada 3 (adicional) (y: 372 .. 438)
 copyNonTransparent(src, 0, 158, W, 66, dst, 0, 372);
 
-// Base e pés bracket (y: 438 .. 483)
+// Base e pés com suporte angular (y: 438 .. 483)
 copyNonTransparent(src, 0, 306, W, 45, dst, 0, 438);
 
 // 3. Constrói o tampo superior chanfrado em perspectiva diagonal isométrica (y: 0 .. 78):

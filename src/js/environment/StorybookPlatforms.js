@@ -1,4 +1,4 @@
-/** Visual-only toys. Every contact edge is derived from the existing support. */
+/** Brinquedos exclusivamente visuais. Cada borda de contato deriva do apoio existente. */
 const INK = '#2c1b22';
 const palettes = {
   wood: ['#d3a061', '#87512e', '#3c2521'],
@@ -17,8 +17,8 @@ function box(ctx,x,y,w,h,material='wood',radius=3) {
   ctx.beginPath();ctx.roundRect(x,y,w,h,radius);ctx.fill();
   ctx.strokeStyle=INK;ctx.lineWidth=1.3;ctx.stroke();
   ctx.save();ctx.clip();
-  // Stable, fine material marks: no random flicker and no painted pixels beyond
-  // the object's outline. Warm grain and stitching replace flat UI-like fills.
+  // Marcas finas e estáveis do material: sem cintilação aleatória nem pixels pintados além
+  // do contorno do objeto. Veios de tons quentes e costuras substituem preenchimentos planos semelhantes aos de uma interface.
   for(let i=0;i<Math.floor(w*h/28);i++) {
     const xx=x+2+((i*31+7) % Math.max(1,Math.floor(w-4)));
     const yy=y+3+((i*17+11) % Math.max(1,Math.floor(h-6)));
@@ -41,7 +41,7 @@ export function drawContactEdge(ctx,x,y,w,material='wood',depth=5) {
   ctx.fillStyle=gradient(ctx,y,depth,colors);ctx.fillRect(x,y,w,depth);
   ctx.fillStyle=colors[0];ctx.fillRect(x,y,w,1);
   ctx.fillStyle=colors[2];ctx.fillRect(x,y+depth-1,w,1);
-  // Small finish marks live below the contact plane; never imply extra support.
+  // Pequenas marcas de acabamento ficam abaixo do plano de contato e nunca sugerem apoio extra.
   for(let i=7;i<w-4;i+=19)line(ctx,[[x+i,y+2],[x+Math.min(w-2,i+9),y+3]],colors[1],.6);
 }
 function book(ctx,x,y,w,h,material='purple') {
@@ -64,7 +64,7 @@ function drawToy(ctx,p,w,assets,tick) {
       }return true;
     }
     case 'floppy_ragdoll': {
-      // The folded dress forms a broad level cushion; limbs hang below it.
+      // O vestido dobrado forma uma almofada ampla e nivelada; os membros ficam pendurados abaixo dela.
       ellipse(ctx,17,23,15,17,'#c5a17c');
       for(let i=0;i<7;i++)line(ctx,[[5+i*4,12],[1+i*4,25]],'#684331',2);
       ellipse(ctx,12,22,2,2,'#33242b');ellipse(ctx,22,22,2,2,'#33242b');
@@ -170,7 +170,7 @@ function drawToy(ctx,p,w,assets,tick) {
     case 'levitating_grimoire': {
       book(ctx,0,0,w,21,'purple');ctx.fillStyle='#c6a263';ctx.font='12px Georgia';ctx.fillText('✦',w/2-5,15);
       ctx.fillStyle='#873a51';ctx.fillRect(w*.72,20,5,14);
-      // Only the light moves; the physical cover stays aligned with the feet.
+      // Somente a luz se move; a capa física permanece alinhada aos pés.
       ctx.save();ctx.globalAlpha=.35+.15*Math.sin(tick*.06);ctx.strokeStyle='#f5d890';ctx.lineWidth=.8;ctx.strokeRect(2,2,w-4,17);ctx.restore();return true;
     }
     default:return false;
@@ -180,11 +180,11 @@ export function drawStorybookPlatform(ctx,assets,p,sx,tick=0) {
   const support=p.standRegion||p, x=sx+support.x-p.x,y=p.surfaceTopY??support.y??p.y,w=support.w;
   if(p.style==='block_castle') {
     const img=assets?.get('dark-room-modern-castle');if(!img)return false;
-    // Narrow tower is the only top; lower battlements remain decorative.
+    // A torre estreita é o único topo; as ameias inferiores permanecem decorativas.
     ctx.save();const scale=w/318, height=Math.min(220,470-y);
     ctx.drawImage(img,42,324,1171,769,x-(468-42)*scale,y,1171*scale,height);
     drawContactEdge(ctx,x,y,w,'stone',3);ctx.restore();return true;
   }
-  if(p.style==='true_portal_balcony')return false; // Shared painted portal renderer.
+  if(p.style==='true_portal_balcony')return false; // Renderizador compartilhado da ilustração do portal.
   ctx.save();ctx.translate(x,y);const drawn=drawToy(ctx,p,w,assets,tick);ctx.restore();return drawn;
 }

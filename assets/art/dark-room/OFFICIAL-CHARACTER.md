@@ -7,12 +7,12 @@ O script copia pixels, remove o pergaminho conectado às bordas e exporta
 Nenhum frame é desenhado ou gerado; os canais RGB dos pixels retidos são preservados.
 
 Mapeamento da prancha:
-- Idle: 9 quadros da linha IDLE.
-- Run: 9 quadros da linha RUNNING.
-- Jump: 6 quadros JUMPING, 2 JUMPING–SHORT e 1 HIGH JUMP.
-- Fall: 6 quadros FALLING.
-- Dash: o quadro DASHING, incluindo seu rastro original.
-- Teleport: os 2 quadros TELEPORTING que contêm a personagem, com o portal original.
+- Repouso (Idle): 9 quadros da linha IDLE.
+- Corrida (Run): 9 quadros da linha RUNNING.
+- Salto (Jump): 6 quadros JUMPING, 2 JUMPING–SHORT e 1 HIGH JUMP.
+- Queda (Fall): 6 quadros FALLING.
+- Arrancada (Dash): o quadro DASHING, incluindo seu rastro original.
+- Teletransporte (Teleport): os 2 quadros TELEPORTING que contêm a personagem, com o portal original.
 - Dano, coleta e interação: recortes das respectivas poses oficiais.
 
 Estados sem recorte isolado adequado reutilizam poses existentes: deitada usa

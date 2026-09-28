@@ -1,6 +1,6 @@
 import { babyRenderer } from '../entities/BabyRenderer.js';
 
-/** Official protagonist sprites and companion fairy rendering. */
+/** Renderização dos sprites oficiais da protagonista e da fada acompanhante. */
 
 export class ToyRoomEntities {
   /**

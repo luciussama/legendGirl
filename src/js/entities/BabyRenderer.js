@@ -1,6 +1,6 @@
 import { OFFICIAL_FRAMES } from '../assets/officialCharacter.js';
 
-/** Renders only crops of the supplied official artwork. */
+/** Renderiza somente recortes da ilustração oficial fornecida. */
 export class BabyRenderer {
   constructor() { this.assets = null; }
   setAssets(assets) { this.assets = assets; }
@@ -65,17 +65,17 @@ export class BabyRenderer {
       return { state: 'run', frame };
     }
 
-    // Parada (Idle)
+    // Parada (repouso)
     const frame = Math.floor(tick * 0.1) % 9;
     return { state: 'idle', frame };
   }
 
   renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1) {
     const image = assets?.get('official-character');
-    if (!ctx || !image) return; // Never replace missing official art with a redesign.
+    if (!ctx || !image) return; // Nunca substitui a arte oficial ausente por um novo desenho.
     const frames = OFFICIAL_FRAMES[pose] || OFFICIAL_FRAMES.idle;
     const frame = frames[((frameIndex % frames.length) + frames.length) % frames.length];
-    // Add exactly one visual pixel in height, preserving proportions and foot anchor.
+    // Adiciona exatamente um pixel visual à altura, preservando as proporções e a ancoragem dos pés.
     const scale = height / 50 + 1 / frame.h;
     ctx.save();
     ctx.imageSmoothingEnabled = false;

@@ -6,7 +6,7 @@ import { PlatformRenderer } from '../src/js/environment/PlatformRenderer.js';
 import { BabyRenderer } from '../src/js/entities/BabyRenderer.js';
 import { SoftwareCanvas } from './software-canvas.js';
 
-// Preload manifest PNG assets
+// Carrega antecipadamente os recursos PNG do manifesto.
 const manifest = JSON.parse(fs.readFileSync('assets/manifest.json', 'utf8'));
 const imageCache = new Map();
 
@@ -18,7 +18,7 @@ for (const [k, relPath] of Object.entries(manifest.images)) {
       const png = PNG.sync.read(data);
       imageCache.set(k, png);
     } catch (e) {
-      // ignore
+      // Ignora a falha.
     }
   }
 }
@@ -55,7 +55,7 @@ const entries = [
 
 console.log(`Auditing and rendering all ${entries.length} platforms...`);
 
-// 1. Measure metrics
+// 1. Mede os indicadores.
 const metrics = [];
 for (let entry = 0; entry < entries.length; entry++) {
   const { p, index, phase } = entries[entry];
@@ -112,21 +112,21 @@ for (let entry = 0; entry < entries.length; entry++) {
 }
 
 fs.writeFileSync('tmp/dark-room-review/metricas-visuais.json', JSON.stringify(metrics, null, 2) + '\n');
-console.log('Saved tmp/dark-room-review/metricas-visuais.json');
+console.log('Arquivo salvo: tmp/dark-room-review/metricas-visuais.json');
 
-// 2. Generate composite visual-grupo-0.png .. visual-grupo-3.png (1000 x 1770)
+// 2. Gera as composições visual-grupo-0.png a visual-grupo-3.png (1000 x 1770).
 for (let group = 0; group < 4; group++) {
   const composite = new SoftwareCanvas(1000, 1770);
-  // Fill background #211b2d
+  // Preenche o fundo com #211b2d.
   composite.fillStyle = '#211b2d';
   composite.fillRect(0, 0, 1000, 1770);
 
-  // Group header banner
+  // Faixa de cabeçalho do grupo.
   composite.fillStyle = '#ffffff';
   composite.fillRect(12, 12, 976, 32);
   composite.fillStyle = '#211b2d';
 
-  // 10 items in group
+  // 10 itens por grupo.
   const startIdx = group * 10;
   const groupEntries = entries.slice(startIdx, startIdx + 10);
 
@@ -143,21 +143,21 @@ for (let group = 0; group < 4; group++) {
     const px = 12 + col * (480 + 16);
     const py = 56 + row * (310 + 24);
 
-    // Card background #292237
+    // Fundo do cartão em #292237.
     composite.fillStyle = '#292237';
     composite.fillRect(px, py, 480, 310);
-    // Border
+    // Borda
     composite.strokeStyle = '#3b324f';
     composite.lineWidth = 1;
     composite.strokeRect(px, py, 480, 310);
 
-    // Card Title header
+    // Cabeçalho do título do cartão.
     composite.fillStyle = '#1e1828';
     composite.fillRect(px, py, 480, 28);
     composite.fillStyle = '#38bdf8';
     composite.fillRect(px + 8, py + 8, 4, 12);
 
-    // Render platform and character into a subcanvas
+    // Renderiza a plataforma e a personagem em uma área de desenho auxiliar.
     const sub = new SoftwareCanvas(480, 310);
     sub.save();
     sub.translate(0, 115 - s.y);
@@ -179,21 +179,21 @@ for (let group = 0; group < 4; group++) {
     };
     character.render(sub, baby);
 
-    // Green alignment line along support
+    // Linha verde de alinhamento ao longo do apoio.
     sub.strokeStyle = '#4ade80';
     sub.lineWidth = 2;
     sub.beginPath();
     sub.moveTo(s.x - camera, s.y);
     sub.lineTo(s.x + s.w - camera, s.y);
     sub.stroke();
-    // End ticks
+    // Marcas nas extremidades.
     sub.beginPath();
     sub.moveTo(s.x - camera, s.y - 6); sub.lineTo(s.x - camera, s.y + 6);
     sub.moveTo(s.x + s.w - camera, s.y - 6); sub.lineTo(s.x + s.w - camera, s.y + 6);
     sub.stroke();
     sub.restore();
 
-    // Blit subcanvas content onto composite card
+    // Copia o conteúdo da área de desenho auxiliar para o cartão da composição.
     for (let sy = 28; sy < 270; sy++) {
       for (let sx = 0; sx < 480; sx++) {
         const sIdx = (sy * 480 + sx) * 4;
@@ -210,17 +210,17 @@ for (let group = 0; group < 4; group++) {
       }
     }
 
-    // Footer panel in card
+    // Painel de rodapé do cartão.
     composite.fillStyle = '#1e1828';
     composite.fillRect(px, py + 276, 480, 34);
-    composite.fillStyle = '#22c55e'; // Green check indicator
+    composite.fillStyle = '#22c55e'; // Indicador verde de verificação.
     composite.fillRect(px + 8, py + 286, 6, 14);
     composite.fillRect(px + 14, py + 292, 8, 8);
   }
 
   const outPath = `tmp/dark-room-review/visual-grupo-${group}.png`;
   fs.writeFileSync(outPath, PNG.sync.write(composite.png));
-  console.log(`Saved ${outPath}`);
+  console.log(`Arquivo salvo: ${outPath}`);
 }
 
 console.log('All evidence generated successfully!');

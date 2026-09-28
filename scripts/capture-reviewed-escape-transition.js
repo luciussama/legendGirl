@@ -63,10 +63,10 @@ function composeGrid(img1, img2, img3, img4) {
     }
   }
 
-  blit(p1, 0, 0);     // Top-left: Espera
-  blit(p2, w, 0);     // Top-right: Decolagem
-  blit(p3, 0, h);     // Bottom-left: Voo / Arco
-  blit(p4, w, h);     // Bottom-right: Pouso no trem
+  blit(p1, 0, 0);     // Superior esquerdo: Espera
+  blit(p2, w, 0);     // Superior direito: Decolagem
+  blit(p3, 0, h);     // Inferior esquerdo: Voo / Arco
+  blit(p4, w, h);     // Inferior direito: Pouso no trem
 
   return PNG.sync.write(composite);
 }

@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """
 scripts/export-production-sprites.py
-Exports individual clean production sprites (RGBA transparent background, clean edges,
-no background scenery, no arrows/badges, no overlapping elements) from the high-resolution
-art reference, and packs them into a master production spritesheet with an updated atlas.
+Exporta sprites individuais de produção sem resíduos (RGBA com fundo transparente, bordas limpas,
+sem cenário de fundo, setas, selos ou elementos sobrepostos) a partir da referência artística
+de alta resolução e os agrupa em uma prancha principal de produção com atlas atualizado.
 """
 
 import os
@@ -78,32 +78,32 @@ def save_png_rgba(filename, width, height, rgba_bytes):
         f.write(b'\x89PNG\r\n\x1a\n' + ihdr_chunk + idat_chunk + iend_chunk)
 
 def is_background_pixel(r, g, b):
-    # Dark room background is darkness < 38, or blue/indigo tinted room background
+    # O fundo do quarto escuro tem intensidade menor que 38 ou tons de azul/índigo.
     brightness = (r * 299 + g * 587 + b * 114) // 1000
     if brightness <= 25:
         return True
-    # Dark blue wallpaper with wallpaper pattern
+    # Papel de parede azul-escuro com estampa.
     if brightness <= 42 and b >= r and b >= g - 4:
         return True
-    # Dim brown floor far background
+    # Piso marrom pouco iluminado ao fundo.
     if brightness <= 34 and r < 45 and g < 35 and b < 45:
         return True
     return False
 
 def is_yellow_marker(r, g, b):
-    # Yellow badge / arrow pixel
+    # Pixel amarelo de selo ou seta.
     return r > 195 and g > 165 and b < 90
 
 def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None, bg_threshold_fn=is_background_pixel):
     """
-    Extracts an isolated sprite from the raw image.
-    Uses boundary flood-fill to ensure internal dark details are preserved,
-    while removing all outside scenery and erasing specified badge/arrow areas.
+    Extrai um sprite isolado da imagem bruta.
+    Usa preenchimento por propagação a partir das bordas para preservar os detalhes escuros internos,
+    removendo todo o cenário externo e apagando as áreas indicadas de selos e setas.
     """
     is_outside = [[False for _ in range(bw)] for _ in range(bh)]
     queue = deque()
 
-    # Pre-mark erase regions (e.g. badges, arrows, or character overlapping) as outside
+    # Marca previamente como externas as regiões a apagar (selos, setas ou sobreposição de personagens).
     if erase_regions:
         for ex0, ey0, ew, eh in erase_regions:
             for ey in range(max(0, ey0), min(bh, ey0 + eh)):
@@ -111,7 +111,7 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
                     is_outside[ey][ex] = True
                     queue.append((ex, ey))
 
-    # Seed borders
+    # Inicializa os pontos de partida nas bordas.
     for x in range(bw):
         for y in [0, bh - 1]:
             if not is_outside[y][x]:
@@ -130,7 +130,7 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
                     is_outside[y][x] = True
                     queue.append((x, y))
 
-    # Flood fill outside boundary
+    # Preenchimento por propagação na região externa boundary
     while queue:
         cx, cy = queue.popleft()
         for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
@@ -142,7 +142,7 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
                     is_outside[ny][nx] = True
                     queue.append((nx, ny))
 
-    # Optional edge feathering
+    # Suavização opcional das bordas.
     rgba = bytearray(bw * bh * 4)
     for y in range(bh):
         for x in range(bw):
@@ -155,7 +155,7 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
                 rgba[out_idx+2] = 0
                 rgba[out_idx+3] = 0
             else:
-                # Check distance to boundary for smooth 1-pixel feathering
+                # Verifica a distância até a borda para suavização gradual de um pixel.
                 has_outside_neighbor = False
                 for dx, dy in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
                     nx, ny = x + dx, y + dy
@@ -164,14 +164,14 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
                         break
                 alpha = 255
                 if has_outside_neighbor:
-                    # Soft edge anti-aliasing
+                    # Suavização gradual das bordas.
                     alpha = 200
                 rgba[out_idx] = r
                 rgba[out_idx+1] = g
                 rgba[out_idx+2] = b
                 rgba[out_idx+3] = alpha
 
-    # Trim empty transparent borders
+    # Recorta as bordas transparentes vazias.
     min_x, max_x = bw, 0
     min_y, max_y = bh, 0
     has_content = False
@@ -187,7 +187,7 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
     if not has_content or min_x > max_x or min_y > max_y:
         return bw, bh, rgba
 
-    # Add 1px padding
+    # Adiciona margem de 1 px.
     pad = 2
     min_x = max(0, min_x - pad)
     min_y = max(0, min_y - pad)
@@ -206,18 +206,18 @@ def extract_clean_sprite(raw, full_w, full_h, bx, by, bw, bh, erase_regions=None
 
 def main():
     source_img = 'assets/art/dark-room/environment-assets.png'
-    print(f'Loading reference image from {source_img}...')
+    print(f'Carregando imagem de referência de {source_img}...')
     w, h, raw = load_png(source_img)
-    print(f'Image loaded: {w}x{h}')
+    print(f'Imagem carregada: {w}x{h}')
 
-    # Definition of all 24 platforms / props + scenery + characters
+    # Definição das 24 plataformas e objetos, além do cenário e das personagens.
     sprites_to_export = [
-        # Platforms 1 to 24:
+        # Plataformas 1 a 24:
         {
             'name': 'mandala_rug',
             'alias': 'mandala_rug',
             'box': (8, 206, 218, 102),
-            # Girl stood at left; badge 1 at right (167, 187)
+            # Menina em pé à esquerda; selo 1 à direita (167, 187).
             'erase': [(150, 0, 68, 30), (0, 0, 75, 40)]
         },
         {
@@ -364,7 +364,7 @@ def main():
             'box': (1102, 698, 388, 256),
             'erase': [(240, 60, 35, 30)]
         },
-        # Character frames:
+        # Quadros das personagens:
         {
             'name': 'character_stand',
             'alias': 'character_stand',
@@ -389,7 +389,7 @@ def main():
     os.makedirs(sprites_dir, exist_ok=True)
 
     extracted = []
-    print(f'Extracting {len(sprites_to_export)} individual sprites with transparent RGBA background...')
+    print(f'Extraindo {len(sprites_to_export)} sprites individuais com fundo RGBA transparente...')
 
     for item in sprites_to_export:
         bx, by, bw, bh = item['box']
@@ -404,10 +404,10 @@ def main():
             'rgba': rgba,
             'file': filename
         })
-        print(f"  [OK] Exported {item['name']}.png ({tw}x{th})")
+        print(f"  [OK] Exportado {item['name']}.png ({tw}x{th})")
 
-    # Pack into a master spritesheet (with 6px padding between sprites)
-    # Estimate layout: spritesheet width = 1200
+    # Agrupa em uma prancha principal (com margem de 6 px entre os sprites).
+    # Estimativa do leiaute: largura da prancha de sprites = 1200.
     SHEET_W = 1200
     padding = 6
     cur_x = padding
@@ -435,9 +435,9 @@ def main():
         row_height = max(row_height, ih)
 
     SHEET_H = cur_y + row_height + padding
-    print(f'Packing sprites into master production spritesheet ({SHEET_W}x{SHEET_H})...')
+    print(f'Agrupando sprites na prancha principal de produção ({SHEET_W}x{SHEET_H})...')
 
-    sheet_rgba = bytearray(SHEET_W * SHEET_H * 4) # completely initialized to 0 (alpha = 0)
+    sheet_rgba = bytearray(SHEET_W * SHEET_H * 4) # inteiramente inicializado com 0 (alfa = 0)
     for s in sheet_items:
         sx = s['x']
         sy = s['y']
@@ -451,13 +451,13 @@ def main():
 
     master_sheet_path = 'assets/art/dark-room/production-spritesheet.png'
     save_png_rgba(master_sheet_path, SHEET_W, SHEET_H, sheet_rgba)
-    print(f'Master spritesheet saved to {master_sheet_path} ({os.path.getsize(master_sheet_path)} bytes)')
+    print(f'Prancha principal de sprites salva em {master_sheet_path} ({os.path.getsize(master_sheet_path)} bytes)')
 
-    # Also update environment-assets.png to be this clean master spritesheet, so backwards compatibility is maintained!
+    # Atualiza também environment-assets.png com esta prancha principal limpa para manter a compatibilidade com versões anteriores.
     save_png_rgba('assets/art/dark-room/environment-assets.png', SHEET_W, SHEET_H, sheet_rgba)
-    print(f'Updated assets/art/dark-room/environment-assets.png with clean transparent production sprites!')
+    print(f'Arquivo assets/art/dark-room/environment-assets.png atualizado com sprites de produção limpos e transparentes!')
 
-    # Generate JSON Atlas
+    # Gera o atlas JSON.
     atlas_dict = {}
     for s in sheet_items:
         atlas_dict[s['alias']] = {
@@ -470,7 +470,7 @@ def main():
         if s['name'] != s['alias']:
             atlas_dict[s['name']] = atlas_dict[s['alias']]
 
-    # Additional standard aliases for game compatibility
+    # Nomes alternativos padrão adicionais para compatibilidade com o jogo.
     aliases_mapping = {
         'satin_cushion': 'satin_cushion',
         'cuckoo_clock': 'cuckoo_clock',
@@ -511,9 +511,9 @@ def main():
             'height': SHEET_H,
             'sprites': atlas_dict
         }, f, indent=2)
-    print(f'Atlas JSON written to {atlas_json_path}')
+    print(f'Atlas JSON gravado em {atlas_json_path}')
 
-    # Write JS atlas module:
+    # Grava o atlas em JavaScript. module:
     js_content = f"""/**
  * darkRoomAtlas.js
  * Dicionário canônico de produção com todos os sprites isolados
@@ -548,7 +548,7 @@ export function getDarkRoomAtlasRegion(key) {{
 """
     with open('src/js/assets/darkRoomAtlas.js', 'w') as f:
         f.write(js_content)
-    print('Updated src/js/assets/darkRoomAtlas.js!')
+    print('Arquivo atualizado: src/js/assets/darkRoomAtlas.js!')
 
 if __name__ == '__main__':
     main()

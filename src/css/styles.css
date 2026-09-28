@@ -32,7 +32,7 @@ html {
   align-items: center;
 }
 
-/* Telas de Desktop e Widescreen: Moldura elegante 16:9 com bordas arredondadas */
+/* Telas de computador e formato panorâmico: Moldura elegante 16:9 com bordas arredondadas */
 @media (min-width: 860px) and (min-aspect-ratio: 1.25) {
   #game-container {
     width: 100%;
@@ -45,7 +45,7 @@ html {
   }
 }
 
-/* Telas Mobile e Retrato: Preenche 100% da tela sem barras pretas */
+/* Telas celular e orientação vertical: Preenche 100% da tela sem barras pretas */
 @media (max-aspect-ratio: 1.24) {
   #game-container {
     width: 100vw;
@@ -310,7 +310,7 @@ canvas {
   }
 }
 
-/* --- TELA E CARTÃO DE FIM DE JOGO (GAME OVER) --- */
+/* --- TELA E CARTÃO DE FIM DE JOGO --- */
 #gameover-overlay {
   position: absolute;
   inset: 0;

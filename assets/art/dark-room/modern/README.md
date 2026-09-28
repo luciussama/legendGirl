@@ -16,30 +16,36 @@ quando adequados. Não existem arquivos vazios ou promessas de assets pendentes.
 
 ### Castelo
 
-Use case: stylized-concept. Create ONE isolated game sprite of a toy stone-block
-castle, matching the provided official reference: warm hand-painted storybook,
-dark ink outlines, subtle stone texture, amber rim lighting. Transparent background,
-no floor shadow outside object, no text, no character. Side-on platformer view:
-central square tower with a perfectly flat unbroken top, no crenellations or flag
-above that central landing top. Two much lower side towers, small arch door, stone
-blocks and a small blue pennant attached BELOW central top on a side tower. Central
-landing top must be the highest solid point, at 15% image height, centered and about
-18% image width; castle base at 95% height. Full castle uncropped, generous transparent
-margins. 1024x1024. The reference is a STYLE guide, not an image to copy wholesale.
+Tradução do texto de geração incorporado: caso de uso, conceito estilizado.
+Crie UM sprite isolado de um castelo de blocos de pedra de brinquedo, seguindo
+a referência oficial fornecida: estilo acolhedor de livro ilustrado pintado à mão,
+contornos escuros, textura sutil de pedra e iluminação âmbar nas bordas. Fundo
+transparente, sem sombra no piso fora do objeto, sem texto e sem personagem.
+Vista lateral de jogo de plataforma: torre quadrada central com topo perfeitamente
+plano e contínuo, sem ameias ou bandeira acima desse apoio central. Duas torres
+laterais bem mais baixas, pequena porta em arco, blocos de pedra e uma pequena
+flâmula azul presa ABAIXO do topo central em uma torre lateral. O topo de apoio
+central deve ser o ponto sólido mais alto, a 15% da altura da imagem, centralizado
+e com aproximadamente 18% da largura; a base do castelo deve ficar a 95% da altura.
+Castelo inteiro, sem cortes, com margens transparentes generosas. 1024 × 1024.
+A referência é um guia de ESTILO, não uma imagem para copiar integralmente.
 
 ### Pião
 
-Use case: stylized-concept. Create ONE isolated platformer sprite: An antique wooden
-spinning top with a BROAD FLAT circular top face and conical taper below, brass rim
-and carved amber/ochre wood with a burgundy band. NO stem above the broad flat landing
-face. Side-on view so the upper face is horizontal. Match the supplied STYLE reference:
-polished hand-painted children's storybook, dark brown ink contours, tactile material
-texture, warm amber lighting with deep soft shadows, aged toy-room craftsmanship.
-Genuine transparent background, no floor, no drop shadow outside object, no labels
-or character. Full subject uncropped, fits central 85% of a 1024x1024 canvas. Highest
-solid horizontal landing edge at about y=200; entire weight-bearing body extends
-below. Orthographic side-on playable foreground, slight depth only behind it. This
-is one game asset, not a scene or sheet.
+Tradução do texto de geração incorporado: caso de uso, conceito estilizado.
+Crie UM sprite isolado para jogo de plataforma: um pião antigo de madeira com
+face superior circular AMPLA E PLANA e afunilamento cônico abaixo, borda de latão
+e madeira entalhada em tons de âmbar e ocre com uma faixa bordô. SEM haste acima
+da ampla face plana de apoio. Vista lateral para que a face superior seja horizontal.
+Siga a referência de ESTILO fornecida: livro infantil ilustrado pintado à mão com
+acabamento refinado, contornos de tinta marrom-escura, textura de material tátil,
+iluminação âmbar quente com sombras profundas e suaves e aspecto artesanal antigo
+de quarto de brinquedos. Fundo realmente transparente, sem piso, sem sombra projetada
+fora do objeto, sem rótulos e sem personagem. Objeto inteiro, sem cortes, ocupando
+os 85% centrais de uma imagem de 1024 × 1024. Borda horizontal sólida mais alta de
+apoio em aproximadamente y=200; todo o corpo de sustentação deve se estender abaixo.
+Vista lateral ortográfica para o primeiro plano jogável, com leve profundidade
+somente atrás. Trata-se de um único recurso do jogo, não de uma cena ou prancha.
 
 A geometria final do desenho foi conferida no jogo, em vez de pressupor que a
 posição solicitada no prompt foi obedecida exatamente. As regiões de apoio de
