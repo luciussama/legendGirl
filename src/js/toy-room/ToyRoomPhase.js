@@ -5,6 +5,7 @@
  * resolução de colisões, mecânicas de pegar e soltar, efeitos de partículas e controles responsivos.
  */
 
+import { getMobileZoomFrame, isMobileDevice } from '../controllers/MobileZoom.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { toyRenderer } from './ToyRenderer.js';
 import { toyRoomEntities } from './ToyRoomEntities.js';
@@ -13,6 +14,7 @@ import { toyRoomUI } from './ToyRoomUI.js';
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
     this.canvas = canvas;
+    this.mobilePresentation = isMobileDevice();
     this.ctx = canvas.getContext('2d');
     this.audio = audio;
     this.uiFeedback = uiFeedback;
@@ -846,6 +848,14 @@ export class ToyRoomPhase {
 
     // Transformação da Câmera
     ctx.save();
+    const px = this.player.x - this.cameraX, py = this.player.y - this.cameraY;
+    const fx = this.fairy.x - this.cameraX, fy = this.fairy.y - this.cameraY;
+    const frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
+      width: this.canvas.width, height: this.canvas.height, anchor: { x: px, y: py },
+      bounds: { left: Math.min(px - 100, fx - 28), right: Math.max(px + 100, fx + 28),
+        top: Math.min(py - 120, fy - 28), bottom: Math.max(py + 80, fy + 28) } });
+    ctx.translate(frame.x, frame.y);
+    ctx.scale(frame.zoom, frame.zoom);
     ctx.translate(-this.cameraX, -this.cameraY);
 
     // 1. Cenário de Fundo

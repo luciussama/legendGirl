@@ -15,6 +15,47 @@ const marker='  return {\n    state,\n    audio,';
 if(!source.includes(marker))throw Error('Marcador de instrumentação da revisão do jogo não encontrado');
 source=source.replace(marker,`  return {
     review: {
+      roomManual(){return toyRoomInstance?.instance;},
+      beginManual(){newCampaign();loopStarted=true;gameStarted=true;opening.reset();opening.start();syncLocalsToState();},
+      saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot()};},
+      restoreManual(saved){clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
+      inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
+        transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
+        phase3:isPhase3,tutorial:phase3TutorialActive,portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
+      actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump();syncLocalsToState();},
+      frameManual(draw=false){
+        if(currentPhaseMode==='toy-room'){toyRoomInstance.update(1);if(draw)toyRoomInstance.render();}
+        else {update(1);syncLocalsToState();if(draw)render();}
+      },
+      mobileFrame(after = true, index = -1, phase3 = false) {
+        cameraX=0;cameraY=Math.min(0,FLOOR_Y-(canvas.height-110));cameraZoom=1;
+        const p=(phase3?phase3Platforms:platforms)[index];
+        isPhase3=phase3;
+        baby.x=p?p.x:(phase3?4300:100);baby.y=(p?(p.surfaceTopY??p.standRegion?.y??p.y):FLOOR_Y)-baby.h;
+        baby.isCrouching=false;baby.currentPlatformIndex=index;
+        cameraX=phase3?baby.x-(canvas.width-160):Math.max(0,baby.x-120);
+        cameraY=Math.min(cameraY,baby.y-130);
+        fairy.x=baby.x+(phase3?-55:55);fairy.y=baby.y-46;
+        opening.cancel();syncLocalsToState();camera.syncFromState(state);
+        const original=androidFraming.offset;
+        let framing;
+        androidFraming.offset=(feetY,topY)=>{
+          const offset=after?original(feetY,topY):0;
+          framing={feetY,topY,offset,feetAfter:feetY-offset,topAfter:topY-offset};
+          return offset;
+        };
+        const before=JSON.stringify({baby,platforms,phase3Platforms,cameraY});
+        const apply=camera.applyTransform;
+        let transform;
+        camera.applyTransform=function(...args){apply.apply(this,args);transform=ctx.getTransform();};
+        render();camera.applyTransform=apply;androidFraming.offset=original;
+        if(before!==JSON.stringify({baby,platforms,phase3Platforms,cameraY})) throw Error('Renderização alterou a simulação');
+        return {width:canvas.width,height:canvas.height,cameraY,babyY:baby.y,playerFeetAfter:baby.y+baby.h-cameraY-framing.offset,...framing,
+          zoom:transform.a, player:{x:baby.x,y:baby.y,w:baby.w,h:baby.h},fairy:{x:fairy.x,y:fairy.y},
+          next:(phase3?phase3Platforms:platforms)[index+1],cameraX,
+          transform:{a:transform.a,d:transform.d,e:transform.e,f:transform.f}};
+      },
+      setMobileZoom(enabled){mobilePresentation.enabled=enabled;},
       openingFrame(time) { opening.time=time; opening.active=true; render(); opening.cancel(); },
       prepare(index, x, phase3 = false) {
         const p=(phase3 ? phase3Platforms : platforms)[index];

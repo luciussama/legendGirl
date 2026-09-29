@@ -1,3 +1,4 @@
+import { getDialogueSafeArea } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
 
 export const OPENING_STORAGE_KEY = 'legendGirl.bedroom-opening.completed.v1';
@@ -104,7 +105,9 @@ export class OpeningSequence {
     applyArtFinish(ctx, canvas);
     if (line) {
       ctx.save();
-      const width=Math.min(680,canvas.width-40), font=canvas.width<600?20:23;
+      const safe=getDialogueSafeArea(canvas);
+      const width=Math.min(680,canvas.width-40,safe.right-safe.left-2*Math.max(20,safe.marginX)), font=canvas.width<600?20:23;
+      const centerX=(safe.left+safe.right)/2;
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;
       const lines=[];
       for(const paragraph of line[2].split('\n')) {
@@ -115,11 +118,11 @@ export class OpeningSequence {
         }
         lines.push(current);
       }
-      const height=lines.length*(font+9)+54, y=canvas.height-height-24;
-      ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect((canvas.width-width)/2,y,width,height,16);ctx.fill();
-      ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('FADINHA',canvas.width/2,y+24);
+      const height=lines.length*(font+9)+54, y=Math.max(safe.top+safe.marginY,safe.bottom-height-Math.max(24,safe.marginY));
+      ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect(centerX-width/2,y,width,height,16);ctx.fill();
+      ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('FADINHA',centerX,y+24);
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;ctx.fillStyle='#f5eddf';
-      lines.forEach((text,i)=>ctx.fillText(text,canvas.width/2,y+54+i*(font+9)));
+      lines.forEach((text,i)=>ctx.fillText(text,centerX,y+54+i*(font+9)));
       ctx.restore();
     }
     this.renderFade(ctx,canvas);

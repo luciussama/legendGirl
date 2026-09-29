@@ -1,0 +1,15 @@
+import assert from 'node:assert/strict';
+import { getMobileZoomFrame, isMobileDevice } from '../src/js/controllers/MobileZoom.js';
+for (const userAgent of ['Android','iPhone','iPad']) assert.ok(isMobileDevice({userAgent}), 'Dispositivo móvel reconhecido');
+assert.ok(isMobileDevice({platform:'MacIntel',maxTouchPoints:5}), 'iPadOS reconhecido');
+assert.equal(isMobileDevice({userAgent:'Desktop',platform:'MacIntel',maxTouchPoints:0}),false,'Desktop preservado');
+const scene={enabled:true,width:540,height:960,bounds:{left:60,right:450,top:400,bottom:700},anchor:{x:90,y:690}};
+let frame=getMobileZoomFrame(scene);
+assert.equal(frame.zoom,1.18,'Ampliação moderada de 18%');
+assert.ok(scene.bounds.left*frame.zoom+frame.x>=24,'Personagem dentro da margem');
+assert.ok(scene.bounds.right*frame.zoom+frame.x<=516,'Próximo apoio dentro da margem');
+frame=getMobileZoomFrame({...scene,bounds:{...scene.bounds,right:520}});
+assert.ok(frame.zoom>1&&frame.zoom<1.18,'Zoom reduzido quando necessário à antecipação');
+assert.deepEqual(getMobileZoomFrame({...scene,enabled:false}),{zoom:1,x:0,y:0},'Desktop sem transformação');
+assert.equal(getMobileZoomFrame({...scene,bounds:{...scene.bounds,right:700}}).zoom,1,'Sem fechar um enquadramento já amplo');
+console.log('Zoom móvel: detecção, ampliação moderada e proteção da antecipação aprovadas.');

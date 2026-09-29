@@ -1,3 +1,5 @@
+import { getDialogueSafeArea } from './DialogueSafeArea.js';
+
 /**
  * DialogueRenderer.js
  * Renderizador de diálogos vitorianos e cutscenes:
@@ -331,8 +333,10 @@ export class DialogueRenderer {
     }
 
     // 2. Dimensionamento adaptativo do container e quebra de palavras para evitar transbordamento
-    const boxW = Math.min(canvas.width - 24, 760);
-    const boxX = (canvas.width - boxW) / 2;
+    const safe = getDialogueSafeArea(canvas);
+    const originalBoxW = Math.min(canvas.width - 24, 760);
+    const boxW = Math.min(originalBoxW, safe.right - safe.left - 2 * Math.max(12, safe.marginX));
+    const boxX = safe.left + (safe.right - safe.left - boxW) / 2;
     const portR = isPortrait ? 28 : 32;
     const portPadX = isPortrait ? 12 : 18;
     const textX = boxX + portPadX + portR * 2 + 16;
@@ -341,20 +345,23 @@ export class DialogueRenderer {
     // Escala dinâmica de tamanho de fonte e quebra de linha
     let fontSize = isPortrait ? 14.5 : 16;
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
-    let lines = wrapDialogueText(ctx, dialogueText, textMaxW);
+    const originalTextMaxW = originalBoxW - (textX - boxX) - 20;
+    let lines = wrapDialogueText(ctx, dialogueText, originalTextMaxW);
 
     // Ajuste automático: reduz fonte caso o texto ultrapasse 3 linhas (horizontal) ou 4 (vertical)
     const maxAllowedLines = isPortrait ? 4 : 3;
     while (lines.length > maxAllowedLines && fontSize > 12) {
       fontSize -= 0.5;
       ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
-      lines = wrapDialogueText(ctx, dialogueText, textMaxW);
+      lines = wrapDialogueText(ctx, dialogueText, originalTextMaxW);
     }
 
+    // Reorganiza as linhas na área segura sem alterar a fonte selecionada originalmente.
+    lines = wrapDialogueText(ctx, dialogueText, textMaxW);
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
-    const boxY = canvas.height - boxH - 12;
+    const boxY = Math.max(safe.top + safe.marginY, safe.bottom - boxH - Math.max(12, safe.marginY));
 
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);

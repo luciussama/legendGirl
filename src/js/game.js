@@ -4,6 +4,8 @@ import { OpeningSequence } from './cinematics/OpeningSequence.js';
 import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
+import { getMobileZoomFrame, isMobileDevice } from './controllers/MobileZoom.js';
+import { createAndroidFraming } from './controllers/AndroidFraming.js';
 import { createCameraController } from './controllers/CameraController.js';
 import { bindInput, InputController } from './controllers/InputController.js';
 import { createToyRoom } from './toyRoom.js';
@@ -35,6 +37,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const campaign = createCampaignProgress();
   let lastSaveTime = 0;
   const camera = createCameraController({ floorY: FLOOR_Y });
+  const androidFraming = createAndroidFraming(canvas);
+  const mobilePresentation = { enabled: isMobileDevice() };
   const lighting = createLightingSystem({ floorY: FLOOR_Y });
   const particles = createParticleSystem({ babyJumpDust: state.babyJumpDust, speedRibbons: state.speedRibbons });
   const baby = state.baby;
@@ -1460,7 +1464,42 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
+    // A translação de apresentação fica fora da câmera usada pela física.
+    const focusY = (baby.y + fairy.y) / 2 - cameraY;
+    const screenY = y => focusY + (y - cameraY - focusY) * camera.zoom;
+    const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(p =>
+      p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0);
+    const topY = Math.min(screenY(baby.y - 20), screenY(fairy.y - 24),
+      ...visiblePlatforms.map(p => screenY(p.y - 64)));
+    const framingOffset = androidFraming.offset(screenY(FLOOR_Y), topY);
+    const focusX = (baby.x + fairy.x) / 2 - cameraX;
+    const screenX = x => focusX + (x - cameraX - focusX) * camera.zoom;
+    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
+    const next = activePlatforms[baby.currentPlatformIndex + 1];
+    const points = [
+      [baby.x - 12, baby.y - 20], [baby.x + baby.w + 12, baby.y + baby.h + 8],
+      [fairy.x - 28, fairy.y - 28], [fairy.x + 28, fairy.y + 28]
+    ];
+    if (next) {
+      const support = next.standRegion || next;
+      const y = next.surfaceTopY ?? support.y;
+      // Apoios largos podem continuar além da tela; preserva a região de chegada do salto.
+      const landingWidth = Math.min(support.w, 96);
+      const landingX = isPhase3 ? support.x + support.w - landingWidth : support.x;
+      points.push([landingX, y - 24], [landingX + landingWidth, y + 24]);
+    }
+    const bounds = {
+      left: Math.min(...points.map(p => screenX(p[0]))), right: Math.max(...points.map(p => screenX(p[0]))),
+      top: Math.min(...points.map(p => screenY(p[1]) - framingOffset)),
+      bottom: Math.max(...points.map(p => screenY(p[1]) - framingOffset))
+    };
+    const mobileFrame = getMobileZoomFrame({ enabled: mobilePresentation.enabled,
+      width: canvas.width, height: canvas.height, bounds,
+      anchor: { x: screenX(baby.x + baby.w / 2), y: screenY(baby.y + baby.h) - framingOffset } });
     ctx.save();
+    ctx.translate(mobileFrame.x, mobileFrame.y);
+    ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
+    ctx.translate(0, -framingOffset);
     camera.applyTransform(ctx, canvas, baby, fairy);
 
     drawBackgroundWall(cameraX);
@@ -1477,6 +1516,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     drawBabyManaStyle(cameraX);
     applyDarkAtmosphereWithLights(cameraX, cameraY);
 
+    const presentationTransform = ctx.getTransform();
     ctx.restore();
 
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
@@ -1486,7 +1526,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (opening.active) opening.renderFade(ctx, canvas);
 
     // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)
-    transitionEffects.renderPortalWipe(ctx, canvas, cameraX, cameraY, trueExitDoor, transitionWipeAlpha, tick);
+    transitionEffects.renderPortalWipe(ctx, canvas, cameraX, cameraY + framingOffset, trueExitDoor, transitionWipeAlpha, tick, mobilePresentation.enabled ? presentationTransform : null);
 
     if (gameWon) {
       ctx.save();

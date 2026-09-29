@@ -1,0 +1,1666 @@
+[
+  {
+    "cenario": "notch-retrato",
+    "fala": "abertura-5",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 833.0757669023992,
+        "bottom": 842.4004739336492
+      },
+      {
+        "text": "Levanta, dorminhoca.",
+        "font": "20px Georgia, serif",
+        "left": 174.2138671875,
+        "right": 365.4052734375,
+        "top": 857.2832864336492,
+        "bottom": 875.8575051836492
+      },
+      {
+        "text": "Temos que brincar.",
+        "font": "20px Georgia, serif",
+        "left": 184.6923828125,
+        "right": 354.1162109375,
+        "top": 886.2832864336492,
+        "bottom": 905.7364114336492
+      },
+      {
+        "text": "Você dormiu demais.",
+        "font": "20px Georgia, serif",
+        "left": 176.2841796875,
+        "right": 362.0068359375,
+        "top": 915.2832864336492,
+        "bottom": 930.6934426836492
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "abertura-11",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 862.0757669023992,
+        "bottom": 871.4004739336492
+      },
+      {
+        "text": "Nossa...",
+        "font": "20px Georgia, serif",
+        "left": 235.4052734375,
+        "right": 303.4912109375,
+        "top": 887.5430520586492,
+        "bottom": 901.6934426836492
+      },
+      {
+        "text": "O seu quarto está uma bagunça.",
+        "font": "20px Georgia, serif",
+        "left": 130.1318359375,
+        "right": 409.3115234375,
+        "top": 915.2832864336492,
+        "bottom": 934.7364114336492
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "abertura-15",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 862.0757669023992,
+        "bottom": 871.4004739336492
+      },
+      {
+        "text": "Pra chegar na porta do quarto,",
+        "font": "20px Georgia, serif",
+        "left": 136.376953125,
+        "right": 403.310546875,
+        "top": 886.2832864336492,
+        "bottom": 905.7364114336492
+      },
+      {
+        "text": "vamos ter que saltar sobre os brinquedos.",
+        "font": "20px Georgia, serif",
+        "left": 86.62109375,
+        "right": 451.85546875,
+        "top": 915.2832864336492,
+        "bottom": 934.7364114336492
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "abertura-22",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 891.0757669023992,
+        "bottom": 900.4004739336492
+      },
+      {
+        "text": "LEVANTA, SUA PREGUIÇOSA!",
+        "font": "bold 20px Georgia, serif",
+        "left": 111.5673828125,
+        "right": 427.2412109375,
+        "top": 916.1621926836492,
+        "bottom": 934.7364114336492
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "abertura-26",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 862.0757669023992,
+        "bottom": 871.4004739336492
+      },
+      {
+        "text": "SENÃO A GENTE NÃO SAI DAQUI",
+        "font": "bold 20px Georgia, serif",
+        "left": 95.1220703125,
+        "right": 444.8876953125,
+        "top": 883.1582864336492,
+        "bottom": 905.4532083086492
+      },
+      {
+        "text": "NUNQUINHA!",
+        "font": "bold 20px Georgia, serif",
+        "left": 195.2978515625,
+        "right": 343.1201171875,
+        "top": 916.1621926836492,
+        "bottom": 934.4532083086492
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "espera",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 27.23197115384616,
+        "right": 97.08548677884616,
+        "top": 915.042070867891,
+        "bottom": 922.517656805391
+      },
+      {
+        "text": "\"Você está bem? Vamos tentar novamente!\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.16458834134616,
+        "right": 362.0703500600962,
+        "top": 856.612139227266,
+        "bottom": 867.472979071016
+      },
+      {
+        "text": "Toque na tela para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 334.2099233774038,
+        "right": 503.75136624849756,
+        "top": 942.911943914766,
+        "bottom": 953.665117742891
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "cena-1",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 27.23197115384616,
+        "right": 97.08548677884616,
+        "top": 915.042070867891,
+        "bottom": 922.517656805391
+      },
+      {
+        "text": "\"O quarto está escuro, mas lá fora temos muita coisa pra ver.",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.16458834134616,
+        "right": 458.2532113882212,
+        "top": 856.612139227266,
+        "bottom": 871.253740789766
+      },
+      {
+        "text": "Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 107.37161959134616,
+        "right": 489.9861215444712,
+        "top": 877.690020086641,
+        "bottom": 892.253740789766
+      },
+      {
+        "text": "isso?\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 106.67069185697116,
+        "right": 141.76663912259616,
+        "top": 898.612139227266,
+        "bottom": 909.472979071016
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 298.4296499399038,
+        "right": 503.75136624849756,
+        "top": 942.709795477266,
+        "bottom": 953.884111883516
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "cena-2",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 27.23197115384616,
+        "right": 97.08548677884616,
+        "top": 915.042070867891,
+        "bottom": 922.517656805391
+      },
+      {
+        "text": "\"Claro que fomos nós duas brincando! ",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.16458834134616,
+        "right": 328.0080942007212,
+        "top": 856.612139227266,
+        "bottom": 871.253740789766
+      },
+      {
+        "text": "*risos*",
+        "font": "italic bold 14.5px Palatino, Georgia, serif",
+        "left": 334.2244027944712,
+        "right": 376.3933481069712,
+        "top": 856.654619696016,
+        "bottom": 867.487139227266
+      },
+      {
+        "text": ". Mas não vamos",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 377.2854379507212,
+        "right": 474.1196664663462,
+        "top": 857.192705633516,
+        "bottom": 867.472979071016
+      },
+      {
+        "text": "mais perder tempo. A saída é logo ali.\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 106.57157076322116,
+        "right": 329.8347543569712,
+        "top": 877.612139227266,
+        "bottom": 892.211260321016
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 298.4296499399038,
+        "right": 503.75136624849756,
+        "top": 942.709795477266,
+        "bottom": 953.884111883516
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "reviravolta-4",
+    "calls": [
+      {
+        "text": "✦ MENININHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 19.46341646634616,
+        "right": 104.85404146634616,
+        "top": 915.042070867891,
+        "bottom": 922.517656805391
+      },
+      {
+        "text": "\"Mas ali não era a porta...?\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.16458834134616,
+        "right": 272.2099984975962,
+        "top": 856.612139227266,
+        "bottom": 871.211260321016
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 298.4296499399038,
+        "right": 503.75136624849756,
+        "top": 942.709795477266,
+        "bottom": 953.884111883516
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-retrato",
+    "fala": "reviravolta-5",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 27.23197115384616,
+        "right": 97.08548677884616,
+        "top": 915.042070867891,
+        "bottom": 922.517656805391
+      },
+      {
+        "text": "\"Droga! Como se virar em toda essa bagunça? Vamos tentar",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.16458834134616,
+        "right": 457.6443246694712,
+        "top": 856.612139227266,
+        "bottom": 871.211260321016
+      },
+      {
+        "text": "novamente por ali!\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 106.61405123197116,
+        "right": 222.30960787259616,
+        "top": 877.612139227266,
+        "bottom": 892.211260321016
+      },
+      {
+        "text": "Toque / Espaço / (X) para iniciar a subida ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 267.0966421274038,
+        "right": 503.75136624849756,
+        "top": 942.709795477266,
+        "bottom": 953.884111883516
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 65.09834123222748,
+      "right": 540,
+      "bottom": 983.4004739336492,
+      "marginX": 22.153846153846153,
+      "marginY": 22.161137440758292
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "abertura-5",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 490.936767578125,
+        "right": 546.015380859375,
+        "top": 232.17529296875,
+        "bottom": 241.5
+      },
+      {
+        "text": "Levanta, dorminhoca.",
+        "font": "23px Georgia, serif",
+        "left": 407.845947265625,
+        "right": 627.716064453125,
+        "top": 254.115234375,
+        "bottom": 275.4755859375
+      },
+      {
+        "text": "Temos que brincar.",
+        "font": "23px Georgia, serif",
+        "left": 419.896240234375,
+        "right": 614.733642578125,
+        "top": 286.115234375,
+        "bottom": 308.486328125
+      },
+      {
+        "text": "Você dormiu demais.",
+        "font": "23px Georgia, serif",
+        "left": 410.226806640625,
+        "right": 623.807861328125,
+        "top": 318.115234375,
+        "bottom": 335.8369140625
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "abertura-11",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 490.936767578125,
+        "right": 546.015380859375,
+        "top": 264.17529296875,
+        "bottom": 273.5
+      },
+      {
+        "text": "Nossa...",
+        "font": "23px Georgia, serif",
+        "left": 478.216064453125,
+        "right": 556.514892578125,
+        "top": 287.56396484375,
+        "bottom": 303.8369140625
+      },
+      {
+        "text": "O seu quarto está uma bagunça.",
+        "font": "23px Georgia, serif",
+        "left": 357.151611328125,
+        "right": 678.208251953125,
+        "top": 318.115234375,
+        "bottom": 340.486328125
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "abertura-15",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 490.936767578125,
+        "right": 546.015380859375,
+        "top": 264.17529296875,
+        "bottom": 273.5
+      },
+      {
+        "text": "Pra chegar na porta do quarto,",
+        "font": "23px Georgia, serif",
+        "left": 364.33349609375,
+        "right": 671.30712890625,
+        "top": 286.115234375,
+        "bottom": 308.486328125
+      },
+      {
+        "text": "vamos ter que saltar sobre os brinquedos.",
+        "font": "23px Georgia, serif",
+        "left": 307.1142578125,
+        "right": 727.1337890625,
+        "top": 318.115234375,
+        "bottom": 340.486328125
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "abertura-22",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 490.936767578125,
+        "right": 546.015380859375,
+        "top": 296.17529296875,
+        "bottom": 305.5
+      },
+      {
+        "text": "LEVANTA, SUA PREGUIÇOSA!",
+        "font": "bold 23px Georgia, serif",
+        "left": 335.802490234375,
+        "right": 698.827392578125,
+        "top": 319.1259765625,
+        "bottom": 340.486328125
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "abertura-26",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 490.936767578125,
+        "right": 546.015380859375,
+        "top": 296.17529296875,
+        "bottom": 305.5
+      },
+      {
+        "text": "SENÃO A GENTE NÃO SAI DAQUI NUNQUINHA!",
+        "font": "bold 23px Georgia, serif",
+        "left": 227.7373046875,
+        "right": 806.83642578125,
+        "top": 314.521484375,
+        "bottom": 340.16064453125
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "espera",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 153.07812499999994,
+        "right": 222.93164062499994,
+        "top": 343.6663707386364,
+        "bottom": 351.1419566761364
+      },
+      {
+        "text": "\"Você está bem? Vamos tentar novamente!\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 238.21874999999994,
+        "right": 518.390625,
+        "top": 276.1370738636364,
+        "bottom": 288.1214488636364
+      },
+      {
+        "text": "Toque na tela para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 714.36376953125,
+        "right": 883.9052124023438,
+        "top": 353.5362437855114,
+        "bottom": 364.2894176136364
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "cena-1",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 153.07812499999994,
+        "right": 222.93164062499994,
+        "top": 343.6663707386364,
+        "bottom": 351.1419566761364
+      },
+      {
+        "text": "\"O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 238.21874999999994,
+        "right": 861.4296875,
+        "top": 276.1370738636364,
+        "bottom": 292.2933238636364
+      },
+      {
+        "text": "essa bagunça! Quem fez tudo isso?\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 236.28906249999994,
+        "right": 467.44531249999994,
+        "top": 299.1370738636364,
+        "bottom": 315.2933238636364
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 678.58349609375,
+        "right": 883.9052124023438,
+        "top": 353.3340953480114,
+        "bottom": 364.5084117542614
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "cena-2",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 153.07812499999994,
+        "right": 222.93164062499994,
+        "top": 343.6663707386364,
+        "bottom": 351.1419566761364
+      },
+      {
+        "text": "\"Claro que fomos nós duas brincando! ",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 238.21874999999994,
+        "right": 480.80468749999994,
+        "top": 276.1370738636364,
+        "bottom": 292.2933238636364
+      },
+      {
+        "text": "*risos*",
+        "font": "italic bold 16px Palatino, Georgia, serif",
+        "left": 487.66406249999994,
+        "right": 534.1953125,
+        "top": 276.1839488636364,
+        "bottom": 288.1370738636364
+      },
+      {
+        "text": ". Mas não vamos mais perder tempo. A saída é logo",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 535.1796875,
+        "right": 861.7265625,
+        "top": 276.2230113636364,
+        "bottom": 292.2464488636364
+      },
+      {
+        "text": "ali.\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 236.28124999999994,
+        "right": 263.28906249999994,
+        "top": 299.1370738636364,
+        "bottom": 311.0511363636364
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 678.58349609375,
+        "right": 883.9052124023438,
+        "top": 353.3340953480114,
+        "bottom": 364.5084117542614
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "reviravolta-4",
+    "calls": [
+      {
+        "text": "✦ MENININHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 145.30957031249994,
+        "right": 230.70019531249994,
+        "top": 343.6663707386364,
+        "bottom": 351.1419566761364
+      },
+      {
+        "text": "\"Mas ali não era a porta...?\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 238.21874999999994,
+        "right": 419.23437499999994,
+        "top": 276.1370738636364,
+        "bottom": 292.2464488636364
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 678.58349609375,
+        "right": 883.9052124023438,
+        "top": 353.3340953480114,
+        "bottom": 364.5084117542614
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "notch-paisagem",
+    "fala": "reviravolta-5",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 153.07812499999994,
+        "right": 222.93164062499994,
+        "top": 343.6663707386364,
+        "bottom": 351.1419566761364
+      },
+      {
+        "text": "\"Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 238.21874999999994,
+        "right": 756.1328125,
+        "top": 276.1370738636364,
+        "bottom": 292.2464488636364
+      },
+      {
+        "text": "Toque / Espaço / (X) para iniciar a subida ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 647.25048828125,
+        "right": 883.9052124023438,
+        "top": 353.3340953480114,
+        "bottom": 364.5084117542614
+      }
+    ],
+    "safe": {
+      "left": 57.691943127962084,
+      "top": 0,
+      "right": 978.3080568720378,
+      "bottom": 391.5,
+      "marginX": 19.639810426540283,
+      "marginY": 19.636363636363637
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "abertura-5",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 665.747256986741,
+        "bottom": 675.071964017991
+      },
+      {
+        "text": "Levanta, dorminhoca.",
+        "font": "20px Georgia, serif",
+        "left": 174.2138671875,
+        "right": 365.4052734375,
+        "top": 689.954776517991,
+        "bottom": 708.528995267991
+      },
+      {
+        "text": "Temos que brincar.",
+        "font": "20px Georgia, serif",
+        "left": 184.6923828125,
+        "right": 354.1162109375,
+        "top": 718.954776517991,
+        "bottom": 738.407901517991
+      },
+      {
+        "text": "Você dormiu demais.",
+        "font": "20px Georgia, serif",
+        "left": 176.2841796875,
+        "right": 362.0068359375,
+        "top": 747.954776517991,
+        "bottom": 763.364932767991
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "abertura-11",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 694.747256986741,
+        "bottom": 704.071964017991
+      },
+      {
+        "text": "Nossa...",
+        "font": "20px Georgia, serif",
+        "left": 235.4052734375,
+        "right": 303.4912109375,
+        "top": 720.214542142991,
+        "bottom": 734.364932767991
+      },
+      {
+        "text": "O seu quarto está uma bagunça.",
+        "font": "20px Georgia, serif",
+        "left": 130.1318359375,
+        "right": 409.3115234375,
+        "top": 747.954776517991,
+        "bottom": 767.407901517991
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "abertura-15",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 694.747256986741,
+        "bottom": 704.071964017991
+      },
+      {
+        "text": "Pra chegar na porta do quarto,",
+        "font": "20px Georgia, serif",
+        "left": 136.376953125,
+        "right": 403.310546875,
+        "top": 718.954776517991,
+        "bottom": 738.407901517991
+      },
+      {
+        "text": "vamos ter que saltar sobre os brinquedos.",
+        "font": "20px Georgia, serif",
+        "left": 86.62109375,
+        "right": 451.85546875,
+        "top": 747.954776517991,
+        "bottom": 767.407901517991
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "abertura-22",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 723.747256986741,
+        "bottom": 733.071964017991
+      },
+      {
+        "text": "LEVANTA, SUA PREGUIÇOSA!",
+        "font": "bold 20px Georgia, serif",
+        "left": 111.5673828125,
+        "right": 427.2412109375,
+        "top": 748.833682767991,
+        "bottom": 767.407901517991
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "abertura-26",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 242.936767578125,
+        "right": 298.015380859375,
+        "top": 694.747256986741,
+        "bottom": 704.071964017991
+      },
+      {
+        "text": "SENÃO A GENTE NÃO SAI DAQUI",
+        "font": "bold 20px Georgia, serif",
+        "left": 95.1220703125,
+        "right": 444.8876953125,
+        "top": 715.829776517991,
+        "bottom": 738.124698392991
+      },
+      {
+        "text": "NUNQUINHA!",
+        "font": "bold 20px Georgia, serif",
+        "left": 195.2978515625,
+        "right": 343.1201171875,
+        "top": 748.833682767991,
+        "bottom": 767.124698392991
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "espera",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 28.118124999999992,
+        "right": 97.97164062499999,
+        "top": 746.8462126358696,
+        "bottom": 754.3217985733696
+      },
+      {
+        "text": "\"Você está bem? Vamos tentar novamente!\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 109.05074218749999,
+        "right": 362.95650390624996,
+        "top": 688.4162809952446,
+        "bottom": 699.2771208389946
+      },
+      {
+        "text": "Toque na tela para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 333.32376953125004,
+        "right": 502.8652124023438,
+        "top": 774.7160856827446,
+        "bottom": 785.4692595108696
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "cena-1",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 28.118124999999992,
+        "right": 97.97164062499999,
+        "top": 746.8462126358696,
+        "bottom": 754.3217985733696
+      },
+      {
+        "text": "\"O quarto está escuro, mas lá fora temos muita coisa pra ver.",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 109.05074218749999,
+        "right": 459.13936523437496,
+        "top": 688.4162809952446,
+        "bottom": 703.0578825577446
+      },
+      {
+        "text": "Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 108.25777343749999,
+        "right": 490.87227539062496,
+        "top": 709.4941618546196,
+        "bottom": 724.0578825577446
+      },
+      {
+        "text": "isso?\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 107.55684570312499,
+        "right": 142.65279296875,
+        "top": 730.4162809952446,
+        "bottom": 741.2771208389946
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 297.54349609375004,
+        "right": 502.8652124023438,
+        "top": 774.5139372452446,
+        "bottom": 785.6882536514946
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "cena-2",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 28.118124999999992,
+        "right": 97.97164062499999,
+        "top": 746.8462126358696,
+        "bottom": 754.3217985733696
+      },
+      {
+        "text": "\"Claro que fomos nós duas brincando! ",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 109.05074218749999,
+        "right": 328.89424804687496,
+        "top": 688.4162809952446,
+        "bottom": 703.0578825577446
+      },
+      {
+        "text": "*risos*",
+        "font": "italic bold 14.5px Palatino, Georgia, serif",
+        "left": 335.11055664062496,
+        "right": 377.27950195312496,
+        "top": 688.4587614639946,
+        "bottom": 699.2912809952446
+      },
+      {
+        "text": ". Mas não vamos",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 378.17159179687496,
+        "right": 475.00582031249996,
+        "top": 688.9968474014946,
+        "bottom": 699.2771208389946
+      },
+      {
+        "text": "mais perder tempo. A saída é logo ali.\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 107.45772460937499,
+        "right": 330.72090820312496,
+        "top": 709.4162809952446,
+        "bottom": 724.0154020889946
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 297.54349609375004,
+        "right": 502.8652124023438,
+        "top": 774.5139372452446,
+        "bottom": 785.6882536514946
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "reviravolta-4",
+    "calls": [
+      {
+        "text": "✦ MENININHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 20.349570312499992,
+        "right": 105.74019531249999,
+        "top": 746.8462126358696,
+        "bottom": 754.3217985733696
+      },
+      {
+        "text": "\"Mas ali não era a porta...?\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 109.05074218749999,
+        "right": 273.09615234374996,
+        "top": 688.4162809952446,
+        "bottom": 703.0154020889946
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 297.54349609375004,
+        "right": 502.8652124023438,
+        "top": 774.5139372452446,
+        "bottom": 785.6882536514946
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-retrato",
+    "fala": "reviravolta-5",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 28.118124999999992,
+        "right": 97.97164062499999,
+        "top": 746.8462126358696,
+        "bottom": 754.3217985733696
+      },
+      {
+        "text": "\"Droga! Como se virar em toda essa bagunça? Vamos tentar",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 109.05074218749999,
+        "right": 458.53047851562496,
+        "top": 688.4162809952446,
+        "bottom": 703.0154020889946
+      },
+      {
+        "text": "novamente por ali!\"",
+        "font": "italic 14.5px Palatino, Georgia, serif",
+        "left": 107.50020507812499,
+        "right": 223.19576171875,
+        "top": 709.4162809952446,
+        "bottom": 724.0154020889946
+      },
+      {
+        "text": "Toque / Espaço / (X) para iniciar a subida ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 266.21048828125004,
+        "right": 502.8652124023438,
+        "top": 774.5139372452446,
+        "bottom": 785.6882536514946
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 540,
+      "bottom": 816.071964017991,
+      "marginX": 23.04,
+      "marginY": 23.02848575712144
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "abertura-5",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 396.436767578125,
+        "right": 451.515380859375,
+        "top": 253.61646943933823,
+        "bottom": 262.94117647058823
+      },
+      {
+        "text": "Levanta, dorminhoca.",
+        "font": "23px Georgia, serif",
+        "left": 313.345947265625,
+        "right": 533.216064453125,
+        "top": 275.55641084558823,
+        "bottom": 296.91676240808823
+      },
+      {
+        "text": "Temos que brincar.",
+        "font": "23px Georgia, serif",
+        "left": 325.396240234375,
+        "right": 520.233642578125,
+        "top": 307.55641084558823,
+        "bottom": 329.92750459558823
+      },
+      {
+        "text": "Você dormiu demais.",
+        "font": "23px Georgia, serif",
+        "left": 315.726806640625,
+        "right": 529.307861328125,
+        "top": 339.55641084558823,
+        "bottom": 357.27809053308823
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "abertura-11",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 396.436767578125,
+        "right": 451.515380859375,
+        "top": 285.61646943933823,
+        "bottom": 294.94117647058823
+      },
+      {
+        "text": "Nossa...",
+        "font": "23px Georgia, serif",
+        "left": 383.716064453125,
+        "right": 462.014892578125,
+        "top": 309.00514131433823,
+        "bottom": 325.27809053308823
+      },
+      {
+        "text": "O seu quarto está uma bagunça.",
+        "font": "23px Georgia, serif",
+        "left": 262.651611328125,
+        "right": 583.708251953125,
+        "top": 339.55641084558823,
+        "bottom": 361.92750459558823
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "abertura-15",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 396.436767578125,
+        "right": 451.515380859375,
+        "top": 285.61646943933823,
+        "bottom": 294.94117647058823
+      },
+      {
+        "text": "Pra chegar na porta do quarto,",
+        "font": "23px Georgia, serif",
+        "left": 269.83349609375,
+        "right": 576.80712890625,
+        "top": 307.55641084558823,
+        "bottom": 329.92750459558823
+      },
+      {
+        "text": "vamos ter que saltar sobre os brinquedos.",
+        "font": "23px Georgia, serif",
+        "left": 212.6142578125,
+        "right": 632.6337890625,
+        "top": 339.55641084558823,
+        "bottom": 361.92750459558823
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "abertura-22",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 396.436767578125,
+        "right": 451.515380859375,
+        "top": 317.61646943933823,
+        "bottom": 326.94117647058823
+      },
+      {
+        "text": "LEVANTA, SUA PREGUIÇOSA!",
+        "font": "bold 23px Georgia, serif",
+        "left": 241.302490234375,
+        "right": 604.327392578125,
+        "top": 340.56715303308823,
+        "bottom": 361.92750459558823
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "abertura-26",
+    "calls": [
+      {
+        "text": "FADINHA",
+        "font": "13px sans-serif",
+        "left": 396.436767578125,
+        "right": 451.515380859375,
+        "top": 317.61646943933823,
+        "bottom": 326.94117647058823
+      },
+      {
+        "text": "SENÃO A GENTE NÃO SAI DAQUI NUNQUINHA!",
+        "font": "bold 23px Georgia, serif",
+        "left": 133.2373046875,
+        "right": 712.33642578125,
+        "top": 335.96266084558823,
+        "bottom": 361.60182100183823
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "espera",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 58.578125,
+        "right": 128.431640625,
+        "top": 364.41449908088236,
+        "bottom": 371.89008501838236
+      },
+      {
+        "text": "\"Você está bem? Vamos tentar novamente!\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 143.71875,
+        "right": 423.890625,
+        "top": 296.88520220588236,
+        "bottom": 308.86957720588236
+      },
+      {
+        "text": "Toque na tela para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 619.86376953125,
+        "right": 789.4052124023438,
+        "top": 374.28437212775736,
+        "bottom": 385.03754595588236
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "cena-1",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 58.578125,
+        "right": 128.431640625,
+        "top": 364.41449908088236,
+        "bottom": 371.89008501838236
+      },
+      {
+        "text": "\"O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 143.71875,
+        "right": 766.9296875,
+        "top": 296.88520220588236,
+        "bottom": 313.04145220588236
+      },
+      {
+        "text": "essa bagunça! Quem fez tudo isso?\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 141.7890625,
+        "right": 372.9453125,
+        "top": 319.88520220588236,
+        "bottom": 336.04145220588236
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 584.08349609375,
+        "right": 789.4052124023438,
+        "top": 374.08222369025736,
+        "bottom": 385.25654009650736
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "cena-2",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 58.578125,
+        "right": 128.431640625,
+        "top": 364.41449908088236,
+        "bottom": 371.89008501838236
+      },
+      {
+        "text": "\"Claro que fomos nós duas brincando! ",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 143.71875,
+        "right": 386.3046875,
+        "top": 296.88520220588236,
+        "bottom": 313.04145220588236
+      },
+      {
+        "text": "*risos*",
+        "font": "italic bold 16px Palatino, Georgia, serif",
+        "left": 393.1640625,
+        "right": 439.6953125,
+        "top": 296.93207720588236,
+        "bottom": 308.88520220588236
+      },
+      {
+        "text": ". Mas não vamos mais perder tempo. A saída é logo",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 440.6796875,
+        "right": 767.2265625,
+        "top": 296.97113970588236,
+        "bottom": 312.99457720588236
+      },
+      {
+        "text": "ali.\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 141.78125,
+        "right": 168.7890625,
+        "top": 319.88520220588236,
+        "bottom": 331.79926470588236
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 584.08349609375,
+        "right": 789.4052124023438,
+        "top": 374.08222369025736,
+        "bottom": 385.25654009650736
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "reviravolta-4",
+    "calls": [
+      {
+        "text": "✦ MENININHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 50.8095703125,
+        "right": 136.2001953125,
+        "top": 364.41449908088236,
+        "bottom": 371.89008501838236
+      },
+      {
+        "text": "\"Mas ali não era a porta...?\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 143.71875,
+        "right": 324.734375,
+        "top": 296.88520220588236,
+        "bottom": 312.99457720588236
+      },
+      {
+        "text": "Toque / Espaço / (X) para continuar ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 584.08349609375,
+        "right": 789.4052124023438,
+        "top": 374.08222369025736,
+        "bottom": 385.25654009650736
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  },
+  {
+    "cenario": "sem-notch-paisagem",
+    "fala": "reviravolta-5",
+    "calls": [
+      {
+        "text": "✦ FADINHA ✦",
+        "font": "bold 10px Palatino, Georgia, serif",
+        "left": 58.578125,
+        "right": 128.431640625,
+        "top": 364.41449908088236,
+        "bottom": 371.89008501838236
+      },
+      {
+        "text": "\"Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!\"",
+        "font": "italic 16px Palatino, Georgia, serif",
+        "left": 143.71875,
+        "right": 661.6328125,
+        "top": 296.88520220588236,
+        "bottom": 312.99457720588236
+      },
+      {
+        "text": "Toque / Espaço / (X) para iniciar a subida ➔",
+        "font": "bold 11.5px sans-serif",
+        "left": 552.75048828125,
+        "right": 789.4052124023438,
+        "top": 374.08222369025736,
+        "bottom": 385.25654009650736
+      }
+    ],
+    "safe": {
+      "left": 0,
+      "top": 0,
+      "right": 847,
+      "bottom": 412.94117647058823,
+      "marginX": 20.31784107946027,
+      "marginY": 20.32941176470588
+    }
+  }
+]

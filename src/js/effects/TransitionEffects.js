@@ -17,12 +17,13 @@ export class TransitionEffects {
    * @param {number} transitionWipeAlpha
    * @param {number} tick
    */
-  renderPortalWipe(ctx, canvas, cameraX, cameraY, trueExitDoor, transitionWipeAlpha, tick = 0) {
+  renderPortalWipe(ctx, canvas, cameraX, cameraY, trueExitDoor, transitionWipeAlpha, tick = 0, presentationTransform = null) {
     if (!ctx || !canvas || transitionWipeAlpha <= 0 || !trueExitDoor) return;
 
     ctx.save();
-    const originX = trueExitDoor.x + trueExitDoor.w / 2 - cameraX;
-    const originY = trueExitDoor.y + trueExitDoor.h / 2 - cameraY;
+    const point = presentationTransform?.transformPoint({ x: trueExitDoor.x + trueExitDoor.w / 2 - cameraX, y: trueExitDoor.y + trueExitDoor.h / 2 });
+    const originX = point?.x ?? trueExitDoor.x + trueExitDoor.w / 2 - cameraX;
+    const originY = point?.y ?? trueExitDoor.y + trueExitDoor.h / 2 - cameraY;
     const maxDist = Math.hypot(canvas.width, canvas.height);
     const radius = maxDist * Math.min(1.0, transitionWipeAlpha * 1.25);
 
