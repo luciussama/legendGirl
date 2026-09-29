@@ -22,6 +22,16 @@ const uiFeedback = document.getElementById('ui-feedback') || {
 };
 const startOverlay = document.getElementById('start-overlay');
 const btnStartPhase1 = document.getElementById('btn-start-phase1');
+const btnNewCampaign = document.getElementById('btn-new-campaign');
+const restartCampaignDialog = document.getElementById('restart-campaign-dialog');
+
+function refreshCampaignMenu() {
+  const exists = game.hasProgress();
+  btnStartPhase1.textContent = exists ? 'CONTINUAR' : 'COMEÇAR';
+  btnStartPhase1.setAttribute('aria-label', exists ? 'Continuar aventura salva' : 'Começar a aventura');
+  btnNewCampaign.hidden = !exists;
+}
+
 const btnSkipPhase2 = document.getElementById('btn-skip-phase2');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
@@ -393,6 +403,11 @@ let isActionLocked = false;
 let lastActionTime = 0;
 
 const game = createGame(canvas, uiFeedback, {
+  onSaveStatus: persisted => {
+    const status = document.getElementById('campaign-save-status');
+    status.hidden = persisted;
+    status.textContent = persisted ? '' : 'Não foi possível salvar neste navegador. O progresso está disponível somente nesta sessão.';
+  },
   onGameOver: () => {
     // Reativa os botões e exibe a tela de sobreposição de forma limpa
     isActionLocked = false;
@@ -406,6 +421,7 @@ const game = createGame(canvas, uiFeedback, {
     }
   },
   onRestartToTitle: () => {
+    refreshCampaignMenu();
     started = false;
     isStarting = false;
     isActionLocked = false;
@@ -426,6 +442,7 @@ const game = createGame(canvas, uiFeedback, {
 });
 
 function startGame(event) {
+  if (restartCampaignDialog.open) return;
   if (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -539,6 +556,7 @@ function addSafeAction(element, handler) {
 }
 
 function handleToyRoomSwitch(event) {
+  if (restartCampaignDialog.open) return;
   if (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -587,14 +605,19 @@ if (btnSkipPhase2) {
   });
 }
 
-if (startOverlay) {
-  addSafeAction(startOverlay, (e) => {
-    if (e && e.target && (e.target.closest('#btn-skip-phase2') || e.target.closest('#btn-start-phase1') || e.target.closest('#btn-start-download-zip') || e.target.closest('.start-download-btn'))) {
-      return;
-    }
-    startGame(e);
-  });
-}
+// O fundo não inicia a campanha: as decisões do menu são explícitas.
+btnNewCampaign.addEventListener('click', () => {
+  restartCampaignDialog.returnValue = 'cancel';
+  restartCampaignDialog.showModal();
+});
+restartCampaignDialog.addEventListener('close', () => {
+  if (restartCampaignDialog.returnValue !== 'restart') return;
+  game.newCampaign();
+  refreshCampaignMenu();
+  lastActionTime = 0;
+  startGame();
+});
+refreshCampaignMenu();
 
 if (btnRetry) {
   addSafeAction(btnRetry, handleRetry);
@@ -605,6 +628,7 @@ if (btnRestart) {
 }
 
 window.addEventListener('keydown', (event) => {
+  if (restartCampaignDialog.open || event.target.closest?.('button, a, input, dialog')) return;
   // Evita disparo contínuo por repetição de tecla pressionada
   if (event.repeat) {
     return;
@@ -637,6 +661,7 @@ let prevOverlayButtonX = false;
 let prevOverlayButtonA = false;
 
 function pollOverlayGamepad() {
+  if (restartCampaignDialog.open) return;
   if (typeof navigator === 'undefined' || typeof navigator.getGamepads !== 'function') return;
   let gamepads;
   try {

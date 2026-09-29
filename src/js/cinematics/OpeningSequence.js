@@ -1,3 +1,5 @@
+import { applyArtFinish } from '../effects/ArtFinish.js';
+
 export const OPENING_STORAGE_KEY = 'legendGirl.bedroom-opening.completed.v1';
 let completedInSession = false;
 const smooth = t => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); };
@@ -22,6 +24,7 @@ export class OpeningSequence {
     this.cues = new Set();
   }
   hasCompleted() {
+    if (this.completedOverride !== undefined) return this.completedOverride;
     try { return completedInSession || this.storage?.getItem(OPENING_STORAGE_KEY) === '1'; }
     catch { return completedInSession; }
   }
@@ -33,6 +36,21 @@ export class OpeningSequence {
     return true;
   }
   cancel() { this.active = false; }
+  reset() {
+    this.cancel(); this.time = 0; this.cues.clear(); completedInSession = false; this.completedOverride = false;
+    try { this.storage?.removeItem(OPENING_STORAGE_KEY); } catch {}
+  }
+  snapshot() {
+    return { active: this.active, time: this.time, cues: [...this.cues], completed: this.hasCompleted() };
+  }
+  restore(saved) {
+    this.active = saved.active; this.time = saved.time;
+    this.cues = new Set(saved.cues); completedInSession = saved.completed; this.completedOverride = saved.completed;
+    try {
+      if (saved.completed) this.storage?.setItem(OPENING_STORAGE_KEY, '1');
+      else this.storage?.removeItem(OPENING_STORAGE_KEY);
+    } catch {}
+  }
   get revealing() { return this.time >= 36; }
   update(dt) {
     if (!this.active) return;
@@ -44,7 +62,7 @@ export class OpeningSequence {
       }
     }
     if (this.time >= 37.5) {
-      completedInSession = true;
+      completedInSession = true; this.completedOverride = true;
       try { this.storage?.setItem(OPENING_STORAGE_KEY, '1'); } catch { /* alternativa restrita à sessão */ }
       this.active = false;
       this.onComplete();
@@ -83,6 +101,7 @@ export class OpeningSequence {
       {...fairy,y:fy+(1-entry)*900},0,0,{platforms:[]});
     ctx.restore();
     const line = OPENING_DIALOGUE.find(([from,to])=>t>=from&&t<to);
+    applyArtFinish(ctx, canvas);
     if (line) {
       ctx.save();
       const width=Math.min(680,canvas.width-40), font=canvas.width<600?20:23;

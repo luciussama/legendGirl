@@ -1,3 +1,5 @@
+import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
+import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
 import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
@@ -8,6 +10,7 @@ import { createToyRoom } from './toyRoom.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
+import { applyArtFinish } from './effects/ArtFinish.js';
 import { createParticleSystem, transitionEffects } from './effects/index.js';
 import { hudRenderer, dialogueRenderer } from './ui/index.js';
 import { createAssetManager, darkRoomAtlas } from './assets/index.js';
@@ -29,6 +32,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   babyRenderer.setAssets?.(assets);
   const audio = createAudioController();
   const state = createGameState(canvas, uiFeedback, callbacks);
+  const campaign = createCampaignProgress();
+  let lastSaveTime = 0;
   const camera = createCameraController({ floorY: FLOOR_Y });
   const lighting = createLightingSystem({ floorY: FLOOR_Y });
   const particles = createParticleSystem({ babyJumpDust: state.babyJumpDust, speedRibbons: state.speedRibbons });
@@ -252,6 +257,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function restartToTitle() {
+    saveProgress();
     opening.cancel();
     isPaused = false;
     state.isPaused = false;
@@ -282,6 +288,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       loopStarted = true;
       requestAnimationFrame(loop);
     }
+    saveProgress();
   }
 
   // Canvas persistente fora da tela para iluminação atmosférica escura (evita alocações no garbage collector)
@@ -1473,6 +1480,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     ctx.restore();
 
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
+    applyArtFinish(ctx, canvas);
     drawEscapeBanner();
     drawCutsceneDialogue();
     if (opening.active) opening.renderFade(ctx, canvas);
@@ -1522,7 +1530,63 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     return togglePause();
   }
 
+  function saveProgress() {
+    if (!gameStarted) return;
+    syncLocalsToState();
+    const persisted = campaign.write({
+      state: captureState(state), opening: opening.snapshot(),
+      platforms: [platforms, phase3Platforms].map(group => group.map(p => ({ isLanded: !!p.isLanded, lightAlpha: p.lightAlpha || 0 }))),
+      toyRoom: toyRoomInstance?.instance.snapshot() || null
+    });
+    callbacks.onSaveStatus?.(persisted);
+    lastSaveTime = performance.now();
+  }
+
+  function restoreProgress(saved) {
+    if (saved.state.currentPhaseMode === 'toy-room') {
+      startToyRoomPhase();
+      toyRoomInstance.instance.restore(saved.toyRoom);
+    }
+    restoreState(state, saved.state);
+    state.toyRoomInstance = toyRoomInstance;
+    state.gameStarted = true;
+    state.loopStarted = loopStarted;
+    state.lastTime = performance.now();
+    state.lastJumpTime = 0; state.lastDialogueAdvanceTime = 0; state.standbyActivatedTime = 0;
+    syncStateToLocals();
+    camera.syncFromState(state);
+    opening.restore(saved.opening);
+    [platforms, phase3Platforms].forEach((group, index) => group.forEach((p, i) => {
+      Object.assign(p, saved.platforms?.[index]?.[i] || { isLanded: false, lightAlpha: 0 });
+    }));
+    if (isGameOver) callbacks.onGameOver?.();
+    if (currentPhaseMode === 'bedroom') {
+      if (opening.active && opening.time < 29) { audio.initAudio(); audio.playOpeningAmbience(); }
+      else audio.startMusic();
+    }
+  }
+
+  function newCampaign() {
+    gameStarted = false;
+    campaign.clear(); opening.reset();
+    toyRoomInstance?.destroy(); toyRoomInstance = null;
+    audio.stopAllAudio();
+    clearTimeout(failMessageTimer);
+    restoreState(state, captureState(createDefaultStateVariables()));
+    state.toyRoomInstance = null; state.gameStarted = false; state.loopStarted = loopStarted;
+    state.lastTime = performance.now(); state.lastJumpTime = 0; state.lastDialogueAdvanceTime = 0;
+    state.standbyActivatedTime = 0; state.failMessageTimer = null;
+    syncStateToLocals(); camera.syncFromState(state);
+    isPaused = false; state.isPaused = false;
+    [platforms, phase3Platforms].forEach(group => group.forEach(p => { p.isLanded = false; p.lightAlpha = 0; }));
+  }
+
+  const saveOnHide = () => { if (document.visibilityState === 'hidden') saveProgress(); };
+  window.addEventListener('pagehide', saveProgress);
+  document.addEventListener('visibilitychange', saveOnHide);
+
   function loop(currentTime = performance.now()) {
+    if (gameStarted && currentTime - lastSaveTime >= 1000) saveProgress();
     const elapsed = currentTime - lastTime;
     lastTime = currentTime;
 
@@ -1599,15 +1663,25 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isPaused: () => isPaused,
     togglePause,
     setPaused,
+    hasProgress: () => Boolean(campaign.read() || opening.hasCompleted()),
+    saveProgress,
+    newCampaign,
     destroy() {
+      saveProgress();
+      window.removeEventListener('pagehide', saveProgress);
+      document.removeEventListener('visibilitychange', saveOnHide);
       opening.cancel();
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
     start() {
+      const saved = campaign.read();
+      if (saved) restoreProgress(saved);
       gameStarted = true;
       state.gameStarted = true;
-      if (currentPhaseMode === 'toy-room') {
+      if (saved) {
+        // O estado restaurado já contém posição, narrativa e fase; não o reinicializa.
+      } else if (currentPhaseMode === 'toy-room') {
         audio.startToyRoomMusic();
       } else if (!opening.start()) {
         beginOpeningGameplay();
@@ -1618,6 +1692,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         state.loopStarted = true;
         requestAnimationFrame(loop);
       }
+      saveProgress();
     },
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),

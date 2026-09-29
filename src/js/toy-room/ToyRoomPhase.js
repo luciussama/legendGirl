@@ -987,6 +987,22 @@ export class ToyRoomPhase {
     ctx.restore();
   }
 
+  snapshot() {
+    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
+      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount'];
+    const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
+    saved.carriedItemId = this.player.carriedItem?.id ?? null;
+    return saved;
+  }
+
+  restore(saved) {
+    for (const key of Object.keys(this.snapshot())) {
+      if (key !== 'carriedItemId' && key in saved) this[key] = JSON.parse(JSON.stringify(saved[key]));
+    }
+    this.player.carriedItem = this.toys.find(toy => toy.id === saved.carriedItemId) || null;
+    this.lastActionTime = 0;
+  }
+
   destroy() {
     if (this.audio && this.audio.stopToyRoomMusic) {
       this.audio.stopToyRoomMusic();

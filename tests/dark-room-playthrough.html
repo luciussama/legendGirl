@@ -15,6 +15,7 @@ const marker='  return {\n    state,\n    audio,';
 if(!source.includes(marker))throw Error('Marcador de instrumentação da revisão do jogo não encontrado');
 source=source.replace(marker,`  return {
     review: {
+      openingFrame(time) { opening.time=time; opening.active=true; render(); opening.cancel(); },
       prepare(index, x, phase3 = false) {
         const p=(phase3 ? phase3Platforms : platforms)[index];
         const y=p ? (p.surfaceTopY ?? p.standRegion?.y ?? p.y) : FLOOR_Y;

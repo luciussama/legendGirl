@@ -14,22 +14,25 @@
     <div id="start-overlay" aria-label="Tela de início">
       <div class="start-card">
         <span class="start-badge">O Quarto dos Brinquedos</span>
-        <h1 id="start-title">Toque aqui para jogar</h1>
+        <h1 id="start-title">Uma aventura espera por você</h1>
         <div class="start-buttons-container">
-          <button id="btn-start-phase1" class="start-skip-btn start-phase1-btn" type="button" aria-label="Jogar Fase 1">
-            🚪 Jogar Fase 1
-          </button>
-          <button id="btn-skip-phase2" class="start-skip-btn" type="button" aria-label="Pular para a segunda fase">
-            ⚡ Pular para a segunda fase
+          <button id="btn-start-phase1" class="start-phase1-btn" type="button" aria-label="Começar a aventura">
+            COMEÇAR
           </button>
         </div>
-        <div class="start-download-container">
-          <a id="btn-start-download-zip" class="start-download-btn" href="./o-quarto-dos-brinquedos.zip" target="_blank" rel="noopener noreferrer" download="o-quarto-dos-brinquedos.zip" aria-label="Baixar ZIP do projeto completo (51.5 MB)" title="Baixar arquivo ZIP com todas as modificações do projeto (51.5 MB)">
-            📦 Baixar ZIP do Projeto (51.5 MB)
-          </a>
-        </div>
+        <button id="btn-new-campaign" class="start-secondary-btn" type="button" hidden>RECOMEÇAR</button>
+        <p id="campaign-save-status" class="campaign-save-status" role="status" hidden></p>
       </div>
     </div>
+
+    <dialog id="restart-campaign-dialog" aria-labelledby="restart-campaign-title" aria-describedby="restart-campaign-description">
+      <h2 id="restart-campaign-title">Recomeçar a aventura?</h2>
+      <p id="restart-campaign-description">Toda a sua aventura será reiniciada. Você voltará ao começo da história e perderá o progresso salvo. Deseja continuar?</p>
+      <form method="dialog" class="restart-campaign-actions">
+        <button class="start-secondary-btn" value="cancel" autofocus>Cancelar</button>
+        <button id="btn-confirm-new-campaign" class="start-secondary-btn" value="restart">Recomeçar</button>
+      </form>
+    </dialog>
 
     <!-- Tela de Fim de Jogo -->
     <div id="gameover-overlay" class="hidden" aria-label="Tela de fim de jogo">
@@ -39,7 +42,7 @@
         <p class="gameover-sub">A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.</p>
         <div class="gameover-buttons">
           <button id="btn-retry" class="gameover-btn btn-primary" type="button">Tentar de novo</button>
-          <button id="btn-restart" class="gameover-btn btn-secondary" type="button">Reiniciar</button>
+          <button id="btn-restart" class="gameover-btn btn-secondary" type="button">Voltar ao início</button>
         </div>
       </div>
     </div>
@@ -132,11 +135,14 @@
       </div>
     </div>
 
-    <!-- Botões de Controle Superior (Pausa, Som e Download do Código em ZIP) -->
+    <!-- Ferramentas secundárias e controles de pausa e áudio -->
     <div class="top-controls-bar">
-      <a id="btn-download-zip" class="control-btn download-zip-btn" href="./o-quarto-dos-brinquedos.zip" target="_blank" rel="noopener noreferrer" download="o-quarto-dos-brinquedos.zip" aria-label="Baixar projeto em ZIP" title="Baixar ZIP do projeto com todas as alterações">
-        <span id="download-icon" class="control-icon">📦</span>
+      <a id="btn-download-zip" class="control-btn debug-control-btn" href="./o-quarto-dos-brinquedos.zip" target="_blank" rel="noopener noreferrer" download="o-quarto-dos-brinquedos.zip" aria-label="Baixar projeto em ZIP" title="Baixar ZIP do projeto com todas as alterações">
+        <span id="download-icon" class="control-icon" aria-hidden="true">⇩</span>
       </a>
+      <button id="btn-skip-phase2" class="control-btn debug-control-btn" type="button" aria-label="Pular para a segunda fase" title="Pular para a segunda fase">
+        <span class="control-icon" aria-hidden="true">⏭</span>
+      </button>
       <button id="btn-pause-toggle" class="control-btn pause-toggle-btn" type="button" aria-label="Pausar jogo" title="Pausar / Continuar (P)">
         <span id="pause-icon" class="control-icon">⏸️</span>
       </button>

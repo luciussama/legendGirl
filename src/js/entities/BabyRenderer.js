@@ -78,7 +78,9 @@ export class BabyRenderer {
     // Adiciona exatamente um pixel visual à altura, preservando as proporções e a ancoragem dos pés.
     const scale = height / 50 + 1 / frame.h;
     ctx.save();
-    ctx.imageSmoothingEnabled = false;
+    // Suaviza apenas a reamostragem: recortes, poses, escala e ancoragem são os originais.
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
     ctx.translate(centerX, feetY);
     if (facing === -1) ctx.scale(-1, 1);
     ctx.drawImage(image, frame.x, frame.y, frame.w, frame.h,

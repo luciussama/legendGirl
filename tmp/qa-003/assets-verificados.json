@@ -1,0 +1,462 @@
+[
+  {
+    "arquivo": "assets/art/dark-room/OFFICIAL-CHARACTER.md",
+    "sha256": "d79ac41b172754c8f6ff09464f7f12e50aa4e142067619d938037ee6367d13dc",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/corrections/false_door.png",
+    "sha256": "1d0f95edf22480835b4bf2a382bc6a19263fd73ae27b8e2df748d6fc58da7786",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/darkRoomAtlas.json",
+    "sha256": "757de6f5518b73a52acb2c53663077fc6fbcff9c6e60d0bc05715773a64b51b5",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/environment-assets-concept.png",
+    "sha256": "8304153db91e5f72255974e6805ec0d2b315cef44cd3c0529d44b3b6f0e2cf96",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/environment-assets.png",
+    "sha256": "af5e60243a4c04dc594e1eb875431eb7e2a83de95527ed8b6e1076b9c69e9afe",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/modern/README.md",
+    "sha256": "c57a65e5290ebe25f1822d9b915ac9653b7cd366d88e6b087a565485d2e492bb",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/modern/block_castle.png",
+    "sha256": "ad928c386e6b98568b715733554e2bf035d71fbcf3edf818b1b9bc739890f2c6",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/modern/globe_table.png",
+    "sha256": "4bb547d24dc1318ebfbdd5fd0103fb017fe42f2b94037b1fb3444c011821b074",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/modern/spinning_top.png",
+    "sha256": "63a5db699aa1a480049df19ca6b9e82a9275660e41cb4134a1e935d08bfb763b",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/official-sprites.png",
+    "sha256": "be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/opening/README.md",
+    "sha256": "9855ae7c493a859f0dcd64789d5a9db7904b502802d8317405ffa1ecc36234da",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/opening/waking-up.png",
+    "sha256": "bb98e6a505375863a05c9fa75c769097bf7b9357b5182dd8609039ade79b7d47",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/platforms/giant_bear.png",
+    "sha256": "87645fa838767a986d98c9c5407c6e3daa8d6d83bb0a3daf97371f11fc7ec089",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/platforms/satin_cushion.png",
+    "sha256": "905448739b7d6de0e80155008493bc8fbb26d8dc9a518589a940847521ad0c9e",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/platforms/stacked_books.png",
+    "sha256": "c471b3dbcde636148d422b322186c4e8fa35c426000763754b5a38d66c0a37bf",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/platforms/stepped_dresser.png",
+    "sha256": "06bebe4a6087e1794efac0533d774b5ce03e62e5fb6ac81a07f3577911392170",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/production-spritesheet.png",
+    "sha256": "af5e60243a4c04dc594e1eb875431eb7e2a83de95527ed8b6e1076b9c69e9afe",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/block_castle.png",
+    "sha256": "b334934bbac5e94a5916e2353a4b77933730466c860a91fb6e4557ee37de2565",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/cardboard_box.png",
+    "sha256": "620fdb3cbb056312daaec9d1255c9bb282e932c4d920920ae992100ab5caa7da",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/chandelier_crystals.png",
+    "sha256": "5bf0261f9eba7bcfcd831881abafe4ac98d725c37c00a62060fa58999cc071d3",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/character_jump.png",
+    "sha256": "14f8a96ff9e52e73b834e55ef549bd2368e76eadb385526deb5e899555a1a74a",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/character_run.png",
+    "sha256": "40d026115499b7bf0b178de034fb4f13b254648a70b78d558cb5d58cf65be6ea",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/character_stand.png",
+    "sha256": "f40bd184b96754ac25ffb808fe6b3cd30283ab115dc6347bfd61cf70f33a380b",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/cuckoo_clock.png",
+    "sha256": "b1e74cca3007331d3197d1fb0c079bc03237feb56ec9e5f90a7cd8b42362d13d",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/curtain_rod.png",
+    "sha256": "ef4e23eaeb3fbb9eec7cb7dc105b8f47830ce3f185f411c922d640e53f8501fe",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dollhouse_roof.png",
+    "sha256": "a35685211918ee23de084ee55c17ab60c26400d710000c7e86e4aebc41fb5f80",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_actions.png",
+    "sha256": "0c63b8078f9ace43a69473ba2f43a4093ff4cc266778ffbd3fa323c154de97ce",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_faces.png",
+    "sha256": "8f12da08e1e1515467d945a00c894a18a950df2b7041d3f53a9597c0cde2c748",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_fall.png",
+    "sha256": "2f26e0aefadd4d8f7e6cf0385e5325d526f111d742c69a78522b22e3cad19c96",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_idle.png",
+    "sha256": "1ce8044e5dda4562fc2d2b48aae6b636491a19677c65ca735b9a6c7b13c267e7",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_jump.png",
+    "sha256": "68b447bf71c7e321328fd8fa1fd485a9c3e664876baf285f5079b5b2a5523d13",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_run.png",
+    "sha256": "40d026115499b7bf0b178de034fb4f13b254648a70b78d558cb5d58cf65be6ea",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/dream_girl_sheet.png",
+    "sha256": "b890e577d3fac6cd4db9bf073c772684bd5398edc004de701f1bad055941d05a",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/false_door.png",
+    "sha256": "ad57e1b54a33aa664812d06b16ab9ffb9da82ef9c98ca04d885042900d50c534",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/floating_books.png",
+    "sha256": "2ae26c31efb2b148dc9e7e64f71ca3da9499d884af2be19139784c3c92a20814",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/floor_tiles.png",
+    "sha256": "570355672c2edb038aa65d7cbf900c1fe890f14448cbbdcae0847b5fee4ae783",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/giant_bear.png",
+    "sha256": "4ccb7adb41a5b4a340b55adb3b1f716ee876e18e032d8909677ded22811c7e45",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/grand_portal_pedestal.png",
+    "sha256": "3f629639955927b61cbbd917ab0bae0b4deb77a6e11b6a8d016b2b3a601c6e1c",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/kite_frame.png",
+    "sha256": "e8708b18c0e20d0e41e1745327f65a44577ef14ce50ddde36fbba3d1b473c42f",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/mandala_rug.png",
+    "sha256": "6ec7fad9581be326c511e3be95f6335538695a3c9638757ad6424b6215b40fd3",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/messy_blocks.png",
+    "sha256": "7805270a087e474a69cfc68fe2a40ec6bd137066b6ff44aa38ec1c88fac1bff8",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/mushroom_lamp.png",
+    "sha256": "cca7046d5595ecea7a84bbbb519297b6fce17f424df9c8e05ae9322b10ce0157",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/music_box.png",
+    "sha256": "c2754677954f12aed3e8cc984e00f1721adb2eef758bec9ce0b3b25ec20ede4c",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/official-character.png",
+    "sha256": "2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/open_books.png",
+    "sha256": "c471b3dbcde636148d422b322186c4e8fa35c426000763754b5a38d66c0a37bf",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/plush_bunny.png",
+    "sha256": "4c08bbec4a2bf1dad50f53f5ec3f5890e4226f01693d6c3ed973898118e65ca0",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/retro_robot.png",
+    "sha256": "deb40a96f03fe7a0b12eae5fbc84b843edac074053a5d88998d327e4a5d836c4",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/salto_final_sign.png",
+    "sha256": "8b183cc145a5fe7765baa53f629673df46da77eb6779c14677437b28619ce048",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/satin_cushion.png",
+    "sha256": "5183f1e50ee47a8e72bb23ea7bc89e7b743457107007b53693145d415803cc5a",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/small_dresser.png",
+    "sha256": "620fdb3cbb056312daaec9d1255c9bb282e932c4d920920ae992100ab5caa7da",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/spinning_globe.png",
+    "sha256": "1f433469d770bc3730685c4f40959dd543dbc7a23f3e42c98f5bedef567da112",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/stepped_dresser.png",
+    "sha256": "7c4c987bc0e88ad512d9cc65d045de883f2906b208dede5087f55896b9e64c50",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/toy_drum.png",
+    "sha256": "4c3d64ba24014a4356db9144f96f21343e8f05b30abfd29a315d35cb99b7ee6f",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/train_trestle.png",
+    "sha256": "c3f60844ea639cf4c45df838097825f3f64dd0e17c95a92b03871519b21dfe9b",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/vanity_table.png",
+    "sha256": "cf1d3f4dfc0c2f8453e78b5d826ed2d1a6f9500dc99da2bbd4c740ca4c40afe7",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/wall_shelf.png",
+    "sha256": "db6a6e0386b7f3792b27b6b00995cee103bf60f0ad6b3d733473b58fe9904e0a",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/dark-room/sprites/wardrobe_portal.png",
+    "sha256": "9aaaf2b66ff658ccd2956787f6a024c8f0d5e6c1d17f05c7f94b9138de283e4e",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/environment-sheet.png",
+    "sha256": "235f177d278dc1d399a714224aaa62d03bd9be96c2be70f78a3f994b389adaed",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/fairy.svg",
+    "sha256": "6b56fc8c29cefa4ade8a7a63afc187d0f9611debdc81129923332f5a30c85e01",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/floor-tile.svg",
+    "sha256": "acd525f813a63045d59019649079f661dbeba55161b15b3f5c3c877477f2b2f5",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-back-sheet.svg",
+    "sha256": "3e2e57f13ff17442fc6949b916c12541fe1ec611e17068c7aecad3ffe9bc678e",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-carry.svg",
+    "sha256": "43eeebf90320996ea918090db6b13cb0ef1b45657d0e55e5dc562c197f54407b",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-down-1.svg",
+    "sha256": "c4983e70ec5fb681f2fb7d88ac071db2f0dfef7ccae0eb93ec5254fb2598aeda",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-down-2.svg",
+    "sha256": "2518b1cb29b25c19792025df5d320d5369c8db9b020c76d248703b5c29505a71",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-down-3.svg",
+    "sha256": "57396a0043230af3c72497044f0ea3aa6c9fce96cdddfffd71395a007e5ff248",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-left-1.svg",
+    "sha256": "94187ffdded19281a534548d6042add61d29ecc7aadf5cc07323bf2378924d78",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-left-2.svg",
+    "sha256": "ee776467cf46f53276bdac9b16702edebc79f2309bc2113dcf93e1765e9aab61",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-left-3.svg",
+    "sha256": "021cd7fce259d5929594edd8666fd19d2e509ca5c877472b333bf753fc1b46ab",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-left.svg",
+    "sha256": "1385b6fafd3b501d55a35ac96a8753cbd3abdc7d12d05fa9a6846f18016ce2f1",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-right-1.svg",
+    "sha256": "b48cee4069194b4092325a0d36a1ecd0712aa50cd362db20aa09f04e992131b1",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-right-2.svg",
+    "sha256": "326f5e8daab1c80edd02ce91ad8edc440ef70c75ff6d4436a1b27bc7dd029f42",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-right-3.svg",
+    "sha256": "a58b1275f58442f4f666a556ee9daa718a19d3b76190430fa5d46d50a39c2007",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-right.svg",
+    "sha256": "6569b67122dde889fefa2a0652924e46891907834b34f678ce59da8108ba5bfa",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-sheet.png",
+    "sha256": "0289214e033f6ca8ce40710ef9996739ab0a8bc5883633dfaed06cc25381def9",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-sprite.svg",
+    "sha256": "9926b89d11857d652086c9541c67dd180166f40fa87f02401fbda035c51964e4",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-up-1.svg",
+    "sha256": "553eb041b1ca00e850ef47f04a2a4db029814cccdfc3c7413cdcb0b801941679",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-up-2.svg",
+    "sha256": "354ff012c934cf805bc1e37da8c0205c9dea7ef1b59d767eebb42c5f59dc09fd",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-up-3.svg",
+    "sha256": "a9a8e238a5b96eddb525da2647fac78637eaa2fd3e144a05d6953c413a2f3c82",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player-up.svg",
+    "sha256": "484bb306310fe39d295a8ea81a888ba09d0bcbf17f6285e9472f3c64e8f01064",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/player.svg",
+    "sha256": "df9055e748f88d682237441b381fad2f01cfdbea9637f34e0dd36ebad48a0f3c",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/art/toy-room/teddy.svg",
+    "sha256": "ec2e43133fc41230e839be942522b97b05fd7012a85c3ef2a72d27c1049a2b27",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/audio/Circular Dissonance (1).mp3",
+    "sha256": "4b1919c27a6c98c45055a62f6c31dc88c2b93b593e9667b3759d2622dda3ecf3",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/audio/High-Frequency Violin.mp3",
+    "sha256": "00138a198bcb647e940290c8873793bce2a32a1e88b0b6af15f169148577dad9",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/audio/The Circle Game.mp3",
+    "sha256": "98bc55467f5938b7f215dfa51d60b54c2df38bb9064f81c61167ab3c81721bfb",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/audio/toy_room_theme.mp3",
+    "sha256": "00138a198bcb647e940290c8873793bce2a32a1e88b0b6af15f169148577dad9",
+    "identico": true
+  },
+  {
+    "arquivo": "assets/manifest.json",
+    "sha256": "ade8b179070b23ef8b82f15d2f23a8e7cd60347ff6157766f9dce4b095ffc96b",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/dr_platforms_a_1790109919135.jpg",
+    "sha256": "202b5f93f95069ed1f8fd0bd6563c92d83617f1a202b03c6c49e7c1a638cdfb4",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/dr_platforms_b_1790109930444.jpg",
+    "sha256": "88f1efcf04343711bceee24cfde9efa8b6c0126552b7ec1751b5dd3bbeab198b",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/dr_platforms_c_1790109940179.jpg",
+    "sha256": "2da3e4b11f56319a19c59aba858c2262e8ef306d2460e577cab627e564192f66",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/dr_platforms_d_1790109949739.jpg",
+    "sha256": "ca2e0176620062dca347d2d68f046eaba4d85fd884665f89579004f591e4e6a3",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/dr_scenery_props_1790109959135.jpg",
+    "sha256": "bfea843d2243d81b7b305170b66b56852e928c6bdcfb784702da26ab806c95c0",
+    "identico": true
+  },
+  {
+    "arquivo": "src/assets/images/small_dresser_1790161034161.jpg",
+    "sha256": "350099a3a7a1f223476c85494ab8993fc99d8013293ba6eb19c0df36b6117b1d",
+    "identico": true
+  }
+]
