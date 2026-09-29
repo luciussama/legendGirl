@@ -105,6 +105,8 @@ Os ajustes móveis são aplicados como transformações adicionais de desenho:
 - [`MobileZoom.js`](src/js/controllers/MobileZoom.js) aproxima a cena em até **18%**. Nas plataformas, considera personagem, fada e região de chegada do próximo salto. Quando não há espaço, preserva o campo de visão anterior.
 - [`DialogueSafeArea.js`](src/js/ui/DialogueSafeArea.js) converte a interseção do canvas com o viewport visível e os insets do iOS para coordenadas de desenho dos diálogos.
 
+Durante a narrativa móvel, [`MobileDialogueRegion.js`](src/js/ui/MobileDialogueRegion.js) reserva uma região superior para a cena e um painel inferior exclusivo para o texto, sem sobreposição e com folga até a área segura.
+
 A interface é renderizada fora da transformação adicional da cena. Esses ajustes não alteram coordenadas dos objetos, velocidades, hitboxes ou distâncias dos saltos.
 
 ### Renderização e recursos
@@ -204,6 +206,7 @@ Relatórios disponíveis:
 - [QA-Mobile-001 — Enquadramento vertical no Android](docs/qa-mobile-001/relatorio.md).
 - [QA-Mobile-002 — Área segura de legendas e diálogos](docs/qa-mobile-002/relatorio.md).
 - [QA-Mobile-003 — Zoom móvel](docs/qa-mobile-003/relatorio.md).
+- [QA-Mobile-004 — Região narrativa exclusiva](docs/qa-mobile-004/relatorio.md).
 
 As evidências móveis desses relatórios utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
 

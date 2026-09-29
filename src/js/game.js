@@ -668,7 +668,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     dialogueRenderer.renderCutsceneDialogue(ctx, canvas, state, {
       getActivePromptDevice,
       characterAnchor: {
-        top: transform.transformPoint({x:baby.x-cameraX,y:baby.y}).y,
+        top: Math.min(transform.transformPoint({x:baby.x-cameraX,y:baby.y-20}).y,
+          transform.transformPoint({x:fairy.x-cameraX,y:fairy.y-28}).y),
         bottom: transform.transformPoint({x:baby.x-cameraX,y:baby.y+baby.h}).y
       }
     });

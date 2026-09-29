@@ -1,3 +1,5 @@
+import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
+import { isMobileDevice } from '../controllers/MobileZoom.js';
 import { getDialogueSafeArea, getDialogueBoxY } from './DialogueSafeArea.js';
 
 /**
@@ -265,18 +267,21 @@ export class DialogueRenderer {
     }
 
     // 1. Faixas pretas cinematográficas (letterbox)
-    ctx.fillStyle = '#06040a';
-    ctx.fillRect(0, 0, canvas.width, 42);
-    ctx.fillRect(0, canvas.height - 42, canvas.width, 42);
+    if (!isMobileDevice()) {
+      ctx.fillStyle = '#06040a';
+      ctx.fillRect(0, 0, canvas.width, 42);
+      ctx.fillRect(0, canvas.height - 42, canvas.width, 42);
 
-    ctx.strokeStyle = 'rgba(250, 204, 21, 0.45)';
-    ctx.lineWidth = 1;
-    ctx.beginPath();
-    ctx.moveTo(0, 42);
-    ctx.lineTo(canvas.width, 42);
-    ctx.moveTo(0, canvas.height - 42);
-    ctx.lineTo(canvas.width, canvas.height - 42);
-    ctx.stroke();
+      ctx.strokeStyle = 'rgba(250, 204, 21, 0.45)';
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(0, 42);
+      ctx.lineTo(canvas.width, 42);
+      ctx.moveTo(0, canvas.height - 42);
+      ctx.lineTo(canvas.width, canvas.height - 42);
+      ctx.stroke();
+
+    }
 
     // Determina o interlocutor ativo, texto e expressão
     let speaker = 'fairy';
@@ -361,7 +366,8 @@ export class DialogueRenderer {
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
-    const boxY = getDialogueBoxY(safe, boxH, 12, options.characterAnchor);
+    const regions = renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
+    const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor);
 
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);

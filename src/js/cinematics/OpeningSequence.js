@@ -1,3 +1,4 @@
+import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
 
@@ -103,9 +104,15 @@ export class OpeningSequence {
     ctx.restore();
     const line = OPENING_DIALOGUE.find(([from,to])=>t>=from&&t<to);
     applyArtFinish(ctx, canvas);
+    const safe=getDialogueSafeArea(canvas);
+    const anchor={
+      top:canvas.height/2+(Math.min(bedY,fy-28)-canvas.height/2)*zoom,
+      bottom:canvas.height/2+(floor-canvas.height/2)*zoom
+    };
+    // Mantém a divisão estável também nos intervalos entre as falas da abertura.
+    const regions=renderMobileDialogueRegion(ctx,canvas,safe,156,anchor);
     if (line) {
       ctx.save();
-      const safe=getDialogueSafeArea(canvas);
       const width=Math.min(680,canvas.width-40,safe.right-safe.left-2*Math.max(20,safe.marginX)), font=canvas.width<600?20:23;
       const centerX=(safe.left+safe.right)/2;
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;
@@ -118,10 +125,8 @@ export class OpeningSequence {
         }
         lines.push(current);
       }
-      const height=lines.length*(font+9)+54, y=getDialogueBoxY(safe,height,24,{
-        top:canvas.height/2+(child.y-canvas.height/2)*zoom,
-        bottom:canvas.height/2+(child.y+child.h-canvas.height/2)*zoom
-      });
+      const height=lines.length*(font+9)+54;
+      const y=regions ? regions.panel.y+(regions.panel.height-height)/2 : getDialogueBoxY(safe,height,24,anchor);
       ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect(centerX-width/2,y,width,height,16);ctx.fill();
       ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('FADINHA',centerX,y+24);
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;ctx.fillStyle='#f5eddf';
