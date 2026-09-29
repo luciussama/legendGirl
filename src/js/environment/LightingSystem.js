@@ -1,12 +1,16 @@
 import { getEscapeGuideTarget } from '../controllers/EscapeFairyGuide.js';
 /** Luz local da lua e da fada; atua somente na renderização, sem modificar o estado do jogo. */
 import {
+  FLOOR_Y,
   platforms as defaultPlatforms,
   phase3Platforms as defaultPhase3Platforms,
   exitDoor as defaultExitDoor,
   trueExitDoor as defaultTrueExitDoor
 } from '../config.js';
 import { NIGHT_WINDOWS } from './nightWindows.js';
+
+// Compensação ambiental restrita aos materiais apontados no QA-002.
+const SOFT_AMBIENT_STYLES = new Set(['messy_blocks', 'toy_drum', 'satin_cushion', 'stepped_dresser']);
 
 export class LightingSystem {
   constructor(options = {}) {
@@ -73,6 +77,13 @@ export class LightingSystem {
       if (x < -p.w - 180 || x > canvas.width + p.w + 180) continue;
       pool(x, p.y + Math.min(p.h * 0.25, 28), Math.max(65, p.w * 0.8), 78,
         0.17 + Math.min(1, p.lightAlpha || 0) * 0.055);
+      if (!state.isPhase3 && SOFT_AMBIENT_STYLES.has(p.style)) {
+        // Recupera discretamente os tons das bases e tampos com transição ampla,
+        // sem desenhar bordas, faixas de contato ou uma nova fonte aparente.
+        const height = Math.max(1, FLOOR_Y - p.y);
+        pool(x, p.y + height * 0.55, Math.max(75, p.w * 0.85),
+          Math.max(100, height * 0.95), 0.065);
+      }
     }
 
     // A fada é a fonte próxima mais intensa. Não há cone de luz nem foco com bordas rígidas.
