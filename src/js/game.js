@@ -664,9 +664,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     return dialogueRenderer.wrapText(pCtx, text, maxWidth);
   }
 
-  function drawCutsceneDialogue() {
+  function drawCutsceneDialogue(transform) {
     dialogueRenderer.renderCutsceneDialogue(ctx, canvas, state, {
-      getActivePromptDevice
+      getActivePromptDevice,
+      characterAnchor: {
+        top: transform.transformPoint({x:baby.x-cameraX,y:baby.y}).y,
+        bottom: transform.transformPoint({x:baby.x-cameraX,y:baby.y+baby.h}).y
+      }
     });
   }
 
@@ -1522,7 +1526,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
     applyArtFinish(ctx, canvas);
     drawEscapeBanner();
-    drawCutsceneDialogue();
+    drawCutsceneDialogue(presentationTransform);
     if (opening.active) opening.renderFade(ctx, canvas);
 
     // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)

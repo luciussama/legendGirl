@@ -1,4 +1,4 @@
-import { getDialogueSafeArea } from './DialogueSafeArea.js';
+import { getDialogueSafeArea, getDialogueBoxY } from './DialogueSafeArea.js';
 
 /**
  * DialogueRenderer.js
@@ -361,7 +361,7 @@ export class DialogueRenderer {
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
-    const boxY = Math.max(safe.top + safe.marginY, safe.bottom - boxH - Math.max(12, safe.marginY));
+    const boxY = getDialogueBoxY(safe, boxH, 12, options.characterAnchor);
 
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);

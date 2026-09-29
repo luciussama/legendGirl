@@ -1,4 +1,4 @@
-import { getDialogueSafeArea } from '../ui/DialogueSafeArea.js';
+import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
 
 export const OPENING_STORAGE_KEY = 'legendGirl.bedroom-opening.completed.v1';
@@ -118,7 +118,10 @@ export class OpeningSequence {
         }
         lines.push(current);
       }
-      const height=lines.length*(font+9)+54, y=Math.max(safe.top+safe.marginY,safe.bottom-height-Math.max(24,safe.marginY));
+      const height=lines.length*(font+9)+54, y=getDialogueBoxY(safe,height,24,{
+        top:canvas.height/2+(child.y-canvas.height/2)*zoom,
+        bottom:canvas.height/2+(child.y+child.h-canvas.height/2)*zoom
+      });
       ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect(centerX-width/2,y,width,height,16);ctx.fill();
       ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('FADINHA',centerX,y+24);
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;ctx.fillStyle='#f5eddf';

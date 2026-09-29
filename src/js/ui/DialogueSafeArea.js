@@ -1,3 +1,5 @@
+import { isMobileDevice } from '../controllers/MobileZoom.js';
+
 // As coordenadas continuam no canvas; apenas os elementos narrativos são reposicionados.
 const probes = new WeakMap();
 
@@ -13,9 +15,7 @@ export function intersectCanvasSafeArea(canvas, rect, viewport, insets = {}) {
 
 export function getDialogueSafeArea(canvas) {
   const fallback = {left:0,top:0,right:canvas.width,bottom:canvas.height,marginX:0,marginY:0};
-  const nav = globalThis.navigator;
-  const ios = /iPhone|iPad|iPod/.test(nav?.userAgent || '') || (nav?.platform === 'MacIntel' && nav?.maxTouchPoints > 1);
-  if (!ios || !canvas.getBoundingClientRect || typeof document === 'undefined') return fallback;
+  if (!isMobileDevice() || !canvas.getBoundingClientRect || typeof document === 'undefined') return fallback;
   const rect = canvas.getBoundingClientRect();
   if (!rect.width || !rect.height) return fallback;
   let probe = probes.get(document);
@@ -33,4 +33,19 @@ export function getDialogueSafeArea(canvas) {
     width:visual?.width || window.innerWidth, height:visual?.height || window.innerHeight
   }, {left:parseFloat(style.paddingLeft),right:parseFloat(style.paddingRight),
     top:parseFloat(style.paddingTop),bottom:parseFloat(style.paddingBottom)});
+}
+
+/** Aproxima a legenda da personagem, com folga inferior e sem seguir a física do mundo. */
+export function getDialogueBoxY(safe, height, originalMargin, anchor = {}, mobile = isMobileDevice()) {
+  const minY = safe.top + safe.marginY;
+  const bottomGap = mobile ? Math.max(originalMargin, safe.marginY, (safe.bottom - safe.top) * 0.16) : Math.max(originalMargin, safe.marginY);
+  const maxY = Math.max(minY, safe.bottom - bottomGap - height);
+  if (!mobile) return maxY;
+  const gap = Math.max(24, safe.marginY * 1.5);
+  let desired = maxY;
+  if (Number.isFinite(anchor.bottom) && Number.isFinite(anchor.top)) {
+    desired = anchor.bottom + gap;
+    if (desired > maxY) desired = anchor.top - gap - height;
+  }
+  return Math.max(minY, Math.min(maxY, desired));
 }

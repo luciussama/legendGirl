@@ -18,11 +18,11 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory = 'docs/qa-mobile-002';
+const directory = process.argv[2] || 'docs/qa-mobile-002';
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');
-  await send('Emulation.setUserAgentOverride',{userAgent:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1'});
+  await send('Emulation.setUserAgentOverride',{userAgent:process.argv[3] === 'android' ? 'Mozilla/5.0 (Linux; Android 14) Mobile' : 'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) AppleWebKit/605.1.15 Version/18.0 Mobile/15E148 Safari/604.1'});
   const results=[];
   const scenarios=[
     ['notch-retrato',390,744,[47,0,34,0]],
@@ -90,5 +90,5 @@ try {
     }
   }
   await fs.writeFile(`${directory}/resultados.json`,JSON.stringify(results,null,2)+'\n');
-  console.log('Diálogos iOS: 40 quadros validados e 8 capturas geradas.');
+  console.log('Diálogos móveis: 40 quadros validados e 8 capturas geradas.');
 } finally { ws.close(); }
