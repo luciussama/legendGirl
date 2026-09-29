@@ -20,11 +20,18 @@ jobs:
     steps:
       - name: Obter código do repositório
         uses: actions/checkout@v4
+      - name: Verificar lockfile do commit
+        run: |
+          if [ ! -f package-lock.json ]; then
+            echo "::error::package-lock.json ausente no commit $GITHUB_SHA. Versione o lockfile na raiz e execute o workflow no novo commit."
+            exit 1
+          fi
       - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 24
           cache: npm
+          cache-dependency-path: package-lock.json
       - name: Instalar dependências
         run: npm ci
       - name: Validar projeto
