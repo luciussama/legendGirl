@@ -623,7 +623,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   // --- RENDERIZADORES DE ENTIDADES E PERSONAGENS (Modularizados em /entities) ---
   function drawBabyManaStyle(camX) {
     syncLocalsToState();
-    babyRenderer.render(ctx, baby, state, camX, { assets });
+    // Ajuste de arte exclusivo da primeira etapa; o ponto de contato dos pés não muda.
+    babyRenderer.render(ctx, baby, state, camX, { assets, visualScale: !isEscapeMode && !isPhase3 ? 1.08 : 1 });
   }
 
   function drawFairy(camX) {
@@ -1452,6 +1453,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     camera.syncFromState(state);
     camera.update(dt, state, canvas, {
       onLagBehind: () => triggerGameOver(),
+      escapeEndPlatformIndex: platforms.length - 1,
       exitDoorX: trueExitDoor.x,
       exitDoorW: trueExitDoor.w
     });

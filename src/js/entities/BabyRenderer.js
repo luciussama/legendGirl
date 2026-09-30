@@ -70,15 +70,15 @@ export class BabyRenderer {
     return { state: 'idle', frame };
   }
 
-  renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1) {
+  renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1, visualScale = 1) {
     const image = assets?.get('official-character');
     if (!ctx || !image) return; // Nunca substitui a arte oficial ausente por um novo desenho.
     const frames = OFFICIAL_FRAMES[pose] || OFFICIAL_FRAMES.idle;
     const frame = frames[((frameIndex % frames.length) + frames.length) % frames.length];
-    // Adiciona exatamente um pixel visual à altura, preservando as proporções e a ancoragem dos pés.
-    const scale = height / 50 + 1 / frame.h;
+    // Preserva o pixel adicional da escala-base e aplica o fator artístico em torno dos pés.
+    const scale = (height / 50 + 1 / frame.h) * visualScale;
     ctx.save();
-    // Suaviza apenas a reamostragem: recortes, poses, escala e ancoragem são os originais.
+    // Suaviza a reamostragem, preservando os recortes e a ancoragem dos pés.
     ctx.imageSmoothingEnabled = true;
     ctx.imageSmoothingQuality = 'high';
     ctx.translate(centerX, feetY);
@@ -93,7 +93,7 @@ export class BabyRenderer {
     const animation = this.resolveAnimationState(baby, state);
     this.renderPose(ctx, options.assets || this.assets || state.assets,
       animation.state, animation.frame, baby.x - camX + baby.w / 2,
-      baby.y + baby.h, baby.h, baby.facing);
+      baby.y + baby.h, baby.h, baby.facing, options.visualScale ?? 1);
   }
 }
 export const babyRenderer = new BabyRenderer();

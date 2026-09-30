@@ -47,7 +47,7 @@ O `package-lock.json` deve permanecer versionado na raiz junto com `package.json
 | Interface geral | P / botão de pausa | Pausar ou continuar |
 | Interface geral | M / botão de áudio | Alternar o som |
 
-As entradas respeitam os bloqueios das cenas e o estado da personagem. Nas fases de plataforma, o deslocamento horizontal é conduzido pelo jogo; o jogador controla o momento do salto. Durante a fuga, caminhar por muito tempo pode permitir que a rolagem alcance a personagem — inclusive no último apoio, antes da porta.
+As entradas respeitam os bloqueios das cenas e o estado da personagem. Nas fases de plataforma, o deslocamento horizontal é conduzido pelo jogo; o jogador controla o momento do salto. Durante a fuga, caminhar por muito tempo nos apoios intermediários pode permitir que a rolagem alcance a personagem. Após conquistar o pedestal final, a câmera acompanha a aproximação da porta falsa.
 
 ## Arquitetura
 

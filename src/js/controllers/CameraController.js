@@ -148,20 +148,27 @@ export class CameraController {
         this.syncToState(state);
         return;
       }
-      state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
-      this.x += state.currentScrollSpeed * dt;
-      const targetCamX = baby.x - (isWide ? 170 : 120);
-      if (targetCamX > this.x) {
+      // Após conquistar o pedestal final, acompanha a aproximação da porta falsa.
+      // A pressão da rolagem permanece intacta até o pouso; nenhum salto é assistido aqui.
+      if (baby.currentPlatformIndex === callbacks.escapeEndPlatformIndex) {
+        const targetCamX = baby.x - (isWide ? 170 : 120);
         this.x += (targetCamX - this.x) * 0.09 * dt;
-      }
-
-      // Verifica se a menininha ficou para trás da tela em movimento para a esquerda
-      if (baby.x < this.x - 25) {
-        if (typeof callbacks.onLagBehind === 'function') {
-          callbacks.onLagBehind();
+      } else {
+        state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
+        this.x += state.currentScrollSpeed * dt;
+        const targetCamX = baby.x - (isWide ? 170 : 120);
+        if (targetCamX > this.x) {
+          this.x += (targetCamX - this.x) * 0.09 * dt;
         }
-        this.syncToState(state);
-        return;
+
+        // Verifica se a menininha ficou para trás da tela em movimento para a esquerda
+        if (baby.x < this.x - 25) {
+          if (typeof callbacks.onLagBehind === 'function') {
+            callbacks.onLagBehind();
+          }
+          this.syncToState(state);
+          return;
+        }
       }
     } else {
       // Fase 1: Rastreamento frontal suave padrão

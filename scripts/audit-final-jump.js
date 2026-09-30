@@ -24,7 +24,7 @@ const profiles={android:{width:390,height:844,mobile:true,ua:'Mozilla/5.0 (Linux
   desktop:{width:960,height:540,mobile:false,ua:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}};
 assert.ok(profiles[profile],'Perfil de teste válido');
 const device=profiles[profile];
-const directory=(process.argv[3] || 'docs/validacao-fase-completa')+(profile==='android'?'':'/'+profile);
+const directory='docs/qa-gameplay-001/final'+(profile==='android'?'':'/'+profile);
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');await send('Runtime.enable');
@@ -49,8 +49,8 @@ try {
     }throw Error('Narrativa não terminou');
   })()`);}
   await settle();await capture('01-inicio');
-  for(const phase3 of [false,true]){
-    for(let target=0;target<(phase3?16:22);target++){
+  for(const phase3 of [false]){
+    for(let target=0;target<21;target++){
       const result=await evaluate(`(()=>{
         const r=window.review.game.review,saved=r.saveManual();
         for(let delay=0;delay<240;delay++){
@@ -73,44 +73,23 @@ try {
       await settle();
       if([9,21,15].includes(target))await capture(`apoio-${phase3?'retorno':'ida'}-${target}`);
     }
-    await evaluate(`(()=>{const r=window.review.game.review;if(${phase3})r.actionManual();for(let i=0;i<600;i++){const s=r.inspectManual();if(s.plot||s.portal||s.mode==='toy-room')return;r.frameManual(i%15===0);if(r.inspectManual().over)throw Error('Falha ao caminhar até o portal');}throw Error('Portal não iniciou');})()`);
-    await settle();if(phase3)await evaluate('(()=>{for(let i=0;i<180;i++)window.review.game.review.frameManual(i===179);})()');await capture(phase3?'04-sala-brinquedos':'03-retorno');
-  }
-  assert.equal(await evaluate('window.review.game.isToyRoomMode()'),true,'Campanha alcançou a sala de brinquedos');
-  const toys=await evaluate(`(()=>{
-    const room=window.review.game.review.roomManual(),events=[];
-    const free=(x,y)=>{const p=room.resolveCollisions(x,y,24);return Math.abs(p.x-x)<0.1&&Math.abs(p.y-y)<0.1;};
-    const walk=(tx,ty,radius)=>{
-      const start=[Math.round(room.player.x/20),Math.round(room.player.y/20)],key=p=>p.join(',');
-      const queue=[start],seen=new Map([[key(start),null]]);let end;
-      for(let i=0;i<queue.length;i++){
-        const p=queue[i];if(Math.hypot(p[0]*20-tx,p[1]*20-ty)<radius){end=p;break;}
-        for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){
-          const n=[p[0]+dx,p[1]+dy];if(seen.has(key(n))||!free(n[0]*20,n[1]*20))continue;
-          seen.set(key(n),p);queue.push(n);
+    const results=await evaluate(`(()=>{
+      const r=window.review.game.review,origin=r.saveManual(),rows=[];
+      for(let delay=0;delay<100;delay++){
+        r.restoreManual(origin);for(let i=0;i<delay;i++)r.frameManual();
+        const takeoff=r.inspectManual();if(takeoff.over)break;
+        r.actionManual();let landing=null,final;
+        for(let i=0;i<240;i++){
+          r.frameManual(i%20===0);final=r.inspectManual();
+          if(final.over||final.plot)break;
+          if(final.baby.onGround&&final.baby.currentPlatformIndex===21&&!landing)landing={x:final.baby.x,frame:i};
         }
+        rows.push({delay,launchX:takeoff.baby.x,launchY:takeoff.baby.y,landing,plot:final.plot,
+          over:final.over,finalX:final.baby.x,finalY:final.baby.y,cameraX:r.saveManual().state.cameraX});
       }
-      if(!end)throw Error('Sem caminho até '+tx+','+ty);
-      const path=[];for(let p=end;p;p=seen.get(key(p)))path.unshift(p);
-      for(const [gx,gy] of path)for(let f=0;f<100;f++){
-        const dx=gx*20-room.player.x,dy=gy*20-room.player.y,d=Math.hypot(dx,dy);if(d<2)break;
-        if(f===99)throw Error('Movimento bloqueado');
-        room.touchState.active=true;room.touchState.vectorX=dx/Math.max(d,4);room.touchState.vectorY=dy/Math.max(d,4);
-        room.update(1);if(f%10===0)room.render();
-      }
-      room.touchState.active=false;room.update(1);
-    };
-    for(const toy of room.toys){
-      walk(toy.x,toy.y,60);room.lastActionTime=-10000;room.triggerAction();
-      if(!room.player.carriedItem)throw Error('Não pegou o brinquedo '+toy.id);
-      const chest=room.furniture.find(f=>f.id==='toy-chest');
-      walk(chest.x+chest.w/2,chest.y+chest.h/2,130);room.lastActionTime=-10000;room.triggerAction();
-      if(!toy.isOrganized)throw Error('Não guardou '+toy.id);events.push(toy.id);
-    }
-    room.render();if(!room.victoryBannerActive)throw Error('Vitória não ativou');return events;
-  })()`);
-  await capture('05-sala-concluida');
-  await fs.writeFile(`${directory}/brinquedos.json`,JSON.stringify(toys,null,2)+'\n');
-  await fs.writeFile(`${directory}/percurso.json`,JSON.stringify(report,null,2)+'\n');
-  console.log('Percurso completo aprovado: 38 apoios, portais e 8 brinquedos guardados — '+profile+'.');
+      return rows;
+    })()`);
+    await fs.writeFile(`${directory}/ultimo-salto.json`,JSON.stringify(results,null,2)+'\n');
+    console.log(JSON.stringify(results.filter(r=>r.landing),null,2));
+  }
 }finally{ws.close();}
