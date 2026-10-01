@@ -18,7 +18,7 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory = 'docs/qa-mobile-001';
+const directory = 'assets/qa-testers/current-screenshots/android';
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');
@@ -34,11 +34,11 @@ try {
     await evaluate(`document.head.insertAdjacentHTML('beforeend','<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><style>canvas{width:100vw;height:100dvh}p{display:none}</style>')`);
     await evaluate('new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve)))');
     await evaluate(`document.querySelector('[data-android-safe-area]').style.paddingBottom='${inset}px'`);
-    for(const after of [false,true]) {
+    for(const after of [true]) {
       const state = await evaluate(`window.review.game.review.mobileFrame(${after})`);
       if(after) assert.ok(state.topAfter >= 0, 'Conteúdo jogável preservado no topo');
       const {data}=await send('Page.captureScreenshot',{format:'png'});
-      const file=`${directory}/${name}-${after?'depois':'antes'}.png`;
+      const file=`${directory}/${name}-atual.png`;
       await fs.writeFile(file,Buffer.from(data,'base64'));
       results.push({cenario:name,depois:after,inset,...state,arquivo:file});
     }
@@ -49,5 +49,5 @@ try {
     }
   }
   await fs.writeFile(`${directory}/resultados.json`,JSON.stringify(results,null,2)+'\n');
-  console.log('Capturas Android antes/depois concluídas: gestos, barra e paisagem.');
+  console.log('Capturas Android atuais concluídas: gestos, barra e paisagem.');
 } finally { ws.close(); }

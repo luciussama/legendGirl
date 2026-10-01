@@ -1,1 +1,0 @@
-PASS: 36 escape targets; fairy arrives before descending child (max 19.2 frames), waits, preserves player/platform state.

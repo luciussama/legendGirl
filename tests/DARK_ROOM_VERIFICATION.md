@@ -3,7 +3,7 @@
 Referência artística: `assets/art/dark-room/environment-assets-concept.png`.
 
 Executar `npm run verify:dark-room` e `npm run check-assets`.
-A referência `fixtures/dark-room-physics.json` não deve ser atualizada para
+A referência `assets/qa-testers/active-test-assets/dark-room-physics.json` não deve ser atualizada para
 acomodar uma mudança artística: geometria e parâmetros continuam preservados.
 
 O verificador Node executa os trechos de salto, movimento e colisão de produção;
@@ -22,13 +22,8 @@ O pião usa outro PNG novo. A fase 3 usa desenhos de materiais no Canvas e sprit
 oficiais reaproveitados; superfícies de contato ficam estáveis mesmo quando
 ornamentos ou brilho se animam.
 
-Evidências atualizadas:
-- `tmp/dark-room-review/RELATORIO.md`: comparação por elemento e limitações.
-- `tmp/dark-room-review/evidencias.html`: galeria antes/depois das 38 plataformas.
-- `tmp/dark-room-review/runtime-metricas.json`: 114 resultados reais.
-- `tmp/dark-room-review/metricas-visuais.json`: cobertura de apoio por coluna/tick.
-- `tmp/dark-room/review/`: cenas, hitboxes, detalhes e JSONs das 22 plataformas
-  das fases 1/2, regenerados pelo script de revisão.
+Evidências atuais: [relatório de QA](../assets/qa-testers/current-reports/relatorio.md).
+Os scripts de revisão gravam somente em `assets/qa-testers/`.
 
 Limitação herdada: o corpo pode manter contato mínimo com a hitbox enquanto os
 sapatos ficam fora da borda. Não foi modificada na revisão artística para não

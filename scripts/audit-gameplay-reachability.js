@@ -18,7 +18,7 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory='docs/qa-gameplay-001';
+const directory='assets/qa-testers/validation/alcance';
 await fs.mkdir(directory,{recursive:true});
 const rows=[],failures=[];
 try {

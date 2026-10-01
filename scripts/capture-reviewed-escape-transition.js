@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 import { PNG } from 'pngjs';
 
-const REVIEWED_DIR = 'tmp/dark-room/reviewed';
+const REVIEWED_DIR = 'assets/qa-testers/current-screenshots/objetos';
 await fs.mkdir(REVIEWED_DIR, { recursive: true });
 
 const pages = await (await fetch('http://127.0.0.1:9222/json')).json();

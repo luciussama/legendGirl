@@ -1,7 +1,0 @@
---- TESTE: Comportamento da Plataforma 9 (Pausa e Pulo 100% de Acerto) ---
-✓ PASSOU: 300 frames (5s) em repouso absoluto na plataforma 9 sem andar ou cair.
-Impulso de pulo calculado: vx=5.094, vy=-7.2, flightTime=52.52f
-✓ Aterrissou com sucesso na plataforma 10 no frame 50! x=1890.8, y=200
---- TESTE: Checkpoint de Renascimento no Castelo (Plataforma 9) ---
-✓ PASSOU: Checkpoint de respawn na plataforma 9 mantém pausa absoluta aguardando pulo.
-TODOS OS TESTES PASSARAM COM SUCESSO!

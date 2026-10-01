@@ -18,7 +18,7 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory='docs/qa-mobile-003';
+const directory='assets/qa-testers/current-screenshots/zoom';
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');
@@ -41,10 +41,6 @@ try {
     for(const phase3 of [false,true]) for(let index=-1;index<(phase3?15:21);index++) {
       await evaluate('window.review.game.review.setMobileZoom(false)');
       const before=await evaluate(`window.review.game.review.mobileFrame(true,${index},${phase3})`);
-      if(index===0&&!phase3) {
-        const {data}=await send('Page.captureScreenshot',{format:'png'});
-        await fs.writeFile(`${directory}/${scenario}-antes.png`,Buffer.from(data,'base64'));
-      }
       await evaluate('window.review.game.review.setMobileZoom(true)');
       const after=await evaluate(`window.review.game.review.mobileFrame(true,${index},${phase3})`);
       const t=after.transform;
@@ -65,7 +61,7 @@ try {
       results.push({cenario:scenario,phase3,index,zoom:after.zoom,alturaAntes:before.player.h*height/before.height,alturaDepois:after.player.h*after.zoom*height/after.height});
       if(index===0&&!phase3) {
         const {data}=await send('Page.captureScreenshot',{format:'png'});
-        await fs.writeFile(`${directory}/${scenario}-depois.png`,Buffer.from(data,'base64'));
+        await fs.writeFile(`${directory}/${scenario}-atual.png`,Buffer.from(data,'base64'));
       }
     }
     const toy=await evaluate(`(async()=>{
@@ -92,5 +88,5 @@ try {
     await fs.writeFile(`${directory}/${scenario}-sala.png`,Buffer.from(data,'base64'));
   }
   await fs.writeFile(`${directory}/resultados.json`,JSON.stringify(results,null,2)+'\n');
-  console.log('Zoom móvel: '+results.length+' enquadramentos validados; capturas antes/depois geradas.');
+  console.log('Zoom móvel: '+results.length+' enquadramentos validados; capturas atuais geradas.');
 } finally {ws.close();}

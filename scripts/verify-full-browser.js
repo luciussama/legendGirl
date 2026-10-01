@@ -24,7 +24,7 @@ const profiles={android:{width:390,height:844,mobile:true,ua:'Mozilla/5.0 (Linux
   desktop:{width:960,height:540,mobile:false,ua:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}};
 assert.ok(profiles[profile],'Perfil de teste válido');
 const device=profiles[profile];
-const directory=(process.argv[3] || 'docs/validacao-fase-completa')+(profile==='android'?'':'/'+profile);
+const directory='assets/qa-testers/current-screenshots/percurso'+(profile==='android'?'':'/'+profile);
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');await send('Runtime.enable');

@@ -1,7 +1,7 @@
 import fs from 'node:fs/promises';
 
 // Requer servidor local na porta 3000 e Chrome de teste na porta 9222.
-await fs.mkdir('tmp/qa-002', { recursive: true });
+await fs.mkdir('assets/qa-testers/current-screenshots/plataformas-qa', { recursive: true });
 
 const pages = await (await fetch('http://127.0.0.1:9222/json')).json();
 const page = pages.find(p => p.type === 'page');
@@ -38,7 +38,7 @@ async function captureScreenshot() {
   return Buffer.from(data, 'base64');
 }
 
-const etapa = process.argv[2] || 'antes';
+const etapa = 'atual';
 try {
   await send('Page.enable');
   await send('Network.setCacheDisabled', {cacheDisabled:true});
@@ -49,8 +49,8 @@ try {
   for(const index of [4,5,6,7]) {
     for(const dt of [0.5,1,1.2]) resultados.push(await evaluate(`window.review.run(${index},${dt})`));
     await evaluate(`window.review.show(${index},false); window.review.game.state.tick=150; window.review.game.state.fairy.x=window.review.game.state.baby.x-220; window.review.game.review.draw()`);
-    await fs.writeFile(`tmp/qa-002/${index}-${etapa}.png`,await captureScreenshot());
+    await fs.writeFile(`assets/qa-testers/current-screenshots/plataformas-qa/${index}-${etapa}.png`,await captureScreenshot());
   }
-  await fs.writeFile(`tmp/qa-002/${etapa}-playtest.json`,JSON.stringify(resultados,null,2));
+  await fs.writeFile(`assets/qa-testers/current-screenshots/plataformas-qa/${etapa}-playtest.json`,JSON.stringify(resultados,null,2));
   console.log(JSON.stringify({etapa,resultados}));
 } finally {ws.close();}

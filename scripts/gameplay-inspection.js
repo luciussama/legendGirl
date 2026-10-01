@@ -1,12 +1,12 @@
 // Script de inspeção visual e gameplay sobre todas as plataformas (0 a 21)
-// Não altera código do jogo nem apaga arquivos existentes em tmp/.
-// Salva novas evidências em tmp/dark-room/gameplay-inspection/
+// Não altera código do jogo nem apaga arquivos existentes na aplicação.
+// Salva novas evidências em assets/qa-testers/validation/gameplay-inspection/
 
 import fs from 'node:fs/promises';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { PNG } from 'pngjs';
 
-const OUTPUT_DIR = 'tmp/dark-room/gameplay-inspection';
+const OUTPUT_DIR = 'assets/qa-testers/validation/gameplay-inspection';
 await fs.mkdir(OUTPUT_DIR, { recursive: true });
 
 const pages = await (await fetch('http://127.0.0.1:9222/json')).json();

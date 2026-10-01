@@ -7,6 +7,7 @@ import { BabyRenderer } from '../src/js/entities/BabyRenderer.js';
 import { SoftwareCanvas } from './software-canvas.js';
 
 // Carrega antecipadamente os recursos PNG do manifesto.
+fs.mkdirSync('assets/qa-testers/validation/arte', {recursive:true});
 const manifest = JSON.parse(fs.readFileSync('assets/manifest.json', 'utf8'));
 const imageCache = new Map();
 
@@ -111,8 +112,8 @@ for (let entry = 0; entry < entries.length; entry++) {
   console.log(`[F${phase} P${String(index).padStart(2)}] ${p.style.padEnd(23)}: coverage=${samples[0].coverageWithin1pxPct.toFixed(1)}%, empty=${samples[0].noOpaqueWithin32px}`);
 }
 
-fs.writeFileSync('tmp/dark-room-review/metricas-visuais.json', JSON.stringify(metrics, null, 2) + '\n');
-console.log('Arquivo salvo: tmp/dark-room-review/metricas-visuais.json');
+fs.writeFileSync('assets/qa-testers/validation/arte/metricas-visuais.json', JSON.stringify(metrics, null, 2) + '\n');
+console.log('Arquivo salvo: assets/qa-testers/validation/arte/metricas-visuais.json');
 
 // 2. Gera as composições visual-grupo-0.png a visual-grupo-3.png (1000 x 1770).
 for (let group = 0; group < 4; group++) {
@@ -218,7 +219,7 @@ for (let group = 0; group < 4; group++) {
     composite.fillRect(px + 14, py + 292, 8, 8);
   }
 
-  const outPath = `tmp/dark-room-review/visual-grupo-${group}.png`;
+  const outPath = `assets/qa-testers/validation/arte/visual-grupo-${group}.png`;
   fs.writeFileSync(outPath, PNG.sync.write(composite.png));
   console.log(`Arquivo salvo: ${outPath}`);
 }

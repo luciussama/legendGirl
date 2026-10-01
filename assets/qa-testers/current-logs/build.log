@@ -1,0 +1,9 @@
+
+> o-quarto-dos-brinquedos@1.0.0 build
+> node scripts/test-pages-build.js && node -e "console.log('Compilação concluída')"
+
+--- TESTE: Verificação de Build para GitHub Pages ---
+✓ index.html: 5 links e referências verificados com sucesso.
+✓ baixar.html: 2 links e referências verificados com sucesso.
+✅ Todos os links e recursos respeitam a subpasta do projeto para o GitHub Pages!
+Compilação concluída

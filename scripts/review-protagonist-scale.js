@@ -18,7 +18,7 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory='docs/art-001';
+const directory='assets/qa-testers/current-screenshots/escala';
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');
@@ -29,7 +29,7 @@ try {
     for(let i=0;i<200;i++){if(await evaluate('Boolean(window.review)'))break;await new Promise(r=>setTimeout(r,100));}
     await evaluate(`document.head.insertAdjacentHTML('beforeend','<meta name="viewport" content="width=device-width,initial-scale=1"><style>canvas{width:100vw;height:100dvh}p{display:none}</style>')`);
     await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
-    for(const after of [false,true]) {
+    for(const after of [true]) {
       const result=await evaluate(`(async()=>{
         const {babyRenderer}=await import('/src/js/entities/BabyRenderer.js');
         const original=babyRenderer.renderPose;
@@ -44,8 +44,8 @@ try {
       })()`);
       assert.equal(result.at(-1).scale,after?1.08:1,'Escala esperada na fase 1');
       const {data}=await send('Page.captureScreenshot',{format:'png'});
-      await fs.writeFile(`${directory}/${profile}-${after?'depois':'antes'}.png`,Buffer.from(data,'base64'));
+      await fs.writeFile(`${directory}/${profile}-atual.png`,Buffer.from(data,'base64'));
     }
   }
-  console.log('Comparação Art-001 capturada em desktop e Android emulado.');
+  console.log('Estado atual da protagonista capturada em desktop e Android emulado.');
 }finally{ws.close();}

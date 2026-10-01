@@ -35,7 +35,7 @@ const jump = new Function('baby', 'platforms', 'getEscapeStats', 'getPhase3Stats
   ${jumpSource}
   doJump();`);
 
-const baseline = JSON.parse(fs.readFileSync(new URL('../tests/fixtures/dark-room-physics.json', import.meta.url)));
+const baseline = JSON.parse(fs.readFileSync(new URL('../assets/qa-testers/active-test-assets/dark-room-physics.json', import.meta.url)));
 assert.deepEqual({platforms,baby:createBabyState(),escape:Array.from({length:12},(_,i)=>getEscapeStats(i))}, baseline,
   'As alterações visuais devem preservar a referência aprovada da física');
 const surface = p => ({x:p.standRegion?.x ?? p.x, w:p.standRegion?.w ?? p.w,

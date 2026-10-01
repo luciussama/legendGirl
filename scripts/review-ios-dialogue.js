@@ -18,7 +18,7 @@ async function evaluate(expression) {
   if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));
   return result.result.value;
 }
-const directory = process.argv[2] || 'docs/qa-mobile-002';
+const directory = 'assets/qa-testers/current-screenshots/dialogos/' + (process.argv[3] === 'android' ? 'android' : 'iphone');
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');

@@ -145,6 +145,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 ├── package.json               # Dependências e comandos
 ├── package-lock.json          # Resolução versionada das dependências
 ├── assets/                    # Manifesto, arte e áudio
+│   └── qa-testers/            # Evidências atuais, relatórios e referência dos testes
 ├── src/
 │   ├── css/                   # Estilos da interface
 │   └── js/
@@ -163,7 +164,6 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       └── debug/             # Ferramentas de inspeção
 ├── scripts/                   # Testes, geração e revisão de recursos
 ├── tests/                     # Páginas instrumentadas e referências de física
-├── docs/                      # Relatórios e capturas de validação
 └── .github/workflows/          # Publicação no GitHub Pages
 ```
 
@@ -200,15 +200,9 @@ node scripts/verify-full-browser.js iphone
 
 O teste percorre abertura, plataformas, transições e sala de brinquedos. Ele busca momentos de salto usando snapshots entre tentativas e avança o código real de atualização em passos controlados. Na sala, usa vetores do joystick virtual e verifica a entrega dos oito objetos.
 
-Relatórios disponíveis:
+Relatório disponível: [QA atual](assets/qa-testers/current-reports/relatorio.md).
 
-- [Percurso completo e vitória](docs/validacao-fase-completa/relatorio.md).
-- [QA-Mobile-001 — Enquadramento vertical no Android](docs/qa-mobile-001/relatorio.md).
-- [QA-Mobile-002 — Área segura de legendas e diálogos](docs/qa-mobile-002/relatorio.md).
-- [QA-Mobile-003 — Zoom móvel](docs/qa-mobile-003/relatorio.md).
-- [QA-Mobile-004 — Região narrativa exclusiva](docs/qa-mobile-004/relatorio.md).
-
-As evidências móveis desses relatórios utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
+As evidências móveis do relatório utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
 
 ## Publicação e exportação
 
@@ -232,4 +226,6 @@ Siga as instruções de [`AGENTS.md`](AGENTS.md): comentários, documentação, 
 
 Ao alterar apresentação, mantenha física, geometria de colisão e posições do mundo separadas das transformações de renderização. Não desenhe linhas auxiliares de pouso ou hitboxes sobre as ilustrações na apresentação normal; inspeções técnicas pertencem ao modo de depuração.
 
-Mudanças em física ou progressão exigem revisão das referências em `tests/fixtures/` e dos testes de percurso. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.
+Mudanças em física ou progressão exigem revisão das referências em `assets/qa-testers/active-test-assets/` e dos testes de percurso. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.
+
+As evidências atuais estão em [assets/qa-testers](assets/qa-testers/README.md). O Git é a única fonte de histórico de QA.
