@@ -5,8 +5,18 @@ export function isMobileDevice(nav = globalThis.navigator) {
     (nav?.platform === 'MacIntel' && nav?.maxTouchPoints > 1);
 }
 
-export function getMobileZoomFrame({ enabled, width, height, bounds, anchor, margin = 24 }) {
+export function getMobileZoomFrame({ enabled, width, height, bounds, anchor, margin = 24, stable = false, anticipate = false }) {
+  // A subida final conserva o enquadramento amplo: trocar o próximo apoio no pouso
+  // não deve recalcular escala nem translação e produzir saltos no desenho.
   if (!enabled || !bounds) return { zoom: 1, x: 0, y: 0 };
+  if (stable) {
+    // Enquadramento único para toda a seção: inclui a maior distância de antecipação.
+    const zoom = 0.8;
+    const x = anticipate
+      ? Math.min(width * 0.32, width - margin - 24 - anchor.x * zoom)
+      : (1 - zoom) * width / 2;
+    return { zoom, x, y: (1 - zoom) * height / 2 };
+  }
   const spanX = Math.max(1, bounds.right - bounds.left);
   const spanY = Math.max(1, bounds.bottom - bounds.top);
   // Até 18% de aproximação; abre o enquadramento se fada e próximo apoio exigirem espaço.

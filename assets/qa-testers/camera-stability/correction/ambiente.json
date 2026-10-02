@@ -1,0 +1,1 @@
+{"androidNativo":"Nenhum dispositivo listado por adb devices -l", "iosNativo":"xcrun: simctl indisponível", "execucao":"Chrome local via CDP; dois percursos por variante em três perfis; relógio determinístico de 60 Hz", "limite":"Não substitui testes em aparelhos Android/iPhone, Safari/WebView, frame pacing real ou avaliação humana de dificuldade"}

@@ -12,4 +12,17 @@ frame=getMobileZoomFrame({...scene,bounds:{...scene.bounds,right:520}});
 assert.ok(frame.zoom>1&&frame.zoom<1.18,'Zoom reduzido quando necessário à antecipação');
 assert.deepEqual(getMobileZoomFrame({...scene,enabled:false}),{zoom:1,x:0,y:0},'Desktop sem transformação');
 assert.equal(getMobileZoomFrame({...scene,bounds:{...scene.bounds,right:700}}).zoom,1,'Sem fechar um enquadramento já amplo');
-console.log('Zoom móvel: detecção, ampliação moderada e proteção da antecipação aprovadas.');
+
+
+// A região de antecipação muda abruptamente nos pousos; a fase 3 mantém a mesma escala.
+const stableReference=getMobileZoomFrame({...scene,stable:true});
+for (const right of [450,520,700,1100]) {
+  assert.deepEqual(getMobileZoomFrame({...scene,stable:true,bounds:{...scene.bounds,right}}),
+    stableReference,'A troca do próximo apoio não altera o enquadramento estável');
+  const stable=getMobileZoomFrame({...scene,stable:true,anticipate:true,bounds:{...scene.bounds,right}});
+  assert.equal(stable.zoom,0.8,'Campo amplo permanece constante na subida');
+  assert.equal(stable.x,172.8,'Antecipação independe da troca de apoio');
+}
+const edge=getMobileZoomFrame({...scene,stable:true,anticipate:true,anchor:{x:550,y:690}});
+assert.ok(550*edge.zoom+edge.x+19*edge.zoom<=scene.width-24,'A personagem permanece inteira na saída do tutorial');
+console.log('Zoom móvel: ampliação, estabilidade e antecipação aprovadas.');

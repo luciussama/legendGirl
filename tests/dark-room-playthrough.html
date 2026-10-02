@@ -17,8 +17,8 @@ source=source.replace(marker,`  return {
     review: {
       roomManual(){return toyRoomInstance?.instance;},
       beginManual(){newCampaign();loopStarted=true;gameStarted=true;opening.reset();opening.start();syncLocalsToState();},
-      saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot()};},
-      restoreManual(saved){clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
+      saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot(),cameraPresentation:cameraPresentation.snapshot()};},
+      restoreManual(saved){cameraPresentation.restore(saved.cameraPresentation);clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
       inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
         transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
         phase3:isPhase3,tutorial:phase3TutorialActive,portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
@@ -28,6 +28,7 @@ source=source.replace(marker,`  return {
         else {update(1);syncLocalsToState();if(draw)render();}
       },
       mobileFrame(after = true, index = -1, phase3 = false) {
+        cameraPresentation.reset();
         cameraX=0;cameraY=Math.min(0,FLOOR_Y-(canvas.height-110));cameraZoom=1;
         const p=(phase3?phase3Platforms:platforms)[index];
         isPhase3=phase3;
@@ -58,6 +59,7 @@ source=source.replace(marker,`  return {
       setMobileZoom(enabled){mobilePresentation.enabled=enabled;},
       openingFrame(time) { opening.time=time; opening.active=true; render(); opening.cancel(); },
       prepare(index, x, phase3 = false) {
+        cameraPresentation.reset();
         const p=(phase3 ? phase3Platforms : platforms)[index];
         const y=p ? (p.surfaceTopY ?? p.standRegion?.y ?? p.y) : FLOOR_Y;
         Object.assign(baby,createBabyState(),{x,y:y-44,currentPlatformIndex:index,

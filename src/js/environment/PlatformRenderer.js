@@ -751,7 +751,11 @@ export class PlatformRenderer {
     ctx.save();
     activePlatforms.forEach((p, idx) => {
       const sx = p.x - camX;
-      if (sx + p.w < -80 || sx > canvas.width + 80) return;
+      // A visibilidade considera o zoom e os offsets reais, sem alterar o objeto ou sua hitbox.
+      const cameraMatrix = options.cameraVisibility ? ctx.getTransform?.() : null;
+      const left = cameraMatrix ? cameraMatrix.a * sx + cameraMatrix.e : sx;
+      const right = cameraMatrix ? cameraMatrix.a * (sx + p.w) + cameraMatrix.e : sx + p.w;
+      if (right < -80 || left > canvas.width + 80) return;
 
       const isDebugHitbox = (typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean')
         ? window.DEBUG_COLLISIONS

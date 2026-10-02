@@ -223,18 +223,18 @@ export class CameraController {
    * @param {object} baby Estado do jogador
    * @param {object} fairy Estado da fadinha
    */
-  applyTransform(ctx, canvas, baby, fairy) {
+  applyTransform(ctx, canvas, baby, fairy, presentationY = this.y, presentationX = this.x, sourceX = this.x) {
     if (!ctx) return;
 
     if (this.zoom !== 1.0 && baby && fairy) {
-      const focusX = (baby.x + fairy.x) / 2 - this.x;
-      const focusY = (baby.y + fairy.y) / 2 - this.y;
+      const focusX = (baby.x + fairy.x) / 2 - presentationX;
+      const focusY = (baby.y + fairy.y) / 2 - presentationY;
       ctx.translate(focusX, focusY);
       ctx.scale(this.zoom, this.zoom);
       ctx.translate(-focusX, -focusY);
     }
 
-    ctx.translate(0, -this.y);
+    ctx.translate(sourceX - presentationX, -presentationY);
   }
 }
 

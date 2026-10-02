@@ -6,6 +6,7 @@ import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoo
 import { createAudioController } from './controllers/AudioController.js';
 import { getMobileZoomFrame, isMobileDevice } from './controllers/MobileZoom.js';
 import { createAndroidFraming } from './controllers/AndroidFraming.js';
+import { CameraPresentation } from './controllers/CameraPresentation.js';
 import { createCameraController } from './controllers/CameraController.js';
 import { bindInput, InputController } from './controllers/InputController.js';
 import { createToyRoom } from './toyRoom.js';
@@ -37,6 +38,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const campaign = createCampaignProgress();
   let lastSaveTime = 0;
   const camera = createCameraController({ floorY: FLOOR_Y });
+  const cameraPresentation = new CameraPresentation();
   const androidFraming = createAndroidFraming(canvas);
   const mobilePresentation = { enabled: isMobileDevice() };
   const lighting = createLightingSystem({ floorY: FLOOR_Y });
@@ -411,6 +413,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function resetToStart(failedMidClimb = false, shouldPlayFailSound = true) {
+    cameraPresentation.reset();
     syncLocalsToState();
     state.resetToStart(failedMidClimb, shouldPlayFailSound, audio);
     syncStateToLocals();
@@ -593,6 +596,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   function drawPlatforms(camX) {
     platformRenderer.renderPlatforms(ctx, canvas, camX, {
       isPhase3,
+      cameraVisibility: isPhase3,
       platforms: isPhase3 ? phase3Platforms : platforms,
       baby,
       tick,
@@ -1464,6 +1468,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   function render() {
     if (opening.active && !opening.revealing) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
+      recordCameraQa();
       opening.render(ctx, canvas, {assets, lighting, fairyRenderer,
         drawRoom: () => { drawBackgroundWall(0); drawSceneryItems(0); drawPlatforms(0); }
       });
@@ -1472,15 +1477,28 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // A translação de apresentação fica fora da câmera usada pela física.
-    const focusY = (baby.y + fairy.y) / 2 - cameraY;
-    const screenY = y => focusY + (y - cameraY - focusY) * camera.zoom;
+    const cameraNarrative = Boolean(opening.active || plotTwistActive || phase3TutorialActive || truePortalTransitionActive);
+    // Alvo visual de regime permanente do follow existente (fator lógico de 0.08), sem mudar sua atualização.
+    const groundLead = (canvas.width > 600 ? canvas.width - 250 : canvas.width - 160)
+      + 11.5 * (baby.vx - targetScrollSpeed);
+    // Normaliza a pose efetivamente desenhada também nos ramos narrativos que atualizam valores locais.
+    const renderCameraX = cameraX + (1 - camera.zoom) * (camera.x - cameraX);
+    const presentation = cameraPresentation.frame({ x: renderCameraX, y: camera.y,
+      playerX: baby.x, groundLead, targetY: targetCameraY,
+      onGround: baby.onGround, active: isPhase3 || plotTwistActive,
+      narrative: cameraNarrative, tick, width: canvas.width, height: canvas.height,
+      cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height, zoom: camera.zoom });
+    const presentationY = presentation.y;
+    const presentationX = isPhase3 || plotTwistActive ? presentation.x : cameraX;
+    const focusY = (baby.y + fairy.y) / 2 - presentationY;
+    const screenY = y => focusY + (y - presentationY - focusY) * camera.zoom;
     const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(p =>
       p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0);
     const topY = Math.min(screenY(baby.y - 20), screenY(fairy.y - 24),
       ...visiblePlatforms.map(p => screenY(p.y - 64)));
     const framingOffset = androidFraming.offset(screenY(FLOOR_Y), topY);
-    const focusX = (baby.x + fairy.x) / 2 - cameraX;
-    const screenX = x => focusX + (x - cameraX - focusX) * camera.zoom;
+    const focusX = (baby.x + fairy.x) / 2 - presentationX;
+    const screenX = x => focusX + (x - presentationX - focusX) * camera.zoom;
     const activePlatforms = isPhase3 ? phase3Platforms : platforms;
     const next = activePlatforms[baby.currentPlatformIndex + 1];
     const points = [
@@ -1500,14 +1518,17 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       top: Math.min(...points.map(p => screenY(p[1]) - framingOffset)),
       bottom: Math.max(...points.map(p => screenY(p[1]) - framingOffset))
     };
-    const mobileFrame = getMobileZoomFrame({ enabled: mobilePresentation.enabled,
+    const mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: isPhase3 || plotTwistActive, anticipate: isPhase3,
       width: canvas.width, height: canvas.height, bounds,
       anchor: { x: screenX(baby.x + baby.w / 2), y: screenY(baby.y + baby.h) - framingOffset } });
+    const mobileFrame = cameraPresentation.mobileFrame({ target: mobileTarget, enabled: mobilePresentation.enabled,
+      stable: isPhase3 || plotTwistActive, anticipate: isPhase3, tick, width: canvas.width, height: canvas.height });
     ctx.save();
     ctx.translate(mobileFrame.x, mobileFrame.y);
     ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
     ctx.translate(0, -framingOffset);
-    camera.applyTransform(ctx, canvas, baby, fairy);
+    camera.applyTransform(ctx, canvas, baby, fairy, presentationY, presentation.x, cameraX);
+    recordCameraQa(ctx.getTransform());
 
     drawBackgroundWall(cameraX);
     drawSceneryItems(cameraX);
@@ -1590,6 +1611,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function restoreProgress(saved) {
+    cameraPresentation.reset();
     if (saved.state.currentPhaseMode === 'toy-room') {
       startToyRoomPhase();
       toyRoomInstance.instance.restore(saved.toyRoom);
@@ -1615,6 +1637,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function newCampaign() {
     gameStarted = false;
+    cameraPresentation.reset();
     campaign.clear(); opening.reset();
     toyRoomInstance?.destroy(); toyRoomInstance = null;
     audio.stopAllAudio();
@@ -1631,6 +1654,23 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const saveOnHide = () => { if (document.visibilityState === 'hidden') saveProgress(); };
   window.addEventListener('pagehide', saveProgress);
   document.addEventListener('visibilitychange', saveOnHide);
+
+  // Observação temporária QA-CAMERA-002A, ativada exclusivamente por parâmetro de URL.
+  const cameraQaEnabled = new URLSearchParams(window.location.search).has('cameraQa');
+  function recordCameraQa(transform = null) {
+    if (!cameraQaEnabled || typeof window.cameraQaRecord !== 'function') return;
+    window.cameraQaRecord({
+      cameraX, cameraY, cameraZoom, playerX: baby.x, playerY: baby.y,
+      fairyX: fairy.x, fairyY: fairy.y, onGround: baby.onGround,
+      platform: baby.currentPlatformIndex, phase3: isPhase3,
+      narrative: Boolean(opening.active || isStandbyActive || isStandbyTransitioning ||
+        cutsceneActive || plotTwistActive || phase3TutorialActive || truePortalTransitionActive),
+      plotTwistActive, plotTwistStep, phase3TutorialActive, truePortalTransitionActive,
+      width: canvas.width, height: canvas.height,
+      cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height,
+      transform: transform ? {a: transform.a, d: transform.d, e: transform.e, f: transform.f} : null
+    });
+  }
 
   function loop(currentTime = performance.now()) {
     if (gameStarted && currentTime - lastSaveTime >= 1000) saveProgress();
