@@ -13,6 +13,7 @@ import { createToyRoom } from './toyRoom.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
+import { renderFirstJumpTutorial } from './ui/FirstJumpTutorial.js';
 import { applyArtFinish } from './effects/ArtFinish.js';
 import { createParticleSystem, transitionEffects } from './effects/index.js';
 import { hudRenderer, dialogueRenderer } from './ui/index.js';
@@ -86,7 +87,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   const opening = new OpeningSequence({
     onReveal: beginOpeningGameplay,
-    onComplete: () => { lastTime = performance.now(); },
+    onComplete: enterFirstJumpTutorial,
     onCue: name => {
       if (name === 'ambience') { audio.initAudio(); audio.pauseMusic(); audio.playOpeningAmbience(); }
       else if (name === 'wake') { audio.playLevelUpChime(0); audio.startMusic(); }
@@ -110,6 +111,20 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncLocalsToState(); camera.syncFromState(state);
     if (uiFeedback) uiFeedback.innerText = GAME_CONFIG.uiMessage;
     lastTime = performance.now();
+  }
+
+  function enterFirstJumpTutorial() {
+    if (state.firstJumpTutorialCompleted) {
+      state.gameplayState = 'GAMEPLAY_NORMAL';
+      baby.controlsLocked = false;
+      return;
+    }
+    // Suspende a simulação sem modificar velocidades, gravidade ou o layout.
+    state.gameplayState = 'FIRST_JUMP_TUTORIAL';
+    if (uiFeedback) uiFeedback.innerText = '';
+    baby.controlsLocked = true;
+    lastTime = performance.now();
+    syncLocalsToState();
   }
 
   function syncStateToLocals() {
@@ -419,8 +434,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals();
   }
 
-  function doJump() {
+  function doJump(inputSource) {
     if (opening.active) return;
+    const firstJump = state.gameplayState === 'FIRST_JUMP_TUTORIAL';
+    if (firstJump && (isPaused || !['touch', 'mouse', 'keyboard', 'gamepad'].includes(inputSource))) return;
     audio.initAudio();
 
     if (isGameOver || !gameStarted) {
@@ -468,7 +485,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
 
     // Verifica se os controles estão travados ou se a menina ainda está se levantando/agachada
-    if (baby.controlsLocked || baby.respawnLandingPending || baby.isCrouching) {
+    if ((!firstJump && baby.controlsLocked) || baby.respawnLandingPending || baby.isCrouching) {
       return;
     }
 
@@ -551,6 +568,15 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnBabyJumpPuff(baby.x + baby.w / 2, baby.y + baby.h, 5);
       spawnFairySparkles(fairy.x, fairy.y, 6);
     }
+    // Conclui somente após o impulso físico aceito; tentativas inválidas não consomem o tutorial.
+    if (firstJump) {
+      baby.controlsLocked = false;
+      state.firstJumpTutorialCompleted = true;
+      state.gameplayState = 'GAMEPLAY_NORMAL';
+      lastTime = performance.now();
+      saveProgress();
+    }
+    return true;
   }
 
   // --- SISTEMA DE POEIRA MÁGICA DA FADA ---
@@ -692,6 +718,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- LOOP DE ATUALIZAÇÃO DO JOGO ---
   function update(dt = 1.0) {
+    // O tutorial pausa relógio, IA, câmera e progressão antes de qualquer atualização.
+    if (state.gameplayState === 'FIRST_JUMP_TUTORIAL') return;
     tick++;
     if (!gameStarted) return;
     if (gameWon) return;
@@ -1550,6 +1578,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
     applyArtFinish(ctx, canvas);
     drawEscapeBanner();
+    renderFirstJumpTutorial(ctx, canvas, { state, baby, fairy, platform: platforms[0], cameraX,
+      transform: presentationTransform, device: inputHandler.controller.promptDevice });
     drawCutsceneDialogue(presentationTransform);
     if (opening.active) opening.renderFade(ctx, canvas);
 
@@ -1711,6 +1741,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   const inputHandler = bindInput({
+    isFirstJumpTutorial: () => state.gameplayState === 'FIRST_JUMP_TUTORIAL',
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !isStandbyActive),
     isCutsceneActive: () => Boolean(opening.active || cutsceneActive || isStandbyActive || (plotTwistActive && plotTwistStep >= 4)),
@@ -1772,6 +1803,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         audio.startToyRoomMusic();
       } else if (!opening.start()) {
         beginOpeningGameplay();
+        enterFirstJumpTutorial();
         audio.startMusic();
       }
       if (!loopStarted) {

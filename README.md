@@ -38,10 +38,13 @@ Sirva o projeto por HTTP: módulos JavaScript e carregamento do manifesto de rec
 
 O `package-lock.json` deve permanecer versionado na raiz junto com `package.json`. Ele é usado por `npm ci` e pela chave de cache do GitHub Actions. Ao mudar dependências, atualize e versione os dois arquivos.
 
+Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) para estados, entradas, persistência, feedback visual e manutenção.
+
 ## Controles
 
 | Contexto | Entrada | Ação |
 | --- | --- | --- |
+| Primeiro salto (`FIRST_JUMP_TUTORIAL`) | Toque primário, clique esquerdo, Espaço ou nova pressão de A | Saltar e concluir o tutorial, se o salto for aceito |
 | Fases de plataforma | Toque ou clique na área de jogo | Saltar ou avançar a interação ativa |
 | Fases de plataforma | Espaço ou seta para cima | Saltar ou avançar a interação ativa |
 | Fases de plataforma | Botão X de controle compatível com o mapeamento esperado | Saltar ou avançar a interação ativa |

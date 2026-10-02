@@ -36,4 +36,15 @@ fallback.read(); fallback.clear(); assert.equal(fallback.read(), null);
 assert.equal(fallback.write(saved), false); assert.deepEqual(fallback.read().state, saved.state);
 const deniedOpening = new OpeningSequence({storage:{getItem:()=> '1',removeItem(){throw Error('negado');}}});
 deniedOpening.reset(); assert(deniedOpening.start(), 'Reinício funciona na sessão mesmo com armazenamento bloqueado');
+// O estado de tutorial persiste; saves anteriores continuam na experiência já iniciada.
+const tutorialSave={...saved,state:{...saved.state,gameplayState:'FIRST_JUMP_TUTORIAL'}};
+progress.write(tutorialSave);
+assert.equal(createCampaignProgress(storage).read().state.gameplayState,'FIRST_JUMP_TUTORIAL');
+const legacy=JSON.parse(JSON.stringify(saved));delete legacy.state.gameplayState;delete legacy.state.firstJumpTutorialCompleted;
+data.set(CAMPAIGN_STORAGE_KEY,JSON.stringify({...legacy,version:1}));
+assert.equal(createCampaignProgress(storage).read().state.gameplayState,'GAMEPLAY_NORMAL','Save anterior não deve ficar bloqueado no tutorial');
+assert.equal(createCampaignProgress(storage).read().state.firstJumpTutorialCompleted,true,'Campanha antiga iniciada não repete tutorial');
+progress.write({...saved,state:{...saved.state,firstJumpTutorialCompleted:true,gameplayState:'GAMEPLAY_NORMAL'}});
+assert.equal(createCampaignProgress(storage).read().state.firstJumpTutorialCompleted,true,'Conclusão persiste em recarga');
+assert.equal(createDefaultStateVariables().firstJumpTutorialCompleted,false,'Novo save reinicia a conclusão');
 console.log('APROVADO: campanha persistente, recarga, referências compartilhadas, abertura, limpeza seletiva, saves inválidos e armazenamento bloqueado.');

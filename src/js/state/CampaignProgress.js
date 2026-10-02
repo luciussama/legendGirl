@@ -29,8 +29,14 @@ export function createCampaignProgress(storage) {
         const raw = storage?.getItem(CAMPAIGN_STORAGE_KEY);
         if (raw) {
           const data = JSON.parse(raw);
+          // Saves anteriores ao tutorial conservam o gameplay já iniciado.
+          if (data.state && typeof data.state === 'object' && !('gameplayState' in data.state)) data.state.gameplayState = 'GAMEPLAY_NORMAL';
+          if (data.state && typeof data.state === 'object' && !('firstJumpTutorialCompleted' in data.state)) {
+            data.state.firstJumpTutorialCompleted = data.state.gameplayState === 'GAMEPLAY_NORMAL';
+          }
           const defaults = captureState(createDefaultStateVariables());
           if (data.version !== 1 || !data.state || !data.opening ||
+              !['CUTSCENE', 'FIRST_JUMP_TUTORIAL', 'GAMEPLAY_NORMAL'].includes(data.state.gameplayState) ||
               typeof data.opening.active !== 'boolean' || typeof data.opening.completed !== 'boolean' ||
               !Number.isFinite(data.opening.time) || !Array.isArray(data.opening.cues) ||
               !['bedroom', 'toy-room'].includes(data.state.currentPhaseMode) ||

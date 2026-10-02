@@ -1,0 +1,38 @@
+[
+  {
+    "entrada": "touch",
+    "primeiraExecucao": true,
+    "saltoOriginal": true,
+    "conclusaoPersistida": true,
+    "tentativaSemTutorial": true,
+    "restauracaoSemTutorial": true,
+    "novoSaveComTutorial": true
+  },
+  {
+    "entrada": "keyboard",
+    "primeiraExecucao": true,
+    "saltoOriginal": true,
+    "conclusaoPersistida": true,
+    "tentativaSemTutorial": true,
+    "restauracaoSemTutorial": true,
+    "novoSaveComTutorial": true
+  },
+  {
+    "entrada": "mouse",
+    "primeiraExecucao": true,
+    "saltoOriginal": true,
+    "conclusaoPersistida": true,
+    "tentativaSemTutorial": true,
+    "restauracaoSemTutorial": true,
+    "novoSaveComTutorial": true
+  },
+  {
+    "entrada": "gamepad",
+    "primeiraExecucao": true,
+    "saltoOriginal": true,
+    "conclusaoPersistida": true,
+    "tentativaSemTutorial": true,
+    "restauracaoSemTutorial": true,
+    "novoSaveComTutorial": true
+  }
+]

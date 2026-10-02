@@ -5,6 +5,7 @@ export class BabyRenderer {
   constructor() { this.assets = null; }
   setAssets(assets) { this.assets = assets; }
   resolveAnimationState(baby, state) {
+    if (state.gameplayState === 'FIRST_JUMP_TUTORIAL') return { state: 'idle', frame: 0 };
     const tick = state.tick || 0;
     const animTime = baby.animTime || 0;
 

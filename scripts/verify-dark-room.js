@@ -14,7 +14,7 @@ function section(start, end) {
   assert(a >= 0 && b > a, `Trecho de produção não encontrado: ${start}`);
   return source.slice(a, b);
 }
-const jumpSource = section('  function doJump() {', '  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---');
+const jumpSource = section('  function doJump(inputSource) {', '  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---');
 const movement = new Function('baby', 'dt', section('    baby.x += baby.vx * dt;', '    // Rastro de poeira'));
 const landing = new Function('baby', 'platforms', `const isPhase3 = false;
   ${section('    const activePlatforms = isPhase3 ? phase3Platforms : platforms;', '    if (landedIdx !== -1) {')}
@@ -22,6 +22,7 @@ const landing = new Function('baby', 'platforms', `const isPhase3 = false;
 // Fornece a dependência opening capturada pelo escopo da função doJump de produção.
 // Os cenários de física começam após a abertura; os testes de bloqueio podem ativá-la.
 const jump = new Function('baby', 'platforms', 'getEscapeStats', 'getPhase3Stats', 'opening = {active:false}', `
+  const state = {gameplayState:'GAMEPLAY_NORMAL'};
   const audio = {initAudio(){}, playJumpSound(){}, playLongJumpSound(){}};
   const fairy = {x:0,y:0,vy:0};
   const performance = {now:()=>1000};

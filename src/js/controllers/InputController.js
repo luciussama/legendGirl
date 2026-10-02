@@ -9,9 +9,11 @@ export class InputController {
     this.game = game;
     this.minInputInterval = options.minInputInterval || 140; // Intervalo mínimo contra toques repetidos (ms)
     this.lastInputTime = 0;
+    this.promptDevice = null; // Entrada observada para a instrução do primeiro salto.
 
     // Rastreia o estado anterior dos botões por gamepad para garantir pulo único por pressionamento (borda de subida)
     this.prevGamepadButtonX = new Map();
+    this.prevTutorialButtonA = new Map();
     this.gamepadPollRafId = null;
     this.isDestroyed = false;
 
@@ -33,7 +35,7 @@ export class InputController {
     this.startGamepadPollingLoop();
   }
 
-  triggerJump() {
+  triggerJump(source) {
     if (!this.game) return;
 
     // Ignora entrada se o jogo terminou ou se estiver no modo Quarto de Brinquedos
@@ -48,13 +50,13 @@ export class InputController {
 
     // No gameplay normal (fora de cutscenes e do modo de prontidão), garante que a personagem esteja no chão para evitar pulo duplo no ar
     const inCutscene = typeof this.game.isCutsceneActive === 'function' && this.game.isCutsceneActive();
-    if (!inCutscene && typeof this.game.isGrounded === 'function' && !this.game.isGrounded()) {
+    if (!inCutscene && !this.game.isFirstJumpTutorial?.() && typeof this.game.isGrounded === 'function' && !this.game.isGrounded()) {
       return;
     }
 
     this.lastInputTime = now;
     if (typeof this.game.doJump === 'function') {
-      this.game.doJump();
+      this.game.doJump(source);
     }
   }
 
@@ -67,6 +69,7 @@ export class InputController {
     // Registra o tipo de dispositivo
     if (typeof this.game.setLastInputDevice === 'function') {
       const isTouch = event.pointerType === 'touch' || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      this.promptDevice = event.pointerType === 'mouse' ? 'mouse' : isTouch ? 'touch' : 'mouse';
       this.game.setLastInputDevice(isTouch ? 'touch' : 'keyboard');
     }
 
@@ -93,7 +96,8 @@ export class InputController {
     if (event.cancelable) {
       event.preventDefault();
     }
-    this.triggerJump();
+    if (this.game.isFirstJumpTutorial?.() && event.pointerType === 'mouse' && event.button != null && event.button !== 0) return;
+    this.triggerJump(this.promptDevice);
   }
 
   handleKeyDown(event) {
@@ -103,6 +107,7 @@ export class InputController {
     }
 
     if (this.game && typeof this.game.setLastInputDevice === 'function') {
+      this.promptDevice = 'keyboard';
       this.game.setLastInputDevice('keyboard');
     }
 
@@ -123,7 +128,8 @@ export class InputController {
       if (event.cancelable) {
         event.preventDefault();
       }
-      this.triggerJump();
+      if (this.game.isFirstJumpTutorial?.() && event.code !== 'Space' && event.key !== ' ') return;
+      this.triggerJump('keyboard');
     }
   }
 
@@ -152,6 +158,16 @@ export class InputController {
       const gp = gamepads[i];
       if (!gp || !gp.connected || !gp.buttons) continue;
 
+      const pressedA = Boolean(gp.buttons[0]?.pressed || gp.buttons[0]?.value > 0.5);
+      const wasA = this.prevTutorialButtonA.get(i) || false;
+      this.prevTutorialButtonA.set(i, pressedA);
+      if (this.game.isFirstJumpTutorial?.()) {
+        if (pressedA && !wasA) {
+          this.promptDevice = 'gamepad';
+          this.triggerJump('gamepad');
+        }
+        continue; // X não confirma o primeiro salto; o gameplay existente continua usando X.
+      }
       // O botão X do Xbox é o índice 2
       const btnX = gp.buttons[2];
       const isPressed = Boolean(btnX && (btnX.pressed || btnX.value > 0.5));
@@ -159,11 +175,12 @@ export class InputController {
 
       if (isPressed && !wasPressed) {
         if (this.game && typeof this.game.setLastInputDevice === 'function') {
+          this.promptDevice = 'gamepad';
           this.game.setLastInputDevice('gamepad');
         }
         // Borda de subida: acionado exatamente uma vez ao pressionar o botão
         this.prevGamepadButtonX.set(i, true);
-        this.triggerJump();
+        this.triggerJump('gamepad');
       } else if (!isPressed && wasPressed) {
         // Botão liberado
         this.prevGamepadButtonX.set(i, false);
@@ -186,6 +203,7 @@ export class InputController {
   handleGamepadDisconnected(event) {
     if (event && event.gamepad) {
       this.prevGamepadButtonX.delete(event.gamepad.index);
+      this.prevTutorialButtonA.delete(event.gamepad.index);
     }
   }
 
@@ -201,6 +219,7 @@ export class InputController {
       window.removeEventListener('gamepaddisconnected', this.boundHandleGamepadDisconnected);
     }
     this.prevGamepadButtonX.clear();
+    this.prevTutorialButtonA.clear();
   }
 }
 

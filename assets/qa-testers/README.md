@@ -10,6 +10,10 @@ Esta é a única localização oficial de evidências. O Git conserva o históri
 
 Consulte o [relatório atual](current-reports/relatorio.md). Sprites e recursos de runtime continuam em seus caminhos de produção.
 
+## Tutorial do primeiro salto
+
+O [guia técnico](../../docs/TUTORIAL-PRIMEIRO-SALTO.md) descreve reprodução e cobertura. O [relatório atual](current-reports/first-jump-tutorial.md) reúne as capturas e logs das tarefas 1 a 4. Touch e gamepad foram simulados no Chrome; compreensão por jogadores e hardware real exigem validação própria.
+
 ## Reprodução
 
 Execute na raiz: `npm test`, `npm run build`, `npm run check-assets` e `npm run lint`. Redirecione as saídas para os arquivos correspondentes em `current-logs/`, sobrescrevendo-os.

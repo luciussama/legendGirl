@@ -19,6 +19,8 @@ export function createDefaultStateVariables() {
     fairy,
 
     // Modos de Fase e Sala
+    firstJumpTutorialCompleted: false, // Conclusão única por campanha salva.
+    gameplayState: 'CUTSCENE', // CUTSCENE → FIRST_JUMP_TUTORIAL → GAMEPLAY_NORMAL
     currentPhaseMode: 'bedroom', // 'bedroom' | 'toy-room'
     toyRoomInstance: null,
     isEscapeMode: false,
