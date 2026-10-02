@@ -29,10 +29,21 @@ export function createCampaignProgress(storage) {
         const raw = storage?.getItem(CAMPAIGN_STORAGE_KEY);
         if (raw) {
           const data = JSON.parse(raw);
-          // Saves anteriores ao tutorial conservam o gameplay já iniciado.
-          if (data.state && typeof data.state === 'object' && !('gameplayState' in data.state)) data.state.gameplayState = 'GAMEPLAY_NORMAL';
+          // Aberturas antigas ainda em andamento precisam chegar ao primeiro salto.
+          // Campanhas que já avançaram conservam o gameplay iniciado.
+          if (data.state && typeof data.state === 'object' && !('gameplayState' in data.state)) {
+            data.state.gameplayState = data.opening?.active && !data.opening?.completed
+              ? 'CUTSCENE' : 'GAMEPLAY_NORMAL';
+          }
           if (data.state && typeof data.state === 'object' && !('firstJumpTutorialCompleted' in data.state)) {
             data.state.firstJumpTutorialCompleted = data.state.gameplayState === 'GAMEPLAY_NORMAL';
+          }
+          // Recupera também saves gravados pela migração anterior durante a abertura.
+          // Uma abertura inicial incompleta não pode ter consumido o primeiro salto.
+          if (data.state && typeof data.state === 'object' &&
+              data.opening?.active === true && data.opening?.completed === false) {
+            data.state.gameplayState = 'CUTSCENE';
+            data.state.firstJumpTutorialCompleted = false;
           }
           const defaults = captureState(createDefaultStateVariables());
           if (data.version !== 1 || !data.state || !data.opening ||

@@ -32,3 +32,22 @@ A animação usa o relógio visual, independente do progresso da simulação. A 
 O teste unitário verificou escala, brilho, flutuação e movimento reduzido. O teste de navegador mediu três amostras da escala em cada uma das quatro entradas: a animação avançou enquanto personagem, câmera e tick permaneceram iguais. O teste de conclusão também passou após a alteração visual. As capturas acima foram atualizadas e revisadas: personagem, fadinha e destino permanecem visíveis.
 
 Mensagem, símbolo de entrada e seta apresentam a ação e o destino diretamente na fase. A compreensão por jogadores sem documentação ainda requer observação com usuários; não foi realizado estudo de usabilidade.
+
+## Revisão de continuidade mobile — 02/10/2026
+
+O jogador informou que continuou um save existente. Sem o conteúdo desse save ou acesso ao celular, não é possível atribuir o relato individual a uma causa única. Foi encontrada e corrigida uma falha reproduzível: a migração de campanhas antigas assumia `GAMEPLAY_NORMAL` e conclusão verdadeira mesmo quando a abertura estava ativa e incompleta. Ao terminar essa abertura, `enterFirstJumpTutorial` ignorava a instrução.
+
+`CampaignProgress.read` agora preserva a abertura incompleta como `CUTSCENE` com `firstJumpTutorialCompleted = false`. Também recupera saves já gravados pela migração anterior nessa combinação incorreta. Campanhas legadas que já avançaram e saves com tutorial realmente concluído continuam sem repetir a instrução. Não foram alterados física, impulso, velocidades, layout ou câmera.
+
+Validações executadas:
+
+- `npm test`: suíte geral aprovada, incluindo prompt, campanha, física, apresentação móvel e assets oficiais.
+- Testes específicos de espera, prompt e conclusão: aprovados para touch, teclado, mouse e gamepad simulado.
+- Página real (`index.html`/`main.js`, sem instrumentar `game.js`): 15 cenários aprovados, cinco por perfil Android, iPhone e Desktop. Nova campanha assistiu à abertura inteira; demais cenários cobriram abertura antiga em andamento, abertura já concluída sem save de campanha, tutorial restaurado e save concluído.
+- Recuperação de migração anterior: três cenários adicionais aprovados, um por perfil. Total de 18 combinações de plataforma/save; touch foi enviado via CDP, passando pelos listeners reais da página. Durante a espera, posição e tick não avançaram; o salto mudou o estado e persistiu a conclusão.
+
+Evidências: [matriz da página real](../current-logs/first-jump-production.json), [recuperação de saves](../current-logs/first-jump-production-repair.json), capturas do canvas em [Android](../current-screenshots/first-jump-production/Android.png), [iPhone](../current-screenshots/first-jump-production/iPhone.png) e [Desktop](../current-screenshots/first-jump-production/Desktop.png).
+
+Reprodução: servidor local :3000 e Chrome dedicado/CDP :9222; executar `npm run test:tutorial:browser`. O teste de produção usa somente uma aba própria, mas modifica as chaves de campanha da origem de QA: utilizar perfil dedicado, sem saves pessoais. `--repair-only` executa apenas os saves migrados incorretamente; `--capture-only` captura a continuação de abertura antiga.
+
+Limites: Android e iPhone foram emulados no Chrome, não em hardware Android nem Safari/WebKit. Não se declara garantia para todos os aparelhos. Um save avançado não deve reapresentar o primeiro salto; nova campanha deve exibi-lo. Saves cujo histórico já terminou a abertura e foi marcado como concluído pela migração antiga não podem ser distinguidos de campanhas avançadas apenas pela flag, e não são reiniciados automaticamente.

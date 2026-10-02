@@ -115,7 +115,7 @@ flowchart TD
 | API retornada por `createGame` | Uso e efeito |
 | --- | --- |
 | `start`, `newCampaign`, `hasProgress`, `saveProgress` | Início/restauração, limpeza da campanha, consulta e gravação. `newCampaign` é destrutivo para o progresso local; a UI já pede confirmação ao jogador. |
-| `doJump(inputSource)`, `isFirstJumpTutorial`, `isGrounded`, `isCutsceneActive`, `setLastInputDevice` | Entrada contextual: salto ou interação narrativa respeitando bloqueios. |
+| `doJump(inputSource)`, `isGrounded`, `isCutsceneActive`, `setLastInputDevice` | Entrada contextual: salto ou interação narrativa respeitando bloqueios. |
 | `togglePause`, `setPaused`, `isPaused` | Pausa da atualização; desenho permanece disponível. |
 | `retry`, `resetToStart`, `restartToTitle`, `isGameOver` | Recuperação/derrota e retorno ao menu. |
 | `startToyRoomPhase`, `isToyRoomMode` | Transição/delegação à sala. |

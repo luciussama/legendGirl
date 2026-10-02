@@ -1,0 +1,17 @@
+[
+  {
+    "plataforma": "Android",
+    "cenario": "abertura-migrada-incorretamente",
+    "aprovado": true
+  },
+  {
+    "plataforma": "iPhone",
+    "cenario": "abertura-migrada-incorretamente",
+    "aprovado": true
+  },
+  {
+    "plataforma": "Desktop",
+    "cenario": "abertura-migrada-incorretamente",
+    "aprovado": true
+  }
+]

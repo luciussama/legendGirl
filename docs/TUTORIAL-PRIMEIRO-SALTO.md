@@ -87,7 +87,7 @@ Não há transição normal `GAMEPLAY_NORMAL → FIRST_JUMP_TUTORIAL` nem `FIRST
 | [game.js](../src/js/game.js): `enterFirstJumpTutorial` | Consulta conclusão, seleciona estado, bloqueia controles e limpa o aviso genérico. Não zera velocidades nem modifica física. |
 | `game.js`: `update` | Retorna antes de avançar o tick e os sistemas enquanto o tutorial está ativo. A parada é obtida suspendendo a simulação. |
 | `game.js`: `doJump(inputSource)` | Valida origem e condições do salto; aplica o impulso existente. Somente depois de aceitá-lo libera controles, marca conclusão, muda o estado, renova `lastTime` e chama `saveProgress`. |
-| `game.js`: `isFirstJumpTutorial()` | Consulta pública utilizada pelo controller; retorna se o estado é `FIRST_JUMP_TUTORIAL`. |
+| `game.js`: `isFirstJumpTutorial()` | Consulta fornecida à API de entrada utilizada pelo controller; retorna se o estado é `FIRST_JUMP_TUTORIAL`. |
 | [InputController](../src/js/controllers/InputController.js) | Filtra ponteiros, teclado e bordas do gamepad; encaminha a origem para `doJump`. |
 | [BabyRenderer](../src/js/entities/BabyRenderer.js): `resolveAnimationState` | Durante a espera seleciona `idle`, frame 0. |
 | [FirstJumpTutorial](../src/js/ui/FirstJumpTutorial.js) | Detecta instrução, calcula feedback e desenha painel compacto, ícone e seta; não escreve na simulação. Exportado também por `ui/index.js`. |
@@ -127,7 +127,7 @@ Esses parâmetros e os resultados calculados `scale`, `glow` e `bob` não possue
 | `showJumpTutorial` | Condição em `renderFirstJumpTutorial` | Não existe como variável. A sobreposição é desenhada somente se `state.gameplayState === 'FIRST_JUMP_TUTORIAL'` e houver plataforma. |
 | `tutorialArrowVisible` | Mesma condição do renderer | Não existe como flag independente. Seta e prompt compartilham a visibilidade e desaparecem ao concluir. |
 | `currentInputMethod` | `InputController.promptDevice` e `getFirstJumpTutorialDevice` | Não existe com esse nome. O campo registra a entrada observada; a função resolve a instrução com os fallbacks disponíveis. |
-| `isInFirstJumpTutorial` | `game.isFirstJumpTutorial()` | Não existe com esse nome nem como boolean salvo. A consulta retorna a comparação com `FIRST_JUMP_TUTORIAL`. |
+| `isInFirstJumpTutorial` | `InputController.game.isFirstJumpTutorial()` | Não existe com esse nome nem como boolean salvo. A consulta retorna a comparação com `FIRST_JUMP_TUTORIAL`. |
 
 Evitar criar flags paralelas apenas para representar essas condições: elas poderiam divergir do estado principal. Os nomes conceituais desta tabela não são APIs utilizáveis.
 
@@ -140,7 +140,7 @@ Evitar criar flags paralelas apenas para representar essas condições: elas pod
 | `InputController.prevTutorialButtonA` | `Map` vazio; transitório | Estado anterior de A por índice de controle. Atualizado também fora do tutorial; limpo ao desconectar/destruir. |
 | `timeMs`, `reducedMotion` | Parâmetros de renderização | Relógio visual e preferência de movimento reduzido; não são flags de campanha. |
 
-A chave de armazenamento continua `legendGirl.campaign.v1`, versão 1. `captureState` inclui ambos os campos novos porque estão nos defaults e não na lista de exclusão. Na leitura de saves antigos sem `gameplayState`, a migração assume `GAMEPLAY_NORMAL`; sem a flag, assume conclusão somente se esse for o estado. Um save que já aguardava `FIRST_JUMP_TUTORIAL` continua incompleto.
+A chave de armazenamento continua `legendGirl.campaign.v1`, versão 1. `captureState` inclui ambos os campos novos porque estão nos defaults e não na lista de exclusão. Na leitura de saves antigos sem `gameplayState`, uma abertura ativa e ainda não concluída recebe `CUTSCENE`; as demais campanhas legadas recebem `GAMEPLAY_NORMAL` para preservar o progresso já iniciado. Sem a flag, a migração assume conclusão somente se o estado for `GAMEPLAY_NORMAL`. Um save que já aguardava `FIRST_JUMP_TUTORIAL` continua incompleto. Quando a abertura está explicitamente ativa e não concluída, a leitura normaliza o estado para `CUTSCENE` e a conclusão para `false`, recuperando também saves gravados pela migração anterior com esses campos incorretos.
 
 Retry e restauração preservam a conclusão. `newCampaign` restaura defaults e permite o tutorial novamente. Não confundir conclusão da abertura com conclusão do primeiro salto. Se o storage falhar, a campanha pode continuar em memória da sessão; isso não garante persistência após fechar/recarregar a página.
 
@@ -198,12 +198,15 @@ node scripts/test-campaign-progress.js
 node scripts/test-opening-sequence.js
 ```
 
+`npm test` inclui a verificação unitária do prompt e da campanha. `npm run test:tutorial:browser` executa os quatro testes de navegador abaixo.
+
 Para testes de navegador, manter servidor local em `127.0.0.1:3000` e Chrome dedicado com CDP em `127.0.0.1:9222`. As fixtures instrumentadas ficam em `tests/`; suas APIs manuais não pertencem ao jogo distribuído.
 
 ```sh
 node scripts/test-first-jump-tutorial-browser.js
 node scripts/test-first-jump-prompt-browser.js
 node scripts/test-first-jump-completion-browser.js
+node scripts/test-first-jump-production-browser.js
 ```
 
 | Teste | Cobertura |
@@ -211,6 +214,7 @@ node scripts/test-first-jump-completion-browser.js
 | `test-first-jump-tutorial-browser.js` | Abertura completa, entrada no estado e 600 frames sem movimento, avanço ou câmera. |
 | `test-first-jump-prompt.js` | Detecção/troca/desconexão, layout, ausência de mutações, pulsação e movimento reduzido. |
 | `test-first-jump-prompt-browser.js` | Quatro instruções, capturas e amostras temporais com simulação parada. Pausa explícita da fixture evita consumir o tutorial ao inspecionar entradas. |
+| `test-first-jump-production-browser.js` | Página real, botão de início/continuação, abertura completa, saves legados, restauração e entradas CDP em Android/iPhone emulados e desktop. |
 | `test-first-jump-completion-browser.js` | Entradas válidas/inválidas, A segurado, impulso original, retomada, ocultação, save, retry, restauração e campanha nova. |
 
 As evidências ficam em `assets/qa-testers/current-logs/first-jump-*.json`, `current-screenshots/first-jump-tutorial/` e no relatório vinculado no início. Os cenários de touch e gamepad são sintéticos no Chrome; não comprovam execução em dispositivos físicos. A compreensão sem documentação requer observação de jogadores, além da revisão das capturas.
