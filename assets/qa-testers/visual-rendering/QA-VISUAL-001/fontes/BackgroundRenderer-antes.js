@@ -8,23 +8,6 @@ import { NIGHT_WINDOWS } from './nightWindows.js';
 import { FLOOR_Y, roomScenery as defaultRoomScenery } from '../config.js';
 import { darkRoomAtlas } from '../assets/index.js';
 
-/** Limites visíveis no espaço de desenho, incluindo zoom e translação já aplicados ao contexto. */
-export function getBackgroundViewport(ctx, canvas) {
-  const m = ctx.getTransform?.();
-  const determinant = m ? m.a * m.d - m.b * m.c : 0;
-  if (!Number.isFinite(determinant) || Math.abs(determinant) < 1e-12) {
-    return { left: 0, right: canvas.width, top: 0, bottom: canvas.height };
-  }
-  const corners = [[0, 0], [canvas.width, 0], [0, canvas.height], [canvas.width, canvas.height]]
-    .map(([x, y]) => ({ x: (m.d * (x - m.e) - m.c * (y - m.f)) / determinant,
-      y: (-m.b * (x - m.e) + m.a * (y - m.f)) / determinant }));
-  // Uma unidade de margem evita uma costura de antialiasing na extremidade do canvas.
-  return { left: Math.floor(Math.min(...corners.map(p => p.x))) - 1,
-    right: Math.ceil(Math.max(...corners.map(p => p.x))) + 1,
-    top: Math.floor(Math.min(...corners.map(p => p.y))) - 1,
-    bottom: Math.ceil(Math.max(...corners.map(p => p.y))) + 1 };
-}
-
 export class BackgroundRenderer {
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
@@ -165,21 +148,16 @@ export class BackgroundRenderer {
     if (!ctx || !canvas) return;
     const FLOOR_Y = this.floorY;
     const tick = options.tick || 0;
-    const viewport = getBackgroundViewport(ctx, canvas);
-    const left = Math.min(0, viewport.left), right = Math.max(canvas.width, viewport.right);
-    const top = Math.min(-600, viewport.top), bottom = Math.max(canvas.height + 600, viewport.bottom);
-    const span = right - left;
 
     // Fundo atmosférico profundo do berçário, mantendo a assinatura lúdica da playroom em tom escuro
     ctx.fillStyle = '#0d0a14';
-    ctx.fillRect(left, top, span, bottom - top);
+    ctx.fillRect(0, -600, canvas.width, canvas.height + 1200);
 
     // Listras do papel de parede e padrão de losangos com paralaxe
     const bgOffset = (camX * 0.15) % 80;
     ctx.fillStyle = '#17131d';
-    for (let x = Math.floor(left / 80) * 80 - 80; x < right + 80; x += 80) {
-      const stripeTop = Math.min(-400, viewport.top);
-      ctx.fillRect(x - bgOffset, stripeTop, 40, FLOOR_Y - stripeTop);
+    for (let x = -80; x < canvas.width + 80; x += 80) {
+      ctx.fillRect(x - bgOffset, -400, 40, FLOOR_Y + 400);
     }
 
     // Reflexo ambiente frio quase imperceptível; a luz principal permanece localizada.
@@ -188,11 +166,11 @@ export class BackgroundRenderer {
     topGlow.addColorStop(0.38, 'rgba(135, 145, 200, 0.012)');
     topGlow.addColorStop(1, 'rgba(13, 10, 20, 0)');
     ctx.fillStyle = topGlow;
-    ctx.fillRect(left, 0, span, FLOOR_Y + 50);
+    ctx.fillRect(0, 0, canvas.width, FLOOR_Y + 50);
 
     // Estrelas douradas suaves no papel de parede, com brilho mais íntimo e velado
     ctx.fillStyle = 'rgba(250, 204, 21, 0.065)';
-    for (let x = Math.floor(left / 80) * 80 - 80; x < right + 80; x += 80) {
+    for (let x = -80; x < canvas.width + 80; x += 80) {
       const sx = x - bgOffset + 20;
       for (let y = 50; y < FLOOR_Y; y += 65) {
         ctx.beginPath();
@@ -205,7 +183,7 @@ export class BackgroundRenderer {
     const garlandOffset = (camX * 0.2) % 360;
     ctx.strokeStyle = 'rgba(120, 100, 150, 0.4)';
     ctx.lineWidth = 1.2;
-    for (let gx = Math.floor(left / 180) * 180 - 360; gx < right + 360; gx += 180) {
+    for (let gx = -360; gx < canvas.width + 360; gx += 180) {
       const sx = gx - garlandOffset;
       ctx.beginPath();
       ctx.moveTo(sx, 70);
@@ -232,7 +210,7 @@ export class BackgroundRenderer {
     const windowLocations = NIGHT_WINDOWS;
     windowLocations.forEach((wx) => {
       const sx = wx - camX * 0.3;
-      if (sx < left - 140 || sx > right + 140) return;
+      if (sx < -140 || sx > canvas.width + 140) return;
 
       // Moldura da janela em tom mais profundo, mantendo o visual delicado do berçário
       ctx.fillStyle = '#1a1325';
@@ -301,7 +279,7 @@ export class BackgroundRenderer {
     ];
     wallPegs.forEach(peg => {
       const sx = peg.x - camX * 0.45;
-      if (sx < left - 60 || sx > right + 60) return;
+      if (sx < -60 || sx > canvas.width + 60) return;
 
       // Puxador/gancho de madeira
       ctx.fillStyle = '#854d0e';
@@ -351,7 +329,7 @@ export class BackgroundRenderer {
     ];
     wallDrawings.forEach(d => {
       const sx = d.x - camX * 0.45;
-      if (sx < left - 70 || sx > right + 70) return;
+      if (sx < -70 || sx > canvas.width + 70) return;
 
       // Moldura de madeira do quadro
       ctx.fillStyle = '#451a03';
@@ -425,7 +403,7 @@ export class BackgroundRenderer {
     const wallShelves = [580, 1400, 2100];
     wallShelves.forEach(wx => {
       const sx = wx - camX * 0.4;
-      if (sx < left - 120 || sx > right + 120) return;
+      if (sx < -120 || sx > canvas.width + 120) return;
 
       // Prancha de madeira da prateleira
       ctx.fillStyle = '#312117';
@@ -479,7 +457,7 @@ export class BackgroundRenderer {
 
     // --- PISO E RODAPÉS ---
     ctx.fillStyle = '#1c1726';
-    ctx.fillRect(left, FLOOR_Y, span, Math.max(canvas.height + 700, viewport.bottom) - FLOOR_Y);
+    ctx.fillRect(0, FLOOR_Y, canvas.width, canvas.height - FLOOR_Y + 700);
 
     const assets = options.assets || this.assets || null;
     const floorTileRegion = darkRoomAtlas && (darkRoomAtlas.floorTiles?.plank || darkRoomAtlas.floorTiles);
@@ -489,30 +467,30 @@ export class BackgroundRenderer {
       const tileW = 140;
       const tileH = Math.round(tileW * (floorTileRegion.height / floorTileRegion.width));
       const tileOffset = (camX * 0.8) % tileW;
-      for (let tx = Math.floor(left / tileW) * tileW - tileW; tx < right + tileW; tx += tileW) {
+      for (let tx = -tileW; tx < canvas.width + tileW; tx += tileW) {
         ctx.drawImage(floorTileSprite, tx - tileOffset, FLOOR_Y, tileW, tileH);
       }
     }
 
     // Moldura do rodapé de madeira escura
     ctx.fillStyle = '#2b2138';
-    ctx.fillRect(left, FLOOR_Y - 8, span, 8);
+    ctx.fillRect(0, FLOOR_Y - 8, canvas.width, 8);
     ctx.strokeStyle = '#3e3152';
     ctx.lineWidth = 1.5;
     ctx.beginPath();
-    ctx.moveTo(left, FLOOR_Y - 8);
-    ctx.lineTo(right, FLOOR_Y - 8);
+    ctx.moveTo(0, FLOOR_Y - 8);
+    ctx.lineTo(canvas.width, FLOOR_Y - 8);
     ctx.stroke();
 
     // Junções das tábuas de madeira no chão (quando utiliza a alternativa procedural)
     if (!floorTileSprite) {
       ctx.strokeStyle = '#15111e';
       ctx.lineWidth = 2;
-      for (let x = -80 + Math.floor(left / 70) * 70; x < right + 80; x += 70) {
+      for (let x = -80; x < canvas.width + 80; x += 70) {
         const sx = x - (camX % 70);
         ctx.beginPath();
         ctx.moveTo(sx, FLOOR_Y);
-        ctx.lineTo(sx - 28, Math.max(canvas.height + 700, viewport.bottom));
+        ctx.lineTo(sx - 28, canvas.height + 700);
         ctx.stroke();
       }
     }

@@ -1,0 +1,126 @@
+[
+  {
+    "index": 0,
+    "width": 960,
+    "height": 540,
+    "cameraY": 0,
+    "babyY": 376,
+    "playerFeetAfter": 420,
+    "feetY": 470,
+    "topY": 284,
+    "offset": 0,
+    "feetAfter": 470,
+    "topAfter": 284,
+    "zoom": 1,
+    "player": {
+      "x": 4040,
+      "y": 376,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": 3985,
+      "y": 330
+    },
+    "next": {
+      "x": 3848,
+      "y": 402,
+      "w": 120,
+      "h": 68,
+      "style": "floppy_ragdoll",
+      "label": "2/15 Boneca de Pano Desconjuntada"
+    },
+    "cameraX": 3240,
+    "transform": {
+      "a": 1,
+      "d": 1,
+      "e": 0,
+      "f": 0
+    },
+    "backgroundHoles": 0,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 2
+  },
+  {
+    "index": 9,
+    "width": 960,
+    "height": 540,
+    "cameraY": 0,
+    "babyY": 219,
+    "playerFeetAfter": 263,
+    "feetY": 470,
+    "topY": 149,
+    "offset": 0,
+    "feetAfter": 470,
+    "topAfter": 149,
+    "zoom": 1,
+    "player": {
+      "x": 1586,
+      "y": 219,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": 1531,
+      "y": 173
+    },
+    "next": {
+      "x": 1192,
+      "y": 247,
+      "w": 70,
+      "h": 223,
+      "style": "loose_robot",
+      "label": "11/15 Robô de Lata Desparafusado"
+    },
+    "cameraX": 786,
+    "transform": {
+      "a": 1,
+      "d": 1,
+      "e": 0,
+      "f": 0
+    },
+    "backgroundHoles": 0,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 3
+  },
+  {
+    "index": 15,
+    "width": 960,
+    "height": 540,
+    "cameraY": -30,
+    "babyY": 100,
+    "playerFeetAfter": 174,
+    "feetY": 500,
+    "topY": 60,
+    "offset": 0,
+    "feetAfter": 500,
+    "topAfter": 60,
+    "zoom": 1,
+    "player": {
+      "x": -1419,
+      "y": 100,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": -1474,
+      "y": 54
+    },
+    "cameraX": -2219,
+    "transform": {
+      "a": 1,
+      "d": 1,
+      "e": 0,
+      "f": 30
+    },
+    "backgroundHoles": 0,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 4
+  }
+]

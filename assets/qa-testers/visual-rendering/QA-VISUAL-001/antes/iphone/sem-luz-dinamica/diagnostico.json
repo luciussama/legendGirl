@@ -1,0 +1,126 @@
+[
+  {
+    "index": 0,
+    "width": 540,
+    "height": 1169,
+    "cameraY": -589,
+    "babyY": 376,
+    "playerFeetAfter": 1009,
+    "feetY": 1059,
+    "topY": 895,
+    "offset": 0,
+    "feetAfter": 1059,
+    "topAfter": 895,
+    "zoom": 0.800000011920929,
+    "player": {
+      "x": 4040,
+      "y": 376,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": 3985,
+      "y": 330
+    },
+    "next": {
+      "x": 3848,
+      "y": 402,
+      "w": 120,
+      "h": 68,
+      "style": "floppy_ragdoll",
+      "label": "2/15 Boneca de Pano Desconjuntada"
+    },
+    "cameraX": 3660,
+    "transform": {
+      "a": 0.800000011920929,
+      "d": 0.800000011920929,
+      "e": 172.8000030517578,
+      "f": 588.1000085473061
+    },
+    "backgroundHoles": 197926,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 2
+  },
+  {
+    "index": 9,
+    "width": 540,
+    "height": 1169,
+    "cameraY": -589,
+    "babyY": 219,
+    "playerFeetAfter": 852,
+    "feetY": 1059,
+    "topY": 738,
+    "offset": 0,
+    "feetAfter": 1059,
+    "topAfter": 738,
+    "zoom": 0.800000011920929,
+    "player": {
+      "x": 1586,
+      "y": 219,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": 1531,
+      "y": 173
+    },
+    "next": {
+      "x": 1192,
+      "y": 247,
+      "w": 70,
+      "h": 223,
+      "style": "loose_robot",
+      "label": "11/15 Robô de Lata Desparafusado"
+    },
+    "cameraX": 1206,
+    "transform": {
+      "a": 0.800000011920929,
+      "d": 0.800000011920929,
+      "e": 172.8000030517578,
+      "f": 588.1000085473061
+    },
+    "backgroundHoles": 209130,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 3
+  },
+  {
+    "index": 15,
+    "width": 540,
+    "height": 1169,
+    "cameraY": -589,
+    "babyY": 100,
+    "playerFeetAfter": 733,
+    "feetY": 1059,
+    "topY": 619,
+    "offset": 0,
+    "feetAfter": 1059,
+    "topAfter": 619,
+    "zoom": 0.800000011920929,
+    "player": {
+      "x": -1419,
+      "y": 100,
+      "w": 38,
+      "h": 44
+    },
+    "fairy": {
+      "x": -1474,
+      "y": 54
+    },
+    "cameraX": -1799,
+    "transform": {
+      "a": 0.800000011920929,
+      "d": 0.800000011920929,
+      "e": 172.8000030517578,
+      "f": 588.1000085473061
+    },
+    "backgroundHoles": 220567,
+    "alphaHoles": 0,
+    "nonOpaqueAfter": 0,
+    "columns": [],
+    "invariantCalls": 4
+  }
+]

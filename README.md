@@ -13,6 +13,10 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
 - **Apresentação móvel:** enquadramento elevado no Android, posicionamento seguro de diálogos no iOS e zoom adicional moderado em dispositivos móveis.
 
+## Manual para novas equipes
+
+Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código.
+
 ## Executar localmente
 
 Utilize **Node.js 24**, versão configurada no workflow de publicação, e npm.

@@ -1,0 +1,20 @@
+[
+  {
+    "profile": "android",
+    "frames": 7882,
+    "supports": 38,
+    "trajectoryActorsCameraTransformIdentical": true
+  },
+  {
+    "profile": "iphone",
+    "frames": 7882,
+    "supports": 38,
+    "trajectoryActorsCameraTransformIdentical": true
+  },
+  {
+    "profile": "desktop",
+    "frames": 7882,
+    "supports": 38,
+    "trajectoryActorsCameraTransformIdentical": true
+  }
+]

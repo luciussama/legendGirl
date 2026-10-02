@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><base href="../">
+<title>Revisão sequencial — quarto escuro</title>
+<style>body{margin:0;background:#14101e;color:#eee;font:14px sans-serif}canvas{display:block}p{margin:8px}</style>
+<canvas id="game" width="960" height="540"></canvas><p id="feedback"></p>
+<script type="module">
+// Instrumentação exclusiva de testes: o jogo distribuído não possui controles de teletransporte ou de relógio.
+// Importa o jogo real e expõe suas funções de atualização e renderização somente nesta página.
+import {platforms,phase3Platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
+import {PlatformRenderer,PLATFORM_SURFACES} from '../src/js/environment/PlatformRenderer.js';
+import {BabyRenderer} from '../src/js/entities/BabyRenderer.js';
+window.ResizeObserver=undefined;
+let source=await (await fetch('/src/js/game.js')).text();
+source=source.replace(/from '(\.\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/game.js')}'`);
+const marker='  return {\n    state,\n    audio,';
+if(!source.includes(marker))throw Error('Marcador de instrumentação da revisão do jogo não encontrado');
+source=source.replace(marker,`  return {
+    review: {
+      roomManual(){return toyRoomInstance?.instance;},
+      beginManual(){newCampaign();loopStarted=true;gameStarted=true;opening.reset();opening.start();syncLocalsToState();},
+      saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot(),cameraPresentation:cameraPresentation.snapshot()};},
+      restoreManual(saved){cameraPresentation.restore(saved.cameraPresentation);clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
+      inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
+        transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
+        phase3:isPhase3,tutorial:phase3TutorialActive,portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
+      actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump();syncLocalsToState();},
+      frameManual(draw=false){
+        if(currentPhaseMode==='toy-room'){toyRoomInstance.update(1);if(draw)toyRoomInstance.render();}
+        else {update(1);syncLocalsToState();if(draw)render();}
+      },
+      mobileFrame(after = true, index = -1, phase3 = false) {
+        cameraPresentation.reset();
+        cameraX=0;cameraY=Math.min(0,FLOOR_Y-(canvas.height-110));cameraZoom=1;
+        const p=(phase3?phase3Platforms:platforms)[index];
+        isPhase3=phase3;
+        baby.x=p?p.x:(phase3?4300:100);baby.y=(p?(p.surfaceTopY??p.standRegion?.y??p.y):FLOOR_Y)-baby.h;
+        baby.isCrouching=false;baby.currentPlatformIndex=index;
+        cameraX=phase3?baby.x-(canvas.width-160):Math.max(0,baby.x-120);
+        cameraY=Math.min(cameraY,baby.y-130);
+        fairy.x=baby.x+(phase3?-55:55);fairy.y=baby.y-46;
+        opening.cancel();syncLocalsToState();camera.syncFromState(state);
+        const original=androidFraming.offset;
+        let framing;
+        androidFraming.offset=(feetY,topY)=>{
+          const offset=after?original(feetY,topY):0;
+          framing={feetY,topY,offset,feetAfter:feetY-offset,topAfter:topY-offset};
+          return offset;
+        };
+        const before=JSON.stringify({baby,platforms,phase3Platforms,cameraY});
+        const apply=camera.applyTransform;
+        let transform;
+        camera.applyTransform=function(...args){apply.apply(this,args);transform=ctx.getTransform();};
+        render();camera.applyTransform=apply;androidFraming.offset=original;
+        if(before!==JSON.stringify({baby,platforms,phase3Platforms,cameraY})) throw Error('Renderização alterou a simulação');
+        return {width:canvas.width,height:canvas.height,cameraY,babyY:baby.y,playerFeetAfter:baby.y+baby.h-cameraY-framing.offset,...framing,
+          zoom:transform.a, player:{x:baby.x,y:baby.y,w:baby.w,h:baby.h},fairy:{x:fairy.x,y:fairy.y},
+          next:(phase3?phase3Platforms:platforms)[index+1],cameraX,
+          transform:{a:transform.a,d:transform.d,e:transform.e,f:transform.f}};
+      },
+      setMobileZoom(enabled){mobilePresentation.enabled=enabled;},
+      openingFrame(time) { opening.time=time; opening.active=true; render(); opening.cancel(); },
+      prepare(index, x, phase3 = false) {
+        cameraPresentation.reset();
+        const p=(phase3 ? phase3Platforms : platforms)[index];
+        const y=p ? (p.surfaceTopY ?? p.standRegion?.y ?? p.y) : FLOOR_Y;
+        Object.assign(baby,createBabyState(),{x,y:y-44,currentPlatformIndex:index,
+          controlsLocked:false,isCrouching:false,respawnLandingPending:false,
+          isEscaping:!phase3&&index>=9,longJumpUnlocked:!phase3&&index>=9});
+        Object.assign(state,{gameStarted:true,gameWon:false,isGameOver:false,
+          isStandbyActive:false,isStandbyTransitioning:false,cutsceneActive:false,
+          cutsceneTriggered:true,cutsceneCompleted:index>=9,isEscapeMode:!phase3&&index>=9,
+          escapeLevel:Math.max(0,index-9),isPhase3:phase3,phase3Level:Math.max(0,index),phase3TutorialActive:false,plotTwistActive:false,plotTwistTriggered:true,
+          firstPlatformCleared:index>=0,truePortalTransitionActive:false,
+          cameraX:x-250,cameraY:0,targetCameraY:0,cameraZoom:1,targetCameraZoom:1,
+          lastJumpTime:-10000});
+        particles.clear();fairy.particles.length=0;
+        fairy.x=x+35;fairy.y=y-75;
+        state.escapeBannerTimer=0;
+        syncStateToLocals();camera.syncFromState(state);
+      },
+      step(dt=1){update(dt);syncLocalsToState();},
+      jump(){lastJumpTime=-10000;doJump();syncLocalsToState();},
+      draw(){cameraX=baby.x-350;cameraY=0;cameraZoom=1;
+        syncLocalsToState();camera.syncFromState(state);render();}
+    },
+    state,
+    audio,`);
+
+// Isolamento visual exclusivo da fixture: cada variante modifica somente chamadas de desenho.
+const variant=new URLSearchParams(location.search).get('visual')||'controle';
+window.visualQa={variant,stages:[]};
+let background=await (await fetch(new URLSearchParams(location.search).has('backgroundBefore')?'/assets/qa-testers/visual-rendering/QA-VISUAL-001/fontes/BackgroundRenderer-antes.js':'/src/js/environment/BackgroundRenderer.js')).text();
+background=background.replace(/from '(\.{1,2}\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/environment/BackgroundRenderer.js')}'`);
+if(variant==='sem-parallax')background=background.replace(/    \/\/ Listras do papel[\s\S]*?    \/\/ --- PISO E RODAPÉS ---/,'    // --- PISO E RODAPÉS ---');
+const {backgroundRenderer:isolatedBackground}=await import(URL.createObjectURL(new Blob([background],{type:'text/javascript'})));
+source=source.replace("import { backgroundRenderer, platformRenderer, createLightingSystem }", "import { platformRenderer, createLightingSystem }");
+window.visualQa.background=isolatedBackground;
+source=source.replace('export function createGame(', 'const backgroundRenderer=window.visualQa.background;\nexport function createGame(');
+let light=await (await fetch('/src/js/environment/LightingSystem.js')).text();
+light=light.replace(/from '(\.{1,2}\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/environment/LightingSystem.js')}'`);
+if(variant==='sem-mascara')light=light.replace('    ctx.drawImage(this.darkCanvas, 0, 0);','');
+if(variant==='sem-luz-dinamica')light=light.replace('    const pool = (x, y, rx, ry, strength) => {','    const pool = (x, y, rx, ry, strength) => { return;');
+if(variant==='sem-vinheta')light=light.replace('    ctx.fillStyle = vignette;','    ctx.fillStyle = vignette; return ctx.restore();');
+if(variant==='sem-canvas-efeitos')source=source.replace('    applyDarkAtmosphereWithLights(cameraX, cameraY);','');
+const {createLightingSystem:isolatedLight}=await import(URL.createObjectURL(new Blob([light],{type:'text/javascript'})));
+window.visualQa.light=isolatedLight;
+source=source.replace('import { platformRenderer, createLightingSystem }','import { platformRenderer }');
+source=source.replace('const backgroundRenderer=window.visualQa.background;', 'const backgroundRenderer=window.visualQa.background;const createLightingSystem=window.visualQa.light;');
+if(variant==='sem-background-secundario')source=source.replace('    drawSceneryItems(cameraX);','');
+if(variant==='sem-pos-processamento')source=source.replace('    applyArtFinish(ctx, canvas);','');
+if(variant==='sem-particulas')source=source.replace('    drawSpeedRibbons(cameraX);','').replace('    drawBabyJumpDust(cameraX);','');
+if(variant==='sem-sombras'){
+  let platform=await (await fetch('/src/js/environment/PlatformRenderer.js')).text();
+  platform=platform.replace(/from '(\.{1,2}\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/environment/PlatformRenderer.js')}'`);
+  for(const color of ['rgba(15, 9, 22, 0.4)','rgba(18, 10, 14, 0.35)','rgba(15, 8, 20, 0.45)','rgba(18, 10, 24, 0.45)','rgba(20, 14, 28, 0.45)'])platform=platform.replaceAll(color,'rgba(0,0,0,0)');
+  const {platformRenderer:isolatedPlatform}=await import(URL.createObjectURL(new Blob([platform],{type:'text/javascript'})));
+  window.visualQa.platform=isolatedPlatform;
+  source=source.replace(/import \{ platformRenderer \} from '[^']+';/,'const platformRenderer=window.visualQa.platform;');
+}
+
+source=source.replace('  function render() {', `  function renderVisualOriginal() {`);
+source=source.replace('  function renderVisualOriginal() {', `
+  function render() {
+    const observe=()=>JSON.stringify({baby,fairy,cameraX,cameraY,cameraZoom,cx:camera.x,cy:camera.y,cz:camera.zoom});
+    const before=observe();renderVisualOriginal();
+    if(before!==observe())throw Error('O desenho alterou atores ou a câmera lógica');
+    window.visualQa.invariantCalls=(window.visualQa.invariantCalls||0)+1;
+  }
+  function renderVisualOriginal() {`);
+source=source.replace('    drawBackgroundWall(cameraX);', `    drawBackgroundWall(cameraX);
+    window.visualQa.backgroundPixels=ctx.getImageData(0,0,canvas.width,canvas.height);
+    window.visualQa.matrix=ctx.getTransform();
+    window.visualQa.backgroundPng=canvas.toDataURL('image/png').split(',')[1];`);
+source=source.replace('    const presentationTransform = ctx.getTransform();', `    window.visualQa.beforeFinish=ctx.getImageData(0,0,canvas.width,canvas.height);
+    const presentationTransform = ctx.getTransform();`);
+
+const {createGame}=await import(URL.createObjectURL(new Blob([source],{type:'text/javascript'})));
+const game=createGame(document.querySelector('canvas'),document.querySelector('#feedback'));
+await game.assetsReady;game.setMuted(true);
+const support=p=>({x:p.standRegion?.x??p.x,w:p.standRegion?.w??p.w,y:p.surfaceTopY??p.standRegion?.y??p.y});
+window.review={game,platforms,results:[],
+  run(target,dt=1,phase3=false){
+    const active=phase3?phase3Platforms:platforms;
+    const from=target? support(active[target-1]):phase3?{x:4170,w:470,y:FLOOR_Y}:{x:60,w:160,y:FLOOR_Y};
+    const leftOverlap=phase3&&target>0?37:0;
+    const positions=Array.from({length:Math.floor(from.w)+leftOverlap},(_,i)=>from.x-leftOverlap+i);
+    positions.sort((a,b)=>Math.abs(a-(from.x+(from.w-38)/2))-Math.abs(b-(from.x+(from.w-38)/2)));
+    for(const x of positions){
+      game.review.prepare(target-1,x,phase3);game.review.jump();
+      if(game.state.baby.onGround)throw Error('O salto não começou');
+      for(let frame=0;frame<220;frame++){
+        game.review.step(dt);
+        const b=game.state.baby;
+        if(game.isGameOver())break;
+        if(b.onGround){
+          if(b.currentPlatformIndex===target){
+            const p=support(active[target]);
+            if(Math.abs(b.y+b.h-p.y)>0.001)throw Error('Os pés não estão sobre o apoio');
+            const result={target,phase:phase3?3:target<10?1:2,style:active[target].style,dt,launchX:x,frames:frame+1,feet:b.y+b.h,surface:p.y};
+            this.results.push(result);game.review.draw();return result;
+          }break;
+        }
+      }
+    }
+    throw Error('Nenhum salto bem-sucedido no jogo real até '+target+' '+active[target].style);
+  },
+  contacts(index,dt=1){
+    const s=support(platforms[index]);
+    const cases=[['esquerda',s.x],['centro',s.x+(s.w-38)/2],['direita',s.x+s.w-38]];
+    for(const [name,x] of cases){
+      game.review.prepare(index,x);
+      const b=game.state.baby;
+      Object.assign(b,{y:s.y-b.h-60,vy:0,vx:0,onGround:false});
+      let landed=false;
+      for(let frame=0;frame<120;frame++){
+        b.vx=0;game.review.step(dt);
+        if(b.onGround){
+          if(b.currentPlatformIndex!==index)throw Error(`${index}: ${name} pousou na plataforma errada`);
+          if(Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: ${name} desalinhamento dos pés`);
+          landed=true;break;
+        }
+      }
+      if(!landed)throw Error(`${index}: ${name} falha na queda`);
+      for(let frame=0;frame<8;frame++){
+        b.vx=0;game.review.step(dt);
+        if(!b.onGround||Math.abs(b.y+b.h-s.y)>0.001)throw Error(`${index}: apoio instável em ${name}`);
+      }
+    }
+    return {target:index,dt,drops:3,stableFrames:8};
+  },
+  visibleSupport(index){
+    const p=platforms[index],s=support(p),calibration=PLATFORM_SURFACES[p.style];
+    if(!calibration?.cap)return {checked:false};
+    const canvas=document.createElement('canvas');canvas.width=512;canvas.height=512;
+    const ctx=canvas.getContext('2d'),renderer=new PlatformRenderer({assets:game.assets});
+    const previous=window.DEBUG_COLLISIONS;window.DEBUG_COLLISIONS=false;
+    try {
+      ctx.save();ctx.translate(100-s.x,120-s.y);
+      renderer.renderPlatforms(ctx,{width:10000},0,{platforms:[p]});ctx.restore();
+      const pixels=ctx.getImageData(100,120,s.w,1).data;
+      for(let x=0;x<s.w;x++)if(pixels[x*4+3]!==255){
+        throw Error(`${index}: apoio visual transparente em x=${x}`);
+      }
+      // Verifica os fragmentos removidos do atlas em uma área de desenho transparente.
+      const scale=s.w/calibration.surfaceW;
+      const dw=Math.round(calibration.origW*scale),dh=Math.round(calibration.origH*scale);
+      const dx=Math.round(100-calibration.surfaceX*scale),dy=Math.round(120-calibration.surfaceY*scale);
+      for(const [x,y,w,h] of calibration.excludeRects||[]){
+        const px=Math.floor(dx+(x+w/2)*dw/calibration.origW);
+        const py=Math.floor(dy+(y+h/2)*dh/calibration.origH);
+        if(ctx.getImageData(px,py,1,1).data[3]!==0)throw Error(`${index}: fragmento do atlas ainda visível`);
+      }
+      return {checked:true,opaqueSupportPixels:s.w,excludedFragments:calibration.excludeRects?.length||0};
+    } finally {window.DEBUG_COLLISIONS=previous;}
+  },
+  detail(index){
+    const p=platforms[index],s=support(p),canvas=document.createElement('canvas');
+    canvas.width=960;canvas.height=400;
+    const ctx=canvas.getContext('2d'),renderer=new PlatformRenderer({assets:game.assets});
+    const character=new BabyRenderer(),previous=window.DEBUG_COLLISIONS;
+    window.DEBUG_COLLISIONS=false;
+    try {
+      for(const [i,[label,x]] of [['Esquerda',s.x],['Centro',s.x+(s.w-38)/2],['Direita',s.x+s.w-38]].entries()){
+        ctx.save();ctx.beginPath();ctx.rect(i*320,0,320,400);ctx.clip();
+        ctx.fillStyle='#211b2d';ctx.fillRect(i*320,0,320,400);
+        ctx.fillStyle='#fff';ctx.font='14px sans-serif';ctx.fillText(`${index}: ${p.style} — ${label}`,i*320+12,24);
+        ctx.translate(i*320+160-s.x-s.w/2,120-s.y);
+        renderer.renderPlatforms(ctx,{width:10000},0,{platforms:[p]});
+        const b={...createBabyState(),x,y:s.y-44,animTime:0,onGround:true};
+        character.render(ctx,b);
+        // Marca somente as extremidades, mantendo visível o contato real entre o sapato e o objeto.
+        ctx.strokeStyle='#4ade80';ctx.lineWidth=1;
+        for(const edge of [s.x,s.x+s.w]){
+          ctx.beginPath();ctx.moveTo(edge,s.y-6);ctx.lineTo(edge,s.y+8);ctx.stroke();
+        }
+        ctx.restore();
+      }
+      return canvas.toDataURL('image/png').split(',')[1];
+    } finally {window.DEBUG_COLLISIONS=previous;}
+  },
+  show(index,debug=false){const s=support(platforms[index]);game.review.prepare(index,s.x+(s.w-38)/2);
+    game.state.baby.vx=0;window.DEBUG_COLLISIONS=debug;game.review.draw();}
+};
+document.body.dataset.ready='true';
+// Ponto de entrada opcional para revisão sem interface gráfica: exercita o ciclo real de atualização e
+// mostra detalhes dos contatos sem adicionar controles de depuração ao jogo distribuído.
+if (new URLSearchParams(location.search).has('verify')) {
+  try {
+    for (const dt of [0.5, 1, 1.2]) {
+      for (let target=0; target<=21; target++) window.review.run(target,dt);
+      for (let target=0; target<=15; target++) window.review.run(target,dt,true);
+      game.review.prepare(9,1631);
+      for (let frame=0; frame<300; frame++) {
+        game.review.step(dt);
+        const b=game.state.baby;
+        if (!b.onGround || b.x!==1631 || b.y!==192 || b.vx!==0)
+          throw Error(`Falha na pausa do castelo em dt=${dt}, quadro=${frame}`);
+      }
+      game.review.jump();
+      for(let frame=0;frame<240 && !game.state.baby.onGround;frame++) game.review.step(dt);
+      if(game.state.baby.currentPlatformIndex!==10)throw Error('O salto do castelo não alcançou o trem');
+    }
+    const gallery=document.createElement('div');
+    for (const index of [10,11,12]) {
+      const img=new Image();img.src='data:image/png;base64,'+window.review.detail(index);
+      img.style.width='960px';img.style.display='block';gallery.append(img);
+    }
+    document.querySelector('canvas').remove();document.body.prepend(gallery);
+    document.querySelector('#feedback').textContent='APROVADO: atualizações reais, 114 saltos e 900 quadros de pausa no castelo';
+    document.body.dataset.result='passed';
+  } catch(error) {
+    document.body.dataset.result='failed';
+    document.querySelector('#feedback').textContent=error.stack;
+  }
+}
+</script></html>
