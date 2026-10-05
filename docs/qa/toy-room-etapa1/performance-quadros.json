@@ -1,0 +1,12 @@
+{
+  "antes": {
+    "medianaRenderMs": 0.6000000014901161,
+    "p90RenderMs": 0.8000000044703484,
+    "medianaIntervaloMs": 16.699999999999818
+  },
+  "depois": {
+    "medianaRenderMs": 0.6000000014901161,
+    "p90RenderMs": 0.8000000044703484,
+    "medianaIntervaloMs": 16.699999999999818
+  }
+}

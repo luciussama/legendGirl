@@ -1,0 +1,10 @@
+{
+  "src/js/toy-room/ToyRoomPhase.js": "5920665fb9b12f3c2ebf98720eab0366a0b78f041e580ca36e732d7bfee2cf6d",
+  "src/js/toy-room/ToyRenderer.js": "a2fb0805a58afc45c3dcc0522824857c41d1cc29543a91731ff33f47c203f5a6",
+  "src/js/toy-room/ToyRoomEntities.js": "3179040daf930a86c15d30947bf3f57f9f0b4058dc252530425386c688250e8b",
+  "src/js/toy-room/ToyRoomUI.js": "4f139f56392bd19f22d30c613dc043d90ed00549db8b32c0aacaba2d384a84a5",
+  "src/js/environment/LightingSystem.js": "ce6a456331a836cf3917472ea5303c6f15084a14861fb691c991667810317d52",
+  "src/js/controllers/MobileZoom.js": "aee25d9888b0c8454352710db0799b7ce9153325d8b79b7d5b8a908fe892cdf0",
+  "src/js/assets/officialCharacter.js": "4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769",
+  "assets/art/toy-room/environment-sheet.png": "235f177d278dc1d399a714224aaa62d03bd9be96c2be70f78a3f994b389adaed"
+}

@@ -1,0 +1,16 @@
+{
+  "etapa": "04-tapete-oval",
+  "recursosCarregados": true,
+  "renderizacaoPreservaEstado": true,
+  "amostrasColisao": 4941,
+  "coletas": 8,
+  "solturas": 8,
+  "itensGuardados": 8,
+  "geometriaIdentica": true,
+  "performance": {
+    "beforeMs": 0.3275000000372529,
+    "afterMs": 0.3150000000372529,
+    "beforeP90Ms": 0.4100000001490116,
+    "afterP90Ms": 0.4150000000372529
+  }
+}

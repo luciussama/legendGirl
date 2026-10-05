@@ -10,15 +10,6 @@
  * - Móveis robustos e detalhados (Baú com tampa móvel, estante de livros, poltrona, fortaleza, mesa, cavalinho de pau, armário)
  */
 
-// Traçado decorativo original; não participa da navegação nem das colisões.
-const TRAIN_CIRCUIT = [
-  ['moveTo', 350, 420], ['lineTo', 820, 420],
-  ['quadraticCurveTo', 980, 420, 980, 580], ['lineTo', 980, 920],
-  ['quadraticCurveTo', 980, 1040, 840, 1040], ['lineTo', 440, 1040],
-  ['quadraticCurveTo', 320, 1040, 320, 920], ['lineTo', 320, 560],
-  ['quadraticCurveTo', 320, 420, 350, 420]
-];
-
 export class RoomEnvironmentRenderer {
   /**
    * Renderiza o piso, paredes, janelas, portais, tapetes e trilhos do quarto
@@ -48,48 +39,30 @@ export class RoomEnvironmentRenderer {
       ctx.fillRect(0, 0, roomW, roomH);
     }
 
-    // Papel de parede ilustrado restrito à área arquitetônica já existente.
-    const wallpaper = options.assets && options.assets.get('toy-room-wallpaper-v1');
-    if (wallpaper) {
-      ctx.save();
-      ctx.beginPath();
-      ctx.rect(54, 54, roomW - 108, 186);
-      ctx.clip();
-      for (let x = 54; x < roomW - 54; x += 512) {
-        ctx.drawImage(wallpaper, x, 54, 512, 512);
-      }
-      ctx.restore();
-    }
+    const frameGradient = ctx.createLinearGradient(0, 0, 0, 54);
+    frameGradient.addColorStop(0, '#5b2d16');
+    frameGradient.addColorStop(0.45, '#8a4a20');
+    frameGradient.addColorStop(1, '#3b1d12');
+    ctx.fillStyle = frameGradient;
+    ctx.fillRect(0, 0, roomW, 54);
+    ctx.fillRect(0, roomH - 54, roomW, 54);
+    ctx.fillRect(0, 0, 54, roomH);
+    ctx.fillRect(roomW - 54, 0, 54, roomH);
 
-    const woodTrim = options.assets && options.assets.get('toy-room-oak-trim-v1');
-    if (woodTrim) {
-      this.drawWoodTrim(ctx, woodTrim, roomW, roomH);
-    } else {
-      const frameGradient = ctx.createLinearGradient(0, 0, 0, 54);
-      frameGradient.addColorStop(0, '#5b2d16');
-      frameGradient.addColorStop(0.45, '#8a4a20');
-      frameGradient.addColorStop(1, '#3b1d12');
-      ctx.fillStyle = frameGradient;
-      ctx.fillRect(0, 0, roomW, 54);
-      ctx.fillRect(0, roomH - 54, roomW, 54);
-      ctx.fillRect(0, 0, 54, roomH);
-      ctx.fillRect(roomW - 54, 0, 54, roomH);
+    ctx.strokeStyle = 'rgba(255, 214, 126, 0.38)';
+    ctx.lineWidth = 2;
+    ctx.strokeRect(27, 27, roomW - 54, roomH - 54);
+    ctx.strokeStyle = 'rgba(45, 20, 10, 0.7)';
+    ctx.lineWidth = 5;
+    ctx.strokeRect(58, 58, roomW - 116, roomH - 116);
 
-      ctx.strokeStyle = 'rgba(255, 214, 126, 0.38)';
-      ctx.lineWidth = 2;
-      ctx.strokeRect(27, 27, roomW - 54, roomH - 54);
-      ctx.strokeStyle = 'rgba(45, 20, 10, 0.7)';
-      ctx.lineWidth = 5;
-      ctx.strokeRect(58, 58, roomW - 116, roomH - 116);
-
-      for (let x = 72; x < roomW - 72; x += 128) {
-        ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
-        ctx.fillRect(x, 17, 84, 3);
-        ctx.fillStyle = 'rgba(255, 201, 106, 0.16)';
-        ctx.fillRect(x + 4, 21, 76, 2);
-        ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
-        ctx.fillRect(x, roomH - 21, 84, 3);
-      }
+    for (let x = 72; x < roomW - 72; x += 128) {
+      ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
+      ctx.fillRect(x, 17, 84, 3);
+      ctx.fillStyle = 'rgba(255, 201, 106, 0.16)';
+      ctx.fillRect(x + 4, 21, 76, 2);
+      ctx.fillStyle = 'rgba(35, 16, 9, 0.38)';
+      ctx.fillRect(x, roomH - 21, 84, 3);
     }
 
     // Linhas de tábuas de madeira no chão
@@ -117,21 +90,14 @@ export class RoomEnvironmentRenderer {
       }
     }
 
-    if (woodTrim) {
-      this.drawWoodStrip(ctx, woodTrim, 54, 74, roomW - 108, 9, true);
-      // Rodapé ocupa apenas a faixa existente na junção com o piso.
-      this.drawWoodStrip(ctx, woodTrim, 54, 231, roomW - 108, 9, true);
-    } else {
-      ctx.fillStyle = '#6b3518';
-      ctx.fillRect(54, 74, roomW - 108, 9);
-      ctx.fillStyle = '#d18a3b';
-      ctx.fillRect(54, 74, roomW - 108, 2);
-    }
+    ctx.fillStyle = '#6b3518';
+    ctx.fillRect(54, 74, roomW - 108, 9);
+    ctx.fillStyle = '#d18a3b';
+    ctx.fillRect(54, 74, roomW - 108, 2);
 
     // Janelas em arco na parede trazendo iluminação dourada natural
-    const windowImage = options.assets && options.assets.get('toy-room-window-curtains-v1');
-    this.drawArchedWindow(ctx, 520, 30, windowImage);
-    this.drawArchedWindow(ctx, 1280, 30, windowImage);
+    this.drawArchedWindow(ctx, 520, 30);
+    this.drawArchedWindow(ctx, 1280, 30);
 
     // Porta aberta à esquerda (por onde a garotinha emergiu)
     this.drawEntrancePortal(ctx, 50, 550, options.environmentDoor);
@@ -142,14 +108,11 @@ export class RoomEnvironmentRenderer {
     } else {
       this.drawCentralMandalaRug(ctx, 800, 700);
     }
-    this.drawFloralPlayMat(ctx, 1180, 520,
-      options.assets && options.assets.get('toy-room-oval-rug-v1'));
-    this.drawBedsideFringeRug(ctx, 280, 920,
-      options.assets && options.assets.get('toy-room-rectangular-rug-v1'));
+    this.drawFloralPlayMat(ctx, 1180, 520);
+    this.drawBedsideFringeRug(ctx, 280, 920);
 
     // Circuito de trilhos de trem de madeira
-    this.drawTrainTracks(ctx,
-      options.assets && options.assets.get('toy-room-wooden-track-v1'));
+    this.drawTrainTracks(ctx);
 
     if (options.environmentDetails) {
       options.environmentDetails.forEach((detail) => {
@@ -158,30 +121,6 @@ export class RoomEnvironmentRenderer {
         }
       });
     }
-  }
-
-  drawWoodStrip(ctx, image, x, y, width, height, plain = false) {
-    const sourceHeight = plain ? image.height * 0.24 : image.height;
-    for (let offset = 0; offset < width; offset += 324) {
-      const partWidth = Math.min(324, width - offset);
-      ctx.drawImage(image, 0, 0, image.width * partWidth / 324, sourceHeight,
-        x + offset, y, partWidth, height);
-    }
-  }
-
-  drawWoodTrim(ctx, image, roomW, roomH) {
-    ctx.save();
-    this.drawWoodStrip(ctx, image, 0, 0, roomW, 54);
-    this.drawWoodStrip(ctx, image, 0, roomH - 54, roomW, 54);
-    ctx.translate(54, 54);
-    ctx.rotate(Math.PI / 2);
-    this.drawWoodStrip(ctx, image, 0, 0, roomH - 108, 54);
-    ctx.restore();
-    ctx.save();
-    ctx.translate(roomW, 54);
-    ctx.rotate(Math.PI / 2);
-    this.drawWoodStrip(ctx, image, 0, 0, roomH - 108, 54);
-    ctx.restore();
   }
 
   renderPerspectiveFloor(ctx, tile, roomW, roomH) {
@@ -220,50 +159,45 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
-  drawArchedWindow(ctx, wx, wy, windowImage = null) {
+  drawArchedWindow(ctx, wx, wy) {
     ctx.save();
-    if (windowImage) {
-      // Janela e tecido compartilham o recorte; posição e área original preservadas.
-      ctx.drawImage(windowImage, wx, wy, 160, 170);
-    } else {
-      ctx.fillStyle = '#78350f';
-      ctx.beginPath();
-      ctx.arc(wx + 80, wy + 80, 80, Math.PI, 0, false);
-      ctx.rect(wx, wy + 80, 160, 90);
-      ctx.fill();
+    ctx.fillStyle = '#78350f';
+    ctx.beginPath();
+    ctx.arc(wx + 80, wy + 80, 80, Math.PI, 0, false);
+    ctx.rect(wx, wy + 80, 160, 90);
+    ctx.fill();
 
-      const glassGrad = ctx.createLinearGradient(wx, wy, wx, wy + 170);
-      glassGrad.addColorStop(0, '#38bdf8');
-      glassGrad.addColorStop(0.6, '#a7f3d0');
-      glassGrad.addColorStop(1, '#fef08a');
-      ctx.fillStyle = glassGrad;
-      ctx.beginPath();
-      ctx.arc(wx + 80, wy + 80, 68, Math.PI, 0, false);
-      ctx.rect(wx + 12, wy + 80, 136, 80);
-      ctx.fill();
+    const glassGrad = ctx.createLinearGradient(wx, wy, wx, wy + 170);
+    glassGrad.addColorStop(0, '#38bdf8');
+    glassGrad.addColorStop(0.6, '#a7f3d0');
+    glassGrad.addColorStop(1, '#fef08a');
+    ctx.fillStyle = glassGrad;
+    ctx.beginPath();
+    ctx.arc(wx + 80, wy + 80, 68, Math.PI, 0, false);
+    ctx.rect(wx + 12, wy + 80, 136, 80);
+    ctx.fill();
 
-      ctx.strokeStyle = '#92400e';
-      ctx.lineWidth = 4;
-      ctx.beginPath();
-      ctx.moveTo(wx + 80, wy + 12);
-      ctx.lineTo(wx + 80, wy + 160);
-      ctx.moveTo(wx + 12, wy + 90);
-      ctx.lineTo(wx + 148, wy + 90);
-      ctx.stroke();
+    ctx.strokeStyle = '#92400e';
+    ctx.lineWidth = 4;
+    ctx.beginPath();
+    ctx.moveTo(wx + 80, wy + 12);
+    ctx.lineTo(wx + 80, wy + 160);
+    ctx.moveTo(wx + 12, wy + 90);
+    ctx.lineTo(wx + 148, wy + 90);
+    ctx.stroke();
 
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
-      ctx.beginPath();
-      ctx.moveTo(wx + 10, wy + 40);
-      ctx.quadraticCurveTo(wx + 35, wy + 100, wx + 15, wy + 170);
-      ctx.lineTo(wx + 10, wy + 170);
-      ctx.fill();
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.75)';
+    ctx.beginPath();
+    ctx.moveTo(wx + 10, wy + 40);
+    ctx.quadraticCurveTo(wx + 35, wy + 100, wx + 15, wy + 170);
+    ctx.lineTo(wx + 10, wy + 170);
+    ctx.fill();
 
-      ctx.beginPath();
-      ctx.moveTo(wx + 150, wy + 40);
-      ctx.quadraticCurveTo(wx + 125, wy + 100, wx + 145, wy + 170);
-      ctx.lineTo(wx + 150, wy + 170);
-      ctx.fill();
-    }
+    ctx.beginPath();
+    ctx.moveTo(wx + 150, wy + 40);
+    ctx.quadraticCurveTo(wx + 125, wy + 100, wx + 145, wy + 170);
+    ctx.lineTo(wx + 150, wy + 170);
+    ctx.fill();
 
     // Feixe de luz solar volumétrico projetando diagonalmente no chão
     const beamGrad = ctx.createLinearGradient(wx + 80, wy + 160, wx - 180, wy + 620);
@@ -357,19 +291,12 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
-  drawFloralPlayMat(ctx, rx, ry, rugImage = null) {
+  drawFloralPlayMat(ctx, rx, ry) {
     ctx.save();
     ctx.fillStyle = 'rgba(53, 24, 11, 0.34)';
     ctx.beginPath();
     ctx.ellipse(rx + 125, ry + 88, 135, 84, 0, 0, Math.PI * 2);
     ctx.fill();
-
-    if (rugImage) {
-      // Inclui a borda na mesma área visual da elipse original, sem ampliar o tapete.
-      ctx.drawImage(rugImage, rx - 6.5, ry - 1.5, 263, 163);
-      ctx.restore();
-      return;
-    }
 
     ctx.fillStyle = '#bd3f54';
     ctx.beginPath();
@@ -406,17 +333,10 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
-  drawBedsideFringeRug(ctx, bx, by, rugImage = null) {
+  drawBedsideFringeRug(ctx, bx, by) {
     ctx.save();
     ctx.fillStyle = 'rgba(120, 53, 15, 0.2)';
     ctx.fillRect(bx - 4, by - 4, 188, 128);
-
-    if (rugImage) {
-      // As franjas permanecem dentro dos seis pixels já usados nas duas bordas.
-      ctx.drawImage(rugImage, bx, by - 6, 180, 132);
-      ctx.restore();
-      return;
-    }
 
     ctx.fillStyle = '#2f8d79';
     ctx.fillRect(bx, by, 180, 120);
@@ -436,68 +356,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
-  traceTrainCircuit(ctx) {
-    for (const [method, ...args] of TRAIN_CIRCUIT) ctx[method](...args);
-  }
-
-  createWoodenTrackLayer(image) {
-    const layer = document.createElement('canvas');
-    layer.width = 684;
-    layer.height = 644;
-    const ctx = layer.getContext('2d');
-    ctx.translate(-308, -408);
-
-    // Amostra as mesmas curvas apenas para orientar a pintura das peças.
-    const points = [];
-    for (const [method, ...args] of TRAIN_CIRCUIT) {
-      if (method !== 'quadraticCurveTo') {
-        points.push({ x: args[0], y: args[1] });
-      } else {
-        const start = points[points.length - 1];
-        for (let i = 1; i <= 40; i++) {
-          const t = i / 40;
-          const u = 1 - t;
-          points.push({ x: u * u * start.x + 2 * u * t * args[0] + t * t * args[2],
-            y: u * u * start.y + 2 * u * t * args[1] + t * t * args[3] });
-        }
-      }
-    }
-    const lengths = [0];
-    for (let i = 1; i < points.length; i++) {
-      lengths.push(lengths[i - 1] + Math.hypot(points[i].x - points[i - 1].x,
-        points[i].y - points[i - 1].y));
-    }
-    const total = lengths[lengths.length - 1];
-    const count = Math.ceil(total / 30);
-    let segment = 1;
-    for (let i = 0; i < count; i++) {
-      const distance = i * total / count;
-      while (segment < lengths.length - 1 && lengths[segment] < distance) segment++;
-      const start = points[segment - 1];
-      const end = points[segment];
-      const fraction = (distance - lengths[segment - 1]) /
-        (lengths[segment] - lengths[segment - 1]);
-      ctx.save();
-      ctx.translate(start.x + (end.x - start.x) * fraction,
-        start.y + (end.y - start.y) * fraction);
-      ctx.rotate(Math.atan2(end.y - start.y, end.x - start.x));
-      ctx.drawImage(image, -16, -12, 32, 24);
-      ctx.restore();
-    }
-
-    // Limita a arte à largura original de 24 pixels, inclusive nas curvas.
-    ctx.globalCompositeOperation = 'destination-in';
-    ctx.strokeStyle = '#ffffff';
-    ctx.lineWidth = 24;
-    ctx.lineCap = 'round';
-    ctx.lineJoin = 'round';
-    ctx.beginPath();
-    this.traceTrainCircuit(ctx);
-    ctx.stroke();
-    return layer;
-  }
-
-  drawTrainTracks(ctx, trackImage = null) {
+  drawTrainTracks(ctx) {
     ctx.save();
     ctx.strokeStyle = 'rgba(53, 24, 11, 0.38)';
     ctx.lineWidth = 24;
@@ -505,19 +364,16 @@ export class RoomEnvironmentRenderer {
     ctx.lineJoin = 'round';
 
     ctx.beginPath();
-    this.traceTrainCircuit(ctx);
+    ctx.moveTo(350, 420);
+    ctx.lineTo(820, 420);
+    ctx.quadraticCurveTo(980, 420, 980, 580);
+    ctx.lineTo(980, 920);
+    ctx.quadraticCurveTo(980, 1040, 840, 1040);
+    ctx.lineTo(440, 1040);
+    ctx.quadraticCurveTo(320, 1040, 320, 920);
+    ctx.lineTo(320, 560);
+    ctx.quadraticCurveTo(320, 420, 350, 420);
     ctx.stroke();
-
-    if (trackImage && typeof document !== 'undefined') {
-      // A montagem é feita uma vez; cada quadro reutiliza somente a imagem pronta.
-      if (this.trackLayerImage !== trackImage) {
-        this.trackLayer = this.createWoodenTrackLayer(trackImage);
-        this.trackLayerImage = trackImage;
-      }
-      ctx.drawImage(this.trackLayer, 308, 408);
-      ctx.restore();
-      return;
-    }
 
     ctx.strokeStyle = '#6f351b';
     ctx.lineWidth = 8;

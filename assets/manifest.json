@@ -1,6 +1,12 @@
 {
   "version": 1,
   "images": {
+    "toy-room-wallpaper-v1": "./assets/art/toy-room/stage1/wallpaper-v1.png",
+    "toy-room-window-curtains-v1": "./assets/art/toy-room/stage1/window-curtains-v1.png",
+    "toy-room-oak-trim-v1": "./assets/art/toy-room/stage1/oak-trim-v1.png",
+    "toy-room-oval-rug-v1": "./assets/art/toy-room/stage1/oval-rug-v1.png",
+    "toy-room-rectangular-rug-v1": "./assets/art/toy-room/stage1/rectangular-rug-v1.png",
+    "toy-room-wooden-track-v1": "./assets/art/toy-room/stage1/wooden-track-v1.png",
     "toy-room-floor-tile": "./assets/art/toy-room/floor-tile.svg",
     "toy-room-teddy": "./assets/art/toy-room/teddy.svg",
     "toy-room-player": "./assets/art/toy-room/player.svg",
