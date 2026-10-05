@@ -1,0 +1,5 @@
+{
+  "ferramenta": "imagegen integrada",
+  "referencia": "assets/art/dark-room/sprites/official-character.png",
+  "prompt": "Use case: identity-preserve. Game sprite for a dedicated carrying pose. Reference image is the official sprite atlas: preserve EXACT character identity, toddler proportions, brown pigtails, pink bows, cream/pink dress, brown boots, face and painted pixel-art rendering. Create ONE full-body right-facing three-quarter sprite only, at large enough resolution for downsampling. Standing neutral with both arms bent forward toward the RIGHT side at WAIST height, palms upward cupped to support an invisible toy. Head and face entirely clear; hands below chin, extending outside silhouette to the right. Do not draw any toy, tray, props, background, ground shadow or text. Two hands clearly visible with bent elbows; natural load-bearing pose. Same warm outlined painted sprite style as atlas, not vector, not smooth modern anime, do not redesign character. Transparent background. Frame full body and both hands with generous transparent margin."
+}

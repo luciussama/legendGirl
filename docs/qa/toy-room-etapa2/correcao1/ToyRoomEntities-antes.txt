@@ -1,5 +1,4 @@
 import { babyRenderer } from '../entities/BabyRenderer.js';
-import { renderToyCarry } from './ToyCarryPresentation.js';
 
 /** Renderização dos sprites oficiais da protagonista e da fada acompanhante. */
 
@@ -11,11 +10,7 @@ export class ToyRoomEntities {
    */
   renderPlayer(ctx, player, options = {}) {
     if (!ctx || !player) return;
-    if (player.carriedItem) {
-      renderToyCarry(ctx, player, options);
-      return;
-    }
-    const pose = player.isMoving ? 'run' : 'idle';
+    const pose = player.carriedItem ? 'collect' : player.isMoving ? 'run' : 'idle';
     const frame = Math.floor((player.animTime || 0) * 0.9);
     babyRenderer.renderPose(ctx, options.assets, pose, frame,
       player.x, player.y + 28, 80, player.facing === 'left' ? -1 : 1);

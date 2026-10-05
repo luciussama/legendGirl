@@ -921,11 +921,14 @@ export class ToyRoomPhase {
           environmentTrain: this.environmentTrain
         });
       } else if (node.type === 'player') {
-        toyRoomEntities.renderPlayer(ctx, this.player, {
-          assets: this.assets,
-          environmentTeddy: this.environmentTeddy,
-          environmentTrain: this.environmentTrain
-        });
+        toyRoomEntities.renderPlayer(ctx, this.player, { assets: this.assets });
+        if (this.player.carriedItem) {
+          toyRenderer.renderToy(ctx, this.player.carriedItem, this.player.x, this.player.y, true, now, {
+            assets: this.assets,
+            environmentTeddy: this.environmentTeddy,
+            environmentTrain: this.environmentTrain
+          });
+        }
       }
     }
 
