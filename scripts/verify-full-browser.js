@@ -43,6 +43,12 @@ try {
       const s=r.inspectManual();
       if(s.over)throw Error('Falha durante narrativa: '+JSON.stringify(s));
       if(s.mode==='toy-room')return s;
+      // O primeiro salto desbloqueia o movimento antes do percurso de plataformas.
+      if(s.firstJump){
+        r.actionManual();
+        for(let f=0;f<250;f++){r.frameManual(f%15===0);if(r.inspectManual().baby.onGround)break;}
+        continue;
+      }
       if(s.standby||(s.plot&&s.plotStep>=4))r.actionManual();
       if(!s.opening&&!s.standby&&!s.transition&&!s.cutscene&&!s.plot&&!s.tutorial&&!s.portal)return s;
       r.frameManual(i%30===0);

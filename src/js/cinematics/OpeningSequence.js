@@ -97,7 +97,7 @@ export class OpeningSequence {
       ctx.drawImage(sheet, frame*543+20,200,510,364,bedX,bedY,bedWidth,bedWidth*364/510);
     }
     ctx.save();ctx.globalAlpha=entry;
-    fairyRenderer.render(ctx,fairy,{tick:Math.floor(t*60)},0,{canvas,baby:child,platforms:[]});
+    fairyRenderer.render(ctx,fairy,{tick:Math.floor(t*60)},0,{canvas,baby:child,platforms:[],assets});
     ctx.restore();
     lighting.apply(ctx,canvas,{tick:Math.floor(t*60),plotTwistActive:true},child,
       {...fairy,y:fy+(1-entry)*900},0,0,{platforms:[]});

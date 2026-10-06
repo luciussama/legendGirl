@@ -16,13 +16,14 @@ if(!source.includes(marker))throw Error('Marcador de instrumentação da revisã
 source=source.replace(marker,`  return {
     review: {
       roomManual(){return toyRoomInstance?.instance;},
+      renderManual(){render();},
       beginManual(){newCampaign();loopStarted=true;gameStarted=true;opening.reset();opening.start();syncLocalsToState();},
       saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot(),cameraPresentation:cameraPresentation.snapshot()};},
       restoreManual(saved){cameraPresentation.restore(saved.cameraPresentation);clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
       inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
         transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
-        phase3:isPhase3,tutorial:phase3TutorialActive,portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
-      actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump();syncLocalsToState();},
+        phase3:isPhase3,tutorial:phase3TutorialActive,firstJump:state.gameplayState==='FIRST_JUMP_TUTORIAL',portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
+      actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump('keyboard');syncLocalsToState();},
       frameManual(draw=false){
         if(currentPhaseMode==='toy-room'){toyRoomInstance.update(1);if(draw)toyRoomInstance.render();}
         else {update(1);syncLocalsToState();if(draw)render();}
@@ -78,7 +79,7 @@ source=source.replace(marker,`  return {
         syncStateToLocals();camera.syncFromState(state);
       },
       step(dt=1){update(dt);syncLocalsToState();},
-      jump(){lastJumpTime=-10000;doJump();syncLocalsToState();},
+      jump(){lastJumpTime=-10000;doJump('keyboard');syncLocalsToState();},
       draw(){cameraX=baby.x-350;cameraY=0;cameraZoom=1;
         syncLocalsToState();camera.syncFromState(state);render();}
     },

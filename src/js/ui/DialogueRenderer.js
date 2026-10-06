@@ -23,7 +23,7 @@ export class DialogueRenderer {
    * @param {string} [mood='normal'] 'normal', 'happy', 'shocked', 'annoyed', 'determined'
    * @param {number} [tick=0]
    */
-  drawPortrait(pCtx, charType, px, py, radius, mood = 'normal', tick = 0) {
+  drawPortrait(pCtx, charType, px, py, radius, mood = 'normal', tick = 0, options = {}) {
     pCtx.save();
     // 1. Halo ambiente etéreo atrás da moldura do retrato
     const glow = pCtx.createRadialGradient(px, py, radius * 0.3, px, py, radius + 6);
@@ -57,6 +57,22 @@ export class DialogueRenderer {
     pCtx.beginPath();
     pCtx.arc(px, py, radius - 3, 0, Math.PI * 2);
     pCtx.stroke();
+
+    const fairyImage = charType === 'fairy' && options.assets?.get('toy-room-illustrated-fairy-v1');
+    if (fairyImage) {
+      // O mesmo PNG identifica a interlocutora; a moldura e o layout continuam iguais.
+      pCtx.save();
+      pCtx.beginPath();
+      pCtx.arc(px, py, radius - 5, 0, Math.PI * 2);
+      pCtx.clip();
+      const scale = (radius * 2 - 12) / Math.max(fairyImage.width, fairyImage.height);
+      const width = fairyImage.width * scale;
+      const height = fairyImage.height * scale;
+      pCtx.drawImage(fairyImage, px - width / 2, py - height / 2, width, height);
+      pCtx.restore();
+      pCtx.restore();
+      return;
+    }
 
     if (charType === 'fairy') {
       // Asas diáfanas esvoaçantes animadas
@@ -254,7 +270,7 @@ export class DialogueRenderer {
     const isPortrait = Boolean(state.isPortrait ?? (canvas.height > canvas.width || (canvas.width > 0 && canvas.height / canvas.width > 0.85)));
 
     const getActivePromptDevice = options.getActivePromptDevice || (() => 'touch');
-    const drawDialoguePortrait = (pCtx, charType, px, py, radius, mood) => this.drawPortrait(pCtx, charType, px, py, radius, mood, tick);
+    const drawDialoguePortrait = (pCtx, charType, px, py, radius, mood) => this.drawPortrait(pCtx, charType, px, py, radius, mood, tick, options);
     const wrapDialogueText = (pCtx, text, maxWidth) => this.wrapText(pCtx, text, maxWidth);
 
     const isStandbyShowing = isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);

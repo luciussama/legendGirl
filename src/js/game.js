@@ -659,7 +659,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function drawFairy(camX) {
     syncLocalsToState();
-    fairyRenderer.render(ctx, fairy, state, camX, { canvas, baby, platforms });
+    fairyRenderer.render(ctx, fairy, state, camX, { canvas, baby, platforms, assets });
   }
 
   // --- ILUMINAÇÃO DINÂMICA ATMOSFÉRICA (Modularizada em /environment) ---
@@ -688,7 +688,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function drawDialoguePortrait(pCtx, charType, px, py, radius, mood = 'normal') {
-    dialogueRenderer.drawPortrait(pCtx, charType, px, py, radius, mood, tick);
+    dialogueRenderer.drawPortrait(pCtx, charType, px, py, radius, mood, tick, { assets });
   }
 
   function wrapDialogueText(pCtx, text, maxWidth) {
@@ -697,6 +697,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function drawCutsceneDialogue(transform) {
     dialogueRenderer.renderCutsceneDialogue(ctx, canvas, state, {
+      assets,
       getActivePromptDevice,
       characterAnchor: {
         top: Math.min(transform.transformPoint({x:baby.x-cameraX,y:baby.y-20}).y,
