@@ -1,0 +1,274 @@
+[
+  {
+    "label": "desktop",
+    "width": 960,
+    "height": 580,
+    "card": {
+      "x": 16,
+      "y": 16,
+      "w": 242,
+      "h": 46
+    },
+    "texts": [
+      {
+        "value": "🧸 Brinquedos Arrumados: 0/8",
+        "x": 32,
+        "y": 38,
+        "width": 209.7685546875
+      }
+    ],
+    "canvasW": 960,
+    "canvasH": 540,
+    "cardCSS": {
+      "left": 16,
+      "right": 258,
+      "top": 36,
+      "bottom": 82
+    },
+    "controls": [
+      {
+        "id": "btn-download-zip",
+        "rect": {
+          "x": 800,
+          "y": 34,
+          "width": 42,
+          "height": 42,
+          "top": 34,
+          "right": 842,
+          "bottom": 76,
+          "left": 800
+        }
+      },
+      {
+        "id": "btn-pause-toggle",
+        "rect": {
+          "x": 852,
+          "y": 34,
+          "width": 42,
+          "height": 42,
+          "top": 34,
+          "right": 894,
+          "bottom": 76,
+          "left": 852
+        }
+      },
+      {
+        "id": "btn-sound-toggle",
+        "rect": {
+          "x": 904,
+          "y": 34,
+          "width": 42,
+          "height": 42,
+          "top": 34,
+          "right": 946,
+          "bottom": 76,
+          "left": 904
+        }
+      }
+    ]
+  },
+  {
+    "label": "retrato",
+    "width": 390,
+    "height": 844,
+    "card": {
+      "x": 16,
+      "y": 16,
+      "w": 242,
+      "h": 46
+    },
+    "texts": [
+      {
+        "value": "🧸 Brinquedos Arrumados: 0/8",
+        "x": 32,
+        "y": 38,
+        "width": 209.7685546875
+      }
+    ],
+    "canvasW": 540,
+    "canvasH": 1169,
+    "cardCSS": {
+      "left": 11.555555555555555,
+      "right": 186.33333333333334,
+      "top": 11.551753635585971,
+      "bottom": 44.76304533789564
+    },
+    "controls": [
+      {
+        "id": "btn-download-zip",
+        "rect": {
+          "x": 230,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 272,
+          "bottom": 56,
+          "left": 230
+        }
+      },
+      {
+        "id": "btn-pause-toggle",
+        "rect": {
+          "x": 282,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 324,
+          "bottom": 56,
+          "left": 282
+        }
+      },
+      {
+        "id": "btn-sound-toggle",
+        "rect": {
+          "x": 334,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 376,
+          "bottom": 56,
+          "left": 334
+        }
+      }
+    ]
+  },
+  {
+    "label": "landscape",
+    "width": 915,
+    "height": 412,
+    "card": {
+      "x": 16,
+      "y": 16,
+      "w": 242,
+      "h": 46
+    },
+    "texts": [
+      {
+        "value": "🧸 Brinquedos Arrumados: 0/8",
+        "x": 32,
+        "y": 38,
+        "width": 209.7685546875
+      }
+    ],
+    "canvasW": 1276,
+    "canvasH": 540,
+    "cardCSS": {
+      "left": 11.473354231974922,
+      "right": 185.00783699059562,
+      "top": 23.833912037037038,
+      "bottom": 56.82320601851852
+    },
+    "controls": [
+      {
+        "id": "btn-download-zip",
+        "rect": {
+          "x": 755,
+          "y": 26.359375,
+          "width": 42,
+          "height": 42,
+          "top": 26.359375,
+          "right": 797,
+          "bottom": 68.359375,
+          "left": 755
+        }
+      },
+      {
+        "id": "btn-pause-toggle",
+        "rect": {
+          "x": 807,
+          "y": 26.359375,
+          "width": 42,
+          "height": 42,
+          "top": 26.359375,
+          "right": 849,
+          "bottom": 68.359375,
+          "left": 807
+        }
+      },
+      {
+        "id": "btn-sound-toggle",
+        "rect": {
+          "x": 859,
+          "y": 26.359375,
+          "width": 42,
+          "height": 42,
+          "top": 26.359375,
+          "right": 901,
+          "bottom": 68.359375,
+          "left": 859
+        }
+      }
+    ]
+  },
+  {
+    "label": "retrato-320",
+    "width": 320,
+    "height": 568,
+    "card": {
+      "x": 16,
+      "y": 16,
+      "w": 242,
+      "h": 46
+    },
+    "texts": [
+      {
+        "value": "🧸 Brinquedos Arrumados: 0/8",
+        "x": 32,
+        "y": 38,
+        "width": 209.7685546875
+      }
+    ],
+    "canvasW": 540,
+    "canvasH": 959,
+    "cardCSS": {
+      "left": 9.481481481481481,
+      "right": 152.88888888888889,
+      "top": 9.476538060479667,
+      "bottom": 36.72158498435871
+    },
+    "controls": [
+      {
+        "id": "btn-download-zip",
+        "rect": {
+          "x": 160,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 202,
+          "bottom": 56,
+          "left": 160
+        }
+      },
+      {
+        "id": "btn-pause-toggle",
+        "rect": {
+          "x": 212,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 254,
+          "bottom": 56,
+          "left": 212
+        }
+      },
+      {
+        "id": "btn-sound-toggle",
+        "rect": {
+          "x": 264,
+          "y": 14,
+          "width": 42,
+          "height": 42,
+          "top": 14,
+          "right": 306,
+          "bottom": 56,
+          "left": 264
+        }
+      }
+    ]
+  }
+]

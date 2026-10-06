@@ -1,7 +1,7 @@
 /**
  * ToyRoomUI.js
  * Interface de usuário da Sala de Brinquedos:
- * - Card de progresso à esquerda com ocupação adaptável: contador e barra esmeralda
+ * - Card de progresso no canto superior direito: contador de brinquedos arrumados e barra esmeralda
  * - Joystick virtual tátil e botão de ação PEGAR / SOLTAR para dispositivos touch
  * - Flash narrativo de introdução e faixa comemorativa
  * - Faixa festiva de celebração de vitória
@@ -30,14 +30,10 @@ export class ToyRoomUI {
       victoryBannerTimer = 0
     } = state;
 
-    // O card ocupa a esquerda, reservando a faixa direita para os controles HTML.
-    const progressText = `🧸 Brinquedos Arrumados: ${organizedCount}/${totalToys}`;
-    ctx.font = 'bold 13px Georgia, serif';
-    const fullTextWidth = ctx.measureText(progressText).width;
-    const cardW = Math.min(Math.ceil(fullTextWidth) + 32, canvas.width - 190);
-    const compactCard = cardW < fullTextWidth + 32;
-    const cardH = compactCard ? 62 : 46;
-    const cardX = 16;
+    // Canto Superior Direito: Card de Progresso dos Brinquedos Arrumados
+    const cardW = 220;
+    const cardH = 46;
+    const cardX = canvas.width - cardW - 16;
     const cardY = 16;
 
     ctx.fillStyle = 'rgba(26, 16, 38, 0.82)';
@@ -49,28 +45,18 @@ export class ToyRoomUI {
     ctx.stroke();
 
     ctx.fillStyle = '#fde047';
+    ctx.font = 'bold 13px Georgia, serif';
     ctx.textAlign = 'left';
-    if (compactCard) {
-      const title = '🧸 Brinquedos';
-      const counter = `Arrumados: ${organizedCount}/${totalToys}`;
-      const widest = Math.max(ctx.measureText(title).width, ctx.measureText(counter).width);
-      const fontSize = Math.min(13, 13 * (cardW - 32) / widest);
-      ctx.font = `bold ${fontSize}px Georgia, serif`;
-      ctx.fillText(title, cardX + 16, cardY + 19);
-      ctx.fillText(counter, cardX + 16, cardY + 36);
-    } else {
-      ctx.fillText(progressText, cardX + 16, cardY + 22);
-    }
+    ctx.fillText(`🧸 Brinquedos Arrumados: ${organizedCount}/${totalToys}`, cardX + 16, cardY + 22);
 
     // Barra de Progresso
-    const barW = cardW - 32;
+    const barW = 188;
     const barH = 8;
-    const barY = cardY + (compactCard ? 44 : 28);
     ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    ctx.fillRect(cardX + 16, barY, barW, barH);
+    ctx.fillRect(cardX + 16, cardY + 28, barW, barH);
     ctx.fillStyle = '#10b981';
     const progressRatio = totalToys > 0 ? Math.min(1, organizedCount / totalToys) : 0;
-    ctx.fillRect(cardX + 16, barY, barW * progressRatio, barH);
+    ctx.fillRect(cardX + 16, cardY + 28, barW * progressRatio, barH);
 
     // 1. Joystick Virtual Dinâmico e Flutuante (Lado Esquerdo da Tela)
     // Instanciado e exibido exclusivamente enquanto o dedo estiver na tela (touchState.active)

@@ -545,20 +545,6 @@ export class RoomEnvironmentRenderer {
   renderFurniture(ctx, f, options = {}) {
     if (!ctx || !f) return;
 
-    const armchairImage = f.type === 'armchair' && options.assets?.get('toy-room-armchair-v1');
-    if (armchairImage) {
-      // Mantém a área visual anterior, incluindo sua sombra; não muda o obstáculo.
-      ctx.drawImage(armchairImage, f.x - 12, f.y - 25, f.w + 24, f.h + 39);
-      return;
-    }
-
-    const rockingHorseImage = f.type === 'rocking-horse' && options.assets?.get('toy-room-rocking-horse-v1');
-    if (rockingHorseImage) {
-      // Cabeça, assento e base cabem na área anterior do brinquedo e sua sombra.
-      ctx.drawImage(rockingHorseImage, f.x - 12, f.y, f.w + 24, f.h + 21);
-      return;
-    }
-
     if (f.type === 'chest' && options.environmentChest) {
       ctx.drawImage(options.environmentChest, f.x - 4, f.y - 10, f.w + 8, f.h + 22);
       return;

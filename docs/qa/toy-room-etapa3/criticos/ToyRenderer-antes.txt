@@ -71,15 +71,6 @@ export class ToyRenderer {
       return;
     }
 
-    const bunnyImage = t.type === 'bunny' && options.assets?.get('toy-room-cotton-bunny-v1');
-    if (bunnyImage) {
-      // Preserva a base e a largura anteriores sem deformar a ilustração de pelúcia.
-      const bunnyHeight = Math.min(66, 32 * bunnyImage.height / bunnyImage.width);
-      ctx.drawImage(bunnyImage, tx - 16, ty + 26 - bunnyHeight, 32, bunnyHeight);
-      ctx.restore();
-      return;
-    }
-
     // Desenho artístico de cada brinquedo
     if (t.type === 'teddy') {
       // Ursinho Felpudo

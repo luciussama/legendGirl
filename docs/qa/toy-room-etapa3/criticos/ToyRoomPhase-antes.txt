@@ -911,7 +911,6 @@ export class ToyRoomPhase {
       const node = renderList[i];
       if (node.type === 'furniture') {
         roomEnvironmentRenderer.renderFurniture(ctx, node.item, {
-          assets: this.assets,
           environmentChest: this.environmentChest,
           environmentTable: this.environmentTable
         });

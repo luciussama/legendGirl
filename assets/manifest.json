@@ -74,7 +74,10 @@
     "dark-room-modern-spinning-top": "./assets/art/dark-room/modern/spinning_top.png",
     "official-character": "./assets/art/dark-room/sprites/official-character.png",
     "opening-waking-up": "./assets/art/dark-room/opening/waking-up.png",
-    "toy-room-carry-pose-v1": "./assets/art/toy-room/stage2/carry-pose-v1.png"
+    "toy-room-carry-pose-v1": "./assets/art/toy-room/stage2/carry-pose-v1.png",
+    "toy-room-armchair-v1": "./assets/art/toy-room/stage3/armchair-v1.png",
+    "toy-room-rocking-horse-v1": "./assets/art/toy-room/stage3/rocking-horse-v1.png",
+    "toy-room-cotton-bunny-v1": "./assets/art/toy-room/stage3/cotton-bunny-v1.png"
   },
   "spritesheets": {}
 }

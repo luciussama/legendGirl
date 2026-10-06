@@ -1,0 +1,23 @@
+{
+  "recursos": 74,
+  "collisionChecks": 4941,
+  "pickups": 8,
+  "drops": 8,
+  "stores": 8,
+  "movementChecks": 960,
+  "estadoPreservado": true,
+  "metodosDeGameplayIdenticos": true,
+  "observacao": "A fase possui velocidade única ponderada pelo peso; corrida é validada como ciclo visual de movimento, sem criar nova mecânica.",
+  "performance": {
+    "antes": {
+      "medianaRenderMs": 0.7000000029802322,
+      "p90RenderMs": 1,
+      "medianaIntervaloMs": 16.699999999999818
+    },
+    "depois": {
+      "medianaRenderMs": 0.800000011920929,
+      "p90RenderMs": 1,
+      "medianaIntervaloMs": 16.699999999999818
+    }
+  }
+}
