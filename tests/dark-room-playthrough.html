@@ -22,7 +22,7 @@ source=source.replace(marker,`  return {
       restoreManual(saved){cameraPresentation.restore(saved.cameraPresentation);clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
       inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
         transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
-        phase3:isPhase3,tutorial:phase3TutorialActive,firstJump:state.gameplayState==='FIRST_JUMP_TUTORIAL',portal:truePortalTransitionActive,mode:currentPhaseMode,over:isGameOver};},
+        phase3:isPhase3,tutorial:phase3TutorialActive,firstJump:state.gameplayState==='FIRST_JUMP_TUTORIAL',portal:truePortalTransitionActive,toyIntro:toyRoomIntroduction.active,mode:currentPhaseMode,over:isGameOver};},
       actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump('keyboard');syncLocalsToState();},
       frameManual(draw=false){
         if(currentPhaseMode==='toy-room'){toyRoomInstance.update(1);if(draw)toyRoomInstance.render();}

@@ -48,9 +48,6 @@ export class RoomEnvironmentRenderer {
       ctx.fillRect(0, 0, roomW, roomH);
     }
 
-    // Camada de piso exclusiva da adaptação visual; a renderização normal permanece completa.
-    if (options.introductionFloorOnly) return;
-
     // Papel de parede ilustrado restrito à área arquitetônica já existente.
     const wallpaper = options.assets && options.assets.get('toy-room-wallpaper-v1');
     if (wallpaper) {

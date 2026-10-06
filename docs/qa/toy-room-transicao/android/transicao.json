@@ -1,0 +1,479 @@
+{
+  "events": [
+    "PHASE1_COMPLETE",
+    "TOY_ROOM_START"
+  ],
+  "checks": [
+    {
+      "stage": "TR_002",
+      "time": 0,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 220,
+        "y": 585
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_002",
+      "time": 0.21666666666666665,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 222.65057199628512,
+        "y": 587.2865258187416
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_002",
+      "time": 0.41666666666666663,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 222.6145095743238,
+        "y": 587.9862238732553
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_002",
+      "time": 0.6000000000000002,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 220.4233600241796,
+        "y": 587.0263895416534
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_003",
+      "time": 0.8000000000000008,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 217.72959251407622,
+        "y": 584.8248775697173
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_003",
+      "time": 1.4333333333333331,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 222.31885706793545,
+        "y": 583.432316918164
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_003",
+      "time": 2.066666666666664,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 217.63415115333035,
+        "y": 587.7481417172456
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_003",
+      "time": 2.6833333333333287,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.35
+      },
+      "fairy": {
+        "x": 222.25442728524084,
+        "y": 582.102565661034
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_004",
+      "time": 3.3166666666666598,
+      "locked": true,
+      "dialogue": "O QUÊ?!",
+      "frame": {
+        "x": 280.00882957175924,
+        "y": 609.9984418402778,
+        "zoom": 1.3499579296875002
+      },
+      "fairy": {
+        "x": 220.3687499999997,
+        "y": 579.963125
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_004",
+      "time": 4.316666666666657,
+      "locked": true,
+      "dialogue": "O QUÊ?!",
+      "frame": {
+        "x": 307.36377748842546,
+        "y": 605.1710980902778,
+        "zoom": 1.2196196484375024
+      },
+      "fairy": {
+        "x": 433.9741874999994,
+        "y": 496.5786875000026
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_004",
+      "time": 5.316666666666653,
+      "locked": true,
+      "dialogue": "O QUÊ?!",
+      "frame": {
+        "x": 366.06247540509173,
+        "y": 594.8125043402779,
+        "zoom": 0.9399376171875042
+      },
+      "fairy": {
+        "x": 403.2341562499996,
+        "y": 480.1696249999997
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_004",
+      "time": 6.3166666666666496,
+      "locked": true,
+      "dialogue": "O QUÊ?!",
+      "frame": {
+        "x": 424.2299233217584,
+        "y": 584.5476605902779,
+        "zoom": 0.6627868359375039
+      },
+      "fairy": {
+        "x": 433.25562500000683,
+        "y": 560.1756875000009
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_005",
+      "time": 7.316666666666646,
+      "locked": true,
+      "dialogue": "Aqui tá bagunçado também?!",
+      "frame": {
+        "x": 448.038466021901,
+        "y": 579.9973668336493,
+        "zoom": 0.54
+      },
+      "fairy": {
+        "x": 230.00641999421293,
+        "y": 579.7046802662044
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_005",
+      "time": 8.31666666666666,
+      "locked": true,
+      "dialogue": "Aqui tá bagunçado também?!",
+      "frame": {
+        "x": 333.2746491608738,
+        "y": 351.8032045717591,
+        "zoom": 0.54
+      },
+      "fairy": {
+        "x": 333.2746491608738,
+        "y": 351.8032045717591
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_005",
+      "time": 9.300000000000042,
+      "locked": true,
+      "dialogue": "Aqui tá bagunçado também?!",
+      "frame": {
+        "x": 1110.0000000000518,
+        "y": 365.0000000000008,
+        "zoom": 0.54
+      },
+      "fairy": {
+        "x": 1110.0000000000518,
+        "y": 365.0000000000008
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_005",
+      "time": 10.300000000000091,
+      "locked": true,
+      "dialogue": "Aqui tá bagunçado também?!",
+      "frame": {
+        "x": 1304.9999999999793,
+        "y": 319.37499999999227,
+        "zoom": 0.54
+      },
+      "fairy": {
+        "x": 1304.9999999999793,
+        "y": 319.37499999999227
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_006",
+      "time": 11.300000000000141,
+      "locked": true,
+      "dialogue": "Por que o mundo tem que sempre virar uma bagunça?",
+      "frame": {
+        "x": 1130,
+        "y": 670,
+        "zoom": 0.54
+      },
+      "fairy": {
+        "x": 1130,
+        "y": 670
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_006",
+      "time": 13.050000000000228,
+      "locked": true,
+      "dialogue": "Por que o mundo tem que sempre virar uma bagunça?",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 220.00000000159002,
+        "y": 584.999999999535
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_006",
+      "time": 14.800000000000315,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 220.00000000159002,
+        "y": 584.999999999535
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_006",
+      "time": 16.55000000000034,
+      "locked": true,
+      "dialogue": "Será que as coisas nunca vão ficar organizadas?",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 220.00000000159002,
+        "y": 584.999999999535
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_007",
+      "time": 18.300000000000242,
+      "locked": true,
+      "dialogue": "VAMOS LÁ!",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 218.84886290969158,
+        "y": 582.5713785286723
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_007",
+      "time": 18.800000000000214,
+      "locked": true,
+      "dialogue": "VAMOS LÁ!",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 219.26424404360014,
+        "y": 572.4092156626766
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_007",
+      "time": 19.300000000000185,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 222.33002946444907,
+        "y": 587.920327537434
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_007",
+      "time": 19.800000000000157,
+      "locked": true,
+      "dialogue": "TEMOS QUE GUARDAR TUDO!",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 217.00237949744104,
+        "y": 583.1602142045779
+      },
+      "musicVolume": 0.58
+    },
+    {
+      "stage": "TR_008",
+      "time": 20.30000000000013,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 280,
+        "y": 610,
+        "zoom": 1.2
+      },
+      "fairy": {
+        "x": 222.47301959046584,
+        "y": 583.6109145399442
+      },
+      "musicVolume": 2.4726887204451483e-14
+    },
+    {
+      "stage": "TR_008",
+      "time": 21.050000000000086,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 361.2500000000166,
+        "y": 608.4374999999997,
+        "zoom": 1.0620703124999717
+      },
+      "fairy": {
+        "x": 217.0000662558185,
+        "y": 586.750426545321
+      },
+      "musicVolume": 0.14500000000001648
+    },
+    {
+      "stage": "TR_008",
+      "time": 21.800000000000043,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 540.0000000000111,
+        "y": 604.9999999999998,
+        "zoom": 0.7586249999999812
+      },
+      "fairy": {
+        "x": 222.45022781990858,
+        "y": 582.9232671686196
+      },
+      "musicVolume": 0.2900000000000082
+    },
+    {
+      "stage": "TR_008",
+      "time": 22.55,
+      "locked": true,
+      "dialogue": "",
+      "frame": {
+        "x": 718.75,
+        "y": 601.5625,
+        "zoom": 0.45517968750000004
+      },
+      "fairy": {
+        "x": 218.97881901370152,
+        "y": 587.3614732956995
+      },
+      "musicVolume": 0.43499999999999994
+    }
+  ],
+  "audio": [
+    {
+      "name": "playPortalExitWhoosh",
+      "time": 0,
+      "args": []
+    },
+    {
+      "name": "playSoftMagicBurst",
+      "time": 0,
+      "args": []
+    },
+    {
+      "name": "startToyRoomMusic",
+      "time": 20.30000000000013,
+      "args": [
+        {
+          "fade": 0
+        }
+      ]
+    }
+  ],
+  "time": 23.316666666666624,
+  "active": false
+}

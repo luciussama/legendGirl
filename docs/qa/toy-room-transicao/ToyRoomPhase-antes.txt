@@ -330,7 +330,7 @@ export class ToyRoomPhase {
     this.handlePointerMove = this.onPointerMove.bind(this);
     this.handlePointerUp = this.onPointerUp.bind(this);
 
-    if (options.bindInputs !== false) this.setupListeners();
+    this.setupListeners();
   }
 
   setupListeners() {
@@ -841,7 +841,7 @@ export class ToyRoomPhase {
     this.cameraY += (clampedTargetCamY - this.cameraY) * 0.12 * dt;
   }
 
-  render(options = {}) {
+  render() {
     const ctx = this.ctx;
     ctx.save();
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -850,19 +850,10 @@ export class ToyRoomPhase {
     ctx.save();
     const px = this.player.x - this.cameraX, py = this.player.y - this.cameraY;
     const fx = this.fairy.x - this.cameraX, fy = this.fairy.y - this.cameraY;
-    let frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
+    const frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
       width: this.canvas.width, height: this.canvas.height, anchor: { x: px, y: py },
       bounds: { left: Math.min(px - 100, fx - 28), right: Math.max(px + 100, fx + 28),
         top: Math.min(py - 120, fy - 28), bottom: Math.max(py + 80, fy + 28) } });
-    // Retorno visual do panorama ao enquadramento normal, sem tocar na câmera lógica.
-    if (options.overviewBlend > 0) {
-      const blend = Math.min(1, options.overviewBlend);
-      const zoom = Math.min(this.canvas.width / this.ROOM_W, this.canvas.height / this.ROOM_H) * 0.94;
-      const x = (this.canvas.width - this.ROOM_W * zoom) / 2 + this.cameraX * zoom;
-      const y = (this.canvas.height - this.ROOM_H * zoom) / 2 + this.cameraY * zoom;
-      frame = { x: frame.x + (x - frame.x) * blend,
-        y: frame.y + (y - frame.y) * blend, zoom: frame.zoom + (zoom - frame.zoom) * blend };
-    }
     ctx.translate(frame.x, frame.y);
     ctx.scale(frame.zoom, frame.zoom);
     ctx.translate(-this.cameraX, -this.cameraY);

@@ -1,0 +1,12 @@
+{
+  "metodosPreservados": [
+    "triggerAction",
+    "resolveCollisions",
+    "update",
+    "snapshot",
+    "restore"
+  ],
+  "volumeEscolhido": 0.4,
+  "volumeFinal": 0.23199999999999998,
+  "mudoEPausa": "aprovados"
+}

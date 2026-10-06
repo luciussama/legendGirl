@@ -28,7 +28,7 @@ export function createAudioSystem() {
       state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * effectiveVol));
     }
     if (toyRoomAudio) {
-      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol * toyRoomMusicFade));
+      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol));
     }
   }
 
@@ -64,7 +64,6 @@ export function createAudioSystem() {
 
   let isMusicWanted = false;
   let isToyRoomMusicWanted = false;
-  let toyRoomMusicFade = 1;
   const activeAudioNodes = new Set();
 
   function registerActiveNode(node) {
@@ -563,7 +562,7 @@ export function createAudioSystem() {
           }
         };
         toyRoomAudio.loop = true;
-        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume)));
         toyRoomAudio.preload = 'auto';
 
         // Loop contínuo e sem interrupções
@@ -580,8 +579,7 @@ export function createAudioSystem() {
     return toyRoomAudio;
   }
 
-  function startToyRoomMusic({ fade = 1 } = {}) {
-    toyRoomMusicFade = Math.max(0, Math.min(1, fade));
+  function startToyRoomMusic() {
     isToyRoomMusicWanted = true;
     stopMusic(); // Interrompe qualquer trilha da fase anterior
     clearActiveSounds(); // Limpa efeitos sonoros remanescentes da fase anterior
@@ -593,51 +591,13 @@ export function createAudioSystem() {
     const audioEl = getToyRoomAudioElement();
     if (audioEl) {
       audioEl.loop = true;
-      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume)));
       if (audioEl.paused && !isMuted) {
         audioEl.play().catch(() => {
           // Bloqueio de reprodução automática prevenido até a primeira interação
         });
       }
     }
-  }
-
-  // Envelope da entrada separado do volume escolhido pelo jogador e do estado de mudo.
-  function setToyRoomMusicFade(value) {
-    toyRoomMusicFade = Math.max(0, Math.min(1, value));
-    updateMusicVolumes();
-  }
-
-  function playPortalExitWhoosh() {
-    try {
-      if (!state.audioCtx || state.audioCtx.state !== 'running') return;
-      const now = state.audioCtx.currentTime;
-      const buffer = state.audioCtx.createBuffer(1, state.audioCtx.sampleRate * 0.8, state.audioCtx.sampleRate);
-      const data = buffer.getChannelData(0);
-      for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
-      const source = state.audioCtx.createBufferSource(), filter = state.audioCtx.createBiquadFilter(), gain = state.audioCtx.createGain();
-      source.buffer = buffer; filter.type = 'lowpass';
-      filter.frequency.setValueAtTime(1800, now); filter.frequency.exponentialRampToValueAtTime(180, now + 0.8);
-      gain.gain.setValueAtTime(0, now); gain.gain.linearRampToValueAtTime(0.18, now + 0.08); gain.gain.linearRampToValueAtTime(0, now + 0.8);
-      source.connect(filter); filter.connect(gain); gain.connect(getDestination());
-      source.onended = () => { activeAudioNodes.delete(source); source.disconnect(); filter.disconnect(); gain.disconnect(); };
-      activeAudioNodes.add(source); source.start(now); source.stop(now + 0.8);
-    } catch (error) { console.warn('Não foi possível reproduzir portal_exit_whoosh:', error); }
-  }
-
-  function playSoftMagicBurst() {
-    try {
-      if (!state.audioCtx || state.audioCtx.state !== 'running') return;
-      const now = state.audioCtx.currentTime;
-      for (const frequency of [659.25, 987.77, 1318.51]) {
-        const oscillator = state.audioCtx.createOscillator(), gain = state.audioCtx.createGain();
-        oscillator.type = 'sine'; oscillator.frequency.setValueAtTime(frequency, now);
-        gain.gain.setValueAtTime(0, now); gain.gain.linearRampToValueAtTime(0.045, now + 0.03); gain.gain.exponentialRampToValueAtTime(0.001, now + 0.65);
-        oscillator.connect(gain); gain.connect(getDestination());
-        oscillator.onended = () => { activeAudioNodes.delete(oscillator); oscillator.disconnect(); gain.disconnect(); };
-        activeAudioNodes.add(oscillator); oscillator.start(now); oscillator.stop(now + 0.7);
-      }
-    } catch (error) { console.warn('Não foi possível reproduzir soft_magic_burst:', error); }
   }
 
   function stopToyRoomMusic() {
@@ -810,9 +770,6 @@ export function createAudioSystem() {
     playFairyFrustratedSound,
     playPhase3StartFanfare,
     startToyRoomMusic,
-    setToyRoomMusicFade,
-    playPortalExitWhoosh,
-    playSoftMagicBurst,
     stopToyRoomMusic,
     pauseMusic,
     resumeMusic,

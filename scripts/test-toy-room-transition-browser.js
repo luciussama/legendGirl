@@ -1,8 +1,8 @@
-// Requer servidor local :3000 e Chrome de teste com depuração remota :9222.
+// Requer servidor local :3001 e Chrome de teste com depuração remota :9222.
 import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
-const pages = await (await fetch('http://127.0.0.1:9222/json')).json();
-const ws = new WebSocket(pages.find(p => p.type === 'page').webSocketDebuggerUrl);
+const page = await (await fetch('http://127.0.0.1:9222/json/new?about:blank', {method:'PUT'})).json();
+const ws = new WebSocket(page.webSocketDebuggerUrl);
 await new Promise((resolve, reject) => { ws.onopen = resolve; ws.onerror = reject; });
 let sequence = 0;
 const pending = new Map();
@@ -25,7 +25,7 @@ const profiles={landscape:{width:915,height:412,mobile:true,ua:'Mozilla/5.0 (Lin
   desktop:{width:960,height:540,mobile:false,ua:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}};
 assert.ok(profiles[profile],'Perfil de teste válido');
 const device=profiles[profile];
-const directory='docs/qa/fada-primeira-fase/'+profile;
+const directory='docs/qa/toy-room-transicao/'+profile;
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await evaluate('window.review=null');
@@ -35,18 +35,17 @@ try {
   for(let i=0;i<200;i++){if(await evaluate('Boolean(window.review)'))break;await new Promise(r=>setTimeout(r,100));}
   await evaluate(`document.head.insertAdjacentHTML('beforeend','<meta name="viewport" content="width=device-width,initial-scale=1"><style>canvas{width:100vw;height:100dvh}p{display:none}</style>')`);
   await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
-  await evaluate(`(async()=>{
-    window.fairyRenderer=(await import('/src/js/entities/FairyRenderer.js')).fairyRenderer;
-    window.currentFairyRender=fairyRenderer.render;
-    window.dialogueRenderer=(await import('/src/js/ui/DialogueRenderer.js')).dialogueRenderer;
-    window.currentPortrait=dialogueRenderer.drawPortrait;
-    const portraitSource=await fetch('/docs/qa/fada-primeira-fase/DialogueRenderer-antes.txt').then(r=>r.text());
-    const portraitModule=portraitSource.replace(/from '([^']+)'/g,(_,p)=>"from '"+new URL(p,location.origin+'/src/js/ui/DialogueRenderer.js')+"'");
-    window.oldPortrait=(await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(portraitModule))))).dialogueRenderer.drawPortrait;
-    const source=await fetch('/docs/qa/fada-primeira-fase/FairyRenderer-antes.txt').then(r=>r.text());
-    window.oldFairyRender=(await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(source.replace("'../config.js'","'http://127.0.0.1:3001/src/js/config.js'")))))).fairyRenderer.render;
-    window.fairyScreens={};window.review.game.review.beginManual();
+  await evaluate(`(()=>{
+    window.deviceWidth=0;window.deviceHeight=0;window.fairyScreens={};window.introFrames={};window.introEvents=[];window.introChecks=[];window.audioEvents=[];
+    const g=window.review.game;
+    for(const name of ['playPortalExitWhoosh','playSoftMagicBurst','startToyRoomMusic']){
+      const original=g.audio[name].bind(g.audio);g.audio[name]=(...args)=>{audioEvents.push({name,time:g.toyRoomIntroduction.time,args});return original(...args)};
+    }
+    document.getElementById('game').addEventListener('PHASE1_COMPLETE',()=>introEvents.push('PHASE1_COMPLETE'));
+    document.getElementById('game').addEventListener('TOY_ROOM_START',()=>introEvents.push('TOY_ROOM_START'));
+    g.review.beginManual();g.setMuted(false);g.audio.initAudio();
   })()`);
+  await evaluate(`window.deviceWidth=${device.width};window.deviceHeight=${device.height}`);
   const report=[];
   async function capture(name){const {data}=await send('Page.captureScreenshot',{format:'png'});await fs.writeFile(`${directory}/${name}.png`,Buffer.from(data,'base64'));}
   async function settle(){return evaluate(`(()=>{
@@ -55,14 +54,23 @@ try {
       const s=r.inspectManual();
       if(s.over)throw Error('Falha durante narrativa: '+JSON.stringify(s));
       if(s.mode==='toy-room')return s;
-      const label=s.opening?'abertura-'+Math.floor(r.saveManual().opening.time/6)*6:s.firstJump?'tutorial-primeiro-salto':s.cutscene?'cinematica-'+s.cutsceneStep:s.plot?'revelacao-'+s.plotStep:s.portal?'portal':s.tutorial?'tutorial-retorno':null;
-      if(label&&!fairyScreens[label]){
-        // A câmera recalcula sua composição ao desenhar diálogos; compare somente a simulação.
-        const simulation=()=>JSON.stringify({baby:r.inspectManual().baby,fairy:window.review.game.state.fairy,mode:r.inspectManual().mode,over:r.inspectManual().over});
-        const stateBefore=simulation();const random=Math.random;Math.random=()=>0.5;
-        try{r.renderManual();const after=document.getElementById('game').toDataURL().split(',')[1];fairyRenderer.render=oldFairyRender;dialogueRenderer.drawPortrait=oldPortrait;r.renderManual();const before=document.getElementById('game').toDataURL().split(',')[1];fairyScreens[label]={antes:before,depois:after};}
-        finally{fairyRenderer.render=currentFairyRender;dialogueRenderer.drawPortrait=currentPortrait;Math.random=random;}
-        if(simulation()!==stateBefore)throw Error('Render da fada alterou o estado');
+      if(s.toyIntro){
+        const g=window.review.game, intro=g.toyRoomIntroduction, stage=intro.stage;
+        if(stage.id==='TR_008' && stage.duration-stage.time<0.02){
+          r.renderManual();introFrames['TR_008-final']=document.getElementById('game').toDataURL().split(',')[1];
+        }
+        const label=stage.id+'-'+Math.floor(stage.time/stage.duration*4);
+        if(!introFrames[label]){
+          const before=JSON.stringify({baby:r.inspectManual().baby,preview:intro.phase.snapshot()});
+          window.dispatchEvent(new KeyboardEvent('keydown',{key:'e',code:'KeyE'}));
+          window.dispatchEvent(new KeyboardEvent('keydown',{key:'ArrowRight',code:'ArrowRight'}));
+          r.actionManual();
+          document.getElementById('game').dispatchEvent(new PointerEvent('pointerdown',{clientX:deviceWidth-60,clientY:deviceHeight-60,pointerId:1,bubbles:true}));
+          r.renderManual();
+          if(before!==JSON.stringify({baby:r.inspectManual().baby,preview:intro.phase.snapshot()}))throw Error('Entrada ou render alterou simulação durante introdução');
+          introFrames[label]=document.getElementById('game').toDataURL().split(',')[1];
+          introChecks.push({stage:stage.id,time:intro.time,locked:true,dialogue:intro.dialogue,frame:intro.cameraFrame(document.getElementById('game')),fairy:intro.fairyPosition(),musicVolume:g.audio.system.getToyRoomAudioElement()?.volume});
+        }
       }
       if(s.firstJump){
         r.actionManual();
@@ -138,9 +146,14 @@ try {
   await capture('05-sala-concluida');
   await fs.writeFile(`${directory}/brinquedos.json`,JSON.stringify(toys,null,2)+'\n');
   await fs.writeFile(`${directory}/percurso.json`,JSON.stringify(report,null,2)+'\n');
-  const screens=await evaluate('fairyScreens');
-  for(const [name,images]of Object.entries(screens))for(const [state,data]of Object.entries(images))await fs.writeFile(`${directory}/${name}-${state}.png`,Buffer.from(data,'base64'));
-  await fs.writeFile(`${directory}/estados-visuais.json`,JSON.stringify(Object.keys(screens),null,2)+'\n');
+  const screens=await evaluate('introFrames');
+  for(const [name,data]of Object.entries(screens))await fs.writeFile(`${directory}/${name}.png`,Buffer.from(data,'base64'));
+  const transition=await evaluate('({events:introEvents,checks:introChecks,audio:audioEvents,time:window.review.game.toyRoomIntroduction.time,active:window.review.game.toyRoomIntroduction.active})');
+  assert.deepEqual(transition.events,['PHASE1_COMPLETE','TOY_ROOM_START']);
+  assert.equal(transition.active,false);assert(transition.time>=23.3 && transition.time<23.32);
+  for(const name of ['playPortalExitWhoosh','playSoftMagicBurst','startToyRoomMusic'])assert.equal(transition.audio.filter(e=>e.name===name).length,1,name+' disparou uma vez');
+  assert(transition.checks.filter(c=>c.stage==='TR_008').at(-1).musicVolume>0,'Fade de música avança');
+  await fs.writeFile(`${directory}/transicao.json`,JSON.stringify(transition,null,2)+'\n');
   assert.equal(exceptions.length,0,'Exceções JavaScript durante o percurso');await fs.writeFile(`${directory}/erros.json`,JSON.stringify(exceptions,null,2)+'\n');
-  console.log('Percurso completo aprovado: 38 apoios, portais e 8 brinquedos guardados — '+profile+'.');
+  console.log('Aprovado: transição 23,3 s, bloqueio, áudio, 38 apoios, portais e 8 brinquedos guardados — '+profile+'.');
 }finally{ws.close();}

@@ -228,9 +228,13 @@ export class AudioController {
     }
   }
 
-  startToyRoomMusic() {
+  setToyRoomMusicFade(value) { this.system.setToyRoomMusicFade(value); }
+  playPortalExitWhoosh() { this.system.playPortalExitWhoosh(); }
+  playSoftMagicBurst() { this.system.playSoftMagicBurst(); }
+
+  startToyRoomMusic(options) {
     if (this.system && typeof this.system.startToyRoomMusic === 'function') {
-      this.system.startToyRoomMusic();
+      this.system.startToyRoomMusic(options);
     }
   }
 

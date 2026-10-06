@@ -1,7 +1,6 @@
 import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
 import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
-import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
 import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
@@ -10,7 +9,7 @@ import { createAndroidFraming } from './controllers/AndroidFraming.js';
 import { CameraPresentation } from './controllers/CameraPresentation.js';
 import { createCameraController } from './controllers/CameraController.js';
 import { bindInput, InputController } from './controllers/InputController.js';
-import { createToyRoom, ToyRoomPhase } from './toyRoom.js';
+import { createToyRoom } from './toyRoom.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
@@ -56,29 +55,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   let currentPhaseMode = 'bedroom'; // 'bedroom' (quarto) | 'toy-room' (sala de brinquedos)
   let toyRoomInstance = null;
-  let introductionView = null;
-  let introductionOverview = 0;
-  const toyRoomIntroduction = new ToyRoomIntroduction({
-    onComplete: () => {
-      startToyRoomPhase({ fromIntroduction: true });
-      introductionView = null;
-    },
-    onEvent: name => {
-      callbacks.onNarrativeEvent?.(name);
-      canvas.dispatchEvent(new CustomEvent(name));
-    }
-  });
-
-  function beginToyRoomIntroduction() {
-    if (typeof toyRoomIntroduction !== 'undefined' && toyRoomIntroduction.active) return;
-    render();
-    const departure = document.createElement('canvas');
-    departure.width = canvas.width; departure.height = canvas.height;
-    departure.getContext('2d').drawImage(canvas, 0, 0);
-    introductionView = new ToyRoomPhase(canvas, null, null, null, { assets, bindInputs: false });
-    baby.controlsLocked = true;
-    toyRoomIntroduction.start({ phase: introductionView, departure, audio, canvas });
-  }
 
   let cameraX = 0;
   let cameraY = 0;
@@ -303,7 +279,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function restartToTitle() {
     saveProgress();
-    toyRoomIntroduction.cancel(); introductionView = null;
     opening.cancel();
     isPaused = false;
     state.isPaused = false;
@@ -312,15 +287,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals();
   }
 
-  function startToyRoomPhase({ fromIntroduction = false } = {}) {
-    if (!fromIntroduction) toyRoomIntroduction.cancel();
+  function startToyRoomPhase() {
     isGameOver = false;
     gameWon = false;
     gameStarted = true;
-    if (!fromIntroduction) {
-      audio.stopAllAudio();
-      audio.clearActiveSounds();
-    }
+    audio.stopAllAudio();
+    audio.clearActiveSounds();
 
     if (toyRoomInstance) {
       toyRoomInstance.destroy();
@@ -332,14 +304,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       restartToTitle();
     }, { assets });
 
-    if (fromIntroduction) {
-      toyRoomInstance.instance.introAlpha = 0;
-      toyRoomInstance.instance.introBannerTimer = 0;
-      introductionOverview = 1;
-    } else {
-      introductionOverview = 0;
-      audio.startToyRoomMusic();
-    }
+    audio.startToyRoomMusic();
     if (!loopStarted) {
       loopStarted = true;
       requestAnimationFrame(loop);
@@ -470,7 +435,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function doJump(inputSource) {
-    if (typeof toyRoomIntroduction !== 'undefined' && toyRoomIntroduction.active) return;
     if (opening.active) return;
     const firstJump = state.gameplayState === 'FIRST_JUMP_TUTORIAL';
     if (firstJump && (isPaused || !['touch', 'mouse', 'keyboard', 'gamepad'].includes(inputSource))) return;
@@ -755,7 +719,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- LOOP DE ATUALIZAÇÃO DO JOGO ---
   function update(dt = 1.0) {
-    if (toyRoomIntroduction.active) { toyRoomIntroduction.update(dt); return; }
     // O tutorial pausa relógio, IA, câmera e progressão antes de qualquer atualização.
     if (state.gameplayState === 'FIRST_JUMP_TUTORIAL') return;
     tick++;
@@ -1166,10 +1129,15 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         spawnFairyFlightDust(fairy.x, fairy.y, -1.2, 0);
       }
 
+      // Efeito de íris de luz dourada se expande pela tela
+      if (truePortalTransitionTimer > 60) {
+        transitionWipeAlpha = Math.min(1.0, transitionWipeAlpha + 0.02 * dt);
+      }
+
+      // Transição concluída: inicia a fase de visão superior da Sala de Brinquedos
       if (truePortalTransitionTimer >= 125) {
-        saveProgress();
         truePortalTransitionActive = false;
-        beginToyRoomIntroduction();
+        startToyRoomPhase();
         return;
       }
 
@@ -1527,7 +1495,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- RENDERIZAÇÃO ---
   function render() {
-    if (toyRoomIntroduction.active) { toyRoomIntroduction.render(ctx, canvas); return; }
     if (opening.active && !opening.revealing) {
       ctx.clearRect(0, 0, canvas.width, canvas.height);
       recordCameraQa();
@@ -1663,7 +1630,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function saveProgress() {
-    if (!gameStarted || toyRoomIntroduction.active) return;
+    if (!gameStarted) return;
     syncLocalsToState();
     const persisted = campaign.write({
       state: captureState(state), opening: opening.snapshot(),
@@ -1700,7 +1667,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function newCampaign() {
-    toyRoomIntroduction.cancel(); introductionView = null; introductionOverview = 0;
     gameStarted = false;
     cameraPresentation.reset();
     campaign.clear(); opening.reset();
@@ -1744,7 +1710,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     if (isPaused) {
       if (currentPhaseMode === 'toy-room' && toyRoomInstance) {
-        toyRoomInstance.instance.render({ overviewBlend: introductionOverview });
+        toyRoomInstance.render();
       } else {
         render();
       }
@@ -1764,8 +1730,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     if (currentPhaseMode === 'toy-room' && toyRoomInstance) {
       toyRoomInstance.update(dt);
-      introductionOverview = Math.max(0, introductionOverview - dt / 90);
-      toyRoomInstance.instance.render({ overviewBlend: introductionOverview });
+      toyRoomInstance.render();
       requestAnimationFrame(loop);
       return;
     }
@@ -1793,7 +1758,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   return {
     state,
     audio,
-    toyRoomIntroduction,
     camera,
     lighting,
     particles,
@@ -1823,7 +1787,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     newCampaign,
     destroy() {
       saveProgress();
-      toyRoomIntroduction.cancel(); introductionView = null;
       window.removeEventListener('pagehide', saveProgress);
       document.removeEventListener('visibilitychange', saveOnHide);
       opening.cancel();
