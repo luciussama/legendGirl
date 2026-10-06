@@ -505,24 +505,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `refreshCampaignMenu()` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `openDownloadModal()` | Função | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `closeDownloadModal()` | Função | 82 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `copyToClipboard(text, feedbackEl, successMsg = '✅ Copiado!')` | Função | 87 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fallbackCopy(text, feedbackEl, successMsg)` | Função | 103 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `showDownloadToast(message, isError = false)` | Função | 123 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `performStreamDownloadInModal()` | Função | 169 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updatePauseButtonState()` | Função | 331 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `toggleGamePause()` | Função | 348 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updateSoundButtonState()` | Função | 363 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `onGameOver()` | API/lambda de objeto | 411 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onRestartToTitle()` | API/lambda de objeto | 423 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startGame(event)` | Função | 444 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `handleRetry(event)` | Função | 473 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleRestart(event)` | Função | 505 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `addSafeAction(element, handler)` | Função | 538 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `safeHandler(event)` | Função atribuída | 541 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `handleToyRoomSwitch(event)` | Função | 558 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `pollOverlayGamepad()` | Função | 663 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updatePauseButtonState()` | Função | 47 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `toggleGamePause()` | Função | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updateSoundButtonState()` | Função | 79 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `onGameOver()` | API/lambda de objeto | 127 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onRestartToTitle()` | API/lambda de objeto | 139 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startGame(event)` | Função | 160 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `handleRetry(event)` | Função | 189 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleRestart(event)` | Função | 221 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `addSafeAction(element, handler)` | Função | 254 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `safeHandler(event)` | Função atribuída | 257 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `handleToyRoomSwitch(event)` | Função | 274 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `pollOverlayGamepad()` | Função | 379 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/state/CampaignProgress.js
 
@@ -534,8 +528,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `restoreState(state, saved)` | Função | 12 | Restaura valores preservando referências de objetos/arrays existentes. |
 | `createCampaignProgress(storage)` | Função | 21 | Cria leitura, gravação e limpeza do progresso local com alternativa em memória. |
 | `read()` | Método declarado | 26 | Lê e valida save da campanha; pode usar memória da sessão. |
-| `write(data)` | Método declarado | 51 | Serializa save versionado e tenta gravar no storage. |
-| `clear()` | Método declarado | 56 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `write(data)` | Método declarado | 62 | Serializa save versionado e tenta gravar no storage. |
+| `clear()` | Método declarado | 67 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 
 ## src/js/state/GameState.js
 
@@ -580,15 +574,27 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderBackground(ctx, roomW, roomH, options = {})` | Método declarado | 20 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderPerspectiveFloor(ctx, tile, roomW, roomH)` | Método declarado | 126 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawArchedWindow(ctx, wx, wy)` | Método declarado | 162 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawEntrancePortal(ctx, dx, dy, environmentDoor = null)` | Método declarado | 218 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawCentralMandalaRug(ctx, cx, cy)` | Método declarado | 247 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawFloralPlayMat(ctx, rx, ry)` | Método declarado | 294 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawBedsideFringeRug(ctx, bx, by)` | Método declarado | 336 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawTrainTracks(ctx)` | Método declarado | 359 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderFurniture(ctx, f, options = {})` | Método declarado | 401 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderBackground(ctx, roomW, roomH, options = {})` | Método declarado | 29 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawWoodStrip(ctx, image, x, y, width, height, plain = false)` | Método declarado | 163 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawWoodTrim(ctx, image, roomW, roomH)` | Método declarado | 172 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderPerspectiveFloor(ctx, tile, roomW, roomH)` | Método declarado | 187 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawArchedWindow(ctx, wx, wy, windowImage = null)` | Método declarado | 223 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawEntrancePortal(ctx, dx, dy, environmentDoor = null)` | Método declarado | 284 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawCentralMandalaRug(ctx, cx, cy)` | Método declarado | 313 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawFloralPlayMat(ctx, rx, ry, rugImage = null)` | Método declarado | 360 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBedsideFringeRug(ctx, bx, by, rugImage = null)` | Método declarado | 409 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `traceTrainCircuit(ctx)` | Método declarado | 439 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createWoodenTrackLayer(image)` | Método declarado | 443 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `drawTrainTracks(ctx, trackImage = null)` | Método declarado | 500 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderFurniture(ctx, f, options = {})` | Método declarado | 545 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+
+## src/js/toy-room/ToyCarryPresentation.js
+
+[Implementação](../src/js/toy-room/ToyCarryPresentation.js). Dados/classes exportados: `CARRY_PROFILES`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `renderToyCarry(ctx, player, options = {})` | Função | 18 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRenderer.js
 
@@ -604,8 +610,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderPlayer(ctx, player, options = {})` | Método declarado | 11 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderFairy(ctx, fairy, options = {})` | Método declarado | 19 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderPlayer(ctx, player, options = {})` | Método declarado | 12 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderFairy(ctx, fairy, options = {})` | Método declarado | 24 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRoomPhase.js
 
@@ -628,14 +634,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `resolveCollisions(px, py, r)` | Método declarado | 616 | Resolve colisões da sala com móveis. |
 | `update(dt = 1.0)` | Método declarado | 653 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 | `render()` | Método declarado | 844 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `snapshot()` | Método declarado | 1000 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 1008 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `destroy()` | Método declarado | 1016 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 1033 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `update(dt)` | API/lambda de objeto | 1036 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | API/lambda de objeto | 1037 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `triggerAction()` | API/lambda de objeto | 1038 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
-| `destroy()` | API/lambda de objeto | 1039 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `snapshot()` | Método declarado | 998 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 1006 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `destroy()` | Método declarado | 1014 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 1031 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `update(dt)` | API/lambda de objeto | 1034 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | API/lambda de objeto | 1035 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `triggerAction()` | API/lambda de objeto | 1036 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `destroy()` | API/lambda de objeto | 1037 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/toy-room/ToyRoomUI.js
 
@@ -714,4 +720,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **47 módulos JavaScript**, **389 declarações nomeadas**.
+Inventário: **48 módulos JavaScript**, **388 declarações nomeadas**.

@@ -11,8 +11,7 @@ console.log('--- TESTE: Verificação de Build para GitHub Pages ---');
 
 // Lista de arquivos HTML de produção para validar
 const htmlFiles = [
-  path.join(projectRoot, 'index.html'),
-  path.join(projectRoot, 'baixar.html')
+  path.join(projectRoot, 'index.html')
 ];
 
 // Se existir diretório _site gerado pelo GitHub Pages, inclui também

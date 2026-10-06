@@ -2,7 +2,7 @@
 
 Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **02/10/2026**.
 
-Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos e a distribuição ZIP. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
+Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
 
 Repositório de referência: [luciussama/legendGirl no GitHub](https://github.com/luciussama/legendGirl). A leitura direta do GitHub não estava disponível durante esta revisão; as fontes utilizadas são os arquivos da cópia local ligada a esse `origin`, incluindo alterações presentes no workspace. Este documento não afirma que essas alterações já estejam publicadas em `main`.
 
@@ -36,7 +36,7 @@ npm run dev
 
 Abra `http://localhost:3000`. Não abra `index.html` por `file://`: módulos ES e manifesto dependem de HTTP. `npm start` executa o mesmo servidor. Para outra porta em shell compatível: `PORT=3001 npm run dev`.
 
-`npm ci` instala o lockfile sem escolher versões novas. Mudanças de dependências devem versionar `package.json` e `package-lock.json` juntos. O servidor pode gerar o ZIP na inicialização; gerar/exportar ZIP não equivale a compilar o jogo.
+`npm ci` instala o lockfile sem escolher versões novas. Mudanças de dependências devem versionar `package.json` e `package-lock.json` juntos.
 
 Para estabelecer uma referência local antes da primeira alteração:
 
@@ -94,7 +94,7 @@ flowchart TD
 
 | Área | Entrada / contrato | Responsabilidade |
 | --- | --- | --- |
-| Página | [main.js](../src/js/main.js) | Localiza elementos DOM, cria o jogo, conecta começar/continuar/recomeçar, pausa, som e download. |
+| Página | [main.js](../src/js/main.js) | Localiza elementos DOM, cria o jogo, conecta começar/continuar/recomeçar, pausa e som. |
 | Coordenação | [game.js](../src/js/game.js), `createGame(canvas, uiFeedback, callbacks)` | Integra todos os subsistemas e escolhe o modo ativo. |
 | Configuração | [config.js](../src/js/config.js) | Chão, layout, portas, entidades iniciais e atributos progressivos. |
 | Estado | `state/` | Flags narrativas, transições, derrota e captura/restauração da campanha. |
@@ -348,7 +348,7 @@ Emulação de user agent/viewport no Chrome não executa Safari/WebKit nem GPU e
 
 O [workflow](../.github/workflows/deploy-pages.yml) roda em push para `main` e execução manual. Faz checkout, exige lockfile, configura Node 24, instala com `npm ci`, executa check-assets/lint/test-pages/build, prepara `_site` e publica Pages. **Não roda `npm test` completo atualmente**: execute as regressões relevantes antes de integrar.
 
-GitHub Pages serve arquivos estáticos; não executa Express nem endpoints `/api/zip-info` e `/api/download-zip`. Os caminhos devem funcionar na subpasta do repositório. ZIP estático exige `npm run export:zip`; `npm run verify:zip` verifica distribuição. Um ZIP existente pode ser reutilizado pelo servidor, portanto a mera presença não prova que contém a revisão atual.
+GitHub Pages serve arquivos estáticos e não executa Express. Os caminhos devem funcionar na subpasta do repositório.
 
 Fluxo sugerido para equipes novas, sem impor políticas de branch/revisão que o repositório não define:
 

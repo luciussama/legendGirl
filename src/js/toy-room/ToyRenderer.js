@@ -80,6 +80,25 @@ export class ToyRenderer {
       return;
     }
 
+    const illustratedToy = {
+      robot: ['toy-room-retro-robot-v1', 28, 57, 26],
+      duck: ['toy-room-royal-duck-v1', 44, 47, 22],
+      blocks: ['toy-room-stacking-blocks-v1', 32, 50, 22],
+      drum: ['toy-room-enchanted-drum-v1', 36, 30, 16],
+      jack: ['toy-room-fairy-jack-box-v1', 28, 51, 26]
+    }[t.type];
+    const toyImage = illustratedToy && options.assets?.get(illustratedToy[0]);
+    if (toyImage) {
+      // Conserva a área anterior e a base usada pelas mãos, sem deformar o material ilustrado.
+      const scale = Math.min(illustratedToy[1] / toyImage.width,
+        illustratedToy[2] / toyImage.height);
+      const width = toyImage.width * scale;
+      const height = toyImage.height * scale;
+      ctx.drawImage(toyImage, tx - width / 2, ty + illustratedToy[3] - height, width, height);
+      ctx.restore();
+      return;
+    }
+
     // Desenho artístico de cada brinquedo
     if (t.type === 'teddy') {
       // Ursinho Felpudo

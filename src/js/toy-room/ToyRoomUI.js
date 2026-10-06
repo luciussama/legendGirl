@@ -31,18 +31,22 @@ export class ToyRoomUI {
     } = state;
 
     // O card ocupa a esquerda, reservando a faixa direita para os controles HTML.
+    // Converte medidas da interface para o Canvas ortográfico sem mudar a escala do mundo.
+    const uiScale = canvas.clientWidth > 0 ? canvas.width / canvas.clientWidth : 1;
     const progressText = `🧸 Brinquedos Arrumados: ${organizedCount}/${totalToys}`;
-    ctx.font = 'bold 13px Georgia, serif';
+    ctx.font = `bold ${13 * uiScale}px Georgia, serif`;
     const fullTextWidth = ctx.measureText(progressText).width;
-    const cardW = Math.min(Math.ceil(fullTextWidth) + 32, canvas.width - 190);
-    const compactCard = cardW < fullTextWidth + 32;
-    const cardH = compactCard ? 62 : 46;
-    const cardX = 16;
-    const cardY = 16;
+    const cardW = Math.min(Math.ceil(fullTextWidth) + 32 * uiScale, canvas.width - 190 * uiScale);
+    const compactCard = cardW < fullTextWidth + 32 * uiScale;
+    const cardH = (compactCard ? 62 : 46) * uiScale;
+    const cardX = 16 * uiScale;
+    const topY = 16 * uiScale;
+    const cardY = introBannerTimer > 0 && topY + cardH >= 79
+      ? 138 + 12 * uiScale : topY;
 
     ctx.fillStyle = 'rgba(26, 16, 38, 0.82)';
     ctx.beginPath();
-    ctx.roundRect(cardX, cardY, cardW, cardH, 12);
+      ctx.roundRect(cardX, cardY, cardW, cardH, 12 * uiScale);
     ctx.fill();
     ctx.strokeStyle = '#facc15';
     ctx.lineWidth = 1.5;
@@ -54,23 +58,23 @@ export class ToyRoomUI {
       const title = '🧸 Brinquedos';
       const counter = `Arrumados: ${organizedCount}/${totalToys}`;
       const widest = Math.max(ctx.measureText(title).width, ctx.measureText(counter).width);
-      const fontSize = Math.min(13, 13 * (cardW - 32) / widest);
+      const fontSize = Math.min(13 * uiScale, 13 * uiScale * (cardW - 32 * uiScale) / widest);
       ctx.font = `bold ${fontSize}px Georgia, serif`;
-      ctx.fillText(title, cardX + 16, cardY + 19);
-      ctx.fillText(counter, cardX + 16, cardY + 36);
+      ctx.fillText(title, cardX + 16 * uiScale, cardY + 19 * uiScale);
+      ctx.fillText(counter, cardX + 16 * uiScale, cardY + 36 * uiScale);
     } else {
-      ctx.fillText(progressText, cardX + 16, cardY + 22);
+      ctx.fillText(progressText, cardX + 16 * uiScale, cardY + 22 * uiScale);
     }
 
     // Barra de Progresso
-    const barW = cardW - 32;
-    const barH = 8;
-    const barY = cardY + (compactCard ? 44 : 28);
+    const barW = cardW - 32 * uiScale;
+    const barH = 8 * uiScale;
+    const barY = cardY + (compactCard ? 44 : 28) * uiScale;
     ctx.fillStyle = 'rgba(255, 255, 255, 0.15)';
-    ctx.fillRect(cardX + 16, barY, barW, barH);
+    ctx.fillRect(cardX + 16 * uiScale, barY, barW, barH);
     ctx.fillStyle = '#10b981';
     const progressRatio = totalToys > 0 ? Math.min(1, organizedCount / totalToys) : 0;
-    ctx.fillRect(cardX + 16, barY, barW * progressRatio, barH);
+    ctx.fillRect(cardX + 16 * uiScale, barY, barW * progressRatio, barH);
 
     // 1. Joystick Virtual Dinâmico e Flutuante (Lado Esquerdo da Tela)
     // Instanciado e exibido exclusivamente enquanto o dedo estiver na tela (touchState.active)

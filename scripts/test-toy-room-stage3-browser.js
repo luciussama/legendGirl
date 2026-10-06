@@ -40,7 +40,7 @@ const capture = async (name, expression) => fs.writeFile(path.join(evidence, nam
 try {
   await send('Network.enable');
   await send('Network.setCacheDisabled', { cacheDisabled: true });
-  await send('Page.navigate', { url: 'http://127.0.0.1:8765/baixar.html' });
+  await send('Page.navigate', { url: 'http://127.0.0.1:8765/index.html' });
   await new Promise(resolve => setTimeout(resolve, 300));
   const result = await evaluate(`(async () => {
     const { AssetManager } = await import('/src/js/assets/AssetManager.js');

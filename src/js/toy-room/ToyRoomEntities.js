@@ -24,6 +24,17 @@ export class ToyRoomEntities {
   renderFairy(ctx, fairy, options = {}) {
     if (!ctx || !fairy) return;
 
+    const illustratedFairy = options.assets?.get('toy-room-illustrated-fairy-v1');
+    if (illustratedFairy) {
+      // A arte sólida antiga ocupava cerca de 40 px; os 60 px incluíam a aura.
+      // Mantém centro e acompanhamento lógico; não usa a área da aura para ampliar o corpo.
+      const scale = 40 / Math.max(illustratedFairy.width, illustratedFairy.height);
+      const width = illustratedFairy.width * scale;
+      const height = illustratedFairy.height * scale;
+      ctx.drawImage(illustratedFairy, fairy.x - width / 2, fairy.y - height / 2, width, height);
+      return;
+    }
+
     const fairyImage = options.assets && options.assets.get('toy-room-fairy');
     if (fairyImage) {
       ctx.drawImage(fairyImage, fairy.x - 30, fairy.y - 30, 60, 60);

@@ -2,7 +2,7 @@
 
 Uma aventura 2D de plataforma e exploração, feita para jogar no navegador. Uma menina acorda em um quarto cheio de brinquedos e, acompanhada por uma fadinha, precisa encontrar o caminho entre objetos que se transformam em apoios para os seus saltos.
 
-A experiência combina abertura narrativa, diálogos, plataformas ilustradas, iluminação de um quarto escuro e uma sala de brinquedos explorável. O projeto utiliza **JavaScript com módulos ES, HTML e Canvas 2D**, sem uma engine externa. O servidor Node.js atende o desenvolvimento local e a exportação do projeto; a jogabilidade roda no navegador.
+A experiência combina abertura narrativa, diálogos, plataformas ilustradas, iluminação de um quarto escuro e uma sala de brinquedos explorável. O projeto utiliza **JavaScript com módulos ES, HTML e Canvas 2D**, sem uma engine externa. O servidor Node.js atende o desenvolvimento local; a jogabilidade roda no navegador.
 
 ## A experiência
 
@@ -147,8 +147,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 ```text
 .
 ├── index.html                 # Página principal
-├── baixar.html                # Página de download
-├── server.js                  # Servidor local e rotas de exportação ZIP
+├── server.js                  # Servidor local
 ├── package.json               # Dependências e comandos
 ├── package-lock.json          # Resolução versionada das dependências
 ├── assets/                    # Manifesto, arte e áudio
@@ -211,19 +210,9 @@ Relatório disponível: [QA atual](assets/qa-testers/current-reports/relatorio.m
 
 As evidências móveis do relatório utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
 
-## Publicação e exportação
+## Publicação
 
-O workflow [`deploy-pages.yml`](.github/workflows/deploy-pages.yml) é acionado por pushes em `main` ou execução manual. Ele obtém o código, verifica a presença do lockfile, configura Node.js 24 com cache npm, executa `npm ci`, valida o projeto e publica os arquivos estáticos no GitHub Pages.
-
-O site publicado não depende do Express: HTML, módulos JavaScript e recursos são servidos diretamente. As rotas dinâmicas de `server.js`, como informações e geração de ZIP, pertencem à execução com Node.js e não são executadas pelo GitHub Pages.
-
-Para gerar o arquivo de distribuição:
-
-```sh
-npm run export:zip
-```
-
-O resultado é `o-quarto-dos-brinquedos.zip`. Na hospedagem estática, o download depende de esse arquivo estar presente e atualizado entre os arquivos publicados.
+O workflow do GitHub Pages publica HTML, módulos JavaScript e recursos estáticos. O site publicado não depende do Express; o servidor Node.js atende o desenvolvimento local.
 
 Se o Actions informar que não encontrou o lockfile, confira o commit usado pela execução: `package-lock.json` precisa existir **naquele commit**, na raiz. Reexecutar uma execução antiga não faz checkout automaticamente de um commit novo.
 

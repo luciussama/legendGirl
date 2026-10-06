@@ -12,13 +12,10 @@
     "start": "node server.js",
     "lint": "node --check server.js && node --check scripts/check-assets.js",
     "check-assets": "node scripts/check-assets.js",
-    "export:zip": "node scripts/export-project-zip.js",
-    "verify:zip": "node scripts/verify-zip-download-and-contents.js",
     "review:dark-room": "node scripts/review-dark-room-browser.js",
     "test:tutorial:browser": "node scripts/test-first-jump-tutorial-browser.js && node scripts/test-first-jump-prompt-browser.js && node scripts/test-first-jump-completion-browser.js && node scripts/test-first-jump-production-browser.js"
   },
   "dependencies": {
-    "archiver": "^8.0.0",
     "express": "^4.21.2",
     "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0"

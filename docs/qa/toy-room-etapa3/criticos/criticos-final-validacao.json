@@ -14,13 +14,13 @@
   },
   "performance": {
     "antes": {
-      "medianaRenderMs": 0.5,
+      "medianaRenderMs": 0.6000000089406967,
       "p90RenderMs": 1,
       "medianaIntervaloMs": 16.69999999999891
     },
     "depois": {
-      "medianaRenderMs": 0.800000011920929,
-      "p90RenderMs": 1.0999999940395355,
+      "medianaRenderMs": 0.7999999970197678,
+      "p90RenderMs": 1,
       "medianaIntervaloMs": 16.69999999999891
     }
   },

@@ -77,7 +77,16 @@
     "toy-room-carry-pose-v1": "./assets/art/toy-room/stage2/carry-pose-v1.png",
     "toy-room-armchair-v1": "./assets/art/toy-room/stage3/armchair-v1.png",
     "toy-room-rocking-horse-v1": "./assets/art/toy-room/stage3/rocking-horse-v1.png",
-    "toy-room-cotton-bunny-v1": "./assets/art/toy-room/stage3/cotton-bunny-v1.png"
+    "toy-room-cotton-bunny-v1": "./assets/art/toy-room/stage3/cotton-bunny-v1.png",
+    "toy-room-bookshelf-v1": "./assets/art/toy-room/stage3/bookshelf-v1.png",
+    "toy-room-block-castle-v1": "./assets/art/toy-room/stage3/block-castle-v1.png",
+    "toy-room-oak-cabinet-v1": "./assets/art/toy-room/stage3/oak-cabinet-v1.png",
+    "toy-room-retro-robot-v1": "./assets/art/toy-room/stage3/retro-robot-v1.png",
+    "toy-room-royal-duck-v1": "./assets/art/toy-room/stage3/royal-duck-v1.png",
+    "toy-room-stacking-blocks-v1": "./assets/art/toy-room/stage3/stacking-blocks-v1.png",
+    "toy-room-enchanted-drum-v1": "./assets/art/toy-room/stage3/enchanted-drum-v1.png",
+    "toy-room-fairy-jack-box-v1": "./assets/art/toy-room/stage3/fairy-jack-box-v1.png",
+    "toy-room-illustrated-fairy-v1": "./assets/art/toy-room/stage3/illustrated-fairy-v1.png"
   },
   "spritesheets": {}
 }

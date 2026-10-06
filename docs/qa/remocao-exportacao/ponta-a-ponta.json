@@ -1,0 +1,40 @@
+{
+  "resultados": [
+    {
+      "tela": "desktop",
+      "inicio": true,
+      "pausa": true,
+      "som": true,
+      "movimento": true,
+      "coletas": 8,
+      "armazenamentos": 8,
+      "vitoria": true,
+      "saveRestaurado": true
+    },
+    {
+      "tela": "retrato",
+      "inicio": true,
+      "pausa": true,
+      "som": true,
+      "movimento": true,
+      "coletas": 8,
+      "armazenamentos": 8,
+      "vitoria": true,
+      "saveRestaurado": true
+    },
+    {
+      "tela": "paisagem",
+      "inicio": true,
+      "pausa": true,
+      "som": true,
+      "movimento": true,
+      "coletas": 8,
+      "armazenamentos": 8,
+      "vitoria": true,
+      "saveRestaurado": true
+    }
+  ],
+  "errosJavaScript": [],
+  "rotasAntigas": 404,
+  "metodo": "Entrada por interface, teclado CDP real, posições de ação preparadas; não é percurso completo entre todos os brinquedos."
+}

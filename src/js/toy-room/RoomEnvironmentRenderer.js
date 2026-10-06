@@ -545,6 +545,24 @@ export class RoomEnvironmentRenderer {
   renderFurniture(ctx, f, options = {}) {
     if (!ctx || !f) return;
 
+    const illustratedFurniture = {
+      shelf: ['toy-room-bookshelf-v1', 0],
+      fortress: ['toy-room-block-castle-v1', 15],
+      wardrobe: ['toy-room-oak-cabinet-v1', 0]
+    }[f.type];
+    const furnitureImage = illustratedFurniture && options.assets?.get(illustratedFurniture[0]);
+    if (furnitureImage) {
+      // A ilustração e sua sombra cabem na área anterior; proporção e colisões são preservadas.
+      const topExtension = illustratedFurniture[1];
+      const scale = Math.min((f.w + 24) / furnitureImage.width,
+        (f.h + 14 + topExtension) / furnitureImage.height);
+      const width = furnitureImage.width * scale;
+      const height = furnitureImage.height * scale;
+      ctx.drawImage(furnitureImage, f.x + (f.w - width) / 2,
+        f.y + f.h + 14 - height, width, height);
+      return;
+    }
+
     const armchairImage = f.type === 'armchair' && options.assets?.get('toy-room-armchair-v1');
     if (armchairImage) {
       // Mantém a área visual anterior, incluindo sua sombra; não muda o obstáculo.

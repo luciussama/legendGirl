@@ -1,0 +1,19 @@
+import fs from 'node:fs/promises';
+import path from 'node:path';
+import {fileURLToPath} from 'node:url';
+const out=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'../docs/qa/toy-room-etapa3/criticos');
+const pages=await(await fetch('http://127.0.0.1:9223/json')).json();
+const ws=new WebSocket(pages.find(p=>p.type==='page').webSocketDebuggerUrl);await new Promise(r=>ws.onopen=r);
+let seq=0;const pending=new Map();ws.onmessage=({data})=>{const m=JSON.parse(data);if(pending.has(m.id)){pending.get(m.id)(m.result);pending.delete(m.id)}};
+const send=(method,params={})=>new Promise(r=>{const id=++seq;pending.set(id,r);ws.send(JSON.stringify({id,method,params}))});
+const ev=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value};
+const save=async(name,expr='phase.canvas.toDataURL().split(",")[1]')=>fs.writeFile(out+'/'+name+'.png',Buffer.from(await ev(expr),'base64'));
+const frozenUI=await fs.readFile(out+'/ToyRoomUI-antes.txt','utf8');const records=[];
+try{for(const [label,width,height]of[['desktop',960,580],['retrato',390,844],['landscape',915,412],['retrato-320',320,568]]){
+await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:false});await send('Page.navigate',{url:'http://127.0.0.1:8765/index.html'});await new Promise(r=>setTimeout(r,1300));await ev('document.getElementById("btn-skip-phase2").click()');await new Promise(r=>setTimeout(r,650));
+await ev(`(async()=>{if(!window.game.isToyRoomMode())throw Error('Toy Room não iniciada');window.realUI=(await import('/src/js/toy-room/ToyRoomUI.js')).toyRoomUI;window.oldUI=(await import('data:text/javascript;base64,${Buffer.from(frozenUI).toString('base64')}')).toyRoomUI;window.savedUI=realUI.renderUI;window.hudRecords={};realUI.renderUI=function(ctx,c,state){const texts=[];let card;const rect=ctx.roundRect.bind(ctx),text=ctx.fillText.bind(ctx);ctx.roundRect=(x,y,w,h,r)=>{if(!card)card={x,y,w,h};return rect(x,y,w,h,r)};ctx.fillText=(value,x,y)=>{if(value.includes('Brinquedos')||value.startsWith('Arrumados:'))texts.push({value,x,y,width:ctx.measureText(value).width,font:ctx.font});return text(value,x,y)};try{savedUI.call(this,ctx,c,state)}finally{delete ctx.roundRect;delete ctx.fillText;}hudRecords={card,texts,canvasW:c.width,canvasH:c.height};};return true})()`);
+await new Promise(r=>setTimeout(r,4500));const record=await ev(`(()=>{const c=document.getElementById('gameCanvas'),rect=c.getBoundingClientRect(),h=hudRecords.card;const card={left:rect.left+h.x*rect.width/c.width,right:rect.left+(h.x+h.w)*rect.width/c.width,top:rect.top+h.y*rect.height/c.height,bottom:rect.top+(h.y+h.h)*rect.height/c.height};const controls=[...document.querySelectorAll('.top-controls-bar>*')].filter(e=>getComputedStyle(e).display!=='none').map(e=>({id:e.id,rect:e.getBoundingClientRect().toJSON()}));for(const {id,rect:r}of controls)if(card.left<r.right&&card.right>r.left&&card.top<r.bottom&&card.bottom>r.top)throw Error('Sobreposição com '+id);return{...hudRecords,cardCSS:card,controls}})()`);records.push({label,width,height,...record});
+let shot=await send('Page.captureScreenshot',{format:'png'});await fs.writeFile(out+'/hud-'+label+'-depois.png',Buffer.from(shot.data,'base64'));
+await ev('realUI.renderUI=oldUI.renderUI');await new Promise(r=>setTimeout(r,100));shot=await send('Page.captureScreenshot',{format:'png'});await fs.writeFile(out+'/hud-'+label+'-antes.png',Buffer.from(shot.data,'base64'));
+await ev('realUI.renderUI=savedUI');}
+await fs.writeFile(out+'/hud-aplicacao-real.json',JSON.stringify(records,null,2));console.log('HUD real sem sobreposição nos quatro enquadramentos.');}finally{ws.close()}
