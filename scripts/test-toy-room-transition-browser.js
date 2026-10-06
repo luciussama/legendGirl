@@ -31,7 +31,8 @@ try {
   await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await evaluate('window.review=null');
   await send('Emulation.setUserAgentOverride',{userAgent:device.ua});
   await send('Emulation.setDeviceMetricsOverride',{width:device.width,height:device.height,deviceScaleFactor:1,mobile:device.mobile});
-  await send('Page.navigate',{url:'http://127.0.0.1:3001/tests/dark-room-playthrough.html?run='+Date.now()});await new Promise(r=>setTimeout(r,350));
+  const sourceQuery=process.env.TOY_REVIEW_SOURCE?'&source='+encodeURIComponent(process.env.TOY_REVIEW_SOURCE):'';
+  await send('Page.navigate',{url:'http://127.0.0.1:3001/tests/dark-room-playthrough.html?run='+Date.now()+sourceQuery});await new Promise(r=>setTimeout(r,350));
   for(let i=0;i<200;i++){if(await evaluate('Boolean(window.review)'))break;await new Promise(r=>setTimeout(r,100));}
   await evaluate(`document.head.insertAdjacentHTML('beforeend','<meta name="viewport" content="width=device-width,initial-scale=1"><style>canvas{width:100vw;height:100dvh}p{display:none}</style>')`);
   await evaluate('new Promise(r=>requestAnimationFrame(()=>requestAnimationFrame(r)))');
@@ -156,4 +157,4 @@ try {
   await fs.writeFile(`${directory}/transicao.json`,JSON.stringify(transition,null,2)+'\n');
   assert.equal(exceptions.length,0,'Exceções JavaScript durante o percurso');await fs.writeFile(`${directory}/erros.json`,JSON.stringify(exceptions,null,2)+'\n');
   console.log('Aprovado: transição 23,3 s, bloqueio, áudio, 38 apoios, portais e 8 brinquedos guardados — '+profile+'.');
-}finally{ws.close();}
+}finally{ws.close();await fetch('http://127.0.0.1:9222/json/close/'+page.id).catch(()=>{});}

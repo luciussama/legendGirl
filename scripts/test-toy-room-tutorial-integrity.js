@@ -30,5 +30,5 @@ for(let index=0;index<8;index++){
  for(const p of [before,after]){p.player.x=p.toys[index].x;p.player.y=p.toys[index].y;p.lastActionTime=-Infinity;seeded(()=>p.triggerAction());const c=p.furniture.find(f=>f.id==='toy-chest');p.player.x=c.x+c.w/2;p.player.y=c.y+c.h/2;p.lastActionTime=-Infinity;seeded(()=>p.triggerAction());}
  assert.deepEqual(state(after),state(before));stores++;
 }
-await fs.writeFile(`${directory}/integridade.json`,JSON.stringify({collisions,movementFrames:960,collections,drops,stores,layout:'idêntico',result:'aprovado'},null,2)+'\n');
+await fs.writeFile(`${process.env.TOY_INTEGRITY_EVIDENCE || directory}/integridade.json`,JSON.stringify({collisions,movementFrames:960,collections,drops,stores,layout:'idêntico',result:'aprovado'},null,2)+'\n');
 console.log('APROVADO: 4.941 colisões, 960 quadros de movimento, 8 coletas, solturas e armazenamentos iguais à versão anterior.');

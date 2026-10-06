@@ -1,3 +1,13 @@
+import { createRuntimeContext } from './runtime/RuntimeContext.js';
+import { updatePortalNarrative } from './narrative/DarkRoomNarrative.js';
+import { updateTutorialRetornoNarrative } from './narrative/DarkRoomNarrative.js';
+import { updateReviravoltaNarrative } from './narrative/DarkRoomNarrative.js';
+import { updateCasteloNarrative } from './narrative/DarkRoomNarrative.js';
+import { updateTransicaoStandbyNarrative } from './narrative/DarkRoomNarrative.js';
+import { updateStandbyNarrative } from './narrative/DarkRoomNarrative.js';
+import { renderDarkRoom } from './rendering/DarkRoomRenderPipeline.js';
+import { createViewportController } from './controllers/ViewportController.js';
+import { createCameraQaObserver } from './debug/CameraQaObserver.js';
 import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
 import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
@@ -5,7 +15,7 @@ import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
 import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
 import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
-import { getMobileZoomFrame, isMobileDevice } from './controllers/MobileZoom.js';
+import { isMobileDevice } from './controllers/MobileZoom.js';
 import { createAndroidFraming } from './controllers/AndroidFraming.js';
 import { CameraPresentation } from './controllers/CameraPresentation.js';
 import { createCameraController } from './controllers/CameraController.js';
@@ -14,8 +24,6 @@ import { createToyRoom, ToyRoomPhase } from './toyRoom.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
-import { renderFirstJumpTutorial } from './ui/FirstJumpTutorial.js';
-import { applyArtFinish } from './effects/ArtFinish.js';
 import { createParticleSystem, transitionEffects } from './effects/index.js';
 import { hudRenderer, dialogueRenderer } from './ui/index.js';
 import { createAssetManager, darkRoomAtlas } from './assets/index.js';
@@ -105,10 +113,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   let isStandbyTransitioning = false;
   let standbyTransitionTimer = 0;
   let standbyTransitionProgress = 0;
-  let standbyStandUpProgress = 0;
-  let standbyDialogueAlpha = 1.0;
   let standbyActivatedTime = 0;
-  let lastUsedInputDevice = 'keyboard'; // 'keyboard' (teclado) | 'gamepad' (controle) | 'touch' (toque)
 
   const opening = new OpeningSequence({
     onReveal: beginOpeningGameplay,
@@ -174,13 +179,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isStandbyTransitioning = state.isStandbyTransitioning;
     standbyTransitionTimer = state.standbyTransitionTimer;
     standbyTransitionProgress = state.standbyTransitionProgress;
-    standbyStandUpProgress = state.standbyStandUpProgress;
-    standbyDialogueAlpha = state.standbyDialogueAlpha;
     standbyActivatedTime = state.standbyActivatedTime;
-    lastUsedInputDevice = state.lastUsedInputDevice;
     cutsceneActive = state.cutsceneActive;
     cutsceneTriggered = state.cutsceneTriggered;
-    cutsceneCompleted = state.cutsceneCompleted;
     cutsceneStep = state.cutsceneStep;
     cutsceneTimer = state.cutsceneTimer;
     isEscapeMode = state.isEscapeMode;
@@ -228,13 +229,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.isStandbyTransitioning = isStandbyTransitioning;
     state.standbyTransitionTimer = standbyTransitionTimer;
     state.standbyTransitionProgress = standbyTransitionProgress;
-    state.standbyStandUpProgress = standbyStandUpProgress;
-    state.standbyDialogueAlpha = standbyDialogueAlpha;
     state.standbyActivatedTime = standbyActivatedTime;
-    state.lastUsedInputDevice = lastUsedInputDevice;
     state.cutsceneActive = cutsceneActive;
     state.cutsceneTriggered = cutsceneTriggered;
-    state.cutsceneCompleted = cutsceneCompleted;
     state.cutsceneStep = cutsceneStep;
     state.cutsceneTimer = cutsceneTimer;
     state.isEscapeMode = isEscapeMode;
@@ -262,7 +259,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function setLastInputDevice(dev) {
     state.setLastInputDevice(dev);
-    lastUsedInputDevice = state.lastUsedInputDevice;
   }
 
   function getActivePromptDevice() {
@@ -374,26 +370,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const dctx = darkCanvas.getContext('2d');
 
   // Adaptação de Resolução e Viewport (Zero distorção em Dispositivos Móveis e Desktop)
+  const viewportController = createViewportController({
+    canvas, darkCanvas, lighting, host: window,
+    onOrientation: portrait => { isPortrait = portrait; }
+  });
   function handleResize() {
-    const rect = (canvas && typeof canvas.getBoundingClientRect === 'function') ? canvas.getBoundingClientRect() : null;
-    const w = (rect && rect.width > 0) ? rect.width : (window.innerWidth || 960);
-    const h = (rect && rect.height > 0) ? rect.height : (window.innerHeight || 540);
-    const aspect = (w > 0 && h > 0) ? (w / h) : (16 / 9);
-    isPortrait = aspect < 1.15;
-
-    if (isPortrait) {
-      // Mobile / Retrato: Mantém FoV amplo (largura 540) e dimensiona a altura ortograficamente
-      canvas.width = 540;
-      canvas.height = Math.round(540 / aspect) || 960;
-    } else {
-      // Desktop / Paisagem: Altura base de 540 e dimensiona a largura ortograficamente
-      canvas.height = 540;
-      canvas.width = Math.round(540 * aspect) || 960;
-    }
-
-    darkCanvas.width = canvas.width;
-    darkCanvas.height = canvas.height;
-    lighting.resize(canvas.width, canvas.height);
+    viewportController.resize();
   }
 
   window.addEventListener('resize', handleResize);
@@ -406,7 +388,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   // Estado de Cena Cinemática (Fase 1 -> Castelo da Fase 2)
   let cutsceneActive = false;
   let cutsceneTriggered = false;
-  let cutsceneCompleted = false;
   let cutsceneStep = 1;
   let cutsceneTimer = 0;
 
@@ -776,6 +757,66 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- LOOP DE ATUALIZAÇÃO DO JOGO ---
+  // Adaptador transitório sem armazenamento: conserva as barreiras de sincronização
+  // existentes até a migração dos domínios de alto risco para GameState.
+  const narrativeBindings = {
+    currentPhaseMode: { get: () => currentPhaseMode, set: value => { currentPhaseMode = value; } },
+    toyRoomInstance: { get: () => toyRoomInstance, set: value => { toyRoomInstance = value; } },
+    cameraX: { get: () => cameraX, set: value => { cameraX = value; } },
+    cameraY: { get: () => cameraY, set: value => { cameraY = value; } },
+    targetCameraY: { get: () => targetCameraY, set: value => { targetCameraY = value; } },
+    cameraZoom: { get: () => cameraZoom, set: value => { cameraZoom = value; } },
+    targetCameraZoom: { get: () => targetCameraZoom, set: value => { targetCameraZoom = value; } },
+    isPortrait: { get: () => isPortrait, set: value => { isPortrait = value; } },
+    gameWon: { get: () => gameWon, set: value => { gameWon = value; } },
+    isGameOver: { get: () => isGameOver, set: value => { isGameOver = value; } },
+    gameStarted: { get: () => gameStarted, set: value => { gameStarted = value; } },
+    loopStarted: { get: () => loopStarted, set: value => { loopStarted = value; } },
+    lastJumpTime: { get: () => lastJumpTime, set: value => { lastJumpTime = value; } },
+    lastDialogueAdvanceTime: { get: () => lastDialogueAdvanceTime, set: value => { lastDialogueAdvanceTime = value; } },
+    lastTime: { get: () => lastTime, set: value => { lastTime = value; } },
+    firstPlatformCleared: { get: () => firstPlatformCleared, set: value => { firstPlatformCleared = value; } },
+    tick: { get: () => tick, set: value => { tick = value; } },
+    isStandbyActive: { get: () => isStandbyActive, set: value => { isStandbyActive = value; } },
+    isStandbyTransitioning: { get: () => isStandbyTransitioning, set: value => { isStandbyTransitioning = value; } },
+    standbyTransitionTimer: { get: () => standbyTransitionTimer, set: value => { standbyTransitionTimer = value; } },
+    standbyTransitionProgress: { get: () => standbyTransitionProgress, set: value => { standbyTransitionProgress = value; } },
+    standbyActivatedTime: { get: () => standbyActivatedTime, set: value => { standbyActivatedTime = value; } },
+    cutsceneActive: { get: () => cutsceneActive, set: value => { cutsceneActive = value; } },
+    cutsceneTriggered: { get: () => cutsceneTriggered, set: value => { cutsceneTriggered = value; } },
+    cutsceneStep: { get: () => cutsceneStep, set: value => { cutsceneStep = value; } },
+    cutsceneTimer: { get: () => cutsceneTimer, set: value => { cutsceneTimer = value; } },
+    isEscapeMode: { get: () => isEscapeMode, set: value => { isEscapeMode = value; } },
+    escapeLevel: { get: () => escapeLevel, set: value => { escapeLevel = value; } },
+    currentScrollSpeed: { get: () => currentScrollSpeed, set: value => { currentScrollSpeed = value; } },
+    targetScrollSpeed: { get: () => targetScrollSpeed, set: value => { targetScrollSpeed = value; } },
+    escapeBannerTimer: { get: () => escapeBannerTimer, set: value => { escapeBannerTimer = value; } },
+    escapeBannerText: { get: () => escapeBannerText, set: value => { escapeBannerText = value; } },
+    isPhase3: { get: () => isPhase3, set: value => { isPhase3 = value; } },
+    phase3Level: { get: () => phase3Level, set: value => { phase3Level = value; } },
+    plotTwistActive: { get: () => plotTwistActive, set: value => { plotTwistActive = value; } },
+    plotTwistTriggered: { get: () => plotTwistTriggered, set: value => { plotTwistTriggered = value; } },
+    plotTwistStep: { get: () => plotTwistStep, set: value => { plotTwistStep = value; } },
+    plotTwistTimer: { get: () => plotTwistTimer, set: value => { plotTwistTimer = value; } },
+    fakeDoorRevealed: { get: () => fakeDoorRevealed, set: value => { fakeDoorRevealed = value; } },
+    fakeDoorSlideY: { get: () => fakeDoorSlideY, set: value => { fakeDoorSlideY = value; } },
+    fakeDoorRotation: { get: () => fakeDoorRotation, set: value => { fakeDoorRotation = value; } },
+    phase3TutorialActive: { get: () => phase3TutorialActive, set: value => { phase3TutorialActive = value; } },
+    phase3TutorialProgress: { get: () => phase3TutorialProgress, set: value => { phase3TutorialProgress = value; } },
+    truePortalTransitionActive: { get: () => truePortalTransitionActive, set: value => { truePortalTransitionActive = value; } },
+    truePortalTransitionTimer: { get: () => truePortalTransitionTimer, set: value => { truePortalTransitionTimer = value; } },
+    trueDoorOpenAngle: { get: () => trueDoorOpenAngle, set: value => { trueDoorOpenAngle = value; } },
+    transitionWipeAlpha: { get: () => transitionWipeAlpha, set: value => { transitionWipeAlpha = value; } }
+  };
+  const narrativeState = new Proxy(state, {
+    get: (target, name) => narrativeBindings[name] ? narrativeBindings[name].get() : Reflect.get(target, name),
+    set: (target, name, value) => {
+      if (narrativeBindings[name]) { narrativeBindings[name].set(value); return true; }
+      return Reflect.set(target, name, value);
+    }
+  });
+
+
   function update(dt = 1.0) {
     if (toyRoomIntroduction.active) { toyRoomIntroduction.update(dt); return; }
     // O tutorial pausa relógio, IA, câmera e progressão antes de qualquer atualização.
@@ -802,401 +843,36 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     // --- PREPARAÇÃO, PRONTIDÃO E RENASCIMENTO (FADINHA INTERATIVA) ---
     if (isStandbyActive) {
-      baby.vx = 0;
-      baby.vy = 0;
-      baby.animTime = 0;
-      baby.onGround = true;
-
-      // Fadinha flutua acima dela emitindo pulsação suave
-      const hoverX = baby.x + (baby.facing === -1 ? -18 : 18);
-      const hoverY = baby.y - 75 + Math.sin(tick * 0.05) * 5;
-      fairy.x += (hoverX - fairy.x) * 0.1;
-      fairy.y += (hoverY - fairy.y) * 0.1;
-      fairy.flutterPhase += 0.3;
-
-      if (tick % 5 === 0) {
-        spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.2);
-      }
-
-      // Câmera acolhedora nas duas
-      targetCameraZoom = 1.25;
-      cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
-      const targetCam = baby.x - (canvas.width > 600 ? canvas.width * 0.35 : canvas.width * 0.25);
-      cameraX += (targetCam - cameraX) * 0.08;
-
-      updateFairyParticles();
-      updateBabyJumpDust();
+      updateStandbyNarrative(narrativeContext, dt);
       return;
     }
 
     if (isStandbyTransitioning) {
-      standbyTransitionTimer += dt;
-      standbyTransitionProgress = Math.min(1.0, standbyTransitionTimer / 24);
-      standbyStandUpProgress = standbyTransitionProgress;
-      standbyDialogueAlpha = Math.max(0, 1.0 - standbyTransitionProgress * 1.5);
-
-      // Pirueta e faíscas da fadinha
-      fairy.spinAnim = Math.max(0, fairy.spinAnim - 0.08);
-      fairy.flutterPhase += 0.55;
-      fairy.y += Math.sin(standbyTransitionProgress * Math.PI) * -0.4;
-
-      if (tick % 3 === 0 && standbyTransitionProgress < 0.8) {
-        spawnFairySparkles(fairy.x, fairy.y, 2);
-      }
-
-      // Câmera retorna ao zoom normal
-      targetCameraZoom = 1.0;
-      cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
-      const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
-      cameraX += (targetCam - cameraX) * 0.08;
-
-      if (standbyTransitionProgress >= 1.0) {
-        isStandbyTransitioning = false;
-        baby.isCrouching = false;
-        baby.controlsLocked = false;
-        baby.onGround = true;
-        baby.respawnLandingPending = false;
-
-        if (isPhase3) {
-          const stats = getPhase3Stats(0);
-          baby.vx = stats.runVx;
-        } else if (isEscapeMode) {
-          if (baby.currentPlatformIndex === 9) {
-            // Efeito escondido: no castelo, aguarda o jogador apertar para dar o pulo
-            baby.vx = 0;
-            currentScrollSpeed = 0;
-            targetScrollSpeed = 0;
-          } else {
-            const stats = getEscapeStats(escapeLevel);
-            baby.vx = stats.runVx || 2.4;
-          }
-        } else {
-          baby.vx = baby.baseVx;
-        }
-        lastTime = performance.now();
-      }
-
-      updateFairyParticles();
-      updateBabyJumpDust();
+      updateTransicaoStandbyNarrative(narrativeContext, dt);
       return;
     }
 
     // --- SEQUENCIADOR DA CENA DA REVIRAVOLTA ---
     if (plotTwistActive) {
-      if (plotTwistStep === 1) {
-        // Step 1: Porta falsa escorrega e descola; menina cai desequilibrada
-        fakeDoorSlideY += 6.5;
-        fakeDoorRotation += 0.024;
-        baby.isShocked = true;
-        baby.isLyingDown = false;
-        baby.onGround = false;
-        baby.vx = 0;
-        baby.vy += 0.55;
-        baby.y += baby.vy;
-        baby.animTime += 0.22;
-        targetCameraZoom = 1.35;
-        cameraZoom += (targetCameraZoom - cameraZoom) * 0.09;
-        const camTarget = baby.x - (canvas.width > 600 ? 220 : 130);
-        cameraX += (camTarget - cameraX) * 0.09;
-
-        // Fadinha acompanha em susto no alto
-        fairy.x += (baby.x - 25 - fairy.x) * 0.08;
-        fairy.y += (baby.y - 45 - fairy.y) * 0.08;
-        fairy.flutterPhase += 0.45;
-
-        // A queda deve finalizar por completo no chão antes de qualquer fala ou diálogo
-        if (baby.y + baby.h >= FLOOR_Y) {
-          baby.y = FLOOR_Y - baby.h;
-          baby.vy = 0;
-          baby.onGround = true;
-          baby.isLyingDown = true; // Visivelmente estirada e esparramada no chão!
-          spawnBabyLandingPuff(baby.x + baby.w / 2, baby.y + baby.h);
-          audio.playBabyThudSound();
-          plotTwistStep = 2; // Passa para a checagem da fadinha no chão
-          plotTwistTimer = 0;
-        }
-      } else if (plotTwistStep === 2) {
-        // Step 2: Menina estirada no chão. A fadinha desce ao chão perto dela para checar o que aconteceu.
-        plotTwistTimer++;
-        baby.isShocked = true;
-        baby.isLyingDown = true;
-        baby.onGround = true;
-        baby.vx = 0;
-        baby.vy = 0;
-
-        targetCameraZoom = 1.55;
-        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
-        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
-        cameraX += (targetCam - cameraX) * 0.08;
-
-        // Fadinha desce até a altura do chão ao lado da menina
-        const targetFairyX = baby.x + 35;
-        const targetFairyY = FLOOR_Y - 22;
-        fairy.x += (targetFairyX - fairy.x) * 0.09;
-        fairy.y += (targetFairyY - fairy.y) * 0.09;
-        fairy.flutterPhase += 0.35;
-
-        if (tick % 3 === 0) {
-          spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.4);
-        }
-
-        // Após checar a menina no chão (~1.3s), a fadinha voa para cima
-        if (plotTwistTimer > 80) {
-          plotTwistStep = 3;
-          plotTwistTimer = 0;
-        }
-      } else if (plotTwistStep === 3) {
-        // Step 3: A fadinha voa para cima, posicionando-se acima da altura da cabeça da menina.
-        plotTwistTimer++;
-        baby.isShocked = true;
-        baby.isLyingDown = true;
-        baby.onGround = true;
-        baby.vx = 0;
-        baby.vy = 0;
-
-        targetCameraZoom = 1.35;
-        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
-        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
-        cameraX += (targetCam - cameraX) * 0.08;
-
-        // A fadinha sobe alto acima da cabeça da menina
-        const targetFairyX = baby.x + 10;
-        const targetFairyY = baby.y - 105;
-        fairy.x += (targetFairyX - fairy.x) * 0.08;
-        fairy.y += (targetFairyY - fairy.y) * 0.08;
-        fairy.flutterPhase += 0.45;
-
-        if (tick % 2 === 0) {
-          spawnFairyFlightDust(fairy.x, fairy.y, 0, -0.5);
-        }
-
-        // Quando a fadinha atinge a altura acima da cabeça, inicia o diálogo da menina
-        if (plotTwistTimer > 70) {
-          plotTwistStep = 4;
-          plotTwistTimer = 0;
-          audio.playBabyShockVoice();
-          uiFeedback.innerText = 'Mas ali não era a porta...? A criança pergunta estirada no chão!';
-          uiFeedback.style.color = '#fef08a';
-        }
-      } else if (plotTwistStep === 4) {
-        // Step 4: Menina estirada no chão e fada no alto: diálogo da menina
-        plotTwistTimer++;
-        baby.isShocked = true;
-        baby.isLyingDown = true;
-        baby.onGround = true;
-
-        targetCameraZoom = 1.35;
-        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
-        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
-        cameraX += (targetCam - cameraX) * 0.08;
-
-        // Fadinha flutua suavemente no alto, desobstruída acima da UI
-        fairy.x += (baby.x + 10 - fairy.x) * 0.07;
-        fairy.y += (baby.y - 105 - fairy.y) * 0.07;
-        fairy.flutterPhase += 0.35;
-
-        if (plotTwistTimer > 320) {
-          advancePlotTwist();
-        }
-      } else if (plotTwistStep === 5) {
-        // Step 5: Fadinha expressa frustração ("Droga! Como se virar em toda essa bagunça?...") e voa de um lado para o outro no ar
-        plotTwistTimer++;
-        baby.isShocked = true;
-        baby.isLyingDown = true;
-        baby.onGround = true;
-
-        targetCameraZoom = 1.35;
-        cameraZoom += (targetCameraZoom - cameraZoom) * 0.07;
-        const targetCam = baby.x - (canvas.width > 600 ? 190 : 130);
-        cameraX += (targetCam - cameraX) * 0.08;
-
-        fairy.pacingPhase = (fairy.pacingPhase || 0) + 0.065;
-        const pacingDist = Math.sin(fairy.pacingPhase) * 65;
-        const targetFairyX = baby.x + pacingDist;
-        const targetFairyY = baby.y - 105 + Math.abs(Math.sin(fairy.pacingPhase * 2)) * 6;
-        fairy.vx += (targetFairyX - fairy.x) * 0.12;
-        fairy.vy += (targetFairyY - fairy.y) * 0.12;
-        fairy.vx *= 0.85;
-        fairy.vy *= 0.85;
-        fairy.x += fairy.vx;
-        fairy.y += fairy.vy;
-        fairy.flutterPhase += 0.55;
-
-        if (tick % 2 === 0) {
-          spawnFairyFlightDust(fairy.x, fairy.y, Math.cos(fairy.pacingPhase) * 1.5, 0);
-        }
-
-        if (plotTwistTimer > 380) {
-          finishPlotTwistAndStartTutorial();
-        }
-      }
-
-      updateFairyParticles();
-      updateBabyJumpDust();
+      updateReviravoltaNarrative(narrativeContext, dt);
       return;
     }
 
     // --- DEMONSTRAÇÃO DO TUTORIAL DA FASE 3 (FADINHA SIMULA TRAJETÓRIA DO PRIMEIRO SALTO) ---
     if (phase3TutorialActive) {
-      phase3TutorialProgress += 0.010; // ~2.5s de demonstração suave e clara
-      const p0 = phase3Platforms[0];
-      const startX = baby.x - 20;
-      const startY = baby.y - 20;
-      const endX = p0.x + p0.w / 2;
-      const endY = p0.y - 30;
-
-      // Trajetória em arco parabólico suave da fada voando até a primeira plataforma
-      const t = Math.min(1.0, phase3TutorialProgress);
-      const arcHeight = 110;
-      fairy.x = startX + (endX - startX) * t;
-      fairy.y = startY + (endY - startY) * t - Math.sin(t * Math.PI) * arcHeight;
-      fairy.flutterPhase += 0.45;
-
-      if (tick % 2 === 0) {
-        spawnFairyFlightDust(fairy.x, fairy.y, -1.6, -0.3);
-      }
-      if (tick % 4 === 0) {
-        spawnFairySparkles(fairy.x, fairy.y, 2);
-      }
-
-      // Câmera enquadra a demonstração com suavidade
-      const tutorialCam = (baby.x * (1 - t * 0.7) + fairy.x * (t * 0.7)) - (canvas.width > 600 ? canvas.width * 0.45 : canvas.width * 0.4);
-      cameraX += (tutorialCam - cameraX) * 0.08;
-
-      updateFairyParticles();
-      updateBabyJumpDust();
-
-      if (phase3TutorialProgress >= 1.0) {
-        // Demonstração finalizada: libera controles e inicia a corrida no chão livre
-        phase3TutorialActive = false;
-        baby.controlsLocked = false;
-        const stats = getPhase3Stats(0);
-        baby.vx = stats.runVx;
-        uiFeedback.innerText = '⚡ Corra para a esquerda e salte na primeira plataforma!';
-        uiFeedback.style.color = '#fde047';
-        audio.playLevelUpChime(0);
-      }
+      updateTutorialRetornoNarrative(narrativeContext, dt);
       return;
     }
 
     // --- SEQUENCIADOR DA CENA CINEMÁTICA ---
     if (cutsceneActive) {
-      cutsceneTimer++;
-      targetCameraZoom = 1.45;
-      cameraZoom += (targetCameraZoom - cameraZoom) * 0.08;
-
-      // Foca a câmera suavemente entre a fada e a menina
-      const cutsceneCamTarget = (baby.x + fairy.x) / 2 - 200;
-      cameraX += (cutsceneCamTarget - cameraX) * 0.08;
-
-      if (cutsceneStep === 1) {
-        // Fada voa acima da cabeça da criança, olhando ao redor com curiosidade
-        fairy.investigateAngle = (fairy.investigateAngle || 0) + 0.038;
-        const targetHoverX = baby.x + Math.sin(fairy.investigateAngle * 1.5) * 55;
-        const targetHoverY = baby.y - 44 + Math.cos(fairy.investigateAngle * 3.0) * 14;
-
-        fairy.vx += (targetHoverX - fairy.x) * 0.08;
-        fairy.vy += (targetHoverY - fairy.y) * 0.08;
-        fairy.vx *= 0.85;
-        fairy.vy *= 0.85;
-        fairy.x += fairy.vx;
-        fairy.y += fairy.vy;
-        fairy.flutterPhase += 0.35;
-
-        if (tick % 2 === 0) {
-          spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
-        }
-        if (cutsceneTimer > 450) {
-          advanceCutscene();
-        }
-      } else if (cutsceneStep === 2) {
-        // Fada paira à direita da menina apontando a varinha para a direita
-        fairy.flutterPhase += 0.45;
-        const targetHoverX = baby.x + 65;
-        const targetHoverY = baby.y - 42;
-
-        fairy.vx += (targetHoverX - fairy.x) * 0.08;
-        fairy.vy += (targetHoverY - fairy.y) * 0.08;
-        fairy.vx *= 0.85;
-        fairy.vy *= 0.85;
-        fairy.x += fairy.vx;
-        fairy.y += fairy.vy;
-
-        if (tick % 2 === 0) {
-          spawnFairyFlightDust(fairy.x, fairy.y, fairy.vx, fairy.vy);
-        }
-        if (cutsceneTimer > 420) {
-          finishCutscene();
-        }
-      }
-
-      // Atualiza partículas durante a cena cinemática
-      updateFairyParticles();
-      updateBabyJumpDust();
-
+      updateCasteloNarrative(narrativeContext, dt);
       return;
     }
 
     // --- SEQUENCIADOR DE TRANSIÇÃO DO VERDADEIRO PORTAL PARA A SALA DE BRINQUEDOS ---
     if (truePortalTransitionActive) {
-      truePortalTransitionTimer += dt;
-
-      // Bloqueio rígido de comandos e física de pulo lateral da menina
-      baby.controlsLocked = true;
-      baby.vy = 0;
-      baby.onGround = true;
-      baby.facing = -1;
-
-      // Menina caminha com firmeza em direção ao portal
-      const targetBabyX = trueExitDoor.x + 24;
-      if (baby.x > targetBabyX) {
-        baby.x -= 1.4 * dt;
-        baby.walkCycle = (baby.walkCycle || 0) + 0.2 * dt;
-      } else {
-        baby.walkCycle = 0;
-      }
-
-      // Movimento suave de câmera centralizando na abertura do grande portal
-      const targetCamX = trueExitDoor.x - canvas.width * 0.36;
-      cameraX += (targetCamX - cameraX) * 0.08 * dt;
-
-      // Abre as portas ornamentadas do portal
-      if (trueDoorOpenAngle < 1.0) {
-        trueDoorOpenAngle = Math.min(1.0, trueDoorOpenAngle + 0.018 * dt);
-      }
-
-      // Fada adeja em frente à porta e voa alegremente para dentro
-      if (truePortalTransitionTimer < 65) {
-        const fairyTargetX = trueExitDoor.x + 46;
-        const fairyTargetY = trueExitDoor.y + 40;
-        fairy.x += (fairyTargetX - fairy.x) * 0.1 * dt;
-        fairy.y += (fairyTargetY - fairy.y) * 0.1 * dt;
-        uiFeedback.innerText = '✨ O Verdadeiro Portal dos Sonhos se abriu!';
-        uiFeedback.style.color = '#fde047';
-      } else {
-        const fairyTargetX = trueExitDoor.x - 35;
-        const fairyTargetY = trueExitDoor.y + 25;
-        fairy.x += (fairyTargetX - fairy.x) * 0.1 * dt;
-        fairy.y += (fairyTargetY - fairy.y) * 0.1 * dt;
-        uiFeedback.innerText = '✨ Entrando na Sala de Brinquedos...';
-        uiFeedback.style.color = '#a7f3d0';
-      }
-      fairy.flutterPhase += 0.5 * dt;
-
-      if (tick % 2 === 0) {
-        spawnFairySparkles(fairy.x, fairy.y, 2);
-        spawnFairyFlightDust(fairy.x, fairy.y, -1.2, 0);
-      }
-
-      if (truePortalTransitionTimer >= 125) {
-        saveProgress();
-        truePortalTransitionActive = false;
-        beginToyRoomIntroduction();
-        return;
-      }
-
-      updateFairyParticles();
-      updateBabyJumpDust();
+      updatePortalNarrative(narrativeContext, dt);
       return;
     }
 
@@ -1549,115 +1225,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- RENDERIZAÇÃO ---
   function render() {
-    if (toyRoomIntroduction.active) { toyRoomIntroduction.render(ctx, canvas); return; }
-    if (opening.active && !opening.revealing) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      recordCameraQa();
-      opening.render(ctx, canvas, {assets, lighting, fairyRenderer,
-        drawRoom: () => { drawBackgroundWall(0); drawSceneryItems(0); drawPlatforms(0); }
-      });
-      return;
-    }
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-    // A translação de apresentação fica fora da câmera usada pela física.
-    const cameraNarrative = Boolean(opening.active || plotTwistActive || phase3TutorialActive || truePortalTransitionActive);
-    // Alvo visual de regime permanente do follow existente (fator lógico de 0.08), sem mudar sua atualização.
-    const groundLead = (canvas.width > 600 ? canvas.width - 250 : canvas.width - 160)
-      + 11.5 * (baby.vx - targetScrollSpeed);
-    // Normaliza a pose efetivamente desenhada também nos ramos narrativos que atualizam valores locais.
-    const renderCameraX = cameraX + (1 - camera.zoom) * (camera.x - cameraX);
-    const presentation = cameraPresentation.frame({ x: renderCameraX, y: camera.y,
-      playerX: baby.x, groundLead, targetY: targetCameraY,
-      onGround: baby.onGround, active: isPhase3 || plotTwistActive,
-      narrative: cameraNarrative, tick, width: canvas.width, height: canvas.height,
-      cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height, zoom: camera.zoom });
-    const presentationY = presentation.y;
-    const presentationX = isPhase3 || plotTwistActive ? presentation.x : cameraX;
-    const focusY = (baby.y + fairy.y) / 2 - presentationY;
-    const screenY = y => focusY + (y - presentationY - focusY) * camera.zoom;
-    const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(p =>
-      p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0);
-    const topY = Math.min(screenY(baby.y - 20), screenY(fairy.y - 24),
-      ...visiblePlatforms.map(p => screenY(p.y - 64)));
-    const framingOffset = androidFraming.offset(screenY(FLOOR_Y), topY);
-    const focusX = (baby.x + fairy.x) / 2 - presentationX;
-    const screenX = x => focusX + (x - presentationX - focusX) * camera.zoom;
-    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
-    const next = activePlatforms[baby.currentPlatformIndex + 1];
-    const points = [
-      [baby.x - 12, baby.y - 20], [baby.x + baby.w + 12, baby.y + baby.h + 8],
-      [fairy.x - 28, fairy.y - 28], [fairy.x + 28, fairy.y + 28]
-    ];
-    if (next) {
-      const support = next.standRegion || next;
-      const y = next.surfaceTopY ?? support.y;
-      // Apoios largos podem continuar além da tela; preserva a região de chegada do salto.
-      const landingWidth = Math.min(support.w, 96);
-      const landingX = isPhase3 ? support.x + support.w - landingWidth : support.x;
-      points.push([landingX, y - 24], [landingX + landingWidth, y + 24]);
-    }
-    const bounds = {
-      left: Math.min(...points.map(p => screenX(p[0]))), right: Math.max(...points.map(p => screenX(p[0]))),
-      top: Math.min(...points.map(p => screenY(p[1]) - framingOffset)),
-      bottom: Math.max(...points.map(p => screenY(p[1]) - framingOffset))
-    };
-    const mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: isPhase3 || plotTwistActive, anticipate: isPhase3,
-      width: canvas.width, height: canvas.height, bounds,
-      anchor: { x: screenX(baby.x + baby.w / 2), y: screenY(baby.y + baby.h) - framingOffset } });
-    const mobileFrame = cameraPresentation.mobileFrame({ target: mobileTarget, enabled: mobilePresentation.enabled,
-      stable: isPhase3 || plotTwistActive, anticipate: isPhase3, tick, width: canvas.width, height: canvas.height });
-    ctx.save();
-    ctx.translate(mobileFrame.x, mobileFrame.y);
-    ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
-    ctx.translate(0, -framingOffset);
-    camera.applyTransform(ctx, canvas, baby, fairy, presentationY, presentation.x, cameraX);
-    recordCameraQa(ctx.getTransform());
-
-    drawBackgroundWall(cameraX);
-    drawSceneryItems(cameraX);
-    drawPlatforms(cameraX);
-    drawExitDoor(cameraX);
-    if (isPhase3) {
-      drawTrueExitDoor(cameraX);
-      drawTutorialArrow(cameraX);
-    }
-    drawSpeedRibbons(cameraX);
-    drawBabyJumpDust(cameraX);
-    drawFairy(cameraX);
-    drawBabyManaStyle(cameraX);
-    applyDarkAtmosphereWithLights(cameraX, cameraY);
-
-    const presentationTransform = ctx.getTransform();
-    ctx.restore();
-
-    // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
-    applyArtFinish(ctx, canvas);
-    drawEscapeBanner();
-    renderFirstJumpTutorial(ctx, canvas, { state, baby, fairy, platform: platforms[0], cameraX,
-      transform: presentationTransform, device: inputHandler.controller.promptDevice });
-    drawCutsceneDialogue(presentationTransform);
-    if (opening.active) opening.renderFade(ctx, canvas);
-
-    // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)
-    transitionEffects.renderPortalWipe(ctx, canvas, cameraX, cameraY + framingOffset, trueExitDoor, transitionWipeAlpha, tick, mobilePresentation.enabled ? presentationTransform : null);
-
-    if (gameWon) {
-      ctx.save();
-      ctx.fillStyle = 'rgba(255, 250, 240, 0.92)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      ctx.fillStyle = '#db2777';
-      ctx.font = 'bold 30px Palatino, Georgia, serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('O VERDADEIRO PORTAL DOS SONHOS FOI ALCANÇADO!', canvas.width / 2, canvas.height / 2 - 25);
-
-      ctx.fillStyle = '#26242c';
-      ctx.font = '17px Palatino, Georgia, serif';
-      ctx.fillText('A menininha e a fada venceram a grande bagunça e atravessaram para o mundo dos sonhos!', canvas.width / 2, canvas.height / 2 + 18);
-      ctx.fillText('Toque na tela para brincar novamente desde o começo.', canvas.width / 2, canvas.height / 2 + 56);
-      ctx.restore();
-    }
+    renderDarkRoom({
+      ...runtimeContext,
+      ctx, canvas, toyRoomIntroduction, opening, assets, lighting, fairyRenderer, cameraPresentation, camera, androidFraming, mobilePresentation, baby, fairy, cameraX, cameraY, cameraZoom, targetCameraY, targetScrollSpeed, isPhase3, plotTwistActive, phase3TutorialActive, truePortalTransitionActive, tick, gameWon, transitionWipeAlpha, inputHandler, recordCameraQa, drawBackgroundWall, drawSceneryItems, drawPlatforms, drawExitDoor, drawTrueExitDoor, drawTutorialArrow, drawSpeedRibbons, drawBabyJumpDust, drawFairy, drawBabyManaStyle, applyDarkAtmosphereWithLights, drawEscapeBanner, drawCutsceneDialogue, state
+    });
   }
 
   let isPaused = false;
@@ -1742,11 +1313,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   window.addEventListener('pagehide', saveProgress);
   document.addEventListener('visibilitychange', saveOnHide);
 
-  // Observação temporária QA-CAMERA-002A, ativada exclusivamente por parâmetro de URL.
-  const cameraQaEnabled = new URLSearchParams(window.location.search).has('cameraQa');
-  function recordCameraQa(transform = null) {
-    if (!cameraQaEnabled || typeof window.cameraQaRecord !== 'function') return;
-    window.cameraQaRecord({
+  const cameraQaObserver = createCameraQaObserver({
+    host: window,
+    snapshot: transform => ({
       cameraX, cameraY, cameraZoom, playerX: baby.x, playerY: baby.y,
       fairyX: fairy.x, fairyY: fairy.y, onGround: baby.onGround,
       platform: baby.currentPlatformIndex, phase3: isPhase3,
@@ -1756,7 +1325,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       width: canvas.width, height: canvas.height,
       cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height,
       transform: transform ? {a: transform.a, d: transform.d, e: transform.e, f: transform.f} : null
-    });
+    })
+  });
+  function recordCameraQa(transform = null) {
+    cameraQaObserver.record(transform);
   }
 
   function loop(currentTime = performance.now()) {
@@ -1808,6 +1380,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     setLastInputDevice,
     toggleMute: () => audio.toggleMute()
   });
+
+  const runtimeContext = createRuntimeContext({ state, audio, camera, assets, input: inputHandler, effects: particles, campaign });
+  const narrativeContext = { ...runtimeContext, state: narrativeState, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, saveProgress, beginToyRoomIntroduction };
 
   // Desenho inicial para renderizar o cenário por trás da tela de título
   render();

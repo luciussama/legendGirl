@@ -9,36 +9,37 @@
 import {platforms,phase3Platforms,createBabyState,FLOOR_Y} from '../src/js/config.js';
 import {PlatformRenderer,PLATFORM_SURFACES} from '../src/js/environment/PlatformRenderer.js';
 import {BabyRenderer} from '../src/js/entities/BabyRenderer.js';
-let source=await (await fetch('/src/js/game.js')).text();
+const sourcePath=new URLSearchParams(location.search).get('source') || '/src/js/game.js';
+let source=await (await fetch(sourcePath)).text();
 source=source.replace(/from '(\.\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/game.js')}'`);
 const marker='  return {\n    state,\n    audio,';
 if(!source.includes(marker))throw Error('Marcador de instrumentação da revisão do jogo não encontrado');
 source=source.replace(marker,`  return {
     review: {
-      roomManual(){return toyRoomInstance?.instance;},
+      roomManual(){return state.toyRoomInstance?.instance;},
       renderManual(){render();},
-      beginManual(){newCampaign();loopStarted=true;gameStarted=true;opening.reset();opening.start();syncLocalsToState();},
+      beginManual(){newCampaign();state.loopStarted=true;state.gameStarted=true;syncStateToLocals();opening.reset();opening.start();syncLocalsToState();},
       saveManual(){syncLocalsToState();return {state:captureState(state),opening:opening.snapshot(),cameraPresentation:cameraPresentation.snapshot()};},
       restoreManual(saved){cameraPresentation.restore(saved.cameraPresentation);clearTimeout(failMessageTimer);restoreState(state,saved.state);opening.restore(saved.opening);syncStateToLocals();camera.syncFromState(state);},
-      inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:isStandbyActive,
-        transition:isStandbyTransitioning,cutscene:cutsceneActive,cutsceneStep,plot:plotTwistActive,plotStep:plotTwistStep,
-        phase3:isPhase3,tutorial:phase3TutorialActive,firstJump:state.gameplayState==='FIRST_JUMP_TUTORIAL',portal:truePortalTransitionActive,toyIntro:toyRoomIntroduction.active,mode:currentPhaseMode,over:isGameOver};},
-      actionManual(){standbyActivatedTime=-10000;lastDialogueAdvanceTime=-10000;lastJumpTime=-10000;doJump('keyboard');syncLocalsToState();},
+      inspectManual(){syncLocalsToState();return {baby:{...baby},opening:opening.active,standby:state.isStandbyActive,
+        transition:state.isStandbyTransitioning,cutscene:state.cutsceneActive,cutsceneStep: state.cutsceneStep,plot:state.plotTwistActive,plotStep:state.plotTwistStep,
+        phase3:state.isPhase3,tutorial:state.phase3TutorialActive,firstJump:state.gameplayState==='FIRST_JUMP_TUTORIAL',portal:state.truePortalTransitionActive,toyIntro:toyRoomIntroduction.active,mode:state.currentPhaseMode,over:state.isGameOver};},
+      actionManual(){state.standbyActivatedTime=-10000;state.lastDialogueAdvanceTime=-10000;state.lastJumpTime=-10000;syncStateToLocals();doJump('keyboard');syncLocalsToState();},
       frameManual(draw=false){
-        if(currentPhaseMode==='toy-room'){toyRoomInstance.update(1);if(draw)toyRoomInstance.render();}
+        if(state.currentPhaseMode==='toy-room'){state.toyRoomInstance.update(1);if(draw)state.toyRoomInstance.render();}
         else {update(1);syncLocalsToState();if(draw)render();}
       },
       mobileFrame(after = true, index = -1, phase3 = false) {
         cameraPresentation.reset();
-        cameraX=0;cameraY=Math.min(0,FLOOR_Y-(canvas.height-110));cameraZoom=1;
+        state.cameraX=0;state.cameraY=Math.min(0,FLOOR_Y-(canvas.height-110));state.cameraZoom=1;
         const p=(phase3?phase3Platforms:platforms)[index];
-        isPhase3=phase3;
+        state.isPhase3=phase3;
         baby.x=p?p.x:(phase3?4300:100);baby.y=(p?(p.surfaceTopY??p.standRegion?.y??p.y):FLOOR_Y)-baby.h;
         baby.isCrouching=false;baby.currentPlatformIndex=index;
-        cameraX=phase3?baby.x-(canvas.width-160):Math.max(0,baby.x-120);
-        cameraY=Math.min(cameraY,baby.y-130);
+        state.cameraX=phase3?baby.x-(canvas.width-160):Math.max(0,baby.x-120);
+        state.cameraY=Math.min(state.cameraY,baby.y-130);
         fairy.x=baby.x+(phase3?-55:55);fairy.y=baby.y-46;
-        opening.cancel();syncLocalsToState();camera.syncFromState(state);
+        opening.cancel();syncStateToLocals();camera.syncFromState(state);
         const original=androidFraming.offset;
         let framing;
         androidFraming.offset=(feetY,topY)=>{
@@ -46,15 +47,15 @@ source=source.replace(marker,`  return {
           framing={feetY,topY,offset,feetAfter:feetY-offset,topAfter:topY-offset};
           return offset;
         };
-        const before=JSON.stringify({baby,platforms,phase3Platforms,cameraY});
+        const before=JSON.stringify({baby,platforms,phase3Platforms,cameraY: state.cameraY});
         const apply=camera.applyTransform;
         let transform;
         camera.applyTransform=function(...args){apply.apply(this,args);transform=ctx.getTransform();};
         render();camera.applyTransform=apply;androidFraming.offset=original;
-        if(before!==JSON.stringify({baby,platforms,phase3Platforms,cameraY})) throw Error('Renderização alterou a simulação');
-        return {width:canvas.width,height:canvas.height,cameraY,babyY:baby.y,playerFeetAfter:baby.y+baby.h-cameraY-framing.offset,...framing,
+        if(before!==JSON.stringify({baby,platforms,phase3Platforms,cameraY: state.cameraY})) throw Error('Renderização alterou a simulação');
+        return {width:canvas.width,height:canvas.height,cameraY: state.cameraY,babyY:baby.y,playerFeetAfter:baby.y+baby.h-state.cameraY-framing.offset,...framing,
           zoom:transform.a, player:{x:baby.x,y:baby.y,w:baby.w,h:baby.h},fairy:{x:fairy.x,y:fairy.y},
-          next:(phase3?phase3Platforms:platforms)[index+1],cameraX,
+          next:(phase3?phase3Platforms:platforms)[index+1],cameraX: state.cameraX,
           transform:{a:transform.a,d:transform.d,e:transform.e,f:transform.f}};
       },
       setMobileZoom(enabled){mobilePresentation.enabled=enabled;},
@@ -79,9 +80,9 @@ source=source.replace(marker,`  return {
         syncStateToLocals();camera.syncFromState(state);
       },
       step(dt=1){update(dt);syncLocalsToState();},
-      jump(){lastJumpTime=-10000;doJump('keyboard');syncLocalsToState();},
-      draw(){cameraX=baby.x-350;cameraY=0;cameraZoom=1;
-        syncLocalsToState();camera.syncFromState(state);render();}
+      jump(){state.lastJumpTime=-10000;syncStateToLocals();doJump('keyboard');syncLocalsToState();},
+      draw(){state.cameraX=baby.x-350;state.cameraY=0;state.cameraZoom=1;
+        syncStateToLocals();camera.syncFromState(state);render();}
     },
     state,
     audio,`);

@@ -2,7 +2,7 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 const profile=process.argv[2]||'desktop';
 const mobile=profile==='mobile',gamepad=profile==='gamepad',width=mobile?390:960,height=mobile?844:540;
-const directory=`docs/qa/toy-room-tutorial/${profile}`;await fs.mkdir(directory,{recursive:true});
+const directory=`${process.env.TOY_TUTORIAL_EVIDENCE || 'docs/qa/toy-room-tutorial'}/${profile}`;await fs.mkdir(directory,{recursive:true});
 const page=await(await fetch('http://127.0.0.1:9222/json/new?about:blank',{method:'PUT'})).json();
 const ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise(r=>ws.onopen=r);
 let seq=0;const pending=new Map(),exceptions=[];
@@ -49,4 +49,4 @@ try{
  assert.equal(exceptions.length,0);
  await fs.writeFile(`${directory}/resultado.json`,JSON.stringify({start,guide,targetChange,completed:completed.completed,restored,fresh,exceptions},null,2)+'\n');
  console.log(`APROVADO: ${profile}, botão real, movimento, coleta, guia e persistência após recarga.`);
-}finally{ws.close();}
+}finally{ws.close();await fetch('http://127.0.0.1:9222/json/close/'+page.id).catch(()=>{});}
