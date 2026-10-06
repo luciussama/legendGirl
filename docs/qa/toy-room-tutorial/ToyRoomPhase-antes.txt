@@ -10,7 +10,6 @@ import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { toyRenderer } from './ToyRenderer.js';
 import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
-import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
@@ -332,10 +331,6 @@ export class ToyRoomPhase {
     this.handlePointerUp = this.onPointerUp.bind(this);
 
     if (options.bindInputs !== false) this.setupListeners();
-    this.toyRoomTutorialCompleted = false;
-    this.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    this.tutorial = new ToyRoomTutorial(this);
-    this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
   }
 
   setupListeners() {
@@ -384,11 +379,10 @@ export class ToyRoomPhase {
   }
 
   handleKeyDown(e) {
-    this.tutorial.setDevice('DESKTOP_KEYBOARD_MOUSE');
     if (this.audio && this.audio.initAudio) this.audio.initAudio();
     this.keysDown[e.code] = true;
 
-    if (TOY_ROOM_INPUT.actionCodes.includes(e.code)) {
+    if (e.code === 'Space' || e.code === 'KeyE' || e.code === 'Enter' || e.code === 'KeyF') {
       if (e.preventDefault) e.preventDefault();
       this.triggerAction();
     }
@@ -398,34 +392,7 @@ export class ToyRoomPhase {
     this.keysDown[e.code] = false;
   }
 
-  pollGamepad() {
-    const input = this.gamepadState;
-    input.x = 0; input.y = 0; input.active = false;
-    let pads;
-    try { pads = globalThis.navigator?.getGamepads?.() || []; } catch (_) { pads = []; }
-    const connected = new Set();
-    for (const pad of pads) {
-      if (!pad || pad.connected === false || (pad.mapping && pad.mapping !== 'standard')) continue;
-      connected.add(pad.index);
-      const x = pad.axes?.[0] || 0, y = pad.axes?.[1] || 0;
-      const moving = Math.hypot(x, y) > 0.18;
-      const button = pad.buttons?.[TOY_ROOM_INPUT.gamepadButton];
-      const pressed = Boolean(button?.pressed || button?.value > 0.5);
-      if (moving || pressed || !input.buttons.has(pad.index)) this.tutorial.setDevice('GAMEPAD');
-      if (moving && !input.active) { input.x = x; input.y = y; input.active = true; }
-      if (pressed && !input.buttons.get(pad.index)) {
-        this.audio?.initAudio?.();
-        this.triggerAction();
-      }
-      input.buttons.set(pad.index, pressed);
-    }
-    for (const index of input.buttons.keys()) if (!connected.has(index)) input.buttons.delete(index);
-    if (!connected.size && this.tutorial.device === 'GAMEPAD')
-      this.tutorial.setDevice(this.mobilePresentation ? 'MOBILE_TOUCH' : 'DESKTOP_KEYBOARD_MOUSE');
-  }
-
   onPointerDown(e) {
-    this.tutorial.setDevice(e.pointerType === 'mouse' ? 'DESKTOP_KEYBOARD_MOUSE' : 'MOBILE_TOUCH');
     if (this.audio && this.audio.initAudio) this.audio.initAudio();
     this.isTouchDevice = true;
 
@@ -637,7 +604,6 @@ export class ToyRoomPhase {
     if (closestToy) {
       closestToy.isCarried = true;
       this.player.carriedItem = closestToy;
-      if (this.tutorial.active) this.tutorial.finish();
       if (this.audio && this.audio.playPickUpSound) this.audio.playPickUpSound();
       this.spawnSparkles(this.player.x, this.player.y - 30, 16, '#38bdf8');
       if (this.uiFeedback) {
@@ -685,7 +651,6 @@ export class ToyRoomPhase {
   }
 
   update(dt = 1.0) {
-    this.pollGamepad();
     // Temporizadores de faixas e transição
     if (this.introAlpha > 0) {
       this.introAlpha = Math.max(0, this.introAlpha - 0.02 * dt);
@@ -733,10 +698,6 @@ export class ToyRoomPhase {
     if (this.keysDown['KeyS'] || this.keysDown['ArrowDown']) moveY += 1;
     if (this.keysDown['KeyA'] || this.keysDown['ArrowLeft']) moveX -= 1;
     if (this.keysDown['KeyD'] || this.keysDown['ArrowRight']) moveX += 1;
-    if (this.gamepadState.active) {
-      moveX = this.gamepadState.x;
-      moveY = this.gamepadState.y;
-    }
 
     // Movimentação por Joystick Virtual Flutuante Dinâmico (8 direções)
     if (this.touchState.active) {
@@ -797,9 +758,6 @@ export class ToyRoomPhase {
     const fairyHoverOffsetX = this.player.facing === 'left' ? 24 : -24;
     this.fairy.targetX = this.player.x + fairyHoverOffsetX + Math.cos(this.fairy.flutterTime * 0.08) * 12;
     this.fairy.targetY = this.player.y - 32 + Math.sin(this.fairy.flutterTime * 0.12) * 8;
-    this.tutorial.update(dt);
-    const guide = this.tutorial.guidePosition();
-    if (guide) { this.fairy.targetX = guide.x; this.fairy.targetY = guide.y; }
 
     this.fairy.flutterTime += dt;
     this.fairy.x += (this.fairy.targetX - this.fairy.x) * 0.12 * dt;
@@ -1043,15 +1001,12 @@ export class ToyRoomPhase {
       isNearChest: this.isNearChest
     });
 
-    this.tutorial.render(ctx, this.canvas, frame);
     ctx.restore();
   }
 
-  startTutorial() { this.tutorial.start(); }
-
   snapshot() {
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
-      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
+      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount'];
     const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
     saved.carriedItemId = this.player.carriedItem?.id ?? null;
     return saved;
@@ -1063,9 +1018,6 @@ export class ToyRoomPhase {
     }
     this.player.carriedItem = this.toys.find(toy => toy.id === saved.carriedItemId) || null;
     this.lastActionTime = 0;
-    this.tutorial.active = false;
-    this.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    if (!this.toyRoomTutorialCompleted) this.startTutorial();
   }
 
   destroy() {

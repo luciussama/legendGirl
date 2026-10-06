@@ -25,7 +25,7 @@ const profiles={landscape:{width:915,height:412,mobile:true,ua:'Mozilla/5.0 (Lin
   desktop:{width:960,height:540,mobile:false,ua:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}};
 assert.ok(profiles[profile],'Perfil de teste válido');
 const device=profiles[profile];
-const directory='docs/qa/toy-room-transicao/'+profile;
+const directory=(process.env.TOY_TRANSITION_EVIDENCE || 'docs/qa/toy-room-transicao')+'/'+profile;
 await fs.mkdir(directory,{recursive:true});
 try {
   await send('Page.enable');await send('Runtime.enable');await send('Network.enable');await send('Network.setCacheDisabled',{cacheDisabled:true});await evaluate('window.review=null');

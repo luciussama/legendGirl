@@ -66,6 +66,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     onEvent: name => {
       callbacks.onNarrativeEvent?.(name);
       canvas.dispatchEvent(new CustomEvent(name));
+      if (name === 'TOY_ROOM_START') toyRoomInstance?.instance.startTutorial();
     }
   });
 
@@ -310,6 +311,27 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncLocalsToState();
     state.restartToTitle(audio);
     syncStateToLocals();
+  }
+
+  // Atalho do menu para testar a mesma introdução usada na saída do portal.
+  function startToyRoomIntroduction() {
+    if (toyRoomIntroduction.active) return;
+    opening.cancel();
+    toyRoomInstance?.destroy();
+    toyRoomInstance = null;
+    currentPhaseMode = 'bedroom';
+    gameStarted = true;
+    isGameOver = false;
+    gameWon = false;
+    isPaused = false;
+    state.isPaused = false;
+    audio.initAudio();
+    beginToyRoomIntroduction();
+    lastTime = performance.now();
+    if (!loopStarted) {
+      loopStarted = true;
+      requestAnimationFrame(loop);
+    }
   }
 
   function startToyRoomPhase({ fromIntroduction = false } = {}) {
@@ -1860,6 +1882,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     restartToTitle,
     isGameOver: () => isGameOver,
     startToyRoomPhase,
+    startToyRoomIntroduction,
     isToyRoomMode: () => currentPhaseMode === 'toy-room'
   };
 }

@@ -1,0 +1,32 @@
+{
+  "start": {
+    "order": [
+      "start"
+    ],
+    "tutorial": true,
+    "state": "TOY_ROOM_TUTORIAL",
+    "message": "USE W A S D OU AS SETAS PARA ANDAR"
+  },
+  "guide": {
+    "target": "teddy",
+    "nearest": "teddy",
+    "message": "PRESSIONE E PARA PEGAR"
+  },
+  "targetChange": {
+    "previous": "teddy",
+    "next": "robot",
+    "nearest": "robot",
+    "step": 1.8300073423057688
+  },
+  "completed": true,
+  "restored": {
+    "mode": true,
+    "completed": true,
+    "active": false
+  },
+  "fresh": {
+    "completed": false,
+    "active": true
+  },
+  "exceptions": []
+}

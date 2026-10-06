@@ -302,7 +302,7 @@ function handleToyRoomSwitch(event) {
   }
 
   started = true;
-  game.startToyRoomPhase();
+  game.startToyRoomIntroduction();
 
   setTimeout(() => {
     isActionLocked = false;
@@ -417,4 +417,3 @@ setInterval(pollOverlayGamepad, 80);
 if (typeof window !== 'undefined') {
   window.game = game;
 }
-
