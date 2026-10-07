@@ -1,6 +1,6 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **02/10/2026**.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **06/10/2026**.
 
 Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
 
@@ -22,6 +22,8 @@ Repositório de referência: [luciussama/legendGirl no GitHub](https://github.co
 12. [Publicação e integração de mudanças](#publicação-e-integração-de-mudanças)
 13. [Roteiro de integração e glossário](#roteiro-de-integração-e-glossário)
 14. [Referência detalhada de métodos](REFERENCIA-METODOS.md)
+15. [Dicionário de bibliotecas e dependências](DEPENDENCIAS.md)
+16. [Implementações atuais e fronteiras](#implementações-atuais-e-fronteiras)
 
 ## Primeiro dia e preparação
 
@@ -49,7 +51,7 @@ npm run build
 
 Esses comandos não cobrem todas as ferramentas extras de QA. Confira os testes específicos na seção de validação. Registre falhas anteriores à sua alteração, sem modificar referências para fazê-las desaparecer.
 
-Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist → subida final → portal → sala de brinquedos. Nas fases de plataforma, o jogo conduz o deslocamento horizontal: toque/clique, Espaço ou seta para cima controlam salto/avanço de diálogo. O botão X do gamepad é o índice 2. Na sala, WASD/setas e joystick virtual controlam movimento; Espaço/E/Enter/F e o botão virtual acionam interação. P pausa; M alterna áudio.
+Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist → subida final → portal → sala de brinquedos. Nas fases de plataforma, o jogo conduz o deslocamento horizontal: toque/clique, Espaço ou seta para cima controlam salto/avanço de diálogo. O botão X do gamepad é o índice 2. Na sala, WASD/setas e joystick virtual controlam movimento; Espaço/E/Enter/F e o botão virtual acionam interação. Na Toy Room, o analógico esquerdo move e X (índice 2) interage; no primeiro salto da Dark Room, a nova pressão de A (índice 0) conclui o tutorial. P pausa; M alterna áudio.
 
 ## Fontes e convenções
 
@@ -120,16 +122,16 @@ flowchart TD
 | `retry`, `resetToStart`, `restartToTitle`, `isGameOver` | Recuperação/derrota e retorno ao menu. |
 | `startToyRoomPhase`, `isToyRoomMode` | Transição/delegação à sala. |
 | `setMuted`, `toggleMute`, `isMuted`, `setMasterVolume`, `getMasterVolume`, `pauseMusic`, `resumeMusic` | Controle de áudio usado pela página. |
-| `state`, `camera`, `lighting`, `particles`, `transitions`, `background`, `platforms`, `hud`, `dialogue`, `assets`, `assetsReady`, `darkRoomAtlas`, `atlasDebugger`, `input`, `audio` | Referências expostas para integração/inspeção; não significam autorização para escrever arbitrariamente no estado. |
+| `state`, `toyRoomIntroduction`, `camera`, `lighting`, `particles`, `transitions`, `background`, `platforms`, `hud`, `dialogue`, `assets`, `assetsReady`, `darkRoomAtlas`, `atlasDebugger`, `input`, `audio` | Referências expostas para integração/inspeção; não significam autorização para escrever arbitrariamente no estado. |
 | `destroy` | Salva e remove listeners específicos de campanha/entrada/áudio. Não assuma que encerra todo RAF ou todo listener de resize: audite o ciclo de vida ao criar múltiplas instâncias. |
 
 Os métodos internos `update`, `render`, `loop`, `syncStateToLocals` e `syncLocalsToState` não são APIs públicas normais. Fixtures de `tests/` expõem controles adicionais por instrumentação de código; não leve esses controles ao jogo distribuído.
 
 ## Estado, física e persistência
 
-[StateVariables](../src/js/state/StateVariables.js) define `baby`, `fairy`, modo, câmera, prontidão, narrativa, relógios e buffers. [GameState](../src/js/state/GameState.js) implementa transições. `game.js` ainda contém movimento, impulso, pousos e partes da narrativa. Não existe uma classe independente que concentre toda a física.
+[StateVariables](../src/js/state/StateVariables.js) define `baby`, `fairy`, modo, câmera, prontidão, narrativa, relógios e buffers. [GameState](../src/js/state/GameState.js) implementa transições. `game.js` ainda contém movimento, impulso, pousos e coordenação narrativa; as seis sequências do quarto estão em `DarkRoomNarrative.js`. Não existe uma classe independente que concentre toda a física.
 
-Há duas representações de parte do estado: propriedades de `GameState` e variáveis locais do coordenador. `syncLocalsToState` copia locais para o objeto; `syncStateToLocals` faz o inverso. Métodos que delegam a `GameState` usam essas passagens. Um campo novo precisa ser revisado no valor inicial, nas duas sincronizações e no save, quando persistente.
+Há duas representações de parte do estado: propriedades de `GameState` e variáveis locais do coordenador. `syncLocalsToState` copia locais para o objeto; `syncStateToLocals` faz o inverso. Métodos que delegam a `GameState` usam essas passagens. A revisão de um campo novo deve identificar seu proprietário, leitores, escritores, publicação e persistência; não acrescentar automaticamente outro espelho. Permanecem 47 espelhos sincronizados, além de pausa/temporizador. Os quatro campos `cutsceneCompleted`, `lastUsedInputDevice`, `standbyStandUpProgress` e `standbyDialogueAlpha` já usam GameState diretamente. GameState ainda não é a única fonte de verdade.
 
 ### Métodos de estado por fluxo
 
@@ -176,7 +178,7 @@ Mantenha separados mundo, desenho relativo à câmera, bitmap do canvas e pixels
 
 `CameraController.applyTransform` aceita `presentationY`, `presentationX` e `sourceX` para conciliar o desenho relativo à câmera original com a pose visual. `getTransform()` é a referência da composição real. A iluminação deve copiar essa matriz; o HUD deve ser desenhado após restaurar a transformação da cena.
 
-Um viewport CSS 390 × 844 não implica bitmap 390 × 844. `handleResize` usa largura interna 540 em retrato, altura 540 em paisagem e ajusta o outro eixo por proporção. Converta métricas de jitter para pixels visuais antes de comparar resultados.
+Um viewport CSS 390 × 844 não implica bitmap 390 × 844. `handleResize` delega a `createViewportController().resize()`, que usa largura interna 540 em retrato, altura 540 em paisagem e ajusta o outro eixo por proporção. Converta métricas de jitter para pixels visuais antes de comparar resultados.
 
 ## Environment e pipeline visual
 
@@ -261,6 +263,70 @@ A fábrica `createToyRoom` retorna `update`, `render`, `triggerAction`, `destroy
 
 Móveis e brinquedos iniciais estão no construtor da fase; não procure todo o layout da sala em `config.js`. Adicionar item exige revisar inicialização, interação, contagem de vitória e snapshot/restauração, além do desenho.
 
+## Implementações atuais e fronteiras
+
+A implementação usa composição de instâncias e funções por domínio. Os nomes de arquivo abaixo não implicam que todos sejam classes: ViewportController, CameraQaObserver e RuntimeContext são fábricas; DarkRoomNarrative e DarkRoomRenderPipeline exportam funções. As classes dos demais domínios continuam descritas nas tabelas deste manual; suas assinaturas estão na [referência completa](REFERENCIA-METODOS.md).
+
+| Módulo / forma | Responsabilidade e dependências | Funções e contratos centrais |
+| --- | --- | --- |
+| [RuntimeContext](../src/js/runtime/RuntimeContext.js), fábrica | Agrega `state`, `audio`, `camera`, `assets`, `input`, `effects`, `campaign` com as mesmas referências existentes. Não gerencia lifecycle nem resolve dependências. | `createRuntimeContext({...})` devolve objeto simples. No jogo atual `input` é o adaptador `inputHandler` e `effects` é `particles`; não é um registro de todos os efeitos. Não elimina espelhos nem injeta contexto universalmente. |
+| [ViewportController](../src/js/controllers/ViewportController.js), fábrica | Mede rect CSS (fallback `host.innerWidth/innerHeight`), calcula aspecto, redimensiona Canvas principal/auxiliar e iluminação. | `createViewportController({...})` devolve `resize()`. Chama `onOrientation(aspect < 1.15)` antes de redimensionar. O callback mantém `isPortrait` local em game.js; publicação posterior permanece necessária. Listeners continuam no coordenador. Não calcula safe area nem política de zoom mobile. |
+| [CameraQaObserver](../src/js/debug/CameraQaObserver.js), fábrica | Instrumentação optativa; depende de `host.location`, callback `host.cameraQaRecord` e função `snapshot`. | `createCameraQaObserver({...}).record(transform = null)` chama snapshot/callback somente com parâmetro `cameraQa` presente e callback válido. Não armazena nova câmera. |
+| [DarkRoomRenderPipeline](../src/js/rendering/DarkRoomRenderPipeline.js), função | Composição da cena: branches de introdução/abertura, apresentação, camadas, iluminação, HUD e diálogos. Recebe objetos, escalares e callbacks de desenho. | `renderDarkRoom(context)` aplica MobileZoom → offset Android → CameraController.applyTransform; preserva save/restore do Canvas e emissão QA. Não executa update de simulação. Alguns callbacks de desenho ainda publicam locais em GameState: o render completo não é puro. |
+| [DarkRoomNarrative](../src/js/narrative/DarkRoomNarrative.js), funções | Seis sequências do quarto: atores, foco/zoom, partículas, diálogo, bloqueios e gatilhos; recebe contexto específico e dt. | `updateStandbyNarrative`, `updateTransicaoStandbyNarrative`, `updateCasteloNarrative`, `updateReviravoltaNarrative`, `updateTutorialRetornoNarrative`, `updatePortalNarrative`. Não possuem armazenamento próprio; game.update seleciona uma e retorna antes do update normal da câmera. |
+| [ToyRoomIntroduction](../src/js/cinematics/ToyRoomIntroduction.js), classe | Sequência cinemática antes da sala ativa; usa sala temporária com `bindInputs:false`, imagem de saída e áudio. Não executa a simulação normal da sala. | `start(context)` prepara/inicia; `update(dt)` avança relógio e eventos; `stage`/`dialogue` consultam cena; `cameraFrame(canvas)`/`fairyPosition()` calculam composição; `render`/`drawDialogue` desenham; `cancel()` encerra. `onComplete` abre sala ativa. |
+| [ToyCarryPresentation](../src/js/toy-room/ToyCarryPresentation.js), função/dados | Composição visual da pose de transporte e sobreposição de dedos/pernas; não muda a regra de carregar. Depende de assets, jogador e ToyRenderer. | `renderToyCarry(ctx, player, options)` usa `CARRY_PROFILES` por tipo para escala/âncora. Retorna false se faltar pose ou brinquedo, permitindo o caminho alternativo do renderizador. Não serializa perfis ou Canvas no save. |
+| [ToyRoomTutorial](../src/js/toy-room/ToyRoomTutorial.js), classe | Orientação de movimento e primeira coleta; mantém alvo visual dinâmico e dispositivo de entrada. Não executa coleta ou movimento do jogador. | `start()` respeita conclusão persistida; `setDevice()` muda instrução; `nearest()` escolhe item elegível; `update(dt)` avança de movement para pickup após deslocamento >2 e conclui quando há carriedItem; `guidePosition()`/`message` orientam; `render()` projeta painel; `finish()` marca conclusão/TOY_ROOM_GAMEPLAY. |
+
+### Catálogo das classes
+
+As 24 classes declaradas em src/js têm os papéis abaixo. Objetos de entidade (baby, fairy, player), dados de configuração e fábricas não são classes adicionais. Métodos privados/internos não constituem APIs estáveis.
+
+| Classe | Responsabilidade / estado próprio | Funções para começar a leitura |
+| --- | --- | --- |
+| AssetManager | Manifesto, imagens, status e cache de recortes; não define gameplay. | loadManifest, preload, get, getRegion |
+| GameState | Defaults e comandos de prontidão, derrota, narrativa e progresso; pode alterar corpo físico. | startStandbyPreparation, resetToStart, triggerGameOver, finishCutscene |
+| InputController | Eventos, debounce, dispositivo e bordas de gamepad; delega salto ao jogo. | init, triggerJump, handleKeyDown, handlePointerDown, pollGamepad, destroy |
+| AudioController | Integra áudio, foco/visibilidade, mute e lifecycle. | init, onBackground, onForeground, destroy e delegações play* |
+| CameraController | Pose/alvos, follow, rolagem, teto e derrota; congelado arquiteturalmente. | update, syncFromState, syncToState, applyTransform |
+| CameraPresentation | Histórico visual e estabilização da pose/enquadramento; separado da física. | frame, mobileFrame, reset, snapshot, restore |
+| BackgroundRenderer | Parede e cenário com atlas, parallax e cobertura do viewport. | setAssets, renderWall, renderScenery |
+| PlatformRenderer | Ilustrações de apoios e portas; não resolve colisões. | renderPlatforms, renderExitDoor, renderTrueExitDoor |
+| LightingSystem | Canvas auxiliar, máscara de escuridão e luzes. | resize, apply |
+| BabyRenderer | Seleciona e desenha recortes da personagem oficial. | resolveAnimationState, renderPose |
+| FairyRenderer | Desenha fada e efeitos da representação; não substitui sua guia de movimento. | render |
+| ParticleSystem | Buffers de poeira/rastros e sua evolução visual. | spawnBabyJumpPuff, spawnBabyLandingPuff, update e render* |
+| TransitionEffects | Desenho da íris/transição do portal; relógio é fornecido pelo fluxo. | renderPortalWipe |
+| HudRenderer | Desenha faixa de fuga/progresso em tela. | renderEscapeBanner |
+| DialogueRenderer | Texto, retratos e prompt seguro; mede/quebra linhas. | renderCutsceneDialogue, wrapText |
+| AtlasDebugger | Inspeciona/valida regiões do atlas em modo técnico. | validateAllRegions |
+| OpeningSequence | Relógio/etapas da abertura, revelação e conclusão recuperável. | start, update, render, snapshot, restore |
+| ToyRoomIntroduction | Relógio e composição da transição para a segunda fase; callbacks e panorama. | start, update, cameraFrame, render, cancel |
+| ToyRoomPhase | Jogador, brinquedos, móveis, colisões, inputs, follow independente e save da sala. | triggerAction, resolveCollisions, update, render, snapshot, restore, destroy |
+| ToyRoomTutorial | Etapas movement/pickup, alvo e instrução por dispositivo; usa estado da fase. | start, update, nearest, guidePosition, finish, render |
+| RoomEnvironmentRenderer | Desenha arquitetura e móveis da sala. | renderBackground, renderFurniture |
+| ToyRenderer | Desenha brinquedos, seleção e apresentação de itens. | renderToy |
+| ToyRoomEntities | Desenha protagonista/fada da sala com assets/alternativas. | renderPlayer, renderFairy |
+| ToyRoomUI | HUD, joystick, ações e faixas da sala. | renderUI |
+
+Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém assinatura, linha e link de implementação. As tabelas de domínio acima explicam os efeitos e as dependências; use ambas para evitar confundir um renderizador com o dono da regra do jogo.
+
+### Sequenciamento, contexto e publicação
+
+`main.js → createGame → update/render` continua sendo a entrada. O contexto narrativo usa `narrativeState`, um Proxy sobre GameState. `narrativeBindings` intercepta campos ainda espelhados e escreve nos locais de game.js; campos não interceptados usam GameState. Não assumir que `context.state.cameraX = ...` publica imediatamente no GameState real. O contexto de render recebe os valores do quadro explicitamente; RuntimeContext agrega serviços já criados no final de createGame e fornece referências aos contextos narrativo e de render. O próprio objeto runtimeContext não é exposto na API pública.
+
+As barreiras atuais são: comando de estado (locais → GameState → comando → locais); câmera normal (locais → GameState → controlador → update → GameState → locais); narrativa (escritas pelo Proxy → publicação posterior no loop); save (publicar locais → capturar estado). Resize não substitui nenhuma dessas barreiras.
+
+**CameraController está congelado arquiteturalmente.** Não adicionar responsabilidades nem continuar sua extração agora. Ele altera teto físico (`baby.y/vy`), velocidade de rolagem e derrota por atraso. `applyTransform` continua no controlador; CameraTransformApplier não existe. Intenção narrativa, pose lógica, apresentação, geometria do viewport e simulação são fronteiras diferentes. A decisão e as limitações de validação estão no [encerramento da trilha](qa/ENCERRAMENTO-REFATORACAO-CAMERA.md); relatórios intermediários dessa investigação foram removidos.
+
+### Entrada e tutorial da Toy Room
+
+Portal e botão de ir à segunda fase usam a introdução, antes de liberar os controles. Etapas `TR_002` a `TR_008`: 0,8 / 2,5 / 4 / 4 / 7 / 2 / 3 segundos. O relógio soma dt/60; TR_006 prioriza leitura por sete segundos. Eventos são enviados ao callback `onNarrativeEvent` e por CustomEvent no Canvas; `TOY_ROOM_START` inicia o tutorial da instância ativa. Não confundir o panorama narrativo com cameraX/Y do follow da sala.
+
+`ToyRoomPhase.startTutorial()` e `pollGamepad()` integram ToyRoomTutorial. `TOY_ROOM_INPUT` centraliza teclas de ação, rótulo E, índice 2 e rótulo X. O polling aceita pads padrão (ou sem mapping declarado), usa axes[0]/axes[1], deadzone radial 0,18 e borda de pressão do botão para `triggerAction()`. O vetor segue o mesmo update/colisões dos outros controles. A guia escolhe brinquedos não organizados/não carregados; troca de alvo usa cooldown de 30 passos, distância de 280 e vantagem de 40, para evitar oscilação. A posição sugerida da fada fica 105 acima do alvo.
+
+O save da sala inclui `toyRoomTutorialCompleted`; restore encerra tutorial já concluído ou reinicia orientação quando necessário. `ToyCarryPresentation` continua responsável pela composição visual de transporte (pose e contatos), separada da regra de pegar/guardar. As implementações de arte atuais podem diferir de auditorias históricas; a presença de asset no manifesto não prova uso pelo renderizador.
+
 ## Receitas de manutenção
 
 ### Acrescentar um asset visual
@@ -293,6 +359,11 @@ Defina default; inclua nas sincronizações; determine se deve persistir; revise
 Diferencie alteração artística de alteração de design. Arte: modifique renderer/atlas/calibração mantendo configuração física. Design autorizado: revise layout, progressão, alcance, colisões, checkpoints e referência de física como mudança explícita de gameplay. Não atualize `dark-room-physics.json` para acomodar arte ou fazer um teste passar.
 
 ## Testes e diagnóstico
+
+Na validação de encerramento de 06/10/2026, npm test/build/lint/check-assets, percurso completo e tutorial Toy Room passaram. Três scripts permanentes do primeiro salto falharam antes/depois da limpeza: `test-first-jump-tutorial-browser.js`, `test-first-jump-prompt-browser.js` e `test-first-jump-completion-browser.js`; a aplicação real passou nos cenários testados. Portanto `npm run test:tutorial:browser` não está integralmente aprovado. Consulte o [registro permanente](qa/ENCERRAMENTO-REFATORACAO-CAMERA.md) para mensagens e limites; não alterar asserções ou referências apenas para obter verde.
+
+O harness visual é parcialmente determinístico: performance.now, timers/RAF e storage compartilhado podem gerar diferenças sem mudança de implementação. Seed fixa exige mesma ordem de sorteios; pausa continua desenhando e não congela o pulso. Comparações exigem controlar pré-condições e validar A/B da mesma versão, sem mascarar diferenças. Isso permanece uma limitação, não uma estabilização implementada.
+
 
 | Comando / ferramenta | Quando usar | Limite |
 | --- | --- | --- |

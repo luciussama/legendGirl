@@ -15,7 +15,7 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 
 ## Manual para novas equipes
 
-Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código.
+Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código. O [dicionário de dependências](docs/DEPENDENCIAS.md) resume bibliotecas, versões e locais de uso.
 
 ## Executar localmente
 
@@ -50,6 +50,7 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Fases de plataforma | Botão X de controle compatível com o mapeamento esperado | Saltar ou avançar a interação ativa |
 | Sala de brinquedos | WASD ou setas | Movimentar a personagem |
 | Sala de brinquedos | Espaço, E, Enter ou F | Pegar, soltar ou guardar um objeto |
+| Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/soltar/guardar |
 | Sala de brinquedos em tela sensível ao toque | Joystick virtual à esquerda e botão de ação à direita | Movimentar e interagir |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
 | Interface geral | M / botão de áudio | Alternar o som |
@@ -57,6 +58,8 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 As entradas respeitam os bloqueios das cenas e o estado da personagem. Nas fases de plataforma, o deslocamento horizontal é conduzido pelo jogo; o jogador controla o momento do salto. Durante a fuga, caminhar por muito tempo nos apoios intermediários pode permitir que a rolagem alcance a personagem. Após conquistar o pedestal final, a câmera acompanha a aproximação da porta falsa.
 
 ## Arquitetura
+
+A coordenação atual usa RuntimeContext, ViewportController, CameraQaObserver, DarkRoomRenderPipeline e DarkRoomNarrative por composição; a Toy Room tem introdução cinemática e tutorial guiado próprios. CameraController permanece congelado arquiteturalmente. GameState ainda convive com espelhos locais: a refatoração de estado não está concluída. Veja [responsabilidades e contratos atuais](docs/MANUAL-DESENVOLVIMENTO.md#implementações-atuais-e-fronteiras).
 
 O código separa estado, controle, desenho e recursos, com `game.js` coordenando o fluxo principal. Parte da lógica de movimento, colisões e narrativa ainda reside nesse coordenador: a organização é modular, mas não constitui uma engine genérica ou um sistema ECS.
 
