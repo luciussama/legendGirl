@@ -2,13 +2,13 @@ import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js'
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 
 export const POETIC_LINES = Object.freeze({
-  openingYesterday: 'Ontem, os pés sabiam onde chegar.',
-  openingPath: 'Os brinquedos ficaram.\nO caminho entre eles escapou.',
-  castle: 'A porta cabia no olhar.\nO caminho, ainda não.',
-  falseDoor: 'A porta mudou de lugar.',
-  toyRoomPlay: 'Entre os brinquedos,\ncabia outra brincadeira.',
-  toyRoomPlace: 'Faltava um lugar para começar.',
-  ending: 'O chão guardou espaço.\nA brincadeira ainda não tinha começado.'
+  openingYesterday: 'O quarto era o mesmo.\nSó não a reconhecia.',
+  openingPath: 'Cada coisa guardava seu nome.\nEntre elas, nada dizia por onde ir.',
+  castle: 'De longe, a porta ainda cumpria sua promessa.',
+  falseDoor: 'A madeira caiu.\nA promessa ficou de pé.',
+  toyRoomPlay: 'A sala estava cheia.\nNenhum lugar esperava por ela.',
+  toyRoomPlace: 'A caixa tinha um fundo.\nO resto, não.',
+  ending: 'Agora havia espaço no chão.\nNem tudo que ficara de fora era brinquedo.'
 });
 
 export function getPauseNarration(state) {
