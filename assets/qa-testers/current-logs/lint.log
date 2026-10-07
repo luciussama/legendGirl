@@ -1,4 +1,0 @@
-
-> o-quarto-dos-brinquedos@1.0.0 lint
-> node --check server.js && node --check scripts/check-assets.js
-

@@ -209,9 +209,8 @@ node scripts/verify-full-browser.js iphone
 
 O teste percorre abertura, plataformas, transições e sala de brinquedos. Ele busca momentos de salto usando snapshots entre tentativas e avança o código real de atualização em passos controlados. Na sala, usa vetores do joystick virtual e verifica a entrega dos oito objetos.
 
-Relatório disponível: [QA atual](assets/qa-testers/current-reports/relatorio.md).
 
-As evidências móveis do relatório utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
+As validações móveis automatizadas utilizam emulação no Chrome desktop. Elas não substituem testes em aparelhos reais, especialmente de Safari/WebKit, gestos do sistema, áudio e conforto dos controles.
 
 ## Publicação
 
@@ -225,6 +224,4 @@ Siga as instruções de [`AGENTS.md`](AGENTS.md): comentários, documentação, 
 
 Ao alterar apresentação, mantenha física, geometria de colisão e posições do mundo separadas das transformações de renderização. Não desenhe linhas auxiliares de pouso ou hitboxes sobre as ilustrações na apresentação normal; inspeções técnicas pertencem ao modo de depuração.
 
-Mudanças em física ou progressão exigem revisão das referências em `assets/qa-testers/active-test-assets/` e dos testes de percurso. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.
-
-As evidências atuais estão em [assets/qa-testers](assets/qa-testers/README.md). O Git é a única fonte de histórico de QA.
+Mudanças em física ou progressão exigem revisão das referências em `tests/fixtures/active-test-assets/` e dos testes de percurso. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.

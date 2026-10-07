@@ -1,6 +1,5 @@
 # Tutorial do primeiro salto — guia técnico
 
-Este guia descreve a implementação das tarefas 1 a 4. Consulte também o [manual de desenvolvimento](MANUAL-DESENVOLVIMENTO.md), a [referência de métodos](REFERENCIA-METODOS.md) e o [relatório com capturas e resultados](../assets/qa-testers/current-reports/first-jump-tutorial.md).
 
 ## Quando ocorre e quais estados utiliza
 

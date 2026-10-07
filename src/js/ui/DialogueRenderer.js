@@ -1,6 +1,7 @@
 import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
 import { isMobileDevice } from '../controllers/MobileZoom.js';
 import { getDialogueSafeArea, getDialogueBoxY } from './DialogueSafeArea.js';
+import { getPauseNarration, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
 
 /**
  * DialogueRenderer.js
@@ -277,6 +278,13 @@ export class DialogueRenderer {
     // Exibe diálogo apenas quando cutscene estiver ativa, durante standby ou nos passos 4 (Bebê) e 5 (Fada) da reviravolta
     if (!cutsceneActive && (!plotTwistActive || plotTwistStep < 4) && !isStandbyShowing) return;
 
+    // Usa somente o tempo das pausas já existentes; nunca dispara durante travessias.
+    const narration = getPauseNarration(state);
+    if (narration) {
+      renderPoeticNarration(ctx, canvas, narration, {separateScene:true,anchor:options.characterAnchor});
+      return;
+    }
+
     ctx.save();
     if (isStandbyShowing) {
       ctx.globalAlpha = standbyDialogueAlpha;
@@ -301,7 +309,7 @@ export class DialogueRenderer {
 
     // Determina o interlocutor ativo, texto e expressão
     let speaker = 'fairy';
-    let speakerName = '✦ FADINHA ✦';
+    let speakerName = 'NANDA';
     let speakerColor = '#fef08a';
     let mood = 'normal';
     let dialogueText = '';
@@ -309,7 +317,7 @@ export class DialogueRenderer {
 
     if (isStandbyShowing) {
       speaker = 'fairy';
-      speakerName = '✦ FADINHA ✦';
+      speakerName = 'NANDA';
       speakerColor = '#fef08a';
       mood = 'normal';
       dialogueText = '"Você está bem? Vamos tentar novamente!"';
@@ -325,31 +333,31 @@ export class DialogueRenderer {
       }
     } else if (plotTwistActive && plotTwistStep === 4) {
       speaker = 'baby';
-      speakerName = '✦ MENININHA ✦';
+      speakerName = 'MENINA';
       speakerColor = '#fed7aa';
       mood = 'shocked';
-      dialogueText = '"Mas ali não era a porta...?"';
+      dialogueText = '"Mas era ali. Eu tinha certeza."';
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     } else if (plotTwistActive && plotTwistStep === 5) {
       speaker = 'fairy';
-      speakerName = '✦ FADINHA ✦';
+      speakerName = 'NANDA';
       speakerColor = '#fef08a';
       mood = 'annoyed';
-      dialogueText = '"Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!"';
+      dialogueText = '"Eu também achei. Droga... Vamos olhar por ali."';
       advancePrompt = 'Toque / Espaço / (X) para iniciar a subida ➔';
     } else if (cutsceneStep === 1) {
       speaker = 'fairy';
-      speakerName = '✦ FADINHA ✦';
+      speakerName = 'NANDA';
       speakerColor = '#fef08a';
       mood = 'normal';
-      dialogueText = '"O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo isso?"';
+      dialogueText = '"A porta é por ali. Anda, vem comigo!"';
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     } else if (cutsceneStep === 2) {
-      speaker = 'fairy';
-      speakerName = '✦ FADINHA ✦';
-      speakerColor = '#fef08a';
+      speaker = 'baby';
+      speakerName = 'MENINA';
+      speakerColor = '#fed7aa';
       mood = 'normal';
-      dialogueText = '"Claro que fomos nós duas brincando! *risos*. Mas não vamos mais perder tempo. A saída é logo ali."';
+      dialogueText = '"Daqui parece perto. Lá embaixo, não."';
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     }
 
@@ -364,15 +372,16 @@ export class DialogueRenderer {
     const textMaxW = boxW - (textX - boxX) - 20;
 
     // Escala dinâmica de tamanho de fonte e quebra de linha
-    let fontSize = isPortrait ? 14.5 : 16;
+    const uiScale = canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.().width || canvas.width);
+    let fontSize = (isPortrait ? 14.5 : 16) * uiScale;
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
     const originalTextMaxW = originalBoxW - (textX - boxX) - 20;
     let lines = wrapDialogueText(ctx, dialogueText, originalTextMaxW);
 
     // Ajuste automático: reduz fonte caso o texto ultrapasse 3 linhas (horizontal) ou 4 (vertical)
     const maxAllowedLines = isPortrait ? 4 : 3;
-    while (lines.length > maxAllowedLines && fontSize > 12) {
-      fontSize -= 0.5;
+    while (lines.length > maxAllowedLines && fontSize > 12 * uiScale) {
+      fontSize -= 0.5 * uiScale;
       ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
       lines = wrapDialogueText(ctx, dialogueText, originalTextMaxW);
     }
@@ -424,7 +433,7 @@ export class DialogueRenderer {
     drawDialoguePortrait(ctx, speaker, portX, portY, portR, mood);
 
     ctx.fillStyle = speakerColor;
-    ctx.font = 'bold 10px Palatino, Georgia, serif';
+    ctx.font = `bold ${10 * uiScale}px Palatino, Georgia, serif`;
     ctx.textAlign = 'center';
     ctx.fillText(speakerName, portX, portY + portR + 13);
 
@@ -461,7 +470,7 @@ export class DialogueRenderer {
     // 5. Prompt de avanço (posicionado no canto inferior direito sem sobreposição)
     const blink = Math.sin(tick * 0.1) * 0.3 + 0.7;
     ctx.fillStyle = `rgba(253, 224, 71, ${blink})`;
-    ctx.font = 'bold 11.5px sans-serif';
+    ctx.font = `bold ${11.5 * uiScale}px sans-serif`;
     ctx.textAlign = 'right';
     ctx.fillText(advancePrompt, boxX + boxW - 14, boxY + boxH - 10);
 

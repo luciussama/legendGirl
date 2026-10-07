@@ -2,7 +2,8 @@ import fs from 'node:fs/promises';
 import assert from 'node:assert/strict';
 import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
 const directory='docs/qa/toy-room-tutorial';
-const source=(await fs.readFile(`${directory}/ToyRoomPhase-antes.txt`,'utf8'))
+await fs.mkdir(directory,{recursive:true});
+const source=(await fs.readFile('tests/fixtures/toy-room-tutorial/ToyRoomPhase-antes.txt','utf8'))
  .replaceAll("'../",`'${new URL('../src/js/',import.meta.url).href}`)
  .replaceAll("'./",`'${new URL('../src/js/toy-room/',import.meta.url).href}`);
 const {ToyRoomPhase:Baseline}=await import('data:text/javascript;base64,'+Buffer.from(source).toString('base64'));

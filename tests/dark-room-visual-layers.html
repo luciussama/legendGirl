@@ -89,7 +89,7 @@ source=source.replace(marker,`  return {
 // Isolamento visual exclusivo da fixture: cada variante modifica somente chamadas de desenho.
 const variant=new URLSearchParams(location.search).get('visual')||'controle';
 window.visualQa={variant,stages:[]};
-let background=await (await fetch(new URLSearchParams(location.search).has('backgroundBefore')?'/assets/qa-testers/visual-rendering/QA-VISUAL-001/fontes/BackgroundRenderer-antes.js':'/src/js/environment/BackgroundRenderer.js')).text();
+let background=await (await fetch(new URLSearchParams(location.search).has('backgroundBefore')?'/tests/fixtures/visual-rendering/QA-VISUAL-001/fontes/BackgroundRenderer-antes.js':'/src/js/environment/BackgroundRenderer.js')).text();
 background=background.replace(/from '(\.{1,2}\/.+?)'/g,(_,p)=>`from '${new URL(p,location.origin+'/src/js/environment/BackgroundRenderer.js')}'`);
 if(variant==='sem-parallax')background=background.replace(/    \/\/ Listras do papel[\s\S]*?    \/\/ --- PISO E RODAPÉS ---/,'    // --- PISO E RODAPÉS ---');
 const {backgroundRenderer:isolatedBackground}=await import(URL.createObjectURL(new Blob([background],{type:'text/javascript'})));

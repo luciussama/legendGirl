@@ -3,7 +3,7 @@ import fs from 'node:fs/promises';
 import { createAudioSystem } from '../src/js/audio.js';
 
 const directory='docs/qa/toy-room-transicao';
-const before=await fs.readFile(`${directory}/ToyRoomPhase-antes.txt`,'utf8');
+const before=await fs.readFile('tests/fixtures/toy-room-transicao/ToyRoomPhase-antes.txt','utf8');
 const after=await fs.readFile('src/js/toy-room/ToyRoomPhase.js','utf8');
 function method(source,name){
   const start=source.indexOf(`\n  ${name}(`);

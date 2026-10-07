@@ -1,14 +1,15 @@
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
+import { POETIC_LINES, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
 
 export const OPENING_STORAGE_KEY = 'legendGirl.bedroom-opening.completed.v1';
 let completedInSession = false;
 const smooth = t => { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); };
 export const OPENING_DIALOGUE = [
   [4, 9, 'Levanta, dorminhoca.\nTemos que brincar.\nVocê dormiu demais.'],
-  [10, 13, 'Nossa...\nO seu quarto está uma bagunça.'],
-  [14, 20, 'Pra chegar na porta do quarto,\nvamos ter que saltar sobre os brinquedos.'],
+  [10, 13, POETIC_LINES.openingYesterday, 'narrator'],
+  [14, 20, POETIC_LINES.openingPath, 'narrator'],
   [21, 24, 'LEVANTA, SUA PREGUIÇOSA!'],
   [25, 29, 'SENÃO A GENTE NÃO SAI DAQUI NUNQUINHA!']
 ];
@@ -57,7 +58,7 @@ export class OpeningSequence {
   update(dt) {
     if (!this.active) return;
     this.time += Math.max(0, dt) / 60;
-    for (const [at, name] of [[4,'voice'],[10,'voice'],[14,'voice'],[21,'shout'],[25,'shout'],[29,'wake'],[36,'reveal']]) {
+    for (const [at, name] of [[4,'voice'],[21,'shout'],[25,'shout'],[29,'wake'],[36,'reveal']]) {
       if (this.time >= at && !this.cues.has(name+at)) {
         this.cues.add(name+at);
         if (name === 'reveal') this.onReveal(); else this.onCue(name);
@@ -112,6 +113,11 @@ export class OpeningSequence {
     // Mantém a divisão estável também nos intervalos entre as falas da abertura.
     const regions=renderMobileDialogueRegion(ctx,canvas,safe,156,anchor);
     if (line) {
+      if (line[3] === 'narrator') {
+        renderPoeticNarration(ctx, canvas, line[2], {anchor,panel:regions?.panel});
+        this.renderFade(ctx, canvas);
+        return;
+      }
       ctx.save();
       const width=Math.min(680,canvas.width-40,safe.right-safe.left-2*Math.max(20,safe.marginX)), font=canvas.width<600?20:23;
       const centerX=(safe.left+safe.right)/2;
@@ -128,7 +134,7 @@ export class OpeningSequence {
       const height=lines.length*(font+9)+54;
       const y=regions ? regions.panel.y+(regions.panel.height-height)/2 : getDialogueBoxY(safe,height,24,anchor);
       ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect(centerX-width/2,y,width,height,16);ctx.fill();
-      ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('FADINHA',centerX,y+24);
+      ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('NANDA',centerX,y+24);
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;ctx.fillStyle='#f5eddf';
       lines.forEach((text,i)=>ctx.fillText(text,centerX,y+54+i*(font+9)));
       ctx.restore();

@@ -40,10 +40,10 @@ try {
     window.currentFairyRender=fairyRenderer.render;
     window.dialogueRenderer=(await import('/src/js/ui/DialogueRenderer.js')).dialogueRenderer;
     window.currentPortrait=dialogueRenderer.drawPortrait;
-    const portraitSource=await fetch('/docs/qa/fada-primeira-fase/DialogueRenderer-antes.txt').then(r=>r.text());
+    const portraitSource=await fetch('/tests/fixtures/fada-primeira-fase/DialogueRenderer-antes.txt').then(r=>r.text());
     const portraitModule=portraitSource.replace(/from '([^']+)'/g,(_,p)=>"from '"+new URL(p,location.origin+'/src/js/ui/DialogueRenderer.js')+"'");
     window.oldPortrait=(await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(portraitModule))))).dialogueRenderer.drawPortrait;
-    const source=await fetch('/docs/qa/fada-primeira-fase/FairyRenderer-antes.txt').then(r=>r.text());
+    const source=await fetch('/tests/fixtures/fada-primeira-fase/FairyRenderer-antes.txt').then(r=>r.text());
     window.oldFairyRender=(await import('data:text/javascript;base64,'+btoa(unescape(encodeURIComponent(source.replace("'../config.js'","'http://127.0.0.1:3001/src/js/config.js'")))))).fairyRenderer.render;
     window.fairyScreens={};window.review.game.review.beginManual();
   })()`);

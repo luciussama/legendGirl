@@ -7,6 +7,8 @@
  * - Faixa festiva de celebração de vitória
  */
 
+import { POETIC_LINES, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
+
 export class ToyRoomUI {
   /**
    * Renderiza a interface (HUD) e sobreposições da Sala de Brinquedos
@@ -248,20 +250,7 @@ export class ToyRoomUI {
 
     // Faixa Comemorativa de Vitória
     if (victoryBannerActive && victoryBannerTimer > 0) {
-      ctx.fillStyle = 'rgba(24, 16, 35, 0.92)';
-      ctx.fillRect(canvas.width / 2 - 280, canvas.height / 2 - 70, 560, 140);
-      ctx.strokeStyle = '#facc15';
-      ctx.lineWidth = 3;
-      ctx.strokeRect(canvas.width / 2 - 280, canvas.height / 2 - 70, 560, 140);
-
-      ctx.fillStyle = '#facc15';
-      ctx.font = 'bold 24px Georgia, serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('🎉 MISSÃO CUMPRIDA COM AMOR! 🎉', canvas.width / 2, canvas.height / 2 - 25);
-      ctx.fillStyle = '#fef3c7';
-      ctx.font = '15px Georgia, serif';
-      ctx.fillText('A Sala de Brinquedos está toda arrumada e cheia de luz!', canvas.width / 2, canvas.height / 2 + 10);
-      ctx.fillText('A menininha e sua fadinha podem brincar felizes para sempre!', canvas.width / 2, canvas.height / 2 + 38);
+      renderPoeticNarration(ctx, canvas, POETIC_LINES.ending, {center:true,heading:'UM LUGAR PARA BRINCAR'});
     }
 
     ctx.restore();

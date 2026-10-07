@@ -1,6 +1,7 @@
 import { roomEnvironmentRenderer } from '../toy-room/RoomEnvironmentRenderer.js';
 import { toyRenderer } from '../toy-room/ToyRenderer.js';
 import { toyRoomEntities } from '../toy-room/ToyRoomEntities.js';
+import { POETIC_LINES, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
 const smooth = p => { p = Math.max(0, Math.min(1, p)); return p*p*(3-2*p); };
 const along = (points, p) => { const q = Math.min(points.length-1.000001, p*(points.length-1)), i = Math.floor(q), t = smooth(q-i); return {x:points[i][0]+(points[i+1][0]-points[i][0])*t,y:points[i][1]+(points[i+1][1]-points[i][1])*t}; };
 /** Sequência exclusiva de entrada pelo portal; não atualiza a simulação da sala. */
@@ -94,13 +95,12 @@ export class ToyRoomIntroduction {
 
   get dialogue() {
     const { id, time } = this.stage;
-    if (id === 'TR_004') return 'O QUÊ?!';
-    if (id === 'TR_005') return 'Aqui tá bagunçado também?!';
+    if (id === 'TR_004') return 'Aqui também...';
+    if (id === 'TR_005') return 'Eu queria espaço pra brincar.';
     if (id === 'TR_006') return time < 3.1
-      ? 'Por que o mundo tem que sempre virar uma bagunça?'
-      : time < 3.9 ? '' : 'Será que as coisas nunca vão ficar organizadas?';
-    if (id === 'TR_007') return time < 0.7 ? 'VAMOS LÁ!'
-      : time < 1.1 ? '' : 'TEMOS QUE GUARDAR TUDO!';
+      ? POETIC_LINES.toyRoomPlay
+      : time < 3.9 ? '' : POETIC_LINES.toyRoomPlace;
+    if (id === 'TR_007') return 'Vamos. Um de cada vez!';
     return '';
   }
 
@@ -195,6 +195,11 @@ export class ToyRoomIntroduction {
   }
 
   drawDialogue(ctx, canvas, text) {
+    if (this.stage.id === 'TR_006') {
+      renderPoeticNarration(ctx, canvas, text);
+      return;
+    }
+    text = `${this.stage.id === 'TR_007' ? 'NANDA' : 'MENINA'} · ${text}`;
     const cssWidth = canvas.clientWidth || canvas.width;
     const scale = canvas.width / cssWidth;
     const fontSize = Math.min(20 * scale, canvas.width * 0.045);

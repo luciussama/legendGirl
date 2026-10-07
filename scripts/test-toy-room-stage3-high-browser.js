@@ -5,12 +5,14 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const evidence = path.join(root, 'docs/qa/toy-room-etapa3/altos');
+const fixtures=path.join(root,'tests/fixtures/toy-room-etapa3/altos');
+await fs.mkdir(evidence,{recursive:true});
 const stage = process.argv[2] || 'criticos';
 assert(/^[a-z0-9-]+$/.test(stage), 'Nome do grupo inválido.');
 const frozen = {};
-for (const name of ['RoomEnvironmentRenderer', 'ToyRenderer', 'ToyRoomUI']) frozen[name] = await fs.readFile(path.join(evidence, name + '-antes.txt'), 'utf8');
-const original = await fs.readFile(path.join(evidence, 'ToyRoomPhase-antes.txt'), 'utf8');
-const oldEntities = await fs.readFile(path.join(evidence, 'ToyRoomEntities-antes.txt'), 'utf8');
+for (const name of ['RoomEnvironmentRenderer', 'ToyRenderer', 'ToyRoomUI']) frozen[name] = await fs.readFile(path.join(fixtures, name + '-antes.txt'), 'utf8');
+const original = await fs.readFile(path.join(fixtures, 'ToyRoomPhase-antes.txt'), 'utf8');
+const oldEntities = await fs.readFile(path.join(fixtures, 'ToyRoomEntities-antes.txt'), 'utf8');
 const absoluteImports = source => source.replaceAll("'../", "'http://127.0.0.1:8765/src/js/").replaceAll("'./", "'http://127.0.0.1:8765/src/js/toy-room/");
 const pages = await (await fetch('http://127.0.0.1:9223/json')).json();
 const ws = new WebSocket(pages.find(page => page.type === 'page').webSocketDebuggerUrl);

@@ -4,4 +4,8 @@ dist/
 .DS_Store
 *.log
 
-!assets/qa-testers/current-logs/*.log
+
+
+# Evidências locais de auditoria e capturas regeneráveis.
+/docs/qa/
+/assets/qa-testers/

@@ -63,8 +63,6 @@ Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist 
 | [Personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md) | Origem imutável, recortes e regras de animação. |
 | [Arte complementar](../assets/art/dark-room/modern/README.md) | Recursos ilustrados e calibração de apoios. |
 | [Abertura](../assets/art/dark-room/opening/README.md) | Atlas narrativo, tempo e persistência da sequência. |
-| [Organização de QA](../assets/qa-testers/README.md) | Destinos oficiais de evidências atuais e preservação das referências. |
-| [Relatório atual](../assets/qa-testers/current-reports/relatorio.md) | Validação disponível e suas limitações. |
 
 Comentários, documentação, interface e diagnósticos novos são escritos em português do Brasil. Preserve nomes de APIs, identificadores, comandos e caminhos. Não traduza dependências nem registros históricos externos.
 
@@ -317,7 +315,6 @@ Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém ass
 
 As barreiras atuais são: comando de estado (locais → GameState → comando → locais); câmera normal (locais → GameState → controlador → update → GameState → locais); narrativa (escritas pelo Proxy → publicação posterior no loop); save (publicar locais → capturar estado). Resize não substitui nenhuma dessas barreiras.
 
-**CameraController está congelado arquiteturalmente.** Não adicionar responsabilidades nem continuar sua extração agora. Ele altera teto físico (`baby.y/vy`), velocidade de rolagem e derrota por atraso. `applyTransform` continua no controlador; CameraTransformApplier não existe. Intenção narrativa, pose lógica, apresentação, geometria do viewport e simulação são fronteiras diferentes. A decisão e as limitações de validação estão no [encerramento da trilha](qa/ENCERRAMENTO-REFATORACAO-CAMERA.md); relatórios intermediários dessa investigação foram removidos.
 
 ### Entrada e tutorial da Toy Room
 
@@ -360,7 +357,6 @@ Diferencie alteração artística de alteração de design. Arte: modifique rend
 
 ## Testes e diagnóstico
 
-Na validação de encerramento de 06/10/2026, npm test/build/lint/check-assets, percurso completo e tutorial Toy Room passaram. Três scripts permanentes do primeiro salto falharam antes/depois da limpeza: `test-first-jump-tutorial-browser.js`, `test-first-jump-prompt-browser.js` e `test-first-jump-completion-browser.js`; a aplicação real passou nos cenários testados. Portanto `npm run test:tutorial:browser` não está integralmente aprovado. Consulte o [registro permanente](qa/ENCERRAMENTO-REFATORACAO-CAMERA.md) para mensagens e limites; não alterar asserções ou referências apenas para obter verde.
 
 O harness visual é parcialmente determinístico: performance.now, timers/RAF e storage compartilhado podem gerar diferenças sem mudança de implementação. Seed fixa exige mesma ordem de sorteios; pausa continua desenhando e não congela o pulso. Comparações exigem controlar pré-condições e validar A/B da mesma versão, sem mascarar diferenças. Isso permanece uma limitação, não uma estabilização implementada.
 

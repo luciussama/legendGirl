@@ -31,10 +31,10 @@ export function createBabyState() {
 }
 
 export const CUTSCENE_DIALOGUE = {
-  step1: "O quarto está escuro, mas lá fora temos muita coisa pra ver. Vamos logo sair daqui. Não aguento essa bagunça! Quem fez tudo isso?",
-  step2: "Claro que fomos nós duas brincando! *risos*. Mas não vamos mais perder tempo. A saída é logo ali.",
-  plotTwistBaby: "Mas ali não era a porta...?",
-  plotTwistFairy: "Droga! Como se virar em toda essa bagunça? Vamos tentar novamente por ali!"
+  step1: "A porta é por ali. Anda, vem comigo!",
+  step2: "Daqui parece perto. Lá embaixo, não.",
+  plotTwistBaby: "Mas era ali. Eu tinha certeza.",
+  plotTwistFairy: "Eu também achei. Droga... Vamos olhar por ali."
 };
 
 /**
@@ -326,4 +326,3 @@ export const roomScenery = [
   { x: 4900, type: 'toy_car' },
   { x: 5060, type: 'striped_rug' }
 ];
-

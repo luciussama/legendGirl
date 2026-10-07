@@ -8,7 +8,8 @@ import { roomEnvironmentRenderer } from '../src/js/toy-room/RoomEnvironmentRende
 const directory='docs/qa/toy-room-identificacao';
 // O import antigo da placa é retirado apenas para instanciar a referência histórica;
 // a renderização antiga não participa desta comparação das mecânicas.
-const source=(await fs.readFile(`${directory}/ToyRoomPhase-antes.txt`,'utf8'))
+await fs.mkdir(directory,{recursive:true});
+const source=(await fs.readFile('tests/fixtures/toy-room-identificacao/ToyRoomPhase-antes.txt','utf8'))
   .replace('nearestToyGuide, renderChestLabel','nearestToyGuide')
   .replaceAll("'../",`'${new URL('../src/js/',import.meta.url).href}`)
   .replaceAll("'./",`'${new URL('../src/js/toy-room/',import.meta.url).href}`);
@@ -22,7 +23,7 @@ assert.deepEqual(before.furniture,after.furniture,'Geometria e posição dos mó
 assert.deepEqual(before.toys,after.toys,'Brinquedos preservados');
 assert.deepEqual(before.snapshot(),after.snapshot(),'Save inicial preservado');
 const atlas=await fs.readFile('assets/art/toy-room/environment-sheet.png');
-const reference=JSON.parse(await fs.readFile(`${directory}/navegador.json`,'utf8'));
+const reference=JSON.parse(await fs.readFile('tests/fixtures/toy-room-identificacao/atlas-referencia.json','utf8'));
 assert.equal(createHash('sha256').update(atlas).digest('hex'),reference.atlasSHA256,'Atlas do restante da sala preservado');
 const sprite=PNG.sync.read(await fs.readFile('assets/art/toy-room/chest-brinquedos-v1.png'));
 assert.equal(sprite.data[3],0,'Sprite sem fundo opaco');
