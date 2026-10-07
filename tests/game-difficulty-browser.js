@@ -4,9 +4,20 @@ const frame = document.getElementById('campaign');
 const events = [];
 const check = (condition, message) => { if (!condition) throw Error(message); };
 const yieldFrame = () => new Promise(resolve => requestAnimationFrame(resolve));
+async function report(resultado) {
+  if(new URLSearchParams(location.search).has('report')) {
+    await fetch('/__qa/difficulty',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({resultado,events})});
+  }
+}
 try {
   while (!frame.contentWindow.review) await yieldFrame();
-  const {game} = frame.contentWindow.review, r = game.review;
+  let {game} = frame.contentWindow.review, r = game.review;
+  async function reloadCampaign() {
+    frame.src='dark-room-playthrough.html?difficultyReload='+Date.now();
+    await new Promise(resolve => frame.addEventListener('load',resolve,{once:true}));
+    while(!frame.contentWindow.review)await yieldFrame();
+    game=frame.contentWindow.review.game;r=game.review;
+  }
   function settle() {
     for (let i=0;i<5000;i++) {
       const s=r.inspectManual();
@@ -62,6 +73,7 @@ try {
     room.touchState.active=false;room.update(1);
   }
   for(const difficulty of ['NORMAL','EASY']) {
+    if(difficulty==='EASY')await reloadCampaign();
     output.textContent=`Executando ${difficulty}: abertura e tutorial…`;
     await yieldFrame();
     r.beginManual();game.state.gameDifficulty=difficulty;
@@ -98,10 +110,19 @@ try {
     }
     check(restoredRoom.victoryBannerActive&&restoredRoom.organizedCount===8,'Progressão completa na Toy Room');
     events.push({difficulty,etapa:'Toy Room concluída; save/restore reais',brinquedos:8});
+    game.saveProgress();
+    await reloadCampaign();
+    game.start(difficulty==='EASY'?'NORMAL':'EASY');game.setPaused(true);
+    check(game.state.gameDifficulty===difficulty,'Recarga da página conserva dificuldade');
+    check(r.roomManual().gameDifficulty===difficulty,'Recarga recria Toy Room na dificuldade salva');
+    check(r.roomManual().organizedCount===8,'Recarga conserva os brinquedos guardados');
+    events.push({difficulty,etapa:'recarga real da página e campanha restaurada'});
   }
-  output.textContent='APROVADO: NORMAL e FÁCIL — abertura, tutorial, 38 apoios por modo, castelo, porta falsa, verdadeiro portal, Toy Room, save e restore. 8 brinquedos guardados por modo.\n'+JSON.stringify(events,null,2);
+  output.textContent='APROVADO: NORMAL e FÁCIL — abertura, tutorial, 38 apoios por modo, castelo, porta falsa, verdadeiro portal, Toy Room, save, restore e recarga real da página. 8 brinquedos guardados por modo.\n'+JSON.stringify(events,null,2);
   document.body.dataset.result='passed';
+  await report(output.textContent.split('\n')[0]);
 } catch(error) {
   output.textContent='FALHA: '+error.stack+'\n'+JSON.stringify(events,null,2);
   document.body.dataset.result='failed';
+  await report(output.textContent);
 }

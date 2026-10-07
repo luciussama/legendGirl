@@ -5,7 +5,7 @@
   "scripts": {
     "test:difficulty": "node scripts/test-game-difficulty.js",
     "verify:dark-room": "node scripts/verify-dark-room.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js && node scripts/test-official-character.js && node scripts/test-phase3-particles.js && node scripts/test-escape-fairy-guide.js",
-    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js",
+    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js && npm run test:difficulty",
     "test:pages": "node scripts/test-pages-build.js",
     "test:toy-room:visual": "node scripts/test-toy-room-visual-browser.js depois",
     "dev": "node server.js",

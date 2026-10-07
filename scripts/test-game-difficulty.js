@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
-import { execFileSync } from 'node:child_process';
 import { platforms, phase3Platforms, createBabyState } from '../src/js/config.js';
 import { easyLanding, toyGuideBlend } from '../src/js/state/GameDifficulty.js';
 import { createDefaultStateVariables } from '../src/js/state/StateVariables.js';
@@ -8,7 +7,7 @@ import { createCampaignProgress, captureState, restoreState, CAMPAIGN_STORAGE_KE
 import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
 
 const current = fs.readFileSync('src/js/game.js', 'utf8');
-const before = execFileSync('git', ['show', 'HEAD:src/js/game.js'], {encoding:'utf8'});
+const baseline = JSON.parse(fs.readFileSync('tests/fixtures/game-difficulty-normal.json','utf8'));
 function landing(source) {
   const start = source.indexOf('    const activePlatforms = isPhase3 ? phase3Platforms : platforms;');
   const end = source.indexOf('    if (landedIdx !== -1) {', start);
@@ -16,7 +15,8 @@ function landing(source) {
   return new Function('baby', 'platforms', 'phase3Platforms', 'isPhase3', 'isEscapeMode', 'state', 'easyLanding',
     source.slice(start, end) + '\nreturn landedIdx;');
 }
-const oldLanding = landing(before), newLanding = landing(current);
+const oldLanding = new Function('baby','platforms','phase3Platforms','isPhase3','isEscapeMode',baseline.landing+'\nreturn landedIdx;');
+const newLanding = landing(current);
 let comparisons = 0, assisted = 0;
 for (const phase3 of [false, true]) {
   const group = phase3 ? phase3Platforms : platforms;
@@ -74,11 +74,11 @@ legacy.state.gameDifficulty='INVALID';values.set(CAMPAIGN_STORAGE_KEY,JSON.strin
 assert.equal(createCampaignProgress(storage).read().state.gameDifficulty,'NORMAL','Valor inválido não ativa ajuda');
 
 // O salto e a narrativa de produção devem permanecer textualmente iguais à referência.
-for (const [start,end] of [
-  ['  function doJump(inputSource) {','  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---'],
-  ['    baby.x += baby.vx * dt;','    // Rastro de poeira'],
+for (const [name,start,end] of [
+  ['jump','  function doJump(inputSource) {','  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---'],
+  ['movement','    baby.x += baby.vx * dt;','    // Rastro de poeira'],
 ]) {
   const section=s=>s.slice(s.indexOf(start),s.indexOf(end,s.indexOf(start)));
-  assert.equal(section(current),section(before),'Salto e integração física preservados');
+  assert.equal(section(current),baseline[name],'Salto e integração física preservados');
 }
 console.log(`APROVADO: ${comparisons} comparações com NORMAL anterior; ${assisted} erros pequenos recuperados; duas fases, save/restore/recarga, legado, guia real e saltos preservados.`);
