@@ -7,7 +7,7 @@ export const POETIC_LINES = Object.freeze({
   castle: 'De longe, a porta ainda cumpria sua promessa.',
   falseDoor: 'A madeira caiu.\nA promessa ficou de pé.',
   toyRoomPlay: 'A sala estava cheia.\nNenhum lugar esperava por ela.',
-  toyRoomPlace: 'A caixa tinha um fundo.\nO resto, não.',
+  toyRoomPlace: 'A caixa tinha um fundo.\nO resto está vazio.',
   ending: 'Agora havia espaço no chão.\nNem tudo que ficara de fora era brinquedo.'
 });
 

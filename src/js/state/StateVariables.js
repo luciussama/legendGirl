@@ -14,6 +14,7 @@ export function createDefaultStateVariables() {
   baby.controlsLocked = true;
 
   return {
+    gameDifficulty: 'NORMAL',
     // Entidades do Jogador e da Guia
     baby,
     fairy,

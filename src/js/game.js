@@ -9,6 +9,7 @@ import { renderDarkRoom } from './rendering/DarkRoomRenderPipeline.js';
 import { createViewportController } from './controllers/ViewportController.js';
 import { createCameraQaObserver } from './debug/CameraQaObserver.js';
 import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
+import { normalizeDifficulty, easyLanding } from './state/GameDifficulty.js';
 import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
 import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
@@ -348,7 +349,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     currentPhaseMode = 'toy-room';
     toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
       restartToTitle();
-    }, { assets });
+    }, { assets, gameDifficulty: state.gameDifficulty });
 
     if (fromIntroduction) {
       toyRoomInstance.instance.introAlpha = 0;
@@ -1016,6 +1017,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         baby.y + baby.h >= platY &&
         baby.y + baby.h <= platY + 16 &&
         baby.vy >= 0
+        || (state.gameDifficulty === 'EASY' && easyLanding(baby, platX, platW, platY))
       ) {
         landedIdx = i;
         break;
@@ -1269,6 +1271,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function restoreProgress(saved) {
     cameraPresentation.reset();
+    state.gameDifficulty = normalizeDifficulty(saved.state.gameDifficulty);
     if (saved.state.currentPhaseMode === 'toy-room') {
       startToyRoomPhase();
       toyRoomInstance.instance.restore(saved.toyRoom);
@@ -1416,6 +1419,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     togglePause,
     setPaused,
     hasProgress: () => Boolean(campaign.read() || opening.hasCompleted()),
+    getDifficulty: () => normalizeDifficulty(campaign.read()?.state.gameDifficulty ?? state.gameDifficulty),
     saveProgress,
     newCampaign,
     destroy() {
@@ -1427,9 +1431,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
-    start() {
+    start(difficulty = 'NORMAL') {
       const saved = campaign.read();
       if (saved) restoreProgress(saved);
+      else state.gameDifficulty = normalizeDifficulty(difficulty);
       gameStarted = true;
       state.gameStarted = true;
       if (saved) {

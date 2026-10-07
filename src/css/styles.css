@@ -160,6 +160,23 @@ canvas {
   margin-top: 22px;
 }
 
+/* Escolha acessível antes da campanha, sem interferir no cenário. */
+#game-difficulty, #new-campaign-difficulty {
+  font: inherit;
+  color: #f9f5ff;
+  background: #2c1b3e;
+  border: 1px solid #b9a4cb;
+  border-radius: 8px;
+  padding: 10px 16px;
+  min-height: 44px;
+}
+#difficulty-description {
+  max-width: 340px;
+  color: #e4d8ee;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
 /* Única ação principal: área ampla e contraste alto sobre a moldura escura. */
 .start-phase1-btn {
   width: 320px;

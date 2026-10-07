@@ -12,10 +12,12 @@ import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
 import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
+import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
 
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
     this.canvas = canvas;
+    this.gameDifficulty = normalizeDifficulty(options.gameDifficulty);
     this.mobilePresentation = isMobileDevice();
     this.ctx = canvas.getContext('2d');
     this.audio = audio;
@@ -805,7 +807,7 @@ export class ToyRoomPhase {
     if (guide) { this.fairy.targetX = guide.x; this.fairy.targetY = guide.y; }
 
     this.fairy.flutterTime += dt;
-    const guideBlend = guide ? 1 - Math.pow(0.88, dt) : 0.12 * dt;
+    const guideBlend = guide ? toyGuideBlend(this.gameDifficulty, dt) : 0.12 * dt;
     this.fairy.x += (this.fairy.targetX - this.fairy.x) * guideBlend;
     this.fairy.y += (this.fairy.targetY - this.fairy.y) * guideBlend;
 

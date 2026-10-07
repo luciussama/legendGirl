@@ -23,6 +23,7 @@ const uiFeedback = document.getElementById('ui-feedback') || {
 const startOverlay = document.getElementById('start-overlay');
 const btnStartPhase1 = document.getElementById('btn-start-phase1');
 const btnNewCampaign = document.getElementById('btn-new-campaign');
+const difficultySelect = document.getElementById('game-difficulty');
 const restartCampaignDialog = document.getElementById('restart-campaign-dialog');
 
 function refreshCampaignMenu() {
@@ -30,6 +31,11 @@ function refreshCampaignMenu() {
   btnStartPhase1.textContent = exists ? 'CONTINUAR' : 'COMEÇAR';
   btnStartPhase1.setAttribute('aria-label', exists ? 'Continuar aventura salva' : 'Começar a aventura');
   btnNewCampaign.hidden = !exists;
+  difficultySelect.disabled = exists;
+  if (exists) difficultySelect.value = game.getDifficulty();
+  document.getElementById('difficulty-description').textContent = exists
+    ? 'Continuar preserva a dificuldade da aventura salva. Para escolher outra, use RECOMEÇAR.'
+    : 'FÁCIL oferece mais tolerância no pouso e uma fadinha mais ágil para indicar brinquedos.';
 }
 
 const btnSkipPhase2 = document.getElementById('btn-skip-phase2');
@@ -178,7 +184,7 @@ function startGame(event) {
     startOverlay.style.display = 'none';
   }
 
-  game.start();
+  game.start(difficultySelect.value);
 
   setTimeout(() => {
     started = true;
@@ -329,6 +335,7 @@ btnNewCampaign.addEventListener('click', () => {
 restartCampaignDialog.addEventListener('close', () => {
   if (restartCampaignDialog.returnValue !== 'restart') return;
   game.newCampaign();
+  difficultySelect.value = document.getElementById('new-campaign-difficulty').value;
   refreshCampaignMenu();
   lastActionTime = 0;
   startGame();

@@ -1,4 +1,5 @@
 import { createDefaultStateVariables } from './StateVariables.js';
+import { normalizeDifficulty } from './GameDifficulty.js';
 
 export const CAMPAIGN_STORAGE_KEY = 'legendGirl.campaign.v1';
 const excluded = new Set(['toyRoomInstance', 'gameStarted', 'loopStarted', 'lastTime', 'lastJumpTime', 'lastDialogueAdvanceTime', 'standbyActivatedTime', 'failMessageTimer', 'isPortrait', 'lastUsedInputDevice']);
@@ -17,6 +18,7 @@ export function restoreState(state, saved) {
     else if (state[key] && typeof state[key] === 'object') Object.assign(state[key], value);
     else state[key] = value;
   }
+  state.gameDifficulty = normalizeDifficulty(saved.gameDifficulty);
 }
 export function createCampaignProgress(storage) {
   if (storage === undefined) { try { storage = globalThis.localStorage; } catch {} }
@@ -29,6 +31,9 @@ export function createCampaignProgress(storage) {
         const raw = storage?.getItem(CAMPAIGN_STORAGE_KEY);
         if (raw) {
           const data = JSON.parse(raw);
+          if (data.state && typeof data.state === 'object') {
+            data.state.gameDifficulty = normalizeDifficulty(data.state.gameDifficulty);
+          }
           // Aberturas antigas ainda em andamento precisam chegar ao primeiro salto.
           // Campanhas que já avançaram conservam o gameplay iniciado.
           if (data.state && typeof data.state === 'object' && !('gameplayState' in data.state)) {

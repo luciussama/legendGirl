@@ -15,6 +15,12 @@
       <div class="start-card">
         <span class="start-badge">O Quarto dos Brinquedos</span>
         <h1 id="start-title">Uma aventura espera por você</h1>
+        <label for="game-difficulty">Dificuldade da nova aventura</label>
+        <select id="game-difficulty" aria-describedby="difficulty-description">
+          <option value="NORMAL">NORMAL</option>
+          <option value="EASY">FÁCIL</option>
+        </select>
+        <p id="difficulty-description">FÁCIL oferece mais tolerância no pouso e uma fadinha mais ágil para indicar brinquedos.</p>
         <div class="start-buttons-container">
           <button id="btn-start-phase1" class="start-phase1-btn" type="button" aria-label="Começar a aventura">
             COMEÇAR
@@ -29,6 +35,11 @@
       <h2 id="restart-campaign-title">Recomeçar a aventura?</h2>
       <p id="restart-campaign-description">Toda a sua aventura será reiniciada. Você voltará ao começo da história e perderá o progresso salvo. Deseja continuar?</p>
       <form method="dialog" class="restart-campaign-actions">
+        <label for="new-campaign-difficulty">Dificuldade</label>
+        <select id="new-campaign-difficulty">
+          <option value="NORMAL">NORMAL</option>
+          <option value="EASY">FÁCIL</option>
+        </select>
         <button class="start-secondary-btn" value="cancel" autofocus>Cancelar</button>
         <button id="btn-confirm-new-campaign" class="start-secondary-btn" value="restart">Recomeçar</button>
       </form>

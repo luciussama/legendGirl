@@ -17,6 +17,7 @@ function section(start, end) {
 const jumpSource = section('  function doJump(inputSource) {', '  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---');
 const movement = new Function('baby', 'dt', section('    baby.x += baby.vx * dt;', '    // Rastro de poeira'));
 const landing = new Function('baby', 'platforms', `const isPhase3 = false;
+  const state = {gameDifficulty:'NORMAL'};
   ${section('    const activePlatforms = isPhase3 ? phase3Platforms : platforms;', '    if (landedIdx !== -1) {')}
   return landedIdx;`);
 // Fornece a dependência opening capturada pelo escopo da função doJump de produção.
