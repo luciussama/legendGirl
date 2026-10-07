@@ -647,11 +647,10 @@ export class RoomEnvironmentRenderer {
         ctx.strokeRect(f.x - 6, f.y - 6, f.w + 12, f.h + 12);
       }
 
-      // Na versão procedural, a inscrição acompanha a madeira e a abertura da tampa.
-      ctx.fillStyle = '#f5dfac';
+      ctx.fillStyle = '#78350f';
       ctx.font = 'bold 13px Georgia, serif';
       ctx.textAlign = 'center';
-      ctx.fillText('BRINQUEDOS', f.x + f.w / 2, f.y - 8 - lidLift, f.w - 48);
+      ctx.fillText('🧸 BAÚ DE BRINQUEDOS', f.x + f.w / 2, f.y - 12);
     } else if (f.type === 'shelf') {
       ctx.fillStyle = '#78350f';
       ctx.fillRect(f.x, f.y, f.w, f.h);

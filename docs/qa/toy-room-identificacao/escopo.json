@@ -1,0 +1,17 @@
+{
+  "metodosIdenticos": [
+    "triggerAction",
+    "resolveCollisions",
+    "update",
+    "snapshot",
+    "restore",
+    "startTutorial"
+  ],
+  "moveisIdenticos": true,
+  "brinquedosIdenticos": true,
+  "snapshotInicialIdentico": true,
+  "atlasPreservado": true,
+  "marcadorRemovido": true,
+  "fallbackIntegrado": true,
+  "spriteTransparente": true
+}

@@ -1,0 +1,8 @@
+{
+  "ferramenta": "image_gen__imagegen",
+  "modo": "ferramenta integrada",
+  "referencia": "caixa-original.png",
+  "destino": "assets/art/toy-room/chest-brinquedos-v1.png",
+  "transparent_background": true,
+  "prompt_original": "Use case: precise-object-edit. Edit this exact game sprite of a small children's toy chest, changing ONLY the identification on the wood. Preserve this exact chest design, silhouette, red arched curved lid, yellow ochre front panel, blue circular lock, dark reddish wood right side, painterly texture, lighting from upper left, isometric/top-down perspective, and framing. This is a game asset, so do not add props or change viewpoint. Add the exact word 'BRINQUEDOS' once, in clear friendly hand-painted pale cream uppercase lettering on the broad red curved lid surface facing the viewer; letters should follow the perspective of the lid, with natural subtle paint texture and soft integration into the wood. Keep the word generously sized and correctly spelled B R I N Q U E D O S, readable at a final sprite width of 198 pixels. It should look like physical paint applied to the toy chest's wooden lid, not a UI text overlay. No floating plaque, no signs extending beyond the silhouette, no arrows, no HUD, no tooltip, no outline frame behind the word, no extra text. Preserve the box structure and proportions. Transparent background, no black matte, no background."
+}

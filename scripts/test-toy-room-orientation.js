@@ -1,0 +1,32 @@
+import assert from 'node:assert/strict';
+import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
+import { nearestToyGuide } from '../src/js/toy-room/ToyRoomOrientation.js';
+
+const canvas = {width:960,height:540,getContext:()=>({}),addEventListener(){}};
+const phase = new ToyRoomPhase(canvas,null,null,null,{bindInputs:false});
+phase.toyRoomTutorialCompleted = true;
+const first = phase.toys[0], second = phase.toys[1];
+phase.player.x = first.x; phase.player.y = first.y;
+for (let i=0;i<100;i++) phase.update(1);
+assert.equal(phase.guideToy, first, 'Parada: alvo mais próximo da protagonista');
+assert(Math.hypot(phase.fairy.x-first.x,phase.fairy.y-(first.y-105))<1, 'Fadinha estabilizada sobre o alvo');
+phase.player.x = second.x; phase.player.y = second.y;
+const prior = {x:phase.fairy.x,y:phase.fairy.y}; phase.update(1);
+assert.equal(phase.guideToy, second, 'Caminhada: troca para o novo mais próximo');
+assert(Math.hypot(phase.fairy.x-phase.fairy.targetX,phase.fairy.y-phase.fairy.targetY)>1, 'Troca interpolada, sem teleporte');
+assert.notDeepEqual({x:phase.fairy.x,y:phase.fairy.y},prior, 'Migração iniciada');
+phase.lastActionTime = -Infinity; phase.triggerAction(); phase.update(1);
+assert.equal(phase.player.carriedItem,second, 'Coleta preservada');
+assert.notEqual(phase.guideToy,second, 'Próximo alvo na atualização após coleta');
+assert.equal(phase.guideToy,nearestToyGuide(phase.player,phase.toys,null));
+for (const toy of phase.toys) toy.isOrganized = toy !== first;
+phase.player.carriedItem = null; phase.update(1);
+assert.equal(phase.guideToy,first,'Único brinquedo restante');
+first.isOrganized = true; phase.update(1);
+assert.equal(phase.guideToy,null,'Sem brinquedos: retorno ao acompanhamento normal');
+assert.notEqual(phase.fairy.targetY,first.y-105);
+const pair = [{x:0,y:0},{x:100,y:0}];
+for (const x of [49,51,49,52,48,51]) assert.equal(nearestToyGuide({x,y:0},pair,pair[0]),pair[0],'Histerese impede tremulação');
+assert.equal(nearestToyGuide({x:54,y:0},pair,pair[0]),pair[1],'Vantagem acima da tolerância muda o alvo');
+
+console.log('APROVADO: cinco cenários da guia, histerese e coleta real.');

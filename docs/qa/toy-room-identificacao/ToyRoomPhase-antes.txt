@@ -11,7 +11,7 @@ import { toyRenderer } from './ToyRenderer.js';
 import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
 import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
-import { nearestToyGuide } from './ToyRoomOrientation.js';
+import { nearestToyGuide, renderChestLabel } from './ToyRoomOrientation.js';
 
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
@@ -34,7 +34,9 @@ export class ToyRoomPhase {
     this.environmentDoor = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
       x: 304, y: 158, width: 88, height: 136
     });
-    this.environmentChest = this.assets?.get('toy-room-chest-brinquedos-v1') || null;
+    this.environmentChest = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
+      x: 551, y: 192, width: 138, height: 128
+    });
     this.environmentTrain = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
       x: 689, y: 76, width: 116, height: 88
     });
@@ -1030,6 +1032,8 @@ export class ToyRoomPhase {
     }
 
     ctx.restore(); // Fim da transformação da câmera
+
+    if (!this.victoryBannerActive) renderChestLabel(ctx, this.canvas, this, frame);
 
     // 8. Interface de Usuário (HUD) em coordenadas de tela
     toyRoomUI.renderUI(ctx, this.canvas, {
