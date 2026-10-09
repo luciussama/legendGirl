@@ -539,27 +539,36 @@ export function createAudioSystem() {
 
   // --- SEGUNDA FASE: SALA DE BRINQUEDOS / SALA ILUMINADA (TRILHA OFICIAL) ---
   let toyRoomAudio = null;
+  let toyRoomMusicTrack = 'theme';
+  let toyRoomTrackFallbackIndex = 0;
   let wasToyRoomAudioPlaying = false;
   let wasMusicTrackPlaying = false;
+
+  function getToyRoomTrackUrls(track) {
+    const fileName = track === 'sword' ? 'Circular Dissonance (1).mp3' : 'The Circle Game.mp3';
+    const encodedFileName = encodeURIComponent(fileName);
+    return [
+      new URL(`../../assets/audio/${encodedFileName}`, import.meta.url).href,
+      new URL(`../audio/${encodedFileName}`, import.meta.url).href,
+      `/src/audio/${encodedFileName}`
+    ];
+  }
 
   function getToyRoomAudioElement() {
     if (!toyRoomAudio) {
       try {
-        const fallbackUrl = new URL('../audio/The%20Circle%20Game.mp3', import.meta.url).href;
-        const primaryUrl = new URL('../../assets/audio/The%20Circle%20Game.mp3', import.meta.url).href;
-        const secondaryFallbackUrl = '/src/audio/The%20Circle%20Game.mp3';
-
-        toyRoomAudio = new Audio(primaryUrl);
+        const trackUrls = getToyRoomTrackUrls(toyRoomMusicTrack);
+        toyRoomAudio = new Audio(trackUrls[0]);
         toyRoomAudio.onerror = () => {
-          if (toyRoomAudio) {
-            if (toyRoomAudio.src !== fallbackUrl) {
-              toyRoomAudio.src = fallbackUrl;
-            } else if (toyRoomAudio.src !== secondaryFallbackUrl) {
-              toyRoomAudio.src = secondaryFallbackUrl;
-            }
-            if (isToyRoomMusicWanted && !isMuted) {
-              toyRoomAudio.play().catch(() => {});
-            }
+          const currentTrackUrls = getToyRoomTrackUrls(toyRoomMusicTrack);
+          toyRoomTrackFallbackIndex++;
+          if (toyRoomTrackFallbackIndex >= currentTrackUrls.length) {
+            console.warn(`Trilha da Toy Room não pôde ser carregada: ${toyRoomMusicTrack}`);
+            return;
+          }
+          toyRoomAudio.src = currentTrackUrls[toyRoomTrackFallbackIndex];
+          if (isToyRoomMusicWanted && !isMuted) {
+            toyRoomAudio.play().catch(() => {});
           }
         };
         toyRoomAudio.loop = true;
@@ -580,7 +589,27 @@ export function createAudioSystem() {
     return toyRoomAudio;
   }
 
+  function setToyRoomMusicTrack(track) {
+    if (track !== 'theme' && track !== 'sword') {
+      throw new RangeError(`Trilha desconhecida da Toy Room: ${track}`);
+    }
+    if (toyRoomMusicTrack === track) return;
+
+    toyRoomMusicTrack = track;
+    toyRoomTrackFallbackIndex = 0;
+    const audioEl = getToyRoomAudioElement();
+    const [primaryUrl] = getToyRoomTrackUrls(track);
+    audioEl.src = primaryUrl;
+    audioEl.currentTime = 0;
+    audioEl.load();
+    audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+    if (isToyRoomMusicWanted && !isMuted) {
+      audioEl.play().catch(() => {});
+    }
+  }
+
   function startToyRoomMusic({ fade = 1 } = {}) {
+    if (toyRoomMusicTrack !== 'theme') setToyRoomMusicTrack('theme');
     toyRoomMusicFade = Math.max(0, Math.min(1, fade));
     isToyRoomMusicWanted = true;
     stopMusic(); // Interrompe qualquer trilha da fase anterior
@@ -810,6 +839,7 @@ export function createAudioSystem() {
     playFairyFrustratedSound,
     playPhase3StartFanfare,
     startToyRoomMusic,
+    setToyRoomMusicTrack,
     setToyRoomMusicFade,
     playPortalExitWhoosh,
     playSoftMagicBurst,

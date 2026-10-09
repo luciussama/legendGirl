@@ -6,7 +6,9 @@ const makeToy = (id, x, y, isOrganized = false, returnGeneration = 0) => ({
   id, x, y, isOrganized, isCarried: false, returnGeneration
 });
 
-const makeRoom = () => ({
+const makeRoom = () => {
+  const musicTracks = [];
+  return ({
   ROOM_W: 1600,
   ROOM_H: 1200,
   canvas: { width: 640, height: 480 },
@@ -26,8 +28,13 @@ const makeRoom = () => ({
   keysDown: {},
   actionBtnPressed: false,
   resolveCollisions: (x, y) => ({ x, y }),
-  audio: { playPickUpSound() {} }
-});
+  audio: {
+    playPickUpSound() {},
+    setToyRoomMusicTrack: track => musicTracks.push(track)
+  },
+  musicTracks
+  });
+};
 
 const room = makeRoom();
 const story = new ToyRoomStory(room);
@@ -70,9 +77,13 @@ room.player.y = story.state.sword.y;
 story.updateAfterMovement();
 assert.equal(story.state.investigationStage, 'PICKUP');
 assert.equal(story.state.sword.visible, false);
-assert.equal(story.update(300), true);
+assert.deepEqual(room.musicTracks, ['sword'], 'A música troca no instante em que a menina pega a espada.');
+assert.equal(story.update(299), true);
+assert.equal(room.musicTracks.length, 1, 'A trilha permanece durante a animação de coleta.');
+assert.equal(story.update(1), true);
 assert.equal(story.state.investigationStage, 'EQUIPPED');
 assert.equal(story.swordEquipped, true);
+assert.deepEqual(room.musicTracks, ['sword'], 'A trilha troca quando a espada é pega.');
 assert.equal(story.attack(), true, 'A espada executa um golpe visual.');
 assert.equal(story.attack(), false, 'O golpe tem intervalo para evitar repetição.');
 story.update(12);
@@ -82,6 +93,7 @@ const restored = new ToyRoomStory(makeRoom());
 restored.restore(story.snapshot());
 assert.equal(restored.swordEquipped, true, 'O equipamento sobrevive ao save/restore.');
 assert.equal(restored.state.returnedToyCount, 4);
+assert.deepEqual(restored.room.musicTracks, ['sword'], 'O save equipado restaura a trilha da espada.');
 
 const legacyRoom = makeRoom();
 legacyRoom.toys.push(makeToy('ball', 500, 500, false), makeToy('blocks', 600, 600, false));

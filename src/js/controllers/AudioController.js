@@ -229,6 +229,11 @@ export class AudioController {
   }
 
   setToyRoomMusicFade(value) { this.system.setToyRoomMusicFade(value); }
+  setToyRoomMusicTrack(track) {
+    if (this.system && typeof this.system.setToyRoomMusicTrack === 'function') {
+      this.system.setToyRoomMusicTrack(track);
+    }
+  }
   playPortalExitWhoosh() { this.system.playPortalExitWhoosh(); }
   playSoftMagicBurst() { this.system.playSoftMagicBurst(); }
 

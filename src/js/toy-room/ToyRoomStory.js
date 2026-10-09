@@ -366,6 +366,7 @@ export class ToyRoomStory {
     state.sword.visible = false;
     this.clearInput();
     this.room.audio?.playPickUpSound?.();
+    this.room.audio?.setToyRoomMusicTrack?.('sword');
   }
 
   clearInput() {
@@ -500,6 +501,9 @@ export class ToyRoomStory {
     this.state.pendingReturns = Array.isArray(this.state.pendingReturns)
       ? this.state.pendingReturns
       : [];
+    if (this.state.swordEquipped || this.state.investigationStage === 'PICKUP') {
+      this.room.audio?.setToyRoomMusicTrack?.('sword');
+    }
     if (!saved && this.room.toys.filter(toy => !toy.isOrganized).length <= 2) {
       this.state.recurrenceActive = true;
     }
