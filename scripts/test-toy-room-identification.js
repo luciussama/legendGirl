@@ -17,11 +17,14 @@ const {ToyRoomPhase:Before}=await import('data:text/javascript;base64,'+Buffer.f
 const canvas={width:960,height:540,getContext:()=>({}),addEventListener(){}};
 const before=new Before(canvas,null,null,null,{bindInputs:false});
 const after=new ToyRoomPhase(canvas,null,null,null,{bindInputs:false});
-const methods=['triggerAction','resolveCollisions','update','snapshot','restore','startTutorial'];
+const methods=['resolveCollisions','startTutorial'];
 for(const method of methods) assert.equal(Before.prototype[method].toString(),ToyRoomPhase.prototype[method].toString(),`${method} preservado`);
 assert.deepEqual(before.furniture,after.furniture,'Geometria e posição dos móveis preservadas');
 assert.deepEqual(before.toys,after.toys,'Brinquedos preservados');
-assert.deepEqual(before.snapshot(),after.snapshot(),'Save inicial preservado');
+const {toyRoomStory,...afterSnapshot}=after.snapshot();
+assert.deepEqual(before.snapshot(),afterSnapshot,'Campos do save anterior preservados');
+assert.equal(toyRoomStory.investigationStage,'COLLECTING','A narrativa começa no estado de coleta');
+assert.equal(toyRoomStory.swordEquipped,false,'A espada não começa equipada');
 const atlas=await fs.readFile('assets/art/toy-room/environment-sheet.png');
 const reference=JSON.parse(await fs.readFile('tests/fixtures/toy-room-identificacao/atlas-referencia.json','utf8'));
 assert.equal(createHash('sha256').update(atlas).digest('hex'),reference.atlasSHA256,'Atlas do restante da sala preservado');

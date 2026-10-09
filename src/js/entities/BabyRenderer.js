@@ -22,7 +22,7 @@ export class BabyRenderer {
     if (baby.isDamaged || (state.isGameOver && !baby.onGround)) {
       return { state: 'damage', frame: 0 };
     }
-    if (baby.isCollecting || state.gameWon) {
+    if (state.gameWon || (baby.isCollecting && baby.onGround && Math.abs(baby.vx) <= 0.05)) {
       return { state: 'collect', frame: 0 };
     }
     if (baby.isClimbing) {
