@@ -137,6 +137,7 @@ const collectingWhileFalling = {
 };
 assert.equal(renderer.resolveAnimationState(collectingWhileFalling, {}).state, 'fall');
 const carryAtlas = {};
+const carryPose = {};
 const carryDraws = [];
 const carryContext = {
   save() {},
@@ -148,7 +149,9 @@ const carryContext = {
   }
 };
 const carryAssets = {
-  get: key => key === 'official-character' ? carryAtlas : null
+  get: key => key === 'official-character'
+    ? carryAtlas
+    : key === 'toy-room-carry-pose-v1' ? carryPose : null
 };
 const organizedToy = { type: 'teddy', isCarried: true, isOrganized: true };
 renderToyCarry(carryContext, {
@@ -163,6 +166,8 @@ assert.equal(carryDraws[0].image, carryAtlas);
 assert.deepEqual(carryDraws[0].coordinates.slice(0, 4),
   [OFFICIAL_FRAMES.run[1].x, OFFICIAL_FRAMES.run[1].y,
     OFFICIAL_FRAMES.run[1].w, OFFICIAL_FRAMES.run[1].h]);
+assert(!carryDraws.some(draw => draw.image === carryPose),
+  'A pose de transporte não deve substituir a identidade oficial.');
 carryDraws.length = 0;
 renderToyCarry(carryContext, {
   isMoving: false,
@@ -173,8 +178,10 @@ renderToyCarry(carryContext, {
   carriedItem: organizedToy
 }, { assets: carryAssets });
 assert.deepEqual(carryDraws[0].coordinates.slice(0, 4),
-  [OFFICIAL_FRAMES.collect[0].x, OFFICIAL_FRAMES.collect[0].y,
-    OFFICIAL_FRAMES.collect[0].w, OFFICIAL_FRAMES.collect[0].h]);
+  [OFFICIAL_FRAMES.idle[1].x, OFFICIAL_FRAMES.idle[1].y,
+    OFFICIAL_FRAMES.idle[1].w, OFFICIAL_FRAMES.idle[1].h]);
+assert(!carryDraws.some(draw => draw.image === carryPose),
+  'A pose parada com carga deve usar a arte corporal oficial.');
 
 const teleportBaby = { ...createBabyState(), isTeleporting: true };
 assert.equal(renderer.resolveAnimationState(teleportBaby, {}).state, 'teleport');

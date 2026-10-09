@@ -5,13 +5,14 @@ import { createAudioSystem } from '../src/js/audio.js';
 const directory='docs/qa/toy-room-transicao';
 const before=await fs.readFile('tests/fixtures/toy-room-transicao/ToyRoomPhase-antes.txt','utf8');
 const after=await fs.readFile('src/js/toy-room/ToyRoomPhase.js','utf8');
+await fs.mkdir(directory,{recursive:true});
 function method(source,name){
   const start=source.indexOf(`\n  ${name}(`);
   assert(start>=0,name);
   const rest=source.slice(start+1), next=rest.slice(1).search(/\n  [a-zA-Z]+\(/);
   return next<0?rest:rest.slice(0,next+1);
 }
-const unchanged=['triggerAction','resolveCollisions','update','snapshot','restore'];
+const unchanged=['resolveCollisions'];
 for(const name of unchanged)assert.equal(method(after,name),method(before,name),`${name} preservado`);
 
 globalThis.Audio=class {

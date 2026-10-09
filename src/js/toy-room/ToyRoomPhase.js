@@ -13,6 +13,7 @@ import { toyRoomUI } from './ToyRoomUI.js';
 import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
 import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
+import { ToyRoomStory } from './ToyRoomStory.js';
 
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
@@ -337,6 +338,7 @@ export class ToyRoomPhase {
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.tutorial = new ToyRoomTutorial(this);
     this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
+    this.story = new ToyRoomStory(this);
   }
 
   setupListeners() {
@@ -554,6 +556,7 @@ export class ToyRoomPhase {
   }
 
   triggerAction() {
+    if (this.story?.inputLocked) return;
     const now = performance.now();
     if (now - this.lastActionTime < this.ACTION_DEBOUNCE_MS) {
       return;
@@ -581,8 +584,9 @@ export class ToyRoomPhase {
         this.spawnSparkles(chestCenterX, chest.y + 30, 24, '#fde047');
         this.spawnConfetti(chestCenterX, chest.y + 30, 30);
 
+        this.story?.onToyStored(item);
         this.organizedCount++;
-        if (this.organizedCount >= this.toys.length) {
+        if (this.organizedCount >= this.toys.length && !this.story?.state.recurrenceActive) {
           this.victoryBannerActive = true;
           this.victoryBannerTimer = 360;
           if (this.audio && this.audio.playToyRoomVictory) this.audio.playToyRoomVictory();
@@ -645,7 +649,10 @@ export class ToyRoomPhase {
         this.uiFeedback.innerText = `✋ Você pegou: ${closestToy.name}! Leve até o Baú de Brinquedos!`;
         this.uiFeedback.style.color = '#38bdf8';
       }
+      return;
     }
+
+    this.story?.attack();
   }
 
   resolveCollisions(px, py, r) {
@@ -697,6 +704,7 @@ export class ToyRoomPhase {
     if (this.victoryBannerActive && this.victoryBannerTimer > 0) {
       this.victoryBannerTimer -= dt;
     }
+    if (this.story?.update(dt)) return;
 
     // Verificação de proximidade interativa para enriquecer o feedback do Botão de Ação
     let canInteract = false;
@@ -787,6 +795,7 @@ export class ToyRoomPhase {
     const resolved = this.resolveCollisions(rawX, rawY, this.player.radius);
     this.player.x = resolved.x;
     this.player.y = resolved.y;
+    this.story?.updateAfterMovement();
 
     // Posição do brinquedo carregado acima da cabeça
     if (this.player.carriedItem) {
@@ -801,7 +810,7 @@ export class ToyRoomPhase {
     this.tutorial.update(dt);
     // O tutorial conserva sua orientação; no gameplay o alvo depende da protagonista.
     this.guideToy = nearestToyGuide(this.player, this.toys, this.guideToy);
-    const guide = this.tutorial.guidePosition() || (this.guideToy && {
+    const guide = this.story.guidePosition() || this.tutorial.guidePosition() || (this.guideToy && {
       x: this.guideToy.x, y: this.guideToy.y - 105
     });
     if (guide) { this.fairy.targetX = guide.x; this.fairy.targetY = guide.y; }
@@ -876,8 +885,9 @@ export class ToyRoomPhase {
     }
 
     // Rastreamento suave da câmera
-    const targetCamX = this.player.x - this.canvas.width / 2;
-    const targetCamY = this.player.y - this.canvas.height / 2;
+    const cameraTarget = this.story.cameraTarget() || this.player;
+    const targetCamX = cameraTarget.x - this.canvas.width / 2;
+    const targetCamY = cameraTarget.y - this.canvas.height / 2;
 
     const maxCamX = Math.max(0, this.ROOM_W - this.canvas.width);
     const maxCamY = Math.max(0, this.ROOM_H - this.canvas.height);
@@ -914,6 +924,7 @@ export class ToyRoomPhase {
     ctx.translate(frame.x, frame.y);
     ctx.scale(frame.zoom, frame.zoom);
     ctx.translate(-this.cameraX, -this.cameraY);
+    this.story.recordViewport(frame);
 
     // 1. Cenário de Fundo
     roomEnvironmentRenderer.renderBackground(ctx, this.ROOM_W, this.ROOM_H, {
@@ -956,6 +967,10 @@ export class ToyRoomPhase {
       }
     }
 
+    if (this.story.state.sword?.visible) {
+      renderList.push({ type: 'story-sword', y: this.story.state.sword.y });
+    }
+
     renderList.push({
       type: 'player',
       y: this.player.y
@@ -984,6 +999,9 @@ export class ToyRoomPhase {
           environmentTeddy: this.environmentTeddy,
           environmentTrain: this.environmentTrain
         });
+        this.story.renderHeldObject(ctx);
+      } else if (node.type === 'story-sword') {
+        this.story.renderWorldObject(ctx);
       }
     }
 
@@ -1046,10 +1064,12 @@ export class ToyRoomPhase {
       victoryBannerTimer: this.victoryBannerTimer,
       actionBtnPressed: this.actionBtnPressed,
       canInteract: this.canInteract,
-      isNearChest: this.isNearChest
+      isNearChest: this.isNearChest,
+      swordEquipped: this.story.swordEquipped
     });
 
     this.tutorial.render(ctx, this.canvas, frame);
+    this.story.renderNarrative(ctx, this.canvas);
     ctx.restore();
   }
 
@@ -1060,14 +1080,18 @@ export class ToyRoomPhase {
       'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
     const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
     saved.carriedItemId = this.player.carriedItem?.id ?? null;
+    saved.toyRoomStory = this.story.snapshot();
     return saved;
   }
 
   restore(saved) {
-    for (const key of Object.keys(this.snapshot())) {
-      if (key !== 'carriedItemId' && key in saved) this[key] = JSON.parse(JSON.stringify(saved[key]));
+    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
+      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
+    for (const key of keys) {
+      if (key in saved) this[key] = JSON.parse(JSON.stringify(saved[key]));
     }
     this.player.carriedItem = this.toys.find(toy => toy.id === saved.carriedItemId) || null;
+    this.story.restore(saved.toyRoomStory);
     this.lastActionTime = 0;
     this.tutorial.active = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
