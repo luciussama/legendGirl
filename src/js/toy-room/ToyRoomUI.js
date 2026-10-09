@@ -215,6 +215,10 @@ export class ToyRoomUI {
       mainText = 'SOLTAR';
       subText = '📦 NO CHÃO';
       textColor = '#ffffff';
+    } else if (state.swordEquipped && !canInteract) {
+      mainText = 'GOLPE';
+      subText = '⚔ ESPADA';
+      textColor = '#ffffff';
     }
 
     ctx.fillStyle = textColor;

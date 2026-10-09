@@ -2,6 +2,7 @@ import { roomEnvironmentRenderer } from '../toy-room/RoomEnvironmentRenderer.js'
 import { toyRenderer } from '../toy-room/ToyRenderer.js';
 import { toyRoomEntities } from '../toy-room/ToyRoomEntities.js';
 import { POETIC_LINES, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
+import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 const smooth = p => { p = Math.max(0, Math.min(1, p)); return p*p*(3-2*p); };
 const along = (points, p) => { const q = Math.min(points.length-1.000001, p*(points.length-1)), i = Math.floor(q), t = smooth(q-i); return {x:points[i][0]+(points[i+1][0]-points[i][0])*t,y:points[i][1]+(points[i+1][1]-points[i][1])*t}; };
 /** Sequência exclusiva de entrada pelo portal; não atualiza a simulação da sala. */
@@ -203,7 +204,8 @@ export class ToyRoomIntroduction {
     const cssWidth = canvas.clientWidth || canvas.width;
     const scale = canvas.width / cssWidth;
     const fontSize = Math.min(20 * scale, canvas.width * 0.045);
-    const maxWidth = canvas.width - 40 * scale;
+    const safe = getDialogueSafeArea(canvas);
+    const maxWidth = safe.right - safe.left - 40 * scale;
     ctx.font = `bold ${fontSize}px Georgia, serif`;
     const lines = [], words = text.split(' '); let line = '';
     for (const word of words) {
@@ -214,11 +216,12 @@ export class ToyRoomIntroduction {
     if (line) lines.push(line);
     const lineHeight = fontSize * 1.35;
     const height = lineHeight * lines.length + 32 * scale;
-    const y = canvas.height - height - 24 * scale;
+    const y = getDialogueBoxY(safe, height, 24 * scale);
+    const x = (safe.left + safe.right) / 2;
     ctx.fillStyle = 'rgba(38,24,31,0.9)'; ctx.beginPath();
-    ctx.roundRect(20 * scale, y, maxWidth, height, 12 * scale); ctx.fill();
+    ctx.roundRect(x - maxWidth / 2, y, maxWidth, height, 12 * scale); ctx.fill();
     ctx.fillStyle = '#fff2bd'; ctx.textAlign = 'center'; ctx.textBaseline = 'top';
-    lines.forEach((l, i) => ctx.fillText(l, canvas.width/2, y+16*scale+i*lineHeight));
+    lines.forEach((l, i) => ctx.fillText(l, x, y+16*scale+i*lineHeight));
   }
   cancel() {
     if (this.active) this.audio?.stopToyRoomMusic();

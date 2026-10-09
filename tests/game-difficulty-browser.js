@@ -66,6 +66,7 @@ try {
     check(end,'Sem caminho até brinquedo/caixa');
     const path=[];for(let p=end;p;p=seen.get(key(p)))path.unshift(p);
     for(const [gx,gy]of path)for(let f=0;f<100;f++) {
+      if(room.story.state.investigationStage==='PICKUP') { room.touchState.active=false; return; }
       const dx=gx*20-room.player.x,dy=gy*20-room.player.y,d=Math.hypot(dx,dy);if(d<2)break;
       check(f<99,'Movimento bloqueado');
       room.touchState.active=true;room.touchState.vectorX=dx/Math.max(d,4);room.touchState.vectorY=dy/Math.max(d,4);room.update(1);
@@ -101,24 +102,38 @@ try {
     game.start(difficulty==='EASY'?'NORMAL':'EASY');
     check(r.roomManual().gameDifficulty===difficulty,'Restore real prevalece sobre escolha nova');
     const restoredRoom=r.roomManual();
-    for(const toy of restoredRoom.toys) {
+    let stored=0;
+    // O quarto atual devolve brinquedos; o objetivo narrativo é encontrar a espada.
+    for(let cycle=0;cycle<40 && restoredRoom.story.state.investigationStage==='COLLECTING';cycle++) {
+      const toy=restoredRoom.toys.find(t=>!t.isOrganized&&!t.isCarried);
+      if(!toy){for(let i=0;i<180;i++)restoredRoom.update(1);continue;}
       walk(restoredRoom,toy.x,toy.y,60);restoredRoom.lastActionTime=-10000;restoredRoom.triggerAction();
       check(restoredRoom.player.carriedItem,'Coleta manual necessária');
       const chest=restoredRoom.furniture.find(f=>f.id==='toy-chest');
       walk(restoredRoom,chest.x+chest.w/2,chest.y+chest.h/2,130);restoredRoom.lastActionTime=-10000;restoredRoom.triggerAction();
-      check(toy.isOrganized,`Brinquedo ${toy.id} deve ser guardado`);
+      check(toy.isOrganized,`Brinquedo ${toy.id} deve ser guardado`);stored++;
+      for(let i=0;i<180;i++)restoredRoom.update(1);
     }
-    check(restoredRoom.victoryBannerActive&&restoredRoom.organizedCount===8,'Progressão completa na Toy Room');
-    events.push({difficulty,etapa:'Toy Room concluída; save/restore reais',brinquedos:8});
+    check(restoredRoom.story.state.investigationStage==='INVESTIGATION','Recorrência inicia investigação');
+    for(let i=0;i<2000;i++)restoredRoom.update(1);
+    check(restoredRoom.story.state.investigationStage==='SEEKING_SWORD','Investigação libera movimento');
+    const sword=restoredRoom.story.state.sword;
+    walk(restoredRoom,sword.x,sword.y,20);
+    for(let i=0;i<320;i++)restoredRoom.update(1);
+    check(restoredRoom.story.swordEquipped,'Espada alcançada e equipada');
+    check(restoredRoom.story.attack(),'Ataque disponível');
+    for(let i=0;i<20;i++)restoredRoom.update(1);
+    check(restoredRoom.story.state.attackElapsed===0,'Ataque termina sem travamento');
+    events.push({difficulty,etapa:'Toy Room: recorrência, investigação, espada e ataque',coletas:stored});
     game.saveProgress();
     await reloadCampaign();
     game.start(difficulty==='EASY'?'NORMAL':'EASY');game.setPaused(true);
     check(game.state.gameDifficulty===difficulty,'Recarga da página conserva dificuldade');
     check(r.roomManual().gameDifficulty===difficulty,'Recarga recria Toy Room na dificuldade salva');
-    check(r.roomManual().organizedCount===8,'Recarga conserva os brinquedos guardados');
+    check(r.roomManual().story.swordEquipped,'Recarga conserva a espada equipada');
     events.push({difficulty,etapa:'recarga real da página e campanha restaurada'});
   }
-  output.textContent='APROVADO: NORMAL e FÁCIL — abertura, tutorial, 38 apoios por modo, castelo, porta falsa, verdadeiro portal, Toy Room, save, restore e recarga real da página. 8 brinquedos guardados por modo.\n'+JSON.stringify(events,null,2);
+  output.textContent='APROVADO: NORMAL e FÁCIL — abertura, tutorial, 38 apoios por modo, castelo, porta falsa, verdadeiro portal, Toy Room, save, restore e recarga real da página. Recorrência, investigação, espada e ataque por modo.\n'+JSON.stringify(events,null,2);
   document.body.dataset.result='passed';
   await report(output.textContent.split('\n')[0]);
 } catch(error) {

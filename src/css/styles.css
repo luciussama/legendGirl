@@ -83,6 +83,7 @@ canvas {
   backdrop-filter: blur(5px);
   z-index: 30;
   overflow: hidden;
+  padding: 64px 16px 16px;
 }
 
 #start-overlay::before,
@@ -119,6 +120,9 @@ canvas {
 
 .start-card {
   position: relative;
+  color: #f9f5ff;
+  max-height: 100%;
+  overflow-y: auto;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -137,6 +141,9 @@ canvas {
   transform: translateY(0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Em paisagem baixa, todos os controles continuam alcançáveis por rolagem. */
+.start-card > * { flex-shrink: 0; }
 
 .start-badge {
   font-size: clamp(12px, 2vw, 16px);
@@ -220,7 +227,7 @@ canvas {
 
 @media (max-height: 420px) {
   .start-card {
-    margin-top: 48px;
+    margin-top: 0;
     gap: 8px;
     padding: 18px 24px;
   }
@@ -506,7 +513,7 @@ canvas {
 #restart-campaign-dialog::backdrop { background: rgba(5, 4, 9, 0.85); }
 #restart-campaign-dialog h2 { font-size: 24px; margin-bottom: 16px; }
 #restart-campaign-dialog p { line-height: 1.6; color: #ddd2e6; }
-.restart-campaign-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.restart-campaign-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 24px; }
 #btn-confirm-new-campaign { border-color: #e0a1a1; color: #ffd0d0; }
 .campaign-save-status { max-width: 320px; color: #f6c96a; font-size: 13px; line-height: 1.4; }
 @media (max-height: 420px) {

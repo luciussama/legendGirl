@@ -12,6 +12,8 @@ import assert from 'node:assert/strict';
 import { platforms, createBabyState, getEscapeStats, getPhase3Stats, FLOOR_Y } from '../src/js/config.js';
 import { BabyRenderer } from '../src/js/entities/BabyRenderer.js';
 import { GameState } from '../src/js/state/GameState.js';
+import { OFFICIAL_FRAMES } from '../src/js/assets/officialCharacter.js';
+import { renderToyCarry } from '../src/js/toy-room/ToyCarryPresentation.js';
 
 console.log('=== INICIANDO TESTE INTEGRAL DE JOGABILIDADE DA DREAM GIRL ===');
 
@@ -112,9 +114,74 @@ const climbBaby = { ...createBabyState(), isClimbing: true };
 assert.equal(renderer.resolveAnimationState(climbBaby, {}).state, 'climb');
 report.interactions.climb = true;
 
-const collectBaby = { ...createBabyState(), isCollecting: true };
+const collectBaby = { ...createBabyState(), isCollecting: true, vx: 0, vy: 0, onGround: true };
 assert.equal(renderer.resolveAnimationState(collectBaby, {}).state, 'collect');
 report.interactions.collectible = true;
+const collectingWhileWalking = {
+  ...createBabyState(),
+  isCollecting: true,
+  vx: 1.65,
+  vy: 0,
+  onGround: true,
+  animTime: 1.5
+};
+const collectingRun = renderer.resolveAnimationState(collectingWhileWalking, {});
+assert.equal(collectingRun.state, 'run');
+assert.equal(collectingRun.frame, Math.floor(collectingWhileWalking.animTime * 1.3) % 9);
+const collectingWhileFalling = {
+  ...createBabyState(),
+  isCollecting: true,
+  vx: 0,
+  vy: 5.4,
+  onGround: false
+};
+assert.equal(renderer.resolveAnimationState(collectingWhileFalling, {}).state, 'fall');
+const carryAtlas = {};
+const carryPose = {};
+const carryDraws = [];
+const carryContext = {
+  save() {},
+  restore() {},
+  translate() {},
+  scale() {},
+  drawImage(image, ...coordinates) {
+    carryDraws.push({ image, coordinates });
+  }
+};
+const carryAssets = {
+  get: key => key === 'official-character'
+    ? carryAtlas
+    : key === 'toy-room-carry-pose-v1' ? carryPose : null
+};
+const organizedToy = { type: 'teddy', isCarried: true, isOrganized: true };
+renderToyCarry(carryContext, {
+  isMoving: true,
+  animTime: 1.5,
+  x: 0,
+  y: 0,
+  facing: 'right',
+  carriedItem: organizedToy
+}, { assets: carryAssets });
+assert.equal(carryDraws[0].image, carryAtlas);
+assert.deepEqual(carryDraws[0].coordinates.slice(0, 4),
+  [OFFICIAL_FRAMES.run[1].x, OFFICIAL_FRAMES.run[1].y,
+    OFFICIAL_FRAMES.run[1].w, OFFICIAL_FRAMES.run[1].h]);
+assert(!carryDraws.some(draw => draw.image === carryPose),
+  'A pose de transporte não deve substituir a identidade oficial.');
+carryDraws.length = 0;
+renderToyCarry(carryContext, {
+  isMoving: false,
+  animTime: 1.5,
+  x: 0,
+  y: 0,
+  facing: 'right',
+  carriedItem: organizedToy
+}, { assets: carryAssets });
+assert.deepEqual(carryDraws[0].coordinates.slice(0, 4),
+  [OFFICIAL_FRAMES.idle[1].x, OFFICIAL_FRAMES.idle[1].y,
+    OFFICIAL_FRAMES.idle[1].w, OFFICIAL_FRAMES.idle[1].h]);
+assert(!carryDraws.some(draw => draw.image === carryPose),
+  'A pose parada com carga deve usar a arte corporal oficial.');
 
 const teleportBaby = { ...createBabyState(), isTeleporting: true };
 assert.equal(renderer.resolveAnimationState(teleportBaby, {}).state, 'teleport');
