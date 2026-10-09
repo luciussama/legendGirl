@@ -994,12 +994,15 @@ export class ToyRoomPhase {
           environmentTrain: this.environmentTrain
         });
       } else if (node.type === 'player') {
-        toyRoomEntities.renderPlayer(ctx, this.player, {
-          assets: this.assets,
-          environmentTeddy: this.environmentTeddy,
-          environmentTrain: this.environmentTrain
-        });
-        this.story.renderHeldObject(ctx);
+        const showingAttack = this.story.renderAttackSprite(ctx);
+        if (!showingAttack) {
+          toyRoomEntities.renderPlayer(ctx, this.player, {
+            assets: this.assets,
+            environmentTeddy: this.environmentTeddy,
+            environmentTrain: this.environmentTrain
+          });
+          this.story.renderHeldObject(ctx);
+        }
       } else if (node.type === 'story-sword') {
         this.story.renderWorldObject(ctx);
       }

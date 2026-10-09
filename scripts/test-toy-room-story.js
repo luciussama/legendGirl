@@ -119,4 +119,43 @@ assert.equal(postSword.update(1), false, 'O ciclo de brinquedos continua após a
 assert.equal(postSwordRoom.toys[0].isOrganized, false);
 assert.equal(postSword.state.returnedToyCount, 0, 'A narrativa não reinicia após obter a espada.');
 
-console.log('Aprovado: recorrência fora da tela, diálogos, cena, coleta, golpe e persistência da espada.');
+const spriteRoom = makeRoom();
+const requestedFrames = [];
+spriteRoom.assets = {
+  getRegion: (name, region) => {
+    requestedFrames.push({ name, ...region });
+    return { frame: region.x / region.width };
+  }
+};
+const spriteStory = new ToyRoomStory(spriteRoom);
+assert.equal(requestedFrames.length, 8, 'A história carrega os oito quadros do ataque.');
+assert(requestedFrames.every((frame, index) =>
+  frame.name === 'toy-room-sword-attack-sheet' &&
+  frame.x === index * 144 && frame.y === 288 &&
+  frame.width === 144 && frame.height === 192));
+spriteStory.state.investigationStage = 'EQUIPPED';
+spriteStory.state.swordEquipped = true;
+spriteRoom.player.facing = 'left';
+assert.equal(spriteStory.attack(), true);
+const drawnFrames = [];
+const scales = [];
+const drawContext = {
+  save() {},
+  restore() {},
+  translate() {},
+  scale: (...values) => scales.push(values),
+  drawImage: (image, ...args) => drawnFrames.push({ image, args })
+};
+spriteStory.renderHeldObject(drawContext);
+assert.equal(drawnFrames[0].image.frame, 0, 'O golpe começa pelo primeiro quadro.');
+assert(scales.some(([x, y]) => x === -1 && y === 1), 'O ataque à esquerda espelha a sequência.');
+drawnFrames.length = 0;
+assert.equal(spriteStory.renderAttackSprite(drawContext), true,
+  'O quadro de ataque substitui o sprite normal da personagem.');
+assert.equal(drawnFrames[0].image.frame, 0);
+spriteStory.state.attackElapsed = 1;
+drawnFrames.length = 0;
+assert.equal(spriteStory.renderAttackSprite(drawContext), true);
+assert.equal(drawnFrames[0].image.frame, 7, 'O último quadro encerra o golpe.');
+
+console.log('Aprovado: recorrência fora da tela, narrativa, espada, oito quadros de golpe e espelhamento à esquerda.');

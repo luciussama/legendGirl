@@ -26,6 +26,8 @@ const RETURN_DIALOGUE_BEATS = Object.freeze([
 ]);
 const SWORD_PICKUP_DURATION = 300;
 const SWORD_ATTACK_DURATION = 12;
+const SWORD_ATTACK_FRAME_SIZE = { width: 144, height: 192, y: 288 };
+const SWORD_ATTACK_FRAME_COUNT = 8;
 
 export const createToyRoomStoryState = () => ({
   recurrenceActive: false,
@@ -38,7 +40,7 @@ export const createToyRoomStoryState = () => ({
   swordPickupElapsed: 0,
   swordEquipped: false,
   attackElapsed: 0,
-  attackDirection: 0
+  attackDirection: 1
 });
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
@@ -155,6 +157,13 @@ export class ToyRoomStory {
   constructor(room) {
     this.room = room;
     this.state = createToyRoomStoryState();
+    this.attackFrames = Array.from({ length: SWORD_ATTACK_FRAME_COUNT }, (_, index) =>
+      room.assets?.getRegion('toy-room-sword-attack-sheet', {
+        x: index * SWORD_ATTACK_FRAME_SIZE.width,
+        y: SWORD_ATTACK_FRAME_SIZE.y,
+        width: SWORD_ATTACK_FRAME_SIZE.width,
+        height: SWORD_ATTACK_FRAME_SIZE.height
+      }) || null);
     this.reachablePoints = [];
     this.lastViewport = null;
     this.refreshReachablePoints();
@@ -385,7 +394,7 @@ export class ToyRoomStory {
     const state = this.state;
     if (!state.swordEquipped || state.attackElapsed > 0) return false;
     state.attackElapsed = SWORD_ATTACK_DURATION;
-    state.attackDirection = this.room.player.facingAngle;
+    state.attackDirection = this.room.player.facing === 'left' ? -1 : 1;
     this.room.audio?.playPickUpSound?.();
     return true;
   }
@@ -410,15 +419,37 @@ export class ToyRoomStory {
     if (state.sword?.visible) drawToySword(ctx, state.sword.x, state.sword.y, 0.6, 0.8);
   }
 
+  renderAttackSprite(ctx) {
+    if (!this.state.swordEquipped || this.state.attackElapsed <= 0) return false;
+    const room = this.room;
+    const progress = 1 - this.state.attackElapsed / SWORD_ATTACK_DURATION;
+    const frameIndex = Math.min(SWORD_ATTACK_FRAME_COUNT - 1,
+      Math.floor(progress * SWORD_ATTACK_FRAME_COUNT));
+    const frame = this.attackFrames[frameIndex];
+    if (!frame) return false;
+
+    const width = 72;
+    const height = 96;
+    ctx.save();
+    ctx.translate(room.player.x, 0);
+    if (this.state.attackDirection < 0) ctx.scale(-1, 1);
+    ctx.drawImage(frame, -width / 2, room.player.y + 28 - height, width, height);
+    ctx.restore();
+    return true;
+  }
+
   renderHeldObject(ctx) {
     if (!this.state.swordEquipped && this.state.investigationStage !== 'PICKUP') return;
+    if (this.renderAttackSprite(ctx)) return;
     const room = this.room;
+
     const elapsed = this.state.attackElapsed > 0
       ? SWORD_ATTACK_DURATION - this.state.attackElapsed
       : 0;
     const direction = this.state.swordEquipped
       ? (this.state.attackElapsed > 0
-        ? this.state.attackDirection + (elapsed / SWORD_ATTACK_DURATION - 0.5) * 1.7
+        ? (this.state.attackDirection < 0 ? Math.PI : 0) +
+          (elapsed / SWORD_ATTACK_DURATION - 0.5) * 1.7 * this.state.attackDirection
         : room.player.facingAngle)
       : -Math.PI / 2;
     const handX = room.player.x + Math.cos(direction) * 24;
