@@ -20,7 +20,8 @@ export function renderToyCarry(ctx, player, options = {}) {
   const toy = player.carriedItem;
   if (!image || !toy) {
     // Durante uma falha de recurso, preserva a visibilidade da carga anterior.
-    babyRenderer.renderPose(ctx, options.assets, toy ? 'collect' : player.isMoving ? 'run' : 'idle',
+    babyRenderer.renderPose(ctx, options.assets,
+      player.isMoving ? 'run' : toy ? 'collect' : 'idle',
       Math.floor((player.animTime || 0) * 0.9), player.x, player.y + 28, 80,
       player.facing === 'left' ? -1 : 1);
     if (toy) toyRenderer.renderToy(ctx, toy, player.x, player.y, true, 0, options);
