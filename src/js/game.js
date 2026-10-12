@@ -349,7 +349,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     currentPhaseMode = 'toy-room';
     toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
       restartToTitle();
-    }, { assets, gameDifficulty: state.gameDifficulty });
+    }, { assets, gameDifficulty: state.gameDifficulty, isInputEnabled: () => !isPaused });
 
     if (fromIntroduction) {
       toyRoomInstance.instance.introAlpha = 0;
@@ -380,6 +380,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   window.addEventListener('resize', handleResize);
+  window.addEventListener('orientationchange', handleResize);
+  window.visualViewport?.addEventListener('resize', handleResize);
   if (window.ResizeObserver && canvas.parentElement) {
     const ro = new ResizeObserver(() => handleResize());
     ro.observe(canvas.parentElement);
@@ -1239,6 +1241,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isPaused = !isPaused;
     state.isPaused = isPaused;
     if (isPaused) {
+      toyRoomInstance?.instance.clearInput();
       if (audio && typeof audio.pauseMusic === 'function') {
         audio.pauseMusic();
       }

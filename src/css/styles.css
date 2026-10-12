@@ -49,9 +49,9 @@ html {
 @media (max-aspect-ratio: 1.24) {
   #game-container {
     width: 100vw;
-    height: 100vh;
+    height: 100dvh;
     max-width: 100vw;
-    max-height: 100vh;
+    max-height: 100dvh;
     border-radius: 0;
     box-shadow: none;
   }
@@ -83,6 +83,7 @@ canvas {
   backdrop-filter: blur(5px);
   z-index: 30;
   overflow: hidden;
+  padding: calc(var(--ui-safe-top, 0px) + 64px) calc(var(--ui-safe-right, 0px) + 16px) calc(var(--ui-safe-bottom, 0px) + 16px) calc(var(--ui-safe-left, 0px) + 16px);
 }
 
 #start-overlay::before,
@@ -119,6 +120,9 @@ canvas {
 
 .start-card {
   position: relative;
+  color: #f9f5ff;
+  max-height: 100%;
+  overflow-y: auto;
   z-index: 1;
   display: flex;
   flex-direction: column;
@@ -137,6 +141,9 @@ canvas {
   transform: translateY(0);
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
+
+/* Em paisagem baixa, todos os controles continuam alcançáveis por rolagem. */
+.start-card > * { flex-shrink: 0; }
 
 .start-badge {
   font-size: clamp(12px, 2vw, 16px);
@@ -220,7 +227,7 @@ canvas {
 
 @media (max-height: 420px) {
   .start-card {
-    margin-top: 48px;
+    margin-top: 0;
     gap: 8px;
     padding: 18px 24px;
   }
@@ -244,6 +251,7 @@ canvas {
 
 /* --- TELA E CARTÃO DE FIM DE JOGO --- */
 #gameover-overlay {
+  padding: calc(var(--ui-safe-top, 0px) + 64px) calc(var(--ui-safe-right, 0px) + 16px) calc(var(--ui-safe-bottom, 0px) + 16px) calc(var(--ui-safe-left, 0px) + 16px);
   position: absolute;
   inset: 0;
   display: flex;
@@ -270,6 +278,8 @@ canvas {
 }
 
 .gameover-card {
+  max-height: 100%;
+  overflow-y: auto;
   position: relative;
   z-index: 1;
   display: flex;
@@ -300,6 +310,8 @@ canvas {
     transform: translateY(0) scale(1);
   }
 }
+
+.gameover-card > * { flex-shrink: 0; }
 
 .gameover-badge {
   font-size: 11px;
@@ -397,8 +409,8 @@ canvas {
 /* Barra Superior de Controles (Pausa e Som) */
 .top-controls-bar {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: calc(var(--ui-safe-top, 0px) + 14px);
+  right: calc(var(--ui-safe-right, 0px) + 14px);
   z-index: 45;
   display: flex;
   align-items: center;
@@ -495,7 +507,7 @@ canvas {
 #restart-campaign-dialog {
   margin: auto;
   width: min(440px, calc(100vw - 32px));
-  max-height: calc(100dvh - 32px);
+  max-height: calc(100dvh - 32px - var(--ui-safe-top, 0px) - var(--ui-safe-bottom, 0px));
   padding: 28px;
   color: #f9f5ff;
   background: #21172e;
@@ -506,7 +518,7 @@ canvas {
 #restart-campaign-dialog::backdrop { background: rgba(5, 4, 9, 0.85); }
 #restart-campaign-dialog h2 { font-size: 24px; margin-bottom: 16px; }
 #restart-campaign-dialog p { line-height: 1.6; color: #ddd2e6; }
-.restart-campaign-actions { display: flex; justify-content: flex-end; gap: 12px; margin-top: 24px; }
+.restart-campaign-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 24px; }
 #btn-confirm-new-campaign { border-color: #e0a1a1; color: #ffd0d0; }
 .campaign-save-status { max-width: 320px; color: #f6c96a; font-size: 13px; line-height: 1.4; }
 @media (max-height: 420px) {

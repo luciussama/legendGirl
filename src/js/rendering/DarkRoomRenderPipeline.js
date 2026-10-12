@@ -1,3 +1,4 @@
+import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { FLOOR_Y, platforms, phase3Platforms, trueExitDoor } from '../config.js';
 import { getMobileZoomFrame } from '../controllers/MobileZoom.js';
 import { renderFirstJumpTutorial } from '../ui/FirstJumpTutorial.js';
@@ -67,6 +68,13 @@ export function renderDarkRoom(context) {
     const mobileFrame = cameraPresentation.mobileFrame({ target: mobileTarget, enabled: mobilePresentation.enabled,
       stable: isPhase3 || plotTwistActive, anticipate: isPhase3, tick, width: canvas.width, height: canvas.height });
     ctx.save();
+    if (mobilePresentation.enabled) {
+      // Encaixa a apresentação na região visível sem alterar câmera ou física da simulação.
+      const layout = getMobileUILayout(canvas);
+      const fit = Math.min(layout.usableWidth / canvas.width, layout.usableHeight / canvas.height);
+      ctx.translate(layout.centerX - canvas.width * fit / 2, layout.centerY - canvas.height * fit / 2);
+      ctx.scale(fit, fit);
+    }
     ctx.translate(mobileFrame.x, mobileFrame.y);
     ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
     ctx.translate(0, -framingOffset);

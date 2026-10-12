@@ -22,7 +22,11 @@ for(const method of methods) assert.equal(Before.prototype[method].toString(),To
 assert.deepEqual(before.furniture,after.furniture,'Geometria e posição dos móveis preservadas');
 assert.deepEqual(before.toys,after.toys,'Brinquedos preservados');
 const {toyRoomStory,...afterSnapshot}=after.snapshot();
-assert.deepEqual(before.snapshot(),afterSnapshot,'Campos do save anterior preservados');
+// Compara os campos históricos após separar direção lógica e orientação visual.
+const beforeSnapshot=before.snapshot();
+beforeSnapshot.player.direction=beforeSnapshot.player.facing;
+beforeSnapshot.player.facing='right';
+assert.deepEqual(beforeSnapshot,afterSnapshot,'Campos do save anterior preservados após migração de orientação');
 assert.equal(toyRoomStory.investigationStage,'COLLECTING','A narrativa começa no estado de coleta');
 assert.equal(toyRoomStory.swordEquipped,false,'A espada não começa equipada');
 const atlas=await fs.readFile('assets/art/toy-room/environment-sheet.png');
@@ -37,6 +41,6 @@ const phaseSource=await fs.readFile('src/js/toy-room/ToyRoomPhase.js','utf8');
 const orientation=await fs.readFile('src/js/toy-room/ToyRoomOrientation.js','utf8');
 assert(!phaseSource.includes('renderChestLabel')&&!orientation.includes('renderChestLabel'),'Marcador removido');
 await fs.writeFile(`${directory}/escopo.json`,JSON.stringify({metodosIdenticos:methods,moveisIdenticos:true,
-  brinquedosIdenticos:true,snapshotInicialIdentico:true,atlasPreservado:true,marcadorRemovido:true,
+  brinquedosIdenticos:true,snapshotHistoricoPreservado:true,orientacaoMigrada:true,atlasPreservado:true,marcadorRemovido:true,
   fallbackIntegrado:true,spriteTransparente:true},null,2)+'\n');
 console.log('APROVADO: mecânicas, save, tutorial, posições e atlas preservados; marcador removido e fallback integrado.');

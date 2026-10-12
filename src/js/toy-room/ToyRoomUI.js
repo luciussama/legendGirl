@@ -1,3 +1,4 @@
+import { getMobileUILayout } from '../ui/MobileUILayout.js';
 /**
  * ToyRoomUI.js
  * Interface de usuário da Sala de Brinquedos:
@@ -32,19 +33,20 @@ export class ToyRoomUI {
       victoryBannerTimer = 0
     } = state;
 
-    // O card ocupa a esquerda, reservando a faixa direita para os controles HTML.
+    // Em telas estreitas, o card fica abaixo dos controles HTML; nas demais, ocupa a esquerda.
     // Converte medidas da interface para o Canvas ortográfico sem mudar a escala do mundo.
-    const uiScale = canvas.clientWidth > 0 ? canvas.width / canvas.clientWidth : 1;
+    const layout = getMobileUILayout(canvas);
+    const uiScale = layout.scale;
+    const narrow = layout.usableWidth / uiScale < 600;
     const progressText = `🧸 Brinquedos Arrumados: ${organizedCount}/${totalToys}`;
     ctx.font = `bold ${13 * uiScale}px Georgia, serif`;
     const fullTextWidth = ctx.measureText(progressText).width;
-    const cardW = Math.min(Math.ceil(fullTextWidth) + 32 * uiScale, canvas.width - 190 * uiScale);
+    const cardW = Math.min(Math.ceil(fullTextWidth) + 32 * uiScale, layout.usableWidth - (narrow ? 32 : 190) * uiScale);
     const compactCard = cardW < fullTextWidth + 32 * uiScale;
     const cardH = (compactCard ? 62 : 46) * uiScale;
-    const cardX = 16 * uiScale;
-    const topY = 16 * uiScale;
-    const cardY = introBannerTimer > 0 && topY + cardH >= 79
-      ? 138 + 12 * uiScale : topY;
+    const cardX = layout.safeLeft + 16 * uiScale;
+    const topY = layout.safeTop + (narrow ? 72 : 16) * uiScale;
+    const cardY = topY;
 
     ctx.fillStyle = 'rgba(26, 16, 38, 0.82)';
     ctx.beginPath();
@@ -81,10 +83,12 @@ export class ToyRoomUI {
     // 1. Joystick Virtual Dinâmico e Flutuante (Lado Esquerdo da Tela)
     // Instanciado e exibido exclusivamente enquanto o dedo estiver na tela (touchState.active)
     if (touchState && touchState.active) {
-      const joyBaseX = touchState.startX;
-      const joyBaseY = touchState.startY;
+      const joyBaseX = 0;
+      const joyBaseY = 0;
 
       ctx.save();
+      ctx.translate(touchState.startX, touchState.startY);
+      ctx.scale(layout.action.scale, layout.action.scale);
       // Aura e Círculo Base Dinâmico
       const baseGrad = ctx.createRadialGradient(joyBaseX, joyBaseY, 10, joyBaseX, joyBaseY, 58);
       baseGrad.addColorStop(0, 'rgba(30, 27, 75, 0.65)');
@@ -112,8 +116,8 @@ export class ToyRoomUI {
       }
 
       // Alavanca do Joystick (Limitada pelo raio máximo)
-      const dx = (touchState.currentX || joyBaseX) - joyBaseX;
-      const dy = (touchState.currentY || joyBaseY) - joyBaseY;
+      const dx = (touchState.currentX - touchState.startX) / layout.action.scale;
+      const dy = (touchState.currentY - touchState.startY) / layout.action.scale;
       const dist = Math.hypot(dx, dy);
       const maxRadius = 46;
       const clampedD = Math.min(dist, maxRadius);
@@ -143,8 +147,8 @@ export class ToyRoomUI {
 
     // 2. Botão de Ação Tátil (Canto Inferior Direito) com Hitbox Ampla e Clara
     const btnRadius = state.actionBtnPressed ? 42 : 48;
-    const btnX = canvas.width - 85;
-    const btnY = canvas.height - 85;
+    const btnX = 0;
+    const btnY = 0;
 
     const isCarrying = Boolean(player && player.carriedItem);
     const isNearChest = Boolean(state.isNearChest);
@@ -152,7 +156,10 @@ export class ToyRoomUI {
 
     ctx.save();
 
-    // Delimitação sutil e elegante da Zona de Toque Ampla (Hitbox Generosa)
+    ctx.translate(layout.action.x, layout.action.y);
+    ctx.scale(layout.action.scale, layout.action.scale);
+
+    // Delimitação sutil e elegante da Zona de Toque Ampla (Área de Toque)
     ctx.strokeStyle = canInteract || isCarrying ? 'rgba(250, 204, 21, 0.35)' : 'rgba(255, 255, 255, 0.15)';
     ctx.lineWidth = 1.5;
     ctx.setLineDash([4, 4]);
@@ -237,19 +244,9 @@ export class ToyRoomUI {
     }
 
     if (introBannerTimer > 0) {
-      ctx.fillStyle = 'rgba(24, 16, 35, 0.88)';
-      ctx.fillRect(canvas.width / 2 - 260, 80, 520, 58);
-      ctx.strokeStyle = '#facc15';
-      ctx.lineWidth = 1.5;
-      ctx.strokeRect(canvas.width / 2 - 260, 80, 520, 58);
-
-      ctx.fillStyle = '#fde047';
-      ctx.font = 'bold 18px Georgia, serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('✨ BEM-VINDA À SALA DE BRINQUEDOS! ✨', canvas.width / 2, 106);
-      ctx.fillStyle = '#f9fafb';
-      ctx.font = '13px Georgia, serif';
-      ctx.fillText('Explore livremente o chão colorido e guarde os brinquedos no baú!', canvas.width / 2, 126);
+      renderPoeticNarration(ctx, canvas,
+        'Explore livremente o chão colorido e guarde os brinquedos no baú!',
+        { center: true, heading: 'BEM-VINDA À SALA DE BRINQUEDOS!' });
     }
 
     // Faixa Comemorativa de Vitória
