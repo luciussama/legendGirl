@@ -485,3 +485,5 @@ Para localizar uma implementação exata, use a [referência de métodos](REFERE
 A [validação de combate do Prompt 14](battle-mode/combat-validation.md) resultou em **FAIL**. Consulte as reprovações e os critérios de nova homologação antes de integrar os recursos.
 
 O catálogo, as referências visuais, o formato das âncoras e as limitações da produção estão em [Produção dos sprites de batalha](battle-mode/battle-sprite-production.md). A [prévia animada](../tests/battle-sprite-review.html) deve ser aberta pelo servidor local. Execute `npm run verify:battle-sprites` para validar os arquivos. O pacote ainda precisa de homologação artística antes da integração.
+
+A [correção e revalidação do Prompt 14A](battle-mode/combat-correction-report.md) preserva o resultado **FAIL**, registra as tentativas e fornece uma prévia de transições. O pacote corrigido não está autorizado artisticamente para integração.
