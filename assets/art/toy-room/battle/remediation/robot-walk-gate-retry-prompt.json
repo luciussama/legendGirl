@@ -1,0 +1,6 @@
+{
+  "tool": "image_gen",
+  "status": "FAIL",
+  "manifestReplaced": false,
+  "prompt": "Edit the provided robot walk sprite sheet. Preserve robot identity, painterly textured turquoise metal, yellow face, red feet and gloves, golden windup key, original proportions and perspective. Return 4 complete body poses in 2x2 grid transparent background. The ONLY priority is a genuinely ALTERNATING walk. Frame1 NEAR leg (emerging from viewer-left hip) extends FORWARD toward image RIGHT with foot touching ground; FAR leg backwards LEFT. Frame2 NEAR leg under torso supporting, FAR leg lifted swinging forward. Frame3 FAR leg extends FORWARD toward image RIGHT touching ground, NEAR leg extends BACK toward image LEFT with heel raised. FRAME3 MUST HAVE THE OPPOSITE LEG FORWARD FROM FRAME1: near knee and near red shoe must be on LEFT of torso, not right. Frame4 FAR leg under torso supporting, NEAR knee lifted swinging forward. Alternate arms in opposition. Frame1 and3 are visibly opposite support poses, frame2and4 opposite passing poses. Keep head same design, no punch, no effects, no extra poses, no ground shadow. Do not simply vary arms while repeating legs. Fully draw all four frames and leave generous margins."
+}

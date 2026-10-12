@@ -1,0 +1,33 @@
+{
+  "prompt": "15",
+  "version": "2.0",
+  "result": "FAIL",
+  "integrationPerformed": false,
+  "gate": {
+    "prompt14": "FAIL",
+    "train": "REVIEW",
+    "robot": "FAIL",
+    "dinosaur": "REVIEW",
+    "bear": "PENDING",
+    "allAnimations": "FAIL",
+    "allAttacks": "FAIL",
+    "allLocomotion": "FAIL",
+    "artConsistency": "FAIL",
+    "transitionReview": "REVIEW",
+    "anchorReview": "REVIEW",
+    "gameplayScaleReview": "REVIEW"
+  },
+  "gameplayChecks": {
+    "heartTransfer": "PENDING",
+    "playerDamage": "PENDING",
+    "enemyHealing": "PENDING",
+    "playerHealing": "PENDING",
+    "hpLimits": "PENDING",
+    "victory": "PENDING",
+    "defeat": "PENDING",
+    "completeSequence": "PENDING"
+  },
+  "artDirection": "Preservar a técnica das referências atuais, conforme autorização do usuário",
+  "remediation": "UNRESOLVED",
+  "productionBlocker": "Duas novas tentativas de Robot Walk não produziram apoio oposto; pose correta necessária antes de revalidação"
+}

@@ -2,6 +2,35 @@
 
 **Resultado do pacote: FAIL. Não homologado para integração.**
 
+## Segunda remediação — Prompt 14B
+
+O [gate do Prompt 15 v2](battle-integration-report.md) foi executado e permaneceu **FAIL**. A produção foi retomada, com duas novas tentativas reprovadas de apoio oposto do Robô e nova antecipação de Steam Blast, agora em REVISÃO. Os [resultados de produção](gate-production-attempts.md) e a [decisão de integração](integration-approval.json) registram que nenhuma integração foi autorizada.
+
+A [correção localizada da biela](train-rod-correction.md) substituiu posteriormente o ciclo do Trem no candidato: seis fases de pinos excêntricos agora deslocam a biela ao redor dos eixos. Train Walk passou de FAIL para REVISÃO, sem homologação do pacote.
+
+**Resultado: FAIL. Prompts 15 e 16 continuam bloqueados.** Foram produzidas sete novas pranchas em `assets/art/toy-room/battle/remediation/`, com manifesto separado e referências corporais explícitas. A verificação técnica passou para 144 PNGs e 26 sequências. Robot Walk, Train Walk, Rocket Punch e Steam Blast ainda impedem homologação; continuidade e escala final permanecem pendentes. O modelo de ataques físicos e de emissão segue a autorização do Prompt 14B.
+
+O [relatório da segunda remediação](combat-remediation-report.md) registra os resultados, as tentativas descartadas e os limites da revisão. A página `/tests/combat-remediation-review.html` apresenta animações, duas escalas e montagens de transição. Não houve integração ao gameplay nem aprovação automática baseada no teste técnico.
+
+## Revalidação após o Prompt 14A
+
+**Resultado atual: FAIL**, tanto para o manifesto original quanto para o candidato de correções. A avaliação abaixo desta seção conserva o registro da primeira execução. A autorização posterior do Prompt 14A substitui o critério de emissão: Steam Blast e Laser Beam precisam comunicar intenção de emitir/disparar sem efeitos; não precisam revelar qual substância ou feixe será emitido. Ataques físicos continuam exigindo identificação da ação sem efeitos.
+
+Foram executadas novamente as verificações dos dois manifestos: 144 PNGs originais e 146 PNGs do candidato, ambos com 26 sequências. As verificações técnicas passaram. Foram reinspecionadas as pranchas corrigidas de Robot Walk, Rocket Punch, Laser Beam, Train Walk e Dinosaur Rush; os demais resultados visuais permanecem os registrados no [relatório de correção](combat-correction-report.md), sem nova aprovação automática.
+
+| Pergunta obrigatória | Resultado atual |
+| --- | --- |
+| O ataque é legível? | Parcialmente. Rocket Punch e Rush comunicam suas ações, mas Front Charge e a antecipação de emissão ainda têm reprovações ou pendências. |
+| O movimento é legível? | Não em todo o pacote: Walk do Robô repete a mesma fase dominante; a biela do Trem não mantém sincronização coerente entre pinos. |
+| Existe teletransporte visual? | Há um defeito de âncora no candidato de Rocket Punch: o centro do recorte muda com a extensão do punho, deslocando a referência do corpo. A ausência de outros saltos não foi certificada. |
+| Existe pose congelada? | Não há cópias exatas nos manifestos testados. Há repetição perceptiva de fase no Walk do Robô; desenhos diferentes não bastam para aprovar o ciclo. |
+| O golpe parece um golpe? | Rocket Punch, Bite e ações corporais do Urso têm leitura presente. Front Charge ainda não tem lançamento inequívoco em escala pequena. |
+| O jogador entende a ação sem efeitos? | Não para o conjunto. Para emissão, a pergunta agora é sobre intenção de disparo; Steam Blast permanece reprovado e Laser Beam permanece em revisão. |
+
+**Reprovação imediata confirmada:** ciclo de locomoção insuficiente do Robô e inconsistência artística de Rocket Punch. A sincronização mecânica do Trem e o defeito de âncora também impedem homologação. Rush ganhou distinção de Bite por manter mandíbula fechada e enfatizar impulso corporal, mas sua continuidade permanece pendente.
+
+Não houve nova execução integral da revisão animada em todas as transições nesta revalidação. A revisão em escala pequena anterior usa uma hipótese de apresentação, pois os sprites não estão integrados à arena. Clipping ilustrado e continuidade de todas as transições continuam sem certificação; não devem ser anunciados como aprovados. A reprovação do pacote já é conclusiva pelos defeitos confirmados, sem transformar itens não medidos em PASS.
+
 ## Método e alcance
 
 Inspeção visual das pranchas de origem, comparação com `environment-sheet.png` e `retro-robot-v1.png`, revisão das amostras da prévia do Prompt 13 e nova execução de `npm run verify:battle-sprites`. Foram examinadas as 26 sequências declaradas no manifesto. Somente os quatro quadros internos de cada sequência do Dinossauro pertencem à entrega; os quadros externos descartados não contam como clipping do pacote.

@@ -1,0 +1,32 @@
+{
+  "prompt": "14B",
+  "result": "FAIL",
+  "integration": "BLOCKED",
+  "finalHomologation": "BLOCKED",
+  "technicalVerification": {
+    "result": "PASS",
+    "pngs": 144,
+    "sequences": 26,
+    "command": "node scripts/verify-battle-sprites.js --remediation",
+    "scope": "Verificação técnica; não constitui aprovação visual."
+  },
+  "sequences": {
+    "Robot Walk": "FAIL",
+    "Front Charge": "REVIEW",
+    "Rocket Punch": "FAIL",
+    "Steam Blast": "REVIEW",
+    "Laser Beam": "REVIEW",
+    "Train Walk": "REVIEW",
+    "Dinosaur Rush": "REVIEW"
+  },
+  "anchorReview": "REVIEW",
+  "transitionReview": "REVIEW",
+  "visualReview": {
+    "zoomedSheets": 7,
+    "animatedPreviewLoaded": true,
+    "smallScale": "Hipótese explícita; não é escala final medida",
+    "allTransitionsCertified": false
+  },
+  "rulesModified": false,
+  "manifest": "assets/art/toy-room/battle/remediation/manifest.json"
+}

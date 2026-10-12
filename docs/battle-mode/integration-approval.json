@@ -1,0 +1,13 @@
+{
+  "prompt": "15",
+  "version": "2.0",
+  "approved": false,
+  "result": "FAIL",
+  "integrationAllowed": false,
+  "reason": "Prompt 14 com reprovações e revisões abertas",
+  "requiredBeforeApproval": [
+    "Prompt 14 = PASS",
+    "Todos os itens de remediação resolvidos",
+    "Validação de gameplay e integração completa = PASS"
+  ]
+}

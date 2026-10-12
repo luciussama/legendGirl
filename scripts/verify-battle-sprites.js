@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createHash} from 'node:crypto';
 import {PNG} from 'pngjs';
 const root='assets/art/toy-room/battle';
-const manifest=JSON.parse(await fs.readFile(`${root}/${process.argv.includes('--corrections')?'corrections/manifest.json':'manifest.json'}`,'utf8'));
+const manifest=JSON.parse(await fs.readFile(`${root}/${process.argv.includes('--remediation')?'remediation/manifest.json':process.argv.includes('--corrections')?'corrections/manifest.json':'manifest.json'}`,'utf8'));
 const expected={train:['Idle','Walk','Steam Blast','Front Charge','Hit','Death'],robot:['Idle','Walk','Laser Beam','Rocket Punch','Hit','Death'],dinosaur:['Idle','Walk','Bite','Rush','Hit','Death'],bear:['Idle','Walk','Bear Hug','Belly Charge','Toy Leap','Hit','Enrage','Death']};
 let count=0;
 for(const [actor,names] of Object.entries(expected)){
