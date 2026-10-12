@@ -102,6 +102,14 @@ try {
     game.start(difficulty==='EASY'?'NORMAL':'EASY');
     check(r.roomManual().gameDifficulty===difficulty,'Restore real prevalece sobre escolha nova');
     const restoredRoom=r.roomManual();
+    // A pausa bloqueia as entradas da instância real, mesmo com o teclado ainda ativo.
+    game.setPaused(true);
+    const pausedSnapshot=JSON.stringify(restoredRoom.snapshot());
+    restoredRoom.lastActionTime=-Infinity;restoredRoom.handleKeyDown({code:'KeyE'});
+    restoredRoom.triggerAction();restoredRoom.update(1);
+    check(JSON.stringify(restoredRoom.snapshot())===pausedSnapshot,'Pausa não pode alterar a Toy Room');
+    game.setPaused(false);
+    events.push({difficulty,etapa:'pausa bloqueia ação e movimento na Toy Room'});
     let stored=0;
     // O quarto atual devolve brinquedos; o objetivo narrativo é encontrar a espada.
     for(let cycle=0;cycle<40 && restoredRoom.story.state.investigationStage==='COLLECTING';cycle++) {

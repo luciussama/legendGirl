@@ -1,3 +1,5 @@
+import { getMobileUILayout } from './MobileUILayout.js';
+import { isMobileDevice } from '../controllers/MobileZoom.js';
 /**
  * HudRenderer.js
  * Renderiza componentes de HUD de alta resolução no espaço de tela:
@@ -30,10 +32,13 @@ export class HudRenderer {
 
     ctx.save();
     // Emblema de urgência no canto superior direito com medidor progressivo de pulo
-    const badgeW = 270;
-    const badgeH = 42;
-    const badgeX = canvas.width - badgeW - 16;
-    const badgeY = 14;
+    const layout = getMobileUILayout(canvas);
+    const mobile = isMobileDevice();
+    const uiScale = mobile ? layout.scale : 1;
+    const badgeW = Math.min(270 * uiScale, layout.usableWidth - 32 * uiScale);
+    const badgeH = 42 * uiScale;
+    const badgeX = layout.safeRight - badgeW - 16 * uiScale;
+    const badgeY = layout.safeTop + (mobile ? 72 : 14) * uiScale;
 
     ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
     ctx.strokeStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#c084fc') : (escapeLevel >= 11 ? '#fde047' : '#f59e0b'));
@@ -44,19 +49,19 @@ export class HudRenderer {
     ctx.stroke();
 
     ctx.fillStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#f5d0fe') : (escapeLevel >= 11 ? '#fde047' : '#fef08a'));
-    ctx.font = 'bold 12px sans-serif';
+    ctx.font = `bold ${12 * uiScale}px sans-serif`;
     ctx.textAlign = 'left';
     if (isPhase3) {
-      ctx.fillText(`🌪️ SUBIDA CAÓTICA: NÍVEL ${phase3Level + 1}/15`, badgeX + 14, badgeY + 18);
+      ctx.fillText(`🌪️ SUBIDA CAÓTICA: NÍVEL ${phase3Level + 1}/15`, badgeX + 14 * uiScale, badgeY + 18 * uiScale, badgeW - 28 * uiScale);
     } else {
-      ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14, badgeY + 18);
+      ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14 * uiScale, badgeY + 18 * uiScale, badgeW - 28 * uiScale);
     }
 
     // Mini barra de progresso para a evolução do pulo
-    const pBarX = badgeX + 14;
-    const pBarY = badgeY + 25;
-    const pBarW = badgeW - 28;
-    const pBarH = 6;
+    const pBarX = badgeX + 14 * uiScale;
+    const pBarY = badgeY + 25 * uiScale;
+    const pBarW = badgeW - 28 * uiScale;
+    const pBarH = 6 * uiScale;
     ctx.fillStyle = 'rgba(255, 255, 255, 0.16)';
     ctx.fillRect(pBarX, pBarY, pBarW, pBarH);
 
@@ -81,12 +86,12 @@ export class HudRenderer {
       state.escapeBannerTimer--;
       const alpha = Math.min(1.0, state.escapeBannerTimer / 30);
       ctx.fillStyle = `rgba(0, 0, 0, ${0.65 * alpha})`;
-      ctx.fillRect(0, 64, canvas.width, 56);
+      ctx.fillRect(layout.safeLeft, badgeY + badgeH + 8 * uiScale, layout.usableWidth, 56 * uiScale);
 
       ctx.fillStyle = `rgba(254, 240, 138, ${alpha})`;
-      ctx.font = 'bold 19px Palatino, Georgia, serif';
+      ctx.font = `bold ${19 * uiScale}px Palatino, Georgia, serif`;
       ctx.textAlign = 'center';
-      ctx.fillText(escapeBannerText, canvas.width / 2, 99);
+      ctx.fillText(escapeBannerText, layout.centerX, badgeY + badgeH + 43 * uiScale, layout.usableWidth - 32 * uiScale);
     }
 
     // Linhas dinâmicas de vento na tela proporcionais à velocidade de rolagem

@@ -45,6 +45,42 @@ for(const [width,height,device,insets] of [[390,744,'Android',[0,0,0,0]],[375,56
  for(let time=0;time<2000;time+=30){room.story.state.investigationElapsed=time;calls.length=0;room.story.renderNarrative(ctx,c);if(calls.length)register('investigação '+time);}
  room.story.state.investigationStage='PICKUP';
  for(const time of [0,180]){room.story.state.swordPickupElapsed=time;calls.length=0;room.story.renderNarrative(ctx,c);register('espada '+time);}
+ // Confere HUD, desenho e eventos reais após simular barras e recortes.
+ w.dispatchEvent(new w.Event('orientationchange'));
+ await wait();await wait();
+ const {getMobileUILayout}=await w.eval("import('/src/js/ui/MobileUILayout.js')");
+ const {toyRoomUI}=await w.eval("import('/src/js/toy-room/ToyRoomUI.js')");
+ const {hudRenderer}=await w.eval("import('/src/js/ui/HudRenderer.js')");
+ const layout=getMobileUILayout(c);
+ const safeControl=(element)=>{const r=element.getBoundingClientRect();const cr=c.getBoundingClientRect();const sx=c.width/cr.width,sy=c.height/cr.height;return (r.left-cr.left)*sx>=layout.safeLeft-1&&(r.right-cr.left)*sx<=layout.safeRight+1&&(r.top-cr.top)*sy>=layout.safeTop-1&&(r.bottom-cr.top)*sy<=layout.safeBottom+1;};
+ for(const element of d.querySelectorAll('.top-controls-bar button'))if(element.getBoundingClientRect().width)
+   controls.push({id:element.id+' com barras/recorte',reachable:safeControl(element)});
+ calls.length=0;toyRoomUI.renderUI(ctx,c,{player:room.player,introBannerTimer:10,canInteract:true});register('HUD da sala');
+ calls.length=0;hudRenderer.renderEscapeBanner(ctx,c,{isEscapeMode:true,escapeBannerTimer:10,escapeBannerText:'Um novo salto para encontrar o caminho.'});register('HUD da fuga');
+ calls.length=0;hudRenderer.renderEscapeBanner(ctx,c,{isPhase3:true,phase3Level:14});register('HUD do retorno');
+ ctx.fillText=original;
+ const {runToyRoomQA}=await w.eval("import('/tests/toy-room-qa-runner.js')");
+ const playRoom=new ToyRoomPhase(c,null,null,null,{assets:w.game.assets,bindInputs:false,gameDifficulty:'EASY'});
+ const playthrough=runToyRoomQA(playRoom,{draw:true});
+ controls.push({id:'percurso completo da Toy Room: '+playthrough.collections+' coletas e '+playthrough.reloads+' restores',reachable:playthrough.result==='aprovado'});
+ room.story.state.investigationStage='COLLECTING';
+ const cr=c.getBoundingClientRect();let actions=0;room.triggerAction=()=>actions++;
+ room.onPointerDown({pointerType:'touch',pointerId:1,clientX:cr.left+layout.action.x*cr.width/c.width,clientY:cr.top+layout.action.y*cr.height/c.height});
+ controls.push({id:'botão de ação: desenho e toque',reachable:actions===1});
+ room.setupListeners();
+ for(const [rw,rh] of [[390,744],[844,340],[390,744],[844,340]]){
+   f.width=rw;f.height=rh;c.style.height=(rh+100)+'px';
+   w.dispatchEvent(new w.Event('resize'));w.dispatchEvent(new w.Event('orientationchange'));
+   await wait();await wait();
+   const rotated=getMobileUILayout(c),rr=c.getBoundingClientRect();
+   const touch=(x,y)=>({pointerType:'touch',pointerId:7,clientX:rr.left+x*rr.width/c.width,clientY:rr.top+y*rr.height/c.height});
+   room.onPointerDown(touch(rotated.safeLeft+1,rotated.safeBottom-1));
+   w.dispatchEvent(new w.Event('orientationchange'));
+   controls.push({id:'gesto encerrado ao girar '+rw,reachable:!room.touchState.active});
+   const before=actions;room.onPointerDown(touch(rotated.action.x,rotated.action.y));
+   controls.push({id:'toque alinhado após girar '+rw,reachable:actions===before+1});
+ }
+ room.destroy();
  ctx.fillText=original;
  results.push({width,height,device,menu,controls,scenarios,errors:w.qaErrors});
  out.textContent=JSON.stringify(results,null,2);

@@ -1,3 +1,4 @@
+import { attachMobileUILayout } from './ui/MobileUILayout.js';
 // Previne que rejeições assíncronas do navegador ou iframes acionem o coletor de erros da plataforma
 window.addEventListener('unhandledrejection', (event) => {
   if (event) {
@@ -15,6 +16,7 @@ import { createGame } from './game.js';
 import { DEBUG_COLLISIONS } from './config.js';
 
 const canvas = document.getElementById('gameCanvas');
+attachMobileUILayout(canvas);
 const uiFeedback = document.getElementById('ui-feedback') || {
   innerText: '',
   textContent: '',

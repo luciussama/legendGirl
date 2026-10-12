@@ -1,3 +1,4 @@
+import { getMobileUILayout, isActionControlHit } from '../ui/MobileUILayout.js';
 /**
  * ToyRoomPhase.js
  * Controlador principal da Fase da Sala de Brinquedos (estilo Top-Down 2D Legend of Mana).
@@ -25,6 +26,7 @@ export class ToyRoomPhase {
     this.uiFeedback = uiFeedback;
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
+    this.isInputEnabled = options.isInputEnabled || (() => true);
     this.environmentFloorTile = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
       x: 27, y: 151, width: 186, height: 48
     });
@@ -115,7 +117,8 @@ export class ToyRoomPhase {
       vy: 0,
       speed: 3.8,
       radius: 20,
-      facing: 'down',
+      direction: 'down',
+      facing: 'right',
       facingAngle: Math.PI / 2,
       animTime: 0,
       isMoving: false,
@@ -332,6 +335,7 @@ export class ToyRoomPhase {
     this.handlePointerDown = this.onPointerDown.bind(this);
     this.handlePointerMove = this.onPointerMove.bind(this);
     this.handlePointerUp = this.onPointerUp.bind(this);
+    this.handleBlur = this.clearInput.bind(this);
 
     if (options.bindInputs !== false) this.setupListeners();
     this.toyRoomTutorialCompleted = false;
@@ -348,8 +352,10 @@ export class ToyRoomPhase {
       window.addEventListener('pointermove', this.handlePointerMove, { passive: false });
       window.addEventListener('pointerup', this.handlePointerUp);
       window.addEventListener('pointercancel', this.handlePointerUp);
+      window.addEventListener('blur', this.handleBlur);
     }
     if (this.canvas) {
+      this.canvas.addEventListener('uilayoutchange', this.handlePointerUp);
       this.canvas.addEventListener('pointerdown', this.handlePointerDown, { passive: false });
     }
   }
@@ -374,26 +380,21 @@ export class ToyRoomPhase {
 
   /**
    * Verifica se o toque atingiu a zona dedicada do Botão de Ação no canto inferior direito
-   * (hitbox generosa: raio de 115px do botão ou quadrante inferior direito da tela).
+   * A área de toque coincide com o círculo externo calculado pelo layout compartilhado.
    */
   isActionButtonHit(coords) {
-    const btnX = this.canvas.width - 85;
-    const btnY = this.canvas.height - 85;
-    const distToBtn = Math.hypot(coords.x - btnX, coords.y - btnY);
-
-    if (distToBtn <= 115) return true;
-    if (coords.relX >= 0.62 && coords.relY >= 0.52) return true;
-    return false;
+    return isActionControlHit(getMobileUILayout(this.canvas), coords.x, coords.y);
   }
 
   handleKeyDown(e) {
+    if (!this.isInputEnabled()) return;
     this.tutorial.setDevice('DESKTOP_KEYBOARD_MOUSE');
     if (this.audio && this.audio.initAudio) this.audio.initAudio();
     this.keysDown[e.code] = true;
 
     if (TOY_ROOM_INPUT.actionCodes.includes(e.code)) {
       if (e.preventDefault) e.preventDefault();
-      this.triggerAction();
+      if (!e.repeat) this.triggerAction();
     }
   }
 
@@ -428,11 +429,15 @@ export class ToyRoomPhase {
   }
 
   onPointerDown(e) {
+    if (!this.isInputEnabled() || this.story?.inputLocked) return;
     this.tutorial.setDevice(e.pointerType === 'mouse' ? 'DESKTOP_KEYBOARD_MOUSE' : 'MOBILE_TOUCH');
     if (this.audio && this.audio.initAudio) this.audio.initAudio();
     this.isTouchDevice = true;
 
     const coords = this.getCanvasCoordinates(e);
+
+    const layout = getMobileUILayout(this.canvas);
+    if (!layout.contains(coords.x, coords.y)) return;
 
     // 1. Prioridade Total: Zona do Botão de Ação (Canto Inferior Direito)
     if (this.isActionButtonHit(coords)) {
@@ -447,8 +452,9 @@ export class ToyRoomPhase {
     }
 
     // 2. Joystick Virtual Flutuante Dinâmico (Metade Esquerda da Tela)
-    // Instanciado exatamente no ponto do primeiro toque (touchstart / pointerdown)
-    if (coords.relX < 0.55) {
+    // A origem visual fica dentro da área segura; o vetor continua relativo ao primeiro toque.
+    if (coords.x < layout.safeLeft + layout.usableWidth * 0.55) {
+      if (this.touchState.active) return;
       if (e.preventDefault && e.cancelable) e.preventDefault();
       if (this.canvas && typeof this.canvas.setPointerCapture === 'function' && e.pointerId !== undefined) {
         try {
@@ -458,29 +464,34 @@ export class ToyRoomPhase {
 
       this.touchState.active = true;
       this.touchState.pointerId = e.pointerId !== undefined ? e.pointerId : 'touch';
-      this.touchState.startX = coords.x;
-      this.touchState.startY = coords.y;
-      this.touchState.currentX = coords.x;
-      this.touchState.currentY = coords.y;
+      const origin = layout.joystickOrigin(coords.x, coords.y);
+      this.touchState.startX = origin.x;
+      this.touchState.startY = origin.y;
+      this.touchState.pointerStartX = coords.x;
+      this.touchState.pointerStartY = coords.y;
+      this.touchState.currentX = origin.x;
+      this.touchState.currentY = origin.y;
       this.touchState.vectorX = 0;
       this.touchState.vectorY = 0;
     }
   }
 
   onPointerMove(e) {
+    if (!this.isInputEnabled() || this.story?.inputLocked) return;
     if (!this.touchState.active) return;
     if (e.pointerId !== undefined && this.touchState.pointerId !== null && e.pointerId !== this.touchState.pointerId) return;
 
     if (e.preventDefault && e.cancelable) e.preventDefault();
     const coords = this.getCanvasCoordinates(e);
-    this.touchState.currentX = coords.x;
-    this.touchState.currentY = coords.y;
+    this.touchState.currentX = this.touchState.startX + coords.x - this.touchState.pointerStartX;
+    this.touchState.currentY = this.touchState.startY + coords.y - this.touchState.pointerStartY;
 
-    const dx = coords.x - this.touchState.startX;
-    const dy = coords.y - this.touchState.startY;
+    const dx = this.touchState.currentX - this.touchState.startX;
+    const dy = this.touchState.currentY - this.touchState.startY;
     const dist = Math.hypot(dx, dy);
-    const deadzone = 8;
-    const maxRadius = 50;
+    const controlScale = getMobileUILayout(this.canvas).action.scale;
+    const deadzone = 8 * controlScale;
+    const maxRadius = 50 * controlScale;
 
     if (dist < deadzone) {
       this.touchState.vectorX = 0;
@@ -500,9 +511,10 @@ export class ToyRoomPhase {
   onPointerUp(e) {
     if (this.touchState.active) {
       if (e.pointerId === undefined || this.touchState.pointerId === null || e.pointerId === this.touchState.pointerId) {
-        if (this.canvas && typeof this.canvas.releasePointerCapture === 'function' && e.pointerId !== undefined) {
+        const pointerId = e.pointerId ?? this.touchState.pointerId;
+        if (this.canvas && typeof this.canvas.releasePointerCapture === 'function' && typeof pointerId === 'number') {
           try {
-            this.canvas.releasePointerCapture(e.pointerId);
+            this.canvas.releasePointerCapture(pointerId);
           } catch (_) {}
         }
         // Oculta/remove completamente o joystick visual e zera o vetor de velocidade
@@ -515,6 +527,15 @@ export class ToyRoomPhase {
         this.player.isMoving = false;
       }
     }
+  }
+
+  clearInput() {
+    this.onPointerUp({});
+    this.keysDown = {};
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.isMoving = false;
+    this.actionBtnPressed = false;
   }
 
   spawnSparkles(x, y, count = 12, hue = '#facc15') {
@@ -556,7 +577,7 @@ export class ToyRoomPhase {
   }
 
   triggerAction() {
-    if (this.story?.inputLocked) return;
+    if (!this.isInputEnabled() || this.story?.inputLocked) return;
     const now = performance.now();
     if (now - this.lastActionTime < this.ACTION_DEBOUNCE_MS) {
       return;
@@ -605,8 +626,8 @@ export class ToyRoomPhase {
 
       // Caso contrário: Solta o brinquedo à frente do jogador no chão
       const dropDist = 42;
-      let dropX = this.player.x + Math.cos(this.player.facingAngle) * dropDist;
-      let dropY = this.player.y + Math.sin(this.player.facingAngle) * dropDist;
+      let dropX = this.player.x + (this.player.facing === 'left' ? -dropDist : dropDist);
+      let dropY = this.player.y;
 
       dropX = Math.max(90, Math.min(this.ROOM_W - 90, dropX));
       dropY = Math.max(260, Math.min(this.ROOM_H - 90, dropY));
@@ -693,6 +714,7 @@ export class ToyRoomPhase {
   }
 
   update(dt = 1.0) {
+    if (!this.isInputEnabled()) { this.clearInput(); return; }
     this.pollGamepad();
     // Temporizadores de faixas e transição
     if (this.introAlpha > 0) {
@@ -770,10 +792,13 @@ export class ToyRoomPhase {
       this.player.facingAngle = Math.atan2(moveY, moveX);
       this.player.animTime += 0.22 * dt;
 
+      // Ignora apenas o resíduo trigonométrico do joystick em movimento vertical.
+      if (Math.abs(moveX) > 1e-6) this.player.facing = moveX > 0 ? 'right' : 'left';
+
       if (Math.abs(moveX) > Math.abs(moveY)) {
-        this.player.facing = moveX > 0 ? 'right' : 'left';
+        this.player.direction = moveX > 0 ? 'right' : 'left';
       } else {
-        this.player.facing = moveY > 0 ? 'down' : 'up';
+        this.player.direction = moveY > 0 ? 'down' : 'up';
       }
 
       this.player.stepTimer += dt;
@@ -886,14 +911,16 @@ export class ToyRoomPhase {
 
     // Rastreamento suave da câmera
     const cameraTarget = this.story.cameraTarget() || this.player;
-    const targetCamX = cameraTarget.x - this.canvas.width / 2;
-    const targetCamY = cameraTarget.y - this.canvas.height / 2;
+    const layout = getMobileUILayout(this.canvas);
+    const targetCamX = cameraTarget.x - layout.centerX;
+    const targetCamY = cameraTarget.y - layout.centerY;
 
-    const maxCamX = Math.max(0, this.ROOM_W - this.canvas.width);
-    const maxCamY = Math.max(0, this.ROOM_H - this.canvas.height);
+    const minCamX = -layout.safeLeft, minCamY = -layout.safeTop;
+    const maxCamX = Math.max(minCamX, this.ROOM_W - layout.safeRight);
+    const maxCamY = Math.max(minCamY, this.ROOM_H - layout.safeBottom);
 
-    const clampedTargetCamX = Math.max(0, Math.min(maxCamX, targetCamX));
-    const clampedTargetCamY = Math.max(0, Math.min(maxCamY, targetCamY));
+    const clampedTargetCamX = Math.max(minCamX, Math.min(maxCamX, targetCamX));
+    const clampedTargetCamY = Math.max(minCamY, Math.min(maxCamY, targetCamY));
 
     this.cameraX += (clampedTargetCamX - this.cameraX) * 0.12 * dt;
     this.cameraY += (clampedTargetCamY - this.cameraY) * 0.12 * dt;
@@ -908,10 +935,18 @@ export class ToyRoomPhase {
     ctx.save();
     const px = this.player.x - this.cameraX, py = this.player.y - this.cameraY;
     const fx = this.fairy.x - this.cameraX, fy = this.fairy.y - this.cameraY;
+    const layout = getMobileUILayout(this.canvas);
+    const relativeBounds = {
+      left: Math.min(px - 100, fx - 28) - layout.safeLeft,
+      right: Math.max(px + 100, fx + 28) - layout.safeLeft,
+      top: Math.min(py - 120, fy - 28) - layout.safeTop,
+      bottom: Math.max(py + 80, fy + 28) - layout.safeTop
+    };
     let frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
-      width: this.canvas.width, height: this.canvas.height, anchor: { x: px, y: py },
-      bounds: { left: Math.min(px - 100, fx - 28), right: Math.max(px + 100, fx + 28),
-        top: Math.min(py - 120, fy - 28), bottom: Math.max(py + 80, fy + 28) } });
+      width: layout.usableWidth, height: layout.usableHeight,
+      anchor: { x: px - layout.safeLeft, y: py - layout.safeTop }, bounds: relativeBounds });
+    frame.x += layout.safeLeft * (1 - frame.zoom);
+    frame.y += layout.safeTop * (1 - frame.zoom);
     // Retorno visual do panorama ao enquadramento normal, sem tocar na câmera lógica.
     if (options.overviewBlend > 0) {
       const blend = Math.min(1, options.overviewBlend);
@@ -1093,8 +1128,15 @@ export class ToyRoomPhase {
     for (const key of keys) {
       if (key in saved) this[key] = JSON.parse(JSON.stringify(saved[key]));
     }
+    // Saves antigos armazenavam a direção de movimento em facing.
+    this.player.direction ??= this.player.facing;
+    if (this.player.facing !== 'left' && this.player.facing !== 'right') {
+      const horizontal = Math.cos(this.player.facingAngle ?? Math.PI / 2);
+      this.player.facing = horizontal < -1e-6 ? 'left' : 'right';
+    }
     this.player.carriedItem = this.toys.find(toy => toy.id === saved.carriedItemId) || null;
     this.story.restore(saved.toyRoomStory);
+    this.clearInput();
     this.lastActionTime = 0;
     this.tutorial.active = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
@@ -1102,6 +1144,7 @@ export class ToyRoomPhase {
   }
 
   destroy() {
+    this.clearInput();
     if (this.audio && this.audio.stopToyRoomMusic) {
       this.audio.stopToyRoomMusic();
     }
@@ -1111,8 +1154,10 @@ export class ToyRoomPhase {
       window.removeEventListener('pointermove', this.handlePointerMove);
       window.removeEventListener('pointerup', this.handlePointerUp);
       window.removeEventListener('pointercancel', this.handlePointerUp);
+      window.removeEventListener('blur', this.handleBlur);
     }
     if (this.canvas) {
+      this.canvas.removeEventListener('uilayoutchange', this.handlePointerUp);
       this.canvas.removeEventListener('pointerdown', this.handlePointerDown);
     }
   }

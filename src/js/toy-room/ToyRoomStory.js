@@ -1,3 +1,4 @@
+import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { getMobileZoomFrame } from '../controllers/MobileZoom.js';
 import { renderPoeticNarration } from '../narrative/PoeticNarrator.js';
 import { toyGuideBlend } from '../state/GameDifficulty.js';
@@ -323,10 +324,11 @@ export class ToyRoomStory {
       room.fairy.x += (targetX - room.fairy.x) * blend;
       room.fairy.y += (targetY - room.fairy.y) * blend;
 
-      const targetCameraX = Math.max(0, Math.min(room.ROOM_W - room.canvas.width,
-        focus.x - room.canvas.width / 2));
-      const targetCameraY = Math.max(0, Math.min(room.ROOM_H - room.canvas.height,
-        focus.y - room.canvas.height / 2));
+      const layout = getMobileUILayout(room.canvas);
+      const targetCameraX = Math.max(-layout.safeLeft, Math.min(Math.max(-layout.safeLeft, room.ROOM_W - layout.safeRight),
+        focus.x - layout.centerX));
+      const targetCameraY = Math.max(-layout.safeTop, Math.min(Math.max(-layout.safeTop, room.ROOM_H - layout.safeBottom),
+        focus.y - layout.centerY));
       const cameraBlend = 1 - Math.pow(0.96, dt);
       room.cameraX += (targetCameraX - room.cameraX) * cameraBlend;
       room.cameraY += (targetCameraY - room.cameraY) * cameraBlend;
@@ -371,6 +373,8 @@ export class ToyRoomStory {
 
   clearInput() {
     const room = this.room;
+    // A fase real também libera a captura; mantém compatibilidade com salas de teste.
+    room.clearInput?.();
     room.keysDown = {};
     room.touchState.active = false;
     room.touchState.pointerId = null;
@@ -408,11 +412,9 @@ export class ToyRoomStory {
   }
 
   cameraTarget() {
-    if (this.state.investigationStage !== 'SEEKING_SWORD' || !this.state.sword) return null;
-    return {
-      x: (this.room.player.x + this.state.sword.x) / 2,
-      y: (this.room.player.y + this.state.sword.y) / 2
-    };
+    // Ao terminar a conversa, o foco volta à menina; a fada conserva sua guia própria.
+    if (this.state.investigationStage === 'SEEKING_SWORD') return this.room.player;
+    return null;
   }
 
   renderWorldObject(ctx) {
@@ -451,7 +453,7 @@ export class ToyRoomStory {
       ? (this.state.attackElapsed > 0
         ? (this.state.attackDirection < 0 ? Math.PI : 0) +
           (elapsed / SWORD_ATTACK_DURATION - 0.5) * 1.7 * this.state.attackDirection
-        : room.player.facingAngle)
+        : (room.player.facing === 'left' ? Math.PI : 0))
       : -Math.PI / 2;
     const handX = room.player.x + Math.cos(direction) * 24;
     const handY = room.player.y - 13 + Math.sin(direction) * 12;

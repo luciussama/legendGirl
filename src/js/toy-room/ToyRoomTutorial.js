@@ -1,5 +1,5 @@
 /** Orientação visual; não executa movimento, coleta nem armazenamento. */
-import { getDialogueSafeArea } from '../ui/DialogueSafeArea.js';
+import { getMobileUILayout } from '../ui/MobileUILayout.js';
 export const TOY_ROOM_INPUT = Object.freeze({actionCodes:['KeyE','Space','Enter','KeyF'], actionLabel:'E', gamepadButton:2, gamepadLabel:'X'});
 export class ToyRoomTutorial {
   constructor(phase) {
@@ -68,7 +68,8 @@ export class ToyRoomTutorial {
     const y=frame.y+(fairy.y-phase.cameraY)*frame.zoom;
     const scale=canvas.width/(canvas.getBoundingClientRect?.().width||canvas.width);
     const font=Math.max(12*scale,Math.min(17*scale,canvas.width/25));
-    const safe=getDialogueSafeArea(canvas);
+    const layout=getMobileUILayout(canvas);
+    const safe={left:layout.safeLeft,right:layout.safeRight,top:layout.safeTop,bottom:layout.safeBottom};
     const width=Math.min(safe.right-safe.left-24*scale,360*scale);
     ctx.save();ctx.font=`bold ${font}px Georgia, serif`;ctx.textAlign='center';ctx.textBaseline='middle';
     const lines=[];let line='';
@@ -79,7 +80,8 @@ export class ToyRoomTutorial {
     lines.push(line);
     const height=(lines.length*font*1.35)+42*scale;
     const left=Math.max(safe.left+12*scale,Math.min(safe.right-width-12*scale,x-width/2));
-    const top=Math.max(safe.top+85*scale,Math.min(safe.bottom-height-160*scale,y-height-28*scale));
+    const minTop=Math.min(layout.hudBottom+8*scale,safe.bottom-height-12*scale);
+    const top=Math.max(safe.top+12*scale,minTop,Math.min(safe.bottom-height-160*scale,y-height-28*scale));
     ctx.fillStyle='rgba(57,35,22,0.94)';ctx.beginPath();ctx.roundRect(left,top,width,height,12*scale);ctx.fill();
     ctx.fillStyle='#fff4cb';lines.forEach((text,i)=>ctx.fillText(text,left+width/2,top+18*scale+i*font*1.35));
     ctx.font=`${Math.min(font,13*scale)}px Georgia, serif`;
@@ -90,7 +92,7 @@ export class ToyRoomTutorial {
       ctx.font=`bold ${13*scale}px Georgia, serif`;
       ctx.fillStyle='#fff4cb';ctx.strokeStyle='#392316';ctx.lineWidth=4*scale;
       const action=this.device==='MOBILE_TOUCH'?'PEGAR ↓':`${this.device==='GAMEPAD'?TOY_ROOM_INPUT.gamepadLabel:TOY_ROOM_INPUT.actionLabel} · PEGAR ↓`;
-      const actionX=safe.right-85*scale,actionY=safe.bottom-145*scale;
+      const actionX=layout.action.x,actionY=layout.action.y-layout.action.radius-16*scale;
       ctx.strokeText(action,actionX,actionY);
       ctx.fillText(action,actionX,actionY);
     }
