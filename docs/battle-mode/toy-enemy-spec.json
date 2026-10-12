@@ -1,0 +1,97 @@
+{
+  "version": "1.0",
+  "status": "Design",
+  "source": "PROMPT 11 — TOY ENEMY DESIGN",
+  "battleRules": "battle-mode-rules.md",
+  "battleBalance": "battle-balance-spec.json",
+  "enemies": [
+    {
+      "id": "01",
+      "type": "train",
+      "name": "Trem",
+      "hpMax": 2,
+      "hpInitial": null,
+      "attacks": [
+        {
+          "name": "Steam Blast",
+          "description": "Solta vapor quente.",
+          "rangeCategory": "média distância",
+          "range": null
+        },
+        {
+          "name": "Front Charge",
+          "description": "Investida frontal.",
+          "rangeCategory": "curta distância",
+          "range": null
+        }
+      ]
+    },
+    {
+      "id": "02",
+      "type": "robot",
+      "name": "Robô",
+      "hpMax": 2,
+      "hpInitial": null,
+      "attacks": [
+        {
+          "name": "Laser Beam",
+          "description": "Ataque reto.",
+          "rangeCategory": null,
+          "range": null
+        },
+        {
+          "name": "Rocket Punch",
+          "description": "Punho dispara para frente.",
+          "rangeCategory": null,
+          "range": null
+        }
+      ]
+    },
+    {
+      "id": "03",
+      "type": "dinosaur",
+      "name": "Dinossauro",
+      "hpMax": 2,
+      "hpInitial": null,
+      "attacks": [
+        {
+          "name": "Bite",
+          "description": "Mordida curta.",
+          "rangeCategory": "curta",
+          "range": null
+        },
+        {
+          "name": "Rush",
+          "description": "Investida rápida.",
+          "rangeCategory": null,
+          "range": null
+        }
+      ]
+    }
+  ],
+  "attackPolicy": {
+    "mustReflectToyIdentity": true,
+    "onlyListedAttacksAllowed": true,
+    "arbitraryAttackAssignmentAllowed": false,
+    "selectionAlgorithm": null
+  },
+  "boss": {
+    "name": "Urso",
+    "hpMax": 4,
+    "specification": "bear-final-boss-spec.json",
+    "attacks": [
+      "Bear Hug",
+      "Belly Charge",
+      "Toy Leap"
+    ]
+  },
+  "pendingDecisions": [
+    "alcances numéricos",
+    "velocidades e tempos",
+    "critérios e frequência de escolha dos ataques",
+    "trajetórias detalhadas e colisões",
+    "interação com salto e agachamento",
+    "HP inicial e quantidade de instâncias",
+    "aparição e IA"
+  ]
+}

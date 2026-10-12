@@ -18,7 +18,9 @@
     "review:dark-room": "node scripts/review-dark-room-browser.js",
     "test:tutorial:browser": "node scripts/test-first-jump-tutorial-browser.js && node scripts/test-first-jump-prompt-browser.js && node scripts/test-first-jump-completion-browser.js && node scripts/test-first-jump-production-browser.js",
     "test:toy-room:facing": "node scripts/test-toy-room-facing.js",
-    "test:toy-room:qa": "node scripts/test-toy-room-introduction.js && node scripts/test-toy-room-tutorial.js && node scripts/test-toy-room-orientation.js && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:story && npm run test:toy-room:facing"
+    "test:toy-room:qa": "node scripts/test-toy-room-introduction.js && node scripts/test-toy-room-tutorial.js && node scripts/test-toy-room-orientation.js && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:story && npm run test:toy-room:facing",
+    "prepare:battle-sprites": "node scripts/prepare-battle-sprites.js",
+    "verify:battle-sprites": "node scripts/verify-battle-sprites.js"
   },
   "dependencies": {
     "express": "^4.21.2",

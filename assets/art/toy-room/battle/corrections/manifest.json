@@ -1,0 +1,2061 @@
+{
+  "version": "1.0",
+  "status": "Prompt 14A: revalidação pendente",
+  "tool": "image_gen",
+  "gameplayIntegrated": false,
+  "previewFps": 6,
+  "previewFpsIsGameplayRule": false,
+  "actors": {
+    "train": {
+      "animations": {
+        "Idle": {
+          "frames": [
+            {
+              "file": "train/idle/01.png",
+              "width": 201,
+              "height": 139,
+              "anchor": {
+                "x": 100.5,
+                "y": 127
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 4,
+              "sha256": "87eeb6e6fee1ca0f8e6aa08262f3d17a533baea80eab5811b267ec241672b759"
+            },
+            {
+              "file": "train/idle/02.png",
+              "width": 202,
+              "height": 138,
+              "anchor": {
+                "x": 101,
+                "y": 125
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 2,
+              "sha256": "05ee86847f38b7ffaa20e19c88588e51a7dd5f1d7139178d15fc4c095a010121"
+            },
+            {
+              "file": "train/idle/03.png",
+              "width": 199,
+              "height": 138,
+              "anchor": {
+                "x": 99.5,
+                "y": 126
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 3,
+              "sha256": "b8f8f76bea812546da704d7e2da9dcd152d755271eed559010d0c1edbf8ec00a"
+            },
+            {
+              "file": "train/idle/04.png",
+              "width": 202,
+              "height": 135,
+              "anchor": {
+                "x": 101,
+                "y": 125
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 5,
+              "sha256": "0e6682f74b9af3fa31d35a072c6c8d55da27bb6273f0e0b8546ff8a9a9737a4b"
+            },
+            {
+              "file": "train/idle/05.png",
+              "width": 196,
+              "height": 142,
+              "anchor": {
+                "x": 98,
+                "y": 129
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 1,
+              "sha256": "f4425459855099f7d2c3430904d0c8267692a7611783179c53da85932871d667"
+            },
+            {
+              "file": "train/idle/06.png",
+              "width": 197,
+              "height": 136,
+              "anchor": {
+                "x": 98.5,
+                "y": 124
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 6,
+              "sha256": "77139e7e1521cef4cf87d4a9e9cbf06885227d329f22a677bc1838f186efc03a"
+            }
+          ],
+          "loop": true
+        },
+        "Walk": {
+          "frames": [
+            {
+              "file": "corrections/train-walk-review/01.png",
+              "width": 494,
+              "height": 302,
+              "anchor": {
+                "x": 247,
+                "y": 289
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 3,
+              "sha256": "858bc0098f8d811d143767dce6d8525e0483bbce9d964cca7dee4c4208f58153"
+            },
+            {
+              "file": "corrections/train-walk-review/02.png",
+              "width": 483,
+              "height": 302,
+              "anchor": {
+                "x": 241.5,
+                "y": 291
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 1,
+              "sha256": "a81ba9a3054200ff063b192c98edcbe29233f33857e3a1cc7d5b94d3888e4eb1"
+            },
+            {
+              "file": "corrections/train-walk-review/03.png",
+              "width": 485,
+              "height": 301,
+              "anchor": {
+                "x": 242.5,
+                "y": 288
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 2,
+              "sha256": "e49c7b84241ac3334c95e6e30e372a00f93ce30ce928e4978eea83f36521d352"
+            },
+            {
+              "file": "corrections/train-walk-review/04.png",
+              "width": 493,
+              "height": 301,
+              "anchor": {
+                "x": 246.5,
+                "y": 288
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 6,
+              "sha256": "0fa4e08713c8f36fce97c63e3e7abd2fd5d023ae30466942e193998d55ece904"
+            },
+            {
+              "file": "corrections/train-walk-review/05.png",
+              "width": 482,
+              "height": 301,
+              "anchor": {
+                "x": 241,
+                "y": 291
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 5,
+              "sha256": "73f2d376d65d03ea23c4deffc3fc3228a941acc2d665f79d7b759a048c7f2bdb"
+            },
+            {
+              "file": "corrections/train-walk-review/06.png",
+              "width": 490,
+              "height": 307,
+              "anchor": {
+                "x": 245,
+                "y": 298
+              },
+              "displayScale": 0.4136690647482014,
+              "source": "corrections/train-walk-review.png",
+              "sourceComponent": 4,
+              "sha256": "54c483bb90821ac2e84cc9232d56326751bab31121a9da78c626f07a1082ad88"
+            }
+          ],
+          "loop": true,
+          "correction": "train-walk-review"
+        },
+        "Steam Blast": {
+          "frames": [
+            {
+              "file": "corrections/steam-blast-correction/01.png",
+              "width": 501,
+              "height": 317,
+              "anchor": {
+                "x": 250.5,
+                "y": 306
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 2,
+              "sha256": "cd892d79cddd5b86b8bbdb637c033754e0463d51e0705b9721d38ceb03b79089"
+            },
+            {
+              "file": "corrections/steam-blast-correction/02.png",
+              "width": 491,
+              "height": 296,
+              "anchor": {
+                "x": 245.5,
+                "y": 283
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 3,
+              "sha256": "c97f24f74119ede9b20a962e27620512ec3f5d81228cffc47ed64304e923fc85"
+            },
+            {
+              "file": "corrections/steam-blast-correction/03.png",
+              "width": 500,
+              "height": 333,
+              "anchor": {
+                "x": 250,
+                "y": 322
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 1,
+              "sha256": "d61b3bad857f3b616e716ba7911796feb12d906bbfbea96cdef98e60590683d4"
+            },
+            {
+              "file": "corrections/steam-blast-correction/04.png",
+              "width": 517,
+              "height": 313,
+              "anchor": {
+                "x": 258.5,
+                "y": 311
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 5,
+              "sha256": "4c053750a88fd7017fd5d7f97bfb08cf5a3273883af9467837317a1b39efba82"
+            },
+            {
+              "file": "corrections/steam-blast-correction/05.png",
+              "width": 499,
+              "height": 339,
+              "anchor": {
+                "x": 249.5,
+                "y": 331
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 4,
+              "sha256": "b6d72c3a745ecdaf6d3f8024f8e860323227e6d2647a0dd61bd6b2bb56150f3e"
+            },
+            {
+              "file": "corrections/steam-blast-correction/06.png",
+              "width": 495,
+              "height": 318,
+              "anchor": {
+                "x": 247.5,
+                "y": 305
+              },
+              "displayScale": 0.3924914675767918,
+              "source": "corrections/steam-blast-correction.png",
+              "sourceComponent": 6,
+              "sha256": "1a190a121ac4bd223d5599bcb8d6c7140fbb15635b87368ade8ec4122a28f71b"
+            }
+          ],
+          "loop": false,
+          "correction": "steam-blast-correction"
+        },
+        "Front Charge": {
+          "frames": [
+            {
+              "file": "corrections/front-charge-correction/01.png",
+              "width": 462,
+              "height": 301,
+              "anchor": {
+                "x": 231,
+                "y": 298
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 1,
+              "sha256": "4f6dc555acbae9125e644ba9b7dbb1ab4131363248fe7c273eb93bb5da6da486"
+            },
+            {
+              "file": "corrections/front-charge-correction/02.png",
+              "width": 489,
+              "height": 285,
+              "anchor": {
+                "x": 244.5,
+                "y": 280
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 2,
+              "sha256": "4b60cf385050e72d6ef9a90ef22df81d3399952f2d3ff676f2f29eaf354aef0a"
+            },
+            {
+              "file": "corrections/front-charge-correction/03.png",
+              "width": 481,
+              "height": 251,
+              "anchor": {
+                "x": 240.5,
+                "y": 238
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 3,
+              "sha256": "ec7a591595a76128015350ae9a26781d56fad1295ca8e0e73e61396975caacb3"
+            },
+            {
+              "file": "corrections/front-charge-correction/04.png",
+              "width": 579,
+              "height": 271,
+              "anchor": {
+                "x": 289.5,
+                "y": 258
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 6,
+              "sha256": "d6392f3b307633544c6bf1c2df2aec967991396c4927abb8ab089838e31d0684"
+            },
+            {
+              "file": "corrections/front-charge-correction/05.png",
+              "width": 449,
+              "height": 328,
+              "anchor": {
+                "x": 224.5,
+                "y": 336
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 4,
+              "sha256": "408f4d7e760b6d2cb9121fd882077d8613cbc3c47992304c8dbd01412d2588df"
+            },
+            {
+              "file": "corrections/front-charge-correction/06.png",
+              "width": 474,
+              "height": 296,
+              "anchor": {
+                "x": 237,
+                "y": 286
+              },
+              "displayScale": 0.4151624548736462,
+              "source": "corrections/front-charge-correction.png",
+              "sourceComponent": 5,
+              "sha256": "ddf46db818b92b184539d06e6023b1889deccb89ef69798849d38479b035a112"
+            }
+          ],
+          "loop": false,
+          "correction": "front-charge-correction"
+        },
+        "Hit": {
+          "frames": [
+            {
+              "file": "train/hit/01.png",
+              "width": 203,
+              "height": 141,
+              "anchor": {
+                "x": 101.5,
+                "y": 138
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 26,
+              "sha256": "8cee8eae979cc2a1e688e76e414b715ad9a6ca6dc9a8ee8ecd948faf23f2aa8a"
+            },
+            {
+              "file": "train/hit/02.png",
+              "width": 193,
+              "height": 175,
+              "anchor": {
+                "x": 96.5,
+                "y": 169
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 25,
+              "sha256": "3b9d43e5046c795b2ee6b8fe90a3173a6f3d890f1961209abfdbed5595f31d0a"
+            },
+            {
+              "file": "train/hit/03.png",
+              "width": 203,
+              "height": 142,
+              "anchor": {
+                "x": 101.5,
+                "y": 130
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 28,
+              "sha256": "11c7134a38004312ab022f08ba1a8a1e5ee6f1806d97d806a35c4bd4a5b08aa9"
+            },
+            {
+              "file": "train/hit/04.png",
+              "width": 205,
+              "height": 141,
+              "anchor": {
+                "x": 102.5,
+                "y": 133
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 27,
+              "sha256": "12da5d7de8e1fc5d55f79bd797c64fcacd4277af5075ba1f83b7f40232e840f0"
+            },
+            {
+              "file": "train/hit/05.png",
+              "width": 205,
+              "height": 140,
+              "anchor": {
+                "x": 102.5,
+                "y": 130
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 29,
+              "sha256": "2c01861a71f82a75efca6daea3a3ac2b2f9051c6e1e1809c169c488576132bad"
+            },
+            {
+              "file": "train/hit/06.png",
+              "width": 198,
+              "height": 125,
+              "anchor": {
+                "x": 99,
+                "y": 112
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 30,
+              "sha256": "cacceea70b91495119c39a624fc5f093089c14219c3547a131ccb1e4fbaaa38c"
+            }
+          ],
+          "loop": false
+        },
+        "Death": {
+          "frames": [
+            {
+              "file": "train/death/01.png",
+              "width": 211,
+              "height": 141,
+              "anchor": {
+                "x": 105.5,
+                "y": 137
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 32,
+              "sha256": "34a5c7f78797b56693bf318aa46b76d373378241b1762e99d2bc8e5a3e46717f"
+            },
+            {
+              "file": "train/death/02.png",
+              "width": 197,
+              "height": 157,
+              "anchor": {
+                "x": 98.5,
+                "y": 150
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 31,
+              "sha256": "5893a07be2c80996c96fcd7ced85ef2d2d24fd2a7f815b16a6554fbb7dc2aec6"
+            },
+            {
+              "file": "train/death/03.png",
+              "width": 203,
+              "height": 133,
+              "anchor": {
+                "x": 101.5,
+                "y": 123
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 33,
+              "sha256": "7e9aa2e21357137349e37a606f7c3f630d1cd1a3665bef52d47fe17f1116b62a"
+            },
+            {
+              "file": "train/death/04.png",
+              "width": 208,
+              "height": 128,
+              "anchor": {
+                "x": 104,
+                "y": 115
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 34,
+              "sha256": "da084f0593f20f83939b059a90dd6cf4c68e14868d8e858370c37b4685892339"
+            },
+            {
+              "file": "train/death/05.png",
+              "width": 187,
+              "height": 111,
+              "anchor": {
+                "x": 93.5,
+                "y": 99
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 35,
+              "sha256": "70654f20760223b8e441ebbbeeebb2e3490854fa94755f3e811a0b34b79ac9f8"
+            },
+            {
+              "file": "train/death/06.png",
+              "width": 173,
+              "height": 92,
+              "anchor": {
+                "x": 86.5,
+                "y": 79
+              },
+              "displayScale": 1,
+              "source": "train-v1.png",
+              "sourceComponent": 36,
+              "sha256": "ae8bcf8d3c26aa33dabf99f408d296207adb64d18c129862fdeecd4feb1df220"
+            }
+          ],
+          "loop": false
+        }
+      }
+    },
+    "robot": {
+      "animations": {
+        "Idle": {
+          "frames": [
+            {
+              "file": "robot/idle/01.png",
+              "width": 148,
+              "height": 236,
+              "anchor": {
+                "x": 74,
+                "y": 227
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 1,
+              "sha256": "8a96330415f796b2daf14c6002ec1864440ac921202f3b0b098edfa3685f46f9"
+            },
+            {
+              "file": "robot/idle/02.png",
+              "width": 158,
+              "height": 234,
+              "anchor": {
+                "x": 79,
+                "y": 224
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 5,
+              "sha256": "c8013c9cd20763895e09d3df4559dad446e1987646537bae39a774500040dc14"
+            },
+            {
+              "file": "robot/idle/03.png",
+              "width": 158,
+              "height": 237,
+              "anchor": {
+                "x": 79,
+                "y": 227
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 2,
+              "sha256": "60a233d64e8478da166cc6e31a061dc9180d5e62fdbc30534d38f9c59a2cfbe7"
+            },
+            {
+              "file": "robot/idle/04.png",
+              "width": 163,
+              "height": 238,
+              "anchor": {
+                "x": 81.5,
+                "y": 227
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 3,
+              "sha256": "812366e896bfec07a5d10c950882d30c3dd06d320c77991ee9299300a5942235"
+            },
+            {
+              "file": "robot/idle/05.png",
+              "width": 156,
+              "height": 237,
+              "anchor": {
+                "x": 78,
+                "y": 226
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 4,
+              "sha256": "5f4aa9ac82ba6a2b26481a75e40f5ded9f1da3a91e1708d929f8c1d48dea45bb"
+            },
+            {
+              "file": "robot/idle/06.png",
+              "width": 150,
+              "height": 238,
+              "anchor": {
+                "x": 75,
+                "y": 225
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 6,
+              "sha256": "9d273f528a38535403e0a5c6afd463249a322bfe079f5ea9d6d23e22a707f2da"
+            }
+          ],
+          "loop": true
+        },
+        "Walk": {
+          "frames": [
+            {
+              "file": "corrections/robot-walk-correction/01.png",
+              "width": 352,
+              "height": 487,
+              "anchor": {
+                "x": 176,
+                "y": 474
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 3,
+              "sha256": "7f429e99364f0f31266fbdc5deaa2c6be7e2fae2871a823e6ff8f5038279041c"
+            },
+            {
+              "file": "corrections/robot-walk-correction/02.png",
+              "width": 301,
+              "height": 489,
+              "anchor": {
+                "x": 150.5,
+                "y": 477
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 1,
+              "sha256": "90c311661718f0d1158ce28ac52618e2950d721c8e4d451008ff49ff26c5321a"
+            },
+            {
+              "file": "corrections/robot-walk-correction/03.png",
+              "width": 361,
+              "height": 486,
+              "anchor": {
+                "x": 180.5,
+                "y": 475
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 2,
+              "sha256": "f386a47486093c0958c2825e9da6d19b4076c3e2c864115493c288b5cd0046e7"
+            },
+            {
+              "file": "corrections/robot-walk-correction/04.png",
+              "width": 321,
+              "height": 487,
+              "anchor": {
+                "x": 160.5,
+                "y": 474
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 4,
+              "sha256": "8f5269cbf4b02d96caf7336bd3e045e8ccf6bdf8a0483942c9a2f49d0c36b0ef"
+            },
+            {
+              "file": "corrections/robot-walk-correction/05.png",
+              "width": 374,
+              "height": 481,
+              "anchor": {
+                "x": 187,
+                "y": 471
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 5,
+              "sha256": "2ddf136cd7d0c727400551f5252fe2bbb213e56620f2b6456b9410e6dbef90e9"
+            },
+            {
+              "file": "corrections/robot-walk-correction/06.png",
+              "width": 339,
+              "height": 480,
+              "anchor": {
+                "x": 169.5,
+                "y": 469
+              },
+              "displayScale": 0.45788336933045354,
+              "source": "corrections/robot-walk-correction.png",
+              "sourceComponent": 6,
+              "sha256": "455c23225191fd01f7f8ede771f1b9c231a30077f67ba93f66f1fcc17e2a232f"
+            }
+          ],
+          "loop": true,
+          "correction": "robot-walk-correction"
+        },
+        "Laser Beam": {
+          "frames": [
+            {
+              "file": "corrections/laser-beam-correction/01.png",
+              "width": 339,
+              "height": 504,
+              "anchor": {
+                "x": 169.5,
+                "y": 491
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 2,
+              "sha256": "ae19be53e0983333995b545c4774148aaa3bc2be8845d6ca21e824f97735737a"
+            },
+            {
+              "file": "corrections/laser-beam-correction/02.png",
+              "width": 450,
+              "height": 506,
+              "anchor": {
+                "x": 225,
+                "y": 493
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 1,
+              "sha256": "4e66412806c00432b4164ffc1de21837fcbb6593a92924dcc534eb70218bcd3f"
+            },
+            {
+              "file": "corrections/laser-beam-correction/03.png",
+              "width": 443,
+              "height": 497,
+              "anchor": {
+                "x": 221.5,
+                "y": 485
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 3,
+              "sha256": "0ec5c2bbdb452b275c9848e3bef0b37f5483385c95112014243ecfe87d3f6619"
+            },
+            {
+              "file": "corrections/laser-beam-correction/04.png",
+              "width": 438,
+              "height": 463,
+              "anchor": {
+                "x": 219,
+                "y": 451
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 6,
+              "sha256": "67281c8c2cc77e39500c175285d267c07aa3986efa55bd1b30bb82028cbc3c81"
+            },
+            {
+              "file": "corrections/laser-beam-correction/05.png",
+              "width": 434,
+              "height": 476,
+              "anchor": {
+                "x": 217,
+                "y": 465
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 5,
+              "sha256": "015b87f25c09337839003dc21b54a8fd6c9a843e1e9db7964449fd1850852d69"
+            },
+            {
+              "file": "corrections/laser-beam-correction/06.png",
+              "width": 344,
+              "height": 480,
+              "anchor": {
+                "x": 172,
+                "y": 467
+              },
+              "displayScale": 0.44166666666666665,
+              "source": "corrections/laser-beam-correction.png",
+              "sourceComponent": 4,
+              "sha256": "1df6eed3504d671aea1d800ab2ccf6c3cae78f0c9b1ab3e5959dc56a3d144ed2"
+            }
+          ],
+          "loop": false,
+          "correction": "laser-beam-correction"
+        },
+        "Hit": {
+          "frames": [
+            {
+              "file": "robot/hit/01.png",
+              "width": 168,
+              "height": 222,
+              "anchor": {
+                "x": 84,
+                "y": 215
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 25,
+              "sha256": "f53ab06a5926399f105190aff722b1668ea078b10902de83dfee5327e48e54af"
+            },
+            {
+              "file": "robot/hit/02.png",
+              "width": 188,
+              "height": 213,
+              "anchor": {
+                "x": 94,
+                "y": 210
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 26,
+              "sha256": "dee0f9f8a82259e0f12e5ac9bc17fdd4bb3cffdcebc2c3c1aeafc0d36027f2e1"
+            },
+            {
+              "file": "robot/hit/03.png",
+              "width": 202,
+              "height": 200,
+              "anchor": {
+                "x": 101,
+                "y": 206
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 28,
+              "sha256": "cb53f70be1ffb7fcf88c1173f1bc9db80fbe60fd472420367e6cbcc0b9c2bfd2"
+            },
+            {
+              "file": "robot/hit/04.png",
+              "width": 192,
+              "height": 201,
+              "anchor": {
+                "x": 96,
+                "y": 199
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 29,
+              "sha256": "c1908988fd09af52d0a706fa7398b7667bd002dd086cb026793302edf9e87cb3"
+            },
+            {
+              "file": "robot/hit/05.png",
+              "width": 181,
+              "height": 163,
+              "anchor": {
+                "x": 90.5,
+                "y": 155
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 30,
+              "sha256": "50e4b91fda9bb4688568de216caa680f9a01d162e43d1cd5cc2fe088904f94ff"
+            },
+            {
+              "file": "robot/hit/06.png",
+              "width": 151,
+              "height": 219,
+              "anchor": {
+                "x": 75.5,
+                "y": 206
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 27,
+              "sha256": "7bf80babee9c7ec5ed45365a2de1d2e21fac89fcc0175ab74d34db8e48cb4e59"
+            }
+          ],
+          "loop": false
+        },
+        "Death": {
+          "frames": [
+            {
+              "file": "robot/death/01.png",
+              "width": 172,
+              "height": 199,
+              "anchor": {
+                "x": 86,
+                "y": 186
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 31,
+              "sha256": "42a0341f87002cc3b4e7052a8ed7221c9bf025b4a67caa8e69f11d0fdeab57c5"
+            },
+            {
+              "file": "robot/death/02.png",
+              "width": 181,
+              "height": 176,
+              "anchor": {
+                "x": 90.5,
+                "y": 177
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 32,
+              "sha256": "f19e7f99ac87b5c59e3ea7da5ea579074460eb7f654608e014f4c6d9e3bb3aa8"
+            },
+            {
+              "file": "robot/death/03.png",
+              "width": 204,
+              "height": 146,
+              "anchor": {
+                "x": 102,
+                "y": 147
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 33,
+              "sha256": "7718b3c3b1d54c004e18786de06e6834496a0bcb0e7621c882b00133328a2d7d"
+            },
+            {
+              "file": "robot/death/04.png",
+              "width": 209,
+              "height": 143,
+              "anchor": {
+                "x": 104.5,
+                "y": 140
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 34,
+              "sha256": "d6b73721f32cb43ee5219f0f5a862ca6293380344efc23db26a0da82a24af0f1"
+            },
+            {
+              "file": "robot/death/05.png",
+              "width": 215,
+              "height": 117,
+              "anchor": {
+                "x": 107.5,
+                "y": 118
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 35,
+              "sha256": "abb51a9d7ccc7fb1ec103da9fc384ec52ba78dad72afaa3161044620f5d003e7"
+            },
+            {
+              "file": "robot/death/06.png",
+              "width": 223,
+              "height": 104,
+              "anchor": {
+                "x": 111.5,
+                "y": 106
+              },
+              "displayScale": 1,
+              "source": "robot-v2.png",
+              "sourceComponent": 36,
+              "sha256": "ba49257f8b6c51d41861249ff22272be9d8475ddb791c658d5cac83b9c24f7f9"
+            }
+          ],
+          "loop": false
+        },
+        "Rocket Punch": {
+          "frames": [
+            {
+              "file": "corrections/rocket-punch-correction/01.png",
+              "width": 327,
+              "height": 461,
+              "anchor": {
+                "x": 163.5,
+                "y": 448
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 1,
+              "sha256": "764af7df3ddcdc86df4976e389c2bf4cd11ee1cf6ae59ffbf34b8cba688575b8"
+            },
+            {
+              "file": "corrections/rocket-punch-correction/02.png",
+              "width": 367,
+              "height": 439,
+              "anchor": {
+                "x": 183.5,
+                "y": 427
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 2,
+              "sha256": "9cc5bd6664f7b36ca7de8e845850d0eb82b3061451884f05bfce29917910378c"
+            },
+            {
+              "file": "corrections/rocket-punch-correction/03.png",
+              "width": 492,
+              "height": 438,
+              "anchor": {
+                "x": 246,
+                "y": 426
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 3,
+              "sha256": "0c1b354ae891ca69b5340f40368f015c0c2a4e661511f9c5c85e77cf949fd1e6"
+            },
+            {
+              "file": "corrections/rocket-punch-correction/04.png",
+              "width": 600,
+              "height": 408,
+              "anchor": {
+                "x": 300,
+                "y": 395
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 6,
+              "sha256": "8cc93a3f9d8ef451ce5c4a7c91e73111fb80aa13583684027a3652e5e8e03781"
+            },
+            {
+              "file": "corrections/rocket-punch-correction/05.png",
+              "width": 418,
+              "height": 419,
+              "anchor": {
+                "x": 209,
+                "y": 406
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 5,
+              "sha256": "dc24854b788a35c7efd0a1a8b5cdf91a12ad6ae3347e27519e287b4ac163c893"
+            },
+            {
+              "file": "corrections/rocket-punch-correction/06.png",
+              "width": 302,
+              "height": 426,
+              "anchor": {
+                "x": 151,
+                "y": 413
+              },
+              "displayScale": 0.4851258581235698,
+              "source": "corrections/rocket-punch-correction.png",
+              "sourceComponent": 4,
+              "sha256": "3541484e27c30ee3139ee689179db2cc44ed27bb16c5e3ccf228c748657c01f9"
+            }
+          ],
+          "loop": false,
+          "correction": "rocket-punch-correction"
+        }
+      }
+    },
+    "dinosaur": {
+      "animations": {
+        "Idle": {
+          "frames": [
+            {
+              "file": "dinosaur/idle/01.png",
+              "width": 218,
+              "height": 205,
+              "anchor": {
+                "x": 109,
+                "y": 192
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 1,
+              "sha256": "c05c317ba8c6a4547f35cf1fd00c04da8b8422171facfe3479ce012f78978972"
+            },
+            {
+              "file": "dinosaur/idle/02.png",
+              "width": 218,
+              "height": 202,
+              "anchor": {
+                "x": 109,
+                "y": 189
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 3,
+              "sha256": "6ea547133caa64841648e0460f0b4146907aaf102b0d8a66e0c32ac51787d168"
+            },
+            {
+              "file": "dinosaur/idle/03.png",
+              "width": 215,
+              "height": 201,
+              "anchor": {
+                "x": 107.5,
+                "y": 188
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 5,
+              "sha256": "dc34513b2a1ec4443f6caa1e5425c5919646917cf2a4e05e9d18ae50b81d25aa"
+            },
+            {
+              "file": "dinosaur/idle/04.png",
+              "width": 222,
+              "height": 201,
+              "anchor": {
+                "x": 111,
+                "y": 188
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 4,
+              "sha256": "691c0e586b8b22c0126ceb19bbd57c32a6f8f746dc9464e084ff3b5c0b00aef6"
+            }
+          ],
+          "loop": true
+        },
+        "Walk": {
+          "frames": [
+            {
+              "file": "dinosaur/walk/01.png",
+              "width": 232,
+              "height": 196,
+              "anchor": {
+                "x": 116,
+                "y": 185
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 9,
+              "sha256": "6f64ce0c63ef304f74b03496c7735569dd4c4a8e629db78d26afbfcb5a662412"
+            },
+            {
+              "file": "dinosaur/walk/02.png",
+              "width": 237,
+              "height": 198,
+              "anchor": {
+                "x": 118.5,
+                "y": 186
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 7,
+              "sha256": "3057d115471543831d2fd1cb61ad7f4341419a843b5e84cde035a1aab3ce7567"
+            },
+            {
+              "file": "dinosaur/walk/03.png",
+              "width": 237,
+              "height": 193,
+              "anchor": {
+                "x": 118.5,
+                "y": 181
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 12,
+              "sha256": "4873f42421dbbc7ce8dda85d89cc73404ecd308acf4c7f924f86df3166706ac9"
+            },
+            {
+              "file": "dinosaur/walk/04.png",
+              "width": 229,
+              "height": 198,
+              "anchor": {
+                "x": 114.5,
+                "y": 185
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 10,
+              "sha256": "41d8dc0cf60be2a63575200dc949b0513fe5ec994f78753d28b416b38a283d13"
+            }
+          ],
+          "loop": true
+        },
+        "Bite": {
+          "frames": [
+            {
+              "file": "dinosaur/bite/01.png",
+              "width": 230,
+              "height": 195,
+              "anchor": {
+                "x": 115,
+                "y": 185
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 13,
+              "sha256": "5c0bf4d2d5649b270ab174aa820155b11d1219168b640d9412b0b4bdb6a4e633"
+            },
+            {
+              "file": "dinosaur/bite/02.png",
+              "width": 256,
+              "height": 188,
+              "anchor": {
+                "x": 128,
+                "y": 178
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 17,
+              "sha256": "b2c41d47dbf685622467cd15a357220e815b1805b5870e995a1b8dec286b4b6c"
+            },
+            {
+              "file": "dinosaur/bite/03.png",
+              "width": 221,
+              "height": 192,
+              "anchor": {
+                "x": 110.5,
+                "y": 179
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 16,
+              "sha256": "6038a2cd90440d7458decd206c73d18bffce86c4fc231fb6a47928abcb7aacf1"
+            },
+            {
+              "file": "dinosaur/bite/04.png",
+              "width": 245,
+              "height": 193,
+              "anchor": {
+                "x": 122.5,
+                "y": 183
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 14,
+              "sha256": "1b64a1c651f2b567a5828f33474b3995225a40a7821b0516a244e94fdddce34c"
+            }
+          ],
+          "loop": false
+        },
+        "Rush": {
+          "frames": [
+            {
+              "file": "corrections/dinosaur-rush-review/01.png",
+              "width": 437,
+              "height": 362,
+              "anchor": {
+                "x": 218.5,
+                "y": 349
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 1,
+              "sha256": "ea675b12e388ca3e847eea329634ff19abd845aac0e370eedb5d25b3efe6317c"
+            },
+            {
+              "file": "corrections/dinosaur-rush-review/02.png",
+              "width": 455,
+              "height": 302,
+              "anchor": {
+                "x": 227.5,
+                "y": 290
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 3,
+              "sha256": "4924cdea83cc752e5a09fd3f055afa4d7edb36208d1e295180be241e19ef5a8a"
+            },
+            {
+              "file": "corrections/dinosaur-rush-review/03.png",
+              "width": 471,
+              "height": 303,
+              "anchor": {
+                "x": 235.5,
+                "y": 294
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 2,
+              "sha256": "b3e9bafdd1d8be4ad7cdaf2dcfa6779b38fce7e68043484766c65922cd5b040b"
+            },
+            {
+              "file": "corrections/dinosaur-rush-review/04.png",
+              "width": 550,
+              "height": 270,
+              "anchor": {
+                "x": 275,
+                "y": 342
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 5,
+              "sha256": "ac6c7a241272b05cecb96d2a71be0d34a00f276e4b2afa6b65f123e19406c98e"
+            },
+            {
+              "file": "corrections/dinosaur-rush-review/05.png",
+              "width": 454,
+              "height": 300,
+              "anchor": {
+                "x": 227,
+                "y": 305
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 6,
+              "sha256": "a0c83f8099d52776224e49f6c6ecf866b32e3b12721a8fb688c6c600997e942a"
+            },
+            {
+              "file": "corrections/dinosaur-rush-review/06.png",
+              "width": 436,
+              "height": 358,
+              "anchor": {
+                "x": 218,
+                "y": 345
+              },
+              "displayScale": 0.5355029585798816,
+              "source": "corrections/dinosaur-rush-review.png",
+              "sourceComponent": 4,
+              "sha256": "0d9c90a7e320212fd4457e57cb167a8fc0e7d0c097cf6eda48f7f0e809b0a149"
+            }
+          ],
+          "loop": false,
+          "correction": "dinosaur-rush-review"
+        },
+        "Hit": {
+          "frames": [
+            {
+              "file": "dinosaur/hit/01.png",
+              "width": 212,
+              "height": 208,
+              "anchor": {
+                "x": 106,
+                "y": 200
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 25,
+              "sha256": "bc1e96565e55bb446c657fc85eda2d9454bd6be666e3b796927ed2b75e921395"
+            },
+            {
+              "file": "dinosaur/hit/02.png",
+              "width": 230,
+              "height": 183,
+              "anchor": {
+                "x": 115,
+                "y": 179
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 28,
+              "sha256": "4f8e8360280618ae454b017d72d3764672990dd11a29a9b3ec674c565bcfadb6"
+            },
+            {
+              "file": "dinosaur/hit/03.png",
+              "width": 229,
+              "height": 164,
+              "anchor": {
+                "x": 114.5,
+                "y": 156
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 30,
+              "sha256": "8b677018e76a743a0dc4c73f7df402af6c5f0f95cefa0c7e40775aef59d228cd"
+            },
+            {
+              "file": "dinosaur/hit/04.png",
+              "width": 215,
+              "height": 198,
+              "anchor": {
+                "x": 107.5,
+                "y": 185
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 27,
+              "sha256": "b36235d32dce1c9239cf0d4c8fcd97b383f7199489b8e866f1f27ec87ff16ef0"
+            }
+          ],
+          "loop": false
+        },
+        "Death": {
+          "frames": [
+            {
+              "file": "dinosaur/death/01.png",
+              "width": 230,
+              "height": 171,
+              "anchor": {
+                "x": 115,
+                "y": 158
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 32,
+              "sha256": "84a3ed19f4e58b8e054635be2819b07ad957712d15a81cebe566d6597a5f4caa"
+            },
+            {
+              "file": "dinosaur/death/02.png",
+              "width": 232,
+              "height": 141,
+              "anchor": {
+                "x": 116,
+                "y": 129
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 33,
+              "sha256": "286828421ee721c2e58ffef2f9c5771e363753df2d2485fd3dc91c54031aa8e0"
+            },
+            {
+              "file": "dinosaur/death/03.png",
+              "width": 238,
+              "height": 125,
+              "anchor": {
+                "x": 119,
+                "y": 113
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 35,
+              "sha256": "3321956b967c15020ad64896b854c7b889090d978ad517d0421480c6bef69b3a"
+            },
+            {
+              "file": "dinosaur/death/04.png",
+              "width": 254,
+              "height": 130,
+              "anchor": {
+                "x": 127,
+                "y": 118
+              },
+              "displayScale": 1,
+              "source": "dinosaur-v2.png",
+              "sourceComponent": 34,
+              "sha256": "e1df5f14ad51ccb613ebc87be86315af0ed1bab465d407b51ea821693ff40b9a"
+            }
+          ],
+          "loop": false
+        }
+      }
+    },
+    "bear": {
+      "animations": {
+        "Idle": {
+          "frames": [
+            {
+              "file": "bear/idle/01.png",
+              "width": 144,
+              "height": 177,
+              "anchor": {
+                "x": 72,
+                "y": 165
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 4,
+              "sha256": "13b2bfd7e2ce470801f331839ad5790c073c9e65014ff9007aa6f8e47d30e355"
+            },
+            {
+              "file": "bear/idle/02.png",
+              "width": 145,
+              "height": 182,
+              "anchor": {
+                "x": 72.5,
+                "y": 170
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 1,
+              "sha256": "1ff9414f747252ce354e46885c8eb6c48a40ce54f56a5cc982af80d50e79e700"
+            },
+            {
+              "file": "bear/idle/03.png",
+              "width": 141,
+              "height": 177,
+              "anchor": {
+                "x": 70.5,
+                "y": 165
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 5,
+              "sha256": "3f228b4caa6eae871b149119a9a892f6dc0413ee326fedc962a960b7f1caab75"
+            },
+            {
+              "file": "bear/idle/04.png",
+              "width": 145,
+              "height": 176,
+              "anchor": {
+                "x": 72.5,
+                "y": 163
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 6,
+              "sha256": "f965d01b36747872ef3a80b534cad7510c40891db1cb1ba753394981ec0f0aba"
+            },
+            {
+              "file": "bear/idle/05.png",
+              "width": 143,
+              "height": 178,
+              "anchor": {
+                "x": 71.5,
+                "y": 167
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 2,
+              "sha256": "16519fdaec2c3dca7aba4bf5764ffbf853d7b9a5ce5fea7e3394bb26d0504f05"
+            },
+            {
+              "file": "bear/idle/06.png",
+              "width": 141,
+              "height": 179,
+              "anchor": {
+                "x": 70.5,
+                "y": 166
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 3,
+              "sha256": "6913b5809e08628bc8431e6b0770c4ddc9d5cde18896bbce4359325690624289"
+            }
+          ],
+          "loop": true
+        },
+        "Walk": {
+          "frames": [
+            {
+              "file": "bear/walk/01.png",
+              "width": 148,
+              "height": 192,
+              "anchor": {
+                "x": 74,
+                "y": 180
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 7,
+              "sha256": "8eabab1cd3d05a12dfb90f85f95463c5f8763a656c0a3b9858a2606b44663b03"
+            },
+            {
+              "file": "bear/walk/02.png",
+              "width": 157,
+              "height": 188,
+              "anchor": {
+                "x": 78.5,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 9,
+              "sha256": "5475442f7f403de3303d98f3c1e87a293828e15a29a76c2c2ab3f8fbb727502d"
+            },
+            {
+              "file": "bear/walk/03.png",
+              "width": 150,
+              "height": 192,
+              "anchor": {
+                "x": 75,
+                "y": 179
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 8,
+              "sha256": "43cddaa93d58aef01f691e8ef10ca0752b5d95a3b829e16e173b5049913a6d27"
+            },
+            {
+              "file": "bear/walk/04.png",
+              "width": 156,
+              "height": 182,
+              "anchor": {
+                "x": 78,
+                "y": 174
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 11,
+              "sha256": "9021a743544af21180cb8538d6ac24185396a22e945a9a93e143d573993541a7"
+            },
+            {
+              "file": "bear/walk/05.png",
+              "width": 155,
+              "height": 188,
+              "anchor": {
+                "x": 77.5,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 10,
+              "sha256": "7f3129083dd8c3b0ebd0f9fcfe10f5920aa758a2962b32f54110bf7d945c8580"
+            },
+            {
+              "file": "bear/walk/06.png",
+              "width": 145,
+              "height": 184,
+              "anchor": {
+                "x": 72.5,
+                "y": 174
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 12,
+              "sha256": "ec96860234f1ce25170e2bcbdf499a399478a540b30e2e4793f1c3f7d5644080"
+            }
+          ],
+          "loop": true
+        },
+        "Bear Hug": {
+          "frames": [
+            {
+              "file": "bear/bear-hug/01.png",
+              "width": 143,
+              "height": 181,
+              "anchor": {
+                "x": 71.5,
+                "y": 174
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 16,
+              "sha256": "267b18a3fee7cab3074a0267791bd5020270aa67a5ebfc86f65cd8405cb0e1bd"
+            },
+            {
+              "file": "bear/bear-hug/02.png",
+              "width": 188,
+              "height": 185,
+              "anchor": {
+                "x": 94,
+                "y": 178
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 13,
+              "sha256": "61f4e723542d22672d2573f0142fc55d272d265e73e02513caaedffcdb57db53"
+            },
+            {
+              "file": "bear/bear-hug/03.png",
+              "width": 182,
+              "height": 184,
+              "anchor": {
+                "x": 91,
+                "y": 174
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 17,
+              "sha256": "32208158eedaa4e1ede9b362389ac9ecedceb543ec7d722dc5d17d590971b561"
+            },
+            {
+              "file": "bear/bear-hug/04.png",
+              "width": 149,
+              "height": 180,
+              "anchor": {
+                "x": 74.5,
+                "y": 174
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 18,
+              "sha256": "fe60f01d50ee4f74034d91d482434b0db40eeb2ef1e1d5fca9d4127f120bc602"
+            },
+            {
+              "file": "bear/bear-hug/05.png",
+              "width": 171,
+              "height": 184,
+              "anchor": {
+                "x": 85.5,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 15,
+              "sha256": "d350e6aad67b4c6a51ed616f573ee7494573eb85e10ccbc10f3d6e610d320ae8"
+            },
+            {
+              "file": "bear/bear-hug/06.png",
+              "width": 134,
+              "height": 190,
+              "anchor": {
+                "x": 67,
+                "y": 177
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 14,
+              "sha256": "68b84f53d34b093a0b352e12ac20b36cb81edca34d70b42dd37ca7385d31d9e0"
+            }
+          ],
+          "loop": false
+        },
+        "Belly Charge": {
+          "frames": [
+            {
+              "file": "bear/belly-charge/01.png",
+              "width": 174,
+              "height": 168,
+              "anchor": {
+                "x": 87,
+                "y": 165
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 23,
+              "sha256": "4393f61fdf6eabcebaad43c10d3a71a6e522ecb71add8086c40cb815ce778812"
+            },
+            {
+              "file": "bear/belly-charge/02.png",
+              "width": 177,
+              "height": 157,
+              "anchor": {
+                "x": 88.5,
+                "y": 155
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 24,
+              "sha256": "a2a3c7c21358a99b189c097fc4eb22a9df2d4b6cecd2c78a609d028a01bcb5d2"
+            },
+            {
+              "file": "bear/belly-charge/03.png",
+              "width": 168,
+              "height": 183,
+              "anchor": {
+                "x": 84,
+                "y": 173
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 21,
+              "sha256": "fe58dfe8c2ab122e631d770defe604b7889a66500231a184de5805f1f33d0c6d"
+            },
+            {
+              "file": "bear/belly-charge/04.png",
+              "width": 185,
+              "height": 185,
+              "anchor": {
+                "x": 92.5,
+                "y": 184
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 19,
+              "sha256": "92f12fbfba8c43a069fda0c0a81b2af081c50cecbc8b1965d73d5928a03509e1"
+            },
+            {
+              "file": "bear/belly-charge/05.png",
+              "width": 170,
+              "height": 176,
+              "anchor": {
+                "x": 85,
+                "y": 166
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 22,
+              "sha256": "9b01111882e399fc11b5b8446091bad4f82da236ba2eb8bebebbb4aa7c073c46"
+            },
+            {
+              "file": "bear/belly-charge/06.png",
+              "width": 133,
+              "height": 189,
+              "anchor": {
+                "x": 66.5,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 20,
+              "sha256": "aa7a8c80bfcca6727107d3eb507bbab35e355f1c84c307a7e0048cda2fb8831d"
+            }
+          ],
+          "loop": false
+        },
+        "Toy Leap": {
+          "frames": [
+            {
+              "file": "bear/toy-leap/01.png",
+              "width": 158,
+              "height": 156,
+              "anchor": {
+                "x": 79,
+                "y": 143
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 29,
+              "sha256": "f702896b85b225c77059d733294b33c23400c0b3d88f35bc575246e6413f5685"
+            },
+            {
+              "file": "bear/toy-leap/02.png",
+              "width": 188,
+              "height": 197,
+              "anchor": {
+                "x": 94,
+                "y": 184
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 27,
+              "sha256": "71cf08aa6d0d47b3148603423ab4946b604de53b2f343db4b78ad8bdeac2bcbb"
+            },
+            {
+              "file": "bear/toy-leap/03.png",
+              "width": 171,
+              "height": 181,
+              "anchor": {
+                "x": 85.5,
+                "y": 186
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 26,
+              "sha256": "c0d156a52813e7a2e759e7222d64518600f74aab0083b78643eb7e240039db98"
+            },
+            {
+              "file": "bear/toy-leap/04.png",
+              "width": 184,
+              "height": 170,
+              "anchor": {
+                "x": 92,
+                "y": 189
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 25,
+              "sha256": "6a6da10f754e5ca820e0688cb8308e5ef72a2d8ae131a89983554039df3dc223"
+            },
+            {
+              "file": "bear/toy-leap/05.png",
+              "width": 174,
+              "height": 175,
+              "anchor": {
+                "x": 87,
+                "y": 170
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 28,
+              "sha256": "202769c08270883b433024f59939b196d00d9be23f402f51db3afc064c049ff3"
+            },
+            {
+              "file": "bear/toy-leap/06.png",
+              "width": 167,
+              "height": 135,
+              "anchor": {
+                "x": 83.5,
+                "y": 125
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 30,
+              "sha256": "ddbea09a974979d7f98e210dde01068d480a831c40494e8dc1091872c025d266"
+            }
+          ],
+          "loop": false
+        },
+        "Hit": {
+          "frames": [
+            {
+              "file": "bear/hit/01.png",
+              "width": 155,
+              "height": 189,
+              "anchor": {
+                "x": 77.5,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 33,
+              "sha256": "a52f73fd4af3f6ae18bc0fee0a1f424815afa1bc2a160e5f6e0abdb678578a16"
+            },
+            {
+              "file": "bear/hit/02.png",
+              "width": 186,
+              "height": 189,
+              "anchor": {
+                "x": 93,
+                "y": 176
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 34,
+              "sha256": "dd737e6976263b06753e6b27400c65f417651bc248a498ba5cae0e2184bc0b17"
+            },
+            {
+              "file": "bear/hit/03.png",
+              "width": 158,
+              "height": 199,
+              "anchor": {
+                "x": 79,
+                "y": 188
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 31,
+              "sha256": "fe07086e851aab61a69833926d5875850d0ab04017bbb54e7f774025653e2fde"
+            },
+            {
+              "file": "bear/hit/04.png",
+              "width": 165,
+              "height": 182,
+              "anchor": {
+                "x": 82.5,
+                "y": 172
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 35,
+              "sha256": "101acf751e37c810c49ee8489222c0d34626bd8354d2f46608df14a99146c7d0"
+            },
+            {
+              "file": "bear/hit/05.png",
+              "width": 155,
+              "height": 169,
+              "anchor": {
+                "x": 77.5,
+                "y": 164
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 36,
+              "sha256": "835d0310615cf94aae7b40a9db57073b3affee019db8ee36756959f72a47d5ec"
+            },
+            {
+              "file": "bear/hit/06.png",
+              "width": 151,
+              "height": 189,
+              "anchor": {
+                "x": 75.5,
+                "y": 177
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 32,
+              "sha256": "9d5b8ffb5812956552dc6ce7e3560520b9d43113db59522b59bb04801bf6ccdf"
+            }
+          ],
+          "loop": false
+        },
+        "Enrage": {
+          "frames": [
+            {
+              "file": "bear/enrage/01.png",
+              "width": 147,
+              "height": 188,
+              "anchor": {
+                "x": 73.5,
+                "y": 184
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 40,
+              "sha256": "3acbede2979729973a26dcb3e24422ad8969a50c7a2b1fdfd47760a8fae1cec9"
+            },
+            {
+              "file": "bear/enrage/02.png",
+              "width": 150,
+              "height": 190,
+              "anchor": {
+                "x": 75,
+                "y": 185
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 39,
+              "sha256": "fceb351931c7a3eda52d95d642fa3b73a3a4719cb81bb27a213a67be4237c452"
+            },
+            {
+              "file": "bear/enrage/03.png",
+              "width": 169,
+              "height": 188,
+              "anchor": {
+                "x": 84.5,
+                "y": 184
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 41,
+              "sha256": "2c049b2ee5fda3b47181ca1a1f9936b39bad698a5311e5043c4e77a70d0bea90"
+            },
+            {
+              "file": "bear/enrage/04.png",
+              "width": 170,
+              "height": 200,
+              "anchor": {
+                "x": 85,
+                "y": 190
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 38,
+              "sha256": "8f7d2aa47dbc34bf01da01637d5729d9463a939405dbe272909a9cf8e7d5b69b"
+            },
+            {
+              "file": "bear/enrage/05.png",
+              "width": 188,
+              "height": 207,
+              "anchor": {
+                "x": 94,
+                "y": 194
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 37,
+              "sha256": "9e423f273ea40574cf51c7c5d016d564c7e708adc056eaf0bc781e2e94e20bea"
+            },
+            {
+              "file": "bear/enrage/06.png",
+              "width": 154,
+              "height": 192,
+              "anchor": {
+                "x": 77,
+                "y": 183
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 42,
+              "sha256": "d389ffeff5367c0cec4a420a2d83f36ab0c60a1df16a78b38bfc73699b827c10"
+            }
+          ],
+          "loop": true
+        },
+        "Death": {
+          "frames": [
+            {
+              "file": "bear/death/01.png",
+              "width": 145,
+              "height": 196,
+              "anchor": {
+                "x": 72.5,
+                "y": 183
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 43,
+              "sha256": "bf79dcde9ac4d67a148076018bb14b5f4df1fc95b4976b8c19dc116b7d1d47f7"
+            },
+            {
+              "file": "bear/death/02.png",
+              "width": 174,
+              "height": 177,
+              "anchor": {
+                "x": 87,
+                "y": 168
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 44,
+              "sha256": "557ee6c6d4c4b349ed6ed0c6da467b1d58c8b6f334ee0b41d50c5fc7bb48b054"
+            },
+            {
+              "file": "bear/death/03.png",
+              "width": 195,
+              "height": 139,
+              "anchor": {
+                "x": 97.5,
+                "y": 133
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 45,
+              "sha256": "47045f2a189da73cc185ff5913e46320a92e1f74e526d19161b0558818751592"
+            },
+            {
+              "file": "bear/death/04.png",
+              "width": 198,
+              "height": 117,
+              "anchor": {
+                "x": 99,
+                "y": 112
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 47,
+              "sha256": "a2c208db66bd180d1e130f1e262169f261852097b285d3e82f2ac748578a13a7"
+            },
+            {
+              "file": "bear/death/05.png",
+              "width": 202,
+              "height": 126,
+              "anchor": {
+                "x": 101,
+                "y": 127
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 46,
+              "sha256": "50b4ba70c0709ebb7f3ea4d574234adddc898cfac9a825276cc7ffd1dc4dc3b3"
+            },
+            {
+              "file": "bear/death/06.png",
+              "width": 200,
+              "height": 112,
+              "anchor": {
+                "x": 100,
+                "y": 112
+              },
+              "displayScale": 1,
+              "source": "bear-v1.png",
+              "sourceComponent": 48,
+              "sha256": "0e8eac045dedf3d2310972e5252fa4bf80d7a3c4a7c5fbf2315ac219cbeffccf"
+            }
+          ],
+          "loop": false
+        }
+      }
+    }
+  }
+}

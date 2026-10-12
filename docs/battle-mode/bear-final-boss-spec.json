@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "status": "Design",
+  "source": "PROMPT 12 — BEAR FINAL BOSS",
+  "name": "Urso",
+  "role": "chefe final",
+  "battleRules": "battle-mode-rules.md",
+  "battleBalance": "battle-balance-spec.json",
+  "lore": {
+    "firstToyEncountered": true,
+    "lastEnemyFaced": true
+  },
+  "hp": {
+    "max": 4,
+    "initial": null
+  },
+  "states": [
+    "IDLE",
+    "APPROACH",
+    "ATTACK",
+    "RETREAT",
+    "ENRAGE"
+  ],
+  "stateTransitions": null,
+  "enrage": {
+    "activationHpEquals": 1,
+    "effects": null,
+    "persistsAfterHealing": null,
+    "reactivationPolicy": null,
+    "newAttacksAllowed": false
+  },
+  "attacks": [
+    {
+      "name": "Bear Hug",
+      "description": "Abraço de curta distância.",
+      "rangeCategory": "curta distância",
+      "range": null
+    },
+    {
+      "name": "Belly Charge",
+      "description": "Investida pesada.",
+      "rangeCategory": null,
+      "range": null
+    },
+    {
+      "name": "Toy Leap",
+      "description": "Salto com impacto.",
+      "rangeCategory": null,
+      "range": null
+    }
+  ],
+  "attackPolicy": {
+    "onlyListedAttacksAllowed": true,
+    "newAttacksInProductionAllowed": false,
+    "selectionAlgorithm": null
+  },
+  "pendingDecisions": [
+    "HP inicial e entrada do chefe",
+    "alcances, velocidades e tempos dos ataques",
+    "trajetória e impacto do salto",
+    "colisões e interação com salto/agachamento",
+    "escolha e frequência dos ataques",
+    "transições de estados",
+    "efeitos de ENRAGE",
+    "persistência de ENRAGE após cura e reativação"
+  ]
+}

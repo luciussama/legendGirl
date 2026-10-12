@@ -1,0 +1,131 @@
+{
+  "version": "1.0",
+  "status": "Design",
+  "priority": "CRITICAL",
+  "source": "PROMPT 10 — TOY ROOM BATTLE MODE",
+  "dependency": {
+    "file": "09-final-homologation.md",
+    "verified": false
+  },
+  "scope": {
+    "designOnly": true,
+    "spritesAuthorized": false,
+    "gameplayCodeAuthorized": false,
+    "integrationAuthorized": false
+  },
+  "arena": {
+    "trigger": "imediatamente após o término da cena de obtenção da espada",
+    "cameraMode": "fixed",
+    "explorationEnds": true,
+    "battleBegins": true,
+    "movementAxis": "horizontal",
+    "depthMovementAllowed": false,
+    "location": "Toy Room",
+    "bounds": null,
+    "cameraFraming": null,
+    "resizeBehavior": null,
+    "initialPositions": null
+  },
+  "controls": {
+    "LEFT": "andar para a esquerda",
+    "RIGHT": "andar para a direita",
+    "UP": "pular",
+    "DOWN": "abaixar",
+    "ATTACK": "atacar com a espada"
+  },
+  "hp": {
+    "unit": "corações",
+    "minimum": 0,
+    "player": {
+      "max": 3,
+      "initial": null
+    },
+    "commonEnemy": {
+      "name": "brinquedo inimigo comum",
+      "max": 2,
+      "initial": null
+    },
+    "boss": {
+      "name": "Urso",
+      "max": 4,
+      "initial": null
+    }
+  },
+  "heartSteal": {
+    "onPlayerDamaged": {
+      "playerHpDelta": -1,
+      "damagingEnemyHpDelta": 1
+    },
+    "onPlayerSwordHit": {
+      "hitEnemyHpDelta": -1,
+      "playerHpDelta": 1
+    },
+    "appliesToBoss": true,
+    "healingCappedAtRecipientMaxHp": true,
+    "excessHealing": "discard",
+    "damageStillAppliesWhenRecipientIsAtMaxHp": true,
+    "objective": "recuperar vida através dos ataques",
+    "repeatedContactPolicy": null,
+    "multiTargetPolicy": null
+  },
+  "winCondition": {
+    "operator": "AND",
+    "conditions": [
+      "todos os brinquedos inimigos derrotados",
+      "Urso derrotado"
+    ]
+  },
+  "loseCondition": {
+    "playerHpEquals": 0
+  },
+  "simultaneousOutcomePriority": null,
+  "balance": {
+    "enemyCount": null,
+    "spawnOrder": null,
+    "waves": null,
+    "enemyAI": null,
+    "movementSpeed": null,
+    "jumpPhysics": null,
+    "crouchBehavior": null,
+    "attackTiming": null,
+    "attackReach": null,
+    "combatHitboxes": null,
+    "invulnerability": null
+  },
+  "pendingDecisions": [
+    "HP inicial",
+    "mapeamento físico e combinações de inputs",
+    "limites, enquadramento e resize da arena",
+    "parâmetros de movimento, salto e agachamento",
+    "quantidade, aparição e IA de inimigos",
+    "tempos, alcance e contatos de combate",
+    "resultados simultâneos",
+    "save/load, reinício e destino após vitória",
+    "verificar homologação dependente"
+  ],
+  "gameplayReferences": [
+    "Street Fighter",
+    "Golden Axe",
+    "Castle Crashers"
+  ],
+  "artReferencesAuthorized": false,
+  "changePolicy": {
+    "rulesFrozen": true,
+    "futurePromptsMayOverrideWithoutApproval": false,
+    "explicitUserApprovalRequiredForChanges": true,
+    "frozenDomains": [
+      "arena",
+      "controls",
+      "hp",
+      "heartSteal",
+      "winCondition",
+      "loseCondition"
+    ]
+  },
+  "enemyCatalog": "toy-enemy-spec.json",
+  "bossSpecification": "bear-final-boss-spec.json",
+  "encounterOrder": {
+    "bossLast": true,
+    "source": "PROMPT 12 — BEAR FINAL BOSS"
+  }
+}

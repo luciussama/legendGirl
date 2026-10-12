@@ -1,6 +1,6 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **06/10/2026**.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **06/10/2026**. Inclusão do design de batalha: **12/10/2026**.
 
 Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
 
@@ -24,6 +24,9 @@ Repositório de referência: [luciussama/legendGirl no GitHub](https://github.co
 14. [Referência detalhada de métodos](REFERENCIA-METODOS.md)
 15. [Dicionário de bibliotecas e dependências](DEPENDENCIAS.md)
 16. [Implementações atuais e fronteiras](#implementações-atuais-e-fronteiras)
+17. [Modo de batalha da Toy Room — design oficial](#modo-de-batalha-da-toy-room--design-oficial)
+18. [Inimigos da Toy Room — design oficial](#inimigos-da-toy-room--design-oficial)
+19. [Urso, chefe final — design oficial](#urso-chefe-final--design-oficial)
 
 ## Primeiro dia e preparação
 
@@ -63,6 +66,7 @@ Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist 
 | [Personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md) | Origem imutável, recortes e regras de animação. |
 | [Arte complementar](../assets/art/dark-room/modern/README.md) | Recursos ilustrados e calibração de apoios. |
 | [Abertura](../assets/art/dark-room/opening/README.md) | Atlas narrativo, tempo e persistência da sequência. |
+| [Regras do modo de batalha](battle-mode/battle-mode-rules.md) | Design oficial congelado da arena, controles, HP, roubo de corações e condições de resultado. |
 
 Comentários, documentação, interface e diagnósticos novos são escritos em português do Brasil. Preserve nomes de APIs, identificadores, comandos e caminhos. Não traduza dependências nem registros históricos externos.
 
@@ -261,6 +265,30 @@ A fábrica `createToyRoom` retorna `update`, `render`, `triggerAction`, `destroy
 
 Móveis e brinquedos iniciais estão no construtor da fase; não procure todo o layout da sala em `config.js`. Adicionar item exige revisar inicialização, interação, contagem de vitória e snapshot/restauração, além do desenho.
 
+### Modo de batalha da Toy Room — design oficial
+
+O diagrama abaixo faz parte da documentação oficial direcionada ao desenvolvedor. Ele descreve o design aprovado, ainda sem implementação: imediatamente após a cena de obtenção da espada, a exploração termina, a câmera fica fixa e a sala se transforma em arena de combate exclusivamente horizontal. CIMA pula e BAIXO abaixa; a menina não anda em profundidade.
+
+![Fluxo oficial do modo de batalha da Toy Room: aquisição da espada, arena horizontal com câmera fixa, controles, HP, vitória, derrota e roubo de corações.](battle-mode/battle-flow-diagram.png)
+
+[Abrir diagrama em resolução original](battle-mode/battle-flow-diagram.png).
+
+Os máximos são 3 corações para a menina, 2 para cada brinquedo inimigo comum e 4 para o Urso. Cada acerto retira 1 coração do alvo e recupera 1 para o atacante, limitado ao próprio máximo; a cura excedente é descartada sem impedir o dano. A derrota ocorre com 0 corações da menina; a vitória exige derrotar todos os brinquedos inimigos e o Urso.
+
+Consulte as [regras canônicas](battle-mode/battle-mode-rules.md) e a [especificação de balanceamento](battle-mode/battle-balance-spec.json) antes de produzir código, sprites ou integração. As regras estão congeladas e não podem ser alteradas por prompts posteriores sem aprovação explícita do usuário. Parâmetros ainda não definidos estão registrados como pendentes; valores `null` na especificação não são defaults de runtime. A dependência `09-final-homologation.md` permanece não verificada, pois o arquivo não foi localizado no workspace.
+
+### Inimigos da Toy Room — design oficial
+
+O [catálogo oficial de inimigos](battle-mode/toy-enemy-design.md), definido pelo PROMPT 11, registra Trem, Robô e Dinossauro, cada um com máximo de 2 corações. O Trem usa `Steam Blast` e `Front Charge`; o Robô usa `Laser Beam` e `Rocket Punch`; o Dinossauro usa `Bite` e `Rush`. As características dos ataques refletem o brinquedo, e cada tipo utiliza exclusivamente seu repertório definido.
+
+Consulte também a [especificação estruturada dos inimigos](battle-mode/toy-enemy-spec.json). Alcances numéricos, tempos e IA continuam pendentes; o repertório do Urso está definido na seção do chefe final. Este catálogo é de design e preserva as regras congeladas de arena, controles, HP e roubo de coração.
+
+### Urso, chefe final — design oficial
+
+O [design oficial do Urso](battle-mode/bear-final-boss-design.md), definido pelo PROMPT 12, estabelece o primeiro brinquedo encontrado como o último inimigo enfrentado. Seu HP máximo é 4 corações; `ENRAGE` ativa no último coração. Os estados oficiais são `IDLE`, `APPROACH`, `ATTACK`, `RETREAT` e `ENRAGE`.
+
+O repertório é exclusivo: `Bear Hug` (abraço de curta distância), `Belly Charge` (investida pesada) e `Toy Leap` (salto com impacto). Nenhum golpe novo pode ser adicionado em produção, inclusive durante ENRAGE. A [especificação estruturada do chefe](battle-mode/bear-final-boss-spec.json) registra os parâmetros pendentes, incluindo o comportamento de ENRAGE quando o Urso recupera corações.
+
 ## Implementações atuais e fronteiras
 
 A implementação usa composição de instâncias e funções por domínio. Os nomes de arquivo abaixo não implicam que todos sejam classes: ViewportController, CameraQaObserver e RuntimeContext são fábricas; DarkRoomNarrative e DarkRoomRenderPipeline exportam funções. As classes dos demais domínios continuam descritas nas tabelas deste manual; suas assinaturas estão na [referência completa](REFERENCIA-METODOS.md).
@@ -451,3 +479,9 @@ Na revisão, confira listeners/RAF, referências preservadas no save, estado nã
 - **CDP:** protocolo usado pelos scripts para controlar o Chrome de QA.
 
 Para localizar uma implementação exata, use a [referência de métodos](REFERENCIA-METODOS.md), organizada por arquivo, com assinatura, tipo da declaração e linha de origem. Funções internas são pontos de leitura, não contratos públicos estáveis. Ao alterar o código, atualize os contratos afetados e as referências de documentação no mesmo trabalho.
+
+## Produção dos sprites de batalha
+
+A [validação de combate do Prompt 14](battle-mode/combat-validation.md) resultou em **FAIL**. Consulte as reprovações e os critérios de nova homologação antes de integrar os recursos.
+
+O catálogo, as referências visuais, o formato das âncoras e as limitações da produção estão em [Produção dos sprites de batalha](battle-mode/battle-sprite-production.md). A [prévia animada](../tests/battle-sprite-review.html) deve ser aberta pelo servidor local. Execute `npm run verify:battle-sprites` para validar os arquivos. O pacote ainda precisa de homologação artística antes da integração.
