@@ -1,13 +1,13 @@
 import { arenaEnemyContact } from '../src/js/toy-room/ArenaCombatContact.js';
 import { ARENA_ENEMIES } from '../src/js/toy-room/ArenaEnemies.js';
 import { runBattleGameplay } from '../tests/battle-gameplay-runner.js';
-import { arenaHUDLayout } from '../src/js/toy-room/ArenaHUD.js';
+import { arenaHUDLayout, renderArenaHUD } from '../src/js/toy-room/ArenaHUD.js';
 import { ArenaAudioProfile } from '../src/js/toy-room/ArenaAudioProfile.js';
 import { ImpactFX } from '../src/js/toy-room/ImpactFX.js';
 import { ARENA_TUNING } from '../src/js/toy-room/ArenaPlayerController.js';
 import { BATTLE_TUNING } from '../src/js/toy-room/ToyRoomBattle.js';
 import { ArenaCamera } from '../src/js/toy-room/ArenaCamera.js';
-import { calculateMobileUILayout } from '../src/js/ui/MobileUILayout.js';
+import { arenaMobileControlsLayout, calculateMobileUILayout, hitArenaMobileControl } from '../src/js/ui/MobileUILayout.js';
 import { ARENA_SCALE, arenaActorBounds } from '../src/js/toy-room/ArenaScale.js';
 import { BATTLE_GIRL_FRAMES } from '../src/js/toy-room/BattleGirlFrames.js';
 import { ToyRoomArenaBuilder } from '../src/js/toy-room/ToyRoomArenaBuilder.js';
@@ -113,8 +113,20 @@ for (const [w,h] of [[320,568],[390,844],[844,390],[1920,1080]]) {
  const boxes=arenaHUDLayout(layout);
  for(const b of [boxes.player,boxes.enemy]) {assert.ok(b.width>0);assert.ok(b.x>=layout.safeLeft);assert.ok(b.x+b.width<=layout.safeRight);assert.ok(b.y+b.height<layout.action.y-layout.action.radius);}
  assert.ok(boxes.player.x+boxes.player.width<boxes.enemy.x,'Barras de vida não se sobrepõem.');
+ const controls=arenaMobileControlsLayout(layout);
+ for(const [direction,button] of Object.entries(controls.directions)) {
+  assert.equal(hitArenaMobileControl(layout,button.x,button.y),direction);
+  assert.ok(button.x-button.radius>=layout.safeLeft&&button.x+button.radius<=layout.safeRight);
+  assert.ok(button.y-button.radius>=layout.safeTop&&button.y+button.radius<=layout.safeBottom);
+ }
+ for(const name of ['sword','special']) {
+  const button=controls[name];
+  assert.equal(hitArenaMobileControl(layout,button.x,button.y),name);
+  assert.ok(button.x-button.width/2>=layout.safeLeft&&button.x+button.width/2<=layout.safeRight);
+  assert.ok(button.y-button.height/2>=layout.safeTop&&button.y+button.height/2<=layout.safeBottom);
+ }
 }
-console.log('APROVADO: HUD heroico dentro da safe area e separado dos controles.');
+console.log('APROVADO: HUD heroico e D-pad/botões de ação dentro da safe area.');
 
 for (const dt of [0.5,1,3]) {
  const r=makeRoom({arenaEnabled:true});r.story.state.swordEquipped=true;
@@ -181,15 +193,25 @@ let enabled=true;const controls=makeRoom({arenaEnabled:true,isInputEnabled:()=>e
 controls.story.state.swordEquipped=true;for(let i=0;i<310;i++)controls.update();
 controls.handleKeyDown({code:'ArrowRight'});const keyX=controls.player.x;controls.update();assert.ok(controls.player.x>keyX);
 controls.handleKeyUp({code:'ArrowRight'});controls.canvas.getBoundingClientRect=()=>({left:0,top:0,width:960,height:540});
-controls.onPointerDown({clientX:100,clientY:430,pointerId:1,pointerType:'touch'});
-controls.onPointerMove({clientX:170,clientY:430,pointerId:1});const touchX=controls.player.x;controls.update();assert.ok(controls.player.x>touchX,'Joystick movimenta na arena.');
+controls.mobilePresentation=true;
+const touchLayout=calculateMobileUILayout(controls.canvas,{left:0,right:960,top:0,bottom:540},1,true);
+const touchDpad=arenaMobileControlsLayout(touchLayout).directions.right;
+controls.onPointerDown({clientX:touchDpad.x,clientY:touchDpad.y,pointerId:1,pointerType:'touch',preventDefault(){}});
+const touchX=controls.player.x;controls.update();assert.ok(controls.player.x>touchX,'Seta tátil move a menina para a direita.');
 controls.onPointerUp({pointerId:1});
 const navDescriptor=Object.getOwnPropertyDescriptor(globalThis,'navigator');
 try {
  const buttons=Array.from({length:16},()=>({pressed:false,value:0}));
  const pad={index:0,connected:true,mapping:'standard',axes:[1,0],buttons};
  Object.defineProperty(globalThis,'navigator',{configurable:true,value:{getGamepads:()=>[pad]}});
- const padX=controls.player.x;controls.update();assert.ok(controls.player.x>padX,'Gamepad movimenta na arena.');
+ const analogX=controls.player.x;controls.update();assert.equal(controls.player.x,analogX,'A arena usa o D-pad, sem depender do analógico.');
+ buttons[15].pressed=true;const dpadX=controls.player.x;controls.update();assert.ok(controls.player.x>dpadX,'D-pad move a menina para a direita.');
+ buttons[15].pressed=false;controls.update();
+ buttons[0].pressed=true;controls.update();assert.ok(controls.battle.state.jump>0,'Xbox A inicia o pulo.');
+ buttons[0].pressed=false;controls.update();
+ let specialPresses=0;controls.arena.special=()=>{specialPresses++;return false;};
+ buttons[3].pressed=true;controls.update();controls.update();assert.equal(specialPresses,1,'Xbox Y aciona o espaço reservado Especial uma vez.');
+ buttons[3].pressed=false;controls.update();
  buttons[2].pressed=true;const oldEvents=controls.battle.state.history.filter(e=>e.event==='SOUND'&&e.sound==='player_attack').length;
  controls.update();controls.update();assert.equal(controls.battle.state.history.filter(e=>e.event==='SOUND'&&e.sound==='player_attack').length,oldEvents+1,'Botão mantido não repete ataque.');
  enabled=false;controls.update(0);const paused=controls.snapshot();controls.update(3);assert.deepEqual(controls.snapshot(),paused,'Pausa preserva transformação e simulação.');assert.equal(controls.touchState.active,false);
@@ -197,7 +219,7 @@ try {
 const loser=makeRoom({arenaEnabled:true});loser.story.state.swordEquipped=true;for(let i=0;i<310;i++)loser.update();
 for(let i=0;i<3000&&loser.battle.state.mode==='BATTLE';i++){const dx=loser.battle.state.enemy.x-loser.player.x;loser.keysDown=Math.abs(dx)>60?{[dx>0?'ArrowRight':'ArrowLeft']:true}:{};loser.update();}
 assert.equal(loser.battle.state.mode,'DEFEAT');for(let i=0;i<100;i++)loser.update();loser.triggerAction();assert.equal(loser.battle.state.mode,'BATTLE');assert.equal(loser.battle.state.player.hp,3,'Derrota permite nova tentativa sem softlock.');
-console.log('APROVADO: teclado, joystick, gamepad, pausa e nova tentativa na arena.');
+console.log('APROVADO: teclado, setas táteis, D-pad Xbox, ações A/X/Y, pausa e nova tentativa na arena.');
 
 for(let index=0;index<4;index++) {
  const fighter=makeRoom({arenaEnabled:true});fighter.story.state.swordEquipped=true;for(let i=0;i<190;i++)fighter.update();

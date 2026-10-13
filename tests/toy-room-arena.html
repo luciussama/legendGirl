@@ -21,5 +21,5 @@ window.arenaTest={room,assets,audio,pause:()=>{automatic=true;},run(){automatic=
 document.querySelector('#auto').onclick=()=>{audio.initAudio();try{status.textContent=JSON.stringify(window.arenaTest.run());}catch(error){status.textContent=error.message;}};
 window.addEventListener('resize',()=>{canvas.width=innerWidth;canvas.height=innerHeight;room.render();});
 function frame(now){if(!automatic){room.update(Math.min(3,(now-last)/1000*60));room.render();}last=now;requestAnimationFrame(frame);}requestAnimationFrame(frame);
-status.textContent='Setas/WASD: mover, pular e abaixar · Espaço/X: espada';document.body.dataset.ready='true';
+status.textContent='D-pad: mover · A: pular · X: espada · Y: especial (em breve) · ↓: abaixar';document.body.dataset.ready='true';
 </script></body></html>

@@ -135,7 +135,14 @@ export class ToyRoomBattle {
     let y = Number(Boolean(k.KeyS || k.ArrowDown)) - Number(Boolean(k.KeyW || k.ArrowUp));
     if (r.gamepadState.active) { x = r.gamepadState.x; y = r.gamepadState.y; }
     if (r.touchState.active) { x = r.touchState.vectorX; y = r.touchState.vectorY; }
-    return { x: Math.abs(x) > 0.18 ? x : 0, up: y < -0.35, down: y > 0.35 };
+    const touchButtons = r.arenaTouchButtons ?? {};
+    if (touchButtons.left || touchButtons.right)
+      x = Number(touchButtons.right) - Number(touchButtons.left);
+    return {
+      x: Math.abs(x) > 0.18 ? x : 0,
+      up: y < -0.35 || Boolean(r.gamepadState.jump || touchButtons.up),
+      down: y > 0.35 || Boolean(touchButtons.down)
+    };
   }
 
   attack() {

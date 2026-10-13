@@ -36,6 +36,45 @@ export function isActionControlHit(layout, x, y) {
   return layout.contains(x, y) && Math.hypot(x - layout.action.x, y - layout.action.y) <= layout.action.radius;
 }
 
+/** Layout dos botões explícitos da arena, independente do joystick exploratório. */
+export function arenaMobileControlsLayout(layout) {
+  const unit = Math.max(0.65, Math.min(layout.scale, layout.usableWidth / 360, layout.usableHeight / 320));
+  const dpadSize = 54 * unit, dpadGap = 5 * unit;
+  const dpadCenterX = layout.safeLeft + 94 * unit;
+  const dpadCenterY = layout.safeBottom - 108 * unit;
+  const actionHeight = 58 * unit;
+  const actionGap = 8 * unit;
+  const swordWidth = 84 * unit, specialWidth = 72 * unit;
+  const actionBottom = layout.safeBottom - 16 * unit;
+  const special = { x:layout.safeRight - (specialWidth / 2 + 8 * unit), y:actionBottom - actionHeight / 2,
+    width:specialWidth, height:actionHeight };
+  const sword = { x:special.x - specialWidth / 2 - actionGap - swordWidth / 2, y:special.y,
+    width:swordWidth, height:actionHeight };
+  return {
+    unit, dpadSize, dpadGap,
+    directions: {
+      left: { x:dpadCenterX - dpadSize - dpadGap, y:dpadCenterY, radius:dpadSize / 2 },
+      right: { x:dpadCenterX + dpadSize + dpadGap, y:dpadCenterY, radius:dpadSize / 2 },
+      up: { x:dpadCenterX, y:dpadCenterY - dpadSize - dpadGap, radius:dpadSize / 2 },
+      down: { x:dpadCenterX, y:dpadCenterY + dpadSize + dpadGap, radius:dpadSize / 2 }
+    },
+    sword, special
+  };
+}
+
+export function hitArenaMobileControl(layout, x, y) {
+  if (!layout.contains(x, y)) return null;
+  const controls = arenaMobileControlsLayout(layout);
+  for (const [direction, button] of Object.entries(controls.directions))
+    if (Math.hypot(x - button.x, y - button.y) <= button.radius) return direction;
+  for (const name of ['sword', 'special']) {
+    const button = controls[name];
+    if (x >= button.x - button.width / 2 && x <= button.x + button.width / 2 &&
+        y >= button.y - button.height / 2 && y <= button.y + button.height / 2) return name;
+  }
+  return null;
+}
+
 /** Recalcula os controles HTML quando barras móveis ou orientação mudam. */
 export function attachMobileUILayout(canvas, host = window) {
   const update = () => {

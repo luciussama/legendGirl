@@ -1,4 +1,4 @@
-import { getMobileUILayout, isActionControlHit } from '../ui/MobileUILayout.js';
+import { getMobileUILayout, hitArenaMobileControl, isActionControlHit } from '../ui/MobileUILayout.js';
 /**
  * ToyRoomPhase.js
  * Controlador principal da Fase da Sala de Brinquedos (estilo Top-Down 2D Legend of Mana).
@@ -330,6 +330,9 @@ export class ToyRoomPhase {
       vectorY: 0,
       pointerId: null
     };
+    this.arenaTouchPointers = new Map();
+    this.arenaTouchButtons = { left:false, right:false, up:false, down:false };
+    this.arenaSpecialButtons = new Map();
 
     // Vincula manipuladores de eventos
     this.onKeyDown = this.handleKeyDown.bind(this);
@@ -408,28 +411,38 @@ export class ToyRoomPhase {
 
   pollGamepad() {
     const input = this.gamepadState;
-    input.x = 0; input.y = 0; input.active = false;
+    input.x = 0; input.y = 0; input.active = false; input.jump = false;
     let pads;
     try { pads = globalThis.navigator?.getGamepads?.() || []; } catch (_) { pads = []; }
     const connected = new Set();
+    const arenaCombat = this.arena?.state.status === 'COMBAT';
     for (const pad of pads) {
       if (!pad || pad.connected === false || (pad.mapping && pad.mapping !== 'standard')) continue;
       connected.add(pad.index);
       const held = index => Boolean(pad.buttons?.[index]?.pressed || pad.buttons?.[index]?.value > 0.5);
-      const x = held(14) || held(15) ? Number(held(15)) - Number(held(14)) : pad.axes?.[0] || 0;
-      const y = held(12) || held(13) ? Number(held(13)) - Number(held(12)) : pad.axes?.[1] || 0;
+      const dpadX = Number(held(15)) - Number(held(14));
+      const dpadY = Number(held(13)) - Number(held(12));
+      const x = arenaCombat ? dpadX : dpadX || pad.axes?.[0] || 0;
+      const y = arenaCombat ? dpadY : dpadY || pad.axes?.[1] || 0;
       const moving = Math.hypot(x, y) > 0.18;
       const button = pad.buttons?.[TOY_ROOM_INPUT.gamepadButton];
       const pressed = Boolean(button?.pressed || button?.value > 0.5);
-      if (moving || pressed || !input.buttons.has(pad.index)) this.tutorial.setDevice('GAMEPAD');
+      const jump = arenaCombat && held(0);
+      const special = arenaCombat && held(3);
+      const wasSpecial = this.arenaSpecialButtons.get(pad.index) || false;
+      if (moving || pressed || jump || special || !input.buttons.has(pad.index)) this.tutorial.setDevice('GAMEPAD');
       if (moving && !input.active) { input.x = x; input.y = y; input.active = true; }
+      if (jump) input.jump = true;
       if (pressed && !input.buttons.get(pad.index)) {
         this.audio?.initAudio?.();
         this.triggerAction();
       }
       input.buttons.set(pad.index, pressed);
+      if (arenaCombat && special && !wasSpecial) this.arena.special();
+      this.arenaSpecialButtons.set(pad.index, special);
     }
     for (const index of input.buttons.keys()) if (!connected.has(index)) input.buttons.delete(index);
+    for (const index of this.arenaSpecialButtons.keys()) if (!connected.has(index)) this.arenaSpecialButtons.delete(index);
     if (!connected.size && this.tutorial.device === 'GAMEPAD')
       this.tutorial.setDevice(this.mobilePresentation ? 'MOBILE_TOUCH' : 'DESKTOP_KEYBOARD_MOUSE');
   }
@@ -438,12 +451,32 @@ export class ToyRoomPhase {
     if (!this.isInputEnabled() || this.story?.inputLocked) return;
     this.tutorial.setDevice(e.pointerType === 'mouse' ? 'DESKTOP_KEYBOARD_MOUSE' : 'MOBILE_TOUCH');
     if (this.audio && this.audio.initAudio) this.audio.initAudio();
-    this.isTouchDevice = true;
+    this.isTouchDevice = e.pointerType === 'touch' || this.mobilePresentation;
 
     const coords = this.getCanvasCoordinates(e);
 
     const layout = getMobileUILayout(this.canvas);
     if (!layout.contains(coords.x, coords.y)) return;
+
+    if (this.arena?.state.status === 'COMBAT' && (this.mobilePresentation || e.pointerType === 'touch' || this.isTouchDevice)) {
+      const control = hitArenaMobileControl(layout, coords.x, coords.y);
+      if (control) {
+        if (e.preventDefault && e.cancelable !== false) e.preventDefault();
+        if (e.stopPropagation) e.stopPropagation();
+        if (control === 'sword') this.triggerAction();
+        else if (control === 'special') this.arena.special();
+        else {
+          const pointerId = e.pointerId ?? 'touch';
+          this.arenaTouchPointers.set(pointerId, control);
+          this.refreshArenaTouchButtons();
+          if (this.canvas && typeof this.canvas.setPointerCapture === 'function' && typeof e.pointerId === 'number') {
+            try { this.canvas.setPointerCapture(e.pointerId); } catch (_) {}
+          }
+        }
+        return;
+      }
+      return;
+    }
 
     // 1. Prioridade Total: Zona do Botão de Ação (Canto Inferior Direito)
     if (this.isActionButtonHit(coords)) {
@@ -515,6 +548,10 @@ export class ToyRoomPhase {
   }
 
   onPointerUp(e) {
+    const pointerId = e.pointerId ?? 'touch';
+    if (e.pointerId === undefined) this.arenaTouchPointers.clear();
+    else this.arenaTouchPointers.delete(pointerId);
+    this.refreshArenaTouchButtons();
     if (this.touchState.active) {
       if (e.pointerId === undefined || this.touchState.pointerId === null || e.pointerId === this.touchState.pointerId) {
         const pointerId = e.pointerId ?? this.touchState.pointerId;
@@ -537,11 +574,18 @@ export class ToyRoomPhase {
 
   clearInput() {
     this.onPointerUp({});
+    this.arenaTouchPointers.clear();
+    this.refreshArenaTouchButtons();
     this.keysDown = {};
     this.player.vx = 0;
     this.player.vy = 0;
     this.player.isMoving = false;
     this.actionBtnPressed = false;
+  }
+
+  refreshArenaTouchButtons() {
+    for (const direction of Object.keys(this.arenaTouchButtons))
+      this.arenaTouchButtons[direction] = [...this.arenaTouchPointers.values()].includes(direction);
   }
 
   spawnSparkles(x, y, count = 12, hue = '#facc15') {

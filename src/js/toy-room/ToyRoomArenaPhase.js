@@ -203,4 +203,8 @@ export class ToyRoomArenaPhase {
     }
     return this.battle.attack();
   }
+  special() {
+    // Reservado para a habilidade especial; não consome turnos nem altera a luta.
+    return false;
+  }
 }
