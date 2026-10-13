@@ -3,7 +3,7 @@ import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
 import { transferHeart, BATTLE_TUNING } from '../src/js/toy-room/ToyRoomBattle.js';
 import { runToyRoomQA } from '../tests/toy-room-qa-runner.js';
 import { runBattleGameplay } from '../tests/battle-gameplay-runner.js';
-const makeRoom = () => new ToyRoomPhase({width:960,height:540,getContext:()=>({})},null,null,()=>{}, {bindInputs:false});
+const makeRoom = () => new ToyRoomPhase({width:960,height:540,getContext:()=>({})},null,null,()=>{}, {bindInputs:false, arenaEnabled:false});
 for (const victimMax of [2,3,4]) for (const attackerMax of [2,3,4]) {
   const victim={hp:victimMax,maxHp:victimMax}, attacker={hp:attackerMax,maxHp:attackerMax};
   assert.ok(transferHeart(victim,attacker)); assert.equal(victim.hp,victimMax-1); assert.equal(attacker.hp,attackerMax);

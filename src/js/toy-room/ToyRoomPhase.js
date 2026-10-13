@@ -15,6 +15,7 @@ import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
 import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
 import { ToyRoomStory } from './ToyRoomStory.js';
+import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
 import { ToyRoomBattle } from './ToyRoomBattle.js';
 
 export class ToyRoomPhase {
@@ -345,6 +346,7 @@ export class ToyRoomPhase {
     this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
     this.story = new ToyRoomStory(this);
     this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
+    this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
   }
 
   setupListeners() {
@@ -582,6 +584,7 @@ export class ToyRoomPhase {
 
   triggerAction() {
     if (!this.isInputEnabled() || this.story?.inputLocked) return;
+    if (this.arena?.active) { this.arena.attack(); return; }
     if (this.battle?.state) { this.battle.attack(); return; }
     const now = performance.now();
     if (now - this.lastActionTime < this.ACTION_DEBOUNCE_MS) {
@@ -721,7 +724,11 @@ export class ToyRoomPhase {
   update(dt = 1.0) {
     if (!this.isInputEnabled()) { this.clearInput(); return; }
     this.pollGamepad();
-    if (!this.battle.state && this.story.swordEquipped) this.battle.activate();
+    if (this.arena?.active) { this.arena.update(dt); return; }
+    if (!this.battle.state && this.story.swordEquipped && !this.arena?.state.completed) {
+      if (this.arena) { this.arena.start(); this.arena.update(dt); return; }
+      this.battle.activate();
+    }
     if (this.battle.state) { this.battle.update(dt); return; }
     // Temporizadores de faixas e transição
     if (this.introAlpha > 0) {
@@ -734,7 +741,9 @@ export class ToyRoomPhase {
       this.victoryBannerTimer -= dt;
     }
     if (this.story?.update(dt)) {
-      if (this.story.swordEquipped && !this.battle.state) this.battle.activate();
+      if (this.story.swordEquipped && !this.battle.state && !this.arena?.state.completed) {
+        if (this.arena) this.arena.start(); else this.battle.activate();
+      }
       return;
     }
 
@@ -937,7 +946,8 @@ export class ToyRoomPhase {
   }
 
   render(options = {}) {
-    if (this.battle.state) { this.battle.render(); return; }
+    if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
+    if (this.battle.state && !options.arenaBackdrop) { this.battle.render(); return; }
     const ctx = this.ctx;
     ctx.save();
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -1124,17 +1134,18 @@ export class ToyRoomPhase {
 
   startTutorial() { this.tutorial.start(); }
 
-  snapshot() {
+  snapshot({ includeArena = true } = {}) {
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
       'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
     const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
     saved.carriedItemId = this.player.carriedItem?.id ?? null;
     saved.toyRoomStory = this.story.snapshot();
     saved.toyRoomBattle = this.battle.snapshot();
+    if (includeArena && this.arena) saved.toyRoomArena = this.arena.snapshot();
     return saved;
   }
 
-  restore(saved) {
+  restore(saved, { preserveArena = false } = {}) {
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
       'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
     for (const key of keys) {
@@ -1153,11 +1164,14 @@ export class ToyRoomPhase {
     this.tutorial.active = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.battle.restore(saved.toyRoomBattle);
-    if (this.battle.state) this.gameplayState = 'TOY_ROOM_BATTLE';
+    if (!preserveArena) this.arena?.restore(saved.toyRoomArena, saved);
+    if (this.arena?.active) this.gameplayState = this.arena.state.status === 'TRANSFORMING' ? 'TOY_ROOM_TRANSFORMING' : 'TOY_ROOM_ARENA';
+    else if (this.battle.state) this.gameplayState = 'TOY_ROOM_BATTLE';
     else if (!this.toyRoomTutorialCompleted && !this.story.swordEquipped) this.startTutorial();
   }
 
   destroy() {
+    this.arena?.audioProfile.leave({ resume: false });
     this.clearInput();
     if (this.audio && this.audio.stopToyRoomMusic) {
       this.audio.stopToyRoomMusic();

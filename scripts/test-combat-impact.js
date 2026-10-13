@@ -3,7 +3,7 @@ import {ToyRoomPhase} from '../src/js/toy-room/ToyRoomPhase.js';
 
 const soundsFor = room => room.audioEvents.map(entry => entry.sound);
 function makeRoom() {
-  const room = new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{},{bindInputs:false});
+  const room = new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{},{bindInputs:false, arenaEnabled:false});
   room.audioEvents = [];
   room.audio = {playCombatSound:sound=>room.audioEvents.push({sound,frame:room.battle.state?.elapsed ?? 0})};
   room.story.state.swordEquipped = true;

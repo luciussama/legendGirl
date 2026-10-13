@@ -1,3 +1,4 @@
+import { PlayerController } from './PlayerController.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { renderRocketPunch, renderBattleCrouch, BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY, battlePlayerJumpOffset, laserProjection, renderTrainWalk, rocketPunchTouchesPlayer } from './BattlePresentation.js';
@@ -38,6 +39,8 @@ export function transferHeart(victim, attacker) {
 export class ToyRoomBattle {
   constructor(room, { loadAssets = true } = {}) {
     this.room = room;
+    this.tuning = BATTLE_TUNING;
+    this.playerController = new PlayerController();
     this.state = null;
     this.images = new Map();
     this.manifest = null;
@@ -87,7 +90,7 @@ export class ToyRoomBattle {
 
   spawn() {
     this.state.transition = null;
-    const s = this.state, actor = BATTLE_ORDER[s.index], maxHp = actor === 'bear' ? 4 : 2;
+    const s = this.state, actor = BATTLE_ORDER[s.index], maxHp = this.presentation?.enemies?.[actor]?.hp ?? (actor === 'bear' ? 4 : 2);
     s.enemy = { actor, hp: maxHp, maxHp, x: 1120, facing: -1, state: 'IDLE', elapsed: 0,
       attackIndex: 0, attack: null, landed: false, enrage: false, enrageShown: false,
       walkSoundTimer: 0 };
@@ -145,7 +148,7 @@ export class ToyRoomBattle {
     }
     if (s.mode !== 'BATTLE' || s.transition || s.cooldown > 0) return false;
     if (!this.room.story.attack()) return false;
-    s.cooldown = BATTLE_TUNING.swordCooldown;
+    s.cooldown = this.tuning.swordCooldown;
     s.attackTime = 12;
     s.swordHit = false;
     this.playCombatSound('player_attack');
@@ -154,7 +157,8 @@ export class ToyRoomBattle {
 
   playCombatSound(sound) {
     const s = this.state;
-    this.room.audio?.playCombatSound?.(sound);
+    if (this.presentation?.onSound) this.presentation.onSound(sound);
+    else this.room.audio?.playCombatSound?.(sound);
     if (s) s.history.push({ event: 'SOUND', sound, frame: Math.floor(s.elapsed) });
   }
 
@@ -184,7 +188,8 @@ export class ToyRoomBattle {
     const s = this.state;
     s.impact = { target, x, y, direction, elapsed: 0, duration: 14, heavy };
     s.combatShake = { elapsed: 0, duration: 10, strength: heavy ? 4 : 2 };
-    s.hitPause = heavy ? 2 : 1;
+    s.hitPause = this.presentation ? (heavy ? 4 : 2) : heavy ? 2 : 1;
+    this.presentation?.onImpact?.(x, y, heavy);
     s.history.push({ event: 'IMPACT', target, frame: Math.floor(s.elapsed), heavy });
   }
 
@@ -206,7 +211,7 @@ export class ToyRoomBattle {
   }
 
   step(dt) {
-    const s = this.state, r = this.room, e = s.enemy, t = BATTLE_TUNING;
+    const s = this.state, r = this.room, e = s.enemy, t = this.tuning;
     if (!this.ready || this.error) return;
     if (s.mode !== 'BATTLE') { s.ending += dt; return; }
     if (s.impact) {
@@ -234,33 +239,9 @@ export class ToyRoomBattle {
     s.immunity = Math.max(0, s.immunity - dt);
     s.attackTime = Math.max(0, s.attackTime - dt);
     r.story.state.attackElapsed = s.attackTime;
-    const input = this.input();
-    if (input.up && !s.upHeld && s.jump === 0) {
-      s.jumpVelocity = t.jumpSpeed;
-      this.playCombatSound('player_jump');
-    }
-    s.upHeld = input.up;
-    const wasAirborne = s.jump > 0;
-    if (s.jumpVelocity !== 0 || s.jump > 0) {
-      s.jump += s.jumpVelocity * dt; s.jumpVelocity -= t.gravity * dt;
-      if (s.jump <= 0) {
-        s.jump = 0; s.jumpVelocity = 0;
-        if (wasAirborne) this.playCombatSound('player_land');
-      }
-    }
-    s.crouching = input.down && s.jump === 0;
-    if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
-    r.player.isMoving = Boolean(input.x && !s.crouching);
-    r.player.x = clamp(r.player.x + (s.crouching ? 0 : input.x * t.speed * dt), t.left + 35, t.right - 35);
-    r.player.y = t.ground - 28;
-    r.player.animTime += dt * 0.22;
-    s.playerStepTimer = Math.max(0, s.playerStepTimer - dt);
-    if (r.player.isMoving && s.playerStepTimer === 0) {
-      this.playCombatSound('player_walk');
-      s.playerStepTimer = 14;
-    }
+    this.playerController.update(this, dt);
     e.elapsed += dt;
-    if (s.attackTime > 0 && s.attackTime <= 8 && !s.swordHit && e.hp > 0) {
+    if (s.attackTime > 0 && s.attackTime <= 8 && !s.swordHit && e.hp > 0 && !(this.presentation && e.state === 'ENRAGE')) {
       const dx = e.x - r.player.x, facing = r.story.state.attackDirection;
       if (dx * facing >= -20 && Math.abs(dx) < t.swordRange && s.jump < 85) {
         s.swordHit = true;
@@ -298,9 +279,9 @@ export class ToyRoomBattle {
     if (e.state === 'IDLE') { if (e.elapsed >= 45) this.setEnemyState('APPROACH'); }
     else if (e.state === 'APPROACH') {
       const attacks = ATTACKS[e.actor], attack = attacks[e.attackIndex % attacks.length];
-      const reach = ['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125;
+      const reach = (['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125) * (t.attackScale ?? 1);
       if (distance > reach) {
-        e.x = clamp(e.x + e.facing * (e.enrage ? 2.6 : 2) * dt, t.left + 40, t.right - 40);
+        e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.speed ?? (e.enrage ? 2.6 : 2)) * (this.presentation && e.enrage ? 1.25 : 1) * dt, t.left + 40, t.right - 40);
         e.walkSoundTimer = Math.max(0, e.walkSoundTimer - dt);
         if (e.walkSoundTimer === 0) {
           this.playCombatSound(`${e.actor}_walk`);
@@ -313,13 +294,13 @@ export class ToyRoomBattle {
     } else if (e.state === 'ATTACK') {
       const active = e.elapsed >= t.windup && e.elapsed < t.windup + t.active;
       const charge = ['Front Charge', 'Rush', 'Belly Charge'].includes(e.attack);
-      if (active && charge) e.x = clamp(e.x + e.facing * 5 * dt, t.left + 40, t.right - 40);
+      if (active && charge) e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.chargeSpeed ?? 5) * dt, t.left + 40, t.right - 40);
       const damaging = e.attack === 'Toy Leap' ? e.elapsed >= 84 && e.elapsed < 96 : active;
       if (damaging && !e.landed && s.immunity === 0) {
-        const range = e.attack === 'Laser Beam' ? 340 : e.attack === 'Rocket Punch' ? 280 : e.attack === 'Steam Blast' ? 280 : e.attack === 'Toy Leap' ? 118 : 110;
+        const range = (e.attack === 'Laser Beam' ? 340 : e.attack === 'Rocket Punch' ? 280 : e.attack === 'Steam Blast' ? 280 : e.attack === 'Toy Leap' ? 118 : 110) * (t.attackScale ?? 1);
         const signed = (r.player.x - e.x) * e.facing;
-        const dodge = s.jump > 65 || (s.crouching && e.attack === 'Laser Beam');
-        const rocketContact = e.attack === 'Rocket Punch' && this.manifest
+        const dodge = this.presentation?.enemyContact ? !this.presentation.enemyContact(s,e) : s.jump > 65 || (s.crouching && e.attack === 'Laser Beam');
+        const rocketContact = e.attack === 'Rocket Punch' && this.manifest && !this.presentation
           ? rocketPunchTouchesPlayer(
             this.manifest.actors.robot.animations['Rocket Punch'].frames[3],
             this.manifest.actors.robot.animations.Idle.frames[0], e.elapsed, signed,
@@ -361,32 +342,37 @@ export class ToyRoomBattle {
   }
 
   render() {
-    const r = this.room, ctx = r.ctx, layout = getMobileUILayout(r.canvas), s = this.state, t = BATTLE_TUNING;
+    const r = this.room, ctx = r.ctx, layout = getMobileUILayout(r.canvas), s = this.state, t = this.tuning;
     ctx.save(); ctx.clearRect(0, 0, r.canvas.width, r.canvas.height);
     const stageTop = layout.hudBottom + 72 * layout.scale;
     const stageBottom = layout.safeBottom - 16 * layout.scale;
-    const scale = Math.max(0.05, Math.min(layout.usableWidth / 1440, Math.max(1,stageBottom-stageTop) / 400));
+    const frame = this.presentation?.cameraFrame?.(layout);
+    const scale = frame?.scale ?? Math.max(0.05, Math.min(layout.usableWidth / 1440, Math.max(1,stageBottom-stageTop) / 400));
     const shake = s.combatShake;
     const shakeProgress = shake ? shake.elapsed / shake.duration : 1;
     const shakeX = shake ? Math.sin(shake.elapsed * 2.7) * shake.strength * (1 - shakeProgress) : 0;
     const shakeY = shake ? Math.cos(shake.elapsed * 2.1) * shake.strength * 0.35 * (1 - shakeProgress) : 0;
-    const ox = layout.centerX - 800 * scale + shakeX * scale;
+    const ox = frame?.ox ?? layout.centerX - 800 * scale + shakeX * scale;
     const oy = (stageTop + stageBottom) / 2 - 550 * scale;
-    const stageOy = oy + shakeY * scale;
+    const stageOy = frame?.oy ?? oy + shakeY * scale;
     ctx.save(); ctx.translate(ox, stageOy); ctx.scale(scale, scale);
+    if (this.presentation?.renderBackground) this.presentation.renderBackground(ctx);
+    else {
     roomEnvironmentRenderer.renderBackground(ctx, r.ROOM_W, r.ROOM_H, {
       assets: r.assets, environmentSheet: r.environmentFloorTile, environmentRug: r.environmentRug,
       environmentDoor: r.environmentDoor, environmentDetails: r.environmentDetails });
     for (const furniture of r.furniture.filter(item => item.id !== 'toy-chest')) roomEnvironmentRenderer.renderFurniture(ctx, furniture, {
       assets:r.assets,environmentChest:r.environmentChest,environmentTable:r.environmentTable });
+    }
     if (this.ready && !this.error) {
       const drawEnemy = e => {
+        this.presentation?.renderEnemyPresence?.(ctx, e, e.y ?? t.ground);
         const pose = this.enemyPose(e), animation = this.manifest.actors[e.actor].animations[pose];
         const duration = e.state === 'ATTACK' ? t.windup + t.active + t.recovery : e.state === 'DEATH' ? t.death : e.state === 'HIT' ? t.hitRecovery : 48;
         const index = battleAnimationFrame(animation, e, duration);
         const f = animation.frames[index], image = this.images.get(f.file);
         const reference = this.manifest.actors[e.actor].animations.Idle.frames[0];
-        const height = {train:90,robot:100,dinosaur:100,bear:130}[e.actor];
+        const height = {train:90,robot:100,dinosaur:100,bear:130}[e.actor] * (this.presentation?.enemyScale ?? 1);
         const factor = f.displayScale * height / ((reference.height - 24) * reference.displayScale) * (e.transportScale ?? 1);
         const hitProgress = s.impact?.target === 'enemy' ? Math.min(1, s.impact.elapsed / 8) : 1;
         const recoil = s.impact?.target === 'enemy' ? -e.facing * (1 - hitProgress) * 7 : 0;
@@ -396,10 +382,14 @@ export class ToyRoomBattle {
         // O derrotado é transportado inerte; não representa caminhada congelada.
         if (e.carried) ctx.rotate(Math.sin(e.progress * Math.PI * 2) * 0.12);
         if (e.actor === 'train' && pose === 'Walk') {
-          renderTrainWalk(ctx,this.images.get(BATTLE_TRAIN_BODY.file),this.images.get(animation.frames[0].file),e.elapsed,e.transportScale ?? 1);
+          renderTrainWalk(ctx,this.images.get(BATTLE_TRAIN_BODY.file),this.images.get(animation.frames[0].file),e.elapsed,(e.transportScale ?? 1) * (this.presentation?.enemyScale ?? 1));
         } else if (e.state === 'ATTACK' && e.attack === 'Rocket Punch' && e.elapsed >= 44 && e.elapsed < 90) {
           const armFrame = animation.frames[3];
-          renderRocketPunch(ctx, this.images.get(armFrame.file), armFrame, reference, e.elapsed, (r.player.x - e.x) * e.facing,
+          if (this.presentation) {
+            const heroScale = this.presentation.enemyScale;
+            ctx.save(); ctx.scale(heroScale,heroScale);
+            renderRocketPunch(ctx,this.images.get(armFrame.file),armFrame,reference,e.elapsed,((r.player.x-e.x)*e.facing+20)/heroScale);ctx.restore();
+          } else renderRocketPunch(ctx, this.images.get(armFrame.file), armFrame, reference, e.elapsed, (r.player.x - e.x) * e.facing,
             {state:s,player:r.player,attackDirection:r.story.state.attackDirection,enemyFacing:e.facing});
         } else ctx.drawImage(image, -f.anchor.x * factor, -f.anchor.y * factor, f.width * factor, f.height * factor);
         ctx.restore();
@@ -412,18 +402,21 @@ export class ToyRoomBattle {
       // O efeito mostra a região ofensiva na mesma janela em que a colisão é ativa.
       if(!s.transition && e.state==='ATTACK' && e.elapsed>=t.windup && e.elapsed<t.windup+t.active) {
         if(e.attack==='Laser Beam') {
-          const beam=laserProjection(s,r.player,e,r.story.state.attackDirection);
+          const beam=this.presentation ? {start:40,end:340*(t.attackScale ?? 1),height:145} : laserProjection(s,r.player,e,r.story.state.attackDirection);
           ctx.strokeStyle='#ff6666';ctx.lineWidth=8;ctx.lineCap='butt';ctx.beginPath();
           ctx.moveTo(e.x+e.facing*beam.start,t.ground-beam.height);ctx.lineTo(e.x+e.facing*beam.end,t.ground-beam.height);ctx.stroke();
           ctx.strokeStyle='#fff2dd';ctx.lineWidth=3;ctx.stroke();
         } else if(e.attack==='Steam Blast') {
           ctx.fillStyle='rgba(255,241,214,.6)';
-          for(let i=0;i<9;i++) {ctx.beginPath();ctx.arc(e.x+e.facing*(20+i*30),t.ground-45+Math.sin(e.elapsed*.3+i)*8,18+i*1.2,0,Math.PI*2);ctx.fill();}
+          for(let i=0;i<9;i++) {ctx.beginPath();ctx.arc(e.x+e.facing*(20+i*30)*(t.attackScale ?? 1),t.ground-45+Math.sin(e.elapsed*.3+i)*8,18+i*1.2,0,Math.PI*2);ctx.fill();}
         }
       }
       // A frente da caixa encobre a entrada/saída, sem dissolver os brinquedos.
-      roomEnvironmentRenderer.renderFurniture(ctx, this.arenaChest(), {
+      if (!this.presentation) roomEnvironmentRenderer.renderFurniture(ctx, this.arenaChest(), {
         assets:r.assets, environmentChest:r.environmentChest });
+      if (this.presentation?.renderPlayer) this.presentation.renderPlayer(ctx, s, t.ground);
+      else {
+      this.presentation?.renderForeground?.(ctx);
       // Ampliação exclusiva da protagonista, com os pés como referência estável.
       ctx.save(); ctx.translate(r.player.x, t.ground - battlePlayerJumpOffset(s,r.player,r.story.state.attackDirection));
       ctx.scale(BATTLE_PLAYER_VISUAL_SCALE, BATTLE_PLAYER_VISUAL_SCALE);
@@ -440,9 +433,12 @@ export class ToyRoomBattle {
         r.story.renderHeldObject(ctx);
       }
       ctx.restore();
+      }
       if (s.impact) this.renderImpact(ctx, s.impact);
+      this.presentation?.renderFX?.(ctx);
     }
     ctx.restore();
+    if (this.presentation?.renderHUD) { this.presentation.renderHUD(ctx, layout, s); ctx.restore(); return; }
     const ui = layout.scale, x = layout.safeLeft + 16 * ui, y = layout.hudBottom;
     ctx.fillStyle = 'rgba(25,16,38,.92)'; ctx.fillRect(layout.safeLeft, y - 26 * ui, layout.usableWidth, 90 * ui);
     ctx.font = `bold ${16 * ui}px system-ui`; ctx.fillStyle = '#fff2db'; ctx.textAlign = 'left';

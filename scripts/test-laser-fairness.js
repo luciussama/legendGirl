@@ -5,7 +5,7 @@ import{BATTLE_CROUCH_FRAME,laserProjection,battlePlayerJumpOffset}from'../src/js
 const official=PNG.sync.read(fs.readFileSync('assets/art/dark-room/sprites/official-character.png'));
 const low=PNG.sync.read(fs.readFileSync(`assets/art/toy-room/battle/${BATTLE_CROUCH_FRAME.file}`));
 function execute(distance,crouch,i,jump=0){
- const room=new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{}, {bindInputs:false});
+ const room=new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{}, {bindInputs:false, arenaEnabled:false});
  room.story.state.swordEquipped=true;room.update();room.battle.state.index=1;room.battle.spawn();
  const s=room.battle.state,e=s.enemy;e.facing=i%2?-1:1;e.attack='Laser Beam';room.battle.setEnemyState('ATTACK');e.elapsed=53;
  room.player.x=e.x+e.facing*distance;room.player.facing=i%3?'right':'left';s.elapsed=i*6;s.jump=jump;s.jumpVelocity=jump?.3:0;

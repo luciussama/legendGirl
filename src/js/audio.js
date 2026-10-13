@@ -817,7 +817,7 @@ export function createAudioSystem() {
     } catch (e) {}
   }
 
-  function playCombatSound(event) {
+  function playCombatSound(event, arena = false) {
     const sounds = {
       player_walk: [150, 92, 'triangle', 0.045, 0.055],
       player_jump: [390, 650, 'sine', 0.1, 0.14],
@@ -859,7 +859,8 @@ export function createAudioSystem() {
     if (!profile) throw new RangeError(`Som de combate desconhecido: ${event}`);
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
 
-    const [startFrequency, endFrequency, waveform, volume, duration] = profile;
+    let [startFrequency, endFrequency, waveform, volume, duration] = profile;
+    if (arena) { startFrequency *= 0.7; endFrequency *= 0.65; volume = Math.min(0.24, volume * 1.35); duration *= 1.2; }
     const now = state.audioCtx.currentTime;
     const oscillator = state.audioCtx.createOscillator();
     const gain = state.audioCtx.createGain();
@@ -874,6 +875,32 @@ export function createAudioSystem() {
     oscillator.start(now);
     oscillator.stop(now + duration + 0.01);
     return true;
+  }
+
+  const arenaVoices = new Set();
+  function playArenaMusicBeat(beat) {
+    if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
+    const progression = [130.81, 103.83, 116.54, 98];
+    const root = progression[Math.floor(beat / 8) % progression.length];
+    const melody = [2, 2.5, 3, 4, 3, 2.5, 2, 1.5][beat % 8];
+    const now = state.audioCtx.currentTime;
+    for (const [frequency, waveform, volume, duration] of [
+      [root / 2, 'triangle', 0.12, 0.34], [root * melody, 'triangle', 0.065, 0.38],
+      [beat % 4 === 0 ? 70 : 140, 'sine', 0.1, 0.12],
+      [root * 1.5, 'sine', 0.035, 0.42]
+    ]) {
+      const osc = state.audioCtx.createOscillator(), gain = state.audioCtx.createGain();
+      osc.type = waveform; osc.frequency.setValueAtTime(frequency, now);
+      gain.gain.setValueAtTime(volume, now); gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+      osc.connect(gain); gain.connect(getDestination()); registerActiveNode(osc); arenaVoices.add(osc);
+      osc.onended = () => { activeAudioNodes.delete(osc); arenaVoices.delete(osc); osc.disconnect(); gain.disconnect(); };
+      osc.start(now); osc.stop(now + duration);
+    }
+    return true;
+  }
+  function stopArenaMusic() {
+    for (const voice of arenaVoices) { try { voice.stop(); } catch (_) {} }
+    arenaVoices.clear();
   }
 
   return {
@@ -911,6 +938,9 @@ export function createAudioSystem() {
     playOrganizeChime,
     playToyRoomVictory,
     playCombatSound,
+    playArenaSound: event => playCombatSound(event, true),
+    playArenaMusicBeat,
+    stopArenaMusic,
     setMasterVolume,
     getMasterVolume,
     setMuted,

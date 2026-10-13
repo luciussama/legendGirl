@@ -26,7 +26,7 @@ for (let y = 0; y < oldPNG.height; y++) for (let x = 0; x < oldPNG.width; x++)
 const baselineExtent = (oldRight - oldRocket.anchor.x) * oldRocket.displayScale * 100 / ((reference.height - 24) * reference.displayScale);
 const idle = OFFICIAL_FRAMES.idle[0];
 const playerHalfWidth = idle.w / 2 * (80 / 50 + 1 / idle.h) * BATTLE_PLAYER_VISUAL_SCALE;
-const room = new ToyRoomPhase({ width: 960, height: 540, getContext: () => ({}), removeEventListener() {} }, null, null, () => {}, { bindInputs: false });
+const room = new ToyRoomPhase({ width: 960, height: 540, getContext: () => ({}), removeEventListener() {} }, null, null, () => {}, { bindInputs: false, arenaEnabled: false });
 room.story.state.swordEquipped = true; room.update();
 room.battle.state.index = 1; room.battle.spawn();
 const enemy = room.battle.state.enemy;

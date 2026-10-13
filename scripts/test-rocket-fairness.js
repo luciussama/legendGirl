@@ -10,7 +10,7 @@ const samples={close:100,max:100,edge:50};
 for(const [group,count] of Object.entries(samples))for(let i=0;i<count;i++){
  const facing=i%2?1:-1;
  const distance=group==='close'?50+i*.6:group==='max'?279.5+i*.01:i<25?280+(i%2?.02:-.02):-35+(i%2?.02:-.02);
- const room=new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{}, {bindInputs:false});
+ const room=new ToyRoomPhase({width:960,height:540,getContext:()=>({}),removeEventListener(){}},null,null,()=>{}, {bindInputs:false, arenaEnabled:false});
  room.story.state.swordEquipped=true;room.update();room.battle.state.index=1;room.battle.spawn();
  const e=room.battle.state.enemy;e.facing=facing;e.attack='Rocket Punch';room.battle.setEnemyState('ATTACK');e.elapsed=53;
  room.player.x=e.x+facing*distance;room.update();

@@ -15,7 +15,7 @@ import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
 import { BATTLE_TRANSITION_DURATION, BATTLE_ORDER, BATTLE_TUNING } from '../src/js/toy-room/ToyRoomBattle.js';
 import { runBattleGameplay } from '../tests/battle-gameplay-runner.js';
 const make = () => {
- const room = new ToyRoomPhase({width:960,height:540,getContext:()=>({})},null,null,()=>{}, {bindInputs:false});
+ const room = new ToyRoomPhase({width:960,height:540,getContext:()=>({})},null,null,()=>{}, {bindInputs:false, arenaEnabled:false});
  room.story.state.swordEquipped=true; room.update(); return room;
 };
 const initial=make();

@@ -12,7 +12,7 @@ assert.equal(source.split(search).length, 2, 'Alteração limitada a um único a
 // Aproxima o limite da soma entre punho visível e meia largura da menina em 2×.
 const candidate = source.replace(search, "e.attack === 'Rocket Punch' ? 140");
 const roomFor = Battle => {
-  const room = new ToyRoomPhase({ width: 960, height: 540, getContext: () => ({}), removeEventListener() {} }, null, null, () => {}, { bindInputs: false });
+  const room = new ToyRoomPhase({ width: 960, height: 540, getContext: () => ({}), removeEventListener() {} }, null, null, () => {}, { bindInputs: false, arenaEnabled: false });
   room.battle = new Battle(room, { loadAssets: false });
   room.story.state.swordEquipped = true; room.update();
   return room;
