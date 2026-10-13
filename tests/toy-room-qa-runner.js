@@ -75,6 +75,7 @@ export function runToyRoomQA(room, { draw = false, dt = 1 } = {}) {
   check(room.story.state.investigationStage === 'PICKUP', 'A espada não foi alcançada.');
   wait(100); reload(); wait(220);
   check(room.story.swordEquipped, 'Espada não foi equipada após save intermediário.');
+  for (let i = 0; room.arena?.state.status === 'TRANSFORMING' && i < Math.ceil(600 / dt); i++) tick();
   check(room.battle.state?.mode === 'BATTLE', 'O término da cena não ativou a arena.');
   check(room.battle.state.enemy.actor === 'train', 'A arena não começou pelo Trem.');
   reload();

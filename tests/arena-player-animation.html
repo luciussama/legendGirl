@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="pt-BR"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Menina — revisão da animação</title>
+<style>body{margin:0;background:#211b2b;color:#fff0d5;font:15px system-ui}main{max-width:960px;margin:auto;padding:20px}h1{font:26px Georgia;margin:0 0 10px}p{color:#d8c3ae;line-height:1.5}nav{display:flex;gap:12px;align-items:center;flex-wrap:wrap}button,select{font:inherit;border:1px solid #b79368;border-radius:8px;background:#3d2c44;color:#fff0d5;padding:9px 16px}section{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:20px}article{background:#2d2538;border-radius:12px;overflow:hidden}h2{font:18px Georgia;margin:14px 18px 0}canvas{width:100%;display:block}#status{font-size:13px}@media(max-width:520px){main{padding:12px}h1{font-size:22px}section{gap:8px}h2{font-size:16px;margin-left:12px}}</style></head>
+<body><main><h1>A mesma menina, com movimento e peso</h1><p>Corrida com quatro apoios, agachamento articulado e espada com antecipação, corte e recuperação. A arte original permanece preservada.</p><nav><button id="pause">Pausar</button><button id="step">Avançar um quadro</button><label>Velocidade <select id="speed"><option value="1">Normal</option><option value="0.25">25%</option><option value="0.5">50%</option></select></label><output id="status">Carregando poses…</output></nav><section>
+<article><h2>Repouso e orientação</h2><canvas data-pose="idle" width="400" height="320"></canvas></article>
+<article><h2>Contato → apoio → passagem</h2><canvas data-pose="run" width="400" height="320"></canvas></article>
+<article><h2>Agachar e levantar</h2><canvas data-pose="crouch" width="400" height="320"></canvas></article>
+<article><h2>Antecipar → cortar → recuperar</h2><canvas data-pose="attack" width="400" height="320"></canvas></article>
+</section></main>
+<script type="module">
+import {ArenaPlayerRenderer} from '../src/js/toy-room/ArenaPlayerRenderer.js';
+import {createPlayerAnimation,beginArenaPlayerAttack,updateArenaPlayerAnimation,sampleArenaPlayerAnimation} from '../src/js/toy-room/ArenaPlayerAnimation.js';
+const renderer=new ArenaPlayerRenderer();await renderer.load();
+const panels=[...document.querySelectorAll('canvas')].map(canvas=>({canvas,ctx:canvas.getContext('2d'),pose:canvas.dataset.pose,room:{player:{x:170,facing:'right',isMoving:false}},state:null}));
+let frame=0,paused=false,last=performance.now(),accumulator=0;
+const poseNames={idle:'repouso',run:'corrida',crouch:'agachamento',standUp:'levantando',attack:'corte',recovery:'recuperação',jump:'subida',fall:'descida',landing:'pouso',damage:'reação'};
+const reset=()=>{frame=0;for(const p of panels)p.state={mode:'BATTLE',jump:0,jumpVelocity:0,crouching:false,attackTime:0,playerHitTime:0,enemy:{state:'IDLE'},playerAnimation:createPlayerAnimation()};};reset();
+function advance(){for(const p of panels){p.room.player.isMoving=p.pose==='run';p.room.player.facing='right';p.state.crouching=p.pose==='crouch'&&frame%120>=24&&frame%120<84;if(p.pose==='attack'&&frame%48===0)beginArenaPlayerAttack(p.state,1);updateArenaPlayerAnimation(p.state,p.room.player,1);}frame++;}
+function draw(){for(const p of panels){const {ctx,canvas}=p;ctx.clearRect(0,0,canvas.width,canvas.height);ctx.fillStyle='#2d2538';ctx.fillRect(0,0,canvas.width,canvas.height);renderer.render(ctx,p.room,p.state,292);ctx.fillStyle='#cbb799';ctx.font='12px system-ui';ctx.fillText(poseNames[sampleArenaPlayerAnimation(p.state,p.room.player).pose],18,310);}document.querySelector('#status').textContent='Quadro '+frame;}
+window.playerAnimationReview={renderer,panels,pause(){paused=true;document.querySelector('#pause').textContent='Reproduzir';},sampleAt(target){reset();for(let i=0;i<target;i++)advance();draw();},inspect(){return panels.map(p=>({pose:p.pose,sample:sampleArenaPlayerAnimation(p.state,p.room.player)}));}};
+document.querySelector('#pause').onclick=e=>{paused=!paused;e.target.textContent=paused?'Reproduzir':'Pausar';};document.querySelector('#step').onclick=()=>{paused=true;advance();draw();};
+function tick(now){if(!paused){accumulator+=Math.min(100,now-last)*.06*Number(document.querySelector('#speed').value);while(accumulator>=1){advance();accumulator--;}draw();}last=now;requestAnimationFrame(tick);}draw();requestAnimationFrame(tick);document.body.dataset.ready='true';
+</script></body></html>
