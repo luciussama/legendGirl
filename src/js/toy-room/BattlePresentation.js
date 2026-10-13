@@ -1,9 +1,8 @@
 import { BATTLE_PLAYER_BOUNDS, BATTLE_ROCKET_GLOVE_BOUNDS } from './BattlePlayerBounds.js';
-import { drawToySword } from './ToyRoomStory.js';
-import { OFFICIAL_FRAMES } from '../assets/officialCharacter.js';
 
-// Envelope frontal da protagonista em 2×; mantém o alcance lógico já existente.
-export const BATTLE_PLAYER_HALF_WIDTH = OFFICIAL_FRAMES.idle[0].w / 2 * (80 / 50 + 1 / OFFICIAL_FRAMES.idle[0].h) * 2;
+const idleRows = BATTLE_PLAYER_BOUNDS.idle[0].rows.filter(Boolean);
+export const BATTLE_PLAYER_HALF_WIDTH = Math.max(...idleRows.map(([left, right]) =>
+  Math.max(Math.abs(left), Math.abs(right))));
 
 /** Estende apenas a mola e desloca a luva; a referência do torso não acompanha o punho. */
 export function rocketPunchProjection(frame, reference, elapsed, signedDistance, target=null) {
@@ -27,11 +26,11 @@ export function rocketPunchProjection(frame, reference, elapsed, signedDistance,
     for(let gy=0;gy<glove.rows.length;gy++) {
       const g=glove.rows[gy];if(!g)continue;
       const gt=(gy-glove.anchorY)*factor+dy,gb=gt+factor;
-      const firstRow=Math.max(0,Math.floor((gt+body.anchorY+jump)/body.pixelHeight));
-      const lastRow=Math.min(body.rows.length-1,Math.floor((gb+body.anchorY+jump)/body.pixelHeight));
+      const firstRow=Math.max(0,Math.floor((gt+body.anchorOffsetY+jump)/body.pixelHeight));
+      const lastRow=Math.min(body.rows.length-1,Math.floor((gb+body.anchorOffsetY+jump)/body.pixelHeight));
       for(let py=firstRow;py<=lastRow;py++) {
         const b=body.rows[py];if(!b)continue;
-        const bt=py*body.pixelHeight-body.anchorY-jump,bb=bt+body.pixelHeight;
+        const bt=py*body.pixelHeight-body.anchorOffsetY-jump,bb=bt+body.pixelHeight;
         if(gt>=bb || gb<=bt)continue;
         const left=body.facing*target.enemyFacing<0?-b[1]:b[0],right=body.facing*target.enemyFacing<0?-b[0]:b[1];
         min=Math.min(min,g[0]*factor-right);max=Math.max(max,g[1]*factor-left);
@@ -60,12 +59,12 @@ export function rocketPunchTouchesPlayer(frame, reference, elapsed, signedDistan
     if (!gloveRow) continue;
     const top = (gloveY - glove.anchorY) * projection.factor + projection.verticalShift;
     const bottom = top + projection.factor;
-    const firstBodyRow = Math.max(0, Math.floor((top + body.anchorY + jump) / body.pixelHeight));
-    const lastBodyRow = Math.min(body.rows.length - 1, Math.floor((bottom + body.anchorY + jump) / body.pixelHeight));
+    const firstBodyRow = Math.max(0, Math.floor((top + body.anchorOffsetY + jump) / body.pixelHeight));
+    const lastBodyRow = Math.min(body.rows.length - 1, Math.floor((bottom + body.anchorOffsetY + jump) / body.pixelHeight));
     for (let bodyY = firstBodyRow; bodyY <= lastBodyRow; bodyY++) {
       const bodyRow = body.rows[bodyY];
       if (!bodyRow) continue;
-      const bodyTop = bodyY * body.pixelHeight - body.anchorY - jump;
+      const bodyTop = bodyY * body.pixelHeight - body.anchorOffsetY - jump;
       const bodyBottom = bodyTop + body.pixelHeight;
       if (top >= bodyBottom || bottom <= bodyTop) continue;
       const bodyLeft = facing < 0 ? -bodyRow[1] : bodyRow[0];
@@ -96,26 +95,32 @@ export function renderRocketPunch(ctx, image, frame, reference, elapsed, signedD
     p.left,armY,(frame.width-source.glove)*factor,source.height*factor);
 }
 
-// A pose baixa possui geometria própria; a personagem mantém proporções naturais.
 export const BATTLE_LASER_HEIGHT = 85;
-export const BATTLE_CROUCH_FRAME = { file:'certification/girl-low-crouch-v1.png', x:329,y:357,w:973,h:634,displayHeight:80 };
-export const BATTLE_JUMP_VISUAL_SCALE = (BATTLE_LASER_HEIGHT + 4 - 3.24) / 65;
-export function renderBattleCrouch(ctx,image,player,attackTime,attackDirection) {
-  const f=BATTLE_CROUCH_FRAME, height=f.displayHeight/2, width=height*f.w/f.h;
-  ctx.save();ctx.translate(player.x,690);ctx.scale(player.facing==='left'?-1:1,1);
-  ctx.drawImage(image,f.x,f.y,f.w,f.h,-width/2,-height,width,height);ctx.restore();
-  const progress=attackTime>0?1-attackTime/12:0.5;
-  const facing=attackTime>0?attackDirection:player.facing==='left'?-1:1;
-  const angle=(facing<0?Math.PI:0)+(progress-0.5)*1.7*facing;
-  drawToySword(ctx,player.x+facing*15,690-10,angle+Math.PI/2,0.72);
+/** Retorna o quadro conceitual desenhado e usado pela projeção dos ataques. */
+export function battlePlayerFrame(state,player,attackDirection) {
+  const pose=state.playerHitTime>0?'damage':state.attackTime>0?'attack':state.crouching?'crouch':
+    state.jump>0?(state.jumpVelocity>0?'jump':'fall'):player.isMoving?'run':'idle';
+  const frames=BATTLE_PLAYER_BOUNDS[pose];
+  const index=pose==='attack'?Math.min(frames.length-1,Math.floor((1-state.attackTime/12)*frames.length)):
+    Math.floor(state.elapsed/6)%frames.length;
+  const facing=pose==='attack'?attackDirection
+    :pose==='idle'?(player.facing==='left'?1:-1)
+      :player.facing==='left'?-1:1;
+  return { ...frames[index], pose, facing };
 }
 
-/** Metadados do mesmo quadro apresentado, incluindo orientação e ponto dos pés. */
+export function renderBattleGirl(ctx,image,state,player,feetY,attackDirection) {
+  if(!ctx||!image)return false;
+  const frame=battlePlayerFrame(state,player,attackDirection);
+  const height=frame.pose==='crouch'?40:80,scale=height/frame.height;
+  ctx.save();ctx.translate(player.x,feetY);ctx.scale(frame.facing,1);
+  ctx.drawImage(image,-frame.anchorX*scale,-frame.anchorY*scale,frame.width*scale,frame.height*scale);
+  ctx.restore();
+  return true;
+}
+
 function playerModel(state,player,attackDirection) {
-  const pose=state.crouching?'crouch':state.attackTime>0?'attack':state.jump>0?(state.jumpVelocity>0?'jump':'fall'):player.isMoving?'run':'idle';
-  const frames=BATTLE_PLAYER_BOUNDS[pose];
-  const index=pose==='crouch'?0:pose==='attack'?Math.min(7,Math.floor((1-state.attackTime/12)*8)):Math.floor(state.elapsed/6)%frames.length;
-  return { ...frames[index], facing:pose==='attack'?attackDirection:player.facing==='left'?-1:1 };
+  return battlePlayerFrame(state,player,attackDirection);
 }
 export function battlePlayerJumpOffset(state,player,attackDirection) {
   const frame=playerModel(state,player,attackDirection);
@@ -127,11 +132,11 @@ export function laserProjection(state,player,enemy,attackDirection) {
   const bounds=[];
   const top=BATTLE_LASER_HEIGHT+4-jump, bottom=BATTLE_LASER_HEIGHT-4-jump;
   for(let y=0;y<frame.rows.length;y++){
-    const row=frame.rows[y],rowTop=frame.anchorY-y*frame.pixelHeight,rowBottom=rowTop-frame.pixelHeight;
+    const row=frame.rows[y],rowTop=frame.anchorOffsetY-y*frame.pixelHeight,rowBottom=rowTop-frame.pixelHeight;
     if(row && rowTop>=bottom && rowBottom<=top)bounds.push(row);
   }
   const fallback=BATTLE_PLAYER_BOUNDS.idle[0];
-  const rows=bounds.length?bounds:[fallback.rows[Math.floor((fallback.anchorY-BATTLE_LASER_HEIGHT)/fallback.pixelHeight)]];
+  const rows=bounds.length?bounds:[fallback.rows[Math.floor((fallback.anchorOffsetY-BATTLE_LASER_HEIGHT)/fallback.pixelHeight)]];
   let left=Math.min(...rows.map(row=>row[0])),right=Math.max(...rows.map(row=>row[1]));
   if(frame.facing*enemy.facing<0)[left,right]=[-right,-left];
   return {start:-35+right,end:340+left,height:BATTLE_LASER_HEIGHT,halfHeight:4,bodyLeft:left,bodyRight:right};

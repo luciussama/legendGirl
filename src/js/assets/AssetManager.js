@@ -55,13 +55,9 @@ export class AssetManager {
       const image = new Image();
       image.onload = () => {
         try {
-          const processedImage = key === 'toy-room-player-sheet'
-            ? this.removeSolidBackground(image)
-            : key === 'toy-room-environment-sheet'
-              ? this.removeSolidBackground(image, 'dark')
-            : key === 'toy-room-player-back-sheet'
-              ? this.normalizeCharacterPalette(image)
-              : image;
+          const processedImage = key === 'toy-room-environment-sheet'
+            ? this.removeSolidBackground(image, 'dark')
+            : image;
           this.images.set(key, processedImage);
           this.statuses.set(key, 'ready');
           resolve(processedImage);
@@ -145,28 +141,6 @@ export class AssetManager {
     context.drawImage(source, rx, ry, rw, rh, 0, 0, rw, rh);
 
     this.regionCache.set(cacheKey, canvas);
-    return canvas;
-  }
-
-  normalizeCharacterPalette(image) {
-    if (typeof document === 'undefined') return image;
-
-    const canvas = document.createElement('canvas');
-    canvas.width = image.naturalWidth || image.width;
-    canvas.height = image.naturalHeight || image.height;
-    const context = canvas.getContext('2d', { willReadFrequently: true });
-    if (!context) return image;
-
-    context.drawImage(image, 0, 0);
-    const pixels = context.getImageData(0, 0, canvas.width, canvas.height);
-    const lift = 0.1;
-    for (let index = 0; index < pixels.data.length; index += 4) {
-      if (pixels.data[index + 3] === 0) continue;
-      pixels.data[index] += Math.round((255 - pixels.data[index]) * lift);
-      pixels.data[index + 1] += Math.round((255 - pixels.data[index + 1]) * lift);
-      pixels.data[index + 2] += Math.round((255 - pixels.data[index + 2]) * lift);
-    }
-    context.putImageData(pixels, 0, 0);
     return canvas;
   }
 

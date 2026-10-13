@@ -3,18 +3,19 @@
   "rocket": {
     "frame": "polish/rocket-punch-v1/04.png",
     "distance": 250,
-    "visibleExtent": 85.45034642032333,
+    "visibleExtent": 181.84818481848185,
     "baselineVisibleExtent": 85.9122401847575,
-    "playerHalfWidth": 55.09387755102041,
-    "visibleGap": 109.45577602865627,
+    "playerHalfWidth": 78.15181518151815,
+    "visibleGap": -10,
     "hpAfterAttack": 2,
-    "result": "MISMATCH"
+    "originalExtent": 85.45034642032333,
+    "result": "PASS"
   },
   "laser": {
-    "beamHeight": 55,
-    "crouchHeight": 136.4,
-    "intersectingPixels": 15,
+    "beamHeight": 85,
+    "crouchHeight": 80,
+    "intersectingPixels": 0,
     "hpAfterCrouch": 3,
-    "result": "MISMATCH"
+    "result": "PASS"
   }
 }
