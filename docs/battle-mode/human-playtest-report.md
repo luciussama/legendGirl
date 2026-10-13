@@ -8,7 +8,7 @@ Este relatório separa os achados humanos fornecidos no Prompt 19A das novas ver
 
 | Categoria | Observação reportada | Ação nesta implementação | Estado |
 | --- | --- | --- | --- |
-| Espada/mão | A espada parece presa ao sprite; mão e pulso não apoiam a posse | A luta passou a usar os quadros do conceito de batalha, com a mão e a espada desenhadas junto às poses de ataque | Implementado; percepção de posse ainda pendente de playtest humano |
+| Espada/mão | A espada parece presa ao sprite; mão e pulso não apoiam a posse | Mantida a sequência dos oito quadros existentes; correção gráfica autoral ainda precisa de revisão e validação | Pendente |
 | Áudio | Ações silenciosas/sem resposta suficiente | Adicionados eventos sintetizados para passos, ataques, impactos e eventos de sistema | Implementado tecnicamente; ouvir e aprovar pendente |
 | Peso do impacto | Dano sem reação física suficiente | Adicionados hit pause curto, flash, burst, recuo visual, shake limitado e reação `HIT`/`damage` | Implementado tecnicamente; percepção pendente |
 | Sensação de luta | Falta peso, antecipação, reação e sincronização | Sons de ataque distintos e efeitos no passo de dano; antecipações existentes foram preservadas | Validação humana pendente |

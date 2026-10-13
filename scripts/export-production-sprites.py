@@ -210,7 +210,7 @@ def main():
     w, h, raw = load_png(source_img)
     print(f'Imagem carregada: {w}x{h}')
 
-    # Definição das plataformas, objetos e elementos de cenário.
+    # Definição das 24 plataformas e objetos, além do cenário e das personagens.
     sprites_to_export = [
         # Plataformas 1 a 24:
         {
@@ -363,6 +363,25 @@ def main():
             'alias': 'grand_portal_pedestal',
             'box': (1102, 698, 388, 256),
             'erase': [(240, 60, 35, 30)]
+        },
+        # Quadros das personagens:
+        {
+            'name': 'character_stand',
+            'alias': 'character_stand',
+            'box': (50, 140, 70, 100),
+            'erase': []
+        },
+        {
+            'name': 'character_jump',
+            'alias': 'character_jump',
+            'box': (218, 90, 72, 98),
+            'erase': []
+        },
+        {
+            'name': 'character_run',
+            'alias': 'character_run',
+            'box': (1050, 730, 84, 102),
+            'erase': []
         }
     ]
 

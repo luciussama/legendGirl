@@ -1,7 +1,6 @@
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
-import { renderRocketPunch, renderBattleGirl, BATTLE_TRAIN_BODY, battlePlayerJumpOffset, laserProjection, renderTrainWalk, rocketPunchTouchesPlayer } from './BattlePresentation.js';
-import { BATTLE_PLAYER_BOUNDS } from './BattlePlayerBounds.js';
+import { renderRocketPunch, renderBattleCrouch, BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY, battlePlayerJumpOffset, laserProjection, renderTrainWalk, rocketPunchTouchesPlayer } from './BattlePresentation.js';
 import { babyRenderer } from '../entities/BabyRenderer.js';
 
 export const BATTLE_ORDER = ['train', 'robot', 'dinosaur', 'bear'];
@@ -54,9 +53,7 @@ export class ToyRoomBattle {
     this.manifest = await response.json();
     const files = new Set(Object.values(this.manifest.actors).flatMap(actor =>
       Object.values(actor.animations).flatMap(animation => animation.frames.map(frame => frame.file))));
-    for (const frames of Object.values(BATTLE_PLAYER_BOUNDS)) {
-      for (const frame of frames) if (frame.file) files.add(frame.file);
-    }
+    files.add(BATTLE_CROUCH_FRAME.file);
     files.add(BATTLE_TRAIN_BODY.file);
     await Promise.all([...files].map(file => new Promise((resolve, reject) => {
       const image = new Image();
@@ -64,8 +61,8 @@ export class ToyRoomBattle {
       image.onerror = () => reject(Error(`Sprite de combate ausente: ${file}`));
       image.src = new URL(file, root).href;
     })));
-    if (!this.room.assets?.get('official-character'))
-      throw Error('A pose oficial de derrota da menina está ausente.');
+    if (!this.room.assets?.get('official-character') || this.room.story.attackFrames.some(frame => !frame))
+      throw Error('Os sprites da menina ou do ataque de espada estão ausentes.');
     this.ready = true;
   }
 
@@ -436,20 +433,11 @@ export class ToyRoomBattle {
       ctx.translate(reactionOffset, 0);
       if (playerReaction && Math.floor(s.playerHitTime / 2) % 2 === 0) ctx.globalAlpha = 0.48;
       if (s.mode === 'DEFEAT') babyRenderer.renderPose(ctx, r.assets, 'lying_down', 0, r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
-      else {
-        const frame = BATTLE_PLAYER_BOUNDS[playerReaction ? 'damage'
-          : s.attackTime > 0 ? 'attack'
-            : s.crouching ? 'crouch'
-              : s.jump > 0 ? (s.jumpVelocity > 0 ? 'jump' : 'fall')
-                : r.player.isMoving ? 'run' : 'idle'];
-        const selected = playerReaction ? frame[0]
-          : s.attackTime > 0 ? frame[Math.min(frame.length - 1, Math.floor((1 - s.attackTime / 12) * frame.length))]
-            : frame[Math.floor(s.elapsed / 6) % frame.length];
-        renderBattleGirl(ctx, this.images.get(selected.file), {
-          playerHitTime: playerReaction ? s.playerHitTime : 0,
-          attackTime: s.attackTime, crouching: s.crouching, jump: s.jump,
-          jumpVelocity: s.jumpVelocity, elapsed: s.elapsed
-        }, r.player, t.ground, r.story.state.attackDirection);
+      else if (s.crouching) renderBattleCrouch(ctx,this.images.get(BATTLE_CROUCH_FRAME.file),r.player,s.attackTime,r.story.state.attackDirection);
+      else if (!r.story.renderAttackSprite(ctx)) {
+        const pose = playerReaction ? 'damage' : s.jump > 0 ? (s.jumpVelocity > 0 ? 'jump' : 'fall') : s.crouching ? 'crouch' : r.player.isMoving ? 'run' : 'idle';
+        babyRenderer.renderPose(ctx, r.assets, pose, Math.floor(s.elapsed / 6), r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
+        r.story.renderHeldObject(ctx);
       }
       ctx.restore();
       if (s.impact) this.renderImpact(ctx, s.impact);

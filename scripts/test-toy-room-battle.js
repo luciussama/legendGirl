@@ -1,19 +1,9 @@
 import assert from 'node:assert/strict';
 import { ToyRoomPhase } from '../src/js/toy-room/ToyRoomPhase.js';
 import { transferHeart, BATTLE_TUNING } from '../src/js/toy-room/ToyRoomBattle.js';
-import { battlePlayerFrame } from '../src/js/toy-room/BattlePresentation.js';
 import { runToyRoomQA } from '../tests/toy-room-qa-runner.js';
 import { runBattleGameplay } from '../tests/battle-gameplay-runner.js';
 const makeRoom = () => new ToyRoomPhase({width:960,height:540,getContext:()=>({})},null,null,()=>{}, {bindInputs:false});
-const idleState={playerHitTime:0,attackTime:0,crouching:false,jump:0,jumpVelocity:0,isMoving:false,elapsed:0};
-for(const [direction,expected] of [['left',1],['right',-1]]) {
-  assert.equal(battlePlayerFrame(idleState,{facing:direction,isMoving:false},1).facing,expected,
-    `A pose parada deve apontar para ${direction}.`);
-}
-assert.equal(battlePlayerFrame({...idleState,attackTime:12},{facing:'right'},1).facing,1,
-  'A pose de ataque mantém sua orientação própria para a direita.');
-assert.equal(battlePlayerFrame({...idleState,attackTime:12},{facing:'left'},-1).facing,-1,
-  'A pose de ataque mantém sua orientação própria para a esquerda.');
 for (const victimMax of [2,3,4]) for (const attackerMax of [2,3,4]) {
   const victim={hp:victimMax,maxHp:victimMax}, attacker={hp:attackerMax,maxHp:attackerMax};
   assert.ok(transferHeart(victim,attacker)); assert.equal(victim.hp,victimMax-1); assert.equal(attacker.hp,attackerMax);
