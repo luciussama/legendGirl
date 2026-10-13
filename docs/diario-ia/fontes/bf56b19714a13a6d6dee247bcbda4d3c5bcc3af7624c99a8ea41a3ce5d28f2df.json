@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "bf56b19714a13a6d6dee247bcbda4d3c5bcc3af7624c99a8ea41a3ce5d28f2df",
+  "path": "docs/qa/reversao-sprites/android-combate-train-ataque.png",
+  "sha256": "18a00d1a1de839339efa7edcb4beec3a033bdab35c515979eb1c9b819bec4142",
+  "capturedAt": "2026-10-13T19:09:11.886743+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-train-ataque.png\", \"sha256\": \"3c1438ced4bff823f19e7d92d5bdf388ec356db153247e8bfc819f6b2718b437\", \"bytes\": 364716, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

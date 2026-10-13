@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fadb9c185c22a4ced23dec7700675abc16b94a78c87e1eb4a9f517dc7944c7d3",
+  "path": "docs/qa/reversao-sprites/percurso-android/tutorial-retorno-depois.png",
+  "sha256": "541f0a10d155a70b747450c192c5f3aa5e6c24db0540df7c4fca593a46ccede8",
+  "capturedAt": "2026-10-13T19:09:11.958060+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/tutorial-retorno-depois.png\", \"sha256\": \"7cb6e3b3e02fb9250f7d73f4f8c46c2cdf055942ea6bfa3e0b28685c797d233d\", \"bytes\": 320380, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

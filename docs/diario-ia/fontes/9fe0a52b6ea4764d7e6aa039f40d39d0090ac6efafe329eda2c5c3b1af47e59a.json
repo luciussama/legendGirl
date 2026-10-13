@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9fe0a52b6ea4764d7e6aa039f40d39d0090ac6efafe329eda2c5c3b1af47e59a",
+  "path": "docs/qa/sprite-review/pagina.png",
+  "sha256": "de9d5ddf1a06e7b651364efee48fa2b606cb5d8229f33059e5f1306711f2630a",
+  "capturedAt": "2026-10-13T19:09:11.995802+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/sprite-review/pagina.png\", \"sha256\": \"5d7a99c475d8937f94e902ed8bc4a28fdba25a72c3ef0d4fb83073f8029193a6\", \"bytes\": 68888, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

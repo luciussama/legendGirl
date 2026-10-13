@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "86d35e8bb3da950c27b8ec33c178b1bdf9031f4199e3ebef79e1cef204925dfe",
+  "path": "qa-execucoes/limpeza-relatorios-verificacao.json",
+  "sha256": "84e42f4d449f8909e56ef1057d04e2490d3acc93de8436e8bc49674c4f223c62",
+  "capturedAt": "2026-10-13T19:20:32.725762+00:00",
+  "origin": {
+    "type": "verificacao-de-limpeza"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"removed\": 718,\n  \"trackedRemoved\": 223,\n  \"markdownReports\": 48,\n  \"sourceIntegrity\": \"aprovado\",\n  \"externalQA\": \"ausente\",\n  \"links\": \"válidos\",\n  \"checks\": [\n    \"npm test: aprovado no ambiente temporário\",\n    \"npm run build: aprovado\",\n    \"npm run lint: aprovado\",\n    \"npm run check-assets: 66 recursos aprovados\",\n    \"Gameplay: desktop e Android em retrato/paisagem aprovados, com save/load e retorno\"\n  ]\n}"
+}

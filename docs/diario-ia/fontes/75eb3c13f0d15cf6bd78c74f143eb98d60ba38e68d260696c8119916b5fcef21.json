@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "75eb3c13f0d15cf6bd78c74f143eb98d60ba38e68d260696c8119916b5fcef21",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/abertura-18-antes.png",
+  "sha256": "96a3e5035398b6c18c53ce99fea5c2095c35842750f21907809998f1a213f7ae",
+  "capturedAt": "2026-10-13T19:09:11.964658+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/abertura-18-antes.png\", \"sha256\": \"494c9c068782bdfc8c96f4993243d83372c045d5220010f58c9327fd0cf64242\", \"bytes\": 369763, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

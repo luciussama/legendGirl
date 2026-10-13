@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "c9b0f77eaa55eef58be31329ba765721d814d60a0f8afbeee72cf154058e02d3",
+  "path": "scripts/run-camera-correction.js",
+  "sha256": "bccf4cba5170063823056eba03de1374a12dcf08cdcdb4b7b9c412bd83938c0d",
+  "capturedAt": "2026-10-13T19:09:12.104084+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "// QA-CAMERA-002C: comparação visual antes/depois, com duas passagens e narrativa integral.\nimport { spawn } from 'node:child_process';\nimport fs from 'node:fs/promises';\nconst root='assets/qa-testers/camera-stability/correction';\nfor(const [label,variant,seed] of [['antes','antes',0x002BCAFE],['depois','todos',0x002BCAFE],['antes-repeticao','antes',0x002BCAFF],['depois-repeticao','todos',0x002BCAFF]]){\n console.log('Iniciando passagem: '+label);\n await Promise.all(['desktop','android','iphone'].map(async profile=>{\n  const directory=`${root}/${label}/${profile}`;await fs.mkdir(directory,{recursive:true});\n  await new Promise((resolve,reject)=>{\n   const child=spawn(process.execPath,['scripts/qa-camera-stability.js',profile],{env:{...process.env,\n    CAMERA_QA_OUTPUT:`${root}/${label}`,CAMERA_QA_VARIANT:variant,CAMERA_QA_SEED:String(seed),CAMERA_QA_FULL_NARRATIVE:'1'}});\n   let log='';child.stdout.on('data',d=>log+=d);child.stderr.on('data',d=>log+=d);\n   const timeout=setTimeout(()=>child.kill('SIGTERM'),180000);\n   child.on('error',reject);child.on('close',async code=>{clearTimeout(timeout);await fs.writeFile(`${directory}/execucao.log`,log);\n    if(code!==0)return reject(Error('Falha na passagem '+label+'/'+profile+': consulte execucao.log'));\n    await fs.rm(`${directory}/falha.json`,{force:true});console.log('Percurso concluído: '+label+'/'+profile);resolve();\n   });\n  });\n }));\n}\nconsole.log('Comparações e repetições concluídas nos três perfis.');\n"
+}

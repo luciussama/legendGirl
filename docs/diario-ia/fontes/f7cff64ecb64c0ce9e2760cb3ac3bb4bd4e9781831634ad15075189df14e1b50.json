@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "f7cff64ecb64c0ce9e2760cb3ac3bb4bd4e9781831634ad15075189df14e1b50",
+  "path": "docs/qa/reversao-sprites/desktop-combate-bear-transicao.png",
+  "sha256": "38ba6a76c4939e339d819b1fab7346c8427f8f41b9bef52ba1cd81bccba09a19",
+  "capturedAt": "2026-10-13T19:09:11.904775+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-bear-transicao.png\", \"sha256\": \"5709c6444edef0f4ecbc938434ca0baa91b8658dfe0ec737aa4be82e14526e1d\", \"bytes\": 1148160, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

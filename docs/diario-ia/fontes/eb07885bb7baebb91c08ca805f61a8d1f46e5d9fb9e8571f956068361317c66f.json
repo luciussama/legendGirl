@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "eb07885bb7baebb91c08ca805f61a8d1f46e5d9fb9e8571f956068361317c66f",
+  "path": "docs/qa/arena-player-animation/run-30.png",
+  "sha256": "a120e3e753977c0180dad37937733fae67dd2c8e85854c075c86a47fc52d4c06",
+  "capturedAt": "2026-10-13T19:09:11.857250+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/arena-player-animation/run-30.png\", \"sha256\": \"4ad96bdb691215889b3d1c8e38feca87ed46687150691b8eb0108f1996b6c995\", \"bytes\": 57896, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

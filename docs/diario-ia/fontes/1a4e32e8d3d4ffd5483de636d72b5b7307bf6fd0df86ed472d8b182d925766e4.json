@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "1a4e32e8d3d4ffd5483de636d72b5b7307bf6fd0df86ed472d8b182d925766e4",
+  "path": "docs/qa/fada-primeira-fase/desktop/01-inicio.png",
+  "sha256": "cf8e7b3de8a9c3c00ec3dc73a62935e1e2813b65457453555688a837bb30c053",
+  "capturedAt": "2026-10-13T19:09:11.864810+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/fada-primeira-fase/desktop/01-inicio.png\", \"sha256\": \"0428366aec1ca62c6c1e4a8c856d5c8e56ae5b8ad562d1b3983c41cf120cc08e\", \"bytes\": 219711, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

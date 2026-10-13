@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "59b18a17634b28570a5e2127dd8cd5dca4c7cb118ef2a6a9b6428253d1272334",
+  "path": "docs/character-reference-atlas/frames/teleport/teleport_0.png",
+  "sha256": "4a7f9e52fc94e5d0c1273788f9ff5cc9da5a806d55b44217b9fad62e11dcf482",
+  "capturedAt": "2026-10-13T19:09:11.815511+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/frames/teleport/teleport_0.png\", \"sha256\": \"9d3e015183866d851870d9afd7ae29435a6a3922f0c8ea6a0c13ddf1541bbc4e\", \"bytes\": 14486, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a50bcc66ffba8add0bfc4e7c057747687a5aaee3f81d40b3965990a772b111b3",
+  "path": "qa-execucoes/1f51324fe24946b9a931a3eedffde3d5/docs/qa/toy-room-arena/desktop-agachamento.png",
+  "sha256": "17d42ad3463f779b2e8de8ce3049f3334c700a92208407c197e7de1a04d95fa9",
+  "capturedAt": "2026-10-13T19:17:18.620227+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-agachamento.png\", \"sha256\": \"a9208afde24c2a889c00750c7d2aeb1304f8b38276e0a8627fb8439cf111a2e9\", \"bytes\": 1146431, \"binaryRetained\": false}"
+}

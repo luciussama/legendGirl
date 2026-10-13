@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6982197aa0eebb31063ed4737a5fa718a96bd6ec67d790948726d5c4b16d2e04",
+  "path": "tests/fixtures/toy-room-etapa3/altos/referencia-validacao.json",
+  "sha256": "5a5379e47207eb46dc42fec585f2f5d8487320a879fe7f1989a3ff9000da7cb3",
+  "capturedAt": "2026-10-13T19:09:12.158073+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"recursos\": 77,\n  \"collisionChecks\": 4941,\n  \"pickups\": 8,\n  \"drops\": 8,\n  \"stores\": 8,\n  \"movementChecks\": 960,\n  \"estadoPreservado\": true,\n  \"metodosDeGameplayIdenticos\": true,\n  \"observacao\": \"A fase possui velocidade única ponderada pelo peso; corrida é validada como ciclo visual de movimento, sem criar nova mecânica.\",\n  \"pixels\": {\n    \"pixelsAlterados\": 0,\n    \"pixelsForaDoEscopo\": 0\n  },\n  \"performance\": {\n    \"antes\": {\n      \"medianaRenderMs\": 0.4000000059604645,\n      \"p90RenderMs\": 0.9000000059604645,\n      \"medianaIntervaloMs\": 16.700000000000728\n    },\n    \"depois\": {\n      \"medianaRenderMs\": 0.4000000059604645,\n      \"p90RenderMs\": 0.7000000029802322,\n      \"medianaIntervaloMs\": 16.69999999999891\n    }\n  },\n  \"carrying\": {\n    \"verificacoes\": 32,\n    \"nenhumaSobreposicaoDaCabeca\": true\n  },\n  \"verificacoesHUD\": 63\n}\n"
+}

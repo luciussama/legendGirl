@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "76fff6a1366eb2eacda4c25dc3a1df4ea9cbd4a484fb7e9859ab8ed428c7c779",
+  "path": "docs/qa/reversao-sprites/android-combate-robot-transicao.png",
+  "sha256": "1499ae813e6ac1fab195d0b050245b03b8ec5c11bb5a25f03902669f1b1c88e9",
+  "capturedAt": "2026-10-13T19:09:11.885068+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-robot-transicao.png\", \"sha256\": \"571f43b223993dab4c2b12ea4fac3421c1fa817cb61b75ccd8fe34cfd0e35f8f\", \"bytes\": 366453, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

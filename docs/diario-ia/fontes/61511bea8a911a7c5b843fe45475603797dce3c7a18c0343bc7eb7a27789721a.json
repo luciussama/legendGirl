@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "61511bea8a911a7c5b843fe45475603797dce3c7a18c0343bc7eb7a27789721a",
+  "path": "docs/character-reference-atlas/02-run-sheet-200.png",
+  "sha256": "dad6d86588cefc129c44eb0b4c604eae37f2d77d7520fe3aaaa516cc2588b5da",
+  "capturedAt": "2026-10-13T19:09:11.778248+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/02-run-sheet-200.png\", \"sha256\": \"d7adc4f6bcc32c0c504129513a7bfa1bafc67bf88fad37cb33d6cf4300901760\", \"bytes\": 55908, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

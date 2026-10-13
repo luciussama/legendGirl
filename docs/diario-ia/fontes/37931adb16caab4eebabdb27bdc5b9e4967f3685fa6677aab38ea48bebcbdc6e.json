@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "37931adb16caab4eebabdb27bdc5b9e4967f3685fa6677aab38ea48bebcbdc6e",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/revelacao-4-depois.png",
+  "sha256": "57129e98570c9ef93ac5857e6bde3b0a11815d8186d4d75555c961afc27b035d",
+  "capturedAt": "2026-10-13T19:09:11.987696+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/revelacao-4-depois.png\", \"sha256\": \"c0cd16730520a7feef526b37bc858c7cf5835274b2fc44cfeb8271f1209aafc1\", \"bytes\": 318043, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

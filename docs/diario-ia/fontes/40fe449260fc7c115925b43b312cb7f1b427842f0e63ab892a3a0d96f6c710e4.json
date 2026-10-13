@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "40fe449260fc7c115925b43b312cb7f1b427842f0e63ab892a3a0d96f6c710e4",
+  "path": "qa-execucoes/1f51324fe24946b9a931a3eedffde3d5/docs/qa/toy-room-arena/android-paisagem-transporte.png",
+  "sha256": "2e71e451ab525f791bf81bedfdd3ba90d2df72b257684d981fa98446f5821168",
+  "capturedAt": "2026-10-13T19:17:18.612316+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-transporte.png\", \"sha256\": \"a80588a016a059623281904dead526fb525df367ff0a0930bdc5de7115feb7ae\", \"bytes\": 708481, \"binaryRetained\": false}"
+}

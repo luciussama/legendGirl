@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "affc228a7c784809124334527cc851e65013474493146a8b31809400f4ce9195",
+  "path": "docs/qa/reversao-sprites/desktop-vitoria.png",
+  "sha256": "9378974f563d6e4e1105dd68288f755a3f38e26ed665f47f910d8c5c97e739be",
+  "capturedAt": "2026-10-13T19:09:11.925312+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-vitoria.png\", \"sha256\": \"eea1a10956f4935146ed8f95531c5cfcf04b7d35650da0f5a019a77859f0d9b8\", \"bytes\": 993144, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

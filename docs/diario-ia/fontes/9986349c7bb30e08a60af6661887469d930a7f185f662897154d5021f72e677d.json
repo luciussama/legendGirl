@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9986349c7bb30e08a60af6661887469d930a7f185f662897154d5021f72e677d",
+  "path": "docs/qa/fada-primeira-fase/desktop/apoio-retorno-9.png",
+  "sha256": "d990ad9ff9eab0275cebc0469378e860aa3dbc4df21a778d8a624518716a95cc",
+  "capturedAt": "2026-10-13T19:09:11.870430+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/fada-primeira-fase/desktop/apoio-retorno-9.png\", \"sha256\": \"af903b22ec85ee88af9ecf14672c89205556d993d38bcba5b307a6cc5a0d426b\", \"bytes\": 87901, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

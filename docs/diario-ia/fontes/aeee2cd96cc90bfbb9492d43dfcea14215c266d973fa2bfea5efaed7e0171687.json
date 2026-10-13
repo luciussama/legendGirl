@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "aeee2cd96cc90bfbb9492d43dfcea14215c266d973fa2bfea5efaed7e0171687",
+  "path": "docs/qa/reversao-sprites/android-combate-bear-transicao.png",
+  "sha256": "fb75351cedb232bdb9c730c3f8c5702183adf77ccce7d31b5fdf9f50e081e4c7",
+  "capturedAt": "2026-10-13T19:09:11.879968+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-bear-transicao.png\", \"sha256\": \"eecba23e91d1ea3ccc3311fa0094e57cc53202eb989f872916e9a2923ed4844f\", \"bytes\": 367487, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

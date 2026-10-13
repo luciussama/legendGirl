@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a4ba7b2d35f3200e2a9d9adb6b2999e2ab3405b2d4e7c1d7077dd577dabcfd41",
+  "path": "docs/qa/reversao-sprites/android-combate-dinosaur-transicao.png",
+  "sha256": "9b120170411a1d3f8eafb2d4ed88e05c0028c6f8e540deac4ee7f9ce972acac6",
+  "capturedAt": "2026-10-13T19:09:11.882593+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-dinosaur-transicao.png\", \"sha256\": \"25086499a5965a29d54f9c3510143a46246761a8cf40d3bae5535c511f48c593\", \"bytes\": 368134, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

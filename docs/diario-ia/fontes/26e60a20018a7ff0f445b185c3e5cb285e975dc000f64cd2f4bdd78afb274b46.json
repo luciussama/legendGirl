@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "26e60a20018a7ff0f445b185c3e5cb285e975dc000f64cd2f4bdd78afb274b46",
+  "path": "docs/qa/reversao-sprites/percurso-android/cinematica-1-antes.png",
+  "sha256": "4d207c949ef1888d8b4cd15543c8ac862f438ffc7cb60b41ef3308f6af4150cc",
+  "capturedAt": "2026-10-13T19:09:11.941450+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/cinematica-1-antes.png\", \"sha256\": \"42712fd27ebabee91d029fd18d09137effa93cbb81bee6b76006fda82821f534\", \"bytes\": 287685, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e31df0c42f07c32eb0ef5ab63f0782b5b808c5b4bc095d7cec0729043c5c4235",
+  "path": "docs/qa/reversao-sprites/android-combate-train-salto.png",
+  "sha256": "80489cccccc5c8d0155f72be80f6b4636ad1b1434c9f481b3413ad832d4daba6",
+  "capturedAt": "2026-10-13T19:09:11.888453+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-train-salto.png\", \"sha256\": \"350977954d9f647f0e9797151cb4f15a4c03fe89a83be773f5e50da6d21ff685\", \"bytes\": 362182, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

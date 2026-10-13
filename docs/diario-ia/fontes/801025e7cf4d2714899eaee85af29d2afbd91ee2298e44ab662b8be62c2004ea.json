@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "801025e7cf4d2714899eaee85af29d2afbd91ee2298e44ab662b8be62c2004ea",
+  "path": "scripts/test-dialogue-safe-area.js",
+  "sha256": "076f3641ab29a5e828bb16bb13e51a89720c83a98b294c81488465296a341866",
+  "capturedAt": "2026-10-13T19:09:12.112607+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport { intersectCanvasSafeArea, getDialogueBoxY } from '../src/js/ui/DialogueSafeArea.js';\nconst canvas={width:540,height:1200};\nconst rect={left:0,top:0,width:390,height:866.6666666667};\nconst safe=intersectCanvasSafeArea(canvas,rect,{left:0,top:0,width:390,height:740},{top:47,bottom:34});\nassert.ok(Math.abs(safe.bottom-706*1200/rect.height)<0.001,'Barra do navegador e home indicator excluídos');\nassert.equal(safe.left,0,'Borda esquerda sem notch');\nconst landscape=intersectCanvasSafeArea({width:1200,height:540},{left:0,top:0,width:844,height:390},\n  {left:0,top:0,width:844,height:390},{left:47,right:47,bottom:21});\nassert.ok(landscape.left>0&&landscape.right<1200,'Notch e margem lateral em paisagem');\nconst insetCanvas=intersectCanvasSafeArea({width:760,height:500},{left:42,top:20,width:760,height:500},\n  {left:0,top:0,width:844,height:600},{left:30,right:30,bottom:21});\nassert.equal(insetCanvas.left,0,'Canvas já dentro da área segura não recebe inset duplicado');\nassert.equal(insetCanvas.bottom,500,'Canvas inteiramente visível preservado');\nconsole.log('Área segura narrativa: viewport reduzido, notch lateral e canvas deslocado aprovados.');\n\nconst area={left:0,right:540,top:0,bottom:1000,marginY:20};\nassert.equal(getDialogueBoxY(area,120,12,{top:400,bottom:450},true),480,'Legenda próxima e abaixo da personagem');\nassert.equal(getDialogueBoxY(area,120,12,{top:750,bottom:800},true),600,'Legenda acima quando falta espaço inferior');\nassert.equal(getDialogueBoxY(area,120,12,{},true),720,'Reserva inferior móvel de 16%');\nassert.equal(getDialogueBoxY(area,120,12,{},false),860,'Posição anterior preservada no desktop');\n"
+}

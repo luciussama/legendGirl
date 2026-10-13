@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Diário compartilhado: fontes e eventos imutáveis; SQLite como índice reconstruível."""
 import argparse
+import base64
 import hashlib
 import gzip
 import json
@@ -59,11 +60,14 @@ def paths(root):
     return sorted(path for path in output.splitlines() if eligible(path))
 
 def snapshot(root, path, raw, origin):
-    content = raw.decode('utf-8')
+    try:
+        content = raw.decode('utf-8'); encoding = 'utf-8'
+    except UnicodeDecodeError:
+        content = base64.b64encode(raw).decode('ascii'); encoding = 'base64'
     content_hash = digest(raw)
     identity = digest((path + '\0' + content_hash).encode())
     data = {'schemaVersion': 1, 'id': identity, 'path': path, 'sha256': content_hash,
-            'capturedAt': now(), 'origin': origin, 'content': content}
+            'capturedAt': now(), 'origin': origin, 'encoding': encoding, 'content': content}
     payload = (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
     compressed = len(payload) > 131072
     suffix = '.json.gz' if compressed else '.json'
@@ -102,6 +106,7 @@ def sync(root, history=False):
             continue
     sources = [read_source(path) for path in source_files(base)]
     records = [json.loads(path.read_text()) for path in sorted((base / 'registros').glob('*.json'))]
+    packages = [json.loads(path.read_text()) for path in sorted((base / 'pacotes').glob('*.json'))]
     commits = [json.loads(path.read_text()) for path in sorted((base / 'commits').glob('*.json'))]
     temporary = base / ('diario-' + uuid.uuid4().hex + '.sqlite3.tmp')
     with sqlite3.connect(temporary) as db:
@@ -110,12 +115,16 @@ def sync(root, history=False):
           CREATE INDEX fontes_caminho ON fontes(caminho);
           CREATE TABLE registros(id TEXT PRIMARY KEY, sessao TEXT, tipo TEXT, data TEXT, titulo TEXT, dados TEXT);
           CREATE TABLE commits_git(id TEXT PRIMARY KEY, data TEXT, titulo TEXT, fontes TEXT);
+          CREATE TABLE pacotes(id TEXT PRIMARY KEY, data TEXT, titulo TEXT, dados TEXT);
+          CREATE TABLE arquivos_arquivados(caminho TEXT, fonte TEXT, sha256 TEXT, pacote TEXT);
         ''')
         db.executemany('INSERT INTO fontes VALUES(?,?,?,?,?,?,?)', [(s['id'], s['path'], s['sha256'], s['capturedAt'], json.dumps(s['origin']), s['content'], int(current.get(s['path']) == s['id'])) for s in sources])
         db.executemany('INSERT INTO registros VALUES(?,?,?,?,?,?)', [(r['id'], r.get('sessionId', r['id']), r['type'], r['date'], r['title'], json.dumps(r, ensure_ascii=False)) for r in records])
+        db.executemany('INSERT INTO pacotes VALUES(?,?,?,?)', [(p['id'],p['date'],p['title'],json.dumps(p,ensure_ascii=False)) for p in packages])
+        db.executemany('INSERT INTO arquivos_arquivados VALUES(?,?,?,?)', [(f['path'],f['sourceId'],f['sha256'],p['id']) for p in packages for f in p['files']])
         db.executemany('INSERT INTO commits_git VALUES(?,?,?,?)', [(c['id'], c['date'], c['title'], json.dumps(c['sources'])) for c in commits])
     os.replace(temporary, base / 'diario.sqlite3')
-    return {'fontesAtuais': len(current), 'versoesPreservadas': len(sources), 'registros': len(records), 'commits': len(commits)}
+    return {'fontesAtuais': len(current), 'versoesPreservadas': len(sources), 'registros': len(records), 'commits': len(commits), 'pacotes': len(packages)}
 
 def begin(root, title, actor):
     sync(root)
@@ -156,12 +165,35 @@ def read(root):
         for row in db.execute("SELECT sessao,titulo FROM registros WHERE tipo='inicio' AND sessao NOT IN(SELECT sessao FROM registros WHERE tipo='fim')"):
             print(' | '.join(row))
 
+
+def archive_artifacts(root, files, title, qa_commands=None):
+    identifier = datetime.now(timezone.utc).strftime('%Y%m%dT%H%M%S') + '-' + uuid.uuid4().hex[:12]
+    entries = []
+    for file in files:
+        path = (root / file).resolve()
+        if not path.is_relative_to(root.resolve()) or path.is_symlink():
+            raise ValueError('Alvo fora do projeto ou ligação simbólica: ' + file)
+        raw = path.read_bytes()
+        # Imagens de evidência são lixo regenerável: preserva identificação, hash e tamanho, não o bitmap.
+        metadata_only = path.suffix.lower() in {'.png','.jpg','.jpeg','.webp','.gif','.avif','.pdf','.zip'} and not file.startswith('tests/')
+        if metadata_only:
+            metadata = {'path':file,'sha256':digest(raw),'bytes':len(raw),'type':'evidencia-regeneravel','binaryRetained':False}
+            source_id = snapshot(root,file,json.dumps(metadata,ensure_ascii=False).encode(),{'type':'registro-de-evidencia'})
+        else:
+            source_id = snapshot(root,file,raw,{'type':'qa-arquivado'})
+        entries.append({'path':file,'sourceId':source_id,'sha256':digest(raw),'bytes':len(raw),'metadataOnly':metadata_only})
+    package = {'schemaVersion':1,'id':identifier,'date':now(),'title':title,'files':entries,'qaCommands':qa_commands or {}}
+    write_new(root / 'docs/diario-ia/pacotes' / (identifier+'.json'), package)
+    sync(root)
+    return package
+
 def main():
     parser = argparse.ArgumentParser(description='Diário de IA compartilhado e pesquisável.')
     parser.add_argument('--root', type=Path, default=ROOT)
     sub = parser.add_subparsers(dest='command', required=True)
     sync_parser = sub.add_parser('sync'); sync_parser.add_argument('--history', action='store_true')
     sub.add_parser('read')
+    archive = sub.add_parser('archive'); archive.add_argument('--manifest',type=Path,required=True); archive.add_argument('--title',required=True)
     show = sub.add_parser('show'); show.add_argument('id')
     search = sub.add_parser('search'); search.add_argument('query'); search.add_argument('--all-versions', action='store_true')
     start = sub.add_parser('begin'); start.add_argument('--title', required=True); start.add_argument('--actor', required=True)
@@ -171,6 +203,12 @@ def main():
     args = parser.parse_args(); root = args.root.resolve()
     if args.command == 'sync':
         print(json.dumps(sync(root, args.history), ensure_ascii=False))
+    elif args.command == 'archive':
+        files = json.loads(args.manifest.read_text())
+        if not isinstance(files,list) or not all(isinstance(file,str) for file in files):
+            raise ValueError('O manifesto precisa ser uma lista de caminhos relativos.')
+        package = archive_artifacts(root,files,args.title)
+        print(json.dumps({'package':package['id'],'files':len(package['files'])},ensure_ascii=False))
     elif args.command == 'read':
         read(root)
     elif args.command == 'show':
@@ -189,10 +227,10 @@ def main():
         sync(root)
         with sqlite3.connect(root / 'docs/diario-ia/diario.sqlite3') as db:
             query = args.query.replace('\\', '\\\\').replace('%', '\\%').replace('_', '\\_')
-            sql = "SELECT caminho,id,atual FROM fontes WHERE conteudo LIKE ? ESCAPE '\\'"
+            sql = "SELECT caminho,id,atual FROM fontes WHERE (conteudo LIKE ? ESCAPE '\\' OR caminho LIKE ? ESCAPE '\\')"
             if not args.all_versions:
-                sql += ' AND atual=1'
-            for path, identity, current in db.execute(sql + ' ORDER BY caminho LIMIT 30', ('%' + query + '%',)):
+                sql += ' AND (atual=1 OR id IN(SELECT fonte FROM arquivos_arquivados))'
+            for path, identity, current in db.execute(sql + ' ORDER BY caminho LIMIT 30', ('%' + query + '%','%' + query + '%')):
                 print(('ATUAL' if current else 'HISTÓRICO') + ' | ' + path + ' | ' + identity)
 
 if __name__ == '__main__':

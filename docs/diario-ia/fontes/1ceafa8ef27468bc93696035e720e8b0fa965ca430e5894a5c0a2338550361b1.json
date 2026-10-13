@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "1ceafa8ef27468bc93696035e720e8b0fa965ca430e5894a5c0a2338550361b1",
+  "path": "docs/qa/reversao-sprites/desktop-combate-robot-movimento.png",
+  "sha256": "950f0e490c122a357c9d3c08c70d4814d0a78b16a3f3a5908ea338c37e59918d",
+  "capturedAt": "2026-10-13T19:09:11.912219+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-robot-movimento.png\", \"sha256\": \"58cfcb4b33b17e51815b4806bd4880b1519777b8be5d23760fa5c21a2c716ebe\", \"bytes\": 1145357, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

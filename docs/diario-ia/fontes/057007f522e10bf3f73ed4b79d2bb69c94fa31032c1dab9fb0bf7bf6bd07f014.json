@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "057007f522e10bf3f73ed4b79d2bb69c94fa31032c1dab9fb0bf7bf6bd07f014",
+  "path": "docs/qa/reversao-sprites/android-salto.png",
+  "sha256": "cc245b57cd2c3aa18ab22ae7dcde9dc714c996cd60dee77406dd9ae7b6b3fce0",
+  "capturedAt": "2026-10-13T19:09:11.890939+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-salto.png\", \"sha256\": \"350977954d9f647f0e9797151cb4f15a4c03fe89a83be773f5e50da6d21ff685\", \"bytes\": 362182, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

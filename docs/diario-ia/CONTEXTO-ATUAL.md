@@ -19,8 +19,8 @@ A identidade da protagonista, as artes detalhadas atuais e a geometria das plata
 
 ## Decisões recentes e fontes de verdade
 
-- Arena: `docs/arena/arquitetura-e-cards.md`, `validacao-final.md` e `animacao-menina.md`. A aprovação humana da arena foi expressa na conversa original; a validação técnica está nos relatórios. Não estender essa aprovação automaticamente a novas artes.
-- Classificação visual pelo usuário: `docs/sprite-review/selecoes-exclusao.json`, revisão 366, de 13/10/2026. Foram removidas 33 imagens e 46 assinaturas em código, conforme os relatórios `limpeza.md` e `substituicao-assinaturas.md`.
+- Arena: os guias humanos `docs/arena/GUIA-ARENA.md` e `GUIA-ANIMACAO.md`; relatórios antigos são encontrados pelo caminho original na pesquisa do diário. A aprovação humana da arena foi expressa na conversa original; a validação técnica está nos relatórios. Não estender essa aprovação automaticamente a novas artes.
+- Classificação visual pelo usuário: `docs/sprite-review/selecoes-exclusao.json`, revisão 366, de 13/10/2026. Foram removidas 33 imagens e 46 assinaturas em código, conforme os relatórios `limpeza.md` e `substituicao-assinaturas.md`, arquivados no diário e retirados das pastas de documentação.
 - Dez novos PNGs em `assets/art/dark-room/scenery-current/`, gerados com imagegen e referenciados por `src/js/assets/currentScenery.js`. Sete recursos aprovados foram reutilizados. Os prompts estão em `docs/sprite-review/prompts-substitutos.json`. Validação técnica concluída; não há registro de aprovação humana individual dos dez substitutos.
 - As escolhas históricas não foram alteradas para declarar recursos novos como aprovados. Não usar esse JSON para excluir novas artes nem restaurar variantes aposentadas como fallback.
 - Inventário atual: `docs/sprites/inventario.json`, `MAPA-SPRITES.md`, `RECORTES.md` e `GUIA-DESIGNERS.md`. Mapa estático deve ser reconstruído após mudanças; confirme usos dinâmicos no código.
@@ -34,9 +34,9 @@ Não realizar commit, push, publicação ou alteração de escopo por autorizaç
 
 ## Validação recente e limites
 
-As últimas alterações visuais passaram por `npm test`, build, verificação de assets e gameplay automatizado. O navegador percorreu plataformas com 114 saltos e a Toy Room até o retorno da arena, incluindo save/load, em desktop e perfis Android emulados. A evidência está nos relatórios e em `docs/qa/`. Android emulado não é uma execução em aparelho físico.
+As últimas alterações visuais passaram por `npm test`, build, verificação de assets e gameplay automatizado. O navegador percorreu plataformas com 114 saltos e a Toy Room até o retorno da arena, incluindo save/load, em desktop e perfis Android emulados. Os relatórios e os registros de evidência estão exclusivamente no diário de IA; as capturas regeneráveis foram descartadas. Android emulado não é uma execução em aparelho físico.
 
-Pendências históricas devem ser verificadas em `docs/battle-mode/remaining-backlog.md`, `known-issues-backlog.md` e `docs/arena/`, pois podem ter sido resolvidas por alterações posteriores. Não tratar automaticamente todo backlog antigo como problema ainda aberto.
+Pendências históricas devem ser verificadas pela pesquisa do diário, usando os caminhos históricos `docs/battle-mode/remaining-backlog.md`, `known-issues-backlog.md` e relatórios da arena, pois podem ter sido resolvidas por alterações posteriores. Não tratar automaticamente todo backlog antigo como problema ainda aberto.
 
 ## Diário e documentação de arte implantados
 
@@ -45,3 +45,9 @@ O acervo foi inicializado com documentos atuais, instruções, prompts, evidênc
 ## Atualizar ao encerrar
 
 Mude este contexto quando houver nova decisão vigente, mudança de arquitetura ou pendência relevante. Registre evidências e limites, sincronize o acervo e encerre a sessão. Evite copiar relatos extensos para este resumo: preserve a fonte e a referência no banco.
+
+## Política vigente de relatórios e QA
+
+Por instrução do responsável, relatórios de máquina, testes, fixtures, evidências e homologações não permanecem como arquivos externos no projeto. Texto e código ficam integralmente no acervo; imagens de evidência ficam registradas por caminho, hash e tamanho, sem conservar o bitmap descartável. Os 718 alvos foram verificados antes de apagar. Artes efetivamente usadas pelo jogo foram preservadas.
+
+`npm test` e os aliases de QA recuperam as fontes do pacote arquivado em diretório temporário e registram o resultado no diário. `scripts/validate-production.js` valida a publicação sem recriar QA. O site publicado exclui documentação, automações e acervo. Documentação de guias permanece para pessoas; `docs/DIARIO-HUMANO.md` é o diário de produto. Novos relatórios e evidências devem ser registrados diretamente no acervo e descartados fora dele.

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "24110f4c1a40cd876e61e7a97934a878b5644108cb880ceba441e0e0b348f770",
+  "path": "scripts/test-current-art.js",
+  "sha256": "7da4a9a5871827d8511e313d99f0410d645b2cb69a2416f3dd617eb7b358dbc8",
+  "capturedAt": "2026-10-13T19:09:12.112255+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport fs from 'node:fs/promises';\nimport {PNG} from 'pngjs';\nimport {CURRENT_SCENERY,drawCurrentScenery} from '../src/js/assets/currentScenery.js';\nconst selected=JSON.parse(await fs.readFile('docs/sprite-review/selecoes-exclusao.json','utf8'));\nconst manifest=JSON.parse(await fs.readFile('assets/manifest.json','utf8'));\nconst platforms=await fs.readFile('src/js/environment/PlatformRenderer.js','utf8');\nconst scenery=await fs.readFile('src/js/environment/BackgroundRenderer.js','utf8');\nfor(const item of selected.selectedCode){\n const {variant,preview}=item.signature;\n if(preview==='platform')assert.ok(!platforms.includes(\"case '\"+variant+\"':\"),'Desenho antigo removido da plataforma: '+variant);\n if(preview==='scenery'){\n  assert.ok(CURRENT_SCENERY[variant],'Cenário com substituto: '+variant);\n  const fallback=scenery.slice(scenery.indexOf('      switch (item.type)'));\n  assert.ok(!fallback.includes(\"case '\"+variant+\"':\"),'Desenho antigo removido do cenário: '+variant);\n }\n}\nconst calls=[];const assets={get:()=>({width:180,height:160}),getRegion:()=>({width:120,height:90})};\nfor(const type of Object.keys(CURRENT_SCENERY)){\n assert.equal(drawCurrentScenery({drawImage:(_image,...args)=>calls.push(args)},assets,type,100,500),true);\n const args=calls.at(-1);assert.ok(args.every(Number.isFinite),'Posicionamento válido: '+type);\n assert.ok(args[2]>0&&args[3]>0,'Dimensões válidas: '+type);\n}\nassert.equal(calls.length,17,'Todos os cenários selecionados desenham arte atual.');\nfor(const spec of Object.values(CURRENT_SCENERY))assert.ok(manifest.images[spec.key],'Recurso pré-carregado: '+spec.key);\nfor(const [key,path]of Object.entries(manifest.images).filter(([key])=>key.startsWith('current-scenery-'))){\n const png=PNG.sync.read(await fs.readFile(path));\n const alpha=[];for(let i=3;i<png.data.length;i+=4)alpha.push(png.data[i]);\n assert.ok(alpha.some(value=>value===0)&&alpha.some(value=>value>0),'Sprite visível com transparência real: '+key);\n}\nconsole.log('APROVADO: alternativas antigas removidas, 17 cenários com substitutos, recursos pré-carregados, proporções válidas e transparência real.');\n"
+}

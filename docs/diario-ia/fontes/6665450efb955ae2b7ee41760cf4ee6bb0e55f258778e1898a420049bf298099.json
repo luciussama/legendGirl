@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6665450efb955ae2b7ee41760cf4ee6bb0e55f258778e1898a420049bf298099",
+  "path": "docs/qa/fada-primeira-fase/desktop/apoio-ida-9.png",
+  "sha256": "d12ceae9171bb06f3563d8fe9b23243a5e7a944e4baff1f27c4ccce76bf2b391",
+  "capturedAt": "2026-10-13T19:09:11.868944+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/fada-primeira-fase/desktop/apoio-ida-9.png\", \"sha256\": \"9537c7986e7a1a00b9a88f8456a58bb3998a6306dcf1d7b9049a52d3089be9ac\", \"bytes\": 218329, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

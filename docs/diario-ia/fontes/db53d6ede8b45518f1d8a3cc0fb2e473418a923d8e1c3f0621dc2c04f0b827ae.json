@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "db53d6ede8b45518f1d8a3cc0fb2e473418a923d8e1c3f0621dc2c04f0b827ae",
+  "path": "docs/qa/reversao-sprites/percurso-android/abertura-18-depois.png",
+  "sha256": "7c0b5d88ea7f6883a4986efd399b94c583e5b02915cc531bf3ca9af14d8dda2d",
+  "capturedAt": "2026-10-13T19:09:11.932581+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/abertura-18-depois.png\", \"sha256\": \"359e39a4b8bf53b940d51a35eab37d07288cb579a84843fce15a065c9da7dd0b\", \"bytes\": 241760, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

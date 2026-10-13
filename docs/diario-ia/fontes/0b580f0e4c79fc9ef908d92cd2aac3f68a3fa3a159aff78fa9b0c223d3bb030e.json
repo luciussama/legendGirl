@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0b580f0e4c79fc9ef908d92cd2aac3f68a3fa3a159aff78fa9b0c223d3bb030e",
+  "path": "docs/qa/reversao-sprites/desktop-combate-robot-transicao.png",
+  "sha256": "6ee64d5cda34f34f26caff6a54a7b92f46bab6e5f6319ce18875e5fced1ce296",
+  "capturedAt": "2026-10-13T19:09:11.913700+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-robot-transicao.png\", \"sha256\": \"a09ab9497358fa0da2d88fe1d6139896a1955aec495ba713e6281f72d0538ba0\", \"bytes\": 1147258, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

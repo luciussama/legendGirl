@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b04dd77550ea8c9f76f2a17bb40c267e06e9d67f406be97697b5c5ab42b495f5",
+  "path": "docs/qa/arena-player-animation/idle-34.png",
+  "sha256": "b49d0139896ae2f2575caa33be97a74b363610219ae57d12c70dd17855b2d5e7",
+  "capturedAt": "2026-10-13T19:09:11.847703+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/arena-player-animation/idle-34.png\", \"sha256\": \"dd58c65a7324f676dad3b91422103130d9cb38244bc2c39db89628138943bd51\", \"bytes\": 60005, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

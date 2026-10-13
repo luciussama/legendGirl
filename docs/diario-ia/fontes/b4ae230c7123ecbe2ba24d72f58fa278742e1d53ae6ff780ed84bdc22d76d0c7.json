@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b4ae230c7123ecbe2ba24d72f58fa278742e1d53ae6ff780ed84bdc22d76d0c7",
+  "path": "docs/qa/reversao-sprites/android-combate-robot-ataque.png",
+  "sha256": "399160170f894b70be95eac380cefe457e0abd3d1e3c9c3ccb4f4708a690f829",
+  "capturedAt": "2026-10-13T19:09:11.883409+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-robot-ataque.png\", \"sha256\": \"75276527249b88af3ef13d3547daed515555fbacce5cfbd9a3e0fe7847528627\", \"bytes\": 364957, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

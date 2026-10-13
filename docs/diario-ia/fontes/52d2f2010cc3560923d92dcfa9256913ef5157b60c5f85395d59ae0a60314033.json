@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "52d2f2010cc3560923d92dcfa9256913ef5157b60c5f85395d59ae0a60314033",
+  "path": "docs/qa/reversao-sprites/desktop-SEEKING_SWORD.png",
+  "sha256": "0ac5165fa044a04c28f6c441f863b964e2f3232e75d12710a16f1db6fffdf4b5",
+  "capturedAt": "2026-10-13T19:09:11.897429+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-SEEKING_SWORD.png\", \"sha256\": \"f2aee67f4dbcaee345fe72386d4ac6aef761a7a76de9563d202eb8bc8fb81e56\", \"bytes\": 1159020, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

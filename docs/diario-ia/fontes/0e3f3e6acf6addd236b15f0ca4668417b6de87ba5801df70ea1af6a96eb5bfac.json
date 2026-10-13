@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0e3f3e6acf6addd236b15f0ca4668417b6de87ba5801df70ea1af6a96eb5bfac",
+  "path": "scripts/serve-difficulty-qa.js",
+  "sha256": "4e6ae5c5322fb26d5b6a3cb302c8ff90bc3e571140c2db24c241d2091b0da63d",
+  "capturedAt": "2026-10-13T19:09:12.105292+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "// Servidor de QA restrito à máquina local; nunca usado pelo jogo publicado.\nimport express from 'express';\nimport fs from 'node:fs/promises';\nconst app=express();\napp.use(express.json({limit:'1mb'}));\napp.post('/__qa/difficulty',async(req,res)=>{\n  await fs.mkdir('docs/qa/modo-facil',{recursive:true});\n  await fs.writeFile('docs/qa/modo-facil/campanha-browser.json',JSON.stringify(req.body,null,2)+'\\n');\n  console.log(req.body.resultado);\n  res.sendStatus(204);\n});\napp.use(express.static(process.cwd()));\napp.listen(3019,'127.0.0.1',()=>console.log('Validação local: http://127.0.0.1:3019/tests/game-difficulty.html?report=1'));\n"
+}

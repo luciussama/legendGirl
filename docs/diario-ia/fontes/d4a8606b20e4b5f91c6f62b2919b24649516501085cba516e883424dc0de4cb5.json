@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d4a8606b20e4b5f91c6f62b2919b24649516501085cba516e883424dc0de4cb5",
+  "path": "qa-execucoes/1f51324fe24946b9a931a3eedffde3d5/docs/qa/toy-room-arena/android-paisagem-realidade.png",
+  "sha256": "5f28e965edd2bf52727ca1de9af758345d0cc64eaec5d0b468c0c6d04e68982f",
+  "capturedAt": "2026-10-13T19:17:18.609252+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-realidade.png\", \"sha256\": \"bd833e4e0e3619f34e7ecd78e385531365066f0c8a153627a16525035157f961\", \"bytes\": 219696, \"binaryRetained\": false}"
+}

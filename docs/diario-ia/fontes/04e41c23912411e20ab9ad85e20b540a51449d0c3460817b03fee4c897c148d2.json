@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "04e41c23912411e20ab9ad85e20b540a51449d0c3460817b03fee4c897c148d2",
+  "path": "docs/qa/reversao-sprites/percurso-android/abertura-12-antes.png",
+  "sha256": "05b86805e5bf22592c4627822048f2a15a8ccdc5660cd42318b09c383e857e21",
+  "capturedAt": "2026-10-13T19:09:11.930374+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/abertura-12-antes.png\", \"sha256\": \"373353ef56da66a4915f0d52745bb5787fbe64cd8e05088211d9e3c0a4623000\", \"bytes\": 237548, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

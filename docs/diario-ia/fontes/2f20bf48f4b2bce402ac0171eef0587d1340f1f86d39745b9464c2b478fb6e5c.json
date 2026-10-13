@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2f20bf48f4b2bce402ac0171eef0587d1340f1f86d39745b9464c2b478fb6e5c",
+  "path": "docs/character-reference-atlas/01-idle-sheet-400.png",
+  "sha256": "6c48b5530de9a67d981f7699643dafe8d590e01b1101bc332fe75b9b28942cee",
+  "capturedAt": "2026-10-13T19:09:11.777107+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/01-idle-sheet-400.png\", \"sha256\": \"c5672193804655314332b496fe183e8f3a27986e85dbe9f214e71878f22b2af1\", \"bytes\": 54569, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

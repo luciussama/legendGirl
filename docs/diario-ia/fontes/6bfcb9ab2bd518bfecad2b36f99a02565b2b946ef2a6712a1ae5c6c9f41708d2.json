@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6bfcb9ab2bd518bfecad2b36f99a02565b2b946ef2a6712a1ae5c6c9f41708d2",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/apoio-ida-15.png",
+  "sha256": "374ee392976ffadab36689118846dd67c6f78f449afea1ad10e5689635b73787",
+  "capturedAt": "2026-10-13T19:09:11.972355+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/apoio-ida-15.png\", \"sha256\": \"2c20470a7769103e05dd087b055cf2a2255af2224c97e8dd37e08db6e855f86a\", \"bytes\": 186771, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

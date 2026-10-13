@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a8a13bc881c0011728765c581fd4970eb81228973d2e3469d71a58c62745b6f8",
+  "path": "docs/qa/reversao-sprites/percurso-android/tutorial-primeiro-salto-depois.png",
+  "sha256": "f5ef4e8a1b2fca6350263388adb3bc1b90da35452127c171dc7036593449fce2",
+  "capturedAt": "2026-10-13T19:09:11.956508+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/tutorial-primeiro-salto-depois.png\", \"sha256\": \"114d8d3c53a233885c7fddea884bf11401c19416bf0db511e68a9fd811215483\", \"bytes\": 288129, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

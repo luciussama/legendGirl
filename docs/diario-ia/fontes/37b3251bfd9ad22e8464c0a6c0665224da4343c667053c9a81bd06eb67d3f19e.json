@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "37b3251bfd9ad22e8464c0a6c0665224da4343c667053c9a81bd06eb67d3f19e",
+  "path": "docs/qa/reversao-sprites/percurso-android/apoio-ida-21.png",
+  "sha256": "0f7eb5e06cf1d6b50018f9fd0a2ebf1afa82a686866a55b3a2f7b72cb1ae55b7",
+  "capturedAt": "2026-10-13T19:09:11.938975+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/apoio-ida-21.png\", \"sha256\": \"28b995d0b8c44fe5e8b1f6ad697ad7093820ca151df93d3324ee0984bb759a8c\", \"bytes\": 128595, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

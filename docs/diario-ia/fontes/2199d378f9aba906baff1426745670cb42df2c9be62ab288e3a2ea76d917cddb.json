@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2199d378f9aba906baff1426745670cb42df2c9be62ab288e3a2ea76d917cddb",
+  "path": "docs/qa/reversao-sprites/desktop-derrota.png",
+  "sha256": "bcd10259e66f60b164416af491cd2464263d51807ab22146b762df791abdfc9e",
+  "capturedAt": "2026-10-13T19:09:11.922449+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-derrota.png\", \"sha256\": \"1217dc7c3faa6afa9adae35593c396c01ad6ae00bfd091e49ef3d37983d645fb\", \"bytes\": 995371, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

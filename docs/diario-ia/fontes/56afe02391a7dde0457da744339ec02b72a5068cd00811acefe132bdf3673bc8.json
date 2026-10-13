@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "56afe02391a7dde0457da744339ec02b72a5068cd00811acefe132bdf3673bc8",
+  "path": "docs/qa/toy-room-arena/android-paisagem-vitoria.png",
+  "sha256": "f5644022177d1e13acb68cdcb7a4e0cadb31950035ac0a81f98fca4fe713c22a",
+  "capturedAt": "2026-10-13T19:09:12.040463+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-vitoria.png\", \"sha256\": \"bfecf4e5a010e93cdfe05329386809709e71a449a58270df734ff7b37d84a96a\", \"bytes\": 585716, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

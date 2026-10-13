@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d6c6c8aff5fc414f99d2d417ef88ceec",
+  "date": "2026-10-13T19:11:15.926847+00:00",
+  "title": "QA temporário: test",
+  "files": [
+    {
+      "path": "qa-execucoes/d6c6c8aff5fc414f99d2d417ef88ceec.log",
+      "sourceId": "fe2780ff8bc1a180211cf258ac00a0a535abb5746ca3c41bbb991f96426cac4b",
+      "sha256": "98f153045764f6dd44b095923b0503f9321dfb393efd353670a9fe42b7a7d8c4",
+      "bytes": 17106,
+      "metadataOnly": false
+    }
+  ]
+}

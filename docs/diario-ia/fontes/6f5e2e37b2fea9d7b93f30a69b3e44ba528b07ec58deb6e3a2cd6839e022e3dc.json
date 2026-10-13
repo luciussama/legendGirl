@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6f5e2e37b2fea9d7b93f30a69b3e44ba528b07ec58deb6e3a2cd6839e022e3dc",
+  "path": "qa-execucoes/1f51324fe24946b9a931a3eedffde3d5/docs/qa/toy-room-arena/android-paisagem-arena-train-movimento.png",
+  "sha256": "29246d7d5650b48f125db8ae9c57418e2241b16b63e2255cef7d49372b2f85ef",
+  "capturedAt": "2026-10-13T19:17:18.606222+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-train-movimento.png\", \"sha256\": \"dd048c36debaeea2e98a9893ae59226def486a9ddd3df43c64996c9d52eb0928\", \"bytes\": 727543, \"binaryRetained\": false}"
+}

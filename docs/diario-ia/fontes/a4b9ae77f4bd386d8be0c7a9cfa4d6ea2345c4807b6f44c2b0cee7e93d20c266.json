@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a4b9ae77f4bd386d8be0c7a9cfa4d6ea2345c4807b6f44c2b0cee7e93d20c266",
+  "path": "docs/character-reference-atlas/04-fall-sheet-200.png",
+  "sha256": "007b51d87fba2a380ebb43d43aca36aedf55cd4cfbe43072396579fbbd42c85f",
+  "capturedAt": "2026-10-13T19:09:11.781814+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/04-fall-sheet-200.png\", \"sha256\": \"755b431838f87450cf7016e99f89034a7045da3f6cc71e8b02ad06a32dcd66ae\", \"bytes\": 34157, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

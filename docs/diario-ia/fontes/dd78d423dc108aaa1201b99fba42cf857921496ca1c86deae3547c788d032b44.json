@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "dd78d423dc108aaa1201b99fba42cf857921496ca1c86deae3547c788d032b44",
+  "path": "docs/qa/toy-room-arena/desktop-arena-robot-entrada.png",
+  "sha256": "b10188af2202c4e77093fc348ba6d2b96104c0965b5471b96f00257fa3cd8301",
+  "capturedAt": "2026-10-13T19:09:12.063842+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-robot-entrada.png\", \"sha256\": \"6b1b67d6148410ca5d8757783b9b244b08f1b685ddf0c18e03912a9ed75867a4\", \"bytes\": 1071871, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -10,6 +10,7 @@ Toda IA deve iniciar pelo `AGENTS.md`, este guia, `CONTEXTO-ATUAL.md` e a consul
 | `fontes/<id>.json` ou `.json.gz` | Versões integrais de documentos e instruções, com caminho, hash, origem e conteúdo. Imutáveis; uma alteração cria outro arquivo. |
 | `commits/<sha>.json` | Metadados do histórico Git disponível e vínculos com documentos daquela versão. |
 | `registros/<id>.json` | Eventos de início e encerramento das sessões, com identidade, escopo e resultados. |
+| `pacotes/<id>.json` | Índice dos relatórios, testes e evidências retirados do projeto; vincula cada caminho à fonte e ao hash. |
 | `diario.sqlite3` | Índice local reconstruível para consultas; não versionar o binário. |
 
 Os arquivos JSON, o contexto e os guias são versionados. Arquivos separados evitam concentrar todos os relatos num JSON que várias pessoas precisam editar simultaneamente. A sincronização nunca apaga versões anteriores. A criação exclusiva protege contra sobrescrita; o SQLite é publicado por substituição atômica. Sessões concorrentes podem trabalhar em registros distintos, mas precisam coordenar mudanças em arquivos de jogo compartilhados.
@@ -54,7 +55,7 @@ sqlite3 docs/diario-ia/diario.sqlite3 'SELECT caminho,sha256 FROM fontes WHERE a
 
 Fontes acima de 128 KiB usam JSON comprimido sem perda para reduzir o tamanho versionado. Use `npm run journal:show -- ID` para ler qualquer versão, comprimida ou não.
 
-Tabelas: `fontes`, `registros`, `commits_git`. A pesquisa da CLI usa parâmetros SQL e busca literal no conteúdo. Versões antigas permanecem pesquisáveis, mesmo após a remoção do documento original.
+Tabelas: `fontes`, `registros`, `commits_git`, `pacotes`, `arquivos_arquivados`. A pesquisa da CLI usa parâmetros SQL e busca literal no conteúdo. Versões antigas permanecem pesquisáveis, mesmo após a remoção do documento original. A pesquisa padrão inclui os relatórios arquivados nos pacotes; `--all-versions` também inclui revisões anteriores.
 
 ## Regras para pessoas e IAs
 
@@ -67,3 +68,13 @@ Tabelas: `fontes`, `registros`, `commits_git`. A pesquisa da CLI usa parâmetros
 - Antes de commit autorizado, incluir novos registros/fontes e documentos; o SQLite local e arquivos temporários permanecem ignorados.
 
 O histórico inicial vem das fontes existentes e do Git, preservando seu texto. O contexto atual reúne decisões recentes conhecidas; não atribui autoria nem aprovação humana quando isso não está registrado.
+
+## Relatórios, QA e evidências
+
+Este é o único acervo de registros de máquina. Fontes dos testes, fixtures e relatórios textuais são preservados integralmente. Evidências de imagem regeneráveis são descartadas, mantendo caminho, tamanho e hash no pacote. Uma entrada com `metadataOnly: true` não contém o bitmap original. Artes consumidas pelo jogo não são evidências descartáveis.
+
+`npm test` recupera a suíte arquivada num diretório temporário, executa sobre o código de produção atual, registra a saída no diário e apaga o ambiente. Os aliases npm de teste continuam disponíveis. Para uma verificação avulsa: `npm run journal:qa -- script:test-opening-sequence.js`. Nos comandos de navegador, o executor inicia um servidor temporário em uma porta livre e adapta os endereços locais das fontes recuperadas. É necessário disponibilizar o Chrome de QA nas portas CDP descritas nos scripts arquivados. O servidor temporário é encerrado após a execução.
+
+Para registrar novos arquivos antes de retirar suas cópias externas, prepare uma lista JSON de caminhos relativos e execute `npm run journal:archive -- --manifest CAMINHO --title "descrição"`. Esse comando registra e verifica fontes, mas não exclui arquivos; confira o pacote e os hashes antes de apagar. Novos testes devem ser arquivados da mesma forma e executados temporariamente.
+
+A documentação para pessoas contém guias e `docs/DIARIO-HUMANO.md`. Não reproduzir relatórios de máquina nesses documentos.

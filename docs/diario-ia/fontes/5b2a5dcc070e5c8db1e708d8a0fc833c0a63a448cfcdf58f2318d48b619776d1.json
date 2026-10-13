@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "5b2a5dcc070e5c8db1e708d8a0fc833c0a63a448cfcdf58f2318d48b619776d1",
+  "path": "docs/qa/toy-room-arena/desktop-arena-bear-entrada.png",
+  "sha256": "67566d0cd8890684ed2ca06732778ad090467aad235e829fdbabadf38da4374c",
+  "capturedAt": "2026-10-13T19:09:12.053804+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-bear-entrada.png\", \"sha256\": \"8b063b182b2150979f7414fb37ad310eaf733f42fabefc520a6546004c9621b9\", \"bytes\": 1044482, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

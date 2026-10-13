@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "27330eb399471246290b373aa8a555b411a148874b05c0a98c065422c0e4f01a",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/revelacao-4-antes.png",
+  "sha256": "af06e8ca521c08c9c4e830fcfe03a437de8bd85d9f8a187a8680efbc8f93d653",
+  "capturedAt": "2026-10-13T19:09:11.986843+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/revelacao-4-antes.png\", \"sha256\": \"7b7707e1fc9634bfb8b3f59c481e40564c07ad0deaabd6c11485ba828115be53\", \"bytes\": 317571, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

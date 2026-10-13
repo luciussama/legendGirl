@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "4d56f7d3404f50b185baffaba6267c7bd91a4f774470110e7dfaae0f4856265b",
+  "path": "docs/character-reference-atlas/07-reference-comparison-400.png",
+  "sha256": "f3f1678146d1a8898314c846d7240342716f1c4f139d86a0a7944c85f9b7bc38",
+  "capturedAt": "2026-10-13T19:09:11.788861+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/07-reference-comparison-400.png\", \"sha256\": \"768bc3def4bee88fb14704e725a7e7a906d6cceb61a56cada0491fa71457bad0\", \"bytes\": 669265, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

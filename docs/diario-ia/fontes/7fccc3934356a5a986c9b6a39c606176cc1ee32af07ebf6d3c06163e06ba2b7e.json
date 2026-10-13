@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7fccc3934356a5a986c9b6a39c606176cc1ee32af07ebf6d3c06163e06ba2b7e",
+  "path": "docs/character-reference-atlas/frames/jump/jump_1.png",
+  "sha256": "85fb19cd72499e97f380674ee330b0ae9d57fdc699a0cb7d4d72e15772541efe",
+  "capturedAt": "2026-10-13T19:09:11.806399+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/frames/jump/jump_1.png\", \"sha256\": \"7f885fa75ca5bf8d0d17b605c097f33befc979599f02ce8446a97f8ff461d507\", \"bytes\": 4350, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

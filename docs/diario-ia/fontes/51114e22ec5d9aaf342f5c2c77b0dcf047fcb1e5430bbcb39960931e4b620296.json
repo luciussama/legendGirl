@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "51114e22ec5d9aaf342f5c2c77b0dcf047fcb1e5430bbcb39960931e4b620296",
+  "path": "docs/character-reference-atlas/frames/idle/idle_1.png",
+  "sha256": "cb23fa5085e9885ed51da2e8c8942dd74d0fd3cbf8d61e2bdb171f6481106c36",
+  "capturedAt": "2026-10-13T19:09:11.800767+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/frames/idle/idle_1.png\", \"sha256\": \"016e3d97c1c38678f0777c76c6b9d125ecca946dc0a6ca8dc5e60719aaf8a2fb\", \"bytes\": 4581, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

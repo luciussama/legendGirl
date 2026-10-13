@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T190552-b254a1f776b4-fim",
+  "sessionId": "20261013T190552-b254a1f776b4",
+  "type": "fim",
+  "date": "2026-10-13T19:20:32.726863+00:00",
+  "title": "Centralizar relatórios e QA no diário e limpar arquivos externos",
+  "actor": "Codex",
+  "summary": "Centralizados 48 relatórios Markdown e fontes de QA no diário. Retirados 718 arquivos, dos quais 223 estavam versionados; todos registrados e conferidos antes da exclusão. Textos e testes preservados integralmente; imagens descartáveis conservadas apenas como metadados. QA agora roda temporariamente, guarda resultados no acervo e remove o ambiente. Criados diário humano e guias atualizados; publicação exclui acervo e automações.",
+  "checks": [
+    "npm test: aprovado no ambiente temporário",
+    "npm run build: aprovado",
+    "npm run lint: aprovado",
+    "npm run check-assets: 66 recursos aprovados",
+    "Gameplay: desktop e Android em retrato/paisagem aprovados, com save/load e retorno",
+    "Integridade dos 718 registros, ausência de QA externo e links da documentação: aprovados"
+  ],
+  "pending": [
+    "Imagens de evidência descartadas não são recuperáveis pelo registro de hash; podem ser regeneradas",
+    "Artes consumidas pelo jogo na pasta certification foram preservadas, pois são recursos de produção"
+  ],
+  "files": [
+    "docs/diario-ia/pacotes/",
+    "docs/diario-ia/fontes/",
+    "docs/DIARIO-HUMANO.md",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/arena/GUIA-ANIMACAO.md",
+    "scripts/ai-journal.py",
+    "scripts/run-qa-from-journal.py",
+    "scripts/validate-production.js",
+    "package.json",
+    "AGENTS.md",
+    "README.md",
+    ".github/workflows/deploy-pages.yml",
+    ".gitignore"
+  ]
+}

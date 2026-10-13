@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8bb404eb261ac6a14de482bb7547c71594902a721932c879f923f680ddd3d8e1",
+  "path": "tests/presentation-audit.html",
+  "sha256": "58d33c468ec34cebfbe6f7d6cfce6db016829ae6c1d7ccd5a9a5c6c8102e14a6",
+  "capturedAt": "2026-10-13T19:09:12.168139+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "<!doctype html><html lang=\"pt-BR\"><meta charset=\"utf-8\"><title>Auditoria de apresentação</title>\n<style>body{background:#17121f;color:#fff;font:16px sans-serif}iframe{display:block;border:0}pre{white-space:pre-wrap}</style>\n<h1>Auditoria de apresentação</h1><pre id=\"result\">Executando…</pre><div id=\"frames\"></div>\n<script type=\"module\" src=\"presentation-audit.js\"></script></html>\n"
+}

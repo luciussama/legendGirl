@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "aef9477ffa2d26e92fdc8640191ba23a7d4bb222700fa39b5887a7c45ab85a15",
+  "path": "docs/qa/reversao-sprites/percurso-android/revelacao-5-depois.png",
+  "sha256": "499ce3c0a7e3606fa2d9927d50d0c874cabb42d0b8a74ebd7c632452db2b2984",
+  "capturedAt": "2026-10-13T19:09:11.955001+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/revelacao-5-depois.png\", \"sha256\": \"5dba8d59fe108c3cab6e6cc8d1e53451d31001688571a29e431a646a3460ff3c\", \"bytes\": 309440, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

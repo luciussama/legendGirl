@@ -62,7 +62,7 @@ Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist 
 | --- | --- |
 | [README](../README.md) | Execução, controles, arquitetura geral, comandos e publicação. |
 | [AGENTS.md](../AGENTS.md) | Idioma do projeto e restrições da direção visual. |
-| [Verificação de plataformas](../tests/DARK_ROOM_VERIFICATION.md) | Contato, percurso, geometria e limites dos testes. |
+| [Verificação de plataformas — acervo de IA](diario-ia/README.md) | Contato, percurso, geometria e limites dos testes. |
 | [Personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md) | Origem imutável, recortes e regras de animação. |
 | [Arte complementar](../assets/art/dark-room/modern/README.md) | Recursos ilustrados e calibração de apoios. |
 | [Abertura](../assets/art/dark-room/opening/README.md) | Atlas narrativo, tempo e persistência da sequência. |
@@ -72,7 +72,7 @@ Comentários, documentação, interface e diagnósticos novos são escritos em p
 
 A apresentação normal não deve desenhar réguas de pouso, linhas de hitbox ou realces técnicos sobre ilustrações. Hitboxes pertencem ao modo de depuração, desativado normalmente. A exceção documentada do relógio cuco (19) admite fixação sólida para os pés sem alterar a hitbox. Ajustes de arte não autorizam mudanças de física, layout ou dificuldade.
 
-O guia de QA define `current-reports/`, `current-screenshots/`, `current-logs/`, `validation/` e `active-test-assets/` como organização oficial; o histórico pertence ao Git. Relatórios específicos de câmera/renderização também estão presentes no workspace. Consulte-os como evidência do defeito correspondente, sem transformar diretórios históricos ou comparações específicas em nova convenção geral de armazenamento.
+Relatórios, verificações, fixtures e registros de evidência pertencem ao diário de IA. QA é executado somente em diretório temporário. A documentação humana contém guias e o diário de produto, sem logs ou homologações de máquina.
 
 ## Arquitetura e fluxo de execução
 
@@ -396,11 +396,11 @@ O harness visual é parcialmente determinístico: performance.now, timers/RAF e 
 | `npm run test:pages`, `npm run build` | Páginas e caminhos de publicação em subpasta. | `build` valida; não transpila nem produz `dist/`. |
 | `npm run check-assets` | Manifesto e arquivos. | Disponibilidade de arquivo não garante recorte/arte corretos. |
 | `npm run lint` | Sintaxe dos dois arquivos configurados. | Não é ESLint nem análise de todo `src/`. |
-| `node scripts/test-opening-sequence.js` | Abertura/cues/poses e persistência. | Combine com inspeção visual. |
-| `node scripts/test-physics-scenarios.js` | Cenários adicionais de física. | Não substitui percurso completo. |
-| `node scripts/test-lighting.js`, `node scripts/test-background-viewport.js` | Máscara, matriz, cobertura e invariância visual. | São extras: não estão no `npm test` atual. |
-| `node scripts/test-camera-presentation.js` | Damping visual, estabilização, limites e checkpoints. | Não mede percepção em dispositivo real. |
-| `node scripts/test-mobile-zoom.js`, `node scripts/test-android-framing.js`, `node scripts/test-dialogue-safe-area.js`, `node scripts/test-mobile-dialogue-region.js` | Enquadramento e texto móveis. | Adicione retrato/paisagem/insets em revisão manual. |
+| `npm run journal:qa -- script:test-opening-sequence.js` | Abertura/cues/poses e persistência. | Combine com inspeção visual. |
+| `npm run journal:qa -- script:test-physics-scenarios.js` | Cenários adicionais de física. | Não substitui percurso completo. |
+| `npm run journal:qa -- script:test-lighting.js`, `npm run journal:qa -- script:test-background-viewport.js` | Máscara, matriz, cobertura e invariância visual. | São extras: não estão no `npm test` atual. |
+| `npm run journal:qa -- script:test-camera-presentation.js` | Damping visual, estabilização, limites e checkpoints. | Não mede percepção em dispositivo real. |
+| `npm run journal:qa -- script:test-mobile-zoom.js`, `npm run journal:qa -- script:test-android-framing.js`, `npm run journal:qa -- script:test-dialogue-safe-area.js`, `npm run journal:qa -- script:test-mobile-dialogue-region.js` | Enquadramento e texto móveis. | Adicione retrato/paisagem/insets em revisão manual. |
 | `node scripts/verify-full-browser.js android` / `iphone` / `desktop` | Sequência completa até organizar os oito objetos. | Busca instantes de salto com snapshots; não representa julgamento humano. |
 
 ### Navegador instrumentado
@@ -480,22 +480,8 @@ Na revisão, confira listeners/RAF, referências preservadas no save, estado nã
 
 Para localizar uma implementação exata, use a [referência de métodos](REFERENCIA-METODOS.md), organizada por arquivo, com assinatura, tipo da declaração e linha de origem. Funções internas são pontos de leitura, não contratos públicos estáveis. Ao alterar o código, atualize os contratos afetados e as referências de documentação no mesmo trabalho.
 
-## Produção dos sprites de batalha
+## Arte e validação de batalha
 
-A [validação de combate do Prompt 14](battle-mode/combat-validation.md) resultou em **FAIL**. Consulte as reprovações e os critérios de nova homologação antes de integrar os recursos.
+Consulte o [guia de designers](sprites/GUIA-DESIGNERS.md), o [guia da arena](arena/GUIA-ARENA.md) e as [orientações de produção de sprites](battle-mode/battle-sprite-production.md). `BattlePresentation.js` concentra a apresentação dos golpes; `BattlePlayerBounds.js` contém limites extraídos das poses. Mudanças visuais precisam continuar compatíveis com a simulação.
 
-O catálogo, as referências visuais, o formato das âncoras e as limitações da produção estão em [Produção dos sprites de batalha](battle-mode/battle-sprite-production.md). A [prévia animada](../tests/battle-sprite-review.html) deve ser aberta pelo servidor local. Execute `npm run verify:battle-sprites` para validar os arquivos. O pacote ainda precisa de homologação artística antes da integração.
-
-A [correção e revalidação do Prompt 14A](battle-mode/combat-correction-report.md) preserva o resultado **FAIL**, registra as tentativas e fornece uma prévia de transições. O pacote corrigido não está autorizado artisticamente para integração.
-
-## Arena em avaliação de gameplay — Prompt 16
-
-`ToyRoomBattle` assume a sala ao terminar a cena da espada. O estado é persistido em `toyRoomBattle`; o manifesto candidato é carregado sem placeholders. A menina usa escala visual 2× ancorada nos pés, incluindo espada e ataques, exclusivamente na arena. Regras, parâmetros provisórios, teste reproduzível e limitações estão na [revisão de gameplay](battle-mode/gameplay-review-report.md). Essa integração foi autorizada para avaliação controlada; a homologação artística anterior continua reprovada.
-
-## Polimento seguro da arena — Prompt 17
-
-Cada alteração deve ser isolada, seguida de verificação dos recursos, regressão completa e playtest dos quatro adversários. O [relatório de polimento](battle-mode/post-playtest-polish-report.md) registra melhorias, rollbacks e divergências de justiça de hitbox ainda abertas. `battleAnimationFrame()` distribui as poses de Rush dentro das janelas existentes; não altera a simulação. A página de QA permite pausa na preparação, avanço de um quadro e comparação de recursos anteriores com `?baseline=1`. Essas ferramentas não aparecem no jogo normal.
-
-## Certificação de justiça — Prompt 18
-
-A [revisão de certificação](battle-mode/fairness-certification-report.md) contém decisões por defeito, limites dos testes e reprodução. `BattlePresentation.js` concentra a projeção da mola/luva, pose baixa, feixe e transmissão do Trem. `BattlePlayerBounds.js` contém metadados alfa, extraídos por `scripts/generate-battle-player-bounds.js`; ao trocar essas imagens, regenere os dados e repita a revisão visual e de contatos. O resultado global permanece **FAIL**. Não confunda a suíte de punho/laser aprovada com certificação de Toy Leap ou homologação completa da caminhada do Robô.
+Histórico de correções, tentativas, falhas e homologações está exclusivamente no [diário de IA](diario-ia/README.md). Não interpretar uma aprovação antiga como validação da revisão atual. Execute os aliases npm de QA, que recuperam as fontes em ambiente temporário e registram seus resultados no diário.

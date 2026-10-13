@@ -155,6 +155,4 @@ const outBuf = PNG.sync.write(out);
 fs.writeFileSync(srcPath, outBuf);
 console.log(`Successfully updated ${srcPath} (${W}x${H})`);
 
-// Salva também em assets/art/dark-room/sprites/music_box_refined.png para registro e comparação.
-fs.mkdirSync('assets/qa-testers/validation/refinamento', {recursive:true});
-fs.writeFileSync('assets/qa-testers/validation/refinamento/music_box_refined.png', outBuf);
+// Arte de produção já gravada acima; nenhuma cópia de evidência é criada no projeto.

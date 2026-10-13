@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ec5e789cb1b7f7426962914d4831e8b8db5feb6e20b53086fa37f5157eba30b4",
+  "path": "docs/qa/reversao-sprites/desktop-combate-dinosaur-transicao.png",
+  "sha256": "1ac9de1d8fee99229090b61f10278159bc452685652aaafa7da7c676963a87e5",
+  "capturedAt": "2026-10-13T19:09:11.909125+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-dinosaur-transicao.png\", \"sha256\": \"72cd2961aa75a020dabb704b0612e07afdbaee89872adab4617d3f387cbd2ce8\", \"bytes\": 1149003, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

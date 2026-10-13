@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "c860c76946329411b3b91d74be67b0e54b480aee2b93eb1941d795c057e908f7",
+  "path": "docs/qa/reversao-sprites/percurso-android/04-sala-brinquedos.png",
+  "sha256": "0f15f3f0f3ea07a4457862390e79c0393a9cf84973f0329a63a1162ed54b2927",
+  "capturedAt": "2026-10-13T19:09:11.928586+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/04-sala-brinquedos.png\", \"sha256\": \"ae6e2a740edc824940d989a23415db123b1a8ffdfcbf50b229a0edf89ac93589\", \"bytes\": 467689, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

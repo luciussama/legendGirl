@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "1a5015aa402ffc1c56c6b071aa3c7c2621cdc9f3083f89af57760847103fac6d",
+  "path": "docs/qa/arena-player-animation/crouch-28.png",
+  "sha256": "fb6f1cedf65f4e6c16b61f684807f3e7135f8d51953b930c1c46983c1133d07f",
+  "capturedAt": "2026-10-13T19:09:11.835264+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/arena-player-animation/crouch-28.png\", \"sha256\": \"cb0b05d7e6d842456c5e5f1a5bfce96b5fa5e332acf02898dd52e836f06b364d\", \"bytes\": 54426, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

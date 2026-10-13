@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "4ae948986259159f8b9b9f301b111d081f1aa385c1f203fc9e27584dcba91679",
+  "path": "docs/qa/arena-player-animation/attack-90.png",
+  "sha256": "2231a30b962afb2bf7d59a56f63c30613ea29bc33486e1d30cbf3bba04337eed",
+  "capturedAt": "2026-10-13T19:09:11.831006+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/arena-player-animation/attack-90.png\", \"sha256\": \"dc504c5c2975a6ebfab41c703c994a111996300185c5efcf0d7c606e8393f777\", \"bytes\": 59894, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

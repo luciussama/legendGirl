@@ -15,6 +15,8 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 
 ## Manual para novas equipes
 
+O [diário humano do projeto](docs/DIARIO-HUMANO.md) apresenta as decisões de produto. Relatórios técnicos, QA e homologações ficam exclusivamente no acervo de IA.
+
 Toda IA deve começar pelo [diário compartilhado](docs/diario-ia/README.md), conforme `AGENTS.md`.
 
 Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código. O [dicionário de dependências](docs/DEPENDENCIAS.md) resume bibliotecas, versões e locais de uso.
@@ -180,7 +182,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── toy-room/          # Exploração e organização de brinquedos
 │       └── debug/             # Ferramentas de inspeção
 ├── scripts/                   # Testes, geração e revisão de recursos
-├── tests/                     # Páginas instrumentadas e referências de física
+├── docs/diario-ia/            # Acervo de máquina e QA recuperável em ambiente temporário
 └── .github/workflows/          # Publicação no GitHub Pages
 ```
 
@@ -200,12 +202,12 @@ npm run build
 | `npm run lint` | Verificação de sintaxe de `server.js` e `scripts/check-assets.js`; não é uma análise estática de todo o projeto |
 | `npm run test:pages` | Referências das páginas e compatibilidade dos caminhos com publicação em subpasta |
 | `npm run build` | Validação das páginas; não transpila JavaScript nem gera um pacote em `dist/` |
-| `node scripts/test-opening-sequence.js` | Sequência, poses, falas e persistência da abertura |
-| `node scripts/test-physics-scenarios.js` | Cenários adicionais de física e alinhamento das plataformas |
+| `npm run journal:qa -- script:test-opening-sequence.js` | Sequência, poses, falas e persistência da abertura |
+| `npm run journal:qa -- script:test-physics-scenarios.js` | Cenários adicionais de física e alinhamento das plataformas |
 
 ### Percurso completo no navegador
 
-As páginas de `tests/` expõem instrumentação exclusiva para revisão. Os controles de inspeção não fazem parte da interface normal do jogo.
+As páginas e scripts de QA estão arquivados no diário de IA. Os comandos de teste recuperam suas fontes apenas em um diretório temporário, preservam os resultados no acervo e apagam o ambiente ao concluir. Nenhum arquivo de QA permanece no projeto ou no site publicado.
 
 Para executar a validação automatizada, mantenha o servidor local na porta 3000 e inicie **uma instância dedicada do Chrome**, com um perfil separado e `--remote-debugging-port=9222`. Os scripts se conectam a uma página dessa instância.
 
@@ -232,4 +234,4 @@ Siga as instruções de [`AGENTS.md`](AGENTS.md): comentários, documentação, 
 
 Ao alterar apresentação, mantenha física, geometria de colisão e posições do mundo separadas das transformações de renderização. Não desenhe linhas auxiliares de pouso ou hitboxes sobre as ilustrações na apresentação normal; inspeções técnicas pertencem ao modo de depuração.
 
-Mudanças em física ou progressão exigem revisão das referências em `tests/fixtures/active-test-assets/` e dos testes de percurso. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.
+Mudanças em física ou progressão exigem revisão das referências e dos testes de percurso preservados no diário de IA. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "1e6f8e36fb8b6460f9da327b4f289b83122fd6c76c0d3598d3e068b425fe1fb0",
+  "path": "scripts/test-train-drive.js",
+  "sha256": "e2b28d12c715273a037ee9f33b314e8b0dc5d4faec403ed6dab7f7b4f1533068",
+  "capturedAt": "2026-10-13T19:09:12.137526+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport {trainDrive} from '../src/js/toy-room/BattlePresentation.js';\nconst centers=[{x:697,y:748},{x:1100,y:781}],length=Math.hypot(403,33);\nfor(let t=0;t<=42;t+=.25) {\n const drive=trainDrive(t),[a,b]=drive.pins;\n assert.ok(Math.abs(Math.hypot(b.x-a.x,b.y-a.y)-length)<1e-8,'A biela não muda de comprimento.');\n drive.pins.forEach((p,i)=>assert.ok(Math.abs(Math.hypot(p.x-centers[i].x,p.y-centers[i].y)-45)<1e-8,'O pino permanece preso ao raio excêntrico.'));\n assert.ok(Math.abs((a.x-centers[0].x)-(b.x-centers[1].x))<1e-8,'Fases horizontais sincronizadas.');\n assert.ok(Math.abs((a.y-centers[0].y)-(b.y-centers[1].y))<1e-8,'Fases verticais sincronizadas.');\n}\nfor(let i=0;i<2;i++)for(const axis of['x','y'])assert.ok(Math.abs(trainDrive(0).pins[i][axis]-trainDrive(42).pins[i][axis])<1e-8,'O ciclo fecha.');\nconsole.log('APROVADO: 169 amostras da transmissão; raio, fase, comprimento da biela e fechamento do ciclo constantes.');\n"
+}

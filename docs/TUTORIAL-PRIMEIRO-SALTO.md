@@ -192,9 +192,9 @@ O desenho ocorre depois de `ArtFinish` e HUD e antes dos diálogos. Não cria DO
 Executar na raiz:
 
 ```sh
-node scripts/test-first-jump-prompt.js
-node scripts/test-campaign-progress.js
-node scripts/test-opening-sequence.js
+npm run journal:qa -- script:test-first-jump-prompt.js
+npm run journal:qa -- script:test-campaign-progress.js
+npm run journal:qa -- script:test-opening-sequence.js
 ```
 
 `npm test` inclui a verificação unitária do prompt e da campanha. `npm run test:tutorial:browser` executa os quatro testes de navegador abaixo.
@@ -202,10 +202,10 @@ node scripts/test-opening-sequence.js
 Para testes de navegador, manter servidor local em `127.0.0.1:3000` e Chrome dedicado com CDP em `127.0.0.1:9222`. As fixtures instrumentadas ficam em `tests/`; suas APIs manuais não pertencem ao jogo distribuído.
 
 ```sh
-node scripts/test-first-jump-tutorial-browser.js
-node scripts/test-first-jump-prompt-browser.js
-node scripts/test-first-jump-completion-browser.js
-node scripts/test-first-jump-production-browser.js
+npm run journal:qa -- script:test-first-jump-tutorial-browser.js
+npm run journal:qa -- script:test-first-jump-prompt-browser.js
+npm run journal:qa -- script:test-first-jump-completion-browser.js
+npm run journal:qa -- script:test-first-jump-production-browser.js
 ```
 
 | Teste | Cobertura |

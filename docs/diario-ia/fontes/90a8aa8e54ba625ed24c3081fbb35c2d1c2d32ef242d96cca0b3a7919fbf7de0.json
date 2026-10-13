@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "90a8aa8e54ba625ed24c3081fbb35c2d1c2d32ef242d96cca0b3a7919fbf7de0",
+  "path": "docs/qa/reversao-sprites/desktop-combate-train-agachada.png",
+  "sha256": "b01bf09651b08b95e8706f28fbcb0273dacee8ad3b64a0db14c9381a61be7dbb",
+  "capturedAt": "2026-10-13T19:09:11.915181+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-train-agachada.png\", \"sha256\": \"dcbad49d85c19fc48bcffd95e3897adc9f61d7d831bb71df6220d8e1894ec263\", \"bytes\": 1146001, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

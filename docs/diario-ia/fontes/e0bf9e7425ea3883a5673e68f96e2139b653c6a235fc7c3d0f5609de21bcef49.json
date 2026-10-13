@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e0bf9e7425ea3883a5673e68f96e2139b653c6a235fc7c3d0f5609de21bcef49",
+  "path": "scripts/test-final-pedestal-camera.js",
+  "sha256": "9eb55ce7a9c6599261105873819117d6268f72fea9937be73db87c595c1c3954",
+  "capturedAt": "2026-10-13T19:09:12.114245+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport { CameraController } from '../src/js/controllers/CameraController.js';\nimport { createDefaultStateVariables } from '../src/js/state/StateVariables.js';\nimport { platforms, getEscapeStats, exitDoor } from '../src/js/config.js';\nconst last=platforms.length-1;\nfor(const dt of [0.5,1,1.2]) for(const width of [540,960]) {\n  const state=createDefaultStateVariables(),stats=getEscapeStats(11);\n  Object.assign(state,{isEscapeMode:true,isStandbyActive:false,currentScrollSpeed:stats.scrollSpeed,targetScrollSpeed:stats.scrollSpeed});\n  Object.assign(state.baby,{x:4612.708,y:104,currentPlatformIndex:last,onGround:true,vx:stats.runVx,vy:0});\n  const camera=new CameraController({x:4608});\n  let failed=false;\n  for(let i=0;i<160&&state.baby.x<exitDoor.x-10;i++){\n    state.baby.x+=stats.runVx*dt;\n    const before={...state.baby};\n    camera.update(dt,state,{width,height:960},{escapeEndPlatformIndex:last,onLagBehind(){failed=true;}});\n    assert.deepEqual(state.baby,before,'A correção da câmera não modifica a personagem');\n  }\n  assert.ok(state.baby.x>=exitDoor.x-10&&!failed,'Pouso final permite chegar ao gatilho da porta');\n  state.baby.currentPlatformIndex=last-1;\n  camera.x=state.baby.x+30;\n  camera.update(dt,state,{width,height:960},{escapeEndPlatformIndex:last,onLagBehind(){failed=true;}});\n  assert.ok(failed,'Penalidade de atraso preservada antes do pedestal final');\n}\nconsole.log('Pedestal final: aproximação da porta aprovada; física e pressão dos trechos anteriores preservadas.');\n"
+}

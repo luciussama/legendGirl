@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ac4e2fad7d1808dde6e1643c56aea06d8347468c82125ebe8a016503d6eb7359",
+  "path": "scripts/plot-camera-correction.js",
+  "sha256": "d48a7bf4548e5dc80918507a0a4d02e3cb26e254b375f168a37f581b30fcec7e",
+  "capturedAt": "2026-10-13T19:09:12.097200+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "// Gráficos comparativos das transformações realmente desenhadas, em pixels visuais e percentuais.\nimport fs from 'node:fs/promises';\nconst root='assets/qa-testers/camera-stability/correction';\nfor(const profile of ['desktop','android','iphone']){\n const sets=await Promise.all(['antes','depois'].map(async label=>JSON.parse(await fs.readFile(`${root}/${label}/${profile}/frames.json`))));\n const series=sets.map(rows=>rows.filter(r=>r.phase3||r.plotTwistActive).map(r=>({frame:r.frame,zoom:r.transform?.a??1,\n  x:r.cameraX-(r.transform?.e??0)/(r.transform?.a??1),y:-(r.transform?.f??0)/(r.transform?.d??1)})));\n let svg=`<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1100\" height=\"840\" viewBox=\"0 0 1100 840\"><rect width=\"1100\" height=\"840\" fill=\"white\"/><g font-family=\"sans-serif\" font-size=\"16\"><text x=\"45\" y=\"30\">QA-CAMERA-002C — ${profile} — transformação visual efetiva (60 Hz simulados)</text><text x=\"45\" y=\"55\" fill=\"#bb4422\">Antes</text><text x=\"140\" y=\"55\" fill=\"#2463ad\">Depois</text>`;\n const panels=[['Zoom efetivo',r=>r.zoom],['Origem visual X (unidades do mundo)',r=>r.x],['Origem visual Y (unidades do mundo)',r=>r.y]];\n panels.forEach(([name,get],index)=>{\n  const vals=series.flatMap(rows=>rows.map(get)),low=Math.min(...vals),high=Math.max(...vals),top=100+index*240;\n  svg+=`<text x=\"45\" y=\"${top-15}\">${name}: ${low.toFixed(3)} a ${high.toFixed(3)}</text><path d=\"M60 ${top}v170h990\" fill=\"none\" stroke=\"#aaa\"/>`;\n  series.forEach((rows,k)=>{const first=rows[0].frame,last=rows.at(-1).frame,points=rows.map(r=>`${60+990*(r.frame-first)/(last-first)},${top+170-170*(get(r)-low)/(high-low||1)}`).join(' ');\n   svg+=`<polyline points=\"${points}\" fill=\"none\" stroke=\"${k?'#2463ad':'#bb4422'}\" stroke-width=\"1.5\" opacity=\".85\"/>`;\n  });\n  svg+=`<text x=\"60\" y=\"${top+195}\">Frame ${series[0][0].frame}</text><text x=\"890\" y=\"${top+195}\">Frame ${series[0].at(-1).frame}</text>`;\n });\n await fs.writeFile(`${root}/comparacao-${profile}.svg`,svg+'</g></svg>');\n}\nconsole.log('Gráficos comparativos gerados nos três perfis.');\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6333dfdab10e958a93a99e3bec4999551e03a716fa60f4c6cc3d195c4021c29e",
+  "path": "docs/qa/reversao-sprites/android-agachamento.png",
+  "sha256": "3fb75d491d41c6982d65bd478af42a15bb8ddb8f80d974633330146de313df20",
+  "capturedAt": "2026-10-13T19:09:11.876042+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-agachamento.png\", \"sha256\": \"936cb1fb51e0363b5a2db8c0923969cfb85116aa2b4d2a6c62495fe92d1fd9e6\", \"bytes\": 362012, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -22,26 +22,26 @@ São as três dependências declaradas. Não há devDependencies nem biblioteca 
 
 - [scripts/generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js)
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
-- [scripts/test-official-character.js](../scripts/test-official-character.js)
+- [scripts/test-official-character.js — acervo de IA](diario-ia/README.md)
 
 **pngjs**
 
 - [scripts/build-dark-room-atlas.js](../scripts/build-dark-room-atlas.js)
 - [scripts/build-tall-dresser.js](../scripts/build-tall-dresser.js)
-- [scripts/capture-reviewed-dresser.js](../scripts/capture-reviewed-dresser.js)
-- [scripts/capture-reviewed-escape-transition.js](../scripts/capture-reviewed-escape-transition.js)
-- [scripts/capture-reviewed-music-box.js](../scripts/capture-reviewed-music-box.js)
-- [scripts/gameplay-inspection.js](../scripts/gameplay-inspection.js)
+- [scripts/capture-reviewed-dresser.js — acervo de IA](diario-ia/README.md)
+- [scripts/capture-reviewed-escape-transition.js — acervo de IA](diario-ia/README.md)
+- [scripts/capture-reviewed-music-box.js — acervo de IA](diario-ia/README.md)
+- [scripts/gameplay-inspection.js — acervo de IA](diario-ia/README.md)
 - [scripts/generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js)
-- [scripts/generate-review-evidence.js](../scripts/generate-review-evidence.js)
+- [scripts/generate-review-evidence.js — acervo de IA](diario-ia/README.md)
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
 - [scripts/refine-platform8.js](../scripts/refine-platform8.js)
-- [scripts/software-canvas.js](../scripts/software-canvas.js)
-- [scripts/test-audit-measure.js](../scripts/test-audit-measure.js)
-- [scripts/test-foot-contact.js](../scripts/test-foot-contact.js)
-- [scripts/test-official-character.js](../scripts/test-official-character.js)
-- [scripts/test-opening-sequence.js](../scripts/test-opening-sequence.js)
-- [scripts/verify-visual-layers.js](../scripts/verify-visual-layers.js)
+- [scripts/software-canvas.js — acervo de IA](diario-ia/README.md)
+- [scripts/test-audit-measure.js — acervo de IA](diario-ia/README.md)
+- [scripts/test-foot-contact.js — acervo de IA](diario-ia/README.md)
+- [scripts/test-official-character.js — acervo de IA](diario-ia/README.md)
+- [scripts/test-opening-sequence.js — acervo de IA](diario-ia/README.md)
+- [scripts/verify-visual-layers.js — acervo de IA](diario-ia/README.md)
 
 ## Dependências transitivas
 

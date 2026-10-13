@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d4cc361adfa7b6f2e04a45e78cdd66ae1869865680e07e5601cc4f69c64b6d6a",
+  "path": "docs/character-reference-atlas/frames/fall/fall_1.png",
+  "sha256": "fe164973c618e51ce6926bea33f82f5affb7561de939d7f86d96bb84e82eda63",
+  "capturedAt": "2026-10-13T19:09:11.796612+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/frames/fall/fall_1.png\", \"sha256\": \"28919ced3e01c5cbc2856fd04287a2b24f785499b41fe3831bb2051bfff67de2\", \"bytes\": 4809, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "43a83df8e285d90dbcb3b66e1907513e942a799ee9eb0fe182995d423fae994f",
+  "path": "scripts/test-phase3-particles.js",
+  "sha256": "0b580e15d91fac85026e508aef08d7a97af0020fa524f1a19702870b984422b0",
+  "capturedAt": "2026-10-13T19:09:12.121144+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport { GameState } from '../src/js/state/GameState.js';\nimport { ParticleSystem } from '../src/js/effects/ParticleSystem.js';\n\nconst state = new GameState({ width: 960, height: 580 }, null);\nconst particles = new ParticleSystem({\n  babyJumpDust: state.babyJumpDust, speedRibbons: state.speedRibbons\n});\nparticles.spawnBabyJumpPuff(100, 200);\nparticles.spawnEscapeRibbons(state.baby, 3, { ribbonRate: 1, trailIntensity: 2 }, 0);\nassert(state.babyJumpDust.length > 0);\nassert(state.speedRibbons.length > 0);\nstate.finishPlotTwistAndStartTutorial();\nassert(state.isPhase3);\nassert.equal(state.babyJumpDust, particles.babyJumpDust);\nassert.equal(state.speedRibbons, particles.speedRibbons);\nassert.equal(particles.babyJumpDust.length, 0);\nassert.equal(particles.speedRibbons.length, 0);\n\n// Os novos rastros continuam sendo renderizados na fase 3 e expiram em vez de se acumularem.\nparticles.spawnPhase3Ribbons(state.baby, 0, { ribbonRate: 1, trailIntensity: 2 }, 0);\nparticles.spawnBabyJumpPuff(100, 200);\nassert(particles.speedRibbons.length > 0);\nconst babyBefore = { ...state.baby };\nfor (let i = 0; i < 240; i++) particles.update(0.5);\nassert.equal(particles.babyJumpDust.length, 0);\nassert.equal(particles.speedRibbons.length, 0);\nassert.deepEqual(state.baby, babyBefore);\nconsole.log('APROVADO: a fase 3 limpa os rastros compartilhados antigos; os novos efeitos expiram sem alterar a física da personagem.');\n"
+}

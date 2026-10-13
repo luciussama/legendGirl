@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "915e2f50978502b64934f8c90ac02539be7ec9022ab9ae8a643e2993ba20b42c",
+  "path": "docs/character-reference-atlas/frames/run/run_8.png",
+  "sha256": "e8ca049d88c55cedbaaabea1302689c72d737a01cac32745ab7f55464981bf6a",
+  "capturedAt": "2026-10-13T19:09:11.815016+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/frames/run/run_8.png\", \"sha256\": \"17194bf1afe7760955477f52e6d5e4e0ad2f801aa20517a9b5b7c66d2ce635d7\", \"bytes\": 4742, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

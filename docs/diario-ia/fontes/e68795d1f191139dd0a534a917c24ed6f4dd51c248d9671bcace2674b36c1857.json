@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e68795d1f191139dd0a534a917c24ed6f4dd51c248d9671bcace2674b36c1857",
+  "path": "docs/qa/reversao-sprites/percurso-android/revelacao-2-antes.png",
+  "sha256": "54db175fce3357821865a737652bf02b237fd7a26f00c34abe760a4444b4452f",
+  "capturedAt": "2026-10-13T19:09:11.949377+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-android/revelacao-2-antes.png\", \"sha256\": \"33e96d18794a95555d5821447690c7d77c76f2f5461f80269a43d5e5c606505f\", \"bytes\": 417726, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

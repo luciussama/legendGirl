@@ -18,7 +18,7 @@ Os ataques foram separados por nome para preservar os repertórios aprovados. A 
 - [Manifesto](../../assets/art/toy-room/battle/manifest.json): caminhos relativos dos quadros, dimensões, âncoras, escala visual e origem de cada recorte.
 - [Prompts de geração](../../assets/art/toy-room/battle/prompts.json): instruções utilizadas com `image_gen`.
 - [Pranchas de origem](../../assets/art/toy-room/battle/sources/): preservadas para rastreabilidade; não são atlas regulares para recorte por grade.
-- [Prévia animada](../../tests/battle-sprite-review.html): reprodução, pausa e avanço de quadro, usando as mesmas âncoras do manifesto.
+- [Prévia animada — acervo de IA](../diario-ia/README.md): reprodução, pausa e avanço de quadro, usando as mesmas âncoras do manifesto.
 
 A geração tomou como referência `assets/art/toy-room/environment-sheet.png` e `assets/art/toy-room/stage3/retro-robot-v1.png`. Foram preservadas as referências de trem azul/vermelho com vagão verde, robô de lata e Urso marrom com laço vermelho. A criação da identidade do Dinossauro foi autorizada pelo usuário: brinquedo simples, verde-azulado, amarelo e vermelho, orientado pela direção de arte existente. Os arquivos da menina e do quarto não foram alterados nesta produção.
 
@@ -38,10 +38,6 @@ npm run verify:battle-sprites
 npm run dev
 ```
 
-Abra `http://127.0.0.1:3000/tests/battle-sprite-review.html` (ajuste a porta conforme o servidor).
+As páginas de revisão estão arquivadas no diário de IA e devem ser recuperadas em ambiente temporário. Os relatórios de execução e homologação também ficam no acervo, sem cópias nesta documentação.
 
-A verificação técnica passou para os 144 PNGs: arquivos e dimensões correspondentes ao manifesto, hashes, transparência, margem, âncoras finitas, repertório exato de ataques e ausência de duplicação exata após normalizar o recorte. O Chrome carregou os 144 arquivos e as 26 sequências. As pranchas e amostras da prévia foram inspecionadas visualmente; o Toy Leap apresenta preparação, elevação e impacto em poses distintas.
-
-Hashes distintos não certificam qualidade da animação. A revisão artística ainda deve avaliar continuidade de proporções, fluidez, alinhamento do corpo e correspondência com a arte original. Em particular, **Rocket Punch apresenta contornos mais marcados que as demais sequências do Robô** e precisa de harmonização antes de ser considerado aprovado para produção. Não há certificação de que os novos desenhos tenham aparência idêntica à mão do artista original.
-
-Os 6 quadros/s da prévia são uma conveniência de inspeção. A repetição de ataques e mortes ocorre somente nessa ferramenta. Duração, eventos de dano, física, colisões, transições e integração com o jogo não foram definidos por este pacote.
+Avalie continuidade das proporções, fluidez, alinhamento do corpo, âncoras, transparência e correspondência com a arte original. Hashes e dimensões corretos não certificam qualidade artística. Duração, eventos de dano, física, colisões e transições precisam ser integrados no código e validados separadamente.

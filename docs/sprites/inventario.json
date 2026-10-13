@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 381,
+    "files": 380,
     "regions": 93,
     "code": 29
   },
@@ -48,15 +48,8 @@
       "bytes": 2333367,
       "sha256": "8304153db91e5f72255974e6805ec0d2b315cef44cd3c0529d44b3b6f0e2cf96",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "tests/DARK_ROOM_VERIFICATION.md",
-          "line": 3,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/dark-room"
     },
@@ -250,12 +243,6 @@
           "line": 7,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -280,12 +267,6 @@
           "file": "assets/manifest.json",
           "line": 46,
           "type": "manifesto-runtime",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-opening-sequence.js",
-          "line": 28,
-          "type": "apoio",
           "alias": null
         },
         {
@@ -1641,30 +1622,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -2134,12 +2091,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1740,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1563,
           "type": "apoio",
@@ -2170,12 +2121,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1737,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1740,
           "type": "manifesto-runtime",
@@ -2198,12 +2143,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1753,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1576,
@@ -2235,12 +2174,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1750,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1753,
           "type": "manifesto-runtime",
@@ -2263,12 +2196,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1766,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1589,
@@ -2300,12 +2227,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1763,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1766,
           "type": "manifesto-runtime",
@@ -2328,12 +2249,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1779,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1602,
@@ -2365,12 +2280,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1776,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1779,
           "type": "manifesto-runtime",
@@ -2393,12 +2302,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1792,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1615,
@@ -2430,12 +2333,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1789,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1792,
           "type": "manifesto-runtime",
@@ -2458,12 +2355,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1805,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1628,
@@ -2495,12 +2386,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1802,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1805,
           "type": "manifesto-runtime",
@@ -2523,12 +2408,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1823,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1646,
@@ -2560,12 +2439,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1820,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1823,
           "type": "manifesto-runtime",
@@ -2588,12 +2461,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1836,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1659,
@@ -2625,12 +2492,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1833,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1836,
           "type": "manifesto-runtime",
@@ -2653,12 +2514,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1849,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1672,
@@ -2690,12 +2545,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1846,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1849,
           "type": "manifesto-runtime",
@@ -2718,12 +2567,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1862,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1685,
@@ -2755,12 +2598,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1859,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1862,
           "type": "manifesto-runtime",
@@ -2783,12 +2620,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1875,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1698,
@@ -2820,12 +2651,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1872,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1875,
           "type": "manifesto-runtime",
@@ -2848,12 +2673,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1888,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1711,
@@ -2885,12 +2704,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1885,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1888,
           "type": "manifesto-runtime",
@@ -2913,12 +2726,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2155,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1978,
@@ -2950,12 +2757,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2152,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2155,
           "type": "manifesto-runtime",
@@ -2978,12 +2779,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2168,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1991,
@@ -3015,12 +2810,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2165,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2168,
           "type": "manifesto-runtime",
@@ -3043,12 +2832,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2181,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 2004,
@@ -3080,12 +2863,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2178,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2181,
           "type": "manifesto-runtime",
@@ -3108,12 +2885,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2194,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 2017,
@@ -3145,12 +2916,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2191,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2194,
           "type": "manifesto-runtime",
@@ -3173,12 +2938,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2207,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 2030,
@@ -3210,12 +2969,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2204,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2207,
           "type": "manifesto-runtime",
@@ -3238,12 +2991,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2220,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 2043,
@@ -3275,12 +3022,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2217,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2220,
           "type": "manifesto-runtime",
@@ -3303,12 +3044,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2072,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1895,
@@ -3340,12 +3075,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2069,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2072,
           "type": "manifesto-runtime",
@@ -3368,12 +3097,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2085,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1908,
@@ -3405,12 +3128,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2082,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2085,
           "type": "manifesto-runtime",
@@ -3433,12 +3150,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2098,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1921,
@@ -3470,12 +3181,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2095,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2098,
           "type": "manifesto-runtime",
@@ -3498,12 +3203,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2111,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1934,
@@ -3535,12 +3234,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2108,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2111,
           "type": "manifesto-runtime",
@@ -3563,12 +3256,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2124,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1947,
@@ -3600,12 +3287,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2121,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2124,
           "type": "manifesto-runtime",
@@ -3628,12 +3309,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2137,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1960,
@@ -3665,12 +3340,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2134,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2137,
           "type": "manifesto-runtime",
@@ -3693,12 +3362,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1989,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1812,
@@ -3730,12 +3393,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1986,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1989,
           "type": "manifesto-runtime",
@@ -3758,12 +3415,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2002,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1825,
@@ -3795,12 +3446,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1999,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2002,
           "type": "manifesto-runtime",
@@ -3823,12 +3468,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2015,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1838,
@@ -3860,12 +3499,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2012,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2015,
           "type": "manifesto-runtime",
@@ -3888,12 +3521,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2028,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1851,
@@ -3925,12 +3552,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2025,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2028,
           "type": "manifesto-runtime",
@@ -3953,12 +3574,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2041,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1864,
@@ -3990,12 +3605,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2038,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2041,
           "type": "manifesto-runtime",
@@ -4018,12 +3627,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 2054,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1877,
@@ -4055,12 +3658,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 2051,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 2054,
           "type": "manifesto-runtime",
@@ -4083,12 +3680,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1574,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1397,
@@ -4120,12 +3711,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1571,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1574,
           "type": "manifesto-runtime",
@@ -4148,12 +3733,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1587,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1410,
@@ -4185,12 +3764,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1584,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1587,
           "type": "manifesto-runtime",
@@ -4213,12 +3786,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1600,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1423,
@@ -4250,12 +3817,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1597,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1600,
           "type": "manifesto-runtime",
@@ -4278,12 +3839,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1613,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1436,
@@ -4315,12 +3870,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1610,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1613,
           "type": "manifesto-runtime",
@@ -4343,12 +3892,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1626,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1449,
@@ -4380,12 +3923,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1623,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1626,
           "type": "manifesto-runtime",
@@ -4408,12 +3945,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1639,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1462,
@@ -4445,12 +3976,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1636,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1639,
           "type": "manifesto-runtime",
@@ -4473,12 +3998,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1906,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1729,
@@ -4510,12 +4029,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1903,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1906,
           "type": "manifesto-runtime",
@@ -4538,12 +4051,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1919,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1742,
@@ -4575,12 +4082,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1916,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1919,
           "type": "manifesto-runtime",
@@ -4603,12 +4104,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1932,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1755,
@@ -4640,12 +4135,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1929,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1932,
           "type": "manifesto-runtime",
@@ -4668,12 +4157,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1945,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1768,
@@ -4705,12 +4188,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1942,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1945,
           "type": "manifesto-runtime",
@@ -4733,12 +4210,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1958,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1781,
@@ -4770,12 +4241,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1955,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1958,
           "type": "manifesto-runtime",
@@ -4798,12 +4263,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1971,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1794,
@@ -4835,12 +4294,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1968,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1971,
           "type": "manifesto-runtime",
@@ -4863,12 +4316,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1657,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1480,
@@ -4900,12 +4347,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1654,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1657,
           "type": "manifesto-runtime",
@@ -4928,12 +4369,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1670,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1493,
@@ -4965,12 +4400,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1667,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1670,
           "type": "manifesto-runtime",
@@ -4993,12 +4422,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1683,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1506,
@@ -5030,12 +4453,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1680,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1683,
           "type": "manifesto-runtime",
@@ -5058,12 +4475,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1696,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1519,
@@ -5095,12 +4506,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1693,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1696,
           "type": "manifesto-runtime",
@@ -5123,12 +4528,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1709,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1532,
@@ -5160,12 +4559,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1706,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1709,
           "type": "manifesto-runtime",
@@ -5188,12 +4581,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1722,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1545,
@@ -5221,12 +4608,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1721,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1719,
           "type": "apoio",
           "alias": null
         },
@@ -5264,24 +4645,6 @@
       "family": "assets/art/toy-room/battle/certification"
     },
     {
-      "id": "9c13629494477f01c9766f91",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/certification/robot-walk-rejected-v1.png",
-      "title": "robot-walk-rejected-v1.png",
-      "format": "png",
-      "width": 1261,
-      "height": 1247,
-      "bytes": 1020555,
-      "sha256": "9b3472bc5be178498bd14c9dfa82ac511e88865eb42fbe4e90b1304160bce641",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [
-        "O caminho indica referência anterior ou versão rejeitada."
-      ],
-      "family": "assets/art/toy-room/battle/certification"
-    },
-    {
       "id": "1196f1babf8ff63018495bc7",
       "kind": "file",
       "path": "assets/art/toy-room/battle/certification/train-body-v1.png",
@@ -5308,15 +4671,8 @@
       "bytes": 1838892,
       "sha256": "61a72d845b712f55e6d7c25afa5db5d33203528ece920d6e8f397f9835aca095",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 61,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -5469,15 +4825,8 @@
       "bytes": 1918589,
       "sha256": "95c518864b3ce4efcb00da43da74913fcf1ee11e0b028c2e191a0378118b1898",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 31,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -5630,15 +4979,8 @@
       "bytes": 2118481,
       "sha256": "6148ee6a34561d66505816d3eb9b4e5faee910473a53feac2db1e0c344ee7707",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 49,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -5791,15 +5133,8 @@
       "bytes": 2044775,
       "sha256": "050c17b944dd04784a59cc12aea09552be0ac4d8981e5d2a0f1dc0c107e12de7",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 25,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -5984,15 +5319,8 @@
       "bytes": 2083114,
       "sha256": "30b62ae58adb32462ac80068c23236e6a0357dfba268c6de00c543a4c028905c",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 37,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -6145,15 +5473,8 @@
       "bytes": 2018235,
       "sha256": "85ddc640467beaf62500c56174db3e2479c402d505dfe261de0015681ad06e6b",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 43,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -6306,15 +5627,8 @@
       "bytes": 1909114,
       "sha256": "9a8f02bfc8aacf069da246bb0086a1a369445c4238489de3ac45f41bb91ecb04",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "docs/battle-mode/combat-correction-report.json",
-          "line": 55,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/corrections"
     },
@@ -6470,12 +5784,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1285,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1138,
           "type": "apoio",
@@ -6506,12 +5814,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1282,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1285,
           "type": "manifesto-runtime",
@@ -6534,12 +5836,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1298,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1151,
@@ -6571,12 +5867,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1295,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1298,
           "type": "manifesto-runtime",
@@ -6599,12 +5889,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1311,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1164,
@@ -6636,12 +5920,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1308,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1311,
           "type": "manifesto-runtime",
@@ -6664,12 +5942,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1324,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1177,
@@ -6701,12 +5973,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1321,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1324,
           "type": "manifesto-runtime",
@@ -6729,12 +5995,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1513,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1336,
@@ -6766,12 +6026,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1510,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1513,
           "type": "manifesto-runtime",
@@ -6794,12 +6048,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1526,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1349,
@@ -6831,12 +6079,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1523,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1526,
           "type": "manifesto-runtime",
@@ -6859,12 +6101,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1539,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1362,
@@ -6896,12 +6132,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1536,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1539,
           "type": "manifesto-runtime",
@@ -6924,12 +6154,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1552,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1375,
@@ -6961,12 +6185,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1549,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1552,
           "type": "manifesto-runtime",
@@ -6989,12 +6207,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1456,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1279,
@@ -7026,12 +6238,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1453,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1456,
           "type": "manifesto-runtime",
@@ -7054,12 +6260,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1469,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1292,
@@ -7091,12 +6291,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1466,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1469,
           "type": "manifesto-runtime",
@@ -7119,12 +6313,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1482,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1305,
@@ -7156,12 +6344,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1479,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1482,
           "type": "manifesto-runtime",
@@ -7184,12 +6366,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1495,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1318,
@@ -7221,12 +6397,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1492,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1495,
           "type": "manifesto-runtime",
@@ -7249,12 +6419,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1171,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1024,
@@ -7286,12 +6450,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1168,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1171,
           "type": "manifesto-runtime",
@@ -7314,12 +6472,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1184,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1037,
@@ -7351,12 +6503,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1181,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1184,
           "type": "manifesto-runtime",
@@ -7379,12 +6525,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1197,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1050,
@@ -7416,12 +6556,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1194,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1197,
           "type": "manifesto-runtime",
@@ -7444,12 +6578,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1210,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1063,
@@ -7477,12 +6605,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1209,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1207,
           "type": "apoio",
           "alias": null
         },
@@ -7602,12 +6724,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1228,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1081,
           "type": "apoio",
@@ -7638,12 +6754,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1225,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1228,
           "type": "manifesto-runtime",
@@ -7666,12 +6776,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1241,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1094,
@@ -7703,12 +6807,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1238,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1241,
           "type": "manifesto-runtime",
@@ -7731,12 +6829,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1254,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1107,
@@ -7768,12 +6860,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1251,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1254,
           "type": "manifesto-runtime",
@@ -7796,12 +6882,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1267,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1120,
@@ -7829,12 +6909,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1266,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1264,
           "type": "apoio",
           "alias": null
         },
@@ -8513,12 +7587,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 771,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 771,
           "type": "apoio",
@@ -8547,12 +7615,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 789,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 789,
@@ -8583,12 +7645,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 807,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 807,
           "type": "apoio",
@@ -8617,12 +7673,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 825,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 825,
@@ -8653,12 +7703,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 843,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 843,
           "type": "apoio",
@@ -8687,12 +7731,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 861,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 861,
@@ -8755,12 +7793,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1052,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1052,
           "type": "apoio",
@@ -8801,12 +7833,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1070,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1070,
@@ -8849,12 +7875,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1088,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1088,
           "type": "apoio",
@@ -8896,12 +7916,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1106,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1106,
           "type": "apoio",
@@ -8924,12 +7938,6 @@
           "line": 1106,
           "type": "manifesto-runtime",
           "alias": null
-        },
-        {
-          "file": "docs/battle-mode/hitbox-fairness-evidence.json",
-          "line": 4,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -8948,12 +7956,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1124,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1124,
@@ -8995,12 +7997,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1142,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1142,
@@ -9059,12 +8055,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 211,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 211,
           "type": "apoio",
@@ -9099,12 +8089,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 229,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 229,
@@ -9141,12 +8125,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 247,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 247,
           "type": "apoio",
@@ -9181,12 +8159,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 265,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 265,
@@ -9223,12 +8195,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 283,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 283,
           "type": "apoio",
@@ -9263,12 +8229,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 301,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 301,
@@ -9337,12 +8297,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1342,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1342,
           "type": "apoio",
@@ -9357,12 +8311,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1341,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1339,
           "type": "apoio",
           "alias": null
         },
@@ -9390,12 +8338,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1360,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1360,
           "type": "apoio",
@@ -9410,12 +8352,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1359,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1357,
           "type": "apoio",
           "alias": null
         },
@@ -9443,12 +8379,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1378,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1378,
           "type": "apoio",
@@ -9463,12 +8393,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1377,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1375,
           "type": "apoio",
           "alias": null
         },
@@ -9496,12 +8420,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1396,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1396,
           "type": "apoio",
@@ -9516,12 +8434,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1395,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1393,
           "type": "apoio",
           "alias": null
         },
@@ -9549,12 +8461,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1414,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1414,
           "type": "apoio",
@@ -9569,12 +8475,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1413,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1411,
           "type": "apoio",
           "alias": null
         },
@@ -9602,12 +8502,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1432,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 1432,
           "type": "apoio",
@@ -9622,12 +8516,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 1431,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1429,
           "type": "apoio",
           "alias": null
         },
@@ -9671,12 +8559,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 326,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 326,
           "type": "apoio",
@@ -9691,12 +8573,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 326,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 325,
           "type": "apoio",
           "alias": null
         },
@@ -9724,12 +8600,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 344,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 344,
           "type": "apoio",
@@ -9744,12 +8614,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 344,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 343,
           "type": "apoio",
           "alias": null
         },
@@ -9777,12 +8641,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 362,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 362,
           "type": "apoio",
@@ -9797,12 +8655,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 362,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 361,
           "type": "apoio",
           "alias": null
         },
@@ -9830,12 +8682,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 380,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 380,
           "type": "apoio",
@@ -9850,12 +8696,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 380,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 379,
           "type": "apoio",
           "alias": null
         },
@@ -9883,12 +8723,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 398,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 398,
           "type": "apoio",
@@ -9903,12 +8737,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 398,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 397,
           "type": "apoio",
           "alias": null
         },
@@ -9936,12 +8764,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 416,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 416,
           "type": "apoio",
@@ -9956,12 +8778,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 416,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 415,
           "type": "apoio",
           "alias": null
         },
@@ -10015,12 +8831,6 @@
           "line": 771,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 770,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10048,12 +8858,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 789,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 788,
           "type": "apoio",
           "alias": null
         }
@@ -10085,12 +8889,6 @@
           "line": 807,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 806,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10118,12 +8916,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 825,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 824,
           "type": "apoio",
           "alias": null
         }
@@ -10155,12 +8947,6 @@
           "line": 843,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 842,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10188,12 +8974,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 861,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 860,
           "type": "apoio",
           "alias": null
         }
@@ -10279,12 +9059,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 693,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 693,
           "type": "apoio",
@@ -10299,12 +9073,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 693,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 692,
           "type": "apoio",
           "alias": null
         },
@@ -10332,12 +9100,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 711,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 711,
           "type": "apoio",
@@ -10352,12 +9114,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 711,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 710,
           "type": "apoio",
           "alias": null
         },
@@ -10385,12 +9141,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 729,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 729,
           "type": "apoio",
@@ -10405,12 +9155,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 729,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 728,
           "type": "apoio",
           "alias": null
         },
@@ -10438,12 +9182,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 747,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 747,
           "type": "apoio",
@@ -10458,12 +9196,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 747,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 746,
           "type": "apoio",
           "alias": null
         },
@@ -10504,15 +9236,8 @@
       "bytes": 227644,
       "sha256": "0f8fda0c7cf8f2899c9995da9c2415cbf86af1adc87308c78777d4cf0aaa424f",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1050,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10527,15 +9252,8 @@
       "bytes": 233303,
       "sha256": "089b4883e4edc95a988d425a9fdc82cc0d871fca36f55954caae6d8d7e94d548",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1068,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10550,15 +9268,8 @@
       "bytes": 267197,
       "sha256": "3cabf3e68d012a76aec7f4fbeae12674234a468e79ae1140e48dfe0fbbb99b3b",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1086,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10573,15 +9284,8 @@
       "bytes": 318990,
       "sha256": "b1f06752e71e90bde1f6f896aada97b1dea6e4ef881ff2eb021e69159d081869",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1104,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10596,15 +9300,8 @@
       "bytes": 265349,
       "sha256": "ed6c8ad3d4db5a543e40f1d20bfd414e01bf87f9f9e245699647697b48dc6fe3",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1122,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10619,15 +9316,8 @@
       "bytes": 218088,
       "sha256": "01e3e49d2c81255c3435d06a3772c25ebad183d8d6cf6aeb7708d5cd01501120",
       "aliases": [],
-      "usage": "apoio",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1140,
-          "type": "apoio",
-          "alias": null
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
@@ -10681,12 +9371,6 @@
           "line": 211,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 211,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10707,12 +9391,6 @@
       "references": [
         {
           "file": "assets/art/toy-room/battle/polish/after-rocket-manifest.json",
-          "line": 229,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 229,
           "type": "apoio",
           "alias": null
@@ -10739,12 +9417,6 @@
           "line": 247,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 247,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10765,12 +9437,6 @@
       "references": [
         {
           "file": "assets/art/toy-room/battle/polish/after-rocket-manifest.json",
-          "line": 265,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 265,
           "type": "apoio",
           "alias": null
@@ -10797,12 +9463,6 @@
           "line": 283,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 283,
-          "type": "apoio",
-          "alias": null
         }
       ],
       "hints": [],
@@ -10823,12 +9483,6 @@
       "references": [
         {
           "file": "assets/art/toy-room/battle/polish/after-rocket-manifest.json",
-          "line": 301,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 301,
           "type": "apoio",
           "alias": null
@@ -10883,12 +9537,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 97,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 97,
           "type": "apoio",
@@ -10902,12 +9550,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 97,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 97,
           "type": "apoio",
           "alias": null
@@ -10936,12 +9578,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 115,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 115,
           "type": "apoio",
@@ -10955,12 +9591,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 115,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 115,
           "type": "apoio",
           "alias": null
@@ -10989,12 +9619,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 133,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 133,
           "type": "apoio",
@@ -11008,12 +9632,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 133,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 133,
           "type": "apoio",
           "alias": null
@@ -11042,12 +9660,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 151,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 151,
           "type": "apoio",
@@ -11061,12 +9673,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 151,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 151,
           "type": "apoio",
           "alias": null
@@ -11095,12 +9701,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 169,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 169,
           "type": "apoio",
@@ -11114,12 +9714,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 169,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 169,
           "type": "apoio",
           "alias": null
@@ -11148,12 +9742,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 187,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/polish/after-laser-manifest.json",
           "line": 187,
           "type": "apoio",
@@ -11167,12 +9755,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 187,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 187,
           "type": "apoio",
           "alias": null
@@ -11200,12 +9782,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 969,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 853,
@@ -11237,12 +9813,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 967,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 969,
           "type": "manifesto-runtime",
@@ -11265,12 +9835,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 982,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 866,
@@ -11302,12 +9866,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 980,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 982,
           "type": "manifesto-runtime",
@@ -11330,12 +9888,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 995,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 879,
@@ -11367,12 +9919,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 993,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 995,
           "type": "manifesto-runtime",
@@ -11395,12 +9941,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1008,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 892,
@@ -11432,12 +9972,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1006,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1008,
           "type": "manifesto-runtime",
@@ -11460,12 +9994,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1021,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 905,
@@ -11497,12 +10025,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1019,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1021,
           "type": "manifesto-runtime",
@@ -11525,12 +10047,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 1034,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 918,
@@ -11562,12 +10078,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 1032,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1034,
           "type": "manifesto-runtime",
@@ -11590,12 +10100,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 886,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 770,
@@ -11627,12 +10131,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 884,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 886,
           "type": "manifesto-runtime",
@@ -11655,12 +10153,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 899,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 783,
@@ -11692,12 +10184,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 897,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 899,
           "type": "manifesto-runtime",
@@ -11720,12 +10206,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 912,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 796,
@@ -11757,12 +10237,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 910,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 912,
           "type": "manifesto-runtime",
@@ -11785,12 +10259,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 925,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 809,
@@ -11822,12 +10290,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 923,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 925,
           "type": "manifesto-runtime",
@@ -11850,12 +10312,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 938,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 822,
@@ -11887,12 +10343,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 936,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 938,
           "type": "manifesto-runtime",
@@ -11915,12 +10365,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 951,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 835,
@@ -11952,12 +10396,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 949,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 951,
           "type": "manifesto-runtime",
@@ -11980,12 +10418,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 610,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 519,
@@ -12017,12 +10449,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 609,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 610,
           "type": "manifesto-runtime",
@@ -12045,12 +10471,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 623,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 532,
@@ -12082,12 +10502,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 622,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 623,
           "type": "manifesto-runtime",
@@ -12110,12 +10524,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 636,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 545,
@@ -12147,12 +10555,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 635,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 636,
           "type": "manifesto-runtime",
@@ -12175,12 +10577,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 649,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 558,
@@ -12212,12 +10608,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 648,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 649,
           "type": "manifesto-runtime",
@@ -12240,12 +10630,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 662,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 571,
@@ -12277,12 +10661,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 661,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 662,
           "type": "manifesto-runtime",
@@ -12305,12 +10683,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 675,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 584,
@@ -12338,12 +10710,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 675,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 674,
           "type": "apoio",
           "alias": null
         },
@@ -12881,12 +11247,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 523,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 432,
           "type": "apoio",
@@ -12917,12 +11277,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 522,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 523,
           "type": "manifesto-runtime",
@@ -12945,12 +11299,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 536,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 445,
@@ -12982,12 +11330,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 535,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 536,
           "type": "manifesto-runtime",
@@ -13010,12 +11352,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 549,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 458,
@@ -13047,12 +11383,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 548,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 549,
           "type": "manifesto-runtime",
@@ -13075,12 +11405,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 562,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 471,
@@ -13112,12 +11436,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 561,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 562,
           "type": "manifesto-runtime",
@@ -13140,12 +11458,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 575,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 484,
@@ -13177,12 +11489,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 574,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 575,
           "type": "manifesto-runtime",
@@ -13205,12 +11511,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 588,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 497,
@@ -13238,12 +11538,6 @@
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
           "line": 588,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 587,
           "type": "apoio",
           "alias": null
         },
@@ -13409,12 +11703,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 440,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 349,
           "type": "apoio",
@@ -13445,12 +11733,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 439,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 440,
           "type": "manifesto-runtime",
@@ -13473,12 +11755,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 453,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 362,
@@ -13510,12 +11786,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 452,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 453,
           "type": "manifesto-runtime",
@@ -13538,12 +11808,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 466,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 375,
@@ -13575,12 +11839,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 465,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 466,
           "type": "manifesto-runtime",
@@ -13603,12 +11861,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 479,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 388,
@@ -13640,12 +11892,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 478,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 479,
           "type": "manifesto-runtime",
@@ -13668,12 +11914,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 492,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 401,
@@ -13705,12 +11945,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 491,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 492,
           "type": "manifesto-runtime",
@@ -13733,12 +11967,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 505,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 414,
@@ -13770,12 +11998,6 @@
           "alias": null
         },
         {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
-          "line": 504,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 505,
           "type": "manifesto-runtime",
@@ -13798,12 +12020,6 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 14,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 14,
@@ -13830,12 +12046,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 14,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 14,
           "type": "apoio",
           "alias": null
@@ -13864,12 +12074,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 27,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 27,
           "type": "apoio",
@@ -13895,12 +12099,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 27,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 27,
           "type": "apoio",
           "alias": null
@@ -13929,12 +12127,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 40,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 40,
           "type": "apoio",
@@ -13960,12 +12152,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 40,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 40,
           "type": "apoio",
           "alias": null
@@ -13994,12 +12180,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 53,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 53,
           "type": "apoio",
@@ -14025,12 +12205,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 53,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 53,
           "type": "apoio",
           "alias": null
@@ -14059,12 +12233,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 66,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 66,
           "type": "apoio",
@@ -14090,12 +12258,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 66,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 66,
           "type": "apoio",
           "alias": null
@@ -14124,12 +12286,6 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/certification/baseline-manifest.json",
-          "line": 79,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 79,
           "type": "apoio",
@@ -14155,12 +12311,6 @@
         },
         {
           "file": "assets/art/toy-room/battle/polish/after-steam-manifest.json",
-          "line": 79,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/toy-room/battle/polish/baseline-manifest.json",
           "line": 79,
           "type": "apoio",
           "alias": null
@@ -14473,18 +12623,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 128,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 35,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/toy-room/ToyRoomPhase.js",
           "line": 44,
           "type": "runtime",
@@ -14525,18 +12663,6 @@
           "file": "assets/manifest.json",
           "line": 11,
           "type": "manifesto-runtime",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
           "alias": null
         },
         {
@@ -14610,12 +12736,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -18888,18 +17008,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -18970,12 +17078,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19030,18 +17132,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19112,12 +17202,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19172,18 +17256,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19254,12 +17326,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19314,18 +17380,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19396,12 +17450,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19456,18 +17504,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19538,12 +17574,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19598,18 +17628,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19680,12 +17698,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19740,18 +17752,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19822,12 +17822,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -19882,18 +17876,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -19964,12 +17946,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -20024,18 +18000,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -20106,12 +18070,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -20166,18 +18124,6 @@
           "alias": null
         },
         {
-          "file": "scripts/test-toy-room-identification-browser.js",
-          "line": 127,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-toy-room-identification.js",
-          "line": 32,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/assets/AssetManager.js",
           "line": 58,
           "type": "runtime",
@@ -20248,12 +18194,6 @@
           "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "tests/fixtures/toy-room-etapa1/integridade-referencia.json",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
         },
         {
           "file": "src/js/assets/currentScenery.js",
@@ -20310,30 +18250,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -20402,30 +18318,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -20486,30 +18378,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -20578,30 +18446,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -20662,30 +18506,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -20754,30 +18574,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -20838,30 +18634,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -20930,30 +18702,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21014,30 +18762,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21106,30 +18830,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21190,30 +18890,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21282,30 +18958,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21366,30 +19018,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21458,30 +19086,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21542,30 +19146,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21634,30 +19214,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21718,30 +19274,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21810,30 +19342,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -21894,30 +19402,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -21986,30 +19470,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22070,30 +19530,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -22162,30 +19598,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22246,30 +19658,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -22338,30 +19726,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22422,30 +19786,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -22514,30 +19854,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22598,30 +19914,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -22690,30 +19982,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22774,30 +20042,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -22866,30 +20110,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -22950,30 +20170,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -23042,30 +20238,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -23126,30 +20298,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -23218,30 +20366,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -23302,30 +20426,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -23394,30 +20494,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -23478,30 +20554,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },
@@ -23570,30 +20622,6 @@
           "alias": null
         },
         {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
-          "type": "apoio",
-          "alias": null
-        },
-        {
           "file": "src/js/entities/BabyRenderer.js",
           "line": 75,
           "type": "runtime",
@@ -23654,30 +20682,6 @@
         {
           "file": "scripts/generate-dream-girl-sprites.js",
           "line": 69,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/review-battle-pose-fairness.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-foot-contact.js",
-          "line": 9,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-laser-fairness.js",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/test-official-character.js",
-          "line": 11,
           "type": "apoio",
           "alias": null
         },

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "09a71e2a827e3b7f005da40f60d65990166de79cd1e9159114a6140bd85f6ebb",
+  "path": "docs/qa/reversao-sprites/desktop-combate-dinosaur-movimento.png",
+  "sha256": "7f7cba24cdd79f2928615db65ca852240028d420512a59f84ce476788166c72d",
+  "capturedAt": "2026-10-13T19:09:11.907663+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-dinosaur-movimento.png\", \"sha256\": \"c15506cb100cfd2670ccf51ce893f8748d52708dffad6651823d9700bc9dc90f\", \"bytes\": 1145640, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

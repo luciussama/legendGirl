@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6d8a2f7b69039e2d40af61210fc498e833413ebb07987e785f4af48bc820c677",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/tutorial-primeiro-salto-antes.png",
+  "sha256": "0b91abcd22ea0bf022865a8114f231998755c84697b78faf8652795b5692f056",
+  "capturedAt": "2026-10-13T19:09:11.990139+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/tutorial-primeiro-salto-antes.png\", \"sha256\": \"f44ab8410582666f6e01f9f1a299d690a424b58228c02c4c58f5fe71a8ccadaa\", \"bytes\": 385137, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

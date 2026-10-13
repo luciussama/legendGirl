@@ -23,3 +23,15 @@ dist/
 # Cache local das automações Python
 __pycache__/
 *.pyc
+
+# QA e relatórios de máquina vivem apenas no diário de IA.
+/tests/
+/scripts/test-*
+/scripts/review-*
+/scripts/verify-*
+/scripts/capture-*
+/scripts/audit-*
+/scripts/analyze-*
+/scripts/qa-*
+/docs/battle-mode/*-report.*
+/docs/battle-mode/*evidence*/

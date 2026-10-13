@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d1e7092a3f559efd3220421507914ec654940ea0855b58c891a0cade2472c86c",
+  "path": "docs/qa/reversao-sprites/desktop-combate-dinosaur-ataque.png",
+  "sha256": "57b52f7c10af668a3b0a6c2e23b8dff28807e77ef9c065e8561db98288aef529",
+  "capturedAt": "2026-10-13T19:09:11.906254+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-combate-dinosaur-ataque.png\", \"sha256\": \"629a77717083eae03b020cebb648a3a1f4340c8a1dba421371f1d4375ba88229\", \"bytes\": 1146618, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

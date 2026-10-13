@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e9fc82a40929ee39e5cc53a4be7c3c5b439405e2502439f1aa1bb730c2b79e01",
+  "path": "docs/character-reference-atlas/03-jump-sheet.png",
+  "sha256": "15fb7908e256607577ef79d4ae591bbbd334e9d8a842ea6d280235cd220293fe",
+  "capturedAt": "2026-10-13T19:09:11.781271+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/character-reference-atlas/03-jump-sheet.png\", \"sha256\": \"57acd677d0154fa59dd86363d3e890cf3ddf0e6e09eacda46b0f953b6ceece6f\", \"bytes\": 41030, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

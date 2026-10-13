@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "14a556399f4d75e1894b0d3ed708f90b6e555cd0fd51667a1ec0667eaad0aa57",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/portal-depois.png",
+  "sha256": "aaffcb615e4f9c7f3fb060962bdc2c67aabbd4dc19a4b33f8de7f1dedee9e5ff",
+  "capturedAt": "2026-10-13T19:09:11.981156+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/portal-depois.png\", \"sha256\": \"96f352d080b888044f643464e5d22d7b6393814c812041020c2ceae67fda2416\", \"bytes\": 206609, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

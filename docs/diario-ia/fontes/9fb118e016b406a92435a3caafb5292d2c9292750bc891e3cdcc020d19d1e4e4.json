@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9fb118e016b406a92435a3caafb5292d2c9292750bc891e3cdcc020d19d1e4e4",
+  "path": "assets/art/toy-room/battle/certification/robot-walk-rejected-v1.png",
+  "sha256": "519458b0d3ede20ccaf94d47a13086cee2df3800230b5cf366db1234ba1c93d0",
+  "capturedAt": "2026-10-13T19:09:11.714976+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"assets/art/toy-room/battle/certification/robot-walk-rejected-v1.png\", \"sha256\": \"9b3472bc5be178498bd14c9dfa82ac511e88865eb42fbe4e90b1304160bce641\", \"bytes\": 1020555, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

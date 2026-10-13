@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0c6dbabde94c5fd92ed70372c9d552ffb5764577ce650312f303395333367d81",
+  "path": "docs/qa/reversao-sprites/android-combate-dinosaur-movimento.png",
+  "sha256": "45a8cc220d2ab5ef0a8d5a3d2271875777a2c039184e728227ef8f8a74d4153b",
+  "capturedAt": "2026-10-13T19:09:11.881720+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/android-combate-dinosaur-movimento.png\", \"sha256\": \"7f04df6158ecc861f336c44b0f96932534e53193708181ddfec5b4cef193e8b5\", \"bytes\": 363782, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

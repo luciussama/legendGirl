@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "22bf743c7a182943e7a5e3304bb7e6e879150056e37cfe9d851a193ef5c38458",
+  "path": "docs/qa/reversao-sprites/desktop-INVESTIGATION.png",
+  "sha256": "93ea76eda1eb403007a36e72358c55599a2879198cd0c572d68ad3b3344a26b5",
+  "capturedAt": "2026-10-13T19:09:11.894436+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/desktop-INVESTIGATION.png\", \"sha256\": \"edea532ce7e58151d338aba89cc6736d8cc1d0e8c2ce6125042fdac8d40fce1e\", \"bytes\": 1065150, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

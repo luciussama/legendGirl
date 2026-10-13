@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7fc579ac43c211044f19f0a2e93f982f8ffc9d3d51074aaedb0bf4cd0bc51123",
+  "path": "docs/qa/reversao-sprites/percurso-desktop/cinematica-1-antes.png",
+  "sha256": "5411e421c3fe5a5a3b9664ae3aabc6cf9ba3a58c85890ce706728ec3f7ea1113",
+  "capturedAt": "2026-10-13T19:09:11.975965+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/reversao-sprites/percurso-desktop/cinematica-1-antes.png\", \"sha256\": \"ad2316e5a9b5411276417c37cb79015a446efe41f798dd46f2ab256ad3ca469e\", \"bytes\": 380912, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}
