@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7789dd31df7fd6acb73143d4a6c1982b12a446646306886dc31901ac4d94aa83",
+  "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-transformacao.png",
+  "sha256": "fd9434e4733a353691a8710139db697f1b5bafa192136e8292b748801d062a22",
+  "capturedAt": "2026-10-13T19:33:39.858060+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-transformacao.png\", \"sha256\": \"fcb59ca618d3d63065aa90589d9a3013c3a7cd4f07dbb76a5c8df76ef2fe0843\", \"bytes\": 682626, \"binaryRetained\": false}"
+}

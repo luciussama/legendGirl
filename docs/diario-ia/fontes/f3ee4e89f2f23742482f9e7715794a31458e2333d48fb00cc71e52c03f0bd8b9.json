@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f3ee4e89f2f23742482f9e7715794a31458e2333d48fb00cc71e52c03f0bd8b9",
+  "path": "qa-execucoes/4a240364be9d458eba09ebb85fe05b3d/docs/qa/dialogos-normalizados/paisagem.json",
+  "sha256": "f57cbdd07d849ec49728a28a96fc2599eb11fa4b5bb3f11b6d315d4e0995a17f",
+  "capturedAt": "2026-10-13T19:34:30.333368+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"portraits\":[\"fairy\",\"baby\"],\"boxes\":[[42,86,760,112,12],[46,90,752,104,8],[42,86,760,112,12],[46,90,752,104,8]],\"controlTop\":226,\"mobile\":true}"
+}

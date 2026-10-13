@@ -1,3 +1,4 @@
+import { dialogueRenderer } from '../ui/DialogueRenderer.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { getMobileZoomFrame } from '../controllers/MobileZoom.js';
 import { renderPoeticNarration } from '../narrative/PoeticNarrator.js';
@@ -480,21 +481,34 @@ export class ToyRoomStory {
       state.investigationStage === 'COLLECTING') {
       const beat = RETURN_DIALOGUE_BEATS.find(item =>
         state.returnDialogueElapsed >= item.start && state.returnDialogueElapsed < item.end);
-      if (beat) renderPoeticNarration(ctx, canvas, beat.text, { heading: beat.speaker, center: true });
+      if (beat) this.renderStoryBeat(ctx, canvas, beat);
     }
 
     if (state.investigationStage === 'INVESTIGATION') {
       const beat = getBeat(INVESTIGATION_BEATS, state.investigationElapsed);
       if (beat?.text) {
-        renderPoeticNarration(ctx, canvas, beat.text,
-          { heading: beat.speaker, center: true });
+        this.renderStoryBeat(ctx, canvas, beat);
       }
     } else if (state.investigationStage === 'PICKUP') {
       const text = state.swordPickupElapsed < 120
         ? 'Ela não estava procurando por aquilo.'
         : 'Mas algumas coisas parecem encontrar a gente primeiro.';
-      renderPoeticNarration(ctx, canvas, text, { center: true });
+      renderPoeticNarration(ctx, canvas, text, { separateScene: true });
     }
+  }
+
+  renderStoryBeat(ctx, canvas, beat) {
+    if (!beat.speaker) {
+      renderPoeticNarration(ctx, canvas, beat.text, { separateScene: true });
+      return;
+    }
+    const layout = this.room.mobilePresentation ? getMobileUILayout(canvas) : null;
+    // Não reprojeta a cena: os controles mantêm as coordenadas usadas pelo input.
+    const bottom = layout ? layout.action.y - layout.action.radius - 12 * layout.action.scale : undefined;
+    dialogueRenderer.renderDialogue(ctx, canvas, {
+      speaker: beat.speaker === 'NANDA' ? 'fairy' : 'baby',
+      speakerName: beat.speaker, text: beat.text, tick: this.state.investigationElapsed
+    }, { assets: this.room.assets, separateScene: false, bottom });
   }
 
   restore(saved) {

@@ -22,6 +22,10 @@ Relatórios técnicos e arquivos de QA foram retirados das pastas do projeto ap�
 
 Essa organização evita que designers e desenvolvedores precisem navegar por relatórios de máquina para entender o produto. Para detalhes técnicos históricos, consulte o [diário de IA](diario-ia/README.md); para editar o visual, consulte o [guia de designers](sprites/GUIA-DESIGNERS.md).
 
+## 13 de outubro de 2026 — diálogos consistentes entre as fases
+
+As falas da Toy Room passaram a usar a mesma caixa com retrato e nome do interlocutor da primeira fase. Nanda e a menina conversam em uma faixa ampla, em vez do quadrado central. No celular, a caixa respeita o espaço dos controles. Os textos e o ritmo da história permanecem iguais; trechos do narrador continuam distintos das falas dos personagens.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

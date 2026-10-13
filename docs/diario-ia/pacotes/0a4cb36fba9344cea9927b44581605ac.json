@@ -1,0 +1,540 @@
+{
+  "schemaVersion": 1,
+  "id": "0a4cb36fba9344cea9927b44581605ac",
+  "date": "2026-10-13T19:33:39.826371+00:00",
+  "title": "QA temporário: test:toy-room:arena:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac.log",
+      "sourceId": "5d62be3821d26fc221c973d5980d0baf944568116f7d65b7b717abc208bda2ee",
+      "sha256": "5e989b3b4140e1ee37258c1da8f9314d8de200ab545f7688b10937d8b57f6e7d",
+      "bytes": 1403,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-agachamento-entrada.png",
+      "sourceId": "ab418399b5eec5b0367999dc8e480a6069b8e671251e02a513cf922ea4253bfe",
+      "sha256": "32e39cdafa46b3426f29d7415e81f70939aa9702ea75d8458e863cf613b4efa8",
+      "bytes": 391800,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-agachamento.png",
+      "sourceId": "5d600b7f3ffd1f6e4145643152886532de87c112bbf23642a05b657c968a4365",
+      "sha256": "decebe1e85f999e215ec095f3d6173f97294efc68abb0ccc3d92debcb0c65c55",
+      "bytes": 391278,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-bear-ataque.png",
+      "sourceId": "fb164f0dd88dc937633e8397e5c532be19d70bf5ab8770d40db0dd711c38b221",
+      "sha256": "112baef1716a7ee1b9cf5ee4f1b8b4c48afe8975d8061f39bb3045a75c7a9acb",
+      "bytes": 544166,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-bear-entrada.png",
+      "sourceId": "89b93ec0ce2320f23ddd5008d51ad271f2f77e258177f3d4730d64c83586f9de",
+      "sha256": "87bbc0824f2a09c68b8e6bb0be8535279ef8277ee98ad926647380f0164f4016",
+      "bytes": 521745,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-bear-furia.png",
+      "sourceId": "f2a15038dd2135a3928968b40ee6a345aaa80b54e99215c3d3194bb8eb823e37",
+      "sha256": "e114b49cae1c4f6e5a0ea417d77146a6c8ea47c54b9e550e8af64ae6f3f1fec9",
+      "bytes": 542389,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-bear-movimento.png",
+      "sourceId": "301975c97843ce13716b78713a7491c3bfa7ffdf42790c5a8f8bf588abaac4eb",
+      "sha256": "528550231d63883be43eb2d40bdcfc4e4027ed741ce6c5472ad7ad428678d7cf",
+      "bytes": 543935,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-dinosaur-ataque.png",
+      "sourceId": "196720f4a837dad18edb0c491f91b722d7180e0c4cd49f1313f2277962e8b09d",
+      "sha256": "7a33db0dfd49ebf3f9ab9d025ca17f4de93443fc67e5e687a3ec76ed4afa3fda",
+      "bytes": 533568,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-dinosaur-entrada.png",
+      "sourceId": "68294ddb95d0ce203a6a82ef3ad82497f59d76e32b48f0f34d6a560102509821",
+      "sha256": "899270010978696d70c86a8a5d7b86e8ca1dbe986414149974273876aa98f765",
+      "bytes": 532808,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-dinosaur-movimento.png",
+      "sourceId": "2a712283dc6bc9cb7ddc54487ff7bdda8bd317b6a37bae249490382f3c5ab074",
+      "sha256": "981caf1e4bf162e8bc8d1f8e825cbb431439db447f1f9a109b508f7dd202921b",
+      "bytes": 533525,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-robot-ataque.png",
+      "sourceId": "ca620ad1a68bb0918c908039ad3ec5c1b2dcc45894ee4a4ba112e9a8c929515e",
+      "sha256": "1836171a04be7e0ff923843091326e3ab4a6f894634c0a3cc9d58bd1a7c729a2",
+      "bytes": 536235,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-robot-entrada.png",
+      "sourceId": "2e4a702d524029dce6f2b956137d5f07b00e8f1c227fe994898ea0807e65e6d7",
+      "sha256": "4bade4e512691b52006645ee836d6aa4030972cf4eb406dc3ecdca82895e7fe4",
+      "bytes": 526761,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-robot-movimento.png",
+      "sourceId": "71f87d84a63e3b7245b0d0b219d608433925efaf4151fae9f1ff9966a9d2d5f5",
+      "sha256": "2abdeb2a3c483fac1b7fd7fbc0c0a32303c1d47e234ac46a7fc19106b99aaf16",
+      "bytes": 536060,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-train-ataque.png",
+      "sourceId": "b09f99c5773b3f4ec5c08545c12e239cbc0e2adf4824b8817fe268c385af5ca5",
+      "sha256": "17c2421acd2d5fedda8bb5d7de74341b7af9e1a6abcd6ed0caf25d7b6f9a67d1",
+      "bytes": 532910,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-train-entrada.png",
+      "sourceId": "2d463b2b34fe857a3b88925b46b17363a7b7ec8667d0516196d8f59328c66588",
+      "sha256": "7e4335b1895e6719816456a3c9f8d1f6c5b9063978240faa9f5c329cdc7bb15b",
+      "bytes": 349349,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-arena-train-movimento.png",
+      "sourceId": "5225400fc36e202899ea2892da13e71aa293cceb4f566519fee8346bf94161ab",
+      "sha256": "3cfaca9ed48d79a9ced540e6c6c4c40d975bf38b20eae0e4392a8f4c97ab7931",
+      "bytes": 391738,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-derrota.png",
+      "sourceId": "3a6520243a0e059646eb06dae65f685b68fa323c5c354239b60eb0c2f92c9608",
+      "sha256": "10de4e9e54905b220988399818733c8388c3a0443c0b74cba3959a18b2990f28",
+      "bytes": 506641,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-exploracao.png",
+      "sourceId": "48980b1604ddde07f257f8664faafec2fcb1f13e4ff9adb579c5cc879a52f294",
+      "sha256": "7a457da1abf9f208c0fe4f1e29aee8a497a0c8f050bb63baef8be69ac752c8f2",
+      "bytes": 713279,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-final.png",
+      "sourceId": "26c8579d94a11d80b3dee49b0150af537b1ed88b423c0bc388b82d3f6f3cb67c",
+      "sha256": "fa1d0419f4b6e20f79a8b073b3ce19f84b35278d8a999443f33f391e04c70cd2",
+      "bytes": 684955,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-agachamento-entrada.png",
+      "sourceId": "f3bd415032c9611c525e3ab66ff4880fda2768060e51d14f0da09fcee8c2d0aa",
+      "sha256": "eddf0232ae650765eedfcd3d9c41359a2bdaab0df2529322f9d3399bed9c80c9",
+      "bytes": 726135,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-agachamento.png",
+      "sourceId": "8b8efe0d2ebc5e624ab35f2a3ec68e1166060f38b634596a19816e21fa65cf10",
+      "sha256": "908b200e6ff5055cd9eb93e76b29f5c13f0074a54cf3bc9fa7c7c8534a069fe9",
+      "bytes": 725184,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-bear-ataque.png",
+      "sourceId": "f08df7326a32be31ae4e6f48ea0a354cdd28c5a81f0d259fdbaed74c73fc2526",
+      "sha256": "6a6992567a3883debf61c6033ce02576f1a60045ed5347e7d434ce8e4a7dbe6a",
+      "bytes": 678691,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-bear-entrada.png",
+      "sourceId": "8237004ad0e767894441a4611203118a20a15f07c11f93cd35d22457f57f5fb2",
+      "sha256": "d15c17949fdf0e5d0c8adac0bbd122319f4976b52db1073322a8413e7ccce83f",
+      "bytes": 649297,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-bear-furia.png",
+      "sourceId": "70f571162b6d548cbbc844f732b63a8a968c213f68083b211ca470648a9e3312",
+      "sha256": "7939de5486d3101d9661914e84dacb0437248a86e8214098bb429d4d21545964",
+      "bytes": 672953,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-bear-movimento.png",
+      "sourceId": "18ebf3ce7d7b8077e024669c8d9c0a4dc5355540d1bb0377beee2896d6db1865",
+      "sha256": "20634a108163608ed9727b664327a385bc0e0ca77da8de883011b9242b013874",
+      "bytes": 678337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-ataque.png",
+      "sourceId": "c89f79c5975d6d0e02b7173b421b1493131e95b6008f6539e81f5ace9fbed7fd",
+      "sha256": "cdbe35bf02b14705fd2d577f248cbffb41083a314a3c15f8b5bd855f4deae39f",
+      "bytes": 706929,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-entrada.png",
+      "sourceId": "208c664824fba8c07df266c1157939f25b05f3bcddb6dc630a900cbd8a0bbbd4",
+      "sha256": "0f882f7e13d2bdb7fbf5c02fc073d188e70310dc4081302de924d9c3eda74507",
+      "bytes": 704158,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-movimento.png",
+      "sourceId": "88f2b1bb1b66093b314025bd83276cde1c743266b00c1c93f3b4a471db7cde08",
+      "sha256": "488459402c69e97bca4ee35bed390609d4684152263c6bf89cf593f66025bb26",
+      "bytes": 707018,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-robot-ataque.png",
+      "sourceId": "c54f6b1858e622c971ec9deab1453d3206be56268eb7d8ec34a63b3e9ef065ba",
+      "sha256": "58652bfdeabc70268bee1011bc9e5277da16b4f1f5154c3e4834db88ac5e6614",
+      "bytes": 713209,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-robot-entrada.png",
+      "sourceId": "71575003c21c21133a53b1b291d723c243b6e7bf4363771e3258360090e77b95",
+      "sha256": "8fcb8c3894fd2cde498ad88a029c449a8e3e4a80208c87d47673b8d0a881a96a",
+      "bytes": 696150,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-robot-movimento.png",
+      "sourceId": "10d7a7cd6f80d40eea9704ce31245a103956971043bc6887d22758929e5b077d",
+      "sha256": "9c520370fd7581ca15fd0c046d3934a4c6bd41fc58053b73c16bdd505a241223",
+      "bytes": 712866,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-train-ataque.png",
+      "sourceId": "5fbaab2b88a9e582b730e5f651a76cd5d396e2c48220c7ab29fc3a587058a5c1",
+      "sha256": "0b1b116c4fe84db17205e3a5c0ee32a848ef0886094439c8bd046002b2ac7209",
+      "bytes": 719145,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-train-entrada.png",
+      "sourceId": "d21dd2883febdf920ee7e9299b483697df198f5302f00a5388cb894f594e424f",
+      "sha256": "e4e8fc9517414d1ffe34f4771164652a3af836bdad133b5dec8125fa4f792a66",
+      "bytes": 744362,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-arena-train-movimento.png",
+      "sourceId": "781dde57967ba3f7c9ecec2e9eaee10d8dd44606eb931bedb71c52fd582b32aa",
+      "sha256": "dd048c36debaeea2e98a9893ae59226def486a9ddd3df43c64996c9d52eb0928",
+      "bytes": 727543,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-derrota.png",
+      "sourceId": "e847de77942eba459b94540921473de1b74ea6af16e420d001cc3ad98132259e",
+      "sha256": "fbe28649914423a1a267dca5e3904c738cca31e7504b3c9be0938a9efcd1f253",
+      "bytes": 647118,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-exploracao.png",
+      "sourceId": "55de3cd1e9c600781f0987704dbe34696d4b7ea68e03422f1a1b2bcea5f1e4e7",
+      "sha256": "d74ee11f3a881af4b101e992b4f1bee30a9a0b876e85a8da85026077439950f9",
+      "bytes": 712954,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-final.png",
+      "sourceId": "02b0d3a293aea81607b199e2eebe934fb8254ee3a75a67877c6a4048f34c708d",
+      "sha256": "d596083f8a0f37d119e0461af556a2e3127d242f99269ec96b94fae5fb8384f6",
+      "bytes": 653164,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-realidade.png",
+      "sourceId": "87756b0789b45a10740791b87b81337bd1c65f4eed0cd57c233136e9386cfcdf",
+      "sha256": "6125c0a83796f184303b0e0ca2dd683df06992dad6485403111a00f0cba4832b",
+      "bytes": 219370,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-retorno.png",
+      "sourceId": "06ac760fc8e198f8eb8dcd2184f9f0295ecb1468221b557606edaab64ab2a0e9",
+      "sha256": "cb0d10048559cb3b26d8ae0b803ebdfc63cee715033806b57b17357073840c68",
+      "bytes": 587935,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-salto.png",
+      "sourceId": "1ffd86ef30162f08a4f6ff3ada7c6224fa670594c343def3faf5e5497bbb0edc",
+      "sha256": "dd048c36debaeea2e98a9893ae59226def486a9ddd3df43c64996c9d52eb0928",
+      "bytes": 727543,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-transformacao.png",
+      "sourceId": "7789dd31df7fd6acb73143d4a6c1982b12a446646306886dc31901ac4d94aa83",
+      "sha256": "fcb59ca618d3d63065aa90589d9a3013c3a7cd4f07dbb76a5c8df76ef2fe0843",
+      "bytes": 682626,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-transporte.png",
+      "sourceId": "c20a88657a7ded4bfea40a0ef63b263d55ee64ff1e9fc1e99b5e533f242ec07b",
+      "sha256": "99aa76d05a78ca8c5b5a73331c72e8b072733daaba2c6ce6e749b043da71b8a7",
+      "bytes": 708497,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem-vitoria.png",
+      "sourceId": "056be3f2bc7e61b3fe3e2ad8a322ec8945628a64022231d99edca5d933433aa4",
+      "sha256": "bfecf4e5a010e93cdfe05329386809709e71a449a58270df734ff7b37d84a96a",
+      "bytes": 585716,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-paisagem.json",
+      "sourceId": "e131b4653f8458a0f46ff65ee6b39b50ba3f9fea4a6bbc39daade0a06798f77e",
+      "sha256": "aa3275976a043c331aa7ac44593a16f10407eb4bb0d3c307c2c4b2bb813a599d",
+      "bytes": 11614,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-realidade.png",
+      "sourceId": "d7ed6ce6e5619b4f6cd0f83a1d4746da06951b12d5e6ce02193d53c385103583",
+      "sha256": "c8d037fb95bc3f065f2fa52298c407d040173b812838b84a8c12ec0c2d46061b",
+      "bytes": 242660,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-retorno.png",
+      "sourceId": "3ee0697c314cdf73b4f704df8e01c14cc810ceb0a98b6caea9745c7c3302708b",
+      "sha256": "9bc8ca55f89d304189b82188145bd2621abcabd1f55022ca93b80562d0b437bd",
+      "bytes": 501153,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-salto.png",
+      "sourceId": "08c64a22a460bba93bd782415b16834d6440da042b17e9a8bafa9e9e71a1493e",
+      "sha256": "3cfaca9ed48d79a9ced540e6c6c4c40d975bf38b20eae0e4392a8f4c97ab7931",
+      "bytes": 391738,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-transformacao.png",
+      "sourceId": "6f38a6225ccac01f7e3f531d82826c3a8ef04616ad77cfaa9515bd068faa1662",
+      "sha256": "2c6c24834f5418eafaed838fbdf6909ad58d512a09874fc0fa094aef34b061f0",
+      "bytes": 711950,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-transporte.png",
+      "sourceId": "6679b0e7576b954b99f2c788ad54065a97694c639cb7952d01865686fe591419",
+      "sha256": "29ce92b336af2c6ba430c17b1479d1f654212f567cd86c2f30c7f4b19d993fe6",
+      "bytes": 744666,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android-vitoria.png",
+      "sourceId": "264d956ec22e276a850ac2ef25ec5517dbb357e6e1c6a799980c29b9e468579b",
+      "sha256": "766ee9c199b011d1691176987ad49002fd6cadb0c3e1aadb0467588dcdf664b5",
+      "bytes": 497952,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/android.json",
+      "sourceId": "cf5e20395fcd49910ca219321f6e960703c3ffd22daa61bac3c3a30e85c42be1",
+      "sha256": "10e18d782b0336b1b33ed781c2b0bfe0efa7cef90295490d24d31c91d4e003a3",
+      "bytes": 11598,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-agachamento-entrada.png",
+      "sourceId": "51a034b6c3cd440d0ec8d3e3e20d8b78cda413bd0308b50d3f4b36427165997a",
+      "sha256": "96c9d95c61bb6d61047d71f4dbe96384e6cea6593ce3d734090845db1711c59b",
+      "bytes": 1148001,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-agachamento.png",
+      "sourceId": "f7c50f3fb13edc3e730fb789af7c897a71b97479066728fda256cac93b494b0f",
+      "sha256": "a9208afde24c2a889c00750c7d2aeb1304f8b38276e0a8627fb8439cf111a2e9",
+      "bytes": 1146431,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-bear-ataque.png",
+      "sourceId": "412d6693e2893656efd13fb795e20eb887388a100ddae99e40f41196e880d035",
+      "sha256": "ed25a2630e9ffc1f7fa3f669dd35e92e95b1f8d18a6a9b4816f9a681dd28a117",
+      "bytes": 1091277,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-bear-entrada.png",
+      "sourceId": "808c4ae75e22564f173b2a83d8a1e179aad721ead3448611b5f3cd553136ffed",
+      "sha256": "8b063b182b2150979f7414fb37ad310eaf733f42fabefc520a6546004c9621b9",
+      "bytes": 1044482,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-bear-furia.png",
+      "sourceId": "5c820bb5612ac2c8e578fb19c0959c31a6c96d517f0e878135cf9ca35f28c1d4",
+      "sha256": "0c9ab9cc968fb704df361bca9cf2bfd55d7085fe479c62a78695524ea9cf20fb",
+      "bytes": 1082173,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-bear-movimento.png",
+      "sourceId": "a51644119cc6accfd5914401150a4df432d6f1ae16e7a7a34cc3270193e390f6",
+      "sha256": "0de3388344ab3bf0c5fb7c52d29dad0f8ed360a97a47c05031c07faffe4e68b4",
+      "bytes": 1090134,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-dinosaur-ataque.png",
+      "sourceId": "0cde74010856dd6d119a55bfd9598d218643b573b1115511c36f8fe1ef8361bb",
+      "sha256": "b050d2ee2c07b5f9a6040b902146f587ef38994901330e93e1ee98b5d481d504",
+      "bytes": 1087326,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-dinosaur-entrada.png",
+      "sourceId": "5a625da5a93e5c159cda1f54028b739333353e936e8f42d362f2cfe900da96f4",
+      "sha256": "148631b8bf0ee3011b5213c10cfdd8aea3fc64bac6f957bbfa6d77c572bfabf2",
+      "bytes": 1090818,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-dinosaur-movimento.png",
+      "sourceId": "cd29429870c2621da9c320b5240273203782f2982f91003af971560ffb43a314",
+      "sha256": "b64a7380c16a8c392c026eef741e23084f72bdaccc13848bc200a61afff06028",
+      "bytes": 1087125,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-robot-ataque.png",
+      "sourceId": "70d06d41f93dcf2716639aff9a3307024db5866177d014f6c9fe18320a14927a",
+      "sha256": "22f8c36c70c812347fb0446c6c73a556e0231e94bfadfaae2ba3c8cd88b0bf4d",
+      "bytes": 1102895,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-robot-entrada.png",
+      "sourceId": "079cd58e27fc2efdf8b429ff2169e09b3a030c61598444145b0cb50e754de90b",
+      "sha256": "6b1b67d6148410ca5d8757783b9b244b08f1b685ddf0c18e03912a9ed75867a4",
+      "bytes": 1071871,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-robot-movimento.png",
+      "sourceId": "32486ea42ca435c622106daaecc187f68031ff3245d7be294c8d3b41756a604f",
+      "sha256": "a0979d28dcdff9a7997e9016911b7b905b231179e40108fcfb29f7f0166bf901",
+      "bytes": 1101739,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-train-ataque.png",
+      "sourceId": "f06a4da4e605ccbbf6e1e260aeba80f8791d735f5cc3f5b88b6f399655dd4e7e",
+      "sha256": "d0f71593f34bd6e94f27499f2c991fa9c87596f78cb7cee43ac3b864532d0790",
+      "bytes": 1084155,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-train-entrada.png",
+      "sourceId": "443fc01cc3bb822450f5f7f324d2d8fa29e2e3bb8c3acdde30969094cc448c8b",
+      "sha256": "8714d168b241060398702caf4df083f2bd7c1048c190960775b205f2436c6b46",
+      "bytes": 1177190,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-arena-train-movimento.png",
+      "sourceId": "619a43ba3e80145a16d88a7870836ee628509ab5476c0af802001f600d04d0dc",
+      "sha256": "6f95bd5e11925672827f457f18e9de20dc7e63de319e9057e9a85a95e81c2d47",
+      "bytes": 1115808,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-derrota.png",
+      "sourceId": "dd972a458dd6f22b9d5b37c18f6903f6dd3aacd27d71c589a59bab29421ef7d6",
+      "sha256": "88d6a57918d25ea42b877532374df232720c6b1a6fff2939f2263a97273e0cf7",
+      "bytes": 1000497,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-exploracao.png",
+      "sourceId": "de42db2bcfe1e3a02eb0f46a272e970e7229c212750ca4b126e2b78f15b3ddc9",
+      "sha256": "f05e8e46b9a06f3dcd523dea7110969ad2a240f9c3d05bfc8f6e99062bc4a1ff",
+      "bytes": 1131825,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-final.png",
+      "sourceId": "b9bd180418c95788ed1d042acb81a9d2b1382ef99966d9176ab3ec06abbc37f6",
+      "sha256": "3e3f1b16ca5e30bc59171da40c905baa16fbdbcbc3f08c38c349e42338c4c937",
+      "bytes": 1014987,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-realidade.png",
+      "sourceId": "d6ce6fe490382c89cb132520129739c40a7572968d030b8ac475722e80b9408c",
+      "sha256": "4da02097a665b532d305168a80c8850a526badedf6c95eee89c63ce9bc8924eb",
+      "bytes": 364325,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-retorno.png",
+      "sourceId": "0fbdd2f8b4e2e6ae0107161c107f288444fbb9c7c9bd69566138f0c376faf826",
+      "sha256": "f4f11db4c56415a64f3476858ab993dcb96bb09484bd201a61a454a6bab33f0a",
+      "bytes": 983297,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-salto.png",
+      "sourceId": "3edec4e2e9358da9371d0a96729dccd6672d3fe8071b69b70df3f925e11f7cc1",
+      "sha256": "6f95bd5e11925672827f457f18e9de20dc7e63de319e9057e9a85a95e81c2d47",
+      "bytes": 1115808,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-transformacao.png",
+      "sourceId": "1a4662473461a42e0318bd5cedb8eca04deb9c27c2bdf51a387f1bb558372890",
+      "sha256": "68f8362329ac00cc64dc42cf8b2dde43046067503c8cb6baf53e0179c9923cf1",
+      "bytes": 1178824,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-transporte.png",
+      "sourceId": "135fa7ee11e5ec39fc51dd438603d0834454a0566976adc56188bf6b91705a93",
+      "sha256": "526b4fbe29d31df79e72041c889e0e0327eae8ba9e2ff94ae894015410631588",
+      "bytes": 1128024,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop-vitoria.png",
+      "sourceId": "3c85e4c2fa3bd6c6deaa806c75c278ba2f5181af015e25ec44ae04261e9f6b2e",
+      "sha256": "0b0c6c28acedcea3c12d54bb52533082279854e5b2e38535bb03efb7ad340c7f",
+      "bytes": 978540,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac/docs/qa/toy-room-arena/desktop.json",
+      "sourceId": "9b6ec57e6167000806039a8b21265a9d18a373d05874c967e08e4fc6964e36d6",
+      "sha256": "717dc21299b7667a427321fbf6c1b7dff7594ac8632aa4e04dec108b5b770d8d",
+      "bytes": 11700,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -51,3 +51,9 @@ Mude este contexto quando houver nova decisão vigente, mudança de arquitetura 
 Por instrução do responsável, relatórios de máquina, testes, fixtures, evidências e homologações não permanecem como arquivos externos no projeto. Texto e código ficam integralmente no acervo; imagens de evidência ficam registradas por caminho, hash e tamanho, sem conservar o bitmap descartável. Os 718 alvos foram verificados antes de apagar. Artes efetivamente usadas pelo jogo foram preservadas.
 
 `npm test` e os aliases de QA recuperam as fontes do pacote arquivado em diretório temporário e registram o resultado no diário. `scripts/validate-production.js` valida a publicação sem recriar QA. O site publicado exclui documentação, automações e acervo. Documentação de guias permanece para pessoas; `docs/DIARIO-HUMANO.md` é o diário de produto. Novos relatórios e evidências devem ser registrados diretamente no acervo e descartados fora dele.
+
+## Diálogos compartilhados entre fases
+
+`DialogueRenderer.renderDialogue` é a apresentação compartilhada da dark room e Toy Room: caixa, nome, retrato, quebra de texto e área segura. `renderCutsceneDialogue` conserva seleção das falas e avanço da primeira fase. `ToyRoomStory.renderStoryBeat` adapta NANDA para `fairy` e MENINA para `baby`, conservando os tempos originais e sem pedir avanço manual em falas temporizadas. Narração sem interlocutor permanece em `PoeticNarrator`, fora do quadrado central.
+
+Na Toy Room, a cena não é reprojetada durante as falas: o desenho e o hit testing dos controles continuam alinhados. Em dispositivos móveis, o painel termina acima da área dos controles calculada por `MobileUILayout`. O render não altera o snapshot narrativo. Os testes específicos estão arquivados no diário e acessíveis pelos aliases `test:dialogues` e `test:dialogues:browser`; a suíte padrão inclui a regressão. A recuperação de QA combina os comandos dos pacotes, permitindo acrescentar novos testes sem perder a suíte anterior.
