@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "933a2296525dad10da63bbcc41e8c011ffbbf7c747fd6c7f4828b36d43b2636f",
+  "path": "docs/qa/toy-room-transicao/landscape/erros.json",
+  "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "capturedAt": "2026-10-13T18:54:22.054400+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "19e60aea9f800ba6a529070877fddc23a9efde12"
+  },
+  "content": "[]\n"
+}

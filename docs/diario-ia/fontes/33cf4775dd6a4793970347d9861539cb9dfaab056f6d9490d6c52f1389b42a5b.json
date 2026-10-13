@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "33cf4775dd6a4793970347d9861539cb9dfaab056f6d9490d6c52f1389b42a5b",
+  "path": "assets/qa-testers/current-logs/capturas.log",
+  "sha256": "9fb3ada3af80a32194312f4e319a6f710ed1d45e09a7e933ef1e01dcd2f698ab",
+  "capturedAt": "2026-10-13T18:54:17.202223+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3998cf01c189a8ebf6c452c7bdd9ad3c6c96c4ad"
+  },
+  "content": "Estado atual da protagonista capturada em desktop e Android emulado.\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8ede1dd3ba1316aa2cc9e31b0131fcbce8e6385433e01e42560ca3e977105d5a",
+  "path": "docs/qa/toy-room-tutorial/desktop/resultado.json",
+  "sha256": "f6a56a1f2fd368b5d3ccb54870cc2e3ae09d6a880c410737c904c0433a7adffa",
+  "capturedAt": "2026-10-13T18:54:22.112478+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "f39128facc8470f423ef5dcaae3e230ce4120687"
+  },
+  "content": "{\n  \"start\": {\n    \"order\": [\n      \"start\"\n    ],\n    \"tutorial\": true,\n    \"state\": \"TOY_ROOM_TUTORIAL\",\n    \"message\": \"USE W A S D OU AS SETAS PARA ANDAR\"\n  },\n  \"guide\": {\n    \"target\": \"teddy\",\n    \"nearest\": \"teddy\",\n    \"message\": \"PRESSIONE E PARA PEGAR\"\n  },\n  \"targetChange\": {\n    \"previous\": \"teddy\",\n    \"next\": \"robot\",\n    \"nearest\": \"robot\",\n    \"step\": 1.8300073423057688\n  },\n  \"completed\": true,\n  \"restored\": {\n    \"mode\": true,\n    \"completed\": true,\n    \"active\": false\n  },\n  \"fresh\": {\n    \"completed\": false,\n    \"active\": true\n  },\n  \"exceptions\": []\n}\n"
+}

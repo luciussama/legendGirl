@@ -11,7 +11,7 @@ import {ARENA_GIRL_ANIMATION_FRAMES} from '../../src/js/toy-room/ArenaGirlAnimat
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const imagePattern=/\.(png|jpe?g|svg|webp|gif|avif)$/i;
 const sourcePattern=/\.(js|json|html|css|py|md|txt)$/i;
-const ignored=p=>p.startsWith('tools/sprite-review/')||p.startsWith('docs/sprite-review/')||p.includes('node_modules/')||p.startsWith('docs/qa/')||p.startsWith('assets/qa-testers/');
+const ignored=p=>p.startsWith('tools/sprite-review/')||p.startsWith('docs/sprite-review/')||p.startsWith('docs/diario-ia/')||p.startsWith('docs/sprites/')||p.includes('node_modules/')||p.startsWith('docs/qa/')||p.startsWith('assets/qa-testers/');
 const normalize=s=>s.replaceAll('\\','/').replace(/^\.\//,'').replace(/^\//,'');
 export const itemId=(file,region=null,signature=null)=>hash(JSON.stringify([file,region,signature])).slice(0,24);
 export async function buildCatalog(root) {

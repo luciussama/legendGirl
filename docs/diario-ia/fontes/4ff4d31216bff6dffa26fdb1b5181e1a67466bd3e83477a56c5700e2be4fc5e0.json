@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "4ff4d31216bff6dffa26fdb1b5181e1a67466bd3e83477a56c5700e2be4fc5e0",
+  "path": "docs/melhorias-atlas/execucoes/2026-10-08T17-26-33-813Z-01A.json",
+  "sha256": "3d2bb01163142715c1e234eede47a541eb206d048d1f36013c7a31357d49fd84",
+  "capturedAt": "2026-10-13T18:54:29.410481+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "{\n  \"id\": \"2026-10-08T17-26-33-813Z\",\n  \"step\": \"01A\",\n  \"started\": \"2026-10-08T17:26:33.813Z\",\n  \"status\": \"PASS_TECNICO\",\n  \"humanApproval\": \"PENDENTE\",\n  \"nextStepExecuted\": false,\n  \"promptPath\": \"docs/melhorias-atlas/01A-reference-atlas.md\",\n  \"promptSha256\": \"671e394f98ac25178d0a8dbfd893c45ef388a0a6ac887423fe5deaa9d76aeb6c\",\n  \"scriptSha256\": \"701ffdb56aa7b0a140d5256f62291ffa191d7a5429fe00f5c4cc882d7b0ca7bc\",\n  \"source\": {\n    \"status\": \"PASS\",\n    \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n    \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n    \"width\": 1024,\n    \"height\": 1024,\n    \"metadataPath\": \"src/js/assets/officialCharacter.js\",\n    \"metadataSha256\": \"4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769\",\n    \"candidates\": [\n      \"assets/art/dark-room/sprites/official-character.png\"\n    ],\n    \"evidence\": \"discovery-evidence.json\"\n  },\n  \"outputs\": [\n    \"01-idle-sheet.png\",\n    \"01-idle-sheet-200.png\",\n    \"01-idle-sheet-400.png\",\n    \"02-run-sheet.png\",\n    \"02-run-sheet-200.png\",\n    \"02-run-sheet-400.png\",\n    \"03-jump-sheet.png\",\n    \"03-jump-sheet-200.png\",\n    \"03-jump-sheet-400.png\",\n    \"04-fall-sheet.png\",\n    \"04-fall-sheet-200.png\",\n    \"04-fall-sheet-400.png\",\n    \"05-collect-sheet.png\",\n    \"05-collect-sheet-200.png\",\n    \"05-collect-sheet-400.png\",\n    \"06-all-frames-sheet.png\",\n    \"06-all-frames-sheet-200.png\",\n    \"06-all-frames-sheet-400.png\",\n    \"07-reference-comparison.png\",\n    \"07-reference-comparison-200.png\",\n    \"07-reference-comparison-400.png\"\n  ],\n  \"frameCount\": 43,\n  \"finished\": \"2026-10-08T17:26:34.891Z\"\n}\n"
+}

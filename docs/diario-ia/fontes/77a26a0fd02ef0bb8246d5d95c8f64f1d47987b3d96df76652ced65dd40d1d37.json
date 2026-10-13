@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "77a26a0fd02ef0bb8246d5d95c8f64f1d47987b3d96df76652ced65dd40d1d37",
+  "path": "docs/melhorias-atlas/pipeline-remediation-02A-report.md",
+  "sha256": "e3236fae05bd2aa7583675a2c8412c69cb071bb49e19334955b67fe78d589ed8",
+  "capturedAt": "2026-10-13T18:54:29.821888+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a6f661b01d7c8fcd23b0f5c96dfdf981fd8f7b88"
+  },
+  "content": "# Diretiva pós-aprovação 02A\n\nDez atualizações aplicadas: fatos 001–007 em regras globais; descoberta sem respostas fixas preservada em 01A; modos/resultados/contagens preservados em 01; quatro blocos de locomoção em 02; teste explícito em 03; fontes proibidas em 04–07; baseline/substituição em 08; transporte e rejeição em 09; contrato 02A com baseAnchor/finalAnchor=TBD e classes SMALL/MEDIUM/LARGE.\n\nManifesto regenerado: 92 entradas planejadas, zero sprites. Leitor DISCOVERY atualizado para baseAnchor; teste negativo correspondente atualizado. Validator PASS, revisão PENDING por ausência esperada de arte. Testes de infraestrutura executados. Não houve mudança de renderer/gameplay ou integração.\n\nAprovação registrada apenas para planejamento. 02B autorizada exclusivamente RIGHT/23; produção não executada durante a remediação. Não é necessária nova aprovação do planejamento para iniciar essa fase.\n"
+}

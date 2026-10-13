@@ -14,3 +14,12 @@ dist/
 
 # Cópias recuperáveis das exclusões aprovadas na revisão visual.
 /.sprite-review-quarantine/
+
+# Índice local reconstruível do diário de IA
+/docs/diario-ia/*.sqlite3
+/docs/diario-ia/*.sqlite3.tmp
+/docs/diario-ia/**/*.tmp-*
+
+# Cache local das automações Python
+__pycache__/
+*.pyc

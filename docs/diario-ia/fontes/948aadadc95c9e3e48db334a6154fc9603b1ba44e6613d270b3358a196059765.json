@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "948aadadc95c9e3e48db334a6154fc9603b1ba44e6613d270b3358a196059765",
+  "path": "assets/art/toy-room/stage2/README.md",
+  "sha256": "e3eec0de265fdf0bd19c2c4037450ffb59f7e7e6f17784b08743123109fce14f",
+  "capturedAt": "2026-10-13T18:53:20.733792+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Pose de transporte — Correção 1\n\n`carry-pose-v1.png`: pose derivada da protagonista oficial com os braços dobrados e as palmas voltadas para cima. Gerada com a ferramenta integrada `imagegen`, recortada pela transparência e reduzida para 256 px de altura. O atlas oficial permanece preservado.\n\nO transporte é composto por pose, brinquedo e mãos em primeiro plano. Os offsets são exclusivamente visuais; os dados de coleta não são alterados.\n\nO prompt de geração está em `prompts.json`.\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "114225f84d0d0e1c0e7a1bee2ff0772fddb875eaacb0fecd9e9091c70bd859fa",
+  "path": "assets/qa-testers/current-logs/cenarios-fisica.log",
+  "sha256": "45dc85530530bc3ffe3732bda68f2963b989bd1fb915a392c3930db56e69c2d7",
+  "capturedAt": "2026-10-13T18:54:17.210044+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3998cf01c189a8ebf6c452c7bdd9ad3c6c96c4ad"
+  },
+  "content": "========================================================================\nBATERIA DE TESTES DE FÍSICA E ALINHAMENTO DE HITBOX (22 PLATAFORMAS)\n========================================================================\n\n[Plataforma #0] giant_bear (x:220, y:410, w:120, h:60)\n[Plataforma #1] open_books (x:380, y:414, w:110, h:65)\n[Plataforma #2] vanity_table (x:530, y:393, w:125, h:85)\n[Plataforma #3] small_dresser (x:695, y:372, w:115, h:105)\n[Plataforma #4] messy_blocks (x:850, y:351, w:120, h:125)\n[Plataforma #5] toy_drum (x:1010, y:330, w:115, h:145)\n[Plataforma #6] satin_cushion (x:1165, y:309, w:120, h:165)\n[Plataforma #7] stepped_dresser (x:1325, y:288, w:125, h:185)\n[Plataforma #8] music_box (x:1475, y:267, w:115, h:205)\n[Plataforma #9] block_castle (x:1588, y:236, w:154, h:244)\n[Plataforma #10] train_trestle (x:1860, y:244, w:115, h:230)\n[Plataforma #11] wall_shelf (x:2055, y:236, w:110, h:238)\n[Plataforma #12] mushroom_lamp (x:2257, y:224, w:105, h:250)\n[Plataforma #13] dollhouse_roof (x:2467, y:210, w:100, h:264)\n[Plataforma #14] spinning_globe (x:2687, y:218, w:95, h:256)\n[Plataforma #15] kite_frame (x:2917, y:196, w:90, h:278)\n[Plataforma #16] floating_books (x:3159, y:184, w:85, h:290)\n[Plataforma #17] chandelier_crystals (x:3414, y:168, w:80, h:306)\n[Plataforma #18] curtain_rod (x:3686, y:158, w:76, h:316)\n[Plataforma #19] cuckoo_clock (x:3980, y:168, w:75, h:306)\n[Plataforma #20] wardrobe_ledge (x:4300, y:156, w:72, h:318)\n[Plataforma #21] grand_portal_pedestal (x:4650, y:148, w:270, h:326)\n\n========================================================================\nRESULTADO FINAL DOS TESTES: 293 / 293 APROVADOS!\n✅ 100% DAS PLATAFORMAS E CENÁRIOS DE FÍSICA FORAM APROVADOS COM PERFEIÇÃO!\n"
+}

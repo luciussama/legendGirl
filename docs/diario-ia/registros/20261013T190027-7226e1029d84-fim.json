@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T190027-7226e1029d84-fim",
+  "sessionId": "20261013T190027-7226e1029d84",
+  "type": "fim",
+  "date": "2026-10-13T19:00:28.337689+00:00",
+  "title": "Destacar orientações para o designer no README",
+  "actor": "Codex",
+  "summary": "Criada a seção Orientações para o designer junto ao manual para novas equipes no README, com links para guia de edição, mapa de imagens, recortes e desenhos em código.",
+  "checks": [
+    "Links locais do README: aprovados",
+    "git diff --check: aprovado"
+  ],
+  "pending": [],
+  "files": [
+    "README.md"
+  ]
+}

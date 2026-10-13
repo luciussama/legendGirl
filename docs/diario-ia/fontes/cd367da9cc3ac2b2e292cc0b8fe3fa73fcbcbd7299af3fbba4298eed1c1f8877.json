@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "cd367da9cc3ac2b2e292cc0b8fe3fa73fcbcbd7299af3fbba4298eed1c1f8877",
+  "path": "docs/battle-mode/integration-approval.json",
+  "sha256": "157fefecddc28b05bd9d3c1a3ccef8c96679ccb3ccff5279e397a9c2cc97f1a0",
+  "capturedAt": "2026-10-13T18:53:20.767427+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"prompt\": \"15\",\n  \"version\": \"2.0\",\n  \"approved\": false,\n  \"result\": \"FAIL\",\n  \"integrationAllowed\": false,\n  \"reason\": \"Prompt 14 com reprovações e revisões abertas\",\n  \"requiredBeforeApproval\": [\n    \"Prompt 14 = PASS\",\n    \"Todos os itens de remediação resolvidos\",\n    \"Validação de gameplay e integração completa = PASS\"\n  ],\n  \"controlledGameplayEvaluation\": {\n    \"prompt\": \"16\",\n    \"authorized\": true,\n    \"implemented\": true,\n    \"result\": \"PASS WITH OBSERVATIONS\",\n    \"finalReleaseApproved\": false,\n    \"report\": \"final-gameplay-assessment.md\"\n  },\n  \"postPlaytestPolish\": {\n    \"prompt\": \"17\",\n    \"accepted\": [\n      \"Rocket Punch: acabamento\",\n      \"Steam Blast: antecipação\",\n      \"Laser Beam: antecipação\",\n      \"Dinosaur Rush: progressão temporal\"\n    ],\n    \"rolledBack\": [\n      \"Robot Walk\",\n      \"Train Walk\",\n      \"Rocket Punch: redução isolada de alcance\"\n    ],\n    \"functionalRegression\": \"PASS\",\n    \"hitboxFairness\": \"FAIL\",\n    \"finalReleaseApproved\": false,\n    \"report\": \"post-playtest-polish-report.md\"\n  },\n  \"fairnessCertification\": {\n    \"prompt\": \"18\",\n    \"result\": \"FAIL\",\n    \"functionalRegression\": \"PASS\",\n    \"allKnownDefectsClosed\": false,\n    \"finalReleaseApproved\": false,\n    \"remainingBlockingDefects\": [\n      \"DEFECT-001\",\n      \"DEFECT-008\"\n    ],\n    \"report\": \"fairness-certification-report.md\",\n    \"evidence\": \"fairness-certification-report.json\"\n  }\n}\n"
+}

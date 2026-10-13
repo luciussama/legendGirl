@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "3bc0162d07ce375feb0f4e5a9422c4fc4b049d8f6e8e7d1e329007b77d9fb2ef",
+  "path": "docs/battle-mode/certification-evidence/DEFECT-001/pass-4/test-toy-room-battle.log",
+  "sha256": "c57e582619cb459521cb3b152eea1f817c9d90bde780d1f634266c33109eef2a",
+  "capturedAt": "2026-10-13T18:53:20.743070+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:battle\n> node scripts/test-toy-room-battle.js && node scripts/test-battle-transitions.js\n\n{\"frames\":2326,\"dt\":0.5,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":1164,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":392,\"dt\":3,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\nAPROVADO: percurso real, HP, limites, transferência, derrota, vitória, salto, agachamento, câmera e save/load.\n{\"frames\":2364,\"dt\":0.5,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":1183,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":400,\"dt\":3,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":104,\"dt\":12,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\nAPROVADO: entrada inicial, transporte simultâneo, quatro retornos à caixa, bloqueio de impactos, persistência e vitória após guardar o Urso.\n"
+}

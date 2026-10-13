@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "f4face1d0f64c426cc8dd46c944fbd4e4c9f3ad2aaed59410c53a6682bbb132a",
+  "path": "docs/character-reference-atlas/discovered-source.json",
+  "sha256": "a22b39ea798772506328e71b3541f53a14faeedf056d97acc7f99f35e9c66cc5",
+  "capturedAt": "2026-10-13T18:53:20.771598+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n  \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n  \"metadataPath\": \"src/js/assets/officialCharacter.js\",\n  \"metadataSha256\": \"4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769\",\n  \"candidates\": [\n    {\n      \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n      \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n      \"role\": \"runtime_atlas\",\n      \"selected\": true,\n      \"reason\": \"Atlas ligado pelo manifesto e consumido pelos renderizadores oficiais.\"\n    },\n    {\n      \"path\": \"assets/art/dark-room/official-sprites.png\",\n      \"sha256\": \"be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627\",\n      \"role\": \"source_board\",\n      \"selected\": false,\n      \"reason\": \"Prancha imutável usada pelo extrator; não é o atlas runtime.\"\n    },\n    {\n      \"path\": \"assets/art/toy-room/stage2/carry-pose-v1.png\",\n      \"sha256\": \"58b0bbafb1ca632ae48b1ed6cff1a809602cff7489969219bba6e8bf13fc12ea\",\n      \"role\": \"carry_pose_reference\",\n      \"selected\": false,\n      \"reason\": \"Pose específica de carga fora de OFFICIAL_FRAMES e da referência canônica.\"\n    }\n  ],\n  \"status\": \"PASS\"\n}\n"
+}

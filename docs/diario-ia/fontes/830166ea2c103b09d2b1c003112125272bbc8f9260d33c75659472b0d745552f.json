@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "830166ea2c103b09d2b1c003112125272bbc8f9260d33c75659472b0d745552f",
+  "path": "docs/battle-mode/train-rod-correction.md",
+  "sha256": "a3f9122eff1722ed146276b65371deb1e564ebbdcbb7cf867b729bab5db2a61b",
+  "capturedAt": "2026-10-13T18:53:20.769274+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Correção localizada da biela do Trem\n\nA prancha `assets/art/toy-room/battle/remediation/train-walk-remediation.png` foi substituída por uma edição localizada gerada com `image_gen`. A versão anterior foi preservada em `train-walk-remediation-v1.png`. O prompt completo está em `train-rod-prompt.json`.\n\nOs pinos agora percorrem seis fases ao redor dos eixos: direita, inferior direita, inferior esquerda, esquerda, superior esquerda e superior direita. A biela acompanha os dois pinos e permanece aproximadamente paralela à linha dos centros. A mudança resolve a repetição de posições quase centrais que tornava o mecanismo visualmente estático.\n\nOs seis recortes e as marcações de chão foram atualizados no manifesto do candidato. A reprodução ampliada foi conferida no Chrome após recarregamento sem cache. A verificação técnica passou para 144 PNGs e 26 sequências.\n\n**Situação do Train Walk: REVISÃO.** A órbita da biela está presente, mas não foi certificada a constância geométrica exata de raio/comprimento, nem todas as transições em escala final. Não há homologação automática do ciclo completo ou do pacote. Permanecem as demais reprovações do Prompt 14B. Nenhum recurso de gameplay foi integrado.\n"
+}

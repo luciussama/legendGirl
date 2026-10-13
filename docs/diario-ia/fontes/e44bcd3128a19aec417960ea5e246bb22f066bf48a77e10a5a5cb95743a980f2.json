@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e44bcd3128a19aec417960ea5e246bb22f066bf48a77e10a5a5cb95743a980f2",
+  "path": "docs/qa-mobile-004/percurso/brinquedos.json",
+  "sha256": "bc7063b13f79427733cec53c9d20fc135988d45584b16a0eb9dd90fd19d8fdb9",
+  "capturedAt": "2026-10-13T18:54:17.005303+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "1d11d1e2c7d2ebfa48b8b0dc20e1e03ae5145066"
+  },
+  "content": "[\n  \"teddy\",\n  \"train\",\n  \"robot\",\n  \"bunny\",\n  \"duck\",\n  \"blocks\",\n  \"drum\",\n  \"jack\"\n]\n"
+}

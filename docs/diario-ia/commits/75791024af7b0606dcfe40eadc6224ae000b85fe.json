@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "75791024af7b0606dcfe40eadc6224ae000b85fe",
+  "date": "2026-09-24T16:14:49-03:00",
+  "title": "refactor(environment): standardize platform visuals",
+  "sources": [
+    "75a34e5d3482415c38e0822521807da16114d4d649f83468b096483fcbc26fb1",
+    "6bdf52257bfd59a20c87e43946339bbebaa4cde0de2a25f466d3fcc2aaa6fd11"
+  ]
+}

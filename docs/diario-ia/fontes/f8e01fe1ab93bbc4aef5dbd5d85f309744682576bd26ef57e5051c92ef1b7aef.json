@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "f8e01fe1ab93bbc4aef5dbd5d85f309744682576bd26ef57e5051c92ef1b7aef",
+  "path": "docs/qa/fada-primeira-fase/desktop/erros.json",
+  "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "capturedAt": "2026-10-13T18:54:21.659160+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "fba9c42a7d4b039f51352f7afccf97c7815aa0e7"
+  },
+  "content": "[]\n"
+}

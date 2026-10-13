@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "5d3f24efd363453b32e5191d65f2f9064d7a904dd5a8333d87340151e909f855",
+  "path": "assets/art/toy-room/stage3/README.md",
+  "sha256": "7a9797efc9483446c324f35c81d7a2bf0bcd0b39c816059b7ca667fd19e8f1a3",
+  "capturedAt": "2026-10-13T18:53:20.734099+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Toy Room — Etapa 3\n\nIlustrações geradas com a ferramenta integrada `imagegen`, usando a prancha `assets/art/toy-room/environment-sheet.png` como referência de material, volume e assinatura visual.\n\n- `armchair-v1.png`: poltrona infantil vermelha, com tecido, braços, assento, costuras, pés e sombra integrada.\n- `rocking-horse-v1.png`: cavalinho de carvalho com cabeça, corpo, assento e duas bases curvas conectadas.\n- `cotton-bunny-v1.png`: pelúcia rosa com focinho, olhos, patas, orelhas e costuras; não inclui sombra de chão para permitir transporte.\n\nOs prompts originais estão em `prompts.json`. Os resultados foram recortados pela transparência e reduzidos antes da integração. As posições e dimensões lógicas dos objetos permanecem iguais; a renderização usa a área visual anterior e preserva a proporção do Coelhinho.\n\nOs críticos foram aprovados em 6 de outubro de 2026. Os grupos altos foram integrados após a remoção do recurso de exportação e seu teste integrado.\n\n- `bookshelf-v1.png`: estante e livros ilustrados.\n- `block-castle-v1.png`: castelo e ameias de blocos de madeira.\n- `oak-cabinet-v1.png`: armário baixo com portas e puxadores.\n- `retro-robot-v1.png`, `royal-duck-v1.png`, `stacking-blocks-v1.png`, `enchanted-drum-v1.png`, `fairy-jack-box-v1.png`: cinco coletáveis, sem sombra de chão incorporada para permitir transporte.\n- `illustrated-fairy-v1.png`: fada pintada com rosto, vestido e asas.\n\nPrompts dos nove assets altos em `prompts-altos.json`. Relatório final e comparações em `docs/qa/toy-room-etapa3/altos/`. Grupos altos aguardam revisão; não há autorização presumida para a próxima etapa.\n"
+}

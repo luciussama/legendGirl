@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "e622e468a87409d734dab9eeb5fd9ab316fe64116d69aa404a67415108b66f13",
+  "path": "assets/art/toy-room/battle/remediation/train-rod-prompt.json",
+  "sha256": "c39e539189f89f1232826e0192e1626a04dd578be6e9dc54e26e974022b0ca06",
+  "capturedAt": "2026-10-13T18:53:20.733005+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"tool\": \"image_gen\",\n  \"purpose\": \"Correção localizada dos pinos e da biela\",\n  \"prompt\": \"Use case: precise-object-edit. Edit the attached SIX FRAME train sprite sheet, ONLY the wheel crankpins and red connecting coupling rod. Preserve exactly the train identity, wooden painted texture, palette, proportions, six positions 3 columns 2 rows, transparent background. Correct the mechanical animation: each of the TWO large golden driving wheels has an OFF-CENTER gold crankpin at radius about one third the wheel radius. Both pins have SAME phase and equal eccentric radius in each frame, so the red coupling rod stays parallel to the line between wheel centers and same length. Reading left-right top-bottom: frame1 both pins at THREE O'CLOCK (right of wheel centers); frame2 both at FIVE O'CLOCK (lower-right); frame3 both at SEVEN O'CLOCK (lower-left); frame4 both at NINE O'CLOCK (left); frame5 both at ELEVEN O'CLOCK (upper-left); frame6 both at ONE O'CLOCK (upper-right). All six pin positions must visibly differ around the circle. The rod translates around an orbit, never bends or stretches. Do NOT attach rod at central axle! Do NOT repeat center-pin pose. Keep chassis perfectly stable same size, no effects, no labels, no shadows outside body, generous transparent margins between all frames. Return finished six-frame sprite sheet.\"\n}\n"
+}

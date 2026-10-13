@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "12eaf5cda9e7900734ad0520961f8bdd2625417f744f5bc04fc650aa9767d63c",
+  "path": "docs/battle-mode/battle-playtest-report.md",
+  "sha256": "e1e22d5c0bdc3e83c96e5edc160f52781c31921c8af8e7458025435e5b76fc68",
+  "capturedAt": "2026-10-13T18:54:31.181211+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3a805739eaba099de758172c2ec7c25a3eeedc61"
+  },
+  "content": "# Playtest de batalha — Prompt 15, versão 2.0\n\n**Resultado: PENDING. Não executado: gate visual reprovado.**\n\nNão existe uma integração homologada a ser testada. Nenhum teste da prévia de sprites demonstra funcionamento de HP, transferência de corações, vitória ou derrota.\n\nApós aprovação do Prompt 14, validar: dano reduz exatamente um coração; atacante recupera um até o máximo; excesso de cura é descartado; menina limita em 3, inimigos comuns em 2 e Urso em 4. Confirmar derrota com menina em zero e vitória após Trem → Robô → Dinossauro → Urso. Executar Espada → Arena → quatro confrontos → Ending sem softlock, sem quadros ausentes e sem placeholders.\n\nTodos esses resultados permanecem PENDING, inclusive gamepad, teclado e toque no combate. As verificações anteriores de exploração não equivalem a playtest da arena.\n"
+}

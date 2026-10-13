@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "f8fd3e625ca8ca656b7b2f325d48b8651b96f6d75611ca46795b007085fb1a80",
+  "path": "docs/battle-mode/certification-evidence/DEFECT-007/results.json",
+  "sha256": "c0eaca9f614eda4dda63e6315dd496a80c52de14e8516abd1b679ad151eb5e91",
+  "capturedAt": "2026-10-13T18:53:20.754151+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "[\n  {\n    \"command\": \"npm test\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  },\n  {\n    \"command\": \"npm run test:toy-room:qa\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  },\n  {\n    \"command\": \"npm run test:toy-room:battle\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  },\n  {\n    \"command\": \"npm run test:battle:polish\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  },\n  {\n    \"command\": \"npm run test:battle:fairness\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  },\n  {\n    \"command\": \"npm run build\",\n    \"exitCode\": 0,\n    \"result\": \"PASS\"\n  }\n]\n"
+}

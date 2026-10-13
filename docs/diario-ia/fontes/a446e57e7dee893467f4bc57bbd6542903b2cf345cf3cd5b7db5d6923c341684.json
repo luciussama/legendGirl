@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a446e57e7dee893467f4bc57bbd6542903b2cf345cf3cd5b7db5d6923c341684",
+  "path": "assets/manifest.json",
+  "sha256": "ba2fc4f2b60aa133316d0e188e4782d7e133b3fe0b0fff499abd23c79991937f",
+  "capturedAt": "2026-10-13T18:54:15.965185+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "1f8d21c6b66f4e46572e7de1b21b71fba0dd6223"
+  },
+  "content": "{\n  \"version\": 1,\n  \"images\": {\n    \"toy-room-floor-tile\": \"/assets/art/toy-room/floor-tile.svg\",\n    \"toy-room-teddy\": \"/assets/art/toy-room/teddy.svg\",\n    \"toy-room-player\": \"/assets/art/toy-room/player.svg\",\n    \"toy-room-player-up\": \"/assets/art/toy-room/player-up.svg\",\n    \"toy-room-player-down-1\": \"/assets/art/toy-room/player-down-1.svg\",\n    \"toy-room-player-down-2\": \"/assets/art/toy-room/player-down-2.svg\",\n    \"toy-room-player-down-3\": \"/assets/art/toy-room/player-down-3.svg\",\n    \"toy-room-player-up-1\": \"/assets/art/toy-room/player-up-1.svg\",\n    \"toy-room-player-up-2\": \"/assets/art/toy-room/player-up-2.svg\",\n    \"toy-room-player-up-3\": \"/assets/art/toy-room/player-up-3.svg\",\n    \"toy-room-player-left\": \"/assets/art/toy-room/player-left.svg\",\n    \"toy-room-player-right\": \"/assets/art/toy-room/player-right.svg\",\n    \"toy-room-player-left-1\": \"/assets/art/toy-room/player-left-1.svg\",\n    \"toy-room-player-left-2\": \"/assets/art/toy-room/player-left-2.svg\",\n    \"toy-room-player-left-3\": \"/assets/art/toy-room/player-left-3.svg\",\n    \"toy-room-player-right-1\": \"/assets/art/toy-room/player-right-1.svg\",\n    \"toy-room-player-right-2\": \"/assets/art/toy-room/player-right-2.svg\",\n    \"toy-room-player-right-3\": \"/assets/art/toy-room/player-right-3.svg\",\n    \"toy-room-player-carry\": \"/assets/art/toy-room/player-carry.svg\",\n    \"toy-room-fairy\": \"/assets/art/toy-room/fairy.svg\"\n  },\n  \"spritesheets\": {}\n}"
+}

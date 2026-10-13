@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "c34a9fa4284bf615d98b53107ceb0f0d5448edfd0cbce9cdce424a27f4570070",
+  "path": "assets/art/toy-room/battle/remediation/steam-blast-gate-prompt.json",
+  "sha256": "021bb9ee4fa5bcb59e3d3630a58f330390e9195bbca5d7e8119f02bf2c0d4326",
+  "capturedAt": "2026-10-13T18:53:20.732823+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"tool\": \"image_gen\",\n  \"status\": \"REVIEW\",\n  \"prompt\": \"Edit SIX train sprites in this existing sheet, retain exact wooden painted train identity, colors, materials, dimensions and 3x2 layout. Change ONLY Steam Blast body anticipation, no visible steam or effects. This is an emission attack fired out of the chimney, not a charge. Frame1 neutral upright. Frame2 the blue cylindrical boiler compresses strongly down into chassis with visibly loaded tension, chimney pulled DOWN into boiler. Frame3 chimney extends UP and tilts mouth FORWARD ready to expel; chassis squashed, the brass front cap points up braced. Frame4 forceful chimney release: mouth clearly OPEN forward/up, boiler and cabin recoil BACK from emitting force, wheels planted. Frame5 rebounds halfway upright. Frame6 neutral restored. The blue boiler/chimney mechanism has to visibly prepare, open and recoil, so emission intent is clear WITHOUT any steam. Keep wooden toy aesthetic, no new weapons, no facial features, no redesign. All six bodies complete, independent transparent cutouts, no shadows outside art, generous margins.\"\n}\n"
+}

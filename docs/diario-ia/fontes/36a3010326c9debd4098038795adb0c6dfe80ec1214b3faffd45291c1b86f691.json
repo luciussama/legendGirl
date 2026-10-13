@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "36a3010326c9debd4098038795adb0c6dfe80ec1214b3faffd45291c1b86f691",
+  "path": "docs/qa/reversao-sprites/percurso-android/estados-visuais.json",
+  "sha256": "e03aded96991c862889801911a7301bf15ab4cc0e776d22b829869d6c0e46e95",
+  "capturedAt": "2026-10-13T18:53:20.779056+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "[\n  \"abertura-0\",\n  \"abertura-6\",\n  \"abertura-12\",\n  \"abertura-18\",\n  \"abertura-24\",\n  \"abertura-30\",\n  \"abertura-36\",\n  \"tutorial-primeiro-salto\",\n  \"cinematica-1\",\n  \"cinematica-2\",\n  \"revelacao-1\",\n  \"revelacao-2\",\n  \"revelacao-3\",\n  \"revelacao-4\",\n  \"revelacao-5\",\n  \"tutorial-retorno\",\n  \"portal\"\n]\n"
+}

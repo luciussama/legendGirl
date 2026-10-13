@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ddb4ac5c67a8f46c2caea795681a423e1720cc989f0ca85e5c894656cdc64893",
+  "path": "docs/character-reference-atlas/validation-tests.txt",
+  "sha256": "95769ff782b96311d3d417d56da94246f5bbca6c65aef79716c68672f8839c39",
+  "capturedAt": "2026-10-13T18:54:29.261245+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "PASS: descoberta sem nomes fixos; fonte ausente/ambígua/alterada rejeitada; referência congelada preservada; 21 pranchas e ampliações exatas conferidas.\n"
+}

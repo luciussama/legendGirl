@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "3dd898060cf904941e517aaf17949e7f4e14e5c2e2229287f7feb3990293c8a9",
+  "path": "docs/battle-mode/certification-evidence/DEFECT-008/pass-2/test-battle-fairness.log",
+  "sha256": "efc823d970eeb058a5c6222f148c2e2d0e8bc57532e05769ef82b0efdf34e24e",
+  "capturedAt": "2026-10-13T18:53:20.755815+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:battle:fairness\n> node scripts/test-rocket-fairness.js && node scripts/test-laser-fairness.js && node scripts/review-battle-pose-fairness.js --strict && node scripts/review-battle-fairness.js --strict\n\nAPROVADO: Rocket Punch — 100 ataques próximos, 100 no limite máximo e 50 contatos de borda, nos dois sentidos; alfa da luva concorda com dano.\nAPROVADO: Laser Beam — 100 impactos em pé, 100 esquivas agachadas, 100 contatos de borda e 36 verificações de salto; conteúdo alfa concorda com dano.\n{\n  \"result\": \"PASS\",\n  \"count\": 636,\n  \"mismatches\": 0,\n  \"firstFailures\": []\n}\n{\n  \"scale\": 2,\n  \"rocket\": {\n    \"frame\": \"polish/rocket-punch-v1/04.png\",\n    \"distance\": 250,\n    \"visibleExtent\": 204.9061224489796,\n    \"baselineVisibleExtent\": 85.9122401847575,\n    \"playerHalfWidth\": 55.09387755102041,\n    \"visibleGap\": -10,\n    \"hpAfterAttack\": 2,\n    \"originalExtent\": 85.45034642032333,\n    \"result\": \"PASS\"\n  },\n  \"laser\": {\n    \"beamHeight\": 85,\n    \"crouchHeight\": 80,\n    \"intersectingPixels\": 0,\n    \"hpAfterCrouch\": 3,\n    \"result\": \"PASS\"\n  }\n}\n"
+}

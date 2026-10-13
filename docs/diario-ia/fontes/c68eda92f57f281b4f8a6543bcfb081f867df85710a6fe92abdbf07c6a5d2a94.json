@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "c68eda92f57f281b4f8a6543bcfb081f867df85710a6fe92abdbf07c6a5d2a94",
+  "path": "assets/art/dark-room/OFFICIAL-CHARACTER.md",
+  "sha256": "d79ac41b172754c8f6ff09464f7f12e50aa4e142067619d938037ee6367d13dc",
+  "capturedAt": "2026-10-13T18:53:20.726344+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Personagem oficial\n\nFonte imutável: `official-sprites.png` (o arquivo enviado é JPEG, apesar da extensão).\nExecute `node scripts/generate-dream-girl-sprites.js` para recortar novamente.\nO script copia pixels, remove o pergaminho conectado às bordas e exporta\n`sprites/official-character.png` e `src/js/assets/officialCharacter.js`.\nNenhum frame é desenhado ou gerado; os canais RGB dos pixels retidos são preservados.\n\nMapeamento da prancha:\n- Repouso (Idle): 9 quadros da linha IDLE.\n- Corrida (Run): 9 quadros da linha RUNNING.\n- Salto (Jump): 6 quadros JUMPING, 2 JUMPING–SHORT e 1 HIGH JUMP.\n- Queda (Fall): 6 quadros FALLING.\n- Arrancada (Dash): o quadro DASHING, incluindo seu rastro original.\n- Teletransporte (Teleport): os 2 quadros TELEPORTING que contêm a personagem, com o portal original.\n- Dano, coleta e interação: recortes das respectivas poses oficiais.\n\nEstados sem recorte isolado adequado reutilizam poses existentes: deitada usa\no último FALLING; agachada usa o primeiro JUMPING; empurrar e escalar usam IDLE.\nA fase de brinquedos usa IDLE/RUN e COLLECTING ao carregar um objeto; não há\nanimação traseira inventada. Direção esquerda usa espelhamento horizontal.\n\nAmbos os renderizadores usam o mesmo atlas, com escala uniforme, sem balanço,\nrotação procedural, recoloração ou desenho alternativo. A física não foi alterada.\nO carregamento ausente não ativa uma personagem substituta.\n\nValidação: `npm test` verifica a origem por SHA-256, igualdade RGB com os\nrecortes originais, seleção dos quadros e contato dos pés nas plataformas.\nA extração a partir desta prancha mantém sua resolução original; não adiciona\ndetalhes ausentes na imagem enviada.\n"
+}

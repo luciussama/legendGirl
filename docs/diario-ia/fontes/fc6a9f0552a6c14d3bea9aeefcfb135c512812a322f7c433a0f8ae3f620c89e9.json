@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fc6a9f0552a6c14d3bea9aeefcfb135c512812a322f7c433a0f8ae3f620c89e9",
+  "path": "assets/qa-testers/README.md",
+  "sha256": "4a4d02fdf4cdac15e5eb95908dd245180635eee65eaad7035ae88ae7f2463a81",
+  "capturedAt": "2026-10-13T18:54:17.164255+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3998cf01c189a8ebf6c452c7bdd9ad3c6c96c4ad"
+  },
+  "content": "# Evidências atuais de QA\n\nEsta é a única localização oficial de evidências. O Git conserva o histórico; não manter versões anteriores, comparações antes/depois, cópias de segurança ou arquivos substituídos.\n\n- `current-reports/`: relatório da validação atual e inventário desta limpeza.\n- `current-screenshots/`: capturas regeneradas do código atual e recortes verificados do atlas.\n- `current-logs/`: saída das verificações atuais, substituída a cada execução.\n- `validation/`: identificação do código validado e integridade dos artefatos.\n- `active-test-assets/`: referência de física consumida pela suíte; preservar seu conteúdo.\n\nConsulte o [relatório atual](current-reports/relatorio.md). Sprites e recursos de runtime continuam em seus caminhos de produção.\n\n## Reprodução\n\nExecute na raiz: `npm test`, `npm run build`, `npm run check-assets` e `npm run lint`. Redirecione as saídas para os arquivos correspondentes em `current-logs/`, sobrescrevendo-os.\n\nAs capturas usam Chrome isolado com depuração local na porta 9222. `node scripts/review-protagonist-scale.js` requer servidor local na porta 3001; `node scripts/verify-full-browser.js android` requer a porta 3000. Vincule ambos os servidores a `127.0.0.1`. Os scripts gravam nos destinos oficiais e substituem capturas de mesmo nome.\n\nAo mudar o jogo, exclua evidências que não tenham sido regeneradas. Não altere a referência física para acomodar mudanças apenas visuais. A emulação Android não substitui testes em aparelhos reais.\n"
+}

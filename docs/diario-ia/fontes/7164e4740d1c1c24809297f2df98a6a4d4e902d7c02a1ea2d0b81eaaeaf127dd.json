@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7164e4740d1c1c24809297f2df98a6a4d4e902d7c02a1ea2d0b81eaaeaf127dd",
+  "path": "AGENTS.md",
+  "sha256": "275c927f2923df899885590b666f4342918626298c01a4431ee190cd2f65d7b5",
+  "capturedAt": "2026-10-13T18:54:16.426556+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "fbb3b7c51982d4b676315804bef3431450404d3f"
+  },
+  "content": "# Direção visual das plataformas\n\n- Não adicionar traços, linhas, barras ou realces sobre superfícies ilustradas para delimitar áreas de pulo ou hitboxes durante o jogo.\n- Preservar o desenho natural dos objetos. Não sobrepor réguas de contato às ilustrações existentes.\n- Prateleiras e tampos que fazem parte do objeto devem conservar sua geometria e material, sem linhas auxiliares de pouso.\n- Ajustes visuais não devem alterar física, hitboxes, distâncias de salto ou dificuldade.\n- Sobreposições técnicas de hitbox pertencem exclusivamente ao modo de depuração, desativado na apresentação normal.\n\n- Exceção visual autorizada para o relógio cuco (19): a fixação na parede pode incorporar uma plataforma sólida para os pés, sem alterar a hitbox nem usar uma linha auxiliar de salto.\n"
+}

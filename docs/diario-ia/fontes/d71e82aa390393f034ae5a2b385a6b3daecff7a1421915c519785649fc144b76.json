@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "d71e82aa390393f034ae5a2b385a6b3daecff7a1421915c519785649fc144b76",
+  "path": "docs/battle-mode/rollback-history.md",
+  "sha256": "f53f0cd429b75becf0ad39eed6f7aacb66319f87d7bf2b463887c38fa8b279c2",
+  "capturedAt": "2026-10-13T18:53:20.768393+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Histórico de rollback — Prompt 17\n\n| Passe | Candidato | Motivo | Restauração |\n| --- | --- | --- | --- |\n| 01 | Robot Walk v1 | Mesma perna dominante nas poses de apoio; gesto de ataque na caminhada. | Descartado antes da promoção; manifesto ativo preservado. |\n\nArquivos de tentativas permanecem apenas como evidência. Nenhum rollback deve apagar alterações do usuário ou a integração funcional do Prompt 16.\n\nPasse 03: Train Walk v1 descartado antes da promoção por sincronização geométrica ainda inconsistente. Nenhum parâmetro de combate alterado.\n\nPasse 07: alcance do Rocket Punch reduzido de 280 para 140 somente em um módulo de ensaio. A IA passa a errar na sua distância de engajamento sem reação da menina. Candidato rejeitado; cópia temporária eliminada; implementação ativa nunca substituída. O laser permaneceu intacto para evitar retirar uma defesa existente sem validar balanceamento.\n\n## Prompt 18\n\n- Robot Walk, prancha v1: descartada antes de integração por repetição da perna dominante e gesto de ataque.\n- Robot Walk, alternativa articulada v2: revertida após inspeção ampliada mostrar recortes na junção dos pés. Os testes numéricos de alternância não foram tratados como aprovação visual. A apresentação anterior foi restaurada, preservando as correções independentes de punho/laser.\n- Projeção de Rocket Punch por pose: restaurada temporariamente após uma comparação de tangência exata em 280 falhar por arredondamento. O diagnóstico recebeu tolerância numérica de 1e-8; o candidato foi reaplicado e passou em 886 casos e nas seis suítes. Nenhum parâmetro de combate mudou.\n\nO FAIL de Toy Leap não foi encoberto por redução de alcance. A certificação final permanece reprovada, conforme [relatório do Prompt 18](fairness-certification-report.md).\n"
+}

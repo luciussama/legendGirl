@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8730d250322c64d80b34460a6988068b56452c94905d2c908fcfbb7f2c7fc4fe",
+  "path": "AGENTS.md",
+  "sha256": "5b8183cc496337ff24929596ea2544045d8c7421ac464eef431d1fe5a6d915f3",
+  "capturedAt": "2026-10-13T18:54:16.372673+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "1593c4c01675240fd1c94c3c002a0ea694a72d72"
+  },
+  "content": "# Direção visual das plataformas\n\n- Não adicionar traços, linhas, barras ou realces sobre superfícies ilustradas para delimitar áreas de pulo ou hitboxes durante o jogo.\n- Preservar o desenho natural dos objetos. Não sobrepor réguas de contato às ilustrações existentes.\n- Prateleiras e tampos que fazem parte do objeto devem conservar sua geometria e material, sem linhas auxiliares de pouso.\n- Ajustes visuais não devem alterar física, hitboxes, distâncias de salto ou dificuldade.\n- Sobreposições técnicas de hitbox pertencem exclusivamente ao modo de depuração, desativado na apresentação normal.\n"
+}

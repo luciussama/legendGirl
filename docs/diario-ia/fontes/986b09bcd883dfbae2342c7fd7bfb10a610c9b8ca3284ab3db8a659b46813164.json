@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "986b09bcd883dfbae2342c7fd7bfb10a610c9b8ca3284ab3db8a659b46813164",
+  "path": "docs/melhorias-atlas/execucoes/2026-10-08T18-53-50-937Z-02.json",
+  "sha256": "69944bc4d06d0a2b583748e8f56d1ed49794e1739713f752e478818ccee49cb7",
+  "capturedAt": "2026-10-13T18:54:29.458920+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "{\n  \"id\": \"2026-10-08T18-53-50-937Z\",\n  \"step\": \"02\",\n  \"phase\": \"02A\",\n  \"started\": \"2026-10-08T18:53:50.937Z\",\n  \"finished\": \"2026-10-08T18:53:50.937Z\",\n  \"status\": \"PASS_TECNICO\",\n  \"humanApproval\": \"PENDENTE\",\n  \"promptPath\": \"docs/melhorias-atlas/02-produce-carry.md\",\n  \"promptSha256\": \"c9a50a65cd75f2aa0a3435a3ce9d773aa09dfffc4ab2ab2e94641fc01ad18b18\",\n  \"scriptSha256\": \"d30e22259488e573dc4b2cad762fa2273bfc431fec329804589b144d03db354f\",\n  \"source\": {\n    \"status\": \"PASS\",\n    \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n    \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n    \"width\": 1024,\n    \"height\": 1024,\n    \"metadataPath\": \"src/js/assets/officialCharacter.js\",\n    \"metadataSha256\": \"4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769\",\n    \"candidates\": [\n      \"assets/art/dark-room/sprites/official-character.png\"\n    ],\n    \"evidence\": \"discovery-evidence.json\"\n  },\n  \"outputs\": [\n    \"docs/character-carry/carry-production-manifest.json\",\n    \"docs/character-carry/carry-production-plan.md\",\n    \"docs/character-carry/02A-source-discovery.json\",\n    \"docs/character-carry/02A-validation.json\"\n  ],\n  \"tests\": \"92 entradas e equivalentes oficiais; contagens, índices, âncoras, regime, máscaras esperadas e ausência de sprites conferidos.\",\n  \"cataloguedSprites\": 92,\n  \"producedSprites\": 0,\n  \"productionChanged\": false,\n  \"nextPhaseExecuted\": false,\n  \"nextStepExecuted\": false\n}\n"
+}

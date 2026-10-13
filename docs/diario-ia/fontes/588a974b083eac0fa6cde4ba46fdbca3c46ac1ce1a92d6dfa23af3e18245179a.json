@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "588a974b083eac0fa6cde4ba46fdbca3c46ac1ce1a92d6dfa23af3e18245179a",
+  "path": "docs/qa/toy-room-etapa1/01-parede-validacao.json",
+  "sha256": "95b41c58f03548237c916091aa77a9e16247cd8dda93c71e3d34df6ab1d55583",
+  "capturedAt": "2026-10-13T18:54:20.845760+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "2c5f7d28072af7a58bba55008d7ce2c61b3008b6"
+  },
+  "content": "{\n  \"etapa\": \"01-parede\",\n  \"recursosCarregados\": true,\n  \"renderizacaoPreservaEstado\": true,\n  \"amostrasColisao\": 4941,\n  \"coletas\": 8,\n  \"solturas\": 8,\n  \"itensGuardados\": 8,\n  \"geometriaIdentica\": true,\n  \"performance\": {\n    \"beforeMs\": 0.3050000000745058,\n    \"afterMs\": 0.3049999998882413,\n    \"beforeP90Ms\": 0.35500000007450583,\n    \"afterP90Ms\": 0.3875\n  }\n}\n"
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "af0eb11f9296ca54abea0698fd67970c4a5d54dfe67792b53c90d8b5cd100b98",
+  "path": "docs/battle-mode/combat-remediation-report.json",
+  "sha256": "993c3ccc9331e389b96c989ab3c693bdf5ec834987914a8dc8d5bf38f004e657",
+  "capturedAt": "2026-10-13T18:53:20.764343+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"prompt\": \"14B\",\n  \"result\": \"FAIL\",\n  \"integration\": \"BLOCKED\",\n  \"finalHomologation\": \"BLOCKED\",\n  \"technicalVerification\": {\n    \"result\": \"PASS\",\n    \"pngs\": 144,\n    \"sequences\": 26,\n    \"command\": \"node scripts/verify-battle-sprites.js --remediation\",\n    \"scope\": \"Verificação técnica; não constitui aprovação visual.\"\n  },\n  \"sequences\": {\n    \"Robot Walk\": \"FAIL\",\n    \"Front Charge\": \"REVIEW\",\n    \"Rocket Punch\": \"FAIL\",\n    \"Steam Blast\": \"REVIEW\",\n    \"Laser Beam\": \"REVIEW\",\n    \"Train Walk\": \"REVIEW\",\n    \"Dinosaur Rush\": \"REVIEW\"\n  },\n  \"anchorReview\": \"REVIEW\",\n  \"transitionReview\": \"REVIEW\",\n  \"visualReview\": {\n    \"zoomedSheets\": 7,\n    \"animatedPreviewLoaded\": true,\n    \"smallScale\": \"Hipótese explícita; não é escala final medida\",\n    \"allTransitionsCertified\": false\n  },\n  \"rulesModified\": false,\n  \"manifest\": \"assets/art/toy-room/battle/remediation/manifest.json\"\n}\n"
+}

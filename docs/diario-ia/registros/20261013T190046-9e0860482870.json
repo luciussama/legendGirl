@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T190046-9e0860482870",
+  "sessionId": "20261013T190046-9e0860482870",
+  "type": "inicio",
+  "date": "2026-10-13T19:00:46.680062+00:00",
+  "title": "Conferir links do README considerando âncoras Markdown",
+  "actor": "Codex",
+  "branch": "refator",
+  "head": "ba1cf103318499f184d89d729f051028f4ccf198",
+  "workingTree": [
+    " M .gitignore",
+    " M AGENTS.md",
+    " M README.md",
+    " M package.json",
+    " M tools/sprite-review/catalog.js",
+    "?? docs/diario-ia/",
+    "?? docs/sprites/",
+    "?? scripts/ai-journal.py",
+    "?? scripts/build-sprite-guide.js",
+    "?? scripts/test-ai-journal.py"
+  ]
+}

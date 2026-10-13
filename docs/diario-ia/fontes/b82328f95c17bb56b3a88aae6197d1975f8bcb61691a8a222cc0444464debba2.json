@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b82328f95c17bb56b3a88aae6197d1975f8bcb61691a8a222cc0444464debba2",
+  "path": "docs/qa/toy-room-etapa1/04-tapete-oval-validacao.json",
+  "sha256": "b0a1cb950c6550f7a1641b83d97cf1148a25b3fef7e82fe18e093e0aee587ac5",
+  "capturedAt": "2026-10-13T18:54:20.870010+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "2c5f7d28072af7a58bba55008d7ce2c61b3008b6"
+  },
+  "content": "{\n  \"etapa\": \"04-tapete-oval\",\n  \"recursosCarregados\": true,\n  \"renderizacaoPreservaEstado\": true,\n  \"amostrasColisao\": 4941,\n  \"coletas\": 8,\n  \"solturas\": 8,\n  \"itensGuardados\": 8,\n  \"geometriaIdentica\": true,\n  \"performance\": {\n    \"beforeMs\": 0.3275000000372529,\n    \"afterMs\": 0.3150000000372529,\n    \"beforeP90Ms\": 0.4100000001490116,\n    \"afterP90Ms\": 0.4150000000372529\n  }\n}\n"
+}

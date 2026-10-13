@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "271d177b0797d0cf2b7a5536696f83b881b6befc8786185926939d607cac3fd6",
+  "path": "docs/character-reference-atlas/preflight-validation.json",
+  "sha256": "c3741bb40b254f0391cc1a9542f8be30d988d1669d116d974ce71e8c8a9443d6",
+  "capturedAt": "2026-10-13T18:54:29.245111+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "{\n  \"status\": \"PASS\",\n  \"source\": {\n    \"status\": \"PASS\",\n    \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n    \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n    \"width\": 1024,\n    \"height\": 1024,\n    \"metadataPath\": \"src/js/assets/officialCharacter.js\",\n    \"metadataSha256\": \"4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769\",\n    \"candidates\": [\n      \"assets/art/dark-room/sprites/official-character.png\"\n    ],\n    \"evidence\": \"discovery-evidence.json\"\n  },\n  \"atlasUnchanged\": true,\n  \"metadataUnchanged\": true,\n  \"frameCount\": 43,\n  \"sheetCount\": 21\n}\n"
+}

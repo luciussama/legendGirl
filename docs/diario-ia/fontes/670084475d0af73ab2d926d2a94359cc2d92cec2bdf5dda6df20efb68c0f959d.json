@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "670084475d0af73ab2d926d2a94359cc2d92cec2bdf5dda6df20efb68c0f959d",
+  "path": "docs/melhorias-atlas/02A-carry-production-manifest.md",
+  "sha256": "e53eca0fd50e3ff49d9952c86327995d29b73544d76d75fab83a83210a62b8d2",
+  "capturedAt": "2026-10-13T18:54:29.741612+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a6f661b01d7c8fcd23b0f5c96dfdf981fd8f7b88"
+  },
+  "content": "# Contrato do inventário de produção — 02A aprovada\n\nAprovação apenas do planejamento. Manifesto gerado: ../character-carry/carry-production-manifest.json; plano: ../character-carry/carry-production-plan.md. Nenhum sprite aprovado.\n\n## Âncoras\n\nRenomear anchor para baseAnchor no inventário. Registrar finalAnchor = TBD por entrada. baseAnchor é a referência herdada, não âncora final aprovada. A definição final depende das dimensões do objeto, geometria das máscaras, padding e contato. Não alterar ancoragem corporal arbitrariamente: registrar sourceOffset e correspondência com a fonte. Manifestos de imagens efetivamente produzidas devem registrar a âncora resolvida exigida pelo validador, jamais TBD.\n\n## CARRY OBJECT CLASSES\n\n| Classe | Revisão obrigatória |\n| --- | --- |\n| SMALL | Contato legível, apoio de mão e mascaramento proporcional. |\n| MEDIUM | Contato, peso percebido, apoio e continuidade entre frames. |\n| LARGE | Apoio suficiente, máscara/oclusão, peso e ausência de clipping corporal. |\n\nCategorias de planejamento; dimensões e associação de brinquedos devem ser determinadas na produção e validadas, não presumidas iguais. O pacote de 23 frames da direita não se multiplica automaticamente por três: documentar quais classes foram testadas e qual cobertura ainda está pendente.\n\n## Autorização\n\n02A aprovada como inventário e estratégia. 02B autorizada exclusivamente RIGHT, 23 sprites. Integração proibida; outras direções e etapas dependem dos gates vigentes.\n"
+}

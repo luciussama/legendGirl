@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d707ea3995b46537b27f3e0f6e3680c3e6284c960599bb704d2d05136e6ff879",
+  "path": "docs/qa/remocao-exportacao/RELATORIO.md",
+  "sha256": "48316997a68dd42e812e21ca6e3fa179dd7c62cb8e92ecc1c679b98b3c2f3f1c",
+  "capturedAt": "2026-10-13T18:54:21.345593+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "eebeacc945a05f52ac443f0ade2198e7ea629af5"
+  },
+  "content": "# Remoção do recurso de exportação\n\n6 de outubro de 2026. Removidos botões, modal, estilos exclusivos, eventos, gravação/streaming, página dedicada, pacote gerado, endpoints e geração automática do servidor. Excluídos scripts de exportação/verificação e a dependência `archiver`, com atualização do lockfile. README, manual e referência de métodos atualizados. Os testes visuais usam agora a página principal.\n\nNão há implementação nem instrução ativa de exportação. Referências negativas no novo teste comprovam a ausência do recurso. Evidências históricas de QA continuam descrevendo as versões auditadas; não foram reescritas.\n\nTeste integrado no servidor real e Chrome isolado, em 960×580, 390×844 e 915×412: entrada pela interface, pausa/continuação, som, movimento por teclado CDP, oito coletas/armazenamentos por tela, vitória, save e restauração após recarga. As posições junto aos brinquedos/baú foram preparadas pelo teste; não se afirma percurso completo entre objetos. Zero exceções JavaScript. Rotas antigas retornam 404. [Resultados](ponta-a-ponta.json).\n\n`npm test`, lint, manifesto, sintaxe e verificação de whitespace aprovados. [Suíte](testes.log). A remoção antecedeu a retomada das correções artísticas autorizadas.\n"
+}

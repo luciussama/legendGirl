@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ac8f1f347520ebd207c37d74018752e1fa090396365ba19c65051765c8fa843c",
+  "path": "docs/qa/toy-room-etapa3/criticos/referencia-validacao.json",
+  "sha256": "e632bb91a51d5ae1c4a8c05e3c75d9b5b8caded468ace5cede88e7ca3e436fe7",
+  "capturedAt": "2026-10-13T18:54:21.264548+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "dc30947e4b7997d58017181c9a1ad7acddeda619"
+  },
+  "content": "{\n  \"recursos\": 74,\n  \"collisionChecks\": 4941,\n  \"pickups\": 8,\n  \"drops\": 8,\n  \"stores\": 8,\n  \"movementChecks\": 960,\n  \"estadoPreservado\": true,\n  \"metodosDeGameplayIdenticos\": true,\n  \"observacao\": \"A fase possui velocidade única ponderada pelo peso; corrida é validada como ciclo visual de movimento, sem criar nova mecânica.\",\n  \"performance\": {\n    \"antes\": {\n      \"medianaRenderMs\": 0.7000000029802322,\n      \"p90RenderMs\": 1,\n      \"medianaIntervaloMs\": 16.699999999999818\n    },\n    \"depois\": {\n      \"medianaRenderMs\": 0.800000011920929,\n      \"p90RenderMs\": 1,\n      \"medianaIntervaloMs\": 16.699999999999818\n    }\n  }\n}\n"
+}

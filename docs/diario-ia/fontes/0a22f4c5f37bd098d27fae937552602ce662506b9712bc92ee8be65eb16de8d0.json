@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0a22f4c5f37bd098d27fae937552602ce662506b9712bc92ee8be65eb16de8d0",
+  "path": "docs/melhorias-atlas/production-backlog.md",
+  "sha256": "9c7aa8c8ef1ef82ff5550302fe9da6fdc0372af83b00504b1b4ae55687f0c7ec",
+  "capturedAt": "2026-10-13T18:54:29.837479+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a6f661b01d7c8fcd23b0f5c96dfdf981fd8f7b88"
+  },
+  "content": "# Backlog de famílias fora do pacote atual\n\nOs itens abaixo não integram os 92 CARRY + 92 SWORD + 12 ATTACK. Não autorizam produção, integração ou mudança de gameplay; exigem escopo, contrato de frames/direções e validação próprios.\n\n| ID | Item | Condição / critério |\n| --- | --- | --- |\n| BACKLOG-001 | Família PUSH dedicada | Se a ação for disponibilizada, produzir movimento real de empurrar; idle[0] não resolve. |\n| BACKLOG-002 | Família CLIMB dedicada | Se a ação for disponibilizada, produzir ciclo real de escalada; idle[0] não resolve. |\n| BACKLOG-003 | Família INTERACT dedicada | Somente se o gameplay exigir; o artefato atual não é alvo do pacote. Definir ação e ciclo antes da produção. |\n\nFonte factual: [auditoria 01B](../character-carry/gameplay-reality-audit/gameplay-reality-audit.md). Eventual limpeza do resíduo INTERACT também requer escopo separado e preservação da fonte travada.\n"
+}

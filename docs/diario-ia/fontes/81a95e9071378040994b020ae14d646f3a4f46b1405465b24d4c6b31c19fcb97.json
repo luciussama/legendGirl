@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "81a95e9071378040994b020ae14d646f3a4f46b1405465b24d4c6b31c19fcb97",
+  "path": "assets/qa-testers/current-logs/first-jump-production.json",
+  "sha256": "7e1482032bd839426adee243242c4be7ba0c276a69ef8d49e142848fcc27eff5",
+  "capturedAt": "2026-10-13T18:54:20.765636+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a996dcc751b6b38aea7960f3da02fa768cef6f24"
+  },
+  "content": "[\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  }\n]"
+}

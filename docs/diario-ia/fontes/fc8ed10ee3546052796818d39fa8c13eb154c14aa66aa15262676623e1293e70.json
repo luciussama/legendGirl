@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "fc8ed10ee3546052796818d39fa8c13eb154c14aa66aa15262676623e1293e70",
+  "path": "docs/qa/toy-room-identificacao/escopo.json",
+  "sha256": "d73ff512a3aa5019b9a401969a15fc1a6f3f486ebd80b3fb2f49f7077f6c45e6",
+  "capturedAt": "2026-10-13T18:53:20.784758+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"metodosIdenticos\": [\n    \"resolveCollisions\",\n    \"startTutorial\"\n  ],\n  \"moveisIdenticos\": true,\n  \"brinquedosIdenticos\": true,\n  \"snapshotHistoricoPreservado\": true,\n  \"orientacaoMigrada\": true,\n  \"atlasPreservado\": true,\n  \"marcadorRemovido\": true,\n  \"fallbackIntegrado\": true,\n  \"spriteTransparente\": true\n}\n"
+}

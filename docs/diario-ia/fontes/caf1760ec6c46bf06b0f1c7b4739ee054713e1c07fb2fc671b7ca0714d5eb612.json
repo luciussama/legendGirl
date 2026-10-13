@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "caf1760ec6c46bf06b0f1c7b4739ee054713e1c07fb2fc671b7ca0714d5eb612",
+  "path": "docs/qa/toy-room-etapa1/antes-validacao.json",
+  "sha256": "3a450d5f063250c0072d2ffeee6f4da55c78edfea4a87a5e214acef54dbc7993",
+  "capturedAt": "2026-10-13T18:54:20.901660+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "2c5f7d28072af7a58bba55008d7ce2c61b3008b6"
+  },
+  "content": "{\n  \"etapa\": \"antes\",\n  \"recursosCarregados\": true,\n  \"renderizacaoPreservaEstado\": true,\n  \"amostrasColisao\": 4941,\n  \"coletas\": 8,\n  \"solturas\": 8,\n  \"itensGuardados\": 8,\n  \"geometriaIdentica\": true,\n  \"performance\": {\n    \"beforeMs\": 0.3300000000745058,\n    \"afterMs\": 0.3425000000745058,\n    \"beforeP90Ms\": 0.4349999999627471,\n    \"afterP90Ms\": 0.4224999999627471\n  }\n}\n"
+}

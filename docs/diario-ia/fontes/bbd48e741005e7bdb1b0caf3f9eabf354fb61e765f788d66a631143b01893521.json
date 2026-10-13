@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "bbd48e741005e7bdb1b0caf3f9eabf354fb61e765f788d66a631143b01893521",
+  "path": "docs/character-reference-atlas/reference-audit.md",
+  "sha256": "528a8c88add23ce909c17926532420d3d0d9442040a81e614f3cb861c27ed5da",
+  "capturedAt": "2026-10-13T18:54:29.032157+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "7884ca96e66a75bee65d32a907debc5210ddfed7"
+  },
+  "content": "# 01A — verificação preliminar\n\nResultado: **FAIL — interrompido antes da geração das pranchas do prompt completo.**\n\nO arquivo 01A-reference-atlas.md exige rejeição imediata se o hash do atlas divergir.\n\n| Fonte | SHA-256 |\n| --- | --- |\n| Esperado pelo prompt para official-character.png | `be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627` |\n| official-character.png atual | `2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a` |\n| Prancha de origem official-sprites.png | `be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627` |\n\nO hash esperado corresponde à prancha de origem, também registrada por OFFICIAL_SOURCE_SHA256. O gerador original calcula esse identificador a partir da prancha de origem, não do atlas recortado. A divergência não demonstra corrupção do atlas; demonstra uma inconsistência entre arquivo e hash exigidos pelo prompt.\n\nEvidência: [preflight-validation.json](preflight-validation.json). Nenhum asset, metadado de produção ou comportamento do jogo foi alterado. Não foram executados outros prompts, nem build ou testes de gameplay. A referência gerada a partir do placeholder anterior não foi reutilizada como aprovação desta etapa.\n\nPara retomar, é necessário corrigir explicitamente o hash esperado do atlas para o hash atual, mantendo o hash da prancha de origem como identificador separado, ou fornecer o arquivo correto com o hash exigido. Essa decisão não foi presumida nem aplicada.\n"
+}

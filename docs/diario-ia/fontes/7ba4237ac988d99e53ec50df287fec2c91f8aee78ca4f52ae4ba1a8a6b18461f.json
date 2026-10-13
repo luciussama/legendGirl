@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7ba4237ac988d99e53ec50df287fec2c91f8aee78ca4f52ae4ba1a8a6b18461f",
+  "path": "docs/character-validation/validator-report.md",
+  "sha256": "483a183550a086319c02a0cdfe53991d467bba8d1f809f3d9d2085b279debcc3",
+  "capturedAt": "2026-10-13T18:54:29.369213+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "# Validação estrutural\n\nResultado: **PASS**. Estado: STATE_NORMAL. Frames válidos: 43/43.\n\nArquivos, contagem, resolução, transparência, conteúdo, bounding boxes e âncoras conferidos. A validação estrutural não aprova arte ou direções.\n"
+}

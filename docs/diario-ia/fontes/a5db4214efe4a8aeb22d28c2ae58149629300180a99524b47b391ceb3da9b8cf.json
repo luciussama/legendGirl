@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "a5db4214efe4a8aeb22d28c2ae58149629300180a99524b47b391ceb3da9b8cf",
+  "path": "docs/battle-mode/certification-evidence/DEFECT-008/toy-leap-contact.json",
+  "sha256": "f52deb0a274a75cbfc68d2375f24cb44086d2924d32af9e5895ada14c532a0c9",
+  "capturedAt": "2026-10-13T18:53:20.762229+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"attack\": \"Toy Leap\",\n  \"beyondVisibleReach\": {\n    \"distance\": 154.9,\n    \"playerHp\": 3,\n    \"visibleGap\": 36.930305455515544,\n    \"impactEffectRendered\": false\n  },\n  \"withinVisibleReach\": {\n    \"distance\": 110,\n    \"playerHp\": 2,\n    \"visibleGap\": -7.969694544484462,\n    \"impactEffectRendered\": true\n  },\n  \"result\": \"PASS\"\n}\n"
+}

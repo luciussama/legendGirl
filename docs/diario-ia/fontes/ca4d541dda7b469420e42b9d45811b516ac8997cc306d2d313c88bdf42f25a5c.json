@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ca4d541dda7b469420e42b9d45811b516ac8997cc306d2d313c88bdf42f25a5c",
+  "path": "docs/qa/toy-room-etapa3/altos/final-validacao.json",
+  "sha256": "3e0b543662a068fad22f076a79a4ddcedf08219ea9774039ca77c1c2eeb26e49",
+  "capturedAt": "2026-10-13T18:54:21.449204+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "eebeacc945a05f52ac443f0ade2198e7ea629af5"
+  },
+  "content": "{\n  \"recursos\": 86,\n  \"collisionChecks\": 4941,\n  \"pickups\": 8,\n  \"drops\": 8,\n  \"stores\": 8,\n  \"movementChecks\": 960,\n  \"estadoPreservado\": true,\n  \"metodosDeGameplayIdenticos\": true,\n  \"observacao\": \"A fase possui velocidade única ponderada pelo peso; corrida é validada como ciclo visual de movimento, sem criar nova mecânica.\",\n  \"pixels\": {\n    \"pixelsAlterados\": 87495,\n    \"pixelsForaDoEscopo\": 0\n  },\n  \"performance\": {\n    \"canvas\": {\n      \"largura\": 1600,\n      \"altura\": 1200\n    },\n    \"antes\": {\n      \"medianaRenderMs\": 0.5,\n      \"p90RenderMs\": 1.0999999940395355,\n      \"medianaIntervaloMs\": 16.69999999999891\n    },\n    \"depois\": {\n      \"medianaRenderMs\": 0.6000000089406967,\n      \"p90RenderMs\": 0.9000000059604645,\n      \"medianaIntervaloMs\": 16.69999999999891\n    }\n  },\n  \"carrying\": {\n    \"verificacoes\": 32,\n    \"nenhumaSobreposicaoDaCabeca\": true\n  },\n  \"verificacoesHUD\": 63\n}\n"
+}

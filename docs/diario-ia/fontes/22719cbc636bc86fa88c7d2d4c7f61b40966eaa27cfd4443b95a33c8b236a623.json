@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "22719cbc636bc86fa88c7d2d4c7f61b40966eaa27cfd4443b95a33c8b236a623",
+  "path": "docs/character-reference-atlas/source-lock.json",
+  "sha256": "a7670c086f13ffb8e05353215329703f7cc903e7c1871cbb97a933255f692fdb",
+  "capturedAt": "2026-10-13T18:53:20.772349+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"schemaVersion\": \"1.0\",\n  \"status\": \"PASS\",\n  \"atlasPath\": \"assets/art/dark-room/sprites/official-character.png\",\n  \"atlasSha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n  \"metadataPath\": \"src/js/assets/officialCharacter.js\",\n  \"metadataSha256\": \"4d61487a1fb6533029cb3a2b57b0fba6733e26729d0d9dde0416a53e858f8769\",\n  \"candidates\": [\n    {\n      \"path\": \"assets/art/dark-room/sprites/official-character.png\",\n      \"sha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n      \"role\": \"runtime_atlas\",\n      \"selected\": true,\n      \"reason\": \"Atlas efetivamente carregado pelo manifesto e recortado pelos metadados OFFICIAL_FRAMES.\"\n    },\n    {\n      \"path\": \"assets/art/dark-room/official-sprites.png\",\n      \"sha256\": \"be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627\",\n      \"role\": \"source_board\",\n      \"selected\": false,\n      \"reason\": \"Prancha fonte usada para gerar o atlas runtime, não é o atlas de jogo.\"\n    },\n    {\n      \"path\": \"assets/art/toy-room/stage2/carry-pose-v1.png\",\n      \"sha256\": \"58b0bbafb1ca632ae48b1ed6cff1a809602cff7489969219bba6e8bf13fc12ea\",\n      \"role\": \"carry_pose_reference\",\n      \"selected\": false,\n      \"reason\": \"Asset de pose de carga, não é candidato a atlas canônico.\"\n    }\n  ],\n  \"discoveryEvidence\": \"docs/character-reference-atlas/discovery-evidence.json\",\n  \"cycleId\": \"CFC44E00-2C9B-464D-A6D4-5DF146FC76A1\",\n  \"date\": \"2026-10-09T16:00:50Z\"\n}\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2246154a40692b511e5d46a37552109c2354bd138728e3134263dca0762134f6",
+  "path": "docs/character-validation/review-report.md",
+  "sha256": "14c6de722d67f39adf3607c8a5d9cd2b1de5cbab7b1804bc744f3fe1270b40ae",
+  "capturedAt": "2026-10-13T18:54:29.336240+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "# Revisão visual e de animação\n\nResultado: **PASS**. Estado: STATE_NORMAL.\n\n## Identidade\n\n43 frames comparados; 43 preservam as regras numéricas. Heatmaps: verde = preservado; vermelho = alterado. Comparações: oficial → candidata → heatmap.\n\n## Contato\n\nNão se aplica à referência sem objeto.\n\n## Animação\n\n13 GIFs produzidos, incluindo loops oficiais, ciclos e transições de 500 ms quando aplicáveis. A presença de um GIF não aprova sua fluidez.\n\n## Veredito e limites\n\nComparação técnica da referência oficial consigo mesma; não aprova famílias futuras.\n\nRegiões retangulares e contato geométrico não certificam idade, pintura, peso ou fluidez. GIFs são prévias quantizadas; os PNGs originais permanecem inalterados. Ataques são apresentados somente com corpo/objeto, sem rastro, brilho, partículas ou som.\n\n\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fe6af07d553cd5779975f357ddef219e5c18b9db0244d732a3ad1bebf07b3469",
+  "path": "docs/qa/toy-room-etapa3/criticos/integridade-e-recursos.json",
+  "sha256": "3c7c299df0261d2b27cfa96ff15a1272731af18a612c34fbe53720ff86d665b8",
+  "capturedAt": "2026-10-13T18:54:21.522250+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "eebeacc945a05f52ac443f0ade2198e7ea629af5"
+  },
+  "content": "{\n  \"arquivosComparados\": 219,\n  \"arquivosAlterados\": [\n    \"src/js/toy-room/RoomEnvironmentRenderer.js\",\n    \"src/js/toy-room/ToyRoomUI.js\",\n    \"src/js/toy-room/ToyRenderer.js\",\n    \"src/js/toy-room/ToyRoomPhase.js\",\n    \"assets/manifest.json\"\n  ],\n  \"arquivosForaDoEscopoAlterados\": [],\n  \"assetsNovos\": [\n    {\n      \"arquivo\": \"assets/art/toy-room/stage3/armchair-v1.png\",\n      \"bytes\": 158466,\n      \"largura\": 282,\n      \"altura\": 318,\n      \"pixelsRGBA\": 358704\n    },\n    {\n      \"arquivo\": \"assets/art/toy-room/stage3/cotton-bunny-v1.png\",\n      \"bytes\": 22411,\n      \"largura\": 84,\n      \"altura\": 132,\n      \"pixelsRGBA\": 44352\n    },\n    {\n      \"arquivo\": \"assets/art/toy-room/stage3/rocking-horse-v1.png\",\n      \"bytes\": 75002,\n      \"largura\": 254,\n      \"altura\": 202,\n      \"pixelsRGBA\": 205232\n    }\n  ],\n  \"bytesAdicionais\": 255879,\n  \"pixelsRGBAAdicionais\": 608288,\n  \"HUDTextoMinimo11CSSpx\": true\n}\n"
+}

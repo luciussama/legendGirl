@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "32175bae5316b422aba4e6d4cfb41c9abc8c5f59b40b0aa2d96bbf8f88774a45",
+  "path": "docs/character-validation/validation-run.txt",
+  "sha256": "56dba2247e30bb0ad0824883a977018f9417899795ae36905d354db12f072b65",
+  "capturedAt": "2026-10-13T18:54:29.352669+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "PASS\nRevisão: PASS\n"
+}

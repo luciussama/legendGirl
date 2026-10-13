@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2037da7108476a6a58b63d0173d285e8ac364b5c373d0511a27b6cd03f64343d",
+  "path": "tmp/ux-001/README.md",
+  "sha256": "5ba0f947fd247557da468f1b4d9981b28e3ec8e87169bb120b0ce0b0636a9d5a",
+  "capturedAt": "2026-10-13T18:54:16.761055+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "569f0800b75aa5e5abd90ad7c53e263bd1766521"
+  },
+  "content": "# UX-001 — Prioridade ao início da aventura\n\nAlteração restrita a `index.html` e `src/css/styles.css`.\n\n- Única ação central: **COMEÇAR**, com fundo dourado de alto contraste, largura de até 320 px e altura mínima de 72 px.\n- ZIP e pular fase aparecem como ícones discretos na barra superior, com nomes acessíveis e dicas ao passar o cursor. O ZIP usa o controle superior já existente, que abre o mesmo modal do antigo link central.\n- O atalho de pular mantém seu identificador e manipulador; CSS oculta o controle quando a tela inicial está oculta, preservando sua disponibilidade anterior.\n- Foco de teclado visível e layout adaptado a telas estreitas e baixas.\n- Nenhum JavaScript, asset, diálogo, carregamento de fase, animação ou física foi alterado nesta tarefa.\n\n## Validação\n\n`npm run test:pages` aprovado. Chrome: uma única ação central, alinhamento horizontal central e ausência de sobreposição com a barra em 960×580, 390×844 e 667×375. Verificados início do jogo, ocultação do atalho durante o jogo, acionamento de pular fase e abertura do modal ZIP. Resultados em `validacao.json`; reprodução pelo script `verificar.mjs`, com servidor local na porta 3000 e Chrome de teste na porta 9222.\n\nCapturas inspecionadas: [computador](computador.png) e [celular](celular.png). Também disponível: [paisagem](paisagem.png).\n"
+}

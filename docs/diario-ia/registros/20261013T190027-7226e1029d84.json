@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T190027-7226e1029d84",
+  "sessionId": "20261013T190027-7226e1029d84",
+  "type": "inicio",
+  "date": "2026-10-13T19:00:27.202817+00:00",
+  "title": "Destacar orientações para o designer no README",
+  "actor": "Codex",
+  "branch": "refator",
+  "head": "ba1cf103318499f184d89d729f051028f4ccf198",
+  "workingTree": [
+    " M .gitignore",
+    " M AGENTS.md",
+    " M README.md",
+    " M package.json",
+    " M tools/sprite-review/catalog.js",
+    "?? docs/diario-ia/",
+    "?? docs/sprites/",
+    "?? scripts/ai-journal.py",
+    "?? scripts/build-sprite-guide.js",
+    "?? scripts/test-ai-journal.py"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "fcc3852f3fdc8214bbec3f1c7dd0a20115814d4c417db8f9c3273b8b29887020",
+  "path": "docs/qa/toy-room-arena/build.log",
+  "sha256": "47b701e2eb09423ac494fc6c6f18ec5ed1a54be50745bdc349b55b8c90b883a5",
+  "capturedAt": "2026-10-13T18:53:20.783121+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 build\n> node scripts/test-pages-build.js && node -e \"console.log('Compilação concluída')\"\n\n--- TESTE: Verificação de Build para GitHub Pages ---\n✓ index.html: 2 links e referências verificados com sucesso.\n✅ Todos os links e recursos respeitam a subpasta do projeto para o GitHub Pages!\nCompilação concluída\n"
+}

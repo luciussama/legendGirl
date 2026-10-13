@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "22f0ea1800c1482ba56612be99d9c5445ed4dcc10f27f97a554ea9fd39c5e27d",
+  "path": "docs/qa/toy-room-arena/navegador.log",
+  "sha256": "ff38a9bf614b791d0fd857353cc63ded4285c3c0c8d8f3bd6017674bb59c65bf",
+  "capturedAt": "2026-10-13T18:53:20.783768+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\"perfil\":\"desktop\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":960,\"height\":540,\"dt\":1,\"frames\":9960,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":5.599999999627471,\"p95\":7.599999999627471}}\n{\"perfil\":\"android\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":390,\"height\":844,\"dt\":1,\"frames\":9888,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":407,\"median\":2.900000000372529,\"p95\":4.899999998509884}}\n{\"perfil\":\"android-paisagem\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":844,\"height\":390,\"dt\":1,\"frames\":10209,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":407,\"median\":3.600000001490116,\"p95\":5.5}}\n"
+}

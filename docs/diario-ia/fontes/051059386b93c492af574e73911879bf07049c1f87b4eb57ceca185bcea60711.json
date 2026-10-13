@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "051059386b93c492af574e73911879bf07049c1f87b4eb57ceca185bcea60711",
+  "path": "assets/qa-testers/visual-rendering/QA-VISUAL-001/invariancia-percurso.json",
+  "sha256": "7cb1947f4c6e315b706433ea6dd043c923a69c650dd772737f3930e5a1d19e5c",
+  "capturedAt": "2026-10-13T18:54:20.511708+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "083660d6066201260605da29a3d2a6f8a3caa553"
+  },
+  "content": "[\n  {\n    \"profile\": \"android\",\n    \"frames\": 7882,\n    \"supports\": 38,\n    \"trajectoryActorsCameraTransformIdentical\": true\n  },\n  {\n    \"profile\": \"iphone\",\n    \"frames\": 7882,\n    \"supports\": 38,\n    \"trajectoryActorsCameraTransformIdentical\": true\n  },\n  {\n    \"profile\": \"desktop\",\n    \"frames\": 7882,\n    \"supports\": 38,\n    \"trajectoryActorsCameraTransformIdentical\": true\n  }\n]"
+}

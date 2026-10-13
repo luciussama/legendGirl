@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "b6eedc5fc23475e6a7070adc6ecaad7ff8c5303dc2274c63a4ace1a7eabcc035",
+  "path": "docs/battle-mode/transition-evidence/mobile-ui.log",
+  "sha256": "eee6b7c9674b440d835dcadf60c2b2738166444d09f90b4b695c2449b00d3fa4",
+  "capturedAt": "2026-10-13T18:53:20.769647+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:mobile-ui\n> node scripts/test-mobile-ui-layout.js\n\nAPROVADO: 16 perfis alternados; área segura, círculos completos, toque alinhado, joystick e câmera da sala.\n"
+}

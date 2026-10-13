@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "49c76684b360ccc46c8eecb9a7d76075d11464e65da3a422994fcdea1721aeb1",
+  "path": "docs/qa/toy-room-tutorial/percurso-completo/desktop/brinquedos.json",
+  "sha256": "bc7063b13f79427733cec53c9d20fc135988d45584b16a0eb9dd90fd19d8fdb9",
+  "capturedAt": "2026-10-13T18:54:22.144615+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "f39128facc8470f423ef5dcaae3e230ce4120687"
+  },
+  "content": "[\n  \"teddy\",\n  \"train\",\n  \"robot\",\n  \"bunny\",\n  \"duck\",\n  \"blocks\",\n  \"drum\",\n  \"jack\"\n]\n"
+}

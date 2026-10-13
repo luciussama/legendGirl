@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "c0160d6bdf1ffa9b7765d0031ffccc43360e8d45f48c4693691d65b7bf95caf9",
+  "path": "tests/DARK_ROOM_VERIFICATION.md",
+  "sha256": "3b6ed49deb21f4d417e44116e45d9fa5de8b45aaf766f5377b434f5bff718dab",
+  "capturedAt": "2026-10-13T18:54:17.524427+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3998cf01c189a8ebf6c452c7bdd9ad3c6c96c4ad"
+  },
+  "content": "# Verificação atual das plataformas\n\nReferência artística: `assets/art/dark-room/environment-assets-concept.png`.\n\nExecutar `npm run verify:dark-room` e `npm run check-assets`.\nA referência `assets/qa-testers/active-test-assets/dark-room-physics.json` não deve ser atualizada para\nacomodar uma mudança artística: geometria e parâmetros continuam preservados.\n\nO verificador Node executa os trechos de salto, movimento e colisão de produção;\no navegador executa o loop real pela instrumentação isolada em\n`tests/dark-room-playthrough.html?verify=1`. Essa página agora inclui todas as\n38 plataformas das três fases, com dt 0,5/1/1,2 (114 transições), e 900 frames\nde pausa no castelo. A fase 3 inclui a faixa de sobreposição corporal à esquerda\nporque essa faixa já é aceita pela colisão real.\n\nA saída do castelo continua sendo a única assistida. A personagem espera parada\napós o diálogo; as demais saídas mantêm os coeficientes fixos/progressivos atuais.\nA arte nova não muda esse comportamento.\n\nRenderização: a torre do castelo usa um PNG separado do atlas, com apoio de 28 px.\nO pião usa outro PNG novo. A fase 3 usa desenhos de materiais no Canvas e sprites\noficiais reaproveitados; superfícies de contato ficam estáveis mesmo quando\nornamentos ou brilho se animam.\n\nEvidências atuais: [relatório de QA](../assets/qa-testers/current-reports/relatorio.md).\nOs scripts de revisão gravam somente em `assets/qa-testers/`.\n\nLimitação herdada: o corpo pode manter contato mínimo com a hitbox enquanto os\nsapatos ficam fora da borda. Não foi modificada na revisão artística para não\nalterar navegabilidade/dificuldade. Igualdade entre o plano dos pés e a altura\nfísica não prova igualdade com a arte; por isso as imagens devem ser inspecionadas.\n"
+}

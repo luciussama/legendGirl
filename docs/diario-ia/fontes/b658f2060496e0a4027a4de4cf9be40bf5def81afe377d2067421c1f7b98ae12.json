@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b658f2060496e0a4027a4de4cf9be40bf5def81afe377d2067421c1f7b98ae12",
+  "path": "docs/qa/fada-primeira-fase/desktop/estados-visuais.json",
+  "sha256": "e03aded96991c862889801911a7301bf15ab4cc0e776d22b829869d6c0e46e95",
+  "capturedAt": "2026-10-13T18:54:21.673390+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "fba9c42a7d4b039f51352f7afccf97c7815aa0e7"
+  },
+  "content": "[\n  \"abertura-0\",\n  \"abertura-6\",\n  \"abertura-12\",\n  \"abertura-18\",\n  \"abertura-24\",\n  \"abertura-30\",\n  \"abertura-36\",\n  \"tutorial-primeiro-salto\",\n  \"cinematica-1\",\n  \"cinematica-2\",\n  \"revelacao-1\",\n  \"revelacao-2\",\n  \"revelacao-3\",\n  \"revelacao-4\",\n  \"revelacao-5\",\n  \"tutorial-retorno\",\n  \"portal\"\n]\n"
+}

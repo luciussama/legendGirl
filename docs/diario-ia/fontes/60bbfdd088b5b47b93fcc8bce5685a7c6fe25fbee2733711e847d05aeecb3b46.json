@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "60bbfdd088b5b47b93fcc8bce5685a7c6fe25fbee2733711e847d05aeecb3b46",
+  "path": "docs/melhorias-atlas/execucoes/2026-10-08T18-41-34-329Z-02.json",
+  "sha256": "de0dc6b97206ba58dc89dd41ca48101bd9bccc9e434f2555de9c72f08fa98f36",
+  "capturedAt": "2026-10-13T18:54:29.450463+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "{\n  \"id\": \"2026-10-08T18-41-34-329Z\",\n  \"step\": \"02\",\n  \"started\": \"2026-10-08T18:41:34.329Z\",\n  \"status\": \"NAO_CONCLUIDO_PACOTE_AUSENTE\",\n  \"rulesApproval\": \"APROVADO\",\n  \"humanApproval\": \"NAO_SOLICITADA_SEM_SPRITES\",\n  \"sourceSha256\": \"2d246885ebb44959de757468d1c7dd3394bd3c3bfa6c6a7f2e070be2eaaad93a\",\n  \"producedFrames\": 0,\n  \"requiredFrames\": 92,\n  \"tests\": {\n    \"structural\": \"FAIL\",\n    \"review\": \"FAIL_ESTRUTURA_BLOQUEADA\"\n  },\n  \"report\": \"docs/character-carry/README.md\",\n  \"productionChanged\": false,\n  \"nextStepExecuted\": false,\n  \"reason\": \"Autoria visual dos 92 sprites não realizada; promessa anterior não sustentada. Sem uso de atalhos proibidos.\"\n}\n"
+}

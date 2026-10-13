@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8a2511b09a10b7a95425d2f14f2b3512caca19c007f289ce2839eb8cc53ebecf",
+  "path": "docs/qa/toy-room-transicao/desktop/brinquedos.json",
+  "sha256": "bc7063b13f79427733cec53c9d20fc135988d45584b16a0eb9dd90fd19d8fdb9",
+  "capturedAt": "2026-10-13T18:54:21.994126+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "19e60aea9f800ba6a529070877fddc23a9efde12"
+  },
+  "content": "[\n  \"teddy\",\n  \"train\",\n  \"robot\",\n  \"bunny\",\n  \"duck\",\n  \"blocks\",\n  \"drum\",\n  \"jack\"\n]\n"
+}

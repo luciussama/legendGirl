@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2fc3e820488776509f2149ddccd0d4059329d385519625f0f0be9e776b243221",
+  "path": "docs/qa/toy-room-identificacao/integridade.json",
+  "sha256": "0aa2b346ce384079c90dc2907a0a0a35a747b3359f169aea9cc361001d20ba0b",
+  "capturedAt": "2026-10-13T18:54:22.332043+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a15b5c8ed767c88bb83faed0efd216319da3cfba"
+  },
+  "content": "{\n  \"collisions\": 4941,\n  \"movementFrames\": 960,\n  \"collections\": 8,\n  \"drops\": 8,\n  \"stores\": 8,\n  \"layout\": \"idêntico\",\n  \"result\": \"aprovado\"\n}\n"
+}

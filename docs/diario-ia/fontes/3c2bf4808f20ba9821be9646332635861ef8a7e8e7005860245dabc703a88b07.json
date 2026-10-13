@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "3c2bf4808f20ba9821be9646332635861ef8a7e8e7005860245dabc703a88b07",
+  "path": "docs/melhorias-atlas/execucoes/README.md",
+  "sha256": "8da3b9e131128ed995f71793534de5203e0c9493926446948655ff2008beb967",
+  "capturedAt": "2026-10-13T18:54:29.476246+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "b5dc8e8b89ca772312407aac347075b1db892719"
+  },
+  "content": "# Registro das execuções\n\n## Ciclo vigente reiniciado\n\nCiclo: 2026-10-08T19-05-41-346Z. Nenhuma etapa aprovada neste novo ciclo. Histórico e aprovações antigas preservados em [registro.json](registro.json); não liberam os prompts revisados.\n\n[Auditoria de impacto](../../character-carry/reinicio/impacto.md) · [Status atual](status.json). Pré-requisito 01A.0-source-discovery.md ausente; source-lock ainda indefinido. Nenhum prompt de produção executado durante o reinício.\n\n## Histórico\n\n- 2026-10-08T17:24:10.925Z — 01A: PASS_TECNICO; [registro](2026-10-08T17-24-10-925Z-01A.json).\n- 2026-10-08T17:26:33.813Z — 01A: PASS_TECNICO; [registro](2026-10-08T17-26-33-813Z-01A.json).\n- 2026-10-08T17:50:54.571Z — 01A: PASS_TECNICO; [registro](2026-10-08T17-50-54-571Z-01A.json).\n- 2026-10-08T18:00:50.695366+00:00 — 01: PASS_TECNICO; [registro](2026-10-08T18-21-27-393Z-01.json).\n- 2026-10-08T18:31:01.277Z — 01: DEFEITO_VISUAL_CONFIRMADO; [registro](2026-10-08T18-31-01-277Z-01.json).\n- 2026-10-08T18:33:08.218Z — 02: EM_PRODUCAO; [registro](2026-10-08T18-33-08-218Z-02.json).\n- 2026-10-08T18:41:34.329Z — 02: NAO_CONCLUIDO_PACOTE_AUSENTE; [registro](2026-10-08T18-41-34-329Z-02.json).\n- 2026-10-08T18:53:50.937Z — 02 / 02A: PASS_TECNICO; [registro](2026-10-08T18-53-50-937Z-02.json).\n- 2026-10-08T19:05:41.346Z — REINICIO: REVISAO_CONCLUIDA_AJUSTES_NECESSARIOS; [registro](2026-10-08T19-05-41-346Z-REINICIO.json).\n"
+}

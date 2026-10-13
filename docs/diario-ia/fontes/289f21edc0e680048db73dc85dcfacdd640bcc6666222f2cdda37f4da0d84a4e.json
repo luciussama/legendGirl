@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "289f21edc0e680048db73dc85dcfacdd640bcc6666222f2cdda37f4da0d84a4e",
+  "path": "docs/qa/toy-room-pos-correcao/performance-quadros.json",
+  "sha256": "300fcdea96d32e0fbb0139f990d19165ba229450974bcb4fffaa8a26d792ac53",
+  "capturedAt": "2026-10-13T18:54:20.990143+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "2c5f7d28072af7a58bba55008d7ce2c61b3008b6"
+  },
+  "content": "{\n  \"antes\": {\n    \"medianaRenderMs\": 0.8000000044703484,\n    \"p90RenderMs\": 1,\n    \"medianaIntervaloMs\": 16.699999999999818\n  },\n  \"depois\": {\n    \"medianaRenderMs\": 0.7000000029802322,\n    \"p90RenderMs\": 0.9000000059604645,\n    \"medianaIntervaloMs\": 16.699999999999818\n  }\n}\n"
+}

@@ -15,7 +15,15 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 
 ## Manual para novas equipes
 
+Toda IA deve começar pelo [diário compartilhado](docs/diario-ia/README.md), conforme `AGENTS.md`.
+
 Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código. O [dicionário de dependências](docs/DEPENDENCIAS.md) resume bibliotecas, versões e locais de uso.
+
+### Orientações para o designer
+
+Quem trabalhar no visual deve começar pelo [guia de edição de sprites](docs/sprites/GUIA-DESIGNERS.md). Ele explica onde estão as artes, onde são usadas no código e como preservar a identidade visual, as proporções, a transparência e as âncoras sem alterar a física do jogo.
+
+Consulte o [mapa completo de imagens e consumidores](docs/sprites/MAPA-SPRITES.md), o [mapa de recortes das pranchas](docs/sprites/RECORTES.md) e os [desenhos remanescentes em código](docs/sprites/DESENHOS-EM-CODIGO.md) para localizar os elementos que serão editados. Após mudanças, atualize o inventário com `npm run docs:sprites` e registre a entrega, a validação e as pendências no diário compartilhado.
 
 ## Executar localmente
 

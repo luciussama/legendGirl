@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "bd79e8f9ecd468590e24682a0ed8da4602681e4ea04a0c2811c88fee601fe2cb",
+  "path": "assets/art/dark-room/OFFICIAL-CHARACTER.md",
+  "sha256": "0d08bfcb0dd0e5bad1bc6aab8f2ae4d8859e51205220b963e7f863aed4084c09",
+  "capturedAt": "2026-10-13T18:54:16.549871+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "38a851d567cddf5c2893f94671e592c079cfc7d1"
+  },
+  "content": "# Personagem oficial\n\nFonte imutável: `official-sprites.png` (o arquivo enviado é JPEG, apesar da extensão).\nExecute `node scripts/generate-dream-girl-sprites.js` para recortar novamente.\nO script copia pixels, remove o pergaminho conectado às bordas e exporta\n`sprites/official-character.png` e `src/js/assets/officialCharacter.js`.\nNenhum frame é desenhado ou gerado; os canais RGB dos pixels retidos são preservados.\n\nMapeamento da prancha:\n- Idle: 9 quadros da linha IDLE.\n- Run: 9 quadros da linha RUNNING.\n- Jump: 6 quadros JUMPING, 2 JUMPING–SHORT e 1 HIGH JUMP.\n- Fall: 6 quadros FALLING.\n- Dash: o quadro DASHING, incluindo seu rastro original.\n- Teleport: os 2 quadros TELEPORTING que contêm a personagem, com o portal original.\n- Dano, coleta e interação: recortes das respectivas poses oficiais.\n\nEstados sem recorte isolado adequado reutilizam poses existentes: deitada usa\no último FALLING; agachada usa o primeiro JUMPING; empurrar e escalar usam IDLE.\nA fase de brinquedos usa IDLE/RUN e COLLECTING ao carregar um objeto; não há\nanimação traseira inventada. Direção esquerda usa espelhamento horizontal.\n\nAmbos os renderizadores usam o mesmo atlas, com escala uniforme, sem balanço,\nrotação procedural, recoloração ou desenho alternativo. A física não foi alterada.\nO carregamento ausente não ativa uma personagem substituta.\n\nValidação: `npm test` verifica a origem por SHA-256, igualdade RGB com os\nrecortes originais, seleção dos quadros e contato dos pés nas plataformas.\nA extração a partir desta prancha mantém sua resolução original; não adiciona\ndetalhes ausentes na imagem enviada.\n"
+}

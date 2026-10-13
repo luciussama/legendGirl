@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "389935046945abf79e610833bab7ad46e767af0e2b6934143dcecc66ed8d5060",
+  "path": "docs/battle-mode/combat-sound-report.md",
+  "sha256": "0d1efd594b42c932f241a84d70d2314159f9749f93531b416a4a6a4022176a57",
+  "capturedAt": "2026-10-13T18:53:20.764815+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "# Relatório de áudio de combate — Prompt 19A\n\n**Implementação: adicionada. Aprovação auditiva humana: pendente.**\n\n## Cobertura de eventos\n\n| Evento | Identificador do som |\n| --- | --- |\n| Passo, salto, aterrissagem, ataque, dano e morte da menina | `player_walk`, `player_jump`, `player_land`, `player_attack`, `player_hit`, `player_death` |\n| Trem: passo, Steam Blast, Front Charge, hit e morte | `train_walk`, `train_steam`, `train_charge`, `train_hit`, `train_death` |\n| Robô: passo, Laser Beam, Rocket Punch, hit e morte | `robot_walk`, `robot_laser`, `robot_punch`, `robot_hit`, `robot_death` |\n| Dinossauro: passo, Bite, Rush, hit e morte | `dinosaur_walk`, `dinosaur_bite`, `dinosaur_rush`, `dinosaur_hit`, `dinosaur_death` |\n| Urso: passo, Bear Hug, Belly Charge, Toy Leap, hit, Enrage e morte | `bear_walk`, `bear_hug`, `bear_charge`, `bear_leap`, `bear_hit`, `bear_enrage`, `bear_death` |\n| Arena, entrada/retorno, vitória/derrota e corações | `arena_start`, `enemy_entry`, `enemy_return`, `victory`, `defeat`, `heart_gain`, `heart_loss` |\n\nOs eventos são sintetizados no Web Audio com perfis de frequência, forma de onda, volume e duração por ação. Os ataques iniciam o som na entrada do estado ofensivo; os sons de hit/ganho/perda são disparados no passo em que o dano é aplicado. A espada usa `player_attack` em vez de `playPickUpSound`.\n\n## Limite da certificação\n\nO teste automatizado confirma nomes de evento e quadro lógico, não audibilidade, mixagem com música, latência do dispositivo nem distinção por jogadores com olhos fechados. Não se afirma a resposta obrigatória **YES** até que a escuta seja validada em jogo com as cinco sessões humanas.\n\nOs retestes obrigatórios `npm test`, `npm run test:toy-room:qa`, `npm run test:toy-room:battle`, `npm run test:battle:polish`, `npm run test:battle:fairness` e `npm run build` passaram. Isso confirma integridade funcional da implementação, não aprovação auditiva.\n"
+}

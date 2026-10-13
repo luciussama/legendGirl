@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "18717d907bf27069204fb94bc24813cef0fb1f22d5f5de3eef3a3667533c5b1c",
+  "path": "docs/qa/toy-room-transicao/integridade-mecanicas.json",
+  "sha256": "5a537cce939811752392f847a5c1d22606e0eedf1e9a1224283d95d829416b84",
+  "capturedAt": "2026-10-13T18:53:20.785268+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"metodosPreservados\": [\n    \"resolveCollisions\"\n  ],\n  \"volumeEscolhido\": 0.4,\n  \"volumeFinal\": 0.23199999999999998,\n  \"mudoEPausa\": \"aprovados\"\n}\n"
+}

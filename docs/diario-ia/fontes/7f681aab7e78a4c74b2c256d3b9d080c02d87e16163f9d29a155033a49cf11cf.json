@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7f681aab7e78a4c74b2c256d3b9d080c02d87e16163f9d29a155033a49cf11cf",
+  "path": "docs/art-001/relatorio.md",
+  "sha256": "17da5e52e80f727ad223012a66c993ee0af9e624e0ffe517455ff888bce98a2e",
+  "capturedAt": "2026-10-13T18:54:17.049564+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "c762e84f3962e2baa22753ff629017979b397658"
+  },
+  "content": "# Art-001 — Escala visual da protagonista\n\nAplicado fator visual **1,08×** à sprite da menina na primeira etapa do quarto, antes do modo fuga e do retorno. A abertura ilustrada na cama, a fuga, o retorno e a sala de brinquedos conservam as escalas anteriores.\n\nO ajuste multiplica apenas as dimensões e os deslocamentos do recorte desenhado por `BabyRenderer`. O centro horizontal e a âncora dos pés continuam no mesmo ponto do mundo. Não altera a resolução dos recortes nem o seletor ou a duração das animações.\n\nCâmera, zoom global, física, hitboxes, colisões, velocidade, saltos, cenário, plataformas e iluminação não foram modificados por este ajuste. As alterações de câmera já presentes no diretório pertencem ao ticket QA-Gameplay-001 anterior.\n\n## Comparação\n\n| Perfil | Antes | Depois |\n| --- | --- | --- |\n| Desktop | [Captura](desktop-antes.png) | [Captura](desktop-depois.png) |\n| Android emulado | [Captura](android-antes.png) | [Captura](android-depois.png) |\n\nAs capturas usam a mesma plataforma, pose e enquadramento, com o fator artístico desativado/ativado. Na inspeção visual, o ganho de presença é discreto e a personagem continua pequena diante dos móveis. Os pés mantêm o contato com a penteadeira. A aprovação subjetiva da direção de arte permanece com a equipe.\n\n## Verificação\n\n- 86 combinações de quadro e direção: dimensões ampliadas exatamente em 8%, recortes e âncoras preservados.\n- `npm test`: aprovado, incluindo regressões de física, apoios e animações.\n- `git diff --check`: aprovado.\n\nReprodução das capturas: servidor temporário na porta 3001, Chrome dedicado com depuração na porta 9222 e `node scripts/review-protagonist-scale.js`. O teste automatizado usa `node scripts/test-protagonist-scale.js`.\n"
+}

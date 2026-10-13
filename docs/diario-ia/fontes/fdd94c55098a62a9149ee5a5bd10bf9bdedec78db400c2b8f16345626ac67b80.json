@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fdd94c55098a62a9149ee5a5bd10bf9bdedec78db400c2b8f16345626ac67b80",
+  "path": "docs/qa/toy-room-tutorial/mobile/resultado.json",
+  "sha256": "5ad1430c160c9bdbefab0e2375b9c403c549b868aab17ecfd6ded0a46ea12b15",
+  "capturedAt": "2026-10-13T18:54:22.136546+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "f39128facc8470f423ef5dcaae3e230ce4120687"
+  },
+  "content": "{\n  \"start\": {\n    \"order\": [\n      \"start\"\n    ],\n    \"tutorial\": true,\n    \"state\": \"TOY_ROOM_TUTORIAL\",\n    \"message\": \"TOQUE E ARRASTE NA TELA PARA ANDAR\"\n  },\n  \"guide\": {\n    \"target\": \"teddy\",\n    \"nearest\": \"teddy\",\n    \"message\": \"TOQUE NO BOTÃO PEGAR\"\n  },\n  \"targetChange\": {\n    \"previous\": \"teddy\",\n    \"next\": \"robot\",\n    \"nearest\": \"robot\",\n    \"step\": 1.8300072768184255\n  },\n  \"completed\": true,\n  \"restored\": {\n    \"mode\": true,\n    \"completed\": true,\n    \"active\": false\n  },\n  \"fresh\": {\n    \"completed\": false,\n    \"active\": true\n  },\n  \"exceptions\": []\n}\n"
+}

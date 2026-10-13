@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "60a82dbdb47eda67a01b36582d4bb73592dbdad806175d718cc3caaac653728b",
+  "path": "docs/qa/toy-room-tutorial/gamepad/resultado.json",
+  "sha256": "1db7a1f182a1d047b42216642725bce752661a4dc8aaabbaa4be91b3788b63ee",
+  "capturedAt": "2026-10-13T18:54:22.120602+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "f39128facc8470f423ef5dcaae3e230ce4120687"
+  },
+  "content": "{\n  \"start\": {\n    \"order\": [\n      \"start\"\n    ],\n    \"tutorial\": true,\n    \"state\": \"TOY_ROOM_TUTORIAL\",\n    \"message\": \"USE O ANALÓGICO ESQUERDO PARA ANDAR\"\n  },\n  \"guide\": {\n    \"target\": \"teddy\",\n    \"nearest\": \"teddy\",\n    \"message\": \"PRESSIONE X PARA PEGAR\"\n  },\n  \"targetChange\": {\n    \"previous\": \"teddy\",\n    \"next\": \"robot\",\n    \"nearest\": \"robot\",\n    \"step\": 1.8300065991550998\n  },\n  \"completed\": true,\n  \"restored\": {\n    \"mode\": true,\n    \"completed\": true,\n    \"active\": false\n  },\n  \"fresh\": {\n    \"completed\": false,\n    \"active\": true\n  },\n  \"exceptions\": []\n}\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "cd1286daa6d6c2929f9e008b95cf153691afe601b776f1d7d527e2db61446238",
+  "path": "docs/qa/toy-room-transicao/desktop/erros.json",
+  "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+  "capturedAt": "2026-10-13T18:54:22.003397+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "19e60aea9f800ba6a529070877fddc23a9efde12"
+  },
+  "content": "[]\n"
+}

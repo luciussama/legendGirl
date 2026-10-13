@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T190046-9e0860482870-fim",
+  "sessionId": "20261013T190046-9e0860482870",
+  "type": "fim",
+  "date": "2026-10-13T19:00:47.853288+00:00",
+  "title": "Conferir links do README considerando âncoras Markdown",
+  "actor": "Codex",
+  "summary": "A primeira conferência de links confundiu âncoras Markdown com nomes de arquivos e falhou. A checagem foi corrigida para verificar os destinos sem o fragmento; todos os destinos existem. Este evento corrige a evidência do encerramento anterior sem reescrevê-lo.",
+  "checks": [
+    "Destinos locais dos links do README: aprovados, com fragmentos tratados",
+    "git diff --check: aprovado"
+  ],
+  "pending": [],
+  "files": [
+    "README.md"
+  ]
+}

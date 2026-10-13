@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "7fe1260fb0fbc321ef50362ee0f14dea2a1a881256663bba94fe45d8679c6ab2",
+  "path": "docs/battle-mode/hitbox-fairness-evidence.json",
+  "sha256": "6c712c4c63d1bcd368764b44d108721ad6dbb3aacea974769d1f4f6e99a902e2",
+  "capturedAt": "2026-10-13T18:53:20.766707+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "{\n  \"scale\": 2,\n  \"rocket\": {\n    \"frame\": \"polish/rocket-punch-v1/04.png\",\n    \"distance\": 250,\n    \"visibleExtent\": 85.45034642032333,\n    \"baselineVisibleExtent\": 85.9122401847575,\n    \"playerHalfWidth\": 55.09387755102041,\n    \"visibleGap\": 109.45577602865627,\n    \"hpAfterAttack\": 2,\n    \"result\": \"MISMATCH\"\n  },\n  \"laser\": {\n    \"beamHeight\": 55,\n    \"crouchHeight\": 136.4,\n    \"intersectingPixels\": 15,\n    \"hpAfterCrouch\": 3,\n    \"result\": \"MISMATCH\"\n  }\n}\n"
+}

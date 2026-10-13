@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "4a53663fbb7c0cf0235c951dad18608c9c6e1b9d795b5e244b1f1c40152f67f1",
+  "path": "assets/qa-testers/current-logs/first-jump-production-captures.json",
+  "sha256": "26a978ead51a9a2cf025aad4dcac0615e95f11e44b6de35009b6a572a3d3a0c7",
+  "capturedAt": "2026-10-13T18:54:20.750198+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "a996dcc751b6b38aea7960f3da02fa768cef6f24"
+  },
+  "content": "[\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  }\n]"
+}

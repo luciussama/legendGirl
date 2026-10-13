@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "dbae49ee5ab5b65115ef39983177d66911da4781d562dc43b5dd6ec091543b38",
+  "path": "assets/qa-testers/current-logs/build.log",
+  "sha256": "55a7105ae17d9d4bfc10ecae0949fa5b01f7d2e7bd791c6975892b5de2c724aa",
+  "capturedAt": "2026-10-13T18:54:17.194657+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "3998cf01c189a8ebf6c452c7bdd9ad3c6c96c4ad"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 build\n> node scripts/test-pages-build.js && node -e \"console.log('Compilação concluída')\"\n\n--- TESTE: Verificação de Build para GitHub Pages ---\n✓ index.html: 5 links e referências verificados com sucesso.\n✓ baixar.html: 2 links e referências verificados com sucesso.\n✅ Todos os links e recursos respeitam a subpasta do projeto para o GitHub Pages!\nCompilação concluída\n"
+}

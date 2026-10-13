@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "id": "f84554eb39c4136a280269f16f1b9d3208a2bf25f44b154cbec7915f62cd5e71",
+  "path": "docs/battle-mode/certification-evidence/DEFECT-002/test-battle-polish.log",
+  "sha256": "d309f1eda5b1c2b1c412e5784f6023f5a196babb18cdbef89670f5f94af54b55",
+  "capturedAt": "2026-10-13T18:53:20.745582+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:battle:polish\n> node scripts/test-battle-polish.js && node scripts/verify-battle-sprites.js --remediation && npm run test:toy-room:battle\n\nAPROVADO: alterações isoladas de arte, escalas preservadas e progressão do Rush dentro das janelas originais.\nAPROVADO: 144 PNGs, 26 sequências, repertórios exatos, transparência, margens e desenhos sem duplicação exata após normalizar o recorte. Progressão e identidade exigem inspeção visual adicional.\n\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:battle\n> node scripts/test-toy-room-battle.js && node scripts/test-battle-transitions.js\n\n{\"frames\":2326,\"dt\":0.5,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":1164,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":392,\"dt\":3,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\nAPROVADO: percurso real, HP, limites, transferência, derrota, vitória, salto, agachamento, câmera e save/load.\n{\"frames\":2364,\"dt\":0.5,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":1183,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":400,\"dt\":3,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":104,\"dt\":12,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\nAPROVADO: entrada inicial, transporte simultâneo, quatro retornos à caixa, bloqueio de impactos, persistência e vitória após guardar o Urso.\n"
+}

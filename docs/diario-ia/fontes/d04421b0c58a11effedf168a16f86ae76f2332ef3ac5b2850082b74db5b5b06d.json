@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d04421b0c58a11effedf168a16f86ae76f2332ef3ac5b2850082b74db5b5b06d",
+  "path": "docs/legendas-elevadas/relatorio.md",
+  "sha256": "43ec0a828bac6e9a16aab9c86398a20011f29a0b4b4d05517cc3aa17433e8074",
+  "capturedAt": "2026-10-13T18:54:16.952922+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "71e77a6c1f99a048f7e67fd09644c84b5dbf19ee"
+  },
+  "content": "# Legendas próximas da personagem\n\nAs legendas móveis deixaram de usar apenas a base do canvas como referência. Na abertura, usam a posição da menina na cama; nos diálogos do jogo, usam sua posição após as transformações reais da câmera, incluindo elevação no Android e zoom móvel.\n\nA caixa é colocada abaixo da personagem com uma separação de aproximadamente 24 pixels CSS. Se não houver espaço, é colocada acima. O posicionamento permanece limitado à área segura e reserva pelo menos 16% da altura segura abaixo da caixa, quando há espaço. Texto, fonte, duração e física foram preservados. O desktop conserva o posicionamento anterior.\n\nValidação: `npm test` aprovado; testes específicos cobrem posicionamento abaixo/acima, folga inferior e preservação do desktop. O navegador validou 40 quadros no perfil iPhone e 40 no perfil Android, com todos os textos dentro das margens e sem mudanças de conteúdo ou fonte. Os perfis são emulados no Chrome; não representam aparelhos reais.\n\n- [Abertura próxima da menina — iPhone](notch-retrato-abertura-15.png).\n- [Diálogo elevado — iPhone](notch-retrato-cena-1.png).\n- [Abertura próxima da menina — Android](android/notch-retrato-abertura-15.png).\n- [Diálogo elevado — Android](android/notch-retrato-cena-1.png).\n\nOs nomes dos cenários do script refletem insets simulados. Capturas de diálogos isolados verificam a reserva inferior sem âncora; as capturas da abertura usam a posição da personagem na cena real.\n"
+}

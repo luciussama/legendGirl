@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e3d899607d88a8f8bc3bd49675b4fbd31961548db42057794671d1609e978962",
+  "path": "docs/qa/toy-room-pos-correcao/depois-validacao.json",
+  "sha256": "1fbc74458c3f462e5ab3b5a217c61233c0eb17c88496b76297c2343d70cfca00",
+  "capturedAt": "2026-10-13T18:54:20.973509+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "2c5f7d28072af7a58bba55008d7ce2c61b3008b6"
+  },
+  "content": "{\n  \"etapa\": \"depois\",\n  \"recursosCarregados\": true,\n  \"renderizacaoPreservaEstado\": true,\n  \"amostrasColisao\": 4941,\n  \"coletas\": 8,\n  \"solturas\": 8,\n  \"itensGuardados\": 8,\n  \"geometriaIdentica\": true,\n  \"performance\": {\n    \"beforeMs\": 0.325,\n    \"afterMs\": 0.3275000000372529,\n    \"beforeP90Ms\": 0.3700000001117587,\n    \"afterP90Ms\": 0.4050000000745058\n  }\n}\n"
+}

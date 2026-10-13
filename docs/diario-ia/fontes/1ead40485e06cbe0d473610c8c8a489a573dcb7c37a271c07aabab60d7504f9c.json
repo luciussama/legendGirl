@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "1ead40485e06cbe0d473610c8c8a489a573dcb7c37a271c07aabab60d7504f9c",
+  "path": "docs/qa/toy-room-etapa3/criticos/grupo1-poltrona-validacao.json",
+  "sha256": "89c658e0450685ba4f9e0146ff47f96e46dc749f021e694fdd5840a332e7ccc4",
+  "capturedAt": "2026-10-13T18:54:21.216083+00:00",
+  "origin": {
+    "type": "git",
+    "commit": "dc30947e4b7997d58017181c9a1ad7acddeda619"
+  },
+  "content": "{\n  \"recursos\": 75,\n  \"collisionChecks\": 4941,\n  \"pickups\": 8,\n  \"drops\": 8,\n  \"stores\": 8,\n  \"movementChecks\": 960,\n  \"estadoPreservado\": true,\n  \"metodosDeGameplayIdenticos\": true,\n  \"observacao\": \"A fase possui velocidade única ponderada pelo peso; corrida é validada como ciclo visual de movimento, sem criar nova mecânica.\",\n  \"performance\": {\n    \"antes\": {\n      \"medianaRenderMs\": 0.6000000089406967,\n      \"p90RenderMs\": 0.9000000059604645,\n      \"medianaIntervaloMs\": 16.699999999999818\n    },\n    \"depois\": {\n      \"medianaRenderMs\": 0.6000000089406967,\n      \"p90RenderMs\": 0.8999999910593033,\n      \"medianaIntervaloMs\": 16.699999999999818\n    }\n  }\n}\n"
+}
