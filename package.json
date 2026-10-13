@@ -22,7 +22,7 @@
     "test:toy-room:qa": "node scripts/test-toy-room-introduction.js && node scripts/test-toy-room-tutorial.js && node scripts/test-toy-room-orientation.js && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:story && npm run test:toy-room:facing",
     "prepare:battle-sprites": "node scripts/prepare-battle-sprites.js",
     "verify:battle-sprites": "node scripts/verify-battle-sprites.js",
-    "test:battle:polish": "node scripts/test-battle-polish.js && node scripts/test-train-drive.js && node scripts/verify-battle-sprites.js --remediation && npm run test:toy-room:battle",
+    "test:battle:polish": "node scripts/test-combat-impact.js && node scripts/test-battle-polish.js && node scripts/test-train-drive.js && node scripts/verify-battle-sprites.js --remediation && npm run test:toy-room:battle",
     "review:battle:fairness": "node scripts/review-battle-fairness.js --write",
     "test:battle:fairness": "node scripts/test-rocket-fairness.js && node scripts/test-laser-fairness.js && node scripts/review-battle-pose-fairness.js --strict && node scripts/review-battle-fairness.js --strict"
   },

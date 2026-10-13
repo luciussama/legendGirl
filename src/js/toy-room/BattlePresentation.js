@@ -48,6 +48,36 @@ export function rocketPunchProjection(frame, reference, elapsed, signedDistance,
     root:(source.root-frame.anchor.x)*factor, maxTip, gloveWidth,verticalShift };
 }
 
+export function rocketPunchTouchesPlayer(frame, reference, elapsed, signedDistance, target) {
+  const projection = rocketPunchProjection(frame, reference, elapsed, signedDistance, target);
+  const body = playerModel(target.state, target.player, target.attackDirection);
+  const jump = battlePlayerJumpOffset(target.state, target.player, target.attackDirection);
+  const glove = BATTLE_ROCKET_GLOVE_BOUNDS;
+  const facing = body.facing * target.enemyFacing;
+  const sourceAnchor = frame.anchor.x - 460;
+  for (let gloveY = 0; gloveY < glove.rows.length; gloveY++) {
+    const gloveRow = glove.rows[gloveY];
+    if (!gloveRow) continue;
+    const top = (gloveY - glove.anchorY) * projection.factor + projection.verticalShift;
+    const bottom = top + projection.factor;
+    const firstBodyRow = Math.max(0, Math.floor((top + body.anchorY + jump) / body.pixelHeight));
+    const lastBodyRow = Math.min(body.rows.length - 1, Math.floor((bottom + body.anchorY + jump) / body.pixelHeight));
+    for (let bodyY = firstBodyRow; bodyY <= lastBodyRow; bodyY++) {
+      const bodyRow = body.rows[bodyY];
+      if (!bodyRow) continue;
+      const bodyTop = bodyY * body.pixelHeight - body.anchorY - jump;
+      const bodyBottom = bodyTop + body.pixelHeight;
+      if (top >= bodyBottom || bottom <= bodyTop) continue;
+      const bodyLeft = facing < 0 ? -bodyRow[1] : bodyRow[0];
+      const bodyRight = facing < 0 ? -bodyRow[0] : bodyRow[1];
+      const gloveLeft = projection.left + (gloveRow[0] + sourceAnchor) * projection.factor;
+      const gloveRight = projection.left + (gloveRow[1] + sourceAnchor) * projection.factor;
+      if (gloveLeft < signedDistance + bodyRight && gloveRight > signedDistance + bodyLeft) return true;
+    }
+  }
+  return false;
+}
+
 export function renderRocketPunch(ctx, image, frame, reference, elapsed, signedDistance,target=null) {
   const p=rocketPunchProjection(frame,reference,elapsed,signedDistance,target), {factor,source}=p;
   const x=-frame.anchor.x*factor, y=-frame.anchor.y*factor;

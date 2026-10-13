@@ -817,6 +817,65 @@ export function createAudioSystem() {
     } catch (e) {}
   }
 
+  function playCombatSound(event) {
+    const sounds = {
+      player_walk: [150, 92, 'triangle', 0.045, 0.055],
+      player_jump: [390, 650, 'sine', 0.1, 0.14],
+      player_land: [190, 78, 'triangle', 0.12, 0.12],
+      player_attack: [420, 170, 'sawtooth', 0.09, 0.12],
+      player_hit: [220, 92, 'sawtooth', 0.14, 0.18],
+      player_death: [180, 48, 'sawtooth', 0.16, 0.48],
+      train_walk: [118, 164, 'square', 0.055, 0.09],
+      train_steam: [720, 260, 'sawtooth', 0.095, 0.32],
+      train_charge: [170, 62, 'square', 0.12, 0.28],
+      train_hit: [280, 110, 'triangle', 0.13, 0.22],
+      train_death: [240, 65, 'triangle', 0.14, 0.42],
+      robot_walk: [210, 130, 'square', 0.05, 0.08],
+      robot_laser: [980, 470, 'sawtooth', 0.085, 0.24],
+      robot_punch: [340, 92, 'square', 0.13, 0.2],
+      robot_hit: [360, 145, 'square', 0.14, 0.2],
+      robot_death: [310, 70, 'square', 0.15, 0.42],
+      dinosaur_walk: [110, 75, 'triangle', 0.065, 0.11],
+      dinosaur_bite: [310, 120, 'sawtooth', 0.12, 0.2],
+      dinosaur_rush: [205, 72, 'sawtooth', 0.12, 0.3],
+      dinosaur_hit: [245, 92, 'triangle', 0.15, 0.25],
+      dinosaur_death: [190, 52, 'triangle', 0.16, 0.48],
+      bear_walk: [92, 58, 'triangle', 0.075, 0.13],
+      bear_hug: [150, 72, 'triangle', 0.14, 0.3],
+      bear_charge: [135, 48, 'sawtooth', 0.16, 0.34],
+      bear_leap: [260, 55, 'sawtooth', 0.17, 0.38],
+      bear_hit: [170, 56, 'triangle', 0.17, 0.3],
+      bear_enrage: [130, 520, 'sawtooth', 0.15, 0.48],
+      bear_death: [210, 42, 'triangle', 0.18, 0.58],
+      enemy_entry: [480, 760, 'triangle', 0.1, 0.34],
+      enemy_return: [520, 180, 'triangle', 0.09, 0.3],
+      arena_start: [330, 590, 'triangle', 0.1, 0.4],
+      victory: [523, 1047, 'triangle', 0.16, 0.7],
+      defeat: [220, 55, 'sawtooth', 0.16, 0.65],
+      heart_gain: [660, 990, 'sine', 0.11, 0.22],
+      heart_loss: [240, 100, 'triangle', 0.12, 0.22]
+    };
+    const profile = sounds[event];
+    if (!profile) throw new RangeError(`Som de combate desconhecido: ${event}`);
+    if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
+
+    const [startFrequency, endFrequency, waveform, volume, duration] = profile;
+    const now = state.audioCtx.currentTime;
+    const oscillator = state.audioCtx.createOscillator();
+    const gain = state.audioCtx.createGain();
+    oscillator.type = waveform;
+    oscillator.frequency.setValueAtTime(startFrequency, now);
+    oscillator.frequency.exponentialRampToValueAtTime(endFrequency, now + duration);
+    gain.gain.setValueAtTime(volume, now);
+    gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
+    oscillator.connect(gain);
+    gain.connect(getDestination() || state.audioCtx.destination);
+    registerActiveNode(oscillator);
+    oscillator.start(now);
+    oscillator.stop(now + duration + 0.01);
+    return true;
+  }
+
   return {
     initAudio,
     startMusic,
@@ -851,6 +910,7 @@ export function createAudioSystem() {
     playDropSound,
     playOrganizeChime,
     playToyRoomVictory,
+    playCombatSound,
     setMasterVolume,
     getMasterVolume,
     setMuted,

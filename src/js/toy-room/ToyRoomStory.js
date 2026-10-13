@@ -400,7 +400,6 @@ export class ToyRoomStory {
     if (!state.swordEquipped || state.attackElapsed > 0) return false;
     state.attackElapsed = SWORD_ATTACK_DURATION;
     state.attackDirection = this.room.player.facing === 'left' ? -1 : 1;
-    this.room.audio?.playPickUpSound?.();
     return true;
   }
 

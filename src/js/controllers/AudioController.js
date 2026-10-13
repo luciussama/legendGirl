@@ -292,6 +292,12 @@ export class AudioController {
     }
   }
 
+  playCombatSound(event) {
+    if (this.system && typeof this.system.playCombatSound === 'function') {
+      this.system.playCombatSound(event);
+    }
+  }
+
   destroy() {
     if (typeof document !== 'undefined') {
       document.removeEventListener('visibilitychange', this.boundHandleVisibilityChange);
