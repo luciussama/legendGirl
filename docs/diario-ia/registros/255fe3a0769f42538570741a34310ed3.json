@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "255fe3a0769f42538570741a34310ed3",
+  "type": "qa",
+  "date": "2026-10-13T19:36:11.929341+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 0,
+  "sourceId": "a05e5106cdd3cb33b379f37794368d160b398d6049d7e460c9c4899a79545023",
+  "package": "suite-dialogos-2026-10-13T19-36-05.940476+00-00"
+}

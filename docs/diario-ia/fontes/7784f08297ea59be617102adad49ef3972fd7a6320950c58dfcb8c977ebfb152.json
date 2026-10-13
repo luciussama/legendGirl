@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7784f08297ea59be617102adad49ef3972fd7a6320950c58dfcb8c977ebfb152",
+  "path": "qa-execucoes/4a240364be9d458eba09ebb85fe05b3d/docs/qa/dialogos-normalizados/android.json",
+  "sha256": "37148dec14cd414659d0fb8d73bdc82a173992299ff7d0cd18b29d439434a0cf",
+  "capturedAt": "2026-10-13T19:34:30.331046+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"portraits\":[\"fairy\",\"baby\"],\"boxes\":[[16,530,358,122,12],[20,534,350,114,8],[16,530,358,122,12],[20,534,350,114,8]],\"controlTop\":680,\"mobile\":true}"
+}

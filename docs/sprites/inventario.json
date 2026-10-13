@@ -13467,7 +13467,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16635,7 +16635,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16681,7 +16681,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16727,7 +16727,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16773,7 +16773,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16819,7 +16819,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16865,7 +16865,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16911,7 +16911,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16957,7 +16957,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -21216,7 +21216,7 @@
         "variant": "baby:normal",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21240,7 +21240,7 @@
         "variant": "baby:happy",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21264,7 +21264,7 @@
         "variant": "baby:shocked",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21288,7 +21288,7 @@
         "variant": "baby:annoyed",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21312,7 +21312,7 @@
         "variant": "baby:determined",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21336,7 +21336,7 @@
         "variant": "fairy:normal",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21360,7 +21360,7 @@
         "variant": "fairy:happy",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21384,7 +21384,7 @@
         "variant": "fairy:shocked",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21408,7 +21408,7 @@
         "variant": "fairy:annoyed",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -21432,7 +21432,7 @@
         "variant": "fairy:determined",
         "preview": "portrait"
       },
-      "sha256": "ca703d823e689536cf4af33c28e3cb41a97f8230848bf864e851c05219b33b37",
+      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [

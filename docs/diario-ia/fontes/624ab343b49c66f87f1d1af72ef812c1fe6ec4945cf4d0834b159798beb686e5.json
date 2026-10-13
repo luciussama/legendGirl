@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "624ab343b49c66f87f1d1af72ef812c1fe6ec4945cf4d0834b159798beb686e5",
+  "path": "qa-execucoes/f03854c0c5094544aeb5aba136f800f9.log",
+  "sha256": "8db9b399b18038beabc4313dc6f6462644c96be6303141dcf2c7793f7266b9e9",
+  "capturedAt": "2026-10-13T21:46:05.928245+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena:browser\n> node scripts/test-toy-room-arena-browser.js\n\n{\"perfil\":\"desktop\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":960,\"height\":540,\"dt\":1,\"frames\":10073,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":5.5,\"p95\":9}}\n{\"perfil\":\"android\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":390,\"height\":844,\"dt\":1,\"frames\":9636,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":3,\"p95\":7.199999995529652}}\n{\"perfil\":\"android-paisagem\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":844,\"height\":390,\"dt\":1,\"frames\":9685,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":3.899999998509884,\"p95\":6.5}}\n"
+}

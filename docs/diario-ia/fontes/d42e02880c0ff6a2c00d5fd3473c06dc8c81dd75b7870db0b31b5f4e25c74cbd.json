@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d42e02880c0ff6a2c00d5fd3473c06dc8c81dd75b7870db0b31b5f4e25c74cbd",
+  "path": "qa-execucoes/f03854c0c5094544aeb5aba136f800f9/docs/qa/toy-room-arena/desktop-arena-bear-movimento.png",
+  "sha256": "ca1a393ae41c5939262b77a1cfe631912dd3d09dce1b21b7225d5a8c7cf1b1e8",
+  "capturedAt": "2026-10-13T21:46:05.972693+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-bear-movimento.png\", \"sha256\": \"0de3388344ab3bf0c5fb7c52d29dad0f8ed360a97a47c05031c07faffe4e68b4\", \"bytes\": 1090134, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "4a6787885fad48cbaf5310d10110eebecdaa9072a5e235b693456ef0725435a7",
+  "path": "qa-execucoes/e8ffe18f50b445b0a986c0a80bea5a3a.log",
+  "sha256": "eaa835de14734b0d882048f50f05657ae2cd29ac016de86fabda07da6d134742",
+  "capturedAt": "2026-10-13T19:52:00.204959+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:current-art:browser",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:current-art:browser\n> node scripts/test-current-art-browser.js\n\nAPROVADO: 114 saltos, pausa no castelo, plataformas, 17 cenários ilustrados e recursos sem falhas no navegador.\n"
+}

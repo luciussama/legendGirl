@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T194825-073cab09546f-fim",
+  "sessionId": "20261013T194825-073cab09546f",
+  "type": "fim",
+  "date": "2026-10-13T19:49:26.868483+00:00",
+  "title": "Retomar e concluir validação dos diálogos compartilhados",
+  "actor": "Codex",
+  "summary": "Retomada concluída: sessão anterior identificada, código e fontes relevantes consultados, árvore inicial limpa e implementação existente validada. Encerramento anterior registrado com referência explícita à recuperação. Contexto vigente já descreve corretamente a implementação e foi preservado. Apenas novos registros de diário e QA; sem commit ou publicação.",
+  "checks": [
+    "npm test: aprovado",
+    "npm run build: aprovado",
+    "QA navegador: tentativa inicial bloqueada pelo sandbox; após liberação faltava Chrome CDP em 9222. Chrome temporário isolado iniciado e teste aprovado em desktop, Android emulado e paisagem; navegador encerrado."
+  ],
+  "pending": [],
+  "files": [
+    "docs/diario-ia/registros/20261013T192947-3832fe6137c0-fim.json"
+  ]
+}

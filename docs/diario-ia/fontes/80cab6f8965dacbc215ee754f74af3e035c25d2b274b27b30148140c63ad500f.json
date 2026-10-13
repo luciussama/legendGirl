@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "80cab6f8965dacbc215ee754f74af3e035c25d2b274b27b30148140c63ad500f",
+  "path": "qa-execucoes/b46cd11cec4e4b00b86f8b1832c3b9d4/docs/qa/dialogos-normalizados/desktop.png",
+  "sha256": "0450d4371c6c456755654e941d34cab001af92e95d8fc4b8c8ac4de6ea81ef20",
+  "capturedAt": "2026-10-13T19:52:05.955988+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/dialogos-normalizados/desktop.png\", \"sha256\": \"574447fabb2266c239ccd0c9d9ead3b9d8850fec60336d26cb7bc1960cdbc72e\", \"bytes\": 694228, \"binaryRetained\": false}"
+}

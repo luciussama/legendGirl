@@ -271,8 +271,6 @@ export class DialogueRenderer {
     const isPortrait = Boolean(state.isPortrait ?? (canvas.height > canvas.width || (canvas.width > 0 && canvas.height / canvas.width > 0.85)));
 
     const getActivePromptDevice = options.getActivePromptDevice || (() => 'touch');
-    const drawDialoguePortrait = (pCtx, charType, px, py, radius, mood) => this.drawPortrait(pCtx, charType, px, py, radius, mood, tick, options);
-    const wrapDialogueText = (pCtx, text, maxWidth) => this.wrapText(pCtx, text, maxWidth);
 
     const isStandbyShowing = isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);
     // Exibe diálogo apenas quando cutscene estiver ativa, durante standby ou nos passos 4 (Bebê) e 5 (Fada) da reviravolta
@@ -361,8 +359,26 @@ export class DialogueRenderer {
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     }
 
+    this.renderDialogue(ctx, canvas, { speaker, speakerName, speakerColor, mood,
+      text: dialogueText, advancePrompt, tick, isPortrait, emphasis: plotTwistActive }, options);
+    ctx.restore();
+  }
+
+  /** Caixa compartilhada entre fases; a narrativa controla o avanço e os tempos. */
+  renderDialogue(ctx, canvas, dialogue, options = {}) {
+    if (!ctx || !canvas || !dialogue?.text) return;
+    const { speaker = 'fairy', speakerName = 'NANDA', mood = 'normal', tick = 0,
+      speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
+      text: dialogueText, advancePrompt = '', emphasis: plotTwistActive = false,
+      isPortrait = canvas.height > canvas.width || canvas.height / canvas.width > 0.85 } = dialogue;
+    const drawDialoguePortrait = (pCtx, charType, px, py, radius, expression) =>
+      this.drawPortrait(pCtx, charType, px, py, radius, expression, tick, options);
+    const wrapDialogueText = (pCtx, text, maxWidth) => this.wrapText(pCtx, text, maxWidth);
+    ctx.save();
+    ctx.textBaseline = 'alphabetic';
     // 2. Dimensionamento adaptativo do container e quebra de palavras para evitar transbordamento
-    const safe = getDialogueSafeArea(canvas);
+    const safe = { ...getDialogueSafeArea(canvas) };
+    if (Number.isFinite(options.bottom)) safe.bottom = Math.min(safe.bottom, options.bottom);
     const originalBoxW = Math.min(canvas.width - 24, 760);
     const boxW = Math.min(originalBoxW, safe.right - safe.left - 2 * Math.max(12, safe.marginX));
     const boxX = safe.left + (safe.right - safe.left - boxW) / 2;
@@ -391,8 +407,9 @@ export class DialogueRenderer {
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
-    const regions = renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
-    const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor);
+    const regions = options.separateScene === false ? null :
+      renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
+    const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor, options.separateScene === false ? false : undefined);
 
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);

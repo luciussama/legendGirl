@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1717899616588fb6b45ccba9f00f8a808cb6228e2edeae96ee1d32fb0f2e1453",
+  "path": "qa-execucoes/f03854c0c5094544aeb5aba136f800f9/docs/qa/toy-room-arena/desktop-transformacao.png",
+  "sha256": "7050114798584f39e0af9b0d790e430baee0013f422555af83e7784e97e29d05",
+  "capturedAt": "2026-10-13T21:46:05.989097+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-transformacao.png\", \"sha256\": \"61ff8678ec6de2593a24a553a7535b83c4041a08afdbc543f0fe77a6c363ab1e\", \"bytes\": 1163232, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bab14fc94536700a7f9d0f4f66601db36df83dddb94ed864355e1e8d7fd5f76d",
+  "path": "qa-execucoes/52ec809fe7954be3a3e44bebc3f934d0.log",
+  "sha256": "66b9840d9870d695cf6707b572f5095a023c33b4d58b8cae057c0132ccb12388",
+  "capturedAt": "2026-10-13T21:45:48.197421+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:camera",
+    "exitCode": 0,
+    "package": "camera-menina-3eecc9aaf687"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:camera\n> node scripts/test-toy-room-camera-focus.js\n\nAPROVADO: câmera e zoom independentes da fada em três perfis; revelação temporária, retorno à menina e suavização estável.\n"
+}

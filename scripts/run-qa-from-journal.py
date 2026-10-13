@@ -59,7 +59,9 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
         path.parent.mkdir(parents=True, exist_ok=True); path.write_bytes(raw)
     package_path = workspace / 'package.json'
     package = json.loads(package_path.read_text())
-    for name, command in bundle['qaCommands'].items():
+    qa_commands = {}
+    for saved in reversed(packages):qa_commands.update(saved.get('qaCommands',{}))
+    for name, command in qa_commands.items():
         if name == 'test' or name.startswith(('test:','verify:','review:')):
             package['scripts'][name] = command
     command_name = args.command

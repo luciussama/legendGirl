@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T192947-3832fe6137c0",
+  "sessionId": "20261013T192947-3832fe6137c0",
+  "type": "inicio",
+  "date": "2026-10-13T19:29:48.002163+00:00",
+  "title": "Normalizar diálogos da Toy Room com caixa e retrato compartilhados",
+  "actor": "Codex",
+  "branch": "melhorias-hud",
+  "head": "ca47d07d1a0fc0eb8e72a2aca07b4a7a66674603",
+  "workingTree": []
+}

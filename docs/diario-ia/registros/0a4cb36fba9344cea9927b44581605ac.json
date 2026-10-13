@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "0a4cb36fba9344cea9927b44581605ac",
+  "type": "qa",
+  "date": "2026-10-13T19:33:39.826371+00:00",
+  "title": "QA temporário: test:toy-room:arena:browser",
+  "exitCode": 0,
+  "sourceId": "5d62be3821d26fc221c973d5980d0baf944568116f7d65b7b717abc208bda2ee",
+  "package": "20261013T190911-2653321714ec"
+}

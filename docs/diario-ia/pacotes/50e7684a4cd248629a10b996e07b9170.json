@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "50e7684a4cd248629a10b996e07b9170",
+  "date": "2026-10-13T19:48:48.229631+00:00",
+  "title": "QA temporário: test:dialogues:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/50e7684a4cd248629a10b996e07b9170.log",
+      "sourceId": "6d9df2af9364389694b6ff8a29ea79a78990e474dc84257ec4fb62de57c30a3c",
+      "sha256": "3a082ced1805633772fdad1b752be139b96978e67132585998402d81877bb13b",
+      "bytes": 467,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "5d62be3821d26fc221c973d5980d0baf944568116f7d65b7b717abc208bda2ee",
+  "path": "qa-execucoes/0a4cb36fba9344cea9927b44581605ac.log",
+  "sha256": "5e989b3b4140e1ee37258c1da8f9314d8de200ab545f7688b10937d8b57f6e7d",
+  "capturedAt": "2026-10-13T19:33:39.825552+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena:browser\n> node scripts/test-toy-room-arena-browser.js\n\n{\"perfil\":\"desktop\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":960,\"height\":540,\"dt\":1,\"frames\":9659,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":5.699999999254942,\"p95\":8.600000001490116}}\n{\"perfil\":\"android\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":390,\"height\":844,\"dt\":1,\"frames\":9084,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":3,\"p95\":5.400000002235174}}\n{\"perfil\":\"android-paisagem\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":844,\"height\":390,\"dt\":1,\"frames\":8971,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":1437,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":408,\"median\":3.699999999254942,\"p95\":6.100000001490116}}\n"
+}

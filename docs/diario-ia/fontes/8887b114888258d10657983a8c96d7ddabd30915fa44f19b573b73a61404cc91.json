@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8887b114888258d10657983a8c96d7ddabd30915fa44f19b573b73a61404cc91",
+  "path": "qa-execucoes/485a8aa5788944b5834ffc701573b0e9/docs/qa/dialogos-normalizados/desktop.json",
+  "sha256": "6e6654e7a8a668aed489ec8a2eab4085c79df0e2dee6bb67c2d998e60fb0f034",
+  "capturedAt": "2026-10-13T19:49:13.205978+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"portraits\":[\"fairy\",\"baby\"],\"boxes\":[[100,416,760,112,12],[104,420,752,104,8],[100,416,760,112,12],[104,420,752,104,8]],\"controlTop\":376,\"mobile\":false}"
+}

@@ -788,6 +788,7 @@ export class ToyRoomPhase {
       if (this.story.swordEquipped && !this.battle.state && !this.arena?.state.completed) {
         if (this.arena) this.arena.start(); else this.battle.activate();
       }
+      if (!this.arena?.active && !this.battle.state) this.updateCamera(dt);
       return;
     }
 
@@ -972,7 +973,11 @@ export class ToyRoomPhase {
       if (sm.x > this.ROOM_W - 50) sm.x = 50;
     }
 
-    // Rastreamento suave da câmera
+    this.updateCamera(dt);
+  }
+
+  updateCamera(dt) {
+    // Câmera e ampliação compartilham o mesmo alvo, sem influência da guia da fada.
     const cameraTarget = this.story.cameraTarget() || this.player;
     const layout = getMobileUILayout(this.canvas);
     const targetCamX = cameraTarget.x - layout.centerX;
@@ -985,8 +990,27 @@ export class ToyRoomPhase {
     const clampedTargetCamX = Math.max(minCamX, Math.min(maxCamX, targetCamX));
     const clampedTargetCamY = Math.max(minCamY, Math.min(maxCamY, targetCamY));
 
-    this.cameraX += (clampedTargetCamX - this.cameraX) * 0.12 * dt;
-    this.cameraY += (clampedTargetCamY - this.cameraY) * 0.12 * dt;
+    const blend = 1 - Math.pow(0.88, dt);
+    this.cameraX += (clampedTargetCamX - this.cameraX) * blend;
+    this.cameraY += (clampedTargetCamY - this.cameraY) * blend;
+  }
+
+  getCameraFrame() {
+    const target = this.story.cameraTarget() || this.player;
+    const px = target.x - this.cameraX, py = target.y - this.cameraY;
+    const layout = getMobileUILayout(this.canvas);
+    const relativeBounds = {
+      left: px - 100 - layout.safeLeft,
+      right: px + 100 - layout.safeLeft,
+      top: py - 120 - layout.safeTop,
+      bottom: py + 80 - layout.safeTop
+    };
+    const frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
+      width: layout.usableWidth, height: layout.usableHeight,
+      anchor: { x: px - layout.safeLeft, y: py - layout.safeTop }, bounds: relativeBounds });
+    frame.x += layout.safeLeft * (1 - frame.zoom);
+    frame.y += layout.safeTop * (1 - frame.zoom);
+    return frame;
   }
 
   render(options = {}) {
@@ -996,22 +1020,9 @@ export class ToyRoomPhase {
     ctx.save();
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
-    // Transformação da Câmera
+    // Transformação da câmera baseada exclusivamente no alvo vigente.
     ctx.save();
-    const px = this.player.x - this.cameraX, py = this.player.y - this.cameraY;
-    const fx = this.fairy.x - this.cameraX, fy = this.fairy.y - this.cameraY;
-    const layout = getMobileUILayout(this.canvas);
-    const relativeBounds = {
-      left: Math.min(px - 100, fx - 28) - layout.safeLeft,
-      right: Math.max(px + 100, fx + 28) - layout.safeLeft,
-      top: Math.min(py - 120, fy - 28) - layout.safeTop,
-      bottom: Math.max(py + 80, fy + 28) - layout.safeTop
-    };
-    let frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
-      width: layout.usableWidth, height: layout.usableHeight,
-      anchor: { x: px - layout.safeLeft, y: py - layout.safeTop }, bounds: relativeBounds });
-    frame.x += layout.safeLeft * (1 - frame.zoom);
-    frame.y += layout.safeTop * (1 - frame.zoom);
+    let frame = this.getCameraFrame();
     // Retorno visual do panorama ao enquadramento normal, sem tocar na câmera lógica.
     if (options.overviewBlend > 0) {
       const blend = Math.min(1, options.overviewBlend);

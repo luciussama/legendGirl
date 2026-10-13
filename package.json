@@ -45,7 +45,10 @@
     "test:journal": "python3 scripts/run-qa-from-journal.py test:journal",
     "journal:show": "python3 scripts/ai-journal.py show",
     "journal:qa": "python3 scripts/run-qa-from-journal.py",
-    "journal:archive": "python3 scripts/ai-journal.py archive"
+    "journal:archive": "python3 scripts/ai-journal.py archive",
+    "test:dialogues": "python3 scripts/run-qa-from-journal.py test:dialogues",
+    "test:dialogues:browser": "python3 scripts/run-qa-from-journal.py test:dialogues:browser",
+    "test:toy-room:camera": "python3 scripts/run-qa-from-journal.py test:toy-room:camera"
   },
   "dependencies": {
     "express": "^4.21.2",

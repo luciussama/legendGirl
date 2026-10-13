@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "297c3e7e6485329f3231c0b096a6c66c78eb3f005915ebb1201b58cbb9840188",
+  "path": "qa-execucoes/f03854c0c5094544aeb5aba136f800f9/docs/qa/toy-room-arena/desktop-arena-bear-furia.png",
+  "sha256": "db7cbd78a2f24225739eb57ecbcb31fad7f1ed963589ccc679d5eb7fea2a0911",
+  "capturedAt": "2026-10-13T21:46:05.971684+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-bear-furia.png\", \"sha256\": \"0c9ab9cc968fb704df361bca9cf2bfd55d7085fe479c62a78695524ea9cf20fb\", \"bytes\": 1082173, \"binaryRetained\": false}"
+}

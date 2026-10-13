@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "dialogos-browser-2026-10-13T19-34-28.092498+00-00",
+  "date": "2026-10-13T19:34:28.092501+00:00",
+  "title": "Diálogos responsivos com retratos e controles preservados",
+  "files": [
+    {
+      "path": "scripts/test-normalized-dialogues-browser.js",
+      "sourceId": "c0abdb0b6131494d166bc8a8407aa2193ccddc49e1d462307ddade30039bfedd",
+      "sha256": "5072e9864ff55ce31e18f82284c2f85390c9df8f5648e82071de5138e9477243",
+      "bytes": 3670,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogues:browser": "node scripts/test-normalized-dialogues-browser.js"
+  }
+}
