@@ -1,3 +1,4 @@
+import { beginArenaPlayerAttack, updateArenaPlayerAnimation } from './ArenaPlayerAnimation.js';
 import { arenaEnemyContact } from './ArenaCombatContact.js';
 import { ArenaBoss } from './ArenaBoss.js';
 import { ARENA_ENEMIES, renderArenaEnemyPresence } from './ArenaEnemies.js';
@@ -48,6 +49,13 @@ export class ToyRoomArenaPhase {
     this.battle.tuning = ARENA_TUNING;
     this.battle.playerController = new ArenaPlayerController();
     this.battle.presentation = {
+      updateAnimation: dt => {
+        const state=this.battle.state;
+        if(updateArenaPlayerAnimation(state,this.room.player,dt)) {
+          const direction=state.playerAnimation.attackDirection;
+          this.fx.emit('trail',this.room.player.x+direction*165,state.crouching?640:590);
+        }
+      },
       enemyContact: arenaEnemyContact,
       enemies: ARENA_ENEMIES,
       renderEnemyPresence: renderArenaEnemyPresence,
@@ -55,7 +63,8 @@ export class ToyRoomArenaPhase {
       cameraFrame: layout => this.camera.frame(layout, this.room, this.battle.state),
       onSound: sound => {
         this.audioProfile.sound(sound);
-        const kind = sound === 'player_jump' ? 'jump' : sound === 'player_land' ? 'land' : sound === 'player_attack' ? 'trail' : null;
+        if(sound==='player_attack')beginArenaPlayerAttack(this.battle.state,this.room.story.state.attackDirection);
+        const kind = sound === 'player_jump' ? 'jump' : sound === 'player_land' ? 'land' : null;
         if (kind) this.fx.emit(kind, this.room.player.x, kind === 'trail' ? 580 : 680, kind === 'land');
       },
       onImpact: (x, y, heavy) => this.fx.emit('impact', x, y, heavy),

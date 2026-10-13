@@ -36,7 +36,7 @@ try {
       room.render();const exploration=runToyRoomQA(room,{draw:true});
       const start=room.snapshot();while(room.battle.state.transition)room.update();
       room.keysDown={ArrowUp:true};room.update();room.keysDown={};for(let i=0;i<20;i++)room.update();room.render();shots.salto=room.canvas.toDataURL().split(',')[1];
-      room.restore(start);while(room.battle.state.transition)room.update();room.keysDown={ArrowDown:true};room.update();room.render();shots.agachamento=room.canvas.toDataURL().split(',')[1];room.restore(start);
+      room.restore(start);while(room.battle.state.transition)room.update();room.keysDown={ArrowDown:true};room.update();room.render();shots['agachamento-entrada']=room.canvas.toDataURL().split(',')[1];for(let i=0;i<8;i++)room.update();room.render();shots.agachamento=room.canvas.toDataURL().split(',')[1];room.restore(start);
       const battle=runBattleGameplay(room,{draw:true,restore:true});room.render();shots.vitoria=room.canvas.toDataURL().split(',')[1];
       for(let i=0;i<400;i++){room.update();if(i%15===0)room.render();}room.render();shots.final=room.canvas.toDataURL().split(',')[1];
       if(!room.arena.state.completed||room.battle.state||!room.story.state.arenaCompleted)throw Error('Retorno não concluiu.');

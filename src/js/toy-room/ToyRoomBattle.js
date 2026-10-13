@@ -212,6 +212,7 @@ export class ToyRoomBattle {
       } else {
         const step = Math.min(1, remaining);
         this.step(step);
+        this.presentation?.updateAnimation?.(step);
         remaining -= step;
       }
     }

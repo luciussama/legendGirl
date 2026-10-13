@@ -98,7 +98,7 @@ assert.ok(effects.particles.length<=80,'Orçamento de partículas limitado.');
 const savedFX=effects.snapshot();const fxCopy=new ImpactFX();fxCopy.restore(savedFX);assert.deepEqual(fxCopy.snapshot(),savedFX);
 effects.update(60);assert.equal(effects.particles.length,0);assert.equal(effects.flash,0);
 hero.arena.fx.particles=[];hero.keysDown={};hero.battle.state.cooldown=0;hero.story.state.attackElapsed=0;
-hero.triggerAction();assert.ok(hero.arena.fx.particles.some(p=>p.kind==='trail'),'Ataque real emite trilha.');
+hero.triggerAction();for(let i=0;i<4;i++)hero.update();assert.ok(hero.arena.fx.particles.some(p=>p.kind==='trail'),'Corte real emite trilha na fase ativa.');
 console.log('APROVADO: efeitos sincronizados, persistentes e com orçamento limitado.');
 
 const audioEvents=[];const profile=new ArenaAudioProfile({setToyRoomMusicFade:v=>audioEvents.push(['fade',v]),playCombatSound:s=>audioEvents.push(['son',s]),stopToyRoomMusic:()=>audioEvents.push(['stop']),startToyRoomMusic:()=>audioEvents.push(['theme']),playArenaMusicBeat:b=>audioEvents.push(['beat',b]),stopArenaMusic:()=>audioEvents.push(['silence'])});

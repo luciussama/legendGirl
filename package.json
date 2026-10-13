@@ -25,8 +25,10 @@
     "test:battle:polish": "node scripts/test-combat-impact.js && node scripts/test-battle-polish.js && node scripts/test-train-drive.js && node scripts/verify-battle-sprites.js --remediation && npm run test:toy-room:battle",
     "review:battle:fairness": "node scripts/review-battle-fairness.js --write",
     "test:battle:fairness": "node scripts/test-rocket-fairness.js && node scripts/test-laser-fairness.js && node scripts/review-battle-pose-fairness.js --strict && node scripts/review-battle-fairness.js --strict",
-    "test:toy-room:arena": "node scripts/test-toy-room-arena.js",
-    "test:toy-room:arena:browser": "node scripts/test-toy-room-arena-browser.js"
+    "test:toy-room:arena": "node scripts/test-toy-room-arena.js && npm run test:arena:animation",
+    "test:toy-room:arena:browser": "node scripts/test-toy-room-arena-browser.js",
+    "test:arena:animation": "node scripts/test-arena-player-animation.js",
+    "review:arena:animation": "node scripts/review-arena-player-animation-browser.js"
   },
   "dependencies": {
     "express": "^4.21.2",
