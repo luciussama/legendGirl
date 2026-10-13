@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T192148-d6b111339519-fim",
+  "sessionId": "20261013T192148-d6b111339519",
+  "type": "fim",
+  "date": "2026-10-13T19:23:54.104692+00:00",
+  "title": "Integrar refator na main e excluir branch local e remota",
+  "actor": "Codex",
+  "summary": "Refator integrado à main por fast-forward. Main remota conferida com git ls-remote; commits do refactor são ancestrais do HEAD. Branch refator excluída localmente e em origin. Um commit adicional de diário foi observado durante a operação e preservado; não houve descarte de trabalho concorrente.",
+  "checks": [
+    "npm run build: aprovado",
+    "npm run check-assets: 66 recursos aprovados",
+    "git merge-base --is-ancestor 9e5b30c HEAD: aprovado",
+    "git ls-remote: main publicada e refator ausente"
+  ],
+  "pending": [],
+  "files": [
+    "docs/diario-ia/registros/20261013T192148-d6b111339519-fim.json"
+  ]
+}
