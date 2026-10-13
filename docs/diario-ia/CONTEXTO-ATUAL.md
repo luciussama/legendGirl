@@ -46,6 +46,10 @@ O acervo foi inicializado com documentos atuais, instruções, prompts, evidênc
 
 Mude este contexto quando houver nova decisão vigente, mudança de arquitetura ou pendência relevante. Registre evidências e limites, sincronize o acervo e encerre a sessão. Evite copiar relatos extensos para este resumo: preserve a fonte e a referência no banco.
 
+## Foco da câmera na Toy Room
+
+Por orientação do responsável, a câmera acompanha a menina durante a exploração e as falas. A única exceção é o trecho de revelação da espada na investigação: acompanha temporariamente a fada e retorna à menina já na fala seguinte. A guia da fada para brinquedos e espada não influencia o zoom nem a translação de apresentação no Android. `ToyRoomPhase.updateCamera` e `getCameraFrame` usam o alvo único de `ToyRoomStory.cameraTarget`; a investigação não escreve diretamente na câmera. O viewport usado pela recorrência reutiliza o mesmo enquadramento da apresentação.
+
 ## Política vigente de relatórios e QA
 
 Por instrução do responsável, relatórios de máquina, testes, fixtures, evidências e homologações não permanecem como arquivos externos no projeto. Texto e código ficam integralmente no acervo; imagens de evidência ficam registradas por caminho, hash e tamanho, sem conservar o bitmap descartável. Os 718 alvos foram verificados antes de apagar. Artes efetivamente usadas pelo jogo foram preservadas.

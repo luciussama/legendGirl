@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "143715a095eba4010ccb5d1e7c397a65468e6452acfd4b3d6979dfe07aced594",
+  "path": "qa-execucoes/d1206fd10bdd41009cf18ac3ce63d98b/docs/qa/toy-room-arena/android-realidade.png",
+  "sha256": "1964d2fa7a03d97e024797981c1ccdc115285626f22bcdcdd28a71706e6cb985",
+  "capturedAt": "2026-10-13T19:51:43.674009+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-realidade.png\", \"sha256\": \"155bbf0775d04b3b252325bd6acdc642c9ceb0b2d12582115f9ebcfa3ebcf314\", \"bytes\": 242870, \"binaryRetained\": false}"
+}

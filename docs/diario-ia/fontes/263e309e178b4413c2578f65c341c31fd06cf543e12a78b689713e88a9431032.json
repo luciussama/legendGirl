@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "263e309e178b4413c2578f65c341c31fd06cf543e12a78b689713e88a9431032",
+  "path": "qa-execucoes/f03854c0c5094544aeb5aba136f800f9/docs/qa/toy-room-arena/desktop-arena-train-movimento.png",
+  "sha256": "0746fac1f26335746ba97701ea743e434ec08d63e43bb6857464134642240c96",
+  "capturedAt": "2026-10-13T21:46:05.982129+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-train-movimento.png\", \"sha256\": \"6f95bd5e11925672827f457f18e9de20dc7e63de319e9057e9a85a95e81c2d47\", \"bytes\": 1115808, \"binaryRetained\": false}"
+}

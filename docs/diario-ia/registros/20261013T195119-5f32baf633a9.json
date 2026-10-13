@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261013T195119-5f32baf633a9",
+  "sessionId": "20261013T195119-5f32baf633a9",
+  "type": "inicio",
+  "date": "2026-10-13T19:51:19.090041+00:00",
+  "title": "Executar gameplay e avaliar progressão e apresentação",
+  "actor": "Codex",
+  "branch": "melhorias-hud",
+  "head": "e4e02f249bac627cf83f07460b13192d876c9fc0",
+  "workingTree": [
+    "?? docs/diario-ia/fontes/18d42389851a0689da9c9ee519c9d141f5bae2e947834ea81ed0cefed4ab824e.json",
+    "?? docs/diario-ia/fontes/4603ddeb4c5e222f16414bf42eb159656f7da9c2627e30d45781ed2ba743178e.json",
+    "?? docs/diario-ia/fontes/5b6e595d92b7119290e14d6866d37eb7437a15de2157f60c1a5643d7e9ed1624.json",
+    "?? docs/diario-ia/fontes/6d9df2af9364389694b6ff8a29ea79a78990e474dc84257ec4fb62de57c30a3c.json",
+    "?? docs/diario-ia/fontes/8887b114888258d10657983a8c96d7ddabd30915fa44f19b573b73a61404cc91.json",
+    "?? docs/diario-ia/fontes/937cc0b94a7260a60b6485633831dcfee4ba0e705602546593403aa9f15f666f.json",
+    "?? docs/diario-ia/fontes/9f785e84d215971671f610d393788049f027083b2791fb2c64855c314b884c25.json",
+    "?? docs/diario-ia/fontes/bcd3fd4641ce30657430610195740ce4b0326e6832bbfcf72b0df77067579d8a.json",
+    "?? docs/diario-ia/fontes/c629101a291e570017d560584f6d5ac76c37065f1a09bc8e5dcab0d084f877c9.json",
+    "?? docs/diario-ia/fontes/ec03d26a76dd356c71cff56c27eda47ceb3226f2e127c97e213b2463c486ad17.json",
+    "?? docs/diario-ia/fontes/ecff26f37a95635d0ce73b7328bff65812cd2e5ef9b841c3c51bdf4606ea31b3.json",
+    "?? docs/diario-ia/pacotes/485a8aa5788944b5834ffc701573b0e9.json",
+    "?? docs/diario-ia/pacotes/50e7684a4cd248629a10b996e07b9170.json",
+    "?? docs/diario-ia/pacotes/888d0c518ec64e31bfd66d98512ac350.json",
+    "?? docs/diario-ia/registros/20261013T192947-3832fe6137c0-fim.json",
+    "?? docs/diario-ia/registros/20261013T194825-073cab09546f-fim.json",
+    "?? docs/diario-ia/registros/20261013T194825-073cab09546f.json",
+    "?? docs/diario-ia/registros/485a8aa5788944b5834ffc701573b0e9.json",
+    "?? docs/diario-ia/registros/50e7684a4cd248629a10b996e07b9170.json",
+    "?? docs/diario-ia/registros/888d0c518ec64e31bfd66d98512ac350.json"
+  ]
+}

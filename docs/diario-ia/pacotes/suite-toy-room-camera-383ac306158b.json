@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "suite-toy-room-camera-383ac306158b",
+  "date": "2026-10-13T21:46:17.787342+00:00",
+  "title": "Suíte com regressão do foco da câmera da Toy Room",
+  "files": [],
+  "qaCommands": {
+    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js && npm run test:difficulty && npm run test:mobile-ui && npm run test:toy-room:facing && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:battle && npm run test:toy-room:arena && npm run test:sprite-review && npm run test:current-art && npm run test:journal && npm run test:dialogues && npm run test:toy-room:camera"
+  }
+}

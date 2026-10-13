@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "52ec809fe7954be3a3e44bebc3f934d0",
+  "type": "qa",
+  "date": "2026-10-13T21:45:48.198047+00:00",
+  "title": "QA temporário: test:toy-room:camera",
+  "exitCode": 0,
+  "sourceId": "bab14fc94536700a7f9d0f4f66601db36df83dddb94ed864355e1e8d7fd5f76d",
+  "package": "camera-menina-3eecc9aaf687"
+}
