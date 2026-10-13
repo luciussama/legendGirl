@@ -55,13 +55,9 @@ export class AssetManager {
       const image = new Image();
       image.onload = () => {
         try {
-          const processedImage = key === 'toy-room-player-sheet'
-            ? this.removeSolidBackground(image)
-            : key === 'toy-room-environment-sheet'
-              ? this.removeSolidBackground(image, 'dark')
-            : key === 'toy-room-player-back-sheet'
-              ? this.normalizeCharacterPalette(image)
-              : image;
+          const processedImage = key === 'toy-room-environment-sheet'
+            ? this.removeSolidBackground(image, 'dark')
+            : image;
           this.images.set(key, processedImage);
           this.statuses.set(key, 'ready');
           resolve(processedImage);

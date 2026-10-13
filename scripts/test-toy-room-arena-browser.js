@@ -53,7 +53,7 @@ try {
   for(const [name,data]of Object.entries(result.shots))await fs.writeFile(`${output}/${profile}-${name}.png`,Buffer.from(data,'base64'));delete result.shots;
   assert.equal(result.returned,true);assert.ok(result.sources.some(path=>path.includes('/girl/runtime/')),'Quadros detalhados realmente desenhados.');
   assert.equal(result.resources.filter(([,status])=>status!=='ready').length,0,'Sem recursos ausentes.');
-  assert.equal(exceptions.length,0,'Sem exceções JavaScript.');assert.equal(failedRequests.filter(r=>!r.url.endsWith('/favicon.ico')).length,0,'Sem falhas HTTP de recursos.');
+  assert.equal(exceptions.length,0,'Sem exceções JavaScript: '+JSON.stringify(exceptions));assert.equal(failedRequests.filter(r=>!r.url.endsWith('/favicon.ico')).length,0,'Sem falhas HTTP de recursos.');
   result.exceptions=exceptions;result.failedRequests=failedRequests;
   await fs.writeFile(`${output}/${profile}.json`,JSON.stringify(result,null,2)+'\n');
   console.log(JSON.stringify({perfil:profile,exploracao:result.exploration,combate:result.battle,retorno:result.returned,render:result.performance}));

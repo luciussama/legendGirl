@@ -35,12 +35,6 @@ export class ToyRoomEntities {
       return;
     }
 
-    const fairyImage = options.assets && options.assets.get('toy-room-fairy');
-    if (fairyImage) {
-      ctx.drawImage(fairyImage, fairy.x - 30, fairy.y - 30, 60, 60);
-      return;
-    }
-
     ctx.save();
     const fx = fairy.x;
     const fy = fairy.y;

@@ -105,57 +105,6 @@ export class FairyRenderer {
       // A estrela ocupa aproximadamente 95% da largura e 46% da altura do recorte.
       wandX = fx + width * 0.45;
       wandY = fy - height * 0.04;
-    } else {
-      // Preserva a apresentação anterior se o recurso ilustrado estiver indisponível.
-      // Asas com batimento dinâmico rápido vinculado à velocidade
-      const flutterSpeed = 0.35 + Math.hypot(fairy.vx, fairy.vy) * 0.15;
-      const wingFlap = Math.sin(fairy.flutterPhase) * 10;
-
-      // Asas translúcidas delicadas
-      ctx.fillStyle = 'rgba(6, 182, 212, 0.85)';
-      ctx.beginPath();
-      // Asas superiores
-      ctx.ellipse(fx - 4, fy - 6, 9, 3.5 + Math.abs(wingFlap), -0.4, 0, Math.PI * 2);
-      ctx.ellipse(fx + 4, fy - 6, 9, 3.5 + Math.abs(wingFlap), 0.4, 0, Math.PI * 2);
-      // Asas secundárias inferiores
-      ctx.ellipse(fx - 5, fy + 3, 6, 2.2 + Math.abs(wingFlap) * 0.7, 0.35, 0, Math.PI * 2);
-      ctx.ellipse(fx + 5, fy + 3, 6, 2.2 + Math.abs(wingFlap) * 0.7, -0.35, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Brilhos na ponta das asas
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(fx - 9, fy - 7 - Math.abs(wingFlap) * 0.5, 1.4, 0, Math.PI * 2);
-      ctx.arc(fx + 9, fy - 7 - Math.abs(wingFlap) * 0.5, 1.4, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Cabeça brilhante dourada da fada
-      ctx.fillStyle = '#fef08a';
-      ctx.beginPath();
-      ctx.arc(fx, fy - 3, 4.8, 0, Math.PI * 2);
-      ctx.fill();
-
-      // Vestido / túnica da fada
-      ctx.fillStyle = '#ec4899';
-      ctx.beginPath();
-      ctx.moveTo(fx, fy - 1);
-      ctx.lineTo(fx + 5, fy + 9);
-      ctx.lineTo(fx - 5, fy + 9);
-      ctx.closePath();
-      ctx.fill();
-
-      // Varinha mágica diminuta apontando à frente
-      ctx.strokeStyle = '#fde047';
-      ctx.lineWidth = 1.2;
-      ctx.beginPath();
-      ctx.moveTo(fx + 3, fy + 3);
-      ctx.lineTo(fx + 11, fy + 1);
-      ctx.stroke();
-      // Estrela na ponta da varinha
-      ctx.fillStyle = '#ffffff';
-      ctx.beginPath();
-      ctx.arc(fx + 12, fy + 1, 1.8, 0, Math.PI * 2);
-      ctx.fill();
     }
 
     // Etapa 1 da Cinemática: Faíscas de curiosidade investigativa e ponto de interrogação

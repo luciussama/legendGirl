@@ -1,3 +1,4 @@
+import { drawCurrentScenery } from '../assets/currentScenery.js';
 import { NIGHT_WINDOWS } from './nightWindows.js';
 /**
  * BackgroundRenderer.js
@@ -539,29 +540,14 @@ export class BackgroundRenderer {
       ctx.save();
 
       // 1. Tenta desenhar com o sprite do atlas de arte do dark-room
-      if (this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
+      if (drawCurrentScenery(ctx, assets, item.type, sx, FLOOR_Y) ||
+          this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
         ctx.restore();
         return;
       }
 
       // 2. Alternativa procedural
       switch (item.type) {
-        case 'fluffy_rug': {
-          // Grande tapete mandala pastel redondo no chão
-          ctx.fillStyle = '#4a2840';
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y + 18, 55, 16, 0, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.strokeStyle = '#9d4edd';
-          ctx.lineWidth = 1.8;
-          ctx.stroke();
-          ctx.fillStyle = '#7b2cbf';
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y + 18, 38, 10, 0, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-        }
-
         case 'striped_rug': {
           // Passadeira oval listrada
           ctx.fillStyle = '#1e293b';
@@ -575,276 +561,6 @@ export class BackgroundRenderer {
           ctx.beginPath();
           ctx.ellipse(sx, FLOOR_Y + 20, 42, 10, 0, 0, Math.PI * 2);
           ctx.stroke();
-          break;
-        }
-
-        case 'dropped_sweater': {
-          // Suéter infantil de tricô macio e quentinho jogado
-          ctx.fillStyle = '#ec4899';
-          ctx.strokeStyle = '#9d174d';
-          ctx.lineWidth = 1.2;
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y - 9, 16, 9, 0.15, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.stroke();
-          // Mangas amassadas
-          ctx.beginPath();
-          ctx.ellipse(sx - 14, FLOOR_Y - 5, 8, 4.5, -0.4, 0, Math.PI * 2);
-          ctx.ellipse(sx + 14, FLOOR_Y - 6, 8, 4.5, 0.4, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.stroke();
-          // Botõezinhos
-          ctx.fillStyle = '#fef08a';
-          ctx.fillRect(sx - 1, FLOOR_Y - 12, 2, 2);
-          ctx.fillRect(sx - 1, FLOOR_Y - 7, 2, 2);
-          break;
-        }
-
-        case 'striped_socks': {
-          // Par de meias infantis coloridas jogadas no chão
-          ctx.fillStyle = '#06b6d4';
-          ctx.beginPath();
-          ctx.roundRect(sx - 8, FLOOR_Y - 6, 14, 6, 3);
-          ctx.roundRect(sx + 6, FLOOR_Y - 8, 12, 6, 3);
-          ctx.fill();
-          // Listras
-          ctx.fillStyle = '#facc15';
-          ctx.fillRect(sx - 4, FLOOR_Y - 6, 3, 6);
-          ctx.fillRect(sx + 10, FLOOR_Y - 8, 3, 6);
-          break;
-        }
-
-        case 'spilled_crayons': {
-          // Caixa de giz de cera tombada com gizes rolando e rabiscos
-          // Rabisco de giz de cera no chão
-          ctx.strokeStyle = 'rgba(239, 68, 68, 0.45)';
-          ctx.lineWidth = 2;
-          ctx.beginPath();
-          ctx.moveTo(sx - 20, FLOOR_Y - 2);
-          ctx.lineTo(sx - 8, FLOOR_Y - 4);
-          ctx.lineTo(sx + 12, FLOOR_Y - 1);
-          ctx.stroke();
-
-          // Caixa amarela
-          ctx.fillStyle = '#eab308';
-          ctx.strokeStyle = '#854d0e';
-          ctx.lineWidth = 1;
-          ctx.fillRect(sx - 18, FLOOR_Y - 14, 18, 12);
-          ctx.strokeRect(sx - 18, FLOOR_Y - 14, 18, 12);
-          ctx.fillStyle = '#1e3a8a';
-          ctx.fillRect(sx - 18, FLOOR_Y - 10, 18, 3);
-
-          // Gizes de cera individuais rolando pelo chão
-          const crayonColors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b'];
-          crayonColors.forEach((col, idx) => {
-            ctx.fillStyle = col;
-            ctx.fillRect(sx + 2 + idx * 7, FLOOR_Y - 4, 10, 3);
-            ctx.beginPath();
-            ctx.moveTo(sx + 12 + idx * 7, FLOOR_Y - 4);
-            ctx.lineTo(sx + 14 + idx * 7, FLOOR_Y - 2.5);
-            ctx.lineTo(sx + 12 + idx * 7, FLOOR_Y - 1);
-            ctx.fill();
-          });
-          break;
-        }
-
-        case 'paper_airplane': {
-          // Aviãozinho de papel branco pousado de bico
-          ctx.fillStyle = '#f8fafc';
-          ctx.strokeStyle = '#94a3b8';
-          ctx.lineWidth = 1;
-          ctx.beginPath();
-          ctx.moveTo(sx - 12, FLOOR_Y - 10);
-          ctx.lineTo(sx + 8, FLOOR_Y - 2);
-          ctx.lineTo(sx - 4, FLOOR_Y - 12);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-          ctx.beginPath();
-          ctx.moveTo(sx - 10, FLOOR_Y - 6);
-          ctx.lineTo(sx + 8, FLOOR_Y - 2);
-          ctx.lineTo(sx - 4, FLOOR_Y - 12);
-          ctx.closePath();
-          ctx.fill();
-          ctx.stroke();
-          break;
-        }
-
-        case 'toy_car': {
-          // Carro de corrida retrô de madeira vermelho
-          ctx.fillStyle = '#dc2626';
-          ctx.beginPath();
-          ctx.roundRect(sx - 14, FLOOR_Y - 12, 28, 9, [4, 4, 2, 2]);
-          ctx.fill();
-          ctx.fillStyle = '#fef08a';
-          ctx.beginPath();
-          ctx.arc(sx, FLOOR_Y - 8, 4, 0, Math.PI * 2);
-          ctx.fill();
-          // Rodas de madeira pretas
-          ctx.fillStyle = '#18181b';
-          ctx.beginPath();
-          ctx.arc(sx - 8, FLOOR_Y - 3, 4, 0, Math.PI * 2);
-          ctx.arc(sx + 8, FLOOR_Y - 3, 4, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-        }
-
-        case 'scattered_blocks': {
-          // Blocos de madeira com letras espalhados
-          const blocks = [
-            { x: sx - 10, y: FLOOR_Y - 14, col: '#ef4444', letter: 'A' },
-            { x: sx + 4, y: FLOOR_Y - 12, col: '#3b82f6', letter: 'B' },
-            { x: sx - 2, y: FLOOR_Y - 24, col: '#eab308', letter: 'C' }
-          ];
-          blocks.forEach(b => {
-            ctx.fillStyle = b.col;
-            ctx.strokeStyle = '#000000';
-            ctx.lineWidth = 1;
-            ctx.fillRect(b.x, b.y, 12, 12);
-            ctx.strokeRect(b.x, b.y, 12, 12);
-            ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 9px sans-serif';
-            ctx.fillText(b.letter, b.x + 2, b.y + 9);
-          });
-          break;
-        }
-
-        case 'cardboard_box_floor': {
-          // Caixa de papelão aberta no chão com bichinhos de pelúcia espiando
-          ctx.fillStyle = '#926038';
-          ctx.strokeStyle = '#5f3c1f';
-          ctx.lineWidth = 1.4;
-          ctx.fillRect(sx - 20, FLOOR_Y - 26, 40, 26);
-          ctx.strokeRect(sx - 20, FLOOR_Y - 26, 40, 26);
-          // Abas abertas
-          ctx.beginPath();
-          ctx.moveTo(sx - 20, FLOOR_Y - 26);
-          ctx.lineTo(sx - 28, FLOOR_Y - 34);
-          ctx.lineTo(sx - 10, FLOOR_Y - 26);
-          ctx.moveTo(sx + 20, FLOOR_Y - 26);
-          ctx.lineTo(sx + 28, FLOOR_Y - 34);
-          ctx.lineTo(sx + 10, FLOOR_Y - 26);
-          ctx.stroke();
-          // Cabecinha fofa de ursinho de pelúcia dentro
-          ctx.fillStyle = '#b45309';
-          ctx.beginPath();
-          ctx.arc(sx, FLOOR_Y - 28, 8, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.arc(sx - 6, FLOOR_Y - 34, 3.5, 0, Math.PI * 2);
-          ctx.arc(sx + 6, FLOOR_Y - 34, 3.5, 0, Math.PI * 2);
-          ctx.fill();
-          // Fita com etiqueta
-          ctx.fillStyle = '#fef08a';
-          ctx.fillRect(sx - 12, FLOOR_Y - 16, 24, 7);
-          ctx.fillStyle = '#1e1b4b';
-          ctx.font = '6px sans-serif';
-          ctx.fillText('BRINQUEDOS', sx - 11, FLOOR_Y - 11);
-          break;
-        }
-
-        case 'dinosaur_felt': {
-          // Dinossaurinho de brinquedo de feltro verde
-          ctx.fillStyle = '#16a34a';
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y - 10, 14, 9, 0, 0, Math.PI * 2);
-          ctx.fill();
-          // Pescoço e cabeça
-          ctx.beginPath();
-          ctx.moveTo(sx + 8, FLOOR_Y - 12);
-          ctx.lineTo(sx + 14, FLOOR_Y - 24);
-          ctx.arc(sx + 16, FLOOR_Y - 24, 4, 0, Math.PI * 2);
-          ctx.lineTo(sx + 10, FLOOR_Y - 8);
-          ctx.fill();
-          // Espinhos amarelos no dorso
-          ctx.fillStyle = '#facc15';
-          for (let s = 0; s < 4; s++) {
-            ctx.beginPath();
-            ctx.moveTo(sx - 8 + s * 5, FLOOR_Y - 16);
-            ctx.lineTo(sx - 6 + s * 5, FLOOR_Y - 21);
-            ctx.lineTo(sx - 4 + s * 5, FLOOR_Y - 16);
-            ctx.fill();
-          }
-          break;
-        }
-
-        case 'slinky': {
-          // Mola maluca espiral arco-íris esticada no chão
-          const slinkyColors = ['#ef4444', '#f97316', '#eab308', '#22c55e', '#06b6d4', '#8b5cf6'];
-          ctx.lineWidth = 1.8;
-          for (let i = 0; i < 10; i++) {
-            ctx.strokeStyle = slinkyColors[i % slinkyColors.length];
-            ctx.beginPath();
-            ctx.ellipse(sx - 18 + i * 4, FLOOR_Y - 9, 3.5, 9, 0.2, 0, Math.PI * 2);
-            ctx.stroke();
-          }
-          break;
-        }
-
-        case 'wooden_spinning_top': {
-          // Pião de madeira colorido com cordão enrolado
-          ctx.fillStyle = '#e11d48';
-          ctx.beginPath();
-          ctx.moveTo(sx - 9, FLOOR_Y - 18);
-          ctx.lineTo(sx + 9, FLOOR_Y - 18);
-          ctx.lineTo(sx, FLOOR_Y - 3);
-          ctx.closePath();
-          ctx.fill();
-          ctx.fillStyle = '#06b6d4';
-          ctx.fillRect(sx - 9, FLOOR_Y - 18, 18, 4);
-          ctx.fillStyle = '#facc15';
-          ctx.fillRect(sx - 2, FLOOR_Y - 24, 4, 6);
-          break;
-        }
-
-        case 'plush_bunny': {
-          // Coelhinho de pelúcia fofo com orelhas caídas
-          ctx.fillStyle = '#f1f5f9';
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y - 10, 11, 9, 0, 0, Math.PI * 2);
-          ctx.arc(sx + 8, FLOOR_Y - 18, 7, 0, Math.PI * 2);
-          ctx.fill();
-          // Orelha longa caída
-          ctx.fillStyle = '#fed7aa';
-          ctx.beginPath();
-          ctx.ellipse(sx + 4, FLOOR_Y - 27, 3, 8, -0.3, 0, Math.PI * 2);
-          ctx.fill();
-          // Olho e narizinho cor-de-rosa
-          ctx.fillStyle = '#db2777';
-          ctx.beginPath();
-          ctx.arc(sx + 14, FLOOR_Y - 18, 1.5, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-        }
-
-        case 'puzzle_pieces': {
-          // Peças de quebra-cabeça espalhadas
-          const pCols = ['#3b82f6', '#ec4899', '#10b981', '#f59e0b'];
-          pCols.forEach((col, i) => {
-            ctx.fillStyle = col;
-            ctx.fillRect(sx - 12 + i * 8, FLOOR_Y - 5, 6, 5);
-            ctx.beginPath();
-            ctx.arc(sx - 9 + i * 8, FLOOR_Y - 5, 2, 0, Math.PI * 2);
-            ctx.fill();
-          });
-          break;
-        }
-
-        case 'toy_train': {
-          // Locomotiva de madeira clássica de brinquedo
-          ctx.fillStyle = '#1d4ed8';
-          ctx.fillRect(sx - 14, FLOOR_Y - 16, 22, 12);
-          ctx.fillStyle = '#dc2626';
-          ctx.fillRect(sx + 8, FLOOR_Y - 22, 10, 18);
-          // Chaminé
-          ctx.fillStyle = '#eab308';
-          ctx.fillRect(sx - 10, FLOOR_Y - 22, 5, 7);
-          // Rodas
-          ctx.fillStyle = '#18181b';
-          ctx.beginPath();
-          ctx.arc(sx - 6, FLOOR_Y - 4, 4, 0, Math.PI * 2);
-          ctx.arc(sx + 4, FLOOR_Y - 4, 4, 0, Math.PI * 2);
-          ctx.arc(sx + 13, FLOOR_Y - 4, 4, 0, Math.PI * 2);
-          ctx.fill();
           break;
         }
 
@@ -892,21 +608,6 @@ export class BackgroundRenderer {
           break;
         }
 
-        case 'toy_soldier': {
-          // Soldadinho de chumbo com casaca vermelha e barretina alta
-          ctx.fillStyle = '#1e1b4b'; // barretina alta
-          ctx.fillRect(sx - 3, FLOOR_Y - 32, 6, 12);
-          ctx.fillStyle = '#fed7aa'; // rosto
-          ctx.fillRect(sx - 3, FLOOR_Y - 20, 6, 5);
-          ctx.fillStyle = '#dc2626'; // casaca
-          ctx.fillRect(sx - 4, FLOOR_Y - 15, 8, 8);
-          ctx.fillStyle = '#facc15'; // cinto
-          ctx.fillRect(sx - 4, FLOOR_Y - 11, 8, 2);
-          ctx.fillStyle = '#1e293b'; // botas
-          ctx.fillRect(sx - 3, FLOOR_Y - 7, 6, 7);
-          break;
-        }
-
         case 'retro_robot': {
           // Robô de lata retrô verde com chave de corda e antena
           ctx.fillStyle = '#0d9488';
@@ -925,32 +626,6 @@ export class BackgroundRenderer {
           ctx.fillStyle = '#ef4444';
           ctx.beginPath();
           ctx.arc(sx, FLOOR_Y - 31, 2.5, 0, Math.PI * 2);
-          ctx.fill();
-          break;
-        }
-
-        case 'jack_in_box': {
-          // Palhaço da caixa de surpresa
-          ctx.fillStyle = '#8b5cf6';
-          ctx.fillRect(sx - 12, FLOOR_Y - 20, 24, 20);
-          ctx.strokeStyle = '#facc15';
-          ctx.lineWidth = 1.2;
-          ctx.strokeRect(sx - 12, FLOOR_Y - 20, 24, 20);
-          // Mola
-          ctx.strokeStyle = '#94a3b8';
-          ctx.beginPath();
-          for (let s = 0; s < 4; s++) {
-            ctx.lineTo(sx + (s % 2 === 0 ? -6 : 6), FLOOR_Y - 20 - s * 5);
-          }
-          ctx.stroke();
-          // Cabeça do palhaço
-          ctx.fillStyle = '#fdf4ff';
-          ctx.beginPath();
-          ctx.arc(sx, FLOOR_Y - 44, 7, 0, Math.PI * 2);
-          ctx.fill();
-          ctx.fillStyle = '#ef4444';
-          ctx.beginPath();
-          ctx.arc(sx, FLOOR_Y - 43, 2, 0, Math.PI * 2);
           ctx.fill();
           break;
         }
@@ -1015,29 +690,6 @@ export class BackgroundRenderer {
           ctx.fillRect(sx - 14, FLOOR_Y - 4, 28, 4);
           ctx.fillStyle = '#3b82f6';
           ctx.fillRect(sx - 10, FLOOR_Y - 20, 20, 16);
-          break;
-        }
-
-        case 'wooden_horse': {
-          // Cavalinho de pau / balanço no chão
-          ctx.fillStyle = '#b45309';
-          ctx.beginPath();
-          ctx.ellipse(sx, FLOOR_Y - 18, 16, 9, 0, 0, Math.PI * 2);
-          ctx.fill();
-          // Cabeça do cavalo
-          ctx.beginPath();
-          ctx.moveTo(sx + 10, FLOOR_Y - 20);
-          ctx.lineTo(sx + 18, FLOOR_Y - 36);
-          ctx.lineTo(sx + 24, FLOOR_Y - 32);
-          ctx.lineTo(sx + 16, FLOOR_Y - 16);
-          ctx.closePath();
-          ctx.fill();
-          // Lâminas curvadas do balanço
-          ctx.strokeStyle = '#dc2626';
-          ctx.lineWidth = 2.5;
-          ctx.beginPath();
-          ctx.arc(sx, FLOOR_Y - 3, 26, 0.25, Math.PI - 0.25);
-          ctx.stroke();
           break;
         }
 

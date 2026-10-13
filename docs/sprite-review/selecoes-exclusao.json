@@ -1,0 +1,1727 @@
+{
+  "schemaVersion": 1,
+  "catalogVersion": "70bda9bc35ed5e6ed5255a53667476e337eb0c34573e90005ccb7e3700c9b86c",
+  "revision": 366,
+  "updatedAt": "2026-10-13T18:02:56.246Z",
+  "decisions": {
+    "ff8d50d9f3642761af164d22": "old",
+    "2b9d3b445d96b79dc338c0ff": "old",
+    "ced6312f390dd1d834527c11": "old",
+    "1fbbe23ccb686790cedb3c67": "old",
+    "f1e49c48fc3b173cfe56e998": "old",
+    "0c649a9478b5487ece7471cd": "old",
+    "2bc1a51ffefdf1265d52c7d2": "old",
+    "3cd400ae9ac31496a90b0cdf": "old",
+    "155c533b9a9b3ba08767b599": "old",
+    "39b48ab9658ad5deb740d7f0": "old",
+    "5e9936ee38f67c7e56aac579": "old",
+    "12c939a4bb2338ee248141ad": "old",
+    "2a45c93975c28d51180f8fdd": "old",
+    "1c89d70aa5657515374a1750": "old",
+    "bd3af29752b7a2361e087809": "old",
+    "dc2ea99097dd4a049aa74422": "old",
+    "7f97c046b4d0ca59e1ae83ad": "old",
+    "488f9ffdad683a92cd818188": "old",
+    "b4267cd5c604469d6ddd960d": "old",
+    "9415fcee513eb9b827b6abe3": "old",
+    "d429bc657be54c48f15af531": "current",
+    "9b0e416cb4083b976621b941": "current",
+    "650cb9d3ada347c94dd36768": "current",
+    "d4f27d0a6a24c72801846487": "current",
+    "0b1ade253a89d68ae98475ad": "current",
+    "9fc3f393d1b04a62a90a3c57": "current",
+    "0db9f00fb60dbc94e3914221": "current",
+    "502ae0bf93ffa0b66ab02a29": "current",
+    "b7239d10dd83fc54d04894bc": "current",
+    "03c13d7c19e790b64147cab0": "current",
+    "45d8680cbc5802ad9a048a3c": "current",
+    "131ed34511a2206f2f500966": "current",
+    "ccf9dce27b258579ce9a15a0": "current",
+    "1ce5222c90e509b1086554ce": "current",
+    "be7abe502b5e6508206c1e4b": "current",
+    "3377b18dab65b6142d4b4c3f": "current",
+    "bf5f0748949ad3042fe4c8f1": "current",
+    "824fa4903c05f1920aabfef8": "current",
+    "7c638bb96c5d9834cc73df44": "current",
+    "5dafd63b318f30a576a9fa60": "current",
+    "5bb5480b40934d88e9f46746": "current",
+    "3eb579aee92f4b9afa58d288": "current",
+    "a75d2cac310abfd92d4297cc": "current",
+    "590f5551b4c8f24fef8956ed": "current",
+    "6b048f439c7e352fab67d860": "current",
+    "9678f481344e8f60079ad3d7": "current",
+    "ab918389024af43839e5d2af": "current",
+    "868741ed50a45674a29768d8": "current",
+    "d7299811407b53cb4239bb40": "old",
+    "9258bd95e56dc1760c070e06": "old",
+    "62bd98f34abdedf78b743381": "current",
+    "2a28f7997e240fe870b8cab6": "current",
+    "44508931a5feff0c3974b658": "current",
+    "6fe5203d353a2fc1bce1e00a": "current",
+    "15707b1ef80d2ff680298350": "current",
+    "565fc63448a5e6120b34df7e": "current",
+    "b179a9f5e4e16dd2d1b511a6": "current",
+    "82dd0177249100add506efef": "current",
+    "2af5ea52fd6508d4e4111548": "current",
+    "548efc60ac17e84dabd07a76": "current",
+    "ab84ba79f8056c306a6184f4": "current",
+    "a368b0d34535785113e682b8": "current",
+    "c248a2f73ac0c803d152e5d4": "current",
+    "638bcddbdccba882813de261": "current",
+    "06986f1521c413cb41f6bf9c": "current",
+    "bd332ca9b1d02271a6e3bdd1": "current",
+    "89fb920a0ca0177729192c98": "current",
+    "1a28d289e2679dc2fa34a03a": "current",
+    "33a3f8a43a82af9947a5c7ff": "current",
+    "d60ea7f5fbf7c34cf4f3da35": "current",
+    "d9a84277bce927958ee01379": "current",
+    "ed225f401e648e20e24aa55b": "current",
+    "931e352700d581a9bcbb81dc": "current",
+    "a747ba2e46859638780e6da9": "current",
+    "f5f1d94b860322b7fb1e8b1d": "current",
+    "203ca67d59e5e70ad0201c9d": "current",
+    "6d93e527f8fc13db84fde67b": "current",
+    "4b2d239bbe7b258ac7229e4c": "current",
+    "50b4ade0774aadb177f1dd09": "current",
+    "4856c74c73145bff7324fd98": "current",
+    "bd581f5ea2065c7d6aef8a6e": "current",
+    "2d470b6a1165fcf18f881c10": "current",
+    "79741686a89138e657fb266e": "current",
+    "fa32bc64980ce523c36716f1": "current",
+    "62f0320f308085f88ea1acca": "current",
+    "f8d22404aa3dbb489bd4934a": "current",
+    "8876ed8fe6cf5dad6fd7ea44": "current",
+    "17ca61f620bb74ba3c3ca57e": "current",
+    "cc79df13874549400fdbfc89": "current",
+    "9c13629494477f01c9766f91": "current",
+    "65670525bf1da4ddba61681d": "current",
+    "f94734764b0d3d42d9f8d41f": "current",
+    "ee83e782f424d36ba9c62219": "current",
+    "af981a0cb7fc80736d7477fe": "current",
+    "28fb1608440b14b425a065a0": "current",
+    "7f7b080bcdb22c94f642de68": "current",
+    "15c1dfdc0519cb75bed74094": "current",
+    "c2a84e72e1b41f125c26591c": "current",
+    "dd2f74221ed5732755651cb0": "current",
+    "be25e1d342781c2280dc43fa": "current",
+    "bfec531b97827cdc20c7a9c7": "current",
+    "0b33efd603f9e61b597027f7": "current",
+    "72e62592aa131bd9143f4253": "current",
+    "7eeb549a8f4c927c6655266d": "current",
+    "6b57d0385fa96bc401a905c8": "current",
+    "ffe37a00368103450667d76e": "current",
+    "3df75e2dfff5d5c24d1642a8": "current",
+    "880c8d3caf0eb6033df60966": "current",
+    "38119be6ccce2e2862a6b857": "old",
+    "7a2a031cf5423109dbdd77dc": "old",
+    "0bd449900c6fe71356f1f900": "current",
+    "5385ffb86df90ca5084fcc62": "current",
+    "5d5456661639e396231ecf1b": "current",
+    "aacbffd4e068bae402a1b94d": "current",
+    "3ca21825f09d2d6e03f44b27": "current",
+    "82443085ef7a28df478d45f9": "current",
+    "4b644a23b36eb2e2f8f364c1": "current",
+    "843c5d80d9113aba6886e989": "current",
+    "63fa4ecc4fd9a70078f5e29d": "current",
+    "dae9b595ada9e60bc9a430a7": "current",
+    "ed489bdae01939fef4d1aa50": "current",
+    "7fe77b312adb3f83de6098fd": "old",
+    "326e00594476ae9c2334eb6d": "old",
+    "42e21ff476ffd552f5e43a7b": "old",
+    "a59daf406eb1f97910da31b9": "old",
+    "613960f4046cd7f6535ffdd4": "old",
+    "0edd245339c0bcc719633e7f": "old",
+    "67e83601a578b057a375226e": "old",
+    "fc74d7165ff7174ef66a034f": "old",
+    "6291baa90b1ed7ac01f9ba22": "old",
+    "ab6f006f5936cf72a4bb219a": "old",
+    "6b0b928fb6bacdaef6d4b184": "old",
+    "1c4df278c85e35698e60cc2e": "old",
+    "c604e0bd5c5164e21e010451": "old",
+    "88b1cf119ff2b0c5f9471de4": "old",
+    "85f29b7b9eeefbfc10abbcd6": "old",
+    "ec1222272d78dc112de8f86b": "old",
+    "7f474f49bba5b53969c9eb63": "old",
+    "5b8cb70cb4a67e9c14f10256": "old",
+    "ef4c387fd8780b07b363cbe9": "old",
+    "5ff081a2c3a470a349fe6cbe": "old",
+    "b045b4fcdd6f4b6898e07f89": "old",
+    "52aa6e19ba06b8deed220d19": "old",
+    "0b25c9734cb8da7ab32b270a": "old",
+    "59a137cbb17e07da7f04676a": "old",
+    "f7ed759e587c5c96c8d66dbc": "old",
+    "7c2b1939d6ebede12f5dfcf1": "old",
+    "f68f65163c27917f9d2c54b1": "old",
+    "1721ba3886bea70b640cd891": "old",
+    "c1fb92970da18dd5177e611b": "old",
+    "76a5638fe09de184f3b083d0": "old",
+    "f4828a9b3435bd2e76046f4b": "old",
+    "6be3f3efe4b194ba30683c6c": "old",
+    "9abc490dce388a973544f1d4": "old",
+    "ab6e2de1a9deac1f58fa2f41": "old",
+    "03a41d6f9caac2f34ebe5c20": "old",
+    "1c084976fb313d109d3aba60": "old",
+    "06a96e3fe8951e1aadfc60da": "old",
+    "14f01393e481460f48ad1e47": "old",
+    "5018f0c7210339a89abbfa21": "old",
+    "51d66a9eedccba670ae43e2c": "old",
+    "02231feace4c4616de624331": "old",
+    "c530c6a215261077c7eb24fc": "old",
+    "f1308a710bc52b4f84414ee1": "old",
+    "0788b47d80db0ccb9d098039": "old",
+    "d85b359c422194744f68633e": "old",
+    "f90480915a114bf7ee8505ec": "old",
+    "7df2062af3605af46820d8cd": "old",
+    "7b3828c3b4307d3f78abdf65": "current",
+    "920dec5dec13ca684f813d75": "current",
+    "b231fec9cb57ca23541dd196": "current",
+    "8fca82df742f84f3c86bd14b": "current",
+    "81199fa818f22c32de0017f9": "current",
+    "174020b66d83c20d4b601422": "current",
+    "069d395b2a5e7dd27d435314": "current",
+    "a4534fa5989ea67a4bf77a87": "current",
+    "97aa81089a1c8b89623f1e18": "current",
+    "3d00e0db9e1281c70526a15e": "old",
+    "6d17952651e0ecda9e2ea4f5": "current",
+    "82566c853ee8e564c01bf9dd": "current",
+    "d4a30c330d32a42e11639115": "current",
+    "072b408894f2af281ac3e897": "old",
+    "09160030e2742e962d3d18b8": "old",
+    "83988808b35ff5b43a9d3bfe": "old",
+    "178ab1f808fa10abb71eef54": "old",
+    "ecc7b0bb62b1c76fda467e3b": "old",
+    "5b8eda034e33ab554ae9ebb1": "old",
+    "e3234e568c3977f80250fe57": "old",
+    "89817ce34305413707a48580": "current",
+    "ab65ac6e8301433ed7469595": "current",
+    "cc004290397d034fc5978e78": "current",
+    "f719dcfaf8e79f4a34c426a8": "current",
+    "09caf77b13f5010eed975bc9": "current",
+    "d5f87c9c251cde89773c71b1": "current",
+    "da54391c29217f5b9c548e0b": "current",
+    "9bc8e8a5afbcdff23398152b": "current",
+    "373dffdec198e3f886c85b52": "current",
+    "cfd3471dad554213c5852f40": "current",
+    "1aba08f6da427255ccc0e39b": "current",
+    "822c1109da2fa621ac29709a": "current",
+    "96f25e6b5e0b93f22f8c281f": "current",
+    "6ed6283e1527074c2aee80d8": "current",
+    "3b6e4984cc6ed9410d5c72c6": "current",
+    "8f7e3905019809ac6e8457bc": "current",
+    "e542750738d9022805d49849": "current",
+    "2c25209fc9ed3ee8e7212001": "current",
+    "62ea2bf2a7fc0d29a14f658e": "current",
+    "2d5451b152b387f656a0d643": "current",
+    "d28ff0f9b356a2cff8147566": "current",
+    "cfb6856b1578c4edb0c4087a": "current",
+    "866605f7ed2993a8610fb7de": "current",
+    "edbe9c1afeb5d5979d7cc4ec": "current",
+    "96aff37da02284e413d5d34d": "current",
+    "0cf86639719842e0885c35f8": "current",
+    "b0a2b8cbd7f264c2d3e667e2": "current",
+    "8fbcb05e12b9e5be7690f2cb": "current",
+    "194936a9677e59a3f413fce0": "current",
+    "e4af61a769d99fa3ef8bd271": "current",
+    "23b111df4ca2d799ff6ab662": "current",
+    "d0bad2117417726ad0666ece": "current",
+    "66b4d6072a923a3e132a0faf": "current",
+    "e7eff872818b7f586b6c9d67": "current",
+    "d6dfabe715fadc9253ba0d57": "current",
+    "6c6da3171d079de77af7092a": "current",
+    "b21eec20ba049a5ff1e5bc7b": "current",
+    "1196f1babf8ff63018495bc7": "current",
+    "543052663e3f4b5eda8aca6d": "current",
+    "f5dde0447dae42d23fcce113": "current",
+    "ed94a89cdcb3752e079494d0": "current",
+    "cbc0e60476fad948b09083ad": "current",
+    "447a407d860752cc6cc4dfba": "current",
+    "b4d15c5a38b7774bc8deee74": "current",
+    "0dbef156643ceb334620b118": "current",
+    "4f1adcab4aa6448076df3ed0": "current",
+    "050a64a9649c62c6e6906dca": "current",
+    "d8ece83c1fd4e8f3575ab319": "current",
+    "cb8a757441570fbb9f0985a5": "current",
+    "b4167d735a0aab0e94a8012d": "current",
+    "98398c4923bb2666767d19ca": "current",
+    "f89d73b0237fc0b7c53f65a1": "current",
+    "acf2ebb889f4964d9b78c1c8": "current",
+    "6997c72dcc891486091b47d5": "current",
+    "f5a8b67130e07d8008a16fd5": "current",
+    "b5914ea0cd4996d30e1fefa7": "current",
+    "fc50a550e2c342fa56b30743": "current",
+    "ccda21f45883532b34e38597": "current",
+    "fc3bc1759adf9c084823e57f": "current",
+    "6022786b0975692661d970eb": "current",
+    "63f472380299283c304be9ed": "current",
+    "22edd48f6e20123b8454a552": "current",
+    "f07c29504bc9c2d044d08f90": "current",
+    "4904f42a28770d3d04f1874c": "current",
+    "330120f32fb90c80366838fc": "current",
+    "29cd1c420fbfde91d613023f": "current",
+    "9c1f21128024a27504414012": "current",
+    "c7df7b6f575063361e57133f": "current",
+    "084829247ef0a7d57479373e": "current",
+    "1cdbf9c61d7d004084e55e94": "current",
+    "abbc5ca1d35a6d3a54d8be39": "current",
+    "e4e70d74c034f1edd9fd097e": "current",
+    "7a03bc4453508fc57b2e415f": "current",
+    "ac50b55b9125f9edf8e5f3db": "current",
+    "e3f04d9de13b4057681a1542": "current",
+    "8ab3b7bac9df351ce16ebbc1": "current",
+    "963532bcaf9edb36a842c28a": "current",
+    "8c26e602291dcb76b3488ff7": "current",
+    "8438b5e5e5380b0d2a499314": "current",
+    "9d872737c6334b702698ec04": "current",
+    "8ebdca08a3e177533fd75a3b": "current",
+    "5872dbf9f5fa4bd54c42fdd5": "current",
+    "17544e596abc2332c7ed4dc8": "current",
+    "b3e5c2d2d8201748f38cc240": "current",
+    "90aeda6c74612f7daf54cba1": "current",
+    "591eb49e9e158c076b6811e1": "current",
+    "23071f6d9755c50873d5137e": "current",
+    "0cee466d605624af8be27cdc": "current",
+    "13d32ced4a7a1bf25c76a06f": "current",
+    "655b9d60f5ea54adf147f739": "current",
+    "33e6579b2e09bf5e42fca939": "current",
+    "589adb4d190299a2bf2d86aa": "current",
+    "3c43a56881a8d25ed5751280": "current",
+    "d578d40ad2f0deb277e0ed29": "current",
+    "b12eb97f6582a95e84443cc3": "current",
+    "524a059b154674c94a3f1860": "current",
+    "3aa5191e366f6ea25147b87e": "current",
+    "82d9f6259a7ef5b86936994d": "current",
+    "40b5fd6b59f147d36a744d57": "current",
+    "c8846e78468d28688ccc707c": "current",
+    "29bafc08f49064ae630c855d": "current",
+    "fb85351c48d6f27727a87818": "current",
+    "6da68124ecd4e9e735d5e213": "current",
+    "16724f59691d3fea16226981": "current",
+    "117763f858fa564764058f4c": "current",
+    "b399760e7c1cf729380c9129": "current",
+    "5a77caf5524874b13bda8cfe": "current",
+    "bfea381a5b4a74a2e70532ad": "current",
+    "f98780729d988dffca09945c": "current",
+    "3db8f6053ab8bac00ed89bfd": "current",
+    "62f82815cf6b75e836064462": "current",
+    "162af96ff678e9a42d81b091": "current",
+    "f1f4e15c7906e0b35e2b1ea8": "current",
+    "5197b4089d4aa76295634568": "current",
+    "d7c4c603f8c45fd1b2ed0e70": "current",
+    "b8051351db71088f70bf8068": "current",
+    "23e8bb342a880e61267004a8": "current",
+    "dab6982589aeb1e6c62f8129": "current",
+    "9a405a576119e78a0617a53b": "current",
+    "ac5c58b055eef9a9de04014a": "current",
+    "4f1dd8a1a6614d6a77309a7a": "current",
+    "a30a87daca5e5a070a4eb842": "current",
+    "ee7d933020eae826ab217482": "current",
+    "70fe47f8a1fa6cf3243b3f8b": "current",
+    "7d7ff06879c1c6447f90b7db": "current",
+    "d434b62141a4650e5bba7043": "current",
+    "e56c216db859a0ae48b817af": "current",
+    "e23fb9a5992585cc1841db37": "current",
+    "2ca3214de3afe76f65e879f1": "current",
+    "82370e1e6f1c605a318e5dfe": "current",
+    "ad9bcc7aaf41124c49a2b8d7": "current",
+    "d894ffae2af1701999b9e3b8": "current",
+    "c9a74c681010c7a297284cdc": "current",
+    "a3348883384fd6714911c730": "current",
+    "451db7e3e110afbdabc984f8": "current",
+    "205723fac3e653f0f28c093c": "current",
+    "3505eae6974ad6f82c38ab83": "current",
+    "60bbc65144d55c6874ff8bb2": "current",
+    "fc846a61b9c8d3e86860482c": "current",
+    "5daaed8ad11d3da517db4d9c": "current",
+    "e957afacfe1bcba5899efe2b": "current",
+    "c9596c8e908619c094edb240": "current",
+    "4021179076b1035a74acc06a": "current",
+    "89bb10cd111890326d7f6d92": "current",
+    "ecd74e534cae8914ddb7e91f": "current",
+    "e8690f3c28f9d03034987ee4": "current",
+    "8372500b2fb9965eda652057": "current",
+    "e646967642e7c855cbf4035e": "current",
+    "c044aeb78a127b603df0fbb3": "current",
+    "3a6ec43170a6ac460644c5fb": "current",
+    "4c5ff10ddf8486f8af6826a8": "current",
+    "96164e2a442a6d42585b6b63": "current",
+    "7ce470eca6c6f1c478a039d8": "current",
+    "ea885f635bb51706d49021f9": "current",
+    "b22d27dadeda495b9f6797bc": "current",
+    "9c34f2bdaf617e4435020a2b": "current",
+    "1ab59d463fd7d18b9abcea1b": "current",
+    "3288efbe108b9ed94a337a6e": "current",
+    "f2db87f24b2dd57e0c099c54": "current",
+    "cd433b3700839ba11eab3f9e": "current",
+    "235213a3890ef5d0b13e1828": "current",
+    "fe9dbb87a26064ba787249e9": "current",
+    "c972963d6bd023260688e493": "current",
+    "9aa6baec7713df8c6d936989": "current",
+    "e0decddcd1bc5cf3d30f034a": "current",
+    "9b94d509375cb909c82a1874": "current",
+    "393a091c185bddb6dbf35ec2": "current"
+  },
+  "selectedForDeletion": [
+    {
+      "id": "d7299811407b53cb4239bb40",
+      "path": "assets/art/dark-room/sprites/character_jump.png",
+      "sha256": "14f8a96ff9e52e73b834e55ef549bd2368e76eadb385526deb5e899555a1a74a",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 48,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "3d00e0db9e1281c70526a15e",
+      "path": "assets/art/dark-room/sprites/character_run.png",
+      "sha256": "40d026115499b7bf0b178de034fb4f13b254648a70b78d558cb5d58cf65be6ea",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 49,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "9258bd95e56dc1760c070e06",
+      "path": "assets/art/dark-room/sprites/character_stand.png",
+      "sha256": "f40bd184b96754ac25ffb808fe6b3cd30283ab115dc6347bfd61cf70f33a380b",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 47,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "072b408894f2af281ac3e897",
+      "path": "assets/art/dark-room/sprites/dream_girl_actions.png",
+      "sha256": "0c63b8078f9ace43a69473ba2f43a4093ff4cc266778ffbd3fa323c154de97ce",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 55,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "09160030e2742e962d3d18b8",
+      "path": "assets/art/dark-room/sprites/dream_girl_faces.png",
+      "sha256": "8f12da08e1e1515467d945a00c894a18a950df2b7041d3f53a9597c0cde2c748",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 56,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "83988808b35ff5b43a9d3bfe",
+      "path": "assets/art/dark-room/sprites/dream_girl_fall.png",
+      "sha256": "2f26e0aefadd4d8f7e6cf0385e5325d526f111d742c69a78522b22e3cad19c96",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 54,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "178ab1f808fa10abb71eef54",
+      "path": "assets/art/dark-room/sprites/dream_girl_idle.png",
+      "sha256": "1ce8044e5dda4562fc2d2b48aae6b636491a19677c65ca735b9a6c7b13c267e7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 51,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "ecc7b0bb62b1c76fda467e3b",
+      "path": "assets/art/dark-room/sprites/dream_girl_jump.png",
+      "sha256": "68b447bf71c7e321328fd8fa1fd485a9c3e664876baf285f5079b5b2a5523d13",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 53,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "5b8eda034e33ab554ae9ebb1",
+      "path": "assets/art/dark-room/sprites/dream_girl_run.png",
+      "sha256": "40d026115499b7bf0b178de034fb4f13b254648a70b78d558cb5d58cf65be6ea",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 52,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "e3234e568c3977f80250fe57",
+      "path": "assets/art/dark-room/sprites/dream_girl_sheet.png",
+      "sha256": "b890e577d3fac6cd4db9bf073c772684bd5398edc004de701f1bad055941d05a",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 50,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "ff8d50d9f3642761af164d22",
+      "path": "assets/art/toy-room/fairy.svg",
+      "sha256": "6b56fc8c29cefa4ade8a7a63afc187d0f9611debdc81129923332f5a30c85e01",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEntities.js",
+          "line": 38,
+          "type": "runtime",
+          "alias": "toy-room-fairy"
+        }
+      ]
+    },
+    {
+      "id": "38119be6ccce2e2862a6b857",
+      "path": "assets/art/toy-room/floor-tile.svg",
+      "sha256": "acd525f813a63045d59019649079f661dbeba55161b15b3f5c3c877477f2b2f5",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 10,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 32,
+          "type": "runtime",
+          "alias": "toy-room-floor-tile"
+        }
+      ]
+    },
+    {
+      "id": "2b9d3b445d96b79dc338c0ff",
+      "path": "assets/art/toy-room/player-back-sheet.svg",
+      "sha256": "3e2e57f13ff17442fc6949b916c12541fe1ec611e17068c7aecad3ffe9bc678e",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 57,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/AssetManager.js",
+          "line": 62,
+          "type": "runtime",
+          "alias": "toy-room-player-back-sheet"
+        }
+      ]
+    },
+    {
+      "id": "ced6312f390dd1d834527c11",
+      "path": "assets/art/toy-room/player-carry.svg",
+      "sha256": "43eeebf90320996ea918090db6b13cb0ef1b45657d0e55e5dc562c197f54407b",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "1fbbe23ccb686790cedb3c67",
+      "path": "assets/art/toy-room/player-down-1.svg",
+      "sha256": "c4983e70ec5fb681f2fb7d88ac071db2f0dfef7ccae0eb93ec5254fb2598aeda",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 59,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "f1e49c48fc3b173cfe56e998",
+      "path": "assets/art/toy-room/player-down-2.svg",
+      "sha256": "2518b1cb29b25c19792025df5d320d5369c8db9b020c76d248703b5c29505a71",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 60,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "0c649a9478b5487ece7471cd",
+      "path": "assets/art/toy-room/player-down-3.svg",
+      "sha256": "57396a0043230af3c72497044f0ea3aa6c9fce96cdddfffd71395a007e5ff248",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 61,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "2bc1a51ffefdf1265d52c7d2",
+      "path": "assets/art/toy-room/player-left-1.svg",
+      "sha256": "94187ffdded19281a534548d6042add61d29ecc7aadf5cc07323bf2378924d78",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 67,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "3cd400ae9ac31496a90b0cdf",
+      "path": "assets/art/toy-room/player-left-2.svg",
+      "sha256": "ee776467cf46f53276bdac9b16702edebc79f2309bc2113dcf93e1765e9aab61",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 68,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "155c533b9a9b3ba08767b599",
+      "path": "assets/art/toy-room/player-left-3.svg",
+      "sha256": "021cd7fce259d5929594edd8666fd19d2e509ca5c877472b333bf753fc1b46ab",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 69,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "39b48ab9658ad5deb740d7f0",
+      "path": "assets/art/toy-room/player-left.svg",
+      "sha256": "1385b6fafd3b501d55a35ac96a8753cbd3abdc7d12d05fa9a6846f18016ce2f1",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 65,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "5e9936ee38f67c7e56aac579",
+      "path": "assets/art/toy-room/player-right-1.svg",
+      "sha256": "b48cee4069194b4092325a0d36a1ecd0712aa50cd362db20aa09f04e992131b1",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 70,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "12c939a4bb2338ee248141ad",
+      "path": "assets/art/toy-room/player-right-2.svg",
+      "sha256": "326f5e8daab1c80edd02ce91ad8edc440ef70c75ff6d4436a1b27bc7dd029f42",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 71,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "2a45c93975c28d51180f8fdd",
+      "path": "assets/art/toy-room/player-right-3.svg",
+      "sha256": "a58b1275f58442f4f666a556ee9daa718a19d3b76190430fa5d46d50a39c2007",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "1c89d70aa5657515374a1750",
+      "path": "assets/art/toy-room/player-right.svg",
+      "sha256": "6569b67122dde889fefa2a0652924e46891907834b34f678ce59da8108ba5bfa",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 66,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "7a2a031cf5423109dbdd77dc",
+      "path": "assets/art/toy-room/player-sheet.png",
+      "sha256": "0289214e033f6ca8ce40710ef9996739ab0a8bc5883633dfaed06cc25381def9",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 13,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/AssetManager.js",
+          "line": 58,
+          "type": "runtime",
+          "alias": "toy-room-player-sheet"
+        }
+      ]
+    },
+    {
+      "id": "bd3af29752b7a2361e087809",
+      "path": "assets/art/toy-room/player-sprite.svg",
+      "sha256": "9926b89d11857d652086c9541c67dd180166f40fa87f02401fbda035c51964e4",
+      "usage": "nao-localizado",
+      "references": []
+    },
+    {
+      "id": "dc2ea99097dd4a049aa74422",
+      "path": "assets/art/toy-room/player-up-1.svg",
+      "sha256": "553eb041b1ca00e850ef47f04a2a4db029814cccdfc3c7413cdcb0b801941679",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 62,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "7f97c046b4d0ca59e1ae83ad",
+      "path": "assets/art/toy-room/player-up-2.svg",
+      "sha256": "354ff012c934cf805bc1e37da8c0205c9dea7ef1b59d767eebb42c5f59dc09fd",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 63,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "488f9ffdad683a92cd818188",
+      "path": "assets/art/toy-room/player-up-3.svg",
+      "sha256": "a9a8e238a5b96eddb525da2647fac78637eaa2fd3e144a05d6953c413a2f3c82",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 64,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "b4267cd5c604469d6ddd960d",
+      "path": "assets/art/toy-room/player-up.svg",
+      "sha256": "484bb306310fe39d295a8ea81a888ba09d0bcbf17f6285e9472f3c64e8f01064",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 58,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "9415fcee513eb9b827b6abe3",
+      "path": "assets/art/toy-room/player.svg",
+      "sha256": "df9055e748f88d682237441b381fad2f01cfdbea9637f34e0dd36ebad48a0f3c",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 12,
+          "type": "manifesto-runtime",
+          "alias": null
+        }
+      ]
+    },
+    {
+      "id": "7fe77b312adb3f83de6098fd",
+      "path": "assets/art/toy-room/teddy.svg",
+      "sha256": "ec2e43133fc41230e839be942522b97b05fd7012a85c3ef2a72d27c1049a2b27",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 11,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ToyRenderer.js",
+          "line": 61,
+          "type": "runtime",
+          "alias": "toy-room-teddy"
+        }
+      ]
+    }
+  ],
+  "selectedRegions": [],
+  "selectedCode": [
+    {
+      "id": "5ff081a2c3a470a349fe6cbe",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "giant_bear",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "b045b4fcdd6f4b6898e07f89",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "open_books",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "52aa6e19ba06b8deed220d19",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "vanity_table",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "0b25c9734cb8da7ab32b270a",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "small_dresser",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "59a137cbb17e07da7f04676a",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "messy_blocks",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "f7ed759e587c5c96c8d66dbc",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "toy_drum",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "7c2b1939d6ebede12f5dfcf1",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "satin_cushion",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "f68f65163c27917f9d2c54b1",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "stepped_dresser",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "1721ba3886bea70b640cd891",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "music_box",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "c1fb92970da18dd5177e611b",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "block_castle",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "76a5638fe09de184f3b083d0",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "train_trestle",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "f4828a9b3435bd2e76046f4b",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "wall_shelf",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "6be3f3efe4b194ba30683c6c",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "mushroom_lamp",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "9abc490dce388a973544f1d4",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "dollhouse_roof",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "ab6e2de1a9deac1f58fa2f41",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "spinning_globe",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "03a41d6f9caac2f34ebe5c20",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "kite_frame",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "1c084976fb313d109d3aba60",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "floating_books",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "06a96e3fe8951e1aadfc60da",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "chandelier_crystals",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "14f01393e481460f48ad1e47",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "curtain_rod",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "5018f0c7210339a89abbfa21",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "cuckoo_clock",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "51d66a9eedccba670ae43e2c",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "wardrobe_ledge",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "02231feace4c4616de624331",
+      "path": "src/js/environment/PlatformRenderer.js",
+      "sha256": "66cbfd94c66b96866397286558990389ff2a036d7a10232ed89b67d13b5a85f7",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/PlatformRenderer.js",
+          "line": 742,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderPlatforms",
+        "variant": "grand_portal_pedestal",
+        "preview": "platform"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "42e21ff476ffd552f5e43a7b",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "toy_soldier",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "a59daf406eb1f97910da31b9",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "fluffy_rug",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "613960f4046cd7f6535ffdd4",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "cardboard_box_floor",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "0edd245339c0bcc719633e7f",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "wooden_horse",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "67e83601a578b057a375226e",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "spilled_crayons",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "fc74d7165ff7174ef66a034f",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "toy_car",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "6291baa90b1ed7ac01f9ba22",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "striped_socks",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "ab6f006f5936cf72a4bb219a",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "dropped_sweater",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "6b0b928fb6bacdaef6d4b184",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "paper_airplane",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "1c4df278c85e35698e60cc2e",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "scattered_blocks",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "c604e0bd5c5164e21e010451",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "dinosaur_felt",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "88b1cf119ff2b0c5f9471de4",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "slinky",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "85f29b7b9eeefbfc10abbcd6",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "wooden_spinning_top",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "ec1222272d78dc112de8f86b",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "plush_bunny",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "7f474f49bba5b53969c9eb63",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "puzzle_pieces",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "5b8cb70cb4a67e9c14f10256",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "toy_train",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "ef4c387fd8780b07b363cbe9",
+      "path": "src/js/environment/BackgroundRenderer.js",
+      "sha256": "3c0b9c8cfb0a5bf2cddb9cfc6982f160a5eba4df617001543226966c3b98c7e3",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 529,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderScenery",
+        "variant": "jack_in_box",
+        "preview": "scenery"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "c530c6a215261077c7eb24fc",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "chest",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "f1308a710bc52b4f84414ee1",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "shelf",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "0788b47d80db0ccb9d098039",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "armchair",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "d85b359c422194744f68633e",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "fortress",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "f90480915a114bf7ee8505ec",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "table",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "7df2062af3605af46820d8cd",
+      "path": "src/js/toy-room/RoomEnvironmentRenderer.js",
+      "sha256": "96c9998281f1308cb4d66c6665bb5be206218be793c7e545ef86742dde364a7f",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
+          "line": 548,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "renderFurniture",
+        "variant": "rocking-horse",
+        "preview": "furniture"
+      },
+      "action": "remover-desenho-especifico"
+    },
+    {
+      "id": "326e00594476ae9c2334eb6d",
+      "path": "src/js/entities/FairyRenderer.js",
+      "sha256": "a5a7f0d374411cdf57b1609c019b0964633e5b63f5b8b7fc9ff2e2eaeaa56c64",
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/entities/FairyRenderer.js",
+          "line": 18,
+          "type": "runtime"
+        }
+      ],
+      "signature": {
+        "symbol": "render",
+        "variant": "normal",
+        "preview": "dark-fairy"
+      },
+      "action": "remover-desenho-especifico"
+    }
+  ]
+}

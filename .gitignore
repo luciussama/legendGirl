@@ -11,3 +11,6 @@ dist/
 /docs/melhorias-atlas/
 /docs/character-reference-atlas/
 /assets/qa-testers/
+
+# Cópias recuperáveis das exclusões aprovadas na revisão visual.
+/.sprite-review-quarantine/

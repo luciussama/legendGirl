@@ -29,23 +29,13 @@ export class RoomEnvironmentRenderer {
   renderBackground(ctx, roomW, roomH, options = {}) {
     if (!ctx) return;
 
-    const floorTile = options.assets && options.assets.get('toy-room-floor-tile');
     const environmentTile = options.environmentSheet;
 
+    // A base deve vir antes do piso ilustrado, inclusive sem o antigo SVG.
+    ctx.fillStyle = '#fef3c7';
+    ctx.fillRect(0, 0, roomW, roomH);
     if (environmentTile) {
       this.renderPerspectiveFloor(ctx, environmentTile, roomW, roomH);
-    } else if (floorTile) {
-      const pattern = ctx.createPattern(environmentTile || floorTile, 'repeat');
-      if (pattern) {
-        ctx.fillStyle = pattern;
-        ctx.fillRect(0, 240, roomW, roomH - 240);
-      }
-    }
-
-    // Piso: Tábuas de carvalho dourado com veios desenhados à mão
-    if (!floorTile) {
-      ctx.fillStyle = '#fef3c7';
-      ctx.fillRect(0, 0, roomW, roomH);
     }
 
     // Camada de piso exclusiva da adaptação visual; a renderização normal permanece completa.
@@ -98,7 +88,7 @@ export class RoomEnvironmentRenderer {
     // Linhas de tábuas de madeira no chão
     const plankHeight = 48;
     for (let y = 240; y < roomH; y += plankHeight) {
-      if (floorTile) continue;
+      if (environmentTile) continue;
       ctx.fillStyle = (y / plankHeight) % 2 === 0 ? '#fde68a' : '#fef08a';
       ctx.fillRect(0, y, roomW, plankHeight);
 
@@ -603,131 +593,7 @@ export class RoomEnvironmentRenderer {
     ctx.ellipse(f.x + f.w / 2, f.y + f.h - 4, f.w / 2 + 12, 18, 0, 0, Math.PI * 2);
     ctx.fill();
 
-    if (f.type === 'chest') {
-      // Caixa base do baú
-      ctx.fillStyle = '#92400e';
-      ctx.fillRect(f.x, f.y + 25, f.w, f.h - 25);
-
-      // Placas e tachas douradas nos cantos
-      ctx.fillStyle = '#facc15';
-      ctx.fillRect(f.x, f.y + 25, 18, f.h - 25);
-      ctx.fillRect(f.x + f.w - 18, f.y + 25, 18, f.h - 25);
-      ctx.fillRect(f.x + f.w / 2 - 12, f.y + 25, 24, f.h - 25);
-
-      // Placa de fechadura frontal e buraco da chave
-      ctx.fillStyle = '#eab308';
-      ctx.beginPath();
-      ctx.arc(f.x + f.w / 2, f.y + 55, 16, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.fillStyle = '#451a03';
-      ctx.beginPath();
-      ctx.arc(f.x + f.w / 2, f.y + 53, 5, 0, Math.PI * 2);
-      ctx.rect(f.x + f.w / 2 - 3, f.y + 53, 6, 12);
-      ctx.fill();
-
-      // Tampa arredondada do baú
-      const lidLift = (f.lidOpen || 0) * 25;
-      ctx.fillStyle = '#b45309';
-      ctx.beginPath();
-      ctx.arc(f.x + f.w / 2, f.y + 25 - lidLift, f.w / 2, Math.PI, 0, false);
-      ctx.fill();
-
-      ctx.strokeStyle = '#facc15';
-      ctx.lineWidth = 6;
-      ctx.stroke();
-
-      if ((f.lidOpen || 0) > 0.05) {
-        ctx.fillStyle = 'rgba(236, 72, 153, 0.85)';
-        ctx.fillRect(f.x + 12, f.y + 15 - lidLift, f.w - 24, 18);
-      }
-
-      if ((f.glowAlpha || 0) > 0.05) {
-        ctx.strokeStyle = `rgba(250, 204, 21, ${f.glowAlpha})`;
-        ctx.lineWidth = 4;
-        ctx.strokeRect(f.x - 6, f.y - 6, f.w + 12, f.h + 12);
-      }
-
-      // Na versão procedural, a inscrição acompanha a madeira e a abertura da tampa.
-      ctx.fillStyle = '#f5dfac';
-      ctx.font = 'bold 13px Georgia, serif';
-      ctx.textAlign = 'center';
-      ctx.fillText('BRINQUEDOS', f.x + f.w / 2, f.y - 8 - lidLift, f.w - 48);
-    } else if (f.type === 'shelf') {
-      ctx.fillStyle = '#78350f';
-      ctx.fillRect(f.x, f.y, f.w, f.h);
-
-      ctx.fillStyle = '#b45309';
-      ctx.fillRect(f.x + 8, f.y + 8, f.w - 16, f.h - 16);
-
-      const bookColors = ['#ef4444', '#3b82f6', '#10b981', '#f59e0b', '#8b5cf6', '#ec4899'];
-      for (let bx = f.x + 14; bx < f.x + f.w - 22; bx += 16) {
-        ctx.fillStyle = bookColors[(bx / 16) % bookColors.length | 0];
-        const bh = 30 + (bx % 14);
-        ctx.fillRect(bx, f.y + f.h - 14 - bh, 13, bh);
-      }
-    } else if (f.type === 'armchair') {
-      ctx.fillStyle = '#be123c';
-      ctx.beginPath();
-      ctx.arc(f.x + f.w / 2, f.y + 40, f.w / 2, Math.PI, 0, false);
-      ctx.rect(f.x, f.y + 40, f.w, f.h - 40);
-      ctx.fill();
-
-      ctx.fillStyle = '#fde047';
-      ctx.fillRect(f.x + 16, f.y + 35, f.w - 32, 45);
-
-      ctx.fillStyle = '#38bdf8';
-      ctx.beginPath();
-      ctx.arc(f.x + f.w / 2, f.y + 55, 14, 0, Math.PI * 2);
-      ctx.fill();
-    } else if (f.type === 'fortress') {
-      ctx.fillStyle = '#f59e0b';
-      ctx.fillRect(f.x, f.y + 35, f.w, f.h - 35);
-
-      ctx.fillStyle = '#dc2626';
-      ctx.beginPath();
-      ctx.moveTo(f.x, f.y + 35);
-      ctx.lineTo(f.x + 45, f.y - 15);
-      ctx.lineTo(f.x + 90, f.y + 35);
-      ctx.fill();
-
-      ctx.fillStyle = '#2563eb';
-      ctx.beginPath();
-      ctx.moveTo(f.x + f.w - 90, f.y + 35);
-      ctx.lineTo(f.x + f.w - 45, f.y - 15);
-      ctx.lineTo(f.x + f.w, f.y + 35);
-      ctx.fill();
-
-      ctx.fillStyle = '#10b981';
-      for (let bx = f.x + 95; bx < f.x + f.w - 95; bx += 24) {
-        ctx.fillRect(bx, f.y + 15, 14, 20);
-      }
-    } else if (f.type === 'table') {
-      ctx.fillStyle = '#d97706';
-      ctx.beginPath();
-      ctx.ellipse(f.x + f.w / 2, f.y + f.h / 2, f.w / 2, f.h / 2, 0, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.strokeStyle = '#78350f';
-      ctx.lineWidth = 4;
-      ctx.stroke();
-
-      ctx.fillStyle = '#ffffff';
-      ctx.fillRect(f.x + 35, f.y + 25, 45, 32);
-      ctx.fillStyle = '#ec4899';
-      ctx.beginPath();
-      ctx.arc(f.x + 55, f.y + 40, 8, 0, Math.PI * 2);
-      ctx.fill();
-    } else if (f.type === 'rocking-horse') {
-      ctx.fillStyle = '#facc15';
-      ctx.beginPath();
-      ctx.ellipse(f.x + 50, f.y + 40, 38, 22, 0, 0, Math.PI * 2);
-      ctx.fill();
-
-      ctx.strokeStyle = '#b45309';
-      ctx.lineWidth = 5;
-      ctx.beginPath();
-      ctx.arc(f.x + 50, f.y + 50, 48, 0.2, Math.PI - 0.2, false);
-      ctx.stroke();
-    } else if (f.type === 'wardrobe') {
+    if (f.type === 'wardrobe') {
       ctx.fillStyle = '#78350f';
       ctx.fillRect(f.x, f.y, f.w, f.h);
       ctx.fillStyle = '#92400e';
