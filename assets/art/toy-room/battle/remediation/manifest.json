@@ -208,116 +208,117 @@
         "Steam Blast": {
           "frames": [
             {
-              "file": "remediation/steam-blast-remediation/01.png",
-              "width": 509,
-              "height": 331,
+              "file": "polish/steam-blast-v1/01.png",
+              "width": 522,
+              "height": 337,
               "anchor": {
-                "x": 258,
-                "y": 329
+                "x": 261,
+                "y": 332
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 275,
-                "y": 480
+                "y": 480,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 2,
-              "sha256": "ade7b55674a02d3165d6541d822802a583fb92dc80c1c5043315b90324e2de84"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "0f318675fdc465de2c0661e5b7acd5823ea9b658720740e64e3dfeb8f62d2d3f"
             },
             {
-              "file": "remediation/steam-blast-remediation/02.png",
-              "width": 518,
-              "height": 288,
+              "file": "polish/steam-blast-v1/02.png",
+              "width": 491,
+              "height": 298,
               "anchor": {
-                "x": 262,
-                "y": 285
+                "x": 261,
+                "y": 290
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 790,
-                "y": 480
+                "y": 480,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 3,
-              "sha256": "cbd24d2bd8affe5dbd7458ab2a2e62df47e30f2627022192ecea27ec4d49b230"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "8ef4b94315923f898541c3cd63d59c3e0d39832ce4f2d9663b0e6e0d4fda2b73"
             },
             {
-              "file": "remediation/steam-blast-remediation/03.png",
-              "width": 495,
-              "height": 332,
+              "file": "polish/steam-blast-v1/03.png",
+              "width": 514,
+              "height": 351,
               "anchor": {
-                "x": 259,
-                "y": 336
+                "x": 279,
+                "y": 348
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 1300,
-                "y": 480
+                "y": 480,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 1,
-              "sha256": "3835fb54b128c996cde72de3d41457412c11983ed2496da8f687bf13de961a50"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "950bb10d34048bd4c9809bc5c9f8b8584b834b5eb448def6237e97171828904e"
             },
             {
-              "file": "remediation/steam-blast-remediation/04.png",
-              "width": 525,
-              "height": 373,
+              "file": "polish/steam-blast-v1/04.png",
+              "width": 536,
+              "height": 398,
               "anchor": {
-                "x": 255,
-                "y": 405
+                "x": 261,
+                "y": 429
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 275,
-                "y": 960
+                "y": 960,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 4,
-              "sha256": "b651d6566f556f653352c8ce41c422562b6746ad0d0da6cec7cbe01c3e834d79"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "3ca94e52970acb58d7599634e2beb1691924b1c298dd148aa5b5e1455d4f273a"
             },
             {
-              "file": "remediation/steam-blast-remediation/05.png",
-              "width": 482,
-              "height": 341,
+              "file": "polish/steam-blast-v1/05.png",
+              "width": 488,
+              "height": 350,
               "anchor": {
-                "x": 247,
-                "y": 374
+                "x": 251,
+                "y": 377
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 790,
-                "y": 960
+                "y": 960,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 5,
-              "sha256": "42a5466392e660708ac552684275605b5c31567a0d4ed8b3c5a8cce25193647f"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "67895a638e2044aaaf4077448b824575518ab689d5c01d04491c4ae870e427fe"
             },
             {
-              "file": "remediation/steam-blast-remediation/06.png",
-              "width": 504,
-              "height": 312,
+              "file": "polish/steam-blast-v1/06.png",
+              "width": 506,
+              "height": 330,
               "anchor": {
-                "x": 289,
-                "y": 342
+                "x": 288,
+                "y": 357
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 1310,
-                "y": 960
+                "y": 960,
+                "scale": 0.3745928338762215
               },
               "displayScale": 0.3745928338762215,
-              "source": "remediation/steam-blast-remediation.png",
-              "sourceComponent": 6,
-              "sha256": "f32c8bb358b7add4e64979d8f1fab9c089317cb2ea54d30f1f8970950341a2df"
+              "source": "polish/steam-blast-v1.png",
+              "sha256": "745d49fbe9e9c6b4fdd1cf72274f18a2550ca0396e1ceabe5135e4a06876ff94"
             }
           ],
           "loop": false,
-          "correction": "steam-blast-remediation"
+          "correction": "steam-blast-remediation",
+          "polish": "steam-blast-v1"
         },
         "Front Charge": {
           "frames": [
@@ -767,116 +768,117 @@
         "Laser Beam": {
           "frames": [
             {
-              "file": "remediation/laser-beam-remediation/01.png",
-              "width": 315,
-              "height": 485,
+              "file": "polish/laser-beam-v1/01.png",
+              "width": 316,
+              "height": 483,
               "anchor": {
-                "x": 186,
+                "x": 187,
                 "y": 476
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 315,
-                "y": 495
+                "y": 495,
+                "scale": 0.4598698481561822
               },
               "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 1,
-              "sha256": "52d6b57fb3aadf08eb09a4d866548e4ef659d86fe9b02fc75f009e6281d8fa99"
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "6789996fd06d593985d2256a58c34ab390936e3bf9e44f8c42395e592e3ff0ec"
             },
             {
-              "file": "remediation/laser-beam-remediation/02.png",
+              "file": "polish/laser-beam-v1/02.png",
+              "width": 375,
+              "height": 476,
+              "anchor": {
+                "x": 196,
+                "y": 469
+              },
+              "bodyReference": "torso-ground",
+              "bodyLandmark": {
+                "x": 770,
+                "y": 495,
+                "scale": 0.4598698481561822
+              },
+              "displayScale": 0.4598698481561822,
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "deb1583fc1d4592494344072a52f9eef02219b309f63259ed303a353435f3d4d"
+            },
+            {
+              "file": "polish/laser-beam-v1/03.png",
               "width": 420,
-              "height": 473,
-              "anchor": {
-                "x": 228,
-                "y": 465
-              },
-              "bodyReference": "torso-ground",
-              "bodyLandmark": {
-                "x": 790,
-                "y": 495
-              },
-              "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 2,
-              "sha256": "e9b93e78405a149654c40066ed26c0b12f19005fc822327ab51b8366a27b8e72"
-            },
-            {
-              "file": "remediation/laser-beam-remediation/03.png",
-              "width": 373,
-              "height": 468,
-              "anchor": {
-                "x": 231,
-                "y": 460
-              },
-              "bodyReference": "torso-ground",
-              "bodyLandmark": {
-                "x": 1310,
-                "y": 495
-              },
-              "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 3,
-              "sha256": "5b7bbab222c9c5de897b848cd0068da22adbdd1225dee60317195e2cbcda02e0"
-            },
-            {
-              "file": "remediation/laser-beam-remediation/04.png",
-              "width": 397,
-              "height": 448,
-              "anchor": {
-                "x": 234,
-                "y": 436
-              },
-              "bodyReference": "torso-ground",
-              "bodyLandmark": {
-                "x": 330,
-                "y": 980
-              },
-              "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 6,
-              "sha256": "23723bec8386606481ff957e4663aff269d4325c7b6c10ebd86309e80372f23b"
-            },
-            {
-              "file": "remediation/laser-beam-remediation/05.png",
-              "width": 373,
-              "height": 464,
-              "anchor": {
-                "x": 209,
-                "y": 453
-              },
-              "bodyReference": "torso-ground",
-              "bodyLandmark": {
-                "x": 815,
-                "y": 980
-              },
-              "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 5,
-              "sha256": "9e8a30aa014debc7bdd8a7da674df2b07216b750a991461270bbc7cfb5c5eb67"
-            },
-            {
-              "file": "remediation/laser-beam-remediation/06.png",
-              "width": 309,
               "height": 480,
               "anchor": {
-                "x": 176,
+                "x": 184,
+                "y": 473
+              },
+              "bodyReference": "torso-ground",
+              "bodyLandmark": {
+                "x": 1260,
+                "y": 495,
+                "scale": 0.4598698481561822
+              },
+              "displayScale": 0.4598698481561822,
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "9d7ecf88bed9b532f747f83e42257165eb08ce6bd5595eb858bea766be8cc89f"
+            },
+            {
+              "file": "polish/laser-beam-v1/04.png",
+              "width": 404,
+              "height": 476,
+              "anchor": {
+                "x": 181,
                 "y": 462
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
-                "x": 1295,
-                "y": 980
+                "x": 270,
+                "y": 980,
+                "scale": 0.4598698481561822
               },
               "displayScale": 0.4598698481561822,
-              "source": "remediation/laser-beam-remediation.png",
-              "sourceComponent": 4,
-              "sha256": "d6b2ed85414903a7bd66836f7d9b8acd0ad47d295eaccc601493fb5024f8f11c"
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "8ac98ca9319698126cbc028f58374f85b657e8c152d8c34a53c3d61c8c5881c7"
+            },
+            {
+              "file": "polish/laser-beam-v1/05.png",
+              "width": 383,
+              "height": 481,
+              "anchor": {
+                "x": 200,
+                "y": 467
+              },
+              "bodyReference": "torso-ground",
+              "bodyLandmark": {
+                "x": 780,
+                "y": 980,
+                "scale": 0.4598698481561822
+              },
+              "displayScale": 0.4598698481561822,
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "e60f9b4a3cc2c536f0540bad27e6b43d4cf946ebdd664786a094bdf6fa475de7"
+            },
+            {
+              "file": "polish/laser-beam-v1/06.png",
+              "width": 318,
+              "height": 484,
+              "anchor": {
+                "x": 167,
+                "y": 467
+              },
+              "bodyReference": "torso-ground",
+              "bodyLandmark": {
+                "x": 1265,
+                "y": 980,
+                "scale": 0.4598698481561822
+              },
+              "displayScale": 0.4598698481561822,
+              "source": "polish/laser-beam-v1.png",
+              "sha256": "7f2559f0ad9917c9d18e08a8f29090f77fd8f645e00d22a835aca4ad63014bce"
             }
           ],
           "loop": false,
-          "correction": "laser-beam-remediation"
+          "correction": "laser-beam-remediation",
+          "polish": "laser-beam-v1"
         },
         "Hit": {
           "frames": [
@@ -1047,116 +1049,117 @@
         "Rocket Punch": {
           "frames": [
             {
-              "file": "remediation/rocket-punch-remediation/01.png",
-              "width": 337,
-              "height": 457,
+              "file": "polish/rocket-punch-v1/01.png",
+              "width": 335,
+              "height": 459,
               "anchor": {
-                "x": 201,
-                "y": 451
+                "x": 199,
+                "y": 452
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 250,
-                "y": 495
+                "y": 495,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 1,
-              "sha256": "eed846be2ba807624e44ebb451417103119fd673fbdb5bb81c7351ba23644bfb"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "7ca625f35afcc0b848b1c53956d55f336fe1210ddce4ae2a91854e4e8d1430df"
             },
             {
-              "file": "remediation/rocket-punch-remediation/02.png",
-              "width": 346,
-              "height": 456,
+              "file": "polish/rocket-punch-v1/02.png",
+              "width": 340,
+              "height": 459,
               "anchor": {
-                "x": 226,
-                "y": 449
+                "x": 218,
+                "y": 452
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 805,
-                "y": 495
+                "y": 495,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 3,
-              "sha256": "4b4026e1f3599bbcb8283a8f3c2950efe545ba466fb1d1ef623c801affc83376"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "3f8f87017f4c64b5e211b02559a16b86bc41838999b6fb7ed8561315c993143e"
             },
             {
-              "file": "remediation/rocket-punch-remediation/03.png",
-              "width": 418,
-              "height": 457,
+              "file": "polish/rocket-punch-v1/03.png",
+              "width": 446,
+              "height": 461,
               "anchor": {
-                "x": 182,
-                "y": 450
+                "x": 204,
+                "y": 454
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 1280,
-                "y": 495
+                "y": 495,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 2,
-              "sha256": "fce193bfd9d6c4ebcfdba59692c3d7f4767cbf951b64a5b7720bfd604c47af90"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "701792185fa641758e375e666ece0decd9bffe4b08f54968d5b3fcab08f496c2"
             },
             {
-              "file": "remediation/rocket-punch-remediation/04.png",
-              "width": 576,
-              "height": 449,
+              "file": "polish/rocket-punch-v1/04.png",
+              "width": 573,
+              "height": 453,
               "anchor": {
                 "x": 189,
-                "y": 434
+                "y": 436
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 230,
-                "y": 965
+                "y": 965,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 4,
-              "sha256": "7707353eb6e0f367ea608e5428fb4fdd35ed1c4958c96b3172279cded9d739c6"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "f1c2b280da857fae765e809a99c00f81cbe905d8352f8c811d1675c5b0d5081a"
             },
             {
-              "file": "remediation/rocket-punch-remediation/05.png",
-              "width": 430,
-              "height": 448,
+              "file": "polish/rocket-punch-v1/05.png",
+              "width": 460,
+              "height": 452,
               "anchor": {
                 "x": 165,
-                "y": 431
+                "y": 434
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 785,
-                "y": 965
+                "y": 965,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 5,
-              "sha256": "c1efc333550819c65a0785c16b7f904665c124adb53bbb9279383e30df1cf24c"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "4ebf74c86555395496e55683d1f68673006a15416a3c701b3ce75f2579973b9d"
             },
             {
-              "file": "remediation/rocket-punch-remediation/06.png",
-              "width": 331,
-              "height": 448,
+              "file": "polish/rocket-punch-v1/06.png",
+              "width": 334,
+              "height": 450,
               "anchor": {
-                "x": 152,
-                "y": 431
+                "x": 153,
+                "y": 433
               },
               "bodyReference": "torso-ground",
               "bodyLandmark": {
                 "x": 1295,
-                "y": 965
+                "y": 965,
+                "scale": 0.4896073903002309
               },
               "displayScale": 0.4896073903002309,
-              "source": "remediation/rocket-punch-remediation.png",
-              "sourceComponent": 6,
-              "sha256": "3d62c5f2f1b1350f2237852e848d2e60d6b0514a34c6d1d8db886a6726a7d448"
+              "source": "polish/rocket-punch-v1.png",
+              "sha256": "4b49689537ae93c9d22b0fffdae17310892093b70db45295aa4c509d20a2b703"
             }
           ],
           "loop": false,
-          "correction": "rocket-punch-remediation"
+          "correction": "rocket-punch-remediation",
+          "polish": "rocket-punch-v1"
         }
       }
     },

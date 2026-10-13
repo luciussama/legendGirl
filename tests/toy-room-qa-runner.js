@@ -75,18 +75,10 @@ export function runToyRoomQA(room, { draw = false, dt = 1 } = {}) {
   check(room.story.state.investigationStage === 'PICKUP', 'A espada não foi alcançada.');
   wait(100); reload(); wait(220);
   check(room.story.swordEquipped, 'Espada não foi equipada após save intermediário.');
-  walk(700, 700, 30);
-  for (const side of ['left', 'right']) {
-    room.keysDown = { [side === 'left' ? 'ArrowLeft' : 'ArrowRight']: true }; tick();
-    room.keysDown = {}; tick(); room.keysDown = { ArrowUp: true }; tick(); room.keysDown = {};
-    check(room.player.facing === side, 'Movimento vertical perdeu a orientação horizontal.');
-    room.player.carriedItem = null;
-    check(room.story.attack(), 'Golpe não iniciou.');
-    check(room.story.state.attackDirection === (side === 'left' ? -1 : 1), 'Golpe com orientação incorreta.');
-    reload(); wait(20);
-    check(room.story.state.attackElapsed === 0, 'Golpe não terminou após restore.');
-  }
-  wait(600); reload();
+  check(room.battle.state?.mode === 'BATTLE', 'O término da cena não ativou a arena.');
+  check(room.battle.state.enemy.actor === 'train', 'A arena não começou pelo Trem.');
+  reload();
+  check(room.battle.state?.enemy.actor === 'train', 'Save perdeu o primeiro confronto.');
   return { difficulty: room.gameDifficulty, width: room.canvas.width, height: room.canvas.height,
     dt, frames, collections, reloads, stages: [...stages], result: 'aprovado' };
 }

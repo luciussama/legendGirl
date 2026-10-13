@@ -15,6 +15,7 @@ import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
 import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
 import { ToyRoomStory } from './ToyRoomStory.js';
+import { ToyRoomBattle } from './ToyRoomBattle.js';
 
 export class ToyRoomPhase {
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
@@ -343,6 +344,7 @@ export class ToyRoomPhase {
     this.tutorial = new ToyRoomTutorial(this);
     this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
     this.story = new ToyRoomStory(this);
+    this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
   }
 
   setupListeners() {
@@ -411,7 +413,9 @@ export class ToyRoomPhase {
     for (const pad of pads) {
       if (!pad || pad.connected === false || (pad.mapping && pad.mapping !== 'standard')) continue;
       connected.add(pad.index);
-      const x = pad.axes?.[0] || 0, y = pad.axes?.[1] || 0;
+      const held = index => Boolean(pad.buttons?.[index]?.pressed || pad.buttons?.[index]?.value > 0.5);
+      const x = held(14) || held(15) ? Number(held(15)) - Number(held(14)) : pad.axes?.[0] || 0;
+      const y = held(12) || held(13) ? Number(held(13)) - Number(held(12)) : pad.axes?.[1] || 0;
       const moving = Math.hypot(x, y) > 0.18;
       const button = pad.buttons?.[TOY_ROOM_INPUT.gamepadButton];
       const pressed = Boolean(button?.pressed || button?.value > 0.5);
@@ -578,6 +582,7 @@ export class ToyRoomPhase {
 
   triggerAction() {
     if (!this.isInputEnabled() || this.story?.inputLocked) return;
+    if (this.battle?.state) { this.battle.attack(); return; }
     const now = performance.now();
     if (now - this.lastActionTime < this.ACTION_DEBOUNCE_MS) {
       return;
@@ -716,6 +721,8 @@ export class ToyRoomPhase {
   update(dt = 1.0) {
     if (!this.isInputEnabled()) { this.clearInput(); return; }
     this.pollGamepad();
+    if (!this.battle.state && this.story.swordEquipped) this.battle.activate();
+    if (this.battle.state) { this.battle.update(dt); return; }
     // Temporizadores de faixas e transição
     if (this.introAlpha > 0) {
       this.introAlpha = Math.max(0, this.introAlpha - 0.02 * dt);
@@ -726,7 +733,10 @@ export class ToyRoomPhase {
     if (this.victoryBannerActive && this.victoryBannerTimer > 0) {
       this.victoryBannerTimer -= dt;
     }
-    if (this.story?.update(dt)) return;
+    if (this.story?.update(dt)) {
+      if (this.story.swordEquipped && !this.battle.state) this.battle.activate();
+      return;
+    }
 
     // Verificação de proximidade interativa para enriquecer o feedback do Botão de Ação
     let canInteract = false;
@@ -927,6 +937,7 @@ export class ToyRoomPhase {
   }
 
   render(options = {}) {
+    if (this.battle.state) { this.battle.render(); return; }
     const ctx = this.ctx;
     ctx.save();
     ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
@@ -1119,6 +1130,7 @@ export class ToyRoomPhase {
     const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
     saved.carriedItemId = this.player.carriedItem?.id ?? null;
     saved.toyRoomStory = this.story.snapshot();
+    saved.toyRoomBattle = this.battle.snapshot();
     return saved;
   }
 
@@ -1140,7 +1152,9 @@ export class ToyRoomPhase {
     this.lastActionTime = 0;
     this.tutorial.active = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    if (!this.toyRoomTutorialCompleted) this.startTutorial();
+    this.battle.restore(saved.toyRoomBattle);
+    if (this.battle.state) this.gameplayState = 'TOY_ROOM_BATTLE';
+    else if (!this.toyRoomTutorialCompleted && !this.story.swordEquipped) this.startTutorial();
   }
 
   destroy() {

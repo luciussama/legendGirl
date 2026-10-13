@@ -487,3 +487,15 @@ A [validação de combate do Prompt 14](battle-mode/combat-validation.md) result
 O catálogo, as referências visuais, o formato das âncoras e as limitações da produção estão em [Produção dos sprites de batalha](battle-mode/battle-sprite-production.md). A [prévia animada](../tests/battle-sprite-review.html) deve ser aberta pelo servidor local. Execute `npm run verify:battle-sprites` para validar os arquivos. O pacote ainda precisa de homologação artística antes da integração.
 
 A [correção e revalidação do Prompt 14A](battle-mode/combat-correction-report.md) preserva o resultado **FAIL**, registra as tentativas e fornece uma prévia de transições. O pacote corrigido não está autorizado artisticamente para integração.
+
+## Arena em avaliação de gameplay — Prompt 16
+
+`ToyRoomBattle` assume a sala ao terminar a cena da espada. O estado é persistido em `toyRoomBattle`; o manifesto candidato é carregado sem placeholders. A menina usa escala visual 2× ancorada nos pés, incluindo espada e ataques, exclusivamente na arena. Regras, parâmetros provisórios, teste reproduzível e limitações estão na [revisão de gameplay](battle-mode/gameplay-review-report.md). Essa integração foi autorizada para avaliação controlada; a homologação artística anterior continua reprovada.
+
+## Polimento seguro da arena — Prompt 17
+
+Cada alteração deve ser isolada, seguida de verificação dos recursos, regressão completa e playtest dos quatro adversários. O [relatório de polimento](battle-mode/post-playtest-polish-report.md) registra melhorias, rollbacks e divergências de justiça de hitbox ainda abertas. `battleAnimationFrame()` distribui as poses de Rush dentro das janelas existentes; não altera a simulação. A página de QA permite pausa na preparação, avanço de um quadro e comparação de recursos anteriores com `?baseline=1`. Essas ferramentas não aparecem no jogo normal.
+
+## Certificação de justiça — Prompt 18
+
+A [revisão de certificação](battle-mode/fairness-certification-report.md) contém decisões por defeito, limites dos testes e reprodução. `BattlePresentation.js` concentra a projeção da mola/luva, pose baixa, feixe e transmissão do Trem. `BattlePlayerBounds.js` contém metadados alfa, extraídos por `scripts/generate-battle-player-bounds.js`; ao trocar essas imagens, regenere os dados e repita a revisão visual e de contatos. O resultado global permanece **FAIL**. Não confunda a suíte de punho/laser aprovada com certificação de Toy Leap ou homologação completa da caminhada do Robô.

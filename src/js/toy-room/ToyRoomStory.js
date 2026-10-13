@@ -122,7 +122,7 @@ function getBeat(beats, elapsed) {
   return null;
 }
 
-function drawToySword(ctx, x, y, angle, scale = 1) {
+export function drawToySword(ctx, x, y, angle, scale = 1) {
   ctx.save();
   ctx.translate(x, y);
   ctx.rotate(angle);

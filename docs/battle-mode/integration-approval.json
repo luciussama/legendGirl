@@ -9,5 +9,44 @@
     "Prompt 14 = PASS",
     "Todos os itens de remediação resolvidos",
     "Validação de gameplay e integração completa = PASS"
-  ]
+  ],
+  "controlledGameplayEvaluation": {
+    "prompt": "16",
+    "authorized": true,
+    "implemented": true,
+    "result": "PASS WITH OBSERVATIONS",
+    "finalReleaseApproved": false,
+    "report": "final-gameplay-assessment.md"
+  },
+  "postPlaytestPolish": {
+    "prompt": "17",
+    "accepted": [
+      "Rocket Punch: acabamento",
+      "Steam Blast: antecipação",
+      "Laser Beam: antecipação",
+      "Dinosaur Rush: progressão temporal"
+    ],
+    "rolledBack": [
+      "Robot Walk",
+      "Train Walk",
+      "Rocket Punch: redução isolada de alcance"
+    ],
+    "functionalRegression": "PASS",
+    "hitboxFairness": "FAIL",
+    "finalReleaseApproved": false,
+    "report": "post-playtest-polish-report.md"
+  },
+  "fairnessCertification": {
+    "prompt": "18",
+    "result": "FAIL",
+    "functionalRegression": "PASS",
+    "allKnownDefectsClosed": false,
+    "finalReleaseApproved": false,
+    "remainingBlockingDefects": [
+      "DEFECT-001",
+      "DEFECT-008"
+    ],
+    "report": "fairness-certification-report.md",
+    "evidence": "fairness-certification-report.json"
+  }
 }

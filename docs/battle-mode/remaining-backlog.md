@@ -1,0 +1,15 @@
+# Backlog restante — após Prompt 18
+
+O [relatório de certificação](fairness-certification-report.md) mantém o resultado geral **FAIL**. Rocket Punch, laser e transmissão do Trem receberam correções locais aprovadas nos testes descritos; esses passes não encerram a justiça de todos os ataques.
+
+| Prioridade | Pendência | Próximo critério |
+| --- | --- | --- |
+| Crítica | Toy Leap: dano sem representação do alcance do impacto. | A 154,9 unidades, ocorre dano com separação visual conservadora de 36,93. Representar o impacto e validar bordas e esquiva sem reduzir a eficácia do chefe. |
+| Crítica | Robot Walk: alternância de apoio insuficiente. | Novo ciclo com perna dominante alternada, sem recortes nos pés; as duas alternativas do Prompt 18 foram descartadas. |
+| Alta | Certificação completa da espada e demais ataques com a menina em 2×. | Examinar contato nas poses e bordas de cada golpe, além da matriz já aprovada de Rocket Punch/laser. |
+| Média | Âncoras/transições do pacote inteiro. | Inspeção completa em duas escalas; os passes locais não homologam todas as transições. |
+| Antes da publicação | Justiça com jogadores, Android e gamepad físicos. | Campanha completa, legibilidade, barras/recortes, rotação e latência no hardware real. |
+
+Front Charge mantém a observação anterior; não integrava o backlog de correções locais do Prompt 17. As melhorias aceitas permanecem ativas. A matriz de punho/laser passou, mas Toy Leap impede afirmar que a justiça final da menina em 2× passou.
+
+Encerramentos locais: punho projetado à silhueta efetiva (886 casos), feixe/pose baixa (336 casos) e biela sincronizada (169 amostras). Steam Blast e Laser Beam foram reinspecionados na preparação, e Rush nos quadros de impulso. Os detalhes e limites estão no relatório; não são aprovação humana ou homologação artística integral.

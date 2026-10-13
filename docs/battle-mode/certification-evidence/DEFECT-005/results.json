@@ -1,0 +1,32 @@
+[
+  {
+    "command": "npm test",
+    "exitCode": 0,
+    "result": "PASS"
+  },
+  {
+    "command": "npm run test:toy-room:qa",
+    "exitCode": 0,
+    "result": "PASS"
+  },
+  {
+    "command": "npm run test:toy-room:battle",
+    "exitCode": 0,
+    "result": "PASS"
+  },
+  {
+    "command": "npm run test:battle:polish",
+    "exitCode": 0,
+    "result": "PASS"
+  },
+  {
+    "command": "npm run test:battle:fairness",
+    "exitCode": 0,
+    "result": "PASS"
+  },
+  {
+    "command": "npm run build",
+    "exitCode": 0,
+    "result": "PASS"
+  }
+]

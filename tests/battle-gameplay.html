@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="pt-BR"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Playtest real de batalha</title>
+<style>body{margin:0;background:#241c28;color:#fff2db;font:16px system-ui}header{padding:12px}button{padding:10px;margin:4px}canvas{width:min(100%,960px);height:auto;display:block;touch-action:none}pre{white-space:pre-wrap;max-height:80px;overflow:auto}#controls{display:flex;flex-wrap:wrap}</style>
+<header><h1>Playtest de batalha — fase real</h1><p>Setas: andar, pular e abaixar. X: espada. Os controles abaixo também permitem toque.</p>
+<button id="start">Reiniciar pela cena da espada</button><button id="auto">Executar campanha completa com inputs</button><button id="defeat">Testar derrota com inputs</button>
+<label>Confronto isolado de QA: <select id="enemy"><option value="0">Trem</option><option value="1">Robô</option><option value="2">Dinossauro</option><option value="3">Urso</option></select></label><button id="observe">Observar ataques com esquiva por input</button>
+<button id="dinosaurRush">Inspecionar Rush do Dinossauro</button><button id="trainWalk">Inspecionar biela e rodas do Trem</button><button id="robotWalk">Inspecionar ciclo de caminhada do Robô</button><button id="laserCrouch">Inspecionar laser com agachamento</button><button id="laserStanding">Inspecionar laser em pé</button><button id="rocket">Inspecionar Rocket Punch a 250 unidades</button><button id="transport">Pausar no transporte para a caixa</button><button id="inspect">Pausar na preparação do próximo ataque</button><button id="step">Avançar um quadro</button>
+<div id="controls"><button data-key="ArrowLeft">←</button><button data-key="ArrowRight">→</button><button data-key="ArrowUp">Pular</button><button data-key="ArrowDown">Abaixar</button><button id="attack">Espada</button></div><pre id="status">Carregando recursos…</pre></header>
+<canvas width="960" height="540"></canvas><p>Inspeção ampliada do desenho real da arena:</p><canvas id="zoom" width="600" height="490" style="width:min(100%,600px)"></canvas>
+<script type="module" src="battle-gameplay-browser.js"></script></html>

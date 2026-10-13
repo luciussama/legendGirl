@@ -1,0 +1,12 @@
+{
+  "attack": "Toy Leap",
+  "elapsed": 84,
+  "distance": 154.9,
+  "playerHp": 2,
+  "bearFrame": "bear/toy-leap/05.png",
+  "bearVisibleRight": 62.87581699346405,
+  "girlNearEdge": -55.09387755102041,
+  "visibleGap": 36.930305455515544,
+  "impactEffectRendered": false,
+  "result": "MISMATCH"
+}

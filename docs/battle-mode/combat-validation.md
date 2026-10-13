@@ -2,6 +2,14 @@
 
 **Resultado do pacote: FAIL. Não homologado para integração.**
 
+## Certificação posterior — Prompt 18
+
+A [certificação de justiça](fairness-certification-report.md) aceitou correções locais de apresentação de punho, laser e transmissão do Trem. As antecipações de emissão e as amostras de Rush foram reinspecionadas no gameplay. O resultado geral permanece **FAIL**, por Robot Walk e pelo impacto de Toy Leap ainda sem correspondência visual; não houve homologação artística integral. As avaliações abaixo conservam o histórico das versões anteriores.
+
+## Avaliação controlada de gameplay — Prompt 16
+
+O usuário autorizou integrar temporariamente os recursos atuais para avaliar gameplay, apesar dos defeitos visuais conhecidos. A [avaliação de gameplay](final-gameplay-assessment.md) registra o resultado funcional e suas limitações. O FAIL artístico abaixo permanece histórico e não foi convertido em PASS.
+
 ## Segunda remediação — Prompt 14B
 
 O [gate do Prompt 15 v2](battle-integration-report.md) foi executado e permaneceu **FAIL**. A produção foi retomada, com duas novas tentativas reprovadas de apoio oposto do Robô e nova antecipação de Steam Blast, agora em REVISÃO. Os [resultados de produção](gate-production-attempts.md) e a [decisão de integração](integration-approval.json) registram que nenhuma integração foi autorizada.

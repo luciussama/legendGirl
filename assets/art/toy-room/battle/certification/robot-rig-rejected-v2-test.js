@@ -1,0 +1,12 @@
+import assert from 'node:assert/strict';import{robotWalkRig}from'./robot-rig-rejected-v2.js';
+const a=robotWalkRig(0),c=robotWalkRig(14),end=robotWalkRig(28);
+assert.ok(a.near.footX>a.far.footX,'Primeiro apoio: perna próxima à frente.');
+assert.ok(c.near.footX<c.far.footX,'Apoio oposto: perna distante à frente.');
+const b=robotWalkRig(7),d=robotWalkRig(21);
+assert.ok(b.far.shorten<b.near.shorten,'Passagem com perna distante recolhida.');
+assert.ok(d.near.shorten<d.far.shorten,'Passagem com perna próxima recolhida.');
+for(const name of['near','far'])for(const key of['footX','footY'])assert.ok(Math.abs(a[name][key]-end[name][key])<1e-8,'O ciclo fecha sem salto.');
+const cycle=Array.from({length:29},(_,i)=>robotWalkRig(i));
+assert.ok(Math.max(...cycle.map(f=>f.floor))-Math.min(...cycle.map(f=>f.floor))>20,'O torso participa da transferência de peso.');
+for(let i=1;i<cycle.length;i++)for(const leg of['near','far'])assert.ok(Math.hypot(cycle[i][leg].footX-cycle[i-1][leg].footX,cycle[i][leg].footY-cycle[i-1][leg].footY)<35,'Sem teletransporte entre quadros.');
+console.log('APROVADO: alternância de apoio, duas passagens, participação do torso, continuidade e fechamento em 28 quadros; avaliação humana não substituída pelo teste.');
