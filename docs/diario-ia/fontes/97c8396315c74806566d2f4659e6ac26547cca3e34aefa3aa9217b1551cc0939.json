@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "97c8396315c74806566d2f4659e6ac26547cca3e34aefa3aa9217b1551cc0939",
+  "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-robot-PLAYER_HIT.png",
+  "sha256": "769fa621e308bb73555f161ca6089e66db6ba9ea5151a627d585df7c3fb2102d",
+  "capturedAt": "2026-10-14T17:39:51.253755+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-primeira/esquiva-robot-PLAYER_HIT.png\", \"sha256\": \"0f4e714ccb24a474cc34ef8a52643a870efa525a05ebf39745c4fc638314e2d6\", \"bytes\": 760926, \"binaryRetained\": false}"
+}

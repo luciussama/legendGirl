@@ -1,4 +1,5 @@
 import { scheduleDamageSound } from './toy-room/DamageAudio.js';
+import { scheduleSwordSound } from './toy-room/SwordAudio.js';
 import { scheduleEnemyMovement } from './toy-room/EnemyMovementAudio.js';
 
 export function createAudioSystem() {
@@ -864,9 +865,13 @@ export function createAudioSystem() {
       heart_gain: [660, 990, 'sine', 0.11, 0.22],
       heart_loss: [240, 100, 'triangle', 0.12, 0.22]
     };
+    const swordEvent = arena && ['player_attack', 'sword_impact', 'sword_block'].includes(event);
     const profile = sounds[event];
-    if (!profile) throw new RangeError(`Som de combate desconhecido: ${event}`);
+    if (!profile && !swordEvent) throw new RangeError(`Som de combate desconhecido: ${event}`);
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
+
+    if (swordEvent) return scheduleSwordSound(state.audioCtx, getDestination() || state.audioCtx.destination,
+      registerActiveNode, event);
 
     if (event.endsWith('_hit')) {
       return scheduleDamageSound(state.audioCtx, getDestination() || state.audioCtx.destination,

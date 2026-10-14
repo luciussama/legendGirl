@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzz-20261014T173705-077e48f1f3fe",
+  "date": "2026-10-14T17:37:05.879346+00:00",
+  "title": "QA de aproximação por bordas dos corpos, alcance ampliado preservado",
+  "files": [
+    {
+      "path": "scripts/test-arena-balance.js",
+      "sourceId": "0f1c448f8320d051af75189e92c65db71b7af59e0edaa9e535a1537942778d62",
+      "sha256": "cd2901303464b9e7b321e37bccfbddd9a390c6a6d219c3325d663ba082767302",
+      "bytes": 6540,
+      "metadataOnly": false
+    },
+    {
+      "path": "tests/battle-gameplay-runner.js",
+      "sourceId": "1b2ebf08e33ba15ec2fc26410d62a9e955d3424e1f63e0ed745bf20a6529c55e",
+      "sha256": "09dbd5fde6d58abfed2e24053e310b0e958e3f3a6bb830539a800b069c36a829",
+      "bytes": 3289,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-arena-impact-gameplay-browser.js",
+      "sourceId": "d71b11a3db08f0fb4d874653e7c89a6385e59fd59d627a07f5eb335b4cca33d6",
+      "sha256": "678a0b73d27f310aa2bee01ec0f5706fc86960a7dcda72809269717aabb48dcd",
+      "bytes": 5248,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

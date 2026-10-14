@@ -100,7 +100,7 @@ export function updateArenaEnemyAI(battle, dt) {
 
   const visibleThreat = s.attackTime > (battle.tuning.swordDuration ?? 12) - (battle.tuning.swordWindup ?? 4)
     && battle.room.story.state.attackDirection === side
-    && distance < Math.max(battle.tuning.swordRange ?? 240, contact + 40) + 30;
+    && distance < (battle.getSwordRange?.(e.actor) ?? Math.max(battle.tuning.swordRange ?? 240, contact + 40)) + 30;
   const canRetreat = side > 0
     ? e.x < battle.tuning.right - p.bodyWidth / 2 - 35
     : e.x > battle.tuning.left + p.bodyWidth / 2 + 35;

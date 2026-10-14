@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8184c716d17709873c945d237a896ad55fef4ae0093b1aeace4427246f79ca07",
+  "path": "qa-execucoes/c4d83d0145464eada2d776a8aacecd2b/docs/qa/toy-room-arena/android-paisagem-exploracao.png",
+  "sha256": "5669ca9db2c2af54c47053dd24194dda444d102bffbb64b475b6399b19acb817",
+  "capturedAt": "2026-10-14T17:43:13.290585+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-exploracao.png\", \"sha256\": \"d296e3b4a117a41cbef186c20348c34f529e163e96b16b133f5b65c23fb31043\", \"bytes\": 712515, \"binaryRetained\": false}"
+}

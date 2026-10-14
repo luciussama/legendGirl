@@ -115,6 +115,20 @@ export class ToyRoomBattle {
     }
   }
 
+  getSwordRange(actor = this.state.enemy.actor) {
+    return this.presentation
+      ? Math.max(this.tuning.swordRange, (this.getEnemyCollisionDistance(actor) + 40) * (this.tuning.swordContactScale ?? 1))
+      : this.tuning.swordRange;
+  }
+
+  swordContactPoint(dx, facing) {
+    const s = this.state, profile = this.presentation?.enemies?.[s.enemy.actor];
+    const reach = (s.crouching ? 118 : 165) * 1.1;
+    const surface = Math.max(70, Math.abs(dx) - (profile?.bodyWidth ?? 0) / 2 + 35);
+    return { x: this.room.player.x + facing * Math.min(reach, surface),
+      y: this.tuning.ground - (s.crouching ? 52 : 112) - s.jump };
+  }
+
   resolveActorBodies(side) {
     const s=this.state,e=s?.enemy,p=this.presentation?.enemies?.[e?.actor];
     if(!p||s.transition||e.hp<=0||s.jump>=p.bodyHeight)return;
@@ -241,8 +255,8 @@ export class ToyRoomBattle {
   startImpact(target, x, y, direction, heavy) {
     const s = this.state;
     s.impact = { target, x, y, direction, elapsed: 0, duration: 14, heavy };
-    s.combatShake = { elapsed: 0, duration: 10, strength: heavy ? 4 : 2 };
-    s.hitPause = this.presentation ? (heavy ? 4 : 2) : heavy ? 2 : 1;
+    s.combatShake = { elapsed: 0, duration: 10, strength: this.presentation ? (heavy ? 5 : 3) : heavy ? 4 : 2 };
+    s.hitPause = this.presentation ? (heavy ? 5 : 3) : heavy ? 2 : 1;
     this.presentation?.onImpact?.(x, y, heavy);
     s.history.push({ event: 'IMPACT', target, frame: Math.floor(s.elapsed), heavy });
   }
@@ -340,18 +354,23 @@ export class ToyRoomBattle {
       : s.attackTime > 0 && s.attackTime <= 8;
     if (swordActive && !s.swordHit && e.hp > 0 && !(this.presentation && e.state === 'ENRAGE')) {
       const dx = e.x - r.player.x, facing = r.story.state.attackDirection;
-      const swordRange=this.presentation?Math.max(t.swordRange,this.getEnemyCollisionDistance(e.actor)+40):t.swordRange;
+      const swordRange = this.getSwordRange(e.actor);
       if (dx * facing >= -20 && Math.abs(dx) < swordRange && s.jump < 85) {
         s.swordHit = true;
         if (this.enemyGuarding()) {
           s.cooldown = Math.max(s.cooldown, t.blockRecovery ?? ARENA_SWORD.blockRecovery);
           s.history.push({ event: 'SWORD_BLOCKED', enemy: e.actor, frame: Math.floor(s.elapsed) });
+          const contact = this.swordContactPoint(dx, facing);
+          this.presentation.onBlock?.(contact.x, contact.y, facing);
+          this.playCombatSound('sword_block');
         } else {
           transferHeart(e, s.player);
           e.pressureChain = 0;
           s.history.push({ event: 'PLAYER_HIT', enemy: e.actor, playerHp: s.player.hp, enemyHp: e.hp });
-          const impactX = (r.player.x + e.x) / 2, impactY = t.ground - 42;
+          const contact = this.presentation ? this.swordContactPoint(dx, facing) : { x: (r.player.x + e.x) / 2, y: t.ground - 42 };
+          const impactX = contact.x, impactY = contact.y;
           this.startImpact('enemy', impactX, impactY, facing, e.actor === 'bear');
+          if (this.presentation) this.playCombatSound('sword_impact');
           this.playCombatSound(`${e.actor}_hit`);
           this.playCombatSound('heart_gain');
           this.playCombatSound('heart_loss');

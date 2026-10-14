@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T165208-d6c4ef11ca99",
+  "sessionId": "20261014T165208-d6c4ef11ca99",
+  "type": "inicio",
+  "date": "2026-10-14T16:52:08.775932+00:00",
+  "title": "Recolher seletor de fases em ícone discreto",
+  "actor": "Codex",
+  "branch": "FEAT-refino-batalha",
+  "head": "f2cf959b600fe1ee69a9e5784286ec214f4b0500",
+  "workingTree": []
+}

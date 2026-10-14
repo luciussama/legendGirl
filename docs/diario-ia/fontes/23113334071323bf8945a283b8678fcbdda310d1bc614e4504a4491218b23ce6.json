@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "23113334071323bf8945a283b8678fcbdda310d1bc614e4504a4491218b23ce6",
+  "path": "qa-execucoes/c4d83d0145464eada2d776a8aacecd2b/docs/qa/toy-room-arena/android-retorno.png",
+  "sha256": "e461a6d1fcce223b5bd82b943b09fcd7054040621f9a84f533a0a95c62be0ea4",
+  "capturedAt": "2026-10-14T17:43:13.297744+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-retorno.png\", \"sha256\": \"22dfe17ccae2e4d54d26fadf85dc91fbd3ae652c89e66816b71850b750f57f9f\", \"bytes\": 480749, \"binaryRetained\": false}"
+}

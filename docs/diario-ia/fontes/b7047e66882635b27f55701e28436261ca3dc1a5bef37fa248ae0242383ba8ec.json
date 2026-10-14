@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b7047e66882635b27f55701e28436261ca3dc1a5bef37fa248ae0242383ba8ec",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-ENEMY_HIT.png",
+  "sha256": "0245d6d926624ee69e2763860fa13a2a07250fb7ee9b3ed3e2e73372dbd1491f",
+  "capturedAt": "2026-10-14T17:44:36.346439+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-ENEMY_HIT.png\", \"sha256\": \"c34c11a956e8e457a877e6bc58079bc7d7f98c30523cd5d57f5968e9c230f04a\", \"bytes\": 772160, \"binaryRetained\": false}"
+}

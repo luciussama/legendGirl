@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "babf2cc8f53da80ee078741eaff0258a435e829a71363cf47ce58075c001f70b",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia.json",
+  "sha256": "24b93e5afbbf34827658c04254c65e44123cd1d510ccf8e239f141ad3f28fc54",
+  "capturedAt": "2026-10-14T17:44:36.351937+00:00",
+  "origin": {
+    "type": "resultado-gameplay",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"politica\": \"insistencia\",\n  \"resultado\": \"DEFEAT\",\n  \"segundos\": 14.67,\n  \"tentativasEspada\": 19,\n  \"vida\": 0,\n  \"eventos\": [\n    {\n      \"event\": \"ENEMY_HIT\",\n      \"enemy\": \"train\",\n      \"playerHp\": 2,\n      \"enemyHp\": 3\n    },\n    {\n      \"event\": \"PLAYER_HIT\",\n      \"enemy\": \"train\",\n      \"playerHp\": 3,\n      \"enemyHp\": 2\n    },\n    {\n      \"event\": \"PLAYER_HIT\",\n      \"enemy\": \"train\",\n      \"playerHp\": 3,\n      \"enemyHp\": 1\n    },\n    {\n      \"event\": \"PLAYER_HIT\",\n      \"enemy\": \"train\",\n      \"playerHp\": 3,\n      \"enemyHp\": 0\n    },\n    {\n      \"event\": \"DEFEATED\",\n      \"enemy\": \"train\"\n    },\n    {\n      \"event\": \"ENEMY_HIT\",\n      \"enemy\": \"robot\",\n      \"playerHp\": 2,\n      \"enemyHp\": 4,\n      \"contact\": true\n    },\n    {\n      \"event\": \"SWORD_BLOCKED\",\n      \"enemy\": \"robot\",\n      \"frame\": 528\n    },\n    {\n      \"event\": \"ENEMY_HIT\",\n      \"enemy\": \"robot\",\n      \"playerHp\": 1,\n      \"enemyHp\": 4\n    },\n    {\n      \"event\": \"SWORD_BLOCKED\",\n      \"enemy\": \"robot\",\n      \"frame\": 586\n    },\n    {\n      \"event\": \"ENEMY_HIT\",\n      \"enemy\": \"robot\",\n      \"playerHp\": 0,\n      \"enemyHp\": 4\n    }\n  ]\n}"
+}

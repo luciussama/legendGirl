@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "c13595313fa34417bbb0abab6096aa3b",
+  "type": "qa",
+  "date": "2026-10-14T16:59:37.246075+00:00",
+  "title": "QA temporário: test:arena:impact:browser",
+  "exitCode": 0,
+  "sourceId": "8456fbd89a8a35e1f118fee25ec0abef5a3be7e1c8e8b75e2b9f96742b15d9d2",
+  "package": "zzzzzz-20261014T165820-f3cf966e19ce"
+}

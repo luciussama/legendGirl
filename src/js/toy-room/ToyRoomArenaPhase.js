@@ -68,6 +68,7 @@ export class ToyRoomArenaPhase {
         if (kind) this.fx.emit(kind, this.room.player.x, kind === 'trail' ? 580 : 680, kind === 'land');
       },
       onImpact: (x, y, heavy) => this.fx.emit('impact', x, y, heavy),
+      onBlock: (x, y) => this.fx.emit('block', x, y),
       renderFX: ctx => this.fx.render(ctx),
       enemyScale: ARENA_SCALE.enemy,
       renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout); },

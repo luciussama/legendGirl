@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e516564b43f3dc7137d3ee99580c1be15789c613e5c16441def9a10fbfd9b58a",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/esquiva-bear-ENEMY_HIT.png",
+  "sha256": "681de424dd2f3bdd97f5da8a6279fb984e8c90ed3bb5afed54d5ced7f104842f",
+  "capturedAt": "2026-10-14T17:44:36.332196+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/esquiva-bear-ENEMY_HIT.png\", \"sha256\": \"27afd15818bc73b591c4b6cf20f13c2354f41b4e175d1e4afc295987454320fa\", \"bytes\": 742345, \"binaryRetained\": false}"
+}

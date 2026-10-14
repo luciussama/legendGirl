@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0623ac973013a84fff438e49cda5976433a0efa441999e54eac2480b2e68c6d3",
+  "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-train-PLAYER_HIT.png",
+  "sha256": "187e713e70b37e5085f69cb363a79a66aca3a58f825d12a5116b4a348c7a13d9",
+  "capturedAt": "2026-10-14T17:39:51.255238+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-primeira/esquiva-train-PLAYER_HIT.png\", \"sha256\": \"bae093bba22fa2e3f298cdddf2d12ede94d6c662d9afb851cc7205b148f9a7df\", \"bytes\": 741600, \"binaryRetained\": false}"
+}

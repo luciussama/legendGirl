@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2c8e5d047c875019608cfdd17d8a92311e730caec04fe5ecdaa46a066265b08f",
+  "path": "gameplay/20261014-impacto-espada/esquiva-robot-PLAYER_HIT.png",
+  "sha256": "8d4272dbcdfacc463af0558825fe119b0932ec7059a8b7db8ad08c6dacf839fa",
+  "capturedAt": "2026-10-14T17:01:18.120941+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T165637-fa34b61ad6ca"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-impacto-espada/esquiva-robot-PLAYER_HIT.png\", \"sha256\": \"65ea262f88b963c02f788872044909dad07c445dba0db2f4a6006770696cc40f\", \"bytes\": 769776, \"binaryRetained\": false}"
+}

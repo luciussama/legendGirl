@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "185d3c345a8fb90c26c6a6415ab1d7985e0c9d358481f1e66d3e4a469309721b",
+  "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-bear-DEFEATED.png",
+  "sha256": "67121bfe05dce06f9758c9d367c62d3498fb499a58df431fd54143c3ee5b8f56",
+  "capturedAt": "2026-10-14T17:39:51.244557+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-primeira/esquiva-bear-DEFEATED.png\", \"sha256\": \"5b35fae8f134a3f42ba600266e348cfbeef4c8f939816a6cf3282c78c37db990\", \"bytes\": 762252, \"binaryRetained\": false}"
+}

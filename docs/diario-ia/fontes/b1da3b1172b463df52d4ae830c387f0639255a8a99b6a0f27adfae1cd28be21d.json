@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b1da3b1172b463df52d4ae830c387f0639255a8a99b6a0f27adfae1cd28be21d",
+  "path": "qa-execucoes/0d75f8d92dbf47c39f05ebb21d97a4de.log",
+  "sha256": "2a4150b1182682cad1cd60831c87f7215a3ef1d94d9cbdc89e2cb6e92029fefb",
+  "capturedAt": "2026-10-14T17:34:04.338123+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:sword-audio:browser",
+    "exitCode": 0,
+    "package": "zzzzzz-20261014T173346-0618ba6fb61b"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:sword-audio:browser\n> node scripts/test-sword-audio-browser.js\n\nAPROVADO: 9 renderizações de corte/impacto/bloqueio, mudo, volume proporcional, vozes encerradas e 4 misturas com reação dos inimigos sem clipping.\n{\"cases\":[{\"event\":\"player_attack\",\"volume\":0,\"peak\":0,\"rms\":0,\"tail\":0,\"nodes\":3,\"ended\":3},{\"event\":\"player_attack\",\"volume\":0.5,\"peak\":0.08765176683664322,\"rms\":0.0056067251517294995,\"tail\":0,\"nodes\":3,\"ended\":3},{\"event\":\"player_attack\",\"volume\":1,\"peak\":0.17530353367328644,\"rms\":0.011213450302338508,\"tail\":0,\"nodes\":3,\"ended\":3},{\"event\":\"sword_impact\",\"volume\":0,\"peak\":0,\"rms\":0,\"tail\":0,\"nodes\":4,\"ended\":4},{\"event\":\"sword_impact\",\"volume\":0.5,\"peak\":0.24287471175193787,\"rms\":0.009771676987610844,\"tail\":0,\"nodes\":4,\"ended\":4},{\"event\":\"sword_impact\",\"volume\":1,\"peak\":0.48574942350387573,\"rms\":0.019543354010754268,\"tail\":0,\"nodes\":4,\"ended\":4},{\"event\":\"sword_block\",\"volume\":0,\"peak\":0,\"rms\":0,\"tail\":0,\"nodes\":5,\"ended\":5},{\"event\":\"sword_block\",\"volume\":0.5,\"peak\":0.16895967721939087,\"rms\":0.00698464554036307,\"tail\":0,\"nodes\":5,\"ended\":5},{\"event\":\"sword_block\",\"volume\":1,\"peak\":0.33791935443878174,\"rms\":0.013969291123990552,\"tail\":0,\"nodes\":5,\"ended\":5},{\"actor\":\"train\",\"peak\":0.6343520879745483},{\"actor\":\"robot\",\"peak\":0.7537940740585327},{\"actor\":\"dinosaur\",\"peak\":0.43539416790008545},{\"actor\":\"bear\",\"peak\":0.41555511951446533}],\"integrated\":[true,true,true]}\n"
+}

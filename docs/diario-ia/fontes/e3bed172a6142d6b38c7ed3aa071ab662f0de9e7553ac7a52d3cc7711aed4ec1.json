@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e3bed172a6142d6b38c7ed3aa071ab662f0de9e7553ac7a52d3cc7711aed4ec1",
+  "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-DEFEAT.png",
+  "sha256": "a94a22ea0290bb8458fa3f17bd329741eec3f2b0e4844e1dd6365571dd2c0ea0",
+  "capturedAt": "2026-10-14T17:39:51.257008+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-primeira/insistencia-DEFEAT.png\", \"sha256\": \"7574594ef2e35f8bec6061233779d21b1b91b0d79ff34c47eeff9703bac3cf33\", \"bytes\": 725431, \"binaryRetained\": false}"
+}

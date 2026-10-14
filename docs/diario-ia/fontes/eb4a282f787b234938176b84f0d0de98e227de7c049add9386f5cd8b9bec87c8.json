@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "eb4a282f787b234938176b84f0d0de98e227de7c049add9386f5cd8b9bec87c8",
+  "path": "gameplay/20261014-impacto-espada/esquiva-dinosaur-PLAYER_HIT.png",
+  "sha256": "82f4047e24e861f35ed32239461d8caa819029ddd2d9dd86d8ad8f576fe0f608",
+  "capturedAt": "2026-10-14T17:01:18.118517+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T165637-fa34b61ad6ca"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-impacto-espada/esquiva-dinosaur-PLAYER_HIT.png\", \"sha256\": \"ab6e7686c499ef434332018ea21a3be1e2dbed58d54a631df7f93b8d3a158aec\", \"bytes\": 708813, \"binaryRetained\": false}"
+}

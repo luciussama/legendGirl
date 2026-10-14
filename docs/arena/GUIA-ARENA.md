@@ -19,4 +19,8 @@ A espada da arena tem seis quadros de antecipação, seis de contato e disponibi
 
 A transferência de corações conserva suas regras: acertos válidos curam, golpes bloqueados não transferem vida. A exploração e o combate legado conservam seus parâmetros. Os tempos da apresentação acompanham as janelas da simulação; as artes e hitboxes dos corpos permanecem as mesmas.
 
+O alcance efetivo da espada foi ampliado em 10% sobre o balanceamento anterior, tanto no valor nominal (190 para 209) quanto no mínimo derivado dos corpos. `getSwordRange` compartilha esse cálculo com a evasão. A retirada rápida do Robô foi compatibilizada com esse alcance; tempos e recuperação da espada continuam os mesmos.
+
+O som da espada distingue passagem de ar, acerto e bloqueio. Um acerto combina estalo, corpo grave e ressonância da lâmina com a reação própria do brinquedo; um bloqueio tem ricochete metálico e faíscas claras, sem emitir dano ou cura. Os efeitos ficam na região de contato da lâmina, acompanhando salto e agachamento. Arco, partículas, pausa breve do impacto e tremor foram reforçados, mantendo corações, recuo e hitboxes dos corpos. Volume mestre, mudo, pausa e transições continuam controlando os sons.
+
 Os movimentos têm identidade sonora: motor do trem, juntas do robô, passos do dinossauro e passos pesados com tecido do Urso. O áudio acompanha deslocamento efetivo e respeita o volume e o silenciamento do jogador.

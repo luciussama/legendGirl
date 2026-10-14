@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T173011-4fcbf47e58fc-fim",
+  "sessionId": "20261014T173011-4fcbf47e58fc",
+  "type": "fim",
+  "date": "2026-10-14T17:44:37.468120+00:00",
+  "title": "Ampliar alcance da espada em 10% e reforçar som e impacto",
+  "actor": "Codex",
+  "summary": "Espada ampliada exatamente em 10% nos quatro alcances efetivos (nominal 190→209); som em camadas para corte/acerto/bloqueio, faíscas e contato junto à lâmina, arco maior e impacto mais marcado. Corações, dano, recuo, recuperação e corpos preservados; evasão curta do Robô compatibilizada. Fontes e resultados preservados no acervo.",
+  "checks": [
+    "npm test: aprovado na versão final; 111 percursos contrastantes e verificação dos quatro alcances exatos.",
+    "test:sword-audio:browser: aprovado; corte/acerto/bloqueio, ganho mestre/mudo, vozes encerradas e misturas com inimigos sem clipping.",
+    "Gameplay em tempo real: vitória em 53,78 s com 3 HP, 19 acertos em 23 tentativas; insistência perdeu em 14,67 s. Capturas inspecionadas e arquivadas por hash antes de descarte.",
+    "test:toy-room:arena:browser: aprovado após último ajuste visual em desktop e Android emulado retrato/paisagem, save/load e retorno.",
+    "docs:sprites reconstruído; build e git diff --check aprovados. Falhas intermediárias de sincronização dos agentes de QA e respectivas correções preservadas na avaliação."
+  ],
+  "pending": [
+    "Avaliação humana da sensação do golpe e escuta dos sons no dispositivo de uso."
+  ],
+  "files": [
+    "src/js/toy-room/SwordAudio.js",
+    "src/js/audio.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "src/js/toy-room/ArenaPlayerController.js",
+    "src/js/toy-room/ArenaPlayerRenderer.js",
+    "src/js/toy-room/ImpactFX.js",
+    "src/js/toy-room/ArenaEnemies.js",
+    "src/js/toy-room/ArenaEnemyAI.js",
+    "src/js/toy-room/ToyRoomArenaPhase.js",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

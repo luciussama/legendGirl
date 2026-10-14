@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c29cb906be8fe16a49c76dea276ac45c71d5d4390611213e63cf414d7a354cd2",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia-train-ENEMY_HIT.png",
+  "sha256": "d9bb61a901a7f13063c4390aaaf491d3838ef0b90fa3063ba5ba5eb822985674",
+  "capturedAt": "2026-10-14T17:44:36.349486+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/insistencia-train-ENEMY_HIT.png\", \"sha256\": \"9428a5eb11177945cac34d0a6c17b38c21c8d3c4b3b7eb867b3c2dd8b955e1eb\", \"bytes\": 763432, \"binaryRetained\": false}"
+}

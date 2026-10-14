@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e3dba930c51f32b53d12f082b513582fd2d1dc114720fc150596ca89de7c231d",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-SWORD_BLOCKED.png",
+  "sha256": "abb560556d20484c0a1fcbd3cf4c83a38b7b610b4fd4b78f757fe32abed4a978",
+  "capturedAt": "2026-10-14T17:44:36.347996+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-SWORD_BLOCKED.png\", \"sha256\": \"9b7cb04eed6f5a6f1edd30285ae77db6d2aa5fd70625d62260b4b0d5f133967f\", \"bytes\": 775992, \"binaryRetained\": false}"
+}

@@ -41,6 +41,8 @@ function refreshCampaignMenu() {
 }
 
 const debugPhaseSelect = document.getElementById('debug-phase-select');
+const debugPhaseToggle = document.getElementById('btn-debug-phase-toggle');
+const debugPhasePanel = document.getElementById('debug-phase-panel');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
 const btnRestart = document.getElementById('btn-restart');
@@ -324,10 +326,31 @@ if (btnStartPhase1) {
 }
 
 if (debugPhaseSelect) {
-  // A navegação do select não move a menina nem dispara atalhos do jogo.
-  debugPhaseSelect.addEventListener('keydown', event => event.stopPropagation());
-  debugPhaseSelect.addEventListener('keyup', event => event.stopPropagation());
-  debugPhaseSelect.addEventListener('pointerdown', event => event.stopPropagation());
+  const menu = debugPhaseToggle?.closest('.phase-debug-menu');
+  const setDebugPhaseMenuOpen = (open, restoreFocus = false) => {
+    if (!debugPhasePanel || !debugPhaseToggle) return;
+    debugPhasePanel.hidden = !open;
+    debugPhaseToggle.setAttribute('aria-expanded', String(open));
+    if (open) debugPhaseSelect.focus({ preventScroll: true });
+    else if (restoreFocus) debugPhaseToggle.focus({ preventScroll: true });
+  };
+  debugPhaseToggle?.addEventListener('click', event => {
+    event.stopPropagation();
+    setDebugPhaseMenuOpen(debugPhasePanel.hidden);
+  });
+  // Interagir com a ferramenta não dispara atalhos nem movimento da partida.
+  menu?.addEventListener('keydown', event => {
+    event.stopPropagation();
+    if (event.key === 'Escape') {
+      event.preventDefault();
+      setDebugPhaseMenuOpen(false, true);
+    }
+  });
+  menu?.addEventListener('keyup', event => event.stopPropagation());
+  menu?.addEventListener('pointerdown', event => event.stopPropagation());
+  document.addEventListener('pointerdown', event => {
+    if (!menu?.contains(event.target)) setDebugPhaseMenuOpen(false);
+  });
   debugPhaseSelect.addEventListener('change', event => {
     event.stopPropagation();
     const phase = debugPhaseSelect.value;
@@ -340,6 +363,7 @@ if (debugPhaseSelect) {
     started = true; isStarting = false; isActionLocked = false;
     updatePauseButtonState();
     debugPhaseSelect.value = ''; debugPhaseSelect.blur();
+    setDebugPhaseMenuOpen(false);
   });
 }
 

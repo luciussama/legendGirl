@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "963fb8eb46fc333f11c7bc60b0e5006ba11e01543d1b1e7e7c326e59d712c582",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/esquiva-dinosaur-DEFEATED.png",
+  "sha256": "9cc37c0f92ef8f20c3090e9ef1fb4d401cafcbc7b56949fe9497a281aa03b594",
+  "capturedAt": "2026-10-14T17:44:36.335329+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/esquiva-dinosaur-DEFEATED.png\", \"sha256\": \"138918dec57db3bf10fa96f3ec573437d878cefa9f2dc907e69a18690d783237\", \"bytes\": 763517, \"binaryRetained\": false}"
+}

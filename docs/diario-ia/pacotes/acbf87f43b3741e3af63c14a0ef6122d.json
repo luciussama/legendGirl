@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "acbf87f43b3741e3af63c14a0ef6122d",
+  "date": "2026-10-14T17:38:14.488104+00:00",
+  "title": "QA temporário: test:arena:impact:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/acbf87f43b3741e3af63c14a0ef6122d.log",
+      "sourceId": "7873468e629221b88c6797c335be926dc2186564c32a65c6bd1c02319a3132a8",
+      "sha256": "6d9e52ff9e878458fdf742999e4e0aeb14a55c7618069a6ac32fc1984b3e0b10",
+      "bytes": 7456,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/acbf87f43b3741e3af63c14a0ef6122d/docs/qa/.DS_Store",
+      "sourceId": "da2ba90c2fe97e9d77c99bf03d6b8d6e18d62c940c3716b742b4ec615a876dec",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

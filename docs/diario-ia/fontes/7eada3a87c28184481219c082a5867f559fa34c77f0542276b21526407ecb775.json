@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7eada3a87c28184481219c082a5867f559fa34c77f0542276b21526407ecb775",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-DEFEATED.png",
+  "sha256": "1a5fd44edc7092e0546f24eaa458a934d5050c4659348229ed2209279920663a",
+  "capturedAt": "2026-10-14T17:44:36.344789+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/insistencia-robot-DEFEATED.png\", \"sha256\": \"794744502814cdcf6136caa65446eda278cb26e0b43b132f5b4bef71f6612e19\", \"bytes\": 765300, \"binaryRetained\": false}"
+}

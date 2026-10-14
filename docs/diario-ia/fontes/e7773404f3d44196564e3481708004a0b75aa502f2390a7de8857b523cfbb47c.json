@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e7773404f3d44196564e3481708004a0b75aa502f2390a7de8857b523cfbb47c",
+  "path": "gameplay/20261014-impacto-espada/insistencia-robot-DEFEATED.png",
+  "sha256": "1506d76f72ccb12b750f2170d0c80d168ce94c501af8fab9be4f2c8d58eada3d",
+  "capturedAt": "2026-10-14T17:01:18.125000+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T165637-fa34b61ad6ca"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-impacto-espada/insistencia-robot-DEFEATED.png\", \"sha256\": \"1b97e6f58106370faa9686e5d25cd627f3cdad72e163503c7166f97c96b67c87\", \"bytes\": 766962, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6f5462c083b324cb0764ff7042dad2a71b809d61c96ffc8c1f85ffb41a083fae",
+  "path": "gameplay/20261014-espada-reforcada-aproximacao/insistencia-DEFEAT.png",
+  "sha256": "ca16b750953ec31227f941c5a3d9c46a13095d40688fc6df2cafa8c5a5c7e770",
+  "capturedAt": "2026-10-14T17:44:36.343338+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T173011-4fcbf47e58fc"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-espada-reforcada-aproximacao/insistencia-DEFEAT.png\", \"sha256\": \"73dd8912ee88a5ea31ff5a01b37e7221e52d429516a3f8011d37fc7d3f8051cc\", \"bytes\": 715155, \"binaryRetained\": false}"
+}

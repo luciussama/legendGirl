@@ -34,6 +34,10 @@ Robô, dinossauro e Urso agora ajustam a escolha dos golpes existentes ao jeito 
 
 A arena passa a exigir leitura do adversário: Robô, dinossauro e Urso respondem aos golpes recebidos e protegem a preparação dessa resposta. A menina precisa abaixar, pular ou recuar e atacar na abertura seguinte. Insistir contra a proteção não recupera corações e prolonga a recuperação da espada. O HUD anuncia a ameaça e a abertura; a evasão dos inimigos considera o alcance real e tem alternativa nas bordas. O Trem conserva seu papel introdutório, e os corações e as artes permanecem os mesmos.
 
+## 14 de outubro de 2026 — peso e clareza da espada
+
+A espada ganhou 10% de alcance e um contato mais claro. O som diferencia o corte no ar, o acerto com peso e o ricochete contra a proteção. Faíscas e efeitos acompanham a lâmina; os acertos têm uma pausa e um tremor um pouco mais marcados. A menina continua precisando esquivar e aproveitar a abertura do inimigo, com os mesmos corações e recuo.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

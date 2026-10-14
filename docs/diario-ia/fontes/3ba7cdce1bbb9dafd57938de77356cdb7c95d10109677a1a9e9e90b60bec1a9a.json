@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3ba7cdce1bbb9dafd57938de77356cdb7c95d10109677a1a9e9e90b60bec1a9a",
+  "path": "qa-execucoes/c4d83d0145464eada2d776a8aacecd2b/docs/qa/toy-room-arena/android-transporte.png",
+  "sha256": "2c948638ba05976429658cf186157634ea72bde7e1fab34cf8c3047b88dfb071",
+  "capturedAt": "2026-10-14T17:43:13.300212+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-transporte.png\", \"sha256\": \"4c9c46720c62f6678be38633c88aec6f89d274b2641379f82722837645259a6a\", \"bytes\": 719214, \"binaryRetained\": false}"
+}

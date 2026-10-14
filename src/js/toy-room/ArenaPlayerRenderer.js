@@ -51,12 +51,12 @@ export class ArenaPlayerRenderer {
   }
   renderSwordArc(ctx,sample) {
     const {progress,alpha,crouching}=sample.slash;
-    const radius=crouching?98:135,cy=crouching?-35:-100;
+    const radius=(crouching?98:135)*1.1,cy=crouching?-35:-100;
     ctx.save();ctx.scale(sample.facing,1);ctx.translate(18,cy);
     const end=(crouching?-.55:-.95)+progress*(crouching?.9:1.2),start=end-.65;
-    ctx.globalAlpha*=alpha*.8;ctx.strokeStyle='#ffe9ae';ctx.lineWidth=8;
+    ctx.globalAlpha*=alpha*.9;ctx.strokeStyle='#ffe9ae';ctx.lineWidth=11;
     ctx.beginPath();ctx.arc(0,0,radius,start,end);ctx.stroke();
-    ctx.globalAlpha*=.75;ctx.strokeStyle='#fff8e2';ctx.lineWidth=3;
+    ctx.globalAlpha*=.9;ctx.strokeStyle='#fff8e2';ctx.lineWidth=4;
     ctx.beginPath();ctx.arc(0,0,radius-7,start+.15,end);ctx.stroke();ctx.restore();
   }
 }

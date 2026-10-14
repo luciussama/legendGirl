@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2396a730cd521fe0e07bcb9a84f475b3b3aca002e06a424dd8be93fa4a0755ec",
+  "path": "gameplay/20261014-impacto-espada/esquiva-train-PLAYER_HIT.png",
+  "sha256": "966c3028ac26da73e15265a10113114530026266bbbc89e6f017a3aea5ddc77a",
+  "capturedAt": "2026-10-14T17:01:18.122148+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T165637-fa34b61ad6ca"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-impacto-espada/esquiva-train-PLAYER_HIT.png\", \"sha256\": \"677fe24f8e1153303967e9800e29e5fee3cdaafd259e52e81bfe2ce3fa7561f9\", \"bytes\": 709603, \"binaryRetained\": false}"
+}

@@ -62,15 +62,22 @@
 
     <!-- Ferramentas secundárias e controles de pausa e áudio -->
     <div class="top-controls-bar">
-      <label class="phase-debug-control" for="debug-phase-select">
-        <span id="debug-phase-help">Debug: escolha uma fase para pular</span>
-        <select id="debug-phase-select" aria-describedby="debug-phase-help" title="Pule entre o quarto escuro, a sala de brinquedos e a arena. O debug não altera a campanha salva.">
-          <option value="">Iniciar fase…</option>
-          <option value="bedroom">Quarto escuro</option>
-          <option value="toy-room">Sala de brinquedos</option>
-          <option value="arena">Arena de batalha</option>
-        </select>
-      </label>
+      <div class="phase-debug-menu">
+        <button id="btn-debug-phase-toggle" class="control-btn debug-control-btn" type="button" aria-label="Escolher fase" title="Escolher fase" aria-expanded="false" aria-controls="debug-phase-panel">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M5 21V4m0 0c5-4 9 4 14 0v10c-5 4-9-4-14 0" />
+          </svg>
+        </button>
+        <label id="debug-phase-panel" class="phase-debug-control" for="debug-phase-select" hidden>
+          <span id="debug-phase-help">Debug: escolha uma fase para pular</span>
+          <select id="debug-phase-select" aria-describedby="debug-phase-help" title="Pule entre o quarto escuro, a sala de brinquedos e a arena. O debug não altera a campanha salva.">
+            <option value="">Iniciar fase…</option>
+            <option value="bedroom">Quarto escuro</option>
+            <option value="toy-room">Sala de brinquedos</option>
+            <option value="arena">Arena de batalha</option>
+          </select>
+        </label>
+      </div>
       <button id="btn-pause-toggle" class="control-btn pause-toggle-btn" type="button" aria-label="Pausar jogo" title="Pausar / Continuar (P)">
         <span id="pause-icon" class="control-icon">⏸️</span>
       </button>

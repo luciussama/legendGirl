@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzz-20261014T165820-f3cf966e19ce",
+  "date": "2026-10-14T16:58:20.236244+00:00",
+  "title": "Gameplay em tempo real com teclado CDP e observação do impacto",
+  "files": [
+    {
+      "path": "scripts/test-arena-impact-gameplay-browser.js",
+      "sourceId": "2761b4a75e469f9ab4fe0db880daf51d9937cbfbf8efa5fca3866bcedcd543df",
+      "sha256": "b2707a63c423d815050bc9c68af4fdf76a77cf312bdce52abe6cb494b728de71",
+      "bytes": 5225,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:impact:browser": "node scripts/test-arena-impact-gameplay-browser.js"
+  }
+}

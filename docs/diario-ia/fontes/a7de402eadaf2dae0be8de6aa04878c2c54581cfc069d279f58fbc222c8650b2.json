@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a7de402eadaf2dae0be8de6aa04878c2c54581cfc069d279f58fbc222c8650b2",
+  "path": "qa-execucoes/c4d83d0145464eada2d776a8aacecd2b/docs/qa/toy-room-arena/android-arena-dinosaur-ataque.png",
+  "sha256": "c960549100df5d15978e4e12869e6708cf1e6e979de4ff9865f0f13a332bd122",
+  "capturedAt": "2026-10-14T17:43:13.269669+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-arena-dinosaur-ataque.png\", \"sha256\": \"e18a4b413dc542f29841d3d2d054e4fbfb779c34d13a688c9120182f83f2f09e\", \"bytes\": 519615, \"binaryRetained\": false}"
+}

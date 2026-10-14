@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "id": "espada-reforcada-gameplay-e6baf2f8b36d",
+  "date": "2026-10-14T17:39:51.265278+00:00",
+  "title": "Primeiro gameplay real com espada reforçada: vitória em 164,41 s; política de aproximação ajustada depois",
+  "files": [
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-VICTORY.png",
+      "sourceId": "e806eee89f85a595bbe6e9c52628a9e0fea16e8ba43369497ca285e69de3a1c6",
+      "sha256": "2098e2ccbd02a9336ec1110aa8fc6ec9d5f8e6cbd7aa9b8031950bacdee08877",
+      "bytes": 608087,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-bear-DEFEATED.png",
+      "sourceId": "185d3c345a8fb90c26c6a6415ab1d7985e0c9d358481f1e66d3e4a469309721b",
+      "sha256": "5b35fae8f134a3f42ba600266e348cfbeef4c8f939816a6cf3282c78c37db990",
+      "bytes": 762252,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-bear-PLAYER_HIT.png",
+      "sourceId": "4ddeb260bc5ed9f3a272456a3a2023cd3459a4096d8812a4567678dc7bfe0fdb",
+      "sha256": "404e3f6896071729971dee7db1a3e4ed7c04bf72b935a4d6a106f94815a51a1c",
+      "bytes": 727095,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-dinosaur-DEFEATED.png",
+      "sourceId": "edced8997329562f7aae6336c5b39d968dde5ce0136de6f1258e2a0104f43835",
+      "sha256": "5416d13ca8bfb4fbd247d2002e6abcc27f9377599ee910097a712ea65e5f7a25",
+      "bytes": 745828,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-dinosaur-ENEMY_HIT.png",
+      "sourceId": "66bba868d043e5de5db4697cb4c86adc4f743f41d23e92978dd3483a9a3ca4b4",
+      "sha256": "04b51d21d59c91c73ae14327c97e3f03dc0147752bb81280c3010056f28b3507",
+      "bytes": 764264,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-dinosaur-PLAYER_HIT.png",
+      "sourceId": "365ed3e623935057a917477b1b732c4ef33bb92cdd6a5e0db67e4cd1c73c8739",
+      "sha256": "6d6ee55eb8e3917ddb37abc6c6b9d03ce952154beab5c56267960dbff8069f17",
+      "bytes": 757593,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-robot-ENEMY_HIT.png",
+      "sourceId": "2dc85eda0a04028fdf2054df57b06047d2e5e3fcc764531c75c52fe5fdf081c2",
+      "sha256": "1610c5882c066c168d7ef037531c6b29ca224e0b510a5e6be3ebe130895539f6",
+      "bytes": 775507,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-robot-PLAYER_HIT.png",
+      "sourceId": "97c8396315c74806566d2f4659e6ac26547cca3e34aefa3aa9217b1551cc0939",
+      "sha256": "0f4e714ccb24a474cc34ef8a52643a870efa525a05ebf39745c4fc638314e2d6",
+      "bytes": 760926,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva-train-PLAYER_HIT.png",
+      "sourceId": "0623ac973013a84fff438e49cda5976433a0efa441999e54eac2480b2e68c6d3",
+      "sha256": "bae093bba22fa2e3f298cdddf2d12ede94d6c662d9afb851cc7205b148f9a7df",
+      "bytes": 741600,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/esquiva.json",
+      "sourceId": "275aa1027e6b30d5dbd1fc7fb5737fc9ad198685a70d025aa43f9027823c7f02",
+      "sha256": "f1722a71cf0be8cc9d01c73fc50fc04897ae9284dd530f0e0263043ff21dbed6",
+      "bytes": 2664,
+      "metadataOnly": false
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-DEFEAT.png",
+      "sourceId": "e3bed172a6142d6b38c7ed3aa071ab662f0de9e7553ac7a52d3cc7711aed4ec1",
+      "sha256": "7574594ef2e35f8bec6061233779d21b1b91b0d79ff34c47eeff9703bac3cf33",
+      "bytes": 725431,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-robot-DEFEATED.png",
+      "sourceId": "327e5ea674f1945b77dd839c945ad289408aca73ac1389f884de7defd507ee2b",
+      "sha256": "62f0e7756ad7365b836393046c015e76c9604aa2f9a597c80643f9238f991586",
+      "bytes": 765878,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-robot-ENEMY_HIT.png",
+      "sourceId": "293aace027f34ecdfa65f2958354acf907c2f177cee7b64cd35943dd97f049f6",
+      "sha256": "923fd4b0553453ce80266ec37bd81484debc1f40af358f8f207645e0f523d60e",
+      "bytes": 779779,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-robot-SWORD_BLOCKED.png",
+      "sourceId": "f895c1cd93667df171a85b341b3928395b80f1375ed349adc9f6c5494fb6adef",
+      "sha256": "1c7502800951c42e1da7deca15c8be0e4e1f00d1f1904db5e28b961d1619b214",
+      "bytes": 778840,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-train-ENEMY_HIT.png",
+      "sourceId": "7eb8c803ca58f1156a10b661fa72fea9f707cf45bd6fc25eb276e20bf4eaa479",
+      "sha256": "2ec8efe374ee19c9780d3d095ab17183abbe1140cfa1110b460cdcd02774037c",
+      "bytes": 756559,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia-train-PLAYER_HIT.png",
+      "sourceId": "780bcbff5b659ed2ac154d38d9396205c2a6d6a75346c5a17d49ef3b7fc352c3",
+      "sha256": "121305ea35b2a4f92093b609f987287bd337634ec2c2ede1fd2b77f9a57b4b15",
+      "bytes": 739107,
+      "metadataOnly": true
+    },
+    {
+      "path": "gameplay/20261014-espada-reforcada-primeira/insistencia.json",
+      "sourceId": "c420825fd5100fd91bee11713685e95bc8b2fbd59e5e62b5b5ab0c01489c3d2a",
+      "sha256": "1a569810072a624d6c14b0b0f108fb9cddc3cd6c5f9d6dee06a58b9b73023583",
+      "bytes": 1135,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9c836feb91c16a77a5144c2e7a696ce020ad8cde362efa08c880a13200997d7c",
+  "path": "gameplay/20261014-impacto-espada/esquiva-bear-ENEMY_HIT.png",
+  "sha256": "9f05d7e84635e49cbc443e87088dbdf9fcc1b429f813038228f6ff7f5576d5a7",
+  "capturedAt": "2026-10-14T17:01:18.114664+00:00",
+  "origin": {
+    "type": "registro-de-evidencia",
+    "sessionId": "20261014T165637-fa34b61ad6ca"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"gameplay/20261014-impacto-espada/esquiva-bear-ENEMY_HIT.png\", \"sha256\": \"690625d1fb16745040c3082a5010f99b8e837cd9c454c488d5869b997d9c58aa\", \"bytes\": 737648, \"binaryRetained\": false}"
+}

@@ -444,12 +444,30 @@ canvas {
   box-shadow: none;
 }
 
+.phase-debug-menu {
+  position: relative;
+}
+
 .phase-debug-control {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
   display: grid;
   gap: 4px;
+  width: 220px;
   max-width: min(220px, calc(100vw - 132px));
+  padding: 12px;
+  box-sizing: border-box;
+  border: 1px solid rgba(185, 177, 196, 0.24);
+  border-radius: 12px;
+  background: #19151f;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
   color: #d3cada;
   font-size: 11px;
+}
+
+.phase-debug-control[hidden] {
+  display: none;
 }
 
 .phase-debug-control select {
