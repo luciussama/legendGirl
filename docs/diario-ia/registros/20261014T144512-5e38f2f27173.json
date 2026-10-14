@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T144512-5e38f2f27173",
+  "sessionId": "20261014T144512-5e38f2f27173",
+  "type": "inicio",
+  "date": "2026-10-14T14:45:12.146254+00:00",
+  "title": "Implementar seleção adaptativa de ataques inimigos",
+  "actor": "Copilot",
+  "branch": "FEAT-refino-batalha",
+  "head": "e56f3a441dd1811c5711d061e4d7663f51e38225",
+  "workingTree": [
+    "?? docs/diario-ia/registros/20261014T141903-f3d92d8d1ea2-fim.json",
+    "?? docs/diario-ia/registros/20261014T141903-f3d92d8d1ea2.json"
+  ]
+}

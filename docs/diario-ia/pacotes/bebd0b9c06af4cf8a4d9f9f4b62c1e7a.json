@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "bebd0b9c06af4cf8a4d9f9f4b62c1e7a",
+  "date": "2026-10-14T15:14:49.727953+00:00",
+  "title": "QA temporário: test:arena:enemies",
+  "files": [
+    {
+      "path": "qa-execucoes/bebd0b9c06af4cf8a4d9f9f4b62c1e7a.log",
+      "sourceId": "14abad0dbb3e28fa32bb3a49800a5ffa883fee19745a1a493a375d2230d85276",
+      "sha256": "2f5f53bed8daebc5563a45902eb667b757e6a56487335abc2d67f01a82e8109d",
+      "bytes": 256,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/bebd0b9c06af4cf8a4d9f9f4b62c1e7a/docs/qa/.DS_Store",
+      "sourceId": "b4f4d7e4ed6e3b8a7cbda9dd2f9a7b4b80160c5db1ce46d355c21745b041c40b",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

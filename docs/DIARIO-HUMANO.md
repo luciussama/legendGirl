@@ -26,6 +26,10 @@ Essa organização evita que designers e desenvolvedores precisem navegar por re
 
 As falas da Toy Room passaram a usar a mesma caixa com retrato e nome do interlocutor da primeira fase. Nanda e a menina conversam em uma faixa ampla, em vez do quadrado central. No celular, a caixa respeita o espaço dos controles. Os textos e o ritmo da história permanecem iguais; trechos do narrador continuam distintos das falas dos personagens.
 
+## 14 de outubro de 2026 — inimigos que leem o estilo da jogadora
+
+Robô, dinossauro e Urso agora ajustam a escolha dos golpes existentes ao jeito recente de jogar: observam se a menina costuma ficar longe, pular ou atacar com frequência. O Trem mantém sua sequência introdutória. As decisões são determinísticas e usam uma memória curta, sem mudar os golpes, tempos, corações ou regras de combate. A intenção é aumentar o desafio sem retirar da jogadora oportunidades de leitura e resposta.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

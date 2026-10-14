@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T145756-0cace56a8f89",
+  "date": "2026-10-14T14:57:56.002596+00:00",
+  "title": "Regressão da seleção adaptativa de ataques na arena",
+  "files": [
+    {
+      "path": "scripts/test-arena-adaptive-ai.js",
+      "sourceId": "f4bb6944879c103c858508c59aca7b81285792533fe61c45056298b2f14b8739",
+      "sha256": "107645ea48667bee975660fe464d4f5a736deacffbf7f82ebe37b09ad24fdb60",
+      "bytes": 3465,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

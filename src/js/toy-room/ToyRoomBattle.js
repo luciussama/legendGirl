@@ -1,6 +1,6 @@
 import { PlayerController } from './PlayerController.js';
 import { DAMAGE_SPRITE_FRAMES } from './DamageSpriteFrames.js';
-import { updateArenaEnemyAI } from './ArenaEnemyAI.js';
+import { selectArenaEnemyAttack, updateArenaEnemyAI } from './ArenaEnemyAI.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { renderRocketPunch, renderBattleCrouch, BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY, battlePlayerJumpOffset, laserProjection, renderTrainWalk, rocketPunchTouchesPlayer } from './BattlePresentation.js';
@@ -209,6 +209,8 @@ export class ToyRoomBattle {
   beginEnemyAttack(attack) {
     const enemy = this.state.enemy;
     enemy.attack = attack;
+    enemy.lastAIChoice = attack;
+    enemy.recentAIChoices = [...(enemy.recentAIChoices ?? []), attack].slice(-2);
     enemy.attackIndex++;
     enemy.landed = false;
     this.setEnemyState('ATTACK');
@@ -371,7 +373,8 @@ export class ToyRoomBattle {
     if (e.state !== 'ATTACK') e.facing = dx < 0 ? -1 : 1;
     if (e.state === 'IDLE') { if (e.elapsed >= (profile?.idleTime??45)) this.setEnemyState('APPROACH'); }
     else if (e.state === 'APPROACH') {
-      const attacks = ATTACKS[e.actor], attack = attacks[e.attackIndex % attacks.length];
+      const attacks = ATTACKS[e.actor];
+      const attack = selectArenaEnemyAttack(this, distance, attacks) ?? attacks[e.attackIndex % attacks.length];
       const reach = Math.max((['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125) * (t.attackScale ?? 1),this.presentation?this.getEnemyCollisionDistance(e.actor)+45:0);
       if (distance > reach) {
         e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.speed ?? (e.enrage ? 2.6 : 2)) * (this.presentation && e.enrage ? 1.25 : 1) * dt, t.left + 40, t.right - 40);
