@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "605045fd532a4d5b938268fc5e88b695",
+  "type": "qa",
+  "date": "2026-10-14T00:20:50.605342+00:00",
+  "title": "QA temporário: verify:dark-room",
+  "exitCode": 1,
+  "sourceId": "f2fe442165c9b2c976c916dbb0ce1f42ad132ef3c3db71ff20adf9b635c5c0c9",
+  "package": "20261013T190911-2653321714ec"
+}

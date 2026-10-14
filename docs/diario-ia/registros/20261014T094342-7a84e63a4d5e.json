@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T094342-7a84e63a4d5e",
+  "sessionId": "20261014T094342-7a84e63a4d5e",
+  "type": "inicio",
+  "date": "2026-10-14T09:43:42.281166+00:00",
+  "title": "Investigar e corrigir regressão dos sprites substituídos por procedural",
+  "actor": "AI Studio",
+  "branch": null,
+  "head": null,
+  "workingTree": []
+}

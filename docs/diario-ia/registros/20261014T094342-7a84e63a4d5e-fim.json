@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T094342-7a84e63a4d5e-fim",
+  "sessionId": "20261014T094342-7a84e63a4d5e",
+  "type": "fim",
+  "date": "2026-10-14T09:49:27.623335+00:00",
+  "title": "Investigar e corrigir regressão dos sprites substituídos por procedural",
+  "actor": "AI Studio",
+  "summary": "Identificado que na tentativa anterior de desacoplamento houve regressão visual com os sprites das plataformas caindo no fallback procedural. Conforme a regra estabelecida ('Se não for possível, reverta'), todo o código-fonte de src/ foi revertido integralmente ao estado estável de main, restaurando os sprites ilustrados originais. Validação em Chromium real confirmou 2.402 chamadas de drawImage e renderização ativa de todos os sprites (giant_bear, stacked_books, vanity_table, small_dresser, messy_blocks, toy_drum, etc.). Dev server reiniciado.",
+  "checks": [
+    "Reversão completa para baseline estável: todos os arquivos em src/ idênticos a main",
+    "Verificação visual no navegador real via Playwright: sprites oficiais confirmados em drawImage",
+    "Build e compilação: aprovados"
+  ],
+  "pending": [],
+  "files": []
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "c69d38bacc124d64990564df2aa1284e",
+  "type": "qa",
+  "date": "2026-10-14T00:18:35.866047+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 1,
+  "sourceId": "54f4d88324cfb0e3dff25d0f45eb54ffa70445cfac8911ff822273d172427060",
+  "package": "suite-toy-room-camera-383ac306158b"
+}

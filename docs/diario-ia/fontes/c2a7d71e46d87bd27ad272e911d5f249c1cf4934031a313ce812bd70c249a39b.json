@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "c2a7d71e46d87bd27ad272e911d5f249c1cf4934031a313ce812bd70c249a39b",
+  "path": "qa-execucoes/c0b8cf3164744638a75e8e79d28da316.log",
+  "sha256": "529ac1f542edcc058de5e6a405ecee1d81a1029cc78b203d849634d1008c5e59",
+  "capturedAt": "2026-10-14T11:50:20.397201+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:battle",
+    "exitCode": 1,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:battle\n> node scripts/test-toy-room-battle.js && node scripts/test-battle-transitions.js\n\n{\"frames\":2419,\"dt\":0.5,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":1186,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\n{\"frames\":398,\"dt\":3,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"}\nnode:internal/modules/run_main:123\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: A esquiva dos ataques deve permitir reação sem dano inevitável.\n\n'DEFEAT' !== 'BATTLE'\n\n    at file:///tmp/legendgirl-qa-vxd7930u/projeto/scripts/test-toy-room-battle.js:46:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:343:25)\n    at async onImport.tracePromise.__proto__ (node:internal/modules/esm/loader:681:26)\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:117:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 'DEFEAT',\n  expected: 'BATTLE',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v22.23.3\n"
+}

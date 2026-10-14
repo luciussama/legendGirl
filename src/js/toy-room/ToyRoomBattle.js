@@ -96,6 +96,16 @@ export class ToyRoomBattle {
       walkSoundTimer: 0 };
   }
 
+  getEnemyCollisionDistance(actor) {
+    switch (actor) {
+      case 'bear': return 58;
+      case 'dinosaur': return 56;
+      case 'robot': return 52;
+      case 'train': return 54;
+      default: return 54;
+    }
+  }
+
   // A caixa mantém sua ilustração; na arena fica visível ao lado do combate.
   arenaChest() {
     const chest = this.room.furniture.find(item => item.id === 'toy-chest');
@@ -249,6 +259,32 @@ export class ToyRoomBattle {
     r.story.state.attackElapsed = s.attackTime;
     this.playerController.update(this, dt);
     e.elapsed += dt;
+    // Dano por contato direto com o corpo do inimigo (a menina toma dano ao encostar; o inimigo não)
+    if (e && e.hp > 0 && e.state !== 'DEATH' && e.state !== 'HIT' && e.state !== 'ATTACK' && e.state !== 'RETREAT' && !s.transition && s.jump < 60) {
+      const minDist = this.getEnemyCollisionDistance(e.actor);
+      if (Math.abs(r.player.x - e.x) <= minDist + 2 && s.immunity === 0) {
+        transferHeart(s.player, e);
+        s.immunity = t.immunity;
+        s.history.push({ event: 'ENEMY_HIT', enemy: e.actor, playerHp: s.player.hp, enemyHp: e.hp, contact: true });
+        s.playerHitTime = 22;
+        s.playerHitDirection = r.player.x <= e.x ? -1 : 1;
+        s.playerKnockback = 11;
+        s.attackTime = 0;
+        r.story.state.attackElapsed = 0;
+        s.crouching = false;
+        const heavy = e.actor === 'bear';
+        this.startImpact('player', r.player.x, t.ground - 40, s.playerHitDirection, heavy);
+        this.playCombatSound('player_hit');
+        this.playCombatSound(`${e.actor}_hit`);
+        this.playCombatSound('heart_loss');
+        this.playCombatSound('heart_gain');
+        if (s.player.hp === 0) {
+          this.playCombatSound('player_death');
+          this.playCombatSound('defeat');
+          s.mode = 'DEFEAT'; s.ending = 0; r.clearInput(); return;
+        }
+      }
+    }
     if (s.attackTime > 0 && s.attackTime <= 8 && !s.swordHit && e.hp > 0 && !(this.presentation && e.state === 'ENRAGE')) {
       const dx = e.x - r.player.x, facing = r.story.state.attackDirection;
       if (dx * facing >= -20 && Math.abs(dx) < t.swordRange && s.jump < 85) {
@@ -262,10 +298,16 @@ export class ToyRoomBattle {
         this.playCombatSound('heart_loss');
         if (e.hp === 0) this.playCombatSound(`${e.actor}_death`);
         this.setEnemyState(e.hp === 0 ? 'DEATH' : 'HIT');
+        e.knockbackVelocity = facing * (e.actor === 'bear' ? 8.5 : 11.5);
         if (e.hp === 1 && e.actor === 'bear') e.enrage = true;
       }
     }
     if (e.state === 'DEATH') {
+      if (e.knockbackVelocity) {
+        e.x = clamp(e.x + e.knockbackVelocity * dt, t.left + 40, t.right - 40);
+        e.knockbackVelocity *= Math.pow(0.85, dt);
+        if (Math.abs(e.knockbackVelocity) < 0.1) e.knockbackVelocity = 0;
+      }
       if (e.elapsed >= t.death) {
         s.history.push({ event: 'DEFEATED', enemy: e.actor });
         ++s.index;
@@ -275,7 +317,15 @@ export class ToyRoomBattle {
       return;
     }
     if (e.state === 'HIT') {
-      if (e.elapsed >= t.hitRecovery) this.setEnemyState('RETREAT');
+      if (e.knockbackVelocity) {
+        e.x = clamp(e.x + e.knockbackVelocity * dt, t.left + 40, t.right - 40);
+        e.knockbackVelocity *= Math.pow(0.85, dt);
+        if (Math.abs(e.knockbackVelocity) < 0.1) e.knockbackVelocity = 0;
+      }
+      if (e.elapsed >= t.hitRecovery) {
+        e.knockbackVelocity = 0;
+        this.setEnemyState('RETREAT');
+      }
       return;
     }
     if (e.enrage && !e.enrageShown && e.state !== 'ATTACK') {
@@ -290,6 +340,11 @@ export class ToyRoomBattle {
       const reach = (['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125) * (t.attackScale ?? 1);
       if (distance > reach) {
         e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.speed ?? (e.enrage ? 2.6 : 2)) * (this.presentation && e.enrage ? 1.25 : 1) * dt, t.left + 40, t.right - 40);
+        if (s.jump <= 55) {
+          const minDist = this.getEnemyCollisionDistance(e.actor);
+          if (e.x > r.player.x && e.x < r.player.x + minDist) e.x = r.player.x + minDist;
+          else if (e.x < r.player.x && e.x > r.player.x - minDist) e.x = r.player.x - minDist;
+        }
         e.walkSoundTimer = Math.max(0, e.walkSoundTimer - dt);
         if (e.walkSoundTimer === 0) {
           this.playCombatSound(`${e.actor}_walk`);
@@ -302,7 +357,14 @@ export class ToyRoomBattle {
     } else if (e.state === 'ATTACK') {
       const active = e.elapsed >= t.windup && e.elapsed < t.windup + t.active;
       const charge = ['Front Charge', 'Rush', 'Belly Charge'].includes(e.attack);
-      if (active && charge) e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.chargeSpeed ?? 5) * dt, t.left + 40, t.right - 40);
+      if (active && charge) {
+        e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.chargeSpeed ?? 5) * dt, t.left + 40, t.right - 40);
+        if (s.jump <= 55) {
+          const minDist = this.getEnemyCollisionDistance(e.actor);
+          if (e.x > r.player.x && e.x < r.player.x + minDist) e.x = r.player.x + minDist;
+          else if (e.x < r.player.x && e.x > r.player.x - minDist) e.x = r.player.x - minDist;
+        }
+      }
       const damaging = e.attack === 'Toy Leap' ? e.elapsed >= 84 && e.elapsed < 96 : active;
       if (damaging && !e.landed && s.immunity === 0) {
         const range = (e.attack === 'Laser Beam' ? 340 : e.attack === 'Rocket Punch' ? 280 : e.attack === 'Steam Blast' ? 280 : e.attack === 'Toy Leap' ? 118 : 110) * (t.attackScale ?? 1);
@@ -323,8 +385,9 @@ export class ToyRoomBattle {
           s.immunity = t.immunity;
           s.history.push({ event: 'ENEMY_HIT', enemy: e.actor, playerHp: s.player.hp, enemyHp: e.hp });
           const heavy = e.actor === 'bear';
-          s.playerHitTime = 18;
+          s.playerHitTime = 22;
           s.playerHitDirection = e.facing;
+          s.playerKnockback = 11;
           s.attackTime = 0;
           r.story.state.attackElapsed = 0;
           s.crouching = false;

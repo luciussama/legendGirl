@@ -56,8 +56,22 @@ def eligible(path):
     return suffix == '.md' or (path.startswith(('docs/', 'assets/', '.agents/', '.codex/')) and suffix in {'.txt', '.json', '.log'})
 
 def paths(root):
-    output = subprocess.check_output(['rg', '--files', '--hidden', '--no-ignore', '-g', '!.git/**', '-g', '!node_modules/**', '-g', '!.sprite-review-quarantine/**', '-g', '!docs/diario-ia/fontes/**', '-g', '!docs/diario-ia/registros/**', '-g', '!docs/diario-ia/commits/**'], cwd=root).decode('utf-8')
-    return sorted(path for path in output.splitlines() if eligible(path))
+    try:
+        output = subprocess.check_output(['rg', '--files', '--hidden', '--no-ignore', '-g', '!.git/**', '-g', '!node_modules/**', '-g', '!.sprite-review-quarantine/**', '-g', '!docs/diario-ia/fontes/**', '-g', '!docs/diario-ia/registros/**', '-g', '!docs/diario-ia/commits/**'], cwd=root).decode('utf-8')
+        return sorted(path for path in output.splitlines() if eligible(path))
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        collected = []
+        ignored_dirs = {'.git', 'node_modules', '.sprite-review-quarantine', 'fontes', 'registros', 'commits'}
+        for dirpath, dirnames, filenames in os.walk(root):
+            dirnames[:] = [d for d in dirnames if d not in ignored_dirs]
+            rel_dir = os.path.relpath(dirpath, root)
+            if any(part in ignored_dirs for part in rel_dir.split(os.sep)):
+                continue
+            for f in filenames:
+                rel_path = f if rel_dir == '.' else os.path.join(rel_dir, f)
+                if eligible(rel_path):
+                    collected.append(rel_path)
+        return sorted(collected)
 
 def snapshot(root, path, raw, origin):
     try:

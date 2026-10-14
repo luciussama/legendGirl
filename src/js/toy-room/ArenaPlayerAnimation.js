@@ -96,13 +96,17 @@ export function sampleArenaPlayerAnimation(state, player) {
   }
   const age=a.attackAge, attacking=age<12;
   const recoil=attacking?(age<4?-6*Math.sin(age/4*Math.PI):age<9?7*Math.sin((age-4)/5*Math.PI):2):0;
+  const isDamaged = pose === 'damage' && state.playerHitTime > 0;
+  const hitProgress = isDamaged ? state.playerHitTime / 22 : 0;
+  const damageRecoil = isDamaged ? -Math.sin(hitProgress * Math.PI) * 14 : 0;
+  const damageLean = isDamaged ? -state.playerHitDirection * Math.sin(hitProgress * Math.PI) * 0.12 : 0;
   const lean=pose==='run'?Math.sin(a.poseTime/22*Math.PI*2)*.012
     :pose==='idle'?Math.sin(a.poseTime/96*Math.PI*2)*.008
     :attacking?(age<4?-.035:age<9?.025:0):0;
   const registrationX=layers.reduce((total,l)=>total+l.weight*(l.frame.faceX-l.frame.anchorX)*l.frame.sourceFacing*l.frame.pixelUnit,0);
   return {pose,layers,registrationX,attackAge:age,attackSerial:a.attackSerial,
     facing:attacking||pose==='recovery'?a.attackDirection:(player.facing==='left'?-1:1),
-    offsetX:recoil,rotation:lean,
+    offsetX:recoil+damageRecoil,rotation:lean+damageLean,
     bob:pose==='run'?-Math.abs(Math.sin(a.poseTime/22*Math.PI*2))*1.5:0,
     slash:attacking&&age>=4&&age<10?{progress:(age-4)/6,alpha:Math.sin((age-4)/6*Math.PI),crouching:state.crouching}:null};
 }

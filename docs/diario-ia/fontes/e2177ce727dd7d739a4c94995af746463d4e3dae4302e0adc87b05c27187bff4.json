@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e2177ce727dd7d739a4c94995af746463d4e3dae4302e0adc87b05c27187bff4",
+  "path": "qa-execucoes/4358b4f6c6674fd7bdcb61e4348fe71a.log",
+  "sha256": "76d388664d25b545873431263b107a451aacdd493bb4333c28af27618ed5573b",
+  "capturedAt": "2026-10-14T11:42:26.846200+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena\n> node scripts/test-toy-room-arena.js && npm run test:arena:animation\n\nAPROVADO: inicialização e finalização da fase imaginária.\nAPROVADO: transformação reproduzível e retomada sem travamento.\nAPROVADO: arena derivada do layout sem mutar a sala.\nAPROVADO: escala heroica e sprites detalhadas sem alteração das colisões.\nAPROVADO: câmera suave, responsiva e sem clipping dos atores.\nAPROVADO: física própria, corrida, salto e alcance sem mutação legado.\nAPROVADO: efeitos sincronizados, persistentes e com orçamento limitado.\nAPROVADO: trilha própria e troca de perfil sem timers órfãos.\nAPROVADO: HUD heroico e D-pad/botões de ação dentro da safe area.\nAPROVADO: brinquedos heroicos derrotáveis em três taxas de atualização.\nAPROVADO: chefe com fúria, efeitos, derrota e retomada sem softlock.\nAPROVADO: retorno automático com posição, progresso e exploração preservados.\nAPROVADO: persistência de todos os estados, rollback e migração de saves antigos.\nAPROVADO: esquivas concordam com a altura dos golpes heroicos.\nAPROVADO: teclado, setas táteis, D-pad Xbox, ações A/X/Y, pausa e nova tentativa na arena.\nAPROVADO: repertórios heroicos completos, com esquivas reais da nova física.\n\n> o-quarto-dos-brinquedos@1.0.0 test:arena:animation\n> node scripts/test-arena-player-animation.js\n\nAPROVADO: poses intermediárias, orientação, escala corporal, pés, antecipação, recuperação, sincronização, save/load e preservação da arte original.\n"
+}

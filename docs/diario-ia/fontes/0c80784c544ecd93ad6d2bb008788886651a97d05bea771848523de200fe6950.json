@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0c80784c544ecd93ad6d2bb008788886651a97d05bea771848523de200fe6950",
+  "path": "qa-execucoes/5dcefafd76594e1c93731ff8b23af232/assets/qa-testers/current-screenshots/personagem/crops.png",
+  "sha256": "6639b042636477fb8383c3a1234290348fa5308a65c3614a34fa1b91f313fa9a",
+  "capturedAt": "2026-10-14T00:22:02.984987+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "verify:dark-room"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"assets/qa-testers/current-screenshots/personagem/crops.png\", \"sha256\": \"5fe062f5f5fba80759734e318695ab82b748c69108235b37221cd75b224995fd\", \"bytes\": 204716, \"binaryRetained\": false}"
+}
