@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7af2915dc94bae5c1e4c0ae79eb2d94fa886f80c00b48f2d80454014aff45752",
+  "path": "qa-execucoes/3f64e445945d41959d8374b5264c6af5/docs/qa/toy-room-arena/desktop-arena-dinosaur-entrada.png",
+  "sha256": "9fbacf23921d363cbc454bd4036d09278102be4c973b15c269b242747718b64f",
+  "capturedAt": "2026-10-14T16:33:42.812445+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-dinosaur-entrada.png\", \"sha256\": \"553c66dfb4ca6d2ff6d2c3ff33ed99f25f7f5195b6123153b8c7d8eb5e4a390f\", \"bytes\": 1131549, \"binaryRetained\": false}"
+}

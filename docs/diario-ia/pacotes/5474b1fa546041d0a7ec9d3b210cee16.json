@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "5474b1fa546041d0a7ec9d3b210cee16",
+  "date": "2026-10-14T16:29:39.030984+00:00",
+  "title": "QA temporário: script:test-arena-adaptive-ai.js",
+  "files": [
+    {
+      "path": "qa-execucoes/5474b1fa546041d0a7ec9d3b210cee16.log",
+      "sourceId": "84faa066dec3938c91bdf0b2a65f5753d384863e7aaa0cf544625f849f2738a1",
+      "sha256": "71f74789be4e1be0a8bb1a228b8e7f533e18ccc2b9edf73f07313a9d142fa681",
+      "bytes": 213,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/5474b1fa546041d0a7ec9d3b210cee16/docs/qa/.DS_Store",
+      "sourceId": "6ad8e8071529315726a17e9d8c649eac84f7331b0ffc050cdff29fdf7877b038",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

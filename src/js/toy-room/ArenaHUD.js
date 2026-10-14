@@ -1,4 +1,5 @@
 import { arenaMobileControlsLayout } from '../ui/MobileUILayout.js';
+import { arenaEnemyImpactEnd, arenaEnemyGuarding } from './ArenaCombatRules.js';
 
 export const ARENA_ENEMY_NAMES = Object.freeze({ train:'Locomotiva de Cerco', robot:'Sentinela de Lata', dinosaur:'Dragão de Brinquedo', bear:'Guardião de Pelúcia' });
 
@@ -65,7 +66,14 @@ export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   ctx.textAlign='left';ctx.fillText('MENINA · A ESPADA DA IMAGINAÇÃO',boxes.player.x,boxes.labelY,boxes.player.width);
   ctx.textAlign='right';ctx.fillText(ARENA_ENEMY_NAMES[state.enemy.actor],boxes.enemy.x+boxes.enemy.width,boxes.labelY,boxes.enemy.width);
   ctx.textAlign='center';ctx.font=`bold ${14*ui}px Georgia`;
-  const subtitle=boss?.titleTime>0?'O GUARDIÃO DE PELÚCIA':state.enemy.state==='ENRAGE'?'O GUARDIÃO DESPERTOU':state.transition?'OS BRINQUEDOS GANHAM VIDA':`O QUARTO LENDÁRIO · ${Math.min(4,state.index+1)} / 4`;
+  const e = state.enemy;
+  const recoveryStart = arenaEnemyImpactEnd(e);
+  const guarded = arenaEnemyGuarding(e);
+  const attackHint = ['Laser Beam', 'Rocket Punch'].includes(e.attack) ? 'ABAIXE OU RECUE' : 'PULE OU RECUE';
+  const subtitle=state.transition?'OS BRINQUEDOS GANHAM VIDA':e.state==='ENRAGE'?'O GUARDIÃO DESPERTOU'
+    :guarded?(e.state === 'HIT' ? 'PREPARANDO RESPOSTA · AGUARDE' : `RESPOSTA PROTEGIDA · ${attackHint}`)
+    :e.state==='ATTACK'&&e.elapsed>=recoveryStart?'ABERTURA · CONTRA-ATAQUE'
+    :boss?.titleTime>0?'O GUARDIÃO DE PELÚCIA':`O QUARTO LENDÁRIO · ${Math.min(4,state.index+1)} / 4`;
   ctx.fillText(subtitle,layout.centerX,boxes.subtitleY,layout.usableWidth-24*ui);
   if (room.mobilePresentation || room.isTouchDevice) {
     renderArenaMobileControls(ctx, layout, room);

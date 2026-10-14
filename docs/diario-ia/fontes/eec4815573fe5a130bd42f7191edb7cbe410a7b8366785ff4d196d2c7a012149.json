@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "eec4815573fe5a130bd42f7191edb7cbe410a7b8366785ff4d196d2c7a012149",
+  "path": "qa-execucoes/ff6bcfdbeb69433682924e71bb2a9b5b/docs/qa/toy-room-arena/android-paisagem-derrota.png",
+  "sha256": "d451d33e8b2dc46570f681d673c622300d990b33240c80450e5429262bd6a659",
+  "capturedAt": "2026-10-14T16:32:17.874629+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-derrota.png\", \"sha256\": \"c262f6df13ccb962aae1c1f7bf6cb0338da57a9ca3c8cbcd7ebd2bd9ea75cbed\", \"bytes\": 602104, \"binaryRetained\": false}"
+}

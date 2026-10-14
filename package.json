@@ -53,7 +53,8 @@
     "test:damage-audio:browser": "python3 scripts/run-qa-from-journal.py test:damage-audio:browser",
     "test:arena:refinements": "python3 scripts/run-qa-from-journal.py test:arena:refinements",
     "test:debug-phases:browser": "python3 scripts/run-qa-from-journal.py test:debug-phases:browser",
-    "test:arena:enemies": "python3 scripts/run-qa-from-journal.py test:arena:enemies"
+    "test:arena:enemies": "python3 scripts/run-qa-from-journal.py test:arena:enemies",
+    "test:arena:balance": "python3 scripts/run-qa-from-journal.py test:arena:balance"
   },
   "dependencies": {
     "express": "^4.21.2",

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzz-20261014T163058-eee0f27f8f30",
+  "date": "2026-10-14T16:30:58.667391+00:00",
+  "title": "Regressão de balanceamento: ataque repetido e esquiva",
+  "files": [
+    {
+      "path": "scripts/test-arena-balance.js",
+      "sourceId": "e8988a178f8f7f56c237961c5b6664038887fc5da9202869e91a939170c195fb",
+      "sha256": "c7b096d7590129c23e23617b7f6cbc6c19bb5b5523a7582e12aee6bacdb7c534",
+      "bytes": 6365,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

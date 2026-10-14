@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "d435165fcd3e41ff8d8236817a776210",
+  "type": "qa",
+  "date": "2026-10-14T16:27:31.378729+00:00",
+  "title": "QA temporário: script:test-arena-balance.js",
+  "exitCode": 1,
+  "sourceId": "9a1d3ca602f1571ca7637a044d8a2bdeea2d3f65dc22976dcd667f2e484bfd15",
+  "package": "zzzzzz-20261014T162729-8ac60ef1f292"
+}

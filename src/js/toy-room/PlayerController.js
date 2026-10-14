@@ -26,7 +26,9 @@ export class PlayerController {
       r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
       s.playerKnockback *= Math.pow(0.82, dt);
     } else if (!s.crouching && input.x && s.playerHitTime <= 0) {
-      r.player.x = clamp(r.player.x + input.x * t.speed * dt, t.left + 35, t.right - 35);
+      const moveScale = battle.presentation && s.cooldown > 0
+        ? (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
+      r.player.x = clamp(r.player.x + input.x * t.speed * moveScale * dt, t.left + 35, t.right - 35);
     }
     const e = s.enemy;
     if (!battle.presentation && e && e.hp > 0 && e.state !== 'DEATH' && !s.transition && s.jump <= 55) {

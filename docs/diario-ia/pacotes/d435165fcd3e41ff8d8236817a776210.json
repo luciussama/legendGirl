@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "d435165fcd3e41ff8d8236817a776210",
+  "date": "2026-10-14T16:27:31.378729+00:00",
+  "title": "QA temporário: script:test-arena-balance.js",
+  "files": [
+    {
+      "path": "qa-execucoes/d435165fcd3e41ff8d8236817a776210.log",
+      "sourceId": "9a1d3ca602f1571ca7637a044d8a2bdeea2d3f65dc22976dcd667f2e484bfd15",
+      "sha256": "841a2bf0e6fbfd0f0e2b4d538ea3f80ef2a2abcdb6eabd4f21b9fa0935d3d224",
+      "bytes": 2384,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/d435165fcd3e41ff8d8236817a776210/docs/qa/.DS_Store",
+      "sourceId": "a0df6abb85e1a808152e876f0a82e9f9b49372b38e262b280911b6cb5d9ef1e6",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzz-20261014T163235-04761eef1d1e",
+  "date": "2026-10-14T16:32:35.743451+00:00",
+  "title": "QA ajustado às janelas e estratégias do balanceamento; fontes anteriores preservadas",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-arena.js",
+      "sourceId": "8babe79d3ad74319eb7dc36e1f0d2d81548412debab79e7ecffad48b3f61983a",
+      "sha256": "87b8a18077c0abc385bcc366645df618798a3ed1979e885e8c642cb13de8d9b8",
+      "bytes": 18194,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-arena-player-animation.js",
+      "sourceId": "3ac4d9869deeb6c806b6ad77472c11647c1474b4b8f155ebf52b1d15222fb36b",
+      "sha256": "cd31d6141835feb10b8ba29325a182c95bee93349c3fa931db6ee28ef350eafe",
+      "bytes": 6409,
+      "metadataOnly": false
+    },
+    {
+      "path": "tests/battle-gameplay-runner.js",
+      "sourceId": "2d9bbed4bfa5a84bef0cdfe12c2543d148f39e106043004e0bce002d354d12ec",
+      "sha256": "e1b2cdf41a967f3dab5c58e7418682f52cfbdbdf0d66826f0da192845cbffe30",
+      "bytes": 3334,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js && npm run test:difficulty && npm run test:mobile-ui && npm run test:toy-room:facing && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:battle && npm run test:toy-room:arena && npm run test:sprite-review && npm run test:current-art && npm run test:journal && npm run test:dialogues && npm run test:toy-room:camera && npm run test:damage-sprites && npm run test:arena:refinements && npm run test:arena:enemies && node scripts/test-arena-balance.js",
+    "test:arena:balance": "node scripts/test-arena-balance.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6e0a43dd31c4a38ea76bd9257396ceb4fc7289502e6b919b59cd6d8ef2f9a2ba",
+  "path": "qa-execucoes/ff6bcfdbeb69433682924e71bb2a9b5b/docs/qa/toy-room-arena/android-paisagem-arena-bear-furia.png",
+  "sha256": "d2ec1069d35e96e608c940158dc79e10df2e2f9b01c9861e2e93a36862db04eb",
+  "capturedAt": "2026-10-14T16:32:17.865276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-bear-furia.png\", \"sha256\": \"e5d3c0db291bca00f250e0e341500fb0e6769ba0db58dfbd8a21691036e6b456\", \"bytes\": 738871, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "28d0038c3d72fa7db6e78630dbbc3c6be310e01d30eed7cc941518dc7d0a2247",
+  "path": "qa-execucoes/3f64e445945d41959d8374b5264c6af5/docs/qa/toy-room-arena/android-derrota.png",
+  "sha256": "ce9812816ee28f43f72b40da487b041a1edecb6e5af1a61eaf2173ed2b7cc2dd",
+  "capturedAt": "2026-10-14T16:33:42.777366+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-derrota.png\", \"sha256\": \"a4a939736b22bcd819198353c3202c8e30529a06a3b42a34196ee9546122f326\", \"bytes\": 481662, \"binaryRetained\": false}"
+}

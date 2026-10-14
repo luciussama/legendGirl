@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7256b7dfea7b8191de1d467a06d61048c8d9821c112c13fe0409f050850d5f20",
+  "path": "qa-execucoes/e95c82ef9c6f436690494c47357862a5.log",
+  "sha256": "2f5f53bed8daebc5563a45902eb667b757e6a56487335abc2d67f01a82e8109d",
+  "capturedAt": "2026-10-14T16:29:37.526741+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:enemies",
+    "exitCode": 0,
+    "package": "zzzz-arena-enemy-intelligence-d9fdbeb48a07"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:enemies\n> node scripts/test-arena-enemy-intelligence.js\n\nAPROVADO: 24 cenários de corpos sólidos/investidas/bordas/save, progressão do trem ao Urso, evasão mais rápida, contra-ataque e cooldown vulnerável.\n"
+}

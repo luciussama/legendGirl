@@ -45,20 +45,18 @@ export function selectArenaEnemyAttack(battle, distance, attacks) {
     behavior.distant,
     clamp((distance - contact - 90) / 220, 0, 1)
   );
-  const recentChoices = enemy.recentAIChoices ?? [];
-  const freshAttacks = attacks.filter(attack => !recentChoices.includes(attack));
-  const candidates = freshAttacks.length ? freshAttacks : attacks;
-
   let bestAttack = null;
   let bestScore = -Infinity;
-  for (const attack of candidates) {
+  for (const attack of attacks) {
     const strategy = ATTACK_STRATEGY[attack];
     if (!strategy) continue;
-    const repeatPenalty = enemy.lastAIChoice === attack ? 1.1 : 0;
+    const repeatPenalty = enemy.lastAIChoice === attack ? 0.18 : (enemy.recentAIChoices ?? []).includes(attack) ? 0.08 : 0;
+    const crouchPenalty = battle.state.crouching && ['Laser Beam', 'Rocket Punch'].includes(attack) ? 0.8 : 0;
+    const recoveryPressure = battle.state.cooldown > battle.state.attackTime ? 0.35 : 0;
     const score = rangePressure * strategy.range
-      + behavior.attacking * strategy.pressure
+      + (behavior.attacking + recoveryPressure) * strategy.pressure
       + behavior.jumping * strategy.antiJump
-      - repeatPenalty;
+      - repeatPenalty - crouchPenalty;
     if (score > bestScore) {
       bestAttack = attack;
       bestScore = score;
@@ -94,21 +92,28 @@ export function updateArenaEnemyAI(battle, dt) {
           : e.actor === 'dinosaur' ? (counterDistance > contact + 95 ? 'Rush' : 'Bite')
             : s.jump > 45 ? 'Toy Leap' : counterDistance > contact + 80 ? 'Belly Charge' : 'Bear Hug');
       e.counterAttacks = (e.counterAttacks || 0) + 1;
+      e.responseAttack = true;
       battle.beginEnemyAttack(attack);
     }
     return true;
   }
 
-  const visibleThreat = s.attackTime > 8
+  const visibleThreat = s.attackTime > (battle.tuning.swordDuration ?? 12) - (battle.tuning.swordWindup ?? 4)
     && battle.room.story.state.attackDirection === side
-    && distance < contact + 100;
+    && distance < Math.max(battle.tuning.swordRange ?? 240, contact + 40) + 30;
   const canRetreat = side > 0
     ? e.x < battle.tuning.right - p.bodyWidth / 2 - 35
     : e.x > battle.tuning.left + p.bodyWidth / 2 + 35;
-  if (['IDLE', 'APPROACH'].includes(e.state) && visibleThreat && !e.evadeCooldown && canRetreat) {
+  if (['IDLE', 'APPROACH'].includes(e.state) && visibleThreat && !e.evadeCooldown) {
     e.evadeCooldown = p.evadeCooldown * (e.enrage ? 0.8 : 1);
-    e.evasions = (e.evasions || 0) + 1;
-    battle.setEnemyState('EVADE');
+    if (canRetreat) {
+      e.evasions = (e.evasions || 0) + 1;
+      battle.setEnemyState('EVADE');
+      // Começa a retirada no mesmo subpasso em que a antecipação é percebida.
+      e.x = clamp(e.x + side * p.evadeSpeed * dt,
+        battle.tuning.left + p.bodyWidth / 2, battle.tuning.right - p.bodyWidth / 2);
+    } else if (battle.beginEnemyResponse) battle.beginEnemyResponse();
+    else return false;
     return true;
   }
   return false;

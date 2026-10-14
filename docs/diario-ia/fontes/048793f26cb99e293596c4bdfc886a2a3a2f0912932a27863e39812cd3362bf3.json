@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "048793f26cb99e293596c4bdfc886a2a3a2f0912932a27863e39812cd3362bf3",
+  "path": "scripts/test-arena-pressure-audit.js",
+  "sha256": "57f4e1dd2c4091e9e46d5c567b2799a5ef9a33ed71d35a3c3e66c1d0404c6808",
+  "capturedAt": "2026-10-14T16:15:36.531284+00:00",
+  "origin": {
+    "type": "qa-arquivado",
+    "sessionId": "20261014T161418-372336457b67"
+  },
+  "encoding": "utf-8",
+  "content": "import { ToyRoomBattle } from '../src/js/toy-room/ToyRoomBattle.js';\nimport { ARENA_ENEMIES } from '../src/js/toy-room/ArenaEnemies.js';\nimport { ARENA_TUNING, ArenaPlayerController } from '../src/js/toy-room/ArenaPlayerController.js';\nimport { arenaEnemyContact } from '../src/js/toy-room/ArenaCombatContact.js';\nfunction simulate(interval, direction, cooldown = 24) {\n  const room = {player:{x:430,facing:'right',animTime:0},keysDown:{},gamepadState:{},touchState:{},tutorial:{},furniture:[],clearInput(){this.keysDown={};},story:{state:{swordEquipped:true,attackElapsed:0},attack(){if(this.state.attackElapsed>0)return false;this.state.attackElapsed=12;this.state.attackDirection=room.player.facing==='left'?-1:1;return true;}}};\n  const b=new ToyRoomBattle(room,{loadAssets:false});b.tuning={...ARENA_TUNING,swordCooldown:cooldown};b.playerController=new ArenaPlayerController();b.presentation={enemies:ARENA_ENEMIES,enemyContact:arenaEnemyContact};b.activate();\n  const metrics={};let frames=0;\n  const original=b.setEnemyState.bind(b);\n  b.setEnemyState=(next)=>{const e=b.state.enemy,m=metrics[e.actor]??={cancelados:0,iniciados:0};if(next==='HIT'&&e.state==='ATTACK')m.cancelados++;if(next==='ATTACK')m.iniciados++;original(next);};\n  for(;frames<18000&&b.state.mode==='BATTLE';frames++){\n    if(!b.state.transition){const toward=direction==='fixa'?1:(b.state.enemy.x>=room.player.x?1:-1);room.keysDown=toward>0?{ArrowRight:true}:{ArrowLeft:true};if(frames%interval===0)b.attack();}\n    b.update(1);\n  }\n  for(const actor of ['train','robot','dinosaur','bear']){const m=metrics[actor]??={cancelados:0,iniciados:0};m.acertos=b.state.history.filter(x=>x.event==='PLAYER_HIT'&&x.enemy===actor).length;m.danos=b.state.history.filter(x=>x.event==='ENEMY_HIT'&&x.enemy===actor).length;}\n  return {intervalo:interval,direcao:direction,cooldown,resultado:b.state.mode,quadros:frames,segundos:+(frames/60).toFixed(2),hp:b.state.player.hp,metrics};\n}\nfor(const direction of ['fixa','acompanha'])for(const interval of [1,6,12,24])console.log(JSON.stringify(simulate(interval,direction)));\nfor(const cooldown of [36,48,60])console.log(JSON.stringify(simulate(1,'acompanha',cooldown)));\nconsole.log('Auditoria concluída: simulação sem render, movimento e espada reais; nenhuma esquiva; variantes de cooldown somente em memória.');\n"
+}

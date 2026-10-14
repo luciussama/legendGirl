@@ -30,6 +30,10 @@ As falas da Toy Room passaram a usar a mesma caixa com retrato e nome do interlo
 
 Robô, dinossauro e Urso agora ajustam a escolha dos golpes existentes ao jeito recente de jogar: observam se a menina costuma ficar longe, pular ou atacar com frequência. O Trem mantém sua sequência introdutória. As decisões são determinísticas e usam uma memória curta, sem mudar os golpes, tempos, corações ou regras de combate. A intenção é aumentar o desafio sem retirar da jogadora oportunidades de leitura e resposta.
 
+## 14 de outubro de 2026 — esquivar para abrir o contra-ataque
+
+A arena passa a exigir leitura do adversário: Robô, dinossauro e Urso respondem aos golpes recebidos e protegem a preparação dessa resposta. A menina precisa abaixar, pular ou recuar e atacar na abertura seguinte. Insistir contra a proteção não recupera corações e prolonga a recuperação da espada. O HUD anuncia a ameaça e a abertura; a evasão dos inimigos considera o alcance real e tem alternativa nas bordas. O Trem conserva seu papel introdutório, e os corações e as artes permanecem os mesmos.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "0840d2db2dba4fc4a0fbfeb8150263b3",
+  "date": "2026-10-14T16:30:41.050323+00:00",
+  "title": "QA temporário: test:toy-room:arena",
+  "files": [
+    {
+      "path": "qa-execucoes/0840d2db2dba4fc4a0fbfeb8150263b3.log",
+      "sourceId": "fcaa1f435233037b60fefe05d5d4bdb9fcca2e557fa7f720056f23dfc5f99b8c",
+      "sha256": "e2fc35eddfd9f066bbfe198b9e800078bbf0725eab41ad64423aa4036cade083",
+      "bytes": 1605,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0840d2db2dba4fc4a0fbfeb8150263b3/docs/qa/.DS_Store",
+      "sourceId": "9dae4b7cedd685f43e76cba30338ee35500e3425a9362ff1aa4d3fa7eecc1035",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

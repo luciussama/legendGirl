@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T161418-372336457b67",
+  "sessionId": "20261014T161418-372336457b67",
+  "type": "inicio",
+  "date": "2026-10-14T16:14:18.282372+00:00",
+  "title": "Avaliar dificuldade da arena e estratégia de avanço com espada repetida",
+  "actor": "Codex",
+  "branch": "FEAT-refino-batalha",
+  "head": "95372ac736ac867152266c8adbabbe9ed6c7920e",
+  "workingTree": []
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014-auditoria-pressao-3b0ada62036c",
+  "date": "2026-10-14T16:15:36.531836+00:00",
+  "title": "Auditoria da estratégia de avanço e espada repetida",
+  "files": [
+    {
+      "path": "scripts/test-arena-pressure-audit.js",
+      "sourceId": "048793f26cb99e293596c4bdfc886a2a3a2f0912932a27863e39812cd3362bf3",
+      "sha256": "57f4e1dd2c4091e9e46d5c567b2799a5ef9a33ed71d35a3c3e66c1d0404c6808",
+      "bytes": 2330,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

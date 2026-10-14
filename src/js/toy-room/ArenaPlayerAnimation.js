@@ -1,6 +1,7 @@
 import { ARENA_GIRL_ANIMATION_FRAMES as FRAMES } from './ArenaGirlAnimationFrames.js';
+import { ARENA_SWORD } from './ArenaCombatRules.js';
 
-export const ARENA_ATTACK_VISUAL_DURATION = 24;
+export const ARENA_ATTACK_VISUAL_DURATION = ARENA_SWORD.cooldown;
 const clamp01 = value => Math.max(0,Math.min(1,value));
 const smooth = value => { const t=clamp01(value); return t*t*(3-2*t); };
 export function createPlayerAnimation(state = {}, player = {}) {
@@ -8,7 +9,7 @@ export function createPlayerAnimation(state = {}, player = {}) {
     :state.attackTime>0?'attack':state.jump>0?(state.jumpVelocity>0?'jump':'fall'):player.isMoving?'run':'idle';
   return {
     time:0,pose,poseTime:pose==='crouch'?6:0,previousPose:pose,previousTime:0,blendTime:8,
-    attackAge:state.attackTime>0?12-state.attackTime:ARENA_ATTACK_VISUAL_DURATION,
+    attackAge:state.attackTime>0?18-state.attackTime:ARENA_ATTACK_VISUAL_DURATION,
     attackDirection:player.facing==='left'?-1:1,attackSerial:0,landingAge:12,wasAirborne:state.jump>0
   };
 }
@@ -30,17 +31,17 @@ export function updateArenaPlayerAnimation(state, player, dt) {
   a.wasAirborne=airborne;
   if(state.playerHitTime>0||state.mode==='DEFEAT'||state.transition)a.attackAge=ARENA_ATTACK_VISUAL_DURATION;
   let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage'
-    :state.crouching?'crouch':a.attackAge<12?'attack'
+    :state.crouching?'crouch':a.attackAge<18?'attack'
     :airborne?(state.jumpVelocity>0?'jump':'fall')
     :a.landingAge<10?'landing'
-    :player.isMoving?'run':a.attackAge<ARENA_ATTACK_VISUAL_DURATION?'recovery':'idle';
+    :a.attackAge<ARENA_ATTACK_VISUAL_DURATION?'recovery':player.isMoving?'run':'idle';
   if(!['damage','attack','jump','fall','crouch'].includes(pose)
     &&(a.pose==='crouch'||(a.pose==='standUp'&&a.poseTime<8)))pose='standUp';
   if(pose!==a.pose) {
     a.previousPose=a.pose;a.previousTime=a.poseTime;a.pose=pose;a.poseTime=0;a.blendTime=0;
   }
   a.poseTime+=dt;a.blendTime=Math.min(8,a.blendTime+dt);
-  return !['damage'].includes(pose)&&previousAttackAge<4&&a.attackAge>=4;
+  return !['damage'].includes(pose)&&previousAttackAge<6&&a.attackAge>=6;
 }
 const layer = (pose,index=0,weight=1) => ({frame:FRAMES[pose][index],weight});
 const pair = (from,to,weight) => [{...from,weight:1-weight},{...to,weight}].filter(p=>p.weight>1e-6);
@@ -72,13 +73,13 @@ function poseLayers(pose,time,a,state) {
   }
   if(pose==='landing')return pair(layer('crouchEnter'),layer('idle'),smooth(a.landingAge/10));
   if(pose==='attack') {
-    const age=a.attackAge;
+    const age=a.attackAge / 1.5;
     if(age<2)return pair(layer('attack',0),layer('attack',1),smooth(age/2));
     return [layer('attack',age<4?1:age<7?3:age<9?2:4)];
   }
-  if(pose==='recovery')return a.attackAge<17
-    ?pair(layer('attack',4),layer('attack',1),smooth((a.attackAge-12)/5))
-    :pair(layer('attack',1),layer('idle'),smooth((a.attackAge-17)/7));
+  if(pose==='recovery')return a.attackAge<25.5
+    ?pair(layer('attack',4),layer('attack',1),smooth((a.attackAge-18)/7.5))
+    :pair(layer('attack',1),layer('idle'),smooth((a.attackAge-25.5)/10.5));
   if(pose==='jump'||pose==='fall')return [layer(pose,0)];
   // Impacto curto, recuo com pausa no pico e recuperação dentro dos 22 quadros de reação.
   const damageAge=state.mode==='DEFEAT'?8:Math.max(0,Math.min(21,22-(state.playerHitTime || 0)));
@@ -98,7 +99,7 @@ export function sampleArenaPlayerAnimation(state, player) {
     layers=[...poseLayers(a.previousPose,a.previousTime,a,state).map(l=>({...l,weight:l.weight*(1-transition)})),
       ...layers.map(l=>({...l,weight:l.weight*transition}))];
   }
-  const age=a.attackAge, attacking=pose!=='damage'&&age<12;
+  const age=a.attackAge / 1.5, attacking=pose!=='damage'&&age<12;
   const recoil=attacking?(age<4?-6*Math.sin(age/4*Math.PI):age<9?7*Math.sin((age-4)/5*Math.PI):2):0;
   const isDamaged = pose === 'damage' && state.playerHitTime > 0;
   const hitProgress = isDamaged ? state.playerHitTime / 22 : 0;
@@ -112,5 +113,5 @@ export function sampleArenaPlayerAnimation(state, player) {
     facing:attacking||pose==='recovery'?a.attackDirection:(player.facing==='left'?-1:1),
     offsetX:recoil+damageRecoil,rotation:lean+damageLean,
     bob:pose==='run'?-Math.abs(Math.sin(a.poseTime/22*Math.PI*2))*1.5:0,
-    slash:attacking&&age>=4&&age<10?{progress:(age-4)/6,alpha:Math.sin((age-4)/6*Math.PI),crouching:state.crouching}:null};
+    slash:attacking&&age>=4&&age<8?{progress:(age-4)/4,alpha:Math.sin((age-4)/4*Math.PI),crouching:state.crouching}:null};
 }
