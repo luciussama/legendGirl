@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "dd572ff7a06ddae2d108e7e160566669ae90695508c0895fe2ca135502e5ff32",
+  "path": "qa-execucoes/33b7f24d554a4340809670399e257998.log",
+  "sha256": "674d278190cbc2972533856ce81921c8b8f3660a4cd423d1a2327b6a0d6eb0c0",
+  "capturedAt": "2026-10-14T13:28:13.604524+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:refinements",
+    "exitCode": 0,
+    "package": "suite-v5-arena-refinements-f9d4eb48d96a"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:refinements\n> node scripts/test-arena-refinements.js\n\nAPROVADO: mesma faixa e posição de reprodução, intensidade/mudo/volume; recuo de dois passos da menina e quatro inimigos em três taxas de atualização.\n"
+}

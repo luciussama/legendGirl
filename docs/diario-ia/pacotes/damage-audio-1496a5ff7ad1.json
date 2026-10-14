@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "damage-audio-1496a5ff7ad1",
+  "date": "2026-10-14T13:13:03.623135+00:00",
+  "title": "Validação Web Audio de impacto e dor",
+  "files": [
+    {
+      "path": "scripts/test-damage-audio-browser.js",
+      "sourceId": "5a6694326935b6fc2fc812d17b0a25ff4d8b17ef03f5b3cd9d822e594e231c49",
+      "sha256": "f3a124b2c022c91b800b6b2e22ede2db888616959600c9cfb72716dcc82247f3",
+      "bytes": 2603,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:damage-audio:browser": "node scripts/test-damage-audio-browser.js"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "57d55a2f88c342d8b3e7347159b2aa23",
+  "type": "qa",
+  "date": "2026-10-14T13:24:52.663826+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 1,
+  "sourceId": "ae52fac804ae23a1187dc9d76b278e4516db0f76145c9730e45ae754ec0b7f68",
+  "package": "suite-v2-damage-32d2776d4c14"
+}

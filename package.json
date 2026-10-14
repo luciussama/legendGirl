@@ -48,7 +48,12 @@
     "journal:archive": "python3 scripts/ai-journal.py archive",
     "test:dialogues": "python3 scripts/run-qa-from-journal.py test:dialogues",
     "test:dialogues:browser": "python3 scripts/run-qa-from-journal.py test:dialogues:browser",
-    "test:toy-room:camera": "python3 scripts/run-qa-from-journal.py test:toy-room:camera"
+    "test:toy-room:camera": "python3 scripts/run-qa-from-journal.py test:toy-room:camera",
+    "test:damage-sprites": "python3 scripts/run-qa-from-journal.py test:damage-sprites",
+    "test:damage-audio:browser": "python3 scripts/run-qa-from-journal.py test:damage-audio:browser",
+    "test:arena:refinements": "python3 scripts/run-qa-from-journal.py test:arena:refinements",
+    "test:debug-phases:browser": "python3 scripts/run-qa-from-journal.py test:debug-phases:browser",
+    "test:arena:enemies": "python3 scripts/run-qa-from-journal.py test:arena:enemies"
   },
   "dependencies": {
     "express": "^4.21.2",

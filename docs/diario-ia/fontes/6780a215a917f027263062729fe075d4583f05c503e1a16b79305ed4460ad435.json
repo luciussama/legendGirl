@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6780a215a917f027263062729fe075d4583f05c503e1a16b79305ed4460ad435",
+  "path": "qa-execucoes/22977eb81fea4cb2bb31680f93a6071b/docs/qa/toy-room-arena/android-paisagem-arena-bear-ataque.png",
+  "sha256": "07a4d5c1dc8b84dad22844e31b23355be6d44804ec394329e4a39a7057e3b217",
+  "capturedAt": "2026-10-14T13:29:22.198000+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-bear-ataque.png\", \"sha256\": \"d576db682307266b28d53ec987b3aff69a1d547074f3d6d993cc6a7de4ae0e7f\", \"bytes\": 657848, \"binaryRetained\": false}"
+}

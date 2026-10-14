@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d137b2a8b82b27ee15be04db672441ff66c5286d284625d36e266747755a47d8",
+  "path": "qa-execucoes/a134bf80bc184bd79c33fe883073dab0/docs/qa/toy-room-arena/android-paisagem-agachamento.png",
+  "sha256": "54af22a33793d5811fd34fec76699ac17f27f5040b3b2ec3f5f290936501c85f",
+  "capturedAt": "2026-10-14T12:44:26.493683+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-agachamento.png\", \"sha256\": \"908b200e6ff5055cd9eb93e76b29f5c13f0074a54cf3bc9fa7c7c8534a069fe9\", \"bytes\": 725184, \"binaryRetained\": false}"
+}

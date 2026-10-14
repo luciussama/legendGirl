@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e48f18f6ed88d67006d469c863dde0b4fc937ee5c29a6d808ea87f2b053c7d5f",
+  "path": "qa-execucoes/a134bf80bc184bd79c33fe883073dab0/docs/qa/toy-room-arena/android-paisagem-salto.png",
+  "sha256": "7b5e96814108d66b646520d8caa512dbae4dd6dc8b803dbd64242fa06cc11558",
+  "capturedAt": "2026-10-14T12:44:26.507642+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-salto.png\", \"sha256\": \"dd048c36debaeea2e98a9893ae59226def486a9ddd3df43c64996c9d52eb0928\", \"bytes\": 727543, \"binaryRetained\": false}"
+}

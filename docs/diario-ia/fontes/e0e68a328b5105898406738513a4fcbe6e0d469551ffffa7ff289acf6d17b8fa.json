@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e0e68a328b5105898406738513a4fcbe6e0d469551ffffa7ff289acf6d17b8fa",
+  "path": "qa-execucoes/b82eb1ed0574486da79cfb18c1ac0f06/docs/qa/toy-room-arena/android-paisagem-arena-bear-movimento.png",
+  "sha256": "5095f6383d18aa9f4168ee5b55636583119cf47620f1ce291b481eb91e31965f",
+  "capturedAt": "2026-10-14T12:48:04.444789+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-bear-movimento.png\", \"sha256\": \"28737ef5d064ecedb01f94454fef798a919c5f23a3fcfac9496342e0ee27a6c3\", \"bytes\": 651407, \"binaryRetained\": false}"
+}

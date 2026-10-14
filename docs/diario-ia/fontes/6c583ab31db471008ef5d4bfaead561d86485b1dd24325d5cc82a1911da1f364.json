@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6c583ab31db471008ef5d4bfaead561d86485b1dd24325d5cc82a1911da1f364",
+  "path": "qa-execucoes/9a850566f74a48cab0008a1974876cc2/docs/qa/toy-room-arena/android-vitoria.png",
+  "sha256": "fc58bcdb6620fe15af2fc2b1f5c7812d7a61c9c88ff2dff71280e0b998992105",
+  "capturedAt": "2026-10-14T13:55:36.814545+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-vitoria.png\", \"sha256\": \"dc68260d840b16d41a22601d24ab47b0d0a0ceb8aa3ff0481ca59f9c6f18dbd9\", \"bytes\": 477852, \"binaryRetained\": false}"
+}

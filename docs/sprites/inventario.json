@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 380,
+    "files": 415,
     "regions": 93,
     "code": 29
   },
@@ -277,7 +277,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 834,
+          "line": 837,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -1629,7 +1629,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -3683,6 +3683,12 @@
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1397,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
+          "line": 26,
           "type": "apoio",
           "alias": null
         },
@@ -5771,6 +5777,1357 @@
       "family": "assets/art/toy-room/battle/corrections/train-walk-review"
     },
     {
+      "id": "279f46844b5c765206a7f590",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/01.png",
+      "title": "01.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 34131,
+      "sha256": "a0eb2a8ce22c58303e4b1fb2e1ff627205467ee95026714c030530f452cbf0c7",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 317,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 314,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "6149b7233ddbb74929104a7f",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/02.png",
+      "title": "02.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 32900,
+      "sha256": "0b27bccf967f4eaf6d3432dd8b04c65ad54860a726fad0613da2a68d8899abd0",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 329,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 326,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "923da0b5e4d62a42f3920265",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/03.png",
+      "title": "03.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 30734,
+      "sha256": "efbab14532a2299175864a2c2926bbe78420771d6f37efdf6d2e7c7db5bc02d9",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 341,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 338,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "9bfe82f86b86885bf29a551d",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/04.png",
+      "title": "04.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 33901,
+      "sha256": "fffe4227bf99496ac28bef41c8e69e95fc6030ce013edb8d618d8cd67c91af99",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 353,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 350,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "759c7e301ce78cfaad473c37",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/05.png",
+      "title": "05.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 31092,
+      "sha256": "9dbe95d4d9951c89cad1f65a30f4855cd9ed67e3a94ebf7d047c2e1ae9b8d04e",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 365,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 362,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "168f247de7f327f291025283",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/bear/06.png",
+      "title": "06.png",
+      "format": "png",
+      "width": 144,
+      "height": 177,
+      "bytes": 34505,
+      "sha256": "eb0dbcbddaa0aa7fd2bd5d6fefef373e142f9c6ffc6eddf0e8272c76f7b9b876",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 377,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 374,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/bear"
+    },
+    {
+      "id": "2c8449d55bf9393d8b1ad1f8",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/01.png",
+      "title": "01.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 48038,
+      "sha256": "bf186d2a51cbf2899fd8eda4cc8381ca082f69762c85c24dce209883559abde8",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 240,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 237,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "51555450d71062fec5b87263",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/02.png",
+      "title": "02.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 42890,
+      "sha256": "786677dc968ec228094fdc5a8635ee12a7885538b8ac56e99e769b95a05458ed",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 252,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 249,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "89f52dc21d30c2c36d5be0fb",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/03.png",
+      "title": "03.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 46290,
+      "sha256": "1241b264e62452c3ef1fe0c47ba5e2e7856acbeded18e03adba323a407084bbc",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 264,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 261,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "9a2cbace66cc0b773d53a46f",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/04.png",
+      "title": "04.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 47691,
+      "sha256": "e4dbc1f95160d9b20bfa526a5c10c22d911d011edc9ead9414466987de132525",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 276,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 273,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "770b1770fa1716f7e55fea06",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/05.png",
+      "title": "05.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 42758,
+      "sha256": "ffad472ec75ff001ca8e697ee2b4c4141a0782007e376c101360c4142e0be95a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 288,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 285,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "983c53cab5a147f093b5dc4d",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/dinosaur/06.png",
+      "title": "06.png",
+      "format": "png",
+      "width": 218,
+      "height": 205,
+      "bytes": 45024,
+      "sha256": "a49f38b0200f1bb3b9e0ed26e5bfd020355f5bb85fdbd21749933caa973eb4f1",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 300,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 297,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/dinosaur"
+    },
+    {
+      "id": "ebc1a14bf2343983e7d98de1",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/01.png",
+      "title": "01.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 66018,
+      "sha256": "ced37fa7b1160172aa82b2171be18d53992031dfd6c62626b563929239d0cbf6",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 9,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 6,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "eeab4193eb448b588bd42e22",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/02.png",
+      "title": "02.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 67383,
+      "sha256": "d9457a7f7cee4a579c4ecc30625393059e0090ee7e7f4f34b1edc4d2e8a97961",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "379af9fed6e610e8dce6e82d",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/03.png",
+      "title": "03.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 63251,
+      "sha256": "adb8db7c7407151ec32095dfa2a7b861e6a1592dd540d31e3426063f509f3db9",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 30,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "fec0d7f8f89380337a6e5c1f",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/04.png",
+      "title": "04.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 66260,
+      "sha256": "5fc625d1dce56303df80055308a0a80d6b227786d8011d79e82453e976fba873",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 45,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 42,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "0d805a96dc984caba629a967",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/05.png",
+      "title": "05.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 67647,
+      "sha256": "789938e91a64e35780fcc48cb7f4063c63aaf9b26b2629a13ec48c926fb8cc8e",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 57,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 54,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "77c921c7e968fdef67582392",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/girl/06.png",
+      "title": "06.png",
+      "format": "png",
+      "width": 296,
+      "height": 303,
+      "bytes": 67050,
+      "sha256": "79cb360da5f6ae2f25b0cc8cc6214769aa5e08dae581e8ccb95c6ead8398baa1",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 69,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 66,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/girl"
+    },
+    {
+      "id": "6d82097851bdb5d0e531a2f9",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/01.png",
+      "title": "01.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 39539,
+      "sha256": "84eb95b4a3a02e1ffa61c0b2a5232479762de6faeea26c029d2ee1c2408d32e9",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 163,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 160,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "c461bb673ef6fe12046d47c7",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/02.png",
+      "title": "02.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 35922,
+      "sha256": "057c6c6ecd31fedc42d50fbd59b81ce5e27018e567f7a91898fdae3a48768f15",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 175,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 172,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "eaec3dc1087674ea457c35a5",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/03.png",
+      "title": "03.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 39462,
+      "sha256": "14196d843203c7845efecfeb23ceae1e56d1b858518b85b2a9c14da64653112f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 187,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 184,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "4a3423fe5008ab273e93dff0",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/04.png",
+      "title": "04.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 37951,
+      "sha256": "6403498a31d689649e0988e281237b8b1f97a62ccf5a856608fefbba54ff418f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 199,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 196,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "22809c1b0c72e75bd84abbc1",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/05.png",
+      "title": "05.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 34083,
+      "sha256": "f34a40138eb242bb9acb997af73f6b71f2012a8ea88d4f4d9a6bed313512d472",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 211,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 208,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "b9d6a0aa0da8c0c3e93f399a",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/robot/06.png",
+      "title": "06.png",
+      "format": "png",
+      "width": 148,
+      "height": 236,
+      "bytes": 37851,
+      "sha256": "8123a304f4d2dddebb1b4fd11d05a783c6914da7de7e1a054597715973f5b35b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 223,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 220,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/robot"
+    },
+    {
+      "id": "5053d90bb78561c92e3b313f",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/sources/bear-damage-sheet.png",
+      "title": "bear-damage-sheet.png",
+      "format": "png",
+      "width": 1383,
+      "height": 1137,
+      "bytes": 1781437,
+      "sha256": "df4b3aabf996ce0ec8388a707442868bf3a98a0b5a3bfd068baca727ad47a2ad",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 325,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 337,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 349,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 361,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 373,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 385,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 322,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 334,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 346,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 358,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 370,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 382,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/sources"
+    },
+    {
+      "id": "a38c97808b7e7493a662de21",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/sources/dinosaur-damage-sheet.png",
+      "title": "dinosaur-damage-sheet.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2057768,
+      "sha256": "4d563f113ee4e12b67b772f13cbdf546b79c539d9a0003f5f76e6879a6a93fde",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 248,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 260,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 272,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 284,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 296,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 308,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 245,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 257,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 269,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 281,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 293,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 305,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/sources"
+    },
+    {
+      "id": "de424076cbce1b54caae3eba",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/sources/girl-damage-sheet.png",
+      "title": "girl-damage-sheet.png",
+      "format": "png",
+      "width": 1518,
+      "height": 1036,
+      "bytes": 1212823,
+      "sha256": "866c1e1024179ad86baf0d33465c4699949859452858f95d691d8e44540e4ea3",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 17,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 41,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 53,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 65,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 77,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 14,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 26,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 38,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 50,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 62,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 74,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/sources"
+    },
+    {
+      "id": "c7227b3de59478b4f7f8cf70",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/sources/robot-damage-sheet.png",
+      "title": "robot-damage-sheet.png",
+      "format": "png",
+      "width": 1066,
+      "height": 1475,
+      "bytes": 1532285,
+      "sha256": "2f8faaab91c1f2ab4986788d0892c197b8af9f6d9575f0ac2cd61a9afdd217d3",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 171,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 183,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 195,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 207,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 219,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 231,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 168,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 180,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 192,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 204,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 216,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 228,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/sources"
+    },
+    {
+      "id": "55788897910d5f8d92e9c1ff",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/sources/train-damage-sheet.png",
+      "title": "train-damage-sheet.png",
+      "format": "png",
+      "width": 1509,
+      "height": 1042,
+      "bytes": 1567606,
+      "sha256": "43999699f0710ee5fd7fe636c4a7a575ad4656bdb8304a815705043574a298f8",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 94,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 106,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 118,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 130,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 142,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 154,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 91,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 103,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 115,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 127,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 139,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 151,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/sources"
+    },
+    {
+      "id": "795e1d8bc6ec5f3d02cb26b7",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/01.png",
+      "title": "01.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 27104,
+      "sha256": "e2a4cfc656e3aac24f26e18c2435a404ebd5b86bf34c82c1f1e7037fa9d57810",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 86,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 83,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
+      "id": "8542278eca9b8ddc7bfa2a01",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/02.png",
+      "title": "02.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 23886,
+      "sha256": "722a118ee4a43f59e74595cd139194736859343ae542247239698ee76c83ec7f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 98,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 95,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
+      "id": "547e4fd046766c4d5a59bd1e",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/03.png",
+      "title": "03.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 26383,
+      "sha256": "fc249080c7aafcef6c7d46829ae949c6fe7b9f85db9c4e847e963da6891a2c30",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 110,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 107,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
+      "id": "6ba5a093839fdf561218c40a",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/04.png",
+      "title": "04.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 26324,
+      "sha256": "97c7ef7801cc1cb511d49e8832f1ec935bfd611176dc739d95fd66da05f6addc",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 122,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 119,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
+      "id": "28b92fa0aff6c9c38e1fbb6e",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/05.png",
+      "title": "05.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 24507,
+      "sha256": "f8bcc156c95d8c5195ffdfe450debc0be34de51ff4d347223bf0043e9dad3437",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 134,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 131,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
+      "id": "8feb68ae2cf18166c133b5e1",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/damage-v2/train/06.png",
+      "title": "06.png",
+      "format": "png",
+      "width": 201,
+      "height": 139,
+      "bytes": 23850,
+      "sha256": "814e06cb8ca237d28e520fdecb94d4ffb3363cb6c9fbab6c95e2d0634cc6a56f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/manifest.json",
+          "line": 146,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/DamageSpriteFrames.js",
+          "line": 143,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/damage-v2/train"
+    },
+    {
       "id": "6997c72dcc891486091b47d5",
       "kind": "file",
       "path": "assets/art/toy-room/battle/dinosaur/bite/01.png",
@@ -6422,6 +7779,12 @@
         {
           "file": "assets/art/toy-room/battle/corrections/manifest.json",
           "line": 1024,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
+          "line": 20,
           "type": "apoio",
           "alias": null
         },
@@ -7208,12 +8571,6 @@
           "line": 130,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -7302,6 +8659,12 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 13,
@@ -10425,6 +11788,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
+          "line": 15,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/battle/manifest.json",
           "line": 516,
           "type": "apoio",
@@ -12027,6 +13396,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/battle/manifest.json",
           "line": 14,
           "type": "apoio",
@@ -13467,7 +14842,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16635,7 +18010,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16681,7 +18056,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16727,7 +18102,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16773,7 +18148,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16819,7 +18194,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16865,7 +18240,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16911,7 +18286,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -16957,7 +18332,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 163,
+          "line": 147,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18261,7 +19636,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18325,7 +19700,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18389,7 +19764,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18453,7 +19828,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18517,7 +19892,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18581,7 +19956,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18645,7 +20020,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18709,7 +20084,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18773,7 +20148,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18837,7 +20212,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18901,7 +20276,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -18965,7 +20340,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19029,7 +20404,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19093,7 +20468,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19157,7 +20532,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19221,7 +20596,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19285,7 +20660,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19349,7 +20724,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19413,7 +20788,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19477,7 +20852,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19541,7 +20916,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19605,7 +20980,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19669,7 +21044,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19733,7 +21108,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19797,7 +21172,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19861,7 +21236,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19925,7 +21300,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19989,7 +21364,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20053,7 +21428,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20117,7 +21492,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20181,7 +21556,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20245,7 +21620,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20309,7 +21684,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20373,7 +21748,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20437,7 +21812,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20501,7 +21876,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20565,7 +21940,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20629,7 +22004,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20693,7 +22068,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 67,
+          "line": 73,
           "type": "runtime",
           "alias": "official-character"
         }

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5a31ffc1a61b74e8c778e9d84cee9e937e1f8f12e414281ccb86830a4db7e239",
+  "path": "qa-execucoes/b82eb1ed0574486da79cfb18c1ac0f06/docs/qa/toy-room-arena/android-agachamento.png",
+  "sha256": "8aec80aadedd8f5d8fb02f4e0fd8819703da58452fb80b41b01a7c34adaf62fb",
+  "capturedAt": "2026-10-14T12:48:04.428956+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-agachamento.png\", \"sha256\": \"30cbd99c9a0ed346943ed22b9639cf300fe1fb06ab180a40e4e87e0a292db909\", \"bytes\": 388213, \"binaryRetained\": false}"
+}

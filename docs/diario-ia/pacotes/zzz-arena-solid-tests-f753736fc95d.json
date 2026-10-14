@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "zzz-arena-solid-tests-f753736fc95d",
+  "date": "2026-10-14T13:50:52.487148+00:00",
+  "title": "Percurso de esquivas respeita corpos ampliados dos inimigos",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-arena.js",
+      "sourceId": "f1c8c283d5380755a199dbade04b2d8ee3bad5b88243415e46cd75dd0632d931",
+      "sha256": "1e925af4040cea4431611e518b34bbe51e7a9d74392fd273cdabc07d50c183bb",
+      "bytes": 18538,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

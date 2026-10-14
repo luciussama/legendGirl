@@ -20,7 +20,7 @@ export class ArenaPlayerRenderer {
     const sample=sampleArenaPlayerAnimation(state,room.player);
     ctx.save();ctx.translate(room.player.x,ground-state.jump);
     if(state.mode==='DEFEAT'){ctx.rotate(-.9);ctx.translate(-40,-25);}
-    const reaction=state.playerHitTime>0&&Math.floor(state.playerHitTime/2)%2===0?.55:1;
+    const reaction=state.playerHitTime>0&&Math.floor(state.playerHitTime/2)%2===0?.8:1;
     const blended=sample.layers.filter(l=>l.weight>1e-6).length>1;
     if(blended&&!this.blendCanvas) {
       this.blendCanvas=typeof OffscreenCanvas!=='undefined'?new OffscreenCanvas(512,340)

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bd282b957fab90fd11cd18705d41fd4d44c8bcc4266fccbc921789b6c3784ef5",
+  "path": "qa-execucoes/a134bf80bc184bd79c33fe883073dab0/docs/qa/toy-room-arena/android-paisagem-arena-bear-entrada.png",
+  "sha256": "e558c60e8f598258591f3be651df7c94d68d05c1f9b9a5e5edd40b0542446a79",
+  "capturedAt": "2026-10-14T12:44:26.495222+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-bear-entrada.png\", \"sha256\": \"c0064d4d9e71145810ef1513bd8a8e3b852711631ff500289514fabbc51533e4\", \"bytes\": 595530, \"binaryRetained\": false}"
+}

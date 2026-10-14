@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9b59f65e69c44cfe0e6fed19673461351421938e102cfd08af5869bad2295649",
+  "path": "qa-execucoes/previsualizacao-dano-20261014.json",
+  "sha256": "0f299e4671ed17b5d5d277e902f6e6f449efad6512d0bbd272ac880fce5a35a5",
+  "capturedAt": "2026-10-14T12:48:28.004354+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"/private/tmp/legendgirl-damage-preview.png\", \"sha256\": \"c3537e82e22cc842aa2e023e22badc48f2dc078430d3568497ee350f929ebf50\", \"bytes\": 614840, \"binaryRetained\": false, \"description\": \"Prévia temporária dos seis quadros de dor por ator; inspeção visual realizada antes do ajuste final de resíduos alpha.\"}"
+}

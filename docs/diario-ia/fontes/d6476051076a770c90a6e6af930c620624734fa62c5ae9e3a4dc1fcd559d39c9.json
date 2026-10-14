@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d6476051076a770c90a6e6af930c620624734fa62c5ae9e3a4dc1fcd559d39c9",
+  "path": "qa-execucoes/2d98da87683d4228952a89e1674780fc.log",
+  "sha256": "ac8ef376c132a661a11bc7e899cebb148c6963a444cf8d28824827afbdf3c07a",
+  "capturedAt": "2026-10-14T13:13:10.750471+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:damage-audio:browser",
+    "exitCode": 0,
+    "package": "damage-audio-1496a5ff7ad1"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:damage-audio:browser\n> node scripts/test-damage-audio-browser.js\n\nAPROVADO: dez renderizações offline de impacto/dor, cinco timbres, arena/exploração, sinal sem clipping e cauda encerrada; evento player_hit integrado ao áudio real.\n[{\"actor\":\"player\",\"arena\":false,\"peak\":0.17217287421226501,\"rms\":0.011693601946590405,\"tail\":0,\"voices\":4},{\"actor\":\"player\",\"arena\":true,\"peak\":0.19751141965389252,\"rms\":0.013315820475084937,\"tail\":0,\"voices\":4},{\"actor\":\"train\",\"arena\":false,\"peak\":0.180304616689682,\"rms\":0.01177196729206984,\"tail\":0,\"voices\":4},{\"actor\":\"train\",\"arena\":true,\"peak\":0.207251638174057,\"rms\":0.01341953998380526,\"tail\":0,\"voices\":4},{\"actor\":\"robot\",\"arena\":false,\"peak\":0.23740831017494202,\"rms\":0.013375168025064848,\"tail\":0,\"voices\":4},{\"actor\":\"robot\",\"arena\":true,\"peak\":0.27300775051116943,\"rms\":0.015240080295663106,\"tail\":0,\"voices\":4},{\"actor\":\"dinosaur\",\"arena\":false,\"peak\":0.1367175281047821,\"rms\":0.011503282977429368,\"tail\":0,\"voices\":4},{\"actor\":\"dinosaur\",\"arena\":true,\"peak\":0.15640103816986084,\"rms\":0.013088485094566284,\"tail\":0,\"voices\":4},{\"actor\":\"bear\",\"arena\":false,\"peak\":0.1355571150779724,\"rms\":0.011374498193413256,\"tail\":0,\"voices\":4},{\"actor\":\"bear\",\"arena\":true,\"peak\":0.15562573075294495,\"rms\":0.012947177963654292,\"tail\":0,\"voices\":4}]\n"
+}

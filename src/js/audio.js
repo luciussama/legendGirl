@@ -1,3 +1,6 @@
+import { scheduleDamageSound } from './toy-room/DamageAudio.js';
+import { scheduleEnemyMovement } from './toy-room/EnemyMovementAudio.js';
+
 export function createAudioSystem() {
   const state = {
     audioCtx: null,
@@ -28,7 +31,7 @@ export function createAudioSystem() {
       state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * effectiveVol));
     }
     if (toyRoomAudio) {
-      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol * toyRoomMusicFade));
+      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol * toyRoomMusicFade * toyRoomMusicIntensity));
     }
   }
 
@@ -65,6 +68,7 @@ export function createAudioSystem() {
   let isMusicWanted = false;
   let isToyRoomMusicWanted = false;
   let toyRoomMusicFade = 1;
+  let toyRoomMusicIntensity = 1;
   const activeAudioNodes = new Set();
 
   function registerActiveNode(node) {
@@ -572,7 +576,7 @@ export function createAudioSystem() {
           }
         };
         toyRoomAudio.loop = true;
-        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
         toyRoomAudio.preload = 'auto';
 
         // Loop contínuo e sem interrupções
@@ -602,7 +606,7 @@ export function createAudioSystem() {
     audioEl.src = primaryUrl;
     audioEl.currentTime = 0;
     audioEl.load();
-    audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+    audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
     if (isToyRoomMusicWanted && !isMuted) {
       audioEl.play().catch(() => {});
     }
@@ -622,7 +626,7 @@ export function createAudioSystem() {
     const audioEl = getToyRoomAudioElement();
     if (audioEl) {
       audioEl.loop = true;
-      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade));
+      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
       if (audioEl.paused && !isMuted) {
         audioEl.play().catch(() => {
           // Bloqueio de reprodução automática prevenido até a primeira interação
@@ -634,6 +638,11 @@ export function createAudioSystem() {
   // Envelope da entrada separado do volume escolhido pelo jogador e do estado de mudo.
   function setToyRoomMusicFade(value) {
     toyRoomMusicFade = Math.max(0, Math.min(1, value));
+    updateMusicVolumes();
+  }
+
+  function setToyRoomMusicIntensity(value) {
+    toyRoomMusicIntensity = Math.max(1, Math.min(1.4, Number.isFinite(value) ? value : 1));
     updateMusicVolumes();
   }
 
@@ -859,6 +868,15 @@ export function createAudioSystem() {
     if (!profile) throw new RangeError(`Som de combate desconhecido: ${event}`);
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
 
+    if (event.endsWith('_hit')) {
+      return scheduleDamageSound(state.audioCtx, getDestination() || state.audioCtx.destination,
+        registerActiveNode, event.slice(0,-4), arena);
+    }
+    if (event.endsWith('_walk') && event !== 'player_walk') {
+      return scheduleEnemyMovement(state.audioCtx,getDestination() || state.audioCtx.destination,
+        registerActiveNode,event.slice(0,-5));
+    }
+
     let [startFrequency, endFrequency, waveform, volume, duration] = profile;
     if (arena) { startFrequency *= 0.7; endFrequency *= 0.65; volume = Math.min(0.24, volume * 1.35); duration *= 1.2; }
     const now = state.audioCtx.currentTime;
@@ -880,17 +898,15 @@ export function createAudioSystem() {
   const arenaVoices = new Set();
   function playArenaMusicBeat(beat) {
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
-    const progression = [130.81, 103.83, 116.54, 98];
-    const root = progression[Math.floor(beat / 8) % progression.length];
-    const melody = [2, 2.5, 3, 4, 3, 2.5, 2, 1.5][beat % 8];
     const now = state.audioCtx.currentTime;
+    // Reforço percussivo discreto, sem uma segunda melodia disputando a música da espada.
     for (const [frequency, waveform, volume, duration] of [
-      [root / 2, 'triangle', 0.12, 0.34], [root * melody, 'triangle', 0.065, 0.38],
-      [beat % 4 === 0 ? 70 : 140, 'sine', 0.1, 0.12],
-      [root * 1.5, 'sine', 0.035, 0.42]
+      [beat % 4 === 0 ? 80 : 120, 'sine', beat % 4 === 0 ? 0.1 : 0.055, 0.12],
+      [beat % 2 === 0 ? 650 : 950, 'triangle', 0.018, 0.045]
     ]) {
       const osc = state.audioCtx.createOscillator(), gain = state.audioCtx.createGain();
       osc.type = waveform; osc.frequency.setValueAtTime(frequency, now);
+      osc.frequency.exponentialRampToValueAtTime(frequency * 0.35, now + duration);
       gain.gain.setValueAtTime(volume, now); gain.gain.exponentialRampToValueAtTime(0.001, now + duration);
       osc.connect(gain); gain.connect(getDestination()); registerActiveNode(osc); arenaVoices.add(osc);
       osc.onended = () => { activeAudioNodes.delete(osc); arenaVoices.delete(osc); osc.disconnect(); gain.disconnect(); };
@@ -927,6 +943,7 @@ export function createAudioSystem() {
     startToyRoomMusic,
     setToyRoomMusicTrack,
     setToyRoomMusicFade,
+    setToyRoomMusicIntensity,
     playPortalExitWhoosh,
     playSoftMagicBurst,
     stopToyRoomMusic,

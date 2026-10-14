@@ -22,6 +22,7 @@ import { CameraPresentation } from './controllers/CameraPresentation.js';
 import { createCameraController } from './controllers/CameraController.js';
 import { bindInput, InputController } from './controllers/InputController.js';
 import { createToyRoom, ToyRoomPhase } from './toyRoom.js';
+import { ARENA_TRANSFORMATION_DURATION } from './toy-room/ToyRoomArenaPhase.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
@@ -48,6 +49,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const state = createGameState(canvas, uiFeedback, callbacks);
   const campaign = createCampaignProgress();
   let lastSaveTime = 0;
+  let debugSession = false;
   const camera = createCameraController({ floorY: FLOOR_Y });
   const cameraPresentation = new CameraPresentation();
   const androidFraming = createAndroidFraming(canvas);
@@ -308,6 +310,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncLocalsToState();
     state.restartToTitle(audio);
     syncStateToLocals();
+    debugSession = false;
   }
 
   // Atalho do menu para testar a mesma introdução usada na saída do portal.
@@ -1261,7 +1264,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function saveProgress() {
-    if (!gameStarted || toyRoomIntroduction.active) return;
+    if (debugSession || !gameStarted || toyRoomIntroduction.active) return;
     syncLocalsToState();
     const persisted = campaign.write({
       state: captureState(state), opening: opening.snapshot(),
@@ -1298,11 +1301,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   }
 
-  function newCampaign() {
+  function newCampaign({ preserveProgress = false } = {}) {
     toyRoomIntroduction.cancel(); introductionView = null; introductionOverview = 0;
     gameStarted = false;
     cameraPresentation.reset();
-    campaign.clear(); opening.reset();
+    debugSession = preserveProgress;
+    if (preserveProgress) opening.cancel();
+    else { campaign.clear(); opening.reset(); }
     toyRoomInstance?.destroy(); toyRoomInstance = null;
     audio.stopAllAudio();
     clearTimeout(failMessageTimer);
@@ -1313,6 +1318,36 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncStateToLocals(); camera.syncFromState(state);
     isPaused = false; state.isPaused = false;
     [platforms, phase3Platforms].forEach(group => group.forEach(p => { p.isLanded = false; p.lightAlpha = 0; }));
+  }
+
+  function startDebugPhase(phase, difficulty = state.gameDifficulty) {
+    if (!['bedroom','toy-room','arena'].includes(phase)) return false;
+    saveProgress();
+    newCampaign({ preserveProgress:true });
+    state.gameDifficulty = normalizeDifficulty(difficulty);
+    gameStarted = true; state.gameStarted = true;
+    audio.initAudio();
+    if (phase === 'bedroom') {
+      beginOpeningGameplay(); enterFirstJumpTutorial(); audio.startMusic();
+    } else {
+      startToyRoomPhase();
+      if (phase === 'arena') {
+        const room = toyRoomInstance.instance;
+        room.tutorial.finish();
+        room.story.state.investigationStage = 'EQUIPPED';
+        room.story.state.swordEquipped = true;
+        room.introAlpha = 0; room.introBannerTimer = 0;
+        audio.setToyRoomMusicTrack('sword');
+        room.arena.start();
+        // Acesso direto ao combate assim que as artes terminarem de carregar.
+        room.arena.state.elapsed = ARENA_TRANSFORMATION_DURATION;
+      }
+    }
+    lastTime = performance.now();
+    // O debug não salva campanha, mas deve publicar a fase no estado da simulação.
+    syncLocalsToState();
+    if (!loopStarted) { loopStarted = true; state.loopStarted = true; requestAnimationFrame(loop); }
+    return true;
   }
 
   const saveOnHide = () => { if (document.visibilityState === 'hidden') saveProgress(); };
@@ -1435,6 +1470,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
     start(difficulty = 'NORMAL') {
+      debugSession = false;
       const saved = campaign.read();
       if (saved) restoreProgress(saved);
       else state.gameDifficulty = normalizeDifficulty(difficulty);
@@ -1466,6 +1502,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isGameOver: () => isGameOver,
     startToyRoomPhase,
     startToyRoomIntroduction,
+    startDebugPhase,
     isToyRoomMode: () => currentPhaseMode === 'toy-room'
   };
 }

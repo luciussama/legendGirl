@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T132308-49124d732493-fim",
+  "sessionId": "20261014T132308-49124d732493",
+  "type": "fim",
+  "date": "2026-10-14T13:29:57.021384+00:00",
+  "title": "Manter música da espada e ampliar recuo de dano para dois passos",
+  "actor": "Codex",
+  "summary": "Atendidas as duas correções autorizadas: música Circular Dissonance (1).mp3 permanece na transformação e arena sem stop, troca de src ou reinício; intensidade 1,2 na transformação e 1,4 no combate, ganho nominal 0,812 antes do volume mestre; camada procedural convertida a reforço percussivo sem segunda melodia. Novos encaminhamentos de intensidade/áudio da arena adicionados ao AudioController usado no jogo real. Retorno restaura intensidade 1 e fluxo da trilha da sala. Recuo da arena calibrado em 173,6 unidades, referência de dois passos de 14 quadros na velocidade 6,2, tanto menina quanto quatro inimigos (incluindo Urso), com integração exponencial consistente em subpassos. Limites da arena mantidos; recuo legado/exploração e demais regras preservados. Novas versões de regressões arquivadas sem reescrever fontes; contexto atualizado. Trabalho prévio preservado; sem commit/push.",
+  "checks": [
+    "npm test: primeira execução falhou porque regressão antiga exigia parar música na arena; expectativa atualizada em nova fonte arquivada conforme instrução vigente; execução final aprovada integralmente",
+    "test:arena:refinements: primeira medição de recuo do inimigo excluía o deslocamento inicial do impacto; corrigida em nova versão para medir desde setEnemyState(HIT); aprovado para menina e quatro inimigos em dt 0,5/1/3, mesma faixa/currentTime, volume intensificado e mudo",
+    "npm run test:toy-room:arena:browser: aprovado desktop e Android emulado vertical/paisagem, quatro combates, save/load, derrota/retry e retorno; 1581 quadros de combate por perfil",
+    "npm run build e npm run check-assets: aprovados; git diff --check: aprovado"
+  ],
+  "pending": [
+    "Execução em aparelho Android físico e avaliação auditiva humana da intensidade/percussão não realizadas nesta sessão"
+  ],
+  "files": [
+    "src/js/audio.js",
+    "src/js/controllers/AudioController.js",
+    "src/js/toy-room/ArenaAudioProfile.js",
+    "src/js/toy-room/ArenaPlayerController.js",
+    "src/js/toy-room/PlayerController.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "package.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

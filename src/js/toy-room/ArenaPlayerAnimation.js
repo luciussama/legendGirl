@@ -80,13 +80,17 @@ function poseLayers(pose,time,a,state) {
     ?pair(layer('attack',4),layer('attack',1),smooth((a.attackAge-12)/5))
     :pair(layer('attack',1),layer('idle'),smooth((a.attackAge-17)/7));
   if(pose==='jump'||pose==='fall')return [layer(pose,0)];
-  return [layer('damage')];
+  // Impacto curto, recuo com pausa no pico e recuperação dentro dos 22 quadros de reação.
+  const damageAge=state.mode==='DEFEAT'?8:Math.max(0,Math.min(21,22-(state.playerHitTime || 0)));
+  const index=damageAge<2?0:damageAge<5?1:damageAge<9?2:damageAge<14?3:damageAge<19?4:5;
+  return [layer('damage',index)];
 }
 
 /** Amostra pura: escala nunca depende da altura do quadro ou do estado de agachamento. */
 export function sampleArenaPlayerAnimation(state, player) {
   const a=state.playerAnimation ?? createPlayerAnimation(state,player);
-  let pose=state.mode==='DEFEAT'?'damage':a.pose;
+  // O impacto tem prioridade já no hitstop, antes do próximo avanço do relógio visual.
+  let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage':a.pose;
   let layers=poseLayers(pose,a.poseTime,a,state);
   const transition=smooth(a.blendTime/6);
   if(transition<1&&!['attack','crouch','damage','landing','recovery','standUp'].includes(pose)
@@ -94,7 +98,7 @@ export function sampleArenaPlayerAnimation(state, player) {
     layers=[...poseLayers(a.previousPose,a.previousTime,a,state).map(l=>({...l,weight:l.weight*(1-transition)})),
       ...layers.map(l=>({...l,weight:l.weight*transition}))];
   }
-  const age=a.attackAge, attacking=age<12;
+  const age=a.attackAge, attacking=pose!=='damage'&&age<12;
   const recoil=attacking?(age<4?-6*Math.sin(age/4*Math.PI):age<9?7*Math.sin((age-4)/5*Math.PI):2):0;
   const isDamaged = pose === 'damage' && state.playerHitTime > 0;
   const hitProgress = isDamaged ? state.playerHitTime / 22 : 0;

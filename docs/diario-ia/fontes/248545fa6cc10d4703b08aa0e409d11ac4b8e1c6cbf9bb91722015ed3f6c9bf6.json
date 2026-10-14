@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "248545fa6cc10d4703b08aa0e409d11ac4b8e1c6cbf9bb91722015ed3f6c9bf6",
+  "path": "qa-execucoes/9a85fc1de1ab471c8d8965fd356e46d3/docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-entrada.png",
+  "sha256": "3ddaad03d2a056c467dd2acfe53fd72ebb12bd3b418bd2b1b34870a56bbe7928",
+  "capturedAt": "2026-10-14T13:14:17.110067+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-entrada.png\", \"sha256\": \"cdc2d89c9d4645cce4db2a39161d2aee0f28bb8537158ce29507192de5513f7d\", \"bytes\": 734817, \"binaryRetained\": false}"
+}

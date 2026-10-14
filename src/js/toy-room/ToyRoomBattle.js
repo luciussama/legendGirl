@@ -1,4 +1,6 @@
 import { PlayerController } from './PlayerController.js';
+import { DAMAGE_SPRITE_FRAMES } from './DamageSpriteFrames.js';
+import { updateArenaEnemyAI } from './ArenaEnemyAI.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { renderRocketPunch, renderBattleCrouch, BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY, battlePlayerJumpOffset, laserProjection, renderTrainWalk, rocketPunchTouchesPlayer } from './BattlePresentation.js';
@@ -54,6 +56,10 @@ export class ToyRoomBattle {
     const response = await fetch(new URL('remediation/manifest.json', root));
     if (!response.ok) throw Error('Não foi possível carregar o manifesto de combate.');
     this.manifest = await response.json();
+    // As animações de dor conservam dimensões nativas e usam os tempos de HIT existentes.
+    for (const actor of ['train','robot','dinosaur','bear']) {
+      this.manifest.actors[actor].animations.Hit = DAMAGE_SPRITE_FRAMES[actor];
+    }
     const files = new Set(Object.values(this.manifest.actors).flatMap(actor =>
       Object.values(actor.animations).flatMap(animation => animation.frames.map(frame => frame.file))));
     files.add(BATTLE_CROUCH_FRAME.file);
@@ -97,6 +103,8 @@ export class ToyRoomBattle {
   }
 
   getEnemyCollisionDistance(actor) {
+    const profile=this.presentation?.enemies?.[actor];
+    if(profile) return 56+profile.bodyWidth/2+4;
     switch (actor) {
       case 'bear': return 58;
       case 'dinosaur': return 56;
@@ -104,6 +112,18 @@ export class ToyRoomBattle {
       case 'train': return 54;
       default: return 54;
     }
+  }
+
+  resolveActorBodies(side) {
+    const s=this.state,e=s?.enemy,p=this.presentation?.enemies?.[e?.actor];
+    if(!p||s.transition||e.hp<=0||s.jump>=p.bodyHeight)return;
+    const player=this.room.player,distance=this.getEnemyCollisionDistance(e.actor);
+    if(side*(e.x-player.x)>=distance)return;
+    const middle=(e.x+player.x)/2;
+    player.x=middle-side*distance/2;e.x=middle+side*distance/2;
+    const low=Math.min(player.x-56,e.x-p.bodyWidth/2),high=Math.max(player.x+56,e.x+p.bodyWidth/2);
+    const shift=low<this.tuning.left?this.tuning.left-low:high>this.tuning.right?this.tuning.right-high:0;
+    player.x+=shift;e.x+=shift;
   }
 
   // A caixa mantém sua ilustração; na arena fica visível ao lado do combate.
@@ -221,7 +241,15 @@ export class ToyRoomBattle {
         remaining -= paused;
       } else {
         const step = Math.min(1, remaining);
+        const enemy=this.state.enemy,side=(enemy.x-this.room.player.x)>=0?1:-1,previousX=enemy.x;
+        this.bodySide=side;
         this.step(step);
+        this.resolveActorBodies(side);
+        if(this.presentation&&!this.state.transition&&enemy===this.state.enemy&&
+            ['APPROACH','RETREAT','EVADE','ATTACK'].includes(enemy.state)&&Math.abs(enemy.x-previousX)>0.05) {
+          enemy.walkSoundTimer=Math.max(0,(enemy.walkSoundTimer||0)-step);
+          if(enemy.walkSoundTimer===0){this.playCombatSound(`${enemy.actor}_walk`);enemy.walkSoundTimer=this.presentation.enemies[enemy.actor].stepTime;}
+        }
         this.presentation?.updateAnimation?.(step);
         remaining -= step;
       }
@@ -229,7 +257,9 @@ export class ToyRoomBattle {
   }
 
   step(dt) {
-    const s = this.state, r = this.room, e = s.enemy, t = this.tuning;
+    const s = this.state, r = this.room, e = s.enemy;
+    const profile=this.presentation?.enemies?.[e.actor];
+    const t=profile?{...this.tuning,recovery:profile.recovery}:this.tuning;
     if (!this.ready || this.error) return;
     if (s.mode !== 'BATTLE') { s.ending += dt; return; }
     if (s.impact) {
@@ -259,8 +289,10 @@ export class ToyRoomBattle {
     r.story.state.attackElapsed = s.attackTime;
     this.playerController.update(this, dt);
     e.elapsed += dt;
+    if(this.presentation)this.resolveActorBodies(this.bodySide??(r.player.x<=e.x?1:-1));
+    const aiHandled=this.presentation&&updateArenaEnemyAI(this,dt);
     // Dano por contato direto com o corpo do inimigo (a menina toma dano ao encostar; o inimigo não)
-    if (e && e.hp > 0 && e.state !== 'DEATH' && e.state !== 'HIT' && e.state !== 'ATTACK' && e.state !== 'RETREAT' && !s.transition && s.jump < 60) {
+    if (e && e.hp > 0 && e.state !== 'DEATH' && e.state !== 'HIT' && e.state !== 'ATTACK' && e.state !== 'RETREAT' && e.state !== 'EVADE' && !s.transition && s.jump < 60 && (!this.presentation || s.attackTime===0)) {
       const minDist = this.getEnemyCollisionDistance(e.actor);
       if (Math.abs(r.player.x - e.x) <= minDist + 2 && s.immunity === 0) {
         transferHeart(s.player, e);
@@ -268,14 +300,13 @@ export class ToyRoomBattle {
         s.history.push({ event: 'ENEMY_HIT', enemy: e.actor, playerHp: s.player.hp, enemyHp: e.hp, contact: true });
         s.playerHitTime = 22;
         s.playerHitDirection = r.player.x <= e.x ? -1 : 1;
-        s.playerKnockback = 11;
+        s.playerKnockback = t.knockbackDistance ? t.knockbackDistance * 0.18 / (1 - Math.pow(0.82, 21)) : 11;
         s.attackTime = 0;
         r.story.state.attackElapsed = 0;
         s.crouching = false;
         const heavy = e.actor === 'bear';
         this.startImpact('player', r.player.x, t.ground - 40, s.playerHitDirection, heavy);
         this.playCombatSound('player_hit');
-        this.playCombatSound(`${e.actor}_hit`);
         this.playCombatSound('heart_loss');
         this.playCombatSound('heart_gain');
         if (s.player.hp === 0) {
@@ -287,7 +318,8 @@ export class ToyRoomBattle {
     }
     if (s.attackTime > 0 && s.attackTime <= 8 && !s.swordHit && e.hp > 0 && !(this.presentation && e.state === 'ENRAGE')) {
       const dx = e.x - r.player.x, facing = r.story.state.attackDirection;
-      if (dx * facing >= -20 && Math.abs(dx) < t.swordRange && s.jump < 85) {
+      const swordRange=this.presentation?Math.max(t.swordRange,this.getEnemyCollisionDistance(e.actor)+40):t.swordRange;
+      if (dx * facing >= -20 && Math.abs(dx) < swordRange && s.jump < 85) {
         s.swordHit = true;
         transferHeart(e, s.player);
         s.history.push({ event: 'PLAYER_HIT', enemy: e.actor, playerHp: s.player.hp, enemyHp: e.hp });
@@ -298,13 +330,14 @@ export class ToyRoomBattle {
         this.playCombatSound('heart_loss');
         if (e.hp === 0) this.playCombatSound(`${e.actor}_death`);
         this.setEnemyState(e.hp === 0 ? 'DEATH' : 'HIT');
-        e.knockbackVelocity = facing * (e.actor === 'bear' ? 8.5 : 11.5);
+        e.knockbackVelocity = facing * (t.knockbackDistance ? t.knockbackDistance * 0.15 / (1 - Math.pow(0.85, t.hitRecovery + 1)) : e.actor === 'bear' ? 8.5 : 11.5);
         if (e.hp === 1 && e.actor === 'bear') e.enrage = true;
       }
     }
     if (e.state === 'DEATH') {
       if (e.knockbackVelocity) {
-        e.x = clamp(e.x + e.knockbackVelocity * dt, t.left + 40, t.right - 40);
+        const travel = t.knockbackDistance ? (1 - Math.pow(0.85, dt)) / 0.15 : dt;
+        e.x = clamp(e.x + e.knockbackVelocity * travel, t.left + 40, t.right - 40);
         e.knockbackVelocity *= Math.pow(0.85, dt);
         if (Math.abs(e.knockbackVelocity) < 0.1) e.knockbackVelocity = 0;
       }
@@ -318,7 +351,8 @@ export class ToyRoomBattle {
     }
     if (e.state === 'HIT') {
       if (e.knockbackVelocity) {
-        e.x = clamp(e.x + e.knockbackVelocity * dt, t.left + 40, t.right - 40);
+        const travel = t.knockbackDistance ? (1 - Math.pow(0.85, dt)) / 0.15 : dt;
+        e.x = clamp(e.x + e.knockbackVelocity * travel, t.left + 40, t.right - 40);
         e.knockbackVelocity *= Math.pow(0.85, dt);
         if (Math.abs(e.knockbackVelocity) < 0.1) e.knockbackVelocity = 0;
       }
@@ -328,38 +362,39 @@ export class ToyRoomBattle {
       }
       return;
     }
+    if(aiHandled)return;
     if (e.enrage && !e.enrageShown && e.state !== 'ATTACK') {
       e.enrageShown = true; this.setEnemyState('ENRAGE');
     }
     if (e.state === 'ENRAGE') { if (e.elapsed >= 48) this.setEnemyState('APPROACH'); return; }
     const dx = r.player.x - e.x, distance = Math.abs(dx);
     if (e.state !== 'ATTACK') e.facing = dx < 0 ? -1 : 1;
-    if (e.state === 'IDLE') { if (e.elapsed >= 45) this.setEnemyState('APPROACH'); }
+    if (e.state === 'IDLE') { if (e.elapsed >= (profile?.idleTime??45)) this.setEnemyState('APPROACH'); }
     else if (e.state === 'APPROACH') {
       const attacks = ATTACKS[e.actor], attack = attacks[e.attackIndex % attacks.length];
-      const reach = (['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125) * (t.attackScale ?? 1);
+      const reach = Math.max((['Steam Blast', 'Laser Beam', 'Rocket Punch'].includes(attack) ? 270 : 125) * (t.attackScale ?? 1),this.presentation?this.getEnemyCollisionDistance(e.actor)+45:0);
       if (distance > reach) {
         e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.speed ?? (e.enrage ? 2.6 : 2)) * (this.presentation && e.enrage ? 1.25 : 1) * dt, t.left + 40, t.right - 40);
-        if (s.jump <= 55) {
+        if (!this.presentation && s.jump <= 55) {
           const minDist = this.getEnemyCollisionDistance(e.actor);
           if (e.x > r.player.x && e.x < r.player.x + minDist) e.x = r.player.x + minDist;
           else if (e.x < r.player.x && e.x > r.player.x - minDist) e.x = r.player.x - minDist;
         }
-        e.walkSoundTimer = Math.max(0, e.walkSoundTimer - dt);
-        if (e.walkSoundTimer === 0) {
+        if(!this.presentation)e.walkSoundTimer = Math.max(0, e.walkSoundTimer - dt);
+        if (!this.presentation && e.walkSoundTimer === 0) {
           this.playCombatSound(`${e.actor}_walk`);
           e.walkSoundTimer = 22;
         }
       } else this.beginEnemyAttack(attack);
     } else if (e.state === 'RETREAT') {
       e.x = clamp(e.x - e.facing * 1.5 * dt, t.left + 40, t.right - 40);
-      if (e.elapsed >= 30) this.setEnemyState('IDLE');
+      if (e.elapsed >= (profile?.retreatTime??30)) this.setEnemyState('IDLE');
     } else if (e.state === 'ATTACK') {
       const active = e.elapsed >= t.windup && e.elapsed < t.windup + t.active;
       const charge = ['Front Charge', 'Rush', 'Belly Charge'].includes(e.attack);
       if (active && charge) {
         e.x = clamp(e.x + e.facing * (this.presentation?.enemies?.[e.actor]?.chargeSpeed ?? 5) * dt, t.left + 40, t.right - 40);
-        if (s.jump <= 55) {
+        if (!this.presentation && s.jump <= 55) {
           const minDist = this.getEnemyCollisionDistance(e.actor);
           if (e.x > r.player.x && e.x < r.player.x + minDist) e.x = r.player.x + minDist;
           else if (e.x < r.player.x && e.x > r.player.x - minDist) e.x = r.player.x - minDist;
@@ -367,7 +402,7 @@ export class ToyRoomBattle {
       }
       const damaging = e.attack === 'Toy Leap' ? e.elapsed >= 84 && e.elapsed < 96 : active;
       if (damaging && !e.landed && s.immunity === 0) {
-        const range = (e.attack === 'Laser Beam' ? 340 : e.attack === 'Rocket Punch' ? 280 : e.attack === 'Steam Blast' ? 280 : e.attack === 'Toy Leap' ? 118 : 110) * (t.attackScale ?? 1);
+        const range = Math.max((e.attack === 'Laser Beam' ? 340 : e.attack === 'Rocket Punch' ? 280 : e.attack === 'Steam Blast' ? 280 : e.attack === 'Toy Leap' ? 118 : 110) * (t.attackScale ?? 1),this.presentation?this.getEnemyCollisionDistance(e.actor)+15:0);
         const signed = (r.player.x - e.x) * e.facing;
         const dodge = this.presentation?.enemyContact ? !this.presentation.enemyContact(s,e) : s.jump > 65 || (s.crouching && e.attack === 'Laser Beam');
         const rocketContact = e.attack === 'Rocket Punch' && this.manifest && !this.presentation
@@ -387,13 +422,12 @@ export class ToyRoomBattle {
           const heavy = e.actor === 'bear';
           s.playerHitTime = 22;
           s.playerHitDirection = e.facing;
-          s.playerKnockback = 11;
+          s.playerKnockback = t.knockbackDistance ? t.knockbackDistance * 0.18 / (1 - Math.pow(0.82, 21)) : 11;
           s.attackTime = 0;
           r.story.state.attackElapsed = 0;
           s.crouching = false;
           this.startImpact('player', r.player.x, t.ground - 40, e.facing, heavy);
           this.playCombatSound('player_hit');
-          this.playCombatSound(`${e.actor}_hit`);
           this.playCombatSound('heart_loss');
           this.playCombatSound('heart_gain');
           if (s.player.hp === 0) {
@@ -409,7 +443,7 @@ export class ToyRoomBattle {
 
   enemyPose(e = this.state.enemy) {
     return e.state === 'DEATH' ? 'Death' : e.state === 'HIT' ? 'Hit' : e.state === 'ENRAGE' ? 'Enrage'
-      : e.state === 'ATTACK' ? e.attack : ['APPROACH', 'RETREAT'].includes(e.state) ? 'Walk' : 'Idle';
+      : e.state === 'ATTACK' ? e.attack : ['APPROACH', 'RETREAT', 'EVADE'].includes(e.state) ? 'Walk' : 'Idle';
   }
 
   render() {
@@ -448,7 +482,7 @@ export class ToyRoomBattle {
         const hitProgress = s.impact?.target === 'enemy' ? Math.min(1, s.impact.elapsed / 8) : 1;
         const recoil = s.impact?.target === 'enemy' ? -e.facing * (1 - hitProgress) * 7 : 0;
         ctx.save();
-        if (e.state === 'HIT' && Math.floor(e.elapsed / 2) % 2 === 0) ctx.globalAlpha = 0.48;
+        if (e.state === 'HIT' && Math.floor(e.elapsed / 2) % 2 === 0) ctx.globalAlpha = 0.8;
         ctx.translate(e.x + recoil, e.y ?? t.ground); ctx.scale(e.facing, 1);
         // O derrotado é transportado inerte; não representa caminhada congelada.
         if (e.carried) ctx.rotate(Math.sin(e.progress * Math.PI * 2) * 0.12);

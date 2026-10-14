@@ -1,6 +1,6 @@
 # Contexto compartilhado vigente
 
-Atualizado em 13/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
+Atualizado em 14/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
 
 ## Ler antes de agir
 
@@ -49,6 +49,30 @@ Mude este contexto quando houver nova decisão vigente, mudança de arquitetura 
 ## Foco da câmera na Toy Room
 
 Por orientação do responsável, a câmera acompanha a menina durante a exploração e as falas. A única exceção é o trecho de revelação da espada na investigação: acompanha temporariamente a fada e retorna à menina já na fala seguinte. A guia da fada para brinquedos e espada não influencia o zoom nem a translação de apresentação no Android. `ToyRoomPhase.updateCamera` e `getCameraFrame` usam o alvo único de `ToyRoomStory.cameraTarget`; a investigação não escreve diretamente na câmera. O viewport usado pela recorrência reutiliza o mesmo enquadramento da apresentação.
+
+## Sprites de dano da arena
+
+Em 14/10/2026 foram criados com imagegen 30 quadros de dano em `assets/art/toy-room/battle/damage-v2/`, seis por ator, aprovados pelo responsável na conversa atual. Resoluções nativas: menina 296×303, trem 201×139, robô 148×236, dinossauro 218×205 e urso 144×177. `DamageSpriteFrames.js` é gerado por `scripts/prepare-damage-sprites.js`; menina e inimigos usam os quadros nos eventos de dano existentes, sem alteração de física ou hitboxes. As fontes e os prompts ficam junto às artes. A reação tem prioridade desde o primeiro quadro de impacto, inclusive no hitstop, cancelando a apresentação do ataque interrompido. O acervo recuperou as ligações dos comandos de diálogo/câmera e inclui a regressão `test:damage-sprites`, sem reescrever fontes históricas.
+
+`DamageAudio.js` cria impacto e reação curta com timbre próprio da menina e dos quatro inimigos, encaminhados ao ganho mestre do sistema de áudio. `player_hit` toca somente a reação da menina; os eventos de cada inimigo são emitidos quando ele recebe dano. Sons sintetizados por Web Audio, sem gravações externas, com liberação dos nós ao terminar e limpeza por pausa/transição. Validação específica disponível em `test:damage-audio:browser`.
+
+## Música e recuo da arena
+
+Por orientação do responsável em 14/10/2026, `Circular Dissonance (1).mp3`, iniciada na aquisição da espada, continua na transformação e no combate sem pausa, troca de faixa ou reinício. `ArenaAudioProfile` mantém o fade em 1 e aumenta a intensidade da trilha para 1,2 na transformação e 1,4 no combate; o reforço procedural é percussivo. O volume mestre e o mudo continuam respeitados. Ao retornar, a intensidade volta a 1 e o fluxo da música da sala é retomado.
+
+Na arena, a menina e os quatro inimigos recuam aproximadamente 173,6 unidades ao tomar dano, referência de dois passos (velocidade 6,2 × 14 quadros × 2). A desaceleração permanece suave e a integração é consistente em subpassos. O recuo é limitado pelas bordas e não modifica hitboxes, corações ou física da exploração. As regressões de continuidade musical, volume/mudo e separação dos atores ficam no acervo sob `test:arena:refinements`.
+
+## Seletor de fases para debug
+
+O antigo botão de segunda fase foi substituído por `debug-phase-select` na barra superior, disponível no menu e durante a partida. A instrução é “Debug: escolha uma fase para pular”, com Quarto escuro, Sala de brinquedos e Arena de batalha. `startDebugPhase` reinicia o estado de execução da fase escolhida; quarto escuro começa no gameplay, sala começa na exploração, arena começa com espada equipada e dispensa a espera cinematográfica da transformação, aguardando apenas o carregamento das artes. Saves automáticos ficam desativados durante a sessão de debug, preservando a campanha; ao iniciar uma partida normal, a persistência normal é retomada. A navegação do select não dispara atalhos ou movimento. Regressão de navegador arquivada como `test:debug-phases:browser`.
+
+## Corpos sólidos e inteligência progressiva na arena
+
+Por solicitação do responsável em 14/10/2026, os corpos usam medidas próprias da apresentação ampliada, separação bidirecional e conservação do lado de contato em cada subpasso, inclusive em investidas. Armas e projéteis não são o corpo sólido. A colisão considera a sobreposição vertical; o alcance dos ataques foi compatibilizado com as bordas dos corpos. O golpe em curso não é cancelado pelo simples encostar de corpos na arena. A exploração e o combate legado conservam seus parâmetros.
+
+O trem conserva HP, velocidade e tempos iniciais. Robô, dinossauro e Urso aumentam progressivamente a pressão, com avanço mais rápido e menores pausas/recuperação. `ArenaEnemyAI.js` reage à antecipação visível da espada: recua temporariamente mais rápido que a menina, tenta um contra-ataque escolhido conforme distância/postura e entra em cooldown. Não evade durante ataques já comprometidos, dano ou recuperação, e não tenta recuar para fora da arena. Decisões e cooldowns pertencem ao snapshot do inimigo. O Urso conserva seus oito corações e fúria, com a maior pressão desses perfis; a avaliação humana da dificuldade final ainda está pendente.
+
+`EnemyMovementAudio.js` cria motor pulsante do trem, juntas metálicas do robô, passos do dinossauro e passos pesados/ruído de tecido do Urso. Os sons são emitidos em deslocamentos reais de aproximação, retirada, evasão e investida, com cadência própria e ganho mestre. Regressões arquivadas: `test:arena:enemies` e `test:damage-audio:browser`. Os agentes de QA passaram a respeitar o alcance e a distância dos corpos ampliados, preservando suas fontes anteriores.
 
 ## Política vigente de relatórios e QA
 

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "df3b74812c804b649f7c296a7c0cd824",
+  "type": "qa",
+  "date": "2026-10-14T13:55:23.862993+00:00",
+  "title": "QA temporário: test:damage-audio:browser",
+  "exitCode": 0,
+  "sourceId": "961ae9f211d3464ac979acfe1c9405a6d1d1b15526c0165a21b14ba1f736272f",
+  "package": "zzzzz-arena-movement-audio-c23faa5f336a"
+}

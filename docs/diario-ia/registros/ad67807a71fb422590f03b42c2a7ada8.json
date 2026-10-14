@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "ad67807a71fb422590f03b42c2a7ada8",
+  "type": "qa",
+  "date": "2026-10-14T13:53:36.367954+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 1,
+  "sourceId": "b9a1db348841e1577a0647374450127205497ce85e9a45e78c635f597c583ba8",
+  "package": "zzzz-arena-enemy-intelligence-d9fdbeb48a07"
+}

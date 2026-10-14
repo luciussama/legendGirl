@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T131037-8377010bb135-fim",
+  "sessionId": "20261014T131037-8377010bb135",
+  "type": "fim",
+  "date": "2026-10-14T13:16:09.666632+00:00",
+  "title": "Integrar sprites aprovados e criar áudio de impacto e dor",
+  "actor": "Codex",
+  "summary": "Responsável aprovou os sprites de dano em sua mensagem atual. Integração dos seis quadros por ator conferida e preservada; amostragem da menina agora prioriza dano imediatamente no hitstop, sem aguardar o próximo update visual e sem conservar arco do ataque interrompido. Criado DamageAudio.js com impacto de ruído filtrado/corpo grave e reação sintetizada curta por personagem: menina, trem, robô, dinossauro e urso. Sons são emitidos nos eventos de dano existentes, encaminhados ao ganho mestre e liberados ao encerrar; pausa/transição continua usando limpeza existente. Removido som de dor do agressor quando a vítima é a menina; inimigos soam apenas ao receber dano. Aprovação registrada no contexto vigente, guia de arte e manifesto/gerador novos, preservando histórico anterior. Sem mudanças na física, dano, hitboxes ou saves; sem commit/push.",
+  "checks": [
+    "npm test: aprovado antes e após ajuste da prioridade de dano; regressão arquivada cobre pose imediata durante hitstop e ausência de arco residual",
+    "npm run journal:qa -- test:damage-audio:browser: aprovado, dez renderizações OfflineAudioContext (cinco atores, dois perfis), peaks de 0,135 a 0,273, RMS positivo e cauda zero após 0,5 segundo; evento público player_hit confirmado no contexto Web Audio real",
+    "npm run test:toy-room:arena:browser: aprovado desktop, Android emulado vertical e paisagem; exploração, recargas, combate, derrota/retry e retorno",
+    "npm run build, npm run check-assets e git diff --check: aprovados",
+    "npm run docs:sprites: mapa reconstruído, 415 imagens, 93 recortes, 29 assinaturas"
+  ],
+  "pending": [
+    "Avaliação auditiva humana dos novos sons e execução em Android físico não realizadas; aprovação atual é dos sprites"
+  ],
+  "files": [
+    "src/js/toy-room/DamageAudio.js",
+    "src/js/audio.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "src/js/toy-room/ArenaPlayerAnimation.js",
+    "scripts/prepare-damage-sprites.js",
+    "assets/art/toy-room/battle/damage-v2/manifest.json",
+    "assets/art/toy-room/battle/damage-v2/README.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "package.json"
+  ]
+}

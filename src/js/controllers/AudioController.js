@@ -229,6 +229,10 @@ export class AudioController {
   }
 
   setToyRoomMusicFade(value) { this.system.setToyRoomMusicFade(value); }
+  setToyRoomMusicIntensity(value) { this.system.setToyRoomMusicIntensity?.(value); }
+  playArenaMusicBeat(beat) { return this.system.playArenaMusicBeat?.(beat); }
+  stopArenaMusic() { this.system.stopArenaMusic?.(); }
+  playArenaSound(event) { return this.system.playArenaSound?.(event); }
   setToyRoomMusicTrack(track) {
     if (this.system && typeof this.system.setToyRoomMusicTrack === 'function') {
       this.system.setToyRoomMusicTrack(track);

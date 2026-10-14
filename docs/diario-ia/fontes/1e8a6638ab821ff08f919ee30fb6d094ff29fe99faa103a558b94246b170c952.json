@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1e8a6638ab821ff08f919ee30fb6d094ff29fe99faa103a558b94246b170c952",
+  "path": "qa-execucoes/b82eb1ed0574486da79cfb18c1ac0f06/docs/qa/toy-room-arena/desktop-arena-dinosaur-ataque.png",
+  "sha256": "db41e79b5b43d0434fa554f99c84cc789a98e5be729ac7c6859f58184146bf1b",
+  "capturedAt": "2026-10-14T12:48:04.470825+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-dinosaur-ataque.png\", \"sha256\": \"4ffb3c320cf6b5eaa8d9a11305befbe61c775e1830f78a35e417d8e2f3417678\", \"bytes\": 1082492, \"binaryRetained\": false}"
+}

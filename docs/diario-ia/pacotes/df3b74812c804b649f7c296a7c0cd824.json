@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "df3b74812c804b649f7c296a7c0cd824",
+  "date": "2026-10-14T13:55:23.862993+00:00",
+  "title": "QA temporário: test:damage-audio:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/df3b74812c804b649f7c296a7c0cd824.log",
+      "sourceId": "961ae9f211d3464ac979acfe1c9405a6d1d1b15526c0165a21b14ba1f736272f",
+      "sha256": "59d087c4dc2cd1d92ee6126ea09d41bec613fafeab33edd1200102ab165a2f71",
+      "bytes": 669,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/df3b74812c804b649f7c296a7c0cd824/docs/qa/.DS_Store",
+      "sourceId": "a2cf0b6bfa1bb49bec1e362d782bb9de73a58045a41f5b782203cbddae46d884",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

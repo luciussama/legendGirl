@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "8abf27ec7b5a5b7555512c489828075e9d151d1f15da8cea63b97d8b54699a72",
+  "path": "qa-execucoes/002a625d0a244ca1ba6bf19c846198dc.log",
+  "sha256": "2f1b5f9c85c6ac2caa537602bedeb8c35f036f8078bbc2c4b952bad59c05ada3",
+  "capturedAt": "2026-10-14T13:53:29.175796+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:enemies",
+    "exitCode": 1,
+    "package": "zzzz-arena-enemy-intelligence-d9fdbeb48a07"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:enemies\n> node scripts/test-arena-enemy-intelligence.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\nfalse !== true\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-i_ilv058/projeto/scripts/test-arena-enemy-intelligence.js:22:87\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

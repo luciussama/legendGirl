@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T133216-ff5343c75f02-fim",
+  "sessionId": "20261014T133216-ff5343c75f02",
+  "type": "fim",
+  "date": "2026-10-14T13:39:00.120071+00:00",
+  "title": "Substituir atalho de segunda fase por seletor de fases para debug",
+  "actor": "Codex",
+  "summary": "Substituído btn-skip-phase2 pelo select debug-phase-select com instrução visível para pular entre Quarto escuro, Sala de brinquedos e Arena. Disponível no menu e durante gameplay; layout responsivo e navegação do select isolada dos controles. startDebugPhase inicia quarto escuro no gameplay, sala na exploração e arena com espada equipada, sem aguardar cinematic de transformação (aguarda carregamento normal dos assets). Sessão de debug preserva campanha: guarda progresso normal anterior, reinicia somente estado em memória, desativa saves automáticos e não limpa marca de abertura; partida normal retoma persistência. Instâncias anteriores destruídas e pausa limpa ao trocar. Encontrada e corrigida sincronização entre variáveis locais e estado após início de debug: saveProgress bloqueado não pode ser usado para publicar fase. Guias e contexto atualizados; fontes de QA arquivadas, trabalho anterior preservado, sem commit/push.",
+  "checks": [
+    "npm test: aprovado antes e após correção de sincronização da fase",
+    "npm run test:debug-phases:browser: primeira tentativa detectou estado bedroom persistindo ao escolher toy-room; sincronização explícita corrigida; revisão da fixture também ajustou status inicial da arena de INACTIVE para IDLE; execução final aprovada em desktop e Android emulado, cinco trocas repetidas, arena COMBAT, select dentro da tela, tecla P sem pausar e save preservado durante debug/retorno",
+    "npm run build: aprovado; git diff --check: aprovado"
+  ],
+  "pending": [
+    "Validação de interação com dropdown nativo em Android físico não executada"
+  ],
+  "files": [
+    "index.html",
+    "src/css/styles.css",
+    "src/js/main.js",
+    "src/js/game.js",
+    "package.json",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

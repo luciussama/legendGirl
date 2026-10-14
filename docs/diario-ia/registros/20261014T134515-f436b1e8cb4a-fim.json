@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T134515-f436b1e8cb4a-fim",
+  "sessionId": "20261014T134515-f436b1e8cb4a",
+  "type": "fim",
+  "date": "2026-10-14T13:58:08.870000+00:00",
+  "title": "Corrigir corpos sólidos e progressão da inteligência dos inimigos",
+  "actor": "Codex",
+  "summary": "Atendidos corpos sólidos, inteligência gradual e áudio de movimento. Causa da sobreposição: distância de contato de sprites pequenos e resolução parcial dos movimentos. Arena agora usa largura/altura dos corpos ampliados, solver bidirecional e lado de contato conservado por subpasso; cobre jogador, inimigo e investidas, respeita sobreposição vertical e resolve limites do par. Armas não integram o corpo sólido. Alcance de espada e início/contato de golpes compatibilizados com distância de corpos; ataque em curso não é cancelado pelo simples encostar. Trem conserva HP/speed/tempos; robô/dinossauro/Urso aumentam avanço e pressão, reduzem pausas/recuperação. ArenaEnemyAI reage à antecipação visível da espada com evasão limitada mais rápida que a menina e contra-ataque selecionado por distância/postura; cooldown, compromisso de ataque e bordas impedem evasão contínua. Estado serializável inclui contadores/cooldown; Urso conserva 8 HP e fúria, maior pressão. EnemyMovementAudio cria motor pulsante, juntas metálicas, passos e tecido, disparados por deslocamento real em aproximação/retirada/evasão/investida. Legado/exploração preservados. Novas versões dos agentes QA respeitam corpos e alcance ampliados; histórico preservado. Contexto/guia e mapa atualizados; sem commit/push.",
+  "checks": [
+    "npm test: inicialmente bot antigo tentava entrar a 90/105 unidades dentro dos corpos ampliados; atualizado em nova fonte arquivada. Repertório identificou alcance de início de ataque menor que corpo do trem, corrigido. Regressão de IA detectou comparação invertida da direção da espada, corrigida. Suíte final integral aprovada",
+    "test:arena:enemies: aprovado, 24 combinações de ator/lado/dt, investidas extremas, separação, bordas, save/load, progressão, evasão, contra-ataque e cooldown",
+    "test:toy-room:arena:browser: aprovado desktop, Android emulado vertical/paisagem, quatro inimigos, save/load, derrota/retry e retorno; 1555 quadros de combate por perfil",
+    "test:damage-audio:browser: aprovado, dez renderizações de dano e quatro de movimento, sinais sem clipping, cauda zero e eventos públicos integrados",
+    "npm run docs:sprites: mapa reconstruído; npm run build, npm run check-assets e git diff --check: aprovados"
+  ],
+  "pending": [
+    "Sensação de dificuldade/épico do Urso e áudio final requerem avaliação humana; Android físico não executado"
+  ],
+  "files": [
+    "src/js/toy-room/ArenaEnemies.js",
+    "src/js/toy-room/ArenaEnemyAI.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "src/js/toy-room/PlayerController.js",
+    "src/js/toy-room/EnemyMovementAudio.js",
+    "src/js/audio.js",
+    "package.json",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

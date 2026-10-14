@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "9d6d2c065d5f4aa59dc4ea63af560e62",
+  "type": "qa",
+  "date": "2026-10-14T13:34:42.989749+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 0,
+  "sourceId": "78cfd4d202b7c2bf255b2692ddf20c5a2eb3f77909b9d3dfc0af76d8a1fcb7d4",
+  "package": "suite-v4-arena-refinements-757ade51d0fc"
+}

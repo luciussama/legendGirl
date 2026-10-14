@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "83ba214c633a9194ee9856f52aabc6af44adc077500934f7ba3109f1b6026d35",
+  "path": "qa-execucoes/af7d2a11ff0f47da99aa33460d8ac3c0.log",
+  "sha256": "2d7fa33d43048cc4f56e2918e13969fe727830af277962bfd9a8c59aa7884d7d",
+  "capturedAt": "2026-10-14T12:46:46.996489+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:damage-sprites",
+    "exitCode": 0,
+    "package": "suite-v2-damage-32d2776d4c14"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:damage-sprites\n> node scripts/test-damage-sprites.js\n\nAPROVADO: 30 PNGs, cinco resoluções nativas, transparência, bordas, poses distintas e seis etapas de dano alcançadas sem alterar estado.\n"
+}

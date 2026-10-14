@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "333dbd04edc8f1eb3e4c39887812243e301d80628a759d4fbb1b671b93db7c11",
+  "path": "qa-execucoes/664c8b0cb9e04146b2e3573a125aafe4.log",
+  "sha256": "8b0dc17097bb60ab2313c15cd1a72919b716abf70f6496c64cddd2d76a94ee78",
+  "capturedAt": "2026-10-14T12:45:47.090203+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:damage-sprites",
+    "exitCode": 1,
+    "package": "suite-v2-damage-32d2776d4c14"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:damage-sprites\n> node scripts/test-damage-sprites.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Quadro sem corte nas bordas\n\n11 !== 0\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-8w7_oqi0/projeto/scripts/test-damage-sprites.js:13:73 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 11,\n  expected: 0,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

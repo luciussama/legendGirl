@@ -1,4 +1,5 @@
 import { BATTLE_GIRL_FRAMES } from './BattleGirlFrames.js';
+import { DAMAGE_SPRITE_FRAMES } from './DamageSpriteFrames.js';
 
 // Metadados de apresentação: orientação e escala corporal independem da espada e das margens.
 const original = (pose, facing, anchors, faces) => BATTLE_GIRL_FRAMES[pose].map((frame,index) => ({
@@ -22,7 +23,10 @@ export const ARENA_GIRL_ANIMATION_FRAMES = {
   jump: original('jump',[1],null,[203,203]),
   fall: original('fall',[1],null,[203,203]),
   attack: original('attack',[-1,1,1,1,1],[134,148,142,132,130],[126,177,180,172,175]),
-  damage: original('damage',[-1]),
+  damage: DAMAGE_SPRITE_FRAMES.girl.frames.map(frame => ({
+    ...frame, x:0, y:0, anchorX:frame.anchor.x, anchorY:frame.anchor.y,
+    pixelUnit:1, sourceFacing:-1, faceX:frame.anchor.x
+  })),
   // A cabeça mantém sua escala; a redução de altura resulta de pernas e tronco dobrados.
   crouchCycle,
   crouchEnter:[crouchCycle[0]],

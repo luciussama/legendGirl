@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ec5c82233cc05d9fe94a608994c4f3148ffaba9d6c33bd96a90581d3762f6447",
+  "path": "qa-execucoes/a134bf80bc184bd79c33fe883073dab0/docs/qa/toy-room-arena/android-paisagem-retorno.png",
+  "sha256": "2388ab95fc2b234a36ea05ef8db20260df52e91a3d7b328c8de8231adca881bd",
+  "capturedAt": "2026-10-14T12:44:26.506784+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-retorno.png\", \"sha256\": \"21ff76a71e5b52db9ed8149e906f57c7313cf331ce0e39d4382e0b72a4adc142\", \"bytes\": 656679, \"binaryRetained\": false}"
+}

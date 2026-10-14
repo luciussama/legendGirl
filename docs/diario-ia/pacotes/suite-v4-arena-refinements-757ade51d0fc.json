@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "suite-v4-arena-refinements-757ade51d0fc",
+  "date": "2026-10-14T13:27:31.790118+00:00",
+  "title": "Continuidade musical e recuo de dois passos na arena",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-arena.js",
+      "sourceId": "c9887160acc14fe75564b55b706e55710452454a4366f3c2ecdcb833327cd15a",
+      "sha256": "b81d79f5d94b914e35ef181d0e97a6d1446988582d685e7e0ec2c008783140a2",
+      "bytes": 18488,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-arena-refinements.js",
+      "sourceId": "8b36b0e2d930b4c52546fe8041340ece719928d25a798aa6c77e2a5f1c79574e",
+      "sha256": "4f4d02840c84237bbf193d67bad9a6e47b1a2046aec5cde4990b26857bb08d8a",
+      "bytes": 3160,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:refinements": "node scripts/test-arena-refinements.js",
+    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js && npm run test:difficulty && npm run test:mobile-ui && npm run test:toy-room:facing && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:battle && npm run test:toy-room:arena && npm run test:sprite-review && npm run test:current-art && npm run test:journal && npm run test:dialogues && npm run test:toy-room:camera && npm run test:damage-sprites && npm run test:arena:refinements"
+  }
+}

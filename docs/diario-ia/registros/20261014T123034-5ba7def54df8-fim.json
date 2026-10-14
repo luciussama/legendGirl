@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "20261014T123034-5ba7def54df8-fim",
+  "sessionId": "20261014T123034-5ba7def54df8",
+  "type": "fim",
+  "date": "2026-10-14T12:49:00.664113+00:00",
+  "title": "Criar e integrar sprites animados de dano com imagegen",
+  "actor": "Codex",
+  "summary": "Criados pelo imagegen integrado 30 PNGs de dano, seis para menina, trem, robô, dinossauro e urso, em damage-v2. Referências atuais inspecionadas; preservadas estética pixel art da menina e ilustrada dos inimigos. Pranchas de origem preservadas; fundo do dinossauro corrigido por segunda chamada imagegen. Exportador determinístico separa componentes, usa escala comum por ator, exporta canvases nativos e metadados de âncora; resíduos alpha inferiores a 8 removidos. Integração em ArenaGirlAnimationFrames e ArenaPlayerAnimation com seis etapas na reação existente de 22 quadros; inimigos usam novo Hit pelo ToyRoomBattle e duração existente. Piscada reduzida para alpha 0,8, permitindo ler expressões. Sem mudança de dano, hitboxes, física ou saves. Guia humano, prompts, manifestos e inventário atualizados. Detectada ligação ausente de comandos QA de diálogo/câmera no acervo atual e recuperada em novo pacote com fontes preservadas, sem reescrever histórico. Prévia visual inspecionada e bitmap temporário descartado com hash/tamanho arquivados. Sem commit/push.",
+  "checks": [
+    "Imagegen: cinco pranchas de seis poses e edição de transparência do dinossauro concluídas; referência e saídas inspecionadas",
+    "npm test: primeira tentativa falhou na ligação ausente de test:dialogues; após recuperação alcançou teste novo e detectou resíduos alpha nas bordas; exportação corrigida; execução final aprovada integralmente",
+    "npm run test:damage-sprites: tentativas iniciais detectaram resíduos alpha; final aprovado para 30 PNGs, dimensões nativas, transparência, bordas, poses distintas e alcance dos seis frames durante reação",
+    "npm run test:toy-room:arena:browser: duas execuções aprovadas, incluindo final após correção de alpha, nos três perfis desktop/Android emulado/paisagem; exploração, save/load, combate, derrota/retry e retorno",
+    "npm run docs:sprites: mapa reconstruído, 415 imagens, 93 recortes, 29 assinaturas",
+    "npm run build e npm run check-assets: aprovados; git diff --check: aprovado"
+  ],
+  "pending": [
+    "Aprovação artística humana individual das novas poses pendente; execução em Android físico não realizada"
+  ],
+  "files": [
+    "assets/art/toy-room/battle/damage-v2",
+    "scripts/prepare-damage-sprites.js",
+    "src/js/toy-room/DamageSpriteFrames.js",
+    "src/js/toy-room/ArenaGirlAnimationFrames.js",
+    "src/js/toy-room/ArenaPlayerAnimation.js",
+    "src/js/toy-room/ArenaPlayerRenderer.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "package.json",
+    "docs/sprites/inventario.json",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

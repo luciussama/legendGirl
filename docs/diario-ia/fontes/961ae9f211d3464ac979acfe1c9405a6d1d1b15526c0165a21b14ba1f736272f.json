@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "961ae9f211d3464ac979acfe1c9405a6d1d1b15526c0165a21b14ba1f736272f",
+  "path": "qa-execucoes/df3b74812c804b649f7c296a7c0cd824.log",
+  "sha256": "59d087c4dc2cd1d92ee6126ea09d41bec613fafeab33edd1200102ab165a2f71",
+  "capturedAt": "2026-10-14T13:55:23.862210+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:damage-audio:browser",
+    "exitCode": 0,
+    "package": "zzzzz-arena-movement-audio-c23faa5f336a"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:damage-audio:browser\n> node scripts/test-damage-audio-browser.js\n\nAPROVADO: dez renderizações offline de impacto/dor e quatro de movimentos, nove timbres, arena/exploração, sinal sem clipping e cauda encerrada; evento player_hit integrado ao áudio real.\n[{\"actor\":\"train\",\"peak\":0.14942464232444763,\"rms\":0.008972329148478285,\"tail\":0,\"voices\":2},{\"actor\":\"robot\",\"peak\":0.11527971178293228,\"rms\":0.0062940215244018625,\"tail\":0,\"voices\":2},{\"actor\":\"dinosaur\",\"peak\":0.08088067919015884,\"rms\":0.006443726346367852,\"tail\":0,\"voices\":2},{\"actor\":\"bear\",\"peak\":0.1590854674577713,\"rms\":0.012154858544171752,\"tail\":0,\"voices\":2}]\n"
+}

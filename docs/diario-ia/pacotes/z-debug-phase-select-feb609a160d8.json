@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "z-debug-phase-select-feb609a160d8",
+  "date": "2026-10-14T13:37:35.532891+00:00",
+  "title": "Seletor de fases e estado inicial IDLE da arena",
+  "files": [
+    {
+      "path": "scripts/test-debug-phase-select-browser.js",
+      "sourceId": "d0dca1cbccde37d354b077c5bd104574b12b4036aaa258fad9b8da5596a59a15",
+      "sha256": "c5c33f25a4a69ca68f2a87441983cc0ef0fd26561f1a2e9f974e86a47a51ba64",
+      "bytes": 3710,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:debug-phases:browser": "node scripts/test-debug-phase-select-browser.js"
+  }
+}

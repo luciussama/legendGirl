@@ -22,13 +22,14 @@ export class PlayerController {
     if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
     r.player.isMoving = Boolean(input.x && !s.crouching && s.playerHitTime <= 0);
     if (s.playerHitTime > 0 && s.playerKnockback) {
-      r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * dt, t.left + 35, t.right - 35);
+      const travel = t.knockbackDistance ? (1 - Math.pow(0.82, dt)) / 0.18 : dt;
+      r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
       s.playerKnockback *= Math.pow(0.82, dt);
     } else if (!s.crouching && input.x && s.playerHitTime <= 0) {
       r.player.x = clamp(r.player.x + input.x * t.speed * dt, t.left + 35, t.right - 35);
     }
     const e = s.enemy;
-    if (e && e.hp > 0 && e.state !== 'DEATH' && !s.transition && s.jump <= 55) {
+    if (!battle.presentation && e && e.hp > 0 && e.state !== 'DEATH' && !s.transition && s.jump <= 55) {
       const minDist = battle.getEnemyCollisionDistance ? battle.getEnemyCollisionDistance(e.actor) : 54;
       if (r.player.x < e.x && r.player.x > e.x - minDist) {
         r.player.x = e.x - minDist;

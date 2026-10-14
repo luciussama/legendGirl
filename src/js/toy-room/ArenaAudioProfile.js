@@ -1,10 +1,10 @@
-/** Trilha procedural própria, regida pela simulação, sem timers em segundo plano. */
+/** A música da espada continua; a arena acrescenta intensidade e percussão. */
 export class ArenaAudioProfile {
   constructor(audio) { this.audio = audio; this.mode = 'ROOM'; this.beat = 0; this.clock = 0; }
-  transform() { this.mode = 'TRANSFORM'; this.audio?.setToyRoomMusicFade?.(0.25); this.audio?.playCombatSound?.('arena_start'); }
+  transform() { this.mode = 'TRANSFORM'; this.audio?.setToyRoomMusicFade?.(1); this.audio?.setToyRoomMusicIntensity?.(1.2); this.audio?.playCombatSound?.('arena_start'); }
   enter() {
     if (this.mode === 'ARENA') return;
-    this.mode = 'ARENA'; this.audio?.stopToyRoomMusic?.();
+    this.mode = 'ARENA'; this.audio?.setToyRoomMusicIntensity?.(1.4);
   }
   update(dt) {
     if (this.mode !== 'ARENA') return;
@@ -17,6 +17,7 @@ export class ArenaAudioProfile {
   }
   leave({ resume = true } = {}) {
     this.audio?.stopArenaMusic?.();
+    this.audio?.setToyRoomMusicIntensity?.(1);
     if (this.mode !== 'ROOM' && resume) { this.audio?.startToyRoomMusic?.(); this.audio?.setToyRoomMusicFade?.(1); }
     this.mode = 'ROOM';
   }

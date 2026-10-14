@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "33b7f24d554a4340809670399e257998",
+  "date": "2026-10-14T13:28:13.605194+00:00",
+  "title": "QA temporário: test:arena:refinements",
+  "files": [
+    {
+      "path": "qa-execucoes/33b7f24d554a4340809670399e257998.log",
+      "sourceId": "dd572ff7a06ddae2d108e7e160566669ae90695508c0895fe2ca135502e5ff32",
+      "sha256": "674d278190cbc2972533856ce81921c8b8f3660a4cd423d1a2327b6a0d6eb0c0",
+      "bytes": 256,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/33b7f24d554a4340809670399e257998/docs/qa/.DS_Store",
+      "sourceId": "656a5a617a7aa76ab5dad97be2e0331706ac7ede02ddb1d757e2847ab0eef2c6",
+      "sha256": "1ccdf2267ecac42727b140c20fdc4247356d3a7f17d08813daf8ca90f595c4d5",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

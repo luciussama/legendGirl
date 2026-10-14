@@ -40,7 +40,7 @@ function refreshCampaignMenu() {
     : 'FÁCIL oferece mais tolerância no pouso e uma fadinha mais ágil para indicar brinquedos.';
 }
 
-const btnSkipPhase2 = document.getElementById('btn-skip-phase2');
+const debugPhaseSelect = document.getElementById('debug-phase-select');
 const gameoverOverlay = document.getElementById('gameover-overlay');
 const btnRetry = document.getElementById('btn-retry');
 const btnRestart = document.getElementById('btn-restart');
@@ -323,9 +323,23 @@ if (btnStartPhase1) {
   });
 }
 
-if (btnSkipPhase2) {
-  addSafeAction(btnSkipPhase2, (e) => {
-    handleToyRoomSwitch(e);
+if (debugPhaseSelect) {
+  // A navegação do select não move a menina nem dispara atalhos do jogo.
+  debugPhaseSelect.addEventListener('keydown', event => event.stopPropagation());
+  debugPhaseSelect.addEventListener('keyup', event => event.stopPropagation());
+  debugPhaseSelect.addEventListener('pointerdown', event => event.stopPropagation());
+  debugPhaseSelect.addEventListener('change', event => {
+    event.stopPropagation();
+    const phase = debugPhaseSelect.value;
+    if (!phase || restartCampaignDialog.open || isStarting) return;
+    if (!game.startDebugPhase(phase, difficultySelect.value)) return;
+    for (const overlay of [startOverlay,gameoverOverlay]) {
+      if (!overlay) continue;
+      overlay.classList.add('hidden'); overlay.style.display = 'none'; overlay.style.pointerEvents = 'none';
+    }
+    started = true; isStarting = false; isActionLocked = false;
+    updatePauseButtonState();
+    debugPhaseSelect.value = ''; debugPhaseSelect.blur();
   });
 }
 
@@ -353,7 +367,7 @@ if (btnRestart) {
 }
 
 window.addEventListener('keydown', (event) => {
-  if (restartCampaignDialog.open || event.target.closest?.('button, a, input, dialog')) return;
+  if (restartCampaignDialog.open || event.target.closest?.('button, a, input, select, dialog')) return;
   // Evita disparo contínuo por repetição de tecla pressionada
   if (event.repeat) {
     return;
