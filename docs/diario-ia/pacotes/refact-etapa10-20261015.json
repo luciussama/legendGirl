@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-etapa10-20261015",
+  "date": "2026-10-15T14:25:17.554424+00:00",
+  "title": "Consultas geométricas da Toy Room: resultado e checkpoints da etapa 10",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/refact/etapa10/resultados.json",
+      "sourceId": "fa8754b9ec3633b4ac8255172422cc2891d35e30465b4cdb764a4e941ad554a9",
+      "sha256": "67a6981face671991bcd8992f9ec0635605cc740a56dc7e71de58b9c81c1480c",
+      "bytes": 1949,
+      "metadataOnly": false
+    }
+  ]
+}

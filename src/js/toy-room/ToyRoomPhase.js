@@ -16,6 +16,7 @@ import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
 import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
 import { ToyRoomStory } from './ToyRoomStory.js';
+import { pickUpToy, releaseCarriedToy, storeToyInChest } from './ToyRoomToyActions.js';
 import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
 import { ToyRoomBattle } from './ToyRoomBattle.js';
 
@@ -598,11 +599,7 @@ export class ToyRoomPhase {
       const distToChest = Math.hypot(this.player.x - chestCenterX, this.player.y - chestCenterY);
 
       if (distToChest < 160) {
-        item.isCarried = false;
-        item.isOrganized = true;
-        item.x = chestCenterX + (Math.random() - 0.5) * 60;
-        item.y = chest.y + 45;
-        this.player.carriedItem = null;
+        storeToyInChest(this.player, chest);
 
         if (this.audio && this.audio.playOrganizeChime) this.audio.playOrganizeChime();
         chest.lidOpen = 1.0;
@@ -637,10 +634,7 @@ export class ToyRoomPhase {
       dropX = Math.max(90, Math.min(this.ROOM_W - 90, dropX));
       dropY = Math.max(260, Math.min(this.ROOM_H - 90, dropY));
 
-      item.x = dropX;
-      item.y = dropY;
-      item.isCarried = false;
-      this.player.carriedItem = null;
+      releaseCarriedToy(this.player, { x: dropX, y: dropY });
 
       if (this.audio && this.audio.playDropSound) this.audio.playDropSound();
       this.spawnSparkles(dropX, dropY, 8, '#fef08a');
@@ -666,8 +660,7 @@ export class ToyRoomPhase {
     }
 
     if (closestToy) {
-      closestToy.isCarried = true;
-      this.player.carriedItem = closestToy;
+      pickUpToy(this.player, closestToy);
       if (this.tutorial.active) this.tutorial.finish();
       if (this.audio && this.audio.playPickUpSound) this.audio.playPickUpSound();
       this.spawnSparkles(this.player.x, this.player.y - 30, 16, '#38bdf8');

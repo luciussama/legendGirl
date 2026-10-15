@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015-refact-etapa-7",
+  "sessionId": "20261015T135358-717b91cd8a2c",
+  "type": "etapa",
+  "date": "2026-10-15T14:06:18.222296+00:00",
+  "title": "Estado canônico de progressão; orientação preservada",
+  "summary": "Dez campos de progressão passaram a GameState. A orientação conserva a barreira original de sincronização porque a migração imediata alterava a apresentação Android.",
+  "checks": [
+    "Comparações exatas finais desktop e Android: aprovadas.",
+    "npm test final aprovado.",
+    "check-assets, build e diff --check aprovados."
+  ],
+  "occurrences": [
+    "Referência local remanescente isEscapeMode causou ReferenceError no navegador e foi corrigida.",
+    "Comparação Android encontrou mudança de imagens ao migrar isPortrait; restaurar a sincronização original desse campo eliminou a diferença. Referência inicial e fontes históricas mantidas."
+  ],
+  "sourceId": "cdf5ebcf207c87feb5dbc1174a6488351e0a2af4e5b0964f31f9781255d525ff"
+}

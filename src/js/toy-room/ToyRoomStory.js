@@ -2,6 +2,8 @@ import { dialogueRenderer } from '../ui/DialogueRenderer.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { renderPoeticNarration } from '../narrative/PoeticNarrator.js';
 import { toyGuideBlend } from '../state/GameDifficulty.js';
+import { createToyRoomWorldQueries } from './ToyRoomWorldQueries.js';
+import { releaseCarriedToy, returnToyToFloor } from './ToyRoomToyActions.js';
 
 const FLOOR_SPAWN_POINTS = Object.freeze(
   [140, 300, 460, 620, 780, 940, 1100, 1260, 1420].flatMap(x =>
@@ -45,54 +47,6 @@ export const createToyRoomStoryState = () => ({
 });
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
-const key = point => `${point.x},${point.y}`;
-
-function isFree(room, point, radius = 24) {
-  const resolved = room.resolveCollisions(point.x, point.y, radius);
-  return resolved.x === point.x && resolved.y === point.y;
-}
-
-function reachableFloor(room) {
-  const nodes = [];
-  for (let x = 120; x <= room.ROOM_W - 120; x += 40) {
-    for (let y = 320; y <= room.ROOM_H - 120; y += 40) {
-      const point = { x, y };
-      if (isFree(room, point)) nodes.push(point);
-    }
-  }
-
-  const nodesByKey = new Map(nodes.map(point => [key(point), point]));
-  const start = nodes.reduce((nearest, point) =>
-    !nearest || distance(point, room.player) < distance(nearest, room.player) ? point : nearest, null);
-  if (!start) return [];
-
-  const visited = new Set([key(start)]);
-  const queue = [start];
-  for (let index = 0; index < queue.length; index++) {
-    const point = queue[index];
-    for (const [dx, dy] of [[40, 0], [-40, 0], [0, 40], [0, -40]]) {
-      const next = { x: point.x + dx, y: point.y + dy };
-      const nextKey = key(next);
-      if (!nodesByKey.has(nextKey) || visited.has(nextKey)) continue;
-      if (![0.25, 0.5, 0.75].every(amount =>
-        isFree(room, { x: point.x + dx * amount, y: point.y + dy * amount }))) continue;
-      visited.add(nextKey);
-      queue.push(next);
-    }
-  }
-  return queue;
-}
-
-function getWorldViewport(room) {
-  const frame = room.getCameraFrame();
-  return {
-    left: room.cameraX - frame.x / frame.zoom,
-    top: room.cameraY - frame.y / frame.zoom,
-    right: room.cameraX + (room.canvas.width - frame.x) / frame.zoom,
-    bottom: room.cameraY + (room.canvas.height - frame.y) / frame.zoom
-  };
-}
-
 function outsideViewport(point, viewport, margin = 72) {
   return point.x + margin < viewport.left || point.x - margin > viewport.right ||
     point.y + margin < viewport.top || point.y - margin > viewport.bottom;
@@ -142,6 +96,13 @@ export function drawToySword(ctx, x, y, angle, scale = 1) {
 export class ToyRoomStory {
   constructor(room) {
     this.room = room;
+    this.world = createToyRoomWorldQueries({
+      getDimensions: () => ({ width: room.ROOM_W, height: room.ROOM_H }),
+      getPlayer: () => room.player,
+      resolvePosition: (x, y, radius) => room.resolveCollisions(x, y, radius),
+      getCameraFrame: () => room.getCameraFrame(),
+      getCameraBounds: () => ({ x: room.cameraX, y: room.cameraY, width: room.canvas.width, height: room.canvas.height })
+    });
     this.state = createToyRoomStoryState();
     this.attackFrames = Array.from({ length: SWORD_ATTACK_FRAME_COUNT }, (_, index) =>
       room.assets?.getRegion('toy-room-sword-attack-sheet', {
@@ -156,20 +117,14 @@ export class ToyRoomStory {
   }
 
   refreshReachablePoints() {
-    const reachable = reachableFloor(this.room);
+    const reachable = this.world.reachableFloor();
     this.reachablePoints = FLOOR_SPAWN_POINTS.filter(point =>
-      isFree(this.room, point, 48) &&
+      this.world.isFree(point, 48) &&
       reachable.some(node => distance(node, point) <= 30));
   }
 
   recordViewport(frame) {
-    const room = this.room;
-    this.lastViewport = {
-      left: room.cameraX - frame.x / frame.zoom,
-      top: room.cameraY - frame.y / frame.zoom,
-      right: room.cameraX + (room.canvas.width - frame.x) / frame.zoom,
-      bottom: room.cameraY + (room.canvas.height - frame.y) / frame.zoom
-    };
+    this.lastViewport = this.world.viewport(frame);
   }
 
   onToyStored(toy) {
@@ -235,7 +190,7 @@ export class ToyRoomStory {
     pending.remaining = Math.max(0, pending.remaining - dt);
     if (pending.remaining > 0) return;
 
-    const currentViewport = getWorldViewport(this.room);
+    const currentViewport = this.world.viewport();
     const candidates = this.reachablePoints.filter(point =>
       outsideViewport(point, currentViewport) &&
       (!this.lastViewport || outsideViewport(point, this.lastViewport)) &&
@@ -255,12 +210,7 @@ export class ToyRoomStory {
     }
 
     const point = candidates[Math.floor(Math.random() * candidates.length)];
-    toy.x = point.x;
-    toy.y = point.y;
-    toy.isOrganized = false;
-    toy.isCarried = false;
-    toy.returnGeneration = (toy.returnGeneration || 0) + 1;
-    toy.bounceOffset = 0;
+    returnToyToFloor(toy, point);
     this.room.organizedCount = this.room.toys.filter(item => item.isOrganized).length;
     state.pendingReturns.shift();
   }
@@ -335,10 +285,7 @@ export class ToyRoomStory {
     const carried = this.room.player.carriedItem;
     if (carried) {
       const point = this.room.resolveCollisions(this.room.player.x, this.room.player.y, 32);
-      carried.x = point.x;
-      carried.y = point.y;
-      carried.isCarried = false;
-      this.room.player.carriedItem = null;
+      releaseCarriedToy(this.room.player, point);
     }
     state.investigationStage = 'PICKUP';
     state.swordPickupElapsed = 0;

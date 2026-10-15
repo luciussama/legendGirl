@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "8630f585e4344322b14e43d25dee2f99",
+  "type": "qa",
+  "date": "2026-10-15T14:21:43.523522+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 0,
+  "sourceId": "701ea97eed103f26090c2c1c95c942cce4b3ff3cfb8b8b69eaa0ed054f8abafd",
+  "package": "zzzzzz-20261014T163235-04761eef1d1e"
+}

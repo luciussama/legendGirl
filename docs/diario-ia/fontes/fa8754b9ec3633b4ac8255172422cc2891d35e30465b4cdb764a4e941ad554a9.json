@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "fa8754b9ec3633b4ac8255172422cc2891d35e30465b4cdb764a4e941ad554a9",
+  "path": "docs/diario-ia/qa/refact/etapa10/resultados.json",
+  "sha256": "67a6981face671991bcd8992f9ec0635605cc740a56dc7e71de58b9c81c1480c",
+  "capturedAt": "2026-10-15T14:25:17.554047+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T141909-39608b11a2e9"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": 10,\n  \"sessao\": \"20261015T141909-39608b11a2e9\",\n  \"objetivo\": \"Separar consultas geométricas da narrativa por dependências explícitas\",\n  \"fontesCodigo\": {\n    \"src/js/toy-room/ToyRoomStory.js\": \"34169e05a902ca681e5d72d6433fa22a0d5d4e54814c90006f52b9ac6bccffcb\",\n    \"src/js/toy-room/ToyRoomWorldQueries.js\": \"6c838741273d1db16fbca94b5cc52c4c995f7f6dc0d18ea426db444b44bb3600\"\n  },\n  \"dependenciasAvaliadas\": [\n    \"ToyRoomStory: piso livre, busca em largura e viewport\",\n    \"ToyRoomPhase: resolveCollisions, getCameraFrame, substituição de player após restore\",\n    \"Recortes de ataque mantidos; sem alteração de render, assets ou física\"\n  ],\n  \"validacoes\": {\n    \"npm test\": \"aprovado; inclui 111 percursos de balanceamento\",\n    \"referenciaDesktopInicial\": \"aprovada antes da extração\",\n    \"referenciaDesktopApos\": \"comparação exata aprovada: 78 imagens, 459 assets, 38 apoios, 12875 quadros\",\n    \"referenciaAndroidApos\": \"comparação exata aprovada: 78 imagens, 459 assets, 38 apoios, 13264 quadros\",\n    \"saves\": \"6 recargas na exploração e 1 no combate em cada perfil\",\n    \"build\": \"\\n> o-quarto-dos-brinquedos@1.0.0 build\\n> node scripts/validate-production.js\\n\\nPublicação validada: recursos locais existentes e caminhos relativos.\\n\",\n    \"check-assets\": \"66 recursos registrados, aprovado\",\n    \"docs:sprites\": \"415 arquivos, 93 recortes, 29 assinaturas\",\n    \"inventario\": \"idêntico ao HEAD desconsiderando apenas números de linha das referências\",\n    \"git diff --check\": \"aprovado\"\n  },\n  \"limites\": [\n    \"Navegador com avanço determinístico e Android emulado; não é playtest humano nem aparelho físico\",\n    \"Narrativa ainda recebe sala completa nas demais responsabilidades\",\n    \"Somente etapa 10 aplicada neste bloco; mutações dos brinquedos e demais contratos ficam para etapas próprias\",\n    \"Sem commit ou push; mudanças anteriores em game.js e documentação preservadas\"\n  ]\n}\n"
+}

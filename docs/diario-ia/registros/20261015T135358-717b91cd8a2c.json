@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T135358-717b91cd8a2c",
+  "sessionId": "20261015T135358-717b91cd8a2c",
+  "type": "inicio",
+  "date": "2026-10-15T13:53:58.401946+00:00",
+  "title": "Continuar refatoração validada: estado único da câmera e contratos de exploração",
+  "actor": "Codex",
+  "branch": "refact",
+  "head": "724c980f79128c3e049b9e1e1a936a8f4e0cc8ac",
+  "workingTree": []
+}

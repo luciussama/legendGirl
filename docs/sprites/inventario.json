@@ -277,7 +277,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 837,
+          "line": 636,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -14842,7 +14842,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18010,7 +18010,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18056,7 +18056,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18102,7 +18102,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18148,7 +18148,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18194,7 +18194,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18240,7 +18240,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18286,7 +18286,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18332,7 +18332,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStory.js",
-          "line": 147,
+          "line": 108,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }

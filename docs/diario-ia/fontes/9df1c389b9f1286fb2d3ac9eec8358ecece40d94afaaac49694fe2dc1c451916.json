@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9df1c389b9f1286fb2d3ac9eec8358ecece40d94afaaac49694fe2dc1c451916",
+  "path": "docs/diario-ia/qa/refact/etapa11/resultados.json",
+  "sha256": "c1cdf67708a4858177b3085b96ad0b4529cf722b9bb6a2762c97e5911802b430",
+  "capturedAt": "2026-10-15T14:47:42.758424+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T144558-affeabd0220b"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": 11,\n  \"sessao\": \"20261015T144558-affeabd0220b\",\n  \"objetivo\": \"Separar transições de estado dos brinquedos\",\n  \"fontesCodigo\": {\n    \"src/js/toy-room/ToyRoomPhase.js\": \"0e1f026b818809d2547962f5bb968fc918e05b4790aebe92304c8ea348907423\",\n    \"src/js/toy-room/ToyRoomStory.js\": \"8e72f88ae5a992b8b40c799edbb92189933be90c143d45aba862e1eb63dbfc65\",\n    \"src/js/toy-room/ToyRoomToyActions.js\": \"e7d9bb29ed77643553d30594050755772ba07ff85d86bec00110e2876b468274\"\n  },\n  \"dependenciasAvaliadas\": [\n    \"triggerAction: alcance do baú e escolha do brinquedo, limites de soltura, tutorial, contador e efeitos\",\n    \"updateReturns: validade do brinquedo, escolha aleatória do ponto, geração de retorno e contador\",\n    \"updateAfterMovement: soltar item antes da espada, resolução de colisões e áudio\",\n    \"restore: substituição do jogador e dos brinquedos, reconexão por ID; ações recebem objetos atuais\",\n    \"ToyRenderer e sprites de ataque: mesma identidade dos brinquedos, flags e recortes preservados\"\n  ],\n  \"resultado\": \"Quatro ações extraídas para ToyRoomToyActions; decisões, contagens e efeitos continuam nos chamadores na ordem original. Sem alteração de assets, render ou formato de saves.\",\n  \"validacoes\": {\n    \"npm test\": \"aprovado, incluindo 111 percursos de balanceamento\",\n    \"desktop\": \"Comparação exata aprovada: 78 imagens, 459 assets, 38 apoios, estados de gameplay e 12875 quadros\",\n    \"android\": \"Comparação exata aprovada: 78 imagens, 459 assets, 38 apoios, estados de gameplay e 13264 quadros\",\n    \"saves\": \"6 recargas na exploração e uma no combate por perfil\",\n    \"build\": \"aprovado\",\n    \"check-assets\": \"aprovado, 66 recursos\",\n    \"docs:sprites\": \"415 arquivos, 93 recortes, 29 assinaturas; inventário idêntico ao HEAD salvo números de linha\",\n    \"git diff --check\": \"aprovado\"\n  },\n  \"limites\": [\n    \"Execução determinística dos módulos reais em navegador; Android emulado, sem aparelho físico ou playtest humano\",\n    \"Narrativa ainda recebe a sala completa para as demais responsabilidades\",\n    \"Alterações anteriores preservadas; sem commit ou push\"\n  ]\n}\n"
+}

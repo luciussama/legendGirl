@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T141909-39608b11a2e9-fim",
+  "sessionId": "20261015T141909-39608b11a2e9",
+  "type": "fim",
+  "date": "2026-10-15T14:25:36.175402+00:00",
+  "title": "Desacoplar narrativa e exploração da Toy Room por contratos explícitos",
+  "actor": "Codex",
+  "summary": "Etapa 10 concluída: extraídas consultas de piso livre, piso alcançável e viewport de ToyRoomStory para ToyRoomWorldQueries, com dependências explícitas e leitura das referências atuais após restore. Algoritmos, ordem dos candidatos, fórmulas de câmera, render, assets e persistência preservados. Comparação desktop antes e após a extração e Android após a extração aprovada contra a referência inicial imutável. Trabalho anterior preservado; sem commit ou push. Checkpoints e resultado detalhado no pacote refact-etapa10-20261015.",
+  "checks": [
+    "npm test: aprovado, incluindo 111 percursos de balanceamento",
+    "test:refact:browser desktop: comparação exata aprovada, 78 imagens, 459 assets, 38 apoios e estados completos",
+    "test:refact:browser android: comparação exata aprovada, 78 imagens, 459 assets, 38 apoios e estados completos",
+    "npm run build e npm run check-assets: aprovados",
+    "npm run docs:sprites: aprovado; inventário preservado além de números de linha",
+    "git diff --check: aprovado"
+  ],
+  "pending": [
+    "Próxima responsabilidade: separar mutações de brinquedos e reduzir os demais acessos da narrativa à sala; não declarar desacoplamento completo",
+    "Validação automatizada determinística com Android emulado; playtest humano e aparelho físico não executados nesta sessão"
+  ],
+  "files": [
+    "src/js/toy-room/ToyRoomWorldQueries.js",
+    "src/js/toy-room/ToyRoomStory.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/sprites/inventario.json"
+  ]
+}
