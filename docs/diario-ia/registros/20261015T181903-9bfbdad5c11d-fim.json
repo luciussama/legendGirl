@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T181903-9bfbdad5c11d-fim",
+  "sessionId": "20261015T181903-9bfbdad5c11d",
+  "type": "fim",
+  "date": "2026-10-15T18:22:01.732962+00:00",
+  "title": "Etapas 23–24: desacoplar tutorial da sala e separar sua apresentação",
+  "actor": "Codex",
+  "summary": "Etapas 23–24 concluídas sequencialmente: ToyRoomTutorial recebe contrato restrito com oito campos e referências atuais; ToyRoomTutorialRenderer recebe dados do quadro. ToyRoomInputBindings separa o mapeamento de entrada, com reexport anterior preservado; InputController deixa de depender da classe do tutorial. Seleção, tempos, mensagens, desenho, controles, física, assets, áudio e saves preservados. Regressão de contrato/restauração/reexport arquivada e integrada à suíte padrão. Checkpoints e relatório no acervo; manual, contexto e referência de métodos atualizados. Sem commit, push ou publicação.",
+  "checks": [
+    "Desktop antes de editar: comparação exata aprovada",
+    "Após cada etapa: npm test, desktop e Android aprovados; 78 imagens, 459 assets, 38 apoios e estados exatamente iguais à referência inicial",
+    "Save/load: seis recargas da exploração e uma do combate por perfil",
+    "Nova regressão do tutorial aprovada: acessos restritos, referências substituídas, mensagens, conclusão e identidade do reexport; npm test final aprovado com a regressão incluída",
+    "Seletor debug aprovado em desktop/Android, entrada e save preservados",
+    "Build, check-assets (66 recursos), sintaxe/imports dos 30 módulos ToyRoom e git diff --check aprovados",
+    "Mapa reconstruído: 415 arquivos, 93 recortes e 29 assinaturas; assets preservados"
+  ],
+  "pending": [
+    "Próximos contratos: combate legado e arena ainda recebem a sala; game.js conserva suas responsabilidades documentadas",
+    "Validação determinística e Android emulado; sem aparelho físico ou playtest humano"
+  ],
+  "files": [
+    "src/js/toy-room/ToyRoomTutorial.js",
+    "src/js/toy-room/ToyRoomTutorialContext.js",
+    "src/js/toy-room/ToyRoomTutorialRenderer.js",
+    "src/js/toy-room/ToyRoomInputBindings.js",
+    "src/js/toy-room/ToyRoomInputController.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a12f8d11fbba1283533374f14d8f8c0fedb3d7822f4b2656fd417b050e7d06e4",
+  "path": "qa-execucoes/b05b3d3148a5409fb71b0e4bdef053c8/docs/qa/toy-room-arena/desktop-retorno.png",
+  "sha256": "da188702a3101727c945c38ac1e50dd7c0b5e66037496a4076b1a08f35feff9d",
+  "capturedAt": "2026-10-15T18:14:41.653733+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-retorno.png\", \"sha256\": \"81636c68e92ac84b71813291e782a13e41d2d04120e0386b2ada730fd582c635\", \"bytes\": 990952, \"binaryRetained\": false}"
+}

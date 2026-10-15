@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "cadfd0f370ac2bb556a2361433a051bd0fe05073170ff9b097ed253982c9c429",
+  "path": "qa-execucoes/b05b3d3148a5409fb71b0e4bdef053c8/docs/qa/toy-room-arena/desktop-salto.png",
+  "sha256": "672852aa062d546aaf1163f5f9c4983c7e72fb3e3c6bfcef9ab2221bc9e5a79d",
+  "capturedAt": "2026-10-15T18:14:41.654844+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-salto.png\", \"sha256\": \"869b0f2d6104e28aa117ca9edfdd5c555603c246224120713f7be53c84a1ed3f\", \"bytes\": 1115794, \"binaryRetained\": false}"
+}

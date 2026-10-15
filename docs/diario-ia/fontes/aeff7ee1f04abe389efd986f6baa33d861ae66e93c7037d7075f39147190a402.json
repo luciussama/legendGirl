@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "aeff7ee1f04abe389efd986f6baa33d861ae66e93c7037d7075f39147190a402",
+  "path": "checkpoints/refact/etapa23/antes/ToyRoomPersistenceContext.js",
+  "sha256": "27d4d3b1eb52180974364063b8f8c789292160b5b1d69f99dba24181825d2751",
+  "capturedAt": "2026-10-15T18:19:43.615001+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T181903-9bfbdad5c11d",
+    "etapa": "23"
+  },
+  "encoding": "utf-8",
+  "content": "/** Acesso explícito aos campos persistidos e à retomada dos subsistemas. */\nexport function createToyRoomPersistenceContext(room) {\n  return {\n    get arena() { return room.arena; },\n    get battle() { return room.battle; },\n    get cameraX() { return room.cameraX; },\n    set cameraX(value) { room.cameraX = value; },\n    get cameraY() { return room.cameraY; },\n    set cameraY(value) { room.cameraY = value; },\n    clearInput: () => room.clearInput(),\n    get fairy() { return room.fairy; },\n    set fairy(value) { room.fairy = value; },\n    get furniture() { return room.furniture; },\n    set furniture(value) { room.furniture = value; },\n    get gameplayState() { return room.gameplayState; },\n    set gameplayState(value) { room.gameplayState = value; },\n    get introAlpha() { return room.introAlpha; },\n    set introAlpha(value) { room.introAlpha = value; },\n    get introBannerTimer() { return room.introBannerTimer; },\n    set introBannerTimer(value) { room.introBannerTimer = value; },\n    get lastActionTime() { return room.lastActionTime; },\n    set lastActionTime(value) { room.lastActionTime = value; },\n    get organizedCount() { return room.organizedCount; },\n    set organizedCount(value) { room.organizedCount = value; },\n    get player() { return room.player; },\n    set player(value) { room.player = value; },\n    startTutorial: () => room.startTutorial(),\n    get story() { return room.story; },\n    get toyRoomTutorialCompleted() { return room.toyRoomTutorialCompleted; },\n    set toyRoomTutorialCompleted(value) { room.toyRoomTutorialCompleted = value; },\n    get toys() { return room.toys; },\n    set toys(value) { room.toys = value; },\n    get tutorial() { return room.tutorial; },\n    get victoryBannerActive() { return room.victoryBannerActive; },\n    set victoryBannerActive(value) { room.victoryBannerActive = value; },\n    get victoryBannerTimer() { return room.victoryBannerTimer; },\n    set victoryBannerTimer(value) { room.victoryBannerTimer = value; },\n  };\n}\n"
+}

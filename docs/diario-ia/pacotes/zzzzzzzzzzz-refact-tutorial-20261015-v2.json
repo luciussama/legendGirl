@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzzzzzzz-refact-tutorial-20261015-v2",
+  "date": "2026-10-15T18:21:01.876396+00:00",
+  "title": "Regressão do tutorial integrada à suíte padrão; contrato, restauração e reexport compatível",
+  "qaCommands": {
+    "test:refact:tutorial": "node scripts/test-refact-tutorial-contract.js",
+    "test": "npm run verify:dark-room && npm run test:pages && node scripts/test-campaign-progress.js && node scripts/test-android-framing.js && node scripts/test-dialogue-safe-area.js && node scripts/test-mobile-zoom.js && node scripts/test-mobile-dialogue-region.js && node scripts/test-final-pedestal-camera.js && node scripts/test-protagonist-scale.js && node scripts/test-first-jump-prompt.js && npm run test:difficulty && npm run test:mobile-ui && npm run test:toy-room:facing && node scripts/test-toy-room-input-interruptions.js && node scripts/test-toy-room-playthrough.js && npm run test:toy-room:battle && npm run test:toy-room:arena && npm run test:sprite-review && npm run test:current-art && npm run test:journal && npm run test:dialogues && npm run test:toy-room:camera && npm run test:damage-sprites && npm run test:arena:refinements && npm run test:arena:enemies && node scripts/test-arena-balance.js && node scripts/test-refact-tutorial-contract.js"
+  },
+  "files": [
+    {
+      "path": "scripts/test-refact-tutorial-contract.js",
+      "sourceId": "513dc124ed67dd77fc914e96ffa57a1ce8044dd35c2dc82d725eedc5fb9a61a1",
+      "sha256": "a229cda8a48ef2f59c31037dd6972609eae65f5669294ba527bab747b3372c5a",
+      "bytes": 2868,
+      "metadataOnly": false
+    }
+  ]
+}

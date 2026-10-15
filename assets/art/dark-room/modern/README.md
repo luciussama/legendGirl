@@ -54,3 +54,5 @@ produção não foram alteradas.
 
 ### globe_table.png
 Sprite gerado com imagegen a partir da referência do globo sobre mesa enviada pelo usuário. Fundo transparente; globo atrás de uma faixa livre do tampo. Calibração visual: apoio do PNG em x=50..1195, y=863; resolução 1245×1263. A largura de jogo continua em 95 px. Sem linha de marcação de salto sobreposta.
+
+Integração atual: PlatformRenderer/BackgroundRenderer e currentScenery consomem as artes conforme o manifesto e o [inventário](../../../../docs/sprites/inventario.json). Os relatos de geração acima registram a produção original; variantes aposentadas pela revisão posterior não devem ser restauradas por inferência. As transformações de CameraPresentation/MobileZoom e a composição em DarkRoomRenderPipeline não mudam a geometria de apoio.

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "fda716b83d6cec7fb895d142e8a1a1cf4c781eec83e69818df5df73a9351ef99",
+  "path": "qa-execucoes/8e1c10d0126f48838a496c4fa1357f58/assets/qa-testers/current-screenshots/personagem/crops.png",
+  "sha256": "6639b042636477fb8383c3a1234290348fa5308a65c3614a34fa1b91f313fa9a",
+  "capturedAt": "2026-10-15T18:10:11.946492+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"assets/qa-testers/current-screenshots/personagem/crops.png\", \"sha256\": \"5fe062f5f5fba80759734e318695ab82b748c69108235b37221cd75b224995fd\", \"bytes\": 204716, \"binaryRetained\": false}"
+}

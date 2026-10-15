@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "cd6c0973a088b32e405825625c2621d1355e8a6eb949f0823f3cb2b0df2f1c2e",
+  "path": "qa-execucoes/bc8e8cb9b7534afd8df14abaa41ba7a6.log",
+  "sha256": "87bc569787e01b695d23532c4bdc33d8b3af84ae3c2fb73227d3510b6ed86ced",
+  "capturedAt": "2026-10-15T18:20:07.041598+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:refact:tutorial",
+    "exitCode": 0,
+    "package": "zzzzzzzzzzz-refact-tutorial-20261015"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:refact:tutorial\n> node scripts/test-refact-tutorial-contract.js\n\nAPROVADO: contrato restrito, referências substituídas, mensagens por dispositivo e conclusão do tutorial sem alterar brinquedos.\n"
+}

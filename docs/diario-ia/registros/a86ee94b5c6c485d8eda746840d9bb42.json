@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "a86ee94b5c6c485d8eda746840d9bb42",
+  "type": "qa",
+  "date": "2026-10-15T18:21:27.289940+00:00",
+  "title": "QA temporário: test:debug-phases:browser",
+  "exitCode": 0,
+  "sourceId": "4cc5b03b03051ae119b536c1ddb99274db055866a546235e6845d082394c034c",
+  "package": "zzzzzz-20261014T165444-b09f6261e88e"
+}

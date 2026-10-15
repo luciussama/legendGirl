@@ -17,8 +17,7 @@ Mapeamento da prancha:
 
 Estados sem recorte isolado adequado reutilizam poses existentes: deitada usa
 o último FALLING; agachada usa o primeiro JUMPING; empurrar e escalar usam IDLE.
-A fase de brinquedos usa IDLE/RUN e COLLECTING ao carregar um objeto; não há
-animação traseira inventada. Direção esquerda usa espelhamento horizontal.
+A sala usa IDLE/RUN. O transporte usa a pose adicional de stage2 em ToyCarryPresentation quando disponível, com COLLECTING como caminho existente de seleção; não há animação traseira inventada. Direção esquerda usa espelhamento horizontal.
 
 Ambos os renderizadores usam o mesmo atlas, com escala uniforme, sem balanço,
 rotação procedural, recoloração ou desenho alternativo. A física não foi alterada.
@@ -28,3 +27,5 @@ Validação: `npm test` verifica a origem por SHA-256, igualdade RGB com os
 recortes originais, seleção dos quadros e contato dos pés nas plataformas.
 A extração a partir desta prancha mantém sua resolução original; não adiciona
 detalhes ausentes na imagem enviada.
+
+A arena tem poses de espada/animação/dano próprias, documentadas no [guia da menina](../../../docs/arena/GUIA-ANIMACAO.md); esse conjunto não redefine o atlas oficial da exploração. Os novos módulos de estado, cena e persistência mantêm os consumidores e a identidade da arte.

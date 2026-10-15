@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "8785cbb9ca8303701cf2e19f982b27f59dfb7ee88aca53223ee3200753027317",
+  "path": "checkpoints/refact/etapa17/resultado.json",
+  "sha256": "ade68183a2f909cae18c1fa27c9443c31959b42cb2b2aa98e5dc3a7dee59eeda",
+  "capturedAt": "2026-10-15T18:10:28.218773+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "17"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": \"17\",\n  \"sessao\": \"20261015T180819-d29b76205a7e\",\n  \"resultado\": \"Etapa 17: emissão e atualização de efeitos, baú e poeira da exploração\",\n  \"validacoes\": [\n    {\n      \"comando\": [\n        \"npm\",\n        \"test\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"desktop\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"android\"\n      ],\n      \"exitCode\": 0\n    }\n  ],\n  \"limite\": \"Comparação determinística; Android emulado, sem aparelho físico.\"\n}\n"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T175325-ae4dabd9c57f",
+  "sessionId": "20261015T175325-ae4dabd9c57f",
+  "type": "inicio",
+  "date": "2026-10-15T17:53:25.507520+00:00",
+  "title": "Etapa 14: extrair controles da Toy Room por contrato explícito",
+  "actor": "Codex",
+  "branch": "refact",
+  "head": "46b23ccb735a134db0538bc4c50ff938601303eb",
+  "workingTree": []
+}

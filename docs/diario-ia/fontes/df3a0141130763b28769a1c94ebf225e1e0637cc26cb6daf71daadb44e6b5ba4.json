@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "df3a0141130763b28769a1c94ebf225e1e0637cc26cb6daf71daadb44e6b5ba4",
+  "path": "checkpoints/refact/etapa22/depois/ToyRoomPersistence.js",
+  "sha256": "f6552a91af59fa0a27250393f6a090847bd250df4439239f51ec5b5f966561c3",
+  "capturedAt": "2026-10-15T18:13:42.728526+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "22"
+  },
+  "encoding": "utf-8",
+  "content": "/** Preserva o formato dos saves e a ordem de restauração da sala e dos modos. */\nexport class ToyRoomPersistence {\n  constructor(context) { this.context = context; }\n\n  snapshot({ includeArena = true } = {}) {\n    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',\n      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];\n    const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this.context[key]]))));\n    saved.carriedItemId = this.context.player.carriedItem?.id ?? null;\n    saved.toyRoomStory = this.context.story.snapshot();\n    saved.toyRoomBattle = this.context.battle.snapshot();\n    if (includeArena && this.context.arena) saved.toyRoomArena = this.context.arena.snapshot();\n    return saved;\n  }\n\n  restore(saved, { preserveArena = false } = {}) {\n    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',\n      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];\n    for (const key of keys) {\n      if (key in saved) this.context[key] = JSON.parse(JSON.stringify(saved[key]));\n    }\n    // Saves antigos armazenavam a direção de movimento em facing.\n    this.context.player.direction ??= this.context.player.facing;\n    if (this.context.player.facing !== 'left' && this.context.player.facing !== 'right') {\n      const horizontal = Math.cos(this.context.player.facingAngle ?? Math.PI / 2);\n      this.context.player.facing = horizontal < -1e-6 ? 'left' : 'right';\n    }\n    this.context.player.carriedItem = this.context.toys.find(toy => toy.id === saved.carriedItemId) || null;\n    this.context.story.restore(saved.toyRoomStory);\n    this.context.clearInput();\n    this.context.lastActionTime = 0;\n    this.context.tutorial.active = false;\n    this.context.gameplayState = 'TOY_ROOM_GAMEPLAY';\n    this.context.battle.restore(saved.toyRoomBattle);\n    if (!preserveArena) this.context.arena?.restore(saved.toyRoomArena, saved);\n    if (this.context.arena?.active) this.context.gameplayState = this.context.arena.state.status === 'TRANSFORMING' ? 'TOY_ROOM_TRANSFORMING' : 'TOY_ROOM_ARENA';\n    else if (this.context.battle.state) this.context.gameplayState = 'TOY_ROOM_BATTLE';\n    else if (!this.context.toyRoomTutorialCompleted && !this.context.story.swordEquipped) this.context.startTutorial();\n  }\n\n}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7db597a1711867749cbd33dcdb84ea52518e86ea9c7f6d9ed6a83afd937b880e",
+  "path": "docs/diario-ia/qa/documentacao-20261015/auditoria.json",
+  "sha256": "67e24d7187f48c7daa6b3cbeb422945820e643985a90c2a0fc1023192bbf1848",
+  "capturedAt": "2026-10-15T19:23:02.452801+00:00",
+  "origin": {
+    "type": "resultado-qa",
+    "sessionId": "20261015T190845-c34f66b94a95"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"documentosRevisados\": 30,\n  \"linksLocais\": 3228,\n  \"modulosCatalogados\": 111,\n  \"classes\": 38,\n  \"comandosNpm\": 52,\n  \"erros\": []\n}\n"
+}

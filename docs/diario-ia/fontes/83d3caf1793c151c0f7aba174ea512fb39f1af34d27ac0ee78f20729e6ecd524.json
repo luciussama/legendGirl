@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "83d3caf1793c151c0f7aba174ea512fb39f1af34d27ac0ee78f20729e6ecd524",
+  "path": "qa-execucoes/b05b3d3148a5409fb71b0e4bdef053c8/docs/qa/toy-room-arena/android-arena-bear-movimento.png",
+  "sha256": "c0624159c6c84d7196f31bd916aa334ba4e1438da1e0144c063ce5ba2beecfce",
+  "capturedAt": "2026-10-15T18:14:41.601652+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-arena-bear-movimento.png\", \"sha256\": \"9ea796e736b57ac49af62248ecce37649cd4d5df2f8e7d62ea71f251349fd109\", \"bytes\": 518359, \"binaryRetained\": false}"
+}

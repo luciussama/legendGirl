@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "098e91c462204fc3b5e1722bed91e258",
+  "type": "qa",
+  "date": "2026-10-15T18:11:06.989850+00:00",
+  "title": "QA temporário: test:refact:browser",
+  "exitCode": 0,
+  "sourceId": "2ba9458445172ab10bf136238fc76c955dec198e2900b74a6d9c26631c7e3a6b",
+  "package": "zzzzzzzzzz-refact-20261015-v4"
+}

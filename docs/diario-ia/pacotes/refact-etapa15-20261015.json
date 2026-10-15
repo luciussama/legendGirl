@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-etapa15-20261015",
+  "date": "2026-10-15T18:01:15.670299+00:00",
+  "title": "Movimento e colisões da exploração: checkpoints e resultado da etapa 15",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/refact/etapa15/antes/ToyRoomPhase.js",
+      "sourceId": "1386125849f575e7334d0ba85b4025df0df80abed06fc540f127b97fa3b38179",
+      "sha256": "f8f17021b522f968cadd6930faa6ac91390f2ef787cf04bb54a488730ff7bcdd",
+      "bytes": 32668,
+      "metadataOnly": false
+    },
+    {
+      "path": "src/js/toy-room/ToyRoomPhase.js",
+      "sourceId": "7619cbc1dfa1652df98d4ddaee562a1d01d9e4947e55d03dfd2a14c248664739",
+      "sha256": "f6f02bf7e85a3f6a44882f6377d332702325b5e45518e9a3680d777b2be5af04",
+      "bytes": 29964,
+      "metadataOnly": false
+    },
+    {
+      "path": "src/js/toy-room/ToyRoomMovement.js",
+      "sourceId": "441223457cdee7c004603251d9e379808f78e031a073f2e59fcced4d48c70e5e",
+      "sha256": "cbcfc6ec71c84075c7ccf5d6d95de87bec60bd99aedf19a353525ce5afa5e238",
+      "bytes": 3242,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/refact/etapa15/resultados.json",
+      "sourceId": "9e3b9ae7ce3ee9ec254c78c42a943e710e3ef997af3d79e3338443595f85f130",
+      "sha256": "3cd23dd7aa2cdb539473cb875599dde456eb76e801bc1e5f0a5a521ae4bf29b4",
+      "bytes": 1804,
+      "metadataOnly": false
+    }
+  ]
+}

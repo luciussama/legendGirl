@@ -7,3 +7,11 @@ Os quadros da arena estão em `assets/art/toy-room/battle/girl/runtime/` e `girl
 Agachar exige dobrar pernas e tronco, conservando o tamanho da cabeça e as proporções. Corrida deve transmitir continuidade e equilíbrio. Ataques têm antecipação, aceleração, impacto e recuperação; seus instantes visuais precisam concordar com os eventos de combate. A imagem não altera hitboxes ou física.
 
 A equipe de design entrega quadros e metadados propostos. Desenvolvimento integra e valida com `npm run test:arena:animation`, que recupera as verificações do diário num diretório temporário. Relatórios anteriores, prompts e evidências estão no diário de IA; a documentação humana apresenta orientações, não resultados de máquina.
+
+## Estado visual, dano e apresentação compartilhada
+
+`ArenaPlayerAnimation` mantém a progressão do gesto e amostra corrida, salto e agachamento; `ArenaCombatRules` define as janelas reais da espada. `ArenaPlayerRenderer` recebe o estado atual e conserva as âncoras por quadro. A apresentação depende das medidas em `ArenaScale`; `BattlePlayerBounds` descreve os limites derivados, sem autorizar mudança automática de hitbox por edição de pixels.
+
+`DamageSpriteFrames` contém seis poses por ator em `damage-v2/`, geradas por `scripts/prepare-damage-sprites.js`. Dano da menina usa sua reação existente; inimigos usam HIT. Essa reação prevalece sobre o ataque interrompido desde o primeiro impacto, inclusive no hitstop. O [README das poses de dano](../../assets/art/toy-room/battle/damage-v2/README.md) documenta dimensões/origem. Sons de dano e espada não são gravados nas imagens.
+
+Na exploração, `ToyRoomSceneRenderer` compõe a personagem com `ToyRoomEntities`/`ToyCarryPresentation`; a espada e os oito quadros de ataque existentes são resolvidos em `ToyRoomStoryRenderer`. O tutorial tem renderer independente. A mesma identidade visual não significa que as fases compartilhem controlador, escala, física ou estado de animação. Veja [proprietários e contratos](../ARQUITETURA.md#proprietários-e-contratos-dos-dados).

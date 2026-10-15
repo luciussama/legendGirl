@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a83b931e17156dfb8b4115c2c77ac6b0da24fe5edc5c65cec5a5ac80cba97f35",
+  "path": "docs/battle-mode/bear-final-boss-spec.json",
+  "sha256": "5b5d2a7229e3a093c6d27bcd1c65fa308acf8d71cf0c18500b46c53e7be4602f",
+  "capturedAt": "2026-10-15T19:17:13.143387+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": \"1.0\",\n  \"status\": \"Design\",\n  \"source\": \"PROMPT 12 — BEAR FINAL BOSS\",\n  \"name\": \"Urso\",\n  \"role\": \"chefe final\",\n  \"battleRules\": \"battle-mode-rules.md\",\n  \"battleBalance\": \"battle-balance-spec.json\",\n  \"lore\": {\n    \"firstToyEncountered\": true,\n    \"lastEnemyFaced\": true\n  },\n  \"hp\": {\n    \"max\": 4,\n    \"initial\": null\n  },\n  \"states\": [\n    \"IDLE\",\n    \"APPROACH\",\n    \"ATTACK\",\n    \"RETREAT\",\n    \"ENRAGE\"\n  ],\n  \"stateTransitions\": null,\n  \"enrage\": {\n    \"activationHpEquals\": 1,\n    \"effects\": null,\n    \"persistsAfterHealing\": null,\n    \"reactivationPolicy\": null,\n    \"newAttacksAllowed\": false\n  },\n  \"attacks\": [\n    {\n      \"name\": \"Bear Hug\",\n      \"description\": \"Abraço de curta distância.\",\n      \"rangeCategory\": \"curta distância\",\n      \"range\": null\n    },\n    {\n      \"name\": \"Belly Charge\",\n      \"description\": \"Investida pesada.\",\n      \"rangeCategory\": null,\n      \"range\": null\n    },\n    {\n      \"name\": \"Toy Leap\",\n      \"description\": \"Salto com impacto.\",\n      \"rangeCategory\": null,\n      \"range\": null\n    }\n  ],\n  \"attackPolicy\": {\n    \"onlyListedAttacksAllowed\": true,\n    \"newAttacksInProductionAllowed\": false,\n    \"selectionAlgorithm\": null\n  },\n  \"pendingDecisions\": [\n    \"HP inicial e entrada do chefe\",\n    \"alcances, velocidades e tempos dos ataques\",\n    \"trajetória e impacto do salto\",\n    \"colisões e interação com salto/agachamento\",\n    \"escolha e frequência dos ataques\",\n    \"transições de estados\",\n    \"efeitos de ENRAGE\",\n    \"persistência de ENRAGE após cura e reativação\"\n  ],\n  \"_documentacao\": {\n    \"classificacao\": \"Design inicial histórico; valores originais preservados.\",\n    \"revisaoContextual\": \"2026-10-15\",\n    \"runtimeAtual\": \"../arena/configuracao-atual.json\",\n    \"guiaVigente\": \"../arena/GUIA-ARENA.md\",\n    \"observacao\": \"Não consumido pelo runtime; pendências e escopo são os da concepção original. A arena atual e o perfil legado têm configurações distintas.\"\n  }\n}\n"
+}

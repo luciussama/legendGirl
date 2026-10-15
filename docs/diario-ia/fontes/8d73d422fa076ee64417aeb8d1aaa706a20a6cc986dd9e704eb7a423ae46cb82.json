@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8d73d422fa076ee64417aeb8d1aaa706a20a6cc986dd9e704eb7a423ae46cb82",
+  "path": "docs/diario-ia/qa/refact/etapas16-22/orquestracao.py",
+  "sha256": "d828e1c0bbb2a431efe833a8ab42587cfe19242658e9a13dc4ba5c221c49131b",
+  "capturedAt": "2026-10-15T18:14:57.020447+00:00",
+  "origin": {
+    "type": "automacao-validacao",
+    "sessionId": "20261015T180819-d29b76205a7e"
+  },
+  "encoding": "utf-8",
+  "content": "from pathlib import Path\nimport importlib.util,json,sys,subprocess\nroot=Path('/Users/sergio/repos/legendGirl');spec=importlib.util.spec_from_file_location('journal',root/'scripts/ai-journal.py');j=importlib.util.module_from_spec(spec);spec.loader.exec_module(j)\nnumber=sys.argv[2];base=Path('/tmp/legendgirl-refact-final');session='20261015T180819-d29b76205a7e'\ndef archive(path,raw,kind):\n sid=j.snapshot(root,path,raw,{'type':kind,'sessionId':session,'etapa':number})\n return {'path':path,'sourceId':sid,'sha256':j.digest(raw),'bytes':len(raw),'metadataOnly':False}\nif sys.argv[1]=='antes':\n entries=[]\n for p in sorted((root/'src/js/toy-room').glob('ToyRoom*.js')):\n  entries.append(archive('checkpoints/refact/etapa'+number+'/antes/'+p.name,p.read_bytes(),'checkpoint-refatoracao'))\n (base/('etapa'+number+'.json')).write_text(json.dumps(entries))\n print('Checkpoint imutável preservado: etapa '+number)\nelse:\n results=[]\n for command in [['npm','test'],['npm','run','journal:qa','--','test:refact:browser','desktop'],['npm','run','journal:qa','--','test:refact:browser','android']]:\n  p=subprocess.run(command,cwd=root,stdout=subprocess.PIPE,stderr=subprocess.STDOUT)\n  text=p.stdout.decode(errors='replace');print(' '.join(command)+': '+str(p.returncode),flush=True);print('\\n'.join(text.splitlines()[-4:]),flush=True)\n  results.append({'comando':command,'exitCode':p.returncode})\n  if p.returncode:sys.exit(p.returncode)\n entries=json.loads((base/('etapa'+number+'.json')).read_text())\n for p in sorted((root/'src/js/toy-room').glob('ToyRoom*.js')):\n  entries.append(archive('checkpoints/refact/etapa'+number+'/depois/'+p.name,p.read_bytes(),'checkpoint-refatoracao'))\n raw=(json.dumps({'etapa':number,'sessao':session,'resultado':sys.argv[3],'validacoes':results,'limite':'Comparação determinística; Android emulado, sem aparelho físico.'},ensure_ascii=False,indent=2)+'\\n').encode()\n entries.append(archive('checkpoints/refact/etapa'+number+'/resultado.json',raw,'resultado-refatoracao'))\n ident='refact-etapa'+number+'-20261015';j.write_new(root/'docs/diario-ia/pacotes'/(ident+'.json'),{'schemaVersion':1,'id':ident,'date':j.now(),'title':sys.argv[3],'files':entries});j.sync(root)\n"
+}

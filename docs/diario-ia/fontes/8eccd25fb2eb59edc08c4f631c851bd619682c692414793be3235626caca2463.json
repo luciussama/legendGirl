@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "8eccd25fb2eb59edc08c4f631c851bd619682c692414793be3235626caca2463",
+  "path": "checkpoints/refact/etapa21/resultado.json",
+  "sha256": "17bacbcd250614c986c619e4fed8b47f1c0c4ebe37e580bd97e825729d4bdf33",
+  "capturedAt": "2026-10-15T18:13:03.839338+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "21"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": \"21\",\n  \"sessao\": \"20261015T180819-d29b76205a7e\",\n  \"resultado\": \"Etapa 21: catálogo inicial de atores, móveis e brinquedos com objetos próprios por sala\",\n  \"validacoes\": [\n    {\n      \"comando\": [\n        \"npm\",\n        \"test\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"desktop\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"android\"\n      ],\n      \"exitCode\": 0\n    }\n  ],\n  \"limite\": \"Comparação determinística; Android emulado, sem aparelho físico.\"\n}\n"
+}

@@ -29,6 +29,8 @@ Produza a ilustração, sem rótulos ou modelos de apresentação.
 
 A sequência dura 37,5 segundos de jogo, respeita pausa e usa um relógio próprio. A física não avança durante a cena. A cama é apenas uma ilustração temporária, sem colisão nem entrada no layout.
 
-A flag `legendGirl.bedroom-opening.completed.v1` é salva em localStorage somente após o fim da apresentação. Recarregar uma abertura incompleta permite vê-la novamente. Após a conclusão, novas entradas iniciam o gameplay diretamente. A persistência vale para o mesmo navegador e origem; apagar os dados do site remove a flag. Caso o navegador bloqueie armazenamento, a proteção permanece apenas durante a sessão em memória.
+A flag `legendGirl.bedroom-opening.completed.v1` é salva em localStorage somente após o fim da apresentação. Uma abertura incompleta pode ser retomada pelo snapshot da campanha. Após a conclusão, a campanha passa pelo primeiro salto se sua flag própria ainda não estiver concluída; completar a abertura não consome esse tutorial. A persistência vale para o mesmo navegador e origem; apagar os dados do site remove a flag. Caso o navegador bloqueie armazenamento, a proteção permanece apenas durante a sessão em memória.
 
 O quadro final faz um corte suave para os sprites oficiais e para o ponto inicial existente. Os controles de som e pausa continuam disponíveis.
+
+OpeningSequence é composto por game.js e pelo DarkRoomRenderPipeline. A campanha inclui snapshot da abertura, enquanto a conclusão do primeiro salto fica em GameState/CampaignProgress. Consulte o [guia de estados e migração](../../../../docs/TUTORIAL-PRIMEIRO-SALTO.md).

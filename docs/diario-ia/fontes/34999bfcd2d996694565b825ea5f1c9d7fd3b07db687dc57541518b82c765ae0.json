@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "34999bfcd2d996694565b825ea5f1c9d7fd3b07db687dc57541518b82c765ae0",
+  "path": "checkpoints/refact/etapa19/resultado.json",
+  "sha256": "c9ed8cff824a96cceb61668a9cd0faf17062591cdf09e46c33763c1cfc223713",
+  "capturedAt": "2026-10-15T18:11:51.458934+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "19"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": \"19\",\n  \"sessao\": \"20261015T180819-d29b76205a7e\",\n  \"resultado\": \"Etapa 19: câmera e enquadramento da exploração com alvo explícito\",\n  \"validacoes\": [\n    {\n      \"comando\": [\n        \"npm\",\n        \"test\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"desktop\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"android\"\n      ],\n      \"exitCode\": 0\n    }\n  ],\n  \"limite\": \"Comparação determinística; Android emulado, sem aparelho físico.\"\n}\n"
+}

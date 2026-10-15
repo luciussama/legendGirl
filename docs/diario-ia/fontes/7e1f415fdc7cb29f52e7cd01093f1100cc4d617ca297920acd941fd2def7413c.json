@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "7e1f415fdc7cb29f52e7cd01093f1100cc4d617ca297920acd941fd2def7413c",
+  "path": "checkpoints/refact/etapa16/depois/ToyRoomInputContext.js",
+  "sha256": "169bb98d98b38dfa7470d0fb0b8695abcd692bb8cd368fd8b16ec092111c6628",
+  "capturedAt": "2026-10-15T18:09:45.182275+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "16"
+  },
+  "encoding": "utf-8",
+  "content": "/** Integra os controles com a fase sem copiar estado ou reter atores substituídos por restore. */\nexport function createToyRoomInputContext(room) {\n  return {\n    state: {\n      get keysDown() { return room.keysDown; },\n      set keysDown(value) { room.keysDown = value; },\n      get isTouchDevice() { return room.isTouchDevice; },\n      set isTouchDevice(value) { room.isTouchDevice = value; },\n      get actionBtnPressed() { return room.actionBtnPressed; },\n      set actionBtnPressed(value) { room.actionBtnPressed = value; },\n      get touchState() { return room.touchState; },\n      get gamepadState() { return room.gamepadState; },\n      get arenaTouchPointers() { return room.arenaTouchPointers; },\n      get arenaTouchButtons() { return room.arenaTouchButtons; },\n      get arenaSpecialButtons() { return room.arenaSpecialButtons; }\n    },\n    get canvas() { return room.canvas; },\n    get player() { return room.player; },\n    get mobile() { return room.mobilePresentation; },\n    get device() { return room.tutorial.device; },\n    get handlers() {\n      return {\n        onKeyDown: room.onKeyDown, onKeyUp: room.onKeyUp,\n        handlePointerDown: room.handlePointerDown, handlePointerMove: room.handlePointerMove,\n        handlePointerUp: room.handlePointerUp, handleBlur: room.handleBlur\n      };\n    },\n    isEnabled: () => room.isInputEnabled(),\n    isLocked: () => room.story?.inputLocked,\n    isArenaCombat: () => room.arena?.state.status === 'COMBAT',\n    setDevice: device => room.tutorial.setDevice(device),\n    initAudio: () => { if (room.audio && room.audio.initAudio) room.audio.initAudio(); },\n    action: () => room.triggerAction(),\n    special: () => room.arena.special()\n  };\n}\n"
+}

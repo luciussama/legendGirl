@@ -8,7 +8,8 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 
 - **Quarto escuro:** percurso de plataforma com 22 apoios, cena do castelo e progressão dos saltos durante a fuga.
 - **Percurso de retorno:** 16 apoios, deslocamento na direção oposta e passagem pelo portal final.
-- **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos e organização no baú.
+- **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos, recorrência misteriosa, investigação e aquisição da espada.
+- **Arena imaginária:** transformação da mesma sala, quatro inimigos com esquiva/contra-ataque e retorno à exploração.
 - **Narrativa:** abertura da menina acordando, retratos dos personagens e diálogos durante as transições.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
 - **Apresentação móvel:** enquadramento elevado no Android, posicionamento seguro de diálogos no iOS e zoom adicional moderado em dispositivos móveis.
@@ -19,7 +20,7 @@ O [diário humano do projeto](docs/DIARIO-HUMANO.md) apresenta as decisões de p
 
 Toda IA deve começar pelo [diário compartilhado](docs/diario-ia/README.md), conforme `AGENTS.md`.
 
-Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código. O [dicionário de dependências](docs/DEPENDENCIAS.md) resume bibliotecas, versões e locais de uso.
+Consulte o [manual de desenvolvimento e integração](docs/MANUAL-DESENVOLVIMENTO.md) para preparação do ambiente, arquitetura, controllers, renderização, assets, persistência, testes e publicação. A [referência de métodos por módulo](docs/REFERENCIA-METODOS.md) mapeia assinaturas e pontos de implementação para orientar a leitura do código. O [dicionário de dependências](docs/DEPENDENCIAS.md) resume bibliotecas, versões e locais de uso. O [mapa da arquitetura e entidades](docs/ARQUITETURA.md) cobre todos os módulos, proprietários de estado e contratos. O [catálogo de comandos](docs/COMANDOS.md) reúne todos os aliases e ferramentas.
 
 ### Orientações para o designer
 
@@ -62,6 +63,9 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Sala de brinquedos | Espaço, E, Enter ou F | Pegar, soltar ou guardar um objeto |
 | Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/soltar/guardar |
 | Sala de brinquedos em tela sensível ao toque | Joystick virtual à esquerda e botão de ação à direita | Movimentar e interagir |
+| Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F | Andar; pular; abaixar; espada |
+| Arena com gamepad padrão | D-pad; A (salto); X (espada) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
+| Arena em touch | Direcional e botão de espada | Andar, pular, abaixar e atacar; botão especial reservado |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
 | Interface geral | M / botão de áudio | Alternar o som |
 
@@ -69,7 +73,7 @@ As entradas respeitam os bloqueios das cenas e o estado da personagem. Nas fases
 
 ## Arquitetura
 
-A coordenação atual usa RuntimeContext, ViewportController, CameraQaObserver, DarkRoomRenderPipeline e DarkRoomNarrative por composição; a Toy Room tem introdução cinemática e tutorial guiado próprios. CameraController permanece congelado arquiteturalmente. GameState ainda convive com espelhos locais: a refatoração de estado não está concluída. Veja [responsabilidades e contratos atuais](docs/MANUAL-DESENVOLVIMENTO.md#implementações-atuais-e-fronteiras).
+A coordenação usa RuntimeContext, ViewportController, CameraQaObserver, DarkRoomRenderPipeline e DarkRoomNarrative por composição. `GameState` é a fonte dos campos de gameplay; os espelhos locais e o Proxy narrativo foram removidos. A fronteira de orientação do viewport foi preservada. A Toy Room separa entrada, movimento, interação, história, tutorial, efeitos, câmera, cena e persistência. Combate e arena têm componentes próprios e ainda conservam acessos amplos à sala. Veja [arquitetura, entidades e contratos](docs/ARQUITETURA.md).
 
 O código separa estado, controle, desenho e recursos, com `game.js` coordenando o fluxo principal. Parte da lógica de movimento, colisões e narrativa ainda reside nesse coordenador: a organização é modular, mas não constitui uma engine genérica ou um sistema ECS.
 
@@ -113,7 +117,7 @@ O coordenador também seleciona o modo ativo: o quarto usa seu fluxo de platafor
 | [`game.js`](src/js/game.js) | Integração de movimento, salto, resolução de pousos e gatilhos de progressão |
 | [`InputController.js`](src/js/controllers/InputController.js) | Entradas de ponteiro, teclado e leitura de gamepad para as fases de plataforma |
 
-`game.js` mantém variáveis locais sincronizadas com `GameState` por `syncLocalsToState` e `syncStateToLocals`. Ao acrescentar uma variável persistente ou uma transição, é necessário revisar essa sincronização e os valores iniciais; alterar apenas um dos lados pode produzir um estado incoerente.
+`game.js` lê e escreve os campos de gameplay diretamente em `GameState`. `syncViewportToState` e `syncViewportFromState` conservam somente a fronteira de orientação/apresentação. Um campo novo precisa de proprietário, default, leitores/escritores e decisão explícita de persistência; não introduza outro espelho de gameplay.
 
 ### Câmera e apresentação móvel
 
@@ -143,7 +147,7 @@ A iluminação usa um canvas auxiliar e acompanha a transformação real da cena
 
 ### Narrativa e persistência
 
-[`OpeningSequence.js`](src/js/cinematics/OpeningSequence.js) controla o relógio da abertura, falas, poses e revelação do cenário. As demais cenas são coordenadas por `game.js` e `GameState`, com desenho dos diálogos em `DialogueRenderer`.
+[`OpeningSequence.js`](src/js/cinematics/OpeningSequence.js) controla o relógio da abertura, falas, poses e revelação do cenário. As seis sequências posteriores do quarto estão em `DarkRoomNarrative`, selecionadas pelo coordenador com `GameState`. `ToyRoomStory` trata recorrência, investigação e espada. `DialogueRenderer` compartilha caixa/retrato entre fases; renderizadores narrativos adaptam conteúdo e tempos.
 
 [`CampaignProgress.js`](src/js/state/CampaignProgress.js) serializa uma seleção explícita do estado e usa `localStorage`. O jogo salva periodicamente durante a campanha e em eventos de saída/ocultação da página. O registro inclui estado narrativo e, quando aplicável, a sala de brinquedos. Se o armazenamento falhar, existe uma alternativa em memória para a sessão.
 
@@ -151,7 +155,7 @@ O progresso pertence ao navegador e à origem utilizados. Não há conta de usu�
 
 ### Sala de brinquedos
 
-[`ToyRoomPhase.js`](src/js/toy-room/ToyRoomPhase.js) mantém seu próprio ciclo de atualização, câmera, entradas, colisões com móveis e regras de coleta/entrega. A renderização é dividida entre `RoomEnvironmentRenderer`, `ToyRenderer`, `ToyRoomEntities` e `ToyRoomUI`.
+[`ToyRoomPhase.js`](src/js/toy-room/ToyRoomPhase.js) compõe os subsistemas e mantém seleção de modos, transições, ciclo de vida e API pública. Entrada, interação, história, tutorial e persistência usam contextos específicos; movimento, consultas de mundo, câmera, fada e efeitos recebem as referências atuais. `ToyRoomSceneRenderer` compõe cenário, entidades, HUD e falas com dados do quadro. `ToyRoomArenaPhase` transforma/restaura a sala e configura `ToyRoomBattle` com os perfis da arena. Veja o [catálogo completo](docs/ARQUITETURA.md#catálogo-completo-dos-módulos-javascript).
 
 Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para os módulos correspondentes, preservando caminhos de importação existentes. O sistema de áudio em `audio.js` é integrado ao jogo por `AudioController`, com músicas, efeitos, controle de volume e silenciamento.
 
@@ -164,7 +168,6 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 ├── package.json               # Dependências e comandos
 ├── package-lock.json          # Resolução versionada das dependências
 ├── assets/                    # Manifesto, arte e áudio
-│   └── qa-testers/            # Evidências atuais, relatórios e referência dos testes
 ├── src/
 │   ├── css/                   # Estilos da interface
 │   └── js/
@@ -172,16 +175,19 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── game.js            # Coordenação do jogo
 │       ├── config.js          # Configuração do mundo
 │       ├── assets/            # Carregamento e atlas
-│       ├── cinematics/        # Abertura narrativa
+│       ├── cinematics/        # Abertura e introdução da sala
 │       ├── controllers/       # Entrada, áudio e câmera
-│       ├── state/             # Estado e persistência
+│       ├── state/             # Estado, dificuldade e persistência
+│       ├── runtime/           # Agregação explícita de serviços
+│       ├── narrative/         # Sequências do quarto e narrador
+│       ├── rendering/         # Composição visual do quarto
 │       ├── entities/          # Personagens
 │       ├── environment/       # Cenário e iluminação
 │       ├── effects/           # Efeitos visuais
 │       ├── ui/                # Interface desenhada no canvas
-│       ├── toy-room/          # Exploração e organização de brinquedos
+│       ├── toy-room/          # Exploração, narrativa, espada e arena
 │       └── debug/             # Ferramentas de inspeção
-├── scripts/                   # Testes, geração e revisão de recursos
+├── scripts/                   # Geração de recursos, documentação, diário e execução de QA temporário
 ├── docs/diario-ia/            # Acervo de máquina e QA recuperável em ambiente temporário
 └── .github/workflows/          # Publicação no GitHub Pages
 ```
@@ -197,7 +203,7 @@ npm run build
 
 | Comando | Escopo |
 | --- | --- |
-| `npm test` | Regressões de plataformas, contato dos pés, personagem, partículas, guia da fada, persistência e ajustes móveis |
+| `npm test` | Regressões do quarto, sala, entrada, diálogos, persistência, arena, balanceamento e contrato do tutorial |
 | `npm run check-assets` | Verificação dos recursos registrados |
 | `npm run lint` | Verificação de sintaxe de `server.js` e `scripts/check-assets.js`; não é uma análise estática de todo o projeto |
 | `npm run test:pages` | Referências das páginas e compatibilidade dos caminhos com publicação em subpasta |
@@ -209,12 +215,12 @@ npm run build
 
 As páginas e scripts de QA estão arquivados no diário de IA. Os comandos de teste recuperam suas fontes apenas em um diretório temporário, preservam os resultados no acervo e apagam o ambiente ao concluir. Nenhum arquivo de QA permanece no projeto ou no site publicado.
 
-Para executar a validação automatizada, mantenha o servidor local na porta 3000 e inicie **uma instância dedicada do Chrome**, com um perfil separado e `--remote-debugging-port=9222`. Os scripts se conectam a uma página dessa instância.
+Inicie **uma instância dedicada do Chrome**, com perfil separado e `--remote-debugging-port=9222`. Os comandos do diário iniciam um servidor temporário em porta livre e encerram o ambiente após registrar o resultado. Consulte os [pré-requisitos de QA](docs/COMANDOS.md#ambiente-e-funcionamento).
 
 ```sh
-node scripts/verify-full-browser.js
-node scripts/verify-full-browser.js desktop
-node scripts/verify-full-browser.js iphone
+npm run journal:qa -- script:verify-full-browser.js
+npm run journal:qa -- script:verify-full-browser.js desktop
+npm run journal:qa -- script:verify-full-browser.js iphone
 ```
 
 O teste percorre abertura, plataformas, transições e sala de brinquedos. Ele busca momentos de salto usando snapshots entre tentativas e avança o código real de atualização em passos controlados. Na sala, usa vetores do joystick virtual e verifica a entrega dos oito objetos.
@@ -234,4 +240,4 @@ Siga as instruções de [`AGENTS.md`](AGENTS.md): comentários, documentação, 
 
 Ao alterar apresentação, mantenha física, geometria de colisão e posições do mundo separadas das transformações de renderização. Não desenhe linhas auxiliares de pouso ou hitboxes sobre as ilustrações na apresentação normal; inspeções técnicas pertencem ao modo de depuração.
 
-Mudanças em física ou progressão exigem revisão das referências e dos testes de percurso preservados no diário de IA. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão da captura/restauração da campanha e da sincronização com `GameState`.
+Mudanças em física ou progressão exigem revisão das referências e dos testes de percurso preservados no diário de IA. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão dos defaults, proprietários e captura/restauração da campanha e da sala.

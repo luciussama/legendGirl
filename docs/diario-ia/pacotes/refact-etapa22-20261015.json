@@ -1,0 +1,379 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-etapa22-20261015",
+  "date": "2026-10-15T18:13:42.733529+00:00",
+  "title": "Etapa 22: captura e restauração de saves por contrato explícito",
+  "files": [
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomArenaBuilder.js",
+      "sourceId": "db7ae2fcacab064b0c1718777a0a1d7860ba9b9aff85cf8344a298a4760ae308",
+      "sha256": "bbb8be35fce3747517023d9c4c86fef6c08f8243f84d0905e433d93f4eeb6652",
+      "bytes": 1792,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomArenaPhase.js",
+      "sourceId": "d4f9b645120c72d03ec5ad0314321d79fa723645c7723a6fe1ea98841e8ab1d8",
+      "sha256": "f2860cb16c3b5198202fb9c2096078e85498d34841ce45a5f5d7a642a45c490f",
+      "bytes": 10952,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomBattle.js",
+      "sourceId": "1546898d6ab2542c7dc7f2f4de782140420facc5a553f91c133b52068ab56823",
+      "sha256": "88d88c06c68565f71f3cec7c9439475d09f9614422e41c6c46bf8f9998f2566f",
+      "bytes": 23402,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomCamera.js",
+      "sourceId": "9dcf557c8dc39dfb1f3ea41c6961e3e90571643d0f1019077c65e59f99569976",
+      "sha256": "ea9b91867ec000cdbd723278bd2c760d672c3b7c04e30762f93c340c068dfb9c",
+      "bytes": 1822,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomCompanion.js",
+      "sourceId": "2778ce1de8b521991ee64ec4673516b37acbddfdfbb74cd868a71c6ce566fd62",
+      "sha256": "73d1be144bd588ada696b33b6182a835999fdc978b2e320f0a76697c00e9f178",
+      "bytes": 1732,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomEffects.js",
+      "sourceId": "845b56ba8ba79a2fe293f5caf4772126640176f7e7c18b05e2737132ccd811a4",
+      "sha256": "678844a4b1dce549bfd614d9fea52fa0dc9d136941d0678cfef3b2ca6d2814e7",
+      "bytes": 2932,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomEntities.js",
+      "sourceId": "5c74ee5e8e2f0ee87abb2bcd055be048e0eb26451aa393fc5976508974ece22b",
+      "sha256": "3317e7bcc6efde4f1b4db5107f121acc1516fbd9da92b4d9ce30462bebdae44e",
+      "bytes": 2604,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomEnvironmentAssets.js",
+      "sourceId": "310c58ec0a606d12aaad182f3d5151a85d38d75d986895414682b96dc9c0db28",
+      "sha256": "5f5987b08e41f2bed6149e49f7ba9297b6b589e952ad8818de2be198612f73db",
+      "bytes": 1967,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomInitialEntities.js",
+      "sourceId": "9b8b173b6f03e83dd9da501519336da9bb9893a93c1eabe1c87228c837d8e294",
+      "sha256": "0727bf7a26a642193553f2bfdbc435957128682994fa152aa4a0888be9da2768",
+      "bytes": 3535,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomInputContext.js",
+      "sourceId": "25bcdd01ad8eb0ab0622acb03345291b09af0468834757896fcb775261f00cde",
+      "sha256": "169bb98d98b38dfa7470d0fb0b8695abcd692bb8cd368fd8b16ec092111c6628",
+      "bytes": 1706,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomInputController.js",
+      "sourceId": "7f5f7f0fed0fe3c864f537cb00856adc6a35d8b24351ab04ca7d2db32ac65752",
+      "sha256": "6f6d5918de3b47fd2011b555238a4fe723f6d257a7ba28283dd8616079e7f58b",
+      "bytes": 12134,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomInteraction.js",
+      "sourceId": "c0646318f8778288042a104dd465e2e7bcc8288b590e3a4775e141496a559c49",
+      "sha256": "0abaa77ef27debe6c8300c7ba39d74abc8c3962699a886db0bd2113dd33c4a54",
+      "bytes": 5506,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomInteractionContext.js",
+      "sourceId": "18e9a198fe4f5aa9d2d8cd909defc671bfe05bcc0a90001487c5ffc3aea87aef",
+      "sha256": "78adaff42188b3ab690870ed2443576a179b063f4609736fcd634278f60d3cc2",
+      "bytes": 1628,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomMovement.js",
+      "sourceId": "37740355b75d8ac84ff6f29ea3d2083ef757bdc2dccfa46daa8b63b0811092cb",
+      "sha256": "cbcfc6ec71c84075c7ccf5d6d95de87bec60bd99aedf19a353525ce5afa5e238",
+      "bytes": 3242,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomOrientation.js",
+      "sourceId": "aee3ae13b728ae8ec2382b3efd21472fe0cc7e3a5d416f7b66f34ce1c8563712",
+      "sha256": "bc4b7b215862cea9738d68775ec10edec7592ce42c631aa00cc0cf48909eb8e7",
+      "bytes": 628,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomPhase.js",
+      "sourceId": "0966e66c59c61df5732233f2461643f60db8e259ac13735ff377a1157a5cda1a",
+      "sha256": "6ce652e3a3386b130c655be31d2468ed6872d014874d23ac4718cd8b385096f8",
+      "bytes": 11621,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomSceneFrame.js",
+      "sourceId": "d111487258f4ec12dd31227c09041d7a4eea91894d66279ad5c8d7f8172372df",
+      "sha256": "325ac72edd0ea11d11e0275bc5da6c1e5624ade858d2880abbb0a4fbe79641ad",
+      "bytes": 1426,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomSceneRenderer.js",
+      "sourceId": "874ab432bfedbf29b89fa0ee272d200acdc8d2ac1f917b350cfa7bd1482eb7ae",
+      "sha256": "40cdb1907495ef2293f1ef100cf1d5148345b8da6df014a1ff5522f437895f27",
+      "bytes": 5930,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomStory.js",
+      "sourceId": "fbe1adcf936b413d5d51c825e38ec6269a6f661a5f832b01cc5f61b1755e414f",
+      "sha256": "ddb8474c37e48ac0c1d72e2a97d8155197331b448b376985b2904adbd2144e94",
+      "bytes": 12833,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomStoryContext.js",
+      "sourceId": "f10c777bae79e09a90dbed332dd59bffd0096a41a441426aa33075f170ffa747",
+      "sha256": "73a80c857eaa4b160d233a89bc3ffa081327d7d8ad80ec0990274a44789fc958",
+      "bytes": 2405,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomStoryRenderer.js",
+      "sourceId": "400b0b3eec34bc2c9f0cdc22d5a019d0f84adeab7696999ed8410693a66384f8",
+      "sha256": "4fb0c1bce351ee3f1944bfd6b47ad49315e4eea2631a76735255e9ca9c01b899",
+      "bytes": 4151,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomToyActions.js",
+      "sourceId": "e7251934664baa414c7b2b26093fd0044f0d2e941c981a14612d0c5f91e3a02f",
+      "sha256": "1213d998a8be1965e57c63ac3ced86b8fa9d9c9b51913378208fe9f98dce846a",
+      "bytes": 853,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomTutorial.js",
+      "sourceId": "445b163e4b62deabe1c516efad1a0049e0f4edaef7c5b11179857f60db4e4ae5",
+      "sha256": "b97825e1b8e9cfb8fb329a55addbd82273d6212d1e19138702b7e6c8673bacf2",
+      "bytes": 5132,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomUI.js",
+      "sourceId": "1521941ec9830ee0da629df780a3f85cab6cea11db7f3f199b55eb47069f491f",
+      "sha256": "6f4722349c65fbaee4e4cc63f3105ad7534bbb046b029a4ca4bcf36b1901d96d",
+      "bytes": 9709,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/antes/ToyRoomWorldQueries.js",
+      "sourceId": "2980804996d34fee4cf5bc0e1f2af56bbb189338dc2a6d9adb7566f7d9bf4a92",
+      "sha256": "fc92c8292cf3ea3d9d909774c665cdd1b7b3958f25b3df579af5c3510610747c",
+      "bytes": 2069,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomArenaBuilder.js",
+      "sourceId": "e53bede5040b432bda8f1ebe26c354bf2876c5133d9da30bd2859ca6e21eaf47",
+      "sha256": "bbb8be35fce3747517023d9c4c86fef6c08f8243f84d0905e433d93f4eeb6652",
+      "bytes": 1792,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomArenaPhase.js",
+      "sourceId": "c9fcc4423479be423d503f007019a9b6f535ee32571664053ed3fc40d4b747fe",
+      "sha256": "f2860cb16c3b5198202fb9c2096078e85498d34841ce45a5f5d7a642a45c490f",
+      "bytes": 10952,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomBattle.js",
+      "sourceId": "4d93c8b07ac05a992a02093456670e25733a7baf16d97ed1dc67df9dfa000471",
+      "sha256": "88d88c06c68565f71f3cec7c9439475d09f9614422e41c6c46bf8f9998f2566f",
+      "bytes": 23402,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomCamera.js",
+      "sourceId": "b9b2cbf1fe6f9d567bf8f9fc3f09eda0df6860ebf9e45f5ea8f08b4288e4aea1",
+      "sha256": "ea9b91867ec000cdbd723278bd2c760d672c3b7c04e30762f93c340c068dfb9c",
+      "bytes": 1822,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomCompanion.js",
+      "sourceId": "79100b13f83ab60ca5557edc41b445433a7fab42817d9bcfa23dbeb1b711c8fd",
+      "sha256": "73d1be144bd588ada696b33b6182a835999fdc978b2e320f0a76697c00e9f178",
+      "bytes": 1732,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomEffects.js",
+      "sourceId": "7d7727a0397727def35a78448ca410c8e1592bf68073bedeef88a5d2413636fc",
+      "sha256": "678844a4b1dce549bfd614d9fea52fa0dc9d136941d0678cfef3b2ca6d2814e7",
+      "bytes": 2932,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomEntities.js",
+      "sourceId": "7193f4fe010caf21868d5decc5ea3d148fbac21de010b442aeb71936b44ece9d",
+      "sha256": "3317e7bcc6efde4f1b4db5107f121acc1516fbd9da92b4d9ce30462bebdae44e",
+      "bytes": 2604,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomEnvironmentAssets.js",
+      "sourceId": "fc3b8ea0b04d004451fa9b1d0df839cca9abe3543803f04a74058c5eed8e8b1d",
+      "sha256": "5f5987b08e41f2bed6149e49f7ba9297b6b589e952ad8818de2be198612f73db",
+      "bytes": 1967,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomInitialEntities.js",
+      "sourceId": "874d7639c8375ae35cdb470dd3ba78e1488aa0c780123c5352d174b06fd766b1",
+      "sha256": "0727bf7a26a642193553f2bfdbc435957128682994fa152aa4a0888be9da2768",
+      "bytes": 3535,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomInputContext.js",
+      "sourceId": "aee0fbee0cde41cc1351ac76ecfe2b0cb03bb8ff3132144111dd4a9bba01dde3",
+      "sha256": "169bb98d98b38dfa7470d0fb0b8695abcd692bb8cd368fd8b16ec092111c6628",
+      "bytes": 1706,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomInputController.js",
+      "sourceId": "4f22f195fa7c52e58bd69c7c3036634f5cd4e70907ab094a839907f4faf75e0c",
+      "sha256": "6f6d5918de3b47fd2011b555238a4fe723f6d257a7ba28283dd8616079e7f58b",
+      "bytes": 12134,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomInteraction.js",
+      "sourceId": "919d28dbdf59e5d5916695147ad34e4f02088a3ef8fed27d9a63aab2c4a22137",
+      "sha256": "0abaa77ef27debe6c8300c7ba39d74abc8c3962699a886db0bd2113dd33c4a54",
+      "bytes": 5506,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomInteractionContext.js",
+      "sourceId": "c27481b3973117d2715f055d8d17841eed457f5d34823e6acea762239523f12f",
+      "sha256": "78adaff42188b3ab690870ed2443576a179b063f4609736fcd634278f60d3cc2",
+      "bytes": 1628,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomMovement.js",
+      "sourceId": "44fb5837e5f80d8d7937763127442c39d87f489fcc6968c9cce7b55c59d83c6d",
+      "sha256": "cbcfc6ec71c84075c7ccf5d6d95de87bec60bd99aedf19a353525ce5afa5e238",
+      "bytes": 3242,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomOrientation.js",
+      "sourceId": "e9345edb7f834a4f51278cce05811b90f4dbf1cd25c0441567512d87920fb262",
+      "sha256": "bc4b7b215862cea9738d68775ec10edec7592ce42c631aa00cc0cf48909eb8e7",
+      "bytes": 628,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomPersistence.js",
+      "sourceId": "df3a0141130763b28769a1c94ebf225e1e0637cc26cb6daf71daadb44e6b5ba4",
+      "sha256": "f6552a91af59fa0a27250393f6a090847bd250df4439239f51ec5b5f966561c3",
+      "bytes": 2446,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomPersistenceContext.js",
+      "sourceId": "0243e7563b609f1390f5c62f022227d595971aa33aa23147802e14a28ab1bf33",
+      "sha256": "27d4d3b1eb52180974364063b8f8c789292160b5b1d69f99dba24181825d2751",
+      "bytes": 1997,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomPhase.js",
+      "sourceId": "715448f61b6efaeac65d455c72cbc385532ef62de4d0fb4d363962a223167fc3",
+      "sha256": "d45ee3d16b10ba1102ec3cfc1af6279e8cfa5719b39d76b15aa45559de05d0c5",
+      "bytes": 10047,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomSceneFrame.js",
+      "sourceId": "b42546ca81ddde6f415216e466d70b4c86384111100342877db2e8a175ffa02c",
+      "sha256": "325ac72edd0ea11d11e0275bc5da6c1e5624ade858d2880abbb0a4fbe79641ad",
+      "bytes": 1426,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomSceneRenderer.js",
+      "sourceId": "c5a1defca87e85a83116a88c48a1d003c00ea57670e677f0662a86324c316c38",
+      "sha256": "40cdb1907495ef2293f1ef100cf1d5148345b8da6df014a1ff5522f437895f27",
+      "bytes": 5930,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomStory.js",
+      "sourceId": "f6793d3863e9b60561d08ba145446ed43d82a50a46217e1ec3d3af1dccc010c2",
+      "sha256": "ddb8474c37e48ac0c1d72e2a97d8155197331b448b376985b2904adbd2144e94",
+      "bytes": 12833,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomStoryContext.js",
+      "sourceId": "f2bd571f07d3d5da2c3fb69c4cdd579774a1b130e5beb25928af61b4fb702fce",
+      "sha256": "73a80c857eaa4b160d233a89bc3ffa081327d7d8ad80ec0990274a44789fc958",
+      "bytes": 2405,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomStoryRenderer.js",
+      "sourceId": "108a3ff5905225701ebd5dd10690f75741870f3fa8ea3fc38bd351dbe3f43584",
+      "sha256": "4fb0c1bce351ee3f1944bfd6b47ad49315e4eea2631a76735255e9ca9c01b899",
+      "bytes": 4151,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomToyActions.js",
+      "sourceId": "289d1e77b3341f8742b713f6568dd812eccf8a1ce3326604571e2117daf79dd8",
+      "sha256": "1213d998a8be1965e57c63ac3ced86b8fa9d9c9b51913378208fe9f98dce846a",
+      "bytes": 853,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomTutorial.js",
+      "sourceId": "63ca8ecd592b9d5a6e9162f3f20966e22731318def6167eb9921883af0ee5cdc",
+      "sha256": "b97825e1b8e9cfb8fb329a55addbd82273d6212d1e19138702b7e6c8673bacf2",
+      "bytes": 5132,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomUI.js",
+      "sourceId": "d9c0cc29d9bda9e9b0aa63c040f73f737140654174a61373c9366dc5f84c753d",
+      "sha256": "6f4722349c65fbaee4e4cc63f3105ad7534bbb046b029a4ca4bcf36b1901d96d",
+      "bytes": 9709,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/depois/ToyRoomWorldQueries.js",
+      "sourceId": "ffc75b02d758603b998dc7f2686f8e45dfa3fe971f5964b43fe5482c44d14a77",
+      "sha256": "fc92c8292cf3ea3d9d909774c665cdd1b7b3958f25b3df579af5c3510610747c",
+      "bytes": 2069,
+      "metadataOnly": false
+    },
+    {
+      "path": "checkpoints/refact/etapa22/resultado.json",
+      "sourceId": "f91a364710c8d8a0e7c47025a3f1c3006a0fe937e5b6edb24739616f2685eb4a",
+      "sha256": "ff9d4e35cb2d3734d56bb2ff20d2f7bb508739fff0c6badade9b489e348f4b33",
+      "bytes": 698,
+      "metadataOnly": false
+    }
+  ]
+}

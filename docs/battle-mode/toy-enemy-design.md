@@ -1,5 +1,8 @@
 # Toy Room — design dos inimigos
 
+> **Design inicial preservado.** Os valores, pendências e restrições de escopo abaixo descrevem a concepção original dos prompts 10–12 e o perfil legado, não a arena imaginária atual. A implementação autorizada evoluiu: a arena usa HP 3/4/4/8 para os inimigos, câmera própria, IA, proteção e persistência. Consulte o [guia vigente](../arena/GUIA-ARENA.md), a [configuração documentada](../arena/configuracao-atual.json) e o diário para decisões posteriores. Os `null` das especificações originais continuam sendo pendências daquela versão, sem sobrescrever parâmetros do código atual.
+
+
 Versão: 1.0  
 Status: Design  
 Origem: PROMPT 11 — TOY ENEMY DESIGN.

@@ -16,4 +16,6 @@ Os críticos foram aprovados em 6 de outubro de 2026. Os grupos altos foram inte
 - `retro-robot-v1.png`, `royal-duck-v1.png`, `stacking-blocks-v1.png`, `enchanted-drum-v1.png`, `fairy-jack-box-v1.png`: cinco coletáveis, sem sombra de chão incorporada para permitir transporte.
 - `illustrated-fairy-v1.png`: fada pintada com rosto, vestido e asas.
 
-Prompts dos nove assets altos em `prompts-altos.json`. Relatório final e comparações em `docs/qa/toy-room-etapa3/altos/`. Grupos altos aguardam revisão; não há autorização presumida para a próxima etapa.
+Prompts dos nove assets altos em `prompts-altos.json`. Relatórios/comparações históricos de `docs/qa/toy-room-etapa3/altos/` foram preservados no [diário de IA](../../../../docs/diario-ia/README.md), pesquisáveis pelo caminho original. A indicação histórica de revisão pendente não certifica aprovação posterior; consulte os eventos da versão relevante.
+
+Consumidores atuais: RoomEnvironmentRenderer apresenta móveis, ToyRenderer apresenta os coletáveis e ToyRoomEntities/FairyRenderer apresentam a fada. ToyRoomSceneRenderer compõe a sala; Companion/Story/Tutorial decidem orientação e narrativa por contratos específicos. As medidas lógicas ficam em ToyRoomInitialEntities. Consulte [arquitetura](../../../../docs/ARQUITETURA.md) e [inventário](../../../../docs/sprites/inventario.json) antes de editar.

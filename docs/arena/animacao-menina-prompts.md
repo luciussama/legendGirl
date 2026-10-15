@@ -21,3 +21,7 @@ Referências: `girl/runtime/run-02.png` e a prancha intermediária de duas poses
 ## Calibração e seleção
 
 A primeira prancha de agachamento continha duas poses articuladas. A revisão identificou distância grande entre os extremos, e a versão de quatro poses foi selecionada para o runtime. Os PNGs finais mantêm a transparência gerada; o código apenas lê os recortes e define âncoras, orientação e unidade de pixels por prancha. Não houve pintura ou reprocessamento dos PNGs originais.
+
+## Uso atual
+
+Os prompts acima preservam a origem das pranchas, sem substituir metadados de execução. ArenaGirlAnimationFrames/ArenaPlayerAnimation/ArenaPlayerRenderer integram os quadros; os novos sprites de dano possuem fontes/prompts próprios em damage-v2. Consulte o [guia da menina](GUIA-ANIMACAO.md) e o [inventário](../sprites/inventario.json) para consumidores atuais.

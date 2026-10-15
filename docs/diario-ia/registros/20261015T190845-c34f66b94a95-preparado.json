@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T190845-c34f66b94a95-preparado",
+  "sessionId": "20261015T190845-c34f66b94a95",
+  "type": "marco",
+  "date": "2026-10-15T19:23:02.457576+00:00",
+  "actor": "Codex",
+  "title": "Documentação revisada e validada; integração local preparada",
+  "summary": "Auditoria integral e QA aprovados; fontes/resultados no pacote documentacao-revisao-integral-20261015. Merge ainda não executado neste marco."
+}
