@@ -1,6 +1,6 @@
 # Arquitetura e contratos do aplicativo
 
-Revisão: 15/10/2026. Descreve o código atual, incluindo as extrações da branch `refact`; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
+Revisão: 15/10/2026. Descreve o código atual, incluindo as extrações de `refact` integradas localmente à `main` em 15/10/2026; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
 
 ## Composição e limites
 
