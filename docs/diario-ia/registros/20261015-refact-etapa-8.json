@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015-refact-etapa-8",
+  "sessionId": "20261015T135358-717b91cd8a2c",
+  "type": "etapa",
+  "date": "2026-10-15T14:08:21.572913+00:00",
+  "title": "Estado canônico de ciclo de vida",
+  "summary": "Nove cópias locais de fase, instância, início/fim e temporizadores foram eliminadas. Inicialização do relógio mantém o ponto original. Esquema de saves preservado.",
+  "checks": [
+    "npm test aprovado.",
+    "Comparações exatas desktop/Android aprovadas.",
+    "check-assets, build e diff --check aprovados."
+  ],
+  "sourceId": "28065645a340053aa74b89a0d13739c8380cba35543fa4272f68616351b31e22"
+}

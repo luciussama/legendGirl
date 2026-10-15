@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-fechamento-etapas16-22-20261015",
+  "date": "2026-10-15T18:16:05.374845+00:00",
+  "title": "Encerramento do ciclo ToyRoomPhase: dependências, decisões e validações das etapas 16–22",
+  "files": [
+    {
+      "path": "docs/MANUAL-DESENVOLVIMENTO.md",
+      "sourceId": "65868db74ae3f3bf077461d99c5eec7d01e26fce38e86855193c15e7279c648c",
+      "sha256": "33ee2896d2e6f72f8991d29f3de6debf271d67ec6666eccbcb6c8679868b9d74",
+      "bytes": 61360,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/REFERENCIA-METODOS.md",
+      "sourceId": "f7086fbb11dc54980a7f5867b207f68f1506259dc0a31bd98a6f3ba3988a7509",
+      "sha256": "170e73ea07c0b8c1a4b0025a3a540e11baa51aebeaf9da02efd3a832fc53222f",
+      "bytes": 123042,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/generate-method-reference.js",
+      "sourceId": "e2dabe57401b12a63d1f8d3a94d01c38f1b3ec0c88390e9cb9773cb17895acac",
+      "sha256": "493d3a5381eea50cf7f53f5cdc0c0599c8ae509d9fc6a90ef633db4ade8c0cb6",
+      "bytes": 10659,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/refact/etapas16-22/resultado-final.json",
+      "sourceId": "a5572f96cd86d0f0852d32fafd84443f1737e1d9f6bec2fc416c2e430b254796",
+      "sha256": "e0f29c1359eb35e7405c2f9970e8fac0d361bf9674686eb1dc7214dca9da920f",
+      "bytes": 4258,
+      "metadataOnly": false
+    }
+  ]
+}

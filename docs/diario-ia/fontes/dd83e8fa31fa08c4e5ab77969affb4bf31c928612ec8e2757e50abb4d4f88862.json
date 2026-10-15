@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dd83e8fa31fa08c4e5ab77969affb4bf31c928612ec8e2757e50abb4d4f88862",
+  "path": "refact/referencia-inicial/android/arena-bear-DEATH.png",
+  "sha256": "b3d37a9101e0a53a4c2f455688a06a49a4e4d18e02780a83594f053c40858fab",
+  "capturedAt": "2026-10-15T13:30:33.395267+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-bear-DEATH.png\", \"sha256\": \"40efa96001866738df6dd96215fcd656c05cb6894cc3af79e2c72a1de56c240c\", \"bytes\": 894690, \"binaryRetained\": false}"
+}

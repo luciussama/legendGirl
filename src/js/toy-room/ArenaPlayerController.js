@@ -1,5 +1,5 @@
 import { PlayerController } from './PlayerController.js';
-import { BATTLE_TUNING } from './ToyRoomBattle.js';
+import { BATTLE_TUNING } from './BattleConfig.js';
 import { ARENA_SWORD } from './ArenaCombatRules.js';
 
 /** Parâmetros próprios da fantasia; não modifica a configuração da exploração. */

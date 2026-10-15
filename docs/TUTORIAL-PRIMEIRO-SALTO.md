@@ -1,5 +1,6 @@
 # Tutorial do primeiro salto — guia técnico
 
+Revisão: 15/10/2026. Este guia trata o quarto escuro; o tutorial de exploração da Toy Room usa contratos próprios descritos em [ARQUITETURA](ARQUITETURA.md).
 
 ## Quando ocorre e quais estados utiliza
 
@@ -199,7 +200,7 @@ npm run journal:qa -- script:test-opening-sequence.js
 
 `npm test` inclui a verificação unitária do prompt e da campanha. `npm run test:tutorial:browser` executa os quatro testes de navegador abaixo.
 
-Para testes de navegador, manter servidor local em `127.0.0.1:3000` e Chrome dedicado com CDP em `127.0.0.1:9222`. As fixtures instrumentadas ficam em `tests/`; suas APIs manuais não pertencem ao jogo distribuído.
+Para testes de navegador, mantenha Chrome dedicado com CDP em `127.0.0.1:9222`. Os aliases do diário recuperam fixtures em `tests/` dentro do workspace temporário e iniciam servidor em porta livre; essas APIs não pertencem ao jogo distribuído. Consulte [COMANDOS](COMANDOS.md).
 
 ```sh
 npm run journal:qa -- script:test-first-jump-tutorial-browser.js
@@ -216,7 +217,7 @@ npm run journal:qa -- script:test-first-jump-production-browser.js
 | `test-first-jump-production-browser.js` | Página real, botão de início/continuação, abertura completa, saves legados, restauração e entradas CDP em Android/iPhone emulados e desktop. |
 | `test-first-jump-completion-browser.js` | Entradas válidas/inválidas, A segurado, impulso original, retomada, ocultação, save, retry, restauração e campanha nova. |
 
-As evidências ficam em `assets/qa-testers/current-logs/first-jump-*.json`, `current-screenshots/first-jump-tutorial/` e no relatório vinculado no início. Os cenários de touch e gamepad são sintéticos no Chrome; não comprovam execução em dispositivos físicos. A compreensão sem documentação requer observação de jogadores, além da revisão das capturas.
+Esses scripts podem gerar nomes históricos como `assets/qa-testers/current-logs/first-jump-*.json` dentro do workspace temporário. O executor arquiva resultados no diário de IA e remove o ambiente; capturas regeneráveis mantêm apenas caminho/hash/tamanho no acervo. Os cenários de touch e gamepad são sintéticos no Chrome; não comprovam execução em dispositivos físicos. A compreensão sem documentação requer observação de jogadores, além da revisão das capturas.
 
 Checklist manual: assistir à abertura, aguardar sem entrada, conferir menina/câmera paradas e renderização animada, executar uma entrada válida, conferir retomada e ocultação, repetir no mesmo save e iniciar campanha nova. Revisar retrato/paisagem, áreas seguras, troca de dispositivo, desconexão do controle, movimento reduzido, pausa e recarga. Não substituir esse checklist por chamadas artificiais que marquem a flag diretamente.
 

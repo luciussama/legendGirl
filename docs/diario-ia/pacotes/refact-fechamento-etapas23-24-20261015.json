@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-fechamento-etapas23-24-20261015",
+  "date": "2026-10-15T18:22:01.586464+00:00",
+  "title": "Desacoplamento do tutorial: contratos, dependências e validações das etapas 23–24",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/refact/etapas23-24/orquestracao.py",
+      "sourceId": "87165a5bce3217da1d89ac36b03883863172c39e956848ffef53b0a28debc5ef",
+      "sha256": "cb49192349bc72dea0185b431d1b049618bf5c656b1249806f2fab292edebf44",
+      "bytes": 2198,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/refact/etapas23-24/resultado-final.json",
+      "sourceId": "b08b87b8be97254dba09191aa3d53be1222ddf069e39814f82107eac5d4b012d",
+      "sha256": "722980a1a5c9957e1ef69687e92cf73563a3cc1bf5165377cb44ae600e5e4ab6",
+      "bytes": 2760,
+      "metadataOnly": false
+    }
+  ]
+}

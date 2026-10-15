@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzzzzzzz-refact-tutorial-20261015",
+  "date": "2026-10-15T18:20:06.423621+00:00",
+  "title": "Regressão do contrato restrito do tutorial após restauração",
+  "qaCommands": {
+    "test:refact:tutorial": "node scripts/test-refact-tutorial-contract.js"
+  },
+  "files": [
+    {
+      "path": "scripts/test-refact-tutorial-contract.js",
+      "sourceId": "837b8b897dab714358a5717b3b5d47f3c1706a6372be896ae2aa40d68bd8b87a",
+      "sha256": "1804ff90ea87522fa5e62bd67efca704de3f47615bca3fc5d91596dc357dcda2",
+      "bytes": 2710,
+      "metadataOnly": false
+    }
+  ]
+}

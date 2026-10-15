@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8f6e565bbe00c5ceae82be1c74e6ecc6b09e110c27d0dbe9766df1c027a3ec3c",
+  "path": "refact/referencia-inicial/desktop/realidade.png",
+  "sha256": "833eaa8ff0075027c45fdc85148b62cc7910b46a67721fa21c68ae712e98eb38",
+  "capturedAt": "2026-10-15T13:29:52.506060+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/realidade.png\", \"sha256\": \"b4f38d4c1e07230dfe003f9d8030a9a09b9d891f1299705d14acfe0143d184e2\", \"bytes\": 334337, \"binaryRetained\": false}"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "0b8f43dc5226639b11229d9be9b4d0bc20d42c7f2522ff1bd9c43a181c139fee",
+  "path": "checkpoints/refact/etapa21/antes/ToyRoomCompanion.js",
+  "sha256": "73d1be144bd588ada696b33b6182a835999fdc978b2e320f0a76697c00e9f178",
+  "capturedAt": "2026-10-15T18:12:39.273984+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "21"
+  },
+  "encoding": "utf-8",
+  "content": "import { nearestToyGuide } from './ToyRoomOrientation.js';\nimport { toyGuideBlend } from '../state/GameDifficulty.js';\n\n/** Atualiza guia, voo e rastro da fada com os atores do quadro atual. */\nexport function updateToyRoomCompanion({ player, fairy, toys, tutorial, story, gameDifficulty, guideToy }, dt) {\n  // Atualização da fadinha companheira\n  const fairyHoverOffsetX = player.facing === 'left' ? 24 : -24;\n  fairy.targetX = player.x + fairyHoverOffsetX + Math.cos(fairy.flutterTime * 0.08) * 12;\n  fairy.targetY = player.y - 32 + Math.sin(fairy.flutterTime * 0.12) * 8;\n  tutorial.update(dt);\n  // O tutorial conserva sua orientação; no gameplay o alvo depende da protagonista.\n  guideToy = nearestToyGuide(player, toys, guideToy);\n  const guide = story.guidePosition() || tutorial.guidePosition() || (guideToy && {\n    x: guideToy.x, y: guideToy.y - 105\n  });\n  if (guide) { fairy.targetX = guide.x; fairy.targetY = guide.y; }\n\n  fairy.flutterTime += dt;\n  const guideBlend = guide ? toyGuideBlend(gameDifficulty, dt) : 0.12 * dt;\n  fairy.x += (fairy.targetX - fairy.x) * guideBlend;\n  fairy.y += (fairy.targetY - fairy.y) * guideBlend;\n\n  if (Math.random() < 0.4) {\n    fairy.particles.push({\n      x: fairy.x + (Math.random() - 0.5) * 12,\n      y: fairy.y + (Math.random() - 0.5) * 12,\n      vx: (Math.random() - 0.5) * 0.8,\n      vy: (Math.random() - 0.5) * 0.8 - 0.4,\n      alpha: 0.85,\n      radius: 1.5 + Math.random() * 2,\n      color: '#fef08a'\n    });\n  }\n\n  for (let i = fairy.particles.length - 1; i >= 0; i--) {\n    const p = fairy.particles[i];\n    p.x += p.vx * dt;\n    p.y += p.vy * dt;\n    p.alpha -= 0.035 * dt;\n    if (p.alpha <= 0) {\n      fairy.particles.splice(i, 1);\n    }\n  }\n\n  return guideToy;\n}\n"
+}

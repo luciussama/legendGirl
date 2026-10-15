@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-etapa11-20261015",
+  "date": "2026-10-15T14:47:42.758760+00:00",
+  "title": "Transições dos brinquedos: resultado e checkpoints da etapa 11",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/refact/etapa11/resultados.json",
+      "sourceId": "9df1c389b9f1286fb2d3ac9eec8358ecece40d94afaaac49694fe2dc1c451916",
+      "sha256": "c1cdf67708a4858177b3085b96ad0b4529cf722b9bb6a2762c97e5911802b430",
+      "bytes": 2136,
+      "metadataOnly": false
+    }
+  ]
+}

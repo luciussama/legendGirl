@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8f75a733cb924e2f4a9428db356b1e8006f39ee400775b63607667fa8fb9ebf1",
+  "path": "refact/referencia-inicial/android/arena-dinosaur-DEATH.png",
+  "sha256": "4b6ea0e2a39882a599600d6da8a5b49a3dd3af157ef62d1415f240c6d606d8e8",
+  "capturedAt": "2026-10-15T13:30:33.400079+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-dinosaur-DEATH.png\", \"sha256\": \"2003ec9f0f43d9b1735d27c8dead96a29d844981ddb296988104559a4703b92e\", \"bytes\": 881523, \"binaryRetained\": false}"
+}

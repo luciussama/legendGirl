@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "1e028fe843065e5cf1dc47dccb66c411086fdcca7b1b1b02d50832f30ff5e45c",
+  "path": "checkpoints/refact/etapa24/depois/ToyRoomTutorialContext.js",
+  "sha256": "d28bd0037180afeac33b02d5afdc549e0ace59a5e213b9fccc8748e0e6bc501f",
+  "capturedAt": "2026-10-15T18:20:49.209708+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T181903-9bfbdad5c11d",
+    "etapa": "24"
+  },
+  "encoding": "utf-8",
+  "content": "/** Limita a orientação a atores, brinquedos, câmera e dois campos de progresso.\n * Os getters consultam os objetos atuais após restore substituir os dados da sala.\n */\nexport function createToyRoomTutorialContext(room) {\n  return Object.freeze({\n    get mobilePresentation() { return room.mobilePresentation; },\n    get player() { return room.player; },\n    get fairy() { return room.fairy; },\n    get toys() { return room.toys; },\n    get cameraX() { return room.cameraX; },\n    get cameraY() { return room.cameraY; },\n    get toyRoomTutorialCompleted() { return room.toyRoomTutorialCompleted; },\n    set toyRoomTutorialCompleted(value) { room.toyRoomTutorialCompleted = value; },\n    get gameplayState() { return room.gameplayState; },\n    set gameplayState(value) { room.gameplayState = value; }\n  });\n}\n"
+}

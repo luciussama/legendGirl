@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "b0a3ddf7f05019a8005681bb0d3c061260ed3101d1cb18bdf275d689a85337e1",
+  "path": "checkpoints/refact/etapa21/depois/ToyRoomInteractionContext.js",
+  "sha256": "78adaff42188b3ab690870ed2443576a179b063f4609736fcd634278f60d3cc2",
+  "capturedAt": "2026-10-15T18:13:03.834498+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "21"
+  },
+  "encoding": "utf-8",
+  "content": "/** Contrato de interação: acessa o estado vigente sem copiar atores ou brinquedos. */\nexport function createToyRoomInteractionContext(room) {\n  return {\n    get ACTION_DEBOUNCE_MS() { return room.ACTION_DEBOUNCE_MS; },\n    get ROOM_H() { return room.ROOM_H; },\n    get ROOM_W() { return room.ROOM_W; },\n    get arena() { return room.arena; },\n    get audio() { return room.audio; },\n    get battle() { return room.battle; },\n    get canInteract() { return room.canInteract; },\n    set canInteract(value) { room.canInteract = value; },\n    get furniture() { return room.furniture; },\n    isInputEnabled: (...args) => room.isInputEnabled(...args),\n    get isNearChest() { return room.isNearChest; },\n    set isNearChest(value) { room.isNearChest = value; },\n    get lastActionTime() { return room.lastActionTime; },\n    set lastActionTime(value) { room.lastActionTime = value; },\n    get organizedCount() { return room.organizedCount; },\n    set organizedCount(value) { room.organizedCount = value; },\n    get player() { return room.player; },\n    spawnConfetti: (...args) => room.spawnConfetti(...args),\n    spawnSparkles: (...args) => room.spawnSparkles(...args),\n    get story() { return room.story; },\n    get toys() { return room.toys; },\n    get tutorial() { return room.tutorial; },\n    get uiFeedback() { return room.uiFeedback; },\n    get victoryBannerActive() { return room.victoryBannerActive; },\n    set victoryBannerActive(value) { room.victoryBannerActive = value; },\n    get victoryBannerTimer() { return room.victoryBannerTimer; },\n    set victoryBannerTimer(value) { room.victoryBannerTimer = value; },\n  };\n}\n"
+}

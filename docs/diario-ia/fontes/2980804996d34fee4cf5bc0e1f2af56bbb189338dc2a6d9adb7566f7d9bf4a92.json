@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "2980804996d34fee4cf5bc0e1f2af56bbb189338dc2a6d9adb7566f7d9bf4a92",
+  "path": "checkpoints/refact/etapa22/antes/ToyRoomWorldQueries.js",
+  "sha256": "fc92c8292cf3ea3d9d909774c665cdd1b7b3958f25b3df579af5c3510610747c",
+  "capturedAt": "2026-10-15T18:13:18.434747+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "22"
+  },
+  "encoding": "utf-8",
+  "content": "/** Consultas geométricas da exploração; dependências consultadas novamente após restore. */\nexport function createToyRoomWorldQueries({ getDimensions, getPlayer, resolvePosition, getCameraFrame, getCameraBounds }) {\n  const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);\n  const key = point => `${point.x},${point.y}`;\n  function isFree(point, radius = 24) {\n    const resolved = resolvePosition(point.x, point.y, radius);\n    return resolved.x === point.x && resolved.y === point.y;\n  }\n\n  function reachableFloor() {\n    const { width, height } = getDimensions();\n    const player = getPlayer();\n    const nodes = [];\n    for (let x = 120; x <= width - 120; x += 40) {\n      for (let y = 320; y <= height - 120; y += 40) {\n        const point = { x, y };\n        if (isFree(point)) nodes.push(point);\n      }\n    }\n\n    const nodesByKey = new Map(nodes.map(point => [key(point), point]));\n    const start = nodes.reduce((nearest, point) =>\n      !nearest || distance(point, player) < distance(nearest, player) ? point : nearest, null);\n    if (!start) return [];\n\n    const visited = new Set([key(start)]);\n    const queue = [start];\n    for (let index = 0; index < queue.length; index++) {\n      const point = queue[index];\n      for (const [dx, dy] of [[40, 0], [-40, 0], [0, 40], [0, -40]]) {\n        const next = { x: point.x + dx, y: point.y + dy };\n        const nextKey = key(next);\n        if (!nodesByKey.has(nextKey) || visited.has(nextKey)) continue;\n        if (![0.25, 0.5, 0.75].every(amount =>\n          isFree({ x: point.x + dx * amount, y: point.y + dy * amount }))) continue;\n        visited.add(nextKey);\n        queue.push(next);\n      }\n    }\n    return queue;\n  }\n\n  function viewport(frame = getCameraFrame()) {\n    const { x, y, width, height } = getCameraBounds();\n    return {\n      left: x - frame.x / frame.zoom,\n      top: y - frame.y / frame.zoom,\n      right: x + (width - frame.x) / frame.zoom,\n      bottom: y + (height - frame.y) / frame.zoom\n    };\n  }\n\n  return Object.freeze({ isFree, reachableFloor, viewport });\n}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9c0bc8dfc8cd9f67511b08a538c50195de182ac7fee4e2b5a5906ded23f0d761",
+  "path": "refact/referencia-inicial/desktop/arena-robot-HIT.png",
+  "sha256": "19003a5ee91d09aadea46bf67aae7ae3de03989dc27caf8842fb3f193f60375b",
+  "capturedAt": "2026-10-15T13:29:52.495353+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-robot-HIT.png\", \"sha256\": \"64a623890959134c765a94c5d0e2736ad97b9d8f2786ebf539553e9005bc96ef\", \"bytes\": 1087648, \"binaryRetained\": false}"
+}

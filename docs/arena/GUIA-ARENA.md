@@ -1,10 +1,14 @@
 # Guia da arena imaginária
 
+Revisão: 15/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
+
 O fluxo é exploração, espada, transformação, arena heroica, combate e retorno. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
 
 `ToyRoomPhase.js` controla a exploração. `ToyRoomArenaPhase.js` gerencia transformação, arena e retorno. `ToyRoomArenaBuilder.js` deriva as estruturas da sala. `ArenaEnvironment.js` desenha o cenário heroico e reutiliza os materiais dos móveis. A câmera, o controller, o HUD, os efeitos e o perfil de áudio da arena têm responsabilidades próprias.
 
-`ToyRoomBattle.js` mantém a simulação e os recursos dos inimigos. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
+`ToyRoomBattle.js` mantém a simulação e coordena o combate. `BattleConfig.js` fornece os parâmetros compartilhados sem carregar a implementação da batalha; `BattleAssets.js` carrega o manifesto e as imagens existentes; `BattleRenderer.js` apresenta inimigos, combate legado, HUD e impactos. Os métodos públicos `render` e `renderImpact` e os exports anteriores de `ToyRoomBattle.js` permanecem compatíveis. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
+
+Os carregadores preservam as URLs relativas ao módulo e os manifestos atuais. Antes de mover qualquer arquivo de código, verificar também essa resolução, os recortes, as âncoras e os consumidores das imagens. A separação de responsabilidades não autoriza excluir assets ou substituir sprites por desenhos procedurais.
 
 O [guia de designers](../sprites/GUIA-DESIGNERS.md) identifica recursos e metadados. O [diário humano](../DIARIO-HUMANO.md) acompanha as decisões de produto. Relatórios de implementação, execução dos cards e validação ficam no diário de IA.
 # Corpos e comportamento dos inimigos
@@ -24,3 +28,36 @@ O alcance efetivo da espada foi ampliado em 10% sobre o balanceamento anterior, 
 O som da espada distingue passagem de ar, acerto e bloqueio. Um acerto combina estalo, corpo grave e ressonância da lâmina com a reação própria do brinquedo; um bloqueio tem ricochete metálico e faíscas claras, sem emitir dano ou cura. Os efeitos ficam na região de contato da lâmina, acompanhando salto e agachamento. Arco, partículas, pausa breve do impacto e tremor foram reforçados, mantendo corações, recuo e hitboxes dos corpos. Volume mestre, mudo, pausa e transições continuam controlando os sons.
 
 Os movimentos têm identidade sonora: motor do trem, juntas do robô, passos do dinossauro e passos pesados com tecido do Urso. O áudio acompanha deslocamento efetivo e respeita o volume e o silenciamento do jogador.
+
+## Perfis e parâmetros atuais
+
+| Perfil | Menina | Trem | Robô | Dinossauro | Urso | Câmera / configuração |
+| --- | ---: | ---: | ---: | ---: | ---: | --- |
+| Arena imaginária | 3 | 3 | 4 | 4 | 8 | ArenaCamera, ARENA_TUNING e ARENA_ENEMIES |
+| Combate legado | 3 | 2 | 2 | 2 | 4 | BATTLE_TUNING; usado sem perfil de apresentação de arena |
+
+A ordem é Trem → Robô → Dinossauro → Urso, um por vez. O eixo é horizontal; salto/agachamento não movem em profundidade. A arena usa limites x=160..1440 e chão y=690, velocidade da menina 6,2, impulso 11 e gravidade 0,32. O gesto da espada dura 18 quadros, com 6 de antecipação e 6 de contato; cooldown 36 e recuperação de bloqueio 48. Movimento usa 20% da velocidade durante gesto e 55% na recuperação. São unidades da simulação de 60 Hz; a integração usa dt.
+
+`getSwordRange` calcula max(209, (distância de colisão do ator + 40) × 1,1): Trem 297, Robô 209, Dinossauro 247,5 e Urso 239,25. O recuo de dano é 173,6 unidades, limitado pelas bordas. Não usar dimensões visuais dos sprites como novas hitboxes. Os perfis de corpo, pressão, evasão e cadência estão em `ARENA_ENEMIES`; [configuracao-atual.json](configuracao-atual.json) documenta os valores e fontes desta revisão, sem ser carregado pelo jogo.
+
+`ArenaBoss` introduz o Urso e aciona fúria quando HP ≤ ceil(maxHp/2), portanto a partir de 4 na arena. A flag não é desligada pela cura. `ToyRoomBattle` apresenta ENRAGE uma vez e conserva o repertório. O perfil legado conserva o gatilho de HP=1. A proteção e as janelas de abertura vêm de `ArenaCombatRules`, também lidas pelo HUD.
+
+## Entrada e estado
+
+Teclado: A/D ou esquerda/direita andam; W/cima pula; S/baixo agacha; E/Espaço/Enter/F ataca. No gamepad padrão da arena, o D-pad fornece direção, A também pula e X ataca; o analógico continua sendo movimento da exploração. No touch, use os controles da arena calculados por MobileUILayout. A ação especial/Y possui entrada reservada, mas `special()` retorna false e não altera a luta.
+
+A fase usa IDLE → TRANSFORMING → COMBAT → RETURNING → COMPLETE. Transformação dura 180 quadros e aguarda artes prontas; erros de recursos impedem a entrada pronta. BATTLE/VICTORY/DEFEAT pertencem à simulação de batalha. Após derrota, ataque aceito depois da espera reinicia a luta; após vitória, conduz ao retorno. O retorno restaura a exploração intermediariamente e termina a apresentação sem criar uma campanha nova.
+
+A câmera da arena enquadra atores e tremor em ArenaCamera. O panorama da transformação usa o desenho da sala como fundo por `arenaBackdrop`; não reutiliza a física de exploração. A câmera fixa do documento de design inicial não é o enquadramento implementado neste perfil.
+
+## Saves, retorno e áudio
+
+A entrada captura a sala com `snapshot({includeArena:false})`. O save da arena inclui versão, state, exploration, camera, fx, audio e boss; a batalha é salva no pacote da sala. No retorno, `restore(exploration,{preserveArena:true})` evita recursão. Vitória marca os brinquedos organizados, interrompe a recorrência e registra arenaCompleted. Saves antigos sem arena recebem a adaptação existente com ponto seguro de retorno. Não serializar imagens, nós de áudio, controllers ou callbacks.
+
+A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reinício na transformação/combate. Intensidade passa a 1,2 e 1,4; a percussão procedural se soma à trilha. Ao sair, volta a 1 e retoma o fluxo da sala. Ganho mestre, mudo, pausa e foco continuam válidos. Reações, passos/motor e espada têm módulos de síntese próprios e liberação das vozes.
+
+## Fronteiras de integração e manutenção
+
+`ToyRoomPhase` compõe a exploração com contextos restritos; `ToyRoomArenaPhase` e `ToyRoomBattle` ainda retêm a sala inteira. `configurePresentation` instala controller, tuning e callbacks da arena sobre a simulação existente; restoreReality devolve o perfil legado. Essa integração ampla permanece como próximo trabalho de desacoplamento, não como uma interface genérica já implantada.
+
+Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.

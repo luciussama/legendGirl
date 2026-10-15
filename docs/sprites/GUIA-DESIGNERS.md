@@ -8,11 +8,11 @@ Antes de editar, consulte `docs/diario-ia/CONTEXTO-ATUAL.md`. O [mapa completo](
 | --- | --- | --- |
 | Menina oficial na exploração/plataformas | `assets/art/dark-room/sprites/official-character.png`; origem `assets/art/dark-room/official-sprites.png` | `src/js/assets/officialCharacter.js`, `src/js/entities/BabyRenderer.js`, `src/js/toy-room/ToyRoomEntities.js`. Extração: `scripts/generate-dream-girl-sprites.js`. |
 | Menina na arena | `assets/art/toy-room/battle/girl/runtime/` e `assets/art/toy-room/battle/girl/animation-v2/` | `ArenaGirlAnimationFrames.js`, `ArenaPlayerRenderer.js`, `BattleGirlFrames.js`, `ToyRoomBattle.js` e manifestos dedicados em `assets/art/toy-room/battle/`. Consulte `docs/arena/GUIA-ANIMACAO.md` para poses, antecipação e âncoras. |
-| Inimigos: trem, robô, dinossauro e urso | `assets/art/toy-room/battle/`, subpastas de cada personagem | `ToyRoomBattle.js`, `BattlePresentation.js`; manifests dedicados e `docs/battle-mode/battle-sprite-production.md`. Animação e eventos de dano não são definidos apenas pelas imagens. |
+| Inimigos: trem, robô, dinossauro e urso | `assets/art/toy-room/battle/`, subpastas de cada personagem | `BattleAssets.js` carrega os recursos; `BattleRenderer.js` e `BattlePresentation.js` apresentam os quadros; `ToyRoomBattle.js` mantém a simulação. Manifestos dedicados e `docs/battle-mode/battle-sprite-production.md`. Animação e eventos de dano não são definidos apenas pelas imagens. |
 | Plataformas do quarto escuro | `assets/art/dark-room/platforms/`, `sprites/`, `modern/`, `corrections/` | `src/js/environment/PlatformRenderer.js`, `PLATFORM_SURFACES`, `StorybookPlatforms.js`, `src/js/assets/darkRoomAtlas.js`, `src/js/config.js`. Metadados de superfície conservam apoio dos pés. |
 | Atlas consolidado do quarto escuro | `assets/art/dark-room/production-spritesheet.png` | Gerado por `scripts/build-dark-room-atlas.js`; coordenadas em `darkRoomAtlas.js` e `assets/art/dark-room/darkRoomAtlas.json`. Evite editar só a prancha gerada e deixar os PNGs de origem divergentes. |
 | Cenário decorativo atual | `assets/art/dark-room/scenery-current/` | `src/js/assets/currentScenery.js`, `BackgroundRenderer.js`, `assets/manifest.json`. Dez PNGs novos e sete ilustrações reutilizadas; a lista exata está em `currentScenery.js`. |
-| Piso, paredes, tapetes e detalhes da Toy Room | `assets/art/toy-room/stage1/`, `environment-sheet.png` | `RoomEnvironmentRenderer.js`, `ToyRoomPhase.js`, `assets/manifest.json`. `ToyRoomPhase.js` recorta objetos da prancha; não mover suas regiões sem atualizar os consumidores. |
+| Piso, paredes, tapetes e detalhes da Toy Room | `assets/art/toy-room/stage1/`, `environment-sheet.png` | `RoomEnvironmentRenderer.js`, `ToyRoomEnvironmentAssets.js`, `ToyRoomPhase.js`, `assets/manifest.json`. `ToyRoomEnvironmentAssets.js` resolve os recortes da prancha para a fase; não mover suas regiões sem atualizar os consumidores. |
 | Transporte e móveis da Toy Room | `stage2/`, `stage3/`, `chest-brinquedos-v1.png` | `ToyRenderer.js`, `RoomEnvironmentRenderer.js`, `ToyRoomPhase.js`; READMEs e prompts dentro das pastas stage1/2/3. |
 | Fada ilustrada | `assets/art/toy-room/stage3/illustrated-fairy-v1.png` | `src/js/entities/FairyRenderer.js` e `src/js/toy-room/ToyRoomEntities.js`. Mesma arte usada nas duas fases, com escalas de apresentação diferentes. |
 | Arena heroica e estruturas | Artes consumidas por `ArenaEnvironment.js` e `ToyRoomArenaBuilder.js` | A arena reaproveita a sala, com transformações, escala e câmera próprias. Revise esses módulos antes de substituir uma arte compartilhada; não presumir que cada estrutura possui um PNG exclusivo. |
@@ -21,7 +21,7 @@ Antes de editar, consulte `docs/diario-ia/CONTEXTO-ATUAL.md`. O [mapa completo](
 
 ## Como editar sem quebrar o jogo
 
-1. Identifique o arquivo e todos os usos no mapa. Uma imagem compartilhada pode afetar exploração, abertura e arena. Use `rg -n 'nome-da-chave|nome-do-arquivo' src assets scripts tests` para confirmar.
+1. Identifique o arquivo e todos os usos no mapa. Uma imagem compartilhada pode afetar exploração, abertura e arena. Use `rg -n 'nome-da-chave|nome-do-arquivo' src assets scripts` para confirmar.
 2. Preserve identidade da menina, paleta, materiais e assinatura gráfica aprovada. Use as artes atuais como referência; nomes parecidos e documentos históricos não certificam que um recurso antigo pode voltar ao jogo.
 3. Para substituição direta, mantenha caminho, formato, tamanho do canvas, transparência e enquadramento. Se precisar mudar isso, entregue também novos metadados: coordenadas de recorte, dimensões, âncoras dos pés/mãos e escalas de apresentação.
 4. Nos atlas, conserve espaçamento entre quadros e evite pixels fora do recorte. Em poses agachadas, articule o corpo mantendo proporções; não reduza a personagem inteira. Ataques exigem antecipação, trajetória, impacto e recuperação sincronizados com o código.
@@ -41,4 +41,10 @@ Para todas as mudanças: `npm run check-assets`, `npm run build` e testes releva
 
 Os testes de navegador exigem servidor e Chrome de QA nas portas documentadas nos scripts. `npm run test:toy-room:arena:browser` percorre exploração, transformação, combate, save/load e retorno. `npm run test:current-art:browser` cobre o percurso de plataformas e os elementos decorativos. Emulação Android não equivale a teste em aparelho físico.
 
-Entregue lista de arquivos, indicação de quais derivados foram reconstruídos, mudanças em dimensões/âncoras, testes executados com resultado e capturas das cenas afetadas. Registre separadamente aprovação técnica e aprovação humana.
+Registre no diário a lista de arquivos, derivados reconstruídos, mudanças em dimensões/âncoras, testes reais e limites. Capturas regeneráveis são produzidas temporariamente e identificadas por caminho/hash/tamanho; não versionar bitmaps de evidência. Registre aprovação humana separadamente da validação técnica.
+
+## Consumidores após a separação de responsabilidades
+
+`ToyRoomInitialEntities` mantém o catálogo e as medidas lógicas; `ToyRoomMovement` resolve colisões. O desenho da sala é composto por `ToyRoomSceneRenderer` com dados de `ToyRoomSceneFrame`, usando os renderizadores de móveis/brinquedos/atores existentes. `ToyRoomEnvironmentAssets` resolve os recortes. A espada e seus quadros são apresentados por `ToyRoomStoryRenderer`; mensagens de orientação, por `ToyRoomTutorialRenderer`. `ToyCarryPresentation` compõe a pose de transporte. Nenhuma dessas extrações cria autorização para mudar medidas físicas por uma alteração artística.
+
+Na arena, BattleAssets lê `battle/remediation/manifest.json` e substitui Hit por DamageSpriteFrames; ArenaPlayerRenderer carrega as poses próprias da menina. Consulte [arquitetura e proprietários](../ARQUITETURA.md), [guia da arena](../arena/GUIA-ARENA.md) e [comandos](../COMANDOS.md) antes de reconstruir derivados. Para descobrir fontes/testes que já não estão na árvore, use journal:search/journal:show.

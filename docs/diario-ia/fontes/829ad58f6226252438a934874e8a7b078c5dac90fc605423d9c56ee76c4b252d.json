@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "829ad58f6226252438a934874e8a7b078c5dac90fc605423d9c56ee76c4b252d",
+  "path": "refact/referencia-inicial/android/apoio-retorno-15.png",
+  "sha256": "59feab39f0029427eb82bc2da08dbe416b9895497a2b6c0c123e727877528c01",
+  "capturedAt": "2026-10-15T13:30:33.389670+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/apoio-retorno-15.png\", \"sha256\": \"9a07664e91e01b12ec098152a27a083877e2998ce5fde368c0ccdcc790b8516b\", \"bytes\": 186738, \"binaryRetained\": false}"
+}

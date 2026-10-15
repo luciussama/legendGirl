@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "778693c949c62e4c825ed5f802a7697bf8c5874bcb867428f08a9a5608b73c06",
+  "path": "refact/referencia-inicial/desktop/COLLECTING.png",
+  "sha256": "7e3c5d736768f70544dbb3e9ea233fc5f2e313dbb7dc8ff77b782f6b427c4cde",
+  "capturedAt": "2026-10-15T13:29:52.449639+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/COLLECTING.png\", \"sha256\": \"5baf93376e7e8b04817c8fbbd04024598f1cee4358c7d065873baa73f2a5dd78\", \"bytes\": 1125942, \"binaryRetained\": false}"
+}

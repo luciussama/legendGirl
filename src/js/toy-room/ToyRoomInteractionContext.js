@@ -1,0 +1,32 @@
+/** Contrato de interação: acessa o estado vigente sem copiar atores ou brinquedos. */
+export function createToyRoomInteractionContext(room) {
+  return {
+    get ACTION_DEBOUNCE_MS() { return room.ACTION_DEBOUNCE_MS; },
+    get ROOM_H() { return room.ROOM_H; },
+    get ROOM_W() { return room.ROOM_W; },
+    get arena() { return room.arena; },
+    get audio() { return room.audio; },
+    get battle() { return room.battle; },
+    get canInteract() { return room.canInteract; },
+    set canInteract(value) { room.canInteract = value; },
+    get furniture() { return room.furniture; },
+    isInputEnabled: (...args) => room.isInputEnabled(...args),
+    get isNearChest() { return room.isNearChest; },
+    set isNearChest(value) { room.isNearChest = value; },
+    get lastActionTime() { return room.lastActionTime; },
+    set lastActionTime(value) { room.lastActionTime = value; },
+    get organizedCount() { return room.organizedCount; },
+    set organizedCount(value) { room.organizedCount = value; },
+    get player() { return room.player; },
+    spawnConfetti: (...args) => room.spawnConfetti(...args),
+    spawnSparkles: (...args) => room.spawnSparkles(...args),
+    get story() { return room.story; },
+    get toys() { return room.toys; },
+    get tutorial() { return room.tutorial; },
+    get uiFeedback() { return room.uiFeedback; },
+    get victoryBannerActive() { return room.victoryBannerActive; },
+    set victoryBannerActive(value) { room.victoryBannerActive = value; },
+    get victoryBannerTimer() { return room.victoryBannerTimer; },
+    set victoryBannerTimer(value) { room.victoryBannerTimer = value; },
+  };
+}

@@ -1,6 +1,6 @@
 # Dicionário de bibliotecas e dependências
 
-Revisão: 06/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
+Revisão: 15/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
 
 ## Dependências npm diretas
 
@@ -8,11 +8,13 @@ São as três dependências declaradas. Não há devDependencies nem biblioteca 
 
 | Biblioteca | Intervalo / versão resolvida | Descrição resumida | Onde é usada |
 | --- | --- | --- | --- |
-| express | ^4.21.2 / 4.22.3 | Servidor HTTP e middleware estático. | server.js: express(), express.static() e listen(); desenvolvimento local. GitHub Pages serve arquivos sem esse servidor. |
+| express | ^4.21.2 / 4.22.3 | Servidor HTTP e middleware estático. | server.js: express(), express.static(), express.json(), rotas da revisão e listen(); desenvolvimento local. GitHub Pages serve arquivos sem esse servidor. |
 | jpeg-js | ^0.4.4 / 0.4.4 | Decodifica/codifica JPEG em JavaScript. | Scripts de geração/recriação de arte e verificação da personagem; não roda no navegador. |
 | pngjs | ^7.0.0 / 7.0.0 | Lê/escreve PNG e buffers de pixels. | Scripts de assets, capturas e verificações visuais; não roda no navegador. |
 
 ### Imports diretos por arquivo
+
+Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outros imports e são recuperadas do diário, sem permanecer na árvore principal.
 
 **express**
 
@@ -22,26 +24,22 @@ São as três dependências declaradas. Não há devDependencies nem biblioteca 
 
 - [scripts/generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js)
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
-- [scripts/test-official-character.js — acervo de IA](diario-ia/README.md)
+- [tools/sprite-review/catalog.js](../tools/sprite-review/catalog.js)
 
 **pngjs**
 
 - [scripts/build-dark-room-atlas.js](../scripts/build-dark-room-atlas.js)
 - [scripts/build-tall-dresser.js](../scripts/build-tall-dresser.js)
-- [scripts/capture-reviewed-dresser.js — acervo de IA](diario-ia/README.md)
-- [scripts/capture-reviewed-escape-transition.js — acervo de IA](diario-ia/README.md)
-- [scripts/capture-reviewed-music-box.js — acervo de IA](diario-ia/README.md)
-- [scripts/gameplay-inspection.js — acervo de IA](diario-ia/README.md)
+- [scripts/generate-battle-player-bounds.js](../scripts/generate-battle-player-bounds.js)
 - [scripts/generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js)
-- [scripts/generate-review-evidence.js — acervo de IA](diario-ia/README.md)
+- [scripts/prepare-battle-sprites.js](../scripts/prepare-battle-sprites.js)
+- [scripts/prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js)
+- [scripts/prepare-combat-remediation.js](../scripts/prepare-combat-remediation.js)
+- [scripts/prepare-damage-sprites.js](../scripts/prepare-damage-sprites.js)
+- [scripts/prepare-polish-sequence.js](../scripts/prepare-polish-sequence.js)
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
 - [scripts/refine-platform8.js](../scripts/refine-platform8.js)
-- [scripts/software-canvas.js — acervo de IA](diario-ia/README.md)
-- [scripts/test-audit-measure.js — acervo de IA](diario-ia/README.md)
-- [scripts/test-foot-contact.js — acervo de IA](diario-ia/README.md)
-- [scripts/test-official-character.js — acervo de IA](diario-ia/README.md)
-- [scripts/test-opening-sequence.js — acervo de IA](diario-ia/README.md)
-- [scripts/verify-visual-layers.js — acervo de IA](diario-ia/README.md)
+- [tools/sprite-review/catalog.js](../tools/sprite-review/catalog.js)
 
 ## Dependências transitivas
 
@@ -51,7 +49,7 @@ Entram automaticamente pelo Express. Não são imports diretos do código do jog
 | --- | --- | --- | --- |
 | accepts | 1.3.8 | Negociação de tipo, idioma e codificação HTTP. | express |
 | array-flatten | 1.1.1 | Achata arrays de handlers. | express |
-| body-parser | 1.20.8 | Decodifica corpos de requisições; não configurado diretamente pelo servidor atual. | express |
+| body-parser | 1.20.8 | Decodifica corpos; usado indiretamente por express.json na gravação da revisão local. | express |
 | bytes | 3.1.2 | Converte tamanhos em bytes. | body-parser, raw-body |
 | call-bind-apply-helpers | 1.0.2 | Auxilia chamadas e bindings de funções. | call-bound, dunder-proto, get-intrinsic |
 | call-bound | 1.0.4 | Obtém métodos nativos com binding seguro. | side-channel-map, side-channel-weakmap |
@@ -136,9 +134,9 @@ Não são instaladas pelo npm. Imports com ou sem prefixo node: referem-se ao ru
 | API | Descrição resumida | Onde é usada |
 | --- | --- | --- |
 | Canvas 2D / DOMMatrix | Desenho e matrizes. | game.js, renderizadores, câmera, iluminação, HUD e Toy Room. |
-| Web Audio API | Síntese, volume e reprodução. | audio.js, AudioController e cues das cinematics. |
-| DOM / CustomEvent / PointerEvent | Interface e eventos. | main.js, InputController, ToyRoomPhase e introdução. |
-| Gamepad API | Lê controle padrão. | InputController (Dark Room) e ToyRoomPhase.pollGamepad(). |
+| Web Audio API | Síntese, volume e reprodução. | audio.js, AudioController, ArenaAudioProfile, DamageAudio, EnemyMovementAudio e SwordAudio. |
+| DOM / CustomEvent / PointerEvent | Interface e eventos. | main.js, InputController, ToyRoomInputController, MobileUILayout e introdução. |
+| Gamepad API | Lê controle padrão. | InputController (quarto) e ToyRoomInputController; a fase conserva delegação pública. |
 | localStorage | Save/preferências locais. | CampaignProgress, OpeningSequence e integração de áudio/menu. |
 | requestAnimationFrame / performance.now / timers | Loop e relógios. | game.js, input, animações, cooldowns e UI; fonte de não determinismo nos comparadores. |
 | ResizeObserver / visualViewport / getBoundingClientRect | Layout e área disponível. | game.js, ViewportController, AndroidFraming e áreas seguras de diálogo. |
@@ -149,8 +147,14 @@ Não são instaladas pelo npm. Imports com ou sem prefixo node: referem-se ao ru
 | Ferramenta | Uso |
 | --- | --- |
 | Node.js 24 / npm | Versão configurada na CI; npm ci reproduz lockfile. |
-| Chrome + Chrome DevTools Protocol (CDP) | Scripts de navegador usam HTTP :9222, WebSocket e Runtime/Page/Input/Emulation; servidor local geralmente :3000. Chrome e abas são pré-condições, não pacotes npm. |
+| Chrome + Chrome DevTools Protocol (CDP) | Scripts de navegador usam HTTP :9222, WebSocket e Runtime/Page/Input/Emulation; aliases do diário iniciam servidor temporário em porta livre. Fontes manuais podem usar :3000. Chrome e abas são pré-condições, não pacotes npm. |
 | GitHub Actions | Pipeline deploy-pages.yml: checkout@v4, setup-node@v4, configure-pages@v5, upload-pages-artifact@v3 e deploy-pages@v4. |
 | GitHub Pages / rsync | Publicação estática em _site após validar recursos; rsync é ferramenta do runner. |
 
 As bibliotecas internas (GameState, renderizadores, contextos, controllers e cinematics) estão no [manual](MANUAL-DESENVOLVIMENTO.md) e na [referência de funções](REFERENCIA-METODOS.md); não são dependências externas. A documentação descreve a cópia local e não certifica publicação dessas mudanças.
+
+## Infraestrutura do diário e novas dependências internas
+
+Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é índice reconstruível e não é backend de campanha nem binário versionado.
+
+As extrações de contexto, movimento, efeitos, cena, tutorial, história e persistência não adicionaram pacotes npm. Todos os módulos internos e seus exports estão no [catálogo da arquitetura](ARQUITETURA.md); as automações e seus efeitos estão em [COMANDOS](COMANDOS.md). Os valores acima descrevem o lockfile do projeto, não a versão mais recente de cada pacote na internet.

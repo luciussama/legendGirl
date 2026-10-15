@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c21df4a0c57d2aca050c2b9738fb2534cc003bc3cd08ae1ab542fdc9a7c03799",
+  "path": "qa-execucoes/1598e9e803e842328cce9e816a0f0ee4/docs/qa/dialogos-normalizados/paisagem.png",
+  "sha256": "dff1393214dfcb9e8fa4555d4c2934f2112f3cb0a141a65017a4f0b8bd5dc297",
+  "capturedAt": "2026-10-15T18:15:17.717295+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/dialogos-normalizados/paisagem.png\", \"sha256\": \"42f53e486d196db3faf3ce9ff64ed6801cdb8be813f4e654fc00f56b9189e713\", \"bytes\": 404016, \"binaryRetained\": false}"
+}

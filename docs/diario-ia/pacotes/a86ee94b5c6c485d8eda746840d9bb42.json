@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "a86ee94b5c6c485d8eda746840d9bb42",
+  "date": "2026-10-15T18:21:27.289940+00:00",
+  "title": "QA temporário: test:debug-phases:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/a86ee94b5c6c485d8eda746840d9bb42.log",
+      "sourceId": "4cc5b03b03051ae119b536c1ddb99274db055866a546235e6845d082394c034c",
+      "sha256": "470bb0a6f7a50815a5854ee66751ff5de4e0605a8939a048ebc87b3e4906debb",
+      "bytes": 392,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a86ee94b5c6c485d8eda746840d9bb42/docs/qa/.DS_Store",
+      "sourceId": "0504b878703c7a7c815171a27a33cb32fc5782364458a16801f656a9a51702aa",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

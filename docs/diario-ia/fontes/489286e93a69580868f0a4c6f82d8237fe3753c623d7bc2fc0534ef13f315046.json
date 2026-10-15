@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "489286e93a69580868f0a4c6f82d8237fe3753c623d7bc2fc0534ef13f315046",
+  "path": "refact/referencia-inicial/android/PICKUP.png",
+  "sha256": "42c192002b8c99504f918ba9fe863193cd4046798d05709b0ee9aa292fff167b",
+  "capturedAt": "2026-10-15T13:30:33.374214+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/PICKUP.png\", \"sha256\": \"4d63df072b2ac88c5b7349799e0490ae5a837f0d2ab58c8f99c9323418b1f6d9\", \"bytes\": 950232, \"binaryRetained\": false}"
+}

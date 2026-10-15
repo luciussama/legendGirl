@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015-refact-etapa-3",
+  "sessionId": "20261015T132445-e026334e555f",
+  "type": "etapa",
+  "date": "2026-10-15T13:34:46.857885+00:00",
+  "title": "Refatoração sequencial — etapa 3",
+  "summary": "Renderização, HUD, seleção dos quadros e impacto visual extraídos para BattleRenderer.js. ToyRoomBattle mantém métodos públicos de delegação e exports compatíveis. Suíte e comparação exata desktop/Android aprovadas.",
+  "checks": [
+    "Percurso completo desktop comparado exatamente com a referência inicial: aprovado.",
+    "Percurso completo Android emulado comparado exatamente com a referência inicial: aprovado.",
+    "npm test: aprovado.",
+    "npm run check-assets, npm run build e git diff --check: aprovados."
+  ],
+  "sourceId": "0fdfd04620ae569de621d0a92bb4d5b76bfcd8a231da9bf5f608829a6fadc8c8"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "6116c24c983c417f894ebdf7bd037805",
+  "date": "2026-10-15T17:35:38.056525+00:00",
+  "title": "QA temporário: test:refact:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/6116c24c983c417f894ebdf7bd037805.log",
+      "sourceId": "7320f128d1ff70fbfc6cfa40251f0518ca5d40ce48c45c980a1a5744dd5f7d82",
+      "sha256": "488e867e95a40c6ddf9daaf564aecdf85eac644c63381bd267c59c1faf584e2a",
+      "bytes": 3693,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/6116c24c983c417f894ebdf7bd037805/docs/qa/.DS_Store",
+      "sourceId": "02f679c01f3fe33c02b2d5f69f6cea4d3e78945b681f44370aa60bd9020a43ea",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

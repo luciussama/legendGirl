@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "02e9dd09826e40f4929ab56999b2a00dcbf61e0a4959045d35569e1e438b333f",
+  "path": "refact/referencia-inicial/android/arena-dinosaur-entrada.png",
+  "sha256": "58ccbb07e0d2dec79c34ea29de2c943d82bc463b7257f16eb20857a39fd6c9a9",
+  "capturedAt": "2026-10-15T13:30:33.402705+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-dinosaur-entrada.png\", \"sha256\": \"b6d8d96c31ab674156409ed6e4d0f14e624abf7ffb1ea88193ca9388e6e3080f\", \"bytes\": 786735, \"binaryRetained\": false}"
+}

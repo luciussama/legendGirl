@@ -38,6 +38,12 @@ A arena passa a exigir leitura do adversário: Robô, dinossauro e Urso responde
 
 A espada ganhou 10% de alcance e um contato mais claro. O som diferencia o corte no ar, o acerto com peso e o ricochete contra a proteção. Faíscas e efeitos acompanham a lâmina; os acertos têm uma pausa e um tremor um pouco mais marcados. A menina continua precisando esquivar e aproveitar a abertura do inimigo, com os mesmos corações e recuo.
 
+## 15 de outubro de 2026 — organização da arquitetura e documentação
+
+A sala passou a separar controles, movimento, interação, história, tutorial, câmera, efeitos, desenho e persistência em componentes com responsabilidades explícitas. A integração conserva o fluxo da aventura e os mesmos recursos visuais. Os adaptadores consultam os atores e brinquedos atuais ao restaurar a campanha.
+
+A documentação tem agora um [catálogo da arquitetura e entidades](ARQUITETURA.md), uma [referência de métodos](REFERENCIA-METODOS.md) e um [catálogo de comandos](COMANDOS.md). O design inicial de batalha permanece identificado como origem histórica, com diferenças para a arena atual descritas no guia vigente. A separação de responsabilidades continua no combate, na arena e no coordenador principal; não foi declarada uma nova engine genérica.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

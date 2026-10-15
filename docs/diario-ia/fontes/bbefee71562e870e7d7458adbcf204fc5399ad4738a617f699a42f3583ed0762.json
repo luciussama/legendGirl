@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bbefee71562e870e7d7458adbcf204fc5399ad4738a617f699a42f3583ed0762",
+  "path": "refact/referencia-inicial/desktop/arena-robot-entrada.png",
+  "sha256": "94c7c6b9bdc2916ae5112cf9171fdc7c5928424147cf9cb5caa80a60ec54d0db",
+  "capturedAt": "2026-10-15T13:29:52.498313+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-robot-entrada.png\", \"sha256\": \"5851d6d698b1cd18b41c4b6a475b635ccbadb6eca55aec4d5b991215c47c3eb9\", \"bytes\": 1020947, \"binaryRetained\": false}"
+}

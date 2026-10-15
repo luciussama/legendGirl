@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "b42546ca81ddde6f415216e466d70b4c86384111100342877db2e8a175ffa02c",
+  "path": "checkpoints/refact/etapa22/depois/ToyRoomSceneFrame.js",
+  "sha256": "325ac72edd0ea11d11e0275bc5da6c1e5624ade858d2880abbb0a4fbe79641ad",
+  "capturedAt": "2026-10-15T18:13:42.729562+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "22"
+  },
+  "encoding": "utf-8",
+  "content": "/** Dados e callbacks do quadro; nenhuma referência à fase é entregue ao desenho. */\nexport function createToyRoomSceneFrame(room) {\n  return {\n    ROOM_H: room.ROOM_H,\n    ROOM_W: room.ROOM_W,\n    actionBtnPressed: room.actionBtnPressed,\n    assets: room.assets,\n    cameraX: room.cameraX,\n    cameraY: room.cameraY,\n    canInteract: room.canInteract,\n    canvas: room.canvas,\n    confetti: room.confetti,\n    ctx: room.ctx,\n    environmentChest: room.environmentChest,\n    environmentDetails: room.environmentDetails,\n    environmentDoor: room.environmentDoor,\n    environmentFloorTile: room.environmentFloorTile,\n    environmentRug: room.environmentRug,\n    environmentTable: room.environmentTable,\n    environmentTeddy: room.environmentTeddy,\n    environmentTrain: room.environmentTrain,\n    fairy: room.fairy,\n    footstepPuffs: room.footstepPuffs,\n    furniture: room.furniture,\n    getCameraFrame: () => room.getCameraFrame(),\n    introAlpha: room.introAlpha,\n    introBannerTimer: room.introBannerTimer,\n    isNearChest: room.isNearChest,\n    isTouchDevice: room.isTouchDevice,\n    organizedCount: room.organizedCount,\n    player: room.player,\n    sparkles: room.sparkles,\n    story: room.story,\n    sunMotes: room.sunMotes,\n    touchState: room.touchState,\n    toys: room.toys,\n    tutorial: room.tutorial,\n    victoryBannerActive: room.victoryBannerActive,\n    victoryBannerTimer: room.victoryBannerTimer,\n  };\n}\n"
+}

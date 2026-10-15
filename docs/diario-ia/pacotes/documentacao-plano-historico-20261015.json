@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "documentacao-plano-historico-20261015",
+  "date": "2026-10-15T19:18:35.226933+00:00",
+  "title": "Plano inicial de desacoplamento preservado como histórico, substituído pela arquitetura documentada atual",
+  "files": [
+    {
+      "path": ".aistudio/artifacts/brain/789e37c8-36a2-41b6-a246-c82f47867f2c/implementation_plan.md",
+      "sourceId": "c1edccc5e2942cd60c0eed153dcab85d639145b0b04f400043a54be795d0d659",
+      "sha256": "0afc1103c92a1bbfdb16ea789b9aaa84555a824e31e77a346ea643bbd3b8e2d0",
+      "bytes": 13500,
+      "metadataOnly": false
+    },
+    {
+      "path": ".aistudio/artifacts/brain/789e37c8-36a2-41b6-a246-c82f47867f2c/implementation_plan.md.metadata.json",
+      "sourceId": "da1df30f8f6874a391cb1f4a00465b70dfe366b0c9ef7d6974277611cf46fe38",
+      "sha256": "dca0ac601ae9cfd407ca402ac61bca685e1d5e2e76390bde67b086d7c5a510f9",
+      "bytes": 396,
+      "metadataOnly": false
+    }
+  ]
+}

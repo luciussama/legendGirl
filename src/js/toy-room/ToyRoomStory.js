@@ -1,6 +1,8 @@
-import { dialogueRenderer } from '../ui/DialogueRenderer.js';
-import { getMobileUILayout } from '../ui/MobileUILayout.js';
-import { renderPoeticNarration } from '../narrative/PoeticNarrator.js';
+import {
+  createStoryAttackFrames, renderStoryWorldObject, renderStoryAttackSprite,
+  renderStoryHeldObject, renderStoryBeat
+} from './ToyRoomStoryRenderer.js';
+export { drawToySword } from './ToyRoomStoryRenderer.js';
 import { toyGuideBlend } from '../state/GameDifficulty.js';
 
 const FLOOR_SPAWN_POINTS = Object.freeze(
@@ -27,8 +29,6 @@ const RETURN_DIALOGUE_BEATS = Object.freeze([
 ]);
 const SWORD_PICKUP_DURATION = 300;
 const SWORD_ATTACK_DURATION = 12;
-const SWORD_ATTACK_FRAME_SIZE = { width: 144, height: 192, y: 288 };
-const SWORD_ATTACK_FRAME_COUNT = 8;
 
 export const createToyRoomStoryState = () => ({
   recurrenceActive: false,
@@ -45,54 +45,6 @@ export const createToyRoomStoryState = () => ({
 });
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
-const key = point => `${point.x},${point.y}`;
-
-function isFree(room, point, radius = 24) {
-  const resolved = room.resolveCollisions(point.x, point.y, radius);
-  return resolved.x === point.x && resolved.y === point.y;
-}
-
-function reachableFloor(room) {
-  const nodes = [];
-  for (let x = 120; x <= room.ROOM_W - 120; x += 40) {
-    for (let y = 320; y <= room.ROOM_H - 120; y += 40) {
-      const point = { x, y };
-      if (isFree(room, point)) nodes.push(point);
-    }
-  }
-
-  const nodesByKey = new Map(nodes.map(point => [key(point), point]));
-  const start = nodes.reduce((nearest, point) =>
-    !nearest || distance(point, room.player) < distance(nearest, room.player) ? point : nearest, null);
-  if (!start) return [];
-
-  const visited = new Set([key(start)]);
-  const queue = [start];
-  for (let index = 0; index < queue.length; index++) {
-    const point = queue[index];
-    for (const [dx, dy] of [[40, 0], [-40, 0], [0, 40], [0, -40]]) {
-      const next = { x: point.x + dx, y: point.y + dy };
-      const nextKey = key(next);
-      if (!nodesByKey.has(nextKey) || visited.has(nextKey)) continue;
-      if (![0.25, 0.5, 0.75].every(amount =>
-        isFree(room, { x: point.x + dx * amount, y: point.y + dy * amount }))) continue;
-      visited.add(nextKey);
-      queue.push(next);
-    }
-  }
-  return queue;
-}
-
-function getWorldViewport(room) {
-  const frame = room.getCameraFrame();
-  return {
-    left: room.cameraX - frame.x / frame.zoom,
-    top: room.cameraY - frame.y / frame.zoom,
-    right: room.cameraX + (room.canvas.width - frame.x) / frame.zoom,
-    bottom: room.cameraY + (room.canvas.height - frame.y) / frame.zoom
-  };
-}
-
 function outsideViewport(point, viewport, margin = 72) {
   return point.x + margin < viewport.left || point.x - margin > viewport.right ||
     point.y + margin < viewport.top || point.y - margin > viewport.bottom;
@@ -107,76 +59,39 @@ function getBeat(beats, elapsed) {
   return null;
 }
 
-export function drawToySword(ctx, x, y, angle, scale = 1) {
-  ctx.save();
-  ctx.translate(x, y);
-  ctx.rotate(angle);
-  ctx.scale(scale, scale);
-  ctx.lineJoin = 'round';
-  ctx.strokeStyle = '#765139';
-  ctx.lineWidth = 2;
-  ctx.fillStyle = '#e8c990';
-  ctx.beginPath();
-  ctx.moveTo(-4, 1);
-  ctx.lineTo(-5, -25);
-  ctx.lineTo(0, -41);
-  ctx.lineTo(5, -25);
-  ctx.lineTo(4, 1);
-  ctx.closePath();
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle = '#83c5c8';
-  ctx.beginPath();
-  ctx.roundRect(-12, -2, 24, 5, 2);
-  ctx.fill();
-  ctx.stroke();
-  ctx.fillStyle = '#c77768';
-  ctx.beginPath();
-  ctx.roundRect(-3, 2, 6, 12, 2);
-  ctx.fill();
-  ctx.stroke();
-  ctx.restore();
-}
-
 /** Coordena a recorrência dos brinquedos e o arco narrativo da espada de brinquedo. */
 export class ToyRoomStory {
-  constructor(room) {
-    this.room = room;
+  constructor({ world, actors, exploration, flow, controls, audio, presentation }) {
+    this.world = world;
+    this.actors = actors;
+    this.exploration = exploration;
+    this.flow = flow;
+    this.controls = controls;
+    this.audio = audio;
+    this.presentation = presentation;
     this.state = createToyRoomStoryState();
-    this.attackFrames = Array.from({ length: SWORD_ATTACK_FRAME_COUNT }, (_, index) =>
-      room.assets?.getRegion('toy-room-sword-attack-sheet', {
-        x: index * SWORD_ATTACK_FRAME_SIZE.width,
-        y: SWORD_ATTACK_FRAME_SIZE.y,
-        width: SWORD_ATTACK_FRAME_SIZE.width,
-        height: SWORD_ATTACK_FRAME_SIZE.height
-      }) || null);
+    this.attackFrames = createStoryAttackFrames(presentation.assets);
     this.reachablePoints = [];
     this.lastViewport = null;
     this.refreshReachablePoints();
   }
 
   refreshReachablePoints() {
-    const reachable = reachableFloor(this.room);
+    const reachable = this.world.reachableFloor();
     this.reachablePoints = FLOOR_SPAWN_POINTS.filter(point =>
-      isFree(this.room, point, 48) &&
+      this.world.isFree(point, 48) &&
       reachable.some(node => distance(node, point) <= 30));
   }
 
   recordViewport(frame) {
-    const room = this.room;
-    this.lastViewport = {
-      left: room.cameraX - frame.x / frame.zoom,
-      top: room.cameraY - frame.y / frame.zoom,
-      right: room.cameraX + (room.canvas.width - frame.x) / frame.zoom,
-      bottom: room.cameraY + (room.canvas.height - frame.y) / frame.zoom
-    };
+    this.lastViewport = this.world.viewport(frame);
   }
 
   onToyStored(toy) {
     const state = this.state;
     if (!state.recurrenceActive) {
       if (state.investigationStage !== 'COLLECTING') return;
-      if (this.room.toys.filter(item => !item.isOrganized).length <= 2) {
+      if (this.exploration.toys.filter(item => !item.isOrganized).length <= 2) {
         state.recurrenceActive = true;
       }
       return;
@@ -212,7 +127,7 @@ export class ToyRoomStory {
     this.updateReturns(dt);
     if (state.investigationStage === 'COLLECTING') {
       if (state.returnedToyCount >= 4 && state.returnDialogueElapsed >= 360 &&
-        !this.room.tutorial.active) {
+        !this.flow.tutorialActive) {
         if (this.beginInvestigation()) {
           this.updateInvestigation(dt);
           return true;
@@ -229,52 +144,46 @@ export class ToyRoomStory {
   updateReturns(dt) {
     const state = this.state;
     if (!state.recurrenceActive || !state.pendingReturns.length ||
-      this.room.tutorial.active || this.room.introAlpha > 0.02 || this.room.introBannerTimer > 0) return;
+      this.flow.tutorialActive || this.flow.introductionActive) return;
 
     const pending = state.pendingReturns[0];
     pending.remaining = Math.max(0, pending.remaining - dt);
     if (pending.remaining > 0) return;
 
-    const currentViewport = getWorldViewport(this.room);
+    const currentViewport = this.world.viewport();
     const candidates = this.reachablePoints.filter(point =>
       outsideViewport(point, currentViewport) &&
       (!this.lastViewport || outsideViewport(point, this.lastViewport)) &&
-      distance(point, this.room.player) > 160 &&
-      !this.room.toys.some(toy => !toy.isOrganized && distance(point, toy) < 144) &&
-      !this.room.furniture.some(item => {
+      distance(point, this.actors.player) > 160 &&
+      !this.exploration.toys.some(toy => !toy.isOrganized && distance(point, toy) < 144) &&
+      !this.exploration.furniture.some(item => {
         const nearestX = Math.max(item.x, Math.min(point.x, item.x + item.w));
         const nearestY = Math.max(item.y, Math.min(point.y, item.y + item.h));
         return Math.hypot(point.x - nearestX, point.y - nearestY) < 72;
       }));
 
     if (!candidates.length) return;
-    const toy = this.room.toys.find(item => item.id === pending.toyId);
+    const toy = this.exploration.toys.find(item => item.id === pending.toyId);
     if (!toy || !toy.isOrganized) {
       state.pendingReturns.shift();
       return;
     }
 
     const point = candidates[Math.floor(Math.random() * candidates.length)];
-    toy.x = point.x;
-    toy.y = point.y;
-    toy.isOrganized = false;
-    toy.isCarried = false;
-    toy.returnGeneration = (toy.returnGeneration || 0) + 1;
-    toy.bounceOffset = 0;
-    this.room.organizedCount = this.room.toys.filter(item => item.isOrganized).length;
+    this.exploration.returnToy(toy, point);
     state.pendingReturns.shift();
   }
 
   beginInvestigation() {
-    const room = this.room;
+    const { player } = this.actors;
     this.refreshReachablePoints();
     const candidates = this.reachablePoints.filter(point =>
-      distance(point, room.player) > 240 &&
-      !room.toys.some(toy => !toy.isOrganized && distance(point, toy) < 96));
+      distance(point, player) > 240 &&
+      !this.exploration.toys.some(toy => !toy.isOrganized && distance(point, toy) < 96));
     if (!candidates.length) return false;
 
     const sword = candidates.reduce((furthest, point) =>
-      !furthest || distance(point, room.player) > distance(furthest, room.player) ? point : furthest, null);
+      !furthest || distance(point, player) > distance(furthest, player) ? point : furthest, null);
     this.state.investigationStage = 'INVESTIGATION';
     this.state.investigationElapsed = 0;
     this.state.sword = { ...sword, visible: false };
@@ -283,7 +192,7 @@ export class ToyRoomStory {
   }
 
   updateInvestigation(dt) {
-    const room = this.room;
+    const { player, fairy } = this.actors;
     const state = this.state;
     state.investigationElapsed = Math.min(INVESTIGATION_DURATION,
       state.investigationElapsed + dt);
@@ -295,7 +204,7 @@ export class ToyRoomStory {
       return;
     }
 
-    const toys = room.toys.filter(toy => !toy.isOrganized && !toy.isCarried);
+    const toys = this.exploration.toys.filter(toy => !toy.isOrganized && !toy.isCarried);
     const focus = beat.focus === 'sword' || !toys.length
       ? state.sword
       : toys[Math.floor(state.investigationElapsed / 180) % toys.length];
@@ -306,61 +215,43 @@ export class ToyRoomStory {
       const targetX = focus.x + Math.cos(orbit) * 45;
       const targetY = focus.y - 60 + Math.sin(orbit) * 22;
       const blend = 1 - Math.pow(0.97, dt);
-      room.fairy.x += (targetX - room.fairy.x) * blend;
-      room.fairy.y += (targetY - room.fairy.y) * blend;
+      fairy.x += (targetX - fairy.x) * blend;
+      fairy.y += (targetY - fairy.y) * blend;
 
     }
-    room.fairy.flutterTime += 0.6 * dt;
-    room.player.vx = 0;
-    room.player.vy = 0;
-    room.player.isMoving = false;
+    fairy.flutterTime += 0.6 * dt;
+    player.vx = 0;
+    player.vy = 0;
+    player.isMoving = false;
   }
 
   updateSwordGuide() {
-    const room = this.room;
+    const { fairy, difficulty } = this.actors;
     const target = this.state.sword;
     if (!target) return;
-    room.fairy.targetX = target.x;
-    room.fairy.targetY = target.y - 80;
-    const blend = toyGuideBlend(room.gameDifficulty, 1);
-    room.fairy.x += (room.fairy.targetX - room.fairy.x) * blend;
-    room.fairy.y += (room.fairy.targetY - room.fairy.y) * blend;
+    fairy.targetX = target.x;
+    fairy.targetY = target.y - 80;
+    const blend = toyGuideBlend(difficulty, 1);
+    fairy.x += (fairy.targetX - fairy.x) * blend;
+    fairy.y += (fairy.targetY - fairy.y) * blend;
   }
 
   updateAfterMovement() {
     const state = this.state;
     if (state.investigationStage !== 'SEEKING_SWORD' || !state.sword ||
-      distance(this.room.player, state.sword) > this.room.player.radius + 16) return;
+      distance(this.actors.player, state.sword) > this.actors.player.radius + 16) return;
 
-    const carried = this.room.player.carriedItem;
-    if (carried) {
-      const point = this.room.resolveCollisions(this.room.player.x, this.room.player.y, 32);
-      carried.x = point.x;
-      carried.y = point.y;
-      carried.isCarried = false;
-      this.room.player.carriedItem = null;
-    }
+    this.exploration.releaseCarriedToy();
     state.investigationStage = 'PICKUP';
     state.swordPickupElapsed = 0;
     state.sword.visible = false;
     this.clearInput();
-    this.room.audio?.playPickUpSound?.();
-    this.room.audio?.setToyRoomMusicTrack?.('sword');
+    this.audio.playPickup();
+    this.audio.useSwordTrack();
   }
 
   clearInput() {
-    const room = this.room;
-    // A fase real também libera a captura; mantém compatibilidade com salas de teste.
-    room.clearInput?.();
-    room.keysDown = {};
-    room.touchState.active = false;
-    room.touchState.pointerId = null;
-    room.touchState.vectorX = 0;
-    room.touchState.vectorY = 0;
-    room.player.vx = 0;
-    room.player.vy = 0;
-    room.player.isMoving = false;
-    room.actionBtnPressed = false;
+    this.controls.clear();
   }
 
   get inputLocked() {
@@ -376,7 +267,7 @@ export class ToyRoomStory {
     const state = this.state;
     if (!state.swordEquipped || state.attackElapsed > 0) return false;
     state.attackElapsed = SWORD_ATTACK_DURATION;
-    state.attackDirection = this.room.player.facing === 'left' ? -1 : 1;
+    state.attackDirection = this.actors.player.facing === 'left' ? -1 : 1;
     return true;
   }
 
@@ -392,103 +283,60 @@ export class ToyRoomStory {
     // a fada pode guiar livremente sem deslocar o enquadramento da menina.
     if (this.state.investigationStage === 'INVESTIGATION' && this.state.sword?.visible &&
         getBeat(INVESTIGATION_BEATS, this.state.investigationElapsed)?.reveal) {
-      return this.room.fairy;
+      return this.actors.fairy;
     }
-    return this.room.player;
+    return this.actors.player;
   }
 
   renderWorldObject(ctx) {
-    const state = this.state;
-    if (state.sword?.visible) drawToySword(ctx, state.sword.x, state.sword.y, 0.6, 0.8);
+    return renderStoryWorldObject(ctx, this.state);
   }
 
   renderAttackSprite(ctx) {
-    if (!this.state.swordEquipped || this.state.attackElapsed <= 0) return false;
-    const room = this.room;
-    const progress = 1 - this.state.attackElapsed / SWORD_ATTACK_DURATION;
-    const frameIndex = Math.min(SWORD_ATTACK_FRAME_COUNT - 1,
-      Math.floor(progress * SWORD_ATTACK_FRAME_COUNT));
-    const frame = this.attackFrames[frameIndex];
-    if (!frame) return false;
-
-    const width = 72;
-    const height = 96;
-    ctx.save();
-    ctx.translate(room.player.x, 0);
-    if (this.state.attackDirection < 0) ctx.scale(-1, 1);
-    ctx.drawImage(frame, -width / 2, room.player.y + 28 - height, width, height);
-    ctx.restore();
-    return true;
+    return renderStoryAttackSprite(ctx, {
+      state: this.state, player: this.actors.player, attackFrames: this.attackFrames,
+      attackDuration: SWORD_ATTACK_DURATION
+    });
   }
 
   renderHeldObject(ctx) {
-    if (!this.state.swordEquipped && this.state.investigationStage !== 'PICKUP') return;
-    if (this.renderAttackSprite(ctx)) return;
-    const room = this.room;
-
-    const elapsed = this.state.attackElapsed > 0
-      ? SWORD_ATTACK_DURATION - this.state.attackElapsed
-      : 0;
-    const direction = this.state.swordEquipped
-      ? (this.state.attackElapsed > 0
-        ? (this.state.attackDirection < 0 ? Math.PI : 0) +
-          (elapsed / SWORD_ATTACK_DURATION - 0.5) * 1.7 * this.state.attackDirection
-        : (room.player.facing === 'left' ? Math.PI : 0))
-      : -Math.PI / 2;
-    const handX = room.player.x + Math.cos(direction) * 24;
-    const handY = room.player.y - 13 + Math.sin(direction) * 12;
-    const shoulderX = room.player.x + Math.cos(direction) * 9;
-    const shoulderY = room.player.y - 13 + Math.sin(direction) * 5;
-
-    ctx.save();
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = '#95613f';
-    ctx.lineWidth = 9;
-    ctx.beginPath();
-    ctx.moveTo(shoulderX, shoulderY);
-    ctx.lineTo(handX, handY);
-    ctx.stroke();
-    ctx.strokeStyle = '#e7b58b';
-    ctx.lineWidth = 6;
-    ctx.stroke();
-    drawToySword(ctx, handX, handY, direction + Math.PI / 2, 0.72);
-    ctx.restore();
+    return renderStoryHeldObject(ctx, {
+      state: this.state, player: this.actors.player, attackFrames: this.attackFrames,
+      attackDuration: SWORD_ATTACK_DURATION
+    });
   }
 
-  renderNarrative(ctx, canvas) {
+  narrativeBeat() {
     const state = this.state;
     if (state.returnDialogueElapsed >= 0 && state.returnDialogueElapsed < 360 &&
       state.investigationStage === 'COLLECTING') {
       const beat = RETURN_DIALOGUE_BEATS.find(item =>
         state.returnDialogueElapsed >= item.start && state.returnDialogueElapsed < item.end);
-      if (beat) this.renderStoryBeat(ctx, canvas, beat);
+      if (beat) return beat;
     }
 
     if (state.investigationStage === 'INVESTIGATION') {
       const beat = getBeat(INVESTIGATION_BEATS, state.investigationElapsed);
-      if (beat?.text) {
-        this.renderStoryBeat(ctx, canvas, beat);
-      }
+      if (beat?.text) return beat;
     } else if (state.investigationStage === 'PICKUP') {
       const text = state.swordPickupElapsed < 120
         ? 'Ela não estava procurando por aquilo.'
         : 'Mas algumas coisas parecem encontrar a gente primeiro.';
-      renderPoeticNarration(ctx, canvas, text, { separateScene: true });
+      return { text };
     }
+    return null;
+  }
+
+  renderNarrative(ctx, canvas) {
+    const beat = this.narrativeBeat();
+    if (beat) this.renderStoryBeat(ctx, canvas, beat);
   }
 
   renderStoryBeat(ctx, canvas, beat) {
-    if (!beat.speaker) {
-      renderPoeticNarration(ctx, canvas, beat.text, { separateScene: true });
-      return;
-    }
-    const layout = this.room.mobilePresentation ? getMobileUILayout(canvas) : null;
-    // Não reprojeta a cena: os controles mantêm as coordenadas usadas pelo input.
-    const bottom = layout ? layout.action.y - layout.action.radius - 12 * layout.action.scale : undefined;
-    dialogueRenderer.renderDialogue(ctx, canvas, {
-      speaker: beat.speaker === 'NANDA' ? 'fairy' : 'baby',
-      speakerName: beat.speaker, text: beat.text, tick: this.state.investigationElapsed
-    }, { assets: this.room.assets, separateScene: false, bottom });
+    return renderStoryBeat(ctx, canvas, beat, {
+      mobile: this.presentation.mobile, assets: this.presentation.assets,
+      tick: this.state.investigationElapsed
+    });
   }
 
   restore(saved) {
@@ -497,9 +345,9 @@ export class ToyRoomStory {
       ? this.state.pendingReturns
       : [];
     if (this.state.swordEquipped || this.state.investigationStage === 'PICKUP') {
-      this.room.audio?.setToyRoomMusicTrack?.('sword');
+      this.audio.useSwordTrack();
     }
-    if (!saved && this.room.toys.filter(toy => !toy.isOrganized).length <= 2) {
+    if (!saved && this.exploration.toys.filter(toy => !toy.isOrganized).length <= 2) {
       this.state.recurrenceActive = true;
     }
     this.refreshReachablePoints();

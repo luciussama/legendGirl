@@ -1,0 +1,150 @@
+{
+  "revisao": "2026-10-15",
+  "finalidade": "Referência documental do código; não é carregada pelo runtime e não autoriza alteração de balanceamento.",
+  "fontes": [
+    "src/js/toy-room/BattleConfig.js",
+    "src/js/toy-room/ArenaPlayerController.js",
+    "src/js/toy-room/ArenaEnemies.js",
+    "src/js/toy-room/ArenaCombatRules.js"
+  ],
+  "perfis": {
+    "BATTLE_ORDER": [
+      "train",
+      "robot",
+      "dinosaur",
+      "bear"
+    ],
+    "BATTLE_TUNING": {
+      "left": 160,
+      "right": 1440,
+      "ground": 690,
+      "speed": 4,
+      "jumpSpeed": 8.5,
+      "gravity": 0.3,
+      "swordRange": 112,
+      "swordCooldown": 26,
+      "windup": 54,
+      "active": 18,
+      "recovery": 36,
+      "immunity": 48,
+      "hitRecovery": 28,
+      "death": 60
+    },
+    "BATTLE_TRANSITION_DURATION": 120,
+    "ARENA_TUNING": {
+      "left": 160,
+      "right": 1440,
+      "ground": 690,
+      "speed": 6.2,
+      "jumpSpeed": 11,
+      "gravity": 0.32,
+      "swordRange": 209,
+      "swordCooldown": 36,
+      "windup": 54,
+      "active": 18,
+      "recovery": 36,
+      "immunity": 48,
+      "hitRecovery": 24,
+      "death": 60,
+      "swordContactScale": 1.1,
+      "attackScale": 1.8,
+      "swordDuration": 18,
+      "swordWindup": 6,
+      "swordActive": 6,
+      "attackMoveScale": 0.2,
+      "recoveryMoveScale": 0.55,
+      "blockRecovery": 48,
+      "knockbackDistance": 173.6
+    },
+    "ARENA_ENEMIES": {
+      "train": {
+        "title": "Locomotiva de Cerco",
+        "role": "cerco",
+        "hp": 3,
+        "speed": 3,
+        "chargeSpeed": 7,
+        "color": "#e8a660",
+        "idleTime": 45,
+        "retreatTime": 30,
+        "recovery": 36,
+        "bodyWidth": 340,
+        "bodyHeight": 225,
+        "stepTime": 18
+      },
+      "robot": {
+        "title": "Sentinela de Lata",
+        "role": "sentinela",
+        "hp": 4,
+        "speed": 3.8,
+        "chargeSpeed": 7.5,
+        "color": "#73d9d4",
+        "idleTime": 30,
+        "retreatTime": 24,
+        "recovery": 32,
+        "evadeSpeed": 14,
+        "evadeTime": 8,
+        "evadeCooldown": 150,
+        "bodyWidth": 140,
+        "bodyHeight": 250,
+        "stepTime": 16
+      },
+      "dinosaur": {
+        "title": "Dragão de Brinquedo",
+        "role": "dragao",
+        "hp": 4,
+        "speed": 4.8,
+        "chargeSpeed": 8.2,
+        "color": "#9bcf75",
+        "idleTime": 20,
+        "retreatTime": 18,
+        "recovery": 28,
+        "evadeSpeed": 11.5,
+        "evadeTime": 8,
+        "evadeCooldown": 120,
+        "bodyWidth": 250,
+        "bodyHeight": 250,
+        "stepTime": 12
+      },
+      "bear": {
+        "title": "Guardião de Pelúcia",
+        "role": "guardiao",
+        "hp": 8,
+        "speed": 5.4,
+        "chargeSpeed": 9,
+        "color": "#f3cf8b",
+        "idleTime": 12,
+        "retreatTime": 14,
+        "recovery": 24,
+        "evadeSpeed": 12.5,
+        "evadeTime": 8,
+        "evadeCooldown": 95,
+        "bodyWidth": 235,
+        "bodyHeight": 325,
+        "stepTime": 14
+      }
+    },
+    "ARENA_SWORD": {
+      "duration": 18,
+      "windup": 6,
+      "active": 6,
+      "cooldown": 36,
+      "blockRecovery": 48
+    }
+  },
+  "hpMeninaInicialMaximo": 3,
+  "hpInimigosLegado": {
+    "train": 2,
+    "robot": 2,
+    "dinosaur": 2,
+    "bear": 4
+  },
+  "fasesArena": [
+    "IDLE",
+    "TRANSFORMING",
+    "COMBAT",
+    "RETURNING",
+    "COMPLETE"
+  ],
+  "furiaUrsoArena": "HP positivo menor ou igual à metade arredondada para cima; mantém flag após cura.",
+  "referenciaHumana": "GUIA-ARENA.md"
+}

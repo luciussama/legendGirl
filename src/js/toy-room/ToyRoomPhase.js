@@ -1,4 +1,17 @@
-import { getMobileUILayout, hitArenaMobileControl, isActionControlHit } from '../ui/MobileUILayout.js';
+import { createToyRoomTutorialContext } from './ToyRoomTutorialContext.js';
+import { ToyRoomPersistence } from './ToyRoomPersistence.js';
+import { createToyRoomPersistenceContext } from './ToyRoomPersistenceContext.js';
+import { createToyRoomInitialEntities } from './ToyRoomInitialEntities.js';
+import { renderToyRoomScene } from './ToyRoomSceneRenderer.js';
+import { createToyRoomSceneFrame } from './ToyRoomSceneFrame.js';
+import { updateToyRoomCamera, getToyRoomCameraFrame } from './ToyRoomCamera.js';
+import { updateToyRoomCompanion } from './ToyRoomCompanion.js';
+import { spawnToyRoomSparkles, spawnToyRoomConfetti, initializeToyRoomSunMotes, updateToyRoomEffects } from './ToyRoomEffects.js';
+import { ToyRoomInteraction } from './ToyRoomInteraction.js';
+import { createToyRoomInteractionContext } from './ToyRoomInteractionContext.js';
+import { updateToyRoomMovement, resolveToyRoomCollisions } from './ToyRoomMovement.js';
+import { ToyRoomInputController } from './ToyRoomInputController.js';
+import { createToyRoomInputContext } from './ToyRoomInputContext.js';
 /**
  * ToyRoomPhase.js
  * Controlador principal da Fase da Sala de Brinquedos (estilo Top-Down 2D Legend of Mana).
@@ -6,15 +19,12 @@ import { getMobileUILayout, hitArenaMobileControl, isActionControlHit } from '..
  * resolução de colisões, mecânicas de pegar e soltar, efeitos de partículas e controles responsivos.
  */
 
-import { getMobileZoomFrame, isMobileDevice } from '../controllers/MobileZoom.js';
-import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
-import { toyRenderer } from './ToyRenderer.js';
-import { toyRoomEntities } from './ToyRoomEntities.js';
-import { toyRoomUI } from './ToyRoomUI.js';
-import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
-import { nearestToyGuide } from './ToyRoomOrientation.js';
-import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
+import { isMobileDevice } from '../controllers/MobileZoom.js';
+import { createToyRoomEnvironmentAssets } from './ToyRoomEnvironmentAssets.js';
+import { ToyRoomTutorial } from './ToyRoomTutorial.js';
+import { normalizeDifficulty } from '../state/GameDifficulty.js';
 import { ToyRoomStory } from './ToyRoomStory.js';
+import { createToyRoomStoryContext } from './ToyRoomStoryContext.js';
 import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
 import { ToyRoomBattle } from './ToyRoomBattle.js';
 
@@ -29,55 +39,7 @@ export class ToyRoomPhase {
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
     this.isInputEnabled = options.isInputEnabled || (() => true);
-    this.environmentFloorTile = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 27, y: 151, width: 186, height: 48
-    });
-    this.environmentTeddy = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 424, y: 44, width: 86, height: 120
-    });
-    this.environmentRug = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 39, y: 355, width: 291, height: 247
-    });
-    this.environmentDoor = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 304, y: 158, width: 88, height: 136
-    });
-    this.environmentChest = this.assets?.get('toy-room-chest-brinquedos-v1') || null;
-    this.environmentTrain = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 689, y: 76, width: 116, height: 88
-    });
-    this.environmentTable = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 548, y: 44, width: 137, height: 119
-    });
-    this.environmentDetails = this.assets ? [
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 832, y: 482, width: 45, height: 45 }),
-        x: 1350,
-        y: 470,
-        width: 34,
-        height: 34
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 878, y: 482, width: 54, height: 45 }),
-        x: 1430,
-        y: 615,
-        width: 42,
-        height: 34
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 839, y: 555, width: 50, height: 52 }),
-        x: 1180,
-        y: 930,
-        width: 42,
-        height: 44
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 1038, y: 561, width: 66, height: 63 }),
-        x: 220,
-        y: 520,
-        width: 54,
-        height: 52
-      }
-    ] : [];
+    Object.assign(this, createToyRoomEnvironmentAssets(this.assets));
 
     // Dimensões da Sala
     this.ROOM_W = 1600;
@@ -99,216 +61,9 @@ export class ToyRoomPhase {
     this.confetti = [];
     this.footstepPuffs = [];
 
-    for (let i = 0; i < 45; i++) {
-      this.sunMotes.push({
-        x: Math.random() * this.ROOM_W,
-        y: Math.random() * this.ROOM_H,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: -0.15 - Math.random() * 0.25,
-        radius: 1.2 + Math.random() * 2.2,
-        alpha: 0.2 + Math.random() * 0.5,
-        phase: Math.random() * Math.PI * 2
-      });
-    }
+    initializeToyRoomSunMotes(this.sunMotes, this.ROOM_W, this.ROOM_H);
 
-    // Personagem Jogável (Menininha)
-    this.player = {
-      x: 280,
-      y: 640,
-      vx: 0,
-      vy: 0,
-      speed: 3.8,
-      radius: 20,
-      direction: 'down',
-      facing: 'right',
-      facingAngle: Math.PI / 2,
-      animTime: 0,
-      isMoving: false,
-      carriedItem: null,
-      stepTimer: 0
-    };
-
-    // Fadinha Companheira
-    this.fairy = {
-      x: 290,
-      y: 600,
-      targetX: 300,
-      targetY: 600,
-      flutterTime: 0,
-      wingAngle: 0,
-      particles: []
-    };
-
-    // Móveis e Obstáculos do Cenário
-    this.furniture = [
-      {
-        id: 'toy-chest',
-        type: 'chest',
-        x: 1040,
-        y: 190,
-        w: 190,
-        h: 115,
-        isTarget: true,
-        lidOpen: 0.0,
-        glowAlpha: 0.0
-      },
-      {
-        id: 'bookshelf',
-        type: 'shelf',
-        x: 380,
-        y: 170,
-        w: 220,
-        h: 90
-      },
-      {
-        id: 'armchair',
-        type: 'armchair',
-        x: 180,
-        y: 840,
-        w: 130,
-        h: 120
-      },
-      {
-        id: 'block-fortress',
-        type: 'fortress',
-        x: 1240,
-        y: 800,
-        w: 220,
-        h: 170
-      },
-      {
-        id: 'table',
-        type: 'table',
-        x: 620,
-        y: 780,
-        w: 160,
-        h: 110
-      },
-      {
-        id: 'rocking-horse',
-        type: 'rocking-horse',
-        x: 480,
-        y: 420,
-        w: 100,
-        h: 80
-      },
-      {
-        id: 'wardrobe',
-        type: 'wardrobe',
-        x: 740,
-        y: 170,
-        w: 140,
-        h: 90
-      }
-    ];
-
-    // Brinquedos Interativos
-    this.toys = [
-      {
-        id: 'teddy',
-        name: 'Ursinho Pipoca',
-        type: 'teddy',
-        x: 340,
-        y: 480,
-        w: 42,
-        h: 46,
-        weight: 0.94,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'train',
-        name: 'Trenzinho Real a Vapor',
-        type: 'train',
-        x: 760,
-        y: 520,
-        w: 48,
-        h: 36,
-        weight: 0.90,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'robot',
-        name: 'Robô Estelar Faísca',
-        type: 'robot',
-        x: 1140,
-        y: 540,
-        w: 40,
-        h: 46,
-        weight: 0.92,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'bunny',
-        name: 'Coelhinho de Algodão',
-        type: 'bunny',
-        x: 460,
-        y: 980,
-        w: 38,
-        h: 44,
-        weight: 0.96,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'duck',
-        name: 'Patinho de Banho Imperial',
-        type: 'duck',
-        x: 940,
-        y: 840,
-        w: 42,
-        h: 40,
-        weight: 0.95,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'blocks',
-        name: 'Torre de Blocos Coloridos',
-        type: 'blocks',
-        x: 1180,
-        y: 720,
-        w: 44,
-        h: 52,
-        weight: 0.85,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'drum',
-        name: 'Tamborzinho Encantado',
-        type: 'drum',
-        x: 640,
-        y: 960,
-        w: 44,
-        h: 38,
-        weight: 0.93,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      },
-      {
-        id: 'jack',
-        name: 'Caixinha de Surpresa da Fada',
-        type: 'jack',
-        x: 880,
-        y: 360,
-        w: 40,
-        h: 46,
-        weight: 0.91,
-        isCarried: false,
-        isOrganized: false,
-        bounceOffset: 0
-      }
-    ];
+    Object.assign(this, createToyRoomInitialEntities());
 
     this.organizedCount = 0;
     this.lastActionTime = 0;
@@ -345,424 +100,61 @@ export class ToyRoomPhase {
     if (options.bindInputs !== false) this.setupListeners();
     this.toyRoomTutorialCompleted = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    this.tutorial = new ToyRoomTutorial(this);
+    this.tutorial = new ToyRoomTutorial(createToyRoomTutorialContext(this));
     this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
-    this.story = new ToyRoomStory(this);
+    this.story = new ToyRoomStory(createToyRoomStoryContext(this));
     this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
     this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
   }
 
-  setupListeners() {
-    if (typeof window !== 'undefined') {
-      window.addEventListener('keydown', this.onKeyDown);
-      window.addEventListener('keyup', this.onKeyUp);
-      window.addEventListener('pointermove', this.handlePointerMove, { passive: false });
-      window.addEventListener('pointerup', this.handlePointerUp);
-      window.addEventListener('pointercancel', this.handlePointerUp);
-      window.addEventListener('blur', this.handleBlur);
+  get inputController() {
+    if (!this._inputController) {
+      this._inputController = new ToyRoomInputController(createToyRoomInputContext(this));
     }
-    if (this.canvas) {
-      this.canvas.addEventListener('uilayoutchange', this.handlePointerUp);
-      this.canvas.addEventListener('pointerdown', this.handlePointerDown, { passive: false });
-    }
+    return this._inputController;
   }
 
-  /**
-   * Converte coordenadas de toque da tela (CSS Pixels) para coordenadas internas do Canvas
-   * garantindo precisão milimétrica em qualquer resolução ou orientação de dispositivo móvel.
-   */
-  getCanvasCoordinates(e) {
-    if (!this.canvas) return { x: 0, y: 0, relX: 0.5, relY: 0.5 };
-    const rect = this.canvas.getBoundingClientRect();
-    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
-    const scaleX = rect.width > 0 ? this.canvas.width / rect.width : 1;
-    const scaleY = rect.height > 0 ? this.canvas.height / rect.height : 1;
-    const x = (clientX - rect.left) * scaleX;
-    const y = (clientY - rect.top) * scaleY;
-    const relX = rect.width > 0 ? (clientX - rect.left) / rect.width : 0.5;
-    const relY = rect.height > 0 ? (clientY - rect.top) / rect.height : 0.5;
-    return { x, y, relX, relY };
-  }
+  setupListeners() { return this.inputController.setupListeners(); }
 
-  /**
-   * Verifica se o toque atingiu a zona dedicada do Botão de Ação no canto inferior direito
-   * A área de toque coincide com o círculo externo calculado pelo layout compartilhado.
-   */
-  isActionButtonHit(coords) {
-    return isActionControlHit(getMobileUILayout(this.canvas), coords.x, coords.y);
-  }
+  getCanvasCoordinates(e) { return this.inputController.getCanvasCoordinates(e); }
 
-  handleKeyDown(e) {
-    if (!this.isInputEnabled()) return;
-    this.tutorial.setDevice('DESKTOP_KEYBOARD_MOUSE');
-    if (this.audio && this.audio.initAudio) this.audio.initAudio();
-    this.keysDown[e.code] = true;
+  isActionButtonHit(coords) { return this.inputController.isActionButtonHit(coords); }
 
-    if (TOY_ROOM_INPUT.actionCodes.includes(e.code)) {
-      if (e.preventDefault) e.preventDefault();
-      if (!e.repeat) this.triggerAction();
-    }
-  }
+  handleKeyDown(e) { return this.inputController.handleKeyDown(e); }
 
-  handleKeyUp(e) {
-    this.keysDown[e.code] = false;
-  }
+  handleKeyUp(e) { return this.inputController.handleKeyUp(e); }
 
-  pollGamepad() {
-    const input = this.gamepadState;
-    input.x = 0; input.y = 0; input.active = false; input.jump = false;
-    let pads;
-    try { pads = globalThis.navigator?.getGamepads?.() || []; } catch (_) { pads = []; }
-    const connected = new Set();
-    const arenaCombat = this.arena?.state.status === 'COMBAT';
-    for (const pad of pads) {
-      if (!pad || pad.connected === false || (pad.mapping && pad.mapping !== 'standard')) continue;
-      connected.add(pad.index);
-      const held = index => Boolean(pad.buttons?.[index]?.pressed || pad.buttons?.[index]?.value > 0.5);
-      const dpadX = Number(held(15)) - Number(held(14));
-      const dpadY = Number(held(13)) - Number(held(12));
-      const x = arenaCombat ? dpadX : dpadX || pad.axes?.[0] || 0;
-      const y = arenaCombat ? dpadY : dpadY || pad.axes?.[1] || 0;
-      const moving = Math.hypot(x, y) > 0.18;
-      const button = pad.buttons?.[TOY_ROOM_INPUT.gamepadButton];
-      const pressed = Boolean(button?.pressed || button?.value > 0.5);
-      const jump = arenaCombat && held(0);
-      const special = arenaCombat && held(3);
-      const wasSpecial = this.arenaSpecialButtons.get(pad.index) || false;
-      if (moving || pressed || jump || special || !input.buttons.has(pad.index)) this.tutorial.setDevice('GAMEPAD');
-      if (moving && !input.active) { input.x = x; input.y = y; input.active = true; }
-      if (jump) input.jump = true;
-      if (pressed && !input.buttons.get(pad.index)) {
-        this.audio?.initAudio?.();
-        this.triggerAction();
-      }
-      input.buttons.set(pad.index, pressed);
-      if (arenaCombat && special && !wasSpecial) this.arena.special();
-      this.arenaSpecialButtons.set(pad.index, special);
-    }
-    for (const index of input.buttons.keys()) if (!connected.has(index)) input.buttons.delete(index);
-    for (const index of this.arenaSpecialButtons.keys()) if (!connected.has(index)) this.arenaSpecialButtons.delete(index);
-    if (!connected.size && this.tutorial.device === 'GAMEPAD')
-      this.tutorial.setDevice(this.mobilePresentation ? 'MOBILE_TOUCH' : 'DESKTOP_KEYBOARD_MOUSE');
-  }
+  pollGamepad() { return this.inputController.pollGamepad(); }
 
-  onPointerDown(e) {
-    if (!this.isInputEnabled() || this.story?.inputLocked) return;
-    this.tutorial.setDevice(e.pointerType === 'mouse' ? 'DESKTOP_KEYBOARD_MOUSE' : 'MOBILE_TOUCH');
-    if (this.audio && this.audio.initAudio) this.audio.initAudio();
-    this.isTouchDevice = e.pointerType === 'touch' || this.mobilePresentation;
+  onPointerDown(e) { return this.inputController.onPointerDown(e); }
 
-    const coords = this.getCanvasCoordinates(e);
+  onPointerMove(e) { return this.inputController.onPointerMove(e); }
 
-    const layout = getMobileUILayout(this.canvas);
-    if (!layout.contains(coords.x, coords.y)) return;
+  onPointerUp(e) { return this.inputController.onPointerUp(e); }
 
-    if (this.arena?.state.status === 'COMBAT' && (this.mobilePresentation || e.pointerType === 'touch' || this.isTouchDevice)) {
-      const control = hitArenaMobileControl(layout, coords.x, coords.y);
-      if (control) {
-        if (e.preventDefault && e.cancelable !== false) e.preventDefault();
-        if (e.stopPropagation) e.stopPropagation();
-        if (control === 'sword') this.triggerAction();
-        else if (control === 'special') this.arena.special();
-        else {
-          const pointerId = e.pointerId ?? 'touch';
-          this.arenaTouchPointers.set(pointerId, control);
-          this.refreshArenaTouchButtons();
-          if (this.canvas && typeof this.canvas.setPointerCapture === 'function' && typeof e.pointerId === 'number') {
-            try { this.canvas.setPointerCapture(e.pointerId); } catch (_) {}
-          }
-        }
-        return;
-      }
-      return;
-    }
+  clearInput() { return this.inputController.clearInput(); }
 
-    // 1. Prioridade Total: Zona do Botão de Ação (Canto Inferior Direito)
-    if (this.isActionButtonHit(coords)) {
-      if (e.preventDefault && e.cancelable) e.preventDefault();
-      if (e.stopPropagation) e.stopPropagation();
-      this.actionBtnPressed = true;
-      setTimeout(() => {
-        this.actionBtnPressed = false;
-      }, 180);
-      this.triggerAction();
-      return;
-    }
-
-    // 2. Joystick Virtual Flutuante Dinâmico (Metade Esquerda da Tela)
-    // A origem visual fica dentro da área segura; o vetor continua relativo ao primeiro toque.
-    if (coords.x < layout.safeLeft + layout.usableWidth * 0.55) {
-      if (this.touchState.active) return;
-      if (e.preventDefault && e.cancelable) e.preventDefault();
-      if (this.canvas && typeof this.canvas.setPointerCapture === 'function' && e.pointerId !== undefined) {
-        try {
-          this.canvas.setPointerCapture(e.pointerId);
-        } catch (_) {}
-      }
-
-      this.touchState.active = true;
-      this.touchState.pointerId = e.pointerId !== undefined ? e.pointerId : 'touch';
-      const origin = layout.joystickOrigin(coords.x, coords.y);
-      this.touchState.startX = origin.x;
-      this.touchState.startY = origin.y;
-      this.touchState.pointerStartX = coords.x;
-      this.touchState.pointerStartY = coords.y;
-      this.touchState.currentX = origin.x;
-      this.touchState.currentY = origin.y;
-      this.touchState.vectorX = 0;
-      this.touchState.vectorY = 0;
-    }
-  }
-
-  onPointerMove(e) {
-    if (!this.isInputEnabled() || this.story?.inputLocked) return;
-    if (!this.touchState.active) return;
-    if (e.pointerId !== undefined && this.touchState.pointerId !== null && e.pointerId !== this.touchState.pointerId) return;
-
-    if (e.preventDefault && e.cancelable) e.preventDefault();
-    const coords = this.getCanvasCoordinates(e);
-    this.touchState.currentX = this.touchState.startX + coords.x - this.touchState.pointerStartX;
-    this.touchState.currentY = this.touchState.startY + coords.y - this.touchState.pointerStartY;
-
-    const dx = this.touchState.currentX - this.touchState.startX;
-    const dy = this.touchState.currentY - this.touchState.startY;
-    const dist = Math.hypot(dx, dy);
-    const controlScale = getMobileUILayout(this.canvas).action.scale;
-    const deadzone = 8 * controlScale;
-    const maxRadius = 50 * controlScale;
-
-    if (dist < deadzone) {
-      this.touchState.vectorX = 0;
-      this.touchState.vectorY = 0;
-    } else {
-      // Vetor de movimento com quantização estrita em 8 direções
-      const angle = Math.atan2(dy, dx);
-      const sector = Math.round(angle / (Math.PI / 4));
-      const snappedAngle = sector * (Math.PI / 4);
-      const intensity = Math.min(1.0, (dist - deadzone) / (maxRadius - deadzone));
-
-      this.touchState.vectorX = Math.cos(snappedAngle) * intensity;
-      this.touchState.vectorY = Math.sin(snappedAngle) * intensity;
-    }
-  }
-
-  onPointerUp(e) {
-    const pointerId = e.pointerId ?? 'touch';
-    if (e.pointerId === undefined) this.arenaTouchPointers.clear();
-    else this.arenaTouchPointers.delete(pointerId);
-    this.refreshArenaTouchButtons();
-    if (this.touchState.active) {
-      if (e.pointerId === undefined || this.touchState.pointerId === null || e.pointerId === this.touchState.pointerId) {
-        const pointerId = e.pointerId ?? this.touchState.pointerId;
-        if (this.canvas && typeof this.canvas.releasePointerCapture === 'function' && typeof pointerId === 'number') {
-          try {
-            this.canvas.releasePointerCapture(pointerId);
-          } catch (_) {}
-        }
-        // Oculta/remove completamente o joystick visual e zera o vetor de velocidade
-        this.touchState.active = false;
-        this.touchState.pointerId = null;
-        this.touchState.vectorX = 0;
-        this.touchState.vectorY = 0;
-        this.player.vx = 0;
-        this.player.vy = 0;
-        this.player.isMoving = false;
-      }
-    }
-  }
-
-  clearInput() {
-    this.onPointerUp({});
-    this.arenaTouchPointers.clear();
-    this.refreshArenaTouchButtons();
-    this.keysDown = {};
-    this.player.vx = 0;
-    this.player.vy = 0;
-    this.player.isMoving = false;
-    this.actionBtnPressed = false;
-  }
-
-  refreshArenaTouchButtons() {
-    for (const direction of Object.keys(this.arenaTouchButtons))
-      this.arenaTouchButtons[direction] = [...this.arenaTouchPointers.values()].includes(direction);
-  }
+  refreshArenaTouchButtons() { return this.inputController.refreshArenaTouchButtons(); }
 
   spawnSparkles(x, y, count = 12, hue = '#facc15') {
-    for (let i = 0; i < count; i++) {
-      const angle = Math.random() * Math.PI * 2;
-      const speed = 1.0 + Math.random() * 3.5;
-      this.sparkles.push({
-        x,
-        y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        radius: 1.5 + Math.random() * 2.5,
-        alpha: 1.0,
-        decay: 0.02 + Math.random() * 0.03,
-        color: hue
-      });
-    }
+    return spawnToyRoomSparkles(this.sparkles, x, y, count, hue);
   }
 
   spawnConfetti(x, y, count = 35) {
-    const colors = ['#f43f5e', '#38bdf8', '#facc15', '#10b981', '#c084fc', '#fb923c'];
-    for (let i = 0; i < count; i++) {
-      const angle = -Math.PI / 2 + (Math.random() - 0.5) * 1.8;
-      const speed = 2.5 + Math.random() * 5.0;
-      this.confetti.push({
-        x,
-        y,
-        vx: Math.cos(angle) * speed,
-        vy: Math.sin(angle) * speed,
-        w: 5 + Math.random() * 5,
-        h: 7 + Math.random() * 7,
-        rot: Math.random() * Math.PI * 2,
-        vrot: (Math.random() - 0.5) * 0.3,
-        color: colors[(Math.random() * colors.length) | 0],
-        alpha: 1.0,
-        decay: 0.012 + Math.random() * 0.015
-      });
-    }
+    return spawnToyRoomConfetti(this.confetti, x, y, count);
   }
 
-  triggerAction() {
-    if (!this.isInputEnabled() || this.story?.inputLocked) return;
-    if (this.arena?.active) { this.arena.attack(); return; }
-    if (this.battle?.state) { this.battle.attack(); return; }
-    const now = performance.now();
-    if (now - this.lastActionTime < this.ACTION_DEBOUNCE_MS) {
-      return;
-    }
-    this.lastActionTime = now;
-
-    // Carregando um item -> soltar ou guardar no baú
-    if (this.player.carriedItem) {
-      const item = this.player.carriedItem;
-      const chest = this.furniture.find(f => f.id === 'toy-chest');
-      const chestCenterX = chest.x + chest.w / 2;
-      const chestCenterY = chest.y + chest.h / 2;
-      const distToChest = Math.hypot(this.player.x - chestCenterX, this.player.y - chestCenterY);
-
-      if (distToChest < 160) {
-        item.isCarried = false;
-        item.isOrganized = true;
-        item.x = chestCenterX + (Math.random() - 0.5) * 60;
-        item.y = chest.y + 45;
-        this.player.carriedItem = null;
-
-        if (this.audio && this.audio.playOrganizeChime) this.audio.playOrganizeChime();
-        chest.lidOpen = 1.0;
-        chest.glowAlpha = 1.0;
-        this.spawnSparkles(chestCenterX, chest.y + 30, 24, '#fde047');
-        this.spawnConfetti(chestCenterX, chest.y + 30, 30);
-
-        this.story?.onToyStored(item);
-        this.organizedCount++;
-        if (this.organizedCount >= this.toys.length && !this.story?.state.recurrenceActive) {
-          this.victoryBannerActive = true;
-          this.victoryBannerTimer = 360;
-          if (this.audio && this.audio.playToyRoomVictory) this.audio.playToyRoomVictory();
-          if (this.uiFeedback) {
-            this.uiFeedback.innerText = '🌟 PARABÉNS! Todos os brinquedos foram carinhosamente guardados no baú!';
-            this.uiFeedback.style.color = '#fde047';
-          }
-        } else {
-          if (this.uiFeedback) {
-            this.uiFeedback.innerText = `✨ ${item.name} guardado no baú! (${this.organizedCount}/${this.toys.length} arrumados)`;
-            this.uiFeedback.style.color = '#a7f3d0';
-          }
-        }
-        return;
-      }
-
-      // Caso contrário: Solta o brinquedo à frente do jogador no chão
-      const dropDist = 42;
-      let dropX = this.player.x + (this.player.facing === 'left' ? -dropDist : dropDist);
-      let dropY = this.player.y;
-
-      dropX = Math.max(90, Math.min(this.ROOM_W - 90, dropX));
-      dropY = Math.max(260, Math.min(this.ROOM_H - 90, dropY));
-
-      item.x = dropX;
-      item.y = dropY;
-      item.isCarried = false;
-      this.player.carriedItem = null;
-
-      if (this.audio && this.audio.playDropSound) this.audio.playDropSound();
-      this.spawnSparkles(dropX, dropY, 8, '#fef08a');
-      if (this.uiFeedback) {
-        this.uiFeedback.innerText = `📦 Você colocou ${item.name} no chão.`;
-        this.uiFeedback.style.color = '#fef08a';
-      }
-      return;
-    }
-
-    // Não está carregando -> Encontra o brinquedo mais próximo para pegar (raio amplo de 88px)
-    let closestToy = null;
-    let closestDist = 88;
-
-    for (let i = 0; i < this.toys.length; i++) {
-      const t = this.toys[i];
-      if (t.isOrganized) continue;
-      const d = Math.hypot(this.player.x - t.x, this.player.y - t.y);
-      if (d < closestDist) {
-        closestDist = d;
-        closestToy = t;
-      }
-    }
-
-    if (closestToy) {
-      closestToy.isCarried = true;
-      this.player.carriedItem = closestToy;
-      if (this.tutorial.active) this.tutorial.finish();
-      if (this.audio && this.audio.playPickUpSound) this.audio.playPickUpSound();
-      this.spawnSparkles(this.player.x, this.player.y - 30, 16, '#38bdf8');
-      if (this.uiFeedback) {
-        this.uiFeedback.innerText = `✋ Você pegou: ${closestToy.name}! Leve até o Baú de Brinquedos!`;
-        this.uiFeedback.style.color = '#38bdf8';
-      }
-      return;
-    }
-
-    this.story?.attack();
+  get interaction() {
+    if (!this._interaction) this._interaction = new ToyRoomInteraction(createToyRoomInteractionContext(this));
+    return this._interaction;
   }
+
+  triggerAction() { return this.interaction.triggerAction(); }
 
   resolveCollisions(px, py, r) {
-    let nx = px;
-    let ny = py;
-
-    const minX = 75 + r;
-    const maxX = this.ROOM_W - 75 - r;
-    const minY = 250 + r;
-    const maxY = this.ROOM_H - 75 - r;
-
-    nx = Math.max(minX, Math.min(maxX, nx));
-    ny = Math.max(minY, Math.min(maxY, ny));
-
-    for (let i = 0; i < this.furniture.length; i++) {
-      const f = this.furniture[i];
-      const boxLeft = f.x - r;
-      const boxRight = f.x + f.w + r;
-      const boxTop = f.y - r;
-      const boxBottom = f.y + f.h + r;
-
-      if (nx > boxLeft && nx < boxRight && ny > boxTop && ny < boxBottom) {
-        const penLeft = nx - boxLeft;
-        const penRight = boxRight - nx;
-        const penTop = ny - boxTop;
-        const penBottom = boxBottom - ny;
-
-        const minPen = Math.min(penLeft, penRight, penTop, penBottom);
-
-        if (minPen === penLeft) nx = boxLeft;
-        else if (minPen === penRight) nx = boxRight;
-        else if (minPen === penTop) ny = boxTop;
-        else ny = boxBottom;
-      }
-    }
-
-    return { x: nx, y: ny };
+    return resolveToyRoomCollisions({
+      width: this.ROOM_W, height: this.ROOM_H, furniture: this.furniture
+    }, px, py, r);
   }
 
   update(dt = 1.0) {
@@ -792,98 +184,16 @@ export class ToyRoomPhase {
       return;
     }
 
-    // Verificação de proximidade interativa para enriquecer o feedback do Botão de Ação
-    let canInteract = false;
-    let isNearChest = false;
+    const chest = this.interaction.updateProximity();
 
-    const chest = this.furniture.find(f => f.id === 'toy-chest');
-    if (chest) {
-      const chestCenterX = chest.x + chest.w / 2;
-      const chestCenterY = chest.y + chest.h / 2;
-      const distToChest = Math.hypot(this.player.x - chestCenterX, this.player.y - chestCenterY);
-      if (distToChest < 160) {
-        isNearChest = true;
-        if (this.player.carriedItem) canInteract = true;
-      }
-    }
-
-    if (!this.player.carriedItem) {
-      for (let i = 0; i < this.toys.length; i++) {
-        const t = this.toys[i];
-        if (!t.isOrganized && Math.hypot(this.player.x - t.x, this.player.y - t.y) < 88) {
-          canInteract = true;
-          break;
-        }
-      }
-    }
-
-    this.canInteract = canInteract;
-    this.isNearChest = isNearChest;
-
-    // Vetor de movimentação do jogador
-    let moveX = 0;
-    let moveY = 0;
-
-    if (this.keysDown['KeyW'] || this.keysDown['ArrowUp']) moveY -= 1;
-    if (this.keysDown['KeyS'] || this.keysDown['ArrowDown']) moveY += 1;
-    if (this.keysDown['KeyA'] || this.keysDown['ArrowLeft']) moveX -= 1;
-    if (this.keysDown['KeyD'] || this.keysDown['ArrowRight']) moveX += 1;
-    if (this.gamepadState.active) {
-      moveX = this.gamepadState.x;
-      moveY = this.gamepadState.y;
-    }
-
-    // Movimentação por Joystick Virtual Flutuante Dinâmico (8 direções)
-    if (this.touchState.active) {
-      moveX = this.touchState.vectorX;
-      moveY = this.touchState.vectorY;
-    }
-
-    const len = Math.hypot(moveX, moveY);
-    if (len > 1.0) {
-      moveX /= len;
-      moveY /= len;
-    }
-
-    const weightFactor = this.player.carriedItem ? this.player.carriedItem.weight : 1.0;
-    const finalSpeed = this.player.speed * weightFactor;
-
-    this.player.vx = moveX * finalSpeed;
-    this.player.vy = moveY * finalSpeed;
-    this.player.isMoving = len > 0.05;
-
-    if (this.player.isMoving) {
-      this.player.facingAngle = Math.atan2(moveY, moveX);
-      this.player.animTime += 0.22 * dt;
-
-      // Ignora apenas o resíduo trigonométrico do joystick em movimento vertical.
-      if (Math.abs(moveX) > 1e-6) this.player.facing = moveX > 0 ? 'right' : 'left';
-
-      if (Math.abs(moveX) > Math.abs(moveY)) {
-        this.player.direction = moveX > 0 ? 'right' : 'left';
-      } else {
-        this.player.direction = moveY > 0 ? 'down' : 'up';
-      }
-
-      this.player.stepTimer += dt;
-      if (this.player.stepTimer > 12) {
-        this.player.stepTimer = 0;
-        this.footstepPuffs.push({
-          x: this.player.x + (Math.random() - 0.5) * 10,
-          y: this.player.y + 12,
-          radius: 3 + Math.random() * 3,
-          alpha: 0.5,
-          color: '#fef3c7'
-        });
-      }
-    }
-
-    // Resolução de colisões e movimentação
-    const rawX = this.player.x + this.player.vx * dt;
-    const rawY = this.player.y + this.player.vy * dt;
-    const resolved = this.resolveCollisions(rawX, rawY, this.player.radius);
-    this.player.x = resolved.x;
-    this.player.y = resolved.y;
+    updateToyRoomMovement({
+      player: this.player,
+      keysDown: this.keysDown,
+      gamepadState: this.gamepadState,
+      touchState: this.touchState,
+      footstepPuffs: this.footstepPuffs,
+      resolveCollisions: (x, y, radius) => this.resolveCollisions(x, y, radius)
+    }, dt);
     this.story?.updateAfterMovement();
 
     // Posição do brinquedo carregado acima da cabeça
@@ -892,338 +202,47 @@ export class ToyRoomPhase {
       this.player.carriedItem.y = this.player.y - 38 + Math.sin(this.player.animTime * 1.5) * 3;
     }
 
-    // Atualização da fadinha companheira
-    const fairyHoverOffsetX = this.player.facing === 'left' ? 24 : -24;
-    this.fairy.targetX = this.player.x + fairyHoverOffsetX + Math.cos(this.fairy.flutterTime * 0.08) * 12;
-    this.fairy.targetY = this.player.y - 32 + Math.sin(this.fairy.flutterTime * 0.12) * 8;
-    this.tutorial.update(dt);
-    // O tutorial conserva sua orientação; no gameplay o alvo depende da protagonista.
-    this.guideToy = nearestToyGuide(this.player, this.toys, this.guideToy);
-    const guide = this.story.guidePosition() || this.tutorial.guidePosition() || (this.guideToy && {
-      x: this.guideToy.x, y: this.guideToy.y - 105
-    });
-    if (guide) { this.fairy.targetX = guide.x; this.fairy.targetY = guide.y; }
+    this.guideToy = updateToyRoomCompanion({ player: this.player, fairy: this.fairy,
+      toys: this.toys, tutorial: this.tutorial, story: this.story,
+      gameDifficulty: this.gameDifficulty, guideToy: this.guideToy }, dt);
 
-    this.fairy.flutterTime += dt;
-    const guideBlend = guide ? toyGuideBlend(this.gameDifficulty, dt) : 0.12 * dt;
-    this.fairy.x += (this.fairy.targetX - this.fairy.x) * guideBlend;
-    this.fairy.y += (this.fairy.targetY - this.fairy.y) * guideBlend;
-
-    if (Math.random() < 0.4) {
-      this.fairy.particles.push({
-        x: this.fairy.x + (Math.random() - 0.5) * 12,
-        y: this.fairy.y + (Math.random() - 0.5) * 12,
-        vx: (Math.random() - 0.5) * 0.8,
-        vy: (Math.random() - 0.5) * 0.8 - 0.4,
-        alpha: 0.85,
-        radius: 1.5 + Math.random() * 2,
-        color: '#fef08a'
-      });
-    }
-
-    for (let i = this.fairy.particles.length - 1; i >= 0; i--) {
-      const p = this.fairy.particles[i];
-      p.x += p.vx * dt;
-      p.y += p.vy * dt;
-      p.alpha -= 0.035 * dt;
-      if (p.alpha <= 0) {
-        this.fairy.particles.splice(i, 1);
-      }
-    }
-
-    // Animação da tampa do baú
-    if (chest) {
-      if (chest.lidOpen > 0) chest.lidOpen = Math.max(0, chest.lidOpen - 0.015 * dt);
-      if (chest.glowAlpha > 0) chest.glowAlpha = Math.max(0, chest.glowAlpha - 0.02 * dt);
-    }
-
-    // Atualização de partículas
-    for (let i = this.sparkles.length - 1; i >= 0; i--) {
-      const s = this.sparkles[i];
-      s.x += s.vx * dt;
-      s.y += s.vy * dt;
-      s.alpha -= s.decay * dt;
-      if (s.alpha <= 0) this.sparkles.splice(i, 1);
-    }
-
-    for (let i = this.confetti.length - 1; i >= 0; i--) {
-      const c = this.confetti[i];
-      c.x += c.vx * dt;
-      c.y += c.vy * dt;
-      c.vy += 0.08 * dt;
-      c.rot += c.vrot * dt;
-      c.alpha -= c.decay * dt;
-      if (c.alpha <= 0) this.confetti.splice(i, 1);
-    }
-
-    for (let i = this.footstepPuffs.length - 1; i >= 0; i--) {
-      const fp = this.footstepPuffs[i];
-      fp.alpha -= 0.03 * dt;
-      fp.radius += 0.2 * dt;
-      if (fp.alpha <= 0) this.footstepPuffs.splice(i, 1);
-    }
-
-    for (let i = 0; i < this.sunMotes.length; i++) {
-      const sm = this.sunMotes[i];
-      sm.x += sm.vx * dt;
-      sm.y += sm.vy * dt;
-      sm.phase += 0.03 * dt;
-      if (sm.y < 200) sm.y = this.ROOM_H - 50;
-      if (sm.x < 50) sm.x = this.ROOM_W - 50;
-      if (sm.x > this.ROOM_W - 50) sm.x = 50;
-    }
+    updateToyRoomEffects({ chest, sparkles: this.sparkles, confetti: this.confetti,
+      footstepPuffs: this.footstepPuffs, sunMotes: this.sunMotes,
+      width: this.ROOM_W, height: this.ROOM_H }, dt);
 
     this.updateCamera(dt);
   }
 
   updateCamera(dt) {
-    // Câmera e ampliação compartilham o mesmo alvo, sem influência da guia da fada.
-    const cameraTarget = this.story.cameraTarget() || this.player;
-    const layout = getMobileUILayout(this.canvas);
-    const targetCamX = cameraTarget.x - layout.centerX;
-    const targetCamY = cameraTarget.y - layout.centerY;
-
-    const minCamX = -layout.safeLeft, minCamY = -layout.safeTop;
-    const maxCamX = Math.max(minCamX, this.ROOM_W - layout.safeRight);
-    const maxCamY = Math.max(minCamY, this.ROOM_H - layout.safeBottom);
-
-    const clampedTargetCamX = Math.max(minCamX, Math.min(maxCamX, targetCamX));
-    const clampedTargetCamY = Math.max(minCamY, Math.min(maxCamY, targetCamY));
-
-    const blend = 1 - Math.pow(0.88, dt);
-    this.cameraX += (clampedTargetCamX - this.cameraX) * blend;
-    this.cameraY += (clampedTargetCamY - this.cameraY) * blend;
+    const camera = updateToyRoomCamera({ target: this.story.cameraTarget() || this.player,
+      canvas: this.canvas, width: this.ROOM_W, height: this.ROOM_H,
+      cameraX: this.cameraX, cameraY: this.cameraY }, dt);
+    this.cameraX = camera.cameraX;
+    this.cameraY = camera.cameraY;
   }
 
   getCameraFrame() {
-    const target = this.story.cameraTarget() || this.player;
-    const px = target.x - this.cameraX, py = target.y - this.cameraY;
-    const layout = getMobileUILayout(this.canvas);
-    const relativeBounds = {
-      left: px - 100 - layout.safeLeft,
-      right: px + 100 - layout.safeLeft,
-      top: py - 120 - layout.safeTop,
-      bottom: py + 80 - layout.safeTop
-    };
-    const frame = getMobileZoomFrame({ enabled: this.mobilePresentation,
-      width: layout.usableWidth, height: layout.usableHeight,
-      anchor: { x: px - layout.safeLeft, y: py - layout.safeTop }, bounds: relativeBounds });
-    frame.x += layout.safeLeft * (1 - frame.zoom);
-    frame.y += layout.safeTop * (1 - frame.zoom);
-    return frame;
+    return getToyRoomCameraFrame({ target: this.story.cameraTarget() || this.player,
+      canvas: this.canvas, cameraX: this.cameraX, cameraY: this.cameraY,
+      mobilePresentation: this.mobilePresentation });
   }
 
   render(options = {}) {
     if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
     if (this.battle.state && !options.arenaBackdrop) { this.battle.render(); return; }
-    const ctx = this.ctx;
-    ctx.save();
-    ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-    // Transformação da câmera baseada exclusivamente no alvo vigente.
-    ctx.save();
-    let frame = this.getCameraFrame();
-    // Retorno visual do panorama ao enquadramento normal, sem tocar na câmera lógica.
-    if (options.overviewBlend > 0) {
-      const blend = Math.min(1, options.overviewBlend);
-      const zoom = Math.min(this.canvas.width / this.ROOM_W, this.canvas.height / this.ROOM_H) * 0.94;
-      const x = (this.canvas.width - this.ROOM_W * zoom) / 2 + this.cameraX * zoom;
-      const y = (this.canvas.height - this.ROOM_H * zoom) / 2 + this.cameraY * zoom;
-      frame = { x: frame.x + (x - frame.x) * blend,
-        y: frame.y + (y - frame.y) * blend, zoom: frame.zoom + (zoom - frame.zoom) * blend };
-    }
-    ctx.translate(frame.x, frame.y);
-    ctx.scale(frame.zoom, frame.zoom);
-    ctx.translate(-this.cameraX, -this.cameraY);
-    this.story.recordViewport(frame);
-
-    // 1. Cenário de Fundo
-    roomEnvironmentRenderer.renderBackground(ctx, this.ROOM_W, this.ROOM_H, {
-      assets: this.assets,
-      environmentSheet: this.environmentFloorTile,
-      environmentRug: this.environmentRug,
-      environmentDoor: this.environmentDoor,
-      environmentDetails: this.environmentDetails
-    });
-
-    // 2. Poeirinhas de passos
-    for (let i = 0; i < this.footstepPuffs.length; i++) {
-      const fp = this.footstepPuffs[i];
-      ctx.fillStyle = `rgba(254, 243, 199, ${fp.alpha})`;
-      ctx.beginPath();
-      ctx.arc(fp.x, fp.y, fp.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    // 3. Ordenação das entidades pelo eixo Y para profundidade 2.5D
-    const renderList = [];
-
-    for (let i = 0; i < this.furniture.length; i++) {
-      const f = this.furniture[i];
-      renderList.push({
-        type: 'furniture',
-        y: f.y + f.h,
-        item: f
-      });
-    }
-
-    for (let i = 0; i < this.toys.length; i++) {
-      const t = this.toys[i];
-      if (!t.isCarried) {
-        renderList.push({
-          type: 'toy',
-          y: t.y,
-          item: t
-        });
-      }
-    }
-
-    if (this.story.state.sword?.visible) {
-      renderList.push({ type: 'story-sword', y: this.story.state.sword.y });
-    }
-
-    renderList.push({
-      type: 'player',
-      y: this.player.y
-    });
-
-    renderList.sort((a, b) => a.y - b.y);
-
-    const now = performance.now();
-    for (let i = 0; i < renderList.length; i++) {
-      const node = renderList[i];
-      if (node.type === 'furniture') {
-        roomEnvironmentRenderer.renderFurniture(ctx, node.item, {
-          assets: this.assets,
-          environmentChest: this.environmentChest,
-          environmentTable: this.environmentTable
-        });
-      } else if (node.type === 'toy') {
-        toyRenderer.renderToy(ctx, node.item, this.player.x, this.player.y, Boolean(this.player.carriedItem), now, {
-          assets: this.assets,
-          environmentTeddy: this.environmentTeddy,
-          environmentTrain: this.environmentTrain
-        });
-      } else if (node.type === 'player') {
-        const showingAttack = this.story.renderAttackSprite(ctx);
-        if (!showingAttack) {
-          toyRoomEntities.renderPlayer(ctx, this.player, {
-            assets: this.assets,
-            environmentTeddy: this.environmentTeddy,
-            environmentTrain: this.environmentTrain
-          });
-          this.story.renderHeldObject(ctx);
-        }
-      } else if (node.type === 'story-sword') {
-        this.story.renderWorldObject(ctx);
-      }
-    }
-
-    // 4. Fadinha companheira
-    toyRoomEntities.renderFairy(ctx, this.fairy, { assets: this.assets });
-
-    // 5. Rastro de brilho da fada
-    for (let i = 0; i < this.fairy.particles.length; i++) {
-      const p = this.fairy.particles[i];
-      ctx.fillStyle = `rgba(254, 240, 138, ${p.alpha})`;
-      ctx.beginPath();
-      ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    // 6. Faíscas e Confetes
-    for (let i = 0; i < this.sparkles.length; i++) {
-      const s = this.sparkles[i];
-      ctx.fillStyle = s.color;
-      ctx.globalAlpha = Math.max(0, s.alpha);
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-    ctx.globalAlpha = 1.0;
-
-    for (let i = 0; i < this.confetti.length; i++) {
-      const c = this.confetti[i];
-      ctx.save();
-      ctx.translate(c.x, c.y);
-      ctx.rotate(c.rot);
-      ctx.fillStyle = c.color;
-      ctx.globalAlpha = Math.max(0, c.alpha);
-      ctx.fillRect(-c.w / 2, -c.h / 2, c.w, c.h);
-      ctx.restore();
-    }
-    ctx.globalAlpha = 1.0;
-
-    // 7. Partículas de poeira dourada flutuando na luz do sol
-    for (let i = 0; i < this.sunMotes.length; i++) {
-      const sm = this.sunMotes[i];
-      ctx.fillStyle = `rgba(254, 240, 138, ${sm.alpha * (0.6 + Math.sin(sm.phase) * 0.4)})`;
-      ctx.beginPath();
-      ctx.arc(sm.x, sm.y, sm.radius, 0, Math.PI * 2);
-      ctx.fill();
-    }
-
-    ctx.restore(); // Fim da transformação da câmera
-
-    // 8. Interface de Usuário (HUD) em coordenadas de tela
-    toyRoomUI.renderUI(ctx, this.canvas, {
-      organizedCount: this.organizedCount,
-      totalToys: this.toys.length,
-      isTouchDevice: this.isTouchDevice,
-      touchState: this.touchState,
-      player: this.player,
-      introAlpha: this.introAlpha,
-      introBannerTimer: this.introBannerTimer,
-      victoryBannerActive: this.victoryBannerActive,
-      victoryBannerTimer: this.victoryBannerTimer,
-      actionBtnPressed: this.actionBtnPressed,
-      canInteract: this.canInteract,
-      isNearChest: this.isNearChest,
-      swordEquipped: this.story.swordEquipped
-    });
-
-    this.tutorial.render(ctx, this.canvas, frame);
-    this.story.renderNarrative(ctx, this.canvas);
-    ctx.restore();
+    return renderToyRoomScene(createToyRoomSceneFrame(this), options);
   }
 
   startTutorial() { this.tutorial.start(); }
 
-  snapshot({ includeArena = true } = {}) {
-    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
-      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
-    const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this[key]]))));
-    saved.carriedItemId = this.player.carriedItem?.id ?? null;
-    saved.toyRoomStory = this.story.snapshot();
-    saved.toyRoomBattle = this.battle.snapshot();
-    if (includeArena && this.arena) saved.toyRoomArena = this.arena.snapshot();
-    return saved;
+  get persistence() {
+    if (!this._persistence) this._persistence = new ToyRoomPersistence(createToyRoomPersistenceContext(this));
+    return this._persistence;
   }
 
-  restore(saved, { preserveArena = false } = {}) {
-    const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
-      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
-    for (const key of keys) {
-      if (key in saved) this[key] = JSON.parse(JSON.stringify(saved[key]));
-    }
-    // Saves antigos armazenavam a direção de movimento em facing.
-    this.player.direction ??= this.player.facing;
-    if (this.player.facing !== 'left' && this.player.facing !== 'right') {
-      const horizontal = Math.cos(this.player.facingAngle ?? Math.PI / 2);
-      this.player.facing = horizontal < -1e-6 ? 'left' : 'right';
-    }
-    this.player.carriedItem = this.toys.find(toy => toy.id === saved.carriedItemId) || null;
-    this.story.restore(saved.toyRoomStory);
-    this.clearInput();
-    this.lastActionTime = 0;
-    this.tutorial.active = false;
-    this.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    this.battle.restore(saved.toyRoomBattle);
-    if (!preserveArena) this.arena?.restore(saved.toyRoomArena, saved);
-    if (this.arena?.active) this.gameplayState = this.arena.state.status === 'TRANSFORMING' ? 'TOY_ROOM_TRANSFORMING' : 'TOY_ROOM_ARENA';
-    else if (this.battle.state) this.gameplayState = 'TOY_ROOM_BATTLE';
-    else if (!this.toyRoomTutorialCompleted && !this.story.swordEquipped) this.startTutorial();
-  }
+  snapshot(options) { return this.persistence.snapshot(options); }
+
+  restore(saved, options) { return this.persistence.restore(saved, options); }
 
   destroy() {
     this.arena?.audioProfile.leave({ resume: false });
@@ -1231,18 +250,7 @@ export class ToyRoomPhase {
     if (this.audio && this.audio.stopToyRoomMusic) {
       this.audio.stopToyRoomMusic();
     }
-    if (typeof window !== 'undefined') {
-      window.removeEventListener('keydown', this.onKeyDown);
-      window.removeEventListener('keyup', this.onKeyUp);
-      window.removeEventListener('pointermove', this.handlePointerMove);
-      window.removeEventListener('pointerup', this.handlePointerUp);
-      window.removeEventListener('pointercancel', this.handlePointerUp);
-      window.removeEventListener('blur', this.handleBlur);
-    }
-    if (this.canvas) {
-      this.canvas.removeEventListener('uilayoutchange', this.handlePointerUp);
-      this.canvas.removeEventListener('pointerdown', this.handlePointerDown);
-    }
+    this.inputController.removeListeners();
   }
 }
 

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b41f18ec95f60ab6fb31e4dc5507c14e100ad82971ac769c707574c674b19258",
+  "path": "refact/referencia-inicial/desktop/arena-robot-ATTACK.png",
+  "sha256": "22b9b2dd8686884cf594e5a4be0a9406a1de4cc242e722103dac0b7ff286ce12",
+  "capturedAt": "2026-10-15T13:29:52.493390+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-robot-ATTACK.png\", \"sha256\": \"fa392fbe410aa721c4be9e15347dbbc774bf3e7d3a1237b688f769a41225f2cc\", \"bytes\": 1086990, \"binaryRetained\": false}"
+}

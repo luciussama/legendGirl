@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "71939a1bd7f047f07b0c0e165cf665e0936ebba48aa803333fa3f10652244986",
+  "path": "qa-execucoes/b05b3d3148a5409fb71b0e4bdef053c8/docs/qa/toy-room-arena/android-salto.png",
+  "sha256": "968739c978cc034ef9e5483df91fb6b73fa29e1f217e3c0f926944c0d0458990",
+  "capturedAt": "2026-10-15T18:14:41.630968+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-salto.png\", \"sha256\": \"df226c74c490b7ad0f3de47db4cd8d14501511f622edcd7db4f00341ecdc3ccc\", \"bytes\": 388570, \"binaryRetained\": false}"
+}

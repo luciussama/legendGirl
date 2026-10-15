@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzzzzzzzzzzz-refact-lifecycle-state-20261015",
+  "date": "2026-10-15T14:06:49.149966+00:00",
+  "title": "Instrumentação acompanha o ciclo de vida canônico",
+  "files": [
+    {
+      "path": "tests/dark-room-playthrough.html",
+      "sourceId": "aeffc69558c0fa08af47c891fae487ace9e8066393c03ce7bf72398dd166756e",
+      "sha256": "f9c8f69f96bdaae051924ba8621059e81a352ba6b55a40b36e22f778c0932e5f",
+      "bytes": 14006,
+      "metadataOnly": false
+    },
+    {
+      "path": "tests/dark-room-camera-ablation.html",
+      "sourceId": "f0162e00d69faefbd82ef924dd61e07335e3d11e7db3790eb8da3a02ee53a6a6",
+      "sha256": "9db1d992baf339bc0bea77303540643b5bc5b4536c0f7b23808a5e40e4533dae",
+      "bytes": 19534,
+      "metadataOnly": false
+    },
+    {
+      "path": "tests/dark-room-visual-layers.html",
+      "sourceId": "9a461c1c8c1a646730a2dbc4f88b8428e5615ba3425b1b8081be0e1a12fb2338",
+      "sha256": "4d0e8f8bc9e03c2b53fd46281f1ef83d9dd61dcd36ef9b11d821a441b2ebe949",
+      "bytes": 18570,
+      "metadataOnly": false
+    },
+    {
+      "path": "tests/first-jump-tutorial.html",
+      "sourceId": "4fe812b2f3974824e37c075d6bf515cd242b1122e4b1e07331aafa7576857443",
+      "sha256": "a55f6d89ee1849806ae37f6ed5d2d00719091e1380dee1a51241658e963c0662",
+      "bytes": 14042,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-game-difficulty.js",
+      "sourceId": "c6fccec17c5a01809e033d09799edac3491200a04ce3118883f5ebd3a9e5628b",
+      "sha256": "760349a0efd34f5e0ed66748b4bb00f0e16a5e9050042a7cfccc5ad4df7ada2e",
+      "bytes": 6394,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/verify-dark-room.js",
+      "sourceId": "073259499e5c80d995ae24b07fccb133a2ff1b71a97c329a10a97d59e529b3b3",
+      "sha256": "91588de7a20d93c167d22195d4b9fe0d5ba4b5ae8d327e46b11b39df5d8ce462",
+      "bytes": 15599,
+      "metadataOnly": false
+    }
+  ]
+}

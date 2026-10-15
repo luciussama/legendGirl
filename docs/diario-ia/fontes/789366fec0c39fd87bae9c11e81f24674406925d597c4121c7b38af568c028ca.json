@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "789366fec0c39fd87bae9c11e81f24674406925d597c4121c7b38af568c028ca",
+  "path": "refact/referencia-inicial/android/arena-robot-IDLE.png",
+  "sha256": "cd97b81ee3955104197e717824d31cfefa551d90f43d2ff7f4cef92bf7b46d43",
+  "capturedAt": "2026-10-15T13:30:33.405342+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-robot-IDLE.png\", \"sha256\": \"332cc4ee4183adb3536deeb252bfa2456ca4f3932988095d8390147d1c525ac6\", \"bytes\": 947549, \"binaryRetained\": false}"
+}

@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "9dbe13ddf7bc454785e5d3dea6792e965c833fc14fd8e05d35bc5a6828368b76",
+  "path": "checkpoints/refact/etapa20/resultado.json",
+  "sha256": "c2f918f1b77d8153f0a5e8daf55c8806e1334227ca3cc26bacc01a008001d9bb",
+  "capturedAt": "2026-10-15T18:12:29.562803+00:00",
+  "origin": {
+    "type": "resultado-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "20"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"etapa\": \"20\",\n  \"sessao\": \"20261015T180819-d29b76205a7e\",\n  \"resultado\": \"Etapa 20: composição da cena por dados e callbacks do quadro\",\n  \"validacoes\": [\n    {\n      \"comando\": [\n        \"npm\",\n        \"test\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"desktop\"\n      ],\n      \"exitCode\": 0\n    },\n    {\n      \"comando\": [\n        \"npm\",\n        \"run\",\n        \"journal:qa\",\n        \"--\",\n        \"test:refact:browser\",\n        \"android\"\n      ],\n      \"exitCode\": 0\n    }\n  ],\n  \"limite\": \"Comparação determinística; Android emulado, sem aparelho físico.\"\n}\n"
+}

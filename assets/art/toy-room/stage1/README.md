@@ -13,4 +13,6 @@ Assets novos gerados com a ferramenta integrada `image_gen`, a partir de `assets
 
 Os arquivos foram reduzidos para a resolução de uso; os tapetes e a peça de trilho tiveram somente as margens transparentes externas recortadas para empacotamento. A transparência foi preservada. As posições e dimensões de exibição são definidas pelo renderizador, sem participação na física.
 
-Relatório, capturas e validação: `docs/qa/toy-room-etapa1/RELATORIO.md`.
+O relatório histórico `docs/qa/toy-room-etapa1/RELATORIO.md` está preservado no [diário de IA](../../../../docs/diario-ia/README.md); pesquise esse caminho para consultar a fonte. Capturas regeneráveis não permanecem nesta pasta.
+
+Integração atual: RoomEnvironmentRenderer desenha os materiais; ToyRoomEnvironmentAssets resolve recortes; ToyRoomSceneRenderer compõe a sala. Consulte o [mapa de arte](../../../../docs/sprites/MAPA-SPRITES.md).

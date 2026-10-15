@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "30c8db1a17d05da9daa4abcdfc2320d9c9619a918f6fe5406cc7f757a2828be3",
+  "path": "refact/referencia-inicial/desktop/arena-train-RETREAT.png",
+  "sha256": "4ce4a1ab0caf40fa69b18e5a4c72f007aa3a1cb9df2c39c45eb7e713c9513d67",
+  "capturedAt": "2026-10-15T13:29:52.503427+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-train-RETREAT.png\", \"sha256\": \"58545d818d9e4079004fbd5a3182812c717e63c2ec2bae33b2fae09ca54fcd82\", \"bytes\": 1091768, \"binaryRetained\": false}"
+}

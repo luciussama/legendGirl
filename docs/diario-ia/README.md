@@ -78,3 +78,7 @@ Este é o único acervo de registros de máquina. Fontes dos testes, fixtures e 
 Para registrar novos arquivos antes de retirar suas cópias externas, prepare uma lista JSON de caminhos relativos e execute `npm run journal:archive -- --manifest CAMINHO --title "descrição"`. Esse comando registra e verifica fontes, mas não exclui arquivos; confira o pacote e os hashes antes de apagar. Novos testes devem ser arquivados da mesma forma e executados temporariamente.
 
 A documentação para pessoas contém guias e `docs/DIARIO-HUMANO.md`. Não reproduzir relatórios de máquina nesses documentos.
+
+## Documentação vigente e planos preservados
+
+O [índice humano](../README.md) aponta arquitetura, contratos, comandos e guias de arte. A arquitetura corrente é confrontada com o código; planos antigos, como a proposta de Diretor de Fases/HFSM, ficam pesquisáveis como fontes históricas e não representam implementação existente. Alterações na documentação geram novas fontes, sem reescrever versões antigas. O registro de merge/commit descreve a ação realmente executada; documentação preparada não prova integração nem publicação.

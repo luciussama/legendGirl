@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T173500-856e5ae3f4fd-fim",
+  "sessionId": "20261015T173500-856e5ae3f4fd",
+  "type": "fim",
+  "date": "2026-10-15T17:38:36.732325+00:00",
+  "title": "Etapa 12: contrato explícito de dependências da narrativa Toy Room",
+  "actor": "Codex",
+  "summary": "Etapa 12 concluída: ToyRoomStory recebe dependências explícitas e não recebe nem guarda a sala inteira. ToyRoomPhase monta createToyRoomStoryContext; adaptador fornece mundo, atores, exploração, fluxo, controles, áudio e apresentação com referências atuais após restore. Limpeza de controles, soltura, contador dos brinquedos e áudio mantêm sua sequência. Métodos de render e todos os assets e recortes preservados. Três fontes de QA adaptadas em novo pacote imutável e nova regressão de contrato arquivada. Checkpoints e resultados no pacote refact-etapa12-20261015. Sem commit ou push.",
+  "checks": [
+    "Desktop antes de editar: comparação exata com referência inicial aprovada",
+    "npm test: aprovado, incluindo diálogos, câmera, história integrada e 111 percursos de balanceamento",
+    "test:toy-room:story-context: aprovado; referências substituídas, identidade, câmera, soltura, controles, áudio e snapshot",
+    "script:test-toy-room-story.js: aprovado; mock antigo adaptado ao getCameraFrame e ao novo construtor; asserções mantidas",
+    "test:refact:browser desktop: 78 imagens, 459 assets, 38 apoios e estados exatamente iguais à referência; 12875 quadros",
+    "test:refact:browser android: 78 imagens, 459 assets, 38 apoios e estados exatamente iguais à referência; 13264 quadros",
+    "Save/load aprovado: seis recargas na exploração e uma no combate por perfil",
+    "Build e check-assets aprovados; 66 recursos",
+    "docs:sprites: 415 arquivos, 93 recortes, 29 assinaturas; inventário preservado salvo linhas de referência",
+    "Imports locais existentes, ausência de this.room na narrativa e git diff --check aprovados"
+  ],
+  "pending": [
+    "Separar os métodos de apresentação de ToyRoomStory em uma etapa própria, com nova comparação integral",
+    "Android emulado e avanço determinístico no navegador; aparelho físico e playtest humano não executados nesta sessão"
+  ],
+  "files": [
+    "src/js/toy-room/ToyRoomStoryContext.js",
+    "src/js/toy-room/ToyRoomStory.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/sprites/inventario.json"
+  ]
+}

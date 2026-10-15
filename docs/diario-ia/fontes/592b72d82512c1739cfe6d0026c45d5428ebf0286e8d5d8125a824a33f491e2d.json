@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "592b72d82512c1739cfe6d0026c45d5428ebf0286e8d5d8125a824a33f491e2d",
+  "path": "checkpoints/refact/etapa19/antes/ToyRoomEnvironmentAssets.js",
+  "sha256": "5f5987b08e41f2bed6149e49f7ba9297b6b589e952ad8818de2be198612f73db",
+  "capturedAt": "2026-10-15T18:11:24.828013+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "19"
+  },
+  "encoding": "utf-8",
+  "content": "/** Resolve os recortes existentes da sala sem acessar gameplay, câmera ou narrativa. */\nexport function createToyRoomEnvironmentAssets(assets) {\n  const environmentFloorTile = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 27, y: 151, width: 186, height: 48\n  });\n  const environmentTeddy = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 424, y: 44, width: 86, height: 120\n  });\n  const environmentRug = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 39, y: 355, width: 291, height: 247\n  });\n  const environmentDoor = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 304, y: 158, width: 88, height: 136\n  });\n  const environmentChest = assets?.get('toy-room-chest-brinquedos-v1') || null;\n  const environmentTrain = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 689, y: 76, width: 116, height: 88\n  });\n  const environmentTable = assets && assets.getRegion('toy-room-environment-sheet', {\n    x: 548, y: 44, width: 137, height: 119\n  });\n  const environmentDetails = assets ? [\n    {\n      image: assets.getRegion('toy-room-environment-sheet', { x: 832, y: 482, width: 45, height: 45 }),\n      x: 1350,\n      y: 470,\n      width: 34,\n      height: 34\n    },\n    {\n      image: assets.getRegion('toy-room-environment-sheet', { x: 878, y: 482, width: 54, height: 45 }),\n      x: 1430,\n      y: 615,\n      width: 42,\n      height: 34\n    },\n    {\n      image: assets.getRegion('toy-room-environment-sheet', { x: 839, y: 555, width: 50, height: 52 }),\n      x: 1180,\n      y: 930,\n      width: 42,\n      height: 44\n    },\n    {\n      image: assets.getRegion('toy-room-environment-sheet', { x: 1038, y: 561, width: 66, height: 63 }),\n      x: 220,\n      y: 520,\n      width: 54,\n      height: 52\n    }\n  ] : [];\n\n  return { environmentFloorTile, environmentTeddy, environmentRug, environmentDoor, environmentChest, environmentTrain, environmentTable, environmentDetails };\n}\n"
+}

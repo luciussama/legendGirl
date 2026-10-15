@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c30d6f4af727f308b0a67f9bb19b4fcdc47094c2571d10732e7df1d6025ca8f3",
+  "path": "refact/referencia-inicial/desktop/PICKUP.png",
+  "sha256": "caaae3e75a75a1439d172a47ae52940bd03c730a11fd3ed8afc66b123c925756",
+  "capturedAt": "2026-10-15T13:29:52.452652+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/PICKUP.png\", \"sha256\": \"886c7e938368ccd8cf447acb8edf2166fd97e64353de488bc34c5adbf73accc5\", \"bytes\": 1075242, \"binaryRetained\": false}"
+}

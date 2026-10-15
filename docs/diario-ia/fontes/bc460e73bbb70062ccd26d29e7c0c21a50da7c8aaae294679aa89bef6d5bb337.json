@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bc460e73bbb70062ccd26d29e7c0c21a50da7c8aaae294679aa89bef6d5bb337",
+  "path": "refact/referencia-inicial/desktop/apoio-ida-8.png",
+  "sha256": "a8dc804d188ba30d54bb478d3b65929860388a91d82fe16c35957191f393d65d",
+  "capturedAt": "2026-10-15T13:29:52.467982+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/apoio-ida-8.png\", \"sha256\": \"27fbb0793ff7dbbece956d6aec91843607036e1d765e2bbd74ba2aa1086725a9\", \"bytes\": 402748, \"binaryRetained\": false}"
+}

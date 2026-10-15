@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d1d25b6651b9b8c19b1e202ed3898ef5b4e3338f011600b35e064d08a3918fd6",
+  "path": "refact/referencia-inicial/desktop/apoio-retorno-15.png",
+  "sha256": "5e47b77bde994d8a36362621ff33edcbb4b90586be6943b8a495e5bc2b6446ae",
+  "capturedAt": "2026-10-15T13:29:52.473811+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/apoio-retorno-15.png\", \"sha256\": \"bb112ec19d9d9e6043853a8a30c10c09ca784c3cf5c6adb97da4cef44ec2dc24\", \"bytes\": 206542, \"binaryRetained\": false}"
+}

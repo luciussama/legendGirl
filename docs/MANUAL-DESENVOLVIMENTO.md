@@ -1,10 +1,10 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **06/10/2026**. Inclusão do design de batalha: **12/10/2026**.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **15/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
 
 Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
 
-Repositório de referência: [luciussama/legendGirl no GitHub](https://github.com/luciussama/legendGirl). A leitura direta do GitHub não estava disponível durante esta revisão; as fontes utilizadas são os arquivos da cópia local ligada a esse `origin`, incluindo alterações presentes no workspace. Este documento não afirma que essas alterações já estejam publicadas em `main`.
+Repositório de referência: [luciussama/legendGirl no GitHub](https://github.com/luciussama/legendGirl). A fonte desta documentação é o código local. Consulte [ARQUITETURA](ARQUITETURA.md) para todos os módulos/entidades e [COMANDOS](COMANDOS.md) para os aliases e ferramentas. O registro de integração e as evidências ficam no diário; merge local não equivale a publicação.
 
 ## Índice
 
@@ -66,7 +66,7 @@ Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist 
 | [Personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md) | Origem imutável, recortes e regras de animação. |
 | [Arte complementar](../assets/art/dark-room/modern/README.md) | Recursos ilustrados e calibração de apoios. |
 | [Abertura](../assets/art/dark-room/opening/README.md) | Atlas narrativo, tempo e persistência da sequência. |
-| [Regras do modo de batalha](battle-mode/battle-mode-rules.md) | Design oficial congelado da arena, controles, HP, roubo de corações e condições de resultado. |
+| [Arena atual](arena/GUIA-ARENA.md) / [design inicial](battle-mode/battle-mode-rules.md) | Implementação vigente e diferenças explícitas para o projeto original/combate legado. |
 
 Comentários, documentação, interface e diagnósticos novos são escritos em português do Brasil. Preserve nomes de APIs, identificadores, comandos e caminhos. Não traduza dependências nem registros históricos externos.
 
@@ -80,7 +80,7 @@ Relatórios, verificações, fixtures e registros de evidência pertencem ao di�
 flowchart TD
   HTML["index.html / CSS"] --> MAIN["main.js: menus e integração DOM"]
   MAIN --> GAME["createGame: update / render / loop"]
-  GAME <--> STATE["GameState + variáveis locais"]
+  GAME <--> STATE["GameState: estado de gameplay"]
   GAME --> INPUT["InputController"]
   GAME --> CAMERA["CameraController: câmera lógica"]
   GAME --> VISUAL["CameraPresentation + ajustes móveis"]
@@ -106,7 +106,7 @@ flowchart TD
 | Desenho | `environment/`, `entities/`, `effects/`, `ui/` | Materiais, sprites, luzes, transições e texto. |
 | Exploração | `toy-room/` | Sala com câmera, entradas, móveis, colisões e coleta próprios. |
 | Recursos | `assets/` em `src/js/` | Manifesto, imagens, caches, atlas e personagem oficial. |
-| Diagnóstico | `debug/`, `tests/`, `scripts/` | Inspeção do atlas, fixtures e verificações automatizadas. |
+| Diagnóstico | `debug/`, `scripts/` e acervo de IA | Overlay de atlas e executor de QA; fixtures/tests só são recuperados temporariamente. |
 
 `index.js` de cada pasta reexporta implementações; não contém um loop adicional. `input.js` e `toyRoom.js` preservam pontos de importação existentes. Prefira os pontos de entrada já usados pela área e evite introduzir dependências circulares.
 
@@ -114,7 +114,7 @@ flowchart TD
 
 `createGame` cria estado, assets, áudio, câmera, partículas, abertura e entrada. `assetsReady` é a promessa de carregamento do manifesto/pré-carregamento. O primeiro desenho acontece antes do início da campanha. `start()` tenta restaurar progresso, inicia a abertura ou o modo salvo e agenda `requestAnimationFrame(loop)`.
 
-`loop(currentTime)` calcula tempo relativo a 60 Hz e limita `dt` a **0,5..1,2**. É passo variável limitado, não um acumulador fixo. Quando pausado, continua desenhando, sem avançar `update`. Na sala de brinquedos, delega `update(dt)` e `render()` à instância própria. No quarto, chama `update(dt)`, sincronização e `render()`.
+`loop(currentTime)` calcula tempo relativo a 60 Hz e limita `dt` a **0,5..1,2**. É passo variável limitado, não um acumulador fixo. Quando pausado, continua desenhando, sem avançar `update`. Na sala de brinquedos, delega `update(dt)` e `render()` à instância própria. No quarto, chama `update(dt)`, publicação da orientação do viewport e `render()`.
 
 | API retornada por `createGame` | Uso e efeito |
 | --- | --- |
@@ -122,18 +122,19 @@ flowchart TD
 | `doJump(inputSource)`, `isGrounded`, `isCutsceneActive`, `setLastInputDevice` | Entrada contextual: salto ou interação narrativa respeitando bloqueios. |
 | `togglePause`, `setPaused`, `isPaused` | Pausa da atualização; desenho permanece disponível. |
 | `retry`, `resetToStart`, `restartToTitle`, `isGameOver` | Recuperação/derrota e retorno ao menu. |
-| `startToyRoomPhase`, `isToyRoomMode` | Transição/delegação à sala. |
+| `startToyRoomPhase`, `startToyRoomIntroduction`, `isToyRoomMode` | Transição, introdução e delegação à sala. |
+| `startDebugPhase`, `getDifficulty` | Seletor de fases sem autosave de campanha e consulta de dificuldade normalizada. |
 | `setMuted`, `toggleMute`, `isMuted`, `setMasterVolume`, `getMasterVolume`, `pauseMusic`, `resumeMusic` | Controle de áudio usado pela página. |
 | `state`, `toyRoomIntroduction`, `camera`, `lighting`, `particles`, `transitions`, `background`, `platforms`, `hud`, `dialogue`, `assets`, `assetsReady`, `darkRoomAtlas`, `atlasDebugger`, `input`, `audio` | Referências expostas para integração/inspeção; não significam autorização para escrever arbitrariamente no estado. |
 | `destroy` | Salva e remove listeners específicos de campanha/entrada/áudio. Não assuma que encerra todo RAF ou todo listener de resize: audite o ciclo de vida ao criar múltiplas instâncias. |
 
-Os métodos internos `update`, `render`, `loop`, `syncStateToLocals` e `syncLocalsToState` não são APIs públicas normais. Fixtures de `tests/` expõem controles adicionais por instrumentação de código; não leve esses controles ao jogo distribuído.
+Os métodos internos `update`, `render`, `loop`, `syncViewportFromState` e `syncViewportToState` não são APIs públicas normais. Fixtures recuperadas do diário em `tests/` temporários expõem controles adicionais por instrumentação de código; não leve esses controles ao jogo distribuído.
 
 ## Estado, física e persistência
 
 [StateVariables](../src/js/state/StateVariables.js) define `baby`, `fairy`, modo, câmera, prontidão, narrativa, relógios e buffers. [GameState](../src/js/state/GameState.js) implementa transições. `game.js` ainda contém movimento, impulso, pousos e coordenação narrativa; as seis sequências do quarto estão em `DarkRoomNarrative.js`. Não existe uma classe independente que concentre toda a física.
 
-Há duas representações de parte do estado: propriedades de `GameState` e variáveis locais do coordenador. `syncLocalsToState` copia locais para o objeto; `syncStateToLocals` faz o inverso. Métodos que delegam a `GameState` usam essas passagens. A revisão de um campo novo deve identificar seu proprietário, leitores, escritores, publicação e persistência; não acrescentar automaticamente outro espelho. Permanecem 47 espelhos sincronizados, além de pausa/temporizador. Os quatro campos `cutsceneCompleted`, `lastUsedInputDevice`, `standbyStandUpProgress` e `standbyDialogueAlpha` já usam GameState diretamente. GameState ainda não é a única fonte de verdade.
+Os campos de gameplay de `game.js` são lidos e escritos diretamente em `GameState`: câmera lógica, narrativa, progressão, fase ativa, indicadores de início/fim e temporizadores de entrada. Não há `Proxy` narrativo nem cópias locais desses campos. A orientação `isPortrait` conserva a publicação/restauração nos pontos originais por `syncViewportToState` e `syncViewportFromState`; trata-se de uma fronteira de apresentação cuja ordem influencia o enquadramento móvel. Pausa, relógio do autosave e objetos de apresentação conservam o ciclo de vida existente. A revisão de um campo novo deve identificar seu proprietário, leitores, escritores e persistência; não acrescentar outro espelho de gameplay.
 
 ### Métodos de estado por fluxo
 
@@ -210,7 +211,7 @@ Um viewport CSS 390 × 844 não implica bitmap 390 × 844. `handleResize` delega
 
 Não atribua o defeito à câmera apenas pela proximidade de uma alteração. Capture uma pose reproduzível, a matriz aplicada, dimensões CSS/internas e alpha de cada estágio. Desative uma camada por vez na fixture. Diferencie parallax intencional de erro de referencial.
 
-O caso QA-VISUAL-001 demonstrou que limitar o fundo a `0..canvas.width` sob zoom/offset expõe transparência. Compor a máscara sobre essa área mostra sua própria cor acinzentada. A correção de cobertura fica em `BackgroundRenderer`, sem mudar física ou lógica da câmera. Testes relacionados: `test-background-viewport.js`, `test-lighting.js` e fixture `dark-room-visual-layers.html`.
+Limitar o fundo a `0..canvas.width` sob zoom/offset pode expor transparência; a máscara composta sobre essa área mostra sua própria cor. A cobertura pertence a BackgroundRenderer. Testes/fixtures relacionados são recuperados do diário por seus nomes históricos; diagnósticos e evidências de execuções ficam no acervo.
 
 ## Entidades, efeitos e interface
 
@@ -253,41 +254,57 @@ A abertura tem estado e persistência próprios, além do pacote de campanha. Al
 
 | Grupo de métodos | Responsabilidade |
 | --- | --- |
-| `setupListeners`, `handleKeyDown`, `handleKeyUp`, `onPointerDown`, `onPointerMove`, `onPointerUp` | Instala e processa controles próprios. `destroy` remove seus listeners. |
+| `setupListeners`, `handleKeyDown`, `handleKeyUp`, `onPointerDown`, `onPointerMove`, `onPointerUp` | Delega os controles ao `ToyRoomInputController`. `destroy` remove seus listeners pelo mesmo controlador. |
 | `getCanvasCoordinates`, `isActionButtonHit` | Converte ponteiro e testa área da ação; não usar coordenadas CSS diretamente em física do mundo. |
-| `triggerAction` | Pegar/soltar/organizar, sujeito à distância e estado existentes. |
-| `resolveCollisions` | Resolve colisões com móveis; altera gameplay. |
-| `spawnSparkles`, `spawnConfetti` | Efeitos de interação/vitória. |
+| `triggerAction` | Delega decisões e feedback à interação, preservando distâncias e bloqueios. |
+| `resolveCollisions` | Delega a resolução geométrica ao `ToyRoomMovement`, mantendo a interface usada pela narrativa. |
+| `spawnSparkles`, `spawnConfetti` | Delega emissão de efeitos ao `ToyRoomEffects`. |
 | `update`, `render` | Avança o modo e compõe a cena. |
-| `snapshot`, `restore` | Captura serializável e reconexão do brinquedo carregado por ID. |
+| `snapshot`, `restore` | Delega captura e restauração à persistência, inclusive reconexão por ID. |
 
 A fábrica `createToyRoom` retorna `update`, `render`, `triggerAction`, `destroy` e `instance`. `RoomEnvironmentRenderer` implementa `renderBackground`, `renderPerspectiveFloor`, janelas, portal, tapetes, trilhos e `renderFurniture`; `ToyRenderer.renderToy` desenha os itens; `ToyRoomEntities.renderPlayer/renderFairy` desenha os atores; `ToyRoomUI.renderUI` desenha a interface.
+
+[ToyRoomInputController](../src/js/toy-room/ToyRoomInputController.js) processa teclado, gamepad e ponteiros, converte coordenadas CSS para Canvas, testa os controles móveis e instala/remove os listeners. O contrato [ToyRoomInputContext](../src/js/toy-room/ToyRoomInputContext.js) fornece somente estado de entrada, acessos atuais a Canvas/jogador e callbacks de bloqueio, dispositivo, áudio e ações. Os campos de entrada da fase continuam sendo a fonte dos dados usados pelo HUD e pelo combate, sem cópias no controlador. Os getters acompanham substituições feitas por `restore` e `clearInput`. A fase conserva os métodos públicos e os handlers vinculados; o controlador é criado no primeiro uso. Preservar a prioridade das entradas, as bordas de pressão dos botões, a captura dos ponteiros e a limpeza em blur, pausa, restauração e saída.
+
+[ToyRoomMovement](../src/js/toy-room/ToyRoomMovement.js) calcula o movimento da exploração e resolve colisões com móveis e limites da sala. A fase passa jogador, entradas e partículas atuais em cada atualização; o módulo não retém referências entre quadros. `resolveCollisions` permanece público na fase e também atende as consultas narrativas de piso livre. Preservar a prioridade teclado → gamepad → toque, peso do brinquedo, orientação, cadência dos passos, ordem dos móveis e desempate das penetrações. A história recebe `updateAfterMovement` após a resolução; a posição do brinquedo carregado continua sendo atualizada em seguida pela fase.
+
+A sala distribui as demais responsabilidades entre módulos específicos:
+
+| Módulo | Contrato e cuidados |
+| --- | --- |
+| [ToyRoomInteraction](../src/js/toy-room/ToyRoomInteraction.js) / [contexto](../src/js/toy-room/ToyRoomInteractionContext.js) | Decide proximidade, coleta, soltura e armazenamento; mantém debounce, prioridade arena/combate, ordem dos efeitos, notificação à história e contagem. Getters acessam objetos atuais após restore. |
+| [ToyRoomEffects](../src/js/toy-room/ToyRoomEffects.js) | Inicializa poeira e emite/atualiza brilhos, confetes, passos e animação do baú nas coleções recebidas. Preservar a ordem das chamadas aleatórias e sua posição no update. |
+| [ToyRoomCompanion](../src/js/toy-room/ToyRoomCompanion.js) | Atualiza tutorial, seleção de brinquedo, voo e rastro da fada. Recebe os atores do quadro e devolve a guia escolhida. Não define o alvo da câmera. |
+| [ToyRoomCamera](../src/js/toy-room/ToyRoomCamera.js) | Calcula câmera e enquadramento com alvo explícito selecionado pela história. A fase publica as coordenadas calculadas; fórmulas, limites e área segura permanecem compartilhados com a apresentação. |
+| [ToyRoomSceneRenderer](../src/js/toy-room/ToyRoomSceneRenderer.js) / [dados do quadro](../src/js/toy-room/ToyRoomSceneFrame.js) | Compõe cenário, entidades ordenadas por Y, espada, fada, partículas, HUD e falas. Recebe somente as referências e callbacks do quadro. Preserva panorama de retorno e registro do viewport. |
+| [ToyRoomInitialEntities](../src/js/toy-room/ToyRoomInitialEntities.js) | Cria jogador, fada, móveis e oito brinquedos com objetos próprios por sala. Conserva catálogo, pesos e geometria; não compartilha objetos mutáveis entre instâncias. |
+| [ToyRoomPersistence](../src/js/toy-room/ToyRoomPersistence.js) / [contexto](../src/js/toy-room/ToyRoomPersistenceContext.js) | Captura e restaura o formato de save existente, religa o item carregado por ID, migra facing antigo e retoma história/combate/arena na mesma ordem. Preserva includeArena/preserveArena e limpeza de controles. |
+
+`ToyRoomPhase` conserva a criação e o ciclo de vida dos subsistemas, a seleção do modo, as transições e as delegações públicas. A sequência é: proximidade, movimento/colisão, história após movimento, posição do item carregado, fada/tutorial, efeitos e câmera. Retornos antecipados da história ou dos modos de combate mantêm sua posição. A redução de responsabilidades da fase não implica que o combate legado e a arena já tenham contratos restritos para todos os acessos à sala.
+
+[ToyRoomTutorial](../src/js/toy-room/ToyRoomTutorial.js) recebe [ToyRoomTutorialContext](../src/js/toy-room/ToyRoomTutorialContext.js), criado pela fase: jogador, fada, brinquedos, câmera, apresentação móvel e dois campos de progresso. Os getters consultam objetos atuais após restauração; os setters expõem somente conclusão e modo. O tutorial conserva seleção do brinquedo, cooldown, mensagens por dispositivo e conclusão ao carregar. [ToyRoomTutorialRenderer](../src/js/toy-room/ToyRoomTutorialRenderer.js) recebe somente os dados do quadro e desenha a orientação com o layout seguro compartilhado. [ToyRoomInputBindings](../src/js/toy-room/ToyRoomInputBindings.js) fornece os mapeamentos para entrada e mensagens; `TOY_ROOM_INPUT` continua reexportado pelo módulo do tutorial para os chamadores existentes. A regressão de contrato e restauração integra `npm test` e pode ser recuperada isoladamente por `npm run journal:qa -- test:refact:tutorial`.
+
+[ToyRoomWorldQueries](../src/js/toy-room/ToyRoomWorldQueries.js) reúne as consultas de piso livre, piso alcançável e viewport usadas pela narrativa. Recebe funções de acesso a dimensões, jogador, colisões e câmera, sem receber a fase inteira. Esses acessos devem consultar os objetos atuais: `restore` pode substituir o jogador e outros dados da sala. A busca conserva a ordem dos vizinhos e candidatos, que influencia a escolha dos pontos de retorno dos brinquedos e da espada. O módulo consulta o mundo; a narrativa continua responsável por seus estados e decisões.
+
+[ToyRoomToyActions](../src/js/toy-room/ToyRoomToyActions.js) concentra as transições de pegar, guardar no baú, soltar e devolver um brinquedo ao chão. As funções recebem os objetos atuais e preservam sua identidade; não armazenam referências entre chamadas. `ToyRoomPhase` e `ToyRoomStory` continuam escolhendo quando e onde executar cada ação. Alcance, resolução de colisões, contagem organizada, fila de retorno, tutorial, áudio e efeitos mantêm sua coordenação nos chamadores. Preservar a ordem da escolha aleatória no baú, dos efeitos, da notificação à narrativa e do incremento da contagem.
+
+`ToyRoomStory` recebe um contrato explícito, construído na fase por [createToyRoomStoryContext](../src/js/toy-room/ToyRoomStoryContext.js). Seus acessos são `world` (consultas geométricas), `actors` (jogador, fada e dificuldade), `exploration` (brinquedos, móveis e ações narrativas), `flow` (tutorial e introdução), `controls` (limpeza), `audio` (coleta e trilha da espada) e `presentation` (assets e apresentação móvel). A narrativa não recebe nem guarda a fase completa. O adaptador concentra o acesso à sala, consulta referências atuais após restauração e mantém os efeitos nos mesmos pontos. Não capturar jogador, fada ou arrays ao construir o contrato; seus getters devem continuar consultando os objetos atuais. O snapshot narrativo contém somente o estado da história. [ToyRoomStoryRenderer](../src/js/toy-room/ToyRoomStoryRenderer.js) resolve os recortes e desenha a espada, o ataque e as falas a partir dos dados do quadro. Não recebe a história inteira nem altera o estado narrativo. `ToyRoomStory.narrativeBeat()` seleciona o conteúdo segundo os mesmos tempos; seus métodos `render*` delegam a apresentação. O export `drawToySword` no módulo anterior e a propriedade `attackFrames` foram preservados para os consumidores do combate.
 
 Móveis e brinquedos iniciais estão no construtor da fase; não procure todo o layout da sala em `config.js`. Adicionar item exige revisar inicialização, interação, contagem de vitória e snapshot/restauração, além do desenho.
 
 ### Modo de batalha da Toy Room — design oficial
 
-O diagrama abaixo faz parte da documentação oficial direcionada ao desenvolvedor. Ele descreve o design aprovado, ainda sem implementação: imediatamente após a cena de obtenção da espada, a exploração termina, a câmera fica fixa e a sala se transforma em arena de combate exclusivamente horizontal. CIMA pula e BAIXO abaixa; a menina não anda em profundidade.
+O design inicial está preservado em [battle-mode-rules](battle-mode/battle-mode-rules.md) e nas três especificações JSON dessa pasta. Ele não é a configuração carregada pelo runtime: descreve câmera fixa, 2 HP por inimigo comum e 4 para o Urso, além de decisões pendentes na época. Não converter esses `null` em defaults ou interpretar seu antigo escopo “design apenas” como proibição vigente de código já autorizado.
 
-![Fluxo oficial do modo de batalha da Toy Room: aquisição da espada, arena horizontal com câmera fixa, controles, HP, vitória, derrota e roubo de corações.](battle-mode/battle-flow-diagram.png)
-
-[Abrir diagrama em resolução original](battle-mode/battle-flow-diagram.png).
-
-Os máximos são 3 corações para a menina, 2 para cada brinquedo inimigo comum e 4 para o Urso. Cada acerto retira 1 coração do alvo e recupera 1 para o atacante, limitado ao próprio máximo; a cura excedente é descartada sem impedir o dano. A derrota ocorre com 0 corações da menina; a vitória exige derrotar todos os brinquedos inimigos e o Urso.
-
-Consulte as [regras canônicas](battle-mode/battle-mode-rules.md) e a [especificação de balanceamento](battle-mode/battle-balance-spec.json) antes de produzir código, sprites ou integração. As regras estão congeladas e não podem ser alteradas por prompts posteriores sem aprovação explícita do usuário. Parâmetros ainda não definidos estão registrados como pendentes; valores `null` na especificação não são defaults de runtime. A dependência `09-final-homologation.md` permanece não verificada, pois o arquivo não foi localizado no workspace.
+A [arena implementada](arena/GUIA-ARENA.md) usa `ToyRoomArenaPhase`, `ARENA_TUNING`, `ARENA_ENEMIES`, `ArenaCombatRules`, IA, contato, câmera e apresentação próprios. A menina começa com 3 HP; Trem/Robô/Dinossauro/Urso têm 3/4/4/8. `ToyRoomBattle` conserva um perfil legado com 2/2/2/4 e tuning próprio; não confundir os perfis. Roubo de 1 coração por acerto válido e descarte de cura excedente continuam compartilhados. Bloqueio não transfere vida.
 
 ### Inimigos da Toy Room — design oficial
 
-O [catálogo oficial de inimigos](battle-mode/toy-enemy-design.md), definido pelo PROMPT 11, registra Trem, Robô e Dinossauro, cada um com máximo de 2 corações. O Trem usa `Steam Blast` e `Front Charge`; o Robô usa `Laser Beam` e `Rocket Punch`; o Dinossauro usa `Bite` e `Rush`. As características dos ataques refletem o brinquedo, e cada tipo utiliza exclusivamente seu repertório definido.
-
-Consulte também a [especificação estruturada dos inimigos](battle-mode/toy-enemy-spec.json). Alcances numéricos, tempos e IA continuam pendentes; o repertório do Urso está definido na seção do chefe final. Este catálogo é de design e preserva as regras congeladas de arena, controles, HP e roubo de coração.
+Trem: `Steam Blast`/`Front Charge`; Robô: `Laser Beam`/`Rocket Punch`; Dinossauro: `Bite`/`Rush`. O [catálogo inicial](battle-mode/toy-enemy-design.md) conserva a origem do repertório. A implementação define alcance, preparação, recuperação, corpos sólidos, evasão, memória curta e escolha determinística em módulos de combate; esses parâmetros não estão pendentes no runtime. O Trem mantém sequência introdutória; os seguintes reagem à antecipação da espada e oferecem janelas de contra-ataque.
 
 ### Urso, chefe final — design oficial
 
-O [design oficial do Urso](battle-mode/bear-final-boss-design.md), definido pelo PROMPT 12, estabelece o primeiro brinquedo encontrado como o último inimigo enfrentado. Seu HP máximo é 4 corações; `ENRAGE` ativa no último coração. Os estados oficiais são `IDLE`, `APPROACH`, `ATTACK`, `RETREAT` e `ENRAGE`.
-
-O repertório é exclusivo: `Bear Hug` (abraço de curta distância), `Belly Charge` (investida pesada) e `Toy Leap` (salto com impacto). Nenhum golpe novo pode ser adicionado em produção, inclusive durante ENRAGE. A [especificação estruturada do chefe](battle-mode/bear-final-boss-spec.json) registra os parâmetros pendentes, incluindo o comportamento de ENRAGE quando o Urso recupera corações.
+O [design inicial](battle-mode/bear-final-boss-design.md) define o repertório exclusivo: `Bear Hug`, `Belly Charge`, `Toy Leap`. A arena atual tem 8 HP, introdução própria e fúria a partir de metade da vida, mantida após cura; o perfil legado conserva gatilho de último coração e máximo 4. `ArenaBoss`, `ToyRoomBattle` e `ArenaEnemyAI` definem a evolução atual. Nenhum desses documentos autoriza criar golpes novos ou alterar o balanceamento por uma revisão documental.
 
 ## Implementações atuais e fronteiras
 
@@ -295,10 +312,10 @@ A implementação usa composição de instâncias e funções por domínio. Os n
 
 | Módulo / forma | Responsabilidade e dependências | Funções e contratos centrais |
 | --- | --- | --- |
-| [RuntimeContext](../src/js/runtime/RuntimeContext.js), fábrica | Agrega `state`, `audio`, `camera`, `assets`, `input`, `effects`, `campaign` com as mesmas referências existentes. Não gerencia lifecycle nem resolve dependências. | `createRuntimeContext({...})` devolve objeto simples. No jogo atual `input` é o adaptador `inputHandler` e `effects` é `particles`; não é um registro de todos os efeitos. Não elimina espelhos nem injeta contexto universalmente. |
+| [RuntimeContext](../src/js/runtime/RuntimeContext.js), fábrica | Agrega `state`, `audio`, `camera`, `assets`, `input`, `effects`, `campaign` com as mesmas referências existentes. Não gerencia lifecycle nem resolve dependências. | `createRuntimeContext({...})` devolve objeto simples. No jogo atual `input` é o adaptador `inputHandler` e `effects` é `particles`; não é um registro de todos os efeitos. Não é responsável pela migração de estado nem injeta contexto universalmente; os espelhos de gameplay já foram removidos do coordenador. |
 | [ViewportController](../src/js/controllers/ViewportController.js), fábrica | Mede rect CSS (fallback `host.innerWidth/innerHeight`), calcula aspecto, redimensiona Canvas principal/auxiliar e iluminação. | `createViewportController({...})` devolve `resize()`. Chama `onOrientation(aspect < 1.15)` antes de redimensionar. O callback mantém `isPortrait` local em game.js; publicação posterior permanece necessária. Listeners continuam no coordenador. Não calcula safe area nem política de zoom mobile. |
 | [CameraQaObserver](../src/js/debug/CameraQaObserver.js), fábrica | Instrumentação optativa; depende de `host.location`, callback `host.cameraQaRecord` e função `snapshot`. | `createCameraQaObserver({...}).record(transform = null)` chama snapshot/callback somente com parâmetro `cameraQa` presente e callback válido. Não armazena nova câmera. |
-| [DarkRoomRenderPipeline](../src/js/rendering/DarkRoomRenderPipeline.js), função | Composição da cena: branches de introdução/abertura, apresentação, camadas, iluminação, HUD e diálogos. Recebe objetos, escalares e callbacks de desenho. | `renderDarkRoom(context)` aplica MobileZoom → offset Android → CameraController.applyTransform; preserva save/restore do Canvas e emissão QA. Não executa update de simulação. Alguns callbacks de desenho ainda publicam locais em GameState: o render completo não é puro. |
+| [DarkRoomRenderPipeline](../src/js/rendering/DarkRoomRenderPipeline.js), função | Composição da cena: branches de introdução/abertura, apresentação, camadas, iluminação, HUD e diálogos. Recebe objetos, escalares e callbacks de desenho. | `renderDarkRoom(context)` aplica MobileZoom → offset Android → CameraController.applyTransform; preserva save/restore do Canvas e emissão QA. Não executa update de simulação. Alguns callbacks de desenho ainda publicam a orientação do viewport em GameState: o render completo não é puro. |
 | [DarkRoomNarrative](../src/js/narrative/DarkRoomNarrative.js), funções | Seis sequências do quarto: atores, foco/zoom, partículas, diálogo, bloqueios e gatilhos; recebe contexto específico e dt. | `updateStandbyNarrative`, `updateTransicaoStandbyNarrative`, `updateCasteloNarrative`, `updateReviravoltaNarrative`, `updateTutorialRetornoNarrative`, `updatePortalNarrative`. Não possuem armazenamento próprio; game.update seleciona uma e retorna antes do update normal da câmera. |
 | [ToyRoomIntroduction](../src/js/cinematics/ToyRoomIntroduction.js), classe | Sequência cinemática antes da sala ativa; usa sala temporária com `bindInputs:false`, imagem de saída e áudio. Não executa a simulação normal da sala. | `start(context)` prepara/inicia; `update(dt)` avança relógio e eventos; `stage`/`dialogue` consultam cena; `cameraFrame(canvas)`/`fairyPosition()` calculam composição; `render`/`drawDialogue` desenham; `cancel()` encerra. `onComplete` abre sala ativa. |
 | [ToyCarryPresentation](../src/js/toy-room/ToyCarryPresentation.js), função/dados | Composição visual da pose de transporte e sobreposição de dedos/pernas; não muda a regra de carregar. Depende de assets, jogador e ToyRenderer. | `renderToyCarry(ctx, player, options)` usa `CARRY_PROFILES` por tipo para escala/âncora. Retorna false se faltar pose ou brinquedo, permitindo o caminho alternativo do renderizador. Não serializa perfis ou Canvas no save. |
@@ -306,42 +323,56 @@ A implementação usa composição de instâncias e funções por domínio. Os n
 
 ### Catálogo das classes
 
-As 24 classes declaradas em src/js têm os papéis abaixo. Objetos de entidade (baby, fairy, player), dados de configuração e fábricas não são classes adicionais. Métodos privados/internos não constituem APIs estáveis.
+As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fairy/player e fábricas de contexto são dados/funções, não classes adicionais. Métodos internos não constituem APIs estáveis.
 
-| Classe | Responsabilidade / estado próprio | Funções para começar a leitura |
+| Classe | Implementação | Responsabilidade |
 | --- | --- | --- |
-| AssetManager | Manifesto, imagens, status e cache de recortes; não define gameplay. | loadManifest, preload, get, getRegion |
-| GameState | Defaults e comandos de prontidão, derrota, narrativa e progresso; pode alterar corpo físico. | startStandbyPreparation, resetToStart, triggerGameOver, finishCutscene |
-| InputController | Eventos, debounce, dispositivo e bordas de gamepad; delega salto ao jogo. | init, triggerJump, handleKeyDown, handlePointerDown, pollGamepad, destroy |
-| AudioController | Integra áudio, foco/visibilidade, mute e lifecycle. | init, onBackground, onForeground, destroy e delegações play* |
-| CameraController | Pose/alvos, follow, rolagem, teto e derrota; congelado arquiteturalmente. | update, syncFromState, syncToState, applyTransform |
-| CameraPresentation | Histórico visual e estabilização da pose/enquadramento; separado da física. | frame, mobileFrame, reset, snapshot, restore |
-| BackgroundRenderer | Parede e cenário com atlas, parallax e cobertura do viewport. | setAssets, renderWall, renderScenery |
-| PlatformRenderer | Ilustrações de apoios e portas; não resolve colisões. | renderPlatforms, renderExitDoor, renderTrueExitDoor |
-| LightingSystem | Canvas auxiliar, máscara de escuridão e luzes. | resize, apply |
-| BabyRenderer | Seleciona e desenha recortes da personagem oficial. | resolveAnimationState, renderPose |
-| FairyRenderer | Desenha fada e efeitos da representação; não substitui sua guia de movimento. | render |
-| ParticleSystem | Buffers de poeira/rastros e sua evolução visual. | spawnBabyJumpPuff, spawnBabyLandingPuff, update e render* |
-| TransitionEffects | Desenho da íris/transição do portal; relógio é fornecido pelo fluxo. | renderPortalWipe |
-| HudRenderer | Desenha faixa de fuga/progresso em tela. | renderEscapeBanner |
-| DialogueRenderer | Texto, retratos e prompt seguro; mede/quebra linhas. | renderCutsceneDialogue, wrapText |
-| AtlasDebugger | Inspeciona/valida regiões do atlas em modo técnico. | validateAllRegions |
-| OpeningSequence | Relógio/etapas da abertura, revelação e conclusão recuperável. | start, update, render, snapshot, restore |
-| ToyRoomIntroduction | Relógio e composição da transição para a segunda fase; callbacks e panorama. | start, update, cameraFrame, render, cancel |
-| ToyRoomPhase | Jogador, brinquedos, móveis, colisões, inputs, follow independente e save da sala. | triggerAction, resolveCollisions, update, render, snapshot, restore, destroy |
-| ToyRoomTutorial | Etapas movement/pickup, alvo e instrução por dispositivo; usa estado da fase. | start, update, nearest, guidePosition, finish, render |
-| RoomEnvironmentRenderer | Desenha arquitetura e móveis da sala. | renderBackground, renderFurniture |
-| ToyRenderer | Desenha brinquedos, seleção e apresentação de itens. | renderToy |
-| ToyRoomEntities | Desenha protagonista/fada da sala com assets/alternativas. | renderPlayer, renderFairy |
-| ToyRoomUI | HUD, joystick, ações e faixas da sala. | renderUI |
+| `AssetManager` | [assets/AssetManager.js](../src/js/assets/AssetManager.js) | Manifesto principal, carregamento/cache de imagens e recortes; prontidão e erros por recurso. |
+| `OpeningSequence` | [cinematics/OpeningSequence.js](../src/js/cinematics/OpeningSequence.js) | Abertura: relógio, cues, poses, falas, conclusão local e snapshot recuperável. |
+| `ToyRoomIntroduction` | [cinematics/ToyRoomIntroduction.js](../src/js/cinematics/ToyRoomIntroduction.js) | Transição para a sala: panorama temporário sem inputs, estágios, eventos e callback de conclusão. |
+| `AudioController` | [controllers/AudioController.js](../src/js/controllers/AudioController.js) | Integra áudio, preferências e foco/visibilidade à página; delegações e ciclo de vida. |
+| `CameraController` | [controllers/CameraController.js](../src/js/controllers/CameraController.js) | Câmera lógica, rolagem, zoom narrativo e fronteiras usadas pelo gameplay; sincroniza com GameState. |
+| `CameraPresentation` | [controllers/CameraPresentation.js](../src/js/controllers/CameraPresentation.js) | Histórico/interpolação da pose visual; estabiliza pousos sem escrever na simulação. |
+| `InputController` | [controllers/InputController.js](../src/js/controllers/InputController.js) | Ponteiro/teclado/gamepad do quarto; debounce, bloqueios, dispositivo e confirmação do primeiro salto. |
+| `AtlasDebugger` | [debug/AtlasDebugger.js](../src/js/debug/AtlasDebugger.js) | Inspeção técnica das regiões do atlas; validação e overlay optativo. |
+| `ParticleSystem` | [effects/ParticleSystem.js](../src/js/effects/ParticleSystem.js) | Buffers e evolução/desenho de poeira, brilho e rastros do quarto. |
+| `TransitionEffects` | [effects/TransitionEffects.js](../src/js/effects/TransitionEffects.js) | Íris do portal e efeitos de transição com relógio fornecido pelo coordenador. |
+| `BabyRenderer` | [entities/BabyRenderer.js](../src/js/entities/BabyRenderer.js) | Seleção/recorte das poses oficiais da menina no quarto; desenho ancorado aos pés. |
+| `FairyRenderer` | [entities/FairyRenderer.js](../src/js/entities/FairyRenderer.js) | Desenho da fada e efeitos visuais associados, sem decidir seu deslocamento. |
+| `BackgroundRenderer` | [environment/BackgroundRenderer.js](../src/js/environment/BackgroundRenderer.js) | Parede, piso, janelas, parallax e decoração; cobertura calculada pela matriz real. |
+| `LightingSystem` | [environment/LightingSystem.js](../src/js/environment/LightingSystem.js) | Canvas auxiliar, recortes de luz, máscara, brilho e vinheta; acompanha a matriz da cena. |
+| `PlatformRenderer` | [environment/PlatformRenderer.js](../src/js/environment/PlatformRenderer.js) | Arte de plataformas/portas, superfícies visuais e descarte; não resolve pousos. |
+| `GameState` | [state/GameState.js](../src/js/state/GameState.js) | Defaults e comandos de progresso, prontidão, narrativa, derrota e reinício do quarto. |
+| `ArenaAudioProfile` | [toy-room/ArenaAudioProfile.js](../src/js/toy-room/ArenaAudioProfile.js) | Intensidade/percussão da música contínua da espada, sons e retomada do áudio da sala. |
+| `ArenaBoss` | [toy-room/ArenaBoss.js](../src/js/toy-room/ArenaBoss.js) | Apresentação/estado persistível do Urso e ativação da fúria na arena. |
+| `ArenaCamera` | [toy-room/ArenaCamera.js](../src/js/toy-room/ArenaCamera.js) | Câmera e tremor próprios do combate, enquadrando os atores ampliados. |
+| `ArenaPlayerController` | [toy-room/ArenaPlayerController.js](../src/js/toy-room/ArenaPlayerController.js) | Especializa o controlador de combate com parâmetros e movimento da arena. |
+| `ArenaPlayerRenderer` | [toy-room/ArenaPlayerRenderer.js](../src/js/toy-room/ArenaPlayerRenderer.js) | Carrega/desenha poses da menina na arena, incluindo mistura, dano e ataque. |
+| `ImpactFX` | [toy-room/ImpactFX.js](../src/js/toy-room/ImpactFX.js) | Partículas, arcos, faíscas de bloqueio, flash e tremor da arena; snapshot/restore próprios. |
+| `PlayerController` | [toy-room/PlayerController.js](../src/js/toy-room/PlayerController.js) | Movimento horizontal, salto/agachamento, recuperação, recuo e animação física do combate. |
+| `RoomEnvironmentRenderer` | [toy-room/RoomEnvironmentRenderer.js](../src/js/toy-room/RoomEnvironmentRenderer.js) | Ilustra arquitetura, piso, detalhes e móveis da exploração. |
+| `ToyRenderer` | [toy-room/ToyRenderer.js](../src/js/toy-room/ToyRenderer.js) | Desenha os brinquedos atuais no chão e transportados, preservando seleção e materiais. |
+| `ToyRoomArenaBuilder` | [toy-room/ToyRoomArenaBuilder.js](../src/js/toy-room/ToyRoomArenaBuilder.js) | Deriva estruturas/layout heroicos da geometria dos móveis existentes. |
+| `ToyRoomArenaPhase` | [toy-room/ToyRoomArenaPhase.js](../src/js/toy-room/ToyRoomArenaPhase.js) | Orquestra transformação, combate, retorno e snapshot da arena; ainda retém a sala completa. |
+| `ToyRoomBattle` | [toy-room/ToyRoomBattle.js](../src/js/toy-room/ToyRoomBattle.js) | Simula a luta e transferência de corações; perfis alternam legado/arena; ainda retém a sala completa. |
+| `ToyRoomEntities` | [toy-room/ToyRoomEntities.js](../src/js/toy-room/ToyRoomEntities.js) | Desenha menina/fada da exploração com recursos oficiais e pose de transporte. |
+| `ToyRoomInputController` | [toy-room/ToyRoomInputController.js](../src/js/toy-room/ToyRoomInputController.js) | Teclado/toque/gamepad, coordenadas, hit testing, captura/liberação de ponteiros e listeners. |
+| `ToyRoomInteraction` | [toy-room/ToyRoomInteraction.js](../src/js/toy-room/ToyRoomInteraction.js) | Decide ação/proximidade, debounce e feedback; mantém ordem de efeitos, narrativa e contagem. |
+| `ToyRoomPersistence` | [toy-room/ToyRoomPersistence.js](../src/js/toy-room/ToyRoomPersistence.js) | Serializa/restaura sala, religa item por ID e retoma os subsistemas na ordem existente. |
+| `ToyRoomPhase` | [toy-room/ToyRoomPhase.js](../src/js/toy-room/ToyRoomPhase.js) | Compõe serviços e entidades, escolhe modo, mantém ciclo de vida/transições e delegações públicas. |
+| `ToyRoomStory` | [toy-room/ToyRoomStory.js](../src/js/toy-room/ToyRoomStory.js) | Recorrência, investigação, espada, comandos e relógios narrativos; recebe contexto restrito. |
+| `ToyRoomTutorial` | [toy-room/ToyRoomTutorial.js](../src/js/toy-room/ToyRoomTutorial.js) | Etapas movement/pickup, alvo, mensagens e conclusão; recebe contrato restrito de oito campos. |
+| `ToyRoomUI` | [toy-room/ToyRoomUI.js](../src/js/toy-room/ToyRoomUI.js) | HUD de exploração, joystick, ação, faixas e contagem; consome estado atual de apresentação. |
+| `DialogueRenderer` | [ui/DialogueRenderer.js](../src/js/ui/DialogueRenderer.js) | Caixa/retrato/nome/quebra de texto compartilhados pelas fases e adaptação de falas do quarto. |
+| `HudRenderer` | [ui/HudRenderer.js](../src/js/ui/HudRenderer.js) | Faixas/progresso do percurso lateral em coordenadas de tela. |
 
 Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém assinatura, linha e link de implementação. As tabelas de domínio acima explicam os efeitos e as dependências; use ambas para evitar confundir um renderizador com o dono da regra do jogo.
 
 ### Sequenciamento, contexto e publicação
 
-`main.js → createGame → update/render` continua sendo a entrada. O contexto narrativo usa `narrativeState`, um Proxy sobre GameState. `narrativeBindings` intercepta campos ainda espelhados e escreve nos locais de game.js; campos não interceptados usam GameState. Não assumir que `context.state.cameraX = ...` publica imediatamente no GameState real. O contexto de render recebe os valores do quadro explicitamente; RuntimeContext agrega serviços já criados no final de createGame e fornece referências aos contextos narrativo e de render. O próprio objeto runtimeContext não é exposto na API pública.
+`main.js → createGame → update/render` continua sendo a entrada. O contexto narrativo recebe a própria instância de `GameState`; suas escritas não passam por bindings ou outro armazenamento. O contexto de render recebe os valores do quadro explicitamente; RuntimeContext agrega serviços já criados no final de createGame e fornece referências aos contextos narrativo e de render. O próprio objeto runtimeContext não é exposto na API pública.
 
-As barreiras atuais são: comando de estado (locais → GameState → comando → locais); câmera normal (locais → GameState → controlador → update → GameState → locais); narrativa (escritas pelo Proxy → publicação posterior no loop); save (publicar locais → capturar estado). Resize não substitui nenhuma dessas barreiras.
+Comandos e narrativa usam `GameState` diretamente. O controlador de câmera conserva `syncFromState`/`syncToState` e a ordem original de atualização. A fronteira restante de orientação mantém os mesmos pontos de publicação/restauração: comando, câmera, desenho e save. Resize continua atualizando o valor de apresentação, sem antecipar sua publicação na simulação.
 
 
 ### Entrada e tutorial da Toy Room
@@ -375,17 +406,19 @@ Escreva primeiro o comportamento desejado e os estados afetados. Mudança de ent
 
 Para iniciar uma fase diretamente no debug, use o seletor da barra superior “Debug: escolha uma fase para pular”. As opções são Quarto escuro, Sala de brinquedos e Arena de batalha. Ele permanece disponível durante a partida; a arena começa com a espada equipada. Essas sessões de debug não substituem o progresso salvo da campanha. A opção normal de continuar/iniciar no menu retoma a persistência da campanha.
 
-Revise flags/defaults, sincronização local/estado, gatilho/avanço/término em `GameState` e `game.js`, conteúdo e desenho em `DialogueRenderer`, pausa/entrada e callbacks de áudio. Teste recarga no meio da cena, retorno ao menu e safe area móvel. Alterar texto pode aumentar linhas: valide altura e não apenas o conteúdo.
+Revise flags/defaults e seu proprietário em GameState, gatilho/avanço/término em `GameState` e `game.js`, conteúdo e desenho em `DialogueRenderer`, pausa/entrada e callbacks de áudio. Teste recarga no meio da cena, retorno ao menu e safe area móvel. Alterar texto pode aumentar linhas: valide altura e não apenas o conteúdo.
 
 ### Acrescentar campo de campanha
 
-Defina default; inclua nas sincronizações; determine se deve persistir; revise `captureState`, `restoreState`, validação de `read` e captura específica da sala/abertura. Teste serialização, referência dos arrays/objetos e dados anteriores. Nunca use o save para guardar contexto Canvas, referências DOM ou nós de áudio.
+Defina default em GameState; use esse campo diretamente; determine se deve persistir; revise `captureState`, `restoreState`, validação de `read` e captura específica da sala/abertura. Teste serialização, referência dos arrays/objetos e dados anteriores. Nunca use o save para guardar contexto Canvas, referências DOM ou nós de áudio.
 
 ### Ajustar uma plataforma
 
 Diferencie alteração artística de alteração de design. Arte: modifique renderer/atlas/calibração mantendo configuração física. Design autorizado: revise layout, progressão, alcance, colisões, checkpoints e referência de física como mudança explícita de gameplay. Não atualize `dark-room-physics.json` para acomodar arte ou fazer um teste passar.
 
 ## Testes e diagnóstico
+
+O catálogo [COMANDOS](COMANDOS.md) explica a recuperação temporária e as comparações de refatoração. Estas preservam a referência original de imagens/estados/recursos de runtime e reportam separadamente hashes dos READMEs de arte atualizados pela documentação. Não atualize referências gráficas ou metadados de produção para acomodar diferenças.
 
 
 O harness visual é parcialmente determinístico: performance.now, timers/RAF e storage compartilhado podem gerar diferenças sem mudança de implementação. Seed fixa exige mesma ordem de sorteios; pausa continua desenhando e não congela o pulso. Comparações exigem controlar pré-condições e validar A/B da mesma versão, sem mascarar diferenças. Isso permanece uma limitação, não uma estabilização implementada.
@@ -403,17 +436,17 @@ O harness visual é parcialmente determinístico: performance.now, timers/RAF e 
 | `npm run journal:qa -- script:test-lighting.js`, `npm run journal:qa -- script:test-background-viewport.js` | Máscara, matriz, cobertura e invariância visual. | São extras: não estão no `npm test` atual. |
 | `npm run journal:qa -- script:test-camera-presentation.js` | Damping visual, estabilização, limites e checkpoints. | Não mede percepção em dispositivo real. |
 | `npm run journal:qa -- script:test-mobile-zoom.js`, `npm run journal:qa -- script:test-android-framing.js`, `npm run journal:qa -- script:test-dialogue-safe-area.js`, `npm run journal:qa -- script:test-mobile-dialogue-region.js` | Enquadramento e texto móveis. | Adicione retrato/paisagem/insets em revisão manual. |
-| `node scripts/verify-full-browser.js android` / `iphone` / `desktop` | Sequência completa até organizar os oito objetos. | Busca instantes de salto com snapshots; não representa julgamento humano. |
+| `npm run journal:qa -- script:verify-full-browser.js android` / `iphone` / `desktop` | Sequência completa até organizar os oito objetos. | Busca instantes de salto com snapshots; não representa julgamento humano. |
 
 ### Navegador instrumentado
 
-Os scripts CDP exigem servidor na porta 3000 e Chrome dedicado em 9222. Feche a instância dedicada ao terminar, preservando o navegador pessoal. Exemplo no macOS, ajuste o binário ao seu sistema:
+Os aliases de QA recuperam fixtures e iniciam servidor temporário em porta livre; mantenha Chrome dedicado com CDP, normalmente em 9222. Fontes executadas manualmente seguem suas próprias portas. Feche somente a instância dedicada ao terminar. Consulte [todos os comandos e pré-requisitos](COMANDOS.md). Exemplo no macOS:
 
 ```sh
 "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome" --remote-debugging-port=9222 --user-data-dir=/tmp/legendgirl-qa
-node scripts/verify-full-browser.js android
-node scripts/verify-full-browser.js iphone
-node scripts/verify-full-browser.js desktop
+npm run journal:qa -- script:verify-full-browser.js android
+npm run journal:qa -- script:verify-full-browser.js iphone
+npm run journal:qa -- script:verify-full-browser.js desktop
 ```
 
 Algumas revisões específicas usam porta 3001; confira o cabeçalho do script, em vez de assumir uma porta universal. Fixtures como `dark-room-playthrough.html` podem importar o código real via Blob e expor atualização controlada, preparação e checkpoints. Isso não é uma API de produção e depende de marcadores textuais: refatorações devem revisar a fixture.
@@ -490,6 +523,6 @@ Histórico de correções, tentativas, falhas e homologações está exclusivame
 
 ## Diálogos consistentes entre fases
 
-`DialogueRenderer.renderDialogue(ctx, canvas, dialogue, options)` desenha a caixa compartilhada e o retrato. `renderCutsceneDialogue` escolhe falas e prompts da primeira fase; `ToyRoomStory.renderStoryBeat` fornece as falas temporizadas da Toy Room. A lógica de progressão não pertence ao renderer.
+`DialogueRenderer.renderDialogue(ctx, canvas, dialogue, options)` desenha a caixa compartilhada e o retrato. `renderCutsceneDialogue` escolhe falas e prompts da primeira fase; `ToyRoomStory.renderStoryBeat` fornece as falas temporizadas da Toy Room. A lógica de progressão não pertence ao renderer. `ToyRoomStory.renderStoryBeat` delega a `ToyRoomStoryRenderer.renderStoryBeat`, que adapta dados e usa a caixa compartilhada.
 
 Na Toy Room, `separateScene: false` mantém o enquadramento e as coordenadas dos controles. A opção `bottom` reserva espaço para o botão e joystick nos dispositivos móveis. Falas automáticas não exibem um pedido fictício de avanço. Narração sem interlocutor continua usando `PoeticNarrator`. Use `npm run test:dialogues` e `npm run test:dialogues:browser` para conferir esse contrato no ambiente temporário de QA.

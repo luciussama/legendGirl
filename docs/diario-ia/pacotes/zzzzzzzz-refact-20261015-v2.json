@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "zzzzzzzz-refact-20261015-v2",
+  "date": "2026-10-15T13:26:39.258084+00:00",
+  "title": "Percurso completo e comparação gráfica/comportamental da refatoração",
+  "files": [
+    {
+      "path": "scripts/test-refact-browser.js",
+      "sourceId": "6af1d5dfaacc846962f1e22c29c04b23d1ca953613f8426319db529daf8eb2e6",
+      "sha256": "77054b2fe19fc8018fb609e5af7befcb3294f2a1965f4efe232825524918fd8f",
+      "bytes": 9794,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:refact:browser": "node scripts/test-refact-browser.js"
+  }
+}

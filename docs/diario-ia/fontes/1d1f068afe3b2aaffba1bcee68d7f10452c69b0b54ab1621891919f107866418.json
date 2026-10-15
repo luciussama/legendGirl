@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1d1f068afe3b2aaffba1bcee68d7f10452c69b0b54ab1621891919f107866418",
+  "path": "qa-execucoes/963a4131edb4482f87816e358e39391e/docs/qa/toy-room-arena/desktop-derrota.png",
+  "sha256": "8e02e0b2fa3d171f948f3830213dd9c52c38597a5e1eebf5a45c7607639d9ccb",
+  "capturedAt": "2026-10-15T13:37:07.568618+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-derrota.png\", \"sha256\": \"f7520c8d74d4d559b24a38b3605eea716ddee975c7692f6358a1d864b08643d6\", \"bytes\": 981110, \"binaryRetained\": false}"
+}

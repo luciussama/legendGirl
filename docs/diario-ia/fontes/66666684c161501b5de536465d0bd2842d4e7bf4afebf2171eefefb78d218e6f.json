@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "66666684c161501b5de536465d0bd2842d4e7bf4afebf2171eefefb78d218e6f",
+  "path": "qa-execucoes/1598e9e803e842328cce9e816a0f0ee4/docs/qa/dialogos-normalizados/android.png",
+  "sha256": "0059425a3dcdf9e661c490f768d959f1db67acca4465b096a8107b8b9e34a69d",
+  "capturedAt": "2026-10-15T18:15:17.715080+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogues:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/dialogos-normalizados/android.png\", \"sha256\": \"ec4b0e5a3c5e68c9263c29bf59622bdad54b94853064687121c52f6bb11c90c1\", \"bytes\": 446580, \"binaryRetained\": false}"
+}

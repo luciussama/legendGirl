@@ -2,7 +2,7 @@
 
 ## Estado da entrega
 
-Foram produzidos 144 quadros PNG transparentes em 26 sequências, com manifesto e prévia animada. A preparação técnica está concluída; a homologação artística permanece pendente. Os recursos não foram integrados ao gameplay.
+Foram produzidos 144 quadros PNG transparentes em 26 sequências, com manifesto e prévia animada. Esta seção preserva os números da primeira produção; os recursos estão integrados ao gameplay atual por BattleAssets/BattleRenderer e manifestos de remediação. Aprovação artística de cada versão deve ser consultada no diário, sem estender uma aprovação antiga a recursos novos.
 
 | Personagem | Sequências | Quadros por sequência | Total |
 | --- | --- | --- | --- |
@@ -40,4 +40,10 @@ npm run dev
 
 As páginas de revisão estão arquivadas no diário de IA e devem ser recuperadas em ambiente temporário. Os relatórios de execução e homologação também ficam no acervo, sem cópias nesta documentação.
 
-Avalie continuidade das proporções, fluidez, alinhamento do corpo, âncoras, transparência e correspondência com a arte original. Hashes e dimensões corretos não certificam qualidade artística. Duração, eventos de dano, física, colisões e transições precisam ser integrados no código e validados separadamente.
+Avalie continuidade das proporções, fluidez, alinhamento do corpo, âncoras, transparência e correspondência com a arte original. Hashes e dimensões corretos não certificam qualidade artística. Duração, eventos de dano, física, colisões e transições pertencem à implementação de combate e precisam ser revalidados quando os recursos mudarem.
+
+## Integração atual e derivados
+
+`BattleAssets` lê o manifesto/remediação e imagens por URLs relativas ao módulo. `BattleRenderer` resolve quadros, transições e impactos; `ToyRoomBattle` mantém eventos/tempos. O perfil de arena usa `ArenaPlayerRenderer`, `ArenaGirlAnimationFrames`, `ArenaPlayerAnimation` e `DamageSpriteFrames`. O desenho da reação de dano tem prioridade inclusive no hitstop. `prepare-damage-sprites.js` gera os seis quadros por ator e metadados; não executar geradores para uma revisão documental.
+
+Os 144 quadros acima descrevem o lote original, não o total de imagens atuais. Consulte o [inventário de arte](../sprites/inventario.json), o [guia da animação](../arena/GUIA-ANIMACAO.md) e [o runtime da arena](../arena/GUIA-ARENA.md) para recursos usados, consumidores e parâmetros vigentes. Scripts/fixtures de homologação ficam no diário e são recuperados apenas em diretório temporário.

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d80d7f9963f258b79dd388d9a4c43eaf019c5d671e66dd0ccff30b993767b26c",
+  "path": "qa-execucoes/d1d2a36570e44e10a554b4c90fb29554.log",
+  "sha256": "5969e9b63c7ab6fd9e2b9bf84ff0b4e464867acb9d008ee97a9abb300381a5b8",
+  "capturedAt": "2026-10-15T13:37:58.741295+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:refact:contracts",
+    "exitCode": 0,
+    "package": "zzzzzzzzzzz-refact-contracts-20261015"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:refact:contracts\n> node scripts/test-refact-contracts.js\n\nAPROVADO: identidade dos exports; falha de manifesto/imagem; menina/espada ausentes não liberam o combate; carga válida e simulação sem imagens preservadas.\n"
+}

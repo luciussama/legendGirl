@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "3af0e0c5a20ae7dff47e4e2f9458e377823c6b127b5853137eebe970d83fdf9d",
+  "path": "checkpoints/refact/etapa16/antes/ToyRoomOrientation.js",
+  "sha256": "bc4b7b215862cea9738d68775ec10edec7592ce42c631aa00cc0cf48909eb8e7",
+  "capturedAt": "2026-10-15T18:09:18.684811+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "16"
+  },
+  "encoding": "utf-8",
+  "content": "/** Orientação visual independente de coleta, armazenamento e persistência. */\nexport function nearestToyGuide(player, toys, previous) {\n  const available = toys.filter(toy => !toy.isOrganized && !toy.isCarried);\n  const distance = toy => Math.hypot(player.x - toy.x, player.y - toy.y);\n  const nearest = available.reduce((best, toy) =>\n    !best || distance(toy) < distance(best) ? toy : best, null);\n  // Empates visuais de até seis unidades conservam o alvo, sem temporizador de bloqueio.\n  if (available.includes(previous) && nearest && distance(previous) <= distance(nearest) + 6) return previous;\n  return nearest;\n}\n\n"
+}

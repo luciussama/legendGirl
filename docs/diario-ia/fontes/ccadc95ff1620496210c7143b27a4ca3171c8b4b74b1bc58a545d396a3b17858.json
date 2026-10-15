@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "id": "ccadc95ff1620496210c7143b27a4ca3171c8b4b74b1bc58a545d396a3b17858",
+  "path": "checkpoints/refact/etapa19/depois/ToyRoomArenaBuilder.js",
+  "sha256": "bbb8be35fce3747517023d9c4c86fef6c08f8243f84d0905e433d93f4eeb6652",
+  "capturedAt": "2026-10-15T18:11:51.450078+00:00",
+  "origin": {
+    "type": "checkpoint-refatoracao",
+    "sessionId": "20261015T180819-d29b76205a7e",
+    "etapa": "19"
+  },
+  "encoding": "utf-8",
+  "content": "const clone = value => JSON.parse(JSON.stringify(value));\n\n/** Reinterpreta a mobília existente; não altera o layout nem as colisões da exploração. */\nexport class ToyRoomArenaBuilder {\n  build({ furniture, ROOM_W = 1600 }) {\n    if (!Array.isArray(furniture) || !Number.isFinite(ROOM_W) || ROOM_W <= 0)\n      throw new TypeError('Layout da Toy Room inválido.');\n    const required = ['bookshelf', 'toy-chest'];\n    for (const id of required) if (!furniture.some(item => item.id === id))\n      throw new TypeError(`Referência obrigatória ausente: ${id}`);\n    const positions = {\n      bookshelf: { role: 'fortaleza', x: -100, y: 280, scale: 3.2 },\n      'toy-chest': { role: 'templo', x: 1170, y: 390, scale: 2.2 },\n      wardrobe: { role: 'torre', x: 720, y: 250, scale: 3 },\n      'block-fortress': { role: 'cidadela', x: 30, y: 445, scale: 2 },\n      table: { role: 'monumento', x: 1350, y: 350, scale: 2.4 },\n      armchair: { role: 'trono', x: -240, y: 510, scale: 2 },\n      'rocking-horse': { role: 'sentinela', x: 925, y: 460, scale: 2 }\n    };\n    const structures = furniture.map(item => {\n      if (![item.x, item.y, item.w, item.h].every(Number.isFinite) || item.w <= 0 || item.h <= 0)\n        throw new TypeError(`Geometria inválida: ${item.id}`);\n      const p = positions[item.id] || { role: 'monumento', x: item.x, y: 380, scale: 2 };\n      return { sourceId: item.id, role: p.role, source: clone(item),\n        x: p.x / 1600 * ROOM_W, y: p.y, w: item.w * p.scale, h: item.h * p.scale, scale: p.scale };\n    });\n    return { version: 1, width: ROOM_W, ground: 690, structures,\n      rug: { role: 'planicie', x: -120, y: 590, w: ROOM_W + 240, h: 330 },\n      portal: { sourceId: 'toy-room-window-curtains-v1', role: 'portal', x: 530, y: 10, w: 540, h: 590 } };\n  }\n}\n"
+}

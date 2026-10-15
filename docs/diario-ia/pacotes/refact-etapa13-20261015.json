@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-etapa13-20261015",
+  "date": "2026-10-15T17:44:28.400675+00:00",
+  "title": "Apresentação narrativa: resultado e checkpoints da etapa 13",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/refact/etapa13/resultados.json",
+      "sourceId": "36b88566fcca52b30ae9f1f3480a2580513c1b73995a5c02005a6bcd52268f13",
+      "sha256": "8c96dc2cc2980bcfd77bf6c5e03f7ae483bf814d323181451201c4c579d15e11",
+      "bytes": 2529,
+      "metadataOnly": false
+    }
+  ]
+}

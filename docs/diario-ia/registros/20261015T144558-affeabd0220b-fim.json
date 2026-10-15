@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T144558-affeabd0220b-fim",
+  "sessionId": "20261015T144558-affeabd0220b",
+  "type": "fim",
+  "date": "2026-10-15T14:47:55.507949+00:00",
+  "title": "Separar transições de estado dos brinquedos da Toy Room — etapa 11",
+  "actor": "Codex",
+  "summary": "Etapa 11 concluída: transições de pegar, guardar no baú, soltar e devolver brinquedos ao chão extraídas de ToyRoomPhase e ToyRoomStory para ToyRoomToyActions. Funções recebem objetos atuais, sem estado retido; identidade dos itens, escolhas aleatórias, ordem dos efeitos, áudio, contagens e critérios preservados. Comparação exata desktop e Android contra a referência inicial aprovada. Checkpoints e resultado no pacote refact-etapa11-20261015; fontes de execução no diário. Alterações anteriores preservadas; sem commit ou push.",
+  "checks": [
+    "npm test: aprovado, incluindo 111 percursos de balanceamento",
+    "test:refact:browser desktop: comparação exata aprovada de 78 imagens, 459 assets, 38 apoios e estados de gameplay; 12875 quadros",
+    "test:refact:browser android: comparação exata aprovada de 78 imagens, 459 assets, 38 apoios e estados de gameplay; 13264 quadros",
+    "Save/load: seis recargas na exploração e uma no combate em cada perfil, aprovadas",
+    "npm run build e npm run check-assets: aprovados; 66 recursos registrados",
+    "npm run docs:sprites: 415 arquivos, 93 recortes e 29 assinaturas; inventário preservado além dos números de linha",
+    "git diff --check: aprovado"
+  ],
+  "pending": [
+    "Reduzir o contrato da narrativa, que ainda recebe a sala completa nas demais responsabilidades",
+    "Comparação determinística em navegador e Android emulado; playtest humano e aparelho físico não executados nesta sessão"
+  ],
+  "files": [
+    "src/js/toy-room/ToyRoomToyActions.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "src/js/toy-room/ToyRoomStory.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/sprites/inventario.json"
+  ]
+}

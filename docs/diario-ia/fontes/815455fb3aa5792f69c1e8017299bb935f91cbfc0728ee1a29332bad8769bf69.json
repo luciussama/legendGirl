@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "815455fb3aa5792f69c1e8017299bb935f91cbfc0728ee1a29332bad8769bf69",
+  "path": "refact/referencia-inicial/desktop/arena-robot-DEATH.png",
+  "sha256": "b7e2f8cfeb4bb50823f1b381f3994575f8508c891c9b39f30b381323431c6229",
+  "capturedAt": "2026-10-15T13:29:52.494362+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-robot-DEATH.png\", \"sha256\": \"fb8e50b2981808a4dfa108847e5b751678113bab3a43abf9ce98a160778505f1\", \"bytes\": 1071266, \"binaryRetained\": false}"
+}

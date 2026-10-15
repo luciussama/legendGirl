@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a861668eb9a645e99cefcb14a3274d9873211cdbe771d876e5ed893ae679ca79",
+  "path": "qa-execucoes/a77c98f6601549b0a1aa8347affbba9b.log",
+  "sha256": "ac8537d50bd8785f1995c6e08f8d3d121b54b83b2a4649eb58a44a26e28fb9a0",
+  "capturedAt": "2026-10-15T17:37:02.554169+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:story-context",
+    "exitCode": 0,
+    "package": "zzzzzzzzzzzzzzzzz-refact-story-context-20261015"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:story-context\n> node scripts/test-toy-room-story-context.js\n\nAPROVADO: contrato sem acesso à fase completa, referências atuais, identidade dos itens, câmera, soltura, controles, ordem de áudio e snapshot narrativo.\n"
+}

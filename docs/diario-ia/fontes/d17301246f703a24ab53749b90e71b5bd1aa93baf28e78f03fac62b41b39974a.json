@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d17301246f703a24ab53749b90e71b5bd1aa93baf28e78f03fac62b41b39974a",
+  "path": "refact/referencia-inicial/desktop/arena-dinosaur-ataque.png",
+  "sha256": "7d67904b2b318f2c6427498bf695c557137df23483e7053c69df5884c7e101a4",
+  "capturedAt": "2026-10-15T13:29:52.491417+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-dinosaur-ataque.png\", \"sha256\": \"326b2352ab64c0db6ec66518b8e77323b90d1ceb86d376a393ee556c34326a3d\", \"bytes\": 1042835, \"binaryRetained\": false}"
+}

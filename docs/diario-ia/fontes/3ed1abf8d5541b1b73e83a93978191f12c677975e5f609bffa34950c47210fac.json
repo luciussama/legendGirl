@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3ed1abf8d5541b1b73e83a93978191f12c677975e5f609bffa34950c47210fac",
+  "path": "refact/referencia-inicial/android/arena-train-RETREAT.png",
+  "sha256": "12e2e6f083a184228fe71d4d5b15bc9811a4e7f675666a60bfcf5a7358b43146",
+  "capturedAt": "2026-10-15T13:30:33.409936+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-train-RETREAT.png\", \"sha256\": \"82c610234281178db60572dd5b2e406ef786b4047d667837ab307afcd6d58c7d\", \"bytes\": 895888, \"binaryRetained\": false}"
+}

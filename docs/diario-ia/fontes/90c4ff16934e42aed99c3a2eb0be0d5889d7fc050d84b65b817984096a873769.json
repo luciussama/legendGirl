@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "90c4ff16934e42aed99c3a2eb0be0d5889d7fc050d84b65b817984096a873769",
+  "path": "refact/referencia-inicial/android/arena-train-IDLE.png",
+  "sha256": "fcbb0c4377d8dccda830a59a853fd1212418f0399a799ba6f26dfc5bd4c2233d",
+  "capturedAt": "2026-10-15T13:30:33.409211+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-train-IDLE.png\", \"sha256\": \"d0bcc704a4c62fe5f4e62107b42d8992fdaa6ca38894b2ff779a0f173fd112f1\", \"bytes\": 709224, \"binaryRetained\": false}"
+}

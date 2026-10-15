@@ -1,35 +1,36 @@
+import { renderToyRoomTutorial } from './ToyRoomTutorialRenderer.js';
 /** Orientação visual; não executa movimento, coleta nem armazenamento. */
-import { getMobileUILayout } from '../ui/MobileUILayout.js';
-export const TOY_ROOM_INPUT = Object.freeze({actionCodes:['KeyE','Space','Enter','KeyF'], actionLabel:'E', gamepadButton:2, gamepadLabel:'X'});
+import { TOY_ROOM_INPUT } from './ToyRoomInputBindings.js';
+export { TOY_ROOM_INPUT } from './ToyRoomInputBindings.js';
 export class ToyRoomTutorial {
-  constructor(phase) {
-    this.phase=phase;
+  constructor(context) {
+    this.context=context;
     this.active=false;
     this.step='movement';
-    this.device=phase.mobilePresentation?'MOBILE_TOUCH':'DESKTOP_KEYBOARD_MOUSE';
+    this.device=context.mobilePresentation?'MOBILE_TOUCH':'DESKTOP_KEYBOARD_MOUSE';
     this.target=null;
     this.cooldown=0;
   }
   start() {
-    if(this.phase.toyRoomTutorialCompleted)return;
+    if(this.context.toyRoomTutorialCompleted)return;
     this.active=true;this.step='movement';this.target=null;
-    this.origin={x:this.phase.player.x,y:this.phase.player.y};
-    this.phase.gameplayState='TOY_ROOM_TUTORIAL';
+    this.origin={x:this.context.player.x,y:this.context.player.y};
+    this.context.gameplayState='TOY_ROOM_TUTORIAL';
   }
   setDevice(device){this.device=device;}
   nearest(){
-    const p=this.phase.player;
-    return this.phase.toys.filter(t=>!t.isOrganized&&!t.isCarried)
+    const p=this.context.player;
+    return this.context.toys.filter(t=>!t.isOrganized&&!t.isCarried)
       .reduce((best,t)=>!best||Math.hypot(p.x-t.x,p.y-t.y)<Math.hypot(p.x-best.x,p.y-best.y)?t:best,null);
   }
   finish(){
     this.active=false;this.target=null;
-    this.phase.toyRoomTutorialCompleted=true;
-    this.phase.gameplayState='TOY_ROOM_GAMEPLAY';
+    this.context.toyRoomTutorialCompleted=true;
+    this.context.gameplayState='TOY_ROOM_GAMEPLAY';
   }
   update(dt){
     if(!this.active)return;
-    const p=this.phase.player;
+    const p=this.context.player;
     if(p.carriedItem){this.finish();return;}
     if(this.step==='movement'&&Math.hypot(p.x-this.origin.x,p.y-this.origin.y)>2)this.step='pickup';
     if(this.step!=='pickup')return;
@@ -53,7 +54,7 @@ export class ToyRoomTutorial {
       GAMEPAD:'USE O ANALÓGICO ESQUERDO PARA ANDAR'
     }[this.device];
     const guide=this.guidePosition();
-    if(!guide||Math.hypot(this.phase.fairy.x-guide.x,this.phase.fairy.y-guide.y)>14)
+    if(!guide||Math.hypot(this.context.fairy.x-guide.x,this.context.fairy.y-guide.y)>14)
       return 'VENHA COMIGO ATÉ O BRINQUEDO';
     return {
       MOBILE_TOUCH:'TOQUE NO BOTÃO PEGAR',
@@ -63,39 +64,9 @@ export class ToyRoomTutorial {
   }
   render(ctx,canvas,frame){
     if(!this.active)return;
-    const phase=this.phase,fairy=phase.fairy;
-    const x=frame.x+(fairy.x-phase.cameraX)*frame.zoom;
-    const y=frame.y+(fairy.y-phase.cameraY)*frame.zoom;
-    const scale=canvas.width/(canvas.getBoundingClientRect?.().width||canvas.width);
-    const font=Math.max(12*scale,Math.min(17*scale,canvas.width/25));
-    const layout=getMobileUILayout(canvas);
-    const safe={left:layout.safeLeft,right:layout.safeRight,top:layout.safeTop,bottom:layout.safeBottom};
-    const width=Math.min(safe.right-safe.left-24*scale,360*scale);
-    ctx.save();ctx.font=`bold ${font}px Georgia, serif`;ctx.textAlign='center';ctx.textBaseline='middle';
-    const lines=[];let line='';
-    for(const word of this.message.split(' ')){
-      const candidate=line?line+' '+word:word;
-      if(line&&ctx.measureText(candidate).width>width-24*scale){lines.push(line);line=word;}else line=candidate;
-    }
-    lines.push(line);
-    const height=(lines.length*font*1.35)+42*scale;
-    const left=Math.max(safe.left+12*scale,Math.min(safe.right-width-12*scale,x-width/2));
-    const minTop=Math.min(layout.hudBottom+8*scale,safe.bottom-height-12*scale);
-    const top=Math.max(safe.top+12*scale,minTop,Math.min(safe.bottom-height-160*scale,y-height-28*scale));
-    ctx.fillStyle='rgba(57,35,22,0.94)';ctx.beginPath();ctx.roundRect(left,top,width,height,12*scale);ctx.fill();
-    ctx.fillStyle='#fff4cb';lines.forEach((text,i)=>ctx.fillText(text,left+width/2,top+18*scale+i*font*1.35));
-    ctx.font=`${Math.min(font,13*scale)}px Georgia, serif`;
-    ctx.fillText('Pegue um brinquedo e leve ao baú.',left+width/2,top+height-17*scale);
-    // O ponteiro pertence à fala da guia e não delimita superfícies ou áreas físicas.
-    if(this.step==='pickup'){
-      ctx.fillStyle='#fde4a2';ctx.beginPath();ctx.moveTo(x-5*scale,y+22*scale);ctx.lineTo(x+5*scale,y+22*scale);ctx.lineTo(x,y+31*scale);ctx.fill();
-      ctx.font=`bold ${13*scale}px Georgia, serif`;
-      ctx.fillStyle='#fff4cb';ctx.strokeStyle='#392316';ctx.lineWidth=4*scale;
-      const action=this.device==='MOBILE_TOUCH'?'PEGAR ↓':`${this.device==='GAMEPAD'?TOY_ROOM_INPUT.gamepadLabel:TOY_ROOM_INPUT.actionLabel} · PEGAR ↓`;
-      const actionX=layout.action.x,actionY=layout.action.y-layout.action.radius-16*scale;
-      ctx.strokeText(action,actionX,actionY);
-      ctx.fillText(action,actionX,actionY);
-    }
-    ctx.restore();
+    renderToyRoomTutorial(ctx, canvas, frame, {
+      fairy: this.context.fairy, cameraX: this.context.cameraX, cameraY: this.context.cameraY,
+      message: this.message, step: this.step, device: this.device
+    });
   }
 }
