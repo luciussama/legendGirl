@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2a7591363614e38bacd08cedfd14fd22ffae44f27c0a00742a9c452e77d2eca0",
+  "path": "refact/referencia-inicial/android/arena-dinosaur-APPROACH.png",
+  "sha256": "59147749bbcb24a7536df4155501337d83bea41308582fe7a830589e6c21186e",
+  "capturedAt": "2026-10-15T13:30:33.398603+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-dinosaur-APPROACH.png\", \"sha256\": \"97d25dad7f88cb7bfbe3a19775155b692e081ca4b9fd5413b92173b11533ac08\", \"bytes\": 809547, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f310c44497af7bbb77685ece831ce99a88addad2a12f54c62e3bfbce81ce3814",
+  "path": "refact/referencia-inicial/desktop/arena-dinosaur-entrada.png",
+  "sha256": "7f2946c32ed781898acdcaea091aa62aecc0f688c958a91e0365070576ad5580",
+  "capturedAt": "2026-10-15T13:29:52.492400+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-dinosaur-entrada.png\", \"sha256\": \"b0b32765767c3982b21775d60934d3719763cc3d5696a0581617369acfb42062\", \"bytes\": 1125673, \"binaryRetained\": false}"
+}

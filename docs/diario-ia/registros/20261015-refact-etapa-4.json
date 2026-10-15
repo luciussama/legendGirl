@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015-refact-etapa-4",
+  "sessionId": "20261015T132445-e026334e555f",
+  "type": "etapa",
+  "date": "2026-10-15T13:36:44.422443+00:00",
+  "title": "Refatoração sequencial — etapa 4",
+  "summary": "Recortes da prancha da Toy Room extraídos para ToyRoomEnvironmentAssets.js. Coordenadas, dimensões, posições, valores nulos e ordem de resolução preservados. Comparações exatas e suíte aprovadas.",
+  "checks": [
+    "Percurso completo desktop comparado exatamente com a referência inicial: aprovado.",
+    "Percurso completo Android emulado comparado exatamente com a referência inicial: aprovado.",
+    "npm test: aprovado.",
+    "npm run check-assets, npm run build e git diff --check: aprovados."
+  ],
+  "sourceId": "1a398bbf04f7f1f33e51665aeb2287d77bb286458a3060ccb2160acd5094f1de"
+}

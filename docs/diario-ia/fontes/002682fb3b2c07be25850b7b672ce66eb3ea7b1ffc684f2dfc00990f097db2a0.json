@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "002682fb3b2c07be25850b7b672ce66eb3ea7b1ffc684f2dfc00990f097db2a0",
+  "path": "refact/referencia-inicial/desktop/arena-dinosaur-HIT.png",
+  "sha256": "f04250b9b156e6698ec79187f79a6afd634355d62bc646f6ba27f19970e662f9",
+  "capturedAt": "2026-10-15T13:29:52.489469+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-dinosaur-HIT.png\", \"sha256\": \"6dcd5bf028ee1f45e20fdd47999b4bce81bcdb10b47a4400c8b15bd1d3c91909\", \"bytes\": 1078859, \"binaryRetained\": false}"
+}

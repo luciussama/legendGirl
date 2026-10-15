@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7fb8863263ea16f2fdb9535306461fa1ea55cec5cba7cc4cd2cb628d452fa1ce",
+  "path": "refact/referencia-inicial/android/00-abertura.png",
+  "sha256": "910822ac53468e3d9f572d746792422cf6be8d3bcaff67d0f595e68aa63cd13f",
+  "capturedAt": "2026-10-15T13:30:33.369362+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/00-abertura.png\", \"sha256\": \"327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2\", \"bytes\": 17056, \"binaryRetained\": false}"
+}

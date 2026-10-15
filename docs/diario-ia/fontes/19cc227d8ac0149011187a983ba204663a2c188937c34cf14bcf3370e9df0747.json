@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "19cc227d8ac0149011187a983ba204663a2c188937c34cf14bcf3370e9df0747",
+  "path": "refact/etapa-1/src/js/toy-room/BattleAssets.js",
+  "sha256": "5335e01f89bae4c545a528cacf4dc87077f2763dc9c84a29b3efa83db19e911d",
+  "capturedAt": "2026-10-15T13:32:05.966483+00:00",
+  "origin": {
+    "type": "codigo-refatorado",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "import { DAMAGE_SPRITE_FRAMES } from './DamageSpriteFrames.js';\nimport { BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY } from './BattlePresentation.js';\n\n// A raiz permanece relativa a este módulo; não depende da URL da página.\nconst BATTLE_ASSET_ROOT = new URL('../../../assets/art/toy-room/battle/', import.meta.url);\n\n/** Carrega os metadados existentes, preservando os quadros nativos de dano. */\nexport async function loadBattleManifest() {\n  const response = await fetch(new URL('remediation/manifest.json', BATTLE_ASSET_ROOT));\n  if (!response.ok) throw Error('Não foi possível carregar o manifesto de combate.');\n  const manifest = await response.json();\n  for (const actor of ['train', 'robot', 'dinosaur', 'bear']) {\n    manifest.actors[actor].animations.Hit = DAMAGE_SPRITE_FRAMES[actor];\n  }\n  return manifest;\n}\n\n/** Preenche o cache fornecido sem acessar estado, narrativa ou regras do combate. */\nexport async function loadBattleImages(manifest, images) {\n  const files = new Set(Object.values(manifest.actors).flatMap(actor =>\n    Object.values(actor.animations).flatMap(animation => animation.frames.map(frame => frame.file))));\n  files.add(BATTLE_CROUCH_FRAME.file);\n  files.add(BATTLE_TRAIN_BODY.file);\n  await Promise.all([...files].map(file => new Promise((resolve, reject) => {\n    const image = new Image();\n    image.onload = () => { images.set(file, image); resolve(); };\n    image.onerror = () => reject(Error(`Sprite de combate ausente: ${file}`));\n    image.src = new URL(file, BATTLE_ASSET_ROOT).href;\n  })));\n}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "fb8effc5d65c1960b4d9706cf51141a1992e047a8f753b04c5c2493ecfa6903d",
+  "path": "refact/referencia-inicial/desktop/04-sala-brinquedos.png",
+  "sha256": "4aa5d5bbb1bcdafd4b3d4dc24a7f658f54d8206494945dc97393b0f5fa6c9a12",
+  "capturedAt": "2026-10-15T13:29:52.448554+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/04-sala-brinquedos.png\", \"sha256\": \"5baf93376e7e8b04817c8fbbd04024598f1cee4358c7d065873baa73f2a5dd78\", \"bytes\": 1125942, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d6e021e9189082d8d21db9e9815802f4f3ec091380abdf21d460c5e4133c79d0",
+  "path": "refact/referencia-inicial/android/arena-robot-DEATH.png",
+  "sha256": "1a6393e92ffa51916d00cfc3e784cc24ccd81e1a3807f80133c1eb37f675518d",
+  "capturedAt": "2026-10-15T13:30:33.404011+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-robot-DEATH.png\", \"sha256\": \"69f629168339fc6a10adeee7eda8a30b141a3f12dc04238fc0a42416404e46e9\", \"bytes\": 931908, \"binaryRetained\": false}"
+}

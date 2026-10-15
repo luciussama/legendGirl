@@ -7,7 +7,7 @@ import { ArenaAudioProfile } from './ArenaAudioProfile.js';
 import { ImpactFX } from './ImpactFX.js';
 import { ArenaPlayerController, ARENA_TUNING } from './ArenaPlayerController.js';
 import { PlayerController } from './PlayerController.js';
-import { BATTLE_TUNING } from './ToyRoomBattle.js';
+import { BATTLE_TUNING } from './BattleConfig.js';
 import { ArenaCamera } from './ArenaCamera.js';
 import { ARENA_SCALE } from './ArenaScale.js';
 import { renderArenaEnvironment, renderArenaTemple } from './ArenaEnvironment.js';

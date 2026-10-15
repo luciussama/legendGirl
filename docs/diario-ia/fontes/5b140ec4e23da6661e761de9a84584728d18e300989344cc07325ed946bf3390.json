@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5b140ec4e23da6661e761de9a84584728d18e300989344cc07325ed946bf3390",
+  "path": "refact/referencia-inicial/android/apoio-ida-7.png",
+  "sha256": "85aab788ad5d5e5d2ee83b20e2b76bedcd87189f4c9d6c939bedebb8b49861e9",
+  "capturedAt": "2026-10-15T13:30:33.384824+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/apoio-ida-7.png\", \"sha256\": \"6a7b5f5b3c4b35c5fdb6dc050f0eac7779a4a67ae75a92b8d302384c1ca55bba\", \"bytes\": 355827, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d9d632c040f63b63cf0debf3c467057cbab2df00153ca9b250e5e6a6d8d5fff5",
+  "path": "refact/referencia-inicial/android/arena-robot-HIT.png",
+  "sha256": "9f81d63e289f326e120ff5dcd4ce665c98abd187c9c105bcef6acfdcf144a805",
+  "capturedAt": "2026-10-15T13:30:33.404645+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-robot-HIT.png\", \"sha256\": \"dde15315313d3d30f1a45b157238334c0e227f405a4b1e47dfd2f9f9479523d5\", \"bytes\": 921999, \"binaryRetained\": false}"
+}

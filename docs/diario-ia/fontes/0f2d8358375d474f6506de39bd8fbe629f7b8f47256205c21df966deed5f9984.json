@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0f2d8358375d474f6506de39bd8fbe629f7b8f47256205c21df966deed5f9984",
+  "path": "refact/referencia-inicial/android/arena-bear-ataque.png",
+  "sha256": "a37d197c922b98203b61c4905a60036d10e3250f72d94ce5e003a061c379543b",
+  "capturedAt": "2026-10-15T13:30:33.397320+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-bear-ataque.png\", \"sha256\": \"eb99e12dbf485c6b355d6fc7d8f9fea5dc8e36ee7285b11a06efcabde742fd5d\", \"bytes\": 921028, \"binaryRetained\": false}"
+}

@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T132445-e026334e555f-fim",
+  "sessionId": "20261015T132445-e026334e555f",
+  "type": "fim",
+  "date": "2026-10-15T13:39:13.682113+00:00",
+  "title": "Refatorar por etapas com referência gráfica e gameplay antes e depois",
+  "actor": "Codex",
+  "summary": "Primeiro bloco da refatoração concluído em quatro etapas sequenciais: carregamento do combate, configuração compartilhada, renderização e recortes da sala. Cada etapa passou pela suíte e pelo percurso completo comparado exatamente às referências iniciais desktop e Android emulado. Nenhum asset gráfico ou áudio foi alterado/removido; sprites preservados. Fontes, ocorrências e evidências registradas no diário. Desacoplamento global ainda em andamento; sem commit ou publicação.",
+  "checks": [
+    "Referência inicial: 78 imagens por perfil, 459 arquivos de recursos, 38 apoios e snapshots de exploração, investigação, espada, quatro inimigos e retorno; repetição desktop idêntica antes de editar.",
+    "npm test antes e depois de cada etapa: aprovado, incluindo 111 percursos de balanceamento.",
+    "Comparações exatas desktop/Android após cada etapa: aprovadas. Comandos reproduzíveis com referências recuperadas do diário também aprovados.",
+    "test:toy-room:arena:browser: aprovado em desktop e Android emulado retrato/paisagem, save/load, derrota, nova tentativa e retorno.",
+    "test:refact:contracts: aprovado; recursos ausentes mantêm erro e impedem prontidão; exports anteriores preservados.",
+    "check-assets, build, mapa de sprites e git diff --check: aprovados; 415 arquivos e 93 recortes preservam hashes/geometria, 29 assinaturas em código.",
+    "Extração textual do desenho comparada com HEAD: preservada; imports locais sem ausências ou ciclos estáticos."
+  ],
+  "pending": [
+    "Reduzir acesso amplo ao estado da sala e separar responsabilidades de narrativa/exploração/arena.",
+    "Eliminar duplicação de estado em game.js por etapas validadas contra as mesmas referências."
+  ],
+  "files": [
+    "src/js/toy-room/BattleAssets.js",
+    "src/js/toy-room/BattleConfig.js",
+    "src/js/toy-room/BattleRenderer.js",
+    "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "src/js/toy-room/ArenaPlayerController.js",
+    "src/js/toy-room/ToyRoomArenaPhase.js",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/inventario.json",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

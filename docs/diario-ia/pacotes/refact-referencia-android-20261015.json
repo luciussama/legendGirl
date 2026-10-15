@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "id": "refact-referencia-android-20261015",
+  "date": "2026-10-15T13:30:33.414541+00:00",
+  "title": "Referência inicial Android emulado; viewport Canvas 540×1169, tela 390×844",
+  "files": [
+    {
+      "path": "refact/referencia-inicial/android.json",
+      "sourceId": "1ba9e2a33d04f5a1973d3766af6bb8c757822afc7859084ec246d95cdcf621f4",
+      "sha256": "65c5c534141024ea5ab079ca85a5091430d54766b4f1f49972efbd1b3ce8fdff",
+      "bytes": 4284196,
+      "metadataOnly": false
+    },
+    {
+      "path": "refact/referencia-inicial/android/00-abertura.png",
+      "sha256": "327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2",
+      "bytes": 17056,
+      "binaryRetained": false,
+      "sourceId": "7fb8863263ea16f2fdb9535306461fa1ea55cec5cba7cc4cd2cb628d452fa1ce",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/01-inicio.png",
+      "sha256": "82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82",
+      "bytes": 300131,
+      "binaryRetained": false,
+      "sourceId": "c423d5767ab29f8f55972fc8eadc131b5b1bc26942a2b639ee9ac89a02961bda",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/03-retorno.png",
+      "sha256": "0aeb602e51ada05943803d660a79409a0bed5b5f44a82dd81081af35e9c12b3d",
+      "bytes": 342348,
+      "binaryRetained": false,
+      "sourceId": "1093ec0189f5f00d0ded6392aadc6669873ccba85053b3f1073872e6f6cff314",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/04-sala-brinquedos.png",
+      "sha256": "7fb3ab44b62d6213657d4867a94688f9c584b07251e2625a233a47ad6555664c",
+      "bytes": 1292537,
+      "binaryRetained": false,
+      "sourceId": "4d5b00f7dedfd074863e71deff7b36a669c91d5666fb5a1c0b77227274076bae",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/COLLECTING.png",
+      "sha256": "7fb3ab44b62d6213657d4867a94688f9c584b07251e2625a233a47ad6555664c",
+      "bytes": 1292537,
+      "binaryRetained": false,
+      "sourceId": "74c9da404875619a0b1e9d6a733b7b17ba449b820a7d1f5844f5fe1b8eb19897",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/EQUIPPED.png",
+      "sha256": "0d6abf5a10c9f7388aad0a3ca2baae40a42ecab9527d6526007e7ec39a495235",
+      "bytes": 1272937,
+      "binaryRetained": false,
+      "sourceId": "aff9da504845fab0c9a8ef3b906d796033e8f5e3b6176ef5eeb573a1e93be888",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/INVESTIGATION.png",
+      "sha256": "166916f995860afe678aed7369ea45c140b38df3b63b7b7243be1c904b1842bf",
+      "bytes": 1306933,
+      "binaryRetained": false,
+      "sourceId": "f4d8986434ed6f47d385e13976bc369458fceb4f7af48dd233096c28b0dd2539",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/PICKUP.png",
+      "sha256": "4d63df072b2ac88c5b7349799e0490ae5a837f0d2ab58c8f99c9323418b1f6d9",
+      "bytes": 950232,
+      "binaryRetained": false,
+      "sourceId": "489286e93a69580868f0a4c6f82d8237fe3753c623d7bc2fc0534ef13f315046",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/SEEKING_SWORD.png",
+      "sha256": "dee60a4d02276302283d6e4a5b36adcc6be68565ded993eb4a6603b5df6c8105",
+      "bytes": 1368229,
+      "binaryRetained": false,
+      "sourceId": "10c9c94d07a875e62c59649ea19a47089c93574866324c9e33f2656abcf6e1c5",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-0.png",
+      "sha256": "c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713",
+      "bytes": 304240,
+      "binaryRetained": false,
+      "sourceId": "6bfc2ec249a13976c5f72dac439cae2e399727344ca6e82a125d2ce2040e8dc9",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-1.png",
+      "sha256": "7cacdf4e7139888eb157a1fd28709a06ca0728776a2bb5c0cf704342810f7b31",
+      "bytes": 326897,
+      "binaryRetained": false,
+      "sourceId": "c4a86fd8e7b8f892f98615e03b6d5573a113b78b1841a08033fa19cc76a478f8",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-10.png",
+      "sha256": "889071e86dc448c50e1041c4a905cb10c03a44d1438dc077cf5e5b12b8862502",
+      "bytes": 367822,
+      "binaryRetained": false,
+      "sourceId": "b6cb7ae6159d8adc274f2cf05f551c0d301fcc4eadac84464e7a400421d8b4bf",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-11.png",
+      "sha256": "6a6fe6c9ffe8beac1afb037e41221c45123f4a90dacfe103feaccecc7780d70e",
+      "bytes": 392119,
+      "binaryRetained": false,
+      "sourceId": "dd32da9f86597c8f7c80a6a4d4f1587a6dd213eec5ecf738749443dbcfcf694c",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-12.png",
+      "sha256": "c45a59b865dfd3f4426c80d1368bf0d9d338b2422b00b002c7fe0a0946a22fe2",
+      "bytes": 404094,
+      "binaryRetained": false,
+      "sourceId": "f12e798690115ab012204e99ea8913f3b6e2903acb212aeb383696346f6b5706",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-13.png",
+      "sha256": "04a7e84aa4171e859d1c53330511c0fd3ab492686610868b496319c1446cfb19",
+      "bytes": 426977,
+      "binaryRetained": false,
+      "sourceId": "ce3df68ec1daaab156c8980d8e12cff4c21adc47aa31e28fa273dceb88502066",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-14.png",
+      "sha256": "d411b6cf032d8ab62fa7e12a7a6afa755cc83a497cfce56aae906b73e1c79a74",
+      "bytes": 430164,
+      "binaryRetained": false,
+      "sourceId": "e91c4d222eec05d3912bd4ac1d289c7d01e0630fcf76d754585fb52631cf6134",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-15.png",
+      "sha256": "4e48b0947d66adceee669ab50836b9750d73998de8176255bd3146afdcbbf825",
+      "bytes": 392332,
+      "binaryRetained": false,
+      "sourceId": "8b64b8222abbd247061c79837fee7166b6b19a8cdffcf915407bcb973792c544",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-16.png",
+      "sha256": "3a59d7753ec4b317f44de88dfb98d70bddd242b43494faf167e21fea7acfae7f",
+      "bytes": 368488,
+      "binaryRetained": false,
+      "sourceId": "3f4bb2a36be9da0337972e0b6704b79ed5b9ef74b470b7975d8ebe16ef47ba65",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-17.png",
+      "sha256": "7c9a33ff9cbb00423c4139fa268719e692764cb7d9573a5abd553bf6e70fe718",
+      "bytes": 368813,
+      "binaryRetained": false,
+      "sourceId": "d235121f39723e72efc07f8653434aaa33930a039a1324ac79ce167ef4bd5edc",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-18.png",
+      "sha256": "c8cc8327f91dcd79a5c5d475fe2695692af14e3801d97fdcae11bc965442fd8d",
+      "bytes": 358852,
+      "binaryRetained": false,
+      "sourceId": "dd400b84d0be30cdcdb10e4f3f1e2382be205402b2e9d7ec85b8a135a1aca431",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-19.png",
+      "sha256": "d4fb75ec1f2862bb0bb9e252e2f0d70ba8cd844ff0819678ff7c902aab23ca04",
+      "bytes": 361683,
+      "binaryRetained": false,
+      "sourceId": "4ef0b47822c3c6f4e4716c4c64c490649e38b92377231ec720a704af06af0077",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-2.png",
+      "sha256": "a2885bd916dc3530e5bd8924d61eb954d998c0f6a01e7695df1d4de3a6d6150e",
+      "bytes": 334724,
+      "binaryRetained": false,
+      "sourceId": "bf8ff80beaf56ccac5daa150b9b8c2dc3f150382a6ae2b6d64d98bedd85878ab",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-20.png",
+      "sha256": "ada9820197a6b337ade0363f24af7565962b93e783ce4a23e2fb83d5644fd677",
+      "bytes": 365282,
+      "binaryRetained": false,
+      "sourceId": "472ded7c02fc9bedfe88d0a193d7e218b57d974ea09e330159ad03155263264e",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-21.png",
+      "sha256": "8ebc99db49752c21eb3712fe196d3f090c57425a82e0b614fa19433f6dbb817c",
+      "bytes": 391404,
+      "binaryRetained": false,
+      "sourceId": "a45ad6e4c18b5902c4ae001a1ea33406005a9f6c559b7197ff6870e077d6ad01",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-3.png",
+      "sha256": "e3c9ce364cb347bb1292c9f3deb6e2bad261814e218740e1d7b43c5412bcfb14",
+      "bytes": 323185,
+      "binaryRetained": false,
+      "sourceId": "ee274e3af11e29a8fa890089c333b890cb71f9cfeea166319bb8fbec44b16de5",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-4.png",
+      "sha256": "a7be058abb05848a15cb8996e08227deae59af00220cb1e093b7b0fcef1d000d",
+      "bytes": 301703,
+      "binaryRetained": false,
+      "sourceId": "eb03557dbbd6063c580102d09d7363bfe66bd72d2efe22b59b7a098495565911",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-5.png",
+      "sha256": "8f3b81efe0f35328bb2299df815ba6a93a06636d90723d67c25ebb5be495d346",
+      "bytes": 298683,
+      "binaryRetained": false,
+      "sourceId": "9f894b9fd3fd0856f68aa33538bd3f6b59a4d204afb1a9fe7e37c413aa8337ae",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-6.png",
+      "sha256": "e2fd927a7baafde435ab51005a5058c62d8ca1e87f6d0229ba764c4c0025365f",
+      "bytes": 324485,
+      "binaryRetained": false,
+      "sourceId": "336f8474518628bac635a06d056b2e614acacfcbb327948bdb30633ac5ceaec2",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-7.png",
+      "sha256": "6a7b5f5b3c4b35c5fdb6dc050f0eac7779a4a67ae75a92b8d302384c1ca55bba",
+      "bytes": 355827,
+      "binaryRetained": false,
+      "sourceId": "5b140ec4e23da6661e761de9a84584728d18e300989344cc07325ed946bf3390",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-8.png",
+      "sha256": "9934ea630427a73b90f7bdd1d44a13ba0662b900bcd6e7ce1f7192fd96d724d1",
+      "bytes": 374615,
+      "binaryRetained": false,
+      "sourceId": "57c42b4a260947c88fcbb1a3a3219c1d18a15df1b2fb23dba0686e2ea100a09b",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-ida-9.png",
+      "sha256": "6d566e86df0d49102bdf3036ec0a5dfd907acb4a1ed1665452d1f2bda7358259",
+      "bytes": 303664,
+      "binaryRetained": false,
+      "sourceId": "a8d19c76c1c35404599f9c219afe59ab8a4e9e4b95e1998f665518415a855a4d",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-0.png",
+      "sha256": "5e6005993da723fc42e6d166dee95e5222cf106efc3155722c75dcc6c84f8517",
+      "bytes": 177364,
+      "binaryRetained": false,
+      "sourceId": "6f2a44e022221d9de7dfab5179f2247d9f5b0c9528d7202afabc03e6be741c6c",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-1.png",
+      "sha256": "a1561fcc7a090642948cf4184ef41be7f2cfebdb5d5c9a019d7e52ad4e5c6f86",
+      "bytes": 169640,
+      "binaryRetained": false,
+      "sourceId": "cb4612a2dfbab053185af93d1071e043de923daf917ca03c72eff1c195bc2f41",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-10.png",
+      "sha256": "2e70c1df9b5e28d4752d1c121759a3abdeede364e3632b15b594ed93fc7d08f3",
+      "bytes": 168374,
+      "binaryRetained": false,
+      "sourceId": "acd9694fdba0e354917278fa26b5427e737440cb9b02f1dc2b69769f0aa66013",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-11.png",
+      "sha256": "9bcc51ca74dbb7686d9e90475269dfb6239837c0a843633316de36471c2a413b",
+      "bytes": 169158,
+      "binaryRetained": false,
+      "sourceId": "e28a7de869ebe7b811e0a1cf0d7f7eaef487a6e4cc66f70b49488443dbc92ac5",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-12.png",
+      "sha256": "476f136831018cf042bc31776d321d2161d629633c1d2625323d39aba18e22e8",
+      "bytes": 177036,
+      "binaryRetained": false,
+      "sourceId": "c7a5ce3ca02caaec936bb2dd86eb83e34c4b67dd0ab43d21b94a63a97ff6b7d6",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-13.png",
+      "sha256": "cce5b307d58c3e3c94dd9922f0e5701619856aac05808601d8c40b9792aea78b",
+      "bytes": 177570,
+      "binaryRetained": false,
+      "sourceId": "50ee9ae54ef5256a8e0513c7d80ef217b41ed28d64e6b3ba1e44eef6b2cae797",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-14.png",
+      "sha256": "ff7d15173d905be351359474dab0eaec43d8a4eaa7063ab0e50b21217d80c55b",
+      "bytes": 177792,
+      "binaryRetained": false,
+      "sourceId": "efa0add17ef9d2e3ad0f93012bbead9dfe292e60e2e69e29a192b20d8e2ac10f",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-15.png",
+      "sha256": "9a07664e91e01b12ec098152a27a083877e2998ce5fde368c0ccdcc790b8516b",
+      "bytes": 186738,
+      "binaryRetained": false,
+      "sourceId": "829ad58f6226252438a934874e8a7b078c5dac90fc605423d9c56ee76c4b252d",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-2.png",
+      "sha256": "d0fe398ceccfc22c2e7e8f140532d1eb0a9a50538f41b0dfd5cc8bfe14b36e78",
+      "bytes": 174404,
+      "binaryRetained": false,
+      "sourceId": "1c995416ef11dc069b2b321806d13649efd8ef68897afbc0f099eefcee5f1211",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-3.png",
+      "sha256": "8f5f5e42a96066f6da8d81d8aae15bd8e0b1ab105a696df57b911bcc1762d2bc",
+      "bytes": 173280,
+      "binaryRetained": false,
+      "sourceId": "fce33956acb2b145f3263ca2c309c2fc003d1aa15948f04c810365eac3da8fc1",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-4.png",
+      "sha256": "62070072b6167c72ef82cb562c831304daae1b06bd1d79210302aa6dfef18023",
+      "bytes": 170533,
+      "binaryRetained": false,
+      "sourceId": "26b0e2f9280753d103885c14cd2808b6b619c4fa146764ca9090a8498dc572c8",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-5.png",
+      "sha256": "51a3ede64f33dd1bb027ecf14590e7d590ac9b26b978be76c94b05fb36beaf38",
+      "bytes": 171976,
+      "binaryRetained": false,
+      "sourceId": "504f24ff0c2863c4c2b16fbc582f37535703879f0a24bec5011a0bb4ac56a782",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-6.png",
+      "sha256": "e9cffa56b96601b83bfb865253d4d13634367f97742f55e512de059ae8abf792",
+      "bytes": 171582,
+      "binaryRetained": false,
+      "sourceId": "40573e1f78c20d6980792e16347973cdf0c92d6dc78b2dbde69164bf93ea5549",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-7.png",
+      "sha256": "ac8491c5cf3d58e427230691e57d1800f7f70e94e6bece8cdf4a9c63f42ecdaf",
+      "bytes": 171583,
+      "binaryRetained": false,
+      "sourceId": "4fdc8b09689609fc200657cd7cbc1b9250193d87144db0307008a2307c848c03",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-8.png",
+      "sha256": "616b27f70f2e88e4022a1d6b8bce84feabfaa6409ef53e1a18279e1790447eea",
+      "bytes": 170943,
+      "binaryRetained": false,
+      "sourceId": "3cde26cf014d412d24c7aa54a7d7aaf70c5f60a78e3dea203868eaf518aa2704",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/apoio-retorno-9.png",
+      "sha256": "cf840c28ccde3b656408c4f60f3d58bf4ee896a5100e4ec942c9348725559440",
+      "bytes": 170778,
+      "binaryRetained": false,
+      "sourceId": "e9b21038a24f91426e7dd7859f5078e1a1ba0224c9446d09bc3c637d4cc6bffc",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-APPROACH.png",
+      "sha256": "daaf0b9f4f300049e94e2065d27cbc790687c914d5234c8608e3beb260a4d5c7",
+      "bytes": 905554,
+      "binaryRetained": false,
+      "sourceId": "bcd6c5e255831cbac8593c89afa82944bbe9f9434caa2132f2a9769936065387",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-ATTACK.png",
+      "sha256": "8d43ff9aa999e9635ac4979cb5059ab7355db8adb653ac67d94c08b350a6c729",
+      "bytes": 913313,
+      "binaryRetained": false,
+      "sourceId": "45c66cd55877801ed7ec2404f92621ab07e26cc21d19458abbdc1110f55928ac",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-DEATH.png",
+      "sha256": "40efa96001866738df6dd96215fcd656c05cb6894cc3af79e2c72a1de56c240c",
+      "bytes": 894690,
+      "binaryRetained": false,
+      "sourceId": "dd83e8fa31fa08c4e5ab77969affb4bf31c928612ec8e2757e50abb4d4f88862",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-HIT.png",
+      "sha256": "f5bd82c6e1ce85f44c150c1d90126f6cc8e709c836caad026d6ea4e442cf3579",
+      "bytes": 919362,
+      "binaryRetained": false,
+      "sourceId": "a384f3b52966b07a56812fb93248596d452f1a0d5550a39ec9b6b93aea391ef3",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-IDLE.png",
+      "sha256": "2d4e227e2eabb9e38b75f1a0c489ddc8aec671e9c35b11ac481d7e384ac7ceea",
+      "bytes": 913774,
+      "binaryRetained": false,
+      "sourceId": "1ceb1e58bab3d92985a7d93ea59c7a700f0de1c87b64910452a08da5b07d1eca",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-ataque.png",
+      "sha256": "eb99e12dbf485c6b355d6fc7d8f9fea5dc8e36ee7285b11a06efcabde742fd5d",
+      "bytes": 921028,
+      "binaryRetained": false,
+      "sourceId": "0f2d8358375d474f6506de39bd8fbe629f7b8f47256205c21df966deed5f9984",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-bear-entrada.png",
+      "sha256": "5e26561dc5bc5191a433e7d5eac04dd1ef5a3e2b76b36d447de173784a18e3fd",
+      "bytes": 860304,
+      "binaryRetained": false,
+      "sourceId": "7966bb70b11f3bfeeb43331831dcb174b04fb91a7019813b030c2995e14ee31f",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-APPROACH.png",
+      "sha256": "97d25dad7f88cb7bfbe3a19775155b692e081ca4b9fd5413b92173b11533ac08",
+      "bytes": 809547,
+      "binaryRetained": false,
+      "sourceId": "2a7591363614e38bacd08cedfd14fd22ffae44f27c0a00742a9c452e77d2eca0",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-ATTACK.png",
+      "sha256": "9b85dcf2042523d74838eacfa7f0a5273a0c61a80a0309933b6ed171f522ee28",
+      "bytes": 934996,
+      "binaryRetained": false,
+      "sourceId": "caf48c35b91964e887dc1c7cb4cdd80b5b58a74322b7815bd53edde5a4c4dead",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-DEATH.png",
+      "sha256": "2003ec9f0f43d9b1735d27c8dead96a29d844981ddb296988104559a4703b92e",
+      "bytes": 881523,
+      "binaryRetained": false,
+      "sourceId": "8f75a733cb924e2f4a9428db356b1e8006f39ee400775b63607667fa8fb9ebf1",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-HIT.png",
+      "sha256": "b496807942b57cc517f1363514e54e701fccefca3aca336a0a95535840d0ea5f",
+      "bytes": 940986,
+      "binaryRetained": false,
+      "sourceId": "d607d8407187205c06a8dd8400a9b4e069bbdd4237f3d03f549368ca49eb0efe",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-IDLE.png",
+      "sha256": "1dbc10461ebed199bbdf77fea4e2eb06bcb1609c3471ec0aa21f0a7cddcc961a",
+      "bytes": 783619,
+      "binaryRetained": false,
+      "sourceId": "5982fc5ed9d9c4ecc7ef4d6b10ab044d71150453421faf4b47f3cb65950e39c3",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-ataque.png",
+      "sha256": "9a3f96933e26e2b17d6703f6d17ffdc08cf0e8f319444af3a63323c4892af612",
+      "bytes": 917427,
+      "binaryRetained": false,
+      "sourceId": "e9417e5228b1c2f2eeeb54508f42b5f473b53908b16ad8354c15f374bbea46fb",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-dinosaur-entrada.png",
+      "sha256": "b6d8d96c31ab674156409ed6e4d0f14e624abf7ffb1ea88193ca9388e6e3080f",
+      "bytes": 786735,
+      "binaryRetained": false,
+      "sourceId": "02e9dd09826e40f4929ab56999b2a00dcbf61e0a4959045d35569e1e438b333f",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-ATTACK.png",
+      "sha256": "3d33a792135dac341848e249d7b2638ca6f5f23951a0a8a33e9a4bdeae237da4",
+      "bytes": 926067,
+      "binaryRetained": false,
+      "sourceId": "993575517fc3c3b4a3a69d4bb3e912bc0459109ba14f095c912077fc3d7cb381",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-DEATH.png",
+      "sha256": "69f629168339fc6a10adeee7eda8a30b141a3f12dc04238fc0a42416404e46e9",
+      "bytes": 931908,
+      "binaryRetained": false,
+      "sourceId": "d6e021e9189082d8d21db9e9815802f4f3ec091380abdf21d460c5e4133c79d0",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-HIT.png",
+      "sha256": "dde15315313d3d30f1a45b157238334c0e227f405a4b1e47dfd2f9f9479523d5",
+      "bytes": 921999,
+      "binaryRetained": false,
+      "sourceId": "d9d632c040f63b63cf0debf3c467057cbab2df00153ca9b250e5e6a6d8d5fff5",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-IDLE.png",
+      "sha256": "332cc4ee4183adb3536deeb252bfa2456ca4f3932988095d8390147d1c525ac6",
+      "bytes": 947549,
+      "binaryRetained": false,
+      "sourceId": "789366fec0c39fd87bae9c11e81f24674406925d597c4121c7b38af568c028ca",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-ataque.png",
+      "sha256": "9e6590ba4ee194e308f465e4cefd69655165b26c3721912e69881db2dd674779",
+      "bytes": 937807,
+      "binaryRetained": false,
+      "sourceId": "19769d5f6465a010fbeb17d12857ed6401e29b1a0037058d40e1e516019fd9ac",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-robot-entrada.png",
+      "sha256": "d9bbe8372461deec3502fa456597be1cd477d3aee10eabb32f4cd184dbc707c6",
+      "bytes": 882333,
+      "binaryRetained": false,
+      "sourceId": "a65a9a8da8c179fda54dc46afb2b33724cad6c890a8df10a30ff7f55d3869bfc",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-ATTACK.png",
+      "sha256": "8cf008c236557efb64c8ade4f4b21ce35c32996867ed02e86cdc801b3bdb90cb",
+      "bytes": 837202,
+      "binaryRetained": false,
+      "sourceId": "c529de515b95fd0b730d2832e9b4cdca867b8af2a6fd242df5ef7894a5a5bb0f",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-DEATH.png",
+      "sha256": "df874f548f52fcfa20ecb94140116f911f8bd05f865510fb8b68c1d80a20b6af",
+      "bytes": 870210,
+      "binaryRetained": false,
+      "sourceId": "6ab3d69be16eb8fcbc99cbe15dfa4d5fe7dfbd61f8db935635c367c00fdc1ec6",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-HIT.png",
+      "sha256": "c16a7e8e38767c667344032fe7f0151b37677fb728378a5397c212a862cb71d7",
+      "bytes": 881618,
+      "binaryRetained": false,
+      "sourceId": "09906830a23222b9084628a104af7c71a626647b8694437e52e43cd64a23155e",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-IDLE.png",
+      "sha256": "d0bcc704a4c62fe5f4e62107b42d8992fdaa6ca38894b2ff779a0f173fd112f1",
+      "bytes": 709224,
+      "binaryRetained": false,
+      "sourceId": "90c4ff16934e42aed99c3a2eb0be0d5889d7fc050d84b65b817984096a873769",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-RETREAT.png",
+      "sha256": "82c610234281178db60572dd5b2e406ef786b4047d667837ab307afcd6d58c7d",
+      "bytes": 895888,
+      "binaryRetained": false,
+      "sourceId": "3ed1abf8d5541b1b73e83a93978191f12c677975e5f609bffa34950c47210fac",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-ataque.png",
+      "sha256": "19334ef9181ef095b518d27fc1589f42d6e18e56aeeb041ab1372cbf59e88a9f",
+      "bytes": 967887,
+      "binaryRetained": false,
+      "sourceId": "9525b7e15181ae3a51bf33c6390591dc8d11cc6b24c90ac558f9a12f85683d1f",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/arena-train-entrada.png",
+      "sha256": "702ec5efdff6982f63d1a263f7dd5371402d2e2611d2a43b36a2757b31424350",
+      "bytes": 636690,
+      "binaryRetained": false,
+      "sourceId": "7a81845d58d97fb15d707a8943e9c47fa9c0a8275a5678dba12e70a2c1198328",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/realidade.png",
+      "sha256": "74058909bc12a8c1e5fe4de9c4a9f5e89c73ad2d5871e6818b5df41e2525b605",
+      "bytes": 417669,
+      "binaryRetained": false,
+      "sourceId": "ea9b39cf89094f12f8eb13d5b471551293b015f23918911f3ca1f137f2124398",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/retorno.png",
+      "sha256": "d756f39887a69cf61df88f197fbad4dac3a63ebb62ddd46a8da7ebb2fbe5c956",
+      "bytes": 834119,
+      "binaryRetained": false,
+      "sourceId": "c8e2b6ddc94bd0f8a29fc6b32bee3e4d3bc19588db3341ed6c0db43f63543713",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/transformacao.png",
+      "sha256": "efbf6a9c148446026559598c12ec89782addd71a52626ff1283d0623b66f8abb",
+      "bytes": 1358802,
+      "binaryRetained": false,
+      "sourceId": "05f15fe1e1637c8b2449a2ac2c426f6f15200ea30079b463c9da816fadfedf83",
+      "metadataOnly": true
+    },
+    {
+      "path": "refact/referencia-inicial/android/transporte.png",
+      "sha256": "81822dd3a604deb77b8acb462802a210ad035f74289599e0de8fe9ce24013104",
+      "bytes": 1376404,
+      "binaryRetained": false,
+      "sourceId": "dea2a6d48fa264d0da66b25a790d33999cb0ba1fe85fdc3950681c37c31338f9",
+      "metadataOnly": true
+    }
+  ]
+}

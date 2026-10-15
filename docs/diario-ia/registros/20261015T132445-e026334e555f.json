@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T132445-e026334e555f",
+  "sessionId": "20261015T132445-e026334e555f",
+  "type": "inicio",
+  "date": "2026-10-15T13:24:45.744721+00:00",
+  "title": "Refatorar por etapas com referência gráfica e gameplay antes e depois",
+  "actor": "Codex",
+  "branch": "refact",
+  "head": "3f4b6c431040da67f43f77c220a8b4a403e54193",
+  "workingTree": [
+    "?? docs/diario-ia/registros/20261015T131639-cd12e1028a85-fim.json",
+    "?? docs/diario-ia/registros/20261015T131639-cd12e1028a85.json"
+  ]
+}

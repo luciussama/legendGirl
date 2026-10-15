@@ -1629,7 +1629,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -13998,8 +13998,8 @@
           "alias": null
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 44,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 15,
           "type": "runtime",
           "alias": "toy-room-chest-brinquedos-v1"
         }
@@ -14053,62 +14053,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -18395,62 +18395,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -18519,62 +18519,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -18643,62 +18643,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -18767,62 +18767,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -18891,62 +18891,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19015,62 +19015,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19139,62 +19139,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19263,62 +19263,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19387,62 +19387,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19511,62 +19511,62 @@
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 32,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 3,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 35,
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 6,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 9,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 12,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 16,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 24,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
+          "line": 31,
+          "type": "runtime",
+          "alias": "toy-room-environment-sheet"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 38,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
         {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 41,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
+          "file": "src/js/toy-room/ToyRoomEnvironmentAssets.js",
           "line": 45,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 48,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 53,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 60,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 67,
-          "type": "runtime",
-          "alias": "toy-room-environment-sheet"
-        },
-        {
-          "file": "src/js/toy-room/ToyRoomPhase.js",
-          "line": 74,
           "type": "runtime",
           "alias": "toy-room-environment-sheet"
         },
@@ -19636,7 +19636,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19700,7 +19700,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19764,7 +19764,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19828,7 +19828,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19892,7 +19892,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19956,7 +19956,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20020,7 +20020,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20084,7 +20084,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20148,7 +20148,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20212,7 +20212,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20276,7 +20276,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20340,7 +20340,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20404,7 +20404,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20468,7 +20468,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20532,7 +20532,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20596,7 +20596,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20660,7 +20660,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20724,7 +20724,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20788,7 +20788,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20852,7 +20852,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20916,7 +20916,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20980,7 +20980,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21044,7 +21044,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21108,7 +21108,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21172,7 +21172,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21236,7 +21236,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21300,7 +21300,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21364,7 +21364,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21428,7 +21428,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21492,7 +21492,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21556,7 +21556,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21620,7 +21620,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21684,7 +21684,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21748,7 +21748,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21812,7 +21812,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21876,7 +21876,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21940,7 +21940,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22004,7 +22004,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22068,7 +22068,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 74,
+          "line": 39,
           "type": "runtime",
           "alias": "official-character"
         }

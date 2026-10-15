@@ -1,6 +1,6 @@
 # Contexto compartilhado vigente
 
-Atualizado em 14/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
+Atualizado em 15/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
 
 ## Ler antes de agir
 
@@ -45,6 +45,14 @@ O acervo foi inicializado com documentos atuais, instruções, prompts, evidênc
 ## Atualizar ao encerrar
 
 Mude este contexto quando houver nova decisão vigente, mudança de arquitetura ou pendência relevante. Registre evidências e limites, sincronize o acervo e encerre a sessão. Evite copiar relatos extensos para este resumo: preserve a fonte e a referência no banco.
+
+## Refatoração incremental na branch refact
+
+O responsável autorizou refatorar uma responsabilidade por vez, sempre comparando o jogo com a referência inicial antes de avançar. Inconsistências devem ser corrigidas e revalidadas; se não for possível, reverter somente a etapa e parar. É refatoração de código: preservar todos os assets gráficos, sprites, comportamento, física, áudio e saves. Avaliar dependências gráficas e de código antes de cada alteração.
+
+`BattleAssets.js` concentra carregamento do manifesto e das imagens do combate; `BattleConfig.js` concentra os parâmetros compartilhados; `BattleRenderer.js` concentra a apresentação antes embutida em `ToyRoomBattle.js`. Os exports e métodos públicos anteriores foram preservados. `ToyRoomEnvironmentAssets.js` resolve os recortes existentes da sala, antes definidos no construtor de `ToyRoomPhase`. As imagens e os manifestos permanecem nos mesmos caminhos. O acesso amplo à sala e a duplicação de estado em `game.js` ainda exigem etapas próprias; não declarar o desacoplamento do projeto inteiro concluído.
+
+A sessão `20261015T132445-e026334e555f` preserva as referências iniciais, fontes de QA e resultados de cada etapa. `npm run journal:qa -- test:refact:browser desktop` e `npm run journal:qa -- test:refact:browser android` recuperam as referências do acervo para comparação exata em workspace temporário. Requerem Chrome isolado com CDP na porta 9222. A automação percorre os módulos reais com relógio e aleatoriedade controlados apenas no teste; não equivale a playtest humano ou execução em aparelho físico.
 
 ## Foco da câmera na Toy Room
 

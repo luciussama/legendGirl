@@ -8,6 +8,7 @@ import { getMobileUILayout, hitArenaMobileControl, isActionControlHit } from '..
 
 import { getMobileZoomFrame, isMobileDevice } from '../controllers/MobileZoom.js';
 import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
+import { createToyRoomEnvironmentAssets } from './ToyRoomEnvironmentAssets.js';
 import { toyRenderer } from './ToyRenderer.js';
 import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
@@ -29,55 +30,7 @@ export class ToyRoomPhase {
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
     this.isInputEnabled = options.isInputEnabled || (() => true);
-    this.environmentFloorTile = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 27, y: 151, width: 186, height: 48
-    });
-    this.environmentTeddy = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 424, y: 44, width: 86, height: 120
-    });
-    this.environmentRug = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 39, y: 355, width: 291, height: 247
-    });
-    this.environmentDoor = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 304, y: 158, width: 88, height: 136
-    });
-    this.environmentChest = this.assets?.get('toy-room-chest-brinquedos-v1') || null;
-    this.environmentTrain = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 689, y: 76, width: 116, height: 88
-    });
-    this.environmentTable = this.assets && this.assets.getRegion('toy-room-environment-sheet', {
-      x: 548, y: 44, width: 137, height: 119
-    });
-    this.environmentDetails = this.assets ? [
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 832, y: 482, width: 45, height: 45 }),
-        x: 1350,
-        y: 470,
-        width: 34,
-        height: 34
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 878, y: 482, width: 54, height: 45 }),
-        x: 1430,
-        y: 615,
-        width: 42,
-        height: 34
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 839, y: 555, width: 50, height: 52 }),
-        x: 1180,
-        y: 930,
-        width: 42,
-        height: 44
-      },
-      {
-        image: this.assets.getRegion('toy-room-environment-sheet', { x: 1038, y: 561, width: 66, height: 63 }),
-        x: 220,
-        y: 520,
-        width: 54,
-        height: 52
-      }
-    ] : [];
+    Object.assign(this, createToyRoomEnvironmentAssets(this.assets));
 
     // Dimensões da Sala
     this.ROOM_W = 1600;

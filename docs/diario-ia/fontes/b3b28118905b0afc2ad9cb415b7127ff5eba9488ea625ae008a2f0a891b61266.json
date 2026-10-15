@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b3b28118905b0afc2ad9cb415b7127ff5eba9488ea625ae008a2f0a891b61266",
+  "path": "refact/referencia-inicial/desktop/transporte.png",
+  "sha256": "f851a253761b6fe04c9ded40d4a749852ce8d0849e981df374d9861f6363afb8",
+  "capturedAt": "2026-10-15T13:29:52.508919+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/transporte.png\", \"sha256\": \"5cc12b7fa58f418d003cb8b7161f34a534e9d106852e92cc61472cd97dde39cb\", \"bytes\": 1130262, \"binaryRetained\": false}"
+}

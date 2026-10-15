@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7a81845d58d97fb15d707a8943e9c47fa9c0a8275a5678dba12e70a2c1198328",
+  "path": "refact/referencia-inicial/android/arena-train-entrada.png",
+  "sha256": "5e7b4d036aa4add907a6362d267c8777241fccfeddc41cd5baea51ad1499cc4f",
+  "capturedAt": "2026-10-15T13:30:33.411210+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-train-entrada.png\", \"sha256\": \"702ec5efdff6982f63d1a263f7dd5371402d2e2611d2a43b36a2757b31424350\", \"bytes\": 636690, \"binaryRetained\": false}"
+}

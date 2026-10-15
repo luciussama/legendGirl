@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b092b893c061871bbc8e751d29c1eb87a0e3aa38711d6892ca1725d3b9c28ffc",
+  "path": "refact/etapa-3/src/js/toy-room/BattleConfig.js",
+  "sha256": "9328a1954789ebb4f8f03747efb22b4278625efec05df40ecacfca7027d22b1c",
+  "capturedAt": "2026-10-15T13:34:46.857564+00:00",
+  "origin": {
+    "type": "codigo-refatorado",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "// Dados compartilhados pelo combate e seus perfis; não carregam imagens nem criam a fase.\nexport const BATTLE_ORDER = ['train', 'robot', 'dinosaur', 'bear'];\nexport const BATTLE_PLAYER_VISUAL_SCALE = 2;\n// Parâmetros provisórios autorizados para avaliação, em quadros de 60 Hz.\nexport const BATTLE_TUNING = { left: 160, right: 1440, ground: 690, speed: 4,\n  jumpSpeed: 8.5, gravity: 0.3, swordRange: 112, swordCooldown: 26,\n  windup: 54, active: 18, recovery: 36, immunity: 48, hitRecovery: 28, death: 60 };\nexport const BATTLE_TRANSITION_DURATION = 120;\n"
+}

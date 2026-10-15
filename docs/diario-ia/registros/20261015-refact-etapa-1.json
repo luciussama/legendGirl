@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015-refact-etapa-1",
+  "sessionId": "20261015T132445-e026334e555f",
+  "type": "etapa",
+  "date": "2026-10-15T13:32:05.966854+00:00",
+  "title": "Refatoração sequencial — etapa 1",
+  "summary": "Carregamento de manifesto e sprites extraído para BattleAssets.js; URLs, ordem dos arquivos, mensagens e prontidão preservadas. Nenhum asset alterado.",
+  "checks": [
+    "Percurso completo desktop comparado exatamente com a referência inicial: aprovado.",
+    "Percurso completo Android emulado comparado exatamente com a referência inicial: aprovado.",
+    "npm test: aprovado.",
+    "npm run check-assets, npm run build e git diff --check: aprovados."
+  ],
+  "sourceId": "96d620de67253d0492d9852d57d0a2158d7ac685c69d3b6631edd023de163b1d"
+}

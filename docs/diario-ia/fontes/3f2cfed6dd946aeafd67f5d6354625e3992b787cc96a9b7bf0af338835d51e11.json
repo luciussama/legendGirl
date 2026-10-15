@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3f2cfed6dd946aeafd67f5d6354625e3992b787cc96a9b7bf0af338835d51e11",
+  "path": "refact/referencia-inicial/desktop/arena-bear-IDLE.png",
+  "sha256": "bfefff564d27b3e0bcdfd101866ab0291314fc315e6e40a3207e7b259344000b",
+  "capturedAt": "2026-10-15T13:29:52.483506+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-bear-IDLE.png\", \"sha256\": \"7acc4c1666fafe16056dcd950ba87a23987e67ad255073ab9ab935503d73a66e\", \"bytes\": 1020327, \"binaryRetained\": false}"
+}

@@ -4,7 +4,9 @@ O fluxo é exploração, espada, transformação, arena heroica, combate e retor
 
 `ToyRoomPhase.js` controla a exploração. `ToyRoomArenaPhase.js` gerencia transformação, arena e retorno. `ToyRoomArenaBuilder.js` deriva as estruturas da sala. `ArenaEnvironment.js` desenha o cenário heroico e reutiliza os materiais dos móveis. A câmera, o controller, o HUD, os efeitos e o perfil de áudio da arena têm responsabilidades próprias.
 
-`ToyRoomBattle.js` mantém a simulação e os recursos dos inimigos. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
+`ToyRoomBattle.js` mantém a simulação e coordena o combate. `BattleConfig.js` fornece os parâmetros compartilhados sem carregar a implementação da batalha; `BattleAssets.js` carrega o manifesto e as imagens existentes; `BattleRenderer.js` apresenta inimigos, combate legado, HUD e impactos. Os métodos públicos `render` e `renderImpact` e os exports anteriores de `ToyRoomBattle.js` permanecem compatíveis. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
+
+Os carregadores preservam as URLs relativas ao módulo e os manifestos atuais. Antes de mover qualquer arquivo de código, verificar também essa resolução, os recortes, as âncoras e os consumidores das imagens. A separação de responsabilidades não autoriza excluir assets ou substituir sprites por desenhos procedurais.
 
 O [guia de designers](../sprites/GUIA-DESIGNERS.md) identifica recursos e metadados. O [diário humano](../DIARIO-HUMANO.md) acompanha as decisões de produto. Relatórios de implementação, execução dos cards e validação ficam no diário de IA.
 # Corpos e comportamento dos inimigos

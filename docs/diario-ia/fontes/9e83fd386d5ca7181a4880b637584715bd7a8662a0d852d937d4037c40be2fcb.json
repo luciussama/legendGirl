@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9e83fd386d5ca7181a4880b637584715bd7a8662a0d852d937d4037c40be2fcb",
+  "path": "refact/referencia-inicial/desktop/arena-bear-ATTACK.png",
+  "sha256": "4f855cf277961faa75a4120572fb38adaa8fbb43a134a1a6e777a5c57e7b5044",
+  "capturedAt": "2026-10-15T13:29:52.480496+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/desktop/arena-bear-ATTACK.png\", \"sha256\": \"b464ce854b0c57aa74030d0886c003600376476d5213aece738395efd1883945\", \"bytes\": 1036191, \"binaryRetained\": false}"
+}

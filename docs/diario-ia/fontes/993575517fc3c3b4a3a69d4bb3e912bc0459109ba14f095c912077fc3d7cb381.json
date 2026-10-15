@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "993575517fc3c3b4a3a69d4bb3e912bc0459109ba14f095c912077fc3d7cb381",
+  "path": "refact/referencia-inicial/android/arena-robot-ATTACK.png",
+  "sha256": "89c3eaf8127a3947293d3f77b1ac43acc5188c32cdb22b788364b28107533e08",
+  "capturedAt": "2026-10-15T13:30:33.403335+00:00",
+  "origin": {
+    "type": "evidencia-grafica",
+    "sessionId": "20261015T132445-e026334e555f"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"refact/referencia-inicial/android/arena-robot-ATTACK.png\", \"sha256\": \"3d33a792135dac341848e249d7b2638ca6f5f23951a0a8a33e9a4bdeae237da4\", \"bytes\": 926067, \"binaryRetained\": false}"
+}
