@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T164234-ae6a6c553d02",
+  "sessionId": "20261015T164234-ae6a6c553d02",
+  "type": "inicio",
+  "date": "2026-10-15T16:42:34.056966+00:00",
+  "title": "Avaliar pendências de desacoplamento após a etapa 11",
+  "actor": "Codex",
+  "branch": "refact",
+  "head": "6978a166fc3e897e7f72d1ebb7620c308b64d88b",
+  "workingTree": []
+}

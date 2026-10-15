@@ -16,6 +16,7 @@ import { ToyRoomTutorial, TOY_ROOM_INPUT } from './ToyRoomTutorial.js';
 import { nearestToyGuide } from './ToyRoomOrientation.js';
 import { normalizeDifficulty, toyGuideBlend } from '../state/GameDifficulty.js';
 import { ToyRoomStory } from './ToyRoomStory.js';
+import { createToyRoomStoryContext } from './ToyRoomStoryContext.js';
 import { pickUpToy, releaseCarriedToy, storeToyInChest } from './ToyRoomToyActions.js';
 import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
 import { ToyRoomBattle } from './ToyRoomBattle.js';
@@ -301,7 +302,7 @@ export class ToyRoomPhase {
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.tutorial = new ToyRoomTutorial(this);
     this.gamepadState = { x: 0, y: 0, active: false, buttons: new Map() };
-    this.story = new ToyRoomStory(this);
+    this.story = new ToyRoomStory(createToyRoomStoryContext(this));
     this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
     this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
   }

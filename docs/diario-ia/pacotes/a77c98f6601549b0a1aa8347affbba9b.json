@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "a77c98f6601549b0a1aa8347affbba9b",
+  "date": "2026-10-15T17:37:02.554792+00:00",
+  "title": "QA temporário: test:toy-room:story-context",
+  "files": [
+    {
+      "path": "qa-execucoes/a77c98f6601549b0a1aa8347affbba9b.log",
+      "sourceId": "a861668eb9a645e99cefcb14a3274d9873211cdbe771d876e5ed893ae679ca79",
+      "sha256": "ac8537d50bd8785f1995c6e08f8d3d121b54b83b2a4649eb58a44a26e28fb9a0",
+      "bytes": 266,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a77c98f6601549b0a1aa8347affbba9b/docs/qa/.DS_Store",
+      "sourceId": "e3dedc73ac92453ecee7c68d50ea2c4f34e6ff7a30ff29bfc7dd7a9cbd30d572",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

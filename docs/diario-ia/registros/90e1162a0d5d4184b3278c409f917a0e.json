@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "90e1162a0d5d4184b3278c409f917a0e",
+  "type": "qa",
+  "date": "2026-10-15T17:37:13.019846+00:00",
+  "title": "QA temporário: script:test-toy-room-story.js",
+  "exitCode": 0,
+  "sourceId": "d57d835668f4c4b18e8892016e5cc200a88b26fa894ddc2d2069fbf22b24cee5",
+  "package": "zzzzzzzzzzzzzzzzz-refact-story-context-20261015"
+}

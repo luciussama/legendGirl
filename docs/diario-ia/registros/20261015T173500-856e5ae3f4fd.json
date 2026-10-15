@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261015T173500-856e5ae3f4fd",
+  "sessionId": "20261015T173500-856e5ae3f4fd",
+  "type": "inicio",
+  "date": "2026-10-15T17:35:00.953522+00:00",
+  "title": "Etapa 12: contrato explícito de dependências da narrativa Toy Room",
+  "actor": "Codex",
+  "branch": "refact",
+  "head": "6978a166fc3e897e7f72d1ebb7620c308b64d88b",
+  "workingTree": [
+    "?? docs/diario-ia/registros/20261015T164234-ae6a6c553d02-fim.json",
+    "?? docs/diario-ia/registros/20261015T164234-ae6a6c553d02.json"
+  ]
+}
