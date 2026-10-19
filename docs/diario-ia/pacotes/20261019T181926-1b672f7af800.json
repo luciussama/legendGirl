@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T181926-1b672f7af800",
+  "date": "2026-10-19T18:19:26.993439+00:00",
+  "title": "Regressões da prévia 3D: domínio e percurso completo no navegador",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/dominio.js",
+      "sourceId": "80700ede70535d2b0e7799b94e4fae7df3d7099a0864d7bcfcdb2e48262faa57",
+      "sha256": "520116e114ba54c332771d6a192fc3f94f701d00175f700b0342060b7923c645",
+      "bytes": 3986,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js",
+      "sourceId": "e5fadb93ec6cf0f61c720fe9f95e94e5702679b5e695c87d68b7104452667352",
+      "sha256": "89d2d23a6542cb674371b453addfe865844906014bc7855078de1f9243436f77",
+      "bytes": 8884,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase": "node docs/diario-ia/qa/perseguicao-20261019/dominio.js",
+    "test:bear-chase:browser": "node docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js"
+  }
+}

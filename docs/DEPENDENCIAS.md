@@ -4,13 +4,16 @@ Revisão: 15/10/2026. Fontes: package.json, package-lock.json, imports locais, s
 
 ## Dependências npm diretas
 
-São as três dependências declaradas. Não há devDependencies nem biblioteca de engine/frontend carregada pelo jogo. Os pacotes de imagem são ferramentas Node de arte/QA, embora declarados em dependencies.
+Há quatro dependências diretas e nenhuma devDependency. Os pacotes de imagem são
+ferramentas Node de arte/QA. Three.js é usado somente pelo renderer da prévia 3D,
+com distribuição local versionada; as fases anteriores continuam em Canvas 2D.
 
 | Biblioteca | Intervalo / versão resolvida | Descrição resumida | Onde é usada |
 | --- | --- | --- | --- |
 | express | ^4.21.2 / 4.22.3 | Servidor HTTP e middleware estático. | server.js: express(), express.static(), express.json(), rotas da revisão e listen(); desenvolvimento local. GitHub Pages serve arquivos sem esse servidor. |
 | jpeg-js | ^0.4.4 / 0.4.4 | Decodifica/codifica JPEG em JavaScript. | Scripts de geração/recriação de arte e verificação da personagem; não roda no navegador. |
 | pngjs | ^7.0.0 / 7.0.0 | Lê/escreve PNG e buffers de pixels. | Scripts de assets, capturas e verificações visuais; não roda no navegador. |
+| three | 0.186.1 / 0.186.1 | Renderer e geometria WebGL 2, licença MIT. | `ChaseRenderer3D`; cópias oficiais em `src/vendor/three/` carregadas dinamicamente, sem CDN. |
 
 ### Imports diretos por arquivo
 

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "18a8325ad62a6de12c2eac352e1b4aedd1dc0e2d42aa03ecfbd0a1697342e688",
+  "path": "qa-execucoes/34e1e9698c9d44e193a3a9acb643fcc1.log",
+  "sha256": "112da887c4fa5513c05a237e37381dad9131cfed9d6a769354978025e963267b",
+  "capturedAt": "2026-10-19T20:01:22.816849+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:girl:browser",
+    "exitCode": 0,
+    "package": "20261019T200117-6871f4609c0f"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:girl:browser\n> node docs/diario-ia/qa/perseguicao-20261019/menina-browser.js\n\nAPROVADO: menina volumétrica, poses determinísticas, animação articulada e recursos compartilhados. {\"meshes\":56,\"planes\":0,\"size\":[0.828984524439762,1.6057514673471451,1.5919845367052041],\"resources\":39,\"stable\":true,\"changed\":true,\"calls\":55}\nCAPTURA {\"file\":\"/tmp/legendgirl-menina-3d.png\",\"bytes\":177972,\"sha256\":\"c48da6be042fff41d3014ef070b27a97baa935ee13d5666e37a8d827e88474ea\"}\n"
+}

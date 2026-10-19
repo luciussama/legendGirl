@@ -277,7 +277,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 636,
+          "line": 634,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -8357,6 +8357,18 @@
           "alias": null
         },
         {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
           "line": 1,
           "type": "runtime",
@@ -14179,6 +14191,12 @@
           "alias": null
         },
         {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 67,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
           "line": 57,
           "type": "runtime",
@@ -14253,6 +14271,12 @@
           "alias": null
         },
         {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 68,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
           "line": 77,
           "type": "runtime",
@@ -14290,6 +14314,12 @@
           "alias": null
         },
         {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 67,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/ArenaEnvironment.js",
           "line": 8,
           "type": "runtime",
@@ -14324,6 +14354,12 @@
           "file": "assets/manifest.json",
           "line": 5,
           "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 68,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -14459,6 +14495,12 @@
           "alias": null
         },
         {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 69,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
           "line": 543,
           "type": "runtime",
@@ -14487,6 +14529,12 @@
           "file": "assets/manifest.json",
           "line": 51,
           "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 69,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -14525,6 +14573,12 @@
           "line": 16,
           "type": "runtime",
           "alias": "toy-room-cotton-bunny-v1"
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 71,
+          "type": "runtime",
+          "alias": null
         },
         {
           "file": "src/js/toy-room/ToyRenderer.js",
@@ -14637,6 +14691,12 @@
           "file": "assets/manifest.json",
           "line": 59,
           "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 70,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -14831,6 +14891,12 @@
           "line": 12,
           "type": "runtime",
           "alias": "toy-room-stacking-blocks-v1"
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 70,
+          "type": "runtime",
+          "alias": null
         },
         {
           "file": "src/js/toy-room/ToyRenderer.js",
@@ -22484,6 +22550,18 @@
           "alias": null
         },
         {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
           "line": 1,
           "type": "runtime",
@@ -22518,6 +22596,18 @@
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 23,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
           "type": "apoio",
           "alias": null
         },
@@ -22560,6 +22650,18 @@
           "alias": null
         },
         {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
           "line": 1,
           "type": "runtime",
@@ -22594,6 +22696,18 @@
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 23,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
           "type": "apoio",
           "alias": null
         },

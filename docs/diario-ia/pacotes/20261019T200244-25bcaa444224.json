@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T200244-25bcaa444224",
+  "date": "2026-10-19T20:02:44.475709+00:00",
+  "title": "Revisão 3: comparação com detalhe ampliado mantendo fontes e modelo na mesma escala",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+      "sourceId": "b41abb35f1c6d40ad0165e96909a82086e819e580f5065f24f4aed8e79ec6bff",
+      "sha256": "09331df2182e2047fdb471d188f76f2f1ef7d5c3882f0dff2e08d3401b1a608e",
+      "bytes": 2388,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+      "sourceId": "049d1bcad2bd8735174ebe7ec8ee796481e4c1f70ecbdb17f3d7bf2b4c844b27",
+      "sha256": "87126534d293f0d419e481962e31d5fe53eb29be2f08a285fe70ed27bcbd3d0b",
+      "bytes": 4049,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

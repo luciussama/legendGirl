@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T201209-8265c809706b",
+  "date": "2026-10-19T20:12:09.771182+00:00",
+  "title": "Corrida orgânica: teste de ciclo inteiro, reprodução real e quatro quadros observáveis",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/movimento-browser.js",
+      "sourceId": "28db1121dea6aae2f8e27f49fce5d5a6a646c57dc9839a783b7b521ede0ed384",
+      "sha256": "5d1f5b7087c620a042d8d951a37d0cc492f86dfe5648bdabdd557995e594ac86",
+      "bytes": 6651,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+      "sourceId": "615234a9bd612f2608ff01b1684969fca165f1194dcdb62c833c4815213e398e",
+      "sha256": "63ff1e6080bcd692489e6559dd10b329ee03577362e301cdc3c5ebd59415349b",
+      "bytes": 2438,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+      "sourceId": "778d070836561a969f8b3b55b7ebf8dae826dc0dd15423abd06627a13900c08e",
+      "sha256": "d7ce39e7cd1e84d96aee59679345ba0109fd7a2794bd77ec8332de2e66318144",
+      "bytes": 4046,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js",
+      "sourceId": "53d455446100af85ab36ca7c57214e15599d20d177ccc558863a6897f4c30492",
+      "sha256": "7655a4a7eae8aaddfb0986144b48cdc96d39ef390c72a333e7f733b69a76cd79",
+      "bytes": 5518,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:motion:browser": "node docs/diario-ia/qa/perseguicao-20261019/movimento-browser.js",
+    "test:bear-chase:comparison:browser": "node docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js"
+  }
+}

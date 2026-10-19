@@ -84,6 +84,12 @@ Passos da perseguição preparados na sessão `20261019T174444-74fe85306ae4`: fo
 
 Trilha da perseguição definida pelo usuário: `assets/audio/bear-chase/Chase.mp3`, cópia integral do arquivo fornecido, com hash conferido. Sessão `20261019T175720-3dfeab17f940`: MP3 estéreo 44,1 kHz/256 kbps, 94,08 s, aproximadamente 3 MB, pico amostral -5,04 dBFS, sem amostras no limite PCM. [Avaliação](analises/20261019-chase-viabilidade.md). Viável tecnicamente; requer escolha auditiva dos pontos de repetição para cobrir a fase longa e mixagem com os passos. Sem escuta crítica, loop validado ou integração no runtime. Na sessão `20261019T180000-ba56e08f8ab9`, o usuário aprovou a direção sonora: entrada quando o urso se levanta e foge, passos audíveis e redução da música quando a menina o alcança; repetição natural a preparar. Essa aprovação não certifica mixagem ou emenda ainda não executadas.
 
+## Prova jogável da perseguição 3D em 19/10/2026
+
+Por pedido de execução do usuário, sessão `20261019T180920-9abdc512abd2`, criada prévia isolada pelo seletor **Perseguição 3D (prévia)**, com quarto 3D real, materiais atuais, avanço/desvio, obstáculos, voo da fada e áudio local. `src/js/bear-chase/` separa domínio, input, áudio, renderer, HUD e coordenação. Three.js 0.186.1 fixo e distribuído localmente com licença; importação pesada somente ao iniciar a prévia. Métodos novos documentados em português. [Guia](../bear-chase/GUIA-PREVIA.md) e [resultado real](relatorios/20261019-previa-perseguicao-3d.md).
+
+São 90 segundos de corrida para avaliação, não a fase final de maior duração. Vistas laterais, caminhada/levantar, voo e repetição integral da música são provisórios. A campanha normal e o transporte do urso ao baú na arena ainda conservam o fluxo anterior; falta ligar os dois caminhos de vitória à nova cutscene, integrar saves/checkpoints e expandir conteúdo após avaliação artística. Snapshot próprio da prévia validado, sem migração de campanha. `npm test` final inclui domínio da perseguição e passou; navegador verificou três formatos, teclado/toque, 12 passos, mudo, pausa, restauração, percurso simulado completo, campanha preservada e descarte. Primeira falha do áudio foi corrigida expondo o contexto no adaptador. Build/recursos/lint/diff passaram; mapas e métodos regenerados. Sem geração paga, créditos, commit ou push. Não homologar dificuldade humana, arte final, emenda musical ou aparelhos físicos com esses testes.
+
 ## Trabalho compartilhado
 
 Verifique `git status` e os registros de início antes de editar. Não descartar alterações de outras pessoas/IAs. Registre responsável, escopo, branch, HEAD, arquivos afetados, decisões, resultados dos testes e pendências. Os eventos são anexados em arquivos separados, sem sobrescrever o histórico.
@@ -195,3 +201,101 @@ Por instrução do responsável, relatórios de máquina, testes, fixtures, evid
 `DialogueRenderer.renderDialogue` é a apresentação compartilhada da dark room e Toy Room: caixa, nome, retrato, quebra de texto e área segura. `renderCutsceneDialogue` conserva seleção das falas e avanço da primeira fase. `ToyRoomStory.renderStoryBeat` adapta NANDA para `fairy` e MENINA para `baby`, conservando os tempos originais e sem pedir avanço manual em falas temporizadas. Narração sem interlocutor permanece em `PoeticNarrator`, fora do quadrado central.
 
 Na Toy Room, a cena não é reprojetada durante as falas: o desenho e o hit testing dos controles continuam alinhados. Em dispositivos móveis, o painel termina acima da área dos controles calculada por `MobileUILayout`. O render não altera o snapshot narrativo. Os testes específicos estão arquivados no diário e acessíveis pelos aliases `test:dialogues` e `test:dialogues:browser`; a suíte padrão inclui a regressão. A recuperação de QA combina os comandos dos pacotes, permitindo acrescentar novos testes sem perder a suíte anterior.
+
+## Menina volumétrica da perseguição em 19/10/2026
+
+Após aprovar a prévia funcional, o usuário pediu substituir o sprite lateral da menina
+por versão 3D. Sessão `20261019T182639-ca2ae1840324`: `ChaseGirlModel` cria malhas
+reais com rosto, cabelo castanho, rabo único e laço rosa, vestido creme e botas;
+`ChaseGirlAnimation` articula caminhada, corrida, repouso e tropeço por estado.
+Renderer mantém recursos compartilhados e iluminação própria. A simulação, colisões,
+passos gravados e as fases 2D permanecem com os contratos anteriores. O GLB em
+`assets/models/bear-chase/menina.glb` é intercâmbio em pose neutra; a autoria e
+animação em execução ficam nos módulos JS. Nenhum serviço pago foi chamado.
+O usuário reprovou explicitamente essa arte: vestido fora da paleta, pele/detalhes
+e proporções sem fidelidade. Não tratar o modelo atual como aprovado. Urso/fada
+continuam planos provisórios.
+
+
+## Reprovação artística e revisão crítica da perseguição
+
+Sessão `20261019T183600-b0d9f912ce21`: revisão visual e partida pela interface nativa,
+sem mutação de estado nem avanço artificial, observada até 56%/23,2 m com colisão
+visível. A sessão parou de avançar; falha de clique `noWindowsAvailable` e tentativas
+de retomada não resolveram. Não houve conclusão jogada até o baú nesta revisão.
+A análise separa observação de tela, inspeção de código e propostas no relatório
+`docs/diario-ia/relatorios/20261019-revisao-critica-menina-perseguicao.md`.
+Prioridade: refazer paleta por região e silhueta da menina, recuperar rosa/salmão
+na roupa, pele e acabamento ilustrado; a estrutura técnica anterior não comprova
+fidelidade. Também observados trens com fundo preto, fada adiantada, urso frontal,
+repetição simétrica do corredor, contato dos pés pouco convincente e textos sobre
+a encenação. Nenhuma correção de produção aplicada: usuário pediu análise crítica.
+Próxima versão deve ter comparação direta com as fontes atuais e nova avaliação
+humana, seguida de playtest completo. Registros históricos não foram alterados.
+
+
+## Revisão 2 da menina e apresentação da perseguição
+
+Sessão `20261019T193929-09884af19ec9`, executando a priorização autorizada pelo usuário:
+paleta regional extraída do run-sheet da arena (coordenadas/hash/metodologia em
+`assets/models/bear-chase/paleta-menina.json`), vestido salmão e regiões creme,
+corpo compacto, rosto/mechas revistos, acabamento com iluminação branca controlada,
+apoio dos pés por IK e porte da espada à frente. Inclinação acompanha a velocidade
+lateral e se desfaz ao parar. Modelo GLB regenerado; sprites originais preservados.
+O urso passou a volume com queda/levantar/fuga/olhar para trás/retorno; trem ganhou
+malha sem fundo preto, fada passa atrás/acima, texto saiu da ação central e os
+módulos do quarto ficaram assimétricos com laterais de móveis texturizadas.
+A simulação, colisões, duração e campanha não foram alteradas.
+
+Comparação local solicitada em `docs/diario-ia/qa/perseguicao-20261019/comparacao.html`
+(e JS associado), com fonte/modelo em luz neutra e no quarto, escala de gameplay,
+poses e vistas selecionáveis. A primeira arte continua reprovada no histórico;
+a revisão 2 e o urso novo aguardam avaliação humana. Vistas traseiras são novas
+interpretações, não desenhos originais aprovados. Fada, blocos/coelho e baú ainda
+usam ilustrações planas. A assimetria melhora a apresentação, mas não substitui
+uma expansão futura em trechos temáticos completos nem integra a campanha.
+
+
+## Revisão 3: proporções dos braços e detalhes da menina
+
+Sessão `20261019T200000-6be5b3278690`. O usuário avaliou a revisão 2 como “75% bom”
+e pediu proporções melhores nos membros superiores, mangas fofas, pregas junto ao
+alto da saia e rabo de cavalo visível, respeitando a assinatura original. Ajustes
+localizados: braço superior de 0,18 para 0,15, antebraço mantido em 0,17, mão e
+fixação da espada ajustadas; mangas claras bufantes com punho salmão; franzido
+geométrico com contraste suave perto da cintura; rabo único projetado para trás e
+para o lado, com mechas/pontas articuladas e balanço recalibrado. A paleta extraída,
+rosto, corpo, física e cenário foram preservados. GLB regenerado. Comparação passa
+a identificar revisão 3 e permite ampliar fonte/modelo juntos em “Detalhes (2,5×)”.
+À época deste registro, a nova versão ainda não tinha aprovação. A atualização
+posterior abaixo classifica a alteração da personagem como parcialmente aprovada,
+com novo trabalho previsto para o futuro.
+
+## Peso e movimento orgânico da corrida em 19/10/2026
+
+Na sessão `20261019T200935-1e9fdca7ae53`, a corrida da menina recebeu compressão no
+apoio e recuperação entre passadas, contrabalanço de quadril/tronco/braços,
+articulação de quadril/joelho/tornozelo para sustentar os pés e resposta secundária
+de cabelo e saia. A simulação, distância, colisões e dificuldade não mudaram.
+Retomada pela sessão `20261019T203454-d43790773ab4`, a validação atual
+`test:bear-chase:motion:browser` passou: oscilação corporal de 0,080, apoio máximo
+de 0,00143 unidade, poses estáveis e estado de domínio inalterado. `npm run build`
+também passou. A validação técnica do movimento não equivale a aprovação artística.
+
+## Aprovação parcial da personagem e roteiro para props 3D em 19/10/2026
+
+Após revisar a evolução da personagem, o usuário informou “Melhorou bastante! :)”
+e classificou a alteração como **parcialmente aprovada**. A personagem voltará a
+ser trabalhada no futuro; não registrar a revisão 3 como aprovação completa nem
+estender essa aprovação aos demais assets.
+
+O usuário solicitou um roteiro para dar profundidade aos brinquedos arremessados
+pelo urso e aos brinquedos, armários e demais itens visuais da Toy Room. A meta é
+substituir a apresentação plana por modelos 3D, respeitando a estética, a paleta
+e os materiais observáveis nos sprites originais. O plano
+`planos/20261019-brinquedos-e-cena-3d.md` delimita o inventário, fases e critérios.
+É planejamento, não implementação ou aprovação de novos modelos. PNGs originais
+devem permanecer preservados como referência e fontes de textura. A primeira
+prova deverá comparar um brinquedo e um móvel em vistas neutra e de gameplay,
+antes de produzir o restante. Física, hitboxes, dimensões lógicas, interações,
+disposição de plataforma e dificuldade ficam fora da mudança artística.

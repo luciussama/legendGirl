@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T181753-acd3f1d7ca38",
+  "date": "2026-10-19T18:17:53.894636+00:00",
+  "title": "QA da prévia de perseguição no navegador real",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js",
+      "sourceId": "84db43dbff533a1b7cc7d1a560b42cf9ea00b631a51209c58cd1307e877293ba",
+      "sha256": "316985d1d23e5f7e6cf48b29a83698409ccb1a0b0f5ffc3469786f37171d73a3",
+      "bytes": 7671,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:browser": "node docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js"
+  }
+}

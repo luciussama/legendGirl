@@ -4,6 +4,10 @@ Data: 19/10/2026. Responsável: Codex. Sessão: `20261019T163037-29b2efe54c26`.
 Branch: `FEAT-bear-chase`. Base examinada: `4062ba108b6b28f7d82ad13ed4766ae4ae5e3c0e`.
 Status: estudo e proposta de execução; nenhuma fase, dependência ou arte foi implementada nesta sessão. Valores sugeridos abaixo são hipóteses de protótipo, sem homologação humana ou de desempenho.
 
+## Execução iniciada em 19/10/2026
+
+Sessão `20261019T180920-9abdc512abd2`, por pedido atual do usuário: primeira prova jogável em `src/js/bear-chase/`, com quarto 3D real, controles, cutscene provisória, obstáculos e áudio local. Acesso no seletor **Perseguição 3D (prévia)**. Percurso de avaliação de 90 segundos; personagens ainda laterais. [Resultado e pendências](../relatorios/20261019-previa-perseguicao-3d.md). Não está ligada à vitória da arena ou ao save de campanha, e não representa a fase final de maior duração. Etapas 2 e 4 têm prova técnica inicial; a etapa artística e a integração de campanha permanecem abertas. O pedido de execução foi recebido; não exigir novamente essa autorização para o escopo já solicitado.
+
 ## Pedido e compromissos de produto
 
 Após derrotar o urso na arena, há um corte para uma cutscene: o urso está caído e a menina se aproxima vagarosamente dele. Então o urso se levanta e começa a fugir, dando início à perseguição. O urso corre à frente, deixa/joga brinquedos no percurso e aumenta gradativamente a pressão. A menina avança automaticamente e desvia; a distância entre ambos diminui perceptivelmente. A fada acompanha atrás e acima da cabeça, alternando lados com voo natural. O urso só vai para o baú depois que a menina o alcança no final do percurso.
@@ -129,7 +133,7 @@ Contrato de dados: posições/velocidades em unidades de mundo/segundo; tempo de
 | 7. Otimização e revisão | Recursos limitados por janela visível, áudio e animação final | Metas de frame time e memória verificadas; avaliação humana de perseguição e dificuldade |
 | 8. Regressão e documentação | QA temporário arquivado, guias/mapa de sprites atualizados e diário encerrado | Fluxo completo e publicação local validados; distinguir aprovação técnica, artística e teste em hardware |
 
-Não avançar da prova para produção extensa se menina, quarto ou voo não forem fiéis; corrigir o trecho curto primeiro. A implementação futura exige um novo pedido de execução; esta sessão entrega o estudo solicitado.
+Não avançar da prova para produção extensa se menina, quarto ou voo não forem fiéis; corrigir o trecho curto primeiro. O estudo original foi seguido pelo pedido de execução registrado acima; continuar conforme as etapas, preservando a distinção entre prova técnica e avaliação artística.
 
 ## Plano de validação e riscos
 

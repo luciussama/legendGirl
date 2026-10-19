@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T182328-3868b00840c8",
+  "date": "2026-10-19T18:23:28.009190+00:00",
+  "title": "Primeira prova jogável da perseguição 3D: resultado, limites e continuidade do plano",
+  "files": [
+    {
+      "path": "docs/diario-ia/relatorios/20261019-previa-perseguicao-3d.md",
+      "sourceId": "7d8e6cb63bb80fcaf23ef39383715743ed745ed7427e66feb964b3145b8c04d0",
+      "sha256": "8c4119dc0cae3e6ebb3fcc61683a7c6c6c526ad28bc3783df7602278c57d127a",
+      "bytes": 7667,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/planos/20261019-perseguicao-urso-3d.md",
+      "sourceId": "b5c674fbbc7a3c75fe86e352f6efe2a28969f94fa2b1a08d7162d8d85b2e91fd",
+      "sha256": "980f58a5a923dbff2eceee3f15c1796c5084812525852f8df5f7e0d47fde081b",
+      "bytes": 28641,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/dominio.js",
+      "sourceId": "80700ede70535d2b0e7799b94e4fae7df3d7099a0864d7bcfcdb2e48262faa57",
+      "sha256": "520116e114ba54c332771d6a192fc3f94f701d00175f700b0342060b7923c645",
+      "bytes": 3986,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js",
+      "sourceId": "e5fadb93ec6cf0f61c720fe9f95e94e5702679b5e695c87d68b7104452667352",
+      "sha256": "89d2d23a6542cb674371b453addfe865844906014bc7855078de1f9243436f77",
+      "bytes": 8884,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

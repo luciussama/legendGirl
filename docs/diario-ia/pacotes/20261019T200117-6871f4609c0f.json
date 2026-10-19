@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T200117-6871f4609c0f",
+  "date": "2026-10-19T20:01:17.365440+00:00",
+  "title": "Revisão 3: mangas, franzido e rabo visíveis em luz neutra",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/menina-browser.js",
+      "sourceId": "1f59f9f20bde0e0e2da9b6c60179e23cccf58d15d6709e70283e935acb7615e9",
+      "sha256": "3aaa898004244fd430234543469d02dddcf59b9c245814bfa12eb455bf4d10ef",
+      "bytes": 5114,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+      "sourceId": "4b286844608feaaa36f6869356a868fd7cccecca5f2350cb9958ef1c23229fde",
+      "sha256": "c0ebc95d134d187af8305374c256f707f7081b27605371063f06bac2d1f8617c",
+      "bytes": 2251,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+      "sourceId": "1fb8a5ed2ff43932462e87a17b996c97506de6fb227fb2c7803903981f9876a0",
+      "sha256": "ca12789267db9b651af3221d939b22c28985531119a032e5346b644e7c9f2318",
+      "bytes": 3858,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:girl:browser": "node docs/diario-ia/qa/perseguicao-20261019/menina-browser.js"
+  }
+}

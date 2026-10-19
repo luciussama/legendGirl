@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T183600-b0d9f912ce21-fim",
+  "sessionId": "20261019T183600-b0d9f912ce21",
+  "type": "fim",
+  "date": "2026-10-19T18:40:40.094855+00:00",
+  "title": "Revisão crítica jogada da perseguição e reprovação visual da menina 3D",
+  "actor": "Codex",
+  "summary": "Registrada reprovação humana da menina 3D e revisão crítica visual da perseguição. Partida nativa acompanhada até 56%, sem conclusão após interrupção da sessão visual. Plano prioriza paleta, silhueta, acabamento e movimento; nenhum código/arte alterado.",
+  "checks": [
+    "Comparação direta com atlas oficial, idle e run atuais; observação nativa da cutscene e corrida até 56%/23,2 m; reação de colisão visível; código de materiais, animação, câmera e simulação consultado; git diff --check aprovado.",
+    "npm test/build não executados: sessão observacional e documental, sem mudança de produção."
+  ],
+  "pending": [
+    "Refazer menina respeitando identidade/paleta; avaliação humana da nova versão; recuperar controle visual estável e jogar até o fim; corrigir recortes pretos e demais problemas de apresentação listados."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261019-revisao-critica-menina-perseguicao.md"
+  ]
+}

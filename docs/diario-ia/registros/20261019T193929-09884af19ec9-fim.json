@@ -1,0 +1,35 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T193929-09884af19ec9-fim",
+  "sessionId": "20261019T193929-09884af19ec9",
+  "type": "fim",
+  "date": "2026-10-19T19:51:23.291030+00:00",
+  "title": "Refazer menina 3D e apresentação da perseguição com comparação fiel de referências",
+  "actor": "Codex",
+  "summary": "Executada revisão 2 na ordem autorizada: paleta regional rastreável, silhueta/roupa/mechas, acabamento, apoio dos pés e desvio, urso/trem volumétricos e apresentação do quarto. Comparação local lado a lado entregue em luz neutra e no quarto, escala de gameplay. Avaliação humana da arte permanece pendente.",
+  "checks": [
+    "npm test aprovado; comparação final no Chrome isolado aprovada; apoio a 0,001 unidade do piso em 80 amostras; browser em três formatos aprovado com percurso controlado completo, controles, áudio, pausa, save preservado e descarte. GLB final validado.",
+    "Build, check-assets, lint, sintaxe dos módulos/geradores e git diff --check aprovados. Mapa de sprites e referência de métodos reconstruídos. Nenhum serviço pago utilizado."
+  ],
+  "pending": [
+    "Avaliação humana da revisão 2 e urso; playtest humano contínuo e aparelhos físicos/Safari; futura expansão temática e integração na campanha. Comparação servida localmente pelo guia."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseGirlPalette.js",
+    "src/js/bear-chase/ChaseGirlModel.js",
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "src/js/bear-chase/ChaseBearModel.js",
+    "src/js/bear-chase/ChaseToyModels.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "src/js/bear-chase/ChaseHUD.js",
+    "scripts/prepare-chase-palette.js",
+    "scripts/export-chase-girl.js",
+    "assets/models/bear-chase/paleta-menina.json",
+    "assets/models/bear-chase/menina.glb",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+    "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+    "docs/diario-ia/relatorios/20261019-revisao2-menina-perseguicao.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

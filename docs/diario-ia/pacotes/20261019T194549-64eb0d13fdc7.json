@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T194549-64eb0d13fdc7",
+  "date": "2026-10-19T19:45:49.298765+00:00",
+  "title": "Comparação visual da menina revisão 2 e contratos de apresentação",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+      "sourceId": "98bcfe2dd01573505f63ce917595290c8e2fb7b22ed0632a183d9f716cbdb361",
+      "sha256": "5364c1f4b7843b0af1d8b6813a2e5dc39b4313566e78df6fb17064523056d802",
+      "bytes": 2251,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+      "sourceId": "562e03ffbf3176146a083a018a3e3f91fda9394fc201a5838732cc2c55513395",
+      "sha256": "49dbf794949d65a656426e6fa9466fef271428d474305955ae1fcef741018241",
+      "bytes": 3857,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js",
+      "sourceId": "e0c5949de13a47abc90e456d1bbb0620db07087f0a72c0e70a3c2986e7c0a36a",
+      "sha256": "c43385f1d5fea4630c4e8b9c92c113aa7d8f6975fb20610e3ec85b85f40f99af",
+      "bytes": 4899,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:comparison:browser": "node docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js"
+  }
+}

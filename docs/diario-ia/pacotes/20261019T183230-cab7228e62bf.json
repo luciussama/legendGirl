@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T183230-cab7228e62bf",
+  "date": "2026-10-19T18:32:30.449258+00:00",
+  "title": "Integridade da exportação GLB com malhas compartilhadas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/menina-glb.js",
+      "sourceId": "b9111336c55955f79cfd6261f85aa54e2aa9c8cade902e9049d6159db67497fa",
+      "sha256": "da093fbda5a9ab7af92164886364d5f34d7e07cf964f4e72cfe63e1f8b540d04",
+      "bytes": 1013,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:girl:glb": "node docs/diario-ia/qa/perseguicao-20261019/menina-glb.js"
+  }
+}
