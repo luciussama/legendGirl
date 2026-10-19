@@ -27,6 +27,13 @@ const profile=process.argv[2]||'android';
 const profiles={android:{width:390,height:844,mobile:true,ua:'Mozilla/5.0 (Linux; Android 14) Mobile'},
   iphone:{width:390,height:844,mobile:true,ua:'Mozilla/5.0 (iPhone; CPU iPhone OS 18_0 like Mac OS X) Mobile'},
   desktop:{width:960,height:540,mobile:false,ua:'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)'}};
+Object.assign(profiles,{
+ android_paisagem:{...profiles.android,width:844,height:390},
+ iphone_paisagem:{...profiles.iphone,width:844,height:390},
+ tablet:{...profiles.android,width:768,height:1024},
+ tablet_paisagem:{...profiles.android,width:1024,height:768},
+ compacto:{...profiles.android,width:320,height:568}
+});
 assert.ok(profiles[profile],'Perfil de teste válido');
 const device=profiles[profile];
 const difficulty=process.argv[3]??'NORMAL';assert.ok(['NORMAL','EASY'].includes(difficulty));
@@ -48,6 +55,7 @@ try {
     const data=await evaluate("document.querySelector('canvas').toDataURL().split(',')[1]");
     const raw=Buffer.from(data,'base64');await fs.writeFile(`${directory}/${name}.png`,raw);
     signatures.push({name,sha256:hash(raw),bytes:raw.length});
+    if(process.env.FORMATOS_CAPTURES && ['apoio-retorno-7','apoio-retorno-15'].includes(name))await fs.writeFile('/tmp/legendgirl-formatos-'+profile+'-'+difficulty+'-'+name+'.png',raw);
   }
   async function settle(){return evaluate(`(()=>{
     const r=window.review.game.review;

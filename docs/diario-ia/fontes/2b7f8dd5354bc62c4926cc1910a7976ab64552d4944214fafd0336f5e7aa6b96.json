@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2b7f8dd5354bc62c4926cc1910a7976ab64552d4944214fafd0336f5e7aa6b96",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/compacto/NORMAL/arena-dinosaur-IDLE.png",
+  "sha256": "cce91b8a1e7102dc01cb1d4fa6c7f8946b6c595b093ad9b4a1388cc419c34cfd",
+  "capturedAt": "2026-10-19T12:45:55.851481+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/compacto/NORMAL/arena-dinosaur-IDLE.png\", \"sha256\": \"17b337f01b6b083868632358a1d5dafe8e5e2085e4747dd2a19b9932917d4cfc\", \"bytes\": 683650, \"binaryRetained\": false}"
+}

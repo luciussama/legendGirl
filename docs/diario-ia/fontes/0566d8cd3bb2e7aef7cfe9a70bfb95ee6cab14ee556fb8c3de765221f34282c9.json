@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0566d8cd3bb2e7aef7cfe9a70bfb95ee6cab14ee556fb8c3de765221f34282c9",
+  "path": "qa-execucoes/646f8fadc0b94c4f9cf67783f47534a4/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-ATTACK.png",
+  "sha256": "a392eaafe7c43e817c657b5cc41c8cd307293de1ea682c55529f3959b084ab34",
+  "capturedAt": "2026-10-19T12:28:14.553466+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-ATTACK.png\", \"sha256\": \"de4aaafce52b13018424918865752de40bcbf0de6a4ba28c10dafdd1d5096efc\", \"bytes\": 830199, \"binaryRetained\": false}"
+}

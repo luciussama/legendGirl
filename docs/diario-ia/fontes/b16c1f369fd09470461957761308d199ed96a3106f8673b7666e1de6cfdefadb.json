@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b16c1f369fd09470461957761308d199ed96a3106f8673b7666e1de6cfdefadb",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/realidade.png",
+  "sha256": "c2dc88ecb8d99bd15fa911cee865c92b24271a611e3658ba51f3e13ba7637213",
+  "capturedAt": "2026-10-19T12:46:02.985799+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/realidade.png\", \"sha256\": \"d2f6e9244bf135ee86861ecbfc22d5d785ef97ab209102174160a8c225da32f4\", \"bytes\": 260591, \"binaryRetained\": false}"
+}

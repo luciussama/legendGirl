@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "3d9124ec63c65dc63479d8c7b8d0f4b11c69561b247d6f6c840539a2cd60685d",
+  "path": "docs/diario-ia/qa-resultados/correcao-bailarina/build.log",
+  "sha256": "30fe38d3f4c3ad2f12c571661a2aa72b10b4f8ba57a71e00d5ecf2e47f8469f8",
+  "capturedAt": "2026-10-19T03:00:04.109725+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 build\n> node scripts/validate-production.js\n\nPublicação validada: recursos locais existentes e caminhos relativos.\n"
+}

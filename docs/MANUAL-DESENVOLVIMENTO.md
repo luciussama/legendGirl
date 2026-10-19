@@ -453,6 +453,12 @@ Algumas revisões específicas usam porta 3001; confira o cabeçalho do script, 
 
 Em comparações, fixe a semente, restaure aleatoriedade/checkpoints e descarte tentativas de busca que não pertencem ao percurso aceito. Meça a transformação visual, não apenas `cameraX`. Faça captura no mesmo frame das métricas; resize e composição atrasada podem gerar imagens de outro frame. `qa-visual-layers.js` exporta diretamente o canvas para evitar esse descompasso.
 
+### Enquadramento fixo no retorno pós-clímax
+
+Durante o gameplay após a porta falsa, `getPhase3ScrollFrame` mantém a rolagem horizontal base e usa uma trajetória vertical contínua definida pela extensão do cenário. O enquadramento não consulta altura/velocidade do pulo, contato com o chão, fada ou índice do apoio. O retorno dispensa a recuperação visual após pouso, o deslocamento contextual Android e a recentralização móvel nas bordas; a escala móvel permanece em 0,8 e sua posição é fixa por viewport. Narrativa, tutorial e portal conservam suas transições. A última pose desenhada é guardada para que a entrada da próxima transição parta do enquadramento atual.
+
+A câmera lógica continua com seu contrato de teto, derrota e rolagem. A remoção é exclusivamente de apresentação: não alterar alcance, impulso, geometria ou dificuldade para compensar a perda dessa assistência. Uma eventual ajuda futura exige avaliação própria. Verificação específica: `npm run journal:qa -- test:camera:retorno:browser`.
+
 ### Critérios móveis e de câmera
 
 Os critérios de QA-CAMERA-002C incluem jitter parado <=1 px visual em 60 frames, salto de posição <=5% da tela por frame, recuperação do pouso <=300 ms, zoom <=2% sem evento narrativo, região de chegada visível antes do salto e fada visível >=95% do plot twist. Não confunda desvio padrão da câmera em movimento com jitter parado. Relate pousos sem janela suficiente como não medidos, em vez de aprovados.
@@ -529,6 +535,6 @@ Na Toy Room, `separateScene: false` mantém o enquadramento e as coordenadas dos
 
 ### Progressão das janelas dos saltos
 
-O alcance aéreo da aproximação vem de `getApproachJumpSpeed`; os dois primeiros saltos conservam a margem inicial e as saídas seguintes exigem precisão crescente. Castelo e primeiro salto da fuga mantêm pausa/assistência. Após a porta falsa, `getPhase3Stats` usa uma tabela de alcances fixos; `fromFloor` distingue a entrada no percurso invertido. A geometria, gravidade, impulso vertical e velocidades de corrida permanecem independentes desse ajuste. Não calcular o alcance com a posição do comando para facilitar a mira.
+O alcance aéreo da aproximação vem de `getApproachJumpSpeed`, com as velocidades originais: 1,42 por quadro, exceto as saídas das plataformas 4 e 5 (1,8 e 1,95). Não reduzir esse avanço abaixo da corrida para estreitar janelas: isso criou frenagem artificial e dificultou indevidamente o salto da bailarina. Castelo e primeiro salto da fuga mantêm pausa/assistência. Após a porta falsa, `getPhase3Stats` usa uma tabela de alcances fixos; `fromFloor` distingue a entrada no percurso invertido. A geometria, gravidade, impulso vertical e velocidades de corrida permanecem independentes desse ajuste. Não calcular o alcance com a posição do comando para facilitar a mira.
 
-`npm run test:saltos:progressao` mede saídas usando os trechos reais de produção, em NORMAL/EASY e dt 0,5/1/1,2. Integra `npm test`. Comparações históricas de salto aceitam somente as mudanças autorizadas de alcance; colisão, gravidade e bloqueios continuam cobertos.
+`npm run test:saltos:progressao` mede saídas usando os trechos reais de produção, em NORMAL/EASY e dt 0,5/1/1,2. Integra `npm test`, junto com `test:saltos:bailarina`, que verifica saídas normais com os pés apoiados. A progressão decrescente é exigida no retorno pós-clímax; a aproximação conserva os alcances originais. Comparações históricas de salto aceitam somente as mudanças autorizadas de alcance; colisão, gravidade e bloqueios continuam cobertos.

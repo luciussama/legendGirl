@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "98b489d8cf0446daa8bde64f94d06c49",
+  "date": "2026-10-19T12:41:52.621714+00:00",
+  "title": "QA temporário: test:arena:defesa",
+  "files": [
+    {
+      "path": "qa-execucoes/98b489d8cf0446daa8bde64f94d06c49.log",
+      "sourceId": "c7ec62414d1c54887d8e19ece5f321ec38e39595009cab782655e43ee102daf8",
+      "sha256": "a701ed43ce045ea6eb92d29220e53dee38b5a40e47195c4a809ae9f2b5dc2606",
+      "bytes": 295,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/98b489d8cf0446daa8bde64f94d06c49/docs/qa/.DS_Store",
+      "sourceId": "7a3690993bc79d93d823d6748c9604848647827af366e415e3ec0397fea77978",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

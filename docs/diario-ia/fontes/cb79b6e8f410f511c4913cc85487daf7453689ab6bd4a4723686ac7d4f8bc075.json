@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "cb79b6e8f410f511c4913cc85487daf7453689ab6bd4a4723686ac7d4f8bc075",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-robot-DEATH.png",
+  "sha256": "07ba391c448c427ca7f117004008199d3a5bc36ec9ae39ee843ef7fe3cea56f4",
+  "capturedAt": "2026-10-19T12:45:53.819143+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-robot-DEATH.png\", \"sha256\": \"61c62f3abff2057c692ae98d9672e019cba6034c4ea1058b2d899fc1b29c64fc\", \"bytes\": 1265392, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0be5cfa40caa97c11d7b57b95e246106450b4523affe1d9c29cd6e3b9a5d0266",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/arena-train-HIT.png",
+  "sha256": "a279c0b113428299a74bebe171afdb46ae6963c321e42e0d2676600c765002c6",
+  "capturedAt": "2026-10-19T12:45:55.287584+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/arena-train-HIT.png\", \"sha256\": \"8d67779fc96c77d80878bbf9a0a5129a1007aa667cbcca9b2f85e00da1c82d98\", \"bytes\": 795661, \"binaryRetained\": false}"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "bd9271bcfe434a878562336ecfd2a08c",
+  "type": "qa",
+  "date": "2026-10-19T12:25:30.382994+00:00",
+  "title": "QA temporário: test:camera:retorno:browser",
+  "exitCode": 0,
+  "sourceId": "54100cf35dfdfe9f73fa4fe09c9e171f1102eba996fa3a8dc9d61aa8c40fa62d",
+  "package": "20261019T122522-74ea7a2d5b3d"
+}

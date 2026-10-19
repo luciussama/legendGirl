@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4431f15764cc54e1ee60f2dace15d95a14295cab1f9839ee8a4badf25b5509f6",
+  "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/390.json",
+  "sha256": "576ac5e6acbce11a75eb616cd88609dd16990e55427f961e023c5b7b8ef6c9a8",
+  "capturedAt": "2026-10-19T12:46:00.109063+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"width\": 390,\n  \"height\": 844,\n  \"guard\": {\n    \"guarding\": true,\n    \"amount\": 1,\n    \"facing\": \"right\",\n    \"buttons\": {\n      \"left\": true,\n      \"right\": false,\n      \"up\": false,\n      \"down\": false\n    },\n    \"events\": [],\n    \"pointers\": [\n      [\n        2,\n        {\n          \"x\": -0.6333333333333333,\n          \"y\": 7.756096394599903e-17\n        }\n      ]\n    ],\n    \"enabled\": true,\n    \"locked\": false\n  },\n  \"jump\": {\n    \"jump\": 11,\n    \"x\": 0.6919119770960239,\n    \"up\": true,\n    \"guarding\": false\n  }\n}"
+}

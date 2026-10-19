@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b177854b42ea94a75d8e18f3e0ac8b367540854bf3ee3321acdf9718c86c01b4",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-entrada.png",
+  "sha256": "5b6acdf639db5f47d08c7a79dd0ef6943e99929178a1221b815db3f3a588cc83",
+  "capturedAt": "2026-10-19T02:59:35.127049+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-entrada.png\", \"sha256\": \"8bfabbf3c1d173419127d1cd992b9c2adf8bb1e3ce8c3016522306033ba8af14\", \"bytes\": 948279, \"binaryRetained\": false}"
+}

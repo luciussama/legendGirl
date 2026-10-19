@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ec42d31bb1ac56cf5ea21b330f91fc2d4a6ec9f1ac863d2300b362b98a97eae8",
+  "path": "qa-execucoes/47d17e2172224ae6992f60be56a57892/docs/diario-ia/qa-resultados/bailarina-depois/desktop.png",
+  "sha256": "74a4c3321df53ed758e8da03d520699665baca54897f5080616e914e9ef57a0b",
+  "capturedAt": "2026-10-19T02:58:50.151193+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bailarina:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/bailarina-depois/desktop.png\", \"sha256\": \"ddf56d4435ab6bb3899ee74e2e3bb0e612174968efcfd43ae0bb22df6228efe5\", \"bytes\": 233619, \"binaryRetained\": false}"
+}

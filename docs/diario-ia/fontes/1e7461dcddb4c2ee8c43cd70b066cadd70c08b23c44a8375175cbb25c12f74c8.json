@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1e7461dcddb4c2ee8c43cd70b066cadd70c08b23c44a8375175cbb25c12f74c8",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-entrada.png",
+  "sha256": "cccccd4fc78e9586323d11d2cfbba5fe3d63edc11d2d7a902bf7aaaae72f2a19",
+  "capturedAt": "2026-10-19T12:45:52.560775+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-entrada.png\", \"sha256\": \"e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3\", \"bytes\": 701551, \"binaryRetained\": false}"
+}

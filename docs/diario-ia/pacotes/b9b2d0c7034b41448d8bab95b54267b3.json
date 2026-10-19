@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "b9b2d0c7034b41448d8bab95b54267b3",
+  "date": "2026-10-19T12:26:47.228492+00:00",
+  "title": "QA temporário: test:camera:retorno:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3.log",
+      "sourceId": "c0cab0fb3ce9b3d28a1c122859ed900b6169ae8a3ec1892e597b34b7cf4fc0f4",
+      "sha256": "72842fe3692a90de4603e662f296a4272b6fbf66d837778a2a998148d16e5bea",
+      "bytes": 460,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/qa/.DS_Store",
+      "sourceId": "c376c5730f8d3db4a0426749864f0cdc80d3dddc27707265c3b207362e695d20",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-0.png",
+      "sourceId": "02a5d5bf38ff3edc6e0696dc6e5642adb74e97068508a60f51e3b0bf6705e57e",
+      "sha256": "c97bedf51275acd8a72918fb259a7af43613bf13b98d90ee657d93856d1c7a51",
+      "bytes": 296591,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-15.png",
+      "sourceId": "3a243095f3fbc06f6990550e4c57ba061ceacc02db4f3027007a436a29653d37",
+      "sha256": "e07ee74e9450ed8f35e213eff705eeefc801c3ff4e164783404c29692988be6d",
+      "bytes": 305615,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-7.png",
+      "sourceId": "04a230a14650cdd077a3e43b63ab9801e4faa0bf71e9d7ef2c0e9dc1eeb1545a",
+      "sha256": "9dbb98ed520c9ce1f4cb31dda7dc5c6ce58192dfc28e6e43d9bf97f10a71b2ec",
+      "bytes": 310036,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-0.png",
+      "sourceId": "93b20e3571710e947abcee37026c793718d4efaf9b47b93d06e19ef662e84dc6",
+      "sha256": "0f9f826466f7a8646606fa34b7324f8a18b2da73444cc02df058cfa888c53eda",
+      "bytes": 284662,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-15.png",
+      "sourceId": "d2af6dce7544cd30a1112e6d7aa0ccb55ca020ff54cc7ccd7c551bb1b1ddaf2d",
+      "sha256": "d76d198cc7882ce4b51c56f15f11381425a627e9aa9a79fa2f198fcc58ebd5eb",
+      "bytes": 286971,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-7.png",
+      "sourceId": "7716ea620b2e26620b6dfe0448471906378e261b2143c3a9b222a80248ae7a18",
+      "sha256": "43270a5fdd87646859b83efc38275116fbd0c1d7da87efcc703b056dfe550c8b",
+      "bytes": 298886,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-0.png",
+      "sourceId": "2e86fb707bb055bb8622e03c49650cf2e205f4230f3467a3a70953ad5cfc6119",
+      "sha256": "8a5028584eadc65128ab03c318fe107d2d52fca952f4620418c4bc48a0efd199",
+      "bytes": 296541,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-15.png",
+      "sourceId": "deed0d739f8e1a7cc3d170e4da30ac6d4e6acff87e6eb0b19f41e96f563657fe",
+      "sha256": "3161fecadf444f2120a5b52ef7da4b219623e1673e0af0de6947c380d0a33cff",
+      "bytes": 305672,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-7.png",
+      "sourceId": "94178977e89ae30e1382b6f4dac95f8216e42434394312e97bc8321448d93856",
+      "sha256": "912cd087cdedd8d0dfc7aeee3ede4fbde351d58036d3ed7998c51fff1493a04f",
+      "bytes": 309877,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/b9b2d0c7034b41448d8bab95b54267b3/docs/diario-ia/qa-resultados/camera-retorno-fixa/resultado.json",
+      "sourceId": "01a90f3715a60e0b1da5514cb51d831d95dea72ad80b9671713a6db5d11ab1e6",
+      "sha256": "56e8caab3674e7233d8cb865c89a7119160a327c72f600e30eb3aa05560f1004",
+      "bytes": 330,
+      "metadataOnly": false
+    }
+  ]
+}

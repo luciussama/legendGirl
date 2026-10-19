@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b376831274e00412d7639c0962a08760d2432b9c7b4ef7276de974bf988f503a",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/arena-dinosaur-HIT.png",
+  "sha256": "27325883de1e3b7201fb466d168d83a1626469dc8355c212ff21fdf22bb95d84",
+  "capturedAt": "2026-10-19T12:45:59.395908+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/arena-dinosaur-HIT.png\", \"sha256\": \"a698dd55398ecc003c89f90e7538c8e8e7f066fdd245597c52e9603852782b54\", \"bytes\": 1265997, \"binaryRetained\": false}"
+}

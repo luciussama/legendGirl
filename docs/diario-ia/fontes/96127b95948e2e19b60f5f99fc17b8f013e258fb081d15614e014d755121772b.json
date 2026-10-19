@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "96127b95948e2e19b60f5f99fc17b8f013e258fb081d15614e014d755121772b",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-robot-HIT.png",
+  "sha256": "b50aa652261234a0cca0c532c770c93672090c404a682f80a36e70fca33ecd29",
+  "capturedAt": "2026-10-19T12:46:00.172804+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-robot-HIT.png\", \"sha256\": \"c11657cb19729854d9fd5a905dff77f6a6b914ccd40c64a76328c4f64d5aae0e\", \"bytes\": 1273074, \"binaryRetained\": false}"
+}

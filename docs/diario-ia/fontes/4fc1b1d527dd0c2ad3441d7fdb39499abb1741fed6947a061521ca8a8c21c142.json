@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4fc1b1d527dd0c2ad3441d7fdb39499abb1741fed6947a061521ca8a8c21c142",
+  "path": "qa-execucoes/47d17e2172224ae6992f60be56a57892/docs/diario-ia/qa-resultados/bailarina-depois/paisagem.png",
+  "sha256": "99e9e71658ade8616fe180a8930c8286305853cd9205cf356465a443435f7898",
+  "capturedAt": "2026-10-19T02:58:50.151792+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bailarina:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/bailarina-depois/paisagem.png\", \"sha256\": \"d5e45e0621b9801188c6608337235760d8c6c52a36693887e9894aa773b0f371\", \"bytes\": 170215, \"binaryRetained\": false}"
+}

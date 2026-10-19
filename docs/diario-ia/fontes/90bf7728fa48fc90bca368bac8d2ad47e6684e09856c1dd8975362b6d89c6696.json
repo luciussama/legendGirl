@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "90bf7728fa48fc90bca368bac8d2ad47e6684e09856c1dd8975362b6d89c6696",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-DEATH.png",
+  "sha256": "d5963acb2dc8ecc18c3bd3f3ea7877b0aec4bf73cc8c2adda1f875169348abe3",
+  "capturedAt": "2026-10-19T02:59:34.832058+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-DEATH.png\", \"sha256\": \"fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067\", \"bytes\": 868780, \"binaryRetained\": false}"
+}

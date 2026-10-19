@@ -1,0 +1,225 @@
+{
+  "schemaVersion": 1,
+  "id": "7c53c162abbd4b4985c08ce73954c3cf",
+  "date": "2026-10-19T12:46:00.058559+00:00",
+  "title": "QA temporário: test:formatos:complementos:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf.log",
+      "sourceId": "965737418e244f94896bc8116e8dc40c89c7e7b10e37411cdce781e5afd7839a",
+      "sha256": "55b1ce3d2d387fb2735fdaf1e2ae79704231d50c37cf7cbfe350b4e0b50bc1e1",
+      "bytes": 11421,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/qa/.DS_Store",
+      "sourceId": "8dbfb99f8b5c6c058bb79221b12242bccd246fc1ab0b01672d06081024ce8da7",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/bailarina-depois/android.png",
+      "sourceId": "f36c65d089720468a7542ffeb2c6b474f3aefb1f7b6747b5f34d734063edb801",
+      "sha256": "9cbcef689530496b52a519eeb804333a4ebf49b1e3016a5d7ed3dba99b3f4dd4",
+      "bytes": 59524,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/bailarina-depois/desktop.png",
+      "sourceId": "d26afb8794025cc80f874a17a8f769c3a85f2af9f161f6d98a783e71400022ea",
+      "sha256": "e242ee79bcdcf69e81a522d42dafdae24e216e827795aed573817f0fb3534b27",
+      "bytes": 233086,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/bailarina-depois/paisagem.png",
+      "sourceId": "d7e87e90d2320200679ff3a643afbe44e1354f620e187f378e238a843fec1d4a",
+      "sha256": "5f4ac208832eee5d48570c58599e4530fc883d157e0707ff756bb7c54b708526",
+      "bytes": 170227,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/bailarina-depois/resultado.json",
+      "sourceId": "b7f63eaab4498d5fc8f92e1614e967a3a61bfed351249f9107ed746c2b6eff33",
+      "sha256": "36d501cb2d96a65061af92a81b706a74abafa6079b4cdfb7101d17fb1d2ab161",
+      "bytes": 2228,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-0.png",
+      "sourceId": "8b67ff2e528922af70f22c7729242491877f3172b54673841de1607bbd081f8b",
+      "sha256": "156fa727185797e1bf3d9eefdc8bda025037038be67c3a50d73b1fbea88c21a4",
+      "bytes": 296722,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-15.png",
+      "sourceId": "17cd1bbd60d4b44714ba6fc4b2bb0109069ac2c2814c5aa11ade93d955a0c343",
+      "sha256": "55fcfa9e29222bad720b59cbd6f04c450b6cdeb11bebc2b27127be2eb69f71f9",
+      "bytes": 305638,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-7.png",
+      "sourceId": "8adffe04893b8df55157487e944d98b5699e3e3a12ab27c4f460831c9d78d9e8",
+      "sha256": "c60b59897d5624169a14a6f1bc9d2825771092a6e7956a03d1d12decb599ba2f",
+      "bytes": 310047,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-0.png",
+      "sourceId": "10c49bff74243d992b20994477fa7d6fb7f0947dc4a70455bbb577922ddb0d82",
+      "sha256": "867186d1518b118514a52cb3c883e677ea3813f0f03ccbed0f29fdc6ec018656",
+      "bytes": 284607,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-15.png",
+      "sourceId": "b114d5f6f6e2b5b1f1aa6599ab4ce9313bc5bc4edaca4460d4938ebc68246881",
+      "sha256": "e5a3454eafa0bf5511f7003f496b9602eb239a1956f1b2d3abb00b975a3b20a8",
+      "bytes": 287039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-7.png",
+      "sourceId": "9e6fa4f2e9c24bbf6a4805629e694e14c2318153a341d33a49dcf515cfaf8b36",
+      "sha256": "c2f00a401253cbc587349effd1ca712225ca1b7d7fbbd35c22885d4d96fa3743",
+      "bytes": 298804,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/1024-defesa.png",
+      "sourceId": "a4104b9cbe174cac28e2d74b84292fcfa3671df222a97b5d7e44dd6bc6dada6a",
+      "sha256": "51ac652bd791250761770b15e93cd5679243b477e5b8be513e91454e8a3b0a45",
+      "bytes": 849462,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/1024-poses.png",
+      "sourceId": "222eba958cf226a32e22e33f303e3eba43bf01c4d42c711aefe343f82e5e04e3",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/1024.json",
+      "sourceId": "477f919e89e1ef85a32fb8cea997f0e36fb4a3e6271cdc5e3b4fe0fb33bf5189",
+      "sha256": "4b0a4b1df748d9abfcac68cb2cb832a7f0d4014b742a107c0f3d686868b295a8",
+      "bytes": 525,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/320-defesa.png",
+      "sourceId": "93809e108aaa8f868c2e328ddaa85cad77c662d0d9abbfd7e696d37a2858f653",
+      "sha256": "26cea91a551ea37777bfb6ae6e3521358b9cf6db95e8875f44b5e22a3f31a023",
+      "bytes": 185174,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/320-poses.png",
+      "sourceId": "87a28cd34e0dd57d56f35ce36b42281b80126632523a2490333229acd67a4415",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/320.json",
+      "sourceId": "b32c2b3770dc5d84abe7cf0a3c58aaabc34805f9beab25ac8072e2f97ccb15c3",
+      "sha256": "c2ebfe3d424dbc67e87d6ff07cc43bb0462900c7fff8a4450954ba97135b3441",
+      "bytes": 524,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/390-defesa.png",
+      "sourceId": "2734500a77e4fdc26b2c0306d7df84bbb698a6f1afa05807e092f7920aef6d0a",
+      "sha256": "e599a04882d8ba053c9dfdea55f2bc2edf36228ce43912908c224321de6596c3",
+      "bytes": 256564,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/390-poses.png",
+      "sourceId": "aadb3a89619a9c5c0d2349d38d97c888cd35c9e6cd8bc7417bf056695b5d6aae",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/390.json",
+      "sourceId": "4431f15764cc54e1ee60f2dace15d95a14295cab1f9839ee8a4badf25b5509f6",
+      "sha256": "576ac5e6acbce11a75eb616cd88609dd16990e55427f961e023c5b7b8ef6c9a8",
+      "bytes": 524,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/568-defesa.png",
+      "sourceId": "8eff7645e015aadc0142c4cf02aa24c1e92db57c5e056e149f64204cee7a7073",
+      "sha256": "1e9b7b05d002bbc12420072963eaf2d0fa0b9ed73d145b90ebe4eade9323587c",
+      "bytes": 151128,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/568-poses.png",
+      "sourceId": "5bc1cd1aefce34c7fb0efe9463dbe6da3812219e020d89139fb928c077fb2d96",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/568.json",
+      "sourceId": "194af212f2d33c3188dfd59e6b6354e1b257acb70ce162c16580723de40bd6a9",
+      "sha256": "b95b1936fb213fc22258b0cbad3dc288702da4a1dc966b70282a6d1d4a9f28d7",
+      "bytes": 524,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/768-defesa.png",
+      "sourceId": "4ab89878d7c860233c9a79a62fbaa59be163013b32fb7aa7e3aff7501b057272",
+      "sha256": "3327747dd0c1c3a6ec1062cabd44bf8af75c6ef93fc6d0309e083c990db2aacf",
+      "bytes": 741081,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/768-poses.png",
+      "sourceId": "d5c18954b2dc750e737ffe5a64d825bc88ce6278407884087c24298549045b5a",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/768.json",
+      "sourceId": "51c30e99237e4d75f28dd3d0db44cfbaeec631c38d517001016969bed43248cf",
+      "sha256": "753619c60661776eecad1133efa976e729c664883bd4bbf90c69f9e8d1cc6088",
+      "bytes": 525,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/844-defesa.png",
+      "sourceId": "de237de7ae5e7cf7db0f2ebad502d53f8d5efb8000b4efb1052772d5fdc6f993",
+      "sha256": "936acd6ddf30982c84f9e4a07d65d366428564d2ed793d3ea93a4f0bd0e539db",
+      "bytes": 444743,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/844-poses.png",
+      "sourceId": "438b14048b78b8107034405636198156a9cd05f92935a7aee237d19d27d5035b",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/844.json",
+      "sourceId": "1063df180f9b1c827a48d2c20ff61edf30720ab6d5dffe179ea32931933b1b62",
+      "sha256": "b9c89262eb4bbaae665c3de357d8ebbd231b3b2342b0128481f9ab9fd8416306",
+      "bytes": 524,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/jogabilidade-persistencia/resultado.json",
+      "sourceId": "e7c93dff069e485b7b25ccf28349f04fc332fcdbd99fd1c66ab7c91e42ac7910",
+      "sha256": "061971c335ba2cf4bc1158764aa0399c797555584a5a84cdfcd0679a3650e559",
+      "bytes": 11108,
+      "metadataOnly": false
+    }
+  ]
+}

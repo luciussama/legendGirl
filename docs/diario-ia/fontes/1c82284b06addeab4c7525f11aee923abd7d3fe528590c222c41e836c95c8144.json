@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1c82284b06addeab4c7525f11aee923abd7d3fe528590c222c41e836c95c8144",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-DEATH.png",
+  "sha256": "9e4ea9bcbd543e16c9b5814703455ab2eb9a6e7719c3a8e59166c251139d74ac",
+  "capturedAt": "2026-10-19T12:46:00.105326+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-DEATH.png\", \"sha256\": \"47cb8761a935c372baa5b6d948ec309486cfc922f5e10b1fe949d6943b5c3856\", \"bytes\": 1145343, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "10c49bff74243d992b20994477fa7d6fb7f0947dc4a70455bbb577922ddb0d82",
+  "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-0.png",
+  "sha256": "f70f917176a41d64139941df2c9cc7b580e4e0fc7a1cb1af54bcae169039b36b",
+  "capturedAt": "2026-10-19T12:46:00.083638+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-retorno-fixa/desktop-0.png\", \"sha256\": \"867186d1518b118514a52cb3c883e677ea3813f0f03ccbed0f29fdc6ec018656\", \"bytes\": 284607, \"binaryRetained\": false}"
+}

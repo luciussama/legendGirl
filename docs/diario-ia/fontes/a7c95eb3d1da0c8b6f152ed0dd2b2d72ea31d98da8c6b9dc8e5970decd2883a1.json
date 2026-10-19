@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a7c95eb3d1da0c8b6f152ed0dd2b2d72ea31d98da8c6b9dc8e5970decd2883a1",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/COLLECTING.png",
+  "sha256": "5e255bcf86867c82492b057aa1198d0b73ce350bd42fb8792643e4cf5dbe4675",
+  "capturedAt": "2026-10-19T12:26:19.366344+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/COLLECTING.png\", \"sha256\": \"0c3fd10e5d91ecdbb077ecff0835fa61e70906ce8439b21cbe23e0dd57c7abdd\", \"bytes\": 1292497, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e461ed83c1531689d151546c98d21481e62664f9e009dbbb37fde6fb27adcdaa",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet/NORMAL/arena-train-RETREAT.png",
+  "sha256": "407f73aa21796361418d786f682c5357e8800d4909cacd5d8b3682aaf6490549",
+  "capturedAt": "2026-10-19T12:46:01.598400+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet/NORMAL/arena-train-RETREAT.png\", \"sha256\": \"138b9c1c939465d90958a2ff88a4f053d18228a4da19873238f2efe515068ab9\", \"bytes\": 734267, \"binaryRetained\": false}"
+}

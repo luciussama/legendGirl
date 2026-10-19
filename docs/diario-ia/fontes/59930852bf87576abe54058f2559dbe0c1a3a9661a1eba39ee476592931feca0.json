@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "59930852bf87576abe54058f2559dbe0c1a3a9661a1eba39ee476592931feca0",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-entrada.png",
+  "sha256": "75ace5e5345242b7b54bbc44adb859f959cc9f024f95320e90a6456331b4b344",
+  "capturedAt": "2026-10-19T02:59:34.553624+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-entrada.png\", \"sha256\": \"98ef570ae5b36d00aaca0249e1a08ddd6161c82394fe8d59e721644f45be7f72\", \"bytes\": 628720, \"binaryRetained\": false}"
+}

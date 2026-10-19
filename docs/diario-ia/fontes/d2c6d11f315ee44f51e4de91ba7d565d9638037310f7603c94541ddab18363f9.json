@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d2c6d11f315ee44f51e4de91ba7d565d9638037310f7603c94541ddab18363f9",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-dinosaur-IDLE.png",
+  "sha256": "cd2dd8685a619345130003c78dadb39c2ba2ae4ccbb4b2c1a08ec66754de73a3",
+  "capturedAt": "2026-10-19T12:46:00.141200+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-dinosaur-IDLE.png\", \"sha256\": \"bbd3e452599fa90ce1bd9bb9814145485ad2accb8d3f01d31b9232e089ca46d4\", \"bytes\": 1190198, \"binaryRetained\": false}"
+}

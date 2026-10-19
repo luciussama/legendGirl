@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e817cb02411fbabd4ce4a84b44daae8749fb7ecb3633c743fdc140aba26eebbb",
+  "path": "qa-execucoes/2a330d7a701a49e880fd638ffd1ecba2.log",
+  "sha256": "adc167ed95a6d33ea0cc0f29bbf69cbfaa790ce0f700710467151e62936d1aff",
+  "capturedAt": "2026-10-19T12:42:25.461352+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:entradas",
+    "exitCode": 0,
+    "package": "20261018T171233-b0908ec500c8"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jogabilidade:entradas\n> node docs/diario-ia/qa/jogabilidade-entradas.js\n\nAPROVADO: 48 combinações de dificuldade, entrada, inimigo e lado; defesa, salto diagonal, espada simultânea, agachamento, restauração, pausa, foco e desconexão.\n"
+}

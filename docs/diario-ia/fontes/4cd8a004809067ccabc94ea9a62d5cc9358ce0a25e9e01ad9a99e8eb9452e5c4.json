@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4cd8a004809067ccabc94ea9a62d5cc9358ce0a25e9e01ad9a99e8eb9452e5c4",
+  "path": "qa-execucoes/d4ea429634ca4174a3178d9a4a6b0304/docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-15.png",
+  "sha256": "6bbcb26dbaae477ae9a42c3af496c53483155dd5c262fba7c457ed7b830f146e",
+  "capturedAt": "2026-10-19T12:49:13.916744+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-15.png\", \"sha256\": \"0430768c400cb976d3da1ad577823433d0837d2e130f7d60db5bc1ba196e5e21\", \"bytes\": 305649, \"binaryRetained\": false}"
+}

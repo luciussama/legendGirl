@@ -1,0 +1,33 @@
+{
+  "dataLocal": "2026-10-19",
+  "sessao": "20261019T130908-2bdc86a5c0b0",
+  "removidos": [
+    {
+      "path": ".DS_Store",
+      "sha256": "2ad7f53579737c123b6cdb1a7092c343c361a7a3cb3db401470e651686701e15",
+      "bytes": 8196,
+      "reason": "Metadado local regenerável do Finder; sem relação com o jogo ou diário."
+    },
+    {
+      "path": "docs/.DS_Store",
+      "sha256": "ca130c93fd75030dfea96c7eed4355473af32adf1f0ac0aaedaeb2b5c1652eaf",
+      "bytes": 8196,
+      "reason": "Metadado local regenerável do Finder; sem relação com o jogo ou diário."
+    },
+    {
+      "path": "docs/qa/.DS_Store",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "reason": "Metadado local regenerável do Finder; sem relação com o jogo ou diário."
+    }
+  ],
+  "preservados": [
+    "Diário humano",
+    "Todo o histórico imutável de IA e seus relatórios/QA",
+    "Guias técnicos e de design",
+    "Artes e áudio do jogo",
+    "Backups de arte em quarentena",
+    "Dependências e ambiente local"
+  ],
+  "resultado": "Nenhum relatório de máquina encontrado fora do diário; três metadados locais removidos. Commit e push ainda pendentes."
+}

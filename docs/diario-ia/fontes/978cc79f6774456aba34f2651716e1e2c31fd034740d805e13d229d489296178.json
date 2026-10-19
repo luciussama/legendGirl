@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "978cc79f6774456aba34f2651716e1e2c31fd034740d805e13d229d489296178",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-9.png",
+  "sha256": "19bc6b0815444f946776278a116aaa6b93d20e6fa50b3643920f451aea5fc058",
+  "capturedAt": "2026-10-19T02:59:36.052428+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-9.png\", \"sha256\": \"48d8fa087a8afa9652d9a3e5b46eb59dba64907cdc3c74cacc0f3b2eac6f8a54\", \"bytes\": 168609, \"binaryRetained\": false}"
+}

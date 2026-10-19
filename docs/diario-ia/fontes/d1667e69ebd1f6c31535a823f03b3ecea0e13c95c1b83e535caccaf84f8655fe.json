@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d1667e69ebd1f6c31535a823f03b3ecea0e13c95c1b83e535caccaf84f8655fe",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-DEATH.png",
+  "sha256": "35f2dd92b571425ddf01c32d09265ea7297756c4ab9ae62c11023c34a80344b2",
+  "capturedAt": "2026-10-19T12:45:58.775074+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-DEATH.png\", \"sha256\": \"fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067\", \"bytes\": 868780, \"binaryRetained\": false}"
+}

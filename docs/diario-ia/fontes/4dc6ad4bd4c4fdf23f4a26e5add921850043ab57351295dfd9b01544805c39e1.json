@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4dc6ad4bd4c4fdf23f4a26e5add921850043ab57351295dfd9b01544805c39e1",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/EASY/transformacao.png",
+  "sha256": "9e78deb141b57d1f559a5d00ab668fdecf8d3be3d865d63e12f809ee0eaa352f",
+  "capturedAt": "2026-10-19T12:46:02.821633+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/EASY/transformacao.png\", \"sha256\": \"c5e59bc5392411b7db1c445568b48079374223343242141b98729adde24662aa\", \"bytes\": 840996, \"binaryRetained\": false}"
+}

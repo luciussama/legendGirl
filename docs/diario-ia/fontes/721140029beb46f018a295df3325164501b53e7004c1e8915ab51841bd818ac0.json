@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "721140029beb46f018a295df3325164501b53e7004c1e8915ab51841bd818ac0",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-ataque.png",
+  "sha256": "7145cdab9a33dc66ba9179e455032da90642417da10379b5544c94620863e250",
+  "capturedAt": "2026-10-19T02:59:35.458370+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-ataque.png\", \"sha256\": \"3621f67e95cea7b64697efa33581b447f042632ea1820cbebf04506d4b87e942\", \"bytes\": 1092401, \"binaryRetained\": false}"
+}

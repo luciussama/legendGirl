@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "34efb8a6d618ce69927f87732aca9a264fc7c9ac0a10b8f657dcd2a86f0e7c2d",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/retorno.png",
+  "sha256": "301b21b96d433ee52cac91e20d01f58f68486d8d71d4d82a5612d33f158229f9",
+  "capturedAt": "2026-10-19T12:46:03.486869+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/retorno.png\", \"sha256\": \"9494ebdfa8f8688a707465810ff1eb00264188c91a8c81766b084140710e1be8\", \"bytes\": 781325, \"binaryRetained\": false}"
+}

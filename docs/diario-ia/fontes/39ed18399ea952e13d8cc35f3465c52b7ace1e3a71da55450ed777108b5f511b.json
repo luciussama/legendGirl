@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "39ed18399ea952e13d8cc35f3465c52b7ace1e3a71da55450ed777108b5f511b",
+  "path": "qa-execucoes/bd9271bcfe434a878562336ecfd2a08c/docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-7.png",
+  "sha256": "d1021f701ba7234f025db1ea8742011173dd9dc0c7905c019511d9c8af3eccee",
+  "capturedAt": "2026-10-19T12:25:30.389917+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:retorno:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-retorno-fixa/iphone-7.png\", \"sha256\": \"3ef031eaf0b552ec6a3ca32b132fbdfa2a15ecdbd9943bf28009601266a53cec\", \"bytes\": 310044, \"binaryRetained\": false}"
+}

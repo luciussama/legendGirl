@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ae4dff61fe3f45f06b016bbae7af822b9ac2b225e8117c02b29ed061bcba2672",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/arena-dinosaur-APPROACH.png",
+  "sha256": "06a53c6a1123e323706d9a5086c4a2a3940aa6af85eccee0103568bd643bc363",
+  "capturedAt": "2026-10-19T12:45:59.387562+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/arena-dinosaur-APPROACH.png\", \"sha256\": \"43634dc833dcc7e5fa9869d16ea44487b5755d36d06230857896854999758cec\", \"bytes\": 1218842, \"binaryRetained\": false}"
+}

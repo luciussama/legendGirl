@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4eac2f7db422b71fa59661131b46c8f0220cd385c4c10dddba11c17729811271",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-ATTACK.png",
+  "sha256": "09b38e4c7dd8e2488feefdcc62559db17874c1e830b320d9140f3625ce6b3808",
+  "capturedAt": "2026-10-19T12:45:58.100411+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-ATTACK.png\", \"sha256\": \"e981fd7dba39d5f87fef347ef5f7569ba07921a79bd04678f5c576fba40a5385\", \"bytes\": 926934, \"binaryRetained\": false}"
+}

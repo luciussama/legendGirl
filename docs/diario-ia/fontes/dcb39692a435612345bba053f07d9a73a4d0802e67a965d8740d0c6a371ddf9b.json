@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dcb39692a435612345bba053f07d9a73a4d0802e67a965d8740d0c6a371ddf9b",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-entrada.png",
+  "sha256": "2441587fe97979d66a1641a37c4b7e078fd23e70a7977366121cc3fadbc83ffe",
+  "capturedAt": "2026-10-19T12:46:00.118542+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-entrada.png\", \"sha256\": \"0e695664e9ac8e3ccc8d1b46b17eb0f3dca67246deea0643ec98e5cf46a24b98\", \"bytes\": 1018312, \"binaryRetained\": false}"
+}

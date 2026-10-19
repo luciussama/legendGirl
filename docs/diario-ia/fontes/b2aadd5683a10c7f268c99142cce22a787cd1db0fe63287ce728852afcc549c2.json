@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b2aadd5683a10c7f268c99142cce22a787cd1db0fe63287ce728852afcc549c2",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-ATTACK.png",
+  "sha256": "ad6489625b543496d09b9d81b4a3b8955df38d4bfd4977f77ae73254fd4d863d",
+  "capturedAt": "2026-10-19T12:26:20.389111+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-ATTACK.png\", \"sha256\": \"49f8dbab6554a7d4b3901e11c238241f210a673cdd5dfee57713ccb718b18979\", \"bytes\": 1044877, \"binaryRetained\": false}"
+}

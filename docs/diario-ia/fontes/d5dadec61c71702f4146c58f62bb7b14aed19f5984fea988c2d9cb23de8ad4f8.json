@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d5dadec61c71702f4146c58f62bb7b14aed19f5984fea988c2d9cb23de8ad4f8",
+  "path": "docs/diario-ia/qa-resultados/correcao-bailarina/paisagem.png",
+  "sha256": "d4d022ea9d155d9a4619383029f62fa14b5b9e1fd810c956d9a08fc5d4a39625",
+  "capturedAt": "2026-10-19T03:00:04.108347+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/correcao-bailarina/paisagem.png\", \"sha256\": \"d5e45e0621b9801188c6608337235760d8c6c52a36693887e9894aa773b0f371\", \"bytes\": 170215, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3c1e6b69611bfe841e9ee1849cfc7d6d22f4ee2dfe666949078dbc71c0e9b91a",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet/EASY/arena-robot-entrada.png",
+  "sha256": "71c9fa3a3932f12914ff4a5d62783c52dc7fb9a67f9686038ba1d5ac0fa62a99",
+  "capturedAt": "2026-10-19T12:46:00.918441+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet/EASY/arena-robot-entrada.png\", \"sha256\": \"d8549e1637b9a04e2d66986e57d5022e95c97c6eb9cb65373534902c8c00f313\", \"bytes\": 720335, \"binaryRetained\": false}"
+}

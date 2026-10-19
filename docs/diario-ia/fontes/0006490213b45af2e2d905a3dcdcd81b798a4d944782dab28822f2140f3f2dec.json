@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0006490213b45af2e2d905a3dcdcd81b798a4d944782dab28822f2140f3f2dec",
+  "path": "qa-execucoes/bd9271bcfe434a878562336ecfd2a08c/docs/diario-ia/qa-resultados/camera-retorno-fixa/resultado.json",
+  "sha256": "56e8caab3674e7233d8cb865c89a7119160a327c72f600e30eb3aa05560f1004",
+  "capturedAt": "2026-10-19T12:25:30.390371+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:retorno:browser"
+  },
+  "encoding": "utf-8",
+  "content": "[\n  {\n    \"profile\": \"desktop\",\n    \"checked\": 96,\n    \"visible\": 16,\n    \"width\": 960,\n    \"height\": 540\n  },\n  {\n    \"profile\": \"android\",\n    \"checked\": 96,\n    \"visible\": 16,\n    \"width\": 540,\n    \"height\": 1169\n  },\n  {\n    \"profile\": \"iphone\",\n    \"checked\": 96,\n    \"visible\": 16,\n    \"width\": 540,\n    \"height\": 1169\n  }\n]"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6caf8fd9ecdc46dc66beaaa70e86e1e88b9332a2c4c5d921a75e8e98c680bdbe",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-train-IDLE.png",
+  "sha256": "18a8a3a8c06fd09791d4dd28e0e191a4312e0d36b1339eaf34fca0f045d9ed39",
+  "capturedAt": "2026-10-19T12:45:53.843493+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-train-IDLE.png\", \"sha256\": \"f411e497101b96666f12cbb94b3abbb4ee70cfcb427abca69020317bfb005b5a\", \"bytes\": 1188346, \"binaryRetained\": false}"
+}

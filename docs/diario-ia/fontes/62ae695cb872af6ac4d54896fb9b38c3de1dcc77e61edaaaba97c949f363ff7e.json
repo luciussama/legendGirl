@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "62ae695cb872af6ac4d54896fb9b38c3de1dcc77e61edaaaba97c949f363ff7e",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/SEEKING_SWORD.png",
+  "sha256": "e469c770a1b987713069eeb6462379af305ed46d0974bf259d890805b9ef4987",
+  "capturedAt": "2026-10-19T12:46:00.005023+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/SEEKING_SWORD.png\", \"sha256\": \"01c34196cf076dc403cc499d7f5dc56cceede3d23d06d7b6e41300ebb3e69c70\", \"bytes\": 1346652, \"binaryRetained\": false}"
+}

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T030004-357d477454c3",
+  "date": "2026-10-19T03:00:04.110054+00:00",
+  "title": "Regressão da bailarina corrigida: reprodução antes/depois, nove saltos de teclado/toque e seis percursos completos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/fisica-janelas-saltos.js",
+      "sourceId": "fc0a1098a976cc72ccaeb0f60f14d9936bf0bfc22f6a14455f61475b09e2581f",
+      "sha256": "4899edaa2f210b5ff6713a04678abeb0365febfe4c188ed3de577b1018d18edf",
+      "bytes": 3494,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/testar-bailarina.js",
+      "sourceId": "e84d61a5b817f9d46d1fb4db27ae1194d59ba4295b3e77dd6a1dd4cafffc2e91",
+      "sha256": "8efdb0e2618cb4d1f31337c5e9a854eceaa44f76360dc63c272aec16f314ab55",
+      "bytes": 1362,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/testar-progressao-saltos.js",
+      "sourceId": "2bb5b95407e0f0dccc864498538cb2504562a09ec1c0f1a192703ea454d30f32",
+      "sha256": "a02a45a34c3259a309052588dea214ace0d9b9472b5b22cfe47ceca8dffee388",
+      "bytes": 1525,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/bailarina-browser.js",
+      "sourceId": "d7857ec7b1354155e652b6c31478145c54e4f0d0075ccd273ac4d8e7654cac7c",
+      "sha256": "0b09f2fc6c63f95b8eb133dd409130e78ef66446ee4093116fe9e47324c8e9f0",
+      "bytes": 4410,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-correcao-bailarina.md",
+      "sourceId": "04fb88bb0d6132edafb85f6d7dbe9796ea1ac47efc207db2cbe41b8fa322c370",
+      "sha256": "fcb0434f28507b24ad0b33cf72da323081dc87ddf9327681a5cacea0f72fdd7b",
+      "bytes": 3520,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/suite.log",
+      "sourceId": "836fceea40f6a55b710522699d73ed23f2711295607bf4a78d8408eaa0faea76",
+      "sha256": "5e83ab5b33378e66b05a89407789607414d2dc9acf7cc604d399536365aec327",
+      "bytes": 57895,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/desktop.png",
+      "sourceId": "9336a23786769e437852efcbfe3c92c80361d5ec157169ad0d11f32db0a6d3ec",
+      "sha256": "ddf56d4435ab6bb3899ee74e2e3bb0e612174968efcfd43ae0bb22df6228efe5",
+      "bytes": 233619,
+      "metadataOnly": true
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/percursos.log",
+      "sourceId": "33872020019466807cb76d2b88f59ec4cd115664c22c25d408d9779200c24f3e",
+      "sha256": "22ee18d32fe33189326c170c4483ff1f6b443f6b8318549e37b22ae1daad4d56",
+      "bytes": 21710,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/browser-depois.log",
+      "sourceId": "7fa173ebaea418940dc1c0cdf73df75a44bb3b1b14db13521878a8768d2329a3",
+      "sha256": "452a0b1682405132406ea6935eae862c6e0ca57267780878b4a59adb28f92083",
+      "bytes": 410,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/android.png",
+      "sourceId": "ee445e2370a517c8f5d328fbaaacd5bc7a083f708e1401369087aaed60250b7c",
+      "sha256": "0d84b8a0869aefb53be854ab12eae5f3d6b95efe285089edc0a22cacb3e5fdba",
+      "bytes": 59493,
+      "metadataOnly": true
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/paisagem.png",
+      "sourceId": "d5dadec61c71702f4146c58f62bb7b14aed19f5984fea988c2d9cb23de8ad4f8",
+      "sha256": "d5e45e0621b9801188c6608337235760d8c6c52a36693887e9894aa773b0f371",
+      "bytes": 170215,
+      "metadataOnly": true
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/antes.log",
+      "sourceId": "80f621473dd5d7f85b4cba870ab42579424053eeedb47db890e800d9cfe2ae04",
+      "sha256": "99d550a43bba65fbb1d87c74e8a6d63ba93465dd047809fa145fcec4c8a9a222",
+      "bytes": 1094,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/browser-antes.log",
+      "sourceId": "2972ad3401df55159a0375365e0e2eaa1dddcd740e43a06d0277d9d023ab8129",
+      "sha256": "2a408426c946386d534c1f7c4a0a872aa0387a8e79201cf56e33f4fc2549cf07",
+      "bytes": 428,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa-resultados/correcao-bailarina/build.log",
+      "sourceId": "3d9124ec63c65dc63479d8c7b8d0f4b11c69561b247d6f6c840539a2cd60685d",
+      "sha256": "30fe38d3f4c3ad2f12c571661a2aa72b10b4f8ba57a71e00d5ecf2e47f8469f8",
+      "bytes": 150,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:saltos:bailarina": "node docs/diario-ia/qa/testar-bailarina.js",
+    "test:bailarina:browser": "node docs/diario-ia/qa/bailarina-browser.js",
+    "test:saltos:progressao": "node docs/diario-ia/qa/testar-progressao-saltos.js"
+  }
+}

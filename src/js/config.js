@@ -37,10 +37,10 @@ export const CUTSCENE_DIALOGUE = {
   plotTwistFairy: "Eu também achei. Droga... Vamos olhar por ali."
 };
 
-// Alcances fixos por saída: preserva os dois primeiros saltos e reduz a janela
-// progressivamente, sem mirar a posição de pouso a partir do comando do jogador.
+// Alcances originais da aproximação. Reduzir o avanço aéreo para estreitar a
+// janela criou frenagem artificial na bailarina; o desafio pós-clímax é separado.
 const APPROACH_AIR_SPEEDS = Object.freeze([
-  1.42, 1.42, 1.3470, 1.1838, 1.4083, 1.7960, 1.7960, 1.2654, 0.3266, 0.8126
+  1.42, 1.42, 1.42, 1.42, 1.42, 1.8, 1.95, 1.42, 1.42, 1.42
 ]);
 export function getApproachJumpSpeed(platformIndex) {
   return APPROACH_AIR_SPEEDS[Math.max(0, Math.min(9, Math.floor(platformIndex) + 1))];

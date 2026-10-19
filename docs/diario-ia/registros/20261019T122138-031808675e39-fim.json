@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T122138-031808675e39-fim",
+  "sessionId": "20261019T122138-031808675e39",
+  "type": "fim",
+  "date": "2026-10-19T12:29:01.645569+00:00",
+  "title": "Remover reenquadramento por salto no retorno pós-clímax",
+  "actor": "Codex",
+  "summary": "Removidas compensações de enquadramento por salto/pouso no gameplay do retorno pós-porta falsa. Rolagem horizontal base preservada; trajetória vertical visual contínua do cenário substitui o acompanhamento do arco. Escala e deslocamento móveis fixos; sem correção contextual Android ou recentralização de borda. Última pose preservada para transições narrativas. Física, geometria, alcances e dificuldade não alterados. Ajuda adicional ficará para avaliação posterior, como solicitado. Contratos e evidências históricos preservados; arquivos anteriores da bailarina mantidos. Pacote final 20261019T122838-c286da38f82e.",
+  "checks": [
+    "test:camera:retorno:browser aprovado na versão final: 288 variações de matriz invariável, 48 apoios visíveis, três perfis e trajetórias contínuas",
+    "test:jogabilidade:browser aprovado na versão final: seis percursos, NORMAL/EASY em desktop/Android/iPhone emulados",
+    "npm test aprovado; tentativa intermediária de centralização móvel falhou no contrato de 32% e foi corrigida antes da suíte final",
+    "npm run build e git diff --check aprovados",
+    "Capturas de início Android e final desktop inspecionadas; hashes registrados pelo executor temporário"
+  ],
+  "pending": [
+    "Sensação humana e aparelho físico não avaliados; eventual assistência de câmera será avaliada posteriormente, sem compensação de dificuldade nesta sessão"
+  ],
+  "files": [
+    "src/js/controllers/CameraPresentation.js",
+    "src/js/controllers/MobileZoom.js",
+    "src/js/rendering/DarkRoomRenderPipeline.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/camera-retorno-browser.js",
+    "docs/diario-ia/relatorios/20261019-camera-retorno-fixa.md"
+  ]
+}

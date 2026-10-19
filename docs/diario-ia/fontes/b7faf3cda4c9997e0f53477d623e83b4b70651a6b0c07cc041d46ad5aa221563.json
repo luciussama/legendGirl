@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b7faf3cda4c9997e0f53477d623e83b4b70651a6b0c07cc041d46ad5aa221563",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-ataque.png",
+  "sha256": "33662c64bfb412502e9309f28dea762c80f56ade30fdc3e703bc45ff21e6029a",
+  "capturedAt": "2026-10-19T02:59:36.076049+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-ataque.png\", \"sha256\": \"c660eaa68e87e6661e9a44feb5264bb5ae5f0638cb4b46b423a5b7220e7db0cc\", \"bytes\": 961000, \"binaryRetained\": false}"
+}

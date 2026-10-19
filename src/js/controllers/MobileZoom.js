@@ -10,11 +10,9 @@ export function getMobileZoomFrame({ enabled, width, height, bounds, anchor, mar
   // não deve recalcular escala nem translação e produzir saltos no desenho.
   if (!enabled || !bounds) return { zoom: 1, x: 0, y: 0 };
   if (stable) {
-    // Enquadramento único para toda a seção: inclui a maior distância de antecipação.
+    // Enquadramento único para toda a seção, sem recentralizar a menina por salto.
     const zoom = 0.8;
-    const x = anticipate
-      ? Math.min(width * 0.32, width - margin - 24 - anchor.x * zoom)
-      : (1 - zoom) * width / 2;
+    const x = anticipate ? width * 0.32 : (1 - zoom) * width / 2;
     return { zoom, x, y: (1 - zoom) * height / 2 };
   }
   const spanX = Math.max(1, bounds.right - bounds.left);

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1169f248a40a4ff7ef0ea0adcc6ccbf6ca3cc1c84fc781294f656f4eaf55a332",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-robot-HIT.png",
+  "sha256": "b28a7a73e391c93bb5f9642058b161c684a8ab2a9eda7b459d5890e6359f1b28",
+  "capturedAt": "2026-10-19T12:45:53.821853+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/arena-robot-HIT.png\", \"sha256\": \"c11657cb19729854d9fd5a905dff77f6a6b914ccd40c64a76328c4f64d5aae0e\", \"bytes\": 1273074, \"binaryRetained\": false}"
+}

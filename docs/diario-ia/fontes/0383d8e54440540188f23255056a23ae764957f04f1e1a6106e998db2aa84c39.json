@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0383d8e54440540188f23255056a23ae764957f04f1e1a6106e998db2aa84c39",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-5.png",
+  "sha256": "a770071c7e9e01cb2996d51bbc6dbc25556966bc2b7391886afb477ff0e69163",
+  "capturedAt": "2026-10-19T02:59:35.118873+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-5.png\", \"sha256\": \"bbd3631f3ea58ff49f8fb843e0c1408a18351cc2acfb9972005e4339d7800191\", \"bytes\": 213459, \"binaryRetained\": false}"
+}

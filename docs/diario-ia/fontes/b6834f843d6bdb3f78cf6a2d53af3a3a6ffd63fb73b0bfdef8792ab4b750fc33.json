@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b6834f843d6bdb3f78cf6a2d53af3a3a6ffd63fb73b0bfdef8792ab4b750fc33",
+  "path": "qa-execucoes/d4ea429634ca4174a3178d9a4a6b0304/docs/diario-ia/qa-resultados/formatos-toque/320-poses.png",
+  "sha256": "135f990622b9a9b0119d2ad1acb3f523c0631cd379b6e0b9f568e5be4b5ec78b",
+  "capturedAt": "2026-10-19T12:49:13.925435+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/formatos-toque/320-poses.png\", \"sha256\": \"8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a\", \"bytes\": 209647, \"binaryRetained\": false}"
+}
