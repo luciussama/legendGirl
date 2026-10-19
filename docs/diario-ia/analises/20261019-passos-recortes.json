@@ -1,0 +1,191 @@
+{
+  "status": "amostras candidatas; sem integração ou homologação auditiva",
+  "processamento": "local, sem IA, sem serviços externos ou cobrança",
+  "limites": "Segmentação por energia não comprova ausência de música, voz ou ruído. Validar por escuta e sincronização na fase ainda não implementada.",
+  "atores": {
+    "urso": {
+      "fonte": "assets/audio/bear-chase/fontes/footsteps-bear.mp3",
+      "bytes": 1283040,
+      "sha256": "c79b5b180f2f2c6da4bb489c4f5575cd46719eb13f84441f714695214542e7c2",
+      "duracaoDecodificada": 64.152,
+      "taxaHz": 24000,
+      "ganhoBanco": 0.9239585412871786,
+      "fadeEntradaMs": 3,
+      "fadeSaidaMs": 12,
+      "recortes": [
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-01.wav",
+          "inicioFonte": 2.0349583333333334,
+          "fimFonte": 2.319958333333333,
+          "duracao": 0.285,
+          "picoDbFS": -18.07028619839191,
+          "rmsDbFS": -34.637204995365686,
+          "extremosZerados": true,
+          "bytes": 13724,
+          "sha256": "e0b11f09941360c93ebb7959d3687ca871ef93950706d6ecc465cfdbb36909bd"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-02.wav",
+          "inicioFonte": 2.4249583333333335,
+          "fimFonte": 2.71,
+          "duracao": 0.2850416666666667,
+          "picoDbFS": -17.52325418098962,
+          "rmsDbFS": -34.46797177376518,
+          "extremosZerados": true,
+          "bytes": 13726,
+          "sha256": "dea972b36388cbd93f58a2da84c4ea3a92b8594a66bd6029c5471435ae391a8b"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-03.wav",
+          "inicioFonte": 2.815,
+          "fimFonte": 3.1,
+          "duracao": 0.285,
+          "picoDbFS": -19.560173031035404,
+          "rmsDbFS": -36.88910515247744,
+          "extremosZerados": true,
+          "bytes": 13724,
+          "sha256": "22129b60741863d44425e820747f5255af67e859c2b8460107d0e917e9765607"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-04.wav",
+          "inicioFonte": 3.2,
+          "fimFonte": 3.485,
+          "duracao": 0.285,
+          "picoDbFS": -10.844593762149684,
+          "rmsDbFS": -30.396755075140177,
+          "extremosZerados": true,
+          "bytes": 13724,
+          "sha256": "f52dc29c5dfd6d4761811d7e1dba741b976056968175be5f628dd2499d5ece7a"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-05.wav",
+          "inicioFonte": 3.54,
+          "fimFonte": 3.825,
+          "duracao": 0.285,
+          "picoDbFS": -9.000392326786972,
+          "rmsDbFS": -30.8758113106111,
+          "extremosZerados": true,
+          "bytes": 13724,
+          "sha256": "1fd68faeeee7ab0aabe6ba3a00c76b8ae12551632e0f5139a4c2a54d5dc15095"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/urso-06.wav",
+          "inicioFonte": 3.915,
+          "fimFonte": 4.2,
+          "duracao": 0.285,
+          "picoDbFS": -14.573970256283136,
+          "rmsDbFS": -33.75137640341706,
+          "extremosZerados": true,
+          "bytes": 13724,
+          "sha256": "31a6fe3a0d4537f55af6b2ff809227e7626a082451fb9129caefb5f75c1b9df2"
+        }
+      ]
+    },
+    "menina": {
+      "fonte": "assets/audio/bear-chase/fontes/footsteps-girl.mp3",
+      "bytes": 721440,
+      "sha256": "5c8e7dabb35c630ff4eacc61842974b7215d5196454c0036f4ea4f56f13580ce",
+      "duracaoDecodificada": 36.072,
+      "taxaHz": 24000,
+      "ganhoBanco": 0.6584826871894296,
+      "fadeEntradaMs": 3,
+      "fadeSaidaMs": 12,
+      "recortes": [
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-01.wav",
+          "inicioFonte": 0.62,
+          "fimFonte": 0.835,
+          "duracao": 0.215,
+          "picoDbFS": -10.579834444448228,
+          "rmsDbFS": -28.938734219931554,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "231e0b4a0f9bbe97a8d4bae399d4146b2c8acc1370b6e5f66ad18b18769e77ff"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-02.wav",
+          "inicioFonte": 0.865,
+          "fimFonte": 1.08,
+          "duracao": 0.215,
+          "picoDbFS": -10.74447506570384,
+          "rmsDbFS": -30.40324891562017,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "20064fd5de5c1170ad53984f4d10e67c4cd3fe4e97e3f137439dab5da469bb2b"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-03.wav",
+          "inicioFonte": 1.14,
+          "fimFonte": 1.355,
+          "duracao": 0.215,
+          "picoDbFS": -9.139718987149344,
+          "rmsDbFS": -26.282659011696023,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "781dfd784689ef656c83bad592d32363277ed528bc5b81b2eb14cc8e6c36db31"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-04.wav",
+          "inicioFonte": 1.39,
+          "fimFonte": 1.605,
+          "duracao": 0.215,
+          "picoDbFS": -10.059847135178885,
+          "rmsDbFS": -30.496988426880016,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "8d88bdccb6993abc9f2c612c9d64a8c3a9f87462331683f9d2ca35b1880cdecf"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-05.wav",
+          "inicioFonte": 1.66,
+          "fimFonte": 1.875,
+          "duracao": 0.215,
+          "picoDbFS": -9.000392326786972,
+          "rmsDbFS": -27.2506994219529,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "bcad43dffe5bb1183c0e7c4cfe6b6a179982daf419e0236ab844f95aa95a5cb0"
+        },
+        {
+          "arquivo": "assets/audio/bear-chase/passos/menina-06.wav",
+          "inicioFonte": 1.935,
+          "fimFonte": 2.15,
+          "duracao": 0.215,
+          "picoDbFS": -10.783833714053458,
+          "rmsDbFS": -30.365770804937647,
+          "extremosZerados": true,
+          "bytes": 10364,
+          "sha256": "1ca18ee59f9e00f267fa6eddd09d8f9cc916526d82eea4cb19382897d188b90d"
+        }
+      ]
+    }
+  },
+  "validacaoTecnica": [
+    {
+      "ator": "urso",
+      "fonteIdenticaAoOriginal": true,
+      "recortesValidos": 6,
+      "duracoes": [
+        0.285,
+        0.285,
+        0.285,
+        0.285,
+        0.285,
+        0.285
+      ]
+    },
+    {
+      "ator": "menina",
+      "fonteIdenticaAoOriginal": true,
+      "recortesValidos": 6,
+      "duracoes": [
+        0.215,
+        0.215,
+        0.215,
+        0.215,
+        0.215,
+        0.215
+      ]
+    }
+  ]
+}

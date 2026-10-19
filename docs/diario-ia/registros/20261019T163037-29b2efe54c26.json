@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T163037-29b2efe54c26",
+  "sessionId": "20261019T163037-29b2efe54c26",
+  "type": "inicio",
+  "date": "2026-10-19T16:30:37.124883+00:00",
+  "title": "Estudar viabilidade e planejar perseguição 3D após o urso",
+  "actor": "Codex",
+  "branch": "FEAT-bear-chase",
+  "head": "4062ba108b6b28f7d82ad13ed4766ae4ae5e3c0e",
+  "workingTree": [
+    "?? docs/diario-ia/registros/20261019T153541-c37b7ef5b80d-fim.json",
+    "?? docs/diario-ia/registros/20261019T153541-c37b7ef5b80d.json"
+  ]
+}
