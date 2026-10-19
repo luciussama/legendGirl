@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "36fe3d60a239459a9762d9ce02a97cef",
+  "date": "2026-10-18T16:57:05.678127+00:00",
+  "title": "QA temporário: test:arena:defesa:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/36fe3d60a239459a9762d9ce02a97cef.log",
+      "sourceId": "f0182d83ef1c1c33d9d54772eec8c0899cebf08bdeff85afdeb975dd572ab1eb",
+      "sha256": "c9bb62c8d361a4f864c267c935e642d87e0b64b31ab35104f92af856c99619ce",
+      "bytes": 620,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/36fe3d60a239459a9762d9ce02a97cef/docs/qa/.DS_Store",
+      "sourceId": "77043cb66acc1c30270d5d77a0e9d8b9b7b587127241cc4bfdfb439715e3a77d",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/36fe3d60a239459a9762d9ce02a97cef/docs/diario-ia/qa-resultados/arena-defesa/390-defesa.png",
+      "sourceId": "c18408d193a6822e7fe657b463c417d57e65aaf10b0609c81c382cfd7a377d81",
+      "sha256": "e599a04882d8ba053c9dfdea55f2bc2edf36228ce43912908c224321de6596c3",
+      "bytes": 256564,
+      "metadataOnly": true
+    }
+  ]
+}

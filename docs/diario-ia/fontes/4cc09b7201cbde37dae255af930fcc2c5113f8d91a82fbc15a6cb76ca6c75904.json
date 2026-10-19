@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4cc09b7201cbde37dae255af930fcc2c5113f8d91a82fbc15a6cb76ca6c75904",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-IDLE.png",
+  "sha256": "f961c82ad22d8f1d752eca73341f2511a96ec04870a1b9f54285092445b3016a",
+  "capturedAt": "2026-10-18T17:11:00.542276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-IDLE.png\", \"sha256\": \"fdf8107baccb1cacb61f9943a4b62a1dffc7e34f4d27521f801556f4ebb0efb6\", \"bytes\": 1065290, \"binaryRetained\": false}"
+}

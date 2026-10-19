@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T024302-128cc36f3917",
+  "date": "2026-10-19T02:43:02.491776+00:00",
+  "title": "Calibração por menor alcance viável e curva de 450 a 100 ms após o clímax",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/calibrar-janelas-saltos.js",
+      "sourceId": "e26b85e0085763100cceec74a30d665ab0aac0fea7f6fa534c297ccce1069da8",
+      "sha256": "7a6c2c03af1280123adbcff3d689a5a589ca4967328e7c1e3e42785e6308b783",
+      "bytes": 3504,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:saltos:calibrar": "node docs/diario-ia/qa/calibrar-janelas-saltos.js"
+  }
+}

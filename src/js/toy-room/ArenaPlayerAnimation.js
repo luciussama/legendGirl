@@ -6,11 +6,12 @@ const clamp01 = value => Math.max(0,Math.min(1,value));
 const smooth = value => { const t=clamp01(value); return t*t*(3-2*t); };
 export function createPlayerAnimation(state = {}, player = {}) {
   const pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage':state.crouching?'crouch'
-    :state.attackTime>0?'attack':state.jump>0?(state.jumpVelocity>0?'jump':'fall'):player.isMoving?'run':'idle';
+    :state.attackTime>0?'attack':state.jump>0?(state.jumpVelocity>0?'jump':'fall'):state.guarding?'guard':player.isMoving?'run':'idle';
   return {
     time:0,pose,poseTime:pose==='crouch'?6:0,previousPose:pose,previousTime:0,blendTime:8,
     attackAge:state.attackTime>0?18-state.attackTime:ARENA_ATTACK_VISUAL_DURATION,
-    attackDirection:player.facing==='left'?-1:1,attackSerial:0,landingAge:12,wasAirborne:state.jump>0
+    attackDirection:player.facing==='left'?-1:1,attackSerial:0,landingAge:12,wasAirborne:state.jump>0,
+    guardAmount:0
   };
 }
 export function beginArenaPlayerAttack(state, direction) {
@@ -29,13 +30,16 @@ export function updateArenaPlayerAnimation(state, player, dt) {
   const airborne=state.jump>0;
   if(a.wasAirborne&&!airborne)a.landingAge=0;
   a.wasAirborne=airborne;
+  const canGuard=!airborne&&!state.crouching&&state.playerHitTime<=0&&state.attackTime<=0&&state.mode!=='DEFEAT'&&!state.transition;
+  a.guardAmount=canGuard?clamp01((a.guardAmount??0)+(state.guarding?dt:-dt)/12):0;
   if(state.playerHitTime>0||state.mode==='DEFEAT'||state.transition)a.attackAge=ARENA_ATTACK_VISUAL_DURATION;
   let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage'
     :state.crouching?'crouch':a.attackAge<18?'attack'
     :airborne?(state.jumpVelocity>0?'jump':'fall')
+    :state.guarding||a.guardAmount>0?'guard'
     :a.landingAge<10?'landing'
     :a.attackAge<ARENA_ATTACK_VISUAL_DURATION?'recovery':player.isMoving?'run':'idle';
-  if(!['damage','attack','jump','fall','crouch'].includes(pose)
+  if(!['damage','attack','jump','fall','crouch','guard'].includes(pose)
     &&(a.pose==='crouch'||(a.pose==='standUp'&&a.poseTime<8)))pose='standUp';
   if(pose!==a.pose) {
     a.previousPose=a.pose;a.previousTime=a.poseTime;a.pose=pose;a.poseTime=0;a.blendTime=0;
@@ -55,6 +59,12 @@ function cycle(pose,time,durations) {
   return pair(layer(pose,index),layer(pose,(index+1)%frames.length),blend);
 }
 function poseLayers(pose,time,a,state) {
+  if(pose==='guard') {
+    const phase=clamp01(a.guardAmount??0)*FRAMES.guard.length;
+    if(phase<1)return pair(layer('idle'),layer('guard'),smooth(phase));
+    const position=phase-1,index=Math.floor(position);
+    return pair(layer('guard',index),layer('guard',Math.min(index+1,FRAMES.guard.length-1)),smooth(position-index));
+  }
   if(pose==='run')return cycle('run',time,[6,5,6,5]);
   if(pose==='idle')return cycle('idle',time,[24,24,24,24]);
   if(pose==='crouch') {
@@ -94,12 +104,12 @@ export function sampleArenaPlayerAnimation(state, player) {
   let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage':a.pose;
   let layers=poseLayers(pose,a.poseTime,a,state);
   const transition=smooth(a.blendTime/6);
-  if(transition<1&&!['attack','crouch','damage','landing','recovery','standUp'].includes(pose)
-    &&!['attack','crouch','damage','landing','recovery','standUp'].includes(a.previousPose)) {
+  if(transition<1&&!['attack','crouch','damage','landing','recovery','standUp','guard'].includes(pose)
+    &&!['attack','crouch','damage','landing','recovery','standUp','guard'].includes(a.previousPose)) {
     layers=[...poseLayers(a.previousPose,a.previousTime,a,state).map(l=>({...l,weight:l.weight*(1-transition)})),
       ...layers.map(l=>({...l,weight:l.weight*transition}))];
   }
-  const age=a.attackAge / 1.5, attacking=pose!=='damage'&&age<12;
+  const age=a.attackAge / 1.5, attacking=pose!=='damage'&&pose!=='guard'&&age<12;
   const recoil=attacking?(age<4?-6*Math.sin(age/4*Math.PI):age<9?7*Math.sin((age-4)/5*Math.PI):2):0;
   const isDamaged = pose === 'damage' && state.playerHitTime > 0;
   const hitProgress = isDamaged ? state.playerHitTime / 22 : 0;

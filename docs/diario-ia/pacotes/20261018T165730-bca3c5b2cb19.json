@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T165730-bca3c5b2cb19",
+  "date": "2026-10-18T16:57:30.987108+00:00",
+  "title": "Regressão de recuo disparada por golpe ativo e gesto real com touch-action de produção",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/arena-refinamentos.js",
+      "sourceId": "ad3dba8f25264c4f00d3c48a29f5dab6f235b82e39b8684bb1a66f0fccd54960",
+      "sha256": "f7b559540aa350cafc8f28d583ae223bbe2e4bf7c76ad8451807270471c52d3a",
+      "bytes": 3587,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/arena-defesa-browser.js",
+      "sourceId": "2451666f498db819794c5000fef38e77c97f826e1dcd4be6367a2eb17d49d559",
+      "sha256": "172413fb516c3718219cf80e429043b6aa067287efcf46c1bb090b8f32e5676c",
+      "bytes": 5852,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:refinements": "node docs/diario-ia/qa/arena-refinamentos.js",
+    "test:arena:defesa:browser": "node docs/diario-ia/qa/arena-defesa-browser.js"
+  }
+}

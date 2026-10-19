@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7e293fbc90fc28e6bb01be3edff722ab17b1f3319dc377e754b70ad1eca4b6ab",
+  "path": "qa-execucoes/275d42cd48e840f6b5ce6519f83672ab.log",
+  "sha256": "1dda7f8166c94c65db61e7648c2496e6beb97d8c303948d5c0bb2c0fae2332b3",
+  "capturedAt": "2026-10-18T17:09:53.837338+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena:browser\n> node scripts/test-toy-room-arena-browser.js\n\n{\"perfil\":\"desktop\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":960,\"height\":540,\"dt\":1,\"frames\":9315,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":3118,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":828,\"median\":5.9000000059604645,\"p95\":8.200000002980232}}\n{\"perfil\":\"android\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":390,\"height\":844,\"dt\":1,\"frames\":8930,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":3118,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":828,\"median\":3.0999999940395355,\"p95\":5.299999997019768}}\n{\"perfil\":\"android-paisagem\",\"exploracao\":{\"difficulty\":\"NORMAL\",\"width\":844,\"height\":390,\"dt\":1,\"frames\":9384,\"collections\":11,\"reloads\":6,\"stages\":[\"COLLECTING\",\"INVESTIGATION\",\"SEEKING_SWORD\",\"PICKUP\",\"EQUIPPED\"],\"result\":\"aprovado\"},\"combate\":{\"frames\":3118,\"dt\":1,\"order\":[\"train\",\"robot\",\"dinosaur\",\"bear\"],\"hp\":3,\"reload\":true,\"result\":\"PASS\"},\"retorno\":true,\"render\":{\"samples\":828,\"median\":4.100000008940697,\"p95\":6.399999991059303}}\n"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "b70cc5427668400b839d87acb97c5339",
+  "type": "qa",
+  "date": "2026-10-18T17:12:04.426733+00:00",
+  "title": "QA temporário: test:jogabilidade:entradas",
+  "exitCode": 1,
+  "sourceId": "788dfbf78c594d7ad47bcea9087bfd9bbfcdccd14ca61f5eecfd8bade35f0be5",
+  "package": "20261018T171201-d1dfd8141334"
+}

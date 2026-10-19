@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "860fb9d70a7184084f4447e0fbc953e67644bb91a8375532c7d1a93b852e5bd6",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/04-sala-brinquedos.png",
+  "sha256": "a6a99332986c9ed8ec9d8bebbe1d2f3d4a95d8f98ae3028c38e2304fd196d989",
+  "capturedAt": "2026-10-19T02:49:47.821387+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/04-sala-brinquedos.png\", \"sha256\": \"1e2f7fda6600f13d41e100ac36330913313e2e8764da905be365b79d6903fb20\", \"bytes\": 1125947, \"binaryRetained\": false}"
+}

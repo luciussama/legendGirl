@@ -1,0 +1,17 @@
+{
+  "generator": "imagegen",
+  "date": "2026-10-18",
+  "purpose": "Sequência de entrada e saída suave da defesa frontal da menina na arena.",
+  "references": [
+    "girl/runtime/idle-01.png",
+    "girl/runtime/attack-01.png"
+  ],
+  "prompt": "Use case: identity-preserve\nAsset type: folha de sprites de defesa para jogo 2D, seis quadros de uma mesma animação.\nReferências: menina oficial nos dois PNGs fornecidos. Preserve exatamente a identidade, o rosto infantil, cabelo castanho em rabo de cavalo com laço rosa, vestido creme com rosa antigo, botas marrons, espada de brinquedo de madeira com guarda azul-clara, proporções e linguagem de ilustração em pixels da referência. Não adicionar armadura, escudo, personagem, decoração ou texto.\nCriar UMA prancha de 1536x1024, grade regular 3 colunas x 2 linhas, seis células de 512x512. Fundo realmente transparente em toda a prancha; sem cenário, sem sombra, sem quadrícula desenhada, sem bordas ou números.\nTodas as poses voltadas para DIREITA, mesma escala do corpo, cabeça e botas, pés no mesmo nível local dentro de cada célula, corpo inteiro e espada inteiros com margem. A personagem deve estar em perfil/três quartos lateral de jogo. A espada fica na FRENTE do corpo entre ela e o inimigo à direita, pronta para aparar.\nSequência da esquerda para direita, primeira linha depois segunda: quadro1 guarda relaxada com espada diagonal baixa; quadro2 flexiona suavemente joelhos e traz punho para frente do peito; quadro3 ergue espada em diagonal para cima e para frente; quadro4 inclina corpo discretamente para proteger o peito, pés firmes; quadro5 defesa quase pronta; quadro6 defesa estável clara com ambas as mãos segurando punho, lâmina inclinada para cima à direita, à frente do rosto e torso, ponta à direita. Movimento pequeno, progressivo, articulado e consistente, sem saltos de escala. A sequência será reproduzida ao contrário para sair suavemente da defesa. Expressão focada e confiante sem agressividade adulta. Não cortar botas, cabelo ou espada. Não espelhar nas células. Não usar efeitos luminosos nem textos.",
+  "layout": {
+    "columns": 3,
+    "rows": 2,
+    "cellWidth": 512,
+    "cellHeight": 512
+  },
+  "notes": "Saída reproduzida na ordem inversa. Transparência original preservada; sem alteração de hitboxes."
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "88e3d552d12a437db4b06ba613a0ef6d",
+  "date": "2026-10-19T02:48:40.132983+00:00",
+  "title": "QA temporário: test:saltos:progressao",
+  "files": [
+    {
+      "path": "qa-execucoes/88e3d552d12a437db4b06ba613a0ef6d.log",
+      "sourceId": "ae348290f6e7df43307bbf398c0e885c90b3e990e85a18e4985a9b92e0b5f3f7",
+      "sha256": "579c1d9e8e6863a7ab95365ae39a4f1ffcb8ec3f89f369a7583518e17834ebdb",
+      "bytes": 20306,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/88e3d552d12a437db4b06ba613a0ef6d/docs/qa/.DS_Store",
+      "sourceId": "19405c63d2371452012d8a53973247bd1727b461158dfc8b1471391e0dac4677",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

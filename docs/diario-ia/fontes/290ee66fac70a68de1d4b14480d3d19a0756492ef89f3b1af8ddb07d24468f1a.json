@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "290ee66fac70a68de1d4b14480d3d19a0756492ef89f3b1af8ddb07d24468f1a",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-HIT.png",
+  "sha256": "2cdf9a07383fa4c9678a216de4f8f86bd3fe88690a38df35b585c110157d5cf6",
+  "capturedAt": "2026-10-19T02:49:47.874018+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-HIT.png\", \"sha256\": \"8faab411f75d7e2a24479793ad68c1c48c31d2d2f7acbcf402a60bedb2166f06\", \"bytes\": 1067783, \"binaryRetained\": false}"
+}

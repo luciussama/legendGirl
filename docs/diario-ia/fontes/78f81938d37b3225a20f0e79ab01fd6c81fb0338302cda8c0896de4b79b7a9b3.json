@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "78f81938d37b3225a20f0e79ab01fd6c81fb0338302cda8c0896de4b79b7a9b3",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transporte.png",
+  "sha256": "9db75c105b61bde605ca76c62602bdcc041354f79d2cba0a47fbb4968e987372",
+  "capturedAt": "2026-10-19T02:49:48.766835+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transporte.png\", \"sha256\": \"03477b759d3ab6c0c0df5f0e01bdbc915fd2af28caf684ed853889e3fc8bebdb\", \"bytes\": 1376440, \"binaryRetained\": false}"
+}

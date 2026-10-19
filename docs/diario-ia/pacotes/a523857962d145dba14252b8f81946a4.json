@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "a523857962d145dba14252b8f81946a4",
+  "date": "2026-10-19T02:35:00.246251+00:00",
+  "title": "QA temporário: verify:dark-room",
+  "files": [
+    {
+      "path": "qa-execucoes/a523857962d145dba14252b8f81946a4.log",
+      "sourceId": "03f3c04687b16cd8a9e6b1d48b2ada41dc7400321c0cfc01c8c7072245bb4824",
+      "sha256": "afea56ad567e5fc59d31288492ac7d41889d3af9ff3305deb63cfc6bbabe9acc",
+      "bytes": 11014,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a523857962d145dba14252b8f81946a4/docs/qa/.DS_Store",
+      "sourceId": "7856aaf450209e2fe37c4db8b3b6ae9e7ba26001978f98867a24a2bca0ad0b63",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a523857962d145dba14252b8f81946a4/assets/qa-testers/current-screenshots/personagem/crops.png",
+      "sourceId": "ecbbf3ec4e7bbd4be532ca12de5f39ac88604f1d4577544d14f13ddb3111ac42",
+      "sha256": "5fe062f5f5fba80759734e318695ab82b748c69108235b37221cd75b224995fd",
+      "bytes": 204716,
+      "metadataOnly": true
+    }
+  ]
+}

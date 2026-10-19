@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T025129-a4e6b013e50f",
+  "date": "2026-10-19T02:51:29.823598+00:00",
+  "title": "Fontes finais do balanceamento autorizado e calibração com dependências atuais",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/calibrar-janelas-saltos.js",
+      "sourceId": "74cd6fea171b1932b4bc9ecbc584f1ce7a7f1d60bd372e92c75d8cedf23c091c",
+      "sha256": "74b0fbd4ad1b7ef9c50c36c2de5aeb5bc7bed7b447f317171b217b1de1d30df1",
+      "bytes": 991,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/verificar-quarto-progressivo.js",
+      "sourceId": "9ba427aa293e82da69528cec463db90f05617740785a5f0435415fc22f00bb16",
+      "sha256": "6bbe1ca64e4eab2739a3f6e5d9e488bff0d15550f1aaf1b44dc621d8a5e0d9ad",
+      "bytes": 15811,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/dificuldade-saltos-progressivos.js",
+      "sourceId": "67648ba03ac7156baf0ed934ec6039e35d8f69591e6d46b21b35c739ec6e7d2b",
+      "sha256": "66dce7472912abadec7e41cbb2da66562e3589501aaf976bc72f2aa18bfbe7bf",
+      "bytes": 6985,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fisica-janelas-saltos.js",
+      "sourceId": "f59d8eb38cbf9e2689dbc6ba9a6d426b3adf3234fff87945c9d3a030a0c27289",
+      "sha256": "be249beb66df7ab851344710d60e81228ce5d73f266ae8f117e4c31d20da967f",
+      "bytes": 2627,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/testar-progressao-saltos.js",
+      "sourceId": "f6db0ee0f43cab985ce4ce1792dcd348d037ae91ff53162e2523e262d71ab08d",
+      "sha256": "27e59b6b926f6b12db5332953c89c73a18c1737a7d45e113164627cfc0a18d56",
+      "bytes": 1253,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:saltos:calibrar": "node docs/diario-ia/qa/calibrar-janelas-saltos.js"
+  }
+}

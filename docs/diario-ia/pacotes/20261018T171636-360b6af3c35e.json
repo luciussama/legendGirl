@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T171636-360b6af3c35e",
+  "date": "2026-10-18T17:16:36.257699+00:00",
+  "title": "Atualizar fixture antiga de dificuldade: ação pública somente após transformação da arena",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-dificuldade-campanha.js",
+      "sourceId": "48d8a05364ea9cb55293f5c3b1ed13eeff2e6d8fbae8e746920debe1d1b25259",
+      "sha256": "01007fb4faa5cfcfe015c252e19a1d6b9c1c4ea422a78ffe37493e43e16e8e3c",
+      "bytes": 9046,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-dificuldade.html",
+      "sourceId": "d893926c835fa47535c9bada8f92b20d90fcd26749ac2ba22188d97b6fe314c9",
+      "sha256": "82b77bf3e09ade6eb4674dd46a7bb8dbc0b1969ecfd17b0c9ecc47acc035bbbe",
+      "bytes": 346,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-persistencia-browser.js",
+      "sourceId": "74e25f625b0253d8187c3c9b5717e6ae4aa65f3e7eeac838c4e6fd39c4209a2c",
+      "sha256": "f0bf6b872361c512ddc03bda11653751e1a1dc006faaffa2b0fe39be1a094f99",
+      "bytes": 1848,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:persistencia:browser": "node docs/diario-ia/qa/jogabilidade-persistencia-browser.js"
+  }
+}

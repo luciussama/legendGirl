@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "afcaf7660ffb40b2a91bac02465d82d1",
+  "date": "2026-10-18T17:19:17.599149+00:00",
+  "title": "QA temporário: test:jogabilidade:persistencia:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/afcaf7660ffb40b2a91bac02465d82d1.log",
+      "sourceId": "63eedd32e62d8046743a141ea5171ec5a92030f5290069e48fd21612cd8d699c",
+      "sha256": "27fb564d8b13822bef64e7142b401c2b203885074d5e89fbb375d9bef393644c",
+      "bytes": 9610,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/afcaf7660ffb40b2a91bac02465d82d1/docs/qa/.DS_Store",
+      "sourceId": "787a0162b294ce49ef7a659adf114f4ec3773d78cbdf825c5756b1496709bc9f",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/afcaf7660ffb40b2a91bac02465d82d1/docs/diario-ia/qa-resultados/jogabilidade-persistencia/resultado.json",
+      "sourceId": "62f1662615c42a0fba3c4cce0ae58993104a109516b81482e8400fc17c5c893e",
+      "sha256": "bc1ae167cc04ce2d6d4ca6ff9061e2cbf15b1c9ccd391c280039f4d9537f2d8f",
+      "bytes": 11108,
+      "metadataOnly": false
+    }
+  ]
+}

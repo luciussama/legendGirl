@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "74e25f625b0253d8187c3c9b5717e6ae4aa65f3e7eeac838c4e6fd39c4209a2c",
+  "path": "docs/diario-ia/qa/jogabilidade-persistencia-browser.js",
+  "sha256": "f0bf6b872361c512ddc03bda11653751e1a1dc006faaffa2b0fe39be1a094f99",
+  "capturedAt": "2026-10-18T17:16:36.257390+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport fs from 'node:fs/promises';\nconst page=await(await fetch('http://127.0.0.1:9222/json/new?about:blank',{method:'PUT'})).json();\nconst ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise((r,j)=>{ws.onopen=r;ws.onerror=j;});\nlet id=0;const pending=new Map(),errors=[];\nws.onmessage=({data})=>{const m=JSON.parse(data);if(m.method==='Runtime.exceptionThrown')errors.push(m.params.exceptionDetails);if(pending.has(m.id)){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(JSON.stringify(m.error))):p.resolve(m.result);}};\nconst send=(method,params={})=>new Promise((resolve,reject)=>{pending.set(++id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});\nconst evaluate=async expression=>{const r=await send('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(JSON.stringify(r.exceptionDetails));return r.result.value;};\ntry {\n await send('Page.enable');await send('Runtime.enable');await send('Emulation.setDeviceMetricsOverride',{width:960,height:640,deviceScaleFactor:1,mobile:false});\n await send('Page.navigate',{url:'http://127.0.0.1:3000/docs/diario-ia/qa/jogabilidade-dificuldade.html'});\n let result;for(let i=0;i<900;i++){result=await evaluate('({status:document.body?.dataset.result,text:document.querySelector(\"#result\")?.textContent})');if(result.status)break;await new Promise(r=>setTimeout(r,100));}\n assert.equal(result.status,'passed',result.text);assert.deepEqual(errors,[]);\n await fs.mkdir('docs/diario-ia/qa-resultados/jogabilidade-persistencia',{recursive:true});await fs.writeFile('docs/diario-ia/qa-resultados/jogabilidade-persistencia/resultado.json',JSON.stringify(result,null,2));console.log(result.text);\n}finally{ws.close();await fetch('http://127.0.0.1:9222/json/close/'+page.id);}\n"
+}

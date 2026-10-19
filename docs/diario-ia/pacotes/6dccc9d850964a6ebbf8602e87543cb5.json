@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "6dccc9d850964a6ebbf8602e87543cb5",
+  "date": "2026-10-18T17:18:27.246136+00:00",
+  "title": "QA temporário: test:jogabilidade:tutorial:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5.log",
+      "sourceId": "2398118cc8654fa29acbbca659b036d583ac8de5aa49c2181f74f36891822b91",
+      "sha256": "49911a02492386f97ddac476c10d696c3ca0d323ebc511bdbceb4a17e73a4d2b",
+      "bytes": 734,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5/docs/qa/.DS_Store",
+      "sourceId": "024fe7fe3f51926e5f614a15b7c916af2a963d64ed46f9d51be79eb443a08e27",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5/docs/diario-ia/qa-resultados/tutorial-producao/capturas/Android.png",
+      "sourceId": "aa4a83f6379f68542b2a73e230ee3df26acb3fc2caa0065fd5a1653bc4823df2",
+      "sha256": "56b74b3d69389fa603fd4a50dac01772e00a3c3cea6a7883eb732d49aa215190",
+      "bytes": 288051,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5/docs/diario-ia/qa-resultados/tutorial-producao/capturas/Desktop.png",
+      "sourceId": "293a49ea5cc87561f1523439866282671bed9a60f03171a8b23c13c75c32372f",
+      "sha256": "c718f3b4f11ee28689d7139f6c166517af5fb9c3f1f16ba4cfe9b43e729564bf",
+      "bytes": 386471,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5/docs/diario-ia/qa-resultados/tutorial-producao/capturas/iPhone.png",
+      "sourceId": "1fbb55e1404c9807a38df9cd1b1748488c09235951036fe91021f590c8c53e89",
+      "sha256": "68f0e63a770b279ac6a9436b52180075dc7ec06b5bc435c98991bd8d1963b313",
+      "bytes": 288396,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5/docs/diario-ia/qa-resultados/tutorial-producao/first-jump-production.json",
+      "sourceId": "4bd822b601a9e4834f452355f791b67b94c8418be74238d72d4346a115c9067c",
+      "sha256": "10224acd2132f1c55964fedbc1b60d3ade405e0b7c6d7cf95d5e14607fa24d98",
+      "bytes": 1715,
+      "metadataOnly": false
+    }
+  ]
+}

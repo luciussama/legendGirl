@@ -36,12 +36,12 @@ export function isActionControlHit(layout, x, y) {
   return layout.contains(x, y) && Math.hypot(x - layout.action.x, y - layout.action.y) <= layout.action.radius;
 }
 
-/** Layout dos botões explícitos da arena, independente do joystick exploratório. */
+/** Direcional fixo compacto: a mesma geometria serve ao desenho e ao toque analógico. */
 export function arenaMobileControlsLayout(layout) {
-  const unit = Math.max(0.65, Math.min(layout.scale, layout.usableWidth / 360, layout.usableHeight / 320));
-  const dpadSize = 54 * unit, dpadGap = 5 * unit;
-  const dpadCenterX = layout.safeLeft + 94 * unit;
-  const dpadCenterY = layout.safeBottom - 108 * unit;
+  const unit = Math.max(0.1, Math.min(layout.scale, layout.usableWidth / 360, layout.usableHeight / 240));
+  const dpadSize = 44 * unit, dpadGap = 0;
+  const dpadCenterX = layout.safeLeft + 88 * unit;
+  const dpadCenterY = layout.safeBottom - 90 * unit;
   const actionHeight = 58 * unit;
   const actionGap = 8 * unit;
   const swordWidth = 84 * unit, specialWidth = 72 * unit;
@@ -52,11 +52,12 @@ export function arenaMobileControlsLayout(layout) {
     width:swordWidth, height:actionHeight };
   return {
     unit, dpadSize, dpadGap,
+    dpad: { x:dpadCenterX, y:dpadCenterY, radius:72*unit, hitRadius:80*unit, deadzone:12*unit },
     directions: {
-      left: { x:dpadCenterX - dpadSize - dpadGap, y:dpadCenterY, radius:dpadSize / 2 },
-      right: { x:dpadCenterX + dpadSize + dpadGap, y:dpadCenterY, radius:dpadSize / 2 },
-      up: { x:dpadCenterX, y:dpadCenterY - dpadSize - dpadGap, radius:dpadSize / 2 },
-      down: { x:dpadCenterX, y:dpadCenterY + dpadSize + dpadGap, radius:dpadSize / 2 }
+      left: { x:dpadCenterX - 43*unit, y:dpadCenterY, radius:dpadSize / 2 },
+      right: { x:dpadCenterX + 43*unit, y:dpadCenterY, radius:dpadSize / 2 },
+      up: { x:dpadCenterX, y:dpadCenterY - 43*unit, radius:dpadSize / 2 },
+      down: { x:dpadCenterX, y:dpadCenterY + 43*unit, radius:dpadSize / 2 }
     },
     sword, special
   };
@@ -65,14 +66,30 @@ export function arenaMobileControlsLayout(layout) {
 export function hitArenaMobileControl(layout, x, y) {
   if (!layout.contains(x, y)) return null;
   const controls = arenaMobileControlsLayout(layout);
-  for (const [direction, button] of Object.entries(controls.directions))
-    if (Math.hypot(x - button.x, y - button.y) <= button.radius) return direction;
   for (const name of ['sword', 'special']) {
     const button = controls[name];
     if (x >= button.x - button.width / 2 && x <= button.x + button.width / 2 &&
         y >= button.y - button.height / 2 && y <= button.y + button.height / 2) return name;
   }
+  if (Math.hypot(x-controls.dpad.x,y-controls.dpad.y)<=controls.dpad.hitRadius) {
+    const vector=arenaDirectionVector(layout,x,y);
+    if(Math.abs(vector.x)<0.01&&vector.y<0)return 'up';
+    if(Math.abs(vector.x)<0.01&&vector.y>0)return 'down';
+    if(Math.abs(vector.y)<0.01&&vector.x<0)return 'left';
+    if(Math.abs(vector.y)<0.01&&vector.x>0)return 'right';
+    return 'dpad';
+  }
   return null;
+}
+
+/** O centro nunca muda; arrastar o polegar atravessa as oito direções sem soltar. */
+export function arenaDirectionVector(layout,x,y) {
+  const {dpad}=arenaMobileControlsLayout(layout),dx=x-dpad.x,dy=y-dpad.y;
+  const distance=Math.hypot(dx,dy);
+  if(distance<=dpad.deadzone)return {x:0,y:0};
+  const angle=Math.round(Math.atan2(dy,dx)/(Math.PI/4))*Math.PI/4;
+  const intensity=Math.min(1,(distance-dpad.deadzone)/(dpad.radius-dpad.deadzone));
+  return {x:Math.cos(angle)*intensity,y:Math.sin(angle)*intensity};
 }
 
 /** Recalcula os controles HTML quando barras móveis ou orientação mudam. */

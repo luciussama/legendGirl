@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T171233-b0908ec500c8",
+  "date": "2026-10-18T17:12:33.838191+00:00",
+  "title": "Matriz de entradas: estabilizar a soltura do controle antes da comparação de pausa",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-entradas.js",
+      "sourceId": "1b3ca14fd939ce6c74cbdec2927de31ab75e7c62b01fa081e7dcb61ee93ac1f1",
+      "sha256": "7ab00c2613f000f1972196ce342eda6ffdb43c3d13408726187581ca0f67faae",
+      "bytes": 5133,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:entradas": "node docs/diario-ia/qa/jogabilidade-entradas.js"
+  }
+}

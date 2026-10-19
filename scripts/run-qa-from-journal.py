@@ -21,7 +21,9 @@ parser = argparse.ArgumentParser(description='Executar QA preservado no diário,
 parser.add_argument('command', nargs='?', default='test')
 parser.add_argument('arguments', nargs=argparse.REMAINDER)
 args = parser.parse_args()
-packages = [json.loads(p.read_text()) for p in sorted((ROOT / 'docs/diario-ia/pacotes').glob('*.json'), reverse=True)]
+packages = sorted(
+    (json.loads(p.read_text()) for p in (ROOT / 'docs/diario-ia/pacotes').glob('*.json')),
+    key=lambda package: (package.get('date', ''), package['id']), reverse=True)
 single = args.command.removeprefix('script:') if args.command.startswith('script:') else None
 bundle = next((p for p in packages if (args.command in p.get('qaCommands', {})) or (single and any(f['path']=='scripts/'+single for f in p['files']))), None)
 if not bundle:
@@ -77,7 +79,7 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
             with socket.socket() as sock:
                 sock.bind(('127.0.0.1',0)); port = sock.getsockname()[1]
             import re
-            for folder in ['scripts','tests']:
+            for folder in ['scripts','tests','docs/diario-ia/qa']:
                 for path in (workspace/folder).rglob('*'):
                     if path.suffix not in {'.js','.html','.py'}:continue
                     text = path.read_text()
@@ -104,7 +106,7 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
     record = {'schemaVersion':1,'id':identity,'type':'qa','date':journal.now(),'title':'QA temporário: '+args.command,'exitCode':result.returncode,'sourceId':source_id,'package':bundle['id']}
     journal.write_new(ROOT/'docs/diario-ia/registros'/(identity+'.json'),record)
     artifacts = [{'path':'qa-execucoes/'+identity+'.log','sourceId':source_id,'sha256':journal.digest(result.stdout),'bytes':len(result.stdout),'metadataOnly':False}]
-    for folder in ['docs/qa','assets/qa-testers']:
+    for folder in ['docs/qa','assets/qa-testers','docs/diario-ia/qa-resultados']:
         for artifact in sorted((workspace/folder).rglob('*')):
             if not artifact.is_file(): continue
             raw = artifact.read_bytes(); relative = artifact.relative_to(workspace).as_posix()

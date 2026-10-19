@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T171407-007fa20bec6c",
+  "date": "2026-10-18T17:14:07.550806+00:00",
+  "title": "Campanha NORMAL/EASY com pausa e recarga real da página",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-persistencia-browser.js",
+      "sourceId": "e716c8ee009f2c102ff4c9d52302ffb8fec4b9c6da3481213a51999f3811dc80",
+      "sha256": "f9ac8af58502b94284a3d85a5b08ba3bafd94b11993af1350cc8e904689a96c2",
+      "bytes": 1827,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:persistencia:browser": "node docs/diario-ia/qa/jogabilidade-persistencia-browser.js"
+  }
+}

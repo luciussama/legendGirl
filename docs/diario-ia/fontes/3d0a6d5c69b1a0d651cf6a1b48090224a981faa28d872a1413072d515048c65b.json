@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3d0a6d5c69b1a0d651cf6a1b48090224a981faa28d872a1413072d515048c65b",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-HIT.png",
+  "sha256": "60c96b49cfb4d393eb7f5fb436df34a7da247b288b710a15185952b2c3933640",
+  "capturedAt": "2026-10-19T02:49:48.517528+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-HIT.png\", \"sha256\": \"2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d\", \"bytes\": 874731, \"binaryRetained\": false}"
+}

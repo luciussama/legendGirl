@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "225a5338f3e34ccf12a75c237c3b7d030992d6a89ff1684cdae7161c03976e03",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-10.png",
+  "sha256": "28796deee5ac42c83574302748169b6f037dc6f3262bb2c33f51e3fe1d14edac",
+  "capturedAt": "2026-10-19T02:49:48.149841+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-10.png\", \"sha256\": \"6f1f46d25f3f1ed4521e922540da2c37270f85f63543470a3df7571b7e379919\", \"bytes\": 351599, \"binaryRetained\": false}"
+}

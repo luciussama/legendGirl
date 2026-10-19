@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T165842-db059754b2e1",
+  "date": "2026-10-18T16:58:42.995094+00:00",
+  "title": "Limpeza idempotente de contato do Chrome antes do QA móvel",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/arena-defesa-browser.js",
+      "sourceId": "91b357352a582c4435dda87a8853c7affaab75928f23cac2623211dfe77e79dd",
+      "sha256": "0b030e7cd5369263585354d3137d9484434ee9d6fc518eef3a73bc1d98bff14f",
+      "bytes": 6047,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:defesa:browser": "node docs/diario-ia/qa/arena-defesa-browser.js"
+  }
+}

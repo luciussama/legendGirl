@@ -149,7 +149,7 @@ Os campos de gameplay de `game.js` são lidos e escritos diretamente em `GameSta
 | `startTruePortalTransition` | Preparação da passagem para a sala. |
 | `spawnFairySparkles`, `spawnFairyFlightDust`, `updateFairyParticles` | Buffers visuais da guia; não confundí-los com seu controlador de movimento. |
 
-`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level)` e `getPhase3Stats(level)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
+`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level)`, `getPhase3Stats(level, fromFloor = false)` e `getApproachJumpSpeed(platformIndex)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
 
 ### Save
 
@@ -526,3 +526,9 @@ Histórico de correções, tentativas, falhas e homologações está exclusivame
 `DialogueRenderer.renderDialogue(ctx, canvas, dialogue, options)` desenha a caixa compartilhada e o retrato. `renderCutsceneDialogue` escolhe falas e prompts da primeira fase; `ToyRoomStory.renderStoryBeat` fornece as falas temporizadas da Toy Room. A lógica de progressão não pertence ao renderer. `ToyRoomStory.renderStoryBeat` delega a `ToyRoomStoryRenderer.renderStoryBeat`, que adapta dados e usa a caixa compartilhada.
 
 Na Toy Room, `separateScene: false` mantém o enquadramento e as coordenadas dos controles. A opção `bottom` reserva espaço para o botão e joystick nos dispositivos móveis. Falas automáticas não exibem um pedido fictício de avanço. Narração sem interlocutor continua usando `PoeticNarrator`. Use `npm run test:dialogues` e `npm run test:dialogues:browser` para conferir esse contrato no ambiente temporário de QA.
+
+### Progressão das janelas dos saltos
+
+O alcance aéreo da aproximação vem de `getApproachJumpSpeed`; os dois primeiros saltos conservam a margem inicial e as saídas seguintes exigem precisão crescente. Castelo e primeiro salto da fuga mantêm pausa/assistência. Após a porta falsa, `getPhase3Stats` usa uma tabela de alcances fixos; `fromFloor` distingue a entrada no percurso invertido. A geometria, gravidade, impulso vertical e velocidades de corrida permanecem independentes desse ajuste. Não calcular o alcance com a posição do comando para facilitar a mira.
+
+`npm run test:saltos:progressao` mede saídas usando os trechos reais de produção, em NORMAL/EASY e dt 0,5/1/1,2. Integra `npm test`. Comparações históricas de salto aceitam somente as mudanças autorizadas de alcance; colisão, gravidade e bloqueios continuam cobertos.

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "14eca6e686b61a57d60f5596ec305d43a0b7b09f7fc820d38e89b35a70f23411",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-entrada.png",
+  "sha256": "0179d890a5eff39c7713faa58dde946ba7b292ef7d727332c49209016e9165f0",
+  "capturedAt": "2026-10-19T02:49:47.896318+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-entrada.png\", \"sha256\": \"17da5751823d0b02c1a8f1e03e0e1aed25900b99d2c863cef913db387a6db75b\", \"bytes\": 1173395, \"binaryRetained\": false}"
+}

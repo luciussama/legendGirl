@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d07540d321fa5d164052c4daf5e48b3038eb8c2f45e7fd48d4953d7095edc304",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transformacao.png",
+  "sha256": "4611a0cfe9c090c4ec787bb5dd7460a05b303ec2fdc54928b149e72ec6feb930",
+  "capturedAt": "2026-10-18T17:11:01.095725+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transformacao.png\", \"sha256\": \"db40a4998ec730b5e1df314e0e027d4d118e46939c2e093b7aaafc5ab8f3ed2e\", \"bytes\": 1323014, \"binaryRetained\": false}"
+}

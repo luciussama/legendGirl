@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7d47c1895b627e598bc3a430d9c62e2e4d56dffd13d151b120c89006fb693053",
+  "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/assets/qa-testers/current-screenshots/first-jump-production/Desktop.png",
+  "sha256": "99cae75289f99c9cd2864aca49c1c879a4cca191b7a2c499df6762565ae53254",
+  "capturedAt": "2026-10-18T17:14:47.594722+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "script:test-first-jump-production-browser.js"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"assets/qa-testers/current-screenshots/first-jump-production/Desktop.png\", \"sha256\": \"8dab8c3284230a8b4cbd93aafa824fcd6a98c1e3e9181ab3cbc6a178de37b5ac\", \"bytes\": 386404, \"binaryRetained\": false}"
+}

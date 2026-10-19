@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f0182d83ef1c1c33d9d54772eec8c0899cebf08bdeff85afdeb975dd572ab1eb",
+  "path": "qa-execucoes/36fe3d60a239459a9762d9ce02a97cef.log",
+  "sha256": "c9bb62c8d361a4f864c267c935e642d87e0b64b31ab35104f92af856c99619ce",
+  "capturedAt": "2026-10-18T16:57:05.677364+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:defesa:browser",
+    "exitCode": 1,
+    "package": "20261018T165645-393df2fa4fcf"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:defesa:browser\n> node docs/diario-ia/qa/arena-defesa-browser.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(jump.jump>0&&jump.up&&Math.sign(jump.x)===controls.side)\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-jnqljpb3/projeto/docs/diario-ia/qa/arena-defesa-browser.js:23:209 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

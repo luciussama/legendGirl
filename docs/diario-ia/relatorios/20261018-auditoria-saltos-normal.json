@@ -1,0 +1,36 @@
+{
+  "sessao": "20261019T023417-7d4a862551ef",
+  "relatoHumano": {
+    "dificuldade": "NORMAL",
+    "facilTestado": false,
+    "dispositivo": "não informado",
+    "trecho": "não informado"
+  },
+  "configuracao": {
+    "referencia": "5c94ad4090e20764f131908a47228bd37817465a",
+    "sha256Atual": "97b49d0262b1ace2c747c0d19d39afeae59f3c05814e87f88d2f9b5b0b8757c4",
+    "sha256Referencia": "97b49d0262b1ace2c747c0d19d39afeae59f3c05814e87f88d2f9b5b0b8757c4",
+    "identica": true
+  },
+  "modulosInalteradosDesdeHEAD": {
+    "src/js/game.js": true,
+    "src/js/config.js": true,
+    "src/js/state/GameDifficulty.js": true,
+    "src/js/main.js": true,
+    "src/js/input.js": true,
+    "src/js/controllers/InputController.js": true
+  },
+  "janelasIniciais60HzMs": [
+    1167,
+    850,
+    783,
+    800,
+    433,
+    317,
+    367,
+    350,
+    867,
+    533
+  ],
+  "observacao": "Janelas medidas pelo verificador de percurso contínuo NORMAL, não são notas de dificuldade humana. O pouso garantido castelo→trem já existe desde 24/09/2026. Não houve edição de produção."
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "694315084f958cd1bf9c3e368151d11aa0b10776e1011fd60c0e7840c98273f8",
+  "path": "qa-execucoes/275d42cd48e840f6b5ce6519f83672ab/docs/qa/toy-room-arena/desktop-arena-robot-movimento.png",
+  "sha256": "b7c34a45647e4aa282d56cc87a079d6d2b10703e35d9500d37993b421ad77b09",
+  "capturedAt": "2026-10-18T17:09:53.892773+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-robot-movimento.png\", \"sha256\": \"773b8f52f82471bf3600e278956be8eb9d9fdcd645bbd5ff358888a727b39aa6\", \"bytes\": 1101384, \"binaryRetained\": false}"
+}

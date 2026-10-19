@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5ab32ddd3cfcae45ef4f20fab914572e73e3bfe15dfb41b36a5ada4b12ceddeb",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-RETREAT.png",
+  "sha256": "d3554c815dfc39cc4817250a8a54650c32a031ce4b6d7b784de34c03b95fa80f",
+  "capturedAt": "2026-10-18T17:10:59.561276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-RETREAT.png\", \"sha256\": \"4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c\", \"bytes\": 889032, \"binaryRetained\": false}"
+}

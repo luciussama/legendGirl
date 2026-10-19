@@ -19,14 +19,23 @@ export class PlayerController {
       }
     }
     s.crouching = input.down && s.jump === 0;
-    if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
+    const faceEnemy = () => {
+      if (battle.presentation && s.enemy && s.enemy.x !== r.player.x)
+        r.player.facing = s.enemy.x > r.player.x ? 'right' : 'left';
+    };
+    if (battle.presentation) faceEnemy();
+    else if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
+    const facing = r.player.facing === 'right' ? 1 : -1;
+    // Recuar protege sem virar as costas; salto e golpe continuam sendo ações próprias.
+    s.guarding = Boolean(battle.presentation && input.x * facing < -0.18
+      && s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0);
     r.player.isMoving = Boolean(input.x && !s.crouching && s.playerHitTime <= 0);
     if (s.playerHitTime > 0 && s.playerKnockback) {
       const travel = t.knockbackDistance ? (1 - Math.pow(0.82, dt)) / 0.18 : dt;
       r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
       s.playerKnockback *= Math.pow(0.82, dt);
     } else if (!s.crouching && input.x && s.playerHitTime <= 0) {
-      const moveScale = battle.presentation && s.cooldown > 0
+      const moveScale = s.guarding ? t.guardMoveScale ?? 0.55 : battle.presentation && s.cooldown > 0
         ? (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
       r.player.x = clamp(r.player.x + input.x * t.speed * moveScale * dt, t.left + 35, t.right - 35);
     }
@@ -40,6 +49,7 @@ export class PlayerController {
       }
     }
     r.player.x = clamp(r.player.x, t.left + 35, t.right - 35);
+    faceEnemy();
     r.player.y = t.ground - 28;
     r.player.animTime += dt * 0.22;
     s.playerStepTimer = Math.max(0, s.playerStepTimer - dt);

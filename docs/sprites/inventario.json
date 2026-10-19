@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 415,
-    "regions": 93,
+    "files": 416,
+    "regions": 99,
     "code": 29
   },
   "items": [
@@ -8315,6 +8315,29 @@
       "family": "assets/art/toy-room/battle/girl/animation-v2"
     },
     {
+      "id": "d14b6e541a0f4c6857422370",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard-cycle-sheet.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/girl/animation-v2"
+    },
+    {
       "id": "8438b5e5e5380b0d2a499314",
       "kind": "file",
       "path": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
@@ -8356,6 +8379,12 @@
       "aliases": [],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/battle/girl/animation-v2/guard-provenance.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 4,
@@ -8662,6 +8691,12 @@
         {
           "file": "assets/art/toy-room/battle/damage-v2/prompts.json",
           "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/battle/girl/animation-v2/guard-provenance.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
         },
@@ -22236,6 +22271,198 @@
         "height": 421
       },
       "parentId": "8c26e602291dcb76b3488ff7"
+    },
+    {
+      "id": "fe8ea697cc4d5be5f0a8e286",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 0,
+        "y": 0,
+        "width": 512,
+        "height": 496
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
+    },
+    {
+      "id": "ad2ae993ffb5e022f15a73e7",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 512,
+        "y": 0,
+        "width": 512,
+        "height": 496
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
+    },
+    {
+      "id": "e703cc8d93a6db98defc43b5",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 1024,
+        "y": 0,
+        "width": 512,
+        "height": 496
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
+    },
+    {
+      "id": "c16c8bc1d84c4b743b746a33",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 0,
+        "y": 512,
+        "width": 512,
+        "height": 475
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
+    },
+    {
+      "id": "277f0e5257e419974d072462",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 512,
+        "y": 512,
+        "width": 512,
+        "height": 475
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
+    },
+    {
+      "id": "2dd3ee02eddec246165b8597",
+      "kind": "region",
+      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
+      "title": "guard · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1711207,
+      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "region": {
+        "x": 1024,
+        "y": 512,
+        "width": 512,
+        "height": 475
+      },
+      "parentId": "d14b6e541a0f4c6857422370"
     },
     {
       "id": "28fb1608440b14b425a065a0",

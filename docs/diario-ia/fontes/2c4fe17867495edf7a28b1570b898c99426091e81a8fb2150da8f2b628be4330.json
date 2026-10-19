@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2c4fe17867495edf7a28b1570b898c99426091e81a8fb2150da8f2b628be4330",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/transporte.png",
+  "sha256": "ef03dd442ed6dfed40303c3ce98352170605097a8449a14d3902abdff440c2d1",
+  "capturedAt": "2026-10-18T17:11:00.804276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/transporte.png\", \"sha256\": \"5cc12b7fa58f418d003cb8b7161f34a534e9d106852e92cc61472cd97dde39cb\", \"bytes\": 1130262, \"binaryRetained\": false}"
+}

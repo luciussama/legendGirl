@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T165645-393df2fa4fcf",
+  "date": "2026-10-18T16:56:45.805688+00:00",
+  "title": "QA de defesa e controles móveis por eventos de toque reais no Chrome",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/arena-defesa-browser.js",
+      "sourceId": "7ecc17ecd0ac0189363c57acc8e0a926facf81970b0970c984cd0fd7ff7d250f",
+      "sha256": "1ad1de64dadd2b672c812480fe9f153dbbf5474d53e3b59fce963f41a56b6e29",
+      "bytes": 5773,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:defesa:browser": "node docs/diario-ia/qa/arena-defesa-browser.js"
+  }
+}

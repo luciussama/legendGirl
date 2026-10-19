@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "fb1695f945b7eb00e5960bbbdfc1fbdd0f24a2268503e09b7c30621e071157ac",
+  "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e.log",
+  "sha256": "90c2ab01cecdb08cb9dccb31f92769a6982362096a68ff473fff9789808a6661",
+  "capturedAt": "2026-10-18T17:14:47.589359+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "script:test-first-jump-production-browser.js",
+    "exitCode": 1,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 qa:single\n> node scripts/test-first-jump-production-browser.js\n\nAPROVADO: Android / nova\nAPROVADO: Android / abertura-migrada-incorretamente\nAPROVADO: Android / abertura-antiga\nAPROVADO: Android / abertura-concluida-sem-save\nAPROVADO: Android / tutorial-restaurado\nAPROVADO: iPhone / nova\nAPROVADO: iPhone / abertura-migrada-incorretamente\nAPROVADO: iPhone / abertura-antiga\nAPROVADO: iPhone / abertura-concluida-sem-save\nAPROVADO: iPhone / tutorial-restaurado\nAPROVADO: Desktop / nova\nAPROVADO: Desktop / abertura-migrada-incorretamente\nAPROVADO: Desktop / abertura-antiga\nAPROVADO: Desktop / abertura-concluida-sem-save\nAPROVADO: Desktop / tutorial-restaurado\nnode:internal/fs/promises:1360\n  return new FileHandle(await PromisePrototypeThen(\n                        ^\n\nError: ENOENT: no such file or directory, open 'assets/qa-testers/current-logs/first-jump-production.json'\n    at async open (node:internal/fs/promises:1360:25)\n    at async Object.writeFile (node:internal/fs/promises:2104:14)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-i7yy32f3/projeto/scripts/test-first-jump-production-browser.js:71:2 {\n  errno: -2,\n  code: 'ENOENT',\n  syscall: 'open',\n  path: 'assets/qa-testers/current-logs/first-jump-production.json'\n}\n\nNode.js v26.5.0\n"
+}

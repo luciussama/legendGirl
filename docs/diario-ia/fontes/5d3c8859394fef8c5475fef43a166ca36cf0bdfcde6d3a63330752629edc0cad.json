@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5d3c8859394fef8c5475fef43a166ca36cf0bdfcde6d3a63330752629edc0cad",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/INVESTIGATION.png",
+  "sha256": "0393daea8f5cf54dfd21bd070d618ec9779b6a65e3fb3c13bca962149c016344",
+  "capturedAt": "2026-10-19T02:49:47.477469+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/INVESTIGATION.png\", \"sha256\": \"bf4b1de839875e129d5b2c43040a1fc5f8e49cbdbe0b9c107a18de9136a80f66\", \"bytes\": 1307014, \"binaryRetained\": false}"
+}

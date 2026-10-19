@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "d4f6d7a83a4a4a3b90fe09ae43d44e7e",
+  "type": "qa",
+  "date": "2026-10-18T17:14:47.590730+00:00",
+  "title": "QA temporário: script:test-first-jump-production-browser.js",
+  "exitCode": 1,
+  "sourceId": "fb1695f945b7eb00e5960bbbdfc1fbdd0f24a2268503e09b7c30621e071157ac",
+  "package": "20261013T190911-2653321714ec"
+}

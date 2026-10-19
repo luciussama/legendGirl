@@ -1,4 +1,4 @@
-import { getMobileUILayout, hitArenaMobileControl, isActionControlHit } from '../ui/MobileUILayout.js';
+import { getMobileUILayout, hitArenaMobileControl, isActionControlHit, arenaDirectionVector } from '../ui/MobileUILayout.js';
 import { TOY_ROOM_INPUT } from './ToyRoomInputBindings.js';
 
 /** Processa entradas da sala e da arena; consulta o estado atual pelo contrato recebido. */
@@ -20,6 +20,7 @@ export class ToyRoomInputController {
     if (this.context.canvas) {
       this.context.canvas.addEventListener('uilayoutchange', this.context.handlers.handlePointerUp);
       this.context.canvas.addEventListener('pointerdown', this.context.handlers.handlePointerDown, { passive: false });
+      this.context.canvas.addEventListener('lostpointercapture', this.context.handlers.handlePointerUp);
     }
   }
 
@@ -123,7 +124,8 @@ export class ToyRoomInputController {
         else if (control === 'special') this.context.special();
         else {
           const pointerId = e.pointerId ?? 'touch';
-          this.state.arenaTouchPointers.set(pointerId, control);
+          if (this.state.arenaTouchPointers.size) return;
+          this.state.arenaTouchPointers.set(pointerId, arenaDirectionVector(layout,coords.x,coords.y));
           this.refreshArenaTouchButtons();
           if (this.context.canvas && typeof this.context.canvas.setPointerCapture === 'function' && typeof e.pointerId === 'number') {
             try { this.context.canvas.setPointerCapture(e.pointerId); } catch (_) {}
@@ -173,6 +175,14 @@ export class ToyRoomInputController {
 
   onPointerMove(e) {
     if (!this.context.isEnabled() || this.context.isLocked()) return;
+    const pointerId=e.pointerId??'touch';
+    if(this.state.arenaTouchPointers.has(pointerId)) {
+      if(e.preventDefault&&e.cancelable)e.preventDefault();
+      const coords=this.getCanvasCoordinates(e);
+      this.state.arenaTouchPointers.set(pointerId,arenaDirectionVector(getMobileUILayout(this.context.canvas),coords.x,coords.y));
+      this.refreshArenaTouchButtons();
+      return;
+    }
     if (!this.state.touchState.active) return;
     if (e.pointerId !== undefined && this.state.touchState.pointerId !== null && e.pointerId !== this.state.touchState.pointerId) return;
 
@@ -205,6 +215,9 @@ export class ToyRoomInputController {
 
   onPointerUp(e) {
     const pointerId = e.pointerId ?? 'touch';
+    if(this.state.arenaTouchPointers.has(pointerId)&&typeof e.pointerId==='number') {
+      try { this.context.canvas?.releasePointerCapture?.(pointerId); } catch (_) {}
+    }
     if (e.pointerId === undefined) this.state.arenaTouchPointers.clear();
     else this.state.arenaTouchPointers.delete(pointerId);
     this.refreshArenaTouchButtons();
@@ -240,8 +253,13 @@ export class ToyRoomInputController {
   }
 
   refreshArenaTouchButtons() {
-    for (const direction of Object.keys(this.state.arenaTouchButtons))
-      this.state.arenaTouchButtons[direction] = [...this.state.arenaTouchPointers.values()].includes(direction);
+    const values=[...this.state.arenaTouchPointers.values()];
+    const vectors=values.filter(value=>value&&typeof value==='object');
+    for (const direction of Object.keys(this.state.arenaTouchButtons)) {
+      const active=vectors.some(v=>direction==='left'?v.x<-.18:direction==='right'?v.x>.18
+        :direction==='up'?v.y<-.18:v.y>.18);
+      this.state.arenaTouchButtons[direction] = values.includes(direction)||active;
+    }
   }
 
   removeListeners() {
@@ -256,6 +274,7 @@ export class ToyRoomInputController {
     if (this.context.canvas) {
       this.context.canvas.removeEventListener('uilayoutchange', this.context.handlers.handlePointerUp);
       this.context.canvas.removeEventListener('pointerdown', this.context.handlers.handlePointerDown);
+      this.context.canvas.removeEventListener('lostpointercapture', this.context.handlers.handlePointerUp);
     }
   }
 }

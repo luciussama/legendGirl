@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e4522e25f1bf869599e97fcb978b3ed7ad1156e13b7ee5a83d3d97444dbeab8b",
+  "path": "qa-execucoes/e626775222134f3ebab55f1b5710d621/docs/diario-ia/qa-resultados/tutorial-mensagens/capturas/mouse.png",
+  "sha256": "9a1b4389c78eeb1e5fc54a8cf9400602ab0f0a6cf834e81679994a399c5fe6e9",
+  "capturedAt": "2026-10-18T17:21:21.784282+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/tutorial-mensagens/capturas/mouse.png\", \"sha256\": \"f700bcd5663fc5fc9a8e42d2c57a0982d6693393abaad5b8ab792d1cad3622da\", \"bytes\": 386331, \"binaryRetained\": false}"
+}

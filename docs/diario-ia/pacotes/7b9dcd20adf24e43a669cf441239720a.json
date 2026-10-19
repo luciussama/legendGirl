@@ -1,0 +1,64 @@
+{
+  "schemaVersion": 1,
+  "id": "7b9dcd20adf24e43a669cf441239720a",
+  "date": "2026-10-18T17:00:22.807272+00:00",
+  "title": "QA temporário: test:arena:defesa:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a.log",
+      "sourceId": "2aad0b39446abf1c43fe13d6a36317be55cb2cd6e9a9a361e52e9325902aff68",
+      "sha256": "b51fe33c0051f3126470751e914dcdd0a84f25a90bb06a4db3378fcb58e776c8",
+      "bytes": 285,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/qa/.DS_Store",
+      "sourceId": "30f276e65c44995a7636d4d6da125df0e0f07a7ef50cc681e5e3df595820b953",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/390-defesa.png",
+      "sourceId": "1df5026cfed5e378f07ec4ce04c71d95b14c7c1f44239a6029de46dd9d957efc",
+      "sha256": "e599a04882d8ba053c9dfdea55f2bc2edf36228ce43912908c224321de6596c3",
+      "bytes": 256564,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/390-poses.png",
+      "sourceId": "cc637dbde0344d23703031235cc3979376b28698b0d53f4f309689a40026d9d4",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/390.json",
+      "sourceId": "3c88c19acac691a22bc883d78bf63cbaed75e11f83f723ec683dde0297ab80dc",
+      "sha256": "576ac5e6acbce11a75eb616cd88609dd16990e55427f961e023c5b7b8ef6c9a8",
+      "bytes": 524,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/844-defesa.png",
+      "sourceId": "a44133838502b7dd9c50b405c7444bc6db91aad8ca0090fa6b78e082052136c4",
+      "sha256": "936acd6ddf30982c84f9e4a07d65d366428564d2ed793d3ea93a4f0bd0e539db",
+      "bytes": 444743,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/844-poses.png",
+      "sourceId": "5ca643724b2b476cff705509f07b4dec493855c13f7209ad5652f94f1ee5b9cc",
+      "sha256": "8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a",
+      "bytes": 209647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/844.json",
+      "sourceId": "741313f86f9b102e5b1968bc361db4778e8a55f20519f7fdd9331b21d956b333",
+      "sha256": "b9c89262eb4bbaae665c3de357d8ebbd231b3b2342b0128481f9ab9fd8416306",
+      "bytes": 524,
+      "metadataOnly": false
+    }
+  ]
+}

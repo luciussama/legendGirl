@@ -1,0 +1,3298 @@
+{
+  "schemaVersion": 1,
+  "id": "90e2ada06449486bab8ec2ab899c8aab",
+  "date": "2026-10-19T02:49:47.120259+00:00",
+  "title": "QA temporário: test:jogabilidade:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab.log",
+      "sourceId": "5df84e8a86a6a6578222291476791c6de392f9cf89907c95b2fbf54a8778af3d",
+      "sha256": "2a56b643232cfa2b305212e5f23184893d1cbf12173d18accf4efb475c150ad3",
+      "bytes": 21540,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/qa/.DS_Store",
+      "sourceId": "11e97ce1ef68b77c209410224f108b16069ebdaff8544f3d9dd55d12412a247c",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/00-abertura.png",
+      "sourceId": "37fd90eb7ca49212dca188511ba2569afd2a4f942f7d4d9cb508d0eb8facb29b",
+      "sha256": "327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2",
+      "bytes": 17056,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/01-inicio.png",
+      "sourceId": "214ad02c95325ae5d401b2f0870fd242be98afe77b6ead59ab7a0a4788218bac",
+      "sha256": "82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82",
+      "bytes": 300131,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/03-retorno.png",
+      "sourceId": "10958d05f51f8050040a9f2e0e844fd678c22d4d10d682a1db23d89811742d06",
+      "sha256": "49840b7a8c18d1882eb4a73b8cd539be28f1cdde38e07f69b587f3fd10902aaa",
+      "bytes": 341620,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/04-sala-brinquedos.png",
+      "sourceId": "e7840216fdfa642b0ddc0d69f5500de71efac7fa3ca2714f2642d6a9abfc9589",
+      "sha256": "f78f938aacfc721ef93482aef656ef9316a8db9d2c3ae5325f5b29f76e55d72c",
+      "bytes": 1292477,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/COLLECTING.png",
+      "sourceId": "cca3fd5a48833dce6d76ece681b75b528836978a2ff5ce73a5d5b5a1d3deba25",
+      "sha256": "f78f938aacfc721ef93482aef656ef9316a8db9d2c3ae5325f5b29f76e55d72c",
+      "bytes": 1292477,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/EQUIPPED.png",
+      "sourceId": "1f23440883ffa6e9535e0e7eae25f571c5e1a4de2491cf7959de378e00b653cf",
+      "sha256": "98ea6b18ea8485db00ab28b6d90369aaa4c88d2b6ce513e697029f8cdecb96e0",
+      "bytes": 1272658,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/INVESTIGATION.png",
+      "sourceId": "1e3f557586c44e365a85d2383bed1e511a2e22c46a8892b69896a3d4071c9c11",
+      "sha256": "50abe84f812ad2c945c1bba29ce797d9aa60abaca136c6cc283baf8453c23b78",
+      "bytes": 1306937,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/PICKUP.png",
+      "sourceId": "13bb4f2e3363d6a1c8d700f5e73808431b992bdb0d9de3b59834f78c0ba2bb63",
+      "sha256": "7498991900ba924f49e43afea8f38eca3b3b85d8eec3d229d7f24d7645856bcc",
+      "bytes": 950206,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/SEEKING_SWORD.png",
+      "sourceId": "1f553e598ebc3acc101c95b6a05d3dc8fb0d267f3967c504ede828f8633c0a38",
+      "sha256": "61f0d57d4f494250e0b6faca3d764cf595d876b8958f4e6dc51f6cdf68f3e318",
+      "bytes": 1367524,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-0.png",
+      "sourceId": "15d6a14c0b19a7a03eb7522ef5f8956f00d7ba806feb8ffd9729c80f69cc680f",
+      "sha256": "c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713",
+      "bytes": 304240,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-1.png",
+      "sourceId": "ebd3d69492a3bd81dd85b97dc79b3260a1031c7afa32acf5d08eda77c85d76b8",
+      "sha256": "f5a1da7f83f9973cbd12691974d5ab26c5ccde778cc0df0c1bdbf273ba5b7b53",
+      "bytes": 325488,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-10.png",
+      "sourceId": "ab47506e283e3fd4d5fd6ff3d5bba68a2b17f4aab770d185926e83c1a723c3fc",
+      "sha256": "29352c11089f8f45e36f41948462f5862ee748b24dc3d5aae78dcb9745fcf433",
+      "bytes": 369486,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-11.png",
+      "sourceId": "f87699c2cca6ae7c0d644d19f264c45e0f818396ff1f8d4856a0c1bcaaa01302",
+      "sha256": "c1ac7905fab1464b91edccac28cd5bc7ec171ba5986fd7ea89e4c25e2f64d7d8",
+      "bytes": 393109,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-12.png",
+      "sourceId": "a41cc9e9e6d53d00864b2782bf9e399b1aba83ed69275b1f0bb9a973e4ebda44",
+      "sha256": "a7d93fa388ad32672f96dd876082948e140089164873eedd8c714a7c93e99e29",
+      "bytes": 402037,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-13.png",
+      "sourceId": "be0476833e7a864e5fad03f9a1c42478967f7fe6848ec2ea9ec040a9f8e624f4",
+      "sha256": "be57d4817faf8214bfe1b6986f32d75ebf4970410c497ed852dab60f46e3d10b",
+      "bytes": 427484,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-14.png",
+      "sourceId": "5c9c40b6db6a1193961fe36227a5432769e454d0489555f16784febfa2ef77e5",
+      "sha256": "8d7bb52a9eac1bb5b6f0ae276a6d9c94e8822d09c4270fcd357f24f78de8132d",
+      "bytes": 428928,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-15.png",
+      "sourceId": "317544957c768845e7974c446d942978e14a604a981f699b0385973a799549c9",
+      "sha256": "53bc9db9e18db75d4de69c7d1a6d16e72958b22204c6843a18e5ab819698e4c6",
+      "bytes": 391709,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-16.png",
+      "sourceId": "5cbb7d3218a554541f51a44ab521c437b1b839e35ae18dc446f0bbed8d7246ca",
+      "sha256": "367b66449147c39cb0e3d4d9902674c0ef0d917017a3d21c1300155bad98f2f8",
+      "bytes": 369707,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-17.png",
+      "sourceId": "dac9b2e8c65508dc1f8a4ae188bead036a8f5472c684c56f68a74fd8bbc410ba",
+      "sha256": "9dac3335c2a09c3228121d84f5721d2456c32a56e01c3f3a18dd6a3cfcfd909b",
+      "bytes": 368122,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-18.png",
+      "sourceId": "6b741002ebd039c735bc2b0546d5fe2d19deda6c12c850e8bd4d112542f5b0d1",
+      "sha256": "89e191d17d36d685999cb18ad20080ab7d4602775a68b86ad6d5f4b40e304690",
+      "bytes": 360196,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-19.png",
+      "sourceId": "f313ddfd4bc3352d20aeb7263a5f33806e2acb898a6a2cae19de590bedec59e2",
+      "sha256": "e9d8c17c7308c3eb637ed574dc14e8cf1f64fe4d46f89e04617b55d093b0b193",
+      "bytes": 361424,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-2.png",
+      "sourceId": "3488685b8da650d5bab8c2396e8c6893e9db35573185984522433b0bf24b312d",
+      "sha256": "9cad286fe4242906726ca1be6ade98084a9c6e38bf724967395417cb348c9c64",
+      "bytes": 332972,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-20.png",
+      "sourceId": "0f7e0a2af645b18bca9b58a2155dd41fac28530a0fb5cb52f417f393d38da2da",
+      "sha256": "04647e5b6b8384a1d3eb3e9d1d2def6dabe6e0166bd8f908c078f0f5ccebde8e",
+      "bytes": 363530,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-21.png",
+      "sourceId": "e99bb978dae9d81c125f7476a96c27b2788fe0ddb29b05d5ad5ab638c86259b5",
+      "sha256": "449d45147ffae9455008b49411b69c5d9d1b1925e7324f8dcaa4d732d66bd960",
+      "bytes": 392560,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-3.png",
+      "sourceId": "462c951bb501cd0f976433a134e9914881c1a4aeb488aebd0bedfe16d010313c",
+      "sha256": "e99cb249fc1b81be7b31735ddc3c6d172119c3f13b26f8d0f2ef14f3edbe468a",
+      "bytes": 323178,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-4.png",
+      "sourceId": "6c8aa545d27d9ed6df36376c20049ec4ccc6d4bb2995682a754d0fd6914ac2af",
+      "sha256": "0a6f50d2a5d47783293c30b97798a4769b25ea74ec8e769fac68cc2f4f1a26af",
+      "bytes": 305384,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-5.png",
+      "sourceId": "b77b2ef25e2214d3a78d94da1fd662d148c46c4ea824e94be0bce80920a07310",
+      "sha256": "fb14e87a1be7c2d7a8f03d7bb2db7dacf93494e6240d47f7e8a5ab3e7c1ec9d3",
+      "bytes": 297647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-6.png",
+      "sourceId": "69d0ff8f2b4500fc83d1886f2f89ea53c764c499aab01902e73518d418ba0252",
+      "sha256": "5a838e3152a60f9f4733c2bcb057b3954a0d197e9e458f7d1feb1ec83b05e72a",
+      "bytes": 324755,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-7.png",
+      "sourceId": "1fc82bd6d1084f188731ff2d7572be8523f0b3348b6c4d01b743b53b71ea75a6",
+      "sha256": "1c59d583d7f2c1ae938576207847e54ffda6c622559f633ad1769e199af1db2c",
+      "bytes": 357244,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-8.png",
+      "sourceId": "d3b964d359f7cf1796a4643528be45a5988882688730c512023f1fb1362fb6ab",
+      "sha256": "3cd62b1a9a75fd26bb4f11faec5708b011fc0e3c166e2490d2adededff6a1683",
+      "bytes": 370607,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-ida-9.png",
+      "sourceId": "ca47d8b662acedc657e1527a4ca7364c992d1936a051469286160bfc003008c8",
+      "sha256": "1b49a77109e343574d88a3d4e70d2a23186b6b3955fbc45862af96240102ea20",
+      "bytes": 303870,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-0.png",
+      "sourceId": "da5c4b3146ce53dfedcccc7441d51907499e166a4f335d3e3b438b065e0bbaf5",
+      "sha256": "a29979df2cf0f26abe215f95c4184d3710efad0eb798be8b8d7d6126c809c6d8",
+      "bytes": 167907,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-1.png",
+      "sourceId": "50fcfd22e3e556932a438244de3ec2a3cf9b4a88dbd6efce433eb1447c8d804a",
+      "sha256": "602b48c684e1dad8d952254defce7386d4317a031ce30e4d519df6cea728e0ed",
+      "bytes": 272013,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-10.png",
+      "sourceId": "32c477b2a3ac355f0bca82a9fd88c5452135f796515b591d9ac7093e5d6039a4",
+      "sha256": "35e55f96523e2df5b1eb49335f68dc0f4032fb8e8b544a2fc712fb8872cc00b2",
+      "bytes": 167390,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-11.png",
+      "sourceId": "7e3e72dfad525ed1e721e0f1e8a2edb1c53f944c574e7256445eb7f15419a9dd",
+      "sha256": "aa5c1c7d39cc5b927ac72d62490de8f74ecd36768504b6c8a61776a047df2a00",
+      "bytes": 167492,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-12.png",
+      "sourceId": "6246ad64947d5c14ba6386734a8ba933588480415a8c25534f203ab98d11e4cb",
+      "sha256": "54c7e4fb87cbc25d9a25cba9b5208fc428a373a21274d227689df8ca7c6800d1",
+      "bytes": 177085,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-13.png",
+      "sourceId": "7d93d79bb5c52689fe9970fd334e114e92331b4361b1a3fe92de86ff3f9360bd",
+      "sha256": "c41b84cb0580e7831cebca57434271eadfabf2c70654cedb473b26692bfa4e22",
+      "bytes": 178511,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-14.png",
+      "sourceId": "35f02ba8bef0dbcff299b9417e6d328353128670733fd58c852f53d22382ebd6",
+      "sha256": "380ae5efb6683b1a63604eb7ca8d62a7069f84a9fe80dfeca210394d9ee7265c",
+      "bytes": 177947,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-15.png",
+      "sourceId": "efd10ec1744707fd9743fcbe11b9736aae741759c7e90d8482c9caf7d9b192e2",
+      "sha256": "8d93f67381bb7ca194ec7134a80a0c7f977322057e29b873f63ef5c44e15516e",
+      "bytes": 186274,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-2.png",
+      "sourceId": "b32c719fee3e3e777cb44de91df98e49e7219bdedbebb05b0f32a5fbb4828d1f",
+      "sha256": "8c01fb5df97033697d38930eac42d486e442843dc690f9adf6e7160c3fc765cb",
+      "bytes": 272725,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-3.png",
+      "sourceId": "a8f1646e5c4b7336f722e6bdc8f6afacae53dd77af5dc751236b3e272242f30a",
+      "sha256": "ad6cc1f1ebe3f5acf15303fb22a80012a41a2dc4bdcdc57377d64152521601b2",
+      "bytes": 266824,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-4.png",
+      "sourceId": "d7e02dcdb73cde0581b30550d74ede35a90ec5fcd0cc73ff22e64c7b9af50d48",
+      "sha256": "583326c1fe7dc35bef3672022d263811c911ef12d622c271d277085827d2fd05",
+      "bytes": 250341,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-5.png",
+      "sourceId": "15f8707b11935da0a716f33275260bee9fcc385fbecadbb9f1fd17bab30b84a7",
+      "sha256": "8e952b0967fc53fcadde98f1f5877278edfb3ffff63f0b494f1926561b5e2007",
+      "bytes": 226825,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-6.png",
+      "sourceId": "d6a273204ad5c7820dae338c5d97973d8e9da80c612dd9044568a9046f86cddb",
+      "sha256": "45cbfff1c79c2b635f093ff44ebc6e2dd0701df2ed0c574423105c399f908f2d",
+      "bytes": 170946,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-7.png",
+      "sourceId": "373e9ceedadaf978c172d762c1a19debf7acdc7852afe3e998bedcca81386bac",
+      "sha256": "9992967965b349d801303c58f37be11b23b5785eccc5c788f6c8b13a39ebfaff",
+      "bytes": 169480,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-8.png",
+      "sourceId": "a1e04db5b31d247d8a0ed8187666d68908b83eea13c9f1b65232d589c4bceeac",
+      "sha256": "5aa624056b695c8d0e760dbaa40bfe1c887d4ce92b8b5d30e673b471dbcf532e",
+      "bytes": 170975,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/apoio-retorno-9.png",
+      "sourceId": "c06a28d6d62c1e29357615319386926167edf240ac6f6378044545b46accfde2",
+      "sha256": "e2601ddbcf0aeb55d22ec74757e7a99daec832925328622219f5180b19bddf5c",
+      "bytes": 168672,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-ATTACK.png",
+      "sourceId": "bb03043f71c3ecff33bd0897e7d5c095500afd66d15b2382c97f015e0e61f5df",
+      "sha256": "198ce18b2a0291292214ddb777cb4380917549f73fbc0cd1944aa30b473132c1",
+      "bytes": 951368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-DEATH.png",
+      "sourceId": "06dbe2892a12f479baffdb7ca4ffdbd5771bb2415e4234f6a8913f685c705d63",
+      "sha256": "226a079814b336e31bdff70a1f42e75dd2b8bacbe2c960607808ed2fce9404e4",
+      "bytes": 889337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-HIT.png",
+      "sourceId": "9bddaaf855fdac7a4af914d36679a29ea84e519f529e7cda6cbfd57d3697e097",
+      "sha256": "f5a974b7ad9b334f71812e1bdfb3bbe60eca00325e46a613ae1ef76613910f4d",
+      "bytes": 940291,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-IDLE.png",
+      "sourceId": "efdaac59a87422fd7972e2960529b082785f404ff0d81b3194a8522797a20e0c",
+      "sha256": "9f211db1690b5dd53d23a40820c3c2fb13c3773941a8f54137bafcde917b0491",
+      "bytes": 945128,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-ataque.png",
+      "sourceId": "cb10b952da8adbef21712b2dc8a4474e5b2e6ec52115088cccb85dc7cffd34cb",
+      "sha256": "61e2580b5eec9a878d5dece65554735f714c3d78693d1a0476487f08ed17d0ca",
+      "bytes": 943705,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-entrada.png",
+      "sourceId": "e47f30458f8ba090a300eb7247873bad3602871fb48862d15eef2117a7781e2e",
+      "sha256": "732867c9857cf0c11c13b8bcb245fe4b26f897bfd52a84daed2de63907725311",
+      "bytes": 861217,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-APPROACH.png",
+      "sourceId": "462dc9c1b5dc8d8273a6bdbaa39ecf07ae8b49f755966c7cd4407b357304c8ed",
+      "sha256": "ddcee88d73a9296a44d0046010f4727b3a0d84082c962d7ac3aa565c50bec1e8",
+      "bytes": 721606,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-ATTACK.png",
+      "sourceId": "caa37fdcf05cdafd356118a66bc5081b4c14713e7163dfecfa55f953329e08e9",
+      "sha256": "e981fd7dba39d5f87fef347ef5f7569ba07921a79bd04678f5c576fba40a5385",
+      "bytes": 926934,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-DEATH.png",
+      "sourceId": "bf34096c616680b7d2913372d567b31108ff2f3d7fa7b541dcb8e1e5bbc9321c",
+      "sha256": "fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067",
+      "bytes": 868780,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-HIT.png",
+      "sourceId": "5de97cbf8f8a4b143a497d4c5a53adabfc18ef58de2101db7dbe05de33045980",
+      "sha256": "5d88268a4293ded62a6ed6e83e72db74aa2ea78d3e91d35456bfb7c8fdd5d884",
+      "bytes": 938003,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-IDLE.png",
+      "sourceId": "2cb6afd93528d32a5d026cb665c2179a6ea8a3693ec520091667d8e1fd4fcf72",
+      "sha256": "b498dfd449414a7e21dece76eed6c305eada0998dcb7288c7abfe268bc4cf047",
+      "bytes": 701579,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-ataque.png",
+      "sourceId": "ff18ce9c8d2dfd809208136d64d47a2cc2ba26e1f277fede20b51ccaa2d5e65a",
+      "sha256": "e5b8afb277720acea459fd72ec7722ddd25b4191ca7635435b86e653dce589e0",
+      "bytes": 903210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-dinosaur-entrada.png",
+      "sourceId": "285099928c5dbaa0b8a772f051298f7b2c1b9fffa8fea7e394f44d2d53d6ffbf",
+      "sha256": "e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3",
+      "bytes": 701551,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-ATTACK.png",
+      "sourceId": "219067f83fb5cb0c8b6b06a218593c5833d96dcd1974fc9a681bf51dd19426f9",
+      "sha256": "af14caa594a3eb37a581b25ef3a113f1dd777ccff09adb39e8e75aa82e855dcf",
+      "bytes": 952449,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-DEATH.png",
+      "sourceId": "a7caa03d93a1e198c6288fd4ef0cb862cbaeec6c51ee8a96e4015a32b49e7def",
+      "sha256": "6fb6670160ad7ae60ea128e0e9c1c7b493f379ebcda1d79293f2a98ce4e28166",
+      "bytes": 901039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-HIT.png",
+      "sourceId": "9a6aef59cc3443d05e5061940014901f1a2638ac445017eb22edc197b684970a",
+      "sha256": "faceff8920eec337de938bbbac2e98fec255e1f1e17b055063ecb77c66f9ddb4",
+      "bytes": 932941,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-IDLE.png",
+      "sourceId": "e01525d92df29dcd42a4042dd6e2bdb0868515fdc4169e93f2f802fc327002d2",
+      "sha256": "07989ab2e2453e26e19f5d2085683ff91f9dbecfcd868639e8e47e4688593356",
+      "bytes": 940522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-ataque.png",
+      "sourceId": "df92d3aa013a0a465f5841d7042a5c860b4e33ef9ad7405c44836219a7410da6",
+      "sha256": "d7aa51b7446979c2a05d109d57a4f188ce938978db39422a14e9d927befdec28",
+      "bytes": 941331,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-robot-entrada.png",
+      "sourceId": "2f2ea79e17e113955c01c9e2e9255825da363ff496ce1576a50c081943ae3e09",
+      "sha256": "5d7533a3aded80b5842e8d5dde13957816d66ac61096cd5afb6e34da48506bff",
+      "bytes": 875522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-ATTACK.png",
+      "sourceId": "486ec3a3a83640663bbf943fb43588a3f1090d03f16afb1b6f6e96d2cbae7943",
+      "sha256": "de4aaafce52b13018424918865752de40bcbf0de6a4ba28c10dafdd1d5096efc",
+      "bytes": 830199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-DEATH.png",
+      "sourceId": "d352efffb4354650e1c32599fe16360685b433d6f3f7a76c4e80dae2ece434e8",
+      "sha256": "9a70e6e22eab68aecb2d1be4afc4b6b2fc9109dc1dbbb2c13bfc9cb8bc43c7f0",
+      "bytes": 863317,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-HIT.png",
+      "sourceId": "16a2d6410e91f692444b54b35707070ac3c98735377a5c578ae1b49b0525ee6f",
+      "sha256": "2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d",
+      "bytes": 874731,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-IDLE.png",
+      "sourceId": "8e68634ee2bcf9a9a781b9213d5f2bf883c9aa3f37e74b9ff3e66fb9cf237ce8",
+      "sha256": "98cc62ae08cf3ad6a13957423d9358b4e369176ddaba20a085b744c5630d7f43",
+      "bytes": 701691,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-RETREAT.png",
+      "sourceId": "ac3ae6c965c872d49819d7218160562a44f025af0aef2e85c51dcda072610c59",
+      "sha256": "4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c",
+      "bytes": 889032,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-ataque.png",
+      "sourceId": "bca5511b55ebf5646247cf6fadc79820b0ef4ed8cf16a74604aa7bff36abdf32",
+      "sha256": "c660eaa68e87e6661e9a44feb5264bb5ae5f0638cb4b46b423a5b7220e7db0cc",
+      "bytes": 961000,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-train-entrada.png",
+      "sourceId": "12a0999465a2776a62a5d8ce8c5ad941bfc3410e8a676835c64d59ffc350a48e",
+      "sha256": "98ef570ae5b36d00aaca0249e1a08ddd6161c82394fe8d59e721644f45be7f72",
+      "bytes": 628720,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/realidade.png",
+      "sourceId": "52e1569e6adc01320673898a39fef8f2dce350949afc5047c712c61b97763865",
+      "sha256": "0adec22de9efd0d4ae19b652f4f56d1fb334a2bc3bda43c2dde3c9565db534c5",
+      "bytes": 417307,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/resultado.json",
+      "sourceId": "50d85d75ba6e7f4b2f62bc8f2e42a0d2526aeffc01a02a8ca10b97884d9dbac5",
+      "sha256": "f3d7bafa22e2e595e086917ac9238fea7a54684d0dba4fed604d57796330a039",
+      "bytes": 8746278,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/retorno.png",
+      "sourceId": "a8a9f8fa8a4d5b3a08dced167bbb7e181d59434553ee8e64863843d2d82a3793",
+      "sha256": "0d18bd5be2d3dfacaaa4d0db3957996069f30d033a044a64aace0a2e8795d03a",
+      "bytes": 826826,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/transformacao.png",
+      "sourceId": "a912ed5691302dd6986ad71160629529b998cbe532523db0006ba84a1edf44da",
+      "sha256": "f433f78b171504e0ccba57d80820be7bf07a0d8bfc40885b311cf3d97f330d06",
+      "bytes": 1297714,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/transporte.png",
+      "sourceId": "bb095caa4fd9242ae84a3f918634375d3826f52c354d330b72542b428ce09990",
+      "sha256": "03477b759d3ab6c0c0df5f0e01bdbc915fd2af28caf684ed853889e3fc8bebdb",
+      "bytes": 1376440,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/00-abertura.png",
+      "sourceId": "67782a6e0adb62de9d42906da53ca6cc7d226ead404b44008a1805c58e262326",
+      "sha256": "327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2",
+      "bytes": 17056,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/01-inicio.png",
+      "sourceId": "879ecce6e6b2854573fbd882991ccc8e9060f66ea6c69a0b046e996f08f8930d",
+      "sha256": "82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82",
+      "bytes": 300131,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/03-retorno.png",
+      "sourceId": "8c3e0b566998f8df88e174503c26fc13068e344b32736b03ac6c0634628e8645",
+      "sha256": "09e3423b0898768f2d7a2867b6333c30a344cabce3f4da8a01b82d327668ba53",
+      "bytes": 342114,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/04-sala-brinquedos.png",
+      "sourceId": "bb04d29b30ef09391520522054403d9ae40c60a5ebf771492667b9ac8dca9706",
+      "sha256": "fe8eacc46bd3b543e1db728fa03dce6524e14b7d79a1b66d45b6b972e1b6f835",
+      "bytes": 1292407,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/COLLECTING.png",
+      "sourceId": "7e03897d5df70d1654942b66efc90f97e23e61415eb0c1d53036fe35ca80acd6",
+      "sha256": "fe8eacc46bd3b543e1db728fa03dce6524e14b7d79a1b66d45b6b972e1b6f835",
+      "bytes": 1292407,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/EQUIPPED.png",
+      "sourceId": "dc961d256e54e84e2e0ffe9e8acabeb658c4c7f0624751f454a374dcc6fef040",
+      "sha256": "0601bf7f7075887bdf8ad5a9d5e5f210c46c71923eae630888a2191d2e7f894a",
+      "bytes": 1272352,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/INVESTIGATION.png",
+      "sourceId": "5d3c8859394fef8c5475fef43a166ca36cf0bdfcde6d3a63330752629edc0cad",
+      "sha256": "bf4b1de839875e129d5b2c43040a1fc5f8e49cbdbe0b9c107a18de9136a80f66",
+      "bytes": 1307014,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/PICKUP.png",
+      "sourceId": "0cf26409f1e7bfe5e753bacd22f7d6d84bb3af79e37da40494819dc12ec7db11",
+      "sha256": "40f9019cdf7b6801f235b0233cfcfaa63181f81bfe39cc085e98b5e40d4864b9",
+      "bytes": 949986,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/SEEKING_SWORD.png",
+      "sourceId": "ac3e1d4bec9100c00b97de24b9482ae33b7750d4e55a4160d214f4167a9cffb3",
+      "sha256": "ef1c315510d9a251038da13bfe8fd267a29c8e13032891826d8e07e435d3b080",
+      "bytes": 1366280,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-0.png",
+      "sourceId": "6b8f7cf387f75bb695308b3cfc8680ac7e9fe543661e5079d3cb41cf7e2417ba",
+      "sha256": "c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713",
+      "bytes": 304240,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-1.png",
+      "sourceId": "44bdf3512d1bbf5cb28eb9b74b27e3c8925da20186e104cdaca72ed58fe44382",
+      "sha256": "7cacdf4e7139888eb157a1fd28709a06ca0728776a2bb5c0cf704342810f7b31",
+      "bytes": 326897,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-10.png",
+      "sourceId": "feadd35091a9dbdb05bd62038e85233219a3cb7e4d159ecea932acfe48562a0e",
+      "sha256": "da791b872e4be2d7d1ae883efc477cbb1de84bbcb6bc92bc245f5b73f985be7a",
+      "bytes": 369772,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-11.png",
+      "sourceId": "f45e0944f1659c8a966ff915b516e00d6655fbdb9a28450a576246e4869368d4",
+      "sha256": "31bfa0ab81beddf55007b01adcb16965c1f75106253cdfa5d413493c8084da4f",
+      "bytes": 392599,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-12.png",
+      "sourceId": "eb01f543a20dc3ce59d69927a0a57858b8faaa62cd5b46ead27fb51d1aee7102",
+      "sha256": "e270c73a2875314dcdc24a7e41045ae5146161e7138bce867945abd81536188b",
+      "bytes": 403237,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-13.png",
+      "sourceId": "08f6157f31018baa4415cc404939c8defb693c8716b3fb0bd2f854e4621a4199",
+      "sha256": "41a20d25f36487c179ce3c100b6cb4d44a2e610c6896a634ecb35f6b6060cdc3",
+      "bytes": 428144,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-14.png",
+      "sourceId": "84014163cfb79bb2011efa02de0b1762fbeb21c35e3368c7c160fc96015ad9f3",
+      "sha256": "bf18d244bd4cf9f10b74bc1896e6ffa8248e079aee21f2f3bec1ac1565f07de9",
+      "bytes": 430041,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-15.png",
+      "sourceId": "94930c570bfd32f1196c423d5604a003c5ea72f42bcd39d9d8038f5322cc11cb",
+      "sha256": "f8e08e292fc8728f8a0d0bfb13d5417d8cb691b11478771d697544e273b41417",
+      "bytes": 391708,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-16.png",
+      "sourceId": "6ad5c9ac751fd7aa4dd3a247eab7d270e59c50987eed103d26c53b5332c50ec3",
+      "sha256": "f9b166b54228446eb92d6769f34feb2e807808e230cf2f93b217a2fc92530379",
+      "bytes": 370040,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-17.png",
+      "sourceId": "7d95a02ef60c91d443cd9eca4863d4828c12b50f917aad93035d5cac12d528dc",
+      "sha256": "bb2f4790cae1de946dc81249a8b244862f90eb8a38aeb27304d68145cd0124e8",
+      "bytes": 367258,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-18.png",
+      "sourceId": "ce30e0592db5f50d72e7067a6af7bbd0e41c7fb84cb65f814352d43a3afa1edd",
+      "sha256": "5b531d2523f10cb3c0ed78377c4bc65457cb0d0bcd367b5aa0279d301509ce2e",
+      "bytes": 359770,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-19.png",
+      "sourceId": "c7266c4706d72fb76b3c19d5992cba34e39a75e3dd85d82a157efca238e3bb97",
+      "sha256": "5dacccebadf75deeff8db8e0446fd8aaf58874fb409913626bbbb14beb3a0031",
+      "bytes": 361452,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-2.png",
+      "sourceId": "f9ea43c5642e6009caaf3e4f785969f9b4b1eee5be6d2c8d142bf88490e350eb",
+      "sha256": "56f10f5f6f5b21bbfd9cb6a1939197bde62d8a8e84cde03d13a5a01832c937bb",
+      "bytes": 336952,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-20.png",
+      "sourceId": "f4b3bc71b0cf7c0999c3cc63b9a3c7098d20431874a776479f485e3f237317a5",
+      "sha256": "8de7fbbacafa73255a8574baaef729756f3fd1c448583d014a1dd72173ae7221",
+      "bytes": 364205,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-21.png",
+      "sourceId": "aed74ae996e9d0c964b44a926a6a340a29f9328de164e8cea0e9e76609a25f0f",
+      "sha256": "0ff463493d6bacda989c26dc562d43d7d4ed56a9ba32418b72baf666dfd74dc5",
+      "bytes": 392650,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-3.png",
+      "sourceId": "50b5ae643974e9f99fedc0fb13a66cf86a5218aa133742b0e80ae840ce1a084e",
+      "sha256": "b3788c375e0ae354dce2a0f149bd24e978bd85841b63e16075ae51861a857abc",
+      "bytes": 320397,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-4.png",
+      "sourceId": "24c3fe325092a5b46be7fd14be12345cf3145c0fc3039f2a96ed0a4a74b0e8c8",
+      "sha256": "01f20df94b6ed338814d53d943a98e251cb0a4fccec4c7eeabf5d5d5c7162946",
+      "bytes": 302724,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-5.png",
+      "sourceId": "57aecb2c35aa201b18fc5c6e6ce1c48d897cdb1a90ce2670fe75a97deada3cb2",
+      "sha256": "60f2f3612efb3792f42850b7ce74b09e6299ace3935b90c3fa538acf3151950a",
+      "bytes": 297434,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-6.png",
+      "sourceId": "6587005629fdb0b328b43941f906df9cb51c58a4c45aa03f6306bb24ee05542d",
+      "sha256": "c4455de346c5a5e1f7691fec2c65ab57ed63bf7f6ad2bf89ca1516054d552b58",
+      "bytes": 325017,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-7.png",
+      "sourceId": "3efe14ffc7a9fea4c37562312f93c067066b4fa3af2f9b0413f7f1016e68269c",
+      "sha256": "e6d5c43ad731621397105815c39c804d7f7d71c7da53f2068219bfb0dac14270",
+      "bytes": 357298,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-8.png",
+      "sourceId": "ebbc0eea0ce8400f55a527c6b32a9c9b71b43050d67a90167691694535a108d9",
+      "sha256": "67856d10cb12575da10ed8facb3cbe722b24bcb49b9d1c66f5c6b9edf59417cc",
+      "bytes": 368927,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-9.png",
+      "sourceId": "cba405d775354313fb3206b8cdf340dd4b255377291b7763d84a50d8833ce912",
+      "sha256": "15f4d157dda472e549e7defd5aef8e839487b2b54b8cd43b08a89b188b38dea6",
+      "bytes": 303002,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-0.png",
+      "sourceId": "15c74fbda676e6c9678321ad506e727a7946d0633908ffd90e757f57a8254a6e",
+      "sha256": "2dab640750140043ed9f4d40838234f1c5ffe9b261ec0623000781185d59f928",
+      "bytes": 169091,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-1.png",
+      "sourceId": "103416438a78e4d266a0aad2103882eec1096cd3aaf321ca18af32d88aae0230",
+      "sha256": "ea26fa64e586b5e903531e078848d588a03cb3bc5cd7c8694c08ae770e3df107",
+      "bytes": 273271,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-10.png",
+      "sourceId": "a1b840279cd7940777485e7d74921fd9b140e50afef8dc45ddcbaca28da4e82a",
+      "sha256": "b059272ea14ca80e8fa00ed90de54cedcbdd6440b596c293e6e53ec6e702ddd1",
+      "bytes": 166853,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-11.png",
+      "sourceId": "08204836011d4e12b2aa7a10962ffee817f037e6c1418d2629e60a06998cb3c8",
+      "sha256": "12ae7f853f1954a4e163ca2d2d98ef1eaefb42cfadd13938e95bf600e674f5e1",
+      "bytes": 169357,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-12.png",
+      "sourceId": "f0d0d4cd30eb27cf9d5817a9e36a279f4a0c54adef194e3c5cf13c8a79299495",
+      "sha256": "7083ba000ff7b4bfc983fcc6e04c9374e51ac3ff0d4822e1fd36825607d9b065",
+      "bytes": 176521,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-13.png",
+      "sourceId": "209cf9c44a8f90f3cb8af6ad282756675b6929f2f3bb63e8116e9fdab832a8a7",
+      "sha256": "81ffc57bebf4d19b5b3820157d7a98a6648e20f53c275c1cfe1b4325755a8196",
+      "bytes": 176866,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-14.png",
+      "sourceId": "45856f05c04ce473ceb1c57eb3b8adb3fb367a2ebd133a05ea236c2598a96e41",
+      "sha256": "235fec9c445be0ef926e25c750c6974d24cde71e8a25792e7f99ca4f41065c85",
+      "bytes": 176194,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-15.png",
+      "sourceId": "23d5a8c4a6e1222306a4769e27bd35b17bd160109d4f57adae866f8a482542a6",
+      "sha256": "8851b22ae467386ae3152488ccb585172210ac77278641ad2b3a1afe78c51046",
+      "bytes": 185255,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-2.png",
+      "sourceId": "46ccf3549e3a60ac611ac579720e38c041c0f02de701d730b2ab1eb14c3cbfb2",
+      "sha256": "51ba636e347a2f75d12c4cdb51afa66f5f86b3886621e9e25a6739ddfeca2a70",
+      "bytes": 272368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-3.png",
+      "sourceId": "e8a226c88ff6d8c0a4c018f8381432df6b6faa02feb75d322791d16714120f52",
+      "sha256": "e5dd4dcf89847ec80e24c0a1475b78f19e8a819e168ab0c747a0f88e057003cd",
+      "bytes": 266345,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-4.png",
+      "sourceId": "aceb931838900e08bcac7c07d8e3347ffb2b6b0baf8181d1f53c4c1682323e75",
+      "sha256": "442f34dcc8499a3939c08eb84924028530161031b20a91f9265345e0a10cd80c",
+      "bytes": 252102,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-5.png",
+      "sourceId": "5535f6c99db2041102929f51a239ce1191809e5d4b673101c9680a78021b1878",
+      "sha256": "d8e05eabfb8b3a51a07fbfa901e3d53627603d91e607fd813486aa6831ec1fed",
+      "bytes": 224602,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-6.png",
+      "sourceId": "0dd57a1b51c32a711834476662105fdd8f2cecf555abde431829bada9cab5173",
+      "sha256": "02237865c59f35f8c912a0f4b09cd75adb1e826d205ce2efcd7c7ff5f4103053",
+      "bytes": 173085,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-7.png",
+      "sourceId": "1148c5fc2ffcd6a413cbead71cacbf87be30cf2dd90f58b0ddd243a056c1b68a",
+      "sha256": "54bd9be803c0c1c33226e0910676b9133c60ee25b6422dec438addadcc93d2cb",
+      "bytes": 168297,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-8.png",
+      "sourceId": "29bf78ec43eff473164db5a97509df6a5ec34d83b793005e36145ee5f292043f",
+      "sha256": "b1837804b471b9dff7ee2e1bf11a366f5a4dfba40526fa751a24cda06b79f28c",
+      "bytes": 170621,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-9.png",
+      "sourceId": "7a97ba68a4f2b737aa6673888892da467315988592afdb32e4b9df25841d556d",
+      "sha256": "d53eb9af8b93434d5900315e14e05bce884611df88699af902665d7bae2bf14f",
+      "bytes": 168770,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-ATTACK.png",
+      "sourceId": "8392e72f19a0fbf0587bdf03911ba0b67b841ea7c86c2c0deb165b1acbfa2e25",
+      "sha256": "198ce18b2a0291292214ddb777cb4380917549f73fbc0cd1944aa30b473132c1",
+      "bytes": 951368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-DEATH.png",
+      "sourceId": "c4894be431c7e83c771fd4331ce48256368c60dd1d9d5f30116d5ec6d878f4e8",
+      "sha256": "226a079814b336e31bdff70a1f42e75dd2b8bacbe2c960607808ed2fce9404e4",
+      "bytes": 889337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-HIT.png",
+      "sourceId": "0904a6dfd3c050619f8e2b2e001c28014079ceb8b23954a76a6bf6340cacdba3",
+      "sha256": "f5a974b7ad9b334f71812e1bdfb3bbe60eca00325e46a613ae1ef76613910f4d",
+      "bytes": 940291,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-IDLE.png",
+      "sourceId": "a865435533ad17ee13cc086d904f341a788b89571a135f765c32be4dbc4566f4",
+      "sha256": "9f211db1690b5dd53d23a40820c3c2fb13c3773941a8f54137bafcde917b0491",
+      "bytes": 945128,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-ataque.png",
+      "sourceId": "089df12525d0562c82e9c9e7e45904ef0997e180fc1568748a7be74e40761e9b",
+      "sha256": "61e2580b5eec9a878d5dece65554735f714c3d78693d1a0476487f08ed17d0ca",
+      "bytes": 943705,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-bear-entrada.png",
+      "sourceId": "24e9896c68a9515b2d7a7e0a1b1b8effd5c55a2ef1ca2065f58a6beaf8726cee",
+      "sha256": "732867c9857cf0c11c13b8bcb245fe4b26f897bfd52a84daed2de63907725311",
+      "bytes": 861217,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-APPROACH.png",
+      "sourceId": "3a1d60518ecbc373354ff252fff9958e611cf92495f831ba243634c1962ba600",
+      "sha256": "ddcee88d73a9296a44d0046010f4727b3a0d84082c962d7ac3aa565c50bec1e8",
+      "bytes": 721606,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-ATTACK.png",
+      "sourceId": "74a3fbe76fe5a2be0320836953bdb37bb113de096e9d4824465dc8a89c28b891",
+      "sha256": "e981fd7dba39d5f87fef347ef5f7569ba07921a79bd04678f5c576fba40a5385",
+      "bytes": 926934,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-DEATH.png",
+      "sourceId": "fd4f9cb49b43e23503140d0b59a7a4350b26db3c9ff1766673a4f9f6ed1dcd52",
+      "sha256": "fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067",
+      "bytes": 868780,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-HIT.png",
+      "sourceId": "59dd2901d6c306ed508bba68aad75caa345bb24a331b10bfd456a5364d1d1fe3",
+      "sha256": "5d88268a4293ded62a6ed6e83e72db74aa2ea78d3e91d35456bfb7c8fdd5d884",
+      "bytes": 938003,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-IDLE.png",
+      "sourceId": "f59781ef5697846c1933d8153b4b2849a283a6cca8a7e932cb6f85852bd24c32",
+      "sha256": "b498dfd449414a7e21dece76eed6c305eada0998dcb7288c7abfe268bc4cf047",
+      "bytes": 701579,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-ataque.png",
+      "sourceId": "f04b8e33becbf8bee05412b4f0b5c3694ab361344cd05c546088a1586c7fe35d",
+      "sha256": "e5b8afb277720acea459fd72ec7722ddd25b4191ca7635435b86e653dce589e0",
+      "bytes": 903210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-dinosaur-entrada.png",
+      "sourceId": "65fa17959b1686223c8a2173f6d75072a6a4acd478e82005a1ad20635670b9ad",
+      "sha256": "e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3",
+      "bytes": 701551,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-ATTACK.png",
+      "sourceId": "68a5e750a9d1f1085c8ed2dcd0ace929ab14af5d44cd582fa59c8c8df21f37a3",
+      "sha256": "af14caa594a3eb37a581b25ef3a113f1dd777ccff09adb39e8e75aa82e855dcf",
+      "bytes": 952449,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-DEATH.png",
+      "sourceId": "09343fdfec971ae9d52cd87f52f51d21c1fa5a78c471149b0eeccbd419d1eb22",
+      "sha256": "6fb6670160ad7ae60ea128e0e9c1c7b493f379ebcda1d79293f2a98ce4e28166",
+      "bytes": 901039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-HIT.png",
+      "sourceId": "80c88efb094b7557a7394e8140b7c09c84bec8a9f54e8a47ad0e1a76a5410de5",
+      "sha256": "faceff8920eec337de938bbbac2e98fec255e1f1e17b055063ecb77c66f9ddb4",
+      "bytes": 932941,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-IDLE.png",
+      "sourceId": "9e703846a0dd37818ce38d407949bd3ce9c0acfd2b8014ebfdd7a1ec71807a1f",
+      "sha256": "07989ab2e2453e26e19f5d2085683ff91f9dbecfcd868639e8e47e4688593356",
+      "bytes": 940522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-ataque.png",
+      "sourceId": "195df258094b9f904bfbaf1b7a4e62e92100c33d6bf267c61d854ec5d103b356",
+      "sha256": "d7aa51b7446979c2a05d109d57a4f188ce938978db39422a14e9d927befdec28",
+      "bytes": 941331,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-robot-entrada.png",
+      "sourceId": "b216a177df64e8d2eef5ce7f7086527398a217c216667893af335870969bd437",
+      "sha256": "5d7533a3aded80b5842e8d5dde13957816d66ac61096cd5afb6e34da48506bff",
+      "bytes": 875522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-ATTACK.png",
+      "sourceId": "b9ef3a161b597bde771d2c94a7f4e3e022430432fdd4ff16d2a73238df86ea47",
+      "sha256": "de4aaafce52b13018424918865752de40bcbf0de6a4ba28c10dafdd1d5096efc",
+      "bytes": 830199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-DEATH.png",
+      "sourceId": "28ddd9530bf7e7b899f815a78540497e686ef86c4ecf7a96b236a3a7d68c6808",
+      "sha256": "9a70e6e22eab68aecb2d1be4afc4b6b2fc9109dc1dbbb2c13bfc9cb8bc43c7f0",
+      "bytes": 863317,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-HIT.png",
+      "sourceId": "598096d225f6845a270f2c3936a023e3694d400f6b06c3b62488f070f699e3aa",
+      "sha256": "2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d",
+      "bytes": 874731,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-IDLE.png",
+      "sourceId": "d378da9a3208464da8697824906fb291af8beab5e89e4b8075f22fdb4fb27335",
+      "sha256": "98cc62ae08cf3ad6a13957423d9358b4e369176ddaba20a085b744c5630d7f43",
+      "bytes": 701691,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-RETREAT.png",
+      "sourceId": "a8181fcd419e98d76ed185fc39edbf0e420629d6342ae5ea96182bba61994f82",
+      "sha256": "4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c",
+      "bytes": 889032,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-ataque.png",
+      "sourceId": "0cee95945a545daa4bb9437f7298057feaf2eaa4f629fa58d1e40ecce82d6e72",
+      "sha256": "c660eaa68e87e6661e9a44feb5264bb5ae5f0638cb4b46b423a5b7220e7db0cc",
+      "bytes": 961000,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-entrada.png",
+      "sourceId": "cb1f27b8b3971d31e44a0e28680789a278c4f5919a53da00431168caac7f4a68",
+      "sha256": "98ef570ae5b36d00aaca0249e1a08ddd6161c82394fe8d59e721644f45be7f72",
+      "bytes": 628720,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/realidade.png",
+      "sourceId": "3590a39eace827f53d61b82eb0dbe623ffdfc26dce6bb8279b3f4910cb417072",
+      "sha256": "ae14a60c9cf109376adf1f5b23b1f44feba2cf33ede46deacfefbac57b2f1a83",
+      "bytes": 417219,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/resultado.json",
+      "sourceId": "af42e2f54d022ff1ee4824b8ecb6cf608a8032cb616e4771fe003b6c1cbbe654",
+      "sha256": "a292ab5f50a726351f9f907590e63176efdce990b216fe6e3cdf3eaf53bb0204",
+      "bytes": 8913730,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/retorno.png",
+      "sourceId": "544c24875783392beb8d85e2a86ec3618370bbf69659b8a9ef43e050daaffdde",
+      "sha256": "0d18bd5be2d3dfacaaa4d0db3957996069f30d033a044a64aace0a2e8795d03a",
+      "bytes": 826826,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/transformacao.png",
+      "sourceId": "73f90455a11df24bfef12604ea08becf781a598dc262e5b5cbd0655939d1d4fa",
+      "sha256": "0745113abe4a05cd3d50b4f7a268e2b02e35f55c485ef563d94882ab0ce53a2f",
+      "bytes": 1318340,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/transporte.png",
+      "sourceId": "d1355daae35130f632d1d7c6cd9017071f1643d7e0c20531ff72b882375f53c2",
+      "sha256": "d7c76fb32008577376e162ac74ef9187d897d893653f9239d9769350574a0da1",
+      "bytes": 1376274,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/00-abertura.png",
+      "sourceId": "e7ffc37bebcc11a18f4708310ddefd636e929b6e4fdde1c41a67eb685ba5e747",
+      "sha256": "d1a8fb8f123765887216f4ffa1dca37b95aca9899d2d20c69504275aab9bc4f0",
+      "bytes": 12286,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/01-inicio.png",
+      "sourceId": "09f8d47199d18ad2478c96eed57dd7b712e38d08a4508e3bbae8bd5874261d3f",
+      "sha256": "d98eb8122273508cbe9dfce9de8c3c18b917f284aeebdee6a9eee4856b165899",
+      "bytes": 391824,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/03-retorno.png",
+      "sourceId": "f92bfce6abf35b74fbaf887d56ccb730fdffa4191318355156897ab966c63c14",
+      "sha256": "26d572fc6048417cacc3adbb56e2785b70224ff3a4f87f78cf71b2b50e756a44",
+      "bytes": 291802,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/04-sala-brinquedos.png",
+      "sourceId": "860fb9d70a7184084f4447e0fbc953e67644bb91a8375532c7d1a93b852e5bd6",
+      "sha256": "1e2f7fda6600f13d41e100ac36330913313e2e8764da905be365b79d6903fb20",
+      "bytes": 1125947,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/COLLECTING.png",
+      "sourceId": "aac1a574ea94ef95136669b4391b3c2c926a0538e9ecf7a6540ee03db14f95ff",
+      "sha256": "1e2f7fda6600f13d41e100ac36330913313e2e8764da905be365b79d6903fb20",
+      "bytes": 1125947,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/EQUIPPED.png",
+      "sourceId": "b858413f7e110105822606c8c94e8abcbb74bddc0f75462eb24075be98e08797",
+      "sha256": "c710dee1019e42cc7a1bbf66b3163eab088f075e827ddd0416ac62f47f8df270",
+      "bytes": 1005199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/INVESTIGATION.png",
+      "sourceId": "ce9c740cf86b88271030cf9ddd84b24295662bfcea470693aeb5eef676820f12",
+      "sha256": "c36ad787365f52361b5ca02c94f2adddf1b9aefa39a2abd704c87dc52ef60a5f",
+      "bytes": 988905,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/PICKUP.png",
+      "sourceId": "03175475ca59a61e10fc985f77546866cd276f9d2d8251aac06f53ce4507755a",
+      "sha256": "ec9f9a24435e2068b6c827ab633c63027962728f60061532ed2212d50f68645c",
+      "bytes": 1074327,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/SEEKING_SWORD.png",
+      "sourceId": "b53071f4b65b7a66e841786f1d95d25384dc84beffc94d5d1f679646e6b2c17c",
+      "sha256": "476c2846fa19f02b050e2cec0fc74e04be109927ed1833c68c32e77eca63e425",
+      "bytes": 1102285,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-0.png",
+      "sourceId": "9bcf81c8af592f83a418e63b7dc61292ee95da28e90a16b383d648523f828f12",
+      "sha256": "46e8d9a78284169a77890bb0aa6baa87d4b05f4b44d781ed3f33361d54b1680e",
+      "bytes": 392491,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-1.png",
+      "sourceId": "976abdab46a48e2f3f78dc4d0e61a527136d9a12b8403ee239d76cc635dad3e7",
+      "sha256": "0b66eff7bddac389ea2b5f744615e52304e65fc0a71ddaebf6afabb58741067d",
+      "bytes": 399039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-10.png",
+      "sourceId": "5b0307bc49121d88af523170faf850d4ea91b05b1c05bd475544a55f1a6ec990",
+      "sha256": "ab76129d2947f6ecd866df4c22b100f20edd7b8579606ac1b39920da7c92b9ca",
+      "bytes": 351068,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-11.png",
+      "sourceId": "196b6387ff37670ed3da506b002cf58bed17ad0c270013e3376a4d1a096a2a3d",
+      "sha256": "a2abb37e7e73eb468ab23d457f4308b3ce58c9cf8780bed3feb546fd49e37750",
+      "bytes": 356202,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-12.png",
+      "sourceId": "2884d241de9d5d1ba0b5f2eb6dba235e400ba561ab212a145fa14ee88e5fbc0d",
+      "sha256": "d65d7b32fa664bcc1d788a89ab9a61698a34fe2708697838cf022f44b5ae4de8",
+      "bytes": 352288,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-13.png",
+      "sourceId": "13d1ae47b7c05e8520e539c5504445370fba6779d0320a0ee6e41829df0435bd",
+      "sha256": "21e1656bad6e6e6d1cbc252da9283cf8abf9e64cd17e0a9db190f18e05b78e42",
+      "bytes": 363813,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-14.png",
+      "sourceId": "edd06e44dabe36f9e951643e79d3261466d77f664492703f1d37ca10d617a7a7",
+      "sha256": "d360d3cc0d8e11f73e20a73c9749213cc9e99c244391b9d1ac93958c4bc7cfa1",
+      "bytes": 367203,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-15.png",
+      "sourceId": "abf3c6db7bd1a203b1601c52fe1010119faf42025fef8176507a078ac132d407",
+      "sha256": "fd0769a81e48fcb4d21d3f4738da1bdc059c53dafaff408c93048da275f8d1c8",
+      "bytes": 343211,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-16.png",
+      "sourceId": "d2892ee7fbb6aaa6e98544a4f8df7810f5286f416d46c5d29b6631f676884766",
+      "sha256": "eb05b9ac8ce00ffe5fc6223cf15f276f17c71692ba7452608c07756755638b37",
+      "bytes": 326123,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-17.png",
+      "sourceId": "b75761affaa563930dfdbf70bb3dbf83dd2dd5c60e692b8c804275d8c69e2ccf",
+      "sha256": "c4c72fa869507324361dda00144a899bfbfa2cc687abf48c4b5ded60ad01644e",
+      "bytes": 331494,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-18.png",
+      "sourceId": "c84b17d259c4c219dbb4670bd1df27806fd5f9aab13d41e3ac46cab867a8c18c",
+      "sha256": "6b9aa90f826475ed61ec4bec664d4919036fe6bebf65d1c97676d9512f317df8",
+      "bytes": 333920,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-19.png",
+      "sourceId": "0365f6eb6e0b248a8ca9ecb1ed6cf28f542e53f130cf08aebbf072c8520322d2",
+      "sha256": "79074f6479bb8244f2617639525c6530352e1a2375fa7faec1b5d51fce8a46e1",
+      "bytes": 357533,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-2.png",
+      "sourceId": "a59b79266f54313bd47421033e573482b6a69b4e3b97320760103c52f22398b6",
+      "sha256": "36dd7d3ed06f6a9af1c54bd381f3bbafe0e49af017813c18355cea8abe33be25",
+      "bytes": 411626,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-20.png",
+      "sourceId": "3eea2cb4f5410ca936267db906ee054a5325c9d9f6fe3de0b5d0982ae403ff8a",
+      "sha256": "e37b40183d015d3a20a7338921c8bdc20ab805bff7d88b156fce715a42be1d1a",
+      "bytes": 390594,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-21.png",
+      "sourceId": "3c0d0fa21b73cf6e1b3d82b61c1fce421683361df361d69107cbc7fffd2938da",
+      "sha256": "d24b5767566edb0c6b7f3ea74894c7052cd8df4478a2935fa9a736bc29cf20d7",
+      "bytes": 372455,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-3.png",
+      "sourceId": "ecb49ed602dfea426a3f5425498dc7aa178dc31280ca6860d1dc2f05ce99f988",
+      "sha256": "c36d62d1256641c9dfb6866b199dd6360350dad251b2350b5a833a87db2e82e6",
+      "bytes": 412385,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-4.png",
+      "sourceId": "6ee21f122e60b965994709ad8d80708dbc01e62420043e0ba05f4ca505923880",
+      "sha256": "34681507d6296f344d4721a75e2e4f06c58d279f4f63bb10b1ced864200faf58",
+      "bytes": 410815,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-5.png",
+      "sourceId": "282d9f4ff03330ef3475f6019717de7c9d17421cf6adf37d141272a0a84651b2",
+      "sha256": "59b2754b02e4ec7bed9a808c4128a20829ba86cc568d104e3d4feb29541b6f95",
+      "bytes": 425274,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-6.png",
+      "sourceId": "064715c4d5e5502e4bfa1ae6b4d6c90bd5b8df8cf3f924a908e5fc89b28f8f77",
+      "sha256": "4620c6113e198ee3ff50aeda05816703ee4e4e706fd5f4186c9a02332e3df544",
+      "bytes": 404940,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-7.png",
+      "sourceId": "20e07a768cdb598655edc0466ee12dac9ed3f24ae3ceadc997ff6261ac8645f8",
+      "sha256": "480a2875b27c6f2069d1da6e61fcdc76bf99adf7338c077f31c5912aed24d02a",
+      "bytes": 408536,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-8.png",
+      "sourceId": "fc5a14e23b86876d4fc867f9304ec46e1e25026ad08ce6edef2596338b8f1a16",
+      "sha256": "446c01d4d2cc87442ca3055ab19e1851096fa36117643706c582aaac73a8fe52",
+      "bytes": 400130,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-ida-9.png",
+      "sourceId": "c45c89ce76105c594a3707d07487ec998799f6aba1ead4f87f2484e6c94a81e4",
+      "sha256": "e1e32e680db9c20a09084bbd71eba8b1116a9051c1474bc4e216ea9c3e4b2849",
+      "bytes": 358076,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-0.png",
+      "sourceId": "45353bf026f5a7ac146541fe5d05c72adb2f61a2442becb2b7b43e5d1ae1244a",
+      "sha256": "4c01f53791a643de6ef57478bd38c2d70348881938c6a9195e41787bd12fa40c",
+      "bytes": 230522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-1.png",
+      "sourceId": "23cd2d9aae515d60641659b7bd5a880392ee53c7b9571bcff220bc25f8f1c799",
+      "sha256": "58ddb914ec21163e9b949e27d9f47cf2a4cf6e6c87a4c5ab8cdf2cf185730bf6",
+      "bytes": 230733,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-10.png",
+      "sourceId": "9f19ab6e2eb4f56c2b348b67828cc04235c3bfd1fabfc00af5040f21c696ca88",
+      "sha256": "9884e1e54b6a2f23a2f63921716a25ba02b0dfc9b24a074fed4d457c6776bedd",
+      "bytes": 214988,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-11.png",
+      "sourceId": "7dfe37a086400b94ddf1f435428a5d33749ab460e7077b2a2aa676e02976de9b",
+      "sha256": "903e57e87d78bb40d5f0acc791d6171c1827ce6b16ae8bf71b17c96fb9462724",
+      "bytes": 211365,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-12.png",
+      "sourceId": "72529003566c5bbc3ac7c8934858231299190c67c13ec9303f1e6d4b1e937ff1",
+      "sha256": "3e38f17c5c1a40386feaf25ba045aa79e91bce3c638d60f21a98a65d93fcf1bf",
+      "bytes": 202998,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-13.png",
+      "sourceId": "5e917ab30cfce1cae93a3ce7335d514eef4e5633ff5862047026207ea7bd8a08",
+      "sha256": "11a985d0e187dee50c39a84c3227ba4afd5750b2f48d4505a8a284072983b12e",
+      "bytes": 204774,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-14.png",
+      "sourceId": "e1f07a4123e2875ec90d00154fdfda94d91ee01ae38f22da72500aaeed5a02d5",
+      "sha256": "055af0a21c57d0e0f938d244fd00226b8414e28aed74b8f55680fa8b88631afc",
+      "bytes": 199186,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-15.png",
+      "sourceId": "6e93e99f4303208b6cdb30c35f5595dd2b23e800746444070d0bbd4c712be075",
+      "sha256": "d86dcb4106878fb9ba757798a763870fed5b491fd1c3052516a018818d384444",
+      "bytes": 209005,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-2.png",
+      "sourceId": "5bf2425be5daf6478cabd990bc51c67fbfbd5c1ea30a75e96c5c1498323f6669",
+      "sha256": "2d082c3daa376d7481afe414628c73da5dbe429442f068a0f9ca2d03ec5ad7ba",
+      "bytes": 239796,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-3.png",
+      "sourceId": "aed194b979bbce116396d9891fe260779af4a2a489913fb0aef77a819db876fe",
+      "sha256": "3261b2f6c2f74d75bb4527f205cf766b5f20b404f65eab38e189337ed7928e42",
+      "bytes": 244979,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-4.png",
+      "sourceId": "465d4e637d657815b378b3866cdecbb852906f8e8a45784e949f5343aced0f87",
+      "sha256": "4c01c574a2ab70749e341cbc5ce5dc751741f9c47a17bdf513c55dadfa01d1e1",
+      "bytes": 213916,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-5.png",
+      "sourceId": "1f857a6d5dc7bdebd9f4929b6bc0ba7e042ce30d25af927d45fc91943ae434b7",
+      "sha256": "b5b876dbde5f98f70a1f019e6ffe69281192fef93d7bb9753fda84041a150426",
+      "bytes": 213368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-6.png",
+      "sourceId": "777f2dbdd81f2da1120b4df1d0c714979564523fc850767feb767bec8f37e430",
+      "sha256": "a16583d5bc4505fddec41d0376f76364da3d5f2803ac01e0520264dc09df053e",
+      "bytes": 212880,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-7.png",
+      "sourceId": "0278488f1dccdf64b20455eabe20c075534ee422cdc5080b319b0f606e457dbc",
+      "sha256": "b9744a16f7d2ecddff0e9a44daacbb6e122a7db6af03926e1c19f491438bd830",
+      "bytes": 208298,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-8.png",
+      "sourceId": "2877fff6e2e8b66f0182c5f762020158a60bd518a5267590ead10bb001549c10",
+      "sha256": "731213acf970a48a20d2aaa87d785fed921e7dbffe991b26cee55a44b0f0990f",
+      "bytes": 210715,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/apoio-retorno-9.png",
+      "sourceId": "9e30be72d6560bd1e33ee749b632939bb9da0be24f78fda9f068edc7400e1dd1",
+      "sha256": "ae68a007b60ad9d981f3d801f8ec5c34a73bef552f264809ca0c05cf322f2301",
+      "bytes": 217279,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-ATTACK.png",
+      "sourceId": "8f792ee2339db1dd47161580d15b8b575eb50db5d4d6f0a3aca05532148d807c",
+      "sha256": "f43cdc60d722a402e5181fb9443fb5e5b5da6b4beabda2b0f0e7a5bf906359b0",
+      "bytes": 1070888,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-DEATH.png",
+      "sourceId": "4ef03edddc4393b86b6271c98514d95b0901edecf62199f86e899f07c3ec1ccb",
+      "sha256": "e92348cef5c918c32003e880dcc8c8223c32c420f44c66d117c59924d284cf96",
+      "bytes": 1054025,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-HIT.png",
+      "sourceId": "224added95771e00507f6c683663db2726f72882f12abc5bca1ff9ea3e2d91fe",
+      "sha256": "dac59ae53ddf364b9accd2c5e312d4577a32687ae48917b82efe8930fa2eb3fa",
+      "bytes": 1080002,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-IDLE.png",
+      "sourceId": "2a7718fac9a4bdf39440c72f7936a166ebfe606c8bcb960e051648138046f56d",
+      "sha256": "fdf8107baccb1cacb61f9943a4b62a1dffc7e34f4d27521f801556f4ebb0efb6",
+      "bytes": 1065290,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-ataque.png",
+      "sourceId": "b240cb8f2c1e930bcbbd4d6c44c8c37db4de9143ee0462126863c9b854f180dd",
+      "sha256": "41a07e8f27b126377c781500a0ae60f5de35862e6172078e95aed0607a5efdad",
+      "bytes": 1062382,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-entrada.png",
+      "sourceId": "af8aa07c2dc5babec7e0f31c715869c0a1622582a1da8e66cf9ec31f24777361",
+      "sha256": "8bfabbf3c1d173419127d1cd992b9c2adf8bb1e3ce8c3016522306033ba8af14",
+      "bytes": 948279,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-APPROACH.png",
+      "sourceId": "c6fda4a5fd11db07b93a07deead2e17d7e5ad1ee1d22741fd61759b5b6c9f06d",
+      "sha256": "ea7b937411c47bcd566d4e94cbafad60e0fc9a56fdfbbb1c4b0cf823e70c65ea",
+      "bytes": 1146262,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-ATTACK.png",
+      "sourceId": "0a0b1a2062945dd633ae9e00e9dccef5429b7de16d60ae97e6cb8c64b769192c",
+      "sha256": "49f8dbab6554a7d4b3901e11c238241f210a673cdd5dfee57713ccb718b18979",
+      "bytes": 1044877,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-DEATH.png",
+      "sourceId": "fa04c9c90337bc2c711e46f7914ea4fe9a69400d7eeb5f459d663f2a28ef5944",
+      "sha256": "c016f6431fc9efb51ffcef699e736fa7def92409dbfc24c7f8de033907a4dcfa",
+      "bytes": 1044438,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-HIT.png",
+      "sourceId": "290ee66fac70a68de1d4b14480d3d19a0756492ef89f3b1af8ddb07d24468f1a",
+      "sha256": "8faab411f75d7e2a24479793ad68c1c48c31d2d2f7acbcf402a60bedb2166f06",
+      "bytes": 1067783,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-IDLE.png",
+      "sourceId": "b0d259fb6619ca7d4eb237350e19621b31a935feb71b71593d657efe106637bb",
+      "sha256": "e2f0957f663e5885f9219a3695531eec365040190e4fb7df5736540196303773",
+      "bytes": 1151925,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-ataque.png",
+      "sourceId": "be59e0037f2cf80a88a27c38b8a8189895f24797ecece9c6df3aa9a3c6b6fbb8",
+      "sha256": "d5742a009216e147468d60bdbffdaaf3e2aa99fa9c62165601b9fe1740f3197e",
+      "bytes": 1041315,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-dinosaur-entrada.png",
+      "sourceId": "9ec2a28e895c276cca8ea2c160e86a3d3b50084afe37c6ec023cbcac0d731a6b",
+      "sha256": "0e31b9433988e2874d6e3279fec0a38d8b9b69519a78b84d440691444ae387bb",
+      "bytes": 1148740,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-ATTACK.png",
+      "sourceId": "251c4bef988bc7d2022950012aed6fccdd66ef88a5e2f545aae817779d12493c",
+      "sha256": "9984b5fbd43831abfd1a3e8953b94ffb9cf6502118ba0566b840e384d3840fba",
+      "bytes": 1097261,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-DEATH.png",
+      "sourceId": "fe4f02576b10d46970e6e627ec418352e5bc4fc553682c5ea536caf151c0631c",
+      "sha256": "b9de6bd30c5e33e6343006aee196b17ffa84292fa6371fd69e7d37302fdfa402",
+      "bytes": 1077783,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-HIT.png",
+      "sourceId": "c466b4e6fbb66742610064e8c42cd1562ad56109bbc9b29bd95d7d4ba49675d6",
+      "sha256": "f9fcab6755524bce0a8fe3b4412a0b83acdc6b57cffe3120a0287f543868b001",
+      "bytes": 1069877,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-IDLE.png",
+      "sourceId": "31e9b14d8872456d05b632921dc83cbb47435e962644f44b8a8dfa07b3caa3b7",
+      "sha256": "edb9788d44b5b7e79b1b24bdff7635e04667b7035a0a04d0e46d58cea61c3411",
+      "bytes": 1091495,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-ataque.png",
+      "sourceId": "90d61ced2763f5f16a1c04e76555e17f2d40c0341429bda67c044348a7463987",
+      "sha256": "05b3f88a90b1c269b4f4909af6e67cd197a218f5cae6dcb59de59887445f9af5",
+      "bytes": 1094358,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-entrada.png",
+      "sourceId": "41956775d3e66ff1cbfdc813050d709876ba93e9d9476ab7e8be460d815e5425",
+      "sha256": "8826939751a71b5273fab12c41034010b94091717be4527a27901306085012c9",
+      "bytes": 1020961,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-ATTACK.png",
+      "sourceId": "32e2deab9e6fb8e66e0ed1e4425c6920523328f617bb229321a392292c5dc801",
+      "sha256": "415c50bc6dc1d9897c54a78f184e66f3fe660007fbc1d006e25de3c5154a910f",
+      "bytes": 1113379,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-DEATH.png",
+      "sourceId": "795b7f63bf3dd9decf13bf69af1e7cd3c66f56714c941a7168bc46bf30dc45a5",
+      "sha256": "e3cd8709405c5ea33f9a844e2e56ad2c19e52d86f7e6557d95e01e8ebfb86911",
+      "bytes": 1007447,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-HIT.png",
+      "sourceId": "e96052c230d3a8443848b523c70102ed6015e08a3800161fb948c7b21fe671c3",
+      "sha256": "7d450a3b4c88145e801275b30fbd7e185d0af43f96bf57936a5bfc2edfcf2a14",
+      "bytes": 1077464,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-IDLE.png",
+      "sourceId": "33dfc04c3dfcdf0f7fa9bf6a9bb346feb47d4d6bb649fc83d8b2c0ddb590fb24",
+      "sha256": "6d55609bd4187b4656e1c2c111daabd1380ee46c59ac9ac98aca54e145f03267",
+      "bytes": 1146790,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-RETREAT.png",
+      "sourceId": "bc0a104aabd986a959683c6355714317ffca489b43f8bd05a4983346064fe1cd",
+      "sha256": "58545d818d9e4079004fbd5a3182812c717e63c2ec2bae33b2fae09ca54fcd82",
+      "bytes": 1091768,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-ataque.png",
+      "sourceId": "189c03e9dfa0e22ed5f67a6947b06e48e6f948e99c4947ff130871102eb05390",
+      "sha256": "3621f67e95cea7b64697efa33581b447f042632ea1820cbebf04506d4b87e942",
+      "bytes": 1092401,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-train-entrada.png",
+      "sourceId": "14eca6e686b61a57d60f5596ec305d43a0b7b09f7fc820d38e89b35a70f23411",
+      "sha256": "17da5751823d0b02c1a8f1e03e0e1aed25900b99d2c863cef913db387a6db75b",
+      "bytes": 1173395,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/realidade.png",
+      "sourceId": "c957292ba5fd69884f5389d0b37b4bb2d996c652db23c9a00ebd59a7434c2b71",
+      "sha256": "1af4a0022f9b94a0661361d79dee427b06b41cf82dbb6bdbc0f0f284744bf786",
+      "bytes": 334295,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/resultado.json",
+      "sourceId": "ce71da5023dd40ae820d8969a436f0125a15477635b9818392b4848c7732cb9e",
+      "sha256": "949e6b78ba97feae7f0125f8ba5dc878598e7d1deecfef9af056cc655869f2fd",
+      "bytes": 8467801,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/retorno.png",
+      "sourceId": "05e598a723b8fa90a7a36630b00840ef8badb109c926f87c059f77913c4e7ce0",
+      "sha256": "0346fc9d3c8e3e157a562ea2c7eda2f31971404c308d111b1ff4a2d1ce172afa",
+      "bytes": 981654,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/transformacao.png",
+      "sourceId": "11f5fa6392084f19af3c1305e0a8ab858f3d0a8f6a3bd035f7c5986a48292a5a",
+      "sha256": "980643293ec96a41d7a1e58cdf204aed32874ef4c33fbee5ed465727be55e499",
+      "bytes": 1140779,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/transporte.png",
+      "sourceId": "a7052b2a80498b071ed7eecee4113b14a547e4f692a2217a83d572ddaca27bd6",
+      "sha256": "c6706bb5f0926cbbd3e886c2d0d7b5e05ecb321e41fc6bd1d7f6dda36bc9aaf2",
+      "bytes": 1129946,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/00-abertura.png",
+      "sourceId": "ed22c6fc29ea84c213fca3ef5c584a96cf70dbc3418e2b67afbd3c6bfa15afbb",
+      "sha256": "d1a8fb8f123765887216f4ffa1dca37b95aca9899d2d20c69504275aab9bc4f0",
+      "bytes": 12286,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/01-inicio.png",
+      "sourceId": "452ef4000514f3440b703e71af977a72eef289f15e804d88052bee55df70c00a",
+      "sha256": "d98eb8122273508cbe9dfce9de8c3c18b917f284aeebdee6a9eee4856b165899",
+      "bytes": 391824,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/03-retorno.png",
+      "sourceId": "ebda848e7a48f88744e1eba98ac88abc333a11904285417ca0fe927e7f29c3cb",
+      "sha256": "dd2a1e3d810cb1720a7ba4ffec588da2f60c6c032ed77f1500686299fb8a78bd",
+      "bytes": 289738,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/04-sala-brinquedos.png",
+      "sourceId": "8a8b5bfbafb5b0128b786d59a6a6cd6f1d26a881b359af9153c3c76a41e4e5b6",
+      "sha256": "dc760bb5c213166b9fa5d40a3ff3fbe7cfa13d432f34b3171d7b2494549e0937",
+      "bytes": 1125782,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/COLLECTING.png",
+      "sourceId": "af65da938527d6daa888f7aa19821752896598be4e7538474c06dfd03f3b3df5",
+      "sha256": "dc760bb5c213166b9fa5d40a3ff3fbe7cfa13d432f34b3171d7b2494549e0937",
+      "bytes": 1125782,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/EQUIPPED.png",
+      "sourceId": "c2b4b94810d1f93d5f4ba5cd7d8d229bec714ff82ea28540fc112e27f66e7e1a",
+      "sha256": "8d96ccea1d731a2578650363960ccd6f09d6b308d9b0186eaee9d50b6afcefc1",
+      "bytes": 1001236,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/INVESTIGATION.png",
+      "sourceId": "7e98538c228f430fecc48a584b0804a1db1f6857ebbb6765b3e76275e5019ee5",
+      "sha256": "f7d54ac5f943338fb78ef1031d8942e6d5be70d43c547e1a166145e2027a3f26",
+      "bytes": 995555,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/PICKUP.png",
+      "sourceId": "82093cc24db281a0c0d6ab2a608e0abbe4aa6b34226bbeb3c971cf3b859058ae",
+      "sha256": "c153905cf7f70dc99dd1d8de8c44dc279519e625cdd6090d09df81cf33471d0d",
+      "bytes": 1069488,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/SEEKING_SWORD.png",
+      "sourceId": "aad2bd2670d5dee816e2cdb0b82d8aa3c28fe805f9d9488e4210275772938afa",
+      "sha256": "3f1da4b65df15c8f38a7ad41a066533e58fd328d8de139a183aacf8e9f7abe3b",
+      "bytes": 1103563,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-0.png",
+      "sourceId": "83f30d86abf8d7a50339062e61a6a2481c989af93a2e336bbf5e1d36364d424c",
+      "sha256": "46e8d9a78284169a77890bb0aa6baa87d4b05f4b44d781ed3f33361d54b1680e",
+      "bytes": 392491,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-1.png",
+      "sourceId": "d96e768601c882d225ef838df29043b53da4a85655da83bf57c9995af5751921",
+      "sha256": "c918cc072639e4c7db0f290e0ccd4e67939c8fcfb4c480549b86583811bd5697",
+      "bytes": 400859,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-10.png",
+      "sourceId": "225a5338f3e34ccf12a75c237c3b7d030992d6a89ff1684cdae7161c03976e03",
+      "sha256": "6f1f46d25f3f1ed4521e922540da2c37270f85f63543470a3df7571b7e379919",
+      "bytes": 351599,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-11.png",
+      "sourceId": "798f31fc4cfa7ba6014d0ba4852014a235836a44dc1034ee3efef6ccf53577cd",
+      "sha256": "caa13e84768297172fa54ee35a955cabb84513e07fab7c75d5e2662e4b140909",
+      "bytes": 357115,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-12.png",
+      "sourceId": "2a860923c32abd2f9e4afdb59eb78b2e538e8d93476659461fd5048efd8dde24",
+      "sha256": "b79d9d3c6e175c8f0f322cfc9beeeaa711418af93f0ea20c011f4bb430045fbf",
+      "bytes": 352050,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-13.png",
+      "sourceId": "a5cd1026ea31a894b2b33e74a973d0167475796923ab87faf7c8a51ce715bf51",
+      "sha256": "7fb0b1c812b63cf76259f2e19cd3a0e4345ffd7ed55389eb3830090754bcd3ed",
+      "bytes": 365086,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-14.png",
+      "sourceId": "a9f99f84a98f9f8aa482c6c5fce580176fb69a0dec00dfb1dc3cfde3b124dc3b",
+      "sha256": "f79fda69a5634b39dd17a0a8178c590c016a476bb3d4156fe086fe350d9e0e94",
+      "bytes": 364300,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-15.png",
+      "sourceId": "35388d6c7ac0987c7081e3162e4287df8eb34ccd6df9f68d3545a64f519332c0",
+      "sha256": "1a61b010a0ce5dd9b51499cb43ac5d4964be6693f1216f68af6caea0ed310966",
+      "bytes": 342769,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-16.png",
+      "sourceId": "e2874ff9cf885dd08ca5d7338dc9037b269625c3396011eed19e4cf0c9f6c699",
+      "sha256": "10a5a41bf4c89b859bfee387bd9ebd6352f1531c0dba0a773888d05e3dbfdb4f",
+      "bytes": 324976,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-17.png",
+      "sourceId": "d5defe5fd111618ccaad63a174f62affa04145aac590622f5dcc4d4373c77488",
+      "sha256": "f56d03e771455e648488f2159f63068332fd668c90e1b917515dfe6db61e5248",
+      "bytes": 329129,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-18.png",
+      "sourceId": "a19e42f8d4f982fdcaad1996c94bed116e4c10b98af41b3b3be4fffdfca24592",
+      "sha256": "5f17ad902af9f4dea9ca06a07ad3eb15aab4433e55fe4a8b0fcb4830d7d4efdf",
+      "bytes": 333534,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-19.png",
+      "sourceId": "f57db57a0dfa9696463aee7c36a65be17801af3c0739324d47d90f4c1597bfd7",
+      "sha256": "acd63cbebe1f203997729fd31f727085da087830d5ca78333fabf687855e7a64",
+      "bytes": 357681,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-2.png",
+      "sourceId": "5cbd928441f3d04220fe27f419930aca655a23a2279f54130f445b2fef765d96",
+      "sha256": "ec3878a4847882a35ac0cdc83a9bf7eb10051e4ad1a1e5741fdc8f62624ece0d",
+      "bytes": 412522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-20.png",
+      "sourceId": "9036bd641d3772e878d60642a1987419b3864395b3bd9d8802e25e2e2b72d634",
+      "sha256": "9915ea13dd02fc3d8282fd5e51bc4505444f5393b148a54f11fc2b42a3edf246",
+      "bytes": 392429,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-21.png",
+      "sourceId": "2542572b6a5acfb829c3621ca81cb9f6f702eee825f135e027ab87a527d773c9",
+      "sha256": "b37ca3c15f18bdf844da32c6f2d2328f5c6037cea7190a8d56850d6562f0e5ad",
+      "bytes": 369779,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-3.png",
+      "sourceId": "626b699e39494f5016a1d218fdfebfe732a937abef65c0c4ac06e228dbd248aa",
+      "sha256": "717a36ad97ec24b90980015db926fe782c90797f4afef3b5079cbf4324855073",
+      "bytes": 411793,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-4.png",
+      "sourceId": "309ae001eb5c3eb78450965b99ec02180de7a4218d3ad6f991c0ba082caad87a",
+      "sha256": "42c9a41ae005d4534066bb9da741d5330b1c779edddb27ad395ca85b202bf4e8",
+      "bytes": 411961,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-5.png",
+      "sourceId": "92c3cec7aaecd8c278d45d4ae75efcc80cc9f22835f163b85248cbb767389ae5",
+      "sha256": "1ac98734c007172a39bb6adc47a8270879815041fbc1f16d6ead541ba660ff01",
+      "bytes": 423431,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-6.png",
+      "sourceId": "ff2680ad641a8d4b1d6ed5687d4b35442b45929ea0fb20fdcc14ad4469a30dca",
+      "sha256": "af0f67cbe98a48bc8cb603b76c16b0fde8d41399eedf03c24e00b7a66beb8c22",
+      "bytes": 404327,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-7.png",
+      "sourceId": "f4668ddd0c54e7dfa28edf95c4e622e71fce1e1c8cc7100bfadf3b1976b54abb",
+      "sha256": "7f019fa6891510c10405603a3150ac005c2747288a04f8a218af13ed987a9c4a",
+      "bytes": 406989,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-8.png",
+      "sourceId": "e6ccd4c159c78ebf2cb91a978527e5087afcdc818f0f2e5e8c5a7127798cfec8",
+      "sha256": "1ad27f38ead04d3ffac9545ede49c77a861f1588b0adb6f0d97a00e7bd634bb7",
+      "bytes": 397254,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-ida-9.png",
+      "sourceId": "71112ddeb63b09c8bb10c89fece4cb36edf8b781a9cff3fc46765b24500cb333",
+      "sha256": "78411af3a91d94f3f123dbb736146c9fae4b65e0855ab1781fc1e4b89b217eb4",
+      "bytes": 358657,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-0.png",
+      "sourceId": "4d6c7b2c96def2d03fbdf45f2e183826cd856b6eee47318ed787f068647cff08",
+      "sha256": "33676b6a49e262719bc8545aba1c46b51922bcb505780e047d905ff2dd5596d9",
+      "bytes": 231841,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-1.png",
+      "sourceId": "742f7bb5a311aed87adc9bc2ff570d83d75d6ba63a747c5c6a2b6fcaabe1bbd9",
+      "sha256": "4d3b2642b1326f341d4f0b403c3e69ab13a05b661fec4a7c5b4caff0e20c21c7",
+      "bytes": 228828,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-10.png",
+      "sourceId": "fe6c54cb9fdd1063072d14e2a7be481c26ecb8e75b1c181fdd589f34921ed390",
+      "sha256": "460402df66723ca86d4865285373be4c7e80993d79eb5044d6ce95d89c7c6e27",
+      "bytes": 211719,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-11.png",
+      "sourceId": "c67e4938719e80a093c0f6439ffda937ba34bc8224eecf1a94a2095c31c5d670",
+      "sha256": "3d166e00004ba624d0c67722d5725e90a3af30b95896f52870ff75a2fab56bab",
+      "bytes": 211443,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-12.png",
+      "sourceId": "74bce96f63a211479dd2d98cc36de4d6b23bda5ed87147477ab8630cbf4f3b42",
+      "sha256": "bd1fbaf4056c3fb9af06f477eec8c66324a7328056a76f5a449797f0dec2d8e9",
+      "bytes": 204402,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-13.png",
+      "sourceId": "47344cf3002cfcb5a180d853d3c609928f56943d0f0f5a82961cb01cbc20c84e",
+      "sha256": "db5c56287b22fd5ece5bc97de6079074ab8a83743c0b41aaa6d8e207a964f00c",
+      "bytes": 203045,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-14.png",
+      "sourceId": "bb4eef58e5823e2a5adb3ef06352f38d81ad7ef43b7d013035f9f65beb7e2e49",
+      "sha256": "0bc1c514f4631e1a209ed7199ad24abd121ddb397824b016bdec6f996de889ca",
+      "bytes": 204975,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-15.png",
+      "sourceId": "b3f3e3f12b9e24f564e97713709868687b311025b6b1c10a1b5cd7dcef074590",
+      "sha256": "49ebce98acc16d319d3d437badb446a3b56db6298ebd30ba8ba57af1f4f273c0",
+      "bytes": 206504,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-2.png",
+      "sourceId": "915a58d53949712b1bb4bc9dcce131e713e39701c665c4e263bc6e9cc9566b33",
+      "sha256": "642e415b004a2ec0f31b4b66d6624560f6c8f0b5e30cbe44740354c28d95ab67",
+      "bytes": 240379,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-3.png",
+      "sourceId": "794a87d87c407248e94290aaefd451a8ba0f8f1d8ac5ebe72044a9817dca0ae0",
+      "sha256": "b7ce5f54703df898670fa3c6a0d9fd5a8697e877dcc7a88146ca832e6cbd8af3",
+      "bytes": 243593,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-4.png",
+      "sourceId": "623adc5dcb63c04d610e77f0f76bc5c4c8a51938319f4db9daee9cc6fde5c0a7",
+      "sha256": "3bba69bf176014ba2d78a3c40541ef9df391958fe76ee6aa398bc9da4dfffcf1",
+      "bytes": 209782,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-5.png",
+      "sourceId": "a5c9245b8f7394e50779d8b1f4565d2493fbdd177061fe3a330e26db6a2d073f",
+      "sha256": "dcbc23c6ff3e4ff3f715b87901a09b35fcd4baaab17d1dbe33f701854200fae8",
+      "bytes": 213933,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-6.png",
+      "sourceId": "a04e94a02f64860dc1c0e0434af39cfcfc95412bced9ec7fcfd13a49b0782162",
+      "sha256": "6c619c2df2766c4c6bb5eb41739e121404a5323807ae6061cca87e459c654d9d",
+      "bytes": 211059,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-7.png",
+      "sourceId": "dca4149e98fc25ad5763867860177c29a52106e529fd3476192abc2018998dba",
+      "sha256": "4eb3f55d1f9e8f0088f312201741f2f0163b4217a4f9a4c5fe529418aba84c2a",
+      "bytes": 205478,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-8.png",
+      "sourceId": "d3afec8c6caa6a4cd88963ed5d40f5a6b3ed6137c469ed785cddc34250f32ecd",
+      "sha256": "54bdeac29f6ee007899893ad45ccbeb536d8d018a467dfda96ef8ce3dbda4bfd",
+      "bytes": 213501,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/apoio-retorno-9.png",
+      "sourceId": "64814b4468018b72643654d63f9b64f3f114e7b9d2597a4579f5abc5df358eaf",
+      "sha256": "ee17294809e41c0fca789f629aeb906b84f725435d76d0ba2dfaf5352c48a040",
+      "bytes": 215318,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-ATTACK.png",
+      "sourceId": "4b9e520fef7b898a6d7017427e4e7d7eeb6cbf130d79be601cf288ab3d2f5504",
+      "sha256": "f43cdc60d722a402e5181fb9443fb5e5b5da6b4beabda2b0f0e7a5bf906359b0",
+      "bytes": 1070888,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-DEATH.png",
+      "sourceId": "0139d9e3578103deb4f3b3a21c65e15b22fa28a1d5b52e6b84db41a034cd4390",
+      "sha256": "e92348cef5c918c32003e880dcc8c8223c32c420f44c66d117c59924d284cf96",
+      "bytes": 1054025,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-HIT.png",
+      "sourceId": "88b4c3e46efbcac0586b3834ebe71998f60bf437970ac8d3ec8a55cced7eee0b",
+      "sha256": "dac59ae53ddf364b9accd2c5e312d4577a32687ae48917b82efe8930fa2eb3fa",
+      "bytes": 1080002,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-IDLE.png",
+      "sourceId": "34cd82d76bb17499a6ea2ddb15ee9608127e7e16d974a47ee53bf8bfbd06c01e",
+      "sha256": "fdf8107baccb1cacb61f9943a4b62a1dffc7e34f4d27521f801556f4ebb0efb6",
+      "bytes": 1065290,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-ataque.png",
+      "sourceId": "2e810e5135a08f09ee886cf103cbf4fbacca389622c7701d4224144de49d26c4",
+      "sha256": "41a07e8f27b126377c781500a0ae60f5de35862e6172078e95aed0607a5efdad",
+      "bytes": 1062382,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-entrada.png",
+      "sourceId": "d2591bcbbb3dbd991e3be8ab39b614a13cc77096847115fc69b5ff4da76bbf67",
+      "sha256": "8bfabbf3c1d173419127d1cd992b9c2adf8bb1e3ce8c3016522306033ba8af14",
+      "bytes": 948279,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-APPROACH.png",
+      "sourceId": "348b38aaf9abf63b429388c3b0813170627e8cb22f803542289b8572d6b9d141",
+      "sha256": "ea7b937411c47bcd566d4e94cbafad60e0fc9a56fdfbbb1c4b0cf823e70c65ea",
+      "bytes": 1146262,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-ATTACK.png",
+      "sourceId": "0b149e6dd609d5fd046de69105661e2066cb2dcf6ba55d374f9dc818684b06ae",
+      "sha256": "49f8dbab6554a7d4b3901e11c238241f210a673cdd5dfee57713ccb718b18979",
+      "bytes": 1044877,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-DEATH.png",
+      "sourceId": "ecc3c3df8fcee4d54a28a41ac14910b17e2bbf0fd2f15bc9979e26b148cdc3c6",
+      "sha256": "c016f6431fc9efb51ffcef699e736fa7def92409dbfc24c7f8de033907a4dcfa",
+      "bytes": 1044438,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-HIT.png",
+      "sourceId": "3786d91b42fcb4fd63e1b0148ae353c3153324fa1019be0d40acc30b86ae27f8",
+      "sha256": "8faab411f75d7e2a24479793ad68c1c48c31d2d2f7acbcf402a60bedb2166f06",
+      "bytes": 1067783,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-IDLE.png",
+      "sourceId": "1d84298486287e7f3642e7b85e9efbbb89bff7823d68265d606b87e2eb9ce346",
+      "sha256": "e2f0957f663e5885f9219a3695531eec365040190e4fb7df5736540196303773",
+      "bytes": 1151925,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-ataque.png",
+      "sourceId": "4d933be681c3d647f9f571c31380d0f8a5534bba628a095ddaeb9b04fd290861",
+      "sha256": "d5742a009216e147468d60bdbffdaaf3e2aa99fa9c62165601b9fe1740f3197e",
+      "bytes": 1041315,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-entrada.png",
+      "sourceId": "2d12b6ccd0df57f8ffad5254a31cb6b9242700ad4df05ec72b799a0627d5899f",
+      "sha256": "0e31b9433988e2874d6e3279fec0a38d8b9b69519a78b84d440691444ae387bb",
+      "bytes": 1148740,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-ATTACK.png",
+      "sourceId": "6b67fe18ae178400807750c113e32c5c25449a426144f87157061c26b4d94c52",
+      "sha256": "9984b5fbd43831abfd1a3e8953b94ffb9cf6502118ba0566b840e384d3840fba",
+      "bytes": 1097261,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-DEATH.png",
+      "sourceId": "7511136773091754c1540bc9094a5e62257cb8d405eb313cbd2e9ec907680c2e",
+      "sha256": "b9de6bd30c5e33e6343006aee196b17ffa84292fa6371fd69e7d37302fdfa402",
+      "bytes": 1077783,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-HIT.png",
+      "sourceId": "4156afd39a38732a1c5bcf6eec268c0c9a7008cf27f597e5bd7f13b4685b1e8a",
+      "sha256": "f9fcab6755524bce0a8fe3b4412a0b83acdc6b57cffe3120a0287f543868b001",
+      "bytes": 1069877,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-IDLE.png",
+      "sourceId": "f3aeb84be218ca4bfa0e43b90b70d461e52e2b5e89173269157d1e5af9dad6af",
+      "sha256": "edb9788d44b5b7e79b1b24bdff7635e04667b7035a0a04d0e46d58cea61c3411",
+      "bytes": 1091495,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-ataque.png",
+      "sourceId": "b24d5acf64576d12ee168ed391ffd0a0a5966821fe510188df2a60c7eb41b1d8",
+      "sha256": "05b3f88a90b1c269b4f4909af6e67cd197a218f5cae6dcb59de59887445f9af5",
+      "bytes": 1094358,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-entrada.png",
+      "sourceId": "a9c894bcf4b2b6ba71bbdd925fef8e4254eddbf17d56fe27fb0c2a8a5c8e1d1b",
+      "sha256": "8826939751a71b5273fab12c41034010b94091717be4527a27901306085012c9",
+      "bytes": 1020961,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-ATTACK.png",
+      "sourceId": "7d6bf4921bd6be7021e48fbb3cf61fce517606f566ef92e7114b02cbd402d328",
+      "sha256": "415c50bc6dc1d9897c54a78f184e66f3fe660007fbc1d006e25de3c5154a910f",
+      "bytes": 1113379,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-DEATH.png",
+      "sourceId": "cd7a44fb52771cf28da9a1cbfef99529fe53114d32142b9e710a7cad28311585",
+      "sha256": "e3cd8709405c5ea33f9a844e2e56ad2c19e52d86f7e6557d95e01e8ebfb86911",
+      "bytes": 1007447,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-HIT.png",
+      "sourceId": "9821de8e599541901cac4137b826d2a64cd947b655297f91bd964abb314d9083",
+      "sha256": "7d450a3b4c88145e801275b30fbd7e185d0af43f96bf57936a5bfc2edfcf2a14",
+      "bytes": 1077464,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-IDLE.png",
+      "sourceId": "22758f385c58b9bba13f1db4f21c3ee8e56f7ec02baab9add69ab819cc365e33",
+      "sha256": "6d55609bd4187b4656e1c2c111daabd1380ee46c59ac9ac98aca54e145f03267",
+      "bytes": 1146790,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-RETREAT.png",
+      "sourceId": "92ae228ccc5f3ddab06a84024a75e0243d1536571a73c4924c044126f811a231",
+      "sha256": "58545d818d9e4079004fbd5a3182812c717e63c2ec2bae33b2fae09ca54fcd82",
+      "bytes": 1091768,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-ataque.png",
+      "sourceId": "121371f298fbf84f00389fa719f618afb08477a913ed5cf618b0d6a69fa51db0",
+      "sha256": "3621f67e95cea7b64697efa33581b447f042632ea1820cbebf04506d4b87e942",
+      "bytes": 1092401,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-entrada.png",
+      "sourceId": "a37583b8e57052fd6c83b2b0d9839af719b6f2cde03c24116f06f4bb66e0afdf",
+      "sha256": "37365df78fc3730e13a6652b8d78ba71b9fd207a858c5ed9e41dbc2d6228ea81",
+      "bytes": 1174935,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/realidade.png",
+      "sourceId": "779a3f3bd0de8ab10ccbc0fff4cc494d3117d36be19eb7047d92ee1b11b1eac2",
+      "sha256": "a0877e59e7a18dfdfba80673b753b7e5bbe6ad4e7fd77177cd3a76f1b3ce2027",
+      "bytes": 330408,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/resultado.json",
+      "sourceId": "f917e41175e591e6ac8aa8c5484f98988305ce9d9c714789d8f4e1cc76890ff7",
+      "sha256": "0a7bb55037e1a4a54b68d2e1718d7cea80fd2db8596d0af83cdbf72544f07098",
+      "bytes": 8633211,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/retorno.png",
+      "sourceId": "6e07f7458678a476b6a84439c661605e0d3dd4489ff20fa6bedeb8b82566f355",
+      "sha256": "0346fc9d3c8e3e157a562ea2c7eda2f31971404c308d111b1ff4a2d1ce172afa",
+      "bytes": 981654,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/transformacao.png",
+      "sourceId": "17492b80a059510e07f6fe0071aa3a70cb198f7461f093992cfc3de58e9783f9",
+      "sha256": "dc2a18cadaacb015f1105f15cf4abbd45ff5214ad564651da69f656a99c81c85",
+      "bytes": 1089404,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/transporte.png",
+      "sourceId": "70eb5145cfbdae02f41082db9ac83d0a8f30f9ef658217cf5bf3b03d8cc369e1",
+      "sha256": "cd637ee2d377d8f67ce2955d08ea6b06bdb694bc90c27f4abb32f3b1aee7febd",
+      "bytes": 1129993,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/00-abertura.png",
+      "sourceId": "8ea6805639edcb693fecc4e4c0d0b7d5c0da514b3e1d70a13f3517a23ab204e7",
+      "sha256": "327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2",
+      "bytes": 17056,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/01-inicio.png",
+      "sourceId": "185735182a143a0931b77da9995e9d5dc0ec7472f20abec7175da782777d2cb1",
+      "sha256": "82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82",
+      "bytes": 300131,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/03-retorno.png",
+      "sourceId": "46945138297bcfeca0e360f1ecd7aa1a71e1008e032491641845eedf38b6c83b",
+      "sha256": "49840b7a8c18d1882eb4a73b8cd539be28f1cdde38e07f69b587f3fd10902aaa",
+      "bytes": 341620,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/04-sala-brinquedos.png",
+      "sourceId": "3379ed8dc40cb0f1c6f3e6ccd361e90d806c731012addaca5b53c06659d993d5",
+      "sha256": "f78f938aacfc721ef93482aef656ef9316a8db9d2c3ae5325f5b29f76e55d72c",
+      "bytes": 1292477,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/COLLECTING.png",
+      "sourceId": "8dae0baf720b236985018c9502d509e8a381c699a5ef924b3694205be783324d",
+      "sha256": "f78f938aacfc721ef93482aef656ef9316a8db9d2c3ae5325f5b29f76e55d72c",
+      "bytes": 1292477,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/EQUIPPED.png",
+      "sourceId": "f53c3cdd36a64d4a0486373e22e085c25ff12714857cbd1545cb606e1b2e7ff2",
+      "sha256": "98ea6b18ea8485db00ab28b6d90369aaa4c88d2b6ce513e697029f8cdecb96e0",
+      "bytes": 1272658,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/INVESTIGATION.png",
+      "sourceId": "23959879d08d4f14f8a7badd6bc6c0102a63a891380807163b81dc7d6fcdec92",
+      "sha256": "50abe84f812ad2c945c1bba29ce797d9aa60abaca136c6cc283baf8453c23b78",
+      "bytes": 1306937,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/PICKUP.png",
+      "sourceId": "803ea79dab70d2396bccc7032afab28085664a6509a082784b8d75667c1c1dd0",
+      "sha256": "7498991900ba924f49e43afea8f38eca3b3b85d8eec3d229d7f24d7645856bcc",
+      "bytes": 950206,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/SEEKING_SWORD.png",
+      "sourceId": "861b0e39e25dda06c7bc19435c9402375f2a369607c482e39402ab1a343d9928",
+      "sha256": "61f0d57d4f494250e0b6faca3d764cf595d876b8958f4e6dc51f6cdf68f3e318",
+      "bytes": 1367524,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-0.png",
+      "sourceId": "6101fb9ba306d0e920fdaff4ef85be1e26fc554d2be19092129f6c64ad2b5f3a",
+      "sha256": "c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713",
+      "bytes": 304240,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-1.png",
+      "sourceId": "99520450ecb38d14b47ea575651d4745d51e0ef6766a26b79bd6a16cb4be7b71",
+      "sha256": "f5a1da7f83f9973cbd12691974d5ab26c5ccde778cc0df0c1bdbf273ba5b7b53",
+      "bytes": 325488,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-10.png",
+      "sourceId": "e5fb13b7352847c19b1cb3cfc1921cd60f53b4ea71e0d0a187d5787ba35eed1e",
+      "sha256": "29352c11089f8f45e36f41948462f5862ee748b24dc3d5aae78dcb9745fcf433",
+      "bytes": 369486,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-11.png",
+      "sourceId": "56449163fb8c143c5b8d506613b9696937b0026fac60708bf8e6a7e3358c861e",
+      "sha256": "c1ac7905fab1464b91edccac28cd5bc7ec171ba5986fd7ea89e4c25e2f64d7d8",
+      "bytes": 393109,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-12.png",
+      "sourceId": "54c423960e87160ebeaa5f03740cf2a7756b28c219aae9b1120d49d432a31bde",
+      "sha256": "a7d93fa388ad32672f96dd876082948e140089164873eedd8c714a7c93e99e29",
+      "bytes": 402037,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-13.png",
+      "sourceId": "b3928d5579b6d5c62cf905e1c7c69ad6a8400b612b6c86bf2f0f09494952186a",
+      "sha256": "be57d4817faf8214bfe1b6986f32d75ebf4970410c497ed852dab60f46e3d10b",
+      "bytes": 427484,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-14.png",
+      "sourceId": "db454ca53dbbfb977c015bc692c4f7000280be9044b722267a41ed1ace046138",
+      "sha256": "8d7bb52a9eac1bb5b6f0ae276a6d9c94e8822d09c4270fcd357f24f78de8132d",
+      "bytes": 428928,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-15.png",
+      "sourceId": "b4a9afcbf9f6bceac2c6c7d9f7cbcc1334f5dcbd0fe97f78dc2afeab41fb14bf",
+      "sha256": "53bc9db9e18db75d4de69c7d1a6d16e72958b22204c6843a18e5ab819698e4c6",
+      "bytes": 391709,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-16.png",
+      "sourceId": "039b5e5d339e64993493c311e02e53d0e9b3b4cc059d5d6e1b39a2d39c8569e3",
+      "sha256": "367b66449147c39cb0e3d4d9902674c0ef0d917017a3d21c1300155bad98f2f8",
+      "bytes": 369707,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-17.png",
+      "sourceId": "9f4d05d1fe8001dbc399a86c111698fcd2f52e98b3a322ee3960785fd81cc0e1",
+      "sha256": "9dac3335c2a09c3228121d84f5721d2456c32a56e01c3f3a18dd6a3cfcfd909b",
+      "bytes": 368122,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-18.png",
+      "sourceId": "48b3de1c0377c934843923a469a7c64d05282a62c718d6c38a189618d79481b6",
+      "sha256": "89e191d17d36d685999cb18ad20080ab7d4602775a68b86ad6d5f4b40e304690",
+      "bytes": 360196,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-19.png",
+      "sourceId": "eee5ee9636241a62578014590938cc89788f253008421fb545b167084b889f8e",
+      "sha256": "e9d8c17c7308c3eb637ed574dc14e8cf1f64fe4d46f89e04617b55d093b0b193",
+      "bytes": 361424,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-2.png",
+      "sourceId": "7b2859d12550e4121028fe63b54a24cfc6b2026bb473982f0982e94b6dc1f942",
+      "sha256": "9cad286fe4242906726ca1be6ade98084a9c6e38bf724967395417cb348c9c64",
+      "bytes": 332972,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-20.png",
+      "sourceId": "f57117cef0a4e7332a4d3e5297bd7668c3f8770804e3ec2c19723f55ecdc7587",
+      "sha256": "04647e5b6b8384a1d3eb3e9d1d2def6dabe6e0166bd8f908c078f0f5ccebde8e",
+      "bytes": 363530,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-21.png",
+      "sourceId": "22734fe3e4ac06df52b8e5b53dfd74c4c43ac8613ce3d19193e42afff628b02f",
+      "sha256": "449d45147ffae9455008b49411b69c5d9d1b1925e7324f8dcaa4d732d66bd960",
+      "bytes": 392560,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-3.png",
+      "sourceId": "8cabf89943e3f6c4cc7dd6b0e35ab59b4d513d499a452c7a8243acb4aad96ff7",
+      "sha256": "e99cb249fc1b81be7b31735ddc3c6d172119c3f13b26f8d0f2ef14f3edbe468a",
+      "bytes": 323178,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-4.png",
+      "sourceId": "23d5d219ff77fdd8f956857280c8e66dddbd36223c5b0b2f3167c455a058d28e",
+      "sha256": "0a6f50d2a5d47783293c30b97798a4769b25ea74ec8e769fac68cc2f4f1a26af",
+      "bytes": 305384,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-5.png",
+      "sourceId": "68d713c5bab19b1021c3774e87b13347a75f4f9cba7122f40b5678ff9e150ba2",
+      "sha256": "fb14e87a1be7c2d7a8f03d7bb2db7dacf93494e6240d47f7e8a5ab3e7c1ec9d3",
+      "bytes": 297647,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-6.png",
+      "sourceId": "1aecbe0a38409c9fc981bb11020fad3655d71c8920122e3f96bb8b4917b8642e",
+      "sha256": "5a838e3152a60f9f4733c2bcb057b3954a0d197e9e458f7d1feb1ec83b05e72a",
+      "bytes": 324755,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-7.png",
+      "sourceId": "21ed796b9ff26780433d7e1fee52b842974ed9bff3556efd22853abf1395b305",
+      "sha256": "1c59d583d7f2c1ae938576207847e54ffda6c622559f633ad1769e199af1db2c",
+      "bytes": 357244,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-8.png",
+      "sourceId": "344684c821c4ba32996ffe0f8cf62719cd9015d2bbfe14e54789c60a2308e9b9",
+      "sha256": "3cd62b1a9a75fd26bb4f11faec5708b011fc0e3c166e2490d2adededff6a1683",
+      "bytes": 370607,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-9.png",
+      "sourceId": "21b52aac56278243bf6e29ad876938a6da0df317d9beeb6788f274e8ce4e13f3",
+      "sha256": "1b49a77109e343574d88a3d4e70d2a23186b6b3955fbc45862af96240102ea20",
+      "bytes": 303870,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-0.png",
+      "sourceId": "13d0f2726dec1f697167acde91f0606f3054e6d96ce422f9f815fbedc6fb79cb",
+      "sha256": "a29979df2cf0f26abe215f95c4184d3710efad0eb798be8b8d7d6126c809c6d8",
+      "bytes": 167907,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-1.png",
+      "sourceId": "7686f9e9455dea8a4985c212f4ec868dfc49cb008b78de15211655472680687c",
+      "sha256": "602b48c684e1dad8d952254defce7386d4317a031ce30e4d519df6cea728e0ed",
+      "bytes": 272013,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-10.png",
+      "sourceId": "668b2445cf2127cd68db8d7141f168a0dc86847055ba74364d1f76c0a9eb1e0f",
+      "sha256": "35e55f96523e2df5b1eb49335f68dc0f4032fb8e8b544a2fc712fb8872cc00b2",
+      "bytes": 167390,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-11.png",
+      "sourceId": "200eeca2e52658bebd568da25c1c47b65f61dedea803e99a3a5b6bdba24bcbef",
+      "sha256": "aa5c1c7d39cc5b927ac72d62490de8f74ecd36768504b6c8a61776a047df2a00",
+      "bytes": 167492,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-12.png",
+      "sourceId": "e5dd59cb97fb880fe41e7b5c9f0d41cd519b58a15bbb26b7c9929b07c65791ee",
+      "sha256": "54c7e4fb87cbc25d9a25cba9b5208fc428a373a21274d227689df8ca7c6800d1",
+      "bytes": 177085,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-13.png",
+      "sourceId": "3577f400bf9034b34dad0e47da7456040dba825f41391c7c68696bd31e8b14e6",
+      "sha256": "c41b84cb0580e7831cebca57434271eadfabf2c70654cedb473b26692bfa4e22",
+      "bytes": 178511,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-14.png",
+      "sourceId": "f9f1200f4a489be427244c2416f39884cadd969a69f1d498b1cfe01aebda2c78",
+      "sha256": "380ae5efb6683b1a63604eb7ca8d62a7069f84a9fe80dfeca210394d9ee7265c",
+      "bytes": 177947,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-15.png",
+      "sourceId": "4b1398cdb7514633f4b8fe427142047a4c53594bc2f7d4e74942953d8b98c3f5",
+      "sha256": "8d93f67381bb7ca194ec7134a80a0c7f977322057e29b873f63ef5c44e15516e",
+      "bytes": 186274,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-2.png",
+      "sourceId": "d4d5c4004c913444c1220f58df3273a0efaa896d499dbcfc838310ee9493afb8",
+      "sha256": "8c01fb5df97033697d38930eac42d486e442843dc690f9adf6e7160c3fc765cb",
+      "bytes": 272725,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-3.png",
+      "sourceId": "dd6fb9c2f31c5dc5db9f1f6f2ec8bc4d1c54a24663c067afdd681501b5af8db6",
+      "sha256": "ad6cc1f1ebe3f5acf15303fb22a80012a41a2dc4bdcdc57377d64152521601b2",
+      "bytes": 266824,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-4.png",
+      "sourceId": "403f6dcdf262ee23c94bf84c3396b2e63b2e8cb0996f4a5af33465a82f2d4d61",
+      "sha256": "583326c1fe7dc35bef3672022d263811c911ef12d622c271d277085827d2fd05",
+      "bytes": 250341,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-5.png",
+      "sourceId": "243b91dd83197740d3b96d70c84b8d9b1355ddc46e98e3a252cf8f91382ed501",
+      "sha256": "8e952b0967fc53fcadde98f1f5877278edfb3ffff63f0b494f1926561b5e2007",
+      "bytes": 226825,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-6.png",
+      "sourceId": "832a580385510c1cf116fc49d30d1578197f0fe4b325016f2f74645f3243985d",
+      "sha256": "45cbfff1c79c2b635f093ff44ebc6e2dd0701df2ed0c574423105c399f908f2d",
+      "bytes": 170946,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-7.png",
+      "sourceId": "da932ee5d27180b3213cc939bf0a49251e6e55109a4a3a1d45258a5fc48ac555",
+      "sha256": "9992967965b349d801303c58f37be11b23b5785eccc5c788f6c8b13a39ebfaff",
+      "bytes": 169480,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-8.png",
+      "sourceId": "c6347252dd04c48f5f7b8649d1b2604218ae23a54a93574fc6fa746489706a96",
+      "sha256": "5aa624056b695c8d0e760dbaa40bfe1c887d4ce92b8b5d30e673b471dbcf532e",
+      "bytes": 170975,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-retorno-9.png",
+      "sourceId": "1f029f0594033bf53b8860ba23f199eed3db7c61bd754c185e1952f923523589",
+      "sha256": "e2601ddbcf0aeb55d22ec74757e7a99daec832925328622219f5180b19bddf5c",
+      "bytes": 168672,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-ATTACK.png",
+      "sourceId": "0360d99131fe1cdb108022938f1b9c34fde93408911821efee678b6e0e70f6b0",
+      "sha256": "198ce18b2a0291292214ddb777cb4380917549f73fbc0cd1944aa30b473132c1",
+      "bytes": 951368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-DEATH.png",
+      "sourceId": "2741ab90e44b14e1694831491c00c83c933100bbf7459d408c497a4a2d44fcce",
+      "sha256": "226a079814b336e31bdff70a1f42e75dd2b8bacbe2c960607808ed2fce9404e4",
+      "bytes": 889337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-HIT.png",
+      "sourceId": "ea54add04b56490c6c3fae94eb070f68dbbe54cba0099b3152b14b89aef124f5",
+      "sha256": "f5a974b7ad9b334f71812e1bdfb3bbe60eca00325e46a613ae1ef76613910f4d",
+      "bytes": 940291,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-IDLE.png",
+      "sourceId": "cbf7cce659745a8951e1ebe3d031ce5b7d5a97fa877bf6b84f3187a6213fd5ac",
+      "sha256": "9f211db1690b5dd53d23a40820c3c2fb13c3773941a8f54137bafcde917b0491",
+      "bytes": 945128,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-ataque.png",
+      "sourceId": "3bd031f20651288c975b38c70f90ceb829732069167a26a86a9f2996fc3519dc",
+      "sha256": "61e2580b5eec9a878d5dece65554735f714c3d78693d1a0476487f08ed17d0ca",
+      "bytes": 943705,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-bear-entrada.png",
+      "sourceId": "02812c3e04547cf42cea6f5a88e846e3be7654481b4d69ecfd398fd27b3cbd5f",
+      "sha256": "732867c9857cf0c11c13b8bcb245fe4b26f897bfd52a84daed2de63907725311",
+      "bytes": 861217,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-APPROACH.png",
+      "sourceId": "6742b0a6fe53516d1463f5eb4a034e06eead8a006478ae80898ac0821e49546f",
+      "sha256": "ddcee88d73a9296a44d0046010f4727b3a0d84082c962d7ac3aa565c50bec1e8",
+      "bytes": 721606,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-ATTACK.png",
+      "sourceId": "9ce425cf872733deaf6e986dfc5475a25c9008b0c30a31866950bf3dd42fba02",
+      "sha256": "e981fd7dba39d5f87fef347ef5f7569ba07921a79bd04678f5c576fba40a5385",
+      "bytes": 926934,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-DEATH.png",
+      "sourceId": "98834665533b626d7b4a667d8ecb76fe168757ff5f03422d05016ac4abc2a47a",
+      "sha256": "fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067",
+      "bytes": 868780,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-HIT.png",
+      "sourceId": "72b56806a0fd473972fb64774baa454a3bef16f41069a776762d18469cf23a83",
+      "sha256": "5d88268a4293ded62a6ed6e83e72db74aa2ea78d3e91d35456bfb7c8fdd5d884",
+      "bytes": 938003,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-IDLE.png",
+      "sourceId": "5a60b9e32d059c00fea2a3af01604ae989d14ef8bc7a79433429734b1043ec3b",
+      "sha256": "b498dfd449414a7e21dece76eed6c305eada0998dcb7288c7abfe268bc4cf047",
+      "bytes": 701579,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-ataque.png",
+      "sourceId": "e671d798ec50346033be73e4105e63f434177f812780797139ccb27a0ba76625",
+      "sha256": "e5b8afb277720acea459fd72ec7722ddd25b4191ca7635435b86e653dce589e0",
+      "bytes": 903210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-dinosaur-entrada.png",
+      "sourceId": "04faf6878eef5647d41988a05a94250a122ecc882f7c0264cff204416506fb44",
+      "sha256": "e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3",
+      "bytes": 701551,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-ATTACK.png",
+      "sourceId": "1dfca913a94ba05de5595e3e66471b4154277b80dca670d9ae8d99bbd0f5746a",
+      "sha256": "af14caa594a3eb37a581b25ef3a113f1dd777ccff09adb39e8e75aa82e855dcf",
+      "bytes": 952449,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-DEATH.png",
+      "sourceId": "b196850d5438db70a270c15815f520d2f2272a2cba14deb2dfe617c501c6cf5a",
+      "sha256": "6fb6670160ad7ae60ea128e0e9c1c7b493f379ebcda1d79293f2a98ce4e28166",
+      "bytes": 901039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-HIT.png",
+      "sourceId": "3335e89fb08eedd05c0aeabf51e7d307d6e1db2c19324b3de84df9f7157d29f1",
+      "sha256": "faceff8920eec337de938bbbac2e98fec255e1f1e17b055063ecb77c66f9ddb4",
+      "bytes": 932941,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-IDLE.png",
+      "sourceId": "00324055231bdd2c61d02a0e27733d93fead9f9cbf1c05a15d95197d20ec0237",
+      "sha256": "07989ab2e2453e26e19f5d2085683ff91f9dbecfcd868639e8e47e4688593356",
+      "bytes": 940522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-ataque.png",
+      "sourceId": "931a086862e53f4fd1ad1c61387a61d65ab32aed83545318d3d221ad030e8994",
+      "sha256": "d7aa51b7446979c2a05d109d57a4f188ce938978db39422a14e9d927befdec28",
+      "bytes": 941331,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-robot-entrada.png",
+      "sourceId": "910d63f786e10fd1550330ad6e101a0e026d9b1c9853cd9dc3292b4b1892f118",
+      "sha256": "5d7533a3aded80b5842e8d5dde13957816d66ac61096cd5afb6e34da48506bff",
+      "bytes": 875522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-ATTACK.png",
+      "sourceId": "8a0a69a525365bbda230eb8aae9eb927d803d914da3e462a77a91c9a619fb06a",
+      "sha256": "de4aaafce52b13018424918865752de40bcbf0de6a4ba28c10dafdd1d5096efc",
+      "bytes": 830199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-DEATH.png",
+      "sourceId": "55a64ded645afcd8d3a13bd7bd4fe17f0dd020e6672007da85f57795029ef560",
+      "sha256": "9a70e6e22eab68aecb2d1be4afc4b6b2fc9109dc1dbbb2c13bfc9cb8bc43c7f0",
+      "bytes": 863317,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-HIT.png",
+      "sourceId": "3d0a6d5c69b1a0d651cf6a1b48090224a981faa28d872a1413072d515048c65b",
+      "sha256": "2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d",
+      "bytes": 874731,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-IDLE.png",
+      "sourceId": "53bd621bd21d21b128e97d240df52486aed2c7fc34fd971fd81e97117596c09d",
+      "sha256": "98cc62ae08cf3ad6a13957423d9358b4e369176ddaba20a085b744c5630d7f43",
+      "bytes": 701691,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-RETREAT.png",
+      "sourceId": "6a7dc616a70ee28c141c6bdcaafe8ef769b4767984fc5d7f318543e4f9885b05",
+      "sha256": "4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c",
+      "bytes": 889032,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-ataque.png",
+      "sourceId": "e7c1d017e528f9d8c949b8157b4aa1015137a4cbc41988c077067e8e80d5a109",
+      "sha256": "c660eaa68e87e6661e9a44feb5264bb5ae5f0638cb4b46b423a5b7220e7db0cc",
+      "bytes": 961000,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-entrada.png",
+      "sourceId": "a7202208691fa68ecfbc9adb6cf8147f0a49316c75802fb38092fb581921daef",
+      "sha256": "98ef570ae5b36d00aaca0249e1a08ddd6161c82394fe8d59e721644f45be7f72",
+      "bytes": 628720,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/realidade.png",
+      "sourceId": "a3e00b46d826edd46b5f453d3d16d3beb41c12b418f98f2ac94b870474444491",
+      "sha256": "0adec22de9efd0d4ae19b652f4f56d1fb334a2bc3bda43c2dde3c9565db534c5",
+      "bytes": 417307,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/resultado.json",
+      "sourceId": "6ad7b0c238dfbde1319f32a64a0099c87d09053f784fd4ddcb83a4b2bf3b6256",
+      "sha256": "8145a8d56fda81926b3cde7ad5e68f181d218ae822f38755cf702d0c45b5731e",
+      "bytes": 8746277,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/retorno.png",
+      "sourceId": "edc056c563e15ab1fa0f09cc8646bbe58163d99f439d180f0547f0dcca69587a",
+      "sha256": "0d18bd5be2d3dfacaaa4d0db3957996069f30d033a044a64aace0a2e8795d03a",
+      "bytes": 826826,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transformacao.png",
+      "sourceId": "b35c464fc33c62e59518f276ce3db062039ae640d48e3d758e90d03b7a704eb2",
+      "sha256": "f433f78b171504e0ccba57d80820be7bf07a0d8bfc40885b311cf3d97f330d06",
+      "bytes": 1297714,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/transporte.png",
+      "sourceId": "78f81938d37b3225a20f0e79ab01fd6c81fb0338302cda8c0896de4b79b7a9b3",
+      "sha256": "03477b759d3ab6c0c0df5f0e01bdbc915fd2af28caf684ed853889e3fc8bebdb",
+      "bytes": 1376440,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/00-abertura.png",
+      "sourceId": "f66822f55bd8d664934f7c6e13c2f3bfc2f5fcfbaecc685c0b57cb67a652f635",
+      "sha256": "327c06f64c83da10ae0ae4a8a384f54eed30762cad285fb30012c2f1b7410bd2",
+      "bytes": 17056,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/01-inicio.png",
+      "sourceId": "b5082947c1fce6044ac2edea91f9af51a8d4a76536d61f99ac558ca925721063",
+      "sha256": "82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82",
+      "bytes": 300131,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/03-retorno.png",
+      "sourceId": "1901bc9911ef72cc8c30180786125d8e81012ebb2472f0a2e9b7562e635836cc",
+      "sha256": "09e3423b0898768f2d7a2867b6333c30a344cabce3f4da8a01b82d327668ba53",
+      "bytes": 342114,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/04-sala-brinquedos.png",
+      "sourceId": "a3ad62df67c3da50f01c0bdc32a0bf3e0d803fee7ff3274f9cb4d67d136e6d9b",
+      "sha256": "fe8eacc46bd3b543e1db728fa03dce6524e14b7d79a1b66d45b6b972e1b6f835",
+      "bytes": 1292407,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/COLLECTING.png",
+      "sourceId": "cd6687e9d99662d4660248db940384c8ee4d9556ba4fd4869368e36f39c0189e",
+      "sha256": "fe8eacc46bd3b543e1db728fa03dce6524e14b7d79a1b66d45b6b972e1b6f835",
+      "bytes": 1292407,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/EQUIPPED.png",
+      "sourceId": "60246eb0b94fff9515066dd544e2484bec8b9532d942a6bfb876353c3fc0eedc",
+      "sha256": "0601bf7f7075887bdf8ad5a9d5e5f210c46c71923eae630888a2191d2e7f894a",
+      "bytes": 1272352,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/INVESTIGATION.png",
+      "sourceId": "a6eea31f61ab3a0d34f8992ac2c9201025b22a583f16be67fd1f9d0fbb9b330a",
+      "sha256": "bf4b1de839875e129d5b2c43040a1fc5f8e49cbdbe0b9c107a18de9136a80f66",
+      "bytes": 1307014,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/PICKUP.png",
+      "sourceId": "bed8042eeb8af4667aa30ecb7e5faca2c7a8ba219a606e41536004fdd608fdfe",
+      "sha256": "40f9019cdf7b6801f235b0233cfcfaa63181f81bfe39cc085e98b5e40d4864b9",
+      "bytes": 949986,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/SEEKING_SWORD.png",
+      "sourceId": "e76444cd1b1570cb712b8ab97b0593b1943cf4cd412c5c9a68ea4b73e63cf41b",
+      "sha256": "ef1c315510d9a251038da13bfe8fd267a29c8e13032891826d8e07e435d3b080",
+      "bytes": 1366280,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-0.png",
+      "sourceId": "e5024147952ac00f9dea1cbacc583a5c6cfe865e6748828cd390c23c6fcf7ae8",
+      "sha256": "c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713",
+      "bytes": 304240,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-1.png",
+      "sourceId": "ad94c248f6a639987662221176ea781359266af45b38d8b374b68cb416780459",
+      "sha256": "7cacdf4e7139888eb157a1fd28709a06ca0728776a2bb5c0cf704342810f7b31",
+      "bytes": 326897,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-10.png",
+      "sourceId": "795efb1724d1272dd6ad3a693d1584c368600cbed0f070d0f1d63c7fca9db8a1",
+      "sha256": "da791b872e4be2d7d1ae883efc477cbb1de84bbcb6bc92bc245f5b73f985be7a",
+      "bytes": 369772,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-11.png",
+      "sourceId": "08502c8f410784d8fd8fb078b9a67512c2332c5448613e213638c9f9b56714ee",
+      "sha256": "31bfa0ab81beddf55007b01adcb16965c1f75106253cdfa5d413493c8084da4f",
+      "bytes": 392599,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-12.png",
+      "sourceId": "928cbb1721f208590682525ba715c2de9b9164078ae87977b410da549b4e3c8a",
+      "sha256": "e270c73a2875314dcdc24a7e41045ae5146161e7138bce867945abd81536188b",
+      "bytes": 403237,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-13.png",
+      "sourceId": "5b50ddc4a03d6820b3f8d16e90512e7fa711d993aa437d29be6fe940ecf526e5",
+      "sha256": "41a20d25f36487c179ce3c100b6cb4d44a2e610c6896a634ecb35f6b6060cdc3",
+      "bytes": 428144,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-14.png",
+      "sourceId": "caa8de0495e50d642fe9222d966393f5dcb73565d6e19046bff5cb50b914a086",
+      "sha256": "bf18d244bd4cf9f10b74bc1896e6ffa8248e079aee21f2f3bec1ac1565f07de9",
+      "bytes": 430041,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-15.png",
+      "sourceId": "950d450a700f6274b31a2fbe1582cac8a4f90d12e05ff74bade58a028cf752f5",
+      "sha256": "f8e08e292fc8728f8a0d0bfb13d5417d8cb691b11478771d697544e273b41417",
+      "bytes": 391708,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-16.png",
+      "sourceId": "d7ba3861bc40c8fdebc79a09b55ce491c570f2c5da8ad44baa1c170dcb4c8fa2",
+      "sha256": "f9b166b54228446eb92d6769f34feb2e807808e230cf2f93b217a2fc92530379",
+      "bytes": 370040,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-17.png",
+      "sourceId": "f18d11923dfc26f912bc9e7434e8c83ca8f8248ce94328ba85400fa4ca411a3d",
+      "sha256": "bb2f4790cae1de946dc81249a8b244862f90eb8a38aeb27304d68145cd0124e8",
+      "bytes": 367258,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-18.png",
+      "sourceId": "b3f6d85dee3911214a0e22365b048c47bdf9a4df9cba65c941271a5fda7c28ba",
+      "sha256": "5b531d2523f10cb3c0ed78377c4bc65457cb0d0bcd367b5aa0279d301509ce2e",
+      "bytes": 359770,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-19.png",
+      "sourceId": "8a3b70d0cae253c3cc627dcec60c0548f623def5deb581906be4a3eb03db5e01",
+      "sha256": "5dacccebadf75deeff8db8e0446fd8aaf58874fb409913626bbbb14beb3a0031",
+      "bytes": 361452,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-2.png",
+      "sourceId": "439be193609b66732b108a963572494c09edd99b48f2a02f65dd1c72dce4a2c7",
+      "sha256": "56f10f5f6f5b21bbfd9cb6a1939197bde62d8a8e84cde03d13a5a01832c937bb",
+      "bytes": 336952,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-20.png",
+      "sourceId": "25008c5a60e1b368a3ccc838e9cce15f1db7a17e4baa10b806419ecf1b4d05f4",
+      "sha256": "8de7fbbacafa73255a8574baaef729756f3fd1c448583d014a1dd72173ae7221",
+      "bytes": 364205,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-21.png",
+      "sourceId": "b65b2faaa126273efd3dab3f610768fcf6f23998d7b86171385b021120c78379",
+      "sha256": "0ff463493d6bacda989c26dc562d43d7d4ed56a9ba32418b72baf666dfd74dc5",
+      "bytes": 392650,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-3.png",
+      "sourceId": "38c4ac8bfb4b99872738e9e5634f17e27b44efba78f383e4ed26e0552fb2ed08",
+      "sha256": "b3788c375e0ae354dce2a0f149bd24e978bd85841b63e16075ae51861a857abc",
+      "bytes": 320397,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-4.png",
+      "sourceId": "c693014d748401fdb46c320f8b41f5b462be0ecc6aeb0780a6b5ca4f01a6b384",
+      "sha256": "01f20df94b6ed338814d53d943a98e251cb0a4fccec4c7eeabf5d5d5c7162946",
+      "bytes": 302724,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-5.png",
+      "sourceId": "be98c6d49b5db4876b3c1008e6f4612426e3a3212fb10cd623e9c9fc7ba70837",
+      "sha256": "60f2f3612efb3792f42850b7ce74b09e6299ace3935b90c3fa538acf3151950a",
+      "bytes": 297434,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-6.png",
+      "sourceId": "0b80a624801c5a67268218272da92d5239e1dbcfabde35bc114cf1c9b4663ce9",
+      "sha256": "c4455de346c5a5e1f7691fec2c65ab57ed63bf7f6ad2bf89ca1516054d552b58",
+      "bytes": 325017,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-7.png",
+      "sourceId": "184917ecb87402139ea438c8be93eb171b6109faa5c4ffdc3608dfaccbbf5a65",
+      "sha256": "e6d5c43ad731621397105815c39c804d7f7d71c7da53f2068219bfb0dac14270",
+      "bytes": 357298,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-8.png",
+      "sourceId": "df89fd12e5226a2b784476472f6b0d6f77d0d946621b178ec652e7dafc96787b",
+      "sha256": "67856d10cb12575da10ed8facb3cbe722b24bcb49b9d1c66f5c6b9edf59417cc",
+      "bytes": 368927,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-ida-9.png",
+      "sourceId": "2fa0773e6bb48f79f5dfca7fd134ca8931b936b9cc25649f72faedfde9bdc4d3",
+      "sha256": "15f4d157dda472e549e7defd5aef8e839487b2b54b8cd43b08a89b188b38dea6",
+      "bytes": 303002,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-0.png",
+      "sourceId": "6cbfec968c89063834a114298b700d108f62d23c5b3829a073aba7f8255bd1e8",
+      "sha256": "2dab640750140043ed9f4d40838234f1c5ffe9b261ec0623000781185d59f928",
+      "bytes": 169091,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-1.png",
+      "sourceId": "bb2b04c0652f7bbb3cfe76f812016e09434dc3095aa173b164a0cef3f32c662e",
+      "sha256": "ea26fa64e586b5e903531e078848d588a03cb3bc5cd7c8694c08ae770e3df107",
+      "bytes": 273271,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-10.png",
+      "sourceId": "2959d6383846fa7548fd6e293fefd756d34a29c3e3b1f12f6ab094e2476ad1e5",
+      "sha256": "b059272ea14ca80e8fa00ed90de54cedcbdd6440b596c293e6e53ec6e702ddd1",
+      "bytes": 166853,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-11.png",
+      "sourceId": "c000b15f4582eeca38c2abe35b75412fce6e2774b8a5ebd0e8d4ced792ea0bae",
+      "sha256": "12ae7f853f1954a4e163ca2d2d98ef1eaefb42cfadd13938e95bf600e674f5e1",
+      "bytes": 169357,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-12.png",
+      "sourceId": "58b1a6ba83f96685688205c7211d222d93b1a2c266a258ce4055d6e0064c20ae",
+      "sha256": "7083ba000ff7b4bfc983fcc6e04c9374e51ac3ff0d4822e1fd36825607d9b065",
+      "bytes": 176521,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-13.png",
+      "sourceId": "47fc74d20fade7b363645b439850e253421e7cc5b2ba9dd3d21f9c98fb12b1b7",
+      "sha256": "81ffc57bebf4d19b5b3820157d7a98a6648e20f53c275c1cfe1b4325755a8196",
+      "bytes": 176866,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-14.png",
+      "sourceId": "dbbd15b409b635b87aae0c19c6b4f80a7e27765cfeadffe834318e8269eb0c87",
+      "sha256": "235fec9c445be0ef926e25c750c6974d24cde71e8a25792e7f99ca4f41065c85",
+      "bytes": 176194,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-15.png",
+      "sourceId": "b18668a9915e6220595dff65c1e17a14a0c60024155a789ff1d14fb930540bd7",
+      "sha256": "8851b22ae467386ae3152488ccb585172210ac77278641ad2b3a1afe78c51046",
+      "bytes": 185255,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-2.png",
+      "sourceId": "c7cfc5392f55380dfe6c0f4c80bfb09e01c9ec34990fa9660645e912fb1080cf",
+      "sha256": "51ba636e347a2f75d12c4cdb51afa66f5f86b3886621e9e25a6739ddfeca2a70",
+      "bytes": 272368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-3.png",
+      "sourceId": "d9b25c839acb7d579ce0c3f00f18a1b31be81e879b817e47a0a967de4a303d26",
+      "sha256": "e5dd4dcf89847ec80e24c0a1475b78f19e8a819e168ab0c747a0f88e057003cd",
+      "bytes": 266345,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-4.png",
+      "sourceId": "c89e6a96f5d9b5f391d2f775d733eab7ca144ecea28064a9d63274ac6d0ce609",
+      "sha256": "442f34dcc8499a3939c08eb84924028530161031b20a91f9265345e0a10cd80c",
+      "bytes": 252102,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-5.png",
+      "sourceId": "1e1c0a54a0bb242ee81adebf323c20c928fc94a4eaca47167d469c5dff83de0c",
+      "sha256": "d8e05eabfb8b3a51a07fbfa901e3d53627603d91e607fd813486aa6831ec1fed",
+      "bytes": 224602,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-6.png",
+      "sourceId": "40767933affa54c33293c223e15f443f707375171656038ba667ffe83a393424",
+      "sha256": "02237865c59f35f8c912a0f4b09cd75adb1e826d205ce2efcd7c7ff5f4103053",
+      "bytes": 173085,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-7.png",
+      "sourceId": "58863149e79dc19bea4ca234d27efb6cd3cce1d798dbd8f6155af2dbb36c5090",
+      "sha256": "54bd9be803c0c1c33226e0910676b9133c60ee25b6422dec438addadcc93d2cb",
+      "bytes": 168297,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-8.png",
+      "sourceId": "91cb5eee844f51e1a470a3d25d049355d74f6b6877a3dcf794b86727cf29c4e8",
+      "sha256": "b1837804b471b9dff7ee2e1bf11a366f5a4dfba40526fa751a24cda06b79f28c",
+      "bytes": 170621,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/apoio-retorno-9.png",
+      "sourceId": "ad66e502b77c8a249b8ffb1e8a194ef554c6611d1e5854226d59f7b3cd02dedd",
+      "sha256": "d53eb9af8b93434d5900315e14e05bce884611df88699af902665d7bae2bf14f",
+      "bytes": 168770,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-ATTACK.png",
+      "sourceId": "d0fa23777b6b32ef9921ca6c43071c741a98b9fdcdfa67c2822aaea9c4cef422",
+      "sha256": "198ce18b2a0291292214ddb777cb4380917549f73fbc0cd1944aa30b473132c1",
+      "bytes": 951368,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-DEATH.png",
+      "sourceId": "b62c34edc0f9f0cb21309de0bc777efb15873a0a5ecd40dd2befe9e7e764306a",
+      "sha256": "226a079814b336e31bdff70a1f42e75dd2b8bacbe2c960607808ed2fce9404e4",
+      "bytes": 889337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-HIT.png",
+      "sourceId": "e20752e72322deb24dd5c552ff07b48327a000f81c0789f57755103b39d05149",
+      "sha256": "f5a974b7ad9b334f71812e1bdfb3bbe60eca00325e46a613ae1ef76613910f4d",
+      "bytes": 940291,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-IDLE.png",
+      "sourceId": "01c9b38811c37aedeeab1403ae56577c6c4170882c367bbf367d856cfac095d9",
+      "sha256": "9f211db1690b5dd53d23a40820c3c2fb13c3773941a8f54137bafcde917b0491",
+      "bytes": 945128,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-ataque.png",
+      "sourceId": "7c503e5bd7598074bba6bc6b6c858eb848e8e754afd95fdeb5b2b516b6f49100",
+      "sha256": "61e2580b5eec9a878d5dece65554735f714c3d78693d1a0476487f08ed17d0ca",
+      "bytes": 943705,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-bear-entrada.png",
+      "sourceId": "447536de88bb97d8dd10f12535647d5950805c677472a83aacc720dbdc60b5a5",
+      "sha256": "732867c9857cf0c11c13b8bcb245fe4b26f897bfd52a84daed2de63907725311",
+      "bytes": 861217,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-APPROACH.png",
+      "sourceId": "7d56862e0516e8ef7aa1ebf64eb7212dbbb77c39ed05a2de597b140a7dfbe90a",
+      "sha256": "ddcee88d73a9296a44d0046010f4727b3a0d84082c962d7ac3aa565c50bec1e8",
+      "bytes": 721606,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-ATTACK.png",
+      "sourceId": "687110b00c96d9f719543dd036be36a9bb6fbc64ddf8f869eee4a26a803d3d58",
+      "sha256": "e981fd7dba39d5f87fef347ef5f7569ba07921a79bd04678f5c576fba40a5385",
+      "bytes": 926934,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-DEATH.png",
+      "sourceId": "70b3f39ca927c30a2315077bde9e0196bf449bde6dad4d48cf37d59b9777fa99",
+      "sha256": "fa6e18b22b95b6cab2777409ae21ba0f6d4897bf194c243b54eedc3acadfb067",
+      "bytes": 868780,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-HIT.png",
+      "sourceId": "cd4040ccae51725534c0c5c2802dfb8c2911ea26a764c2b5ce0e16333ee58d44",
+      "sha256": "5d88268a4293ded62a6ed6e83e72db74aa2ea78d3e91d35456bfb7c8fdd5d884",
+      "bytes": 938003,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-IDLE.png",
+      "sourceId": "9cc6ca0248f74bf8a1126ab69da2f3c629112947222aaae85195a9c2d93ad80e",
+      "sha256": "b498dfd449414a7e21dece76eed6c305eada0998dcb7288c7abfe268bc4cf047",
+      "bytes": 701579,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-ataque.png",
+      "sourceId": "e8a1eea23907bbf13a7031b09904cc078c755613e2acc30f20aa673a43a466f4",
+      "sha256": "e5b8afb277720acea459fd72ec7722ddd25b4191ca7635435b86e653dce589e0",
+      "bytes": 903210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-entrada.png",
+      "sourceId": "f25d0167b3b195235e35eb0f4d05527b8979ad4c7a2cfc3e9d112838ededf458",
+      "sha256": "e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3",
+      "bytes": 701551,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-ATTACK.png",
+      "sourceId": "a596d7a3ab93cc4c86f3aed379d1892e8d18fec64e27f6fcf9bd0ee4e6280d2a",
+      "sha256": "af14caa594a3eb37a581b25ef3a113f1dd777ccff09adb39e8e75aa82e855dcf",
+      "bytes": 952449,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-DEATH.png",
+      "sourceId": "a5c36787e98998f59c1bc3a6028aee9f4660d15daa8bf0aa0a1e3a1f84641a99",
+      "sha256": "6fb6670160ad7ae60ea128e0e9c1c7b493f379ebcda1d79293f2a98ce4e28166",
+      "bytes": 901039,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-HIT.png",
+      "sourceId": "41441b49a27e3ebad87571ac72606c0695451f844c1fbfb9bfd627614b2dd304",
+      "sha256": "faceff8920eec337de938bbbac2e98fec255e1f1e17b055063ecb77c66f9ddb4",
+      "bytes": 932941,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-IDLE.png",
+      "sourceId": "ac7f83d7cf91943c658bcb1c7e41b10d424c10f494d4e9803695244ed79b14ad",
+      "sha256": "07989ab2e2453e26e19f5d2085683ff91f9dbecfcd868639e8e47e4688593356",
+      "bytes": 940522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-ataque.png",
+      "sourceId": "a4a91f051ee97057e4baa1299d854cd1098a252166cd52f8dd640bf44643b4ca",
+      "sha256": "d7aa51b7446979c2a05d109d57a4f188ce938978db39422a14e9d927befdec28",
+      "bytes": 941331,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-entrada.png",
+      "sourceId": "e13e9fe7b4c9db0f50b9109924a87a003fff100d0795e74ece8663a8017a695b",
+      "sha256": "5d7533a3aded80b5842e8d5dde13957816d66ac61096cd5afb6e34da48506bff",
+      "bytes": 875522,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-ATTACK.png",
+      "sourceId": "0152e028eb2f60ba79c1d8d8a717888780cd04a2569456e97fdc5361069df557",
+      "sha256": "de4aaafce52b13018424918865752de40bcbf0de6a4ba28c10dafdd1d5096efc",
+      "bytes": 830199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-DEATH.png",
+      "sourceId": "6baa215a40bf7d161f6402cc4a332001d101e443371e5f11cbc3ec6b460d3beb",
+      "sha256": "9a70e6e22eab68aecb2d1be4afc4b6b2fc9109dc1dbbb2c13bfc9cb8bc43c7f0",
+      "bytes": 863317,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-HIT.png",
+      "sourceId": "c7e5fce773f1929d58de698876aaee1e48f9105e127cc46f9b632edbc6f722f7",
+      "sha256": "2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d",
+      "bytes": 874731,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-IDLE.png",
+      "sourceId": "8464b29f8680ce772010c6c19b8ab526a384571eb6241d559fd57b18b767bf7b",
+      "sha256": "98cc62ae08cf3ad6a13957423d9358b4e369176ddaba20a085b744c5630d7f43",
+      "bytes": 701691,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-RETREAT.png",
+      "sourceId": "adb2f1926d23b9ef268a3fb4a498870c7bb4513fcdf1496f9ed718b6a8ee41f3",
+      "sha256": "4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c",
+      "bytes": 889032,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-ataque.png",
+      "sourceId": "02cf81b7f93ad666e84f4276a67aa95f15325dc045da4a973902e7b817112a7a",
+      "sha256": "848d600bb23e12021828204a8fedc5b72900ef46e987f124d26b60c54f33a77b",
+      "bytes": 960967,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-entrada.png",
+      "sourceId": "9deb9b2813231c6b40b84821e61e66410b23d50b751c132d6c68e85e4001e104",
+      "sha256": "98ef570ae5b36d00aaca0249e1a08ddd6161c82394fe8d59e721644f45be7f72",
+      "bytes": 628720,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/realidade.png",
+      "sourceId": "6f1f70f1dfeb0cc9b2caa49e159948c24b91e9f0b9917b3e2a7e4ff319c8c68c",
+      "sha256": "ae14a60c9cf109376adf1f5b23b1f44feba2cf33ede46deacfefbac57b2f1a83",
+      "bytes": 417219,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/resultado.json",
+      "sourceId": "5ac7ec1ed4e18e637bd453b65d574903e1e91de97305d875279cbf4689829999",
+      "sha256": "8bd61726ba4d3e778aecc9fea7e7eb48ec83189db8f194cd9f96f9c97c329106",
+      "bytes": 8913729,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/retorno.png",
+      "sourceId": "6167c3e8b2512ee407ca342a214cc6ed595d6f43f34169ea55b2bbc0210a3be9",
+      "sha256": "0d18bd5be2d3dfacaaa4d0db3957996069f30d033a044a64aace0a2e8795d03a",
+      "bytes": 826826,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/transformacao.png",
+      "sourceId": "8b5ed3235c5cad726f4d91136254fb0ff05993fd10cf824d295b10f48c67ada2",
+      "sha256": "0745113abe4a05cd3d50b4f7a268e2b02e35f55c485ef563d94882ab0ce53a2f",
+      "bytes": 1318340,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/transporte.png",
+      "sourceId": "ba4304b067c41ed3108a3d038fcde3b89803b4414bbe7a9290e420729e729586",
+      "sha256": "d7c76fb32008577376e162ac74ef9187d897d893653f9239d9769350574a0da1",
+      "bytes": 1376274,
+      "metadataOnly": true
+    }
+  ]
+}
