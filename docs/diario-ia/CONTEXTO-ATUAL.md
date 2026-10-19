@@ -68,6 +68,12 @@ Tutorial e prontidão da câmera falharam inicialmente com várias baterias no m
 
 Sessão `20261019T130908-2bdc86a5c0b0`, por pedido explícito do usuário para limpar resíduos, fazer commit na branch e sincronizar com Git. Relatórios e QA já estavam exclusivamente no diário de IA; o acervo, diário humano, guias e artes foram preservados. Removidos três arquivos `.DS_Store` locais, registrados por caminho/hash/tamanho no diário. As correções da bailarina, câmera e bateria de formatos foram consolidadas no commit local `c541409147803d6eceeb4426083904553919ec2e`, na branch `fix-balanceamento-luta`. Suíte padrão, build, recursos e diff aprovados; triagem dos arquivos novos sem credenciais detectadas. O fetch confirmou alinhamento com origin antes do commit. O push foi rejeitado pela revisão automática antes de executar: exige autorização explícita para enviar o conjunto de cerca de três mil arquivos ao GitHub `https://github.com/luciussama/legendGirl.git`. Não repetir o push sem resolver essa autorização. Um commit documental subsequente registra o bloqueio. Não houve integração à main ou publicação.
 
+## Integração do balanceamento na principal em 19/10/2026
+
+Por pedido atual do usuário, sessão `20261019T131809-fafe34834a5d`, `fix-balanceamento-luta` foi integrada à `main` no commit `ea57dfc324b5dc00e7653244d595fa21e80bcd69`, sem conflitos. O repositório não possui `master`; `HEAD` remoto aponta para `main`, usada como principal após comunicar a correspondência ao usuário. A origem `c169d28789f57cba33dd72c80744560c8aef59e2` já estava no GitHub quando esta sessão começou, resolvendo a pendência externa registrada anteriormente, sem reescrever aquela evidência.
+
+A árvore do merge foi confirmada idêntica à da origem. Suíte padrão, build, 66 recursos e diff aprovados após integrar. O merge foi enviado para `origin/main`; só após confirmar a ancestralidade no remoto, `origin/fix-balanceamento-luta` foi excluída. A branch local foi preservada; o workspace está na `main`. Um commit documental subsequente registra o encerramento e as evidências; os comandos não certificam a conclusão de eventual deploy automático do GitHub.
+
 ## Trabalho compartilhado
 
 Verifique `git status` e os registros de início antes de editar. Não descartar alterações de outras pessoas/IAs. Registre responsável, escopo, branch, HEAD, arquivos afetados, decisões, resultados dos testes e pendências. Os eventos são anexados em arquivos separados, sem sobrescrever o histórico.
