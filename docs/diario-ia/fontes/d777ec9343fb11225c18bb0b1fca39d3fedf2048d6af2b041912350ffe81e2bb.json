@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d777ec9343fb11225c18bb0b1fca39d3fedf2048d6af2b041912350ffe81e2bb",
+  "path": "qa-execucoes/d4ea429634ca4174a3178d9a4a6b0304/docs/diario-ia/qa-resultados/tutorial-producao/first-jump-production.json",
+  "sha256": "10224acd2132f1c55964fedbc1b60d3ade405e0b7c6d7cf95d5e14607fa24d98",
+  "capturedAt": "2026-10-19T12:49:13.946489+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "[\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-migrada-incorretamente\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Android\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-migrada-incorretamente\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"iPhone\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"nova\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-migrada-incorretamente\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-antiga\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"abertura-concluida-sem-save\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"tutorial-restaurado\",\n    \"aprovado\": true\n  },\n  {\n    \"plataforma\": \"Desktop\",\n    \"cenario\": \"concluido\",\n    \"aprovado\": true\n  }\n]"
+}

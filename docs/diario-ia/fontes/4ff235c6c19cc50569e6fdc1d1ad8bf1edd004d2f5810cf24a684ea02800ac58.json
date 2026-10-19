@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4ff235c6c19cc50569e6fdc1d1ad8bf1edd004d2f5810cf24a684ea02800ac58",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/arena-robot-IDLE.png",
+  "sha256": "51f9076b8aa2477a7a86e58ea6f7eac6cefa59125d317929e83d02b7f770c1c2",
+  "capturedAt": "2026-10-19T12:46:02.959973+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/arena-robot-IDLE.png\", \"sha256\": \"b7702bdd5f9624158374e515b101bd04672b157b72eb35dba9012f2634c28fa6\", \"bytes\": 847107, \"binaryRetained\": false}"
+}

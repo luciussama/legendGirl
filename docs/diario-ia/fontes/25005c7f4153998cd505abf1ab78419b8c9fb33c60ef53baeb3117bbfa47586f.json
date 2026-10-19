@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "25005c7f4153998cd505abf1ab78419b8c9fb33c60ef53baeb3117bbfa47586f",
+  "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/assets/qa-testers/current-screenshots/first-jump-production/Android.png",
+  "sha256": "cbf3e26d7cb7dccefb88db98e930ef7ced05dc9d30fcc82be155531bab8ad99f",
+  "capturedAt": "2026-10-18T17:14:47.593851+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "script:test-first-jump-production-browser.js"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"assets/qa-testers/current-screenshots/first-jump-production/Android.png\", \"sha256\": \"300cbcdbec9423a4b12e9ffd35b7f52c207cc08afb925b32667657d1d731796f\", \"bytes\": 289000, \"binaryRetained\": false}"
+}

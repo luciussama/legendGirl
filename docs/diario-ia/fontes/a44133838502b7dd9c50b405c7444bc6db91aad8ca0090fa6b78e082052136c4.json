@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a44133838502b7dd9c50b405c7444bc6db91aad8ca0090fa6b78e082052136c4",
+  "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/844-defesa.png",
+  "sha256": "4c88e04deaed51b0b34f5b3299fd0a87d6935139bf16c214365036aeab06d9d4",
+  "capturedAt": "2026-10-18T17:00:22.811853+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:defesa:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-defesa/844-defesa.png\", \"sha256\": \"936acd6ddf30982c84f9e4a07d65d366428564d2ed793d3ea93a4f0bd0e539db\", \"bytes\": 444743, \"binaryRetained\": false}"
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T170852-f832075f0014-fim",
+  "sessionId": "20261018T170852-f832075f0014",
+  "type": "fim",
+  "date": "2026-10-18T17:22:20.198079+00:00",
+  "title": "QA de jogabilidade e regressões em todas as fases, dificuldades e dispositivos",
+  "actor": "Codex",
+  "summary": "QA amplo concluído sem regressão funcional reproduzida no jogo. Suíte geral, seis campanhas completas NORMAL/EASY em desktop/Android/iPhone, 48 combinações de controle e 18 cenários de abertura/tutorial passaram. Save/recarga real, teclado/mouse/gamepad simulado e toque nativo em retrato/paisagem aprovados. Corrigidas somente fontes de QA e alias arquivado do tutorial: diretórios de relatório, fixture inválida após refatoração e contratos de primeiro salto/ataque durante transformação desatualizados. Alterações anteriores de produção preservadas; sem commit, push ou publicação.",
+  "checks": [
+    "npm test: aprovado nesta rodada; suíte geral, combate legado e arena, persistência, dispositivos, 111 percursos históricos e defesa.",
+    "test:toy-room:arena:browser: aprovado em desktop/Android retrato/paisagem; quatro inimigos, derrota, nova tentativa e retorno, sem falhas de recursos ou exceções.",
+    "test:jogabilidade:browser: seis percursos completos NORMAL/EASY x desktop/Android/iPhone; 228 saltos entre apoios, exploração, quatro inimigos e retorno aprovados.",
+    "test:jogabilidade:entradas: 48 combinações aprovadas; pausa, foco, cancelamento, restauração e desconexão incluídos. Primeira tentativa corrigiu sincronização da soltura na fixture, sem mudar o jogo.",
+    "test:jogabilidade:tutorial:browser: 18 cenários de produção aprovados após corrigir gravação do relatório. Execução histórica inicial passou nas verificações de jogo e falhou por ENOENT no destino antigo.",
+    "test:jogabilidade:persistencia:browser: NORMAL/EASY, mais 76 saltos de percurso, pausa, save/restore e recarga real aprovados após atualizar entrada pública do ataque na fixture.",
+    "test:jogabilidade:complementos:browser: mensagens e conclusão nas quatro entradas, retry/restore, defesa/arraste diagonal/salto+espada com eventos nativos de toque em 390x844 e 844x390 aprovados. Espera do tutorial por 600 quadros seguida de salto válido também aprovada. Tentativas iniciais com contratos/instrumentação antigos preservadas.",
+    "npm run build, npm run check-assets (66 recursos) e git diff --check aprovados."
+  ],
+  "pending": [
+    "Emulação Chrome e gamepad simulado não certificam Safari/iOS, aparelhos físicos, controle físico ou sensação humana de dificuldade. Reavaliar ergonomia e balanceamento com jogadores reais."
+  ],
+  "files": [
+    "docs/diario-ia/qa",
+    "docs/diario-ia/relatorios/20261018-jogabilidade-regressoes.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/pacotes",
+    "docs/diario-ia/registros"
+  ]
+}

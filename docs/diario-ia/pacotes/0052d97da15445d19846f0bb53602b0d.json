@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "id": "0052d97da15445d19846f0bb53602b0d",
+  "date": "2026-10-19T02:56:56.254515+00:00",
+  "title": "QA temporário: test:bailarina:antes:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d.log",
+      "sourceId": "77b3891d1762c1627672bf8d43e84d7ce55b7a65dcb1a2907987cff18a871089",
+      "sha256": "fb6c8bc3448be37281811864e79121a2509bf59dd21195f95f51d97270dcaf0a",
+      "bytes": 247,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d/docs/qa/.DS_Store",
+      "sourceId": "22283bba5931d5122eb4c14ffafb6e99e81630cc8662518bb3cc638a0630b449",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d/docs/diario-ia/qa-resultados/bailarina-antes/android.png",
+      "sourceId": "a5f00de0afd0b989d3f87efc7ab64bb7faaf205318e09c40630f3921d7befbd1",
+      "sha256": "e8670bd31b76c93c183138d0bbf4c80b4f0cd3a33b5e4f14b794b694a893bfca",
+      "bytes": 60654,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d/docs/diario-ia/qa-resultados/bailarina-antes/desktop.png",
+      "sourceId": "0fc4c64c906da0d4f29c138d3e945172cb52602b808c03eadecf94394b72c07f",
+      "sha256": "92348eab6dcc9e9edf6dc17d5be232b9fbab4b11cb8fb86a383b9ff6be30bca4",
+      "bytes": 236712,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d/docs/diario-ia/qa-resultados/bailarina-antes/paisagem.png",
+      "sourceId": "cbcb4d9c3b1622ad115b2936810ebcbc8a9dbf7e2f728adaf03fb9c090235cae",
+      "sha256": "8e6daafdfd397669968181e29a2f2d1cd8fb026a6ffef518b56e9d4431a7c21b",
+      "bytes": 173857,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d/docs/diario-ia/qa-resultados/bailarina-antes/resultado.json",
+      "sourceId": "2e5e056e7b0ea2f98233618c15f1e85da4b4c5f650c2ccb063d434eb9d68ecf7",
+      "sha256": "d0a399ad4768c65ff70e634819237bdb15f406f77d607767c9390cf28cad26a2",
+      "bytes": 2237,
+      "metadataOnly": false
+    }
+  ]
+}

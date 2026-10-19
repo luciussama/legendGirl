@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T025354-58c4358053af-fim",
+  "sessionId": "20261019T025354-58c4358053af",
+  "type": "fim",
+  "date": "2026-10-19T03:00:16.285604+00:00",
+  "title": "Corrigir regressão de alcance e frenagem no salto da bailarina",
+  "actor": "Codex",
+  "summary": "Corrigida regressão introduzida no salto da bailarina: frenagem aérea 0,3266 substituída pelo alcance original 1,42. Restauradas velocidades originais de toda a aproximação ao castelo; curva pós-clímax preservada. Validação anterior por busca de instante ideal foi insuficiente. Novo teste de saídas normais integra npm test. Fontes, falhas antes da correção, resultados após e hashes de imagens preservados no pacote 20261019T030004-357d477454c3. HEAD mudou externamente para 3c90c66; esta sessão não executou commit.",
+  "checks": [
+    "Falha original reproduzida no teste de física e em nove saltos de navegador antes da correção",
+    "npm test aprovado, incluindo 24 saídas normais e 156 combinações da curva",
+    "test:bailarina:browser aprovado: nove saltos com teclado/toque, desktop e duas apresentações móveis",
+    "test:jogabilidade:browser aprovado: seis percursos NORMAL/EASY em três perfis",
+    "npm run build e git diff --check aprovados"
+  ],
+  "pending": [
+    "Reavaliação humana da sensação e aparelho físico não executados; automações não equivalem a homologação humana"
+  ],
+  "files": [
+    "src/js/config.js",
+    "package.json",
+    "docs/diario-ia/qa/testar-bailarina.js",
+    "docs/diario-ia/qa/bailarina-browser.js",
+    "docs/diario-ia/qa/fisica-janelas-saltos.js",
+    "docs/diario-ia/qa/testar-progressao-saltos.js",
+    "docs/diario-ia/relatorios/20261018-correcao-bailarina.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/COMANDOS.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/REFERENCIA-METODOS.md"
+  ]
+}

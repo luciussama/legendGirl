@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "58a35c865cd00266cf2e5dde450aed1fded739471831bdba5e88e5860cea42a7",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-IDLE.png",
+  "sha256": "5bfb5c2effc8ca254c7e27952a015ee11d8d1e4fb9003799955c0e4d0e333d6f",
+  "capturedAt": "2026-10-19T12:46:00.111373+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-IDLE.png\", \"sha256\": \"d333e4ce29057c91d520570236ed03375ce4fff53bc1719b142ee8a8dac68602\", \"bytes\": 1132633, \"binaryRetained\": false}"
+}

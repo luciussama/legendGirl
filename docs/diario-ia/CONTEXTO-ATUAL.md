@@ -1,6 +1,6 @@
 # Contexto compartilhado vigente
 
-Atualizado em 15/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
+Atualizado em 19/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
 
 ## Ler antes de agir
 
@@ -25,6 +25,48 @@ A identidade da protagonista, as artes detalhadas atuais e a geometria das plata
 - As escolhas históricas não foram alteradas para declarar recursos novos como aprovados. Não usar esse JSON para excluir novas artes nem restaurar variantes aposentadas como fallback.
 - Inventário atual: `docs/sprites/inventario.json`, `MAPA-SPRITES.md`, `RECORTES.md` e `GUIA-DESIGNERS.md`. Mapa estático deve ser reconstruído após mudanças; confirme usos dinâmicos no código.
 - Persistência: `src/js/state/`, snapshots da Toy Room e arena. Revisões devem preservar saves antigos e estados de transformação, combate e retorno.
+
+## Ajustes de arena em 18/10/2026
+
+A pedido do usuário após avaliação humana, a arena deixa de causar dano por contato corporal. A menina mantém o rosto voltado ao inimigo; recuar no chão defende com espada a 55% da velocidade, bloqueando golpes sem transferência de corações. Atacar, saltar, agachar e reação de dano interrompem a defesa. O direcional móvel fixo em cruz aceita oito direções com um polegar e espada simultânea com outro dedo; em paisagem, a câmera mantém os atores entre os controles. Seis poses geradas com Imagegen entram e saem em 12 quadros; prompt junto ao atlas. Não houve avaliação humana desta nova versão nem aprovação individual da arte. A sessão `20261018T164751-6e403b9b7371` registra validação técnica e limites. O executor de QA passa a resolver versões por data do pacote, evitando que nomes históricos com prefixos `zzz` substituam contratos atuais.
+
+## QA amplo de jogabilidade em 18/10/2026
+
+A sessão `20261018T170852-f832075f0014` não reproduziu regressão funcional nos cenários executados: suíte geral, seis percursos completos (NORMAL/EASY × desktop/Android/iPhone), 48 combinações de entrada/inimigo/lado, 18 cenários de abertura/tutorial, persistência com recarga real e toque nativo em retrato/paisagem. Gamepad e aparelhos são simulados; perfis iPhone no Chrome não certificam Safari ou hardware real. Não foram atribuídas notas de dificuldade.
+
+Foram corrigidas automações antigas: destinos de relatório ausentes, ataque interno forçado durante transformação, expectativa de bloquear o primeiro salto válido e fixture de tutorial incompatível com a refatoração do renderer. O alias arquivado `test:tutorial:browser` usa fontes atuais; evidências históricas permanecem imutáveis. Não houve alteração de produção nesta rodada. Detalhes e limites em `docs/diario-ia/relatorios/20261018-jogabilidade-regressoes.md`; fontes novas em `docs/diario-ia/qa/`. Nova avaliação humana em aparelho físico continua pendente.
+
+## Auditoria dos saltos do NORMAL em 18/10/2026
+
+O responsável confirmou que a impressão de saltos fáceis ocorreu no NORMAL. A sessão `20261019T023417-7d4a862551ef` não encontrou regressão recente: módulos de plataforma/input não foram alterados pelos ajustes da arena; `config.js` é idêntico à revisão anterior ao FÁCIL (07/10). `test:difficulty` passou em 10.640 comparações e `verify:dark-room` preservou geometria/física e progressão da fuga. Os primeiros dez saltos já oferecem janelas aproximadas de 317–1.167 ms no NORMAL; o salto castelo→trem tem assistência garantida desde 24/09. Essas facilidades existentes podem explicar a sensação; não certificam desafio humano. Nenhum parâmetro foi alterado. Evidência e limites em `docs/diario-ia/relatorios/20261018-auditoria-saltos-normal.md` e JSON associado.
+
+## Balanceamento autorizado dos saltos em 18/10/2026
+
+Após a auditoria anterior, o responsável autorizou reduzir gradualmente as janelas, sobretudo após a porta falsa, preservando o repouso do castelo e o início generoso. Sessão `20261019T024019-e67b866342e7`: `getApproachJumpSpeed` mantém os dois primeiros saltos e reduz as janelas seguintes; `getPhase3Stats(level, fromFloor)` usa alcances fixos para o retorno, nominalmente de 456 a 100 ms. Castelo/saída para o trem, fuga, geometria, gravidade e impulso vertical foram preservados. A velocidade horizontal aérea muda, produzindo saltos mais curtos em algumas saídas. Esta é uma mudança intencional de balanceamento, posterior à conclusão de que não havia regressão recente.
+
+`npm test` e seis campanhas completas no navegador passaram em NORMAL/EASY e três perfis; o teste de 156 combinações da curva integra a suíte padrão. Referências históricas não foram reescritas. Detalhes em `docs/diario-ia/relatorios/20261018-progressao-saltos.md` e JSON associado. Sensação humana e aparelhos físicos continuam pendentes.
+
+## Correção da regressão da bailarina em 18/10/2026
+
+O usuário identificou regressão real após o balanceamento acima. Sessão `20261019T025354-58c4358053af`: a velocidade aérea de 0,3266 (antes 1,42) produzia frenagem de cerca de 77% e fazia saídas normais das gavetas retornarem ao mesmo apoio. Os percursos anteriores buscavam posições extremas de lançamento; sua aprovação não demonstrava jogabilidade humana e não detectou o problema.
+
+A aproximação inteira ao castelo recupera as velocidades originais (1,42; exceções 1,8 e 1,95), prevenindo a mesma frenagem nas outras saídas. A progressão estritamente decrescente nessa aproximação foi retirada; o retorno pós-clímax conserva a curva autorizada. Geometria, gravidade, impulso, castelo e assistência de saída não mudam nesta correção. `test:saltos:bailarina` integra `npm test`: reproduz a falha antiga e verifica 24 saídas usuais, pés apoiados, NORMAL/EASY e três passos de tempo. O navegador confirmou nove saltos com teclado/toque em desktop e dois perfis móveis, sem procura pelo melhor quadro; a fixture prepara o ponto inicial e executa a física real em passos por quadro. Isso não equivale a avaliação humana ou aparelho físico. Relatório: `docs/diario-ia/relatorios/20261018-correcao-bailarina.md`. Evidências anteriores permanecem preservadas.
+
+## Enquadramento fixo no retorno em 19/10/2026
+
+Por solicitação explícita do usuário, sessão `20261019T122138-031808675e39`, o retorno pós-porta falsa deixa de aplicar compensações por salto/pouso. A rolagem horizontal base permanece; a apresentação vertical segue uma trajetória contínua do cenário em função do deslocamento horizontal, sem seguir o arco do pulo ou trocar alvo ao pousar. `CameraPresentation.getPhase3ScrollFrame` define esse trajeto. O zoom lógico de recuperação e o offset Android não modulam o desenho durante esse gameplay; no móvel, escala 0,8 e deslocamento fixo substituem a recentralização contextual nas bordas. Transições narrativas conservam seu comportamento e recebem a última pose desenhada.
+
+Física, geometria, alcance, curva de dificuldade e câmera lógica de teto/derrota não foram alterados. Não adicionar compensação de dificuldade agora: eventual auxílio deve ser avaliado separadamente, como pediu o usuário. A regressão visual específica é `test:camera:retorno:browser`, arquivada no diário; contratos históricos foram preservados. Foram aprovados 288 cenários de matriz fixa no navegador, os 48 apoios apresentados, seis percursos completos em NORMAL/EASY e três perfis, suíte padrão, build e diff. A aprovação técnica não equivale à avaliação humana da sensação no aparelho. Detalhes em `docs/diario-ia/relatorios/20261019-camera-retorno-fixa.md`.
+
+## Bateria de formatos em 19/10/2026
+
+Sessão `20261019T124120-b85e3d717fa6`: concluídas 16 campanhas em NORMAL/EASY, nos perfis desktop, Android/iPhone retrato e paisagem, tablet retrato/paisagem e celular compacto. São 608 saltos entre apoios, exploração, espada, quatro inimigos e retorno. Suíte padrão, 48 combinações de entrada, toque nativo em seis dimensões, 18 cenários de abertura/tutorial, persistência com recarga, câmera, bailarina, derrota/nova tentativa, build e recursos passaram. Nenhuma correção de produção foi necessária. As fontes de QA foram ampliadas, preservando os contratos existentes.
+
+Tutorial e prontidão da câmera falharam inicialmente com várias baterias no mesmo Chrome; a repetição isolada passou sem aumentar os prazos ou relaxar asserções. As duas evidências foram mantidas. Executar essas baterias de navegador sequencialmente. Os perfis são emulados no Chrome e os percursos completos consultam estado/instantes viáveis: isso confirma conclusão funcional nos cenários executados, sem homologar dificuldade humana, aparelhos físicos, Safari/WebKit ou Firefox. Relatório: `docs/diario-ia/relatorios/20261019-bateria-formatos.md`.
+
+## Limpeza e preparação de sincronização em 19/10/2026
+
+Sessão `20261019T130908-2bdc86a5c0b0`, por pedido explícito do usuário para limpar resíduos, fazer commit na branch e sincronizar com Git. Relatórios e QA já estavam exclusivamente no diário de IA; o acervo, diário humano, guias e artes foram preservados. Removidos três arquivos `.DS_Store` locais, registrados por caminho/hash/tamanho no diário. As correções da bailarina, câmera e bateria de formatos foram consolidadas no commit local `c541409147803d6eceeb4426083904553919ec2e`, na branch `fix-balanceamento-luta`. Suíte padrão, build, recursos e diff aprovados; triagem dos arquivos novos sem credenciais detectadas. O fetch confirmou alinhamento com origin antes do commit. O push foi rejeitado pela revisão automática antes de executar: exige autorização explícita para enviar o conjunto de cerca de três mil arquivos ao GitHub `https://github.com/luciussama/legendGirl.git`. Não repetir o push sem resolver essa autorização. Um commit documental subsequente registra o bloqueio. Não houve integração à main ou publicação.
 
 ## Trabalho compartilhado
 

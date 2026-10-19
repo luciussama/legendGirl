@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T171550-67843a0aaf90",
+  "date": "2026-10-18T17:15:50.938418+00:00",
+  "title": "Correção da automação histórica do tutorial: saída no diário, diretório criado antes de gravar",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-tutorial-producao-browser.js",
+      "sourceId": "7e4dda64812f58ccb45ea095384050d49ee3f96f6a7497ca45ad089d06017fea",
+      "sha256": "2388f6b534c2fa9fa75517aa8109d2f30bbdeba50ddd6cb69c225d2af32969b2",
+      "bytes": 6803,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:tutorial:browser": "node docs/diario-ia/qa/jogabilidade-tutorial-producao-browser.js"
+  }
+}

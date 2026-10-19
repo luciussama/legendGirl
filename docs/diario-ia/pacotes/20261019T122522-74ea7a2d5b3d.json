@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T122522-74ea7a2d5b3d",
+  "date": "2026-10-19T12:25:22.858223+00:00",
+  "title": "Câmera fixa no retorno: invariância da matriz entre saltos e pousos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/camera-retorno-browser.js",
+      "sourceId": "84249435b7b660243d3f72b0b4f02b56856695f8b430c4de543f77b63283c8b1",
+      "sha256": "7dd7bbf37112163948be9c754e53de3d462d9650f1eff0c796137a9734f6c2e7",
+      "bytes": 5336,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:camera:retorno:browser": "node docs/diario-ia/qa/camera-retorno-browser.js"
+  }
+}

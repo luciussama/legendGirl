@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T171943-12a7db8b117b",
+  "date": "2026-10-18T17:19:43.113254+00:00",
+  "title": "Espera do tutorial sem movimento; entrada válida conclui conforme guia vigente de 15/10",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-tutorial-espera-browser.js",
+      "sourceId": "2b114dfd211c30a445c5a6434f9ed335088ee4619711fe37fb5dd06620a73745",
+      "sha256": "9cf62778dddd17d2a63af26e4342bdc65206da63bd22247ddbed1add422c9db5",
+      "bytes": 3370,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:tutorial:browser": "node docs/diario-ia/qa/jogabilidade-tutorial-espera-browser.js && node docs/diario-ia/qa/jogabilidade-tutorial-mensagens-browser.js && node scripts/test-first-jump-completion-browser.js && node docs/diario-ia/qa/jogabilidade-tutorial-producao-browser.js",
+    "test:jogabilidade:complementos:browser": "node docs/diario-ia/qa/jogabilidade-tutorial-espera-browser.js && node docs/diario-ia/qa/jogabilidade-tutorial-mensagens-browser.js && node scripts/test-first-jump-completion-browser.js && node docs/diario-ia/qa/arena-defesa-browser.js"
+  }
+}

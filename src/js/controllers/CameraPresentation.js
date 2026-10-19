@@ -1,3 +1,17 @@
+import { FLOOR_Y, phase3Platforms } from '../config.js';
+
+/** Rolagem visual do retorno: o trajeto depende do cenário, nunca do arco ou do pouso. */
+export function getPhase3ScrollFrame({ x, width, height }) {
+  const first = phase3Platforms[0];
+  const last = phase3Platforms.at(-1);
+  const lead = width > 600 ? width - 250 : width - 160;
+  const worldX = x + lead;
+  const progress = (first.x + first.w - worldX) / (first.x + first.w - last.x - last.w);
+  const courseY = Math.max(last.y, Math.min(FLOOR_Y, first.y + (last.y - first.y) * progress));
+  const floorFrameY = width <= 600 && height > FLOOR_Y + 90 ? FLOOR_Y - (height - 110) : 0;
+  return { x, y: floorFrameY + courseY - FLOOR_Y };
+}
+
 /** Recuperação de enquadramento exclusivamente visual; não escreve na câmera da simulação. */
 export class CameraPresentation {
   constructor() { this.reset(); }

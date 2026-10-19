@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9ea2954da64a4c54de3efc2da6974501805161e627d0d93254c84d75aeb803ab",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/EQUIPPED.png",
+  "sha256": "c85b76c4f2c72b5df68975ebf0cd4c08b7aa13dd2dd31344073e613f6f378b4b",
+  "capturedAt": "2026-10-19T12:45:53.718545+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/EASY/EQUIPPED.png\", \"sha256\": \"256cf4d5ac467cb6e702c426b025557369297be4931fb8ecbc2e7066f7ebd8c6\", \"bytes\": 1192887, \"binaryRetained\": false}"
+}

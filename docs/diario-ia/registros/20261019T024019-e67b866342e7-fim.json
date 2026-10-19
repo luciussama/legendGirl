@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T024019-e67b866342e7-fim",
+  "sessionId": "20261019T024019-e67b866342e7",
+  "type": "fim",
+  "date": "2026-10-19T02:52:21.315369+00:00",
+  "title": "Balancear janelas progressivas de salto e endurecer retorno após porta falsa",
+  "actor": "Codex",
+  "summary": "Balanceamento autorizado dos saltos implementado: dois primeiros saltos generosos, janela reduzida progressivamente na aproximação, castelo e saída assistida preservados. Retorno pós-porta falsa calibrado nominalmente de 456 a 100 ms; alcance aéreo fixo por saída, com entrada pelo chão distinguida. Geometria, gravidade, impulso vertical, corrida e fuga preservados. Nova regressão integra npm test; seis campanhas completas aprovadas. Relatório e JSON no diário. Sem commit, push ou publicação.",
+  "checks": [
+    "npm test: aprovado após alterações de alcance autorizadas, com verificador do quarto, dificuldade, arena e nova regressão de progressão.",
+    "test:saltos:progressao: 156 combinações, NORMAL/EASY e dt 0.5/1/1.2, saídas viáveis e curva progressiva.",
+    "test:jogabilidade:browser: seis campanhas completas NORMAL/EASY x desktop/Android/iPhone, 228 apoios, quatro inimigos, save/load e retorno; sem falhas nas verificações de recursos e exceções.",
+    "npm run build, node --check e git diff --check: aprovados."
+  ],
+  "pending": [
+    "Validar a dificuldade percebida e os saltos mais curtos com humanos em aparelhos físicos. Emulação e políticas determinísticas não certificam sensação de desafio."
+  ],
+  "files": [
+    "src/js/config.js",
+    "src/js/game.js",
+    "package.json",
+    "docs/diario-ia/qa",
+    "docs/diario-ia/relatorios/20261018-progressao-saltos.md",
+    "docs/diario-ia/relatorios/20261018-progressao-saltos.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/ARQUITETURA.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/COMANDOS.md"
+  ]
+}

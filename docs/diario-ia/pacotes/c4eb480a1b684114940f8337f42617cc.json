@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "c4eb480a1b684114940f8337f42617cc",
+  "date": "2026-10-19T13:10:53.587423+00:00",
+  "title": "QA temporário: test:saltos:bailarina",
+  "files": [
+    {
+      "path": "qa-execucoes/c4eb480a1b684114940f8337f42617cc.log",
+      "sourceId": "c4afd5a169abed509a4ce71222f9763c051f2d8dc64a29d4195cf8727f219827",
+      "sha256": "19213d388fb6594a0a8285ae45531f028570e1d20366e48b8ac35bf3378813b3",
+      "bytes": 10354,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/c4eb480a1b684114940f8337f42617cc/docs/qa/.DS_Store",
+      "sourceId": "e6b9820d0254ce2e404926f3ac6d71dc48999ce698864ab38795f1de592ae48e",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

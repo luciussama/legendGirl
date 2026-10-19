@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a8929c7e0d1940bf62116f385e07d06337fa3d34f817dadfca5775325ffd6eca",
+  "path": "docs/diario-ia/qa/formatos-complementos-browser.js",
+  "sha256": "c96153a46158d37d062124019d97f11cf771c913f39399b9132fa80fa819cefa",
+  "capturedAt": "2026-10-19T12:43:26.007128+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import {spawnSync} from 'node:child_process';\nconst commands=[\n ['toque','docs/diario-ia/qa/formatos-toque-browser.js'],\n ['tutorial','docs/diario-ia/qa/jogabilidade-tutorial-producao-browser.js'],\n ['persistencia','docs/diario-ia/qa/jogabilidade-persistencia-browser.js'],\n ['camera','docs/diario-ia/qa/camera-retorno-browser.js'],\n ['bailarina','docs/diario-ia/qa/bailarina-browser.js']\n];\nconst failures=[];for(const [area,script]of commands){console.log('INÍCIO: '+area);const result=spawnSync(process.execPath,[script],{stdio:'inherit'});if(result.status!==0)failures.push({area,status:result.status,error:result.error?.message});}\nconsole.log('RESULTADO DOS COMPLEMENTOS: '+JSON.stringify({areas:commands.length,failures}));process.exitCode=failures.length?1:0;\n"
+}

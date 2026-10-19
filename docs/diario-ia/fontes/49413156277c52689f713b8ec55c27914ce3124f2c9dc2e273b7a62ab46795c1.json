@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "49413156277c52689f713b8ec55c27914ce3124f2c9dc2e273b7a62ab46795c1",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-ATTACK.png",
+  "sha256": "30c96500906ae8f5f6c46b76cd212d7b54dce916fd2ee118824ad22e0ad59629",
+  "capturedAt": "2026-10-19T12:46:00.101402+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/arena-bear-ATTACK.png\", \"sha256\": \"8d7d3f74c08019e6d5ee6b33c434b2a25d883c377a1ac8f345d0027e46016b6a\", \"bytes\": 1152485, \"binaryRetained\": false}"
+}

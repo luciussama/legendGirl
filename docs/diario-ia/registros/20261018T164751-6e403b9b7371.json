@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T164751-6e403b9b7371",
+  "sessionId": "20261018T164751-6e403b9b7371",
+  "type": "inicio",
+  "date": "2026-10-18T16:47:51.264933+00:00",
+  "title": "Rebalancear arena: defesa frontal, remover dano corporal e direcional móvel fixo",
+  "actor": "Codex",
+  "branch": "fix-balanceamento-luta",
+  "head": "a068e6e923bbe15cab91c0a6aab3351145c190e7",
+  "workingTree": []
+}

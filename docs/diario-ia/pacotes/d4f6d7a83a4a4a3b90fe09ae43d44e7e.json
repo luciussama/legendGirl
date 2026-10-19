@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "d4f6d7a83a4a4a3b90fe09ae43d44e7e",
+  "date": "2026-10-18T17:14:47.590730+00:00",
+  "title": "QA temporário: script:test-first-jump-production-browser.js",
+  "files": [
+    {
+      "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e.log",
+      "sourceId": "fb1695f945b7eb00e5960bbbdfc1fbdd0f24a2268503e09b7c30621e071157ac",
+      "sha256": "90c2ab01cecdb08cb9dccb31f92769a6982362096a68ff473fff9789808a6661",
+      "bytes": 1330,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/docs/qa/.DS_Store",
+      "sourceId": "3b1d5905036da24d0d213d611829deed1811e449d99a993aa931549a9896a64a",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/assets/qa-testers/current-screenshots/first-jump-production/Android.png",
+      "sourceId": "25005c7f4153998cd505abf1ab78419b8c9fb33c60ef53baeb3117bbfa47586f",
+      "sha256": "300cbcdbec9423a4b12e9ffd35b7f52c207cc08afb925b32667657d1d731796f",
+      "bytes": 289000,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/assets/qa-testers/current-screenshots/first-jump-production/Desktop.png",
+      "sourceId": "7d47c1895b627e598bc3a430d9c62e2e4d56dffd13d151b120c89006fb693053",
+      "sha256": "8dab8c3284230a8b4cbd93aafa824fcd6a98c1e3e9181ab3cbc6a178de37b5ac",
+      "bytes": 386404,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/d4f6d7a83a4a4a3b90fe09ae43d44e7e/assets/qa-testers/current-screenshots/first-jump-production/iPhone.png",
+      "sourceId": "55fa665bddc8daf65d36796e30ad2422632b4dd912c002b2643f0ef88c677155",
+      "sha256": "55d1be310e764f37214919c126546cd8d8362c40ea8d362604c5132d1d231aa0",
+      "bytes": 288167,
+      "metadataOnly": true
+    }
+  ]
+}

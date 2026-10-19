@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5a857dfda670abe7028bffaf63ddc7966f791dbd7565779c633e41e02d324a72",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-IDLE.png",
+  "sha256": "39cbb97997c610ac4b1d35d789ff268e01056f4514d379dc9d512721038d9052",
+  "capturedAt": "2026-10-18T17:11:01.141748+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-robot-IDLE.png\", \"sha256\": \"07989ab2e2453e26e19f5d2085683ff91f9dbecfcd868639e8e47e4688593356\", \"bytes\": 940522, \"binaryRetained\": false}"
+}

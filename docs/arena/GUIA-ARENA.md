@@ -1,6 +1,6 @@
 # Guia da arena imaginária
 
-Revisão: 15/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
+Revisão: 18/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
 
 O fluxo é exploração, espada, transformação, arena heroica, combate e retorno. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
 
@@ -13,7 +13,7 @@ Os carregadores preservam as URLs relativas ao módulo e os manifestos atuais. A
 O [guia de designers](../sprites/GUIA-DESIGNERS.md) identifica recursos e metadados. O [diário humano](../DIARIO-HUMANO.md) acompanha as decisões de produto. Relatórios de implementação, execução dos cards e validação ficam no diário de IA.
 # Corpos e comportamento dos inimigos
 
-Na arena, o contato sólido considera o tamanho ampliado dos corpos e impede a travessia em ambos os sentidos, incluindo investidas. A espada e os efeitos ofensivos têm alcance próprio e não fazem parte do corpo sólido.
+Na arena, encostar no corpo de um inimigo ou ele surgir sobre a menina não causa dano: apenas golpes em sua janela ativa podem ferir. O contato sólido considera o tamanho ampliado dos corpos e impede a travessia em ambos os sentidos, incluindo investidas. A espada e os efeitos ofensivos têm alcance próprio e não fazem parte do corpo sólido.
 
 O trem mantém o ritmo introdutório e a sequência previsível de golpes. Robô, dinossauro e Urso aumentam gradualmente a pressão. Escolhem entre seus golpes existentes considerando distância, ataques e saltos recentes, agachamento e recuperação da espada. A memória é curta e as decisões são determinísticas; repetir um golpe tem uma penalidade suave, sem impedir uma resposta adequada à situação. O Urso conserva seus oito corações e a fúria existente.
 
@@ -44,11 +44,13 @@ A ordem é Trem → Robô → Dinossauro → Urso, um por vez. O eixo é horizon
 
 ## Entrada e estado
 
-Teclado: A/D ou esquerda/direita andam; W/cima pula; S/baixo agacha; E/Espaço/Enter/F ataca. No gamepad padrão da arena, o D-pad fornece direção, A também pula e X ataca; o analógico continua sendo movimento da exploração. No touch, use os controles da arena calculados por MobileUILayout. A ação especial/Y possui entrada reservada, mas `special()` retorna false e não altera a luta.
+A menina acompanha o lado do inimigo e mantém o rosto voltado para ele, inclusive ao recuar ou atravessá-lo por cima. Segurar a direção oposta ao inimigo no chão ativa defesa com espada e permite recuar a 55% da velocidade. A defesa bloqueia os golpes existentes sem retirar ou transferir corações; cada golpe produz um único efeito de bloqueio e segue para sua recuperação. Atacar, saltar, agachar ou receber dano interrompe a defesa. Não há defesa aérea.
+
+Teclado: A/D ou esquerda/direita andam; W/cima pula; S/baixo agacha; E/Espaço/Enter/F ataca. No gamepad padrão da arena, o D-pad fornece direção, A também pula e X ataca; o analógico continua sendo movimento da exploração. No touch, o direcional fixo em cruz calculado por MobileUILayout aceita arraste analógico em oito direções, com zona morta central. As diagonais superiores combinam salto e deslocamento para frente ou para trás; as inferiores combinam direção e agachamento. O centro desenhado não acompanha o dedo. Espada aceita um segundo toque simultâneo. Soltar, cancelar, perder a captura do ponteiro ou mudar a orientação libera as direções. A ação especial/Y possui entrada reservada, mas `special()` retorna false e não altera a luta.
 
 A fase usa IDLE → TRANSFORMING → COMBAT → RETURNING → COMPLETE. Transformação dura 180 quadros e aguarda artes prontas; erros de recursos impedem a entrada pronta. BATTLE/VICTORY/DEFEAT pertencem à simulação de batalha. Após derrota, ataque aceito depois da espera reinicia a luta; após vitória, conduz ao retorno. O retorno restaura a exploração intermediariamente e termina a apresentação sem criar uma campanha nova.
 
-A câmera da arena enquadra atores e tremor em ArenaCamera. O panorama da transformação usa o desenho da sala como fundo por `arenaBackdrop`; não reutiliza a física de exploração. A câmera fixa do documento de design inicial não é o enquadramento implementado neste perfil.
+A câmera da arena enquadra atores e tremor em ArenaCamera. Em celular na orientação paisagem, reserva as laterais ocupadas pelo direcional e pelos botões para manter os atores visíveis entre os polegares. O panorama da transformação usa o desenho da sala como fundo por `arenaBackdrop`; não reutiliza a física de exploração. A câmera fixa do documento de design inicial não é o enquadramento implementado neste perfil.
 
 ## Saves, retorno e áudio
 
@@ -60,4 +62,4 @@ A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reiní
 
 `ToyRoomPhase` compõe a exploração com contextos restritos; `ToyRoomArenaPhase` e `ToyRoomBattle` ainda retêm a sala inteira. `configurePresentation` instala controller, tuning e callbacks da arena sobre a simulação existente; restoreReality devolve o perfil legado. Essa integração ampla permanece como próximo trabalho de desacoplamento, não como uma interface genérica já implantada.
 
-Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.
+Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements, test:arena:defesa, test:arena:defesa:browser e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.

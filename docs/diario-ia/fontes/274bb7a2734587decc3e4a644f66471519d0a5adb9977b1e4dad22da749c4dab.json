@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "274bb7a2734587decc3e4a644f66471519d0a5adb9977b1e4dad22da749c4dab",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-ATTACK.png",
+  "sha256": "4e9e9f66533201fb49ef446d5b3e7215e1deeba6b53ee177ad6a30da1b8654c3",
+  "capturedAt": "2026-10-19T12:26:19.397471+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-ATTACK.png\", \"sha256\": \"198ce18b2a0291292214ddb777cb4380917549f73fbc0cd1944aa30b473132c1\", \"bytes\": 951368, \"binaryRetained\": false}"
+}

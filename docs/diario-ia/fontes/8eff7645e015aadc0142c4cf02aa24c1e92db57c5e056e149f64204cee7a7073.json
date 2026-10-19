@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8eff7645e015aadc0142c4cf02aa24c1e92db57c5e056e149f64204cee7a7073",
+  "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/formatos-toque/568-defesa.png",
+  "sha256": "3a8551b73917d7bcc08ce184ca0e3d11519dba7ec37b136192b33fca40e8003d",
+  "capturedAt": "2026-10-19T12:46:00.110884+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/formatos-toque/568-defesa.png\", \"sha256\": \"1e9b7b05d002bbc12420072963eaf2d0fa0b9ed73d145b90ebe4eade9323587c\", \"bytes\": 151128, \"binaryRetained\": false}"
+}

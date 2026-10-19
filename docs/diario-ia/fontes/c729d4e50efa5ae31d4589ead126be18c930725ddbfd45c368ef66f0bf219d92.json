@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c729d4e50efa5ae31d4589ead126be18c930725ddbfd45c368ef66f0bf219d92",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-RETREAT.png",
+  "sha256": "7fefe5719d15f707fe2e55eafe6ccf2d0aa87f8fd5a78148ac55c33e6f98e8ee",
+  "capturedAt": "2026-10-18T17:11:00.856845+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-RETREAT.png\", \"sha256\": \"4f4116769bea24f09f0f32d20e60def3f45df8168779503cd0719e458b022d9c\", \"bytes\": 889032, \"binaryRetained\": false}"
+}

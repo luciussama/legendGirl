@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "b93541d130804c3e82ab77ac35bd7ad8",
+  "type": "qa",
+  "date": "2026-10-19T02:41:45.018338+00:00",
+  "title": "QA temporário: test:saltos:calibrar",
+  "exitCode": 0,
+  "sourceId": "99080a57e3002ba92867ee5a8cf9430b5adf322b160921100312ebe0bca0ccdf",
+  "package": "20261019T024141-039a7c371d84"
+}

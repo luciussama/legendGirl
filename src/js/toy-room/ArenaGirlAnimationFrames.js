@@ -31,6 +31,15 @@ export const ARENA_GIRL_ANIMATION_FRAMES = {
   crouchCycle,
   crouchEnter:[crouchCycle[0]],
   crouch:[crouchCycle[3]],
+  // Sequência Imagegen: o mesmo atlas é percorrido ao contrário ao soltar a defesa.
+  guard:[
+    atlas('guard-cycle-sheet.png',0,0,512,496,230,.69,277),
+    atlas('guard-cycle-sheet.png',512,0,512,496,240,.69,278),
+    atlas('guard-cycle-sheet.png',1024,0,512,496,230,.69,291),
+    atlas('guard-cycle-sheet.png',0,512,512,475,230,.69,278),
+    atlas('guard-cycle-sheet.png',512,512,512,475,240,.69,278),
+    atlas('guard-cycle-sheet.png',1024,512,512,475,240,.69,292)
+  ],
   run:[
     atlas('run-sheet.png',92,51,536,517,240,0.575,298),
     atlas('run-sheet.png',738,52,548,521,231,0.575,292),

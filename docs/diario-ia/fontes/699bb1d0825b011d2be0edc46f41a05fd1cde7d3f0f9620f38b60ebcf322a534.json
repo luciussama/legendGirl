@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "699bb1d0825b011d2be0edc46f41a05fd1cde7d3f0f9620f38b60ebcf322a534",
+  "path": "qa-execucoes/ea10062ca1fd46509d8de7548b5db97c.log",
+  "sha256": "a701ed43ce045ea6eb92d29220e53dee38b5a40e47195c4a809ae9f2b5dc2606",
+  "capturedAt": "2026-10-19T02:48:29.645806+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:defesa",
+    "exitCode": 0,
+    "package": "20261018T170017-1330faee6658"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:defesa\n> node docs/diario-ia/qa/arena-defesa-direcional.js\n\nAPROVADO: contato sem dano nos quatro inimigos, defesa nos dois lados, dano ativo preservado, salto diagonal, orientação, save/load, entrada/saída animada e direcional em quatro tamanhos.\n"
+}

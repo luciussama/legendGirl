@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f4cee1a0c64fbf081e9eef0ba8154b88677fb066d82afbdf29b4b23c8c7d9309",
+  "path": "qa-execucoes/646f8fadc0b94c4f9cf67783f47534a4/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-IDLE.png",
+  "sha256": "2bc6467c8c89666073ce846e60c774786b9f7a1daca7e2b0538fd957529d962c",
+  "capturedAt": "2026-10-19T12:28:16.199522+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-train-IDLE.png\", \"sha256\": \"6d55609bd4187b4656e1c2c111daabd1380ee46c59ac9ac98aca54e145f03267\", \"bytes\": 1146790, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "232d7fe1b1d4cb36988199a4fe692d86263a90af5b3225bbd08661582b60d8d3",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet/NORMAL/arena-train-DEATH.png",
+  "sha256": "5ea1aacdd3d6baa8a60194c1d7ad01e96540e917a02d6f86def0fe2930c5cbd9",
+  "capturedAt": "2026-10-19T12:46:01.586276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet/NORMAL/arena-train-DEATH.png\", \"sha256\": \"d341e88c7447ac24b65e0ab2e9473fcf48f821690aef61cfe069153ad6abe7b1\", \"bytes\": 710807, \"binaryRetained\": false}"
+}

@@ -14,7 +14,7 @@ import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
 import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
 import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
-import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats } from './config.js';
+import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats, getApproachJumpSpeed } from './config.js';
 import { createAudioController } from './controllers/AudioController.js';
 import { isMobileDevice } from './controllers/MobileZoom.js';
 import { createAndroidFraming } from './controllers/AndroidFraming.js';
@@ -409,7 +409,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     if (state.isPhase3) {
       const currentLvl = Math.max(0, Math.min(14, state.phase3Level || 0));
-      const stats = getPhase3Stats(currentLvl);
+      const stats = getPhase3Stats(currentLvl, baby.currentPlatformIndex < 0);
       baby.vy = stats.jumpPower;
       baby.vx = stats.airVx; // Impulso horizontal dinâmico em direção à esquerda
       audio.playLongJumpSound(currentLvl / 14);
@@ -463,9 +463,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.vy = baby.jumpPower;
       // Velocidade fixa por saída: o clique determina o alcance, sem mirar
       // automaticamente o centro do próximo apoio. Só o castelo tem assistência.
-      baby.vx = baby.currentPlatformIndex === 4 ? 1.8
-        : baby.currentPlatformIndex === 5 ? 1.95
-        : baby.baseVx;
+      baby.vx = getApproachJumpSpeed(baby.currentPlatformIndex);
       audio.playJumpSound();
       fairy.vy -= 2.2;
       fairy.spinAnim = 1.0;

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2e61a10ac3d78b34aea621409f14e09cd4007b7f8ab759475ad7535c80e15b13",
+  "path": "qa-execucoes/646f8fadc0b94c4f9cf67783f47534a4/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-entrada.png",
+  "sha256": "814e358f6f1f8e92bedfc7428859ce76afe71197edb4bf34a374554694d52bd4",
+  "capturedAt": "2026-10-19T12:28:17.606998+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-dinosaur-entrada.png\", \"sha256\": \"e24ee5376309dc7ef29a4a93f8578e175ca11cf449456783b6bf9faabaa648f3\", \"bytes\": 701551, \"binaryRetained\": false}"
+}

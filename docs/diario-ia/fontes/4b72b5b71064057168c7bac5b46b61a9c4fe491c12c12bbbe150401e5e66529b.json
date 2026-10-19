@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "4b72b5b71064057168c7bac5b46b61a9c4fe491c12c12bbbe150401e5e66529b",
+  "path": "qa-execucoes/47d17e2172224ae6992f60be56a57892.log",
+  "sha256": "0240279392340881772e40c6ef060eefd168dbff7303cb812ed35e5e52f98605",
+  "capturedAt": "2026-10-19T02:58:50.147475+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bailarina:browser",
+    "exitCode": 0,
+    "package": "20261019T025727-8e4f236c5060"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bailarina:browser\n> node docs/diario-ia/qa/bailarina-browser.js\n\nAPROVADO: nove saltos por teclado/toque reais alcançam a bailarina em desktop e dois perfis móveis, sem busca pelo melhor quadro.\n"
+}

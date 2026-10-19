@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "23d5a8c4a6e1222306a4769e27bd35b17bd160109d4f57adae866f8a482542a6",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-15.png",
+  "sha256": "c1cbc7e1722bdcddaefabb6919d5faae170f226f112e485bebf0c4fd8f6af94c",
+  "capturedAt": "2026-10-19T02:49:47.507028+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-retorno-15.png\", \"sha256\": \"8851b22ae467386ae3152488ccb585172210ac77278641ad2b3a1afe78c51046\", \"bytes\": 185255, \"binaryRetained\": false}"
+}

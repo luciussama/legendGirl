@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "31e9b14d8872456d05b632921dc83cbb47435e962644f44b8a8dfa07b3caa3b7",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-IDLE.png",
+  "sha256": "4411a4c7f4034e5e4e304d2e0a8cbcb2280dcd1227e9641db61d4b0fc4d1dee9",
+  "capturedAt": "2026-10-19T02:49:47.883836+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-IDLE.png\", \"sha256\": \"edb9788d44b5b7e79b1b24bdff7635e04667b7035a0a04d0e46d58cea61c3411\", \"bytes\": 1091495, \"binaryRetained\": false}"
+}

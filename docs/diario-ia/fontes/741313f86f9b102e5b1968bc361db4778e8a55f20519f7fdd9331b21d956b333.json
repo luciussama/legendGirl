@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "741313f86f9b102e5b1968bc361db4778e8a55f20519f7fdd9331b21d956b333",
+  "path": "qa-execucoes/7b9dcd20adf24e43a669cf441239720a/docs/diario-ia/qa-resultados/arena-defesa/844.json",
+  "sha256": "b9c89262eb4bbaae665c3de357d8ebbd231b3b2342b0128481f9ab9fd8416306",
+  "capturedAt": "2026-10-18T17:00:22.812936+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:defesa:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"width\": 844,\n  \"height\": 390,\n  \"guard\": {\n    \"guarding\": true,\n    \"amount\": 1,\n    \"facing\": \"right\",\n    \"buttons\": {\n      \"left\": true,\n      \"right\": false,\n      \"up\": false,\n      \"down\": false\n    },\n    \"events\": [],\n    \"pointers\": [\n      [\n        2,\n        {\n          \"x\": -0.6333333333333333,\n          \"y\": 7.756096394599903e-17\n        }\n      ]\n    ],\n    \"enabled\": true,\n    \"locked\": false\n  },\n  \"jump\": {\n    \"jump\": 11,\n    \"x\": 0.6919119770960239,\n    \"up\": true,\n    \"guarding\": false\n  }\n}"
+}

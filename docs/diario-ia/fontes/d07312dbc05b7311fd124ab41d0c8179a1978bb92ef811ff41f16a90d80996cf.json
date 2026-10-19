@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d07312dbc05b7311fd124ab41d0c8179a1978bb92ef811ff41f16a90d80996cf",
+  "path": "qa-execucoes/d4ea429634ca4174a3178d9a4a6b0304/docs/diario-ia/qa-resultados/tutorial-producao/capturas/Android.png",
+  "sha256": "0a2274c61c8f8923f45cfd0c627e272cea9749ee9f3474b56c9f8e47d07ad13f",
+  "capturedAt": "2026-10-19T12:49:13.942780+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/tutorial-producao/capturas/Android.png\", \"sha256\": \"45a5e48fab4e6cc39917c403beb2e74f3a26ae325d2dc20353ab0847ff81885f\", \"bytes\": 288104, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "2398118cc8654fa29acbbca659b036d583ac8de5aa49c2181f74f36891822b91",
+  "path": "qa-execucoes/6dccc9d850964a6ebbf8602e87543cb5.log",
+  "sha256": "49911a02492386f97ddac476c10d696c3ca0d323ebc511bdbceb4a17e73a4d2b",
+  "capturedAt": "2026-10-18T17:18:27.244942+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:tutorial:browser",
+    "exitCode": 0,
+    "package": "20261018T171550-67843a0aaf90"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jogabilidade:tutorial:browser\n> node docs/diario-ia/qa/jogabilidade-tutorial-producao-browser.js\n\nAPROVADO: Android / nova\nAPROVADO: Android / abertura-migrada-incorretamente\nAPROVADO: Android / abertura-antiga\nAPROVADO: Android / abertura-concluida-sem-save\nAPROVADO: Android / tutorial-restaurado\nAPROVADO: iPhone / nova\nAPROVADO: iPhone / abertura-migrada-incorretamente\nAPROVADO: iPhone / abertura-antiga\nAPROVADO: iPhone / abertura-concluida-sem-save\nAPROVADO: iPhone / tutorial-restaurado\nAPROVADO: Desktop / nova\nAPROVADO: Desktop / abertura-migrada-incorretamente\nAPROVADO: Desktop / abertura-antiga\nAPROVADO: Desktop / abertura-concluida-sem-save\nAPROVADO: Desktop / tutorial-restaurado\n"
+}

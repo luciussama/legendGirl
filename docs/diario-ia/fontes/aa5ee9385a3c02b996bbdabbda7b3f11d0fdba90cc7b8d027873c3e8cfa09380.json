@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "aa5ee9385a3c02b996bbdabbda7b3f11d0fdba90cc7b8d027873c3e8cfa09380",
+  "path": "qa-execucoes/f4714549a42749d099e207aceadb6a45.log",
+  "sha256": "47016500da203e7dc0d3918fd179a5826d72a417ab7dac3aac16a9d759260202",
+  "capturedAt": "2026-10-18T17:18:41.077434+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:complementos:browser",
+    "exitCode": 1,
+    "package": "20261018T171821-3701e7972aba"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jogabilidade:complementos:browser\n> node scripts/test-first-jump-tutorial-browser.js && node docs/diario-ia/qa/jogabilidade-tutorial-mensagens-browser.js && node scripts/test-first-jump-completion-browser.js && node docs/diario-ia/qa/arena-defesa-browser.js && node docs/diario-ia/qa/jogabilidade-persistencia-browser.js\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-f6missd_/projeto/scripts/test-first-jump-tutorial-browser.js:19\n  if(result.exceptionDetails) throw Error(JSON.stringify(result.exceptionDetails));\n                                    ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught\",\"lineNumber\":11,\"columnNumber\":25,\"scriptId\":\"114\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"\",\"scriptId\":\"114\",\"url\":\"\",\"lineNumber\":11,\"columnNumber\":31},{\"functionName\":\"\",\"scriptId\":\"114\",\"url\":\"\",\"lineNumber\":14,\"columnNumber\":3}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Tutorial avançou movimento, câmera, física ou progressão\\n    at <anonymous>:12:32\\n    at <anonymous>:15:4\",\"objectId\":\"6749562998314666690.2.2\"}}\n    at evaluate (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-f6missd_/projeto/scripts/test-first-jump-tutorial-browser.js:19:37)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-f6missd_/projeto/scripts/test-first-jump-tutorial-browser.js:28:15\n\nNode.js v26.5.0\n"
+}

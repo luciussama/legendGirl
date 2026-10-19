@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e34c5f2777cf2314299ef9f324384d00dc9d104bd43ed24806883e5c17b93a23",
+  "path": "qa-execucoes/646f8fadc0b94c4f9cf67783f47534a4/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-entrada.png",
+  "sha256": "a0457e7fac017aa003ed769fb31fb9ede60f09d4cef0cd626c624bd5f36cb6b1",
+  "capturedAt": "2026-10-19T12:28:13.702486+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/arena-bear-entrada.png\", \"sha256\": \"732867c9857cf0c11c13b8bcb245fe4b26f897bfd52a84daed2de63907725311\", \"bytes\": 861217, \"binaryRetained\": false}"
+}

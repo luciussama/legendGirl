@@ -150,13 +150,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/config.js
 
-[Implementação](../src/js/config.js). Contratos exportados/reexportados: `DEBUG_COLLISIONS`, `GAME_CONFIG`, `FLOOR_Y`, `createBabyState`, `CUTSCENE_DIALOGUE`, `getEscapeStats`, `getPhase3Stats`, `createFairyState`, `platforms`, `exitDoor`, `phase3Platforms`, `trueExitDoor`, `roomScenery`.
+[Implementação](../src/js/config.js). Contratos exportados/reexportados: `DEBUG_COLLISIONS`, `GAME_CONFIG`, `FLOOR_Y`, `createBabyState`, `CUTSCENE_DIALOGUE`, `getEscapeStats`, `getPhase3Stats`, `getApproachJumpSpeed`, `createFairyState`, `platforms`, `exitDoor`, `phase3Platforms`, `trueExitDoor`, `roomScenery`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `createBabyState()` | Função | 12 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 | `getEscapeStats(level)` | Função | 46 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getPhase3Stats(level)` | Função | 67 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getPhase3Stats(level, fromFloor = false)` | Função | 67 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getApproachJumpSpeed(platformIndex)` | Função | 45 | Velocidades aéreas originais da aproximação ao castelo, sem frenagem artificial na bailarina. |
 | `createFairyState()` | Função | 81 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
 ## src/js/controllers/AndroidFraming.js
@@ -246,19 +247,20 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/controllers/CameraPresentation.js
 
-[Implementação](../src/js/controllers/CameraPresentation.js). Contratos exportados/reexportados: `CameraPresentation`.
+[Implementação](../src/js/controllers/CameraPresentation.js). Contratos exportados/reexportados: `CameraPresentation`, `getPhase3ScrollFrame`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor()` | Método declarado | 3 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `reset()` | Método declarado | 4 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `snapshot()` | Método declarado | 5 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 6 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `mobileFrame({ target, enabled, stable, anticipate, tick, width, height })` | Método declarado | 8 | Interpola entrada do enquadramento móvel. |
-| `step(from, to, dimension)` | Função atribuída | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame({ x, y, playerX, groundLead, targetY, onGround, active, narrative, tick, width, height, cssWidth, cssHeight, zoom })` | Método declarado | 38 | Calcula pose visual estável sem escrever na simulação. |
-| `move(from, to, dimension, tolerance)` | Função atribuída | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clamp(delta, limit)` | Função atribuída | 71 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor()` | Método declarado | 17 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `reset()` | Método declarado | 18 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `snapshot()` | Método declarado | 19 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 20 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `getPhase3ScrollFrame({ x, width, height })` | Função | 4 | Trajeto visual contínuo do retorno, independente de saltos, pousos e atores. |
+| `mobileFrame({ target, enabled, stable, anticipate, tick, width, height })` | Método declarado | 22 | Interpola entrada do enquadramento móvel. |
+| `step(from, to, dimension)` | Função atribuída | 42 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame({ x, y, playerX, groundLead, targetY, onGround, active, narrative, tick, width, height, cssWidth, cssHeight, zoom })` | Método declarado | 52 | Calcula pose visual estável sem escrever na simulação. |
+| `move(from, to, dimension, tolerance)` | Função atribuída | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clamp(delta, limit)` | Função atribuída | 85 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/controllers/EscapeFairyGuide.js
 

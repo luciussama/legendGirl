@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3bd4c7a344baf732ab4fa675d5873d9f2a0b7c9e0712c643ae70611757d99753",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/apoio-ida-3.png",
+  "sha256": "70bd57002fb16f9044cfab139944d2aed7e1f4d840a037ede73c93d6c99e8b0e",
+  "capturedAt": "2026-10-19T12:46:00.043527+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/NORMAL/apoio-ida-3.png\", \"sha256\": \"40cd02d9639020bfd840ae75d08cc36ddf2a582ad1881b5ce451b680cba508db\", \"bytes\": 530979, \"binaryRetained\": false}"
+}

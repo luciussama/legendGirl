@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "75e8650e47dcab8cc098aea973441d8e097e81b67d2f81628ac3e62addfc94c1",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-HIT.png",
+  "sha256": "1b6f5d5653dde471bbb7971a23f5d68a55ead05de2139f1e6d4aa4bbdd4258cf",
+  "capturedAt": "2026-10-19T02:59:34.843996+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/arena-train-HIT.png\", \"sha256\": \"2e446b508a6e989e087d0aa769bf4df88ada6cd0e3cb31414efdd8ebd55a512d\", \"bytes\": 874731, \"binaryRetained\": false}"
+}

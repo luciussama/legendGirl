@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "303b751eb3a99297b8d75c4dbd9f584ea7ae6943f209aeb10f6e8e50aea0f036",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/NORMAL/SEEKING_SWORD.png",
+  "sha256": "3f67a82cddbb5b1c6933493c3bad3cf9d75e357be88313fd881f4b6053a18193",
+  "capturedAt": "2026-10-19T12:45:54.568671+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android_paisagem/NORMAL/SEEKING_SWORD.png\", \"sha256\": \"01c34196cf076dc403cc499d7f5dc56cceede3d23d06d7b6e41300ebb3e69c70\", \"bytes\": 1346652, \"binaryRetained\": false}"
+}

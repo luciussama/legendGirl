@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9c7f4c29758eb7891ee3b2c6a206483a2423d4b9f1f78015aeaa45f962717943",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-DEATH.png",
+  "sha256": "c22bd8454e5c44a33ccaeb2409ed62868ed60cf5fa2c5adf454a186ab91cd814",
+  "capturedAt": "2026-10-19T12:45:57.420414+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-bear-DEATH.png\", \"sha256\": \"e92348cef5c918c32003e880dcc8c8223c32c420f44c66d117c59924d284cf96\", \"bytes\": 1054025, \"binaryRetained\": false}"
+}

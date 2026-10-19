@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2964aa99325412afbf9f95cccf83fc23495e2c694629f48b5477023be1704895",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/realidade.png",
+  "sha256": "fb0f3e990e0037104b71d564cdf5f49bfed8370bee208500965e007fe97d5ce6",
+  "capturedAt": "2026-10-18T17:11:00.859523+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/realidade.png\", \"sha256\": \"ac240c5d9e1a5350c4992a94034fb72e40520642f56bd1827c23b274fa0612a4\", \"bytes\": 416767, \"binaryRetained\": false}"
+}

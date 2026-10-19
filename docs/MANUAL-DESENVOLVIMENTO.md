@@ -149,7 +149,7 @@ Os campos de gameplay de `game.js` são lidos e escritos diretamente em `GameSta
 | `startTruePortalTransition` | Preparação da passagem para a sala. |
 | `spawnFairySparkles`, `spawnFairyFlightDust`, `updateFairyParticles` | Buffers visuais da guia; não confundí-los com seu controlador de movimento. |
 
-`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level)` e `getPhase3Stats(level)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
+`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level)`, `getPhase3Stats(level, fromFloor = false)` e `getApproachJumpSpeed(platformIndex)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
 
 ### Save
 
@@ -453,6 +453,12 @@ Algumas revisões específicas usam porta 3001; confira o cabeçalho do script, 
 
 Em comparações, fixe a semente, restaure aleatoriedade/checkpoints e descarte tentativas de busca que não pertencem ao percurso aceito. Meça a transformação visual, não apenas `cameraX`. Faça captura no mesmo frame das métricas; resize e composição atrasada podem gerar imagens de outro frame. `qa-visual-layers.js` exporta diretamente o canvas para evitar esse descompasso.
 
+### Enquadramento fixo no retorno pós-clímax
+
+Durante o gameplay após a porta falsa, `getPhase3ScrollFrame` mantém a rolagem horizontal base e usa uma trajetória vertical contínua definida pela extensão do cenário. O enquadramento não consulta altura/velocidade do pulo, contato com o chão, fada ou índice do apoio. O retorno dispensa a recuperação visual após pouso, o deslocamento contextual Android e a recentralização móvel nas bordas; a escala móvel permanece em 0,8 e sua posição é fixa por viewport. Narrativa, tutorial e portal conservam suas transições. A última pose desenhada é guardada para que a entrada da próxima transição parta do enquadramento atual.
+
+A câmera lógica continua com seu contrato de teto, derrota e rolagem. A remoção é exclusivamente de apresentação: não alterar alcance, impulso, geometria ou dificuldade para compensar a perda dessa assistência. Uma eventual ajuda futura exige avaliação própria. Verificação específica: `npm run journal:qa -- test:camera:retorno:browser`.
+
 ### Critérios móveis e de câmera
 
 Os critérios de QA-CAMERA-002C incluem jitter parado <=1 px visual em 60 frames, salto de posição <=5% da tela por frame, recuperação do pouso <=300 ms, zoom <=2% sem evento narrativo, região de chegada visível antes do salto e fada visível >=95% do plot twist. Não confunda desvio padrão da câmera em movimento com jitter parado. Relate pousos sem janela suficiente como não medidos, em vez de aprovados.
@@ -526,3 +532,9 @@ Histórico de correções, tentativas, falhas e homologações está exclusivame
 `DialogueRenderer.renderDialogue(ctx, canvas, dialogue, options)` desenha a caixa compartilhada e o retrato. `renderCutsceneDialogue` escolhe falas e prompts da primeira fase; `ToyRoomStory.renderStoryBeat` fornece as falas temporizadas da Toy Room. A lógica de progressão não pertence ao renderer. `ToyRoomStory.renderStoryBeat` delega a `ToyRoomStoryRenderer.renderStoryBeat`, que adapta dados e usa a caixa compartilhada.
 
 Na Toy Room, `separateScene: false` mantém o enquadramento e as coordenadas dos controles. A opção `bottom` reserva espaço para o botão e joystick nos dispositivos móveis. Falas automáticas não exibem um pedido fictício de avanço. Narração sem interlocutor continua usando `PoeticNarrator`. Use `npm run test:dialogues` e `npm run test:dialogues:browser` para conferir esse contrato no ambiente temporário de QA.
+
+### Progressão das janelas dos saltos
+
+O alcance aéreo da aproximação vem de `getApproachJumpSpeed`, com as velocidades originais: 1,42 por quadro, exceto as saídas das plataformas 4 e 5 (1,8 e 1,95). Não reduzir esse avanço abaixo da corrida para estreitar janelas: isso criou frenagem artificial e dificultou indevidamente o salto da bailarina. Castelo e primeiro salto da fuga mantêm pausa/assistência. Após a porta falsa, `getPhase3Stats` usa uma tabela de alcances fixos; `fromFloor` distingue a entrada no percurso invertido. A geometria, gravidade, impulso vertical e velocidades de corrida permanecem independentes desse ajuste. Não calcular o alcance com a posição do comando para facilitar a mira.
+
+`npm run test:saltos:progressao` mede saídas usando os trechos reais de produção, em NORMAL/EASY e dt 0,5/1/1,2. Integra `npm test`, junto com `test:saltos:bailarina`, que verifica saídas normais com os pés apoiados. A progressão decrescente é exigida no retorno pós-clímax; a aproximação conserva os alcances originais. Comparações históricas de salto aceitam somente as mudanças autorizadas de alcance; colisão, gravidade e bloqueios continuam cobertos.

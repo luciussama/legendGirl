@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8adffe04893b8df55157487e944d98b5699e3e3a12ab27c4f460831c9d78d9e8",
+  "path": "qa-execucoes/7c53c162abbd4b4985c08ce73954c3cf/docs/diario-ia/qa-resultados/camera-retorno-fixa/android-7.png",
+  "sha256": "fa39e3fffd658fe7ff3b1f1a2690fc49700d06af1aa9643920b11e908e685607",
+  "capturedAt": "2026-10-19T12:46:00.081201+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-retorno-fixa/android-7.png\", \"sha256\": \"c60b59897d5624169a14a6f1bc9d2825771092a6e7956a03d1d12decb599ba2f\", \"bytes\": 310047, \"binaryRetained\": false}"
+}

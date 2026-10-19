@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e373c57c3b37cca5fb06540e749c3359acce018d256397e72b0e8e671f4af4d8",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/android/EASY/03-retorno.png",
+  "sha256": "d10926e1053a7c5fe0d4fb663039a9fa6af8b49eaffaab8e591a24d15e906e13",
+  "capturedAt": "2026-10-19T12:45:52.464709+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/EASY/03-retorno.png\", \"sha256\": \"96447e957bcc691c17b4009bcfa6921cdb95217f981b02255e53e11b57ff60f9\", \"bytes\": 341995, \"binaryRetained\": false}"
+}

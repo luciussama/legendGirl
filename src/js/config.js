@@ -37,6 +37,22 @@ export const CUTSCENE_DIALOGUE = {
   plotTwistFairy: "Eu também achei. Droga... Vamos olhar por ali."
 };
 
+// Alcances originais da aproximação. Reduzir o avanço aéreo para estreitar a
+// janela criou frenagem artificial na bailarina; o desafio pós-clímax é separado.
+const APPROACH_AIR_SPEEDS = Object.freeze([
+  1.42, 1.42, 1.42, 1.42, 1.42, 1.8, 1.95, 1.42, 1.42, 1.42
+]);
+export function getApproachJumpSpeed(platformIndex) {
+  return APPROACH_AIR_SPEEDS[Math.max(0, Math.min(9, Math.floor(platformIndex) + 1))];
+}
+
+// Retorno pós-clímax: entrada pelo chão, quinze apoios e chegada ao portal.
+// A janela inicial é menor que a da fuga; o final conserva uma margem utilizável.
+const PHASE3_AIR_SPEEDS = Object.freeze([
+  1.1088, 1.5883, 1.9809, 2.3397, 2.7594, 3.0715, 3.5089, 3.9311,
+  4.3560, 4.7501, 5.1968, 5.5080, 5.9376, 6.3539, 6.7577, 7.2345
+]);
+
 /**
  * Atributos progressivos para a sequência de fuga com 12 plataformas (Fase 2).
  * nível: 0 a 11
@@ -64,13 +80,13 @@ export function getEscapeStats(level) {
  * Movimento da Direita para a Esquerda (airVx, runVx e scrollSpeed são NEGATIVOS).
  * nível: 0 a 14 (15 plataformas)
  */
-export function getPhase3Stats(level) {
+export function getPhase3Stats(level, fromFloor = false) {
   const lvl = Math.max(0, Math.min(14, Math.floor(level)));
   const t = lvl / 14; // 0.0 a 1.0
   return {
     levelIndex: lvl,
     jumpPower: -7.40 - t * 2.20,       // -7.40 a -9.60 px/frame (arco suave e elegante sem ultrapassar o teto)
-    airVx: -(2.60 + t * 4.60),         // -2.60 a -7.20 px/frame (salto horizontal responsivo)
+    airVx: -PHASE3_AIR_SPEEDS[fromFloor ? 0 : lvl + 1],
     runVx: -(1.90 + t * 1.60),         // -1.90 a -3.50 px/frame
     scrollSpeed: -(1.80 + t * 2.40),   // -1.80 a -4.20 px/frame
     pitchMult: 1.0 + t * 0.65,
@@ -222,7 +238,7 @@ export const exitDoor = {
 export const phase3Platforms = [
   // PLATAFORMAS INICIAIS (1 A 5):
   // Zona segura com grande buffer de chão plano antes da primeira plataforma (x = 4040, baby surge em 4640).
-  // Saltos seguros, apoios largos e tolerância generosa para assimilação do sentido e controle do pulo.
+  // Os apoios continuam largos; o alcance fixo de cada salto exige precisão crescente já após o clímax.
   // 1/15 (Início da escalada nos brinquedos caídos)
   { x: 4040, y: 420, w: 130, h: 50, style: 'toppled_blocks', label: '1/15 Pilha de Blocos Tombada' },
   // 2/15 (distância livre de 72px, alcance perfeito com nível 0)
@@ -235,7 +251,7 @@ export const phase3Platforms = [
   { x: 3160, y: 348, w: 105, h: 122, style: 'dented_drum', label: '5/15 Tamborzinho Amassado' },
 
   // PLATAFORMAS INTERMEDIÁRIAS (6 A 10):
-  // Exigência moderada de timing e espaçamento dinâmico, sem exigir o limite exato do pulo.
+  // Janelas intermediárias de aproximadamente 280 a 195 ms (simulação de 60 Hz, dt=1).
   // 6/15 (distância livre de 170px, transição fluida com nível 4)
   { x: 2892, y: 330, w: 98, h: 140, style: 'slumped_bear', label: '6/15 Urso de Pelúcia Desmoronado' },
   // 7/15 (distância livre de 200px, ritmo intermediário com nível 5)
@@ -248,7 +264,7 @@ export const phase3Platforms = [
   { x: 1586, y: 263, w: 74, h: 207, style: 'leaning_music_box', label: '10/15 Caixa de Música Desregulada' },
 
   // PLATAFORMAS FINAIS (11 A 15):
-  // Desafiadoras com margem de erro reduzida (exigindo o limite do alcance), rigorosamente testadas pela física da parábola.
+  // Janelas finais de aproximadamente 176 a 118 ms, seguidas de 100 ms na chegada ao portal.
   // 11/15 (distância livre de 324px, alta velocidade com nível 9)
   { x: 1192, y: 247, w: 70, h: 223, style: 'loose_robot', label: '11/15 Robô de Lata Desparafusado' },
   // 12/15 (distância livre de 355px, timing refinado com nível 10)

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a8cab2a96c1b7b1fb8f13d2b9dca84db66f5782d50e7d5246147dc25c2b9e6f9",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet/EASY/COLLECTING.png",
+  "sha256": "90dd69f049eae1967af6ec58d1acedbd733bff8db6ba2534b963d3fe3b19a67e",
+  "capturedAt": "2026-10-19T12:46:00.796383+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet/EASY/COLLECTING.png\", \"sha256\": \"9f132698fadc6fc8dd9ffdb57d3f9f9dba22e44bebf9a12279640e4b7d988aae\", \"bytes\": 838232, \"binaryRetained\": false}"
+}

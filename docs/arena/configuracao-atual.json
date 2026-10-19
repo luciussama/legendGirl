@@ -1,5 +1,5 @@
 {
-  "revisao": "2026-10-15",
+  "revisao": "2026-10-18",
   "finalidade": "Referência documental do código; não é carregada pelo runtime e não autoriza alteração de balanceamento.",
   "fontes": [
     "src/js/toy-room/BattleConfig.js",
@@ -54,7 +54,8 @@
       "attackMoveScale": 0.2,
       "recoveryMoveScale": 0.55,
       "blockRecovery": 48,
-      "knockbackDistance": 173.6
+      "knockbackDistance": 173.6,
+      "guardMoveScale": 0.55
     },
     "ARENA_ENEMIES": {
       "train": {
@@ -146,5 +147,13 @@
     "COMPLETE"
   ],
   "furiaUrsoArena": "HP positivo menor ou igual à metade arredondada para cima; mantém flag após cura.",
-  "referenciaHumana": "GUIA-ARENA.md"
+  "referenciaHumana": "GUIA-ARENA.md",
+  "defesa": {
+    "contatoCorporalCausaDano": false,
+    "orientacao": "Sempre voltada ao inimigo",
+    "entrada": "Segurar para trás no chão, sem golpe, agachamento ou reação de dano",
+    "custoCoracoes": 0,
+    "animacaoQuadros": 12,
+    "poses": 6
+  }
 }

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7b5fd3c3d7de233dab89a11f4b288d5cd8b214e81d6acc33cd59f9473a736a1d",
+  "path": "qa-execucoes/e626775222134f3ebab55f1b5710d621.log",
+  "sha256": "c85774062310a7a1fbbb0cbc44a1c66f465f26ef3627854a32a72d0adef84bbe",
+  "capturedAt": "2026-10-18T17:21:21.776247+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:complementos:browser",
+    "exitCode": 0,
+    "package": "20261018T172111-de41b0bc8bdd"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jogabilidade:complementos:browser\n> node docs/diario-ia/qa/jogabilidade-tutorial-mensagens-browser.js && node docs/diario-ia/qa/jogabilidade-tutorial-conclusao-browser.js && node docs/diario-ia/qa/arena-defesa-browser.js\n\nAPROVADO: touch, teclado, mouse e Xbox; mensagens específicas sem cobrir personagem/destino nem liberar gameplay.\nAPROVADO: quatro entradas válidas, rejeição de entradas inválidas, salto original, conclusão persistida, retry/restore sem tutorial e novo save com tutorial.\nAPROVADO: toque real, defesa, arraste diagonal, salto e espada simultâneos em 390×844\nAPROVADO: toque real, defesa, arraste diagonal, salto e espada simultâneos em 844×390\n"
+}

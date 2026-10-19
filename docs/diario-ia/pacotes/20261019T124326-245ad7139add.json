@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T124326-245ad7139add",
+  "date": "2026-10-19T12:43:26.009805+00:00",
+  "title": "Complementos da bateria: seis telas com toque nativo, tutorial, persistência, câmera e bailarina",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/formatos-complementos-browser.js",
+      "sourceId": "a8929c7e0d1940bf62116f385e07d06337fa3d34f817dadfca5775325ffd6eca",
+      "sha256": "c96153a46158d37d062124019d97f11cf771c913f39399b9132fa80fa819cefa",
+      "bytes": 769,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/formatos-toque-browser.js",
+      "sourceId": "82bee630e5af3d98fb94ed1e26e4ac54da3d4140b125c410edb8e327a3b6fc57",
+      "sha256": "3de6aa1676785a5546cde91b06d88090be1278667773141f77de3b341c61b97d",
+      "bytes": 6384,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:formatos:complementos:browser": "node docs/diario-ia/qa/formatos-complementos-browser.js"
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "aa92ba98afda4d2e8c1a499c449467712e0bd812a50e2abb6b98bef438661d64",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-ATTACK.png",
+  "sha256": "07f02b8a570829ef98e56daa7821196c34c9f6a14f0f5b9985166712a871071d",
+  "capturedAt": "2026-10-19T12:45:56.624615+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-bear-ATTACK.png\", \"sha256\": \"f43cdc60d722a402e5181fb9443fb5e5b5da6b4beabda2b0f0e7a5bf906359b0\", \"bytes\": 1070888, \"binaryRetained\": false}"
+}

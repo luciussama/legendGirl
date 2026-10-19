@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ad5ea677bdc9f7dc5570dd235c9b853f61296244cbf8d2d75e581ab1eb78f784",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/04-sala-brinquedos.png",
+  "sha256": "739af08df7d248e43dbbfbb1f2a8474db4e6809692c677bd4274f5e9f6a4963f",
+  "capturedAt": "2026-10-19T12:45:59.300609+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone_paisagem/EASY/04-sala-brinquedos.png\", \"sha256\": \"1a312f96ffb55525e6911dba4786d5938c0f4f2da2c7f9913f9e0cc67040079a\", \"bytes\": 1285391, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c875dbcd1771d1acc00372dd60314a6aa801ed03a7b19af58af2e57e6ba3ab97",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/04-sala-brinquedos.png",
+  "sha256": "75affacba2aae1820c15e29149181763157df177dee8ed45c8d194147f6f9b43",
+  "capturedAt": "2026-10-19T02:59:34.795653+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/04-sala-brinquedos.png\", \"sha256\": \"edb3a60e18891b68892878b9cf146d6a0c3e1be8910f39161509835bee88930c\", \"bytes\": 1292438, \"binaryRetained\": false}"
+}

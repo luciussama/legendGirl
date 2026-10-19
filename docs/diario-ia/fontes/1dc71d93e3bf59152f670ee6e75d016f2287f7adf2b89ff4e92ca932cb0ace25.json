@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1dc71d93e3bf59152f670ee6e75d016f2287f7adf2b89ff4e92ca932cb0ace25",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-ataque.png",
+  "sha256": "5c0800e15b03ddf6c483a4d1adbb5836ce5b64b575e69999bc7cb7b3bd877410",
+  "capturedAt": "2026-10-19T02:59:35.139671+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/arena-robot-ataque.png\", \"sha256\": \"05b3f88a90b1c269b4f4909af6e67cd197a218f5cae6dcb59de59887445f9af5\", \"bytes\": 1094358, \"binaryRetained\": false}"
+}

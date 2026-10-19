@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "6dccc9d850964a6ebbf8602e87543cb5",
+  "type": "qa",
+  "date": "2026-10-18T17:18:27.246136+00:00",
+  "title": "QA temporário: test:jogabilidade:tutorial:browser",
+  "exitCode": 0,
+  "sourceId": "2398118cc8654fa29acbbca659b036d583ac8de5aa49c2181f74f36891822b91",
+  "package": "20261018T171550-67843a0aaf90"
+}

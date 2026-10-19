@@ -17,17 +17,25 @@ function renderArenaMobileControls(ctx, layout, room) {
   const held = room.arenaTouchButtons ?? {};
   ctx.save();
   ctx.textAlign = 'center';
+  const pad=controls.dpad,r=66*unit,h=22*unit;
+  ctx.fillStyle='rgba(29,25,39,.72)';ctx.beginPath();ctx.arc(pad.x,pad.y,pad.hitRadius,0,Math.PI*2);ctx.fill();
+  ctx.save();ctx.translate(pad.x,pad.y);
+  ctx.fillStyle='#494451';ctx.strokeStyle='#c0b7c9';ctx.lineWidth=2*unit;
+  ctx.beginPath();ctx.moveTo(-h,-r);ctx.lineTo(h,-r);ctx.lineTo(h,-h);ctx.lineTo(r,-h);
+  ctx.lineTo(r,h);ctx.lineTo(h,h);ctx.lineTo(h,r);ctx.lineTo(-h,r);ctx.lineTo(-h,h);
+  ctx.lineTo(-r,h);ctx.lineTo(-r,-h);ctx.lineTo(-h,-h);ctx.closePath();ctx.fill();ctx.stroke();
+  ctx.restore();
   for (const [direction, button] of Object.entries(controls.directions)) {
     const active = Boolean(held[direction]);
-    ctx.fillStyle = active ? '#f5ca72' : 'rgba(255,246,222,.94)';
-    ctx.strokeStyle = '#402d4a'; ctx.lineWidth = 2 * unit;
-    ctx.beginPath(); ctx.arc(button.x, button.y, button.radius, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-    ctx.fillStyle = '#35243e';
-    ctx.font = `bold ${(direction === 'up' || direction === 'down' ? 20 : 23) * unit}px system-ui`;
-    ctx.fillText(({left:'←',right:'→',up:'↑',down:'↓'})[direction], button.x, button.y + (direction === 'up' || direction === 'down' ? -2 : 1) * unit);
-    ctx.font = `bold ${7 * unit}px system-ui`;
-    ctx.fillText(({left:'ESQUERDA',right:'DIREITA',up:'A · PULAR',down:'ABAIXAR'})[direction], button.x, button.y + button.radius + 11 * unit);
+    if(active){ctx.fillStyle='#f5ca72';ctx.beginPath();ctx.roundRect(button.x-18*unit,button.y-18*unit,36*unit,36*unit,5*unit);ctx.fill();}
+    ctx.fillStyle = active ? '#35243e' : '#f4ecff';
+    ctx.font = `bold ${25*unit}px system-ui`;
+    ctx.fillText(({left:'←',right:'→',up:'↑',down:'↓'})[direction], button.x, button.y+8*unit);
   }
+  ctx.fillStyle='#2b2533';ctx.beginPath();ctx.arc(pad.x,pad.y,11*unit,0,Math.PI*2);ctx.fill();
+  ctx.fillStyle='#fff1d2';ctx.font=`bold ${9*unit}px system-ui`;
+  ctx.fillText('↑ PULAR · ↓ ABAIXAR',pad.x,pad.y-pad.hitRadius-9*unit);
+  ctx.font=`bold ${8*unit}px system-ui`;ctx.fillText('TRÁS: DEFENDER',pad.x,pad.y+pad.hitRadius+5*unit);
 
   const drawAction = (button, title, badge, special = false) => {
     const left = button.x - button.width / 2, top = button.y - button.height / 2;
@@ -69,8 +77,8 @@ export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   const e = state.enemy;
   const recoveryStart = arenaEnemyImpactEnd(e);
   const guarded = arenaEnemyGuarding(e);
-  const attackHint = ['Laser Beam', 'Rocket Punch'].includes(e.attack) ? 'ABAIXE OU RECUE' : 'PULE OU RECUE';
-  const subtitle=state.transition?'OS BRINQUEDOS GANHAM VIDA':e.state==='ENRAGE'?'O GUARDIÃO DESPERTOU'
+  const attackHint = ['Laser Beam', 'Rocket Punch'].includes(e.attack) ? 'ABAIXE OU DEFENDA' : 'PULE OU DEFENDA';
+  const subtitle=state.transition?'OS BRINQUEDOS GANHAM VIDA':state.guarding?'DEFESA · ESPADA À FRENTE':e.state==='ENRAGE'?'O GUARDIÃO DESPERTOU'
     :guarded?(e.state === 'HIT' ? 'PREPARANDO RESPOSTA · AGUARDE' : `RESPOSTA PROTEGIDA · ${attackHint}`)
     :e.state==='ATTACK'&&e.elapsed>=recoveryStart?'ABERTURA · CONTRA-ATAQUE'
     :boss?.titleTime>0?'O GUARDIÃO DE PELÚCIA':`O QUARTO LENDÁRIO · ${Math.min(4,state.index+1)} / 4`;

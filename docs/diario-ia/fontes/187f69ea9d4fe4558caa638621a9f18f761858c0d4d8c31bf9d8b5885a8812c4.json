@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "187f69ea9d4fe4558caa638621a9f18f761858c0d4d8c31bf9d8b5885a8812c4",
+  "path": "qa-execucoes/d4ea429634ca4174a3178d9a4a6b0304/docs/diario-ia/qa-resultados/bailarina-depois/android.png",
+  "sha256": "b2a39c4928ae95611f8847602a39e4336cf5ee5c83ff8b78f9085d3cbf0d5c61",
+  "capturedAt": "2026-10-19T12:49:13.904815+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/bailarina-depois/android.png\", \"sha256\": \"6bc8922cde8047828789712a29829629a5329db5fee2d0852a44a752dda0807f\", \"bytes\": 59622, \"binaryRetained\": false}"
+}

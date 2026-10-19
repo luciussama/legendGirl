@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "aee833a88b1bbd188e4a99df3b28df658661769570cd2640d6bd6bec2b7c441a",
+  "path": "qa-execucoes/e626775222134f3ebab55f1b5710d621/docs/diario-ia/qa-resultados/arena-defesa/390-poses.png",
+  "sha256": "84376f4cbb68d032c8b65266498ad8340b56165c0767e4293f96224bf8743e8c",
+  "capturedAt": "2026-10-18T17:21:21.779609+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:complementos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-defesa/390-poses.png\", \"sha256\": \"8876c55c4857749767ca93956d1bc33a8815bfbc2b6660988a17389b15dcf78a\", \"bytes\": 209647, \"binaryRetained\": false}"
+}

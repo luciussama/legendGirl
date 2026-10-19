@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "99520450ecb38d14b47ea575651d4745d51e0ef6766a26b79bd6a16cb4be7b71",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-1.png",
+  "sha256": "6586117b8220d65e2e032190e34e753110d9760732eaf1e94f45a3c875d4e8aa",
+  "capturedAt": "2026-10-19T02:49:48.476934+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/apoio-ida-1.png\", \"sha256\": \"f5a1da7f83f9973cbd12691974d5ab26c5ccde778cc0df0c1bdbf273ba5b7b53\", \"bytes\": 325488, \"binaryRetained\": false}"
+}

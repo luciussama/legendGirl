@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0c97be632b0e1260c8ec522154dd3734a3535e980f5a6237b9c9e9e977d554a0",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/transporte.png",
+  "sha256": "3b31bf1555df3f63110c8363d30606d47f18b2a6f7f4637e557beeb326a2465f",
+  "capturedAt": "2026-10-19T12:26:20.028969+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/transporte.png\", \"sha256\": \"252bd1ce3d5f083175f18f5c46b9b93fa96d7a2727a93c967c7764a1b016aebb\", \"bytes\": 1376179, \"binaryRetained\": false}"
+}

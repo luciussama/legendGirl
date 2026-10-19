@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6381ec8de62abe2e73a4bf63acb8c98ed7032029d84471a9b52076588b370467",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/realidade.png",
+  "sha256": "3b981bb4d1fdee5a7ad4d0c48efdc8e28ac502974db92e4005b11c7246b69ca1",
+  "capturedAt": "2026-10-18T17:11:00.217012+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/realidade.png\", \"sha256\": \"60e102afda245ec8ff5ed2e2132823db4312bdf6683b2e8260464884d48e6278\", \"bytes\": 334508, \"binaryRetained\": false}"
+}

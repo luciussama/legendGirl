@@ -28,7 +28,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -76,6 +76,10 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:debug-phases:browser` | `python3 scripts/run-qa-from-journal.py test:debug-phases:browser` | Três fases, trocas repetidas, isolamento de entrada e save preservado. |
 | `npm run test:arena:enemies` | `python3 scripts/run-qa-from-journal.py test:arena:enemies` | Corpos sólidos, repertórios, IA e pressão progressiva. |
 | `npm run test:arena:balance` | `python3 scripts/run-qa-from-journal.py test:arena:balance` | 111 percursos e condições de evasão/proteção/recuperação. |
+| `npm run test:arena:defesa` | `python3 scripts/run-qa-from-journal.py test:arena:defesa` | Contato sem dano, bloqueio frontal, orientação, animação e diagonais. |
+| `npm run test:saltos:progressao` | `python3 scripts/run-qa-from-journal.py test:saltos:progressao` | Progressão pós-clímax, aproximação sem frenagem artificial e viabilidade em NORMAL/EASY e três passos de tempo. |
+| `npm run test:saltos:bailarina` | `python3 scripts/run-qa-from-journal.py test:saltos:bailarina` | Reproduz a frenagem anterior e verifica 24 saltos com saídas normais até a bailarina. |
+| `npm run test:arena:defesa:browser` | `python3 scripts/run-qa-from-journal.py test:arena:defesa:browser` | Eventos reais de toque no Chrome isolado: defesa, salto diagonal e espada simultânea. |
 
 ## Comandos adicionais preservados no diário
 

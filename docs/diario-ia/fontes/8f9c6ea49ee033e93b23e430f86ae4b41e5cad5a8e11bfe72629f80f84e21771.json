@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8f9c6ea49ee033e93b23e430f86ae4b41e5cad5a8e11bfe72629f80f84e21771",
+  "path": "qa-execucoes/3c106954532049bc8f9b008b1f40bad5/docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-movimento.png",
+  "sha256": "164ef0e7d8edb680c03b2ee41260ddd1d440eed3e409a339628ae2b657fef0a9",
+  "capturedAt": "2026-10-19T12:45:27.185398+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-dinosaur-movimento.png\", \"sha256\": \"5d8aaf3a0c9b99fe714eaee8dce1daefa8b48c57e7062c56543b66663d6f93f2\", \"bytes\": 662130, \"binaryRetained\": false}"
+}

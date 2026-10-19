@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "3e40372d456a5bc1671391883d804c9d19f8806b5c4d1b6bb4a7257b067ce3c6",
+  "path": "qa-execucoes/f545ff45dc8a400382d0fd41815e39a7.log",
+  "sha256": "9c7d54937aaa4bbb60c045673a5d4aff98de5fc53fae8ba0a22d05bac81c92b7",
+  "capturedAt": "2026-10-19T02:55:14.575956+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:saltos:bailarina",
+    "exitCode": 1,
+    "package": "20261019T025512-bc8e0bd5cf12"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:saltos:bailarina\n> node docs/diario-ia/qa/testar-bailarina.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Saída normal das gavetas alcança a bailarina: {\"dt\":0.5,\"difficulty\":\"NORMAL\",\"x\":1408,\"after\":{\"landed\":7,\"frames\":101,\"airVx\":0.3266,\"x\":1424.6565999999934,\"y\":244.50999999999976,\"feetX\":1443.6565999999934}}\n\n7 !== 8\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-2j20158e/projeto/docs/diario-ia/qa/testar-bailarina.js:9:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 7,\n  expected: 8,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "2a330d7a701a49e880fd638ffd1ecba2",
+  "date": "2026-10-19T12:42:25.463532+00:00",
+  "title": "QA temporário: test:jogabilidade:entradas",
+  "files": [
+    {
+      "path": "qa-execucoes/2a330d7a701a49e880fd638ffd1ecba2.log",
+      "sourceId": "e817cb02411fbabd4ce4a84b44daae8749fb7ecb3633c743fdc140aba26eebbb",
+      "sha256": "adc167ed95a6d33ea0cc0f29bbf69cbfaa790ce0f700710467151e62936d1aff",
+      "bytes": 278,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/2a330d7a701a49e880fd638ffd1ecba2/docs/qa/.DS_Store",
+      "sourceId": "14f92e86647989b5cc75a4f3f1254c09ff36f66315b8df36b1d883f2eae4a185",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

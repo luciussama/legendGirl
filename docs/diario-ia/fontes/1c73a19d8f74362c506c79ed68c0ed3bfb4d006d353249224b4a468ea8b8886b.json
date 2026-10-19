@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1c73a19d8f74362c506c79ed68c0ed3bfb4d006d353249224b4a468ea8b8886b",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/arena-train-RETREAT.png",
+  "sha256": "02a2646275b29e214b0dff613e60f689146a2f4d04cb28c86e1e704022a8115c",
+  "capturedAt": "2026-10-19T12:45:55.290970+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/arena-train-RETREAT.png\", \"sha256\": \"8983a4cce17431d961b9090e23ccb48e48709b10208fe4f1435f4a925c866be1\", \"bytes\": 803788, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6d2acd41a17d1801ffeb88857b2e70e355081eabfe17a48a494461fb0bf4c9cb",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-IDLE.png",
+  "sha256": "a3b307b4c6855d6b77e56e3c9d099176b299577770ad88f0526818e44ce6ab69",
+  "capturedAt": "2026-10-19T12:26:21.065168+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/NORMAL/arena-train-IDLE.png\", \"sha256\": \"98cc62ae08cf3ad6a13957423d9358b4e369176ddaba20a085b744c5630d7f43\", \"bytes\": 701691, \"binaryRetained\": false}"
+}

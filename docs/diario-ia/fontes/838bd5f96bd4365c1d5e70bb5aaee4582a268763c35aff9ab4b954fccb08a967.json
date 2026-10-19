@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "838bd5f96bd4365c1d5e70bb5aaee4582a268763c35aff9ab4b954fccb08a967",
+  "path": "qa-execucoes/54dfeecb04554dccb4f16d391e5db450.log",
+  "sha256": "368df8daaf3a1a0aab5e816566b0a7332764d123b9c7c13c8f5c283b19504930",
+  "capturedAt": "2026-10-18T16:58:49.777916+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:animation",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:animation\n> node scripts/test-arena-player-animation.js\n\nAPROVADO: poses intermediárias, orientação, escala corporal, pés, antecipação, recuperação, sincronização, save/load e preservação da arte original.\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1e05e4c0e2c12ba0c5efeea70b3e223e9fc1c68119ae797ca40c178a7e01acd5",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/arena-dinosaur-DEATH.png",
+  "sha256": "6f75440beaab8e83d474275440078921937494889eff667010644e6e7835eee7",
+  "capturedAt": "2026-10-19T12:46:02.916277+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/NORMAL/arena-dinosaur-DEATH.png\", \"sha256\": \"6c987a79437f17b904b40135f73b48de7f973123a8f5fa7fb293e03b34fd05a6\", \"bytes\": 755052, \"binaryRetained\": false}"
+}

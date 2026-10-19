@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c624512af6c8008468a7eb73b67a824fc59ddce48acaa618b19b6acc58547666",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/SEEKING_SWORD.png",
+  "sha256": "12ff4b84fe7320e2881e3dee6242151694c8c0e895d76068f8ca6d67f4ace3e2",
+  "capturedAt": "2026-10-18T17:11:00.812821+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/SEEKING_SWORD.png\", \"sha256\": \"e711708c78080dab33ac2bf86bd85f10229fa6259e09a1eaff6a9f80c2ccbe43\", \"bytes\": 1368569, \"binaryRetained\": false}"
+}

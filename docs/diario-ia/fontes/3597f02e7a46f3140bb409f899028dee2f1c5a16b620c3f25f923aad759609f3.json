@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3597f02e7a46f3140bb409f899028dee2f1c5a16b620c3f25f923aad759609f3",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/retorno.png",
+  "sha256": "f069d5ce94a60d66eb4db1d7e1bb3ea0b2b640cfade42e6f2c1ecb7068c2fef8",
+  "capturedAt": "2026-10-19T02:59:36.019755+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/retorno.png\", \"sha256\": \"0d18bd5be2d3dfacaaa4d0db3957996069f30d033a044a64aace0a2e8795d03a\", \"bytes\": 826826, \"binaryRetained\": false}"
+}

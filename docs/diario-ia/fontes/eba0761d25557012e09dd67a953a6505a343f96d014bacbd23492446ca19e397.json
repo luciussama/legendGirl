@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "eba0761d25557012e09dd67a953a6505a343f96d014bacbd23492446ca19e397",
+  "path": "qa-execucoes/1ef4938109324f9e8876ded50f77227b/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/PICKUP.png",
+  "sha256": "cf9c982482f57ec83f75152134967f5d599adb8fc4d005eed161c2c201c3a1ac",
+  "capturedAt": "2026-10-19T12:26:20.036775+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/PICKUP.png\", \"sha256\": \"e5469fa202a433b9055b5f402754329d836ca5e6c554925a23f7b0de8c15e1ac\", \"bytes\": 1073536, \"binaryRetained\": false}"
+}

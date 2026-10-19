@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T124216-56d17961426c",
+  "date": "2026-10-19T12:42:16.733277+00:00",
+  "title": "Bateria em oito formatos e dois modos com campanhas completas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/formatos-bateria-browser.js",
+      "sourceId": "06ae39b1d0f1a0507fbbbc613f29cfdb198e23eea93ce92c429b598dae971f33",
+      "sha256": "6560b2331820f5de673de11fc3fd7efc68c6a3f5b1f33313eeebe2fcd5b6d3ff",
+      "bytes": 726,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-percurso-browser.js",
+      "sourceId": "069ef5e1a3c19b0bfeabc31500f0fc47c610251aa9a6f6a85b447a225514ba6c",
+      "sha256": "c77c78ec7d696c15e8736b734dbf4b3e983412cf2e1df2a81a4195c48004bfd3",
+      "bytes": 10214,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:formatos:browser": "node docs/diario-ia/qa/formatos-bateria-browser.js"
+  }
+}

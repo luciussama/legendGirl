@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9b9499b9447416e9d26d309848b116c59138e8e2f00681ae352f89dc1ce8ffdd",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-0.png",
+  "sha256": "2bd0abc3374ba1104f39eddb40f1126148ed8ac67f426c855b2e4ad9407f7724",
+  "capturedAt": "2026-10-18T17:10:59.817182+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/android/NORMAL/apoio-ida-0.png\", \"sha256\": \"c59c8dba4586ebe1034ecc983eaf2835484c4a5bcfad3f570d6cfab9bdd1a713\", \"bytes\": 304240, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "940c54c245eb4d075304207554acd339c6d26a27cffdac282086ef7cc33a9095",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-DEATH.png",
+  "sha256": "787e4964122739306ee6a577251c7266c3b4d2497b4d0730d3fdb8ea7a865ca9",
+  "capturedAt": "2026-10-18T17:11:00.854043+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/arena-train-DEATH.png\", \"sha256\": \"9a70e6e22eab68aecb2d1be4afc4b6b2fc9109dc1dbbb2c13bfc9cb8bc43c7f0\", \"bytes\": 863317, \"binaryRetained\": false}"
+}

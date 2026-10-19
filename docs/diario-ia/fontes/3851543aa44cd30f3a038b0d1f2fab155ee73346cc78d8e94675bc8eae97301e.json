@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3851543aa44cd30f3a038b0d1f2fab155ee73346cc78d8e94675bc8eae97301e",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/SEEKING_SWORD.png",
+  "sha256": "64eb13838554f1de6aeea1308ee4ccc72bc0d8d2a9b81c724f143333509bad20",
+  "capturedAt": "2026-10-19T12:45:56.568304+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/EASY/SEEKING_SWORD.png\", \"sha256\": \"37318037f2cf43a3f5637e2c5fc7f1c7df28351b38f877be040289e7a6b5d924\", \"bytes\": 1102927, \"binaryRetained\": false}"
+}

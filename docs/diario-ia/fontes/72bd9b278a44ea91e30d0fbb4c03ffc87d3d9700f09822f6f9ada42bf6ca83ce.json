@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "72bd9b278a44ea91e30d0fbb4c03ffc87d3d9700f09822f6f9ada42bf6ca83ce",
+  "path": "qa-execucoes/dce2a3778a754c38b23f303d6f7fa038/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-APPROACH.png",
+  "sha256": "14422486f32f0e35681238fb660c996298f17e5a56c5e24d7d8ad4f1b257fc6a",
+  "capturedAt": "2026-10-18T17:11:00.546407+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-dinosaur-APPROACH.png\", \"sha256\": \"ea7b937411c47bcd566d4e94cbafad60e0fc9a56fdfbbb1c4b0cf823e70c65ea\", \"bytes\": 1146262, \"binaryRetained\": false}"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f5c79be8d0d955e04b264e8756e4002af0ed30c56ff6048809b0391cf8d2867f",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/EASY/arena-dinosaur-entrada.png",
+  "sha256": "1ece4e8a0808bc250dce8cd3d969e35df6e924a0115ef50ced2ec4d77fe9ef23",
+  "capturedAt": "2026-10-19T12:46:02.222092+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/tablet_paisagem/EASY/arena-dinosaur-entrada.png\", \"sha256\": \"c0ee8dc96835119be46a14dc49bdc8fccf2ccf99003ab130552d5e09f5f0d1ef\", \"bytes\": 678595, \"binaryRetained\": false}"
+}

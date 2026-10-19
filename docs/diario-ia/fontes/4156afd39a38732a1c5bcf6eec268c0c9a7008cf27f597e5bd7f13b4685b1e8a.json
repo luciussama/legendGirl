@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4156afd39a38732a1c5bcf6eec268c0c9a7008cf27f597e5bd7f13b4685b1e8a",
+  "path": "qa-execucoes/90e2ada06449486bab8ec2ab899c8aab/docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-HIT.png",
+  "sha256": "ff518a1d50988e43c2f39650b2ce20e72c8fa4d8ab202af09e5fd91a2ddd66d8",
+  "capturedAt": "2026-10-19T02:49:48.200052+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/desktop/NORMAL/arena-robot-HIT.png\", \"sha256\": \"f9fcab6755524bce0a8fe3b4412a0b83acdc6b57cffe3120a0287f543868b001\", \"bytes\": 1069877, \"binaryRetained\": false}"
+}

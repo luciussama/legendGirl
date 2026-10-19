@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "77b3891d1762c1627672bf8d43e84d7ce55b7a65dcb1a2907987cff18a871089",
+  "path": "qa-execucoes/0052d97da15445d19846f0bb53602b0d.log",
+  "sha256": "fb6c8bc3448be37281811864e79121a2509bf59dd21195f95f51d97270dcaf0a",
+  "capturedAt": "2026-10-19T02:56:56.253339+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bailarina:antes:browser",
+    "exitCode": 0,
+    "package": "20261019T025641-0a43ec3df888"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bailarina:antes:browser\n> node docs/diario-ia/qa/bailarina-browser.js --expect-broken\n\nAPROVADO: regressão reproduzida; salto volta às gavetas em desktop e dois perfis móveis, sem busca pelo melhor quadro.\n"
+}

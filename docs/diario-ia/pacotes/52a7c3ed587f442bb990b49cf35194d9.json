@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "52a7c3ed587f442bb990b49cf35194d9",
+  "date": "2026-10-18T16:57:35.010728+00:00",
+  "title": "QA temporário: test:arena:defesa:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/52a7c3ed587f442bb990b49cf35194d9.log",
+      "sourceId": "38ac2c103861af8384e7967b2d75bc7a348e2a5d415631518ed06389943ec894",
+      "sha256": "0f78cfb9d529e2e59933ff218bbc2c7c3bedf675263fefcbefcb647806f35373",
+      "bytes": 567,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/52a7c3ed587f442bb990b49cf35194d9/docs/qa/.DS_Store",
+      "sourceId": "38dc109d148f4a119cd665a4f62f33a35bcbd0d2cd88298f7702711ec40d7058",
+      "sha256": "58360279c461d1c3b4326fd27de2c6d3698d255ae24d20e62a3aaeab24b60808",
+      "bytes": 6148,
+      "metadataOnly": false
+    }
+  ]
+}

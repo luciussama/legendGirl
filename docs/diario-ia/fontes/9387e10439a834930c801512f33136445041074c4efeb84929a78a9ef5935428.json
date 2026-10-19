@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9387e10439a834930c801512f33136445041074c4efeb84929a78a9ef5935428",
+  "path": "qa-execucoes/82c45e8c2ace4a208c32191627820cef/docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/01-inicio.png",
+  "sha256": "18adb1ecb827ebe7bf41803d21d3a0443aa29ccce1a53cc6ed52ec20e228abb8",
+  "capturedAt": "2026-10-19T02:59:35.731539+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/iphone/EASY/01-inicio.png\", \"sha256\": \"82ec84ee09019fd2c5ad341cbdc00bb779fe13104d66567a40718b6b71829a82\", \"bytes\": 300131, \"binaryRetained\": false}"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "0052d97da15445d19846f0bb53602b0d",
+  "type": "qa",
+  "date": "2026-10-19T02:56:56.254515+00:00",
+  "title": "QA temporário: test:bailarina:antes:browser",
+  "exitCode": 0,
+  "sourceId": "77b3891d1762c1627672bf8d43e84d7ce55b7a65dcb1a2907987cff18a871089",
+  "package": "20261019T025641-0a43ec3df888"
+}

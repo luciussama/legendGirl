@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f4cd68e64ca4cf2ec56aa38dd336671b0858d796d42050cfc171c87123ec1bb6",
+  "path": "qa-execucoes/2f7806cef62549fa89c4aa348d3fda3c/docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/transformacao.png",
+  "sha256": "7be96858bc801ef8ac73c2eb1447e13b08a447e8f20d2137399dd492d7bd4711",
+  "capturedAt": "2026-10-19T12:45:55.773636+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:formatos:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jogabilidade/compacto/EASY/transformacao.png\", \"sha256\": \"132d6567dd28c38c81c8c7da8c696c5d81ad68e73cfbde08027002667356ac50\", \"bytes\": 1046493, \"binaryRetained\": false}"
+}

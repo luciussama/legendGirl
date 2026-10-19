@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2972ad3401df55159a0375365e0e2eaa1dddcd740e43a06d0277d9d023ab8129",
+  "path": "docs/diario-ia/qa-resultados/correcao-bailarina/browser-antes.log",
+  "sha256": "2a408426c946386d534c1f7c4a0a872aa0387a8e79201cf56e33f4fc2549cf07",
+  "capturedAt": "2026-10-19T03:00:04.109307+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 journal:qa\n> python3 scripts/run-qa-from-journal.py test:bailarina:antes:browser\n\n\n> o-quarto-dos-brinquedos@1.0.0 test:bailarina:antes:browser\n> node docs/diario-ia/qa/bailarina-browser.js --expect-broken\n\nAPROVADO: regressão reproduzida; salto volta às gavetas em desktop e dois perfis móveis, sem busca pelo melhor quadro.\nResultado preservado no diário; diretório temporário removido.\n"
+}

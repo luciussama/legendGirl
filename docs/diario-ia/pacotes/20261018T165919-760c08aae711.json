@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261018T165919-760c08aae711",
+  "date": "2026-10-18T16:59:19.340246+00:00",
+  "title": "Aba de QA isolada por execução e diagnóstico dos eventos nativos de toque",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/arena-defesa-browser.js",
+      "sourceId": "0d2da147343f0f54ac269cd1f689204410a858be2697e38934562348365a7c23",
+      "sha256": "35e3ed3f173dda9de9099a47e5a89c6d07721078db0327b9c03ecd2ab1648e88",
+      "bytes": 6340,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:defesa:browser": "node docs/diario-ia/qa/arena-defesa-browser.js"
+  }
+}
