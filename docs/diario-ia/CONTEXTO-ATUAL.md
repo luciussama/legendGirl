@@ -613,3 +613,27 @@ com documentos em `8cf9291d` e referência origin alinhada. Comando de commit de
 IA retornou “nothing to commit” e não executou merge por estar encadeado com &&.
 Não atribuir criação/envio desses commits a esta execução. Iluminação posterior
 permanece em alterações locais, sem novo commit ou push desta IA.
+
+
+## Revisão das sombras nas curvas e documentação — 20/10/2026
+
+Sessão `20261020T181911-38cb8c0288e0`: inspeção visual e gameplay completo por
+controlador com entradas automatizadas. Direcional frontal rasante fazia a parede
+curva sombrear grande parte do piso. Luz elevada para 28; mapa próximo ajustado
+para ±12,5/±24 e profundidade 0,5–80. Janelas com alcance/far 18, máscara permanente
+e transição de força da sombra até zero antes da troca. Paredes continuam casters.
+Métodos de ChaseLighting documentados em português com parâmetros, motivos dos
+valores e ciclo de recursos; formatação expandida. PascalCase preserva convenção
+dos módulos de classes; não foi solicitada renomeação global.
+
+QA final: gameplay COMPLETE, zero colisões, 6.110 passos, pico 308 chamadas;
+28 trocas suaves em 2.881 amostras e 210 pontos próximos dentro do mapa. QA de
+iluminação em três formatos e regressão de percurso/WebGL/descarte aprovados.
+Tentativas com 347/340 chamadas e uma amostra fora da margem preservadas como
+falhas; limite de 310 não ampliado. Build/assets/mapa/sintaxe/diff verificados.
+Relatório: `relatorios/20261020-sombras-curvas.md`. Sem aceite artístico humano,
+GI físico ou benchmark em aparelhos. Nenhum ajuste de simulação/modelo/textura.
+
+Commit `3a422243` apareceu externamente durante a sessão e absorveu parte do
+trabalho existente. Esta IA não o criou e não fez push; ajustes/documentação
+posteriores continuam locais até ação do responsável.

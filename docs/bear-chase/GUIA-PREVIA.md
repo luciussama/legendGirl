@@ -204,3 +204,14 @@ a luz global de apresentação, mas participa da iluminação recebida.
 direção da luz/sombra do urso, três formatos, continuidade das janelas e descarte.
 O limite de chamadas de desenho é uma referência interna de desempenho; não
 equivale a um limite do navegador nem certifica FPS em aparelhos reais.
+
+A revisão das curvas elevou a luz principal para evitar sombras rasantes das
+paredes sobre toda a pista. As janelas têm alcance local de 18 unidades e máscara
+permanente; a força de sua sombra diminui até zero no ponto médio entre janelas,
+antes de passar à próxima. O volume do mapa principal cobre a área próxima de
+jogo, evitando incluir objetos distantes sem utilidade nessa projeção.
+
+`ChaseLighting.js` documenta cada método, seus parâmetros, propriedade dos recursos
+e efeitos dos valores de ajuste. `test:bear-chase:shadows:gameplay:browser`, no
+acervo de QA, percorre o controlador completo com entradas automatizadas e verifica
+transições, cobertura próxima do mapa e custo de desenho.
