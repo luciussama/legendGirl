@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T214228-7726a1114289",
+  "sessionId": "20261020T214228-7726a1114289",
+  "type": "inicio",
+  "date": "2026-10-20T21:42:28.515684+00:00",
+  "title": "Implementar transição da vitória da arena para a fuga 3D",
+  "actor": "Copilot",
+  "branch": "FEAT-Intro-screen",
+  "head": "d31570ceb45eaddc4ebcff9478a1cf1d83377cc6",
+  "workingTree": [
+    " M docs/README.md",
+    " M docs/diario-ia/CONTEXTO-ATUAL.md",
+    "?? docs/bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md",
+    "?? docs/diario-ia/fontes/6b947e73206722ecf11a49f0630916abe051977c7aee15b2ede4db676735e872.json",
+    "?? docs/diario-ia/fontes/79808fdc8bd3386189b3670a533c501e4676de0bc978cc34aea9d118b1db06f8.json",
+    "?? docs/diario-ia/fontes/7bf4d51f62a249a73ae50ba6ca2ed2d47b0ee5ef789f78a905d8f760f6cc8b80.json",
+    "?? docs/diario-ia/registros/20261020T213824-511c19289a0c-fim.json",
+    "?? docs/diario-ia/registros/20261020T213824-511c19289a0c.json"
+  ]
+}

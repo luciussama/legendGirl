@@ -41,6 +41,8 @@ export class ToyRoomPhase {
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
     this.isInputEnabled = options.isInputEnabled || (() => true);
+    this.bindInputs = options.bindInputs !== false;
+    this.createChasePhase = options.createChasePhase || (config => new BearChasePhase(config));
     Object.assign(this, createToyRoomEnvironmentAssets(this.assets));
 
     // Dimensões da Sala
@@ -99,7 +101,7 @@ export class ToyRoomPhase {
     this.handlePointerUp = this.onPointerUp.bind(this);
     this.handleBlur = this.clearInput.bind(this);
 
-    if (options.bindInputs !== false) this.setupListeners();
+    if (this.bindInputs) this.setupListeners();
     this.toyRoomTutorialCompleted = false;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.tutorial = new ToyRoomTutorial(createToyRoomTutorialContext(this));
@@ -161,10 +163,47 @@ export class ToyRoomPhase {
     this.clearInput(); this.inputController.removeListeners();
     this.arena?.audioProfile.leave({ resume: false });
     this.audio?.stopAllAudio?.(); this.audio?.stopToyRoomMusic?.();
-    this.chase = new BearChasePhase({ canvas: this.canvas, audio: this.audio,
+    this.chase = this.createChasePhase({ canvas: this.canvas, audio: this.audio,
       enabled: this.isInputEnabled, difficulty: this.gameDifficulty });
     this.gameplayState = 'BEAR_CHASE_PREVIEW';
     return this.chase.start(saved);
+  }
+
+  /** Inicia a perseguição da campanha sob o fade da vitória, sem reutilizar o seletor de debug. */
+  startChaseCampaign(saved = null) {
+    if (this.chase?.campaign && this.chase.active) return false;
+    this.chase?.destroy();
+    this.clearInput(); this.inputController.removeListeners();
+    this.arena?.audioProfile.leave({ resume: false });
+    this.audio?.stopAllAudio?.(); this.audio?.stopToyRoomMusic?.();
+    let chase;
+    try {
+      chase = this.createChasePhase({ canvas: this.canvas, audio: this.audio,
+        enabled: this.isInputEnabled, difficulty: this.gameDifficulty, campaign: true,
+        onCampaignError: message => this.handleCampaignChaseError(chase, message) });
+    } catch (error) {
+      const message = `Não foi possível preparar a fuga: ${error.message}`;
+      console.warn('Preparação da fuga interrompida:', error.message);
+      this.handleCampaignChaseError(null, message);
+      return false;
+    }
+    this.chase = chase;
+    this.gameplayState = 'BEAR_CHASE_CAMPAIGN';
+    if (this.uiFeedback) this.uiFeedback.innerText = '';
+    return chase.start(saved);
+  }
+
+  /** Recupera a sala e informa explicitamente caso os recursos da fuga não carreguem. */
+  handleCampaignChaseError(chase, message) {
+    if (chase && (this.chase !== chase || chase.disposed)) return;
+    chase?.destroy();
+    this.chase = null;
+    this.gameplayState = 'TOY_ROOM_GAMEPLAY';
+    if (this.bindInputs) this.setupListeners();
+    if (this.uiFeedback) {
+      this.uiFeedback.innerText = `A fuga não pôde ser iniciada. ${message}`;
+      this.uiFeedback.style.color = '#fca5a5';
+    }
   }
 
   resolveCollisions(px, py, r) {

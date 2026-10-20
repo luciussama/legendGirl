@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a519a310af5e9a6e6379c33db091b02b39575727a3be778c5c94acc4ad551039",
+  "path": "qa-execucoes/3e29e2413b7244ad875beb16dfd49d3a.log",
+  "sha256": "3821f25a1f994e3566252424de4bc27d12c32c4046b6730faf4bf453e87f1a1c",
+  "capturedAt": "2026-10-20T21:45:06.036188+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena",
+    "exitCode": 1,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena\n> node scripts/test-toy-room-arena.js && npm run test:arena:animation\n\nAPROVADO: inicialização e finalização da fase imaginária.\nAPROVADO: transformação reproduzível e retomada sem travamento.\nAPROVADO: arena derivada do layout sem mutar a sala.\nAPROVADO: escala heroica e sprites detalhadas sem alteração das colisões.\nAPROVADO: câmera suave, responsiva e sem clipping dos atores.\nAPROVADO: física própria, corrida, salto e alcance sem mutação legado.\nAPROVADO: efeitos sincronizados, persistentes e com orçamento limitado.\nAPROVADO: música da espada contínua, intensidade da arena e retorno sem timers órfãos.\nAPROVADO: HUD heroico e D-pad/botões de ação dentro da safe area.\nAPROVADO: brinquedos heroicos derrotáveis em três taxas de atualização.\nAPROVADO: chefe com fúria, efeitos, derrota e retomada sem softlock.\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/bear-chase/ChaseAudio.js:9\n    this.host = audio; this.music = new Audio(new URL('Chase.mp3', ROOT));\n                                        ^\n\nReferenceError: Audio is not defined\n    at new ChaseAudio (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/bear-chase/ChaseAudio.js:9:41)\n    at new BearChasePhase (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/bear-chase/BearChasePhase.js:16:18)\n    at ToyRoomPhase.startChaseCampaign (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/toy-room/ToyRoomPhase.js:178:13)\n    at ToyRoomArenaPhase.update (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/toy-room/ToyRoomArenaPhase.js:137:19)\n    at ToyRoomPhase.update (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/src/js/toy-room/ToyRoomPhase.js:211:42)\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-xjxxnr4d/projeto/scripts/test-toy-room-arena.js:154:33\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v26.5.0\n"
+}

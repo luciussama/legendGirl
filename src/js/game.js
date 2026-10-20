@@ -1259,6 +1259,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     togglePause,
     setPaused,
     hasProgress: () => Boolean(campaign.read() || opening.hasCompleted()),
+    hasSavedCampaign: () => Boolean(campaign.read()),
     getDifficulty: () => normalizeDifficulty(campaign.read()?.state.gameDifficulty ?? state.gameDifficulty),
     saveProgress,
     newCampaign,

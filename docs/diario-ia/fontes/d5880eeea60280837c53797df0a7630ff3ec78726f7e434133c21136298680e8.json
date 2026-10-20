@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d5880eeea60280837c53797df0a7630ff3ec78726f7e434133c21136298680e8",
+  "path": "docs/diario-ia/qa/tela-inicial-20261020/driver.js",
+  "sha256": "903a350883d11ee326037792046d6d84ed08b99947950a183c0b9e4febad1e8c",
+  "capturedAt": "2026-10-20T20:21:30.623942+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import express from 'express';\nimport {spawn} from 'node:child_process';\nconst app=express();app.use(express.static(process.cwd()));const server=app.listen(0,'127.0.0.1');\nawait new Promise((resolve,reject)=>{server.once('listening',resolve);server.once('error',reject);});\ntry{const child=spawn(process.execPath,['docs/diario-ia/qa/tela-inicial-20261020/browser.js'],{env:{...process.env,TITLE_QA_URL:'http://127.0.0.1:'+server.address().port},stdio:'inherit'});process.exitCode=await new Promise((resolve,reject)=>{child.once('exit',resolve);child.once('error',reject);});}finally{server.close();}\n"
+}

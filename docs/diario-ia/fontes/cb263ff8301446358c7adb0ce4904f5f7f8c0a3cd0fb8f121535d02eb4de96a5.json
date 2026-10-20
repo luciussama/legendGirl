@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "cb263ff8301446358c7adb0ce4904f5f7f8c0a3cd0fb8f121535d02eb4de96a5",
+  "path": "qa-execucoes/6ef62f8e82114a749a4a320475aacd17.log",
+  "sha256": "8c946021b7da2e9b56f4d5c4c9f1f4c888f6e23e86dc3aa78a3d73275ccd3f26",
+  "capturedAt": "2026-10-20T20:22:00.695936+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:title-screen:browser",
+    "exitCode": 1,
+    "package": "20261020T202130-37d7d6f5e157"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:title-screen:browser\n> node docs/diario-ia/qa/tela-inicial-20261020/driver.js\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-dto_syfd/projeto/docs/diario-ia/qa/tela-inicial-20261020/browser.js:12\nasync function until(expression){for(let i=0;i<200;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Condição não alcançada: '+expression);}\n                                                                                                                                            ^\n\nError: Condição não alcançada: !document.querySelector(\"#title-options-dialog\").open\n    at until (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-dto_syfd/projeto/docs/diario-ia/qa/tela-inicial-20261020/browser.js:12:141)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-dto_syfd/projeto/docs/diario-ia/qa/tela-inicial-20261020/browser.js:29:163\n\nNode.js v26.5.0\n"
+}

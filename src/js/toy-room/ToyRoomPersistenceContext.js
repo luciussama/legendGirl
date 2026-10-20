@@ -3,6 +3,8 @@ export function createToyRoomPersistenceContext(room) {
   return {
     get arena() { return room.arena; },
     get battle() { return room.battle; },
+    get chase() { return room.chase; },
+    set chase(value) { room.chase = value; },
     get cameraX() { return room.cameraX; },
     set cameraX(value) { room.cameraX = value; },
     get cameraY() { return room.cameraY; },
@@ -25,6 +27,7 @@ export function createToyRoomPersistenceContext(room) {
     get player() { return room.player; },
     set player(value) { room.player = value; },
     startTutorial: () => room.startTutorial(),
+    startChaseCampaign: saved => room.startChaseCampaign(saved),
     get story() { return room.story; },
     get toyRoomTutorialCompleted() { return room.toyRoomTutorialCompleted; },
     set toyRoomTutorialCompleted(value) { room.toyRoomTutorialCompleted = value; },

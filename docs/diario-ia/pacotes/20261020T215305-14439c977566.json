@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T215305-14439c977566",
+  "date": "2026-10-20T21:53:05.889629+00:00",
+  "title": "Regressão de retomada e descarte da fuga de campanha",
+  "files": [
+    {
+      "path": "scripts/test-arena-chase-transition.js",
+      "sourceId": "8ed2907c3235f77917f308e9f8751b79475b995bc87d31c91c12c51b2c677494",
+      "sha256": "a395c0a710cdbb9da10a7e97cd9a754a4bdd54dc9c19679e1606efda33d4c729",
+      "bytes": 3505,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

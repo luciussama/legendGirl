@@ -14,6 +14,7 @@ import { renderArenaEnvironment, renderArenaTemple } from './ArenaEnvironment.js
 import { ArenaPlayerRenderer } from './ArenaPlayerRenderer.js';
 import { ToyRoomArenaBuilder } from './ToyRoomArenaBuilder.js';
 export const ARENA_TRANSFORMATION_DURATION = 180;
+export const ARENA_VICTORY_FADE_DURATION = 30;
 
 /** Fase imaginária que reutiliza o combate da sala sem criar outro jogo. */
 export class ToyRoomArenaPhase {
@@ -77,7 +78,8 @@ export class ToyRoomArenaPhase {
     };
   }
 
-  restoreReality() {
+  /** Restaura a exploração depois do resultado, podendo manter o áudio suspenso sob um fade. */
+  restoreReality({ resumeAudio = true } = {}) {
     if (this.state.realityRestored || !this.exploration) return;
     this.room.restore(this.exploration, { preserveArena: true });
     this.state.realityRestored = true;
@@ -90,10 +92,10 @@ export class ToyRoomArenaPhase {
       this.room.player.carriedItem = null;
       this.room.organizedCount = this.room.toys.length;
       this.room.story.state.arenaCompleted = true;
-      this.room.victoryBannerActive = true; this.room.victoryBannerTimer = 240;
+      this.room.victoryBannerActive = resumeAudio; this.room.victoryBannerTimer = resumeAudio ? 240 : 0;
     }
     this.room.gameplayState = 'TOY_ROOM_GAMEPLAY';
-    this.audioProfile.leave();
+    this.audioProfile.leave({ resume: resumeAudio });
   }
 
   finish() {
@@ -106,10 +108,13 @@ export class ToyRoomArenaPhase {
   }
 
   beginReturn() {
-    this.state.status = 'RETURNING'; this.state.returnElapsed = 0;
     const s = this.battle.state;
     this.state.outcome = s.mode;
     this.state.result = { outcome:s.mode, hp:s.player.hp, history:JSON.parse(JSON.stringify(s.history)) };
+    this.state.status = 'RETURNING';
+    this.state.destination = s.mode === 'VICTORY' ? 'CHASE' : 'ROOM';
+    this.state.returnElapsed = 0;
+    this.state.transitionElapsed = 0;
     this.room.clearInput();
   }
 
@@ -118,8 +123,17 @@ export class ToyRoomArenaPhase {
     const step = Math.max(0, Math.min(12, Number.isFinite(dt) ? dt : 1));
     this.state.elapsed += step;
     if (this.state.status === 'RETURNING') {
-      this.state.returnElapsed += step;
       this.room.clearInput();
+      if (this.state.destination === 'CHASE') {
+        this.state.transitionElapsed += step;
+        if (this.state.transitionElapsed >= ARENA_VICTORY_FADE_DURATION) {
+          this.restoreReality({ resumeAudio: false });
+          this.state.status = 'COMPLETE'; this.state.completed = true;
+          this.room.startChaseCampaign();
+        }
+        return;
+      }
+      this.state.returnElapsed += step;
       if (this.state.returnElapsed >= 90) this.restoreReality();
       if (this.state.returnElapsed >= 180) this.finish();
       return;
@@ -145,6 +159,14 @@ export class ToyRoomArenaPhase {
   render() {
     if (!this.active) return;
     if (this.state.status === 'RETURNING') {
+      if (this.state.destination === 'CHASE') {
+        this.battle.render();
+        const { ctx, canvas } = this.room;
+        const alpha = Math.min(1, this.state.transitionElapsed / ARENA_VICTORY_FADE_DURATION);
+        ctx.save(); ctx.fillStyle = `rgba(20,14,19,${alpha})`;
+        ctx.fillRect(0, 0, canvas.width, canvas.height); ctx.restore();
+        return;
+      }
       if (this.state.realityRestored) this.room.render({arenaBackdrop:true}); else this.battle.render();
       const { ctx, canvas } = this.room, p = this.state.returnElapsed / 180;
       ctx.save();ctx.fillStyle=`rgba(24,14,38,${Math.sin(p*Math.PI)*0.95})`;ctx.fillRect(0,0,canvas.width,canvas.height);

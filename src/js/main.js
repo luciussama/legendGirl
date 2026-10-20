@@ -1,4 +1,5 @@
 import { attachMobileUILayout } from './ui/MobileUILayout.js';
+import { TitleScreen } from './ui/TitleScreen.js';
 // Previne que rejeições assíncronas do navegador ou iframes acionem o coletor de erros da plataforma
 window.addEventListener('unhandledrejection', (event) => {
   if (event) {
@@ -23,22 +24,12 @@ const uiFeedback = document.getElementById('ui-feedback') || {
   style: {}
 };
 const startOverlay = document.getElementById('start-overlay');
-const btnStartPhase1 = document.getElementById('btn-start-phase1');
-const btnNewCampaign = document.getElementById('btn-new-campaign');
 const difficultySelect = document.getElementById('game-difficulty');
 const restartCampaignDialog = document.getElementById('restart-campaign-dialog');
 
-function refreshCampaignMenu() {
-  const exists = game.hasProgress();
-  btnStartPhase1.textContent = exists ? 'CONTINUAR' : 'COMEÇAR';
-  btnStartPhase1.setAttribute('aria-label', exists ? 'Continuar aventura salva' : 'Começar a aventura');
-  btnNewCampaign.hidden = !exists;
-  difficultySelect.disabled = exists;
-  if (exists) difficultySelect.value = game.getDifficulty();
-  document.getElementById('difficulty-description').textContent = exists
-    ? 'Continuar preserva a dificuldade da aventura salva. Para escolher outra, use RECOMEÇAR.'
-    : 'FÁCIL oferece mais tolerância no pouso e uma fadinha mais ágil para indicar brinquedos.';
-}
+let titleScreen;
+/** Atualiza a disponibilidade de carregar ao retornar ao título. */
+function refreshCampaignMenu() { titleScreen?.refresh(); }
 
 const debugPhaseSelect = document.getElementById('debug-phase-select');
 const debugPhaseToggle = document.getElementById('btn-debug-phase-toggle');
@@ -168,7 +159,7 @@ const game = createGame(canvas, uiFeedback, {
 });
 
 function startGame(event) {
-  if (restartCampaignDialog.open) return;
+  if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open) return;
   if (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -319,11 +310,10 @@ function handleToyRoomSwitch(event) {
   }, 450);
 }
 
-if (btnStartPhase1) {
-  addSafeAction(btnStartPhase1, (e) => {
-    startGame(e);
-  });
-}
+titleScreen = new TitleScreen({ game,
+  onNew: () => { if (started || isStarting) return; game.newCampaign(); lastActionTime = 0; startGame(); },
+  onLoad: () => startGame()
+});
 
 if (debugPhaseSelect) {
   const menu = debugPhaseToggle?.closest('.phase-debug-menu');
@@ -367,19 +357,6 @@ if (debugPhaseSelect) {
   });
 }
 
-// O fundo não inicia a campanha: as decisões do menu são explícitas.
-btnNewCampaign.addEventListener('click', () => {
-  restartCampaignDialog.returnValue = 'cancel';
-  restartCampaignDialog.showModal();
-});
-restartCampaignDialog.addEventListener('close', () => {
-  if (restartCampaignDialog.returnValue !== 'restart') return;
-  game.newCampaign();
-  difficultySelect.value = document.getElementById('new-campaign-difficulty').value;
-  refreshCampaignMenu();
-  lastActionTime = 0;
-  startGame();
-});
 refreshCampaignMenu();
 
 if (btnRetry) {
@@ -391,7 +368,7 @@ if (btnRestart) {
 }
 
 window.addEventListener('keydown', (event) => {
-  if (restartCampaignDialog.open || event.target.closest?.('button, a, input, select, dialog')) return;
+  if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open || event.target.closest?.('button, a, input, select, dialog')) return;
   // Evita disparo contínuo por repetição de tecla pressionada
   if (event.repeat) {
     return;
@@ -405,7 +382,7 @@ window.addEventListener('keydown', (event) => {
 
   if (!started) {
     if (event.code === 'Space' || event.code === 'ArrowUp' || event.code === 'Enter' || event.code === 'Digit1') {
-      startGame(event);
+      event.preventDefault(); titleScreen.requestNew();
     }
     return;
   }
@@ -424,7 +401,7 @@ let prevOverlayButtonX = false;
 let prevOverlayButtonA = false;
 
 function pollOverlayGamepad() {
-  if (restartCampaignDialog.open) return;
+  if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open) return;
   if (typeof navigator === 'undefined' || typeof navigator.getGamepads !== 'function') return;
   let gamepads;
   try {
@@ -448,7 +425,7 @@ function pollOverlayGamepad() {
         game.setLastInputDevice('gamepad');
       }
       if (!started) {
-        startGame();
+        titleScreen.activateFocused();
       } else if (game.isGameOver && game.isGameOver()) {
         handleRetry();
       }
