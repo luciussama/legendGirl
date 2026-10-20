@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T194438-00d9441f33c4",
+  "date": "2026-10-20T19:44:38.292164+00:00",
+  "title": "Regressão das vidas e queda final da perseguição",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/vidas-perseguicao-20261020/dominio.js",
+      "sourceId": "5a0f51fc1ab514d7967c598676db559fb07dc5b91e91c3fe59ef7222dffe1510",
+      "sha256": "4443f598607df0aac5ccfe887a774b8284b20bb592d042becc1cd4a0a8bcbc03",
+      "bytes": 2724,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js",
+      "sourceId": "d1cc12a96e348caaec4dd6a4057c21c48976cd675882996cbfcf4c8e6a2d1a82",
+      "sha256": "11044204fbb0ab58bb9f29388bd8ddcf89d9380a2934af4a0d33dab5f5f7b338",
+      "bytes": 5634,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/driver.js",
+      "sourceId": "78ac74c79f300568911a1f2bad213699cf383394cd8344ecaee5ba9135567e1d",
+      "sha256": "ec6642b523f914d70ca910ddab7fd85a18d5f5e68de62fdeda238f3bd6f1cdfb",
+      "bytes": 1316,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:health": "node docs/diario-ia/qa/vidas-perseguicao-20261020/dominio.js",
+    "test:bear-chase:health:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js",
+    "test:bear-chase": "node docs/diario-ia/qa/perseguicao-20261019/dominio.js && node docs/diario-ia/qa/ritmo-20261020/dominio.js && node docs/diario-ia/qa/vidas-perseguicao-20261020/dominio.js"
+  }
+}

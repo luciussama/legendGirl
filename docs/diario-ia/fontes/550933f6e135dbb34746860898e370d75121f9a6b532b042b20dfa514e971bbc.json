@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "550933f6e135dbb34746860898e370d75121f9a6b532b042b20dfa514e971bbc",
+  "path": "qa-execucoes/4c59e36982c64ae59fc69f0101693a63.log",
+  "sha256": "8cf77af36710f321c9c19dbbcd09ebb925fb0955afb06a7123b7b83cc4751c4a",
+  "capturedAt": "2026-10-20T19:06:27.738104+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:pacing",
+    "exitCode": 1,
+    "package": "20261020T190622-4163b1a05e72"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:pacing\n> node docs/diario-ia/qa/ritmo-20261020/dominio.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Deve haver lançamentos no trecho final.\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-lj831d4_/projeto/docs/diario-ia/qa/ritmo-20261020/dominio.js:30:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

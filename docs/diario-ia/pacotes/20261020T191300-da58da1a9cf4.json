@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T191300-da58da1a9cf4",
+  "date": "2026-10-20T19:13:00.457558+00:00",
+  "title": "Diagnóstico da aproximação por formato",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/browser.js",
+      "sourceId": "4f684100cb98250c0328ff358a1f3b70e69be84cd81da31d11afb68d9aec9000",
+      "sha256": "c99339968c0747c1f0ebd5a35fd74d01782c372e109dc5e4f5503aba0062e52a",
+      "bytes": 5548,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/browser.js"
+  }
+}

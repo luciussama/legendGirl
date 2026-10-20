@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "72b36dbfca01ea509dae1ee1b91f36f04b8496c543ec03c089c2b0da93e8367d",
+  "path": "qa-execucoes/226c0154f9d940448d0faf425ba84c1f.log",
+  "sha256": "577d63187b0c1309e8308cf5b87b242c92855db584de96734051cd6e3270f1b4",
+  "capturedAt": "2026-10-20T19:46:53.659716+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:health:browser",
+    "exitCode": 1,
+    "package": "20261020T194644-254000a6d5b3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:health:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js\n\nIntegridade: artes originais, configuração e modelo da menina preservados; domínio, renderer e animação foram ajustados por pedidos de percurso, ritmo e queda final.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Queda deve permanecer junto do solo: {\"stage\":\"GAME_OVER\",\"difficulty\":\"NORMAL\",\"hits\":3,\"texts\":[\"Fim de jogo\",\"A menina caiu.\",\"Escolha a fase novamente no seletor para tentar de novo.\",\"Fim de jogo\",\"A menina caiu.\",\"Escolha a fase novamente no seletor para tentar de novo.\"],\"restored\":true,\"stable\":true,\"rotation\":-1.5148593139765687,\"visible\":true,\"minY\":-0.10281234969328062,\"maxY\":1.1488371827378627,\"musicPaused\":true,\"musicVolume\":0,\"chest\":false}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-ow2u_nsv/projeto/docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js:49:63 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

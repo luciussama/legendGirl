@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "185a973661eb4e0da7770f2330f9df71",
+  "date": "2026-10-20T19:10:21.132960+00:00",
+  "title": "QA temporário: test:bear-chase:pacing:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/185a973661eb4e0da7770f2330f9df71.log",
+      "sourceId": "1657749610863dc4a21151b81ecd9cb56872785eb7c94d407153d66475e224ee",
+      "sha256": "bc743da7cc17a9897fbd6e83d955a2f12f1c938359f3d1ce6f1a8fe185eb7148",
+      "bytes": 12115,
+      "metadataOnly": false
+    }
+  ]
+}

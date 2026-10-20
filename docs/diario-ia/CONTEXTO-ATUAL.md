@@ -684,3 +684,109 @@ em três formatos e QA do urso. Build/assets/diff aprovados. Mapa final: 411 ima
 99 recortes, 29 assinaturas. Metadados de 11 conjuntos de capturas e um levantamento
 antigo de fontes também consolidados; fixtures efetivamente lidas pelo QA mantidas.
 Capturas temporárias e caches locais descartados com identificação no manifesto.
+
+
+## Ritmo crescente e câmera de perseguição — 20/10/2026
+
+Sessão `20261020T190232-f53560bddf2a`. Usuário autorizou acelerar a corrida,
+aproximar câmera/urso, encurtar lançamentos e adicionar balanço vertical leve.
+`ChasePacing` centraliza curva suave: velocidade-base 8→12 após os primeiros 15%,
+intervalo 3,5→1,75 s, voo 0,65→0,38 s. Rampas/tropeços continuam influenciando o
+avanço. Aproximação do urso se intensifica nos últimos 6%; amortecimento aumenta
+nesse trecho para evitar congelar a passada ao atingir o fim antes da captura.
+
+Lançamentos conservam corredor livre e margem prevista de reação após pouso,
+incluindo velocidade/rampa adiante. FÁCIL mantém urso um pouco mais distante para
+conservar ataques finais com maior margem. Saídas sucessivas rápidas são adjacentes.
+`flight` por obstáculo é opcional no save v1; ausente mantém o voo antigo. Render e
+colisão consultam o mesmo valor. Sem alterações em hitboxes, largura ou controles.
+
+`ChaseCamera` é cálculo puro: aproximação longitudinal 7,5→5,1 em paisagem e
+9→6,8 em retrato, altura menor, alvo mais baixo/próximo e campo 57→60/62 graus.
+Balanço vertical 0,018→0,04 unidade ligado à distância, sem oscilação durante pausa.
+Folga adaptativa no retrato mantém os dois atores nas faixas distintas. Captura
+começa no mesmo quadro de câmera, com transição ao baú. HUD deixou de prometer
+90 segundos fixos. Pista permanece com 720 unidades; duração nominal total medida
+87,57 s, incluindo as etapas narrativas existentes.
+
+Validação: npm test passou e incorpora a regressão nova de ritmo. Seis percursos
+NORMAL/EASY com decisões a cada quadro/300/400 ms terminaram sem colisões, baú único,
+save/RNG estáveis e sem quadros parados no fim. Último lançamento ~673,6; aviso real
+mínimo após pouso ~1,063 s NORMAL/~1,313 s FÁCIL nos percursos medidos. Isso não
+homologa desafio humano. 33 comparações em três formatos confirmaram enquadramento
+e crescimento projetado; gameplay pelo controlador: 5.254 passos, zero colisões,
+pico 306 chamadas. Percurso/36 finais/WebGL/descarte e navegador teclado/toque,
+pausa/save/áudio/mudo/campanha passaram. Build/assets/mapa/sintaxe/diff aprovados.
+Falhas intermediárias de margem no FÁCIL e enquadramento/ampliação no retrato
+preservadas; corrigidas sem relaxar as asserções. Sem benchmark físico ou aceite
+humano de conforto do balanço. Sem commit/push nesta execução.
+
+Próximo pedido autorizado e colocado na sequência pelo usuário: abertura da
+perseguição em cutscene ilustrada, usando a cena inicial da menina na cama no
+quarto escuro como referência de linguagem. Menina aproxima-se do urso em desenho;
+transição para o 3D somente quando ele se levantar.
+
+## Abertura ilustrada da perseguição e quase toque — 20/10/2026
+
+Sessão `20261020T191907-12f396002561`: substituída por completo a apresentação 3D
+das etapas BEAR_DOWN/GIRL_APPROACH/BEAR_RISE. `ChaseIntroRenderer` compõe Canvas 2D
+com parede, janela, madeira, tapete, poltrona e fada existentes. Dois atlas próprios
+gerados por image_gen integrada seguem a pintura da cena da cama e referências
+da menina/urso: `cinematic/approach-atlas-v1.png` e `reach-atlas-v1.png`, com prompts.
+Sem CLI/API paga externa. Os sprites anteriores e modelos da corrida permanecem.
+
+Correção adicional do usuário: piso agora usa o mesmo recorte 186×48 do quarto,
+sem comprimir muitas tábuas em faixas finas. Menina chega perto do urso caído,
+inclina-se e estende a mão; ele reage antes do toque, levanta, vira e foge. Poses
+ancoradas nos sapatos; proximidade relativa calculada para cada formato. Levantar
+inicia após o gesto. Corte escuro de 0,25 s após ficar de pé e revelação de 0,4 s
+na largada. Não se apresenta WebGL durante as três etapas ilustradas, nem durante
+carregamento. Artes e 3D carregados antes de liberar a simulação. Sem outro RAF.
+
+Pausa/restauração usam o relógio existente. Nenhuma mudança de duração das etapas,
+domínio, física, dificuldade ou contrato de save nesta abertura. Ainda é a prévia
+selecionada pelo debug; não houve integração nova da vitória da arena à campanha.
+
+QA final: 39 cenas em três formatos, doze poses completas, ausência de chamadas
+de apresentação 3D na abertura, quase toque antes da reação, fuga, pausa/save
+determinísticos e quadros idênticos nos dois lados do corte escuro. Inspeção visual
+identificou divisões irregulares da prancha; ajustados recortes e incluída rejeição
+de recortes que cortem figuras. Capturas temporárias têm caminho/hash/bytes no
+acervo e são descartadas. npm test e QA nativo de perseguição passaram após a
+integração inicial (percurso completo sem colisões e recursos descartados). Após
+os dois ajustes visuais, repetido QA específico; build/assets/mapa/sintaxe/diff
+aprovados. Mapa final: 413 imagens, 99 recortes, 29 assinaturas. Sem benchmark
+físico ou aprovação artística humana desta abertura. Sem commit/push.
+
+## Vidas e derrota na perseguição — 20/10/2026
+
+Sessão `20261020T194154-5efde8f4f4b3`. Usuário pediu trocar os textos superiores por
+um indicador de vida, com derrota no terceiro tropeço; esclareceu seis no FÁCIL.
+`ChaseHealth` centraliza limites (NORMAL 3, EASY 6), duração da queda e consulta das
+etapas de derrota. Corações cheios/vazios substituem título, explicação e indicador
+de porcentagem/distância. Cutscene ilustrada continua sem HUD de corrida.
+
+Último impacto entra em FALLING imediatamente, antes de lançar novos objetos ou
+emitir passos/captura. Distância, entrada lateral e obstáculos ficam congelados;
+após 1,1 s entra em GAME_OVER, que congela o estado e nunca envia o urso ao baú.
+Animação inclina o corpo para a frente, acomoda braços/pernas/espada e cabelo para
+o lado. Câmera mira a menina no chão, música reduz ganho até parar e passos cessam.
+HUD orienta nova tentativa pelo seletor. Campanha permanece isolada na prévia.
+
+Snapshot v1 acrescenta dificuldade opcional. Saves anteriores mantêm a selecionada;
+hits continua sendo a fonte das vidas, sem contador duplicado. Save antigo em
+corrida com impactos acima do limite passa à queda ao retomar. Etapas novas são
+validadas pelo restaurador e contagens negativas/fracionárias são rejeitadas.
+
+QA: suíte geral passou e inclui regressão de vidas. Domínio verificou três/seis
+impactos, imunidade, contato único, derrota real sem desviar, save/RNG, ausência de
+captura e estado terminal congelado. QA final de navegador passou em 18 cenas e
+três formatos, incluindo dificuldade restaurada, quadro estável, HUD limpo, pose
+de queda e música em zero. QA nativo completou o percurso sem colisões, preservou
+campanha, teclado/toque, pausa/save/áudio e descarte zero. Capturas inspecionadas.
+Falhas intermediárias preservadas: baseline anterior bloqueava a alteração
+autorizada de ChaseGirlAnimation; permitido somente esse módulo adicional, sem
+retirar a proteção do modelo/artes/configuração. Duas poses intermediárias
+falharam por extensão vertical da espada/cabelo; corrigidas sem relaxar limite.
+Build/assets/mapa/sintaxe/diff aprovados. Sem aceite humano ou hardware físico.
+Sem commit/push. Evidências regeneráveis descartadas após registrar metadados.

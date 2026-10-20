@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "5a07695fbe134da4ac4f1d994bf70d32",
+  "type": "qa",
+  "date": "2026-10-20T19:15:07.093213+00:00",
+  "title": "QA temporário: test:bear-chase:pacing:gameplay:browser",
+  "exitCode": 0,
+  "sourceId": "4a1f5af896c40445cbb7fd663b335a5228bfc1b86e2566953d31d975ce7d0731",
+  "package": "20261020T191457-e3e5a5ae0964"
+}

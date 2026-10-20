@@ -6,10 +6,11 @@ import crypto from 'node:crypto';
 const baseline = JSON.parse(await fs.readFile('docs/diario-ia/qa/catalogo-20261020/integridade.json', 'utf8'));
 for (const [path, expected] of Object.entries(baseline)) {
   const raw = await fs.readFile(path);
-  if (path.endsWith('ChaseSimulation.js')) continue;
+  // Domínio e animação da menina foram alterados por pedidos atuais de ritmo e queda final.
+  if (path.endsWith('ChaseSimulation.js') || path.endsWith('ChaseGirlAnimation.js')) continue;
   if (crypto.createHash('sha256').update(raw).digest('hex') !== expected.sha256) throw Error('Fonte ou contrato alterado: ' + path);
 }
-console.log('Integridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.');
+console.log('Integridade: artes originais, configuração e modelo da menina preservados; domínio, renderer e animação foram ajustados por pedidos de percurso, ritmo e queda final.');
 const app = express(); app.use(express.static(process.cwd()));
 const server = app.listen(0, '127.0.0.1');
 await new Promise((resolve, reject) => { server.once('listening', resolve); server.once('error', reject); });

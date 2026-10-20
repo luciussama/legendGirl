@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T194530-0f0fbf383f68",
+  "date": "2026-10-20T19:45:30.536419+00:00",
+  "title": "Atualização do contrato de integridade para animação de queda autorizada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js",
+      "sourceId": "020430f56907cd4fff225e8e0836fb955ceb6dacf16e712cd2d11e46f2f04b22",
+      "sha256": "336044f234d09501b534b1f3bee7fba1c7d97a60c6a9ecb8b8c2ed561bc044d0",
+      "bytes": 5699,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/driver.js",
+      "sourceId": "c89e3acb3d1b37919066d927e0594e2ba5acabc8132595ca9e0ebd6c86de987c",
+      "sha256": "a4dd44253d0f97234c7a3e907ae4d1f97030a092576c288457aaaf76d50e18c2",
+      "bytes": 1478,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:health:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/vidas-perseguicao-20261020/browser.js"
+  }
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 411,
+    "files": 413,
     "regions": 99,
     "code": 29
   },
@@ -263,6 +263,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
+          "line": 9,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/manifest.json",
           "line": 46,
@@ -3026,6 +3032,12 @@
           "line": 2220,
           "type": "manifesto-runtime",
           "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
         }
       ],
       "hints": [],
@@ -3720,6 +3732,12 @@
           "file": "assets/art/toy-room/battle/remediation/manifest.json",
           "line": 1574,
           "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
+          "line": 11,
+          "type": "apoio",
           "alias": null
         }
       ],
@@ -8897,6 +8915,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/BattleGirlFrames.js",
           "line": 36,
           "type": "runtime",
@@ -13880,6 +13904,52 @@
       "family": "assets/art/toy-room/battle/train/walk"
     },
     {
+      "id": "b4b2c3872a6ae6c122e05bd1",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.png",
+      "title": "approach-atlas-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1422497,
+      "sha256": "5ba6cf41e007a7466181c0d93de9b54a4e0ab0770872090f15c593f241f34938",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/ChaseIntroRenderer.js",
+          "line": 5,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/cinematic"
+    },
+    {
+      "id": "9307b1241230505da71860e0",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/cinematic/reach-atlas-v1.png",
+      "title": "reach-atlas-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1383740,
+      "sha256": "ded454c6de15a7c4ecd1458ec216c9e6d3a9a650f2619a88b1c8f579978072a6",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/ChaseIntroRenderer.js",
+          "line": 6,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/cinematic"
+    },
+    {
       "id": "f3ed4a82cf9bf0b61014d3f0",
       "kind": "file",
       "path": "assets/art/toy-room/bear-chase/materials/armario-atlas-v1.png",
@@ -14009,7 +14079,7 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 74,
+          "line": 75,
           "type": "runtime",
           "alias": null
         }
@@ -14192,7 +14262,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 76,
+          "line": 77,
           "type": "runtime",
           "alias": null
         },
@@ -14272,7 +14342,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 78,
           "type": "runtime",
           "alias": null
         },
@@ -14315,7 +14385,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 76,
+          "line": 77,
           "type": "runtime",
           "alias": null
         },
@@ -14358,7 +14428,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 78,
           "type": "runtime",
           "alias": null
         },
@@ -14465,7 +14535,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 80,
           "type": "runtime",
           "alias": null
         },
@@ -14588,7 +14658,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 80,
           "type": "runtime",
           "alias": null
         },
@@ -14713,7 +14783,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 79,
           "type": "runtime",
           "alias": null
         },
@@ -14768,7 +14838,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 79,
           "type": "runtime",
           "alias": null
         },

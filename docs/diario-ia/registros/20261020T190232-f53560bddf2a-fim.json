@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T190232-f53560bddf2a-fim",
+  "sessionId": "20261020T190232-f53560bddf2a",
+  "type": "fim",
+  "date": "2026-10-20T19:18:53.076734+00:00",
+  "title": "Aceleração progressiva e câmera de perseguição mais intensa",
+  "actor": "Codex",
+  "summary": "Implementados ritmo crescente, aproximação do urso/câmera e balanço vertical leve. Lançamentos mais próximos e rápidos conservam margem prevista, com voo por objeto compatível com saves antigos. Enquadramento adaptativo preserva atores no retrato e captura mantém câmera contínua. Regressão de ritmo incorporada à suíte da perseguição.",
+  "checks": [
+    "npm test e regressão nova passaram: seis percursos sem dano com decisões até 400 ms e sem congelamento final. 33 cenas em três formatos passaram. Gameplay pelo controlador completo, pico 306 chamadas. Percurso/36 finais/WebGL/descarte e navegador teclado/toque/pausa/save/áudio/mudo/campanha passaram. Build/assets/mapa/sintaxe/diff aprovados. Falhas intermediárias preservadas e capturas descartadas após identificação."
+  ],
+  "pending": [
+    "Avaliação humana de desafio e conforto do balanço; benchmark físico. Próximo pedido na sequência: cutscene inicial ilustrada, usando abertura da menina na cama como referência; 3D começa ao urso se levantar. Sem commit/push."
+  ],
+  "files": [
+    "src/js/bear-chase/ChasePacing.js",
+    "src/js/bear-chase/ChaseCamera.js",
+    "src/js/bear-chase/ChaseSimulation.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "src/js/bear-chase/ChaseHUD.js",
+    "docs/bear-chase/GUIA-PREVIA.md"
+  ]
+}

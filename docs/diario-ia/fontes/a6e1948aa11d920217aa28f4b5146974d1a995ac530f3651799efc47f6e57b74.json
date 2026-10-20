@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a6e1948aa11d920217aa28f4b5146974d1a995ac530f3651799efc47f6e57b74",
+  "path": "qa-execucoes/27488cfbaa0047048013c37d05cd4f62.log",
+  "sha256": "317da7e8636e86fb8a7efdf930877400bdb93e4f1498a177b281dab5c049d60e",
+  "capturedAt": "2026-10-20T19:08:29.521801+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:pacing:browser",
+    "exitCode": 1,
+    "package": "20261020T190822-cdc65dbb104d"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:pacing:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/browser.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Urso deve permanecer visível: {\"distance\":710,\"x\":-3.6,\"width\":390,\"height\":844,\"gap\":3.6197991286897,\"fov\":61.996038756112185,\"calls\":196,\"projections\":{\"girl\":{\"minX\":-0.9102585131977996,\"maxX\":-0.41575699010995626,\"minY\":-0.6972895311900652,\"maxY\":-0.20454966236362768,\"height\":0.4927398688264375},\"bear\":{\"minX\":0.444437247260138,\"maxX\":1.0205200613120793,\"minY\":-0.3359092027869245,\"maxY\":0.040053252222000714,\"height\":0.3759624550089252}},\"state\":true}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-ovqlojwz/projeto/docs/diario-ia/qa/ritmo-20261020/browser.js:47:177 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}
