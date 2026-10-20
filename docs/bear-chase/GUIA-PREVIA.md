@@ -156,7 +156,7 @@ atlas próprio 4×4: madeira/crina/sela, borracha, esmalte/latão, pelúcia, tec
 laca e pele do tambor. `decorativos-atlas-v3.png` é a versão consumida; v2 conserva
 o primeiro estudo. Texturas geradas pela ferramenta integrada image_gen, com
 prompts junto aos PNGs. Fontes originais preservadas; sem CLI/API paga separada.
-Iluminação continua adiada. A revisão ainda aguarda avaliação artística humana.
+A revisão dos modelos ainda aguarda avaliação artística humana; a iluminação atual está descrita abaixo.
 
 Para servir somente no computador local:
 
@@ -181,3 +181,26 @@ e suas antigas expectativas de coordenadas. A validação do novo traçado usa
 `test:bear-chase:route`. Resultados de máquina pertencem ao diário de IA. Emulação
 não homologa dificuldade humana, Safari ou aparelhos físicos. Integração da campanha,
 maior duração definitiva e mixagem final permanecem trabalhos separados.
+
+## Iluminação do quarto
+
+`ChaseLighting` compõe preenchimento hemisférico, luz refletida discreta,
+projetores das janelas e luz principal à frente do urso. Piso, paredes, rodapés,
+teto e tapetes respondem à luz. Menina, urso, brinquedos e móveis recebem e
+projetam sombras; a fada ilustrada mantém sua apresentação luminosa.
+
+As janelas iluminam regiões fixas da sala com entrada/saída suave; sua máscara
+projeta o desenho das vidraças. A luz principal acompanha o traçado à frente do
+urso, projetando sua sombra para trás. O preenchimento indireto é aproximado por
+luzes de ambiente/rebatimento em tempo real, sem cálculo físico de iluminação global.
+
+Somente a luz principal e a janela dominante geram sombras simultaneamente.
+Mapas: principal 2048² e janelas 1024² em paisagem; 1024²/512² em retrato.
+Até quatro mapas podem ficar alocados durante o percurso, mesmo com dois ativos.
+O controlador libera esses recursos ao encerrar a prévia. O teto não bloqueia
+a luz global de apresentação, mas participa da iluminação recebida.
+
+`npm run journal:qa -- test:bear-chase:lighting` verifica sombras em pixels reais,
+direção da luz/sombra do urso, três formatos, continuidade das janelas e descarte.
+O limite de chamadas de desenho é uma referência interna de desempenho; não
+equivale a um limite do navegador nem certifica FPS em aparelhos reais.

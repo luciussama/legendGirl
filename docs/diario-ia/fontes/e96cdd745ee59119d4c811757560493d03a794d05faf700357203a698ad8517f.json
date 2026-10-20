@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e96cdd745ee59119d4c811757560493d03a794d05faf700357203a698ad8517f",
+  "path": "qa-execucoes/667c9198da3741f49b3ed2152e9619ee.log",
+  "sha256": "36e039be3bcc538abfe5cbb79de658b65cc9f72da43f2d59c7bc8233f93a9c45",
+  "capturedAt": "2026-10-20T18:21:28.279451+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:shadows:diagnostic:browser",
+    "exitCode": 0,
+    "package": "20261020T182121-547cb9f19c52"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:shadows:diagnostic:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/sombras-curvas-20261020/diagnostico.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\n[{\"file\":\"/tmp/curva-antes-84-normal.png\",\"bytes\":763533,\"sha256\":\"db73e2d05b9816acd9b5dfe1a61a89148eb57634413ec559b73fc738d0116c1d\"},{\"file\":\"/tmp/curva-antes-84-sem-frontal.png\",\"bytes\":753482,\"sha256\":\"2125f335fe03e98c3f527cca4e1c74b1937e875ddbf1cf64546f49857a16a6ff\"},{\"file\":\"/tmp/curva-antes-84-sem-janela.png\",\"bytes\":763041,\"sha256\":\"a92ba359ed4b412ec87712741d92e91563b2e581925d040d84c7e54654c6e916\"},{\"file\":\"/tmp/curva-antes-84-sem-paredes.png\",\"bytes\":775900,\"sha256\":\"9ef5ffd5403bf010cc2e23c852b55971d3ddd852af6fa31b9d96ae5ba07551d2\"},{\"file\":\"/tmp/curva-antes-290-normal.png\",\"bytes\":779936,\"sha256\":\"9278e98f4d87db7ea7a7691b056bf08c8dfe8867585e24e8d54b3ba3eb4f32b5\"},{\"file\":\"/tmp/curva-antes-290-sem-frontal.png\",\"bytes\":749139,\"sha256\":\"1e1162f7ccff7614c7eff051b017f3bb3ef8fc76128fb386b940985a67096ee6\"},{\"file\":\"/tmp/curva-antes-290-sem-janela.png\",\"bytes\":777663,\"sha256\":\"5a0062669ac7c2a84f64f090596121f188c77e06f2a6427d8eb2b7d32b22227d\"},{\"file\":\"/tmp/curva-antes-290-sem-paredes.png\",\"bytes\":782168,\"sha256\":\"a0a178a71caa1c2aacfd3f06d87420d5d2093af5eed77ac796c8819189a6e4ef\"}]\n"
+}

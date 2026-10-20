@@ -21,9 +21,10 @@ export function renderChaseHUD(ctx, canvas, state, error, audioError) {
     if (error) { ctx.font = `${13 * ui}px sans-serif`; ctx.fillText('Use o seletor de fases para tentar novamente.', w / 2, 139 * ui, w * .8); }
   }
   if (state.stage === 'RUNNING') {
-    ctx.font = `bold ${17 * ui}px sans-serif`; ctx.fillStyle = '#3d241d';
+    ctx.fillStyle='rgba(47,25,23,.72)';ctx.fillRect(w*.24,75*ui,w*.52,29*ui);
+    ctx.font = `bold ${17 * ui}px sans-serif`; ctx.fillStyle = '#fff0c8';
     ctx.fillText(`${Math.floor(state.distance / C.length * 100)}% · Urso a ${state.gap.toFixed(1)} m`, w / 2, 95 * ui, w - 28);
-    if (state.stumble > 0) { ctx.fillStyle = '#71361f'; ctx.fillText('Cuidado com os brinquedos!', w / 2, 119 * ui); }
+    if (state.stumble > 0) { ctx.fillStyle = '#ffdd94'; ctx.shadowColor='#241b18';ctx.shadowBlur=4*ui;ctx.fillText('Cuidado com os brinquedos!', w / 2, 119 * ui); }
   }
   ctx.fillStyle = 'rgba(47,25,23,.8)'; ctx.fillRect(0, h - 58 * ui, w, 58 * ui);
   ctx.font = `${14 * ui}px sans-serif`; ctx.fillStyle = '#ffedc5';

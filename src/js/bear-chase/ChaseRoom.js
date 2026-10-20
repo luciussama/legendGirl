@@ -23,7 +23,7 @@ export class ChaseRoom {
     for(let i=0,s=14;s<745;i++,s+=25){
       const side=i%2?1:-1;
       const win=new T.Mesh(owner.own(new T.PlaneGeometry(2.4,3.2)),owner.roomMaterials.window);
-      this.add(win,s,side*5.43,-side*Math.PI/2,3.2);
+      win.userData.windowIndex=i;this.add(win,s,side*5.43,-side*Math.PI/2,3.2);
     }
     for(const s of [22,126,244,370,508,650]){
       const rug=new T.Mesh(owner.own(new T.PlaneGeometry(3,4.2,2,8)),owner.roomMaterials.rug);

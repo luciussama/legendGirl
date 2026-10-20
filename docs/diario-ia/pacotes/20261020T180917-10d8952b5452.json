@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T180917-10d8952b5452",
+  "date": "2026-10-20T18:09:17.143439+00:00",
+  "title": "Iluminacao: entrega, validacao e metadados das capturas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/iluminacao-20261020/capturas.json",
+      "sourceId": "baf96bec765b47a79d0af81f9e42f964c5dd96b7fb2a04309f404a622c196b04",
+      "sha256": "8a548b72420c34bc5b2f96f03e14e767bfd5dfdfadaf0e7b4b5e5e42b05ccf52",
+      "bytes": 11601,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-iluminacao-janelas.md",
+      "sourceId": "9d239bc24a9daaf56d229aa620d7fc5cfd9768f8b4916c4e898e40a820bca090",
+      "sha256": "00b3a3f7b956255c0e48e071360b85cfdae8c1c6555d03729eb581376db42278",
+      "bytes": 3918,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

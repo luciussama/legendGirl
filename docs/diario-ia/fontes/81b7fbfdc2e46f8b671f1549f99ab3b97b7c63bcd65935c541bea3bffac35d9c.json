@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "81b7fbfdc2e46f8b671f1549f99ab3b97b7c63bcd65935c541bea3bffac35d9c",
+  "path": "qa-execucoes/77224a1699b04912bffdbc70346bee79.log",
+  "sha256": "d2bae4f0b8f7df59d4845bbf05fc1599de9363bed8e96c9f8b2b93760f8d991f",
+  "capturedAt": "2026-10-20T18:20:07.813124+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:shadows:browser",
+    "exitCode": 0,
+    "package": "20261020T182000-f148cdb87340"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:shadows:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/sombras-curvas-20261020/browser.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\n[{\"file\":\"/tmp/curva-antes-76.png\",\"bytes\":578991,\"sha256\":\"b174ab03e51103ebf36fc579b827006d6b009567a1418198778a0f5290ba1440\"},{\"file\":\"/tmp/curva-antes-80.png\",\"bytes\":578112,\"sha256\":\"a0692bd8abb5ebe4fe510834ff1e8d8d387aab60762032c3f1289a9ffa505db7\"},{\"file\":\"/tmp/curva-antes-84.png\",\"bytes\":585419,\"sha256\":\"709826b5b8bc03aab421100cb8c5836b7209dd5bbf28f3ec0ef3ea405d20b72d\"},{\"file\":\"/tmp/curva-antes-88.png\",\"bytes\":604461,\"sha256\":\"a6b90371deb3d73c42584f3e2ec9d5ee5770b2020110e12d37172ae8ae222ea6\"},{\"file\":\"/tmp/curva-antes-92.png\",\"bytes\":600068,\"sha256\":\"271bef072bdeefa3d17fc2994f2043b624911927b45d4b3f7bea495ae0d44a43\"},{\"file\":\"/tmp/curva-antes-225.png\",\"bytes\":591111,\"sha256\":\"e99c876647f17967b76686d9cac4c9df427addad6b54d3d6a50ca026f1237f9b\"},{\"file\":\"/tmp/curva-antes-290.png\",\"bytes\":597362,\"sha256\":\"b5545e69d92e3d11853461afe6ea06d14713c52abe26439ac43521f2b0ceca84\"}]\n"
+}

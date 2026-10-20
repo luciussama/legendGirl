@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "31b9a772f37440efa382c5b8bce17aa5",
+  "date": "2026-10-20T18:05:03.475975+00:00",
+  "title": "QA temporário: test:bear-chase:route",
+  "files": [
+    {
+      "path": "qa-execucoes/31b9a772f37440efa382c5b8bce17aa5.log",
+      "sourceId": "0e2aaa1fc8dd6fff13e61e5838565be628657cb393251dbfb9335abe10f428a8",
+      "sha256": "65271cc0e8e15156b8ad3e7a9e815ffee5fbb036ab78aa9570773232187bdbcb",
+      "bytes": 9837,
+      "metadataOnly": false
+    }
+  ]
+}

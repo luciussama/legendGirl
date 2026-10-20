@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T182121-547cb9f19c52",
+  "date": "2026-10-20T18:21:21.665121+00:00",
+  "title": "Diagnóstico lê canvas síncrono antes da restauração",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/sombras-curvas-20261020/diagnostico.js",
+      "sourceId": "4ca9aa67a3fcdbd3dc3666cdf272a2cf65edacda8ec3c63e1c7e4b96ce29584c",
+      "sha256": "cbdbf0fd10d990c64f16a69155f5b5561bd9c0aa37ef323fc8643a900a072eba",
+      "bytes": 4096,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:shadows:diagnostic:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/sombras-curvas-20261020/diagnostico.js"
+  }
+}

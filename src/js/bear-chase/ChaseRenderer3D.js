@@ -8,6 +8,7 @@ import { ChaseGirlModel } from './ChaseGirlModel.js';
 import { ChaseGirlAnimation } from './ChaseGirlAnimation.js';
 import { CHASE_CONFIG as C, clamp } from './ChaseConfig.js';
 
+import { ChaseLighting } from './ChaseLighting.js';
 import { ChaseRoom } from './ChaseRoom.js';
 import { routePoint, routeFrame } from './ChaseRoute.js';
 
@@ -89,15 +90,17 @@ export class ChaseRenderer3D {
     this.materials = { floor: this.material(this.floor), wall: this.material(this.wall), trim: this.material(this.trim),
       wood: this.material(null, '#9d5c32'), ceiling: this.material(null, '#fff0d8') };
     // Superfícies opacas não participam da ordenação de transparência da sala inteira.
-    this.materials.floor.transparent=false;this.materials.wall.transparent=false;
+    for(const key of ['floor','wall','trim','ceiling']){
+      const previous=this.materials[key];
+      this.materials[key]=this.own(new T.MeshStandardMaterial({map:previous.map,color:previous.color,
+        roughness:1,metalness:0,side:T.DoubleSide,alphaTest:key==='trim'?.12:0}));
+      previous.dispose();this.resources.delete(previous);
+    }
     this.prepareRoomResources();
     this.room = new ChaseRoom(this);
     this.girlModel = new ChaseGirlModel(resource => this.own(resource));
     this.girlAnimation = new ChaseGirlAnimation(this.girlModel);
     this.girl = this.girlModel.root; this.scene.add(this.girl);
-    this.scene.add(new T.HemisphereLight('#ffffff', '#b3a19b', 1.8));
-    const key = new T.DirectionalLight('#ffffff', 2.4); key.position.set(-3, 6, -4); this.scene.add(key);
-    const fill = new T.DirectionalLight('#ffffff', .8); fill.position.set(3, 3, 5); this.scene.add(fill);
     const shadowCanvas=document.createElement('canvas');shadowCanvas.width=shadowCanvas.height=64;
     const shadowCtx=shadowCanvas.getContext('2d'),gradient=shadowCtx.createRadialGradient(32,32,3,32,32,32);
     gradient.addColorStop(0,'rgba(65,35,25,.26)');gradient.addColorStop(1,'rgba(65,35,25,0)');
@@ -109,11 +112,12 @@ export class ChaseRenderer3D {
     this.fairy = this.actor(this.texture(images.fairy), .63, .7);
     this.chest = this.propCatalog.create('chest'); this.chest.visible = false; this.scene.add(this.chest);
     this.chest.rotation.y = -Math.PI / 2;
+    this.lighting=new ChaseLighting(this);
     this.ready = true;
   }
   /** Prepara materiais de adereços; superfícies contínuas pertencem ao construtor da sala. */
   prepareRoomResources() {
-    this.roomMaterials = Object.fromEntries(['window', 'rug'].map(key => [key, this.material(this.decoration[key])]));
+    this.roomMaterials={window:this.material(this.decoration.window),rug:this.own(new T.MeshStandardMaterial({map:this.decoration.rug,roughness:1,metalness:0,side:T.DoubleSide,transparent:true,alphaTest:.12}))};
   }
   /** Posiciona uma entidade no traçado preservando sua pose local e a altura de animação. */
   placeOnRoute(object, distance, lateral, height=0, alignSlope=false) {
@@ -131,6 +135,7 @@ export class ChaseRenderer3D {
       if (mesh && mesh.userData.propId !== obstacle.kind) { this.propCatalog.release(mesh); mesh = null; }
       if (!mesh) {
         mesh = this.propCatalog.create(obstacle.kind);
+        this.lighting.prepareObject(mesh);
         this.scene.add(mesh); this.toys.set(obstacle.id, mesh);
       }
       const t = clamp(obstacle.age / C.flight, 0, 1);
@@ -179,6 +184,7 @@ export class ChaseRenderer3D {
     this.chest.rotation.set(0,-Math.PI/2,0);
     this.placeOnRoute(this.chest,state.distance+state.gap+.3,4.74,0);
     this.updateToys(state);
+    this.lighting.update(state,portrait);
     this.renderer.render(this.scene, this.camera);
     ctx.drawImage(this.renderer.domElement, 0, 0, canvas.width, canvas.height);
   }
@@ -202,6 +208,7 @@ export class ChaseRenderer3D {
   /** Descarta somente materiais, geometrias e texturas desta instância. */
   destroy() {
     if (this.disposed) return; this.disposed = true;
+    this.lighting?.dispose();
     this.propCatalog?.dispose();
     for (const resource of this.resources) resource.dispose();
     this.resources.clear(); this.toys.clear(); this.scene.clear();

@@ -581,3 +581,35 @@ O teste de fidelidade verifica os oito props, UVs e quatro vistas; seus indicado
 geométricos não substituem avaliação artística. A aprovação humana da direção
 pictórica permanece distinta da aprovação individual dos modelos; a revisão dos
 oito props aguarda avaliação humana. Não houve alteração de runtime pelo merge.
+
+## Iluminação de janela e sombras — 20/10/2026
+
+Sessão `20261020T175621-ad0230422f52`: usuário autorizou trabalhar a iluminação
+antes adiada. `ChaseLighting` separa luz de janela, preenchimento indireto aproximado
+e luz principal à frente do urso, com sombra para trás. Piso/parede/friso/teto/tapete
+passam a materiais receptores de luz; girl/bear/props projetam e recebem sombras.
+Fada ilustrada preserva luminosidade. HUD ganhou fundo de contraste no progresso.
+Sem alteração de simulação, física, trajetória, modelos ou texturas de produção.
+
+Três projetores reutilizáveis seguem janelas fixas, com troca apenas apagados.
+Só a janela dominante e a luz principal geram sombras simultâneas. PCFShadowMap
+compatível com Three.js r186; PCFSoftShadowMap é depreciado nessa versão local.
+Indireta é aproximação por preenchimento/rebatimento; não há GI físico/path tracing.
+Mapas 2048²/1024² em paisagem e 1024²/512² em retrato; até quatro mapas alocados.
+Controlador libera explicitamente os mapas. Teto não projeta sombra para permitir
+a luz global de apresentação solicitada, mas recebe iluminação.
+
+QA inicial excedeu referência com 312 chamadas; reduzidos os produtores de mapas,
+sem elevar o teto do teste. QA específico passou em doze cenas, 219–292 chamadas
+e 208 recursos próprios, com diferença real entre pixels com/sem sombras, luz
+frontal e projeção traseira do urso por raycast, continuidade e descarte zero.
+Primeira fixture alternava shadowMap.enabled sem invalidar cache de shader;
+corrigida para alternar receptores de sombra, preservando a falha histórica.
+Regressão de percurso, build/lint/assets/mapa e sintaxe executados nesta revisão.
+Sem benchmark em dispositivo físico ou aprovação artística humana.
+
+Ao retomar o merge, já foi encontrado reconciliado externamente em `f9e7c4e3`,
+com documentos em `8cf9291d` e referência origin alinhada. Comando de commit desta
+IA retornou “nothing to commit” e não executou merge por estar encadeado com &&.
+Não atribuir criação/envio desses commits a esta execução. Iluminação posterior
+permanece em alterações locais, sem novo commit ou push desta IA.
