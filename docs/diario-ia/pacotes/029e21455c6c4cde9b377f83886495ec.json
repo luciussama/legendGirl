@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "029e21455c6c4cde9b377f83886495ec",
+  "date": "2026-10-20T15:18:35.340176+00:00",
+  "title": "QA temporário: test:bear-chase:furniture",
+  "files": [
+    {
+      "path": "qa-execucoes/029e21455c6c4cde9b377f83886495ec.log",
+      "sourceId": "cf7f71f38a04ef68159e359394054a4e83642a560fc053c566e3fcc9c609ab4b",
+      "sha256": "f3652c3cfee45eb66e760e18c7e2c7277edb91ddeb6330fca4456ed51c14b485",
+      "bytes": 5383,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,5 +1,8 @@
 import * as T from '../../vendor/three/three.module.js';
 import { ChaseBearModel } from './ChaseBearModel.js';
+import { PICTORIAL_ATLASES } from './props/PictorialMaterialAssets.js';
+import { ToyChestProp } from './props/ToyChestProp.js';
+import { ChasePropCatalog } from './props/ChasePropCatalog.js';
 import { ChaseToyModels } from './ChaseToyModels.js';
 import { ChaseGirlModel } from './ChaseGirlModel.js';
 import { ChaseGirlAnimation } from './ChaseGirlAnimation.js';
@@ -63,26 +66,26 @@ export class ChaseRenderer3D {
   /** Carrega somente as referências visuais usadas pela janela da prova. */
   async load() {
     const paths = {
+      ...Object.fromEntries(Object.values(PICTORIAL_ATLASES).map(({ key, path }) => [key, path])),
       env: 'toy-room/environment-sheet.png',
       wall: 'toy-room/stage1/wallpaper-v1.png', trim: 'toy-room/stage1/oak-trim-v1.png',
       rug: 'toy-room/stage1/rectangular-rug-v1.png', window: 'toy-room/stage1/window-curtains-v1.png',
-      shelf: 'toy-room/stage3/bookshelf-v1.png', castle: 'toy-room/stage3/block-castle-v1.png',
-      fairy: 'toy-room/stage3/illustrated-fairy-v1.png', blocks: 'toy-room/stage3/stacking-blocks-v1.png',
-      bunny: 'toy-room/stage3/cotton-bunny-v1.png', chest: 'toy-room/chest-brinquedos-v1.png',
+      fairy: 'toy-room/stage3/illustrated-fairy-v1.png', cabinet: 'toy-room/stage3/oak-cabinet-v1.png',
+      bunny: 'toy-room/stage3/cotton-bunny-v1.png',
     };
     const loaded = await Promise.all(Object.entries(paths).map(async ([key, path]) => [key, await imageFile(path)]));
     if (this.disposed) return;
     const images = Object.fromEntries(loaded);
-    this.frames.toys = { blocks: this.texture(images.blocks), bunny: this.texture(images.bunny),
-      train: null };
+    this.propCatalog = new ChasePropCatalog(images, this.resources);
+    this.toyModels = new ChaseToyModels(this.propCatalog);
     this.floor = this.texture(images.env, { x: 27, y: 151, w: 186, h: 48 });
     this.floor.wrapS = this.floor.wrapT = T.RepeatWrapping; this.floor.repeat.set(5, 12);
     this.wall = this.texture(images.wall); this.wall.wrapS = this.wall.wrapT = T.RepeatWrapping; this.wall.repeat.set(3, 1.5);
     this.trim = this.texture(images.trim); this.trim.wrapS = T.RepeatWrapping; this.trim.repeat.set(3, 1);
-    this.decoration = { rug: this.texture(images.rug), window: this.texture(images.window),
-      shelf: this.texture(images.shelf), castle: this.texture(images.castle), chest: this.texture(images.chest) };
+    this.decoration = { rug: this.texture(images.rug), window: this.texture(images.window) };
     this.materials = { floor: this.material(this.floor), wall: this.material(this.wall), trim: this.material(this.trim),
       wood: this.material(null, '#9d5c32'), ceiling: this.material(null, '#fff0d8') };
+    this.prepareRoomResources();
     for (let i = 0; i < 12; i++) this.segments.push(this.buildSegment(i));
     this.girlModel = new ChaseGirlModel(resource => this.own(resource));
     this.girlAnimation = new ChaseGirlAnimation(this.girlModel);
@@ -99,34 +102,51 @@ export class ChaseRenderer3D {
     this.bearModel=new ChaseBearModel(resource=>this.own(resource),this.girlModel.sphere);
     this.bear=this.bearModel.root;this.scene.add(this.bear);
     this.fairy = this.actor(this.texture(images.fairy), .63, .7);
-    this.chest = this.actor(this.decoration.chest, 2.4, 1.65); this.chest.visible = false;
-    this.toyModels = new ChaseToyModels(resource => this.own(resource));
+    this.chest = this.propCatalog.create('chest'); this.chest.visible = false; this.scene.add(this.chest);
+    this.chest.rotation.y = -Math.PI / 2;
     this.ready = true;
   }
-  /** Monta um módulo do mesmo quarto, sem linhas ou marcações auxiliares de caminho. */
+  /** Compartilha superfícies idênticas dos doze módulos sem mudar o desenho ou o tamanho do quarto. */
+  prepareRoomResources() {
+    this.roomGeometry = {
+      floor: this.own(new T.PlaneGeometry(11, 12)), wall: this.own(new T.PlaneGeometry(12, 6)),
+      trim: this.pairedTrimGeometry(), window: this.own(new T.PlaneGeometry(2.4, 3.2)),
+      rug: this.own(new T.PlaneGeometry(3, 4.2)),
+    };
+    this.roomMaterials = Object.fromEntries(['window', 'rug'].map(key => [key, this.material(this.decoration[key])]));
+  }
+  /** Une os dois frisos em uma malha estática, mantendo posições e UVs e reduzindo chamadas por módulo. */
+  pairedTrimGeometry() {
+    const parts = [-1, 1].map(side => {
+      const geometry = new T.PlaneGeometry(12, .7).toNonIndexed();
+      geometry.rotateY(side * Math.PI / 2); geometry.translate(side * 5.47, 0, 0); return geometry;
+    });
+    const geometry = this.own(new T.BufferGeometry());
+    for (const key of ['position', 'normal', 'uv']) geometry.setAttribute(key,
+      new T.Float32BufferAttribute(parts.flatMap(part => Array.from(part.getAttribute(key).array)), key === 'uv' ? 2 : 3));
+    for (const part of parts) part.dispose();
+    geometry.computeBoundingSphere(); return geometry;
+  }
+  /** Monta o mesmo quarto, reservando móveis às paredes e mantendo a faixa central desimpedida. */
   buildSegment(index) {
     const group = new T.Group(); this.scene.add(group);
-    const floor = this.mesh(group, new T.PlaneGeometry(11, 12), this.materials.floor, 0, 0, 0); floor.rotation.x = -Math.PI / 2;
+    const g = this.roomGeometry, m = this.roomMaterials;
+    const floor = this.mesh(group, g.floor, this.materials.floor, 0, 0, 0); floor.rotation.x = -Math.PI / 2;
+    this.mesh(group, g.trim, this.materials.trim, 0, .35, 0);
     for (const side of [-1, 1]) {
-      const wall = this.mesh(group, new T.PlaneGeometry(12, 6), this.materials.wall, side * 5.5, 3, 0);
-      wall.rotation.y = side * Math.PI / 2;
-      const trim = this.mesh(group, new T.PlaneGeometry(12, .7), this.materials.trim, side * 5.47, .35, 0);
-      trim.rotation.y = side * Math.PI / 2;
-      const win = this.mesh(group, new T.PlaneGeometry(2.4, 3.2), this.material(this.decoration.window), side * 5.43, 3.2, -2 + (side > 0 ? 2.8 : 0));
+      const wall = this.mesh(group, g.wall, this.materials.wall, side * 5.5, 3, 0); wall.rotation.y = side * Math.PI / 2;
+      const win = this.mesh(group, g.window, m.window, side * 5.43, 3.2, -2 + (side > 0 ? 2.8 : 0));
       win.rotation.y = -side * Math.PI / 2; win.visible = (index + (side > 0 ? 1 : 0)) % 3 !== 0;
-      // Estruturas com volume ficam nas laterais; a ilustração conserva detalhes da sala.
-      const furniture = (index + (side > 0 ? 1 : 0)) % 3 === 0 ? this.decoration.castle : this.decoration.shelf;
-      this.mesh(group, new T.BoxGeometry(1.40, 2.25, .22), this.materials.trim, side * 4.55, 1.125, 3.76);
-      const picture=this.mesh(group, new T.PlaneGeometry(1.5, 2.5), this.material(furniture), side * 4.55, 1.25, 3.9);
-      picture.position.z += side > 0 ? -2.5 : 0;
-      group.children[group.children.length-2].position.z += side > 0 ? -2.5 : 0;
+      const z = side > 0 ? 1.4 : 3.9;
+      const slot = index + (side > 0 ? 1 : 0);
+      const kind = slot % 4 === 1 ? 'wardrobe' : slot % 3 === 0 ? 'fortress' : 'shelf';
+      const furniture = this.propCatalog.create(kind); furniture.position.set(side * 4.95, 0, z);
+      furniture.rotation.y = -side * Math.PI / 2; furniture.userData.decorative = true; group.add(furniture);
     }
     if (index % 2 === 0) {
-      const rug = this.mesh(group, new T.PlaneGeometry(3, 4.2), this.material(this.decoration.rug), (index % 4 === 0 ? -.65 : .5), .015, 0);
-      rug.rotation.x = -Math.PI / 2;
+      const rug = this.mesh(group, g.rug, m.rug, (index % 4 === 0 ? -.65 : .5), .015, 0); rug.rotation.x = -Math.PI / 2;
     }
-    // O teto existe no mesmo volume, embora a câmera olhe predominantemente para o piso.
-    const ceiling = this.mesh(group, new T.PlaneGeometry(11, 12), this.materials.ceiling, 0, 6, 0); ceiling.rotation.x = Math.PI / 2;
+    const ceiling = this.mesh(group, g.floor, this.materials.ceiling, 0, 6, 0); ceiling.rotation.x = Math.PI / 2;
     return group;
   }
   /** Reutiliza meshes de brinquedos e aplica a trajetória visível de lançamento. */
@@ -135,20 +155,21 @@ export class ChaseRenderer3D {
     for (const obstacle of state.obstacles) {
       live.add(obstacle.id);
       let mesh = this.toys.get(obstacle.id);
+      // Restauração pode reutilizar um ID com outro tipo; troca só a instância visual.
+      if (mesh && mesh.userData.propId !== obstacle.kind) { this.propCatalog.release(mesh); mesh = null; }
       if (!mesh) {
-        mesh = obstacle.kind === 'train' ? this.toyModels.train() : this.actor(this.frames.toys[obstacle.kind], 1.1, 1.05);
+        mesh = this.propCatalog.create(obstacle.kind);
         this.scene.add(mesh); this.toys.set(obstacle.id, mesh);
       }
       const t = clamp(obstacle.age / C.flight, 0, 1);
       mesh.position.set(obstacle.fromX + (obstacle.x - obstacle.fromX) * t,
-        (obstacle.kind === 'train' ? .32 : .525) + (1 - t) * 1.2 + Math.sin(t * Math.PI) * 1.4,
+        // O pivô agora está no apoio; a antiga meia-altura do plano deixa de ser somada.
+        (1 - t) * 1.2 + Math.sin(t * Math.PI) * 1.4,
         state.distance - (obstacle.fromZ + (obstacle.z - obstacle.fromZ) * t));
       mesh.visible = !obstacle.hit;
     }
     for (const [id, mesh] of this.toys) if (!live.has(id)) {
-      this.scene.remove(mesh);
-      if (mesh.isMesh) { mesh.material.dispose(); mesh.geometry.dispose();
-        this.resources.delete(mesh.material); this.resources.delete(mesh.geometry); } this.toys.delete(id);
+      this.propCatalog.release(mesh); this.toys.delete(id);
     }
   }
   /** Compõe o quadro WebGL no canvas 2D, preservando controles e HUD existentes. */
@@ -160,24 +181,52 @@ export class ChaseRenderer3D {
     }
     const cutscene = ['BEAR_DOWN', 'GIRL_APPROACH', 'BEAR_RISE', 'CHASE_START'].includes(state.stage);
     const portrait = canvas.height > canvas.width;
-    this.camera.position.set(state.x * .28 + (cutscene ? 1.8 : 0), portrait ? 5.2 : 3.9, portrait ? 9 : 7.5);
-    this.camera.lookAt(state.x * .35, 1.2, -8);
+    this.presentCamera(state, portrait, cutscene);
     const base = Math.floor(state.distance / 12);
-    for (let i = 0; i < this.segments.length; i++) this.segments[i].position.z = state.distance - (base + i - 2) * 12;
+    for (let i = 0; i < this.segments.length; i++) {
+      const segment = this.segments[i]; segment.position.z = state.distance - (base + i - 2) * 12;
+      for (const furniture of segment.children) if (furniture.userData.decorative) {
+        // Reserva a parede final para o baú desde a aproximação, sem sobreposição na encenação.
+        const worldZ = state.distance - segment.position.z - furniture.position.z;
+        furniture.visible = furniture.position.x < 0 || Math.abs(worldZ - (C.length + 1.5)) >= 4;
+      }
+    }
     this.girlAnimation.apply(state);
     this.contactShadow.position.x=state.x;
     this.bearModel.apply(state);
     this.fairy.position.set(state.fairy.x, 2.05 + (state.fairy.y - 2.65), .55 + Math.abs(state.fairy.z));
     this.fairy.rotation.z = Math.sin(state.time * 3) * .08;
     this.chest.visible = ['CAUGHT', 'CHEST_RETURN', 'COMPLETE'].includes(state.stage);
-    this.chest.position.set(0, .825, -state.gap - .3);
+    this.chest.position.set(4.74, 0, -state.gap - .3);
+    const progress = state.stage === 'CHEST_RETURN' ? clamp(state.age / C.stages.CHEST_RETURN, 0, 1) : 0;
+    const opening = state.stage === 'CAUGHT' ? clamp(state.age / .6, 0, 1)
+      : state.stage === 'CHEST_RETURN' ? 1 - clamp((progress - .78) / .22, 0, 1) : 0;
+    ToyChestProp.setOpening(this.chest, opening);
+    if (state.stage === 'CHEST_RETURN') {
+      const t = 1 - (1 - progress) ** 3;
+      this.bear.position.x = state.bearX + (4.74 - state.bearX) * t;
+      this.bear.position.z = -state.gap - .3 * t;
+    }
     this.updateToys(state);
     this.renderer.render(this.scene, this.camera);
     ctx.drawImage(this.renderer.domElement, 0, 0, canvas.width, canvas.height);
   }
+  /** Enquadra o baú lateral no final, incluindo menina/urso em retrato, sem alterar o estado lógico. */
+  presentCamera(state, portrait, cutscene) {
+    const ending = ['CAUGHT', 'CHEST_RETURN', 'COMPLETE'].includes(state.stage);
+    const t = !ending ? 0 : state.stage === 'CAUGHT' ? clamp(state.age / C.stages.CAUGHT, 0, 1) : 1;
+    const blend = t * t * (3 - 2 * t), center = (state.x + 4.74) / 2;
+    const targetZ = (-state.gap - .3) / 2, baseZ = portrait ? 9 : 7.5;
+    const halfWidth = (Math.abs(4.74 - state.x) + 1.6) / 2;
+    const fitZ = Math.max(baseZ, targetZ + halfWidth / (Math.tan(this.camera.fov * Math.PI / 360) * this.camera.aspect) * 1.22 + 1);
+    this.camera.position.set((state.x * .28 + (cutscene ? 1.8 : 0)) * (1 - blend) + center * blend,
+      portrait ? 5.2 : 3.9, baseZ + (fitZ - baseZ) * blend);
+    this.camera.lookAt(state.x * .35 * (1 - blend) + center * blend, 1.2, -8 * (1 - blend) + targetZ * blend);
+  }
   /** Descarta somente materiais, geometrias e texturas desta instância. */
   destroy() {
-    this.disposed = true;
+    if (this.disposed) return; this.disposed = true;
+    this.propCatalog?.dispose();
     for (const resource of this.resources) resource.dispose();
     this.resources.clear(); this.toys.clear(); this.scene.clear();
     this.renderer.domElement.removeEventListener('webglcontextlost', this.onLost);

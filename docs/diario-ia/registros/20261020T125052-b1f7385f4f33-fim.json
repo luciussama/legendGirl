@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T125052-b1f7385f4f33-fim",
+  "sessionId": "20261020T125052-b1f7385f4f33",
+  "type": "fim",
+  "date": "2026-10-20T13:03:08.550473+00:00",
+  "title": "Executar baseline e pilotos visuais de trem e armário 3D",
+  "actor": "Codex",
+  "summary": "Executados E0/E1 com progresso mostrado: baseline, pilotos 3D de trem e armário e painel comparativo neutro/quarto. Corrigidos UVs, cor e, após comentário do usuário, posição do armário junto à parede direita, fora da rota central. Pilotos ainda não integrados à corrida; originais, simulação, personagens e saves preservados. Nenhum serviço pago, commit ou push.",
+  "checks": [
+    "Baseline test:bear-chase:browser aprovada: três formatos, percurso completo controlado, pico 285 recursos, descarte zero.",
+    "QA temporário test:bear-chase:props aprovado: integridade, volume, apoio, compartilhamento, 60 trocas estáveis, quatro vistas, lançamento, posição lateral, viewports e descarte idempotente zero.",
+    "test:bear-chase aprovado: oito percursos NORMAL/EASY.",
+    "check-assets, build, lint, node --check dos módulos/QA, docs:sprites e git diff --check aprovados.",
+    "Servidor amplo bloqueado pela revisão automática; substituído por servidor local em 127.0.0.1 sem alterar server.js. Capturas registradas por hash/bytes e bitmaps descartados."
+  ],
+  "pending": [
+    "E2: avaliação artística de trem e armário; trem ainda mais liso que a fonte, faces ocultas interpretadas e textura do armário repetida.",
+    "E3/E4: catálogo, orçamento integrado e substituição efetiva dos objetos; não iniciar produção em lote sem revisão dos pilotos.",
+    "Suíte global npm test, Safari e aparelhos físicos não executados nesta prova isolada."
+  ],
+  "files": [
+    "src/js/bear-chase/props/PilotPropResources.js",
+    "src/js/bear-chase/props/TrainProp.js",
+    "src/js/bear-chase/props/OakCabinetProp.js",
+    "docs/diario-ia/qa/perseguicao-20261020/props.html",
+    "docs/diario-ia/qa/perseguicao-20261020/props.js",
+    "docs/diario-ia/qa/perseguicao-20261020/props-browser.js",
+    "docs/diario-ia/qa/perseguicao-20261020/props-qa.js",
+    "docs/diario-ia/qa/perseguicao-20261020/baseline.json",
+    "docs/diario-ia/qa/perseguicao-20261020/capturas.json",
+    "docs/diario-ia/relatorios/20261020-pilotos-trem-armario.md",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

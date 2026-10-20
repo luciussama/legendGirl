@@ -1,6 +1,6 @@
 # Contexto compartilhado vigente
 
-Atualizado em 19/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
+Atualizado em 20/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
 
 ## Ler antes de agir
 
@@ -299,3 +299,172 @@ devem permanecer preservados como referência e fontes de textura. A primeira
 prova deverá comparar um brinquedo e um móvel em vistas neutra e de gameplay,
 antes de produzir o restante. Física, hitboxes, dimensões lógicas, interações,
 disposição de plataforma e dificuldade ficam fora da mudança artística.
+
+
+## Plano operacional dos props em 20/10/2026
+
+Sessão `20261020T124254-7c4dce56c46d`: a pedido do usuário, lidos os documentos
+produzidos externamente e confrontados com o runtime. Plano de execução em
+`planos/20261020-execucao-props-cena-3d.md`, complementando o roteiro de 19/10.
+Ordem: baseline/referências → piloto trem + armário → avaliação humana → catálogo
+com recursos compartilhados → três arremessáveis → demais props/móveis → ambiente
+→ regressão. `wardrobe` usa o armário baixo `oak-cabinet-v1`; não inferir um móvel
+alto adicional. Coleta/transporte continuam na sala 2D e não entram nesta conversão.
+O plano alerta para o orçamento próximo do limite (285/300 recursos na evidência
+anterior), preservação das fontes, contratos e aprovação parcial da menina.
+A análise de `Chase.mp3` é histórica: áudio já integrado; emenda musical/escuta,
+expansão da fase e campanha ficam em trabalhos separados. Nenhuma implementação
+nova foi iniciada nesta sessão; próxima entrega proposta é baseline e dois pilotos.
+
+## Primeiros pilotos e acompanhamento em 20/10/2026
+
+Sessão `20261020T125052-b1f7385f4f33`: usuário aprovou a sequência e pediu progresso
+a cada mudança. Executados E0 e E1 do plano: baseline e pilotos locais de trem e
+armário baixo, em `src/js/bear-chase/props/`. Propriedade GPU separada das fábricas,
+partes estáticas mescladas por material, comentários em português por método.
+Painel revisável em `qa/perseguicao-20261020/props.html`: original/modelo, luz neutra,
+quarto, quatro vistas, giro, escala e lançamento. Não integrado à corrida e sem
+produção dos demais modelos antes da revisão E2. O trem ainda tem acabamento mais
+liso que a fonte; faces não fornecidas pelo sprite são interpretações novas.
+
+O usuário questionou o armário no meio da rota do painel. Corrigido para a parede
+direita, portas para dentro, X=4,95 e rotação -π/2; limites reais X=4,4235..5,355,
+dentro da parede X=5,5 e fora da faixa central. Não tratar posição diagnóstica
+anterior como layout aprovado. Isso não criou obstáculo ou alteração na fase.
+
+Baseline de navegador aprovada, pico 285 recursos; pilotos com 21 recursos comuns,
+6 chamadas para trem e 4 para armário. QA temporário passou para integridade dos
+originais/contratos, volume, apoio, compartilhamento, 60 trocas sem acúmulo, quatro
+vistas, lançamento, viewports e descarte zero. Domínio, assets, build, lint e mapa
+de sprites passaram. Não houve teste em aparelho físico, suíte global completa,
+integração/performance do futuro catálogo nem aprovação artística dos pilotos.
+Relatório: `relatorios/20261020-pilotos-trem-armario.md`.
+Servidor de desenvolvimento amplo bloqueado por revisão automática; painel servido
+apenas em 127.0.0.1:3000. Sem custo, serviço pago, commit ou push.
+
+## Catálogo, primeiro lote integrado e crítica de materiais — 20/10/2026
+
+Sessão `20261020T130520-75b12c979064`. O usuário aprovou parcialmente os pilotos,
+autorizou avançar e adiou melhorias de iluminação das texturas. Também determinou
+que todos os móveis sigam o padrão lateral: junto às paredes e com rota livre.
+Não inferir aprovação artística de blocos/coelho nem conclusão do catálogo inteiro.
+
+Executados E3/E4: `ChasePropCatalog` e `ChasePropResources`, fábricas de blocos e
+coelho; trem aprovado parcialmente integrado pela mesma fábrica do painel.
+`ChaseToyModels` só adapta a API antiga. Arremessáveis têm apoio inferior,
+recursos comuns e liberação local; restauração com mesmo ID/outro tipo troca a
+instância. Seis armários entram nos módulos laterais. Estante/castelo antigos
+foram alinhados às paredes, mas continuam representações planas sobre suporte;
+baú e demais props ainda dependem de E5. Não registrar conversão integral.
+
+Superfícies/geometrias e materiais repetidos dos 12 módulos agora são comuns;
+frisos pareados reduzem chamadas. Pico próprio 117 (antes 285), catálogo 42;
+cenário comparável com um bloco: 294 chamadas (antes 310). Três arremessáveis
+simultâneos: 300–306 chamadas nos três formatos. Estado/RNG/save/colisão e menina
+preservados. `npm test`, build/assets/lint, sintaxe, mapa de sprites e QA temporário
+no jogo/painel passaram, incluindo percurso controlado, IDs restaurados, perda e
+restauração WebGL, recursos estáveis e descarte zero. Não certifica hardware real.
+
+Durante a execução, o usuário questionou a pobreza das texturas: tom adequado,
+mas ausência dos detalhes que evocam Legend of Mana. Explicação confirmada no
+código: amostra de carvalho 60×52 ampliada a 128², contraste reduzido na madeira
+pintada; pelúcia 8×10 ampliada a 64² e repetida. Materiais foscos quase uniformes
+não têm desgaste/nós/fibras/sombras pintadas específicos por face. Iluminação
+futura não fornece esses dados ausentes. Isso é simplificação desta implementação,
+não limitação inevitável de WebGL/3D. Registrar deficiência de acabamento, sem
+tratá-la como aprovada ou adiar automaticamente toda a textura junto da luz.
+Prioridade recomendada antes de expandir E5: prova de textura própria por objeto,
+UVs por região e detalhes pintados coerentes, mantendo paleta e orçamento.
+Relatório: `relatorios/20261020-catalogo-arremessaveis.md`. Sem custo/commit/push.
+
+
+## Amostra de direção pictórica — 20/10/2026
+
+Sessão `20261020T135959-383ba4a2d395`: usuário solicitou uma amostra antes de
+validar propagação do trabalho pictórico inspirado em Legend of Mana. Gerada uma
+prancha de armário, usando captura real do modelo atual e sprite original como
+referências, via ferramenta integrada image_gen. Veios por tábua, nós, desgaste
+de bordas, pinceladas e pátina reforçados, mantendo desenho geral/paleta.
+Arte em `arte/20261020-armario-pictorico-v1.png`, metadados em JSON irmão e prompt
+completo em `relatorios/20261020-amostra-pictorica-armario.md`. Conservar a arte
+conceitual; ela não é bitmap regenerável de QA. A captura temporária foi
+identificada por hash/bytes no diário e descartada depois de usada.
+
+É uma proposta de pintura sobre a captura, não atlas UV ou textura aplicada.
+O painel esquerdo é reprodução gerada da referência; não confundir com screenshot
+literal. Pequenas interpretações de borda/ferragens existem. Runtime, iluminação
+da cena e originais não alterados. Captura temporária e integridade passaram,
+mapa de sprites reconstruído sem alteração de assets de produção. Nenhuma
+avaliação humana desta amostra registrada, nenhum serviço externo contratado,
+CLI/API paga separada, commit ou push. Aguarda validação da direção antes de
+produzir mapas por região e comprovar o resultado no modelo em gameplay.
+
+
+## Direção pictórica aprovada e aplicação real — 20/10/2026
+
+Sessão `20261020T144330-e2641eed729f`: usuário aprovou enfaticamente o estudo do
+armário (“ficou muito melhor”) e solicitou o mesmo padrão nos demais assets.
+A direção deixou de ser apenas proposta. Aplicados mapas reais aos quatro props
+3D atuais: armário, trem, blocos e coelho. Não registrar esta entrega como conversão
+dos 15 itens do roteiro ou substituição global de sprites/personagens 2D.
+
+Quatro atlas próprios em `assets/art/toy-room/bear-chase/materials/`, PNGs originais
+gerados de 1254² e preservados, referências/prompts/manifesto na mesma pasta.
+Ferramenta integrada image_gen, uma chamada por objeto, sem CLI/API paga separada.
+`PictorialMaterialAssets` define caminhos; `pictorialMaterial` compartilha uma
+textura por objeto, `bake` remapeia UVs com margem de 8 pixels. Armário separa
+painel/montante/tampo/latão, trem/blocos separam cores pintadas, coelho separa
+pelúcia/creme/interior/costura. Veio axial da caldeira e UVs do telhado ajustados.
+Formas, dimensões, pivôs, domínio, luz da cena e originais anteriores preservados.
+
+Painel e prévia jogável consomem os mesmos atlas; quatro vistas reais inspecionadas.
+Suíte geral, QA de modelos e teste pictórico temporário passaram: 4 texturas de
+atlas compartilhadas, UVs contidas, 121 recursos de cena, 46 do catálogo, estado
+estável, contexto WebGL recuperado e descarte zero. Cenário comparável: 298
+chamadas; três brinquedos simultâneos 304–310. Memória dos novos atlas estimada
+em 33.536.288 bytes (~32 MiB) RGBA8 com mipmaps; não é medição de VRAM/FPS em
+aparelho físico. Mapa de sprites: 420 arquivos, 99 recortes, 29 assinaturas.
+Relatório: `relatorios/20261020-aplicacao-texturas-pictoricas.md`.
+
+Aprovação humana refere-se à amostra/direção, não a cada nova execução já aplicada.
+E5/E6 e o restante do catálogo continuam no roteiro, agora com este padrão;
+iluminação continua adiada. Sem commit, push ou contratação de serviço externo.
+
+
+## E5: estante, castelo e baú 3D integrados — 20/10/2026
+
+Sessão `20261020T150652-055a3b965d96`. Usuário considerou a texturização muito boa
+e autorizou executar/continuar o pipeline. Entregue o primeiro lote de E5:
+`BookshelfProp`, `BlockCastleProp`, `ToyChestProp`, registrados no catálogo e
+integrados à prévia. São sete modelos dos quinze previstos, não E5 inteiro.
+Estante baixa com duas fileiras/30 livros sólidos; castelo com torres e portais
+vazados; baú vermelho/amarelo, medalhão azul, tampa curva e inscrição sobre
+superfície curva. Partes ocultas/lettering são interpretações, aguardando revisão.
+
+Removidos planos/suportes genéricos da estante/castelo e plano do baú. Móveis
+continuam laterais, |X|>4,3; baú em X=4,74. Tampa abre por pose de apresentação
+após o alcance e fecha ao final; urso recebe deslocamento visual até o baú, sem
+mutação do domínio. Câmera do encerramento enquadra os atores no retrato; corrida
+e fases 2D preservadas. Área final da parede direita reservada desde a aproximação
+para evitar oclusão por outro móvel. Iluminação segue adiada.
+
+Materiais combinados por atlas nos novos móveis preservam UVs/tintas por vértice:
+estante 3 chamadas, castelo 1 e baú 4. Sem nova geração paga, dependência ou PNG
+de material; reaproveitados os quatro atlas pictóricos aprovados como direção.
+Cena estável em 128 recursos (catálogo 62), descarte zero; cenário comparável 272
+chamadas, três brinquedos 282–284. Atlases continuam com a estimativa anterior
+de ~32 MiB; inscrição acrescenta sua pequena textura dinâmica. Não é benchmark
+em aparelho físico.
+
+Suíte geral, build/assets/lint, sintaxe, mapa de sprites, QA dos sete modelos e
+regressão no navegador passaram, incluindo 36 cenários de encerramento, três
+formatos, limites/framing/parede, pivô, estado/save/inputs/áudio e contexto WebGL.
+Primeiro QA falhou porque a tampa atravessava a parede; folga/profundidade
+corrigidas mantendo limites. Capturas finais tinham corrida de restauração de
+fixture e foram corrigidas para fotografar antes de restaurar o estado.
+Registros de falha preservados. Relatório `relatorios/20261020-e5-moveis.md`.
+
+Próximo lote: teddy, robot, duck, drum, jack, armchair, rocking-horse e table;
+depois completar composição E6 e regressão E7. Não houve aprovação humana
+individual desses três novos modelos, commit, push, publicação ou integração
+automática da campanha.

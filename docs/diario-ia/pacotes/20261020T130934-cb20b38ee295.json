@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T130934-cb20b38ee295",
+  "date": "2026-10-20T13:09:34.640202+00:00",
+  "title": "Integração do catálogo: fontes de QA e painel com quatro objetos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js",
+      "sourceId": "8c9ee78d54859404d13efad4dbbc7bc0962b492bd57f4160dacc603084868223",
+      "sha256": "c851777d2409a536103734072e1a553cde813a79ca2cf0f23d17e5941cfe88a2",
+      "bytes": 1301,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/jogo-browser.js",
+      "sourceId": "1c31e831233d68a8cbf252a252add925d7d42fb0971b000624ea62ef8ae424fd",
+      "sha256": "36a148e3d39c1c1e9dec807d46e0466eb16237759ec7b374896932e54dd8c5be",
+      "bytes": 11820,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/capturas.json",
+      "sourceId": "a8d47a09fc22b2c6d7776d2e131051f58b1c208de423176e9f93a0b19e9a7752",
+      "sha256": "c67bb28a7d693403c7b2105d52d810d2764271350f43a0af25bed0b6ba99a11e",
+      "bytes": 2302,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.html",
+      "sourceId": "97a8f693914bb00878bfc9fdc8488ee5b724a6f7a972d3c28e32206d371c86e6",
+      "sha256": "b77ed75d93f4cb23ce968883f1c4730257d297ee44fdc7aded63c1982bbf7d50",
+      "bytes": 2707,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props-qa.js",
+      "sourceId": "4a4bcf3c46b7454f374660b334d1e972a72242ceaecbfd07c0a16b76e4e62e11",
+      "sha256": "5268a2d0ceb14930c5de453bbc1c2be3d5b81aae3f9ad637b154f8896baf762b",
+      "bytes": 1195,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/baseline.json",
+      "sourceId": "bab00f9f70e3bcc10767a1a4920ae3bb9bfad069580c523019f0977334f5b4d9",
+      "sha256": "764d2b060929c30398e6b65b274be9ff32132971db19bff0ffab1eea67432db4",
+      "bytes": 911,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.js",
+      "sourceId": "0b7a81376bc1c9785f4a4d252cbb478ed28577d1081ee859840e0c284b8496d9",
+      "sha256": "c69bac11b6db24e2ed5c97a601688122db56754ddb0f34f8e2d772748c27f597",
+      "bytes": 7030,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props-browser.js",
+      "sourceId": "e39dc53e71234064538a15e0e37a8307c91992113618e89720d7d6ec6994900c",
+      "sha256": "5ed863d827966c0d5f2798776f0e19d91c3043168fa9c92e5ef8b1c89ea45ffa",
+      "bytes": 6386,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:catalog": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js"
+  }
+}

@@ -43,7 +43,9 @@ continuam pendentes de escuta.
 | `ChaseGirlAnimation` | Apoio dos pés, porte da espada, desvio, cabelo e saia |
 | `ChaseGirlPalette` | Paleta regional rastreável ao sprite de corrida |
 | `ChaseBearModel` | Pelúcia volumétrica e atuação da fuga/retorno |
-| `ChaseToyModels` | Trem volumétrico com recursos compartilhados |
+| `ChaseToyModels` | Adaptador de compatibilidade para o trem do catálogo |
+| `props/ChasePropCatalog` | Instâncias, referências, limites visuais e liberação local |
+| `props/ChasePropResources` | Propriedade e compartilhamento de materiais, texturas e malhas |
 | `ChaseHUD` | Mensagens da prévia, sem mutação da simulação |
 | `BearChasePhase` | Composição e adaptação do dt legado, sem receber a sala inteira |
 
@@ -112,3 +114,85 @@ antebraço em 0,17 e ajusta a mão e o porte da espada. Mangas claras bufantes t
 gomos e punho salmão; a saia tem franzido geométrico e sombras suaves perto da
 cintura. O rabo único ganhou comprimento, projeção lateral, mechas e pontas
 articuladas para permanecer legível na câmera traseira. Paleta regional preservada.
+
+## Catálogo e primeiro lote integrado — 20/10/2026
+
+Abra `http://127.0.0.1:3000/docs/diario-ia/qa/perseguicao-20261020/props.html`.
+O painel compara trem, armário baixo, blocos e coelho com as fontes atuais, sob
+luz branca e no quarto. Trem e armário receberam aprovação parcial do usuário;
+o acabamento de iluminação será melhorado depois. Selecione quatro vistas, giro, escala de gameplay ou detalhes e
+lançamento do trem. O armário é decorativo, junto à parede direita e com portas
+voltadas para a sala. A imagem original não fornece todas as faces: costas e
+partes ocultas dos pilotos são interpretações sujeitas à revisão.
+
+Para servir exclusivamente no computador local, em vez de expor o painel à rede:
+
+```sh
+node --input-type=module -e 'import express from "express"; const app=express(); app.use(express.static(process.cwd())); app.listen(3000,"127.0.0.1");'
+```
+
+`props/ChasePropCatalog` reúne trem, blocos, coelho e armário (`wardrobe`). As
+fábricas produzem instâncias com apoio inferior; `props/ChasePropResources`
+controla materiais, texturas derivadas em memória e malhas mescladas por material.
+`PilotPropResources` é apenas compatibilidade com os primeiros estudos. Na prévia
+jogável, os três arremessáveis agora usam malhas; seis armários ocupam posições
+laterais, com portas voltadas para a sala. Todos os móveis ficam junto às paredes.
+Estante e castelo agora são volumétricos: livros/capas/lombadas têm espessura e
+os portais do castelo são vazados. O baú também tem volume, tampa curva articulada,
+painel amarelo, medalhão azul e inscrição sobre superfície curva. O catálogo soma
+sete modelos; brinquedos decorativos restantes, poltrona, cavalinho e mesa ainda
+aguardam os próximos lotes de E5.
+
+A trajetória de 0,65 s mantém seus pontos horizontais e longitudinais; a posição
+vertical agora representa o apoio do objeto, sem a antiga meia-altura dos planos.
+Colisão, tipos, largura lógica, RNG, save e movimento da menina não mudaram.
+As superfícies repetidas do quarto compartilham geometria/material. Os recursos
+comuns só são descartados ao encerrar o catálogo, nunca ao retirar um brinquedo.
+
+Após criticar a simplificação, o usuário aprovou a direção pictórica da amostra
+do armário e autorizou sua propagação. Os quatro modelos 3D atuais agora usam
+atlas próprios: veios/desgaste em armário, trem e blocos, fibras em coelho. Os mapas
+estão em `assets/art/toy-room/bear-chase/materials/`, com referências e prompts
+integrais. O mapa é compartilhado por objeto e os quadrantes são selecionados por
+UVs; não se cola uma imagem frontal sobre o volume. O painel usa os mesmos mapas
+da fase. A direção aprovada vale para os próximos props; a execução de cada novo
+modelo ainda pode precisar de refinamentos. Iluminação da cena permanece adiada.
+Os demais modelos do roteiro, ainda não convertidos, entram nesse padrão quando
+forem construídos; não houve substituição global das artes 2D ou personagens.
+
+`npm run journal:qa -- test:bear-chase:catalog` verifica a integração no jogo;
+`npm run journal:qa -- test:bear-chase:catalog:models` verifica a comparação.
+Ambos executam o QA arquivado em workspace
+temporário com servidor restrito a loopback e Chrome de QA na porta CDP 9222.
+Resultados e limitações estão no diário, separados do aceite artístico.
+
+
+`npm run journal:qa -- test:bear-chase:pictorial` verifica quatro atlas reais,
+compartilhamento por objeto, UVs contidas nos quadrantes, orçamento estimado RGBA8
+com mipmaps e a regressão da perseguição. Os PNGs são artes de produção e devem
+ser preservados; somente capturas de QA regeneráveis são descartadas.
+
+
+## Estante, castelo e baú — primeiro lote de E5
+
+No painel, selecione os três novos objetos para comparar quatro vistas e use
+“Abrir tampa do baú”. Os originais ilustrados estão à esquerda; as partes ocultas
+dos modelos são interpretações novas. `BookshelfProp`, `BlockCastleProp` e
+`ToyChestProp` usam os materiais pictóricos já aprovados como direção. Não há
+uma nova prancha frontal aplicada a um suporte genérico.
+
+As peças estáticas dos móveis são agrupadas por atlas, com tintas locais por
+vértice. Isso mantém a estante em três chamadas e o castelo em uma. As instâncias
+compartilham recursos; só o pivô da tampa é local. O baú aparece após o alcance,
+abre em CAUGHT e fecha ao final de CHEST_RETURN. O evento de retorno e o save
+continuam na simulação existente, sem nova decisão dentro dos modelos.
+
+O baú fica à direita, X=4,74, com folga de abertura. Um trecho dessa parede é
+reservado desde a aproximação final para que a decoração não o oculte. A câmera
+apresentada enquadra menina/urso/baú em retrato e paisagem durante o encerramento;
+a câmera da corrida e as câmeras das fases 2D mantêm seu comportamento.
+
+`npm run journal:qa -- test:bear-chase:furniture` verifica os sete modelos, os
+materiais compartilhados, a rota livre e 36 cenários da apresentação final.
+`npm run journal:qa -- test:bear-chase:furniture:models` verifica a comparação
+visual e o pivô da tampa. Fontes, resultados e limites ficam no diário de IA.
