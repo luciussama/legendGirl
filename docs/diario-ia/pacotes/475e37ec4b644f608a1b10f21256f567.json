@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "475e37ec4b644f608a1b10f21256f567",
+  "date": "2026-10-20T17:10:11.680437+00:00",
+  "title": "QA temporário: test:bear-chase:props:fidelity",
+  "files": [
+    {
+      "path": "qa-execucoes/475e37ec4b644f608a1b10f21256f567.log",
+      "sourceId": "6484e16a2841031947c4c955ec5930c20971431c2e3454fea927fa903da4c7a6",
+      "sha256": "f2e153bda232d172949798c381b5ee5b10fb4373fa93ed2af2416ab87c1b8605",
+      "bytes": 8048,
+      "metadataOnly": false
+    }
+  ]
+}

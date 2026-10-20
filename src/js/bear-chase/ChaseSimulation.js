@@ -1,5 +1,7 @@
 import { CHASE_CONFIG as C, clamp, damp } from './ChaseConfig.js';
 
+import { routeFrame, ROUTE_AMBUSHES } from './ChaseRoute.js';
+
 const STAGES = ['BEAR_DOWN', 'GIRL_APPROACH', 'BEAR_RISE', 'CHASE_START', 'RUNNING', 'CAUGHT', 'CHEST_RETURN', 'COMPLETE'];
 
 /** Cria somente dados serializáveis; nenhuma entidade da sala é compartilhada. */
@@ -45,13 +47,14 @@ export function hitsObstacle(obstacle, fromX, toX, fromZ, toZ) {
 }
 
 /** Coloca um grupo com corredor livre, tempo de aviso e distância entre padrões. */
-function dropPattern(state, events) {
+function dropPattern(state, events, ambushZ = null) {
   const progress = state.distance / C.length;
-  const safeLane = Math.floor(random(state) * 3);
+  const randomLane = Math.floor(random(state) * 3);
+  const safeLane = ambushZ === null ? randomLane : routeFrame(ambushZ).curvature >= 0 ? 2 : 0;
   const blocked = progress > .35 ? [0, 1, 2].filter(i => i !== safeLane) : [(safeLane + 1) % 3];
   // O menor intervalo permite atravessar toda a largura antes do próximo grupo.
   state.nextDrop = state.time + 3.5 - 1.3 * progress;
-  const z = state.distance + state.gap - 1;
+  const z = ambushZ ?? state.distance + state.gap - 1;
   if (state.gap < C.minDropGap || z > C.length - 25) return;
   for (const lane of blocked) {
     const obstacle = { id: ++state.serial, x: C.lanes[lane], z, age: 0, width: 1.15,
@@ -101,8 +104,11 @@ export function stepChase(state, input, dt = C.step, difficulty = 'NORMAL') {
   state.immunity = Math.max(0, state.immunity - dt);
   state.stumble = Math.max(0, state.stumble - dt);
   const fromX = state.x, fromZ = state.distance;
-  const speed = C.speed * (state.stumble > 0 ? .58 : 1);
-  state.x = clamp(state.x + clamp(input || 0, -1, 1) * C.lateralSpeed * dt, -C.halfWidth, C.halfWidth);
+  const terrain = routeFrame(state.distance);
+  // Subidas exigem mais esforço; descidas aceleram moderadamente, sem trocar a duração das animações.
+  const speed = C.speed * clamp(1-terrain.slope*.9,.84,1.12) * (state.stumble > 0 ? .58 : 1);
+  const drift = -terrain.curvature * speed * speed * (difficulty === 'EASY' ? .25 : .55);
+  state.x = clamp(state.x + (clamp(input || 0, -1, 1) * C.lateralSpeed + drift) * dt, -C.halfWidth, C.halfWidth);
   state.distance = Math.min(C.length, state.distance + speed * dt);
   const p = state.distance / C.length;
   // Aproximação suave; o trecho final suspende lançamentos quando faltar aviso.
@@ -118,7 +124,9 @@ export function stepChase(state, input, dt = C.step, difficulty = 'NORMAL') {
     }
   }
   state.obstacles = state.obstacles.filter(o => o.z > state.distance - 8);
-  if (state.time >= state.nextDrop) dropPattern(state, events);
+  const ambush=ROUTE_AMBUSHES.find(z=>fromZ<z-20&&state.distance>=z-20);
+  if(ambush!==undefined) {dropPattern(state,events,ambush);state.nextDrop=state.time+3.2;}
+  else if(state.time>=state.nextDrop&&!ROUTE_AMBUSHES.some(z=>Math.abs(state.distance-(z-20))<22))dropPattern(state,events);
   const checkpoint = Math.floor(state.distance / C.segmentLength) * C.segmentLength;
   if (checkpoint > state.checkpoint && checkpoint < C.length) {
     state.checkpoint = checkpoint; events.push({ type: 'checkpointReached' });

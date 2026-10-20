@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T151722-c3da1375d78f",
+  "date": "2026-10-20T15:17:22.939871+00:00",
+  "title": "E5: sete props, atlas compartilhados e baú final enquadrado em 36 cenários",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/jogo-browser.js",
+      "sourceId": "f2233355d2cf3cedbaf972c207d874a9694b5f91cb4e0ae091d692b901bd4913",
+      "sha256": "f1b35c15577c8a706c48c72a5e5170a0a36e11f6a46cbeda9d0d1b0ce7ac5cc5",
+      "bytes": 17409,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:furniture": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js docs/diario-ia/qa/moveis-20261020/jogo-browser.js"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7fbe012a7edb404ead3ed94b49326771",
+  "date": "2026-10-20T12:59:13.903228+00:00",
+  "title": "QA temporário: test:bear-chase:props",
+  "files": [
+    {
+      "path": "qa-execucoes/7fbe012a7edb404ead3ed94b49326771.log",
+      "sourceId": "6b57bc3a1662a605a6b87732e1fc5c4963d05e66ae423a8f917370767c2200ae",
+      "sha256": "d554cd4022fd3b2316aca8f0bfa2000f2c9af67fa352e42e36ccbea8bd00f181",
+      "bytes": 2034,
+      "metadataOnly": false
+    }
+  ]
+}

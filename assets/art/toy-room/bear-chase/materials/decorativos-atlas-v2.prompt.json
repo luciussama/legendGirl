@@ -1,0 +1,24 @@
+{
+  "versao": 2,
+  "ferramenta": "image_gen integrada",
+  "tipo": "atlas compartilhado 4×4",
+  "prompt": "Use case: stylized-concept. Asset type: ONE production texture atlas for a hand-painted 3D storybook game. Input images are MATERIAL AND PALETTE references ONLY, not edit targets: wooden rocking horse, yellow crowned rubber duck, turquoise/brass tin robot, red drum, purple jack-in-box, scarlet woven armchair, sheet containing brown teddy and round wooden table. Create a square high resolution 4 by 4 grid of EXACTLY SIXTEEN equal square material swatches, touching edge-to-edge, zero borders/gutters, no labels or text, no complete objects, no faces/eyes/characters, no perspective. Orthographic flat diffuse/albedo painting with rich brushwork, wear and miniature material detail faithful to these references and illustrated 1990s storybook RPG art. Each cell is a uniform usable material surface, subtle tonal variation across whole cell, no centralized fake spotlight or cast shadow. Row 1 left to right: (0) warm honey gold carved wood of horse with fine directional irregular woodgrain and small worn scratches; (1) deep auburn carved wooden mane of horse with flowing sculpted groove shading; (2) vermilion red saddle painted leather with subtle stippled wear; (3) teal saddle painted leather with fine worn speckles. Row 2: (4) golden yellow painted rubber of duck, smooth organic brushed pigment with soft mottling, absolutely no wood grain or fur; (5) orange rubber beak with fine warm paint variation, no grain; (6) desaturated turquoise enamel painted tin of robot, tiny patina scratches and rubbed paint, NOT wood/fabric; (7) warm antique golden brass with fine etched wear and restrained gleam, NOT wood. Row 3: (8) chestnut brown teddy plush fabric, densely painted short fibers, directional tufts, rich small variation; (9) warm tan teddy paw plush, tiny fibers slightly darker cream, NOT white; (10) deep royal purple lacquered wood of jack-in-box, fine irregular painted grain and worn edges but no actual box outlines; (11) rich coral pink jester fabric with fine woven thread texture. Row 4: (12) scarlet armchair upholstery, highly detailed small woven crosshatch threads visible, warm deep red without large-scale plaid shapes; (13) warm ivory drumskin parchment with subtle fine fibers/mottling; (14) rich dark scarlet painted wooden drum body, brushed grain and subtle age; (15) warm golden oak tabletop material, directional hand-painted grain, many fine natural strokes and subtle carved scratches, no circular tabletop silhouette. Keep each color confined to its exact quarter-width/quarter-height cell. Each full cell extends to all edges. Texture atlas only, no extra images, no captions. Entire atlas square. Detailed painterly strokes and hand-crafted materials, never photographic PBR, never generic flat colors.\nFive supplied reference images in order: horse, duck, robot, armchair, environment sheet. Drum and jack materials follow the precise text palette above.",
+  "regioes": [
+    "madeira cavalinho",
+    "crina entalhada",
+    "sela vermelha",
+    "sela verde",
+    "borracha amarela",
+    "bico laranja",
+    "esmalte robô",
+    "latão",
+    "pelúcia castanha",
+    "pelúcia caramelo",
+    "laca roxa",
+    "tecido rosa",
+    "tecido vermelho",
+    "pele tambor",
+    "madeira vermelha tambor",
+    "carvalho mesa"
+  ]
+}

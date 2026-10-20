@@ -1,0 +1,46 @@
+{
+  "versao": 1,
+  "direcaoAprovada": "docs/diario-ia/arte/20261020-armario-pictorico-v1.png",
+  "artefatos": [
+    {
+      "arquivo": "armario-atlas-v1.png",
+      "dimensoes": [
+        1254,
+        1254
+      ],
+      "bytes": 2284303,
+      "sha256": "de774227f449231810e029d7e08f9255fe10bbca70bfc45e9d2c97eed9ed2cb6",
+      "quadrantes": 4
+    },
+    {
+      "arquivo": "blocos-atlas-v1.png",
+      "dimensoes": [
+        1254,
+        1254
+      ],
+      "bytes": 2105484,
+      "sha256": "87b81f2593984a0557b8c90fa15c8deecfea3b5de4daa621f3bf75dd2b21511f",
+      "quadrantes": 4
+    },
+    {
+      "arquivo": "coelho-atlas-v1.png",
+      "dimensoes": [
+        1254,
+        1254
+      ],
+      "bytes": 2683420,
+      "sha256": "eca606cf96cd994e8eff6b9b484a5e6b24354ec1075b6b7b888286e445f7ab73",
+      "quadrantes": 4
+    },
+    {
+      "arquivo": "trem-atlas-v1.png",
+      "dimensoes": [
+        1254,
+        1254
+      ],
+      "bytes": 2290002,
+      "sha256": "69a55881243d61153937b7873266865037c1cbd16dcbdc80ab62a5dd4973af34",
+      "quadrantes": 4
+    }
+  ]
+}

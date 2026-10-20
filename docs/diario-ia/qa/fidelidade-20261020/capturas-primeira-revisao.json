@@ -1,0 +1,292 @@
+[
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-290.png",
+    "bytes": 694379,
+    "sha256": "766d691a9100514f725a1d1318f17a287d39147e181d93f183947c7c75a1399b"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-148.png",
+    "bytes": 169541,
+    "sha256": "7acea7003c175188ac81f82f72e60c601b40463cf8a88896c0744bf47db6b429"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jack-side.png",
+    "bytes": 182847,
+    "sha256": "0de09d6ef5ebff8a3af11be99fdd48c7f722949c1aa4eed65b710d16324f8ce2"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-drum-front.png",
+    "bytes": 149499,
+    "sha256": "ced5e9d2c614c920fc9edcae3d2991d38dfb3b8972e8b020b00f2da9abc3c56b"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-rocking-horse-back.png",
+    "bytes": 244383,
+    "sha256": "272d2a10173a0acc8e4aade7141622d49dccce132ecc38a82d39db63ea62ee9d"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-table-back.png",
+    "bytes": 167777,
+    "sha256": "0025329e14e8474ea3d2053b5ca3bf4ef24a3b70d7b62e1ced82fcb074ce5b8e"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-720.png",
+    "bytes": 691785,
+    "sha256": "8b83a3618c96f6a45ae22a78a82fe11e446ee568b8a542b620307f0a125308a4"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-robot-front.png",
+    "bytes": 182031,
+    "sha256": "2f010e16e64e3e24a449cbcb52705ebe15b7ecb61ec755363edc0f5494c62881"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-teddy-front.png",
+    "bytes": 192425,
+    "sha256": "7ad4c70c4420b9694c4a871a38c523a65079c3f214e12838bd179b13726b1d04"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-teddy-back.png",
+    "bytes": 183059,
+    "sha256": "72b15038a400eb2c927fcb1f11ad162725444261228c69108bf053ce43ff5f91"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-duck-three.png",
+    "bytes": 166152,
+    "sha256": "85c8cbeb93193b93648b49a22ee83ef62abc667073b083ba63853890f62d24de"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-225.png",
+    "bytes": 421981,
+    "sha256": "8a049f9a0e2665cc7d1a5e97b8d711cfb987cc52b40a5342cf7f279760298b4e"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-armchair-three.png",
+    "bytes": 258504,
+    "sha256": "7650d7dfb3d0550323ecc21dd71b37da8f9168e1dbef87c8cc8722fa18273798"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-555.png",
+    "bytes": 410206,
+    "sha256": "a5be112310e19e4835a631d493ae22879ed249a88219e43c85a9b336705f68f6"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-duck-back.png",
+    "bytes": 166276,
+    "sha256": "22541402b2bc9ff15328e99d0a3e1b46b27a452f4a2d25cf2293a9fae64f043d"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-420.png",
+    "bytes": 414391,
+    "sha256": "5188a9ada0db9064aef7f3d30551ddb6b8041bf45384e13018c55b48bc0ecdb7"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-table-front.png",
+    "bytes": 167610,
+    "sha256": "1e5b6af5b7924a8f425ab985b640f1c933e9663622c90cecbc3f0eeefa424ad4"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-rocking-horse-three.png",
+    "bytes": 248399,
+    "sha256": "987a8347a85e4f8ee843d6054808a967c099dd9f13c43d5c6eecfbb5ff6a6b77"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jack-three.png",
+    "bytes": 197548,
+    "sha256": "b7c6eea91e3a7e714bdca9b1c7b43159930d49d188081e6ed9fb14baa52e5411"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-robot-side.png",
+    "bytes": 166252,
+    "sha256": "427936ac0f99be8180eae085f9489722f35cdc664fc6f4dac0fdebd9d66d3148"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-armchair-side.png",
+    "bytes": 242007,
+    "sha256": "8854ba489f88473788bdfcb158714d8c562e60306e19b25ede11ec40661cede6"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-225.png",
+    "bytes": 695188,
+    "sha256": "20b71b502cb320c04b5a30ccc15e58311e1fb464c19511bb6a249ee509234f15"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-82.png",
+    "bytes": 345237,
+    "sha256": "93b58157c40c57b71c371489bdae2c3acbfe53fc241b15caed593217860789ea"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-555.png",
+    "bytes": 679813,
+    "sha256": "ed350e95aaf63f716c7e21f37a592ff22c6be7a4b055e9ddc0c0dc4335d67681"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-420.png",
+    "bytes": 687386,
+    "sha256": "7ec0126777841d002ee992f566febe0183022be832fd54626e7638708ff13f8b"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-drum-side.png",
+    "bytes": 149765,
+    "sha256": "cdfc7926f732792feae4bf3eaa5f476b1fcea31e69318921de29292ec080b03e"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-290.png",
+    "bytes": 417685,
+    "sha256": "d5cc9ee60d33da11d37376fb05cb88bbfc71ed481584c120f872574f99e6f736"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-720.png",
+    "bytes": 416379,
+    "sha256": "82d9e86901e23eb03bca62e220e5a08bc5174799cb7fa83bae0607f67a8745e9"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-duck-side.png",
+    "bytes": 160559,
+    "sha256": "779219c53deed030efa079aec790d6568db830be804a1523354dfcdb5dfa5bd6"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-teddy-side.png",
+    "bytes": 177224,
+    "sha256": "7ebe4daf55806375067bcb60a528cd86fb0e724d80ed3dbfde1150f3431e02df"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jack-front.png",
+    "bytes": 193741,
+    "sha256": "371a368d97a20f0e0f217c832d6f749a9c36169b0f5c2f4a135033c9581d2e08"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-680.png",
+    "bytes": 173659,
+    "sha256": "49eeb365b4dc3499b3d1bc45ecf0c504db99672d59ac0728277aeb533befca17"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-225.png",
+    "bytes": 385044,
+    "sha256": "fa3003a8678d4acbb4379af91a869dab76bf6ca9161d38e9b79d13e02a1c624c"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-290.png",
+    "bytes": 173582,
+    "sha256": "3cf7a7e0b99edacc68c4c152e3a46855b4fe188e4819f8989095aa910c0d53a8"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-555.png",
+    "bytes": 335518,
+    "sha256": "8013e6c0c333eb908ee2d839fafbf876b6e76af4a47f7024b9ff9b632c703f05"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-rocking-horse-side.png",
+    "bytes": 219974,
+    "sha256": "6e0a7701e1b3c2224a7f991e67e635da7313000425d45be3cc37cef0c47c3ccb"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-table-side.png",
+    "bytes": 162612,
+    "sha256": "556e1cb3bdf38d88d9013fdd5d1f67e22fcebe12fa586ad5f2b21e866e9e3863"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-420.png",
+    "bytes": 368437,
+    "sha256": "23e90422af2c96134abb5d182d7845ee088d337fb09c7cfbfee5db4b6b67bca3"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-1280-82.png",
+    "bytes": 686788,
+    "sha256": "d3293226aa9931b2c7ece738e3e3e388ea75b55ffa8bdc57843987a452644666"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jack-back.png",
+    "bytes": 192974,
+    "sha256": "aeb5e777b850ea1757d1e983c363d3f4c988d50887c75a8927da58e66c955404"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-robot-three.png",
+    "bytes": 181388,
+    "sha256": "05ad68153889593b3ab964354ac9b225a4b2757eeb673e0170f4a9e03f4ea13a"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-42.png",
+    "bytes": 172644,
+    "sha256": "ea72e558fb9a89c094c857153b959fa933e75172afab6645fbb24cd3a92bafac"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-82.png",
+    "bytes": 172135,
+    "sha256": "a2f4fb107a6a48403995891530b6e17b84b0d6d2f9267b41617c12cc799df171"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-drum-three.png",
+    "bytes": 153003,
+    "sha256": "288ac4ac12acd0d60c9da0b9dc8ed8c871c91bc4a131a25b0917b91f19666bda"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-290.png",
+    "bytes": 332181,
+    "sha256": "0f37dd42b4555b862ab64675835ca2f47179bba6850b46ae8937ff2616900c1a"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-drum-back.png",
+    "bytes": 149639,
+    "sha256": "7db819fa4cfadaac574be2479dd0cd183acd4e05869feac23a7b5ecb8601bd47"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-225.png",
+    "bytes": 174323,
+    "sha256": "77508b7750c4c05172b6b5742c612961bef4b1893230b9eadbce7909ef9b9107"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-rocking-horse-front.png",
+    "bytes": 245008,
+    "sha256": "56f462871885b7631ec330418bb302fc226d2911fe8890867aaa5e289837236a"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-table-three.png",
+    "bytes": 172135,
+    "sha256": "a2f4fb107a6a48403995891530b6e17b84b0d6d2f9267b41617c12cc799df171"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-844-82.png",
+    "bytes": 415485,
+    "sha256": "2cc228e730d39f47957a51daeef928f8b9e1c377f4a84806775af48cbde4eaf3"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-jogo-390-720.png",
+    "bytes": 367347,
+    "sha256": "28a3349731e51bae1f928fb771ceaa55dbee0eec70113f6858de12000c8bc45e"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-robot-back.png",
+    "bytes": 180212,
+    "sha256": "012e6249eee2a50d0a2dbf646f11f82d6f42ac70a074fd50e173430c3fef3a57"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-duck-front.png",
+    "bytes": 166921,
+    "sha256": "df989fb54a56aa4c0ffe7fccc520154e03b8cc4f4e52741e7bf0d843774afa0c"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-armchair-front.png",
+    "bytes": 258902,
+    "sha256": "4061e75b4c7184a786cd6e29b3f0def3f27e843be12fcd240d81a23b8fdf5084"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-armchair-back.png",
+    "bytes": 265312,
+    "sha256": "cb2e847bbe4a56d7fbbde75f48f06679156503fcc9ace999e8acc9c91fec01e1"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-420.png",
+    "bytes": 169860,
+    "sha256": "7042c60a70f7248864b463105b7acc33908b021f8929b7ea205a079bcadcea92"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-teddy-three.png",
+    "bytes": 187998,
+    "sha256": "b6876c30181c96ec64323531c9a29bb9f14e6d16e879e24cc788b84b425f497c"
+  },
+  {
+    "caminho": "/tmp/legendgirl-rota-percurso-555.png",
+    "bytes": 172678,
+    "sha256": "7f62b31552743d9c4a3b05d8742d3cbf8e54136a49c18b5dc6ab74e24ca797a0"
+  }
+]

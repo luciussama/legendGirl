@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 416,
+    "files": 422,
     "regions": 99,
     "code": 29
   },
@@ -14024,6 +14024,137 @@
       "family": "assets/art/toy-room/battle/train/walk"
     },
     {
+      "id": "f3ed4a82cf9bf0b61014d3f0",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/armario-atlas-v1.png",
+      "title": "armario-atlas-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2284303,
+      "sha256": "de774227f449231810e029d7e08f9255fe10bbca70bfc45e9d2c97eed9ed2cb6",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "cd814c48c6c4a99f6c142dff",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/blocos-atlas-v1.png",
+      "title": "blocos-atlas-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2105484,
+      "sha256": "87b81f2593984a0557b8c90fa15c8deecfea3b5de4daa621f3bf75dd2b21511f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
+          "line": 6,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "2a45abdcc4abbad529be7824",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/coelho-atlas-v1.png",
+      "title": "coelho-atlas-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2683420,
+      "sha256": "eca606cf96cd994e8eff6b9b484a5e6b24354ec1075b6b7b888286e445f7ab73",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
+          "line": 7,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "03bf3c440a40fc03e88a5575",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.png",
+      "title": "decorativos-atlas-v2.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3287567,
+      "sha256": "5fcaf85e0fc274a54f572d089177476677cebbb24b4566e70c57b808c8e196e0",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "7e6edd431301290a6050cfc2",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v3.png",
+      "title": "decorativos-atlas-v3.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2947651,
+      "sha256": "3e9728ddf02ee8d5381fb5c85a0c4aae9915c14448cdabebaf21c4fb0cd54ea3",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "ca108a6d4c4a73ed853c1378",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/trem-atlas-v1.png",
+      "title": "trem-atlas-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 2290002,
+      "sha256": "69a55881243d61153937b7873266865037c1cbd16dcbdc80ab62a5dd4973af34",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
+          "line": 5,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
       "id": "d37f1d60a2fdc2f17d02d147",
       "kind": "file",
       "path": "assets/art/toy-room/chest-brinquedos-v1.png",
@@ -14069,6 +14200,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
@@ -14192,7 +14329,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 67,
+          "line": 74,
           "type": "runtime",
           "alias": null
         },
@@ -14272,7 +14409,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 68,
+          "line": 75,
           "type": "runtime",
           "alias": null
         },
@@ -14315,7 +14452,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 67,
+          "line": 74,
           "type": "runtime",
           "alias": null
         },
@@ -14358,7 +14495,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 68,
+          "line": 75,
           "type": "runtime",
           "alias": null
         },
@@ -14464,6 +14601,12 @@
           "alias": null
         },
         {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 77,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
           "line": 559,
           "type": "runtime",
@@ -14495,8 +14638,8 @@
           "alias": null
         },
         {
-          "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 69,
+          "file": "src/js/bear-chase/props/ChasePropCatalog.js",
+          "line": 22,
           "type": "runtime",
           "alias": null
         },
@@ -14532,8 +14675,8 @@
           "alias": null
         },
         {
-          "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 69,
+          "file": "src/js/bear-chase/props/ChasePropCatalog.js",
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -14563,6 +14706,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 40,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 50,
           "type": "manifesto-runtime",
@@ -14576,7 +14725,13 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 71,
+          "line": 77,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/props/ChasePropCatalog.js",
+          "line": 20,
           "type": "runtime",
           "alias": null
         },
@@ -14695,7 +14850,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 70,
+          "line": 76,
           "type": "runtime",
           "alias": null
         },
@@ -14746,6 +14901,18 @@
           "file": "assets/manifest.json",
           "line": 53,
           "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 76,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/bear-chase/props/ChasePropCatalog.js",
+          "line": 26,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -14881,6 +15048,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 30,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 56,
           "type": "manifesto-runtime",
@@ -14893,8 +15066,8 @@
           "alias": "toy-room-stacking-blocks-v1"
         },
         {
-          "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 70,
+          "file": "src/js/bear-chase/props/ChasePropCatalog.js",
+          "line": 19,
           "type": "runtime",
           "alias": null
         },
@@ -18466,6 +18639,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -18589,6 +18768,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
@@ -18714,6 +18899,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -18837,6 +19028,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
@@ -18962,6 +19159,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -19085,6 +19288,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
@@ -19210,6 +19419,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -19333,6 +19548,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
@@ -19458,6 +19679,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -19581,6 +19808,12 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/toy-room/bear-chase/materials/prompts.json",
+          "line": 20,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/stage1/prompts.json",
           "line": 3,

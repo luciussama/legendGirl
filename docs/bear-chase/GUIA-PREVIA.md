@@ -36,14 +36,18 @@ continuam pendentes de escuta.
 | --- | --- |
 | `ChaseConfig` | Unidades de mundo, segundos e parâmetros da prova |
 | `ChaseSimulation` | Estado versionado, etapas, colisão varrida, padrões e RNG |
+| `ChaseRoute` | Traçado contínuo, referenciais, relevo e pontos de emboscada |
+| `ChaseRoom` | Superfícies contínuas e decoração em posições absolutas |
 | `ChaseInput` | Intenção lateral e instalação/remoção dos listeners |
 | `ChaseAudio` | Arquivos locais, ganho, pausa, passos e posição musical |
-| `ChaseRenderer3D` | Janela reciclada do quarto, câmera e descarte GPU |
+| `ChaseRenderer3D` | Composição do percurso, câmera e descarte GPU |
 | `ChaseGirlModel` | Modelagem volumétrica, paleta e pivôs da menina |
 | `ChaseGirlAnimation` | Apoio dos pés, porte da espada, desvio, cabelo e saia |
 | `ChaseGirlPalette` | Paleta regional rastreável ao sprite de corrida |
 | `ChaseBearModel` | Pelúcia volumétrica e atuação da fuga/retorno |
-| `ChaseToyModels` | Trem volumétrico com recursos compartilhados |
+| `ChaseToyModels` | Adaptador de compatibilidade para o trem do catálogo |
+| `props/ChasePropCatalog` | Instâncias, referências, limites visuais e liberação local |
+| `props/ChasePropResources` | Propriedade e compartilhamento de materiais, texturas e malhas |
 | `ChaseHUD` | Mensagens da prévia, sem mutação da simulação |
 | `BearChasePhase` | Composição e adaptação do dt legado, sem receber a sala inteira |
 
@@ -112,3 +116,62 @@ antebraço em 0,17 e ajusta a mão e o porte da espada. Mangas claras bufantes t
 gomos e punho salmão; a saia tem franzido geométrico e sombras suaves perto da
 cintura. O rabo único ganhou comprimento, projeção lateral, mechas e pontas
 articuladas para permanecer legível na câmera traseira. Paleta regional preservada.
+
+## Catálogo completo e percurso contínuo — 20/10/2026
+
+Abra `http://127.0.0.1:3000/docs/diario-ia/qa/perseguicao-20261020/props.html`.
+O painel compara os quinze objetos com as artes originais sob luz neutra e dentro
+do quarto. Use quatro vistas, giro, escala, abertura do baú e o controle de
+**Distância** para percorrer a sala. Os oito últimos modelos ainda aguardam
+avaliação artística; faces ocultas são interpretações, não novas fontes oficiais.
+
+O catálogo reúne trem, blocos, coelho, ursinho, robô, pato, tambor, caixa de surpresa,
+armário baixo, estante, castelo, baú, poltrona, cavalinho e mesa. Os oito novos itens
+são decoração: os arremessáveis continuam sendo trem, blocos e coelho. As fábricas
+compartilham materiais e geometrias, com apoio inferior; retirar uma instância não
+libera os recursos comuns. `DecorativeProps` constrói as famílias decorativas por
+composição; não conhece colisão, save ou eventos de campanha.
+
+A sala deixou de reciclar doze módulos. `ChaseRoute` define curvas encadeadas,
+subidas e descidas; `ChaseRoom` constrói piso, paredes, rodapés e teto contínuos,
+com UVs longitudinais. Móveis e janelas têm distâncias fixas e ficam junto às
+paredes. Só a visibilidade distante é reduzida, além do alcance da neblina;
+nenhum móvel troca de tipo ou posição quando a menina avança. O baú final fica
+em uma área lateral livre. Modelos, brinquedos lançados e câmera seguem o mesmo
+referencial de percurso, preservando a leitura entre desenho e colisão.
+
+Esta revisão inclui mudança de dificuldade solicitada pelo usuário. A simulação
+aplica deriva moderada para fora das curvas, reduzida no FÁCIL, e variação limitada
+de velocidade nas rampas. Nove pontos de lançamento favorecem a faixa externa da
+curva, deixando uma faixa interna livre. Cada emboscada é lançada 20 metros antes
+do alvo; outros padrões são espaçados para evitar sobreposição. A largura lógica,
+a colisão varrida, a duração de voo e os três tipos de obstáculo permanecem.
+Snapshots continuam usando distância longitudinal e posição lateral; não salvam
+coordenadas Three.js. Saves existentes continuam válidos, mas o percurso restaurado
+passa a seguir o novo traçado e os novos padrões intencionalmente.
+
+Quatro atlas pictóricos existentes são compartilhados por regiões. A poltrona
+usa também uma região limpa de tecido do seu PNG original, por UV, sem alterar a
+fonte. Não foram geradas novas imagens nem usadas APIs pagas. Iluminação continua
+adiada. A aprovação dos modelos anteriores não implica aprovação dos oito novos.
+
+Para servir somente no computador local:
+
+```sh
+node --input-type=module -e 'import express from "express"; const app=express(); app.use(express.static(process.cwd())); app.listen(3000,"127.0.0.1");'
+```
+
+Validação vigente:
+
+- `npm run journal:qa -- test:bear-chase:route`: quinze modelos, quatro vistas dos
+  novos objetos, sala fixa, orçamento, visibilidade nas curvas, três formatos,
+  36 enquadramentos finais e percursos NORMAL/FÁCIL com decisões a cada 300 ms.
+- `npm run test:bear-chase:browser`: teclado/toque, áudio, pausa, save, conclusão
+  controlada e descarte no jogo real.
+- `npm test`: domínio e regressões das fases existentes.
+
+Os aliases históricos de catálogo/móveis preservam evidências das versões retas
+e suas antigas expectativas de coordenadas. A validação do novo traçado usa
+`test:bear-chase:route`. Resultados de máquina pertencem ao diário de IA. Emulação
+não homologa dificuldade humana, Safari ou aparelhos físicos. Integração da campanha,
+maior duração definitiva e mixagem final permanecem trabalhos separados.

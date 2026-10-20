@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T145529-ca02cb533b13",
+  "date": "2026-10-20T14:55:29.834958+00:00",
+  "title": "Aplicação pictórica aprovada: QA, limites e metadados de evidência",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/texturas-20261020/capturas.json",
+      "sourceId": "8bb08dd084a0087cc0c20c491597ad1908eae50bc05f4ad919ef06d133ca82b0",
+      "sha256": "4863de2c031df3162cb75467145c2846f3ea3a2db4d7cb6daeb94ff51dcdf383",
+      "bytes": 3838,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/texturas-20261020/materiais-browser.js",
+      "sourceId": "ce2a34d8929a1708b40e486d0175ab0865367502b58b660432c6a895d2c9f0ed",
+      "sha256": "be4d66f957aa800f99c7b44bb3e94c9f65d081ba959e4f2d7dd74007661aa217",
+      "bytes": 15084,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-aplicacao-texturas-pictoricas.md",
+      "sourceId": "43b663c64fcecfe14d13319a0b85a32ef90a92d41b61f9cb88732082477d7f42",
+      "sha256": "ecedc372850619c238c5c2884c962e5b025e1f4180c15467de45b77f53f75fa5",
+      "bytes": 5101,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pictorial": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js docs/diario-ia/qa/texturas-20261020/materiais-browser.js"
+  }
+}

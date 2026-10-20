@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "539b8850b769426dacdb06ee8c00b9de",
+  "date": "2026-10-20T13:13:27.369170+00:00",
+  "title": "QA temporário: test:bear-chase:catalog:models",
+  "files": [
+    {
+      "path": "qa-execucoes/539b8850b769426dacdb06ee8c00b9de.log",
+      "sourceId": "2b8f8b374ac97423a5420f2ec56fd0997536286cfc369cf6ebf2be0c2af8449d",
+      "sha256": "84b7e4ebc6032827329e17d238e761835006f8cd1038f18ae69a8c1c6b0bcbae",
+      "bytes": 3836,
+      "metadataOnly": false
+    }
+  ]
+}
