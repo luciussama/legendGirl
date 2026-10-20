@@ -554,7 +554,30 @@ sintaxe e mapa aprovados: 422 arquivos, 99 recortes, 29 assinaturas. Suíte gera
 não repetida nesta revisão exclusivamente artística. Aguarda avaliação humana.
 
 Durante a tarefa, usuário criou o commit local `77adff8d`; esta IA não o criou.
-Foi constatada divergência de um commit local e um remoto (`04202a8b`). Usuário
-solicitou explicitamente fazer o merge após concluir a revisão; tratar em sessão
-seguinte, sem confundir autorização de merge com push. Fontes/relatório da revisão
-e metadados de capturas ficam no diário, antes de sincronizar Git.
+Foi constatada divergência de um commit local e um remoto (`04202a8b`). A sessão
+`20261020T172304-8b9e6b05d2e4` concluiu posteriormente a integração autorizada;
+ver registro abaixo. Isso não autorizou push.
+
+## Integração do histórico remoto da FEAT-bear-chase — 20/10/2026
+
+Após o usuário encontrar a mensagem de branches divergentes no `git pull`, a sessão
+`20261020T172304-8b9e6b05d2e4` verificou o ancestral comum e comparou as duas pontas.
+O commit remoto `04202a8b` não continha arquivos exclusivos em relação à árvore
+local e substituía versões mais recentes: removia o percurso com curvas, a sala
+contínua e os modelos decorativos revisados, além de reverter o catálogo e os
+materiais. As alterações remotas eram snapshots anteriores da mesma linha de
+trabalho; não foram reaplicadas sobre as versões locais mais recentes.
+
+As evidências e o encerramento da revisão artística foram consolidados no commit
+local `a1a4940c`. O histórico remoto foi então conectado pelo merge commit
+`f9e7c4e3`, usando a estratégia `ours`, preservando integralmente a árvore local
+validada e ambos os pais. Não foi feito push. A branch local está à frente de
+`origin/FEAT-bear-chase` em três commits, sem commits remotos pendentes.
+
+Validações executadas após o merge: `test:bear-chase:route`,
+`test:bear-chase:props:fidelity`, `npm test`, `npm run build`,
+`npm run check-assets`, `npm run lint` e `git diff --check`, todas aprovadas.
+O teste de fidelidade verifica os oito props, UVs e quatro vistas; seus indicadores
+geométricos não substituem avaliação artística. A aprovação humana da direção
+pictórica permanece distinta da aprovação individual dos modelos; a revisão dos
+oito props aguarda avaliação humana. Não houve alteração de runtime pelo merge.
