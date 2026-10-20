@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "0028207a63e946c94bc493b4000239a22dc13794303afc0e9deaca10208185f7",
+  "path": "qa-execucoes/c79d5967768042839728c5a336225ca9.log",
+  "sha256": "1474f28d2a6e3e4d57878e0f9a5771f948072ba4208fee6606ab1785df0f0a35",
+  "capturedAt": "2026-10-20T18:57:27.965843+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:bear:browser",
+    "exitCode": 0,
+    "package": "20261020T184712-2e5d9cd1852d"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:bear:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/urso-20261020/browser.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\nRIG {\"contactError\":0.014845920605193463,\"torso\":0.04997472263384206,\"head\":0.04997986861547876,\"elbow\":0.35999090231259434,\"ears\":0.1199684007845669,\"meshes\":16,\"texture\":true,\"continuous\":true,\"deterministic\":true,\"state\":true,\"resources\":222} CAPTURAS [{\"file\":\"/tmp/urso-neutro-0.00.png\",\"bytes\":165136,\"sha256\":\"01dd86d421e32354ef18dbf7bfb50cb0c20ae93f9a3525221fddc2b05bad5662\"},{\"file\":\"/tmp/urso-neutro-1.57.png\",\"bytes\":151754,\"sha256\":\"e1169ed4d7bc4e7f4690f2f014260cb0bf8443f2cb946a8a3e2cca75d138af7e\"},{\"file\":\"/tmp/urso-neutro-3.14.png\",\"bytes\":163260,\"sha256\":\"4f56ed746b6ad4a7268e523e4fb9450152fbb2cf70ad0be30e0276bff3641cdf\"},{\"file\":\"/tmp/urso-quarto-82.png\",\"bytes\":775824,\"sha256\":\"33013e05d586c2351d4619047cd6dc65a08d91195dfad984c8a14a93a37a76be\"},{\"file\":\"/tmp/urso-quarto-208.png\",\"bytes\":815814,\"sha256\":\"373880ad542fa40408a6f4f3591fb69a15cd2b188cb776f04183da592f434d6e\"},{\"file\":\"/tmp/urso-quarto-338.png\",\"bytes\":803944,\"sha256\":\"a99a973d9fb27c50cad7815b130f06077c26fc8ecf4cd8d96ce8b07608982640\"}]\n"
+}

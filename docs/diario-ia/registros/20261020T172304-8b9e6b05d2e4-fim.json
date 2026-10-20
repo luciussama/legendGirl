@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T172304-8b9e6b05d2e4-fim",
+  "sessionId": "20261020T172304-8b9e6b05d2e4",
+  "type": "fim",
+  "date": "2026-10-20T17:27:33.019336+00:00",
+  "title": "Retomar integração divergente da branch FEAT-bear-chase",
+  "actor": "Copilot",
+  "summary": "Branch divergente analisada e integrada preservando o trabalho local mais recente, com evidências commitadas, merge e validações padrão aprovadas. Nenhum push.",
+  "checks": [
+    "test:bear-chase:route: aprovado",
+    "test:bear-chase:props:fidelity: aprovado para métricas técnicas; não substitui aprovação artística",
+    "npm test: aprovado",
+    "npm run build: aprovado",
+    "npm run check-assets: aprovado (66 recursos)",
+    "npm run lint: aprovado",
+    "git diff --check: aprovado"
+  ],
+  "pending": [
+    "A branch local está à frente do remoto em três commits; push não executado."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261020-fidelidade-oito-props.md"
+  ]
+}

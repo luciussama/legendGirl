@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a774fd45fdaf41a583bb9e1bca775a0d",
+  "date": "2026-10-20T18:28:53.703113+00:00",
+  "title": "QA temporário: test:bear-chase:shadows:gameplay:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/a774fd45fdaf41a583bb9e1bca775a0d.log",
+      "sourceId": "401a703e0da750a8e3793db7e1f3ea5de959359ec9295c8f07c3f2b196922ddf",
+      "sha256": "aa01c0be3c8a59a9ef3b559679ccb253bdbc12557f7a3b2a755e4209e8aa802b",
+      "bytes": 3091,
+      "metadataOnly": false
+    }
+  ]
+}

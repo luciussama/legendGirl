@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "bc35f04af47444729b86ed23cc6cb288",
+  "type": "qa",
+  "date": "2026-10-20T18:27:16.807232+00:00",
+  "title": "QA temporário: test:bear-chase:shadows:gameplay:browser",
+  "exitCode": 1,
+  "sourceId": "da5f87a583aeef747c2f6ce519162c6e2b2b251fc108f540f32a7bb952dce175",
+  "package": "20261020T182604-1e9f328ff491"
+}

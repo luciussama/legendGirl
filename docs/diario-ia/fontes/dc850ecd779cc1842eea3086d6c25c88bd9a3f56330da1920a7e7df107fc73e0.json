@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "dc850ecd779cc1842eea3086d6c25c88bd9a3f56330da1920a7e7df107fc73e0",
+  "path": "assets/art/toy-room/bear-chase/materials/README.md",
+  "sha256": "d369d95563b31b843138fec40ca43b277267a807fd0e482564b653b50ea6909d",
+  "capturedAt": "2026-10-20T14:55:29.892970+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "# Materiais pictóricos da perseguição\n\nDireção aprovada pelo usuário em 20/10/2026, a partir do estudo do armário em\n`docs/diario-ia/arte/20261020-armario-pictorico-v1.png`. Os quatro atlas são artes\nconsumidas pelo jogo: conservar os PNGs. As ilustrações originais não foram\nsobrescritas. Geração pela ferramenta integrada image_gen, uma chamada por objeto;\nreferências, procedência e prompts integrais em `prompts.json`.\n\nCada PNG tem 1254×1254 pixels, quatro quadrantes sem rótulos e materiais pintados.\nAs regiões são numeradas da esquerda para a direita, de cima para baixo:\n\n| Atlas | 0 | 1 | 2 | 3 |\n| --- | --- | --- | --- | --- |\n| armario | Painel de carvalho | Montante vertical | Tampo | Latão pintado |\n| trem | Azul | Vermelho tijolo | Verde oliva | Madeira das rodas |\n| blocos | Vermelho | Amarelo ouro | Verde | Azul |\n| coelho | Pelúcia rosa pêssego | Creme | Interior rosa antigo | Linha castanha |\n\n`PictorialMaterialAssets.js` define URLs; `ChasePropResources.pictorialMaterial`\ncompartilha uma textura por objeto e registra o quadrante por material. `bake`\nremapeia UVs normalizadas para o quadrante com margem interna de oito pixels.\nPainéis, montantes e tampo do armário têm regiões próprias. Detalhes de olhos/nariz\ndo coelho conservam seus pequenos materiais. A caldeira orienta o veio ao longo\ndo eixo; os UVs do telhado dos blocos são normalizados antes do atlas.\n\nAs geometrias, escala lógica, física, formas e luzes da cena não foram alterados\npor esses mapas. Eles são cor pictórica e não mapas de normal/relevo. O acabamento\nnão é uma fotografia nem uma prancha colada sobre o objeto; todas as vistas usam\nsuperfícies das malhas. Não repetir a antiga neutralização de cor/contraste nem\nrecortar esses atlas em amostras de poucos pixels para cada face.\n\n`manifest.json` identifica as artes. Métricas/testes/capturas e aprovações da\nexecução estão exclusivamente no diário de IA; aprovação da direção não equivale\na aprovação humana individual de toda nova textura/modelo.\n"
+}

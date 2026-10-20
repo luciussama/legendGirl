@@ -1,0 +1,41 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T144330-e2641eed729f-fim",
+  "sessionId": "20261020T144330-e2641eed729f",
+  "type": "fim",
+  "date": "2026-10-20T14:55:36.332644+00:00",
+  "title": "Aplicar acabamento pictórico aprovado aos quatro props 3D atuais",
+  "actor": "Codex",
+  "summary": "Direção pictórica do armário aprovada pelo usuário e registrada como padrão para os demais props. Gerados quatro atlas próprios por ferramenta integrada e aplicados de fato aos quatro modelos 3D atuais: armário, trem, blocos e coelho. UVs por região, compartilhamento de textura e carregamento tardio. Cena, fontes e personagens preservados; E5/E6 restantes continuam no roteiro.",
+  "checks": [
+    "npm test aprovado, incluindo suíte geral e regressões de defesa, saltos e perseguição.",
+    "QA temporário catalog:models aprovado: quatro vistas por objeto, compartilhamento, apoio, lançamento, viewports, 60 trocas e descarte idempotente.",
+    "QA temporário pictorial aprovado: quatro atlas efetivos, UVs contidas, uma textura por objeto, orçamento RGBA8+mipmaps 33.536.288 bytes, recursos estáveis, contexto WebGL, inputs, áudio, save e percurso completo.",
+    "Cena própria 121 recursos e catálogo 46; cenário comparável 298 chamadas. Três brinquedos simultâneos 304–310 chamadas nos três formatos. Sem elevar limites.",
+    "check-assets, build, lint, sintaxe, docs:sprites (420 arquivos), git diff --check aprovados. Bitmaps de arte preservados, capturas regeneráveis identificadas e descartadas."
+  ],
+  "pending": [
+    "Avaliação humana da execução real das quatro texturas; direção aprovada não homologa automaticamente cada resultado.",
+    "E5/E6 restantes: modelos ainda não convertidos devem seguir este padrão. Iluminação continua adiada. Nenhuma substituição global de sprites/personagens 2D.",
+    "Hardware físico/Safari e VRAM/FPS reais não medidos; sem commit, push ou publicação."
+  ],
+  "files": [
+    "assets/art/toy-room/bear-chase/materials",
+    "src/js/bear-chase/props/PictorialMaterialAssets.js",
+    "src/js/bear-chase/props/ChasePropResources.js",
+    "src/js/bear-chase/props/ChasePropCatalog.js",
+    "src/js/bear-chase/props/OakCabinetProp.js",
+    "src/js/bear-chase/props/TrainProp.js",
+    "src/js/bear-chase/props/BlocksProp.js",
+    "src/js/bear-chase/props/BunnyProp.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "docs/diario-ia/qa/perseguicao-20261020/props.js",
+    "docs/diario-ia/qa/perseguicao-20261020/props.html",
+    "docs/diario-ia/qa/texturas-20261020",
+    "docs/diario-ia/relatorios/20261020-aplicacao-texturas-pictoricas.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/sprites/inventario.json",
+    "docs/sprites/MAPA-SPRITES.md"
+  ]
+}

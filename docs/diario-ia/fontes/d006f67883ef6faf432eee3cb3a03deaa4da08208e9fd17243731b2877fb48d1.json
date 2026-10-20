@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d006f67883ef6faf432eee3cb3a03deaa4da08208e9fd17243731b2877fb48d1",
+  "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v3.prompt.json",
+  "sha256": "1d383666d9caa687219a3b9fa0df34c8212c8741b150c2070421cd520379551e",
+  "capturedAt": "2026-10-20T17:07:15.685623+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"versao\": 3,\n  \"ferramenta\": \"image_gen integrada\",\n  \"origem\": \"decorativos-atlas-v2.png\",\n  \"prompt\": \"Use case: precise-object-edit. Edit target Image 1 is a 4x4 production material atlas. Keep its exact square dimensions, exact 4x4 boundaries, NO borders, labels, objects, icons or perspective. Change ONLY four cells: zero-based cell8 (row3 col1), cell9 (row3 col2), cell11 (row3 col4), cell12 (row4 col1). All other twelve cells must stay visually unchanged. Supporting Image2 is original armchair upholstery reference, Image3 contains original short brown teddy fur. Cell8: replace oversized shaggy fur with VERY SHORT chestnut teddy velour, fine dense short fibers, no large tufts or locks, subtle painterly speckled worn plush like original teddy. Cell9: short smooth warm caramel tan paw plush, tiny fine fibers, not white, not hairy. Cell11: fine coral pink jester cloth, threads are extremely small, no big knitted loops, no visible checkers. Cell12: fine scarlet upholstery like original armchair, at least 5 times finer than current huge weave, threads barely resolved, subtle worn red brush shading, no large basket weave, no plaid/checker pattern. Keep game painterly warm illustrated style, gentle variation and fine hand-painted detail. No cell should contain actual object silhouette or image of a chair/bear. Preserve all sixteen positions and other material colors. Full atlas edge-to-edge.\",\n  \"observacao\": \"Refinamento da escala dos pelos e das tramas; mesmas dezesseis regiões e dimensões.\"\n}\n"
+}

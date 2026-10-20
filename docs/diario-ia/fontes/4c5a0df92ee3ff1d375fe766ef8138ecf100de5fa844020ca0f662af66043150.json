@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4c5a0df92ee3ff1d375fe766ef8138ecf100de5fa844020ca0f662af66043150",
+  "path": "qa-execucoes/ba5c68214d554069a6d18549b202de04/docs/qa/toy-room-arena/desktop-realidade.png",
+  "sha256": "9ba73cd48332f8c81d8b9079ce3d867bcaa8d031385ab76fbe63ada2e51a343b",
+  "capturedAt": "2026-10-20T18:56:50.853301+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-realidade.png\", \"sha256\": \"31820a2170ae7b51696fa594ac36415c521f94302d1c0aaa96eab444371213c4\", \"bytes\": 365157, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "971619437a58e94f2ebb07fa0f6bad4ec3bb7cdda3f2f37c8174ddf935448bbe",
+  "path": "qa-execucoes/b7e4420e10a94f83802aeced8cf4fd7a.log",
+  "sha256": "24b577f02803e193a17cd7168cb0b1484bcd41c209f1fe3a708b5071eddf6a42",
+  "capturedAt": "2026-10-19T18:32:06.880207+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:browser",
+    "exitCode": 0,
+    "package": "20261019T181926-1b672f7af800"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:browser\n> node docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js\n\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-1280.png\",\"bytes\":768849,\"sha256\":\"75e463cfa59981edca45ce09d7fb3f04dd1df4fc166565caccb06b125094d271\"}\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-390.png\",\"bytes\":397547,\"sha256\":\"a1b1c8e6119dcc3276c100763cd49713d843ec89c48d93f3ae13699666db5ff4\"}\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-844.png\",\"bytes\":428213,\"sha256\":\"5a65bed09ae502e6ebb2c52bdc2c14745d11be75a0e37f5ed96cfcdd3f8e8c0e\"}\nAPROVADO: prévia no jogo real, WebGL 2, três formatos, pause/save, teclado/toque, 12 passos, mudo, percurso simulado completo, save de campanha preservado e descarte. {\"results\":[{\"width\":1280,\"height\":800,\"calls\":289,\"textures\":12,\"geometries\":136,\"webgl2\":true,\"drawnPixels\":31910,\"restored\":true,\"frozen\":true},{\"width\":390,\"height\":844,\"calls\":287,\"textures\":12,\"geometries\":138,\"webgl2\":true,\"drawnPixels\":10194,\"restored\":true,\"frozen\":true},{\"width\":844,\"height\":390,\"calls\":289,\"textures\":12,\"geometries\":138,\"webgl2\":true,\"drawnPixels\":10268,\"restored\":true,\"frozen\":true}],\"audio\":{\"buffers\":12,\"volume\":0,\"paused\":true},\"full\":{\"stage\":\"COMPLETE\",\"hits\":0,\"chest\":true,\"maximum\":255,\"remainingToys\":0},\"disposed\":{\"disposed\":true,\"resources\":0,\"pointers\":0}}\n"
+}

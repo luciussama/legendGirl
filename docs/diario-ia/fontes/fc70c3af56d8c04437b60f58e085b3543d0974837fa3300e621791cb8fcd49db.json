@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fc70c3af56d8c04437b60f58e085b3543d0974837fa3300e621791cb8fcd49db",
+  "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v1.prompt.json",
+  "sha256": "4d1125b593439e24e4ed40a8a2b45637615e6eca2b7cbffba5b715a12735716e",
+  "capturedAt": "2026-10-20T18:40:52.828329+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"referencias\": [\n    \"assets/art/toy-room/battle/bear/idle/01.png\",\n    \"assets/art/toy-room/battle/bear/walk/03.png\"\n  ],\n  \"prompt\": \"Criar UMA textura atlas quadrada de materiais para reconstruir em 3D o URSO EXATO destas referências do jogo. As imagens são referências de cor, pelo e estilo, NÃO colocar a imagem do urso na textura. Entrega atlas 2x2, quatro quadrantes iguais preenchendo toda a imagem, sem margem, texto, rótulo, grade ou objeto. Superior esquerdo: pelúcia curta ocre mel/caramelo fiel ao pelo do urso, pinceladas minúsculas finas e irregulares, variação suave de pigmento e fibras curtas douradas e castanhas, sem sombras de volume embutidas, sem manchas grandes ou tufos gigantes. Superior direito: tecido de pelúcia creme dourado claro fiel ao focinho/palmas da referência, fibra macia muito curta e gradação pictórica sutil. Inferior esquerdo: tecido vermelho alaranjado queimado do LAÇO original, trama minúscula de tecido, variação pictórica suave, sem desenhar o laço ou dobras grandes. Inferior direito: pelúcia castanha profunda quente para interior das orelhas e costuras, mesma escala de fibra. Visual pintado à mão de RPG ilustrado, detalhes ricos de material mas nunca textura fotográfica. Amostras uniformes sem iluminação direcional ou bordas escuras, cada quadrante poderá ser mapeado isolado numa esfera. A cor e a assinatura artesanal da fonte são essenciais. Não inventar azul, roxo, rosa, branco puro. Somente quatro materiais.\"\n}\n"
+}

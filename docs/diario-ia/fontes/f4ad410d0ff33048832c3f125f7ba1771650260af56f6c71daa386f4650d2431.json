@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "f4ad410d0ff33048832c3f125f7ba1771650260af56f6c71daa386f4650d2431",
+  "path": "assets/art/toy-room/bear-chase/materials/manifest.json",
+  "sha256": "64d398ab3414884740dccc530154f29533a2f0b2f00b50a6d0f1f830e7c833cd",
+  "capturedAt": "2026-10-20T14:55:29.893611+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"versao\": 1,\n  \"direcaoAprovada\": \"docs/diario-ia/arte/20261020-armario-pictorico-v1.png\",\n  \"artefatos\": [\n    {\n      \"arquivo\": \"armario-atlas-v1.png\",\n      \"dimensoes\": [\n        1254,\n        1254\n      ],\n      \"bytes\": 2284303,\n      \"sha256\": \"de774227f449231810e029d7e08f9255fe10bbca70bfc45e9d2c97eed9ed2cb6\",\n      \"quadrantes\": 4\n    },\n    {\n      \"arquivo\": \"blocos-atlas-v1.png\",\n      \"dimensoes\": [\n        1254,\n        1254\n      ],\n      \"bytes\": 2105484,\n      \"sha256\": \"87b81f2593984a0557b8c90fa15c8deecfea3b5de4daa621f3bf75dd2b21511f\",\n      \"quadrantes\": 4\n    },\n    {\n      \"arquivo\": \"coelho-atlas-v1.png\",\n      \"dimensoes\": [\n        1254,\n        1254\n      ],\n      \"bytes\": 2683420,\n      \"sha256\": \"eca606cf96cd994e8eff6b9b484a5e6b24354ec1075b6b7b888286e445f7ab73\",\n      \"quadrantes\": 4\n    },\n    {\n      \"arquivo\": \"trem-atlas-v1.png\",\n      \"dimensoes\": [\n        1254,\n        1254\n      ],\n      \"bytes\": 2290002,\n      \"sha256\": \"69a55881243d61153937b7873266865037c1cbd16dcbdc80ab62a5dd4973af34\",\n      \"quadrantes\": 4\n    }\n  ]\n}\n"
+}

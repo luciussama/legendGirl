@@ -7,7 +7,7 @@
     "test:mobile-ui": "python3 scripts/run-qa-from-journal.py test:mobile-ui",
     "test:difficulty": "python3 scripts/run-qa-from-journal.py test:difficulty",
     "verify:dark-room": "python3 scripts/run-qa-from-journal.py verify:dark-room",
-    "test": "python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina",
+    "test": "python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase",
     "test:pages": "python3 scripts/run-qa-from-journal.py test:pages",
     "test:toy-room:story": "python3 scripts/run-qa-from-journal.py test:toy-room:story",
     "test:toy-room:visual": "python3 scripts/run-qa-from-journal.py test:toy-room:visual",
@@ -58,11 +58,14 @@
     "test:arena:defesa": "python3 scripts/run-qa-from-journal.py test:arena:defesa",
     "test:arena:defesa:browser": "python3 scripts/run-qa-from-journal.py test:arena:defesa:browser",
     "test:saltos:progressao": "python3 scripts/run-qa-from-journal.py test:saltos:progressao",
-    "test:saltos:bailarina": "python3 scripts/run-qa-from-journal.py test:saltos:bailarina"
+    "test:saltos:bailarina": "python3 scripts/run-qa-from-journal.py test:saltos:bailarina",
+    "test:bear-chase": "python3 scripts/run-qa-from-journal.py test:bear-chase",
+    "test:bear-chase:browser": "python3 scripts/run-qa-from-journal.py test:bear-chase:browser"
   },
   "dependencies": {
     "express": "^4.21.2",
     "jpeg-js": "^0.4.4",
-    "pngjs": "^7.0.0"
+    "pngjs": "^7.0.0",
+    "three": "0.186.1"
   }
 }

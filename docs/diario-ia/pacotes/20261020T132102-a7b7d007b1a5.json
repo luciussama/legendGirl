@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T132102-a7b7d007b1a5",
+  "date": "2026-10-20T13:21:02.815287+00:00",
+  "title": "E3/E4: entrega funcional e crítica de acabamento registrada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/capturas.json",
+      "sourceId": "b1461eec75d6076020d9b2c0f210697114e86c7842b8297644113dbf068e1d8e",
+      "sha256": "88fc752c10d01d8cf183900197307222f01be5a3562650154c643646a3a926fa",
+      "bytes": 3820,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/integridade.json",
+      "sourceId": "b3ebb7e890f6828a9154045bb3e462ad493f503bc5da7e655a06a3472c07f03b",
+      "sha256": "4791f3bae2c3242e582a6c279495008de215c3f03b66acea84594fc0d37879ed",
+      "bytes": 1237,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/modelos-browser.js",
+      "sourceId": "e241cfda616d53b474d96475a7c0f04b99410fb70e970d3516232509d5c7a939",
+      "sha256": "bd58e8f3bab037ff4a23ff16e7cce3244a3aee3ad5be58839ce95d5c8bd35124",
+      "bytes": 6655,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js",
+      "sourceId": "3e414d6a812d03bbbe04082ece06367c33a74343cbcd68264127f43908f5c841",
+      "sha256": "a6f9e737487a1464c4dc0ec09cbe353d5cd16f9a9eaef9aef8e618a2bd5eee05",
+      "bytes": 1237,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/jogo-browser.js",
+      "sourceId": "6cb84259651cb0942fce00e1d22a18c0e21135e01210dc8d7726a3421b4e94d5",
+      "sha256": "7d91704b860850e0e8e784490aee8d3ec54c68fa4360e5c863c9305c1e5fd71a",
+      "bytes": 13578,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-catalogo-arremessaveis.md",
+      "sourceId": "374e687182b08107f363b32307c6e78dab8403b9952da78aa3a19200c2aaa717",
+      "sha256": "a9bb22767be4b362a78769d79db026b1f211bd8d6217e5e5b0cb2e64d8ce36ab",
+      "bytes": 6720,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:catalog": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js",
+    "test:bear-chase:catalog:models": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js docs/diario-ia/qa/catalogo-20261020/modelos-browser.js"
+  }
+}

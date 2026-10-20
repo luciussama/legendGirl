@@ -27,8 +27,10 @@ import { ToyRoomStory } from './ToyRoomStory.js';
 import { createToyRoomStoryContext } from './ToyRoomStoryContext.js';
 import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
 import { ToyRoomBattle } from './ToyRoomBattle.js';
+import { BearChasePhase } from '../bear-chase/BearChasePhase.js';
 
 export class ToyRoomPhase {
+  /** Compõe os sistemas da sala e mantém a prévia 3D inativa até seleção explícita. */
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
     this.canvas = canvas;
     this.gameDifficulty = normalizeDifficulty(options.gameDifficulty);
@@ -105,6 +107,7 @@ export class ToyRoomPhase {
     this.story = new ToyRoomStory(createToyRoomStoryContext(this));
     this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
     this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
+    this.chase = null;
   }
 
   get inputController() {
@@ -149,7 +152,20 @@ export class ToyRoomPhase {
     return this._interaction;
   }
 
-  triggerAction() { return this.interaction.triggerAction(); }
+  /** Encaminha ações da sala; a prévia 3D usa somente seus controles laterais. */
+  triggerAction() { if (!this.chase?.active) return this.interaction.triggerAction(); }
+
+  /** Abre a prova isolada sem migrar saves ou antecipar a nova transição de campanha. */
+  startChasePreview(saved = null) {
+    this.chase?.destroy();
+    this.clearInput(); this.inputController.removeListeners();
+    this.arena?.audioProfile.leave({ resume: false });
+    this.audio?.stopAllAudio?.(); this.audio?.stopToyRoomMusic?.();
+    this.chase = new BearChasePhase({ canvas: this.canvas, audio: this.audio,
+      enabled: this.isInputEnabled, difficulty: this.gameDifficulty });
+    this.gameplayState = 'BEAR_CHASE_PREVIEW';
+    return this.chase.start(saved);
+  }
 
   resolveCollisions(px, py, r) {
     return resolveToyRoomCollisions({
@@ -157,8 +173,10 @@ export class ToyRoomPhase {
     }, px, py, r);
   }
 
+  /** Atualiza exclusivamente o modo ativo, sem compartilhar física entre 2D e 3D. */
   update(dt = 1.0) {
     if (!this.isInputEnabled()) { this.clearInput(); return; }
+    if (this.chase?.active) { this.chase.update(dt); return; }
     this.pollGamepad();
     if (this.arena?.active) { this.arena.update(dt); return; }
     if (!this.battle.state && this.story.swordEquipped && !this.arena?.state.completed) {
@@ -227,7 +245,9 @@ export class ToyRoomPhase {
       mobilePresentation: this.mobilePresentation });
   }
 
+  /** Desenha o modo ativo; o renderer 3D compõe sua saída no canvas já existente. */
   render(options = {}) {
+    if (this.chase?.active && !options.arenaBackdrop) { this.chase.render(); return; }
     if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
     if (this.battle.state && !options.arenaBackdrop) { this.battle.render(); return; }
     return renderToyRoomScene(createToyRoomSceneFrame(this), options);
@@ -244,7 +264,9 @@ export class ToyRoomPhase {
 
   restore(saved, options) { return this.persistence.restore(saved, options); }
 
+  /** Encerra todos os sistemas ativos, incluindo listeners e recursos da prévia. */
   destroy() {
+    this.chase?.destroy(); this.chase = null;
     this.arena?.audioProfile.leave({ resume: false });
     this.clearInput();
     if (this.audio && this.audio.stopToyRoomMusic) {

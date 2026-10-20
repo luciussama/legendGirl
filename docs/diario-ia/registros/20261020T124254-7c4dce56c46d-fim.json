@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T124254-7c4dce56c46d-fim",
+  "sessionId": "20261020T124254-7c4dce56c46d",
+  "type": "fim",
+  "date": "2026-10-20T12:46:59.897101+00:00",
+  "title": "Planejar execução dos novos documentos de brinquedos e cena 3D",
+  "actor": "Codex",
+  "summary": "Lidos documentos externos de props/cena 3D, análise de Chase.mp3, passos e plano maior; confrontados com código e referências. Criado plano operacional em oito etapas, começando por baseline e pilotos trem/armário, com revisão humana, catálogo compartilhado, orçamento, regressões e limites de escopo. Nenhuma implementação iniciada.",
+  "checks": [
+    "Leitura de registros recentes completos, roteiro, análises, consumidores, manifesto, prompts e referências visuais. Arquivos principais conferidos e git diff --check aprovado.",
+    "Testes de runtime não executados: sessão exclusivamente documental, sem alterações de código, modelos, sprites ou áudio."
+  ],
+  "pending": [
+    "Execução futura de E0/E1: baseline e prova visual de trem e armário; revisão dos pilotos antes da conversão em lote. Áudio musical, expansão e integração de campanha registrados como trabalhos independentes."
+  ],
+  "files": [
+    "docs/diario-ia/planos/20261020-execucao-props-cena-3d.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T171638-f1d40839b8cd",
+  "date": "2026-10-20T17:16:38.052950+00:00",
+  "title": "Fidelidade dos oito props: entrega, fontes e capturas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/fontes.json",
+      "sourceId": "d9ded1787f04c9b3ce8416117f351d11580c2f28274f9ec1af0724a0a67d6664",
+      "sha256": "315022edc3eeabc6b54b50d4e839efb339197fd1df251bc62b17f9c43a5f9c26",
+      "bytes": 1921,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/capturas-finais.json",
+      "sourceId": "8fd5f028c05d7274cd700079a30eb5002dc4bb2ecb2b55f78f1eb4be9ebdb989",
+      "sha256": "9519e6ebff6374e9b0500c89143074103b19505fec7c0804972586b92e704cc6",
+      "bytes": 16602,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-fidelidade-oito-props.md",
+      "sourceId": "5526db6b2126dae62e8a2e757f29c499fcc270803e4f04778584c66060ae1fe2",
+      "sha256": "79bc5a5af858f3f989acdfd9c821b8a377cb463797703b58431cb4ab8186f239",
+      "bytes": 5380,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

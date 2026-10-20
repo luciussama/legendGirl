@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T180920-9abdc512abd2",
+  "sessionId": "20261019T180920-9abdc512abd2",
+  "type": "inicio",
+  "date": "2026-10-19T18:09:20.836431+00:00",
+  "title": "Implementar prova integrada da perseguição 3D com transição e áudio local",
+  "actor": "Codex",
+  "branch": "FEAT-bear-chase",
+  "head": "59b8015067ef36f66ac4138e5be8f081a8fbf649",
+  "workingTree": []
+}

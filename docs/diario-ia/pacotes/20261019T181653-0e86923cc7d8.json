@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T181653-0e86923cc7d8",
+  "date": "2026-10-19T18:16:53.494811+00:00",
+  "title": "Regressão da prova de perseguição: simulação desacoplada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/dominio.js",
+      "sourceId": "80700ede70535d2b0e7799b94e4fae7df3d7099a0864d7bcfcdb2e48262faa57",
+      "sha256": "520116e114ba54c332771d6a192fc3f94f701d00175f700b0342060b7923c645",
+      "bytes": 3986,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase": "node docs/diario-ia/qa/perseguicao-20261019/dominio.js"
+  }
+}

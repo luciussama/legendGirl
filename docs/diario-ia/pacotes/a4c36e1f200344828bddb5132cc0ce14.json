@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a4c36e1f200344828bddb5132cc0ce14",
+  "date": "2026-10-20T13:11:54.185864+00:00",
+  "title": "QA temporário: test:bear-chase",
+  "files": [
+    {
+      "path": "qa-execucoes/a4c36e1f200344828bddb5132cc0ce14.log",
+      "sourceId": "10bbbb6a5d5e5bbf85bef2ee21c9cb28abe1ab6ef054830fb65adae473ebe506",
+      "sha256": "b333d46d84c50552b30533a3d5e3b1c2b40b5297430be22473a2305799a2f6d7",
+      "bytes": 904,
+      "metadataOnly": false
+    }
+  ]
+}

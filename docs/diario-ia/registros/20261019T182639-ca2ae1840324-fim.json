@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T182639-ca2ae1840324-fim",
+  "sessionId": "20261019T182639-ca2ae1840324",
+  "type": "fim",
+  "date": "2026-10-19T18:33:07.085156+00:00",
+  "title": "Criar modelo 3D articulado da menina para a perseguição",
+  "actor": "Codex",
+  "summary": "Menina 3D volumétrica criada e integrada à perseguição, com rig hierárquico, animação por estado, iluminação e exportação GLB local. Nenhum serviço pago utilizado.",
+  "checks": [
+    "npm test aprovado; browser da perseguição em três formatos aprovado; QA do modelo em três ângulos e GLB aprovados; build/check-assets/lint/sintaxe/diff aprovados; mapa de sprites reconstruído."
+  ],
+  "pending": [
+    "Aprovação humana da nova arte e movimento; aparelhos físicos/Safari; urso/fada volumétricos e integração futura na campanha."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseGirlModel.js",
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "src/js/bear-chase/ChaseHUD.js",
+    "scripts/export-chase-girl.js",
+    "assets/models/bear-chase/menina.glb",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261019-menina-3d.md"
+  ]
+}

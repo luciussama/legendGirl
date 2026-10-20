@@ -95,6 +95,11 @@ export class AudioController {
     return 1.0;
   }
 
+  /** Expõe o contexto compartilhado para reprodução de amostras locais, sem criar outro mixer. */
+  getAudioContext() {
+    return this.system?.getAudioContext?.() || null;
+  }
+
   setMuted(muted) {
     this.isMutedByUser = Boolean(muted);
     if (this.system && typeof this.system.setMuted === 'function') {

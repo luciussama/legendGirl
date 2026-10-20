@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "033ff989c3fa427cb926879930fe50c5",
+  "date": "2026-10-19T20:03:07.680627+00:00",
+  "title": "QA temporário: test:bear-chase:comparison:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/033ff989c3fa427cb926879930fe50c5.log",
+      "sourceId": "27190c8a37a5b66fb79028bfd2a723e0f644b7448cfa8fc0a52f4024d86ffda2",
+      "sha256": "1cba0cd316298e3aca9439a39d5e7d58388f1abde5d218b374d33c342e618af3",
+      "bytes": 728,
+      "metadataOnly": false
+    }
+  ]
+}

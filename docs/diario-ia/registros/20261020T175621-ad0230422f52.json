@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T175621-ad0230422f52",
+  "sessionId": "20261020T175621-ad0230422f52",
+  "type": "inicio",
+  "date": "2026-10-20T17:56:21.398878+00:00",
+  "title": "Implementar iluminação de janela e sombras na perseguição 3D",
+  "actor": "Codex",
+  "branch": "FEAT-bear-chase",
+  "head": "8cf9291dd91e37012cae29cc10b97abd0912e2f4",
+  "workingTree": []
+}

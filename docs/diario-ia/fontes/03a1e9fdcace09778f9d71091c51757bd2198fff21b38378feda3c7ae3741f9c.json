@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "03a1e9fdcace09778f9d71091c51757bd2198fff21b38378feda3c7ae3741f9c",
+  "path": "src/vendor/three/README.md",
+  "sha256": "f4e94791331c5de5e15c7a4d6a678894c8cff01d47fe17eead72e74bd561a6e0",
+  "capturedAt": "2026-10-19T18:14:35.329136+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "# Three.js local\n\nDistribuição oficial de `three@0.186.1`, pacote npm `three`, licença MIT em `LICENSE`.\n`three.module.js` e `three.core.js` são cópias sem alterações de `node_modules/three/build/`.\nNão traduzir ou editar o código da dependência. A versão também está fixa no lockfile.\n\nA prévia 3D importa esses arquivos dinamicamente; assim não depende de CDN ou de\n`node_modules` no GitHub Pages. Ao atualizar a dependência, copiar ambos os arquivos\nda mesma versão e preservar a licença. As fases 2D não carregam o renderer 3D.\n"
+}

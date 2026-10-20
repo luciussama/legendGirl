@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "94c6e7e7d34ca44f0778f9af89afc07e1ae988983e8e783ba7d29604442ee16f",
+  "path": "qa-execucoes/d4c957a5aea3473aa0907016163847ff.log",
+  "sha256": "df68b8566c81c56832fdfbd40e1a816f7f8c1a1487c695901941be7e4b0b9291",
+  "capturedAt": "2026-10-20T18:02:49.585340+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:lighting",
+    "exitCode": 1,
+    "package": "20261020T180241-c18953cb9042"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:lighting\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/iluminacao-20261020/browser.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Sombras devem alterar pixels reais: {\"distance\":14,\"width\":1280,\"height\":800,\"changed\":1,\"darkened\":1,\"calls\":292,\"resources\":208,\"activeShadows\":2,\"maps\":[[2048,2048],[1024,1024]],\"front\":12.765479510124775,\"backShadow\":-2.5419138384217326,\"characters\":true,\"floor\":true,\"state\":true}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-e6nfq8_6/projeto/docs/diario-ia/qa/iluminacao-20261020/browser.js:52:29 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T182048-c86807ae720d",
+  "date": "2026-10-20T18:20:48.593165+00:00",
+  "title": "Isolamento das contribuições de sombra",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/sombras-curvas-20261020/diagnostico.js",
+      "sourceId": "a8073889797e3817b1648d5162b6ba057db04574138daa573d49c819c5c2662a",
+      "sha256": "6df471d051f87c1c339246651c5bc0acec7a66a6efdbd267239777992312c45f",
+      "bytes": 4089,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:shadows:diagnostic:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/sombras-curvas-20261020/diagnostico.js"
+  }
+}

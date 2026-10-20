@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T203454-d43790773ab4-fim",
+  "sessionId": "20261019T203454-d43790773ab4",
+  "type": "fim",
+  "date": "2026-10-19T20:39:37.588937+00:00",
+  "title": "Retomar movimento orgânico da corrida da menina 3D",
+  "actor": "Copilot",
+  "summary": "Retomada da corrida 3D concluída: movimento já implementado pelo Codex foi revalidado; guia e contexto atualizado sem alterar física ou artes.",
+  "checks": [
+    "npm run journal:qa -- test:bear-chase:motion:browser: aprovado; apoio máximo 0,00143 unidade, poses estáveis e domínio inalterado",
+    "npm run build: aprovado",
+    "git diff --check: aprovado"
+  ],
+  "pending": [
+    "Revisão 3 ainda aguarda avaliação artística humana; a prévia da perseguição permanece isolada da campanha."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

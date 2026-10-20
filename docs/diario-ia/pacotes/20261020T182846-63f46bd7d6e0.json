@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T182846-63f46bd7d6e0",
+  "date": "2026-10-20T18:28:46.802881+00:00",
+  "title": "Identificar ponto fora da cobertura de sombras",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/sombras-curvas-20261020/gameplay.js",
+      "sourceId": "1f3baec632f302880a418f40f8f8218e4bbdd3903d76d1a358de0861df9de107",
+      "sha256": "e8d7085b101b4671c1d92e2d749635c513f10fb9d74f05c95ce5ce2e095d3908",
+      "bytes": 6400,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:shadows:gameplay:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/sombras-curvas-20261020/gameplay.js"
+  }
+}

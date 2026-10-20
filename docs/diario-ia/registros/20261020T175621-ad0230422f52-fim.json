@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T175621-ad0230422f52-fim",
+  "sessionId": "20261020T175621-ad0230422f52",
+  "type": "fim",
+  "date": "2026-10-20T18:09:21.337292+00:00",
+  "title": "Implementar iluminação de janela e sombras na perseguição 3D",
+  "actor": "Codex",
+  "summary": "Implementada iluminação de janelas e sombras na perseguição com ChaseLighting desacoplado. Materiais da sala respondem à luz; menina, urso e props recebem/projetam sombras. Luz frontal do urso projeta sombra para trás; preenchimento indireto aproximado preserva leitura e HUD tem contraste. Dois produtores de sombra ativos, com mapas liberados no encerramento. Merge autorizado já estava reconciliado externamente em f9e7c4e3 quando esta IA retomou; iluminação permanece em alterações locais.",
+  "checks": [
+    "QA específico passou em doze cenas/três formatos: pixels de sombra, direção frontal/traseira, continuidade e descarte zero; 219–292 chamadas e 208 recursos próprios, mapas contabilizados separadamente. QA do percurso passou com quinze modelos, 36 finais, contexto WebGL recuperado e conclusão sem colisões. Build, lint, assets, sintaxe, mapa e diff aprovados. Falha inicial com 312 chamadas corrigida sem ampliar limite. Fixture de comparação corrigida para alternar receiveShadow. Suíte geral não repetida nesta revisão visual."
+  ],
+  "pending": [
+    "Revisão artística humana da iluminação; validar FPS e memória em aparelhos físicos. Indireta é aproximação em tempo real, sem GI físico. Sem novo commit ou push da iluminação nesta execução."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseLighting.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "src/js/bear-chase/ChaseRoom.js",
+    "src/js/bear-chase/ChaseHUD.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261020-iluminacao-janelas.md",
+    "docs/diario-ia/qa/iluminacao-20261020/capturas.json"
+  ]
+}

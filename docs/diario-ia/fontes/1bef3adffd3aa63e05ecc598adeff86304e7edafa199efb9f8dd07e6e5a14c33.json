@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "1bef3adffd3aa63e05ecc598adeff86304e7edafa199efb9f8dd07e6e5a14c33",
+  "path": "qa-execucoes/efe1c3c9be39498a961a731b13f66974.log",
+  "sha256": "ccb969d878d0d06be11d31f9ccbddea4261eceeb65f432016d6aa99ebb2b5b87",
+  "capturedAt": "2026-10-19T19:47:27.619066+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:girl:glb",
+    "exitCode": 0,
+    "package": "20261019T194152-d8d897303a56"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:girl:glb\n> node docs/diario-ia/qa/perseguicao-20261019/menina-glb.js\n\nAPROVADO: GLB 2 íntegro, volumes, materiais e pivôs preservados. {\"bytes\":848284,\"volumes\":54,\"malhasCompartilhadas\":29,\"materiais\":11}\n"
+}

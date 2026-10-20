@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T184445-37202f036c18",
+  "date": "2026-10-20T18:44:45.041449+00:00",
+  "title": "Urso: ciclo pelo deslocamento real incluindo a largada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/urso-20261020/browser.js",
+      "sourceId": "d7ec8068777492957bf7dd2eb0202de6882588ebf694fa4ba7ab201c6d0f618f",
+      "sha256": "a26f25bd5b282b98c1a709a661d3090257ca7e90478bc251b2b6dfb5fa19b281",
+      "bytes": 6673,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:bear:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/urso-20261020/browser.js"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "bab00f9f70e3bcc10767a1a4920ae3bb9bfad069580c523019f0977334f5b4d9",
+  "path": "docs/diario-ia/qa/perseguicao-20261020/baseline.json",
+  "sha256": "764d2b060929c30398e6b65b274be9ff32132971db19bff0ffab1eea67432db4",
+  "capturedAt": "2026-10-20T12:55:49.889360+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"assets/art/toy-room/environment-sheet.png\": {\n    \"sha256\": \"235f177d278dc1d399a714224aaa62d03bd9be96c2be70f78a3f994b389adaed\",\n    \"bytes\": 1039651\n  },\n  \"assets/art/toy-room/stage3/oak-cabinet-v1.png\": {\n    \"sha256\": \"870179a5c3fe465ca0ce4f419da7ec8a0247889e087c810d4201deddf23e0a1d\",\n    \"bytes\": 123061\n  },\n  \"src/js/bear-chase/ChaseSimulation.js\": {\n    \"sha256\": \"f5b226487a15789813dc912b82716e9f82a0f378d6639c2714fa65fb1648ed90\",\n    \"bytes\": 7111\n  },\n  \"src/js/bear-chase/ChaseConfig.js\": {\n    \"sha256\": \"338b9b67727c53ac9b6926833697477132bea6c1d89aeb8b96ea05e7d01b425a\",\n    \"bytes\": 798\n  },\n  \"src/js/bear-chase/ChaseRenderer3D.js\": {\n    \"sha256\": \"8af8768c9bd3a413b80b510347d377618d2757d6aac88a42ebf22e38f12d8ad8\",\n    \"bytes\": 11822\n  },\n  \"src/js/bear-chase/ChaseToyModels.js\": {\n    \"sha256\": \"8cbf79ec921e36e376ae4dffe9980a111f7108697759cafe2b3bded4ec2011ef\",\n    \"bytes\": 1308\n  }\n}\n"
+}

@@ -1,0 +1,11 @@
+{
+  "ferramenta": "image_gen integrada",
+  "referencia": "urso-atlas-v1.png",
+  "prompt": "Refinar este atlas de materiais, preservando exatamente os quatro quadrantes e as cores. PROBLEMA: os fios de pelo parecem penas grandes e formam redemoinhos direcionais. Substituir a textura dos três quadrantes de pelúcia por pelúcia muito curta, densa, de grão QUATRO VEZES MENOR, pinceladas finíssimas pontilhadas, pequenas vírgulas irregulares, sem fluxo direcional, SEM REDemoinhos, sem penas, sem veios e sem manchas grandes. Deve parecer tecido de ursinho antigo pintado à mão, macio e delicado, nunca fotografia, carpet ou plumagem. Preservar cor ocre mel caramelo no superior esquerdo, creme dourado claro no superior direito, castanho quente no inferior direito. Preservar tecido vermelho do inferior esquerdo com trama fina. Quatro amostras planas uniformes até as bordas, nenhuma sombra embutida, nenhuma luz diagonal, nenhum desenho de objeto, sem textos, divisórias ou margens. Material para esfera 3D: os fios devem continuar pequenos mesmo em close. Mesmo atlas 2x2.",
+  "origemArquivada": {
+    "sourceId": "643357bc4e911c837def5c1bff943af87436fbd672c77b035d6c23d610283243",
+    "sha256": "9f5ea75a880e554bdfb71dd2e2978327e1813b8c61347efa0f77922600bbbe27",
+    "conteudoIntegral": true,
+    "manifesto": "docs/diario-ia/limpeza/20261020-manifesto.json"
+  }
+}

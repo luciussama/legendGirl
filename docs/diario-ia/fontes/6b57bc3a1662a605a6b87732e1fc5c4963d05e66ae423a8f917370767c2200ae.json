@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "6b57bc3a1662a605a6b87732e1fc5c4963d05e66ae423a8f917370767c2200ae",
+  "path": "qa-execucoes/7fbe012a7edb404ead3ed94b49326771.log",
+  "sha256": "d554cd4022fd3b2316aca8f0bfa2000f2c9af67fa352e42e36ccbea8bd00f181",
+  "capturedAt": "2026-10-20T12:59:13.902309+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:props",
+    "exitCode": 0,
+    "package": "20261020T125905-2c23de6162f2"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:props\n> node docs/diario-ia/qa/perseguicao-20261020/props-qa.js\n\nIntegridade: fontes originais, simulação, configuração e renderer existentes preservados.\nCAPTURAS [{\"file\":\"/tmp/legendgirl-piloto-train-three.png\",\"bytes\":400834,\"sha256\":\"bdc7b1d0148c34fa021ceab1fb96ca3734439abbdd3745857424ec94dba02452\"},{\"file\":\"/tmp/legendgirl-piloto-train-front.png\",\"bytes\":390323,\"sha256\":\"9fe68c5e4db22d2ce67365a9b852c5fbd8facded69ac78f3e68147d55af2ad93\"},{\"file\":\"/tmp/legendgirl-piloto-train-side.png\",\"bytes\":396892,\"sha256\":\"7009004a2bc32898d1c5b205220c245dbcfd8f6a946af61b638dd99a0117e00d\"},{\"file\":\"/tmp/legendgirl-piloto-train-back.png\",\"bytes\":386917,\"sha256\":\"1a136d3bfad13987ce9432486439857f1359fc87f6ee25964166a45e4fc87297\"},{\"file\":\"/tmp/legendgirl-piloto-cabinet-three.png\",\"bytes\":481886,\"sha256\":\"ff9a429ac8dbfa22cf977a8dcb8148a287ffe21f6795fb1e39221e33b96786e6\"},{\"file\":\"/tmp/legendgirl-piloto-cabinet-front.png\",\"bytes\":471105,\"sha256\":\"29fb14df1153761bb84d1315f7a4d586a6aa63d5678cf68c54cec6ec206392c1\"},{\"file\":\"/tmp/legendgirl-piloto-cabinet-side.png\",\"bytes\":460664,\"sha256\":\"b9c96f8a4d31400bb689719f13a67c28449f2c7adf04ffae8fb6ea2d889b9e56\"},{\"file\":\"/tmp/legendgirl-piloto-cabinet-back.png\",\"bytes\":457078,\"sha256\":\"7cc6ed04efd57c713fa29daa264468c79405af22fbddc90a88fc23a3566a9c31\"}]\nAPROVADO: volume, apoio, faces opacas, compartilhamento, troca sem acúmulo, estado preservado, quatro vistas, lançamento, viewport e descarte. {\"result\":{\"results\":{\"train\":{\"size\":[0.5227200078964234,0.6332399812459946,1.2564000034332277],\"minY\":-1.5020370547347283e-9,\"cards\":0,\"transparent\":0,\"shared\":true,\"calls\":6,\"triangles\":4648},\"cabinet\":{\"size\":[2.119999885559082,1.19749999076128,0.9314999878406525],\"minY\":-2.98023217215615e-10,\"cards\":0,\"transparent\":0,\"shared\":true,\"calls\":4,\"triangles\":3172}},\"before\":[21,281,277],\"after\":[21,281,277],\"statePreserved\":true},\"flight\":{\"y\":2.0107798958326604,\"z\":-5.841538461676011},\"disposed\":{\"pilots\":0,\"room\":0,\"reference\":0}}\n"
+}
