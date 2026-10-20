@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "87b2729ef39bbfe3e655e956ce46d4147dda38e54f886ffa93e9db65ecffbae9",
+  "path": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
+  "sha256": "8b4e33d5471f1190d7af502d3bc40d630a71d041082c3f9a914a4fdf2a41e0a8",
+  "capturedAt": "2026-10-20T19:31:29.560763+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada; sem CLI/API externa\",\n  \"arquivo\": \"approach-atlas-v1.png\",\n  \"dimensoes\": [\n    1774,\n    887\n  ],\n  \"referencias\": [\n    \"assets/art/dark-room/opening/waking-up.png\",\n    \"assets/art/toy-room/battle/girl/runtime/run-01.png\",\n    \"assets/art/toy-room/battle/bear/idle/01.png\",\n    \"assets/art/toy-room/battle/bear/death/06.png\"\n  ],\n  \"prompt\": \"Prancha transparente com quatro poses da menina na linha superior: passos lentos alternados e parada cautelosa, voltada à direita. Vestido creme e rosa com mangas fofas, saia pregueada, pele clara quente, rabo de cavalo castanho, sapatos vermelhos, espada de brinquedo abaixada. Linha inferior: urso ocre com focinho creme e laço vermelho, voltado à esquerda, caído, erguendo a cabeça, sentando e levantado pronto para fugir. Pintura à mão no estilo da cena original da cama; preservar identidade das referências, sem pixel art, 3D, texto, cenário ou sombra no chão. Mesma escala em todas as poses de cada ator. Grade desejada de quatro colunas e duas linhas, com margens transparentes.\",\n  \"observacao\": \"Resultado 1774×887 com margens desiguais; recortes medidos pela transparência dentro de divisões nos vãos, documentados em ChaseIntroRenderer. Sem aprovação artística humana.\"\n}\n"
+}

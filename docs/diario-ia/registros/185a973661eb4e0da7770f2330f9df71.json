@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "185a973661eb4e0da7770f2330f9df71",
+  "type": "qa",
+  "date": "2026-10-20T19:10:21.132960+00:00",
+  "title": "QA temporário: test:bear-chase:pacing:browser",
+  "exitCode": 0,
+  "sourceId": "1657749610863dc4a21151b81ecd9cb56872785eb7c94d407153d66475e224ee",
+  "package": "20261020T190822-cdc65dbb104d"
+}

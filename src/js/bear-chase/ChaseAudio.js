@@ -1,3 +1,5 @@
+import { CHASE_FALL_DURATION, isChaseDefeat } from './ChaseHealth.js';
+
 const ROOT = new URL('../../../assets/audio/bear-chase/', import.meta.url);
 
 /** Reproduz somente arquivos fornecidos pelo usuário, sem síntese de passos ou serviços externos. */
@@ -47,12 +49,13 @@ export class ChaseAudio {
       this.host?.stopToyRoomMusic?.(); this.host?.stopArenaMusic?.();
       this.started = true;
     }
-    const fade = state.stage === 'CAUGHT' ? Math.max(0, 1 - state.age / 1.4)
-      : ['CHEST_RETURN', 'COMPLETE'].includes(state.stage) ? 0 : 1;
+    const fade = state.stage === 'FALLING' ? Math.max(0, 1 - state.age / CHASE_FALL_DURATION)
+      : state.stage === 'CAUGHT' ? Math.max(0, 1 - state.age / 1.4)
+      : ['CHEST_RETURN', 'COMPLETE', 'GAME_OVER'].includes(state.stage) ? 0 : 1;
     const muted = this.host?.isMuted?.();
     this.music.volume = (muted ? 0 : this.host?.getMasterVolume?.() ?? 1) * .35 * fade;
     // Atualiza também vozes existentes ao mutar: pausa imediatamente evita caudas audíveis.
-    if (muted) this.stopSteps();
+    if (muted || isChaseDefeat(state.stage)) this.stopSteps();
     else for (const { gain, level } of this.voices.values()) gain.gain.value = level * (this.host?.getMasterVolume?.() ?? 1);
     if (this.started && !this.paused && fade > 0 && !muted && this.music.paused && !this.playPending) {
       this.playPending = true;

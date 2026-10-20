@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T193129-b7cfd2f51023",
+  "date": "2026-10-20T19:31:29.517548+00:00",
+  "title": "QA da abertura ilustrada da perseguição",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/abertura-perseguicao-20261020/browser.js",
+      "sourceId": "cdb0747119350f5fba1e5d5ea136d3ee5cd47856037d3b5123f6917745365f43",
+      "sha256": "422eec2310c47f007dcbd62f7e98b6fc102ce515513457f4271867ae7c6f2617",
+      "bytes": 5213,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/driver.js",
+      "sourceId": "78ac74c79f300568911a1f2bad213699cf383394cd8344ecaee5ba9135567e1d",
+      "sha256": "ec6642b523f914d70ca910ddab7fd85a18d5f5e68de62fdeda238f3bd6f1cdfb",
+      "bytes": 1316,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:intro:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/abertura-perseguicao-20261020/browser.js"
+  }
+}

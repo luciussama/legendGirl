@@ -1,3 +1,5 @@
+import { CHASE_FALL_DURATION, isChaseDefeat } from './ChaseHealth.js';
+
 /** Coordena peso, contrabalanço e movimento secundário sem alterar o domínio da corrida. */
 export class ChaseGirlAnimation {
   /** Guarda rig e amostras de deslocamento usadas somente pela inclinação de apresentação. */
@@ -12,7 +14,7 @@ export class ChaseGirlAnimation {
   }
   /** Aplica o mesmo ciclo aos apoios, quadril, ombros e acessórios, com atrasos próprios para cada massa. */
   apply(state) {
-    const m=this.model,run=state.stage==='RUNNING',walk=state.stage==='GIRL_APPROACH',moving=run||walk;
+    const m=this.model,run=state.stage==='RUNNING'||isChaseDefeat(state.stage),walk=state.stage==='GIRL_APPROACH',moving=run||walk;
     const phase=run?state.distance*Math.PI/2:state.age*Math.PI/.65;
     const dt=this.lastTime===null?0:state.time-this.lastTime;
     if(dt>0&&dt<.25){const velocity=(state.x-this.lastX)/dt;this.lean+=(Math.max(-1,Math.min(1,velocity/6))-this.lean)*(1-Math.exp(-dt*12));}
@@ -55,5 +57,33 @@ export class ChaseGirlAnimation {
       m.arms[i].elbow.rotation.set(moving?.95+Math.sin(phase+i*Math.PI-.45)*(swordArm?.14:.28)*effort:.8,0,swordArm?0:-.035*effort);
     }
     m.sword.rotation.x=moving?.9+Math.sin(phase-.65)*.065*effort:1.1;
+    if (isChaseDefeat(state.stage)) this.fall(state);
+  }
+
+  /** Encena a queda para a frente e mantém a menina no chão após esgotar as vidas. */
+  fall(state) {
+    const m = this.model;
+    const t = state.stage === 'GAME_OVER' ? 1 : Math.min(1, state.age / CHASE_FALL_DURATION);
+    const progress = t * t * (3 - 2 * t);
+    m.root.visible = true;
+    m.root.rotation.set(-Math.PI * .48 * progress, 0, .08 * Math.sin(t * Math.PI));
+    m.root.position.y += .46 * progress;
+    m.torso.rotation.set(-.18 * (1 - progress), 0, 0);
+    m.head.rotation.set(0, 0, 0);
+    m.pelvis.rotation.set(0, 0, 0);
+    m.skirt.rotation.set(0, 0, 0);
+    // O cabelo cai para o lado, em vez de permanecer espetado acima das costas.
+    m.ponytail.rotation.set(0, Math.PI * .5 * progress, 0);
+    m.tailTip.rotation.set(0, 0, 0);
+    for (const leg of m.legs) {
+      leg.hip.rotation.x *= 1 - progress;
+      leg.knee.rotation.x *= 1 - progress;
+      leg.ankle.rotation.x *= 1 - progress;
+    }
+    for (const arm of m.arms) {
+      arm.shoulder.rotation.x = -Math.PI * progress;
+      arm.elbow.rotation.x = .8 * (1 - progress);
+    }
+    m.sword.rotation.x *= 1 - progress;
   }
 }

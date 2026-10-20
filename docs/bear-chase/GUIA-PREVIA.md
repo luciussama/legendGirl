@@ -11,9 +11,31 @@ A menina avança automaticamente. Use A/D, setas esquerda/direita, direcional/an
 do gamepad ou toque e segure nas laterais. Arrastar o dedo troca a direção.
 P pausa e M alterna o som.
 
+O alto da tela mostra apenas as vidas: três corações no NORMAL e seis no FÁCIL.
+Cada tropeço consome um coração. Ao perder o último, a menina cai e a tentativa
+termina, sem capturar o urso nem enviá-lo ao baú. A música diminui durante a queda
+e para no fim de jogo. Para uma nova tentativa, escolha a fase novamente pelo seletor.
+Snapshots novos conservam a dificuldade; snapshots antigos usam a dificuldade
+selecionada. O contador de impactos existente é a fonte das vidas restantes.
+
 A prévia encadeia urso caído, aproximação da menina, levantar, fuga, corrida, alcance e
-ida ao baú. São aproximadamente 90 segundos de corrida em seis trechos de avaliação.
+ida ao baú. A pista tem 720 unidades de percurso, com velocidade crescente e seis
+trechos de avaliação; a duração depende do ritmo e dos tropeços.
 A extensão final ainda depende de superar a maior fase existente.
+
+A abertura é inteiramente ilustrada: urso caído, aproximação lenta da menina e
+levantar do urso usam poses pintadas, com a cena da cama como referência de linguagem.
+`ChaseIntroRenderer` compõe as artes originais do quarto em Canvas 2D. Nenhum quadro
+WebGL é apresentado nessas três etapas. Depois que o urso fica de pé, um corte
+escuro curto revela a largada em 3D. Pausa e restauração usam o mesmo relógio do
+domínio, sem outro laço de animação. A arte exclusiva fica em
+`assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.png`, com referências e
+resumo do prompt no JSON adjacente; os sprites anteriores não foram substituídos.
+`reach-atlas-v1.png` acrescenta inclinação, mão estendida e susto: a menina chega
+perto da pelúcia ainda caída, quase toca e recua quando o urso reage. O urso só
+começa a levantar depois desse gesto e vira para fugir antes do corte. As poses
+conservam o apoio dos sapatos; a proximidade é ajustada ao formato da tela.
+O piso usa o mesmo recorte 186×48 do quarto, com escala das tábuas preservada.
 
 O quarto usa geometria 3D e os materiais ilustrados atuais. A menina agora tem malhas
 volumétricas, vestido, rosto, rabo de cavalo único e articulações hierárquicas próprias.
@@ -36,11 +58,13 @@ continuam pendentes de escuta.
 | --- | --- |
 | `ChaseConfig` | Unidades de mundo, segundos e parâmetros da prova |
 | `ChaseSimulation` | Estado versionado, etapas, colisão varrida, padrões e RNG |
+| `ChaseHealth` | Limites de três/seis vidas e etapas de derrota |
 | `ChaseRoute` | Traçado contínuo, referenciais, relevo e pontos de emboscada |
 | `ChaseRoom` | Superfícies contínuas e decoração em posições absolutas |
 | `ChaseInput` | Intenção lateral e instalação/remoção dos listeners |
 | `ChaseAudio` | Arquivos locais, ganho, pausa, passos e posição musical |
 | `ChaseRenderer3D` | Composição do percurso, câmera e descarte GPU |
+| `ChaseIntroRenderer` | Atuação ilustrada anterior à largada e corte para o 3D |
 | `ChaseGirlModel` | Modelagem volumétrica, paleta e pivôs da menina |
 | `ChaseGirlAnimation` | Apoio dos pés, porte da espada, desvio, cabelo e saia |
 | `ChaseGirlPalette` | Paleta regional rastreável ao sprite de corrida |
@@ -70,6 +94,10 @@ Web Audio ou Three.js. Desenho e som consomem estado/eventos sem decidir dano.
   a prévia no jogo real e executa em workspace temporário.
 - `npm test`: inclui a regressão de domínio junto das fases anteriores.
 - `npm run docs:sprites`: reconstrói as referências de consumo das artes atuais.
+- `npm run journal:qa -- test:bear-chase:intro:browser`: verifica abertura ilustrada,
+  quase toque, sequência da reação, ausência de apresentação 3D, pausa/save e três formatos.
+- `npm run journal:qa -- test:bear-chase:health:browser`: verifica vidas, queda e
+  fim de jogo nas duas dificuldades e em três formatos. O domínio faz parte de `npm test`.
 
 Resultados e fontes de QA ficam no diário de IA. Emulação e avanço controlado não
 homologam dificuldade humana, Safari ou aparelhos físicos.
@@ -224,3 +252,29 @@ arena; `ChaseBearAnimation` resolve a pose sem decidir eventos de jogo. A corrid
 inclui joelhos, tornozelos, transferência de peso, contrabalanço e movimento de
 orelhas/laço. O atlas consumido é `urso-atlas-v2.png`; prompts ficam ao lado dele.
 A locomoção é cinemática e não usa bloqueio horizontal físico das patas.
+
+
+## Intensificação da perseguição
+
+`ChasePacing.js` concentra a progressão: após os primeiros 15% da pista, a
+velocidade-base cresce suavemente de 8 para 12. Rampas e tropeços continuam
+influenciando o avanço. O urso perde distância gradualmente e a aproximação final
+se intensifica nos últimos 6%, sem parar a passada da menina antes da captura.
+
+Os lançamentos passam a ter intervalos e voo menores. Cada brinquedo guarda seu
+tempo de voo para que desenho, pouso e colisão concordem; saves anteriores usam o
+tempo original quando esse campo não existe. Um cálculo de velocidade prevista
+preserva tempo para reagir depois do pouso. No FÁCIL, a folga longitudinal é maior.
+Nos trechos rápidos, as saídas sucessivas exigem no máximo uma mudança de faixa;
+quando falta espaço para um lançamento seguro, o urso encerra os ataques.
+
+`ChaseCamera.js` calcula a câmera sem modificar a simulação. Ela avança em direção
+às costas da menina e baixa suavemente, com oscilação vertical pequena ligada ao
+deslocamento. O campo de visão abre discretamente para preservar leitura periférica.
+No retrato, há folga adaptativa quando os atores ocupam faixas diferentes. A captura
+começa na mesma câmera e leva ao enquadramento do baú por transição contínua.
+
+A regressão de ritmo integra `npm run test:bear-chase`. As verificações específicas
+estão em `journal:qa -- test:bear-chase:pacing:browser` e
+`journal:qa -- test:bear-chase:pacing:gameplay:browser`. Avaliação humana de desafio e
+conforto do balanço continua distinta dos percursos automatizados.

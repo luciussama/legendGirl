@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T193736-50e871f3b940",
+  "date": "2026-10-20T19:37:36.348746+00:00",
+  "title": "Metadados das capturas da abertura ilustrada e regressão da perseguição",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/abertura-perseguicao-20261020/capturas.json",
+      "sourceId": "451c81319607fb990a094aeaef3d06e944d14b7652a8f1e9940b6919b29a2c54",
+      "sha256": "6c7c4bc556c64884f6138779b18d5a91ae200b30be6ae301653ae1ec1ec66d84",
+      "bytes": 9225,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

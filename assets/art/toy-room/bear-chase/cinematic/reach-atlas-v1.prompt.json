@@ -1,0 +1,9 @@
+{
+  "ferramenta": "image_gen integrada",
+  "arquivo": "reach-atlas-v1.png",
+  "referencias": [
+    "approach-atlas-v1.png"
+  ],
+  "prompt": "Create one transparent production sprite strip: exactly FOUR separate equal-width cells in ONE horizontal row, full bodies, generous transparent gaps. Use the attached sprite atlas as the mandatory exact reference for the GIRL only. Same hand-painted storybook brush texture, face, warm fair skin, dark brown ponytail with small pink band, cream puff sleeve dress with pink floral/scalloped trim, white socks and reddish shoes. Same girl and size in each cell, standing foot baseline identical. Facing RIGHT in all cells. Wooden toy sword held DOWN in her right hand on the viewer-near side throughout, never aimed at anyone. Her free LEFT hand reaches forward toward an unseen fallen teddy bear at knee height. Cell 1: standing still cautious, starting to bend forward and extending empty left hand. Cell 2: knees slightly bent, torso leaning forward, left arm extended halfway, empty open palm down near knee height. Cell 3: leaning farther forward in a gentle crouch, left arm fully extended to the RIGHT and slightly DOWN with open fingers, clearly about to touch a fallen teddy bear just beyond the image; sword lowered and kept behind/along her right leg. Cell 4: surprised reaction, straightens and draws left hand back to chest, eyebrows raised, small backward lean. Preserve proportions and scale, bending must lower the head rather than enlarge character. NO bear, no room, no labels, no grid, no ground shadow. Painted illustrated 2D sprites, no 3D, no pixel art. Four cells arranged horizontally on transparent canvas.",
+  "observacao": "Quatro poses exclusivas de antecipação, inclinação, mão estendida e susto. Sem alteração de sprites de gameplay. Aprovação artística pendente."
+}

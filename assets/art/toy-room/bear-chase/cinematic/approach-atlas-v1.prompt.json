@@ -1,0 +1,16 @@
+{
+  "ferramenta": "image_gen integrada; sem CLI/API externa",
+  "arquivo": "approach-atlas-v1.png",
+  "dimensoes": [
+    1774,
+    887
+  ],
+  "referencias": [
+    "assets/art/dark-room/opening/waking-up.png",
+    "assets/art/toy-room/battle/girl/runtime/run-01.png",
+    "assets/art/toy-room/battle/bear/idle/01.png",
+    "assets/art/toy-room/battle/bear/death/06.png"
+  ],
+  "prompt": "Prancha transparente com quatro poses da menina na linha superior: passos lentos alternados e parada cautelosa, voltada à direita. Vestido creme e rosa com mangas fofas, saia pregueada, pele clara quente, rabo de cavalo castanho, sapatos vermelhos, espada de brinquedo abaixada. Linha inferior: urso ocre com focinho creme e laço vermelho, voltado à esquerda, caído, erguendo a cabeça, sentando e levantado pronto para fugir. Pintura à mão no estilo da cena original da cama; preservar identidade das referências, sem pixel art, 3D, texto, cenário ou sombra no chão. Mesma escala em todas as poses de cada ator. Grade desejada de quatro colunas e duas linhas, com margens transparentes.",
+  "observacao": "Resultado 1774×887 com margens desiguais; recortes medidos pela transparência dentro de divisões nos vãos, documentados em ChaseIntroRenderer. Sem aprovação artística humana."
+}

@@ -10,6 +10,7 @@ import { CHASE_CONFIG as C, clamp } from './ChaseConfig.js';
 
 import { ChaseLighting } from './ChaseLighting.js';
 import { ChaseRoom } from './ChaseRoom.js';
+import { chaseCameraFrame } from './ChaseCamera.js';
 import { routePoint, routeFrame } from './ChaseRoute.js';
 
 const ART = new URL('../../../assets/art/', import.meta.url);
@@ -139,7 +140,7 @@ export class ChaseRenderer3D {
         this.lighting.prepareObject(mesh);
         this.scene.add(mesh); this.toys.set(obstacle.id, mesh);
       }
-      const t = clamp(obstacle.age / C.flight, 0, 1);
+      const t = clamp(obstacle.age / (obstacle.flight ?? C.flight), 0, 1);
       const lateral=obstacle.fromX+(obstacle.x-obstacle.fromX)*t;
       const distance=obstacle.fromZ+(obstacle.z-obstacle.fromZ)*t;
       mesh.rotation.set(0,0,0);
@@ -157,9 +158,8 @@ export class ChaseRenderer3D {
     if (this.renderer.domElement.width !== width || this.renderer.domElement.height !== height) {
       this.renderer.setSize(width, height, false); this.camera.aspect = width / height; this.camera.updateProjectionMatrix();
     }
-    const cutscene = ['BEAR_DOWN', 'GIRL_APPROACH', 'BEAR_RISE', 'CHASE_START'].includes(state.stage);
     const portrait = canvas.height > canvas.width;
-    this.presentCamera(state, portrait, cutscene);
+    this.presentCamera(state, portrait);
     this.room.update(state.distance);
     this.girlAnimation.apply(state);
     this.placeOnRoute(this.girl,state.distance,state.x,this.girl.position.y,true);
@@ -189,22 +189,18 @@ export class ChaseRenderer3D {
     this.renderer.render(this.scene, this.camera);
     ctx.drawImage(this.renderer.domElement, 0, 0, canvas.width, canvas.height);
   }
-  /** Enquadra o baú lateral no final, incluindo menina/urso em retrato, sem alterar o estado lógico. */
-  presentCamera(state, portrait, cutscene) {
-    const ending = ['CAUGHT', 'CHEST_RETURN', 'COMPLETE'].includes(state.stage);
-    const t = !ending ? 0 : state.stage === 'CAUGHT' ? clamp(state.age / C.stages.CAUGHT, 0, 1) : 1;
-    const blend = t * t * (3 - 2 * t), center = (state.x + 4.74) / 2;
-    const targetZ = (-state.gap - .3) / 2, baseZ = portrait ? 9 : 7.5;
-    const halfWidth = (Math.abs(4.74 - state.x) + 1.6) / 2;
-    const fitZ = Math.max(baseZ, targetZ + halfWidth / (Math.tan(this.camera.fov * Math.PI / 360) * this.camera.aspect) * 1.22 + 1);
-    this.camera.position.set((state.x * .28 + (cutscene ? 1.8 : 0)) * (1 - blend) + center * blend,
-      portrait ? 5.2 : 3.9, baseZ + (fitZ - baseZ) * blend);
-    const local=this.camera.position.clone();
-    const cam=routePoint(state.distance-local.z,local.x,local.y);
-    this.camera.position.set(cam.x,cam.y,cam.z);
-    const look=routePoint(state.distance+8*(1-blend)-targetZ*blend,
-      state.x*.35*(1-blend)+center*blend,1.2);
-    this.camera.lookAt(look.x,look.y,look.z);
+  /** Aplica a câmera progressiva no traçado e preserva o enquadramento do baú, sem alterar o domínio. */
+  presentCamera(state, portrait) {
+    const frame = chaseCameraFrame(state, portrait, this.camera.aspect);
+    if (this.camera.fov !== frame.fov) {
+      this.camera.fov = frame.fov;
+      this.camera.updateProjectionMatrix();
+    }
+    const { position, target } = frame;
+    const camera = routePoint(state.distance - position.z, position.x, position.y);
+    this.camera.position.set(camera.x, camera.y, camera.z);
+    const look = routePoint(target.s, target.x, target.y);
+    this.camera.lookAt(look.x, look.y, look.z);
   }
   /** Descarta somente materiais, geometrias e texturas desta instância. */
   destroy() {

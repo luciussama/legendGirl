@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T191457-e3e5a5ae0964",
+  "date": "2026-10-20T19:14:57.541159+00:00",
+  "title": "Gameplay completo do ritmo com capturas da aproximação final",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/gameplay.js",
+      "sourceId": "a6501e387af6403d4fb0a8dac845cd9ef51bd9d37ddc999276055ba269002ae0",
+      "sha256": "ae3c3fc8014d50fd56916eb721ce7fc80d7bc786e40200fc560f35f0c2cdcf2d",
+      "bytes": 6456,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing:gameplay:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/gameplay.js"
+  }
+}

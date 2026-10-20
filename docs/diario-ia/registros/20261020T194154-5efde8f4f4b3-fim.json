@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T194154-5efde8f4f4b3-fim",
+  "sessionId": "20261020T194154-5efde8f4f4b3",
+  "type": "fim",
+  "date": "2026-10-20T19:49:28.476867+00:00",
+  "title": "Vidas e queda final na perseguição: três no normal e seis no fácil",
+  "actor": "Codex",
+  "summary": "Textos superiores substituídos por corações: NORMAL três vidas e EASY seis. Cada tropeço consome uma vida; último impacto entra em queda animada e fim de jogo, sem captura/baú. Câmera acompanha a queda, passos cessam e música reduz até parar. Snapshot v1 preserva dificuldade opcional, mantendo saves anteriores e hits como fonte única.",
+  "checks": [
+    "npm test aprovado com regressão de vidas integrada. Domínio verificou limites, contato único por grupo, imunidade, save/RNG, derrota real sem desviar, estado congelado e nenhum evento de captura após esgotar vidas.",
+    "QA final de navegador passou em 18 cenas, duas dificuldades e três formatos: HUD, queda, fim de jogo, dificuldade restaurada, quadro estável e música em zero. QA nativo preservou controles, campanha, pausa/save/áudio e descarte, completando vitória sem colisões.",
+    "Build/assets/mapa/sintaxe/diff aprovados. Capturas inspecionadas, metadados arquivados e bitmaps temporários descartados. Falhas anteriores de baseline e pose preservadas e corrigidas sem relaxar limites."
+  ],
+  "pending": [
+    "Avaliação humana da queda/dificuldade e benchmark físico. Funcionalidade permanece na prévia de debug; sem commit/push."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseHealth.js",
+    "src/js/bear-chase/ChaseSimulation.js",
+    "src/js/bear-chase/ChaseHUD.js",
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "src/js/bear-chase/ChaseCamera.js",
+    "src/js/bear-chase/ChaseAudio.js",
+    "src/js/bear-chase/BearChasePhase.js",
+    "docs/bear-chase/GUIA-PREVIA.md"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T191226-8f17826873bd",
+  "date": "2026-10-20T19:12:26.470034+00:00",
+  "title": "Integrar regressão do ritmo à suíte da perseguição",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/dominio.js",
+      "sourceId": "38f1d50d3c099f55cceb53b5760edf9f443e2e4ab06429e3b1804a0de562baa5",
+      "sha256": "f63556f576720ccc4491526c14f6eacc922bc242f94a3f2362f6ec487fdbdcd8",
+      "bytes": 4808,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing": "node docs/diario-ia/qa/ritmo-20261020/dominio.js",
+    "test:bear-chase": "node docs/diario-ia/qa/perseguicao-20261019/dominio.js && node docs/diario-ia/qa/ritmo-20261020/dominio.js"
+  }
+}
