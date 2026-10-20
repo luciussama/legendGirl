@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T185603-2514d1da6be9",
+  "date": "2026-10-20T18:56:03.560726+00:00",
+  "title": "Prompts das variantes aposentadas preservados no acervo",
+  "files": [
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v1.prompt.json",
+      "sourceId": "fc70c3af56d8c04437b60f58e085b3543d0974837fa3300e621791cb8fcd49db",
+      "sha256": "4d1125b593439e24e4ed40a8a2b45637615e6eca2b7cbffba5b715a12735716e",
+      "bytes": 1545,
+      "metadataOnly": false
+    },
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.prompt.json",
+      "sourceId": "e16118b47648320ff28c94b03d0d0d6e55646e5f3da9f37cab225b7dce6241cc",
+      "sha256": "f027a36620ddd72d7073f2a9cd5c6133253223fe0faee76bad1ea956f80fe543",
+      "bytes": 3376,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

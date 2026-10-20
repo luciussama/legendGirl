@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "dd7bee1300d51583bc83aa21ac46a507dee9db2fb3a2cb0d8a3e2ed586533004",
+  "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v2.prompt.json",
+  "sha256": "5d57d01193227b65e085ea71341283ae88f4242943e1ee1352ad316f46a0c271",
+  "capturedAt": "2026-10-20T18:44:45.082291+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"referencia\": \"urso-atlas-v1.png\",\n  \"prompt\": \"Refinar este atlas de materiais, preservando exatamente os quatro quadrantes e as cores. PROBLEMA: os fios de pelo parecem penas grandes e formam redemoinhos direcionais. Substituir a textura dos três quadrantes de pelúcia por pelúcia muito curta, densa, de grão QUATRO VEZES MENOR, pinceladas finíssimas pontilhadas, pequenas vírgulas irregulares, sem fluxo direcional, SEM REDemoinhos, sem penas, sem veios e sem manchas grandes. Deve parecer tecido de ursinho antigo pintado à mão, macio e delicado, nunca fotografia, carpet ou plumagem. Preservar cor ocre mel caramelo no superior esquerdo, creme dourado claro no superior direito, castanho quente no inferior direito. Preservar tecido vermelho do inferior esquerdo com trama fina. Quatro amostras planas uniformes até as bordas, nenhuma sombra embutida, nenhuma luz diagonal, nenhum desenho de objeto, sem textos, divisórias ou margens. Material para esfera 3D: os fios devem continuar pequenos mesmo em close. Mesmo atlas 2x2.\"\n}\n"
+}

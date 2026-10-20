@@ -32,3 +32,20 @@ recortar esses atlas em amostras de poucos pixels para cada face.
 `manifest.json` identifica as artes. Métricas/testes/capturas e aprovações da
 execução estão exclusivamente no diário de IA; aprovação da direção não equivale
 a aprovação humana individual de toda nova textura/modelo.
+
+
+## Urso da perseguição
+
+`urso-atlas-v2.png` é o atlas 2×2 do personagem, baseado no urso da arena:
+pelúcia ocre, creme do focinho/palmas, tecido vermelho do laço e castanho escuro.
+A primeira interpretação `urso-atlas-v1.png`, com fibras maiores, foi aposentada
+e preservada integralmente no diário. O atlas decorativo v2 também foi retirado
+das pastas ativas. Os prompts atuais trazem `origemArquivada` com o identificador
+e hash para recuperar suas fontes; o histórico dos prompts anteriores foi preservado.
+As fontes da arena permanecem intactas. A direção e as costas do modelo 3D são
+interpretações em volume, sujeitas à avaliação artística do responsável.
+
+`ChaseBearModel` remapeia UVs com margem e mescla partes por pivô, compartilhando
+um material e uma textura. `ChaseBearAnimation` controla a pose: apoios com joelho
+e tornozelo, transferência de peso, contrabalanço, olhar e movimento secundário.
+Ambos são independentes da decisão de capturar, lançar brinquedos ou concluir a fase.

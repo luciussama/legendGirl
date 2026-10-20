@@ -215,3 +215,12 @@ jogo, evitando incluir objetos distantes sem utilidade nessa projeção.
 e efeitos dos valores de ajuste. `test:bear-chase:shadows:gameplay:browser`, no
 acervo de QA, percorre o controlador completo com entradas automatizadas e verifica
 transições, cobertura próxima do mapa e custo de desenho.
+
+
+## Urso articulado
+
+`ChaseBearModel` constrói a pelúcia com material pictórico derivado da arte da
+arena; `ChaseBearAnimation` resolve a pose sem decidir eventos de jogo. A corrida
+inclui joelhos, tornozelos, transferência de peso, contrabalanço e movimento de
+orelhas/laço. O atlas consumido é `urso-atlas-v2.png`; prompts ficam ao lado dele.
+A locomoção é cinemática e não usa bloqueio horizontal físico das patas.

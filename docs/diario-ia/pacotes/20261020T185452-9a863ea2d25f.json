@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T185452-9a863ea2d25f",
+  "date": "2026-10-20T18:54:52.536834+00:00",
+  "title": "Automação explícita da limpeza autorizada, com verificação de cópias integrais",
+  "files": [
+    {
+      "path": "docs/diario-ia/automacoes/20261020-limpeza.py",
+      "sourceId": "cdaa46af2c29f57c75ce680244ba8fe50c935311beb5562b9d2d5dcecce618ba",
+      "sha256": "932370bfc9320547cfdda8cf73964045d09341ac3e0dc0f2648e41db0cb99265",
+      "bytes": 4829,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

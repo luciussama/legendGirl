@@ -1,0 +1,86 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T185721-b234ea18df88",
+  "date": "2026-10-20T18:57:21.038662+00:00",
+  "title": "Consolidar metadados de capturas no acervo, sem remover fixtures ativas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/capturas.json",
+      "sourceId": "b1461eec75d6076020d9b2c0f210697114e86c7842b8297644113dbf068e1d8e",
+      "sha256": "88fc752c10d01d8cf183900197307222f01be5a3562650154c643646a3a926fa",
+      "bytes": 3820,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/capturas-finais.json",
+      "sourceId": "8fd5f028c05d7274cd700079a30eb5002dc4bb2ecb2b55f78f1eb4be9ebdb989",
+      "sha256": "9519e6ebff6374e9b0500c89143074103b19505fec7c0804972586b92e704cc6",
+      "bytes": 16602,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/capturas-primeira-revisao.json",
+      "sourceId": "4eaf5ff4efea3edf125bf8e687c265b696d41d565f81d1a970318409c7538084",
+      "sha256": "2d7bdb4aca478a58ae3e382a187c039c411f509ad64f340fbd35a968c21acb84",
+      "bytes": 9674,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/iluminacao-20261020/capturas.json",
+      "sourceId": "baf96bec765b47a79d0af81f9e42f964c5dd96b7fb2a04309f404a622c196b04",
+      "sha256": "8a548b72420c34bc5b2f96f03e14e767bfd5dfdfadaf0e7b4b5e5e42b05ccf52",
+      "bytes": 11601,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/capturas-refino.json",
+      "sourceId": "b846edfc823a5cd065c01123aa09aaff634ab966aa1e3858bdbb2682a3cff925",
+      "sha256": "5fceeb3b0d877837efa68cf8324a76bd3cc796d72b1129c9c615d9031a74524f",
+      "bytes": 6164,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/capturas.json",
+      "sourceId": "102be934378893f3061dbf22296e5721df037ac27fe1acdae983665bc1092157",
+      "sha256": "b2566d7fa7ed0fa8b70ee8d59fbe23364eaa9abea9a61978f490a506f70f4e05",
+      "bytes": 6171,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/capturas.json",
+      "sourceId": "55d516fbc33a00a0bde3e73428a9fbcbcde1d15c4fece8d940d4f8034b0dd28e",
+      "sha256": "72a8eb77d7c23c05139b2b40245f088c69071aeb61cbc4158b693bf7c6bcd4c2",
+      "bytes": 12197,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/capturas.json",
+      "sourceId": "a8d47a09fc22b2c6d7776d2e131051f58b1c208de423176e9f93a0b19e9a7752",
+      "sha256": "c67bb28a7d693403c7b2105d52d810d2764271350f43a0af25bed0b6ba99a11e",
+      "bytes": 2302,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/sombras-curvas-20261020/capturas.json",
+      "sourceId": "8957810b05fec0838d45ef6471eec1047260563ac66953dd4bcbe76117e1974d",
+      "sha256": "e44822f5460a94bc47c13783c24a007c8c0ebc0b84ed45fe6a54963ff8a91f6f",
+      "bytes": 21453,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/texturas-20261020/capturas.json",
+      "sourceId": "8bb08dd084a0087cc0c20c491597ad1908eae50bc05f4ad919ef06d133ca82b0",
+      "sha256": "4863de2c031df3162cb75467145c2846f3ea3a2db4d7cb6daeb94ff51dcdf383",
+      "bytes": 3838,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/urso-20261020/capturas.json",
+      "sourceId": "0fcea5493d751afeeb1ab38099380ee1823443a42641ec8a01fef9eafbe8abcc",
+      "sha256": "edfedd07bc5e73d472e395429ef43925a31dba6d6e1feed99ff56640348d464c",
+      "bytes": 15004,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e47988351d4625817727f65c30cce3c10f6375a33a03b111222f9ca291fafc1a",
+  "path": "docs/diario-ia/relatorios/20261019-merge-balanceamento.json",
+  "sha256": "949974e0fafbe22d9ca0ce4e8b5696c340154ad9a5cb4b5494f70aad42b191cf",
+  "capturedAt": "2026-10-20T18:54:57.975599+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"dataLocal\": \"2026-10-19\",\n  \"sessao\": \"20261019T131809-fafe34834a5d\",\n  \"repositorio\": \"https://github.com/luciussama/legendGirl.git\",\n  \"pedido\": \"Integrar a branch de balanceamento à principal e excluí-la do GitHub.\",\n  \"destino\": {\n    \"informado\": \"master\",\n    \"existente\": \"main\",\n    \"confirmacao\": \"HEAD remoto aponta para main; master não existe. Interpretação comunicada ao usuário antes da integração.\"\n  },\n  \"origem\": {\n    \"branch\": \"fix-balanceamento-luta\",\n    \"commit\": \"c169d28789f57cba33dd72c80744560c8aef59e2\",\n    \"jaEstavaPublicada\": true\n  },\n  \"bases\": {\n    \"mainLocalAntes\": \"a068e6e923bbe15cab91c0a6aab3351145c190e7\",\n    \"mainRemotaAntes\": \"3f4b6c431040da67f43f77c220a8b4a403e54193\"\n  },\n  \"merge\": {\n    \"commit\": \"ea57dfc324b5dc00e7653244d595fa21e80bcd69\",\n    \"tipo\": \"no-ff\",\n    \"conflitos\": false,\n    \"arvoreIdenticaOrigem\": true,\n    \"publicadoNaMain\": true,\n    \"ancestralidadeOrigemNaMainRemotaConfirmada\": true\n  },\n  \"exclusao\": {\n    \"branchRemota\": \"fix-balanceamento-luta\",\n    \"concluida\": true,\n    \"aposConfirmarMergeRemoto\": true,\n    \"branchLocalPreservada\": true\n  },\n  \"verificacoes\": [\n    \"npm test aprovado após merge\",\n    \"npm run build aprovado\",\n    \"npm run check-assets aprovado: 66 recursos\",\n    \"git diff --check aprovado\",\n    \"git diff origem HEAD sem diferenças após merge\",\n    \"git ls-remote confirma main no merge e ausência da branch removida\"\n  ],\n  \"observacao\": \"Os registros antigos de bloqueio de push foram preservados. Nesta sessão o fetch confirmou a origem publicada e o pedido atual autorizou a integração e exclusão no GitHub. Registro final será incluído em commit documental subsequente.\"\n}\n"
+}

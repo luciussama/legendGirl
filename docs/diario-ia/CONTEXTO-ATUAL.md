@@ -637,3 +637,50 @@ GI físico ou benchmark em aparelhos. Nenhum ajuste de simulação/modelo/textur
 Commit `3a422243` apareceu externamente durante a sessão e absorveu parte do
 trabalho existente. Esta IA não o criou e não fez push; ajustes/documentação
 posteriores continuam locais até ação do responsável.
+
+
+## Urso 3D pictórico e articulação — 20/10/2026
+
+Sessão `20261020T183637-3798297026f3`: usuário reprovou simplificação do urso e
+rigidez da corrida. Modelo revisto a partir de bear/idle/01 e walk/03 da arena:
+cabeça larga, focinho curto, pelúcia ocre, laço vermelho em leque, patas e costura.
+Atlas `urso-atlas-v2.png` gerado com image_gen integrada; v1 intermediária tem fibras
+grandes e não é carregada. Prompts preservados. Originais da arena intactos.
+ChaseBearAnimation separa apoios com joelhos/tornozelos, transferência de peso,
+contrabalanço, cabeça/orelhas/laço, largada contínua e lançamento articulado.
+Sem alteração do domínio, física, captura ou dificuldade. Sem bloqueio horizontal
+físico dos pés; movimento é cinemático. Métodos documentados em português.
+
+16 malhas mescladas por pivô, uma textura/material; 222 recursos próprios. QA do
+rig: apoio vertical com erro máximo 0,01485, pose determinística/estado preservado
+e continuidade exata da largada. Gameplay completo zero colisões, pico 302 chamadas;
+regressão de percurso/três formatos/36 finais/WebGL/descarte e npm test passaram.
+Build/assets/mapa/sintaxe/diff aprovados. Sem aprovação artística humana ou hardware
+físico. Relatório `relatorios/20261020-urso-pictorico-corrida.md`.
+Pedido seguinte autorizado: limpeza completa dos arquivos sem pertinência ao projeto
+ou documentação, com preservação do acervo imutável e recuperação de artes aposentadas.
+
+
+## Consolidação e limpeza autorizada — 20/10/2026
+
+Sessão `20261020T184959-b352523a0674`: após concluir o urso, usuário pediu limpeza
+completa de arquivos sem pertinência. Auditadas referências estáticas, caminhos
+dinâmicos, manifestos e scripts de reconstrução. Retirados 16 assets intermediários
+ou cópias sonoras idênticas das pastas ativas (35.522.252 bytes dessas cópias).
+Conteúdo integral preservado em fontes imutáveis e conferido por hash/bytes antes
+da exclusão; não contar esse valor como redução líquida do repositório, pois as
+artes continuam recuperáveis no acervo. Dois prompts antigos também consolidados.
+27 relatórios avulsos consolidados integralmente no diário; consultar pelo caminho
+original via journal:search/show. Nenhum JSON de fontes/registros/pacotes/commits
+anterior foi apagado ou reescrito. Um .DS_Store removido.
+
+Mantidos originais/recortes usados por caminhos dinâmicos, fontes de reconstrução,
+áudio de fallback src/audio/The Circle Game.mp3, GLB documentado, guias humanos,
+planos pertinentes, imagem de direção aprovada, QA ativo, dependências e ambiente
+local. Atlas atual do urso é v2, decorativos é v3; prompts atuais identificam as
+fontes aposentadas por sourceId. Manifesto de recuperação e decisões:
+`limpeza/20261020-manifesto.json`. Validação após limpeza aprovada: npm test, exploração/combate/retorno da arena
+em três formatos e QA do urso. Build/assets/diff aprovados. Mapa final: 411 imagens,
+99 recortes, 29 assinaturas. Metadados de 11 conjuntos de capturas e um levantamento
+antigo de fontes também consolidados; fixtures efetivamente lidas pelo QA mantidas.
+Capturas temporárias e caches locais descartados com identificação no manifesto.

@@ -71,6 +71,7 @@ export class ChaseRenderer3D {
   async load() {
     const paths = {
       ...Object.fromEntries(Object.values(PICTORIAL_ATLASES).map(({ key, path }) => [key, path])),
+      bearAtlas: 'toy-room/bear-chase/materials/urso-atlas-v2.png',
       env: 'toy-room/environment-sheet.png',
       wall: 'toy-room/stage1/wallpaper-v1.png', trim: 'toy-room/stage1/oak-trim-v1.png',
       rug: 'toy-room/stage1/rectangular-rug-v1.png', window: 'toy-room/stage1/window-curtains-v1.png',
@@ -107,7 +108,7 @@ export class ChaseRenderer3D {
     shadowCtx.fillStyle=gradient;shadowCtx.fillRect(0,0,64,64);
     this.contactShadow=this.mesh(this.scene,new T.PlaneGeometry(.85,.55),this.material(this.texture(shadowCanvas)),0,.025,0);
     this.contactShadow.rotation.x=-Math.PI/2;this.contactShadow.material.alphaTest=0;this.contactShadow.material.depthWrite=false;
-    this.bearModel=new ChaseBearModel(resource=>this.own(resource),this.girlModel.sphere);
+    this.bearModel=new ChaseBearModel(resource=>this.own(resource),this.texture(images.bearAtlas));
     this.bear=this.bearModel.root;this.scene.add(this.bear);
     this.fairy = this.actor(this.texture(images.fairy), .63, .7);
     this.chest = this.propCatalog.create('chest'); this.chest.visible = false; this.scene.add(this.chest);

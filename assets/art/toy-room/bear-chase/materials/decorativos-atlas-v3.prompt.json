@@ -3,5 +3,11 @@
   "ferramenta": "image_gen integrada",
   "origem": "decorativos-atlas-v2.png",
   "prompt": "Use case: precise-object-edit. Edit target Image 1 is a 4x4 production material atlas. Keep its exact square dimensions, exact 4x4 boundaries, NO borders, labels, objects, icons or perspective. Change ONLY four cells: zero-based cell8 (row3 col1), cell9 (row3 col2), cell11 (row3 col4), cell12 (row4 col1). All other twelve cells must stay visually unchanged. Supporting Image2 is original armchair upholstery reference, Image3 contains original short brown teddy fur. Cell8: replace oversized shaggy fur with VERY SHORT chestnut teddy velour, fine dense short fibers, no large tufts or locks, subtle painterly speckled worn plush like original teddy. Cell9: short smooth warm caramel tan paw plush, tiny fine fibers, not white, not hairy. Cell11: fine coral pink jester cloth, threads are extremely small, no big knitted loops, no visible checkers. Cell12: fine scarlet upholstery like original armchair, at least 5 times finer than current huge weave, threads barely resolved, subtle worn red brush shading, no large basket weave, no plaid/checker pattern. Keep game painterly warm illustrated style, gentle variation and fine hand-painted detail. No cell should contain actual object silhouette or image of a chair/bear. Preserve all sixteen positions and other material colors. Full atlas edge-to-edge.",
-  "observacao": "Refinamento da escala dos pelos e das tramas; mesmas dezesseis regiões e dimensões."
+  "observacao": "Refinamento da escala dos pelos e das tramas; mesmas dezesseis regiões e dimensões.",
+  "origemArquivada": {
+    "sourceId": "f382d5cd71247c5f9b4a710fa7c59b7a171db42033f20ee09ec4f2096c36c5ef",
+    "sha256": "5fcaf85e0fc274a54f572d089177476677cebbb24b4566e70c57b808c8e196e0",
+    "conteudoIntegral": true,
+    "manifesto": "docs/diario-ia/limpeza/20261020-manifesto.json"
+  }
 }

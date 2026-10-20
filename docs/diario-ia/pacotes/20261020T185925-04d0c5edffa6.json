@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T185925-04d0c5edffa6",
+  "date": "2026-10-20T18:59:25.968656+00:00",
+  "title": "Resultado final da limpeza e recuperação integral dos assets",
+  "files": [
+    {
+      "path": "docs/diario-ia/limpeza/20261020-manifesto.json",
+      "sourceId": "4a27964fe6899c84db79adb0af3f9b2c111a454ab547baf936e47a1407c1f2b6",
+      "sha256": "a54339f987c03992954bfdec190957162dfeca90ddef9751b6a0587395c89ad1",
+      "bytes": 23430,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/README.md",
+      "sourceId": "a7c751477045b5dd9ec5e3922c093eee286581181bb0535f748421bf62d983f8",
+      "sha256": "efab74c80e5ea9dd4bfff74cad050903b70a965b661a0bb48b099c4ed664c69c",
+      "bytes": 8415,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

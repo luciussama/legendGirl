@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 422,
+    "files": 411,
     "regions": 99,
     "code": 29
   },
@@ -5283,38 +5283,6 @@
       "family": "assets/art/toy-room/battle/corrections/robot-walk-correction"
     },
     {
-      "id": "9a36fcdf44a6b1498a33b5dc",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/corrections/robot-walk-final.png",
-      "title": "robot-walk-final.png",
-      "format": "png",
-      "width": 1266,
-      "height": 1242,
-      "bytes": 1121165,
-      "sha256": "fd55eb3815b9432744ae742cb213128ce2ed045f8bb27324fc472220c88e4633",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/corrections"
-    },
-    {
-      "id": "3725e581a512ab721dfb4c96",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/corrections/robot-walk-retry.png",
-      "title": "robot-walk-retry.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1965930,
-      "sha256": "ce2f8ead720c3c08c5b623ee900b767d5e0b291165c0172115eb16df6f920a97",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/corrections"
-    },
-    {
       "id": "af6bd9f993baa95c18262ca9",
       "kind": "file",
       "path": "assets/art/toy-room/battle/corrections/rocket-punch-correction.png",
@@ -9158,22 +9126,6 @@
       "family": "assets/art/toy-room/battle/polish/laser-beam-v1"
     },
     {
-      "id": "73676f70c9806aeb634744ab",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/polish/robot-walk-v1.png",
-      "title": "robot-walk-v1.png",
-      "format": "png",
-      "width": 1262,
-      "height": 1246,
-      "bytes": 1010187,
-      "sha256": "f6a7c007421d463935b9156e0c3363282d934e68215ebd6b0f65abf648764628",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/polish"
-    },
-    {
       "id": "fe732bd598e38005f51d1ff8",
       "kind": "file",
       "path": "assets/art/toy-room/battle/polish/rocket-punch-v1.png",
@@ -9660,22 +9612,6 @@
       ],
       "hints": [],
       "family": "assets/art/toy-room/battle/polish/steam-blast-v1"
-    },
-    {
-      "id": "25096f7c6fcb180644637a48",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/polish/train-walk-v1.png",
-      "title": "train-walk-v1.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 2127721,
-      "sha256": "5b5ce867eface6c9ca2df736e252450e0333dbe3954e94961fd9d30e9f7c80c1",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/polish"
     },
     {
       "id": "c3a58f3542dfd2c06ca14f58",
@@ -10408,38 +10344,6 @@
       "family": "assets/art/toy-room/battle/remediation"
     },
     {
-      "id": "b399760e7c1cf729380c9129",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/remediation/robot-support-gate-retry.png",
-      "title": "robot-support-gate-retry.png",
-      "format": "png",
-      "width": 1083,
-      "height": 1453,
-      "bytes": 1224745,
-      "sha256": "402c8594d912f057780d92ecdc87e26b43b63c03c609fd0190be1a46ce16ea7c",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/remediation"
-    },
-    {
-      "id": "5a77caf5524874b13bda8cfe",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/remediation/robot-walk-gate-retry.png",
-      "title": "robot-walk-gate-retry.png",
-      "format": "png",
-      "width": 1262,
-      "height": 1246,
-      "bytes": 1021599,
-      "sha256": "89badb8d8173cb8d6523b5393e2f21ecb30a9b48881f118e38984da52cb2fe53",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/remediation"
-    },
-    {
       "id": "bfea381a5b4a74a2e70532ad",
       "kind": "file",
       "path": "assets/art/toy-room/battle/remediation/robot-walk-remediation.png",
@@ -10732,22 +10636,6 @@
       "family": "assets/art/toy-room/battle/remediation/rocket-punch-remediation"
     },
     {
-      "id": "ac5c58b055eef9a9de04014a",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/remediation/steam-blast-remediation-v1.png",
-      "title": "steam-blast-remediation-v1.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1958725,
-      "sha256": "87bedea9d79c1de732f27db373b95e80bba4f5d65460ade154c149d8996a6a6f",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/remediation"
-    },
-    {
       "id": "4f1dd8a1a6614d6a77309a7a",
       "kind": "file",
       "path": "assets/art/toy-room/battle/remediation/steam-blast-remediation.png",
@@ -10900,22 +10788,6 @@
       ],
       "hints": [],
       "family": "assets/art/toy-room/battle/remediation/steam-blast-remediation"
-    },
-    {
-      "id": "6ea886a753d98f058f7b5348",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/remediation/train-walk-remediation-v1.png",
-      "title": "train-walk-remediation-v1.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 2014722,
-      "sha256": "0dc8c16e528d7a328f5227c14192afdf450ca31493fcc4b2bf1afc07f81446f9",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/remediation"
     },
     {
       "id": "66a99f740af9165eac8f4318",
@@ -12586,22 +12458,6 @@
       "family": "assets/art/toy-room/battle/sources"
     },
     {
-      "id": "60bbc65144d55c6874ff8bb2",
-      "kind": "file",
-      "path": "assets/art/toy-room/battle/sources/robot-rocket-punch-v1.png",
-      "title": "robot-rocket-punch-v1.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 2004499,
-      "sha256": "26f33e1173b321d4817acd3f80b390e9b47164fd6b684ef8e6af7f6b55668c84",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/battle/sources"
-    },
-    {
       "id": "fc846a61b9c8d3e86860482c",
       "kind": "file",
       "path": "assets/art/toy-room/battle/sources/robot-rocket-punch-v2.png",
@@ -14093,22 +13949,6 @@
       "family": "assets/art/toy-room/bear-chase/materials"
     },
     {
-      "id": "03bf3c440a40fc03e88a5575",
-      "kind": "file",
-      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.png",
-      "title": "decorativos-atlas-v2.png",
-      "format": "png",
-      "width": 1254,
-      "height": 1254,
-      "bytes": 3287567,
-      "sha256": "5fcaf85e0fc274a54f572d089177476677cebbb24b4566e70c57b808c8e196e0",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "assets/art/toy-room/bear-chase/materials"
-    },
-    {
       "id": "7e6edd431301290a6050cfc2",
       "kind": "file",
       "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v3.png",
@@ -14147,6 +13987,29 @@
         {
           "file": "src/js/bear-chase/props/PictorialMaterialAssets.js",
           "line": 5,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "2208a751c6a57b6f273b3c9d",
+      "kind": "file",
+      "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v2.png",
+      "title": "urso-atlas-v2.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3088536,
+      "sha256": "bd6d4843b67319497ad69a15fc606c7c233af9d4a77a2443a8b907b62c123913",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/bear-chase/ChaseRenderer3D.js",
+          "line": 74,
           "type": "runtime",
           "alias": null
         }
@@ -14329,7 +14192,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 75,
+          "line": 76,
           "type": "runtime",
           "alias": null
         },
@@ -14409,7 +14272,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 76,
+          "line": 77,
           "type": "runtime",
           "alias": null
         },
@@ -14452,7 +14315,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 75,
+          "line": 76,
           "type": "runtime",
           "alias": null
         },
@@ -14495,7 +14358,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 76,
+          "line": 77,
           "type": "runtime",
           "alias": null
         },
@@ -14602,7 +14465,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 79,
           "type": "runtime",
           "alias": null
         },
@@ -14725,7 +14588,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 79,
           "type": "runtime",
           "alias": null
         },
@@ -14850,7 +14713,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 78,
           "type": "runtime",
           "alias": null
         },
@@ -14905,7 +14768,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 78,
           "type": "runtime",
           "alias": null
         },
@@ -15254,38 +15117,6 @@
       ],
       "hints": [],
       "family": "src/assets/images"
-    },
-    {
-      "id": "9b94d509375cb909c82a1874",
-      "kind": "file",
-      "path": "src/assets/images/small_dresser_1790161034161.jpg",
-      "title": "small_dresser_1790161034161.jpg",
-      "format": "jpg",
-      "width": 1024,
-      "height": 1024,
-      "bytes": 404730,
-      "sha256": "350099a3a7a1f223476c85494ab8993fc99d8013293ba6eb19c0df36b6117b1d",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "src/assets/images"
-    },
-    {
-      "id": "393a091c185bddb6dbf35ec2",
-      "kind": "file",
-      "path": "src/audio/Designer.png",
-      "title": "Designer.png",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1740625,
-      "sha256": "8df5dd9b03e47b2c99df786b2585fc8718f1237b6f998cdd06bdf864035e1c15",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "src/audio"
     },
     {
       "id": "d429bc657be54c48f15af531",

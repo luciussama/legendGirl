@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T184712-2e5d9cd1852d",
+  "date": "2026-10-20T18:47:12.441304+00:00",
+  "title": "Urso: verificar continuidade exata entre largada e corrida",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/urso-20261020/browser.js",
+      "sourceId": "04b595b3dc581cdbb5180f3cdad55dfc4cd552d669b4a00f6f9d8ad08c6f28ad",
+      "sha256": "cb06f496a361e3c699a6770ed50712185dbbafa175b92666d3486ab1abdd855a",
+      "bytes": 6972,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:bear:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/urso-20261020/browser.js"
+  }
+}
