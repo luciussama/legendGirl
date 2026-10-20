@@ -13,6 +13,7 @@ export class ChaseInput {
   /** Instala apenas uma vez os eventos que pertencem a esta fase. */
   install() {
     if (this.installed) return;
+    if (typeof window === 'undefined') throw new Error('A entrada da perseguição exige uma janela de navegador.');
     this.installed = true;
     window.addEventListener('keydown', this.keyDown); window.addEventListener('keyup', this.keyUp);
     this.canvas.addEventListener('pointerdown', this.pointer);
@@ -68,6 +69,7 @@ export class ChaseInput {
   /** Remove todos os listeners e permite destruir/reabrir a prévia sem duplicá-los. */
   destroy() {
     this.clear(); this.installed = false;
+    if (typeof window === 'undefined') return;
     window.removeEventListener('keydown', this.keyDown); window.removeEventListener('keyup', this.keyUp);
     this.canvas.removeEventListener('pointerdown', this.pointer);
     window.removeEventListener('pointermove', this.pointer);

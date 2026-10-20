@@ -1,9 +1,8 @@
 # Prévia da perseguição no quarto em 3D
 
 Execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D (prévia)**.
-Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva.
-A vitória da arena na campanha normal ainda usa o fluxo anterior; a nova transição
-será integrada após a prova artística.
+Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva
+e permanece independente da fuga iniciada pela vitória normal da arena.
 
 ## Controles e sequência
 
@@ -78,7 +77,10 @@ continuam pendentes de escuta.
 `ToyRoomPhase.startChasePreview()` desliga os controles da sala e instala os da prévia.
 `createGame.startDebugPhase('bear-chase')` usa o isolamento de campanha do seletor.
 `BearChasePhase.snapshot/restore` preserva dados da prova; nesta etapa não há campo
-da perseguição no save de campanha nem migração automática.
+da prévia no save de campanha. A vitória da arena usa `startChaseCampaign()` como
+fluxo distinto: escurece a tela, prepara os recursos antes de revelar a abertura e
+salva/restaura a etapa da fuga junto à campanha. Saves antigos sem esse campo
+continuam válidos.
 
 Three.js 0.186.1 está fixo no lockfile e distribuído em `src/vendor/three/`, com licença
 MIT preservada. O renderer é importado tardiamente e requer WebGL 2. As fases 2D não

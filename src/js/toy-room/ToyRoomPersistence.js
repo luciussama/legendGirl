@@ -10,10 +10,15 @@ export class ToyRoomPersistence {
     saved.toyRoomStory = this.context.story.snapshot();
     saved.toyRoomBattle = this.context.battle.snapshot();
     if (includeArena && this.context.arena) saved.toyRoomArena = this.context.arena.snapshot();
+    if (includeArena && this.context.chase?.campaign) saved.toyRoomChaseCampaign = this.context.chase.snapshot();
     return saved;
   }
 
   restore(saved, { preserveArena = false } = {}) {
+    if (!preserveArena && this.context.chase) {
+      this.context.chase.destroy();
+      this.context.chase = null;
+    }
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
       'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
     for (const key of keys) {
@@ -33,8 +38,13 @@ export class ToyRoomPersistence {
     this.context.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.context.battle.restore(saved.toyRoomBattle);
     if (!preserveArena) this.context.arena?.restore(saved.toyRoomArena, saved);
-    if (this.context.arena?.active) this.context.gameplayState = this.context.arena.state.status === 'TRANSFORMING' ? 'TOY_ROOM_TRANSFORMING' : 'TOY_ROOM_ARENA';
-    else if (this.context.battle.state) this.context.gameplayState = 'TOY_ROOM_BATTLE';
+    if (saved.toyRoomChaseCampaign) {
+      if (this.context.arena?.active || !this.context.story.state.arenaCompleted)
+        throw new TypeError('Save de campanha incompatível com a etapa da arena.');
+      this.context.startChaseCampaign(saved.toyRoomChaseCampaign);
+    } else if (this.context.arena?.active) {
+      this.context.gameplayState = this.context.arena.state.status === 'TRANSFORMING' ? 'TOY_ROOM_TRANSFORMING' : 'TOY_ROOM_ARENA';
+    } else if (this.context.battle.state) this.context.gameplayState = 'TOY_ROOM_BATTLE';
     else if (!this.context.toyRoomTutorialCompleted && !this.context.story.swordEquipped) this.context.startTutorial();
   }
 

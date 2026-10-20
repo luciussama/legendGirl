@@ -790,3 +790,54 @@ retirar a proteção do modelo/artes/configuração. Duas poses intermediárias
 falharam por extensão vertical da espada/cabelo; corrigidas sem relaxar limite.
 Build/assets/mapa/sintaxe/diff aprovados. Sem aceite humano ou hardware físico.
 Sem commit/push. Evidências regeneráveis descartadas após registrar metadados.
+
+## Transição da vitória da arena para a fuga — manual
+
+Sessão `20261020T213824-511c19289a0c`: usuário pediu que a vitória contra o urso
+na arena conduza diretamente à fuga 3D, usando tela escura para ocultar a saída
+da arena e revelando a abertura com o urso caído e a menina segurando a espada.
+O manual `docs/bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md` especifica
+sequência, limites, pontos de integração, persistência e critérios de validação.
+`docs/README.md` aponta para o manual.
+
+Sessão `20261020T214228-7726a1114289` — implementação e passagem:
+
+1. A leitura de `ToyRoomArenaPhase`, `ToyRoomPhase`, `BearChasePhase` e
+   `ToyRoomPersistence` confirmou que vitórias e derrotas convergiam para retorno
+   à sala, que `startChasePreview()` era exclusiva do debug e que a perseguição
+   não era salva pela campanha.
+2. `ToyRoomArenaPhase.beginReturn()` agora registra destino `CHASE` somente em
+   `VICTORY`. A arena congela entradas e combate, aplica fade escuro de 30 quadros
+   (0,5 s a 60 Hz) e, sob preto, restaura exploração/progresso, sem banner nem
+   retomada de música. `DEFEAT` mantém destino `ROOM`; saves antigos sem destino
+   continuam no retorno normal.
+3. `ToyRoomPhase.startChaseCampaign()` é separado da prévia. A campanha espera
+   artes e renderer com tela preta; `BearChasePhase` revela o urso caído em 0,4 s,
+   sem avançar simulação nem instalar controles antes do fim do fade. A abertura
+   existente conserva a espada visível na pose inicial. A prévia mantém o fluxo
+   anterior e não persiste estado.
+4. O save opcional `toyRoomChaseCampaign` preserva estado versionado da fuga e
+   posição musical. Restore exige arena concluída e arena inativa; saves antigos
+   sem esse campo seguem aceitos. Falhas de construção/carregamento destroem a
+   fuga parcial, restauram controles da sala e exibem mensagem explícita.
+5. O QA dedicado foi escrito em `docs/diario-ia/` via pacotes
+   `20261020T214948-2a414ce8a160` e `20261020T215027-6ecea4b4b828`; a primeira
+   execução falhou por canvas de teste incompleto, corrigido antes da aprovação.
+   Não resta fonte de QA temporária fora do diário.
+6. `journal:qa -- script:test-arena-chase-transition.js`,
+   `test:toy-room:arena`, `test:bear-chase`, build e `git diff --check` passaram.
+   O teste dedicado cobre
+   destino por resultado, espera do fade, início único, save/restore em
+   `BEAR_DOWN`, isolamento da prévia e saves antigos.
+7. No navegador, a sequência foi forçada até `VICTORY`. Os pixels centrais lidos
+   durante o fade evoluíram de `[44,25,33]` para `[34,21,27]`, `[24,16,21]` e
+   preto `[20,14,19]`. A cena Canvas 2D foi inspecionada visualmente e mostrou o
+   urso caído e a espada na mão da menina. A sandbox do navegador bloqueou a
+   criação de WebGL 2; a aplicação reportou a falha e voltou à sala com mensagem,
+   confirmando recuperação, mas o caminho de sucesso do renderer 3D ainda precisa
+   ser validado em ambiente com WebGL.
+
+Documentação atualizada em `GUIA-PREVIA.md`, `MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md`
+e `ARQUITETURA.md`; regenerar `REFERENCIA-METODOS.md` ainda pendente. Sem edição
+de artes, mudança de física, commit ou push. A sessão de tela de entrada
+`20261020T201327-774153dc7d03` permanece aberta e não foi alterada.

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T214948-2a414ce8a160",
+  "date": "2026-10-20T21:49:48.501177+00:00",
+  "title": "Regressão da transição arena-fuga",
+  "files": [
+    {
+      "path": "scripts/test-arena-chase-transition.js",
+      "sourceId": "98fac0c86585fd4f85d1edb8945dc60cb9541d6e2ecff5f8fb2c3038a9893d6f",
+      "sha256": "7e90785f10f49a59ddb7cc93c78261089e68f69f9191c3c422f5bde2c7724385",
+      "bytes": 3201,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}
