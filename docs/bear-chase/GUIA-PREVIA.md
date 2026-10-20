@@ -150,10 +150,13 @@ Snapshots continuam usando distância longitudinal e posição lateral; não sal
 coordenadas Three.js. Saves existentes continuam válidos, mas o percurso restaurado
 passa a seguir o novo traçado e os novos padrões intencionalmente.
 
-Quatro atlas pictóricos existentes são compartilhados por regiões. A poltrona
-usa também uma região limpa de tecido do seu PNG original, por UV, sem alterar a
-fonte. Não foram geradas novas imagens nem usadas APIs pagas. Iluminação continua
-adiada. A aprovação dos modelos anteriores não implica aprovação dos oito novos.
+Os quatro atlas anteriores continuam nos modelos já existentes. Após reprovação
+dos oito objetos decorativos, suas formas foram reconstruídas e receberam um
+atlas próprio 4×4: madeira/crina/sela, borracha, esmalte/latão, pelúcia, tecidos,
+laca e pele do tambor. `decorativos-atlas-v3.png` é a versão consumida; v2 conserva
+o primeiro estudo. Texturas geradas pela ferramenta integrada image_gen, com
+prompts junto aos PNGs. Fontes originais preservadas; sem CLI/API paga separada.
+Iluminação continua adiada. A revisão ainda aguarda avaliação artística humana.
 
 Para servir somente no computador local:
 
@@ -168,6 +171,9 @@ Validação vigente:
   36 enquadramentos finais e percursos NORMAL/FÁCIL com decisões a cada 300 ms.
 - `npm run test:bear-chase:browser`: teclado/toque, áudio, pausa, save, conclusão
   controlada e descarte no jogo real.
+- `npm run journal:qa -- test:bear-chase:props:fidelity`: comparação dos oito objetos
+  com as fontes, proporções projetadas, regiões do atlas, quatro vistas e escala
+  de gameplay. Proporção semelhante é só um indicador, não aceite artístico.
 - `npm test`: domínio e regressões das fases existentes.
 
 Os aliases históricos de catálogo/móveis preservam evidências das versões retas

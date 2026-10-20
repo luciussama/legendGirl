@@ -528,3 +528,33 @@ o de percurso. Aliases históricos preservam expectativas antigas da versão ret
 E5/E6 implementados e E7 técnico executado. Revisão humana, iluminação adiada,
 integração de campanha, duração definitiva e áudio final continuam separados.
 Sem commit, push ou publicação nesta sessão.
+
+## Revisão dos oito objetos reprovados — 20/10/2026
+
+Sessão `20261020T160444-c30692d726a7`. Usuário reprovou cavalinho, patinho e os
+demais seis objetos decorativos por textura, forma e tamanho. A entrega técnica
+anterior de E5 não equivale a aprovação artística. Reconstruídos os oito modelos
+com perfis próprios, volumes mais suaves, detalhes e proporções próximas às fontes.
+`DecorativeGeometry` separa construção geométrica da propriedade GPU; métodos
+documentados em português. Nenhuma mudança de simulação, traçado ou personagens.
+
+Atlas compartilhado 4×4 `decorativos-atlas-v3.png`, 1254², com dezesseis regiões
+específicas por material; v2 e prompts preservados. Duas chamadas image_gen
+integrada, sem CLI/API paga separada. A primeira tentativa foi recusada por sete
+referências excederem o limite de cinco; repetida com cinco fontes e descrição
+das demais. Refinamento corrigiu pelos/tramas grandes demais. Também corrigidos
+material do rosto do bobo e focinho do cavalo, asas/cauda do pato e proporções.
+Texturas antigas e PNGs originais intactos; novo atlas consumido na prévia/painel.
+
+QA de fidelidade passou em quatro vistas e gameplay para os oito modelos, UVs
+contidas e proporções projetadas comparadas às fontes. A métrica é proxy visual,
+não comprovação de identidade. QA de percurso passou: quinze objetos, três formatos,
+36 finais, restauração WebGL, recursos estáveis e descarte zero. Build/lint/assets,
+sintaxe e mapa aprovados: 422 arquivos, 99 recortes, 29 assinaturas. Suíte geral
+não repetida nesta revisão exclusivamente artística. Aguarda avaliação humana.
+
+Durante a tarefa, usuário criou o commit local `77adff8d`; esta IA não o criou.
+Foi constatada divergência de um commit local e um remoto (`04202a8b`). Usuário
+solicitou explicitamente fazer o merge após concluir a revisão; tratar em sessão
+seguinte, sem confundir autorização de merge com push. Fontes/relatório da revisão
+e metadados de capturas ficam no diário, antes de sincronizar Git.
