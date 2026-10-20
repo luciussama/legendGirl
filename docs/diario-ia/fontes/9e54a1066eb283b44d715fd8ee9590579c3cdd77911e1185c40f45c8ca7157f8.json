@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9e54a1066eb283b44d715fd8ee9590579c3cdd77911e1185c40f45c8ca7157f8",
+  "path": "assets/models/bear-chase/paleta-menina.json",
+  "sha256": "b612c034a5d87c17e3f360b058038ed5bbf7b4d0101ce32a4e10a8af15e2bed2",
+  "capturedAt": "2026-10-19T19:47:02.956282+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"source\": \"assets/art/toy-room/battle/girl/animation-v2/run-sheet.png\",\n  \"sha256\": \"5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f\",\n  \"method\": \"Mediana por canal de janela com alfa ≥ 240 7×7; amostras regionais, sujeitas à revisão artística.\",\n  \"points\": {\n    \"skin\": [\n      400,\n      240\n    ],\n    \"cream\": [\n      300,\n      390\n    ],\n    \"pink\": [\n      350,\n      440\n    ],\n    \"rose\": [\n      250,\n      400\n    ],\n    \"hair\": [\n      320,\n      125\n    ],\n    \"lock\": [\n      375,\n      130\n    ],\n    \"boot\": [\n      145,\n      533\n    ],\n    \"sole\": [\n      150,\n      548\n    ],\n    \"white\": [\n      373,\n      217\n    ],\n    \"eye\": [\n      385,\n      228\n    ],\n    \"black\": [\n      300,\n      200\n    ],\n    \"blush\": [\n      445,\n      240\n    ],\n    \"guard\": [\n      465,\n      352\n    ]\n  },\n  \"colors\": {\n    \"skin\": \"#f7b090\",\n    \"cream\": \"#fce4c0\",\n    \"pink\": \"#f2a393\",\n    \"rose\": \"#a96458\",\n    \"hair\": \"#4d281b\",\n    \"lock\": \"#7b4c3b\",\n    \"boot\": \"#643125\",\n    \"sole\": \"#3d1815\",\n    \"white\": \"#f6f3f2\",\n    \"eye\": \"#471e1a\",\n    \"black\": \"#3a0d11\",\n    \"blush\": \"#f6ad8d\",\n    \"guard\": \"#74858b\"\n  }\n}\n"
+}

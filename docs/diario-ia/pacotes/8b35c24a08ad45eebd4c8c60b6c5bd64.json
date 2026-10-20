@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "8b35c24a08ad45eebd4c8c60b6c5bd64",
+  "date": "2026-10-19T20:36:22.889598+00:00",
+  "title": "QA temporário: test:bear-chase:motion:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/8b35c24a08ad45eebd4c8c60b6c5bd64.log",
+      "sourceId": "4c6c0bb19623ba41dd37cabda7983756448d91ea06ed112881c9f583dcaae89e",
+      "sha256": "0d9df1c8ff0c707ba1b4f44b60118ab1e0d78649fbc2aaff8e268ec502076d22",
+      "bytes": 1948,
+      "metadataOnly": false
+    }
+  ]
+}

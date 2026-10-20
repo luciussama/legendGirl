@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "fc7af7be13a64a3d8f87a9cc3569866c",
+  "date": "2026-10-20T18:03:40.194322+00:00",
+  "title": "QA temporário: test:bear-chase:lighting",
+  "files": [
+    {
+      "path": "qa-execucoes/fc7af7be13a64a3d8f87a9cc3569866c.log",
+      "sourceId": "35ef421d9544f7047963cc6709a765d1af1c4522b840ee311fc300589979fe87",
+      "sha256": "1ff4feecf77c351f2289abb4343a1226b400fbb74fbd4c0cdb5a7a0f81a56fc7",
+      "bytes": 5377,
+      "metadataOnly": false
+    }
+  ]
+}

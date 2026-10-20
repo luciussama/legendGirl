@@ -1,0 +1,26 @@
+{
+  "assets/art/toy-room/environment-sheet.png": {
+    "sha256": "235f177d278dc1d399a714224aaa62d03bd9be96c2be70f78a3f994b389adaed",
+    "bytes": 1039651
+  },
+  "assets/art/toy-room/stage3/oak-cabinet-v1.png": {
+    "sha256": "870179a5c3fe465ca0ce4f419da7ec8a0247889e087c810d4201deddf23e0a1d",
+    "bytes": 123061
+  },
+  "src/js/bear-chase/ChaseSimulation.js": {
+    "sha256": "f5b226487a15789813dc912b82716e9f82a0f378d6639c2714fa65fb1648ed90",
+    "bytes": 7111
+  },
+  "src/js/bear-chase/ChaseConfig.js": {
+    "sha256": "338b9b67727c53ac9b6926833697477132bea6c1d89aeb8b96ea05e7d01b425a",
+    "bytes": 798
+  },
+  "src/js/bear-chase/ChaseRenderer3D.js": {
+    "sha256": "8af8768c9bd3a413b80b510347d377618d2757d6aac88a42ebf22e38f12d8ad8",
+    "bytes": 11822
+  },
+  "src/js/bear-chase/ChaseToyModels.js": {
+    "sha256": "8cbf79ec921e36e376ae4dffe9980a111f7108697759cafe2b3bded4ec2011ef",
+    "bytes": 1308
+  }
+}

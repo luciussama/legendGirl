@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bce317b1fbeeed56be5424b001d881e89877451dbf2ce1416203ed78861042e0",
+  "path": "qa-execucoes/ba5c68214d554069a6d18549b202de04/docs/qa/toy-room-arena/android-paisagem-arena-robot-entrada.png",
+  "sha256": "2572df75831192e132961eaf58d1dd3559b5954f21c6f129e272e3c057d9ec86",
+  "capturedAt": "2026-10-20T18:56:50.819454+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-paisagem-arena-robot-entrada.png\", \"sha256\": \"0628129a86df4f77877598cb2d070c0725ef9d069c81b8070f643f4d7276d0df\", \"bytes\": 609613, \"binaryRetained\": false}"
+}

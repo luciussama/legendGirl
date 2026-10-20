@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T205052-b1205f7a4e4a-fim",
+  "sessionId": "20261019T205052-b1205f7a4e4a",
+  "type": "fim",
+  "date": "2026-10-19T20:54:42.186018+00:00",
+  "title": "Registrar aprovação parcial e planejar assets 3D da Toy Room",
+  "actor": "Copilot",
+  "summary": "Registrada a aprovação parcial da personagem, com retrabalho futuro, e criado roteiro para converter brinquedos arremessados/estáticos, móveis e itens da cena da prévia 3D conforme a arte original. Sem implementação artística ou alteração de runtime.",
+  "checks": [
+    "git diff --check: aprovado",
+    "Documentação apenas: testes de runtime não executados"
+  ],
+  "pending": [
+    "Construir prova visual de um brinquedo e um móvel; submeter à avaliação humana antes de ampliar o trabalho. Preservar física, hitboxes e sprites originais."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/planos/20261019-brinquedos-e-cena-3d.md"
+  ]
+}

@@ -1,6 +1,6 @@
 # Contexto compartilhado vigente
 
-Atualizado em 19/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
+Atualizado em 20/10/2026. Este documento é a passagem de contexto, não uma transcrição completa. O acervo pesquisável preserva documentos, instruções, prompts, relatórios e versões disponíveis no Git. Não inventar fatos ausentes dos registros.
 
 ## Ler antes de agir
 
@@ -73,6 +73,22 @@ Sessão `20261019T130908-2bdc86a5c0b0`, por pedido explícito do usuário para l
 Por pedido atual do usuário, sessão `20261019T131809-fafe34834a5d`, `fix-balanceamento-luta` foi integrada à `main` no commit `ea57dfc324b5dc00e7653244d595fa21e80bcd69`, sem conflitos. O repositório não possui `master`; `HEAD` remoto aponta para `main`, usada como principal após comunicar a correspondência ao usuário. A origem `c169d28789f57cba33dd72c80744560c8aef59e2` já estava no GitHub quando esta sessão começou, resolvendo a pendência externa registrada anteriormente, sem reescrever aquela evidência.
 
 A árvore do merge foi confirmada idêntica à da origem. Suíte padrão, build, 66 recursos e diff aprovados após integrar. O merge foi enviado para `origin/main`; só após confirmar a ancestralidade no remoto, `origin/fix-balanceamento-luta` foi excluída. A branch local foi preservada; o workspace está na `main`. Um commit documental subsequente registra o encerramento e as evidências; os comandos não certificam a conclusão de eventual deploy automático do GitHub.
+
+## Estudo da perseguição 3D após o urso em 19/10/2026
+
+Na branch `FEAT-bear-chase`, a sessão `20261019T163037-29b2efe54c26` estudou o pedido de uma perseguição após vencer o urso: corrida automática dentro do quarto de brinquedos estendido e fiel à estética atual, urso lançando brinquedos com pressão crescente, aproximação gradual e fada seguindo atrás/acima da menina. Identidade e movimentos da menina devem preservar os sprites atuais; a fase deve superar a duração da maior fase existente, ainda a medir. O pedido atual autoriza estudo e plano, sem implementação nesta rodada.
+
+O [plano de execução](planos/20261019-perseguicao-urso-3d.md) registra evidências, alternativas, oito etapas e critérios de validação. Recomenda prova de cenário com geometria 3D real e personagens ilustrados com novas vistas traseiras; essa representação híbrida e sua fidelidade ainda precisam de avaliação visual. Malhas animadas são alternativa caso a prova não satisfaça. Não há biblioteca 3D instalada, assets novos, benchmark ou fase implementada. A integração deve tratar os dois caminhos atuais de vitória da arena, os efeitos de `restoreReality`, saves antigos e canvas WebGL separado do canvas 2D. Código futuro deve usar composição/contratos restritos, seguir SOLID e documentar cada método em português do Brasil. Dano, duração final, encenação detalhada e representação definitiva dos personagens são decisões pendentes do desenvolvimento. Na sessão `20261019T170055-ab3aefbc7118`, o usuário definiu a transição: vitória na luta → corte para cutscene com urso caído → menina se aproxima vagarosamente → urso se levanta e foge → perseguição. O urso só vai ao baú quando a menina o alcança no final do percurso. A vitória da arena não pode antecipar esse envio; saves e conclusão devem preservar a sequência e aplicar o efeito uma única vez. Plano atualizado, sem implementação.
+
+Passos da perseguição preparados na sessão `20261019T174444-74fe85306ae4`: fontes MP3 fornecidas pelo usuário preservadas em `assets/audio/bear-chase/fontes/`; seis WAVs candidatos por ator em `assets/audio/bear-chase/passos/` (12 arquivos, 144.530 bytes). Recortes locais verificados tecnicamente, sem escuta crítica, aprovação artística ou integração ao runtime. [Análise de áudio](analises/20261019-passos-viabilidade.md). Disparar futuramente por contato dos pés, com caminhada lenta na cutscene e cadência de corrida na perseguição. O usuário proíbe pagamentos automáticos e exige solicitá-los pessoalmente na plataforma; não contratar serviços nem consumir créditos para essa preparação.
+
+Trilha da perseguição definida pelo usuário: `assets/audio/bear-chase/Chase.mp3`, cópia integral do arquivo fornecido, com hash conferido. Sessão `20261019T175720-3dfeab17f940`: MP3 estéreo 44,1 kHz/256 kbps, 94,08 s, aproximadamente 3 MB, pico amostral -5,04 dBFS, sem amostras no limite PCM. [Avaliação](analises/20261019-chase-viabilidade.md). Viável tecnicamente; requer escolha auditiva dos pontos de repetição para cobrir a fase longa e mixagem com os passos. Sem escuta crítica, loop validado ou integração no runtime. Na sessão `20261019T180000-ba56e08f8ab9`, o usuário aprovou a direção sonora: entrada quando o urso se levanta e foge, passos audíveis e redução da música quando a menina o alcança; repetição natural a preparar. Essa aprovação não certifica mixagem ou emenda ainda não executadas.
+
+## Prova jogável da perseguição 3D em 19/10/2026
+
+Por pedido de execução do usuário, sessão `20261019T180920-9abdc512abd2`, criada prévia isolada pelo seletor **Perseguição 3D (prévia)**, com quarto 3D real, materiais atuais, avanço/desvio, obstáculos, voo da fada e áudio local. `src/js/bear-chase/` separa domínio, input, áudio, renderer, HUD e coordenação. Three.js 0.186.1 fixo e distribuído localmente com licença; importação pesada somente ao iniciar a prévia. Métodos novos documentados em português. [Guia](../bear-chase/GUIA-PREVIA.md) e [resultado real](relatorios/20261019-previa-perseguicao-3d.md).
+
+São 90 segundos de corrida para avaliação, não a fase final de maior duração. Vistas laterais, caminhada/levantar, voo e repetição integral da música são provisórios. A campanha normal e o transporte do urso ao baú na arena ainda conservam o fluxo anterior; falta ligar os dois caminhos de vitória à nova cutscene, integrar saves/checkpoints e expandir conteúdo após avaliação artística. Snapshot próprio da prévia validado, sem migração de campanha. `npm test` final inclui domínio da perseguição e passou; navegador verificou três formatos, teclado/toque, 12 passos, mudo, pausa, restauração, percurso simulado completo, campanha preservada e descarte. Primeira falha do áudio foi corrigida expondo o contexto no adaptador. Build/recursos/lint/diff passaram; mapas e métodos regenerados. Sem geração paga, créditos, commit ou push. Não homologar dificuldade humana, arte final, emenda musical ou aparelhos físicos com esses testes.
 
 ## Trabalho compartilhado
 
@@ -185,3 +201,592 @@ Por instrução do responsável, relatórios de máquina, testes, fixtures, evid
 `DialogueRenderer.renderDialogue` é a apresentação compartilhada da dark room e Toy Room: caixa, nome, retrato, quebra de texto e área segura. `renderCutsceneDialogue` conserva seleção das falas e avanço da primeira fase. `ToyRoomStory.renderStoryBeat` adapta NANDA para `fairy` e MENINA para `baby`, conservando os tempos originais e sem pedir avanço manual em falas temporizadas. Narração sem interlocutor permanece em `PoeticNarrator`, fora do quadrado central.
 
 Na Toy Room, a cena não é reprojetada durante as falas: o desenho e o hit testing dos controles continuam alinhados. Em dispositivos móveis, o painel termina acima da área dos controles calculada por `MobileUILayout`. O render não altera o snapshot narrativo. Os testes específicos estão arquivados no diário e acessíveis pelos aliases `test:dialogues` e `test:dialogues:browser`; a suíte padrão inclui a regressão. A recuperação de QA combina os comandos dos pacotes, permitindo acrescentar novos testes sem perder a suíte anterior.
+
+## Menina volumétrica da perseguição em 19/10/2026
+
+Após aprovar a prévia funcional, o usuário pediu substituir o sprite lateral da menina
+por versão 3D. Sessão `20261019T182639-ca2ae1840324`: `ChaseGirlModel` cria malhas
+reais com rosto, cabelo castanho, rabo único e laço rosa, vestido creme e botas;
+`ChaseGirlAnimation` articula caminhada, corrida, repouso e tropeço por estado.
+Renderer mantém recursos compartilhados e iluminação própria. A simulação, colisões,
+passos gravados e as fases 2D permanecem com os contratos anteriores. O GLB em
+`assets/models/bear-chase/menina.glb` é intercâmbio em pose neutra; a autoria e
+animação em execução ficam nos módulos JS. Nenhum serviço pago foi chamado.
+O usuário reprovou explicitamente essa arte: vestido fora da paleta, pele/detalhes
+e proporções sem fidelidade. Não tratar o modelo atual como aprovado. Urso/fada
+continuam planos provisórios.
+
+
+## Reprovação artística e revisão crítica da perseguição
+
+Sessão `20261019T183600-b0d9f912ce21`: revisão visual e partida pela interface nativa,
+sem mutação de estado nem avanço artificial, observada até 56%/23,2 m com colisão
+visível. A sessão parou de avançar; falha de clique `noWindowsAvailable` e tentativas
+de retomada não resolveram. Não houve conclusão jogada até o baú nesta revisão.
+A análise separa observação de tela, inspeção de código e propostas no relatório
+`docs/diario-ia/relatorios/20261019-revisao-critica-menina-perseguicao.md`.
+Prioridade: refazer paleta por região e silhueta da menina, recuperar rosa/salmão
+na roupa, pele e acabamento ilustrado; a estrutura técnica anterior não comprova
+fidelidade. Também observados trens com fundo preto, fada adiantada, urso frontal,
+repetição simétrica do corredor, contato dos pés pouco convincente e textos sobre
+a encenação. Nenhuma correção de produção aplicada: usuário pediu análise crítica.
+Próxima versão deve ter comparação direta com as fontes atuais e nova avaliação
+humana, seguida de playtest completo. Registros históricos não foram alterados.
+
+
+## Revisão 2 da menina e apresentação da perseguição
+
+Sessão `20261019T193929-09884af19ec9`, executando a priorização autorizada pelo usuário:
+paleta regional extraída do run-sheet da arena (coordenadas/hash/metodologia em
+`assets/models/bear-chase/paleta-menina.json`), vestido salmão e regiões creme,
+corpo compacto, rosto/mechas revistos, acabamento com iluminação branca controlada,
+apoio dos pés por IK e porte da espada à frente. Inclinação acompanha a velocidade
+lateral e se desfaz ao parar. Modelo GLB regenerado; sprites originais preservados.
+O urso passou a volume com queda/levantar/fuga/olhar para trás/retorno; trem ganhou
+malha sem fundo preto, fada passa atrás/acima, texto saiu da ação central e os
+módulos do quarto ficaram assimétricos com laterais de móveis texturizadas.
+A simulação, colisões, duração e campanha não foram alteradas.
+
+Comparação local solicitada em `docs/diario-ia/qa/perseguicao-20261019/comparacao.html`
+(e JS associado), com fonte/modelo em luz neutra e no quarto, escala de gameplay,
+poses e vistas selecionáveis. A primeira arte continua reprovada no histórico;
+a revisão 2 e o urso novo aguardam avaliação humana. Vistas traseiras são novas
+interpretações, não desenhos originais aprovados. Fada, blocos/coelho e baú ainda
+usam ilustrações planas. A assimetria melhora a apresentação, mas não substitui
+uma expansão futura em trechos temáticos completos nem integra a campanha.
+
+
+## Revisão 3: proporções dos braços e detalhes da menina
+
+Sessão `20261019T200000-6be5b3278690`. O usuário avaliou a revisão 2 como “75% bom”
+e pediu proporções melhores nos membros superiores, mangas fofas, pregas junto ao
+alto da saia e rabo de cavalo visível, respeitando a assinatura original. Ajustes
+localizados: braço superior de 0,18 para 0,15, antebraço mantido em 0,17, mão e
+fixação da espada ajustadas; mangas claras bufantes com punho salmão; franzido
+geométrico com contraste suave perto da cintura; rabo único projetado para trás e
+para o lado, com mechas/pontas articuladas e balanço recalibrado. A paleta extraída,
+rosto, corpo, física e cenário foram preservados. GLB regenerado. Comparação passa
+a identificar revisão 3 e permite ampliar fonte/modelo juntos em “Detalhes (2,5×)”.
+À época deste registro, a nova versão ainda não tinha aprovação. A atualização
+posterior abaixo classifica a alteração da personagem como parcialmente aprovada,
+com novo trabalho previsto para o futuro.
+
+## Peso e movimento orgânico da corrida em 19/10/2026
+
+Na sessão `20261019T200935-1e9fdca7ae53`, a corrida da menina recebeu compressão no
+apoio e recuperação entre passadas, contrabalanço de quadril/tronco/braços,
+articulação de quadril/joelho/tornozelo para sustentar os pés e resposta secundária
+de cabelo e saia. A simulação, distância, colisões e dificuldade não mudaram.
+Retomada pela sessão `20261019T203454-d43790773ab4`, a validação atual
+`test:bear-chase:motion:browser` passou: oscilação corporal de 0,080, apoio máximo
+de 0,00143 unidade, poses estáveis e estado de domínio inalterado. `npm run build`
+também passou. A validação técnica do movimento não equivale a aprovação artística.
+
+## Aprovação parcial da personagem e roteiro para props 3D em 19/10/2026
+
+Após revisar a evolução da personagem, o usuário informou “Melhorou bastante! :)”
+e classificou a alteração como **parcialmente aprovada**. A personagem voltará a
+ser trabalhada no futuro; não registrar a revisão 3 como aprovação completa nem
+estender essa aprovação aos demais assets.
+
+O usuário solicitou um roteiro para dar profundidade aos brinquedos arremessados
+pelo urso e aos brinquedos, armários e demais itens visuais da Toy Room. A meta é
+substituir a apresentação plana por modelos 3D, respeitando a estética, a paleta
+e os materiais observáveis nos sprites originais. O plano
+`planos/20261019-brinquedos-e-cena-3d.md` delimita o inventário, fases e critérios.
+É planejamento, não implementação ou aprovação de novos modelos. PNGs originais
+devem permanecer preservados como referência e fontes de textura. A primeira
+prova deverá comparar um brinquedo e um móvel em vistas neutra e de gameplay,
+antes de produzir o restante. Física, hitboxes, dimensões lógicas, interações,
+disposição de plataforma e dificuldade ficam fora da mudança artística.
+
+
+## Plano operacional dos props em 20/10/2026
+
+Sessão `20261020T124254-7c4dce56c46d`: a pedido do usuário, lidos os documentos
+produzidos externamente e confrontados com o runtime. Plano de execução em
+`planos/20261020-execucao-props-cena-3d.md`, complementando o roteiro de 19/10.
+Ordem: baseline/referências → piloto trem + armário → avaliação humana → catálogo
+com recursos compartilhados → três arremessáveis → demais props/móveis → ambiente
+→ regressão. `wardrobe` usa o armário baixo `oak-cabinet-v1`; não inferir um móvel
+alto adicional. Coleta/transporte continuam na sala 2D e não entram nesta conversão.
+O plano alerta para o orçamento próximo do limite (285/300 recursos na evidência
+anterior), preservação das fontes, contratos e aprovação parcial da menina.
+A análise de `Chase.mp3` é histórica: áudio já integrado; emenda musical/escuta,
+expansão da fase e campanha ficam em trabalhos separados. Nenhuma implementação
+nova foi iniciada nesta sessão; próxima entrega proposta é baseline e dois pilotos.
+
+## Primeiros pilotos e acompanhamento em 20/10/2026
+
+Sessão `20261020T125052-b1f7385f4f33`: usuário aprovou a sequência e pediu progresso
+a cada mudança. Executados E0 e E1 do plano: baseline e pilotos locais de trem e
+armário baixo, em `src/js/bear-chase/props/`. Propriedade GPU separada das fábricas,
+partes estáticas mescladas por material, comentários em português por método.
+Painel revisável em `qa/perseguicao-20261020/props.html`: original/modelo, luz neutra,
+quarto, quatro vistas, giro, escala e lançamento. Não integrado à corrida e sem
+produção dos demais modelos antes da revisão E2. O trem ainda tem acabamento mais
+liso que a fonte; faces não fornecidas pelo sprite são interpretações novas.
+
+O usuário questionou o armário no meio da rota do painel. Corrigido para a parede
+direita, portas para dentro, X=4,95 e rotação -π/2; limites reais X=4,4235..5,355,
+dentro da parede X=5,5 e fora da faixa central. Não tratar posição diagnóstica
+anterior como layout aprovado. Isso não criou obstáculo ou alteração na fase.
+
+Baseline de navegador aprovada, pico 285 recursos; pilotos com 21 recursos comuns,
+6 chamadas para trem e 4 para armário. QA temporário passou para integridade dos
+originais/contratos, volume, apoio, compartilhamento, 60 trocas sem acúmulo, quatro
+vistas, lançamento, viewports e descarte zero. Domínio, assets, build, lint e mapa
+de sprites passaram. Não houve teste em aparelho físico, suíte global completa,
+integração/performance do futuro catálogo nem aprovação artística dos pilotos.
+Relatório: `relatorios/20261020-pilotos-trem-armario.md`.
+Servidor de desenvolvimento amplo bloqueado por revisão automática; painel servido
+apenas em 127.0.0.1:3000. Sem custo, serviço pago, commit ou push.
+
+## Catálogo, primeiro lote integrado e crítica de materiais — 20/10/2026
+
+Sessão `20261020T130520-75b12c979064`. O usuário aprovou parcialmente os pilotos,
+autorizou avançar e adiou melhorias de iluminação das texturas. Também determinou
+que todos os móveis sigam o padrão lateral: junto às paredes e com rota livre.
+Não inferir aprovação artística de blocos/coelho nem conclusão do catálogo inteiro.
+
+Executados E3/E4: `ChasePropCatalog` e `ChasePropResources`, fábricas de blocos e
+coelho; trem aprovado parcialmente integrado pela mesma fábrica do painel.
+`ChaseToyModels` só adapta a API antiga. Arremessáveis têm apoio inferior,
+recursos comuns e liberação local; restauração com mesmo ID/outro tipo troca a
+instância. Seis armários entram nos módulos laterais. Estante/castelo antigos
+foram alinhados às paredes, mas continuam representações planas sobre suporte;
+baú e demais props ainda dependem de E5. Não registrar conversão integral.
+
+Superfícies/geometrias e materiais repetidos dos 12 módulos agora são comuns;
+frisos pareados reduzem chamadas. Pico próprio 117 (antes 285), catálogo 42;
+cenário comparável com um bloco: 294 chamadas (antes 310). Três arremessáveis
+simultâneos: 300–306 chamadas nos três formatos. Estado/RNG/save/colisão e menina
+preservados. `npm test`, build/assets/lint, sintaxe, mapa de sprites e QA temporário
+no jogo/painel passaram, incluindo percurso controlado, IDs restaurados, perda e
+restauração WebGL, recursos estáveis e descarte zero. Não certifica hardware real.
+
+Durante a execução, o usuário questionou a pobreza das texturas: tom adequado,
+mas ausência dos detalhes que evocam Legend of Mana. Explicação confirmada no
+código: amostra de carvalho 60×52 ampliada a 128², contraste reduzido na madeira
+pintada; pelúcia 8×10 ampliada a 64² e repetida. Materiais foscos quase uniformes
+não têm desgaste/nós/fibras/sombras pintadas específicos por face. Iluminação
+futura não fornece esses dados ausentes. Isso é simplificação desta implementação,
+não limitação inevitável de WebGL/3D. Registrar deficiência de acabamento, sem
+tratá-la como aprovada ou adiar automaticamente toda a textura junto da luz.
+Prioridade recomendada antes de expandir E5: prova de textura própria por objeto,
+UVs por região e detalhes pintados coerentes, mantendo paleta e orçamento.
+Relatório: `relatorios/20261020-catalogo-arremessaveis.md`. Sem custo/commit/push.
+
+
+## Amostra de direção pictórica — 20/10/2026
+
+Sessão `20261020T135959-383ba4a2d395`: usuário solicitou uma amostra antes de
+validar propagação do trabalho pictórico inspirado em Legend of Mana. Gerada uma
+prancha de armário, usando captura real do modelo atual e sprite original como
+referências, via ferramenta integrada image_gen. Veios por tábua, nós, desgaste
+de bordas, pinceladas e pátina reforçados, mantendo desenho geral/paleta.
+Arte em `arte/20261020-armario-pictorico-v1.png`, metadados em JSON irmão e prompt
+completo em `relatorios/20261020-amostra-pictorica-armario.md`. Conservar a arte
+conceitual; ela não é bitmap regenerável de QA. A captura temporária foi
+identificada por hash/bytes no diário e descartada depois de usada.
+
+É uma proposta de pintura sobre a captura, não atlas UV ou textura aplicada.
+O painel esquerdo é reprodução gerada da referência; não confundir com screenshot
+literal. Pequenas interpretações de borda/ferragens existem. Runtime, iluminação
+da cena e originais não alterados. Captura temporária e integridade passaram,
+mapa de sprites reconstruído sem alteração de assets de produção. Nenhuma
+avaliação humana desta amostra registrada, nenhum serviço externo contratado,
+CLI/API paga separada, commit ou push. Aguarda validação da direção antes de
+produzir mapas por região e comprovar o resultado no modelo em gameplay.
+
+
+## Direção pictórica aprovada e aplicação real — 20/10/2026
+
+Sessão `20261020T144330-e2641eed729f`: usuário aprovou enfaticamente o estudo do
+armário (“ficou muito melhor”) e solicitou o mesmo padrão nos demais assets.
+A direção deixou de ser apenas proposta. Aplicados mapas reais aos quatro props
+3D atuais: armário, trem, blocos e coelho. Não registrar esta entrega como conversão
+dos 15 itens do roteiro ou substituição global de sprites/personagens 2D.
+
+Quatro atlas próprios em `assets/art/toy-room/bear-chase/materials/`, PNGs originais
+gerados de 1254² e preservados, referências/prompts/manifesto na mesma pasta.
+Ferramenta integrada image_gen, uma chamada por objeto, sem CLI/API paga separada.
+`PictorialMaterialAssets` define caminhos; `pictorialMaterial` compartilha uma
+textura por objeto, `bake` remapeia UVs com margem de 8 pixels. Armário separa
+painel/montante/tampo/latão, trem/blocos separam cores pintadas, coelho separa
+pelúcia/creme/interior/costura. Veio axial da caldeira e UVs do telhado ajustados.
+Formas, dimensões, pivôs, domínio, luz da cena e originais anteriores preservados.
+
+Painel e prévia jogável consomem os mesmos atlas; quatro vistas reais inspecionadas.
+Suíte geral, QA de modelos e teste pictórico temporário passaram: 4 texturas de
+atlas compartilhadas, UVs contidas, 121 recursos de cena, 46 do catálogo, estado
+estável, contexto WebGL recuperado e descarte zero. Cenário comparável: 298
+chamadas; três brinquedos simultâneos 304–310. Memória dos novos atlas estimada
+em 33.536.288 bytes (~32 MiB) RGBA8 com mipmaps; não é medição de VRAM/FPS em
+aparelho físico. Mapa de sprites: 420 arquivos, 99 recortes, 29 assinaturas.
+Relatório: `relatorios/20261020-aplicacao-texturas-pictoricas.md`.
+
+Aprovação humana refere-se à amostra/direção, não a cada nova execução já aplicada.
+E5/E6 e o restante do catálogo continuam no roteiro, agora com este padrão;
+iluminação continua adiada. Sem commit, push ou contratação de serviço externo.
+
+
+## E5: estante, castelo e baú 3D integrados — 20/10/2026
+
+Sessão `20261020T150652-055a3b965d96`. Usuário considerou a texturização muito boa
+e autorizou executar/continuar o pipeline. Entregue o primeiro lote de E5:
+`BookshelfProp`, `BlockCastleProp`, `ToyChestProp`, registrados no catálogo e
+integrados à prévia. São sete modelos dos quinze previstos, não E5 inteiro.
+Estante baixa com duas fileiras/30 livros sólidos; castelo com torres e portais
+vazados; baú vermelho/amarelo, medalhão azul, tampa curva e inscrição sobre
+superfície curva. Partes ocultas/lettering são interpretações, aguardando revisão.
+
+Removidos planos/suportes genéricos da estante/castelo e plano do baú. Móveis
+continuam laterais, |X|>4,3; baú em X=4,74. Tampa abre por pose de apresentação
+após o alcance e fecha ao final; urso recebe deslocamento visual até o baú, sem
+mutação do domínio. Câmera do encerramento enquadra os atores no retrato; corrida
+e fases 2D preservadas. Área final da parede direita reservada desde a aproximação
+para evitar oclusão por outro móvel. Iluminação segue adiada.
+
+Materiais combinados por atlas nos novos móveis preservam UVs/tintas por vértice:
+estante 3 chamadas, castelo 1 e baú 4. Sem nova geração paga, dependência ou PNG
+de material; reaproveitados os quatro atlas pictóricos aprovados como direção.
+Cena estável em 128 recursos (catálogo 62), descarte zero; cenário comparável 272
+chamadas, três brinquedos 282–284. Atlases continuam com a estimativa anterior
+de ~32 MiB; inscrição acrescenta sua pequena textura dinâmica. Não é benchmark
+em aparelho físico.
+
+Suíte geral, build/assets/lint, sintaxe, mapa de sprites, QA dos sete modelos e
+regressão no navegador passaram, incluindo 36 cenários de encerramento, três
+formatos, limites/framing/parede, pivô, estado/save/inputs/áudio e contexto WebGL.
+Primeiro QA falhou porque a tampa atravessava a parede; folga/profundidade
+corrigidas mantendo limites. Capturas finais tinham corrida de restauração de
+fixture e foram corrigidas para fotografar antes de restaurar o estado.
+Registros de falha preservados. Relatório `relatorios/20261020-e5-moveis.md`.
+
+Próximo lote: teddy, robot, duck, drum, jack, armchair, rocking-horse e table;
+depois completar composição E6 e regressão E7. Não houve aprovação humana
+individual desses três novos modelos, commit, push, publicação ou integração
+automática da campanha.
+
+## Refinamento do castelo e baú — 20/10/2026
+
+Sessão `20261020T153759-9d84c0dee58f`: usuário solicitou tijolos mais marcados
+e baú mais redondo, conforme as fontes originais. `BlockCastleProp.centralWall`
+substitui o portal central monolítico por tijolos separados, pilares verdes e
+cinco cunhas douradas com juntas e chanfros reais. Sem linhas sobrepostas à arte.
+Castelo conserva dimensões e uma chamada; triângulos passam de 1552 a 3344.
+`ToyChestProp` eleva o arco de 0,43 para 0,63; a altura total passa de 1,354 para
+1,554. Inscrição acompanha a nova superfície. Dobradiça de apresentação avança
+0,18 ao abrir para preservar folga da parede; fecha na posição original.
+Texturas, iluminação, domínio, posições laterais e fontes 2D preservados.
+
+QA de modelos e jogo passou, incluindo compartilhamento/descarte, recuperação
+WebGL, percurso controlado e 36 cenários finais nos três formatos emulados.
+Build/lint/assets/mapa/diff aprovados. Primeira tentativa de QA foi impedida pelo
+sandbox ao abrir porta local; execução com acesso local permitida passou. Sem
+nova suíte geral nesta revisão visual, sem hardware físico ou aprovação humana
+do resultado. Capturas regeneráveis identificadas no diário antes do descarte.
+O restante de E5 continua pendente; esta sessão trata só dos dois refinamentos.
+
+## Catálogo completo e percurso com curvas — 20/10/2026
+
+Sessão `20261020T154508-0ea59f401567`. Usuário aprovou os refinamentos e pediu
+concluir os oito objetos restantes, corrigir a repetição crítica da sala e adicionar
+curvas, subidas/descidas e emboscadas à dificuldade. A instrução atual amplia o
+escopo anterior de preservar traçado e padrões. Fases 2D e campanha preservadas.
+
+`DecorativeProps` completa os quinze IDs com ursinho, robô, pato, tambor, caixa de
+surpresa, poltrona, cavalinho e mesa. São decoração, sem novos tipos de obstáculo.
+Materiais compartilhados; poltrona também usa região limpa do PNG original por UV.
+Os oito novos modelos têm simplificações/faces interpretadas e aguardam revisão
+artística humana. Fontes originais intactas, sem novas imagens ou serviços pagos.
+
+`ChaseRoute` define curvas Hermite e relevo sem DOM/Three.js. `ChaseRoom` substitui
+os doze módulos reciclados por superfícies contínuas e adereços fixos em distâncias
+absolutas. Visibilidade distante limitada além da neblina; móveis não trocam tipo
+ou posição ao avançar. Personagens, câmera e obstáculos compartilham o traçado.
+Piso opaco e sombra sem escrita de profundidade corrigem um retângulo claro
+identificado visualmente após um QA numérico aprovado.
+
+Simulação aplica deriva externa em curva, menor no FÁCIL, velocidade limitada
+conforme rampa e nove emboscadas com 20 m de antecedência e faixa livre. Padrões
+próximos são espaçados. Hitboxes, colisão varrida, voo, tipos, etapas/evento único
+e esquema de save preservados. Saves antigos válidos passam a seguir o novo
+traçado/padrões; isso é mudança intencional, não replay do percurso anterior.
+
+Suíte geral e navegador existente passaram: teclado/toque, pausa, áudio/mudo,
+save de campanha, conclusão e descarte. Novo `test:bear-chase:route` cobre quinze
+modelos, quatro vistas dos oito novos, adereços fixos em 1.441 amostras, três
+formatos, 36 enquadramentos finais, visão das três faixas a 14 m das nove
+emboscadas, recuperação WebGL e dois percursos sem dano com decisões a cada 300 ms.
+Recursos próprios aproximadamente 199, abaixo de 300; chamadas de referência
+cerca de 100–135, antes 282–284. Não é benchmark de FPS/VRAM ou hardware físico.
+
+Painel ganhou controle de distância. Guia atualizado; QA vigente da nova sala é
+o de percurso. Aliases históricos preservam expectativas antigas da versão reta.
+E5/E6 implementados e E7 técnico executado. Revisão humana, iluminação adiada,
+integração de campanha, duração definitiva e áudio final continuam separados.
+Sem commit, push ou publicação nesta sessão.
+
+## Revisão dos oito objetos reprovados — 20/10/2026
+
+Sessão `20261020T160444-c30692d726a7`. Usuário reprovou cavalinho, patinho e os
+demais seis objetos decorativos por textura, forma e tamanho. A entrega técnica
+anterior de E5 não equivale a aprovação artística. Reconstruídos os oito modelos
+com perfis próprios, volumes mais suaves, detalhes e proporções próximas às fontes.
+`DecorativeGeometry` separa construção geométrica da propriedade GPU; métodos
+documentados em português. Nenhuma mudança de simulação, traçado ou personagens.
+
+Atlas compartilhado 4×4 `decorativos-atlas-v3.png`, 1254², com dezesseis regiões
+específicas por material; v2 e prompts preservados. Duas chamadas image_gen
+integrada, sem CLI/API paga separada. A primeira tentativa foi recusada por sete
+referências excederem o limite de cinco; repetida com cinco fontes e descrição
+das demais. Refinamento corrigiu pelos/tramas grandes demais. Também corrigidos
+material do rosto do bobo e focinho do cavalo, asas/cauda do pato e proporções.
+Texturas antigas e PNGs originais intactos; novo atlas consumido na prévia/painel.
+
+QA de fidelidade passou em quatro vistas e gameplay para os oito modelos, UVs
+contidas e proporções projetadas comparadas às fontes. A métrica é proxy visual,
+não comprovação de identidade. QA de percurso passou: quinze objetos, três formatos,
+36 finais, restauração WebGL, recursos estáveis e descarte zero. Build/lint/assets,
+sintaxe e mapa aprovados: 422 arquivos, 99 recortes, 29 assinaturas. Suíte geral
+não repetida nesta revisão exclusivamente artística. Aguarda avaliação humana.
+
+Durante a tarefa, usuário criou o commit local `77adff8d`; esta IA não o criou.
+Foi constatada divergência de um commit local e um remoto (`04202a8b`). A sessão
+`20261020T172304-8b9e6b05d2e4` concluiu posteriormente a integração autorizada;
+ver registro abaixo. Isso não autorizou push.
+
+## Integração do histórico remoto da FEAT-bear-chase — 20/10/2026
+
+Após o usuário encontrar a mensagem de branches divergentes no `git pull`, a sessão
+`20261020T172304-8b9e6b05d2e4` verificou o ancestral comum e comparou as duas pontas.
+O commit remoto `04202a8b` não continha arquivos exclusivos em relação à árvore
+local e substituía versões mais recentes: removia o percurso com curvas, a sala
+contínua e os modelos decorativos revisados, além de reverter o catálogo e os
+materiais. As alterações remotas eram snapshots anteriores da mesma linha de
+trabalho; não foram reaplicadas sobre as versões locais mais recentes.
+
+As evidências e o encerramento da revisão artística foram consolidados no commit
+local `a1a4940c`. O histórico remoto foi então conectado pelo merge commit
+`f9e7c4e3`, usando a estratégia `ours`, preservando integralmente a árvore local
+validada e ambos os pais. Não foi feito push. A branch local está à frente de
+`origin/FEAT-bear-chase` em três commits, sem commits remotos pendentes.
+
+Validações executadas após o merge: `test:bear-chase:route`,
+`test:bear-chase:props:fidelity`, `npm test`, `npm run build`,
+`npm run check-assets`, `npm run lint` e `git diff --check`, todas aprovadas.
+O teste de fidelidade verifica os oito props, UVs e quatro vistas; seus indicadores
+geométricos não substituem avaliação artística. A aprovação humana da direção
+pictórica permanece distinta da aprovação individual dos modelos; a revisão dos
+oito props aguarda avaliação humana. Não houve alteração de runtime pelo merge.
+
+## Iluminação de janela e sombras — 20/10/2026
+
+Sessão `20261020T175621-ad0230422f52`: usuário autorizou trabalhar a iluminação
+antes adiada. `ChaseLighting` separa luz de janela, preenchimento indireto aproximado
+e luz principal à frente do urso, com sombra para trás. Piso/parede/friso/teto/tapete
+passam a materiais receptores de luz; girl/bear/props projetam e recebem sombras.
+Fada ilustrada preserva luminosidade. HUD ganhou fundo de contraste no progresso.
+Sem alteração de simulação, física, trajetória, modelos ou texturas de produção.
+
+Três projetores reutilizáveis seguem janelas fixas, com troca apenas apagados.
+Só a janela dominante e a luz principal geram sombras simultâneas. PCFShadowMap
+compatível com Three.js r186; PCFSoftShadowMap é depreciado nessa versão local.
+Indireta é aproximação por preenchimento/rebatimento; não há GI físico/path tracing.
+Mapas 2048²/1024² em paisagem e 1024²/512² em retrato; até quatro mapas alocados.
+Controlador libera explicitamente os mapas. Teto não projeta sombra para permitir
+a luz global de apresentação solicitada, mas recebe iluminação.
+
+QA inicial excedeu referência com 312 chamadas; reduzidos os produtores de mapas,
+sem elevar o teto do teste. QA específico passou em doze cenas, 219–292 chamadas
+e 208 recursos próprios, com diferença real entre pixels com/sem sombras, luz
+frontal e projeção traseira do urso por raycast, continuidade e descarte zero.
+Primeira fixture alternava shadowMap.enabled sem invalidar cache de shader;
+corrigida para alternar receptores de sombra, preservando a falha histórica.
+Regressão de percurso, build/lint/assets/mapa e sintaxe executados nesta revisão.
+Sem benchmark em dispositivo físico ou aprovação artística humana.
+
+Ao retomar o merge, já foi encontrado reconciliado externamente em `f9e7c4e3`,
+com documentos em `8cf9291d` e referência origin alinhada. Comando de commit desta
+IA retornou “nothing to commit” e não executou merge por estar encadeado com &&.
+Não atribuir criação/envio desses commits a esta execução. Iluminação posterior
+permanece em alterações locais, sem novo commit ou push desta IA.
+
+
+## Revisão das sombras nas curvas e documentação — 20/10/2026
+
+Sessão `20261020T181911-38cb8c0288e0`: inspeção visual e gameplay completo por
+controlador com entradas automatizadas. Direcional frontal rasante fazia a parede
+curva sombrear grande parte do piso. Luz elevada para 28; mapa próximo ajustado
+para ±12,5/±24 e profundidade 0,5–80. Janelas com alcance/far 18, máscara permanente
+e transição de força da sombra até zero antes da troca. Paredes continuam casters.
+Métodos de ChaseLighting documentados em português com parâmetros, motivos dos
+valores e ciclo de recursos; formatação expandida. PascalCase preserva convenção
+dos módulos de classes; não foi solicitada renomeação global.
+
+QA final: gameplay COMPLETE, zero colisões, 6.110 passos, pico 308 chamadas;
+28 trocas suaves em 2.881 amostras e 210 pontos próximos dentro do mapa. QA de
+iluminação em três formatos e regressão de percurso/WebGL/descarte aprovados.
+Tentativas com 347/340 chamadas e uma amostra fora da margem preservadas como
+falhas; limite de 310 não ampliado. Build/assets/mapa/sintaxe/diff verificados.
+Relatório: `relatorios/20261020-sombras-curvas.md`. Sem aceite artístico humano,
+GI físico ou benchmark em aparelhos. Nenhum ajuste de simulação/modelo/textura.
+
+Commit `3a422243` apareceu externamente durante a sessão e absorveu parte do
+trabalho existente. Esta IA não o criou e não fez push; ajustes/documentação
+posteriores continuam locais até ação do responsável.
+
+
+## Urso 3D pictórico e articulação — 20/10/2026
+
+Sessão `20261020T183637-3798297026f3`: usuário reprovou simplificação do urso e
+rigidez da corrida. Modelo revisto a partir de bear/idle/01 e walk/03 da arena:
+cabeça larga, focinho curto, pelúcia ocre, laço vermelho em leque, patas e costura.
+Atlas `urso-atlas-v2.png` gerado com image_gen integrada; v1 intermediária tem fibras
+grandes e não é carregada. Prompts preservados. Originais da arena intactos.
+ChaseBearAnimation separa apoios com joelhos/tornozelos, transferência de peso,
+contrabalanço, cabeça/orelhas/laço, largada contínua e lançamento articulado.
+Sem alteração do domínio, física, captura ou dificuldade. Sem bloqueio horizontal
+físico dos pés; movimento é cinemático. Métodos documentados em português.
+
+16 malhas mescladas por pivô, uma textura/material; 222 recursos próprios. QA do
+rig: apoio vertical com erro máximo 0,01485, pose determinística/estado preservado
+e continuidade exata da largada. Gameplay completo zero colisões, pico 302 chamadas;
+regressão de percurso/três formatos/36 finais/WebGL/descarte e npm test passaram.
+Build/assets/mapa/sintaxe/diff aprovados. Sem aprovação artística humana ou hardware
+físico. Relatório `relatorios/20261020-urso-pictorico-corrida.md`.
+Pedido seguinte autorizado: limpeza completa dos arquivos sem pertinência ao projeto
+ou documentação, com preservação do acervo imutável e recuperação de artes aposentadas.
+
+
+## Consolidação e limpeza autorizada — 20/10/2026
+
+Sessão `20261020T184959-b352523a0674`: após concluir o urso, usuário pediu limpeza
+completa de arquivos sem pertinência. Auditadas referências estáticas, caminhos
+dinâmicos, manifestos e scripts de reconstrução. Retirados 16 assets intermediários
+ou cópias sonoras idênticas das pastas ativas (35.522.252 bytes dessas cópias).
+Conteúdo integral preservado em fontes imutáveis e conferido por hash/bytes antes
+da exclusão; não contar esse valor como redução líquida do repositório, pois as
+artes continuam recuperáveis no acervo. Dois prompts antigos também consolidados.
+27 relatórios avulsos consolidados integralmente no diário; consultar pelo caminho
+original via journal:search/show. Nenhum JSON de fontes/registros/pacotes/commits
+anterior foi apagado ou reescrito. Um .DS_Store removido.
+
+Mantidos originais/recortes usados por caminhos dinâmicos, fontes de reconstrução,
+áudio de fallback src/audio/The Circle Game.mp3, GLB documentado, guias humanos,
+planos pertinentes, imagem de direção aprovada, QA ativo, dependências e ambiente
+local. Atlas atual do urso é v2, decorativos é v3; prompts atuais identificam as
+fontes aposentadas por sourceId. Manifesto de recuperação e decisões:
+`limpeza/20261020-manifesto.json`. Validação após limpeza aprovada: npm test, exploração/combate/retorno da arena
+em três formatos e QA do urso. Build/assets/diff aprovados. Mapa final: 411 imagens,
+99 recortes, 29 assinaturas. Metadados de 11 conjuntos de capturas e um levantamento
+antigo de fontes também consolidados; fixtures efetivamente lidas pelo QA mantidas.
+Capturas temporárias e caches locais descartados com identificação no manifesto.
+
+
+## Ritmo crescente e câmera de perseguição — 20/10/2026
+
+Sessão `20261020T190232-f53560bddf2a`. Usuário autorizou acelerar a corrida,
+aproximar câmera/urso, encurtar lançamentos e adicionar balanço vertical leve.
+`ChasePacing` centraliza curva suave: velocidade-base 8→12 após os primeiros 15%,
+intervalo 3,5→1,75 s, voo 0,65→0,38 s. Rampas/tropeços continuam influenciando o
+avanço. Aproximação do urso se intensifica nos últimos 6%; amortecimento aumenta
+nesse trecho para evitar congelar a passada ao atingir o fim antes da captura.
+
+Lançamentos conservam corredor livre e margem prevista de reação após pouso,
+incluindo velocidade/rampa adiante. FÁCIL mantém urso um pouco mais distante para
+conservar ataques finais com maior margem. Saídas sucessivas rápidas são adjacentes.
+`flight` por obstáculo é opcional no save v1; ausente mantém o voo antigo. Render e
+colisão consultam o mesmo valor. Sem alterações em hitboxes, largura ou controles.
+
+`ChaseCamera` é cálculo puro: aproximação longitudinal 7,5→5,1 em paisagem e
+9→6,8 em retrato, altura menor, alvo mais baixo/próximo e campo 57→60/62 graus.
+Balanço vertical 0,018→0,04 unidade ligado à distância, sem oscilação durante pausa.
+Folga adaptativa no retrato mantém os dois atores nas faixas distintas. Captura
+começa no mesmo quadro de câmera, com transição ao baú. HUD deixou de prometer
+90 segundos fixos. Pista permanece com 720 unidades; duração nominal total medida
+87,57 s, incluindo as etapas narrativas existentes.
+
+Validação: npm test passou e incorpora a regressão nova de ritmo. Seis percursos
+NORMAL/EASY com decisões a cada quadro/300/400 ms terminaram sem colisões, baú único,
+save/RNG estáveis e sem quadros parados no fim. Último lançamento ~673,6; aviso real
+mínimo após pouso ~1,063 s NORMAL/~1,313 s FÁCIL nos percursos medidos. Isso não
+homologa desafio humano. 33 comparações em três formatos confirmaram enquadramento
+e crescimento projetado; gameplay pelo controlador: 5.254 passos, zero colisões,
+pico 306 chamadas. Percurso/36 finais/WebGL/descarte e navegador teclado/toque,
+pausa/save/áudio/mudo/campanha passaram. Build/assets/mapa/sintaxe/diff aprovados.
+Falhas intermediárias de margem no FÁCIL e enquadramento/ampliação no retrato
+preservadas; corrigidas sem relaxar as asserções. Sem benchmark físico ou aceite
+humano de conforto do balanço. Sem commit/push nesta execução.
+
+Próximo pedido autorizado e colocado na sequência pelo usuário: abertura da
+perseguição em cutscene ilustrada, usando a cena inicial da menina na cama no
+quarto escuro como referência de linguagem. Menina aproxima-se do urso em desenho;
+transição para o 3D somente quando ele se levantar.
+
+## Abertura ilustrada da perseguição e quase toque — 20/10/2026
+
+Sessão `20261020T191907-12f396002561`: substituída por completo a apresentação 3D
+das etapas BEAR_DOWN/GIRL_APPROACH/BEAR_RISE. `ChaseIntroRenderer` compõe Canvas 2D
+com parede, janela, madeira, tapete, poltrona e fada existentes. Dois atlas próprios
+gerados por image_gen integrada seguem a pintura da cena da cama e referências
+da menina/urso: `cinematic/approach-atlas-v1.png` e `reach-atlas-v1.png`, com prompts.
+Sem CLI/API paga externa. Os sprites anteriores e modelos da corrida permanecem.
+
+Correção adicional do usuário: piso agora usa o mesmo recorte 186×48 do quarto,
+sem comprimir muitas tábuas em faixas finas. Menina chega perto do urso caído,
+inclina-se e estende a mão; ele reage antes do toque, levanta, vira e foge. Poses
+ancoradas nos sapatos; proximidade relativa calculada para cada formato. Levantar
+inicia após o gesto. Corte escuro de 0,25 s após ficar de pé e revelação de 0,4 s
+na largada. Não se apresenta WebGL durante as três etapas ilustradas, nem durante
+carregamento. Artes e 3D carregados antes de liberar a simulação. Sem outro RAF.
+
+Pausa/restauração usam o relógio existente. Nenhuma mudança de duração das etapas,
+domínio, física, dificuldade ou contrato de save nesta abertura. Ainda é a prévia
+selecionada pelo debug; não houve integração nova da vitória da arena à campanha.
+
+QA final: 39 cenas em três formatos, doze poses completas, ausência de chamadas
+de apresentação 3D na abertura, quase toque antes da reação, fuga, pausa/save
+determinísticos e quadros idênticos nos dois lados do corte escuro. Inspeção visual
+identificou divisões irregulares da prancha; ajustados recortes e incluída rejeição
+de recortes que cortem figuras. Capturas temporárias têm caminho/hash/bytes no
+acervo e são descartadas. npm test e QA nativo de perseguição passaram após a
+integração inicial (percurso completo sem colisões e recursos descartados). Após
+os dois ajustes visuais, repetido QA específico; build/assets/mapa/sintaxe/diff
+aprovados. Mapa final: 413 imagens, 99 recortes, 29 assinaturas. Sem benchmark
+físico ou aprovação artística humana desta abertura. Sem commit/push.
+
+## Vidas e derrota na perseguição — 20/10/2026
+
+Sessão `20261020T194154-5efde8f4f4b3`. Usuário pediu trocar os textos superiores por
+um indicador de vida, com derrota no terceiro tropeço; esclareceu seis no FÁCIL.
+`ChaseHealth` centraliza limites (NORMAL 3, EASY 6), duração da queda e consulta das
+etapas de derrota. Corações cheios/vazios substituem título, explicação e indicador
+de porcentagem/distância. Cutscene ilustrada continua sem HUD de corrida.
+
+Último impacto entra em FALLING imediatamente, antes de lançar novos objetos ou
+emitir passos/captura. Distância, entrada lateral e obstáculos ficam congelados;
+após 1,1 s entra em GAME_OVER, que congela o estado e nunca envia o urso ao baú.
+Animação inclina o corpo para a frente, acomoda braços/pernas/espada e cabelo para
+o lado. Câmera mira a menina no chão, música reduz ganho até parar e passos cessam.
+HUD orienta nova tentativa pelo seletor. Campanha permanece isolada na prévia.
+
+Snapshot v1 acrescenta dificuldade opcional. Saves anteriores mantêm a selecionada;
+hits continua sendo a fonte das vidas, sem contador duplicado. Save antigo em
+corrida com impactos acima do limite passa à queda ao retomar. Etapas novas são
+validadas pelo restaurador e contagens negativas/fracionárias são rejeitadas.
+
+QA: suíte geral passou e inclui regressão de vidas. Domínio verificou três/seis
+impactos, imunidade, contato único, derrota real sem desviar, save/RNG, ausência de
+captura e estado terminal congelado. QA final de navegador passou em 18 cenas e
+três formatos, incluindo dificuldade restaurada, quadro estável, HUD limpo, pose
+de queda e música em zero. QA nativo completou o percurso sem colisões, preservou
+campanha, teclado/toque, pausa/save/áudio e descarte zero. Capturas inspecionadas.
+Falhas intermediárias preservadas: baseline anterior bloqueava a alteração
+autorizada de ChaseGirlAnimation; permitido somente esse módulo adicional, sem
+retirar a proteção do modelo/artes/configuração. Duas poses intermediárias
+falharam por extensão vertical da espada/cabelo; corrigidas sem relaxar limite.
+Build/assets/mapa/sintaxe/diff aprovados. Sem aceite humano ou hardware físico.
+Sem commit/push. Evidências regeneráveis descartadas após registrar metadados.

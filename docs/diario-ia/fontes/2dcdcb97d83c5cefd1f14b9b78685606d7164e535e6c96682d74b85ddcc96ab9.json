@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2dcdcb97d83c5cefd1f14b9b78685606d7164e535e6c96682d74b85ddcc96ab9",
+  "path": "docs/diario-ia/relatorios/20261018-auditoria-saltos-normal.json",
+  "sha256": "dd41ea817b237d437d2a23d508e92265b8400e088ddf2cbce0a74cb225cb1650",
+  "capturedAt": "2026-10-20T18:54:57.969359+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"sessao\": \"20261019T023417-7d4a862551ef\",\n  \"relatoHumano\": {\n    \"dificuldade\": \"NORMAL\",\n    \"facilTestado\": false,\n    \"dispositivo\": \"não informado\",\n    \"trecho\": \"não informado\"\n  },\n  \"configuracao\": {\n    \"referencia\": \"5c94ad4090e20764f131908a47228bd37817465a\",\n    \"sha256Atual\": \"97b49d0262b1ace2c747c0d19d39afeae59f3c05814e87f88d2f9b5b0b8757c4\",\n    \"sha256Referencia\": \"97b49d0262b1ace2c747c0d19d39afeae59f3c05814e87f88d2f9b5b0b8757c4\",\n    \"identica\": true\n  },\n  \"modulosInalteradosDesdeHEAD\": {\n    \"src/js/game.js\": true,\n    \"src/js/config.js\": true,\n    \"src/js/state/GameDifficulty.js\": true,\n    \"src/js/main.js\": true,\n    \"src/js/input.js\": true,\n    \"src/js/controllers/InputController.js\": true\n  },\n  \"janelasIniciais60HzMs\": [\n    1167,\n    850,\n    783,\n    800,\n    433,\n    317,\n    367,\n    350,\n    867,\n    533\n  ],\n  \"observacao\": \"Janelas medidas pelo verificador de percurso contínuo NORMAL, não são notas de dificuldade humana. O pouso garantido castelo→trem já existe desde 24/09/2026. Não houve edição de produção.\"\n}\n"
+}

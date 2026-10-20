@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T190822-cdc65dbb104d",
+  "date": "2026-10-20T19:08:22.384275+00:00",
+  "title": "Câmera progressiva: enquadramento e comparação visual",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/browser.js",
+      "sourceId": "dbf7a362e4d068faa272e5ebf52db026edd73953ba8eb2402acff7bd33f05ced",
+      "sha256": "b9fa1d9f1f30cd4afce4ec8549b5abb50955eb00ab7a13685e1219dba8c2f5b3",
+      "bytes": 5488,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/browser.js"
+  }
+}

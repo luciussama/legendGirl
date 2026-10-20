@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T184141-dbfb79ad8342",
+  "date": "2026-10-20T18:41:41.569623+00:00",
+  "title": "Urso: preservar quadro neutro antes de aguardar a referência",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/urso-20261020/browser.js",
+      "sourceId": "08e32314ea1223f93eeb1f9bc2b990ce78d9fd7addb81d20e357de3032bfa09b",
+      "sha256": "282444c330a1a89a6f5f6e106c435d8e48dad3d8cde29285ca29276fdeae4171",
+      "bytes": 6665,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:bear:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/urso-20261020/browser.js"
+  }
+}

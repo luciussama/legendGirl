@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T155646-0c1e7c42638d",
+  "date": "2026-10-20T15:56:46.386635+00:00",
+  "title": "Regressão final do percurso: recuperação real de contexto WebGL",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/browser.js",
+      "sourceId": "abc0d70a78a1e62b5aa0836df6dc042f90354f0534d024e7c5bf39eebbc37c32",
+      "sha256": "392ed0dc36e2644152f84fb77bcee552214f68e0c22b04c763954403cfd8035d",
+      "bytes": 11128,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

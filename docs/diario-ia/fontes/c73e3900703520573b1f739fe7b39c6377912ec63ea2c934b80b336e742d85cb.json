@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c73e3900703520573b1f739fe7b39c6377912ec63ea2c934b80b336e742d85cb",
+  "path": "qa-execucoes/ba5c68214d554069a6d18549b202de04/docs/qa/toy-room-arena/desktop-arena-dinosaur-movimento.png",
+  "sha256": "6777a71e18d05a77674e8ae2246af7bfa1c84868efffb793498a804300eabcfe",
+  "capturedAt": "2026-10-20T18:56:50.842978+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-dinosaur-movimento.png\", \"sha256\": \"e61e9b30ad0df1a5f2347c8f6a63c46f0cf6a47fb90bf3df0030404e0e9fb520\", \"bytes\": 1161967, \"binaryRetained\": false}"
+}

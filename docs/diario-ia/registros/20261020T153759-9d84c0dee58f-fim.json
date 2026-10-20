@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T153759-9d84c0dee58f-fim",
+  "sessionId": "20261020T153759-9d84c0dee58f",
+  "type": "fim",
+  "date": "2026-10-20T15:40:47.793353+00:00",
+  "title": "Refinar juntas do castelo e proporção arredondada do baú",
+  "actor": "Codex",
+  "summary": "Refinados castelo e baú conforme pedido: tijolos, pilares e cinco cunhas do arco separados com juntas reais; tampa mais alta e arredondada, inscrição acompanha a curva e articulação preserva folga junto à parede. Comparações reais inspecionadas, fontes originais e materiais preservados.",
+  "checks": [
+    "QA específico de modelos e jogo aprovado: quatro vistas, recursos estáveis e descarte, percurso até COMPLETE, WebGL e 36 cenários finais em três viewports emulados. Build, lint, assets, sintaxe, docs:sprites e diff aprovados. Primeiro QA bloqueado pelo bind do sandbox; repetição com acesso local permitido passou. Suíte geral não repetida nesta revisão visual."
+  ],
+  "pending": [
+    "Revisão humana deste refinamento; restante de E5 e iluminação conforme roteiro. Sem validação em dispositivo físico."
+  ],
+  "files": [
+    "src/js/bear-chase/props/BlockCastleProp.js",
+    "src/js/bear-chase/props/ToyChestProp.js",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261020-refino-castelo-bau.md",
+    "docs/diario-ia/qa/moveis-20261020/capturas-refino.json"
+  ]
+}

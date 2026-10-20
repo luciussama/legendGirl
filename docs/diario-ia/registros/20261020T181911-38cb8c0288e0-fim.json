@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T181911-38cb8c0288e0-fim",
+  "sessionId": "20261020T181911-38cb8c0288e0",
+  "type": "fim",
+  "date": "2026-10-20T18:32:12.153194+00:00",
+  "title": "Gameplay crítico e correção das sombras nas curvas",
+  "actor": "Codex",
+  "summary": "Gameplay crítico identificou grandes sombras rasantes das paredes curvas. Luz frontal elevada, volume do mapa e alcance de janelas ajustados; máscara permanente e transição suave das sombras. Métodos de ChaseLighting documentados em português com parâmetros, ciclo de vida e justificativas; formatação expandida. Convenção PascalCase das classes explicada ao usuário, sem renomeação.",
+  "checks": [
+    "Gameplay final pelo controlador real: COMPLETE, zero colisões, 6.110 passos, pico 308 chamadas; 28 transições suaves e 210 pontos cobertos. QA de iluminação nos três formatos e regressão de percurso/WebGL/descarte passaram. Build/assets/mapa/sintaxe/diff aprovados. Falhas intermediárias preservadas, limite de 310 mantido. Capturas com metadados arquivados antes do descarte."
+  ],
+  "pending": [
+    "Revisão artística humana e benchmark físico de FPS/VRAM. Sombras continuam aproximação PCF, sem GI ou sombras de área; não declarar eliminação de todo contorno duro. Sem commit/push por esta execução; observado commit externo 3a422243 durante o trabalho."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseLighting.js",
+    "docs/diario-ia/qa/sombras-curvas-20261020/gameplay.js",
+    "docs/diario-ia/qa/sombras-curvas-20261020/capturas.json",
+    "docs/diario-ia/relatorios/20261020-sombras-curvas.md",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

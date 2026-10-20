@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T160444-c30692d726a7-fim",
+  "sessionId": "20261020T160444-c30692d726a7",
+  "type": "fim",
+  "date": "2026-10-20T17:16:42.363857+00:00",
+  "title": "Refazer fidelidade dos oito props decorativos às artes originais",
+  "actor": "Codex",
+  "summary": "Refeitos os oito props reprovados em forma, proporção e materiais. Cavalinho com perfil/crina/patins maciços, patinho com formas arredondadas, demais objetos com detalhes específicos. Novo atlas 4x4 v3 gerado por image_gen integrada, com estudo v2 e prompts preservados. Originais intactos. Usuário criou commit externo 77adff8d e autorizou merge após concluir esta revisão.",
+  "checks": [
+    "QA de fidelidade aprovado para oito modelos, UVs, proporções projetadas, quatro vistas e gameplay. QA do percurso aprovado com quinze objetos, três formatos, 36 finais, WebGL e descarte. Build, lint, assets, sintaxe, mapa e diff aprovados. Não repetida suíte geral nesta revisão visual. Capturas identificadas antes de descartar; artes preservadas."
+  ],
+  "pending": [
+    "Avaliação artística humana da nova revisão. Iluminação adiada e testes físicos permanecem. Executar merge autorizado da branch remota em sessão própria; sem autorização de push."
+  ],
+  "files": [
+    "src/js/bear-chase/props/DecorativeGeometry.js",
+    "src/js/bear-chase/props/DecorativeProps.js",
+    "src/js/bear-chase/props/PictorialMaterialAssets.js",
+    "src/js/bear-chase/props/ChasePropResources.js",
+    "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v3.png",
+    "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.prompt.json",
+    "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v3.prompt.json",
+    "docs/diario-ia/relatorios/20261020-fidelidade-oito-props.md",
+    "docs/bear-chase/GUIA-PREVIA.md"
+  ]
+}

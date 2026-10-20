@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T145020-2c2dfd8b8c76",
+  "date": "2026-10-20T14:50:20.058564+00:00",
+  "title": "Painel consumindo atlas pictóricos reais por objeto",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.js",
+      "sourceId": "442ed40f20172fa960f1ac003e9dc7ada914f4f35a30b72f403f9ce2dda3c178",
+      "sha256": "edf8d5cc470a2a0888fe6f4567efe644328173c84c426261d25c933b062430e7",
+      "bytes": 7321,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

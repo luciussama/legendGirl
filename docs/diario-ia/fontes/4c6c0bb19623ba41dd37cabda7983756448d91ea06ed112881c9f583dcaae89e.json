@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "4c6c0bb19623ba41dd37cabda7983756448d91ea06ed112881c9f583dcaae89e",
+  "path": "qa-execucoes/8b35c24a08ad45eebd4c8c60b6c5bd64.log",
+  "sha256": "0d9df1c8ff0c707ba1b4f44b60118ab1e0d78649fbc2aaff8e268ec502076d22",
+  "capturedAt": "2026-10-19T20:36:22.888831+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:motion:browser",
+    "exitCode": 0,
+    "package": "20261019T201209-8265c809706b"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:motion:browser\n> node docs/diario-ia/qa/perseguicao-20261019/movimento-browser.js\n\nCAPTURAS [{\"file\":\"/tmp/legendgirl-movimento-0.png\",\"bytes\":401363,\"sha256\":\"a1ede4db3fae29cecbebbb37799719705bd45b67c3a6ae9ff96162da508fea15\"},{\"file\":\"/tmp/legendgirl-movimento-1.png\",\"bytes\":402493,\"sha256\":\"26dee8841f0e7bf42e3c42898023bedd4ed57d35432d133bb3e3be218e19ba33\"},{\"file\":\"/tmp/legendgirl-movimento-2.png\",\"bytes\":404733,\"sha256\":\"25704695657ad1546510f3a7b1c42984a4e2b471ed3b74f3141eccae2f5c8922\"},{\"file\":\"/tmp/legendgirl-movimento-3.png\",\"bytes\":405959,\"sha256\":\"9a77b4df4d9efa03d6f804a7b126c49d49abe56e25acd1764194972eea498342\"}]\nAPROVADO: reprodução real, oscilação corporal, contrarrotação, braços, cotovelos, resposta secundária, apoio e congelamento. {\"ranges\":{\"body\":0.08018453718946605,\"hip\":0.24,\"chest\":0.34,\"leftArm\":0.84,\"rightArm\":0.48000000000000004,\"elbow\":0.5598736993266944,\"hair\":0.2599805177203556,\"tip\":0.479723834728317,\"skirt\":0.16996004424588784},\"support\":0.0014294630960701993,\"minFoot\":0.0010000000000000009,\"counter\":-1.2240000000000009,\"stable\":true,\"unchanged\":true,\"poses\":[{\"cycle\":0,\"body\":-0.13021345956502425,\"leftArm\":-0.27,\"rightArm\":0.56},{\"cycle\":0.125,\"body\":-0.1038208082664536,\"leftArm\":-0.14698484809834997,\"rightArm\":0.4897056274847714},{\"cycle\":0.25,\"body\":-0.05378654043497577,\"leftArm\":0.14999999999999997,\"rightArm\":0.32000000000000006},{\"cycle\":0.375,\"body\":-0.08017919173354643,\"leftArm\":0.44698484809834993,\"rightArm\":0.15029437251522865},{\"cycle\":0.5,\"body\":-0.13021345956502425,\"leftArm\":0.57,\"rightArm\":0.08000000000000002},{\"cycle\":0.625,\"body\":-0.1038208082664536,\"leftArm\":0.44698484809835004,\"rightArm\":0.15029437251522856},{\"cycle\":0.75,\"body\":-0.05378654043497577,\"leftArm\":0.15000000000000008,\"rightArm\":0.31999999999999995},{\"cycle\":0.875,\"body\":-0.08017919173354639,\"leftArm\":-0.14698484809834986,\"rightArm\":0.4897056274847712}]}\n"
+}

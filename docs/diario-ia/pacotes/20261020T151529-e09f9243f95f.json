@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T151529-e09f9243f95f",
+  "date": "2026-10-20T15:15:29.822947+00:00",
+  "title": "E5: comparação das três novas peças e tampa articulada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/modelos-browser.js",
+      "sourceId": "2cd0c8af2b0e3397cc53150cb0693a5936d84897c8cf0026f4d55bd9b761557b",
+      "sha256": "9b036b0a797e3412edbc368874081d474e3d9a9d7af4df51e403543d2e88fe9f",
+      "bytes": 7249,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.js",
+      "sourceId": "7a620240901fcbcb4e68389e86e57a93904d95ca27525d09241ab42f89fc36ff",
+      "sha256": "2efb7c70876e36294f4e059952ed510f8d164e8585d05bf5bab1ad7499ee119c",
+      "bytes": 8312,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.html",
+      "sourceId": "e953c5869f48ed7195f017c06471277ceab59ab00330b1c55e400941f9e69899",
+      "sha256": "c8843fd1643142e2f75a12e77c59689b21203bd8db19f0dd3a84344c19f575a3",
+      "bytes": 2980,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:furniture:models": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js docs/diario-ia/qa/moveis-20261020/modelos-browser.js"
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "8c72590bef1b3b5b8273d81bf199847b63646b328c344c845a8bddc69699b912",
+  "path": "qa-execucoes/6ad410e28373413aa1e67a8d5875a4d2.log",
+  "sha256": "49501db19efcab4d0b1447b9e0e42e676d7b2a6acd0aaff3cb5b210b77972196",
+  "capturedAt": "2026-10-19T20:02:10.829177+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:comparison:browser",
+    "exitCode": 0,
+    "package": "20261019T194702-2131e0f0e1c3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:comparison:browser\n> node docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js\n\nCAPTURA {\"file\":\"/tmp/legendgirl-comparacao-v2.png\",\"bytes\":353649,\"sha256\":\"ed940e8d22511d55152374cbfaa1183954c96f960e89843b5ff1337e03efa487\"}\nAPROVADO: comparação neutra/quarto, paleta rastreável, pés apoiados, desvio, trem volumétrico, fada atrás e urso 3D. {\"support\":0.0010000000000001535,\"steering\":0.030815771976741506,\"settled\":9.475479722521161e-11,\"errors\":[],\"cards\":0,\"fairyZ\":1.15,\"resources\":277,\"bearVolume\":0.9984304031639262}\n"
+}

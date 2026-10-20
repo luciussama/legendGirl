@@ -1037,9 +1037,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   let isPaused = false;
 
+  /** Alterna pausa global e comunica o mesmo estado à prévia 3D e ao áudio legado. */
   function togglePause() {
     isPaused = !isPaused;
     state.isPaused = isPaused;
+    state.toyRoomInstance?.instance.chase?.setPaused(isPaused);
     if (isPaused) {
       state.toyRoomInstance?.instance.clearInput();
       if (audio && typeof audio.pauseMusic === 'function') {
@@ -1115,8 +1117,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     [platforms, phase3Platforms].forEach(group => group.forEach(p => { p.isLanded = false; p.lightAlpha = 0; }));
   }
 
+  /** Inicia um modo de avaliação sem gravar sua execução sobre a campanha normal. */
   function startDebugPhase(phase, difficulty = state.gameDifficulty) {
-    if (!['bedroom','toy-room','arena'].includes(phase)) return false;
+    if (!['bedroom','toy-room','arena','bear-chase'].includes(phase)) return false;
     saveProgress();
     newCampaign({ preserveProgress:true });
     state.gameDifficulty = normalizeDifficulty(difficulty);
@@ -1126,6 +1129,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       beginOpeningGameplay(); enterFirstJumpTutorial(); audio.startMusic();
     } else {
       startToyRoomPhase();
+      if (phase === 'bear-chase') {
+        const room = state.toyRoomInstance.instance;
+        room.startChasePreview();
+      }
       if (phase === 'arena') {
         const room = state.toyRoomInstance.instance;
         room.tutorial.finish();

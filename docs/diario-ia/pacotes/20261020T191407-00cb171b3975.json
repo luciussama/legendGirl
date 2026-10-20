@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T191407-00cb171b3975",
+  "date": "2026-10-20T19:14:07.538040+00:00",
+  "title": "Enquadramento nas faixas extremas durante toda a aproximação",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/browser.js",
+      "sourceId": "76e2ff7ce3046714dbd28c4f27aef7704d046eb415612b12c63ebde8a6f71a0b",
+      "sha256": "0c752866595e9915195503c2c90de59f01d4a4b9768c7aa65c190cd2e8d51fdc",
+      "bytes": 5590,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing:browser": "node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/browser.js"
+  }
+}

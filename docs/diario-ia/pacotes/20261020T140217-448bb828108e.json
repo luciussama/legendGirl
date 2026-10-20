@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T140217-448bb828108e",
+  "date": "2026-10-20T14:02:17.483698+00:00",
+  "title": "Fonte da captura do modelo atual para amostra pictórica",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/pictorico-20261020/capturar-browser.js",
+      "sourceId": "5eeb48f1e727982ca66b27db7a7a07fffe6af2ea775f4a52b403756280ea0105",
+      "sha256": "94cc6d02632f6bff176a2e66382673b07a5cf0c89dd4347e18acbd48ce858289",
+      "bytes": 3174,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "review:bear-chase:pictorial": "node docs/diario-ia/qa/catalogo-20261020/catalogo-qa.js docs/diario-ia/qa/pictorico-20261020/capturar-browser.js"
+  }
+}

@@ -82,3 +82,12 @@ A documentação para pessoas contém guias e `docs/DIARIO-HUMANO.md`. Não repr
 ## Documentação vigente e planos preservados
 
 O [índice humano](../README.md) aponta arquitetura, contratos, comandos e guias de arte. A arquitetura corrente é confrontada com o código; planos antigos, como a proposta de Diretor de Fases/HFSM, ficam pesquisáveis como fontes históricas e não representam implementação existente. Alterações na documentação geram novas fontes, sem reescrever versões antigas. O registro de merge/commit descreve a ação realmente executada; documentação preparada não prova integração nem publicação.
+
+
+Relatórios avulsos consolidados podem existir somente em `fontes/` e `pacotes/`.
+Uma menção histórica a `relatorios/arquivo.md` identifica o caminho original;
+use `npm run journal:search -- "arquivo.md"` e `journal:show` para consultar a íntegra.
+A limpeza de 20/10/2026 está em `limpeza/20261020-manifesto.json`: assets aposentados
+foram preservados com conteúdo binário integral (`encoding: base64`), hash e
+`sourceId`. São artes recuperáveis, não evidências descartadas. As entradas
+`retiredAssets` dos pacotes são separadas dos arquivos de automação/fixtures de QA.

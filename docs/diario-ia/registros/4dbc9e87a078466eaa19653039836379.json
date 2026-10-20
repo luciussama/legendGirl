@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "4dbc9e87a078466eaa19653039836379",
+  "type": "qa",
+  "date": "2026-10-20T15:15:47.767208+00:00",
+  "title": "QA temporário: test:bear-chase:furniture:models",
+  "exitCode": 0,
+  "sourceId": "254c9f60a5e9dc8c887843f96564a85d84ed8144262520cb5b1b8d381449d6a0",
+  "package": "20261020T151529-e09f9243f95f"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d71757fd272e017dcc22190d1a4f424f156ae628e1934c7a5fe771cb4232302a",
+  "path": "qa-execucoes/4b011b505d6946d2b187f65e32b994a7.log",
+  "sha256": "81a25f66182e933f82f861dc2301e266bf5cd79908e725a10afb4da80c6f9823",
+  "capturedAt": "2026-10-20T19:04:43.092804+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase",
+    "exitCode": 0,
+    "package": "20261019T181926-1b672f7af800"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase\n> node docs/diario-ia/qa/perseguicao-20261019/dominio.js\n\nAPROVADO: sequência, 8 percursos sem dano, RNG/save, colisão varrida, rotas e limite de objetos. [{\"difficulty\":\"NORMAL\",\"frame\":0.5,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"NORMAL\",\"frame\":1,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"NORMAL\",\"frame\":1.2,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"NORMAL\",\"frame\":3,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"EASY\",\"frame\":0.5,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"EASY\",\"frame\":1,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"EASY\",\"frame\":1.2,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7},{\"difficulty\":\"EASY\",\"frame\":3,\"seconds\":87.93,\"hits\":0,\"largestPool\":4,\"copies\":7}]\n"
+}

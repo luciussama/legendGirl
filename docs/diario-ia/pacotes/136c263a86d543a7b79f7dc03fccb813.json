@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "136c263a86d543a7b79f7dc03fccb813",
+  "date": "2026-10-19T20:02:27.616434+00:00",
+  "title": "QA temporário: test:bear-chase:girl:glb",
+  "files": [
+    {
+      "path": "qa-execucoes/136c263a86d543a7b79f7dc03fccb813.log",
+      "sourceId": "5818ad2ade724bd04f5661c75cfb88c34d342dc3fe71370143a73578011b3247",
+      "sha256": "28c5b2611a33a2e973c0ee9ccf7b92136c6c8ee33757a62c4c070d03adea2ba3",
+      "bytes": 258,
+      "metadataOnly": false
+    }
+  ]
+}

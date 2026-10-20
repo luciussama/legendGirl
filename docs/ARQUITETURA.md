@@ -4,6 +4,14 @@ Revisão: 15/10/2026. Descreve o código atual, incluindo as extrações de `ref
 
 ## Composição e limites
 
+A prévia de perseguição acrescenta `src/js/bear-chase/`, aberta por
+`ToyRoomPhase.startChasePreview()` e pelo seletor `bear-chase`. `BearChasePhase` recebe
+canvas, serviço de áudio, disponibilidade e dificuldade; não recebe a sala inteira.
+`ChaseSimulation` mantém dados serializáveis e passo fixo; `ChaseInput`, `ChaseAudio`,
+`ChaseHUD` e `ChaseRenderer3D` isolam os adaptadores. Three.js é importado tardiamente
+de `src/vendor/three/`. O snapshot da prévia ainda não é integrado ao save da campanha.
+Veja [contratos e ciclo de vida](bear-chase/GUIA-PREVIA.md).
+
 ```mermaid
 flowchart TD
   DOM[main.js / página] --> GAME[createGame / loop]

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "48ffb2ef77cf1695d96dea22a16dd090a849e9c54d39922162a652477c8fa86e",
+  "path": "qa-execucoes/eb52e181360a4dcea9aa4aac1b08f890.log",
+  "sha256": "55cb4a6d9666b0328c13594df44b6dc2172b77eedbeb813b174aec3182244e51",
+  "capturedAt": "2026-10-20T19:11:52.534339+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:pacing:browser",
+    "exitCode": 1,
+    "package": "20261020T190822-cdc65dbb104d"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:pacing:browser\n> node docs/diario-ia/qa/percurso-20261020/driver.js docs/diario-ia/qa/ritmo-20261020/browser.js\n\nIntegridade: fontes originais, configuração e personagem preservadas; simulação e renderer alterados por pedido atual de curvas e dificuldade.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: The expression evaluated to a falsy value:\n\n  assert.ok(end.projections.girl.height>start.projections.girl.height*1.1)\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-ljijihfd/projeto/docs/diario-ia/qa/ritmo-20261020/browser.js:49:129 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

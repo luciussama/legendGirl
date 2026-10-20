@@ -1,0 +1,9 @@
+{
+    "chat.tools.terminal.autoApprove": {
+        "npm run journal:begin": true,
+        "/^git diff --check && npm run journal:finish -- --id 20261019T203454-d43790773ab4 --summary \"Retomada da corrida 3D concluída: movimento já implementado pelo Codex foi revalidado; guia e contexto atualizado sem alterar física ou artes\\.\" --check \"npm run journal:qa -- test:bear-chase:motion:browser: aprovado; apoio máximo 0,00143 unidade, poses estáveis e domínio inalterado\" --check \"npm run build: aprovado\" --check \"git diff --check: aprovado\" --file \"src/js/bear-chase/ChaseGirlAnimation\\.js\" --file \"docs/bear-chase/GUIA-PREVIA\\.md\" --file \"docs/diario-ia/CONTEXTO-ATUAL\\.md\" --pending \"Revisão 3 ainda aguarda avaliação artística humana; a prévia da perseguição permanece isolada da campanha\\.\" && npm run journal:finish -- --id 20261019T200935-1e9fdca7ae53 --summary \"Sessão do Codex encerrada após retomada em 20261019T203454-d43790773ab4: implementação do movimento confirmada e validada novamente; documentação contextualizada\\.\" --check \"test:bear-chase:motion:browser: aprovado na retomada, com apoio máximo de 0,00143 unidade e domínio inalterado\" --check \"npm run build: aprovado na retomada\" --file \"src/js/bear-chase/ChaseGirlAnimation\\.js\" --file \"docs/bear-chase/GUIA-PREVIA\\.md\" --file \"docs/diario-ia/CONTEXTO-ATUAL\\.md\" --pending \"Avaliação artística humana da revisão 3 continua pendente\\.\" && npm run journal:sync$/": {
+            "approve": true,
+            "matchCommandLine": true
+        }
+    }
+}

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "6c8bc04eeccf4eda9e54aeede05d93ac",
+  "date": "2026-10-20T13:11:38.559237+00:00",
+  "title": "QA temporário: test",
+  "files": [
+    {
+      "path": "qa-execucoes/6c8bc04eeccf4eda9e54aeede05d93ac.log",
+      "sourceId": "6f1af3ec3081104bde1f5c8ab1812cfdd5ac7703fa4e51fbb0a5ac4fe88b2c56",
+      "sha256": "5cbde02ea09912a308a11909422052123a12d4b8140ec9c792f783f18b29d460",
+      "bytes": 26155,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/6c8bc04eeccf4eda9e54aeede05d93ac/docs/qa/toy-room-playthrough/resultados.json",
+      "sourceId": "678704e2a9a347c3d696fd87702d364ba1f1110d4bde5678d31a3c6406ae0976",
+      "sha256": "c8c35ea5b08eb3d529a2c2dfbff3f226c6e01b1858144c7be81fe0a815b16457",
+      "bytes": 10672,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/6c8bc04eeccf4eda9e54aeede05d93ac/assets/qa-testers/current-screenshots/personagem/crops.png",
+      "sourceId": "eb45957e2e77bca2b43d935238c0805613a07b8973c679c4a8c8ca8448c9183e",
+      "sha256": "5fe062f5f5fba80759734e318695ab82b748c69108235b37221cd75b224995fd",
+      "bytes": 204716,
+      "metadataOnly": true
+    }
+  ]
+}

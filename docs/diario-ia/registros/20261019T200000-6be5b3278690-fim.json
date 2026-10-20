@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T200000-6be5b3278690-fim",
+  "sessionId": "20261019T200000-6be5b3278690",
+  "type": "fim",
+  "date": "2026-10-19T20:05:23.570580+00:00",
+  "title": "Refinar braços, mangas fofas, pregas e rabo de cavalo da menina 3D",
+  "actor": "Codex",
+  "summary": "Revisão 3 da menina: proporções superiores ajustadas, mangas claras bufantes, franzido no alto da saia e rabo único visível com mechas/pontas articuladas. Paleta e fontes preservadas; GLB e comparação atualizados, com ampliação conjunta de detalhes.",
+  "checks": [
+    "npm test, browser da perseguição em três formatos com percurso automatizado completo/controles/áudio/persistência/descarte, comparação final normal/lateral ampliada e GLB aprovados. Mapa de sprites, referência de métodos, build/check-assets/lint/sintaxe/diff aprovados."
+  ],
+  "pending": [
+    "Avaliação humana dos ajustes da revisão 3; sem afirmar aprovação artística nem teste em aparelhos físicos. Limites anteriores da prévia/campanha preservados."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseGirlModel.js",
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "assets/models/bear-chase/menina.glb",
+    "docs/diario-ia/qa/perseguicao-20261019/comparacao.html",
+    "docs/diario-ia/qa/perseguicao-20261019/comparacao.js",
+    "docs/diario-ia/qa/perseguicao-20261019/comparacao-browser.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/relatorios/20261019-menina-revisao3-detalhes.md"
+  ]
+}

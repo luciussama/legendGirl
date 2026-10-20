@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T190622-4163b1a05e72",
+  "date": "2026-10-20T19:06:22.311816+00:00",
+  "title": "Progressão e viabilidade do ritmo frenético",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/ritmo-20261020/dominio.js",
+      "sourceId": "b09ec094adfc67c91a7f1416f5b2846418d3e4b65b5ed53eeefb6b9a2cc95a0d",
+      "sha256": "06ef7245c47541941fa22db355b2233196df9474cdb99479b1cd33f5e16d32ad",
+      "bytes": 4571,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:pacing": "node docs/diario-ia/qa/ritmo-20261020/dominio.js"
+  }
+}

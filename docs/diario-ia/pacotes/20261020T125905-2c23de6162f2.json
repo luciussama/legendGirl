@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T125905-2c23de6162f2",
+  "date": "2026-10-20T12:59:05.704329+00:00",
+  "title": "Pilotos com UV por face: QA temporário restrito ao loopback",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.html",
+      "sourceId": "916d9df6ae87e520b9b3217ae7f1175d39841fe8860d83d9e2e8eb7bee3a045e",
+      "sha256": "8998a8a37b519414230b3098c4f481d9e5afe904a7379063d263e40f933bd8d1",
+      "bytes": 2505,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props-qa.js",
+      "sourceId": "4a4bcf3c46b7454f374660b334d1e972a72242ceaecbfd07c0a16b76e4e62e11",
+      "sha256": "5268a2d0ceb14930c5de453bbc1c2be3d5b81aae3f9ad637b154f8896baf762b",
+      "bytes": 1195,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/baseline.json",
+      "sourceId": "bab00f9f70e3bcc10767a1a4920ae3bb9bfad069580c523019f0977334f5b4d9",
+      "sha256": "764d2b060929c30398e6b65b274be9ff32132971db19bff0ffab1eea67432db4",
+      "bytes": 911,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props.js",
+      "sourceId": "7c29c24fe3826dd1ae0f2b9027d1d8d322e00e86e3c722e78768c049699d938b",
+      "sha256": "fe6b084d0254adfc0d9e62a5a8915d203b9a54b24ec0d8a7447c43e3c709818b",
+      "bytes": 6402,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/props-browser.js",
+      "sourceId": "b794fce0c22b33ffc7743ff3d9f0bc07e8982b838b2feba62dfdea548a8ccb8d",
+      "sha256": "ecaa3a337c771da54f2a3836a41b78029c7aac1c7057588c2e31dc08729739d7",
+      "bytes": 6000,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:props": "node docs/diario-ia/qa/perseguicao-20261020/props-qa.js"
+  }
+}

@@ -1,0 +1,523 @@
+{
+  "schemaVersion": 1,
+  "session": "20261020T184959-b352523a0674",
+  "date": "2026-10-20T18:55:01.113037+00:00",
+  "retiredAssets": [
+    {
+      "path": "assets/art/toy-room/battle/corrections/robot-walk-final.png",
+      "sourceId": "a8742621cb280bc247f52e3ea0b189c67f5e1b0e19b371f42804a50857818679",
+      "sha256": "fd55eb3815b9432744ae742cb213128ce2ed045f8bb27324fc472220c88e4633",
+      "bytes": 1121165,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/corrections/robot-walk-retry.png",
+      "sourceId": "424ffa460643cef052c0a6a479919df3ac9f28f46b249fb7239d4232a4bd5aa4",
+      "sha256": "ce2f8ead720c3c08c5b623ee900b767d5e0b291165c0172115eb16df6f920a97",
+      "bytes": 1965930,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/polish/robot-walk-v1.png",
+      "sourceId": "875904215c51b5595c7c17504c90a341ee2eff3f636f1439f118f9f43a704bc2",
+      "sha256": "f6a7c007421d463935b9156e0c3363282d934e68215ebd6b0f65abf648764628",
+      "bytes": 1010187,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/polish/train-walk-v1.png",
+      "sourceId": "581994d793caea5b19de0d5d533cc21d2b3f7da37642097e35a4cd62954a1845",
+      "sha256": "5b5ce867eface6c9ca2df736e252450e0333dbe3954e94961fd9d30e9f7c80c1",
+      "bytes": 2127721,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/remediation/robot-support-gate-retry.png",
+      "sourceId": "2fcbb438a66a8e0d4c76612a9841ea9bdee718347ca8cda025cad3abb1f58681",
+      "sha256": "402c8594d912f057780d92ecdc87e26b43b63c03c609fd0190be1a46ce16ea7c",
+      "bytes": 1224745,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/remediation/robot-walk-gate-retry.png",
+      "sourceId": "bfbee20bde98b97e174448d2930fe46fc8891bdd2351d8a0246e40009d22ebce",
+      "sha256": "89badb8d8173cb8d6523b5393e2f21ecb30a9b48881f118e38984da52cb2fe53",
+      "bytes": 1021599,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/remediation/steam-blast-remediation-v1.png",
+      "sourceId": "53962bd76cc57d4ea6fb97e28664e07721a46da65ac51fd8a9981487abea57e7",
+      "sha256": "87bedea9d79c1de732f27db373b95e80bba4f5d65460ade154c149d8996a6a6f",
+      "bytes": 1958725,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/remediation/train-walk-remediation-v1.png",
+      "sourceId": "bb982a82e72cf2c4d7209399cada1a68bd519af44fd97565235fb59278ff3a81",
+      "sha256": "0dc8c16e528d7a328f5227c14192afdf450ca31493fcc4b2bf1afc07f81446f9",
+      "bytes": 2014722,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/battle/sources/robot-rocket-punch-v1.png",
+      "sourceId": "f81d742008008fd10366789153cfa8a2ccacab5e9f180a7edc55eb160893b32e",
+      "sha256": "26f33e1173b321d4817acd3f80b390e9b47164fd6b684ef8e6af7f6b55668c84",
+      "bytes": 2004499,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "src/assets/images/small_dresser_1790161034161.jpg",
+      "sourceId": "bc1b1f6d6cf855ab184f95a8469800e7d6606f673f7ca44aea3449dd6ff34099",
+      "sha256": "350099a3a7a1f223476c85494ab8993fc99d8013293ba6eb19c0df36b6117b1d",
+      "bytes": 404730,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "src/audio/Designer.png",
+      "sourceId": "832d10359a974745f4359e5b485d67c92c5242939770378362c9e5e412525796",
+      "sha256": "8df5dd9b03e47b2c99df786b2585fc8718f1237b6f998cdd06bdf864035e1c15",
+      "bytes": 1740625,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.png",
+      "sourceId": "f382d5cd71247c5f9b4a710fa7c59b7a171db42033f20ee09ec4f2096c36c5ef",
+      "sha256": "5fcaf85e0fc274a54f572d089177476677cebbb24b4566e70c57b808c8e196e0",
+      "bytes": 3287567,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v1.png",
+      "sourceId": "643357bc4e911c837def5c1bff943af87436fbd672c77b035d6c23d610283243",
+      "sha256": "9f5ea75a880e554bdfb71dd2e2978327e1813b8c61347efa0f77922600bbbe27",
+      "bytes": 2907974,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "src/audio/High-Frequency Violin.mp3",
+      "sourceId": "ad1dadcd877c0a69ae3662b40541e27fda56862abd1ad1350c4c1de7616be75e",
+      "sha256": "00138a198bcb647e940290c8873793bce2a32a1e88b0b6af15f169148577dad9",
+      "bytes": 4244021,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "src/audio/toy_room_theme.mp3",
+      "sourceId": "31e13fdda10cc9f59614f3008eef0c7b6f2a3bee2734ac15baafaf6f6bf9aefc",
+      "sha256": "00138a198bcb647e940290c8873793bce2a32a1e88b0b6af15f169148577dad9",
+      "bytes": 4244021,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    },
+    {
+      "path": "assets/audio/toy_room_theme.mp3",
+      "sourceId": "471d1074a13f1077512a9e3cedf3d9947a88f959a09b3ef257ba0868e75d1c78",
+      "sha256": "00138a198bcb647e940290c8873793bce2a32a1e88b0b6af15f169148577dad9",
+      "bytes": 4244021,
+      "binaryRetained": true,
+      "reason": "Intermediário substituído sem consumidor atual ou cópia sonora idêntica; referências dinâmicas e fontes de reconstrução revisadas."
+    }
+  ],
+  "retiredAssetsPackage": "limpeza-artes-20261020-a96b5564651b",
+  "reportsPackage": "20261020T185457-2fad31de9af7",
+  "reports": [
+    {
+      "path": "docs/diario-ia/relatorios/20261018-arena-defesa-direcional.md",
+      "sourceId": "5d387229d97a441c937e1a6d9a7ee0adcb63d07c38b2f03860e4991f996bc246",
+      "sha256": "41441ee4e92272836574ae2e8156fafad3f74a80ce17d2d4c424f5c75d9696a7",
+      "bytes": 5520,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-auditoria-saltos-normal.json",
+      "sourceId": "2dcdcb97d83c5cefd1f14b9b78685606d7164e535e6c96682d74b85ddcc96ab9",
+      "sha256": "dd41ea817b237d437d2a23d508e92265b8400e088ddf2cbce0a74cb225cb1650",
+      "bytes": 1074,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-auditoria-saltos-normal.md",
+      "sourceId": "e1bc337fde80413c2050236e2a6d3f1516ca91ebff0d2088428a2ed10e7557d1",
+      "sha256": "849d3a8b133122e450dfa57bd90ecda62639ff47dff89b774e6c37130ba98b54",
+      "bytes": 6099,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-correcao-bailarina.md",
+      "sourceId": "04fb88bb0d6132edafb85f6d7dbe9796ea1ac47efc207db2cbe41b8fa322c370",
+      "sha256": "fcb0434f28507b24ad0b33cf72da323081dc87ddf9327681a5cacea0f72fdd7b",
+      "bytes": 3520,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-jogabilidade-regressoes.md",
+      "sourceId": "d4ce497cdf3a0312bf7db2a60fa106f52c408aa6bd2836c460ef21d228f1456f",
+      "sha256": "bccf538c4d34d3f58303490c9ebc363cae62fd4d1a34ac1dca933dfb8d868d21",
+      "bytes": 7676,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-progressao-saltos.json",
+      "sourceId": "4efcaa7e1acb04f572ef716c35497582a60f9971c0172f0a6f94d0c161d86ccd",
+      "sha256": "077a0e2a00092ca52d6f01a44a66142e5ac1936ce951e35a11225c407a0054fa",
+      "bytes": 4737,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261018-progressao-saltos.md",
+      "sourceId": "b63414d2dbce7527f9a41413f7361f5f49795d62294730a63a36c5aa053fa63c",
+      "sha256": "17e81ee2d70bf1090d21473332b752b45f96b93cb347a27a9d00c4bdf7d0d261",
+      "bytes": 4846,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-bateria-formatos.md",
+      "sourceId": "5cf0e3f06ab2dc7d603c3cdb0a839495b787b2c75cfbc05200f89351942fe4a8",
+      "sha256": "2d6fdbdeed2551b83ba13ebddcddcdf9db20da92311313e0513df8320aef0c66",
+      "bytes": 5549,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-camera-retorno-fixa.md",
+      "sourceId": "fa359f9d7661252e040748a052254c39d1a1f9aabbf459c92731dabb0406d536",
+      "sha256": "52fed17320fb93462f81a53c5f68d3b423c8f5074c4f25b9dfb6dd19b3a3c33c",
+      "bytes": 3402,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-limpeza-e-sincronizacao.json",
+      "sourceId": "82438614fa417040326b36d75dd6ca8930ad2bec4cc1f4a5443bf10d7222498a",
+      "sha256": "4ed442acd5fff2e08f25007c468757d17580c6696e1f83efe50ec58c9eb13f15",
+      "bytes": 2311,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-menina-3d.md",
+      "sourceId": "57aa43617089c318d238b21d57f129725187c8307a5bae0530679df0c514df31",
+      "sha256": "2a29a016acfceca1732f8f739e6b2faf8e595da8e8d6334f1c52ce9c2d021bdf",
+      "bytes": 4166,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-menina-revisao3-detalhes.md",
+      "sourceId": "0ce73b593761ba7ec808c1479eea8e45a7fe8c2f6d5429236640e86315b0b0d7",
+      "sha256": "e3c7f960ce591eba41df13cd9c0c3d62ce4956cff0667d538498a231c2b06368",
+      "bytes": 5487,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-merge-balanceamento.json",
+      "sourceId": "e47988351d4625817727f65c30cce3c10f6375a33a03b111222f9ca291fafc1a",
+      "sha256": "949974e0fafbe22d9ca0ce4e8b5696c340154ad9a5cb4b5494f70aad42b191cf",
+      "bytes": 1696,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-previa-perseguicao-3d.md",
+      "sourceId": "7d8e6cb63bb80fcaf23ef39383715743ed745ed7427e66feb964b3145b8c04d0",
+      "sha256": "8c4119dc0cae3e6ebb3fcc61683a7c6c6c526ad28bc3783df7602278c57d127a",
+      "bytes": 7667,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-revisao-critica-menina-perseguicao.md",
+      "sourceId": "b1e34079ccc5e652837351708560b21327a2d391464b0a080b32bfa4d459acc0",
+      "sha256": "37b3f017e212038a3bd4dca811518bb27002555da5698257bb9582a0586a707c",
+      "bytes": 10422,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261019-revisao2-menina-perseguicao.md",
+      "sourceId": "1091ad1b689f9ddd25c61359a61cf1dbd3d48de0a77c630764f657270039fac9",
+      "sha256": "7b811631ea407bc2b99ec527fc5e52f9b12df2d5073d46946004d2c7b4220241",
+      "bytes": 8355,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-amostra-pictorica-armario.md",
+      "sourceId": "7299ffe24ea192bfb6a2c4617dba935a2e28832a9e2251e5c0a230f93f903fe8",
+      "sha256": "3a6b4d21316b738f5be7e8005f2dc4b395086b6adb09e4adf0da92bdcb180fd8",
+      "bytes": 5497,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-aplicacao-texturas-pictoricas.md",
+      "sourceId": "43b663c64fcecfe14d13319a0b85a32ef90a92d41b61f9cb88732082477d7f42",
+      "sha256": "ecedc372850619c238c5c2884c962e5b025e1f4180c15467de45b77f53f75fa5",
+      "bytes": 5101,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-catalogo-arremessaveis.md",
+      "sourceId": "374e687182b08107f363b32307c6e78dab8403b9952da78aa3a19200c2aaa717",
+      "sha256": "a9bb22767be4b362a78769d79db026b1f211bd8d6217e5e5b0cb2e64d8ce36ab",
+      "bytes": 6720,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-e5-moveis.md",
+      "sourceId": "701b1d6b6c3f3a70a10fdbb912445a43985e98f2d2745c78cc905d9c804c4d70",
+      "sha256": "c0fc01ce29b721b56f8567019c643451c05d290400f693e0b7f4b64cb9293c56",
+      "bytes": 6834,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-fidelidade-oito-props.md",
+      "sourceId": "5526db6b2126dae62e8a2e757f29c499fcc270803e4f04778584c66060ae1fe2",
+      "sha256": "79bc5a5af858f3f989acdfd9c821b8a377cb463797703b58431cb4ab8186f239",
+      "bytes": 5380,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-iluminacao-janelas.md",
+      "sourceId": "9d239bc24a9daaf56d229aa620d7fc5cfd9768f8b4916c4e898e40a820bca090",
+      "sha256": "00b3a3f7b956255c0e48e071360b85cfdae8c1c6555d03729eb581376db42278",
+      "bytes": 3918,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-percurso-continuo-catalogo.md",
+      "sourceId": "5f12bda37f9e98f1f81f7f352ff118519a034dada6d5d3142f31a342aed01bb3",
+      "sha256": "a3b05299af2b79ca93a3627dd4b57f4a6c85b617d35e2d33374763d52b13d6a1",
+      "bytes": 4830,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-pilotos-trem-armario.md",
+      "sourceId": "81ec3324be59bfac0c1447312c9fe1acf9bb6334e989cbed8471e49e193e6cca",
+      "sha256": "fbf6ff08edb39c2ee0675723ff1bccd2d6934cc762e2207ef29a701800b67622",
+      "bytes": 6688,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-refino-castelo-bau.md",
+      "sourceId": "64b9e8ff74b5400c7cccfcf55713c1304cfb84a5fd5a42d3e1641d573c02ab64",
+      "sha256": "5ce368374237757f3a2e311a6902cc3f57e0daee8c1d449f4bbf6014aebfc0c4",
+      "bytes": 2319,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-sombras-curvas.md",
+      "sourceId": "fa7311ddd447600e79ffcb2bc9b4fca1386701cdeef783ca43a245657f4a5b89",
+      "sha256": "b35155341747634fb1bb27366b4bc246a4582d6ece368933fd0a7f00302f9bdc",
+      "bytes": 3594,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/relatorios/20261020-urso-pictorico-corrida.md",
+      "sourceId": "02bc690a0909cb0be3882df50163ba1b193e0ddfbf0de11694a54efcfcc6d3b9",
+      "sha256": "914f701d36fd0cf12d4a7fc657d7d0f1c6b4bc8f55be93b3b08263af6f6a395d",
+      "bytes": 3082,
+      "metadataOnly": false
+    }
+  ],
+  "cache": [
+    {
+      "path": "docs/.DS_Store",
+      "sha256": "bfb4b5a05ae6b30825532e54f27e86ad75a8b5962525db2e99eed663496c26a7",
+      "bytes": 10244
+    }
+  ],
+  "preserved": [
+    "fontes/registros/pacotes/commits imutáveis",
+    "guias e diário humano",
+    "arte atual e fontes de reconstrução",
+    "áudio de fallback src/audio/The Circle Game.mp3",
+    "GLB de intercâmbio",
+    "imagem de direção pictórica aprovada",
+    "dependências e ambiente local",
+    "QA ativo e planos/documentos pertinentes"
+  ],
+  "retiredDocuments": [
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/urso-atlas-v1.prompt.json",
+      "sourceId": "fc70c3af56d8c04437b60f58e085b3543d0974837fa3300e621791cb8fcd49db",
+      "sha256": "4d1125b593439e24e4ed40a8a2b45637615e6eca2b7cbffba5b715a12735716e",
+      "bytes": 1545,
+      "metadataOnly": false
+    },
+    {
+      "path": "assets/art/toy-room/bear-chase/materials/decorativos-atlas-v2.prompt.json",
+      "sourceId": "e16118b47648320ff28c94b03d0d0d6e55646e5f3da9f37cab225b7dce6241cc",
+      "sha256": "f027a36620ddd72d7073f2a9cd5c6133253223fe0faee76bad1ea956f80fe543",
+      "bytes": 3376,
+      "metadataOnly": false
+    }
+  ],
+  "captureMetadata": [
+    {
+      "path": "docs/diario-ia/qa/catalogo-20261020/capturas.json",
+      "sourceId": "b1461eec75d6076020d9b2c0f210697114e86c7842b8297644113dbf068e1d8e",
+      "sha256": "88fc752c10d01d8cf183900197307222f01be5a3562650154c643646a3a926fa",
+      "bytes": 3820,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/capturas-finais.json",
+      "sourceId": "8fd5f028c05d7274cd700079a30eb5002dc4bb2ecb2b55f78f1eb4be9ebdb989",
+      "sha256": "9519e6ebff6374e9b0500c89143074103b19505fec7c0804972586b92e704cc6",
+      "bytes": 16602,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/capturas-primeira-revisao.json",
+      "sourceId": "4eaf5ff4efea3edf125bf8e687c265b696d41d565f81d1a970318409c7538084",
+      "sha256": "2d7bdb4aca478a58ae3e382a187c039c411f509ad64f340fbd35a968c21acb84",
+      "bytes": 9674,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/iluminacao-20261020/capturas.json",
+      "sourceId": "baf96bec765b47a79d0af81f9e42f964c5dd96b7fb2a04309f404a622c196b04",
+      "sha256": "8a548b72420c34bc5b2f96f03e14e767bfd5dfdfadaf0e7b4b5e5e42b05ccf52",
+      "bytes": 11601,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/capturas-refino.json",
+      "sourceId": "b846edfc823a5cd065c01123aa09aaff634ab966aa1e3858bdbb2682a3cff925",
+      "sha256": "5fceeb3b0d877837efa68cf8324a76bd3cc796d72b1129c9c615d9031a74524f",
+      "bytes": 6164,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/moveis-20261020/capturas.json",
+      "sourceId": "102be934378893f3061dbf22296e5721df037ac27fe1acdae983665bc1092157",
+      "sha256": "b2566d7fa7ed0fa8b70ee8d59fbe23364eaa9abea9a61978f490a506f70f4e05",
+      "bytes": 6171,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/percurso-20261020/capturas.json",
+      "sourceId": "55d516fbc33a00a0bde3e73428a9fbcbcde1d15c4fece8d940d4f8034b0dd28e",
+      "sha256": "72a8eb77d7c23c05139b2b40245f088c69071aeb61cbc4158b693bf7c6bcd4c2",
+      "bytes": 12197,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261020/capturas.json",
+      "sourceId": "a8d47a09fc22b2c6d7776d2e131051f58b1c208de423176e9f93a0b19e9a7752",
+      "sha256": "c67bb28a7d693403c7b2105d52d810d2764271350f43a0af25bed0b6ba99a11e",
+      "bytes": 2302,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/sombras-curvas-20261020/capturas.json",
+      "sourceId": "8957810b05fec0838d45ef6471eec1047260563ac66953dd4bcbe76117e1974d",
+      "sha256": "e44822f5460a94bc47c13783c24a007c8c0ebc0b84ed45fe6a54963ff8a91f6f",
+      "bytes": 21453,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/texturas-20261020/capturas.json",
+      "sourceId": "8bb08dd084a0087cc0c20c491597ad1908eae50bc05f4ad919ef06d133ca82b0",
+      "sha256": "4863de2c031df3162cb75467145c2846f3ea3a2db4d7cb6daeb94ff51dcdf383",
+      "bytes": 3838,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/urso-20261020/capturas.json",
+      "sourceId": "0fcea5493d751afeeb1ab38099380ee1823443a42641ec8a01fef9eafbe8abcc",
+      "sha256": "edfedd07bc5e73d472e395429ef43925a31dba6d6e1feed99ff56640348d464c",
+      "bytes": 15004,
+      "metadataOnly": false
+    }
+  ],
+  "captureMetadataPackage": "20261020T185721-b234ea18df88",
+  "additionalMetadata": [
+    {
+      "path": "docs/diario-ia/qa/fidelidade-20261020/fontes.json",
+      "sourceId": "d9ded1787f04c9b3ce8416117f351d11580c2f28274f9ec1af0724a0a67d6664",
+      "sha256": "315022edc3eeabc6b54b50d4e839efb339197fd1df251bc62b17f9c43a5f9c26",
+      "bytes": 1921,
+      "metadataOnly": false
+    }
+  ],
+  "finalCache": [
+    {
+      "path": ".DS_Store",
+      "bytes": 10244,
+      "sha256": "26d5c3ccd384e778c5a26979945dce7d0a2f3f6c1964c2128d353b753738928c"
+    },
+    {
+      "path": "docs/.DS_Store",
+      "bytes": 10244,
+      "sha256": "3a3b54527fe6775cd2b61277c85a4480738a547a633d22fffb5e60eaa7606a34"
+    },
+    {
+      "path": "docs/diario-ia/.DS_Store",
+      "bytes": 10244,
+      "sha256": "d073efe65c298bd179e6a5adc8c7f1f8ea5d9c7df10f10f9e15446e603d45fe9"
+    },
+    {
+      "path": "assets/.DS_Store",
+      "bytes": 6148,
+      "sha256": "44d0179c2e1f99ff2e508b596ea6426eff3ac2c0febe4a59a9c0dedee7d8fb44"
+    },
+    {
+      "path": "src/.DS_Store",
+      "bytes": 6148,
+      "sha256": "ce468f3293653e6e2bc6413e012f3eb5fc413791a5c149568b3fb06cc9e11559"
+    }
+  ],
+  "finalTemporaryEvidence": [
+    {
+      "path": "/tmp/urso-neutro-0.00.png",
+      "bytes": 165136,
+      "sha256": "01dd86d421e32354ef18dbf7bfb50cb0c20ae93f9a3525221fddc2b05bad5662",
+      "binaryRetained": false
+    },
+    {
+      "path": "/tmp/urso-neutro-1.57.png",
+      "bytes": 151754,
+      "sha256": "e1169ed4d7bc4e7f4690f2f014260cb0bf8443f2cb946a8a3e2cca75d138af7e",
+      "binaryRetained": false
+    },
+    {
+      "path": "/tmp/urso-neutro-3.14.png",
+      "bytes": 163260,
+      "sha256": "4f56ed746b6ad4a7268e523e4fb9450152fbb2cf70ad0be30e0276bff3641cdf",
+      "binaryRetained": false
+    },
+    {
+      "path": "/tmp/urso-quarto-208.png",
+      "bytes": 815814,
+      "sha256": "373880ad542fa40408a6f4f3591fb69a15cd2b188cb776f04183da592f434d6e",
+      "binaryRetained": false
+    },
+    {
+      "path": "/tmp/urso-quarto-338.png",
+      "bytes": 803944,
+      "sha256": "a99a973d9fb27c50cad7815b130f06077c26fc8ecf4cd8d96ce8b07608982640",
+      "binaryRetained": false
+    },
+    {
+      "path": "/tmp/urso-quarto-82.png",
+      "bytes": 775824,
+      "sha256": "33013e05d586c2351d4619047cd6dc65a08d91195dfad984c8a14a93a37a76be",
+      "binaryRetained": false
+    }
+  ],
+  "validation": [
+    "npm test aprovado após limpeza",
+    "test:toy-room:arena:browser aprovado: exploração/combate/retorno em desktop, retrato e paisagem",
+    "test:bear-chase:bear:browser aprovado após limpeza: textura, apoio, continuidade, determinismo e estado",
+    "build/check-assets/diff aprovados",
+    "inventário reconstruído: 411 imagens, 99 recortes, 29 assinaturas",
+    "nenhum arquivo histórico imutável preexistente alterado ou excluído"
+  ]
+}

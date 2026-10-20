@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T184959-b352523a0674-fim",
+  "sessionId": "20261020T184959-b352523a0674",
+  "type": "fim",
+  "date": "2026-10-20T18:59:29.659354+00:00",
+  "title": "Limpeza completa de resíduos, relatórios e assets sem uso",
+  "actor": "Codex",
+  "summary": "Limpeza completa dos resíduos auditados: 16 assets intermediários/cópias sonoras retirados das pastas ativas e preservados integralmente no acervo com hashes conferidos; 27 relatórios, dois prompts, 11 metadados de capturas e um levantamento antigo consolidados. Caches e capturas temporárias removidos. Guias, fontes de reconstrução, caminhos dinâmicos, fallback sonoro, GLB e histórico imutável preservados.",
+  "checks": [
+    "npm test e build/assets/diff aprovados após limpeza. Arena no navegador: exploração, quatro inimigos, retorno e persistência em três formatos aprovados. Urso após limpeza: textura, contato, continuidade de largada, determinismo e estado aprovados. Inventário reconstruído: 411 imagens/99 recortes/29 assinaturas. Sem modificação ou exclusão de arquivos históricos imutáveis preexistentes."
+  ],
+  "pending": [
+    "Revisão artística humana do urso e benchmark físico. Artes aposentadas mantidas integralmente no diário, portanto o tamanho das cópias retiradas não representa economia líquida de armazenamento. Sem commit ou push nesta execução."
+  ],
+  "files": [
+    "docs/diario-ia/limpeza/20261020-manifesto.json",
+    "docs/diario-ia/README.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "assets/art/toy-room/bear-chase/materials/README.md",
+    "docs/sprites/inventario.json"
+  ]
+}

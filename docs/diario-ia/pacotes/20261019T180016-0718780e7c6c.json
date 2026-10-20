@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261019T180016-0718780e7c6c",
+  "date": "2026-10-19T18:00:16.774551+00:00",
+  "title": "Direção sonora aprovada: entrada na fuga, passos audíveis e redução no alcance do urso",
+  "files": [
+    {
+      "path": "docs/diario-ia/planos/20261019-perseguicao-urso-3d.md",
+      "sourceId": "666aded69032391549043a95b1f02c726f64f90a8baaa57f4dc921284c7b9b11",
+      "sha256": "fd694dfe5c24a0b5c06505387c0ed672d492cea4d4472c48bb96ef23db9b6dc5",
+      "bytes": 27802,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

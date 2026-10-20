@@ -1,0 +1,74 @@
+{
+  "source": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
+  "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
+  "method": "Mediana por canal de janela com alfa ≥ 240 7×7; amostras regionais, sujeitas à revisão artística.",
+  "points": {
+    "skin": [
+      400,
+      240
+    ],
+    "cream": [
+      300,
+      390
+    ],
+    "pink": [
+      350,
+      440
+    ],
+    "rose": [
+      250,
+      400
+    ],
+    "hair": [
+      320,
+      125
+    ],
+    "lock": [
+      375,
+      130
+    ],
+    "boot": [
+      145,
+      533
+    ],
+    "sole": [
+      150,
+      548
+    ],
+    "white": [
+      373,
+      217
+    ],
+    "eye": [
+      385,
+      228
+    ],
+    "black": [
+      300,
+      200
+    ],
+    "blush": [
+      445,
+      240
+    ],
+    "guard": [
+      465,
+      352
+    ]
+  },
+  "colors": {
+    "skin": "#f7b090",
+    "cream": "#fce4c0",
+    "pink": "#f2a393",
+    "rose": "#a96458",
+    "hair": "#4d281b",
+    "lock": "#7b4c3b",
+    "boot": "#643125",
+    "sole": "#3d1815",
+    "white": "#f6f3f2",
+    "eye": "#471e1a",
+    "black": "#3a0d11",
+    "blush": "#f6ad8d",
+    "guard": "#74858b"
+  }
+}

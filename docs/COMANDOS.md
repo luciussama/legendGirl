@@ -20,6 +20,11 @@ Feche somente a instância dedicada ao terminar. Emulação e avanço determiní
 
 ## Todos os comandos npm
 
+Prévia 3D: `npm run test:bear-chase` verifica domínio/restauração e integra `npm test`;
+`npm run test:bear-chase:browser` verifica a prévia no jogo real e requer Chrome isolado
+com CDP em 9222. Ambos executam fontes do diário em diretório temporário. Veja o
+[guia da prévia](bear-chase/GUIA-PREVIA.md) para abrir pelo seletor.
+
 Os comandos test/verify/review recuperados pelo Python podem depender de navegador; confira o nome e o script recuperado. Geradores de assets e aplicação de seleções escrevem derivados e exigem revisão do escopo. A presença de um comando não autoriza aplicá-lo sobre artes aprovadas sem uma tarefa correspondente.
 
 | Comando | Implementação / destino | Finalidade |
