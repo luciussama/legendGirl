@@ -8,38 +8,45 @@
   <meta property="og:title" content="O Quarto dos Brinquedos" />
   <meta property="og:description" content="Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia." />
   <link rel="stylesheet" href="src/css/styles.css" />
+  <link rel="stylesheet" href="src/css/title-screen.css" />
 </head>
 <body>
   <div id="game-container">
     <div id="start-overlay" aria-label="Tela de início">
-      <div class="start-card">
-        <span class="start-badge">O Quarto dos Brinquedos</span>
-        <h1 id="start-title">Uma aventura espera por você</h1>
-        <label for="game-difficulty">Dificuldade da nova aventura</label>
-        <select id="game-difficulty" aria-describedby="difficulty-description">
+      <canvas id="title-scene" width="1920" height="1080" aria-hidden="true"></canvas>
+      <button id="btn-title-options" type="button" aria-label="Opções" title="Opções" aria-haspopup="dialog" aria-controls="title-options-dialog">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="m9 3-.7 2.2-2 .9-2.1-.8-2 3.4 1.5 1.7v2.3l-1.5 1.7 2 3.4 2.1-.8 2 .9L9 20h4l.7-2.1 2-.9 2.1.8 2-3.4-1.5-1.7v-2.3l1.5-1.7-2-3.4-2.1.8-2-.9L13 3Z"/><circle cx="11" cy="11.5" r="3.3"/></svg>
+      </button>
+      <section class="title-menu" aria-labelledby="start-title">
+        <h1 id="start-title">O Quarto<br><span>dos Brinquedos</span></h1>
+        <select id="game-difficulty" hidden aria-label="Dificuldade da nova aventura">
           <option value="NORMAL">NORMAL</option>
           <option value="EASY">FÁCIL</option>
         </select>
-        <p id="difficulty-description">FÁCIL oferece mais tolerância no pouso e uma fadinha mais ágil para indicar brinquedos.</p>
-        <div class="start-buttons-container">
-          <button id="btn-start-phase1" class="start-phase1-btn" type="button" aria-label="Começar a aventura">
-            COMEÇAR
-          </button>
-        </div>
-        <button id="btn-new-campaign" class="start-secondary-btn" type="button" hidden>RECOMEÇAR</button>
+        <nav class="title-actions" aria-label="Menu principal">
+          <button id="btn-start-phase1" type="button">Novo jogo</button>
+          <button id="btn-load-game" type="button" disabled>Carregar jogo</button>
+          <button id="btn-easy-mode" type="button" aria-pressed="false">Modo fácil <span id="easy-mode-status">Desativado</span></button>
+        </nav>
+        <p id="no-save-hint" class="title-hint">Nenhuma aventura salva neste navegador.</p>
+        <p id="load-game-hint" class="title-hint" hidden>Carregar retoma sua aventura e a dificuldade salva.</p>
         <p id="campaign-save-status" class="campaign-save-status" role="status" hidden></p>
-      </div>
+      </section>
     </div>
+
+    <dialog id="title-options-dialog" aria-labelledby="title-options-heading" aria-describedby="quality-graphics-hint">
+      <form method="dialog">
+        <header><h2 id="title-options-heading">Opções</h2><button id="btn-close-title-options" type="button" aria-label="Fechar opções">×</button></header>
+        <label for="graphics-quality">Qualidade gráfica</label>
+        <select id="graphics-quality" disabled aria-describedby="quality-graphics-hint"><option>Automática</option></select>
+        <p id="quality-graphics-hint">Disponível em uma atualização futura.</p>
+      </form>
+    </dialog>
 
     <dialog id="restart-campaign-dialog" aria-labelledby="restart-campaign-title" aria-describedby="restart-campaign-description">
       <h2 id="restart-campaign-title">Recomeçar a aventura?</h2>
       <p id="restart-campaign-description">Toda a sua aventura será reiniciada. Você voltará ao começo da história e perderá o progresso salvo. Deseja continuar?</p>
       <form method="dialog" class="restart-campaign-actions">
-        <label for="new-campaign-difficulty">Dificuldade</label>
-        <select id="new-campaign-difficulty">
-          <option value="NORMAL">NORMAL</option>
-          <option value="EASY">FÁCIL</option>
-        </select>
         <button class="start-secondary-btn" value="cancel" autofocus>Cancelar</button>
         <button id="btn-confirm-new-campaign" class="start-secondary-btn" value="restart">Recomeçar</button>
       </form>

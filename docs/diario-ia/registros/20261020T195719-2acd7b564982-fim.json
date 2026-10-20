@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T195719-2acd7b564982-fim",
+  "sessionId": "20261020T195719-2acd7b564982",
+  "type": "fim",
+  "date": "2026-10-20T19:57:52.891393+00:00",
+  "title": "Diagnosticar ausência das novidades após merge na main",
+  "actor": "Codex",
+  "summary": "Merge remoto confirmado: origin/main b4b3216d inclui d18b4d98 e tem src/assets idênticos à FEAT-bear-chase. Novidades commitadas e presentes. Motivo funcional confirmado: perseguição ainda acessível somente pelo seletor de debug; vitória normal da arena não inicia a fase. Main local 4062ba10 está 13 commits atrás de origin/main, enquanto workspace está na feature. Não houve mudança em código, branches ou publicação.",
+  "checks": [
+    "Conferidos git status/branches/log/diff, ChaseHealth em origin/main, startDebugPhase e startChasePreview. Workflow publica pushes de main; execução remota e versão do site não verificadas."
+  ],
+  "pending": [
+    "Integrar vitória da arena à perseguição na campanha. Se relato se refere à prévia no site publicado, verificar deploy/URL e cache; não há evidência local para afirmar falha de publicação."
+  ],
+  "files": [
+    "src/js/game.js",
+    "src/js/toy-room/ToyRoomPhase.js"
+  ]
+}
