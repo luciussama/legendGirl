@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "742f3a76563c4c239977237b88d0c68a",
+  "date": "2026-10-21T18:43:19.227913+00:00",
+  "title": "QA temporário: test:arena:composicao:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/742f3a76563c4c239977237b88d0c68a.log",
+      "sourceId": "656772747d2d57b149325026a079b9d1c7a54dc338d3a5bfce5210a5bd26d80d",
+      "sha256": "9c3480879990b6b96233d77f6f01187f12b0240d3acd80061c766cc758834480",
+      "bytes": 572,
+      "metadataOnly": false
+    }
+  ]
+}

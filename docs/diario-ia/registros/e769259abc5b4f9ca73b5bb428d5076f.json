@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "e769259abc5b4f9ca73b5bb428d5076f",
+  "type": "qa",
+  "date": "2026-10-21T18:40:10.697505+00:00",
+  "title": "QA temporário: test:arena:composicao",
+  "exitCode": 1,
+  "sourceId": "fd0cd41cc5ed91a6695a98df9adf45a18426219534a8dbc290b1a3eeb6265939",
+  "package": "20261021T184001-891a820a756e"
+}

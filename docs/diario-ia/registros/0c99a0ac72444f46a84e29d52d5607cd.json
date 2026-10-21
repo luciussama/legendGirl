@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "0c99a0ac72444f46a84e29d52d5607cd",
+  "type": "qa",
+  "date": "2026-10-21T17:08:59.052889+00:00",
+  "title": "QA temporário: review:arena:composicao:browser",
+  "exitCode": 0,
+  "sourceId": "6daea490115abee2d16d27df8bf99882e9b6c0ed43491c1d8c53d8e7d49959ca",
+  "package": "20261021T170842-a16174be1161"
+}

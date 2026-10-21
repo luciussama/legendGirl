@@ -58,6 +58,10 @@ A perseguição passa a perguntar “A menina não alcançou o urso. Tentar nova
 
 Depois de três derrotas completas na campanha, em qualquer parte da aventura, o jogo pergunta “deseja tentar no fácil?”. Aceitar muda a dificuldade e mantém a parte atual: checkpoint do quarto, adversário da arena ou progresso na perseguição. Recusar mantém o NORMAL; outras três derrotas permitem nova oferta. A contagem e a escolha acompanham a aventura salva.
 
+## 21 de outubro de 2026 — composição da arena
+
+A arena ganhou um piso contínuo de madeira e móveis apoiados em planos coerentes. A janela central fica livre, o armário ocupa a lateral e o cavalinho tem espaço próprio. O tapete aparece sob os móveis, com proporções compatíveis com o piso. O enquadramento mostra mais do quarto e mantém os nomes dos adversários abaixo dos botões superiores. A entrada e a saída dos brinquedos acompanham o baú visível. As artes e as regras de combate foram preservadas.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.

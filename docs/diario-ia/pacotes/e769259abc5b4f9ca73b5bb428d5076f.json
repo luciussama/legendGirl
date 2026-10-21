@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e769259abc5b4f9ca73b5bb428d5076f",
+  "date": "2026-10-21T18:40:10.697505+00:00",
+  "title": "QA temporário: test:arena:composicao",
+  "files": [
+    {
+      "path": "qa-execucoes/e769259abc5b4f9ca73b5bb428d5076f.log",
+      "sourceId": "fd0cd41cc5ed91a6695a98df9adf45a18426219534a8dbc290b1a3eeb6265939",
+      "sha256": "528171d147241f89beb1d36c8356a10153e0fcbb7b4dad479fd3f41908f0c496",
+      "bytes": 1229,
+      "metadataOnly": false
+    }
+  ]
+}

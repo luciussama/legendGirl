@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9515430215fc4ba98e9b575cb02ff1d3",
+  "date": "2026-10-21T18:44:38.976950+00:00",
+  "title": "QA temporário: test:journal",
+  "files": [
+    {
+      "path": "qa-execucoes/9515430215fc4ba98e9b575cb02ff1d3.log",
+      "sourceId": "a6ef8cabaeddff06b39d3f325150541a8aba61c95d1a0f3c1684f69c553ba4e4",
+      "sha256": "71a9c229c6fb8508bd5b667caa735069c04e9cf4a4feb276736b651bb93f4d0b",
+      "bytes": 200,
+      "metadataOnly": false
+    }
+  ]
+}

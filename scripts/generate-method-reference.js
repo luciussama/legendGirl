@@ -6,6 +6,8 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ renderArenaRoom:'Compõe parede, madeira repetida e rodapé existentes, sem alterar colisões.',
+ renderArenaStructure:'Apoia o móvel na base visual do layout e reutiliza sua ilustração.',
  recordCampaignDefeat:'Conta uma derrota completa por tentativa e oferece EASY a cada terceira perda no NORMAL.',
  clearCampaignDefeat:'Libera a próxima tentativa e limpa a oferta pendente sem zerar a contagem da campanha.',
  reportDefeat:'Deduplica, salva e publica a derrota da fase ativa com a oferta de ajuda.',

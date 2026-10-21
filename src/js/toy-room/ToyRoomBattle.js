@@ -128,7 +128,8 @@ export class ToyRoomBattle {
     const progress = clamp(transition.elapsed / BATTLE_TRANSITION_DURATION, 0, 1);
     const smooth = progress * progress * (3 - 2 * progress);
     const actor = incoming ? transition.incoming : transition.outgoing;
-    const boxX = chest.x + chest.w / 2, boxY = chest.y + 100;
+    const origin = this.presentation?.transportOrigin?.();
+    const boxX = origin?.x ?? chest.x + chest.w / 2, boxY = origin?.y ?? chest.y + 100;
     const fromX = incoming ? boxX : actor.x, toX = incoming ? actor.x : boxX;
     const fromY = incoming ? boxY : BATTLE_TUNING.ground;
     const toY = incoming ? BATTLE_TUNING.ground : boxY;

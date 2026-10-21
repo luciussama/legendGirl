@@ -95,9 +95,9 @@ export function renderBattle(battle) {
     // A frente da caixa encobre a entrada/saída, sem dissolver os brinquedos.
     if (!battle.presentation) roomEnvironmentRenderer.renderFurniture(ctx, battle.arenaChest(), {
       assets:r.assets, environmentChest:r.environmentChest });
+    battle.presentation?.renderForeground?.(ctx);
     if (battle.presentation?.renderPlayer) battle.presentation.renderPlayer(ctx, s, t.ground);
     else {
-    battle.presentation?.renderForeground?.(ctx);
     // Ampliação exclusiva da protagonista, com os pés como referência estável.
     ctx.save(); ctx.translate(r.player.x, t.ground - battlePlayerJumpOffset(s,r.player,r.story.state.attackDirection));
     ctx.scale(BATTLE_PLAYER_VISUAL_SCALE, BATTLE_PLAYER_VISUAL_SCALE);

@@ -8,7 +8,7 @@ export class ArenaCamera {
     const step = Math.max(0, Math.min(12, dt));
     const envelope = this.envelope(player, enemy, jump);
     const targetX = (envelope.left + envelope.right) / 2;
-    const targetWidth = Math.max(680, envelope.right - envelope.left + 100);
+    const targetWidth = Math.max(1100, envelope.right - envelope.left + 100);
     const blend = 1 - Math.exp(-step / 15);
     this.x += (targetX - this.x) * blend;
     this.width += (targetWidth - this.width) * blend;
@@ -28,17 +28,19 @@ export class ArenaCamera {
     // Em paisagem, enquadra os atores entre os polegares, sem cobrir a menina.
     const left = controls ? controls.dpad.x + controls.dpad.hitRadius + 12 * controls.unit : layout.safeLeft;
     const right = controls ? controls.sword.x - controls.sword.width / 2 - 12 * controls.unit : layout.safeRight;
-    const top = layout.safeTop + 94 * layout.scale;
+    const top = layout.safeTop + 132 * layout.scale;
     const bottom = Math.max(top + 80, layout.safeBottom - (mobile ? (layout.usableWidth > layout.usableHeight ? 32 : 150) : 24) * layout.scale);
     const envelope = this.envelope(room.player, battle.enemy, battle.jump);
-    const cx = Math.max(envelope.right - this.width / 2, Math.min(envelope.left + this.width / 2, this.x));
-    const span = Math.max(this.width, envelope.right - envelope.left + 90);
-    const height = 690 - envelope.top + 90;
+    const span = Math.max(1100, this.width, envelope.right - envelope.left + 90);
+    const cx = Math.max(envelope.right - span / 2 + 45, Math.min(envelope.left + span / 2 - 45, this.x));
+    // Inclui a janela e a junção parede/piso, conservando folga para os saltos.
+    const viewTop = Math.min(110, envelope.top - 45);
+    const height = 690 - viewTop + 80;
     const scale = Math.max(0.01, Math.min((right - left) / span, (bottom - top) / height));
     const shakeX = Math.sin(this.time * 2.7) * this.shake * scale;
     const shakeY = Math.cos(this.time * 2.1) * this.shake * scale * 0.3;
     return { scale, ox: (left + right) / 2 - cx * scale + shakeX,
-      oy: (top + bottom) / 2 - (envelope.top + 690) / 2 * scale + shakeY,
+      oy: (top + bottom) / 2 - (viewTop + 690) / 2 * scale + shakeY,
       top, bottom, left, right, envelope };
   }
   snapshot() { return { x: this.x, y: this.y, width: this.width, shake: this.shake, time: this.time }; }

@@ -165,10 +165,12 @@ As regressões de pouso verificam cruzamento contínuo e exclusões, preservaç�
 
 ## Recuperação de painéis históricos
 
-O executor atual restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`. Arquivos de QA que ainda existem sob `docs/diario-ia/qa/` são copiados ao workspace temporário, mas os ausentes nessa pasta não são restaurados automaticamente. Assim, a existência de um alias histórico não garante que seu painel possa ser aberto diretamente.
+O executor restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`, além de código e fixtures `.js`, `.mjs`, `.cjs`, `.py`, `.html`, `.css` e `.json` sob `docs/diario-ia/qa/`. A recuperação ocorre somente no workspace temporário; relatórios Markdown e bitmaps de evidência não são restaurados. Em automações de navegador, as URLs locais também são adaptadas nos módulos `.mjs` e `.cjs` para a porta do servidor temporário. Um painel histórico ainda pode depender de recursos/requisitos próprios; consultar sua fonte antes de usar.
 
 Os painéis de comparação da menina e dos props da perseguição foram arquivados nessa pasta e retirados da árvore ativa. Seus aliases históricos apontam para fontes ausentes: precisam de recuperação manual verificada do pacote, em diretório temporário, ou de uma atualização futura do executor. Não abrir antigas URLs como se fossem páginas atuais. A auditoria documental confirmou essa limitação por leitura do executor e dos pacotes; esses aliases não foram executados nesta revisão.
 
 A verificação desta revisão está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura e exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Resultados pertencem ao diário.
 
 `npm run journal:qa -- test:campaign:defeats:browser` cobre a interface real em desktop/retrato/paisagem com derrotas preparadas, respostas nativas, soma entre fases, recarga, oferta, recusa e retomada. Requer Chrome de QA/CDP 9222. Não equivale a um playtest humano completo.
+
+`npm run journal:qa -- test:arena:composicao` verifica bases, janela livre, projeção, camadas, origem do baú, HUD e enquadramento. `npm run journal:qa -- test:arena:composicao:browser` verifica o renderer real e a restauração em Chrome isolado/CDP 9222, com estados preparados em desktop/retrato/paisagem. As fontes permanecem arquivadas; não há diagnósticos avulsos para manter no projeto.

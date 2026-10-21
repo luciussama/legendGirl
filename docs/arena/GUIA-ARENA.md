@@ -52,6 +52,14 @@ A fase usa IDLE → TRANSFORMING → COMBAT → RETURNING → COMPLETE. Transfor
 
 A câmera da arena enquadra atores e tremor em ArenaCamera. Em celular na orientação paisagem, reserva as laterais ocupadas pelo direcional e pelos botões para manter os atores visíveis entre os polegares. O panorama da transformação usa o desenho da sala como fundo por `arenaBackdrop`; não reutiliza a física de exploração. A câmera fixa do documento de design inicial não é o enquadramento implementado neste perfil.
 
+## Composição visual do cenário
+
+O layout usa bases visuais `footY` para apoiar os móveis no piso, sem mover entidades da exploração. A parede termina em y=500; madeira e rodapé reutilizam as artes existentes. A janela fica livre no centro, com estante e armário nas laterais e cavalinho separado. O tapete conserva a proporção da ilustração sob a projeção vertical de 0,7 compartilhada pelo piso. A ordem é arquitetura/janela, tapete e móveis por profundidade, antes dos lutadores.
+
+A câmera conserva um panorama mínimo de 1100 unidades e inclui a junção da parede com o piso, reservando espaço superior para o HUD e espaço lateral para controles em paisagem. Os nomes e barras ficam abaixo dos botões DOM. Essas medidas são de apresentação; chão do combate, hitboxes, alcances e dificuldade permanecem nos perfis existentes.
+
+O ponto de transporte dos brinquedos vem do baú do layout, por `presentation.transportOrigin`. Durante a transição, a frente recortada do baú é desenhada depois dos inimigos e antes da menina, inclusive com renderer personalizado. Sem apresentação de arena, o combate conserva sua referência legada. O layout e os callbacks são reconstruídos ao carregar um save; não são imagens nem funções serializadas.
+
 ## Saves, retorno e áudio
 
 A entrada captura a sala com `snapshot({includeArena:false})`. O save da arena inclui versão, state, exploration, camera, fx, audio e boss; a batalha é salva no pacote da sala. No retorno, `restore(exploration,{preserveArena:true})` evita recursão. Vitória marca os brinquedos organizados, interrompe a recorrência e registra arenaCompleted. Saves antigos sem arena recebem a adaptação existente com ponto seguro de retorno. Não serializar imagens, nós de áudio, controllers ou callbacks.
@@ -62,7 +70,7 @@ A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reiní
 
 `ToyRoomPhase` compõe a exploração com contextos restritos; `ToyRoomArenaPhase` e `ToyRoomBattle` ainda retêm a sala inteira. `configurePresentation` instala controller, tuning e callbacks da arena sobre a simulação existente; restoreReality devolve o perfil legado. Essa integração ampla permanece como próximo trabalho de desacoplamento, não como uma interface genérica já implantada.
 
-Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements, test:arena:defesa, test:arena:defesa:browser e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.
+Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements, test:arena:defesa, test:arena:defesa:browser test:arena:composicao, test:arena:composicao:browser e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.
 
 ## Diferenças entre NORMAL e EASY
 

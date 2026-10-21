@@ -14318,6 +14318,12 @@
           "alias": null
         },
         {
+          "file": "src/js/toy-room/ArenaEnvironment.js",
+          "line": 37,
+          "type": "runtime",
+          "alias": "toy-room-oak-trim-v1"
+        },
+        {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
           "line": 57,
           "type": "runtime",
@@ -14356,7 +14362,7 @@
         },
         {
           "file": "src/js/toy-room/ArenaEnvironment.js",
-          "line": 27,
+          "line": 65,
           "type": "runtime",
           "alias": "toy-room-oval-rug-v1"
         },
@@ -14448,7 +14454,7 @@
         },
         {
           "file": "src/js/toy-room/ArenaEnvironment.js",
-          "line": 8,
+          "line": 10,
           "type": "runtime",
           "alias": "toy-room-wallpaper-v1"
         },
@@ -14497,7 +14503,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomArenaBuilder.js",
-          "line": 29,
+          "line": 37,
           "type": "runtime",
           "alias": "toy-room-window-curtains-v1"
         }

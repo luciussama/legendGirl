@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d7bb3864d72a96c6083c26f7c02bd928a5d08724a6d5b3cd2e78f1ff333b253e",
+  "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/desktop-3.png",
+  "sha256": "1360805ce7ff6d3862a7b70dbd2b59a80a820e572b2da754c58a5d83832d11ad",
+  "capturedAt": "2026-10-21T18:44:18.674146+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/desktop-3.png\", \"sha256\": \"bb956f2fd08667afcadb904c974726d85b622f0e8a6149f54baa9c92c600f7f8\", \"bytes\": 814040, \"binaryRetained\": false}"
+}

@@ -74,7 +74,8 @@ export class ToyRoomArenaPhase {
       onBlock: (x, y) => this.fx.emit('block', x, y),
       renderFX: ctx => this.fx.render(ctx),
       enemyScale: ARENA_SCALE.enemy,
-      renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout); },
+      transportOrigin: () => this.layout.transportOrigin,
+      renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout, true); },
       renderBackground: ctx => renderArenaEnvironment(ctx, this.room, this.layout, this.state.elapsed),
       renderPlayer: (ctx, state, ground) => this.playerRenderer.render(ctx, this.room, state, ground)
     };

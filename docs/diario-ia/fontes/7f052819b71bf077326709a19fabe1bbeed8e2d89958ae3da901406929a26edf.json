@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7f052819b71bf077326709a19fabe1bbeed8e2d89958ae3da901406929a26edf",
+  "path": "qa-execucoes/0c99a0ac72444f46a84e29d52d5607cd/docs/diario-ia/qa-resultados/arena-critica/entrada-urso.png",
+  "sha256": "698b423eef10b5a7e8cd71a5ce9fb23862f0a04b467cdbeab32ce40009b97a8b",
+  "capturedAt": "2026-10-21T17:08:59.068020+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "review:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/entrada-urso.png\", \"sha256\": \"202c79c12262e013e753df47becd0841a318788c71a087522dd534b3452ff055\", \"bytes\": 778318, \"binaryRetained\": false}"
+}

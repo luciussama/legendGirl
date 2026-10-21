@@ -6,10 +6,11 @@ export const ARENA_ENEMY_NAMES = Object.freeze({ train:'Locomotiva de Cerco', ro
 export function arenaHUDLayout(layout) {
   const pad = 12 * layout.scale, gap = 22 * layout.scale;
   const width = (layout.usableWidth - pad * 2 - gap) / 2;
-  const y = layout.safeTop + 42 * layout.scale;
+  // Os botões DOM ocupam os primeiros 56 px CSS do canto superior.
+  const y = layout.safeTop + 82 * layout.scale;
   return { player: { x:layout.safeLeft+pad, y, width, height:16*layout.scale },
     enemy: { x:layout.centerX+gap/2, y, width, height:16*layout.scale },
-    labelY: y-10*layout.scale, subtitleY:y+36*layout.scale };
+    labelY: y-10*layout.scale, subtitleY:y+34*layout.scale };
 }
 
 function renderArenaMobileControls(ctx, layout, room) {
@@ -59,9 +60,9 @@ function renderArenaMobileControls(ctx, layout, room) {
 export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   const ui = layout.scale, boxes = arenaHUDLayout(layout);
   ctx.save();
-  const shade = ctx.createLinearGradient(0,layout.safeTop,0,layout.safeTop+106*ui);
+  const shade = ctx.createLinearGradient(0,layout.safeTop,0,layout.safeTop+142*ui);
   shade.addColorStop(0,'rgba(20,12,32,.96)');shade.addColorStop(1,'rgba(20,12,32,0)');
-  ctx.fillStyle=shade;ctx.fillRect(layout.safeLeft,layout.safeTop,layout.usableWidth,106*ui);
+  ctx.fillStyle=shade;ctx.fillRect(layout.safeLeft,layout.safeTop,layout.usableWidth,142*ui);
   const bar = (b,hp,max,color,reverse) => {
     ctx.fillStyle='#382a49';ctx.fillRect(b.x,b.y,b.width,b.height);
     const amount=b.width*Math.max(0,hp/max);ctx.fillStyle=color;
@@ -71,7 +72,7 @@ export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   bar(boxes.player,state.player.hp,3,'#f4ca75',false);
   bar(boxes.enemy,state.enemy.hp,state.enemy.maxHp,'#cb748b',true);
   ctx.fillStyle='#fff1d2';ctx.font=`bold ${Math.min(15,layout.usableWidth/26)*ui}px system-ui`;
-  ctx.textAlign='left';ctx.fillText('MENINA · A ESPADA DA IMAGINAÇÃO',boxes.player.x,boxes.labelY,boxes.player.width);
+  ctx.textAlign='left';ctx.fillText(layout.usableWidth/ui<600?'MENINA':'MENINA · A ESPADA DA IMAGINAÇÃO',boxes.player.x,boxes.labelY,boxes.player.width);
   ctx.textAlign='right';ctx.fillText(ARENA_ENEMY_NAMES[state.enemy.actor],boxes.enemy.x+boxes.enemy.width,boxes.labelY,boxes.enemy.width);
   ctx.textAlign='center';ctx.font=`bold ${14*ui}px Georgia`;
   const e = state.enemy;
