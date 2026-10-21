@@ -13,8 +13,8 @@ export function chaseIntensity(distance) {
 
 /**
  * Centraliza velocidade, aproximação e ritmo de lançamentos.
- * O urso mantém espaço para lançar até a última aproximação; os últimos metros
- * fecham a distância de captura. O FÁCIL conserva mais tempo para reagir.
+ * O NORMAL usa um par por segundo nos últimos 15%; os últimos metros
+ * fecham a distância de captura. O FÁCIL conserva seu ritmo e mais tempo para reagir.
  */
 export function chasePacing(distance, difficulty = 'NORMAL') {
   const progress = clamp(distance / C.length, 0, 1);
@@ -25,7 +25,7 @@ export function chasePacing(distance, difficulty = 'NORMAL') {
   return {
     intensity, speed, closing,
     gap: (C.initialGap - (difficulty === 'EASY' ? 7 : 10) * approach) * (1 - closing) + 1.2 * closing,
-    interval: 3.5 - 1.75 * intensity,
+    interval: difficulty !== 'EASY' && progress >= C.finalPressureStart ? C.finalDropInterval : 3.5 - 1.75 * intensity,
     flight: C.flight - .27 * intensity,
     reaction: difficulty === 'EASY' ? 1.15 : .95,
   };

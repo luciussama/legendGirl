@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021-auditoria-jogabilidade-c39ae011a1db",
+  "date": "2026-10-21T00:43:42.683525+00:00",
+  "title": "Auditoria final: campanhas reais e NORMAL versus EASY",
+  "files": [
+    {
+      "path": "qa-resultados/20261020-jogabilidade-real-dificuldade/relatorio.json",
+      "sourceId": "1ccfd5850edd27e2e9180c6b2caa8efe707f34747e66ed2d2d4a0b42bdc1aec1",
+      "sha256": "6843f65193bd06542f679dd33cd5ada5c19366251cd7d436c1a8c37199f59adb",
+      "bytes": 6654,
+      "metadataOnly": false
+    }
+  ]
+}

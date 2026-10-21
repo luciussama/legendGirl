@@ -1,6 +1,6 @@
 import { clamp } from './ChaseConfig.js';
 
-/** Entrada exclusiva da prévia; o host desliga os listeners antigos antes de instalar. */
+/** Entrada exclusiva da perseguição; o host desliga os listeners antigos antes de instalar. */
 export class ChaseInput {
   /** Recebe canvas, disponibilidade e desbloqueio de áudio por portas pequenas. */
   constructor(canvas, enabled, unlock) {
@@ -66,7 +66,7 @@ export class ChaseInput {
     }
     this.pointers.clear(); this.keys.clear();
   }
-  /** Remove todos os listeners e permite destruir/reabrir a prévia sem duplicá-los. */
+  /** Remove todos os listeners e permite destruir/reabrir a perseguição sem duplicá-los. */
   destroy() {
     this.clear(); this.installed = false;
     if (typeof window === 'undefined') return;

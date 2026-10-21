@@ -20,10 +20,10 @@ Feche somente a instância dedicada ao terminar. Emulação e avanço determiní
 
 ## Todos os comandos npm
 
-Prévia 3D: `npm run test:bear-chase` verifica domínio/restauração e integra `npm test`;
-`npm run test:bear-chase:browser` verifica a prévia no jogo real e requer Chrome isolado
+Perseguição 3D: `npm run test:bear-chase` verifica domínio/restauração e integra `npm test`;
+`npm run test:bear-chase:browser` verifica a perseguição no jogo real e requer Chrome isolado
 com CDP em 9222. Ambos executam fontes do diário em diretório temporário. Veja o
-[guia da prévia](bear-chase/GUIA-PREVIA.md) para abrir pelo seletor.
+[guia da perseguição](bear-chase/GUIA-PREVIA.md) para abrir pelo seletor.
 
 Os comandos test/verify/review recuperados pelo Python podem depender de navegador; confira o nome e o script recuperado. Geradores de assets e aplicação de seleções escrevem derivados e exigem revisão do escopo. A presença de um comando não autoriza aplicá-lo sobre artes aprovadas sem uma tarefa correspondente.
 
@@ -140,3 +140,5 @@ O workflow [deploy-pages.yml](../.github/workflows/deploy-pages.yml) usa Node 24
 ## Registro e manutenção
 
 Inicie pela leitura/pesquisa do diário, abra sessão, confira git status e preserve trabalho concorrente. Registre testes reais, arquivos e pendências ao encerrar. Código/fixtures/relatórios de QA novos são arquivados no diário e executados temporariamente; imagens regeneráveis mantêm somente identificação/hash/tamanho. Não registrar segredos ou reescrever evidências antigas.
+
+Para a pressão final da perseguição: `npm run journal:qa -- test:cadencia-final` verifica quantidade, cadência, alternância, reação, save/RNG e preservação do EASY. `test:cadencia-final:visual:browser` e `test:cadencia-final:nativo:browser` usam o mesmo executor com Chrome isolado em CDP 9222; execute-os sequencialmente.

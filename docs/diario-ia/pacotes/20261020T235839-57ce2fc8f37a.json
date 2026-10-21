@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261020T235839-57ce2fc8f37a",
+  "date": "2026-10-20T23:58:39.180802+00:00",
+  "title": "QA da retomada com capturas e espera da composição responsiva",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/retomada-20261020/fluxo-browser.js",
+      "sourceId": "0efff40a711e880ea097eb62091dbe18295991912cb9dd6f9071e9cff2f9b203",
+      "sha256": "1a531d3b60d020d2707f72be33acda82d15d702742d63c798a354ed2144f0c8b",
+      "bytes": 9837,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:retomada:browser": "node docs/diario-ia/qa/retomada-20261020/fluxo-browser.js"
+  }
+}

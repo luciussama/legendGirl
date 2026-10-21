@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0cb686491c8b24611c8e5c99bb8b6af9103b2b9b6321a17f7a466c6dd03f42e4",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-correcao-final.log",
+  "sha256": "72ab8d9c3c645914a2fd75188aec2e0d604bebfe35d0741dced0e353d5c96cd5",
+  "capturedAt": "2026-10-21T12:47:48.711706+00:00",
+  "origin": {
+    "type": "execucao-qa"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 journal:qa\n> python3 scripts/run-qa-from-journal.py test:piso:correcao:browser\n\n\n> o-quarto-dos-brinquedos@1.0.0 test:piso:correcao:browser\n> node docs/diario-ia/qa/piso-20261021/correcao-browser.js\n\nTEXTURA {\"data\":true,\"generate\":false,\"levels\":[{\"width\":256,\"height\":64,\"bytes\":65536,\"alpha\":255},{\"width\":128,\"height\":32,\"bytes\":16384,\"alpha\":255},{\"width\":64,\"height\":16,\"bytes\":4096,\"alpha\":255},{\"width\":32,\"height\":8,\"bytes\":1024,\"alpha\":255},{\"width\":16,\"height\":4,\"bytes\":256,\"alpha\":255},{\"width\":8,\"height\":2,\"bytes\":64,\"alpha\":255},{\"width\":4,\"height\":1,\"bytes\":16,\"alpha\":255},{\"width\":2,\"height\":1,\"bytes\":8,\"alpha\":255},{\"width\":1,\"height\":1,\"bytes\":4,\"alpha\":255}],\"repeat\":[9,2],\"resources\":212}\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Madeira precisa aparecer no chão: {\"distance\":244,\"normal\":[76.75,71.75,51.25],\"noShadows\":[79.5,73.5,52]}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-50xqydl5/projeto/docs/diario-ia/qa/piso-20261021/correcao-browser.js:51:10 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\nResultado preservado no diário; diretório temporário removido.\n"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "f32cfad3f17d420fbaa1e60b302bc46f",
+  "type": "qa",
+  "date": "2026-10-21T01:21:03.259912+00:00",
+  "title": "QA temporário: test:balanceamento:visual:browser",
+  "exitCode": 1,
+  "sourceId": "74bff92ed4d9f1a3b507c40d5748c57b88de2e42bf0dde9438a0b6badb58d7fd",
+  "package": "20261021T011945-fb38d9f7d9c8"
+}

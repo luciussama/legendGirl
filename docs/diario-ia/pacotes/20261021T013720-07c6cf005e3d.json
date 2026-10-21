@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T013720-07c6cf005e3d",
+  "date": "2026-10-21T01:37:20.916750+00:00",
+  "title": "Aguardar 450 ms de proteção inicial dos botões e confirmar início antes do seletor",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js",
+      "sourceId": "b5d6a2d8342541564c35bb77dd3d79de9780d6cbdaf761477cbd4bfea61083a7",
+      "sha256": "58202eabe5c69254b0a6864a6fc0f99aa918255743b59b1699907e5c8a38a5b6",
+      "bytes": 7407,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

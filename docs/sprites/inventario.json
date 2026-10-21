@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 413,
+    "files": 415,
     "regions": 99,
     "code": 29
   },
@@ -263,6 +263,18 @@
       ],
       "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/title-screen/prompts.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/title-screen/prompts.json",
+          "line": 24,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.prompt.json",
           "line": 9,
@@ -2082,6 +2094,45 @@
       ],
       "hints": [],
       "family": "assets/art/dark-room/sprites"
+    },
+    {
+      "id": "188dac645a8d9d020ad78a55",
+      "kind": "file",
+      "path": "assets/art/title-screen/reading-girl-layers-v1.png",
+      "title": "reading-girl-layers-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 973378,
+      "sha256": "a9ad8f073c19022c13bc5af5fc0164bc65685b97ca12a5fd81a3c756c673432b",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/title-screen"
+    },
+    {
+      "id": "4ef6cfc7eb337e8e42603ee2",
+      "kind": "file",
+      "path": "assets/art/title-screen/reading-room-v1.png",
+      "title": "reading-room-v1.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2345121,
+      "sha256": "358617fd5d97518a4f70c35d3f8e3ce68ac9cdcf6698456f56c5c7534107777a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/css/title-screen.css",
+          "line": 11,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/title-screen"
     },
     {
       "id": "7a08323d7997fc6740affd6c",
@@ -14079,7 +14130,7 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 75,
+          "line": 108,
           "type": "runtime",
           "alias": null
         }
@@ -14262,7 +14313,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 110,
           "type": "runtime",
           "alias": null
         },
@@ -14342,7 +14393,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 111,
           "type": "runtime",
           "alias": null
         },
@@ -14378,6 +14429,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/title-screen/prompts.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 4,
           "type": "manifesto-runtime",
@@ -14385,7 +14442,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 110,
           "type": "runtime",
           "alias": null
         },
@@ -14428,7 +14485,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 111,
           "type": "runtime",
           "alias": null
         },
@@ -14528,6 +14585,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/title-screen/prompts.json",
+          "line": 25,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 48,
           "type": "manifesto-runtime",
@@ -14535,7 +14598,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 80,
+          "line": 113,
           "type": "runtime",
           "alias": null
         },
@@ -14658,7 +14721,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 80,
+          "line": 113,
           "type": "runtime",
           "alias": null
         },
@@ -14783,7 +14846,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 112,
           "type": "runtime",
           "alias": null
         },
@@ -14838,7 +14901,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 112,
           "type": "runtime",
           "alias": null
         },

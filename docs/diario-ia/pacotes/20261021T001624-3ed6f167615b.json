@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T001624-3ed6f167615b",
+  "date": "2026-10-21T00:16:24.968947+00:00",
+  "title": "Auditoria quantitativa de dificuldade: janelas e arena idêntica",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/auditoria.js",
+      "sourceId": "aea18d2beea5ba3ade3e5f61218853569857ed65867149f6674b8c23963f4d98",
+      "sha256": "1d56e1d82afa8103bed8007f8fa653f9052c06d647c115848dba07c97ef46971",
+      "bytes": 3100,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:auditoria": "node docs/diario-ia/qa/jogabilidade-real-20261020/auditoria.js"
+  }
+}

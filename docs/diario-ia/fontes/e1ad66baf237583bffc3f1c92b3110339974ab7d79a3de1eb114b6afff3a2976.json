@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e1ad66baf237583bffc3f1c92b3110339974ab7d79a3de1eb114b6afff3a2976",
+  "path": "qa-execucoes/810636c1cfc2416bb14e30e8f1dd3ed2.log",
+  "sha256": "447c0141c2c3c7f3f111bb307d6f4150c36ecb6f14ba5932959a9f34a8cc3f3c",
+  "capturedAt": "2026-10-21T00:22:56.650236+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jogabilidade:espada:browser",
+    "exitCode": 0,
+    "package": "20261021T002245-98ccbf349212"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jogabilidade:espada:browser\n> node docs/diario-ia/qa/jogabilidade-real-20261020/aproximar-espada-browser.js\n\nANTES {\"player\":{\"x\":160,\"y\":1002.4000000000015},\"sword\":{\"x\":140,\"y\":1050,\"visible\":true},\"stage\":\"SEEKING_SWORD\"}\nDEPOIS PICKUP\n"
+}

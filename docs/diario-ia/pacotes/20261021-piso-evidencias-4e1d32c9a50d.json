@@ -1,0 +1,617 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021-piso-evidencias-4e1d32c9a50d",
+  "date": "2026-10-21T12:47:48.715667+00:00",
+  "title": "Evidências e resultados da compatibilidade do piso; bitmaps regeneráveis sem retenção",
+  "files": [
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-antes.png",
+      "sourceId": "53b9fda2bced166ebdf679d1b42bd5e1960d5f776817851658cdb9dea8e96002",
+      "sha256": "774a5a8df5b3099973ceb36c359e63735242e2db508d7cc0c379594ce3f5c567",
+      "bytes": 611858,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-0.png",
+      "sourceId": "959764f64060e512fb4c9a1b34f6779cd3b39b980e5484ff0019a716b6a2e34a",
+      "sha256": "f21d62f03daacd704d87e283020b7fc3f9029168212683a0f5981fe3fb6624ea",
+      "bytes": 764434,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-126.png",
+      "sourceId": "3c729c24d40893f4dd06d4205c6df45706d40517b2afb460714b3f7b6d9a4850",
+      "sha256": "fd910b9520787cb6790399347990d5b259091b162114bfae8bcdbb282f56958b",
+      "bytes": 767210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-0.png",
+      "sourceId": "571105f8d03c4517539b8d8d99dd0b99ef9d5fa46035cfae2a491388391a83f3",
+      "sha256": "f21d62f03daacd704d87e283020b7fc3f9029168212683a0f5981fe3fb6624ea",
+      "bytes": 764434,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-126.png",
+      "sourceId": "6dd6dfd0774ad65d3b90c6f621f807c1f3e723c1fcb268e141cb1df1c2118b10",
+      "sha256": "fd910b9520787cb6790399347990d5b259091b162114bfae8bcdbb282f56958b",
+      "bytes": 767210,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-14.png",
+      "sourceId": "61aa8a138d5cf9695e5c03161077962bbaf46dc6260d855e458b6ba04b07432e",
+      "sha256": "1aba3a5924ac114e7c4c6ca4357be40566affa0d5255b1509a25479771feb27d",
+      "bytes": 817849,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-165.png",
+      "sourceId": "586f0626607ed4fa705be0f102ffebdb2d045f934c66147dcc800d38b116da9f",
+      "sha256": "11a3578508870aae9948db83a4d57065a00420a13a65b464b6b5fd240519ba5a",
+      "bytes": 789613,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-208.png",
+      "sourceId": "8ea521a0c2eb0206e985233d00eac5ff4fda8560aaa035dcf6f2708463ccff9a",
+      "sha256": "d36df090c89fd1e9ac5b12bac8aadf3572373dd1eda9d6803f1b53845c6e4469",
+      "bytes": 843693,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-244.png",
+      "sourceId": "75e92ed2884647fff1a4520f8578f861576e6d3a9d5e52ae1f89304cd1e934ca",
+      "sha256": "d92b3296f091001c7c078adb9ad34ef2c3d06240653c515eb663ae7d9d0afd0f",
+      "bytes": 785380,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-290.png",
+      "sourceId": "7bc4b3cb887e37337598a683aafb4551fe881bfc6cfd13fc18626272d05d0277",
+      "sha256": "1c73b9790159d70c26fc1fc59c0d4bb36a7fc2fd188628e85b3903997bd58f5a",
+      "bytes": 793996,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-355.png",
+      "sourceId": "2bc3fe067a29639451d7fdf3557af1c4d60057e9ae4c3684e4258a8547df88bb",
+      "sha256": "0f098c473e5659023cf7f44ec788f774dc569e9feea93bb74c72760438ade000",
+      "bytes": 812134,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-39.png",
+      "sourceId": "de651637286424b29fdd461d79a8ad9ae8ffd8b15188108a9492a0c171ca3484",
+      "sha256": "5cee1b7c144c0fb9e96681c36dd1611aba7ef89d85010bf9eac04b0fc6b704bd",
+      "bytes": 802192,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-420.png",
+      "sourceId": "cde3a619f16ad928a00e8893b2353af7eca423b19e582bff096e2c6a042db6d2",
+      "sha256": "a245e21ddf2d22cccb141180bb9433e9621e61295b430e93dcb46feed7a84113",
+      "bytes": 801230,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-485.png",
+      "sourceId": "49bcee5692ffa869d8d780f78f9d3acb5c5c2ffc170bd26d2e29fb402abf504a",
+      "sha256": "ce9176ab63c15f68ec9157475e822f06542e57768e9d094302c0a5c178bbe113",
+      "bytes": 870159,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-555.png",
+      "sourceId": "b242ac26ce35d48c31a40bf56e37ebbf44d840bfc658db1ea5ea0692a890beb7",
+      "sha256": "304d5c2bb93b7e22fd47cf74878b02be04777b773c5a03d29ef06897da69bf21",
+      "bytes": 805792,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-620.png",
+      "sourceId": "f9db4eb7ad12f9680f97ee675421a61b31d8d5c00c02010f38e0f34b0f3b9320",
+      "sha256": "2709d223aca7066c83613f8dbdfa071652e02cb84c8432bb99f0394e6bff1b9a",
+      "bytes": 866057,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-680.png",
+      "sourceId": "bfdd7347b748fceb0a0d9c73b6b4b21e8b65805196e8a6d27916f89c8cff3fef",
+      "sha256": "eb92c17d97b0572f7bf198956c2a770156f7729d16791445cdf20cd0d58dbef0",
+      "bytes": 853613,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-1280-82.png",
+      "sourceId": "a9acbeab9080d101afd936e5a01d705c764d5483399937da54a67a6daf3e70cd",
+      "sha256": "8bd25694310e1cd765cd8af548e8521e30aab78632ef175ff0b09193afe992c3",
+      "bytes": 785324,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-14.png",
+      "sourceId": "4ba52681ddc4e361a1fd4e7fb91edfb109db5e66f41366d0178f5f9e581a7b6f",
+      "sha256": "1aba3a5924ac114e7c4c6ca4357be40566affa0d5255b1509a25479771feb27d",
+      "bytes": 817849,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-165.png",
+      "sourceId": "62cec08a2bcf3148b4d515486ee89c46529000c49eb7e738bc76ad127652f61f",
+      "sha256": "11a3578508870aae9948db83a4d57065a00420a13a65b464b6b5fd240519ba5a",
+      "bytes": 789613,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-208.png",
+      "sourceId": "574f30f826c829fbf2f163a6f99b6b19d5f371ddac1e74bdcd2a7e1312686e1f",
+      "sha256": "d36df090c89fd1e9ac5b12bac8aadf3572373dd1eda9d6803f1b53845c6e4469",
+      "bytes": 843693,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-244.png",
+      "sourceId": "fa1b5587202345115cac62e060488e26c61faf1123862a66145509490a8626c4",
+      "sha256": "d92b3296f091001c7c078adb9ad34ef2c3d06240653c515eb663ae7d9d0afd0f",
+      "bytes": 785380,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-290.png",
+      "sourceId": "9a6fc5ea314593cbfdf425925b28cea7c8eb8e063aea37e148ecffa92ebe0afc",
+      "sha256": "1c73b9790159d70c26fc1fc59c0d4bb36a7fc2fd188628e85b3903997bd58f5a",
+      "bytes": 793996,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-355.png",
+      "sourceId": "2eda1c67c0098ec033d2ac7a28ad93d5af6a0d85c9fe0f86b75bdb32744435ac",
+      "sha256": "0f098c473e5659023cf7f44ec788f774dc569e9feea93bb74c72760438ade000",
+      "bytes": 812134,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-39.png",
+      "sourceId": "51a0c1177c857dc2147c603f7bf4be6270bf67cc806a69ac1b90c7ae4869db1f",
+      "sha256": "5cee1b7c144c0fb9e96681c36dd1611aba7ef89d85010bf9eac04b0fc6b704bd",
+      "bytes": 802192,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-0.png",
+      "sourceId": "a68d5e42e723880314fd54f2619f3c6b3182178f338c5937d11e2fef298ee289",
+      "sha256": "a8b766eb91a04c79ae9a6caeae14ff3d212cc2f7373661a5b7273cb6ad5250cc",
+      "bytes": 949443,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-126.png",
+      "sourceId": "f8d2e49b328096c4414846cac8dbac3644c84eb3610763d9027633668db4e1c8",
+      "sha256": "d1b30c63a79a47d3d2412cb46954fd75cfb821c73f6b32b3216a13a79e6c70eb",
+      "bytes": 943067,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-14.png",
+      "sourceId": "5c24f7ee7beab9a8b18428b657cba64fc4c029968b26dbdafb171e6479e2933f",
+      "sha256": "45a1fb1b5a2dd03dbe35ca1ae851005768aad077cb54b8e44036fcab9bb101e4",
+      "bytes": 990162,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-165.png",
+      "sourceId": "7ff7a05ee5c633f67b1ba42d38eb33d751d663f890d939159ecb3f05fe7697a8",
+      "sha256": "693f1e1ab8bb6cb5d38803254f42342b7e8e788475dceed63b2cafd582a20115",
+      "bytes": 918165,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-208.png",
+      "sourceId": "79971c44087932e11552215e639b93d1f1f9be4a58d3229acee20d0c8011355d",
+      "sha256": "ff3f5a31c9251ba8d4d3229c1eb1fbd5dd3a1038d94f738cc4c5391928f4a167",
+      "bytes": 991783,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-244.png",
+      "sourceId": "c7dd7692cfbae0bcfdd997a0c43b9431141061aedf4339ebd4e0317aadb5d059",
+      "sha256": "97d3c5f92c5035f5153ed4b37940af3db77f570851f1b42f0d1f246fbd442d86",
+      "bytes": 950611,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-290.png",
+      "sourceId": "462cde2cbf92a17d495bd823480ea4e23f72f985e3de583997289140b9341ac3",
+      "sha256": "936d95f74435f817b455dbc7a8a4a008875e9e7c1493ecf3da2a96ec7c9749e9",
+      "bytes": 883125,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-355.png",
+      "sourceId": "957e9887e63496fa7daa45b6c38f73faac53c3c1a24c25c1f677fc5025970ec6",
+      "sha256": "1674cc88a744505394de8856bd10e8e90a2d5d2d94557d4a42a5246b43140304",
+      "bytes": 995699,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-39.png",
+      "sourceId": "78537366104860bd7d4f7a3cc65ef06555e4f6a7a647cc66fc40d1cd10448c0d",
+      "sha256": "812892289759c1e084922a27570d09de5821fd24547d75fa6fa0e9c239c228b8",
+      "bytes": 971056,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-420.png",
+      "sourceId": "7dd9918b514da57a129415d20cb08031d66741b84ee8bc0ed3ef3448defe19f0",
+      "sha256": "3afa365bc583a22712c61833e5a34f6985e4928f268f678255dae102c0c9c08c",
+      "bytes": 983007,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-485.png",
+      "sourceId": "9d2e4cf19e4ca977b9f6cf257823e6de55d35572b6a05e1983fefe99e3ec7b96",
+      "sha256": "9e05094a4a579a97e4dae836c27d63b23f3e99db7dc417f063432751cdd0e45f",
+      "bytes": 1004226,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-555.png",
+      "sourceId": "373cb5302ec092182f5a9a809b590ee16ac73c818ded6150ed2b40a800ad5d83",
+      "sha256": "b1791c3190407d95efc6385765a631b19dca415850171f516fc1cd50981fe0b8",
+      "bytes": 930434,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-620.png",
+      "sourceId": "3afcd5057e59489ffa6b29d071b65b0e4d6d2dbdf01af1eaec43bca09300a6bd",
+      "sha256": "2d5c02242be5e822deda26970e4e7316be858405198fcd1ee4264ccdb62611e2",
+      "bytes": 1074550,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-680.png",
+      "sourceId": "279ade7602675669a904aa355e13a0fbf8e3b5fddc6c1d8ed134f0d5b629b564",
+      "sha256": "40685aac06e4190cb68403cf098bb8831ef951ca2925afa8e6c87f7e5c58d9d1",
+      "bytes": 1007036,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-390-82.png",
+      "sourceId": "c436c314a2a645fbf65ba3c0a1ed34b3b8ac2b43eb046ae3e244e6029048dddd",
+      "sha256": "312c2ad5736c6d243633913df6495c1f1d73cf5a42b7563addc99a97dfd95520",
+      "bytes": 932797,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-420.png",
+      "sourceId": "a0bb41ca337fff0be7b0b2c721a49f6101fbd1151099eedc473160da4a7169a2",
+      "sha256": "a245e21ddf2d22cccb141180bb9433e9621e61295b430e93dcb46feed7a84113",
+      "bytes": 801230,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-485.png",
+      "sourceId": "7e16a5d7c51422162a67c7d67c7c326b9ae6561d36c7a6ff9c9598cf7b5c35a5",
+      "sha256": "ce9176ab63c15f68ec9157475e822f06542e57768e9d094302c0a5c178bbe113",
+      "bytes": 870159,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-555.png",
+      "sourceId": "200bad5b67fb8cf12b0dd6419e6fe927e60353ec98cc2f35cd32f859269960eb",
+      "sha256": "304d5c2bb93b7e22fd47cf74878b02be04777b773c5a03d29ef06897da69bf21",
+      "bytes": 805792,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-620.png",
+      "sourceId": "8795bd7b4b8111e56b8f8088dd68ebcb4d2c7a925cce1834ab92138b67adfd18",
+      "sha256": "2709d223aca7066c83613f8dbdfa071652e02cb84c8432bb99f0394e6bff1b9a",
+      "bytes": 866057,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-680.png",
+      "sourceId": "577f169259fa26f9b1799ce350b1239517692189c3d09c3d8e3967d8b7a17b96",
+      "sha256": "eb92c17d97b0572f7bf198956c2a770156f7729d16791445cdf20cd0d58dbef0",
+      "bytes": 853613,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-82.png",
+      "sourceId": "d77ac40f11d0cffa125e9770e982961139fb81239ed6af91a3983e6c5f00b2ee",
+      "sha256": "8bd25694310e1cd765cd8af548e8521e30aab78632ef175ff0b09193afe992c3",
+      "bytes": 785324,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-0.png",
+      "sourceId": "8042f37f461709be14fd6d3fc4b08ca9c6d52ee1a99cc44ff19a173daabcb1d8",
+      "sha256": "e5133c94be3d81322c58527c92d3c732bbbf5e947ced9a0a39e328a28e33c1e5",
+      "bytes": 929441,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-126.png",
+      "sourceId": "69b6fa201079c108424213dc48574c3baf68a0dfb64f4660fbc11368dded89ba",
+      "sha256": "bd0945e226b127a829864ae721c2a1d9cb15786816be5d9abbb2451c5507b072",
+      "bytes": 932261,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-14.png",
+      "sourceId": "ff3c38895b27ec4901794d82b0bc13288c86757dffd04d2a5321459e7f56acd3",
+      "sha256": "520fa7f61304082b527d74b526fbf796d843722090c58a14375343e4ee854438",
+      "bytes": 995933,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-165.png",
+      "sourceId": "99d69c469236a9669da1cf8abc3b462b9a371456784e52af2c62799d7dd32120",
+      "sha256": "620b672eff3599a93f51faf7b90e4cf09ca3d300b85a20aa9f58000a8ef98734",
+      "bytes": 957299,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-208.png",
+      "sourceId": "dfe9e789f20dd6b0042200116ea75a0828298d223bf5916ed5c388eaa1333501",
+      "sha256": "55575abc24889d1bdae5a0f5a95df5a5dbce88b6536891524db1f1fd39494a0c",
+      "bytes": 1040888,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-244.png",
+      "sourceId": "34401ab29ec10acc4a2605f21fdfa5d57679148eeac2fa97c96ea347e8937b8e",
+      "sha256": "e0cea78c809e52aaa4666194407cf6796dbf8922748216dbc23dedb5a39f36cb",
+      "bytes": 949819,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-290.png",
+      "sourceId": "e5588d24564380f77a084a79043d93c10b3fabd623f22c237e62a9a87d2e1a89",
+      "sha256": "fc06acfe099db46d0eae0b5cba2eb01bb64104ee42dde3ad8c9d7c2277a9bdbe",
+      "bytes": 964253,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-355.png",
+      "sourceId": "c1cf40864f69125e2265dc597e7a17a636cdfcd17173e6c3a3183c699ff97c30",
+      "sha256": "0b4869b2cd1ab15bd5f4485fefc0f80c21b96dfc702f3a98b773e0c037c40393",
+      "bytes": 989066,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-39.png",
+      "sourceId": "30c9f8de4f38f80175adef747c93a5cdd361cbad3d9154d9a38f813ad6f6f5c0",
+      "sha256": "4aa4de2f7381b44d22f920e0d58ebf8f09e85d63faa3ba4e83cb1856d9b7d371",
+      "bytes": 981560,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-420.png",
+      "sourceId": "c8f904adb99c3ec1f885183f18cf341b039e1836de8178262ed4904cd9f2cff7",
+      "sha256": "aaf3de6ddafa4b7c72e01a3cc80b1ee8a357d8ddd155f8381f6c59aa0e413052",
+      "bytes": 970019,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-485.png",
+      "sourceId": "f17d2ca21a5e6cd55184e339d72ac88ed9c47c92aea14a5c3e1bf3391b8a51b0",
+      "sha256": "cc737cb5a29251eb816447e49cd4699fe063d4a870a361ff65bb88d12c014c4c",
+      "bytes": 1060160,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-555.png",
+      "sourceId": "d7175b061f1335af1e52f0160e1237a8b8a795e5254bef8b581e6ab3320f2762",
+      "sha256": "92c0cdfb50daec50da2b87497829cf19d99895b6b9e1558c65aaf4117e75bc45",
+      "bytes": 979574,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-620.png",
+      "sourceId": "c2b327d6b3cc0ba791f30c2869dd3a54d419b0e4932caf6831dffd9b20b0fa48",
+      "sha256": "6278a31a6396c5e5b15986c89212a36a1d0344da6f73cbeb6cbf20f4193725c3",
+      "bytes": 1045221,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-680.png",
+      "sourceId": "db795b5b082d5c2e9e5a1dc7508ee6e36fcfdfba4dbe62ff6cbc721e73b1ea72",
+      "sha256": "da16ca6453cafd798af0f930fe8e1b2ab4bedf1a53ba65e65a66045a3ca4f1a4",
+      "bytes": 1037956,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-844-82.png",
+      "sourceId": "ecb5f5d687afac8c4921d878fcae62f3987c751f622c1fd9d2af6b84008be07d",
+      "sha256": "82db2bce48f898524134634097f1ed9abdd4648519fa65191fbb6a9aa68b1c2b",
+      "bytes": 969416,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-sem-luz.png",
+      "sourceId": "9e9a02b554fa76723b722e6cd36e11a0238fa83c33cb26d10ca34e47753525cc",
+      "sha256": "774a5a8df5b3099973ceb36c359e63735242e2db508d7cc0c379594ce3f5c567",
+      "bytes": 611858,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-0.png",
+      "sourceId": "6f33a526938aa425894a32a88a98b784969ff485ccdee1579cf3902c82862cc1",
+      "sha256": "bcca61921646c958e7d804a57218a39af02aa5e21dedbf47c56648ea7c82e13e",
+      "bytes": 770472,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-126.png",
+      "sourceId": "7e4ba95b96e0bc9c2e71f70889767f78dfa7273219660259e731538a394c475a",
+      "sha256": "7151a7750394e7c523210dd80c7d2c11b4467927aa5305bb1f7aa40c33b2390a",
+      "bytes": 771725,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-14.png",
+      "sourceId": "55bfdc9e9865120118ac8b52c5c7d941d31617213234586e9109ffd84a7812c0",
+      "sha256": "f767eee0e70d03d4fb9003e43728d809652243bb1b3a71b3963419481dcff23c",
+      "bytes": 824337,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-165.png",
+      "sourceId": "8668a66a60dca4e19da8d652045c957dad3db593cb41f614e326e17d5e3d2691",
+      "sha256": "d9afc340988aec838340f1fef1ede260f02fa233d8e7cdc0c5919f41295deb46",
+      "bytes": 795469,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-208.png",
+      "sourceId": "66c262c8ca8302276335ac5312d18c33c0deedf468ac3cc25178bc874fad802c",
+      "sha256": "ef26a25d6d2a79ce3e2c790bd169097167327830357a8d14f550d147028b35f7",
+      "bytes": 849207,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-244.png",
+      "sourceId": "37051168b7bc6ce3c3fe1fdcd702c116a750395b085fb601bd2bdd095ded1b46",
+      "sha256": "9bd2a1866885c2da17c4dcfe5d60295a4ea4e1e686a0860b22271772ca5df4bd",
+      "bytes": 789381,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-290.png",
+      "sourceId": "259e8fae6533fdc9a45f8fd4c2d18ae8885485d00b714713829a8417ba2dee2d",
+      "sha256": "84b43feca680b9d7cc42f6389c9b3c9d6464af07f7a80bb42f3ffc15992288d0",
+      "bytes": 800309,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-355.png",
+      "sourceId": "da70c0c4cea26f9df189bc056c7f80a132b5731a8a10051b28061931809fe7a1",
+      "sha256": "2627658bbb0b01496e755f7a1ff64fb57d1437d4eeeff55d7e9183a40807825b",
+      "bytes": 818793,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-39.png",
+      "sourceId": "8634db29a863e5385435aebc94187be9588d39cd1f147207a9a87f14f5b13893",
+      "sha256": "41b54b060afcb6871b10b5c7654842ff88d88161099bb6b4e0a0c8c61067be2c",
+      "bytes": 807636,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-420.png",
+      "sourceId": "8eef3c9060c39d4548a416677022115bcad872918894dffd56635d1ded2a9daf",
+      "sha256": "a48d20f35788d1cb2e06b352caae12834f67b9fbc71ccc8bd4b4e828a83a5ce5",
+      "bytes": 807298,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-485.png",
+      "sourceId": "b30e0f2f00395ee540996e80846272b8296b3cd1fdb67c9659fd8591d257d5d8",
+      "sha256": "950e8dbea3823b1b09ad618da7ad1b580b570ecbb26d8282a8d0e815cca5cefd",
+      "bytes": 876023,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-555.png",
+      "sourceId": "8a178158f65ee14d587f3192731e0c438c21b7e75202d187a0d5175d34c94f02",
+      "sha256": "2ba249de6f0248771440d0ee404ffca31bee80a7c07174c171bf3c6e321646ca",
+      "bytes": 813203,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-620.png",
+      "sourceId": "109ac9ce1279582c8a1abb658e8bb77bd26e5690abd68e04d1bbafdba348b482",
+      "sha256": "02703f27098a352b5333a0241fe93e0adacc0b4f73363abbb1274519584934e0",
+      "bytes": 874154,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-680.png",
+      "sourceId": "1378ae14c040d07bcde53f58edea66fb878c43abee47f613744a20c8574387d3",
+      "sha256": "f2f9933c291c0cee4f686109e3ef3dc4c68edfde914f46c7521e92452eb6a0ca",
+      "bytes": 861208,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-82.png",
+      "sourceId": "c3de46a96d85a1be7c63efb9bbab0ad73c37054a053d54cdcd2dd2a8bf87c31f",
+      "sha256": "9cee9a13ee44474acb306b7c868814d01dbf0012d15d9d2f827634c754e3e8ce",
+      "bytes": 790893,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-chrome.log",
+      "sourceId": "a541968baee4c5b1f8c83f398dd8dc6aac852284e452e6687a651fb2e41505af",
+      "sha256": "47068a445a691521cf94abd3df8c0214e9033f3eec9daab57268d89d2ac1b424",
+      "bytes": 17687,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-correcao-final.log",
+      "sourceId": "0cb686491c8b24611c8e5c99bb8b6af9103b2b9b6321a17f7a466c6dd03f42e4",
+      "sha256": "72ab8d9c3c645914a2fd75188aec2e0d604bebfe35d0741dced0e353d5c96cd5",
+      "bytes": 1328,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-correcao-raycast.log",
+      "sourceId": "a4d3c24a4b8e35560e8e1ec91149262469591cbb7be1746f212d755d8b58d192",
+      "sha256": "ad630bf1e678ef2ad4e65f5f6f23097bb77548d23708cb502cba8e15bc4bd97d",
+      "bytes": 14801,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-correcao.log",
+      "sourceId": "faaeb25e369a297cce7c7457236c2b2c394a27e96834f9608655a4f588b5a8ab",
+      "sha256": "6d0177bd9f51e428599a0822df1269213fab9abcdab6ff5b0445ac78bc6e76d5",
+      "bytes": 4118,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-diagnostico.log",
+      "sourceId": "a0d9222bcd96861ab48cad1db35b26893e6cbc77424f901919d08aa31a2e1e79",
+      "sha256": "f4579052fd7dde2887733999492d5ab5bf682f9f15cd7d8e9a7b97412c846c95",
+      "bytes": 978,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-dominio.log",
+      "sourceId": "09c218bc82f92a073563ee4492f14f951d48c8e976ebb4302b00e6719c740afe",
+      "sha256": "e96eee373c19fb450cb191cc0ad39c7376cab79344ef6c836c6bce6d40d2674b",
+      "bytes": 8261,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-mapa.log",
+      "sourceId": "17df4af89395b9d121eb60e5a6f8d1953fa5172750cf73c7cff827fd7590aa10",
+      "sha256": "66ff62286e3e5ec85bdea600456043f3850b9aad2308e28f9c39733ec069e7dd",
+      "bytes": 167,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-metodos.log",
+      "sourceId": "b75ee941c71c02a228720d3d166736de8cd04240cde436b45893a34d1d65256f",
+      "sha256": "304e7ee942323f7c1e68afcdd2957a2e3b2cc83c384557eafc0bf52e7bb07b37",
+      "bytes": 65,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-producao.log",
+      "sourceId": "a3e9e431f8b3ded67c1f0550d62300d4bdacef99254372a6499bdca41d4412b5",
+      "sha256": "da00f689204e3e45a5a97320b3a05e2c2f1132b0a92ad9f0586411df1dbc022e",
+      "bytes": 679,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/piso-20261021/legendgirl-piso-trechos.log",
+      "sourceId": "b777f9cfaa763062ccbdbd7bbc07523893bcd1b3f19b0d5165410e79ccaa0aac",
+      "sha256": "cd6dd006cb01bb90d2837c300d6eb551428e4520c9a181c5aa16b5fe8bd2df48",
+      "bytes": 3483,
+      "metadataOnly": false
+    }
+  ]
+}

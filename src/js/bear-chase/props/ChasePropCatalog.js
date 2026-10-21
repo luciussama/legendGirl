@@ -30,7 +30,7 @@ export class ChasePropCatalog {
     const root = new T.Group(); root.name = id;
     const visual = factory.create(); visual.rotation.y = rotation; visual.scale.multiplyScalar(scale); root.add(visual);
     const box = new T.Box3().setFromObject(root), size = box.getSize(new T.Vector3());
-    root.userData = { propId: id, anchor: 'apoio inferior', visualHeight: size.y };
+    root.userData = { propId: id, anchor: 'apoio inferior', visualHeight: size.y, visualWidth: size.x, visualCenterX: (box.min.x + box.max.x) / 2 };
     this.entries.set(id, { root, reference, visualBounds: { min: box.min.toArray(), max: box.max.toArray() } });
   }
   /** Entrega instância leve; IDs desconhecidos são erros explícitos, sem fallback artístico. */

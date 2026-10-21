@@ -543,7 +543,7 @@ canvas {
 .start-secondary-btn:hover { background: rgba(255, 255, 255, 0.09); }
 .start-secondary-btn:focus-visible { outline: 3px solid #fff2c7; outline-offset: 4px; }
 [hidden] { display: none !important; }
-#restart-campaign-dialog {
+#restart-campaign-dialog, #chase-error-dialog {
   margin: auto;
   width: min(440px, calc(100vw - 32px));
   max-height: calc(100dvh - 32px - var(--ui-safe-top, 0px) - var(--ui-safe-bottom, 0px));
@@ -554,9 +554,9 @@ canvas {
   border-radius: 18px;
   box-shadow: 0 24px 80px #000;
 }
-#restart-campaign-dialog::backdrop { background: rgba(5, 4, 9, 0.85); }
-#restart-campaign-dialog h2 { font-size: 24px; margin-bottom: 16px; }
-#restart-campaign-dialog p { line-height: 1.6; color: #ddd2e6; }
+#restart-campaign-dialog::backdrop, #chase-error-dialog::backdrop { background: rgba(5, 4, 9, 0.85); }
+#restart-campaign-dialog h2, #chase-error-dialog h2 { font-size: 24px; margin-bottom: 16px; }
+#restart-campaign-dialog p, #chase-error-dialog p { line-height: 1.6; color: #ddd2e6; }
 .restart-campaign-actions { display: flex; flex-wrap: wrap; align-items: center; justify-content: flex-end; gap: 12px; margin-top: 24px; }
 #btn-confirm-new-campaign { border-color: #e0a1a1; color: #ffd0d0; }
 .campaign-save-status { max-width: 320px; color: #f6c96a; font-size: 13px; line-height: 1.4; }

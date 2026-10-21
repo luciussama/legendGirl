@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ce8a5710650b4c0c9ec8084e94669d77",
+  "date": "2026-10-21T00:16:30.539648+00:00",
+  "title": "QA temporário: test:jogabilidade:auditoria",
+  "files": [
+    {
+      "path": "qa-execucoes/ce8a5710650b4c0c9ec8084e94669d77.log",
+      "sourceId": "2e8b2514222eb89c2e3c91977d315e36429da988d40f6417ecac802fe34c74a4",
+      "sha256": "2a2a08d913ff26815e053a1f52aea4d2b66203d64fb6cc251b98d3eed21875ef",
+      "bytes": 7960,
+      "metadataOnly": false
+    }
+  ]
+}

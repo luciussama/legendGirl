@@ -22,7 +22,7 @@ export class BlocksProp {
     for (let i = 0; i < uv.count; i++) uv.setXY(i, positions.getX(i) / .52 + .5,
       (positions.getY(i) - .78) / .27);
     p.add(roof, blue, [0, 0, 0]);
-    this.prototype = resources.bake(p.parts, 'Blocos pintados — torre da fonte atual');
+    this.prototype = resources.bake(p.parts, 'Blocos pintados — torre da fonte atual', true);
   }
   /** Clona a hierarquia conservando os recursos estáticos do catálogo. */
   create() { return this.prototype.clone(true); }

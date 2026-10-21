@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T001511-ea08d6641db4",
+  "date": "2026-10-21T00:15:11.412215+00:00",
+  "title": "Campanha por entradas nativas em tempo real, sem mutação da simulação",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+      "sourceId": "28fb6e0143ec24aa6ba112264e11a2e759c19d4263d243b0a478ac488662a75c",
+      "sha256": "9600d21b1c6c500fb121d8348dbe55073668b4d1dd1123b250793b501dc0f5c4",
+      "bytes": 14127,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:real:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T003046-a250e958ab29",
+  "date": "2026-10-21T00:30:46.553842+00:00",
+  "title": "Reprodução nativa do pouso e retorno ao início após queda real",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js",
+      "sourceId": "6bdbc71677c72fff34967d686810e5f3b2c96c873c20274fbc4aaf53aeab9a02",
+      "sha256": "1ba1161573bd6e55c1a54856e1b0771eb88ae12ca5db670bf2fd98a1316b6891",
+      "bytes": 4909,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:pouso:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js"
+  }
+}

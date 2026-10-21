@@ -38,7 +38,7 @@ as entradas ficam bloqueadas durante a revelação.
   seus fluxos atuais.
 - Durante o fade, ignorar entradas de gameplay e impedir que a arena e a fuga
   avancem simultaneamente.
-- Iniciar a fuga a partir de um estado novo e válido, não da prévia/debug nem de
+- Iniciar a fuga a partir de um estado novo e válido, não da acesso isolado de debug nem de
   um snapshot antigo que possa começar no meio da corrida.
 - Manter a abertura existente: as etapas `BEAR_DOWN`, `GIRL_APPROACH` e
   `BEAR_RISE` são atualmente ilustradas em Canvas 2D; a apresentação WebGL 3D da
@@ -69,7 +69,7 @@ as entradas ficam bloqueadas durante a revelação.
 | `ToyRoomPhase` | Coordenar posse, entradas e preparação. `startChasePreview()` segue isolado para debug; `startChaseCampaign()` inicia a fuga da campanha, com recuperação explícita se a preparação falhar. |
 | `BearChasePhase` | Preparar renderer e artes sob tela preta; na campanha, preservar `BEAR_DOWN` e revelar a cena em 0,4 s antes de avançar a simulação. |
 | `ChaseSimulation` / `ChaseIntroRenderer` | Preservar a entrada em `BEAR_DOWN`, a progressão da introdução e a entrega à corrida. Garantir a espada visível na pose inicial ilustrada, se a arte ou composição atual ainda não a mostrar. |
-| Persistência da Toy Room | O snapshot de campanha inclui `toyRoomChaseCampaign` apenas quando a fase está em modo campanha. A prévia de debug continua fora do save. Ao restaurar, rejeitar combinações incompatíveis e retomar a etapa salva; saves anteriores sem o campo continuam válidos. |
+| Persistência da Toy Room | O snapshot de campanha inclui `toyRoomChaseCampaign` apenas quando a fase está em modo campanha. O acesso isolado de debug continua fora do save. Ao restaurar, rejeitar combinações incompatíveis e retomar a etapa salva; saves anteriores sem o campo continuam válidos. |
 
 O handoff tem um único responsável por iniciá-lo. O preparo assíncrono acontece
 sob a tela preta; somente após sucesso a introdução é revelada. Ao descartar uma
@@ -112,6 +112,8 @@ duas fugas.
    houver alteração visual ou de consumidores, e `git diff --check`.
 
 Registre testes, capturas e resultados no diário de IA conforme o fluxo do
-projeto. A integração de fluxo e persistência está implementada; a inicialização
-real de WebGL ainda precisa de validação em ambiente que disponibilize WebGL 2.
-A aprovação artística da nova sequência continua separada da validação técnica.
+projeto. A integração de fluxo e persistência está implementada, incluindo o
+caminho de sucesso com WebGL 2. Falhas de preparação exibem um diálogo com o erro
+e a ação “Voltar à sala”, depois do descarte da fase parcial. A aprovação artística
+da nova sequência continua separada da validação técnica; os resultados e limites
+das verificações ficam no diário de IA.

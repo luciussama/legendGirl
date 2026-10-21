@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T015433-9ebdb8c0b04a",
+  "sessionId": "20261021T015433-9ebdb8c0b04a",
+  "type": "inicio",
+  "date": "2026-10-21T01:54:33.798495+00:00",
+  "title": "Adicionar ajuda oculta aos saltos dos blocos, tambor e banqueta no NORMAL",
+  "actor": "Codex",
+  "branch": "FEAT-Intro-screen",
+  "head": "01e41f053b4d0e6a068bc5ca2f5cd5a63fcda7b6",
+  "workingTree": []
+}

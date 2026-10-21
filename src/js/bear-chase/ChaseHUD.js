@@ -2,10 +2,10 @@ import { chaseLives, chaseMaxLives, isChaseDefeat } from './ChaseHealth.js';
 
 const MESSAGES = { BEAR_DOWN: 'O urso caiu…', GIRL_APPROACH: 'Ela se aproxima devagar.',
   BEAR_RISE: 'Ele está se levantando!',
-  CAUGHT: 'Você alcançou o urso!', CHEST_RETURN: 'De volta ao baú.', COMPLETE: 'Prévia concluída.',
+  CAUGHT: 'Você alcançou o urso!', CHEST_RETURN: 'De volta ao baú.', COMPLETE: 'Perseguição concluída!',
   GAME_OVER: 'Fim de jogo' };
 
-/** Desenha os corações restantes e vazios no lugar dos textos técnicos da prévia. */
+/** Desenha os corações restantes e vazios no lugar dos textos técnicos da perseguição. */
 function renderLives(ctx, w, ui, state, difficulty) {
   const total = chaseMaxLives(difficulty), remaining = chaseLives(state, difficulty);
   const spacing = 30 * ui, width = total * spacing + 22 * ui, x0 = (w - width) / 2;
@@ -20,7 +20,7 @@ function renderLives(ctx, w, ui, state, difficulty) {
   }
 }
 
-/** Desenha a interface da prévia em pixels do canvas, sem alterar a simulação. */
+/** Desenha a interface da perseguição em pixels do canvas, sem alterar a simulação. */
 export function renderChaseHUD(ctx, canvas, state, error, audioError, difficulty = 'NORMAL') {
   const w = canvas.width, h = canvas.height, ui = Math.max(.7, Math.min(1.3, w / 900));
   ctx.save(); ctx.textAlign = 'center';

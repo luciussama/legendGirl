@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T121507-2b5e5624cf40",
+  "date": "2026-10-21T12:15:07.343772+00:00",
+  "title": "Detalhar comparação das janelas após correção de contato",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/balanceamento-20261020/saltos.js",
+      "sourceId": "40a2bf2f2f82c3e8268d28ba28a41db887af3c4194b3bb4b27202a858fc9975d",
+      "sha256": "edef3bb9361711c9e975da066120cae4ef08ea8a3a2f718f6d237f6a7c9c78dc",
+      "bytes": 1749,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T015433-9ebdb8c0b04a-fim",
+  "sessionId": "20261021T015433-9ebdb8c0b04a",
+  "type": "fim",
+  "date": "2026-10-21T11:52:57.157963+00:00",
+  "title": "Adicionar ajuda oculta aos saltos dos blocos, tambor e banqueta no NORMAL",
+  "actor": "Codex",
+  "summary": "Sessão interrompida retomada a pedido do usuário por Codex na sessão 20261021T115017-5a80ecdfca81. Ajuste existente de ajuda oculta aos três apoios preservado e validado; implementação anterior não foi reatribuída. Contrato de QA atualizado somente nas bordas autorizadas, fontes e falha intermediária preservadas. Manual e contexto atualizados. Sem commit/push.",
+  "checks": [
+    "Validação realizada na retomada: npm test completo, regressão específica de 136.560 comparações, build, 66 recursos, lint, sintaxe e diff aprovados."
+  ],
+  "pending": [
+    "Avaliação humana e aparelhos físicos não realizados nesta retomada."
+  ],
+  "files": [
+    "src/js/game.js"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "22231aaefcae43278b38ca6b87c14933",
+  "date": "2026-10-21T12:43:43.643011+00:00",
+  "title": "QA temporário: test:balanceamento:producao",
+  "files": [
+    {
+      "path": "qa-execucoes/22231aaefcae43278b38ca6b87c14933.log",
+      "sourceId": "1d6f90986bc9df382a8fa028b600daa4cfdb30db6695ed13441b10dc1fc829d5",
+      "sha256": "8c0ae656c64a2de6d2c09543d7c3c78f39fc0d3533223218897263176e1d5b18",
+      "bytes": 499,
+      "metadataOnly": false
+    }
+  ]
+}

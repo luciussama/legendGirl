@@ -841,3 +841,170 @@ Documentação atualizada em `GUIA-PREVIA.md`, `MANUAL-TRANSICAO-VITORIA-ARENA-F
 e `ARQUITETURA.md`; regenerar `REFERENCIA-METODOS.md` ainda pendente. Sem edição
 de artes, mudança de física, commit ou push. A sessão de tela de entrada
 `20261020T201327-774153dc7d03` permanece aberta e não foi alterada.
+
+## Retomada da tela inicial e da integração arena–fuga — 20/10/2026
+
+Sessão `20261020T235555-656a0ba53ace`, a pedido do usuário para continuar o trabalho
+compartilhado de Codex e Copilot. A árvore inicial estava limpa em `fe6ef2cb`;
+a tela inicial e a transição já estavam nesse commit. Esta retomada conclui as
+pendências técnicas das sessões `20261020T201327-774153dc7d03` (Codex) e
+`20261020T214228-7726a1114289` (Copilot), sem atribuir sua implementação a esta IA.
+Seus encerramentos serão anexados com esta explicação; os eventos anteriores
+permanecem imutáveis.
+
+Tela inicial: `TitleScreen` coordena novo jogo/carregar/modo fácil/opções e
+confirmação de reinício; `TitleScene` compõe o quarto e a menina lendo, com pernas
+articuladas e respeito a movimento reduzido/visibilidade. Imagens existentes
+preservadas. Qualidade gráfica continua desabilitada, explicitamente futura.
+Prompts registram a resolução nativa do fundo, inferior ao canvas Full HD.
+
+A transição agora foi exercitada com WebGL 2 via SwiftShader em Chrome isolado, em desktop e
+móveis emulados retrato/paisagem: vitória preparada no controlador real, preto,
+entrada bloqueada durante revelação, primeira imagem em Canvas 2D, save/restore
+em BEAR_DOWN e três percursos até COMPLETE sem colisões, com chestApplied.
+Não foi uma luta humana completa nem teste físico; o percurso usa decisões
+calculadas e passos de simulação. A prévia também passou no QA de navegador
+existente, com teclado/toque, áudio, pausa e descarte zero.
+
+Corrigida falha observada na recuperação: `ui-feedback` é oculto por CSS, tornando
+invisível o erro anteriormente escrito nele. `chase-error-dialog` agora mostra a
+mensagem, recebe foco e permite voltar à sala; atalhos de teclado não atravessam
+o diálogo. O teste injeta uma falha de construção e verifica a recuperação.
+Menu exercitado em quatro formatos, teclado, modo fácil, opções e cancelamento
+de reinício; capturas do menu e da abertura inspecionadas. A primeira revisão do
+QA capturava o menu sobre a abertura por usar API direta sem fechar a tela inicial;
+a fonte foi corrigida para usar o seletor real e as capturas foram repetidas.
+Resultados antigos preservados, sem tratá-los como inspeção da abertura.
+
+Referência de métodos e mapa regenerados; arquitetura e manual atualizados.
+Mapa: 415 imagens, 99 recortes, 29 assinaturas. npm test após a correção, build/assets/lint/sintaxe/diff
+aprovados. Fontes novas de QA em `qa/retomada-20261020/fluxo-browser.js` e pacotes
+imutáveis, executadas via `journal:qa -- test:retomada:browser`. Capturas temporárias
+identificadas por caminho/hash/tamanho nos logs, descartadas após inspeção.
+Sem alteração de artes, física ou dificuldade, sem commit/push. Aceite artístico,
+avaliação humana e aparelhos físicos permanecem pendentes.
+
+
+## Jogabilidade real e auditoria NORMAL/EASY — 20/10/2026
+
+Sessão `20261021T001312-2b30929c8c01`: duas campanhas desktop completas por
+mouse/teclado nativos em tempo real, da tela inicial ao baú. Sem mutação de estado,
+teleporte, avanço manual ou rollback no percurso real; o piloto consulta estado
+e geometria, portanto não representa avaliação humana de dificuldade. Chrome
+isolado com WebGL 2 por SwiftShader, 1200×720. NORMAL e EASY terminaram a fuga sem
+impactos. EASY também verificou pausa/recarga no castelo, carregar o final,
+confirmação/cancelamento, derrota intencional/retry da arena e seis impactos até
+derrota da prévia, sem baú. Queda do quarto/voltar ao início e mudo exercitados.
+
+Quarto: EASY conserva física/velocidades e só amplia pouso lateral em 4 unidades
+e profundidade de 16 para 24; início do NORMAL já oferece janela de ~1,16 s,
+contra ~1,22 s no EASY. No retorno final, ~100 contra ~152 ms no modelo fixo.
+Há anomalia de prioridade: no salto urso→livros, saídas reais x≈269,5 pousaram
+primeiro nos livros no NORMAL, mas reapoiaram no urso no EASY. Reproduzida com
+teclado e em três passos fixos; não prova derrota inevitável, pois a menina pode
+reapoiar nos livros depois. A assistência precisa de revisão de prioridade.
+
+Arena: nenhuma diferença por modo. HP da menina 3, inimigos 3/4/4/8, IA, tempos,
+velocidades, espada, defesa, dano e cura iguais. Diagnóstico separado comparou
+4.162 pares de quadros idênticos até derrota por insistência/vitória com esquiva.
+A fada da sala usa blend 0,20 no EASY contra 0,12 no NORMAL; a perseguição tem
+3/6 vidas, imunidade 1,3/2 s, menor deriva e maior margem de reação no EASY.
+Carregar mantém dificuldade salva; o botão Modo fácil só afeta novo jogo.
+
+Pendências observadas: final da campanha ainda diz “Prévia concluída” sem saída
+clara; derrota da fuga orienta reiniciar pelo debug, sem retry próprio da campanha.
+Separar melhor os modos e rever assistência são recomendações, não mudanças
+implementadas. Nenhum arquivo de produção/balanceamento foi alterado nesta auditoria;
+alterações da retomada anterior preservadas. Falhas/correções do piloto e ajustes
+direcionais reais ficaram registrados; não atribuir seus bloqueios ao jogo.
+Testes de dificuldade, auditoria e navegador passaram. Suíte geral/build/assets
+não repetidos nesta revisão sem alteração de produção. Capturas inspecionadas e
+descartadas com metadados preservados. Sem playtest humano, aparelhos físicos,
+commit ou push. Relatório completo: `journal:show -- 1ccfd5850edd27e2e9180c6b2caa8efe707f34747e66ed2d2d4a0b42bdc1aec1`.
+
+
+## Distinção entre dificuldades e conclusão da perseguição em 20/10/2026
+
+Sessão `20261021T010045-961198342758`, por pedido explícito atual do usuário. Retirado “prévia” do seletor e do resultado da fase; o final diz “Perseguição concluída!”. Nomes técnicos `startChasePreview` e `BEAR_CHASE_PREVIEW` continuam por compatibilidade com o acesso isolado de debug, sem redefinir a fase como incompleta.
+
+Primeira fase (aproximação, fuga e retorno): EASY mantém os alcances, corrida e pouso anteriores. NORMAL corre a 2 px/quadro na aproximação, exige o centro dos pés dentro do apoio com margem de 4 px e usa tabelas próprias de alcance fixo. Sem mudar gravidade, impulso vertical, desenho/geometria dos apoios ou pausa/assistência do castelo. Não reintroduzir frenagem aérea na bailarina nem mira calculada pela posição do clique. Os três passos de tempo testados conservam saídas viáveis para os 38 apoios, com janelas menores no NORMAL.
+
+Arena: `ArenaDifficulty` mantém NORMAL original. EASY recebe alcance efetivo 30% maior, caminhada inimiga a 80%, investida a 85%, esperas/retirada/recuperação mais longas e intervalo maior entre evasões; desativa a continuação extra após acerto inimigo. HP e telegráficos dos golpes permanecem iguais. Perfil reaplicado na apresentação restaurada.
+
+Perseguição: EASY conserva exatamente os padrões anteriores. NORMAL lança três brinquedos a partir de 70% e quatro a partir de 80%. `ChasePatterns` deixa um corredor físico único, com folga para o centro da menina de 0,63 e 0,33 unidade respectivamente. Grupos densos ajustam largura/centro visual com escala uniforme, preservando proporções. Materiais dos brinquedos são reunidos por atlas com cores por vértice; isso reduziu o pico medido de 335 para 279 chamadas, sem elevar o limite de 310. Saves antigos continuam aceitos.
+
+Validação: suíte `npm test`, 24 percursos de arena, regressão de 912 trajetórias EASY e 5.254 quadros idênticos de perseguição EASY, build/66 recursos/lint, mapa de sprites e diff. Campanha NORMAL completa em 382,67 s por mouse/teclado nativos, sem escrita em estado/avanço manual/rollback, sem derrotas e sem dano na perseguição. Inspeção WebGL em três formatos e dois percursos controlados completos sem dano. São testes automatizados no Chrome; sensação humana e aparelhos físicos não foram homologados. As falhas de fixtures/contratos anteriores e o pico gráfico intermediário estão preservados no diário, com correções e resultados finais. Fontes novas em `docs/diario-ia/qa/balanceamento-20261020/`; resultado nativo: `8c4332b483cdbb9318604c08eeb6675fb31149af1a963e7f2d1c8b2f556a9f80`; visual final: `b486b4d3b5a6376345235e4eb394341ced11dfb020ae55735d71788a3212b7d5`.
+
+Pendências anteriores fora deste pedido: navegação após conclusão e retry próprio da perseguição de campanha. Nenhum commit/push nesta sessão. Alterações existentes da retomada/interface foram preservadas.
+
+
+## Revisão da pressão final da perseguição em 20/10/2026
+
+Sessão `20261021T013025-13c1559937cc`, por correção explícita do usuário após observar que quatro brinquedos ocupavam a tela. Esta orientação substitui a quantidade da seção anterior: NORMAL mantém até três brinquedos por lançamento, usando três entre 70% e 85%; nos 15% finais usa dois, a cada um segundo. EASY permanece igual.
+
+Os pares finais deixam corredor amplo (folga de pelo menos 2,38 unidades para o centro do corpo) e alternam a saída entre faixas vizinhas. Nenhum ponto parado, inclusive nas bordas, permanece seguro entre dois pares consecutivos. A entrada em 85% dispara o primeiro par e as emboscadas deixam de interromper a cadência. A distância de lançamento cresce à frente da menina quando o urso se aproxima, preservando o aviso; grupos que já não caberiam com reação antes da chegada não são gerados. Os lançamentos válidos continuam no mesmo intervalo até o último grupo, que é enfrentado perto da captura.
+
+Testes de domínio: 36 percursos, seis sementes e decisões até 400 ms, todos sem dano; oito pares finais no NORMAL, espaçados em um segundo, com aviso mínimo medido de 1,0977 s após pousar. Último grupo em 712,31/720 unidades. RNG/restauração e derrota sem desviar cobertos. EASY preserva os 5.254 quadros de uma perseguição completa comparados à fonte anterior. Suíte geral, build, 66 recursos, lint, mapa de sprites e referência de métodos passaram. Fontes atuais em `docs/diario-ia/qa/cadencia-final-20261020/`; aliases anteriores de balanceamento foram atualizados sem reescrever históricos. Resultado de navegador registrado no encerramento da sessão. Não houve alteração da arena, dos saltos ou de artes nesta revisão. Sem commit/push.
+
+Navegador desta revisão: perseguição NORMAL completa em 90,05 s reais por seletor e teclado nativos, sem dano; 27 cenas controladas em três formatos e dois percursos controlados sem dano. Pico de 282 chamadas no NORMAL e 272 no EASY, abaixo de 310. Falhas iniciais de preparação do piloto (proteção dos botões e operação do seletor) foram corrigidas somente no QA e preservadas no acervo. Capturas inspecionadas, metadados arquivados e bitmaps temporários descartados. Resultado consolidado no pacote `20261021T014052-7d2c02d7ffef`.
+
+
+## Retomada da ajuda oculta nos apoios irregulares — 21/10/2026
+
+Sessão `20261021T115017-5a80ecdfca81`, por pedido do usuário para continuar o trabalho de Codex e Copilot. A única sessão aberta era `20261021T015433-9ebdb8c0b04a`, de ajuda aos blocos, tambor e banqueta no NORMAL. Foram preservados o ajuste já existente em `src/js/game.js`, a referência anterior e a fonte inicial de física. Esta retomada conclui validação e documentação, sem atribuir a si a implementação anterior nem reescrever seu início.
+
+Na aproximação NORMAL, `messy_blocks`, `toy_drum` e `satin_cushion` aceitam o centro dos pés até 4 px além das bordas (antes: 4 px para dentro), com profundidade máxima de 20 px (antes: 16). Contato continua exigindo descida. Ajuda invisível, sem nova arte, linha auxiliar, mudança no arco, velocidade ou mira. As demais colisões, o EASY e o retorno conservam o contrato anterior.
+
+QA específico arquivado em `qa/apoios-irregulares-20261020/`, executado temporariamente por `journal:qa -- test:apoios:irregulares`: 136.560 comparações de colisão, 520 contatos recuperados e varreduras de trajetórias em dt 0,5/1/1,5. Os três apoios ganharam margem; a saída para as gavetas permanece viável. A suíte vigente do quarto também confirmou nove percursos contínuos em três momentos de comando e três passos de tempo, incluindo pausa do castelo e saída para o trem. São simulações que consultam posições viáveis, sem playtest humano ou nova execução de navegador nesta retomada.
+
+A primeira execução de `npm test` falhou porque o contrato antigo exigia borda interna nesses três apoios. Preservada a falha; arquivada uma nova versão do contrato, alterando somente os casos autorizados de borda. `verify:dark-room` inclui a regressão nova. `npm test` final completo, build, 66 recursos, lint, sintaxe de `game.js` e diff aprovados. Manual de desenvolvimento atualizado. Sem alteração visual, mapa de sprites não exigiu regeneração. Sem commit/push. Avaliação humana da ajuda continua pendente; navegação após conclusão e retry da perseguição continuam trabalhos separados.
+
+A sessão interrompida é encerrada por esta retomada com referência explícita à validação acima, preservando os eventos históricos.
+
+
+## Avaliação de pousos rejeitados no retorno — 21/10/2026
+
+Sessão `20261021T120420-415564249772`, a pedido atual do usuário para avaliar falhas visualmente injustas após a porta falsa. Nenhuma alteração de produção. Confirmada incoerência no NORMAL: a imagem dos sapatos toca a superfície, mas a regra exige o centro pelo menos 4 px para dentro. Em alguns casos o centro já está dentro da plataforma e ainda é rejeitado; ao avançar, a profundidade de 16 px expira antes de satisfazer a margem. O código de arte ancora os pés na posição lógica; a faixa dos sapatos é maior que o ponto usado na colisão.
+
+Diagnóstico em trechos reais de impulso/movimento/pouso, 16 destinos, dt 0,5/1/1,2 e saídas apoiadas: 9.657 tentativas, 800 falhas com sobreposição da faixa visual dos sapatos na primeira passagem descendente, 40 com o próprio centro dentro da plataforma. Não são taxas de falha de jogadores. Todos os destinos têm saídas possíveis; não houve salto completo da faixa vertical de 16 px nas amostras. Primeira pilha: centro 4168,7128 dentro de 4040..4170 e pés apenas 1,6 px abaixo, rejeitado por exigir centro <4166; trajetória termina sem pouso. Fonte final `efa4320b65e2816d277db4db85e3aa2a021752ed9bdbead7de8f0570679ff0cf`.
+
+`test:saltos:progressao` passou novamente e não cobre essa coerência visual: confirma saídas possíveis, não todos os contatos válidos. Diagnóstico específico executado via `journal:qa -- test:pousos:retorno:diagnostico`; primeira fixture media sapatos sem espelhamento, corrigida para a orientação esquerda e reexecutada. Evidências intermediárias preservadas. Sem nova execução de navegador ou avaliação humana/física, suíte geral/build não repetidos por ausência de alteração de produção.
+
+Avaliação completa em `docs/diario-ia/qa/pousos-retorno-20261021/avaliacao.md` e pacote `20261021T120755-5d23b0f44221`. Recomendação pendente de implementação: faixa de contato dos pés coerente com a arte e cruzamento descendente do topo entre quadros, preservando rejeição de contatos por baixo/lateral e sem alterar arco/alcance/câmera/arte. Não corrigir apenas ampliando profundidade. Trabalho anterior preservado. Sem commit/push.
+
+
+## Correção do pouso no retorno pós-porta falsa — 21/10/2026
+
+Sessão `20261021T121155-0d3e17339138`, por autorização explícita do usuário após a avaliação anterior. `game.js` passa a usar, somente no retorno NORMAL, faixa estável de 30 px centrada nos pés, com pelo menos 2 px de contato. A faixa comporta a extensão dos sapatos medida no atlas de queda e evita que a área física varie a cada pose. O resolvedor reconstrói a posição anterior pelo deslocamento integrado (`vx*dt`, `vy*dt`) e calcula a posição horizontal no cruzamento descendente do topo. Não depende de um contador ou campo novo de save. Com o corpo no chão, verifica a posição horizontal atual para não prolongar o apoio ao sair pela borda.
+
+Essa regra substitui nesse trecho o ponto 4 px para dentro e a janela de profundidade fixa. Rejeita subida, entrada por baixo e sobreposição que só comece pela lateral após passar do topo. Gravidade, impulso, velocidades, alcance configurado, geometria, câmera e artes não foram alterados. A aproximação, incluindo a ajuda dos três apoios anteriores, e o EASY conservam suas regras. A aceitação correta amplia intencionalmente algumas janelas de pouso do retorno NORMAL.
+
+Validação temporária `test:pousos:retorno`, incluída em `verify:dark-room`: 9.657 tentativas com saída apoiada, 948 trajetórias recuperadas, 3.758 cruzamentos com apoio verificados e 817.301 comparações de decisão EASY idênticas à referência; testes negativos de subida, lateral/baixo, contato menor que 2 px, caminhada para fora e cruzamento em passo longo. Casos concretos da pilha de blocos e boneca de pano reproduzem a rejeição anterior e pousam na versão atual. Fonte final `c08fd31a5e81dee99ae0f412b40e555b512b06a15bc991bba6e71eb9988d1dd8`.
+
+Navegador: 144 cenários (16 apoios × dt 0,5/1/1,2 × desktop/retrato/paisagem), entradas de teclado ou toque via CDP e atualização real de `createGame`, com oito quadros de apoio estável após cada pouso. As posições iniciais são preparadas e o tempo é controlado; isso não constitui campanha humana em tempo real nem homologação em aparelho físico. Fonte final `68df78416767660ed2c37b4277a011ecf311f3e5e9a8436182ff83708c9d78f0`. Chrome isolado encerrado. Não houve inspeção artística por capturas nesta correção sem edição visual.
+
+A suíte completa `npm test` passou, incluindo a nova regressão; build, 66 recursos, lint, sintaxe e diff aprovados. Fixtures que extraem a colisão agora passam o dt real. Contrato antigo de igualdade do retorno foi substituído pela regressão específica; a comparação estrita de janela NORMAL/EASY por apoio falhou por empate e por uma diferença local de cerca de 11 ms no pião a dt=1. Após medir todo o percurso, o contrato conserva janela total NORMAL menor, limite local de um quadro de discretização, progressão e limites inicial/final anteriores; nenhum parâmetro de jogo foi recalibrado para satisfazer testes. A primeira fixture negativa descrevia um cruzamento ainda válido como lateral; corrigidas suas coordenadas. O primeiro piloto de navegador enviava comandos mais rápido que o debounce real; corrigido com espera de 180 ms entre entradas, sem alterar produção. Sandbox exigiu execução com permissão para Chrome e servidor local. Falhas e saídas intermediárias preservadas no pacote `20261021-retorno-logs-4891ad33529b`.
+
+Manual atualizado. Fontes de regressão e referência anterior em `qa/pousos-retorno-20261021/`, comandos `test:pousos:retorno` e `test:pousos:retorno:browser`. O diagnóstico anterior continua como evidência do código pré-correção; para validar a versão atual, usar as regressões novas. Mapa de sprites não regenerado porque nenhuma arte ou renderização foi alterada. Trabalho anterior preservado, sem commit/push. Sensação humana permanece pendente.
+
+
+## Piso da perseguição: compatibilidade de upload — 21/10/2026
+
+Sessão `20261021T124108-e2c20d1cc677`, retomando `20261021T123442-7747fdd4ffa5`. Usuário mostrou piso sem madeira no Safari e confirmou persistência do defeito. Duas tentativas de acesso nativo ao Safari foram bloqueadas pela ferramenta no endereço atual; não houve inspeção dessa aba nem validação nesse navegador. A sessão anterior ficou interrompida e é encerrada por esta retomada com essa explicação, preservando seu início.
+
+Antes do ajuste, o Chrome isolado com SwiftShader mostrava madeira nos quinze trechos examinados: recorte opaco 186×48, RGB médio aproximado 186/121/30, mapa associado e normais corretas. Não foi reproduzido o preto nesse ambiente; não atribuir causa confirmada ao Safari. A falha vista pelo usuário não foi descartada por esses resultados.
+
+Aplicado ajuste de compatibilidade somente em `ChaseRenderer3D.floorTexture`: recorte original em (27,151), cópia de trabalho 256×64, upload RGBA por `DataTexture` e nove níveis explícitos de redução até 1×1. `generateMipmaps=false`, filtragem trilinear mantida, linhas invertidas explicitamente para conservar orientação e repetição 9×2. Isso remove a dependência do upload DOM/canvas e da geração automática de mipmaps sRGB pelo driver para esse piso. A textura antiga de dimensão não potência de dois não é inválida por definição: WebGL 2 permite NPOT. O ajuste evita um caminho de compatibilidade suspeito; não comprova a causa no dispositivo do usuário. Referência primária consultada: https://github.com/KhronosGroup/WebGL/issues/2024 . Histórico de diferenças de mipmaps sRGB: https://bugs.webkit.org/show_bug.cgi?id=229955 ; registro antigo, não diagnóstico da versão atual do Safari.
+
+Arquivo de arte, recorte útil, dimensão das tábuas no mundo, UVs, iluminação, sombras, física e dificuldades preservados. Preparação ocorre no carregamento; textura pertence ao descarte já existente. Não foi adicionado piso sem iluminação nem compensação de brilho.
+
+QA final `journal:qa -- test:piso:correcao:browser`: 45 cenas (15 distâncias × desktop/retrato/paisagem), madeira visível por amostragem de pixels identificados por raycast, nove níveis completos, ausência de erro WebGL e descarte idempotente com zero recursos próprios. Fonte `2bb59eecb2e608f9d2734ace790e1d5c0ffa3710755001e2360c420b7c85b20a`. Inspeção visual de capturas desktop e retrato confirmou tábuas, tapete e sombras. A primeira matriz de três formatos media um tapete em retrato como se fosse piso e falhou; substituída a seleção de pontos fixos por raycast que exclui objetos sobrepostos, sem reduzir os limites de cor. Evidência intermediária preservada.
+
+`test:bear-chase`, build, 66 recursos, lint, sintaxe e diff aprovados. Suíte geral não repetida: somente envio da textura do piso alterado, sem gameplay/personagens. Mapa de sprites regenerado (415 arquivos, 99 recortes, 29 assinaturas) e referência de métodos regenerada (148 módulos, 994 declarações); guia da perseguição atualizado. Capturas preservadas por caminho/hash/tamanho no pacote `20261021-piso-evidencias-4e1d32c9a50d`, bitmaps temporários descartados após inspeção e Chrome isolado encerrado.
+
+Pendente: recarregar a versão atual no Safari e confirmar se a madeira voltou no aparelho do usuário. Não declarar o defeito do Safari resolvido antes dessa confirmação. Sem acesso ao Safari por rota alternativa, sem alteração de preferências do navegador, commit, push ou deploy. Trabalho anterior de pousos preservado.
+
+
+## Consolidação local das correções — 21/10/2026
+
+Sessão `20261021T125714-8e8ea9497378`: usuário solicitou commit das alterações. Criado commit local na branch `FEAT-Intro-screen`, reunindo ajuda dos três apoios da aproximação, pouso contínuo do retorno NORMAL, compatibilidade de upload do piso, documentação e acervo imutável de QA. O encerramento desta sessão é incorporado ao mesmo commit; consulte o Git para o hash final. Não houve push nem publicação. Validações anteriores preservadas, sem repetir testes nesta etapa sem edição de produção. `git diff --cached --check` aprovado. A confirmação do piso no Safari permanece pendente e não foi declarada aprovada pelo commit.

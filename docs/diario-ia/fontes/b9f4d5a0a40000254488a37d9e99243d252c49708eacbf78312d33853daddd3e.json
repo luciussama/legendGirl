@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b9f4d5a0a40000254488a37d9e99243d252c49708eacbf78312d33853daddd3e",
+  "path": "qa-execucoes/4860547c50414f8daa205c8048e63ed2.log",
+  "sha256": "8c0ae656c64a2de6d2c09543d7c3c78f39fc0d3533223218897263176e1d5b18",
+  "capturedAt": "2026-10-21T11:51:21.120714+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:balanceamento:producao",
+    "exitCode": 0,
+    "package": "20261021T011945-fb38d9f7d9c8"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:balanceamento:producao\n> npm run build && npm run check-assets && npm run lint\n\n\n> o-quarto-dos-brinquedos@1.0.0 build\n> node scripts/validate-production.js\n\nPublicação validada: recursos locais existentes e caminhos relativos.\n\n> o-quarto-dos-brinquedos@1.0.0 check-assets\n> node scripts/check-assets.js\n\nVerificação aprovada: 66 recursos registrados.\n\n> o-quarto-dos-brinquedos@1.0.0 lint\n> node --check server.js && node --check scripts/check-assets.js\n\n"
+}

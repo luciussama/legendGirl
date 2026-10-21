@@ -3,6 +3,7 @@ import { CHASE_CONFIG as C, clamp, damp } from './ChaseConfig.js';
 import { routeFrame, ROUTE_AMBUSHES } from './ChaseRoute.js';
 import { chasePacing } from './ChasePacing.js';
 import { chaseLives, CHASE_FALL_DURATION } from './ChaseHealth.js';
+import { chasePattern } from './ChasePatterns.js';
 
 const STAGES = ['BEAR_DOWN', 'GIRL_APPROACH', 'BEAR_RISE', 'CHASE_START', 'RUNNING', 'CAUGHT', 'CHEST_RETURN', 'COMPLETE'];
 
@@ -31,6 +32,7 @@ export function restoreChaseState(saved) {
       typeof state.chestApplied !== 'boolean' || state.chestApplied !== (state.stage === 'COMPLETE') ||
       state.obstacles.some(o => !['id', 'x', 'z', 'age', 'width', 'fromX', 'fromZ'].every(key => Number.isFinite(o[key])) ||
         (o.flight !== undefined && (!Number.isFinite(o.flight) || o.flight < .2 || o.flight > C.flight)) ||
+        (o.fitWidth !== undefined && typeof o.fitWidth !== 'boolean') ||
         o.width <= 0 || !['blocks', 'train', 'bunny'].includes(o.kind)))
     throw new TypeError('Geometria inválida no save da perseguição.');
   state.x = clamp(state.x, -C.halfWidth, C.halfWidth);
@@ -51,27 +53,33 @@ export function hitsObstacle(obstacle, fromX, toX, fromZ, toZ) {
 }
 
 /** Coloca um grupo com corredor livre, tempo de aviso e distância entre padrões. */
-function dropPattern(state, events, pacing, speed, ambushZ = null) {
+function dropPattern(state, events, pacing, speed, ambushZ = null, difficulty = 'NORMAL') {
   const progress = state.distance / C.length;
+  const finalPressure = difficulty !== 'EASY' && progress >= C.finalPressureStart;
   const randomLane = Math.floor(random(state) * 3);
   let safeLane = ambushZ === null ? randomLane : routeFrame(ambushZ).curvature >= 0 ? 2 : 0;
   // Nos trechos rápidos, a próxima saída exige no máximo uma mudança de faixa.
-  if (progress > .5 && Math.abs(safeLane - state.dropSide) > 1) safeLane = 1;
-  const blocked = progress > .35 ? [0, 1, 2].filter(i => i !== safeLane) : [(safeLane + 1) % 3];
-  // O menor intervalo permite atravessar toda a largura antes do próximo grupo.
-  state.nextDrop = state.time + pacing.interval;
-  const z = ambushZ ?? state.distance + state.gap - 1;
-  // O brinquedo precisa pousar antes de consumir a margem de reação; perto da captura, cessa o ataque.
+  if (finalPressure) safeLane = state.dropSide === 1 ? (randomLane === 0 ? 0 : 2) : 1;
+  else if (progress > .5 && Math.abs(safeLane - state.dropSide) > 1) safeLane = 1;
+  const pattern = chasePattern(progress, difficulty, safeLane);
+  // A cadência final usa saídas vizinhas, alcançáveis antes do próximo par.
+  state.nextDrop = state.time + (finalPressure ? C.finalDropInterval : pacing.interval);
   const forecastSpeed = chasePacing(state.distance + 30).speed * 1.12;
-  if (z - state.distance < Math.max(C.minDropGap - 1, Math.max(speed, forecastSpeed) * (pacing.flight + pacing.reaction)) || z > C.length - 25) return;
-  for (const lane of blocked) {
-    const obstacle = { id: ++state.serial, x: C.lanes[lane], z, age: 0, flight: pacing.flight, width: 1.15,
+  const minimumLead = Math.max(C.minDropGap - 1, Math.max(speed, forecastSpeed) * (pacing.flight + pacing.reaction));
+  // No final, o urso lança adiante mesmo enquanto a menina se aproxima dele.
+  // O último grupo termina dentro da pista e conserva o aviso completo após pousar.
+  const lead = finalPressure ? Math.max(state.gap - 1, minimumLead + .5) : state.gap - 1;
+  const z = ambushZ ?? (finalPressure ? state.distance + lead : state.distance + state.gap - 1);
+  if (z - state.distance < minimumLead || z > C.length - (finalPressure ? .5 : 25)) return;
+  for (const { x, width } of pattern.obstacles) {
+    const obstacle = { id: ++state.serial, x, z, age: 0, flight: pacing.flight, width,
       kind: ['blocks', 'train', 'bunny'][Math.floor(random(state) * 3)], hit: false,
       fromX: state.bearX, fromZ: state.distance + state.gap };
+    if (pattern.tight) obstacle.fitWidth = true;
     state.obstacles.push(obstacle);
     events.push({ type: 'toyThrown', id: obstacle.id });
   }
-  state.dropSide = safeLane;
+  state.dropSide = pattern.side;
 }
 
 /** Amortece alvos alternados da fada atrás/acima da menina, com profundidade real. */
@@ -151,8 +159,13 @@ export function stepChase(state, input, dt = C.step, difficulty = 'NORMAL') {
   }
   state.obstacles = state.obstacles.filter(o => o.z > state.distance - 8);
   const ambush=ROUTE_AMBUSHES.find(z=>fromZ<z-20&&state.distance>=z-20);
-  if(ambush!==undefined) {dropPattern(state,events,pacing,speed,ambush);state.nextDrop=state.time+Math.max(1.75,pacing.interval);}
-  else if(state.time>=state.nextDrop&&!ROUTE_AMBUSHES.some(z=>Math.abs(state.distance-(z-20))<22))dropPattern(state,events,pacing,speed);
+  const finalPressure = difficulty !== 'EASY' && state.distance >= C.length * C.finalPressureStart;
+  if (finalPressure) {
+    if (fromZ < C.length * C.finalPressureStart || state.time + 1e-9 >= state.nextDrop)
+      dropPattern(state, events, pacing, speed, null, difficulty);
+  }
+  else if(ambush!==undefined) {dropPattern(state,events,pacing,speed,ambush,difficulty);state.nextDrop=state.time+Math.max(1.75,pacing.interval);}
+  else if(state.time>=state.nextDrop&&!ROUTE_AMBUSHES.some(z=>Math.abs(state.distance-(z-20))<22))dropPattern(state,events,pacing,speed,null,difficulty);
   const checkpoint = Math.floor(state.distance / C.segmentLength) * C.segmentLength;
   if (checkpoint > state.checkpoint && checkpoint < C.length) {
     state.checkpoint = checkpoint; events.push({ type: 'checkpointReached' });

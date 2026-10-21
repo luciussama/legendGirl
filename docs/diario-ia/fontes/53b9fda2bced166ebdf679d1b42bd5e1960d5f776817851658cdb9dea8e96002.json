@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "53b9fda2bced166ebdf679d1b42bd5e1960d5f776817851658cdb9dea8e96002",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-antes.png",
+  "sha256": "03704b0b4b8653f8d8447fb243ea474ee73ce6b8d0119df7fcdda63ebd6b54da",
+  "capturedAt": "2026-10-21T12:47:48.637929+00:00",
+  "origin": {
+    "type": "evidencia-regeneravel"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"/tmp/legendgirl-piso-antes.png\", \"sha256\": \"774a5a8df5b3099973ceb36c359e63735242e2db508d7cc0c379594ce3f5c567\", \"bytes\": 611858, \"binaryRetained\": false}"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "58680bd8ea9e4239a9ce94ea2ff46a8d",
+  "type": "qa",
+  "date": "2026-10-21T01:32:39.677243+00:00",
+  "title": "QA temporário: test:cadencia-final",
+  "exitCode": 0,
+  "sourceId": "9fd9bd6d1dc971e9a5230190106d8ade24754e547af82a5463f3b4e2e3759430",
+  "package": "20261021T013233-da3b2e0d5c09"
+}

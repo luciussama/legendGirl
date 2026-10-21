@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T122734-5f9810f226a3",
+  "date": "2026-10-21T12:27:34.031016+00:00",
+  "title": "Medir janelas após corrigir contato sem recalibrar saltos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/medidas.js",
+      "sourceId": "f0e60621d94a0a21495ca2e7b04e2a299a68d93e7d71d73c90229ea7945b5b0e",
+      "sha256": "4654c4149807b98df8ec243abb9346cdaa03df781cead568b44ac57f6dfee0ae",
+      "bytes": 300,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:pousos:retorno:medidas": "node docs/diario-ia/qa/pousos-retorno-20261021/medidas.js"
+  }
+}

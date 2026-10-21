@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "ecb17c83cd124235bdc37f8c7cc7d3ca",
+  "type": "qa",
+  "date": "2026-10-21T12:14:21.481886+00:00",
+  "title": "QA temporário: test:pousos:retorno",
+  "exitCode": 1,
+  "sourceId": "e15ce971a25161a277b2576c0792c0595abe9e0d87bebc65acb700df740e2966",
+  "package": "20261021T121416-62ac0e6c966e"
+}

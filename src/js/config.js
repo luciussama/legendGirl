@@ -37,13 +37,15 @@ export const CUTSCENE_DIALOGUE = {
   plotTwistFairy: "Eu também achei. Droga... Vamos olhar por ali."
 };
 
-// Alcances originais da aproximação. Reduzir o avanço aéreo para estreitar a
-// janela criou frenagem artificial na bailarina; o desafio pós-clímax é separado.
+// EASY conserva os alcances originais. NORMAL corre a 2 px/quadro e usa
+// alcances fixos próprios, sem frear no ar nem ajustar a mira pela posição do comando.
 const APPROACH_AIR_SPEEDS = Object.freeze([
   1.42, 1.42, 1.42, 1.42, 1.42, 1.8, 1.95, 1.42, 1.42, 1.42
 ]);
-export function getApproachJumpSpeed(platformIndex) {
-  return APPROACH_AIR_SPEEDS[Math.max(0, Math.min(9, Math.floor(platformIndex) + 1))];
+const NORMAL_APPROACH_AIR_SPEEDS = Object.freeze([2, 2, 2, 2, 2.3301, 2.835, 2.8474, 2.3259, 2, 2]);
+export function getApproachJumpSpeed(platformIndex, difficulty = 'NORMAL') {
+  const speeds = difficulty === 'EASY' ? APPROACH_AIR_SPEEDS : NORMAL_APPROACH_AIR_SPEEDS;
+  return speeds[Math.max(0, Math.min(9, Math.floor(platformIndex) + 1))];
 }
 
 // Retorno pós-clímax: entrada pelo chão, quinze apoios e chegada ao portal.
@@ -52,6 +54,14 @@ const PHASE3_AIR_SPEEDS = Object.freeze([
   1.1088, 1.5883, 1.9809, 2.3397, 2.7594, 3.0715, 3.5089, 3.9311,
   4.3560, 4.7501, 5.1968, 5.5080, 5.9376, 6.3539, 6.7577, 7.2345
 ]);
+const NORMAL_PHASE3_AIR_SPEEDS = Object.freeze([
+  1.1088, 2.1955, 2.597, 2.9772, 3.4119, 3.7886, 4.2255, 4.6508,
+  5.0562, 5.4318, 5.8662, 6.2336, 6.6358, 7.0325, 7.4001, 7.9344
+]);
+const NORMAL_ESCAPE_AIR_SPEEDS = Object.freeze([
+  1.85, 2.4745, 2.652, 2.8212, 2.8537, 3.2233, 3.3327, 3.55,
+  3.7454, 3.8936, 4.3348, 4.6646
+]);
 
 /**
  * Atributos progressivos para a sequência de fuga com 12 plataformas (Fase 2).
@@ -59,15 +69,15 @@ const PHASE3_AIR_SPEEDS = Object.freeze([
  * Nível 0 ocorre ao estar sobre o Castelo (plataforma 9), saltando para a plataforma 1/12.
  * Nível 11 ocorre na borda do Guarda-Roupa (plataforma 20), saltando para o Grande Portal (plataforma 21).
  */
-export function getEscapeStats(level) {
+export function getEscapeStats(level, difficulty = 'NORMAL') {
   const lvl = Math.max(0, Math.min(11, Math.floor(level)));
   const t = lvl / 11; // 0.0 a 1.0
   return {
     levelIndex: lvl,
     jumpPower: -7.20 - t * 2.10,       // -7.20 a -9.30 px/frame (ápice vertical controlado)
     // Alcance fixo por nível, calibrado para janelas de saída cada vez menores.
-    airVx: [1.85, 2.176, 2.255, 2.354, 2.360, 2.627, 2.703,
-      2.886, 3.082, 3.288, 3.732, 4.080][lvl],
+    airVx: difficulty === 'EASY' ? [1.85, 2.176, 2.255, 2.354, 2.360, 2.627, 2.703,
+      2.886, 3.082, 3.288, 3.732, 4.080][lvl] : NORMAL_ESCAPE_AIR_SPEEDS[lvl],
     runVx: 1.65 + t * 1.10,           // 1.65 a 2.75 px/frame
     scrollSpeed: 1.50 + t * 2.25,     // 1.50 a 3.75 px/frame
     pitchMult: 1.0 + t * 0.55,        // multiplicador de tom sonoro de 1.0x a 1.55x
@@ -80,13 +90,13 @@ export function getEscapeStats(level) {
  * Movimento da Direita para a Esquerda (airVx, runVx e scrollSpeed são NEGATIVOS).
  * nível: 0 a 14 (15 plataformas)
  */
-export function getPhase3Stats(level, fromFloor = false) {
+export function getPhase3Stats(level, fromFloor = false, difficulty = 'NORMAL') {
   const lvl = Math.max(0, Math.min(14, Math.floor(level)));
   const t = lvl / 14; // 0.0 a 1.0
   return {
     levelIndex: lvl,
     jumpPower: -7.40 - t * 2.20,       // -7.40 a -9.60 px/frame (arco suave e elegante sem ultrapassar o teto)
-    airVx: -PHASE3_AIR_SPEEDS[fromFloor ? 0 : lvl + 1],
+    airVx: -(difficulty === 'EASY' ? PHASE3_AIR_SPEEDS : NORMAL_PHASE3_AIR_SPEEDS)[fromFloor ? 0 : lvl + 1],
     runVx: -(1.90 + t * 1.60),         // -1.90 a -3.50 px/frame
     scrollSpeed: -(1.80 + t * 2.40),   // -1.80 a -4.20 px/frame
     pitchMult: 1.0 + t * 0.65,

@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T013345-d6504e51bb87",
+  "date": "2026-10-21T01:33:45.705488+00:00",
+  "title": "QA de pares finais no navegador, controlado e teclado nativo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/cadencia-final-20261020/visual-browser.js",
+      "sourceId": "ad6ad06600c3b867dff12c666522c7e942f0a5e59174600592c98bcfe417b055",
+      "sha256": "8e7fd575b85490adea467539b7e3238b1fd7e6f3c8a2f11497dca42848c67623",
+      "bytes": 7130,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js",
+      "sourceId": "68a40213f5c9bc113d0ee7c0f53bce24da3b1b6b082c0c8615e8091fa3ed8d3e",
+      "sha256": "f224fde34a96b34e3d031c593a2f595c6638732f7c75f7905d0916d62683ef13",
+      "bytes": 7140,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:cadencia-final:visual:browser": "node docs/diario-ia/qa/cadencia-final-20261020/visual-browser.js",
+    "test:cadencia-final:nativo:browser": "node docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js"
+  }
+}

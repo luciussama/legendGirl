@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T002921-52e66b3c3b78",
+  "date": "2026-10-21T00:29:21.049160+00:00",
+  "title": "Reprodução nativa aguarda menu habilitado antes de iniciar pelo botão",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js",
+      "sourceId": "06947c3102fdcb7a6889d388428b0ea256f99c2dd0e3e40d6feeccb9ead5e85a",
+      "sha256": "ae80adf339c8c2bfa3f042e0ca57e994080ca462b23ced89e2f3841abc49be17",
+      "bytes": 4670,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:pouso:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js"
+  }
+}

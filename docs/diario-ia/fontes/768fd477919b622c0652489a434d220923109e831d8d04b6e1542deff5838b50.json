@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "768fd477919b622c0652489a434d220923109e831d8d04b6e1542deff5838b50",
+  "path": "qa-execucoes/727ffc76b80f4d4790af8d1a0e326a98.log",
+  "sha256": "3ed47565169a721bde2b18c474ab4c48e14dd39651e92da8b28987241424ab7c",
+  "capturedAt": "2026-10-21T12:26:57.847576+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:saltos:progressao",
+    "exitCode": 1,
+    "package": "20261021T011044-adf1e2755452"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:saltos:progressao\n> node docs/diario-ia/qa/balanceamento-20261020/saltos.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: NORMAL exige mais precisão em cada apoio: {\"phase3\":true,\"target\":11,\"dt\":1,\"result\":{\"count\":36,\"ms\":197.1830985915493,\"first\":1177,\"last\":1212},\"easy\":{\"count\":34,\"ms\":186.2284820031299,\"first\":1155,\"last\":1188}}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-k68eia5k/projeto/docs/diario-ia/qa/balanceamento-20261020/saltos.js:8:92\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

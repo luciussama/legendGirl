@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T011945-fb38d9f7d9c8",
+  "date": "2026-10-21T01:19:45.209955+00:00",
+  "title": "Validação controlada de corredores, apresentação e recursos em três formatos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/balanceamento-20261020/visual-browser.js",
+      "sourceId": "7b0d709a304e71c360d76fcbb7ea51b29fba21c158a4b05ef4649971056e37ce",
+      "sha256": "3b94998d1bb6236e5821bf338ab18dce74474ea82f66ac77a928c1780bb98092",
+      "bytes": 6875,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:balanceamento:visual:browser": "node docs/diario-ia/qa/balanceamento-20261020/visual-browser.js",
+    "test:balanceamento:producao": "npm run build && npm run check-assets && npm run lint"
+  }
+}

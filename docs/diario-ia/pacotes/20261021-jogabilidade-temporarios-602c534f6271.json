@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021-jogabilidade-temporarios-602c534f6271",
+  "date": "2026-10-21T00:49:27.810873+00:00",
+  "title": "Texto temporário da auditoria preservado antes da limpeza",
+  "files": [
+    {
+      "path": "qa-resultados/20261020-jogabilidade-real-dificuldade/temporarios/legendgirl-journal-leitura.txt",
+      "sourceId": "f9b39998ea734188586b341454d06c59f7574d40bd7ca2ee3abaad6cfacf8f70",
+      "sha256": "1fb24d5256f964b1d65d5e09c2d01990821091c486ebf89c5fb0c9fe3dd78035",
+      "bytes": 92610,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-resultados/20261020-jogabilidade-real-dificuldade/temporarios/legendgirl-auditoria-dificuldade.log",
+      "sourceId": "8b1950ef6744a17aa64a5ba7dfb06bf1c8f108d897e85c65141c67a3b4b5fc5a",
+      "sha256": "ad16fd8164544e6582fb737a3701adf27cbcabfd46b8886db46a9a562989d89d",
+      "bytes": 11187,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-resultados/20261020-jogabilidade-real-dificuldade/temporarios/legendgirl-real-status.json",
+      "sourceId": "46d57cc5941926915de55ecb03db18ffa34f7486b31655550a0d04372c951c67",
+      "sha256": "67a844676b114a14568ef7d7ace4ea2cdd706526e94c2dc2837ddfb7d432893e",
+      "bytes": 113,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-resultados/20261020-jogabilidade-real-dificuldade/temporarios/legendgirl-base-intervencao.js",
+      "sourceId": "d3babbc1df9c7c3a9255015a6c4bb8deb662b4c17e51e4300829e09010ec5512",
+      "sha256": "f3fc0cc8166105e54446a026b3ed114532baab26b8ff43aa93eb3bf44136084a",
+      "bytes": 1859,
+      "metadataOnly": false
+    }
+  ]
+}

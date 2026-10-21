@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f50d8918531341c7bb6da133c54b2082",
+  "date": "2026-10-21T00:26:46.975861+00:00",
+  "title": "QA temporário: test:jogabilidade:real:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/f50d8918531341c7bb6da133c54b2082.log",
+      "sourceId": "9da53772a4413e1b57578e0560e778f49a95122dca2972ecc02596c52336ef83",
+      "sha256": "56b5fba31870f511a5f5f92af87d6a9eeb97a0b4623af2b3caa89bd3f9657197",
+      "bytes": 3741,
+      "metadataOnly": false
+    }
+  ]
+}

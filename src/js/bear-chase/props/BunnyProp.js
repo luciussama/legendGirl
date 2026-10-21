@@ -31,7 +31,7 @@ export class BunnyProp {
     for (let i = 0; i < 7; i++) p.box(seam, [0, .20 + i * .036, .195], [.006, .017, .008], .001);
     for (let i = 0; i < 4; i++) p.box(seam, [0, .758 + i * .027, .21 - i * .012], [.006, .012, .006], .001);
     p.box(dark, [0, .586, .254], [.007, .028, .006], .001);
-    this.prototype = resources.bake(p.parts, 'Coelho de algodão — pelúcia rosa');
+    this.prototype = resources.bake(p.parts, 'Coelho de algodão — pelúcia rosa', true);
     this.prototype.scale.setScalar(.95);
   }
   /** Esculpe um volume elipsoidal fechado, sem cartões e com normais suaves. */

@@ -290,7 +290,7 @@ export class GameState {
     this.isEscapeMode = true;
     this.targetCameraZoom = 1.0;
     this.escapeLevel = 0;
-    const stats = getEscapeStats(0);
+    const stats = getEscapeStats(0, this.gameDifficulty);
     this.baby.isEscaping = true;
     this.baby.longJumpUnlocked = true;
     // Efeito de gameplay escondido para a segunda parte:
@@ -435,7 +435,7 @@ export class GameState {
       this.baby.currentPlatformIndex = -1;
       this.phase3TutorialActive = false;
       this.phase3Level = 0;
-      const stats = getPhase3Stats(0);
+      const stats = getPhase3Stats(0, false, this.gameDifficulty);
       this.baby.jumpPower = stats.jumpPower;
       this.currentScrollSpeed = stats.scrollSpeed;
       this.targetScrollSpeed = stats.scrollSpeed;
@@ -455,7 +455,7 @@ export class GameState {
       const castleY = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y);
       this.resetBabyPhysicsBody(castleCenterX - this.baby.w / 2, castleY - this.baby.h, 1);
       this.escapeLevel = 0;
-      const stats = getEscapeStats(0);
+      const stats = getEscapeStats(0, this.gameDifficulty);
       this.baby.jumpPower = stats.jumpPower;
       this.baby.currentPlatformIndex = 9;
       this.baby.longJumpUnlocked = true;

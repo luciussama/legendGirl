@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T002329-9b1f6da988ac",
+  "date": "2026-10-21T00:23:29.473503+00:00",
+  "title": "Cobertura nativa adicional: confirmação/cancelamento, carregar final e prévia EASY",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+      "sourceId": "7d2ee3e9b9e2226a60b5ace86b6333afcaa4238d70774b9f68ae98daa59b94c8",
+      "sha256": "cf38f5f505145dd987b7d1483521ad0233b3e9e92e262e967e40b75c7a4b49e7",
+      "bytes": 17870,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:real:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js"
+  }
+}

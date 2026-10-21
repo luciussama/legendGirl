@@ -88,7 +88,7 @@ export class ToyRoomBattle {
 
   swordContactPoint(dx, facing) {
     const s = this.state, profile = this.presentation?.enemies?.[s.enemy.actor];
-    const reach = (s.crouching ? 118 : 165) * 1.1;
+    const reach = (s.crouching ? 118 : 165) * (this.presentation ? this.tuning.swordContactScale ?? 1.1 : 1.1);
     const surface = Math.max(70, Math.abs(dx) - (profile?.bodyWidth ?? 0) / 2 + 35);
     return { x: this.room.player.x + facing * Math.min(reach, surface),
       y: this.tuning.ground - (s.crouching ? 52 : 112) - s.jump };
@@ -425,7 +425,7 @@ export class ToyRoomBattle {
     } else if (e.state === 'ATTACK') {
       const impactEnd = arenaEnemyImpactEnd(e, t);
       // Um erro de defesa permite só uma continuação, com nova antecipação completa.
-      if (profile && e.actor !== 'train' && e.landed && e.elapsed >= impactEnd && !e.pressureChain) {
+      if (profile && profile.pressureChain !== false && e.actor !== 'train' && e.landed && e.elapsed >= impactEnd && !e.pressureChain) {
         e.pressureChain = 1;
         this.beginEnemyResponse();
         return;

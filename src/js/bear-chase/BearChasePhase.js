@@ -5,7 +5,7 @@ import { ChaseAudio } from './ChaseAudio.js';
 import { renderChaseHUD } from './ChaseHUD.js';
 import { ChaseIntroRenderer, isChaseIntro, chaseIntroFade } from './ChaseIntroRenderer.js';
 
-/** Coordenador da prova integrada; depende de portas específicas, nunca da sala inteira. */
+/** Coordenador da fase integrada; depende de portas específicas, nunca da sala inteira. */
 export class BearChasePhase {
   /** Recebe portas mínimas; a campanha mantém o fade até arte e renderer estarem prontos. */
   constructor({ canvas, audio, enabled, difficulty = 'NORMAL', campaign = false, onCampaignError = null }) {
@@ -19,7 +19,7 @@ export class BearChasePhase {
     this.onBlur = () => this.setPaused(true);
     this.onFocus = () => { if (enabled()) this.setPaused(false); };
   }
-  /** Mantém o resultado visível até sair da prévia, inclusive após a sequência do baú. */
+  /** Mantém o resultado visível até sair da perseguição, inclusive após a sequência do baú. */
   get active() { return !this.disposed; }
   /** Prepara GPU/artes e instala controles sem criar outro requestAnimationFrame. */
   async start(saved = null) {
@@ -88,11 +88,11 @@ export class BearChasePhase {
   setPaused(value) {
     this.paused = Boolean(value); this.input.clear(); this.accumulator = 0; this.audio.setPaused(value);
   }
-  /** Exporta somente dados versionados e posição musical para as verificações da prévia. */
+  /** Exporta somente dados versionados e posição musical para as verificações da perseguição. */
   snapshot() { return { version: 1, difficulty: this.difficulty, state: structuredClone(this.state), audio: this.audio.snapshot() }; }
   /** Restaura dados validados; a campanha antiga não é migrada nesta prova isolada. */
   restore(saved) {
-    if (saved?.version !== 1) throw new TypeError('Versão da prévia de perseguição incompatível.');
+    if (saved?.version !== 1) throw new TypeError('Versão da perseguição de perseguição incompatível.');
     if (saved.difficulty !== undefined && !['NORMAL', 'EASY'].includes(saved.difficulty)) throw new TypeError('Dificuldade da perseguição inválida.');
     if (saved.difficulty !== undefined) this.difficulty = saved.difficulty;
     this.state = restoreChaseState(saved.state); this.accumulator = 0;

@@ -6,6 +6,12 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ arenaDifficulty:'Seleciona os perfis originais do NORMAL ou alcance ampliado e menor agressividade no EASY.',
+ chasePattern:'Distribui brinquedos por progresso e dificuldade; no NORMAL usa até três objetos e pares finais com corredor amplo.',
+ getApproachJumpSpeed:'Consulta o alcance fixo da aproximação por apoio e dificuldade, sem mirar pela posição do comando.',
+ getEscapeStats:'Consulta impulso, corrida e efeitos da fuga; o alcance aéreo varia entre NORMAL e EASY.',
+ getPhase3Stats:'Consulta atributos do retorno por nível e dificuldade; fromFloor distingue a entrada pelo chão.',
+
  createToyRoomTutorialContext:'Expõe oito campos atuais ao tutorial; setters somente para conclusão e modo.',
  createToyRoomInputContext:'Adapta entrada, Canvas e callbacks sem copiar os dados usados por HUD/combate.',
  createToyRoomInteractionContext:'Fornece referências atuais e efeitos específicos para as decisões de interação.',

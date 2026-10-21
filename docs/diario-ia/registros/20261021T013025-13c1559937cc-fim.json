@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T013025-13c1559937cc-fim",
+  "sessionId": "20261021T013025-13c1559937cc",
+  "type": "fim",
+  "date": "2026-10-21T01:41:28.587230+00:00",
+  "title": "Limitar perseguição a três brinquedos e usar cadência constante de pares nos 15% finais",
+  "actor": "Codex",
+  "summary": "Revisão autorizada da perseguição NORMAL: eliminados grupos de quatro; três entre 70% e 85%, dois a cada um segundo nos 15% finais. Pares alternam faixas vizinhas e deixam corredor amplo, cobrindo as bordas para exigir desvio. Primeiro par na entrada do trecho; emboscadas não interrompem a cadência. Distância de lançamento conserva aviso mesmo com urso próximo, e não gera brinquedos fora da pista. EASY, arena e saltos preservados. Guias, referência e mapa regenerados. Resultado consolidado 20261021T014052-7d2c02d7ffef. Sem commit/push.",
+  "checks": [
+    "npm test: aprovado, incluindo domínio/vidas, progressão dos saltos, arena e persistência. Novos aliases atualizam somente contratos autorizados; fontes históricas preservadas.",
+    "test:cadencia-final: 36 percursos sem dano, 6 sementes e decisões até 400 ms; oito pares finais espaçados em um segundo, alternância sem posição parada segura, aviso mínimo após pouso de 1,0977 s e último grupo em 712,31/720. RNG/save reproduzíveis e EASY com 5.254 quadros idênticos à fonte anterior.",
+    "Playtest pelo seletor e teclado nativos: NORMAL completo em 90,05 s reais, sem dano, sem escrita no estado da partida/avanço manual/rollback. Fonte 3964ffef73117bf27fbf1518a00464440b853d7ce71468b131a1e6b75148ce39. Quatro tentativas anteriores falharam na preparação do piloto: proteção de botões/foco/operação do seletor; corrigidas somente no QA, mantendo evidências.",
+    "WebGL: 27 cenas em três formatos e dois percursos controlados completos sem dano; até três objetos por grupo, pico de 282 chamadas NORMAL e 272 EASY abaixo de 310. Fonte e70ae22870b1ea0363d29d4f3ec32f0468826dc11bab8f5775a4d40962d909fc. Capturas inspecionadas e descartadas com metadados preservados; Chrome isolado encerrado.",
+    "Build, check-assets (66 recursos), lint, docs:sprites (415 arquivos, 99 recortes, 29 assinaturas), referência de métodos e git diff --check: aprovados."
+  ],
+  "pending": [
+    "Sensação do novo ritmo ainda não avaliada por pessoa ou aparelho físico; validação realizada com automação no Chrome."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseConfig.js",
+    "src/js/bear-chase/ChasePatterns.js",
+    "src/js/bear-chase/ChasePacing.js",
+    "src/js/bear-chase/ChaseSimulation.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/COMANDOS.md",
+    "scripts/generate-method-reference.js",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/cadencia-final-20261020/resultado.json"
+  ]
+}

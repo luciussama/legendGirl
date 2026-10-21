@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "01f8d0f52cc84d489c28b1e4f3355289",
+  "date": "2026-10-20T23:58:56.807097+00:00",
+  "title": "QA temporário: test:retomada:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/01f8d0f52cc84d489c28b1e4f3355289.log",
+      "sourceId": "8f56b4d9ff8286247529455c4d5c74546a0eab38d245063c6663c06e09f7a67b",
+      "sha256": "07e72c11012c31d778ef8c697dabc8dc680f0df124401434d12e349bda55b6e4",
+      "bytes": 3055,
+      "metadataOnly": false
+    }
+  ]
+}

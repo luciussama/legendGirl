@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T122836-6fdac728d5bf",
+  "date": "2026-10-21T12:28:36.067366+00:00",
+  "title": "Verificar dificuldade agregada e 144 pousos no navegador",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/balanceamento-20261020/saltos.js",
+      "sourceId": "037ee94cf2dd33901431e28a5ca423f21c8af9b1d971bd2dff84bc4b1526e247",
+      "sha256": "f5b6a4e94e2f537bd952049a1865e1be2624c6f0f05263708e83eff9445b7e7a",
+      "bytes": 2264,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/correcao-browser.js",
+      "sourceId": "831f45e185eb9a7d0edb21ff9985e4a4c69fcd4e36e7ac66c24c72c70f3257aa",
+      "sha256": "927f39305dbc49d311fb5e555586d94b60baeb5c651930f9843190b64e1bef86",
+      "bytes": 3594,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:pousos:retorno:browser": "node docs/diario-ia/qa/pousos-retorno-20261021/correcao-browser.js"
+  }
+}

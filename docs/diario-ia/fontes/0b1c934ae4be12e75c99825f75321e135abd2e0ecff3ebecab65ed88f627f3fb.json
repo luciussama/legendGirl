@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "0b1c934ae4be12e75c99825f75321e135abd2e0ecff3ebecab65ed88f627f3fb",
+  "path": "docs/diario-ia/qa/balanceamento-20261020/bailarina.js",
+  "sha256": "a702a8849b03a5247c790e48237a340cc97ad700eb566595a3d44f559340dc28",
+  "capturedAt": "2026-10-21T01:10:44.680873+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport {createBabyState,getApproachJumpSpeed,platforms} from '../../../../src/js/config.js';\nimport {attemptFrom} from './fisica.js';\nconst results=[];\nfor(const dt of [.5,1,1.2])for(const difficulty of ['NORMAL','EASY'])for(const x of [1408,1412,1416,1420]) {\n const before=attemptFrom(8,false,x,dt,difficulty,.3266);\n assert.notEqual(before.landed,8,'Reproduz o alcance insuficiente da velocidade regressiva');\n const after=attemptFrom(8,false,x,dt,difficulty);\n assert.equal(after.landed,8,'Saída normal das gavetas alcança a bailarina: '+JSON.stringify({dt,difficulty,x,after}));\n const p=platforms[8],left=p.standRegion?.x??p.x,right=left+(p.standRegion?.w??p.w);\n assert.ok(after.feetX>=left+6&&after.feetX<=right-6,'Pés pousam dentro da superfície, sem depender da borda do corpo');\n assert.ok(after.airVx>=createBabyState().baseVx,'Salto não perde a velocidade horizontal de corrida');\n results.push({dt,difficulty,x,before,after});\n}\nfor(let index=-1;index<9;index++)assert.ok(getApproachJumpSpeed(index)>=createBabyState().baseVx,'Nenhum salto de aproximação freia artificialmente abaixo da corrida');\nconsole.log(JSON.stringify(results,null,2));console.log('APROVADO: regressão reproduzida com 0,3266; 24 travessias normais alcançam a bailarina com pés apoiados e sem frenagem aérea.');\n"
+}

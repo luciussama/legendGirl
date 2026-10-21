@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "f0e60621d94a0a21495ca2e7b04e2a299a68d93e7d71d73c90229ea7945b5b0e",
+  "path": "docs/diario-ia/qa/pousos-retorno-20261021/medidas.js",
+  "sha256": "4654c4149807b98df8ec243abb9346cdaa03df781cead568b44ac57f6dfee0ae",
+  "capturedAt": "2026-10-21T12:27:34.030619+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import {scan} from '../balanceamento-20261020/fisica.js';\nfor(const dt of [.5,1,1.2])for(const mode of ['NORMAL','EASY']){const rows=Array.from({length:16},(_,target)=>({target,...scan(target,true,undefined,dt,mode)}));console.log(JSON.stringify({dt,mode,rows,total:rows.reduce((s,r)=>s+r.ms,0)}));}\n"
+}
