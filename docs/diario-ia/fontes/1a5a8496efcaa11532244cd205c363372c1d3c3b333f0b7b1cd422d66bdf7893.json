@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1a5a8496efcaa11532244cd205c363372c1d3c3b333f0b7b1cd422d66bdf7893",
+  "path": "qa-execucoes/caabda1cb6f44d76af218a19e523c9f5/docs/diario-ia/qa-resultados/derrotas/desktop.png",
+  "sha256": "5c9a2cc14e3d0f31e7ae418dbdcea03e1974a2f5e1ce9f2414ca4c42485d726b",
+  "capturedAt": "2026-10-21T13:32:45.793827+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/derrotas/desktop.png\", \"sha256\": \"faaf1dc503c4d5511bfe48567d2d0a312afdc47f5c648fe2362182116e486894\", \"bytes\": 63904, \"binaryRetained\": false}"
+}

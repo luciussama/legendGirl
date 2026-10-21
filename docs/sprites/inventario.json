@@ -295,7 +295,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 634,
+          "line": 687,
           "type": "runtime",
           "alias": "opening-waking-up"
         }

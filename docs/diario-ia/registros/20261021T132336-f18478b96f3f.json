@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T132336-f18478b96f3f",
+  "sessionId": "20261021T132336-f18478b96f3f",
+  "type": "inicio",
+  "date": "2026-10-21T13:23:36.890105+00:00",
+  "title": "Retry da perseguição e oferta de modo fácil após três derrotas",
+  "actor": "Codex",
+  "branch": "FEAT-retry-rule",
+  "head": "6caedea42ce94248ece699e6d79207555093a5a7",
+  "workingTree": []
+}

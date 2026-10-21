@@ -46,11 +46,17 @@ A documentação tem agora um [catálogo da arquitetura e entidades](ARQUITETURA
 
 ## 19 a 21 de outubro de 2026 — menu e continuidade da aventura
 
-A tela inicial ganhou a cena da menina lendo e opções para iniciar ou carregar a aventura. O modo fácil acompanha a campanha salva. A vitória da arena agora entrega diretamente à introdução da fuga, com escurecimento durante a troca e preservação do progresso. A conclusão e a derrota da perseguição ainda precisam de navegação e retomada próprias.
+A tela inicial ganhou a cena da menina lendo e opções para iniciar ou carregar a aventura. O modo fácil acompanha a campanha salva. A vitória da arena agora entrega diretamente à introdução da fuga, com escurecimento durante a troca e preservação do progresso. A conclusão da perseguição ainda precisa de navegação própria; sua derrota agora oferece nova tentativa.
 
 O NORMAL exige desvios sucessivos na fuga: nos trechos densos há até três brinquedos, e o final alterna pares com um corredor mais amplo. O EASY conserva sua distribuição anterior e recebe mais vidas; na arena, oferece maior alcance e mais tempo para reagir.
 
 Os pousos do retorno passaram a reconhecer o contato durante a descida, evitando perder um apoio que foi cruzado entre quadros. A apresentação móvel usa um enquadramento contínuo. O piso da fuga recebeu um ajuste de compatibilidade de textura; o relato de ausência da madeira no Safari ainda aguarda confirmação. Novas artes e modelos continuam sujeitos à aprovação específica do responsável.
+
+## 21 de outubro de 2026 — ajuda após três derrotas
+
+A perseguição passa a perguntar “A menina não alcançou o urso. Tentar novamente?” quando a tentativa termina. É possível tentar essa fase de novo sem voltar ao menu.
+
+Depois de três derrotas completas na campanha, em qualquer parte da aventura, o jogo pergunta “deseja tentar no fácil?”. Aceitar muda a dificuldade e mantém a parte atual: checkpoint do quarto, adversário da arena ou progresso na perseguição. Recusar mantém o NORMAL; outras três derrotas permitem nova oferta. A contagem e a escolha acompanham a aventura salva.
 
 ## Próximas entradas
 

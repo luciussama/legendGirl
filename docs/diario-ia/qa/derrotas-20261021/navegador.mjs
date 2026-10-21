@@ -1,0 +1,64 @@
+/** Integra a página real com estados de derrota preparados e respostas nativas via CDP. */
+import assert from 'node:assert/strict';
+import fs from 'node:fs/promises';
+const host='http://127.0.0.1:3000', cdp='http://127.0.0.1:9222';
+const sleep=ms=>new Promise(r=>setTimeout(r,ms));
+await fs.mkdir('docs/diario-ia/qa-resultados/derrotas',{recursive:true});
+for(const [format,width,height,touch] of [['desktop',1280,800,false],['retrato',390,844,true],['paisagem',844,390,true]]){
+ const tab=await (await fetch(cdp+'/json/new?'+encodeURIComponent(host),{method:'PUT'})).json();
+ const ws=new WebSocket(tab.webSocketDebuggerUrl);await new Promise(r=>ws.addEventListener('open',r,{once:true}));
+ let serial=0;const pending=new Map();
+ ws.addEventListener('message',e=>{const m=JSON.parse(e.data);if(pending.has(m.id)){const p=pending.get(m.id);pending.delete(m.id);m.error?p.reject(Error(m.error.message)):p.resolve(m.result);}});
+ const send=(method,params={})=>new Promise((resolve,reject)=>{const id=++serial;pending.set(id,{resolve,reject});ws.send(JSON.stringify({id,method,params}));});
+ const evaluate=async code=>{const r=await send('Runtime.evaluate',{expression:code,awaitPromise:true,returnByValue:true});if(r.exceptionDetails)throw Error(r.exceptionDetails.text+' '+r.exceptionDetails.exception?.description);return r.result.value;};
+ const until=async(code,label,timeout=30000)=>{const end=Date.now()+timeout;while(Date.now()<end){if(await evaluate(code))return;await sleep(80);}throw Error('Espera excedida: '+label);};
+ const click=async selector=>{
+  await sleep(500);
+  const point=await evaluate(`(()=>{const e=document.querySelector(${JSON.stringify(selector)});const r=e.getBoundingClientRect();return {x:r.x+r.width/2,y:r.y+r.height/2};})()`);
+  if(touch){await send('Input.dispatchTouchEvent',{type:'touchStart',touchPoints:[{...point,id:1}]});await send('Input.dispatchTouchEvent',{type:'touchEnd',touchPoints:[]});}
+  else{await send('Input.dispatchMouseEvent',{type:'mousePressed',...point,button:'left',clickCount:1});await send('Input.dispatchMouseEvent',{type:'mouseReleased',...point,button:'left',clickCount:1});}
+ };
+ try{
+  await send('Page.enable');await send('Runtime.enable');await send('Emulation.setDeviceMetricsOverride',{width,height,deviceScaleFactor:1,mobile:touch});await send('Emulation.setTouchEmulationEnabled',{enabled:touch});
+  await send('Page.navigate',{url:host});await until('Boolean(window.game)','jogo');await evaluate('localStorage.clear(); location.reload();');await until('Boolean(window.game)','jogo limpo');
+  await click('#btn-start-phase1');await until('game.state.gameStarted','início');await sleep(450);
+  await evaluate('game.state.triggerGameOver(game.audio)');await until('game.state.defeatCount===1','derrota do quarto');assert.equal(await evaluate('document.getElementById("easy-mode-dialog").open'),false);
+  await click('#btn-retry');assert.equal(await evaluate('game.state.defeatPending'),false);
+  await evaluate(`(()=>{game.startToyRoomPhase();const r=game.state.toyRoomInstance.instance;r.tutorial.finish();r.story.state.swordEquipped=true;r.arena.start();r.arena.state.status='COMBAT';r.battle.activate();r.battle.state.index=2;r.battle.spawn();r.battle.state.mode='DEFEAT';r.battle.state.player.hp=0;})()`);
+  await until('game.state.defeatCount===2','derrota da arena');await sleep(200);assert.equal(await evaluate('game.state.defeatCount'),2);
+  await click('#btn-retry');assert.equal(await evaluate('game.state.toyRoomInstance.instance.battle.state.mode'),'BATTLE');
+  await evaluate(`(()=>{const r=game.state.toyRoomInstance.instance;r.arena.finish();r.story.state.arenaCompleted=true;r.startChaseCampaign();})()`);
+  await until('game.state.toyRoomInstance.instance.chase?.ready','renderer da fuga',60000);
+  await evaluate(`(()=>{const c=game.state.toyRoomInstance.instance.chase;c.handoffFade=0;Object.assign(c.state,{stage:'GAME_OVER',distance:350,x:-1.2,time:30,hits:3});})()`);
+  await until('document.getElementById("easy-mode-dialog").open','oferta acumulada entre fases');
+  assert.equal(await evaluate('document.querySelector(".gameover-title").textContent'),'A menina não alcançou o urso. Tentar novamente?');
+  assert.equal(await evaluate('document.getElementById("easy-mode-title").textContent'),'deseja tentar no fácil?');
+  await send('Page.reload');await until('Boolean(window.game)','recarga');await click('#btn-load-game');
+  await until('document.getElementById("easy-mode-dialog").open','oferta restaurada',60000);assert.equal(await evaluate('game.state.defeatCount'),3,'Recarga não conta novamente');
+  const shot=Buffer.from((await send('Page.captureScreenshot',{format:'png'})).data,'base64');await fs.writeFile(`docs/diario-ia/qa-resultados/derrotas/${format}.png`,shot);await fs.writeFile(`/tmp/legendgirl-derrotas-${format}.png`,shot);
+  await evaluate(`(()=>{const original=game.continueOnEasy;window.originalContinueOnEasy=original;game.continueOnEasy=()=>{const ok=original();window.resumedAt=structuredClone(game.state.toyRoomInstance.instance.chase.state);return ok;};})()`);
+  if(format==='paisagem'){for(const [key,code,n] of [['Tab','Tab',9],['Enter','Enter',13]]){await send('Input.dispatchKeyEvent',{type:'keyDown',key,code,windowsVirtualKeyCode:n,text:key==='Enter'?'\r':undefined});await send('Input.dispatchKeyEvent',{type:'keyUp',key,code,windowsVirtualKeyCode:n});}}else await click('#btn-accept-easy');await until('!document.getElementById("easy-mode-dialog").open && game.state.gameDifficulty==="EASY"','aceite');
+  const continued=await evaluate(`(()=>{const r=game.state.toyRoomInstance.instance,c=r.chase;return {distance:c.state.distance,x:c.state.x,hits:c.state.hits,stage:c.state.stage,room:r.gameDifficulty,chase:c.difficulty,count:game.state.defeatCount,saved:JSON.parse(localStorage.getItem('legendGirl.campaign.v1')).state.gameDifficulty};})()`);
+  assert.ok(continued.distance>=350 && continued.distance<365);assert.equal(await evaluate('resumedAt.x'),-1.2);assert.equal(await evaluate('resumedAt.distance'),350);assert.equal(continued.stage,'RUNNING');assert.equal(continued.hits,0);assert.equal(continued.room,'EASY');assert.equal(continued.chase,'EASY');assert.equal(continued.saved,'EASY');assert.equal(continued.count,3);await evaluate('game.continueOnEasy=originalContinueOnEasy');
+  for(let n=4;n<=6;n++){
+   await evaluate('game.state.toyRoomInstance.instance.chase.state.stage="GAME_OVER"');await until(`game.state.defeatCount===${n}`,'derrota no fácil');assert.equal(await evaluate('document.getElementById("easy-mode-dialog").open'),false);if(n===4){const failure=Buffer.from((await send('Page.captureScreenshot',{format:'png'})).data,'base64');await fs.writeFile(`docs/diario-ia/qa-resultados/derrotas/falha-${format}.png`,failure);await fs.writeFile(`/tmp/legendgirl-falha-${format}.png`,failure);}await click('#btn-retry');await until('game.state.toyRoomInstance.instance.chase.state.stage!=="GAME_OVER"','retry da fuga');
+  }
+  await evaluate('game.restartToTitle()');await click('#btn-start-phase1');await until('document.getElementById("restart-campaign-dialog").open','confirmar nova aventura');await click('#btn-confirm-new-campaign');await until('game.state.gameStarted && game.state.defeatCount===0','nova contagem');
+  // Prepara falhas do quarto; as escolhas continuam sendo cliques/toques reais.
+  for(let n=1;n<=3;n++){await evaluate('game.state.triggerGameOver(game.audio)');await until(`game.state.defeatCount===${n}`,'derrota para recusa');if(n<3)await click('#btn-retry');}
+  await until('document.getElementById("easy-mode-dialog").open','nova oferta');if(format==='retrato'){await send('Input.dispatchKeyEvent',{type:'keyDown',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await send('Input.dispatchKeyEvent',{type:'keyUp',key:'Escape',code:'Escape',windowsVirtualKeyCode:27});await until('!document.getElementById("easy-mode-dialog").open','Escape recusa');}else await click('#btn-decline-easy');assert.equal(await evaluate('game.state.gameDifficulty'),'NORMAL');assert.equal(await evaluate('game.state.defeatCount'),3);await click('#btn-retry');
+  await evaluate('game.state.triggerGameOver(game.audio)');await until('game.state.defeatCount===4','derrota após recusa');assert.equal(await evaluate('document.getElementById("easy-mode-dialog").open'),false);
+  if(format==='desktop'){
+   await click('#btn-retry');await evaluate('game.state.triggerGameOver(game.audio)');await until('game.state.defeatCount===5','quinta derrota');await click('#btn-retry');
+   await evaluate(`(()=>{game.startToyRoomPhase();const r=game.state.toyRoomInstance.instance;r.tutorial.finish();r.story.state.swordEquipped=true;r.arena.start();r.arena.state.status='COMBAT';r.battle.activate();r.battle.state.index=3;r.battle.spawn();r.battle.state.enemy.hp=5;r.battle.state.mode='DEFEAT';r.battle.state.player.hp=0;})()`);
+   await until('document.getElementById("easy-mode-dialog").open','sexta derrota na arena');await click('#btn-accept-easy');await until('game.state.gameDifficulty==="EASY"','aceite na arena');
+   const arena=await evaluate('(()=>{const r=game.state.toyRoomInstance.instance;return {difficulty:r.gameDifficulty,index:r.battle.state.index,hp:r.battle.state.player.hp,enemy:r.battle.state.enemy.hp,range:r.battle.tuning.swordRange,mode:r.battle.state.mode};})()');
+   assert.deepEqual(arena,{difficulty:'EASY',index:3,hp:3,enemy:5,range:271.7,mode:'BATTLE'});
+   await evaluate(`(()=>{game.startDebugPhase('bedroom','NORMAL');Object.assign(game.state,{isPhase3:true,cutsceneCompleted:true,gameplayState:'GAMEPLAY_NORMAL',firstJumpTutorialCompleted:true});})()`);
+   for(let n=1;n<=3;n++){await evaluate('game.state.triggerGameOver(game.audio)');await until(`game.state.defeatCount===${n}`,'derrota no retorno');if(n<3)await click('#btn-retry');}
+   await until('document.getElementById("easy-mode-dialog").open','oferta no retorno');await click('#btn-accept-easy');await until('game.state.gameDifficulty==="EASY"','aceite no retorno');
+   assert.equal(await evaluate('game.state.gameDifficulty'),'EASY');assert.equal(await evaluate('game.state.isPhase3'),true);assert.equal(await evaluate('game.state.baby.x'),4640);assert.equal(await evaluate('game.isGameOver()'),false);
+  }
+  console.log(JSON.stringify({formato:format,resultado:'aprovado',contagemEntreFases:3,recargaSemDuplicacao:true,retomada:continued,recusa:true,retryNativo:true}));
+ }finally{ws.close();await fetch(cdp+'/json/close/'+tab.id);}
+}

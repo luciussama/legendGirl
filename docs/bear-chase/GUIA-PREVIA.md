@@ -15,7 +15,7 @@ P pausa e M alterna o som.
 O alto da tela mostra apenas as vidas: três corações no NORMAL e seis no FÁCIL.
 Cada tropeço consome um coração. Ao perder o último, a menina cai e a tentativa
 termina, sem capturar o urso nem enviá-lo ao baú. A música diminui durante a queda
-e para no fim de jogo. Para uma nova tentativa, escolha a fase novamente pelo seletor.
+e para no fim de jogo. A tela informa “A menina não alcançou o urso. Tentar novamente?” e oferece nova tentativa, reiniciando a abertura da fuga.
 Snapshots novos conservam a dificuldade; snapshots antigos usam a dificuldade
 selecionada. O contador de impactos existente é a fonte das vidas restantes.
 
@@ -298,6 +298,6 @@ A mudança é de compatibilidade do envio da textura. O arquivo de arte, as táb
 
 ## Limites do fluxo atual
 
-COMPLETE mantém a fase ativa depois da ida ao baú; falta a navegação final. GAME_OVER termina sem captura e ainda não oferece retry próprio da campanha. A orientação para escolher a fase novamente pertence ao acesso de debug. O ajuste de upload do piso foi validado no Chrome; o defeito relatado no Safari continua aguardando confirmação no navegador do usuário.
+COMPLETE mantém a fase ativa depois da ida ao baú; falta a navegação final. GAME_OVER termina sem captura e oferece retry da fase pela interface. A cada três derrotas no NORMAL, somadas à campanha, surge a oferta do fácil. Aceitar retoma a distância/posição da fuga com seis vidas e dois segundos de imunidade; recusar mantém a dificuldade e a tentativa encerrada. O ajuste de upload do piso foi validado no Chrome; o defeito relatado no Safari continua aguardando confirmação no navegador do usuário.
 
 Além dos módulos da tabela, `ChasePacing`, `ChaseCamera`, `ChaseLighting` e `ChaseBearAnimation` isolam ritmo, enquadramento, iluminação e articulações. As fábricas específicas de objetos, primitivas e atlas estão descritas no [catálogo completo](../ARQUITETURA.md#catálogo-completo-dos-módulos-javascript). Aprovação técnica não substitui avaliação artística de modelos, novas poses e materiais.

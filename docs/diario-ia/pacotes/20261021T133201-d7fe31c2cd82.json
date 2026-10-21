@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T133201-d7fe31c2cd82",
+  "date": "2026-10-21T13:32:01.501512+00:00",
+  "title": "QA de derrotas na página real, três formatos e respostas nativas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/derrotas-20261021/navegador.mjs",
+      "sourceId": "d1c0af7f4877477e4a87d7aae736b8221ba1908710274623978fa3e955a3e9e1",
+      "sha256": "6ee07cd73aba663ca191f6e501e7cb9987bf4262fede2e2d1fdb31835a41f1d8",
+      "bytes": 7304,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:campaign:defeats:browser": "node docs/diario-ia/qa/derrotas-20261021/navegador.mjs"
+  }
+}

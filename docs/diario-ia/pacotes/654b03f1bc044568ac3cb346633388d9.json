@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "654b03f1bc044568ac3cb346633388d9",
+  "date": "2026-10-21T13:37:36.406987+00:00",
+  "title": "QA temporário: test:campaign:defeats:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/654b03f1bc044568ac3cb346633388d9.log",
+      "sourceId": "626308611b1fc1eda3e6ab48145dec05260f08b744995a3f532bd0fb2969a876",
+      "sha256": "b006216974f99723886d68a3f3b0144e085295b5291e63c9274d06f9d085e18f",
+      "bytes": 984,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/654b03f1bc044568ac3cb346633388d9/docs/diario-ia/qa-resultados/derrotas/desktop.png",
+      "sourceId": "a038fcdd3a1ecba4f1f2e321bcc022f56369e0d4f4e5ce37a2ff573a5d68365b",
+      "sha256": "7326be31a7cf3d7f9a5f5502d21ac26781034f2cbb11c04f98660bbc78c83232",
+      "bytes": 64249,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/654b03f1bc044568ac3cb346633388d9/docs/diario-ia/qa-resultados/derrotas/falha-desktop.png",
+      "sourceId": "59896deda07a7f737ac06e85597f051db0ee4654a37cbe1051cde7a67ddc73fa",
+      "sha256": "2ad7244c481640992a20640c87d2185b682c05c11fe767a7ce5869b7d4fc3f91",
+      "bytes": 248479,
+      "metadataOnly": true
+    }
+  ]
+}

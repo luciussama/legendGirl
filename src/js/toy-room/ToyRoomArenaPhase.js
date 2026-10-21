@@ -232,10 +232,17 @@ export class ToyRoomArenaPhase {
     if (s.mode === 'VICTORY') { if(s.ending>=90)this.beginReturn();return true; }
     if (s.mode === 'DEFEAT') {
       if (s.ending < 90) return false;
-      this.battle.state=null;this.boss=new ArenaBoss();this.fx=new ImpactFX();this.battle.activate();
-      return true;
+      return this.retry();
     }
     return this.battle.attack();
+  }
+  /** Reinicia a tentativa de combate, conservando a exploração capturada pela arena. */
+  retry() {
+    if (this.battle.state?.mode !== 'DEFEAT') return false;
+    this.battle.state = null;
+    this.boss = new ArenaBoss(); this.fx = new ImpactFX();
+    this.battle.activate();
+    return true;
   }
   special() {
     // Reservado para a habilidade especial; não consome turnos nem altera a luta.

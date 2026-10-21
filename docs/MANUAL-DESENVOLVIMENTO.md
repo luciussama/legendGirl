@@ -556,6 +556,12 @@ A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legad
 
 `ToyRoomPersistence` salva `toyRoomChaseCampaign` somente no modo campanha e fora da captura interna da arena. Restore exige sala com arena concluída e sem arena ativa; saves antigos sem esse campo continuam válidos. Retoma a etapa salva, com estado e posição musical, sob fade. O debug não grava essa fuga na campanha. Pausa, foco, erro de contexto e saída precisam respeitar os recursos e listeners do proprietário.
 
-COMPLETE ainda conserva a fase ativa e não oferece navegação final própria. GAME_OVER não oferece retry próprio da campanha; a indicação para escolher novamente a fase atende ao seletor de debug. Essas pendências não equivalem a um fluxo final já entregue.
+COMPLETE ainda conserva a fase ativa e não oferece navegação final própria. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
 
 A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.
+
+### Derrotas e mudança assistida de dificuldade
+
+A contagem persistente da campanha soma derrotas completas do quarto, arena e perseguição. `CampaignDefeats.recordCampaignDefeat` usa `defeatPending` para não duplicar por quadro ou recarga. No NORMAL, cada terceira derrota define `easyOfferPending`; o coordenador publica `onGameOver({phase,offerEasy})` e main abre `easy-mode-dialog`, com a pergunta “deseja tentar no fácil?”. Não/sair com Escape conserva NORMAL e a tentativa encerrada. Sim chama `continueOnEasy`, aplica o perfil às instâncias atuais, recupera a tentativa e salva. Não oferecer ajuda novamente no EASY. Nova campanha reinicializa o contador; novas perdas após uma recusa acumulam até a próxima terceira derrota.
+
+A ajuda mantém a seção: checkpoint existente nas plataformas, adversário/HP inimigo atual na arena e distância/posição na perseguição. Recupera HP/vidas e imunidade de retomada; não reinicia a campanha. Um retry comum mantém a dificuldade e os pontos de reinício anteriores; na fuga, reinicia sua abertura. Novos campos ausentes em saves antigos recebem defaults; valores inválidos continuam rejeitados. O domínio e o fluxo real de interface são verificados por `test:campaign:defeats` e `journal:qa -- test:campaign:defeats:browser`.

@@ -33,7 +33,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -88,6 +88,8 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 
 | `npm run test:bear-chase` | `python3 scripts/run-qa-from-journal.py test:bear-chase` | Domínio, sequência, padrões, vidas e restauração da fuga. |
 | `npm run test:bear-chase:browser` | `python3 scripts/run-qa-from-journal.py test:bear-chase:browser` | Perseguição no jogo real com Chrome/CDP isolado. |
+
+| `npm run test:campaign:defeats` | `python3 scripts/run-qa-from-journal.py test:campaign:defeats` | Contagem de derrotas, oferta/recusa/EASY, saves e retomadas locais. |
 
 ## Comandos adicionais preservados no diário
 
@@ -168,3 +170,5 @@ O executor atual restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/
 Os painéis de comparação da menina e dos props da perseguição foram arquivados nessa pasta e retirados da árvore ativa. Seus aliases históricos apontam para fontes ausentes: precisam de recuperação manual verificada do pacote, em diretório temporário, ou de uma atualização futura do executor. Não abrir antigas URLs como se fossem páginas atuais. A auditoria documental confirmou essa limitação por leitura do executor e dos pacotes; esses aliases não foram executados nesta revisão.
 
 A verificação desta revisão está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura e exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Resultados pertencem ao diário.
+
+`npm run journal:qa -- test:campaign:defeats:browser` cobre a interface real em desktop/retrato/paisagem com derrotas preparadas, respostas nativas, soma entre fases, recarga, oferta, recusa e retomada. Requer Chrome de QA/CDP 9222. Não equivale a um playtest humano completo.

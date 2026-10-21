@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "88984af89b65e53e5c5b2b8d8868b80eb50c2e9c3dda330a6239901be8b70502",
+  "path": "qa-execucoes/8fbc13b9edce4dfd81e9786cf679ccf1/docs/diario-ia/qa-resultados/derrotas/falha-desktop.png",
+  "sha256": "5112c7ce6cd93841aeeacfad63a234041832ad972bb91d402a0f2ee0946ece84",
+  "capturedAt": "2026-10-21T13:42:00.806091+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/derrotas/falha-desktop.png\", \"sha256\": \"2ad7244c481640992a20640c87d2185b682c05c11fe767a7ce5869b7d4fc3f91\", \"bytes\": 248479, \"binaryRetained\": false}"
+}

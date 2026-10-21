@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "457fa1f43d21bf925ccb04abc0de8a60230d399c0a8393717b9b841fdac4d3b3",
+  "path": "qa-execucoes/8fbc13b9edce4dfd81e9786cf679ccf1/docs/diario-ia/qa-resultados/derrotas/falha-paisagem.png",
+  "sha256": "d8bcc66ca1d2cd3fe777e28de030f721026d1f49c96f9720de605fef31bee7dd",
+  "capturedAt": "2026-10-21T13:42:00.807114+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/derrotas/falha-paisagem.png\", \"sha256\": \"14336e0b82b1eb5cb786d038b9b13ab55b9ac55381f1a368f988c256ad1b630e\", \"bytes\": 154499, \"binaryRetained\": false}"
+}
