@@ -65,9 +65,9 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Sala de brinquedos | Espaço, E, Enter ou F | Pegar, soltar ou guardar um objeto |
 | Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/soltar/guardar |
 | Sala de brinquedos em tela sensível ao toque | Joystick virtual à esquerda e botão de ação à direita | Movimentar e interagir |
-| Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F | Andar; pular; abaixar; espada |
-| Arena com gamepad padrão | D-pad; A (salto); X (espada) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
-| Arena em touch | Direcional e botão de espada | Andar, pular, abaixar e atacar; botão especial reservado |
+| Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F; R | Andar; pular; abaixar; espada; especial |
+| Arena com gamepad padrão | D-pad; A (salto); X (espada); Y (especial) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
+| Arena em touch | Direcional, espada e especial | Andar, pular, abaixar e atacar; especial uma vez por batalha |
 | Perseguição 3D | A/D, esquerda/direita, D-pad ou analógico esquerdo | Desviar lateralmente durante a corrida automática |
 | Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
 | Interface geral | P / botão de pausa | Pausar ou continuar |

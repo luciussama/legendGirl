@@ -1,0 +1,29 @@
+{
+  "revisao": "2026-10-21",
+  "sessao": "20261021T212824-4297600ef707",
+  "arquivo": "eyes-power-v1.png",
+  "sha256": "204807763d6c6dfe473c4b3d174fcee75ca0dbe09a39bd42f930f6e5e026c811",
+  "dimensoes": [
+    1536,
+    1024
+  ],
+  "ferramenta": "image_gen.imagegen (integrada)",
+  "referencias": [
+    {
+      "papel": "Composição e intensidade dramática",
+      "origem": "Imagem de anime fornecida pelo usuário nesta conversa; não define identidade da menina."
+    },
+    {
+      "papel": "Identidade da menina",
+      "origem": "assets/art/toy-room/battle/girl/runtime/attack-02.png"
+    }
+  ],
+  "consumidores": [
+    "src/js/toy-room/ArenaSpecialAttack.js",
+    "src/js/toy-room/ArenaPlayerRenderer.js",
+    "src/js/toy-room/ToyRoomArenaPhase.js"
+  ],
+  "composicao": "Frontal com ambos os olhos, sobrancelhas tensas, cabelo/íris castanhos e reflexos arco-íris. Recorte dinâmico central com foco vertical em 57,5% da arte; sem boca ou corpo.",
+  "promptOriginal": "Use case: illustration-story. Asset type: final in-game anime power-up eye close-up cinematic, landscape 1536x1024 image. Input references: the user's attached anime close-up is a COMPOSITION AND DRAMATIC INTENSITY reference ONLY. The brown-haired little girl game sprite shown most recently is the CHARACTER IDENTITY reference. Create an original extreme frontal close-up of THIS little girl's two eyes, just before releasing a powerful rainbow sword attack. Preserve her warm light skin, dark chocolate brown hair with thick side-swept fringe, large dark brown eyes, youthful round face and recognizable identity. Do NOT borrow the male anime reference's black hair or identity. Her brows draw down with resolve, eyelids tense, pupils focused, fearless determined expression; not frightened, not evil. Both eyes must be fully visible and balanced at about x=30% and x=70%, y=48%. Frame from the fringe and forehead to just below the bridge of the nose: eyes and brows dominate, no mouth, no whole head, no body, no sword, no room scenery. The image will be cropped into an ultra-wide horizontal band centered on the eyes; keep BOTH EYES and eyebrows in the CENTRAL 40% of image height, do not let hair cover the pupils. Dramatic anime ink hatching and angular shadows across forehead, warm chestnut highlights on hair, luminous thin rainbow reflections within irises and along lower eyelids. Strong cinematic linework with subtle pixel-art-inspired squared edges and a warm illustrated fantasy game palette matching the girl sprite, enough detail for full-screen close-up. Dark purple / indigo speed streaks at far sides. Clean striking polished game key art. No text, no watermarks, no UI, no collage, no panels.",
+  "aprovacaoArtistica": "Não declarada; pendente avaliação do usuário."
+}

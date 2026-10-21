@@ -65,3 +65,11 @@ A arena ganhou um piso contínuo de madeira e móveis apoiados em planos coerent
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.
+
+## 21/10/2026 — Especial da menina na arena
+
+A espada arco-íris pode ser usada uma vez na batalha inteira, por R, Y ou ESPECIAL no touch. A câmera aproxima do rosto durante a preparação e retorna antes do corte que lança o raio. O golpe elimina um brinquedo comum ou deixa o Urso com um coração. A troca de adversário e o carregamento preservam o consumo; uma nova tentativa completa renova o uso. A sequência reaproveita as poses da menina e acrescenta efeitos em Canvas.
+
+### Close dramático do especial
+
+O enquadramento da carga passou a usar um corte de anime centrado nos dois olhos, com expressão intensa e reflexos arco-íris, conforme a referência enviada. Uma ilustração frontal própria substitui a ampliação do sprite como foco da cena. O corte sai rapidamente antes do retorno à arena e do disparo.

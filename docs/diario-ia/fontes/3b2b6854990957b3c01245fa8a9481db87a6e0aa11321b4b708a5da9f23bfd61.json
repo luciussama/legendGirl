@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3b2b6854990957b3c01245fa8a9481db87a6e0aa11321b4b708a5da9f23bfd61",
+  "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-paisagem-106.png",
+  "sha256": "74cbdf8be1b71e4f9ce19ef795d6d470382d3eb9ca8ddfe22f5f447b28017672",
+  "capturedAt": "2026-10-21T20:22:55.814222+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:especial:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/especial-arena/especial-paisagem-106.png\", \"sha256\": \"dc984071e49a4e19455ca2d8a31c499d3dd0cc491aa90471459db251d88259cc\", \"bytes\": 444443, \"binaryRetained\": false}"
+}

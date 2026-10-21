@@ -1,3 +1,4 @@
+import { specialCameraFrame } from './ArenaSpecialAttack.js';
 import { arenaActorBounds } from './ArenaScale.js';
 import { arenaMobileControlsLayout } from '../ui/MobileUILayout.js';
 
@@ -39,9 +40,9 @@ export class ArenaCamera {
     const scale = Math.max(0.01, Math.min((right - left) / span, (bottom - top) / height));
     const shakeX = Math.sin(this.time * 2.7) * this.shake * scale;
     const shakeY = Math.cos(this.time * 2.1) * this.shake * scale * 0.3;
-    return { scale, ox: (left + right) / 2 - cx * scale + shakeX,
+    return specialCameraFrame({ scale, ox: (left + right) / 2 - cx * scale + shakeX,
       oy: (top + bottom) / 2 - (viewTop + 690) / 2 * scale + shakeY,
-      top, bottom, left, right, envelope };
+      top, bottom, left, right, envelope }, room, battle);
   }
   snapshot() { return { x: this.x, y: this.y, width: this.width, shake: this.shake, time: this.time }; }
   restore(saved) { if (saved) for (const key of ['x','y','width','shake','time']) if (Number.isFinite(saved[key])) this[key] = saved[key]; }

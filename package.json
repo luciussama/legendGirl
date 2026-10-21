@@ -7,7 +7,7 @@
     "test:mobile-ui": "python3 scripts/run-qa-from-journal.py test:mobile-ui",
     "test:difficulty": "python3 scripts/run-qa-from-journal.py test:difficulty",
     "verify:dark-room": "python3 scripts/run-qa-from-journal.py verify:dark-room",
-    "test": "python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats",
+    "test": "python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats && npm run test:arena:especial",
     "test:pages": "python3 scripts/run-qa-from-journal.py test:pages",
     "test:toy-room:story": "python3 scripts/run-qa-from-journal.py test:toy-room:story",
     "test:toy-room:visual": "python3 scripts/run-qa-from-journal.py test:toy-room:visual",
@@ -61,7 +61,9 @@
     "test:saltos:bailarina": "python3 scripts/run-qa-from-journal.py test:saltos:bailarina",
     "test:bear-chase": "python3 scripts/run-qa-from-journal.py test:bear-chase",
     "test:bear-chase:browser": "python3 scripts/run-qa-from-journal.py test:bear-chase:browser",
-    "test:campaign:defeats": "python3 scripts/run-qa-from-journal.py test:campaign:defeats"
+    "test:campaign:defeats": "python3 scripts/run-qa-from-journal.py test:campaign:defeats",
+    "test:arena:especial": "python3 scripts/run-qa-from-journal.py test:arena:especial",
+    "test:arena:especial:browser": "python3 scripts/run-qa-from-journal.py test:arena:especial:browser"
   },
   "dependencies": {
     "express": "^4.21.2",

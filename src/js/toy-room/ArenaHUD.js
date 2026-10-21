@@ -13,7 +13,7 @@ export function arenaHUDLayout(layout) {
     labelY: y-10*layout.scale, subtitleY:y+34*layout.scale };
 }
 
-function renderArenaMobileControls(ctx, layout, room) {
+function renderArenaMobileControls(ctx, layout, room, state) {
   const controls = arenaMobileControlsLayout(layout), unit = controls.unit;
   const held = room.arenaTouchButtons ?? {};
   ctx.save();
@@ -48,7 +48,7 @@ function renderArenaMobileControls(ctx, layout, room) {
     ctx.font = `bold ${9 * unit}px system-ui`; ctx.fillText(badge, button.x, top + 14 * unit);
     ctx.font = `bold ${10 * unit}px system-ui`; ctx.fillText(title, button.x, top + 31 * unit);
     if (special) {
-      ctx.font = `${7 * unit}px system-ui`; ctx.fillText('EM BREVE', button.x, top + 45 * unit);
+      ctx.font = `${7 * unit}px system-ui`; ctx.fillText(state.specialUsed ? 'USADO' : '1 USO', button.x, top + 45 * unit);
     }
   };
   drawAction(controls.sword, 'ESPADA', 'X');
@@ -79,13 +79,16 @@ export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   const recoveryStart = arenaEnemyImpactEnd(e);
   const guarded = arenaEnemyGuarding(e);
   const attackHint = ['Laser Beam', 'Rocket Punch'].includes(e.attack) ? 'ABAIXE OU DEFENDA' : 'PULE OU DEFENDA';
-  const subtitle=state.transition?'OS BRINQUEDOS GANHAM VIDA':state.guarding?'DEFESA · ESPADA À FRENTE':e.state==='ENRAGE'?'O GUARDIÃO DESPERTOU'
+  const subtitle=state.specialAttack?'ESPADA ARCO-ÍRIS':state.transition?'OS BRINQUEDOS GANHAM VIDA':state.guarding?'DEFESA · ESPADA À FRENTE':e.state==='ENRAGE'?'O GUARDIÃO DESPERTOU'
     :guarded?(e.state === 'HIT' ? 'PREPARANDO RESPOSTA · AGUARDE' : `RESPOSTA PROTEGIDA · ${attackHint}`)
     :e.state==='ATTACK'&&e.elapsed>=recoveryStart?'ABERTURA · CONTRA-ATAQUE'
     :boss?.titleTime>0?'O GUARDIÃO DE PELÚCIA':`O QUARTO LENDÁRIO · ${Math.min(4,state.index+1)} / 4`;
   ctx.fillText(subtitle,layout.centerX,boxes.subtitleY,layout.usableWidth-24*ui);
+  ctx.font=`bold ${10*ui}px system-ui`;ctx.textAlign='left';
+  ctx.fillStyle=state.specialUsed?'#b7aebf':'#bfeaff';
+  ctx.fillText(state.specialUsed?'ESPECIAL · USADO':'ESPECIAL · R / Y · 1 USO', boxes.player.x, boxes.subtitleY+18*ui, boxes.player.width);
   if (room.mobilePresentation || room.isTouchDevice) {
-    renderArenaMobileControls(ctx, layout, room);
+    renderArenaMobileControls(ctx, layout, room, state);
   }
   if (state.mode==='VICTORY'||state.mode==='DEFEAT') {
     ctx.fillStyle='rgba(25,15,37,.85)';ctx.fillRect(layout.safeLeft,layout.centerY-55*ui,layout.usableWidth,115*ui);

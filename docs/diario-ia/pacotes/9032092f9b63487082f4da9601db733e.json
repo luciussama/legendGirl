@@ -1,0 +1,78 @@
+{
+  "schemaVersion": 1,
+  "id": "9032092f9b63487082f4da9601db733e",
+  "date": "2026-10-21T20:22:55.810307+00:00",
+  "title": "QA temporário: test:arena:especial:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e.log",
+      "sourceId": "94f7a4a3448de52617a58608e9c50af0da99344d13a8ea2c31f065fa082deda0",
+      "sha256": "0707e681e5e93f3b3dbf797bfee41775282bd5c921d8542685211f80f733e44f",
+      "bytes": 318,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-106.png",
+      "sourceId": "6b62511518ba39ecda10222f343c59d07a9d2ce732623748874206eb189fda8c",
+      "sha256": "f2b9deb3ca7679732a1fb1244da51ac3c2fced9a54b15f31130187a87c1f3531",
+      "bytes": 812464,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-118.png",
+      "sourceId": "a744e6536553ceb3f3749834d52ae9f67953800ae2161a537bade1d5bfc8fe9f",
+      "sha256": "546a26809416ba094c3b00154b3cd27f3f17589d834ed7bdeb2628a4f9f32acc",
+      "bytes": 759061,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-60.png",
+      "sourceId": "dba961df05f93f4fc833025e2f8dce51ade66de2b53ea0493803014fa184238d",
+      "sha256": "aa7dccb588656c7ff4087bb07047d48a02642a36e3f055f3589b90ac9c27d972",
+      "bytes": 542215,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-paisagem-106.png",
+      "sourceId": "3b2b6854990957b3c01245fa8a9481db87a6e0aa11321b4b708a5da9f23bfd61",
+      "sha256": "dc984071e49a4e19455ca2d8a31c499d3dd0cc491aa90471459db251d88259cc",
+      "bytes": 444443,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-paisagem-118.png",
+      "sourceId": "0f41e2cf36d0146af5fc6584135ecb8a29da6bcde021d79db47a17e943b07134",
+      "sha256": "d3090738696e96801fa39bdfa3a06be162f37a32c72df84f215051a630156a70",
+      "bytes": 419113,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-paisagem-60.png",
+      "sourceId": "99e567aba1ecc2a8623cb26828dae37902de7703f7c4fc1660c586d2c9954de2",
+      "sha256": "c69eb46f51daf5398261251d276bd002663039cf778b69914765e7419c16c620",
+      "bytes": 357132,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-106.png",
+      "sourceId": "f01c2a1dd3e9d97ea1c851b4254cc304ce2e6f42066a2a070d8aa04abc4d6be2",
+      "sha256": "a3f92b51ebfd0adef6b4a879725b6513b5521bab91c01a66ec714e052b2037d2",
+      "bytes": 482101,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-118.png",
+      "sourceId": "351066ba595e420867952709eab28a839d09d2e45404aea5b1da10974a2287ca",
+      "sha256": "8de9c7570bfe34ae406fe40ac7721f7d0e6d5b544187eb5b33b1bcd24e8f8e79",
+      "bytes": 453707,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/9032092f9b63487082f4da9601db733e/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-60.png",
+      "sourceId": "691a54567ab7d5edf1c42651a6b0380fa5fd641e6220520f08cd3e2bf0e869a7",
+      "sha256": "7b533caea1e58d51fab6a9102182bd8672b7af7d5ee2d7832c74ea53064641b0",
+      "bytes": 331884,
+      "metadataOnly": true
+    }
+  ]
+}

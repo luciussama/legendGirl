@@ -1,3 +1,4 @@
+import { ARENA_SPECIAL } from './ArenaSpecialAttack.js';
 import { ARENA_GIRL_ANIMATION_FRAMES as FRAMES } from './ArenaGirlAnimationFrames.js';
 import { ARENA_SWORD } from './ArenaCombatRules.js';
 
@@ -99,6 +100,16 @@ function poseLayers(pose,time,a,state) {
 
 /** Amostra pura: escala nunca depende da altura do quadro ou do estado de agachamento. */
 export function sampleArenaPlayerAnimation(state, player) {
+  if (state.specialAttack) {
+    const { elapsed, direction } = state.specialAttack;
+    const charging = elapsed < ARENA_SPECIAL.pullback;
+    const index = charging ? 1 : elapsed < ARENA_SPECIAL.launch ? 0 : elapsed < 110 ? 3 : 4;
+    const frame = FRAMES.attack[index];
+    return { pose: 'special', layers: [layer('attack', index)],
+      registrationX: (frame.faceX-frame.anchorX)*frame.sourceFacing*frame.pixelUnit,
+      attackAge: 0, attackSerial: 0, facing: direction, offsetX: 0, rotation: 0,
+      bob: charging ? -Math.sin(elapsed*.15)*.7 : 0, slash: null };
+  }
   const a=state.playerAnimation ?? createPlayerAnimation(state,player);
   // O impacto tem prioridade já no hitstop, antes do próximo avanço do relógio visual.
   let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage':a.pose;

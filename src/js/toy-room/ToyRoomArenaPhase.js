@@ -1,3 +1,4 @@
+import { beginArenaSpecial, renderArenaSpecialBeam } from './ArenaSpecialAttack.js';
 import { beginArenaPlayerAttack, updateArenaPlayerAnimation } from './ArenaPlayerAnimation.js';
 import { arenaEnemyContact } from './ArenaCombatContact.js';
 import { ArenaBoss } from './ArenaBoss.js';
@@ -72,7 +73,7 @@ export class ToyRoomArenaPhase {
       },
       onImpact: (x, y, heavy) => this.fx.emit('impact', x, y, heavy),
       onBlock: (x, y) => this.fx.emit('block', x, y),
-      renderFX: ctx => this.fx.render(ctx),
+      renderFX: ctx => { this.fx.render(ctx); renderArenaSpecialBeam(ctx, this.room, this.battle.state, this.battle.tuning.ground); },
       enemyScale: ARENA_SCALE.enemy,
       transportOrigin: () => this.layout.transportOrigin,
       renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout, true); },
@@ -179,6 +180,7 @@ export class ToyRoomArenaPhase {
     }
     if (this.state.status !== 'TRANSFORMING') {
       this.battle.render();
+      this.playerRenderer.renderSpecialCloseup(this.room.ctx, this.room.canvas, this.battle.state);
       if (this.fx.flash > 0) { this.room.ctx.save(); this.room.ctx.fillStyle = `rgba(255,231,188,${this.fx.flash})`; this.room.ctx.fillRect(0,0,this.room.canvas.width,this.room.canvas.height); this.room.ctx.restore(); }
       return;
     }
@@ -246,7 +248,7 @@ export class ToyRoomArenaPhase {
     return true;
   }
   special() {
-    // Reservado para a habilidade especial; não consome turnos nem altera a luta.
-    return false;
+    if (this.state.status !== 'COMBAT') return false;
+    return beginArenaSpecial(this.battle);
   }
 }

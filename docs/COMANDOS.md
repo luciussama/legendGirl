@@ -33,7 +33,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats && npm run test:arena:especial` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -174,3 +174,5 @@ A verificação desta revisão está em `npm run journal:qa -- test:docs:equaliz
 `npm run journal:qa -- test:campaign:defeats:browser` cobre a interface real em desktop/retrato/paisagem com derrotas preparadas, respostas nativas, soma entre fases, recarga, oferta, recusa e retomada. Requer Chrome de QA/CDP 9222. Não equivale a um playtest humano completo.
 
 `npm run journal:qa -- test:arena:composicao` verifica bases, janela livre, projeção, camadas, origem do baú, HUD e enquadramento. `npm run journal:qa -- test:arena:composicao:browser` verifica o renderer real e a restauração em Chrome isolado/CDP 9222, com estados preparados em desktop/retrato/paisagem. As fontes permanecem arquivadas; não há diagnósticos avulsos para manter no projeto.
+
+`npm run test:arena:especial` verifica dano, uso único, bloqueios de ativação, suspensão do combate, câmera e save durante o raio, nas duas dificuldades. `npm run test:arena:especial:browser` verifica teclado/touch, gamepad preparado e renderer real em três formatos no Chrome isolado/CDP 9222. As fontes são recuperadas do diário e executadas temporariamente.

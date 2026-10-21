@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "532f6871689df82f1278d7969b4f053a83dba0bd8bd3ac94c6c186ee5fbb0792",
+  "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0.log",
+  "sha256": "2232482fd46646c13eaad471dd3faa311103ee316b454798184143a58bfd80eb",
+  "capturedAt": "2026-10-21T20:22:14.645096+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:especial:browser",
+    "exitCode": 1,
+    "package": "20261021T202207-2859655fada6"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:especial:browser\n> node docs/diario-ia/qa/especial-arena-20261021/navegador.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n2 !== 1\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-2fgcgikm/projeto/docs/diario-ia/qa/especial-arena-20261021/navegador.mjs:51:10 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 2,\n  expected: 1,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

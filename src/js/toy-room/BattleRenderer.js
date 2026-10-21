@@ -81,7 +81,7 @@ export function renderBattle(battle) {
     } else if (s.mode !== 'VICTORY') drawEnemy(s.enemy);
     const e = s.enemy;
     // O efeito mostra a região ofensiva na mesma janela em que a colisão é ativa.
-    if(!s.transition && e.state==='ATTACK' && e.elapsed>=t.windup && e.elapsed<t.windup+t.active) {
+    if(!s.specialAttack && !s.transition && e.state==='ATTACK' && e.elapsed>=t.windup && e.elapsed<t.windup+t.active) {
       if(e.attack==='Laser Beam') {
         const beam=battle.presentation ? {start:40,end:340*(t.attackScale ?? 1),height:145} : laserProjection(s,r.player,e,r.story.state.attackDirection);
         ctx.strokeStyle='#ff6666';ctx.lineWidth=8;ctx.lineCap='butt';ctx.beginPath();

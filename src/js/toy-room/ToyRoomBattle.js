@@ -1,3 +1,4 @@
+import { updateArenaSpecial } from './ArenaSpecialAttack.js';
 import { PlayerController } from './PlayerController.js';
 import { loadBattleManifest, loadBattleImages } from './BattleAssets.js';
 import { BATTLE_ORDER, BATTLE_TUNING, BATTLE_TRANSITION_DURATION } from './BattleConfig.js';
@@ -53,6 +54,7 @@ export class ToyRoomBattle {
       immunity: 0, attackTime: 0, swordHit: false, jump: 0, jumpVelocity: 0,
       crouching: false, guarding: false, player: { hp: 3, maxHp: 3 }, enemy: null, history: [], ending: 0,
       hitPause: 0, impact: null, combatShake: null, playerHitTime: 0, playerHitDirection: 0,
+      specialUsed: false, specialAttack: null,
       playerStepTimer: 0, enemyStepTimer: 0, wasJumping: false };
     this.playCombatSound('arena_start');
     this.spawn();
@@ -166,7 +168,7 @@ export class ToyRoomBattle {
       this.room.onReturnToTitle?.();
       return true;
     }
-    if (s.mode !== 'BATTLE' || s.transition || s.cooldown > 0
+    if (s.mode !== 'BATTLE' || s.transition || s.specialAttack || s.cooldown > 0
       || (this.presentation && s.playerHitTime > 0)) return false;
     this.faceEnemy();
     if (!this.room.story.attack()) return false;
@@ -247,7 +249,11 @@ export class ToyRoomBattle {
     // Subpassos limitados preservam as janelas de colisão durante uma atualização lenta.
     let remaining = clamp(Number.isFinite(dt) ? dt : 1, 0, 12);
     while (remaining > 0) {
-      if (this.state.hitPause > 0) {
+      if (this.state.specialAttack) {
+        const step = Math.min(1, remaining);
+        updateArenaSpecial(this, step);
+        remaining -= step;
+      } else if (this.state.hitPause > 0) {
         const paused = Math.min(1, remaining, this.state.hitPause);
         this.state.hitPause -= paused;
         remaining -= paused;
