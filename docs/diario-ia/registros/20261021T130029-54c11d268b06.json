@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T130029-54c11d268b06",
+  "sessionId": "20261021T130029-54c11d268b06",
+  "type": "inicio",
+  "date": "2026-10-21T13:00:30.087965+00:00",
+  "title": "Equalizar manuais, arquitetura e contexto com o código atual",
+  "actor": "Codex",
+  "branch": "main",
+  "head": "e016e9d025ccd411582cf85a20c84f8d5899c358",
+  "workingTree": []
+}

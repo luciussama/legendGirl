@@ -1,8 +1,8 @@
 # Guia da arena imaginária
 
-Revisão: 18/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
+Revisão: 21/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
 
-O fluxo é exploração, espada, transformação, arena heroica, combate e retorno. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
+O fluxo é exploração, espada, transformação, arena heroica, combate e fuga após a vitória. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
 
 `ToyRoomPhase.js` controla a exploração. `ToyRoomArenaPhase.js` gerencia transformação, arena e retorno. `ToyRoomArenaBuilder.js` deriva as estruturas da sala. `ArenaEnvironment.js` desenha o cenário heroico e reutiliza os materiais dos móveis. A câmera, o controller, o HUD, os efeitos e o perfil de áudio da arena têm responsabilidades próprias.
 
@@ -48,7 +48,7 @@ A menina acompanha o lado do inimigo e mantém o rosto voltado para ele, inclusi
 
 Teclado: A/D ou esquerda/direita andam; W/cima pula; S/baixo agacha; E/Espaço/Enter/F ataca. No gamepad padrão da arena, o D-pad fornece direção, A também pula e X ataca; o analógico continua sendo movimento da exploração. No touch, o direcional fixo em cruz calculado por MobileUILayout aceita arraste analógico em oito direções, com zona morta central. As diagonais superiores combinam salto e deslocamento para frente ou para trás; as inferiores combinam direção e agachamento. O centro desenhado não acompanha o dedo. Espada aceita um segundo toque simultâneo. Soltar, cancelar, perder a captura do ponteiro ou mudar a orientação libera as direções. A ação especial/Y possui entrada reservada, mas `special()` retorna false e não altera a luta.
 
-A fase usa IDLE → TRANSFORMING → COMBAT → RETURNING → COMPLETE. Transformação dura 180 quadros e aguarda artes prontas; erros de recursos impedem a entrada pronta. BATTLE/VICTORY/DEFEAT pertencem à simulação de batalha. Após derrota, ataque aceito depois da espera reinicia a luta; após vitória, conduz ao retorno. O retorno restaura a exploração intermediariamente e termina a apresentação sem criar uma campanha nova.
+A fase usa IDLE → TRANSFORMING → COMBAT → RETURNING → COMPLETE. Transformação dura 180 quadros e aguarda artes prontas; erros de recursos impedem a entrada pronta. BATTLE/VICTORY/DEFEAT pertencem à simulação de batalha. Após derrota, ataque aceito depois da espera reinicia a luta; após vitória, conduz ao destino CHASE. Sob fade de 30 quadros, restaura os dados da exploração com áudio suspenso e inicia a fuga da campanha; a sala não aparece nesse intervalo. Retornos legados ao destino ROOM restauram a sala no caminho anterior, sem criar campanha nova. Veja o [manual da transição](../bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
 
 A câmera da arena enquadra atores e tremor em ArenaCamera. Em celular na orientação paisagem, reserva as laterais ocupadas pelo direcional e pelos botões para manter os atores visíveis entre os polegares. O panorama da transformação usa o desenho da sala como fundo por `arenaBackdrop`; não reutiliza a física de exploração. A câmera fixa do documento de design inicial não é o enquadramento implementado neste perfil.
 
@@ -56,7 +56,7 @@ A câmera da arena enquadra atores e tremor em ArenaCamera. Em celular na orient
 
 A entrada captura a sala com `snapshot({includeArena:false})`. O save da arena inclui versão, state, exploration, camera, fx, audio e boss; a batalha é salva no pacote da sala. No retorno, `restore(exploration,{preserveArena:true})` evita recursão. Vitória marca os brinquedos organizados, interrompe a recorrência e registra arenaCompleted. Saves antigos sem arena recebem a adaptação existente com ponto seguro de retorno. Não serializar imagens, nós de áudio, controllers ou callbacks.
 
-A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reinício na transformação/combate. Intensidade passa a 1,2 e 1,4; a percussão procedural se soma à trilha. Ao sair, volta a 1 e retoma o fluxo da sala. Ganho mestre, mudo, pausa e foco continuam válidos. Reações, passos/motor e espada têm módulos de síntese próprios e liberação das vozes.
+A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reinício na transformação/combate. Intensidade passa a 1,2 e 1,4; a percussão procedural se soma à trilha. Ao restaurar a realidade, volta a 1. O destino ROOM retoma o fluxo da sala; CHASE mantém esse áudio suspenso e entrega a trilha ao proprietário da fuga. Ganho mestre, mudo, pausa e foco continuam válidos. Reações, passos/motor e espada têm módulos de síntese próprios e liberação das vozes.
 
 ## Fronteiras de integração e manutenção
 

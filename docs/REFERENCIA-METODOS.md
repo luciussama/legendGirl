@@ -238,7 +238,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `chaseMaxLives(difficulty = 'NORMAL')` | Função | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `chaseLives(state, difficulty = 'NORMAL')` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chaseLives(state, difficulty = 'NORMAL')` | Função | 8 | Deriva as vidas restantes dos impactos e do limite da dificuldade. |
 | `isChaseDefeat(stage)` | Função | 13 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/bear-chase/ChaseInput.js
@@ -298,7 +298,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `smoothProgress(value)` | Função | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `chaseIntensity(distance)` | Função | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `chasePacing(distance, difficulty = 'NORMAL')` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chasePacing(distance, difficulty = 'NORMAL')` | Função | 19 | Deriva ritmo por progresso/dificuldade e fixa pares a cada segundo no final do NORMAL. |
 
 ## src/js/bear-chase/ChasePatterns.js
 
@@ -318,7 +318,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `constructor()` | Método declarado | 30 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `own(resource)` | Método declarado | 45 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `texture(image, crop = null)` | Método declarado | 47 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `floorTexture(image)` | Método declarado | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `floorTexture(image)` | Método declarado | 64 | Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada. |
 | `material(texture, color = '#ffffff')` | Método declarado | 91 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `mesh(parent, geometry, material, x, y, z)` | Método declarado | 96 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `actor(texture, width, height)` | Método declarado | 100 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
@@ -364,7 +364,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `dropPattern(state, events, pacing, speed, ambushZ = null, difficulty = 'NORMAL')` | Função | 56 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `followFairy(state, dt)` | Função | 86 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `advanceStage(state, events)` | Função | 94 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `stepChase(state, input, dt = C.step, difficulty = 'NORMAL')` | Função | 105 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stepChase(state, input, dt = C.step, difficulty = 'NORMAL')` | Função | 105 | Avança o domínio em segundos: sequência, movimento, colisão, vidas, lançamentos e eventos. |
 
 ## src/js/bear-chase/ChaseToyModels.js
 
@@ -660,7 +660,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `getPhase3ScrollFrame({ x, width, height })` | Função | 4 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getPhase3ScrollFrame({ x, width, height })` | Função | 4 | Calcula a rolagem visual do retorno pelo progresso horizontal do cenário, sem seguir salto ou pouso. |
 | `constructor()` | Método declarado | 17 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `reset()` | Método declarado | 18 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `snapshot()` | Método declarado | 19 | Produz captura recuperável do estado específico deste componente. |
@@ -1718,8 +1718,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `spawnConfetti(x, y, count = 35)` | Método declarado | 148 | Cria partículas/efeitos no buffer correspondente. |
 | `interaction()` | Acessor | 152 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `triggerAction()` | Método declarado | 158 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
-| `startChasePreview(saved = null)` | Método declarado | 161 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `startChaseCampaign(saved = null)` | Método declarado | 173 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `startChasePreview(saved = null)` | Método declarado | 161 | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
+| `startChaseCampaign(saved = null)` | Método declarado | 173 | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
 | `handleCampaignChaseError(chase, message)` | Método declarado | 197 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
 | `resolveCollisions(px, py, r)` | Método declarado | 217 | Resolve colisões da sala com móveis. |
 | `update(dt = 1.0)` | Método declarado | 224 | Avança o estado do subsistema; não é uma operação somente de desenho. |

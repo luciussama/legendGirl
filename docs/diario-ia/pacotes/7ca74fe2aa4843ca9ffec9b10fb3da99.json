@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7ca74fe2aa4843ca9ffec9b10fb3da99",
+  "date": "2026-10-21T13:16:41.263763+00:00",
+  "title": "QA temporário: test:docs:equalizacao",
+  "files": [
+    {
+      "path": "qa-execucoes/7ca74fe2aa4843ca9ffec9b10fb3da99.log",
+      "sourceId": "e11b4f33493ea88862a490acab6ff1b8215835b06bf24c48b3309e97682a626c",
+      "sha256": "9ca691d1dfc3135876cc898d8f0fb1416edc29758eb777e63c9a05e23328dc01",
+      "bytes": 301,
+      "metadataOnly": false
+    }
+  ]
+}

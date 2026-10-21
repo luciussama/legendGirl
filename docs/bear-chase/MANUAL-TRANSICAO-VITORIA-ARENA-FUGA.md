@@ -1,5 +1,7 @@
 # Manual: transição da vitória da arena para a fuga
 
+Revisão: 21/10/2026. Contrato implementado no código atual; critérios e validação recomendada permanecem como referência de manutenção.
+
 ## Objetivo
 
 Ao derrotar o urso na arena, a campanha deve sair diretamente da arena e iniciar
@@ -38,7 +40,7 @@ as entradas ficam bloqueadas durante a revelação.
   seus fluxos atuais.
 - Durante o fade, ignorar entradas de gameplay e impedir que a arena e a fuga
   avancem simultaneamente.
-- Iniciar a fuga a partir de um estado novo e válido, não da acesso isolado de debug nem de
+- Iniciar a fuga a partir de um estado novo e válido, não do acesso isolado de debug nem de
   um snapshot antigo que possa começar no meio da corrida.
 - Manter a abertura existente: as etapas `BEAR_DOWN`, `GIRL_APPROACH` e
   `BEAR_RISE` são atualmente ilustradas em Canvas 2D; a apresentação WebGL 3D da
@@ -67,8 +69,8 @@ as entradas ficam bloqueadas durante a revelação.
 | --- | --- |
 | `ToyRoomArenaPhase` | Direcionar `VICTORY` ao destino `CHASE`, aplicar o fade de 30 quadros e restaurar a exploração com áudio suspenso antes de ceder a fase. Derrota e saves antigos com retorno à sala conservam `RETURNING` para `ROOM`. |
 | `ToyRoomPhase` | Coordenar posse, entradas e preparação. `startChasePreview()` segue isolado para debug; `startChaseCampaign()` inicia a fuga da campanha, com recuperação explícita se a preparação falhar. |
-| `BearChasePhase` | Preparar renderer e artes sob tela preta; na campanha, preservar `BEAR_DOWN` e revelar a cena em 0,4 s antes de avançar a simulação. |
-| `ChaseSimulation` / `ChaseIntroRenderer` | Preservar a entrada em `BEAR_DOWN`, a progressão da introdução e a entrega à corrida. Garantir a espada visível na pose inicial ilustrada, se a arte ou composição atual ainda não a mostrar. |
+| `BearChasePhase` | Preparar renderer e artes sob tela preta; na campanha nova, preservar `BEAR_DOWN` (ou retomar a etapa salva no restore) e revelar a cena em 0,4 s antes de avançar a simulação. |
+| `ChaseSimulation` / `ChaseIntroRenderer` | Preservar a entrada em `BEAR_DOWN`, a progressão da introdução e a entrega à corrida. Conservar a espada visível na pose inicial ilustrada. |
 | Persistência da Toy Room | O snapshot de campanha inclui `toyRoomChaseCampaign` apenas quando a fase está em modo campanha. O acesso isolado de debug continua fora do save. Ao restaurar, rejeitar combinações incompatíveis e retomar a etapa salva; saves anteriores sem o campo continuam válidos. |
 
 O handoff tem um único responsável por iniciá-lo. O preparo assíncrono acontece

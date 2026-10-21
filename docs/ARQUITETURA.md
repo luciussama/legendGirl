@@ -1,6 +1,6 @@
 # Arquitetura e contratos do aplicativo
 
-Revisão: 15/10/2026. Descreve o código atual, incluindo as extrações de `refact` integradas localmente à `main` em 15/10/2026; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
+Revisão: 21/10/2026. Descreve o código atual, incluindo a tela inicial, a fuga de campanha e as correções de pouso e de envio do piso; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
 
 ## Composição e limites
 
@@ -18,7 +18,8 @@ adaptadores. Three.js é importado tardiamente de `src/vendor/three/`. Veja
 
 ```mermaid
 flowchart TD
-  DOM[main.js / página] --> GAME[createGame / loop]
+  DOM[main.js / página] --> TITLE[TitleScreen / TitleScene]
+  TITLE --> GAME[createGame / loop]
   GAME <--> STATE[GameState canônico]
   GAME --> DARK[DarkRoomNarrative / física no coordenador]
   GAME --> DRAW[DarkRoomRenderPipeline]
@@ -34,6 +35,10 @@ flowchart TD
   ROOM --> SERIAL[ToyRoomPersistence + contexto]
   ROOM --> ARENA[ToyRoomArenaPhase]
   ARENA --> BATTLE[ToyRoomBattle + perfil de arena]
+  ARENA -->|VICTORY / fade| CHASE[BearChasePhase]
+  CHASE --> SIM[ChaseSimulation / passo fixo]
+  CHASE --> WEBGL[ChaseRenderer3D / Three.js]
+  CHASE --> CINEMA[ChaseIntroRenderer / Canvas 2D]
   BATTLE --> ACTORS[Controller / IA / regras / contato]
   BATTLE --> VIEW[BattleRenderer / ArenaPlayerRenderer / HUD / FX]
 ```
@@ -61,7 +66,7 @@ O loop normaliza o tempo para 60 Hz e limita dt a 0,5–1,2. Pausa impede update
 | Batalha | `ToyRoomBattle.state`: mode, index, elapsed, player HP, enemy, history, transition, ending, cooldown/immunity, salto/agachamento/defesa, espada, hitstop, impacto/recuo e memórias. | Controller/IA/regras/contato atualizam; snapshot copia o estado serializável. Ativação começa a menina com 3 HP. |
 | Inimigo ativo | actor, hp/maxHp, x/facing, state/elapsed, attack/index, landed, enrage/enrageShown e campos de resposta/evasão/memória recente. | Apenas um inimigo ativo; ordem train → robot → dinosaur → bear. Perfis de arena e legado têm HP/medidas diferentes. |
 | Arena | status/elapsed/completed, destino de retorno (sala ou fuga), resultado e snapshot da exploração; câmera, FX, áudio e chefe têm snapshots próprios. | `ToyRoomArenaPhase` restaura a exploração com preserveArena para evitar recursão, reconfigura legado/arena, limpa controles e só direciona vitórias à fuga. |
-| Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e no acesso isolado de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a introdução sob fade antes de avançar o estado. |
+| Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e no acesso isolado de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a etapa salva sob fade antes de avançar o estado. |
 | Recursos | Imagens, regiões, manifestos e status nos carregadores; poses/âncoras em módulos de dados. | Não são serializados. Escala/âncora visual não redefine hitbox, apoio ou física. |
 
 A Toy Room mede 1600 × 1200. Suas ações têm debounce de 250 ms, coleta abaixo de 88 unidades, armazenamento abaixo de 160 e soltura a 42 à frente, com limites existentes. A escolha de interação ocorre antes do movimento do quadro. As entradas têm prioridade teclado → gamepad ativo → toque ativo. Não antecipar contagem ou trocar a ordem das chamadas aleatórias durante uma extração.
@@ -92,13 +97,47 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [assets/index.js](../src/js/assets/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `AssetManager`, `createAssetManager`, `darkRoomAtlas`, `validateAtlasRegion`, `getDarkRoomAtlasRegion`, `SHEET_WIDTH`, `SHEET_HEIGHT` |
 | [assets/officialCharacter.js](../src/js/assets/officialCharacter.js) | Hash da fonte oficial e metadados das poses; dados derivados, sem lógica de movimento. | `OFFICIAL_SOURCE_SHA256`, `OFFICIAL_FRAMES` |
 | [audio.js](../src/js/audio.js) | Sistema Web Audio e músicas HTMLAudio; ganho mestre, mudo, vozes sintetizadas e limpeza de efeitos. | `createAudioSystem` |
+| [bear-chase/BearChasePhase.js](../src/js/bear-chase/BearChasePhase.js) | Compõe a fuga, adapta o tempo do loop, prepara recursos sob fade e controla pausa, entradas, snapshot e descarte. | `BearChasePhase` |
+| [bear-chase/ChaseAudio.js](../src/js/bear-chase/ChaseAudio.js) | Controla trilha, passos, ganho, pausa e restauração da posição musical. | `ChaseAudio` |
+| [bear-chase/ChaseBearAnimation.js](../src/js/bear-chase/ChaseBearAnimation.js) | Calcula poses e articulações do urso sem modificar o domínio. | `ChaseBearAnimation` |
+| [bear-chase/ChaseBearModel.js](../src/js/bear-chase/ChaseBearModel.js) | Constrói o urso volumétrico com materiais e hierarquia próprios. | `ChaseBearModel` |
+| [bear-chase/ChaseCamera.js](../src/js/bear-chase/ChaseCamera.js) | Calcula enquadramento, balanço e transição ao baú a partir do progresso. | `chaseCameraFrame` |
+| [bear-chase/ChaseConfig.js](../src/js/bear-chase/ChaseConfig.js) | Parâmetros em unidades de mundo e segundos; auxiliares numéricos. | `CHASE_CONFIG`, `clamp`, `damp` |
+| [bear-chase/ChaseGirlAnimation.js](../src/js/bear-chase/ChaseGirlAnimation.js) | Calcula passadas, apoio dos pés, espada, cabelo, saia e tropeço. | `ChaseGirlAnimation` |
+| [bear-chase/ChaseGirlModel.js](../src/js/bear-chase/ChaseGirlModel.js) | Constrói malhas, materiais e articulações da menina. | `ChaseGirlModel` |
+| [bear-chase/ChaseGirlPalette.js](../src/js/bear-chase/ChaseGirlPalette.js) | Paleta regional derivada das amostras rastreáveis da arte de arena. | `GIRL_PALETTE` |
+| [bear-chase/ChaseHUD.js](../src/js/bear-chase/ChaseHUD.js) | Apresenta vidas e instruções sem decidir dano ou progressão. | `renderChaseHUD` |
+| [bear-chase/ChaseHealth.js](../src/js/bear-chase/ChaseHealth.js) | Deriva vidas e derrota a partir de dificuldade e impactos. | `CHASE_FALL_DURATION`, `chaseMaxLives`, `chaseLives`, `isChaseDefeat` |
+| [bear-chase/ChaseInput.js](../src/js/bear-chase/ChaseInput.js) | Converte teclado, ponteiro e gamepad em intenção lateral; libera listeners. | `ChaseInput` |
+| [bear-chase/ChaseIntroRenderer.js](../src/js/bear-chase/ChaseIntroRenderer.js) | Apresenta a introdução ilustrada e o corte de largada em Canvas 2D. | `isChaseIntro`, `chaseIntroFade`, `ChaseIntroRenderer` |
+| [bear-chase/ChaseLighting.js](../src/js/bear-chase/ChaseLighting.js) | Configura iluminação, sombras e seu acompanhamento no percurso. | `ChaseLighting` |
+| [bear-chase/ChasePacing.js](../src/js/bear-chase/ChasePacing.js) | Deriva intensidade, velocidade, cadência, voo e margem de reação. | `smoothProgress`, `chaseIntensity`, `chasePacing` |
+| [bear-chase/ChasePatterns.js](../src/js/bear-chase/ChasePatterns.js) | Distribui grupos e corredor livre por progresso e dificuldade. | `chasePattern` |
+| [bear-chase/ChaseRenderer3D.js](../src/js/bear-chase/ChaseRenderer3D.js) | Compõe cena WebGL, piso RGBA com mipmaps explícitos, modelos e descarte GPU. | `ChaseRenderer3D` |
+| [bear-chase/ChaseRoom.js](../src/js/bear-chase/ChaseRoom.js) | Constrói superfícies e decoração fixa ao longo do traçado. | `ChaseRoom` |
+| [bear-chase/ChaseRoute.js](../src/js/bear-chase/ChaseRoute.js) | Referenciais do percurso contínuo e pontos de emboscada. | `ROUTE_NODES`, `routeFrame`, `routePoint`, `ROUTE_AMBUSHES` |
+| [bear-chase/ChaseSimulation.js](../src/js/bear-chase/ChaseSimulation.js) | Cria, restaura e avança estado serializável, colisões, RNG e eventos. | `createChaseState`, `restoreChaseState`, `hitsObstacle`, `stepChase` |
+| [bear-chase/ChaseToyModels.js](../src/js/bear-chase/ChaseToyModels.js) | Adaptador de compatibilidade para o trem do catálogo. | `ChaseToyModels` |
+| [bear-chase/props/BlockCastleProp.js](../src/js/bear-chase/props/BlockCastleProp.js) | Constrói o castelo de blocos decorativo. | `BlockCastleProp` |
+| [bear-chase/props/BlocksProp.js](../src/js/bear-chase/props/BlocksProp.js) | Constrói o grupo de blocos arremessável. | `BlocksProp` |
+| [bear-chase/props/BookshelfProp.js](../src/js/bear-chase/props/BookshelfProp.js) | Constrói a estante decorativa. | `BookshelfProp` |
+| [bear-chase/props/BunnyProp.js](../src/js/bear-chase/props/BunnyProp.js) | Constrói o coelho arremessável. | `BunnyProp` |
+| [bear-chase/props/ChasePropCatalog.js](../src/js/bear-chase/props/ChasePropCatalog.js) | Catálogo, instâncias, limites e liberação dos objetos do percurso. | `ChasePropCatalog` |
+| [bear-chase/props/ChasePropResources.js](../src/js/bear-chase/props/ChasePropResources.js) | Compartilha e controla materiais, texturas e geometrias dos objetos. | `ChasePropResources`, `PropParts` |
+| [bear-chase/props/DecorativeGeometry.js](../src/js/bear-chase/props/DecorativeGeometry.js) | Primitivas de geometria para os objetos decorativos. | `oval`, `profile`, `rounded`, `curve`, `rod`, `outline` |
+| [bear-chase/props/DecorativeProps.js](../src/js/bear-chase/props/DecorativeProps.js) | Fábricas dos objetos decorativos adicionais. | `decorativeFactories` |
+| [bear-chase/props/OakCabinetProp.js](../src/js/bear-chase/props/OakCabinetProp.js) | Constrói o armário baixo ilustrado. | `OakCabinetProp` |
+| [bear-chase/props/PictorialMaterialAssets.js](../src/js/bear-chase/props/PictorialMaterialAssets.js) | Mapeia atlas ilustrados usados nos materiais dos objetos. | `PICTORIAL_ATLASES` |
+| [bear-chase/props/PilotPropResources.js](../src/js/bear-chase/props/PilotPropResources.js) | Reexporta recursos de objetos por compatibilidade com consumidores anteriores. | `PilotPropResources`, `PropParts` |
+| [bear-chase/props/ToyChestProp.js](../src/js/bear-chase/props/ToyChestProp.js) | Constrói o baú articulado usado no encerramento. | `ToyChestProp` |
+| [bear-chase/props/TrainProp.js](../src/js/bear-chase/props/TrainProp.js) | Constrói o trem volumétrico do catálogo. | `TrainProp` |
 | [cinematics/OpeningSequence.js](../src/js/cinematics/OpeningSequence.js) | Abertura: relógio, cues, poses, falas, conclusão local e snapshot recuperável. | `OPENING_STORAGE_KEY`, `OPENING_DIALOGUE`, `OpeningSequence` |
 | [cinematics/ToyRoomIntroduction.js](../src/js/cinematics/ToyRoomIntroduction.js) | Transição para a sala: panorama temporário sem inputs, estágios, eventos e callback de conclusão. | `TOY_ROOM_INTRO_STAGES`, `ToyRoomIntroduction` |
-| [config.js](../src/js/config.js) | Geometria do quarto/apoios/portas, fábricas baby/fairy e parâmetros de progressão dos saltos. | `DEBUG_COLLISIONS`, `GAME_CONFIG`, `FLOOR_Y`, `createBabyState`, `CUTSCENE_DIALOGUE`, `getEscapeStats`, `getPhase3Stats`, `getApproachJumpSpeed`, `createFairyState`, `platforms`, `exitDoor`, `phase3Platforms`, `trueExitDoor`, `roomScenery` |
+| [config.js](../src/js/config.js) | Geometria do quarto/apoios/portas, fábricas baby/fairy e parâmetros de progressão dos saltos. | `DEBUG_COLLISIONS`, `GAME_CONFIG`, `FLOOR_Y`, `createBabyState`, `CUTSCENE_DIALOGUE`, `getApproachJumpSpeed`, `getEscapeStats`, `getPhase3Stats`, `createFairyState`, `platforms`, `exitDoor`, `phase3Platforms`, `trueExitDoor`, `roomScenery` |
 | [controllers/AndroidFraming.js](../src/js/controllers/AndroidFraming.js) | Reserva inferior e elevação visual Android, sem modificar a física. | `androidFrameOffset`, `createAndroidFraming` |
 | [controllers/AudioController.js](../src/js/controllers/AudioController.js) | Integra áudio, preferências e foco/visibilidade à página; delegações e ciclo de vida. | `AudioController`, `createAudioController` |
 | [controllers/CameraController.js](../src/js/controllers/CameraController.js) | Câmera lógica, rolagem, zoom narrativo e fronteiras usadas pelo gameplay; sincroniza com GameState. | `CameraController`, `createCameraController` |
-| [controllers/CameraPresentation.js](../src/js/controllers/CameraPresentation.js) | Histórico/interpolação da pose visual; estabiliza pousos sem escrever na simulação. | `CameraPresentation` |
+| [controllers/CameraPresentation.js](../src/js/controllers/CameraPresentation.js) | Histórico/interpolação da pose visual; estabiliza pousos sem escrever na simulação. | `getPhase3ScrollFrame`, `CameraPresentation` |
 | [controllers/EscapeFairyGuide.js](../src/js/controllers/EscapeFairyGuide.js) | Escolhe próximo apoio/porta e atualiza o movimento da fada na fuga por amortecimento crítico. | `getEscapeGuideTarget`, `updateEscapeFairyGuide` |
 | [controllers/InputController.js](../src/js/controllers/InputController.js) | Ponteiro/teclado/gamepad do quarto; debounce, bloqueios, dispositivo e confirmação do primeiro salto. | `InputController`, `bindInput` |
 | [controllers/MobileZoom.js](../src/js/controllers/MobileZoom.js) | Detecção móvel e enquadramento de apresentação a partir de âncora/limites. | `isMobileDevice`, `getMobileZoomFrame` |
@@ -231,7 +270,7 @@ A [documentação de comandos](COMANDOS.md) cobre servidor, produção, geraçã
 
 | Superfície | Contrato |
 | --- | --- |
-| `index.html`, `src/css/styles.css` | Canvas `gameCanvas`, menu `start-overlay`, dificuldade, botão iniciar/continuar e dialog de confirmação de recomeço; overlay de derrota, retry/retorno; botões de pausa/áudio. |
+| `index.html`, `src/css/styles.css`, `src/css/title-screen.css` | Canvas `gameCanvas`, menu `start-overlay`, dificuldade, botão iniciar/continuar e dialog de confirmação de recomeço; overlay de derrota, retry/retorno; botões de pausa/áudio. |
 | `main.js` | Conecta esses IDs à API do jogo; o ícone `btn-debug-phase-toggle` abre `debug-phase-panel`/`debug-phase-select`, fecha ao escolher/clicar fora/Escape e devolve o foco conforme a ação. |
 | `MobileUILayout` | Mantém controles Canvas e hit testing alinhados com bitmap/CSS/insets; seletores/overlays da página isolam as entradas do jogo. O antigo ui-feedback permanece oculto visualmente. |
 | `metadata.json` | Nome/descrição e capacidades declaradas pelo host; não cria uma API Gemini de gameplay. |
@@ -248,3 +287,11 @@ A ferramenta de revisão em `tools/sprite-review/index.html` é um aplicativo lo
 `server.js` instala GET `/api/sprite-review/catalog`, GET `/api/sprite-review/selections` e POST `/api/sprite-review/selections` com JSON de até 1 MB. Revisão conflitante responde 409, gravação não local 403 e payload inválido 400. PORT escolhe a porta; SPRITE_REVIEW_SELECTION_PATH permite usar seleção temporária no QA. Depois instala express.static na raiz e escuta em 0.0.0.0. A proteção de gravação da revisão não é uma autenticação geral do servidor.
 
 Catálogo e seleção ficam em `docs/sprite-review/`; o JSON histórico de classificação não concede autorização para apagar novos assets. Scripts build-sprite-review/apply-sprite-review são seus pontos de CLI; [COMANDOS](COMANDOS.md) descreve aplicação e simulação. Essa API de desenvolvimento não existe no site estático publicado.
+
+## Particularidades do quarto e da fuga
+
+No retorno após a porta falsa, o pouso NORMAL usa o instante em que os pés cruzam o topo durante a descida, com interpolação horizontal no dt real. Exige ao menos 2 px de apoio numa largura fixa de pés de 30 px; entrada lateral abaixo do topo e subida não pousam. EASY conserva seu contrato anterior. A câmera apresentada acompanha o progresso horizontal, sem saltar junto com a menina; em celular, escala 0,8 e offset fixo. A câmera lógica continua participando das regras de derrota.
+
+A fuga converte o dt legado para segundos e acumula passos de 1/60 s, limitando a contribuição por atualização a 0,2 s. A revelação de campanha dura 0,4 s e bloqueia simulação/entrada. A sequência é BEAR_DOWN → GIRL_APPROACH → BEAR_RISE → CHASE_START → RUNNING → CAUGHT → CHEST_RETURN → COMPLETE; perder todas as vidas leva a FALLING → GAME_OVER, sem captura. COMPLETE mantém a fase ativa: navegação final e retry próprio da campanha ainda faltam.
+
+O piso usa a arte existente em `environment-sheet.png`, recorte (27,151) de 186×48. `floorTexture` prepara 256×64 e envia RGBA por DataTexture com nove mipmaps explícitos, linhas invertidas e repetição 9×2. A causa do piso preto relatado no Safari não foi confirmada; a confirmação nesse navegador continua pendente. WebGL 2 permite texturas NPOT: a dimensão anterior, isoladamente, não demonstra defeito.

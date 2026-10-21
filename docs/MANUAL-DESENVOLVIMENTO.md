@@ -1,8 +1,8 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **15/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **21/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
 
-Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS e Canvas 2D; Node.js/Express serve os arquivos. Não há engine externa, compilação para `dist/`, backend de campanha ou contas de jogador.
+Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS, Canvas 2D e Three.js/WebGL 2 na perseguição; Node.js/Express serve os arquivos. Three.js atende à renderização 3D, com importação tardia. Não há compilação para `dist/`, backend de campanha ou contas de jogador.
 
 Repositório de referência: [luciussama/legendGirl no GitHub](https://github.com/luciussama/legendGirl). A fonte desta documentação é o código local. Consulte [ARQUITETURA](ARQUITETURA.md) para todos os módulos/entidades e [COMANDOS](COMANDOS.md) para os aliases e ferramentas. O registro de integração e as evidências ficam no diário; merge local não equivale a publicação.
 
@@ -21,12 +21,13 @@ Repositório de referência: [luciussama/legendGirl no GitHub](https://github.co
 11. [Testes e diagnóstico](#testes-e-diagnóstico)
 12. [Publicação e integração de mudanças](#publicação-e-integração-de-mudanças)
 13. [Roteiro de integração e glossário](#roteiro-de-integração-e-glossário)
-14. [Referência detalhada de métodos](REFERENCIA-METODOS.md)
-15. [Dicionário de bibliotecas e dependências](DEPENDENCIAS.md)
-16. [Implementações atuais e fronteiras](#implementações-atuais-e-fronteiras)
-17. [Modo de batalha da Toy Room — design oficial](#modo-de-batalha-da-toy-room--design-oficial)
-18. [Inimigos da Toy Room — design oficial](#inimigos-da-toy-room--design-oficial)
-19. [Urso, chefe final — design oficial](#urso-chefe-final--design-oficial)
+14. [Tela inicial e fuga de campanha](#tela-inicial-e-fuga-de-campanha)
+15. [Referência detalhada de métodos](REFERENCIA-METODOS.md)
+16. [Dicionário de bibliotecas e dependências](DEPENDENCIAS.md)
+17. [Implementações atuais e fronteiras](#implementações-atuais-e-fronteiras)
+18. [Modo de batalha da Toy Room — design oficial](#modo-de-batalha-da-toy-room--design-oficial)
+19. [Inimigos da Toy Room — design oficial](#inimigos-da-toy-room--design-oficial)
+20. [Urso, chefe final — design oficial](#urso-chefe-final--design-oficial)
 
 ## Primeiro dia e preparação
 
@@ -149,7 +150,7 @@ Os campos de gameplay de `game.js` são lidos e escritos diretamente em `GameSta
 | `startTruePortalTransition` | Preparação da passagem para a sala. |
 | `spawnFairySparkles`, `spawnFairyFlightDust`, `updateFairyParticles` | Buffers visuais da guia; não confundí-los com seu controlador de movimento. |
 
-`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level)`, `getPhase3Stats(level, fromFloor = false)` e `getApproachJumpSpeed(platformIndex)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
+`config.js` exporta `createBabyState`, `createFairyState`, `getEscapeStats(level, difficulty)`, `getPhase3Stats(level, fromFloor = false, difficulty)` e `getApproachJumpSpeed(platformIndex, difficulty)`. `platforms` contém 22 apoios e `phase3Platforms` contém 16. `standRegion` e `surfaceTopY` podem definir a região real de chegada; a extensão da ilustração não equivale automaticamente à colisão.
 
 ### Save
 
@@ -404,7 +405,7 @@ Escreva primeiro o comportamento desejado e os estados afetados. Mudança de ent
 
 ### Acrescentar cena ou diálogo
 
-Para iniciar uma fase diretamente no debug, use o seletor da barra superior “Debug: escolha uma fase para pular”. As opções são Quarto escuro, Sala de brinquedos e Arena de batalha. Ele permanece disponível durante a partida; a arena começa com a espada equipada. Essas sessões de debug não substituem o progresso salvo da campanha. A opção normal de continuar/iniciar no menu retoma a persistência da campanha.
+Para iniciar uma fase diretamente no debug, use o seletor da barra superior “Debug: escolha uma fase para pular”. As opções são Quarto escuro, Sala de brinquedos, Arena de batalha e Perseguição 3D. Ele permanece disponível durante a partida; a arena começa com a espada equipada. Essas sessões de debug não substituem o progresso salvo da campanha. A opção normal de continuar/iniciar no menu retoma a persistência da campanha.
 
 Revise flags/defaults e seu proprietário em GameState, gatilho/avanço/término em `GameState` e `game.js`, conteúdo e desenho em `DialogueRenderer`, pausa/entrada e callbacks de áudio. Teste recarga no meio da cena, retorno ao menu e safe area móvel. Alterar texto pode aumentar linhas: valide altura e não apenas o conteúdo.
 
@@ -540,3 +541,21 @@ Os três percursos de plataformas usam configurações por dificuldade. `getAppr
 Não reduzir o avanço aéreo da aproximação abaixo da corrida: isso já criou frenagem artificial na bailarina. `fromFloor` distingue a entrada no percurso invertido. A dificuldade acompanha o save; mudar a opção no menu vale para uma partida nova.
 
 `npm run test:saltos:progressao` mede os 38 apoios usando os trechos reais de produção, nos dois modos e dt 0,5/1/1,2. `test:saltos:bailarina` protege o alcance dessa travessia. A suíte também compara o EASY com fontes anteriores preservadas no diário. Os testes do NORMAL verificam saídas com os pés apoiados e margem utilizável, em vez de exigir igualdade com um balanceamento substituído por autorização do usuário.
+
+A regressão específica `journal:qa -- test:pousos:retorno` substitui a expectativa antiga de igualdade do retorno. Compara o EASY à referência anterior e mede o NORMAL por cruzamento real, apoio estável e rejeições. A janela total do NORMAL permanece menor; diferenças locais de discretização podem chegar a um quadro, sem impor redução estrita em todo apoio. A integração de teclado/toque é coberta por `test:pousos:retorno:browser`.
+
+## Tela inicial e fuga de campanha
+
+`TitleScreen` recebe callbacks de `main.js`: Novo jogo confirma a substituição quando há campanha; Carregar depende da existência de progresso; Modo fácil define somente a nova aventura. Carregar respeita a dificuldade salva. A opção de qualidade automática está desabilitada. `TitleScene` mantém canvas e RAF próprios, interrompidos quando menu/aba ficam ocultos, com resize e preferência de movimento reduzido. Fontes e resolução nativa estão em `assets/art/title-screen/prompts.json`.
+
+A vitória sobre o urso aguarda a apresentação da batalha e usa o destino `CHASE` de `ToyRoomArenaPhase`. O fade de 30 quadros oculta `restoreReality({resumeAudio:false})`, que registra `arenaCompleted` e organiza os brinquedos nos dados. A cena da sala não é apresentada entre arena e fuga. A ida visual do urso ao baú pertence ao final de `ChaseSimulation`. Retornos legados para `ROOM` mantêm seu caminho anterior. Consulte o [contrato da transição](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
+
+`ToyRoomPhase.startChaseCampaign()` prepara `BearChasePhase` e remove entradas da sala; o caminho `startChasePreview()` permanece exclusivo do debug. Falha de preparação descarta a fase parcial, devolve a sala e apresenta `chase-error-dialog`, com ação “Voltar à sala”. Recursos prontos são condição para revelar a cena. A revelação dura 0,4 s e ainda bloqueia entradas/simulação.
+
+A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legado por acumulador. Renderer, áudio, HUD e entrada consomem estado e eventos; não decidem dano. O [guia da fuga](bear-chase/GUIA-PREVIA.md) documenta sequência, vidas, ritmo, materiais, WebGL 2 e descarte. O catálogo completo dos módulos está na arquitetura.
+
+`ToyRoomPersistence` salva `toyRoomChaseCampaign` somente no modo campanha e fora da captura interna da arena. Restore exige sala com arena concluída e sem arena ativa; saves antigos sem esse campo continuam válidos. Retoma a etapa salva, com estado e posição musical, sob fade. O debug não grava essa fuga na campanha. Pausa, foco, erro de contexto e saída precisam respeitar os recursos e listeners do proprietário.
+
+COMPLETE ainda conserva a fase ativa e não oferece navegação final própria. GAME_OVER não oferece retry próprio da campanha; a indicação para escolher novamente a fase atende ao seletor de debug. Essas pendências não equivalem a um fluxo final já entregue.
+
+A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.

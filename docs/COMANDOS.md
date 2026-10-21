@@ -1,10 +1,10 @@
 # Comandos, ferramentas e validação
 
-Revisão: 15/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
+Revisão: 21/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
 
 ## Ambiente e funcionamento
 
-Use Node.js 24/npm, Python 3 com sqlite3 da biblioteca padrão, Git e rg. Execute npm ci na raiz com o lockfile versionado. Chrome/CDP é necessário apenas para QA de navegador; scripts de imagem usam pngjs/jpeg-js instalados pelo npm. Não há Puppeteer/Playwright nem engine externa.
+Use Node.js 24/npm, Python 3 com sqlite3 da biblioteca padrão, Git e rg. Execute npm ci na raiz com o lockfile versionado. Chrome/CDP é necessário apenas para QA de navegador; scripts de imagem usam pngjs/jpeg-js instalados pelo npm. Não há Puppeteer/Playwright; Three.js renderiza a fuga em WebGL 2.
 
 `npm run dev` serve por padrão em localhost:3000 (PORT altera a porta). Produção no Pages usa arquivos estáticos. Os aliases de teste executam `scripts/run-qa-from-journal.py`: recuperam código/fixtures/referências do acervo em diretório temporário, vinculam dependências instaladas e registram saída e evidências no diário. Não recriam scripts/tests na árvore principal. Ausência de um script no workspace não significa ausência de seu alias de QA.
 
@@ -33,7 +33,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -78,13 +78,16 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:damage-sprites` | `python3 scripts/run-qa-from-journal.py test:damage-sprites` | Quadros de dano e prioridade da reação. |
 | `npm run test:damage-audio:browser` | `python3 scripts/run-qa-from-journal.py test:damage-audio:browser` | Reações e movimento sonoro, volume/mudo e liberação das vozes. |
 | `npm run test:arena:refinements` | `python3 scripts/run-qa-from-journal.py test:arena:refinements` | Continuidade musical, intensidade e recuo. |
-| `npm run test:debug-phases:browser` | `python3 scripts/run-qa-from-journal.py test:debug-phases:browser` | Três fases, trocas repetidas, isolamento de entrada e save preservado. |
+| `npm run test:debug-phases:browser` | `python3 scripts/run-qa-from-journal.py test:debug-phases:browser` | Seletor de fases, trocas repetidas, isolamento de entrada e save preservado. |
 | `npm run test:arena:enemies` | `python3 scripts/run-qa-from-journal.py test:arena:enemies` | Corpos sólidos, repertórios, IA e pressão progressiva. |
 | `npm run test:arena:balance` | `python3 scripts/run-qa-from-journal.py test:arena:balance` | 111 percursos e condições de evasão/proteção/recuperação. |
 | `npm run test:arena:defesa` | `python3 scripts/run-qa-from-journal.py test:arena:defesa` | Contato sem dano, bloqueio frontal, orientação, animação e diagonais. |
 | `npm run test:saltos:progressao` | `python3 scripts/run-qa-from-journal.py test:saltos:progressao` | Progressão pós-clímax, aproximação sem frenagem artificial e viabilidade em NORMAL/EASY e três passos de tempo. |
 | `npm run test:saltos:bailarina` | `python3 scripts/run-qa-from-journal.py test:saltos:bailarina` | Reproduz a frenagem anterior e verifica 24 saltos com saídas normais até a bailarina. |
 | `npm run test:arena:defesa:browser` | `python3 scripts/run-qa-from-journal.py test:arena:defesa:browser` | Eventos reais de toque no Chrome isolado: defesa, salto diagonal e espada simultânea. |
+
+| `npm run test:bear-chase` | `python3 scripts/run-qa-from-journal.py test:bear-chase` | Domínio, sequência, padrões, vidas e restauração da fuga. |
+| `npm run test:bear-chase:browser` | `python3 scripts/run-qa-from-journal.py test:bear-chase:browser` | Perseguição no jogo real com Chrome/CDP isolado. |
 
 ## Comandos adicionais preservados no diário
 
@@ -118,6 +121,8 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [generate-battle-player-bounds.js](../scripts/generate-battle-player-bounds.js) | Deriva limites de poses/luva para apresentação/contato. |
 | [generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js) | Extrai a personagem oficial preservando pixels da fonte; gera atlas/metadados. |
 | [generate-method-reference.js](../scripts/generate-method-reference.js) | Regenera a referência de contratos e declarações a partir de src/js. |
+| [export-chase-girl.js](../scripts/export-chase-girl.js) | Exporta o modelo GLB da menina em pose neutra; não inclui animação. |
+| [prepare-chase-palette.js](../scripts/prepare-chase-palette.js) | Deriva paleta e metadados das amostras da arte de arena; sobrescreve derivados. |
 | [prepare-battle-sprites.js](../scripts/prepare-battle-sprites.js) | Extrai quadros de batalha das pranchas/fontes e prepara manifesto. |
 | [prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js) | Prepara derivados das correções de combate já existentes. |
 | [prepare-combat-remediation.js](../scripts/prepare-combat-remediation.js) | Prepara derivados das remediações visuais do combate. |
@@ -142,3 +147,24 @@ O workflow [deploy-pages.yml](../.github/workflows/deploy-pages.yml) usa Node 24
 Inicie pela leitura/pesquisa do diário, abra sessão, confira git status e preserve trabalho concorrente. Registre testes reais, arquivos e pendências ao encerrar. Código/fixtures/relatórios de QA novos são arquivados no diário e executados temporariamente; imagens regeneráveis mantêm somente identificação/hash/tamanho. Não registrar segredos ou reescrever evidências antigas.
 
 Para a pressão final da perseguição: `npm run journal:qa -- test:cadencia-final` verifica quantidade, cadência, alternância, reação, save/RNG e preservação do EASY. `test:cadencia-final:visual:browser` e `test:cadencia-final:nativo:browser` usam o mesmo executor com Chrome isolado em CDP 9222; execute-os sequencialmente.
+
+Para as correções recentes do quarto e do piso:
+
+```sh
+npm run journal:qa -- test:pousos:retorno
+npm run journal:qa -- test:pousos:retorno:browser
+npm run journal:qa -- test:apoios:irregulares
+npm run journal:qa -- test:piso:correcao:browser
+npm run journal:qa -- test:retomada:browser
+npm run journal:qa -- script:test-arena-chase-transition.js
+```
+
+As regressões de pouso verificam cruzamento contínuo e exclusões, preservação do EASY e integração com o dt real. As de piso verificam upload, mipmaps, pixels de madeira e descarte no Chrome. O diagnóstico anterior à correção não substitui essas regressões; Chrome não homologa Safari. Fontes e resultados históricos são consultados pelo diário, sem recriar relatórios no projeto.
+
+## Recuperação de painéis históricos
+
+O executor atual restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`. Arquivos de QA que ainda existem sob `docs/diario-ia/qa/` são copiados ao workspace temporário, mas os ausentes nessa pasta não são restaurados automaticamente. Assim, a existência de um alias histórico não garante que seu painel possa ser aberto diretamente.
+
+Os painéis de comparação da menina e dos props da perseguição foram arquivados nessa pasta e retirados da árvore ativa. Seus aliases históricos apontam para fontes ausentes: precisam de recuperação manual verificada do pacote, em diretório temporário, ou de uma atualização futura do executor. Não abrir antigas URLs como se fossem páginas atuais. A auditoria documental confirmou essa limitação por leitura do executor e dos pacotes; esses aliases não foram executados nesta revisão.
+
+A verificação desta revisão está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura e exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Resultados pertencem ao diário.

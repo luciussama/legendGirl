@@ -1,5 +1,5 @@
 {
-  "revisao": "2026-10-20",
+  "revisao": "2026-10-21",
   "finalidade": "Referência documental do código; não é carregada pelo runtime e não autoriza alteração de balanceamento.",
   "fontes": [
     "src/js/toy-room/BattleConfig.js",

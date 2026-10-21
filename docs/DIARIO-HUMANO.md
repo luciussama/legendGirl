@@ -4,7 +4,7 @@ Este diário acompanha as decisões e mudanças do produto em linguagem humana. 
 
 ## A experiência atual
 
-A menina explora um quarto de brinquedos, interage com os objetos e recebe uma espada. A imaginação transforma a mesma sala numa arena heroica: móveis e brinquedos ganham escala épica. Depois do combate, ela retorna à sala. A exploração e a arena pertencem à mesma aventura.
+A tela inicial oferece Novo jogo, Carregar e Modo fácil para a nova aventura. A menina atravessa o quarto escuro e seu retorno de plataformas, explora uma sala de brinquedos, interage com os objetos e recebe uma espada. A imaginação transforma a mesma sala numa arena heroica: móveis e brinquedos ganham escala épica. A vitória sobre o urso conduz à perseguição: a menina se aproxima da pelúcia caída, ele se levanta e foge. Ela corre desviando dos brinquedos até alcançá-lo e levá-lo ao baú. Exploração, arena e fuga pertencem à mesma campanha.
 
 ## 13 de outubro de 2026 — organização do trabalho visual
 
@@ -43,6 +43,14 @@ A espada ganhou 10% de alcance e um contato mais claro. O som diferencia o corte
 A sala passou a separar controles, movimento, interação, história, tutorial, câmera, efeitos, desenho e persistência em componentes com responsabilidades explícitas. A integração conserva o fluxo da aventura e os mesmos recursos visuais. Os adaptadores consultam os atores e brinquedos atuais ao restaurar a campanha.
 
 A documentação tem agora um [catálogo da arquitetura e entidades](ARQUITETURA.md), uma [referência de métodos](REFERENCIA-METODOS.md) e um [catálogo de comandos](COMANDOS.md). O design inicial de batalha permanece identificado como origem histórica, com diferenças para a arena atual descritas no guia vigente. A separação de responsabilidades continua no combate, na arena e no coordenador principal; não foi declarada uma nova engine genérica.
+
+## 19 a 21 de outubro de 2026 — menu e continuidade da aventura
+
+A tela inicial ganhou a cena da menina lendo e opções para iniciar ou carregar a aventura. O modo fácil acompanha a campanha salva. A vitória da arena agora entrega diretamente à introdução da fuga, com escurecimento durante a troca e preservação do progresso. A conclusão e a derrota da perseguição ainda precisam de navegação e retomada próprias.
+
+O NORMAL exige desvios sucessivos na fuga: nos trechos densos há até três brinquedos, e o final alterna pares com um corredor mais amplo. O EASY conserva sua distribuição anterior e recebe mais vidas; na arena, oferece maior alcance e mais tempo para reagir.
+
+Os pousos do retorno passaram a reconhecer o contato durante a descida, evitando perder um apoio que foi cruzado entre quadros. A apresentação móvel usa um enquadramento contínuo. O piso da fuga recebeu um ajuste de compatibilidade de textura; o relato de ausência da madeira no Safari ainda aguarda confirmação. Novas artes e modelos continuam sujeitos à aprovação específica do responsável.
 
 ## Próximas entradas
 

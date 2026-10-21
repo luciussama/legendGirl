@@ -1,6 +1,8 @@
 # Perseguição no quarto em 3D
 
-Execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D**.
+Revisão: 21/10/2026. Na campanha, a vitória sobre o urso na arena inicia a fuga sob fade, sem mostrar a sala intermediária. O save retoma a etapa salva. Consulte o [manual da transição](MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
+
+Para acesso isolado de debug, execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D**.
 Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva
 e permanece independente da fuga iniciada pela vitória normal da arena.
 
@@ -64,7 +66,7 @@ Os grupos densos recebem escala uniforme e centro visual alinhado à colisão, s
 
 | Módulo | Responsabilidade |
 | --- | --- |
-| `ChaseConfig` | Unidades de mundo, segundos e parâmetros da prova |
+| `ChaseConfig` | Unidades de mundo, segundos e parâmetros da fase |
 | `ChaseSimulation` | Estado versionado, etapas, colisão varrida, padrões e RNG |
 | `ChasePatterns` | Quantidade e geometria dos grupos conforme progresso e dificuldade |
 | `ChaseHealth` | Limites de três/seis vidas e etapas de derrota |
@@ -117,7 +119,7 @@ homologam dificuldade humana, Safari ou aparelhos físicos.
 ## Modelo 3D da protagonista — revisão 3
 
 A primeira versão foi reprovada pelo usuário por paleta e identidade. O usuário considerou a revisão 2 “75% bom”; a revisão 3 ajusta braços, mangas,
-franzido e rabo de cavalo e aguarda nova avaliação: vestido salmão com regiões creme, corpo compacto, mechas
+franzido e rabo de cavalo e recebeu aprovação parcial, sem homologação completa: vestido salmão com regiões creme, corpo compacto, mechas
 curvas, cabeça e rosto revistos e espada de madeira portada à frente. Não presumir
 que as vistas traseiras sejam fontes aprovadas; são interpretações novas.
 
@@ -136,9 +138,7 @@ intervalos dos passos gravados. Física, obstáculos e hitboxes mantêm seus con
 
 ## Comparação visual para revisão
 
-Com `npm run dev`, abra:
-
-`http://localhost:3000/docs/diario-ia/qa/perseguicao-20261019/comparacao.html`
+A página de comparação e o alias histórico `test:bear-chase:comparison:browser` estão arquivados. A página não está disponível em uma instalação comum de `npm run dev`. O executor atual recupera arquivos de scripts/tests/assets, mas não as fixtures ausentes sob `docs/diario-ia/qa/`; esse painel exige recuperação manual verificada no workspace temporário antes de executar a fonte histórica. Veja a limitação em [COMANDOS](../COMANDOS.md#recuperação-de-painéis-históricos).
 
 O painel mostra exploração/arena e modelo sob luz neutra e no quarto, em escala de
 leitura de gameplay. Permite animar/congelar, selecionar repouso/corrida e vista
@@ -146,7 +146,7 @@ lateral, três quartos, frente e costas. “Detalhes (2,5×)” amplia fonte e m
 juntos, mantendo a apresentação no quarto na escala de gameplay. A fonte de arena é lateral e não comprova
 uma vista traseira original. O painel é QA local, não integra a publicação do jogo.
 
-`npm run journal:qa -- test:bear-chase:comparison:browser` verifica paleta, apoio,
+A fonte do teste `test:bear-chase:comparison:browser` verifica paleta, apoio,
 desvio, trem sem cartão, fada atrás, volume do urso e ausência de erros na página.
 O teste não certifica identidade artística nem aparelhos físicos.
 
@@ -159,7 +159,7 @@ articuladas para permanecer legível na câmera traseira. Paleta regional preser
 
 ## Catálogo completo e percurso contínuo — 20/10/2026
 
-Abra `http://127.0.0.1:3000/docs/diario-ia/qa/perseguicao-20261020/props.html`.
+O painel de objetos também é uma fixture arquivada, sujeita à mesma recuperação manual temporária do painel de comparação; não é uma rota permanente do servidor de desenvolvimento.
 O painel compara os quinze objetos com as artes originais sob luz neutra e dentro
 do quarto. Use quatro vistas, giro, escala, abertura do baú e o controle de
 **Distância** para percorrer a sala. Os oito últimos modelos ainda aguardam
@@ -193,8 +193,7 @@ passa a seguir o novo traçado e os novos padrões intencionalmente.
 Os quatro atlas anteriores continuam nos modelos já existentes. Após reprovação
 dos oito objetos decorativos, suas formas foram reconstruídas e receberam um
 atlas próprio 4×4: madeira/crina/sela, borracha, esmalte/latão, pelúcia, tecidos,
-laca e pele do tambor. `decorativos-atlas-v3.png` é a versão consumida; v2 conserva
-o primeiro estudo. Texturas geradas pela ferramenta integrada image_gen, com
+laca e pele do tambor. `decorativos-atlas-v3.png` é a versão consumida; o estudo v2 foi aposentado e preservado no acervo. Texturas geradas pela ferramenta integrada image_gen, com
 prompts junto aos PNGs. Fontes originais preservadas; sem CLI/API paga separada.
 A revisão dos modelos ainda aguarda avaliação artística humana; a iluminação atual está descrita abaixo.
 
@@ -219,8 +218,7 @@ Validação vigente:
 Os aliases históricos de catálogo/móveis preservam evidências das versões retas
 e suas antigas expectativas de coordenadas. A validação do novo traçado usa
 `test:bear-chase:route`. Resultados de máquina pertencem ao diário de IA. Emulação
-não homologa dificuldade humana, Safari ou aparelhos físicos. Integração da campanha,
-maior duração definitiva e mixagem final permanecem trabalhos separados.
+não homologa dificuldade humana, Safari ou aparelhos físicos. A integração da campanha está implementada; maior duração definitiva e mixagem final permanecem trabalhos separados.
 
 ## Iluminação do quarto
 
@@ -297,3 +295,9 @@ conforto do balanço continua distinta dos percursos automatizados.
 A corrida usa o recorte de madeira 186×48 em (27,151) da prancha existente `environment-sheet.png`. `ChaseRenderer3D.floorTexture` prepara uma cópia temporária 256×64, com a mesma cobertura UV e repetição 9×2. A textura é enviada como bytes RGBA com uma cadeia completa de reduções até 1×1, sem geração de mipmaps no driver. As linhas são invertidas explicitamente para conservar a orientação da textura anterior. Essa preparação ocorre somente no carregamento e o recurso pertence ao descarte do renderer.
 
 A mudança é de compatibilidade do envio da textura. O arquivo de arte, as tábuas no mundo, o material receptor de luz, as sombras e a simulação continuam com os mesmos contratos. Não usar um piso sem iluminação para disfarçar falhas de carregamento.
+
+## Limites do fluxo atual
+
+COMPLETE mantém a fase ativa depois da ida ao baú; falta a navegação final. GAME_OVER termina sem captura e ainda não oferece retry próprio da campanha. A orientação para escolher a fase novamente pertence ao acesso de debug. O ajuste de upload do piso foi validado no Chrome; o defeito relatado no Safari continua aguardando confirmação no navegador do usuário.
+
+Além dos módulos da tabela, `ChasePacing`, `ChaseCamera`, `ChaseLighting` e `ChaseBearAnimation` isolam ritmo, enquadramento, iluminação e articulações. As fábricas específicas de objetos, primitivas e atlas estão descritas no [catálogo completo](../ARQUITETURA.md#catálogo-completo-dos-módulos-javascript). Aprovação técnica não substitui avaliação artística de modelos, novas poses e materiais.

@@ -1,18 +1,20 @@
 # O Quarto dos Brinquedos
 
-Uma aventura 2D de plataforma e exploração, feita para jogar no navegador. Uma menina acorda em um quarto cheio de brinquedos e, acompanhada por uma fadinha, precisa encontrar o caminho entre objetos que se transformam em apoios para os seus saltos.
+Uma aventura de plataformas e exploração em Canvas 2D, com uma perseguição em 3D, feita para jogar no navegador. Uma menina acorda em um quarto cheio de brinquedos e, acompanhada por uma fadinha, precisa encontrar o caminho entre objetos que se transformam em apoios para os seus saltos.
 
-A experiência combina abertura narrativa, diálogos, plataformas ilustradas, iluminação de um quarto escuro e uma sala de brinquedos explorável. O projeto utiliza **JavaScript com módulos ES, HTML e Canvas 2D**, sem uma engine externa. O servidor Node.js atende o desenvolvimento local; a jogabilidade roda no navegador.
+A experiência combina abertura narrativa, diálogos, plataformas ilustradas, iluminação de um quarto escuro e uma sala de brinquedos explorável. O projeto utiliza **JavaScript com módulos ES, HTML e Canvas 2D**; a perseguição usa **Three.js e WebGL 2**, carregados apenas ao entrar nessa fase. O servidor Node.js atende o desenvolvimento local; a jogabilidade roda no navegador.
 
 ## A experiência
 
 - **Quarto escuro:** percurso de plataforma com 22 apoios, cena do castelo e progressão dos saltos durante a fuga.
 - **Percurso de retorno:** 16 apoios, deslocamento na direção oposta e passagem pelo portal final.
 - **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos, recorrência misteriosa, investigação e aquisição da espada.
-- **Arena imaginária:** transformação da mesma sala, quatro inimigos com esquiva/contra-ataque e retorno à exploração.
+- **Arena imaginária:** transformação da mesma sala e quatro inimigos com defesa, esquiva e contra-ataque. A vitória contra o urso conduz à perseguição.
+- **Perseguição 3D:** abertura ilustrada, corrida automática em um quarto curvo, desvio dos brinquedos lançados pelo urso e ida ao baú quando ele é alcançado.
+- **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A qualidade gráfica está reservada para uma atualização futura.
 - **Narrativa:** abertura da menina acordando, retratos dos personagens e diálogos durante as transições.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
-- **Apresentação móvel:** enquadramento elevado no Android, posicionamento seguro de diálogos no iOS e zoom adicional moderado em dispositivos móveis.
+- **Apresentação móvel:** áreas seguras para diálogos e controles; no retorno após a porta falsa, enquadramento contínuo que não segue o arco de cada salto.
 
 ## Manual para novas equipes
 
@@ -66,6 +68,8 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F | Andar; pular; abaixar; espada |
 | Arena com gamepad padrão | D-pad; A (salto); X (espada) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
 | Arena em touch | Direcional e botão de espada | Andar, pular, abaixar e atacar; botão especial reservado |
+| Perseguição 3D | A/D, esquerda/direita, D-pad ou analógico esquerdo | Desviar lateralmente durante a corrida automática |
+| Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
 | Interface geral | M / botão de áudio | Alternar o som |
 
@@ -80,6 +84,7 @@ O código separa estado, controle, desenho e recursos, com `game.js` coordenando
 ```mermaid
 flowchart TD
     HTML["index.html + estilos"] --> Main["main.js: interface e inicialização"]
+    Main --> Title["TitleScreen + TitleScene"]
     Main --> Game["game.js: ciclo e coordenação"]
     Game <--> State["GameState + StateVariables"]
     Game --> Input["InputController"]
@@ -96,6 +101,8 @@ flowchart TD
     Presentation --> Canvas["Canvas 2D"]
     Render --> Canvas
     UI --> Canvas
+    Toy --> Chase["BearChasePhase: abertura 2D + corrida WebGL 2"]
+    Chase --> Canvas
     Toy --> Canvas
 ```
 
@@ -123,7 +130,7 @@ O coordenador também seleciona o modo ativo: o quarto usa seu fluxo de platafor
 
 [`CameraController.js`](src/js/controllers/CameraController.js) gerencia acompanhamento, rolagem, zoom narrativo e enquadramento vertical. Ele também participa de regras existentes, como detecção de atraso em relação à rolagem e limite vertical da personagem. Portanto, mudanças nessa câmera podem afetar a jogabilidade.
 
-Os ajustes móveis são aplicados como transformações adicionais de desenho:
+Os ajustes móveis são aplicados como transformações adicionais de desenho. No retorno pós-porta falsa, `getPhase3ScrollFrame`, em `CameraPresentation.js`, usa uma trajetória visual contínua pelo cenário, sem seguir salto/pouso; o enquadramento móvel fica em escala 0,8 com deslocamento fixo. As regras de derrota continuam na câmera lógica. Nos demais trechos:
 
 - [`AndroidFraming.js`](src/js/controllers/AndroidFraming.js) reserva espaço inferior, considera os insets disponíveis e limita a elevação para preservar conteúdo no topo.
 - [`MobileZoom.js`](src/js/controllers/MobileZoom.js) aproxima a cena em até **18%**. Nas plataformas, considera personagem, fada e região de chegada do próximo salto. Quando não há espaço, preserva o campo de visão anterior.
@@ -151,7 +158,7 @@ A iluminação usa um canvas auxiliar e acompanha a transformação real da cena
 
 [`CampaignProgress.js`](src/js/state/CampaignProgress.js) serializa uma seleção explícita do estado e usa `localStorage`. O jogo salva periodicamente durante a campanha e em eventos de saída/ocultação da página. O registro inclui estado narrativo e, quando aplicável, a sala de brinquedos. Se o armazenamento falhar, existe uma alternativa em memória para a sessão.
 
-O progresso pertence ao navegador e à origem utilizados. Não há conta de usuário, banco de dados ou sincronização de campanha entre dispositivos. `Continuar` restaura o estado salvo; `Recomeçar`, após confirmação, limpa os dados da campanha e reinicia a abertura.
+O progresso pertence ao navegador e à origem utilizados. Não há conta de usuário, banco de dados ou sincronização de campanha entre dispositivos. `Carregar jogo` restaura o estado e a dificuldade salvos. `Novo jogo` pede confirmação quando há progresso, limpa a campanha e reinicia a abertura com a dificuldade escolhida no título. O botão `Modo fácil` afeta somente a próxima aventura nova.
 
 ### Sala de brinquedos
 
@@ -185,6 +192,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── environment/       # Cenário e iluminação
 │       ├── effects/           # Efeitos visuais
 │       ├── ui/                # Interface desenhada no canvas
+│       ├── bear-chase/        # Domínio, câmera, modelos, materiais e áudio da perseguição 3D
 │       ├── toy-room/          # Exploração, narrativa, espada e arena
 │       └── debug/             # Ferramentas de inspeção
 ├── scripts/                   # Geração de recursos, documentação, diário e execução de QA temporário
@@ -203,7 +211,7 @@ npm run build
 
 | Comando | Escopo |
 | --- | --- |
-| `npm test` | Regressões do quarto, sala, entrada, diálogos, persistência, arena, balanceamento e contrato do tutorial |
+| `npm test` | Regressões do quarto, sala, entrada, diálogos, persistência, arena, balanceamento, contrato do tutorial e domínio da perseguição |
 | `npm run check-assets` | Verificação dos recursos registrados |
 | `npm run lint` | Verificação de sintaxe de `server.js` e `scripts/check-assets.js`; não é uma análise estática de todo o projeto |
 | `npm run test:pages` | Referências das páginas e compatibilidade dos caminhos com publicação em subpasta |
@@ -213,7 +221,7 @@ npm run build
 
 ### Percurso completo no navegador
 
-As páginas e scripts de QA estão arquivados no diário de IA. Os comandos de teste recuperam suas fontes apenas em um diretório temporário, preservam os resultados no acervo e apagam o ambiente ao concluir. Nenhum arquivo de QA permanece no projeto ou no site publicado.
+As páginas e scripts de QA estão arquivados no diário de IA. Os comandos de teste recuperam suas fontes apenas em um diretório temporário, preservam os resultados no acervo e apagam o ambiente ao concluir. Fontes e resultados de QA permanecem exclusivamente em `docs/diario-ia/`; as páginas de teste são recuperadas temporariamente e não entram no site publicado.
 
 Inicie **uma instância dedicada do Chrome**, com perfil separado e `--remote-debugging-port=9222`. Os comandos do diário iniciam um servidor temporário em porta livre e encerram o ambiente após registrar o resultado. Consulte os [pré-requisitos de QA](docs/COMANDOS.md#ambiente-e-funcionamento).
 
@@ -241,3 +249,11 @@ Siga as instruções de [`AGENTS.md`](AGENTS.md): comentários, documentação, 
 Ao alterar apresentação, mantenha física, geometria de colisão e posições do mundo separadas das transformações de renderização. Não desenhe linhas auxiliares de pouso ou hitboxes sobre as ilustrações na apresentação normal; inspeções técnicas pertencem ao modo de depuração.
 
 Mudanças em física ou progressão exigem revisão das referências e dos testes de percurso preservados no diário de IA. Mudanças de arte exigem conferência do manifesto e dos recortes do atlas. Mudanças em estado persistente exigem revisão dos defaults, proprietários e captura/restauração da campanha e da sala.
+
+### Dificuldades e pousos
+
+O modo NORMAL tem alcances próprios nos três percursos de plataformas. Os blocos, tambor e almofadão da aproximação recebem ajuda discreta de pouso. No retorno após a porta falsa, o apoio considera a faixa dos sapatos e o cruzamento descendente do topo entre quadros. O FÁCIL conserva sua assistência mais ampla. Nenhuma linha técnica de contato aparece no jogo normal.
+
+Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimigos, mantendo os corações e os sinais dos golpes. Na perseguição, são três vidas no NORMAL e seis no FÁCIL. O NORMAL usa até três brinquedos por lançamento e pares a cada segundo nos 15% finais. Os detalhes estão nos [guias da arena](docs/arena/GUIA-ARENA.md) e da [perseguição](docs/bear-chase/GUIA-PREVIA.md).
+
+A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação final nem retry próprio de campanha. A compatibilidade do piso recebeu um ajuste de upload de textura; sua eficácia no Safari do usuário ainda precisa ser confirmada.

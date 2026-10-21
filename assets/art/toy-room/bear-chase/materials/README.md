@@ -1,12 +1,12 @@
 # Materiais pictóricos da perseguição
 
 Direção aprovada pelo usuário em 20/10/2026, a partir do estudo do armário em
-`docs/diario-ia/arte/20261020-armario-pictorico-v1.png`. Os quatro atlas são artes
+`docs/diario-ia/arte/20261020-armario-pictorico-v1.png`. Os quatro atlas iniciais, o decorativo v3 e o urso v2 são artes
 consumidas pelo jogo: conservar os PNGs. As ilustrações originais não foram
 sobrescritas. Geração pela ferramenta integrada image_gen, uma chamada por objeto;
 referências, procedência e prompts integrais em `prompts.json`.
 
-Cada PNG tem 1254×1254 pixels, quatro quadrantes sem rótulos e materiais pintados.
+Os quatro PNGs iniciais têm 1254×1254 pixels, quatro quadrantes sem rótulos e materiais pintados. O decorativo v3 tem a mesma dimensão em grade 4×4; o urso v2 usa grade 2×2.
 As regiões são numeradas da esquerda para a direita, de cima para baixo:
 
 | Atlas | 0 | 1 | 2 | 3 |
@@ -29,7 +29,7 @@ não é uma fotografia nem uma prancha colada sobre o objeto; todas as vistas us
 superfícies das malhas. Não repetir a antiga neutralização de cor/contraste nem
 recortar esses atlas em amostras de poucos pixels para cada face.
 
-`manifest.json` identifica as artes. Métricas/testes/capturas e aprovações da
+`manifest.json` identifica os quatro atlas iniciais; `PictorialMaterialAssets.js` mapeia também o decorativo v3, e `ChaseBearModel` carrega o urso v2. Os prompts adjacentes preservam a procedência das revisões. Métricas/testes/capturas e aprovações da
 execução estão exclusivamente no diário de IA; aprovação da direção não equivale
 a aprovação humana individual de toda nova textura/modelo.
 

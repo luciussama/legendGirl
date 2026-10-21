@@ -48,3 +48,11 @@ Registre no diário a lista de arquivos, derivados reconstruídos, mudanças em 
 `ToyRoomInitialEntities` mantém o catálogo e as medidas lógicas; `ToyRoomMovement` resolve colisões. O desenho da sala é composto por `ToyRoomSceneRenderer` com dados de `ToyRoomSceneFrame`, usando os renderizadores de móveis/brinquedos/atores existentes. `ToyRoomEnvironmentAssets` resolve os recortes. A espada e seus quadros são apresentados por `ToyRoomStoryRenderer`; mensagens de orientação, por `ToyRoomTutorialRenderer`. `ToyCarryPresentation` compõe a pose de transporte. Nenhuma dessas extrações cria autorização para mudar medidas físicas por uma alteração artística.
 
 Na arena, BattleAssets lê `battle/remediation/manifest.json` e substitui Hit por DamageSpriteFrames; ArenaPlayerRenderer carrega as poses próprias da menina. Consulte [arquitetura e proprietários](../ARQUITETURA.md), [guia da arena](../arena/GUIA-ARENA.md) e [comandos](../COMANDOS.md) antes de reconstruir derivados. Para descobrir fontes/testes que já não estão na árvore, use journal:search/journal:show.
+
+## Tela inicial e perseguição
+
+A tela inicial consome `assets/art/title-screen/` por `TitleScene`, com fontes, prompts e resolução nativa registrados em `prompts.json`. O tamanho de composição do canvas não muda a resolução da fonte.
+
+A fuga combina introdução ilustrada em `assets/art/toy-room/bear-chase/cinematic/` com modelos locais e materiais ilustrados de `assets/models/bear-chase/` e `assets/art/toy-room/bear-chase/`. `ChaseIntroRenderer`, `ChaseGirlModel`, `ChaseBearModel` e as fábricas em `bear-chase/props/` são consumidores distintos. A fada permanece ilustrada. Consulte o [guia da fuga](../bear-chase/GUIA-PREVIA.md) antes de alterar poses, modelos ou atlas.
+
+O piso 3D usa o recorte (27,151), 186×48, de `environment-sheet.png`; a cópia RGBA 256×64 e seus mipmaps são preparados em memória por `ChaseRenderer3D`, sem novo PNG. Não modificar a prancha para resolver um problema de upload. Paleta e GLB da menina têm exportadores próprios; leia os scripts antes de executá-los. A aprovação da arena ou de versões anteriores não homologa automaticamente novos modelos e poses.

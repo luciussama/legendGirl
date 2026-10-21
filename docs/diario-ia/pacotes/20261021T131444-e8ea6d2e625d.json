@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T131444-e8ea6d2e625d",
+  "date": "2026-10-21T13:14:44.253985+00:00",
+  "title": "Verificação documental: módulos, contratos, links, arena e dependências",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/equalizacao-20261021/verificar-documentacao.mjs",
+      "sourceId": "7a4884aae9f8ff3e04404b04b9b476668c83e4304c82ef7387f8f954cd93505c",
+      "sha256": "610793041cccbc33e324757220d3263926a06ebd13b9c64849dcadb3b61a1f31",
+      "bytes": 3577,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:docs:equalizacao": "node docs/diario-ia/qa/equalizacao-20261021/verificar-documentacao.mjs"
+  }
+}

@@ -1,11 +1,11 @@
 # Dicionário de bibliotecas e dependências
 
-Revisão: 15/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
+Revisão: 21/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
 
 ## Dependências npm diretas
 
 Há quatro dependências diretas e nenhuma devDependency. Os pacotes de imagem são
-ferramentas Node de arte/QA. Three.js é usado somente pelo renderer da prévia 3D,
+ferramentas Node de arte/QA. Three.js é usado somente pelo renderer da perseguição 3D, tanto na campanha quanto no acesso de debug,
 com distribuição local versionada; as fases anteriores continuam em Canvas 2D.
 
 | Biblioteca | Intervalo / versão resolvida | Descrição resumida | Onde é usada |
@@ -13,7 +13,7 @@ com distribuição local versionada; as fases anteriores continuam em Canvas 2D.
 | express | ^4.21.2 / 4.22.3 | Servidor HTTP e middleware estático. | server.js: express(), express.static(), express.json(), rotas da revisão e listen(); desenvolvimento local. GitHub Pages serve arquivos sem esse servidor. |
 | jpeg-js | ^0.4.4 / 0.4.4 | Decodifica/codifica JPEG em JavaScript. | Scripts de geração/recriação de arte e verificação da personagem; não roda no navegador. |
 | pngjs | ^7.0.0 / 7.0.0 | Lê/escreve PNG e buffers de pixels. | Scripts de assets, capturas e verificações visuais; não roda no navegador. |
-| three | 0.186.1 / 0.186.1 | Renderer e geometria WebGL 2, licença MIT. | `ChaseRenderer3D`; cópias oficiais em `src/vendor/three/` carregadas dinamicamente, sem CDN. |
+| three | 0.186.1 / 0.186.1 | Renderer e geometria WebGL 2, licença MIT. | `bear-chase/` e suas fábricas de props; cópias oficiais em `src/vendor/three/` carregadas dinamicamente, sem CDN. |
 
 ### Imports diretos por arquivo
 
@@ -35,6 +35,7 @@ Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outro
 - [scripts/build-tall-dresser.js](../scripts/build-tall-dresser.js)
 - [scripts/generate-battle-player-bounds.js](../scripts/generate-battle-player-bounds.js)
 - [scripts/generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js)
+- [scripts/prepare-chase-palette.js](../scripts/prepare-chase-palette.js)
 - [scripts/prepare-battle-sprites.js](../scripts/prepare-battle-sprites.js)
 - [scripts/prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js)
 - [scripts/prepare-combat-remediation.js](../scripts/prepare-combat-remediation.js)
@@ -43,6 +44,10 @@ Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outro
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
 - [scripts/refine-platform8.js](../scripts/refine-platform8.js)
 - [tools/sprite-review/catalog.js](../tools/sprite-review/catalog.js)
+
+**three (ferramenta Node)**
+
+- [scripts/export-chase-girl.js](../scripts/export-chase-girl.js): importa o GLTFExporter do pacote npm. O jogo usa os módulos locais em `src/vendor/three/`.
 
 ## Dependências transitivas
 

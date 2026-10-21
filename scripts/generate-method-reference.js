@@ -6,6 +6,14 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ floorTexture:'Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada.',
+ getPhase3ScrollFrame:'Calcula a rolagem visual do retorno pelo progresso horizontal do cenário, sem seguir salto ou pouso.',
+ startChaseCampaign:'Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação.',
+ startChasePreview:'Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha.',
+ stepChase:'Avança o domínio em segundos: sequência, movimento, colisão, vidas, lançamentos e eventos.',
+ chasePacing:'Deriva ritmo por progresso/dificuldade e fixa pares a cada segundo no final do NORMAL.',
+ chaseLives:'Deriva as vidas restantes dos impactos e do limite da dificuldade.',
+
  arenaDifficulty:'Seleciona os perfis originais do NORMAL ou alcance ampliado e menor agressividade no EASY.',
  chasePattern:'Distribui brinquedos por progresso e dificuldade; no NORMAL usa até três objetos e pares finais com corredor amplo.',
  getApproachJumpSpeed:'Consulta o alcance fixo da aproximação por apoio e dificuldade, sem mirar pela posição do comando.',
