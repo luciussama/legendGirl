@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T115017-5a80ecdfca81-fim",
+  "sessionId": "20261021T115017-5a80ecdfca81",
+  "type": "fim",
+  "date": "2026-10-21T11:53:09.899253+00:00",
+  "title": "Retomar e validar ajuda oculta nos apoios irregulares do NORMAL",
+  "actor": "Codex",
+  "summary": "Concluída retomada da ajuda oculta dos blocos, tambor e banqueta no NORMAL. Alteração de produção anterior preservada; novos testes com comparação à referência, contrato de borda vigente, documentação e contexto finalizados. Sessão original encerrada com explicação da retomada. Sem commit/push.",
+  "checks": [
+    "journal:qa test:apoios:irregulares aprovado: 136.560 comparações, 520 contatos recuperados e trajetórias em três passos de tempo; EASY e retorno equivalentes à referência.",
+    "npm test: primeira execução falhou no contrato antigo de borda dos três apoios; versão atualizada e suíte completa final aprovada, incluindo arena, progressão, bailarina e perseguição.",
+    "journal:qa test:balanceamento:producao aprovado: build, 66 recursos e lint.",
+    "node --check src/js/game.js e git diff --check aprovados."
+  ],
+  "pending": [
+    "Sensação da ajuda ainda requer avaliação humana; sem novo teste de navegador ou aparelho físico nesta retomada.",
+    "Navegação após conclusão e retry da perseguição permanecem fora deste ajuste."
+  ],
+  "files": [
+    "src/js/game.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/apoios-irregulares-20261020/regressao.js",
+    "docs/diario-ia/qa/apoios-irregulares-20261020/fisica.js",
+    "docs/diario-ia/qa/apoios-irregulares-20261020/quarto.js"
+  ]
+}

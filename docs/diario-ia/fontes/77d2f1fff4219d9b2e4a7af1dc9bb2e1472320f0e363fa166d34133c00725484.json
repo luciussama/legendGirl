@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "77d2f1fff4219d9b2e4a7af1dc9bb2e1472320f0e363fa166d34133c00725484",
+  "path": "qa-execucoes/pousos-retorno-20261021/legendgirl-retorno-browser.log",
+  "sha256": "c0282d69b3738a6181c3a7a429c7d46d85602a39409129de525bf2753ee09316",
+  "capturedAt": "2026-10-21T12:31:40.653502+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "observacao": "Saídas reais de validação e limitações da sandbox, preservadas sem edição"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 journal:qa\n> python3 scripts/run-qa-from-journal.py test:pousos:retorno:browser\n\nTraceback (most recent call last):\n  File \"/Users/sergio/repos/legendGirl/scripts/run-qa-from-journal.py\", line 80, in <module>\n    sock.bind(('127.0.0.1',0)); port = sock.getsockname()[1]\nPermissionError: [Errno 1] Operation not permitted\n"
+}

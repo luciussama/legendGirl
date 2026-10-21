@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T121416-62ac0e6c966e",
+  "date": "2026-10-21T12:14:16.581678+00:00",
+  "title": "Correção de pouso: regressões de cruzamento e fixtures com dt real",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/regressao-retorno.js",
+      "sourceId": "75d04acff450418e318f8fcb9767af59c562f3b1bf29d458a8edacac0b22dc57",
+      "sha256": "9d71bf0f8280d8c5b557256c3241ad73148e704117ac17a593e488c0d9ba462a",
+      "bytes": 5509,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/game-antes-correcao.txt",
+      "sourceId": "be76e2c08d3501bd96da07528c59e4f3aca00a46d156baf84235eaef4a3f90e1",
+      "sha256": "1921b7fff0cfa363c347b73ce94c7e1b81e1c80f17698870149b18bebcfa9285",
+      "bytes": 51853,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/apoios-irregulares-20261020/fisica.js",
+      "sourceId": "a846dc28433dab187f0c68b5ed60285d9e9045b0105c52f2ce89f31ad5bd07b0",
+      "sha256": "9dd6bd65177698bf4cb0d755d798237a1510d832174bebc4910376833adcb98c",
+      "bytes": 4103,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/apoios-irregulares-20261020/regressao.js",
+      "sourceId": "6f2b2693ba6b3c97170a2bb2a465ee78ae775f981625ed5d38c5480e43d4d736",
+      "sha256": "f0a9a70680a20e58a51ee0fd972ae13263bb20d8cd3ff923c92ed6b901f34dd9",
+      "bytes": 2718,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/balanceamento-20261020/fisica.js",
+      "sourceId": "8ed70b6ba60db86f6fc3aad122800857f445113e5c779c6ac84fdd69b09b914e",
+      "sha256": "44dd969dd674d46bfc32fa40ac2d3c6753a0d54a01608ac35283c6ffcedbe1d2",
+      "bytes": 3695,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:pousos:retorno": "node docs/diario-ia/qa/pousos-retorno-20261021/regressao-retorno.js"
+  }
+}

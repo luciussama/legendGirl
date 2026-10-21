@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a0d9222bcd96861ab48cad1db35b26893e6cbc77424f901919d08aa31a2e1e79",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-diagnostico.log",
+  "sha256": "f4579052fd7dde2887733999492d5ab5bf682f9f15cd7d8e9a7b97412c846c95",
+  "capturedAt": "2026-10-21T12:47:48.712967+00:00",
+  "origin": {
+    "type": "execucao-qa"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 journal:qa\n> python3 scripts/run-qa-from-journal.py test:piso:diagnostico:browser\n\n\n> o-quarto-dos-brinquedos@1.0.0 test:piso:diagnostico:browser\n> node docs/diario-ia/qa/piso-20261021/diagnostico-browser.js\n\nDIAGNÓSTICO {\"map\":true,\"size\":[186,48],\"mean\":[185.69702060931724,120.62275985662959,30.11234318996396,255.0000000000186],\"uv\":{\"0\":0,\"1\":-5.333333492279053,\"2\":1,\"3\":-5.333333492279053,\"4\":0,\"5\":-5.166666507720947,\"6\":1,\"7\":-5.166666507720947},\"normal\":{\"0\":0,\"1\":1,\"2\":0,\"3\":0,\"4\":1,\"5\":0},\"color\":\"ffffff\",\"metalness\":0,\"roughness\":1,\"side\":2,\"repeat\":{\"x\":9,\"y\":2},\"filter\":1008}\nCAPTURA {\"path\":\"/tmp/legendgirl-piso-antes.png\",\"sha256\":\"774a5a8df5b3099973ceb36c359e63735242e2db508d7cc0c379594ce3f5c567\",\"bytes\":611858}\nCAPTURA {\"path\":\"/tmp/legendgirl-piso-sem-luz.png\",\"sha256\":\"774a5a8df5b3099973ceb36c359e63735242e2db508d7cc0c379594ce3f5c567\",\"bytes\":611858}\nResultado preservado no diário; diretório temporário removido.\n"
+}

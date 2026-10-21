@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "2b3290b84785ea3f5ca2b395455706e36b22e94c77d1a4836eb1502e8576d117",
+  "path": "docs/diario-ia/qa/balanceamento-20261020/saltos.js",
+  "sha256": "f55a6d6107bd47da5537e8d43002401de241ea9855cbbe6823cff8f57671ccc2",
+  "capturedAt": "2026-10-21T12:26:52.291766+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import assert from 'node:assert/strict';\nimport {scan} from './fisica.js';\nimport {getApproachJumpSpeed,createBabyState} from '../../../../src/js/config.js';\nconst results=[];\nfor(const phase3 of [false,true])for(const difficulty of ['NORMAL','EASY'])for(const dt of [.5,1,1.2]) {\n const rows=[];\n for(let target=0;target<(phase3?16:22);target++) {\n  const result=scan(target,phase3,undefined,dt,difficulty);if(difficulty==='NORMAL')assert.ok(phase3?result.ms<=scan(target,phase3,undefined,dt,'EASY').ms:result.ms<scan(target,phase3,undefined,dt,'EASY').ms,'NORMAL exige mais precisão em cada apoio: '+JSON.stringify({phase3,target,dt,result,easy:scan(target,phase3,undefined,dt,'EASY')}));assert.ok(result.count>=8,'Saídas viáveis para alvo '+target);\n  rows.push({target,...result,ms:Math.round(result.ms)});\n }\n if(difficulty==='NORMAL') {\n  if(phase3)for(let i=1;i<rows.length;i++)assert.ok(rows[i].ms<=rows[i-1].ms+50,'Progressão do retorno não pode voltar a oferecer janela generosa: '+JSON.stringify({phase3,dt,previous:rows[i-1],current:rows[i]}));\n  assert.ok(rows.at(-1).ms>=80,'Final conserva margem de reação utilizável');\n  if(phase3){assert.ok(rows[0].ms<550,'Retorno já começa mais exigente');assert.ok(rows.at(-1).ms<=160,'Final do retorno exige precisão');}\n  else {\n   assert.ok(rows[0].ms>=900&&rows[1].ms>=450,'Introdução conserva margem antes dos saltos precisos');\n   for(let index=-1;index<9;index++)assert.ok(getApproachJumpSpeed(index)>=createBabyState().baseVx,'Aproximação não pode criar frenagem aérea para estreitar janelas');\n  }\n }\n results.push({phase3,difficulty,dt,rows});\n}\nconsole.log(JSON.stringify(results,null,2));console.log('APROVADO: aproximação sem frenagem artificial e progressão pós-clímax; 38 saltos, NORMAL/EASY e três passos de tempo.');\n"
+}

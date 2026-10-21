@@ -54,6 +54,39 @@ export class ChaseRenderer3D {
     texture.needsUpdate = true; texture.anisotropy = Math.min(4, this.renderer.capabilities.getMaxAnisotropy());
     return texture;
   }
+  /**
+   * Prepara a madeira repetida como bytes RGBA e níveis completos de redução.
+   * Evita depender do upload de canvas e da geração de mipmaps sRGB pelo driver.
+   * Mantém o recorte original, a orientação e o tamanho das tábuas no mundo.
+   * @param {HTMLImageElement} image Prancha existente do ambiente.
+   * @returns {T.DataTexture} Textura de propriedade do renderer, liberada no descarte.
+   */
+  floorTexture(image) {
+    const source = document.createElement('canvas');
+    source.width = 256; source.height = 64;
+    const context = source.getContext('2d');
+    context.drawImage(image, 27, 151, 186, 48, 0, 0, source.width, source.height);
+    const levels = [];
+    for (let width = source.width, height = source.height; ; width = Math.max(1, width / 2), height = Math.max(1, height / 2)) {
+      const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
+      const ctx = canvas.getContext('2d');
+      ctx.drawImage(source, 0, 0, width, height);
+      const pixels = ctx.getImageData(0, 0, width, height).data;
+      const data = new Uint8Array(pixels.length), stride = width * 4;
+      // DataTexture recebe bytes sem flipY do DOM: inverte as linhas explicitamente.
+      for (let y = 0; y < height; y++) data.set(pixels.subarray(y * stride, (y + 1) * stride), (height - y - 1) * stride);
+      levels.push({ data, width, height });
+      if (width === 1 && height === 1) break;
+    }
+    const texture = this.own(new T.DataTexture(levels[0].data, source.width, source.height));
+    texture.mipmaps = levels; texture.generateMipmaps = false;
+    texture.colorSpace = T.SRGBColorSpace;
+    texture.minFilter = T.LinearMipmapLinearFilter; texture.magFilter = T.LinearFilter;
+    texture.wrapS = texture.wrapT = T.RepeatWrapping; texture.repeat.set(9, 2);
+    texture.anisotropy = Math.min(4, this.renderer.capabilities.getMaxAnisotropy());
+    texture.needsUpdate = true;
+    return texture;
+  }
   /** Cria material ilustrado sem alterar paleta por iluminação física especular. */
   material(texture, color = '#ffffff') {
     return this.own(new T.MeshBasicMaterial({ map: texture || null, color, side: T.DoubleSide,
@@ -84,8 +117,7 @@ export class ChaseRenderer3D {
     const images = Object.fromEntries(loaded);
     this.propCatalog = new ChasePropCatalog(images, this.resources);
     this.toyModels = new ChaseToyModels(this.propCatalog);
-    this.floor = this.texture(images.env, { x: 27, y: 151, w: 186, h: 48 });
-    this.floor.wrapS = this.floor.wrapT = T.RepeatWrapping; this.floor.repeat.set(9, 2);
+    this.floor = this.floorTexture(images.env);
     this.wall = this.texture(images.wall); this.wall.wrapS = this.wall.wrapT = T.RepeatWrapping; this.wall.repeat.set(1, 1);
     this.trim = this.texture(images.trim); this.trim.wrapS = T.RepeatWrapping; this.trim.repeat.set(1, 1);
     this.decoration = { rug: this.texture(images.rug), window: this.texture(images.window) };

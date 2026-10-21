@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "61f687bf190ab772f45ff2fe8adb6db7c6837af8780afab222be1fff4ea90630",
+  "path": "qa-execucoes/9e576edbe1a84c2e8b470f4a19beee01.log",
+  "sha256": "476f232995e3c59baa6edf5556e596adc4f42d4262b94f3aa9a8132260c5a60a",
+  "capturedAt": "2026-10-21T12:29:24.156977+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:pousos:retorno:browser",
+    "exitCode": 1,
+    "package": "20261021T122836-6fdac728d5bf"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:pousos:retorno:browser\n> node docs/diario-ia/qa/pousos-retorno-20261021/correcao-browser.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Entrada nativa inicia salto\n\ntrue !== false\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-gc065xk2/projeto/docs/diario-ia/qa/pousos-retorno-20261021/correcao-browser.js:24:11 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

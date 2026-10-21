@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fa1b5587202345115cac62e060488e26c61faf1123862a66145509490a8626c4",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-corrigido-244.png",
+  "sha256": "f956d2d1cb78cec48e59e74eb408f83143c4dbd37c29b0ecbfcdb3edbb7a8636",
+  "capturedAt": "2026-10-21T12:47:48.658673+00:00",
+  "origin": {
+    "type": "evidencia-regeneravel"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"/tmp/legendgirl-piso-corrigido-244.png\", \"sha256\": \"d92b3296f091001c7c078adb9ad34ef2c3d06240653c515eb663ae7d9d0afd0f\", \"bytes\": 785380, \"binaryRetained\": false}"
+}

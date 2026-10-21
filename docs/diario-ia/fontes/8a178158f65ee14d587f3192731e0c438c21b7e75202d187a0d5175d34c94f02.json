@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8a178158f65ee14d587f3192731e0c438c21b7e75202d187a0d5175d34c94f02",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-trecho-555.png",
+  "sha256": "713816569dac7d4038157cf30cebf1d5896d586fbf2c2d0f2057829ace95e639",
+  "capturedAt": "2026-10-21T12:47:48.707779+00:00",
+  "origin": {
+    "type": "evidencia-regeneravel"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"/tmp/legendgirl-piso-trecho-555.png\", \"sha256\": \"2ba249de6f0248771440d0ee404ffca31bee80a7c07174c171bf3c6e321646ca\", \"bytes\": 813203, \"binaryRetained\": false}"
+}

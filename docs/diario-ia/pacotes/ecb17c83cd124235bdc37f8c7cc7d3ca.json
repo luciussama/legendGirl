@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ecb17c83cd124235bdc37f8c7cc7d3ca",
+  "date": "2026-10-21T12:14:21.481886+00:00",
+  "title": "QA temporário: test:pousos:retorno",
+  "files": [
+    {
+      "path": "qa-execucoes/ecb17c83cd124235bdc37f8c7cc7d3ca.log",
+      "sourceId": "e15ce971a25161a277b2576c0792c0595abe9e0d87bebc65acb700df740e2966",
+      "sha256": "7cbb5ffaac852e249532a106eb12c4ec78e702879ce4f97667287a57ac0aabe3",
+      "bytes": 824,
+      "metadataOnly": false
+    }
+  ]
+}

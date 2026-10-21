@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T120755-5d23b0f44221",
+  "date": "2026-10-21T12:07:55.853675+00:00",
+  "title": "Avaliação do pouso no retorno e preservação da cópia de física não utilizada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/avaliacao.md",
+      "sourceId": "6317e799ce85b602e0b5e058e16395a4d343fbb55197b1b5ce147ec9498f36df",
+      "sha256": "ed5c908f8aa3fcbc82ff44c0ff871756bb6bdcbb6c33224c26a10edc33541587",
+      "bytes": 4209,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/pousos-retorno-20261021/fisica.js",
+      "sourceId": "46104716e29a05cbd324abf03ee89b9893a7e197d330d50b1f45b96a17b8351d",
+      "sha256": "024c8963fb2bfa2a6b00f646f60806f5ec4201858bf6e9dadda52212b8385f73",
+      "bytes": 4080,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

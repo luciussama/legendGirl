@@ -290,3 +290,10 @@ A regressão de ritmo integra `npm run test:bear-chase`. As verificações espec
 estão em `journal:qa -- test:bear-chase:pacing:browser` e
 `journal:qa -- test:bear-chase:pacing:gameplay:browser`. Avaliação humana de desafio e
 conforto do balanço continua distinta dos percursos automatizados.
+
+
+## Piso de madeira e envio à GPU
+
+A corrida usa o recorte de madeira 186×48 em (27,151) da prancha existente `environment-sheet.png`. `ChaseRenderer3D.floorTexture` prepara uma cópia temporária 256×64, com a mesma cobertura UV e repetição 9×2. A textura é enviada como bytes RGBA com uma cadeia completa de reduções até 1×1, sem geração de mipmaps no driver. As linhas são invertidas explicitamente para conservar a orientação da textura anterior. Essa preparação ocorre somente no carregamento e o recurso pertence ao descarte do renderer.
+
+A mudança é de compatibilidade do envio da textura. O arquivo de arte, as tábuas no mundo, o material receptor de luz, as sombras e a simulação continuam com os mesmos contratos. Não usar um piso sem iluminação para disfarçar falhas de carregamento.

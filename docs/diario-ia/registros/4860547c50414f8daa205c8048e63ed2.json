@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "4860547c50414f8daa205c8048e63ed2",
+  "type": "qa",
+  "date": "2026-10-21T11:51:21.121368+00:00",
+  "title": "QA temporário: test:balanceamento:producao",
+  "exitCode": 0,
+  "sourceId": "b9f4d5a0a40000254488a37d9e99243d252c49708eacbf78312d33853daddd3e",
+  "package": "20261021T011945-fb38d9f7d9c8"
+}

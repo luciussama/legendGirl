@@ -9,7 +9,7 @@ const jump=new Function('baby','platforms','state','getEscapeStats','getPhase3St
  ${section('  function doJump(inputSource) {','  // --- SISTEMA DE POEIRA MÁGICA DA FADA ---')}
  doJump('keyboard');`);
 const move=new Function('baby','dt',section('    baby.x += baby.vx * dt;','    // Rastro de poeira'));
-const land=new Function('baby','platforms','phase3Platforms','state','easyLanding',section('    const activePlatforms = state.isPhase3 ? phase3Platforms : platforms;','    if (landedIdx !== -1) {')+'return landedIdx;');
+const land=new Function('baby','platforms','phase3Platforms','state','easyLanding','dt = 1',section('    const activePlatforms = state.isPhase3 ? phase3Platforms : platforms;','    if (landedIdx !== -1) {')+'return landedIdx;');
 const surface=p=>({x:p.standRegion?.x??p.x,w:p.standRegion?.w??p.w,y:p.surfaceTopY??p.standRegion?.y??p.y});
 function stateFor(target,phase3,difficulty='NORMAL'){return {gameplayState:'GAMEPLAY_NORMAL',gameStarted:true,lastJumpTime:0,isPhase3:phase3,isEscapeMode:!phase3&&target>=10,escapeLevel:Math.max(0,target-10),phase3Level:Math.max(0,target-1),gameDifficulty:difficulty};}
 export function scan(target,phase3,speed,dt=1,difficulty='NORMAL') {
@@ -21,7 +21,7 @@ export function scan(target,phase3,speed,dt=1,difficulty='NORMAL') {
  for(let x=Math.ceil(left);x<right;x++) {
   const b={...createBabyState(),x,y:from.y-44,currentPlatformIndex:target-1,longJumpUnlocked:!phase3&&target>=10,isEscaping:!phase3&&target>=10};
   const s=stateFor(target,phase3,difficulty);jump(b,platforms,s,getEscapeStats,getPhase3Stats,getApproachJumpSpeed);if(speed!==undefined)b.vx=(phase3?-1:1)*speed;
-  for(let i=0;i<240;i++){move(b,dt);const hit=land(b,platforms,phase3Platforms,s,easyLanding);if(hit>=0){if(hit===target)hits.push(x);break;}if(b.y>FLOOR_Y+100)break;}
+  for(let i=0;i<240;i++){move(b,dt);const hit=land(b,platforms,phase3Platforms,s,easyLanding,dt);if(hit>=0){if(hit===target)hits.push(x);break;}if(b.y>FLOOR_Y+100)break;}
  }
  return {count:hits.length,ms:hits.length/run*1000/60,first:hits[0],last:hits.at(-1)};
 }
@@ -32,6 +32,6 @@ export function attemptFrom(target,phase3,x,dt=1,difficulty='NORMAL',speed) {
  const baby={...createBabyState(),x,y:from.y-44,currentPlatformIndex:target-1,longJumpUnlocked:!phase3&&target>=10,isEscaping:!phase3&&target>=10};
  const state=stateFor(target,phase3,difficulty);jump(baby,platforms,state,getEscapeStats,getPhase3Stats,getApproachJumpSpeed);if(speed!==undefined)baby.vx=(phase3?-1:1)*speed;
  const airVx=baby.vx;let landed=-1,frames=0;
- for(;frames<240;frames++){move(baby,dt);landed=land(baby,platforms,phase3Platforms,state,easyLanding);if(landed>=0||baby.y>FLOOR_Y+100)break;}
+ for(;frames<240;frames++){move(baby,dt);landed=land(baby,platforms,phase3Platforms,state,easyLanding,dt);if(landed>=0||baby.y>FLOOR_Y+100)break;}
  return {landed,frames,airVx,x:baby.x,y:baby.y,feetX:baby.x+baby.w/2};
 }

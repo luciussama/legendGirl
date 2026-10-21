@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T120420-415564249772-fim",
+  "sessionId": "20261021T120420-415564249772",
+  "type": "fim",
+  "date": "2026-10-21T12:08:26.739927+00:00",
+  "title": "Investigar pousos visualmente válidos rejeitados no retorno pós-porta falsa",
+  "actor": "Codex",
+  "summary": "Avaliação concluída, sem alteração de produção: reproduzidos pousos visualmente válidos rejeitados no retorno NORMAL pela margem interna de 4 px do centro dos pés e expiração da profundidade de 16 px. Relatório no acervo, exemplos concretos e recomendação de faixa dos pés com cruzamento descendente. Trabalho anterior preservado. Sem commit/push.",
+  "checks": [
+    "journal:qa test:pousos:retorno:diagnostico: 9.657 tentativas, 800 falhas com contato na faixa visual dos sapatos, 40 com centro dentro da plataforma; 16 destinos e três dt. Fonte final efa4320b65e2816d277db4db85e3aa2a021752ed9bdbead7de8f0570679ff0cf. Fixture inicial sem espelhamento corrigida e reexecutada; evidências preservadas.",
+    "test:saltos:progressao: aprovado novamente; a aprovação demonstra saídas viáveis, sem cobrir a falha de coerência visual."
+  ],
+  "pending": [
+    "Correção da colisão ainda não implementada nesta avaliação.",
+    "Sem nova inspeção de navegador/aparelho físico ou playtest humano; sem repetir suíte geral/build por ausência de alteração de produção."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/pousos-retorno-20261021/diagnostico.js",
+    "docs/diario-ia/qa/pousos-retorno-20261021/avaliacao.md"
+  ]
+}

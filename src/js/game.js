@@ -815,15 +815,35 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       const platY = (p.surfaceTopY !== undefined)
         ? p.surfaceTopY
         : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
-      if (
+      // Ajuda oculta somente nos três apoios estreitos da aproximação.
+      // Compensa a silhueta irregular sem mudar o desenho, o arco ou mirar o salto.
+      const assistedNormal = state.gameDifficulty !== 'EASY' && !state.isPhase3 &&
+        ['messy_blocks', 'toy_drum', 'satin_cushion'].includes(p.style);
+      const normalInset = assistedNormal ? -4 : 4;
+      // No retorno NORMAL, o apoio usa uma faixa estável de 30 px dos sapatos.
+      // Mede o contato ao cruzar o topo, sem capturar quem já vinha por baixo.
+      const returnNormal = state.isPhase3 && state.gameDifficulty !== 'EASY';
+      let returnLanding = false;
+      if (returnNormal && baby.vy >= 0) {
+        const feetY = baby.y + baby.h;
+        const previousFeetY = feetY - baby.vy * dt;
+        if (previousFeetY <= platY + 1e-7 && feetY >= platY) {
+          const travelY = feetY - previousFeetY;
+          const fraction = travelY > 0 ? Math.max(0, (platY - previousFeetY) / travelY) : 1;
+          const contactX = baby.x + baby.w / 2 - (baby.onGround ? 0 : baby.vx * dt * (1 - fraction));
+          // Exige apoio real de 2 px; a faixa não inclui toda a largura do corpo.
+          returnLanding = Math.min(contactX + 15, platX + platW) - Math.max(contactX - 15, platX) >= 2;
+        }
+      }
+      if (returnLanding || (!returnNormal && (
         (state.gameDifficulty === 'EASY'
           ? baby.x + baby.w > platX && baby.x < platX + platW
-          : baby.x + baby.w / 2 > platX + 4 && baby.x + baby.w / 2 < platX + platW - 4) &&
+          : baby.x + baby.w / 2 > platX + normalInset && baby.x + baby.w / 2 < platX + platW - normalInset) &&
         baby.y + baby.h >= platY &&
-        baby.y + baby.h <= platY + 16 &&
+        baby.y + baby.h <= platY + (assistedNormal ? 20 : 16) &&
         baby.vy >= 0
         || (state.gameDifficulty === 'EASY' && easyLanding(baby, platX, platW, platY))
-      ) {
+      ))) {
         landedIdx = i;
         break;
       }

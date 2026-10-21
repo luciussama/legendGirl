@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T121155-0d3e17339138-fim",
+  "sessionId": "20261021T121155-0d3e17339138",
+  "type": "fim",
+  "date": "2026-10-21T12:32:32.587635+00:00",
+  "title": "Corrigir contato dos pés e cruzamento do topo no retorno pós-porta falsa",
+  "actor": "Codex",
+  "summary": "Corrigido pouso visualmente válido no retorno NORMAL: faixa estável dos sapatos de 30 px, contato mínimo de 2 px e cruzamento descendente do topo entre quadros; apoio no chão verificado na posição atual. Rejeita subida, aproximação por baixo e lateral tardia. Arco, velocidades, alcance configurado, câmera, geometria, artes e EASY preservados. Manual e contexto atualizados; regressão incorporada à suíte. Sem commit/push.",
+  "checks": [
+    "npm test final completo aprovado, incluindo regressão nova, colisões da aproximação, progressão, bailarina, arena e perseguição. Intermediárias falharam nos contratos antigos e em fixture negativa mal posicionada; fontes/saídas preservadas e correções descritas no contexto.",
+    "test:pousos:retorno aprovado: 9.657 tentativas, 948 recuperadas, 3.758 cruzamentos corretos e 817.301 decisões EASY idênticas à referência. Fonte c08fd31a5e81dee99ae0f412b40e555b512b06a15bc991bba6e71eb9988d1dd8.",
+    "test:pousos:retorno:browser aprovado: 144 cenários, 16 apoios, três dt, teclado/toque e três formatos; oito quadros de apoio estável. Fonte 68df78416767660ed2c37b4277a011ecf311f3e5e9a8436182ff83708c9d78f0. Primeiro piloto falhou por debounce; corrigido apenas o intervalo de entrada do QA.",
+    "Build, check-assets (66 recursos), lint, node --check src/js/game.js e git diff --check aprovados."
+  ],
+  "pending": [
+    "Avaliação humana da sensação de pouso e aparelho físico não realizados; navegador usa posições preparadas e passos controlados."
+  ],
+  "files": [
+    "src/js/game.js",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/pousos-retorno-20261021/regressao-retorno.js",
+    "docs/diario-ia/qa/pousos-retorno-20261021/correcao-browser.js",
+    "docs/diario-ia/qa/balanceamento-20261020/fisica.js",
+    "docs/diario-ia/qa/balanceamento-20261020/saltos.js",
+    "docs/diario-ia/qa/apoios-irregulares-20261020/fisica.js",
+    "docs/diario-ia/qa/apoios-irregulares-20261020/regressao.js"
+  ]
+}

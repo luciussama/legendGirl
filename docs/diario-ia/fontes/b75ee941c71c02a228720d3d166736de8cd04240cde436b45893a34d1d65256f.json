@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b75ee941c71c02a228720d3d166736de8cd04240cde436b45893a34d1d65256f",
+  "path": "qa-execucoes/piso-20261021/legendgirl-piso-metodos.log",
+  "sha256": "304e7ee942323f7c1e68afcdd2957a2e3b2cc83c384557eafc0bf52e7bb07b37",
+  "capturedAt": "2026-10-21T12:47:48.714334+00:00",
+  "origin": {
+    "type": "execucao-qa"
+  },
+  "encoding": "utf-8",
+  "content": "Referência documental gerada: 148 módulos e 994 declarações.\n"
+}

@@ -14130,7 +14130,7 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 75,
+          "line": 108,
           "type": "runtime",
           "alias": null
         }
@@ -14313,7 +14313,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 110,
           "type": "runtime",
           "alias": null
         },
@@ -14393,7 +14393,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 111,
           "type": "runtime",
           "alias": null
         },
@@ -14442,7 +14442,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 77,
+          "line": 110,
           "type": "runtime",
           "alias": null
         },
@@ -14485,7 +14485,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 78,
+          "line": 111,
           "type": "runtime",
           "alias": null
         },
@@ -14598,7 +14598,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 80,
+          "line": 113,
           "type": "runtime",
           "alias": null
         },
@@ -14721,7 +14721,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 80,
+          "line": 113,
           "type": "runtime",
           "alias": null
         },
@@ -14846,7 +14846,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 112,
           "type": "runtime",
           "alias": null
         },
@@ -14901,7 +14901,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 79,
+          "line": 112,
           "type": "runtime",
           "alias": null
         },

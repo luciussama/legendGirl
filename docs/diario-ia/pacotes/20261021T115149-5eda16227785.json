@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T115149-5eda16227785",
+  "date": "2026-10-21T11:51:49.272308+00:00",
+  "title": "Contrato vigente do quarto: exceções de pouso nos três apoios",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/apoios-irregulares-20261020/quarto.js",
+      "sourceId": "12fca7eba46bb949cef6afe144e48d20289676939623f73a9a2f0781202b6fc9",
+      "sha256": "421d1f34054013e06956ea1c1d8e7e2d01c763f5cc10cb444b3ffddf0f23fc6d",
+      "bytes": 15991,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "verify:dark-room": "node docs/diario-ia/qa/apoios-irregulares-20261020/quarto.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js && node scripts/test-official-character.js && node scripts/test-phase3-particles.js && node scripts/test-escape-fairy-guide.js && node docs/diario-ia/qa/apoios-irregulares-20261020/regressao.js"
+  }
+}
