@@ -117,15 +117,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor({ canvas, audio, enabled, difficulty = 'NORMAL' })` | Método declarado | 10 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `active()` | Acessor | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `start(saved = null)` | Método declarado | 21 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `update(dt)` | Método declarado | 37 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | Método declarado | 49 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `setPaused(value)` | Método declarado | 61 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `snapshot()` | Método declarado | 65 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 67 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `destroy()` | Método declarado | 73 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor({ canvas, audio, enabled, difficulty = 'NORMAL', campaign = false, onCampaignError = null })` | Método declarado | 11 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `active()` | Acessor | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `start(saved = null)` | Método declarado | 25 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `update(dt)` | Método declarado | 48 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | Método declarado | 66 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `setPaused(value)` | Método declarado | 88 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `snapshot()` | Método declarado | 92 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 94 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `destroy()` | Método declarado | 102 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/bear-chase/ChaseAudio.js
 
@@ -133,16 +133,26 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(audio)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `unlock()` | Método declarado | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `step(actor, gap)` | Método declarado | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `update(state)` | Método declarado | 43 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `stopSteps()` | Método declarado | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setPaused(value)` | Método declarado | 69 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `snapshot()` | Método declarado | 71 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 73 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `seek()` | Função atribuída | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `destroy()` | Método declarado | 79 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(audio)` | Método declarado | 8 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `unlock()` | Método declarado | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `step(actor, gap)` | Método declarado | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `update(state)` | Método declarado | 45 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `stopSteps()` | Método declarado | 67 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setPaused(value)` | Método declarado | 72 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `snapshot()` | Método declarado | 74 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 76 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `seek()` | Função atribuída | 78 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `destroy()` | Método declarado | 82 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+
+## src/js/bear-chase/ChaseBearAnimation.js
+
+[Implementação](../src/js/bear-chase/ChaseBearAnimation.js). Contratos exportados/reexportados: `ChaseBearAnimation`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(model)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `legPose(leg, z, footY, hipHeight)` | Método declarado | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `apply(state)` | Método declarado | 18 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseBearModel.js
 
@@ -150,9 +160,22 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(own,sphere)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `part(parent,material,p,s)` | Método declarado | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `apply(state)` | Método declarado | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(own, texture)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `joint(parent, name, x, y, z)` | Método declarado | 70 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `volume(parent, region, position, scale, tint = '#ffffff', rotation = [0,0,0])` | Método declarado | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `seam(parent, points, radius)` | Método declarado | 84 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `ribbon(parent, side)` | Método declarado | 90 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `collect(parent, source, region, tint)` | Método declarado | 104 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `bake()` | Método declarado | 119 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `apply(state)` | Método declarado | 136 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/ChaseCamera.js
+
+[Implementação](../src/js/bear-chase/ChaseCamera.js). Contratos exportados/reexportados: `chaseCameraFrame`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `chaseCameraFrame(state, portrait, aspect)` | Função | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseConfig.js
 
@@ -160,8 +183,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(value, low, high)` | Função | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `damp(from, to, speed, dt)` | Função | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clamp(value, low, high)` | Função | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `damp(from, to, speed, dt)` | Função | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseGirlAnimation.js
 
@@ -169,9 +192,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(model)` | Método declarado | 4 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `legPose(leg,z,y,hipHeight)` | Método declarado | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `apply(state)` | Método declarado | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(model)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `legPose(leg,z,y,hipHeight)` | Método declarado | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `apply(state)` | Método declarado | 16 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fall(state)` | Método declarado | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseGirlModel.js
 
@@ -204,7 +228,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderChaseHUD(ctx, canvas, state, error, audioError)` | Função | 8 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderLives(ctx, w, ui, state, difficulty)` | Função | 9 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderChaseHUD(ctx, canvas, state, error, audioError, difficulty = 'NORMAL')` | Função | 24 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+
+## src/js/bear-chase/ChaseHealth.js
+
+[Implementação](../src/js/bear-chase/ChaseHealth.js). Contratos exportados/reexportados: `CHASE_FALL_DURATION`, `chaseMaxLives`, `chaseLives`, `isChaseDefeat`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `chaseMaxLives(difficulty = 'NORMAL')` | Função | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chaseLives(state, difficulty = 'NORMAL')` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isChaseDefeat(stage)` | Função | 13 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/bear-chase/ChaseInput.js
 
@@ -214,13 +249,64 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `constructor(canvas, enabled, unlock)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `install()` | Método declarado | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onKeyDown(event)` | Método declarado | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onKeyUp(event)` | Método declarado | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onPointer(event)` | Método declarado | 34 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onRelease(event)` | Método declarado | 44 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sample()` | Método declarado | 46 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clear()` | Método declarado | 62 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `destroy()` | Método declarado | 69 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `onKeyDown(event)` | Método declarado | 26 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onKeyUp(event)` | Método declarado | 33 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onPointer(event)` | Método declarado | 35 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onRelease(event)` | Método declarado | 45 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sample()` | Método declarado | 47 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clear()` | Método declarado | 63 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `destroy()` | Método declarado | 70 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+
+## src/js/bear-chase/ChaseIntroRenderer.js
+
+[Implementação](../src/js/bear-chase/ChaseIntroRenderer.js). Contratos exportados/reexportados: `isChaseIntro`, `chaseIntroFade`, `ChaseIntroRenderer`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `isChaseIntro(stage)` | Função | 17 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `chaseIntroFade(state)` | Função | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor()` | Método declarado | 31 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `measureFrames(image, columns = [0, 490 / 1774, 920 / 1774, 1340 / 1774, 1], rows = [0, 505 / 887, 1])` | Método declarado | 49 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `picture(ctx, key, x, bottom, height)` | Método declarado | 82 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `backdrop(ctx, w, h)` | Método declarado | 88 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `floor(ctx, w, h, horizon, unit)` | Método declarado | 104 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `actor(ctx, index, x, baseline, height, first, reaching = false)` | Método declarado | 121 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `pose(canvas, state)` | Método declarado | 131 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(ctx, canvas, state)` | Método declarado | 151 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | 172 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+
+## src/js/bear-chase/ChaseLighting.js
+
+[Implementação](../src/js/bear-chase/ChaseLighting.js). Contratos exportados/reexportados: `ChaseLighting`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(owner)` | Método declarado | 27 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `windowMask()` | Método declarado | 98 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `resize(portrait)` | Método declarado | 125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `place(light, s, x, height, targetS, targetX, targetHeight = 0)` | Método declarado | 152 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `update(state, portrait)` | Método declarado | 176 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `prepareObject(root)` | Método declarado | 225 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dispose()` | Método declarado | 238 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/ChasePacing.js
+
+[Implementação](../src/js/bear-chase/ChasePacing.js). Contratos exportados/reexportados: `smoothProgress`, `chaseIntensity`, `chasePacing`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `smoothProgress(value)` | Função | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chaseIntensity(distance)` | Função | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chasePacing(distance, difficulty = 'NORMAL')` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/ChasePatterns.js
+
+[Implementação](../src/js/bear-chase/ChasePatterns.js). Contratos exportados/reexportados: `chasePattern`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `chasePattern(progress, difficulty, safeLane)` | Função | 4 | Distribui brinquedos por progresso e dificuldade; no NORMAL usa até três objetos e pares finais com corredor amplo. |
 
 ## src/js/bear-chase/ChaseRenderer3D.js
 
@@ -228,18 +314,41 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `imageFile(path)` | Função | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `constructor()` | Método declarado | 22 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `own(resource)` | Método declarado | 37 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `texture(image, crop = null)` | Método declarado | 39 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `material(texture, color = '#ffffff')` | Método declarado | 50 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `mesh(parent, geometry, material, x, y, z)` | Método declarado | 55 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `actor(texture, width, height)` | Método declarado | 59 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `load()` | Método declarado | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildSegment(index)` | Método declarado | 107 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updateToys(state)` | Método declarado | 133 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render(ctx, canvas, state)` | Método declarado | 155 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | 179 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `imageFile(path)` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor()` | Método declarado | 30 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `own(resource)` | Método declarado | 45 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `texture(image, crop = null)` | Método declarado | 47 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `material(texture, color = '#ffffff')` | Método declarado | 58 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `mesh(parent, geometry, material, x, y, z)` | Método declarado | 63 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `actor(texture, width, height)` | Método declarado | 67 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `load()` | Método declarado | 72 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareRoomResources()` | Método declarado | 121 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `placeOnRoute(object, distance, lateral, height=0, alignSlope=false)` | Método declarado | 125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updateToys(state)` | Método declarado | 131 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render(ctx, canvas, state)` | Método declarado | 158 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `presentCamera(state, portrait)` | Método declarado | 196 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `destroy()` | Método declarado | 209 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+
+## src/js/bear-chase/ChaseRoom.js
+
+[Implementação](../src/js/bear-chase/ChaseRoom.js). Contratos exportados/reexportados: `ChaseRoom`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(owner)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `surface(material,l0,h0,l1,h1,name)` | Método declarado | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `add(object,s,lateral,yaw,height=0,rug=false)` | Método declarado | 45 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `update(distance)` | Método declarado | 55 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+
+## src/js/bear-chase/ChaseRoute.js
+
+[Implementação](../src/js/bear-chase/ChaseRoute.js). Contratos exportados/reexportados: `ROUTE_NODES`, `routeFrame`, `routePoint`, `ROUTE_AMBUSHES`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `coordinate(s, axis)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `routeFrame(s)` | Função | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `routePoint(s,lateral=0,height=0)` | Função | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseSimulation.js
 
@@ -247,14 +356,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `createChaseState()` | Função | 6 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `restoreChaseState(saved)` | Função | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `random(state)` | Função | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `hitsObstacle(obstacle, fromX, toX, fromZ, toZ)` | Função | 41 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `dropPattern(state, events)` | Função | 48 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `followFairy(state, dt)` | Função | 67 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `advanceStage(state, events)` | Função | 75 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `stepChase(state, input, dt = C.step, difficulty = 'NORMAL')` | Função | 86 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createChaseState()` | Função | 11 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `restoreChaseState(saved)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `random(state)` | Função | 43 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `hitsObstacle(obstacle, fromX, toX, fromZ, toZ)` | Função | 49 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dropPattern(state, events, pacing, speed, ambushZ = null, difficulty = 'NORMAL')` | Função | 56 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `followFairy(state, dt)` | Função | 86 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `advanceStage(state, events)` | Função | 94 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `stepChase(state, input, dt = C.step, difficulty = 'NORMAL')` | Função | 105 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseToyModels.js
 
@@ -262,8 +371,152 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(own)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `train()` | Método declarado | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(catalog)` | Método declarado | 4 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `train()` | Método declarado | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/props/BlockCastleProp.js
+
+[Implementação](../src/js/bear-chase/props/BlockCastleProp.js). Contratos exportados/reexportados: `BlockCastleProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `centralWall(parts, orange, yellow, green)` | Método declarado | 33 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `portal(parts, material, position, width, height, depth, radius, openingHeight)` | Método declarado | 60 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `create()` | Método declarado | 72 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/BlocksProp.js
+
+[Implementação](../src/js/bear-chase/props/BlocksProp.js). Contratos exportados/reexportados: `BlocksProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `create()` | Método declarado | 28 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/BookshelfProp.js
+
+[Implementação](../src/js/bear-chase/props/BookshelfProp.js). Contratos exportados/reexportados: `BookshelfProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `create()` | Método declarado | 32 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/BunnyProp.js
+
+[Implementação](../src/js/bear-chase/props/BunnyProp.js). Contratos exportados/reexportados: `BunnyProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `ellipsoid(parts, material, position, scale, tilt = 0)` | Método declarado | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `create()` | Método declarado | 43 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/ChasePropCatalog.js
+
+[Implementação](../src/js/bear-chase/props/ChasePropCatalog.js). Contratos exportados/reexportados: `ChasePropCatalog`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(images, externalResources = null)` | Método declarado | 15 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `register(id, factory, reference, rotation = 0, scale = 1)` | Método declarado | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `create(id)` | Método declarado | 37 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `release(root)` | Método declarado | 44 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dispose()` | Método declarado | 46 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/props/ChasePropResources.js
+
+[Implementação](../src/js/bear-chase/props/ChasePropResources.js). Contratos exportados/reexportados: `ChasePropResources`, `PropParts`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(woodImage, externalResources = null, pictorialImages = {})` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `own(resource)` | Método declarado | 13 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `woodTexture(painted)` | Método declarado | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fabricTexture(image)` | Método declarado | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `material(name, color, wood = false, texture = null)` | Método declarado | 43 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `pictorialMaterial(asset, region, tint = '#ffffff')` | Método declarado | 52 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fabricRegion(image)` | Método declarado | 72 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `bake(parts, name, combineAtlas = false)` | Método declarado | 79 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `combinedMaterial(source)` | Método declarado | 113 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dispose()` | Método declarado | 125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor()` | Método declarado | 134 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `add(geometry, material, position, rotation = [0, 0, 0])` | Método declarado | 136 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `box(material, position, size, radius = .015)` | Método declarado | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cylinder(material, position, top, bottom, height, rotation = [0, 0, 0], segments = 20, axialGrain = false)` | Método declarado | 161 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `ring(material, position, radius, tube, rotation = [0, 0, 0])` | Método declarado | 170 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/props/DecorativeGeometry.js
+
+[Implementação](../src/js/bear-chase/props/DecorativeGeometry.js). Contratos exportados/reexportados: `oval`, `profile`, `rounded`, `curve`, `rod`, `outline`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `oval(p,m,at,size,rotation=[0,0,0])` | Função | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `profile(p,m,shape,depth,at=[0,0,0],bevel=.012)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rounded(p,m,at,size,radius=.05,bevel=.012)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `curve(p,m,points,radius=.012,closed=false)` | Função | 27 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rod(p,m,a,b,r=.018)` | Função | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `outline(commands)` | Função | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/props/DecorativeProps.js
+
+[Implementação](../src/js/bear-chase/props/DecorativeProps.js). Contratos exportados/reexportados: `decorativeFactories`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `teddy(p,m)` | Função | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `robot(p,m)` | Função | 21 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `duck(p,m)` | Função | 42 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drum(p,m)` | Função | 57 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `jack(p,m)` | Função | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `armchair(p,m)` | Função | 84 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `horse(p,m)` | Função | 103 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `table(p,m)` | Função | 131 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `decorativeFactories(resources)` | Função | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `mat(region,tint)` | Função atribuída | 141 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/bear-chase/props/OakCabinetProp.js
+
+[Implementação](../src/js/bear-chase/props/OakCabinetProp.js). Contratos exportados/reexportados: `OakCabinetProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `create()` | Método declarado | 48 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/PictorialMaterialAssets.js
+
+[Implementação](../src/js/bear-chase/props/PictorialMaterialAssets.js). Contratos exportados/reexportados: `PICTORIAL_ATLASES`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
+## src/js/bear-chase/props/PilotPropResources.js
+
+[Implementação](../src/js/bear-chase/props/PilotPropResources.js). Contratos exportados/reexportados: `PilotPropResources`, `PropParts`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
+## src/js/bear-chase/props/ToyChestProp.js
+
+[Implementação](../src/js/bear-chase/props/ToyChestProp.js). Contratos exportados/reexportados: `ToyChestProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `sidePanel(parts, material, x)` | Método declarado | 40 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `inscription(resources)` | Método declarado | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `create()` | Método declarado | 68 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+
+## src/js/bear-chase/props/TrainProp.js
+
+[Implementação](../src/js/bear-chase/props/TrainProp.js). Contratos exportados/reexportados: `TrainProp`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(resources)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `create()` | Método declarado | 51 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
 ## src/js/cinematics/OpeningSequence.js
 
@@ -309,10 +562,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `createBabyState()` | Função | 12 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `getApproachJumpSpeed(platformIndex)` | Função | 45 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getEscapeStats(level)` | Função | 62 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getPhase3Stats(level, fromFloor = false)` | Função | 83 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `createFairyState()` | Função | 97 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `getApproachJumpSpeed(platformIndex, difficulty = 'NORMAL')` | Função | 46 | Consulta o alcance fixo da aproximação por apoio e dificuldade, sem mirar pela posição do comando. |
+| `getEscapeStats(level, difficulty = 'NORMAL')` | Função | 72 | Consulta impulso, corrida e efeitos da fuga; o alcance aéreo varia entre NORMAL e EASY. |
+| `getPhase3Stats(level, fromFloor = false, difficulty = 'NORMAL')` | Função | 93 | Consulta atributos do retorno por nível e dificuldade; fromFloor distingue a entrada pelo chão. |
+| `createFairyState()` | Função | 107 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
 ## src/js/controllers/AndroidFraming.js
 
@@ -681,39 +934,40 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `drawCutsceneDialogue(transform)` | Função | 600 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `drawTutorialArrow(camX)` | Função | 613 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `update(dt = 1.0)` | Função | 623 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `onLagBehind()` | API/lambda de objeto | 1022 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render()` | Função | 1031 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `togglePause()` | Função | 1041 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setPaused(value)` | Função | 1059 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `saveProgress()` | Função | 1065 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreProgress(saved)` | Função | 1077 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `newCampaign({ preserveProgress = false } = {})` | Função | 1101 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | 1121 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `saveOnHide()` | Função atribuída | 1155 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `recordCameraQa(transform = null)` | Função | 1173 | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
-| `loop(currentTime = performance.now())` | Função | 1177 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isFirstJumpTutorial()` | API/lambda de objeto | 1217 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGrounded()` | API/lambda de objeto | 1219 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | 1220 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGameOver()` | API/lambda de objeto | 1221 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | 1222 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | 1224 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `pauseMusic()` | API/lambda de objeto | 1251 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `resumeMusic()` | API/lambda de objeto | 1252 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setMasterVolume(v)` | API/lambda de objeto | 1253 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getMasterVolume()` | API/lambda de objeto | 1254 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `setMuted(m)` | API/lambda de objeto | 1255 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `isMuted()` | API/lambda de objeto | 1256 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | 1257 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isPaused()` | API/lambda de objeto | 1258 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `hasProgress()` | API/lambda de objeto | 1261 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getDifficulty()` | API/lambda de objeto | 1262 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `destroy()` | Método declarado | 1265 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `start(difficulty = 'NORMAL')` | Método declarado | 1274 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `isGrounded()` | API/lambda de objeto | 1296 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | 1297 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGameOver()` | API/lambda de objeto | 1302 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | 1306 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `onLagBehind()` | API/lambda de objeto | 1025 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render()` | Função | 1034 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `togglePause()` | Função | 1044 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setPaused(value)` | Função | 1062 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `saveProgress()` | Função | 1068 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restoreProgress(saved)` | Função | 1080 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `newCampaign({ preserveProgress = false } = {})` | Função | 1104 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | 1124 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `saveOnHide()` | Função atribuída | 1158 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `recordCameraQa(transform = null)` | Função | 1176 | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
+| `loop(currentTime = performance.now())` | Função | 1180 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isFirstJumpTutorial()` | API/lambda de objeto | 1220 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGrounded()` | API/lambda de objeto | 1222 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | 1223 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGameOver()` | API/lambda de objeto | 1224 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | 1225 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | 1227 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `pauseMusic()` | API/lambda de objeto | 1254 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `resumeMusic()` | API/lambda de objeto | 1255 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setMasterVolume(v)` | API/lambda de objeto | 1256 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getMasterVolume()` | API/lambda de objeto | 1257 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setMuted(m)` | API/lambda de objeto | 1258 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `isMuted()` | API/lambda de objeto | 1259 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | 1260 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isPaused()` | API/lambda de objeto | 1261 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasProgress()` | API/lambda de objeto | 1264 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasSavedCampaign()` | API/lambda de objeto | 1265 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getDifficulty()` | API/lambda de objeto | 1266 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `destroy()` | Método declarado | 1269 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `start(difficulty = 'NORMAL')` | Método declarado | 1278 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `isGrounded()` | API/lambda de objeto | 1300 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | 1301 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGameOver()` | API/lambda de objeto | 1306 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | 1310 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/input.js
 
@@ -727,20 +981,22 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `refreshCampaignMenu()` | Função | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updatePauseButtonState()` | Função | 57 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `toggleGamePause()` | Função | 74 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updateSoundButtonState()` | Função | 89 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `onGameOver()` | API/lambda de objeto | 137 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onRestartToTitle()` | API/lambda de objeto | 149 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startGame(event)` | Função | 170 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `handleRetry(event)` | Função | 199 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleRestart(event)` | Função | 231 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `addSafeAction(element, handler)` | Função | 264 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `safeHandler(event)` | Função atribuída | 267 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `handleToyRoomSwitch(event)` | Função | 284 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `setDebugPhaseMenuOpen(open, restoreFocus = false)` | Função atribuída | 330 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `pollOverlayGamepad()` | Função | 426 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `refreshCampaignMenu()` | Função | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updatePauseButtonState()` | Função | 48 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `toggleGamePause()` | Função | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updateSoundButtonState()` | Função | 80 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `onGameOver()` | API/lambda de objeto | 128 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onRestartToTitle()` | API/lambda de objeto | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startGame(event)` | Função | 161 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `handleRetry(event)` | Função | 190 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleRestart(event)` | Função | 222 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `addSafeAction(element, handler)` | Função | 255 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `safeHandler(event)` | Função atribuída | 258 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `handleToyRoomSwitch(event)` | Função | 275 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onNew()` | API/lambda de objeto | 314 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onLoad()` | API/lambda de objeto | 315 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setDebugPhaseMenuOpen(open, restoreFocus = false)` | Função atribuída | 325 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `pollOverlayGamepad()` | Função | 408 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/narrative/DarkRoomNarrative.js
 
@@ -896,6 +1152,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `arenaEnemyImpactEnd(enemy, tuning = { windup: 54, active: 18 })` | Função atribuída | 3 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `arenaEnemyGuarding(enemy, tuning)` | Função | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
+## src/js/toy-room/ArenaDifficulty.js
+
+[Implementação](../src/js/toy-room/ArenaDifficulty.js). Contratos exportados/reexportados: `arenaDifficulty`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `arenaDifficulty(difficulty = 'NORMAL')` | Função | 15 | Seleciona os perfis originais do NORMAL ou alcance ampliado e menor agressividade no EASY. |
+
 ## src/js/toy-room/ArenaEnemies.js
 
 [Implementação](../src/js/toy-room/ArenaEnemies.js). Contratos exportados/reexportados: `ARENA_ENEMIES`, `renderArenaEnemyPresence`.
@@ -977,7 +1241,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `constructor()` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `load()` | Método declarado | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `render(ctx,room,state,ground)` | Método declarado | 19 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderSwordArc(ctx,sample)` | Método declarado | 52 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderSwordArc(ctx,sample,reachScale=1)` | Método declarado | 52 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ArenaScale.js
 
@@ -1147,27 +1411,27 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/toy-room/ToyRoomArenaPhase.js
 
-[Implementação](../src/js/toy-room/ToyRoomArenaPhase.js). Contratos exportados/reexportados: `ARENA_TRANSFORMATION_DURATION`, `ToyRoomArenaPhase`.
+[Implementação](../src/js/toy-room/ToyRoomArenaPhase.js). Contratos exportados/reexportados: `ARENA_TRANSFORMATION_DURATION`, `ARENA_VICTORY_FADE_DURATION`, `ToyRoomArenaPhase`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(room)` | Método declarado | 20 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `active()` | Acessor | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `start()` | Método declarado | 37 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `configurePresentation()` | Método declarado | 48 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderHUD(ctx, layout, state)` | API/lambda de objeto | 62 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `onImpact(x, y, heavy)` | API/lambda de objeto | 70 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onBlock(x, y)` | API/lambda de objeto | 71 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderPlayer(ctx, state, ground)` | API/lambda de objeto | 76 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `restoreReality()` | Método declarado | 80 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `finish()` | Método declarado | 99 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `beginReturn()` | Método declarado | 108 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `update(dt = 1)` | Método declarado | 116 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | Método declarado | 145 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `snapshot()` | Método declarado | 175 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, roomSave = null)` | Método declarado | 176 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `attack()` | Método declarado | 205 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `special()` | Método declarado | 216 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(room)` | Método declarado | 22 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `active()` | Acessor | 37 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `start()` | Método declarado | 39 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `configurePresentation()` | Método declarado | 50 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderHUD(ctx, layout, state)` | API/lambda de objeto | 65 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `onImpact(x, y, heavy)` | API/lambda de objeto | 73 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onBlock(x, y)` | API/lambda de objeto | 74 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderPlayer(ctx, state, ground)` | API/lambda de objeto | 79 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `restoreReality({ resumeAudio = true } = {})` | Método declarado | 84 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `finish()` | Método declarado | 103 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `beginReturn()` | Método declarado | 112 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `update(dt = 1)` | Método declarado | 123 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | Método declarado | 161 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `snapshot()` | Método declarado | 199 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved, roomSave = null)` | Método declarado | 200 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `attack()` | Método declarado | 229 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `special()` | Método declarado | 240 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/ToyRoomBattle.js
 
@@ -1384,7 +1648,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `constructor(context)` | Método declarado | 3 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `snapshot({ includeArena = true } = {})` | Método declarado | 5 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, { preserveArena = false } = {})` | Método declarado | 16 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `restore(saved, { preserveArena = false } = {})` | Método declarado | 17 | Reaplica a captura específica; confira referências e dados transitórios. |
 
 ## src/js/toy-room/ToyRoomPersistenceContext.js
 
@@ -1395,38 +1659,40 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `createToyRoomPersistenceContext(room)` | Função | 2 | Adapta campos serializados e retomada dos subsistemas, inclusive após substituição dos atores. |
 | `arena()` | Acessor | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `battle()` | Acessor | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraX()` | Acessor | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraX(value)` | Acessor | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraY()` | Acessor | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraY(value)` | Acessor | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clearInput()` | API/lambda de objeto | 10 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `fairy()` | Acessor | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(value)` | Acessor | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `furniture()` | Acessor | 13 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `furniture(value)` | Acessor | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gameplayState()` | Acessor | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gameplayState(value)` | Acessor | 16 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introAlpha()` | Acessor | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introAlpha(value)` | Acessor | 18 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introBannerTimer()` | Acessor | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introBannerTimer(value)` | Acessor | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `lastActionTime()` | Acessor | 21 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `lastActionTime(value)` | Acessor | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `organizedCount()` | Acessor | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `organizedCount(value)` | Acessor | 24 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `player()` | Acessor | 25 | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `player(value)` | Acessor | 26 | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `startTutorial()` | API/lambda de objeto | 27 | Inicia orientação guiada da Toy Room se ainda não concluída. |
-| `story()` | Acessor | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toyRoomTutorialCompleted()` | Acessor | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toyRoomTutorialCompleted(value)` | Acessor | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toys()` | Acessor | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toys(value)` | Acessor | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tutorial()` | Acessor | 33 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerActive()` | Acessor | 34 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerActive(value)` | Acessor | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerTimer()` | Acessor | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerTimer(value)` | Acessor | 37 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chase()` | Acessor | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chase(value)` | Acessor | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraX()` | Acessor | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraX(value)` | Acessor | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraY()` | Acessor | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraY(value)` | Acessor | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clearInput()` | API/lambda de objeto | 12 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `fairy()` | Acessor | 13 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(value)` | Acessor | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `furniture()` | Acessor | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `furniture(value)` | Acessor | 16 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gameplayState()` | Acessor | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gameplayState(value)` | Acessor | 18 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introAlpha()` | Acessor | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introAlpha(value)` | Acessor | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introBannerTimer()` | Acessor | 21 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introBannerTimer(value)` | Acessor | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `lastActionTime()` | Acessor | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `lastActionTime(value)` | Acessor | 24 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `organizedCount()` | Acessor | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `organizedCount(value)` | Acessor | 26 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `player()` | Acessor | 27 | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `player(value)` | Acessor | 28 | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `startTutorial()` | API/lambda de objeto | 29 | Inicia orientação guiada da Toy Room se ainda não concluída. |
+| `story()` | Acessor | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toyRoomTutorialCompleted()` | Acessor | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toyRoomTutorialCompleted(value)` | Acessor | 33 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toys()` | Acessor | 34 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toys(value)` | Acessor | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tutorial()` | Acessor | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerActive()` | Acessor | 37 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerActive(value)` | Acessor | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerTimer()` | Acessor | 39 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerTimer(value)` | Acessor | 40 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/ToyRoomPhase.js
 
@@ -1435,39 +1701,41 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {})` | Método declarado | 34 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `inputController()` | Acessor | 113 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setupListeners()` | Método declarado | 120 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getCanvasCoordinates(e)` | Método declarado | 122 | Converte evento de ponteiro para coordenadas internas da sala. |
-| `isActionButtonHit(coords)` | Método declarado | 124 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `handleKeyDown(e)` | Método declarado | 126 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleKeyUp(e)` | Método declarado | 128 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `pollGamepad()` | Método declarado | 130 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onPointerDown(e)` | Método declarado | 132 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerMove(e)` | Método declarado | 134 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerUp(e)` | Método declarado | 136 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `clearInput()` | Método declarado | 138 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `refreshArenaTouchButtons()` | Método declarado | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | 142 | Cria partículas/efeitos no buffer correspondente. |
-| `spawnConfetti(x, y, count = 35)` | Método declarado | 146 | Cria partículas/efeitos no buffer correspondente. |
-| `interaction()` | Acessor | 150 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triggerAction()` | Método declarado | 156 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
-| `startChasePreview(saved = null)` | Método declarado | 159 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `resolveCollisions(px, py, r)` | Método declarado | 170 | Resolve colisões da sala com móveis. |
-| `update(dt = 1.0)` | Método declarado | 177 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `resolveCollisions(x, y, radius)` | API/lambda de objeto | 213 | Resolve colisões da sala com móveis. |
-| `updateCamera(dt)` | Método declarado | 234 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `getCameraFrame()` | Método declarado | 242 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `render(options = {})` | Método declarado | 249 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `startTutorial()` | Método declarado | 256 | Inicia orientação guiada da Toy Room se ainda não concluída. |
-| `persistence()` | Acessor | 258 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `snapshot(options)` | Método declarado | 263 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, options)` | Método declarado | 265 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `destroy()` | Método declarado | 268 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 279 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `update(dt)` | API/lambda de objeto | 282 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | API/lambda de objeto | 283 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `triggerAction()` | API/lambda de objeto | 284 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
-| `destroy()` | API/lambda de objeto | 285 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `inputController()` | Acessor | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setupListeners()` | Método declarado | 122 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getCanvasCoordinates(e)` | Método declarado | 124 | Converte evento de ponteiro para coordenadas internas da sala. |
+| `isActionButtonHit(coords)` | Método declarado | 126 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `handleKeyDown(e)` | Método declarado | 128 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleKeyUp(e)` | Método declarado | 130 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `pollGamepad()` | Método declarado | 132 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onPointerDown(e)` | Método declarado | 134 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerMove(e)` | Método declarado | 136 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerUp(e)` | Método declarado | 138 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `clearInput()` | Método declarado | 140 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `refreshArenaTouchButtons()` | Método declarado | 142 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | 144 | Cria partículas/efeitos no buffer correspondente. |
+| `spawnConfetti(x, y, count = 35)` | Método declarado | 148 | Cria partículas/efeitos no buffer correspondente. |
+| `interaction()` | Acessor | 152 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triggerAction()` | Método declarado | 158 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `startChasePreview(saved = null)` | Método declarado | 161 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `startChaseCampaign(saved = null)` | Método declarado | 173 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `handleCampaignChaseError(chase, message)` | Método declarado | 197 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `resolveCollisions(px, py, r)` | Método declarado | 217 | Resolve colisões da sala com móveis. |
+| `update(dt = 1.0)` | Método declarado | 224 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `resolveCollisions(x, y, radius)` | API/lambda de objeto | 260 | Resolve colisões da sala com móveis. |
+| `updateCamera(dt)` | Método declarado | 281 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `getCameraFrame()` | Método declarado | 289 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `render(options = {})` | Método declarado | 296 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `startTutorial()` | Método declarado | 303 | Inicia orientação guiada da Toy Room se ainda não concluída. |
+| `persistence()` | Acessor | 305 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `snapshot(options)` | Método declarado | 310 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved, options)` | Método declarado | 312 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `destroy()` | Método declarado | 315 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 326 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `update(dt)` | API/lambda de objeto | 329 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | API/lambda de objeto | 330 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `triggerAction()` | API/lambda de objeto | 331 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `destroy()` | API/lambda de objeto | 332 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/toy-room/ToyRoomSceneFrame.js
 
@@ -1716,10 +1984,37 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `attachMobileUILayout(canvas, host = window)` | Função | 96 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `update()` | Função atribuída | 97 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 
+## src/js/ui/TitleScene.js
+
+[Implementação](../src/js/ui/TitleScene.js). Contratos exportados/reexportados: `TitleScene`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor(canvas, overlay)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sync()` | Método declarado | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tick(time)` | Método declarado | 42 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `leg(ctx, source, knee, angle, scale, origin)` | Método declarado | 50 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(time)` | Método declarado | 58 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | 77 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+
+## src/js/ui/TitleScreen.js
+
+[Implementação](../src/js/ui/TitleScreen.js). Contratos exportados/reexportados: `TitleScreen`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor({ game, onNew, onLoad })` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `refresh()` | Método declarado | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setEasy(enabled)` | Método declarado | 40 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `requestNew()` | Método declarado | 47 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `navigate(event)` | Método declarado | 54 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `activateFocused()` | Método declarado | 63 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
 ## src/js/ui/index.js
 
 [Implementação](../src/js/ui/index.js). Contratos exportados/reexportados: `HudRenderer`, `hudRenderer`, `DialogueRenderer`, `dialogueRenderer`, `renderFirstJumpTutorial`, `getFirstJumpFeedback`, `getFirstJumpTutorialDevice`, `FIRST_JUMP_MESSAGES`.
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **123 módulos JavaScript**, **871 declarações nomeadas**.
+Inventário: **148 módulos JavaScript**, **993 declarações nomeadas**.

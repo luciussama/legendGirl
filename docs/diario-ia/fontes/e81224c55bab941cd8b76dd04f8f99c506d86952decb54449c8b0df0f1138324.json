@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e81224c55bab941cd8b76dd04f8f99c506d86952decb54449c8b0df0f1138324",
+  "path": "qa-execucoes/f708ed131cee493bb090ec047c7f0155.log",
+  "sha256": "827e999a6bb6be805d6fff0436aa8cd1129c8ca906890dcc1a95507a54b6183c",
+  "capturedAt": "2026-10-21T00:15:27.756721+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:difficulty",
+    "exitCode": 0,
+    "package": "20261019T024508-cfb0e2d4bfbd"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:difficulty\n> node docs/diario-ia/qa/dificuldade-saltos-progressivos.js\n\nAPROVADO: 10640 comparações com NORMAL anterior; 3063 erros pequenos recuperados; duas fases, save/restore/recarga, legado, guia real; alcances rebalanceados com gravidade, impulso e bloqueios preservados.\n"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T013524-e28d3cdc93ec",
+  "date": "2026-10-21T01:35:24.468494+00:00",
+  "title": "Piloto aguarda trava de 350 ms da interface antes de usar seletor",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js",
+      "sourceId": "d4d1c115e8a6b09a52904f267d38ef888fcb6b43508e4bc7ff1570457d181369",
+      "sha256": "ff244fd66ec5734e46caeb39acf88c2789ca83f731379a2148744ccb24fa8e1b",
+      "bytes": 7156,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

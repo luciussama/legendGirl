@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "33eeb76e6ea7dfd419f174b498c60f960007a4e436f088a8f83ffce80b655da4",
+  "path": "docs/diario-ia/qa/balanceamento-20261020/corredor.js",
+  "sha256": "66cf446fe028ae4686f0a1d63625e20a480a857f4e7c307f7454e51757ff2c3e",
+  "capturedAt": "2026-10-21T01:10:44.678928+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import { CHASE_CONFIG as C } from '../../../../src/js/bear-chase/ChaseConfig.js';\n/** Interseção livre para o centro do corpo; inclui raio, largura dos brinquedos e limites da pista. */\nexport function corridors(group) {\n let free=[[-C.halfWidth,C.halfWidth]];\n for(const o of group){const l=o.x-o.width/2-C.radius,r=o.x+o.width/2+C.radius;free=free.flatMap(([a,b])=>r<=a||l>=b?[[a,b]]:[[a,Math.min(b,l)],[Math.max(a,r),b]].filter(([x,y])=>y>x));}\n return free;\n}\nexport function targetFor(state,margin=.1) {\n const next=state.obstacles.filter(o=>o.z>=state.distance-margin&&!o.hit).sort((a,b)=>a.z-b.z)[0];\n if(!next)return 0;\n const options=corridors(state.obstacles.filter(o=>Math.abs(o.z-next.z)<.01&&!o.hit)).map(([l,r])=>(l+r)/2);\n return options.sort((a,b)=>Math.abs(a-state.x)-Math.abs(b-state.x))[0];\n}\n"
+}

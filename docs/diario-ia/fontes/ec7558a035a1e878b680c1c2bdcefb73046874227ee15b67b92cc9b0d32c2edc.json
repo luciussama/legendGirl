@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ec7558a035a1e878b680c1c2bdcefb73046874227ee15b67b92cc9b0d32c2edc",
+  "path": "qa-execucoes/99b35d3a11bc41c2ba4bde79c7752500.log",
+  "sha256": "8551bab83795877c6b392bf8dbd55e2a7e38ecd544a96c834a1d19a81b2da60f",
+  "capturedAt": "2026-10-21T01:35:51.026044+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:cadencia-final:nativo:browser",
+    "exitCode": 1,
+    "package": "20261021T013345-d6504e51bb87"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:cadencia-final:nativo:browser\n> node docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js NORMAL\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-h6y2size/projeto/docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js:12\nasync function until(expression){for(let i=0;i<200;i++){if(await evaluate(expression))return;await new Promise(r=>setTimeout(r,100));}throw Error('Condição não alcançada: '+expression);}\n                                                                                                                                            ^\n\nError: Condição não alcançada: Boolean(game.state.toyRoomInstance?.instance.chase?.ready)\n    at until (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-h6y2size/projeto/docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js:12:141)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-h6y2size/projeto/docs/diario-ia/qa/cadencia-final-20261020/nativo-browser.js:32:126\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7b4cb80a18a644298e20a424f81e92c8",
+  "date": "2026-10-21T01:10:50.427420+00:00",
+  "title": "QA temporário: test:balanceamento",
+  "files": [
+    {
+      "path": "qa-execucoes/7b4cb80a18a644298e20a424f81e92c8.log",
+      "sourceId": "42d1154389b7af32c816936c46da2c9fc39543ddcc999a0bba01f97056e3f28e",
+      "sha256": "ff5f4c31dc635cb136d9af933ae64cc2c540ab54eef7a7f7edc8ea8c61c4deb6",
+      "bytes": 8994,
+      "metadataOnly": false
+    }
+  ]
+}

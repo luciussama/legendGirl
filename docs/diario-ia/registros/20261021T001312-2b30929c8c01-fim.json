@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T001312-2b30929c8c01-fim",
+  "sessionId": "20261021T001312-2b30929c8c01",
+  "type": "fim",
+  "date": "2026-10-21T00:49:55.674629+00:00",
+  "title": "Jogar campanha pela interface e auditar NORMAL versus EASY em plataformas e arena",
+  "actor": "Codex",
+  "summary": "Auditoria concluída: campanhas NORMAL e EASY inteiras com mouse/teclado nativos em tempo real, do menu ao baú, sem teleporte, alteração de HP, avanço manual ou rollback. Piloto consulta estado/geometria e recebeu correções/intervenções direcionais nativas documentadas, portanto não é playtest humano. Dois finais COMPLETE e zero impactos nas fugas bem-sucedidas. Exercitados pausa/recarga no castelo EASY, final carregado, confirmação/cancelamento, derrota/retry da arena, seis impactos até GAME_OVER da prévia sem baú, mudo e voltar ao início após quedas reais. Confirmado: quarto usa mesma física, só tolerância EASY 4 lateral/24 profundidade contra 16; arena não consulta modo, estados iguais em 4162 pares de quadros. Reproduzida por teclado anomalia de primeiro contato urso→livros: NORMAL índice 1, EASY índice 0, sem provar derrota inevitável. Carregar conserva modo salvo. Pendências de UI: final diz Prévia concluída e derrota da fuga usa seletor debug. Relatório imutável 1ccfd5850edd27e2e9180c6b2caa8efe707f34747e66ed2d2d4a0b42bdc1aec1. Nenhuma alteração de produção/balanceamento nesta auditoria; trabalho anterior preservado. Capturas inspecionadas e descartadas com metadados, textos temporários arquivados, Chrome isolado encerrado. Sem commit/push.",
+  "checks": [
+    "test:difficulty aprovado: 10640 comparações",
+    "test:jogabilidade:auditoria aprovado; 38 janelas por modo e 4162 pares de quadros da arena",
+    "Campanha NORMAL real: aprovado, fonte 72307e0636c8fd154e00619f2d729e8dc0b19c3457b146acc469c96180051a49",
+    "Campanha EASY real e telas adicionais: aprovado, fonte 63f307ec475f3eb0eb46c5fb61cbda6f89f17d2fb07c0e0dfd7df4c394622940",
+    "Pouso/mudo/retorno ao início por entradas reais: aprovado, fonte a8dbe7ec0258996c80a67251ff8500485490336915c55ff6269f99b4a4bf1acf",
+    "Sintaxe de QA e git diff --check aprovados",
+    "Falhas iniciais do piloto preservadas; suíte geral/build/assets não repetidos, sem mudanças de produção"
+  ],
+  "pending": [
+    "Definir separação de dificuldade mais perceptível; EASY da arena ainda inexistente",
+    "Rever prioridade do pouso assistido; não inferir derrota inevitável da troca do primeiro contato",
+    "Dar ações/textos próprios de campanha ao final e à derrota da perseguição",
+    "Playtest humano, hardware físico e outros dispositivos não homologados por este piloto"
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+    "docs/diario-ia/qa/jogabilidade-real-20261020/auditoria.js",
+    "docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js",
+    "docs/diario-ia/fontes/1ccfd5850edd27e2e9180c6b2caa8efe707f34747e66ed2d2d4a0b42bdc1aec1.json"
+  ]
+}

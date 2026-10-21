@@ -12,7 +12,7 @@ Revisão: 15/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 | [Dependências](DEPENDENCIAS.md) | Pacotes/lockfile, APIs nativas, Python/SQLite, CDP e CI. |
 | [Primeiro salto](TUTORIAL-PRIMEIRO-SALTO.md) | Fluxo, entradas, apresentação e migração de saves do tutorial do quarto. |
 | [Arena atual](arena/GUIA-ARENA.md) / [valores documentados](arena/configuracao-atual.json) | Perfis legado/arena, HP, combate, IA, controles, retorno, áudio e persistência. |
-| [Prévia da perseguição 3D](bear-chase/GUIA-PREVIA.md) | Acesso pelo seletor, controles, módulos, áudio e limites da prova isolada. |
+| [Perseguição 3D](bear-chase/GUIA-PREVIA.md) | Acesso pelo seletor, controles, módulos, áudio e dificuldades da fase. |
 | [Manual: vitória da arena para a fuga](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md) | Requisitos de fluxo, integração, persistência e validação para iniciar a fuga após vencer o urso. |
 | [Animação da menina](arena/GUIA-ANIMACAO.md) / [prompts](arena/animacao-menina-prompts.md) | Poses, dados, âncoras, reação de dano e origem das pranchas. |
 | [Produção de batalha](battle-mode/battle-sprite-production.md) | Origem dos lotes de sprites e integração/derivados atuais. |

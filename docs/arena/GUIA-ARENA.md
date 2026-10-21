@@ -63,3 +63,9 @@ A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reiní
 `ToyRoomPhase` compõe a exploração com contextos restritos; `ToyRoomArenaPhase` e `ToyRoomBattle` ainda retêm a sala inteira. `configurePresentation` instala controller, tuning e callbacks da arena sobre a simulação existente; restoreReality devolve o perfil legado. Essa integração ampla permanece como próximo trabalho de desacoplamento, não como uma interface genérica já implantada.
 
 Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-room:arena:browser, test:arena:balance, test:arena:enemies, test:arena:animation, test:arena:refinements, test:arena:defesa, test:arena:defesa:browser e comparações test:refact:browser. O executor recupera fontes em diretório temporário e registra saídas no diário. Validação determinística/emulada não substitui aparelhos físicos ou avaliação humana da dificuldade.
+
+## Diferenças entre NORMAL e EASY
+
+`ArenaDifficulty.arenaDifficulty` mantém os perfis originais no NORMAL. No EASY, o alcance nominal e o mínimo derivado dos corpos crescem 30%: Trem 386,1; Robô 271,7; Dinossauro 321,75; Urso 311,025. O arco desenhado acompanha esse alcance.
+
+Os inimigos do EASY caminham a 80% e investem a 85% da velocidade normal. Esperas entre aproximações duram 1,7×; retiradas, 1,5×; recuperação, 1,55×; intervalo entre evasões, 1,6×. A sequência extra de pressão após acertar a menina fica desativada. HP, transferência de corações e preparação/contato dos golpes permanecem iguais, preservando os sinais visuais para esquiva. O perfil é aplicado tanto ao entrar na arena quanto ao restaurar sua apresentação.

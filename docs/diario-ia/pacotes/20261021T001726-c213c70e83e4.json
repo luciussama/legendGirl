@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T001726-c213c70e83e4",
+  "date": "2026-10-21T00:17:26.571848+00:00",
+  "title": "Correção do piloto de teclado: saída calculada dentro do apoio atual",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+      "sourceId": "2652b1ef6a328d9a1d95ef977121c1a7392d393976e1f0395076dbc137a0e4f4",
+      "sha256": "bcbb43c2c406510e77142312ce5b1a31c06700730b5a6da1b6e5fe0cd583cb1a",
+      "bytes": 14428,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:real:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js"
+  }
+}

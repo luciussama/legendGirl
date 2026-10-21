@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T003528-a881bcf96c5e",
+  "date": "2026-10-21T00:35:28.168312+00:00",
+  "title": "Fontes consolidadas: folga de navegação e mudo por clique real antes do diagnóstico de pouso",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+      "sourceId": "70d54d9d5a4340aaf79cf40118ab7099aec7aac6808bd2b82ec88d4f273b7d3c",
+      "sha256": "d7a4a7c31cad1246c9d4576f71bb674fe8a05a49460b78d286a95ee975c18b2d",
+      "bytes": 18018,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js",
+      "sourceId": "45f8957df5417d9dd193a678162c559354f3631538f70622f6f94436191004b1",
+      "sha256": "c04bfb5cceee515f7262937236e01cfb891a197c62acb2ca33f285972ff73159",
+      "bytes": 5133,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:real:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/campanha-browser.js",
+    "test:jogabilidade:pouso:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js"
+  }
+}

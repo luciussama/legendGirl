@@ -315,6 +315,11 @@ titleScreen = new TitleScreen({ game,
   onLoad: () => startGame()
 });
 
+// Mantém atalhos de gameplay fora do diálogo de recuperação; Escape conserva o fechamento nativo.
+for (const type of ['keydown', 'keyup']) {
+  document.getElementById('chase-error-dialog').addEventListener(type, event => event.stopPropagation());
+}
+
 if (debugPhaseSelect) {
   const menu = debugPhaseToggle?.closest('.phase-debug-menu');
   const setDebugPhaseMenuOpen = (open, restoreFocus = false) => {

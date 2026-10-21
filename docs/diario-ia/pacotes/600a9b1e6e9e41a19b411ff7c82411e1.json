@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "600a9b1e6e9e41a19b411ff7c82411e1",
+  "date": "2026-10-21T01:18:55.787463+00:00",
+  "title": "QA temporário: test:balanceamento:campanha:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/600a9b1e6e9e41a19b411ff7c82411e1.log",
+      "sourceId": "8c4332b483cdbb9318604c08eeb6675fb31149af1a963e7f2d1c8b2f556a9f80",
+      "sha256": "85f7b2f1f57b5c0762105253e55b338034d1bd3ad36b1623b874a44c2c524989",
+      "bytes": 30304,
+      "metadataOnly": false
+    }
+  ]
+}

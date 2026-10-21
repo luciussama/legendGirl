@@ -30,7 +30,7 @@ import { ToyRoomBattle } from './ToyRoomBattle.js';
 import { BearChasePhase } from '../bear-chase/BearChasePhase.js';
 
 export class ToyRoomPhase {
-  /** Compõe os sistemas da sala e mantém a prévia 3D inativa até seleção explícita. */
+  /** Compõe os sistemas da sala e mantém a perseguição 3D inativa até seleção explícita. */
   constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {}) {
     this.canvas = canvas;
     this.gameDifficulty = normalizeDifficulty(options.gameDifficulty);
@@ -154,7 +154,7 @@ export class ToyRoomPhase {
     return this._interaction;
   }
 
-  /** Encaminha ações da sala; a prévia 3D usa somente seus controles laterais. */
+  /** Encaminha ações da sala; a perseguição 3D usa somente seus controles laterais. */
   triggerAction() { if (!this.chase?.active) return this.interaction.triggerAction(); }
 
   /** Abre a prova isolada sem migrar saves ou antecipar a nova transição de campanha. */
@@ -200,6 +200,14 @@ export class ToyRoomPhase {
     this.chase = null;
     this.gameplayState = 'TOY_ROOM_GAMEPLAY';
     if (this.bindInputs) this.setupListeners();
+    // O feedback legado fica oculto na interface; o diálogo torna a falha visível e acessível.
+    if (typeof document !== 'undefined') {
+      const dialog = document.getElementById('chase-error-dialog');
+      if (dialog) {
+        document.getElementById('chase-error-message').textContent = message;
+        if (!dialog.open) dialog.showModal();
+      }
+    }
     if (this.uiFeedback) {
       this.uiFeedback.innerText = `A fuga não pôde ser iniciada. ${message}`;
       this.uiFeedback.style.color = '#fca5a5';
@@ -303,7 +311,7 @@ export class ToyRoomPhase {
 
   restore(saved, options) { return this.persistence.restore(saved, options); }
 
-  /** Encerra todos os sistemas ativos, incluindo listeners e recursos da prévia. */
+  /** Encerra todos os sistemas ativos, incluindo listeners e recursos da perseguição. */
   destroy() {
     this.chase?.destroy(); this.chase = null;
     this.arena?.audioProfile.leave({ resume: false });

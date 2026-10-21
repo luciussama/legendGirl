@@ -1,11 +1,11 @@
 import { beginArenaPlayerAttack, updateArenaPlayerAnimation } from './ArenaPlayerAnimation.js';
 import { arenaEnemyContact } from './ArenaCombatContact.js';
 import { ArenaBoss } from './ArenaBoss.js';
-import { ARENA_ENEMIES, renderArenaEnemyPresence } from './ArenaEnemies.js';
+import { renderArenaEnemyPresence } from './ArenaEnemies.js';
 import { renderArenaHUD } from './ArenaHUD.js';
 import { ArenaAudioProfile } from './ArenaAudioProfile.js';
 import { ImpactFX } from './ImpactFX.js';
-import { ArenaPlayerController, ARENA_TUNING } from './ArenaPlayerController.js';
+import { ArenaPlayerController } from './ArenaPlayerController.js';
 import { PlayerController } from './PlayerController.js';
 import { BATTLE_TUNING } from './BattleConfig.js';
 import { ArenaCamera } from './ArenaCamera.js';
@@ -13,6 +13,7 @@ import { ARENA_SCALE } from './ArenaScale.js';
 import { renderArenaEnvironment, renderArenaTemple } from './ArenaEnvironment.js';
 import { ArenaPlayerRenderer } from './ArenaPlayerRenderer.js';
 import { ToyRoomArenaBuilder } from './ToyRoomArenaBuilder.js';
+import { arenaDifficulty } from './ArenaDifficulty.js';
 export const ARENA_TRANSFORMATION_DURATION = 180;
 export const ARENA_VICTORY_FADE_DURATION = 30;
 
@@ -47,7 +48,8 @@ export class ToyRoomArenaPhase {
   }
 
   configurePresentation() {
-    this.battle.tuning = ARENA_TUNING;
+    const profile = arenaDifficulty(this.room.gameDifficulty);
+    this.battle.tuning = profile.tuning;
     this.battle.playerController = new ArenaPlayerController();
     this.battle.presentation = {
       updateAnimation: dt => {
@@ -58,7 +60,7 @@ export class ToyRoomArenaPhase {
         }
       },
       enemyContact: arenaEnemyContact,
-      enemies: ARENA_ENEMIES,
+      enemies: profile.enemies,
       renderEnemyPresence: renderArenaEnemyPresence,
       renderHUD: (ctx, layout, state) => renderArenaHUD(ctx, this.room, state, layout, this.boss),
       cameraFrame: layout => this.camera.frame(layout, this.room, this.battle.state),

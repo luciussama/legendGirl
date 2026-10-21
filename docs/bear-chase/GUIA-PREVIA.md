@@ -1,6 +1,6 @@
-# Prévia da perseguição no quarto em 3D
+# Perseguição no quarto em 3D
 
-Execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D (prévia)**.
+Execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D**.
 Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva
 e permanece independente da fuga iniciada pela vitória normal da arena.
 
@@ -17,10 +17,9 @@ e para no fim de jogo. Para uma nova tentativa, escolha a fase novamente pelo se
 Snapshots novos conservam a dificuldade; snapshots antigos usam a dificuldade
 selecionada. O contador de impactos existente é a fonte das vidas restantes.
 
-A prévia encadeia urso caído, aproximação da menina, levantar, fuga, corrida, alcance e
+A perseguição encadeia urso caído, aproximação da menina, levantar, fuga, corrida, alcance e
 ida ao baú. A pista tem 720 unidades de percurso, com velocidade crescente e seis
 trechos de avaliação; a duração depende do ritmo e dos tropeços.
-A extensão final ainda depende de superar a maior fase existente.
 
 A abertura é inteiramente ilustrada: urso caído, aproximação lenta da menina e
 levantar do urso usam poses pintadas, com a cena da cama como referência de linguagem.
@@ -48,8 +47,18 @@ acompanhamento atrás/acima da cabeça. A aprovação humana da
 prévia anterior não homologa automaticamente o novo modelo da menina.
 
 `Chase.mp3` começa na arrancada e diminui no alcance. Os passos usam os WAVs fornecidos.
-Nesta prova a música repete o arquivo integral; a emenda musical e a mixagem final
+A música repete o arquivo integral; a emenda musical e a mixagem final
 continuam pendentes de escuta.
+
+## Dificuldades
+
+O EASY conserva os grupos e larguras anteriores: um brinquedo por lançamento no começo e até dois após 35% da pista. No NORMAL, os lançamentos passam a três brinquedos entre 70% e 85% (504 a 612 unidades). A partir de 85%, voltam a dois brinquedos por lançamento, com intervalo constante de um segundo.
+
+`ChasePatterns` deixa um corredor único. Com três brinquedos, o vão tem 1,35 unidade e a folga para posicionar o centro da menina é de 0,63. Os pares finais deixam folga de pelo menos 2,38 unidades para o centro, alternando a faixa livre entre vizinhas: a dificuldade vem dos desvios seguidos, com espaço para atravessar. As bordas não oferecem uma posição parada segura. Não há grupos de quatro.
+
+`ChaseConfig.finalPressureStart` e `finalDropInterval` definem a entrada e a cadência final. O primeiro par sai ao cruzar 85%; o ritmo não é interrompido pelas emboscadas de curva. Mesmo quando o urso fica próximo, os brinquedos são lançados adiante com tempo para pousar e permitir reação. O último grupo fica dentro da pista e deixa de ser lançado quando já não caberia esse aviso antes da chegada. Os pares já lançados continuam exigindo desvio até perto da captura.
+
+Os grupos densos recebem escala uniforme e centro visual alinhado à colisão, sem deformar as proporções dos objetos. Vidas, invulnerabilidade, grupos e ritmo do EASY permanecem iguais.
 
 ## Contratos dos módulos em src/js/bear-chase
 
@@ -57,6 +66,7 @@ continuam pendentes de escuta.
 | --- | --- |
 | `ChaseConfig` | Unidades de mundo, segundos e parâmetros da prova |
 | `ChaseSimulation` | Estado versionado, etapas, colisão varrida, padrões e RNG |
+| `ChasePatterns` | Quantidade e geometria dos grupos conforme progresso e dificuldade |
 | `ChaseHealth` | Limites de três/seis vidas e etapas de derrota |
 | `ChaseRoute` | Traçado contínuo, referenciais, relevo e pontos de emboscada |
 | `ChaseRoom` | Superfícies contínuas e decoração em posições absolutas |
@@ -71,13 +81,13 @@ continuam pendentes de escuta.
 | `ChaseToyModels` | Adaptador de compatibilidade para o trem do catálogo |
 | `props/ChasePropCatalog` | Instâncias, referências, limites visuais e liberação local |
 | `props/ChasePropResources` | Propriedade e compartilhamento de materiais, texturas e malhas |
-| `ChaseHUD` | Mensagens da prévia, sem mutação da simulação |
+| `ChaseHUD` | Mensagens da perseguição, sem mutação da simulação |
 | `BearChasePhase` | Composição e adaptação do dt legado, sem receber a sala inteira |
 
-`ToyRoomPhase.startChasePreview()` desliga os controles da sala e instala os da prévia.
+`ToyRoomPhase.startChasePreview()` desliga os controles da sala e instala os da perseguição.
 `createGame.startDebugPhase('bear-chase')` usa o isolamento de campanha do seletor.
-`BearChasePhase.snapshot/restore` preserva dados da prova; nesta etapa não há campo
-da prévia no save de campanha. A vitória da arena usa `startChaseCampaign()` como
+`BearChasePhase.snapshot/restore` preserva dados da perseguição; o acesso isolado de debug não grava
+esses dados no save de campanha. A vitória da arena usa `startChaseCampaign()` como
 fluxo distinto: escurece a tela, prepara os recursos antes de revelar a abertura e
 salva/restaura a etapa da fuga junto à campanha. Saves antigos sem esse campo
 continuam válidos.
@@ -93,7 +103,7 @@ Web Audio ou Three.js. Desenho e som consomem estado/eventos sem decidir dano.
 
 - `npm run test:bear-chase`: domínio, sequência, padrões, colisão, RNG e restauração.
 - `npm run test:bear-chase:browser`: requer Chrome isolado com CDP em 9222; verifica
-  a prévia no jogo real e executa em workspace temporário.
+  a perseguição no jogo real e executa em workspace temporário.
 - `npm test`: inclui a regressão de domínio junto das fases anteriores.
 - `npm run docs:sprites`: reconstrói as referências de consumo das artes atuais.
 - `npm run journal:qa -- test:bear-chase:intro:browser`: verifica abertura ilustrada,
@@ -227,7 +237,7 @@ luzes de ambiente/rebatimento em tempo real, sem cálculo físico de iluminaçã
 Somente a luz principal e a janela dominante geram sombras simultaneamente.
 Mapas: principal 2048² e janelas 1024² em paisagem; 1024²/512² em retrato.
 Até quatro mapas podem ficar alocados durante o percurso, mesmo com dois ativos.
-O controlador libera esses recursos ao encerrar a prévia. O teto não bloqueia
+O controlador libera esses recursos ao encerrar a perseguição. O teto não bloqueia
 a luz global de apresentação, mas participa da iluminação recebida.
 
 `npm run journal:qa -- test:bear-chase:lighting` verifica sombras em pixels reais,

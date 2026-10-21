@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T011109-171a8f2b8c01",
+  "date": "2026-10-21T01:11:09.257049+00:00",
+  "title": "Adaptar verificação do quarto aos apoios precisos autorizados no NORMAL",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/balanceamento-20261020/quarto.js",
+      "sourceId": "b8dc31dcfde6c6fa301faf40b16c6a1b8d40b60a29c2c15abe97fdabc4c1c62e",
+      "sha256": "cd536e9bfe5451a877e39151fcbb32f8a9002cbfee433f453d1cf96ef898aa30",
+      "bytes": 15891,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "verify:dark-room": "node docs/diario-ia/qa/balanceamento-20261020/quarto.js && node scripts/test-foot-contact.js && node scripts/test-platform9-pause-jump.js && node scripts/test-dream-girl-playtest.js && node scripts/test-official-character.js && node scripts/test-phase3-particles.js && node scripts/test-escape-fairy-guide.js"
+  }
+}

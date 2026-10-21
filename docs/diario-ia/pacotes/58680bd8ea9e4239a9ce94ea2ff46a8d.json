@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "58680bd8ea9e4239a9ce94ea2ff46a8d",
+  "date": "2026-10-21T01:32:39.677243+00:00",
+  "title": "QA temporário: test:cadencia-final",
+  "files": [
+    {
+      "path": "qa-execucoes/58680bd8ea9e4239a9ce94ea2ff46a8d.log",
+      "sourceId": "9fd9bd6d1dc971e9a5230190106d8ade24754e547af82a5463f3b4e2e3759430",
+      "sha256": "e55701b6b895bd82243ebc83ed23dd7c3d2d53bf31224ad8ad6085de88b10c1e",
+      "bytes": 5618,
+      "metadataOnly": false
+    }
+  ]
+}

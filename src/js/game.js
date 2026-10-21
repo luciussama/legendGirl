@@ -409,7 +409,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     if (state.isPhase3) {
       const currentLvl = Math.max(0, Math.min(14, state.phase3Level || 0));
-      const stats = getPhase3Stats(currentLvl, baby.currentPlatformIndex < 0);
+      const stats = getPhase3Stats(currentLvl, baby.currentPlatformIndex < 0, state.gameDifficulty);
       baby.vy = stats.jumpPower;
       baby.vx = stats.airVx; // Impulso horizontal dinâmico em direção à esquerda
       audio.playLongJumpSound(currentLvl / 14);
@@ -422,7 +422,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       spawnFairySparkles(baby.x + baby.w / 2, baby.y + baby.h, burstCount);
     } else if (baby.longJumpUnlocked || (typeof state.isEscapeMode !== 'undefined' && state.isEscapeMode)) {
       const currentLvl = Math.max(0, Math.min(11, state.escapeLevel || 0));
-      const stats = getEscapeStats(currentLvl);
+      const stats = getEscapeStats(currentLvl, state.gameDifficulty);
       baby.vy = stats.jumpPower;
       baby.vx = stats.airVx; // Impulso horizontal dinâmico proporcional ao nível
       // Efeito de gameplay escondido para o início da segunda parte:
@@ -463,7 +463,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.vy = baby.jumpPower;
       // Velocidade fixa por saída: o clique determina o alcance, sem mirar
       // automaticamente o centro do próximo apoio. Só o castelo tem assistência.
-      baby.vx = getApproachJumpSpeed(baby.currentPlatformIndex);
+      baby.vx = getApproachJumpSpeed(baby.currentPlatformIndex, state.gameDifficulty);
       audio.playJumpSound();
       fairy.vy -= 2.2;
       fairy.spinAnim = 1.0;
@@ -697,6 +697,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       state.currentScrollSpeed = 0;
       state.targetScrollSpeed = 0;
     }
+    // No NORMAL, o passo de aproximação acompanha o salto, sem frenagem ao sair do apoio.
+    if (baby.onGround && !state.isEscapeMode && !state.isPhase3 && state.gameDifficulty !== 'EASY') baby.vx = 2;
     baby.x += baby.vx * dt;
     baby.animTime += (baby.vx !== 0 ? 0.15 : 0) * dt;
     baby.vy += baby.gravity * dt;
@@ -711,9 +713,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     // Emite faixas de velocidade proporcionais ao nível de fuga ou da Fase 3
     if (state.isPhase3 && !baby.onGround) {
-      particles.spawnPhase3Ribbons(baby, state.phase3Level, getPhase3Stats(state.phase3Level), state.tick);
+      particles.spawnPhase3Ribbons(baby, state.phase3Level, getPhase3Stats(state.phase3Level, false, state.gameDifficulty), state.tick);
     } else if (state.isEscapeMode && !baby.onGround) {
-      particles.spawnEscapeRibbons(baby, state.escapeLevel, getEscapeStats(state.escapeLevel), state.tick);
+      particles.spawnEscapeRibbons(baby, state.escapeLevel, getEscapeStats(state.escapeLevel, state.gameDifficulty), state.tick);
     }
 
     // --- COMPORTAMENTO ORGÂNICO E SISTEMA GUIA DA FADA ---
@@ -814,8 +816,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         ? p.surfaceTopY
         : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
       if (
-        baby.x + baby.w > platX &&
-        baby.x < platX + platW &&
+        (state.gameDifficulty === 'EASY'
+          ? baby.x + baby.w > platX && baby.x < platX + platW
+          : baby.x + baby.w / 2 > platX + 4 && baby.x + baby.w / 2 < platX + platW - 4) &&
         baby.y + baby.h >= platY &&
         baby.y + baby.h <= platY + 16 &&
         baby.vy >= 0
@@ -850,7 +853,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       baby.y = landingY - baby.h;
       baby.vy = 0;
       if (!state.isEscapeMode && !state.isPhase3) {
-        baby.vx = baby.baseVx;
+        baby.vx = state.gameDifficulty === 'EASY' ? baby.baseVx : 2;
       }
       baby.onGround = true;
       baby.respawnLandingPending = false;
@@ -865,7 +868,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         const newLevel = Math.min(14, Math.max(0, landedIdx));
         if (newLevel > state.phase3Level) {
           state.phase3Level = newLevel;
-          const stats = getPhase3Stats(state.phase3Level);
+          const stats = getPhase3Stats(state.phase3Level, false, state.gameDifficulty);
           state.targetScrollSpeed = stats.scrollSpeed;
           baby.vx = stats.runVx;
           audio.playLevelUpChime(state.phase3Level);
@@ -887,7 +890,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
             uiFeedback.style.color = '#fef08a';
           }
         } else {
-          const stats = getPhase3Stats(state.phase3Level);
+          const stats = getPhase3Stats(state.phase3Level, false, state.gameDifficulty);
           baby.vx = stats.runVx;
           state.targetScrollSpeed = stats.scrollSpeed;
         }
@@ -911,7 +914,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
             const newLevel = Math.min(11, Math.max(0, landedIdx - 9));
             if (newLevel > state.escapeLevel) {
               state.escapeLevel = newLevel;
-              const stats = getEscapeStats(state.escapeLevel);
+              const stats = getEscapeStats(state.escapeLevel, state.gameDifficulty);
               state.targetScrollSpeed = stats.scrollSpeed;
               baby.vx = stats.runVx;
               audio.playLevelUpChime(state.escapeLevel);
@@ -927,7 +930,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
                 uiFeedback.style.color = '#fef08a';
               }
             } else {
-              const stats = getEscapeStats(state.escapeLevel);
+              const stats = getEscapeStats(state.escapeLevel, state.gameDifficulty);
               baby.vx = stats.runVx;
               state.targetScrollSpeed = stats.scrollSpeed;
             }
@@ -963,7 +966,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
       // Velocidade de corrida no chão na Fase 3
       if (state.isPhase3 && !baby.controlsLocked) {
-        const stats = getPhase3Stats(state.phase3Level);
+        const stats = getPhase3Stats(state.phase3Level, false, state.gameDifficulty);
         baby.vx = stats.runVx;
       }
 
@@ -1037,7 +1040,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   let isPaused = false;
 
-  /** Alterna pausa global e comunica o mesmo estado à prévia 3D e ao áudio legado. */
+  /** Alterna pausa global e comunica o mesmo estado à perseguição 3D e ao áudio legado. */
   function togglePause() {
     isPaused = !isPaused;
     state.isPaused = isPaused;

@@ -63,7 +63,7 @@ export function updateTransicaoStandbyNarrative(context, dt) {
         baby.respawnLandingPending = false;
 
         if (state.isPhase3) {
-          const stats = getPhase3Stats(0);
+          const stats = getPhase3Stats(0, false, state.gameDifficulty);
           baby.vx = stats.runVx;
         } else if (state.isEscapeMode) {
           if (baby.currentPlatformIndex === 9) {
@@ -72,7 +72,7 @@ export function updateTransicaoStandbyNarrative(context, dt) {
             state.currentScrollSpeed = 0;
             state.targetScrollSpeed = 0;
           } else {
-            const stats = getEscapeStats(state.escapeLevel);
+            const stats = getEscapeStats(state.escapeLevel, state.gameDifficulty);
             baby.vx = stats.runVx || 2.4;
           }
         } else {
@@ -336,7 +336,7 @@ export function updateTutorialRetornoNarrative(context, dt) {
         // Demonstração finalizada: libera controles e inicia a corrida no chão livre
         state.phase3TutorialActive = false;
         baby.controlsLocked = false;
-        const stats = getPhase3Stats(0);
+        const stats = getPhase3Stats(0, false, state.gameDifficulty);
         baby.vx = stats.runVx;
         uiFeedback.innerText = '⚡ Corra para a esquerda e salte na primeira plataforma!';
         uiFeedback.style.color = '#fde047';

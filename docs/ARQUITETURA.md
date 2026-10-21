@@ -8,9 +8,9 @@ Revisão: 15/10/2026. Descreve o código atual, incluindo as extrações de `ref
 seletor de debug e `startChaseCampaign()` após a vitória do urso na arena. A campanha
 escurece a arena antes de preparar o renderer; só então revela `BEAR_DOWN` e a
 introdução existente. Seu snapshot `toyRoomChaseCampaign` integra a persistência
-da Toy Room; o estado da prévia permanece fora do save. Saves antigos continuam
+da Toy Room; o estado do acesso isolado de debug permanece fora do save. Saves antigos continuam
 válidos. `BearChasePhase` recebe canvas, serviço de áudio, disponibilidade e
-dificuldade, sem receber a sala inteira. `ChaseSimulation` mantém dados serializáveis
+dificuldade, sem receber a sala inteira. `ChasePatterns` distribui os grupos por progresso e dificuldade, preservando um corredor nos grupos densos. `ChaseSimulation` mantém dados serializáveis
 e passo fixo; `ChaseInput`, `ChaseAudio`, `ChaseHUD` e `ChaseRenderer3D` isolam os
 adaptadores. Three.js é importado tardiamente de `src/vendor/three/`. Veja
 [contratos e ciclo de vida](bear-chase/GUIA-PREVIA.md) e o
@@ -61,7 +61,7 @@ O loop normaliza o tempo para 60 Hz e limita dt a 0,5–1,2. Pausa impede update
 | Batalha | `ToyRoomBattle.state`: mode, index, elapsed, player HP, enemy, history, transition, ending, cooldown/immunity, salto/agachamento/defesa, espada, hitstop, impacto/recuo e memórias. | Controller/IA/regras/contato atualizam; snapshot copia o estado serializável. Ativação começa a menina com 3 HP. |
 | Inimigo ativo | actor, hp/maxHp, x/facing, state/elapsed, attack/index, landed, enrage/enrageShown e campos de resposta/evasão/memória recente. | Apenas um inimigo ativo; ordem train → robot → dinosaur → bear. Perfis de arena e legado têm HP/medidas diferentes. |
 | Arena | status/elapsed/completed, destino de retorno (sala ou fuga), resultado e snapshot da exploração; câmera, FX, áudio e chefe têm snapshots próprios. | `ToyRoomArenaPhase` restaura a exploração com preserveArena para evitar recursão, reconfigura legado/arena, limpa controles e só direciona vitórias à fuga. |
-| Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e na prévia de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a introdução sob fade antes de avançar o estado. |
+| Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e no acesso isolado de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a introdução sob fade antes de avançar o estado. |
 | Recursos | Imagens, regiões, manifestos e status nos carregadores; poses/âncoras em módulos de dados. | Não são serializados. Escala/âncora visual não redefine hitbox, apoio ou física. |
 
 A Toy Room mede 1600 × 1200. Suas ações têm debounce de 250 ms, coleta abaixo de 88 unidades, armazenamento abaixo de 160 e soltura a 42 à frente, com limites existentes. A escolha de interação ocorre antes do movimento do quadro. As entradas têm prioridade teclado → gamepad ativo → toque ativo. Não antecipar contagem ou trocar a ordem das chamadas aleatórias durante uma extração.
@@ -134,6 +134,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [toy-room/ArenaCamera.js](../src/js/toy-room/ArenaCamera.js) | Câmera e tremor próprios do combate, enquadrando os atores ampliados. | `ArenaCamera` |
 | [toy-room/ArenaCombatContact.js](../src/js/toy-room/ArenaCombatContact.js) | Calcula se cada golpe existente do inimigo toca a menina, considerando salto/agachamento. | `arenaEnemyContact` |
 | [toy-room/ArenaCombatRules.js](../src/js/toy-room/ArenaCombatRules.js) | Janelas da espada e proteção dos inimigos compartilhadas por simulação e HUD. | `ARENA_SWORD`, `arenaEnemyImpactEnd`, `arenaEnemyGuarding` |
+| [toy-room/ArenaDifficulty.js](../src/js/toy-room/ArenaDifficulty.js) | Seleciona alcance e agressividade por modo, preservando os perfis originais no NORMAL. | `arenaDifficulty` |
 | [toy-room/ArenaEnemies.js](../src/js/toy-room/ArenaEnemies.js) | Perfis de HP, corpos, velocidades e pressão dos quatro inimigos; desenho de presença. | `ARENA_ENEMIES`, `renderArenaEnemyPresence` |
 | [toy-room/ArenaEnemyAI.js](../src/js/toy-room/ArenaEnemyAI.js) | Memória curta de comportamento, evasão e seleção determinística do repertório existente. | `selectArenaEnemyAttack`, `updateArenaEnemyAI` |
 | [toy-room/ArenaEnvironment.js](../src/js/toy-room/ArenaEnvironment.js) | Cenário heroico e templo derivados dos materiais/objetos da sala. | `renderArenaEnvironment`, `renderArenaTemple` |
@@ -176,7 +177,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [toy-room/ToyRoomOrientation.js](../src/js/toy-room/ToyRoomOrientation.js) | Escolhe brinquedo elegível como guia visual, conservando o alvo quando adequado. | `nearestToyGuide` |
 | [toy-room/ToyRoomPersistence.js](../src/js/toy-room/ToyRoomPersistence.js) | Serializa/restaura sala, religa item por ID e retoma os subsistemas na ordem existente. | `ToyRoomPersistence` |
 | [toy-room/ToyRoomPersistenceContext.js](../src/js/toy-room/ToyRoomPersistenceContext.js) | Acesso explícito aos campos persistidos e callbacks de retomada, sempre atuais. | `createToyRoomPersistenceContext` |
-| [toy-room/ToyRoomPhase.js](../src/js/toy-room/ToyRoomPhase.js) | Compõe serviços e entidades, coordena prévia isolada e fuga de campanha, mantém ciclo de vida/transições e delegações públicas. | `ToyRoomPhase`, `createToyRoom` |
+| [toy-room/ToyRoomPhase.js](../src/js/toy-room/ToyRoomPhase.js) | Compõe serviços e entidades, coordena perseguição isolada e fuga de campanha, mantém ciclo de vida/transições e delegações públicas. | `ToyRoomPhase`, `createToyRoom` |
 | [toy-room/ToyRoomSceneFrame.js](../src/js/toy-room/ToyRoomSceneFrame.js) | Monta os dados e callbacks atuais de um quadro de apresentação da sala. | `createToyRoomSceneFrame` |
 | [toy-room/ToyRoomSceneRenderer.js](../src/js/toy-room/ToyRoomSceneRenderer.js) | Compõe cenário, entidades por Y, efeitos, HUD, tutorial e narrativa na ordem original. | `renderToyRoomScene` |
 | [toy-room/ToyRoomStory.js](../src/js/toy-room/ToyRoomStory.js) | Recorrência, investigação, espada, comandos e relógios narrativos; recebe contexto restrito. | `createToyRoomStoryState`, `ToyRoomStory`, `drawToySword` |
@@ -196,9 +197,25 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [ui/HudRenderer.js](../src/js/ui/HudRenderer.js) | Faixas/progresso do percurso lateral em coordenadas de tela. | `HudRenderer`, `hudRenderer` |
 | [ui/MobileDialogueRegion.js](../src/js/ui/MobileDialogueRegion.js) | Divisão visual entre cena superior e texto inferior no fluxo móvel do quarto. | `getMobileDialogueRegions`, `renderMobileDialogueRegion` |
 | [ui/MobileUILayout.js](../src/js/ui/MobileUILayout.js) | Layout seguro único para HUD/controles, hit testing e atualização por mudança de viewport. | `calculateMobileUILayout`, `getMobileUILayout`, `isActionControlHit`, `arenaMobileControlsLayout`, `hitArenaMobileControl`, `arenaDirectionVector`, `attachMobileUILayout` |
+| [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF. | `TitleScene` |
+| [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. | `TitleScreen` |
 | [ui/index.js](../src/js/ui/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `HudRenderer`, `hudRenderer`, `DialogueRenderer`, `dialogueRenderer`, `renderFirstJumpTutorial`, `getFirstJumpFeedback`, `getFirstJumpTutorialDevice`, `FIRST_JUMP_MESSAGES` |
 
 ## Integração, recursos e ciclo de vida
+
+A tela inicial usa `TitleScreen` para as escolhas e `TitleScene` para a pintura
+animada em um canvas próprio. `main.js` fornece as ações de nova campanha e
+carregamento; o menu consulta a existência de progresso e confirma a substituição.
+Modo fácil afeta a próxima aventura nova; carregar respeita a dificuldade salva.
+As opções apresentam qualidade automática ainda desabilitada. A cena pausa seu
+RAF quando o menu ou a aba ficam ocultos e respeita movimento reduzido.
+As duas imagens ficam em `assets/art/title-screen/`, com origem e resolução
+nativa em `prompts.json`; o canvas em 1920×1080 não transforma o fundo em uma
+exportação nativa Full HD.
+
+Falhas ao preparar a fuga da campanha descartam a fase parcial e devolvem os
+controles à sala. O diálogo `chase-error-dialog` informa o erro e permite voltar
+à sala; ele não depende do elemento legado `ui-feedback`, oculto na interface.
 
 `main.js` usa a API retornada por createGame: start/newCampaign/hasProgress/saveProgress/getDifficulty; doJump e consultas; pausa; retry/reset/restart; áudio; startToyRoomPhase/startToyRoomIntroduction/startDebugPhase; referências de subsistemas e destroy. Os callbacks usados são onGameOver, onSaveStatus e onNarrativeEvent. Métodos internos update/render/loop são acessíveis apenas por instrumentação de QA, sem API distribuída de avanço manual.
 

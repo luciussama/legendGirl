@@ -44,7 +44,7 @@ export class TrainProp {
     // Grade frontal em madeira pintada, com dentes individuais da referência.
     p.box(red, [0, .20, .79], [.43, .065, .12]);
     for (let i = -2; i <= 2; i++) p.box(gold, [i * .075, .26, .83], [.027, .12, .03], .005);
-    this.prototype = resources.bake(p.parts, 'Trem — piloto da prancha atual');
+    this.prototype = resources.bake(p.parts, 'Trem — piloto da prancha atual', true);
     this.prototype.scale.setScalar(.72);
   }
   /** Instancia somente a hierarquia; geometria e materiais pertencem ao proprietário externo. */

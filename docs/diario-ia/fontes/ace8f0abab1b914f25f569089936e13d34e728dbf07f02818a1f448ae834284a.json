@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ace8f0abab1b914f25f569089936e13d34e728dbf07f02818a1f448ae834284a",
+  "path": "qa-execucoes/0fe81c89eba04b5f96e2578be6b4f5bc.log",
+  "sha256": "58f7f5bac92e96f3f35f38c5d4cf71fedbab155817b171b05140499ce108588d",
+  "capturedAt": "2026-10-20T23:58:18.683008+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "script:test-arena-chase-transition.js",
+    "exitCode": 0,
+    "package": "20261020T215305-14439c977566"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 qa:single\n> node scripts/test-arena-chase-transition.js\n\nAPROVADO: vitória encadeia a fuga após o fade, derrota mantém retorno à sala, save de campanha retoma BEAR_DOWN, prévia isolada e saves antigos encerram fases atuais corretamente.\n"
+}

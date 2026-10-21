@@ -841,3 +841,109 @@ Documentação atualizada em `GUIA-PREVIA.md`, `MANUAL-TRANSICAO-VITORIA-ARENA-F
 e `ARQUITETURA.md`; regenerar `REFERENCIA-METODOS.md` ainda pendente. Sem edição
 de artes, mudança de física, commit ou push. A sessão de tela de entrada
 `20261020T201327-774153dc7d03` permanece aberta e não foi alterada.
+
+## Retomada da tela inicial e da integração arena–fuga — 20/10/2026
+
+Sessão `20261020T235555-656a0ba53ace`, a pedido do usuário para continuar o trabalho
+compartilhado de Codex e Copilot. A árvore inicial estava limpa em `fe6ef2cb`;
+a tela inicial e a transição já estavam nesse commit. Esta retomada conclui as
+pendências técnicas das sessões `20261020T201327-774153dc7d03` (Codex) e
+`20261020T214228-7726a1114289` (Copilot), sem atribuir sua implementação a esta IA.
+Seus encerramentos serão anexados com esta explicação; os eventos anteriores
+permanecem imutáveis.
+
+Tela inicial: `TitleScreen` coordena novo jogo/carregar/modo fácil/opções e
+confirmação de reinício; `TitleScene` compõe o quarto e a menina lendo, com pernas
+articuladas e respeito a movimento reduzido/visibilidade. Imagens existentes
+preservadas. Qualidade gráfica continua desabilitada, explicitamente futura.
+Prompts registram a resolução nativa do fundo, inferior ao canvas Full HD.
+
+A transição agora foi exercitada com WebGL 2 via SwiftShader em Chrome isolado, em desktop e
+móveis emulados retrato/paisagem: vitória preparada no controlador real, preto,
+entrada bloqueada durante revelação, primeira imagem em Canvas 2D, save/restore
+em BEAR_DOWN e três percursos até COMPLETE sem colisões, com chestApplied.
+Não foi uma luta humana completa nem teste físico; o percurso usa decisões
+calculadas e passos de simulação. A prévia também passou no QA de navegador
+existente, com teclado/toque, áudio, pausa e descarte zero.
+
+Corrigida falha observada na recuperação: `ui-feedback` é oculto por CSS, tornando
+invisível o erro anteriormente escrito nele. `chase-error-dialog` agora mostra a
+mensagem, recebe foco e permite voltar à sala; atalhos de teclado não atravessam
+o diálogo. O teste injeta uma falha de construção e verifica a recuperação.
+Menu exercitado em quatro formatos, teclado, modo fácil, opções e cancelamento
+de reinício; capturas do menu e da abertura inspecionadas. A primeira revisão do
+QA capturava o menu sobre a abertura por usar API direta sem fechar a tela inicial;
+a fonte foi corrigida para usar o seletor real e as capturas foram repetidas.
+Resultados antigos preservados, sem tratá-los como inspeção da abertura.
+
+Referência de métodos e mapa regenerados; arquitetura e manual atualizados.
+Mapa: 415 imagens, 99 recortes, 29 assinaturas. npm test após a correção, build/assets/lint/sintaxe/diff
+aprovados. Fontes novas de QA em `qa/retomada-20261020/fluxo-browser.js` e pacotes
+imutáveis, executadas via `journal:qa -- test:retomada:browser`. Capturas temporárias
+identificadas por caminho/hash/tamanho nos logs, descartadas após inspeção.
+Sem alteração de artes, física ou dificuldade, sem commit/push. Aceite artístico,
+avaliação humana e aparelhos físicos permanecem pendentes.
+
+
+## Jogabilidade real e auditoria NORMAL/EASY — 20/10/2026
+
+Sessão `20261021T001312-2b30929c8c01`: duas campanhas desktop completas por
+mouse/teclado nativos em tempo real, da tela inicial ao baú. Sem mutação de estado,
+teleporte, avanço manual ou rollback no percurso real; o piloto consulta estado
+e geometria, portanto não representa avaliação humana de dificuldade. Chrome
+isolado com WebGL 2 por SwiftShader, 1200×720. NORMAL e EASY terminaram a fuga sem
+impactos. EASY também verificou pausa/recarga no castelo, carregar o final,
+confirmação/cancelamento, derrota intencional/retry da arena e seis impactos até
+derrota da prévia, sem baú. Queda do quarto/voltar ao início e mudo exercitados.
+
+Quarto: EASY conserva física/velocidades e só amplia pouso lateral em 4 unidades
+e profundidade de 16 para 24; início do NORMAL já oferece janela de ~1,16 s,
+contra ~1,22 s no EASY. No retorno final, ~100 contra ~152 ms no modelo fixo.
+Há anomalia de prioridade: no salto urso→livros, saídas reais x≈269,5 pousaram
+primeiro nos livros no NORMAL, mas reapoiaram no urso no EASY. Reproduzida com
+teclado e em três passos fixos; não prova derrota inevitável, pois a menina pode
+reapoiar nos livros depois. A assistência precisa de revisão de prioridade.
+
+Arena: nenhuma diferença por modo. HP da menina 3, inimigos 3/4/4/8, IA, tempos,
+velocidades, espada, defesa, dano e cura iguais. Diagnóstico separado comparou
+4.162 pares de quadros idênticos até derrota por insistência/vitória com esquiva.
+A fada da sala usa blend 0,20 no EASY contra 0,12 no NORMAL; a perseguição tem
+3/6 vidas, imunidade 1,3/2 s, menor deriva e maior margem de reação no EASY.
+Carregar mantém dificuldade salva; o botão Modo fácil só afeta novo jogo.
+
+Pendências observadas: final da campanha ainda diz “Prévia concluída” sem saída
+clara; derrota da fuga orienta reiniciar pelo debug, sem retry próprio da campanha.
+Separar melhor os modos e rever assistência são recomendações, não mudanças
+implementadas. Nenhum arquivo de produção/balanceamento foi alterado nesta auditoria;
+alterações da retomada anterior preservadas. Falhas/correções do piloto e ajustes
+direcionais reais ficaram registrados; não atribuir seus bloqueios ao jogo.
+Testes de dificuldade, auditoria e navegador passaram. Suíte geral/build/assets
+não repetidos nesta revisão sem alteração de produção. Capturas inspecionadas e
+descartadas com metadados preservados. Sem playtest humano, aparelhos físicos,
+commit ou push. Relatório completo: `journal:show -- 1ccfd5850edd27e2e9180c6b2caa8efe707f34747e66ed2d2d4a0b42bdc1aec1`.
+
+
+## Distinção entre dificuldades e conclusão da perseguição em 20/10/2026
+
+Sessão `20261021T010045-961198342758`, por pedido explícito atual do usuário. Retirado “prévia” do seletor e do resultado da fase; o final diz “Perseguição concluída!”. Nomes técnicos `startChasePreview` e `BEAR_CHASE_PREVIEW` continuam por compatibilidade com o acesso isolado de debug, sem redefinir a fase como incompleta.
+
+Primeira fase (aproximação, fuga e retorno): EASY mantém os alcances, corrida e pouso anteriores. NORMAL corre a 2 px/quadro na aproximação, exige o centro dos pés dentro do apoio com margem de 4 px e usa tabelas próprias de alcance fixo. Sem mudar gravidade, impulso vertical, desenho/geometria dos apoios ou pausa/assistência do castelo. Não reintroduzir frenagem aérea na bailarina nem mira calculada pela posição do clique. Os três passos de tempo testados conservam saídas viáveis para os 38 apoios, com janelas menores no NORMAL.
+
+Arena: `ArenaDifficulty` mantém NORMAL original. EASY recebe alcance efetivo 30% maior, caminhada inimiga a 80%, investida a 85%, esperas/retirada/recuperação mais longas e intervalo maior entre evasões; desativa a continuação extra após acerto inimigo. HP e telegráficos dos golpes permanecem iguais. Perfil reaplicado na apresentação restaurada.
+
+Perseguição: EASY conserva exatamente os padrões anteriores. NORMAL lança três brinquedos a partir de 70% e quatro a partir de 80%. `ChasePatterns` deixa um corredor físico único, com folga para o centro da menina de 0,63 e 0,33 unidade respectivamente. Grupos densos ajustam largura/centro visual com escala uniforme, preservando proporções. Materiais dos brinquedos são reunidos por atlas com cores por vértice; isso reduziu o pico medido de 335 para 279 chamadas, sem elevar o limite de 310. Saves antigos continuam aceitos.
+
+Validação: suíte `npm test`, 24 percursos de arena, regressão de 912 trajetórias EASY e 5.254 quadros idênticos de perseguição EASY, build/66 recursos/lint, mapa de sprites e diff. Campanha NORMAL completa em 382,67 s por mouse/teclado nativos, sem escrita em estado/avanço manual/rollback, sem derrotas e sem dano na perseguição. Inspeção WebGL em três formatos e dois percursos controlados completos sem dano. São testes automatizados no Chrome; sensação humana e aparelhos físicos não foram homologados. As falhas de fixtures/contratos anteriores e o pico gráfico intermediário estão preservados no diário, com correções e resultados finais. Fontes novas em `docs/diario-ia/qa/balanceamento-20261020/`; resultado nativo: `8c4332b483cdbb9318604c08eeb6675fb31149af1a963e7f2d1c8b2f556a9f80`; visual final: `b486b4d3b5a6376345235e4eb394341ced11dfb020ae55735d71788a3212b7d5`.
+
+Pendências anteriores fora deste pedido: navegação após conclusão e retry próprio da perseguição de campanha. Nenhum commit/push nesta sessão. Alterações existentes da retomada/interface foram preservadas.
+
+
+## Revisão da pressão final da perseguição em 20/10/2026
+
+Sessão `20261021T013025-13c1559937cc`, por correção explícita do usuário após observar que quatro brinquedos ocupavam a tela. Esta orientação substitui a quantidade da seção anterior: NORMAL mantém até três brinquedos por lançamento, usando três entre 70% e 85%; nos 15% finais usa dois, a cada um segundo. EASY permanece igual.
+
+Os pares finais deixam corredor amplo (folga de pelo menos 2,38 unidades para o centro do corpo) e alternam a saída entre faixas vizinhas. Nenhum ponto parado, inclusive nas bordas, permanece seguro entre dois pares consecutivos. A entrada em 85% dispara o primeiro par e as emboscadas deixam de interromper a cadência. A distância de lançamento cresce à frente da menina quando o urso se aproxima, preservando o aviso; grupos que já não caberiam com reação antes da chegada não são gerados. Os lançamentos válidos continuam no mesmo intervalo até o último grupo, que é enfrentado perto da captura.
+
+Testes de domínio: 36 percursos, seis sementes e decisões até 400 ms, todos sem dano; oito pares finais no NORMAL, espaçados em um segundo, com aviso mínimo medido de 1,0977 s após pousar. Último grupo em 712,31/720 unidades. RNG/restauração e derrota sem desviar cobertos. EASY preserva os 5.254 quadros de uma perseguição completa comparados à fonte anterior. Suíte geral, build, 66 recursos, lint, mapa de sprites e referência de métodos passaram. Fontes atuais em `docs/diario-ia/qa/cadencia-final-20261020/`; aliases anteriores de balanceamento foram atualizados sem reescrever históricos. Resultado de navegador registrado no encerramento da sessão. Não houve alteração da arena, dos saltos ou de artes nesta revisão. Sem commit/push.
+
+Navegador desta revisão: perseguição NORMAL completa em 90,05 s reais por seletor e teclado nativos, sem dano; 27 cenas controladas em três formatos e dois percursos controlados sem dano. Pico de 282 chamadas no NORMAL e 272 no EASY, abaixo de 310. Falhas iniciais de preparação do piloto (proteção dos botões e operação do seletor) foram corrigidas somente no QA e preservadas no acervo. Capturas inspecionadas, metadados arquivados e bitmaps temporários descartados. Resultado consolidado no pacote `20261021T014052-7d2c02d7ffef`.

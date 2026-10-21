@@ -143,8 +143,11 @@ export class ChaseRenderer3D {
       const t = clamp(obstacle.age / (obstacle.flight ?? C.flight), 0, 1);
       const lateral=obstacle.fromX+(obstacle.x-obstacle.fromX)*t;
       const distance=obstacle.fromZ+(obstacle.z-obstacle.fromZ)*t;
+      // Grupos densos usam a largura real do modelo, preservando proporções e o vão visível.
+      mesh.scale.setScalar(obstacle.fitWidth ? obstacle.width / mesh.userData.visualWidth : 1);
       mesh.rotation.set(0,0,0);
-      this.placeOnRoute(mesh,distance,lateral,(1-t)*1.2+Math.sin(t*Math.PI)*1.4,true);
+      const centeredLateral = lateral - (obstacle.fitWidth ? mesh.userData.visualCenterX * mesh.scale.x : 0);
+      this.placeOnRoute(mesh,distance,centeredLateral,(1-t)*1.2+Math.sin(t*Math.PI)*1.4,true);
       mesh.visible = !obstacle.hit;
     }
     for (const [id, mesh] of this.toys) if (!live.has(id)) {

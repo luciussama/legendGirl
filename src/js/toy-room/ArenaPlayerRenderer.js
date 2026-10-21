@@ -46,12 +46,12 @@ export class ArenaPlayerRenderer {
       target.restore();
     }
     if(target!==ctx){target.restore();ctx.globalAlpha*=reaction;ctx.drawImage(this.blendCanvas,-220,-300);}
-    if(sample.slash&&state.mode==='BATTLE')this.renderSwordArc(ctx,sample);
+    if(sample.slash&&state.mode==='BATTLE')this.renderSwordArc(ctx,sample,(room.battle?.tuning.swordContactScale ?? 1.1)/1.1);
     ctx.restore();
   }
-  renderSwordArc(ctx,sample) {
+  renderSwordArc(ctx,sample,reachScale=1) {
     const {progress,alpha,crouching}=sample.slash;
-    const radius=(crouching?98:135)*1.1,cy=crouching?-35:-100;
+    const radius=(crouching?98:135)*1.1*reachScale,cy=crouching?-35:-100;
     ctx.save();ctx.scale(sample.facing,1);ctx.translate(18,cy);
     const end=(crouching?-.55:-.95)+progress*(crouching?.9:1.2),start=end-.65;
     ctx.globalAlpha*=alpha*.9;ctx.strokeStyle='#ffe9ae';ctx.lineWidth=11;

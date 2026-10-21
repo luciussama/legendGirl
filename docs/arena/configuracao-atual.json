@@ -1,11 +1,12 @@
 {
-  "revisao": "2026-10-18",
+  "revisao": "2026-10-20",
   "finalidade": "Referência documental do código; não é carregada pelo runtime e não autoriza alteração de balanceamento.",
   "fontes": [
     "src/js/toy-room/BattleConfig.js",
     "src/js/toy-room/ArenaPlayerController.js",
     "src/js/toy-room/ArenaEnemies.js",
-    "src/js/toy-room/ArenaCombatRules.js"
+    "src/js/toy-room/ArenaCombatRules.js",
+    "src/js/toy-room/ArenaDifficulty.js"
   ],
   "perfis": {
     "BATTLE_ORDER": [
@@ -155,5 +156,109 @@
     "custoCoracoes": 0,
     "animacaoQuadros": 12,
     "poses": 6
+  },
+  "dificuldades": {
+    "NORMAL": {
+      "descricao": "Perfis originais ARENA_TUNING e ARENA_ENEMIES"
+    },
+    "EASY": {
+      "tuning": {
+        "left": 160,
+        "right": 1440,
+        "ground": 690,
+        "speed": 6.2,
+        "jumpSpeed": 11,
+        "gravity": 0.32,
+        "swordRange": 271.7,
+        "swordCooldown": 36,
+        "windup": 54,
+        "active": 18,
+        "recovery": 36,
+        "immunity": 48,
+        "hitRecovery": 24,
+        "death": 60,
+        "swordContactScale": 1.4300000000000002,
+        "attackScale": 1.8,
+        "swordDuration": 18,
+        "swordWindup": 6,
+        "swordActive": 6,
+        "attackMoveScale": 0.2,
+        "recoveryMoveScale": 0.55,
+        "guardMoveScale": 0.55,
+        "blockRecovery": 48,
+        "knockbackDistance": 173.6
+      },
+      "enemies": {
+        "train": {
+          "title": "Locomotiva de Cerco",
+          "role": "cerco",
+          "hp": 3,
+          "speed": 2.4000000000000004,
+          "chargeSpeed": 5.95,
+          "color": "#e8a660",
+          "idleTime": 76.5,
+          "retreatTime": 45,
+          "recovery": 55.800000000000004,
+          "bodyWidth": 340,
+          "bodyHeight": 225,
+          "stepTime": 18,
+          "pressureChain": false
+        },
+        "robot": {
+          "title": "Sentinela de Lata",
+          "role": "sentinela",
+          "hp": 4,
+          "speed": 3.04,
+          "chargeSpeed": 6.375,
+          "color": "#73d9d4",
+          "idleTime": 51,
+          "retreatTime": 36,
+          "recovery": 49.6,
+          "evadeSpeed": 14,
+          "evadeTime": 8,
+          "evadeCooldown": 240,
+          "bodyWidth": 140,
+          "bodyHeight": 250,
+          "stepTime": 16,
+          "pressureChain": false
+        },
+        "dinosaur": {
+          "title": "Dragão de Brinquedo",
+          "role": "dragao",
+          "hp": 4,
+          "speed": 3.84,
+          "chargeSpeed": 6.969999999999999,
+          "color": "#9bcf75",
+          "idleTime": 34,
+          "retreatTime": 27,
+          "recovery": 43.4,
+          "evadeSpeed": 11.5,
+          "evadeTime": 8,
+          "evadeCooldown": 192,
+          "bodyWidth": 250,
+          "bodyHeight": 250,
+          "stepTime": 12,
+          "pressureChain": false
+        },
+        "bear": {
+          "title": "Guardião de Pelúcia",
+          "role": "guardiao",
+          "hp": 8,
+          "speed": 4.32,
+          "chargeSpeed": 7.6499999999999995,
+          "color": "#f3cf8b",
+          "idleTime": 20.4,
+          "retreatTime": 21,
+          "recovery": 37.2,
+          "evadeSpeed": 12.5,
+          "evadeTime": 8,
+          "evadeCooldown": 152,
+          "bodyWidth": 235,
+          "bodyHeight": 325,
+          "stepTime": 14,
+          "pressureChain": false
+        }
+      }
+    }
   }
 }

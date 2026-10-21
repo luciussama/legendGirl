@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T002531-f8f2e19f128a",
+  "date": "2026-10-21T00:25:31.718747+00:00",
+  "title": "Reprodução do pouso EASY com teclado real e saída no mesmo intervalo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js",
+      "sourceId": "a566242e3cea90d04fbe1c906ba7b532ccf0c0480937f6f21a45f03532c2fa3a",
+      "sha256": "1b398159928c0677f784e877f283d9c9f0cc200988bfc870a42b3e097b763a18",
+      "bytes": 4654,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jogabilidade:pouso:browser": "node docs/diario-ia/qa/jogabilidade-real-20261020/pouso-browser.js"
+  }
+}

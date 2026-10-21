@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a765d78efd553694b2bfe389b4439a99bf06c75e1bc110149e14c21c0ad053f4",
+  "path": "docs/diario-ia/qa/jogabilidade-real-20261020/seletor-previa-browser.js",
+  "sha256": "39c88e317c1a77a551b993fa3bf3a851e1e8cee66f637940d5cd22c05d21ede6",
+  "capturedAt": "2026-10-21T00:39:29.090404+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "// Ajuste do piloto em execução usando exclusivamente teclas reais, sem alterar o estado da campanha.\nconst pages=await(await fetch('http://127.0.0.1:9222/json')).json();const page=pages.find(p=>p.type==='page'&&p.url.includes('127.0.0.1'));\nconst ws=new WebSocket(page.webSocketDebuggerUrl);await new Promise(r=>ws.onopen=r);let id=0;const calls=new Map();ws.onmessage=({data})=>{const m=JSON.parse(data);if(calls.has(m.id)){calls.get(m.id)(m.result);calls.delete(m.id)}};\nconst send=(method,params)=>new Promise(resolve=>{calls.set(++id,resolve);ws.send(JSON.stringify({id,method,params}))});\nconst evaluate=async expression=>(await send('Runtime.evaluate',{expression,returnByValue:true})).result.value;\nconst keys=new Set();\ntry{\n console.log('ANTES',await evaluate('JSON.stringify({focused:document.activeElement.id,value:document.querySelector(\"#debug-phase-select\").value})'));\n await send('Input.dispatchKeyEvent',{type:'char',key:'p',text:'p',unmodifiedText:'p',code:'KeyP',windowsVirtualKeyCode:80});\n await new Promise(r=>setTimeout(r,1500));\n console.log('DEPOIS',await evaluate('JSON.stringify({phase:game.state.toyRoomInstance?.instance.gameplayState,campaign:game.state.toyRoomInstance?.instance.chase?.campaign,stage:game.state.toyRoomInstance?.instance.chase?.state.stage})'));\n}finally{ws.close()}\n"
+}
