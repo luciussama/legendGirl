@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "3fa6537017b34b9fb9d2e4accf099ed2",
+  "date": "2026-10-22T14:36:37.023081+00:00",
+  "title": "QA temporário: test:saltos:progressao",
+  "files": [
+    {
+      "path": "qa-execucoes/3fa6537017b34b9fb9d2e4accf099ed2.log",
+      "sourceId": "89c261534a973160a1225846fdd501ede0de8f41f6dd4640a20473c4c85493c3",
+      "sha256": "4c028401456da1f10c17c7f1427a8b1fb5a12aa698f15c56cf5475414e06a68d",
+      "bytes": 29157,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Documentação do aplicativo
 
-Revisão: 21/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
+Revisão: 22/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
 
 | Entrada | Conteúdo |
 | --- | --- |
@@ -23,7 +23,7 @@ Revisão: 21/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 
 ## Design inicial e origem das artes
 
-[Regras de batalha](battle-mode/battle-mode-rules.md), [inimigos](battle-mode/toy-enemy-design.md), [Urso](battle-mode/bear-final-boss-design.md) e seus JSONs preservam os prompts iniciais. Seus cabeçalhos/metadados indicam a versão histórica e remetem à arena atual; valores originais e pendências não são configuração de runtime. O diagrama dessa pasta é conceitual. Planos de refatoração antigos são consultáveis pelo diário, sem se passar por módulos implementados.
+O design inicial de batalha, seus três JSONs e o diagrama conceitual foram consolidados integralmente no [diário de IA](diario-ia/README.md). Consulte `npm run journal:search -- "battle-mode-rules.md"` ou o nome original; o pacote `documentacao-20261022-d61a324b2364` conserva também o bitmap do diagrama. A configuração vigente fica no guia da arena. O guia de produção de sprites continua disponível por orientar os recursos atuais.
 
 As pastas de arte mantêm guias de origem: [personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md), [abertura](../assets/art/dark-room/opening/README.md), [arte complementar](../assets/art/dark-room/modern/README.md), Toy Room [stage1](../assets/art/toy-room/stage1/README.md)/[stage2](../assets/art/toy-room/stage2/README.md)/[stage3](../assets/art/toy-room/stage3/README.md) e [poses de dano](../assets/art/toy-room/battle/damage-v2/README.md). Prompts/manifestos junto às imagens descrevem origem e recortes, não novas regras físicas.
 

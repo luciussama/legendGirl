@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b08246cc9e9959099a6f3fb746b7456e2d9ab8d3c52c165b3ff397026b533955",
+  "path": "qa-execucoes/019b31f9c1c34334a307ee4d2f1b47c2.log",
+  "sha256": "2936497b62e3c0b7a1af9fe1e02cde5e93d723c94c0f05feca0e535ca4d25c93",
+  "capturedAt": "2026-10-22T14:22:40.532862+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:fuga:carregamento:browser",
+    "exitCode": 0,
+    "package": "20261022T142224-8ac537f47cc7"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:fuga:carregamento:browser\n> node docs/diario-ia/qa/carregamento-fuga-20261022/navegador.mjs\n\nCARREGAMENTO RETIDO {\"stage\":\"GIRL_APPROACH\",\"age\":3.5833333333333255,\"time\":4.783333333333322,\"ready\":false,\"introReady\":true,\"mapBuilt\":false}\nARRANCADA PRONTA {\"rgb\":[162.75,105.25,34.25],\"floorMode\":\"mipmaps\",\"textures\":15,\"error\":0}\nRECUPERAÇÃO DO PISO {\"mode\":\"linear\",\"calls\":3,\"textures\":15}\nFALHAS VISUAIS [{\"kind\":\"piso\",\"ready\":false,\"error\":\"Não foi possível preparar a abertura ilustrada e o cenário 3D. Verifique a conexão e o suporte a WebGL 2.\"},{\"kind\":\"atlas\",\"ready\":false,\"error\":\"Não foi possível preparar a abertura ilustrada e o cenário 3D. Verifique a conexão e o suporte a WebGL 2.\"}]\nAPROVADO: abertura obrigatória cobre carregamento, piso validado na GPU, alternativa linear e falhas impedem corrida.\n"
+}

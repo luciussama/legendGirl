@@ -29,6 +29,7 @@ export function updateArenaSpecial(battle, dt) {
   special.elapsed = Math.min(ARENA_SPECIAL.duration, special.elapsed + dt);
   battle.room.player.isMoving = false;
   if (previous < ARENA_SPECIAL.pullback && special.elapsed >= ARENA_SPECIAL.pullback) battle.playCombatSound('player_attack');
+  if (previous < ARENA_SPECIAL.launch && special.elapsed >= ARENA_SPECIAL.launch) battle.playCombatSound('player_special');
   if (!special.impacted && special.elapsed >= ARENA_SPECIAL.impact) {
     special.impacted = true;
     const e = s.enemy, before = e.hp;

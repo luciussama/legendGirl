@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b3f6b8a35e47222b46c7c90abe703b0aefd36929f95245ef7e71e4019f9b13e6",
+  "path": "qa-execucoes/65f7805130aa467c92a6584456f1ee75.log",
+  "sha256": "8a075c9270d6669749120cbf86a96cf4ec654aa4af5ff88933e69dee17dbfb74",
+  "capturedAt": "2026-10-22T14:03:43.246693+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:defesa:estacionaria:browser",
+    "exitCode": 0,
+    "package": "20261022T140319-117ddf45bd64"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:defesa:estacionaria:browser\n> node docs/diario-ia/qa/defesa-estacionaria-browser.mjs\n\n[{\"label\":\"1. Caminhando para trás\",\"x\":606.5999999999997,\"pose\":\"run\",\"moving\":true,\"guard\":false},{\"label\":\"2. Base firme em defesa\",\"x\":606.5999999999997,\"pose\":\"guard\",\"moving\":false,\"guard\":true},{\"label\":\"3. Caminhando novamente\",\"x\":563.1999999999994,\"pose\":\"run\",\"moving\":true,\"guard\":false}]\n"
+}

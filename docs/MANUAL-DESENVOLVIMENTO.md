@@ -67,7 +67,7 @@ Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist 
 | [Personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md) | Origem imutável, recortes e regras de animação. |
 | [Arte complementar](../assets/art/dark-room/modern/README.md) | Recursos ilustrados e calibração de apoios. |
 | [Abertura](../assets/art/dark-room/opening/README.md) | Atlas narrativo, tempo e persistência da sequência. |
-| [Arena atual](arena/GUIA-ARENA.md) / [design inicial](battle-mode/battle-mode-rules.md) | Implementação vigente e diferenças explícitas para o projeto original/combate legado. |
+| [Arena atual](arena/GUIA-ARENA.md) / [design inicial no diário](diario-ia/README.md) | Implementação vigente e diferenças explícitas para o projeto original/combate legado. |
 
 Comentários, documentação, interface e diagnósticos novos são escritos em português do Brasil. Preserve nomes de APIs, identificadores, comandos e caminhos. Não traduza dependências nem registros históricos externos.
 
@@ -295,17 +295,17 @@ Móveis e brinquedos iniciais estão no construtor da fase; não procure todo o 
 
 ### Modo de batalha da Toy Room — design oficial
 
-O design inicial está preservado em [battle-mode-rules](battle-mode/battle-mode-rules.md) e nas três especificações JSON dessa pasta. Ele não é a configuração carregada pelo runtime: descreve câmera fixa, 2 HP por inimigo comum e 4 para o Urso, além de decisões pendentes na época. Não converter esses `null` em defaults ou interpretar seu antigo escopo “design apenas” como proibição vigente de código já autorizado.
+O design inicial está preservado em `battle-mode-rules.md` no [diário de IA](diario-ia/README.md) e nas três especificações JSON arquivadas no mesmo acervo. Ele não é a configuração carregada pelo runtime: descreve câmera fixa, 2 HP por inimigo comum e 4 para o Urso, além de decisões pendentes na época. Não converter esses `null` em defaults ou interpretar seu antigo escopo “design apenas” como proibição vigente de código já autorizado.
 
 A [arena implementada](arena/GUIA-ARENA.md) usa `ToyRoomArenaPhase`, `ARENA_TUNING`, `ARENA_ENEMIES`, `ArenaCombatRules`, IA, contato, câmera e apresentação próprios. A menina começa com 3 HP; Trem/Robô/Dinossauro/Urso têm 3/4/4/8. `ToyRoomBattle` conserva um perfil legado com 2/2/2/4 e tuning próprio; não confundir os perfis. Roubo de 1 coração por acerto válido e descarte de cura excedente continuam compartilhados. Bloqueio não transfere vida.
 
 ### Inimigos da Toy Room — design oficial
 
-Trem: `Steam Blast`/`Front Charge`; Robô: `Laser Beam`/`Rocket Punch`; Dinossauro: `Bite`/`Rush`. O [catálogo inicial](battle-mode/toy-enemy-design.md) conserva a origem do repertório. A implementação define alcance, preparação, recuperação, corpos sólidos, evasão, memória curta e escolha determinística em módulos de combate; esses parâmetros não estão pendentes no runtime. O Trem mantém sequência introdutória; os seguintes reagem à antecipação da espada e oferecem janelas de contra-ataque.
+Trem: `Steam Blast`/`Front Charge`; Robô: `Laser Beam`/`Rocket Punch`; Dinossauro: `Bite`/`Rush`. O catálogo inicial `toy-enemy-design.md` no diário conserva a origem do repertório. A implementação define alcance, preparação, recuperação, corpos sólidos, evasão, memória curta e escolha determinística em módulos de combate; esses parâmetros não estão pendentes no runtime. O Trem mantém sequência introdutória; os seguintes reagem à antecipação da espada e oferecem janelas de contra-ataque.
 
 ### Urso, chefe final — design oficial
 
-O [design inicial](battle-mode/bear-final-boss-design.md) define o repertório exclusivo: `Bear Hug`, `Belly Charge`, `Toy Leap`. A arena atual tem 8 HP, introdução própria e fúria a partir de metade da vida, mantida após cura; o perfil legado conserva gatilho de último coração e máximo 4. `ArenaBoss`, `ToyRoomBattle` e `ArenaEnemyAI` definem a evolução atual. Nenhum desses documentos autoriza criar golpes novos ou alterar o balanceamento por uma revisão documental.
+O design inicial `bear-final-boss-design.md` no diário define o repertório exclusivo: `Bear Hug`, `Belly Charge`, `Toy Leap`. A arena atual tem 8 HP, introdução própria e fúria a partir de metade da vida, mantida após cura; o perfil legado conserva gatilho de último coração e máximo 4. `ArenaBoss`, `ToyRoomBattle` e `ArenaEnemyAI` definem a evolução atual. Nenhum desses documentos autoriza criar golpes novos ou alterar o balanceamento por uma revisão documental.
 
 ## Implementações atuais e fronteiras
 
@@ -547,11 +547,11 @@ A regressão específica `journal:qa -- test:pousos:retorno` substitui a expecta
 
 ## Tela inicial e fuga de campanha
 
-`TitleScreen` recebe callbacks de `main.js`: Novo jogo confirma a substituição quando há campanha; Carregar depende da existência de progresso; Modo fácil define somente a nova aventura. Carregar respeita a dificuldade salva. A opção de qualidade automática está desabilitada. `TitleScene` mantém canvas e RAF próprios, interrompidos quando menu/aba ficam ocultos, com resize e preferência de movimento reduzido. Fontes e resolução nativa estão em `assets/art/title-screen/prompts.json`.
+`TitleScreen` recebe callbacks de `main.js`: Novo jogo confirma a substituição quando há campanha; Carregar depende da existência de progresso; Modo fácil define somente a nova aventura. Carregar respeita a dificuldade salva. A opção de qualidade automática está desabilitada. `TitleScene` mantém canvas e RAF próprios, interrompidos quando menu/aba ficam ocultos, com resize e preferência de movimento reduzido. Fontes e resolução nativa estão em `assets/art/title-screen/prompts.json`. `TITLE_SCENE_LAYOUT` mantém poltrona e quarto nas mesmas coordenadas 1920×1080; `titleSceneFrame` aplica uma câmera única e aproxima o foco da menina no retrato. Não redimensionar a poltrona separadamente do tapete.
 
-A vitória sobre o urso aguarda a apresentação da batalha e usa o destino `CHASE` de `ToyRoomArenaPhase`. O fade de 30 quadros oculta `restoreReality({resumeAudio:false})`, que registra `arenaCompleted` e organiza os brinquedos nos dados. A cena da sala não é apresentada entre arena e fuga. A ida visual do urso ao baú pertence ao final de `ChaseSimulation`. Retornos legados para `ROOM` mantêm seu caminho anterior. Consulte o [contrato da transição](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
+O último golpe que zera os corações do Urso inicia imediatamente o destino `CHASE` de `ToyRoomArenaPhase`. O fade de 30 quadros oculta `restoreReality({resumeAudio:false})`, que registra `arenaCompleted` e organiza os brinquedos nos dados. A cena da sala não é apresentada entre arena e fuga. A ida visual do urso ao baú pertence ao final de `ChaseSimulation`. Retornos legados para `ROOM` mantêm seu caminho anterior. Consulte o [contrato da transição](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
 
-`ToyRoomPhase.startChaseCampaign()` prepara `BearChasePhase` e remove entradas da sala; o caminho `startChasePreview()` permanece exclusivo do debug. Falha de preparação descarta a fase parcial, devolve a sala e apresenta `chase-error-dialog`, com ação “Voltar à sala”. Recursos prontos são condição para revelar a cena. A revelação dura 0,4 s e ainda bloqueia entradas/simulação.
+`ToyRoomPhase.startChaseCampaign()` prepara `BearChasePhase` e remove entradas da sala; o caminho `startChasePreview()` permanece exclusivo do debug. Falha de preparação descarta a fase parcial, devolve a sala e apresenta `chase-error-dialog`, com ação “Voltar à sala”. As artes ilustradas prontas permitem revelar a abertura em 0,4 s, ainda com entradas/simulação bloqueadas nesse intervalo. O 3D carrega durante a atuação obrigatória. `introReady` permite a introdução; `ready` exige decodificação, validação do piso na GPU, envio das texturas e compilação dos materiais. A menina aguarda junto ao urso caído se faltar recurso; só depois ele levanta e começa a corrida. Saves já na corrida aguardam a mesma prontidão, sem avançar o domínio.
 
 A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legado por acumulador. Renderer, áudio, HUD e entrada consomem estado e eventos; não decidem dano. O [guia da fuga](bear-chase/GUIA-PREVIA.md) documenta sequência, vidas, ritmo, materiais, WebGL 2 e descarte. O catálogo completo dos módulos está na arquitetura.
 
@@ -559,10 +559,16 @@ A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legad
 
 COMPLETE ainda conserva a fase ativa e não oferece navegação final própria. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
 
-A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.
+A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. `prepareFloor` confere uma amostragem 8×8 na GPU e tenta a mesma arte com filtro linear sem mipmaps se necessário; falha definitiva impede arrancada. `prepareVisualResources` envia os mapas e aguarda compilação dos materiais. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.
 
 ### Derrotas e mudança assistida de dificuldade
 
 A contagem persistente da campanha soma derrotas completas do quarto, arena e perseguição. `CampaignDefeats.recordCampaignDefeat` usa `defeatPending` para não duplicar por quadro ou recarga. No NORMAL, cada terceira derrota define `easyOfferPending`; o coordenador publica `onGameOver({phase,offerEasy})` e main abre `easy-mode-dialog`, com a pergunta “deseja tentar no fácil?”. Não/sair com Escape conserva NORMAL e a tentativa encerrada. Sim chama `continueOnEasy`, aplica o perfil às instâncias atuais, recupera a tentativa e salva. Não oferecer ajuda novamente no EASY. Nova campanha reinicializa o contador; novas perdas após uma recusa acumulam até a próxima terceira derrota.
 
 A ajuda mantém a seção: checkpoint existente nas plataformas, adversário/HP inimigo atual na arena e distância/posição na perseguição. Recupera HP/vidas e imunidade de retomada; não reinicia a campanha. Um retry comum mantém a dificuldade e os pontos de reinício anteriores; na fuga, reinicia sua abertura. Novos campos ausentes em saves antigos recebem defaults; valores inválidos continuam rejeitados. O domínio e o fluxo real de interface são verificados por `test:campaign:defeats` e `journal:qa -- test:campaign:defeats:browser`.
+
+### Efeitos gravados e defesa da arena
+
+`ArenaSoundEffects` carrega os dez MP3s de `assets/audio/arena/` no desbloqueio de áudio, decodifica uma vez e encaminha as amostras ao ganho mestre de `audio.js`. Os eventos existentes selecionam ataque/bloqueio da menina, mecanismos e ofensivas por inimigo; `player_special` é emitido uma vez no lançamento do raio, no quadro 94. Pontos de início compensam silêncio e trechos com fade limitam caudas. Reação/troca de inimigo, pausa, mudo, limpeza e saída encerram fontes; o mecanismo do Robô não reinicia enquanto toca. Enquanto uma amostra não estiver disponível, a síntese existente cobre o evento sem reprodução atrasada. Não serializar buffers ou fontes. Iniciar a música de uma fase libera a pausa da fase anterior.
+
+`PlayerController` mantém a menina voltada para o inimigo enquanto recua com caminhada animada. Na preparação e janela ofensiva inimiga, manter a direção para trás no chão ativa guarda e firma a base. `arenaEnemyImpactEnd` determina a liberação; a caminhada retoma imediatamente na recuperação do inimigo. `ArenaPlayerAnimation` remove a pose residual ao andar. A separação dos corpos detém a investida na superfície do corpo defendendo quando cabe nos limites; não altera dimensões das hitboxes. Saltar, agachar, atacar ou sofrer dano conserva prioridade. O guia da arena mapeia arquivos e regras; os novos comandos de QA estão em COMANDOS.

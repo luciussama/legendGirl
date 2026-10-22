@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T134042-c218ef38d7f4-fim",
+  "sessionId": "20261022T134042-c218ef38d7f4",
+  "type": "fim",
+  "date": "2026-10-22T13:46:01.217787+00:00",
+  "title": "Integrar efeitos sonoros por personagem nas lutas da arena",
+  "actor": "Codex",
+  "summary": "Integrados os dez MP3s fornecidos pelo usuário aos eventos da arena por ArenaSoundEffects, no ganho mestre compartilhado. Pontos de início e trechos com fade preservam originais e alinham sons aos gestos; buzina exigiu offset de 1,26 s pelo silêncio inicial medido. Limites por canal, interrupção por dano/transição/mudo/pausa/saída e fallback para síntese existente. Especial ganha evento único player_special no lançamento (quadro 94), preservando restore. Início de música libera pausa anterior da abertura. Guia/contexto/comandos atualizados; novos testes arquivados e cópias físicas retiradas após conferir hashes. Sem commit ou push.",
+  "checks": [
+    "npm test completo final: aprovado, incluindo test:arena:sons e 64 cenários do especial",
+    "test:arena:sons: nove ataques encaminhados e especial único com dt variável e restore aprovados",
+    "test:arena:sons:browser final: dez MP3s decodificados; 13 eventos renderizados offline com pico individual entre 0,092 e 0,629; ganho mestre 0/0,25/1 proporcional; API pública, deduplicação, mudo, pausa, retomada após abertura, interrupção e liberação aprovados em Chrome isolado e servidor temporário",
+    "Build, lint, 66 recursos do manifesto, sintaxe dos três módulos alterados/adicionado e git diff --check aprovados",
+    "Falhas intermediárias: afconvert não aceitou conversão local; análise realizada por Web Audio no Chrome. Sandbox bloqueou primeiro servidor de QA; execução autorizada posterior concluída. Primeira renderização da buzina sem sinal expôs silêncio inicial, corrigido pelo offset e revalidado. Histórico preservado."
+  ],
+  "pending": [
+    "Escuta humana da mixagem em jogo e homologação em Safari/hardware físico não realizadas; validação automática não declara aprovação auditiva."
+  ],
+  "files": [
+    "src/js/toy-room/ArenaSoundEffects.js",
+    "src/js/audio.js",
+    "src/js/toy-room/ArenaSpecialAttack.js",
+    "assets/audio/arena",
+    "package.json",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/COMANDOS.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -57,7 +57,7 @@
       "recoveryMoveScale": 0.55,
       "blockRecovery": 48,
       "knockbackDistance": 173.6,
-      "guardMoveScale": 0.55
+      "guardMoveScale": 0
     },
     "ARENA_ENEMIES": {
       "train": {
@@ -185,7 +185,7 @@
         "swordActive": 6,
         "attackMoveScale": 0.2,
         "recoveryMoveScale": 0.55,
-        "guardMoveScale": 0.55,
+        "guardMoveScale": 0,
         "blockRecovery": 48,
         "knockbackDistance": 173.6
       },

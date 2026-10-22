@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "cbd67a1c5f0cb60aa40a3e414cabbf4a63c139cd96eae9b95a5368b080ae9852",
+  "path": "qa-execucoes/be883a746ecc49899609b63cd30d1413/docs/diario-ia/qa-resultados/carregamento-fuga/corrida-390x844.png",
+  "sha256": "1fc4b95d128d805e799005a57e882db20cecf84bf054f9d2f4a0e721f7bacbd7",
+  "capturedAt": "2026-10-22T14:24:54.781850+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:fuga:carregamento:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/carregamento-fuga/corrida-390x844.png\", \"sha256\": \"de612e256372afad0161c15b07cc3b1465be691920403e593a86e2d469db9ce4\", \"bytes\": 374188, \"binaryRetained\": false}"
+}

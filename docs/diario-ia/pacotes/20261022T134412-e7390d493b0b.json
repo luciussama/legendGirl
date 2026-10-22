@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T134412-e7390d493b0b",
+  "date": "2026-10-22T13:44:12.401635+00:00",
+  "title": "Regressões finais de eventos e mixer dos efeitos da arena",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/sons-arena-20261022/eventos.mjs",
+      "sourceId": "da039750fb2f828c632f61fe10feae7d4d27c666627f664ea47cf1eb71bf5a81",
+      "sha256": "707503b13b9234274f316ea3d5be4eacd526ea8ff6848724fc9e94bd81dbedcb",
+      "bytes": 2404,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/sons-arena-20261022/navegador.mjs",
+      "sourceId": "0694b53d3935a0d147db5f8aa817b403d04ad34c9b4781d10b61bc62752d0ddf",
+      "sha256": "12369bc713343026089d9cc1b1f5f9baacdf74aac94c7ab5af50fe64d8d24eb6",
+      "bytes": 5996,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:sons": "node docs/diario-ia/qa/sons-arena-20261022/eventos.mjs",
+    "test:arena:sons:browser": "node docs/diario-ia/qa/sons-arena-20261022/navegador.mjs"
+  }
+}

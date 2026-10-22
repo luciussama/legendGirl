@@ -1,6 +1,6 @@
 # Guia da arena imaginária
 
-Revisão: 21/10/2026. Esta é a descrição do runtime atual. O [design inicial](../battle-mode/battle-mode-rules.md) e seus JSONs preservam a concepção anterior; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
+Revisão: 22/10/2026. Esta é a descrição do runtime atual. O design inicial e seus JSONs foram preservados integralmente no [diário de IA](../diario-ia/README.md), pesquisáveis pelos nomes originais; não são a configuração de execução. Para o conjunto do aplicativo, consulte [ARQUITETURA](../ARQUITETURA.md).
 
 O fluxo é exploração, espada, transformação, arena heroica, combate e fuga após a vitória. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
 
@@ -44,7 +44,7 @@ A ordem é Trem → Robô → Dinossauro → Urso, um por vez. O eixo é horizon
 
 ## Entrada e estado
 
-A menina acompanha o lado do inimigo e mantém o rosto voltado para ele, inclusive ao recuar ou atravessá-lo por cima. Segurar a direção oposta ao inimigo no chão ativa defesa com espada e permite recuar a 55% da velocidade. A defesa bloqueia os golpes existentes sem retirar ou transferir corações; cada golpe produz um único efeito de bloqueio e segue para sua recuperação. Atacar, saltar, agachar ou receber dano interrompe a defesa. Não há defesa aérea.
+A menina acompanha o lado do inimigo e mantém o rosto voltado para ele, inclusive ao recuar ou atravessá-lo por cima. Segurar a direção oposta ao inimigo permite caminhar para trás na velocidade normal, com os pés animados. Quando o inimigo inicia um golpe, manter essa direção no chão firma a base e ergue a defesa com espada, sem deslocamento durante a preparação e a janela ofensiva. Ao começar a recuperação do inimigo, ela volta a caminhar se a direção continuar pressionada. Investidas não arrastam a base da defesa quando há espaço para separar os corpos nos limites da arena. A defesa bloqueia os golpes existentes sem retirar ou transferir corações; cada golpe produz um único efeito de bloqueio e segue para sua recuperação. Atacar, saltar, agachar ou receber dano interrompe a defesa. Não há defesa aérea.
 
 Teclado: A/D ou esquerda/direita andam; W/cima pula; S/baixo agacha; E/Espaço/Enter/F ataca. No gamepad padrão da arena, o D-pad fornece direção, A também pula e X ataca; o analógico continua sendo movimento da exploração. No touch, o direcional fixo em cruz calculado por MobileUILayout aceita arraste analógico em oito direções, com zona morta central. As diagonais superiores combinam salto e deslocamento para frente ou para trás; as inferiores combinam direção e agachamento. O centro desenhado não acompanha o dedo. Espada aceita um segundo toque simultâneo. Soltar, cancelar, perder a captura do ponteiro ou mudar a orientação libera as direções. O especial usa R no teclado, Y no gamepad e o botão ESPECIAL no touch. O HUD indica disponibilidade e consumo.
 
@@ -74,7 +74,18 @@ O ponto de transporte dos brinquedos vem do baú do layout, por `presentation.tr
 
 A entrada captura a sala com `snapshot({includeArena:false})`. O save da arena inclui versão, state, exploration, camera, fx, audio e boss; a batalha é salva no pacote da sala. No retorno, `restore(exploration,{preserveArena:true})` evita recursão. Vitória marca os brinquedos organizados, interrompe a recorrência e registra arenaCompleted. Saves antigos sem arena recebem a adaptação existente com ponto seguro de retorno. Não serializar imagens, nós de áudio, controllers ou callbacks.
 
-A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reinício na transformação/combate. Intensidade passa a 1,2 e 1,4; a percussão procedural se soma à trilha. Ao restaurar a realidade, volta a 1. O destino ROOM retoma o fluxo da sala; CHASE mantém esse áudio suspenso e entrega a trilha ao proprietário da fuga. Ganho mestre, mudo, pausa e foco continuam válidos. Reações, passos/motor e espada têm módulos de síntese próprios e liberação das vozes.
+A música `Circular Dissonance (1).mp3`, iniciada na espada, continua sem reinício na transformação/combate. Intensidade passa a 1,2 e 1,4; a percussão procedural se soma à trilha. Ao restaurar a realidade, volta a 1. O destino ROOM retoma o fluxo da sala; CHASE mantém esse áudio suspenso e entrega a trilha ao proprietário da fuga. Ganho mestre, mudo, pausa e foco continuam válidos. Reações, passos/motor e impactos sem arquivo correspondente conservam os módulos de síntese e a liberação das vozes. `ArenaSoundEffects` reproduz os MP3s fornecidos em `assets/audio/arena/` no ganho mestre compartilhado. O carregamento começa no desbloqueio do áudio; enquanto uma amostra estiver indisponível, vale a síntese existente, sem reproduzir eventos atrasados. Mudo, pausa, limpeza de sons e saída da arena interrompem as amostras.
+
+| Ação | Arquivo |
+| --- | --- |
+| Corte e bloqueio da espada | `girl attack.mp3`, `girl defence.mp3` |
+| Lançamento do raio (quadro 94) | `girl special attack.mp3` |
+| Investida e vapor do Trem | `train horn.mp3`, `train steam attack.mp3` |
+| Movimento, laser e soco do Robô | `robot noises.mp3`, `robot laser attack.mp3`, `robot punch.mp3` |
+| Mordida e corrida do Dinossauro | `dinossaur attack.mp3` |
+| Abraço, investida e salto do Urso | `bear attack.mp3` |
+
+Os arquivos originais são preservados. Pontos de início removem o silêncio inicial e trechos com saída suave limitam as caudas ao gesto. Ataques substituem a voz anterior do mesmo personagem; o ruído do Robô não reinicia enquanto o trecho anterior estiver tocando. Dano e troca de inimigo encerram suas caudas. O evento `player_special` acontece apenas ao cruzar o lançamento na simulação, inclusive após restore, sem serializar buffers ou fontes.
 
 ## Fronteiras de integração e manutenção
 

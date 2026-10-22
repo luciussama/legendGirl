@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 416,
+    "files": 415,
     "regions": 99,
     "code": 29
   },
@@ -9031,7 +9031,7 @@
       "references": [
         {
           "file": "src/js/toy-room/ArenaSpecialAttack.js",
-          "line": 125,
+          "line": 126,
           "type": "runtime",
           "alias": null
         }
@@ -14159,7 +14159,7 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 108,
+          "line": 158,
           "type": "runtime",
           "alias": null
         }
@@ -14342,7 +14342,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 110,
+          "line": 160,
           "type": "runtime",
           "alias": null
         },
@@ -14428,7 +14428,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 111,
+          "line": 161,
           "type": "runtime",
           "alias": null
         },
@@ -14477,7 +14477,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 110,
+          "line": 160,
           "type": "runtime",
           "alias": null
         },
@@ -14520,7 +14520,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 111,
+          "line": 161,
           "type": "runtime",
           "alias": null
         },
@@ -14633,7 +14633,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 113,
+          "line": 163,
           "type": "runtime",
           "alias": null
         },
@@ -14756,7 +14756,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 113,
+          "line": 163,
           "type": "runtime",
           "alias": null
         },
@@ -14881,7 +14881,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 112,
+          "line": 162,
           "type": "runtime",
           "alias": null
         },
@@ -14936,7 +14936,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 112,
+          "line": 162,
           "type": "runtime",
           "alias": null
         },
@@ -15154,22 +15154,6 @@
       ],
       "hints": [],
       "family": "assets/art/toy-room"
-    },
-    {
-      "id": "6e9854dd64c3058bab4601a2",
-      "kind": "file",
-      "path": "docs/battle-mode/battle-flow-diagram.png",
-      "title": "battle-flow-diagram.png",
-      "format": "png",
-      "width": 1400,
-      "height": 1630,
-      "bytes": 228743,
-      "sha256": "0d1e2ff390dd53cd27f066d0a20787e58413c79f91952ddad81d7cba72802cbf",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
-      "hints": [],
-      "family": "docs/battle-mode"
     },
     {
       "id": "235213a3890ef5d0b13e1828",

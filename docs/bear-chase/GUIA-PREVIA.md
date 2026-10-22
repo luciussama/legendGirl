@@ -90,7 +90,7 @@ Os grupos densos recebem escala uniforme e centro visual alinhado à colisão, s
 `createGame.startDebugPhase('bear-chase')` usa o isolamento de campanha do seletor.
 `BearChasePhase.snapshot/restore` preserva dados da perseguição; o acesso isolado de debug não grava
 esses dados no save de campanha. A vitória da arena usa `startChaseCampaign()` como
-fluxo distinto: escurece a tela, prepara os recursos antes de revelar a abertura e
+fluxo distinto: escurece a tela, prepara as artes ilustradas antes de revelar a abertura e carrega o cenário 3D durante a atuação e
 salva/restaura a etapa da fuga junto à campanha. Saves antigos sem esse campo
 continuam válidos.
 
@@ -292,12 +292,12 @@ conforto do balanço continua distinta dos percursos automatizados.
 
 ## Piso de madeira e envio à GPU
 
-A corrida usa o recorte de madeira 186×48 em (27,151) da prancha existente `environment-sheet.png`. `ChaseRenderer3D.floorTexture` prepara uma cópia temporária 256×64, com a mesma cobertura UV e repetição 9×2. A textura é enviada como bytes RGBA com uma cadeia completa de reduções até 1×1, sem geração de mipmaps no driver. As linhas são invertidas explicitamente para conservar a orientação da textura anterior. Essa preparação ocorre somente no carregamento e o recurso pertence ao descarte do renderer.
+A corrida usa o recorte de madeira 186×48 em (27,151) da prancha existente `environment-sheet.png`. `ChaseRenderer3D.floorTexture` prepara uma cópia temporária 256×64, com a mesma cobertura UV e repetição 9×2. A textura é enviada como bytes RGBA com uma cadeia completa de reduções até 1×1, sem geração de mipmaps no driver. As linhas são invertidas explicitamente para conservar a orientação da textura anterior. Essa preparação ocorre somente no carregamento e o recurso pertence ao descarte do renderer. Antes de construir a sala, um passe pequeno fora da tela confirma que a GPU amostra a madeira. Se a cadeia de mipmaps não produzir sinal válido, o renderer tenta a mesma cópia da arte como CanvasTexture, com filtro linear e sem mipmaps/anisotropia. A alternativa também precisa passar pela leitura da GPU; caso contrário, a preparação falha explicitamente. Todos os mapas são decodificados, enviados à GPU e os materiais são compilados antes de `ready`.
 
 A mudança é de compatibilidade do envio da textura. O arquivo de arte, as tábuas no mundo, o material receptor de luz, as sombras e a simulação continuam com os mesmos contratos. Não usar um piso sem iluminação para disfarçar falhas de carregamento.
 
 ## Limites do fluxo atual
 
-COMPLETE mantém a fase ativa depois da ida ao baú; falta a navegação final. GAME_OVER termina sem captura e oferece retry da fase pela interface. A cada três derrotas no NORMAL, somadas à campanha, surge a oferta do fácil. Aceitar retoma a distância/posição da fuga com seis vidas e dois segundos de imunidade; recusar mantém a dificuldade e a tentativa encerrada. O ajuste de upload do piso foi validado no Chrome; o defeito relatado no Safari continua aguardando confirmação no navegador do usuário.
+COMPLETE mantém a fase ativa depois da ida ao baú; falta a navegação final. GAME_OVER termina sem captura e oferece retry da fase pela interface. A cada três derrotas no NORMAL, somadas à campanha, surge a oferta do fácil. Aceitar retoma a distância/posição da fuga com seis vidas e dois segundos de imunidade; recusar mantém a dificuldade e a tentativa encerrada. A abertura obrigatória funciona como carregamento: aparece antes do preparo 3D e aguarda junto ao urso caído quando necessário. A arrancada permanece bloqueada até a prontidão visual. A validação de textura e a alternativa de compatibilidade foram verificadas no Chrome; a confirmação do defeito relatado no Safari continua dependendo do navegador do usuário.
 
 Além dos módulos da tabela, `ChasePacing`, `ChaseCamera`, `ChaseLighting` e `ChaseBearAnimation` isolam ritmo, enquadramento, iluminação e articulações. As fábricas específicas de objetos, primitivas e atlas estão descritas no [catálogo completo](../ARQUITETURA.md#catálogo-completo-dos-módulos-javascript). Aprovação técnica não substitui avaliação artística de modelos, novas poses e materiais.

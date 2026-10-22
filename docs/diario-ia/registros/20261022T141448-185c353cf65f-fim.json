@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T141448-185c353cf65f-fim",
+  "sessionId": "20261022T141448-185c353cf65f",
+  "type": "fim",
+  "date": "2026-10-22T14:17:16.133165+00:00",
+  "title": "Fixar poltrona ao tapete e corrigir enquadramento responsivo da tela inicial",
+  "actor": "Codex",
+  "summary": "Corrigido enquadramento da tela inicial: quarto, menina/poltrona e pernas compartilham composição fixa 1920×1080 e uma única transformação de câmera. Poltrona permanece em (1056,162) sobre o tapete; foco horizontal aproxima a menina no retrato. Eliminados escala e reposicionamento independentes da poltrona conforme viewport. Artes originais, menu e animação das pernas preservados. Guia de designers, contexto e comandos atualizados; mapa reconstruído. Código e assets anteriores de áudio/defesa preservados. Sem commit/push.",
+  "checks": [
+    "test:titulo:enquadramento:browser aprovado em Chrome isolado/servidor temporário: seis tamanhos (1920×1080, 1366×768, 1024×768, 390×844, 844×390, 320×568) e retorno ao retrato após rotação; poltrona com coordenadas/escala fixas no quarto, fundo sem lacunas e botões acessíveis",
+    "Seis capturas reais inspecionadas; poltrona apoiada no tapete e foco na menina. Identificação/hash/tamanho preservados automaticamente no acervo, sem bitmaps de evidência na árvore",
+    "npm run docs:sprites: 416 imagens/99 recortes/29 assinaturas; npm run build, npm run lint, npm run check-assets (66 recursos), sintaxe de TitleScene e git diff --check aprovados",
+    "Suíte de gameplay não repetida: alteração restrita à composição/câmera do canvas da tela inicial, coberta pelo navegador. Nenhuma mudança de física ou sprites."
+  ],
+  "pending": [
+    "Validação no Chrome emulado; sem homologação em aparelho físico/Safari nem aprovação artística humana presumida."
+  ],
+  "files": [
+    "src/js/ui/TitleScene.js",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/COMANDOS.md"
+  ]
+}

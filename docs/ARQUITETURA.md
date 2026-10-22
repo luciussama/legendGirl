@@ -1,13 +1,13 @@
 # Arquitetura e contratos do aplicativo
 
-Revisão: 21/10/2026. Descreve o código atual, incluindo a tela inicial, a fuga de campanha e as correções de pouso e de envio do piso; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
+Revisão: 22/10/2026. Descreve o código atual, incluindo a tela inicial, a fuga de campanha e as correções de pouso e de envio do piso; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
 
 ## Composição e limites
 
 `src/js/bear-chase/` atende dois caminhos separados: `startChasePreview()` pelo
 seletor de debug e `startChaseCampaign()` após a vitória do urso na arena. A campanha
-escurece a arena antes de preparar o renderer; só então revela `BEAR_DOWN` e a
-introdução existente. Seu snapshot `toyRoomChaseCampaign` integra a persistência
+escurece a arena, prepara as artes ilustradas e revela `BEAR_DOWN`. O renderer 3D
+é preparado durante a introdução obrigatória; sua prontidão visual condiciona a arrancada. Seu snapshot `toyRoomChaseCampaign` integra a persistência
 da Toy Room; o estado do acesso isolado de debug permanece fora do save. Saves antigos continuam
 válidos. `BearChasePhase` recebe canvas, serviço de áudio, disponibilidade e
 dificuldade, sem receber a sala inteira. `ChasePatterns` distribui os grupos por progresso e dificuldade, preservando um corredor nos grupos densos. `ChaseSimulation` mantém dados serializáveis
@@ -96,8 +96,8 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [assets/darkRoomAtlas.js](../src/js/assets/darkRoomAtlas.js) | Coordenadas do atlas consolidado, consulta e validação dos limites de recorte. | `SHEET_WIDTH`, `SHEET_HEIGHT`, `SPRITESHEET_PATH`, `darkRoomAtlas`, `validateAtlasRegion`, `getDarkRoomAtlasRegion` |
 | [assets/index.js](../src/js/assets/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `AssetManager`, `createAssetManager`, `darkRoomAtlas`, `validateAtlasRegion`, `getDarkRoomAtlasRegion`, `SHEET_WIDTH`, `SHEET_HEIGHT` |
 | [assets/officialCharacter.js](../src/js/assets/officialCharacter.js) | Hash da fonte oficial e metadados das poses; dados derivados, sem lógica de movimento. | `OFFICIAL_SOURCE_SHA256`, `OFFICIAL_FRAMES` |
-| [audio.js](../src/js/audio.js) | Sistema Web Audio e músicas HTMLAudio; ganho mestre, mudo, vozes sintetizadas e limpeza de efeitos. | `createAudioSystem` |
-| [bear-chase/BearChasePhase.js](../src/js/bear-chase/BearChasePhase.js) | Compõe a fuga, adapta o tempo do loop, prepara recursos sob fade e controla pausa, entradas, snapshot e descarte. | `BearChasePhase` |
+| [audio.js](../src/js/audio.js) | Sistema Web Audio e músicas HTMLAudio; ganho mestre, mudo, síntese e amostras gravadas da arena, com pausa e limpeza de efeitos. | `createAudioSystem` |
+| [bear-chase/BearChasePhase.js](../src/js/bear-chase/BearChasePhase.js) | Compõe a fuga, adapta o tempo do loop, revela a abertura ilustrada enquanto prepara/verifica o 3D e controla pausa, entradas, snapshot e descarte. | `BearChasePhase` |
 | [bear-chase/ChaseAudio.js](../src/js/bear-chase/ChaseAudio.js) | Controla trilha, passos, ganho, pausa e restauração da posição musical. | `ChaseAudio` |
 | [bear-chase/ChaseBearAnimation.js](../src/js/bear-chase/ChaseBearAnimation.js) | Calcula poses e articulações do urso sem modificar o domínio. | `ChaseBearAnimation` |
 | [bear-chase/ChaseBearModel.js](../src/js/bear-chase/ChaseBearModel.js) | Constrói o urso volumétrico com materiais e hierarquia próprios. | `ChaseBearModel` |
@@ -113,7 +113,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [bear-chase/ChaseLighting.js](../src/js/bear-chase/ChaseLighting.js) | Configura iluminação, sombras e seu acompanhamento no percurso. | `ChaseLighting` |
 | [bear-chase/ChasePacing.js](../src/js/bear-chase/ChasePacing.js) | Deriva intensidade, velocidade, cadência, voo e margem de reação. | `smoothProgress`, `chaseIntensity`, `chasePacing` |
 | [bear-chase/ChasePatterns.js](../src/js/bear-chase/ChasePatterns.js) | Distribui grupos e corredor livre por progresso e dificuldade. | `chasePattern` |
-| [bear-chase/ChaseRenderer3D.js](../src/js/bear-chase/ChaseRenderer3D.js) | Compõe cena WebGL, piso RGBA com mipmaps explícitos, modelos e descarte GPU. | `ChaseRenderer3D` |
+| [bear-chase/ChaseRenderer3D.js](../src/js/bear-chase/ChaseRenderer3D.js) | Compõe cena WebGL; valida o piso na GPU com alternativa linear, envia mapas, compila materiais, monta modelos e descarta recursos. | `ChaseRenderer3D` |
 | [bear-chase/ChaseRoom.js](../src/js/bear-chase/ChaseRoom.js) | Constrói superfícies e decoração fixa ao longo do traçado. | `ChaseRoom` |
 | [bear-chase/ChaseRoute.js](../src/js/bear-chase/ChaseRoute.js) | Referenciais do percurso contínuo e pontos de emboscada. | `ROUTE_NODES`, `routeFrame`, `routePoint`, `ROUTE_AMBUSHES` |
 | [bear-chase/ChaseSimulation.js](../src/js/bear-chase/ChaseSimulation.js) | Cria, restaura e avança estado serializável, colisões, RNG e eventos. | `createChaseState`, `restoreChaseState`, `hitsObstacle`, `stepChase` |
@@ -171,6 +171,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [state/StateVariables.js](../src/js/state/StateVariables.js) | Fábrica dos dados iniciais da campanha e das entidades baby/fairy. | `createDefaultStateVariables` |
 | [toy-room/ArenaAudioProfile.js](../src/js/toy-room/ArenaAudioProfile.js) | Intensidade/percussão da música contínua da espada, sons e retomada do áudio da sala. | `ArenaAudioProfile` |
 | [toy-room/ArenaBoss.js](../src/js/toy-room/ArenaBoss.js) | Apresentação/estado persistível do Urso e ativação da fúria na arena. | `ArenaBoss` |
+| [toy-room/ArenaSoundEffects.js](../src/js/toy-room/ArenaSoundEffects.js) | MP3s por evento/personagem, pré-carga, trechos, ganho por voz e interrupção no mixer mestre; não serializa recursos. | `ARENA_SOUND_FILES`, `ArenaSoundEffects` |
 | [toy-room/ArenaSpecialAttack.js](../src/js/toy-room/ArenaSpecialAttack.js) | Especial único: carga, câmera, aura, raio, dano e consumo persistido na batalha. | `ARENA_SPECIAL`, `RAINBOW_COLORS`, `beginArenaSpecial`, `updateArenaSpecial`, `specialCameraFrame`, `renderSpecialSwordAura`, `renderArenaSpecialBeam`, `ARENA_SPECIAL_CLOSEUP_FILE`, `renderArenaSpecialCloseup` |
 | [toy-room/ArenaCamera.js](../src/js/toy-room/ArenaCamera.js) | Câmera e tremor próprios do combate, enquadrando os atores ampliados. | `ArenaCamera` |
 | [toy-room/ArenaCombatContact.js](../src/js/toy-room/ArenaCombatContact.js) | Calcula se cada golpe existente do inimigo toca a menina, considerando salto/agachamento. | `arenaEnemyContact` |
@@ -238,7 +239,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [ui/HudRenderer.js](../src/js/ui/HudRenderer.js) | Faixas/progresso do percurso lateral em coordenadas de tela. | `HudRenderer`, `hudRenderer` |
 | [ui/MobileDialogueRegion.js](../src/js/ui/MobileDialogueRegion.js) | Divisão visual entre cena superior e texto inferior no fluxo móvel do quarto. | `getMobileDialogueRegions`, `renderMobileDialogueRegion` |
 | [ui/MobileUILayout.js](../src/js/ui/MobileUILayout.js) | Layout seguro único para HUD/controles, hit testing e atualização por mudança de viewport. | `calculateMobileUILayout`, `getMobileUILayout`, `isActionControlHit`, `arenaMobileControlsLayout`, `hitArenaMobileControl`, `arenaDirectionVector`, `attachMobileUILayout` |
-| [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF. | `TitleScene` |
+| [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF; câmera comum mantém a poltrona no tapete. | `TITLE_SCENE_LAYOUT`, `titleSceneFrame`, `TitleScene` |
 | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. | `TitleScreen` |
 | [ui/index.js](../src/js/ui/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `HudRenderer`, `hudRenderer`, `DialogueRenderer`, `dialogueRenderer`, `renderFirstJumpTutorial`, `getFirstJumpFeedback`, `getFirstJumpTutorialDevice`, `FIRST_JUMP_MESSAGES` |
 
@@ -252,7 +253,7 @@ As opções apresentam qualidade automática ainda desabilitada. A cena pausa se
 RAF quando o menu ou a aba ficam ocultos e respeita movimento reduzido.
 As duas imagens ficam em `assets/art/title-screen/`, com origem e resolução
 nativa em `prompts.json`; o canvas em 1920×1080 não transforma o fundo em uma
-exportação nativa Full HD.
+exportação nativa Full HD. `TITLE_SCENE_LAYOUT` fixa o quarto e a poltrona; `titleSceneFrame` reenquadra a composição inteira com foco na menina no retrato.
 
 Falhas ao preparar a fuga da campanha descartam a fase parcial e devolvem os
 controles à sala. O diálogo `chase-error-dialog` informa o erro e permite voltar
@@ -303,3 +304,9 @@ O piso usa a arte existente em `environment-sheet.png`, recorte (27,151) de 186�
 `defeatCount`, `defeatPending` e `easyOfferPending` pertencem ao estado da campanha e são salvos. `CampaignDefeats` conta uma vez por tentativa; o coordenador recebe derrota do quarto por GameState e da arena/fuga por `ToyRoomPhase.onDefeat`. Perder um coração ou ainda estar em FALLING não conta. A cada três derrotas no NORMAL, `easy-mode-dialog` pergunta “deseja tentar no fácil?”. Recusar mantém NORMAL; outra oferta só aparece após mais três perdas. No EASY não há oferta. Campanha nova zera a contagem; debug permanece isolado; recarga conserva contagem e resposta pendente sem contar novamente.
 
 Aceitar aplica EASY ao estado, à sala, ao perfil da arena e à perseguição, salva e retoma: checkpoint da seção do quarto; mesmo adversário e dano já causado na arena; mesmo progresso/posição na fuga, com vidas recuperadas e dois segundos de imunidade. Nova tentativa comum da fuga reinicia sua abertura sem recriar renderer ou recursos GPU. `onGameOver({phase,offerEasy})` fornece os dados da tela, e a API expõe `continueOnEasy`/`declineEasyOffer`. A derrota da fuga diz “A menina não alcançou o urso. Tentar novamente?”. O diálogo bloqueia controles de gameplay e aceita teclado, toque/mouse e gamepad.
+
+### Prontidão visual, defesa e áudio gravado
+
+A abertura da fuga possui prontidão independente do 3D: `introReady` permite a cena ilustrada, e `ready` exige todas as imagens decodificadas, piso amostrado na GPU, texturas enviadas e materiais compilados. A espera ocorre no fim de GIRL_APPROACH, junto ao urso caído; o domínio não acumula tempo de corrida. `prepareFloor` valida a cadeia manual e, se ela falhar, tenta a mesma arte com filtro linear, sem mipmaps. Falhas definitivas usam o diálogo de recuperação da campanha. A causa original do piso preto no Safari continua sem comprovação.
+
+Na arena, recuo livre usa animação de caminhada. Durante a preparação/janela ofensiva inimiga, recuar firma a base em guarda; a recuperação do golpe libera a caminhada. `PlayerController`, `ArenaPlayerAnimation` e a separação de corpos em `ToyRoomBattle` compartilham essa regra. Os efeitos gravados de `ArenaSoundEffects` são selecionados pelos eventos do perfil de áudio, passam pelo ganho mestre e são interrompidos no ciclo de vida; a síntese cobre efeitos sem arquivo/disponibilidade. O especial emite `player_special` uma vez no lançamento. Nada disso acrescenta recursos de áudio ao save.

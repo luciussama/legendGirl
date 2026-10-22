@@ -1,6 +1,6 @@
 # Comandos, ferramentas e validação
 
-Revisão: 21/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
+Revisão: 22/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
 
 ## Ambiente e funcionamento
 
@@ -33,7 +33,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats && npm run test:arena:especial` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats && npm run test:arena:especial && npm run test:arena:sons` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -180,3 +180,13 @@ A verificação desta revisão está em `npm run journal:qa -- test:docs:equaliz
 `npm run journal:qa -- test:arena:saida-direta` verifica o último golpe, ausência de texto na vitória e restauração durante a saída. `npm run journal:qa -- test:arena:saida-direta:browser` cobre o corte até BEAR_DOWN sem legenda em três formatos, no Chrome isolado/CDP 9222. A fonte de `script:test-arena-chase-transition.js` também foi atualizada no acervo para a perseguição e a saída vigentes.
 
 Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O índice SQLite local pode ser descartado e será reconstruído pela próxima consulta ao diário.
+
+`npm run journal:qa -- test:arena:sons` verifica eventos dos ataques e lançamento único do especial com restore. `npm run journal:qa -- test:arena:sons:browser` usa Chrome isolado e servidor temporário para decodificar os dez MP3s, renderizar trechos offline e conferir ganho mestre, mudo, pausa e liberação de vozes.
+
+`npm run test:arena:defesa` também verifica recuo animado, base estacionária nas nove ofensivas e retomada ao fim do golpe. `npm run journal:qa -- test:arena:defesa:estacionaria:browser` renderiza a sequência com os sprites reais em Chrome isolado.
+
+`npm run journal:qa -- test:titulo:enquadramento:browser` verifica o quarto/poltrona fixos na tela inicial, o menu acessível e o reenquadramento em seis tamanhos e rotação, em Chrome isolado.
+
+`npm run journal:qa -- test:fuga:carregamento:browser` atrasa um atlas para conferir a abertura como carregamento, a liberação após prontidão visual, piso na GPU em desktop/retrato/paisagem, alternativa linear e bloqueio por falha de piso/atlas. Usa Chrome isolado e servidor temporário.
+
+Aliases de áudio integrados ao package.json: `npm run test:arena:sons` (incluído em `npm test`) e `npm run test:arena:sons:browser`. Os demais comandos específicos recentes permanecem acessíveis por `journal:qa`, conforme descrito acima.

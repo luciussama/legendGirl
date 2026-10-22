@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bc0e34b6726765da9ce31011a4a08180ed392dbf0f5d69e666254f07ed968a3c",
+  "path": "qa-execucoes/019b31f9c1c34334a307ee4d2f1b47c2/docs/diario-ia/qa-resultados/carregamento-fuga/abertura-aguardando.png",
+  "sha256": "ce7037648fba1f6d7ed4af1f1747093c8dbdab53987cbbb416565ee45d10d9b4",
+  "capturedAt": "2026-10-22T14:22:40.535915+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:fuga:carregamento:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/carregamento-fuga/abertura-aguardando.png\", \"sha256\": \"0cb1bbebe7ae2e56ac6357489b18bcbf7c0109018c1a2d250ec8a82b56141db2\", \"bytes\": 1270414, \"binaryRetained\": false}"
+}

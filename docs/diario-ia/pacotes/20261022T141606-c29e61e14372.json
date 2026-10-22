@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T141606-c29e61e14372",
+  "date": "2026-10-22T14:16:06.046532+00:00",
+  "title": "Enquadramento da tela inicial em seis viewports e rotação",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/titulo-enquadramento-20261022/navegador.mjs",
+      "sourceId": "b57da9adfae435dca0789e4532307e14d156ca4c79ff8c7c8fbcba54ad08ec42",
+      "sha256": "6a7fcf95ccfe6f4ed0da1ef705b63c0a6f10e125d65dd1d3a8c559fbed1383fa",
+      "bytes": 3970,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:titulo:enquadramento:browser": "node docs/diario-ia/qa/titulo-enquadramento-20261022/navegador.mjs"
+  }
+}

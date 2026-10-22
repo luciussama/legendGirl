@@ -16,12 +16,11 @@ import { routePoint, routeFrame } from './ChaseRoute.js';
 const ART = new URL('../../../assets/art/', import.meta.url);
 
 /** Carrega uma imagem local com falha explícita, sem recorrer a artes aposentadas. */
-function imageFile(path) {
-  return new Promise((resolve, reject) => {
-    const image = new Image(); image.onload = () => resolve(image);
-    image.onerror = () => reject(new Error('Arte da perseguição ausente: ' + path));
-    image.src = new URL(path, ART).href;
-  });
+async function imageFile(path) {
+  const image = new Image(); image.src = new URL(path, ART).href;
+  try { await image.decode(); } catch { throw new Error('Arte da perseguição ausente ou inválida: ' + path); }
+  if (!image.naturalWidth || !image.naturalHeight) throw new Error('Arte da perseguição vazia: ' + path);
+  return image;
 }
 
 /** Constrói somente uma janela da sala estendida com perspectiva e profundidade reais. */
@@ -35,6 +34,7 @@ export class ChaseRenderer3D {
     this.camera = new T.PerspectiveCamera(57, 1, .1, 130);
     this.resources = new Set(); this.segments = []; this.toys = new Map();
     this.frames = {}; this.disposed = false; this.chest = null;
+    this.ready = false;
     this.contextLost = false;
     this.onLost = event => { event.preventDefault(); this.contextLost = true; };
     this.onRestored = () => { this.contextLost = false; };
@@ -66,6 +66,7 @@ export class ChaseRenderer3D {
     source.width = 256; source.height = 64;
     const context = source.getContext('2d');
     context.drawImage(image, 27, 151, 186, 48, 0, 0, source.width, source.height);
+    this.floorSource = source;
     const levels = [];
     for (let width = source.width, height = source.height; ; width = Math.max(1, width / 2), height = Math.max(1, height / 2)) {
       const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
@@ -86,6 +87,55 @@ export class ChaseRenderer3D {
     texture.anisotropy = Math.min(4, this.renderer.capabilities.getMaxAnisotropy());
     texture.needsUpdate = true;
     return texture;
+  }
+  /** Confere a amostragem real do piso na GPU antes de construir/liberar o mapa. */
+  floorIsVisible() {
+    const target = new T.WebGLRenderTarget(8, 8);
+    const material = new T.MeshBasicMaterial({ map: this.floor, toneMapped: false });
+    const geometry = new T.PlaneGeometry(2, 2), scene = new T.Scene();
+    const camera = new T.OrthographicCamera(-1, 1, 1, -1, .1, 2); camera.position.z = 1;
+    scene.add(new T.Mesh(geometry, material));
+    const previous = this.renderer.getRenderTarget();
+    try {
+      this.renderer.initTexture(this.floor);
+      this.renderer.setRenderTarget(target); this.renderer.render(scene, camera);
+      const pixels = new Uint8Array(8 * 8 * 4);
+      this.renderer.readRenderTargetPixels(target, 0, 0, 8, 8, pixels);
+      let visible = 0;
+      for (let i = 0; i < pixels.length; i += 4)
+        if (pixels[i] > 10 && pixels[i] > pixels[i + 2] * 1.2 && pixels[i + 3] > 200) visible++;
+      return this.renderer.getContext().getError() === 0 && visible >= 48;
+    } finally {
+      this.renderer.setRenderTarget(previous); target.dispose(); material.dispose(); geometry.dispose();
+    }
+  }
+  /** Se o driver rejeitar a cadeia manual, tenta a mesma madeira sem mipmaps. */
+  prepareFloor() {
+    this.floorMode = 'mipmaps';
+    if (this.floorIsVisible()) return;
+    const previous = this.floor;
+    const texture = this.own(new T.CanvasTexture(this.floorSource));
+    texture.colorSpace = T.SRGBColorSpace; texture.generateMipmaps = false;
+    texture.minFilter = texture.magFilter = T.LinearFilter; texture.anisotropy = 1;
+    texture.wrapS = texture.wrapT = T.RepeatWrapping; texture.repeat.set(9, 2);
+    this.floor = texture; previous.dispose(); this.resources.delete(previous);
+    this.floorMode = 'linear';
+    if (!this.floorIsVisible()) throw new Error('O piso de madeira não pôde ser preparado no dispositivo.');
+  }
+  /** Envia todos os mapas e compila materiais antes da primeira apresentação do 3D. */
+  async prepareVisualResources() {
+    if (this.disposed) return;
+    const gl = this.renderer.getContext();
+    if (gl.isContextLost()) throw new Error('Contexto 3D indisponível durante o carregamento.');
+    for (const texture of this.resources) {
+      if (!texture.isTexture) continue;
+      const image = texture.image;
+      if (!image || !image.width || !image.height) throw new Error('Textura visual da perseguição incompleta.');
+      this.renderer.initTexture(texture);
+      if (gl.getError() !== gl.NO_ERROR) throw new Error('Falha ao enviar uma textura visual da perseguição.');
+    }
+    await this.renderer.compileAsync(this.scene, this.camera);
+    if (gl.isContextLost() || gl.getError() !== gl.NO_ERROR) throw new Error('Falha ao preparar os materiais da perseguição.');
   }
   /** Cria material ilustrado sem alterar paleta por iluminação física especular. */
   material(texture, color = '#ffffff') {
@@ -112,12 +162,16 @@ export class ChaseRenderer3D {
       fairy: 'toy-room/stage3/illustrated-fairy-v1.png', cabinet: 'toy-room/stage3/oak-cabinet-v1.png',
       bunny: 'toy-room/stage3/cotton-bunny-v1.png', armchair: 'toy-room/stage3/armchair-v1.png',
     };
-    const loaded = await Promise.all(Object.entries(paths).map(async ([key, path]) => [key, await imageFile(path)]));
+    // O piso é validado primeiro; nenhum mapa é construído com esse recurso pendente.
+    const env = await imageFile(paths.env);
     if (this.disposed) return;
-    const images = Object.fromEntries(loaded);
+    this.floor = this.floorTexture(env); this.prepareFloor();
+    const loaded = await Promise.all(Object.entries(paths).filter(([key]) => key !== 'env')
+      .map(async ([key, path]) => [key, await imageFile(path)]));
+    if (this.disposed) return;
+    const images = { env, ...Object.fromEntries(loaded) };
     this.propCatalog = new ChasePropCatalog(images, this.resources);
     this.toyModels = new ChaseToyModels(this.propCatalog);
-    this.floor = this.floorTexture(images.env);
     this.wall = this.texture(images.wall); this.wall.wrapS = this.wall.wrapT = T.RepeatWrapping; this.wall.repeat.set(1, 1);
     this.trim = this.texture(images.trim); this.trim.wrapS = T.RepeatWrapping; this.trim.repeat.set(1, 1);
     this.decoration = { rug: this.texture(images.rug), window: this.texture(images.window) };
@@ -147,7 +201,8 @@ export class ChaseRenderer3D {
     this.chest = this.propCatalog.create('chest'); this.chest.visible = false; this.scene.add(this.chest);
     this.chest.rotation.y = -Math.PI / 2;
     this.lighting=new ChaseLighting(this);
-    this.ready = true;
+    await this.prepareVisualResources();
+    if (!this.disposed) this.ready = true;
   }
   /** Prepara materiais de adereços; superfícies contínuas pertencem ao construtor da sala. */
   prepareRoomResources() {

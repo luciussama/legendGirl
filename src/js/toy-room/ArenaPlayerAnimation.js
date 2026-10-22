@@ -32,7 +32,7 @@ export function updateArenaPlayerAnimation(state, player, dt) {
   if(a.wasAirborne&&!airborne)a.landingAge=0;
   a.wasAirborne=airborne;
   const canGuard=!airborne&&!state.crouching&&state.playerHitTime<=0&&state.attackTime<=0&&state.mode!=='DEFEAT'&&!state.transition;
-  a.guardAmount=canGuard?clamp01((a.guardAmount??0)+(state.guarding?dt:-dt)/12):0;
+  a.guardAmount=canGuard&&!player.isMoving?clamp01((a.guardAmount??0)+(state.guarding?dt:-dt)/12):0;
   if(state.playerHitTime>0||state.mode==='DEFEAT'||state.transition)a.attackAge=ARENA_ATTACK_VISUAL_DURATION;
   let pose=state.mode==='DEFEAT'||state.playerHitTime>0?'damage'
     :state.crouching?'crouch':a.attackAge<18?'attack'

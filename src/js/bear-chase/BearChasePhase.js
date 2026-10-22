@@ -13,15 +13,15 @@ export class BearChasePhase {
     this.difficulty = difficulty; this.state = createChaseState(); this.accumulator = 0;
     this.campaign = campaign; this.onCampaignError = onCampaignError;
     this.handoffFade = campaign ? 1 : 0;
-    this.audio = new ChaseAudio(audio); this.ready = false; this.disposed = false; this.error = null;
-    this.intro = new ChaseIntroRenderer();
+    this.audio = new ChaseAudio(audio); this.ready = false; this.introReady = false; this.disposed = false; this.error = null;
+    this.intro = new ChaseIntroRenderer(); this.waitingForVisuals = false;
     this.input = new ChaseInput(canvas, enabled, () => this.audio.unlock());
     this.onBlur = () => this.setPaused(true);
     this.onFocus = () => { if (enabled()) this.setPaused(false); };
   }
   /** Mantém o resultado visível até sair da perseguição, inclusive após a sequência do baú. */
   get active() { return !this.disposed; }
-  /** Prepara GPU/artes e instala controles sem criar outro requestAnimationFrame. */
+  /** Revela primeiro a abertura obrigatória; prepara o 3D enquanto ela acontece. */
   async start(saved = null) {
     try {
       if (saved) this.restore(saved);
@@ -30,11 +30,14 @@ export class BearChasePhase {
       if (typeof window !== 'undefined') {
         window.addEventListener('blur', this.onBlur); window.addEventListener('focus', this.onFocus);
       }
+      await this.intro.load();
+      if (this.disposed) return;
+      this.introReady = true;
       const { ChaseRenderer3D } = await import('./ChaseRenderer3D.js');
       if (this.disposed) return;
       this.renderer = new ChaseRenderer3D();
-      await Promise.all([this.renderer.load(), this.intro.load()]);
-      if (!this.disposed) this.ready = true;
+      await this.renderer.load();
+      if (!this.disposed) { this.ready = true; this.waitingForVisuals = false; }
     } catch (error) {
       this.error = saved
         ? `Não foi possível restaurar a fuga salva: ${error.message}`
@@ -46,7 +49,8 @@ export class BearChasePhase {
   }
   /** Converte o dt legado de 60 Hz para segundos e consome passos fixos limitados. */
   update(dt) {
-    if (!this.ready || this.paused || !this.enabled() || this.renderer?.contextLost) return;
+    if ((!this.ready && !this.introReady) || this.error || this.paused || !this.enabled() || this.renderer?.contextLost) return;
+    if (!this.ready && !isChaseIntro(this.state.stage)) { this.input.clear(); this.accumulator = 0; return; }
     if (this.handoffFade > 0) {
       this.handoffFade = Math.max(0, this.handoffFade - Math.min(.2, Math.max(0, Number.isFinite(dt) ? dt / 60 : 0)) / .4);
       this.input.clear();
@@ -56,6 +60,13 @@ export class BearChasePhase {
     this.accumulator += Math.min(.2, Math.max(0, Number.isFinite(dt) ? dt / 60 : 0));
     const input = this.input.sample();
     while (this.accumulator + 1e-9 >= C.step) {
+      // Conserva a menina junto ao urso caído se o cenário ainda estiver carregando.
+      // A subida do urso e o corte para o 3D só prosseguem com os recursos validados.
+      if (!this.ready && ['GIRL_APPROACH', 'BEAR_RISE'].includes(this.state.stage)
+        && this.state.age + C.step >= C.stages[this.state.stage] - 1e-9) {
+        this.waitingForVisuals = true;
+        this.input.clear(); this.accumulator = 0; break;
+      }
       const events = stepChase(this.state, input, C.step, this.difficulty);
       for (const event of events) if (event.type === 'step') this.audio.step(event.actor, this.state.gap);
       this.accumulator = Math.max(0, this.accumulator - C.step);
@@ -71,16 +82,23 @@ export class BearChasePhase {
     this.ctx.fillStyle = this.campaign && !this.ready ? '#140e13' : '#f3dfb8';
     this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
     const intro = isChaseIntro(this.state.stage);
-    if (this.ready && intro) this.intro.render(this.ctx, this.canvas, this.state);
+    if ((this.introReady || this.ready) && intro) this.intro.render(this.ctx, this.canvas, this.state);
     else if (this.ready) this.renderer?.render(this.ctx, this.canvas, this.state);
     const message = this.renderer?.contextLost ? 'O contexto 3D foi interrompido; aguardando recuperação.' : this.error;
-    if ((!intro || !this.ready || message) && !(this.campaign && !this.ready)) {
+    if ((!intro || !this.introReady || message) && !(this.campaign && !this.ready)) {
       renderChaseHUD(this.ctx, this.canvas, this.state, message || (!this.ready ? 'Preparando o quarto…' : null), this.audio.error, this.difficulty);
     }
-    const fade = this.ready ? Math.max(chaseIntroFade(this.state), this.handoffFade) : this.campaign ? 1 : 0;
+    const visible = this.ready || (intro && this.introReady);
+    const fade = visible ? Math.max(this.ready ? chaseIntroFade(this.state) : 0, this.handoffFade) : this.campaign ? 1 : 0;
     if (fade > 0) {
       this.ctx.fillStyle = `rgba(20,14,19,${fade})`;
       this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+    if (this.waitingForVisuals && !this.error) {
+      const size = Math.max(14, Math.min(24, this.canvas.width / 40));
+      this.ctx.fillStyle = '#24151bc9'; this.ctx.fillRect(0, this.canvas.height - size * 3, this.canvas.width, size * 3);
+      this.ctx.font = `${size}px sans-serif`; this.ctx.textAlign = 'center'; this.ctx.fillStyle = '#fff0d2';
+      this.ctx.fillText('Preparando a perseguição…', this.canvas.width / 2, this.canvas.height - size);
     }
     this.ctx.restore();
   }

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T140229-817bbac9d762",
+  "date": "2026-10-22T14:02:29.150059+00:00",
+  "title": "Defesa estacionária e recuo animado por golpe, preservando regressões anteriores",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/arena-defesa-direcional.js",
+      "sourceId": "3f72080f13ebfc6359c79958d85ccf06bb10a7dd3aa9148e452f7b1e1ab38ee2",
+      "sha256": "9a55b989fb10fa83d9c7203d592bd9d16f6a8519b5439f0e6dbbc9e1e0274ae7",
+      "bytes": 9009,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:defesa": "node docs/diario-ia/qa/arena-defesa-direcional.js"
+  }
+}
