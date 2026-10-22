@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7e7b6fb8d5cd34da57a5c361968a6661cddbce1f619bba2994309dcbb8c6d9e3",
+  "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec/docs/diario-ia/qa-resultados/saida-arena/saida-direta-retrato.png",
+  "sha256": "2374bf50bfa5ffcd6ded6b50495cdafaccdb28cb3898c3b050ea9339675343bf",
+  "capturedAt": "2026-10-21T21:39:24.158298+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:saida-direta:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/saida-arena/saida-direta-retrato.png\", \"sha256\": \"1264f5e986eb1f0b96461707966ceb44f0431352dff9997b5db1fb11e527cc7d\", \"bytes\": 444595, \"binaryRetained\": false}"
+}

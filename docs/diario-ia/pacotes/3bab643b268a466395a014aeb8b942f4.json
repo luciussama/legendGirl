@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "3bab643b268a466395a014aeb8b942f4",
+  "date": "2026-10-21T21:40:09.966340+00:00",
+  "title": "Atualizar a fonte virtual do comando de transição existente",
+  "files": [
+    {
+      "path": "scripts/test-arena-chase-transition.js",
+      "sourceId": "b6e4911713a719892f740c9d1733ff27fe2098dda05f6465879569a4cc5195d0",
+      "sha256": "dac11c698539f672293e7e5664a45f994c590d815ecf771a558022d23c6fd34a",
+      "bytes": 5295,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

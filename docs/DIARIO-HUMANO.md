@@ -73,3 +73,7 @@ A espada arco-íris pode ser usada uma vez na batalha inteira, por R, Y ou ESPEC
 ### Close dramático do especial
 
 O enquadramento da carga passou a usar um corte de anime centrado nos dois olhos, com expressão intensa e reflexos arco-íris, conforme a referência enviada. Uma ilustração frontal própria substitui a ampliação do sprite como foco da cena. O corte sai rapidamente antes do retorno à arena e do disparo.
+
+### Saída direta da arena
+
+Ao perder o último coração, o Urso encerra a arena e a cena passa à ilustração dele caído. Foram retirados os textos de vitória e retorno da fantasia, a espera pelo transporte ao baú e a pausa para confirmação. A breve passagem escura continua ocultando o carregamento da próxima cena. O usuário também aprovou o close de anime do especial (“ah, gostei!”); essa aprovação se refere à arte e composição do close apresentado.

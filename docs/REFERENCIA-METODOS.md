@@ -1224,7 +1224,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `renderArenaMobileControls(ctx, layout, room, state)` | Função | 16 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `drawAction(button, title, badge, special = false)` | Função atribuída | 41 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `renderArenaHUD(ctx, room, state, layout, boss = null)` | Função | 60 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `bar(b,hp,max,color,reverse)` | Função atribuída | 66 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `bar(b,hp,max,color,reverse)` | Função atribuída | 67 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/ArenaPlayerAnimation.js
 
@@ -1459,12 +1459,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `finish()` | Método declarado | 105 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
 | `beginReturn()` | Método declarado | 114 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `update(dt = 1)` | Método declarado | 125 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | Método declarado | 163 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `snapshot()` | Método declarado | 202 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, roomSave = null)` | Método declarado | 203 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `attack()` | Método declarado | 232 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `retry()` | Método declarado | 243 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `special()` | Método declarado | 250 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render()` | Método declarado | 171 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `snapshot()` | Método declarado | 209 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved, roomSave = null)` | Método declarado | 210 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `attack()` | Método declarado | 239 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `retry()` | Método declarado | 250 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `special()` | Método declarado | 257 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/ToyRoomBattle.js
 

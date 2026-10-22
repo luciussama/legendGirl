@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T213910-392da899ce83",
+  "date": "2026-10-21T21:39:10.829098+00:00",
+  "title": "Preparar abertura válida de contra-ataque, sem evasão do golpe na fixture",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/saida-arena-20261021/regressao.mjs",
+      "sourceId": "a0b67614ba8aa14660a63a547591a165c3f8010b8688a2e346cfb2be00fd5c62",
+      "sha256": "c1323c1f54f506f1e3acdd3e173fd7aa825639982aa61938fb58d91ae9dd5242",
+      "bytes": 5322,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/saida-arena-20261021/navegador.mjs",
+      "sourceId": "e039de08162d5f78fe8fb73fa908b43a7db5ed391976476d7b8b592072499e54",
+      "sha256": "302bafc5c4c2b95161194b42bbb61ccee0056156625857ad98e2b07f09012c3d",
+      "bytes": 4660,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:saida-direta": "node docs/diario-ia/qa/saida-arena-20261021/regressao.mjs",
+    "test:arena:saida-direta:browser": "node docs/diario-ia/qa/saida-arena-20261021/navegador.mjs"
+  }
+}

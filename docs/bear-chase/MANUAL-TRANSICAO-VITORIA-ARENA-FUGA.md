@@ -15,8 +15,8 @@ da fuga, quando a menina alcança o urso.
 
 ## Sequência esperada
 
-1. A luta termina com o resultado `VICTORY`.
-2. A arena bloqueia novas entradas e conclui sua apresentação de vitória.
+1. O último golpe zera os corações do Urso.
+2. A arena registra `VICTORY` e bloqueia novas entradas imediatamente, sem esperar animação de morte, transporte ao baú ou painel de vitória.
 3. A tela faz um fade até ficar totalmente escura.
 4. Sob a tela escura, o jogo encerra a apresentação da arena e prepara a fase da
    fuga, incluindo os recursos necessários para desenhá-la.
@@ -30,7 +30,7 @@ da fuga, quando a menina alcança o urso.
    baú uma única vez.
 
 A implementação atual usa 30 quadros (0,5 s a 60 Hz) para escurecer a arena e
-0,4 s para revelar a abertura depois que o carregamento termina. A simulação e
+0,4 s para revelar a abertura depois que o carregamento termina. Não há texto de saída da fantasia, legenda de vitória ou confirmação por botão; a primeira imagem mostra o Urso caído, sem legenda. A simulação e
 as entradas ficam bloqueadas durante a revelação.
 
 ## Comportamento e limites
@@ -50,8 +50,7 @@ as entradas ficam bloqueadas durante a revelação.
   Conferir enquadramento, pose e oclusão em retrato e paisagem. Não substituir
   essa exigência por uma espada que só apareça depois da corrida.
 - Preservar a arte, identidade, proporções e paleta já aprovadas para cada
-  personagem. Não alterar física, combate, duração da arena, dificuldade ou
-  regras de colisão como parte desta integração.
+  personagem. Preservar física, combate, dificuldade e regras de colisão. A espera final de morte/transporte/painel foi removida por orientação atual do usuário, para começar a saída no último golpe.
 - Não antecipar a ida ao baú nem marcar o retorno do urso como concluído na
   transição da arena. O efeito final da fuga continua sendo responsabilidade do
   estado terminal existente da perseguição.

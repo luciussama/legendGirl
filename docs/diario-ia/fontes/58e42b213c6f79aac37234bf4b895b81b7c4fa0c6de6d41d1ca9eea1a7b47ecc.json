@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "58e42b213c6f79aac37234bf4b895b81b7c4fa0c6de6d41d1ca9eea1a7b47ecc",
+  "path": "qa-execucoes/af62f2e8499e48b1aabd1f05d0a916bc.log",
+  "sha256": "695f1c68dfc9312b83557631d5e7759b153c731837ba6ce9bd17ddd8b4bc1484",
+  "capturedAt": "2026-10-21T21:38:27.274042+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:saida-direta",
+    "exitCode": 1,
+    "package": "20261021T213822-67e55bcd80db"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:saida-direta\n> node docs/diario-ia/qa/saida-arena-20261021/regressao.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Último golpe inicia a saída sem esperar morte, transporte ou banner.\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-khbmjwjz/projeto/docs/diario-ia/qa/saida-arena-20261021/regressao.mjs:93:8 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

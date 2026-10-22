@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "4f18a8c034a54dfe92f3224fdf99684d",
+  "type": "qa",
+  "date": "2026-10-21T21:40:11.017588+00:00",
+  "title": "QA temporário: script:test-arena-chase-transition.js",
+  "exitCode": 0,
+  "sourceId": "59d861970af9f2dc20bdc4e7bdd72988541f0783d011d43409dd8804b42bf317",
+  "package": "3bab643b268a466395a014aeb8b942f4"
+}

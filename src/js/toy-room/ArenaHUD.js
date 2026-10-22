@@ -58,6 +58,7 @@ function renderArenaMobileControls(ctx, layout, room, state) {
 
 /** A vida continua sendo a mesma transferência de corações, com leitura de arena. */
 export function renderArenaHUD(ctx, room, state, layout, boss = null) {
+  if (state.mode === 'VICTORY') return;
   const ui = layout.scale, boxes = arenaHUDLayout(layout);
   ctx.save();
   const shade = ctx.createLinearGradient(0,layout.safeTop,0,layout.safeTop+142*ui);
@@ -90,11 +91,11 @@ export function renderArenaHUD(ctx, room, state, layout, boss = null) {
   if (room.mobilePresentation || room.isTouchDevice) {
     renderArenaMobileControls(ctx, layout, room, state);
   }
-  if (state.mode==='VICTORY'||state.mode==='DEFEAT') {
+  if (state.mode==='DEFEAT') {
     ctx.fillStyle='rgba(25,15,37,.85)';ctx.fillRect(layout.safeLeft,layout.centerY-55*ui,layout.usableWidth,115*ui);
     ctx.fillStyle='#ffe5a6';ctx.font=`bold ${24*ui}px Georgia`;ctx.textAlign='center';
-    ctx.fillText(state.mode==='VICTORY'?'A imaginação venceu.':'Sua aventura ainda não acabou.',layout.centerX,layout.centerY-8*ui,layout.usableWidth-24*ui);
-    ctx.font=`${15*ui}px system-ui`;ctx.fillText(state.mode==='DEFEAT'?'Pressione ESPADA para tentar novamente.':'O quarto está chamando você de volta…',layout.centerX,layout.centerY+25*ui,layout.usableWidth-24*ui);
+    ctx.fillText('Sua aventura ainda não acabou.',layout.centerX,layout.centerY-8*ui,layout.usableWidth-24*ui);
+    ctx.font=`${15*ui}px system-ui`;ctx.fillText('Pressione ESPADA para tentar novamente.',layout.centerX,layout.centerY+25*ui,layout.usableWidth-24*ui);
   }
   ctx.restore();
 }
