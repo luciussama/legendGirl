@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "5ec8147fbfad4e94bb06862454ce9840",
+  "date": "2026-10-22T17:07:15.633708+00:00",
+  "title": "QA temporário: script:test-opening-sequence.js",
+  "files": [
+    {
+      "path": "qa-execucoes/5ec8147fbfad4e94bb06862454ce9840.log",
+      "sourceId": "c9e4a567603021fe009deeca5a75bbdefac8c257fa4627d9f5ade999b6c0feed",
+      "sha256": "e1e6662c915a93c489b1d393bab8b6bd618e93ded814a095043ba22dcb60c333",
+      "bytes": 225,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a4fbbd073737b016107371832c9da2551b11a48d70b22e27d9cfb129dfdedc09",
+  "path": "qa-execucoes/244381e29e55426ba7b20c26a008a891/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-olhar-sala.png",
+  "sha256": "e9887ec494e3ea7f0cd35602e2b0668f8bcacc781932fb36811e6dd9c1aebd69",
+  "capturedAt": "2026-10-22T16:56:37.459377+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-olhar-sala.png\", \"sha256\": \"4d78d9194ce7ed0bc5fc44f97c043f00d4d4e7ff2642822e56399cab9957e696\", \"bytes\": 1294010, \"binaryRetained\": false}"
+}

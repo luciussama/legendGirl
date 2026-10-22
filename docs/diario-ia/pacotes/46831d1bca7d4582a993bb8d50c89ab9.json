@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "id": "46831d1bca7d4582a993bb8d50c89ab9",
+  "date": "2026-10-22T16:59:16.906670+00:00",
+  "title": "QA temporário: test:toy-room:intro:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9.log",
+      "sourceId": "f7f724bea8da135dfaaac24685196ddbf9cfb2d6ca9212c627b295d1b6989891",
+      "sha256": "4fac89bc0c48fc1f8e464053adfe8646acfa6e18946a20fc4fe33dc60d1d4ede",
+      "bytes": 412,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-chegada.png",
+      "sourceId": "0c2e0d8553cc652cd239d496e1cd897dc31acaa3f41aa15ef1612121f39d8bc1",
+      "sha256": "ac0fa547b098a6e053016d53dd8be70a9a7d7fe4376619c6d3ee497ac0e580be",
+      "bytes": 1247193,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-nanda.png",
+      "sourceId": "d109f4fde9ec0b17b6a8b41791d3ee46c483c7f1e577e5fb90e6a8fa31638999",
+      "sha256": "3cea39edfd26e93d1f61169b4827efcaa66686b1936a3f7e98ea8bb9f65f32cb",
+      "bytes": 1192563,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-olhar-sala.png",
+      "sourceId": "4bb2050d448d1b59cf6a8b30fff3499fbf0d2201f94b5de1e478137f4ca53b4b",
+      "sha256": "400381540640966a322558fad974159d0183fb6089c5c01a61bd45e5b8ac2bbb",
+      "bytes": 1251451,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-reflexao.png",
+      "sourceId": "dba369455f69fa4688b428163d58291ee48680a315c4d358582da7269eed27ab",
+      "sha256": "4b60c14318034e04e6dfd1b39d09602d62a39a9746e684fbd428c4f95b73282c",
+      "bytes": 1164794,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-surpresa.png",
+      "sourceId": "0590eaf0901fe0285463500aaed45be1444f2dc30775128f47ae139edd37eb7c",
+      "sha256": "216b931a172e5abdf59e5db9ccceace25d06c36652f1a234e30811d71d2615c8",
+      "bytes": 1177699,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-chegada.png",
+      "sourceId": "6b7712d875b33a63230c3571c8c312d4b5b77ca0da31fb98762f4e30e1eb55e4",
+      "sha256": "f364c0b0244688aab5506570f7f35c25ea15c2a6239e4ccd2f36da5916623b2c",
+      "bytes": 183086,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-nanda.png",
+      "sourceId": "3cb1bdb7aa6d999b5106a03881dbcf26724917873dcd7610a42400dfad388c1d",
+      "sha256": "f1d2784c5d5f905bf135ab6667723a2eb704d50d500598e2a228bea446fc7559",
+      "bytes": 188492,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-olhar-sala.png",
+      "sourceId": "33969b3c9ed761075592441e16623e46c4a8b53235169d92f0ac88059d10e6ed",
+      "sha256": "1da31b2e4eadc73de48eeb82624fe31a4605fb2a95060930f27431c0881c4561",
+      "bytes": 189144,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-pastel.png",
+      "sourceId": "eddbab47d0a69f15bc2696e0fe17ad2cfd9472be1cb7754968bcaf89e02a0a27",
+      "sha256": "78745ef11584650266bf5b745add2887321d7f86f44c32585946e6afc223493c",
+      "bytes": 190870,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-reflexao.png",
+      "sourceId": "22dd394bfa2d6fa9d2879d45ac8bb2dd171d04f9f63b89fef31bdc6d4110a16a",
+      "sha256": "099177c1dc93c5392c497030e2708db02da1ab3f56e517fd2d9bd298e2971b0e",
+      "bytes": 190587,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/320x568-surpresa.png",
+      "sourceId": "2c9059647149134e75789f827238ecde9831771b32b075c1d1dbfe22c724cb37",
+      "sha256": "5e59108727cae279acd889ff00f243fcaa12929140b776ec2b52901a49110599",
+      "bytes": 187564,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-chegada.png",
+      "sourceId": "4d69151cbbc52d54f3fbed980d432b178b3ddabfd54efa5b2c1139d1b141ca28",
+      "sha256": "56e116b0548899122b31c21d9a07982d9064852048e2fffbf7c34910ce356e12",
+      "bytes": 262675,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-nanda.png",
+      "sourceId": "3fa5e7d7dc386ba612ba7d207c265a49ad1ba9530bbe1e2cb2131893af1517d5",
+      "sha256": "fecedd6f62ebbf59b98227b508b7e4ea98165ae2da6d2154f380451418fbbb93",
+      "bytes": 268290,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-olhar-sala.png",
+      "sourceId": "4a14aac9f7e56bcfa3333988457609e6f0aeaf1fc89183ad42c573fb715f0f99",
+      "sha256": "4a53eb3e060b0a7b68af25922d01adea6d26091f02ad89fdfe5ad08ca7be2aa4",
+      "bytes": 269313,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-pastel.png",
+      "sourceId": "f76b4aff2590248bd4c9088f64732c7482cd25af3377965b830053894f50ee90",
+      "sha256": "138e80564be764b331758042a15b3430dc51341ee58b7ffa29aa4b0a20f0a79a",
+      "bytes": 272132,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-reflexao.png",
+      "sourceId": "adef2e0d09c664e0b8dfc4e68cdaae291427fd0f0aea8aa2618a6d0d28ea5f21",
+      "sha256": "16140a1a1bd6c524d9ef31aa35082163d77fce5b6233feb118e267841d859ab4",
+      "bytes": 271878,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-surpresa.png",
+      "sourceId": "f3c322e177a8fe5a140453752ea94d0242e32ae934114bcc0385a4d5978a5cbd",
+      "sha256": "6de749b286c401fbcb21a4d426b4ecf2851a0e958f159acdb2b9531f8f1e22a4",
+      "bytes": 267052,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-chegada.png",
+      "sourceId": "658f3d6374876ef04814217bc9823a2e37c151824070ac38dd6a94f02a60de7a",
+      "sha256": "742d013a6fe12c7764863292da7956efc49e7d1bf52146f80d75db7b862d250c",
+      "bytes": 409296,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-nanda.png",
+      "sourceId": "380b16303285e46abf377a1281b5c4abbecc03eb7a9325c114ee587df52e94c0",
+      "sha256": "bcfb5e95007e7d2c7597576bb767a34a986d4b808a679ec95f4383d9840759ee",
+      "bytes": 417071,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-olhar-sala.png",
+      "sourceId": "44f6d13b819b7e3b32b2fe4aa2c455fb644347f81087a23d3be874570f6ee2ba",
+      "sha256": "99de5c785e2812ca7889c9151db77d675fd66c8a384d162887839f0b71872643",
+      "bytes": 416036,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-pastel.png",
+      "sourceId": "93dc8cce764e3c0a35025043c90646b4d8199538a24a645d8d2d12b9bb4a2771",
+      "sha256": "5e29d7c06193b3ae368a0f7add83378c69752dae1db0cdad63232a1372d48406",
+      "bytes": 421341,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-reflexao.png",
+      "sourceId": "9c3feeb80fcbb724c8bba07ccd312cfb0c4c507baddfe696a6b96e3cdff06b13",
+      "sha256": "75a116ce157145837dc9421140dc41f4dd3f533edb3090f81212b71c89fb2743",
+      "bytes": 421113,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-surpresa.png",
+      "sourceId": "4722acd97a3d5f6b9e81ad8a5074e5316e8d8d37e479163f46a0993b896f0d4a",
+      "sha256": "0ac8a89c559d2317d4e502930e13cb3e189b2c72d36b3c8307ed154cc8edb4a5",
+      "bytes": 415563,
+      "metadataOnly": true
+    }
+  ]
+}

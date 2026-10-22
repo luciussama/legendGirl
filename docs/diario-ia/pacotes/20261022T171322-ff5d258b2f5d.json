@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T171322-ff5d258b2f5d",
+  "date": "2026-10-22T17:13:22.608394+00:00",
+  "title": "Regressão do pedestal final pelo progresso horizontal, sem reajuste a partir do pouso",
+  "files": [
+    {
+      "path": "scripts/test-final-pedestal-camera.js",
+      "sourceId": "48d8dc8692c1270f567b8e8a4630c2c4f2ea4a51a2db46239572e7611d273aa2",
+      "sha256": "7f02ddd979f54e25458ee889a61c37e4ce3252db2754716510200211727e0a8c",
+      "bytes": 1718,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

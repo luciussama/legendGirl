@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9317d627552c2e9f60f4de8b91426450a1e557d42ccbd7b417785e794e18ecce",
+  "path": "qa-execucoes/a93bfcbebe35430386dd8b394d9cef8f.log",
+  "sha256": "3b604e0a90de87afb4f2c8b82029ce7b9a0b30b86c5da5a6af844bab66393a07",
+  "capturedAt": "2026-10-22T17:14:50.209277+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser",
+    "exitCode": 0,
+    "package": "20261022T171257-5feadae6e90d"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:camera:lateral:browser\n> node docs/diario-ia/qa/camera-lateral/navegador.mjs\n\n[\n  {\n    \"profile\": \"desktop\",\n    \"variants\": 228,\n    \"visible\": 38,\n    \"steps\": 467,\n    \"canvas\": [\n      960,\n      540\n    ]\n  },\n  {\n    \"profile\": \"android\",\n    \"variants\": 228,\n    \"visible\": 38,\n    \"steps\": 467,\n    \"canvas\": [\n      540,\n      1169\n    ]\n  },\n  {\n    \"profile\": \"android-paisagem\",\n    \"variants\": 228,\n    \"visible\": 38,\n    \"steps\": 467,\n    \"canvas\": [\n      1169,\n      540\n    ]\n  },\n  {\n    \"profile\": \"iphone\",\n    \"variants\": 228,\n    \"visible\": 38,\n    \"steps\": 467,\n    \"canvas\": [\n      540,\n      1169\n    ]\n  },\n  {\n    \"profile\": \"iphone-paisagem\",\n    \"variants\": 228,\n    \"visible\": 38,\n    \"steps\": 467,\n    \"canvas\": [\n      1169,\n      540\n    ]\n  }\n]\nAPROVADO: matriz fixa nos saltos/pousos, somente rolagem lateral, câmera não altera o corpo e saltos reais preservados em cinco perfis.\n"
+}

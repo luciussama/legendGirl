@@ -1,0 +1,47 @@
+{
+  "ferramenta": "image_gen integrada, skill imagegen",
+  "data": "2026-10-22",
+  "referencia": "assets/art/dark-room/opening/waking-up.png",
+  "artes": [
+    {
+      "arquivo": "room-v1.png",
+      "prompt": "Sala de brinquedos ilustrada em guache, câmera na altura dos olhos, luz quente, papel floral creme, móveis de carvalho, janela arqueada, brinquedos espalhados nas laterais e tapete oval livre no primeiro plano. Sem personagens nem texto.",
+      "origem": "exec-7e784510-063e-4061-83ac-4155d0914493.png"
+    },
+    {
+      "arquivo": "girl-acting-v1.png",
+      "prompt": "Prancha transparente com quatro poses da mesma menina: chegada surpresa, mãos ao peito olhando Nanda, reflexão com olhar baixo, decisão com palma aberta. Preservar cabelo castanho preso com fita rosa, vestido creme e rosa, meias e sapatos bordô. Sem espada. Quatro células iguais, pés ancorados, acabamento ilustrado. Revisão de enquadramento: reduzir igualmente as figuras e deixar margem transparente acima do cabelo e sob os pés.",
+      "origem": "exec-3b08e07b-df09-4906-a08b-c4aac1bba21d.png",
+      "recortes": [
+        {
+          "x": 116,
+          "y": 113,
+          "w": 329,
+          "h": 552,
+          "anchorX": 169.5
+        },
+        {
+          "x": 666,
+          "y": 99,
+          "w": 310,
+          "h": 561,
+          "anchorX": 187
+        },
+        {
+          "x": 1215,
+          "y": 140,
+          "w": 274,
+          "h": 522,
+          "anchorX": 140.5
+        },
+        {
+          "x": 1723,
+          "y": 112,
+          "w": 372,
+          "h": 555,
+          "anchorX": 165
+        }
+      ]
+    }
+  ]
+}

@@ -128,17 +128,13 @@ O coordenador também seleciona o modo ativo: o quarto usa seu fluxo de platafor
 
 ### Câmera e apresentação móvel
 
-[`CameraController.js`](src/js/controllers/CameraController.js) gerencia acompanhamento, rolagem, zoom narrativo e enquadramento vertical. Ele também participa de regras existentes, como detecção de atraso em relação à rolagem e limite vertical da personagem. Portanto, mudanças nessa câmera podem afetar a jogabilidade.
+[`CameraController.js`](src/js/controllers/CameraController.js) faz somente rolagem lateral durante a jogabilidade. A altura é fixa por viewport e a câmera não reposiciona a menina nem interrompe seu salto. Zoom e movimentos livres pertencem às cenas narrativas.
 
-Os ajustes móveis são aplicados como transformações adicionais de desenho. No retorno pós-porta falsa, `getPhase3ScrollFrame`, em `CameraPresentation.js`, usa uma trajetória visual contínua pelo cenário, sem seguir salto/pouso; o enquadramento móvel fica em escala 0,8 com deslocamento fixo. As regras de derrota continuam na câmera lógica. Nos demais trechos:
+`getDarkRoomScrollFrame`, em `CameraPresentation.js`, define o quadro vertical de todas as seções, incluindo fuga e retorno. `getPhase3ScrollFrame` conserva o contrato do retorno como alias desse quadro fixo. A apresentação móvel usa escala 0,8 e deslocamento constante por seção/viewport. Não consulta altura do pulo, pouso, fada ou próximo apoio para reenquadrar a ação. A pressão lateral do percurso continua ativa; a região horizontal do pedestal final encerra essa pressão, independentemente do índice do apoio.
 
-- [`AndroidFraming.js`](src/js/controllers/AndroidFraming.js) reserva espaço inferior, considera os insets disponíveis e limita a elevação para preservar conteúdo no topo.
-- [`MobileZoom.js`](src/js/controllers/MobileZoom.js) aproxima a cena em até **18%**. Nas plataformas, considera personagem, fada e região de chegada do próximo salto. Quando não há espaço, preserva o campo de visão anterior.
-- [`DialogueSafeArea.js`](src/js/ui/DialogueSafeArea.js) converte a interseção do canvas com o viewport visível e os insets do iOS para coordenadas de desenho dos diálogos.
+`AndroidFraming` e os limites dinâmicos de `MobileZoom` são exclusivos das cenas. `DialogueSafeArea` mantém os textos na área segura; `MobileDialogueRegion` separa fala e atuação. A narração usa quadro pastel superior. Mudanças de orientação recalculam o viewport; saltos e pousos não podem fazê-lo.
 
-Durante a narrativa móvel, [`MobileDialogueRegion.js`](src/js/ui/MobileDialogueRegion.js) reserva uma região superior para a cena e um painel inferior exclusivo para o texto, sem sobreposição e com folga até a área segura.
-
-A interface é renderizada fora da transformação adicional da cena. Esses ajustes não alteram coordenadas dos objetos, velocidades, hitboxes ou distâncias dos saltos.
+Correções de alcance ou contato pertencem à distância do salto, à superfície dos pés ou à superfície física do objeto, conforme `AGENTS.md`. Não alterar a câmera para compensá-las.
 
 ### Renderização e recursos
 

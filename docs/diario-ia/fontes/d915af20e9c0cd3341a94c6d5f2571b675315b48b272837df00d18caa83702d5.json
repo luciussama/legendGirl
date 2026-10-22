@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d915af20e9c0cd3341a94c6d5f2571b675315b48b272837df00d18caa83702d5",
+  "path": "qa-execucoes/244381e29e55426ba7b20c26a008a891/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-nanda.png",
+  "sha256": "aebf28ed65703afd202a607861a906209f75b586d41094db9b4c3d182f6b1508",
+  "capturedAt": "2026-10-22T16:56:37.458203+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-nanda.png\", \"sha256\": \"0de0bba32da1fed0c58d14df9eb5e5dbfdfd16ddbbfb82b638339860e3b76c3e\", \"bytes\": 1232717, \"binaryRetained\": false}"
+}

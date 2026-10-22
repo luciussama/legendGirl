@@ -31,9 +31,10 @@ export class OpeningSequence {
     try { return completedInSession || this.storage?.getItem(OPENING_STORAGE_KEY) === '1'; }
     catch { return completedInSession; }
   }
-  start() {
+  start({ replay = false } = {}) {
     if (this.active) return true;
-    if (this.hasCompleted()) return false;
+    if (!replay && this.hasCompleted()) return false;
+    this.replay = replay;
     this.time = 0; this.active = true; this.cues.clear();
     this.onCue('ambience');
     return true;
@@ -65,8 +66,11 @@ export class OpeningSequence {
       }
     }
     if (this.time >= 37.5) {
-      completedInSession = true; this.completedOverride = true;
-      try { this.storage?.setItem(OPENING_STORAGE_KEY, '1'); } catch { /* alternativa restrita à sessão */ }
+      // Uma revisão não altera a conclusão persistida nem a conclusão em memória.
+      if (!this.replay) {
+        completedInSession = true; this.completedOverride = true;
+        try { this.storage?.setItem(OPENING_STORAGE_KEY, '1'); } catch { /* alternativa restrita à sessão */ }
+      }
       this.active = false;
       this.onComplete();
     }
@@ -111,13 +115,13 @@ export class OpeningSequence {
       bottom:canvas.height/2+(floor-canvas.height/2)*zoom
     };
     // Mantém a divisão estável também nos intervalos entre as falas da abertura.
+    if (line?.[3] === 'narrator') {
+      renderPoeticNarration(ctx, canvas, line[2], {anchor, separateScene:true});
+      this.renderFade(ctx, canvas);
+      return;
+    }
     const regions=renderMobileDialogueRegion(ctx,canvas,safe,156,anchor);
     if (line) {
-      if (line[3] === 'narrator') {
-        renderPoeticNarration(ctx, canvas, line[2], {anchor,panel:regions?.panel});
-        this.renderFade(ctx, canvas);
-        return;
-      }
       ctx.save();
       const width=Math.min(680,canvas.width-40,safe.right-safe.left-2*Math.max(20,safe.marginX)), font=canvas.width<600?20:23;
       const centerX=(safe.left+safe.right)/2;

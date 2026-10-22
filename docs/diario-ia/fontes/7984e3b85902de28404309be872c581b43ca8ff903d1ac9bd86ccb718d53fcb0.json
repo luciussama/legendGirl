@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7984e3b85902de28404309be872c581b43ca8ff903d1ac9bd86ccb718d53fcb0",
+  "path": "qa-execucoes/a93bfcbebe35430386dd8b394d9cef8f/docs/diario-ia/qa-resultados/camera-lateral/iphone-false-20.png",
+  "sha256": "9d6f9d47dbc3a9b2447c830b87ea106006f9b2f548ea018660a5b24e2acb74f0",
+  "capturedAt": "2026-10-22T17:14:50.221769+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/iphone-false-20.png\", \"sha256\": \"398b39df0a55a1c41b812c73bc653761068a72ff8f29bc7b6333f47c7730db7d\", \"bytes\": 371632, \"binaryRetained\": false}"
+}

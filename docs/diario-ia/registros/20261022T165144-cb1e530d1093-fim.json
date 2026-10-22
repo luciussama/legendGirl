@@ -1,0 +1,45 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T165144-cb1e530d1093-fim",
+  "sessionId": "20261022T165144-cb1e530d1093",
+  "type": "fim",
+  "date": "2026-10-22T17:02:18.677433+00:00",
+  "title": "Substituir introdução da sala de brinquedos por cenas cinematográficas",
+  "actor": "Codex",
+  "summary": "Introdução da sala substituída por composição ilustrada na altura dos olhos, cenário e quatro poses próprias sem espada. Câmera acompanha chegada, surpresa, reflexão e decisão; menina com base fixa e respiração, Nanda com voo/asas. Sala temporária de exploração removida, falas/tempos/eventos preservados e fade creme contínuo na entrada ativa. Pedido adicional aplicado globalmente à narração: quadro superior de papel creme com moldura rosa/sálvia e fonte manuscrita Caveat local sob OFL. Regiões móveis separam painel superior e atuação; abertura evita divisão duplicada. Documentação, inventário, prompts e contexto atualizados; nenhuma operação de commit/push nesta sessão.",
+  "checks": [
+    "npm test completo aprovado; test:dialogues aprovado; build, lint, sintaxe dos módulos alterados, 68 assets e git diff --check aprovados",
+    "test:toy-room:intro:browser aprovado: 20 planos em 1280x720, 390x844, 844x390 e 320x568; fonte local, quadro seguro e superior em três viewports com user agent Android; atores/fada visíveis, eventos únicos, conclusão e cancelamento. Capturas conferidas visualmente, metadados preservados sem bitmaps descartáveis",
+    "test:docs:equalizacao aprovado: 151 módulos, 15 documentos, 597 links e parâmetros/dependências iguais às fontes. Mapa reconstruído: 417 imagens, 99 recortes e 29 assinaturas; referência: 1024 declarações",
+    "test:toy-room:story falhou na expectativa de cameraTarget nulo em COLLECTING. Baseline isolado em HEAD 44654efb reproduziu exatamente a mesma falha preexistente; nenhuma alteração no contrato de coleta. Primeira tentativa de baseline excedeu buffer ao arquivar o repositório inteiro; execução restrita ao código confirmou o diagnóstico",
+    "Fontes dos novos QAs conferidas por SHA-256 contra pacotes imutáveis e cópias físicas removidas; resultados executados em diretório temporário"
+  ],
+  "pending": [
+    "Falha preexistente no teste de câmera de coleta permanece; não corrigida por ser alheia à apresentação solicitada. Revisão artística humana e validação em aparelho físico/Safari permanecem distintas do QA Chrome"
+  ],
+  "files": [
+    "src/js/cinematics/ToyRoomIntroduction.js",
+    "src/js/cinematics/OpeningSequence.js",
+    "src/js/game.js",
+    "src/js/narrative/PoeticNarrator.js",
+    "src/js/ui/MobileDialogueRegion.js",
+    "assets/art/toy-room/introduction/room-v1.png",
+    "assets/art/toy-room/introduction/girl-acting-v1.png",
+    "assets/art/toy-room/introduction/prompts.json",
+    "assets/manifest.json",
+    "assets/fonts/Caveat-Variable.ttf",
+    "assets/fonts/Caveat-LICENSE.txt",
+    "src/css/styles.css",
+    "index.html",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/ARQUITETURA.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/COMANDOS.md",
+    "docs/DEPENDENCIAS.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

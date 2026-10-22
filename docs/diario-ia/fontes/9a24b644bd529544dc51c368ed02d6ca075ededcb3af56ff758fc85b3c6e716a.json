@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9a24b644bd529544dc51c368ed02d6ca075ededcb3af56ff758fc85b3c6e716a",
+  "path": "qa-execucoes/244381e29e55426ba7b20c26a008a891.log",
+  "sha256": "83a949a76690e35e96349e81b02afc45498bfaac53612b83432431ac8783ecc5",
+  "capturedAt": "2026-10-22T16:56:37.454869+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser",
+    "exitCode": 0,
+    "package": "20261022T165630-5073802f20cb"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:intro:browser\n> node docs/diario-ia/qa/introducao-cinematografica/navegador.mjs\n\nAPROVADO: 15 planos em desktop, retrato e paisagem; enquadramento dos atores, artes carregadas, eventos únicos, conclusão e cancelamento. {\n  events: [ 'PHASE1_COMPLETE', 'TOY_ROOM_START' ],\n  completed: 1,\n  active: false,\n  released: true,\n  cancelled: true\n}\n"
+}

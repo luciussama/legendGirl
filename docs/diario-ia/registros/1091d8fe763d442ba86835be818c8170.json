@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "1091d8fe763d442ba86835be818c8170",
+  "type": "qa",
+  "date": "2026-10-22T17:07:15.342991+00:00",
+  "title": "QA temporário: test:seletor:cenas:browser",
+  "exitCode": 0,
+  "sourceId": "b464988721be68fccc4df9bb4e18512f7435371bf4df1ce1cc3ad5cbef22e949",
+  "package": "20261022T170634-7d4d2d91a004"
+}

@@ -7,6 +7,7 @@
   <meta name="description" content="Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia." />
   <meta property="og:title" content="O Quarto dos Brinquedos" />
   <meta property="og:description" content="Jogo de plataforma 2D em estilo Mana onde você explora o quarto dos brinquedos com uma garotinha e uma fada guia." />
+  <link rel="preload" href="assets/fonts/Caveat-Variable.ttf" as="font" type="font/ttf" crossorigin />
   <link rel="stylesheet" href="src/css/styles.css" />
   <link rel="stylesheet" href="src/css/title-screen.css" />
 </head>
@@ -93,8 +94,8 @@
           </svg>
         </button>
         <label id="debug-phase-panel" class="phase-debug-control" for="debug-phase-select" hidden>
-          <span id="debug-phase-help">Debug: escolha uma fase para pular</span>
-          <select id="debug-phase-select" aria-describedby="debug-phase-help" title="Pule entre o quarto escuro, a sala de brinquedos e a arena. O debug não altera a campanha salva.">
+          <span id="debug-phase-help">Revisar fase desde a cena inicial</span>
+          <select id="debug-phase-select" aria-describedby="debug-phase-help" title="Reproduza as cenas de entrada do quarto, da sala, da arena ou da perseguição. A revisão não altera a campanha salva.">
             <option value="">Iniciar fase…</option>
             <option value="bedroom">Quarto escuro</option>
             <option value="toy-room">Sala de brinquedos</option>

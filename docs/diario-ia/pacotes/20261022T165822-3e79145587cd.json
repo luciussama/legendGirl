@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T165822-3e79145587cd",
+  "date": "2026-10-22T16:58:22.677391+00:00",
+  "title": "QA da atuação e do quadro superior pastel com fonte local",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/introducao-cinematografica/navegador.mjs",
+      "sourceId": "a3994ed394ad897fad924f51a8cf6b28e368ccd9a0515c52171b29bb091c4893",
+      "sha256": "de258b5549154e7f896645315dc4e91a2fbf4229258278cd060c6f54f6df9090",
+      "bytes": 6548,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:toy-room:intro:browser": "node docs/diario-ia/qa/introducao-cinematografica/navegador.mjs"
+  }
+}

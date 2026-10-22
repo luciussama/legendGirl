@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "9de8b9abd0d64a4abb1656f12ff41122",
+  "type": "qa",
+  "date": "2026-10-22T16:58:33.574403+00:00",
+  "title": "QA temporário: test",
+  "exitCode": 0,
+  "sourceId": "e16ab25ff0167f2545fbae528ce1ab7ad552331b3097be27eaaeb938e216f42a",
+  "package": "zzzzzzzzzzz-refact-tutorial-20261015-v2"
+}

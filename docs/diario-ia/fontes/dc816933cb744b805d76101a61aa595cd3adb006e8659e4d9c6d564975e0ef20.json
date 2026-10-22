@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "dc816933cb744b805d76101a61aa595cd3adb006e8659e4d9c6d564975e0ef20",
+  "path": "qa-execucoes/4c38be7289af47d2932a0b9fa6df7c51.log",
+  "sha256": "032fab72003655d5373eeebc0fceae15073e0b531db387179c2230bd627e1b43",
+  "capturedAt": "2026-10-22T17:06:40.643959+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:seletor:cenas:browser",
+    "exitCode": 1,
+    "package": "20261022T170634-7d4d2d91a004"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:seletor:cenas:browser\n> node docs/diario-ia/qa/seletor-cenas/navegador.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n\n1 !== 0\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-c7fzhhw1/projeto/docs/diario-ia/qa/seletor-cenas/navegador.mjs:54:9 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 1,\n  expected: 0,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

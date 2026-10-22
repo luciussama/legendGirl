@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f3c322e177a8fe5a140453752ea94d0242e32ae934114bcc0385a4d5978a5cbd",
+  "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-surpresa.png",
+  "sha256": "b967f5bba8e54ce7b9519f71427d1ff021a2f83668f8c977cad177005697654f",
+  "capturedAt": "2026-10-22T16:59:16.919051+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/390x844-surpresa.png\", \"sha256\": \"6de749b286c401fbcb21a4d426b4ecf2851a0e958f159acdb2b9531f8f1e22a4\", \"bytes\": 267052, \"binaryRetained\": false}"
+}

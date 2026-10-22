@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T170107-0a68d0448f2d",
+  "date": "2026-10-22T17:01:07.334363+00:00",
+  "title": "Comparação da falha antiga de cameraTarget com HEAD anterior",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/introducao-cinematografica/baseline.mjs",
+      "sourceId": "9eec6b64d68607cfbbd2083e83caaa0cc18750428658aa241d78ff171a3c5a00",
+      "sha256": "9fed7dd238ec637eaae1f4a524559a0d46dd7fc47bed5931cd1f7ca7f2fa7e04",
+      "bytes": 1272,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:toy-room:story:baseline": "node docs/diario-ia/qa/introducao-cinematografica/baseline.mjs"
+  }
+}

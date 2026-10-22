@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "3a4a0ee7bd0a569571a014acb49c3b4b734811ce1d83d5fe7ec3447cd1fa85ee",
+  "path": "qa-execucoes/85308aaa388341ef98748704243c61d5.log",
+  "sha256": "bb15f030b77513f2776c17eafa6a604c0a1e62831078b1336524022c59754b75",
+  "capturedAt": "2026-10-22T17:06:46.390870+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:sons",
+    "exitCode": 0,
+    "package": "20261022T134412-e7390d493b0b"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:sons\n> node docs/diario-ia/qa/sons-arena-20261022/eventos.mjs\n\nAPROVADO: nove ataques encaminhados ao perfil de áudio e especial único no lançamento, com dt variável e restore.\n"
+}

@@ -1,7 +1,9 @@
+import { getDarkRoomScrollFrame } from './CameraPresentation.js';
+
 /**
  * CameraController.js
- * Gerencia o enquadramento do viewport, níveis de zoom dinâmico, rastreamento suave da câmera,
- * ajuste de folga vertical (headroom) e transformações de matriz do canvas.
+ * Gerencia rolagem lateral no gameplay, enquadramento fixo por viewport e cortes narrativos.
+ * Nunca corrige a posição ou a velocidade da personagem.
  */
 
 export class CameraController {
@@ -13,7 +15,6 @@ export class CameraController {
     this.targetZoom = options.targetZoom || 1.0;
 
     this.floorY = options.floorY || 450;
-    this.ceilingClampOffset = options.ceilingClampOffset || 44;
   }
 
   reset(x = 0, y = 0, zoom = 1.0) {
@@ -43,7 +44,7 @@ export class CameraController {
   }
 
   /**
-   * Atualiza o enquadramento da câmera, rastreamento horizontal/vertical e interpolação de zoom
+   * Atualiza a rolagem lateral; zoom e movimentos livres pertencem somente às cenas
    * @param {number} dt Fator de variação de tempo
    * @param {object} state Instância atual do GameState
    * @param {HTMLCanvasElement} canvas Referência do Canvas
@@ -119,7 +120,7 @@ export class CameraController {
 
     // 7. Recuperação do Zoom do Gameplay Normal
     this.targetZoom = 1.0;
-    this.zoom += (this.targetZoom - this.zoom) * 0.08;
+    this.zoom = 1;
 
     // 8. Rastreamento Horizontal e Rolagem Automática por Fase
     if (state.isPhase3) {
@@ -139,18 +140,9 @@ export class CameraController {
       }
     } else if (state.isEscapeMode) {
       // Fase 2: Fuga com rolagem automática para frente
-      // Efeito escondido no castelo (início da segunda parte): aguarda o jogador realizar o primeiro salto
-      if (baby.currentPlatformIndex === 9 && baby.onGround) {
-        this.targetZoom = 1.0;
-        this.zoom += (this.targetZoom - this.zoom) * 0.08;
-        const targetCamX = baby.x - (isWide ? 190 : 130);
-        this.x += (targetCamX - this.x) * 0.08 * dt;
-        this.syncToState(state);
-        return;
-      }
-      // Após conquistar o pedestal final, acompanha a aproximação da porta falsa.
-      // A pressão da rolagem permanece intacta até o pouso; nenhum salto é assistido aqui.
-      if (baby.currentPlatformIndex === callbacks.escapeEndPlatformIndex) {
+      // A região horizontal do pedestal final encerra a pressão da aproximação.
+      // Altura, pouso e índice do apoio não selecionam o enquadramento.
+      if (Number.isFinite(callbacks.escapeEndPlatformX) && baby.x + baby.w >= callbacks.escapeEndPlatformX) {
         const targetCamX = baby.x - (isWide ? 170 : 120);
         this.x += (targetCamX - this.x) * 0.09 * dt;
       } else {
@@ -177,23 +169,8 @@ export class CameraController {
       this.x += (targetCamX - this.x) * 0.08;
     }
 
-    // 9. Rastreamento vertical com margem dinâmica de teto (headroom)
-    const minCeilingHeadroom = state.isPortrait ? 130 : 90;
-    let baseFloorCamY = 0;
-    if (state.isPortrait && canvas.height > this.floorY + 90) {
-      baseFloorCamY = this.floorY - (canvas.height - 110);
-    }
-
-    const babyApexTargetY = baby.y - minCeilingHeadroom;
-    this.targetY = Math.min(baseFloorCamY, babyApexTargetY);
-    this.y += (this.targetY - this.y) * 0.12;
-
-    // Limite visual rígido no teto: garante que o jogador nunca ascenda além da área visível iluminada
-    const ceilingClampY = this.y + this.ceilingClampOffset;
-    if (baby.y < ceilingClampY) {
-      baby.y = ceilingClampY;
-      if (baby.vy < 0) baby.vy = 0;
-    }
+    // O viewport define a altura uma única vez; o salto não dirige a câmera nem recebe correções dela.
+    this.y = this.targetY = getDarkRoomScrollFrame({ x: this.x, width: canvas.width, height: canvas.height }).y;
 
     this.syncToState(state);
   }

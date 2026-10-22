@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T170412-23eb5385ee6f-fim",
+  "sessionId": "20261022T170412-23eb5385ee6f",
+  "type": "fim",
+  "date": "2026-10-22T17:07:59.695177+00:00",
+  "title": "Iniciar fases do seletor pelas cenas de entrada",
+  "actor": "Codex",
+  "summary": "Seletor do topo inicia fases pelas cenas: despertar mesmo concluído, chegada ilustrada à sala, transformação da arena sem salto artificial e urso caído antes da perseguição. Handler aguarda assets principais e permite repetir a mesma seleção. OpeningSequence.start aceita replay sem persistir conclusão nem alterar conclusão em memória; campanha normal mantém seu comportamento. Preservadas alterações visuais anteriores ainda não commitadas; documentação e contexto atualizados. Sem commit/push nesta sessão.",
+  "checks": [
+    "test:seletor:cenas:browser aprovado em Chrome isolado: quatro entradas, doze trocas em desktop/celular, introdução da sala até tutorial, transformação desde o início, fuga em BEAR_DOWN, foco liberado, save e marca de conclusão intactos. Fonte arquivada, hash conferido e cópia física retirada",
+    "npm test completo aprovado; após ajuste final de conclusão no replay, script:test-opening-sequence.js e teste de navegador aprovados. Build, lint, sintaxe dos três módulos, 68 assets e git diff --check aprovados",
+    "test:docs:equalizacao aprovado: 151 módulos, 15 documentos, 597 links. Referência regenerada com 1024 declarações",
+    "Primeira execução do QA ajustou baseline para comparar o save após a última gravação normal ao entrar no debug; segunda detectou escrita indevida de conclusão ao completar replay. Proteção implementada e execução final aprovada, incluindo replay sem marca anterior"
+  ],
+  "pending": [],
+  "files": [
+    "src/js/game.js",
+    "src/js/main.js",
+    "src/js/cinematics/OpeningSequence.js",
+    "index.html",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/ARQUITETURA.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/COMANDOS.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

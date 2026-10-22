@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "67434287b14a5c9db7a0a76ba327a8fcb7bf01a4dc445e782952704f50aec26d",
+  "path": "qa-execucoes/70bff6b43d664895a30c62d1a701db80.log",
+  "sha256": "7f34cec9105688c7597d751a93fe824bc6e28a8f97cb330ebdcfb65b29c236cb",
+  "capturedAt": "2026-10-22T17:01:42.248390+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:story:baseline",
+    "exitCode": 0,
+    "package": "20261022T170138-3ccdc5be35f1"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:story:baseline\n> node docs/diario-ia/qa/introducao-cinematografica/baseline.mjs\n\nCONFIRMADO: a mesma expectativa de cameraTarget em COLLECTING falha no HEAD 44654efb, anterior às mudanças desta sessão.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: O contrato anterior de cameraTarget deve permanecer em COLLECTING.\n+ actual - expected\n\n+ {\n+   animTime: 2.6400000000000006,\n+   carriedItem: null,\n+   direction: 'right',\n+   facing: 'right',\n+   facingAngle: 0,\n+   isMoving: true,\n+   radius: 20,\n+   speed: 3.8,\n+   stepTimer: 12,\n+   vx: 3.8,\n+   vy: 0,\n+   x: 745.5999999999995,\n+   y: 700\n+ }\n- null\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-baseline-5CP2nS/scripts/test-toy-room-sword-camera.js:76:16\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: {\n    x: 745.5999999999995,\n    y: 700,\n    vx: 3.8,\n    vy: 0,\n    speed: 3.8,\n    radius: 20,\n    direction: 'right',\n    facing: 'right',\n    facingAngle: 0,\n    animTime: 2.6400000000000006,\n    isMoving: true,\n    carriedItem: null,\n    stepTimer: 12\n  },\n  expected: null,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n\n"
+}

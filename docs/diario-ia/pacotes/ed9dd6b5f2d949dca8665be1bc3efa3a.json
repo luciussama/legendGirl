@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ed9dd6b5f2d949dca8665be1bc3efa3a",
+  "date": "2026-10-22T16:59:53.427767+00:00",
+  "title": "QA temporário: test:dialogues",
+  "files": [
+    {
+      "path": "qa-execucoes/ed9dd6b5f2d949dca8665be1bc3efa3a.log",
+      "sourceId": "cfc53edf820090fd619130d07850bc7882ef8076a12d3cdfd80d1c809efc7351",
+      "sha256": "3638e5ba9ed14c421d462f78def517d366fc58d124da06004020c9dbb9562d9c",
+      "bytes": 210,
+      "metadataOnly": false
+    }
+  ]
+}

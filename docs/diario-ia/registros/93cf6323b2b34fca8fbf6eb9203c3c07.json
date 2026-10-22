@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "93cf6323b2b34fca8fbf6eb9203c3c07",
+  "type": "qa",
+  "date": "2026-10-22T17:01:13.202927+00:00",
+  "title": "QA temporário: test:toy-room:story:baseline",
+  "exitCode": 1,
+  "sourceId": "4d520d4a21f2ffe5f31844bd147e9cc7455a041423dec0f506e30c4bf22b9e4d",
+  "package": "20261022T170107-0a68d0448f2d"
+}

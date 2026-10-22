@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "cd688c1394db7fd24ba9b586f3f81babaa1573fedd6194a311916ea8c066edae",
+  "path": "assets/art/toy-room/introduction/prompts.json",
+  "sha256": "1096a1a5ce62013ec9aa68bf04d4ee01912c47a335fbfd44e3ea27b154e7d0aa",
+  "capturedAt": "2026-10-22T16:58:22.726804+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada, skill imagegen\",\n  \"data\": \"2026-10-22\",\n  \"referencia\": \"assets/art/dark-room/opening/waking-up.png\",\n  \"artes\": [\n    {\n      \"arquivo\": \"room-v1.png\",\n      \"prompt\": \"Sala de brinquedos ilustrada em guache, câmera na altura dos olhos, luz quente, papel floral creme, móveis de carvalho, janela arqueada, brinquedos espalhados nas laterais e tapete oval livre no primeiro plano. Sem personagens nem texto.\",\n      \"origem\": \"exec-7e784510-063e-4061-83ac-4155d0914493.png\"\n    },\n    {\n      \"arquivo\": \"girl-acting-v1.png\",\n      \"prompt\": \"Prancha transparente com quatro poses da mesma menina: chegada surpresa, mãos ao peito olhando Nanda, reflexão com olhar baixo, decisão com palma aberta. Preservar cabelo castanho preso com fita rosa, vestido creme e rosa, meias e sapatos bordô. Sem espada. Quatro células iguais, pés ancorados, acabamento ilustrado. Revisão de enquadramento: reduzir igualmente as figuras e deixar margem transparente acima do cabelo e sob os pés.\",\n      \"origem\": \"exec-3b08e07b-df09-4906-a08b-c4aac1bba21d.png\",\n      \"recortes\": [\n        {\n          \"x\": 116,\n          \"y\": 113,\n          \"w\": 329,\n          \"h\": 552,\n          \"anchorX\": 169.5\n        },\n        {\n          \"x\": 666,\n          \"y\": 99,\n          \"w\": 310,\n          \"h\": 561,\n          \"anchorX\": 187\n        },\n        {\n          \"x\": 1215,\n          \"y\": 140,\n          \"w\": 274,\n          \"h\": 522,\n          \"anchorX\": 140.5\n        },\n        {\n          \"x\": 1723,\n          \"y\": 112,\n          \"w\": 372,\n          \"h\": 555,\n          \"anchorX\": 165\n        }\n      ]\n    }\n  ]\n}\n"
+}

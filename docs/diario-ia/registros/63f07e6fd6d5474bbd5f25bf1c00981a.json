@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "63f07e6fd6d5474bbd5f25bf1c00981a",
+  "type": "qa",
+  "date": "2026-10-22T16:59:00.397905+00:00",
+  "title": "QA temporário: test:arena:especial",
+  "exitCode": 0,
+  "sourceId": "c68a8c845e2466f0eaa5bbab56304317f7b5d5ec52a46ed9db2483b01fbb1f8e",
+  "package": "20261021T202057-5a61e352bc33"
+}

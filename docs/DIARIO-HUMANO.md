@@ -83,3 +83,20 @@ Ao perder o último coração, o Urso encerra a arena e a cena passa à ilustra�
 A arena passou a usar os efeitos gravados por personagem, incluindo a defesa e o especial da menina. Ao recuar, ela move os pés normalmente; durante a ofensiva inimiga, firma a base para defender e depois retoma a caminhada. A tela inicial mantém poltrona e tapete no mesmo lugar do quarto, mudando apenas o enquadramento para o celular.
 
 A cena obrigatória da menina verificando o urso caído também serve de carregamento da perseguição. Se faltar recurso visual, ela aguarda nessa cena antes de o urso levantar. A corrida só começa depois da preparação do cenário e da verificação do piso. A confirmação do piso no Safari continua pendente. O design inicial de batalha foi preservado no diário de IA; os guias atuais concentram as instruções de manutenção.
+
+
+### 22/10/2026 — Entrada ilustrada e narração
+
+A chegada à sala de brinquedos passa a usar cenário ilustrado na altura dos olhos e poses próprias da menina para chegada, surpresa, reflexão e decisão. Os cortes acompanham a conversa e o voo de Nanda. Falas, tempos e progressão permanecem os mesmos; a exploração surge após o fade final.
+
+A narração ganha quadro superior em papel creme, moldura rosa e sálvia, pequenas flores e escrita manuscrita Caveat. A fonte é local e mantém os acentos. No celular, o quadro narrativo deixa o rodapé; a atuação se apresenta abaixo dele quando a cena exige regiões separadas. Aprovação artística humana continua distinta dos testes técnicos.
+
+
+### 22/10/2026 — Revisão das cenas pelo seletor
+
+O seletor do topo começa cada fase por sua cena de entrada: despertar, chegada à sala, transformação da arena ou urso caído. É possível escolher a mesma fase novamente para rever. A revisão mantém a campanha salva e não marca o despertar como concluído na campanha.
+
+
+### 22/10/2026 — Câmera lateral durante os saltos
+
+A regra de câmera do quarto escuro passa a ser explícita: a jogabilidade usa somente rolagem lateral, com altura e escala fixas por viewport. Pousar ou mudar de plataforma não reajusta o quadro. A câmera também deixa de corrigir a posição e a subida da menina. Cenas narrativas mantêm seus cortes; correções de salto devem atuar no salto ou nas superfícies físicas, conforme registrado em AGENTS.md.

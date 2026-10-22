@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bc6e7615afa44d3a80126ceb3e58fa5f",
+  "date": "2026-10-22T17:06:00.507888+00:00",
+  "title": "QA temporário: test:seletor:cenas:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/bc6e7615afa44d3a80126ceb3e58fa5f.log",
+      "sourceId": "3d98d0f5d5ed2ad1eded532a367b55e70b223dd5b6293ccc6c0a1a17b3376b9e",
+      "sha256": "8cf3f95306860873605837af1d142aa99bbe37e6451668b13986e75b2e58f339",
+      "bytes": 12910,
+      "metadataOnly": false
+    }
+  ]
+}

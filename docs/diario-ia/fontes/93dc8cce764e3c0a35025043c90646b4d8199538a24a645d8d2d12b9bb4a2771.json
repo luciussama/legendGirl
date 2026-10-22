@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "93dc8cce764e3c0a35025043c90646b4d8199538a24a645d8d2d12b9bb4a2771",
+  "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-pastel.png",
+  "sha256": "1bea1b349f1ddef0f5a30e19ed90fd9daf9c7d6311254b71e1f7eef774871641",
+  "capturedAt": "2026-10-22T16:59:16.921586+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/844x390-pastel.png\", \"sha256\": \"5e29d7c06193b3ae368a0f7add83378c69752dae1db0cdad63232a1372d48406\", \"bytes\": 421341, \"binaryRetained\": false}"
+}

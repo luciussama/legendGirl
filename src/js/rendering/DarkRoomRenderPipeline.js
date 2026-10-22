@@ -1,14 +1,14 @@
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { FLOOR_Y, platforms, phase3Platforms, trueExitDoor } from '../config.js';
 import { getMobileZoomFrame } from '../controllers/MobileZoom.js';
-import { getPhase3ScrollFrame } from '../controllers/CameraPresentation.js';
+import { getDarkRoomScrollFrame } from '../controllers/CameraPresentation.js';
 import { renderFirstJumpTutorial } from '../ui/FirstJumpTutorial.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
 import { transitionEffects } from '../effects/index.js';
 
 // Composição visual: a atualização da simulação permanece no fluxo do jogo.
 export function renderDarkRoom(context) {
-  const { ctx, canvas, toyRoomIntroduction, opening, assets, lighting, fairyRenderer, cameraPresentation, camera, androidFraming, mobilePresentation, baby, fairy, cameraX, cameraY, cameraZoom, targetCameraY, targetScrollSpeed, isPhase3, plotTwistActive, phase3TutorialActive, truePortalTransitionActive, tick, gameWon, transitionWipeAlpha, inputHandler, recordCameraQa, drawBackgroundWall, drawSceneryItems, drawPlatforms, drawExitDoor, drawTrueExitDoor, drawTutorialArrow, drawSpeedRibbons, drawBabyJumpDust, drawFairy, drawBabyManaStyle, applyDarkAtmosphereWithLights, drawEscapeBanner, drawCutsceneDialogue, state } = context;
+  const { ctx, canvas, toyRoomIntroduction, opening, assets, lighting, fairyRenderer, cameraPresentation, camera, androidFraming, mobilePresentation, baby, fairy, cameraX, cameraY, cameraZoom, isPhase3, plotTwistActive, phase3TutorialActive, truePortalTransitionActive, tick, gameWon, transitionWipeAlpha, inputHandler, recordCameraQa, drawBackgroundWall, drawSceneryItems, drawPlatforms, drawExitDoor, drawTrueExitDoor, drawTutorialArrow, drawSpeedRibbons, drawBabyJumpDust, drawFairy, drawBabyManaStyle, applyDarkAtmosphereWithLights, drawEscapeBanner, drawCutsceneDialogue, state } = context;
 
     if (toyRoomIntroduction.active) { toyRoomIntroduction.render(ctx, canvas); return; }
     if (opening.active && !opening.revealing) {
@@ -22,57 +22,61 @@ export function renderDarkRoom(context) {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // A translação de apresentação fica fora da câmera usada pela física.
-    const cameraNarrative = Boolean(opening.active || plotTwistActive || phase3TutorialActive || truePortalTransitionActive);
-    // Alvo visual de regime permanente do follow existente (fator lógico de 0.08), sem mudar sua atualização.
-    const groundLead = (canvas.width > 600 ? canvas.width - 250 : canvas.width - 160)
-      + 11.5 * (baby.vx - targetScrollSpeed);
+    const cameraNarrative = Boolean(opening.active || plotTwistActive || phase3TutorialActive || truePortalTransitionActive
+      || state.cutsceneActive || state.isStandbyActive || state.isStandbyTransitioning);
     // Normaliza a pose efetivamente desenhada também nos ramos narrativos que atualizam valores locais.
     const renderCameraX = cameraX + (1 - camera.zoom) * (camera.x - cameraX);
-    const phase3Scrolling = isPhase3 && !cameraNarrative;
-    const scrollFrame = phase3Scrolling
-      ? getPhase3ScrollFrame({ x: renderCameraX, width: canvas.width, height: canvas.height })
+    const lateralScrolling = !cameraNarrative;
+    const scrollFrame = lateralScrolling
+      ? getDarkRoomScrollFrame({ x: cameraX, width: canvas.width, height: canvas.height })
       : { x: renderCameraX, y: camera.y };
     const presentation = cameraPresentation.frame({ ...scrollFrame,
-      playerX: baby.x, groundLead, targetY: targetCameraY,
-      onGround: baby.onGround, active: !phase3Scrolling && (isPhase3 || plotTwistActive),
+      active: !lateralScrolling && (isPhase3 || plotTwistActive),
       narrative: cameraNarrative, tick, width: canvas.width, height: canvas.height,
       cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height, zoom: camera.zoom });
     const presentationY = presentation.y;
-    const presentationX = isPhase3 || plotTwistActive ? presentation.x : cameraX;
-    const renderZoom = phase3Scrolling ? 1 : camera.zoom;
-    const focusY = (baby.y + fairy.y) / 2 - presentationY;
-    const screenY = y => focusY + (y - presentationY - focusY) * renderZoom;
-    const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(p =>
-      p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0);
-    const topY = Math.min(screenY(baby.y - 20), screenY(fairy.y - 24),
-      ...visiblePlatforms.map(p => screenY(p.y - 64)));
-    const framingOffset = phase3Scrolling ? 0 : androidFraming.offset(screenY(FLOOR_Y), topY);
-    const focusX = (baby.x + fairy.x) / 2 - presentationX;
-    const screenX = x => focusX + (x - presentationX - focusX) * renderZoom;
-    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
-    const next = activePlatforms[baby.currentPlatformIndex + 1];
-    const points = [
-      [baby.x - 12, baby.y - 20], [baby.x + baby.w + 12, baby.y + baby.h + 8],
-      [fairy.x - 28, fairy.y - 28], [fairy.x + 28, fairy.y + 28]
-    ];
-    if (next) {
-      const support = next.standRegion || next;
-      const y = next.surfaceTopY ?? support.y;
-      // Apoios largos podem continuar além da tela; preserva a região de chegada do salto.
-      const landingWidth = Math.min(support.w, 96);
-      const landingX = isPhase3 ? support.x + support.w - landingWidth : support.x;
-      points.push([landingX, y - 24], [landingX + landingWidth, y + 24]);
+    const presentationX = lateralScrolling || isPhase3 || plotTwistActive ? presentation.x : cameraX;
+    const renderZoom = lateralScrolling ? 1 : camera.zoom;
+    let framingOffset = 0;
+    let mobileTarget;
+    if (lateralScrolling) {
+      mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: true,
+        anticipate: isPhase3, width: canvas.width, height: canvas.height });
+    } else {
+      const focusY = (baby.y + fairy.y) / 2 - presentationY;
+      const screenY = y => focusY + (y - presentationY - focusY) * renderZoom;
+      const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(p =>
+        p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0);
+      const topY = Math.min(screenY(baby.y - 20), screenY(fairy.y - 24),
+        ...visiblePlatforms.map(p => screenY(p.y - 64)));
+      framingOffset = androidFraming.offset(screenY(FLOOR_Y), topY);
+      const focusX = (baby.x + fairy.x) / 2 - presentationX;
+      const screenX = x => focusX + (x - presentationX - focusX) * renderZoom;
+      const activePlatforms = isPhase3 ? phase3Platforms : platforms;
+      const next = activePlatforms[baby.currentPlatformIndex + 1];
+      const points = [
+        [baby.x - 12, baby.y - 20], [baby.x + baby.w + 12, baby.y + baby.h + 8],
+        [fairy.x - 28, fairy.y - 28], [fairy.x + 28, fairy.y + 28]
+      ];
+      if (next) {
+        const support = next.standRegion || next;
+        const y = next.surfaceTopY ?? support.y;
+        // Apoios largos podem continuar além da tela; preserva a região de chegada do salto.
+        const landingWidth = Math.min(support.w, 96);
+        const landingX = isPhase3 ? support.x + support.w - landingWidth : support.x;
+        points.push([landingX, y - 24], [landingX + landingWidth, y + 24]);
+      }
+      const bounds = {
+        left: Math.min(...points.map(p => screenX(p[0]))), right: Math.max(...points.map(p => screenX(p[0]))),
+        top: Math.min(...points.map(p => screenY(p[1]) - framingOffset)),
+        bottom: Math.max(...points.map(p => screenY(p[1]) - framingOffset))
+      };
+      mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: isPhase3 || plotTwistActive, anticipate: isPhase3,
+        width: canvas.width, height: canvas.height, bounds,
+        anchor: { x: screenX(baby.x + baby.w / 2), y: screenY(baby.y + baby.h) - framingOffset } });
     }
-    const bounds = {
-      left: Math.min(...points.map(p => screenX(p[0]))), right: Math.max(...points.map(p => screenX(p[0]))),
-      top: Math.min(...points.map(p => screenY(p[1]) - framingOffset)),
-      bottom: Math.max(...points.map(p => screenY(p[1]) - framingOffset))
-    };
-    const mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: isPhase3 || plotTwistActive, anticipate: isPhase3,
-      width: canvas.width, height: canvas.height, bounds,
-      anchor: { x: screenX(baby.x + baby.w / 2), y: screenY(baby.y + baby.h) - framingOffset } });
-    const mobileFrame = cameraPresentation.mobileFrame({ target: mobileTarget, enabled: mobilePresentation.enabled,
-      stable: isPhase3 || plotTwistActive, anticipate: isPhase3, tick, width: canvas.width, height: canvas.height });
+    const mobileFrame = cameraPresentation.mobileFrame({ target: mobileTarget, fixed: lateralScrolling, enabled: mobilePresentation.enabled,
+      stable: lateralScrolling || isPhase3 || plotTwistActive, anticipate: isPhase3, tick, width: canvas.width, height: canvas.height });
     ctx.save();
     if (mobilePresentation.enabled) {
       // Encaixa a apresentação na região visível sem alterar câmera ou física da simulação.
@@ -84,8 +88,8 @@ export function renderDarkRoom(context) {
     ctx.translate(mobileFrame.x, mobileFrame.y);
     ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
     ctx.translate(0, -framingOffset);
-    if (phase3Scrolling) {
-      // Enquadramento fixo durante os saltos; preserva a câmera lógica usada pela física.
+    if (lateralScrolling) {
+      // A matriz de gameplay não consulta arco, pouso, fada, apoio nem zoom narrativo.
       ctx.translate(cameraX - presentationX, -presentationY);
     } else {
       camera.applyTransform(ctx, canvas, baby, fairy, presentationY, presentation.x, cameraX);

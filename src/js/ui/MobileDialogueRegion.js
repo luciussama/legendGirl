@@ -3,9 +3,20 @@ import { isMobileDevice } from '../controllers/MobileZoom.js';
 const scenes = new WeakMap();
 
 /** Duas regiões sem interseção, em coordenadas de apresentação do canvas. */
-export function getMobileDialogueRegions(safe, contentHeight) {
+export function getMobileDialogueRegions(safe, contentHeight, placement = 'bottom') {
   const gap = Math.max(12, safe.marginY);
   const available = safe.bottom - safe.top;
+  if (placement === 'top') {
+    const panelHeight = contentHeight + 24;
+    const panelTop = safe.top + gap;
+    const sceneY = panelTop + panelHeight + gap;
+    return {
+      scene: { x: safe.left, y: sceneY, width: safe.right - safe.left,
+        height: Math.max(1, safe.bottom - gap - sceneY) },
+      panel: { x: safe.left, y: panelTop, width: safe.right - safe.left, height: panelHeight },
+      boxY: panelTop + 12
+    };
+  }
   const bottom = safe.bottom - Math.max(gap * 2, available * 0.12);
   // Reserva constante entre falas; cresce apenas se o conteúdo realmente exigir.
   const panelHeight = Math.max(180, contentHeight + 24);
@@ -19,9 +30,9 @@ export function getMobileDialogueRegions(safe, contentHeight) {
 }
 
 /** A cena recebe um viewport próprio; o painel nunca é desenhado sobre a fase. */
-export function renderMobileDialogueRegion(ctx, canvas, safe, contentHeight, anchor = {}) {
+export function renderMobileDialogueRegion(ctx, canvas, safe, contentHeight, anchor = {}, placement = 'bottom') {
   if (!isMobileDevice() || typeof document === 'undefined') return null;
-  const layout = getMobileDialogueRegions(safe, contentHeight);
+  const layout = getMobileDialogueRegions(safe, contentHeight, placement);
   let scene = scenes.get(canvas);
   if (!scene) { scene = document.createElement('canvas'); scenes.set(canvas, scene); }
   if (scene.width !== canvas.width) scene.width = canvas.width;
@@ -45,8 +56,10 @@ export function renderMobileDialogueRegion(ctx, canvas, safe, contentHeight, anc
   ctx.scale(scale, scale);
   ctx.drawImage(scene, -canvas.width / 2, -focusY);
   ctx.restore();
-  ctx.fillStyle = '#100c1a';
-  ctx.fillRect(layout.panel.x, layout.panel.y, layout.panel.width, layout.panel.height);
+  if (placement !== 'top') {
+    ctx.fillStyle = '#100c1a';
+    ctx.fillRect(layout.panel.x, layout.panel.y, layout.panel.width, layout.panel.height);
+  }
   ctx.restore();
   return layout;
 }

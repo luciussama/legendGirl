@@ -190,3 +190,9 @@ Após a consolidação das cópias antigas, os testes e painéis de QA devem ser
 `npm run journal:qa -- test:fuga:carregamento:browser` atrasa um atlas para conferir a abertura como carregamento, a liberação após prontidão visual, piso na GPU em desktop/retrato/paisagem, alternativa linear e bloqueio por falha de piso/atlas. Usa Chrome isolado e servidor temporário.
 
 Aliases de áudio integrados ao package.json: `npm run test:arena:sons` (incluído em `npm test`) e `npm run test:arena:sons:browser`. Os demais comandos específicos recentes permanecem acessíveis por `journal:qa`, conforme descrito acima.
+
+QA da introdução ilustrada e da moldura narrativa superior: `npm run journal:qa -- test:toy-room:intro:browser` (Chrome isolado em porta livre; fontes e resultados preservados no acervo).
+
+Revisão das cenas pelo seletor real, incluindo repetição e preservação do save: `npm run journal:qa -- test:seletor:cenas:browser` (Chrome isolado em porta livre).
+
+Câmera exclusivamente lateral no quarto escuro: `npm run journal:qa -- test:camera:lateral:browser` (desktop e perfis Android/iPhone em retrato/paisagem, Chrome isolado).

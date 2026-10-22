@@ -1,26 +1,27 @@
-import { FLOOR_Y, phase3Platforms } from '../config.js';
+import { FLOOR_Y } from '../config.js';
 
-/** Rolagem visual do retorno: o trajeto depende do cenário, nunca do arco ou do pouso. */
-export function getPhase3ScrollFrame({ x, width, height }) {
-  const first = phase3Platforms[0];
-  const last = phase3Platforms.at(-1);
-  const lead = width > 600 ? width - 250 : width - 160;
-  const worldX = x + lead;
-  const progress = (first.x + first.w - worldX) / (first.x + first.w - last.x - last.w);
-  const courseY = Math.max(last.y, Math.min(FLOOR_Y, first.y + (last.y - first.y) * progress));
-  const floorFrameY = width <= 600 && height > FLOOR_Y + 90 ? FLOOR_Y - (height - 110) : 0;
-  return { x, y: floorFrameY + courseY - FLOOR_Y };
+/** Enquadramento de gameplay por viewport: só a coordenada horizontal pode rolar. */
+export function getDarkRoomScrollFrame({ x, width, height }) {
+  const y = width <= 600 && height > FLOOR_Y + 90
+    ? FLOOR_Y - (height - 110)
+    : Math.min(0, FLOOR_Y - height + 16);
+  return { x, y };
 }
 
-/** Recuperação de enquadramento exclusivamente visual; não escreve na câmera da simulação. */
+/** Mantém o contrato do retorno com a mesma altura fixa das demais seções. */
+export function getPhase3ScrollFrame(viewport) {
+  return getDarkRoomScrollFrame(viewport);
+}
+
+/** Pose fixa no gameplay e interpolação exclusivamente narrativa, sem escrever na simulação. */
 export class CameraPresentation {
   constructor() { this.reset(); }
   reset() { this.pose = null; this.layout = null; }
   snapshot() { return { pose: this.pose ? { ...this.pose } : null, layout: this.layout ? { ...this.layout } : null }; }
   restore(saved) { this.pose = saved?.pose ? { ...saved.pose } : null; this.layout = saved?.layout ? { ...saved.layout } : null; }
 
-  mobileFrame({ target, enabled, stable, anticipate, tick, width, height }) {
-    if (!enabled || !stable) {
+  mobileFrame({ target, enabled, stable, anticipate, tick, width, height, fixed = false }) {
+    if (fixed || !enabled || !stable) {
       this.layout = { ...target, tick, key: null, untilTick: tick };
       return target;
     }
@@ -49,43 +50,25 @@ export class CameraPresentation {
     return { zoom: this.layout.zoom, x: this.layout.x, y: this.layout.y };
   }
 
-  frame({ x, y, playerX, groundLead, targetY, onGround, active, narrative, tick,
-    width, height, cssWidth, cssHeight, zoom }) {
-    if (!this.pose || !active) {
-      this.pose = { x, y, lead: playerX - x, tick };
+  /** Só interpola cortes narrativos; gameplay devolve a pose fixa recebida. */
+  frame({ x, y, active, narrative, tick, width, height, cssWidth, cssHeight, zoom }) {
+    if (!this.pose || !active || !narrative) {
+      this.pose = { x, y, lead: 0, tick };
       return { x, y };
     }
     const dt = Math.max(0, Math.min(1.2, tick - this.pose.tick));
     if (!dt) return { x: this.pose.x, y: this.pose.y };
     const blend = 1 - Math.pow(0.65, dt);
-    const toleranceX = 0.5 * width / Math.max(1, cssWidth) / zoom;
-    const toleranceY = 0.5 * height / Math.max(1, cssHeight) / zoom;
-    if (narrative) {
-      // A narrativa pode reposicionar os atores; apenas o enquadramento interpola essa mudança.
-      const move = (from, to, dimension, tolerance) => {
-        const error = to - from;
-        const delta = Math.abs(error) <= tolerance ? error : error * blend;
-        const limit = dimension / zoom * 0.03 * dt;
-        return from + Math.max(-limit, Math.min(limit, delta));
-      };
-      const nextX = move(this.pose.x, x, width, toleranceX);
-      const nextY = move(this.pose.y, y, height, toleranceY);
-      this.pose = { x: nextX, y: nextY, lead: playerX - nextX, tick };
-      return { x: nextX, y: nextY };
-    }
-    const wantedLead = onGround ? groundLead : playerX - x;
-    const leadError = wantedLead - this.pose.lead;
-    const lead = Math.abs(leadError) <= toleranceX ? wantedLead : this.pose.lead + leadError * blend;
-    const target = onGround ? targetY : y;
-    const errorY = target - this.pose.y;
-    const wantedY = onGround
-      ? (Math.abs(errorY) <= toleranceY ? target : this.pose.y + errorY * blend)
-      : y;
-    // Limita deslocamentos e encerra a cauda de subpixel após o pouso.
-    const clamp = (delta, limit) => Math.max(-limit, Math.min(limit, delta));
-    const nextX = this.pose.x + clamp(playerX - lead - this.pose.x, width / zoom * 0.049);
-    const nextY = this.pose.y + clamp(wantedY - this.pose.y, height / zoom * 0.049);
-    this.pose = { x: nextX, y: nextY, lead: playerX - nextX, tick };
+    const move = (from, to, dimension, cssDimension) => {
+      const tolerance = 0.5 * dimension / Math.max(1, cssDimension) / zoom;
+      const error = to - from;
+      const delta = Math.abs(error) <= tolerance ? error : error * blend;
+      const limit = dimension / zoom * 0.03 * dt;
+      return from + Math.max(-limit, Math.min(limit, delta));
+    };
+    const nextX = move(this.pose.x, x, width, cssWidth);
+    const nextY = move(this.pose.y, y, height, cssHeight);
+    this.pose = { x: nextX, y: nextY, lead: 0, tick };
     return { x: nextX, y: nextY };
   }
 }

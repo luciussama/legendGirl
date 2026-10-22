@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d9a3a0d13fcc9b25c7ea6ef69a7446db0282467d87c6068e985c048208937880",
+  "path": "qa-execucoes/1cde570e869b42a9929ffae7fec13f33/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-chegada.png",
+  "sha256": "a24fa1c97d1bfd5be2e31255335694512dbe71225be60f4f49f05f61338de876",
+  "capturedAt": "2026-10-22T16:58:30.783712+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-chegada.png\", \"sha256\": \"ac0fa547b098a6e053016d53dd8be70a9a7d7fe4376619c6d3ee497ac0e580be\", \"bytes\": 1247193, \"binaryRetained\": false}"
+}

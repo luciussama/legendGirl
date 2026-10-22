@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 415,
+    "files": 417,
     "regions": 99,
     "code": 29
   },
@@ -282,6 +282,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/toy-room/introduction/prompts.json",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 46,
           "type": "manifesto-runtime",
@@ -289,13 +295,13 @@
         },
         {
           "file": "src/js/cinematics/OpeningSequence.js",
-          "line": 94,
+          "line": 98,
           "type": "runtime",
           "alias": "opening-waking-up"
         },
         {
           "file": "src/js/game.js",
-          "line": 687,
+          "line": 683,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -14320,6 +14326,68 @@
       "family": "assets/art/toy-room"
     },
     {
+      "id": "6df98ec81ca3164d72bd391f",
+      "kind": "file",
+      "path": "assets/art/toy-room/introduction/girl-acting-v1.png",
+      "title": "girl-acting-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1065024,
+      "sha256": "7217c9b13b79bddb3359d810346cb2ceb0a74597b5cb128a7b9d53900419027e",
+      "aliases": [
+        "toy-room-intro-girl-v1"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 71,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/cinematics/ToyRoomIntroduction.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "toy-room-intro-girl-v1"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/introduction"
+    },
+    {
+      "id": "3dee229fede6bb9033a8cd1e",
+      "kind": "file",
+      "path": "assets/art/toy-room/introduction/room-v1.png",
+      "title": "room-v1.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2524442,
+      "sha256": "c9710a6acd1c5c3e1e4584d66560306154f311bf92a6976bebb33d34f130ce83",
+      "aliases": [
+        "toy-room-intro-room-v1"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 70,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/cinematics/ToyRoomIntroduction.js",
+          "line": 160,
+          "type": "runtime",
+          "alias": "toy-room-intro-room-v1"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/introduction"
+    },
+    {
       "id": "f78fc1fd3e091c9624e4a86f",
       "kind": "file",
       "path": "assets/art/toy-room/stage1/oak-trim-v1.png",
@@ -14384,12 +14452,6 @@
           "alias": null
         },
         {
-          "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 76,
-          "type": "runtime",
-          "alias": "toy-room-oval-rug-v1"
-        },
-        {
           "file": "src/js/toy-room/ArenaEnvironment.js",
           "line": 65,
           "type": "runtime",
@@ -14431,12 +14493,6 @@
           "line": 161,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 77,
-          "type": "runtime",
-          "alias": "toy-room-rectangular-rug-v1"
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
@@ -14560,12 +14616,6 @@
           "line": 9,
           "type": "manifesto-runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 72,
-          "type": "runtime",
-          "alias": "toy-room-wooden-track-v1"
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
@@ -14887,7 +14937,7 @@
         },
         {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 171,
+          "line": 129,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         },

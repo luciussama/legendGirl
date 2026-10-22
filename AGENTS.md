@@ -39,3 +39,11 @@ Para edição de arte, consultar `docs/sprites/GUIA-DESIGNERS.md` e o inventári
 - Executar QA em diretório temporário com `npm test` ou `npm run journal:qa -- COMANDO`. Registrar resultados no diário; não devolver arquivos de QA à árvore do projeto.
 - Documentação humana conserva guias, instruções de design/desenvolvimento e o diário de produto em `docs/DIARIO-HUMANO.md`. Logs, métricas e homologações pertencem ao acervo de IA.
 - A regra vale também para novos testes: arquivar suas fontes no diário e executá-los temporariamente. Não apagar registros históricos nem duplicar relatórios em Markdown fora do acervo.
+
+
+# Câmera e saltos do quarto escuro
+
+- Durante a jogabilidade, a câmera faz somente rolagem lateral para enquadrar a menina e as plataformas.
+- É proibido reajustar altura, escala, zoom, âncora ou deslocamento de câmera a partir do salto, pouso, estado aéreo ou troca da plataforma de apoio.
+- Enquadramento vertical e escala são fixos por viewport; mudanças de orientação e cortes narrativos são tratados fora da jogabilidade.
+- Correções de salto devem atuar na distância do salto, na superfície dos pés ou na superfície física do objeto. A câmera não pode reposicionar a personagem nem interromper sua velocidade vertical para corrigir saltos.

@@ -170,3 +170,5 @@ As extrações de contexto, movimento, efeitos, cena, tutorial, história e pers
 ## Recursos e prontidão adicionados em 22/10/2026
 
 Os dez efeitos da arena são MP3s locais decodificados com `AudioContext.decodeAudioData` e tocados por `AudioBufferSourceNode` no ganho mestre. `ArenaSoundEffects` não adiciona dependência npm nem serviço externo. `Image.decode`, `WebGLRenderer.initTexture`, render target/leitura de pixels e `compileAsync` pertencem ao navegador/Three.js já distribuído; validam o cenário da fuga antes da arrancada. A abertura ilustrada cobre esse carregamento. Os novos testes de áudio, título, defesa estacionária e carregamento criam Chrome isolado com perfil temporário e CDP em porta livre; os demais mantêm os pré-requisitos próprios indicados nas fontes.
+
+A tipografia narrativa usa Caveat variável (Google Fonts), distribuída localmente em `assets/fonts/Caveat-Variable.ttf` sob SIL Open Font License 1.1 (`Caveat-LICENSE.txt`). Não há requisição de fonte externa durante o jogo.

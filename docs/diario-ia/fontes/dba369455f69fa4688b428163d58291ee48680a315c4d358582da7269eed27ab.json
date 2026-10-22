@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dba369455f69fa4688b428163d58291ee48680a315c4d358582da7269eed27ab",
+  "path": "qa-execucoes/46831d1bca7d4582a993bb8d50c89ab9/docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-reflexao.png",
+  "sha256": "18da5af5d456565060381dcc261020beeb98f93482a520aa0a863589ce630969",
+  "capturedAt": "2026-10-22T16:59:16.911515+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:intro:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/introducao-cinematografica/1280x720-reflexao.png\", \"sha256\": \"4b60c14318034e04e6dfd1b39d09602d62a39a9746e684fbd428c4f95b73282c\", \"bytes\": 1164794, \"binaryRetained\": false}"
+}

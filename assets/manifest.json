@@ -66,7 +66,9 @@
     "current-scenery-slinky": "./assets/art/dark-room/scenery-current/slinky.png",
     "current-scenery-puzzle-pieces": "./assets/art/dark-room/scenery-current/puzzle_pieces.png",
     "current-scenery-toy-car": "./assets/art/dark-room/scenery-current/toy_car.png",
-    "current-scenery-cardboard-box-floor": "./assets/art/dark-room/scenery-current/cardboard_box_floor.png"
+    "current-scenery-cardboard-box-floor": "./assets/art/dark-room/scenery-current/cardboard_box_floor.png",
+    "toy-room-intro-room-v1": "./assets/art/toy-room/introduction/room-v1.png",
+    "toy-room-intro-girl-v1": "./assets/art/toy-room/introduction/girl-acting-v1.png"
   },
   "spritesheets": {}
 }

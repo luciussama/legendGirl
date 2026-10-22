@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6cc7314a7ba9a90a35b8c46c9255b18d9fa6fedf28019e40c94625e9a634dd27",
+  "path": "qa-execucoes/a93bfcbebe35430386dd8b394d9cef8f/docs/diario-ia/qa-resultados/camera-lateral/iphone-paisagem-true-7.png",
+  "sha256": "5f46b779c5d3d8125a40c0acdc59e3c573fafa11ce562ce088bcdc00a8394c8c",
+  "capturedAt": "2026-10-22T17:14:50.224529+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/iphone-paisagem-true-7.png\", \"sha256\": \"63b519db81a44dfba9be2b222595ece87239b69db414db7d59eaf0fb72b6eebf\", \"bytes\": 298605, \"binaryRetained\": false}"
+}

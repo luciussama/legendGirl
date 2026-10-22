@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "1c3271cc400d4c389e911958e53ac55f",
+  "date": "2026-10-22T17:11:14.258450+00:00",
+  "title": "QA temporário: test",
+  "files": [
+    {
+      "path": "qa-execucoes/1c3271cc400d4c389e911958e53ac55f.log",
+      "sourceId": "454c68d4f2286479a05b6f66ea38b81df4e734cd8e0421d64fa708e4db0a555e",
+      "sha256": "9aab768a50e869c0869615cd2b9f07f8689a819b7657bfb337ed9b0ce8afde6f",
+      "bytes": 21562,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/1c3271cc400d4c389e911958e53ac55f/assets/qa-testers/current-screenshots/personagem/crops.png",
+      "sourceId": "adfdddb77a7b127f089c41837b4b226facc53f0302b3e4d01073aa69fd4ef6ef",
+      "sha256": "5fe062f5f5fba80759734e318695ab82b748c69108235b37221cd75b224995fd",
+      "bytes": 204716,
+      "metadataOnly": true
+    }
+  ]
+}

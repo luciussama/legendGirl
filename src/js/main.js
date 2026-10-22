@@ -375,19 +375,27 @@ if (debugPhaseSelect) {
   document.addEventListener('pointerdown', event => {
     if (!menu?.contains(event.target)) setDebugPhaseMenuOpen(false);
   });
-  debugPhaseSelect.addEventListener('change', event => {
+  debugPhaseSelect.addEventListener('change', async event => {
     event.stopPropagation();
     const phase = debugPhaseSelect.value;
     if (!phase || restartCampaignDialog.open || isStarting) return;
-    if (!game.startDebugPhase(phase, difficultySelect.value)) return;
-    for (const overlay of [startOverlay,gameoverOverlay]) {
-      if (!overlay) continue;
-      overlay.classList.add('hidden'); overlay.style.display = 'none'; overlay.style.pointerEvents = 'none';
+    isStarting = true;
+    debugPhaseSelect.disabled = true;
+    try {
+      await game.assetsReady;
+      if (!game.startDebugPhase(phase, difficultySelect.value)) return;
+      for (const overlay of [startOverlay,gameoverOverlay]) {
+        if (!overlay) continue;
+        overlay.classList.add('hidden'); overlay.style.display = 'none'; overlay.style.pointerEvents = 'none';
+      }
+      started = true; isStarting = false; isActionLocked = false;
+      updatePauseButtonState();
+      debugPhaseSelect.value = ''; debugPhaseSelect.blur();
+      setDebugPhaseMenuOpen(false);
+    } finally {
+      isStarting = false;
+      debugPhaseSelect.disabled = false;
     }
-    started = true; isStarting = false; isActionLocked = false;
-    updatePauseButtonState();
-    debugPhaseSelect.value = ''; debugPhaseSelect.blur();
-    setDebugPhaseMenuOpen(false);
   });
 }
 

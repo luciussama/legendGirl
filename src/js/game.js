@@ -22,8 +22,7 @@ import { createAndroidFraming } from './controllers/AndroidFraming.js';
 import { CameraPresentation } from './controllers/CameraPresentation.js';
 import { createCameraController } from './controllers/CameraController.js';
 import { bindInput, InputController } from './controllers/InputController.js';
-import { createToyRoom, ToyRoomPhase } from './toyRoom.js';
-import { ARENA_TRANSFORMATION_DURATION } from './toy-room/ToyRoomArenaPhase.js';
+import { createToyRoom } from './toyRoom.js';
 import { createGameState } from './state/GameState.js';
 import { babyRenderer, fairyRenderer } from './entities/index.js';
 import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
@@ -68,12 +67,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   baby.isCrouching = true;
   baby.controlsLocked = true;
 
-  let introductionView = null;
   let introductionOverview = 0;
   const toyRoomIntroduction = new ToyRoomIntroduction({
     onComplete: () => {
       startToyRoomPhase({ fromIntroduction: true });
-      introductionView = null;
     },
     onEvent: name => {
       callbacks.onNarrativeEvent?.(name);
@@ -88,9 +85,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     const departure = document.createElement('canvas');
     departure.width = canvas.width; departure.height = canvas.height;
     departure.getContext('2d').drawImage(canvas, 0, 0);
-    introductionView = new ToyRoomPhase(canvas, null, null, null, { assets, bindInputs: false });
     baby.controlsLocked = true;
-    toyRoomIntroduction.start({ phase: introductionView, departure, audio, canvas });
+    toyRoomIntroduction.start({ assets, departure, audio, canvas });
   }
 
   let isPortrait = false;
@@ -242,7 +238,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   function restartToTitle() {
     saveProgress();
-    toyRoomIntroduction.cancel(); introductionView = null;
+    toyRoomIntroduction.cancel();
     opening.cancel();
     isPaused = false;
     state.isPaused = false;
@@ -296,7 +292,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       onDefeat: reportDefeat });
 
     if (fromIntroduction) {
-      state.toyRoomInstance.instance.introAlpha = 0;
+      state.toyRoomInstance.instance.introAlpha = 1;
       state.toyRoomInstance.instance.introBannerTimer = 0;
       introductionOverview = 1;
     } else {
@@ -1096,7 +1092,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     camera.syncFromState(state);
     camera.update(dt, state, canvas, {
       onLagBehind: () => triggerGameOver(),
-      escapeEndPlatformIndex: platforms.length - 1,
+      escapeEndPlatformX: platforms.at(-1).x,
       exitDoorX: trueExitDoor.x,
       exitDoorW: trueExitDoor.w
     });
@@ -1175,7 +1171,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   function newCampaign({ preserveProgress = false } = {}) {
-    toyRoomIntroduction.cancel(); introductionView = null; introductionOverview = 0;
+    toyRoomIntroduction.cancel(); introductionOverview = 0;
     state.gameStarted = false;
     cameraPresentation.reset();
     debugSession = preserveProgress;
@@ -1193,7 +1189,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     [platforms, phase3Platforms].forEach(group => group.forEach(p => { p.isLanded = false; p.lightAlpha = 0; }));
   }
 
-  /** Inicia um modo de avaliação sem gravar sua execução sobre a campanha normal. */
+  /** Reproduz a entrada da fase para revisão, sem gravar sobre a campanha normal. */
   function startDebugPhase(phase, difficulty = state.gameDifficulty) {
     if (!['bedroom','toy-room','arena','bear-chase'].includes(phase)) return false;
     saveProgress();
@@ -1202,7 +1198,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.gameStarted = true;
     audio.initAudio();
     if (phase === 'bedroom') {
-      beginOpeningGameplay(); enterFirstJumpTutorial(); audio.startMusic();
+      opening.start({ replay: true });
+    } else if (phase === 'toy-room') {
+      startToyRoomIntroduction();
     } else {
       startToyRoomPhase();
       if (phase === 'bear-chase') {
@@ -1217,8 +1215,6 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         room.introAlpha = 0; room.introBannerTimer = 0;
         audio.setToyRoomMusicTrack('sword');
         room.arena.start();
-        // Acesso direto ao combate assim que as artes terminarem de carregar.
-        room.arena.state.elapsed = ARENA_TRANSFORMATION_DURATION;
       }
     }
     state.lastTime = performance.now();
@@ -1343,7 +1339,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     newCampaign,
     destroy() {
       saveProgress();
-      toyRoomIntroduction.cancel(); introductionView = null;
+      toyRoomIntroduction.cancel();
       window.removeEventListener('pagehide', saveProgress);
       document.removeEventListener('visibilitychange', saveOnHide);
       opening.cancel();

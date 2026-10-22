@@ -15,7 +15,7 @@ const ignored=p=>p.startsWith('tools/sprite-review/')||p.startsWith('docs/sprite
 const normalize=s=>s.replaceAll('\\','/').replace(/^\.\//,'').replace(/^\//,'');
 export const itemId=(file,region=null,signature=null)=>hash(JSON.stringify([file,region,signature])).slice(0,24);
 export async function buildCatalog(root) {
- const files=execFileSync('rg',['--files','--hidden','-g','!.git/**','-g','!node_modules/**'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(p=>p&&!ignored(p)).sort();
+ const files=execFileSync('rg',['--files','--hidden','-g','!.git/**','-g','!node_modules/**','-g','!docs/diario-ia/**'],{cwd:root,encoding:'utf8'}).trim().split('\n').filter(p=>p&&!ignored(p)).sort();
  const sources=[];
  for(const file of files.filter(p=>sourcePattern.test(p))) {
   const stat=await fs.stat(path.join(root,file));if(stat.size>1500000)continue;

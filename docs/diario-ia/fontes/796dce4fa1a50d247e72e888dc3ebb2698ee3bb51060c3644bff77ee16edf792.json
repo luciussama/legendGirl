@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "796dce4fa1a50d247e72e888dc3ebb2698ee3bb51060c3644bff77ee16edf792",
+  "path": "qa-execucoes/6c23f4b60a6f4a7fbc822ec8933f84a0.log",
+  "sha256": "35a27a443f09d3375c8af53e068a48fcf7025d79d70ff67398b5f9e1ced3dd04",
+  "capturedAt": "2026-10-22T17:15:35.228730+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:docs:equalizacao",
+    "exitCode": 0,
+    "package": "20261021T131636-41ca309d7cad"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:docs:equalizacao\n> node docs/diario-ia/qa/equalizacao-20261021/verificar-documentacao.mjs\n\n{\n  \"resultado\": \"aprovado\",\n  \"modulos\": 151,\n  \"documentos\": 15,\n  \"linksLocais\": 593,\n  \"parametrosArena\": \"iguais ao código\",\n  \"dependencias\": \"iguais ao lockfile\"\n}\n"
+}

@@ -58,3 +58,8 @@ A fuga combina introdução ilustrada em `assets/art/toy-room/bear-chase/cinemat
 O piso 3D usa o recorte (27,151), 186×48, de `environment-sheet.png`; a cópia RGBA 256×64 e seus mipmaps são preparados em memória por `ChaseRenderer3D`, sem novo PNG. A GPU valida esse piso antes de liberar a sala; uma alternativa usa o mesmo recorte em canvas com filtro linear quando a cadeia manual não funciona. Não modificar a prancha para resolver um problema de upload. Paleta e GLB da menina têm exportadores próprios; leia os scripts antes de executá-los. A aprovação da arena ou de versões anteriores não homologa automaticamente novos modelos e poses.
 
 O especial da arena usa `girl/special/eyes-power-v1.png` como corte de anime exclusivo da carga. A arte frontal conserva os dois olhos visíveis, cabelo e íris castanhos, expressão de determinação e reflexos arco-íris. O recorte animado usa foco vertical em 57,5% da imagem; preserve a região dos olhos ao substituir. O prompt e a proveniência ficam em `girl/special/prompts.json`. Esse recurso é arte consumida pelo jogo, não evidência descartável.
+
+
+## Introdução da sala de brinquedos
+
+`assets/art/toy-room/introduction/room-v1.png` é uma pintura em perspectiva na altura dos olhos; `girl-acting-v1.png` reúne quatro poses expressivas transparentes. `ToyRoomIntroduction` consome ambas pelo manifesto principal, sem desenhar sprites nem mapa da exploração. Os recortes e âncoras dos sapatos estão no módulo e em `prompts.json`; preservar margens acima do cabelo. A fada conserva a arte ilustrada compartilhada. O quadro superior da narração é desenhado em Canvas por `PoeticNarrator`, com papel creme, rosa/sálvia e fonte Caveat local; não faz parte do bitmap do cenário.
