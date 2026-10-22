@@ -81,7 +81,7 @@ export function renderBattle(battle) {
     } else if (s.mode !== 'VICTORY') drawEnemy(s.enemy);
     const e = s.enemy;
     // O efeito mostra a região ofensiva na mesma janela em que a colisão é ativa.
-    if(!s.transition && e.state==='ATTACK' && e.elapsed>=t.windup && e.elapsed<t.windup+t.active) {
+    if(!s.specialAttack && !s.transition && e.state==='ATTACK' && e.elapsed>=t.windup && e.elapsed<t.windup+t.active) {
       if(e.attack==='Laser Beam') {
         const beam=battle.presentation ? {start:40,end:340*(t.attackScale ?? 1),height:145} : laserProjection(s,r.player,e,r.story.state.attackDirection);
         ctx.strokeStyle='#ff6666';ctx.lineWidth=8;ctx.lineCap='butt';ctx.beginPath();
@@ -95,9 +95,9 @@ export function renderBattle(battle) {
     // A frente da caixa encobre a entrada/saída, sem dissolver os brinquedos.
     if (!battle.presentation) roomEnvironmentRenderer.renderFurniture(ctx, battle.arenaChest(), {
       assets:r.assets, environmentChest:r.environmentChest });
+    battle.presentation?.renderForeground?.(ctx);
     if (battle.presentation?.renderPlayer) battle.presentation.renderPlayer(ctx, s, t.ground);
     else {
-    battle.presentation?.renderForeground?.(ctx);
     // Ampliação exclusiva da protagonista, com os pés como referência estável.
     ctx.save(); ctx.translate(r.player.x, t.ground - battlePlayerJumpOffset(s,r.player,r.story.state.attackDirection));
     ctx.scale(BATTLE_PLAYER_VISUAL_SCALE, BATTLE_PLAYER_VISUAL_SCALE);

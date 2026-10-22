@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T213549-bb4d96806132",
+  "sessionId": "20261021T213549-bb4d96806132",
+  "type": "inicio",
+  "date": "2026-10-21T21:35:49.821240+00:00",
+  "title": "Cortar vitória da arena direto para o Urso caído sem textos",
+  "actor": "Codex",
+  "branch": "FEAT-retry-rule",
+  "head": "bb63167994b71562e3a096b7ac7e46c46d7d8268",
+  "workingTree": []
+}

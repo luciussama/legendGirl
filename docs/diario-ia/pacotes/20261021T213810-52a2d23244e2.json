@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T213810-52a2d23244e2",
+  "date": "2026-10-21T21:38:10.335075+00:00",
+  "title": "Saída direta no navegador: último golpe e Urso caído sem texto",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/saida-arena-20261021/navegador.mjs",
+      "sourceId": "5c2ec42e3d5f9431de4d8cebe6616a35656f79a033509a8489b4f33a87b0227e",
+      "sha256": "924de502ddc81884474abf11cca13ff8515b922de744ba3433268b47c8bbc050",
+      "bytes": 4566,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:saida-direta:browser": "node docs/diario-ia/qa/saida-arena-20261021/navegador.mjs"
+  }
+}

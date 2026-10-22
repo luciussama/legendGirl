@@ -56,6 +56,12 @@ export class ToyRoomInputController {
     this.context.initAudio();
     this.state.keysDown[e.code] = true;
 
+    if (e.code === 'KeyR' && this.context.isArenaCombat()) {
+      e.preventDefault?.();
+      if (!e.repeat) this.context.special();
+      return;
+    }
+
     if (TOY_ROOM_INPUT.actionCodes.includes(e.code)) {
       if (e.preventDefault) e.preventDefault();
       if (!e.repeat) this.context.action();

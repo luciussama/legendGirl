@@ -1,3 +1,4 @@
+import { beginArenaSpecial, renderArenaSpecialBeam } from './ArenaSpecialAttack.js';
 import { beginArenaPlayerAttack, updateArenaPlayerAnimation } from './ArenaPlayerAnimation.js';
 import { arenaEnemyContact } from './ArenaCombatContact.js';
 import { ArenaBoss } from './ArenaBoss.js';
@@ -7,7 +8,7 @@ import { ArenaAudioProfile } from './ArenaAudioProfile.js';
 import { ImpactFX } from './ImpactFX.js';
 import { ArenaPlayerController } from './ArenaPlayerController.js';
 import { PlayerController } from './PlayerController.js';
-import { BATTLE_TUNING } from './BattleConfig.js';
+import { BATTLE_ORDER, BATTLE_TUNING } from './BattleConfig.js';
 import { ArenaCamera } from './ArenaCamera.js';
 import { ARENA_SCALE } from './ArenaScale.js';
 import { renderArenaEnvironment, renderArenaTemple } from './ArenaEnvironment.js';
@@ -72,9 +73,10 @@ export class ToyRoomArenaPhase {
       },
       onImpact: (x, y, heavy) => this.fx.emit('impact', x, y, heavy),
       onBlock: (x, y) => this.fx.emit('block', x, y),
-      renderFX: ctx => this.fx.render(ctx),
+      renderFX: ctx => { this.fx.render(ctx); renderArenaSpecialBeam(ctx, this.room, this.battle.state, this.battle.tuning.ground); },
       enemyScale: ARENA_SCALE.enemy,
-      renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout); },
+      transportOrigin: () => this.layout.transportOrigin,
+      renderForeground: ctx => { if(this.battle.state.transition)renderArenaTemple(ctx, this.room, this.layout, true); },
       renderBackground: ctx => renderArenaEnvironment(ctx, this.room, this.layout, this.state.elapsed),
       renderPlayer: (ctx, state, ground) => this.playerRenderer.render(ctx, this.room, state, ground)
     };
@@ -155,7 +157,15 @@ export class ToyRoomArenaPhase {
       this.battle.update(step);
       const s = this.battle.state;
       this.camera.update(step, this.room.player, s.enemy, s.jump, s.combatShake || (this.fx.shake > 0 ? { strength: this.fx.shake, elapsed: 0, duration: 1 } : null));
-      if (s.mode === 'VICTORY' && s.ending >= 150) this.beginReturn();
+      if (s.mode === 'BATTLE' && s.enemy.actor === 'bear' && s.enemy.hp === 0) {
+        // O último golpe já entrega a abertura ilustrada; o Urso não volta ao baú aqui.
+        if (s.index < BATTLE_ORDER.length) s.history.push({ event: 'DEFEATED', enemy: 'bear' });
+        s.index = BATTLE_ORDER.length;
+        s.transition = null;
+        s.mode = 'VICTORY'; s.ending = 0;
+        this.battle.playCombatSound('victory');
+      }
+      if (s.mode === 'VICTORY') this.beginReturn();
     }
   }
   render() {
@@ -172,12 +182,12 @@ export class ToyRoomArenaPhase {
       if (this.state.realityRestored) this.room.render({arenaBackdrop:true}); else this.battle.render();
       const { ctx, canvas } = this.room, p = this.state.returnElapsed / 180;
       ctx.save();ctx.fillStyle=`rgba(24,14,38,${Math.sin(p*Math.PI)*0.95})`;ctx.fillRect(0,0,canvas.width,canvas.height);
-      ctx.fillStyle='#ffe5a6';ctx.textAlign='center';ctx.font='bold 22px Georgia';
-      ctx.fillText('Tudo ainda cabe no seu quarto.',canvas.width/2,canvas.height*.45,canvas.width-32);ctx.restore();
+      ctx.restore();
       return;
     }
     if (this.state.status !== 'TRANSFORMING') {
       this.battle.render();
+      this.playerRenderer.renderSpecialCloseup(this.room.ctx, this.room.canvas, this.battle.state);
       if (this.fx.flash > 0) { this.room.ctx.save(); this.room.ctx.fillStyle = `rgba(255,231,188,${this.fx.flash})`; this.room.ctx.fillRect(0,0,this.room.canvas.width,this.room.canvas.height); this.room.ctx.restore(); }
       return;
     }
@@ -229,16 +239,23 @@ export class ToyRoomArenaPhase {
   attack() {
     if (this.state.status !== 'COMBAT') return false;
     const s=this.battle.state;
-    if (s.mode === 'VICTORY') { if(s.ending>=90)this.beginReturn();return true; }
+    if (s.mode === 'VICTORY') { this.beginReturn(); return true; }
     if (s.mode === 'DEFEAT') {
       if (s.ending < 90) return false;
-      this.battle.state=null;this.boss=new ArenaBoss();this.fx=new ImpactFX();this.battle.activate();
-      return true;
+      return this.retry();
     }
     return this.battle.attack();
   }
+  /** Reinicia a tentativa de combate, conservando a exploração capturada pela arena. */
+  retry() {
+    if (this.battle.state?.mode !== 'DEFEAT') return false;
+    this.battle.state = null;
+    this.boss = new ArenaBoss(); this.fx = new ImpactFX();
+    this.battle.activate();
+    return true;
+  }
   special() {
-    // Reservado para a habilidade especial; não consome turnos nem altera a luta.
-    return false;
+    if (this.state.status !== 'COMBAT') return false;
+    return beginArenaSpecial(this.battle);
   }
 }

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c0eaeaeb16c2846d6001a0d978f5c36bb2f3e9d62cb8ecac8d9c1b26f284b671",
+  "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/cenario-completo.png",
+  "sha256": "4999384950b2392f1480ff448fec85ec33f09898c08620674f99a2b68de84a22",
+  "capturedAt": "2026-10-21T18:44:18.665354+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/cenario-completo.png\", \"sha256\": \"a2bfa6f922c6058379da79271bcf431d294c017b24f6019481efc152d1bfd085\", \"bytes\": 3357586, \"binaryRetained\": false}"
+}

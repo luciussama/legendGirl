@@ -10,6 +10,7 @@ import { createViewportController } from './controllers/ViewportController.js';
 import { createCameraQaObserver } from './debug/CameraQaObserver.js';
 import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
 import { normalizeDifficulty, easyLanding } from './state/GameDifficulty.js';
+import { recordCampaignDefeat, clearCampaignDefeat } from './state/CampaignDefeats.js';
 import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
 import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
@@ -46,7 +47,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   backgroundRenderer.setAssets?.(assets);
   babyRenderer.setAssets?.(assets);
   const audio = createAudioController();
-  const state = createGameState(canvas, uiFeedback, callbacks);
+  const state = createGameState(canvas, uiFeedback, {
+    ...callbacks, onGameOver: () => reportDefeat('bedroom')
+  });
   const campaign = createCampaignProgress();
   let lastSaveTime = 0;
   let debugSession = false;
@@ -181,12 +184,60 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncViewportFromState();
   }
 
+  /** Consulta a derrota da fase ativa, sem confundir perda de coração com fim da tentativa. */
+  function isGameOver() {
+    if (state.currentPhaseMode !== 'toy-room') return state.isGameOver;
+    const room = state.toyRoomInstance?.instance;
+    return Boolean(room?.chase?.active ? room.chase.state.stage === 'GAME_OVER' : room?.battle.state?.mode === 'DEFEAT');
+  }
+
+  /** Publica uma derrota por tentativa e conserva a oferta de ajuda no save. */
+  function reportDefeat(phase) {
+    recordCampaignDefeat(state);
+    state.toyRoomInstance?.instance.clearInput();
+    saveProgress();
+    callbacks.onGameOver?.({ phase, offerEasy: state.easyOfferPending });
+  }
+
   function retryGame() {
+    if (!isGameOver() || state.easyOfferPending) return false;
+    clearCampaignDefeat(state);
     isPaused = false;
     state.isPaused = false;
-    syncViewportToState();
-    state.retryGame(audio);
-    syncViewportFromState();
+    if (state.currentPhaseMode === 'toy-room') state.toyRoomInstance.instance.retryDefeat();
+    else {
+      cameraPresentation.reset();
+      syncViewportToState();
+      state.retryGame(audio);
+      syncViewportFromState();
+    }
+    state.lastTime = performance.now();
+    saveProgress();
+    return true;
+  }
+
+  /** Aceita ajuda na etapa atual: checkpoint do quarto ou retomada local do combate/fuga. */
+  function continueOnEasy() {
+    if (!state.easyOfferPending || !isGameOver()) return false;
+    state.gameDifficulty = 'EASY';
+    clearCampaignDefeat(state);
+    const room = state.toyRoomInstance?.instance;
+    room?.setDifficulty('EASY');
+    isPaused = false; state.isPaused = false;
+    if (state.currentPhaseMode === 'toy-room') room.retryDefeat({ resume: true });
+    else {
+      cameraPresentation.reset();
+      syncViewportToState(); state.retryGame(audio); syncViewportFromState();
+    }
+    state.lastTime = performance.now();
+    saveProgress();
+    return true;
+  }
+
+  /** Recusar mantém a dificuldade; uma nova oferta só ocorre após outras três derrotas. */
+  function declineEasyOffer() {
+    state.easyOfferPending = false;
+    saveProgress();
   }
 
   function restartToTitle() {
@@ -240,7 +291,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.currentPhaseMode = 'toy-room';
     state.toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
       restartToTitle();
-    }, { assets, gameDifficulty: state.gameDifficulty, isInputEnabled: () => !isPaused });
+    }, { assets, gameDifficulty: state.gameDifficulty,
+      isInputEnabled: () => !isPaused && !state.easyOfferPending && !isGameOver(),
+      onDefeat: reportDefeat });
 
     if (fromIntroduction) {
       state.toyRoomInstance.instance.introAlpha = 0;
@@ -1114,7 +1167,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     [platforms, phase3Platforms].forEach((group, index) => group.forEach((p, i) => {
       Object.assign(p, saved.platforms?.[index]?.[i] || { isLanded: false, lightAlpha: 0 });
     }));
-    if (state.isGameOver) callbacks.onGameOver?.();
+    if (state.isGameOver) callbacks.onGameOver?.({ phase: 'bedroom', offerEasy: state.easyOfferPending });
     if (state.currentPhaseMode === 'bedroom') {
       if (opening.active && opening.time < 29) { audio.initAudio(); audio.playOpeningAmbience(); }
       else audio.startMusic();
@@ -1283,7 +1336,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     setPaused,
     hasProgress: () => Boolean(campaign.read() || opening.hasCompleted()),
     hasSavedCampaign: () => Boolean(campaign.read()),
-    getDifficulty: () => normalizeDifficulty(campaign.read()?.state.gameDifficulty ?? state.gameDifficulty),
+    getDifficulty: () => normalizeDifficulty(state.gameStarted ? state.gameDifficulty : campaign.read()?.state.gameDifficulty ?? state.gameDifficulty),
+    continueOnEasy,
+    declineEasyOffer,
     saveProgress,
     newCampaign,
     destroy() {
@@ -1323,7 +1378,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     resetToStart,
     retry: retryGame,
     restartToTitle,
-    isGameOver: () => state.isGameOver,
+    isGameOver,
     startToyRoomPhase,
     startToyRoomIntroduction,
     startDebugPhase,

@@ -1,0 +1,29 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T213549-bb4d96806132-fim",
+  "sessionId": "20261021T213549-bb4d96806132",
+  "type": "fim",
+  "date": "2026-10-21T21:40:50.277837+00:00",
+  "title": "Cortar vitória da arena direto para o Urso caído sem textos",
+  "actor": "Codex",
+  "summary": "Saída da arena agora começa no último golpe que zera o HP do Urso: registra derrota/vitória uma vez e inicia CHASE sem esperar animação de morte, retorno ao baú ou painel de 150 quadros. Retirados textos de vitória e retorno da fantasia; HUD não desenha na vitória e retorno legado também não apresenta frase. Mantido fade breve existente para ocultar preparação; primeira cena revelada BEAR_DOWN sem legenda. Derrota, demais adversários, física, dano e saves preservados. Registrada aprovação específica do usuário ao close anterior (ah, gostei!), sem estender a outros recursos. Guias, diário humano, contexto, referência e mapa atualizados. Fontes QA arquivadas e verificadas por hash antes de retirar cópias de trabalho. Sem commit/push/deploy.",
+  "checks": [
+    "npm test completo aprovado, incluindo as suítes complementares e os 64 cenários do especial. test:arena:saida-direta e script:test-arena-chase-transition.js aprovados: último golpe, vitória sem fillText, restore durante saída, BEAR_DOWN, início único, derrota, prévia e saves antigos.",
+    "test:arena:saida-direta:browser aprovado, resultado 85b4d8220dcd4d928dc305b6220e28ec, em servidor temporário e Chrome isolado. Desktop/retrato/paisagem: estado preparado com último coração e abertura vulnerável; ataque real do sistema de espada acerta no sexto quadro e inicia saída no mesmo update, sem texto; primeira cena pronta é BEAR_DOWN sem legenda. Três capturas inspecionadas; hashes/tamanhos no acervo, bitmaps descartáveis fora do Git.",
+    "Build, 66 recursos, lint, sintaxe dos dois módulos, git diff --check e test:docs:equalizacao (150 módulos/15 documentos/599 links) aprovados. Mapa reconstruído: 416 imagens/99 recortes/29 assinaturas; referência 1015 declarações.",
+    "Falhas intermediárias preservadas: comando antigo de transição tinha stub de perseguição sem state, incompatível com contagem de derrotas atual; fonte virtual atualizada no acervo sem reescrever versões anteriores. Fixture de último coração inicialmente acionava fúria/evasão, portanto não recebia o golpe; preparada abertura válida com fúria já apresentada, sem mudar IA/combate de produção."
+  ],
+  "pending": [
+    "Sem campanha humana completa, aparelhos físicos ou Safari. Pendências anteriores de piso Safari e navegação após COMPLETE da fuga permanecem fora do escopo."
+  ],
+  "files": [
+    "docs/COMANDOS.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/arena/GUIA-ARENA.md",
+    "docs/bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "src/js/toy-room/ArenaHUD.js",
+    "src/js/toy-room/ToyRoomArenaPhase.js"
+  ]
+}

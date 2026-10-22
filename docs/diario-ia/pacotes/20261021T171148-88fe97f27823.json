@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T171148-88fe97f27823",
+  "date": "2026-10-21T17:11:48.815947+00:00",
+  "title": "Diagnóstico crítico da composição da arena, com causas e direção de correção",
+  "files": [
+    {
+      "path": "docs/diario-ia/analises/20261021-arena-composicao-critica.md",
+      "sourceId": "be1cb34b133d40e4f92c0ac3b168f7a4a517f0c04a664b4073d58777d72de723",
+      "sha256": "2c79773349f58086ee7fc42c256e5764ba5a0a46b7fd5be966d704d7f91c3a0e",
+      "bytes": 10554,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

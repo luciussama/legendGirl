@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f32c1d4d0da844ad89f0c37918b718f3",
+  "date": "2026-10-21T21:39:15.867949+00:00",
+  "title": "QA temporário: test:arena:saida-direta",
+  "files": [
+    {
+      "path": "qa-execucoes/f32c1d4d0da844ad89f0c37918b718f3.log",
+      "sourceId": "69d912d66a1b81404cf41c94eb2df349653e84ae0728d55c32dff77412e55144",
+      "sha256": "63c5282447afc66183f0bb7dc4952f15f9244c0f9caa97dfda266d14204482ae",
+      "bytes": 393,
+      "metadataOnly": false
+    }
+  ]
+}

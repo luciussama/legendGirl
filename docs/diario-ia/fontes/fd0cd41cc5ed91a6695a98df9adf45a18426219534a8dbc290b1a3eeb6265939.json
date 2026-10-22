@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "fd0cd41cc5ed91a6695a98df9adf45a18426219534a8dbc290b1a3eeb6265939",
+  "path": "qa-execucoes/e769259abc5b4f9ca73b5bb428d5076f.log",
+  "sha256": "528171d147241f89beb1d36c8356a10153e0fcbb7b4dad479fd3f41908f0c496",
+  "capturedAt": "2026-10-21T18:40:10.695615+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:composicao",
+    "exitCode": 1,
+    "package": "20261021T184001-891a820a756e"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:composicao\n> node docs/diario-ia/qa/arena-composicao-20261021/regressao.mjs\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-gfsz_86a/projeto/src/js/toy-room/BattleRenderer.js:51\n      const enemyTuning = battle.presentation ? { ...t, recovery: battle.presentation.enemies[e.actor].recovery } : t;\n                                                                                             ^\n\nTypeError: Cannot read properties of undefined (reading 'bear')\n    at drawEnemy (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-gfsz_86a/projeto/src/js/toy-room/BattleRenderer.js:51:94)\n    at renderBattle (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-gfsz_86a/projeto/src/js/toy-room/BattleRenderer.js:81:38)\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-gfsz_86a/projeto/docs/diario-ia/qa/arena-composicao-20261021/regressao.mjs:34:1\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v26.5.0\n"
+}

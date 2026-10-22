@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6ec65d2f6423304ecd330574d10cfe9e39d06fdf80f67333debbf17e27e9816d",
+  "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-118.png",
+  "sha256": "3997a5510bc92e61f28b838882f2bfe4c41aa42c749de988801a761eb4d1b1c6",
+  "capturedAt": "2026-10-21T20:22:14.651098+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:especial:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/especial-arena/especial-retrato-118.png\", \"sha256\": \"2abd8dcbb5954b90ed23b0fa1c7daf2cb8951c617bcc96a5886cd4aefa241b34\", \"bytes\": 453616, \"binaryRetained\": false}"
+}

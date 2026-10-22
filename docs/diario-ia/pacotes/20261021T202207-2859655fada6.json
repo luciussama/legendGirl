@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T202207-2859655fada6",
+  "date": "2026-10-21T20:22:07.462538+00:00",
+  "title": "Especial no renderer real com entradas e restauração",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/especial-arena-20261021/navegador.mjs",
+      "sourceId": "36709fcc93406744722597552aea15d26f7edf0d4823483f3f519dca09091711",
+      "sha256": "573884d540e6fe1d0b35e6acf679db2395189fc74d61a7009dfc444cd517ae8c",
+      "bytes": 6092,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:especial:browser": "node docs/diario-ia/qa/especial-arena-20261021/navegador.mjs"
+  }
+}

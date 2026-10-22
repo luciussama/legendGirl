@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4253c1c360a5e80d902d800f19360ed92e30a7b888841926af11d9116bdfab3b",
+  "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/transformacao-179.png",
+  "sha256": "0ad68878d754da41d02d80f8119c17e609526ec30a0f8d1f2f71cd57bd38e04d",
+  "capturedAt": "2026-10-21T18:44:18.684519+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/transformacao-179.png\", \"sha256\": \"d43a447818074c0983377cbb457caaf366b6a95fdb66d42c7c93516577b291f8\", \"bytes\": 437104, \"binaryRetained\": false}"
+}

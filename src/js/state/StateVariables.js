@@ -15,6 +15,9 @@ export function createDefaultStateVariables() {
 
   return {
     gameDifficulty: 'NORMAL',
+    defeatCount: 0, // Total de derrotas completas, compartilhado entre as fases.
+    defeatPending: false, // Impede contar novamente a mesma tentativa ou save derrotado.
+    easyOfferPending: false, // Oferta preservada até a pessoa responder.
     // Entidades do Jogador e da Guia
     baby,
     fairy,

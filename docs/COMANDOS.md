@@ -33,7 +33,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:mobile-ui` | `python3 scripts/run-qa-from-journal.py test:mobile-ui` | Áreas seguras e controles móveis. |
 | `npm run test:difficulty` | `python3 scripts/run-qa-from-journal.py test:difficulty` | Parâmetros NORMAL/EASY e preservação dos comportamentos. |
 | `npm run verify:dark-room` | `python3 scripts/run-qa-from-journal.py verify:dark-room` | Percurso/apoios, contato dos pés, personagem, partículas e guia. |
-| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
+| `npm test` | `python3 scripts/run-qa-from-journal.py test && npm run test:arena:defesa && npm run test:saltos:progressao && npm run test:saltos:bailarina && npm run test:bear-chase && npm run test:campaign:defeats && npm run test:arena:especial` | Suíte geral recuperada do diário: quarto, persistência, dispositivos, sala, diálogos, arena, balanceamento e contrato do tutorial. |
 | `npm run test:pages` | `python3 scripts/run-qa-from-journal.py test:pages` | Validar referências das páginas e caminhos de publicação. |
 | `npm run test:toy-room:story` | `python3 scripts/run-qa-from-journal.py test:toy-room:story` | Recorrência, investigação e aquisição da espada. |
 | `npm run test:toy-room:visual` | `python3 scripts/run-qa-from-journal.py test:toy-room:visual` | Composição visual e recursos da sala. |
@@ -88,6 +88,8 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 
 | `npm run test:bear-chase` | `python3 scripts/run-qa-from-journal.py test:bear-chase` | Domínio, sequência, padrões, vidas e restauração da fuga. |
 | `npm run test:bear-chase:browser` | `python3 scripts/run-qa-from-journal.py test:bear-chase:browser` | Perseguição no jogo real com Chrome/CDP isolado. |
+
+| `npm run test:campaign:defeats` | `python3 scripts/run-qa-from-journal.py test:campaign:defeats` | Contagem de derrotas, oferta/recusa/EASY, saves e retomadas locais. |
 
 ## Comandos adicionais preservados no diário
 
@@ -163,8 +165,18 @@ As regressões de pouso verificam cruzamento contínuo e exclusões, preservaç�
 
 ## Recuperação de painéis históricos
 
-O executor atual restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`. Arquivos de QA que ainda existem sob `docs/diario-ia/qa/` são copiados ao workspace temporário, mas os ausentes nessa pasta não são restaurados automaticamente. Assim, a existência de um alias histórico não garante que seu painel possa ser aberto diretamente.
+O executor restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`, além de código e fixtures `.js`, `.mjs`, `.cjs`, `.py`, `.html`, `.css` e `.json` sob `docs/diario-ia/qa/`. A recuperação ocorre somente no workspace temporário; relatórios Markdown e bitmaps de evidência não são restaurados. Em automações de navegador, as URLs locais também são adaptadas nos módulos `.mjs` e `.cjs` para a porta do servidor temporário. Um painel histórico ainda pode depender de recursos/requisitos próprios; consultar sua fonte antes de usar.
 
 Os painéis de comparação da menina e dos props da perseguição foram arquivados nessa pasta e retirados da árvore ativa. Seus aliases históricos apontam para fontes ausentes: precisam de recuperação manual verificada do pacote, em diretório temporário, ou de uma atualização futura do executor. Não abrir antigas URLs como se fossem páginas atuais. A auditoria documental confirmou essa limitação por leitura do executor e dos pacotes; esses aliases não foram executados nesta revisão.
 
 A verificação desta revisão está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura e exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Resultados pertencem ao diário.
+
+`npm run journal:qa -- test:campaign:defeats:browser` cobre a interface real em desktop/retrato/paisagem com derrotas preparadas, respostas nativas, soma entre fases, recarga, oferta, recusa e retomada. Requer Chrome de QA/CDP 9222. Não equivale a um playtest humano completo.
+
+`npm run journal:qa -- test:arena:composicao` verifica bases, janela livre, projeção, camadas, origem do baú, HUD e enquadramento. `npm run journal:qa -- test:arena:composicao:browser` verifica o renderer real e a restauração em Chrome isolado/CDP 9222, com estados preparados em desktop/retrato/paisagem. As fontes permanecem arquivadas; não há diagnósticos avulsos para manter no projeto.
+
+`npm run test:arena:especial` verifica dano, uso único, bloqueios de ativação, suspensão do combate, câmera e save durante o raio, nas duas dificuldades. `npm run test:arena:especial:browser` verifica teclado/touch, gamepad preparado e renderer real em três formatos no Chrome isolado/CDP 9222. As fontes são recuperadas do diário e executadas temporariamente.
+
+`npm run journal:qa -- test:arena:saida-direta` verifica o último golpe, ausência de texto na vitória e restauração durante a saída. `npm run journal:qa -- test:arena:saida-direta:browser` cobre o corte até BEAR_DOWN sem legenda em três formatos, no Chrome isolado/CDP 9222. A fonte de `script:test-arena-chase-transition.js` também foi atualizada no acervo para a perseguição e a saída vigentes.
+
+Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O índice SQLite local pode ser descartado e será reconstruído pela próxima consulta ao diário.

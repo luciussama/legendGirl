@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T133701-a9290db2b637",
+  "date": "2026-10-21T13:37:01.551940+00:00",
+  "title": "QA final de derrotas: inclui aceite na arena e retorno, teclado e Escape",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/derrotas-20261021/navegador.mjs",
+      "sourceId": "37e1ccc1fe0973e688c02e12aa9fce2fd19d5d3df52eacb693076b08c3a723d3",
+      "sha256": "deca57a3368ce62b2f231b13eabd84887b282c79735d4058c96a089023fa8623",
+      "bytes": 10309,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:campaign:defeats:browser": "node docs/diario-ia/qa/derrotas-20261021/navegador.mjs"
+  }
+}

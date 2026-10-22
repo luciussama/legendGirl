@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "574812bb1db792839ccbe0b07dc7962d2177c06af630c51e48dbe6c1c1d1505b",
+  "path": "qa-execucoes/0c99a0ac72444f46a84e29d52d5607cd/docs/diario-ia/qa-resultados/arena-critica/extremo-esquerdo.png",
+  "sha256": "0f64f7db21590b4800a911fc3c1d64f6640c0d1b5a36d2319e3816b4fbdb3cc2",
+  "capturedAt": "2026-10-21T17:08:59.071470+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "review:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/extremo-esquerdo.png\", \"sha256\": \"d996c71706d6c722f1a3850aa981fe9d22ba9968217f554a903a7c55dd9b6b2e\", \"bytes\": 762120, \"binaryRetained\": false}"
+}

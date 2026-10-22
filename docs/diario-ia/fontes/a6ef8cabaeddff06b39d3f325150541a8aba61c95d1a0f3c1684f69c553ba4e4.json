@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a6ef8cabaeddff06b39d3f325150541a8aba61c95d1a0f3c1684f69c553ba4e4",
+  "path": "qa-execucoes/9515430215fc4ba98e9b575cb02ff1d3.log",
+  "sha256": "71a9c229c6fb8508bd5b667caa735069c04e9cf4a4feb276736b651bb93f4d0b",
+  "capturedAt": "2026-10-21T18:44:38.975513+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:journal",
+    "exitCode": 0,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:journal\n> python3 scripts/test-ai-journal.py\n\nAPROVADO: diário persistente, versões históricas, idempotência, hashes, concorrência e encerramento imutável.\n"
+}

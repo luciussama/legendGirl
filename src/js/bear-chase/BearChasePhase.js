@@ -88,6 +88,20 @@ export class BearChasePhase {
   setPaused(value) {
     this.paused = Boolean(value); this.input.clear(); this.accumulator = 0; this.audio.setPaused(value);
   }
+  /** Tenta a fuga novamente; a ajuda mantém o percurso já alcançado e recupera as vidas. */
+  retry({ resume = false } = {}) {
+    if (this.state.stage !== 'GAME_OVER') return false;
+    if (resume) {
+      Object.assign(this.state, { stage: 'RUNNING', age: 0, hits: 0, stumble: 0, immunity: 2 });
+    } else {
+      this.state = createChaseState();
+      this.audio.restore({ time: 0, started: false });
+    }
+    this.handoffFade = 0;
+    this.setPaused(false);
+    this.audio.unlock();
+    return true;
+  }
   /** Exporta somente dados versionados e posição musical para as verificações da perseguição. */
   snapshot() { return { version: 1, difficulty: this.difficulty, state: structuredClone(this.state), audio: this.audio.snapshot() }; }
   /** Restaura dados validados; a campanha antiga não é migrada nesta prova isolada. */

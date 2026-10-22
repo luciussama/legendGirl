@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T171306-cc789b621369",
+  "date": "2026-10-21T17:13:06.295591+00:00",
+  "title": "Diagnóstico final da arena com links de código conferidos",
+  "files": [
+    {
+      "path": "docs/diario-ia/analises/20261021-arena-composicao-critica.md",
+      "sourceId": "9a7538dd31623210915bba2756002d95318ba4083caad796c3a970cf4629867a",
+      "sha256": "9924390f672e2fd690911fcdca1dfa7b9dbfe011bdbdb39ed63659bddc9ad424",
+      "bytes": 10567,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

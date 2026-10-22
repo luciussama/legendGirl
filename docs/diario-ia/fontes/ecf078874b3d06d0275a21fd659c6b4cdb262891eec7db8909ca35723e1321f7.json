@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ecf078874b3d06d0275a21fd659c6b4cdb262891eec7db8909ca35723e1321f7",
+  "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/paisagem-3.png",
+  "sha256": "6e435f0f9100d322aa7c713ab360d10bd5c9b6ae39aacd66334c1588bb4d4fb8",
+  "capturedAt": "2026-10-21T18:44:18.681797+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/paisagem-3.png\", \"sha256\": \"e8b8b3966db63010f3c48922af3592471878939d3385beaa6ef96c841a5d367d\", \"bytes\": 444641, \"binaryRetained\": false}"
+}

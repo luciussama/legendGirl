@@ -65,9 +65,9 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Sala de brinquedos | Espaço, E, Enter ou F | Pegar, soltar ou guardar um objeto |
 | Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/soltar/guardar |
 | Sala de brinquedos em tela sensível ao toque | Joystick virtual à esquerda e botão de ação à direita | Movimentar e interagir |
-| Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F | Andar; pular; abaixar; espada |
-| Arena com gamepad padrão | D-pad; A (salto); X (espada) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
-| Arena em touch | Direcional e botão de espada | Andar, pular, abaixar e atacar; botão especial reservado |
+| Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F; R | Andar; pular; abaixar; espada; especial |
+| Arena com gamepad padrão | D-pad; A (salto); X (espada); Y (especial) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
+| Arena em touch | Direcional, espada e especial | Andar, pular, abaixar e atacar; especial uma vez por batalha |
 | Perseguição 3D | A/D, esquerda/direita, D-pad ou analógico esquerdo | Desviar lateralmente durante a corrida automática |
 | Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
@@ -256,4 +256,6 @@ O modo NORMAL tem alcances próprios nos três percursos de plataformas. Os bloc
 
 Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimigos, mantendo os corações e os sinais dos golpes. Na perseguição, são três vidas no NORMAL e seis no FÁCIL. O NORMAL usa até três brinquedos por lançamento e pares a cada segundo nos 15% finais. Os detalhes estão nos [guias da arena](docs/arena/GUIA-ARENA.md) e da [perseguição](docs/bear-chase/GUIA-PREVIA.md).
 
-A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação final nem retry próprio de campanha. A compatibilidade do piso recebeu um ajuste de upload de textura; sua eficácia no Safari do usuário ainda precisa ser confirmada.
+A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação após a conclusão; a derrota oferece nova tentativa nessa fase. A compatibilidade do piso recebeu um ajuste de upload de textura; sua eficácia no Safari do usuário ainda precisa ser confirmada.
+
+Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.

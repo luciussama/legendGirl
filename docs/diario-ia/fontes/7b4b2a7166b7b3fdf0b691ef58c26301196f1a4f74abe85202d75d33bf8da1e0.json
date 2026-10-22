@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7b4b2a7166b7b3fdf0b691ef58c26301196f1a4f74abe85202d75d33bf8da1e0",
+  "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec/docs/diario-ia/qa-resultados/saida-arena/saida-direta-paisagem.png",
+  "sha256": "379c028d0452febdaf6ae3049d5df728ae2eb43ce9b021b3ee15bf4e5b9d5dce",
+  "capturedAt": "2026-10-21T21:39:24.157603+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:saida-direta:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/saida-arena/saida-direta-paisagem.png\", \"sha256\": \"31e304d5738226e5f62cd3c75c0f24ab34d439833facb6b686eb54650ee4a5dc\", \"bytes\": 441156, \"binaryRetained\": false}"
+}

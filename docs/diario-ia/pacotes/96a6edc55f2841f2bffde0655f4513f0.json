@@ -1,0 +1,57 @@
+{
+  "schemaVersion": 1,
+  "id": "96a6edc55f2841f2bffde0655f4513f0",
+  "date": "2026-10-21T20:22:14.646058+00:00",
+  "title": "QA temporário: test:arena:especial:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0.log",
+      "sourceId": "532f6871689df82f1278d7969b4f053a83dba0bd8bd3ac94c6c186ee5fbb0792",
+      "sha256": "2232482fd46646c13eaad471dd3faa311103ee316b454798184143a58bfd80eb",
+      "bytes": 585,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-106.png",
+      "sourceId": "38368be33a931de9edff9eb52354c82891fd6ce844af816bcb3f63ae5cefc61e",
+      "sha256": "209e352c53f39cf37086f90b49af675f0db1a850c6d9dc1d68160ad17aed91f0",
+      "bytes": 812163,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-118.png",
+      "sourceId": "0fd02a1ef0b74bda3851f4566c754b14752cb29c7031c68c1c1342f6e794a411",
+      "sha256": "901728ce0aeaf870c3662fed0c7758a269939730f7d89e6065f4d89819823c8d",
+      "bytes": 758845,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-desktop-60.png",
+      "sourceId": "5b238b2136b3c0031c2477cc99a8c408a7ae26edb2083c98716024d9cecaa3a8",
+      "sha256": "8dc6eeb5f948b86e1d1585ca5f272c1416aa5d0adbcfe88911e13cac1906d68f",
+      "bytes": 521962,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-106.png",
+      "sourceId": "edb2e18d6e876bac53e1ff5366616744f994d168f9cdfcfff8128899397cc115",
+      "sha256": "d42ee7a0ea57f5500800a0f633e07ac43e51efffb040616067ba76e930da1524",
+      "bytes": 481970,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-118.png",
+      "sourceId": "6ec65d2f6423304ecd330574d10cfe9e39d06fdf80f67333debbf17e27e9816d",
+      "sha256": "2abd8dcbb5954b90ed23b0fa1c7daf2cb8951c617bcc96a5886cd4aefa241b34",
+      "bytes": 453616,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/96a6edc55f2841f2bffde0655f4513f0/docs/diario-ia/qa-resultados/especial-arena/especial-retrato-60.png",
+      "sourceId": "61a359895bfdd9720095407f7631bf96dc1f7e9d947e0b221e5b3ad280edf5d0",
+      "sha256": "d9bf59b526e7141a285b99d10782ab1168e94f246a71363736fe1764454f594f",
+      "bytes": 321597,
+      "metadataOnly": true
+    }
+  ]
+}

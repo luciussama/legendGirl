@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "15017ef9f614a908b5c24728b6013f6e0b94b91d71e2383e6d41520332da5317",
+  "path": "qa-execucoes/361c84398d9b49ac83abfb7f21b4cb8e.log",
+  "sha256": "4a2a5733f849a48515c902974f91698018cf77c908ec27807a49a3fd495d142e",
+  "capturedAt": "2026-10-21T13:40:11.936276+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats:browser",
+    "exitCode": 1,
+    "package": "20261021T133841-37206f617bb5"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:campaign:defeats:browser\n> node docs/diario-ia/qa/derrotas-20261021/navegador.mjs\n\n{\"formato\":\"desktop\",\"resultado\":\"aprovado\",\"contagemEntreFases\":3,\"recargaSemDuplicacao\":true,\"retomada\":{\"distance\":350.16448873349145,\"x\":-1.1901674649184901,\"hits\":0,\"stage\":\"RUNNING\",\"room\":\"EASY\",\"chase\":\"EASY\",\"count\":3,\"saved\":\"EASY\"},\"recusa\":true,\"retryNativo\":true}\n{\"formato\":\"retrato\",\"resultado\":\"aprovado\",\"contagemEntreFases\":3,\"recargaSemDuplicacao\":true,\"retomada\":{\"distance\":350.16448873349145,\"x\":-1.1901674649184901,\"hits\":0,\"stage\":\"RUNNING\",\"room\":\"EASY\",\"chase\":\"EASY\",\"count\":3,\"saved\":\"EASY\"},\"recusa\":true,\"retryNativo\":true}\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-3feixl46/projeto/docs/diario-ia/qa/derrotas-20261021/navegador.mjs:14\n const until=async(code,label,timeout=30000)=>{const end=Date.now()+timeout;while(Date.now()<end){if(await evaluate(code))return;await sleep(80);}throw Error('Espera excedida: '+label);};\n                                                                                                                                                        ^\n\nError: Espera excedida: aceite\n    at until (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-3feixl46/projeto/docs/diario-ia/qa/derrotas-20261021/navegador.mjs:14:153)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-3feixl46/projeto/docs/diario-ia/qa/derrotas-20261021/navegador.mjs:40:304\n\nNode.js v26.5.0\n"
+}

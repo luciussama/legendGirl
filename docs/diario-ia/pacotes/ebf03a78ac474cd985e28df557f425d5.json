@@ -1,0 +1,99 @@
+{
+  "schemaVersion": 1,
+  "id": "ebf03a78ac474cd985e28df557f425d5",
+  "date": "2026-10-21T18:44:18.659517+00:00",
+  "title": "QA temporário: test:arena:composicao:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5.log",
+      "sourceId": "aad1a27763480b0872031d8f61c3088743e419801fd5868f99015fe42e196df4",
+      "sha256": "2253aefc61beb62958ebcb9f410fa79b8b259a0892684e65bcd41dee4be42bbf",
+      "bytes": 7184,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/cenario-completo.png",
+      "sourceId": "c0eaeaeb16c2846d6001a0d978f5c36bb2f3e9d62cb8ecac8d9c1b26f284b671",
+      "sha256": "a2bfa6f922c6058379da79271bcf431d294c017b24f6019481efc152d1bfd085",
+      "bytes": 3357586,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/desktop-0.png",
+      "sourceId": "a5bb21699d06c10ab1add5fa193e1d9ad6bdc8465469bc3c4c9014fb499f9e3f",
+      "sha256": "9b97513f9a58cf6e389a34bebe4dfdf6290650e5819d907e6a8eee0af5f86c7b",
+      "bytes": 814467,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/desktop-1.png",
+      "sourceId": "7171c9b341efd7d80ff94333ab7e8cde7c05f7657fad506d8b50b7ff7a8171d0",
+      "sha256": "707aa47ddfb46bff50067d79724bf4dc5864ed67c3cae3a899adc111ca8facff",
+      "bytes": 814654,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/desktop-2.png",
+      "sourceId": "5c7beb6e52003ee7ab32bef9badedf4dfb3ca6bfba63f437bb0f984c7c6360a9",
+      "sha256": "20413fab9b487e3702574174ac9e5b998619e24c1422e01d1541a10168dbe957",
+      "bytes": 813097,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/desktop-3.png",
+      "sourceId": "d7bb3864d72a96c6083c26f7c02bd928a5d08724a6d5b3cd2e78f1ff333b253e",
+      "sha256": "bb956f2fd08667afcadb904c974726d85b622f0e8a6149f54baa9c92c600f7f8",
+      "bytes": 814040,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/entrada-urso.png",
+      "sourceId": "41fe1ef553e73ce45207e44f3ae3e0ae0be2684ed2576024105a59aee5ac466d",
+      "sha256": "96bd3ca03292288ac5728bad482c838888524a1d934e8285a357fca43cfa636c",
+      "bytes": 812086,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/extremo-direito.png",
+      "sourceId": "85b6d99031ff0f53cce6f2149e83e3320fc862d4850b1686da5b70d6511aef02",
+      "sha256": "5a79d6f445de4848f140ffdc9d6c795debc90e962485d02436058386ae72ca82",
+      "bytes": 803574,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/extremo-esquerdo.png",
+      "sourceId": "52fe601e502f2c28f18366a4d4fd576e83d68e27d68cb2f0c46dd45b7c76003b",
+      "sha256": "7d23c5f64f833ce799c8e3bff7e3d5bc044f8e3091dbf2011abc76a1ce74b8b1",
+      "bytes": 807388,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/medicoes.json",
+      "sourceId": "34c6153fb74d5e7cb6ae854c99f77d50cf9c2948284b52e86bb84b79b347cdaa",
+      "sha256": "791f194ff778effad73622419c786360e651819df161ec1fb3a3ebbdd5400755",
+      "bytes": 19649,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/paisagem-3.png",
+      "sourceId": "ecf078874b3d06d0275a21fd659c6b4cdb262891eec7db8909ca35723e1321f7",
+      "sha256": "e8b8b3966db63010f3c48922af3592471878939d3385beaa6ef96c841a5d367d",
+      "bytes": 444641,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/retrato-3.png",
+      "sourceId": "bc22052865110fd8813c3b0553f729c229f1dc12bdc7ce385176c33381ed4a50",
+      "sha256": "d282b9fea5352ee40f2b0cdf8d38cc7cc16497e0ebd972a492d1bf11a6181a71",
+      "bytes": 482360,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/ebf03a78ac474cd985e28df557f425d5/docs/diario-ia/qa-resultados/arena-critica/transformacao-179.png",
+      "sourceId": "4253c1c360a5e80d902d800f19360ed92e30a7b888841926af11d9116bdfab3b",
+      "sha256": "d43a447818074c0983377cbb457caaf366b6a95fdb66d42c7c93516577b291f8",
+      "bytes": 437104,
+      "metadataOnly": true
+    }
+  ]
+}

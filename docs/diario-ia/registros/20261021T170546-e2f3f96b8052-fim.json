@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T170546-e2f3f96b8052-fim",
+  "sessionId": "20261021T170546-e2f3f96b8052",
+  "type": "fim",
+  "date": "2026-10-21T17:13:14.573474+00:00",
+  "title": "Análise crítica da composição visual da arena",
+  "actor": "Codex",
+  "summary": "Análise crítica da arena concluída: reproduzida sobreposição e suspensão visual do armário sobre a janela, cavalinho parcialmente oculto, tapete sobre bases, ausência de planos claros de parede/piso, distorção do tapete, enquadramento e HUD conflitantes. Identificado foreground do baú inalcançável no caminho real da arena e referência legada do transporte. Diagnóstico com prioridades, causas, fontes e direção de correção arquivado. Produção inalterada; correções pendentes.",
+  "checks": [
+    "review:arena:composicao:browser executado em workspace temporário, exit 0 de coleta (não aprovação visual). Onze capturas inspecionadas: quatro inimigos desktop, urso retrato/paisagem, composição integral, entrada do urso, extremos de câmera e transformação. Estados preparados; sem campanha humana completa.",
+    "Medições reais de drawImage/matrizes: armário x684..1176/y272,92..562; janela x530..1070/y10..600; tapete após móveis. Interceptação de renderForeground confirmou zero chamadas com renderPlayer instalado. Dados e metadados das imagens no pacote 0c99a0ac72444f46a84e29d52d5607cd.",
+    "Consultados código, inventário, guias e teste histórico de arena. Fonte c4636269968bff0d5d8a231b8374c60c66cc1f28f0514cee266268af0dc30099 verifica números/papéis/atores e não coerência espacial. Links do diagnóstico e git diff --check aprovados. Nenhuma diferença em src/assets/index/package.",
+    "Bitmaps temporários removidos após inspeção e metadados arquivados; Chrome isolado encerrado. npm test/build não repetidos, pois apenas análise e acervo foram alterados."
+  ],
+  "pending": [
+    "Corrigir composição e camadas da arena, apoios e planos, proporção do tapete, oclusão/ponto do baú e espaço do HUD; preservar artes, física, hitboxes, combate e dificuldade. Nenhuma aprovação artística nova ou correção declarada nesta análise."
+  ],
+  "files": [
+    "docs/diario-ia/analises/20261021-arena-composicao-critica.md",
+    "docs/diario-ia/qa/arena-critica-20261021/inspecionar.mjs",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

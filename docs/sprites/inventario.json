@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 415,
+    "files": 416,
     "regions": 99,
     "code": 29
   },
@@ -295,7 +295,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 634,
+          "line": 687,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -1647,7 +1647,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -8476,6 +8476,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/toy-room/battle/girl/special/prompts.json",
+          "line": 18,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/toy-room/BattleGirlFrames.js",
           "line": 100,
           "type": "runtime",
@@ -9009,6 +9015,29 @@
       ],
       "hints": [],
       "family": "assets/art/toy-room/battle/girl/runtime"
+    },
+    {
+      "id": "9f64eeb7d5c5cbd6ce4acd1b",
+      "kind": "file",
+      "path": "assets/art/toy-room/battle/girl/special/eyes-power-v1.png",
+      "title": "eyes-power-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2112167,
+      "sha256": "204807763d6c6dfe473c4b3d174fcee75ca0dbe09a39bd42f930f6e5e026c811",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/toy-room/ArenaSpecialAttack.js",
+          "line": 125,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/battle/girl/special"
     },
     {
       "id": "c04d847005a52dd6f11cdd24",
@@ -14318,6 +14347,12 @@
           "alias": null
         },
         {
+          "file": "src/js/toy-room/ArenaEnvironment.js",
+          "line": 37,
+          "type": "runtime",
+          "alias": "toy-room-oak-trim-v1"
+        },
+        {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
           "line": 57,
           "type": "runtime",
@@ -14356,7 +14391,7 @@
         },
         {
           "file": "src/js/toy-room/ArenaEnvironment.js",
-          "line": 27,
+          "line": 65,
           "type": "runtime",
           "alias": "toy-room-oval-rug-v1"
         },
@@ -14448,7 +14483,7 @@
         },
         {
           "file": "src/js/toy-room/ArenaEnvironment.js",
-          "line": 8,
+          "line": 10,
           "type": "runtime",
           "alias": "toy-room-wallpaper-v1"
         },
@@ -14497,7 +14532,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomArenaBuilder.js",
-          "line": 29,
+          "line": 37,
           "type": "runtime",
           "alias": "toy-room-window-curtains-v1"
         }
@@ -19934,7 +19969,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -19998,7 +20033,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20062,7 +20097,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20126,7 +20161,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20190,7 +20225,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20254,7 +20289,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20318,7 +20353,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20382,7 +20417,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20446,7 +20481,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20510,7 +20545,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20574,7 +20609,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20638,7 +20673,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20702,7 +20737,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20766,7 +20801,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20830,7 +20865,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20894,7 +20929,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -20958,7 +20993,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21022,7 +21057,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21086,7 +21121,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21150,7 +21185,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21214,7 +21249,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21278,7 +21313,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21342,7 +21377,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21406,7 +21441,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21470,7 +21505,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21534,7 +21569,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21598,7 +21633,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21662,7 +21697,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21726,7 +21761,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21790,7 +21825,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21854,7 +21889,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21918,7 +21953,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -21982,7 +22017,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22046,7 +22081,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22110,7 +22145,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22174,7 +22209,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22238,7 +22273,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22302,7 +22337,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }
@@ -22366,7 +22401,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomBattle.js",
-          "line": 39,
+          "line": 40,
           "type": "runtime",
           "alias": "official-character"
         }

@@ -6,7 +6,8 @@
     "src/js/toy-room/ArenaPlayerController.js",
     "src/js/toy-room/ArenaEnemies.js",
     "src/js/toy-room/ArenaCombatRules.js",
-    "src/js/toy-room/ArenaDifficulty.js"
+    "src/js/toy-room/ArenaDifficulty.js",
+    "src/js/toy-room/ArenaSpecialAttack.js"
   ],
   "perfis": {
     "BATTLE_ORDER": [
@@ -260,5 +261,25 @@
         }
       }
     }
+  },
+  "especial": {
+    "usosPorBatalha": 1,
+    "teclado": "R",
+    "gamepad": "Y",
+    "danoComum": "HP = 0",
+    "danoUrso": "HP = 1",
+    "transfereCoracoes": false,
+    "quadros": {
+      "charge": 78,
+      "pullback": 88,
+      "launch": 94,
+      "impact": 118,
+      "fade": 138,
+      "duration": 156
+    },
+    "persistencia": [
+      "specialUsed",
+      "specialAttack"
+    ]
   }
 }

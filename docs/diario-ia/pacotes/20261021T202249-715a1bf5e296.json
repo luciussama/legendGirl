@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T202249-715a1bf5e296",
+  "date": "2026-10-21T20:22:49.462892+00:00",
+  "title": "Isolar histórico de cada cenário de navegador",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/especial-arena-20261021/navegador.mjs",
+      "sourceId": "0e3c4cdae160f6f22c8d2061659993d76835b8b28ee8894664ea0091aee79840",
+      "sha256": "a7f6ffe2a385edf9d87de712485024d3a20157e45f32e5dae27c0d8699e835c2",
+      "bytes": 6105,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:especial:browser": "node docs/diario-ia/qa/especial-arena-20261021/navegador.mjs"
+  }
+}

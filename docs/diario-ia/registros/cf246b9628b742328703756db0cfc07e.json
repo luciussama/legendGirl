@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "cf246b9628b742328703756db0cfc07e",
+  "type": "qa",
+  "date": "2026-10-22T00:41:45.871629+00:00",
+  "title": "QA temporário: test:saltos:progressao",
+  "exitCode": 0,
+  "sourceId": "0a3d008e32547b63721176088b0f15a5c84f4dddb507407bc07e6abbf4010cc2",
+  "package": "20261021T011044-adf1e2755452"
+}

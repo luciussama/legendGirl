@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T213734-5337728d058f",
+  "date": "2026-10-21T21:37:34.718962+00:00",
+  "title": "Regressão da saída direta e atualização da fixture de perseguição",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/saida-arena-20261021/regressao.mjs",
+      "sourceId": "9f8dac3bc2d5a81a351355df37e90fd549105e242bbcebdc3ab34933c3f031c4",
+      "sha256": "4863d0032a912d53d51e799ae61abd73bff91b69aa0a4c46929208b8fb5dfdd5",
+      "bytes": 5196,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:saida-direta": "node docs/diario-ia/qa/saida-arena-20261021/regressao.mjs"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T202432-f004e9639c30",
+  "date": "2026-10-21T20:24:32.699117+00:00",
+  "title": "Conferir sincronismo de vida e relógio em todos os formatos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/especial-arena-20261021/navegador.mjs",
+      "sourceId": "3c3f555381d71308f726a1bf210ada5a95247ed4702047c6f9a7b1b3c0ab5924",
+      "sha256": "8e10be40cadcd734a6ff28a0b89148ef1edf4199605f3f923cb03bd216c4181e",
+      "bytes": 6264,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:especial:browser": "node docs/diario-ia/qa/especial-arena-20261021/navegador.mjs"
+  }
+}

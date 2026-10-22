@@ -3,7 +3,7 @@ import { chaseLives, chaseMaxLives, isChaseDefeat } from './ChaseHealth.js';
 const MESSAGES = { BEAR_DOWN: 'O urso caiu…', GIRL_APPROACH: 'Ela se aproxima devagar.',
   BEAR_RISE: 'Ele está se levantando!',
   CAUGHT: 'Você alcançou o urso!', CHEST_RETURN: 'De volta ao baú.', COMPLETE: 'Perseguição concluída!',
-  GAME_OVER: 'Fim de jogo' };
+  GAME_OVER: 'A menina não alcançou o urso. Tentar novamente?' };
 
 /** Desenha os corações restantes e vazios no lugar dos textos técnicos da perseguição. */
 function renderLives(ctx, w, ui, state, difficulty) {
@@ -36,6 +36,6 @@ export function renderChaseHUD(ctx, canvas, state, error, audioError, difficulty
   ctx.font = `${14 * ui}px sans-serif`; ctx.fillStyle = '#ffedc5';
   ctx.fillText(isChaseDefeat(state.stage) ? 'A menina caiu.' : '← A · desvie · D →', w / 2, h - 32 * ui, w - 25);
   ctx.font = `${11 * ui}px sans-serif`;
-  ctx.fillText(audioError || (isChaseDefeat(state.stage) ? 'Escolha a fase novamente no seletor para tentar de novo.' : 'Toque e segure nas laterais · P pausa · M som'), w / 2, h - 12 * ui, w - 25);
+  ctx.fillText(audioError || (isChaseDefeat(state.stage) ? 'Tente novamente pelos botões da tela.' : 'Toque e segure nas laterais · P pausa · M som'), w / 2, h - 12 * ui, w - 25);
   ctx.restore();
 }

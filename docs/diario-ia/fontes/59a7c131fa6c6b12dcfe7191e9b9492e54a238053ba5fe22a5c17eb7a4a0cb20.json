@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "59a7c131fa6c6b12dcfe7191e9b9492e54a238053ba5fe22a5c17eb7a4a0cb20",
+  "path": "qa-execucoes/0c99a0ac72444f46a84e29d52d5607cd/docs/diario-ia/qa-resultados/arena-critica/extremo-direito.png",
+  "sha256": "4935ea8a5a21a4dc2a72af34ee61ebdce2c8b46d565fb1700ee62c19adcc07b1",
+  "capturedAt": "2026-10-21T17:08:59.069766+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "review:arena:composicao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/arena-critica/extremo-direito.png\", \"sha256\": \"4735d7d57e76e83bd0934658695573c4d8a12b5687ead93db3601bc9357453c4\", \"bytes\": 752960, \"binaryRetained\": false}"
+}

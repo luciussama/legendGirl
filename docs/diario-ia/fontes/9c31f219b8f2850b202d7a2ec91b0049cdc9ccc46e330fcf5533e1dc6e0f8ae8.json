@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9c31f219b8f2850b202d7a2ec91b0049cdc9ccc46e330fcf5533e1dc6e0f8ae8",
+  "path": "qa-execucoes/caabda1cb6f44d76af218a19e523c9f5.log",
+  "sha256": "fe4a89aca5038df69070a0df91fd5f3829d398e4c538d3c050437e0b3bdd23a4",
+  "capturedAt": "2026-10-21T13:32:45.791563+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats:browser",
+    "exitCode": 1,
+    "package": "20261021T133201-d7fe31c2cd82"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:campaign:defeats:browser\n> node docs/diario-ia/qa/derrotas-20261021/navegador.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ -1.1803018472422442\n- -1.2\n     ^\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-c92opbp4/projeto/docs/diario-ia/qa/derrotas-20261021/navegador.mjs:41:71 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: -1.1803018472422442,\n  expected: -1.2,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

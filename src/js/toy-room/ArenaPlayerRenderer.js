@@ -1,3 +1,4 @@
+import { renderSpecialSwordAura, renderArenaSpecialCloseup, ARENA_SPECIAL_CLOSEUP_FILE } from './ArenaSpecialAttack.js';
 import { ARENA_GIRL_ANIMATION_FRAMES, ARENA_GIRL_REFERENCE_HEIGHT } from './ArenaGirlAnimationFrames.js';
 import { sampleArenaPlayerAnimation } from './ArenaPlayerAnimation.js';
 import { ARENA_PLAYER_HEIGHT } from './ArenaScale.js';
@@ -8,6 +9,7 @@ export class ArenaPlayerRenderer {
   async load() {
     if(this.ready)return;
     const files=new Set(Object.values(ARENA_GIRL_ANIMATION_FRAMES).flat().map(frame=>frame.file));
+    files.add(ARENA_SPECIAL_CLOSEUP_FILE);
     await Promise.all([...files].map(file=>new Promise((resolve,reject)=>{
       const image=new Image();
       image.onload=()=>{this.images.set(file,image);resolve();};
@@ -47,7 +49,11 @@ export class ArenaPlayerRenderer {
     }
     if(target!==ctx){target.restore();ctx.globalAlpha*=reaction;ctx.drawImage(this.blendCanvas,-220,-300);}
     if(sample.slash&&state.mode==='BATTLE')this.renderSwordArc(ctx,sample,(room.battle?.tuning.swordContactScale ?? 1.1)/1.1);
+    renderSpecialSwordAura(ctx,state);
     ctx.restore();
+  }
+  renderSpecialCloseup(ctx,canvas,state) {
+    renderArenaSpecialCloseup(ctx,canvas,state,this.images.get(ARENA_SPECIAL_CLOSEUP_FILE));
   }
   renderSwordArc(ctx,sample,reachScale=1) {
     const {progress,alpha,crouching}=sample.slash;

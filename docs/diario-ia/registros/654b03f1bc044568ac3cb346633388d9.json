@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "654b03f1bc044568ac3cb346633388d9",
+  "type": "qa",
+  "date": "2026-10-21T13:37:36.406987+00:00",
+  "title": "QA temporário: test:campaign:defeats:browser",
+  "exitCode": 1,
+  "sourceId": "626308611b1fc1eda3e6ab48145dec05260f08b744995a3f532bd0fb2969a876",
+  "package": "20261021T133701-a9290db2b637"
+}

@@ -33,6 +33,10 @@ export function createCampaignProgress(storage) {
           const data = JSON.parse(raw);
           if (data.state && typeof data.state === 'object') {
             data.state.gameDifficulty = normalizeDifficulty(data.state.gameDifficulty);
+            // Saves anteriores à oferta de ajuda continuam válidos, sem derrotas inventadas.
+            if (!('defeatCount' in data.state)) data.state.defeatCount = 0;
+            if (!('defeatPending' in data.state)) data.state.defeatPending = false;
+            if (!('easyOfferPending' in data.state)) data.state.easyOfferPending = false;
           }
           // Aberturas antigas ainda em andamento precisam chegar ao primeiro salto.
           // Campanhas que já avançaram conservam o gameplay iniciado.
@@ -52,6 +56,7 @@ export function createCampaignProgress(storage) {
           }
           const defaults = captureState(createDefaultStateVariables());
           if (data.version !== 1 || !data.state || !data.opening ||
+              !Number.isSafeInteger(data.state.defeatCount) || data.state.defeatCount < 0 ||
               !['CUTSCENE', 'FIRST_JUMP_TUTORIAL', 'GAMEPLAY_NORMAL'].includes(data.state.gameplayState) ||
               typeof data.opening.active !== 'boolean' || typeof data.opening.completed !== 'boolean' ||
               !Number.isFinite(data.opening.time) || !Array.isArray(data.opening.cues) ||

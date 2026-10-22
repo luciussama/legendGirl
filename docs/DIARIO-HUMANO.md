@@ -46,12 +46,34 @@ A documentação tem agora um [catálogo da arquitetura e entidades](ARQUITETURA
 
 ## 19 a 21 de outubro de 2026 — menu e continuidade da aventura
 
-A tela inicial ganhou a cena da menina lendo e opções para iniciar ou carregar a aventura. O modo fácil acompanha a campanha salva. A vitória da arena agora entrega diretamente à introdução da fuga, com escurecimento durante a troca e preservação do progresso. A conclusão e a derrota da perseguição ainda precisam de navegação e retomada próprias.
+A tela inicial ganhou a cena da menina lendo e opções para iniciar ou carregar a aventura. O modo fácil acompanha a campanha salva. A vitória da arena agora entrega diretamente à introdução da fuga, com escurecimento durante a troca e preservação do progresso. A conclusão da perseguição ainda precisa de navegação própria; sua derrota agora oferece nova tentativa.
 
 O NORMAL exige desvios sucessivos na fuga: nos trechos densos há até três brinquedos, e o final alterna pares com um corredor mais amplo. O EASY conserva sua distribuição anterior e recebe mais vidas; na arena, oferece maior alcance e mais tempo para reagir.
 
 Os pousos do retorno passaram a reconhecer o contato durante a descida, evitando perder um apoio que foi cruzado entre quadros. A apresentação móvel usa um enquadramento contínuo. O piso da fuga recebeu um ajuste de compatibilidade de textura; o relato de ausência da madeira no Safari ainda aguarda confirmação. Novas artes e modelos continuam sujeitos à aprovação específica do responsável.
 
+## 21 de outubro de 2026 — ajuda após três derrotas
+
+A perseguição passa a perguntar “A menina não alcançou o urso. Tentar novamente?” quando a tentativa termina. É possível tentar essa fase de novo sem voltar ao menu.
+
+Depois de três derrotas completas na campanha, em qualquer parte da aventura, o jogo pergunta “deseja tentar no fácil?”. Aceitar muda a dificuldade e mantém a parte atual: checkpoint do quarto, adversário da arena ou progresso na perseguição. Recusar mantém o NORMAL; outras três derrotas permitem nova oferta. A contagem e a escolha acompanham a aventura salva.
+
+## 21 de outubro de 2026 — composição da arena
+
+A arena ganhou um piso contínuo de madeira e móveis apoiados em planos coerentes. A janela central fica livre, o armário ocupa a lateral e o cavalinho tem espaço próprio. O tapete aparece sob os móveis, com proporções compatíveis com o piso. O enquadramento mostra mais do quarto e mantém os nomes dos adversários abaixo dos botões superiores. A entrada e a saída dos brinquedos acompanham o baú visível. As artes e as regras de combate foram preservadas.
+
 ## Próximas entradas
 
 Acrescente uma entrada quando mudar a experiência, a direção visual ou a forma de trabalho. Descreva o impacto para pessoas; não copie logs, métricas ou saídas de testes para este arquivo.
+
+## 21/10/2026 — Especial da menina na arena
+
+A espada arco-íris pode ser usada uma vez na batalha inteira, por R, Y ou ESPECIAL no touch. A câmera aproxima do rosto durante a preparação e retorna antes do corte que lança o raio. O golpe elimina um brinquedo comum ou deixa o Urso com um coração. A troca de adversário e o carregamento preservam o consumo; uma nova tentativa completa renova o uso. A sequência reaproveita as poses da menina e acrescenta efeitos em Canvas.
+
+### Close dramático do especial
+
+O enquadramento da carga passou a usar um corte de anime centrado nos dois olhos, com expressão intensa e reflexos arco-íris, conforme a referência enviada. Uma ilustração frontal própria substitui a ampliação do sprite como foco da cena. O corte sai rapidamente antes do retorno à arena e do disparo.
+
+### Saída direta da arena
+
+Ao perder o último coração, o Urso encerra a arena e a cena passa à ilustração dele caído. Foram retirados os textos de vitória e retorno da fantasia, a espera pelo transporte ao baú e a pausa para confirmação. A breve passagem escura continua ocultando o carregamento da próxima cena. O usuário também aprovou o close de anime do especial (“ah, gostei!”); essa aprovação se refere à arte e composição do close apresentado.

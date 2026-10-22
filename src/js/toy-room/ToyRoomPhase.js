@@ -41,6 +41,8 @@ export class ToyRoomPhase {
     this.onReturnToTitle = onReturnToTitle;
     this.assets = options.assets || null;
     this.isInputEnabled = options.isInputEnabled || (() => true);
+    this.onDefeat = options.onDefeat;
+    this.reportedDefeat = null;
     this.bindInputs = options.bindInputs !== false;
     this.createChasePhase = options.createChasePhase || (config => new BearChasePhase(config));
     Object.assign(this, createToyRoomEnvironmentAssets(this.assets));
@@ -222,6 +224,19 @@ export class ToyRoomPhase {
 
   /** Atualiza exclusivamente o modo ativo, sem compartilhar física entre 2D e 3D. */
   update(dt = 1.0) {
+    this.updateActiveMode(dt);
+    const defeat = this.chase?.active && this.chase.state.stage === 'GAME_OVER'
+      ? { state: this.chase.state, phase: 'bear-chase' }
+      : this.battle.state?.mode === 'DEFEAT' ? { state: this.battle.state, phase: 'arena' } : null;
+    if (defeat && this.reportedDefeat !== defeat.state) {
+      this.reportedDefeat = defeat.state;
+      this.clearInput();
+      this.onDefeat?.(defeat.phase);
+    }
+  }
+
+  /** Executa a etapa ativa; a notificação de derrota acontece depois de sua simulação. */
+  updateActiveMode(dt) {
     if (!this.isInputEnabled()) { this.clearInput(); return; }
     if (this.chase?.active) { this.chase.update(dt); return; }
     this.pollGamepad();
@@ -276,6 +291,38 @@ export class ToyRoomPhase {
       width: this.ROOM_W, height: this.ROOM_H }, dt);
 
     this.updateCamera(dt);
+  }
+
+  /** Reaplica a dificuldade à etapa atual, conservando atores, posição e narrativa. */
+  setDifficulty(difficulty) {
+    this.gameDifficulty = normalizeDifficulty(difficulty);
+    if (this.chase?.active) this.chase.difficulty = this.gameDifficulty;
+    if (this.arena?.active && !this.arena.state.realityRestored) this.arena.configurePresentation();
+  }
+
+  /** Recupera a tentativa atual; ao aceitar ajuda, conserva o adversário ou percurso. */
+  retryDefeat({ resume = false } = {}) {
+    if (this.chase?.active) {
+      const retried = this.chase.retry({ resume });
+      if (retried) this.reportedDefeat = null;
+      return retried;
+    }
+    const s = this.battle.state;
+    if (s?.mode !== 'DEFEAT') return false;
+    if (resume) {
+      Object.assign(s, { mode: 'BATTLE', ending: 0, hitPause: 0, playerHitTime: 0,
+        playerKnockback: 0, attackTime: 0, cooldown: 0, immunity: this.battle.tuning.immunity });
+      s.player.hp = s.player.maxHp;
+      this.story.state.attackElapsed = 0;
+    } else if (this.arena?.active) {
+      this.arena.retry();
+    } else {
+      this.battle.state = null;
+      this.battle.activate();
+    }
+    this.reportedDefeat = null;
+    this.clearInput();
+    return true;
   }
 
   updateCamera(dt) {

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "ba0604b4783a445b8794fcacd30076d4",
+  "type": "qa",
+  "date": "2026-10-21T21:38:16.523733+00:00",
+  "title": "QA temporário: test:arena:saida-direta:browser",
+  "exitCode": 1,
+  "sourceId": "5729036b5da9f243a202a80e2e63c965b8429de02388ed764b680b6dc5614727",
+  "package": "20261021T213810-52a2d23244e2"
+}

@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "85b4d8220dcd4d928dc305b6220e28ec",
+  "date": "2026-10-21T21:39:24.154929+00:00",
+  "title": "QA temporário: test:arena:saida-direta:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec.log",
+      "sourceId": "e5ac46d79639aad8a8df44e425d6a97137d5f61d5dd5b6d34c2398850afaa96a",
+      "sha256": "227483293beb0addd96b7c1821c295d77d0f67f9df450a02fef9ff13e7d5b52d",
+      "bytes": 379,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec/docs/diario-ia/qa-resultados/saida-arena/saida-direta-desktop.png",
+      "sourceId": "d692754c24789bb41c5fabd78be8e21f009894729ebae391f39446e8f32e52eb",
+      "sha256": "8ca553bd61ee7fc5f6a0e0881fb40c188aaa9325ac1ae2911e016b94a525b40f",
+      "bytes": 756651,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec/docs/diario-ia/qa-resultados/saida-arena/saida-direta-paisagem.png",
+      "sourceId": "7b4b2a7166b7b3fdf0b691ef58c26301196f1a4f74abe85202d75d33bf8da1e0",
+      "sha256": "31e304d5738226e5f62cd3c75c0f24ab34d439833facb6b686eb54650ee4a5dc",
+      "bytes": 441156,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/85b4d8220dcd4d928dc305b6220e28ec/docs/diario-ia/qa-resultados/saida-arena/saida-direta-retrato.png",
+      "sourceId": "7e7b6fb8d5cd34da57a5c361968a6661cddbce1f619bba2994309dcbb8c6d9e3",
+      "sha256": "1264f5e986eb1f0b96461707966ceb44f0431352dff9997b5db1fb11e527cc7d",
+      "bytes": 444595,
+      "metadataOnly": true
+    }
+  ]
+}

@@ -47,7 +47,8 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
         if entry.get('metadataOnly'):
             continue
         # Recupera somente código/fixtures e especificações exigidas pelos testes, não antigos relatórios Markdown.
-        if not entry['path'].startswith(('scripts/','tests/','assets/')):
+        fixture = entry['path'].startswith('docs/diario-ia/qa/') and Path(entry['path']).suffix in {'.js','.mjs','.cjs','.py','.html','.css','.json','.txt'}
+        if not entry['path'].startswith(('scripts/','tests/','assets/')) and not fixture:
             continue
         path = (workspace / entry['path']).resolve()
         if not path.is_relative_to(workspace.resolve()):
@@ -73,7 +74,7 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
         package['scripts'][command_name] = ('python3 ' if single.endswith('.py') else 'node ') + 'scripts/' + single
     package_path.write_text(json.dumps(package,ensure_ascii=False,indent=2)+'\n')
     server = None
-    browser = 'browser' in bundle.get('qaCommands',{}).get(args.command,args.command)
+    browser = 'browser' in args.command or 'browser' in bundle.get('qaCommands',{}).get(args.command,'')
     try:
         if browser:
             with socket.socket() as sock:
@@ -81,7 +82,7 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
             import re
             for folder in ['scripts','tests','docs/diario-ia/qa']:
                 for path in (workspace/folder).rglob('*'):
-                    if path.suffix not in {'.js','.html','.py'}:continue
+                    if path.suffix not in {'.js','.mjs','.cjs','.html','.py'}:continue
                     text = path.read_text()
                     text = re.sub(r'http://(127\.0\.0\.1|localhost):(3000|3001|3003|8765)', 'http://127.0.0.1:'+str(port),text)
                     text = text.replace('/tmp/legendgirl-sprite-review-test-selection.json',str(workspace/'review-test.json'))

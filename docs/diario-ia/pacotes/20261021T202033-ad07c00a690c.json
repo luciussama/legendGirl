@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261021T202033-ad07c00a690c",
+  "date": "2026-10-21T20:20:33.879517+00:00",
+  "title": "Regressão do especial arco-íris",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/especial-arena-20261021/regressao.mjs",
+      "sourceId": "46e09649eaafc519e75ac782f085d296c5250601ec3ac5c9a1c03f20f7ec3ef1",
+      "sha256": "83a418598960f03f940e72bf0adbfc4273884b645fa66189ef4b188d7f757f52",
+      "bytes": 4175,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:especial": "node docs/diario-ia/qa/especial-arena-20261021/regressao.mjs"
+  }
+}

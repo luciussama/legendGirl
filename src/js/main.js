@@ -26,6 +26,7 @@ const uiFeedback = document.getElementById('ui-feedback') || {
 const startOverlay = document.getElementById('start-overlay');
 const difficultySelect = document.getElementById('game-difficulty');
 const restartCampaignDialog = document.getElementById('restart-campaign-dialog');
+const easyModeDialog = document.getElementById('easy-mode-dialog');
 
 let titleScreen;
 /** Atualiza a disponibilidade de carregar ao retornar ao título. */
@@ -125,7 +126,15 @@ const game = createGame(canvas, uiFeedback, {
     status.hidden = persisted;
     status.textContent = persisted ? '' : 'Não foi possível salvar neste navegador. O progresso está disponível somente nesta sessão.';
   },
-  onGameOver: () => {
+  onGameOver: ({ phase = 'bedroom', offerEasy = false } = {}) => {
+    const chase = phase === 'bear-chase', arena = phase === 'arena';
+    gameoverOverlay.querySelector('.gameover-badge').textContent = chase ? '✦ PERSEGUIÇÃO AO URSO ✦' : arena ? '✦ ARENA ✦' : '✦ QUARTO ESCURO ✦';
+    gameoverOverlay.querySelector('.gameover-title').textContent = chase
+      ? 'A menina não alcançou o urso. Tentar novamente?'
+      : arena ? 'A menina não venceu esta batalha. Tentar novamente?' : 'Você não conseguiu sair do quarto.';
+    gameoverOverlay.querySelector('.gameover-sub').textContent = chase
+      ? 'A fadinha está pronta para acompanhar uma nova tentativa.'
+      : arena ? 'A aventura continua. Você pode tentar outra vez.' : 'A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.';
     // Reativa os botões e exibe a tela de sobreposição de forma limpa
     isActionLocked = false;
     updatePauseButtonState();
@@ -135,6 +144,10 @@ const game = createGame(canvas, uiFeedback, {
       gameoverOverlay.style.display = 'flex';
       gameoverOverlay.style.pointerEvents = 'auto';
       gameoverOverlay.classList.remove('hidden');
+    }
+    if (offerEasy && !easyModeDialog.open) {
+      easyModeDialog.returnValue = 'no';
+      easyModeDialog.showModal();
     }
   },
   onRestartToTitle: () => {
@@ -193,6 +206,7 @@ function handleRetry(event) {
     event.stopPropagation();
   }
 
+  if (easyModeDialog.open) return;
   const now = performance.now();
   if (isActionLocked || now - lastActionTime < 450) {
     return;
@@ -211,6 +225,7 @@ function handleRetry(event) {
   }
 
   game.retry();
+  updatePauseButtonState();
 
   setTimeout(() => {
     if (btnRetry) btnRetry.disabled = false;
@@ -315,6 +330,20 @@ titleScreen = new TitleScreen({ game,
   onLoad: () => startGame()
 });
 
+// A escolha modal não deixa teclas ou cliques atravessarem para o gameplay.
+for (const type of ['keydown', 'keyup', 'pointerdown', 'click']) {
+  easyModeDialog.addEventListener(type, event => event.stopPropagation());
+}
+easyModeDialog.addEventListener('close', () => {
+  if (easyModeDialog.returnValue === 'yes' && game.continueOnEasy()) {
+    gameoverOverlay.classList.add('hidden');
+    gameoverOverlay.style.display = 'none';
+    gameoverOverlay.style.pointerEvents = 'none';
+    isActionLocked = false;
+    updatePauseButtonState();
+  } else game.declineEasyOffer();
+});
+
 // Mantém atalhos de gameplay fora do diálogo de recuperação; Escape conserva o fechamento nativo.
 for (const type of ['keydown', 'keyup']) {
   document.getElementById('chase-error-dialog').addEventListener(type, event => event.stopPropagation());
@@ -404,6 +433,8 @@ window.addEventListener('keydown', (event) => {
 // Navegação via Gamepad para telas de Início e Fim de Jogo (Botão X e Botão A do controle Xbox)
 let prevOverlayButtonX = false;
 let prevOverlayButtonA = false;
+let prevOverlayButtonB = false;
+let prevOverlayDirection = 0;
 
 function pollOverlayGamepad() {
   if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open) return;
@@ -424,6 +455,20 @@ function pollOverlayGamepad() {
     const btnX = gp.buttons[2]; // Xbox X
     const isAPressed = Boolean(btnA && (btnA.pressed || btnA.value > 0.5));
     const isXPressed = Boolean(btnX && (btnX.pressed || btnX.value > 0.5));
+    const isBPressed = Boolean(gp.buttons[1]?.pressed || gp.buttons[1]?.value > 0.5);
+    if (easyModeDialog.open) {
+      const direction = Number(Boolean(gp.buttons[15]?.pressed)) - Number(Boolean(gp.buttons[14]?.pressed)) || gp.axes?.[0] || 0;
+      if (Math.abs(direction) > .5 && Math.abs(prevOverlayDirection) <= .5)
+        document.getElementById(direction > 0 ? 'btn-accept-easy' : 'btn-decline-easy').focus();
+      if (isBPressed && !prevOverlayButtonB) easyModeDialog.close('no');
+      else if ((isAPressed && !prevOverlayButtonA) || (isXPressed && !prevOverlayButtonX))
+        easyModeDialog.close(document.activeElement?.id === 'btn-accept-easy' ? 'yes' : 'no');
+      prevOverlayDirection = direction;
+      prevOverlayButtonA = isAPressed; prevOverlayButtonX = isXPressed; prevOverlayButtonB = isBPressed;
+      continue;
+    }
+    prevOverlayDirection = 0;
+    prevOverlayButtonB = isBPressed;
 
     if ((isXPressed && !prevOverlayButtonX) || (isAPressed && !prevOverlayButtonA)) {
       if (typeof game.setLastInputDevice === 'function') {

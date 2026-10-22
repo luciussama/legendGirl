@@ -6,6 +6,22 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ renderArenaSpecialCloseup:'Compõe um corte de anime com ambos os olhos, entrada/saída rápidas e energia; não avança a simulação.',
+ renderSpecialCloseup:'Apresenta o close dramático usando a textura pré-carregada com as poses da menina.',
+ beginArenaSpecial:'Consome o uso único e inicia a carga da espada na arena quando a ativação é válida.',
+ updateArenaSpecial:'Avança a encenação com física/IA suspensas e aplica dano único na chegada do raio.',
+ specialCameraFrame:'Aproxima do rosto durante a carga e retorna ao panorama antes do corte.',
+ renderSpecialSwordAura:'Envolve a lâmina existente em sete cores e partículas sem redesenhar o sprite.',
+ renderArenaSpecialBeam:'Desenha a viagem do raio até o alvo e os anéis do impacto, sem alterar estado.',
+ renderArenaRoom:'Compõe parede, madeira repetida e rodapé existentes, sem alterar colisões.',
+ renderArenaStructure:'Apoia o móvel na base visual do layout e reutiliza sua ilustração.',
+ recordCampaignDefeat:'Conta uma derrota completa por tentativa e oferece EASY a cada terceira perda no NORMAL.',
+ clearCampaignDefeat:'Libera a próxima tentativa e limpa a oferta pendente sem zerar a contagem da campanha.',
+ reportDefeat:'Deduplica, salva e publica a derrota da fase ativa com a oferta de ajuda.',
+ continueOnEasy:'Aplica EASY às instâncias atuais e retoma a seção/adversário/percurso com progresso preservado.',
+ declineEasyOffer:'Recusa a oferta sem alterar dificuldade, contagem ou progresso.',
+ retryDefeat:'Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual.',
+
  floorTexture:'Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada.',
  getPhase3ScrollFrame:'Calcula a rolagem visual do retorno pelo progresso horizontal do cenário, sem seguir salto ou pouso.',
  startChaseCampaign:'Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação.',

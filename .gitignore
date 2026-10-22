@@ -35,3 +35,10 @@ __pycache__/
 /scripts/qa-*
 /docs/battle-mode/*-report.*
 /docs/battle-mode/*evidence*/
+
+# Cópias de trabalho: conteúdo consolidado em fontes/pacotes do diário.
+/docs/diario-ia/qa/
+/docs/diario-ia/analises/
+/docs/diario-ia/automacoes/
+/docs/diario-ia/planos/
+/docs/diario-ia/qa-resultados/
