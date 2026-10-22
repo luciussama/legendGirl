@@ -91,3 +91,9 @@ A limpeza de 20/10/2026 está em `limpeza/20261020-manifesto.json`: assets apose
 foram preservados com conteúdo binário integral (`encoding: base64`), hash e
 `sourceId`. São artes recuperáveis, não evidências descartadas. As entradas
 `retiredAssets` dos pacotes são separadas dos arquivos de automação/fixtures de QA.
+
+## Cópias consolidadas e caches locais
+
+As cópias físicas de QA, análises, planos e automações antigas foram consolidadas em fontes/pacotes. Consulte `journal:search` e `journal:show`; execute os testes por `npm test` ou `journal:qa`, que recuperam código, HTML, JSON e fixtures `.txt` somente no diretório temporário. Uma cópia local mais antiga não substitui uma versão de QA mais recente já arquivada. O manifesto da consolidação está em `limpeza/20261021-consolidacao-manifesto.json`.
+
+O SQLite é apenas um cache local: pode ser descartado após a sincronização. A próxima consulta `journal:read`/`journal:search` o reconstrói automaticamente. Não remover fontes, registros, commits ou pacotes para reduzir o tamanho do índice. A imagem de direção artística sob `arte/` continua preservada como referência de produção.

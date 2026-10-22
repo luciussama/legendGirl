@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "limpeza-cache-final-34deb4104dd0",
+  "sessionId": "20261022T003947-1d36b427fab0",
+  "type": "limpeza-cache",
+  "date": "2026-10-22T00:44:49.015359+00:00",
+  "title": "Descarte final de caches após sincronização",
+  "actor": "Codex",
+  "summary": "Caches regeneráveis descartados após o encerramento e a sincronização do acervo. O SQLite será recriado pela próxima consulta. Nenhum JSON histórico foi removido; este evento é novo e será indexado junto dos demais na próxima reconstrução.",
+  "removedCaches": [
+    {
+      "path": "docs/diario-ia/diario.sqlite3",
+      "sha256": "5d2b057d1369128345f172a25f7ee452e13604463bc13fa548fbeecaf62fa9c8",
+      "bytes": 797343744,
+      "reason": "Índice local reconstruível; reconstrução automática e integridade conferidas antes do descarte final."
+    }
+  ],
+  "bytesRemoved": 797343744
+}

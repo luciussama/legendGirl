@@ -47,7 +47,7 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
         if entry.get('metadataOnly'):
             continue
         # Recupera somente código/fixtures e especificações exigidas pelos testes, não antigos relatórios Markdown.
-        fixture = entry['path'].startswith('docs/diario-ia/qa/') and Path(entry['path']).suffix in {'.js','.mjs','.cjs','.py','.html','.css','.json'}
+        fixture = entry['path'].startswith('docs/diario-ia/qa/') and Path(entry['path']).suffix in {'.js','.mjs','.cjs','.py','.html','.css','.json','.txt'}
         if not entry['path'].startswith(('scripts/','tests/','assets/')) and not fixture:
             continue
         path = (workspace / entry['path']).resolve()

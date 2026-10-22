@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T004415-f76690b6d72e",
+  "date": "2026-10-22T00:44:15.113633+00:00",
+  "title": "Manifesto verificável da limpeza de cópias e caches locais",
+  "files": [
+    {
+      "path": "docs/diario-ia/limpeza/20261021-consolidacao-manifesto.json",
+      "sourceId": "775ba8ca7be77654f1f77f854eac2545af2e9b2da49caf625a53842d4104ee04",
+      "sha256": "05db81ffa653136d2f016efe0275d8ecccd868beeb28d0d6a5dec6170aa23193",
+      "bytes": 38105,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}
