@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T133216-850a79578f1c-fim",
+  "sessionId": "20261022T133216-850a79578f1c",
+  "type": "fim",
+  "date": "2026-10-22T13:34:10.434294+00:00",
+  "title": "Commit da consolidação, merge na main e exclusão da FEAT-retry-rule",
+  "actor": "Codex",
+  "summary": "Commit cd72431b registra consolidação pendente; merge 2936b704 integra FEAT-retry-rule na main sem conflitos. Push para origin/main confirmado; exclusão remota e local da FEAT-retry-rule confirmadas. Contexto atualizado; encerramento será versionado em commit documental na main.",
+  "checks": [
+    "npm test completo: aprovado, incluindo 64 cenários do especial",
+    "npm run build, npm run lint e git diff --check: aprovados",
+    "117 exclusões conferidas contra conteúdo integral e hash no acervo; sem sessões concorrentes abertas",
+    "git push origin main e exclusões remota/local: concluídos; main sincronizada após merge"
+  ],
+  "pending": [
+    "Conclusão do workflow/deploy não verificada; pendências anteriores de Safari e navegação após COMPLETE preservadas."
+  ],
+  "files": [
+    ".gitignore",
+    "scripts/run-qa-from-journal.py",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}
