@@ -9,9 +9,9 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 - **Quarto escuro:** percurso de plataforma com 22 apoios, cena do castelo e progressão dos saltos durante a fuga.
 - **Percurso de retorno:** 16 apoios, deslocamento na direção oposta e passagem pelo portal final.
 - **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos, recorrência misteriosa, investigação e aquisição da espada.
-- **Arena imaginária:** transformação da mesma sala e quatro inimigos com defesa, esquiva e contra-ataque. A vitória contra o urso conduz à perseguição.
+- **Arena imaginária:** transformação da mesma sala e quatro inimigos com defesa, esquiva e contra-ataque. Recuar anima a caminhada; durante o golpe inimigo ela firma a base para defender. Cada personagem tem efeitos sonoros próprios. A vitória contra o urso conduz à perseguição.
 - **Perseguição 3D:** abertura ilustrada, corrida automática em um quarto curvo, desvio dos brinquedos lançados pelo urso e ida ao baú quando ele é alcançado.
-- **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A qualidade gráfica está reservada para uma atualização futura.
+- **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A poltrona permanece sobre o tapete ao reenquadrar para celular. A qualidade gráfica está reservada para uma atualização futura.
 - **Narrativa:** abertura da menina acordando, retratos dos personagens e diálogos durante as transições.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
 - **Apresentação móvel:** áreas seguras para diálogos e controles; no retorno após a porta falsa, enquadramento contínuo que não segue o arco de cada salto.
@@ -256,6 +256,6 @@ O modo NORMAL tem alcances próprios nos três percursos de plataformas. Os bloc
 
 Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimigos, mantendo os corações e os sinais dos golpes. Na perseguição, são três vidas no NORMAL e seis no FÁCIL. O NORMAL usa até três brinquedos por lançamento e pares a cada segundo nos 15% finais. Os detalhes estão nos [guias da arena](docs/arena/GUIA-ARENA.md) e da [perseguição](docs/bear-chase/GUIA-PREVIA.md).
 
-A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação após a conclusão; a derrota oferece nova tentativa nessa fase. A compatibilidade do piso recebeu um ajuste de upload de textura; sua eficácia no Safari do usuário ainda precisa ser confirmada.
+A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação após a conclusão; a derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
 
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.

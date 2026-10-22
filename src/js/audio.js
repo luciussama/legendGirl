@@ -1,8 +1,11 @@
 import { scheduleDamageSound } from './toy-room/DamageAudio.js';
 import { scheduleSwordSound } from './toy-room/SwordAudio.js';
 import { scheduleEnemyMovement } from './toy-room/EnemyMovementAudio.js';
+import { ArenaSoundEffects } from './toy-room/ArenaSoundEffects.js';
 
 export function createAudioSystem() {
+  const arenaEffects = new ArenaSoundEffects();
+  let effectsPaused = false;
   const state = {
     audioCtx: null,
     musicTrack: null,
@@ -51,6 +54,7 @@ export function createAudioSystem() {
 
   function setMuted(muted) {
     isMuted = Boolean(muted);
+    if (isMuted) arenaEffects.stop();
     if (state.audioCtx && state.masterGainNode) {
       state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
     }
@@ -84,6 +88,7 @@ export function createAudioSystem() {
   }
 
   function clearActiveSounds() {
+    arenaEffects.stop();
     activeAudioNodes.forEach(node => {
       try {
         if (typeof node.stop === 'function') node.stop();
@@ -136,6 +141,8 @@ export function createAudioSystem() {
         state.audioCtx.resume().catch(() => {});
       }
 
+      arenaEffects.preload(state.audioCtx);
+
       // Inicializa ou retoma a trilha correspondente à fase atual se estiver pausada
       if (isToyRoomMusicWanted) {
         if (toyRoomAudio && toyRoomAudio.paused) {
@@ -150,6 +157,7 @@ export function createAudioSystem() {
   }
 
   function startMusic() {
+    effectsPaused = false;
     try {
       isMusicWanted = true;
       stopToyRoomMusic(); // Garante que a música da sala de brinquedos pare
@@ -614,6 +622,7 @@ export function createAudioSystem() {
   }
 
   function startToyRoomMusic({ fade = 1 } = {}) {
+    effectsPaused = false;
     if (toyRoomMusicTrack !== 'theme') setToyRoomMusicTrack('theme');
     toyRoomMusicFade = Math.max(0, Math.min(1, fade));
     isToyRoomMusicWanted = true;
@@ -691,6 +700,8 @@ export function createAudioSystem() {
   }
 
   function pauseMusic() {
+    effectsPaused = true;
+    arenaEffects.stop();
     if (toyRoomAudio && !toyRoomAudio.paused) {
       wasToyRoomAudioPlaying = true;
       try {
@@ -706,6 +717,7 @@ export function createAudioSystem() {
   }
 
   function resumeMusic() {
+    effectsPaused = false;
     if (isMuted) return;
     if (isToyRoomMusicWanted && toyRoomAudio) {
       if (wasToyRoomAudioPlaying || toyRoomAudio.paused) {
@@ -833,6 +845,7 @@ export function createAudioSystem() {
       player_jump: [390, 650, 'sine', 0.1, 0.14],
       player_land: [190, 78, 'triangle', 0.12, 0.12],
       player_attack: [420, 170, 'sawtooth', 0.09, 0.12],
+      player_special: [660, 1320, 'sawtooth', 0.16, 0.7],
       player_hit: [220, 92, 'sawtooth', 0.14, 0.18],
       player_death: [180, 48, 'sawtooth', 0.16, 0.48],
       train_walk: [118, 164, 'square', 0.055, 0.09],
@@ -869,6 +882,11 @@ export function createAudioSystem() {
     const profile = sounds[event];
     if (!profile && !swordEvent) throw new RangeError(`Som de combate desconhecido: ${event}`);
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
+
+    if (arena) {
+      if (effectsPaused || isMuted) return false;
+      if (arenaEffects.play(state.audioCtx, getDestination(), event)) return true;
+    }
 
     if (swordEvent) return scheduleSwordSound(state.audioCtx, getDestination() || state.audioCtx.destination,
       registerActiveNode, event);
@@ -920,6 +938,7 @@ export function createAudioSystem() {
     return true;
   }
   function stopArenaMusic() {
+    arenaEffects.stop();
     for (const voice of arenaVoices) { try { voice.stop(); } catch (_) {} }
     arenaVoices.clear();
   }

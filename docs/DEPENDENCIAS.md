@@ -1,6 +1,6 @@
 # Dicionário de bibliotecas e dependências
 
-Revisão: 21/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
+Revisão: 22/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
 
 ## Dependências npm diretas
 
@@ -166,3 +166,7 @@ As bibliotecas internas (GameState, renderizadores, contextos, controllers e cin
 Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é índice reconstruível e não é backend de campanha nem binário versionado.
 
 As extrações de contexto, movimento, efeitos, cena, tutorial, história e persistência não adicionaram pacotes npm. Todos os módulos internos e seus exports estão no [catálogo da arquitetura](ARQUITETURA.md); as automações e seus efeitos estão em [COMANDOS](COMANDOS.md). Os valores acima descrevem o lockfile do projeto, não a versão mais recente de cada pacote na internet.
+
+## Recursos e prontidão adicionados em 22/10/2026
+
+Os dez efeitos da arena são MP3s locais decodificados com `AudioContext.decodeAudioData` e tocados por `AudioBufferSourceNode` no ganho mestre. `ArenaSoundEffects` não adiciona dependência npm nem serviço externo. `Image.decode`, `WebGLRenderer.initTexture`, render target/leitura de pixels e `compileAsync` pertencem ao navegador/Three.js já distribuído; validam o cenário da fuga antes da arrancada. A abertura ilustrada cobre esse carregamento. Os novos testes de áudio, título, defesa estacionária e carregamento criam Chrome isolado com perfil temporário e CDP em porta livre; os demais mantêm os pré-requisitos próprios indicados nas fontes.

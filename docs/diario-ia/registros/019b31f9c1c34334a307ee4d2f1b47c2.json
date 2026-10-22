@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "019b31f9c1c34334a307ee4d2f1b47c2",
+  "type": "qa",
+  "date": "2026-10-22T14:22:40.533848+00:00",
+  "title": "QA temporário: test:fuga:carregamento:browser",
+  "exitCode": 0,
+  "sourceId": "b08246cc9e9959099a6f3fb746b7456e2d9ab8d3c52c165b3ff397026b533955",
+  "package": "20261022T142224-8ac537f47cc7"
+}

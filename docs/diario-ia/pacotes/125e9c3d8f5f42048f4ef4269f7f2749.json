@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "125e9c3d8f5f42048f4ef4269f7f2749",
+  "date": "2026-10-22T13:42:43.520155+00:00",
+  "title": "QA temporário: test:arena:sons:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/125e9c3d8f5f42048f4ef4269f7f2749.log",
+      "sourceId": "20ecdd60a4132658ace952efb221d1de8b76de6b72797159849fe91a353126f0",
+      "sha256": "576d10dac55ba20fd9e3d4624a5146c3639d4d8815ca8f9b23d95bb7ab100e0b",
+      "bytes": 960,
+      "metadataOnly": false
+    }
+  ]
+}

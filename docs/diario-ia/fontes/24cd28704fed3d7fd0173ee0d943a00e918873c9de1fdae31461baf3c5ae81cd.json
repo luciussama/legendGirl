@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "24cd28704fed3d7fd0173ee0d943a00e918873c9de1fdae31461baf3c5ae81cd",
+  "path": "qa-execucoes/007ff4ae8fb64770b8d0ed73eb7c87fe/docs/diario-ia/qa-resultados/titulo-enquadramento/320x568.png",
+  "sha256": "aa70f9369d4c4611ed862c38b07e29dd23bb9da83cdc0ff133f516c0f16daa29",
+  "capturedAt": "2026-10-22T14:16:20.954439+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:titulo:enquadramento:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/titulo-enquadramento/320x568.png\", \"sha256\": \"99ace1edf4d562acf872a176d5efaf844fff9527f10f93d956817c50aa12a6c7\", \"bytes\": 306654, \"binaryRetained\": false}"
+}

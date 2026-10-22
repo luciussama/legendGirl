@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5ade11a38d99a3be0d2eb26400304f05fe2bb84333007c9ef8331e99cb82f8e4",
+  "path": "qa-execucoes/019b31f9c1c34334a307ee4d2f1b47c2/docs/diario-ia/qa-resultados/carregamento-fuga/corrida-pronta.png",
+  "sha256": "b475670195d44703c67a36e07c8f71a313d1056c7c8ffab9a94250190855388b",
+  "capturedAt": "2026-10-22T14:22:40.537253+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:fuga:carregamento:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/carregamento-fuga/corrida-pronta.png\", \"sha256\": \"7ae0cc49fca2f527d68f40b944cf9ff3d8f74fa90bd6cd066befe8102708e17e\", \"bytes\": 1028469, \"binaryRetained\": false}"
+}

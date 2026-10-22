@@ -1,3 +1,5 @@
+import { arenaEnemyImpactEnd } from './ArenaCombatRules.js';
+
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 /** Movimento lateral original; os parâmetros pertencem à instância de combate. */
@@ -26,16 +28,18 @@ export class PlayerController {
     if (battle.presentation) faceEnemy();
     else if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
     const facing = r.player.facing === 'right' ? 1 : -1;
-    // Recuar protege sem virar as costas; salto e golpe continuam sendo ações próprias.
+    // Recuo livre usa caminhada; durante o golpe inimigo, firma os pés para defender.
     s.guarding = Boolean(battle.presentation && input.x * facing < -0.18
-      && s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0);
-    r.player.isMoving = Boolean(input.x && !s.crouching && s.playerHitTime <= 0);
+      && s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0
+      && s.enemy?.hp > 0 && s.enemy.state === 'ATTACK'
+      && s.enemy.elapsed < arenaEnemyImpactEnd(s.enemy, t));
+    r.player.isMoving = Boolean(input.x && !s.guarding && !s.crouching && s.playerHitTime <= 0);
     if (s.playerHitTime > 0 && s.playerKnockback) {
       const travel = t.knockbackDistance ? (1 - Math.pow(0.82, dt)) / 0.18 : dt;
       r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
       s.playerKnockback *= Math.pow(0.82, dt);
-    } else if (!s.crouching && input.x && s.playerHitTime <= 0) {
-      const moveScale = s.guarding ? t.guardMoveScale ?? 0.55 : battle.presentation && s.cooldown > 0
+    } else if (!s.guarding && !s.crouching && input.x && s.playerHitTime <= 0) {
+      const moveScale = battle.presentation && s.cooldown > 0
         ? (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
       r.player.x = clamp(r.player.x + input.x * t.speed * moveScale * dt, t.left + 35, t.right - 35);
     }

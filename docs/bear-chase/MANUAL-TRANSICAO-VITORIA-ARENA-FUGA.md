@@ -68,12 +68,18 @@ as entradas ficam bloqueadas durante a revelação.
 | --- | --- |
 | `ToyRoomArenaPhase` | Direcionar `VICTORY` ao destino `CHASE`, aplicar o fade de 30 quadros e restaurar a exploração com áudio suspenso antes de ceder a fase. Derrota e saves antigos com retorno à sala conservam `RETURNING` para `ROOM`. |
 | `ToyRoomPhase` | Coordenar posse, entradas e preparação. `startChasePreview()` segue isolado para debug; `startChaseCampaign()` inicia a fuga da campanha, com recuperação explícita se a preparação falhar. |
-| `BearChasePhase` | Preparar renderer e artes sob tela preta; na campanha nova, preservar `BEAR_DOWN` (ou retomar a etapa salva no restore) e revelar a cena em 0,4 s antes de avançar a simulação. |
+| `BearChasePhase` | Preparar primeiro as artes da abertura; na campanha nova, preservar `BEAR_DOWN` e revelar a cena em 0,4 s. Carregar/verificar o 3D durante a atuação obrigatória; aguardar junto ao urso caído se ainda faltar recurso. Restore retoma a etapa salva e só libera corrida com o 3D pronto. |
 | `ChaseSimulation` / `ChaseIntroRenderer` | Preservar a entrada em `BEAR_DOWN`, a progressão da introdução e a entrega à corrida. Conservar a espada visível na pose inicial ilustrada. |
 | Persistência da Toy Room | O snapshot de campanha inclui `toyRoomChaseCampaign` apenas quando a fase está em modo campanha. O acesso isolado de debug continua fora do save. Ao restaurar, rejeitar combinações incompatíveis e retomar a etapa salva; saves anteriores sem o campo continuam válidos. |
 
-O handoff tem um único responsável por iniciá-lo. O preparo assíncrono acontece
-sob a tela preta; somente após sucesso a introdução é revelada. Ao descartar uma
+O handoff tem um único responsável por iniciá-lo. As artes ilustradas são preparadas
+sob a tela preta; a introdução é revelada e serve de tempo de carregamento do
+cenário 3D. `introReady` libera a atuação, enquanto `ready` exige texturas enviadas
+e materiais compilados. Se necessário, a cena aguarda no fim de GIRL_APPROACH,
+com a menina junto ao urso caído e “Preparando a perseguição…”, sem consumir tempo
+pendente da simulação. Só então seguem o levantar do urso e a arrancada. A textura
+do piso é testada na GPU antes do mapa; falhas de recursos mantêm a recuperação
+explícita já existente. Ao descartar uma
 fase, callbacks tardios são ignorados para não ressuscitar a arena ou iniciar
 duas fugas.
 

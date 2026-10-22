@@ -6,6 +6,11 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ titleSceneFrame:'Calcula uma câmera comum para o quarto da tela inicial, com foco na menina no retrato e poltrona fixa no tapete.',
+ floorIsVisible:'Renderiza uma amostra do piso fora da tela e confere o sinal de madeira na GPU.',
+ prepareFloor:'Valida o piso e tenta a mesma arte com filtro linear sem mipmaps quando necessário.',
+ prepareVisualResources:'Envia todos os mapas à GPU e aguarda compilação dos materiais antes de liberar a corrida.',
+
  renderArenaSpecialCloseup:'Compõe um corte de anime com ambos os olhos, entrada/saída rápidas e energia; não avança a simulação.',
  renderSpecialCloseup:'Apresenta o close dramático usando a textura pré-carregada com as poses da menina.',
  beginArenaSpecial:'Consome o uso único e inicia a carga da espada na arena quando a ativação é válida.',

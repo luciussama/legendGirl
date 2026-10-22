@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "33eb24a3ce40439399076765e2a9d89c",
+  "type": "qa",
+  "date": "2026-10-22T13:42:58.605654+00:00",
+  "title": "QA temporário: test:bear-chase",
+  "exitCode": 0,
+  "sourceId": "0f10707274dd6439219d57a48c8d3b6a5928cf92201ad511fc99bc564064fdd0",
+  "package": "20261021T013233-da3b2e0d5c09"
+}

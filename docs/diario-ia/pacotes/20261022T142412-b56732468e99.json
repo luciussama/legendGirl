@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T142412-b56732468e99",
+  "date": "2026-10-22T14:24:12.370241+00:00",
+  "title": "Validação final de carregamento visual em desktop e celular",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/carregamento-fuga-20261022/navegador.mjs",
+      "sourceId": "f85ef938ae26273d475ffc58c1b0e71171c051da2159b861f7549082f0685f33",
+      "sha256": "0c1f9b9f1b66ef519839a919d496d9a84be8fbf69ef595d2511297855121262c",
+      "bytes": 7755,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:fuga:carregamento:browser": "node docs/diario-ia/qa/carregamento-fuga-20261022/navegador.mjs"
+  }
+}

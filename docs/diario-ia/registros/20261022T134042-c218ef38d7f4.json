@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T134042-c218ef38d7f4",
+  "sessionId": "20261022T134042-c218ef38d7f4",
+  "type": "inicio",
+  "date": "2026-10-22T13:40:42.532451+00:00",
+  "title": "Integrar efeitos sonoros por personagem nas lutas da arena",
+  "actor": "Codex",
+  "branch": "FEAT-sound-effect",
+  "head": "d2c5f52d03e3ceb4072883707b2d2e9eb854e67f",
+  "workingTree": [
+    "?? assets/audio/arena/",
+    "?? docs/diario-ia/registros/20261022T133614-1fdd440c6455-fim.json",
+    "?? docs/diario-ia/registros/20261022T133614-1fdd440c6455.json"
+  ]
+}

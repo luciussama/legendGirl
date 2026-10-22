@@ -101,6 +101,13 @@ export class ToyRoomBattle {
     if(!p||s.transition||e.hp<=0||s.jump>=p.bodyHeight)return;
     const player=this.room.player,distance=this.getEnemyCollisionDistance(e.actor);
     if(side*(e.x-player.x)>=distance)return;
+    // A base da defesa fica fixa; a investida termina na superfície do corpo.
+    const guardedEnemyX = player.x + side * distance;
+    if (s.guarding && guardedEnemyX - p.bodyWidth / 2 >= this.tuning.left
+      && guardedEnemyX + p.bodyWidth / 2 <= this.tuning.right) {
+      e.x = guardedEnemyX;
+      return;
+    }
     const middle=(e.x+player.x)/2;
     player.x=middle-side*distance/2;e.x=middle+side*distance/2;
     const low=Math.min(player.x-56,e.x-p.bodyWidth/2),high=Math.max(player.x+56,e.x+p.bodyWidth/2);

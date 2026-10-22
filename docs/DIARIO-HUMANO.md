@@ -77,3 +77,9 @@ O enquadramento da carga passou a usar um corte de anime centrado nos dois olhos
 ### Saída direta da arena
 
 Ao perder o último coração, o Urso encerra a arena e a cena passa à ilustração dele caído. Foram retirados os textos de vitória e retorno da fantasia, a espera pelo transporte ao baú e a pausa para confirmação. A breve passagem escura continua ocultando o carregamento da próxima cena. O usuário também aprovou o close de anime do especial (“ah, gostei!”); essa aprovação se refere à arte e composição do close apresentado.
+
+## 22 de outubro de 2026 — som, defesa e enquadramento
+
+A arena passou a usar os efeitos gravados por personagem, incluindo a defesa e o especial da menina. Ao recuar, ela move os pés normalmente; durante a ofensiva inimiga, firma a base para defender e depois retoma a caminhada. A tela inicial mantém poltrona e tapete no mesmo lugar do quarto, mudando apenas o enquadramento para o celular.
+
+A cena obrigatória da menina verificando o urso caído também serve de carregamento da perseguição. Se faltar recurso visual, ela aguarda nessa cena antes de o urso levantar. A corrida só começa depois da preparação do cenário e da verificação do piso. A confirmação do piso no Safari continua pendente. O design inicial de batalha foi preservado no diário de IA; os guias atuais concentram as instruções de manutenção.

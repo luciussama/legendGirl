@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T141757-fb4921f3cc99-fim",
+  "sessionId": "20261022T141757-fb4921f3cc99",
+  "type": "fim",
+  "date": "2026-10-22T14:25:32.709346+00:00",
+  "title": "Priorizar assets visuais e corrigir piso sem textura na perseguição",
+  "actor": "Codex",
+  "summary": "Adotada a estratégia explícita do usuário: abertura obrigatória da menina verificando o urso caído serve de carregamento. Primeiro decodifica a introdução e a revela; prepara o cenário 3D durante a atuação. Se faltar recurso, conserva GIRL_APPROACH junto ao urso caído com aviso discreto, sem pular a cena nem acumular tempo. Só libera levantar/arrancada após ready visual. Piso priorizado, imagem decodificada, amostragem real na GPU antes do mapa, alternativa com mesma arte em CanvasTexture linear se a cadeia manual falhar; todos os mapas enviados e materiais compilados antes de ready. Falha visual impede corrida e preserva recuperação existente. Guias/contexto/comandos atualizados; artes, luz, física, dificuldade e mudanças anteriores preservadas. Sem commit/push.",
+  "checks": [
+    "npm test completo aprovado após alterações de produção; inclui regressões de defesa, perseguição, campanha, especial e áudio",
+    "test:fuga:carregamento:browser final aprovado: atlas 3D artificialmente atrasado manteve introReady=true/ready=false, GIRL_APPROACH em 3,583 s e tempo fixo em 4,783 s, mapa não construído; liberação preservou atuação antes de CHASE_START",
+    "15 texturas GPU preparadas; madeira visível e WebGL sem erro em desktop/retrato/paisagem. RGB médio do chão: 162,75/105,25/34,25; 159,75/103,5/46,75; 160,5/114,25/36",
+    "Falha primária de amostragem injetada validou alternativa linear; falhas definitivas injetadas no piso e atlas impediram ready, retiraram renderer e acionaram recuperação de campanha. Recursos descartados sem ressurreição do renderer testado",
+    "Quatro capturas finais inspecionadas (abertura aguardando e corrida em três formatos); metadados/hash/tamanho no acervo, sem bitmap no projeto. Fontes de QA arquivadas antes de remover cópia física",
+    "docs:sprites 416 imagens/99 recortes/29 assinaturas, build, lint, 66 assets, sintaxe e git diff --check aprovados"
+  ],
+  "pending": [
+    "Causa original do piso preto no Safari não comprovada; barreiras de carregamento e alternativa GPU validadas no Chrome, com falhas injetadas. Confirmação real no Safari/hardware do usuário permanece necessária; não declarar correção definitiva nesse navegador."
+  ],
+  "files": [
+    "src/js/bear-chase/BearChasePhase.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/COMANDOS.md"
+  ]
+}

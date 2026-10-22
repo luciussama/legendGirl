@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "24c4a2bfe9be49d5a13a152710a2c6e7",
+  "date": "2026-10-22T14:03:49.887022+00:00",
+  "title": "QA temporário: test:arena:animation",
+  "files": [
+    {
+      "path": "qa-execucoes/24c4a2bfe9be49d5a13a152710a2c6e7.log",
+      "sourceId": "7de7ea387e7ed0fca659c5d2ebebb31917653cc6008296c148617b442841bbe9",
+      "sha256": "368df8daaf3a1a0aab5e816566b0a7332764d123b9c7c13c8f5c283b19504930",
+      "bytes": 262,
+      "metadataOnly": false
+    }
+  ]
+}
