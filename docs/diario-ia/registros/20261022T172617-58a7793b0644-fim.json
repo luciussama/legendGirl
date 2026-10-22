@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T172617-58a7793b0644-fim",
+  "sessionId": "20261022T172617-58a7793b0644",
+  "type": "fim",
+  "date": "2026-10-22T17:28:16.965722+00:00",
+  "title": "Investigar soquinhos de câmera no vídeo enviado pelo usuário",
+  "actor": "Codex",
+  "summary": "Inspecionado vídeo enviado pelo usuário por 24 quadros e painel conjunto. Confirmados reenquadramentos na fuga; consulta direta ao JavaScript público confirma site com versão anterior à correção lateral do commit local ee1ebff4. Nenhuma edição no jogo ou publicação executada.",
+  "checks": [
+    "Vídeo de 23,765 s decodificado com AVFoundation; amostragem de 1 quadro/s inspecionada visualmente, sem reprodução contínua.",
+    "GET público do pipeline aprovado: hash c4ac51776940645aba494b63296783b46418b9d7b3eb46f09fb139b311e63a82; versão antiga usa phase3Scrolling, onGround e AndroidFraming na fuga. Local tem hash 792240d93c34d882a19e6813e13fabbae0e439f368497fb94a840a91aa4ffa27.",
+    "git status inicial limpo; main um commit à frente de origin/main. Testes do jogo não repetidos: nenhuma alteração de produção."
+  ],
+  "pending": [
+    "Publicar a correção local e validar novamente no celular; não houve autorização nova para push nesta sessão."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/fontes/inspecao-video-20261022T172617-58a7793b0644.json"
+  ]
+}

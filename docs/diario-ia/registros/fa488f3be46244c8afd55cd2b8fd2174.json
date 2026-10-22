@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "fa488f3be46244c8afd55cd2b8fd2174",
+  "type": "qa",
+  "date": "2026-10-22T17:37:59.312872+00:00",
+  "title": "QA temporário: test:arena:mixagem:browser",
+  "exitCode": 0,
+  "sourceId": "3905a6d168b2ccf071c8c7f5db148469b605af715499000a878268904781fb45",
+  "package": "20261022T173750-06902b7db69c"
+}

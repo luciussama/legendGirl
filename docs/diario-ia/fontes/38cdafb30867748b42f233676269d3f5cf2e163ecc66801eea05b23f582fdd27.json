@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "38cdafb30867748b42f233676269d3f5cf2e163ecc66801eea05b23f582fdd27",
+  "path": "docs/diario-ia/qa/auditoria-audio-20261022/batalha-atual.png",
+  "sha256": "539fe6dad1571dcf9e56f22320d12f73509a032846e93f7f5b55201e23cbef14",
+  "capturedAt": "2026-10-22T17:35:07.134235+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa/auditoria-audio-20261022/batalha-atual.png\", \"sha256\": \"82e406cc7e287f21c7029cc05b442c525aaa8344cf511e4e143911a5019b0d70\", \"bytes\": 783456, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

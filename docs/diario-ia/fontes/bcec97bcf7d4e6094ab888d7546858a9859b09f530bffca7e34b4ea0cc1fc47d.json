@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bcec97bcf7d4e6094ab888d7546858a9859b09f530bffca7e34b4ea0cc1fc47d",
+  "path": "qa-execucoes/29a214a68e43472dad6e522bb5ac83d8.log",
+  "sha256": "d31f39bef9e9537611ab38c56ea6506f34908f78ad54a775a8b8d0ae4a66e668",
+  "capturedAt": "2026-10-22T17:33:37.895643+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser",
+    "exitCode": 1,
+    "package": "20261022T173324-81d9c74b76e4"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:auditoria:browser\n> node docs/diario-ia/qa/auditoria-audio-20261022/navegador.mjs\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-udkzjca8/projeto/docs/diario-ia/qa/auditoria-audio-20261022/navegador.mjs:24\n if(result.result?.exceptionDetails)throw Error(JSON.stringify(result.result.exceptionDetails));\n                                          ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) Error: Estado de batalha ausente\",\"lineNumber\":48,\"columnNumber\":16,\"scriptId\":\"131\",\"stackTrace\":{\"callFrames\":[{\"functionName\":\"monitor\",\"scriptId\":\"131\",\"url\":\"http://127.0.0.1:55232/docs/diario-ia/qa/auditoria-audio-20261022/analise.js\",\"lineNumber\":47,\"columnNumber\":15}]},\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Estado de batalha ausente\\n    at monitor (http://127.0.0.1:55232/docs/diario-ia/qa/auditoria-audio-20261022/analise.js:48:16)\",\"objectId\":\"-7379269319045841799.2.1\"}}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-udkzjca8/projeto/docs/diario-ia/qa/auditoria-audio-20261022/navegador.mjs:24:43\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "66e7853e450d63a7cf0848e6e9d41e312aefcb6da0c3e248d32eed8e850c03c5",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/train-ativo.png",
+  "sha256": "28281415264f567fa68b0580dff32299fa6e5085e56407d88796d8f4dc234c1e",
+  "capturedAt": "2026-10-22T17:35:13.860269+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/train-ativo.png\", \"sha256\": \"6860bee8f13154e849eda678167050f5980059ca913ab695956f560000abeaa8\", \"bytes\": 1067985, \"binaryRetained\": false}"
+}

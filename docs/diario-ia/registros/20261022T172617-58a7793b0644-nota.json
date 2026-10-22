@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T172617-58a7793b0644-nota",
+  "sessionId": "20261022T172617-58a7793b0644",
+  "type": "nota",
+  "date": "2026-10-22T17:28:36.162714+00:00",
+  "actor": "Codex",
+  "title": "Localização da inspeção e correção da sincronização",
+  "summary": "A sincronização do encerramento falhou com KeyError id porque o documento de inspeção não era um snapshot no esquema de fontes. Seu conteúdo integral foi preservado sem reescrita e movido para docs/diario-ia/inspecoes/inspecao-video-20261022T172617-58a7793b0644.json. Esta é a localização correta do arquivo citado no encerramento. Nova sincronização executada."
+}

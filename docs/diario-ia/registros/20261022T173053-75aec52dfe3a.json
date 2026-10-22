@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T173053-75aec52dfe3a",
+  "sessionId": "20261022T173053-75aec52dfe3a",
+  "type": "inicio",
+  "date": "2026-10-22T17:30:53.406585+00:00",
+  "title": "Executar batalha completa e analisar sincronização e mixagem de áudio",
+  "actor": "Codex",
+  "branch": "main",
+  "head": "ee1ebff4c3683f5047e1cd6e18aee5d28cbec056",
+  "workingTree": [
+    " M docs/diario-ia/CONTEXTO-ATUAL.md",
+    "?? docs/diario-ia/fontes/c83bf2f7d1508e2a3c7183d420f3c931e35066700941d3031b2096d0ec5d6fb9.json",
+    "?? docs/diario-ia/inspecoes/",
+    "?? docs/diario-ia/registros/20261022T172617-58a7793b0644-fim.json",
+    "?? docs/diario-ia/registros/20261022T172617-58a7793b0644-nota.json",
+    "?? docs/diario-ia/registros/20261022T172617-58a7793b0644.json"
+  ]
+}

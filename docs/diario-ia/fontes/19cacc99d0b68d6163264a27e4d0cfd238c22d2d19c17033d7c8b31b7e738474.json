@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "19cacc99d0b68d6163264a27e4d0cfd238c22d2d19c17033d7c8b31b7e738474",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/bear-ativo.png",
+  "sha256": "a89f22123d409aa8826b52a8f42ea09a9f73c8aef4d4c88069b7e0d215060db1",
+  "capturedAt": "2026-10-22T17:35:13.841515+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/bear-ativo.png\", \"sha256\": \"467086e9af9d9feba3791405be2c3b6218a77d537c35ceaf7b84b5a728143780\", \"bytes\": 1075388, \"binaryRetained\": false}"
+}

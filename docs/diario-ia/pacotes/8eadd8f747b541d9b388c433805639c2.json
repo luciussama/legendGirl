@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "8eadd8f747b541d9b388c433805639c2",
+  "date": "2026-10-22T17:35:13.840309+00:00",
+  "title": "QA temporário: test:arena:auditoria:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2.log",
+      "sourceId": "80c6f724e4478ec1de40d0915dbf916b7a477ba698cfe6872cc07c2e5955f7da",
+      "sha256": "136ecf8466c7be36b144c5bf9ad055d09b9e77392c380677519c5d1c66620259",
+      "bytes": 32349,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/bear-ativo.png",
+      "sourceId": "19cacc99d0b68d6163264a27e4d0cfd238c22d2d19c17033d7c8b31b7e738474",
+      "sha256": "467086e9af9d9feba3791405be2c3b6218a77d537c35ceaf7b84b5a728143780",
+      "bytes": 1075388,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/bear-impacto-espada.png",
+      "sourceId": "e84d885eb07ed6d2eddffeb2afce05a36cd0a7e74adbf6e2b875dde832215565",
+      "sha256": "78a5ae67145bb26120999f57d8a08eda3aaa9f138cbebf8031a0b5e6c03de7b1",
+      "bytes": 1028497,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-ativo.png",
+      "sourceId": "0a182151e27116a6e07986907f08ab17a67806e87bbc06fdde61b2adbd461fc2",
+      "sha256": "ed8bea65796ba3b012b6fca2d3d035c336b50864812518037b7943942522b3bb",
+      "bytes": 1073774,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-impacto-espada.png",
+      "sourceId": "102beccac36edf54c650c95ec1c2430163fed2915ec03a50826a4fe3041b323d",
+      "sha256": "b11edad65bb917aeac801a90efaf5c6ca88334952ab8c78270fc55ab89e71bd7",
+      "bytes": 1058450,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/especial-inicio.png",
+      "sourceId": "f30f632cebd1edb78402fc012beede9fa86c0c8c8637adc106143fa706e42296",
+      "sha256": "2b989a69d0ecbf2c3c80f4c7f92d0e9bf9e8f654a00805f404b4baa91a313ed7",
+      "bytes": 1076554,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/especial-raio.png",
+      "sourceId": "c5f749cdc57dc8a34a8074b03b3da37bdca2f07f53a5939cbc1c2980a83651cc",
+      "sha256": "5a184dbb3f4cc2e70cbea6db3297f41b274668880ab609b91731f087b838383b",
+      "bytes": 1073131,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/resultado.json",
+      "sourceId": "94c457efa7bf127326a84833af80592de0f3a31759ae6291d02eb59ff60e58ce",
+      "sha256": "eaf5d80e28441ea60ee8b703c5f6e1a8c300e8200b0a0a087fc5505866b972bc",
+      "bytes": 478372,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/robot-ativo.png",
+      "sourceId": "82d38866939647fd00d6a1ee834af018fa8d009739be60b60672f9f8f825ef77",
+      "sha256": "68e6567a600af49c5bf05f6c77863842f2911819e061372b8ce2360b1f0850bb",
+      "bytes": 1077322,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/robot-impacto-espada.png",
+      "sourceId": "f0b5d2a8de3059d5f66b3856aee1196e5b82d3871e99887992781f0298ddff2d",
+      "sha256": "0b45d9784fbe6d136f4311502d68bc9d58c9afc3157852a8b8c98d2602305a4b",
+      "bytes": 1055909,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/train-ativo.png",
+      "sourceId": "66e7853e450d63a7cf0848e6e9d41e312aefcb6da0c3e248d32eed8e850c03c5",
+      "sha256": "6860bee8f13154e849eda678167050f5980059ca913ab695956f560000abeaa8",
+      "bytes": 1067985,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/train-impacto-espada.png",
+      "sourceId": "d1a091615021b99fc994ebfe46a0b11cafbb362c0a2f6cca44946bead30e12fc",
+      "sha256": "3f70059bf6837eb18564397130ca8498c11615cd8a7758c60b08e2d22876e9bd",
+      "bytes": 1063117,
+      "metadataOnly": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c5f749cdc57dc8a34a8074b03b3da37bdca2f07f53a5939cbc1c2980a83651cc",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/especial-raio.png",
+  "sha256": "e85918f641a83b19a62f800e85082eb32f7c75217390c7d94f0f6c2a24736cad",
+  "capturedAt": "2026-10-22T17:35:13.846794+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/especial-raio.png\", \"sha256\": \"5a184dbb3f4cc2e70cbea6db3297f41b274668880ab609b91731f087b838383b\", \"bytes\": 1073131, \"binaryRetained\": false}"
+}

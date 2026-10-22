@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "0a182151e27116a6e07986907f08ab17a67806e87bbc06fdde61b2adbd461fc2",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-ativo.png",
+  "sha256": "94bed312d42ff58bd879809e54ff710e3a9abdf9da3faf53efff51049fec8700",
+  "capturedAt": "2026-10-22T17:35:13.843678+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-ativo.png\", \"sha256\": \"ed8bea65796ba3b012b6fca2d3d035c336b50864812518037b7943942522b3bb\", \"bytes\": 1073774, \"binaryRetained\": false}"
+}

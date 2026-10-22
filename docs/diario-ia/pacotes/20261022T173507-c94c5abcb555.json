@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T173507-c94c5abcb555",
+  "date": "2026-10-22T17:35:07.134787+00:00",
+  "title": "Inspeção visual complementar da batalha em execução",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/auditoria-audio-20261022/estado-batalha.mjs",
+      "sourceId": "ffd31720ac0cc1f6aa4423ccbb9e05f33dccae34aa14ea90bea1f7a7a14a7f24",
+      "sha256": "57315a8beaa2381b00e64954760912ad6979d39f6de8decbecd210e42c48e0e5",
+      "bytes": 1142,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/auditoria-audio-20261022/batalha-atual.png",
+      "sourceId": "38cdafb30867748b42f233676269d3f5cf2e163ecc66801eea05b23f582fdd27",
+      "sha256": "82e406cc7e287f21c7029cc05b442c525aaa8344cf511e4e143911a5019b0d70",
+      "bytes": 783456,
+      "metadataOnly": true
+    }
+  ],
+  "qaCommands": {}
+}

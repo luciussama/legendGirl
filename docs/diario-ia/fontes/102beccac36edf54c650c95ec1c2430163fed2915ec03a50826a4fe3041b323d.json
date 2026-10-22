@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "102beccac36edf54c650c95ec1c2430163fed2915ec03a50826a4fe3041b323d",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-impacto-espada.png",
+  "sha256": "564a62f49e67adb6e3fca878096555a566e7bd7ccd4e39adbd652a01a12fba54",
+  "capturedAt": "2026-10-22T17:35:13.844713+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/dinosaur-impacto-espada.png\", \"sha256\": \"b11edad65bb917aeac801a90efaf5c6ca88334952ab8c78270fc55ab89e71bd7\", \"bytes\": 1058450, \"binaryRetained\": false}"
+}

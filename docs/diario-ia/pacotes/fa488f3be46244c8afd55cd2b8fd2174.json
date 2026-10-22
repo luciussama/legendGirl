@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "fa488f3be46244c8afd55cd2b8fd2174",
+  "date": "2026-10-22T17:37:59.312872+00:00",
+  "title": "QA temporário: test:arena:mixagem:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/fa488f3be46244c8afd55cd2b8fd2174.log",
+      "sourceId": "3905a6d168b2ccf071c8c7f5db148469b605af715499000a878268904781fb45",
+      "sha256": "5060b9d3200814af9525ee8c8e3eb6ad5e1708280a9b17192cbe7041d24941e0",
+      "bytes": 1231,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/fa488f3be46244c8afd55cd2b8fd2174/docs/diario-ia/qa-resultados/auditoria-audio/resultado.json",
+      "sourceId": "87bcf051d4850b57a15687b9ad5c5abd35a669fefbbe9403a31f952740fc960c",
+      "sha256": "8d2659510a3e4f4e63beb71060b25666e5634a8c868b33df32a36c82451336b8",
+      "bytes": 1108,
+      "metadataOnly": false
+    }
+  ]
+}

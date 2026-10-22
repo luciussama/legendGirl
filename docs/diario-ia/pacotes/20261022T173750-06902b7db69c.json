@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T173750-06902b7db69c",
+  "date": "2026-10-22T17:37:50.865762+00:00",
+  "title": "Reconstrução offline da mixagem completa e medição da emenda musical",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/auditoria-audio-20261022/trilha.mjs",
+      "sourceId": "fa42b8be844750d9f3d817c0f0a45d1111f2097f40958e647a7674858d518c59",
+      "sha256": "b221461524a697b592b140bc9d298a0ad3fcbcdda0dfe58ecc80a05e08a8e9fb",
+      "bytes": 2585,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/auditoria-audio-20261022/trilha.js",
+      "sourceId": "4bb335e90b0373f890cf4ce12c8a8a86ba3dcce2a4060462d44f3e041441ef21",
+      "sha256": "e723ccf1d2105c219a8478f2651f6edaedea56f6c3acb239690061ef4b18a984",
+      "bytes": 3419,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/auditoria-audio-20261022/execucao.json",
+      "sourceId": "3c360219961e728c134d882b295a44f7d19fd7006a128ec5b2b37ed21a17c356",
+      "sha256": "26f49603d379d6f59aa83d563fc660fdb3389e05ab039f04f35246c4db34c659",
+      "bytes": 324480,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:arena:mixagem:browser": "node docs/diario-ia/qa/auditoria-audio-20261022/trilha.mjs"
+  }
+}

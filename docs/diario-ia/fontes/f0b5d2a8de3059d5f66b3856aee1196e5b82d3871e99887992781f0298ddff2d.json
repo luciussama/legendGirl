@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f0b5d2a8de3059d5f66b3856aee1196e5b82d3871e99887992781f0298ddff2d",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/robot-impacto-espada.png",
+  "sha256": "3a910200a592091b474e1af3b7267443cf5083a0e7afffb296a1bcdba2b4e1b4",
+  "capturedAt": "2026-10-22T17:35:13.859147+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/robot-impacto-espada.png\", \"sha256\": \"0b45d9784fbe6d136f4311502d68bc9d58c9afc3157852a8b8c98d2602305a4b\", \"bytes\": 1055909, \"binaryRetained\": false}"
+}

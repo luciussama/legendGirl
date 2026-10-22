@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e84d885eb07ed6d2eddffeb2afce05a36cd0a7e74adbf6e2b875dde832215565",
+  "path": "qa-execucoes/8eadd8f747b541d9b388c433805639c2/docs/diario-ia/qa-resultados/auditoria-audio/bear-impacto-espada.png",
+  "sha256": "7874b491cfab55278d728629d8e913516fc22b88425edddd9983c9285bdc0fb6",
+  "capturedAt": "2026-10-22T17:35:13.842619+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:auditoria:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/auditoria-audio/bear-impacto-espada.png\", \"sha256\": \"78a5ae67145bb26120999f57d8a08eda3aaa9f138cbebf8031a0b5e6c03de7b1\", \"bytes\": 1028497, \"binaryRetained\": false}"
+}
