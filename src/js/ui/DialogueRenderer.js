@@ -1,4 +1,5 @@
 import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
+import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
 import { isMobileDevice } from '../controllers/MobileZoom.js';
 import { getDialogueSafeArea, getDialogueBoxY } from './DialogueSafeArea.js';
 import { getPauseNarration, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
@@ -59,6 +60,16 @@ export class DialogueRenderer {
     pCtx.arc(px, py, radius - 3, 0, Math.PI * 2);
     pCtx.stroke();
 
+    const portraitPose = mood === 'angry' ? 'sword_idle' : mood === 'happy' ? 'collect' : mood === 'sad' ? 'damage' : 'idle';
+    const portrait = GIRL_V2_FRAMES[portraitPose][0];
+    const girlImage = charType !== 'fairy' && options.assets?.get(portrait.key);
+    if (girlImage) {
+      pCtx.save(); pCtx.beginPath(); pCtx.arc(px, py, radius - 5, 0, Math.PI * 2); pCtx.clip();
+      const headHeight = Math.min(122, portrait.h), scale = (radius * 2 - 8) / headHeight;
+      pCtx.drawImage(girlImage, portrait.x, portrait.y, portrait.w, headHeight,
+        px - portrait.faceX * scale, py - headHeight * scale / 2, portrait.w * scale, headHeight * scale);
+      pCtx.restore(); pCtx.restore(); return;
+    }
     const fairyImage = charType === 'fairy' && options.assets?.get('toy-room-illustrated-fairy-v1');
     if (fairyImage) {
       // O mesmo PNG identifica a interlocutora; a moldura e o layout continuam iguais.

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T125612-0705df7e1692",
+  "date": "2026-10-23T12:56:12.385856+00:00",
+  "title": "Animação detalhada da arena: poses voltadas à direita e pés ancorados no pixel opaco; mantém tempos, efeitos, escala, save e integridade dos originais",
+  "files": [
+    {
+      "path": "scripts/test-arena-player-animation.js",
+      "sourceId": "0a757530e00d09dd7324b6c40cafe935197312fc6e31556c0680a4b4282fe0bb",
+      "sha256": "a088a40da3ce40662caec34a5373d3a7102911a02619b7106003a50d908c6386",
+      "bytes": 6507,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

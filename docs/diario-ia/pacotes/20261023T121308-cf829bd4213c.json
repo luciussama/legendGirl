@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T121308-cf829bd4213c",
+  "date": "2026-10-23T12:13:08.244133+00:00",
+  "title": "Fixture do jogo real: posições e pousos consultam contorno integral; preserva instrumentação de câmera e narrativa",
+  "files": [
+    {
+      "path": "tests/dark-room-playthrough.html",
+      "sourceId": "764665874e0cb376ec77168ed2c9806bfe4622b8f08df60c96e88f044072fd9c",
+      "sha256": "3eca82aa0c7380cf26e233ce2663654e0fa7c7fc6da5dfe54af3919830da504d",
+      "bytes": 14526,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

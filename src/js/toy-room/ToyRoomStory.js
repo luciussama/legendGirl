@@ -3,7 +3,6 @@ import {
   renderStoryHeldObject, renderStoryBeat
 } from './ToyRoomStoryRenderer.js';
 export { drawToySword } from './ToyRoomStoryRenderer.js';
-import { toyGuideBlend } from '../state/GameDifficulty.js';
 
 const FLOOR_SPAWN_POINTS = Object.freeze(
   [140, 300, 460, 620, 780, 940, 1100, 1260, 1420].flatMap(x =>
@@ -176,14 +175,13 @@ export class ToyRoomStory {
 
   beginInvestigation() {
     const { player } = this.actors;
-    this.refreshReachablePoints();
-    const candidates = this.reachablePoints.filter(point =>
-      distance(point, player) > 240 &&
-      !this.exploration.toys.some(toy => !toy.isOrganized && distance(point, toy) < 96));
-    if (!candidates.length) return false;
-
-    const sword = candidates.reduce((furthest, point) =>
-      !furthest || distance(point, player) > distance(furthest, player) ? point : furthest, null);
+    // A investigação espera a entrega atual; nenhuma cena força o brinquedo a cair.
+    if (player.carriedItem) return false;
+    const chest = this.exploration.furniture.find(item => item.id === 'toy-chest');
+    if (!chest) return false;
+    // À direita do baú, no piso logo abaixo da janela direita (centro x=1360).
+    const sword = { x: chest.x + chest.w + 130, y: chest.y + chest.h + 25 };
+    if (!this.world.isFree(sword, 48)) return false;
     this.state.investigationStage = 'INVESTIGATION';
     this.state.investigationElapsed = 0;
     this.state.sword = { ...sword, visible: false };
@@ -210,7 +208,9 @@ export class ToyRoomStory {
       : toys[Math.floor(state.investigationElapsed / 180) % toys.length];
     if (beat.reveal && state.sword) state.sword.visible = true;
 
-    if (focus) {
+    if (state.sword?.visible) {
+      this.updateSwordGuide();
+    } else if (focus) {
       const orbit = state.investigationElapsed * 0.018;
       const targetX = focus.x + Math.cos(orbit) * 45;
       const targetY = focus.y - 60 + Math.sin(orbit) * 22;
@@ -226,14 +226,11 @@ export class ToyRoomStory {
   }
 
   updateSwordGuide() {
-    const { fairy, difficulty } = this.actors;
+    const { fairy } = this.actors;
     const target = this.state.sword;
     if (!target) return;
-    fairy.targetX = target.x;
-    fairy.targetY = target.y - 80;
-    const blend = toyGuideBlend(difficulty, 1);
-    fairy.x += (fairy.targetX - fairy.x) * blend;
-    fairy.y += (fairy.targetY - fairy.y) * blend;
+    fairy.targetX = fairy.x = target.x;
+    fairy.targetY = fairy.y = target.y - 80;
   }
 
   updateAfterMovement() {
@@ -241,7 +238,7 @@ export class ToyRoomStory {
     if (state.investigationStage !== 'SEEKING_SWORD' || !state.sword ||
       distance(this.actors.player, state.sword) > this.actors.player.radius + 16) return;
 
-    this.exploration.releaseCarriedToy();
+    if (this.actors.player.carriedItem) return;
     state.investigationStage = 'PICKUP';
     state.swordPickupElapsed = 0;
     state.sword.visible = false;
@@ -271,9 +268,18 @@ export class ToyRoomStory {
     return true;
   }
 
+  /** Brinquedos comuns ficam indisponíveis desde a revelação até o combate. */
+  get canCollectToys() {
+    return this.state.investigationStage === 'COLLECTING' && !this.state.sword?.visible && !this.state.swordEquipped;
+  }
+
   guidePosition() {
-    if (this.state.investigationStage === 'SEEKING_SWORD' && this.state.sword) {
+    if (this.state.sword && (this.state.sword.visible || this.state.investigationStage === 'PICKUP')) {
       return { x: this.state.sword.x, y: this.state.sword.y - 80 };
+    }
+    if (this.actors.player.carriedItem) {
+      const chest = this.exploration.furniture.find(item => item.id === 'toy-chest');
+      if (chest) return { x: chest.x + chest.w / 2, y: chest.y - 75 };
     }
     return null;
   }

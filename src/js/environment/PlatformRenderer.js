@@ -759,9 +759,9 @@ export class PlatformRenderer {
       const right = cameraMatrix ? cameraMatrix.a * (sx + p.w) + cameraMatrix.e : sx + p.w;
       if (right < -80 || left > canvas.width + 80) return;
 
-      const isDebugHitbox = (typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean')
+      const isDebugHitbox = !options.contactMask && ((typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean')
         ? window.DEBUG_COLLISIONS
-        : (typeof DEBUG_COLLISIONS === 'boolean' ? DEBUG_COLLISIONS : false);
+        : (typeof DEBUG_COLLISIONS === 'boolean' ? DEBUG_COLLISIONS : false));
 
       const platX = p.standRegion ? p.standRegion.x : p.x;
       const platW = p.standRegion ? p.standRegion.w : p.w;

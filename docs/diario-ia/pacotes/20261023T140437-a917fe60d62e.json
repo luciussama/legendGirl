@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T140437-a917fe60d62e",
+  "date": "2026-10-23T14:04:37.600158+00:00",
+  "title": "Entrega obrigatória e espada prioritária: interações reais, guia e persistência",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/regras-brinquedos-20261023.mjs",
+      "sourceId": "81e9718685725be09be6994c98da600aa78ae8c270eb6e21ddfef70caacc82d9",
+      "sha256": "6c88f07397cfe6b26712e34aa6b301c2230fb98b0b4c423aabec2894a8cf9fbb",
+      "bytes": 4603,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/regras-brinquedos-navegador-20261023.mjs",
+      "sourceId": "07c32c28629eb8f77d4a1e174a6d20e29975576cf832b2be237660f1af2357e6",
+      "sha256": "7b59b94c488b58cb67dd81e085bb33f928e2d26a773982bb7c3ea3306ecec1fa",
+      "bytes": 2953,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:toy-room:entrega:browser": "node docs/diario-ia/qa/regras-brinquedos-navegador-20261023.mjs"
+  }
+}

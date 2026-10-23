@@ -6,6 +6,7 @@ import { ChasePropCatalog } from './props/ChasePropCatalog.js';
 import { ChaseToyModels } from './ChaseToyModels.js';
 import { ChaseGirlModel } from './ChaseGirlModel.js';
 import { ChaseGirlAnimation } from './ChaseGirlAnimation.js';
+import { ChaseFairyModel } from './ChaseFairyModel.js';
 import { CHASE_CONFIG as C, clamp } from './ChaseConfig.js';
 
 import { ChaseLighting } from './ChaseLighting.js';
@@ -159,7 +160,7 @@ export class ChaseRenderer3D {
       env: 'toy-room/environment-sheet.png',
       wall: 'toy-room/stage1/wallpaper-v1.png', trim: 'toy-room/stage1/oak-trim-v1.png',
       rug: 'toy-room/stage1/rectangular-rug-v1.png', window: 'toy-room/stage1/window-curtains-v1.png',
-      fairy: 'toy-room/stage3/illustrated-fairy-v1.png', cabinet: 'toy-room/stage3/oak-cabinet-v1.png',
+      cabinet: 'toy-room/stage3/oak-cabinet-v1.png',
       bunny: 'toy-room/stage3/cotton-bunny-v1.png', armchair: 'toy-room/stage3/armchair-v1.png',
     };
     // O piso é validado primeiro; nenhum mapa é construído com esse recurso pendente.
@@ -197,7 +198,8 @@ export class ChaseRenderer3D {
     this.contactShadow.rotation.x=-Math.PI/2;this.contactShadow.material.alphaTest=0;this.contactShadow.material.depthWrite=false;
     this.bearModel=new ChaseBearModel(resource=>this.own(resource),this.texture(images.bearAtlas));
     this.bear=this.bearModel.root;this.scene.add(this.bear);
-    this.fairy = this.actor(this.texture(images.fairy), .63, .7);
+    this.fairyModel = new ChaseFairyModel(resource => this.own(resource));
+    this.fairy = this.fairyModel.root; this.scene.add(this.fairy);
     this.chest = this.propCatalog.create('chest'); this.chest.visible = false; this.scene.add(this.chest);
     this.chest.rotation.y = -Math.PI / 2;
     this.lighting=new ChaseLighting(this);
@@ -256,10 +258,7 @@ export class ChaseRenderer3D {
     this.contactShadow.rotation.set(-Math.PI/2,0,0);
     this.placeOnRoute(this.contactShadow,state.distance,state.x,.025,true);
     this.bearModel.apply(state);
-    this.fairy.position.set(state.fairy.x, 2.05 + (state.fairy.y - 2.65), .55 + Math.abs(state.fairy.z));
-    this.fairy.rotation.y=0;
-    this.placeOnRoute(this.fairy,state.distance-.55-Math.abs(state.fairy.z),state.fairy.x,this.fairy.position.y);
-    this.fairy.rotation.z = Math.sin(state.time * 3) * .08;
+    this.fairyModel.apply(state, this.girlModel);
     this.chest.visible = ['CAUGHT', 'CHEST_RETURN', 'COMPLETE'].includes(state.stage);
     this.chest.position.set(4.74, 0, -state.gap - .3);
     const progress = state.stage === 'CHEST_RETURN' ? clamp(state.age / C.stages.CHEST_RETURN, 0, 1) : 0;

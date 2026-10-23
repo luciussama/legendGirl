@@ -1,9 +1,7 @@
-# Pose de transporte — Correção 1
+# Pose de transporte
 
-`carry-pose-v1.png`: pose derivada da protagonista oficial com os braços dobrados e as palmas voltadas para cima. Gerada com a ferramenta integrada `imagegen`, recortada pela transparência e reduzida para 256 px de altura. O atlas oficial permanece preservado.
+A versão ativa é `carry-v2/poses.png`: quatro poses detalhadas, parada e passos, com braços dobrados e palmas abertas. Geração pela ferramenta integrada `image_gen`, com prompt em `carry-v2/prompts.json`. O usuário aprovou esta direção de qualidade e estendeu o padrão às demais poses 2D da menina, em `assets/art/characters/girl-v2/`.
 
-O transporte é composto por pose, brinquedo e mãos em primeiro plano. Os offsets são exclusivamente visuais; os dados de coleta não são alterados.
+`carry-pose-v1.png` e seu prompt permanecem como origem anterior; não são a pose ativa. O atlas oficial também permanece preservado.
 
-O prompt de geração está em `prompts.json`.
-
-Integração atual: [ToyCarryPresentation](../../../../src/js/toy-room/ToyCarryPresentation.js) compõe pose, item e contatos. ToyRoomEntities e ToyRoomSceneRenderer apresentam o jogador; ToyRoomToyActions controla o vínculo com o item e ToyRoomPersistence o religa por ID no save. Desenho não decide coleta nem peso.
+`ToyCarryPresentation` compõe corpo/braço distante → brinquedo → antebraço/dedos próximos. Recortes opacos dos oito brinquedos são armazenados em cache por carregador. Limites de tamanho preservam a proporção e deixam o rosto livre. Os offsets são somente visuais; coleta, peso e save não são alterados. `ToyRoomToyActions` controla a carga e `ToyRoomPersistence` religa o item por ID.

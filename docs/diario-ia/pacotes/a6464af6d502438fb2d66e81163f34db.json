@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "a6464af6d502438fb2d66e81163f34db",
+  "date": "2026-10-23T12:57:54.553017+00:00",
+  "title": "QA temporário: test:menina:ilustrada:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db.log",
+      "sourceId": "83e0a5ef76533b10324b0bc1e25208a7ed3b68bd136f3cf8c2d176872dfa5fa2",
+      "sha256": "a43789a2b7b730f74846f5e9d3aa79728176bcab2bb636fed3ff2d1605ca38c1",
+      "bytes": 12504,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/android-pegadas.png",
+      "sourceId": "656de6f7b332380b0f421c103d816eaa67eb068957da0275b54742904dfd269d",
+      "sha256": "af85e15ce8c04ff3a0728e21769498aaa54b60313aee84647db5793f018da6ea",
+      "bytes": 335778,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/android-poses.png",
+      "sourceId": "f7d1a068df54ceaae04f4c06feaef9d207b2ade9f3a18ad9c44eae6463249602",
+      "sha256": "74847135b4977798ca99ac56ea9f873ba9296c93752ff3cecf2ab85bc8265d7b",
+      "bytes": 625695,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/android-sala.png",
+      "sourceId": "507c79cdee1b77b54a0200ea70b6ea47d448e6fa8cccad16e2826bdf99183019",
+      "sha256": "16c83657793d27d33289e9bef493d581b95c36678e83a60bce05760e0aa20785",
+      "bytes": 1160573,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-pegadas.png",
+      "sourceId": "603ea9daf89f4dab4969d9d358d209d650a029726fa369e7525bcf3c2b2d2796",
+      "sha256": "af85e15ce8c04ff3a0728e21769498aaa54b60313aee84647db5793f018da6ea",
+      "bytes": 335778,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-poses.png",
+      "sourceId": "6082e46d5e5d8e57bcfb7654028d87dc02a3865001ceb0fffea17570f58e1b3f",
+      "sha256": "74847135b4977798ca99ac56ea9f873ba9296c93752ff3cecf2ab85bc8265d7b",
+      "bytes": 625695,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-sala.png",
+      "sourceId": "fdd33f3a0693434b41610264f940fc0a8ac283bfc528c75d85edae170c1ca246",
+      "sha256": "bf7aab211e7f86a11e83d36dc536d0bffe52735003ced73b837bbe8bfdd15a49",
+      "bytes": 894747,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-pegadas.png",
+      "sourceId": "8608513c45d7696f22a6d9562179c8d046a6d89362f73b2a05f5171462342997",
+      "sha256": "af85e15ce8c04ff3a0728e21769498aaa54b60313aee84647db5793f018da6ea",
+      "bytes": 335778,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-poses.png",
+      "sourceId": "648c4cc62c757e1a47c8f7ca79943a23f58adbb6e120fb2933e8f51e27733ce8",
+      "sha256": "74847135b4977798ca99ac56ea9f873ba9296c93752ff3cecf2ab85bc8265d7b",
+      "bytes": 625695,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-sala.png",
+      "sourceId": "90f85d6a377dbf3d9a37adab592e548a7dca89c8255a9ca50da410dc2b8d96a9",
+      "sha256": "abbdbbd9fe7df745c093bde665d86eba132192455cf263ee2433f1237bc1f64e",
+      "bytes": 1160292,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/resultado.json",
+      "sourceId": "e15e22b3fa36e103227fbebe6efa93a8c139cbf6fc18cd5406fb23debc68dad7",
+      "sha256": "3cc068f2ca3bb0da45f63bcd7a8e3200df7739aa12e189cb4907234edc232d80",
+      "bytes": 12219,
+      "metadataOnly": false
+    }
+  ]
+}

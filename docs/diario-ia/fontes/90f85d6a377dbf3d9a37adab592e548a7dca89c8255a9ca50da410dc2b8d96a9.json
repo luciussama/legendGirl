@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "90f85d6a377dbf3d9a37adab592e548a7dca89c8255a9ca50da410dc2b8d96a9",
+  "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-sala.png",
+  "sha256": "42bb4854ed18a0061c8181bf37db702c783e0eaf863931516a63ede629d33d3c",
+  "capturedAt": "2026-10-23T12:57:54.561481+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-sala.png\", \"sha256\": \"abbdbbd9fe7df745c093bde665d86eba132192455cf263ee2433f1237bc1f64e\", \"bytes\": 1160292, \"binaryRetained\": false}"
+}

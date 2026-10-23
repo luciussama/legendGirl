@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T115735-eb9b422819e7-fim",
+  "sessionId": "20261023T115735-eb9b422819e7",
+  "type": "fim",
+  "date": "2026-10-23T12:20:34.389457+00:00",
+  "title": "Alinhar apoios das plataformas e pés à arte e unir urso/livros",
+  "actor": "Codex",
+  "summary": "Apoios do quarto derivados do contorno visível das 38 plataformas; urso/livros com contato contínuo preservando índices; sapatos completos nas duas direções e assistência EASY preservada. Pouso varrido acompanha o restante horizontal do quadro em bordas curvas. Câmera, impulsos e artes preservados. QA e contratos atualizados no acervo sem reescrever histórico; documentação e mapas sincronizados. Alterações locais na feat-fairy-ajustments, sem commit/push.",
+  "checks": [
+    "npm test: aprovado integralmente na revisão final",
+    "test:contato:browser: 228 travessias preparadas, 38 apoios, teclado/toque reais em quatro perfis; aprovado",
+    "test:camera:lateral:browser: cinco perfis, 228 variantes e 465 quadros de salto por perfil; aprovado",
+    "npm run build, npm run check-assets e git diff --check: aprovados",
+    "npm run docs:sprites: mapa reconstruído; referência regenerada com 153 módulos",
+    "Falhas intermediárias e correção de contato curvo documentadas na análise arquivada; imagens regeneráveis preservadas por metadados e descartadas"
+  ],
+  "pending": [
+    "Validar gameplay em celular físico; emulação não comprova resultado no aparelho do usuário"
+  ],
+  "files": [
+    "src/js/environment/DarkRoomContact.js",
+    "src/js/environment/PlatformRenderer.js",
+    "src/js/environment/StorybookPlatforms.js",
+    "src/js/config.js",
+    "src/js/game.js",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/ARQUITETURA.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/COMANDOS.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json"
+  ]
+}

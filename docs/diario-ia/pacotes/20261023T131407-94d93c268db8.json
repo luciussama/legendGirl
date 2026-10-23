@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T131407-94d93c268db8",
+  "date": "2026-10-23T13:14:07.747977+00:00",
+  "title": "Identificação das evidências temporárias conferidas visualmente; sem manter bitmaps",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/menina-ilustrada-20261023/evidencias-temporarias.json",
+      "sourceId": "3f5f29d34b8c1e085417c6c0be7e7cbae3ae7250fd977aeb102d77167302a7f7",
+      "sha256": "caf2ccb1921af5f1d7bf79ec2ffc78bd6369d1bf0a1170fe88570eb417bf8ed1",
+      "bytes": 5622,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

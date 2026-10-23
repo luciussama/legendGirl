@@ -1,0 +1,10 @@
+{
+  "ferramenta": "image_gen integrada",
+  "pedido": "Arena com olhos semicerrados e sobrancelhas inclinadas para o centro; expressão séria aprovada anteriormente como referência, sem estender à exploração.",
+  "prompt": "Use case: precise-object-edit / identity-preserve. Edit ONLY the girl's facial expression in EVERY pose of reference 1. Preserve EXACT image dimensions, sprite layout, source cell positions, clothing, hair, limbs, hands, sword, poses, colors, alpha, pixel detail, and identity. Reference 2 shows the desired old ARENA expression: DETERMINED and ANGRY, narrow partly closed eyes with strong focused gaze, eyebrows tilted DOWN toward the center of the face (inner brow ends lower), serious small mouth with NO smile. The NEW detailed artwork must stay detailed; reference 2 supplies the expression only, NOT its crude pixel resolution. Make all combat-ready/running/jumping/crouching/guarding/attacking faces look tough and resolute, NOT cheerful or sweet. Hurt faces may keep a pain flinch with closed eyes but no smiling. Do not make an adult or villain, keep the same little girl. Genuine transparency everywhere outside the sprites, no background, no shadow, no text. Absolutely no changes to pose, scale, frame count or layout.",
+  "arquivos": [
+    "arena-base-v3.png",
+    "arena-acoes-v2.png",
+    "arena-defesa-v2.png"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c80b64f6e5ef4a5f787626a391e67a85ccb620894a7fcee6153e47a7f64579be",
+  "path": "qa-execucoes/c1ba8dd77abb40dd84027c952abcc794/docs/diario-ia/qa-resultados/regras-brinquedos/desktop-espada.png",
+  "sha256": "328542d1df47b484455e998cae3217999db1d9421c438c614dce832664256f52",
+  "capturedAt": "2026-10-23T14:05:02.625505+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:entrega:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/regras-brinquedos/desktop-espada.png\", \"sha256\": \"abed1cff918d4e5356f6b65af307d0c464258e569ee24fb0851d98433e55d189\", \"bytes\": 948794, \"binaryRetained\": false}"
+}

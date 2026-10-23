@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5ce8b2c10a0a1523da4766da5828a1c3e6310703bdd31e3da54588151906d097",
+  "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-true-5.png",
+  "sha256": "36e2b0965fc62b4a700ec5f4bf0e38a068297bef8bc4e59349716f9d7352ebc4",
+  "capturedAt": "2026-10-23T13:13:09.189656+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:contato:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/contato-integral/iphone-true-5.png\", \"sha256\": \"ca80b3b4782e95ba1c51e101ce4a3355bc7c37ed1798c30f10711eb5e873ac6f\", \"bytes\": 310019, \"binaryRetained\": false}"
+}

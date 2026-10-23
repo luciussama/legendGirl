@@ -139,6 +139,16 @@ export class ToyRoomBattle {
     const actor = incoming ? transition.incoming : transition.outgoing;
     const origin = this.presentation?.transportOrigin?.();
     const boxX = origin?.x ?? chest.x + chest.w / 2, boxY = origin?.y ?? chest.y + 100;
+    if (origin?.emergenceLift) {
+      // Primeiro sobe dentro do baú; só depois atravessa a borda em direção à arena.
+      const t = incoming ? progress : 1 - progress;
+      const lift = Math.min(1,t/.28), travel = Math.max(0,(t-.28)/.72);
+      const eased = travel * travel * (3 - 2 * travel);
+      return { ...actor, x: boxX + (actor.x-boxX)*eased,
+        y: boxY-origin.emergenceLift*lift + (BATTLE_TUNING.ground-boxY+origin.emergenceLift)*eased-Math.sin(travel*Math.PI)*110,
+        facing:actor.facing,state:incoming?'APPROACH':'DEATH',elapsed:incoming?transition.elapsed:BATTLE_TUNING.death,
+        carried:!incoming,progress,transportScale:.16+.84*t*t*(3-2*t) };
+    }
     const fromX = incoming ? boxX : actor.x, toX = incoming ? actor.x : boxX;
     const fromY = incoming ? boxY : BATTLE_TUNING.ground;
     const toY = incoming ? BATTLE_TUNING.ground : boxY;

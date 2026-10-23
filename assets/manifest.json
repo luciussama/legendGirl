@@ -68,7 +68,17 @@
     "current-scenery-toy-car": "./assets/art/dark-room/scenery-current/toy_car.png",
     "current-scenery-cardboard-box-floor": "./assets/art/dark-room/scenery-current/cardboard_box_floor.png",
     "toy-room-intro-room-v1": "./assets/art/toy-room/introduction/room-v1.png",
-    "toy-room-intro-girl-v1": "./assets/art/toy-room/introduction/girl-acting-v1.png"
+    "toy-room-intro-girl-v1": "./assets/art/toy-room/introduction/girl-acting-v1.png",
+    "girl-v2-locomocao": "./assets/art/characters/girl-v2/runtime/locomocao.png",
+    "girl-v2-saltos": "./assets/art/characters/girl-v2/runtime/saltos.png",
+    "girl-v2-acoes": "./assets/art/characters/girl-v2/runtime/acoes.png",
+    "girl-v2-arena-base": "./assets/art/characters/girl-v2/runtime/arena-base.png",
+    "girl-v2-arena-acoes": "./assets/art/characters/girl-v2/runtime/arena-acoes.png",
+    "girl-v2-arena-defesa": "./assets/art/characters/girl-v2/runtime/arena-defesa.png",
+    "girl-v2-carry": "./assets/art/characters/girl-v2/runtime/carry.png",
+    "girl-v2-arena-dano": "./assets/art/characters/girl-v2/runtime/arena-dano.png",
+    "girl-v2-arena-agachar": "./assets/art/characters/girl-v2/runtime/arena-agachar.png",
+    "toy-room-chest-open-v2": "./assets/art/toy-room/chest-brinquedos-open-v2.png"
   },
   "spritesheets": {}
 }

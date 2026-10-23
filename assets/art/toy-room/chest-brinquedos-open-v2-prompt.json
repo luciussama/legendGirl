@@ -1,0 +1,28 @@
+{
+  "mode": "ferramenta integrada image_gen",
+  "prompt": "Use case: precise-object-edit. Asset type: sprite pintado de baú aberto para jogo infantil. Referência: o baú vermelho de madeira com painel amarelo, botão azul e pés dourados anexado. Desenhe exatamente esse mesmo baú na mesma vista três-quartos (frente e lateral direita), mas com a tampa levantada para trás, aberta aproximadamente 105 graus, mostrando uma grande cavidade interna vazia e escura, com borda de madeira clara. Mantenha corpo vermelho, painel frontal amarelo, botão circular azul, pés dourados e pinceladas. A tampa elevada deve mostrar seu interior, sem texto visível. A abertura deve ser larga e legível para brinquedos saltarem de dentro. Frente do baú como uma parede sólida e borda superior reta em perspectiva, sem brinquedos dentro ou fora. Objeto inteiro centralizado, sem cortes, sem cenário, sem sombra externa, fundo realmente transparente. Não crie personagens. Composição aproximadamente quadrada.",
+  "source": "chest-brinquedos-v1.png",
+  "output": "chest-brinquedos-open-v2.png",
+  "frontPolygon": [
+    [
+      0.05,
+      0.44
+    ],
+    [
+      0.55,
+      0.615
+    ],
+    [
+      0.865,
+      0.475
+    ],
+    [
+      0.91,
+      1
+    ],
+    [
+      0.02,
+      1
+    ]
+  ]
+}

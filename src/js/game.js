@@ -1,3 +1,4 @@
+import { DarkRoomContact } from './environment/DarkRoomContact.js';
 import { createRuntimeContext } from './runtime/RuntimeContext.js';
 import { updatePortalNarrative } from './narrative/DarkRoomNarrative.js';
 import { updateTutorialRetornoNarrative } from './narrative/DarkRoomNarrative.js';
@@ -9,7 +10,7 @@ import { renderDarkRoom } from './rendering/DarkRoomRenderPipeline.js';
 import { createViewportController } from './controllers/ViewportController.js';
 import { createCameraQaObserver } from './debug/CameraQaObserver.js';
 import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
-import { normalizeDifficulty, easyLanding } from './state/GameDifficulty.js';
+import { normalizeDifficulty } from './state/GameDifficulty.js';
 import { recordCampaignDefeat, clearCampaignDefeat } from './state/CampaignDefeats.js';
 import { createDefaultStateVariables } from './state/StateVariables.js';
 import { OpeningSequence } from './cinematics/OpeningSequence.js';
@@ -34,7 +35,10 @@ import { createAtlasDebugger } from './debug/AtlasDebugger.js';
 export function createGame(canvas, uiFeedback, callbacks = {}) {
   const ctx = canvas.getContext('2d');
   const assets = createAssetManager();
-  const assetsReady = assets.loadManifest().then(() => assets.preload());
+  const platformContact = new DarkRoomContact(platformRenderer, assets);
+  const assetsReady = assets.loadManifest().then(() => assets.preload()).then(() => {
+    platformContact.prepare([...platforms, ...phase3Platforms]);
+  });
   const atlasDebugger = createAtlasDebugger({ assets });
   assetsReady.then(() => {
     atlasDebugger.setAssets(assets);
@@ -856,47 +860,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     // --- COLISÃO COM PLATAFORMAS E ATERRISSAGEM ---
     const activePlatforms = state.isPhase3 ? phase3Platforms : platforms;
     const wasInAir = !baby.onGround;
-    let landedIdx = -1;
-    for (let i = 0; i < activePlatforms.length; i++) {
-      const p = activePlatforms[i];
-      const platX = p.standRegion ? p.standRegion.x : p.x;
-      const platW = p.standRegion ? p.standRegion.w : p.w;
-      const platY = (p.surfaceTopY !== undefined)
-        ? p.surfaceTopY
-        : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
-      // Ajuda oculta somente nos três apoios estreitos da aproximação.
-      // Compensa a silhueta irregular sem mudar o desenho, o arco ou mirar o salto.
-      const assistedNormal = state.gameDifficulty !== 'EASY' && !state.isPhase3 &&
-        ['messy_blocks', 'toy_drum', 'satin_cushion'].includes(p.style);
-      const normalInset = assistedNormal ? -4 : 4;
-      // No retorno NORMAL, o apoio usa uma faixa estável de 30 px dos sapatos.
-      // Mede o contato ao cruzar o topo, sem capturar quem já vinha por baixo.
-      const returnNormal = state.isPhase3 && state.gameDifficulty !== 'EASY';
-      let returnLanding = false;
-      if (returnNormal && baby.vy >= 0) {
-        const feetY = baby.y + baby.h;
-        const previousFeetY = feetY - baby.vy * dt;
-        if (previousFeetY <= platY + 1e-7 && feetY >= platY) {
-          const travelY = feetY - previousFeetY;
-          const fraction = travelY > 0 ? Math.max(0, (platY - previousFeetY) / travelY) : 1;
-          const contactX = baby.x + baby.w / 2 - (baby.onGround ? 0 : baby.vx * dt * (1 - fraction));
-          // Exige apoio real de 2 px; a faixa não inclui toda a largura do corpo.
-          returnLanding = Math.min(contactX + 15, platX + platW) - Math.max(contactX - 15, platX) >= 2;
-        }
-      }
-      if (returnLanding || (!returnNormal && (
-        (state.gameDifficulty === 'EASY'
-          ? baby.x + baby.w > platX && baby.x < platX + platW
-          : baby.x + baby.w / 2 > platX + normalInset && baby.x + baby.w / 2 < platX + platW - normalInset) &&
-        baby.y + baby.h >= platY &&
-        baby.y + baby.h <= platY + (assistedNormal ? 20 : 16) &&
-        baby.vy >= 0
-        || (state.gameDifficulty === 'EASY' && easyLanding(baby, platX, platW, platY))
-      ))) {
-        landedIdx = i;
-        break;
-      }
-    }
+    const contact = platformContact.resolve(baby, state, activePlatforms, dt);
+    let landedIdx = contact?.index ?? -1;
     // Garantia de 100% de acerto no primeiro salto do castelo para a pista do trem (plataforma 10)
     const isEscapingState = (typeof state.isEscapeMode !== 'undefined' ? state.isEscapeMode : Boolean(baby.isEscaping || baby.longJumpUnlocked));
     if (!state.isPhase3 && isEscapingState && baby.currentPlatformIndex === 9 && wasInAir && baby.vy >= 0) {
@@ -914,11 +879,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (landedIdx !== -1) {
       const landedPlat = activePlatforms[landedIdx];
       landedPlat.isLanded = true;
-      const landingY = (landedPlat.surfaceTopY !== undefined)
-        ? landedPlat.surfaceTopY
-        : ((landedPlat.standRegion && landedPlat.standRegion.y !== undefined)
-          ? landedPlat.standRegion.y
-          : landedPlat.y);
+      const landingY = landedIdx === contact?.index ? contact.y
+        : (landedPlat.surfaceTopY ?? landedPlat.standRegion?.y ?? landedPlat.y);
       baby.y = landingY - baby.h;
       baby.vy = 0;
       if (!state.isEscapeMode && !state.isPhase3) {
@@ -1007,7 +969,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         }
       }
 
-      if (!state.isPhase3 && landedIdx === 0) {
+      if (!state.isPhase3 && (landedIdx === 0 || landedPlat.contactGroup === 'urso-livros')) {
         state.firstPlatformCleared = true;
       }
 
@@ -1315,6 +1277,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     hud: hudRenderer,
     dialogue: dialogueRenderer,
     assets,
+    platformContact,
     assetsReady,
     darkRoomAtlas,
     atlasDebugger,

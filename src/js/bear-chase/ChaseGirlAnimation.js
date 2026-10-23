@@ -38,8 +38,10 @@ export class ChaseGirlAnimation {
     m.skirt.rotation.set(Math.sin(phase*2-.65)*.085*effort,-stride*.035*effort,Math.sin(phase-.55)*.045*effort-this.lean*.04);
     m.skirt.position.y=.15+Math.sin(phase*2-.8)*.009*effort;
     m.skirt.scale.set(1+Math.sin(phase*2-.7)*.018*effort,1,1+(1-step)*.025*effort);
-    m.ponytail.rotation.set((run?-.12:0)+Math.sin(phase*2-.85)*(moving?.13:.018),Math.sin(phase-.6)*(moving?.18:.01),Math.sin(phase-.8)*.065*effort+this.lean*.12);
-    m.tailTip.rotation.set(Math.sin(phase*2-1.5)*(moving?.24:.015),Math.sin(phase-1.1)*.09*effort,Math.sin(phase-1.4)*.07*effort);
+    for(const {tail,tip,side} of m.pigtails) {
+      tail.rotation.set((run?-.12:0)+Math.sin(phase*2-.85)*(moving?.13:.018),Math.sin(phase-.6)*(moving?.13:.01),side*Math.sin(phase-.8)*.08*effort+this.lean*.12);
+      tip.rotation.set(Math.sin(phase*2-1.5)*(moving?.24:.015),Math.sin(phase-1.1)*.09*effort,side*Math.sin(phase-1.4)*.07*effort);
+    }
     for(let i=0;i<2;i++){
       const cycle=((phase/(Math.PI*2)+i*.5)%1+1)%1;
       const stance=cycle<.5,t=stance?cycle*2:(cycle-.5)*2;
@@ -73,8 +75,9 @@ export class ChaseGirlAnimation {
     m.pelvis.rotation.set(0, 0, 0);
     m.skirt.rotation.set(0, 0, 0);
     // O cabelo cai para o lado, em vez de permanecer espetado acima das costas.
-    m.ponytail.rotation.set(0, Math.PI * .5 * progress, 0);
-    m.tailTip.rotation.set(0, 0, 0);
+    for(const {tail,tip,side} of m.pigtails) {
+      tail.rotation.set(0, side * .5 * progress, side * .22 * progress);tip.rotation.set(0,0,0);
+    }
     for (const leg of m.legs) {
       leg.hip.rotation.x *= 1 - progress;
       leg.knee.rotation.x *= 1 - progress;

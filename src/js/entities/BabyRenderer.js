@@ -1,4 +1,5 @@
 import { OFFICIAL_FRAMES } from '../assets/officialCharacter.js';
+import { GIRL_V2_FRAMES, GIRL_V2_REFERENCE_HEIGHT } from '../assets/illustratedGirl.js';
 
 /** Renderiza somente recortes da ilustração oficial fornecida. */
 export class BabyRenderer {
@@ -72,6 +73,18 @@ export class BabyRenderer {
   }
 
   renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1, visualScale = 1) {
+    const illustratedFrames = GIRL_V2_FRAMES[pose];
+    const illustrated = illustratedFrames?.[((frameIndex % illustratedFrames.length) + illustratedFrames.length) % illustratedFrames.length];
+    const detailedImage = illustrated && assets?.get(illustrated.key);
+    if (ctx && detailedImage) {
+      // Uma escala corporal por conjunto mantém cabeça, pés e proporções entre poses articuladas.
+      const scale = height / GIRL_V2_REFERENCE_HEIGHT * visualScale;
+      ctx.save(); ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
+      ctx.translate(centerX, feetY); if (facing === -1) ctx.scale(-1, 1);
+      ctx.drawImage(detailedImage, illustrated.x, illustrated.y, illustrated.w, illustrated.h,
+        -illustrated.anchorX * scale, -illustrated.anchorY * scale, illustrated.w * scale, illustrated.h * scale);
+      ctx.restore(); return;
+    }
     const image = assets?.get('official-character');
     if (!ctx || !image) return; // Nunca substitui a arte oficial ausente por um novo desenho.
     const frames = OFFICIAL_FRAMES[pose] || OFFICIAL_FRAMES.idle;

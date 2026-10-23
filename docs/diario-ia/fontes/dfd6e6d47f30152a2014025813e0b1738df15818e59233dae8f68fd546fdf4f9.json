@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "dfd6e6d47f30152a2014025813e0b1738df15818e59233dae8f68fd546fdf4f9",
+  "path": "qa-execucoes/82005a40b4b549509312a76bb67833f6/docs/diario-ia/qa-resultados/menina-ilustrada/android-sala.png",
+  "sha256": "0ac376fefab3930db37ea573b2ac821f8465cfb0fc27eda3dd3b3d9847c97133",
+  "capturedAt": "2026-10-23T13:11:22.492285+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/android-sala.png\", \"sha256\": \"1ab117b56bd7cf0eed454a126f564e37461d3933ff9ad3be4cd9325d02aaa841\", \"bytes\": 1110630, \"binaryRetained\": false}"
+}

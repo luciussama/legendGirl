@@ -4,10 +4,11 @@ import { routePoint } from './ChaseRoute.js';
 /**
  * Compõe a iluminação da perseguição sem modificar a simulação ou as colisões.
  *
- * Há três funções visuais distintas:
+ * Há quatro funções visuais distintas:
  * - bounce/reflected: preenchimento que simula luz rebatida e preserva as texturas;
  * - front: luz alta, adiante do urso, cuja sombra se estende para trás dele;
- * - windows: três projetores associados às janelas fixas do quarto.
+ * - windows: três projetores associados às janelas fixas do quarto;
+ * - fairy: luz local da fada, com sombra de um único passe voltado para o chão.
  *
  * Ciclo de vida: o renderer cria esta classe após carregar a sala, chama update()
  * em cada desenho e dispose() ao sair. Objetos novos passam por prepareObject().
@@ -17,10 +18,10 @@ export class ChaseLighting {
   /**
    * Cria luzes, configura sombras e prepara as malhas já carregadas.
    *
-   * `owner` é o compositor ChaseRenderer3D: fornece scene, renderer, room, fairy
-   * e own(). Este último registra a máscara entre os recursos que ele descartará.
-   * `lights` contém apenas luzes que podem precisar de mapas de sombra; as duas
-   * luzes de preenchimento ficam fora dessa lista para não alocar mapas inúteis.
+   * `owner` é o compositor ChaseRenderer3D: fornece scene, renderer, room, fairy,
+   * girlModel e own(). Este último registra a máscara para descarte pelo compositor.
+   * `lights` reúne fontes com câmera de projeção; somente front/fairy alocam mapas.
+   * As duas luzes de preenchimento ficam fora dessa lista.
    *
    * @param {import('./ChaseRenderer3D.js').ChaseRenderer3D} owner Compositor da cena pronta.
    */
@@ -72,19 +73,26 @@ export class ChaseLighting {
       this.windows.push(light);
       this.lights.push(light);
     }
+    // Um SpotLight amplo substitui a sombra da janela dominante. Uma luz pontual
+    // com sombra exigiria seis faces; aqui são apenas dois mapas ativos no total.
+    this.fairy = new T.SpotLight('#c9f3ff', 1.8, 7.5, 1.08, .48, 2);
+    this.fairy.name = 'LuzDaFadinha'; this.fairy.castShadow = true;
+    this.fairy.shadow.camera.near = .12; this.fairy.shadow.camera.far = 7.5;
+    this.fairy.shadow.bias = -.00012; this.fairy.shadow.normalBias = .008;
+    this.fairy.shadow.radius = 2; this.fairy.shadow.intensity = .82;
+    this.fairyOrigin = new T.Vector3(); this.fairyTarget = new T.Vector3();
+    owner.scene.add(this.fairy, this.fairy.target); this.lights.push(this.fairy);
     this.resize(false);
 
     owner.scene.traverse(object => {
       if (!object.isMesh) return;
+      if (object.userData.fairyLuminous) return;
       const solid = !object.material.transparent;
       object.castShadow = solid;
       object.receiveShadow = solid || object.material.isMeshStandardMaterial;
       // A luz principal é de apresentação, acima do quarto: o teto não deve bloqueá-la.
       if (object.name === 'teto contínuo') object.castShadow = false;
     });
-    // A fada ilustrada mantém transparência sem projetar o retângulo da sua prancha.
-    owner.fairy.castShadow = false;
-    owner.fairy.receiveShadow = false;
   }
 
   /**
@@ -115,7 +123,7 @@ export class ChaseLighting {
 
   /**
    * Escolhe a resolução dos mapas conforme a orientação da tela.
-   * Paisagem: principal 2048² e janelas 1024²; retrato: 1024² e 512².
+   * Paisagem: principal 2048² e fada 1024²; retrato: 1024² e 512².
    * Isso muda nitidez/custo de memória, sem mudar alcance ou posição das luzes.
    *
    * Só libera/recria um mapa quando a resolução muda. Os alvos antigos da GPU
@@ -160,17 +168,18 @@ export class ChaseLighting {
   /**
    * Atualiza a composição para o estado atual, sem avançar o tempo do jogo.
    * A luz frontal acompanha o urso; as luzes de janela ficam em posições fixas
-   * enquanto visíveis. Três posições reutilizáveis atendem sucessivamente às
+   * enquanto visíveis, sem sombras adicionais. Três posições reutilizáveis atendem às
    * janelas 0/3/6, 1/4/7 e 2/5/8, com troca somente após sair da influência local.
    *
    * smoothstep() faz transições suaves entre 0 e 1. A intensidade da luz controla
    * o clareamento; shadow.intensity controla só a força da sombra projetada.
-   * A sombra da janela dominante desaparece antes de passar à seguinte, evitando
-   * saltos e mantendo no máximo dois produtores ativos: frontal e uma janela.
+   * A fonte acompanha o núcleo em sua órbita, iluminando cabelo, braços, vestido
+   * e objetos próximos. Somente a frontal e a fada geram mapas de sombra.
    *
    * @param {object} state Estado da perseguição, consultado sem alteração.
    * @param {number} state.distance Posição longitudinal da menina.
    * @param {number} state.gap Distância longitudinal entre menina e urso.
+   * @param {number} state.time Relógio em segundos usado pela pulsação suave da fada.
    * @param {boolean} portrait Orientação da tela para a resolução dos mapas.
    */
   update(state, portrait) {
@@ -203,17 +212,17 @@ export class ChaseLighting {
       light.userData.windowDistance = s;
     }
 
-    // Todas as janelas mantêm a mesma máscara, independentemente de qual projeta sombra.
-    const dominant = this.windows.filter(light => light.visible).sort((a, b) =>
-      Math.abs(a.userData.windowDistance - state.distance - 6) -
-      Math.abs(b.userData.windowDistance - state.distance - 6))[0];
+    // A máscara das vidraças continua projetada; seu passe de sombra passa à fada.
     for (const light of this.windows) {
-      // O foco de interesse fica 6 unidades à frente da menina. Janelas estão espaçadas em 25:
-      // a 12,5 unidades desse foco chega-se ao ponto médio, onde a sombra deve estar apagada.
-      const separation = Math.abs(light.userData.windowDistance - state.distance - 6);
-      light.shadow.intensity = light === dominant ? 1 - T.MathUtils.smoothstep(separation, 6, 12.5) : 0;
-      light.castShadow = light.shadow.intensity > .0001;
+      light.shadow.intensity = 0; light.castShadow = false;
     }
+    this.owner.fairy.updateWorldMatrix(true, false);
+    this.fairyOrigin.set(0, 0, 0).applyMatrix4(this.owner.fairy.matrixWorld);
+    this.owner.girlModel.torso.updateWorldMatrix(true, false);
+    this.fairyTarget.set(0, .06, 0).applyMatrix4(this.owner.girlModel.torso.matrixWorld);
+    this.fairy.position.copy(this.fairyOrigin); this.fairy.target.position.copy(this.fairyTarget);
+    this.fairy.target.updateMatrixWorld();
+    this.fairy.intensity = 1.8 * (1 + Math.sin(state.time * 3.6) * .055);
   }
 
   /**

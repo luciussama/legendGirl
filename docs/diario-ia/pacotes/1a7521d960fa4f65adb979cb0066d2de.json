@@ -1,0 +1,162 @@
+{
+  "schemaVersion": 1,
+  "id": "1a7521d960fa4f65adb979cb0066d2de",
+  "date": "2026-10-23T13:13:09.176938+00:00",
+  "title": "QA temporário: test:contato:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de.log",
+      "sourceId": "fc49ad71b32d2e1e22a39c153d30d7e0c718de3f313b1c2322c3b5905521be99",
+      "sha256": "3e5602601ca88be2f29aa421b8d98a97406e554f19a9c4562f433c57403e9c85",
+      "bytes": 27991,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-false-0.png",
+      "sourceId": "6356a90e3a6125b1c2d1d8d09e92c8eaec7e805acae2dfbf48303aa5290ae407",
+      "sha256": "3af5d6ca56b5fab4fbabc2b54023e8fa4f75259815241c4520bd179e136efa59",
+      "bytes": 343268,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-false-4.png",
+      "sourceId": "d63aa99138ebbcc9af1ca39b592e0db1f01efea9f1c2ef7f59587c9a837c3b4d",
+      "sha256": "21cb65087e8efcd87ec8f9ff75d57af49b5f1b7da52208cc9bb7babb15f948b6",
+      "bytes": 379239,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-false-6.png",
+      "sourceId": "fec5724eb72a73aa8c5b01e8fc05707f64e52b0c9ff8c9fd8a4e6131961b7c99",
+      "sha256": "087d9458e5490ad2ab2cece4876770c6fd6dae5561d0f5617ad72dab4d11f78d",
+      "bytes": 368388,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-false-9.png",
+      "sourceId": "54f86421b49adb1f955afa6333066f1d1a7128fa3fd4837c534fc63d9eac1129",
+      "sha256": "7ccb8c2c596da908598a6d3481fc64d829c15861a7b1de855523190835b009ca",
+      "bytes": 360269,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-paisagem-false-0.png",
+      "sourceId": "06e90da02c9bf60a45ca3009f06e8e6aca1e278f4513c935195a6ae6396a92f6",
+      "sha256": "0d5ff92c28884e1f57af1870b2c9ccbd256f631f9e13542c408fb0b0a404dd8c",
+      "bytes": 309231,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-paisagem-false-4.png",
+      "sourceId": "494720b755fd7665be16fb060ea0722dde95a10486844ec0de1307b47ec2bb11",
+      "sha256": "fd8d9fa832560725fb37719077557fe42569432de701cc9c958adb5432df2ff6",
+      "bytes": 337466,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-paisagem-false-6.png",
+      "sourceId": "863e192f5d49aa115caf3e2043c490d3dc4d74e407c8791f1170f279a305cc8e",
+      "sha256": "d6dee481634d1d1941dab66a8def45c497777febd1a5844636a6450e92c8d73c",
+      "bytes": 332873,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-paisagem-false-9.png",
+      "sourceId": "73b3cb6312aa052f10f78926b5bc8d2c9455ae48ad3c420b904cbd85214729ce",
+      "sha256": "fcf84de33b896948b98dbaa322f0b4366dd4d74dddc49072584a8aaf4bffbc15",
+      "bytes": 324992,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-paisagem-true-5.png",
+      "sourceId": "b362ca0fedc31d91706a98f6206db0fca26f89d0948a5c3eea51d1b697ed9eec",
+      "sha256": "c07af708a880d179431b39a5d413d5c9b78896ce9a76e3270d50773483d9eddd",
+      "bytes": 282117,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/android-true-5.png",
+      "sourceId": "21535714cbbb265ecaa8c73bb4ec0ebe182d935bffca5c5867a96c90a600a876",
+      "sha256": "f8b40b08281f627e80ffe7a37b613a36fc922f9d638c5452c75590011145f5c2",
+      "bytes": 310028,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-false-0.png",
+      "sourceId": "0084e5e31c30bc87a096fb80cd783caef4b163a9716c6a0204cf980a408cd453",
+      "sha256": "8e5cd0bb120505024dee0adb9d1f93311c416bc3afbe78783aab879457327bd5",
+      "bytes": 367513,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-false-4.png",
+      "sourceId": "ed3c1fad999ee00e4d541049a42c3e20f7f4110eff6c5b0d4e2817dafce44e15",
+      "sha256": "a7702e7f3c640fbaa343b4c82ec7613a7cc4b30622ae6a9a23eed334e3fdaa12",
+      "bytes": 418245,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-false-6.png",
+      "sourceId": "312dfce8cadfd497f2550b49792ebef32e93b74a35920e748d45db3888fcda93",
+      "sha256": "7a7421a481096cba48b8023e62adfbf4ab10e51883b04b0b72f9032d038db3e6",
+      "bytes": 431924,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-false-9.png",
+      "sourceId": "af9ab6888bb4d394bb6557268a97bd84362353ab2e93700e806c574605027d1a",
+      "sha256": "a79c08dc4c3729700bff7019a16f2a4e969f74ee37a4d065bade6b1d92adee58",
+      "bytes": 413074,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-true-5.png",
+      "sourceId": "2d623c4dff063694dc31eab059fe4b40ebbd9bec0c1d90bad0524a689afcb192",
+      "sha256": "a5d867a4555d4743b571f5b3560c1011e635e68db3512c7aaf5e73ee5be2d6b8",
+      "bytes": 338200,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-false-0.png",
+      "sourceId": "3bf5aca6e7f2985860323f0a94ef7127f88ca937ef15a6f9d4ac11d6af6041b9",
+      "sha256": "59d632e5972e20e23e9fbe2d8a9791c3fc5cd5f73547eea8469ee794a5d3df15",
+      "bytes": 343281,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-false-4.png",
+      "sourceId": "d4a52ae18fcbefb59d9954d0b72f9197c7fab39ada9aa09f233362b86980308a",
+      "sha256": "8032995b4fb09bcbad86d283da001cf561d3d11f1ff810b5e0ea643dd3e57f65",
+      "bytes": 379107,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-false-6.png",
+      "sourceId": "3d9345ac71c020385ef2f0bda2c6c2f6917a5f6c13088f1824aa89c570bfb013",
+      "sha256": "cca7186d40995ce69aba15883d39abe5455f5ac5bbb6ed3256946ef4ae1f05b7",
+      "bytes": 368216,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-false-9.png",
+      "sourceId": "d2f9d318a0d09ba3914c9c404af9970797067ffdb5873b4672bce167205b799c",
+      "sha256": "57eaccdd1e3745a46969ee57de509376e6856f5c5b0f2093d8aacca7767bee8d",
+      "bytes": 360198,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/iphone-true-5.png",
+      "sourceId": "5ce8b2c10a0a1523da4766da5828a1c3e6310703bdd31e3da54588151906d097",
+      "sha256": "ca80b3b4782e95ba1c51e101ce4a3355bc7c37ed1798c30f10711eb5e873ac6f",
+      "bytes": 310019,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/resultado.json",
+      "sourceId": "d50c903efb5563d0d9a70438ca564484eac53301a0d37be8ac2b9bbdb2e86e0f",
+      "sha256": "b03fe947747a6344df5910a55c6459fd033c79d107539c74155263d626fb011f",
+      "bytes": 99214,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import { getMobileUILayout } from '../ui/MobileUILayout.js';
  * ToyRoomUI.js
  * Interface de usuário da Sala de Brinquedos:
  * - Card de progresso à esquerda com ocupação adaptável: contador e barra esmeralda
- * - Joystick virtual tátil e botão de ação PEGAR / SOLTAR para dispositivos touch
+ * - Joystick virtual tátil e botão de ação PEGAR / GUARDAR para dispositivos touch
  * - Flash narrativo de introdução e faixa comemorativa
  * - Faixa festiva de celebração de vitória
  */
@@ -219,9 +219,12 @@ export class ToyRoomUI {
       subText = '🎁 NO BAÚ';
       textColor = '#ffffff';
     } else if (isCarrying) {
-      mainText = 'SOLTAR';
-      subText = '📦 NO CHÃO';
+      mainText = 'LEVAR';
+      subText = '🎁 AO BAÚ';
       textColor = '#ffffff';
+    } else if (state.seekingSword) {
+      mainText = 'ESPADA';
+      subText = '⚔ APROXIME-SE';
     } else if (state.swordEquipped && !canInteract) {
       mainText = 'GOLPE';
       subText = '⚔ ESPADA';

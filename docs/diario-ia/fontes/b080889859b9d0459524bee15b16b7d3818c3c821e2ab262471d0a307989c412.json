@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b080889859b9d0459524bee15b16b7d3818c3c821e2ab262471d0a307989c412",
+  "path": "qa-execucoes/e592c3d5872c49b093293127d21c4a55/docs/diario-ia/qa-resultados/camera-lateral/iphone-true-15.png",
+  "sha256": "c013bfa9a44142953e7980edbcfb096e278930cad11297c9e7a8caf2af40a370",
+  "capturedAt": "2026-10-23T13:13:11.306931+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/iphone-true-15.png\", \"sha256\": \"65788449d6f40647db4070054f6ed888a6006b943cf8708995fe74367686eaeb\", \"bytes\": 318515, \"binaryRetained\": false}"
+}

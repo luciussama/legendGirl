@@ -1,16 +1,16 @@
 /** Paleta regional extraída; regenerar com scripts/prepare-chase-palette.js. */
 export const GIRL_PALETTE = Object.freeze({
-  "skin": "#f7b090",
-  "cream": "#fce4c0",
-  "pink": "#f2a393",
-  "rose": "#a96458",
-  "hair": "#4d281b",
-  "lock": "#7b4c3b",
-  "boot": "#643125",
-  "sole": "#3d1815",
-  "white": "#f6f3f2",
-  "eye": "#471e1a",
-  "black": "#3a0d11",
-  "blush": "#f6ad8d",
+  "skin": "#fcc592",
+  "cream": "#fee9cb",
+  "pink": "#fa7d77",
+  "rose": "#b83d47",
+  "hair": "#552110",
+  "lock": "#723117",
+  "boot": "#944d2e",
+  "sole": "#481c0e",
+  "white": "#fde8c9",
+  "eye": "#521a07",
+  "black": "#1a0201",
+  "blush": "#fda778",
   "guard": "#74858b"
 });

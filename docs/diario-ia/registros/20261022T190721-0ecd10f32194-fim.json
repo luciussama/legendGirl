@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T190721-0ecd10f32194-fim",
+  "sessionId": "20261022T190721-0ecd10f32194",
+  "type": "fim",
+  "date": "2026-10-22T19:18:42.588855+00:00",
+  "title": "Criar fadinha 3D luminosa com sombras na perseguição",
+  "actor": "Codex",
+  "summary": "Implementada fadinha volumétrica na corrida com coque, vestido, asas articuladas e varinha, voando acima da cabeça da menina. SpotLight local ilumina menina e objetos com sombras reais; substitui a sombra da janela dominante para manter dois passes/mapas. Sem mudanças em física, colisões, câmera ou dificuldade. Sem commit/push.",
+  "checks": [
+    "test:bear-chase:fairy:browser final aprovado: 12 enquadramentos em três formatos, pixels reais de luz e sombra, pausa, estado, volume e descarte. NORMAL/EASY completos com 5254 passos e zero impactos cada; pico amostrado 293 chamadas (<310). Falha intermediária do piloto fixo preservada e corrigida no teste com corredores reais.",
+    "test:bear-chase aprovado; build, lint, sintaxe dos módulos, 68 recursos e git diff --check aprovados. Suíte geral não repetida por escopo visual da perseguição.",
+    "Mapa reconstruído: 417 imagens/99 recortes/29 assinaturas. Documentação e referência atualizadas: 152 módulos/1033 declarações. Fontes de QA arquivadas e 16 capturas finais conferidas por hash antes do descarte temporário."
+  ],
+  "pending": [
+    "Revisão artística do usuário e medição de FPS/GPU em celular físico ainda não realizadas."
+  ],
+  "files": [
+    "src/js/bear-chase/ChaseFairyModel.js",
+    "src/js/bear-chase/ChaseLighting.js",
+    "src/js/bear-chase/ChaseRenderer3D.js",
+    "docs/bear-chase/GUIA-PREVIA.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/ARQUITETURA.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/COMANDOS.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

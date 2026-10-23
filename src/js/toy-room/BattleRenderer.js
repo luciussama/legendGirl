@@ -107,10 +107,11 @@ export function renderBattle(battle) {
     ctx.translate(reactionOffset, 0);
     if (playerReaction && Math.floor(s.playerHitTime / 2) % 2 === 0) ctx.globalAlpha = 0.48;
     if (s.mode === 'DEFEAT') babyRenderer.renderPose(ctx, r.assets, 'lying_down', 0, r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
+    else if (s.crouching && r.assets?.get('girl-v2-arena-base')) babyRenderer.renderPose(ctx, r.assets, 'sword_crouch', 0, r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
     else if (s.crouching) renderBattleCrouch(ctx,battle.images.get(BATTLE_CROUCH_FRAME.file),r.player,s.attackTime,r.story.state.attackDirection);
     else if (!r.story.renderAttackSprite(ctx)) {
       const pose = playerReaction ? 'damage' : s.jump > 0 ? (s.jumpVelocity > 0 ? 'jump' : 'fall') : s.crouching ? 'crouch' : r.player.isMoving ? 'run' : 'idle';
-      babyRenderer.renderPose(ctx, r.assets, pose, Math.floor(s.elapsed / 6), r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
+      babyRenderer.renderPose(ctx, r.assets, (r.assets?.get('girl-v2-arena-base') ? 'sword_' : '') + pose, Math.floor(s.elapsed / 6), r.player.x, t.ground, 80, r.player.facing === 'left' ? -1 : 1);
       r.story.renderHeldObject(ctx);
     }
     ctx.restore();

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6082e46d5e5d8e57bcfb7654028d87dc02a3865001ceb0fffea17570f58e1b3f",
+  "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-poses.png",
+  "sha256": "5f4637ddb56c4a1060b22c3106b34ecf49b73e5cce953381f86b18df171e33f3",
+  "capturedAt": "2026-10-23T12:57:54.558214+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/desktop-poses.png\", \"sha256\": \"74847135b4977798ca99ac56ea9f873ba9296c93752ff3cecf2ab85bc8265d7b\", \"bytes\": 625695, \"binaryRetained\": false}"
+}

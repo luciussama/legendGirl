@@ -1,11 +1,754 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 417,
-    "regions": 99,
+    "files": 440,
+    "regions": 153,
     "code": 29
   },
   "items": [
+    {
+      "id": "164386dd061d5ce62b423d31",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes.png",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "ba3dc3260439f2e2a413f12a",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes.png",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "4e91503fdc501a6017cb7558",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
+      "title": "arena-agachar.png",
+      "format": "png",
+      "width": 640,
+      "height": 640,
+      "bytes": 348404,
+      "sha256": "2267975653770456e49055e155f79dbb15e413cccb2ef27e9ba389367d369b35",
+      "aliases": [
+        "girl-v2-arena-agachar"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 835,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 80,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "5b0f61647ac4b19f4cbe46d8",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base.png",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "29e1e395ed3c740a5128581f",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano.png",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "1cc9a3ffe7d5992ab0b23979",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa.png",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "41f873d5907a183c44d1b7dd",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/carry.png",
+      "title": "carry.png",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 274925,
+      "sha256": "626e487796bf93ac0a1a30568648d0ae0bdbd91f9b990849e502f0e1f0ea4377",
+      "aliases": [
+        "girl-v2-carry"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 894,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 78,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "777d9ceee4c3a003c2ebe723",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao.png",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "89c54606e5d959d5e16e77dd",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos.png",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "72691a37581da613cc97d0ad",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/acoes.png",
+      "title": "acoes.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2445244,
+      "sha256": "ebf40daaba438ae3259fbc10495dad294d570df52f066e074af9e5b0b11cc57d",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 229,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "4183fecaf3d2e3145771a559",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-acoes-v2.png",
+      "title": "arena-acoes-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2403471,
+      "sha256": "ac9b80b79bf62d5f41affe5717ffc40e4cd3398c49898e386116a76ca087da52",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 503,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "6c3a5a566e0aa2ec884b549a",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-acoes.png",
+      "title": "arena-acoes.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2421989,
+      "sha256": "8bdb131abc27a5e142aac325934571823ede98773fa978ef1bb8792b94be381f",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "7324eb4a7ad947aa37d0d0f9",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-agachar.png",
+      "title": "arena-agachar.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2020281,
+      "sha256": "8c32bcf366622ac4101ef8de50ac7b50e9a1182a210a7e838f13b3aa9b4ed96e",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 836,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "0aa38e61bcc56ac8c28bdb52",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-base-v2.png",
+      "title": "arena-base-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2493983,
+      "sha256": "efa6e4d9bf000fb4f4e2a2bdf5c344cb914362e7ac5a6279ad6135cea1a35b41",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "63e9eab5ef58de12b2c99107",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-base-v3.png",
+      "title": "arena-base-v3.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2495914,
+      "sha256": "88e138d76430c0b7daae45b4ecc0b261f1a0a08862afdb9b044ccb6416197e5a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 340,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "7b01291ef4383e4de30fec18",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-base.png",
+      "title": "arena-base.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2475973,
+      "sha256": "1a9bd02453ae74273ed260f1d4c4421cb11de1ec5465291f01a21328512ca21a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "8c7d655c1fcb3771d2748be4",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-dano.png",
+      "title": "arena-dano.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2392422,
+      "sha256": "39c4b39405ded9be1e66008812275642087cf7180287121552a226c3009a91fe",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 751,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "0baaffb1b13b9d8f4c15ac78",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-defesa-v2.png",
+      "title": "arena-defesa-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2238231,
+      "sha256": "7a2e682ae9aacace33d9661a4e0e8b4c90b34ee4117ee6055909383826f21760",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 666,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "c298b3810e077a93e7482344",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/arena-defesa.png",
+      "title": "arena-defesa.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2261273,
+      "sha256": "00c17f8f004517c55a6a8e4a9dcee494e14e4925f86b9cb686fb051bc4400dfa",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "e3679b80181e16cf90a27080",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/locomocao.png",
+      "title": "locomocao.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2389177,
+      "sha256": "0b1abca48453378a15b437c2363dfc0113c7fbb01e8dc7e35617aa942ffe9696",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/models/bear-chase/paleta-menina.json",
+          "line": 2,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-chase-palette.js",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
+      "id": "4d3102e8ba2dbeeb3b67513b",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/saltos.png",
+      "title": "saltos.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2413216,
+      "sha256": "b1c8842c36db4a120b5c7949d48c67d3573b0e3fcdd25b45fe4387abfc1560f4",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 118,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
     {
       "id": "8eed9c7122a86a8739bf90e5",
       "kind": "file",
@@ -301,7 +1044,7 @@
         },
         {
           "file": "src/js/game.js",
-          "line": 683,
+          "line": 687,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -1622,6 +2365,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -1647,7 +2396,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -6191,12 +6940,6 @@
           "line": 6,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -6226,12 +6969,6 @@
           "line": 18,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -6261,12 +6998,6 @@
           "line": 30,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -6296,12 +7027,6 @@
           "line": 42,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -6331,12 +7056,6 @@
           "line": 54,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -6366,12 +7085,6 @@
           "line": 66,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8339,19 +9052,13 @@
       "bytes": 1162373,
       "sha256": "ecf4149edbadfbaf4458b821c84683804463dd8c8d331e8d1ca7d8677fcea105",
       "aliases": [],
-      "usage": "runtime",
+      "usage": "apoio",
       "references": [
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 24,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8368,15 +9075,8 @@
       "bytes": 1711207,
       "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
       "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/toy-room/battle/girl/animation-v2"
     },
@@ -8391,31 +9091,19 @@
       "bytes": 1004418,
       "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
       "aliases": [],
-      "usage": "runtime",
+      "usage": "apoio",
       "references": [
+        {
+          "file": "assets/art/characters/girl-v2/arena-prompts.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
           "line": 23,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "assets/models/bear-chase/paleta-menina.json",
-          "line": 2,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-chase-palette.js",
-          "line": 4,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8451,12 +9139,6 @@
           "line": 93,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8492,12 +9174,6 @@
           "line": 100,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8527,12 +9203,6 @@
           "line": 107,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8562,12 +9232,6 @@
           "line": 114,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8597,12 +9261,6 @@
           "line": 121,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8690,12 +9348,6 @@
           "line": 68,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8725,12 +9377,6 @@
           "line": 75,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8772,12 +9418,6 @@
           "line": 6,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8807,12 +9447,6 @@
           "line": 13,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8842,12 +9476,6 @@
           "line": 20,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8877,12 +9505,6 @@
           "line": 27,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8912,12 +9534,6 @@
           "line": 52,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -8947,12 +9563,6 @@
           "line": 59,
           "type": "runtime",
           "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
         }
       ],
       "hints": [],
@@ -14165,13 +14775,50 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 158,
+          "line": 159,
           "type": "runtime",
           "alias": null
         }
       ],
       "hints": [],
       "family": "assets/art/toy-room/bear-chase/materials"
+    },
+    {
+      "id": "f5cdca76e1cbc2531aefb9df",
+      "kind": "file",
+      "path": "assets/art/toy-room/chest-brinquedos-open-v2.png",
+      "title": "chest-brinquedos-open-v2.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1732113,
+      "sha256": "b7c49e77e4c73b5f489c8d54e2ab2253543ea8a531616b6b4347ad241e46bcce",
+      "aliases": [
+        "toy-room-chest-open-v2"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 81,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/toy-room/ArenaEnvironment.js",
+          "line": 43,
+          "type": "runtime",
+          "alias": "toy-room-chest-open-v2"
+        },
+        {
+          "file": "src/js/toy-room/ArenaEnvironment.js",
+          "line": 85,
+          "type": "runtime",
+          "alias": "toy-room-chest-open-v2"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room"
     },
     {
       "id": "d37f1d60a2fdc2f17d02d147",
@@ -14410,7 +15057,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 160,
+          "line": 161,
           "type": "runtime",
           "alias": null
         },
@@ -14453,7 +15100,7 @@
         },
         {
           "file": "src/js/toy-room/ArenaEnvironment.js",
-          "line": 65,
+          "line": 69,
           "type": "runtime",
           "alias": "toy-room-oval-rug-v1"
         },
@@ -14490,7 +15137,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 161,
+          "line": 162,
           "type": "runtime",
           "alias": null
         },
@@ -14533,7 +15180,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 160,
+          "line": 161,
           "type": "runtime",
           "alias": null
         },
@@ -14576,7 +15223,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 161,
+          "line": 162,
           "type": "runtime",
           "alias": null
         },
@@ -14645,6 +15292,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 47,
           "type": "manifesto-runtime",
@@ -14653,6 +15306,53 @@
       ],
       "hints": [],
       "family": "assets/art/toy-room/stage2"
+    },
+    {
+      "id": "651d9fb627a87c1bd4f88b2f",
+      "kind": "file",
+      "path": "assets/art/toy-room/stage2/carry-v2/poses.png",
+      "title": "poses.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1252827,
+      "sha256": "8ac00072b31e3df61ca67715c558034771f86a7e2e3c7caba0f2d8bf9c558781",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/arena-prompts.json",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 895,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/characters/girl-v2/prompts.json",
+          "line": 4,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-illustrated-girl.js",
+          "line": 17,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/toy-room/stage2/carry-v2"
     },
     {
       "id": "a78e157ad18dc65b21e90b96",
@@ -14683,7 +15383,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 163,
+          "line": 164,
           "type": "runtime",
           "alias": null
         },
@@ -14806,7 +15506,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 163,
+          "line": 164,
           "type": "runtime",
           "alias": null
         },
@@ -14930,12 +15630,6 @@
           "alias": null
         },
         {
-          "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 162,
-          "type": "runtime",
-          "alias": null
-        },
-        {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
           "line": 129,
           "type": "runtime",
@@ -14955,7 +15649,7 @@
         },
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 62,
+          "line": 73,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         }
@@ -14986,7 +15680,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 162,
+          "line": 163,
           "type": "runtime",
           "alias": null
         },
@@ -15197,7 +15891,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18317,7 +19011,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18363,7 +19057,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18409,7 +19103,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18455,7 +19149,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18501,7 +19195,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18547,7 +19241,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18593,7 +19287,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -18639,7 +19333,7 @@
         },
         {
           "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": "toy-room-sword-attack-sheet"
         }
@@ -19972,6 +20666,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -19997,7 +20697,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20036,6 +20736,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20061,7 +20767,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20100,6 +20806,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20125,7 +20837,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20164,6 +20876,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20189,7 +20907,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20228,6 +20946,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20253,7 +20977,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20292,6 +21016,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20317,7 +21047,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20356,6 +21086,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20381,7 +21117,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20420,6 +21156,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20445,7 +21187,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20484,6 +21226,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20509,7 +21257,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20548,6 +21296,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20573,7 +21327,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20612,6 +21366,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20637,7 +21397,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20676,6 +21436,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20701,7 +21467,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20740,6 +21506,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20765,7 +21537,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20804,6 +21576,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20829,7 +21607,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20868,6 +21646,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20893,7 +21677,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20932,6 +21716,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -20957,7 +21747,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -20996,6 +21786,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21021,7 +21817,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21060,6 +21856,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21085,7 +21887,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21124,6 +21926,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21149,7 +21957,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21188,6 +21996,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21213,7 +22027,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21252,6 +22066,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21277,7 +22097,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21316,6 +22136,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21341,7 +22167,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21380,6 +22206,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21405,7 +22237,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21444,6 +22276,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21469,7 +22307,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21508,6 +22346,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21533,7 +22377,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21572,6 +22416,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21597,7 +22447,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21636,6 +22486,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21661,7 +22517,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21700,6 +22556,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21725,7 +22587,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21764,6 +22626,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21789,7 +22657,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21828,6 +22696,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21853,7 +22727,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21892,6 +22766,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21917,7 +22797,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21956,6 +22836,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -21981,7 +22867,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22020,6 +22906,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22045,7 +22937,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22084,6 +22976,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22109,7 +23007,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22148,6 +23046,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22173,7 +23077,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22212,6 +23116,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22237,7 +23147,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22276,6 +23186,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22301,7 +23217,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22340,6 +23256,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22365,7 +23287,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22404,6 +23326,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/toy-room/stage2/prompts.json",
           "line": 3,
           "type": "apoio",
@@ -22429,7 +23357,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 75,
+          "line": 88,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22453,529 +23381,1303 @@
       "parentId": "1aba08f6da427255ccc0e39b"
     },
     {
-      "id": "65670525bf1da4ddba61681d",
+      "id": "b999288716f5ccdd5d88639d",
       "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/crouch-cycle-sheet.png",
-      "title": "crouchCycle · quadro 1",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 1",
       "format": "png",
-      "width": 1402,
-      "height": 1122,
-      "bytes": 1162373,
-      "sha256": "ecf4149edbadfbaf4458b821c84683804463dd8c8d331e8d1ca7d8677fcea105",
-      "aliases": [],
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 24,
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 86,
-        "y": 41,
-        "width": 615,
-        "height": 587
-      },
-      "parentId": "8c26e602291dcb76b3488ff7"
-    },
-    {
-      "id": "f94734764b0d3d42d9f8d41f",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/crouch-cycle-sheet.png",
-      "title": "crouchCycle · quadro 2",
-      "format": "png",
-      "width": 1402,
-      "height": 1122,
-      "bytes": 1162373,
-      "sha256": "ecf4149edbadfbaf4458b821c84683804463dd8c8d331e8d1ca7d8677fcea105",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 24,
-          "type": "apoio",
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
           "alias": null
         },
         {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
           "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 782,
-        "y": 112,
-        "width": 604,
-        "height": 516
-      },
-      "parentId": "8c26e602291dcb76b3488ff7"
-    },
-    {
-      "id": "ee83e782f424d36ba9c62219",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/crouch-cycle-sheet.png",
-      "title": "crouchCycle · quadro 3",
-      "format": "png",
-      "width": 1402,
-      "height": 1122,
-      "bytes": 1162373,
-      "sha256": "ecf4149edbadfbaf4458b821c84683804463dd8c8d331e8d1ca7d8677fcea105",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 24,
-          "type": "apoio",
-          "alias": null
+          "alias": "girl-v2-locomocao"
         },
         {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 93,
-        "y": 649,
-        "width": 607,
-        "height": 450
-      },
-      "parentId": "8c26e602291dcb76b3488ff7"
-    },
-    {
-      "id": "af981a0cb7fc80736d7477fe",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/crouch-cycle-sheet.png",
-      "title": "crouchCycle · quadro 4",
-      "format": "png",
-      "width": 1402,
-      "height": 1122,
-      "bytes": 1162373,
-      "sha256": "ecf4149edbadfbaf4458b821c84683804463dd8c8d331e8d1ca7d8677fcea105",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 24,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 780,
-        "y": 684,
-        "width": 603,
-        "height": 421
-      },
-      "parentId": "8c26e602291dcb76b3488ff7"
-    },
-    {
-      "id": "fe8ea697cc4d5be5f0a8e286",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 1",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 0,
-        "y": 0,
-        "width": 512,
-        "height": 496
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "ad2ae993ffb5e022f15a73e7",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 2",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 512,
-        "y": 0,
-        "width": 512,
-        "height": 496
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "e703cc8d93a6db98defc43b5",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 3",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 1024,
-        "y": 0,
-        "width": 512,
-        "height": 496
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "c16c8bc1d84c4b743b746a33",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 4",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 0,
-        "y": 512,
-        "width": 512,
-        "height": 475
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "277f0e5257e419974d072462",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 5",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 512,
-        "y": 512,
-        "width": 512,
-        "height": 475
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "2dd3ee02eddec246165b8597",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/guard-cycle-sheet.png",
-      "title": "guard · quadro 6",
-      "format": "png",
-      "width": 1536,
-      "height": 1024,
-      "bytes": 1711207,
-      "sha256": "5b961329f039ce61892a60a531a267d5cc440066fa73f1bc0f7186e938f6c039",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
-          "type": "runtime",
-          "alias": "metadados resolvidos"
-        }
-      ],
-      "hints": [
-        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
-      ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
-      "region": {
-        "x": 1024,
-        "y": 512,
-        "width": 512,
-        "height": 475
-      },
-      "parentId": "d14b6e541a0f4c6857422370"
-    },
-    {
-      "id": "28fb1608440b14b425a065a0",
-      "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
-      "title": "run · quadro 1",
-      "format": "png",
-      "width": 1312,
-      "height": 1199,
-      "bytes": 1004418,
-      "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
-      "aliases": [],
-      "usage": "runtime",
-      "references": [
-        {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 23,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/models/bear-chase/paleta-menina.json",
-          "line": 2,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-chase-palette.js",
+          "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
           "type": "runtime",
-          "alias": "metadados resolvidos"
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "family": "assets/art/characters/girl-v2/runtime",
       "region": {
-        "x": 92,
-        "y": 51,
-        "width": 536,
-        "height": 517
+        "x": 12,
+        "y": 12,
+        "width": 154,
+        "height": 260
       },
-      "parentId": "8438b5e5e5380b0d2a499314"
+      "parentId": "777d9ceee4c3a003c2ebe723"
     },
     {
-      "id": "7f7b080bcdb22c94f642de68",
+      "id": "99fde8499cd5b512afa0d5c5",
       "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
-      "title": "run · quadro 2",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 2",
       "format": "png",
-      "width": 1312,
-      "height": 1199,
-      "bytes": 1004418,
-      "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
-      "aliases": [],
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 23,
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/models/bear-chase/paleta-menina.json",
-          "line": 2,
-          "type": "apoio",
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
           "alias": null
         },
         {
-          "file": "scripts/prepare-chase-palette.js",
-          "line": 4,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
           "type": "runtime",
-          "alias": "metadados resolvidos"
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "family": "assets/art/characters/girl-v2/runtime",
       "region": {
-        "x": 738,
-        "y": 52,
-        "width": 548,
-        "height": 521
+        "x": 332,
+        "y": 12,
+        "width": 155,
+        "height": 260
       },
-      "parentId": "8438b5e5e5380b0d2a499314"
+      "parentId": "777d9ceee4c3a003c2ebe723"
     },
     {
-      "id": "15c1dfdc0519cb75bed74094",
+      "id": "f9f30197a9302427a97d8966",
       "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
-      "title": "run · quadro 3",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 3",
       "format": "png",
-      "width": 1312,
-      "height": 1199,
-      "bytes": 1004418,
-      "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
-      "aliases": [],
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 23,
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/models/bear-chase/paleta-menina.json",
-          "line": 2,
-          "type": "apoio",
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
           "alias": null
         },
         {
-          "file": "scripts/prepare-chase-palette.js",
-          "line": 4,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
-          "line": 1,
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
           "type": "runtime",
-          "alias": "metadados resolvidos"
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "family": "assets/art/characters/girl-v2/runtime",
       "region": {
-        "x": 74,
-        "y": 620,
-        "width": 555,
-        "height": 539
+        "x": 652,
+        "y": 12,
+        "width": 164,
+        "height": 259
       },
-      "parentId": "8438b5e5e5380b0d2a499314"
+      "parentId": "777d9ceee4c3a003c2ebe723"
     },
     {
-      "id": "c2a84e72e1b41f125c26591c",
+      "id": "5fb693e13a900842a367b769",
       "kind": "region",
-      "path": "assets/art/toy-room/battle/girl/animation-v2/run-sheet.png",
-      "title": "run · quadro 4",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 4",
       "format": "png",
-      "width": 1312,
-      "height": 1199,
-      "bytes": 1004418,
-      "sha256": "5b7f1adcb916894fa2cc79d68e540fef5c9955d52f7a58edc995a8375668896f",
-      "aliases": [],
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
-          "line": 23,
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/models/bear-chase/paleta-menina.json",
-          "line": 2,
-          "type": "apoio",
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
           "alias": null
         },
         {
-          "file": "scripts/prepare-chase-palette.js",
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 176,
+        "height": 260
+      },
+      "parentId": "777d9ceee4c3a003c2ebe723"
+    },
+    {
+      "id": "bf891aa688226d069196b036",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 5",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
           "type": "apoio",
           "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 166,
+        "height": 253
+      },
+      "parentId": "777d9ceee4c3a003c2ebe723"
+    },
+    {
+      "id": "0b23c900f1a2c9213b16a675",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 6",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 163,
+        "height": 258
+      },
+      "parentId": "777d9ceee4c3a003c2ebe723"
+    },
+    {
+      "id": "158d373a60e347e55eb8fc0e",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 7",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 165,
+        "height": 259
+      },
+      "parentId": "777d9ceee4c3a003c2ebe723"
+    },
+    {
+      "id": "2bfaae42ce70a73323d44a28",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/locomocao.png",
+      "title": "locomocao · quadro 8",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 585473,
+      "sha256": "5fe110636056ee4f921044ddc830d2812ad3f76f8565625e2f4ede9a45e499b3",
+      "aliases": [
+        "girl-v2-locomocao"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 72,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 332,
+        "width": 176,
+        "height": 258
+      },
+      "parentId": "777d9ceee4c3a003c2ebe723"
+    },
+    {
+      "id": "28aaff157568e8d85cd5b877",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 1",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 171,
+        "height": 256
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "416fa3277371392338f18824",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 2",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 185,
+        "height": 255
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "1c5eb1fa9acc1cc2b346590d",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 3",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 181,
+        "height": 224
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "8c77cb9c5f444335a9a96d8a",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 4",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 179,
+        "height": 248
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "cb8fd40ab82f8d1d4f7a9872",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 5",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 180,
+        "height": 242
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "89501ee6cec57d135504ca5f",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 6",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 174,
+        "height": 216
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "b2a6517d4402e5b98ba03ab1",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 7",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 206,
+        "height": 228
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "29e494c689d7eadd5b3fd47f",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/saltos.png",
+      "title": "saltos · quadro 8",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 600179,
+      "sha256": "15c1f4b6d6746c8f90d3b9b66851b17dab3272c675a766f7bee872cc712f34a0",
+      "aliases": [
+        "girl-v2-saltos"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 117,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 73,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-saltos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 332,
+        "width": 165,
+        "height": 189
+      },
+      "parentId": "89c54606e5d959d5e16e77dd"
+    },
+    {
+      "id": "cde982abbc51f9daf6435061",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 1",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 178,
+        "height": 264
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "c1f1533164f31b00baa5f71c",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 2",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 190,
+        "height": 253
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "70d843d324bb5a2924e1eccb",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 3",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 174,
+        "height": 274
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "85fb328c7b7301488ccde3d4",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 4",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 178,
+        "height": 255
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "7399a7813c6fa61262776fef",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 5",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 266,
+        "height": 132
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "58ae866fe8b549ef97e30be0",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 6",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 186,
+        "height": 263
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "7dad6fe9e5f3efa1ca155b27",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 7",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 158,
+        "height": 265
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "422676ff649fe47b8e734c79",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/acoes.png",
+      "title": "acoes · quadro 8",
+      "format": "png",
+      "width": 1280,
+      "height": 640,
+      "bytes": 601730,
+      "sha256": "97901641b6fc3872d51a749f9257d0aff56978d9073d1465a4cb9a84ed27f6b7",
+      "aliases": [
+        "girl-v2-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 228,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 74,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-acoes"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 332,
+        "width": 185,
+        "height": 254
+      },
+      "parentId": "164386dd061d5ce62b423d31"
+    },
+    {
+      "id": "56048f1d7eaabe47b2e625c7",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 1",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
@@ -22987,14 +24689,2688 @@
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
-      "family": "assets/art/toy-room/battle/girl/animation-v2",
+      "family": "assets/art/characters/girl-v2/runtime",
       "region": {
-        "x": 734,
-        "y": 622,
-        "width": 571,
-        "height": 537
+        "x": 12,
+        "y": 12,
+        "width": 213,
+        "height": 258
       },
-      "parentId": "8438b5e5e5380b0d2a499314"
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "c793abca8e0858f7d06cd89d",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 2",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 212,
+        "height": 258
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "852788a09621b05e077890d8",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 3",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 213,
+        "height": 258
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "5941d6cac47e76768e9be34d",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 4",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 213,
+        "height": 258
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "f377d02d37af937ca87599e6",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 5",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 246,
+        "height": 251
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "7ec082b6a37a4f3145e988fb",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 6",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 240,
+        "height": 251
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "7f8ac59db64aeed085ab8632",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 7",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 248,
+        "height": 254
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "24d6587b5fc007e43076b662",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 8",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 332,
+        "width": 238,
+        "height": 254
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "3158762776238cbbf5f1fda0",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 9",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 652,
+        "width": 222,
+        "height": 238
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "6ad51da6e40cdc0435bb236d",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 10",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 652,
+        "width": 229,
+        "height": 229
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "dd3632e7bac677e72f5bbc78",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 11",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 652,
+        "width": 232,
+        "height": 213
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "f73abdcfb5141d50b58b364c",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-base.png",
+      "title": "arena-base · quadro 12",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1038533,
+      "sha256": "a4d49298cf44b774dba80f4861f37cd670b9c4d8693847faf13715e0866cc41b",
+      "aliases": [
+        "girl-v2-arena-base"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 339,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 75,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 110,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/BattleRenderer.js",
+          "line": 114,
+          "type": "runtime",
+          "alias": "girl-v2-arena-base"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 652,
+        "width": 227,
+        "height": 196
+      },
+      "parentId": "5b0f61647ac4b19f4cbe46d8"
+    },
+    {
+      "id": "359b39aec42a4de484c79849",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 1",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 230,
+        "height": 258
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "e16888fe9d3f7ec8709b1415",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 2",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 211,
+        "height": 261
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "3c2baa01c1c73cc472b53867",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 3",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 236,
+        "height": 256
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "1c67078244238b57c43a51b0",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 4",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 295,
+        "height": 255
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "f4a399de2eafb162f7bc13a8",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 5",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 236,
+        "height": 269
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "f3b0e3c47369a0a106d5968c",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 6",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 236,
+        "height": 244
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "e0233fb4bd6106f026c35527",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 7",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 232,
+        "height": 228
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "bc69b96ea336e78bd0f87d93",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 8",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 332,
+        "width": 245,
+        "height": 267
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "0ec29a95d5ae8c8a3fb18d73",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 9",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 652,
+        "width": 242,
+        "height": 248
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "44ee718669eec3b9303166ad",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 10",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 652,
+        "width": 282,
+        "height": 263
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "bb0381ee2816d9b38c1392ae",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 11",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 652,
+        "width": 278,
+        "height": 264
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "ad31b8cfbc9481839b20149e",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
+      "title": "arena-acoes · quadro 12",
+      "format": "png",
+      "width": 1280,
+      "height": 960,
+      "bytes": 1114697,
+      "sha256": "e0d2a28d4728f482a2a6fb80f72c9664a3692d3ad4bdb9b416a854a9ed70669e",
+      "aliases": [
+        "girl-v2-arena-acoes"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 502,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 76,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ToyRoomStoryRenderer.js",
+          "line": 11,
+          "type": "runtime",
+          "alias": "girl-v2-arena-acoes"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 652,
+        "width": 244,
+        "height": 254
+      },
+      "parentId": "ba3dc3260439f2e2a413f12a"
+    },
+    {
+      "id": "b65567cee5dbddb56f690e1a",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 1",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 219,
+        "height": 259
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "fd4b144fb0f24cb80636a3fc",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 2",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 194,
+        "height": 259
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "a6deaae4633d02c3648e8ec5",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 3",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 189,
+        "height": 258
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "99bc006db312e4744b1b2714",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 4",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 183,
+        "height": 258
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "766fbe4af6adc00f47c1f385",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 5",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 190,
+        "height": 259
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "fff6a963d68390d843ad4a1e",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
+      "title": "arena-defesa · quadro 6",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 490400,
+      "sha256": "e31304102a497b489e017f3ece8c7ba6a42f0d67fd560a86a85bbd1873f002d7",
+      "aliases": [
+        "girl-v2-arena-defesa"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 665,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 77,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-defesa"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 201,
+        "height": 260
+      },
+      "parentId": "1cc9a3ffe7d5992ab0b23979"
+    },
+    {
+      "id": "c2c385acb828ca558d8df76c",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 1",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 221,
+        "height": 267
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "c0dbe2578c78695235fe8955",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 2",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 248,
+        "height": 262
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "5bd4e532f49b458ca6950f7a",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 3",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 273,
+        "height": 266
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "a3eb7609113c221750b42afb",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 4",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 283,
+        "height": 263
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "719ec5b2dec328543317297b",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 5",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 227,
+        "height": 257
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "06df5f361062309c7f5bf2b0",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-dano.png",
+      "title": "arena-dano · quadro 6",
+      "format": "png",
+      "width": 960,
+      "height": 640,
+      "bytes": 571240,
+      "sha256": "68996087f08a376d018724a52d6b61473442d71c7c03ad11dd4879c0070a0824",
+      "aliases": [
+        "girl-v2-arena-dano"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 750,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 79,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-dano"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 332,
+        "width": 227,
+        "height": 259
+      },
+      "parentId": "29e1e395ed3c740a5128581f"
+    },
+    {
+      "id": "fef90497546a514ba8339b6b",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
+      "title": "arena-agachar · quadro 1",
+      "format": "png",
+      "width": 640,
+      "height": 640,
+      "bytes": 348404,
+      "sha256": "2267975653770456e49055e155f79dbb15e413cccb2ef27e9ba389367d369b35",
+      "aliases": [
+        "girl-v2-arena-agachar"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 835,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 80,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 221,
+        "height": 264
+      },
+      "parentId": "4e91503fdc501a6017cb7558"
+    },
+    {
+      "id": "ae76b5d0eecfcda979ecbafc",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
+      "title": "arena-agachar · quadro 2",
+      "format": "png",
+      "width": 640,
+      "height": 640,
+      "bytes": 348404,
+      "sha256": "2267975653770456e49055e155f79dbb15e413cccb2ef27e9ba389367d369b35",
+      "aliases": [
+        "girl-v2-arena-agachar"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 835,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 80,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 225,
+        "height": 233
+      },
+      "parentId": "4e91503fdc501a6017cb7558"
+    },
+    {
+      "id": "bbfb28225223957236b2c613",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
+      "title": "arena-agachar · quadro 3",
+      "format": "png",
+      "width": 640,
+      "height": 640,
+      "bytes": 348404,
+      "sha256": "2267975653770456e49055e155f79dbb15e413cccb2ef27e9ba389367d369b35",
+      "aliases": [
+        "girl-v2-arena-agachar"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 835,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 80,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 332,
+        "width": 235,
+        "height": 205
+      },
+      "parentId": "4e91503fdc501a6017cb7558"
+    },
+    {
+      "id": "dc50e7b37a2ab6189a624a05",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
+      "title": "arena-agachar · quadro 4",
+      "format": "png",
+      "width": 640,
+      "height": 640,
+      "bytes": 348404,
+      "sha256": "2267975653770456e49055e155f79dbb15e413cccb2ef27e9ba389367d369b35",
+      "aliases": [
+        "girl-v2-arena-agachar"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 835,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 80,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-arena-agachar"
+        },
+        {
+          "file": "src/js/toy-room/ArenaGirlAnimationFrames.js",
+          "line": 1,
+          "type": "runtime",
+          "alias": "metadados resolvidos"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 332,
+        "width": 232,
+        "height": 190
+      },
+      "parentId": "4e91503fdc501a6017cb7558"
+    },
+    {
+      "id": "219850f3ae311ba0611e001f",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/carry.png",
+      "title": "carry · quadro 1",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 274925,
+      "sha256": "626e487796bf93ac0a1a30568648d0ae0bdbd91f9b990849e502f0e1f0ea4377",
+      "aliases": [
+        "girl-v2-carry"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 894,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 78,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 12,
+        "y": 12,
+        "width": 164,
+        "height": 258
+      },
+      "parentId": "41f873d5907a183c44d1b7dd"
+    },
+    {
+      "id": "eb7a8e03f6b691996e0b1199",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/carry.png",
+      "title": "carry · quadro 2",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 274925,
+      "sha256": "626e487796bf93ac0a1a30568648d0ae0bdbd91f9b990849e502f0e1f0ea4377",
+      "aliases": [
+        "girl-v2-carry"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 894,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 78,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 332,
+        "y": 12,
+        "width": 164,
+        "height": 257
+      },
+      "parentId": "41f873d5907a183c44d1b7dd"
+    },
+    {
+      "id": "c3854a2b4e829d6683261c6c",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/carry.png",
+      "title": "carry · quadro 3",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 274925,
+      "sha256": "626e487796bf93ac0a1a30568648d0ae0bdbd91f9b990849e502f0e1f0ea4377",
+      "aliases": [
+        "girl-v2-carry"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 894,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 78,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 652,
+        "y": 12,
+        "width": 165,
+        "height": 257
+      },
+      "parentId": "41f873d5907a183c44d1b7dd"
+    },
+    {
+      "id": "e202c7eeeecd5f3ab660a6b7",
+      "kind": "region",
+      "path": "assets/art/characters/girl-v2/runtime/carry.png",
+      "title": "carry · quadro 4",
+      "format": "png",
+      "width": 1280,
+      "height": 320,
+      "bytes": 274925,
+      "sha256": "626e487796bf93ac0a1a30568648d0ae0bdbd91f9b990849e502f0e1f0ea4377",
+      "aliases": [
+        "girl-v2-carry"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/characters/girl-v2/frames.json",
+          "line": 894,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/manifest.json",
+          "line": 78,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 3,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        },
+        {
+          "file": "src/js/assets/illustratedGirl.js",
+          "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-carry"
+        }
+      ],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/characters/girl-v2/runtime",
+      "region": {
+        "x": 972,
+        "y": 12,
+        "width": 164,
+        "height": 257
+      },
+      "parentId": "41f873d5907a183c44d1b7dd"
     },
     {
       "id": "e1a63a8cb9770e244e068650",
@@ -23198,13 +27574,13 @@
         "variant": "baby:normal",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23222,13 +27598,13 @@
         "variant": "baby:happy",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23246,13 +27622,13 @@
         "variant": "baby:shocked",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23270,13 +27646,13 @@
         "variant": "baby:annoyed",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23294,13 +27670,13 @@
         "variant": "baby:determined",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23318,13 +27694,13 @@
         "variant": "fairy:normal",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23342,13 +27718,13 @@
         "variant": "fairy:happy",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23366,13 +27742,13 @@
         "variant": "fairy:shocked",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23390,13 +27766,13 @@
         "variant": "fairy:annoyed",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23414,13 +27790,13 @@
         "variant": "fairy:determined",
         "preview": "portrait"
       },
-      "sha256": "35d7d7d2f64b53f34f3dd542a95a5de2d0e4c36187a58f11396824adc42563f0",
+      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 27,
+          "line": 28,
           "type": "runtime"
         }
       ],
@@ -23678,7 +28054,7 @@
         "variant": "sem-assets",
         "preview": "toy-fairy"
       },
-      "sha256": "3317e7bcc6efde4f1b4db5107f121acc1516fbd9da92b4d9ce30462bebdae44e",
+      "sha256": "a4fa93efce9f067c054ed6044cfe843498086c1005b38d1c4db3a51ad58c8f17",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [

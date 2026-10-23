@@ -196,3 +196,17 @@ QA da introdução ilustrada e da moldura narrativa superior: `npm run journal:q
 Revisão das cenas pelo seletor real, incluindo repetição e preservação do save: `npm run journal:qa -- test:seletor:cenas:browser` (Chrome isolado em porta livre).
 
 Câmera exclusivamente lateral no quarto escuro: `npm run journal:qa -- test:camera:lateral:browser` (desktop e perfis Android/iPhone em retrato/paisagem, Chrome isolado).
+
+
+Para validar a fada volumétrica e sua luz na perseguição: `npm run journal:qa -- test:bear-chase:fairy:browser`. A automação arquivada inicia Chrome isolado, mede luz/sombra em pixels, testa curvas e três formatos, percorre NORMAL/EASY, verifica orçamento e descarte. Os resultados ficam exclusivamente no diário de IA. Não equivale à homologação de FPS ou aparência no celular físico.
+
+Para validar as superfícies do quarto e a união urso/livros com artes reais, teclado e toque: `npm run journal:qa -- test:contato:browser`. O executor recupera o QA no diretório temporário e registra a execução no diário.
+
+### Menina ilustrada e baú aberto
+
+- `node scripts/prepare-illustrated-girl.js`: reconstrói pranchas de execução e metadados a partir das fontes preservadas.
+- `node scripts/prepare-chase-palette.js` e `node scripts/export-chase-girl.js`: atualizam a paleta rastreável e o GLB de intercâmbio.
+- `npm run journal:qa -- test:menina:ilustrada:browser`: poses, mãos/brinquedos, coleta/save/baú e entrada dos quatro adversários em três formatos.
+- `npm run journal:qa -- test:bear-chase:fairy:browser`: menina 3D, luz/sombras, órbita, orçamento, pausa/descarte e percursos NORMAL/EASY.
+
+Os navegadores usam Chrome isolado; fontes e resultados pertencem ao diário.

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "af5437f5c8e64eeaafa53a5d9595de54",
+  "date": "2026-10-23T14:06:46.538836+00:00",
+  "title": "QA temporário: test:toy-room:story",
+  "files": [
+    {
+      "path": "qa-execucoes/af5437f5c8e64eeaafa53a5d9595de54.log",
+      "sourceId": "f45d55639eb3385122987b116f0bed3b6735dabb2efc8771d3f9facdf8c7a0d0",
+      "sha256": "4c4b05d5448a880c12bffd2397130e2a79815b36d36dbaa3854e52a56438f804",
+      "bytes": 372,
+      "metadataOnly": false
+    }
+  ]
+}

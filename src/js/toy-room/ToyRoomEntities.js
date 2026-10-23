@@ -15,7 +15,7 @@ export class ToyRoomEntities {
       renderToyCarry(ctx, player, options);
       return;
     }
-    const pose = player.isMoving ? 'run' : 'idle';
+    const pose = (options.swordEquipped ? 'sword_' : '') + (player.isMoving ? 'run' : 'idle');
     const frame = Math.floor((player.animTime || 0) * 0.9);
     babyRenderer.renderPose(ctx, options.assets, pose, frame,
       player.x, player.y + 28, 80, player.facing === 'left' ? -1 : 1);

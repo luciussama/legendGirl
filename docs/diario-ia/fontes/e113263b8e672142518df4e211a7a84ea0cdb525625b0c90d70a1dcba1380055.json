@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e113263b8e672142518df4e211a7a84ea0cdb525625b0c90d70a1dcba1380055",
+  "path": "qa-execucoes/e592c3d5872c49b093293127d21c4a55/docs/diario-ia/qa-resultados/camera-lateral/android-paisagem-true-15.png",
+  "sha256": "20ea16b44bf69a99cc2155c6733d79009a02eac739d5bfccd432453174624ca6",
+  "capturedAt": "2026-10-23T13:13:11.297615+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/android-paisagem-true-15.png\", \"sha256\": \"899f1f99ce0e112fe9fd93b95224e6c0afba142258278a3211467c516793331d\", \"bytes\": 279680, \"binaryRetained\": false}"
+}

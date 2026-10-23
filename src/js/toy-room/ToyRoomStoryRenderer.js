@@ -1,3 +1,4 @@
+import { GIRL_V2_FRAMES, GIRL_V2_REFERENCE_HEIGHT } from '../assets/illustratedGirl.js';
 import { dialogueRenderer } from '../ui/DialogueRenderer.js';
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { renderPoeticNarration } from '../narrative/PoeticNarrator.js';
@@ -7,6 +8,10 @@ const SWORD_ATTACK_FRAME_COUNT = 8;
 
 /** Resolve os mesmos oito recortes; não gera nem substitui arte. */
 export function createStoryAttackFrames(assets) {
+  const illustrated = assets?.get('girl-v2-arena-acoes');
+  if (illustrated) return [0,1,1,3,3,2,4,4].map(index => ({
+    image: illustrated, illustrated: GIRL_V2_FRAMES.sword_attack[index]
+  }));
   return Array.from({ length: SWORD_ATTACK_FRAME_COUNT }, (_, index) =>
     assets?.getRegion('toy-room-sword-attack-sheet', {
       x: index * SWORD_ATTACK_FRAME_SIZE.width,
@@ -60,6 +65,13 @@ export function renderStoryAttackSprite(ctx, { state, player, attackFrames, atta
   const frame = attackFrames[frameIndex];
   if (!frame) return false;
 
+  if (frame.illustrated) {
+    const f = frame.illustrated, scale = 80 / GIRL_V2_REFERENCE_HEIGHT;
+    ctx.save(); ctx.translate(player.x, player.y + 28);
+    if (state.attackDirection < 0) ctx.scale(-1, 1);
+    ctx.drawImage(frame.image, f.x, f.y, f.w, f.h, -f.anchorX * scale, -f.anchorY * scale, f.w * scale, f.h * scale);
+    ctx.restore(); return true;
+  }
   const width = 72;
   const height = 96;
   ctx.save();
@@ -73,6 +85,8 @@ export function renderStoryAttackSprite(ctx, { state, player, attackFrames, atta
 export function renderStoryHeldObject(ctx, { state, player, attackFrames, attackDuration }) {
   if (!state.swordEquipped && state.investigationStage !== 'PICKUP') return;
   if (renderStoryAttackSprite(ctx, { state, player, attackFrames, attackDuration })) return;
+  // Nas novas poses a espada já está pintada nas mãos, inclusive em repouso/corrida.
+  if (attackFrames.some(frame => frame?.illustrated)) return;
 
   const elapsed = state.attackElapsed > 0
     ? attackDuration - state.attackElapsed

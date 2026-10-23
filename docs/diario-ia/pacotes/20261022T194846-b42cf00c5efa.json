@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T194846-b42cf00c5efa",
+  "date": "2026-10-22T19:48:46.170396+00:00",
+  "title": "Fada orbital: núcleo luminoso pequeno, asas maiores, quarenta fases de voo e luz acompanhando a órbita",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/fada-3d-20261022/navegador.mjs",
+      "sourceId": "056c174e245e26d1ef52d717a9e4ec927b6440b731bc9683fa4fabd3a9a342a1",
+      "sha256": "2c8e80c075b96a4e014ea14d2c07dbc54922e2e416debb472b66f1e210f23594",
+      "bytes": 3603,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fada-3d-20261022/analise.js",
+      "sourceId": "dee89590521f104bd27786507f2fad46fec229350eca575970f040baec888cbd",
+      "sha256": "60eccc99d6306ac87d22814c98950aad42e627ab91feee5096ab0c7cfde64f7e",
+      "bytes": 6840,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:fairy:browser": "node docs/diario-ia/qa/fada-3d-20261022/navegador.mjs"
+  }
+}

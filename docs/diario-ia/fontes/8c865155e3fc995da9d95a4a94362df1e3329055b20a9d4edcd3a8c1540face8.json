@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8c865155e3fc995da9d95a4a94362df1e3329055b20a9d4edcd3a8c1540face8",
+  "path": "qa-execucoes/82005a40b4b549509312a76bb67833f6/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-pegadas.png",
+  "sha256": "229c77e65a8079a0d054743c9316fda4a09eee31c5f85c4f049b84a1b74863df",
+  "capturedAt": "2026-10-23T13:11:22.500839+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-pegadas.png\", \"sha256\": \"fde0a5a0b34c2f7b18f8f870e4478bd3efc4b88935c69e8d30ec6c255fdeebfc\", \"bytes\": 335171, \"binaryRetained\": false}"
+}

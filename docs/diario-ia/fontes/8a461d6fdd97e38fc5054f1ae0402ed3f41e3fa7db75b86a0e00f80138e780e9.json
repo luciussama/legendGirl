@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8a461d6fdd97e38fc5054f1ae0402ed3f41e3fa7db75b86a0e00f80138e780e9",
+  "path": "qa-execucoes/d578acbe00fa412dabca2eccc7cb4aac/docs/diario-ia/qa-resultados/fada-3d/jogo-1280-338.png",
+  "sha256": "1c98b1b7f20b80ae5bb1233d85d4749b8a0331cbc9ff837c306931714762901e",
+  "capturedAt": "2026-10-23T13:09:34.971735+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:fairy:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/fada-3d/jogo-1280-338.png\", \"sha256\": \"51d9eb7e7d05e4b8c29177be8c8677afd0bb33c8b1e6b1600d41339d5b5d7483\", \"bytes\": 1548192, \"binaryRetained\": false}"
+}

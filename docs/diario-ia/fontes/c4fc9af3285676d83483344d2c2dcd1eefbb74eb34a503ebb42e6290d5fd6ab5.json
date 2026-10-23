@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c4fc9af3285676d83483344d2c2dcd1eefbb74eb34a503ebb42e6290d5fd6ab5",
+  "path": "qa-execucoes/bc5cbde922fb4f1ea33232ab01680e4a/docs/diario-ia/qa-resultados/camera-lateral/desktop-false-20.png",
+  "sha256": "418f3ab67ff39d115266b310f8282b6606c69ec519ab9b91940ded13311c0928",
+  "capturedAt": "2026-10-23T12:18:20.937684+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/desktop-false-20.png\", \"sha256\": \"af1acc9925c8dd028e23744a83ba37ab168893f9d32c471eb5a5c557a39bc7de\", \"bytes\": 396278, \"binaryRetained\": false}"
+}

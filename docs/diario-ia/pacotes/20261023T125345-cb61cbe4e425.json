@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T125345-cb61cbe4e425",
+  "date": "2026-10-23T12:53:45.520200+00:00",
+  "title": "Escala do atlas anterior: mock resolve apenas a chave oficial, sem fingir conter as novas pranchas",
+  "files": [
+    {
+      "path": "scripts/test-protagonist-scale.js",
+      "sourceId": "0248d874a7aad85f893e1c72f8c38643b3da57a3f5651d71b3a9ef577478677f",
+      "sha256": "18ef6739f908539150b57ed210ce9363cf4686769c769ccef52f31d4f4a8d776",
+      "bytes": 1404,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T140742-cad509bc2489",
+  "date": "2026-10-23T14:07:42.702149+00:00",
+  "title": "Identificação da captura inspecionada da posição da espada",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/espada-posicao-evidencia-20261023.json",
+      "sourceId": "f54e3969259609b45ed36fc56b80cee9e7ea212ddfa3c04b4ef19d6ff672f37b",
+      "sha256": "cfffe7d7dc1124f09b4f79ee8e0fb7910423597341bf2598b17b1232c886d787",
+      "bytes": 295,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

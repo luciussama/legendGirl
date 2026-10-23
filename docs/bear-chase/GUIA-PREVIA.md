@@ -38,14 +38,22 @@ conservam o apoio dos sapatos; a proximidade é ajustada ao formato da tela.
 O piso usa o mesmo recorte 186×48 do quarto, com escala das tábuas preservada.
 
 O quarto usa geometria 3D e os materiais ilustrados atuais. A menina agora tem malhas
-volumétricas, vestido, rosto, rabo de cavalo único e articulações hierárquicas próprias.
+volumétricas, vestido creme bordado com detalhes rosa, rosto, duas marias-chiquinhas com laços e articulações hierárquicas próprias.
 Caminhada, corrida, repouso e tropeço são poses calculadas sem modificar a simulação.
 A corrida comprime o corpo no apoio e o recupera entre passadas; tronco e braços
 contrabalançam o quadril, enquanto quadril, joelho e tornozelo mantêm os pés junto
 ao piso. Cabelo e saia respondem com movimento secundário próprio. Esses ajustes
 são apenas de apresentação: não alteram deslocamento, colisões ou dificuldade.
-O urso agora tem volume e atuação de fuga; a fada conserva a ilustração com
-acompanhamento atrás/acima da cabeça. A aprovação humana da
+O urso tem volume e atuação de fuga. `ChaseFairyModel` apresenta um pequeno
+núcleo branco/ciano com aura azul, quatro asas peroladas maiores que o núcleo e
+um rastro curto de partículas instanciadas. A referência atual enviada pelo usuário
+é a fada luminosa de Ocarina of Time; não há corpo humanoide, rosto ou varinha.
+Ela circula dos dois lados da menina, à frente e atrás, com variação de altura,
+em vez de permanecer sobre a cabeça. A órbita e as asas usam o relógio salvo;
+pausa/restauração não acumulam movimento extra. A luz acompanha o núcleo.
+Asas, esfera e aura têm volume real; não é usado sprite no WebGL.
+As cenas ilustradas de entrada mantêm sua arte própria.
+ A aprovação humana da
 prévia anterior não homologa automaticamente o novo modelo da menina.
 
 `Chase.mp3` começa na arrancada e diminui no alcance. Os passos usam os WAVs fornecidos.
@@ -76,6 +84,7 @@ Os grupos densos recebem escala uniforme e centro visual alinhado à colisão, s
 | `ChaseAudio` | Arquivos locais, ganho, pausa, passos e posição musical |
 | `ChaseRenderer3D` | Composição do percurso, câmera e descarte GPU |
 | `ChaseIntroRenderer` | Atuação ilustrada anterior à largada e corte para o 3D |
+| `ChaseFairyModel` | Núcleo de luz volumétrico, asas articuladas e voo orbital |
 | `ChaseGirlModel` | Modelagem volumétrica, paleta e pivôs da menina |
 | `ChaseGirlAnimation` | Apoio dos pés, porte da espada, desvio, cabelo e saia |
 | `ChaseGirlPalette` | Paleta regional rastreável ao sprite de corrida |
@@ -116,18 +125,11 @@ Web Audio ou Three.js. Desenho e som consomem estado/eventos sem decidir dano.
 Resultados e fontes de QA ficam no diário de IA. Emulação e avanço controlado não
 homologam dificuldade humana, Safari ou aparelhos físicos.
 
-## Modelo 3D da protagonista — revisão 3
+## Modelo 3D da protagonista — revisão 4
 
-A primeira versão foi reprovada pelo usuário por paleta e identidade. O usuário considerou a revisão 2 “75% bom”; a revisão 3 ajusta braços, mangas,
-franzido e rabo de cavalo e recebeu aprovação parcial, sem homologação completa: vestido salmão com regiões creme, corpo compacto, mechas
-curvas, cabeça e rosto revistos e espada de madeira portada à frente. Não presumir
-que as vistas traseiras sejam fontes aprovadas; são interpretações novas.
+A revisão atual acompanha a menina ilustrada girl-v2: vestido creme inteiro, barra e faixa rosa, mangas bufantes, laço nas costas, bordado floral, botas marrons e duas marias-chiquinhas curtas com laços. A cabeça foi ajustada mantendo o rig compacto e o apoio das pernas. As costas continuam uma interpretação em volume; não presumir homologação humana de todas as vistas.
 
-`ChaseGirlPalette.js` e `assets/models/bear-chase/paleta-menina.json` vêm de
-`node scripts/prepare-chase-palette.js`: cada região tem coordenadas, mediana 7×7,
-limiar de alfa e hash da imagem atual da arena. As amostras não são uma declaração
-de paleta oficial de todas as fases. Iluminação branca controlada e sombras por
-vértice procuram preservar os tons sem o amarelamento da versão anterior.
+`ChaseGirlPalette.js` e `assets/models/bear-chase/paleta-menina.json` vêm de `node scripts/prepare-chase-palette.js`: regiões do novo `girl-v2/source/locomocao.png`, mediana 7×7, limiar de alfa e hash. A guarda azul da espada conserva seu material anterior, explicitamente registrado. Detalhes rígidos do mesmo material são agrupados por articulação; 120 pétalas de baixa tesselação usam uma única malha instanciada. Dois rabos e pontas recebem movimento secundário sem alterar a simulação. A fada orbital e os dois mapas de sombra conservam seu contrato.
 
 O construtor gera malhas locais; o GLB é intercâmbio em pose neutra, regenerado por
 `node scripts/export-chase-girl.js`. A animação não está embutida no GLB. O renderer
@@ -150,12 +152,6 @@ A fonte do teste `test:bear-chase:comparison:browser` verifica paleta, apoio,
 desvio, trem sem cartão, fada atrás, volume do urso e ausência de erros na página.
 O teste não certifica identidade artística nem aparelhos físicos.
 
-
-A revisão 3 encurta o braço acima do cotovelo (0,18 → 0,15 unidade), mantém o
-antebraço em 0,17 e ajusta a mão e o porte da espada. Mangas claras bufantes têm
-gomos e punho salmão; a saia tem franzido geométrico e sombras suaves perto da
-cintura. O rabo único ganhou comprimento, projeção lateral, mechas e pontas
-articuladas para permanecer legível na câmera traseira. Paleta regional preservada.
 
 ## Catálogo completo e percurso contínuo — 20/10/2026
 
@@ -225,34 +221,42 @@ não homologa dificuldade humana, Safari ou aparelhos físicos. A integração d
 `ChaseLighting` compõe preenchimento hemisférico, luz refletida discreta,
 projetores das janelas e luz principal à frente do urso. Piso, paredes, rodapés,
 teto e tapetes respondem à luz. Menina, urso, brinquedos e móveis recebem e
-projetam sombras; a fada ilustrada mantém sua apresentação luminosa.
+projetam sombras. A fadinha tem núcleo branco/ciano e aura azul volumétrica;
+um `SpotLight` amplo junto ao núcleo ilumina a menina e os objetos próximos.
+A cabeça, os braços, a roupa e os brinquedos participam das sombras reais dessa luz.
+O núcleo e as asas não bloqueiam a própria fonte luminosa.
 
 As janelas iluminam regiões fixas da sala com entrada/saída suave; sua máscara
 projeta o desenho das vidraças. A luz principal acompanha o traçado à frente do
 urso, projetando sua sombra para trás. O preenchimento indireto é aproximado por
 luzes de ambiente/rebatimento em tempo real, sem cálculo físico de iluminação global.
 
-Somente a luz principal e a janela dominante geram sombras simultaneamente.
-Mapas: principal 2048² e janelas 1024² em paisagem; 1024²/512² em retrato.
-Até quatro mapas podem ficar alocados durante o percurso, mesmo com dois ativos.
+Somente a luz principal e a fadinha geram sombras simultaneamente. A sombra
+da janela dominante foi substituída pela luz da fada, preservando dois passes.
+As janelas conservam sua iluminação e máscara das vidraças. Não há sombra cúbica
+de luz pontual, bloom de tela inteira ou novo framebuffer de pós-processamento.
+Mapas: principal 2048² e fada 1024² em paisagem; 1024²/512² em retrato.
+São dois mapas alocados; a luz local tem alcance de 7,5 unidades e filtragem PCF.
 O controlador libera esses recursos ao encerrar a perseguição. O teto não bloqueia
 a luz global de apresentação, mas participa da iluminação recebida.
 
-`npm run journal:qa -- test:bear-chase:lighting` verifica sombras em pixels reais,
-direção da luz/sombra do urso, três formatos, continuidade das janelas e descarte.
+`npm run journal:qa -- test:bear-chase:fairy:browser` verifica luz e sombras em pixels
+reais da menina/cena, volume da fada, três formatos, curvas, pausa, orçamento e descarte.
+Os testes históricos de iluminação/janela conservam o contrato anterior e suas evidências;
+a versão atual dá prioridade à sombra da fada.
 O limite de chamadas de desenho é uma referência interna de desempenho; não
 equivale a um limite do navegador nem certifica FPS em aparelhos reais.
 
 A revisão das curvas elevou a luz principal para evitar sombras rasantes das
 paredes sobre toda a pista. As janelas têm alcance local de 18 unidades e máscara
-permanente; a força de sua sombra diminui até zero no ponto médio entre janelas,
-antes de passar à próxima. O volume do mapa principal cobre a área próxima de
+permanente; sua intensidade entra e sai suavemente sem trocar um mapa de sombras.
+A sombra local da fada muda suavemente de direção conforme ela circula ao redor da menina. O volume do mapa principal cobre a área próxima de
 jogo, evitando incluir objetos distantes sem utilidade nessa projeção.
 
 `ChaseLighting.js` documenta cada método, seus parâmetros, propriedade dos recursos
-e efeitos dos valores de ajuste. `test:bear-chase:shadows:gameplay:browser`, no
-acervo de QA, percorre o controlador completo com entradas automatizadas e verifica
-transições, cobertura próxima do mapa e custo de desenho.
+e efeitos dos valores de ajuste. A regressão da fada percorre o controlador completo
+com entradas automatizadas no NORMAL e EASY. Chamadas de desenho e resolução de mapas
+são controles de orçamento; desempenho em GPU móvel física ainda exige medição no aparelho.
 
 
 ## Urso articulado
