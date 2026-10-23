@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "c362c883874d681ba88a4847b24ad8ec9f66ab97d732a4dbf46ecc1376f84462",
+  "path": "qa-execucoes/bc40019bd1114e749473da5450440338.log",
+  "sha256": "38186c02824337029c97286a8b6c8707c4dad66eccdae4b43cd9a6d45c498012",
+  "capturedAt": "2026-10-23T19:46:22.731434+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs\n\nPROGRESSO NORMAL 0 120 entrada 3\nPROGRESSO NORMAL 300 52993 trecho-7-gramado-relevo-3 3\n{\"difficulty\":\"NORMAL\",\"irregular\":false,\"stage\":\"COMPLETE\",\"minutes\":7.9977777777759815,\"retries\":0,\"x\":84490.79999995606,\"goal\":84490,\"hp\":3,\"recovered\":0,\"jumps\":262,\"defeated\":14}\nPROGRESSO EASY 0 120 entrada 6\nPROGRESSO EASY 300 52839 trecho-7-gramado-relevo-3 6\n{\"difficulty\":\"EASY\",\"irregular\":false,\"stage\":\"COMPLETE\",\"minutes\":8.118611111109205,\"retries\":0,\"x\":84490.13499995577,\"goal\":84490,\"hp\":6,\"recovered\":1,\"jumps\":263,\"defeated\":13}\n"
+}

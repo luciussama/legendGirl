@@ -8,7 +8,7 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:3,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:4,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{x:120,y:C.ground,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
@@ -42,18 +42,19 @@ export function retryGarden(s,difficulty=s.difficulty){
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
   if(saved.version===1){if(saved.stage==='COMPLETE'){out.stage='COMPLETE';Object.assign(out.player,{x:C.goal,y:C.ground,support:'arvore'});}return out;}
-  // A revisão plana v2 retoma o checkpoint no relevo novo, preservando inimigos vencidos.
-  if(saved.version===2){
-    if(!GARDEN_LEGACY_CHECKPOINTS.has(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado antigo do jardim incompatível.');
-    out.stage=saved.stage==='COMPLETE'?'COMPLETE':saved.stage==='INTRO'?'INTRO':'RUNNING';out.checkpoint=GARDEN_LEGACY_CHECKPOINTS.get(saved.checkpoint);out.hp=clamp(Math.floor(saved.hp),1,difficulty==='EASY'?6:3);
+  // As revisões longas v2/v3 retomam o setor equivalente no mapa de oito minutos, preservando inimigos vencidos.
+  if(saved.version===2||saved.version===3){
+    if(!GARDEN_LEGACY_CHECKPOINTS.has(`${saved.version}:${saved.checkpoint}`)||!Array.isArray(saved.enemies))throw new TypeError('Estado antigo do jardim incompatível.');
+    out.stage=saved.stage==='COMPLETE'?'COMPLETE':saved.stage==='INTRO'?'INTRO':'RUNNING';out.checkpoint=GARDEN_LEGACY_CHECKPOINTS.get(`${saved.version}:${saved.checkpoint}`);out.hp=clamp(Math.floor(saved.hp),1,difficulty==='EASY'?6:3);
     const x=out.stage==='COMPLETE'?C.goal:out.checkpoint,ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&x>=p.x&&x<p.x+p.w);
     Object.assign(out.player,{x,y:ground.y,support:ground.id,terrain:ground.type});out.safeGround=ground.id;out.trail=[ground.id];Object.assign(out.fairy,{x,y:ground.y-135,progressX:x});
-    out.enemies=out.enemies.map((e,i)=>{const old=saved.enemies[i];if(old?.id!==e.id||!Number.isInteger(old.hp)||old.hp<0||old.hp>e.hp||old.alive!==(old.hp>0))throw new TypeError('Inimigo antigo inválido.');return{...e,hp:old.hp,alive:old.alive};});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
+    for(const old of saved.enemies)if(!old||typeof old.id!=='string'||!Number.isInteger(old.hp)||old.hp<0||old.hp>2||old.alive!==(old.hp>0))throw new TypeError('Inimigo antigo inválido.');
+    out.enemies=out.enemies.map(e=>{const legacyId=e.id.replace(/^trecho-(\d+)/,(_,n)=>'trecho-'+(Math.floor(Number(n)/2)*5+(Number(n)%2?3:0))),old=saved.enemies.find(v=>v.id===legacyId);return old&&old.hp<=e.hp?{...e,hp:old.hp,alive:old.alive}:e;});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
   }
   if(saved.player.x<0||saved.player.x>C.width||Math.abs(saved.player.y)>10000||!GARDEN_CHECKPOINTS.includes(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado do jardim incompatível.');
   out.stage=saved.stage;out.time=saved.time;out.age=saved.age;out.hp=clamp(Math.floor(saved.hp),0,difficulty==='EASY'?6:3);out.checkpoint=saved.checkpoint;

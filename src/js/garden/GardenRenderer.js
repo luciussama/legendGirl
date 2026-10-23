@@ -4,6 +4,7 @@ import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
 import {renderPoeticNarration} from '../narrative/PoeticNarrator.js';
 import {gardenControls} from './GardenInput.js';
 const root=new URL('../../../assets/art/garden/',import.meta.url);
+const surfaceOffset={soil:18,grass:90,gravel:10,wood:10};
 const fairyFile='../toy-room/stage3/illustrated-fairy-v1.png';
 // A pintura encosta nas margens; os limites fatais continuam em GARDEN_WATERS.
 const waterPaint=GARDEN_WATERS.map(water=>{
@@ -16,7 +17,7 @@ const waterPaint=GARDEN_WATERS.map(water=>{
 });
 /** Ilustrações de produção, sem desenhar superfícies auxiliares de contato. */
 export class GardenRenderer {
-  constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images=new Map();this.patterns=new Map();this.disposed=false;}
+  constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images=new Map();this.patterns=new Map();this.sceneryItems=this.sceneryLayout();this.disposed=false;}
   async load(){
     const response=await fetch(new URL('manifest.json',root));if(!response.ok)throw Error('Manifesto do jardim indisponível.');
     const manifest=await response.json(),required=['cenario-v1.png',...Object.values(GARDEN_ART.sets).map(s=>s.file),fairyFile];
@@ -48,34 +49,48 @@ export class GardenRenderer {
     for(let y=bottom;y>=p.y-10;y-=28)ctx.lineTo(p.x+(joinedLeft?0:Math.sin(y*.09+p.x)*3+3),y);
     ctx.closePath();return{joinedLeft,joinedRight};
   }
-  /** O miolo termina antes das pontas: seu alfa não é preenchido por outra repetição. */
-  groundSurface(ctx,p,joinedLeft,joinedRight){
-    let setName='objetos',index=0,y=p.y-12,h=115;
-    if(p.type==='gravel'){setName='ambiente';index=2;y=p.y-27;h=110;}
-    else if(p.type==='grass'){setName='ambiente';index=1;y=p.y-90;h=110;}
-    else if(p.type==='wood'){index=1;y=p.y-10;h=80;}
-    const set=GARDEN_ART.sets[setName],frame=set.frames[index],image=this.images.get(set.file);if(!image)return;
-    const cap=32,start=p.x+(joinedLeft?0:cap),end=p.x+p.w-(joinedRight?0:cap);
-    ctx.save();ctx.beginPath();ctx.rect(start,y,Math.max(0,end-start),h);ctx.clip();
-    for(let x=Math.floor(p.x/220)*220;x<p.x+p.w;x+=220)ctx.drawImage(image,frame.x+frame.w*.2,frame.y,frame.w*.6,frame.h,x,y,224,h);
-    ctx.restore();
-    for(const [open,side]of [[!joinedLeft,-1],[!joinedRight,1]])if(open)ctx.drawImage(image,side<0?frame.x:frame.x+frame.w*.8,frame.y,frame.w*.2,frame.h,side<0?p.x:p.x+p.w-cap,y,cap,h);
+  /** Recorte ilustrado com raízes dissolvidas na terra, sem placas arredondadas no subsolo. */
+  surfaceTile(type,part='middle'){
+    const key='surface-'+type+'-'+part;if(this.patterns.has(key))return this.patterns.get(key);
+    const setName=type==='grass'||type==='gravel'?'ambiente':'objetos',index=type==='grass'?1:type==='gravel'?2:type==='wood'?1:0;
+    const set=GARDEN_ART.sets[setName],f=set.frames[index],image=this.images.get(set.file);if(!image)return null;
+    const tile=document.createElement('canvas'),h=type==='wood'?80:type==='soil'?115:110;tile.width=part==='middle'?220:32;tile.height=h;
+    const ctx=tile.getContext('2d'),sx=f.x+f.w*(part==='left'?0:part==='right'?.8:.2),sw=f.w*(part==='middle'?.6:.2);
+    if(type==='gravel')for(let i=0;i<3;i++)ctx.drawImage(image,f.x+f.w*.2,f.y,f.w*.2,f.h,i*tile.width/3,0,tile.width/3,h);
+    else ctx.drawImage(image,sx,f.y,sw,f.h,0,0,tile.width,h);
+    const fade=ctx.createLinearGradient(0,0,0,h);fade.addColorStop(0,'#fff');fade.addColorStop(type==='grass'?.85:.4,'#fff');fade.addColorStop(1,'rgba(255,255,255,0)');ctx.globalCompositeOperation='destination-in';ctx.fillStyle=fade;ctx.fillRect(0,0,tile.width,h);
+    this.patterns.set(key,tile);return tile;
   }
-  terrain(ctx,p,bottom){
+  /** Apenas a pintura acompanha o apoio físico; a câmera e os saltos permanecem intactos. */
+  groundSurface(ctx,p,joinedLeft,joinedRight){
+    const tile=this.surfaceTile(p.type);if(!tile)return;const y=p.y-surfaceOffset[p.type],cap=24;
+    const start=p.x+(joinedLeft?0:cap),end=p.x+p.w-(joinedRight?0:cap);
+    ctx.save();ctx.beginPath();ctx.rect(start,y,Math.max(0,end-start),tile.height);ctx.clip();
+    for(let x=Math.floor(p.x/220)*220;x<p.x+p.w;x+=220)ctx.drawImage(tile,x,y,220,tile.height);
+    ctx.restore();
+    for(const [open,side]of [[!joinedLeft,-1],[!joinedRight,1]])if(open){const endTile=this.surfaceTile(p.type,side<0?'left':'right');ctx.drawImage(endTile,side<0?p.x:p.x+p.w-cap,y,cap,tile.height);}
+  }
+  /** A massa de terra é pintada de uma vez, eliminando frestas de antialias entre patamares. */
+  terrainBodies(ctx,platforms,bottom){
+    for(const wood of [false,true]){
+      const grounds=platforms.filter(p=>p.ground&&(p.type==='wood')===wood);if(!grounds.length)continue;
+      ctx.save();ctx.beginPath();for(const p of grounds)this.groundOutline(ctx,p,bottom);ctx.clip();ctx.beginPath();
+      for(const p of grounds){ctx.moveTo(p.x-.6,p.y+2);ctx.lineTo(p.x+p.w+.6,p.y+2);ctx.lineTo(p.x+p.w+.6,bottom+20);ctx.lineTo(p.x-.6,bottom+20);ctx.closePath();}
+      ctx.clip();ctx.fillStyle=wood?'#89532f':'#805735';ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);
+      const pattern=this.groundPattern(wood?'wood':'soil');if(pattern){ctx.globalAlpha=wood?.55:.07;ctx.fillStyle=pattern;ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);}ctx.restore();
+    }
+  }
+  terrain(ctx,p,bottom,body=true){
     if(p.ground){
-      ctx.save();ctx.beginPath();const {joinedLeft,joinedRight}=this.groundOutline(ctx,p,bottom);ctx.clip();
-      // O corpo contínuo começa sob a superfície, sem frestas de fundo entre os recortes.
-      ctx.fillStyle=p.type==='wood'?'#89532f':'#91633f';ctx.fillRect(p.x,p.y+8,p.w,bottom-p.y);
-      const pattern=this.groundPattern(p.type==='wood'?'wood':'soil');
-      if(pattern){ctx.save();ctx.globalAlpha=p.type==='wood'?.9:.22;ctx.fillStyle=pattern;ctx.fillRect(p.x,p.y+8,p.w,bottom-p.y);ctx.restore();}
-      this.groundSurface(ctx,p,joinedLeft&&[...GARDEN_PLATFORM_BY_ID.values()].some(v=>v.ground&&v.y===p.y&&Math.abs(v.x+v.w-p.x)<1),joinedRight&&[...GARDEN_PLATFORM_BY_ID.values()].some(v=>v.ground&&v.y===p.y&&Math.abs(v.x-p.x-p.w)<1));ctx.restore();
-    }else{if(p.type==='stone')this.rockFoot(ctx,p);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='wood'?8:6),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
+      if(body)this.terrainBodies(ctx,[p],bottom);
+      ctx.save();ctx.beginPath();const {joinedLeft,joinedRight}=this.groundOutline(ctx,p,bottom);ctx.clip();this.groundSurface(ctx,p,joinedLeft,joinedRight);ctx.restore();
+    }else{if(p.type==='stone')this.rockFoot(ctx,p);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='wood'?8:p.type==='stone'?3:6),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
   }
 
   /** O pé rochoso fica submerso; o tampo e sua colisão permanecem na altura original. */
   rockFoot(ctx,p){
     const base=C.waterY;ctx.save();ctx.beginPath();ctx.moveTo(p.x+p.w*.12,p.y+38);ctx.lineTo(p.x+p.w*.88,p.y+38);ctx.lineTo(p.x+p.w*.83,p.y+77);ctx.lineTo(p.x+p.w*.9,base-15);ctx.lineTo(p.x+p.w*.72,base);ctx.lineTo(p.x+p.w*.25,base);ctx.lineTo(p.x+p.w*.13,base-20);ctx.lineTo(p.x+p.w*.18,p.y+78);ctx.closePath();ctx.clip();
-    ctx.fillStyle='#74786d';ctx.fillRect(p.x,p.y+38,p.w,base-p.y);const pattern=this.groundPattern('rock');if(pattern){ctx.fillStyle=pattern;ctx.fillRect(p.x,p.y+38,p.w,base-p.y);}ctx.restore();
+    ctx.fillStyle='#74786d';ctx.fillRect(p.x,p.y+38,p.w,base-p.y);const pattern=this.groundPattern('rock');if(pattern){ctx.globalAlpha=.32;ctx.fillStyle=pattern;ctx.fillRect(p.x,p.y+38,p.w,base-p.y);}ctx.restore();
   }
   /** Água de primeiro plano envolve bases/margens em vez de deixar rochas flutuando. */
   waterFront(ctx,s,left,right,bottom,platforms){
@@ -91,25 +106,19 @@ export class GardenRenderer {
     }
     ctx.restore();
   }
-  /** Pequenos tufos integram a troca de material sem traços sobre a superfície de apoio. */
+  /** A troca de material usa o mesmo recorte dissolvido, sem reintroduzir placas de raízes. */
   groundJoins(ctx,platforms){
     for(const p of platforms.filter(p=>p.ground)){
       const previous=[...GARDEN_PLATFORM_BY_ID.values()].find(v=>v.ground&&Math.abs(v.x+v.w-p.x)<1);if(!previous||previous.type===p.type||previous.y!==p.y)continue;
-      const type=previous.type,setName=type==='grass'||type==='gravel'?'ambiente':'objetos',index=type==='grass'?1:type==='gravel'?2:type==='wood'?1:0;
-      const set=GARDEN_ART.sets[setName],f=set.frames[index],image=this.images.get(set.file);if(!image)continue;
-      const y=p.y-(type==='grass'?90:type==='gravel'?27:type==='wood'?10:12),h=type==='wood'?80:type==='soil'?115:110;
-      // A textura anterior se dissolve em tufos sobre os primeiros centímetros da nova.
-      for(let i=0;i<12;i++){ctx.save();ctx.globalAlpha=1-i/12;ctx.beginPath();ctx.rect(p.x+i*5,p.y-145,5,270);ctx.clip();for(let x=Math.floor(p.x/220)*220;x<p.x+65;x+=220)ctx.drawImage(image,f.x+f.w*.2,f.y,f.w*.6,f.h,x,y,224,h);ctx.restore();}
+      const tile=this.surfaceTile(previous.type);if(!tile)continue;const y=p.y-surfaceOffset[previous.type];
+      for(let i=0;i<12;i++){ctx.save();ctx.globalAlpha=1-i/12;ctx.beginPath();ctx.rect(p.x+i*5,p.y-145,5,270);ctx.clip();for(let x=Math.floor(p.x/220)*220;x<p.x+65;x+=220)ctx.drawImage(tile,x,y);ctx.restore();}
     }
   }
-
-  /** Vegetação contínua em primeiro plano, translúcida e ancorada ao mundo. */
+  /** Vegetação contínua, translúcida e fixa no mundo, inclusive durante o salto. */
   grassFront(ctx,s,platforms){
-    const set=GARDEN_ART.sets.ambiente,f=set.frames[1],image=this.images.get(set.file);if(!image)return;
     for(const ground of platforms.filter(v=>v.ground&&v.type==='grass')){
       ctx.save();ctx.globalAlpha=.45;ctx.beginPath();ctx.rect(ground.x,ground.y-90,ground.w,98);ctx.clip();
-      const all=[...GARDEN_PLATFORM_BY_ID.values()];
-      const joinedLeft=all.some(v=>v.ground&&v!==ground&&v.y===ground.y&&Math.abs(v.x+v.w-ground.x)<1),joinedRight=all.some(v=>v.ground&&v!==ground&&v.y===ground.y&&Math.abs(v.x-ground.x-ground.w)<1);
+      const all=[...GARDEN_PLATFORM_BY_ID.values()],joinedLeft=all.some(v=>v.ground&&v!==ground&&Math.abs(v.x+v.w-ground.x)<1),joinedRight=all.some(v=>v.ground&&v!==ground&&Math.abs(v.x-ground.x-ground.w)<1);
       this.groundSurface(ctx,ground,joinedLeft,joinedRight);ctx.restore();
     }
   }
@@ -121,19 +130,25 @@ export class GardenRenderer {
     }
   }
 
-  scenery(ctx,s,left,right){
-    // Plantas, árvores e insetos decorativos têm posições fixas no mundo e não colidem.
-    const section=gardenSection(s.player.x),chapter=section.chapter,palettes=[['#f5dc8b','#e887a2'],['#f8f0b6','#f2b3c0'],['#b9a6da','#d6c7ed'],['#fff0ad','#e5a5ac'],['#aad5b1','#e2b9da'],['#f5c68b','#df93c3'],['#d7b4da','#f9e5a5']];
-    for(let cell=Math.floor(left/290);cell<=Math.ceil(right/290);cell++){
-      const x=cell*290+Math.sin(cell*9)*70,platform=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&x>=p.x&&x<p.x+p.w);if(!platform)continue;
-      const y=platform.y-7;
-      if(cell%7===0&&x>1500&&x<C.goal-650){ctx.save();ctx.globalAlpha=.82;this.prop(ctx,8,x-130,y-310,270,325);ctx.restore();}
-      for(let j=0;j<3;j++){
-        const px=x+j*12,py=y-8-(cell+j)%4*3;ctx.strokeStyle='#658648';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(px,y+2);ctx.lineTo(px,py);ctx.stroke();ctx.fillStyle=palettes[chapter%7][j%2];
-        for(let petal=0;petal<5;petal++){ctx.beginPath();ctx.ellipse(px+Math.cos(petal*1.26)*4,py+Math.sin(petal*1.26)*4,3,4,petal*1.26,0,Math.PI*2);ctx.fill();}ctx.fillStyle='#d8a348';ctx.beginPath();ctx.arc(px,py,2,0,Math.PI*2);ctx.fill();
+  /** Toda a base da decoração deve caber em um único patamar; altura cabe na paisagem móvel. */
+  sceneryLayout(){
+    const grounds=[...GARDEN_PLATFORM_BY_ID.values()].filter(p=>p.ground),trees=[],flowers=[],butterflies=[];
+    for(let cell=0;cell*290<C.goal-650;cell++){
+      const x=cell*290+Math.sin(cell*9)*70,p=grounds.find(p=>x>=p.x&&x<p.x+p.w);if(!p)continue;
+      if(cell%7===0&&x>1500&&p.w>=200){
+        const width=Math.min(234,p.w-32),height=width*446/417,cx=Math.max(p.x+16+width/2,Math.min(p.x+p.w-16-width/2,x));
+        if(!trees.length||cx-width/2>trees.at(-1).x+trees.at(-1).w+100)trees.push({x:cx-width/2,y:p.y+4-height,w:width,h:height,groundId:p.id});
       }
-      if(cell%3===0){const bx=x+Math.sin(s.time*.7+cell)*28,by=y-120-Math.cos(s.time+cell)*22;ctx.fillStyle=palettes[chapter%7][1];ctx.beginPath();ctx.ellipse(bx-4,by,5,8*Math.abs(Math.sin(s.time*5))+.5,-.5,0,Math.PI*2);ctx.ellipse(bx+4,by,5,8*Math.abs(Math.sin(s.time*5))+.5,.5,0,Math.PI*2);ctx.fill();}
+      for(let j=0;j<3;j++){const px=x+j*12;if(px-8<p.x||px+8>p.x+p.w)continue;flowers.push({x:px,y:p.y+1,height:12+(cell+j)%4*3,chapter:gardenSection(px).chapter,j});}
+      if(cell%3===0)butterflies.push({x,y:p.y-130,cell,chapter:gardenSection(x).chapter});
     }
+    return{trees,flowers,butterflies};
+  }
+  scenery(ctx,s,left,right){
+    const palettes=[['#f5dc8b','#e887a2'],['#f8f0b6','#f2b3c0'],['#b9a6da','#d6c7ed'],['#fff0ad','#e5a5ac'],['#aad5b1','#e2b9da'],['#f5c68b','#df93c3'],['#d7b4da','#f9e5a5']];
+    for(const tree of this.sceneryItems.trees)if(tree.x+tree.w>=left&&tree.x<=right)this.prop(ctx,8,tree.x,tree.y,tree.w,tree.h);
+    for(const flower of this.sceneryItems.flowers){if(flower.x<left||flower.x>right)continue;const {x,y,height,chapter,j}=flower,py=y-height;ctx.strokeStyle='#658648';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(x,y);ctx.lineTo(x,py);ctx.stroke();ctx.fillStyle=palettes[chapter%7][j%2];for(let petal=0;petal<5;petal++){ctx.beginPath();ctx.ellipse(x+Math.cos(petal*1.26)*4,py+Math.sin(petal*1.26)*4,3,4,petal*1.26,0,Math.PI*2);ctx.fill();}ctx.fillStyle='#d8a348';ctx.beginPath();ctx.arc(x,py,2,0,Math.PI*2);ctx.fill();}
+    for(const b of this.sceneryItems.butterflies){if(b.x<left||b.x>right)continue;const x=b.x+Math.sin(s.time*.7+b.cell)*28,y=b.y-Math.cos(s.time+b.cell)*22;ctx.fillStyle=palettes[b.chapter%7][1];ctx.beginPath();ctx.ellipse(x-4,y,5,8*Math.abs(Math.sin(s.time*5))+.5,-.5,0,Math.PI*2);ctx.ellipse(x+4,y,5,8*Math.abs(Math.sin(s.time*5))+.5,.5,0,Math.PI*2);ctx.fill();}
   }
   fairy(ctx,s){
     const f=s.fairy,image=this.images.get(fairyFile);if(!image)return;
@@ -145,19 +160,20 @@ export class GardenRenderer {
     const ctx=this.ctx,canvas=this.canvas,{width,height}=canvas;ctx.save();ctx.setTransform(1,0,0,1,0,0);ctx.fillStyle='#bfe7ed';ctx.fillRect(0,0,width,height);
     if(!ready||error){renderPoeticNarration(ctx,canvas,error||'Abrindo o portão do jardim…',{heading:'UM DIA NO JARDIM'});ctx.restore();return;}
     const f=this.frame(s),left=f.ox-250,right=f.ox+width/f.scale+250,bottom=(height-f.oy)/f.scale+150,background=this.images.get('cenario-v1.png');
-    if(background){const bgHeight=Math.max(height,width*background.height/background.width)*1.35,bgWidth=bgHeight*background.width/background.height;const parallax=(Math.sin(f.ox/13000)+1)/2;ctx.drawImage(background,-parallax*(bgWidth-width),height-bgHeight,bgWidth,bgHeight);}
+    if(background){const bgHeight=Math.max(height,width*background.height/background.width)*1.35,bgWidth=bgHeight*background.width/background.height;const parallax=Math.max(0,Math.min(1,f.ox/(C.width-width/f.scale)));ctx.drawImage(background,-parallax*(bgWidth-width),height-bgHeight,bgWidth,bgHeight);}
     ctx.save();ctx.translate(-f.ox*f.scale,f.oy);ctx.scale(f.scale,f.scale);
     for(const water of waterPaint){if(water.x+water.w<left||water.x>right)continue;const gradient=ctx.createLinearGradient(0,640,0,800);gradient.addColorStop(0,'#7bd9db');gradient.addColorStop(1,'#347caa');ctx.fillStyle=gradient;ctx.fillRect(water.x-5,C.waterY-35,water.w+10,bottom-C.waterY+45);ctx.strokeStyle='rgba(234,255,255,.65)';ctx.lineWidth=2;for(let x=Math.max(water.x,left);x<Math.min(water.x+water.w,right);x+=58){ctx.beginPath();ctx.ellipse(x+Math.sin(s.time+x)*8,C.waterY-20+Math.sin(x)*7,17,2,0,0,Math.PI);ctx.stroke();}}
     if(left<GARDEN_WHEEL.x+260&&right>GARDEN_WHEEL.x-260){const wheel=gardenPlatforms(s.time,s,GARDEN_WHEEL.x,200).filter(p=>p.rotating);ctx.strokeStyle='#a7794d';ctx.lineWidth=8;for(const p of wheel){ctx.beginPath();ctx.moveTo(GARDEN_WHEEL.x,GARDEN_WHEEL.y);ctx.lineTo(p.x+p.w/2,p.y+10);ctx.stroke();}ctx.fillStyle='#b78d59';ctx.beginPath();ctx.arc(GARDEN_WHEEL.x,GARDEN_WHEEL.y,16,0,Math.PI*2);ctx.fill();}
     // Nuvens ausentes são omitidas tanto da imagem quanto da lista de apoio físico.
     const platforms=gardenPlatforms(s.time,s,(left+right)/2,(right-left)/2);
-    for(const p of platforms){ctx.save();if(p.type==='cloud')ctx.globalAlpha=cloudStatus(p,s).alpha;this.terrain(ctx,p,bottom);ctx.restore();}
+    this.terrainBodies(ctx,platforms,bottom);
+    for(const p of platforms){ctx.save();if(p.type==='cloud')ctx.globalAlpha=cloudStatus(p,s).alpha;this.terrain(ctx,p,bottom,false);ctx.restore();}
     this.groundJoins(ctx,platforms);this.waterFront(ctx,s,left,right,bottom,platforms);
     this.scenery(ctx,s,left,right);
-    if(left<680)this.prop(ctx,0,-135,148,640,445,'ambiente');
+    if(left<680)this.prop(ctx,0,30,C.ground+3-401,500,401,'ambiente');
     for(const checkpoint of GARDEN_CHECKPOINTS.slice(1)){if(checkpoint<left||checkpoint>right)continue;ctx.fillStyle='#805a3f';const ground=GARDEN_PLATFORM_BY_ID.get(gardenPlatforms(s.time,s,checkpoint,1).find(p=>p.ground&&checkpoint>=p.x&&checkpoint<p.x+p.w)?.id),y=ground?.y??C.ground;ctx.fillRect(checkpoint-5,y-49,7,49);ctx.fillStyle=s.checkpoint>=checkpoint?'#f4b85f':'#b6d284';ctx.beginPath();ctx.moveTo(checkpoint+2,y-48);ctx.lineTo(checkpoint+33,y-36);ctx.lineTo(checkpoint+2,y-24);ctx.fill();}
     if(right>C.goal-600){// A árvore fica no plano posterior do gramado; suas raízes terminam antes da toalha.
-      this.prop(ctx,8,C.goal-320,-230,650,695);const picnic=GARDEN_ART.sets.ambiente.frames[3],picnicHeight=400*picnic.h/picnic.w;this.prop(ctx,3,C.goal+5,C.ground-picnicHeight,400,picnicHeight,'ambiente');}
+      this.prop(ctx,8,C.goal-240,C.ground+4-360,360*417/446,360);const picnic=GARDEN_ART.sets.ambiente.frames[3],picnicHeight=400*picnic.h/picnic.w;this.prop(ctx,3,C.goal+5,C.ground-picnicHeight,400,picnicHeight,'ambiente');}
     for(const e of s.enemies){if(e.x<left||e.x>right||!e.alive&&e.defeatAge>.4)continue;ctx.save();ctx.translate(e.x,e.y);ctx.scale(e.direction,1);if(!e.alive){ctx.globalAlpha=Math.max(0,1-e.defeatAge/.4);ctx.scale(1,Math.max(.15,1-e.defeatAge*2));}if(e.type==='caterpillar'&&e.hp===1)this.prop(ctx,Math.floor(s.time*12)%2,-e.w/2,-e.h,e.w,e.h,'lagartaVermelha');else this.prop(ctx,(e.type==='ant'?4:6)+Math.floor(s.time*7)%2,-e.w/2,-e.h,e.w,e.h);ctx.restore();}
     const p=s.player;let set='menina-corrida-v1',index=p.onGround?(Math.abs(p.vx)>15?2+Math.floor(s.time*11)%6:Math.floor(s.time*2)%2):p.vy<-180?1:p.vy<80?2:3;
     if(!p.onGround)set='menina-acoes-v1';
@@ -167,7 +183,9 @@ export class GardenRenderer {
     if(s.stage==='COMPLETE'){set='menina-acoes-v1';index=s.age<1.5?5:6;}else if(s.stage==='GAME_OVER'||s.stage==='DISORIENTED'){set='menina-acoes-v1';index=4;}
     ctx.save();ctx.translate(p.x,p.y);if(set==='menina-pedrinhas-v2')ctx.rotate(Math.sin(s.time*11)*.045);this.sprite(ctx,set,index,0,0,C.playerHeight,p.facing);ctx.restore();ctx.globalAlpha=1;this.grassFront(ctx,s,platforms);this.effort(ctx,s);this.fairy(ctx,s);ctx.restore();
     const safe=getDialogueSafeArea(canvas),u=Math.min(width/680,height/500),narration=['INTRO','GAME_OVER','RESCUING','DISORIENTED'].includes(s.stage)||s.player.x<500;
-    if(!narration){ctx.save();ctx.font=`bold ${20*u}px Georgia`;ctx.fillStyle='#fff7e7';ctx.strokeStyle='#729c6b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(safe.left+16*u,safe.top+14*u,235*u,49*u,14*u);ctx.fill();ctx.stroke();ctx.fillStyle='#9b4e58';ctx.fillText(s.difficulty==='EASY'?'♥ ∞  Nanda está com você':'♥'.repeat(s.hp),safe.left+31*u,safe.top+46*u);ctx.fillStyle='#426951';ctx.font=`bold ${12*u}px Georgia`;const chapter=gardenSection(p.x);ctx.fillText(chapter.name,safe.left+19*u,safe.top+82*u);ctx.fillText(Math.min(100,Math.floor(p.x/C.goal*100))+'% do caminho',safe.right-137*u,safe.top+43*u);ctx.restore();}
+    if(!narration){ctx.save();ctx.font=`bold ${20*u}px Georgia`;ctx.fillStyle='#fff7e7';ctx.strokeStyle='#729c6b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(safe.left+16*u,safe.top+14*u,235*u,74*u,14*u);ctx.fill();ctx.stroke();ctx.fillStyle='#9b4e58';ctx.fillText(s.difficulty==='EASY'?'♥ ∞  Nanda está com você':'♥'.repeat(s.hp),safe.left+31*u,safe.top+46*u);ctx.fillStyle='#426951';ctx.font=`bold ${12*u}px Georgia`;const chapter=gardenSection(p.x);ctx.fillText(chapter.name,safe.left+19*u,safe.top+82*u);const canvasRect=canvas.getBoundingClientRect?.(),buttons=globalThis.document?.querySelector?.('.top-controls-bar')?.getBoundingClientRect();
+      const buttonsBottom=buttons&&canvasRect?.height>0?(buttons.bottom-canvasRect.top)*height/canvasRect.height:0,progressY=Math.max(safe.top+43*u,buttonsBottom+19*u);
+      ctx.fillStyle='#fff7e7';ctx.beginPath();ctx.roundRect(safe.right-150*u,progressY-20*u,137*u,29*u,9*u);ctx.fill();ctx.fillStyle='#426951';ctx.fillText(Math.min(100,Math.floor(p.x/C.goal*100))+'% do caminho',safe.right-139*u,progressY);ctx.restore();}
     const mobile=touch||height>width||globalThis.matchMedia?.('(pointer: coarse)').matches;
     if(mobile){for(const [name,b]of Object.entries(this.controls())){ctx.fillStyle='rgba(255,248,225,.88)';ctx.strokeStyle='#6a9971';ctx.lineWidth=2*u;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#3d6e51';ctx.font=`bold ${(name==='jump'?17:27)*u}px Georgia`;ctx.textAlign='center';ctx.fillText(name==='left'?'◀':name==='right'?'▶':'PULAR',b.x,b.y+7*u);}ctx.textAlign='left';}
     if(s.stage==='INTRO')renderPoeticNarration(ctx,canvas,'Um novo dia. Nanda vai junto.\nOs amigos esperam para um piquenique sob a árvore.',{heading:'UM DIA NO JARDIM'});

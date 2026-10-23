@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "617e735f7f0a139594f44abbf4e9846404e7c5901ae328df62c3b3d3f1a48e78",
+  "path": "qa-execucoes/46636e6c0c8e455cb1c8df8e8376319c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-rio-com-formiga.png",
+  "sha256": "c266c0768776531b20e9dc229bfba11d41e08903a1ec0eead7c04ed291dd3fad",
+  "capturedAt": "2026-10-23T19:33:02.933679+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-rio-com-formiga.png\", \"sha256\": \"d07b1eeba2e61ceaed27267467ef77c9245fb1b42e5544a61899acf7b4722933\", \"bytes\": 1266606, \"binaryRetained\": false}"
+}

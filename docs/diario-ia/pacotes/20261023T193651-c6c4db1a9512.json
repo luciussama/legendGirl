@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T193651-c6c4db1a9512",
+  "date": "2026-10-23T19:36:51.835435+00:00",
+  "title": "Inspeção final: quadros adicionais em repouso para verificar sapatos no solo e pernas na grama",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "950d4ad2e15a98ab5e200c372a4406bee92ec6b9626d9186e1376f02e0306f7d",
+      "sha256": "4a9d7dbac4af487fc0c127df03650faf1e37df78ddf4c7d03a50cea7b4a5325d",
+      "bytes": 14177,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}
