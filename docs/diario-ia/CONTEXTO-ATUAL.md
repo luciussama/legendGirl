@@ -177,4 +177,4 @@ A investigação espera mãos vazias. A espada nasce em (1360,330), à direita d
 
 ## Integração autorizada em 23/10/2026
 
-Sessão `20261023T141439-4e9c0893a6cc`: usuário solicitou commit das mudanças acumuladas e merge de `feat-fairy-ajustments` em `main`. Escopo inclui fada/luz orbital 3D, contato integral das plataformas/pés, menina ilustrada e modelo 3D, baú aberto da arena e regras de entrega/espada, com documentação e acervo. Integração local em execução; resultado efetivo será registrado no encerramento. Push/publicação não solicitados neste pedido.
+Sessão `20261023T141439-4e9c0893a6cc`: usuário solicitou commit das mudanças acumuladas e merge de `feat-fairy-ajustments` em `main`. Escopo inclui fada/luz orbital 3D, contato integral das plataformas/pés, menina ilustrada e modelo 3D, baú aberto da arena e regras de entrega/espada, com documentação e acervo. Implementação registrada em `50ab104a`; merge local sem conflitos em `79e3ad5b`. Main contém a implementação; branch de origem preservada. Push/publicação não solicitados nem executados neste pedido.
