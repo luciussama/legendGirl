@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "852777fb413b4ee53601931a44931cbe89ea6af6eb39a3e6369acad93ff5a42d",
+  "path": "qa-execucoes/792cd3a87a814d3fb89b2f5d3de63fc4.log",
+  "sha256": "fa31494fce689599cc13b4f2ef1bc3d0297d6db426b6858195ba1a553addcb17",
+  "capturedAt": "2026-10-23T17:53:34.061157+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser",
+    "exitCode": 1,
+    "package": "20261023T174137-33f2056c3fc1"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:browser\n> node docs/diario-ia/qa/jardim-v2/navegador.mjs\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-z7wt1mvu/projeto/docs/diario-ia/qa/jardim-v2/navegador.mjs:18\n const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(JSON.stringify(r.result.exceptionDetails));return r.result?.result?.value;};\n                                                                                                                                                                ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) Error: Chão contínuo sem frestas: wood\",\"lineNumber\":0,\"columnNumber\":0,\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Chão contínuo sem frestas: wood\\n    at check (http://127.0.0.1:52662/docs/diario-ia/qa/jardim-v2/cenario.mjs:5:45)\\n    at Module.audit (http://127.0.0.1:52662/docs/diario-ia/qa/jardim-v2/cenario.mjs:20:36)\\n    at <anonymous>:1:4\",\"objectId\":\"-1358558652382040749.2.1\"}}\n    at evaluate (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-z7wt1mvu/projeto/docs/diario-ia/qa/jardim-v2/navegador.mjs:18:161)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-z7wt1mvu/projeto/docs/diario-ia/qa/jardim-v2/navegador.mjs:27:16\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T174137-33f2056c3fc1",
+  "date": "2026-10-23T17:41:37.110077+00:00",
+  "title": "Jardim v2: navegador com artes, fase longa, fada e recuperação imortal",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "bd2fe6af8aa8bba4976f047195661df2657ccefdf70a3fd747d5d4ee71973e2a",
+      "sha256": "fe2318182732433e538621ac1038f6fe3c3ffd890f813794233c173c31e84592",
+      "bytes": 6374,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "d39b31bfe30fd538360b001ee436f60ff5f38bc1deb4df09dd0c441f960e4ae1",
+      "sha256": "aa7a9ab903f9133ce3de3c9157531474651c1f5cc802ad7e27cb8fa1c7cedc60",
+      "bytes": 5988,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "5ab40211c9ece7259d43d2794ada789681b06cbac3a83059cf09d60a05b6975d",
+      "sha256": "cbd7dd6e591373f0da0e5cdd8c14f55137cb364b1d3f9923eb848ef2a2a82a99",
+      "bytes": 5246,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "90923e8b1e295868c982ad3887ce2be45fb95d352193828b158c8789fade032f",
+      "sha256": "e0191c164238efeb1e52e6cc0df261dc6c25bf642d219aeb1043e9c4077c0f7c",
+      "bytes": 1425,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "9f946be4d12ada22b774c1fb900de24aaddf70c6f552cb32cca295fae5c04d88",
+      "sha256": "83eea5063add431ca6e361c76e4310e204d6ddd6b10b519e6d874113a591fea0",
+      "bytes": 1800,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:browser": "node docs/diario-ia/qa/jardim-v2/navegador.mjs"
+  }
+}

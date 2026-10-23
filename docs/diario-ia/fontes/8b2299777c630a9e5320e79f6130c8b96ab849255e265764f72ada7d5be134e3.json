@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8b2299777c630a9e5320e79f6130c8b96ab849255e265764f72ada7d5be134e3",
+  "path": "qa-execucoes/d7e67f904bcc4b25a3eb3bf9dbc031b8/docs/diario-ia/qa-resultados/jardim-v2/paisagem-roda.png",
+  "sha256": "62a44b2f73e9d5e15e165859faed173d6b8d69422c97f19de8e3357831122696",
+  "capturedAt": "2026-10-23T18:31:42.055805+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-roda.png\", \"sha256\": \"2d37c3e78611e1c02e4827fd3770ee20650e9b38f5d256db1ded6465a7b38692\", \"bytes\": 1403053, \"binaryRetained\": false}"
+}

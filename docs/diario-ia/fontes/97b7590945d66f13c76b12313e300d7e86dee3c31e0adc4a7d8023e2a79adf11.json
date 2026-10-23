@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "97b7590945d66f13c76b12313e300d7e86dee3c31e0adc4a7d8023e2a79adf11",
+  "path": "qa-execucoes/208f1682b24944e18ef40f90cfee2663/docs/diario-ia/qa-resultados/jardim-v2/paisagem-pedrinhas.png",
+  "sha256": "5aac1531b4e69976a06d5abcb2662981b129fbde4d4add09d04f9d67bbfd6716",
+  "capturedAt": "2026-10-23T18:50:07.596551+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-pedrinhas.png\", \"sha256\": \"394c528fb8016f73f75353cbb282ad343ee2d8eb2ff34c5cfeb7ac8b06fe8f5a\", \"bytes\": 1449482, \"binaryRetained\": false}"
+}

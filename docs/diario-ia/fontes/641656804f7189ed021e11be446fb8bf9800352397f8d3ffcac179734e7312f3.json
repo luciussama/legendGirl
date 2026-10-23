@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "641656804f7189ed021e11be446fb8bf9800352397f8d3ffcac179734e7312f3",
+  "path": "qa-execucoes/0e4ba545bcaa407f892346d7731392a8.log",
+  "sha256": "8bdd96df2fdcb624343c05e43f5ddf608f5fc8764b867d013d8a1a5a2fd3e5c5",
+  "capturedAt": "2026-10-23T17:39:41.115956+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Formiga avança para outra pedra\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-eeehcqom/projeto/docs/diario-ia/qa/jardim-v2/dominio.mjs:22:257\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 35051,\n  expected: 35051,\n  operator: 'notStrictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1bc10f3e443cd671da68b5d38e12460881155dae7659a95a5d8d153197b9f4e2",
+  "path": "qa-execucoes/486d4b1326ea4056ae835e00120cd0f4/docs/diario-ia/qa-resultados/jardim/android-arvore.png",
+  "sha256": "efe768345aba7c31efd143e8cf22374935e190a8f8f5efe3889713aa55958750",
+  "capturedAt": "2026-10-23T15:07:31.450019+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/android-arvore.png\", \"sha256\": \"ce1933357e8ac8b16ff63b3a69765569741b621b5846dfcfd6edcc7a9d075ac4\", \"bytes\": 934081, \"binaryRetained\": false}"
+}

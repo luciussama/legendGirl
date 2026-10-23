@@ -1,0 +1,7 @@
+{
+  "ferramenta": "image_gen integrada",
+  "source": "source/menina-pedrinhas-v2.png",
+  "reference": "source/menina-corrida-v1.png",
+  "prompt": "Use case: identity-preserve. Reference image is the supplied illustrated girl, preserve her exact identity, brown pigtails with pink bows, yellow blouse, turquoise candy-print pinafore dress and pink/white shoes. New production sprite sheet, exactly FOUR full-body poses in a 2 by 2 grid, all facing RIGHT, same body scale, real transparent alpha and wide empty margins. Hand-painted detailed children's storybook game style. She is moving very fast on loose tiny pebbles, losing her footing with a worried uncomfortable frown, tense eyebrows and visible effort. Four DISTINCT consecutive recovery/slipping strides with extremely clear alternating legs: top-left left foot sliding far forward with knee almost straight, right knee bent tucked back; top-right right leg planted under body while left knee lifts high forward; bottom-left right foot far forward bracing while left leg extends behind and arms spread; bottom-right both knees bent catching balance with left foot under hip and right knee lifting. Preserve actual anatomical leg lengths and both shoes in each frame, show distinct leg positions, avoid four nearly identical running silhouettes. No ground/pebbles/props/effects/background, no labels or shadows; sweat effects will be added in code. Do not change face, outfit, proportions, or paint style. This is expressive animation of discomfort and imbalance, not a happy run.",
+  "transparent_background": true
+}

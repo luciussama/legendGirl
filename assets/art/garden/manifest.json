@@ -1,0 +1,14 @@
+{
+  "version": 1,
+  "images": [
+    "cenario-v1.png",
+    "runtime/menina-corrida-v1.png",
+    "runtime/menina-acoes-v1.png",
+    "runtime/menina-desconforto-v1.png",
+    "runtime/menina-pedrinhas-v2.png",
+    "source/objetos-v1.png",
+    "source/ambiente-v2.png",
+    "source/lagarta-vermelha-v1.png",
+    "../toy-room/stage3/illustrated-fairy-v1.png"
+  ]
+}

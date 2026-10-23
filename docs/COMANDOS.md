@@ -210,3 +210,10 @@ Para validar as superfícies do quarto e a união urso/livros com artes reais, t
 - `npm run journal:qa -- test:bear-chase:fairy:browser`: menina 3D, luz/sombras, órbita, orçamento, pausa/descarte e percursos NORMAL/EASY.
 
 Os navegadores usam Chrome isolado; fontes e resultados pertencem ao diário.
+
+### Jardim
+
+- `node scripts/prepare-garden-art.js`: reconstrói recortes, pranchas de execução e manifesto dedicado.
+- `npm run journal:qa -- test:garden`: terrenos/frenagem, dois pisões, formigas saltadoras, fatalidade NORMAL, recuperação EASY, nuvens, fada e saves.
+- `npm run journal:qa -- test:garden:percurso`: percursos completos NORMAL/EASY; acrescente `--irregular` para variar dt.
+- `npm run journal:qa -- test:garden:browser`: arte/controles reais, chão contínuo, três formatos, transição, save, pausa, resgates e descarte em Chrome isolado.

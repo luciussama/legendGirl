@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3faa7af804ac7b6662784825d55504b4f4581dd9c3dca7ccb9b4a9a43455031c",
+  "path": "qa-execucoes/4dd29190354d4459a329dc94b967fe22/docs/diario-ia/qa-resultados/jardim/desktop-pedras.png",
+  "sha256": "640e254f6952f1676ef960c69350ee14446cb73c5080b99f0cadec967a24f4ea",
+  "capturedAt": "2026-10-23T14:53:53.125942+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/desktop-pedras.png\", \"sha256\": \"99448f76bbcb94f90cf8b7615c27c35dfb94ae1767a5d1caa50bcee2f9a68e47\", \"bytes\": 952810, \"binaryRetained\": false}"
+}

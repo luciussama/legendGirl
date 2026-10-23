@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9d617d6c0975d85502f79bddbcd534e8dee68f33a8d19cf4fc14711b9dbcf89d",
+  "path": "qa-execucoes/005f8d0fc77545eba193c6bdee5d15e5.log",
+  "sha256": "b8256e1a399688801e6e77b728910cd49ad7a4730a5e6d26f34c7af556915a0e",
+  "capturedAt": "2026-10-23T16:58:07.824714+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 0,
+    "package": "20261023T145049-7f65e7d90508"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-20261023/dominio.mjs\n\nAPROVADO: pulo, tolerância de borda, buffer, pisão, contato lateral, imunidade, água/queda, derrota, chegada, roda móvel e save válido/inválido nas duas dificuldades.\n"
+}

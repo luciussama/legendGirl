@@ -1,3 +1,4 @@
+import { GardenPhase } from '../garden/GardenPhase.js';
 import { createToyRoomTutorialContext } from './ToyRoomTutorialContext.js';
 import { ToyRoomPersistence } from './ToyRoomPersistence.js';
 import { createToyRoomPersistenceContext } from './ToyRoomPersistenceContext.js';
@@ -157,7 +158,7 @@ export class ToyRoomPhase {
   }
 
   /** Encaminha ações da sala; a perseguição 3D usa somente seus controles laterais. */
-  triggerAction() { if (!this.chase?.active) return this.interaction.triggerAction(); }
+  triggerAction() { if (!this.garden?.active && !this.chase?.active) return this.interaction.triggerAction(); }
 
   /** Abre a prova isolada sem migrar saves ou antecipar a nova transição de campanha. */
   startChasePreview(saved = null) {
@@ -216,6 +217,16 @@ export class ToyRoomPhase {
     }
   }
 
+  /** Abre o dia seguinte com física e roupa próprias, descartando controles do quarto. */
+  startGarden(saved = null, { campaign = true } = {}) {
+    this.garden?.destroy();this.garden = null;
+    this.chase?.destroy();this.chase = null;
+    this.clearInput();this.inputController.removeListeners();
+    this.arena?.audioProfile.leave({resume:false});this.audio?.stopAllAudio?.();this.audio?.stopToyRoomMusic?.();
+    this.garden = new GardenPhase({canvas:this.canvas,audio:this.audio,enabled:this.isInputEnabled,difficulty:this.gameDifficulty,campaign});
+    this.gameplayState='GARDEN';return this.garden.start(saved);
+  }
+
   resolveCollisions(px, py, r) {
     return resolveToyRoomCollisions({
       width: this.ROOM_W, height: this.ROOM_H, furniture: this.furniture
@@ -225,7 +236,9 @@ export class ToyRoomPhase {
   /** Atualiza exclusivamente o modo ativo, sem compartilhar física entre 2D e 3D. */
   update(dt = 1.0) {
     this.updateActiveMode(dt);
-    const defeat = this.chase?.active && this.chase.state.stage === 'GAME_OVER'
+    const defeat = this.garden?.active && this.garden.state.stage === 'GAME_OVER'
+      ? { state:this.garden.state, phase:'garden' }
+      : this.chase?.active && this.chase.state.stage === 'GAME_OVER'
       ? { state: this.chase.state, phase: 'bear-chase' }
       : this.battle.state?.mode === 'DEFEAT' ? { state: this.battle.state, phase: 'arena' } : null;
     if (defeat && this.reportedDefeat !== defeat.state) {
@@ -238,7 +251,15 @@ export class ToyRoomPhase {
   /** Executa a etapa ativa; a notificação de derrota acontece depois de sua simulação. */
   updateActiveMode(dt) {
     if (!this.isInputEnabled()) { this.clearInput(); return; }
-    if (this.chase?.active) { this.chase.update(dt); return; }
+    if (this.garden?.active) { this.garden.update(dt);return; }
+    if (this.chase?.active) {
+      this.chase.update(dt);
+      if(this.chase.campaign && this.chase.state.stage==='COMPLETE') {
+        this.gardenTransition=(this.gardenTransition||0)+dt;
+        if(this.gardenTransition>=150)this.startGarden();
+      } else this.gardenTransition=0;
+      return;
+    }
     this.pollGamepad();
     if (this.arena?.active) { this.arena.update(dt); return; }
     if (!this.battle.state && this.story.swordEquipped && !this.arena?.state.completed) {
@@ -297,11 +318,13 @@ export class ToyRoomPhase {
   setDifficulty(difficulty) {
     this.gameDifficulty = normalizeDifficulty(difficulty);
     if (this.chase?.active) this.chase.difficulty = this.gameDifficulty;
+    if (this.garden?.active) this.garden.difficulty = this.gameDifficulty;
     if (this.arena?.active && !this.arena.state.realityRestored) this.arena.configurePresentation();
   }
 
   /** Recupera a tentativa atual; ao aceitar ajuda, conserva o adversário ou percurso. */
   retryDefeat({ resume = false } = {}) {
+    if (this.garden?.active) {const retried=this.garden.retry();if(retried)this.reportedDefeat=null;return retried;}
     if (this.chase?.active) {
       const retried = this.chase.retry({ resume });
       if (retried) this.reportedDefeat = null;
@@ -341,6 +364,7 @@ export class ToyRoomPhase {
 
   /** Desenha o modo ativo; o renderer 3D compõe sua saída no canvas já existente. */
   render(options = {}) {
+    if (this.garden?.active && !options.arenaBackdrop) {this.garden.render();return;}
     if (this.chase?.active && !options.arenaBackdrop) { this.chase.render(); return; }
     if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
     if (this.battle.state && !options.arenaBackdrop) { this.battle.render(); return; }
@@ -360,6 +384,7 @@ export class ToyRoomPhase {
 
   /** Encerra todos os sistemas ativos, incluindo listeners e recursos da perseguição. */
   destroy() {
+    this.garden?.destroy();this.garden=null;
     this.chase?.destroy(); this.chase = null;
     this.arena?.audioProfile.leave({ resume: false });
     this.clearInput();

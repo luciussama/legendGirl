@@ -1,0 +1,7 @@
+{
+  "ferramenta": "image_gen integrada",
+  "source": "source/lagarta-vermelha-v1.png",
+  "reference": "source/objetos-v1.png",
+  "prompt": "Use case: precise-object-edit. Supporting reference: the attached storybook game atlas. Create a new transparent sprite sheet containing ONLY the two caterpillar poses from the bottom left and bottom middle of the reference, side by side in ONE row with wide transparent margins and a clear gap. Change the green caterpillar body to a clearly RED carmine/scarlet body (not pink or purple), a slightly tense alert face, preserve yellow belly, little brown feet, antennae, shiny eyes, exact proportions and detailed painterly storybook style. Both face right, entire silhouettes not clipped, consistent size. Left: first caterpillar crawling pose. Right: second alternating crawling pose. No other objects from the reference, no tree/ant/platforms, no environment/background/floor/shadows, no text/grid. Genuine transparent alpha. This is the faster caterpillar variant after one stomp in a children's platform game.",
+  "transparent_background": true
+}

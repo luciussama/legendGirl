@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T171919-0063bf2ddf25",
+  "date": "2026-10-23T17:19:19.140484+00:00",
+  "title": "Jardim: instruções integrais, cinco desenhos descritos, percurso e validação planejada antes da execução",
+  "files": [
+    {
+      "path": "docs/diario-ia/jardim-direcao-segmentada-20261023.md",
+      "sourceId": "a9443f605112c0b94c5aec779b726a9fa57ee2d6a599021cb47c610ea830d618",
+      "sha256": "d57ffed1f5d79464f512b9101adcd31cdc2edb3eecff9a2bfc90e2dd4cbb64a7",
+      "bytes": 16281,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

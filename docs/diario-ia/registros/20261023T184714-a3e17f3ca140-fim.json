@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T184714-a3e17f3ca140-fim",
+  "sessionId": "20261023T184714-a3e17f3ca140",
+  "type": "fim",
+  "date": "2026-10-23T18:51:12.922521+00:00",
+  "title": "Revisar grama em primeiro plano e fechar fresta entre margem e água",
+  "actor": "Codex",
+  "summary": "Corrigida grama: removido remendo móvel nos pés, faixa inteira em primeiro plano a 45% de opacidade, escala/grade iguais ao cenário. Água prolongada visualmente sob as margens próximas; fresta inicial de 15 pixels fechada sem mover limite fatal, câmera ou apoios. Trabalho anterior preservado.",
+  "checks": [
+    "Chrome isolado aprovado: 43 recortes, quinze cenas em três formatos, vegetação inteira translúcida/fixa, oclusão real, duas margens dos 31 rios, câmera/save/controles e descarte. Capturas desktop e Android inspecionadas.",
+    "npm test completo exit 0; build, check-assets (78), lint, node --check, diff --check e equalização documental aprovados. Mapa reconstruído: 452 imagens/196 recortes/29 assinaturas. Fontes/logs arquivados; 45 capturas temporárias removidas após registrar hash/tamanho."
+  ],
+  "pending": [
+    "Novo pedido de relevo recebido durante a conclusão: criar patamares e saltos graduais no jardim; próxima sessão registra e executa. Diálogos do piquenique ainda aguardam usuário."
+  ],
+  "files": [
+    "src/js/garden/GardenRenderer.js",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

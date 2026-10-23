@@ -7,6 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {PNG} from 'pngjs';
 import jpeg from 'jpeg-js';
 import {OFFICIAL_FRAMES} from '../../src/js/assets/officialCharacter.js';
+import {GARDEN_ART} from '../../src/js/garden/GardenArt.js';
 import {GIRL_V2_SETS} from '../../src/js/assets/illustratedGirl.js';
 import {ARENA_GIRL_ANIMATION_FRAMES} from '../../src/js/toy-room/ArenaGirlAnimationFrames.js';
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
@@ -70,6 +71,7 @@ export async function buildCatalog(root) {
   parent.usage='runtime';if(!parent.references.some(r=>r.file==='src/js/toy-room/ArenaGirlAnimationFrames.js'))parent.references.push({file:'src/js/toy-room/ArenaGirlAnimationFrames.js',line:1,type:'runtime',alias:'metadados resolvidos'});
  }
  for(const [pose,frames]of Object.entries(OFFICIAL_FRAMES))frames.forEach((r,i)=>addRegion('assets/art/dark-room/sprites/official-character.png',pose,i,r));
+ for(const [pose,set]of Object.entries(GARDEN_ART.sets))set.frames.forEach((r,i)=>addRegion('assets/art/garden/'+set.file,'jardim · '+pose,i,r));
  for(const [pose,set]of Object.entries(GIRL_V2_SETS))set.frames.forEach((r,i)=>addRegion(set.file,pose,i,r));
  for(const [pose,frames]of Object.entries(ARENA_GIRL_ANIMATION_FRAMES))frames.filter(f=>f.x||f.y||f.file.includes('animation-v2')).forEach((r,i)=>addRegion('assets/art/toy-room/battle/'+r.file,pose,i,r));
  const signatures=[

@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023-progresso-ae5649e65848",
+  "sessionId": "20261023T172951-12ca99a81674",
+  "type": "progresso",
+  "date": "2026-10-23T18:31:37.006978+00:00",
+  "title": "Cinco correções implementadas; acabamento e nova agressividade em validação",
+  "actor": "Codex",
+  "summary": "Implementados contornos externos e transição gradual de textura no chão contínuo, bases de pedras submersas/água frontal, perseguição da lagarta vermelha e pressão das formigas, grama de primeiro plano cobrindo sapatos, quatro pinturas de desequilíbrio nas pedrinhas e suor discreto. Asset fonte menina-pedrinhas-v2 e prompt preservados. Colisões e câmera não recalibradas.",
+  "checks": [
+    "Domínio atualizado passou perseguição esquerda/direita, extensão para chão de origem, save fora da patrulha antiga e limite seguro.",
+    "Navegador em três formatos passou 43 recortes, quatro poses reais, oclusão dos sapatos sem mover o domínio, contato da pedra com água, controles/save/pausa/EASY/descarte.",
+    "Piloto anterior perdeu no NORMAL após 4,56 minutos com IA nova: registro preservado. Piloto está sendo adaptado para reagir a perseguição por trás e saltar para trás; isso não prova percurso completo aprovado."
+  ],
+  "pending": [
+    "Conferir acabamento final com água visual mais alta e transição de textura dissolvida.",
+    "Executar novamente percurso completo NORMAL/EASY com piloto atualizado, inclusive dt irregular.",
+    "Atualizar documentação/inventário e consolidar resultados/limitações antes de encerrar."
+  ],
+  "files": [
+    "src/js/garden/GardenRenderer.js",
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenLevel.js",
+    "scripts/prepare-garden-art.js",
+    "assets/art/garden/source/menina-pedrinhas-v2.png",
+    "assets/art/garden/prompts-pedrinhas-v2.json"
+  ]
+}

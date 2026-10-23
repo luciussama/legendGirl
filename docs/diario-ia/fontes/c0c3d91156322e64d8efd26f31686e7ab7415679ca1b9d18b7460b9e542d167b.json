@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c0c3d91156322e64d8efd26f31686e7ab7415679ca1b9d18b7460b9e542d167b",
+  "path": "qa-execucoes/10d676a302114c7da4adf0fe24daf8d4/docs/diario-ia/qa-resultados/jardim-v2/desktop-quatro-nuvens.png",
+  "sha256": "5ea42abb32446c16188dfaf56875e011b9a8e38ae63cf11b410188b0bcea06b2",
+  "capturedAt": "2026-10-23T17:56:02.129121+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-quatro-nuvens.png\", \"sha256\": \"b97308acec44b68b8a5546e6efdb5ef62898952030e291886b743e306ce06f7b\", \"bytes\": 1016548, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "587ced809b4f7c7909da49159546b4e11077f699556810bf9549df9f6683c211",
+  "path": "qa-execucoes/920e582618444727b4d30551b36e4cee.log",
+  "sha256": "ec29fdafd57aeb165627a0a40728ef5a1e20c5c46e86e35b7c9799b2477ba4e5",
+  "capturedAt": "2026-10-23T17:38:58.759888+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs\n\nPROGRESSO NORMAL 0 120 entrada 3\nPROGRESSO NORMAL 300 53744 trecho-8-pedrinhas 2\nPROGRESSO NORMAL 600 106776 null 2\nPROGRESSO NORMAL 900 159206 trecho-28-caminho 1\n{\"difficulty\":\"NORMAL\",\"stage\":\"COMPLETE\",\"minutes\":16.2433333333213,\"x\":172662.60141737259,\"goal\":172662,\"hp\":1,\"recovered\":0,\"jumps\":356,\"defeated\":22}\nPROGRESSO EASY 0 120 entrada 6\nPROGRESSO EASY 300 54221 null 5\nPROGRESSO EASY 600 106989 null 4\nPROGRESSO EASY 900 159602 trecho-28-gramado 2\n{\"difficulty\":\"EASY\",\"stage\":\"COMPLETE\",\"minutes\":16.196944444432454,\"x\":172663.3464173728,\"goal\":172662,\"hp\":2,\"recovered\":0,\"jumps\":349,\"defeated\":24}\n"
+}

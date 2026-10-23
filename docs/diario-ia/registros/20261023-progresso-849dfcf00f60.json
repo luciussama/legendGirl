@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023-progresso-849dfcf00f60",
+  "sessionId": "20261023T172951-12ca99a81674",
+  "type": "progresso",
+  "date": "2026-10-23T18:17:18.156700+00:00",
+  "title": "Checkpoint solicitado antes de continuar: base feita e fila de cinco correções",
+  "actor": "Codex",
+  "summary": "Base do jardim v2 implementada e testada; correções anteriores de chão contínuo e toalha executadas. Usuário reprovou acabamento de extremidades/contato da água, pediu mais agressividade com perseguição da lagarta vermelha, pés enterrados na grama e pernas/atuação de escorregão/desconforto/suor nas pedrinhas. Essas cinco mudanças ainda não foram implementadas. Contexto atualizado; especificação e resultados completos na fonte 0db51da9ea026ba292c7a368ce5db63d79be0dcc2c4e6deeadf17baf866893ff, pacote 20261023T181445-6e31faad7241. Sessão permanece aberta, sem conclusão ou aprovação inexistente.",
+  "checks": [
+    "npm test completo, domínio v2, quatro travessias contínuas próximas de vinte minutos, navegador em três formatos, build/lint/assets/sintaxe/documentação aprovados para a base anterior, conforme registros preservados.",
+    "Checkpoint arquivado com comparação integral da fonte antes de remover cópia avulsa. Nenhum teste novo ou alteração de jogo executado neste checkpoint."
+  ],
+  "pending": [
+    "Executar itens 1 a 5 na ordem do contexto, revalidar e registrar novo progresso antes de eventual interrupção.",
+    "Sem homologação física/Safari/aprovação artística; diálogos do piquenique indefinidos."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/pacotes/20261023T181445-6e31faad7241.json"
+  ]
+}

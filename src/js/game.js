@@ -188,7 +188,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   function isGameOver() {
     if (state.currentPhaseMode !== 'toy-room') return state.isGameOver;
     const room = state.toyRoomInstance?.instance;
-    return Boolean(room?.chase?.active ? room.chase.state.stage === 'GAME_OVER' : room?.battle.state?.mode === 'DEFEAT');
+    return Boolean(room?.garden?.active ? room.garden.state.stage === 'GAME_OVER' : room?.chase?.active ? room.chase.state.stage === 'GAME_OVER' : room?.battle.state?.mode === 'DEFEAT');
   }
 
   /** Publica uma derrota por tentativa e conserva a oferta de ajuda no save. */
@@ -1076,6 +1076,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isPaused = !isPaused;
     state.isPaused = isPaused;
     state.toyRoomInstance?.instance.chase?.setPaused(isPaused);
+    state.toyRoomInstance?.instance.garden?.setPaused(isPaused);
     if (isPaused) {
       state.toyRoomInstance?.instance.clearInput();
       if (audio && typeof audio.pauseMusic === 'function') {
@@ -1153,7 +1154,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   /** Reproduz a entrada da fase para revisão, sem gravar sobre a campanha normal. */
   function startDebugPhase(phase, difficulty = state.gameDifficulty) {
-    if (!['bedroom','toy-room','arena','bear-chase'].includes(phase)) return false;
+    if (!['bedroom','toy-room','arena','bear-chase','garden'].includes(phase)) return false;
     saveProgress();
     newCampaign({ preserveProgress:true });
     state.gameDifficulty = normalizeDifficulty(difficulty);
@@ -1165,6 +1166,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       startToyRoomIntroduction();
     } else {
       startToyRoomPhase();
+      if (phase === 'garden') state.toyRoomInstance.instance.startGarden(null,{campaign:false});
       if (phase === 'bear-chase') {
         const room = state.toyRoomInstance.instance;
         room.startChasePreview();
@@ -1307,6 +1309,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       document.removeEventListener('visibilitychange', saveOnHide);
       opening.cancel();
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
+      state.toyRoomInstance?.destroy();state.toyRoomInstance=null;
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
     start(difficulty = 'NORMAL') {

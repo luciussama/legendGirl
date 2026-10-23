@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e244dc11e33dab118f2d8247cb0d2f572e430c5784fde1b30e1832f2ef84cb67",
+  "path": "qa-execucoes/93a12c2efe35435aa4b283b1f2c54d85/docs/diario-ia/qa-resultados/jardim-v2/paisagem-piquenique.png",
+  "sha256": "7a3f98d5a80fec305f5f658d405e910285b75ac7ec2495dd1ba8d91c919998db",
+  "capturedAt": "2026-10-23T17:42:32.283470+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-piquenique.png\", \"sha256\": \"6a9affdcce2d94d788b3ff908d6c5dfcfb6002a9fed3e244b6c6b4836a11a521\", \"bytes\": 1450689, \"binaryRetained\": false}"
+}

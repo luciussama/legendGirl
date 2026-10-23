@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T185107-4ef246583d1a",
+  "date": "2026-10-23T18:51:07.976526+00:00",
+  "title": "Revisão concluída: grama translúcida contínua, margens e testes reais",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/npm-test-grama.log",
+      "sourceId": "f537b18502949fc11a19bcff1138536094c06ad04b65254f50ec0ac7e61c5ca6",
+      "sha256": "e4fbfdb77c9fd07149d257fff5cd885f5e6506e1dc94e9fefb9fd6708ce3ec37",
+      "bytes": 68510,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "ab4f8bc2d29f33f88498bc1848a7697496e0cfdd2ffdf7acf4c5ed856e883ba4",
+      "sha256": "62bec12d0ab43015109241bf602e59551f712edac14dd701933505ff8d91b279",
+      "bytes": 10870,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "176b11092aca9d2e4038e4f1232e767e42e459d394948eaeb9af924e45e0a6a0",
+      "sha256": "37e7ffdc5a77f74101a017eb802545393a472bf6a09762531e2b480af8aba31f",
+      "bytes": 7595,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "02338803a6cb0a2141acc79d042105c2202b5fd0c16adee6257849733c6579f0",
+      "sha256": "2e4af5940413f5becbf655fd80895cd584da2f3e3d775ec3649fc9e72a8635f5",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "a927e7ad1d87bd5b079641c39edf289d748c092f361e9fcb072b652ace0e5785",
+      "sha256": "618399d63e49ebf43d8990482fb96fd11d70bf2d673cf4de00d8837f706c7cc5",
+      "bytes": 1643,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "1f4746acda0bebdcc8b3707a8cb9fed1fb128494f5f3b6a73acf082a37a84cb1",
+      "sha256": "d12a154be0595554d40036a13a33f78cb0417667af8a56a47be3bdefcbeab8cc",
+      "bytes": 1922,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/inspecao-grama.json",
+      "sourceId": "63b2ba0c1704375488b58f4d1d238a0db7191c3ecc4d6b1df6a2eae3a035c670",
+      "sha256": "395657b3405e079b059812d1bed5f11ec16a3de7d99496f7309d9c9cf7f27183",
+      "bytes": 10093,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

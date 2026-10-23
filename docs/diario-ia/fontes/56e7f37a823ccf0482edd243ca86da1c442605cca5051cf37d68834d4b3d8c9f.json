@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "56e7f37a823ccf0482edd243ca86da1c442605cca5051cf37d68834d4b3d8c9f",
+  "path": "assets/art/garden/manifest.json",
+  "sha256": "ef2393a8792a8659aa19fa7dbbd3869c6c9f4307a45536e9759926ad64bed319",
+  "capturedAt": "2026-10-23T14:57:45.541630+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": 1,\n  \"images\": [\n    \"cenario-v1.png\",\n    \"runtime/menina-corrida-v1.png\",\n    \"runtime/menina-acoes-v1.png\",\n    \"source/objetos-v1.png\"\n  ]\n}\n"
+}

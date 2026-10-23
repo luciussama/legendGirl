@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T145145-d95879ef4b4a",
+  "date": "2026-10-23T14:51:45.972820+00:00",
+  "title": "Jardim: travessia por entradas normais e dt variável",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-20261023/percurso.mjs",
+      "sourceId": "97c300c73ac71ff52659d82250cf7292eb4247a2269608c49f8b009703b6074a",
+      "sha256": "4f8f2dfa3142a3a2fb166720f52809b5209686cc00a9ff0e3f31b540ca638c2e",
+      "bytes": 1590,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:percurso": "node docs/diario-ia/qa/jardim-20261023/percurso.mjs"
+  }
+}

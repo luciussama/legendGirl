@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "83adc78bd7c741258e141f740b7339ae",
+  "type": "qa",
+  "date": "2026-10-23T15:06:31.547367+00:00",
+  "title": "QA temporário: test:garden:browser",
+  "exitCode": 0,
+  "sourceId": "ac16dd60de79e4a82447c1b2b34a3584fc613da33931f98a6ad3f6b2a62e69fe",
+  "package": "20261023T145745-db582d3ddf56"
+}

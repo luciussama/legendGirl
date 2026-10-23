@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ae26217f659b33ec0dabd83fc5d13db361a2af66011d7bf31a09943ed6aea278",
+  "path": "qa-execucoes/d7e67f904bcc4b25a3eb3bf9dbc031b8/docs/diario-ia/qa-resultados/jardim-v2/desktop-troca-de-terreno.png",
+  "sha256": "dac5b5b9992d54eb3eca920399d011c8ac009e808a7c36497aafa32847bb2fbc",
+  "capturedAt": "2026-10-23T18:31:42.038438+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-troca-de-terreno.png\", \"sha256\": \"1a3a103eb7bc918d30673387bd094e1d53b6fab9a1092acae475245f49fccbdf\", \"bytes\": 1081699, \"binaryRetained\": false}"
+}

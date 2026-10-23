@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "42d8b51bb010fa2dac6713fc150c47d81865021669357b21141337e68eec35e3",
+  "path": "qa-execucoes/93a12c2efe35435aa4b283b1f2c54d85/docs/diario-ia/qa-resultados/jardim-v2/android-piquenique.png",
+  "sha256": "e81db2392faa05f40ffb5c2b5210d2d90c07bb80a59b0091e048f024539d1ef6",
+  "capturedAt": "2026-10-23T17:42:32.257616+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-piquenique.png\", \"sha256\": \"b49de95725114114f97598ef8e60a392f02f017c33dde4f1e759cb9321847c90\", \"bytes\": 971378, \"binaryRetained\": false}"
+}

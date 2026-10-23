@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "bd798f198ca90643e875de86b6d24db9a0d11b4942656abebdaad46e1bc2d00d",
+  "path": "docs/diario-ia/jardim-correcao-chao-20261023.md",
+  "sha256": "4aac6c4c9f80b576c208a2fe9b8209ffd671663810710146f40971af4c06f30a",
+  "capturedAt": "2026-10-23T17:49:01.355030+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "# Correção visual solicitada durante a implementação\nSessão 20261023T172951-12ca99a81674. Instruções atuais substituem a apresentação anterior.\n\n> a toalha do pic nic ficou em cima da árvore. Não faz sentido. Além do mais, não tem por que ter essa divisão entre os blocos do chão fixo. Transforme todos em um chão fixo.\n\n> Por que os blocos do chão estão separados? Não faz o menor sentido! Eles devem ser um bloco único. O mesmo vale para os demais terrenos.\n\nReferências enviadas: `/Users/sergio/Downloads/Imagem inspecionada.png` e `/Users/sergio/Downloads/chão separado.png`, screenshots de revisão. Erro identificado: repetição das ilustrações inteiras de bancos/plataformas com pontas arredondadas faz cada faixa fixa parecer uma sequência de blocos separados, embora os apoios físicos sejam contínuos. Correção: preencher massa contínua e repetir apenas o interior das texturas, sem laterais internas, em madeira, chão normal, grama e pedrinhas. Não adicionar linhas de contato. Preservar os vãos do percurso e os apoios realmente suspensos/isolados do rio e roda/nuvens, conforme direção anterior. Toalha e convidados devem repousar no chão ao lado das raízes, sob a copa; não sobrepor toalha ao tronco/raízes.\n\nNenhuma aprovação visual foi presumida das execuções de QA anteriores. Rever novas capturas antes de concluir. Não mudar física/câmera nesta correção visual.\n"
+}

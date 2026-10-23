@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "15a78322f303ec45e2473fbb659d9a108e381ccb4d3868f8fcc04efd4ef3f6c8",
+  "path": "qa-execucoes/10d676a302114c7da4adf0fe24daf8d4/docs/diario-ia/qa-resultados/jardim-v2/paisagem-nuvens.png",
+  "sha256": "2a2d97761c123b4f4eb212f608502d8184f6222cba29a07b4e0e73672f55fe68",
+  "capturedAt": "2026-10-23T17:56:02.138086+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-nuvens.png\", \"sha256\": \"fc941b45764d0b3842eef072e4ff53760f439809c839580d7d0a045fefc1f8ff\", \"bytes\": 1432820, \"binaryRetained\": false}"
+}
