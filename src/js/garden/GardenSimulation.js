@@ -1,4 +1,4 @@
-import {GARDEN as C,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,cloudStatus} from './GardenLevel.js';
+import {GARDEN as C,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,cloudStatus} from './GardenLevel.js';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const stages=['INTRO','RUNNING','RESCUING','DISORIENTED','COMPLETE','GAME_OVER'];
 /** A perseguição usa o chão de origem completo, sem atravessar rios ou buracos. */
@@ -8,7 +8,7 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:2,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:3,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{x:120,y:C.ground,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
@@ -42,11 +42,19 @@ export function retryGarden(s,difficulty=s.difficulty){
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
   if(saved.version===1){if(saved.stage==='COMPLETE'){out.stage='COMPLETE';Object.assign(out.player,{x:C.goal,y:C.ground,support:'arvore'});}return out;}
+  // A revisão plana v2 retoma o checkpoint no relevo novo, preservando inimigos vencidos.
+  if(saved.version===2){
+    if(!GARDEN_LEGACY_CHECKPOINTS.has(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado antigo do jardim incompatível.');
+    out.stage=saved.stage==='COMPLETE'?'COMPLETE':saved.stage==='INTRO'?'INTRO':'RUNNING';out.checkpoint=GARDEN_LEGACY_CHECKPOINTS.get(saved.checkpoint);out.hp=clamp(Math.floor(saved.hp),1,difficulty==='EASY'?6:3);
+    const x=out.stage==='COMPLETE'?C.goal:out.checkpoint,ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&x>=p.x&&x<p.x+p.w);
+    Object.assign(out.player,{x,y:ground.y,support:ground.id,terrain:ground.type});out.safeGround=ground.id;out.trail=[ground.id];Object.assign(out.fairy,{x,y:ground.y-135,progressX:x});
+    out.enemies=out.enemies.map((e,i)=>{const old=saved.enemies[i];if(old?.id!==e.id||!Number.isInteger(old.hp)||old.hp<0||old.hp>e.hp||old.alive!==(old.hp>0))throw new TypeError('Inimigo antigo inválido.');return{...e,hp:old.hp,alive:old.alive};});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
+  }
   if(saved.player.x<0||saved.player.x>C.width||Math.abs(saved.player.y)>10000||!GARDEN_CHECKPOINTS.includes(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado do jardim incompatível.');
   out.stage=saved.stage;out.time=saved.time;out.age=saved.age;out.hp=clamp(Math.floor(saved.hp),0,difficulty==='EASY'?6:3);out.checkpoint=saved.checkpoint;
   out.immunity=clamp(Number.isFinite(saved.immunity)?saved.immunity:0,0,4);out.jumps=Number.isSafeInteger(saved.jumps)&&saved.jumps>=0?saved.jumps:0;
@@ -135,9 +143,16 @@ function tick(s,input,dt,events){
   if(axis===0||p.terrain==='gravel')p.vx=desired;else p.vx+=clamp(desired-p.vx,-2400*dt,2400*dt);
   if(Math.abs(axis)>.1)p.facing=axis<0?-1:1;
   p.discomfort+=(Number(p.terrain==='grass'||p.terrain==='gravel')-p.discomfort)*Math.min(1,dt*8);
-  p.x=clamp(p.x+p.vx*dt,22,C.width-22);p.vy=Math.min(1800,p.vy+C.gravity*dt);p.y+=p.vy*dt;p.onGround=false;p.support=null;
+  p.x=clamp(p.x+p.vx*dt,22,C.width-22);
+  // Faces de terra são sólidas: é preciso elevar os pés antes de atravessar um patamar.
+  for(const wall of platforms.filter(v=>v.ground)){
+    if(p.y<=wall.y+2)continue;
+    if(p.vx>0&&previous.x+C.halfFoot<=wall.x+.01&&p.x+C.halfFoot>wall.x){p.x=wall.x-C.halfFoot;p.vx=0;}
+    else if(p.vx<0&&previous.x-C.halfFoot>=wall.x+wall.w-.01&&p.x-C.halfFoot<wall.x+wall.w){p.x=wall.x+wall.w+C.halfFoot;p.vx=0;}
+  }
+  p.vy=Math.min(1800,p.vy+C.gravity*dt);p.y+=p.vy*dt;p.onGround=false;p.support=null;
   if(p.vy>=0){
-    const landings=platforms.map(v=>{const old=oldPlatforms.find(o=>o.id===v.id)??v,oldRelative=previous.y-old.y,newRelative=p.y-v.y;if(oldRelative>2||newRelative<0)return null;const fraction=clamp(-oldRelative/Math.max(.0001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,left=old.x+(v.x-old.x)*fraction;return x+C.halfFoot>left&&x-C.halfFoot<left+v.w?{platform:v,fraction}:null;}).filter(Boolean).sort((a,b)=>a.fraction-b.fraction);
+    const landings=platforms.map(v=>{const old=oldPlatforms.find(o=>o.id===v.id)??v,oldRelative=previous.y-old.y,newRelative=p.y-v.y;if(oldRelative>2||newRelative<0)return null;const fraction=clamp(-oldRelative/Math.max(.0001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,left=old.x+(v.x-old.x)*fraction;const inset=v.ground?0:v.w*.06;return x>=left+inset&&x<=left+v.w-inset?{platform:v,fraction}:null;}).filter(Boolean).sort((a,b)=>a.fraction-b.fraction);
     const land=landings[0]?.platform;
     if(land){p.y=land.y;p.vy=0;p.onGround=true;p.support=land.id;p.terrain=land.type;if(land.type==='cloud'&&s.clouds[land.id]===undefined)s.clouds[land.id]=s.time;if(!land.rotating&&land.type!=='cloud'&&s.trail.at(-1)!==land.id){s.trail.push(land.id);s.trail=s.trail.slice(-8);}if(land.ground)s.safeGround=land.id;}
   }

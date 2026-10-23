@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "427b94c3d98a4fd29cfdb3ba384f0f35",
+  "date": "2026-10-23T19:11:48.022173+00:00",
+  "title": "QA temporário: test:garden:audio",
+  "files": [
+    {
+      "path": "qa-execucoes/427b94c3d98a4fd29cfdb3ba384f0f35.log",
+      "sourceId": "fb61393aa6d125be0a68418682925876397fb4859ee03a8ec4de9e81468b4db9",
+      "sha256": "aff5cd2dc328a14cc1d7f74d530aed32d845f44b388d1ac844fb8251db8d3746",
+      "bytes": 1354,
+      "metadataOnly": false
+    }
+  ]
+}

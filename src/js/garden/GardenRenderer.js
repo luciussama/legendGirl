@@ -39,35 +39,37 @@ export class GardenRenderer {
     tile.getContext('2d').drawImage(image,frame.x+frame.w*.2,frame.y+frame.h*sy,frame.w*.6,frame.h*sh,0,0,tile.width,tile.height);
     const pattern=this.ctx.createPattern(tile,'repeat');this.patterns.set(type,pattern);return pattern;
   }
+  /** O mesmo contorno recorta terra e exclui água frontal, sem aproximar por retângulos. */
+  groundOutline(ctx,p,bottom){
+    const all=[...GARDEN_PLATFORM_BY_ID.values()],joinedLeft=all.some(v=>v.ground&&v!==p&&Math.abs(v.x+v.w-p.x)<1),joinedRight=all.some(v=>v.ground&&v!==p&&Math.abs(v.x-p.x-p.w)<1);
+    ctx.moveTo(p.x,p.y-150);ctx.lineTo(p.x+p.w,p.y-150);
+    for(let y=p.y-10;y<=bottom;y+=28)ctx.lineTo(p.x+p.w+(joinedRight?0:Math.sin(y*.11+p.x)*3-3),y);
+    ctx.lineTo(p.x+p.w,bottom+20);ctx.lineTo(p.x,bottom+20);
+    for(let y=bottom;y>=p.y-10;y-=28)ctx.lineTo(p.x+(joinedLeft?0:Math.sin(y*.09+p.x)*3+3),y);
+    ctx.closePath();return{joinedLeft,joinedRight};
+  }
+  /** O miolo termina antes das pontas: seu alfa não é preenchido por outra repetição. */
+  groundSurface(ctx,p,joinedLeft,joinedRight){
+    let setName='objetos',index=0,y=p.y-12,h=115;
+    if(p.type==='gravel'){setName='ambiente';index=2;y=p.y-27;h=110;}
+    else if(p.type==='grass'){setName='ambiente';index=1;y=p.y-90;h=110;}
+    else if(p.type==='wood'){index=1;y=p.y-10;h=80;}
+    const set=GARDEN_ART.sets[setName],frame=set.frames[index],image=this.images.get(set.file);if(!image)return;
+    const cap=32,start=p.x+(joinedLeft?0:cap),end=p.x+p.w-(joinedRight?0:cap);
+    ctx.save();ctx.beginPath();ctx.rect(start,y,Math.max(0,end-start),h);ctx.clip();
+    for(let x=Math.floor(p.x/220)*220;x<p.x+p.w;x+=220)ctx.drawImage(image,frame.x+frame.w*.2,frame.y,frame.w*.6,frame.h,x,y,224,h);
+    ctx.restore();
+    for(const [open,side]of [[!joinedLeft,-1],[!joinedRight,1]])if(open)ctx.drawImage(image,side<0?frame.x:frame.x+frame.w*.8,frame.y,frame.w*.2,frame.h,side<0?p.x:p.x+p.w-cap,y,cap,h);
+  }
   terrain(ctx,p,bottom){
     if(p.ground){
-      const all=[...GARDEN_PLATFORM_BY_ID.values()],joinedLeft=all.some(v=>v.ground&&v!==p&&Math.abs(v.x+v.w-p.x)<1),joinedRight=all.some(v=>v.ground&&v!==p&&Math.abs(v.x-p.x-p.w)<1);
-      ctx.save();ctx.beginPath();ctx.moveTo(p.x,p.y-150);ctx.lineTo(p.x+p.w,p.y-150);
-      // Contorno externo orgânico; junções entre materiais continuam inteiras.
-      for(let y=p.y-10;y<=bottom;y+=28)ctx.lineTo(p.x+p.w+(joinedRight?0:Math.sin(y*.11+p.x)*3-3),y);
-      ctx.lineTo(p.x+p.w,bottom+20);ctx.lineTo(p.x,bottom+20);
-      for(let y=bottom;y>=p.y-10;y-=28)ctx.lineTo(p.x+(joinedLeft?0:Math.sin(y*.09+p.x)*3+3),y);
-      ctx.closePath();ctx.clip();
+      ctx.save();ctx.beginPath();const {joinedLeft,joinedRight}=this.groundOutline(ctx,p,bottom);ctx.clip();
       // O corpo contínuo começa sob a superfície, sem frestas de fundo entre os recortes.
       ctx.fillStyle=p.type==='wood'?'#89532f':'#91633f';ctx.fillRect(p.x,p.y+8,p.w,bottom-p.y);
       const pattern=this.groundPattern(p.type==='wood'?'wood':'soil');
       if(pattern){ctx.save();ctx.globalAlpha=p.type==='wood'?.9:.22;ctx.fillStyle=pattern;ctx.fillRect(p.x,p.y+8,p.w,bottom-p.y);ctx.restore();}
-      let setName='objetos',index=0,y=p.y-12,h=115;
-      if(p.type==='gravel'){setName='ambiente';index=2;y=p.y-27;h=110;}
-      else if(p.type==='grass'){setName='ambiente';index=1;y=p.y-90;h=110;}
-      else if(p.type==='wood'){index=1;y=p.y-10;h=80;}
-      const set=GARDEN_ART.sets[setName],frame=set.frames[index],image=this.images.get(set.file);
-      // A faixa central não contém as pontas arredondadas de uma plataforma isolada.
-      if(image)for(let x=Math.floor(p.x/220)*220;x<p.x+p.w;x+=220){
-        ctx.drawImage(image,frame.x+frame.w*.2,frame.y,frame.w*.6,frame.h,x,y,224,h);
-      }
-      ctx.restore();
-      // Só as duas bordas externas recebem as pontas pintadas: não viram blocos internos.
-      if(image)for(const [open,side]of [[!joinedLeft,-1],[!joinedRight,1]])if(open){
-        const width=32,edge=side<0?p.x:p.x+p.w-width,sx=side<0?frame.x:frame.x+frame.w*.8;
-        ctx.drawImage(image,sx,frame.y,frame.w*.2,frame.h,edge,y,width,h);
-      }
-    }else{if(p.type==='stone')this.rockFoot(ctx,p);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='cloud'?6:3),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
+      this.groundSurface(ctx,p,joinedLeft&&[...GARDEN_PLATFORM_BY_ID.values()].some(v=>v.ground&&v.y===p.y&&Math.abs(v.x+v.w-p.x)<1),joinedRight&&[...GARDEN_PLATFORM_BY_ID.values()].some(v=>v.ground&&v.y===p.y&&Math.abs(v.x-p.x-p.w)<1));ctx.restore();
+    }else{if(p.type==='stone')this.rockFoot(ctx,p);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='wood'?8:6),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
   }
 
   /** O pé rochoso fica submerso; o tampo e sua colisão permanecem na altura original. */
@@ -77,17 +79,22 @@ export class GardenRenderer {
   }
   /** Água de primeiro plano envolve bases/margens em vez de deixar rochas flutuando. */
   waterFront(ctx,s,left,right,bottom,platforms){
+    ctx.save();
+    for(const ground of platforms.filter(p=>p.ground)){
+      ctx.beginPath();ctx.rect(left,C.waterY-40,right-left,bottom-C.waterY+60);this.groundOutline(ctx,ground,bottom);ctx.clip('evenodd');
+    }
     for(const water of waterPaint){if(water.x+water.w<left||water.x>right)continue;
       const wash=ctx.createLinearGradient(0,C.waterY-30,0,C.waterY+70);wash.addColorStop(0,'rgba(112,213,217,.38)');wash.addColorStop(1,'rgba(50,137,169,.78)');ctx.fillStyle=wash;ctx.fillRect(water.x-5,C.waterY-30,water.w+10,bottom-C.waterY+30);
       for(const p of platforms.filter(p=>p.type==='stone'&&p.x>=water.x&&p.x<=water.x+water.w)){
         ctx.strokeStyle='rgba(232,255,249,.5)';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x+p.w/2,C.waterY-27+Math.sin(s.time+p.x)*2,p.w*.4,4,0,0,Math.PI);ctx.stroke();
       }
     }
+    ctx.restore();
   }
   /** Pequenos tufos integram a troca de material sem traços sobre a superfície de apoio. */
   groundJoins(ctx,platforms){
     for(const p of platforms.filter(p=>p.ground)){
-      const previous=[...GARDEN_PLATFORM_BY_ID.values()].find(v=>v.ground&&Math.abs(v.x+v.w-p.x)<1);if(!previous||previous.type===p.type)continue;
+      const previous=[...GARDEN_PLATFORM_BY_ID.values()].find(v=>v.ground&&Math.abs(v.x+v.w-p.x)<1);if(!previous||previous.type===p.type||previous.y!==p.y)continue;
       const type=previous.type,setName=type==='grass'||type==='gravel'?'ambiente':'objetos',index=type==='grass'?1:type==='gravel'?2:type==='wood'?1:0;
       const set=GARDEN_ART.sets[setName],f=set.frames[index],image=this.images.get(set.file);if(!image)continue;
       const y=p.y-(type==='grass'?90:type==='gravel'?27:type==='wood'?10:12),h=type==='wood'?80:type==='soil'?115:110;
@@ -101,15 +108,12 @@ export class GardenRenderer {
     const set=GARDEN_ART.sets.ambiente,f=set.frames[1],image=this.images.get(set.file);if(!image)return;
     for(const ground of platforms.filter(v=>v.ground&&v.type==='grass')){
       ctx.save();ctx.globalAlpha=.45;ctx.beginPath();ctx.rect(ground.x,ground.y-90,ground.w,98);ctx.clip();
-      // Mesmo recorte, escala e grade do cenário: não há remendo acompanhando os pés.
-      for(let x=Math.floor(ground.x/220)*220;x<ground.x+ground.w;x+=220)ctx.drawImage(image,f.x+f.w*.2,f.y,f.w*.6,f.h,x,ground.y-90,224,110);
-      for(const side of [-1,1]){
-        const joined=[...GARDEN_PLATFORM_BY_ID.values()].some(v=>v.ground&&v!==ground&&Math.abs(side<0?v.x+v.w-ground.x:v.x-ground.x-ground.w)<1);
-        if(!joined)ctx.drawImage(image,side<0?f.x:f.x+f.w*.8,f.y,f.w*.2,f.h,side<0?ground.x:ground.x+ground.w-32,ground.y-90,32,110);
-      }
-      ctx.restore();
+      const all=[...GARDEN_PLATFORM_BY_ID.values()];
+      const joinedLeft=all.some(v=>v.ground&&v!==ground&&v.y===ground.y&&Math.abs(v.x+v.w-ground.x)<1),joinedRight=all.some(v=>v.ground&&v!==ground&&v.y===ground.y&&Math.abs(v.x-ground.x-ground.w)<1);
+      this.groundSurface(ctx,ground,joinedLeft,joinedRight);ctx.restore();
     }
   }
+
   effort(ctx,s){
     const p=s.player;if(p.terrain!=='gravel'||p.discomfort<.4||s.stage!=='RUNNING'||Math.abs(p.vx)<15)return;
     for(let i=0;i<3;i++){
@@ -151,7 +155,7 @@ export class GardenRenderer {
     this.groundJoins(ctx,platforms);this.waterFront(ctx,s,left,right,bottom,platforms);
     this.scenery(ctx,s,left,right);
     if(left<680)this.prop(ctx,0,-135,148,640,445,'ambiente');
-    for(const checkpoint of GARDEN_CHECKPOINTS.slice(1)){if(checkpoint<left||checkpoint>right)continue;ctx.fillStyle='#805a3f';ctx.fillRect(checkpoint-5,541,7,49);ctx.fillStyle=s.checkpoint>=checkpoint?'#f4b85f':'#b6d284';ctx.beginPath();ctx.moveTo(checkpoint+2,542);ctx.lineTo(checkpoint+33,554);ctx.lineTo(checkpoint+2,566);ctx.fill();}
+    for(const checkpoint of GARDEN_CHECKPOINTS.slice(1)){if(checkpoint<left||checkpoint>right)continue;ctx.fillStyle='#805a3f';const ground=GARDEN_PLATFORM_BY_ID.get(gardenPlatforms(s.time,s,checkpoint,1).find(p=>p.ground&&checkpoint>=p.x&&checkpoint<p.x+p.w)?.id),y=ground?.y??C.ground;ctx.fillRect(checkpoint-5,y-49,7,49);ctx.fillStyle=s.checkpoint>=checkpoint?'#f4b85f':'#b6d284';ctx.beginPath();ctx.moveTo(checkpoint+2,y-48);ctx.lineTo(checkpoint+33,y-36);ctx.lineTo(checkpoint+2,y-24);ctx.fill();}
     if(right>C.goal-600){// A árvore fica no plano posterior do gramado; suas raízes terminam antes da toalha.
       this.prop(ctx,8,C.goal-320,-230,650,695);const picnic=GARDEN_ART.sets.ambiente.frames[3],picnicHeight=400*picnic.h/picnic.w;this.prop(ctx,3,C.goal+5,C.ground-picnicHeight,400,picnicHeight,'ambiente');}
     for(const e of s.enemies){if(e.x<left||e.x>right||!e.alive&&e.defeatAge>.4)continue;ctx.save();ctx.translate(e.x,e.y);ctx.scale(e.direction,1);if(!e.alive){ctx.globalAlpha=Math.max(0,1-e.defeatAge/.4);ctx.scale(1,Math.max(.15,1-e.defeatAge*2));}if(e.type==='caterpillar'&&e.hp===1)this.prop(ctx,Math.floor(s.time*12)%2,-e.w/2,-e.h,e.w,e.h,'lagartaVermelha');else this.prop(ctx,(e.type==='ant'?4:6)+Math.floor(s.time*7)%2,-e.w/2,-e.h,e.w,e.h);ctx.restore();}

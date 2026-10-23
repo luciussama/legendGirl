@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bd4bd614bc4d678ea8beb5cbea0b6dcf8eba30e2ac07ebf4ce7e85616e13c770",
+  "path": "qa-execucoes/8b4d05cc1f7445b5a2f6dae02e88c6ec.log",
+  "sha256": "830be38a119e28c1bce6e6c0756676e729079e370f82f4d858670478ff6676a7",
+  "capturedAt": "2026-10-23T19:12:29.445567+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:audio",
+    "exitCode": 0,
+    "package": "20261023T191042-eefd29fc3446"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:audio\n> node docs/diario-ia/qa/jardim-audio/audio-browser.mjs\n\n{\n  \"resultado\": \"aprovado\",\n  \"duracao\": 136.73426,\n  \"arquivo\": \"Blues Shuffle Loop.mp3\",\n  \"loop\": true,\n  \"pausa\": true,\n  \"mudo\": true,\n  \"volume\": true,\n  \"efeitos\": true,\n  \"descarte\": true,\n  \"autoplay\": true\n}\n"
+}

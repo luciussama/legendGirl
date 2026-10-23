@@ -1,7 +1,7 @@
 /** Percurso em pixels de mundo. Materiais definem gameplay, sem alterar a câmera. */
-export const GARDEN = Object.freeze({version:2,get width(){return GARDEN_WIDTH;},get goal(){return GARDEN_GOAL;},height:720,ground:590,playerHeight:92,halfFoot:36,speed:220,jump:720,gravity:1600,step:1/120,waterY:650,targetMinutes:20});
+export const GARDEN = Object.freeze({version:3,get width(){return GARDEN_WIDTH;},get goal(){return GARDEN_GOAL;},height:720,ground:590,playerHeight:92,halfFoot:12,speed:220,jump:720,gravity:1600,step:1/120,waterY:650,targetMinutes:20});
 export const GARDEN_TERRAINS = Object.freeze({wood:{speed:220,jump:720},soil:{speed:220,jump:720},stone:{speed:220,jump:720},cloud:{speed:220,jump:720},grass:{speed:100,jump:720},gravel:{speed:410,jump:720}});
-const platforms=[],enemies=[],waters=[],sections=[],checkpoints=[120];
+const platforms=[],enemies=[],waters=[],sections=[],checkpoints=[120],legacyCheckpoints=[120];
 const add=(id,x,w,type='soil',y=590,extra={})=>{const p={id,x,w,type,y,...extra};platforms.push(p);return p;};
 const ground=(id,x,w,type='soil')=>add(id,x,w,type,590,{ground:true});
 const enemy=(id,type,p,progress=0)=>enemies.push({id,type,supportId:p.id,x:p.x+p.w*.6,y:p.y,baseY:p.y,left:p.x+70,right:p.x+p.w-70,w:type==='ant'?56:82,h:type==='ant'?35:42,speed:(type==='ant'?43:30)+progress*19,period:3.2-progress*.7,phase:enemies.length*.71});
@@ -24,10 +24,10 @@ const chapters=['Canteiros de margaridas','O caminho das hortênsias','Riachos d
 let cursor=7350;
 for(let region=0;region<6;region++)for(let motif=0;motif<5;motif++){
   const index=region*5+motif,id='trecho-'+index,start=cursor,progress=index/29;
-  sections.push({id,x:start,name:chapters[region]+' · '+(motif+1),chapter:region+1});checkpoints.push(start+120);
+  sections.push({id,x:start,name:chapters[region]+' · '+(motif+1),chapter:region+1});checkpoints.push(start+120);legacyCheckpoints.push(start+120-index*400);
   const path=ground(id+'-caminho',cursor,1250+motif*65);cursor+=path.w;
   if(index>0)enemy(id+'-formiga','ant',path,progress);
-  const grass=ground(id+'-gramado',cursor,1750+region*40,'grass');cursor+=grass.w;
+  const grass=ground(id+'-gramado',cursor,2150+region*40,'grass');cursor+=grass.w;
   if(index%2===0)enemy(id+'-lagarta','caterpillar',grass,progress);
   const approach=ground(id+'-margem',cursor,420+motif*30);cursor+=approach.w;
   if(index%3===1)enemy(id+'-margem-formiga','ant',approach,progress);
@@ -40,16 +40,35 @@ for(let region=0;region<6;region++)for(let motif=0;motif<5;motif++){
   sections.at(-1).end=cursor;
 }
 export const GARDEN_FINAL_START = cursor;
-ground('descanso-final',cursor,450);checkpoints.push(cursor+120);cursor+=570;
+ground('descanso-final',cursor,450);checkpoints.push(cursor+120);legacyCheckpoints.push(cursor+120-30*400);cursor+=570;
 for(let i=0;i<4;i++)add('nuvem-final-'+i,cursor+i*265,170,'cloud',530-(i%2)*36,{group:'final'});
 cursor+=4*265;ground('arvore',cursor,1450);cursor+=1450;
 export const GARDEN_GOAL=cursor-680;
 export const GARDEN_WIDTH=cursor;
+// Relevos de terra maciça: cada perfil volta à cota da margem e varia ao longo da fase.
+for(let i=platforms.length-1;i>=0;i--){
+  const p=platforms[i];if(!p.ground||p.type==='wood'||['primeiros-bichinhos','descanso-final','arvore'].includes(p.id)||p.w<600)continue;
+  const match=p.id.match(/^trecho-(\d+)/),n=match?Number(match[1]):0,amplitude=45+Math.floor(n/5)*5;
+  let profile=[0,-amplitude,-amplitude*2,-amplitude,0];
+  if(n%3===1)profile=[0,-amplitude,0,-amplitude,0];
+  if(n%3===2)profile=[0,-amplitude,-amplitude*2,-amplitude,-amplitude,0];
+  // Clareiras curtas reservam um topo largo: inimigos não bloqueiam uma subida alta na borda.
+  if(match&&p.w<1100)profile=[0,-amplitude,0];
+  if(p.type==='gravel')profile=[0,-70,0];
+  const weights=p.type==='gravel'?[.45,.25,.3]:profile.map(()=>1/profile.length);
+  let x=p.x;
+  const pieces=profile.map((height,j)=>{const end=j===profile.length-1?p.x+p.w:x+p.w*weights[j],piece={...p,id:j?p.id+'-relevo-'+j:p.id,x,w:end-x,y:p.y+height};x=end;return piece;});
+  platforms.splice(i,1,...pieces);
+  // Cada inseto mantém a identidade e pousa no patamar que contém sua posição inicial.
+  for(const e of enemies)if(e.supportId===p.id){const home=pieces.find(v=>e.x>=v.x&&e.x<v.x+v.w)||pieces[0];Object.assign(e,{supportId:home.id,y:home.y,baseY:home.y,left:home.x+70,right:home.x+home.w-70});}
+}
 export const GARDEN_PLATFORMS=Object.freeze(platforms.map(Object.freeze));
 export const GARDEN_ENEMIES=Object.freeze(enemies.map(Object.freeze));
 export const GARDEN_WATERS=Object.freeze(waters.map(Object.freeze));
 export const GARDEN_SECTIONS=Object.freeze(sections.map(Object.freeze));
 export const GARDEN_CHECKPOINTS=Object.freeze(checkpoints);
+// Liga checkpoints da geometria plana v2 aos mesmos setores do percurso ampliado.
+export const GARDEN_LEGACY_CHECKPOINTS=new Map(legacyCheckpoints.map((x,i)=>[x,checkpoints[i]]));
 export const GARDEN_PLATFORM_BY_ID=new Map(platforms.map(p=>[p.id,p]));
 const buckets=new Map();for(const p of platforms)for(let k=Math.floor(p.x/1024);k<=Math.floor((p.x+p.w)/1024);k++){if(!buckets.has(k))buckets.set(k,[]);buckets.get(k).push(p);}
 /** Consulta espacial evita varrer todo o jardim em cada subpasso de física. */

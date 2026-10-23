@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T190318-462c0ef37983",
+  "date": "2026-10-23T19:03:18.961088+00:00",
+  "title": "Percurso irregular: derrota real por inimigo perto do fim; testar repetição oficial de checkpoint e contar tempo acumulado, sem imunidade artificial",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "72b300ab6807972688f8f666c45a3a11c06d039ae81cf55c02d765ef45e38c93",
+      "sha256": "a537810f145e3f99a27503fee4d7d688a5fe832a54c4efb1f211cc8b74a95745",
+      "bytes": 1882,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

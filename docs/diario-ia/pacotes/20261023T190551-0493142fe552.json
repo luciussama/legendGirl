@@ -1,0 +1,58 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T190551-0493142fe552",
+  "date": "2026-10-23T19:05:51.272566+00:00",
+  "title": "Relevo v3 e apoio dos pés: fontes finais, suíte completa e inspeção das margens/roda",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "3ac9c1cb63d85066afd0060978fb85f095687455f31fb18ecad2e2d242592824",
+      "sha256": "dedfa146f3bfe4aec6ede0fd14f6fd14e63a99a55a7220f85fdc6ebf0977a507",
+      "bytes": 12097,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "a728b7d45420d09e62f409861b669b29c24a71432395afb9b332044e026fdaa1",
+      "sha256": "60364d3c15aeb43a5ad10806128f33af1a7915e5560cfff8d92c8012d09f819b",
+      "bytes": 10741,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/inspecao-relevo.json",
+      "sourceId": "c17b1a8384cf392dff30de4c229cee826a41d82cbaa79810c2a83d3ccf43edf3",
+      "sha256": "7fe8490554edb451882a55f9d0f3c35005ae3fbea7dff4433d85165d31e7e66d",
+      "bytes": 12806,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "df8201923888a27265423537d7a18b1b42dc0fcc15942e0f321bf1c9115a7bbd",
+      "sha256": "4b35d9cf686ef0475b90a026136584b5a2df7eae77f20c68e20a1c675cdbe20f",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "72b300ab6807972688f8f666c45a3a11c06d039ae81cf55c02d765ef45e38c93",
+      "sha256": "a537810f145e3f99a27503fee4d7d688a5fe832a54c4efb1f211cc8b74a95745",
+      "bytes": 1882,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/npm-test-relevo.log",
+      "sourceId": "bc2b13173ebbec554225b77bcbf9c1c21c57735e8a4bfbf9abec386ecbf6b68c",
+      "sha256": "e4fbfdb77c9fd07149d257fff5cd885f5e6506e1dc94e9fefb9fd6708ce3ec37",
+      "bytes": 68510,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "cfc7b0c62ae761358a072b104ad97d80a23b34e1edc0dbaff79514b7af23dad8",
+      "sha256": "cd44c370937aa9127bd98932041e71d106ae0a166b9eef53b82d3658185fbb99",
+      "bytes": 1922,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

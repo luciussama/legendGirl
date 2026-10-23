@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T185545-1a582e5d788b",
+  "date": "2026-10-23T18:55:45.366257+00:00",
+  "title": "Relevo e margens: fontes antes de validar subidas, paredes e save v3",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "b951100a7e02671bffdfd3b8023df9fddeb54f264cccff3a406aed0d271a4fe5",
+      "sha256": "9cc3872728a6d22a92089f28c83e7fa10e6a048446f04c97551c0c3ea67a7067",
+      "bytes": 11867,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "d833e0fcd7bcd8449079275492f95691dc7bc0147c67e0104e41b865486165a4",
+      "sha256": "1994099a0f50cd9752713fe0323dcf9844e8038637f031f288032bc16dd1f3d5",
+      "bytes": 9473,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "df8201923888a27265423537d7a18b1b42dc0fcc15942e0f321bf1c9115a7bbd",
+      "sha256": "4b35d9cf686ef0475b90a026136584b5a2df7eae77f20c68e20a1c675cdbe20f",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "a927e7ad1d87bd5b079641c39edf289d748c092f361e9fcb072b652ace0e5785",
+      "sha256": "618399d63e49ebf43d8990482fb96fd11d70bf2d673cf4de00d8837f706c7cc5",
+      "bytes": 1643,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "1f4746acda0bebdcc8b3707a8cb9fed1fb128494f5f3b6a73acf082a37a84cb1",
+      "sha256": "d12a154be0595554d40036a13a33f78cb0417667af8a56a47be3bdefcbeab8cc",
+      "bytes": 1922,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}
