@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "c280567b780e7f3292568ba5e7608d9c89fb396df48045c261eb3bdc2995227f",
+  "path": "qa-execucoes/82005a40b4b549509312a76bb67833f6/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-sala.png",
+  "sha256": "0a18f38b2070a99b1d9130b53fc671c489055c515e53614af8106418e1f3a2a8",
+  "capturedAt": "2026-10-23T13:11:22.497403+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/desktop-sala.png\", \"sha256\": \"b66be1f7b79adba00294d574093a5cf5b31d3a0ec5869a3fbd60a5952a5d1338\", \"bytes\": 1165510, \"binaryRetained\": false}"
+}

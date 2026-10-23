@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8df4717ba6952fce915032ebe4fd14666aa74516b4a2f636cd60013bb9c0e542",
+  "path": "qa-execucoes/d578acbe00fa412dabca2eccc7cb4aac/docs/diario-ia/qa-resultados/fada-3d/final-EASY.png",
+  "sha256": "efd4faae302c68c8330e149045b386922c10242a5db2afe5a00650fce4d7db70",
+  "capturedAt": "2026-10-23T13:09:34.968473+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:fairy:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/fada-3d/final-EASY.png\", \"sha256\": \"7348c47335ac94016b8d69eca18bd19d175d5c9e7e0b278ea159d313cdbc06c8\", \"bytes\": 544894, \"binaryRetained\": false}"
+}

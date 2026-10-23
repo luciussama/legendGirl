@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d0c7c08e5ddeb0b1e1c9c4b68359afd131d927c4a2777b3d993dede982f1929f",
+  "path": "qa-execucoes/d578acbe00fa412dabca2eccc7cb4aac/docs/diario-ia/qa-resultados/fada-3d/modelo-costas.png",
+  "sha256": "30587dab8ccd4316f5c147ef78ad258a89202174f0cb13560bc209e0fce8e0e3",
+  "capturedAt": "2026-10-23T13:09:34.975332+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:fairy:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/fada-3d/modelo-costas.png\", \"sha256\": \"d284368c7408b85eb3b083df73e710f5d8f529bae096f8abff4e848e6bc42957\", \"bytes\": 121967, \"binaryRetained\": false}"
+}

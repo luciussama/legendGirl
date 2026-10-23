@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "da99e163519c16e35fd0cae05f4850d5d4bcfbabdf9703b8048132f891430b7d",
+  "path": "qa-execucoes/82005a40b4b549509312a76bb67833f6/docs/diario-ia/qa-resultados/menina-ilustrada/android-poses.png",
+  "sha256": "7a5fa718544052abfea6fb934c98e5c213c118fd4153679de6ba3450312412d7",
+  "capturedAt": "2026-10-23T13:11:22.491394+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/android-poses.png\", \"sha256\": \"0d4dc09f15e59a5c205b052c7edc81fbe43bec8b22274f813f53a505609eefee\", \"bytes\": 622817, \"binaryRetained\": false}"
+}

@@ -1,0 +1,120 @@
+{
+  "schemaVersion": 1,
+  "id": "7e859d3ad663465c83e673a6a3e3cc24",
+  "date": "2026-10-22T19:11:46.380705+00:00",
+  "title": "QA temporário: test:bear-chase:fairy:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24.log",
+      "sourceId": "5ee3a527ee3d32755a077c85b4174abc542d245ccb6bb26292dc7949ac620eba",
+      "sha256": "4828e8d0b504f96a98d005c2dc9c119b00cfa3f8225bd1cd32138e3290124fcd",
+      "bytes": 5816,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-1280-14.png",
+      "sourceId": "681814ec679420841855ca34ecf311f7274bc1f49a425131060c2de9f1817590",
+      "sha256": "9708cb3bbcc53517edecf2c7191aecaf5fb9bbd11719e91ef26537cc94816061",
+      "bytes": 1507864,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-1280-338.png",
+      "sourceId": "fb006273d7145da322e94c732a42af2ff3f121a7eaf37890025e1dc265376907",
+      "sha256": "82f86618049589d1cf68b34a9af7e2e5d1adc01696e4eb3bab1fa6a7a83ad718",
+      "bytes": 1551069,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-390-14.png",
+      "sourceId": "6219edc12391999635deb2f8988a3b37a7e27dcd672deeb0af6a2bf09670e370",
+      "sha256": "c99cfb5039b35ff97d24cfc1092d2a3a5437d0a579863fd4058779a15a739e2f",
+      "bytes": 527589,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-390-338.png",
+      "sourceId": "0f9b6a9b34a04a669c820413f21806f1710ea62a65608e33133f838dfa28d2cf",
+      "sha256": "2c61be29903ea2e67de51b431fd89c30e382fd0f954cb8c24e25c6edc1c64d0c",
+      "bytes": 525417,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-844-14.png",
+      "sourceId": "51f414c0fea5b45a5cf329b754d6a2a529a8c9fa4153e47ca32c730089359d39",
+      "sha256": "56bec4c9f405da5cc2c686612be9ab2280de527bfcc4c5b12e38b5ac1f61ab26",
+      "bytes": 525840,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/jogo-844-338.png",
+      "sourceId": "f47bb19e77c5c4e0dd655b265cf3d1aeab4dfa7cb177ebb9632a405a4ebe6f2a",
+      "sha256": "9f8f74fa5244be7efc00e30872cc06d0f0acae7343863d0e0e45bcc0e8f4aceb",
+      "bytes": 545002,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/modelo-costas.png",
+      "sourceId": "a55aaaaa661e74585ed1b46bcaf648f5c53b131e2016c19e2ae654ebe30a15fc",
+      "sha256": "c13dde0626e6eeebe15494311b295fc40c387a3a9ec5e367f759631e29c690f1",
+      "bytes": 89322,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/modelo-frente.png",
+      "sourceId": "b6a51c9d8f10d71c02eabce065e5445c4a0de6aed5d2332ce5ff530977a98061",
+      "sha256": "731fe30c264b79c66905ffb1a4d81bad02c1c32fce7a318578e877c32c80e561",
+      "bytes": 125172,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/resultado.json",
+      "sourceId": "b75a1a65dde79d399a8693c2640681613b956bd62fc01c2883f58da3b1215eb5",
+      "sha256": "f6f449f8e92bcf3be2e9556f1bbbb731447d3faac60912b600794a8509e27831",
+      "bytes": 5695,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-1280-14.png",
+      "sourceId": "f54459d16e5691be0e2a05ac859d99319e9fa26e02a727298d25fca76eb61abb",
+      "sha256": "a148232a5a4dd9bf5690887888c1a81755ee4fa255e9ead1eab94495f53c8bf1",
+      "bytes": 1506015,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-1280-338.png",
+      "sourceId": "e98690ffc4397553a824c151cdc85ee935af7bca50f044733443417a2ca7721d",
+      "sha256": "a97ff0248f648851228d86f07598eead0bcdca65c95f374f3c8dba1127f56756",
+      "bytes": 1548612,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-390-14.png",
+      "sourceId": "e9541d1323d80f82c1a2c9d0239341004b68402802bb8d074f52e6f937f74972",
+      "sha256": "b115c97235c67f6748e40f6bf9935cae016a414fc24ebd2f24a0b7d0d59aa134",
+      "bytes": 527410,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-390-338.png",
+      "sourceId": "398b7a7c0290550eb189e59fcb12a82fc38c5b8c3dbc89407707252c65d1b349",
+      "sha256": "d8cc77231400a40788b73fb6d04f54253cb972159107b3219ee09df9054bfff4",
+      "bytes": 524799,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-844-14.png",
+      "sourceId": "92ada5a307a6eca52140e909a9676f82426059a46095044312fb05d40f0a9550",
+      "sha256": "f24852b6c8e458cd04dc38b0ce682b6dc5373b3ba634bd97f7655d22cd0cf224",
+      "bytes": 525132,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-844-338.png",
+      "sourceId": "6f0dc43680e48c72e4f3c1933abb02ed1bb1c2e3264ce3d0a0e6ae45e9b9b132",
+      "sha256": "5ecb0dd82ef0bebe96083bc91510cbf227213e976c6b9d16ff171f0bf87d2cba",
+      "bytes": 544344,
+      "metadataOnly": true
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261022T191131-a9cbc467dbe3",
+  "date": "2026-10-22T19:11:31.327952+00:00",
+  "title": "Fada volumétrica: pixels de luz/sombra, três viewports, curvas, orçamento e descarte",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/fada-3d-20261022/navegador.mjs",
+      "sourceId": "dacce836cb77ec349f6ec0701314e57516fb8e072a11069cb7249f1e3d53d1e2",
+      "sha256": "28966f4e591315efd03d837fd625086a2a379ceb0153aba5d90f738fe65139d8",
+      "bytes": 3294,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/fada-3d-20261022/analise.js",
+      "sourceId": "6e84d8dd8d63c89eebb3eaf1b2825591619d6d322bb7e679d4885d704f872e65",
+      "sha256": "964c0073183ce4259969ed3cec090c75ffa1231d77cd91ac7de62642aed06862",
+      "bytes": 4760,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:bear-chase:fairy:browser": "node docs/diario-ia/qa/fada-3d-20261022/navegador.mjs"
+  }
+}

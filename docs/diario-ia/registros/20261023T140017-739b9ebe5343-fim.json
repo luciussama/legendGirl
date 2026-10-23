@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T140017-739b9ebe5343-fim",
+  "sessionId": "20261023T140017-739b9ebe5343",
+  "type": "fim",
+  "date": "2026-10-23T14:07:46.177164+00:00",
+  "title": "Reposicionar espada e orientar entrega obrigatória dos brinquedos ao baú",
+  "actor": "Codex",
+  "summary": "Espada reposicionada no piso em (1360,330), à direita do baú abaixo da janela direita, com teste de piso livre. Enquanto carrega, a menina somente guarda no baú: ação longe conserva carga, sem soltar no chão ou trocar de brinquedo. Nanda indica o baú durante a carga e segue o brinquedo disponível mais próximo após guardar, liberando nova coleta. Investigação espera entregar a carga atual; Nanda fica fixa sobre a espada desde a revelação e canCollectToys bloqueia brinquedos durante descoberta/busca/coleta/equipamento. Botão mostra LEVAR/AO BAÚ, GUARDAR/NO BAÚ ou ESPADA/APROXIME-SE. Tempos narrativos, combate e trabalhos anteriores preservados. Sem commit/push.",
+  "checks": [
+    "npm test completo aprovado após atualizar teste legado de soltura para verificar conservação da carga/posição, preservando fonte original. Falha inicial era expectativa explícita do comportamento que o usuário substituiu.",
+    "test:toy-room:entrega:browser aprovado em desktop, Android retrato e paisagem, NORMAL/EASY: 48 ciclos dos oito brinquedos; ação repetida não solta/troca, guia aponta baú e depois brinquedo mais próximo, nova coleta liberada, save/restore de carga e espada, investigação aguarda mãos vazias, espada acessível por piso livre, exclusividade desde revelação até equipamento e Nanda fixa em dt variável. Captura da posição inspecionada; hash/tamanho/caminho preservados e bitmap temporário descartado.",
+    "test:toy-room:story aprovado: recorrência, diálogos, coleta/equipamento da espada, animação, espelhamento, guia e câmera/save em NORMAL/EASY e retrato/paisagem. Corrigido mock legado sem assets.get e expectativa histórica de cameraTarget nulo divergente do contrato documentado anterior; fonte preservada em novas versões, sem mudança de produção da câmera.",
+    "Build, lint e git diff --check aprovados. docs:sprites reconstruído: 440 imagens, 153 recortes, 29 assinaturas; referência gerada com 154 módulos e 1038 declarações. Nenhum bitmap novo ou física de plataformas alterada."
+  ],
+  "pending": [
+    "Sem homologação em aparelho físico ou Safari; QA usa Chrome isolado e emulação de formatos.",
+    "Alterações locais em feat-fairy-ajustments; sem commit, push ou publicação solicitados nesta sessão."
+  ],
+  "files": [
+    "src/js/toy-room/ToyRoomInteraction.js",
+    "src/js/toy-room/ToyRoomStory.js",
+    "src/js/toy-room/ToyRoomCompanion.js",
+    "src/js/toy-room/ToyRoomUI.js",
+    "src/js/toy-room/ToyRoomSceneRenderer.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "docs/DIARIO-HUMANO.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

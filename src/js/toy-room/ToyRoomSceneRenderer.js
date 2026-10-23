@@ -98,6 +98,7 @@ export function renderToyRoomScene(scene, options = {}) {
       if (!showingAttack) {
         toyRoomEntities.renderPlayer(ctx, scene.player, {
           assets: scene.assets,
+          swordEquipped: Boolean(scene.story.state.swordEquipped),
           environmentTeddy: scene.environmentTeddy,
           environmentTrain: scene.environmentTrain
         });
@@ -168,7 +169,8 @@ export function renderToyRoomScene(scene, options = {}) {
     actionBtnPressed: scene.actionBtnPressed,
     canInteract: scene.canInteract,
     isNearChest: scene.isNearChest,
-    swordEquipped: scene.story.swordEquipped
+    swordEquipped: scene.story.swordEquipped,
+    seekingSword: scene.story.state.sword?.visible && !scene.story.swordEquipped
   });
 
   scene.tutorial.render(ctx, scene.canvas, frame);

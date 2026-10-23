@@ -9,7 +9,7 @@ export function updateToyRoomCompanion({ player, fairy, toys, tutorial, story, g
   fairy.targetY = player.y - 32 + Math.sin(fairy.flutterTime * 0.12) * 8;
   tutorial.update(dt);
   // O tutorial conserva sua orientação; no gameplay o alvo depende da protagonista.
-  guideToy = nearestToyGuide(player, toys, guideToy);
+  guideToy = player.carriedItem || story.canCollectToys === false ? null : nearestToyGuide(player, toys, guideToy);
   const guide = story.guidePosition() || tutorial.guidePosition() || (guideToy && {
     x: guideToy.x, y: guideToy.y - 105
   });
@@ -17,8 +17,12 @@ export function updateToyRoomCompanion({ player, fairy, toys, tutorial, story, g
 
   fairy.flutterTime += dt;
   const guideBlend = guide ? toyGuideBlend(gameDifficulty, dt) : 0.12 * dt;
-  fairy.x += (fairy.targetX - fairy.x) * guideBlend;
-  fairy.y += (fairy.targetY - fairy.y) * guideBlend;
+  if (story.state?.sword && (story.state.sword.visible || story.state.investigationStage === 'PICKUP')) {
+    fairy.x = fairy.targetX;fairy.y = fairy.targetY;
+  } else {
+    fairy.x += (fairy.targetX - fairy.x) * guideBlend;
+    fairy.y += (fairy.targetY - fairy.y) * guideBlend;
+  }
 
   if (Math.random() < 0.4) {
     fairy.particles.push({

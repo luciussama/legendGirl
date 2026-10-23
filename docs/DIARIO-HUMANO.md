@@ -100,3 +100,29 @@ O seletor do topo começa cada fase por sua cena de entrada: despertar, chegada 
 ### 22/10/2026 — Câmera lateral durante os saltos
 
 A regra de câmera do quarto escuro passa a ser explícita: a jogabilidade usa somente rolagem lateral, com altura e escala fixas por viewport. Pousar ou mudar de plataforma não reajusta o quadro. A câmera também deixa de corrigir a posição e a subida da menina. Cenas narrativas mantêm seus cortes; correções de salto devem atuar no salto ou nas superfícies físicas, conforme registrado em AGENTS.md.
+
+
+## 22/10/2026 — Fadinha luminosa na perseguição
+
+A corrida em 3D passa a apresentar a fadinha com corpo, coque, vestido, varinha e quatro asas em volume. Ela acompanha a menina acima da cabeça; sua luz dourada ilumina a personagem e os objetos próximos, com sombras reais. Para conservar o orçamento de renderização, essa luz ocupa o passe de sombra da janela dominante, mantendo duas fontes com sombra. A abertura ilustrada e as fases 2D mantêm sua linguagem própria. A aparência desta nova interpretação ainda depende de revisão artística do usuário.
+
+
+### Revisão da fadinha — núcleo de luz e voo livre
+
+A direção foi ajustada pela referência enviada pelo usuário: pequeno núcleo de luz branco/ciano, aura azul e asas peroladas maiores. A fada circula ao redor da menina, passando pelos dois lados, à frente e atrás, com variação de altura. A luz e suas sombras acompanham o núcleo. Essa revisão substitui o modelo humanoide e o voo estacionado acima da cabeça descritos na entrada anterior.
+
+## 23 de outubro de 2026 — apoio que acompanha o desenho
+
+O urso e os livros do começo do quarto passam a funcionar como um apoio contínuo. As plataformas consideram a extensão visível de suas superfícies, e os sapatos completos da menina contam para o contato. Isso permite caminhar e saltar nas bordas que parecem firmes, sem depender de manter o centro do corpo sobre uma faixa estreita. A câmera continua com rolagem somente lateral.
+
+## 23/10/2026 — Menina e brinquedos
+
+A pose de carregar brinquedos passa a apoiar o objeto nas palmas, com braços dobrados e dedos na frente. A qualidade detalhada escolhida para essa pose foi estendida às poses jogáveis 2D da menina. Na arena, ela mantém expressão brava, com olhos estreitos e sobrancelhas voltadas para o centro.
+
+O baú da arena aparece aberto: os adversários sobem de dentro da caixa antes de entrar no combate. Na corrida 3D, a menina acompanha o novo vestido creme com detalhes rosa, as duas marias-chiquinhas e as proporções da versão ilustrada. A fada luminosa continua circulando ao redor dela.
+
+## 23/10/2026 — Orientação na organização e descoberta da espada
+
+Enquanto carrega um brinquedo, a menina precisa levá-lo ao baú: não pode largá-lo no chão nem trocar por outro. Nanda indica o baú durante a entrega e, assim que o brinquedo é guardado, segue para o brinquedo disponível mais próximo da menina.
+
+A espada aparece à direita do baú, no piso abaixo da janela direita. Desde sua revelação, Nanda permanece sobre a espada e os brinquedos comuns ficam indisponíveis. A investigação aguarda a entrega do brinquedo atual antes de começar.

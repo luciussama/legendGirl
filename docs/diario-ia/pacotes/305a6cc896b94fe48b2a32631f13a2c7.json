@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "305a6cc896b94fe48b2a32631f13a2c7",
+  "date": "2026-10-23T13:10:44.533062+00:00",
+  "title": "QA temporário: test:menina:ilustrada:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/305a6cc896b94fe48b2a32631f13a2c7.log",
+      "sourceId": "9dc0903b75d1d940f0298013f155a569b4db197960d983a517056980f2c35b0f",
+      "sha256": "05ddf43cfa91f9de98dae7f798434210092aa6f1b679edf172eca9ddc1848ac3",
+      "bytes": 1620,
+      "metadataOnly": false
+    }
+  ]
+}

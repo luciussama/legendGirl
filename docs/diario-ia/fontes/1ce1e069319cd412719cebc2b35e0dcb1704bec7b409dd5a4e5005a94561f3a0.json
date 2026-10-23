@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "1ce1e069319cd412719cebc2b35e0dcb1704bec7b409dd5a4e5005a94561f3a0",
+  "path": "qa-execucoes/bc5cbde922fb4f1ea33232ab01680e4a/docs/diario-ia/qa-resultados/camera-lateral/android-true-7.png",
+  "sha256": "d8e34aa8e1833e3a9b6b5bb7e6802aa183dc22d9516b2eb916e00186de9cab9f",
+  "capturedAt": "2026-10-23T12:18:20.933272+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/android-true-7.png\", \"sha256\": \"10b71b2cd136ca928ab6098eb49a8aad2475a9c5ba494aeeae88860c2d999e6e\", \"bytes\": 308654, \"binaryRetained\": false}"
+}

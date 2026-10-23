@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7f15ff444190ac69966136ef76789279f48ce95e268a1120868eca2a66d6388b",
+  "path": "qa-execucoes/bc5cbde922fb4f1ea33232ab01680e4a/docs/diario-ia/qa-resultados/camera-lateral/android-false-20.png",
+  "sha256": "19f77abce332eba9e48655adc9dd4ae2737a37f8802638f8b570929bb1b6fe47",
+  "capturedAt": "2026-10-23T12:18:20.919544+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/camera-lateral/android-false-20.png\", \"sha256\": \"989123806befa13a7aef01e28bd6cd73ccfc0949f75e0f84957cac399ba8da5b\", \"bytes\": 371627, \"binaryRetained\": false}"
+}

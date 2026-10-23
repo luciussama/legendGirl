@@ -180,7 +180,7 @@ export function drawStorybookPlatform(ctx,assets,p,sx,tick=0) {
   const support=p.standRegion||p, x=sx+support.x-p.x,y=p.surfaceTopY??support.y??p.y,w=support.w;
   if(p.style==='block_castle') {
     const img=assets?.get('dark-room-modern-castle');if(!img)return false;
-    // A torre estreita é o único topo; as ameias inferiores permanecem decorativas.
+    // Preserva o recorte e a escala; DarkRoomContact mede também os apoios das ameias inferiores.
     ctx.save();const scale=w/318, height=Math.min(220,470-y);
     ctx.drawImage(img,42,324,1171,769,x-(468-42)*scale,y,1171*scale,height);
     drawContactEdge(ctx,x,y,w,'stone',3);ctx.restore();return true;

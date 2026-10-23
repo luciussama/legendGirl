@@ -100,3 +100,7 @@ Use os [comandos documentados](../COMANDOS.md): test:toy-room:arena, test:toy-ro
 Os inimigos do EASY caminham a 80% e investem a 85% da velocidade normal. Esperas entre aproximações duram 1,7×; retiradas, 1,5×; recuperação, 1,55×; intervalo entre evasões, 1,6×. A sequência extra de pressão após acertar a menina fica desativada. HP, transferência de corações e preparação/contato dos golpes permanecem iguais, preservando os sinais visuais para esquiva. O perfil é aplicado tanto ao entrar na arena quanto ao restaurar sua apresentação.
 
 As derrotas da arena entram na contagem geral da campanha. A cada três perdas no NORMAL, a interface oferece o fácil. Aceitar recupera os corações da menina e continua contra o mesmo adversário, preservando o dano já causado e os inimigos anteriores vencidos. O novo perfil de alcance/cadência é aplicado antes da retomada. Recusar mantém o NORMAL; a opção comum de nova tentativa conserva o reinício anterior da sequência de combate.
+
+## Baú aberto e entrada dos adversários
+
+A arena usa `chest-brinquedos-open-v2.png`, com tampa levantada e cavidade escura. `ArenaEnvironment` desenha a pintura completa atrás dos adversários e sua parede frontal/lateral depois deles, antes da menina. `transitionPlacement` primeiro eleva o brinquedo dentro da caixa e depois o conduz ao ponto original da arena; o retorno percorre a trajetória inversa. Escala cresce de 0,16 a 1. O relógio da transição, os pontos de combate, a física e a dificuldade permanecem os existentes. A exploração conserva o baú fechado anterior.

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "8247831bbb4c5e2a11e0d083b1d09e13635078dffbefe0132cd93926bec82db7",
+  "path": "qa-execucoes/c1ba8dd77abb40dd84027c952abcc794.log",
+  "sha256": "19596f6ace584abe8aa6745a5b3c2099558a706ae23ff43a731340e4a158b79d",
+  "capturedAt": "2026-10-23T14:05:02.622370+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:entrega:browser",
+    "exitCode": 0,
+    "package": "20261023T140437-a917fe60d62e"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:entrega:browser\n> node docs/diario-ia/qa/regras-brinquedos-navegador-20261023.mjs\n\n[{\"name\":\"desktop\",\"reports\":[{\"difficulty\":\"NORMAL\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true},{\"difficulty\":\"EASY\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true}]},{\"name\":\"android\",\"reports\":[{\"difficulty\":\"NORMAL\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true},{\"difficulty\":\"EASY\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true}]},{\"name\":\"paisagem\",\"reports\":[{\"difficulty\":\"NORMAL\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true},{\"difficulty\":\"EASY\",\"deliveries\":8,\"sword\":{\"x\":1360,\"y\":330},\"revealed\":true}]}]\nAPROVADO: entrega obrigatória, fada para baú/próximo brinquedo, exclusividade e posição acessível da espada, save/restore, NORMAL/EASY e três formatos.\n"
+}

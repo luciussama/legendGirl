@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "312dfce8cadfd497f2550b49792ebef32e93b74a35920e748d45db3888fcda93",
+  "path": "qa-execucoes/1a7521d960fa4f65adb979cb0066d2de/docs/diario-ia/qa-resultados/contato-integral/desktop-false-6.png",
+  "sha256": "584f450b635610e86c8270b8943c4531a0d2cf477a4b46c66bad8c7d0a204e5b",
+  "capturedAt": "2026-10-23T13:13:09.185448+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:contato:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/contato-integral/desktop-false-6.png\", \"sha256\": \"7a7421a481096cba48b8023e62adfbf4ab10e51883b04b0b72f9032d038db3e6\", \"bytes\": 431924, \"binaryRetained\": false}"
+}

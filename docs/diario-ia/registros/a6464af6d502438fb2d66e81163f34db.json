@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "a6464af6d502438fb2d66e81163f34db",
+  "type": "qa",
+  "date": "2026-10-23T12:57:54.553017+00:00",
+  "title": "QA temporário: test:menina:ilustrada:browser",
+  "exitCode": 0,
+  "sourceId": "83e0a5ef76533b10324b0bc1e25208a7ed3b68bd136f3cf8c2d176872dfa5fa2",
+  "package": "20261023T125746-4877107f90b3"
+}

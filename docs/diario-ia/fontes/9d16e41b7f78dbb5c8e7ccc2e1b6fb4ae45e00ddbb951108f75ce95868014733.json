@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9d16e41b7f78dbb5c8e7ccc2e1b6fb4ae45e00ddbb951108f75ce95868014733",
+  "path": "qa-execucoes/c1ba8dd77abb40dd84027c952abcc794/docs/diario-ia/qa-resultados/regras-brinquedos/android-espada.png",
+  "sha256": "abdda791b6249ced207f4914ef029bc830d38e710e705494e2033b5a234ac394",
+  "capturedAt": "2026-10-23T14:05:02.624405+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:entrega:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/regras-brinquedos/android-espada.png\", \"sha256\": \"17cedfdb52f24d0f41f48d25e78ade9ce2505026d424c2566da67ac05806dd68\", \"bytes\": 949506, \"binaryRetained\": false}"
+}

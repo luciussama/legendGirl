@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "6b5b5f32f8f04bf0b2c080ff82a83f8b",
+  "date": "2026-10-23T13:08:13.088820+00:00",
+  "title": "QA temporário: test:damage-sprites",
+  "files": [
+    {
+      "path": "qa-execucoes/6b5b5f32f8f04bf0b2c080ff82a83f8b.log",
+      "sourceId": "bcbbdcbbef83fd61c5669ce37b121ec5909fe0cdf42c1e8089cdd7fb8ecbef47",
+      "sha256": "7cff916aeab4e418acb0833f247a7cac7e59bdfc0b24532546ed54c7d57a145e",
+      "bytes": 1498,
+      "metadataOnly": false
+    }
+  ]
+}

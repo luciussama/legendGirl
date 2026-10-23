@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7ac2f1cceef5920a8798b1102615ae78276eb924e97611a5aee28f183af9b0b9",
+  "path": "qa-execucoes/25d403bdd9924d9cbb06db164bae3bbb/docs/diario-ia/qa-resultados/contato-integral/iphone-false-0.png",
+  "sha256": "6861f7933522ee0881bca9b3aa318f105939f4f578643aaa3706673d3314b999",
+  "capturedAt": "2026-10-23T12:18:16.487932+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:contato:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/contato-integral/iphone-false-0.png\", \"sha256\": \"aaac432ca16474015edc657b04e0ca9732f37a880ec282f526910416381160b0\", \"bytes\": 343307, \"binaryRetained\": false}"
+}

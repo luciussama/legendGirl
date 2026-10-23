@@ -7,6 +7,7 @@ import {execFileSync} from 'node:child_process';
 import {PNG} from 'pngjs';
 import jpeg from 'jpeg-js';
 import {OFFICIAL_FRAMES} from '../../src/js/assets/officialCharacter.js';
+import {GIRL_V2_SETS} from '../../src/js/assets/illustratedGirl.js';
 import {ARENA_GIRL_ANIMATION_FRAMES} from '../../src/js/toy-room/ArenaGirlAnimationFrames.js';
 const hash=value=>crypto.createHash('sha256').update(value).digest('hex');
 const imagePattern=/\.(png|jpe?g|svg|webp|gif|avif)$/i;
@@ -50,6 +51,7 @@ export async function buildCatalog(root) {
   items.push({id:itemId(file),kind:'file',path:file,title:path.basename(file),format:ext,width,height,bytes:buffer.length,sha256:hash(buffer),aliases:keys,usage,references:refs,hints,family:file.split('/').slice(0,-1).join('/')});
  }
  const addRegion=(file,pose,index,r)=>{
+  file=path.posix.normalize(file);
   const parent=items.find(i=>i.path===file&&i.kind==='file');if(!parent)return;
   const region={x:r.x||0,y:r.y||0,width:r.width||r.w,height:r.height||r.h};
   if(!Object.values(region).every(Number.isFinite)||region.width<=0||region.height<=0)return;
@@ -64,10 +66,11 @@ export async function buildCatalog(root) {
   if(['x','y','width','height'].every(key=>key in region))addRegion(file,match[1],0,region);
  }
  for(const frames of Object.values(ARENA_GIRL_ANIMATION_FRAMES))for(const frame of frames){
-  const parent=items.find(i=>i.kind==='file'&&i.path==='assets/art/toy-room/battle/'+frame.file);if(!parent)continue;
+  const parent=items.find(i=>i.kind==='file'&&i.path===path.posix.normalize('assets/art/toy-room/battle/'+frame.file));if(!parent)continue;
   parent.usage='runtime';if(!parent.references.some(r=>r.file==='src/js/toy-room/ArenaGirlAnimationFrames.js'))parent.references.push({file:'src/js/toy-room/ArenaGirlAnimationFrames.js',line:1,type:'runtime',alias:'metadados resolvidos'});
  }
  for(const [pose,frames]of Object.entries(OFFICIAL_FRAMES))frames.forEach((r,i)=>addRegion('assets/art/dark-room/sprites/official-character.png',pose,i,r));
+ for(const [pose,set]of Object.entries(GIRL_V2_SETS))set.frames.forEach((r,i)=>addRegion(set.file,pose,i,r));
  for(const [pose,frames]of Object.entries(ARENA_GIRL_ANIMATION_FRAMES))frames.filter(f=>f.x||f.y||f.file.includes('animation-v2')).forEach((r,i)=>addRegion('assets/art/toy-room/battle/'+r.file,pose,i,r));
  const signatures=[
   ...[...new Set(platforms.map(p=>p.style))].map(type=>({file:'src/js/environment/PlatformRenderer.js',symbol:'renderPlatforms',variant:type,preview:'platform',title:'Plataforma procedural · '+type})),

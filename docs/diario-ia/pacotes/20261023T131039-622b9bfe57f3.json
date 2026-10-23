@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T131039-622b9bfe57f3",
+  "date": "2026-10-23T13:10:39.002820+00:00",
+  "title": "Menina ilustrada e baú aberto: oclusão real, quatro inimigos e cena",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/menina-ilustrada-20261023/cenario.js",
+      "sourceId": "543ce649e5777ee394fde5ad866e91d754e5834ae9efdc8de7e26c059422ac7c",
+      "sha256": "0d1724949937cb15633bd946be1db1eef29daf5077c1dfaf87d397f7d2a860f0",
+      "bytes": 9990,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs",
+      "sourceId": "f96dbcff3843b703acb11e382b52594ff4a4d882d3bb29bd87b69b7345cdc60a",
+      "sha256": "4eef511d91fe7292a2cd2a219dd07d8a745b9cdce3aecc12fd6e93aaa121be79",
+      "bytes": 3548,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:menina:ilustrada:browser": "node docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs"
+  }
+}

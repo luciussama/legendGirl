@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "5d9d7983540d4f25927d28d344de2bc1",
+  "date": "2026-10-23T13:08:53.111935+00:00",
+  "title": "QA temporário: test:arena:defesa",
+  "files": [
+    {
+      "path": "qa-execucoes/5d9d7983540d4f25927d28d344de2bc1.log",
+      "sourceId": "0f154dbcd13f5a17752166aada612bc6942be654992c282a71d9e097de4d4aa9",
+      "sha256": "bbed3754dee7f6a7eef3950326f4326ca8980a5d88201bf7ffca31ccefcbcd45",
+      "bytes": 403,
+      "metadataOnly": false
+    }
+  ]
+}

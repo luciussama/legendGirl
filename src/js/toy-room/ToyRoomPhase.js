@@ -16,7 +16,7 @@ import { createToyRoomInputContext } from './ToyRoomInputContext.js';
  * ToyRoomPhase.js
  * Controlador principal da Fase da Sala de Brinquedos (estilo Top-Down 2D Legend of Mana).
  * Integra cenário da sala, brinquedos interativos, movimento 2.5D dos personagens,
- * resolução de colisões, mecânicas de pegar e soltar, efeitos de partículas e controles responsivos.
+ * resolução de colisões, mecânicas de pegar e guardar, efeitos de partículas e controles responsivos.
  */
 
 import { isMobileDevice } from '../controllers/MobileZoom.js';

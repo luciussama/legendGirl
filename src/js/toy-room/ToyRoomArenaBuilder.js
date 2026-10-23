@@ -36,6 +36,7 @@ export class ToyRoomArenaBuilder {
         w: rugWidth, h: rugWidth * 326 / 526 * floorProjection },
       portal: { sourceId: 'toy-room-window-curtains-v1', role: 'portal',
         x: ROOM_W / 2 - 150, y: 110, w: 300, h: 300 * 340 / 320 },
-      transportOrigin: { x: chest.x + chest.w / 2, y: chest.footY - chest.h * 0.55 } };
+      transportOrigin: { x: chest.x + chest.w * .48, y: chest.footY - (chest.w + 8 * chest.scale) * .21,
+        emergenceLift: (chest.w + 8 * chest.scale) * .33 } };
   }
 }

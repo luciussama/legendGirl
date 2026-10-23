@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "87c33aff7d3e6fee80800a93fc8f2c4be41f9c2dbde36a69ff7694dcb7261d7f",
+  "path": "assets/art/toy-room/stage2/carry-v2/prompts.json",
+  "sha256": "bb66990433994badc0d973a9e638aa997cf1eec3453ee2902e3c5fc2a7ba58b1",
+  "capturedAt": "2026-10-23T12:34:24.976953+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"referencias\": [\"assets/art/dark-room/sprites/official-character.png\", \"assets/art/toy-room/stage2/carry-pose-v1.png\"],\n  \"prompt\": \"Use case: identity-preserve. Production transparent game sprite sheet, 4 animation frames in one horizontal row, equal square cells. Reference 1 is the OFFICIAL character identity and painted pixel-art style. Reference 2 demonstrates bent arms ONLY, do not copy its larger face/proportions. Draw the SAME little girl from reference 1: brown pigtails with pink bows, brown eyes, cream short dress with pink trim and pink skirt, brown boots. All four full-body sprites face RIGHT in the same three-quarter side view as official RUN, same size/head/hair/body across frames. Create a four-frame gentle WALK cycle while carrying a small toy with BOTH hands: frame 1 neutral standing, frame 2 left leg forward/right back, frame 3 passing upright feet, frame 4 right leg forward/left back. Upper body stable in a load-bearing pose: elbows BENT in front, forearms roughly horizontal at waist height, palms cupped UPWARD, both empty hands extending toward the RIGHT beyond the torso silhouette. Leave an empty pocket above the palms for a separate game-rendered toy. Hands low enough to keep the entire face unobstructed. Hands must have natural rounded fingers visible curling upward at the front edge of the pocket. Do NOT draw any toy or prop. Keep the original toddler proportions, distinctive face, short neck, outlined hand-painted pixel illustration, warm brown outlines, cream/rose clothing. No redesign, no long-legged anime girl, no 3D, no ground shadow, no floor, no letters, no labels, no dividers. Generous fully transparent margins between all four isolated sprites and around the sheet. Align boots to one common baseline. Output genuine alpha transparency.\"\n}\n"
+}

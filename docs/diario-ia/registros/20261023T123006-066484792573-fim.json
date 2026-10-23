@@ -1,0 +1,42 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T123006-066484792573-fim",
+  "sessionId": "20261023T123006-066484792573",
+  "type": "fim",
+  "date": "2026-10-23T13:14:53.692601+00:00",
+  "title": "Desenhar e integrar pose convincente de transporte dos brinquedos",
+  "actor": "Codex",
+  "summary": "Implementada a pose de transporte com braços e dedos em camadas; usuário aprovou a direção de qualidade e ampliou para todas as poses 2D da menina. Integradas 68 pinturas girl-v2 em nove pranchas de execução, com expressão brava na arena, quatro estágios de agachamento e seis poses distintas de dano. Fontes, variantes e prompts da ferramenta integrada image_gen preservados. Baú da arena redesenhado aberto, com cavidade atrás, parede frontal/lateral na frente e trajetória que primeiro sobe dentro da caixa, mantendo duração e destino. Menina 3D adaptada a vestido creme inteiro, detalhes rosa, botas marrons e duas marias-chiquinhas com laços; paleta rastreada à nova arte e GLB regenerado. Detalhes agrupados por articulação/material e bordado de baixa tesselação instanciado. Preservados trabalhos anteriores de contato/câmera e fada orbital luminosa. Guias, diário humano, contexto, catálogo e referência atualizados. Sem commit/push.",
+  "checks": [
+    "npm test completo: aprovado; ajustes de mocks legados, orientação, âncoras e identificação dos seis recortes arquivados em novas versões, preservando fontes anteriores.",
+    "Falhas intermediárias registradas: mocks aceitaram recursos novos inexistentes, teste de orientação, teste de dano por nome de arquivo, caminho de importação do QA temporário; corrigidos e suíte aprovada. QA inicial de sobreposição real dos dedos detectou trem à esquerda sem contato suficiente; base visual aproximada 2 px e verificação final aprovada com 15 a 28 pixels de oclusão real por variante.",
+    "test:menina:ilustrada:browser: aprovado em desktop/Android/retrato/paisagem, três perfis; 68 quadros com alfa/âncoras reais, 32 variantes de pegada por perfil, oito coletas/caminhadas/save/baú reais por perfil e 16 amostras da arena. Quatro adversários em cinco etapas de saída, compositor real e máscara que cobre a frente e deixa a abertura livre. Capturas inspecionadas.",
+    "test:bear-chase:fairy:browser final: aprovado; 12 enquadramentos em três formatos, menina/luz/sombras/órbita/pausa/descarte preservados. NORMAL e EASY completos em 5254 passos cada, zero impactos, pico 256 chamadas inferior a 310 e dois mapas de sombra. Bordado simplificado após primeiro ensaio para reduzir triângulos; vistas frontal/traseira e cenário inspecionados.",
+    "test:contato:browser e test:camera:lateral:browser aprovados após novas poses/sapatos, preservando união inicial, 38 apoios e câmera lateral em cinco perfis.",
+    "check-assets: 78 recursos; build, lint, sintaxe dos módulos alterados e git diff --check aprovados. docs:sprites: 440 imagens, 153 recortes, 29 assinaturas. Referência: 154 módulos e 1037 declarações. Evidências temporárias preservadas por caminho/hash/tamanho no diário e bitmaps descartados; artes de produção preservadas."
+  ],
+  "pending": [
+    "Revisão artística humana das novas poses/modelo ainda não realizada; aprovação da direção anterior não homologa automaticamente cada nova arte.",
+    "Sem benchmark de GPU/FPS em celular físico ou Safari; emulação Chrome e contagem de chamadas não equivalem a homologação física.",
+    "CI/CD e publicação não executados ou verificados nesta sessão; mudanças locais na feat-fairy-ajustments."
+  ],
+  "files": [
+    "assets/art/characters/girl-v2/README.md",
+    "assets/art/toy-room/stage2/README.md",
+    "assets/art/toy-room/chest-brinquedos-open-v2.png",
+    "assets/art/toy-room/chest-brinquedos-open-v2-prompt.json",
+    "scripts/prepare-illustrated-girl.js",
+    "src/js/assets/illustratedGirl.js",
+    "src/js/toy-room/ToyCarryPresentation.js",
+    "src/js/entities/BabyRenderer.js",
+    "src/js/toy-room/ArenaGirlAnimationFrames.js",
+    "src/js/toy-room/ArenaEnvironment.js",
+    "src/js/toy-room/ToyRoomBattle.js",
+    "src/js/toy-room/ToyRoomArenaBuilder.js",
+    "src/js/bear-chase/ChaseGirlModel.js",
+    "src/js/bear-chase/ChaseGirlAnimation.js",
+    "src/js/bear-chase/ChaseGirlPalette.js",
+    "assets/models/bear-chase/menina.glb",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

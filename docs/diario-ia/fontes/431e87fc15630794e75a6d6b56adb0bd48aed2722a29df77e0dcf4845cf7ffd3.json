@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "431e87fc15630794e75a6d6b56adb0bd48aed2722a29df77e0dcf4845cf7ffd3",
+  "path": "qa-execucoes/84ee3fe9178c48aca3fbfd135e2487b9.log",
+  "sha256": "c62739f59c9fa75bce8bc202c83367984ab28303026b2b8237b3ba87c1ffc12c",
+  "capturedAt": "2026-10-23T12:17:18.402687+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:camera:lateral:browser",
+    "exitCode": 1,
+    "package": "20261022T171257-5feadae6e90d"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:camera:lateral:browser\n> node docs/diario-ia/qa/camera-lateral/navegador.mjs\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-w0misocr/projeto/docs/diario-ia/qa/camera-lateral/navegador.mjs:18\n const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(JSON.stringify(r.result.exceptionDetails));return r.result?.result?.value;};\n                                                                                                                                                                ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) Error: Os pés não estão sobre o apoio: {\\\"target\\\":21,\\\"phase3\\\":false,\\\"dt\\\":1,\\\"feet\\\":149,\\\"top\\\":148,\\\"x\\\":4620.199000000004,\\\"vx\\\":2.75}\",\"lineNumber\":0,\"columnNumber\":0,\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Os pés não estão sobre o apoio: {\\\"target\\\":21,\\\"phase3\\\":false,\\\"dt\\\":1,\\\"feet\\\":149,\\\"top\\\":148,\\\"x\\\":4620.199000000004,\\\"vx\\\":2.75}\\n    at Object.run (http://127.0.0.1:62661/tests/dark-room-playthrough.html?cameraQa=1:114:120)\\n    at <anonymous>:36:23\",\"objectId\":\"-8825600377991710623.2.1\"}}\n    at evaluate (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-w0misocr/projeto/docs/diario-ia/qa/camera-lateral/navegador.mjs:18:161)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-w0misocr/projeto/docs/diario-ia/qa/camera-lateral/navegador.mjs:33:16\n\nNode.js v26.5.0\n"
+}

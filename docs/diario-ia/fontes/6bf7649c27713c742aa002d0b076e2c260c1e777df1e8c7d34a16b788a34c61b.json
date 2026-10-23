@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "6bf7649c27713c742aa002d0b076e2c260c1e777df1e8c7d34a16b788a34c61b",
+  "path": "qa-execucoes/82005a40b4b549509312a76bb67833f6/docs/diario-ia/qa-resultados/menina-ilustrada/desktop-bau-gallery.png",
+  "sha256": "7f10e0a2835b1350f7231b21cfdebf72587fd49964982498610a3e1847de715a",
+  "capturedAt": "2026-10-23T13:11:22.493587+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/desktop-bau-gallery.png\", \"sha256\": \"dd946039c11bc045f9e8050d08ed9875e7a7f79d32e86a63dd161a5f67edc567\", \"bytes\": 1774676, \"binaryRetained\": false}"
+}

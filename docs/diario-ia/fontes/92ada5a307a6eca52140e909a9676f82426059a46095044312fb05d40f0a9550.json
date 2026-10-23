@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "92ada5a307a6eca52140e909a9676f82426059a46095044312fb05d40f0a9550",
+  "path": "qa-execucoes/7e859d3ad663465c83e673a6a3e3cc24/docs/diario-ia/qa-resultados/fada-3d/sem-luz-844-14.png",
+  "sha256": "cbeedd707159581cd1e43e606b9b712883eb3a509e3f438d7ebaf2fc577cba09",
+  "capturedAt": "2026-10-22T19:11:46.392881+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:fairy:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/fada-3d/sem-luz-844-14.png\", \"sha256\": \"f24852b6c8e458cd04dc38b0ce682b6dc5373b3ba634bd97f7655d22cd0cf224\", \"bytes\": 525132, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "84ee3fe9178c48aca3fbfd135e2487b9",
+  "date": "2026-10-23T12:17:18.404740+00:00",
+  "title": "QA temporário: test:camera:lateral:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/84ee3fe9178c48aca3fbfd135e2487b9.log",
+      "sourceId": "431e87fc15630794e75a6d6b56adb0bd48aed2722a29df77e0dcf4845cf7ffd3",
+      "sha256": "c62739f59c9fa75bce8bc202c83367984ab28303026b2b8237b3ba87c1ffc12c",
+      "bytes": 1634,
+      "metadataOnly": false
+    }
+  ]
+}

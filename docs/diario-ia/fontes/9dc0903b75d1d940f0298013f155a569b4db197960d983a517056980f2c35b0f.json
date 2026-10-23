@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9dc0903b75d1d940f0298013f155a569b4db197960d983a517056980f2c35b0f",
+  "path": "qa-execucoes/305a6cc896b94fe48b2a32631f13a2c7.log",
+  "sha256": "05ddf43cfa91f9de98dae7f798434210092aa6f1b679edf172eca9ddc1848ac3",
+  "capturedAt": "2026-10-23T13:10:44.532343+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser",
+    "exitCode": 1,
+    "package": "20261023T131039-622b9bfe57f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:menina:ilustrada:browser\n> node docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-2zoios2z/projeto/docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs:18\n const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(JSON.stringify(r.result.exceptionDetails));return r.result?.result?.value;};\n                                                                                                                                                                ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) Error: Dedos devem cobrir a frente do item: train/left/false\",\"lineNumber\":0,\"columnNumber\":0,\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Dedos devem cobrir a frente do item: train/left/false\\n    at ensure (http://127.0.0.1:63455/docs/diario-ia/qa/menina-ilustrada-20261023/cenario.js:9:46)\\n    at Module.audit (http://127.0.0.1:63455/docs/diario-ia/qa/menina-ilustrada-20261023/cenario.js:34:3)\\n    at <anonymous>:1:4\",\"objectId\":\"-1359864225639610410.2.1\"}}\n    at evaluate (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-2zoios2z/projeto/docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs:18:161)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-2zoios2z/projeto/docs/diario-ia/qa/menina-ilustrada-20261023/navegador.mjs:25:16\n\nNode.js v26.5.0\n"
+}

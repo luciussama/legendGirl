@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023-regras-brinquedos-contratos",
+  "date": "2026-10-23T14:04:37.519522+00:00",
+  "title": "Atualizar contratos de orientação e descoberta conforme solicitação atual; originais preservados",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-facing.js",
+      "sourceId": "0699fa94fe946ecf3e7026836c38a2cce039943d67e40c7e3d432cf5067e1c11",
+      "sha256": "8a990d918b554fdaab04940fe0158899ec58ecaef2d9fe7ec50d9652c2acd09a",
+      "bytes": 6168,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-toy-room-story.js",
+      "sourceId": "704fff55336de1494f3dd4ec4b1fe8e73a579510885dcef8f8988774fffdff1d",
+      "sha256": "fc9f73a271327fd6e9efaf2f09f5f12cebb4328f374906e11e494074241160e9",
+      "bytes": 7910,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

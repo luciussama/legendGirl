@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7abc8e9a5c52edebc8c12e9f89df29b97cd5208947641c9ab7a865691baa0afc",
+  "path": "qa-execucoes/c598bbd2a25b47548d880d84f98566e8.log",
+  "sha256": "3731d436d074e0c6911a5e66b7b5a545151a32d2d8f0a9617a7393b408d607b2",
+  "capturedAt": "2026-10-23T12:09:19.945168+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:contato:browser",
+    "exitCode": 1,
+    "package": "20261023T120909-845bd96f2907"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:contato:browser\n> node docs/diario-ia/qa/contato-integral-20261023/navegador.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Teclado/toque aceito na borda desktop/1\n\ntrue !== false\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-bmlyu3be/projeto/docs/diario-ia/qa/contato-integral-20261023/navegador.mjs:35:71 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: true,\n  expected: false,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

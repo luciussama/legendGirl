@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bb2e388b6f4f9da27bdb8edaa73dd58faffa9cd5dfbcf8fa0ed7f23107d26e34",
+  "path": "qa-execucoes/25d403bdd9924d9cbb06db164bae3bbb/docs/diario-ia/qa-resultados/contato-integral/android-false-6.png",
+  "sha256": "9ffc6cdbc50c1be052305cd528f79b978e6b306904cfb3bffafe8ec29e20e56a",
+  "capturedAt": "2026-10-23T12:18:16.459472+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:contato:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/contato-integral/android-false-6.png\", \"sha256\": \"abc775fbdfed309c8623c0097bd2b571be7562b4f558f4189c40d494a76ea60b\", \"bytes\": 368459, \"binaryRetained\": false}"
+}

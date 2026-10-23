@@ -11,16 +11,17 @@ export class ChaseGirlModel {
     this.sphere = this.shade(new T.SphereGeometry(1, 24, 16));
     this.pelvis = this.joint(this.root,'Quadril',0,.55,0);
     this.torso = this.joint(this.pelvis,'Tronco',0,.20,0);
-    this.volume(this.torso,'pink',[0,.12,0],[.21,.21,.14]);
+    this.volume(this.torso,'cream',[0,.12,0],[.21,.21,.14]);
     this.volume(this.torso,'cream',[0,.135,-.10],[.15,.17,.065]);
     this.volume(this.torso,'rose',[0,-.015,0],[.22,.035,.15]);
     this.skirt = this.joint(this.pelvis,'Saia',0,.15,0);
-    // A saia salmão ocupa toda a base; o painel creme é um tecido separado, não a peça inteira.
-    this.cloth(this.skirt,'pink',[[.34,-.18],[.35,-.15],[.32,-.09],[.26,.03],[.205,.10]],true);
-    this.cloth(this.skirt,'rose',[[.345,-.185],[.355,-.16],[.35,-.135]],true);
-    this.cloth(this.skirt,'cream',[[.342,-.115],[.315,-.065],[.26,.04],[.207,.10]],false);
+    // Vestido creme inteiro, com babado rosa e bordado ao redor da barra.
+    this.cloth(this.skirt,'pink',[[.35,-.19],[.365,-.16],[.345,-.115]],true);
+    this.cloth(this.skirt,'rose',[[.355,-.19],[.37,-.175],[.36,-.16]],true);
+    this.cloth(this.skirt,'cream',[[.35,-.145],[.33,-.09],[.26,.04],[.207,.10]],true);
+    this.buildDressDetails();
     this.head = this.joint(this.torso,'Cabeca',0,.35,0);
-    this.volume(this.head,'skin',[0,.09,-.045],[.335,.345,.285]);
+    this.volume(this.head,'skin',[0,.09,-.045],[.31,.32,.27]);
     // Bochechas e queixo fazem uma face curta e larga, sem focinho esférico.
 
     for(const side of [-1,1]) this.volume(this.head,'skin',[side*.323,.10,0],[.047,.065,.045]);
@@ -47,7 +48,28 @@ export class ChaseGirlModel {
       this.legs.push({hip,knee,ankle});
     }
     this.buildSword();
-    this.root.userData.authoring='Revisão 3: braços compactos, mangas bufantes, franzido superior e rabo longo. Paleta amostrada preservada; costas interpretadas.';
+    this.batchDetails(this.root);
+    this.root.userData.authoring='Revisão 4: vestido creme bordado, babado e faixa rosa, duas marias-chiquinhas com laços; proporções da menina ilustrada girl-v2. Costas interpretadas em volume.';
+  }
+  /** Agrupa detalhes rígidos do mesmo material por articulação, preservando os pivôs animados. */
+  batchDetails(parent) {
+    for(const child of [...parent.children])if(!child.isMesh)this.batchDetails(child);
+    const groups=new Map();
+    for(const mesh of parent.children)if(mesh.isMesh&&!mesh.isInstancedMesh) {
+      if(!groups.has(mesh.material))groups.set(mesh.material,[]);groups.get(mesh.material).push(mesh);
+    }
+    for(const [material,meshes] of groups) {
+      if(meshes.length<2)continue;
+      const values={position:[],normal:[],color:[]};
+      for(const mesh of meshes) {
+        mesh.updateMatrix();const g=mesh.geometry.index?mesh.geometry.toNonIndexed():mesh.geometry.clone();g.applyMatrix4(mesh.matrix);
+        for(const name of Object.keys(values))values[name].push(...g.attributes[name].array);
+        g.dispose();parent.remove(mesh);
+      }
+      const geometry=this.own(new T.BufferGeometry());
+      for(const [name,array]of Object.entries(values))geometry.setAttribute(name,new T.Float32BufferAttribute(array,3));
+      const merged=new T.Mesh(geometry,material);merged.name='DetalhesAgrupados';parent.add(merged);
+    }
   }
   /** Grava sombreamento pintado nos vértices para preservar tons sem lavagem pelas luzes da sala. */
   shade(geometry) {
@@ -131,7 +153,7 @@ export class ChaseGirlModel {
     const g=new T.BufferGeometry();g.setAttribute('position',new T.Float32BufferAttribute(positions,3));g.setIndex(indices);g.computeVertexNormals();
     parent.add(new T.Mesh(this.shade(g),this.materials[material]));
   }
-  /** Modela touca, franja oblíqua e rabo único da família de sprites da arena. */
+  /** Modela franja e duas marias-chiquinhas curtas, com laços e pontas articuladas. */
   buildHair() {
     const positions=[],indices=[],rows=16,columns=48;
     for(let row=0;row<=rows;row++)for(let col=0;col<=columns;col++){
@@ -146,15 +168,41 @@ export class ChaseGirlModel {
     for(const side of [-1,1]) {
       const tuft=this.silhouette(this.head,'hair',[[-.04,.14],[.05,.19],[.07,-.04],[0,-.11],[-.045,-.04]],.09,[side*.30,.01,-.03]);tuft.rotation.z=side*.08;
     }
-    this.ponytail=this.joint(this.head,'RaboDeCavalo',-.14,.35,.23);
-    this.ponytail.scale.set(.92,1,.68);
-    // O rabo projeta-se para trás e para o lado; a massa não fica escondida na touca.
-    this.sweep(this.ponytail,'hair',[[0,.06,.02],[-.035,.02,.22],[-.12,-.13,.43],[-.16,-.29,.58],[-.10,-.36,.66]],[.09,.155,.175,.15,.10]);
-    this.sweep(this.ponytail,'lock',[[-.035,.09,.08],[-.07,.06,.25],[-.17,-.10,.44],[-.20,-.25,.58]],[.018,.043,.045,.008]);
-    this.tailTip=this.joint(this.ponytail,'PontaDoCabelo',-.10,-.34,.63);
-    this.sweep(this.tailTip,'hair',[[0,0,0],[-.055,-.06,.08],[-.06,-.04,.17],[.025,.015,.21]],[.11,.10,.06,.003]);
-    this.sweep(this.tailTip,'hair',[[.035,0,0],[.10,-.055,.08],[.16,-.025,.12]],[.075,.06,.003]);
-    this.volume(this.ponytail,'pink',[0,.075,.01],[.115,.045,.08]);
+    this.pigtails=[];
+    for(const side of [-1,1]) {
+      const tail=this.joint(this.head,side<0?'MariaChiquinhaE':'MariaChiquinhaD',side*.29,.29,.10);
+      this.sweep(tail,'hair',[[0,.025,0],[side*.09,-.01,.08],[side*.13,-.14,.15],[side*.10,-.29,.14],[side*.02,-.31,.13]],[.07,.125,.13,.10,.025]);
+      this.sweep(tail,'lock',[[side*.035,.03,.015],[side*.13,-.06,.08],[side*.16,-.17,.13],[side*.09,-.27,.12]],[.015,.027,.027,.003]);
+      const tip=this.joint(tail,'PontaDoCabelo',side*.02,-.31,.13);
+      this.sweep(tip,'hair',[[0,0,0],[side*.04,-.035,.005],[side*.11,.015,.02]],[.07,.05,.002]);
+      this.bow(tail,[0,.055,-.04],.075);
+      this.pigtails.push({tail,tip,side});
+    }
+    // Referências preservadas para ferramentas de revisão anteriores.
+    this.ponytail=this.pigtails[0].tail;this.tailTip=this.pigtails[0].tip;
+  }
+  /** Constrói laço de tecido com duas alças e nó central. */
+  bow(parent,position,size) {
+    const pivot=this.joint(parent,'LacoRosa',...position);
+    for(const side of [-1,1]) {
+      const loop=this.volume(pivot,'pink',[side*size*.65,0,0],[size*.75,size*.48,size*.28]);
+      loop.rotation.z=side*.28;
+    }
+    this.volume(pivot,'rose',[0,0,-size*.12],[size*.24,size*.28,size*.3]);
+  }
+  /** Repete o bordado em uma só chamada de desenho e acrescenta o laço traseiro. */
+  buildDressDetails() {
+    const count=24, petals=5, flowerGeometry=this.shade(new T.SphereGeometry(1,6,4));
+    const flowers=new T.InstancedMesh(flowerGeometry,this.materials.pink,count*petals);
+    flowers.name='BordadoDaBarra';const transform=new T.Object3D();let index=0;
+    for(let i=0;i<count;i++)for(let j=0;j<petals;j++) {
+      const a=i/count*Math.PI*2,b=j/petals*Math.PI*2;
+      const radius=.345+Math.cos(a*12)*.007;
+      transform.position.set(Math.sin(a)*(radius+Math.sin(b)*.009),-.115+Math.cos(b)*.01,Math.cos(a)*(radius+Math.sin(b)*.009)*.78);
+      transform.scale.set(.008,.008,.006);transform.updateMatrix();flowers.setMatrixAt(index++,transform.matrix);
+    }
+    this.skirt.add(flowers);this.bow(this.torso,[0,-.015,.16],.105);
+    this.bow(this.torso,[0,.255,-.145],.045);
   }
   /** Desenha olhos menos circulares, nariz discreto e sobrancelhas da expressão de corrida. */
   buildFace() {

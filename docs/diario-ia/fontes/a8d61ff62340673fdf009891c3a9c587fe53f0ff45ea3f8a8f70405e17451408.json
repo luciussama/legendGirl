@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a8d61ff62340673fdf009891c3a9c587fe53f0ff45ea3f8a8f70405e17451408",
+  "path": "qa-execucoes/c1ba8dd77abb40dd84027c952abcc794/docs/diario-ia/qa-resultados/regras-brinquedos/paisagem-espada.png",
+  "sha256": "a3a2aa6ffbbe973198f27d1f5f4d11b61703f5967904c97777baa3ee3830cee4",
+  "capturedAt": "2026-10-23T14:05:02.626667+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:entrega:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/regras-brinquedos/paisagem-espada.png\", \"sha256\": \"2ac3943ca6216c7ea25b990f1a15d29f489c475330e50e6ea0279f3b23dfbd9d\", \"bytes\": 949131, \"binaryRetained\": false}"
+}

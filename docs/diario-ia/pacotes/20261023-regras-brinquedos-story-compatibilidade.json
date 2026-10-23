@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023-regras-brinquedos-story-compatibilidade",
+  "date": "2026-10-23T14:06:45.801602+00:00",
+  "title": "Compatibilizar regressões da narrativa com API de assets e contrato vigente de câmera",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-story.js",
+      "sourceId": "df84d431b4b505f3089f5fe573eaae50cd218bdc8d3b885a008528442cd536b7",
+      "sha256": "590a784997069cbc99cfac23b55379941429cf9c6cc748dc31de2529e3090269",
+      "bytes": 7929,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-toy-room-sword-camera.js",
+      "sourceId": "cb6e92b22c7f408c07cfce40cfc6353453dbacd170433270f1504bc0037b8ca0",
+      "sha256": "003f7589fb0ab2c838c5b1a3fb434de517b45646cb0d9b0d3c0e4ace3d947758",
+      "bytes": 4432,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

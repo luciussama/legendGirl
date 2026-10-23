@@ -40,6 +40,10 @@ function renderArenaRoom(ctx, room, arena) {
 
 /** Apresenta uma peça a partir da base visual definida no layout, sobre o piso/tapete. */
 function renderArenaStructure(ctx, room, structure) {
+  if (structure.sourceId === 'toy-chest' && room.assets?.get('toy-room-chest-open-v2')) {
+    renderArenaTemple(ctx, room, { structures: [structure] });
+    return;
+  }
   ctx.save();
   const center = structure.x + structure.w / 2;
   const shadow = ctx.createRadialGradient(center, structure.footY - 3, 1, center, structure.footY - 3, structure.w * .6);
@@ -78,6 +82,17 @@ export function renderArenaEnvironment(ctx, room, arena, time = 0) {
 /** Desenha só a frente do baú sobre os brinquedos em trânsito, preservando a menina à frente. */
 export function renderArenaTemple(ctx, room, arena, foreground = false) {
   const chest = arena.structures.find(item => item.sourceId === 'toy-chest');
+  const image = room.assets?.get('toy-room-chest-open-v2');
+  if (image) {
+    const width = chest.w + 8 * chest.scale, height = width * image.height / image.width;
+    ctx.save();ctx.translate(chest.x - 4 * chest.scale, chest.footY - height);
+    if (foreground) {
+      // O recorte acompanha a borda pintada da frente e da lateral, sem cobrir a cavidade.
+      const points = [[.05,.44],[.55,.615],[.865,.475],[.91,1],[.02,1]];
+      ctx.beginPath();points.forEach(([x,y],i)=>ctx[i?'lineTo':'moveTo'](x*width,y*height));ctx.closePath();ctx.clip();
+    }
+    ctx.drawImage(image,0,0,width,height);ctx.restore();return;
+  }
   ctx.save();
   if (foreground) {
     ctx.beginPath();

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "648c4cc62c757e1a47c8f7ca79943a23f58adbb6e120fb2933e8f51e27733ce8",
+  "path": "qa-execucoes/a6464af6d502438fb2d66e81163f34db/docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-poses.png",
+  "sha256": "c8e66012511f0bae1df6367239f4beb9efcb0ccceb5ed27f1e27dc751b228abd",
+  "capturedAt": "2026-10-23T12:57:54.560528+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:menina:ilustrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/menina-ilustrada/paisagem-poses.png\", \"sha256\": \"74847135b4977798ca99ac56ea9f873ba9296c93752ff3cecf2ab85bc8265d7b\", \"bytes\": 625695, \"binaryRetained\": false}"
+}
