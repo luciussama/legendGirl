@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f34c4a6f81212eefb4740f41e642506a1bf680c82e5f4117776724ea57836d7f",
+  "path": "qa-execucoes/e276bc2dca2447eea1bb1807aa3c154d/docs/diario-ia/qa-resultados/jardim-v2/paisagem-quatro-nuvens.png",
+  "sha256": "3f97ee436ff0565a423022f7037c1d50956ed02f2d0ccd87d61e6aecf318398e",
+  "capturedAt": "2026-10-23T17:46:22.072941+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-quatro-nuvens.png\", \"sha256\": \"d1cd2bd9b77677b5de45e88dab4eb14a22730e637037bd24f332f05e43d8ab98\", \"bytes\": 1372808, \"binaryRetained\": false}"
+}

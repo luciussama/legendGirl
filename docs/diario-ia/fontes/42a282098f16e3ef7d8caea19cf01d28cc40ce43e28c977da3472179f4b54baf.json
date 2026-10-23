@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "42a282098f16e3ef7d8caea19cf01d28cc40ce43e28c977da3472179f4b54baf",
+  "path": "qa-execucoes/4dd29190354d4459a329dc94b967fe22/docs/diario-ia/qa-resultados/jardim/paisagem-madeira.png",
+  "sha256": "891cd2859701c4b8f7544f474420fd44c8ba251e73665585b062ee586c699f1f",
+  "capturedAt": "2026-10-23T14:53:53.131170+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/paisagem-madeira.png\", \"sha256\": \"356547c9bbb19b9b707de09f08f967648291922a03c69b0287e7142a4c7c793b\", \"bytes\": 979672, \"binaryRetained\": false}"
+}

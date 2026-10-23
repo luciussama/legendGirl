@@ -1,0 +1,31 @@
+{
+  "ferramenta": "image_gen integrada",
+  "referenciaPersonagem": "assets/art/characters/girl-v2/source/locomocao.png",
+  "referenciaRoupa": "Foto enviada pelo usuário: camiseta amarela, vestido salopete turquesa estampado com doces, botões amarelos e sandálias rosa/brancas. Usada como direção visual, sem armazenar a fotografia pessoal no repositório.",
+  "referenciaCenario": "Desenhos enviados: grama, madeira, pedra, água, nuvens, roda de quatro apoios, formigas, lagarta e árvore para brincar. Interpretação flexível.",
+  "jobs": [
+    {
+      "key": "menina-corrida-v1",
+      "prompt": "Use case: identity-preserve. Production sprite sheet for a hand-painted 2D storybook platform game. The attached illustrated girl is the identity/style reference: keep EXACT same face, brown eyes, two brown pigtails with pink bows, chibi proportions, head size, confident sweet expression and detailed painted outlines. Change clothing for a sunny day outside: pale yellow short-sleeved t-shirt UNDER a turquoise/aqua pinafore sundress with two broad shoulder straps, large round yellow strap buttons, lively colorful candy/lollipop/swirl print in pink/yellow/white/orange, gathered ruffled skirt hem. Pink and white closed-toe toddler sandals with ankle straps instead of brown boots, bare legs. Same outfit in ALL frames; no weapon. Full body facing RIGHT in three-quarter side view, same scale across all cells, true transparent alpha, transparent margins and gaps, NO background, floor, ground shadows, text, grid or effects. Layout FOUR columns by TWO rows, exactly eight separate sprites. Frames 1-2: standing idle hands down, subtle breathing variation. Frames 3-8: SIX clearly different successive running poses, alternating leg support and counter-swinging arms, both passing poses. Preserve illustrated character anatomy and identity. This is a clothing change, not a new character.",
+      "ref": true,
+      "alpha": true
+    },
+    {
+      "key": "menina-acoes-v1",
+      "prompt": "Use case: identity-preserve. Production sprite sheet for a hand-painted 2D storybook platform game. The attached illustrated girl is the identity/style reference: keep EXACT same face, brown eyes, two brown pigtails with pink bows, chibi proportions, head size, confident sweet expression and detailed painted outlines. Change clothing for a sunny day outside: pale yellow short-sleeved t-shirt UNDER a turquoise/aqua pinafore sundress with two broad shoulder straps, large round yellow strap buttons, lively colorful candy/lollipop/swirl print in pink/yellow/white/orange, gathered ruffled skirt hem. Pink and white closed-toe toddler sandals with ankle straps instead of brown boots, bare legs. Same outfit in ALL frames; no weapon. Full body facing RIGHT in three-quarter side view, same scale across all cells, true transparent alpha, transparent margins and gaps, NO background, floor, ground shadows, text, grid or effects. Layout FOUR columns by TWO rows, exactly eight separate sprites. Frames in reading order: 1 jump takeoff bent knees arms back; 2 rising jump arms lifted; 3 apex knees tucked forward ready to stomp; 4 descending jump feet down and forward; 5 mild surprised hurt recoil (no wounds); 6 joyful victory both arms raised; 7 sitting on grass with knees forward hands playing; 8 relaxed standing smiling eyes closed. Preserve natural head size between poses, do not enlarge sitting figures.",
+      "ref": true,
+      "alpha": true
+    },
+    {
+      "key": "cenario-v1",
+      "prompt": "Use case: illustration-story. Asset type: background painting for a side-scrolling children's garden platform game. Wide landscape, detailed warm hand-painted storybook art, soft brush texture, pastel blue sunny sky, puffy white clouds, distant wooded hills, a small cozy house at far left, white wooden garden fence running across the distant lower third, large leafy bushes, scattered pink and yellow garden flowers. Charming lush summer morning, warm sunlight, calm inviting depth, child eye-level side view. Foreground BOTTOM quarter a soft low-detail earthy green color plane, no foreground platforms, pits, characters, tree trunks, text or UI. Leave center upper half airy with sky so jumping sprites read clearly. 1536x1024 landscape composition.",
+      "alpha": false
+    },
+    {
+      "key": "objetos-v1",
+      "prompt": "Use case: illustration-story. Production asset atlas for a detailed hand-painted storybook 2D SIDE-VIEW garden platform game, same charming outlined painterly children book aesthetic as reference girl. EXACTLY THREE columns by THREE rows of isolated assets, each centered within its own equal square cell with ample transparent gutters. TRUE TRANSPARENT alpha outside objects, NO background, floor shadows, labels, text or grid. Read left to right: row1: 1 rectangular side-view grass-topped earth platform tile, lush green rim with flat horizontal walkable top, soil roots and pebbles below; 2 horizontal honey-brown wooden plank platform with natural wood grain and flat level top; 3 flat-topped rounded gray garden rock stepping platform with moss. Row2: 4 small puffy white cloud platform with blue underside and flat-ish upper surface; 5 cute reddish-brown ant walking RIGHT, six visible legs, antennae, friendly face, no weapon; 6 same ant next animated step different leg pose. Row3: 7 cute bright green caterpillar facing RIGHT, rounded segments, little legs, smiling face; 8 same caterpillar another walking pose; 9 large beautiful mature garden tree with broad leafy green crown, warm brown trunk and welcoming play space beneath, little flowers by roots, no person or objects. All viewed exactly from SIDE, no isometric camera. Platforms wide and low within cells. Keep entire shapes away from cell edges. Tree full body within own cell. Atlas 1536x1536.",
+      "ref": true,
+      "alpha": true
+    }
+  ]
+}

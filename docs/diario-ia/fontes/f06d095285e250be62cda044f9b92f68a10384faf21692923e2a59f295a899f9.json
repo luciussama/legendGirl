@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f06d095285e250be62cda044f9b92f68a10384faf21692923e2a59f295a899f9",
+  "path": "qa-execucoes/4dd29190354d4459a329dc94b967fe22.log",
+  "sha256": "271adc7153e45be212e54e52de20d508cce2f786844b5b583123cbae75a4c472",
+  "capturedAt": "2026-10-23T14:53:53.112621+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser",
+    "exitCode": 1,
+    "package": "20261023T145343-807b0ac3e7c0"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:browser\n> node docs/diario-ia/qa/jardim-20261023/navegador.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Andar e pular simultaneamente por entrada real\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-ww5dkqnv/projeto/docs/diario-ia/qa/jardim-20261023/navegador.mjs:32:182 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -3,6 +3,9 @@ export function createToyRoomPersistenceContext(room) {
   return {
     get arena() { return room.arena; },
     get battle() { return room.battle; },
+    get garden() { return room.garden; },
+    set garden(value) { room.garden = value; },
+    startGarden: saved => room.startGarden(saved),
     get chase() { return room.chase; },
     set chase(value) { room.chase = value; },
     get cameraX() { return room.cameraX; },

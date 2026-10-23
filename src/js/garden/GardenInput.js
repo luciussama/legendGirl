@@ -1,0 +1,20 @@
+/** Botões no mesmo sistema de coordenadas do canvas, respeitando a área segura. */
+export function gardenControls(canvas,safe={left:0,right:canvas.width,bottom:canvas.height}) {
+  const unit=Math.min((safe.right-safe.left)/680,canvas.height/520),radius=44*unit,y=safe.bottom-64*unit;
+  return {left:{x:safe.left+62*unit,y,r:radius},right:{x:safe.left+162*unit,y,r:radius},jump:{x:safe.right-72*unit,y,r:radius*1.16}};
+}
+/** Entrada simultânea de andar/pular; pausa, cancelamento e troca de fase liberam tudo. */
+export class GardenInput {
+  constructor(canvas,enabled,controls,unlock=()=>{}) {
+    this.canvas=canvas;this.enabled=enabled;this.controls=controls;this.unlock=unlock;this.keys=new Set();this.pointers=new Map();this.touch=false;this.installed=false;
+    this.down=e=>{if(!this.enabled()||!['ArrowLeft','ArrowRight','ArrowUp','KeyA','KeyD','KeyW','Space'].includes(e.code))return;e.preventDefault();this.keys.add(e.code);this.unlock();};
+    this.up=e=>this.keys.delete(e.code);this.blur=()=>this.clear();this.visibility=()=>{if(document.hidden)this.clear();};
+    this.pointer=e=>{if(!this.enabled()||e.button>0)return;const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)*canvas.width/rect.width,y=(e.clientY-rect.top)*canvas.height/rect.height;const button=Object.entries(this.controls()).find(([,b])=>Math.hypot(x-b.x,y-b.y)<b.r*1.25)?.[0];if(!button)return;e.preventDefault();this.touch=true;this.pointers.set(e.pointerId,button);canvas.setPointerCapture?.(e.pointerId);this.unlock();};
+    this.release=e=>{this.pointers.delete(e.pointerId);if(canvas.hasPointerCapture?.(e.pointerId))canvas.releasePointerCapture(e.pointerId);};
+    this.move=e=>{if(this.pointers.has(e.pointerId)){this.pointers.delete(e.pointerId);this.pointer(e);}};
+  }
+  install(){if(this.installed||typeof window==='undefined')return;this.installed=true;window.addEventListener('keydown',this.down);window.addEventListener('keyup',this.up);window.addEventListener('blur',this.blur);document.addEventListener('visibilitychange',this.visibility);this.canvas.addEventListener('pointerdown',this.pointer,{passive:false});this.canvas.addEventListener('pointermove',this.move,{passive:false});for(const name of ['pointerup','pointercancel','lostpointercapture'])this.canvas.addEventListener(name,this.release);}
+  sample(){if(!this.enabled()){this.clear();return{x:0,jump:false};}const has=name=>[...this.pointers.values()].includes(name);let x=Number(this.keys.has('ArrowRight')||this.keys.has('KeyD')||has('right'))-Number(this.keys.has('ArrowLeft')||this.keys.has('KeyA')||has('left'));let jump=this.keys.has('Space')||this.keys.has('ArrowUp')||this.keys.has('KeyW')||has('jump');let pads=[];try{pads=globalThis.navigator?.getGamepads?.()??[];}catch{/* Teclado/toque continuam disponíveis quando o navegador bloqueia gamepads. */}for(const p of pads)if(p?.connected){const axis=p.axes[0]??0;if(Math.abs(axis)>.2)x=axis;if(p.buttons[14]?.pressed)x=-1;if(p.buttons[15]?.pressed)x=1;jump||=Boolean(p.buttons[0]?.pressed||p.buttons[2]?.pressed);}return{x,jump};}
+  clear(){this.keys.clear();for(const id of this.pointers.keys())if(this.canvas.hasPointerCapture?.(id))this.canvas.releasePointerCapture(id);this.pointers.clear();}
+  destroy(){this.clear();if(!this.installed)return;this.installed=false;window.removeEventListener('keydown',this.down);window.removeEventListener('keyup',this.up);window.removeEventListener('blur',this.blur);document.removeEventListener('visibilitychange',this.visibility);this.canvas.removeEventListener('pointerdown',this.pointer);this.canvas.removeEventListener('pointermove',this.move);for(const name of ['pointerup','pointercancel','lostpointercapture'])this.canvas.removeEventListener(name,this.release);}
+}

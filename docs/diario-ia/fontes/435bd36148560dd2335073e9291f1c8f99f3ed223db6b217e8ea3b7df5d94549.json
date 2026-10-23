@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "435bd36148560dd2335073e9291f1c8f99f3ed223db6b217e8ea3b7df5d94549",
+  "path": "qa-execucoes/4dd29190354d4459a329dc94b967fe22/docs/diario-ia/qa-resultados/jardim/desktop-arvore.png",
+  "sha256": "51284756320e877cd5f2e67baa4a30438804aec90262c68242dd37710f5cb6b4",
+  "capturedAt": "2026-10-23T14:53:53.121617+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/desktop-arvore.png\", \"sha256\": \"dad516cf00b1a496963be0a8efd19d251ea37339f86866f9e962fcd67b41eaf8\", \"bytes\": 1040389, \"binaryRetained\": false}"
+}

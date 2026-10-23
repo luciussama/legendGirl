@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3df566db5df663a6586ab4f2df76a185ff966ab8c9e330a4e97cf7096fc4cae0",
+  "path": "qa-execucoes/06ffd054819b488eb67233391e639a4a/docs/diario-ia/qa-resultados/jardim-v2/paisagem-resgate.png",
+  "sha256": "e8f3a4385e0321f46a33d80639258cdf968a85aeb0580890c0fe38fc9d4ca4eb",
+  "capturedAt": "2026-10-23T18:27:52.781549+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-resgate.png\", \"sha256\": \"5bfbb5cf8058ff4b3b5e3128a68f07b4a029fd2727f1f6d02af675817bd6dd1d\", \"bytes\": 1206230, \"binaryRetained\": false}"
+}

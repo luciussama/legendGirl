@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "3c1b040c6cad54081b4a8c1fe42f41eb22e35d1defd737875a7244c7b4011407",
+  "path": "qa-execucoes/598a8b51f96a45c5b645659f7e7210fe.log",
+  "sha256": "24225259007d98749b9570c3b877b2002ea55976140556fa6eb25e881cec99b8",
+  "capturedAt": "2026-10-23T18:50:38.179628+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:arena:especial",
+    "exitCode": 0,
+    "package": "20261021T202057-5a61e352bc33"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:arena:especial\n> node docs/diario-ia/qa/especial-arena-20261021/regressao.mjs\n\nAPROVADO: 64 cenários em NORMAL/EASY, ambos os lados, dt variável, suspensão, dano, save durante disparo, uso único, bloqueios e câmera.\n"
+}

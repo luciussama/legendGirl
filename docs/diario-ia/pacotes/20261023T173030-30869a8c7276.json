@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T173030-30869a8c7276",
+  "date": "2026-10-23T17:30:30.888841+00:00",
+  "title": "Jardim: definições complementares e autorização de implementação",
+  "files": [
+    {
+      "path": "docs/diario-ia/jardim-complemento-20261023.md",
+      "sourceId": "36b647c90d4aabd1d6915bb74f98e4200f97e4913805744b82ce469eb76dd345",
+      "sha256": "b713dde65809aa358c440f2e15b912178046bf70019ccfe5a5da16bb39a76d2b",
+      "bytes": 3691,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T145745-db582d3ddf56",
+  "date": "2026-10-23T14:57:45.499055+00:00",
+  "title": "Jardim: dimensões reais de canvas por viewport e diagnóstico das entradas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-20261023/navegador.mjs",
+      "sourceId": "e22bf50f57dfee01bdcea2ca802effd814060a54455bb2f212ed9c69e303cb09",
+      "sha256": "70280f4b41685f7ef0613b7ea0f5d40cfb0e7d70b65a84f1a4dfddcadcbb0a47",
+      "bytes": 5298,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-20261023/cenario.mjs",
+      "sourceId": "98870a0209fda2b5b13ba66615e23494a15ed12a46905d8dcc5e082067d32723",
+      "sha256": "ec4075264e6a1c11e89caab07cb5939e1230f9a9d6c457454d24cda35bb802ef",
+      "bytes": 5751,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:browser": "node docs/diario-ia/qa/jardim-20261023/navegador.mjs"
+  }
+}

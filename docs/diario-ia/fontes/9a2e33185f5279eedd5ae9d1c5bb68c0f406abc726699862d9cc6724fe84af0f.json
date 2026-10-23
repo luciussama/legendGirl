@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9a2e33185f5279eedd5ae9d1c5bb68c0f406abc726699862d9cc6724fe84af0f",
+  "path": "qa-execucoes/486d4b1326ea4056ae835e00120cd0f4/docs/diario-ia/qa-resultados/jardim/desktop-lagarta.png",
+  "sha256": "253b35fc9ea7dc861d3de7dc3f299bdad15e7fb3b6e87946526d6c27beaa6a0d",
+  "capturedAt": "2026-10-23T15:07:31.458320+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/desktop-lagarta.png\", \"sha256\": \"e6e9401db26b99d9a4f07687bfc53533303f9dbb28641c91ff2bb8de862cb416\", \"bytes\": 1004128, \"binaryRetained\": false}"
+}

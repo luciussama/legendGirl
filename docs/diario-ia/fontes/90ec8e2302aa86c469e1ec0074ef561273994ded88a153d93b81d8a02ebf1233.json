@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "90ec8e2302aa86c469e1ec0074ef561273994ded88a153d93b81d8a02ebf1233",
+  "path": "qa-execucoes/208f1682b24944e18ef40f90cfee2663/docs/diario-ia/qa-resultados/jardim-v2/android-pedrinhas.png",
+  "sha256": "680a575b7e25704f1ab2c67582c7cb43c047f2565694895110191e68488057b9",
+  "capturedAt": "2026-10-23T18:50:07.556303+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-pedrinhas.png\", \"sha256\": \"3c41191cde15b88eca63269edd56577f5f358270ae4dccc3e5b11ea33760d381\", \"bytes\": 1086446, \"binaryRetained\": false}"
+}

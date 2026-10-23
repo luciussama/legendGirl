@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T150225-719f911e9bb9",
+  "date": "2026-10-23T15:02:25.655055+00:00",
+  "title": "Diagnóstico do piloto na roda após envelope completo dos pés",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-20261023/diagnostico.mjs",
+      "sourceId": "d330bcee79a37ba4b3a0d001fd038e173e3de1b09aa3a739e2677157f7bea55a",
+      "sha256": "7bc8e68e89f7fa7a47285341d5610cf27da59ee8a77ff750febaaca59c8efa26",
+      "bytes": 550,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:diagnostico": "node docs/diario-ia/qa/jardim-20261023/diagnostico.mjs"
+  }
+}

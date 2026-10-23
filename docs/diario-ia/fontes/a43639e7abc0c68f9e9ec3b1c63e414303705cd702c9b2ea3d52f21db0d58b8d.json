@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "a43639e7abc0c68f9e9ec3b1c63e414303705cd702c9b2ea3d52f21db0d58b8d",
+  "path": "qa-execucoes/d7e67f904bcc4b25a3eb3bf9dbc031b8/docs/diario-ia/qa-resultados/jardim-v2/desktop-rio-com-formiga.png",
+  "sha256": "21c3bbdb79208bda598eabdfd9fc8834a0d5adfbf49242f2b42166679db680c3",
+  "capturedAt": "2026-10-23T18:31:42.036420+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-rio-com-formiga.png\", \"sha256\": \"5a7336d833e93c0a99f35c08182589e61f9cd9a18b2283707289ee3c4784f055\", \"bytes\": 906808, \"binaryRetained\": false}"
+}

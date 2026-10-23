@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T173849-99409113f8f3",
+  "date": "2026-10-23T17:38:49.258303+00:00",
+  "title": "Jardim v2: comandos de domínio e percurso contínuo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "8c2f71e1fbc7235a8026c237a58613ab6b6236226b4cc06d54135e64776c0a76",
+      "sha256": "1b69bee4ad7cf27102a7e19a5dd5127831cbc7ee74e35593373b2b37427f809e",
+      "bytes": 5861,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "90923e8b1e295868c982ad3887ce2be45fb95d352193828b158c8789fade032f",
+      "sha256": "e0191c164238efeb1e52e6cc0df261dc6c25bf642d219aeb1043e9c4077c0f7c",
+      "bytes": 1425,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "9f946be4d12ada22b774c1fb900de24aaddf70c6f552cb32cca295fae5c04d88",
+      "sha256": "83eea5063add431ca6e361c76e4310e204d6ddd6b10b519e6d874113a591fea0",
+      "bytes": 1800,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden": "node docs/diario-ia/qa/jardim-v2/dominio.mjs",
+    "test:garden:percurso": "node docs/diario-ia/qa/jardim-v2/percurso.mjs"
+  }
+}

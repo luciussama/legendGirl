@@ -32,3 +32,5 @@ As pastas de arte mantêm guias de origem: [personagem oficial](../assets/art/da
 Ao mudar um contrato, atualize seu proprietário/consumidores na arquitetura e as receitas afetadas no manual. Regere `node scripts/generate-method-reference.js`; após mudanças visuais/de consumidores, regere `npm run docs:sprites`. Novas ferramentas/aliases entram no catálogo de comandos; novas dependências exigem package.json e lockfile coerentes. Se alterar parâmetros da arena, atualize a referência documental derivada dos módulos reais. Preserve o design inicial sem transformar sua história numa aprovação nova.
 
 Registre validações reais e arquivos revisados no diário, sem espalhar relatórios ou fixtures. Links e inventários gerados não substituem a leitura dos contratos: referências dinâmicas, callbacks e ciclo de vida precisam ser explicitados. Teste a publicação em subpasta e os saves quando a integração mudar.
+
+- [Um dia no jardim](garden/GUIA-JARDIM.md): controles, percurso, arte e persistência da fase lateral.

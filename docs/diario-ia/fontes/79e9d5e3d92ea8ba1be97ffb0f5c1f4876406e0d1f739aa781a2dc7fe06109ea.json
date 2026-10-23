@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "79e9d5e3d92ea8ba1be97ffb0f5c1f4876406e0d1f739aa781a2dc7fe06109ea",
+  "path": "qa-execucoes/4e8e9afcb40f426d9a676812600db407/docs/diario-ia/qa-resultados/jardim/paisagem-lagarta.png",
+  "sha256": "f05c7d99735d31cdbfbd8be3d1209f6b42217deb0b224666278c7b45b8615dc8",
+  "capturedAt": "2026-10-23T15:01:12.501471+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/paisagem-lagarta.png\", \"sha256\": \"32bd2fd3298bbf3ca81fea92c06d31d61b68dbfd3f85bcc79f5edd6bdc0eb556\", \"bytes\": 1366976, \"binaryRetained\": false}"
+}

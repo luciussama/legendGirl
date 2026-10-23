@@ -1,0 +1,19 @@
+{
+  "ferramenta": "image_gen integrada; sem CLI",
+  "sessao": "20261023T172951-12ca99a81674",
+  "jobs": [
+    {
+      "key": "menina-desconforto-v1",
+      "source": "source/menina-desconforto-v1.png",
+      "reference": "source/menina-corrida-v1.png",
+      "prompt": "Edit target: the supplied girl sprite sheet. Use case: identity-preserve. Create a replacement VARIANT sheet of exactly eight separate full-body poses in a precise 4 column by 2 row grid on real transparent background, generous clear gutters. Preserve this exact little girl's face, brown pigtails pink bows, yellow blouse, turquoise candy-print pinafore dress and pink/white shoes, detailed hand painted children's storybook game style. Every pose faces right in three-quarter side view, consistent body scale. ALL faces show sensory discomfort: worried drawn eyebrows, narrowed troubled eyes, small tense frown, no tears, no rage, no smile. Top row four consecutive high-stepping slow uncomfortable walking poses through tall grass, knees/feet lifted noticeably, one foot grounded in each. Bottom row: 1 tense fast running stride, 2 different tense fast running stride, 3 awkward off-balance airborne jump knees asymmetrical, 4 worried standing still both feet on ground. Whole silhouettes inside cells, absolutely no grass/ground/props/shadows/background/text, no checkerboard. Preserve anatomical child proportions and dress detail. This is production bitmap animation, no labels.",
+      "transparent_background": true
+    },
+    {
+      "key": "ambiente-v2",
+      "source": "source/ambiente-v2.png",
+      "prompt": "Use case: illustration-story. Asset type: production 2D side-scrolling game scenery sprite atlas, actual transparent background. Create exactly FOUR isolated hand-painted storybook assets in a 2 columns by 2 rows grid, large clear empty gutters, each entire silhouette strictly inside its quadrant. Top left: exterior side of a cozy small wooden garden house with open door and a little porch facing right, no ground extending out. Top right: lush tall grass tuft strip growing on a thick natural earth bank, grass blades about knee-height of a small girl, natural illustrated surface without straight guide lines. Bottom left: a natural rounded gravel path bank topped by many tiny warm gray pebbles, thick earth edge below, side view, NOT a single large stepping stone. Bottom right: a complete inviting picnic grouping on a pastel checkered rug: a cuddly brown teddy bear seated, a green plush dinosaur seated, a red/silver friendly vintage toy robot seated and a colorful little wooden toy train arranged as a fourth participant; all four gathered around two plates of golden Brazilian buttered griddled bread (pão na chapa) and clear glasses/pitcher of orange juice, visible bread and orange liquid, leave a small open place for the girl on the near left. No humans, no fairy, no tree (added separately). Warm detailed gouache storybook painting with textured fabric, wood and leaves; clean game-ready alpha silhouettes. No text, no labels, no grid lines, no checkerboard, no background or full ground scene. Similar polished children's storybook painted style to a whimsical game about a little girl in a turquoise pinafore.",
+      "transparent_background": true
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2c6800cc339c93ec2a7e4e7eef82f20025acb808ea39ff2e63425f2fd3c278a7",
+  "path": "qa-execucoes/4e8e9afcb40f426d9a676812600db407/docs/diario-ia/qa-resultados/jardim/android-madeira.png",
+  "sha256": "6ebc653243628086dae4a00b9ba8d9cc250073d2a282878632ebfbe8351f4b96",
+  "capturedAt": "2026-10-23T15:01:12.489691+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/android-madeira.png\", \"sha256\": \"80083a4578a2b6c45bafa776866fb25183f4cadb95d02c55bb9962f09ed6a716\", \"bytes\": 919780, \"binaryRetained\": false}"
+}

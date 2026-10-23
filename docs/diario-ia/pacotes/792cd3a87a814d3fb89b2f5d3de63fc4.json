@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "792cd3a87a814d3fb89b2f5d3de63fc4",
+  "date": "2026-10-23T17:53:34.061926+00:00",
+  "title": "QA temporário: test:garden:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/792cd3a87a814d3fb89b2f5d3de63fc4.log",
+      "sourceId": "852777fb413b4ee53601931a44931cbe89ea6af6eb39a3e6369acad93ff5a42d",
+      "sha256": "fa31494fce689599cc13b4f2ef1bc3d0297d6db426b6858195ba1a553addcb17",
+      "bytes": 1476,
+      "metadataOnly": false
+    }
+  ]
+}

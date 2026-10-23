@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6f07d20249b7d6973c82e5e7149ee705faafde0322963701c168b427813e6869",
+  "path": "assets/art/garden/manifest.json",
+  "sha256": "527418b64c95007e4528fb445f630f1118154beed9ee8be794fb3a49cb40dcc4",
+  "capturedAt": "2026-10-23T17:38:35.477605+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": 1,\n  \"images\": [\n    \"cenario-v1.png\",\n    \"runtime/menina-corrida-v1.png\",\n    \"runtime/menina-acoes-v1.png\",\n    \"runtime/menina-desconforto-v1.png\",\n    \"source/objetos-v1.png\",\n    \"source/ambiente-v2.png\",\n    \"../toy-room/stage3/illustrated-fairy-v1.png\"\n  ]\n}\n"
+}

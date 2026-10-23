@@ -15,11 +15,11 @@ Português do Brasil no código comentado, documentação, interface e registros
 
 Aplicativo de navegador com módulos ES, Canvas 2D e perseguição em Three.js/WebGL 2, importado tardiamente de `src/vendor/three/`. Express serve desenvolvimento e revisão local de sprites; não há backend de campanha. `npm run build` valida recursos/caminhos, sem compilar dist. Pages publica por push em main/disparo manual; merge ou commit local não publica. Workflow verifica assets/lint/build, não a suíte completa.
 
-Tela inicial → abertura/quarto escuro → plataformas/castelo/fuga → porta falsa → tutorial e plataformas de retorno → portal → exploração da Toy Room → recorrência/investigação/espada → transformação/arena → vitória do urso → introdução ilustrada → corrida 3D → captura e baú. Derrota da fuga termina sem captura.
+Tela inicial → abertura/quarto escuro → plataformas/castelo/fuga → porta falsa → tutorial e plataformas de retorno → portal → exploração da Toy Room → recorrência/investigação/espada → transformação/arena → vitória do urso → introdução ilustrada → corrida 3D → captura e baú → jardim → piquenique. Derrota da fuga termina sem captura.
 
 `TitleScreen` coordena Novo jogo, Carregar, Modo fácil, Opções e confirmação de substituição. Modo fácil define a nova campanha; carregar respeita a dificuldade salva. Qualidade automática está desabilitada. `TitleScene` tem canvas/RAF próprios, suspensos com menu/aba ocultos e movimento reduzido. Arte e resolução nativa em `assets/art/title-screen/prompts.json`; composição Full HD não significa fundo nativo Full HD.
 
-O seletor de revisão oferece Quarto escuro pelo despertar, Sala de brinquedos pela chegada ilustrada, Arena de batalha pela transformação e Perseguição 3D pelo urso caído. Aguarda assets principais, permite repetir entradas e preserva a campanha após a última gravação normal ao entrar no debug. `OpeningSequence.start({replay:true})` ignora conclusão prévia sem alterar a marca persistida. Novo jogo/Carregar encerram esse isolamento.
+O seletor de revisão oferece Quarto escuro pelo despertar, Sala de brinquedos pela chegada ilustrada, Arena de batalha pela transformação e Perseguição 3D pelo urso caído e Jardim pela saída da casa. Aguarda assets principais, permite repetir entradas e preserva a campanha após a última gravação normal ao entrar no debug. `OpeningSequence.start({replay:true})` ignora conclusão prévia sem alterar a marca persistida. Novo jogo/Carregar encerram esse isolamento.
 
 ## Proprietários e persistência
 
@@ -106,14 +106,14 @@ Recuo livre usa caminhada e velocidade normal. Durante preparação/janela ofens
 ## Pendências e limites reais
 
 - Piso: o usuário ainda relatou ausência da textura no Safari. A nova barreira visual e alternativa linear têm testes no Chrome; causa e correção real no Safari/hardware físico continuam sem comprovação.
-- COMPLETE da fuga mantém a fase ativa: falta navegação final. GAME_OVER oferece retry próprio da fase.
+- COMPLETE da fuga de campanha abre o jardim após 2,5 segundos; a revisão isolada conserva seu final. O jardim termina com a menina brincando sob a árvore. GAME_OVER oferece retry pelo host.
 - Escuta final da mixagem, revisão artística específica e avaliação humana de dificuldade/conforto permanecem distintas dos testes automáticos.
 - Não há homologação em hardware físico. Múltiplas instâncias de createGame ainda exigem auditoria de RAF/listeners globais.
 - Casos de navegador usam Chrome isolado e estados preparados, às vezes com CDP nativo. Não equivalem a campanha humana completa.
 
 ## Documentação, acervo e integração atual
 
-Entrada: `docs/README.md`; catálogo: `ARQUITETURA.md`; receitas: `MANUAL-DESENVOLVIMENTO.md`; contratos: `REFERENCIA-METODOS.md`; ferramentas: `COMANDOS.md`; pacotes: `DEPENDENCIAS.md`. Guias de arena, fuga, animação e designers descrevem suas áreas. Catálogo/referência atuais: 154 módulos e 1038 declarações; mapa: 440 imagens, 153 recortes e 29 assinaturas. Arte atual, prompts de produção e diário humano preservados.
+Entrada: `docs/README.md`; catálogo: `ARQUITETURA.md`; receitas: `MANUAL-DESENVOLVIMENTO.md`; contratos: `REFERENCIA-METODOS.md`; ferramentas: `COMANDOS.md`; pacotes: `DEPENDENCIAS.md`. Guias de arena, fuga, jardim, animação e designers descrevem suas áreas. Catálogo/referência atuais: 161 módulos e 1099 declarações; mapa: 452 imagens, 196 recortes e 29 assinaturas. Arte atual, prompts de produção e diário humano preservados.
 
 Design inicial de batalha consolidado integralmente no pacote `documentacao-20261022-d61a324b2364`, inclusive bitmap do diagrama; use journal:search pelos nomes originais. QA só existe no acervo e é recuperado temporariamente pelo executor. Cópias físicas antigas não devem substituir fontes mais recentes. SQLite é cache reconstruível; não remover fontes/registros/commits/pacotes.
 
@@ -178,3 +178,76 @@ A investigação espera mãos vazias. A espada nasce em (1360,330), à direita d
 ## Integração autorizada em 23/10/2026
 
 Sessão `20261023T141439-4e9c0893a6cc`: usuário solicitou commit das mudanças acumuladas e merge de `feat-fairy-ajustments` em `main`. Escopo inclui fada/luz orbital 3D, contato integral das plataformas/pés, menina ilustrada e modelo 3D, baú aberto da arena e regras de entrega/espada, com documentação e acervo. Implementação registrada em `50ab104a`; merge local sem conflitos em `79e3ad5b`. Main contém a implementação; branch de origem preservada. Push/publicação não solicitados nem executados neste pedido.
+
+## Fase Jardim — 23/10/2026
+
+Branch `Jardim`, sessão `20261023T144039-64f9011c5b94`: nova fase de rolagem lateral solicitada pelo usuário. Menina conserva identidade girl-v2, com camiseta amarela/vestido turquesa de doces/calçado rosa-branco inspirados na foto. Foto pessoal não copiada para o repositório. Desenhos orientam percurso de grama, madeira, pedra, água, nuvens, roda de quatro apoios, formigas/lagartas e árvore final, sem impor layout literal. Artes próprias em `assets/art/garden/`, prompts/fontes preservados, execução/metadados por `scripts/prepare-garden-art.js`. Manifesto dedicado carregado apenas na fase.
+
+`GardenLevel/Simulation/Input/Renderer/Audio/Phase` isolam física em segundos, controles, pinturas e melodia sintetizada. A revisão v2 implementa materiais sensoriais, inimigos de um/dois pisões, nuvens temporárias, Nanda acompanhante/guia e EASY imortal; detalhes no fechamento vigente abaixo. Câmera somente lateral, altura/escala por viewport. Envelope dos pés: meia largura de 36 px. Roda transporta a menina sem girar o tampo.
+
+A campanha aguarda 150 quadros depois de COMPLETE da perseguição e chama `ToyRoomPhase.startGarden`, descartando o 3D. Revisão isolada da perseguição conserva seu final; nova opção garden no seletor abre o jardim sem salvar campanha. Fase permanece sob currentPhaseMode toy-room; `toyRoomGarden` no snapshot guarda somente domínio e é prioritário no restore. Integração com pausa, derrota, oferta EASY e descarte do host. Saves antigos preservados. Limitações/QA reais no encerramento desta sessão; sem commit/push autorizado para esta implementação.
+
+Retomada em `20261023T165749-f5e8a39dd623`: concluída a validação que ficou interrompida na sessão acima. O cenário ampliado verifica três derrotas, retry global e aceitação de EASY no host real. O catálogo de arquitetura recebeu os sete módulos do jardim e `assets/illustratedGirl.js`, ausentes na primeira conferência. A implementação existente foi preservada. Resultados detalhados estão nos registros imutáveis de encerramento e QA. Permanecem avaliação artística, escuta e conforto em aparelho físico; nenhuma aprovação humana ou publicação foi inferida. Alterações continuam locais na branch `Jardim`, sem commit/push.
+
+## Nova direção segmentada do jardim — registrada antes da execução
+
+Sessão `20261023T171729-7fa8fbc13dea`: usuário enviou o percurso em mensagens segmentadas e pediu registro integral antes de executar. Texto integral das nove mensagens, descrição dos cinco anexos, requisitos consolidados, pontos não especificados e plano/critério de validação estão na fonte `a9443f605112c0b94c5aec779b726a9fa57ee2d6a599021cb47c610ea830d618`, pacote `20261023T171919-0063bf2ddf25`. Consultar por `npm run journal:show -- a9443f605112c0b94c5aec779b726a9fa57ee2d6a599021cb47c610ea830d618`. Fonte integral/SHA-256 conferidos. Anexos foram vistos e descritos, mas seus bytes não estavam disponíveis localmente; os bitmaps não foram arquivados nesta sessão.
+
+**Direção registrada antes da implementação v2:** saída da casa em madeira com andar normal → apoios suspensos → grama alta com dificuldade/estranhamento sensorial desta menina → água atravessada pelas pedras → grama → pedrinhas com corrida muito rápida e controle difícil → roda de quatro apoios acessada a partir do trecho rápido → nuvens que piscam cada vez mais rápido e desaparecem → inimigos → trecho misto mais longo da fase, bem comprido e detalhado, alternando repetidamente chão normal/grama/pedras sobre rio → exatamente quatro nuvens finais → árvore do piquenique. Lagartas exigem dois pisões distintos: primeiro ficam vermelhas/mais rápidas e sobrevivem; segundo mata. Formigas andam e pulam, morrem com um pisão na cabeça; uma salta entre pedras do rio e combina o combate com a travessia. Água e queda são fatais; substituem o contrato antigo de apenas um coração por queda. Destino agora é piquenique, não somente brincar sentada.
+
+Parâmetros de terreno/roda/inimigos, gatilho/tempos/reaparecimento de nuvens, extensão numérica, política de retry/checkpoints e composição do piquenique não foram especificados. Não atribuir escolhas técnicas ao usuário. O rótulo “barro” no desenho não substitui o pedido verbal de pedrinhas. Conservar câmera somente lateral, identidade/roupa atuais, integrações de campanha/save/debug e trabalho existente. QA anterior não valida os novos requisitos. Esta sessão alterou somente o diário; não iniciou código ou arte e conserva a espera solicitada pelo usuário antes de implementar. Sem commit/push/publicação.
+
+### Complemento e execução autorizada
+
+Sessão `20261023T172951-12ca99a81674`, pacote prévio `20261023T173030-30869a8c7276`: usuário autorizou expressamente começar. Grama equivale a lama: lenta, pés erguidos, incômodo no rosto. Pedrinhas aceleram muito o andar, sem derrapagem ao parar; saltos desordenados/estranhos e expressão desconfortável. Duração pretendida: 20 minutos, fase grande com desafio gradual. Piquenique com ursinho/dinossauro/robô/trem sentados como participantes, tapete, pão na chapa e suco de laranja; diálogos serão definidos depois, não inventar. Fada acompanha sobre a cabeça o tempo todo e guia voando à próxima plataforma se houver dificuldade de avanço. EASY é imortal: queda/água têm resgate pela fada até chão seguro; golpe que seria fatal desorienta e recua aproximadamente dois apoios. NORMAL conserva fatalidade. Registro integral complementar e plano preservados antes de mudanças de produção. A implementação e os resultados efetivos desta revisão estão no fechamento vigente abaixo; nenhuma aprovação artística humana foi inferida.
+
+
+## Jardim v2 implementado — estado vigente
+
+Sessão `20261023T172951-12ca99a81674`, branch `Jardim`: execução autorizada depois das definições adicionais. Mapa de 197342 px, objetivo em 196662, introdução seguida de trinta setores mistos/seis paisagens, 271 apoios estáticos e roda, 86 inimigos, quatro nuvens finais e piquenique. Primeiros encontros ensinam as mecânicas antes das combinações. O alvo é aproximadamente vinte minutos de percurso; há quatro travessias automatizadas contínuas NORMAL/EASY com dt fixo/irregular próximas desse tempo, sem teleporte ou invulnerabilidade. Isso não homologa duração/conforto humanos.
+
+Materiais: madeira/terra/pedra/nuvem 220 px/s, grama 100 com pés erguidos/rosto preocupado, pedrinhas 410 sem derrapar ao soltar. Saltos das pedrinhas variam por contador determinístico; não há entrada aleatória nem inversão de comandos. Duas poses pintadas em vermelho substituem filtro de cor: primeiro pisão deixa uma vida e ativa perseguição a no mínimo 125 px/s (ou velocidade base ×2,4), segundo mata, com trava contra duplicar um contato. A revisão posterior implementa perseguição ativa, conforme o fechamento abaixo. Formigas saltam; três encontros seguem rotas entre pedras. Não é obrigatório eliminar todos os inimigos. Nuvens armam ao pisar, piscam progressivamente, somem do desenho/colisão após 2,8 s NORMAL/3,8 s EASY e retornam quatro segundos depois.
+
+NORMAL: três corações, água/queda fatais. Bandeirinhas em chão estável salvam avanço e recuperam corações. EASY: seis corações e nenhuma morte; água/queda têm resgate animado de 1,6 s até o último chão seguro; golpe fatal desorienta e recua aproximadamente dois apoios visitados, recuperando corações e quatro segundos de imunidade. Nanda acompanha sobre a cabeça e voa ao próximo apoio após sete segundos sem progresso, retornando em até três segundos. As escolhas numéricas são calibração técnica, não números impostos pelo usuário.
+
+`toyRoomGarden` guarda domínio v2: relógios de nuvens, material/velocidade aérea, inimigos, fada/guia, histórico/chão seguro e recuperação intermediária. Mapa antigo v1 migra ao início seguro; conclusão antiga abre o novo piquenique. Novo fluxo conserva campanha/debug, pausa/foco, retry e descarte de imagens/padrões/listeners/vozes. Consultas espaciais limitam colisões ao entorno; câmera continua exclusivamente lateral.
+
+Correção posterior expressa do usuário: todo terreno fixo é uma massa contínua, com base opaca e repetição apenas do miolo das texturas, sem laterais arredondadas internas. Vãos, pedras suspensas e roda/nuvens conservam os espaços do desafio. A árvore está no plano posterior do gramado; a toalha com os quatro convidados, pão na chapa e suco está no plano do chão à frente das raízes. A composição final foi inspecionada após o reposicionamento. Nenhuma fala do piquenique foi inventada: diálogos permanecem pendentes de definição do usuário.
+
+Artes novas preservadas em `assets/art/garden/source/menina-desconforto-v1.png`, `ambiente-v2.png` e `lagarta-vermelha-v1.png`, por `image_gen` integrada. Prompts em `prompts-v2.json` e `prompts-lagarta-vermelha.json`. Preparador gera 28 poses da menina, nove objetos, quatro elementos e duas lagartas vermelhas (43 recortes). Fontes antigas preservadas; recorte por alfa conectado evita fragmentos da grade. Requisitos integrais complementares na fonte `36b647c90d4aabd1d6915bb74f98e4200f97e4913805744b82ce469eb76dd345`; correção de chão/toalha no pacote `20261023T174901-5ce36d4a8780`.
+
+Fontes de QA e resultados, incluindo falhas iniciais, pertencem ao acervo. Suíte geral, contratos v2, percursos e navegador foram executados; detalhes no encerramento da sessão. Não houve homologação física/Safari, aprovação artística humana ou validação de FPS/GPU em aparelho. Alterações locais, sem commit, merge, push ou publicação nesta sessão.
+
+### Checkpoint solicitado pelo usuário — registro anterior ao fechamento
+
+Naquele checkpoint, a sessão `20261023T172951-12ca99a81674` permanecia aberta. O texto acima descreve a base implementada, sem aprovação artística humana. O usuário reprovou novos aspectos do acabamento e pediu salvar contexto antes de continuar. Checkpoint integral, com mensagens originais, trabalho feito, resultados/falhas reais, arquivos de retomada e ordem de execução: fonte `0db51da9ea026ba292c7a368ce5db63d79be0dcc2c4e6deeadf17baf866893ff`, pacote `20261023T181445-6e31faad7241`. QA/fontes finais da base e saída integral de `npm test`: pacote `20261023T180605-00460ca643ec`.
+
+**Fila registrada antes de executar as cinco correções:**
+
+1. Acabar as extremidades e transições entre plataformas/materiais: remover cortes secos, preservar chão fixo único e vãos legítimos.
+2. Corrigir contato visual de água com margens e pedras; há fundo aparente entre a base desenhada de pedras e a água. Não alterar superfícies físicas para disfarçar acabamento.
+3. Aumentar agressividade dos inimigos. Lagarta vermelha deve perseguir a menina depois do primeiro pisão, em vez de apenas patrulhar mais rápido. Preservar limites seguros, dois pisões e EASY imortal.
+4. Desenhar grama de primeiro plano cobrindo pés/parte baixa das pernas, mantendo passos altos e desconforto sem mover corpo físico/câmera.
+5. Pedrinhas: pernas com movimento perceptível, atuação de escorregão/desequilíbrio, rosto desconfortável e sinais gráficos de esforço/suor. Preservar parada imediata ao soltar enquanto não houver instrução explícita de inércia; a mudança atual é de atuação visual.
+6. Revalidar agressividade/contato/save, percursos NORMAL/EASY e cenas animadas em três formatos; reconstruir mapa/guias e registrar resultados reais.
+
+Os testes anteriores não homologavam essa fila. A execução e as novas verificações estão registradas abaixo; diálogos do piquenique continuam aguardando definição. Não houve commit/push/publicação.
+
+
+### Fechamento da implementação e das cinco correções
+
+Após o checkpoint, os cinco itens foram implementados. Chão fixo conserva massa única; as bordas externas usam contorno orgânico e pontas pintadas, e materiais dissolvem a textura anterior numa faixa curta. O subsolo recebe textura discreta, sem aparência de andares verdes. Pedras têm base rochosa submersa e água frontal com contato; nível visual aproximado sem mudar o limite fatal/apoios físicos. Grama de primeiro plano oculta sapatos/pernas baixas sem deslocar o corpo. Pedrinhas usam quatro pinturas de desequilíbrio de `source/menina-pedrinhas-v2.png`, com inclinação visual e suor junto ao rosto; prompt em `prompts-pedrinhas-v2.json`. A parada ao soltar continua imediata.
+
+Lagartas vermelhas perseguem a menina, viram conforme seu lado e podem usar todo o chão de origem, respeitando bordas. Formigas terrestres aproximam-se e saltam com mais frequência; as rotas do rio também têm cadência mais agressiva. `supportId` dos inimigos identifica seu chão; restore aceita posições da perseguição além dos antigos limites de patrulha. O domínio preserva dois pisões, salvo/concluído, EASY imortal e câmera lateral.
+
+Novos testes cobrem perseguição nos dois lados, limite seguro e restore fora da patrulha; imagem confirma oclusão real dos sapatos, bases alcançando água e quatro poses distintas. Navegador testou 43 recortes e quinze cenas em três formatos; capturas de água, transição, grama e pedrinhas foram inspecionadas durante esta revisão. O piloto antigo perdeu com a nova agressividade; o novo reage a ameaças por trás e usa saltos de retorno, sem teleporte/invulnerabilidade. Travessias completas com dt fixo/irregular passaram NORMAL/EASY em aproximadamente 19,4–19,7 minutos. Suíte geral repetida após a IA nova passou. Resultados, falhas e fontes estão preservados nos eventos e no encerramento desta sessão.
+
+Restam definição futura dos diálogos do piquenique e avaliação humana da arte/dificuldade/conforto, além de Safari/hardware físico; nenhuma aprovação humana inferida. As cinco solicitações não estão mais em fila de implementação. Alterações locais na branch `Jardim`, sem commit/merge/push/publicação.
+
+Acervo final desta revisão: pacote `20261023T183808-6e9e0fc8108b` preserva fontes de QA atualizadas, metadados visuais e saída agregada da suíte geral após a nova IA; pacote `20261023-limpeza-jardim-9a428ca2d35f` identifica 46 cópias temporárias de captura por caminho/hash/tamanho antes da remoção. Originais do usuário e artes de produção não foram removidos. Os checkpoints `20261023-progresso-849dfcf00f60` e `20261023-progresso-ae5649e65848` conservam os estados intermediários; o encerramento da sessão registra o resultado final.
+
+## Revisão em andamento — 23/10/2026: grama e contato da margem
+
+Sessão `20261023T184714-a3e17f3ca140`. Pedido atual registrado antes da execução: substituir o recorte localizado de grama nos pés por toda a faixa ilustrada em primeiro plano, com transparência para enxergar a menina atrás; corrigir o espaço de cenário entre água e chão mostrado na captura do usuário. A revisão anterior está implementada e testada tecnicamente, mas este acabamento foi rejeitado pelo usuário. Não há aprovação artística presumida.
+
+Plano autorizado: manter a vegetação ancorada ao terreno inteiro, sem faixa móvel junto à menina; usar a mesma escala e alinhamento da pintura de fundo. Estender somente a pintura do rio até as margens vizinhas, preservando o limite fatal, apoios, câmera e dificuldade. Validar transparência/oclusão e contato nas duas margens em navegador e inspecionar capturas; reconstruir mapa de sprites e sincronizar o diário. O trabalho já modificado na branch Jardim será preservado. Diálogos do piquenique continuam pendentes de definição.

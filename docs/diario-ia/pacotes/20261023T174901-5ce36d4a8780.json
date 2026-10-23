@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T174901-5ce36d4a8780",
+  "date": "2026-10-23T17:49:01.355485+00:00",
+  "title": "Jardim: correção do chão contínuo e toalha fora das raízes solicitada durante execução",
+  "files": [
+    {
+      "path": "docs/diario-ia/jardim-correcao-chao-20261023.md",
+      "sourceId": "bd798f198ca90643e875de86b6d24db9a0d11b4942656abebdaad46e1bc2d00d",
+      "sha256": "4aac6c4c9f80b576c208a2fe9b8209ffd671663810710146f40971af4c06f30a",
+      "bytes": 1429,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

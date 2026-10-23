@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5a1de948d7624b8cea342d90936b3066f957c9f6ba56a2e9de135beccbc8fa84",
+  "path": "qa-execucoes/827064e6c20f4030880a33a847a90b89/docs/diario-ia/qa-resultados/jardim/paisagem-arvore.png",
+  "sha256": "be65295b567f336624588ddbe2aae9e14fc04d8c6c79112c26cf486ddfd20ae7",
+  "capturedAt": "2026-10-23T16:58:10.880124+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim/paisagem-arvore.png\", \"sha256\": \"818bb0b9db855dbf8981e312e6025c82737dae64dd6a98adb265443b04be5838\", \"bytes\": 1151293, \"binaryRetained\": false}"
+}

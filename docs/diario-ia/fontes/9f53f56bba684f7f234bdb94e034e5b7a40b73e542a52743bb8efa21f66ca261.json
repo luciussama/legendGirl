@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "9f53f56bba684f7f234bdb94e034e5b7a40b73e542a52743bb8efa21f66ca261",
+  "path": "assets/art/garden/README.md",
+  "sha256": "cadc3aaba0282e81c50476ba8233ca46423351ed8936a434aa46520d4a736acb",
+  "capturedAt": "2026-10-23T15:01:12.541743+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "# Um dia no jardim — artes de produção\n\nDireção: dia claro no jardim, rolagem lateral, destino sob uma árvore. Os desenhos enviados pelo usuário orientam grama, madeira, pedras, água, nuvens, formigas, lagartas e uma roda de quatro apoios; não são um mapa obrigatório.\n\nA menina mantém a identidade e o detalhamento de `characters/girl-v2`: rosto, cabelo castanho e marias-chiquinhas. A roupa foi adaptada da foto enviada: camiseta amarela, vestido salopete turquesa estampado com doces, botões amarelos e calçado rosa/branco. A fotografia pessoal não foi copiada para o repositório. A referência foi usada como direção de vestuário; não se trata de retrato fotográfico.\n\nAs artes foram geradas com a ferramenta integrada `image_gen`. Prompts e referências em `prompts.json`; fontes preservadas em `source/`. `cenario-v1.png` é a pintura distante. A prancha de objetos contém grama, madeira, pedra, nuvem, duas poses da formiga, duas da lagarta e árvore. Duas pranchas da menina fornecem 16 poses: repouso/corrida, salto/subida/ápice/descida, reação, comemoração e brincadeira sentada.\n\nExecute `node scripts/prepare-garden-art.js` para reconstruir `runtime/`, `frames.json`, `manifest.json` e `GardenArt.js`. Redução em alfa pré-multiplicado evita franjas; as figuras não são redimensionadas por pose. Os objetos são separados pelo alfa conectado para conservar a copa inteira mesmo atravessando a grade nominal. A menina usa altura de referência comum de 256 px e pés registrados na última linha opaca. A fonte de locomoção tem envelope das sandálias aproximadamente -30,73 a +29,29 px na apresentação de 92 px; a física desta revisão usa meia largura de 31 px, explicitamente configurada, sem depender de leitura de imagem no gameplay.\n\nO manifesto dedicado é carregado apenas ao entrar no jardim. As artes anteriores permanecem preservadas. Alterar somente os pixels não autoriza recalibrar plataformas ou física. Novos recortes exigem reconstrução do inventário com `npm run docs:sprites` e registro no diário.\n"
+}

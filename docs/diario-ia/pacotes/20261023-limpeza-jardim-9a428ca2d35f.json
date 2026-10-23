@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023-limpeza-jardim-9a428ca2d35f",
+  "date": "2026-10-23T18:39:11.792020+00:00",
+  "title": "Jardim: metadados das cópias temporárias antes da limpeza final",
+  "files": [
+    {
+      "path": "qa-execucoes/20261023-limpeza-jardim-9a428ca2d35f.json",
+      "sourceId": "a10ad85aaa06a962b876432cc235a9fca6d7bd9685f119d654223ccceba76c09",
+      "sha256": "d7e8acbbf313719dedbb27b23d790bde149c8715e9fe0d7b6e9bb77d11dc1f43",
+      "bytes": 10703,
+      "metadataOnly": false
+    }
+  ]
+}

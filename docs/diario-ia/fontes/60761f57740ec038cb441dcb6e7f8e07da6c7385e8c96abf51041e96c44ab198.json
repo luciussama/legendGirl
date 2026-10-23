@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "60761f57740ec038cb441dcb6e7f8e07da6c7385e8c96abf51041e96c44ab198",
+  "path": "qa-execucoes/0334a9a9297d42cb89bef3c813d888ca.log",
+  "sha256": "051123fa00994edd3ac885a3c973326b7dd7d905faad414525dc214780d1d51b",
+  "capturedAt": "2026-10-23T16:58:36.091757+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:docs:equalizacao",
+    "exitCode": 1,
+    "package": "20261021T131636-41ca309d7cad"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:docs:equalizacao\n> node docs/diario-ia/qa/equalizacao-20261021/verificar-documentacao.mjs\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Catálogo deve cobrir cada módulo uma única vez\n\n153 !== 161\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kmw1w82x/projeto/docs/diario-ia/qa/equalizacao-20261021/verificar-documentacao.mjs:15:8\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 153,\n  expected: 161,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

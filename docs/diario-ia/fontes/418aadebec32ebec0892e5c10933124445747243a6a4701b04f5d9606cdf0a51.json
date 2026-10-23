@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "418aadebec32ebec0892e5c10933124445747243a6a4701b04f5d9606cdf0a51",
+  "path": "qa-execucoes/c7bcf2c83f0e4d32baf0645c5e2a2ac9/docs/diario-ia/qa-resultados/jardim-v2/android-troca-de-terreno.png",
+  "sha256": "72c2deb4d576c1b0466bbbbb18f93eed92d0f5e2f311ae9099bd4fe3d740eb51",
+  "capturedAt": "2026-10-23T18:49:19.692229+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-troca-de-terreno.png\", \"sha256\": \"0b9953b072bcf83670fdc0fd306038908201f81d6d223109e1ce54b4691fe768\", \"bytes\": 1092122, \"binaryRetained\": false}"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T181445-6e31faad7241",
+  "date": "2026-10-23T18:14:45.238819+00:00",
+  "title": "Checkpoint solicitado: jardim implementado, resultados reais e cinco correções em fila",
+  "files": [
+    {
+      "path": "docs/diario-ia/jardim-checkpoint-fila-20261023.md",
+      "sourceId": "0db51da9ea026ba292c7a368ce5db63d79be0dcc2c4e6deeadf17baf866893ff",
+      "sha256": "e56065cebb01a33b5b59240e957168cbcd2c35da603b2e599fbf461da9169fa2",
+      "bytes": 9422,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "de0cfd34da944f0a9bd5f04e216c458f",
+  "date": "2026-10-23T15:02:30.523000+00:00",
+  "title": "QA temporário: test:garden:diagnostico",
+  "files": [
+    {
+      "path": "qa-execucoes/de0cfd34da944f0a9bd5f04e216c458f.log",
+      "sourceId": "576ac47e5424e776042edc7d3794d23d19ffa156f9c31d8ab9724f9d2d0e24de",
+      "sha256": "2aa1489fe58b3b56acb0a1d965ef0c97919a8469e34dc9134eeeef050ab4015b",
+      "bytes": 386,
+      "metadataOnly": false
+    }
+  ]
+}

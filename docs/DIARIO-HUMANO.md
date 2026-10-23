@@ -126,3 +126,15 @@ O baú da arena aparece aberto: os adversários sobem de dentro da caixa antes d
 Enquanto carrega um brinquedo, a menina precisa levá-lo ao baú: não pode largá-lo no chão nem trocar por outro. Nanda indica o baú durante a entrega e, assim que o brinquedo é guardado, segue para o brinquedo disponível mais próximo da menina.
 
 A espada aparece à direita do baú, no piso abaixo da janela direita. Desde sua revelação, Nanda permanece sobre a espada e os brinquedos comuns ficam indisponíveis. A investigação aguarda a entrega do brinquedo atual antes de começar.
+
+## 23/10/2026 — Um dia no jardim
+
+O dia seguinte leva a menina para um jardim ensolarado, com roupa nova inspirada na foto: camiseta amarela e vestido turquesa estampado. Ela anda e pula em rolagem lateral, vence formigas e lagartas pulando por cima e atravessa grama, madeira, pedras, água e nuvens. Uma roda de quatro apoios oferece outro caminho. O destino é um lugar para brincar sob uma árvore.
+
+Bandeirinhas marcam pontos de retomada. A fase tem controles de teclado, gamepad e botões simultâneos de andar/pular no celular. Pode ser revista pela bandeira → Um dia no jardim; na campanha, começa depois da conclusão da perseguição e do retorno do urso ao baú.
+
+### 23/10/2026 — Caminho longo até o piquenique
+
+O jardim passa por madeira, grama alta com marcha lenta e desconfortável, pedras no rio e pedrinhas rápidas com saltos irregulares. Roda e nuvens temporárias antecedem o grande trecho misto; lagartas mudam para vermelho no primeiro dos dois pisões, e formigas também saltam entre pedras. Nanda acompanha e indica o próximo apoio. O modo fácil é imortal, com resgate de quedas e desorientação após um golpe que seria fatal. A chegada reúne os quatro brinquedos, pão na chapa e suco de laranja; os diálogos serão escritos posteriormente. O chão fixo forma faixas contínuas, e a toalha fica no chão, separada das raízes da árvore.
+
+O acabamento foi ampliado com bordas naturais, transição de materiais e pedras conectadas à água. A lagarta vermelha passa a perseguir a menina. Na grama os sapatos ficam encobertos; nas pedrinhas a atuação ganha quatro poses de desequilíbrio e suor de esforço, conservando o controle de parada imediata.
