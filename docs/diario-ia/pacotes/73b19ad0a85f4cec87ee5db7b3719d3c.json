@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "73b19ad0a85f4cec87ee5db7b3719d3c",
+  "date": "2026-10-23T19:00:55.076682+00:00",
+  "title": "QA temporário: test:garden:percurso",
+  "files": [
+    {
+      "path": "qa-execucoes/73b19ad0a85f4cec87ee5db7b3719d3c.log",
+      "sourceId": "27bec303fc9b764001965aef709a2bc390e04f906e873c56ce634071afc66dfc",
+      "sha256": "d79c761bffaec72a19bd919e14ee08bbdd6c35e545bfeab6c675e431000823b6",
+      "bytes": 824,
+      "metadataOnly": false
+    }
+  ]
+}

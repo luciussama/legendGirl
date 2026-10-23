@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T191042-eefd29fc3446",
+  "date": "2026-10-23T19:10:42.967164+00:00",
+  "title": "Trilha do jardim: fonte do teste de reprodução real, loop e controles de áudio",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-audio/audio-browser.mjs",
+      "sourceId": "993824432339573772df52b86fb90b95654153e1ea51634af3bd738f17c97ceb",
+      "sha256": "5db31a3fbc3a5d914b335c5369eeab498c2464b9af2a9c6591cf7ddbc6f3c120",
+      "bytes": 4778,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:audio": "node docs/diario-ia/qa/jardim-audio/audio-browser.mjs"
+  }
+}

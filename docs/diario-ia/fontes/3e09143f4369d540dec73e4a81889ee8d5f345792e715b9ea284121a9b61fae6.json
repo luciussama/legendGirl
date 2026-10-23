@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3e09143f4369d540dec73e4a81889ee8d5f345792e715b9ea284121a9b61fae6",
+  "path": "qa-execucoes/395755e600694f56930588fccaf0fd45/docs/diario-ia/qa-resultados/jardim-v2/desktop-agua-primeira.png",
+  "sha256": "f19bc8597a587a005c5f6b28a55e6c55db86a9060c0eed8959c2b6041cdd6873",
+  "capturedAt": "2026-10-23T19:01:04.722456+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-agua-primeira.png\", \"sha256\": \"b415e847f3c2c47df0746f8203fc96b229e2e838ac23a05ec8a47e4b20ab0072\", \"bytes\": 921545, \"binaryRetained\": false}"
+}

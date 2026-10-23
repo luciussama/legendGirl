@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T185857-972a42240008",
+  "date": "2026-10-23T18:58:57.872429+00:00",
+  "title": "Apoio solicitado: centro dos pés dentro da pintura, raio físico 12, roda, import do teste e piloto alinhado à borda",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "b951100a7e02671bffdfd3b8023df9fddeb54f264cccff3a406aed0d271a4fe5",
+      "sha256": "9cc3872728a6d22a92089f28c83e7fa10e6a048446f04c97551c0c3ea67a7067",
+      "bytes": 11867,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "6eed7fb14715d6783de7eea6c7e28fcc56eff63ce59d409154c92953cd0695c7",
+      "sha256": "7fa3f080daf98704a56d3f8c8a4ac09df876500840b0e148a3cb54b50a857f00",
+      "bytes": 10731,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "df8201923888a27265423537d7a18b1b42dc0fcc15942e0f321bf1c9115a7bbd",
+      "sha256": "4b35d9cf686ef0475b90a026136584b5a2df7eae77f20c68e20a1c675cdbe20f",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "a927e7ad1d87bd5b079641c39edf289d748c092f361e9fcb072b652ace0e5785",
+      "sha256": "618399d63e49ebf43d8990482fb96fd11d70bf2d673cf4de00d8837f706c7cc5",
+      "bytes": 1643,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "cfc7b0c62ae761358a072b104ad97d80a23b34e1edc0dbaff79514b7af23dad8",
+      "sha256": "cd44c370937aa9127bd98932041e71d106ae0a166b9eef53b82d3658185fbb99",
+      "bytes": 1922,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

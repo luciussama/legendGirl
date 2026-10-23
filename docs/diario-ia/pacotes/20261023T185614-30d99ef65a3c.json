@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T185614-30d99ef65a3c",
+  "date": "2026-10-23T18:56:14.016295+00:00",
+  "title": "Subidas: observar travessia durante salto, pois pedrinhas podem ultrapassar patamar em um segundo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "3a7a7ccb4728c2cd0108327e4931bb54997d2f850e5bfef8ab9c711ca0b7cfd8",
+      "sha256": "37e5a1942170bcf5ef0cd5f2c207d9bbf9a2cfbc3384dd565bcd09da6f9099f7",
+      "bytes": 9664,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

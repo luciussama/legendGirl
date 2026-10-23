@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7f2093b186ac680f6465ff370a242a8fbaf10b79c5b86b0ff54539011bf191e2",
+  "path": "qa-execucoes/dce4aec4b9124c97a9b5c0dee70a6456.log",
+  "sha256": "a48e678b5b641b96b64ed18ce91b6407765070e74529849906606d43bbbacc50",
+  "capturedAt": "2026-10-23T19:02:22.023321+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nAPROVADO: terrenos/frenagem/pulos, fatalidade NORMAL, imortalidade/resgate/recuo EASY, lagarta de dois pisões, formiga saltadora e entre pedras, nuvens físicas/retorno, quatro nuvens finais, fada guia, save/restore/migração/retry.\nAPROVADO: desaparecimento real sob os pés e doze resgates consecutivos sem GAME_OVER.\nAPROVADO: perseguição reage ao lado da menina, usa o chão completo, conserva save e respeita bordas.\nAPROVADO: 173 subidas à direita, retorno à esquerda, paredes sólidas e migração v2 para checkpoint seguro no relevo v3.\nAPROVADO: centro dos pés sobre madeira/pedra/nuvem e transporte pela roda.\n"
+}

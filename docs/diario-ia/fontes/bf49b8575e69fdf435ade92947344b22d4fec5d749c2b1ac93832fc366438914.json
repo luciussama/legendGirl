@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "bf49b8575e69fdf435ade92947344b22d4fec5d749c2b1ac93832fc366438914",
+  "path": "qa-execucoes/d5b3916caa294ad5984196df3a953616/docs/diario-ia/qa-resultados/jardim-v2/android-paisagem-longa.png",
+  "sha256": "d94dbcede428984132dbac52b7cad519ad6f8d835829e2fc0c496d71188df8d2",
+  "capturedAt": "2026-10-23T19:03:30.302610+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-paisagem-longa.png\", \"sha256\": \"04b3c8ec1dcd1aabbc113d56e82c99c5595d15a51313e62ab3e7241c5f180925\", \"bytes\": 850730, \"binaryRetained\": false}"
+}

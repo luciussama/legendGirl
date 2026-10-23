@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "5979eabe3c96262f645a2365fefec326791ec32a714f6ba42c312e171ae36d66",
+  "path": "qa-execucoes/b3a3a0094ad14e4e97a1367c399ed808/docs/diario-ia/qa-resultados/jardim-v2/android-lagarta-vermelha.png",
+  "sha256": "b74623f2595938235127a3b818f828aa4c1799734330824b2c46bc2ce9c97d96",
+  "capturedAt": "2026-10-23T18:56:33.511511+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-lagarta-vermelha.png\", \"sha256\": \"31eed25473e745ae75e96c52bff9e5f446ebfd7edb6c6f61ee6a1f0fe43c6b5f\", \"bytes\": 1096217, \"binaryRetained\": false}"
+}
