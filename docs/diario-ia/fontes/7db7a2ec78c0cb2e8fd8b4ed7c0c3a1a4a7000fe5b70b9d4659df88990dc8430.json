@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7db7a2ec78c0cb2e8fd8b4ed7c0c3a1a4a7000fe5b70b9d4659df88990dc8430",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/android-porta.png",
+  "sha256": "cb73435c2edc4cbe800c9dba5933499a1931412e74642286f6b6f267f752be8d",
+  "capturedAt": "2026-10-24T04:32:31.259289+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/android-porta.png\", \"sha256\": \"4fe0ed3153ee2749c298238b6304d0bc33a109407da80c7c6b1ab737d2b34e46\", \"bytes\": 492006, \"binaryRetained\": false}"
+}

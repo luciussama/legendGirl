@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "7f78212cd9b40cbdf623a8a9ef9565e5a6b8c225b9eeb036dd90f5dffc7a5f28",
+  "path": "qa-execucoes/ee389571767949e68272225010ed5a76.log",
+  "sha256": "1014ce51555b898cebc43c80b04ddcd5d788f7ea4458f3ea5c270a774bb27def",
+  "capturedAt": "2026-10-23T20:05:40.119734+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nAPROVADO: terrenos/frenagem/pulos, fatalidade NORMAL, imortalidade/resgate/recuo EASY, lagarta de dois pisões, formiga saltadora e entre pedras, nuvens físicas/retorno, quatro nuvens finais, fada guia, save/restore/migração/retry.\nAPROVADO: desaparecimento real sob os pés e doze resgates consecutivos sem GAME_OVER.\nAPROVADO: perseguição reage ao lado da menina, usa o chão completo, conserva save e respeita bordas.\nAPROVADO: 69 subidas à direita, retorno à esquerda, paredes sólidas e migração v2/v3/v4 para checkpoint seguro no jardim v5 de oito minutos.\nAPROVADO: centro dos pés sobre madeira/pedra/nuvem e transporte pela roda.\nAPROVADO: três rodas, duas ilhas de pedrinhas, nuvens e vão aéreo sem chão; save em roda e resgate à entrada firme.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Quina sólida primeira-grama -1 3 {\"x\":1527.1666666666667,\"y\":590,\"vx\":-220,\"vy\":0,\"facing\":-1,\"onGround\":true,\"support\":\"primeira-grama\",\"terrain\":\"grass\",\"airSpeed\":220,\"discomfort\":0}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-0b74a9_z/projeto/docs/diario-ia/qa/jardim-v2/dominio.mjs:77:98\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

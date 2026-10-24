@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ddac89e886a6470e14e18996bf88a4fd177bb58682a08c27f32eaa043ba2a0e8",
+  "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-cantos-terra.png",
+  "sha256": "fac17a8e5c252c6993c154e1033828cfa69bd96e49522cbbd061d9bf1e7f7d42",
+  "capturedAt": "2026-10-24T04:35:33.354664+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-cantos-terra.png\", \"sha256\": \"f1dba6058b79cedb20a3ad1d5c989cb07c26a759d1e5bccdcc7e841894c5d862\", \"bytes\": 1197541, \"binaryRetained\": false}"
+}

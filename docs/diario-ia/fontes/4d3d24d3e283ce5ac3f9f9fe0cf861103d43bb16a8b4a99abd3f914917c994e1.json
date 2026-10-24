@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4d3d24d3e283ce5ac3f9f9fe0cf861103d43bb16a8b4a99abd3f914917c994e1",
+  "path": "qa-execucoes/13e9ee4d4120435f96ea69339fac505f/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-roda-3.png",
+  "sha256": "0284361bfb96ec48dc3f9f26324bb752ceb6e69c7337b5ea7ec28354968fbd47",
+  "capturedAt": "2026-10-24T03:55:18.739483+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-aereo-roda-3.png\", \"sha256\": \"93c0c7b93be49dd76727828bdc0c75847f182ca7711578869de858aff182be27\", \"bytes\": 1068904, \"binaryRetained\": false}"
+}

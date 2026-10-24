@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "33f1dea9a65fc36a2e67d0578012120c02d45afdd887c7a19dbea261db0ca780",
+  "path": "qa-execucoes/9aa53718509249a6b979b896eb9c7031.log",
+  "sha256": "2fe37c32b62c345a3b80881d34c279a07063d14e79630441a9615955719c7be1",
+  "capturedAt": "2026-10-23T20:08:53.411366+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:pagina",
+    "exitCode": 0,
+    "package": "20261023T194526-4c4cd4848389"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:pagina\n> node docs/diario-ia/qa/jardim-revisao/pagina-browser.mjs\n\n[{\"name\":\"desktop\",\"scene\":\"solo\",\"progressY\":185.73000000000002,\"buttonsBottom\":163.5,\"canvas\":{\"width\":960,\"height\":540}},{\"name\":\"desktop\",\"scene\":\"piquenique\",\"progressY\":185.73000000000002,\"buttonsBottom\":163.5,\"canvas\":{\"width\":960,\"height\":540}},{\"name\":\"android\",\"scene\":\"solo\",\"progressY\":66.89347355708752,\"buttonsBottom\":56,\"canvas\":{\"width\":540,\"height\":1169}},{\"name\":\"android\",\"scene\":\"piquenique\",\"progressY\":66.89347355708752,\"buttonsBottom\":56,\"canvas\":{\"width\":540,\"height\":1169}},{\"name\":\"paisagem\",\"scene\":\"solo\",\"progressY\":70.82,\"buttonsBottom\":56,\"canvas\":{\"width\":1169,\"height\":540}},{\"name\":\"paisagem\",\"scene\":\"piquenique\",\"progressY\":70.82,\"buttonsBottom\":56,\"canvas\":{\"width\":1169,\"height\":540}}]\nAPROVADO: página real em três formatos, controles DOM, progresso legível e chegada.\n"
+}

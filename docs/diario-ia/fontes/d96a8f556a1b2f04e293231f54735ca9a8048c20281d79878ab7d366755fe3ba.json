@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d96a8f556a1b2f04e293231f54735ca9a8048c20281d79878ab7d366755fe3ba",
+  "path": "qa-execucoes/6d74dd047efc476682cf62ebbaf56e7c.log",
+  "sha256": "b71c2df95c16d962aff97319a65dffde8a34956842838d9435082d19143c1206",
+  "capturedAt": "2026-10-24T04:31:04.391150+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nAPROVADO: terrenos/frenagem/pulos, fatalidade NORMAL, imortalidade/resgate/recuo EASY, lagarta de dois pisões, formiga saltadora e entre pedras, nuvens físicas/retorno, quatro nuvens finais, fada guia, save/restore/migração/retry.\nAPROVADO: desaparecimento real sob os pés e doze resgates consecutivos sem GAME_OVER.\nAPROVADO: lagarta se afasta do primeiro pisão, prepara investida frontal e conserva sua reação no save.\nAPROVADO: 22 subidas à direita, retorno à esquerda, paredes sólidas e migração v2/v3/v4 para checkpoint seguro no jardim v6 de cinco minutos.\nAPROVADO: contato parcial dos sapatos, exclusão da transparência e transporte pela roda.\nAPROVADO: três rodas, duas ilhas de pedrinhas, nuvens e vão aéreo sem chão; save em roda e resgate à entrada firme.\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Quina sólida trecho-0-gramado 1 13 {\"animationTime\":0.075,\"x\":8348.000000000002,\"y\":605.2786464810781,\"vx\":100,\"vy\":0,\"facing\":1,\"onGround\":true,\"support\":\"trecho-0-caminho\",\"terrain\":\"soil\",\"airSpeed\":220,\"discomfort\":0.42417009855814664}\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-9fjvw64u/projeto/docs/diario-ia/qa/jardim-v2/dominio.mjs:85:98\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

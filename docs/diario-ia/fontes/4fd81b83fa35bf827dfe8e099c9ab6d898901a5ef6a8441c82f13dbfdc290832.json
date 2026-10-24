@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4fd81b83fa35bf827dfe8e099c9ab6d898901a5ef6a8441c82f13dbfdc290832",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/paisagem-degrau.png",
+  "sha256": "de0102f7f8bcac3460559aa2a7273aaf9086b343f7bf35cfc42d1530504c41ce",
+  "capturedAt": "2026-10-24T04:32:31.265024+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/paisagem-degrau.png\", \"sha256\": \"d4a8f7d8e985cce2ec087c612064c3ca5dd6c898f5e9e0fa93928b0bec244ebe\", \"bytes\": 457435, \"binaryRetained\": false}"
+}

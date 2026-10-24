@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b9ae2f1a180a72cfa1230aef02aa9a8bef130335cf8b175b61a3975184ed350a",
+  "path": "qa-execucoes/0c5b94b86d474c009d84dbb01c4bae7c.log",
+  "sha256": "700666b8d4b90dc35388dfaadd9f21351c5b750205443ccf051d0ded6da6f34c",
+  "capturedAt": "2026-10-23T19:33:29.129027+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:campaign:defeats",
+    "exitCode": 0,
+    "package": "20261021T132935-049a330950a7"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:campaign:defeats\n> node docs/diario-ia/qa/derrotas-20261021/dominio.mjs\n\nDerrotas: contagem única, oferta a cada três, recusa/EASY, saves antigos e pendentes, retomadas de arena/fuga e mensagem exata aprovados.\n"
+}

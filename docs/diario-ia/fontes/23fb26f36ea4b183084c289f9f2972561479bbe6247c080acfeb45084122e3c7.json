@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "23fb26f36ea4b183084c289f9f2972561479bbe6247c080acfeb45084122e3c7",
+  "path": "qa-execucoes/a9632c8ac3b44e89a5cc26d30594dc86/docs/diario-ia/qa-resultados/jardim-v2/android-morro-duplo.png",
+  "sha256": "d1ddc77574533fe77ff6145ec3ee868e82119606246febbe336aaca8f8539ba2",
+  "capturedAt": "2026-10-24T03:38:03.009416+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-morro-duplo.png\", \"sha256\": \"c39948cffecd0ee822b05947aafa275bee0e2cf1f32406c662f711f66ad818a2\", \"bytes\": 1257217, \"binaryRetained\": false}"
+}

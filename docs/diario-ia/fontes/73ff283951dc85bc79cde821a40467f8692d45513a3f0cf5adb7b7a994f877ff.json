@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "73ff283951dc85bc79cde821a40467f8692d45513a3f0cf5adb7b7a994f877ff",
+  "path": "qa-execucoes/26535a1efc9e46d6b86286ce921face3.log",
+  "sha256": "5d4104a07b1737ad8747398b9e15438f193957267fedb2f08893b6601a818182",
+  "capturedAt": "2026-10-24T03:57:30.605852+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs --irregular\n\nPROGRESSO NORMAL 0 120 entrada 3\n{\"difficulty\":\"NORMAL\",\"irregular\":true,\"stage\":\"COMPLETE\",\"minutes\":4.706750000000253,\"retries\":0,\"x\":47488.146666677334,\"goal\":47488,\"hp\":3,\"recovered\":0,\"jumps\":142,\"defeated\":22}\nPROGRESSO EASY 0 120 entrada 6\n{\"difficulty\":\"EASY\",\"irregular\":true,\"stage\":\"COMPLETE\",\"minutes\":4.526222222222455,\"retries\":0,\"x\":47489.4066666765,\"goal\":47488,\"hp\":6,\"recovered\":0,\"jumps\":146,\"defeated\":22}\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Duração automatizada próxima de cinco minutos\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-qt08fx6r/projeto/docs/diario-ia/qa/jardim-v2/percurso.mjs:18:9\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 452,
+    "files": 453,
     "regions": 196,
     "code": 29
   },
@@ -3042,6 +3042,22 @@
       "height": 1254,
       "bytes": 1425435,
       "sha256": "fd504d8a498c0a6feb27fe6d334f520a9a0c0723f1a4db6d9ea88c64b5c9d770",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
+      "id": "c97522aa0dd4e98fb0624966",
+      "kind": "file",
+      "path": "assets/art/garden/source/terra-continua-v1.png",
+      "title": "terra-continua-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3236903,
+      "sha256": "49b56ecf5fb156e364c80533b2503671f553b15a3aa36ff92b3e6a1157c77c67",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -15823,7 +15839,7 @@
       "references": [
         {
           "file": "assets/art/garden/manifest.json",
-          "line": 12,
+          "line": 13,
           "type": "apoio",
           "alias": null
         },
@@ -15853,7 +15869,7 @@
         },
         {
           "file": "src/js/garden/GardenRenderer.js",
-          "line": 7,
+          "line": 9,
           "type": "runtime",
           "alias": null
         },

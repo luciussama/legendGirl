@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f5068fd1cac72c45d5340f03332bf1ee56dc49eaef54b31d59de42962c87a29d",
+  "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-troca-de-terreno.png",
+  "sha256": "babed1642464fda05a0ec91d80b131e145b04608d975ca2306b6e1509a4cb1e6",
+  "capturedAt": "2026-10-24T04:35:33.457779+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-troca-de-terreno.png\", \"sha256\": \"db1474ddb4e1193547b44f515098d27763f48ba1f43dac492cac83efad8bcb9e\", \"bytes\": 1470944, \"binaryRetained\": false}"
+}

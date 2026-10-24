@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "be44b505b46d8ff627a8d7296c44dd84c991704c5cfe215ded4168d7df94ac70",
+  "path": "qa-execucoes/39e8ff3cf9a44fcaaa938d1c2121a38d/docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-longo.png",
+  "sha256": "ca5e19254b9a630e78cb022e2b38d85b4208f3b17a8fa2335febdcf9c203241d",
+  "capturedAt": "2026-10-24T04:47:56.063576+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-longo.png\", \"sha256\": \"bac0e1eb21957fcfc0e409d9d871f4a8d3649a7e7492297d739a1c615ba6c3a3\", \"bytes\": 1445844, \"binaryRetained\": false}"
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fad4b609aae0130064bf112833f0a83eedad5ab36d45b0beb95fefe835099205",
+  "path": "docs/diario-ia/qa/jardim-revisao/checkpoints-v5.json",
+  "sha256": "2fb15f377a74eeac2d1a34fe1a20a8079b4256781e0596c96823aaa759cd0d57",
+  "capturedAt": "2026-10-24T03:37:27.302717+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "[120,7470,12630,18230,23450,29810,35090,41510,45510,45870,51210,57005,63235,69785,75245,81170]\n"
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T193039-47ee6d94ce23",
+  "date": "2026-10-23T19:30:39.938290+00:00",
+  "title": "Jardim de oito minutos: fontes e checkpoints antigos preservados antes de validar domínio/travessia",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "9c02ac3fcb1ebace7987fb10731ab19b5f587efb1c14daf0dd419dbf1ebbaafb",
+      "sha256": "0bca347263ddbdaed433f009dbe4a1f71a7cc340bb02f5f942025c94878134cf",
+      "bytes": 12096,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "ba88d9d629a5328618cbf02e27e704d4c35806995c19c72b511bc8b3a3bad88b",
+      "sha256": "d48d3a52bac3c47e2ee7ba49188c9489e39fd9493a2c151715185fca03c08a1e",
+      "bytes": 10914,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "df8201923888a27265423537d7a18b1b42dc0fcc15942e0f321bf1c9115a7bbd",
+      "sha256": "4b35d9cf686ef0475b90a026136584b5a2df7eae77f20c68e20a1c675cdbe20f",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "c960234df5bd1e9859f74970c5514810284b841b2ef34bdf21c0ad4532847daa",
+      "sha256": "710395775e2aa4ab16c0d61080607d7fc60fde953494e9cfe93aeeab09e88519",
+      "bytes": 1883,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "cfc7b0c62ae761358a072b104ad97d80a23b34e1edc0dbaff79514b7af23dad8",
+      "sha256": "cd44c370937aa9127bd98932041e71d106ae0a166b9eef53b82d3658185fbb99",
+      "bytes": 1922,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/checkpoints-anteriores.json",
+      "sourceId": "faa2f69ab0c932b231cb4031866041608d8edfc6363637db1301d7f9b177d46d",
+      "sha256": "a49bdc053dcbc66a9bb810c618780d4a8ad4d169db9cd2e9314c682b34a6e8e1",
+      "bytes": 475,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

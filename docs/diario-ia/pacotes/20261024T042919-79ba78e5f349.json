@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T042919-79ba78e5f349",
+  "date": "2026-10-24T04:29:19.774658+00:00",
+  "title": "Contrato de contato passa a usar sapatos; cadência final considera grama em faixas e travessia automatizada experiente",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "baf0e3c372ed2994246f4467cea2dc208e3ae48aa576dafb378638550f9f64b0",
+      "sha256": "c59f30217ee7f15c4f20aa4acc5450143caa450b2bd196aa2bb8069901969958",
+      "bytes": 16243,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "1dee5359cae509144f7f3e521fbf4cdca5ee255909ba6ff450a4e584b3936d18",
+      "sha256": "9deccde74d5d16599a6e4d4975bb6ad4a7a05837d38d274808ab0d9bae5c1b5a",
+      "bytes": 2286,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

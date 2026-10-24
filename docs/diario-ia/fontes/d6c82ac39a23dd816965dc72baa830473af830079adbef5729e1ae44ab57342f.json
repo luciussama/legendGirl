@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d6c82ac39a23dd816965dc72baa830473af830079adbef5729e1ae44ab57342f",
+  "path": "qa-execucoes/46636e6c0c8e455cb1c8df8e8376319c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-margem-inicial.png",
+  "sha256": "c9885c02bf7c6d1b458a8a00c266ac7c1738033bf5d75c1aa0fd0de7d08417e8",
+  "capturedAt": "2026-10-23T19:33:02.920762+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-margem-inicial.png\", \"sha256\": \"b4fccf17e5d7a832d6ee6615a0c3831ed46b28ba594941d2f2da9bc066cf11e8\", \"bytes\": 1280291, \"binaryRetained\": false}"
+}

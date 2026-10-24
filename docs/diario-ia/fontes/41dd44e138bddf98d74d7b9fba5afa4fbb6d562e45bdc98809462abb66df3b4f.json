@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "41dd44e138bddf98d74d7b9fba5afa4fbb6d562e45bdc98809462abb66df3b4f",
+  "path": "qa-execucoes/13e9ee4d4120435f96ea69339fac505f/docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-saida.png",
+  "sha256": "abc3a2eabf856e4ed77008ccadd7684320c8a73c2ffbf1abae092aecbec9f5cd",
+  "capturedAt": "2026-10-24T03:55:18.788859+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-saida.png\", \"sha256\": \"df99afdeee62f6f3ec733b9b8054311234134e7cac1776834230f6b0a864d074\", \"bytes\": 1005026, \"binaryRetained\": false}"
+}

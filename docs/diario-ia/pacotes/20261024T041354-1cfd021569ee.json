@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T041354-1cfd021569ee",
+  "date": "2026-10-24T04:13:54.837156+00:00",
+  "title": "Quinas partem acima de todo contato real dos sapatos, incluindo a subida curva vizinha",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "5e6d694a0c29bfee784ec68ba996925e1b14d1b9bc3c6ee92577e2caf9ac750d",
+      "sha256": "5d69440152f013775337a4ed8b49f3a50f3d59682d330ec12bf1550f8e5e4bef",
+      "bytes": 16261,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

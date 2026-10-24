@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T200555-d85903762e0b",
+  "date": "2026-10-23T20:05:55.544194+00:00",
+  "title": "Fixture das quinas parte somente de posição externa válida, sem começar dentro do patamar vizinho",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "22dfab3f38796ab8a24d4be3b6d222b37733c8d50aaf227b5189d528393caa1a",
+      "sha256": "98ea016e0f8f73e07692141c561325231d28a634258e23bbf0a66dd6c7548086",
+      "bytes": 13624,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "a5bf06957e9c6aa44d466f34234bf7dd8cff8c0c7c18a91971547d344bd5ca23",
+  "path": "docs/diario-ia/qa/jardim-revisao/aereo.mjs",
+  "sha256": "e504b7aa4c1f2ee77f94743333d8ad6c4169b73a0f4f40fdf88e6ba920efe812",
+  "capturedAt": "2026-10-23T19:58:31.967186+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import {createGardenState,stepGarden} from '../../../../src/js/garden/GardenSimulation.js';\nimport {GARDEN_AERIAL as a,GARDEN_PLATFORM_BY_ID as map} from '../../../../src/js/garden/GardenLevel.js';\nimport {createPilot} from '../jardim-v2/piloto.mjs';\nconst s=createGardenState(),p=map.get(a.entry),pilot=createPilot();s.stage='RUNNING';Object.assign(s.player,{x:p.x+120,y:p.y,onGround:true,support:p.id,terrain:'soil'});s.safeGround=p.id;s.checkpoint=p.x+120;let previous=null;const last=[];\nfor(let tick=0;tick<7200&&s.stage==='RUNNING'&&s.player.x<a.end;tick++){\n const input=pilot(s);if(s.player.support!==previous){console.log('APOIO',JSON.stringify({t:s.time,x:s.player.x-a.x,y:s.player.y,support:s.player.support,vy:s.player.vy,air:s.player.airSpeed,held:s.jumpHeld,input}));previous=s.player.support;}\n if(s.player.x>a.x+2700)last.push({t:s.time,x:s.player.x-a.x,y:s.player.y,vx:s.player.vx,vy:s.player.vy,support:s.player.support,held:s.jumpHeld,input});if(last.length>20)last.shift();stepGarden(s,input,1/60);\n}\nconsole.log('RESULTADO',JSON.stringify({stage:s.stage,time:s.time,x:s.player.x-a.x,y:s.player.y}));if(s.stage!=='RUNNING'||s.player.x<a.end)console.log('ÚLTIMOS QUADROS',JSON.stringify(last));\n"
+}

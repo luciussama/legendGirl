@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "9718fe610d6c7dbdb8ddc4ac29cf4632454c544776a3f7cdd5af6cef848cd60a",
+  "path": "qa-execucoes/44ccb2a013f1492c8a72dd6b165fd1b2/docs/diario-ia/qa-resultados/jardim-v2/android-rio-com-formiga.png",
+  "sha256": "b85cfab09f93bb1355471df3ebd88443c1de2ddefa8625ae6b040a91e3a6d05e",
+  "capturedAt": "2026-10-23T19:37:05.116340+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-rio-com-formiga.png\", \"sha256\": \"f5e20434194412e0febd14898ee6e508a623fe96a168547280142b2f409c7c1d\", \"bytes\": 850436, \"binaryRetained\": false}"
+}

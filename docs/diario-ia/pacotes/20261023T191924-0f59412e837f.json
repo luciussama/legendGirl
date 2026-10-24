@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T191924-0f59412e837f",
+  "date": "2026-10-23T19:19:24.829462+00:00",
+  "title": "Gameplay visual integral: fonte de travessia contínua, capturas sobrepostas a cada 800 px e folhas de revisão",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs",
+      "sourceId": "199156c256de0fd07aebdc238b130c0d83e258a0052d589ba2cd234662b6e1fd",
+      "sha256": "0fb473fe55889e3cfc00b29e577c7189b23774e4111dd5169c4ad5f5a2e0891d",
+      "bytes": 4833,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:visual": "node docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs"
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T195542-83da442e3ff6",
+  "date": "2026-10-23T19:55:42.771091+00:00",
+  "title": "Travessia aérea v5 implementada: validar três rodas, ilhas rápidas, nuvens, salvamento e retorno seguro",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "950d4ad2e15a98ab5e200c372a4406bee92ec6b9626d9186e1376f02e0306f7d",
+      "sha256": "4a9d7dbac4af487fc0c127df03650faf1e37df78ddf4c7d03a50cea7b4a5325d",
+      "bytes": 14177,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "2ec17410db742b4e9701a25386dc89aea1f721462115f055ca5a0607d8b3cf91",
+      "sha256": "48bd1d29387eb4c6220b50053093dc114d21d8ed7684b1d67a49a151cf2d02a5",
+      "bytes": 12272,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "af513f799c2ed721347085238bf0a00171d42469bd9add310db3d021c3a1d637",
+      "sha256": "279266774cdd27487b4761a51a405b9574961588799195c1e3eb1bed5258216c",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "8274573349f9c2b6fbdd27dec6655d7c81a1cf3b00275e18b70e036dfbefd636",
+      "sha256": "b0326d72980caf13e96a9215ea05e578449bf5d06e197b6ea8408bca072750ca",
+      "bytes": 2233,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "9cf2f8a4410b960153b5a2243d87a045dacc776c948452cd9bdc890f2b7c34f3",
+      "sha256": "0c749f5bbb5bdd3d08e4cb8e091ef65513100ea913b89e57b3d602aaa46a28e6",
+      "bytes": 2114,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/checkpoints-v4.json",
+      "sourceId": "b38fd83b2587559670b5d93fadb9c8855cc7480a675091d6b463197c9b1ef4af",
+      "sha256": "d94b34476d481ebc0d4ff823f04688154ad6cddf2f44cd565474270396b8fc79",
+      "bytes": 83,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7baa5bfeeb0b3ab7fcbf6c207564df806ba4ede4f621c726bb8d7d89c3bc664f",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/paisagem-porta.png",
+  "sha256": "34f091416625ad1e9c86783df853dbc631f4d0e69e249f233d7a377b8749cf7b",
+  "capturedAt": "2026-10-24T04:32:31.265779+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/paisagem-porta.png\", \"sha256\": \"740def0c29cd690f1c0d1e0126fe731f4c9fe893f119776307376fc4fd12f746\", \"bytes\": 457523, \"binaryRetained\": false}"
+}

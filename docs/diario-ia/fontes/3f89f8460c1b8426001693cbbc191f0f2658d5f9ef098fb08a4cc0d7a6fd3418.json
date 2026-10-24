@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3f89f8460c1b8426001693cbbc191f0f2658d5f9ef098fb08a4cc0d7a6fd3418",
+  "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-4.png",
+  "sha256": "2bc3b7daf79d7380ff0d92d16437a47d8fa606b067275e1b1dd83215b6f187e0",
+  "capturedAt": "2026-10-24T04:34:53.260020+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:manual"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/manual/quadro-4.png\", \"sha256\": \"16817c2bda43133f68a76140b775bf3d23f50896a28fc7593da049e97932bf2b\", \"bytes\": 956880, \"binaryRetained\": false}"
+}

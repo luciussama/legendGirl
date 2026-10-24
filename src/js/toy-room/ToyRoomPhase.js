@@ -250,8 +250,8 @@ export class ToyRoomPhase {
 
   /** Executa a etapa ativa; a notificação de derrota acontece depois de sua simulação. */
   updateActiveMode(dt) {
-    if (!this.isInputEnabled()) { this.clearInput(); return; }
     if (this.garden?.active) { this.garden.update(dt);return; }
+    if (!this.isInputEnabled()) { this.clearInput(); return; }
     if (this.chase?.active) {
       this.chase.update(dt);
       if(this.chase.campaign && this.chase.state.stage==='COMPLETE') {

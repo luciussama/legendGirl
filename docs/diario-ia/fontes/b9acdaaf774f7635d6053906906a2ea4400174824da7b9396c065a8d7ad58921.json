@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "b9acdaaf774f7635d6053906906a2ea4400174824da7b9396c065a8d7ad58921",
+  "path": "qa-execucoes/3447bbf5b1f24f88b3b2ab463d7973ca.log",
+  "sha256": "eeaf72a27779bbb961b17b79282593637de6bc219e27c2218152e6600f54031b",
+  "capturedAt": "2026-10-24T04:14:08.066951+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs --irregular\n\nPROGRESSO NORMAL 0 339 entrada 3\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/src/js/garden/GardenContact.js:20\n  if(length<1)return Infinity;const level=Math.floor(Math.log2(length));return platform.y+Math.min(rows[level][start],rows[level][end-(1<<level)+1]);\n                                                                                                              ^\n\nTypeError: Cannot read properties of undefined (reading 'NaN')\n    at gardenContactHeight (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/src/js/garden/GardenContact.js:20:111)\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/src/js/garden/GardenSimulation.js:199:30\n    at Array.map (<anonymous>)\n    at tick (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/src/js/garden/GardenSimulation.js:189:30)\n    at stepGarden (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/src/js/garden/GardenSimulation.js:224:61)\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/docs/diario-ia/qa/jardim-v2/piloto.mjs:19:31\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-kcb6vqpu/projeto/docs/diario-ia/qa/jardim-v2/percurso.mjs:10:103\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5)\n\nNode.js v26.5.0\n"
+}

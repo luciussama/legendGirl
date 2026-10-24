@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "e7dcef94fc1c2baa7cdf9d1b5c3502efad6f9391cb2368bab4069698fb7acedd",
+  "path": "qa-execucoes/bdc6ba45c79842b0b9054d3c30a2db48.log",
+  "sha256": "9ae4a0177968293bd556453feac454bd07bed0f7b8005f64a162d2324f9da32e",
+  "capturedAt": "2026-10-23T19:32:19.889712+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:visual",
+    "exitCode": 0,
+    "package": "20261023T191924-0f59412e837f"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:visual\n> node docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs final\n\n{\"resultado\":\"percurso completo\",\"minutos\":7.959166666664905,\"retries\":0,\"renders\":1911,\"quadros\":107}\nCAPTURAS /tmp/legendgirl-revisao-final\n"
+}

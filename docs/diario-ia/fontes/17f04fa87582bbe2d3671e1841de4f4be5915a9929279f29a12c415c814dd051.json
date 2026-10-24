@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "17f04fa87582bbe2d3671e1841de4f4be5915a9929279f29a12c415c814dd051",
+  "path": "qa-execucoes/fb29f1a4f04a47eb889f3c3a9de4ff68.log",
+  "sha256": "cb78c31ab1d58e67673bd85f3a3caf88c15d1b66ab7469cda10e7ec5b45d9e24",
+  "capturedAt": "2026-10-23T19:33:09.057806+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs --irregular\n\nPROGRESSO NORMAL 0 120 entrada 3\n{\"difficulty\":\"NORMAL\",\"irregular\":true,\"stage\":\"COMPLETE\",\"minutes\":8.003805555556166,\"retries\":0,\"x\":84490.48666664238,\"goal\":84490,\"hp\":3,\"recovered\":0,\"jumps\":265,\"defeated\":13}\nPROGRESSO EASY 0 120 entrada 6\n{\"difficulty\":\"EASY\",\"irregular\":true,\"stage\":\"COMPLETE\",\"minutes\":8.129333333333957,\"retries\":0,\"x\":84491.00133329048,\"goal\":84490,\"hp\":6,\"recovered\":1,\"jumps\":262,\"defeated\":13}\n"
+}

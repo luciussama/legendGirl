@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "70f0e42265383f9e9ac3082e978da2666ad8a869e7163ebf324d73a337bad8ed",
+  "path": "qa-execucoes/39e8ff3cf9a44fcaaa938d1c2121a38d/docs/diario-ia/qa-resultados/jardim-v2/android-roda-apoio.png",
+  "sha256": "6727e8e871c938032b3a03f5e4af48e43738c319799cf83233d96348cfaee5af",
+  "capturedAt": "2026-10-24T04:47:55.982889+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-roda-apoio.png\", \"sha256\": \"3d43844755aa3b38bd2a9036036a4e599ed070d75e6e7b5c85c6ee89151f2394\", \"bytes\": 1238228, \"binaryRetained\": false}"
+}

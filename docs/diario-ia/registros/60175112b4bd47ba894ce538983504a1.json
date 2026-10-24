@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "60175112b4bd47ba894ce538983504a1",
+  "type": "qa",
+  "date": "2026-10-23T19:46:22.916043+00:00",
+  "title": "QA temporário: test:docs:equalizacao",
+  "exitCode": 0,
+  "sourceId": "0ec13be1ed5c79281b4b7f6afc68273b97497284758b5ba403d94dfa2e8b84cc",
+  "package": "20261021T131636-41ca309d7cad"
+}

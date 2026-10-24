@@ -1033,6 +1033,22 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `clear()` | Método declarado | 24 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `destroy()` | Método declarado | 25 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
+## src/js/garden/GardenContact.js
+
+[Implementação](../src/js/garden/GardenContact.js). Contratos exportados/reexportados: `gardenFeet`, `gardenContactHeight`, `gardenGirlPose`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `gardenFeet(player,x=player.x)` | Função | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenContactHeight(platform,player,x=player.x)` | Função | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenGirlPose(player,time=player.animationTime??0)` | Função | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/garden/GardenContactData.js
+
+[Implementação](../src/js/garden/GardenContactData.js). Contratos exportados/reexportados: `GARDEN_CONTACT`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
 ## src/js/garden/GardenInput.js
 
 [Implementação](../src/js/garden/GardenInput.js). Contratos exportados/reexportados: `gardenControls`, `GardenInput`.
@@ -1048,17 +1064,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/garden/GardenLevel.js
 
-[Implementação](../src/js/garden/GardenLevel.js). Contratos exportados/reexportados: `GARDEN`, `GARDEN_TERRAINS`, `GARDEN_WHEEL`, `GARDEN_FINAL_START`, `GARDEN_GOAL`, `GARDEN_WIDTH`, `GARDEN_PLATFORMS`, `GARDEN_ENEMIES`, `GARDEN_WATERS`, `GARDEN_SECTIONS`, `GARDEN_CHECKPOINTS`, `GARDEN_LEGACY_CHECKPOINTS`, `GARDEN_PLATFORM_BY_ID`, `gardenPlatforms`, `cloudStatus`, `gardenSection`.
+[Implementação](../src/js/garden/GardenLevel.js). Contratos exportados/reexportados: `GARDEN`, `GARDEN_HOME`, `GARDEN_TERRAINS`, `GARDEN_WHEEL`, `GARDEN_FINAL_START`, `GARDEN_GOAL`, `GARDEN_WIDTH`, `GARDEN_WHEELS`, `GARDEN_AERIAL`, `GARDEN_PLATFORMS`, `GARDEN_ENEMIES`, `GARDEN_WATERS`, `GARDEN_SECTIONS`, `GARDEN_CHECKPOINTS`, `GARDEN_LEGACY_CHECKPOINTS`, `GARDEN_PLATFORM_BY_ID`, `gardenPlatforms`, `cloudStatus`, `gardenSection`, `gardenSurfaceY`, `gardenTerrainAt`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `add(id,x,w,type='soil',y=590,extra={})` | Função atribuída | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `ground(id,x,w,type='soil')` | Função atribuída | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemy(id,type,p,progress=0)` | Função atribuída | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `river(id,x,count,gap=122,rise=32,ant=false)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gardenPlatforms(time=0,state=null,center=null,radius=1000)` | Função | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cloudStatus(platform,state,time=state?.time??0)` | Função | 82 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gardenSection(x)` | Função | 89 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `add(id,x,w,type='soil',y=590,extra={})` | Função atribuída | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `ground(id,x,w,type='soil')` | Função atribuída | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemy(id,type,p,progress=0)` | Função atribuída | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `river(id,x,count,gap=122,rise=32,ant=false)` | Função | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenPlatforms(time=0,state=null,center=null,radius=1000)` | Função | 110 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cloudStatus(platform,state,time=state?.time??0)` | Função | 117 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenSection(x)` | Função | 124 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenSurfaceY(platform,x)` | Função | 127 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenTerrainAt(platform,x)` | Função | 134 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/garden/GardenPhase.js
 
@@ -1082,25 +1100,28 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | 19 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `controls()` | Método declarado | 26 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | 28 | Calcula pose visual estável sem escrever na simulação. |
-| `sprite(ctx,set,index,x,y,height,flip=1)` | Método declarado | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundPattern(type)` | Método declarado | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundOutline(ctx,p,bottom)` | Método declarado | 43 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 52 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrain(ctx,p,bottom)` | Método declarado | 64 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `rockFoot(ctx,p)` | Método declarado | 76 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 81 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundJoins(ctx,platforms)` | Método declarado | 95 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grassFront(ctx,s,platforms)` | Método declarado | 107 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `effort(ctx,s)` | Método declarado | 117 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `scenery(ctx,s,left,right)` | Método declarado | 124 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,s)` | Método declarado | 138 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 144 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | 181 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | 21 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `controls()` | Método declarado | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | 31 | Calcula pose visual estável sem escrever na simulação. |
+| `sprite(ctx,set,index,x,y,height,flip=1)` | Método declarado | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 33 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundPattern(type)` | Método declarado | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundOutline(ctx,p,bottom)` | Método declarado | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceTile(type,part='middle')` | Método declarado | 60 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 72 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrainBodies(ctx,platforms,bottom)` | Método declarado | 95 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrain(ctx,p,bottom,body=true)` | Método declarado | 104 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rockFoot(ctx,p)` | Método declarado | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 120 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundJoins(ctx,platforms)` | Método declarado | 134 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grassFront(ctx,s,platforms)` | Método declarado | 142 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `effort(ctx,s)` | Método declarado | 150 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sceneryLayout()` | Método declarado | 158 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `scenery(ctx,s,left,right)` | Método declarado | 171 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,s)` | Método declarado | 177 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 183 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | 222 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenSimulation.js
 
@@ -1108,18 +1129,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(n,a,b)` | Função atribuída | 2 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyRange(enemy)` | Função | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createGardenState(difficulty='NORMAL')` | Função | 10 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `recoverTarget(s,kind)` | Função | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `beginRecovery(s,kind,events)` | Função | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `defeat(s,kind,events)` | Função | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `retryGarden(s,difficulty=s.difficulty)` | Função | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 44 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairyTick(s,dt,platforms)` | Função | 78 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyTick(e,s,dt)` | Função | 92 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tick(s,input,dt,events)` | Função | 113 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 175 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clamp(n,a,b)` | Função atribuída | 3 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemyRange(enemy)` | Função | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createGardenState(difficulty='NORMAL')` | Função | 11 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `recoverTarget(s,kind)` | Função | 18 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `beginRecovery(s,kind,events)` | Função | 26 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `defeat(s,kind,events)` | Função | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `retryGarden(s,difficulty=s.difficulty)` | Função | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 45 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairyTick(s,dt,platforms)` | Função | 80 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemyTick(e,s,dt)` | Função | 94 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tick(s,input,dt,events)` | Função | 133 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 223 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/input.js
 
@@ -1138,17 +1159,17 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `toggleGamePause()` | Função | 66 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `updateSoundButtonState()` | Função | 81 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 | `onGameOver({ phase = 'bedroom', offerEasy = false } = {})` | API/lambda de objeto | 129 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onRestartToTitle()` | API/lambda de objeto | 153 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startGame(event)` | Função | 174 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `handleRetry(event)` | Função | 203 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleRestart(event)` | Função | 237 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `addSafeAction(element, handler)` | Função | 270 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `safeHandler(event)` | Função atribuída | 273 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `handleToyRoomSwitch(event)` | Função | 290 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onNew()` | API/lambda de objeto | 329 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onLoad()` | API/lambda de objeto | 330 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setDebugPhaseMenuOpen(open, restoreFocus = false)` | Função atribuída | 354 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `pollOverlayGamepad()` | Função | 447 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onRestartToTitle()` | API/lambda de objeto | 155 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startGame(event)` | Função | 176 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `handleRetry(event)` | Função | 205 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleRestart(event)` | Função | 239 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `addSafeAction(element, handler)` | Função | 272 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `safeHandler(event)` | Função atribuída | 275 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `handleToyRoomSwitch(event)` | Função | 292 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onNew()` | API/lambda de objeto | 331 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onLoad()` | API/lambda de objeto | 332 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setDebugPhaseMenuOpen(open, restoreFocus = false)` | Função atribuída | 356 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `pollOverlayGamepad()` | Função | 449 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/narrative/DarkRoomNarrative.js
 
@@ -2214,4 +2235,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **161 módulos JavaScript**, **1102 declarações nomeadas**.
+Inventário: **163 módulos JavaScript**, **1110 declarações nomeadas**.

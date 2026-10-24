@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T035319-7e1ee3862a4c",
+  "date": "2026-10-24T03:53:19.595933+00:00",
+  "title": "Teste dos morros avalia apoio dentro da curva; saída para plataforma vizinha é válida",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "7d41d9b612e630555d5b4f5c3003f2a09054ee9429bfe3e41b97b782a5901dc3",
+      "sha256": "7a04f814b46cf6f6bff3f7cbd14d4d7783af785530da4e4aad66ef5d43084a4c",
+      "bytes": 14885,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "362143cc8bffa43700777c45509f12f8cd6f6f12f9565daa496ec1e589903e17",
+  "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-agua-primeira.png",
+  "sha256": "518c0547a7ce76b1ab1090d0119694140b7b61796da6737f5c7c25806dd4126c",
+  "capturedAt": "2026-10-24T04:35:33.353448+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-agua-primeira.png\", \"sha256\": \"88e6edddcd2a50910428c3d1b48d8f9c3884705b8a14c238c7114ade81e8db55\", \"bytes\": 986896, \"binaryRetained\": false}"
+}

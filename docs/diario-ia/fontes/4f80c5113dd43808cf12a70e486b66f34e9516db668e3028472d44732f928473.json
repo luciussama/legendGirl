@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4f80c5113dd43808cf12a70e486b66f34e9516db668e3028472d44732f928473",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/desktop-chao.png",
+  "sha256": "7ceb80b0c1172ca10ccf690e8b5bab4c46ffa22ace4995f3c3a5a2d6a9da188a",
+  "capturedAt": "2026-10-24T04:32:31.260126+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/desktop-chao.png\", \"sha256\": \"4cdc1239ea1ffc6040c6fabed58fc339244f73fc17ab14c2144615755ebe72ec\", \"bytes\": 942789, \"binaryRetained\": false}"
+}

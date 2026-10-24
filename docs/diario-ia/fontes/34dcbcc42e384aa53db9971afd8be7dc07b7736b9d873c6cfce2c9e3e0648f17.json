@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "34dcbcc42e384aa53db9971afd8be7dc07b7736b9d873c6cfce2c9e3e0648f17",
+  "path": "qa-execucoes/46636e6c0c8e455cb1c8df8e8376319c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-desnorteada.png",
+  "sha256": "d5fa3616141ca2f1fa506ee7d69a6725ce4b3bc2701a1702aa83e081f8f531fe",
+  "capturedAt": "2026-10-23T19:33:02.917062+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-desnorteada.png\", \"sha256\": \"69a469ff839e39e46b6c88cfc3f87287dbc299e9a4ee2dbc154a3ff74d09a3ae\", \"bytes\": 1155612, \"binaryRetained\": false}"
+}

@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T043214-7c08a581d771",
+  "date": "2026-10-24T04:32:14.495730+00:00",
+  "title": "QA da saída da casa, música durante a queda e oferta EASY no host real",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "6106ea8479fed19ec4f08ad1fe139001fc5f007478d7ffd547a31554aa034c49",
+      "sha256": "56034e80bdaf2361f1eb4c52e876984f59605ad467d32b38872b9394b715a6c6",
+      "bytes": 14975,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/pagina-browser.mjs",
+      "sourceId": "3b89b804397f6dceba28ad06ad9253f035a5b738e59cd32f73c2d1abc75b45aa",
+      "sha256": "b5464a2b1e95492e65dbda181b1903d0bb0ff6131a4c06cfb572cffda9a3c481",
+      "bytes": 4301,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/final-browser.mjs",
+      "sourceId": "d7b75c8e14526d570e1cbf5e13be470db7ce488199b26d92755e35c63dab729d",
+      "sha256": "32f8a108acd748704f5a575e1bc71d8e8526e38fcd57f11261bcf314667d8605",
+      "bytes": 6042,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:final": "node docs/diario-ia/qa/jardim-revisao/final-browser.mjs"
+  }
+}
