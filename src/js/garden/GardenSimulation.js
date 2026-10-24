@@ -1,5 +1,5 @@
-import {gardenContactHeight} from './GardenContact.js';
-import {GARDEN as C,GARDEN_HOME,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,gardenSurfaceY,cloudStatus} from './GardenLevel.js';
+import {gardenContactHeight,gardenGirlPose} from './GardenContact.js';
+import {GARDEN as C,GARDEN_HOME,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,gardenTerrainAt,gardenSurfaceY,cloudStatus} from './GardenLevel.js';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const stages=['INTRO','RUNNING','RESCUING','DISORIENTED','COMPLETE','FALLING','GAME_OVER'];
 /** A perseguição usa o chão de origem completo, sem atravessar rios ou buracos. */
@@ -11,7 +11,7 @@ function enemyRange(enemy){
 export function createGardenState(difficulty='NORMAL'){
   return {version:6,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
-    player:{x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
+    player:{animationTime:0,balancePose:null,x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
     enemies:GARDEN_ENEMIES.map(e=>({...e,hp:e.type==='caterpillar'?2:1,direction:-1,alive:true,defeatAge:0,stompLock:0,hopAge:0,routeIndex:0,attackPhase:'patrol',attackAge:0,retreatDirection:1}))};
 }
@@ -63,7 +63,7 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
   if(!saved.clouds||typeof saved.clouds!=='object'||Array.isArray(saved.clouds))throw new TypeError('Nuvens salvas inválidas.');
   for(const [id,time]of Object.entries(saved.clouds)){if(GARDEN_PLATFORM_BY_ID.get(id)?.type!=='cloud'||!Number.isFinite(time)||time<0||time>saved.time)throw new TypeError('Relógio de nuvem inválido.');out.clouds[id]=time;}
   const supports=gardenPlatforms(out.time,out);
-  out.player={...out.player,x:saved.player.x,y:saved.player.y,vx:clamp(saved.player.vx,-500,500),vy:clamp(saved.player.vy,-1000,1800),facing:saved.player.facing===-1?-1:1,onGround:Boolean(saved.player.onGround),support:supports.some(p=>p.id===saved.player.support)?saved.player.support:null,terrain:Object.hasOwn(GARDEN_TERRAINS,saved.player.terrain)?saved.player.terrain:'soil',airSpeed:clamp(Number(saved.player.airSpeed)||C.speed,100,480),discomfort:clamp(Number(saved.player.discomfort)||0,0,1)};
+  out.player={...out.player,animationTime:out.time,balancePose:saved.player.balancePose&&['menina-corrida-v1','menina-acoes-v1','menina-desconforto-v1','menina-pedrinhas-v2'].includes(saved.player.balancePose.set)&&Number.isInteger(saved.player.balancePose.index)&&saved.player.balancePose.index>=0&&saved.player.balancePose.index<(saved.player.balancePose.set==='menina-pedrinhas-v2'?4:8)?{set:saved.player.balancePose.set,index:saved.player.balancePose.index}:null,x:saved.player.x,y:saved.player.y,vx:clamp(saved.player.vx,-500,500),vy:clamp(saved.player.vy,-1000,1800),facing:saved.player.facing===-1?-1:1,onGround:Boolean(saved.player.onGround),support:supports.some(p=>p.id===saved.player.support)?saved.player.support:null,terrain:Object.hasOwn(GARDEN_TERRAINS,saved.player.terrain)?saved.player.terrain:'soil',airSpeed:clamp(Number(saved.player.airSpeed)||C.speed,100,480),discomfort:clamp(Number(saved.player.discomfort)||0,0,1)};
   out.trail=Array.isArray(saved.trail)?saved.trail.filter(id=>GARDEN_PLATFORM_BY_ID.has(id)).slice(-8):['entrada'];
   out.safeGround=GARDEN_PLATFORM_BY_ID.get(saved.safeGround)?.ground?saved.safeGround:'entrada';
   out.enemies=out.enemies.map((e,i)=>{const value=saved.enemies[i];if(!value||value.id!==e.id||typeof value.alive!=='boolean'||!finite([value.x,value.y,value.defeatAge,value.hp,value.hopAge])||value.x<enemyRange(e).left-60||value.x>enemyRange(e).right+60||Math.abs(value.y-e.baseY)>400||value.defeatAge<0||value.hp<0||value.hp>(e.type==='ant'?1:2)||!Number.isInteger(value.hp)||value.alive!==(value.hp>0)||value.hopAge<0)throw new TypeError('Inimigo salvo inválido.');return{...e,baseY:e.route?e.baseY:gardenSurfaceY(GARDEN_PLATFORM_BY_ID.get(e.supportId),value.x),x:value.x,y:value.y,hp:value.hp,alive:value.alive,direction:value.direction===1?1:-1,defeatAge:value.defeatAge,hopAge:value.hopAge,stompLock:clamp(Number(value.stompLock)||0,0,1),routeIndex:Number.isSafeInteger(value.routeIndex)?clamp(value.routeIndex,0,(e.route?.length??1)-1):0,attackPhase:['patrol','retreat','windup','charge'].includes(value.attackPhase)?value.attackPhase:'patrol',attackAge:clamp(Number(value.attackAge)||0,0,4),retreatDirection:value.retreatDirection===-1?-1:1};});
@@ -131,7 +131,7 @@ function enemyTick(e,s,dt){
   return old;
 }
 function tick(s,input,dt,events){
-  s.time+=dt;s.age+=dt;
+  s.time+=dt;s.age+=dt;s.player.animationTime=s.time;
   if(s.stage==='INTRO'){
     const t=clamp(s.age/3,0,1)*3,index=Math.min(2,Math.floor(t)),mix=t-index,a=GARDEN_HOME.steps[index],b=GARDEN_HOME.steps[index+1];
     Object.assign(s.player,{x:a.x+(b.x-a.x)*mix,y:a.y+(b.y-a.y)*mix,vx:(b.x-a.x),facing:1});
@@ -157,14 +157,15 @@ function tick(s,input,dt,events){
   s.jumpBuffer=pressed?.14:Math.max(0,s.jumpBuffer-dt);s.coyote=p.onGround?.12:Math.max(0,s.coyote-dt);s.immunity=Math.max(0,s.immunity-dt);
   const support=platforms.find(v=>v.id===p.support),from=oldPlatforms.find(v=>v.id===p.support);
   if(p.onGround&&!support){p.onGround=false;s.coyote=0;}
-  if(p.onGround&&support){p.terrain=support.type;if(from){p.x+=support.x-from.x;p.y+=support.y-from.y;}const top=gardenContactHeight(support,p);if(Number.isFinite(top))p.y=top;}
+  if(p.onGround&&support){p.terrain=gardenTerrainAt(support,p.x);if(from){p.x+=support.x-from.x;p.y+=support.y-from.y;}const top=gardenContactHeight(support,p);if(Number.isFinite(top))p.y=top;}
+  if(p.onGround&&support&&p.balancePose){const held=p.balancePose;p.balancePose=null;if(!Number.isFinite(gardenContactHeight(support,p)))p.balancePose=held;}
   const previous={x:p.x,y:p.y};
   if(s.jumpBuffer>0&&s.coyote>0){
     const gravel=p.terrain==='gravel',variation=[.88,1.1,.96,1.16][s.jumps%4];
     p.vy=-C.jump*(gravel?variation:1);p.airSpeed=gravel?410*[1.04,.9,1.1,.95][s.jumps%4]:(GARDEN_TERRAINS[p.terrain]?.speed??C.speed);
     // Ao saltar da grama, o ar devolve mobilidade sem cancelar a marcha lenta em terra.
     if(p.terrain==='grass')p.airSpeed=C.speed;
-    s.jumps++;p.onGround=false;p.support=null;s.jumpBuffer=0;s.coyote=0;events.push({type:'jump'});
+    s.jumps++;p.balancePose=null;p.onGround=false;p.support=null;s.jumpBuffer=0;s.coyote=0;events.push({type:'jump'});
   }
   if(released&&p.vy<0)p.vy*=.55;
   const axis=clamp(Number(input.x)||0,-1,1),speed=p.onGround?(GARDEN_TERRAINS[p.terrain]?.speed??C.speed):p.airSpeed;
@@ -175,7 +176,7 @@ function tick(s,input,dt,events){
   p.x=clamp(p.x+p.vx*dt,22,C.width-22);
   p.vy=Math.min(1800,p.vy+C.gravity*dt);
   const walking=p.onGround&&support&&p.vy>=0,walkingHeight=walking?gardenContactHeight(support,p):Infinity;
-  const nextY=(walking&&Number.isFinite(walkingHeight)&&Math.abs(walkingHeight-p.y)<18?walkingHeight:p.y)+p.vy*dt;
+  const nextY=(walking&&Number.isFinite(walkingHeight)&&Math.abs(walkingHeight-p.y)<24?walkingHeight:p.y)+p.vy*dt;
   // A lateral considera a altura no instante do contato, inclusive nas quinas do salto.
   for(const wall of platforms.filter(v=>v.ground)){
     const dx=p.x-previous.x;
@@ -184,22 +185,24 @@ function tick(s,input,dt,events){
     if(fraction<0||fraction>1||previous.y+(nextY-previous.y)*fraction<=wall.y)continue;
     p.x=edge;p.vx=0;
   }
+  const contactPlayer=walking?{...p,onGround:true}:p;
   p.y=nextY;p.onGround=false;p.support=null;
   if(p.vy>=0){
     const landings=platforms.map(v=>{
-      const old=oldPlatforms.find(o=>o.id===v.id)??v,height=gardenContactHeight(v,p);
+      const old=oldPlatforms.find(o=>o.id===v.id)??v,height=gardenContactHeight(v,contactPlayer,p.x);
       if(!Number.isFinite(height))return null;
-      if(walking&&support.id===v.id&&Math.abs(height-previous.y)<18)return{platform:v,fraction:0,height};
-      let oldHeight=gardenContactHeight(old,p,previous.x);
-      if(!Number.isFinite(oldHeight))oldHeight=gardenContactHeight(old,p,p.x);
+      if(walking&&(support.id===v.id||support.ground&&v.ground)&&Math.abs(height-previous.y)<24)return{platform:v,fraction:0,height};
+      let oldHeight=gardenContactHeight(old,contactPlayer,previous.x);
+      if(!Number.isFinite(oldHeight))oldHeight=gardenContactHeight(old,contactPlayer,p.x);
+      if(!Number.isFinite(oldHeight))oldHeight=old.y+height-v.y;
       const oldRelative=previous.y-oldHeight,newRelative=p.y-height;
       if(oldRelative>2||newRelative<0)return null;
       const fraction=clamp(-oldRelative/Math.max(.0001,newRelative-oldRelative),0,1);
       const x=previous.x+(p.x-previous.x)*fraction,at={...v,x:old.x+(v.x-old.x)*fraction,y:old.y+(v.y-old.y)*fraction};
-      return Number.isFinite(gardenContactHeight(at,p,x))?{platform:v,fraction,height}:null;
+      return Number.isFinite(gardenContactHeight(at,contactPlayer,x))?{platform:v,fraction,height}:null;
     }).filter(Boolean).sort((a,b)=>a.fraction-b.fraction||a.height-b.height);
     const land=landings[0]?.platform;
-    if(land){p.y=landings[0].height;p.vy=0;p.onGround=true;p.support=land.id;p.terrain=land.type;if(land.type==='cloud'&&s.clouds[land.id]===undefined)s.clouds[land.id]=s.time;if(!land.rotating&&land.type!=='cloud'&&s.trail.at(-1)!==land.id){s.trail.push(land.id);s.trail=s.trail.slice(-8);}if(land.ground)s.safeGround=land.id;}
+    if(land){const landingPose=gardenGirlPose(contactPlayer);p.balancePose=null;p.y=landings[0].height;p.vy=0;p.onGround=true;p.support=land.id;p.terrain=gardenTerrainAt(land,p.x);if(land.hill||!land.ground){let exact=gardenContactHeight(land,p);if(!Number.isFinite(exact)&&!land.ground){p.balancePose=landingPose;exact=gardenContactHeight(land,p);}if(Number.isFinite(exact))p.y=exact;}if(land.type==='cloud'&&s.clouds[land.id]===undefined)s.clouds[land.id]=s.time;if(!land.rotating&&land.type!=='cloud'&&s.trail.at(-1)!==land.id){s.trail.push(land.id);s.trail=s.trail.slice(-8);}if(land.ground)s.safeGround=land.id;}
   }
   for(const e of s.enemies){
     if(Math.abs(e.x-p.x)>1100)continue;

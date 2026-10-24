@@ -1,3 +1,4 @@
+import {gardenGirlPose} from './GardenContact.js';
 import {GARDEN as C,GARDEN_HOME,gardenPlatforms,gardenSurfaceY,GARDEN_CHECKPOINTS,GARDEN_WHEEL,GARDEN_WHEELS,GARDEN_WATERS,GARDEN_SECTIONS,GARDEN_PLATFORM_BY_ID,cloudStatus,gardenSection} from './GardenLevel.js';
 import {GARDEN_ART} from './GardenArt.js';
 import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
@@ -23,6 +24,7 @@ export class GardenRenderer {
     const manifest=await response.json(),required=['cenario-v1.png','source/terra-continua-v1.png',...Object.values(GARDEN_ART.sets).map(s=>s.file),fairyFile];
     if(!Array.isArray(manifest.images)||required.some(file=>!manifest.images.includes(file)))throw Error('Manifesto do jardim incompleto.');
     await Promise.all(manifest.images.map(async file=>{const image=new Image();image.src=new URL(file,root).href;await image.decode();if(!image.naturalWidth)throw Error('Arte vazia no jardim: '+file);if(!this.disposed)this.images.set(file,image);}));
+    if(!this.disposed){const warm=document.createElement('canvas').getContext('2d');for(const p of GARDEN_PLATFORM_BY_ID.values())if(p.hill){this.groundSurface(warm,p,true,true);if(p.type==='grass')this.groundSurface(warm,{...p,type:'soil'},true,true);for(const patch of p.grassPatches??[])this.groundSurface(warm,{...p,type:'grass',patchX:p.x+p.w*patch.start,patchWidth:p.w*(patch.end-patch.start)},true,true);}}
   }
   controls(){return gardenControls(this.canvas,getDialogueSafeArea(this.canvas));}
   /** Somente x acompanha a menina; pulo, terreno e apoio não mudam altura ou escala. */
@@ -70,9 +72,19 @@ export class GardenRenderer {
   groundSurface(ctx,p,joinedLeft,joinedRight){
     const tile=this.surfaceTile(p.type);if(!tile)return;const y=p.y-surfaceOffset[p.type],cap=48;
     if(p.hill){
-      for(let x=p.x;x<p.x+p.w;x+=4){const width=Math.min(4,p.x+p.w-x),sx=((x%220)+220)%220;ctx.drawImage(tile,sx,0,Math.min(width+.5,220-sx),tile.height,x,gardenSurfaceY(p,x+width/2)-surfaceOffset[p.type],width+.5,tile.height);}
-      return;
+      const paintLeft=p.patchX??p.x,paintWidth=p.patchWidth??p.w,key='curve-'+p.id+'-'+p.type+'-'+p.w+'-'+p.hill+'-'+(p.waves??1)+'-'+paintLeft+'-'+paintWidth;
+      let curve=this.patterns.get(key);
+      if(!curve){
+        curve=document.createElement('canvas');curve.width=Math.ceil(paintWidth)+2;curve.height=Math.ceil(p.hill+tile.height+2);
+        const paint=curve.getContext('2d');
+        for(let x=0;x<paintWidth;x+=2){const width=Math.min(2,paintWidth-x),sx=(((paintLeft+x)%220)+220)%220;if(p.patchWidth)paint.globalAlpha=Math.max(0,Math.min(1,(x+1)/12,(paintWidth-x)/12));
+          paint.drawImage(tile,sx,0,Math.min(width+.25,220-sx),tile.height,x,gardenSurfaceY(p,paintLeft+x+width/2)-p.y+p.hill,width+.25,tile.height);
+        }
+        this.patterns.set(key,curve);
+      }
+      ctx.drawImage(curve,paintLeft,p.y-p.hill-surfaceOffset[p.type]);return;
     }
+
     const start=p.x+(joinedLeft?0:cap),end=p.x+p.w-(joinedRight?0:cap);
     ctx.save();ctx.beginPath();ctx.rect(start,y,Math.max(0,end-start),tile.height);ctx.clip();
     for(let x=Math.floor(p.x/220)*220;x<p.x+p.w;x+=220)ctx.drawImage(tile,x,y,220,tile.height);
@@ -92,7 +104,7 @@ export class GardenRenderer {
   terrain(ctx,p,bottom,body=true){
     if(p.ground){
       if(body)this.terrainBodies(ctx,[p],bottom);
-      ctx.save();ctx.beginPath();const {joinedLeft,joinedRight}=this.groundOutline(ctx,p,bottom);ctx.clip();if(p.type==='grass')this.groundSurface(ctx,{...p,type:'soil'},joinedLeft,joinedRight);this.groundSurface(ctx,p,joinedLeft,joinedRight);ctx.restore();
+      ctx.save();ctx.beginPath();const {joinedLeft,joinedRight}=this.groundOutline(ctx,p,bottom);ctx.clip();if(p.type==='grass')this.groundSurface(ctx,{...p,type:'soil'},joinedLeft,joinedRight);this.groundSurface(ctx,p,joinedLeft,joinedRight);for(const patch of p.grassPatches??[])this.groundSurface(ctx,{...p,type:'grass',patchX:p.x+p.w*patch.start,patchWidth:p.w*(patch.end-patch.start)},true,true);ctx.restore();
     }else if(p.aerial&&p.type==='gravel'){
       const set=GARDEN_ART.sets.objetos,f=set.frames[0],image=this.images.get(set.file);ctx.save();ctx.beginPath();ctx.moveTo(p.x,p.y-15);ctx.lineTo(p.x+p.w,p.y-15);ctx.lineTo(p.x+p.w,p.y+30);ctx.quadraticCurveTo(p.x+p.w*.8,p.y+72,p.x+p.w*.5,p.y+65);ctx.quadraticCurveTo(p.x+p.w*.2,p.y+72,p.x,p.y+30);ctx.closePath();ctx.clip();
       if(image)ctx.drawImage(image,f.x,f.y+f.h*.45,f.w,f.h*.55,p.x,p.y+3,p.w,65);this.groundSurface(ctx,p,true,true);ctx.restore();
@@ -128,10 +140,10 @@ export class GardenRenderer {
   }
   /** Vegetação contínua, translúcida e fixa no mundo, inclusive durante o salto. */
   grassFront(ctx,s,platforms){
-    for(const ground of platforms.filter(v=>v.ground&&v.type==='grass')){
-      ctx.save();ctx.globalAlpha=.45;ctx.beginPath();if(ground.hill){for(let x=ground.x;x<ground.x+ground.w;x+=8)ctx.rect(x,gardenSurfaceY(ground,x+4)-90,8.5,98);}else ctx.rect(ground.x,ground.y-90,ground.w,98);ctx.clip();
+    for(const ground of platforms.filter(v=>v.ground&&(v.type==='grass'||v.grassPatches))){
+      ctx.save();ctx.globalAlpha=.45;
       const all=[...GARDEN_PLATFORM_BY_ID.values()],joinedLeft=all.some(v=>v.ground&&v!==ground&&Math.abs(v.x+v.w-ground.x)<1),joinedRight=all.some(v=>v.ground&&v!==ground&&Math.abs(v.x-ground.x-ground.w)<1);
-      this.groundSurface(ctx,ground,joinedLeft,joinedRight);ctx.restore();
+      if(ground.grassPatches){for(const patch of ground.grassPatches)this.groundSurface(ctx,{...ground,type:'grass',patchX:ground.x+ground.w*patch.start,patchWidth:ground.w*(patch.end-patch.start)},true,true);}else this.groundSurface(ctx,ground,joinedLeft,joinedRight);ctx.restore();
     }
   }
 
@@ -187,15 +199,12 @@ export class GardenRenderer {
     if(right>C.goal-600){// A árvore fica no plano posterior do gramado; suas raízes terminam antes da toalha.
       this.prop(ctx,8,C.goal-240,C.ground+4-360,360*417/446,360);const picnic=GARDEN_ART.sets.ambiente.frames[3],picnicHeight=400*picnic.h/picnic.w;this.prop(ctx,3,C.goal+5,C.ground-picnicHeight,400,picnicHeight,'ambiente');}
     for(const e of s.enemies){if(e.x<left||e.x>right||!e.alive&&e.defeatAge>.4)continue;ctx.save();ctx.translate(e.x,e.y);ctx.scale(e.direction,1);if(!e.alive){ctx.globalAlpha=Math.max(0,1-e.defeatAge/.4);ctx.scale(1,Math.max(.15,1-e.defeatAge*2));}if(e.type==='caterpillar'&&e.hp===1)this.prop(ctx,Math.floor(s.time*12)%2,-e.w/2,-e.h,e.w,e.h,'lagartaVermelha');else this.prop(ctx,(e.type==='ant'?4:6)+Math.floor(s.time*7)%2,-e.w/2,-e.h,e.w,e.h);ctx.restore();}
-    const p=s.player;let set='menina-corrida-v1',index=p.onGround?(Math.abs(p.vx)>15?2+Math.floor(s.time*11)%6:Math.floor(s.time*2)%2):p.vy<-180?1:p.vy<80?2:3;
-    if(!p.onGround)set='menina-acoes-v1';
-    if(p.discomfort>.4){set='menina-desconforto-v1';index=!p.onGround?6:Math.abs(p.vx)<10?7:p.terrain==='grass'?Math.floor(s.time*5)%4:4+Math.floor(s.time*16)%2;}
-    if(p.terrain==='gravel'&&p.discomfort>.4&&p.onGround&&Math.abs(p.vx)>15){set='menina-pedrinhas-v2';index=Math.floor(s.time*9)%4;}
+    const p=s.player;let {set,index}=gardenGirlPose(p,s.time);
     if(s.immunity>0&&Math.floor(s.time*10)%2===0)ctx.globalAlpha=.5;
     if(s.stage==='COMPLETE'){set='menina-acoes-v1';index=s.age<1.5?5:6;}else if(s.stage==='FALLING'||s.stage==='GAME_OVER'||s.stage==='DISORIENTED'){set='menina-acoes-v1';index=4;}
     ctx.save();ctx.translate(p.x,p.y);if(set==='menina-pedrinhas-v2')ctx.rotate(Math.sin(s.time*11)*.045);this.sprite(ctx,set,index,0,0,C.playerHeight,p.facing);ctx.restore();ctx.globalAlpha=1;this.grassFront(ctx,s,platforms);this.effort(ctx,s);this.fairy(ctx,s);ctx.restore();
     const safe=getDialogueSafeArea(canvas),u=Math.min(width/680,height/500),narration=['INTRO','FALLING','GAME_OVER','RESCUING','DISORIENTED'].includes(s.stage)||s.player.x<500;
-    if(!narration){ctx.save();ctx.font=`bold ${20*u}px Georgia`;ctx.fillStyle='#fff7e7';ctx.strokeStyle='#729c6b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(safe.left+16*u,safe.top+14*u,235*u,74*u,14*u);ctx.fill();ctx.stroke();ctx.fillStyle='#9b4e58';ctx.fillText(s.difficulty==='EASY'?'♥ ∞  Nanda está com você':'♥'.repeat(s.hp),safe.left+31*u,safe.top+46*u);ctx.fillStyle='#426951';ctx.font=`bold ${12*u}px Georgia`;const chapter=gardenSection(p.x);ctx.fillText(chapter.name,safe.left+19*u,safe.top+82*u);const canvasRect=canvas.getBoundingClientRect?.(),buttons=globalThis.document?.querySelector?.('.top-controls-bar')?.getBoundingClientRect();
+    if(!narration){ctx.save();ctx.font=`bold ${20*u}px Georgia`;ctx.fillStyle='#fff7e7';ctx.strokeStyle='#729c6b';ctx.lineWidth=2;ctx.beginPath();ctx.roundRect(safe.left+16*u,safe.top+14*u,235*u,74*u,14*u);ctx.fill();ctx.stroke();ctx.fillStyle='#9b4e58';ctx.fillText(s.difficulty==='EASY'?'♥ ∞':'♥'.repeat(s.hp),safe.left+31*u,safe.top+46*u);ctx.fillStyle='#426951';ctx.font=`bold ${12*u}px Georgia`;const chapter=gardenSection(p.x);ctx.fillText(chapter.name,safe.left+19*u,safe.top+82*u);const canvasRect=canvas.getBoundingClientRect?.(),buttons=globalThis.document?.querySelector?.('.top-controls-bar')?.getBoundingClientRect();
       const buttonsBottom=buttons&&canvasRect?.height>0?(buttons.bottom-canvasRect.top)*height/canvasRect.height:0,progressY=Math.max(safe.top+43*u,buttonsBottom+19*u);
       ctx.fillStyle='#fff7e7';ctx.beginPath();ctx.roundRect(safe.right-150*u,progressY-20*u,137*u,29*u,9*u);ctx.fill();ctx.fillStyle='#426951';ctx.fillText(Math.min(100,Math.floor(p.x/C.goal*100))+'% do caminho',safe.right-139*u,progressY);ctx.restore();}
     const mobile=touch||height>width||globalThis.matchMedia?.('(pointer: coarse)').matches;

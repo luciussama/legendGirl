@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "82efff75ba11789563bd50cd75df2da334ee81e1c819f9809bcc6a9bf25117fd",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/desktop-degrau.png",
+  "sha256": "8ac84f9ba78877a69e4de5ba3fe4e94b09872c4bb8eb5d929eb268830c8cae61",
+  "capturedAt": "2026-10-24T04:32:31.261211+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/desktop-degrau.png\", \"sha256\": \"a765b10a60088acc255f2544abbc5249d30e24373ea1b90092f09be598e8c53e\", \"bytes\": 899465, \"binaryRetained\": false}"
+}

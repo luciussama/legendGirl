@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T043816-0bed2f1ed707",
+  "date": "2026-10-24T04:38:16.419158+00:00",
+  "title": "Amostragem do pouso espera contato na borda curva ilustrada da pedra, abaixo do topo central",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "4db9807f0c47c0b03f69effd8217dde604a1448316ba9e0cf5a64234b3afc352",
+      "sha256": "e2cbcef5c360ee5084d43f5532bafd6b9ad74634736556b4c57dd4a029d2932f",
+      "bytes": 16278,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,65 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T041121-b0d9a8d4019a",
+  "date": "2026-10-24T04:11:21.107137+00:00",
+  "title": "Contratos novos de pés completos, escada, queda animada e tolerância de duração de dez por cento",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "016fed29cc8a3764c5c606a3dbc41548126dfc3827ac600ba291c26956946ede",
+      "sha256": "2028128007cb26c09305aa390dd30f1f2c4a24efa8f3569828c30eeca7cdc5d9",
+      "bytes": 14843,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "81e16b825cb0b2d589a1e9556196063329e9d60078859eec502fff91f7c52717",
+      "sha256": "3b51ed63869008c62507680d1b5f217da2014818bd5d2ce3f1e549e66f683dfc",
+      "bytes": 16196,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "af513f799c2ed721347085238bf0a00171d42469bd9add310db3d021c3a1d637",
+      "sha256": "279266774cdd27487b4761a51a405b9574961588799195c1e3eb1bed5258216c",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "7323cd3853de4e7a31e672b0bdf3bb21dfa94c0edf0b778330d8f23559ef1530",
+      "sha256": "ca8410d56ce2ca7cf7b141b47b75b038c059f320ff489ad2ec8c13f044bc7c57",
+      "bytes": 2234,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "4008f25dcc74748ab901ae677d71f6c038bee8027907d6353178efdfbddf1f91",
+      "sha256": "ffc8e1e75a50a6914b0a403673b67268c9625e2724c7762139520f1a6e49cd92",
+      "bytes": 2273,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs",
+      "sourceId": "1d44a552ded5a22c1adf65365e46ffcaadda0f9383cad21a0fd2311b83a6f944",
+      "sha256": "f0d9869c8660230c05606221b2f9c3810b7547e6e789b3ac27600766b3750225",
+      "bytes": 4852,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/aereo.mjs",
+      "sourceId": "a5bf06957e9c6aa44d466f34234bf7dd8cff8c0c7c18a91971547d344bd5ca23",
+      "sha256": "e504b7aa4c1f2ee77f94743333d8ad6c4169b73a0f4f40fdf88e6ba920efe812",
+      "bytes": 1215,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/pagina-browser.mjs",
+      "sourceId": "b1fd160d88f47fc82c56e021861439e7c3789ee69939aa484aa028f07ae1b79e",
+      "sha256": "22f822b49983ffbec22e79f187963682538a34f163c0c31e1a40fc4bb51a6725",
+      "bytes": 4310,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

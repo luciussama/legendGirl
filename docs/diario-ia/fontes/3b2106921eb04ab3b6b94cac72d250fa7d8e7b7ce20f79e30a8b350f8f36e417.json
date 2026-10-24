@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3b2106921eb04ab3b6b94cac72d250fa7d8e7b7ce20f79e30a8b350f8f36e417",
+  "path": "qa-execucoes/7615bb0ab4a74b36ba4f8ca95ba1a9ab/docs/diario-ia/qa-resultados/final/android-chao.png",
+  "sha256": "fb08f10073d459d27343ee56ba25fdffce180628928807ff97507b5e81e2a10c",
+  "capturedAt": "2026-10-24T04:32:31.257856+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:final"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/final/android-chao.png\", \"sha256\": \"85f563189fc7da8a976e91aa0f5d7bab52c5fc4b7f791fbd9ef9ad9cb89449be\", \"bytes\": 525938, \"binaryRetained\": false}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "af5e7428fcc747ef931330164808366c",
+  "date": "2026-10-24T04:48:04.063834+00:00",
+  "title": "QA temporário: test:garden:visual",
+  "files": [
+    {
+      "path": "qa-execucoes/af5e7428fcc747ef931330164808366c.log",
+      "sourceId": "fa3954147f6ab964ef01481931dba59f67d5a117b23f53c299296d59e47cd3e4",
+      "sha256": "f1829b1c16dbe3a36401375e566eaaf5ec12f5a30b9a4f4676414268f5aa1b1d",
+      "bytes": 277,
+      "metadataOnly": false
+    }
+  ]
+}

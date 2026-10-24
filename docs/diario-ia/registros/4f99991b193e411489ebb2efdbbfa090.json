@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "4f99991b193e411489ebb2efdbbfa090",
+  "type": "qa",
+  "date": "2026-10-24T04:41:08.439563+00:00",
+  "title": "QA temporário: test:arena:defesa",
+  "exitCode": 0,
+  "sourceId": "6e4f159787173e782570a7e3089494409f704acd1b044316c1ed7333ddd13fc5",
+  "package": "20261022T140229-817bbac9d762"
+}

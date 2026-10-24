@@ -45,3 +45,6 @@ fs.writeFileSync(root+'/manifest.json',JSON.stringify({version:1,images:['cenari
 const metadata={referenceHeight:256,sets};fs.writeFileSync(root+'/frames.json',JSON.stringify(metadata,null,2)+'\n');
 fs.writeFileSync('src/js/garden/GardenArt.js','// Gerado por scripts/prepare-garden-art.js; fontes e prompts preservados.\nexport const GARDEN_ART = '+JSON.stringify(metadata)+';\n');
 console.log('Jardim: 28 poses, nove objetos, quatro elementos de ambiente, duas poses de lagarta vermelha e metadados preparados.');
+
+// Atualiza o contrato físico a partir das mesmas pinturas recém-preparadas.
+await import('./prepare-garden-contact.js');

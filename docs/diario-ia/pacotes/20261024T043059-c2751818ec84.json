@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261024T043059-c2751818ec84",
+  "date": "2026-10-24T04:30:59.796809+00:00",
+  "title": "Quinas toleram somente os dois pixels de alfa dos sapatos; contato sobre curvas é validado pela sola medida",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "2924ad155ae0800a922022aa7265f8f7fa3b3d7d88921a32dbe36641e074212d",
+      "sha256": "2961eb7208196189fbeec91415d9749625bec5f11a92c75ffa54c5c92053cc4c",
+      "bytes": 16240,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

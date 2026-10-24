@@ -1,0 +1,652 @@
+{
+  "schemaVersion": 1,
+  "id": "8231e820d26a4f02935d966bb1d5cdca",
+  "date": "2026-10-24T04:35:33.343182+00:00",
+  "title": "QA temporário: test:garden:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca.log",
+      "sourceId": "5263d508f43677de0033cf00f90aabaf4a46faa862d874898ea30f8c46baf1e5",
+      "sha256": "ac3adfa9f457392cb6cd2e4a6ca01147f23273b916dafeb58a16f27d1439c3ab",
+      "bytes": 6937,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-nuvens.png",
+      "sourceId": "5d0c8b66494b0ec226a79d5060151c74f60cac8107a31e4189e3c44448984356",
+      "sha256": "591e8dd9f1abe450df1c0baf144b392c3631281dfdb8d9a3a231c2bb53fc68a9",
+      "bytes": 1062931,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-pedrinhas-1.png",
+      "sourceId": "f556e993861915f169d3fbae6f32c3355a40a09d7ed9a13284daa91f4db8d49c",
+      "sha256": "5ddabfccbec60fcaac80bd92db3d713933a4a22bbdde45f825064f2086fe3629",
+      "bytes": 1060393,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-pedrinhas-2.png",
+      "sourceId": "5376bf604e57863b8f56b3edfee257a108b74770b38f7b047bb2b4176b0b4c7b",
+      "sha256": "c31a21d4daa1bc71c2b82e8ebe7452fad735af18b34731422ad2ba52baebd0d3",
+      "bytes": 1060682,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-roda-1.png",
+      "sourceId": "9b7ae270a5c8914d0b121aa5046e6dffbb777df5b91497eeca502afa76df5eec",
+      "sha256": "42c889067c318aefd09d73f4c2fac4908e2fe9c3bf3d60417bb78dbc26692ca8",
+      "bytes": 1079729,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-roda-2.png",
+      "sourceId": "1df03a8aba5a18bff4859bd14dad9f32ab2c0d1415c0f15de07f1681c16df340",
+      "sha256": "f801d665f1aabb1fe647eeee48e71045fc1ee09b2ad967b05eb49d9ccbddae66",
+      "bytes": 1072920,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-roda-3.png",
+      "sourceId": "6812d3e1db880224e5515c5739885dad5a63b50193f5ca59a9e156fc460752d2",
+      "sha256": "5e7bac68a117112db43a9a01ab3f2d0b754bb982c479273c3220f898df206783",
+      "bytes": 1068960,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-aereo-saida.png",
+      "sourceId": "63afbd6e5b709bd8e0d4f03414d1194c58e8e263c052f9e9ebbaf6e1d41cac96",
+      "sha256": "c67b667c2d5f61b6707fb1311f5237c02c8d85fcdf63b886f02c3c6ea45a7e56",
+      "bytes": 1147248,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-agua-primeira.png",
+      "sourceId": "362143cc8bffa43700777c45509f12f8cd6f6f12f9565daa496ec1e589903e17",
+      "sha256": "88e6edddcd2a50910428c3d1b48d8f9c3884705b8a14c238c7114ade81e8db55",
+      "bytes": 986896,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-cantos-terra.png",
+      "sourceId": "ddac89e886a6470e14e18996bf88a4fd177bb58682a08c27f32eaa043ba2a0e8",
+      "sha256": "f1dba6058b79cedb20a3ad1d5c989cb07c26a759d1e5bccdcc7e841894c5d862",
+      "bytes": 1197541,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-casa.png",
+      "sourceId": "c7a4ed032600a6b7ae3004df35ca2aefaab24cda1bead8dc060841e0e7603979",
+      "sha256": "007743327aa81a1d4b6376a9d78ab185399c1315e671ce881332641291fd77ab",
+      "bytes": 1309330,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-contato-grama.png",
+      "sourceId": "5b351aa696d9fce14fcac79c0c0e7d52b4a5632b89c0c8042c177e5e3ed886e1",
+      "sha256": "47f6c45163e9ac90bb97c0699d05ac112f3d9b0f5bb0015204f7028f97c3149f",
+      "bytes": 1373188,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-contato-solo.png",
+      "sourceId": "6315af0e2eff0149878f9f813d34aedbdd3d3f755541ae9b68769265dd64428a",
+      "sha256": "a10f9f3e4c8cfcc537e067a993ad37a09961976d9e0ef91a27f711e811ba9c45",
+      "bytes": 1306848,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-desnorteada.png",
+      "sourceId": "b4932070e97ea2400f458aea8d64a6e17a63f0135ad1e52a4873be1fd4944348",
+      "sha256": "6a56bab5704373d71b75b37b1ccb3b68df5074110fa4d758aca1744265f56d89",
+      "bytes": 1243831,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-grama.png",
+      "sourceId": "75a98ce0c80210831c53ab5cf1653c94c05a8d1babc01cb88306cfe6b8d91384",
+      "sha256": "891943b79aa8fbd589ae47467e724d3c18a8849ee89f468d34788287751c8cad",
+      "bytes": 1387468,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-lagarta-vermelha.png",
+      "sourceId": "26ba225b72d9b6e6712ab1b0d5ce536024aaba853161cbc6283a27684f85fd32",
+      "sha256": "265ea45b8e45248f1598ec4ad8dece4dea92bc14d7d2857eadbda4f72f902dd0",
+      "bytes": 1306795,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-margem-inicial.png",
+      "sourceId": "923d8f964afd0a426717bfbbe52234623a2e4b1162cc49bb61ae66a3e30dd981",
+      "sha256": "45c52a79adbe0f63417cbbe79a0349b16ecc8bf5e3f403cb98bd61105faad063",
+      "bytes": 1129656,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-margem-saida.png",
+      "sourceId": "f439db0eec9c4de521d28def129eb7452ee1867282c26c6863052ea01bf7ee58",
+      "sha256": "69b2e285a9433f476dd7c312c4fb35347203368ca597ec90bec22b981e2ed926",
+      "bytes": 1268192,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-morro-duplo.png",
+      "sourceId": "53c5f0dbafcbcfa3f2103690b08e8b8c73d49ed2dece0ea69fb6c7555bc3c87b",
+      "sha256": "6537a4ec18703f8caf09b6b9b197236176502a03c2d50ed81b45e7f8be947ad6",
+      "bytes": 1237778,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-nuvens.png",
+      "sourceId": "2830e5649c2f32c9b7add659af031c7c5927c157985a507367b41b419001aa8a",
+      "sha256": "5079398cb1451688405e4f5a23a02a0c0e9ad02008fea5a5e55eb947dd7e38a5",
+      "bytes": 1213340,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-paisagem-longa.png",
+      "sourceId": "a735a7c2a0cc1e2ffbc9cf4d597941ae2341a71122000ea5582d5d63862de9a5",
+      "sha256": "feb226ce98680aa2537e4750f67de8b4329f7acf309303be8dbd7120e907806a",
+      "bytes": 1058350,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-pedrinhas.png",
+      "sourceId": "2c5d1fbcd068da29ef972232cdef8f5f1989000d104c1c7a7120049c5ab24c0b",
+      "sha256": "56374418aa5b6306340d26ed22466d343dff8a0fe81fa6de1ff1caf4e3d16709",
+      "bytes": 1342558,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-piquenique.png",
+      "sourceId": "2ae5d3616bdacdf3cc47cefd0aa5e16306fba2d0824a34a2de7a84afb4ab8775",
+      "sha256": "71087de0457d54b3445a95e070600c5319a888791cb9693373543df667e601ad",
+      "bytes": 1305033,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-quatro-nuvens.png",
+      "sourceId": "5125b8fcb280216eb285439f25e6b5b43bd74869620e8a35711457e60ed6d1e9",
+      "sha256": "8d61dd45823bcaf01d533c406e66e384a4c35c300e5aa368e6c8bba288086687",
+      "bytes": 1157489,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-relevo-longo.png",
+      "sourceId": "d37607dbf93bdcbdfc1496d184d3d66e04a8d38897a31973162fd3cf19e69fb3",
+      "sha256": "c25c49228895a1cf10bb5378e04de7c705dfd0207415bad71d5b3faae3597e52",
+      "bytes": 1185737,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-relevo-primeiro.png",
+      "sourceId": "a11720a3b7dbfb824c4fe06e64e2b12ac5314d100885348073d5f7fc4d46e191",
+      "sha256": "a8205af9e881992cc649d84c5b19a1437f0115c90b9b5b93f62792f4aef1d4de",
+      "bytes": 1387147,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-resgate.png",
+      "sourceId": "690bcfbf81ab939f75a7ee857d91fbfce03c2b77a07758b997b0fbd155b92dff",
+      "sha256": "787f9a3a30ef2739b02bbdb60508307cddb365b0e497f5a9602cf3d8cd79e2bb",
+      "bytes": 1214103,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-rio-com-formiga.png",
+      "sourceId": "f1ad50dc38599fc065896b21cdb4ba81586a73584360d4641dc7d94d4139a20a",
+      "sha256": "0f46f12d6c17b190bccadecfd5e364f970e0ba3dc4cb7048dc085295041123c3",
+      "bytes": 821660,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-roda-apoio.png",
+      "sourceId": "b405335f6fe715d1c15c270428a593e0e1d6775e471ecbc2fd6897b9c0013fbe",
+      "sha256": "29f7de54876e8dc0f35aad3b3e2a8b304a757c022cf255aaec0885a987446b80",
+      "bytes": 1238185,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-roda.png",
+      "sourceId": "9945b6e3002e43be9da26630f5a6837431e919630958ae083502fb2e4debafc4",
+      "sha256": "bac16ef1ee51f3ddf9a160290ae17f22d62fd775a85755415e730971ad5d408a",
+      "bytes": 1235838,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/android-troca-de-terreno.png",
+      "sourceId": "14b037a998dc8a87485d0a3bce9c88676e9ae1d4b2097f5d453f3dcfb1610e0e",
+      "sha256": "ab8872c320a41859606e099bb781107ef3d78cd6fd104185f89cc4ef6850be73",
+      "bytes": 1371623,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-nuvens.png",
+      "sourceId": "cb8b102816dc40bd90a00682e17532cb93cb65cf6a757bb9940e14c29610754a",
+      "sha256": "182339ea5cd4bf9ffe8b271abfc9c3ae482eee0fd6b2151e4a2c40f2f2d84196",
+      "bytes": 998548,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-pedrinhas-1.png",
+      "sourceId": "4eaa87a3d21d42fbf66afdc312687a7f6699bdf617587f3023f7674031d40bf2",
+      "sha256": "eff21a28a0edc0d9f7903907f6b93b1ecd1eb76d04e2460e50633af7b37d70f9",
+      "bytes": 1000018,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-pedrinhas-2.png",
+      "sourceId": "5c7afc9ebc9daf3b39d5adca0b53046323bf5dec4fb2c5bf926d1c04219de606",
+      "sha256": "6916279139677ac2e4c80f65de5678f469bcb3ede5391a0eead4e91273ec0d2c",
+      "bytes": 1000954,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-roda-1.png",
+      "sourceId": "16e78a280e6a22140c817882e903fc6354dedfb986d32ad4e69e57a4eeda3c8d",
+      "sha256": "0f80244206fbc31d68db1fa80d2597cfb4cf219b904e810f3cbf025cbaa66ccd",
+      "bytes": 1016909,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-roda-2.png",
+      "sourceId": "0eda4cb11d932948d88a10e887824072f3a2ba789f75b05915bce5c6dfd5fade",
+      "sha256": "b30181e4a44a36aa87cd9774f2ee21bf4a6fb1cd48b693a2ffb817ea1f5d863f",
+      "bytes": 1011179,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-roda-3.png",
+      "sourceId": "30d4088a3045e45e952e3becfae8ca7c256d593ba50085804498de42dfc1f10b",
+      "sha256": "4066c91ea03a4c69d7f6ee14e4b5b50a89fe9d31bf0bbc3ec69e8d6ab45e7afe",
+      "bytes": 1006451,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-saida.png",
+      "sourceId": "86549dde546335a2a0e05c521fb58a210e1a1cee5d70f80fb3d44a0ff10175d5",
+      "sha256": "370fd3149ab773b06928c1bf70369ed4554932df80b0a2a71b3057560f1d0766",
+      "bytes": 1016938,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-agua-primeira.png",
+      "sourceId": "16e4f996076fa6cacef14d1121bcdc844b049ddab1440673b3178d5ef57bebc9",
+      "sha256": "3ad87f1ad4fe1cc428f4656aa35b1adff8fdb2792372e1a45b31f24dc9336df7",
+      "bytes": 929335,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-cantos-terra.png",
+      "sourceId": "e9d3e8a086df42c9617b88d0b35af4a2cf7d43097ed24a6e2491d0b50ddc6849",
+      "sha256": "5ef42ccb5b59633d3da23630f7f98f1d5ad0aba257a9074b8827384b06b627c5",
+      "bytes": 1021731,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-casa.png",
+      "sourceId": "8ca1303c27b4b970dd5af219548560028d148b356eea9ed918a0ec1ece677d23",
+      "sha256": "2fdaff376fa2f31aa5384925ce731f3f4103c9fa512699c7677cc34cd64d1f1a",
+      "bytes": 1081199,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-contato-grama.png",
+      "sourceId": "124f09d7cfc7e5c787337c7fdecfbf33673642379a2bcc4d785b0429c1fc44d8",
+      "sha256": "dace26ff5c9e0b28805ed12c7ca775ff102c979a9b503a7d6457129db55ede43",
+      "bytes": 1058101,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-contato-solo.png",
+      "sourceId": "810f9463bc348c75bdffb8e7dd7ecf1e857a17569ba5c7d5ad4926cb6164c31c",
+      "sha256": "5c9f3452730b2889a77578ca3bfa9f9d8b22310fadefb4339d306121f2740475",
+      "bytes": 1043439,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-desnorteada.png",
+      "sourceId": "90c47bd6f941d39fa37528642a3b09dc3cbc3945a95f61efdd15594b34acf369",
+      "sha256": "a05e588ee216ab49097b4cb7edd671d35d0d590f2d47a1c6161fa888fc6e38ca",
+      "bytes": 1051898,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-grama.png",
+      "sourceId": "e51ce823f736ec694069061caab4b7c8ecc559ab77924bd090dba2501fe4a320",
+      "sha256": "f5e72d65a38a30d91e2db262106a35fcc1025522ca67bc123844b2b85f118ff0",
+      "bytes": 1040249,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-lagarta-vermelha.png",
+      "sourceId": "e1430c48a6dfd6c57309dc26aab55b2c502977d51a16fe013d1fac852b978f39",
+      "sha256": "5717e72e8729eeef542217006cd86c9b5ecc5913305ff50595eddad62290e1e8",
+      "bytes": 1041956,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-inicial.png",
+      "sourceId": "d5ef2aa805995a4f05085271851d8f63da99931e29c4585ca72bd4292ae8faf8",
+      "sha256": "09e9e735cd2d1df8662b62ab57ebfcdb5f904e58725e31c7886cf57a4b5cdd32",
+      "bytes": 958306,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-saida.png",
+      "sourceId": "b5fb4f05d3260a102101094400ef08d57d202fe4998acb63029627409344a702",
+      "sha256": "0e4133dfa208951eac67d68863e1288e43b09d21ecf606d71ea5542b4a7b18ce",
+      "bytes": 1013246,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-morro-duplo.png",
+      "sourceId": "7eb775172b00182e714a6cb7ac2d9cc1390893d07642d9923104af325e0d6ce2",
+      "sha256": "856e77f87718dde6b75fe8bfa8a5011e4fa50f1fa4bb7e20f26db3a0209bab90",
+      "bytes": 1030750,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-nuvens.png",
+      "sourceId": "855b0c44bfbce5baddd6164843992018b789fc03cc46da6dae814224051514e1",
+      "sha256": "cfbf6157e4ebb4d760a7f8ab626267d8055a2e73a666dd64246803e6d6ecc53a",
+      "bytes": 1030164,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-paisagem-longa.png",
+      "sourceId": "5d23475d6f0815fbf1a387ae2abb09dcedca6e35e89d4f01faf2c1bf097abc57",
+      "sha256": "6bf87dd66f68533312d94db5d26205a455b9f6a07b0946754206badf6bd25105",
+      "bytes": 1001902,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-pedrinhas.png",
+      "sourceId": "1ac5e2a3716d4cbf0c2a07aacae2bd85647127b8e199f02c931d6b63905d828c",
+      "sha256": "d4b7edfb31fbcc8437b36db2dff776b0ec82983690c9f7be35727f3f0f51db47",
+      "bytes": 1059948,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-piquenique.png",
+      "sourceId": "358c0484b7358ce53bff6b7c299cb8c2a8fac4eaec57b4bb50979edef03a6176",
+      "sha256": "5450d99faa7d41cd12de20084bff93126e61a6df781e9f8cfba2ab09f4131b88",
+      "bytes": 1061466,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-quatro-nuvens.png",
+      "sourceId": "a8d612dcc2ce296a11071f754bac81ac342d8fd8d9e8834090aec4c765d84688",
+      "sha256": "c40ab5db73b685387c1d0f6d5a18e4e33ebe73f71014e0523179702e789bb9df",
+      "bytes": 1000328,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-relevo-longo.png",
+      "sourceId": "d13d39ee2a20cac366ca7f72dcd44e16efb3eafae84ecf6c5f257f44bd7649e1",
+      "sha256": "a4a9a8f310dd92a7274998f9db4e85d5a516a4507d15853bd392808e8abfd811",
+      "bytes": 1028631,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-relevo-primeiro.png",
+      "sourceId": "24a624529d9571d38fcb1ed03d608d75e097bedf044f4fe19260e7c9328fb4f9",
+      "sha256": "4080f1707a35e7498d697b89a442ded9f1ba27960b8618bea0f35a0f92fa5195",
+      "bytes": 1040026,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-resgate.png",
+      "sourceId": "0c06b13ebd50524e9f720a8613cd52162efc95b752351336ba38ba27ffa02ecd",
+      "sha256": "2d94413eae9fbe55513d38e8ca2ec71ceb522bde0dcfda61145036babeaaab67",
+      "bytes": 1052849,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-rio-com-formiga.png",
+      "sourceId": "a1e778da0697a3d757ffa431e046f80cca0b2c9f0a3f4055c51910bfd6ad9fca",
+      "sha256": "e53d0a1acaa3cf257bbcc426b96cfa32f03bbcc2ae2adea781a017cde0a484d2",
+      "bytes": 886887,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-roda-apoio.png",
+      "sourceId": "8c688e4d41fe826fbac29f93b366331d77bb5b042c10fbdbddcfdfc9beb9255c",
+      "sha256": "27f2b4876ad32cba1b06eb8cff938081745ea19b61c46be2cc75a423db206b38",
+      "bytes": 1024967,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-roda.png",
+      "sourceId": "07459b4f0f9d3c8fe54bb9cfdaba2b4e71e9c1f3d0a30f9aa74e4c4e1c81ef0c",
+      "sha256": "3e279b8b045e33e877594f0c10cb742d0b2a1348bea12e0e8111467e4d9905b4",
+      "bytes": 1023821,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/desktop-troca-de-terreno.png",
+      "sourceId": "db1f00e001849965eeea6a6860c7579cc812850b6849656d05ba73e947ec48f0",
+      "sha256": "ead74fcd7163e25899c9ed277d163d49dd6c31e1b78032533ed6b7c581207128",
+      "bytes": 1072099,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-nuvens.png",
+      "sourceId": "19d739a52dd0a45a69c5283e69ce7749a0afe172123ac9d5252252ac00ce37f4",
+      "sha256": "5f5bc1fdbcfdec241a5eab3f13b1d24a89df8a4f128169b1a4cd439b59680d2e",
+      "bytes": 1364010,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-pedrinhas-1.png",
+      "sourceId": "710a305fb0eeb2ea456ac0fed77ae8002b875f52bfab633961e31b887f445b29",
+      "sha256": "4e43d00290360cacfe859c567286980709327c5917948ca5654d736f01bc7bbd",
+      "bytes": 1367207,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-pedrinhas-2.png",
+      "sourceId": "91cb192033ee5c02df9d71659540467ee342bc5c6701d18d15d02710602c8958",
+      "sha256": "982154137b82b3fb8490f0fbe2d3e819a67b0fab6c68b8ecf3e3d7e59bfd587c",
+      "bytes": 1364023,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-roda-1.png",
+      "sourceId": "c69255470f50bfb39d6953eb40d34fbd50eb9a1aa98cb3af447def274b92dd3c",
+      "sha256": "bad2b7bf57090807642c265386a41b7d83618bd07fd8987d87e507251c768fba",
+      "bytes": 1392563,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-roda-2.png",
+      "sourceId": "1b5e3b6531358fdb89bdbee0d25e444db3613312b46be0d290edc585e494585d",
+      "sha256": "22adc0cdd2fae15c450d281c8c90a73a3aa81fdcdd0f8e88ecac0b525162564f",
+      "bytes": 1385549,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-roda-3.png",
+      "sourceId": "587d7628737deef521154bca0c9d1732b5def37495ccd962927924f5d1c2caa0",
+      "sha256": "ccb4aa57e29a3b7fe359e240d5332a4d29c8304648cf6c56e9a0b1d07d813385",
+      "bytes": 1381616,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-saida.png",
+      "sourceId": "d154227ae638c903d124897b0ad6f90e863a049ad33456231590f37848cea573",
+      "sha256": "0c98b56c7622526acf217e954830d53c4f0fbb9421b5dbfe6df5b0e606828330",
+      "bytes": 1389607,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-agua-primeira.png",
+      "sourceId": "9576e630e99119f5aba401dcc8b715d02287ee9dc4181a437d55f7f59401433d",
+      "sha256": "5faf532592a0741689e3808def1b80d96c05898e89f5f2281b6d013d60634d0f",
+      "bytes": 1326961,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-cantos-terra.png",
+      "sourceId": "c62220b0444a7f186e9e43c81d13ac6d9e5e3506bf94b83b639095ebcb26e32a",
+      "sha256": "a712390ccc967ca89d7e8381e0ce9c6492e7065d97280382607529cef5c7135a",
+      "bytes": 1402312,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-casa.png",
+      "sourceId": "01489327d4d8badeaadc1b527165c7445fea97a4612d22ee01fbe7b511c8e475",
+      "sha256": "3acfa6eafa75328128b16bba416dafd3c778ce7bdac8cd7498bf090272d997b8",
+      "bytes": 1233246,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-contato-grama.png",
+      "sourceId": "96d8ca497698f95156ce9f0bf6d0d9e95fcab8e56a34ef74e069672dbf9b68f2",
+      "sha256": "64d0ad84624f9d6869bda35ed2c4a99a1ab58424da7968c5432b112732e66b79",
+      "bytes": 1430535,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-contato-solo.png",
+      "sourceId": "8c4577b44412cd2e33adeb67040b58dfd993f7fa3c365f19881aa19427f810f8",
+      "sha256": "fa4f35d3614a97e0a7ff303221e31448bb6d096b3c2223f709f1d18d0df365df",
+      "bytes": 1434579,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-desnorteada.png",
+      "sourceId": "4b352d2329455f16d9506113a02435675b59b67a8922543fb08e5765f231123b",
+      "sha256": "c7a7b69a7aee57fd477935599d9ebc9a3e7c4bd2a23169f6e71c6678b6356793",
+      "bytes": 1196358,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-grama.png",
+      "sourceId": "0a94fb598a196e6a27063e94e531bd545fbf512e86133588a87f90d24cdd9cfa",
+      "sha256": "746c27dca0f13e51364f23e5f4eac3238e1e814c91dcce11f881c4d5db1d0ab9",
+      "bytes": 1398557,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-lagarta-vermelha.png",
+      "sourceId": "48d5d93a40d593976b80eb8ef8626d6f8a6db5d3f1b9f8362b179ff7fa3b36ba",
+      "sha256": "5b1bed62bbcbfc1777d3ccb74162a064af8c396729924f13620a094951a658e4",
+      "bytes": 1423719,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-margem-inicial.png",
+      "sourceId": "64d579f87bfd0fa3ff9c9ec1c580eabc5864f225c8c579d7d34c3a428269f9a3",
+      "sha256": "bef23333c820272772f826af28cd8e2180112fc7c777d4700aa3f8a154a1b588",
+      "bytes": 1321990,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-margem-saida.png",
+      "sourceId": "cbd8e5b53ef4ca0290de58e12b21f75930af3a82f05b977fbdcd5e7669a7ba27",
+      "sha256": "949b08c10c2926ba45da6c06fab1004b4b7014dce1b95ebf4128a5094b5f37ad",
+      "bytes": 1417739,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-morro-duplo.png",
+      "sourceId": "e046641f7432ad923e7c56d9ad5b0ece6284079253aa85624bafc851d46118e5",
+      "sha256": "b39c493a975426be4921036699b8322bab3c3992b72d1071cddec1fafef2c9c8",
+      "bytes": 1426842,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-nuvens.png",
+      "sourceId": "0b07fb9ec9c105d062e3cd31b01eae0d3fc5a71c42d5b6c84ace8f5bb8a94387",
+      "sha256": "8114f22102d4e7e712dd97cb6eb731e30c51077e4afebd2d84329bb488660e0a",
+      "bytes": 1409985,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-paisagem-longa.png",
+      "sourceId": "abf6877dde891d716dda3d5d4c6e10cc51524574e7f6227704e04232d3322ba9",
+      "sha256": "d1c2671c6c8cb85a6f8dcd49a6595b1af12ff5fa2b17779d7e4584f03203dd2c",
+      "bytes": 1365315,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-pedrinhas.png",
+      "sourceId": "06428f10d9d0426510b6cb4595e3bf965e8138bd00a49ca0ee802cc3f6cd7335",
+      "sha256": "305a1ac7dcd833d1d77bee9c2540b613f78a93584a474cdca634328add02e51c",
+      "bytes": 1450602,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-piquenique.png",
+      "sourceId": "70730fecd3f9d672ebd585e45e994348d8edc24a278b9352b035d609927f3845",
+      "sha256": "a6d81b8f6efd5baa63685abfa029595544c33bf6bbfd2bf2f6e92203aa45963c",
+      "bytes": 1465479,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-quatro-nuvens.png",
+      "sourceId": "cff569d1ca678044933f1238af7d8a76772cc34823a49cbe3a0fd1f4add30956",
+      "sha256": "3137ac0e83a998c64f5a82e336c00607576020ccd0e536eeab61bc8407ebe82c",
+      "bytes": 1365471,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-longo.png",
+      "sourceId": "e59014990bb2f8071df3f91aea3cc334fab062d91da83c287dcee52b9c97f259",
+      "sha256": "bac0e1eb21957fcfc0e409d9d871f4a8d3649a7e7492297d739a1c615ba6c3a3",
+      "bytes": 1445844,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-primeiro.png",
+      "sourceId": "aeadb42477696204e40e31b37eda30878ebaa7be682ad745363ee06e3482cc2c",
+      "sha256": "a4959c675993496684e4289cf81458c0e90223ffe2eda9d2ce1de0ba2abb6721",
+      "bytes": 1398284,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-resgate.png",
+      "sourceId": "907859d1c9da3a4f721c1fefb40c9407b5249f6ea9c7adcf71c1902095f7e900",
+      "sha256": "39519562173f90d2dd83ef4ba46f7686f9ba84eacf3b07ec0695ac66951527e6",
+      "bytes": 1218058,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-rio-com-formiga.png",
+      "sourceId": "f9ca56779fed7b7180fa44fc201c73189f8a9d671facd4715bacd96376a025a8",
+      "sha256": "a0bd3e4575baceea684dd38a22df287831e747346285c92deb8144429d751298",
+      "bytes": 1228918,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-roda-apoio.png",
+      "sourceId": "dde6308e84b7987f355de7e2cba62d9da565e423eb5b476f2d0867cc0111cd30",
+      "sha256": "4bbbaf164b91258ea9dbdd1708517153e7cf926d3adc01103ffeaa8189abb47b",
+      "bytes": 1385798,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-roda.png",
+      "sourceId": "e430c80565610305b26b441f06f6824863db5778caf4bdfce1337f370be9eafc",
+      "sha256": "d5a189c2aa4735df9c91accd89ac2f6c29074dac36a2f734287811c93ffcaa0e",
+      "bytes": 1383042,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-troca-de-terreno.png",
+      "sourceId": "f5068fd1cac72c45d5340f03332bf1ee56dc49eaef54b31d59de42962c87a29d",
+      "sha256": "db1474ddb4e1193547b44f515098d27763f48ba1f43dac492cac83efad8bcb9e",
+      "bytes": 1470944,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/resultado.json",
+      "sourceId": "6f8374ff4f773f0d5023b1698d8dac7b7f863fbdc495eac547c43fb7f3e9cb59",
+      "sha256": "a559636bee9581ad1f14568a07bb34f3bc8233ba094c8518b44fc2908976020c",
+      "bytes": 6091,
+      "metadataOnly": false
+    }
+  ]
+}

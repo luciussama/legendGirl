@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "69a56459d0dbe59e3fcaa46633ad03244085612258b14878dd79c491a480d47f",
+  "path": "qa-execucoes/61584485b3484144853d128181d1d1c0.log",
+  "sha256": "0659a2ae432ceec0d201a95966a8dab115f999e59077491eeaf180074bc7fec1",
+  "capturedAt": "2026-10-24T04:48:26.461817+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs\n\nPROGRESSO NORMAL 0 340 entrada 3\nREPETIR CHECKPOINT 17290 tempo acumulado 121.53333333332772\nREPETIR CHECKPOINT 39228 tempo acumulado 273.80000000007965\nPROGRESSO NORMAL 26 44276 null 3\n{\"difficulty\":\"NORMAL\",\"irregular\":false,\"stage\":\"COMPLETE\",\"minutes\":5.251388888889591,\"retries\":2,\"x\":47488.16666667771,\"goal\":47488,\"hp\":3,\"recovered\":0,\"jumps\":158,\"defeated\":31}\nPROGRESSO EASY 0 340 entrada 6\n{\"difficulty\":\"EASY\",\"irregular\":false,\"stage\":\"COMPLETE\",\"minutes\":4.387500000001487,\"retries\":0,\"x\":47488.133333348545,\"goal\":47488,\"hp\":6,\"recovered\":0,\"jumps\":139,\"defeated\":23}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e046641f7432ad923e7c56d9ad5b0ece6284079253aa85624bafc851d46118e5",
+  "path": "qa-execucoes/8231e820d26a4f02935d966bb1d5cdca/docs/diario-ia/qa-resultados/jardim-v2/paisagem-morro-duplo.png",
+  "sha256": "d34f633741aada1862795bec6acad11e9f74ad405b0fd17d6b6d45752790cead",
+  "capturedAt": "2026-10-24T04:35:33.441256+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-morro-duplo.png\", \"sha256\": \"b39c493a975426be4921036699b8322bab3c3992b72d1071cddec1fafef2c9c8\", \"bytes\": 1426842, \"binaryRetained\": false}"
+}

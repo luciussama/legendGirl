@@ -1,0 +1,92 @@
+{
+  "schemaVersion": 1,
+  "id": "e7bde1601b3b4bd0a0959ea7747f899c",
+  "date": "2026-10-24T04:34:53.248861+00:00",
+  "title": "QA temporário: test:garden:manual",
+  "files": [
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c.log",
+      "sourceId": "84925c0f282ad6faf3f21988c9ec1872a15ea820ba79920dae2f6aa1235b4a04",
+      "sha256": "b424530543ebd0e4092fa873c1299d8eebe2dffcb00783e3196a1b4ac7c89e8a",
+      "bytes": 2731,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-0.png",
+      "sourceId": "11e8284b1c1a7dafd0b808ae9b9bbe9c74791a673b8db9301847f86016e776be",
+      "sha256": "1651f9aa3789a11c559b48ccca04601680c6892a44eb1d8bcc617a4c3679cf79",
+      "bytes": 973562,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-1.png",
+      "sourceId": "e9b955aa6708aaf080371f5f162f88a20277144d212d2da6596f9c655c8092c8",
+      "sha256": "1a1cbed74a863ed35ecad0fe14f3e27bac4a20da4e1fe8137f8ed00930bcd543",
+      "bytes": 962108,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-2.png",
+      "sourceId": "7f4d17bd996e5ef64324adf7fbb6b6a9cdafd40be5ca515511efb5f1a601d2e2",
+      "sha256": "a01a7bf16e38468c19991de56d6527b7198fcd7270a450c1fad5365c4a611bf0",
+      "bytes": 954469,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-3.png",
+      "sourceId": "ff6a25647f4bcb22aef43a57a4be4132d5b30dfc4efaa4f937a291d296308bc8",
+      "sha256": "29e54b705dd8ac04fcb8ecee8782c7e8c174a5be2a9c196e9598fd52782b0ee3",
+      "bytes": 951713,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-4.png",
+      "sourceId": "3f89f8460c1b8426001693cbbc191f0f2658d5f9ef098fb08a4cc0d7a6fd3418",
+      "sha256": "16817c2bda43133f68a76140b775bf3d23f50896a28fc7593da049e97932bf2b",
+      "bytes": 956880,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-5.png",
+      "sourceId": "83ff6e81d086e6893affe82ad2428737935833d38ed869ab4d214ec8420ed1dd",
+      "sha256": "4718b5541526f481918f62070ac558ac67943e41a5d403ee0a8305f4df6dfc51",
+      "bytes": 998997,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-6.png",
+      "sourceId": "4488cd2736f8e09808d5028cd3d2ba63776e18b5ae3ee4f57695eb0f72dbe2a9",
+      "sha256": "0115022c684e0e2b159a18d2e8bffdbd5f67ebde83f94ab81eb30d2d8604127d",
+      "bytes": 965768,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-7.png",
+      "sourceId": "b52c5cbb4955b69835cf9bfa7085b8510832d778d6472537e55874c01e56d5b4",
+      "sha256": "de0f834210be15a61e8db6695ab54c53e029d53c84eaba4cb627c9c70205b83f",
+      "bytes": 965837,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-8.png",
+      "sourceId": "6a5096e00842a6643d5237ac3eb1fecf86dc0ae7bf3d16d0af781abbdf77328d",
+      "sha256": "a2727523af8a6887fcffade3643b3266d569459c7c0a806f61a284c79a359ac2",
+      "bytes": 966853,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/quadro-9.png",
+      "sourceId": "276ded53d731ff338e12693e4660d51bb7d0314b4448a4098714a411e2016835",
+      "sha256": "5ff04a92346ec31420916cc297b06b9ffe2d87f3c7c27070d4bdb685b5c0bcb1",
+      "bytes": 955635,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/e7bde1601b3b4bd0a0959ea7747f899c/docs/diario-ia/qa-resultados/manual/resultado.json",
+      "sourceId": "5a03b853976001ba10f3f32a8850a084c7654c8d0cd59a2991702673d4e5933c",
+      "sha256": "a66711b5fe1ee9a648d98e4892329fe516344d6d5ff28f54f29744297f780bac",
+      "bytes": 4251,
+      "metadataOnly": false
+    }
+  ]
+}

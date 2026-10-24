@@ -50,7 +50,7 @@ for(let region=0;region<layouts.length;region++){
       continue;
     }
     const p=ground(id+'-'+part,cursor,width,type);cursor+=width;
-    if(hill){p.hill=hill;p.waves=region===3||region===5?2:1;}
+    if(hill){p.hill=hill;p.waves=region===3||region===5?2:1;if(type==='grass'){p.type='soil';p.grassPatches=[{start:.17,end:.23},{start:.47,end:.54},{start:.77,end:.83}];}}
     else if(part==='caminho')p.profile=region%2?[0,-55,-110,-55,0]:[0,-60,-60,0];
     else if(part==='clareira'){if(region===1)p.hill=85;else p.profile=region===3?[0,-60,-60,0]:[0];}
     if(part==='gramado'||part==='clareira'||part==='colina')enemy(id+'-'+part+'-lagarta','caterpillar',p,progress);
@@ -128,4 +128,9 @@ export function gardenSurfaceY(platform,x){
   if(!platform)return GARDEN.ground;
   const t=Math.max(0,Math.min(1,(x-platform.x)/platform.w));
   return platform.y-(platform.hill??0)*Math.sin(Math.PI*(platform.waves??1)*t)**2;
+}
+
+/** Grama sensorial só existe nas pequenas faixas realmente ilustradas sobre os morros. */
+export function gardenTerrainAt(platform,x){
+  return platform?.grassPatches?.some(p=>x>=platform.x+platform.w*p.start&&x<=platform.x+platform.w*p.end)?'grass':platform?.type??'soil';
 }

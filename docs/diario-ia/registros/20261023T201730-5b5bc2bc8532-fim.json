@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T201730-5b5bc2bc8532-fim",
+  "sessionId": "20261023T201730-5b5bc2bc8532",
+  "type": "fim",
+  "date": "2026-10-24T04:56:40.370514+00:00",
+  "title": "Jardim de cinco minutos, menos repetição e acabamento consistente da terra",
+  "actor": "Codex",
+  "summary": "Concluída revisão do jardim v6: percurso menor e variado, mais inimigos, lagarta recua e investe, relevos arredondados, pequenas faixas de grama e cache, acabamento contínuo, casa/saída animada, contato por sola real e derrota sem congelar mundo/música. Fontes finais preservadas no pacote 20261024T045617-d4d5f95c4ee9; 130 capturas regeneráveis descartadas após registrar hash/tamanho. Sem commit, push ou publicação pela IA.",
+  "checks": [
+    "Domínio final exit 0: 1872 descidas de quina, 22 subidas/retorno, seis curvas, contato parcial, migrações, cobertura/velocidades nas faixas.",
+    "Percursos fixo e irregular completos em NORMAL/EASY aprovados; NORMAL 5,25/5,35 min incluindo duas tentativas adicionais; EASY 4,39/4,36 min sem retry/resgate.",
+    "Gameplay visual integral final: 1261 renders, 60 capturas sobrepostas, três folhas inspecionadas; navegador técnico 30 cenas por três formatos aprovado.",
+    "Host real: saída da casa, queda animada/menu tardio, MP3 contínuo e oferta EASY na terceira derrota aprovados.",
+    "Gameplay manual por teclado em Chrome no trecho dos morros; desenho médio 0,8576 para 0,5803 ms, cerca de 32% menor; não reproduzida lentidão extrema neste computador.",
+    "npm test geral, build, check-assets 78, lint, sintaxe, diff --check, docs:sprites e equalização documental aprovados durante revisão; refinamentos finais cobertos por QA do jardim."
+  ],
+  "pending": [
+    "Diálogos do piquenique aguardam usuário; aprovação humana de arte/conforto/dificuldade, Safari e aparelho físico ainda não homologados."
+  ],
+  "files": [
+    "src/js/garden/GardenLevel.js",
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenRenderer.js",
+    "src/js/garden/GardenContact.js",
+    "src/js/garden/GardenContactData.js",
+    "src/js/garden/GardenPhase.js",
+    "src/js/garden/GardenAudio.js",
+    "src/js/ToyRoomPhase.js",
+    "src/js/main.js",
+    "scripts/prepare-garden-contact.js",
+    "scripts/prepare-garden-art.js",
+    "assets/art/garden/source/terra-continua-v1.png",
+    "assets/art/garden/prompts-terra-v1.json",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/ARQUITETURA.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

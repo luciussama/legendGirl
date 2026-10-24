@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7de0c78a2f47843889f5bda5b922a0d15930c302da042a1b02ecf9f57852c0e3",
+  "path": "qa-execucoes/39e8ff3cf9a44fcaaa938d1c2121a38d/docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-inicial.png",
+  "sha256": "e5672e8d4ff7deb7b6c9052849e5081c05fe71578ca90f38f6c333c653114d1f",
+  "capturedAt": "2026-10-24T04:47:56.006373+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-margem-inicial.png\", \"sha256\": \"09e9e735cd2d1df8662b62ab57ebfcdb5f904e58725e31c7886cf57a4b5cdd32\", \"bytes\": 958306, \"binaryRetained\": false}"
+}

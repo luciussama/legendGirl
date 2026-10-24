@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "dff706d603fb6c05e0310226d10bb821d5df466e5c8453b8746526b06165ac6a",
+  "path": "qa-execucoes/37c86acc909e43fa838db78f95caec2f.log",
+  "sha256": "564b7d5417d77b510a0a2c84a3ef72baae9774f6137e6c9b94a84472b4e89059",
+  "capturedAt": "2026-10-24T04:14:00.687589+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nAPROVADO: terrenos/frenagem/pulos, fatalidade NORMAL, imortalidade/resgate/recuo EASY, lagarta de dois pisões, formiga saltadora e entre pedras, nuvens físicas/retorno, quatro nuvens finais, fada guia, save/restore/migração/retry.\nAPROVADO: desaparecimento real sob os pés e doze resgates consecutivos sem GAME_OVER.\nAPROVADO: lagarta se afasta do primeiro pisão, prepara investida frontal e conserva sua reação no save.\nAPROVADO: 22 subidas à direita, retorno à esquerda, paredes sólidas e migração v2/v3/v4 para checkpoint seguro no jardim v6 de cinco minutos.\nAPROVADO: contato parcial dos sapatos, exclusão da transparência e transporte pela roda.\nAPROVADO: três rodas, duas ilhas de pedrinhas, nuvens e vão aéreo sem chão; save em roda e resgate à entrada firme.\nAPROVADO: 1872 descidas rasantes nas quinas, nos dois sentidos e em três cadências, sem entrar na terra.\nAPROVADO: 6 morros arredondados, caminhada nos dois sentidos e save; mais inimigos em percurso menor.\nAPROVADO: saída animada da casa, queda sem congelar e opções somente após Game Over.\n"
+}
