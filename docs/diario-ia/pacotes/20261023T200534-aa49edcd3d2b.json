@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T200534-aa49edcd3d2b",
+  "date": "2026-10-23T20:05:34.318102+00:00",
+  "title": "Regressão das laterais e quinas sólidas dos morros",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "ad86796b923a6d004b5a5515ef152df0d0ea0fe21dacb9ad67c3b7e9d0b3e39b",
+      "sha256": "5617da5390fc8b05a94ef9bd91347e50e74b5a2c1d7c8de1757b3b6433745459",
+      "bytes": 13511,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "e2b177a996da4fa18478c566394c0ea0",
+  "type": "qa",
+  "date": "2026-10-23T20:00:13.542589+00:00",
+  "title": "QA temporário: test:garden:aereo",
+  "exitCode": 0,
+  "sourceId": "644aead57b56aa057463874c05f734dbcd7f98a93acc2122306e2a13fb0e0913",
+  "package": "20261023T195831-384cbe87ad5d"
+}

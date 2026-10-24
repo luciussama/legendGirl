@@ -1,6 +1,7 @@
-import {GARDEN as C,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,cloudStatus} from './GardenLevel.js';
+import {gardenContactHeight} from './GardenContact.js';
+import {GARDEN as C,GARDEN_HOME,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,gardenSurfaceY,cloudStatus} from './GardenLevel.js';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
-const stages=['INTRO','RUNNING','RESCUING','DISORIENTED','COMPLETE','GAME_OVER'];
+const stages=['INTRO','RUNNING','RESCUING','DISORIENTED','COMPLETE','FALLING','GAME_OVER'];
 /** A perseguição usa o chão de origem completo, sem atravessar rios ou buracos. */
 function enemyRange(enemy){
   const support=GARDEN_PLATFORM_BY_ID.get(enemy.supportId);
@@ -8,19 +9,19 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:4,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:6,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
-    player:{x:120,y:C.ground,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
+    player:{x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
-    enemies:GARDEN_ENEMIES.map(e=>({...e,hp:e.type==='caterpillar'?2:1,direction:-1,alive:true,defeatAge:0,stompLock:0,hopAge:0,routeIndex:0}))};
+    enemies:GARDEN_ENEMIES.map(e=>({...e,hp:e.type==='caterpillar'?2:1,direction:-1,alive:true,defeatAge:0,stompLock:0,hopAge:0,routeIndex:0,attackPhase:'patrol',attackAge:0,retreatDirection:1}))};
 }
 function recoverTarget(s,kind){
   if(kind==='hurt'){
     const history=s.trail.map(id=>GARDEN_PLATFORM_BY_ID.get(id)).filter(p=>p&&p.type!=='cloud');
-    const target=history[Math.max(0,history.length-3)];if(target)return{x:clamp(s.player.x,target.x+50,target.x+target.w-50),y:target.y,id:target.id};
+    const target=history[Math.max(0,history.length-3)];if(target)return{x:clamp(s.player.x,target.x+50,target.x+target.w-50),y:gardenContactHeight(target,s.player,clamp(s.player.x,target.x+50,target.x+target.w-50)),id:target.id};
   }
   const ground=GARDEN_PLATFORM_BY_ID.get(s.safeGround)||GARDEN_PLATFORM_BY_ID.get('entrada');
-  return{x:clamp(s.player.x,ground.x+60,ground.x+ground.w-60),y:ground.y,id:ground.id};
+  return{x:clamp(s.player.x,ground.x+60,ground.x+ground.w-60),y:gardenContactHeight(ground,s.player,clamp(s.player.x,ground.x+60,ground.x+ground.w-60)),id:ground.id};
 }
 function beginRecovery(s,kind,events){
   s.recovery={from:{x:s.player.x,y:Math.min(s.player.y,730)},to:recoverTarget(s,kind),kind};
@@ -29,7 +30,7 @@ function beginRecovery(s,kind,events){
 }
 function defeat(s,kind,events){
   if(s.difficulty==='EASY'){beginRecovery(s,kind,events);return;}
-  s.hp=0;s.stage='GAME_OVER';s.age=0;events.push({type:kind});
+  s.hp=0;s.stage='FALLING';s.age=0;s.player.onGround=false;s.player.support=null;s.player.vy=kind==='hurt'?-260:Math.max(120,s.player.vy);s.player.vx=kind==='hurt'?-s.player.facing*80:0;events.push({type:kind});
 }
 /** Uma tentativa nova conserva os inimigos vencidos e retoma chão firme no checkpoint. */
 export function retryGarden(s,difficulty=s.difficulty){
@@ -37,24 +38,24 @@ export function retryGarden(s,difficulty=s.difficulty){
   const enemies=s.enemies.map(e=>({...e})),checkpoint=s.checkpoint;
   Object.assign(s,createGardenState(difficulty));s.stage='RUNNING';s.checkpoint=checkpoint;s.enemies=enemies;s.defeated=enemies.filter(e=>!e.alive).length;
   const ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&checkpoint>=p.x&&checkpoint<=p.x+p.w);
-  Object.assign(s.player,{x:checkpoint,y:ground?.y??C.ground,support:ground?.id??'entrada',terrain:ground?.type??'wood'});
+  Object.assign(s.player,{x:checkpoint,y:ground?gardenContactHeight(ground,s.player,checkpoint):C.ground,support:ground?.id??'entrada',terrain:ground?.type??'wood'});
   s.safeGround=s.player.support;s.trail=[s.player.support];s.immunity=3;s.fairy.x=checkpoint;s.fairy.progressX=checkpoint;return true;
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3,4].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4,5,6].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
   if(saved.version===1){if(saved.stage==='COMPLETE'){out.stage='COMPLETE';Object.assign(out.player,{x:C.goal,y:C.ground,support:'arvore'});}return out;}
-  // As revisões longas v2/v3 retomam o setor equivalente no mapa de oito minutos, preservando inimigos vencidos.
-  if(saved.version===2||saved.version===3){
+  // As revisões longas v2/v3 retomam o setor equivalente no mapa de cinco minutos, preservando inimigos vencidos.
+  if(saved.version>=2&&saved.version<=5){
     if(!GARDEN_LEGACY_CHECKPOINTS.has(`${saved.version}:${saved.checkpoint}`)||!Array.isArray(saved.enemies))throw new TypeError('Estado antigo do jardim incompatível.');
     out.stage=saved.stage==='COMPLETE'?'COMPLETE':saved.stage==='INTRO'?'INTRO':'RUNNING';out.checkpoint=GARDEN_LEGACY_CHECKPOINTS.get(`${saved.version}:${saved.checkpoint}`);out.hp=clamp(Math.floor(saved.hp),1,difficulty==='EASY'?6:3);
     const x=out.stage==='COMPLETE'?C.goal:out.checkpoint,ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&x>=p.x&&x<p.x+p.w);
-    Object.assign(out.player,{x,y:ground.y,support:ground.id,terrain:ground.type});out.safeGround=ground.id;out.trail=[ground.id];Object.assign(out.fairy,{x,y:ground.y-135,progressX:x});
+    Object.assign(out.player,{x,y:gardenContactHeight(ground,out.player,x),support:ground.id,terrain:ground.type});out.safeGround=ground.id;out.trail=[ground.id];Object.assign(out.fairy,{x,y:gardenContactHeight(ground,out.player,x)-135,progressX:x});
     for(const old of saved.enemies)if(!old||typeof old.id!=='string'||!Number.isInteger(old.hp)||old.hp<0||old.hp>2||old.alive!==(old.hp>0))throw new TypeError('Inimigo antigo inválido.');
-    out.enemies=out.enemies.map(e=>{const legacyId=e.id.replace(/^trecho-(\d+)/,(_,n)=>'trecho-'+(Math.floor(Number(n)/2)*5+(Number(n)%2?3:0))),old=saved.enemies.find(v=>v.id===legacyId);return old&&old.hp<=e.hp?{...e,hp:old.hp,alive:old.alive}:e;});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
+    out.enemies=out.enemies.map(e=>{const currentId=e.id.replace('-gramado-lagarta','-lagarta').replace('-clareira-lagarta','-lagarta-da-saida').replace('-caminho-formiga','-formiga'),legacyId=saved.version>=4?currentId:currentId.replace(/^trecho-(\d+)/,(_,n)=>'trecho-'+(Math.floor(Number(n)/2)*5+(Number(n)%2?3:0))),old=saved.enemies.find(v=>v.id===legacyId);return old&&old.hp<=e.hp?{...e,hp:old.hp,alive:old.alive}:e;});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
   }
   if(saved.player.x<0||saved.player.x>C.width||Math.abs(saved.player.y)>10000||!GARDEN_CHECKPOINTS.includes(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado do jardim incompatível.');
   out.stage=saved.stage;out.time=saved.time;out.age=saved.age;out.hp=clamp(Math.floor(saved.hp),0,difficulty==='EASY'?6:3);out.checkpoint=saved.checkpoint;
@@ -65,12 +66,12 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
   out.player={...out.player,x:saved.player.x,y:saved.player.y,vx:clamp(saved.player.vx,-500,500),vy:clamp(saved.player.vy,-1000,1800),facing:saved.player.facing===-1?-1:1,onGround:Boolean(saved.player.onGround),support:supports.some(p=>p.id===saved.player.support)?saved.player.support:null,terrain:Object.hasOwn(GARDEN_TERRAINS,saved.player.terrain)?saved.player.terrain:'soil',airSpeed:clamp(Number(saved.player.airSpeed)||C.speed,100,480),discomfort:clamp(Number(saved.player.discomfort)||0,0,1)};
   out.trail=Array.isArray(saved.trail)?saved.trail.filter(id=>GARDEN_PLATFORM_BY_ID.has(id)).slice(-8):['entrada'];
   out.safeGround=GARDEN_PLATFORM_BY_ID.get(saved.safeGround)?.ground?saved.safeGround:'entrada';
-  out.enemies=out.enemies.map((e,i)=>{const value=saved.enemies[i];if(!value||value.id!==e.id||typeof value.alive!=='boolean'||!finite([value.x,value.y,value.defeatAge,value.hp,value.hopAge])||value.x<enemyRange(e).left-60||value.x>enemyRange(e).right+60||Math.abs(value.y-e.baseY)>400||value.defeatAge<0||value.hp<0||value.hp>(e.type==='ant'?1:2)||!Number.isInteger(value.hp)||value.alive!==(value.hp>0)||value.hopAge<0)throw new TypeError('Inimigo salvo inválido.');return{...e,x:value.x,y:value.y,hp:value.hp,alive:value.alive,direction:value.direction===1?1:-1,defeatAge:value.defeatAge,hopAge:value.hopAge,stompLock:clamp(Number(value.stompLock)||0,0,1),routeIndex:Number.isSafeInteger(value.routeIndex)?clamp(value.routeIndex,0,(e.route?.length??1)-1):0};});
+  out.enemies=out.enemies.map((e,i)=>{const value=saved.enemies[i];if(!value||value.id!==e.id||typeof value.alive!=='boolean'||!finite([value.x,value.y,value.defeatAge,value.hp,value.hopAge])||value.x<enemyRange(e).left-60||value.x>enemyRange(e).right+60||Math.abs(value.y-e.baseY)>400||value.defeatAge<0||value.hp<0||value.hp>(e.type==='ant'?1:2)||!Number.isInteger(value.hp)||value.alive!==(value.hp>0)||value.hopAge<0)throw new TypeError('Inimigo salvo inválido.');return{...e,baseY:e.route?e.baseY:gardenSurfaceY(GARDEN_PLATFORM_BY_ID.get(e.supportId),value.x),x:value.x,y:value.y,hp:value.hp,alive:value.alive,direction:value.direction===1?1:-1,defeatAge:value.defeatAge,hopAge:value.hopAge,stompLock:clamp(Number(value.stompLock)||0,0,1),routeIndex:Number.isSafeInteger(value.routeIndex)?clamp(value.routeIndex,0,(e.route?.length??1)-1):0,attackPhase:['patrol','retreat','windup','charge'].includes(value.attackPhase)?value.attackPhase:'patrol',attackAge:clamp(Number(value.attackAge)||0,0,4),retreatDirection:value.retreatDirection===-1?-1:1};});
   out.defeated=out.enemies.filter(e=>!e.alive).length;
   if(saved.fairy&&finite([saved.fairy.x,saved.fairy.y,saved.fairy.idle,saved.fairy.progressX,saved.fairy.guideAge]))out.fairy={...out.fairy,x:clamp(saved.fairy.x,0,C.width),y:clamp(saved.fairy.y,-100,850),idle:clamp(saved.fairy.idle,0,20),progressX:clamp(saved.fairy.progressX,0,C.width),guideAge:clamp(saved.fairy.guideAge,0,5),mode:saved.fairy.mode==='guide'?'guide':'follow',target:supports.some(p=>p.id===saved.fairy.target)?saved.fairy.target:null};
   if(['RESCUING','DISORIENTED'].includes(out.stage)){
     const r=saved.recovery;if(!r||!r.from||!r.to||!finite([r.from.x,r.from.y,r.to.x,r.to.y])||!GARDEN_PLATFORM_BY_ID.has(r.to.id)||!['hurt','fall'].includes(r.kind))throw new TypeError('Resgate salvo inválido.');
-    const target=GARDEN_PLATFORM_BY_ID.get(r.to.id);if(r.to.x<target.x||r.to.x>target.x+target.w||r.to.y!==target.y||r.from.x<0||r.from.x>C.width||Math.abs(r.from.y)>10000||target.type==='cloud')throw new TypeError('Destino de resgate inválido.');
+    const target=GARDEN_PLATFORM_BY_ID.get(r.to.id);if(r.to.x<target.x||r.to.x>target.x+target.w||Math.abs(r.to.y-gardenContactHeight(target,out.player,r.to.x))>.001||r.from.x<0||r.from.x>C.width||Math.abs(r.from.y)>10000||target.type==='cloud')throw new TypeError('Destino de resgate inválido.');
     out.recovery={from:{x:r.from.x,y:r.from.y},to:{x:r.to.x,y:r.to.y,id:target.id},kind:r.kind};out.fairy.mode='rescue';
   }
   if(difficulty==='EASY'&&out.stage==='GAME_OVER')beginRecovery(out,'fall',[]);
@@ -87,7 +88,7 @@ function fairyTick(s,dt,platforms){
     if(next){f.mode='guide';f.target=next.id;f.guideAge=0;}
   }
   const target=f.mode==='guide'?platforms.find(v=>v.id===f.target):null;
-  const x=target?target.x+target.w/2:p.x+Math.sin(s.time*2)*13,y=target?target.y-55:p.y-C.playerHeight-42+Math.sin(s.time*3)*6;
+  const x=target?target.x+target.w/2:p.x+Math.sin(s.time*2)*13,y=target?gardenSurfaceY(target,x)-55:p.y-C.playerHeight-42+Math.sin(s.time*3)*6;
   const mix=1-Math.exp(-dt*4);f.x+=(x-f.x)*mix;f.y+=(y-f.y)*mix;
 }
 function enemyTick(e,s,dt){
@@ -101,19 +102,46 @@ function enemyTick(e,s,dt){
     const t=clamp((a-.25)/.65,0,1);e.x=from.x+(to.x-from.x)*t;e.y=from.y+(to.y-from.y)*t-Math.sin(t*Math.PI)*128;
   }else{
     const angry=e.hp===1&&e.type==='caterpillar',range=enemyRange(e),distance=s.player.x-e.x;
-    const engaged=Math.abs(distance)<(angry?680:310)&&Math.abs(s.player.y-e.baseY)<230;
-    if(engaged&&Math.abs(distance)>15)e.direction=distance<0?-1:1;
+    const engaged=Math.abs(distance)<(angry?680:360)&&Math.abs(s.player.y-e.y)<230;
+    let speed=angry?Math.max(155,e.speed*2.7):e.speed*(e.type==='ant'?1.5:1.3);
     const bounds=angry||e.type==='ant'?range:{left:e.left,right:e.right};
-    const speed=angry?Math.max(125,e.speed*2.4):e.speed*(e.type==='ant'?1.3:1.15);
+    if(angry){
+      e.attackAge+=dt;
+      if(e.attackPhase==='retreat'){
+        e.direction=e.retreatDirection;speed=300;
+        const edge=e.direction>0?bounds.right-e.x:e.x-bounds.left;
+        if(e.attackAge>.35&&(Math.abs(distance)>175||edge<6)||e.attackAge>1.15){e.attackPhase='windup';e.attackAge=0;}
+      }else if(e.attackPhase==='windup'){
+        e.direction=distance<0?-1:1;speed=0;
+        if(e.attackAge>.26){e.attackPhase='charge';e.attackAge=0;}
+      }else if(e.attackPhase==='charge'){
+        speed=250;
+        if(e.attackAge>1.3||e.direction*distance<-65){e.attackPhase='retreat';e.attackAge=0;e.retreatDirection=e.direction;}
+      }else if(engaged&&Math.abs(distance)>15)e.direction=distance<0?-1:1;
+    }else if(engaged&&Math.abs(distance)>15)e.direction=distance<0?-1:1;
     e.x+=e.direction*speed*dt*(s.difficulty==='EASY'?.8:1);
-    if(e.x<bounds.left||e.x>bounds.right){e.x=clamp(e.x,bounds.left,bounds.right);e.direction*=-1;}
-    if(e.type==='ant'){const period=e.period*.85,phase=(e.hopAge+e.phase)%period;e.y=e.baseY-(phase<.8?Math.sin(phase/.8*Math.PI)*110:0);}
+    if(e.x<bounds.left||e.x>bounds.right){
+      e.x=clamp(e.x,bounds.left,bounds.right);e.direction*=-1;
+      if(angry&&e.attackPhase==='retreat'){e.attackPhase='windup';e.attackAge=0;}
+    }
+    const home=GARDEN_PLATFORM_BY_ID.get(e.supportId);e.baseY=gardenSurfaceY(home,e.x);e.y=e.baseY;
+    if(e.type==='ant'){const period=e.period*.8,phase=(e.hopAge+e.phase)%period;e.y-=phase<.8?Math.sin(phase/.8*Math.PI)*110:0;}
+
   }
   return old;
 }
 function tick(s,input,dt,events){
   s.time+=dt;s.age+=dt;
-  if(s.stage==='INTRO'){if(s.age>=3){s.stage='RUNNING';s.age=0;s.jumpHeld=Boolean(input.jump);}fairyTick(s,dt,[]);return;}
+  if(s.stage==='INTRO'){
+    const t=clamp(s.age/3,0,1)*3,index=Math.min(2,Math.floor(t)),mix=t-index,a=GARDEN_HOME.steps[index],b=GARDEN_HOME.steps[index+1];
+    Object.assign(s.player,{x:a.x+(b.x-a.x)*mix,y:a.y+(b.y-a.y)*mix,vx:(b.x-a.x),facing:1});
+    if(s.age>=3){s.stage='RUNNING';s.age=0;s.player.vx=0;s.jumpHeld=Boolean(input.jump);}fairyTick(s,dt,[]);return;
+  }
+  if(s.stage==='FALLING'||s.stage==='GAME_OVER'){
+    for(const e of s.enemies)if(Math.abs(e.x-s.player.x)<1100)enemyTick(e,s,dt);
+    if(s.stage==='FALLING'){s.player.vy=Math.min(1500,s.player.vy+C.gravity*dt);s.player.y+=s.player.vy*dt;s.player.x=clamp(s.player.x+s.player.vx*dt,22,C.width-22);if(s.age>=2.4){s.stage='GAME_OVER';s.age=0;events.push({type:'gameover'});}}
+    return;
+  }
   if(s.stage==='RESCUING'||s.stage==='DISORIENTED'){
     const r=s.recovery,t=clamp(s.age/1.6,0,1),mix=t*t*(3-2*t);
     s.player.x=r.from.x+(r.to.x-r.from.x)*mix;s.player.y=r.from.y+(r.to.y-r.from.y)*mix-Math.sin(t*Math.PI)*130;
@@ -129,7 +157,7 @@ function tick(s,input,dt,events){
   s.jumpBuffer=pressed?.14:Math.max(0,s.jumpBuffer-dt);s.coyote=p.onGround?.12:Math.max(0,s.coyote-dt);s.immunity=Math.max(0,s.immunity-dt);
   const support=platforms.find(v=>v.id===p.support),from=oldPlatforms.find(v=>v.id===p.support);
   if(p.onGround&&!support){p.onGround=false;s.coyote=0;}
-  if(p.onGround&&support){p.terrain=support.type;if(from){p.x+=support.x-from.x;p.y+=support.y-from.y;}}
+  if(p.onGround&&support){p.terrain=support.type;if(from){p.x+=support.x-from.x;p.y+=support.y-from.y;}const top=gardenContactHeight(support,p);if(Number.isFinite(top))p.y=top;}
   const previous={x:p.x,y:p.y};
   if(s.jumpBuffer>0&&s.coyote>0){
     const gravel=p.terrain==='gravel',variation=[.88,1.1,.96,1.16][s.jumps%4];
@@ -145,17 +173,33 @@ function tick(s,input,dt,events){
   if(Math.abs(axis)>.1)p.facing=axis<0?-1:1;
   p.discomfort+=(Number(p.terrain==='grass'||p.terrain==='gravel')-p.discomfort)*Math.min(1,dt*8);
   p.x=clamp(p.x+p.vx*dt,22,C.width-22);
-  // Faces de terra são sólidas: é preciso elevar os pés antes de atravessar um patamar.
+  p.vy=Math.min(1800,p.vy+C.gravity*dt);
+  const walking=p.onGround&&support&&p.vy>=0,walkingHeight=walking?gardenContactHeight(support,p):Infinity;
+  const nextY=(walking&&Number.isFinite(walkingHeight)&&Math.abs(walkingHeight-p.y)<18?walkingHeight:p.y)+p.vy*dt;
+  // A lateral considera a altura no instante do contato, inclusive nas quinas do salto.
   for(const wall of platforms.filter(v=>v.ground)){
-    if(p.y<=wall.y+2)continue;
-    if(p.vx>0&&previous.x+C.halfFoot<=wall.x+.01&&p.x+C.halfFoot>wall.x){p.x=wall.x-C.halfFoot;p.vx=0;}
-    else if(p.vx<0&&previous.x-C.halfFoot>=wall.x+wall.w-.01&&p.x-C.halfFoot<wall.x+wall.w){p.x=wall.x+wall.w+C.halfFoot;p.vx=0;}
+    const dx=p.x-previous.x;
+    const edge=dx>0?wall.x-C.halfFoot:wall.x+wall.w+C.halfFoot;
+    const fraction=dx===0?-1:(edge-previous.x)/dx;
+    if(fraction<0||fraction>1||previous.y+(nextY-previous.y)*fraction<=wall.y)continue;
+    p.x=edge;p.vx=0;
   }
-  p.vy=Math.min(1800,p.vy+C.gravity*dt);p.y+=p.vy*dt;p.onGround=false;p.support=null;
+  p.y=nextY;p.onGround=false;p.support=null;
   if(p.vy>=0){
-    const landings=platforms.map(v=>{const old=oldPlatforms.find(o=>o.id===v.id)??v,oldRelative=previous.y-old.y,newRelative=p.y-v.y;if(oldRelative>2||newRelative<0)return null;const fraction=clamp(-oldRelative/Math.max(.0001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,left=old.x+(v.x-old.x)*fraction;const inset=v.ground?0:v.w*.06;return x>=left+inset&&x<=left+v.w-inset?{platform:v,fraction}:null;}).filter(Boolean).sort((a,b)=>a.fraction-b.fraction);
+    const landings=platforms.map(v=>{
+      const old=oldPlatforms.find(o=>o.id===v.id)??v,height=gardenContactHeight(v,p);
+      if(!Number.isFinite(height))return null;
+      if(walking&&support.id===v.id&&Math.abs(height-previous.y)<18)return{platform:v,fraction:0,height};
+      let oldHeight=gardenContactHeight(old,p,previous.x);
+      if(!Number.isFinite(oldHeight))oldHeight=gardenContactHeight(old,p,p.x);
+      const oldRelative=previous.y-oldHeight,newRelative=p.y-height;
+      if(oldRelative>2||newRelative<0)return null;
+      const fraction=clamp(-oldRelative/Math.max(.0001,newRelative-oldRelative),0,1);
+      const x=previous.x+(p.x-previous.x)*fraction,at={...v,x:old.x+(v.x-old.x)*fraction,y:old.y+(v.y-old.y)*fraction};
+      return Number.isFinite(gardenContactHeight(at,p,x))?{platform:v,fraction,height}:null;
+    }).filter(Boolean).sort((a,b)=>a.fraction-b.fraction||a.height-b.height);
     const land=landings[0]?.platform;
-    if(land){p.y=land.y;p.vy=0;p.onGround=true;p.support=land.id;p.terrain=land.type;if(land.type==='cloud'&&s.clouds[land.id]===undefined)s.clouds[land.id]=s.time;if(!land.rotating&&land.type!=='cloud'&&s.trail.at(-1)!==land.id){s.trail.push(land.id);s.trail=s.trail.slice(-8);}if(land.ground)s.safeGround=land.id;}
+    if(land){p.y=landings[0].height;p.vy=0;p.onGround=true;p.support=land.id;p.terrain=land.type;if(land.type==='cloud'&&s.clouds[land.id]===undefined)s.clouds[land.id]=s.time;if(!land.rotating&&land.type!=='cloud'&&s.trail.at(-1)!==land.id){s.trail.push(land.id);s.trail=s.trail.slice(-8);}if(land.ground)s.safeGround=land.id;}
   }
   for(const e of s.enemies){
     if(Math.abs(e.x-p.x)>1100)continue;
@@ -163,7 +207,7 @@ function tick(s,input,dt,events){
     const top=e.y-e.h,oldTop=old.y-e.h,oldRelative=previous.y-oldTop,newRelative=p.y-top;
     if(!e.stompLock&&oldRelative<=5&&newRelative>=0&&newRelative>oldRelative&&p.vy>=0){
       const fraction=clamp(-oldRelative/Math.max(.001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,enemyX=old.x+(e.x-old.x)*fraction;
-      if(Math.abs(x-enemyX)<e.w/2+C.halfFoot){e.hp--;e.stompLock=.24;e.alive=e.hp>0;e.defeatAge=0;if(!e.alive)s.defeated++;p.y=top;p.vy=-480;p.onGround=false;p.support=null;s.coyote=0;events.push({type:e.alive?'enrage':'stomp',enemy:e.id});continue;}
+      if(Math.abs(x-enemyX)<e.w/2+C.halfFoot){e.hp--;e.stompLock=.24;e.alive=e.hp>0;e.defeatAge=0;if(!e.alive)s.defeated++;else{const range=enemyRange(e),preferred=Math.abs(e.x-p.x)>8?Math.sign(e.x-p.x):p.facing;e.attackPhase='retreat';e.attackAge=0;e.retreatDirection=(preferred>0?range.right-e.x:e.x-range.left)>190?preferred:-preferred;e.direction=e.retreatDirection;}p.y=top;p.vy=-480;p.onGround=false;p.support=null;s.coyote=0;events.push({type:e.alive?'enrage':'stomp',enemy:e.id});continue;}
     }
     if(!s.immunity&&Math.abs(p.x-e.x)<e.w/2+16&&p.y>top+8&&p.y-C.playerHeight<e.y-6){s.hp--;s.immunity=2;p.vy=-280;p.onGround=false;p.support=null;events.push({type:'hurt'});if(s.hp<=0){defeat(s,'hurt',events);return;}}
   }

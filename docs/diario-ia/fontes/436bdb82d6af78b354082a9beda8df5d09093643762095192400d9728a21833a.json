@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "436bdb82d6af78b354082a9beda8df5d09093643762095192400d9728a21833a",
+  "path": "qa-execucoes/e1804bd3276043ef8075b826f676aee6/docs/diario-ia/qa-resultados/jardim-v2/android-nuvens.png",
+  "sha256": "1f6108c37a9fd3f3f4ca5ab29af33e3b85e0edf3bf1d1e7c8b53f4545107d7e5",
+  "capturedAt": "2026-10-23T20:07:54.964541+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/android-nuvens.png\", \"sha256\": \"35950b24f87c7df8fd351b95ec4be024d6050f5216167d6981676d5d05b90298\", \"bytes\": 1243881, \"binaryRetained\": false}"
+}

@@ -1,0 +1,31 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T191512-d12c9a8b4520-fim",
+  "sessionId": "20261023T191512-d12c9a8b4520",
+  "type": "fim",
+  "date": "2026-10-23T20:10:59.092090+00:00",
+  "title": "Revisão visual crítica do jardim em gameplay completo",
+  "actor": "Codex",
+  "summary": "Jardim revisado visualmente por gameplay integral; duração reduzida a oito minutos; seção aérea central com três rodas, nuvens e ilhas de pedrinhas; saves v5; laterais e quinas dos morros sólidas durante saltos, sem atravessar o chão. Diário e guias atualizados, fontes preservadas, nenhuma publicação por esta IA.",
+  "checks": [
+    "Domínio aprovado: 69 subidas/retorno, 3288 descidas rasantes nas quinas em dois sentidos/três cadências, materiais, inimigos, EASY, nuvens, rodas, migrações v1/v2/v3/v4 e recuperação.",
+    "Percurso irregular NORMAL 7,987889 min sem retry, EASY 8,058611 min com um resgate; fixo NORMAL 8,301389 min incluindo uma derrota/retry no início, EASY 8,060833 min com dois resgates. Todos chegaram ao piquenique por comandos e visitaram três rodas aéreas/duas ilhas.",
+    "Gameplay completo em Chrome 7,946944 min sem retry, 1908 renders/105 capturas; cinco folhas integrais e capturas nativas inspecionadas. Navegador 43 recortes/28 cenas em três formatos aprovado; página real seis cenas com botões DOM e progresso aprovados.",
+    "npm test completo exit 0; build, 78 assets, lint, sintaxe e diff --check aprovados; mapa 452 imagens/196 recortes/29 assinaturas reconstruído; referência 161 módulos/1105 declarações e equalização 617 links aprovadas.",
+    "Falhas intermediárias preservadas: piloto anterior pousava no último pixel após pedrinhas, corrigida previsão do piloto; primeira fixture de quina começava dentro de patamar vizinho, corrigido ponto inicial; derrota real do piloto fixo computada no tempo total. Consulta avulsa de métricas teve parêntese excedente, corrigida sem alterar produção.",
+    "Pacote 20261023T201017-448a8e2a8908 preserva dezenove fontes e metadados de 168 capturas temporárias descartadas; históricos e artes mantidos."
+  ],
+  "pending": [
+    "Diálogos do piquenique aguardam definição do usuário.",
+    "Safari, aparelho físico, escuta e avaliação artística/conforto/dificuldade humana sem homologação; sem commit/push/publicação por esta IA."
+  ],
+  "files": [
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenLevel.js",
+    "src/js/garden/GardenRenderer.js",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/ARQUITETURA.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

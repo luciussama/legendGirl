@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "43c05e12b13678f6ad1d176c3fcaf9c5b7d67c0134334550959ebb6f0e1baa50",
+  "path": "qa-execucoes/13e9ee4d4120435f96ea69339fac505f/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-pedrinhas-2.png",
+  "sha256": "9f5a0c7310ef49f95456bf5981b199ba642bf495668933850032be10a08f793d",
+  "capturedAt": "2026-10-24T03:55:18.807326+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-pedrinhas-2.png\", \"sha256\": \"5b70fe229c1820b360079622ea7d54f90b065395f90139501b07a78b780969d8\", \"bytes\": 1363490, \"binaryRetained\": false}"
+}

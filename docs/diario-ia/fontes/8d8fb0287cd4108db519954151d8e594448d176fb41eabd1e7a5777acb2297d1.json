@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8d8fb0287cd4108db519954151d8e594448d176fb41eabd1e7a5777acb2297d1",
+  "path": "qa-execucoes/6de2e28609094dee927ebdab75cbd176/docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-roda-1.png",
+  "sha256": "3bfe7ee9ccf89ca19578f504a2ae159f549150ca95e1c5f39e532c5e050c1834",
+  "capturedAt": "2026-10-23T19:57:44.602153+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-aereo-roda-1.png\", \"sha256\": \"b89c3a1832e4854de811be35564e98eb86a2d3c324acea9d9fb03bc209b7dd36\", \"bytes\": 1012775, \"binaryRetained\": false}"
+}

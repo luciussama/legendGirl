@@ -1,0 +1,142 @@
+{
+  "schemaVersion": 1,
+  "id": "20261023T201017-448a8e2a8908",
+  "date": "2026-10-23T20:10:18.303612+00:00",
+  "title": "Fontes finais de QA do jardim v5, estados dos percursos completos e metadados das evidências visuais",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/checkpoints-anteriores.json",
+      "sourceId": "faa2f69ab0c932b231cb4031866041608d8edfc6363637db1301d7f9b177d46d",
+      "sha256": "a49bdc053dcbc66a9bb810c618780d4a8ad4d169db9cd2e9314c682b34a6e8e1",
+      "bytes": 475,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-oito-minutos.json",
+      "sourceId": "f31b3709a0d6d5728a10e929ec00cc26484098ec79839563cafa3c2e564b9d19",
+      "sha256": "ea67cf9d7f649d6d0babaef9c72bd0efb8ff4a0d906f08f5fa3c8e59d0d1b1dd",
+      "bytes": 1353274,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/checkpoints-v4.json",
+      "sourceId": "b38fd83b2587559670b5d93fadb9c8855cc7480a675091d6b463197c9b1ef4af",
+      "sha256": "d94b34476d481ebc0d4ff823f04688154ad6cddf2f44cd565474270396b8fc79",
+      "bytes": 83,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs",
+      "sourceId": "1d44a552ded5a22c1adf65365e46ffcaadda0f9383cad21a0fd2311b83a6f944",
+      "sha256": "f0d9869c8660230c05606221b2f9c3810b7547e6e789b3ac27600766b3750225",
+      "bytes": 4852,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-verificado.json",
+      "sourceId": "ae07df43f889fcf858c8f661ac26a163de21f51c7da09ad58f5d5f745697dad4",
+      "sha256": "be632d5dab82b7d57d95f671b0e47fc9a841d522ace76caaaa7ec80d67f24f2c",
+      "bytes": 1359558,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-final.json",
+      "sourceId": "de65134dad72c361bf5fc496c109d62d633bb3ed81addbb2a26386f2ba24dfb4",
+      "sha256": "a19b7b4fd31c4299f7c5ef39bea3e7a3a1a97002e736a9fdf65252df03aadaab",
+      "bytes": 1353238,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/metadados-evidencias-finais.json",
+      "sourceId": "53d0c6f318b031df5a30fe52b2f1ee6375a6b79c5fa1bc5fa2b44b740cd3e4a4",
+      "sha256": "c1b3f3206f137eb2989bf4bb855ace6f0296f69a08e33cb41200b8e6738c2af2",
+      "bytes": 36554,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/npm-test-final.log",
+      "sourceId": "f33b6f481dc057dcf39dfe2ce17954153457c511d8dc2bd1a6c989f49947cb21",
+      "sha256": "e4fbfdb77c9fd07149d257fff5cd885f5e6506e1dc94e9fefb9fd6708ce3ec37",
+      "bytes": 68510,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-aereo-final.json",
+      "sourceId": "61249a4b344fd13ee951ae806c92b8b7eeffe18a92803d318ba5fdd0fdd0425c",
+      "sha256": "e0d942a05b6816ccfd27fa92091401409aa6b3c5b7896e5e187cc786242bbdd1",
+      "bytes": 1334983,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-base.json",
+      "sourceId": "c102da553ac03e6624f358fa28e57e4492ab37b4d874b44c3aa310e434551d9c",
+      "sha256": "fb47cf074718b8021a27b947b6c5b89e7d017f22f5f37ea7258f159c8c5e4c7d",
+      "bytes": 7995854,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/checkpoint-aereo.json",
+      "sourceId": "d92378ef44459350b3c90553edbccc75706343935b9111157e6a8a3ff2fe57e3",
+      "sha256": "3cceed1cfd01024b20602e5dd0e493a98f22308a5083d4ded599e3a949a99879",
+      "bytes": 4800,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/aereo.mjs",
+      "sourceId": "a5bf06957e9c6aa44d466f34234bf7dd8cff8c0c7c18a91971547d344bd5ca23",
+      "sha256": "e504b7aa4c1f2ee77f94743333d8ad6c4169b73a0f4f40fdf88e6ba920efe812",
+      "bytes": 1215,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/pagina-browser.mjs",
+      "sourceId": "b1fd160d88f47fc82c56e021861439e7c3789ee69939aa484aa028f07ae1b79e",
+      "sha256": "22f822b49983ffbec22e79f187963682538a34f163c0c31e1a40fc4bb51a6725",
+      "bytes": 4310,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-revisao/estados-revisao1.json",
+      "sourceId": "255880c4d9d3bac088b678c1677f669f80995848cd744174696f42e0db41fe08",
+      "sha256": "fb47cf074718b8021a27b947b6c5b89e7d017f22f5f37ea7258f159c8c5e4c7d",
+      "bytes": 7995854,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/cenario.mjs",
+      "sourceId": "30329c73b6e37b7b0762cc482a8d218946dcaa4a5782939c2018a31f194362e2",
+      "sha256": "84824a39964f960b2999bb76fa1e2cc30e0a4ffd868dacd07be4e32b98f423bc",
+      "bytes": 14580,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/dominio.mjs",
+      "sourceId": "22dfab3f38796ab8a24d4be3b6d222b37733c8d50aaf227b5189d528393caa1a",
+      "sha256": "98ea016e0f8f73e07692141c561325231d28a634258e23bbf0a66dd6c7548086",
+      "bytes": 13624,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/navegador.mjs",
+      "sourceId": "af513f799c2ed721347085238bf0a00171d42469bd9add310db3d021c3a1d637",
+      "sha256": "279266774cdd27487b4761a51a405b9574961588799195c1e3eb1bed5258216c",
+      "bytes": 5179,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/percurso.mjs",
+      "sourceId": "8274573349f9c2b6fbdd27dec6655d7c81a1cf3b00275e18b70e036dfbefd636",
+      "sha256": "b0326d72980caf13e96a9215ea05e578449bf5d06e197b6ea8408bca072750ca",
+      "bytes": 2233,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/jardim-v2/piloto.mjs",
+      "sourceId": "4008f25dcc74748ab901ae677d71f6c038bee8027907d6353178efdfbddf1f91",
+      "sha256": "ffc8e1e75a50a6914b0a403673b67268c9625e2724c7762139520f1a6e49cd92",
+      "bytes": 2273,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

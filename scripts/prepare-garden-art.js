@@ -41,7 +41,7 @@ const scenery=PNG.sync.read(fs.readFileSync(root+'/source/ambiente-v2.png'));
 sets.ambiente={file:'source/ambiente-v2.png',frames:connectedCrops(scenery,4,2)};
 const red=PNG.sync.read(fs.readFileSync(root+'/source/lagarta-vermelha-v1.png'));
 sets.lagartaVermelha={file:'source/lagarta-vermelha-v1.png',frames:connectedCrops(red,2,1)};
-fs.writeFileSync(root+'/manifest.json',JSON.stringify({version:1,images:['cenario-v1.png',...Object.values(sets).map(s=>s.file),'../toy-room/stage3/illustrated-fairy-v1.png']},null,2)+'\n');
+fs.writeFileSync(root+'/manifest.json',JSON.stringify({version:1,images:['cenario-v1.png',...Object.values(sets).map(s=>s.file),'source/terra-continua-v1.png','../toy-room/stage3/illustrated-fairy-v1.png']},null,2)+'\n');
 const metadata={referenceHeight:256,sets};fs.writeFileSync(root+'/frames.json',JSON.stringify(metadata,null,2)+'\n');
 fs.writeFileSync('src/js/garden/GardenArt.js','// Gerado por scripts/prepare-garden-art.js; fontes e prompts preservados.\nexport const GARDEN_ART = '+JSON.stringify(metadata)+';\n');
 console.log('Jardim: 28 poses, nove objetos, quatro elementos de ambiente, duas poses de lagarta vermelha e metadados preparados.');

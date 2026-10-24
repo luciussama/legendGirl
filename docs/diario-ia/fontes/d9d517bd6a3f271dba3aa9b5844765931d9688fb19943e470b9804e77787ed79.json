@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "d9d517bd6a3f271dba3aa9b5844765931d9688fb19943e470b9804e77787ed79",
+  "path": "qa-execucoes/c2354d42ad3c4521a527c0e74c9456e4.log",
+  "sha256": "db3fc57c50bfa3ea456e7c9e6465d67e865d14384ffd7284fddfffbedb3dd598",
+  "capturedAt": "2026-10-23T19:56:27.029803+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:percurso",
+    "exitCode": 1,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:percurso\n> node docs/diario-ia/qa/jardim-v2/percurso.mjs\n\nPROGRESSO NORMAL 0 120 entrada 3\nREPETIR CHECKPOINT 41510 tempo acumulado 261.9666666667571\nREPETIR CHECKPOINT 41510 tempo acumulado 292.9333333333956\nPROGRESSO NORMAL 7 41935 aerea-1-1 3\nREPETIR CHECKPOINT 41510 tempo acumulado 323.9000000000341\n{\"difficulty\":\"NORMAL\",\"irregular\":false,\"stage\":\"GAME_OVER\",\"minutes\":5.914444444444543,\"retries\":3,\"x\":44401.69824835302,\"goal\":83450,\"hp\":0,\"recovered\":0,\"jumps\":168,\"defeated\":8}\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Pisa nas duas ilhas rápidas\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-d9htj3pb/projeto/docs/diario-ia/qa/jardim-v2/percurso.mjs:17:160\n    at ModuleJob.run (node:internal/modules/esm/module_job:569:25)\n    at async node:internal/modules/esm/loader:650:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -129,12 +129,14 @@ const game = createGame(canvas, uiFeedback, {
   onGameOver: ({ phase = 'bedroom', offerEasy = false } = {}) => {
     const chase = phase === 'bear-chase', arena = phase === 'arena', garden = phase === 'garden';
     gameoverOverlay.querySelector('.gameover-badge').textContent = garden ? '✦ UM DIA NO JARDIM ✦' : chase ? '✦ PERSEGUIÇÃO AO URSO ✦' : arena ? '✦ ARENA ✦' : '✦ QUARTO ESCURO ✦';
-    gameoverOverlay.querySelector('.gameover-title').textContent = garden ? 'Vamos tentar chegar à árvore outra vez?' : chase
+    gameoverOverlay.querySelector('.gameover-title').textContent = garden ? 'Game Over' : chase
       ? 'A menina não alcançou o urso. Tentar novamente?'
       : arena ? 'A menina não venceu esta batalha. Tentar novamente?' : 'Você não conseguiu sair do quarto.';
     gameoverOverlay.querySelector('.gameover-sub').textContent = garden ? 'A aventura recomeça no último ponto de descanso.' : chase
       ? 'A fadinha está pronta para acompanhar uma nova tentativa.'
       : arena ? 'A aventura continua. Você pode tentar outra vez.' : 'A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.';
+    if (btnRetry) btnRetry.textContent = garden ? 'Tentar novamente' : 'Tentar de novo';
+    if (btnRestart) btnRestart.textContent = garden ? 'Desistir' : 'Voltar ao início';
     // Reativa os botões e exibe a tela de sobreposição de forma limpa
     isActionLocked = false;
     updatePauseButtonState();

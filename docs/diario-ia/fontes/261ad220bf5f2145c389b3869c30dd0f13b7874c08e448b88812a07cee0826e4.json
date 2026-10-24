@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "261ad220bf5f2145c389b3869c30dd0f13b7874c08e448b88812a07cee0826e4",
+  "path": "qa-execucoes/99d1268e73864bb1aa106a73da3422b9.log",
+  "sha256": "8478bff305b0238b8ad5902850d582b3555a0e5fbaa0c9d570527cc93fc1c416",
+  "capturedAt": "2026-10-23T20:06:01.831974+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden",
+    "exitCode": 0,
+    "package": "20261023T173849-99409113f8f3"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden\n> node docs/diario-ia/qa/jardim-v2/dominio.mjs\n\nAPROVADO: terrenos/frenagem/pulos, fatalidade NORMAL, imortalidade/resgate/recuo EASY, lagarta de dois pisões, formiga saltadora e entre pedras, nuvens físicas/retorno, quatro nuvens finais, fada guia, save/restore/migração/retry.\nAPROVADO: desaparecimento real sob os pés e doze resgates consecutivos sem GAME_OVER.\nAPROVADO: perseguição reage ao lado da menina, usa o chão completo, conserva save e respeita bordas.\nAPROVADO: 69 subidas à direita, retorno à esquerda, paredes sólidas e migração v2/v3/v4 para checkpoint seguro no jardim v5 de oito minutos.\nAPROVADO: centro dos pés sobre madeira/pedra/nuvem e transporte pela roda.\nAPROVADO: três rodas, duas ilhas de pedrinhas, nuvens e vão aéreo sem chão; save em roda e resgate à entrada firme.\nAPROVADO: 3288 descidas rasantes nas quinas, nos dois sentidos e em três cadências, sem entrar na terra.\n"
+}

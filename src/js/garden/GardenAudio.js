@@ -16,9 +16,9 @@ export class GardenAudio {
   update(state,paused=false){
     if(this.disposed)return;this.paused=paused;
     const muted=Boolean(this.host?.isMuted?.());this.music.muted=muted;this.music.volume=Math.max(0,Math.min(1,(this.host?.getMasterVolume?.()??1)*.35));
-    this.wantsMusic=!paused&&!muted&&state.stage!=='GAME_OVER';
+    this.wantsMusic=!paused&&!muted;
     if(this.wantsMusic)this.playMusic();else this.music.pause();
-    if(paused||muted||state.stage==='GAME_OVER')this.clear();
+    if(paused||muted)this.clear();
   }
   event(type){if(type==='jump')this.tone(420,.13,.045,780);else if(type==='stomp')this.tone(680,.12,.055,1000);else if(type==='hurt'||type==='fall')this.tone(280,.2,.04,150);else if(type==='checkpoint'||type==='complete')this.tone(1046,.5,.04,1318);}
   clear(){for(const voice of this.voices){voice.oscillator.onended=null;try{voice.oscillator.stop();}catch{}voice.oscillator.disconnect();voice.gain.disconnect();}this.voices.clear();}

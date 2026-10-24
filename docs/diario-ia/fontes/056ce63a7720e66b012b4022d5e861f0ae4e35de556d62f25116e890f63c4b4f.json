@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "056ce63a7720e66b012b4022d5e861f0ae4e35de556d62f25116e890f63c4b4f",
+  "path": "qa-execucoes/b384d156cb934a378a7cdc4704a2ad46.log",
+  "sha256": "9e494e5b44d63e0ac18184017d0663ed14c717af6376797e02df29b5587e0a4c",
+  "capturedAt": "2026-10-23T20:06:38.164371+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:visual",
+    "exitCode": 0,
+    "package": "20261023T191924-0f59412e837f"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:garden:visual\n> node docs/diario-ia/qa/jardim-revisao/gameplay-browser.mjs aereo-final\n\n{\"resultado\":\"percurso completo\",\"minutos\":7.946944444442694,\"retries\":0,\"renders\":1908,\"quadros\":105}\nCAPTURAS /tmp/legendgirl-revisao-aereo-final\n"
+}

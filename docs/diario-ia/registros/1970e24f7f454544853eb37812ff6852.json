@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "1970e24f7f454544853eb37812ff6852",
+  "type": "qa",
+  "date": "2026-10-23T20:06:39.216288+00:00",
+  "title": "QA temporário: test:garden:percurso",
+  "exitCode": 0,
+  "sourceId": "462a85cd4787a3f2f304bb1242fc5b31643dc52243a28b5d6c4dd0f3092abe79",
+  "package": "20261023T173849-99409113f8f3"
+}

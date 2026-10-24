@@ -12,8 +12,8 @@ export class GardenPhase {
   }
   get active(){return !this.disposed;}
   async start(saved=null){try{if(saved)this.state=restoreGardenState(saved.state??saved,this.difficulty);await this.renderer.load();if(this.disposed)return;this.ready=true;this.input.install();window.addEventListener('blur',this.onBlur);window.addEventListener('focus',this.onFocus);document.addEventListener('visibilitychange',this.onVisibility);}catch(error){this.error='Não foi possível abrir o jardim: '+error.message;this.input.destroy();}}
-  update(dt=1){if(!this.ready||this.disposed||this.paused||!this.enabled()){this.input.clear();this.audio.update(this.state,true);return;}const input=this.input.sample();for(const event of stepGarden(this.state,input,Math.max(0,dt)/60,this.difficulty))this.audio.event(event.type);this.audio.update(this.state);}
-  render(){this.audio.update(this.state,!this.ready||this.disposed||Boolean(this.error)||this.paused||!this.enabled());this.renderer.render(this.state,{ready:this.ready,error:this.error,touch:this.input.touch,paused:this.paused});}
+  update(dt=1){if(!this.ready||this.disposed||this.paused||!this.enabled()&&!['FALLING','GAME_OVER'].includes(this.state.stage)){this.input.clear();this.audio.update(this.state,true);return;}const input=this.input.sample();for(const event of stepGarden(this.state,input,Math.max(0,dt)/60,this.difficulty))this.audio.event(event.type);this.audio.update(this.state);}
+  render(){this.audio.update(this.state,!this.ready||this.disposed||Boolean(this.error)||this.paused||!this.enabled()&&!['FALLING','GAME_OVER'].includes(this.state.stage));this.renderer.render(this.state,{ready:this.ready,error:this.error,touch:this.input.touch,paused:this.paused});}
   setPaused(value){this.paused=Boolean(value);this.input.clear();this.audio.update(this.state,this.paused||!this.ready||this.disposed||Boolean(this.error));}
   snapshot(){return{version:1,state:JSON.parse(JSON.stringify(this.state))};}
   retry(){const retried=retryGarden(this.state,this.difficulty);if(retried)this.setPaused(false);return retried;}

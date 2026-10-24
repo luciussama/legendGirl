@@ -1,0 +1,7 @@
+{
+  "ferramenta": "image_gen integrada",
+  "source": "source/terra-continua-v1.png",
+  "prompt": "Use case: stylized-concept\nAsset type: opaque seamless square soil texture tile for a hand-painted side-view storybook garden platform game.\nPrimary request: flat cross-section of warm garden earth, fine mottled brown mineral texture, subtle brushwork, scattered very small pebbles only. Uniform material and lighting across the entire square, no identifiable objects or strong patterns, opposite edges tile seamlessly. Warm chestnut and ochre brown, moderate contrast, crisp detail rather than blur. Fill the whole image to all edges with soil.\nConstraints: no roots, no plants, no grass, no leaves, no large stones, no cracks, no horizon, no perspective, no shadowed edges, no border, no vignette, no gradient, no text, no symbols. Not a scene or a platform illustration, only homogeneous tileable earthy material. Opaque background.",
+  "transparent_background": false,
+  "finalidade": "Textura contínua do subsolo, sem ampliar recortes de raízes nem criar padrões espelhados evidentes."
+}

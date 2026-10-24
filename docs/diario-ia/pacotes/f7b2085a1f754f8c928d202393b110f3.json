@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f7b2085a1f754f8c928d202393b110f3",
+  "date": "2026-10-23T20:07:40.930063+00:00",
+  "title": "QA temporário: test:arena:sons",
+  "files": [
+    {
+      "path": "qa-execucoes/f7b2085a1f754f8c928d202393b110f3.log",
+      "sourceId": "77e58250dee4c5afdd31e142dce25fa701146cbedb00636c68e153eb59181820",
+      "sha256": "bb15f030b77513f2776c17eafa6a604c0a1e62831078b1336524022c59754b75",
+      "bytes": 225,
+      "metadataOnly": false
+    }
+  ]
+}

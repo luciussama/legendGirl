@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4a451cceaee91487f7f0eee897b320cc4c99d82893c97f48694a821a6c3a69dc",
+  "path": "qa-execucoes/a9632c8ac3b44e89a5cc26d30594dc86/docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-primeiro.png",
+  "sha256": "99164a20489486eb02be592b16039768f225a376ae23982bfd0d5cce0d55f42a",
+  "capturedAt": "2026-10-24T03:38:03.087440+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-relevo-primeiro.png\", \"sha256\": \"7c780b1891084263a5cf43b03d67c47045ec772c76fa9f08c7abf74ba56c2c9f\", \"bytes\": 1392651, \"binaryRetained\": false}"
+}
