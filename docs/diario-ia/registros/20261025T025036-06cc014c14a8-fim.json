@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T025036-06cc014c14a8-fim",
+  "sessionId": "20261025T025036-06cc014c14a8",
+  "type": "fim",
+  "date": "2026-10-25T02:51:56.337856+00:00",
+  "title": "Retomar amostras de bordas de terra e integração do gramado",
+  "actor": "Codex",
+  "summary": "Retomada após interrupção; criadas e exibidas três amostras em prancha pela image_gen integrada, com vegetação contínua e bordas orgânicas. Proposta preservada no diário, sem integração ao jogo.",
+  "checks": [
+    "Inspeção visual: três terrenos presentes; cobertura integrada; fundo colorido gerado apesar do pedido de transparência.",
+    "npm run docs:sprites: aprovado, 453 imagens, 196 recortes, 29 assinaturas; derivados sem diferenças.",
+    "Testes de gameplay não executados: runtime e física não alterados."
+  ],
+  "pending": [
+    "Avaliação humana da direção visual antes de preparar recortes transparentes e integrar ao jogo."
+  ],
+  "files": [
+    "docs/diario-ia/arte/amostras-terra-v2/prancha-v1.png",
+    "docs/diario-ia/arte/amostras-terra-v2/prompt.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "schemaVersion": 1,
+  "id": "604c76a1604e4378ab39ce9274155775",
+  "date": "2026-10-25T03:28:13.592304+00:00",
+  "title": "QA temporário: test:toy-room:arena:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775.log",
+      "sourceId": "a1500a1f2c56bb46679f27c87c5a1d8eb8812067ca7fa3e6d21518c8e73ad805",
+      "sha256": "4f7b341b37d608fc3d0327fb03a1304460849c3ab9bebc6c372d091484f09b42",
+      "bytes": 543,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-agachamento-entrada.png",
+      "sourceId": "a5af0e67e37622dbc4962e922903124ee11e879e69cb2caf16a72beeada4cf14",
+      "sha256": "b4f9e388fefb92ec3120b643af3868f82430f36e4eeb8cff5bc18fb36c7329cd",
+      "bytes": 1092703,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-agachamento.png",
+      "sourceId": "646243cb6025f9be201f0c23368123872084a08931c2df7216e307bb4365ef2d",
+      "sha256": "b3f5770905826184a0b7bfd3de54fc0bc550c560796a9d8de827f3339fecf823",
+      "bytes": 1092202,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-bear-ataque.png",
+      "sourceId": "11de3487a424703d17397f80b32788783fb2b0e14fc409f015d1914e8fe02b60",
+      "sha256": "e49f16a1b2b95a396b60de0374d296d8ec1736b63a6a37782d939ff8f0ffd2dd",
+      "bytes": 1083078,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-bear-entrada.png",
+      "sourceId": "98566bdef3b4be7af2d5ef98ad1b312d2e3b007c7f4a44d1637b2a01ab989171",
+      "sha256": "6f6a44b19c2f9fb17d75c5a7afe5e645564d3c055ce92d30b274ae087270151f",
+      "bytes": 1030401,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-bear-movimento.png",
+      "sourceId": "5b8ee82e6a8e7ab41de600125f760d56386172e5d500411e6af799c0f25c75e6",
+      "sha256": "bed06539e07d0359841f283155e8d5083558ed1b94274421e20e55f5483e0bbc",
+      "bytes": 1081569,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-dinosaur-ataque.png",
+      "sourceId": "996ad13bfd522070c0532bc16e5bb196b4bd0542b235ebe68eae794cffc97254",
+      "sha256": "5bc6bd844c6f812d24b4486c8432922ba0c132c8a21070577ba5e4efa45e1dc4",
+      "bytes": 1096655,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-dinosaur-entrada.png",
+      "sourceId": "82200495e8d3d6404458299b3dd13ea3a581b3b2f1292c70ee4860ae9b3a9348",
+      "sha256": "57b767e566cbf94f2ae64a0c3cf9d4d11315f29df215aa5635d2c5121fae218e",
+      "bytes": 1098628,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-dinosaur-movimento.png",
+      "sourceId": "4c477991307be78fc54a283dda5dfc51608f9112c7dbc9d88e559b88cd0a584e",
+      "sha256": "7067d07f6451415865c91a21ca8f31172f645cc13f8baf0df7951537a230f96e",
+      "bytes": 1096334,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-robot-ataque.png",
+      "sourceId": "b7e05a297588b99c9dc1e42555dadb9bd8a5246e4339404dfa0b7a80748e6995",
+      "sha256": "e5ef589ade0484c80911987d7b5817c1f9095f8eab9fe7795f1bbbb2f651c6c4",
+      "bytes": 1087674,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-robot-entrada.png",
+      "sourceId": "0c1d37880dc769c337c96737e501a81b0e9e948208be2ea2ea75333ee0bbadac",
+      "sha256": "54d59f8d9deae4da576101057944bd37f31365d17003330135b09fc283662786",
+      "bytes": 1073279,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-robot-movimento.png",
+      "sourceId": "01d3665b4d7d08646fbe90dadcf9dbfe5f110673487f4c8c7b5f2a2ffa49494a",
+      "sha256": "9093b16e8cd241a8e3fb98d6f5f1426359459e4aaf7a8bb4a162cbc4f2291ebe",
+      "bytes": 1085765,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-train-ataque.png",
+      "sourceId": "b7ca439c2d8ed23dc7fa974cba88c7bf822ef172dd42deef1a66422828f27e0d",
+      "sha256": "b392d95916b4203131937666f0213d8c9db38d76f90571a65152012a05664c04",
+      "bytes": 1089906,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-train-entrada.png",
+      "sourceId": "484a78fdcb74e12543e7b3e908811909ccc9581d8dd4753054de3e8087eec696",
+      "sha256": "a3762617764c8622426f60c11001ba9b59be6c52269708cd54143939f036458e",
+      "bytes": 1091088,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-arena-train-movimento.png",
+      "sourceId": "a73fe4de289f9b88bb15286496525a251f9a5cbee14a0de6b42f7bfe2ea1a889",
+      "sha256": "a0176af2e59c232819d5c186ebbcdc5a88ea7fac79185cfeeac4e4aa3fcb1a7d",
+      "bytes": 1092433,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-derrota.png",
+      "sourceId": "0670e30d8d49949b5f8a971306ff88f07994f051012852f636dbee31267bb87b",
+      "sha256": "f28c9ce0a03e67d80775101dc80ba0c8b98fb745d295b91fd75f602c9d59a453",
+      "bytes": 986881,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-exploracao.png",
+      "sourceId": "095e529aa912a5fdf4de8ef6f4a2a1b8ddc67b2dea182895b3398edb74fb36da",
+      "sha256": "58bcafd45767b8937dbfbee04d2afe984039bc4bd01072636ce7216f78d17f34",
+      "bytes": 1045332,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-final.png",
+      "sourceId": "4530a8d412dd485139f15ef6a04ed542a6a1993f9ed246ff108bcaf50d9ab029",
+      "sha256": "0e27bf41099c8a18f060e03dd3e9bfef6f19e154d5cc7255d863edf7d3137387",
+      "bytes": 12309,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-retorno.png",
+      "sourceId": "c8db2bb0bdbdefbd43fca12f287df976b6dcec6355d59b1d681fcce951e2d6b8",
+      "sha256": "781bb7a90e11e80004e8a70730ce5618dbbff4f13b6a8cb074f2b6d506a46d38",
+      "bytes": 1129940,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-salto.png",
+      "sourceId": "10ffabd3310174d11456cb0a434360fcae6cdad3239ca7cf3017b0f5bc28acf2",
+      "sha256": "a0176af2e59c232819d5c186ebbcdc5a88ea7fac79185cfeeac4e4aa3fcb1a7d",
+      "bytes": 1092433,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-transformacao.png",
+      "sourceId": "dd22de3e3f94d1c0ae58e17662fbcb6ed32ac55771e7d2bd88ae98e68e037942",
+      "sha256": "b1d83a7b3b863f6c8e9e58f0747e38e255993aa496a00f559aff997ac0f731c1",
+      "bytes": 1122611,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-transporte.png",
+      "sourceId": "3a7313cbb87cfd0eefc62376edd3917585fc3d0a93e99c135be6c23047f8c074",
+      "sha256": "d9386f0b9fe046ccd2254790ff973715e0be8d93ee51dd8edf379b82601472a5",
+      "bytes": 1129418,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-vitoria.png",
+      "sourceId": "8665786c7c649dc603cce5725f48abaa62a94ea0248171193becce7609f7d7ef",
+      "sha256": "781bb7a90e11e80004e8a70730ce5618dbbff4f13b6a8cb074f2b6d506a46d38",
+      "bytes": 1129940,
+      "metadataOnly": true
+    }
+  ]
+}

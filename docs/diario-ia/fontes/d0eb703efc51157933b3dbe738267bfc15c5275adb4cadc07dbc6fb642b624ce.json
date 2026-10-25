@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "d0eb703efc51157933b3dbe738267bfc15c5275adb4cadc07dbc6fb642b624ce",
+  "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/reproducao-folha-0.png",
+  "sha256": "7948054507ca37ebb0f8eb0041b994a8962c6482b8c51e2b749ef5942f06e50f",
+  "capturedAt": "2026-10-25T03:45:01.534330+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/reproducao-folha-0.png\", \"sha256\": \"a4cb2e28c13f525e484053bb564aec782e8c634e58f45e455d2ffc8ca4451b6c\", \"bytes\": 2414442, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T033339-be6652490c2f",
+  "date": "2026-10-25T03:33:39.989154+00:00",
+  "title": "QA do seletor aguarda o carregamento assíncrono atual da fase",
+  "files": [
+    {
+      "path": "scripts/test-debug-phase-select-browser.js",
+      "sourceId": "2882814b68c056a7016440e8916eb62984f4c19a460770afff6a8160bb0f9784",
+      "sha256": "f35c9e37ef62e9bcb9d4fcc1587a4ae281bf14b4736300cdedf8efe2ad0f6d45",
+      "bytes": 5427,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

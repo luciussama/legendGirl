@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "46864a13a41d8785530a2eef60988a26bb53df13c6b4a2152d95bb53da01c18f",
+  "path": "qa-execucoes/796c5501aa6a4aaf866eb852e7cc2ce2.log",
+  "sha256": "82283f8f66e922b21307cae5808bd554664359658f6d1074f924463de0f5ebae",
+  "capturedAt": "2026-10-25T03:30:52.901099+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser",
+    "exitCode": 1,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena:browser\n> node scripts/test-toy-room-arena-browser.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Sem falhas HTTP de recursos: [{\"url\":\"http://127.0.0.1:50305/favicon.ico\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/bear-chase/cinematic/approach-atlas-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/bear-chase/cinematic/reach-atlas-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage1/wallpaper-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage1/oak-trim-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage1/window-curtains-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/environment-sheet.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage1/rectangular-rug-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage3/armchair-v1.png\",\"status\":404},{\"url\":\"http://127.0.0.1:50305/tests/assets/art/toy-room/stage3/illustrated-fairy-v1.png\",\"status\":404}]\n\n9 !== 0\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-ah_9rr65/projeto/scripts/test-toy-room-arena-browser.js:56:99 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: 9,\n  expected: 0,\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

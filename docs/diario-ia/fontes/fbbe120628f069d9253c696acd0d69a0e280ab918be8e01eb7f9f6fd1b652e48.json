@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "fbbe120628f069d9253c696acd0d69a0e280ab918be8e01eb7f9f6fd1b652e48",
+  "path": "qa-execucoes/37e0ee0aaded417ea6d4720d75da5f5b/docs/diario-ia/qa-resultados/jardim-v2/paisagem-contato-solo.png",
+  "sha256": "b46303a2a2a98c453ecc6832f358d0af757f4b92362b53ddd70f045d7a596637",
+  "capturedAt": "2026-10-25T03:19:41.848349+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-contato-solo.png\", \"sha256\": \"396ec2ef2a30dd76ecb9fb7f3ead43fbf3e5bb2a68d117a7e0ff409c9d32ee25\", \"bytes\": 1525319, \"binaryRetained\": false}"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T111300-db62015999e0-fim",
+  "sessionId": "20261025T111300-db62015999e0",
+  "type": "fim",
+  "date": "2026-10-25T11:14:22.731708+00:00",
+  "title": "Criar amostra de piquenique assentado no chão e separado da árvore",
+  "actor": "Codex",
+  "summary": "Criada e exibida amostra do piquenique assentado: toalha em perspectiva mais baixa sobre o gramado, brinquedos e utensilios apoiados e conjunto separado das raizes. Arte e prompt preservados no diario; sem alteracao ao jogo.",
+  "checks": [
+    "Inspecao visual da imagem gerada: toalha junto ao gramado, sombras de contato e arvore preservada; geracao reinterpreta pixels e nao comprova geometria exata do runtime.",
+    "Testes de gameplay nao executados: apenas amostra, sem mudanca de codigo ou artes consumidas."
+  ],
+  "pending": [
+    "Validacao humana da amostra antes de corrigir o piquenique no runtime."
+  ],
+  "files": [
+    "docs/diario-ia/arte/amostras-piquenique/piquenique-assentado-v1.png",
+    "docs/diario-ia/arte/amostras-piquenique/piquenique-assentado-v1.prompt.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

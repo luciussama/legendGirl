@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 453,
-    "regions": 196,
+    "files": 456,
+    "regions": 202,
     "code": 29
   },
   "items": [
@@ -2937,6 +2937,22 @@
       "family": "assets/art/garden/runtime"
     },
     {
+      "id": "cba0b4a6437c6876f10ac1bc",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "vida-aquatica-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
       "id": "0bc5a1aee4f6ffb210485f07",
       "kind": "file",
       "path": "assets/art/garden/source/ambiente-v2.png",
@@ -3049,6 +3065,22 @@
       "family": "assets/art/garden/source"
     },
     {
+      "id": "bfab46b275b38c43a2416452",
+      "kind": "file",
+      "path": "assets/art/garden/source/parede-vegetal-v1.png",
+      "title": "parede-vegetal-v1.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 3483842,
+      "sha256": "f39e98f2b6cf0d60d3b2fef8d6409a6e87625dc48c09e0afdeb1e35633072f39",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
       "id": "c97522aa0dd4e98fb0624966",
       "kind": "file",
       "path": "assets/art/garden/source/terra-continua-v1.png",
@@ -3058,6 +3090,22 @@
       "height": 1254,
       "bytes": 3236903,
       "sha256": "49b56ecf5fb156e364c80533b2503671f553b15a3aa36ff92b3e6a1157c77c67",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
+      "id": "49723d611435c5334cca5632",
+      "kind": "file",
+      "path": "assets/art/garden/source/vida-aquatica-v1.png",
+      "title": "vida-aquatica-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1572905,
+      "sha256": "2f8bc4c0c58378e8c7a8244d77f3399eb109192ad176a2742e1ba6746712ec13",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -15869,7 +15917,7 @@
         },
         {
           "file": "src/js/garden/GardenRenderer.js",
-          "line": 9,
+          "line": 11,
           "type": "runtime",
           "alias": null
         },
@@ -24686,6 +24734,156 @@
         "height": 558
       },
       "parentId": "0c6cf827a290ca8bcd9e4119"
+    },
+    {
+      "id": "c6753920c284ebe5ad75f445",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 4,
+        "width": 312,
+        "height": 416
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
+    },
+    {
+      "id": "5789870a94a9734e6cfe80e9",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 516,
+        "y": 4,
+        "width": 273,
+        "height": 124
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
+    },
+    {
+      "id": "a3341bc7484a83b3adb6478b",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1028,
+        "y": 4,
+        "width": 279,
+        "height": 127
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
+    },
+    {
+      "id": "d6b36d6d18bba1ade71ecfc2",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 516,
+        "width": 283,
+        "height": 123
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
+    },
+    {
+      "id": "bc5f0d84ff32f81cf777223c",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 516,
+        "y": 516,
+        "width": 235,
+        "height": 393
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
+    },
+    {
+      "id": "cf34c486af8a26192d10920f",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/vida-aquatica-v1.png",
+      "title": "jardim · vida aquática · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 776446,
+      "sha256": "0ff41a3c8f2e1c6ae9037587f52644d88754aedf61a52232bb9c11c0e1c9e8f1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1028,
+        "y": 516,
+        "width": 270,
+        "height": 268
+      },
+      "parentId": "cba0b4a6437c6876f10ac1bc"
     },
     {
       "id": "b999288716f5ccdd5d88639d",

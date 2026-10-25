@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "d6bb1fd1480a8cea435aa4daa341e966ddbc8bd9f39573e763ce75f1ce2846d1",
+  "path": "qa-execucoes/cfc4209d708e44f690d65892578e5f97/docs/diario-ia/qa-resultados/vegetacao-rios/desktop-morro.png",
+  "sha256": "10237ef242d88f1bcc39fd9495cf86a625fe70d91471f71e288d8ec6e05f7ab2",
+  "capturedAt": "2026-10-25T03:29:12.021186+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:acabamento:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/vegetacao-rios/desktop-morro.png\", \"sha256\": \"9f3fb742c96c6847104af0b236b1f63aa13fc1c4645a639b531b3df13ca50b45\", \"bytes\": 2204028, \"binaryRetained\": false}"
+}

@@ -83,3 +83,6 @@ Jardim v2: `menina-desconforto-v1.png` fornece passos altos e expressões preocu
 Atuação das pedrinhas: quatro poses em `source/menina-pedrinhas-v2.png`, com prompt correspondente e runtime de 2×2 células. A grama de primeiro plano deve ocultar sapatos sem reposicionar o corpo. Bases rochosas e água frontal fecham o contato visual do rio sem mudar os apoios. Conservar acabamento só nas bordas externas e junção suave de materiais do chão único.
 
 Jardim atual: `source/terra-continua-v1.png` é o material contínuo do subsolo (prompt em `prompts-terra-v1.json`). A faixa de folhas baixas continua sob a grama; morros arredondados usam pequenas faixas altas, sem cobertura integral. Após modificar os sapatos ou apoios, `prepare-garden-contact.js` recompõe os dados físicos por pixels. Revise poses, superfícies, equilíbrio nas bordas e transporte das rodas; não substituir esse contrato por centro/insets genéricos.
+
+
+A revisão vegetal do jardim usa `source/parede-vegetal-v1.png` e os recortes decorativos de `runtime/vida-aquatica-v1.png`; fontes e prompts em `assets/art/garden/`. `prepare-garden-visuals.js` prepara pilar, peixes e plantas em `GardenVisualArt.js`, sem alterar a superfície física dos tampos. A cobertura verde reveste faces e laterais; a grama alta nasce na folhagem baixa. Preserve a geometria dos apoios e a câmera lateral ao editar esses recursos.

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "73f97628fcd0cb6346949019ac4045e474dc5a72d71d0e1696b39468f06281de",
+  "path": "qa-execucoes/684bf78d726c434a84efda6e02c8977c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-agua-primeira.png",
+  "sha256": "f72c41e59ed9d726d7ec0e13992469eb46ca995afee3bf9ab7942d40239726d8",
+  "capturedAt": "2026-10-25T03:30:19.312405+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-agua-primeira.png\", \"sha256\": \"543d189ede71c8738497167e6217033400cba621b1d01c9d67014a4a7e311873\", \"bytes\": 1414604, \"binaryRetained\": false}"
+}

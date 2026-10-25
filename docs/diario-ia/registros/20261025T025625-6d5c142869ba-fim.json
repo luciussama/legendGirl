@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T025625-6d5c142869ba-fim",
+  "sessionId": "20261025T025625-6d5c142869ba",
+  "type": "fim",
+  "date": "2026-10-25T02:57:50.958290+00:00",
+  "title": "Criar amostra de patamares totalmente revestidos de vegetação",
+  "actor": "Codex",
+  "summary": "Criada e exibida amostra de parede vegetal contínua cobrindo integralmente faces e laterais dos patamares, conectada à grama alta. Prompt e arte preservados; sem integração ao jogo.",
+  "checks": [
+    "Inspeção visual: faces verdes até o limite inferior, laterais vegetadas e ausência de terra exposta; personagens e composição reconhecíveis.",
+    "npm run docs:sprites aprovado: 453 arquivos, 196 recortes e 29 assinaturas.",
+    "Testes de gameplay não executados: apenas amostra visual, sem alteração ao runtime."
+  ],
+  "pending": [
+    "Avaliação humana da amostra antes de aplicação ao jogo."
+  ],
+  "files": [
+    "docs/diario-ia/arte/amostras-terra-v2/parede-vegetal-v3.png",
+    "docs/diario-ia/arte/amostras-terra-v2/parede-vegetal-v3.prompt.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

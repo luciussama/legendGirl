@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "74bae7aac7e3993496b63abee5a37ad45adeda82e0d18febbd99940b2390309d",
+  "path": "qa-execucoes/ea5310e855634d01bdd4f784a4e030cc/docs/qa/toy-room-arena/desktop-arena-bear-ataque.png",
+  "sha256": "10dd2d0d9d96c2ea4fe923f0d415a31f19ee724603c86ed0f1457441d611ff80",
+  "capturedAt": "2026-10-25T03:32:53.138436+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-bear-ataque.png\", \"sha256\": \"e49f16a1b2b95a396b60de0374d296d8ec1736b63a6a37782d939ff8f0ffd2dd\", \"bytes\": 1083078, \"binaryRetained\": false}"
+}

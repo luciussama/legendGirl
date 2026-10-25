@@ -1,0 +1,85 @@
+{
+  "schemaVersion": 1,
+  "id": "314c93ae02bb4e89b4cfe9562280b7ac",
+  "date": "2026-10-25T03:27:00.662847+00:00",
+  "title": "QA temporário: test:garden:vegetacao:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac.log",
+      "sourceId": "48e8ba5ced4f0415ccc83facb11b5638b565c519f9846aeb8f060c7c27b7c47f",
+      "sha256": "631fbe4af5b3623294ba0ff9bf1dcec25968b1cecc9a4a6e83b0de674c1faba5",
+      "bytes": 2728,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/desktop-morro.png",
+      "sourceId": "b7cef74c727a390d86edcd27b75f6c3fd01b6d927377c8832de6f96b4dbfc5af",
+      "sha256": "9f3fb742c96c6847104af0b236b1f63aa13fc1c4645a639b531b3df13ca50b45",
+      "bytes": 2204028,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/desktop-rio.png",
+      "sourceId": "ce58fc84e721fe890490afc45b2957dad4d4bb3989d6eb584da74bc27bd0c9b4",
+      "sha256": "b99a1104e4a4f346fe9171bd0184c120fc58e47a43ae864db3a6b719cd7f7426",
+      "bytes": 2027876,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/desktop-vegetacao.png",
+      "sourceId": "957d51a55c6b408f139fb6e73a1f1bce541f624c3498d8d4d9b5699a7141d619",
+      "sha256": "158e9e01db03e84a11e4c618f1fd9ae43977166a4bbb93aaff588ccafefb561f",
+      "bytes": 2193336,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/paisagem-morro.png",
+      "sourceId": "33a5b8ee147dcbe404548d3b18249b606fda35636e159c982b191c7af593d1c3",
+      "sha256": "318c51dc7e7ccdef5febdc172fcd569f41e09ee0b0e948326ca6060a0b38235d",
+      "bytes": 855174,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/paisagem-rio.png",
+      "sourceId": "11f8e5dba14766a456286d8e959119e2fc92e6f6e658020eacc988abaf08cf0b",
+      "sha256": "4b596b98623dd98e3b9f0f9ff187f04cb2d23134ad4f7c601056a0e50f3c6203",
+      "bytes": 787539,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/paisagem-vegetacao.png",
+      "sourceId": "b40de30907164c862040df8781ca064b4211260747e2d1f90b8a1455232ac20e",
+      "sha256": "86b6ab0018e2f217a56a239321aa793bd44858885d7b80e086965c80b2528344",
+      "bytes": 814360,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/resultado.json",
+      "sourceId": "133734cbf58abd9462baca930ea3c823c8ae1988549b073969c463eb551a7de7",
+      "sha256": "457d7abcb1f5f42b316463a12e5dc985a8f50cb41657901d0222e897edf1d006",
+      "bytes": 3196,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/retrato-morro.png",
+      "sourceId": "aae8d81c534f17257e3251712356b878ae0a9fc70976a46b4841e9a03d5930bb",
+      "sha256": "73b7672b68b09115cf3c2a3247d77976039ac6e0c0054116deed5b38f7343a4d",
+      "bytes": 770994,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/retrato-rio.png",
+      "sourceId": "1d963c753376fcd18961fc17d58420fa63abdd9c29852ffc8c0557a248765191",
+      "sha256": "44a60da4e166382a6350f35ea8b4bcce9f2b043633ee5b86289fa1f9e5faad99",
+      "bytes": 589722,
+      "metadataOnly": true
+    },
+    {
+      "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/retrato-vegetacao.png",
+      "sourceId": "3052ea25b1b3e12af2c0fe97027c2453d9d206abf228a86d8eba057ff37262ce",
+      "sha256": "48161b1b4ce4b69bd269e2baa85452f7011d2470506a50cb90c4889cb5a0f5ac",
+      "bytes": 827477,
+      "metadataOnly": true
+    }
+  ]
+}

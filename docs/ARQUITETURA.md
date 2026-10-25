@@ -161,6 +161,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [environment/index.js](../src/js/environment/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `BackgroundRenderer`, `backgroundRenderer`, `PlatformRenderer`, `platformRenderer`, `LightingSystem`, `createLightingSystem` |
 | [environment/nightWindows.js](../src/js/environment/nightWindows.js) | Posições compartilhadas das janelas usadas pelo fundo e pela iluminação. | `NIGHT_WINDOWS` |
 | [garden/GardenArt.js](../src/js/garden/GardenArt.js) | Recortes derivados das pinturas do jardim e âncoras da menina; não altera o domínio. | `GARDEN_ART` |
+| [garden/GardenVisualArt.js](../src/js/garden/GardenVisualArt.js) | Recortes decorativos do pilar, peixes e plantas aquáticas, sem contatos físicos. | `AQUATIC_FRAMES` |
 | [garden/GardenAudio.js](../src/js/garden/GardenAudio.js) | MP3 Blues Shuffle Loop em repetição e sinais curtos do jardim, com volume, pausa e descarte. | `GardenAudio` |
 | [garden/GardenInput.js](../src/js/garden/GardenInput.js) | Combina teclado, toque e gamepad; instala e remove controles próprios da fase. | `gardenControls`, `GardenInput` |
 | [garden/GardenContact.js](../src/js/garden/GardenContact.js) | Contato pelas solas e pela superfície ilustrada; escolha compartilhada da pose. | `gardenFeet`, `gardenContactHeight`, `gardenGirlPose` |

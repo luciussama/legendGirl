@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "4e629ba2940145509d32820187236065",
+  "date": "2026-10-25T03:34:00.796946+00:00",
+  "title": "QA temporário: test:debug-phases:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/4e629ba2940145509d32820187236065.log",
+      "sourceId": "c910ed8f2c1bf6f72e0edce3ca934fa4efc7ff6c60573162d6b448907fc499fa",
+      "sha256": "ceb001ca2bd0248689e60411dde8a1bc521cf49be8d58d3eddaa880e849226c9",
+      "bytes": 611,
+      "metadataOnly": false
+    }
+  ]
+}

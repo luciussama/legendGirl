@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T032801-c150033d7ea2",
+  "date": "2026-10-25T03:28:01.503639+00:00",
+  "title": "Revisão de acabamento final e comparação de desenho em Chrome",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/vegetacao-rios/acabamento-browser.mjs",
+      "sourceId": "3323ab4c812766c059cd0438b82ec4db5e085e86a5f33992f2c4bc3cefd3d06a",
+      "sha256": "82c7fd57a2b51bce62ba8e398381021afbb54b9d1c02b09fb7ab405438aaf3e1",
+      "bytes": 5871,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:garden:acabamento:browser": "node docs/diario-ia/qa/vegetacao-rios/acabamento-browser.mjs"
+  }
+}

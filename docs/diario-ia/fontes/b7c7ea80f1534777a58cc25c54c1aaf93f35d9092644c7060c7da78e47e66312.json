@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b7c7ea80f1534777a58cc25c54c1aaf93f35d9092644c7060c7da78e47e66312",
+  "path": "qa-execucoes/ea5310e855634d01bdd4f784a4e030cc/docs/qa/toy-room-arena/android-transformacao.png",
+  "sha256": "8b18428edafa355a112d207137d7085a906926a6eccabaa0f9a355e77974228a",
+  "capturedAt": "2026-10-25T03:32:53.133128+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/android-transformacao.png\", \"sha256\": \"0084e03a93eea14323f0887708532b61faae6bf492dc0f6cf85fe77d2c58de24\", \"bytes\": 735155, \"binaryRetained\": false}"
+}

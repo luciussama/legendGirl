@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "16dfafde577ec844cdc6cf2c362c1aea5cec87ed0541b6f6a1f146a146f4697f",
+  "path": "qa-execucoes/84b122ba56874ecba3ec949dae01da09.log",
+  "sha256": "81a65764450957cfd372c239d8ac9c9da4775ae539641836d2a85377f7590733",
+  "capturedAt": "2026-10-25T03:30:59.449753+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:bear-chase:browser",
+    "exitCode": 1,
+    "package": "20261019T181926-1b672f7af800"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:bear-chase:browser\n> node docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js\n\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-1280.png\",\"bytes\":613636,\"sha256\":\"086ef0daf1f74ed9ef619551a86b909f24f9cdf9a71c57ee4e8d12da7b0d7dd6\"}\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-390.png\",\"bytes\":350756,\"sha256\":\"6c09e65ee88a5f658c09fcb13022670d81f6979e67768800af8fc2e4f1cc663f\"}\nCAPTURA {\"file\":\"/tmp/legendgirl-chase-844.png\",\"bytes\":345947,\"sha256\":\"5e0092e39d7d7eeab14ddcd393bbec21ce9a2c8bc788e3d75ac16b37797bce81\"}\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'GAME_OVER'\n- 'COMPLETE'\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-iiirxz4d/projeto/docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js:105:10 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'GAME_OVER',\n  expected: 'COMPLETE',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

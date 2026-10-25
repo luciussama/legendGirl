@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "e3da10ac92defe17b00bece763a3882009da29fa469d060ddd0a08952e895110",
+  "path": "qa-execucoes/a61e0cb3fd8443199a9fcd4509828814/docs/qa/assinaturas-atuais/cenarios.png",
+  "sha256": "5eec4d5acf927e0cf6c5550762377505a92f170972f475fdc235c57b4108b718",
+  "capturedAt": "2026-10-25T03:28:02.370001+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:current-art:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/assinaturas-atuais/cenarios.png\", \"sha256\": \"090b988801d1869c9cf21051b4da328ec588adce548bcd90a95706a930750af6\", \"bytes\": 108741, \"binaryRetained\": false}"
+}

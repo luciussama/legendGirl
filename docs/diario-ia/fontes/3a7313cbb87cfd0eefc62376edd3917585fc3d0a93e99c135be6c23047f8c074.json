@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "3a7313cbb87cfd0eefc62376edd3917585fc3d0a93e99c135be6c23047f8c074",
+  "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775/docs/qa/toy-room-arena/desktop-transporte.png",
+  "sha256": "1e687f5980823e0a4518a92fd8ee608979571fdbb8a781c31855e6114ef12a97",
+  "capturedAt": "2026-10-25T03:28:13.615578+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-transporte.png\", \"sha256\": \"d9386f0b9fe046ccd2254790ff973715e0be8d93ee51dd8edf379b82601472a5\", \"bytes\": 1129418, \"binaryRetained\": false}"
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T033042-ce5b653e7add",
+  "date": "2026-10-25T03:30:42.820389+00:00",
+  "title": "Diagnóstico das requisições ausentes no QA legado da arena",
+  "files": [
+    {
+      "path": "scripts/test-toy-room-arena-browser.js",
+      "sourceId": "348602d1286092abc78c1ca290df9ac3e9122d1737d511249b3818d1eb92b7bc",
+      "sha256": "70223494595edefcc5b229201207bd394052fb424baf28d2bb854a31ce404235",
+      "bytes": 7304,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

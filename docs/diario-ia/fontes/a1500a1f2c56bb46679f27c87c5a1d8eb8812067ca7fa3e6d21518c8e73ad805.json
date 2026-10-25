@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "a1500a1f2c56bb46679f27c87c5a1d8eb8812067ca7fa3e6d21518c8e73ad805",
+  "path": "qa-execucoes/604c76a1604e4378ab39ce9274155775.log",
+  "sha256": "4f7b341b37d608fc3d0327fb03a1304460849c3ab9bebc6c372d091484f09b42",
+  "capturedAt": "2026-10-25T03:28:13.591402+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser",
+    "exitCode": 1,
+    "package": "20261013T190911-2653321714ec"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:toy-room:arena:browser\n> node scripts/test-toy-room-arena-browser.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Quadros detalhados realmente desenhados.\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-n4m6x48q/projeto/scripts/test-toy-room-arena-browser.js:54:45 {\n  generatedMessage: false,\n  code: 'ERR_ASSERTION',\n  actual: false,\n  expected: true,\n  operator: '==',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

@@ -1,11 +1,13 @@
 import {gardenGirlPose} from './GardenContact.js';
 import {GARDEN as C,GARDEN_HOME,gardenPlatforms,gardenSurfaceY,GARDEN_CHECKPOINTS,GARDEN_WHEEL,GARDEN_WHEELS,GARDEN_WATERS,GARDEN_SECTIONS,GARDEN_PLATFORM_BY_ID,cloudStatus,gardenSection} from './GardenLevel.js';
+import {AQUATIC_FRAMES} from './GardenVisualArt.js';
 import {GARDEN_ART} from './GardenArt.js';
 import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
 import {renderPoeticNarration} from '../narrative/PoeticNarrator.js';
 import {gardenControls} from './GardenInput.js';
 const root=new URL('../../../assets/art/garden/',import.meta.url);
 const surfaceOffset={soil:18,grass:90,gravel:10,wood:10};
+const riverBedY=C.waterY+75;
 const fairyFile='../toy-room/stage3/illustrated-fairy-v1.png';
 // A pintura encosta nas margens; os limites fatais continuam em GARDEN_WATERS.
 const waterPaint=GARDEN_WATERS.map(water=>{
@@ -21,7 +23,7 @@ export class GardenRenderer {
   constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images=new Map();this.patterns=new Map();this.sceneryItems=this.sceneryLayout();this.disposed=false;}
   async load(){
     const response=await fetch(new URL('manifest.json',root));if(!response.ok)throw Error('Manifesto do jardim indisponível.');
-    const manifest=await response.json(),required=['cenario-v1.png','source/terra-continua-v1.png',...Object.values(GARDEN_ART.sets).map(s=>s.file),fairyFile];
+    const manifest=await response.json(),required=['cenario-v1.png','source/parede-vegetal-v1.png','runtime/vida-aquatica-v1.png',...Object.values(GARDEN_ART.sets).map(s=>s.file),fairyFile];
     if(!Array.isArray(manifest.images)||required.some(file=>!manifest.images.includes(file)))throw Error('Manifesto do jardim incompleto.');
     await Promise.all(manifest.images.map(async file=>{const image=new Image();image.src=new URL(file,root).href;await image.decode();if(!image.naturalWidth)throw Error('Arte vazia no jardim: '+file);if(!this.disposed)this.images.set(file,image);}));
     if(!this.disposed){const warm=document.createElement('canvas').getContext('2d');for(const p of GARDEN_PLATFORM_BY_ID.values())if(p.hill){this.groundSurface(warm,p,true,true);if(p.type==='grass')this.groundSurface(warm,{...p,type:'soil'},true,true);for(const patch of p.grassPatches??[])this.groundSurface(warm,{...p,type:'grass',patchX:p.x+p.w*patch.start,patchWidth:p.w*(patch.end-patch.start)},true,true);}}
@@ -34,20 +36,20 @@ export class GardenRenderer {
   /** Só o miolo da pintura se repete; a massa do chão não tem laterais internas. */
   groundPattern(type){
     if(this.patterns.has(type))return this.patterns.get(type);
-    if(type==='soil'){const image=this.images.get('source/terra-continua-v1.png');if(!image)return null;const tile=document.createElement('canvas');tile.width=tile.height=512;tile.getContext('2d').drawImage(image,0,0,512,512);const pattern=this.ctx.createPattern(tile,'repeat');this.patterns.set(type,pattern);return pattern;}
+    if(type==='soil'||type==='riverbed'){const image=this.images.get(type==='soil'?'source/parede-vegetal-v1.png':'source/terra-continua-v1.png');if(!image)return null;const tile=document.createElement('canvas');tile.width=tile.height=320;tile.getContext('2d').drawImage(image,0,0,320,320);const pattern=this.ctx.createPattern(tile,'repeat');this.patterns.set(type,pattern);return pattern;}
     const set=GARDEN_ART.sets.objetos,frame=set.frames[type==='wood'?1:type==='rock'?2:0],image=this.images.get(set.file);
     if(!image)return null;
     const tile=document.createElement('canvas');
-    const sw=Math.round(frame.w*.55),sh=Math.round(frame.h*(type==='soil'?.24:.3));
+    const sw=Math.round(frame.w*.55),sh=Math.round(frame.h*.3);
     tile.width=sw*2;tile.height=sh*2;const paint=tile.getContext('2d');
-    // Escala nativa e emendas espelhadas: a terra conserva detalhe em toda a profundidade.
+    // Madeira e pedra usam detalhes nativos, preparados uma vez na carga.
     for(const flipX of [0,1])for(const flipY of [0,1]){
       paint.save();paint.translate(flipX?tile.width:0,flipY?tile.height:0);paint.scale(flipX?-1:1,flipY?-1:1);
-      paint.drawImage(image,frame.x+frame.w*.22,frame.y+frame.h*(type==='soil'?.58:.45),sw,sh,0,0,sw,sh);paint.restore();
+      paint.drawImage(image,frame.x+frame.w*.22,frame.y+frame.h*.45,sw,sh,0,0,sw,sh);paint.restore();
     }
     const pattern=this.ctx.createPattern(tile,'repeat');this.patterns.set(type,pattern);return pattern;
   }
-  /** O mesmo contorno recorta terra e exclui água frontal, sem aproximar por retângulos. */
+  /** O mesmo contorno recorta a vegetação e exclui água frontal. */
   groundOutline(ctx,p,bottom){
     const all=[...GARDEN_PLATFORM_BY_ID.values()],joinedLeft=all.some(v=>v.ground&&v!==p&&Math.abs(v.x+v.w-p.x)<1),joinedRight=all.some(v=>v.ground&&v!==p&&Math.abs(v.x-p.x-p.w)<1);
     ctx.moveTo(p.x,p.y-150-(p.hill??0));ctx.lineTo(p.x+p.w,p.y-150-(p.hill??0));
@@ -56,15 +58,17 @@ export class GardenRenderer {
     for(let y=bottom;y>=p.y-10;y-=28)ctx.lineTo(p.x+(joinedLeft?0:Math.sin(y*.09+p.x)*3+3),y);
     ctx.closePath();return{joinedLeft:joinedLeft&&all.some(v=>v.ground&&Math.abs(v.x+v.w-p.x)<1&&v.y===p.y),joinedRight:joinedRight&&all.some(v=>v.ground&&Math.abs(v.x-p.x-p.w)<1&&v.y===p.y)};
   }
-  /** Recorte ilustrado com raízes dissolvidas na terra, sem placas arredondadas no subsolo. */
+  /** Folhagem baixa dissolvida na parede vegetal; grama sem placa terrosa. */
   surfaceTile(type,part='middle'){
     const key='surface-'+type+'-'+part;if(this.patterns.has(key))return this.patterns.get(key);
     const setName=type==='grass'||type==='gravel'?'ambiente':'objetos',index=type==='grass'?1:type==='gravel'?2:type==='wood'?1:0;
     const set=GARDEN_ART.sets[setName],f=set.frames[index],image=this.images.get(set.file);if(!image)return null;
-    const tile=document.createElement('canvas'),h=type==='wood'?80:type==='soil'?115:110;tile.width=part==='middle'?220:48;tile.height=h;
+    const tile=document.createElement('canvas'),h=type==='wood'?80:type==='soil'?60:110;tile.width=part==='middle'?220:48;tile.height=h;
     const ctx=tile.getContext('2d'),sx=f.x+f.w*(part==='left'?0:part==='right'?.8:.2),sw=f.w*(part==='middle'?.6:.2);
     if(type==='gravel')for(let i=0;i<3;i++)ctx.drawImage(image,f.x+f.w*.2,f.y,f.w*.2,f.h,i*tile.width/3,0,tile.width/3,h);
-    else ctx.drawImage(image,sx,f.y,sw,f.h,0,0,tile.width,h);
+    else ctx.drawImage(image,sx,f.y,sw,type==='soil'?f.h*.55:f.h,0,0,tile.width,h);
+    // A grama conserva só plantas: elimina sua antiga placa de terra na carga.
+    if(type==='grass'){const pixels=ctx.getImageData(0,0,tile.width,h);for(let y=45;y<h;y++)for(let x=0;x<tile.width;x++){const k=(y*tile.width+x)*4,r=pixels.data[k],g=pixels.data[k+1],b=pixels.data[k+2];if(g<r*1.04||g<b*1.12)pixels.data[k+3]=0;}ctx.putImageData(pixels,0,0);}
     const fade=ctx.createLinearGradient(0,0,0,h);fade.addColorStop(0,'#fff');fade.addColorStop(type==='grass'?.74:.4,'#fff');fade.addColorStop(type==='grass'?.85:1,'rgba(255,255,255,0)');ctx.globalCompositeOperation='destination-in';ctx.fillStyle=fade;ctx.fillRect(0,0,tile.width,h);
     this.patterns.set(key,tile);return tile;
   }
@@ -91,14 +95,14 @@ export class GardenRenderer {
     ctx.restore();
     for(const [open,side]of [[!joinedLeft,-1],[!joinedRight,1]])if(open){const endTile=this.surfaceTile(p.type,side<0?'left':'right');ctx.drawImage(endTile,side<0?p.x:p.x+p.w-cap,y,cap,tile.height);}
   }
-  /** A massa de terra é pintada de uma vez, eliminando frestas de antialias entre patamares. */
+  /** A parede vegetal é pintada de uma vez, sem frestas entre patamares. */
   terrainBodies(ctx,platforms,bottom){
     for(const wood of [false,true]){
       const grounds=platforms.filter(p=>p.ground&&(p.type==='wood')===wood);if(!grounds.length)continue;
       ctx.save();ctx.beginPath();for(const p of grounds)this.groundOutline(ctx,p,bottom);ctx.clip();ctx.beginPath();
       for(const p of grounds){ctx.moveTo(p.x-.6,p.y+2);if(p.hill){for(let x=p.x;x<p.x+p.w;x+=8)ctx.lineTo(x,gardenSurfaceY(p,x)+2);}ctx.lineTo(p.x+p.w+.6,p.y+2);ctx.lineTo(p.x+p.w+.6,bottom+20);ctx.lineTo(p.x-.6,bottom+20);ctx.closePath();}
-      ctx.clip();ctx.fillStyle=wood?'#89532f':'#805735';ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);
-      const pattern=this.groundPattern(wood?'wood':'soil');if(pattern){ctx.globalAlpha=wood?.65:.72;ctx.fillStyle=pattern;ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);}ctx.restore();
+      ctx.clip();ctx.fillStyle=wood?'#89532f':'#335a22';ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);
+      const pattern=this.groundPattern(wood?'wood':'soil');if(pattern){ctx.globalAlpha=wood?.65:1;ctx.fillStyle=pattern;ctx.fillRect(grounds[0].x-2,0,grounds.at(-1).x+grounds.at(-1).w-grounds[0].x+4,bottom+20);}ctx.restore();
     }
   }
   terrain(ctx,p,bottom,body=true){
@@ -108,13 +112,34 @@ export class GardenRenderer {
     }else if(p.aerial&&p.type==='gravel'){
       const set=GARDEN_ART.sets.objetos,f=set.frames[0],image=this.images.get(set.file);ctx.save();ctx.beginPath();ctx.moveTo(p.x,p.y-15);ctx.lineTo(p.x+p.w,p.y-15);ctx.lineTo(p.x+p.w,p.y+30);ctx.quadraticCurveTo(p.x+p.w*.8,p.y+72,p.x+p.w*.5,p.y+65);ctx.quadraticCurveTo(p.x+p.w*.2,p.y+72,p.x,p.y+30);ctx.closePath();ctx.clip();
       if(image)ctx.drawImage(image,f.x,f.y+f.h*.45,f.w,f.h*.55,p.x,p.y+3,p.w,65);this.groundSurface(ctx,p,true,true);ctx.restore();
-    }else{if(p.type==='stone')this.rockFoot(ctx,p);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='wood'?8:p.type==='stone'?3:6),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
+    }else{if(p.type==='stone')this.rockFoot(ctx,p,bottom);this.prop(ctx,{wood:1,stone:2,cloud:3}[p.type],p.x,p.y-(p.type==='wood'?8:p.type==='stone'?3:6),p.w,p.type==='wood'?53:p.type==='stone'?70:60);}
   }
 
-  /** O pé rochoso fica submerso; o tampo e sua colisão permanecem na altura original. */
+  /** Recortes aquáticos são decoração, nunca apoios ou colisores. */
+  aquaticSprite(ctx,index,x,y,w,h,flip=1){
+    const image=this.images.get('runtime/vida-aquatica-v1.png'),f=AQUATIC_FRAMES[index];if(!image)return;
+    ctx.save();ctx.translate(x,y);ctx.scale(flip,1);ctx.drawImage(image,f.x,f.y,f.w,f.h,flip<0?-w:0,0,w,h??w*f.h/f.w);ctx.restore();
+  }
+  /** Pilar contínuo do tampo até o leito; a parte submersa recebe a água frontal. */
   rockFoot(ctx,p){
-    const base=C.waterY;ctx.save();ctx.beginPath();ctx.moveTo(p.x+p.w*.12,p.y+38);ctx.lineTo(p.x+p.w*.88,p.y+38);ctx.lineTo(p.x+p.w*.83,p.y+77);ctx.lineTo(p.x+p.w*.9,base-15);ctx.lineTo(p.x+p.w*.72,base);ctx.lineTo(p.x+p.w*.25,base);ctx.lineTo(p.x+p.w*.13,base-20);ctx.lineTo(p.x+p.w*.18,p.y+78);ctx.closePath();ctx.clip();
-    ctx.fillStyle='#74786d';ctx.fillRect(p.x,p.y+38,p.w,base-p.y);const pattern=this.groundPattern('rock');if(pattern){ctx.globalAlpha=.32;ctx.fillStyle=pattern;ctx.fillRect(p.x,p.y+38,p.w,base-p.y);}ctx.restore();
+    const top=p.y+26,height=riverBedY-top+12;
+    const image=this.images.get('runtime/vida-aquatica-v1.png'),f=AQUATIC_FRAMES[0];if(image)ctx.drawImage(image,f.x,f.y+f.h*.16,f.w,f.h*.84,p.x+p.w*.03,top,p.w*.94,height);
+  }
+  /** Poucos peixes por rio; plantas e leito estáticos, sem partículas ou filtros. */
+  riverLife(ctx,s,water,left,right,bottom){
+    const x0=Math.max(water.x,left),x1=Math.min(water.x+water.w,right);if(x1<=x0)return;
+    ctx.save();ctx.beginPath();ctx.rect(x0,C.waterY-30,x1-x0,bottom-C.waterY+30);ctx.clip();
+    const bed=ctx.createLinearGradient(0,riverBedY-5,0,riverBedY+35);bed.addColorStop(0,'#669a8e');bed.addColorStop(1,'#467d7b');ctx.fillStyle=bed;ctx.fillRect(x0,riverBedY,x1-x0,bottom-riverBedY);
+    const gravel=this.groundPattern('riverbed');if(gravel){ctx.globalAlpha=.22;ctx.fillStyle=gravel;ctx.fillRect(x0,riverBedY,x1-x0,bottom-riverBedY);ctx.globalAlpha=1;}
+    const edge=ctx.createLinearGradient(0,riverBedY-8,0,riverBedY+12);edge.addColorStop(0,'rgba(85,157,161,0)');edge.addColorStop(.5,'rgba(85,157,161,.6)');edge.addColorStop(1,'rgba(85,157,161,0)');ctx.fillStyle=edge;ctx.fillRect(x0,riverBedY-8,x1-x0,20);
+    const count=Math.max(2,Math.min(5,Math.floor(water.w/220)));
+    for(let i=0;i<count;i++){
+      const anchor=water.x+water.w*(i+1)/(count+1),phase=s.time*.35+i*2.1+water.x*.01,x=anchor+Math.sin(phase)*35,y=C.waterY+6+(i%3)*17+Math.sin(phase*1.7)*3;
+      if(x>=left-30&&x<=right+30){const flip=Math.cos(phase)<0?-1:1;ctx.globalAlpha=.82;this.aquaticSprite(ctx,1+i%3,x,y,24,11,flip);}
+    }
+    ctx.globalAlpha=.65;
+    for(let x=water.x+65,i=0;x<water.x+water.w-30;x+=210,i++)if(x>left-40&&x<right+40)this.aquaticSprite(ctx,4+i%2,x,riverBedY-(i%2?30:44),i%2?25:21,i%2?30:44);
+    ctx.restore();
   }
   /** Água de primeiro plano envolve bases/margens em vez de deixar rochas flutuando. */
   waterFront(ctx,s,left,right,bottom,platforms){
@@ -123,7 +148,8 @@ export class GardenRenderer {
       ctx.beginPath();ctx.rect(left,C.waterY-40,right-left,bottom-C.waterY+60);this.groundOutline(ctx,ground,bottom);ctx.clip('evenodd');
     }
     for(const water of waterPaint){if(water.x+water.w<left||water.x>right)continue;
-      const wash=ctx.createLinearGradient(0,C.waterY-30,0,C.waterY+70);wash.addColorStop(0,'rgba(112,213,217,.38)');wash.addColorStop(1,'rgba(50,137,169,.78)');ctx.fillStyle=wash;ctx.fillRect(water.x-5,C.waterY-30,water.w+10,bottom-C.waterY+30);
+      const wash=ctx.createLinearGradient(0,C.waterY-30,0,C.waterY+70);wash.addColorStop(0,'rgba(112,213,217,.38)');wash.addColorStop(1,'rgba(50,137,169,.38)');ctx.fillStyle=wash;ctx.fillRect(water.x-5,C.waterY-30,water.w+10,bottom-C.waterY+30);
+      this.riverLife(ctx,s,water,left,right,bottom);
       for(const p of platforms.filter(p=>p.type==='stone'&&p.x>=water.x&&p.x<=water.x+water.w)){
         ctx.strokeStyle='rgba(232,255,249,.5)';ctx.lineWidth=2;ctx.beginPath();ctx.ellipse(p.x+p.w/2,C.waterY-27+Math.sin(s.time+p.x)*2,p.w*.4,4,0,0,Math.PI);ctx.stroke();
       }

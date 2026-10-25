@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "c910ed8f2c1bf6f72e0edce3ca934fa4efc7ff6c60573162d6b448907fc499fa",
+  "path": "qa-execucoes/4e629ba2940145509d32820187236065.log",
+  "sha256": "ceb001ca2bd0248689e60411dde8a1bc521cf49be8d58d3eddaa880e849226c9",
+  "capturedAt": "2026-10-25T03:34:00.795115+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:debug-phases:browser",
+    "exitCode": 1,
+    "package": "zzzzzz-20261014T165444-b09f6261e88e"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:debug-phases:browser\n> node scripts/test-debug-phase-select-browser.js\n\nnode:internal/modules/run_main:107\n    triggerUncaughtException(\n    ^\n\nAssertionError [ERR_ASSERTION]: Expected values to be strictly equal:\n+ actual - expected\n\n+ 'bedroom'\n- 'toy-room'\n\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-fxbgfix1/projeto/scripts/test-debug-phase-select-browser.js:26:11 {\n  generatedMessage: true,\n  code: 'ERR_ASSERTION',\n  actual: 'bedroom',\n  expected: 'toy-room',\n  operator: 'strictEqual',\n  diff: 'simple'\n}\n\nNode.js v26.5.0\n"
+}

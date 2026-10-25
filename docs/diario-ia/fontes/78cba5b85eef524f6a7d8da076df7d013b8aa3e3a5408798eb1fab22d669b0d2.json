@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "78cba5b85eef524f6a7d8da076df7d013b8aa3e3a5408798eb1fab22d669b0d2",
+  "path": "qa-execucoes/684bf78d726c434a84efda6e02c8977c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-roda-3.png",
+  "sha256": "89d41e9f2bde1e37830a714c07183df6f264a87fdc8a873120385d0870deb7cc",
+  "capturedAt": "2026-10-25T03:30:19.309974+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-aereo-roda-3.png\", \"sha256\": \"e706e29e0f8706af7753d2f18347453970ab761af14575f3cbbfa20b15ff941e\", \"bytes\": 1381703, \"binaryRetained\": false}"
+}
