@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "fe15d398abafa2c92916605cadad89da792bd21267e80d5a1389b5f76eab25c9",
+  "path": "qa-execucoes/afef30114c16492598592586b29c861b/docs/diario-ia/qa-resultados/yuna/host.json",
+  "sha256": "8e576019c8bb2312394c4207c02531bec6bba273e86f1079029a5c4cfb5b9236",
+  "capturedAt": "2026-10-26T04:03:34.829988+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:host:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"resultado\": \"gameplay real do checkpoint final até o piquenique, por teclado e RAF\",\n  \"nuvens\": [\n    \"nuvem-final-0\",\n    \"nuvem-final-1\",\n    \"nuvem-final-2\",\n    \"nuvem-final-3\"\n  ],\n  \"pausa\": true,\n  \"restoreDuranteMedo\": true,\n  \"duracaoObservada\": 6.013799999997108,\n  \"rafP95\": 16.700000000000728,\n  \"rafP99\": 16.800000000000182,\n  \"amostras\": 586,\n  \"final\": \"COMPLETE\"\n}"
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "016c62274a83f43a8794ea4a711cf58756dc4506449894c329e44eb986ebf403",
+  "path": "qa-execucoes/f18b1a3fc9fb4b2d9d2d41c8cf37f246.log",
+  "sha256": "18e275c5a303b02650157bb786845232c92d1df7f90e438a0189336bf378fcc3",
+  "capturedAt": "2026-10-26T12:31:17.710505+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:cenas:browser",
+    "exitCode": 0,
+    "package": "20261026T122616-4a06ae685db5"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:yuna:cenas:browser\n> node docs/diario-ia/qa/yuna/cenas-camadas-browser.mjs\n\n[{\"formato\":\"desktop\",\"cenas\":9,\"rendererPuro\":true},{\"formato\":\"retrato\",\"cenas\":9,\"rendererPuro\":true},{\"formato\":\"paisagem\",\"cenas\":9,\"rendererPuro\":true},{\"label\":\"convite\",\"quadros\":11,\"avancoAtivo\":2.5082333333334494},{\"label\":\"receio\",\"quadros\":11,\"avancoAtivo\":2.508233333333262},{\"label\":\"comendo\",\"quadros\":11,\"avancoAtivo\":2.5087999999968886}]\n"
+}

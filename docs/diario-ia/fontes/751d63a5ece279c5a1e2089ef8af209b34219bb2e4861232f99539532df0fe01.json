@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "751d63a5ece279c5a1e2089ef8af209b34219bb2e4861232f99539532df0fe01",
+  "path": "qa-execucoes/9d7746ba8dbb47fcb6053159a8734ed0.log",
+  "sha256": "e83196426b039ffa5e2812ab58af524fa32e561b946311bcba589764e1f5df56",
+  "capturedAt": "2026-10-26T12:51:58.642705+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jardim:critico:browser",
+    "exitCode": 0,
+    "package": "20261026T124429-23bdad0f05e2"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jardim:critico:browser\n> node docs/diario-ia/qa/critico-jardim/integral-browser.mjs\n\n{\"final\":{\"stage\":\"COMPLETE\",\"x\":47488.460402672536,\"hp\":3,\"age\":56.00113333332811},\"retries\":2,\"wall\":426.276900000006,\"raf\":{\"p50\":16.69999999999709,\"p95\":16.70000000001164,\"p99\":16.80000000000291},\"events\":226,\"snapshots\":108}\n"
+}

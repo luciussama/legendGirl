@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f52d7efd96a1600f815aa84babf36eef377c3b65a59af89090a6e8c7f8c8272e",
+  "path": "qa-execucoes/d9830b76f8b84cab867e2fe90d49eb10.log",
+  "sha256": "adbe8de4bf074a0abbc12c7de42c4f29f764315a913cab0ed63a11c0694db355",
+  "capturedAt": "2026-10-26T03:32:51.845850+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:browser",
+    "exitCode": 1,
+    "package": "20261026T033220-cc9066352ad0"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:yuna:browser\n> node docs/diario-ia/qa/yuna/gameplay-browser.mjs cenas\n\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-grq8lkx_/projeto/docs/diario-ia/qa/yuna/gameplay-browser.mjs:17\n const evaluate=async expression=>{const r=await call('Runtime.evaluate',{expression,awaitPromise:true,returnByValue:true});if(r.result?.exceptionDetails)throw Error(JSON.stringify(r.result.exceptionDetails));return r.result?.result?.value;};\n                                                                                                                                                                ^\n\nError: {\"exceptionId\":1,\"text\":\"Uncaught (in promise) Error: Percurso não terminou: {\\\"x\\\":3860.666666666696,\\\"stage\\\":\\\"RUNNING\\\"}\",\"lineNumber\":0,\"columnNumber\":0,\"exception\":{\"type\":\"object\",\"subtype\":\"error\",\"className\":\"Error\",\"description\":\"Error: Percurso não terminou: {\\\"x\\\":3860.666666666696,\\\"stage\\\":\\\"RUNNING\\\"}\\n    at <anonymous>:18:54\",\"objectId\":\"3067737167417027168.2.1\"}}\n    at evaluate (file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-grq8lkx_/projeto/docs/diario-ia/qa/yuna/gameplay-browser.mjs:17:161)\n    at async file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-grq8lkx_/projeto/docs/diario-ia/qa/yuna/gameplay-browser.mjs:23:16\n\nNode.js v26.5.0\n"
+}

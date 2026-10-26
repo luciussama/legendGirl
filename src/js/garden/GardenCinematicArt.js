@@ -1,0 +1,3 @@
+// Gerado por prepare-garden-cinematic.js; fontes e prompts preservados.
+export const GARDEN_ACTING={"file":"runtime/cinematic-atuacao-v1.png","referenceHeight":548,"frames":[{"x":4,"y":4,"w":323,"h":548,"anchorX":163.5},{"x":644,"y":4,"w":318,"h":535,"anchorX":161.5},{"x":1284,"y":4,"w":315,"h":526,"anchorX":164},{"x":1924,"y":4,"w":415,"h":391,"anchorX":162},{"x":4,"y":644,"w":428,"h":399,"anchorX":170.5},{"x":644,"y":644,"w":434,"h":398,"anchorX":169},{"x":1284,"y":644,"w":297,"h":308,"anchorX":112},{"x":1924,"y":644,"w":322,"h":309,"anchorX":119.5}]};
+export const GARDEN_BEE_LAYERS={"file":"source/abelha-camadas-v2.png","body":{"x":56,"y":71,"w":960,"h":607,"anchorX":539},"wings":{"x":1176,"y":224,"w":812,"h":417,"anchorX":405.5}};

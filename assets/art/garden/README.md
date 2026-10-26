@@ -1,5 +1,15 @@
 # Um dia no jardim — artes de produção
 
+## Cenas de Yuna e novos insetos
+
+As cenas atuais seguem `ToyRoomIntroduction`: cenário na altura dos olhos, atuação em camadas, planos, voo/pouso da fada e poses de comer. `GardenCinematic.js` compõe as cenas; `GardenNarrative.js` conserva falas/tempos e a revelação do nome por Nanda. `cinematic/casa-sem-atores-v1.png` e `piquenique-sem-yuna-v1.png` são cenários sem Yuna/Nanda pintadas; `atuacao-yuna-nanda-v1.png` fornece oito atuações transparentes. `cinematic/prompts.json` preserva os prompts integrais da ferramenta integrada image_gen. `node scripts/prepare-garden-cinematic.js` isola os componentes alfa, prepara `runtime/cinematic-atuacao-v1.png` e gera `GardenCinematicArt.js`. A câmera cinematográfica não altera a câmera lateral jogável. As antigas composições estáticas em `narrative/` e seus originais no diário permanecem preservadas como referência, fora do manifesto carregado.
+
+`source/insetos-v1.png` contém dois voos de abelha, dois voos de besouro e duas minhocas, com alfa real. Prompt e referência em `prompts-insetos-v1.json`. `node scripts/prepare-garden-insects.js` prepara o atlas `runtime/insetos-v1.png` e `GardenInsectArt.js`. Preservar escala por espécie e margens de asas/antenas. Colisões consideram o corpo exposto, não asas, pedras ou transparência.
+
+O voo atual da abelha usa `source/abelha-camadas-v2.png`, com corpo sem asas e par de asas separado; prompt em `prompts-abelha-camadas-v2.json`. `GardenBeeRenderer.js` mantém uma única pintura/escala/âncora do corpo e articula as asas continuamente pela raiz. O aviso inclina o conjunto gradualmente. As duas antigas poses de abelha ficam preservadas no atlas, mas não são alternadas no jogo. `prepare-garden-cinematic.js` também mede as duas camadas, sem alterar a colisão da abelha.
+
+`source/menina-medo-v1.png` fornece expressão assustada; prompt em `prompts-medo-v1.json`. `node scripts/prepare-garden-fear.js` recompõe quatro pranchas `runtime/medo-menina-*.png`, trocando apenas a região da cabeça. A preparação confere que todo o corpo abaixo do recorte, incluindo as solas, é idêntico às poses físicas originais. O renderer oscila apenas o tronco e acrescenta suor durante o medo. Essa atuação não modifica velocidades, impulsos ou o contrato dos pés. Após reconstruir as poses principais, executar novamente os preparadores de medo e insetos e reconstruir o mapa de sprites.
+
 Direção: dia claro no jardim, rolagem lateral, destino sob uma árvore. Os desenhos enviados pelo usuário orientam grama, madeira, pedras, água, nuvens, formigas, lagartas e uma roda de quatro apoios; não são um mapa obrigatório.
 
 A menina mantém a identidade e o detalhamento de `characters/girl-v2`: rosto, cabelo castanho e marias-chiquinhas. A roupa foi adaptada da foto enviada: camiseta amarela, vestido salopete turquesa estampado com doces, botões amarelos e calçado rosa/branco. A fotografia pessoal não foi copiada para o repositório. A referência foi usada como direção de vestuário; não se trata de retrato fotográfico.

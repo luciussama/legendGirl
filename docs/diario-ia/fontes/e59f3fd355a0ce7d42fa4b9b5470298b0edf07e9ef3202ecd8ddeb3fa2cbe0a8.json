@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e59f3fd355a0ce7d42fa4b9b5470298b0edf07e9ef3202ecd8ddeb3fa2cbe0a8",
+  "path": "assets/art/garden/manifest.json",
+  "sha256": "39d5b3d6d92fc435551f3376bd594bdde557f8efba95ce16ce908fce56aab260",
+  "capturedAt": "2026-10-26T03:53:00.938797+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": 1,\n  \"images\": [\n    \"cenario-v1.png\",\n    \"runtime/menina-corrida-v1.png\",\n    \"runtime/menina-acoes-v1.png\",\n    \"runtime/menina-desconforto-v1.png\",\n    \"runtime/menina-pedrinhas-v2.png\",\n    \"source/objetos-v1.png\",\n    \"source/ambiente-v2.png\",\n    \"source/lagarta-vermelha-v1.png\",\n    \"source/terra-continua-v1.png\",\n    \"../toy-room/stage3/illustrated-fairy-v1.png\",\n    \"source/parede-vegetal-v1.png\",\n    \"runtime/vida-aquatica-v1.png\",\n    \"narrative/abertura-yuna-v1.png\",\n    \"narrative/piquenique-descanso-v2.png\",\n    \"runtime/insetos-v1.png\",\n    \"runtime/medo-menina-corrida-v1.png\",\n    \"runtime/medo-menina-acoes-v1.png\",\n    \"runtime/medo-menina-desconforto-v1.png\",\n    \"runtime/medo-menina-pedrinhas-v2.png\"\n  ]\n}\n"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "d7f835b00ae947c9b356f2d73055ac0d",
+  "type": "qa",
+  "date": "2026-10-26T04:11:53.096756+00:00",
+  "title": "QA temporário: test:sprite-review",
+  "exitCode": 0,
+  "sourceId": "7e17fb9019c336b2c5e3a423bd8b2af45583b849d8410ebe04b814f822429ef7",
+  "package": "20261013T190911-2653321714ec"
+}

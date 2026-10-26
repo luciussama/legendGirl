@@ -1,0 +1,53 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T032655-a051f8c0106d-fim",
+  "sessionId": "20261026T032655-a051f8c0106d",
+  "type": "fim",
+  "date": "2026-10-26T04:14:22.818318+00:00",
+  "title": "Implementar cenas de Yuna e novos encontros com gameplay crítico por etapa",
+  "actor": "Codex",
+  "summary": "Implementadas todas as alterações combinadas do jardim: abertura poética e revelação de Yuna, ilustrações inteiras de abertura/piquenique, abelhas com aviso/rasante/retorno, minhocas por proximidade e três perseguições inofensivas de seis segundos, incluindo as quatro nuvens finais. Medo visual preserva velocidade e apoios. Persistência v7 e migrações integradas. Gameplays críticos automatizados após cada grupo funcional em NORMAL/EASY; ajustes de colisão, repetição após resgate, composição de medo e layout móvel corrigidos e revalidados. Fontes de QA e avaliação consolidada no pacote 20261026T041339-b95567be61d8; 195 capturas regeneráveis descartadas após preservar hashes/tamanhos. Artes originais e de produção preservadas. Contexto vigente e guias atualizados. Sem commit, push ou publicação.",
+  "checks": [
+    "npm test aprovado; suíte geral executada temporariamente pelo diário.",
+    "test:yuna:domain aprovado e repetido após recuperar fontes arquivadas: dano, pisão, proximidade, duração, velocidade, pulo, save e retry.",
+    "Gameplays browser por etapas aprovados: cenas, abelhas, minhocas e besouros; rodada final NORMAL COMPLETE com três retries e EASY COMPLETE com um resgate e sem retry manual. Três besouros e quatro nuvens finais visitados.",
+    "Página oficial por teclado/RAF: checkpoint final até COMPLETE, quatro nuvens durante perseguição, pausa e restauração durante medo; aproximadamente seis segundos ativos.",
+    "Inspeção visual desktop/retrato/paisagem; corrigidos braços duplicados, imagem pequena em paisagem e texto sob controles. Primeiros harnesses falharam por inicialização incorreta da interface; corrigidos e repetidos, logs anteriores preservados.",
+    "Build, check-assets (78 recursos), lint, sintaxe dos novos módulos/geradores, test:sprite-review e git diff --check aprovados.",
+    "Mapa de sprites reconstruído: 465 imagens, 236 recortes, 29 assinaturas. Referência de métodos: 168 módulos, 1124 declarações."
+  ],
+  "pending": [
+    "Nenhuma alteração combinada desta etapa aguarda implementação. Avaliação de conforto/dificuldade humana e aparelhos físicos/Safari não foi executada; automação demonstra viabilidade e contratos, sem equivaler a aprovação humana."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/pacotes/20261026T041339-b95567be61d8.json",
+    "src/js/garden/GardenNarrative.js",
+    "src/js/garden/GardenEncounters.js",
+    "src/js/garden/GardenInsectArt.js",
+    "src/js/garden/GardenFearArt.js",
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenRenderer.js",
+    "src/js/garden/GardenLevel.js",
+    "assets/art/garden/manifest.json",
+    "assets/art/garden/narrative",
+    "assets/art/garden/source/insetos-v1.png",
+    "assets/art/garden/source/menina-medo-v1.png",
+    "assets/art/garden/runtime",
+    "assets/art/garden/prompts-insetos-v1.json",
+    "assets/art/garden/prompts-medo-v1.json",
+    "scripts/prepare-garden-insects.js",
+    "scripts/prepare-garden-fear.js",
+    "scripts/prepare-garden-art.js",
+    "tools/sprite-review/catalog.js",
+    "assets/art/garden/README.md",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/ARQUITETURA.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/sprites/inventario.json"
+  ]
+}

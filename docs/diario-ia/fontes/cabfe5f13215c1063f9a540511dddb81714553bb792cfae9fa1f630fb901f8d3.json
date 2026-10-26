@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "cabfe5f13215c1063f9a540511dddb81714553bb792cfae9fa1f630fb901f8d3",
+  "path": "assets/art/garden/prompts-medo-v1.json",
+  "sha256": "6e57033e8a4630507d302c3bf7ab4255eab856911c3c333c2373573ef91f0ace",
+  "capturedAt": "2026-10-26T03:53:00.939695+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"referencia\": \"assets/art/garden/runtime/menina-corrida-v1.png\",\n  \"prompt\": \"Uso: identity-preserve, edição de atlas de animação de jogo 2D com 4 colunas e 2 linhas. Preserve fundo TRANSPARENTE verdadeiro, resolução e todos os lugares e tamanhos das oito personagens da imagem. É a MESMA menina Yuna em todas as células: cabelo castanho em marias-chiquinhas, laços rosa, camiseta amarelo-clara, vestido turquesa com doces, tênis rosa/branco. Mude APENAS rostos e braços na metade superior de cada figura para representar corrida assustada e desajeitada: sobrancelhas altas e preocupadas, olhos castanhos arregalados de medo, boquinha aberta em pequeno susto, gotas claras de suor saindo junto às têmporas, braços ligeiramente levantados desajeitados com mãos abertas. Não gritando com raiva, não chorando, medo infantil expressivo e fofo. As 8 poses continuam em seus lugares exatos, todo o cabelo/corpo com mesmo tamanho e identidade. NÃO MUDE a posição nem a forma das pernas, pés, sapatos ou barra do vestido. A física e o contato dos pés serão preservados em produção, por isso o contorno e local dos pés devem continuar idênticos. Não acrescente chão, sombras, fundo, letras, moldura, efeitos em volta dos pés ou bichos. Fundo alfa, inclusive espaço entre membros. Atlas uniforme, somente alteração facial e de braços para as 8 poses existentes, sem reorganizar grade.\",\n  \"arquivo\": \"source/menina-medo-v1.png\",\n  \"preparacao\": \"A preparação preserva integralmente a metade inferior das poses atuais para manter os pés e o contato mecânico.\"\n}\n"
+}

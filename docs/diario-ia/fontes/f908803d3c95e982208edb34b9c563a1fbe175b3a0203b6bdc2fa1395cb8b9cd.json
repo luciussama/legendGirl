@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "f908803d3c95e982208edb34b9c563a1fbe175b3a0203b6bdc2fa1395cb8b9cd",
+  "path": "qa-execucoes/1b3c1664b72b468c974a4c0c2053edc3.log",
+  "sha256": "d97cb1daf3d32a3df4d0e679882e50fae0ecaf64e25d765588071361b245214e",
+  "capturedAt": "2026-10-26T12:25:00.186106+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:revisao:browser",
+    "exitCode": 0,
+    "package": "20261026T121443-c0374a86d348"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:yuna:revisao:browser\n> node docs/diario-ia/qa/yuna/revisao-browser.mjs depois\n\n{\"quadros\":12,\"tempoAtivo\":0.8599999999999991,\"etapa\":\"RUNNING\"}\n"
+}

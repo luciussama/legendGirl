@@ -138,3 +138,12 @@ Bandeirinhas marcam pontos de retomada. A fase tem controles de teclado, gamepad
 O jardim passa por madeira, grama alta com marcha lenta e desconfortável, pedras no rio e pedrinhas rápidas com saltos irregulares. Roda e nuvens temporárias antecedem o grande trecho misto; lagartas mudam para vermelho no primeiro dos dois pisões, e formigas também saltam entre pedras. Nanda acompanha e indica o próximo apoio. O modo fácil é imortal, com resgate de quedas e desorientação após um golpe que seria fatal. A chegada reúne os quatro brinquedos, pão na chapa e suco de laranja; os diálogos serão escritos posteriormente. O chão fixo forma faixas contínuas, e a toalha fica no chão, separada das raízes da árvore.
 
 O acabamento foi ampliado com bordas naturais, transição de materiais e pedras conectadas à água. A lagarta vermelha passa a perseguir a menina. Na grama os sapatos ficam encobertos; nas pedrinhas a atuação ganha quatro poses de desequilíbrio e suor de esforço, conservando o controle de parada imediata.
+
+
+## 26/10/2026 — Yuna, o jardim e o descanso
+
+Na saída de casa, Nanda convida a menina para o piquenique e revela seu nome: Yuna. A abertura mistura a vontade de ir com a intensidade das texturas e o receio dos insetos. A chegada tem uma clareira ilustrada inteira: Yuna, exausta, senta-se entre os amigos; Nanda se senta ao lado e come seu pequeno pão com suco.
+
+Abelhas dão um breve aviso antes dos rasantes e podem voltar a atacar; um pisão na cabeça as derrota. Minhocas emergem do pedregulho com a aproximação e devem ser evitadas como espinhos. O besouro é inofensivo, mas o medo faz Yuna correr para frente durante seis segundos, deixando o pulo com o jogador. Sua velocidade continua normal; expressão, movimento desajeitado e suor transmitem a urgência. São três encontros, um deles nas quatro nuvens finais. A perseguição se repete nas tentativas e permanece igual no modo fácil, com a ajuda já existente da fada.
+
+As cenas foram revistas para seguir a linguagem das fases anteriores: personagens separados do cenário, expressões e gestos, voo e pouso de Nanda e planos na altura dos olhos. No descanso, Yuna e Nanda levam o pão à boca. As falas permanecem poéticas. O voo da abelhinha agora mantém corpo e rosto estáveis enquanto apenas as asas se articulam, preservando seu comportamento no jogo.

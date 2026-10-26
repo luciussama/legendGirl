@@ -1,5 +1,5 @@
 /** Percurso em pixels de mundo. Materiais definem gameplay, sem alterar a câmera. */
-export const GARDEN = Object.freeze({version:6,get width(){return GARDEN_WIDTH;},get goal(){return GARDEN_GOAL;},height:720,ground:590,playerHeight:92,halfFoot:35,speed:220,jump:720,gravity:1600,step:1/120,waterY:650,targetMinutes:5});
+export const GARDEN = Object.freeze({version:7,get width(){return GARDEN_WIDTH;},get goal(){return GARDEN_GOAL;},height:720,ground:590,playerHeight:92,halfFoot:35,speed:220,jump:720,gravity:1600,step:1/120,waterY:650,targetMinutes:5});
 // A escada usa pontos da pintura; a base fica assentada na madeira.
 export const GARDEN_HOME=Object.freeze({x:30,y:201,w:500,h:401,steps:Object.freeze([{x:338,y:540},{x:432,y:546},{x:476,y:574},{x:530,y:590}])});
 export const GARDEN_TERRAINS = Object.freeze({wood:{speed:220,jump:720},soil:{speed:220,jump:720},stone:{speed:220,jump:720},cloud:{speed:220,jump:720},grass:{speed:100,jump:720},gravel:{speed:410,jump:720}});

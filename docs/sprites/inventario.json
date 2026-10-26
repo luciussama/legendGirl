@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 456,
-    "regions": 202,
+    "files": 470,
+    "regions": 246,
     "code": 29
   },
   "items": [
@@ -2873,6 +2873,182 @@
       "family": "assets/art/garden"
     },
     {
+      "id": "836fc38474481345fb5c8156",
+      "kind": "file",
+      "path": "assets/art/garden/cinematic/atuacao-yuna-nanda-v1.png",
+      "title": "atuacao-yuna-nanda-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2770854,
+      "sha256": "41ec315ecba41c2a5bfe845b2fda7bcf3dba7945bd52e09292fd73ebf219a3e0",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/cinematic"
+    },
+    {
+      "id": "4d7896b2946bcec712f7ff06",
+      "kind": "file",
+      "path": "assets/art/garden/cinematic/casa-sem-atores-v1.png",
+      "title": "casa-sem-atores-v1.png",
+      "format": "png",
+      "width": 1652,
+      "height": 952,
+      "bytes": 3064817,
+      "sha256": "fa773928e5f21871f6d4ab9c80719d434519b2fdcd201fa7dfab9cf409e41985",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/cinematic"
+    },
+    {
+      "id": "bc8c949e4c83a36e85075c6b",
+      "kind": "file",
+      "path": "assets/art/garden/cinematic/piquenique-sem-yuna-v1.png",
+      "title": "piquenique-sem-yuna-v1.png",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 3107519,
+      "sha256": "ddfbd20e45e36538a72bbe7ecea3ae6c155303ad265ee27abdabbbd6708b369e",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/cinematic"
+    },
+    {
+      "id": "3cf9ccd110b4b941704d0b37",
+      "kind": "file",
+      "path": "assets/art/garden/narrative/abertura-yuna-v1.png",
+      "title": "abertura-yuna-v1.png",
+      "format": "png",
+      "width": 1652,
+      "height": 952,
+      "bytes": 3177325,
+      "sha256": "44b3f48b57d5ff14a2a32b349ea70e79183f4955971216a5acf45f0614fa4ff8",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/narrative"
+    },
+    {
+      "id": "904dd887bf9d092b2676e4e9",
+      "kind": "file",
+      "path": "assets/art/garden/narrative/piquenique-descanso-v2.png",
+      "title": "piquenique-descanso-v2.png",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 3053394,
+      "sha256": "d66cb1ceaf560d11334c1f63431f51da907458201c14d3788648a77cda127fb1",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/narrative"
+    },
+    {
+      "id": "3a7944ff38e6dc797e06f128",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "cinematic-atuacao-v1.png",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
+      "id": "8a06fd38747657b40cd188e8",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "insetos-v1.png",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
+      "id": "167eabb8d871688bf590380b",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "medo-menina-acoes-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
+      "id": "a0db707db852057fcd4bde5f",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "medo-menina-corrida-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
+      "id": "a5d977098d6b117f97bbdfde",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "medo-menina-desconforto-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
+      "id": "eed8843db2719b17828569b7",
+      "kind": "file",
+      "path": "assets/art/garden/runtime/medo-menina-pedrinhas-v2.png",
+      "title": "medo-menina-pedrinhas-v2.png",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 417513,
+      "sha256": "8e2ca60a3d5e29713021e0c040bd2b1140641e945ad2453c996d4d38f8a4608a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/runtime"
+    },
+    {
       "id": "1c90b2328333b2360f4203cf",
       "kind": "file",
       "path": "assets/art/garden/runtime/menina-acoes-v1.png",
@@ -2899,8 +3075,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/runtime"
     },
@@ -2953,6 +3136,22 @@
       "family": "assets/art/garden/runtime"
     },
     {
+      "id": "5d6b6ff7c7767fcc7d54ce02",
+      "kind": "file",
+      "path": "assets/art/garden/source/abelha-camadas-v2.png",
+      "title": "abelha-camadas-v2.png",
+      "format": "png",
+      "width": 2048,
+      "height": 768,
+      "bytes": 1792220,
+      "sha256": "fc177f023de95dc93c618b9a0182fa0403c511f004fe7385ed8f7311fc5d2b05",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
       "id": "0bc5a1aee4f6ffb210485f07",
       "kind": "file",
       "path": "assets/art/garden/source/ambiente-v2.png",
@@ -2962,6 +3161,22 @@
       "height": 1024,
       "bytes": 2913232,
       "sha256": "d3421a9866821511ac227afcbaf9010ad2a6ce42435b58104fd59e98bd9a649f",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
+      "id": "f872b49fb0e5c2843be71bff",
+      "kind": "file",
+      "path": "assets/art/garden/source/insetos-v1.png",
+      "title": "insetos-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2113911,
+      "sha256": "ffeb51af768445c33592c403a139275316b34431c51dce01a1cc9e2220e260fa",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -3026,6 +3241,22 @@
       "height": 1024,
       "bytes": 2656203,
       "sha256": "22ba93bc93cc6f329240fcb5d2f3874d6b72fac28994e8ffa0bddf05b82aafa2",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/garden/source"
+    },
+    {
+      "id": "5e5249a7ca13d1ca35cb7f5b",
+      "kind": "file",
+      "path": "assets/art/garden/source/menina-medo-v1.png",
+      "title": "menina-medo-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1642616,
+      "sha256": "b87b031f7ee8fdf6e511f987a0dec6a607e1c2dc0e957d4168a0c801024dec69",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -15916,8 +16147,14 @@
           "alias": "toy-room-illustrated-fairy-v1"
         },
         {
+          "file": "src/js/garden/GardenCinematic.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/garden/GardenRenderer.js",
-          "line": 11,
+          "line": 16,
           "type": "runtime",
           "alias": null
         },
@@ -23671,8 +23908,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23696,8 +23940,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23721,8 +23972,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23746,8 +24004,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23771,8 +24036,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23796,8 +24068,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23821,8 +24100,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -23846,8 +24132,15 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/garden/prompts-medo-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24734,6 +25027,1106 @@
         "height": 558
       },
       "parentId": "0c6cf827a290ca8bcd9e4119"
+    },
+    {
+      "id": "54ecc7168755bb176964a5c3",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 1",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 4,
+        "width": 323,
+        "height": 548
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "367d6c6f95eace74a0e83da3",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 2",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 644,
+        "y": 4,
+        "width": 318,
+        "height": 535
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "ff99a48f7ec83f211b59fbf7",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 3",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1284,
+        "y": 4,
+        "width": 315,
+        "height": 526
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "e2c97afd09d8108b07fee741",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 4",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1924,
+        "y": 4,
+        "width": 415,
+        "height": 391
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "230108e76e2481d8246c1644",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 5",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 644,
+        "width": 428,
+        "height": 399
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "fced278adb50048f6ef67e40",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 6",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 644,
+        "y": 644,
+        "width": 434,
+        "height": 398
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "0c6d95ef4fa0fe62e3bd836d",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 7",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1284,
+        "y": 644,
+        "width": 297,
+        "height": 308
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "67febd455d86834bb083b383",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+      "title": "jardim · atuação cinematográfica · quadro 8",
+      "format": "png",
+      "width": 2560,
+      "height": 1280,
+      "bytes": 2053778,
+      "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1924,
+        "y": 644,
+        "width": 322,
+        "height": 309
+      },
+      "parentId": "3a7944ff38e6dc797e06f128"
+    },
+    {
+      "id": "6742dc6308935e9c153b462a",
+      "kind": "region",
+      "path": "assets/art/garden/source/abelha-camadas-v2.png",
+      "title": "jardim · abelha em camadas · quadro body1",
+      "format": "png",
+      "width": 2048,
+      "height": 768,
+      "bytes": 1792220,
+      "sha256": "fc177f023de95dc93c618b9a0182fa0403c511f004fe7385ed8f7311fc5d2b05",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/source",
+      "region": {
+        "x": 56,
+        "y": 71,
+        "width": 960,
+        "height": 607
+      },
+      "parentId": "5d6b6ff7c7767fcc7d54ce02"
+    },
+    {
+      "id": "3c7e107d8dff1da6abedc37c",
+      "kind": "region",
+      "path": "assets/art/garden/source/abelha-camadas-v2.png",
+      "title": "jardim · abelha em camadas · quadro wings1",
+      "format": "png",
+      "width": 2048,
+      "height": 768,
+      "bytes": 1792220,
+      "sha256": "fc177f023de95dc93c618b9a0182fa0403c511f004fe7385ed8f7311fc5d2b05",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/source",
+      "region": {
+        "x": 1176,
+        "y": 224,
+        "width": 812,
+        "height": 417
+      },
+      "parentId": "5d6b6ff7c7767fcc7d54ce02"
+    },
+    {
+      "id": "f0e0d1eed6e83e48516cfcc9",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 1",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 4,
+        "width": 458,
+        "height": 400
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "904a60b5f8495fb23a65af4b",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 2",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 684,
+        "y": 4,
+        "width": 473,
+        "height": 241
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "54cbb1ce5bbea6511a6de8bd",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 3",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1364,
+        "y": 4,
+        "width": 481,
+        "height": 346
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "b4919d01320a952b0e5e9a53",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 4",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 4,
+        "y": 516,
+        "width": 563,
+        "height": 344
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "fac5cfb91f56e34684ba8376",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 5",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 684,
+        "y": 516,
+        "width": 332,
+        "height": 359
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "e82c4cbf01bccf39a7e9ac1f",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/insetos-v1.png",
+      "title": "jardim · insetos · quadro 6",
+      "format": "png",
+      "width": 2048,
+      "height": 1024,
+      "bytes": 1603324,
+      "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1364,
+        "y": 516,
+        "width": 333,
+        "height": 304
+      },
+      "parentId": "8a06fd38747657b40cd188e8"
+    },
+    {
+      "id": "cd4b0dd33c77cf2045b65eb8",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 10,
+        "width": 158,
+        "height": 256
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "5fe60a446ee5123503336219",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 10,
+        "width": 158,
+        "height": 257
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "34d4d2c966c3b3006b0f5c57",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 10,
+        "width": 163,
+        "height": 255
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "05244afe90b986f52b4fd102",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 10,
+        "width": 169,
+        "height": 255
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "1a5497271c91e42a78fcf7e5",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 394,
+        "width": 165,
+        "height": 251
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "50438014d286efa2587e2d39",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 394,
+        "width": 165,
+        "height": 257
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "8a28f7177dd5695939d32c05",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 7",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 394,
+        "width": 167,
+        "height": 257
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "408ee1e89e997f1b1fe29020",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-corrida-v1.png",
+      "title": "jardim · medo · menina-corrida-v1 · quadro 8",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 634164,
+      "sha256": "dd7dc28691bca9425f11867d66bb9005f4e96da3dd0a5f33189411a8e0dde55a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 394,
+        "width": 175,
+        "height": 255
+      },
+      "parentId": "a0db707db852057fcd4bde5f"
+    },
+    {
+      "id": "52de2f8f93ca827bf6eab7ee",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 10,
+        "width": 179,
+        "height": 243
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "92cc0ab82a0619ebe021ae82",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 10,
+        "width": 173,
+        "height": 247
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "4865a24220d4581f7a85d1ca",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 10,
+        "width": 176,
+        "height": 211
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "477bda73d4eac63e676a0639",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 10,
+        "width": 175,
+        "height": 244
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "8721f565e45a78eeab7a5f9c",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 394,
+        "width": 178,
+        "height": 249
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "fcbd1c9ae36134e82fe8e375",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 394,
+        "width": 181,
+        "height": 251
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "9c840f4b78cfa860bd9bba46",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 7",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 394,
+        "width": 202,
+        "height": 190
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "796aeea09523fc55a657b80f",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-acoes-v1.png",
+      "title": "jardim · medo · menina-acoes-v1 · quadro 8",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 624135,
+      "sha256": "db2d70af2aa102fb832ebf50bf17fc6305af2fb79b4ae17f4ce8d121e7820375",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 394,
+        "width": 160,
+        "height": 256
+      },
+      "parentId": "167eabb8d871688bf590380b"
+    },
+    {
+      "id": "de00407cf6005d00d3683f0a",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 10,
+        "width": 171,
+        "height": 258
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "46af91f2408e82a91988a3db",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 10,
+        "width": 163,
+        "height": 257
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "ac07b5556c1e11a295dcc45c",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 10,
+        "width": 176,
+        "height": 255
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "f7329f98ca6ebfbea7f8a77a",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 10,
+        "width": 163,
+        "height": 257
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "7c8aabb572ca43a0be5871ab",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 394,
+        "width": 195,
+        "height": 250
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "2f36e67d1c3e3390fd67e6f1",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 394,
+        "width": 198,
+        "height": 245
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "6c2318527449a25e80b43050",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 7",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 778,
+        "y": 394,
+        "width": 188,
+        "height": 205
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "7a2ca7b557296709c2d3787b",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-desconforto-v1.png",
+      "title": "jardim · medo · menina-desconforto-v1 · quadro 8",
+      "format": "png",
+      "width": 1536,
+      "height": 768,
+      "bytes": 657459,
+      "sha256": "3e6979a0632182068c58cb64ae4bc95ba982bf60142cc5d7d81f12fd7bb97e63",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 1162,
+        "y": 394,
+        "width": 158,
+        "height": 256
+      },
+      "parentId": "a5d977098d6b117f97bbdfde"
+    },
+    {
+      "id": "fb9d6c27b7691d7333668462",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-pedrinhas-v2.png",
+      "title": "jardim · medo · menina-pedrinhas-v2 · quadro 1",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 417513,
+      "sha256": "8e2ca60a3d5e29713021e0c040bd2b1140641e945ad2453c996d4d38f8a4608a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 10,
+        "width": 244,
+        "height": 254
+      },
+      "parentId": "eed8843db2719b17828569b7"
+    },
+    {
+      "id": "13df9ea4afd304032e38fa36",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-pedrinhas-v2.png",
+      "title": "jardim · medo · menina-pedrinhas-v2 · quadro 2",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 417513,
+      "sha256": "8e2ca60a3d5e29713021e0c040bd2b1140641e945ad2453c996d4d38f8a4608a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 10,
+        "width": 196,
+        "height": 256
+      },
+      "parentId": "eed8843db2719b17828569b7"
+    },
+    {
+      "id": "3fdfe44229f6488979f58299",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-pedrinhas-v2.png",
+      "title": "jardim · medo · menina-pedrinhas-v2 · quadro 3",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 417513,
+      "sha256": "8e2ca60a3d5e29713021e0c040bd2b1140641e945ad2453c996d4d38f8a4608a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 10,
+        "y": 394,
+        "width": 274,
+        "height": 259
+      },
+      "parentId": "eed8843db2719b17828569b7"
+    },
+    {
+      "id": "55adeec299390dd30be25fd0",
+      "kind": "region",
+      "path": "assets/art/garden/runtime/medo-menina-pedrinhas-v2.png",
+      "title": "jardim · medo · menina-pedrinhas-v2 · quadro 4",
+      "format": "png",
+      "width": 768,
+      "height": 768,
+      "bytes": 417513,
+      "sha256": "8e2ca60a3d5e29713021e0c040bd2b1140641e945ad2453c996d4d38f8a4608a",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [
+        "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
+      ],
+      "family": "assets/art/garden/runtime",
+      "region": {
+        "x": 394,
+        "y": 394,
+        "width": 193,
+        "height": 262
+      },
+      "parentId": "eed8843db2719b17828569b7"
     },
     {
       "id": "c6753920c284ebe5ad75f445",

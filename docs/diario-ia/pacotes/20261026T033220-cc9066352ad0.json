@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T033220-cc9066352ad0",
+  "date": "2026-10-26T03:32:20.109427+00:00",
+  "title": "Gameplay crítico por etapa de Yuna",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+      "sourceId": "3f46f7a30bb0c73ca22bd1def67258e719ef1904c7741a060e40b54d6db7ac61",
+      "sha256": "7cbd31bb8eae6893dedb6d13968e447750fb2c53e45ccbb11d3cd9045df3ba6c",
+      "bytes": 6495,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/piloto-base.mjs",
+      "sourceId": "a1f1111a53f55ae55b9c8271f55f19b80188392d4425b03701c4ca1b2ddfd874",
+      "sha256": "a5e51eff76ec169fa77bc3f80d0fc4a8bbba38bdb03425bb42519c11e0b6d05b",
+      "bytes": 2514,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:browser": "node docs/diario-ia/qa/yuna/gameplay-browser.mjs"
+  }
+}

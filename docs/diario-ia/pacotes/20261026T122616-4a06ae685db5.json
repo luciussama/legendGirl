@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T122616-4a06ae685db5",
+  "date": "2026-10-26T12:26:16.970503+00:00",
+  "title": "Cenas em camadas no host real: formatos, atuação e relógio RAF",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/cenas-camadas-browser.mjs",
+      "sourceId": "74c4be4a87fd37e272664edb83e480058cebeb1cbdbd6a2a85b454cf0d71ff26",
+      "sha256": "5aa8006ddd3d3c4c1e841e7a30d3d8a2f96037bef6e1419482d13f36e782997f",
+      "bytes": 5397,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:cenas:browser": "node docs/diario-ia/qa/yuna/cenas-camadas-browser.mjs"
+  }
+}

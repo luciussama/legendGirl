@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "8ddfbab9be412186bbf144fcc63f3ea50fcf4e2d95b7347186a64b486e4aa903",
+  "path": "qa-execucoes/1eadb1f819c54c469be0f5688aaabfd3/docs/diario-ia/qa-resultados/yuna/cenas-camadas.json",
+  "sha256": "2686024c29422c57744c76af9b6f662bb368647c9b038da07f809a8665581d81",
+  "capturedAt": "2026-10-26T12:26:52.703862+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:cenas:browser"
+  },
+  "encoding": "utf-8",
+  "content": "[\n  {\n    \"formato\": \"desktop\",\n    \"cenas\": 9,\n    \"rendererPuro\": true\n  },\n  {\n    \"formato\": \"retrato\",\n    \"cenas\": 9,\n    \"rendererPuro\": true\n  },\n  {\n    \"formato\": \"paisagem\",\n    \"cenas\": 9,\n    \"rendererPuro\": true\n  },\n  {\n    \"label\": \"convite\",\n    \"quadros\": 11,\n    \"avancoAtivo\": 2.5083333333334563\n  },\n  {\n    \"label\": \"receio\",\n    \"quadros\": 11,\n    \"avancoAtivo\": 2.533366666666584\n  },\n  {\n    \"label\": \"comendo\",\n    \"quadros\": 11,\n    \"avancoAtivo\": 2.5101999999998696\n  }\n]"
+}

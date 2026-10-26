@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T034149-835f341a81c4",
+  "date": "2026-10-26T03:41:49.360761+00:00",
+  "title": "QA de abelhas e percurso com ameaças aéreas",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/phase.html",
+      "sourceId": "0675c817b24250753d32a8d35d0f7729e1bb99149c6a0bd5815e6c0355b61d1a",
+      "sha256": "7cfd9546f81f34c247333930f9434bd902610fc24765bcd6b7faadd86af3aab4",
+      "bytes": 509,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/dominio.mjs",
+      "sourceId": "d5ff83f728bd747292cf5bc7ce3e93ac4f5f1853f2f8636dbcb8230f6b370eaa",
+      "sha256": "472aa1ccaab73f58d43a902e99f3173c2ae994e80b2060f0b3c7c01517d54a0f",
+      "bytes": 2445,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+      "sourceId": "705ddcace15046c75894444ae2b3a3f362a8afcbfb6a13b9576dab8e96519932",
+      "sha256": "377c44f9ecc172b2a508dc2b627ec40f6e6d98eaec5560ebe42f9abfe6bac73c",
+      "bytes": 6349,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/piloto-base.mjs",
+      "sourceId": "64ceb1d6bd65c27acb2e78075374328597d13c3f31d7fb8f4b29a533b0c422ab",
+      "sha256": "6872ba559b03207ec41413d8fe8d3e631ed72c778759faeef56d8c475d77a03e",
+      "bytes": 2609,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:browser": "node docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+    "test:yuna:domain": "node docs/diario-ia/qa/yuna/dominio.mjs"
+  }
+}
