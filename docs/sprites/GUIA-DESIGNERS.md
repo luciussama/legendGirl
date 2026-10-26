@@ -86,3 +86,7 @@ Jardim atual: `source/terra-continua-v1.png` é o material contínuo do subsolo 
 
 
 A revisão vegetal do jardim usa `source/parede-vegetal-v1.png` e os recortes decorativos de `runtime/vida-aquatica-v1.png`; fontes e prompts em `assets/art/garden/`. `prepare-garden-visuals.js` prepara pilar, peixes e plantas em `GardenVisualArt.js`, sem alterar a superfície física dos tampos. A cobertura verde reveste faces e laterais; a grama alta nasce na folhagem baixa. Preserve a geometria dos apoios e a câmera lateral ao editar esses recursos.
+
+## Cenas narrativas de Yuna no jardim
+
+A menina tem seu nome revelado como Yuna pela fala de Nanda na saída de casa. As propostas de abertura e descanso final estão em `docs/diario-ia/arte/cenas-yuna-v1/`, com roteiro e prompts. São ilustrações inteiras para cenas narrativas, ainda sem integração ou aprovação do novo acabamento; não são atlas nem sprites jogáveis. Preserve roupa e identidade do jardim. No final, Yuna descansa sentada e Nanda se senta ao lado com pão e suco na escala de sua mãozinha. A clareira v2 aprovada continua preservada como referência de composição e apoio.

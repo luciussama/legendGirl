@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T022712-35d87f10d0e8-fim",
+  "sessionId": "20261026T022712-35d87f10d0e8",
+  "type": "fim",
+  "date": "2026-10-26T02:27:32.175884+00:00",
+  "title": "Fixar perseguição do besouro nas quatro nuvens finais",
+  "actor": "Codex",
+  "summary": "Usuário escolheu as quatro nuvens finais antes do piquenique para um dos três encontros de besouro, buscando maior dificuldade na conclusão da fase. Grupo identificado como nuvem-final-0 a nuvem-final-3. Mantidos seis segundos, besouro inofensivo e outros dois encontros próximos de rios. Próxima definição: velocidade da corrida por medo.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: decisão exclusivamente documental, sem mudança de runtime."
+  ],
+  "pending": [
+    "Definir velocidade da corrida automática; validar travessia final sob perseguição e transição narrativa. Artes e integração pendentes."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

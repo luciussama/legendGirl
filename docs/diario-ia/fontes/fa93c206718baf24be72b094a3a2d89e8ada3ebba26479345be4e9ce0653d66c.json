@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "fa93c206718baf24be72b094a3a2d89e8ada3ebba26479345be4e9ce0653d66c",
+  "path": "docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v2.prompt.json",
+  "sha256": "7a07c38b928ecb6a6234714f73013bda3454bf766de398e6184d79dc2871869c",
+  "capturedAt": "2026-10-26T02:55:03.754397+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"sessao\": \"20261026T024507-0319b7e6042c\",\n  \"tipo\": \"ajuste de expressão e postura na variante narrativa\",\n  \"referencias\": [\n    \"docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v1.png\"\n  ],\n  \"prompt\": \"Edição pontual da imagem fornecida. Preserve integralmente cenário, enquadramento, personagens, roupa de Yuna, posições, iluminação, chão contínuo e toalha assentada separada das raízes. Preserve especialmente a fada pequena SENTADA ao lado de Yuna comendo pão de sua escala e seu copinho de suco ao alcance. Mude SOMENTE a expressão e postura da menina para ela estar VISIVELMENTE EXAUSTA após longa travessia, mas confortável e acolhida, sem sofrimento ou doença: olhos castanhos com pálpebras baixas, olhar cansado e sereno, ombros caídos e relaxados, tronco ligeiramente curvado para descansar, uma mão apoiada na toalha ajudando a sustentar seu peso e a outra segurando o pão mais baixo perto do colo, em pausa antes de comer. Pernas esticadas repousando como estão; cabelo levemente desalinhado, laços intactos, duas gotinhas discretas de suor. Boca entreaberta num suspiro com um pequeno sorriso aliviado. A menina da imagem atual parece alerta demais, com olhos muito abertos e as duas mãos levantando o pão; substituir por repouso e cansaço claramente legíveis. Não mudar sua identidade, proporções infantis, vestidinho turquesa com doces, camiseta amarela ou tênis rosa. Urso, dinossauro, robô, trem, fada e todos os alimentos permanecem iguais. Nenhum novo personagem, texto, símbolo ou objeto. Pintura infantil poética quente e delicada. A diferença deve ser sobretudo a menina finalmente soltando o corpo e descansando.\",\n  \"resultado\": \"piquenique-descanso-v2.png\",\n  \"estado\": \"Proposta nova: cansaço de Yuna mais legível; aguarda avaliação humana, sem integração. Versões anteriores preservadas.\"\n}\n"
+}

@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T022208-8922d7259ded-fim",
+  "sessionId": "20261026T022208-8922d7259ded",
+  "type": "fim",
+  "date": "2026-10-26T02:22:23.357331+00:00",
+  "title": "Confirmar seis segundos de perseguição do besouro",
+  "actor": "Codex",
+  "summary": "Usuário aprovou seis segundos para a perseguição aérea do besouro inofensivo e corrida automática da menina, com controle manual do pulo. Ao fim, besouro desiste e vai embora e controle normal retorna. Mantido congelamento de relógios em pausa/perda de foco. Próxima definição: quantidade de encontros.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: decisão exclusivamente documental, sem alteração de runtime."
+  ],
+  "pending": [
+    "Definir quantidade de encontros do besouro; sugestão de três encontros separados próximos de rios ainda não aprovada. Artes, calibração e integração permanecem pendentes."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

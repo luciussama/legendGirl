@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T023946-94bd0076a14a-fim",
+  "sessionId": "20261026T023946-94bd0076a14a",
+  "type": "fim",
+  "date": "2026-10-26T02:40:14.787124+00:00",
+  "title": "Manter perseguição idêntica no EASY com ajuda existente da fada",
+  "actor": "Codex",
+  "summary": "Usuário decidiu manter a perseguição do besouro igual no EASY, com seis segundos e mesmas regras; ajuda já existente da fada permanece, sem assistência adicional específica. Mantidos demais parâmetros aprovados. Próxima definição: novos diálogos ou apresentação apenas ilustrada no encerramento.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: decisão documental, sem implementação."
+  ],
+  "pending": [
+    "Definir apresentação com ou sem novos diálogos no piquenique; preparar artes de medo/voo, calibrar distribuição e integrar após definições necessárias."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

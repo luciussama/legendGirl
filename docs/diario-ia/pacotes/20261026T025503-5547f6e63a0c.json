@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T025503-5547f6e63a0c",
+  "date": "2026-10-26T02:55:03.755324+00:00",
+  "title": "Roteiro poético e prompts integrais das cenas de Yuna",
+  "files": [
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/abertura-yuna-v1.prompt.json",
+      "sourceId": "c1e973860bf25e7f4e5078bdd44e4dafaec4c0aa71daee514e31c66ca4d1945b",
+      "sha256": "8b8618b568adf38bb42062bb86fd01ca2e8cbc986b24475adf03de13e7050dc1",
+      "bytes": 2430,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/manifesto.json",
+      "sourceId": "e870cd603a8b55f26db0eb80a10f30a8022813fa9b0e797ad5729c101e507bfa",
+      "sha256": "a3e360fe3f4a6708d8dc7ba0b0b181378b9c053ceba922dc366358d69f5585e9",
+      "bytes": 1125,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v1.prompt.json",
+      "sourceId": "16c0e54397ca3a4dec35243dd12e5a4c6bff4986920b4eaa36564f763f182c8f",
+      "sha256": "0b73475eea0adcdfd1be73a95fc7f0d8b751e3a8f52d10622b76848e2f0f0c61",
+      "bytes": 472,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v2.prompt.json",
+      "sourceId": "fa93c206718baf24be72b094a3a2d89e8ada3ebba26479345be4e9ce0653d66c",
+      "sha256": "7a07c38b928ecb6a6234714f73013bda3454bf766de398e6184d79dc2871869c",
+      "bytes": 1910,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/roteiro.md",
+      "sourceId": "4bb668e2161c160e4d406acd072eacb34248f1ecb60fd6c8a158ea583c6f2b5f",
+      "sha256": "6f11d889a4f309c4ed894017d7ecdaa6ed48ba928cd28422c92f1c32af45a150",
+      "bytes": 5355,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

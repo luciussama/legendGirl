@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "e870cd603a8b55f26db0eb80a10f30a8022813fa9b0e797ad5729c101e507bfa",
+  "path": "docs/diario-ia/arte/cenas-yuna-v1/manifesto.json",
+  "sha256": "a3e360fe3f4a6708d8dc7ba0b0b181378b9c053ceba922dc366358d69f5585e9",
+  "capturedAt": "2026-10-26T02:55:03.753350+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"schemaVersion\": 1,\n  \"sessionId\": \"20261026T024507-0319b7e6042c\",\n  \"artes\": [\n    {\n      \"caminho\": \"docs/diario-ia/arte/cenas-yuna-v1/abertura-yuna-v1.png\",\n      \"bytes\": 3177325,\n      \"width\": 1652,\n      \"height\": 952,\n      \"sha256\": \"44b3f48b57d5ff14a2a32b349ea70e79183f4955971216a5acf45f0614fa4ff8\"\n    },\n    {\n      \"caminho\": \"docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v1.png\",\n      \"bytes\": 3097674,\n      \"width\": 1652,\n      \"height\": 952,\n      \"sha256\": \"af576caffba0b9442afb26fc78cadde4a3e6742204638374bfb858126386b938\"\n    },\n    {\n      \"caminho\": \"docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v2.png\",\n      \"bytes\": 3053394,\n      \"width\": 1653,\n      \"height\": 952,\n      \"sha256\": \"d66cb1ceaf560d11334c1f63431f51da907458201c14d3788648a77cda127fb1\"\n    }\n  ],\n  \"integrado\": false,\n  \"aprovacaoHumanaRecebida\": false,\n  \"roteiro\": \"roteiro.md\",\n  \"prompts\": [\n    \"abertura-yuna-v1.prompt.json\",\n    \"piquenique-descanso-v1.prompt.json\",\n    \"piquenique-descanso-v2.prompt.json\"\n  ],\n  \"propostasAtuais\": [\n    \"abertura-yuna-v1.png\",\n    \"piquenique-descanso-v2.png\"\n  ]\n}\n"
+}

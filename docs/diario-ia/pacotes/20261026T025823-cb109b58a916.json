@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T025823-cb109b58a916",
+  "date": "2026-10-26T02:58:23.429209+00:00",
+  "title": "Correção aditiva: prompt integral da primeira variante do piquenique de Yuna",
+  "files": [
+    {
+      "path": "docs/diario-ia/arte/cenas-yuna-v1/piquenique-descanso-v1.prompt.json",
+      "sourceId": "0bb82d9235dd48874c32d1481ec8bacf8be04678a8b78f9a14cebf2f45f2463a",
+      "sha256": "20fec052eb545266b44d438155a632bb7eaafa697324645f6b138349009069a5",
+      "bytes": 2840,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}
