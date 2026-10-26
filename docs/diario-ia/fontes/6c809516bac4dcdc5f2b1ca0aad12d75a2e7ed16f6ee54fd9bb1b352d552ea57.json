@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6c809516bac4dcdc5f2b1ca0aad12d75a2e7ed16f6ee54fd9bb1b352d552ea57",
+  "path": "assets/art/garden/prompts-piquenique-lateral-v3.json",
+  "sha256": "ca8b5c2d2fb112309d1173dd87b9cb5c9ee556b2f476cb2c6447a947e72a5529",
+  "capturedAt": "2026-10-26T14:59:56.818321+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"tool\": \"image_gen integrada\",\n  \"reference\": \"source/ambiente-v2.png: piquenique\",\n  \"file\": \"source/piquenique-lateral-v3.png\",\n  \"purpose\": \"Toalha assentada no chão lateral antes da cena final, sem sobrepor a árvore.\",\n  \"prompt\": \"Use case: identity-preserve. Asset: replacement picnic prop sprite for a SIDE-SCROLLING children's platform game. Use ONLY the bottom-right picnic group of the reference image for identities/style. Create one isolated wide picnic group on genuine RGBA transparent background, no environment. Same brown teddy with blue bandana, green toy dinosaur with orange spines, friendly red robot, colorful toy train, warm bread on plates and orange juice pitcher/cups. CRITICAL CAMERA: strict very LOW eye-level SIDE VIEW, NOT the old overhead/isometric view. A plaid picnic blanket lies FLAT on a single horizontal ground baseline, extremely foreshortened vertically, like a thin soft horizontal strip with fringe (blanket vertical depth at most 8% of its width). All toys sit firmly on the blanket with their bottoms/feet at the same ground baseline. Bread and juice sit grounded on the thin blanket too, with restrained contact shadows. No floating props or thick pedestal. Objects may overlap naturally but must be readable. No tree, grass bank, soil block, girl, fairy, lettering, grid or background. Keep the exact warm hand-painted storybook detail and consistent toy proportions of the reference. Whole silhouettes visible, generous transparent margin on all sides. A wide composition with teddy left, dinosaur center-left, robot center-right and train right; food arranged in front without tall perspective depth. Transparent background.\"\n}\n"
+}

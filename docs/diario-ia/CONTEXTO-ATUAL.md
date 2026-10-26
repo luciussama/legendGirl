@@ -1,16 +1,50 @@
 # Contexto compartilhado vigente
 
-## Quiz de decisões em andamento — correções posteriores, 26/10/2026
+## Execução autorizada do plano E0–E7 — 26/10/2026
 
-Usuário aprovou a avaliação crítica e pediu um pequeno quiz para escolher as soluções. **As respostas formarão um plano a registrar no diário para execução posterior; não implementar agora.** Sessão `20261026T133552-bbac7320ffe3`.
+Usuário solicitou executar as tarefas combinadas. Sessão `20261026T161022-c730f1437be6`, em andamento. A limitação da sessão de planejamento abaixo não impede esta execução posterior autorizada. Preservado trabalho anterior, sem commit/push.
 
-Quiz `docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json`: seis perguntas, uma por vez, com resposta livre também aceita. Temas: comunicação do besouro, avanço das cenas, ensino dos perigos, risco nos rios, ação após encerramento e alcance do polimento visual. Nenhuma resposta recebida; próxima pergunta é **1/6, aviso do besouro**. Opções: fala curta no primeiro encontro e setas atenuadas em todos (recomendação); somente setas atenuadas; somente fala. Recomendação/seleção prévia não constitui resposta nem aprovação.
+E0–E6 implementadas: besouro em camadas, HUD legível, narrador antes do primeiro encontro/Nanda em todos, poses completas de medo, cenas com avanço manual e save v8, corte sem pose deslizando na abertura, comida suavizada, pistas naturais dos perigos e composição por setor. Física/mapa/contato/encontros mantidos. QA por etapa Normal/Fácil e três formatos executado; E7 integrado em andamento. `docs/diario-ia/qa/polimento/andamento.json` conserva o checkpoint; o encerramento final substituirá este estado. Não declarar homologação humana/Safari/aparelho físico.
+
+## Plano consolidado após o quiz — execução posterior, 26/10/2026
+
+Usuário aprovou a avaliação crítica e concluiu as seis escolhas do quiz. **O plano está consolidado para execução posterior; não iniciar as etapas nesta sessão de planejamento.** Sessão de consolidação `20261026T151945-e33ad4346129`. As duas exceções prioritárias (tapete assentado/separado da árvore e diálogo sem tarja) já foram concluídas na sessão `20261026T145101-165ca5da758b`.
+
+Quiz `docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json`: **seis respostas confirmadas, nenhuma pergunta restante**. Plano revisável em `docs/diario-ia/planos/plano-correcoes-jardim-20261026.md`. Pacote final `20261026T152458-f9b3755129bb`: fonte do quiz `52647ab04cbc40b3a5c666de97e9e2ce0a38e493264812be15ccb7b5f6758c0a`; fonte do plano `551dfc7c01ad9fe37812418aee0252c332036f317c74e68e2881a7b37f957280`. Recuperar pelo acervo se faltarem as cópias de trabalho locais.
+
+Decisão 6, sessão `20261026T151945-e33ad4346129`: manter a estética, variar a composição dos cenários por setor e suavizar as atuações. Não adotar a alternativa de substituir os fundos por novas pinturas completas de cada setor. Preservar a intensidade de medo da decisão 1 e o piquenique/diálogo já corrigidos.
+
+Ordem futura: E0 referência/QA; E1 HUD, voo estável e comunicação do besouro; E2 medo completo/passadas exageradas; E3 falas manuais e persistência; E4 passos da abertura/comida; E5 pistas dos perigos/rios; E6 composição por setor; E7 revisão integrada. Arquivos prováveis, dependências, critérios de aceite, riscos e testes estão no plano. Fazer gameplay crítico a cada etapa de mudança, percursos integrais Normal/Fácil e revisão dos três formatos. Avanço manual exige atualizar os drivers de QA que presumem INTRO automática; não forçar RUNNING para declarar a abertura testada.
+
+Decisão 5, sessão `20261026T145101-165ca5da758b`: permanecer no piquenique depois da última fala, sem oferecer saída/replay nem iniciar próxima fase inexistente. Haverá outras fases futuramente, ainda não trabalhadas. “Cena parada” entendida como permanência nessa apresentação, conservando as animações contínuas escolhidas na resposta 2, sem voltar a imagem fixa. Esta decisão supera a sugestão N05 de acrescentar botões finais.
+
+Correções prioritárias concluídas na mesma sessão: nova composição `source/piquenique-lateral-v3.png`, preparada em runtime por `prepare-garden-picnic.js`/`GardenPicnicArt.js`, com perspectiva baixa e âncora no plano do tecido; árvore deslocada apenas no desenho para separar raízes/toalha. Física, chão e destino não alterados. Cenas agora mostram a pintura no canvas inteiro e apenas o quadro de diálogo opaco, sem faixa clara de largura total; atores respeitam a maior fala por cena. Inspeção antes/depois em 21 cenas por rodada e três formatos, gameplays integrais Normal/Fácil, chegada por teclado/RAF com quatro nuvens finais, pausa/restore, `npm test`, revisão de sprites, build/assets/lint/sintaxe/diff aprovados. Mapa: 472 imagens/247 recortes/29 assinaturas; referência: 172 módulos/1130 declarações. Sem homologação em aparelho físico/Safari.
+
+Decisão 4, sessão `20261026T143257-174d016a4e1f`: manter o desafio dos rios e melhorar a antecipação visual dos perigos, sem alterar física nem quantidade de inimigos. Não aplicar a alternativa de reduzir a combinação de riscos por recalibração das formigas. Melhorar composição, contraste e gestos naturais sem linhas auxiliares, mudança de apoios ou câmera seguindo salto. Regras do besouro, incluindo seis segundos e velocidade normal, preservadas.
+
+Decisão 3, sessão `20261026T140517-6ca0a5fc8828`: somente pistas visuais para ensinar minhoca/abelha, como movimento natural da terra e preparação mais clara antes do rasante, **sem novas falas**. Preservar susto, proximidade e dano da minhoca; aviso breve, dano, pisão e retorno da abelha; nenhuma régua visual ou mudança de superfície física. Esta escolha não revoga narrador/Nanda já confirmados para os encontros do besouro.
+
+Decisão 2, sessão `20261026T135931-5224f58e6af8`: usuário escolheu toque/tecla para avançar as falas no próprio ritmo, mantendo as animações, e permitir pular cenas já vistas. Aplicar à abertura e ao piquenique. Separar progresso do texto e relógio de atuação; esperar não deve trocar a fala automaticamente. Consumir a entrada de avanço na transição para não provocar salto involuntário. A tecla específica não foi escolhida; isso será definido no plano técnico.
+
+Decisão 1, sessão `20261026T134503-3ce037c79f6e`, corrigida pelo usuário durante a mesma sessão: **narrador orienta sobre o comando; Nanda tranquiliza em todos os encontros** com a fala literal “calma, Yuna, é só um besouro. Ele não vai te fazer mal”. Aplicar também nas repetições de perseguição após checkpoint/resgate. A orientação do narrador mantém a referência anterior ao primeiro encontro; sua frase ainda será redigida, sem atribuir aprovação literal inexistente. A fala de Nanda acompanha a perseguição; o usuário não quantificou uma cadência de repetição dentro dos seis segundos, portanto não presumir um loop rápido de texto.
+
+Yuna deve mostrar medo muito evidente, como criança diante de bichinho, com passadas longas, exageradas e desajeitadas, parecendo prestes a cair. Tudo exclusivamente visual: seis segundos, velocidade normal, salto, colisões e apoios físicos preservados, inclusive no Fácil. Não atribuir aprovação à atenuação das setas: essa parte das opções não foi escolhida expressamente. A mensagem livre inicial e o retorno do widget repetem a mesma decisão e contam uma vez; a mensagem posterior corrige os papéis de narrador/Nanda, sem criar uma segunda resposta do quiz. Não reapresentar a intensidade do medo como questão aberta no polimento final.
 
 Definição inicial preservada no pacote `20261026T133812-88571621b061`, fonte `cbb9fb456c3fbddbc0b62a2193df897962d4f74c7c463766a1538e7fa44b234d`. Recuperar esta fonte se a cópia de trabalho não existir; respostas posteriores geram novas versões, sem reescrever a definição arquivada.
 
+Estado atualizado com resposta 1 e correção dos papéis de narrador/Nanda: pacote `20261026T134810-5d0e2e36d919`, fonte `0eb75466cd02558a24850650fa9602c8146e59bb67ac1c9d5fcfbcb16b600b43`. Para retomar, esta versão prevalece sobre a definição inicial e sobre a resposta intermediária que atribuía a orientação à fada.
+
+Versão com respostas 1 e 2: pacote `20261026T140117-705079a2de55`, fonte `1fe7becb0bfb12b66d34967cdf0f24e8224b3047c9e5c94bb35f8f756b40a133`.
+
+Versão com respostas 1 a 3: pacote `20261026T140605-a077171c2698`, fonte `2c1b3a332b91d7faf06c7ae7b3591bad185898b1a62400af08d907d37781962a`.
+
+Versão com respostas 1 a 4: pacote `20261026T143324-7cda90e0731b`, fonte `e1f89a4921489c1022ce9855ebcc659ffd116b7d84679d32c59e1d07b947162a`.
+
+Versão com respostas 1 a 5 e duas exceções prioritárias concluídas: pacote `20261026T151010-360f82c4ad08`, fonte do quiz `489e829ea1824e28c9f71f6af0b71e9506df40c91673f6243036938672a65f2e`. Acervo inclui avaliação final, fontes de QA e hashes/tamanhos de 135 capturas descartadas. Versão final de seis respostas e plano estão identificados no início desta seção.
+
 Correções técnicas já incluídas na base proposta do plano: corpo estável do besouro, HUD móvel legível e eliminação do deslizamento/continuidade da saída de casa. As escolhas definem a experiência e o alcance das demais soluções. Preservar seis segundos/velocidade normal do besouro, regras iguais no Fácil, resgate, minhoca como espinho, abelha com aviso/retorno, física dos pés e câmera jogável somente lateral. Não reapresentar essas definições como perguntas abertas.
 
-A cada resposta, registrar a decisão de forma aditiva, atualizar o estado do quiz e apresentar a próxima pergunta. Ao terminar, consolidar ações, sequência, arquivos prováveis, dependências e critérios de aceite, com gameplay crítico após cada etapa e percurso integral Normal/Fácil/três formatos. Não inventar respostas ausentes nem declarar o plano final concluído antes das escolhas.
+Ao retomar para executar, registrar uma nova sessão e seguir o plano consolidado, sem reabrir as seis escolhas. Detalhes técnicos de teclas, campos do save e âncoras são escolhas de implementação a validar; não são uma nova rodada obrigatória de quiz. Atenuação das setas continua fora das decisões confirmadas. Não tratar o planejamento como implementação ou teste já concluído das etapas futuras.
 
 ## Auditoria crítica integral — 26/10/2026
 

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "79ae17128239ae64270a9014bf8253f3a22dcd0ddc8e34c9283962a95898d4c8",
+  "path": "qa-execucoes/5f747b64b8194a7eb75c3748551cb1fc.log",
+  "sha256": "058d40285a4983c2b8a61603eb6d056470eb384b68d24f8a863e723d26f83eb1",
+  "capturedAt": "2026-10-26T14:59:56.773539+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:piquenique:browser",
+    "exitCode": 0,
+    "package": "20261026T145807-06de24e9437a"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:piquenique:browser\n> node docs/diario-ia/qa/piquenique/browser.mjs antes\n\n{\"label\":\"antes\",\"cenas\":21}\n"
+}

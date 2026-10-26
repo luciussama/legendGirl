@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "f764b22f42a26717bad488fca2752f08ea8cc4593fa16e1824722a4095aa84a5",
+  "path": "qa-execucoes/8bb7822d4c554cac81135a641832c5c0/docs/diario-ia/qa-resultados/yuna/leitura-polimento.json",
+  "sha256": "481d502c2d6d222bb56c2d0cbac3da3c18ca43728d481048f80c91254a8ac82f",
+  "capturedAt": "2026-10-26T16:31:41.566560+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:polimento:cenas:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"report\": {\n    \"espera\": true,\n    \"teclaMantida\": true,\n    \"toque\": true,\n    \"pausa\": true,\n    \"saveLeitura\": true,\n    \"semPuloDeTransicao\": true,\n    \"skipVisto\": true\n  },\n  \"scenes\": [\n    {\n      \"name\": \"desktop\",\n      \"indices\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7,\n        8,\n        9\n      ]\n    },\n    {\n      \"name\": \"retrato\",\n      \"indices\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7,\n        8,\n        9\n      ]\n    },\n    {\n      \"name\": \"paisagem\",\n      \"indices\": [\n        0,\n        1,\n        2,\n        3,\n        4,\n        5,\n        6,\n        7,\n        8,\n        9\n      ]\n    }\n  ]\n}"
+}

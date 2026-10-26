@@ -14,13 +14,15 @@
     "source/parede-vegetal-v1.png",
     "runtime/vida-aquatica-v1.png",
     "runtime/insetos-v1.png",
-    "runtime/medo-menina-corrida-v1.png",
-    "runtime/medo-menina-acoes-v1.png",
-    "runtime/medo-menina-desconforto-v1.png",
-    "runtime/medo-menina-pedrinhas-v2.png",
     "cinematic/casa-sem-atores-v1.png",
     "cinematic/piquenique-sem-yuna-v1.png",
     "source/abelha-camadas-v2.png",
-    "runtime/cinematic-atuacao-v1.png"
+    "runtime/cinematic-atuacao-v1.png",
+    "runtime/piquenique-lateral-v3.png",
+    "source/besouro-camadas-v2.png",
+    "runtime/medo-v2-menina-corrida-v1.png",
+    "runtime/medo-v2-menina-acoes-v1.png",
+    "runtime/medo-v2-menina-desconforto-v1.png",
+    "runtime/medo-v2-menina-pedrinhas-v2.png"
   ]
 }

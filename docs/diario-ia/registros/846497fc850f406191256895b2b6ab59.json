@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "846497fc850f406191256895b2b6ab59",
+  "type": "qa",
+  "date": "2026-10-26T16:27:11.111305+00:00",
+  "title": "QA temporário: test:arena:sons",
+  "exitCode": 0,
+  "sourceId": "fc7653aef771ff1940dde9457ae5204a9b880ad4772adfa66beba5b5c0ed3963",
+  "package": "20261022T134412-e7390d493b0b"
+}

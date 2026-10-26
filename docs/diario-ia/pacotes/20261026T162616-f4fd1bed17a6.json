@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T162616-f4fd1bed17a6",
+  "date": "2026-10-26T16:26:16.171388+00:00",
+  "title": "Gameplay integral real e domínio atualizados para cenas manuais",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/polimento/integral-browser.mjs",
+      "sourceId": "290a386415c0ea7fd4ea7bde9b5cd6f027136f7d1bdc46f29b6c28eb496ae3df",
+      "sha256": "cabbfab2579168fe7ce0fde3b0f64399b90a50795bca8b075232f54d5c97af5f",
+      "bytes": 8150,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/dominio.mjs",
+      "sourceId": "fd2e05d89e73f252d762676c1589631e6522d6da143126ce1c3138bfad84f2c7",
+      "sha256": "2e6d72902a6fb3348b4af13a93d160c40a6798cba2fd61186276975757c217bd",
+      "bytes": 4813,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:polimento:integral:browser": "node docs/diario-ia/qa/polimento/integral-browser.mjs",
+    "test:yuna:domain": "node docs/diario-ia/qa/yuna/dominio.mjs"
+  }
+}

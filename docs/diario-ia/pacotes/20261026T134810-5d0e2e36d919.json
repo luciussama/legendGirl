@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T134810-5d0e2e36d919",
+  "date": "2026-10-26T13:48:10.100024+00:00",
+  "title": "Quiz do jardim: correção da resposta 1, narrador orienta e Nanda tranquiliza em todos os encontros",
+  "files": [
+    {
+      "path": "docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json",
+      "sourceId": "0eb75466cd02558a24850650fa9602c8146e59bb67ac1c9d5fcfbcb16b600b43",
+      "sha256": "0e6e6a052f96ab330be17412715a2dfacc5dadb9abee9f1c88ef5cf54859445c",
+      "bytes": 13729,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

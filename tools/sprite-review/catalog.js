@@ -1,6 +1,8 @@
+import {GARDEN_PICNIC} from '../../src/js/garden/GardenPicnicArt.js';
 import {GARDEN_ACTING,GARDEN_BEE_LAYERS} from '../../src/js/garden/GardenCinematicArt.js';
 import {INSECT_FRAMES} from '../../src/js/garden/GardenInsectArt.js';
-import {FEAR_FILES} from '../../src/js/garden/GardenFearArt.js';
+import {GARDEN_BEETLE} from '../../src/js/garden/GardenBeetleArt.js';
+import {FEAR_FILES,FEAR_FRAMES} from '../../src/js/garden/GardenFearArt.js';
 import {platforms,roomScenery} from '../../src/js/config.js';
 import {darkRoomAtlas} from '../../src/js/assets/darkRoomAtlas.js';
 import fs from 'node:fs/promises';
@@ -76,10 +78,12 @@ export async function buildCatalog(root) {
  }
  for(const [pose,frames]of Object.entries(OFFICIAL_FRAMES))frames.forEach((r,i)=>addRegion('assets/art/dark-room/sprites/official-character.png',pose,i,r));
  for(const [pose,set]of Object.entries(GARDEN_ART.sets))set.frames.forEach((r,i)=>addRegion('assets/art/garden/'+set.file,'jardim · '+pose,i,r));
+ addRegion('assets/art/garden/'+GARDEN_PICNIC.file,'jardim · piquenique lateral',0,GARDEN_PICNIC);
  GARDEN_ACTING.frames.forEach((r,i)=>addRegion('assets/art/garden/'+GARDEN_ACTING.file,'jardim · atuação cinematográfica',i,r));
+ for(const key of ['body','wings'])addRegion('assets/art/garden/'+GARDEN_BEETLE.file,'jardim · besouro em camadas',key,GARDEN_BEETLE[key]);
  for(const key of ['body','wings'])addRegion('assets/art/garden/'+GARDEN_BEE_LAYERS.file,'jardim · abelha em camadas',key,GARDEN_BEE_LAYERS[key]);
  INSECT_FRAMES.forEach((r,i)=>addRegion('assets/art/garden/runtime/insetos-v1.png','jardim · insetos',i,r));
- for(const [pose,file]of Object.entries(FEAR_FILES))GARDEN_ART.sets[pose].frames.forEach((r,i)=>addRegion('assets/art/garden/'+file,'jardim · medo · '+pose,i,r));
+ for(const [pose,file]of Object.entries(FEAR_FILES))FEAR_FRAMES[pose].forEach((r,i)=>addRegion('assets/art/garden/'+file,'jardim · medo · '+pose,i,r));
  AQUATIC_FRAMES.forEach((r,i)=>addRegion('assets/art/garden/runtime/vida-aquatica-v1.png','jardim · vida aquática',i,r));
  for(const [pose,set]of Object.entries(GIRL_V2_SETS))set.frames.forEach((r,i)=>addRegion(set.file,pose,i,r));
  for(const [pose,frames]of Object.entries(ARENA_GIRL_ANIMATION_FRAMES))frames.filter(f=>f.x||f.y||f.file.includes('animation-v2')).forEach((r,i)=>addRegion('assets/art/toy-room/battle/'+r.file,pose,i,r));

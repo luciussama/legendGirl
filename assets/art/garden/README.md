@@ -1,5 +1,11 @@
 # Um dia no jardim — artes de produção
 
+## Chegada ao piquenique
+
+`source/piquenique-lateral-v3.png` substitui, na parte jogável, a antiga composição vista de cima. A perspectiva baixa conserva uma toalha estreita e os brinquedos assentados no mesmo plano. Prompt integral da ferramenta integrada image_gen em `prompts-piquenique-lateral-v3.json`. `node scripts/prepare-garden-picnic.js` conserva o alfa, prepara `runtime/piquenique-lateral-v3.png` e gera `GardenPicnicArt.js`. A âncora atravessa o plano da toalha; não usar o último pixel da franja como se fosse a linha inteira do chão. A árvore e a toalha ocupam intervalos horizontais separados. Fontes anteriores ficam preservadas; física, destino e distância dos saltos permanecem iguais.
+
+Nas cenas, o cenário preenche o canvas por trás da narração. Somente o quadro com moldura é opaco; não reservar uma tarja clara de largura total. O enquadramento cinematográfico e o tamanho dos atores respeitam a maior fala de cada cena, evitando mudanças de tamanho a cada parágrafo ou rostos sob o quadro. Isso não altera a câmera jogável.
+
 ## Cenas de Yuna e novos insetos
 
 As cenas atuais seguem `ToyRoomIntroduction`: cenário na altura dos olhos, atuação em camadas, planos, voo/pouso da fada e poses de comer. `GardenCinematic.js` compõe as cenas; `GardenNarrative.js` conserva falas/tempos e a revelação do nome por Nanda. `cinematic/casa-sem-atores-v1.png` e `piquenique-sem-yuna-v1.png` são cenários sem Yuna/Nanda pintadas; `atuacao-yuna-nanda-v1.png` fornece oito atuações transparentes. `cinematic/prompts.json` preserva os prompts integrais da ferramenta integrada image_gen. `node scripts/prepare-garden-cinematic.js` isola os componentes alfa, prepara `runtime/cinematic-atuacao-v1.png` e gera `GardenCinematicArt.js`. A câmera cinematográfica não altera a câmera lateral jogável. As antigas composições estáticas em `narrative/` e seus originais no diário permanecem preservadas como referência, fora do manifesto carregado.

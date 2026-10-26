@@ -164,6 +164,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [garden/GardenNarrative.js](../src/js/garden/GardenNarrative.js) | Abertura com revelação de Yuna e encerramento ilustrado com Nanda sentada. | `GARDEN_OPENING`, `GARDEN_ENDING`, `GARDEN_OPENING_DURATION`, `gardenNarrativeCard` |
 | [garden/GardenCinematic.js](../src/js/garden/GardenCinematic.js) | Cenas na altura dos olhos, com planos e atuação em camadas, independentes da câmera jogável. | `gardenCinematicMoment`, `renderGardenCinematic` |
 | [garden/GardenCinematicArt.js](../src/js/garden/GardenCinematicArt.js) | Recortes e âncoras das oito atuações e das camadas da abelha. | `GARDEN_ACTING`, `GARDEN_BEE_LAYERS` |
+| [garden/GardenPicnicArt.js](../src/js/garden/GardenPicnicArt.js) | Composição lateral da chegada, com âncora no plano da toalha. | `GARDEN_PICNIC` |
 | [garden/GardenBeeRenderer.js](../src/js/garden/GardenBeeRenderer.js) | Corpo estável e asas articuladas continuamente, sem alternância de silhuetas. | `drawGardenBee` |
 | [garden/GardenInsectArt.js](../src/js/garden/GardenInsectArt.js) | Atlas de insetos gerado a partir das fontes aprovadas. | `INSECT_FRAMES` |
 | [garden/GardenFearArt.js](../src/js/garden/GardenFearArt.js) | Pranchas de medo com solas originais preservadas. | `FEAR_FILES` |

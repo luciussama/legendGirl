@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "da1bf6c988e84b739a5ad43519abca41",
+  "date": "2026-10-26T16:29:24.972635+00:00",
+  "title": "QA temporário: test:polimento:cenas:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/da1bf6c988e84b739a5ad43519abca41.log",
+      "sourceId": "79c182a4b7ab96e12f9b2665873f3dd3f5db57ae5a768718b10bf7b1bc6c51e0",
+      "sha256": "2cf9d0e186135716b250601612c9b1e9101eeafa75652d5f3a208d53cab5a6da",
+      "bytes": 416,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/da1bf6c988e84b739a5ad43519abca41/docs/diario-ia/qa-resultados/yuna/leitura-polimento.json",
+      "sourceId": "1659a1e84056901d153b6671a6f66aef0c45b9f49396451958ff8c052a426975",
+      "sha256": "481d502c2d6d222bb56c2d0cbac3da3c18ca43728d481048f80c91254a8ac82f",
+      "bytes": 725,
+      "metadataOnly": false
+    }
+  ]
+}

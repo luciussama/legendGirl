@@ -1047,10 +1047,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `gardenCinematicMoment(state)` | Função | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `actor(ctx,images,index,x,base,height,time,breath=true)` | Função | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,images,time,x,y)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderGardenCinematic(ctx,canvas,state,images)` | Função | 31 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `dialogueBottom(canvas,textCanvas,end)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenCinematicMoment(state)` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `actor(ctx,images,index,x,base,height,time,breath=true)` | Função | 27 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,images,time,x,y,height=145)` | Função | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderGardenCinematic(ctx,canvas,state,images)` | Função | 43 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/garden/GardenCinematicArt.js
 
@@ -1155,38 +1156,44 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `retry()` | Método declarado | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `destroy()` | Método declarado | 20 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
+## src/js/garden/GardenPicnicArt.js
+
+[Implementação](../src/js/garden/GardenPicnicArt.js). Contratos exportados/reexportados: `GARDEN_PICNIC`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
 ## src/js/garden/GardenRenderer.js
 
 [Implementação](../src/js/garden/GardenRenderer.js). Contratos exportados/reexportados: `GardenRenderer`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | 28 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `controls()` | Método declarado | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | 38 | Calcula pose visual estável sem escrever na simulação. |
-| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0)` | Método declarado | 39 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 50 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundPattern(type)` | Método declarado | 52 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundOutline(ctx,p,bottom)` | Método declarado | 68 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceTile(type,part='middle')` | Método declarado | 77 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 91 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrainBodies(ctx,platforms,bottom)` | Método declarado | 114 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrain(ctx,p,bottom,body=true)` | Método declarado | 123 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | 134 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `rockFoot(ctx,p)` | Método declarado | 139 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | 144 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 160 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundJoins(ctx,platforms)` | Método declarado | 175 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grassFront(ctx,s,platforms)` | Método declarado | 183 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `effort(ctx,s)` | Método declarado | 191 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sceneryLayout()` | Método declarado | 199 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `scenery(ctx,s,left,right)` | Método declarado | 212 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,s)` | Método declarado | 218 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | 224 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `narrative(ctx,s)` | Método declarado | 229 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 230 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | 282 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | 29 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `controls()` | Método declarado | 37 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | 39 | Calcula pose visual estável sem escrever na simulação. |
+| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0)` | Método declarado | 40 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundPattern(type)` | Método declarado | 53 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundOutline(ctx,p,bottom)` | Método declarado | 69 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceTile(type,part='middle')` | Método declarado | 78 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 92 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrainBodies(ctx,platforms,bottom)` | Método declarado | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrain(ctx,p,bottom,body=true)` | Método declarado | 124 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | 135 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rockFoot(ctx,p)` | Método declarado | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | 145 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 161 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundJoins(ctx,platforms)` | Método declarado | 176 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grassFront(ctx,s,platforms)` | Método declarado | 184 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `effort(ctx,s)` | Método declarado | 192 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sceneryLayout()` | Método declarado | 200 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `scenery(ctx,s,left,right)` | Método declarado | 213 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,s)` | Método declarado | 219 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | 225 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `narrative(ctx,s)` | Método declarado | 230 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 231 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | 287 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenSimulation.js
 
@@ -2306,4 +2313,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **171 módulos JavaScript**, **1129 declarações nomeadas**.
+Inventário: **172 módulos JavaScript**, **1130 declarações nomeadas**.

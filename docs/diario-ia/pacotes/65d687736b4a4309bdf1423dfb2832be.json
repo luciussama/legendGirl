@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "65d687736b4a4309bdf1423dfb2832be",
+  "date": "2026-10-26T16:20:04.564148+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/65d687736b4a4309bdf1423dfb2832be.log",
+      "sourceId": "5a5b3768ac6127950661db90787b1153b3d4b887999d1d3844bab02b46a2a01c",
+      "sha256": "631bc8ab4053c44b7f453928857eccd919253c4bf4ef4ad123ed9e686c64025e",
+      "bytes": 5766,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/65d687736b4a4309bdf1423dfb2832be/docs/diario-ia/qa-resultados/yuna/E2-medo-corrigido.json",
+      "sourceId": "1f40a7e04d534c86f59090f816ac0ab1d5c9a7b047322ceccc865b444979298c",
+      "sha256": "8f220487fd97a9cc1882f28047c836b0e4e00f9d930ad5ed6765e4c34b7b7f42",
+      "bytes": 7424,
+      "metadataOnly": false
+    }
+  ]
+}

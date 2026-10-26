@@ -4,6 +4,8 @@ Depois da captura do urso e da ida ao baú, a campanha espera 2,5 segundos e abr
 
 A abelha mantém corpo e rosto estáveis durante o voo; somente as asas articuladas batem continuamente. `GardenBeeRenderer` utiliza as camadas de `source/abelha-camadas-v2.png`, em vez de alternar dois desenhos com caixas diferentes. O aviso inclina o conjunto sem trocar sua pintura. Hitbox, dano, pisão, patrulha e trajetória conservam as regras anteriores.
 
+O piquenique visto durante os últimos passos usa uma composição lateral de perspectiva baixa, ancorada no plano da toalha e separada das raízes da árvore. Não há alteração da meta nem do chão físico. Nas cenas, a ilustração ocupa o fundo inteiro: só o quadro do diálogo aparece sobre ela, sem faixa clara abaixo ou ao redor. Depois da última fala, a cena permanece no piquenique; não oferecer saída/replay ou antecipar fases futuras ainda inexistentes.
+
 ## Percurso e controles
 
 A/D ou setas para andar; Espaço, W ou seta para cima para pular. Touch aceita ◀ ▶ e PULAR simultaneamente; gamepad usa direcional/analógico esquerdo e A/X. Soltar pulo encurta a subida; segurar não dispara saltos automáticos.

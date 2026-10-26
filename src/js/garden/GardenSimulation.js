@@ -1,5 +1,5 @@
 import {createGardenEncounters,restoreGardenEncounters,tickGardenBee,tickGardenWorm,tickGardenBeetles,resetGardenPanic,GARDEN_BEETLES,sweptGardenContact} from './GardenEncounters.js';
-import {GARDEN_OPENING_DURATION} from './GardenNarrative.js';
+import {GARDEN_OPENING_DURATION,GARDEN_OPENING,GARDEN_ENDING} from './GardenNarrative.js';
 import {gardenContactHeight,gardenGirlPose} from './GardenContact.js';
 import {GARDEN as C,GARDEN_HOME,GARDEN_ENEMIES,GARDEN_CHECKPOINTS,GARDEN_LEGACY_CHECKPOINTS,GARDEN_TERRAINS,GARDEN_PLATFORM_BY_ID,GARDEN_WATERS,gardenPlatforms,gardenTerrainAt,gardenSurfaceY,cloudStatus} from './GardenLevel.js';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
@@ -11,7 +11,7 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:7,encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:8,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{animationTime:0,balancePose:null,x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
@@ -41,15 +41,15 @@ function defeat(s,kind,events){
 /** Uma tentativa nova conserva os inimigos vencidos e retoma chão firme no checkpoint. */
 export function retryGarden(s,difficulty=s.difficulty){
   if(s.stage!=='GAME_OVER')return false;
-  const enemies=s.enemies.map(e=>({...e})),encounters=structuredClone(s.encounters),checkpoint=s.checkpoint;
-  Object.assign(s,createGardenState(difficulty));s.stage='RUNNING';s.checkpoint=checkpoint;s.enemies=enemies;s.encounters=encounters;s.defeated=enemies.filter(e=>!e.alive).length+encounters.bees.filter(e=>!e.alive).length;
+  const enemies=s.enemies.map(e=>({...e})),encounters=structuredClone(s.encounters),checkpoint=s.checkpoint,presentation={...s.presentation},story={...s.story};
+  Object.assign(s,createGardenState(difficulty));s.story=story;s.presentation=presentation;s.stage='RUNNING';s.checkpoint=checkpoint;s.enemies=enemies;s.encounters=encounters;s.defeated=enemies.filter(e=>!e.alive).length+encounters.bees.filter(e=>!e.alive).length;
   const ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&checkpoint>=p.x&&checkpoint<=p.x+p.w);
   Object.assign(s.player,{x:checkpoint,y:ground?gardenContactHeight(ground,s.player,checkpoint):C.ground,support:ground?.id??'entrada',terrain:ground?.type??'wood'});
   resetGardenPanic(s,checkpoint);s.safeGround=s.player.support;s.trail=[s.player.support];s.immunity=3;s.fairy.x=checkpoint;s.fairy.progressX=checkpoint;return true;
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3,4,5,6,7].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4,5,6,7,8].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
@@ -64,6 +64,7 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
     out.enemies=out.enemies.map(e=>{const currentId=e.id.replace('-gramado-lagarta','-lagarta').replace('-clareira-lagarta','-lagarta-da-saida').replace('-caminho-formiga','-formiga'),legacyId=saved.version>=4?currentId:currentId.replace(/^trecho-(\d+)/,(_,n)=>'trecho-'+(Math.floor(Number(n)/2)*5+(Number(n)%2?3:0))),old=saved.enemies.find(v=>v.id===legacyId);return old&&old.hp<=e.hp?{...e,hp:old.hp,alive:old.alive}:e;});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
   }
   if(saved.player.x<0||saved.player.x>C.width||Math.abs(saved.player.y)>10000||!GARDEN_CHECKPOINTS.includes(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado do jardim incompatível.');
+  if(saved.presentation)out.presentation={beetleHintSeen:saved.presentation.beetleHintSeen===true,hintRemaining:clamp(Number(saved.presentation.hintRemaining)||0,0,6)};
   out.stage=saved.stage;out.time=saved.time;out.age=saved.age;out.hp=clamp(Math.floor(saved.hp),0,difficulty==='EASY'?6:3);out.checkpoint=saved.checkpoint;
   out.immunity=clamp(Number.isFinite(saved.immunity)?saved.immunity:0,0,4);out.jumps=Number.isSafeInteger(saved.jumps)&&saved.jumps>=0?saved.jumps:0;
   if(!saved.clouds||typeof saved.clouds!=='object'||Array.isArray(saved.clouds))throw new TypeError('Nuvens salvas inválidas.');
@@ -80,11 +81,21 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
     const target=GARDEN_PLATFORM_BY_ID.get(r.to.id);if(r.to.x<target.x||r.to.x>target.x+target.w||Math.abs(r.to.y-gardenContactHeight(target,out.player,r.to.x))>.001||r.from.x<0||r.from.x>C.width||Math.abs(r.from.y)>10000||target.type==='cloud')throw new TypeError('Destino de resgate inválido.');
     out.recovery={from:{x:r.from.x,y:r.from.y},to:{x:r.to.x,y:r.to.y,id:target.id},kind:r.kind};out.fairy.mode='rescue';
   }
-  if(saved.version===7)out.encounters=restoreGardenEncounters(saved.encounters);
+  if(saved.version>=7)out.encounters=restoreGardenEncounters(saved.encounters);
   if(out.encounters.panic&&out.stage!=='RUNNING')throw new TypeError('Pânico fora da jogabilidade.');
   if(difficulty==='EASY'&&out.stage==='GAME_OVER')beginRecovery(out,'fall',[]);
   out.defeated+=out.encounters.bees.filter(e=>!e.alive).length;
-  if(saved.version===6&&out.stage==='INTRO')out.age+=GARDEN_OPENING_DURATION;
+  if(saved.version>=8){
+    const story=saved.story;
+    if(!story||!Number.isInteger(story.openingIndex)||story.openingIndex<0||story.openingIndex>=GARDEN_OPENING.length||!Number.isInteger(story.endingIndex)||story.endingIndex<0||story.endingIndex>=GARDEN_ENDING.length||!Number.isFinite(story.cardAge)||story.cardAge<0||['openingDone','endingDone','seenOpening','seenEnding'].some(k=>typeof story[k]!=='boolean'))throw new TypeError('Leitura salva do jardim inválida.');
+    out.story={...story};
+  }else{
+    const end=out.stage==='COMPLETE',cards=end?GARDEN_ENDING:GARDEN_OPENING;
+    let elapsed=0,index=0;while(index<cards.length-1&&elapsed+cards[index].duration<=saved.age){elapsed+=cards[index++].duration;}
+    out.story[end?'endingIndex':'openingIndex']=index;out.story.cardAge=Math.max(0,saved.age-elapsed);
+    if(out.stage!=='INTRO'||saved.version===6||saved.age>=GARDEN_OPENING_DURATION){out.story.openingDone=true;out.story.seenOpening=true;if(out.stage==='INTRO')out.age=saved.version===6?saved.age:Math.max(0,saved.age-GARDEN_OPENING_DURATION);}
+    if(end&&saved.age>=GARDEN_ENDING.reduce((n,c)=>n+c.duration,0)){out.story.endingDone=true;out.story.seenEnding=true;}
+  }
   return out;
 }
 function fairyTick(s,dt,platforms){
@@ -142,10 +153,26 @@ function enemyTick(e,s,dt){
 }
 function tick(s,input,dt,events){
   s.time+=dt;s.age+=dt;s.player.animationTime=s.time;
+  if(s.stage==='RUNNING'){
+    s.presentation.hintRemaining=Math.max(0,s.presentation.hintRemaining-dt);
+    const next=GARDEN_BEETLES.find(b=>!s.encounters.consumed.includes(b.id)&&b.x>=s.player.x&&b.x-s.player.x<780);
+    if(next&&!s.presentation.beetleHintSeen){s.presentation.beetleHintSeen=true;s.presentation.hintRemaining=6;}
+  }
+  const advance=Boolean(input.advance)&&!s.storyHeld;s.storyHeld=Boolean(input.advance);
+  const intro=s.stage==='INTRO',ending=s.stage==='COMPLETE',reading=intro&&!s.story.openingDone||ending&&!s.story.endingDone;
+  if(reading){
+    const cards=intro?GARDEN_OPENING:GARDEN_ENDING,indexKey=intro?'openingIndex':'endingIndex',doneKey=intro?'openingDone':'endingDone',seenKey=intro?'seenOpening':'seenEnding';
+    s.story.cardAge+=dt;
+    if(advance||input.skip&&s.story[seenKey]){
+      if(input.skip&&s.story[seenKey]||s.story[indexKey]===cards.length-1){s.story[doneKey]=true;s.story[seenKey]=true;if(intro)s.age=0;events.push({type:'scene-seen',scene:intro?'opening':'ending'});}
+      else{s.story[indexKey]++;s.story.cardAge=0;}
+    }
+    fairyTick(s,dt,[]);return;
+  }
   if(s.stage==='INTRO'){
-    const t=clamp((s.age-GARDEN_OPENING_DURATION)/3,0,1)*3,index=Math.min(2,Math.floor(t)),mix=t-index,a=GARDEN_HOME.steps[index],b=GARDEN_HOME.steps[index+1];
+    const t=clamp(s.age/3,0,1)*3,index=Math.min(2,Math.floor(t)),mix=t-index,a=GARDEN_HOME.steps[index],b=GARDEN_HOME.steps[index+1];
     Object.assign(s.player,{x:a.x+(b.x-a.x)*mix,y:a.y+(b.y-a.y)*mix,vx:(b.x-a.x),facing:1});
-    if(s.age>=GARDEN_OPENING_DURATION+3){s.stage='RUNNING';s.age=0;s.player.vx=0;s.jumpHeld=Boolean(input.jump);}fairyTick(s,dt,[]);return;
+    if(s.age>=3){s.stage='RUNNING';s.age=0;s.player.vx=0;s.jumpHeld=Boolean(input.jump);}fairyTick(s,dt,[]);return;
   }
   if(s.stage==='FALLING'||s.stage==='GAME_OVER'){
     for(const e of s.enemies)if(Math.abs(e.x-s.player.x)<1100)enemyTick(e,s,dt);
@@ -244,7 +271,7 @@ function tick(s,input,dt,events){
   if(p.y>C.waterY&&GARDEN_WATERS.some(v=>p.x>v.x&&p.x<v.x+v.w)||p.y>C.height+100){defeat(s,'fall',events);return;}
   if(p.onGround){const checkpoint=GARDEN_CHECKPOINTS.filter(x=>p.x>=x).at(-1);if(checkpoint>s.checkpoint){s.checkpoint=checkpoint;s.hp=s.difficulty==='EASY'?6:3;events.push({type:'checkpoint'});}}
   fairyTick(s,dt,platforms);
-  if(p.onGround&&p.x>=C.goal){s.encounters.panic=null;s.encounters.exit=null;s.stage='COMPLETE';s.age=0;p.vx=0;events.push({type:'complete'});}
+  if(p.onGround&&p.x>=C.goal){s.encounters.panic=null;s.encounters.exit=null;s.stage='COMPLETE';s.age=0;s.story.endingIndex=0;s.story.endingDone=false;s.story.cardAge=0;p.vx=0;events.push({type:'complete'});}
 }
 /** A simulação não usa relógio do navegador nem aleatoriedade; pausa não chama este método. */
 export function stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty){

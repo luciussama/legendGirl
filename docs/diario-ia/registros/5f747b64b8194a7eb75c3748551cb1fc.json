@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "5f747b64b8194a7eb75c3748551cb1fc",
+  "type": "qa",
+  "date": "2026-10-26T14:59:56.774392+00:00",
+  "title": "QA temporário: test:piquenique:browser",
+  "exitCode": 0,
+  "sourceId": "79ae17128239ae64270a9014bf8253f3a22dcd0ddc8e34c9283962a95898d4c8",
+  "package": "20261026T145807-06de24e9437a"
+}

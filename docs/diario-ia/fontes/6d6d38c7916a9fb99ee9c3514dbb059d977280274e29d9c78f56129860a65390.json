@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "6d6d38c7916a9fb99ee9c3514dbb059d977280274e29d9c78f56129860a65390",
+  "path": "assets/art/garden/manifest.json",
+  "sha256": "72e42ea64b50553cd6672ba14c417bfb4f201aea81892a2f38b06d480c222cec",
+  "capturedAt": "2026-10-26T16:16:36.130920+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": 1,\n  \"images\": [\n    \"cenario-v1.png\",\n    \"runtime/menina-corrida-v1.png\",\n    \"runtime/menina-acoes-v1.png\",\n    \"runtime/menina-desconforto-v1.png\",\n    \"runtime/menina-pedrinhas-v2.png\",\n    \"source/objetos-v1.png\",\n    \"source/ambiente-v2.png\",\n    \"source/lagarta-vermelha-v1.png\",\n    \"source/terra-continua-v1.png\",\n    \"../toy-room/stage3/illustrated-fairy-v1.png\",\n    \"source/parede-vegetal-v1.png\",\n    \"runtime/vida-aquatica-v1.png\",\n    \"runtime/insetos-v1.png\",\n    \"runtime/medo-menina-corrida-v1.png\",\n    \"runtime/medo-menina-acoes-v1.png\",\n    \"runtime/medo-menina-desconforto-v1.png\",\n    \"runtime/medo-menina-pedrinhas-v2.png\",\n    \"cinematic/casa-sem-atores-v1.png\",\n    \"cinematic/piquenique-sem-yuna-v1.png\",\n    \"source/abelha-camadas-v2.png\",\n    \"runtime/cinematic-atuacao-v1.png\",\n    \"runtime/piquenique-lateral-v3.png\",\n    \"source/besouro-camadas-v2.png\",\n    \"runtime/medo-v2-menina-corrida-v1.png\",\n    \"runtime/medo-v2-menina-acoes-v1.png\",\n    \"runtime/medo-v2-menina-desconforto-v1.png\",\n    \"runtime/medo-v2-menina-pedrinhas-v2.png\"\n  ]\n}\n"
+}

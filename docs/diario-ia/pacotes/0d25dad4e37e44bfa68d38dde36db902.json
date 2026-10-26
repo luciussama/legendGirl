@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "0d25dad4e37e44bfa68d38dde36db902",
+  "date": "2026-10-26T15:03:05.986787+00:00",
+  "title": "QA temporário: test:piquenique:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/0d25dad4e37e44bfa68d38dde36db902.log",
+      "sourceId": "de146dd8c95b26eedab88fa7b456c3c146ce5d2a159c16653011e46d64a420ea",
+      "sha256": "682f006aca7b0d979144cd6c4410714e5bb5fcaeb7fb4bdf9263ee192985ebd9",
+      "bytes": 143,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/0d25dad4e37e44bfa68d38dde36db902/docs/diario-ia/qa-resultados/yuna/piquenique-depois.json",
+      "sourceId": "54c212c20a3e25676e83750a46354e36ec25649fb20cbd721619c99d63811709",
+      "sha256": "e3e8fc306f91ebceb340c9f9ec21e7529b32a77ba3ce533e351c2ea70fcbab30",
+      "bytes": 2268,
+      "metadataOnly": false
+    }
+  ]
+}
