@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7d3386c3cd34597e50c667ddf36bbeb98f3a01fb5ee0f88f941de0ddfa4fe5aa",
+  "path": "qa-execucoes/ecd930bee7e541d783ad759df1590601/docs/diario-ia/qa-resultados/yuna/dialogos-padrao.json",
+  "sha256": "8ecf21a7dfcd93a7459631607001c925c172604b79fedd58cb31267172121422",
+  "capturedAt": "2026-10-26T19:05:13.361555+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogos:padrao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"aberturaAutomatica\": true,\n  \"acolhimentoAutomatico\": true,\n  \"casteloNarradorEPersonagens\": true,\n  \"reviravoltaNarradorEPersonagens\": true,\n  \"narradorPorClique\": true,\n  \"salaPersonagemNarradorToque\": true,\n  \"retornoDeBrinquedos\": true,\n  \"jardimAutomaticoEToque\": true\n}"
+}

@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "ec1acf96a4c94076a4ac726976ec8f9a",
+  "type": "qa",
+  "date": "2026-10-26T18:43:22.040209+00:00",
+  "title": "QA temporário: test:dialogos:padrao",
+  "exitCode": 0,
+  "sourceId": "eafba2819c121f6b05bd8b978eccccd619ee024d0accdc3632e99f7cde3220db",
+  "package": "20261026T184135-b21b7ce02ccf"
+}

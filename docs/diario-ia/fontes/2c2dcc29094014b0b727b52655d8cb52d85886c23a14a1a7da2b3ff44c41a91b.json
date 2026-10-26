@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "2c2dcc29094014b0b727b52655d8cb52d85886c23a14a1a7da2b3ff44c41a91b",
+  "path": "qa-execucoes/c1cbe7469ef84431b9cd7140a17a29dc.log",
+  "sha256": "9bf28859fab1435923fd8a579a9b8935a9c7fd02b7b03a9651e063e2bbaf3a1f",
+  "capturedAt": "2026-10-26T18:40:39.990188+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:polimento:integral:browser",
+    "exitCode": 1,
+    "package": "20261026T175644-13af101a87d6"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:polimento:integral:browser\n> node docs/diario-ia/qa/polimento/integral-browser.mjs\n\n{\"final\":{\"stage\":\"GAME_OVER\",\"x\":43894.77492267117,\"hp\":0,\"age\":583.8635333330983},\"retries\":3,\"wall\":900.326799999997,\"raf\":{\"p50\":16.699999999953434,\"p95\":16.70000000006985,\"p99\":16.800000000046566},\"events\":221,\"snapshots\":92}\nfile:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-zwpjwgfm/projeto/docs/diario-ia/qa/polimento/integral-browser.mjs:63\n if(!report.done||report.final.stage!=='COMPLETE')throw Error('Percurso não concluiu no limite; resultado parcial preservado.');\n                                                        ^\n\nError: Percurso não concluiu no limite; resultado parcial preservado.\n    at file:///private/var/folders/4k/gdg54gqn6kz31sx6djxcfp_w0000gn/T/legendgirl-qa-zwpjwgfm/projeto/docs/diario-ia/qa/polimento/integral-browser.mjs:63:57\n\nNode.js v26.5.0\n"
+}

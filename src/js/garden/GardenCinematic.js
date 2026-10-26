@@ -1,5 +1,5 @@
 import {GARDEN_ACTING as ART} from './GardenCinematicArt.js';
-import {GARDEN_OPENING,GARDEN_ENDING,GARDEN_OPENING_DURATION} from './GardenNarrative.js';
+import {GARDEN_OPENING,GARDEN_ENDING} from './GardenNarrative.js';
 import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
 import {renderPoeticNarration} from '../narrative/PoeticNarrator.js';
 const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
@@ -91,12 +91,12 @@ export function renderGardenCinematic(ctx,canvas,state,images){
   }
   ctx.restore();
   const done=state.story?.[m.end?'endingDone':'openingDone'],seen=state.story?.[m.end?'seenEnding':'seenOpening'];
-  ctx.save();ctx.translate(safe.left,inset);const box=renderPoeticNarration(ctx,textCanvas,m.card.text+(done?'':'\n '),{heading:m.card.speaker});
+  ctx.save();ctx.translate(safe.left,inset);const box=done?null:renderPoeticNarration(ctx,textCanvas,m.card.text+(done?'':'\n '),{heading:m.card.speaker,advanceCanvas:canvas});
   let skipBox=null;
-  if(!done){
+  if(!done&&box){
     const y=box.y+box.height-18*css;
     ctx.font=`600 ${12*css}px Georgia`;ctx.fillStyle='#846467';ctx.textAlign='center';
-    ctx.fillText('Toque ou Enter para continuar',box.x-(seen?35*css:0),y,box.width-(seen?120:35)*css);
+    ctx.fillText('Avança sozinho • toque/Enter para adiantar',box.x-(seen?35*css:0),y,box.width-(seen?120:35)*css);
     if(seen){const x=box.x+box.width/2-45*css;ctx.fillText('Pular (S)',x,y);skipBox={x:safe.left+x-35*css,y:inset+y-17*css,w:70*css,h:28*css};}
   }
   ctx.restore();

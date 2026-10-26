@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "1ec726553c1549f98714a1adadcfa198",
+  "type": "qa",
+  "date": "2026-10-26T18:27:22.299141+00:00",
+  "title": "QA temporário: test:jardim:encontros-v9:browser",
+  "exitCode": 0,
+  "sourceId": "bd17b8b43b1c4dbdd0c0323079e762af5270aa2a607115411d83305d6e3fa9bc",
+  "package": "20261026T182709-3f7ea66826bd"
+}

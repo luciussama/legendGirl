@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T190725-a713f8a4b8af",
+  "date": "2026-10-26T19:07:25.891697+00:00",
+  "title": "Leitura por quadro durante gameplay preserva controles de pulo e direção",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "40cee09d3a3a9b0af89d66131d5342ef6e98c51c05acbb59b25ee86c5cdda800",
+      "sha256": "b65befc82270ef83b455a8c78c0709a9fad0161c9056d75bf1937687af439375",
+      "bytes": 8197,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs"
+  }
+}

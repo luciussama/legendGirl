@@ -98,6 +98,7 @@ export class GameState {
 
   startStandbyPreparation(audio) {
     this.isStandbyActive = true;
+    this.standbyDialogueTimer = 0;
     this.isStandbyTransitioning = false;
     this.standbyTransitionTimer = 0;
     this.standbyTransitionProgress = 0;

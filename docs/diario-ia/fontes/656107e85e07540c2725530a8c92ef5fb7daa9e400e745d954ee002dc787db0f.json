@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "656107e85e07540c2725530a8c92ef5fb7daa9e400e745d954ee002dc787db0f",
+  "path": "qa-execucoes/582598bae0a04d1bb63edb314e73b7a0.log",
+  "sha256": "3d2394df916cfa73e5cdf9e630b32b21f66bea419f8ef016702e01670620032e",
+  "capturedAt": "2026-10-26T18:25:27.811795+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jardim:encontros-v9",
+    "exitCode": 0,
+    "package": "20261026T182323-06a417f9e75a"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jardim:encontros-v9\n> node docs/diario-ia/qa/encontros-v9/dominio.mjs\n\nAPROVADO: parábolas A→B→A espelhadas, repouso fixo, aviso, direção, save em voo e migração 8→9 sem teleporte.\n"
+}

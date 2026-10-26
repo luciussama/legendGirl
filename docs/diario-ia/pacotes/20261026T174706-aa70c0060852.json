@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T174706-aa70c0060852",
+  "date": "2026-10-26T17:47:06.491811+00:00",
+  "title": "Regressão adicional: skip final mantém atuação final",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/polimento/dominio.mjs",
+      "sourceId": "1a73d83ff8877602278f56bf771222fb8d86a48e56db80b546a977b49a699e5a",
+      "sha256": "323b322b96551f59dfa036dd143e233f29a7f2c8b36601833cc06e5070bd172e",
+      "bytes": 3106,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:polimento:domain": "node docs/diario-ia/qa/polimento/dominio.mjs"
+  }
+}

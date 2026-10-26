@@ -97,3 +97,7 @@ foram preservados com conteúdo binário integral (`encoding: base64`), hash e
 As cópias físicas de QA, análises, planos e automações antigas foram consolidadas em fontes/pacotes. Consulte `journal:search` e `journal:show`; execute os testes por `npm test` ou `journal:qa`, que recuperam código, HTML, JSON e fixtures `.txt` somente no diretório temporário. Uma cópia local mais antiga não substitui uma versão de QA mais recente já arquivada. O manifesto da consolidação está em `limpeza/20261021-consolidacao-manifesto.json`.
 
 O SQLite é apenas um cache local: pode ser descartado após a sincronização. A próxima consulta `journal:read`/`journal:search` o reconstrói automaticamente. Não remover fontes, registros, commits ou pacotes para reduzir o tamanho do índice. A imagem de direção artística sob `arte/` continua preservada como referência de produção.
+
+## Padrões gerais de produto
+
+Antes de alterar diálogos ou cenas, consultar [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md). A decisão vigente é avanço automático pelos tempos autorados, com clique/toque para adiantar um balão, sem ações involuntárias de gameplay. A regra substitui a espera manual anteriormente escolhida no quiz do jardim e vale para novas fases. A especificação e suas versões permanecem no acervo.

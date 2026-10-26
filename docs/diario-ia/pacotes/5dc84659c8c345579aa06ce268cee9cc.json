@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "5dc84659c8c345579aa06ce268cee9cc",
+  "date": "2026-10-26T18:19:23.112778+00:00",
+  "title": "QA temporário: test:jardim:entrada:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/5dc84659c8c345579aa06ce268cee9cc.log",
+      "sourceId": "1f6010ca2bcce166ae4ca20cbfe4f39f07bddee9bfe0d375c55d16d932301bda",
+      "sha256": "efb71a91b595c7d2a335033b54ea16933824e78c284de442563c0cd3d00678f9",
+      "bytes": 651,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/5dc84659c8c345579aa06ce268cee9cc/docs/diario-ia/qa-resultados/yuna/entrada-antes.json",
+      "sourceId": "cc69c9ecbaa1248de383cfd880bee2474afbecc72c245bde032f7a1b67749185",
+      "sha256": "1587ee5d8ffcac6e96c8da2b35f7e04aaace96cf3c9b590a0f33d546202dd63e",
+      "bytes": 735,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T181909-ccbaffe56001",
+  "date": "2026-10-26T18:19:09.901011+00:00",
+  "title": "Reprodução da tela branca por avanço real da abertura",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/entrada-browser.mjs",
+      "sourceId": "58dd1f003b8e460d279dcc045a18d4e7a091c9e2864ddc87dd16e86d5c7d62d5",
+      "sha256": "95a0dec697fea333c873818ecb2b0ad7d63e41420b8677efb4c64ace3ee1dd82",
+      "bytes": 4234,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jardim:entrada:browser": "node docs/diario-ia/qa/encontros-v9/entrada-browser.mjs"
+  }
+}

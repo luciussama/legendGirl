@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T182709-3f7ea66826bd",
+  "date": "2026-10-26T18:27:09.890528+00:00",
+  "title": "Inspeção temporal das abelhas e entrada fora da tela em três formatos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/visual-browser.mjs",
+      "sourceId": "7b3c3739fc8a3726b462e3820293873a8bb1b39164b25353decc16184ebd6b80",
+      "sha256": "33064ed4b79f12af612b76c082fc20fab1c63423f79f419bbc04759db0a7caac",
+      "bytes": 6033,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:jardim:encontros-v9:browser": "node docs/diario-ia/qa/encontros-v9/visual-browser.mjs"
+  }
+}

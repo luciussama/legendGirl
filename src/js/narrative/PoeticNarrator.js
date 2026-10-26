@@ -1,3 +1,4 @@
+import {offerDialogue,setDialogueBounds} from './DialogueFlow.js';
 import { getDialogueSafeArea } from '../ui/DialogueSafeArea.js';
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 
@@ -22,6 +23,7 @@ export function getPauseNarration(state) {
 
 /** Quadro de papel e moldura pastel; a narração ocupa o topo da área segura. */
 export function renderPoeticNarration(ctx, canvas, text, options = {}) {
+  if(options.interactive!==false&&!offerDialogue(options.advanceCanvas??canvas,text,options.onAdvance))return null;
   const safe = getDialogueSafeArea(canvas);
   const scale = canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.().width || canvas.width);
   const width = Math.min(680 * scale, safe.right - safe.left - 32 * scale);
@@ -66,6 +68,7 @@ export function renderPoeticNarration(ctx, canvas, text, options = {}) {
   ctx.font = `600 ${font}px "Caveat", "Segoe Print", cursive`;ctx.fillStyle = '#513e38';
   const start = y + 19 * scale + headingHeight + lineHeight / 2;
   lines.forEach((line, i) => ctx.fillText(line, x, start + i * lineHeight));
+  setDialogueBounds(options.advanceCanvas??canvas,ctx,left,y,width,height);
   ctx.restore();
   return {x, y, width, height, font, lines};
 }

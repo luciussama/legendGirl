@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "582598bae0a04d1bb63edb314e73b7a0",
+  "type": "qa",
+  "date": "2026-10-26T18:25:27.812570+00:00",
+  "title": "QA temporário: test:jardim:encontros-v9",
+  "exitCode": 0,
+  "sourceId": "656107e85e07540c2725530a8c92ef5fb7daa9e400e745d954ee002dc787db0f",
+  "package": "20261026T182323-06a417f9e75a"
+}

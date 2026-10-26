@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T185355-40eaf8ad8ed9",
+  "date": "2026-10-26T18:53:55.140047+00:00",
+  "title": "Padrão permanente de diálogos e cobertura de narradores/personagens no quarto escuro",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "198d9a6f0b9650e91fa5a4283794dc297dce0d878e516c2a4bd5af78722365e1",
+      "sha256": "e841c3501664952e045bb9f3571ee60eb8c7336945a10aabd912e02ffd099dd2",
+      "bytes": 6387,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/padroes/DIALOGOS-E-CENAS.md",
+      "sourceId": "365d5d0d1dbbfd4276e9aacd036cee888cf0b467ed077a0fea5da31b2c5c7250",
+      "sha256": "c83457fef3b00685f5589b9c968d9455caa98aae4adb250d40d8d84d747b4c7b",
+      "bytes": 5595,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs"
+  }
+}

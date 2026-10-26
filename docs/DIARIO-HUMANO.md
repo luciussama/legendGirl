@@ -149,3 +149,11 @@ Abelhas dão um breve aviso antes dos rasantes e podem voltar a atacar; um pisã
 As cenas foram revistas para seguir a linguagem das fases anteriores: personagens separados do cenário, expressões e gestos, voo e pouso de Nanda e planos na altura dos olhos. No descanso, Yuna e Nanda levam o pão à boca. As falas permanecem poéticas. O voo da abelhinha agora mantém corpo e rosto estáveis enquanto apenas as asas se articulam, preservando seu comportamento no jogo.
 
 A toalha vista na chegada foi refeita em perspectiva lateral e assentada no chão, com espaço livre em relação às raízes. Nas cenas, o jardim preenche o fundo atrás do quadro de diálogo, sem a antiga faixa clara. A cena permanece no piquenique ao terminar, preparando a continuidade para fases futuras.
+
+### Jardim — leitura e atuação
+
+As falas de abertura e do piquenique passam a avançar por toque/tecla, com animações contínuas e opção de pular cenas já vistas. O final permanece no piquenique. Narrador explica o pulo no primeiro susto; Nanda tranquiliza Yuna em todos os encontros com o besouro. Medo e passadas ganham expressão visual sem mudar velocidade ou saltos. Besouro voa com corpo estável, HUD fica mais legível, perigos recebem pistas naturais e a composição vegetal varia por setor.
+
+### Padrão de leitura do jogo
+
+Decisão posterior: preservar os tempos automáticos das falas e permitir clique/toque para adiantar um balão, tanto para narrador quanto personagens. Esse é o padrão geral; substitui a espera manual do jardim. A transição da casa voltou a mostrar a descida, a abelha alterna parábolas entre dois pontos de repouso e o besouro entra por fora da tela. Especificação permanente em `docs/diario-ia/padroes/DIALOGOS-E-CENAS.md`.

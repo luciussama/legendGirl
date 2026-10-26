@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "defca48469a949dca12e051924252e8c",
+  "date": "2026-10-26T19:08:41.916584+00:00",
+  "title": "QA temporário: test:campaign:defeats",
+  "files": [
+    {
+      "path": "qa-execucoes/defca48469a949dca12e051924252e8c.log",
+      "sourceId": "a780c8eb0073e63e759b62d683daddffa3289ceb91191296a8cb9b98ba95ec72",
+      "sha256": "700666b8d4b90dc35388dfaadd9f21351c5b750205443ccf051d0ded6da6f34c",
+      "bytes": 251,
+      "metadataOnly": false
+    }
+  ]
+}

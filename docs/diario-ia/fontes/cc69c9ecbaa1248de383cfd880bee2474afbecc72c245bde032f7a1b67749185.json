@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "cc69c9ecbaa1248de383cfd880bee2474afbecc72c245bde032f7a1b67749185",
+  "path": "qa-execucoes/5dc84659c8c345579aa06ce268cee9cc/docs/diario-ia/qa-resultados/yuna/entrada-antes.json",
+  "sha256": "1587ee5d8ffcac6e96c8da2b35f7e04aaace96cf3c9b590a0f33d546202dd63e",
+  "capturedAt": "2026-10-26T18:19:23.113532+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jardim:entrada:browser"
+  },
+  "encoding": "utf-8",
+  "content": "[\n  {\n    \"label\": \"cena\",\n    \"stage\": \"INTRO\",\n    \"age\": 0.5582333333333337,\n    \"index\": 0,\n    \"done\": false,\n    \"pale\": 0.17193638914873713\n  },\n  {\n    \"label\": \"descida-04\",\n    \"stage\": \"INTRO\",\n    \"age\": 0.3782666666666669,\n    \"index\": 8,\n    \"done\": true,\n    \"pale\": 0.16333021515434987\n  },\n  {\n    \"label\": \"descida-10\",\n    \"stage\": \"INTRO\",\n    \"age\": 1.0116666666666643,\n    \"index\": 8,\n    \"done\": true,\n    \"pale\": 1\n  },\n  {\n    \"label\": \"descida-20\",\n    \"stage\": \"INTRO\",\n    \"age\": 2.0116666666666614,\n    \"index\": 8,\n    \"done\": true,\n    \"pale\": 1\n  },\n  {\n    \"label\": \"jogavel\",\n    \"stage\": \"RUNNING\",\n    \"age\": 0.3082666666666672,\n    \"index\": 8,\n    \"done\": true,\n    \"pale\": 0.06248830682881197\n  }\n]"
+}

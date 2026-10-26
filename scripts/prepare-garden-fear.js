@@ -15,7 +15,7 @@ for(const[name,set]of Object.entries(GARDEN_ART.sets)){
  if(!name.startsWith('menina-'))continue;
  const original=PNG.sync.read(fs.readFileSync(root+'/'+set.file)),out=new PNG({width:2048,height:1024});
  frames[name]=set.frames.map((f,i)=>{
-  const pose=poses[(name==='menina-corrida-v1'?i+6:i+2)%8],pad=140,w=f.w+pad*2,x=i%4*512+4,y=Math.floor(i/4)*512+4;
+  const pose=poses[(name==='menina-corrida-v1'?i+6:i+2)%8],pad=90,w=f.w+pad*2,x=i%4*512+4,y=Math.floor(i/4)*512+4;
   // A pose completa é registrada pela sola mais baixa, sem combinar membros
   // de pinturas diferentes. A referência física continua no atlas original.
   const soleCenter=(img,box)=>{let sum=0,count=0;for(let py=box.h-5;py<box.h;py++)for(let px=0;px<box.w;px++)if(img.data[((box.y+py)*img.width+box.x+px)*4+3]>64){sum+=px;count++;}return count?sum/count:box.w/2;};

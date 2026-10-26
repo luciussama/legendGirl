@@ -1,3 +1,4 @@
+import {offerDialogue} from '../narrative/DialogueFlow.js';
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
@@ -54,6 +55,12 @@ export class OpeningSequence {
       if (saved.completed) this.storage?.setItem(OPENING_STORAGE_KEY, '1');
       else this.storage?.removeItem(OPENING_STORAGE_KEY);
     } catch {}
+  }
+  advanceDialogue(){
+    const index=OPENING_DIALOGUE.findIndex(([from,to])=>this.time>=from&&this.time<to);
+    if(!this.active||index<0)return false;
+    this.time=OPENING_DIALOGUE[index+1]?.[0]??OPENING_DIALOGUE[index][1];
+    return true;
   }
   get revealing() { return this.time >= 36; }
   update(dt) {
@@ -116,12 +123,12 @@ export class OpeningSequence {
     };
     // Mantém a divisão estável também nos intervalos entre as falas da abertura.
     if (line?.[3] === 'narrator') {
-      renderPoeticNarration(ctx, canvas, line[2], {anchor, separateScene:true});
+      renderPoeticNarration(ctx, canvas, line[2], {anchor, separateScene:true,onAdvance:()=>this.advanceDialogue()});
       this.renderFade(ctx, canvas);
       return;
     }
     const regions=renderMobileDialogueRegion(ctx,canvas,safe,156,anchor);
-    if (line) {
+    if (line&&offerDialogue(canvas,line[2],()=>this.advanceDialogue())) {
       ctx.save();
       const width=Math.min(680,canvas.width-40,safe.right-safe.left-2*Math.max(20,safe.marginX)), font=canvas.width<600?20:23;
       const centerX=(safe.left+safe.right)/2;

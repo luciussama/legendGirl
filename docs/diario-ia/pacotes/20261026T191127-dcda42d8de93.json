@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T191127-dcda42d8de93",
+  "date": "2026-10-26T19:11:27.748491+00:00",
+  "title": "Cobertura do fluxo geral em viewport móvel retrato",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "25156329060eab23e4c1b922528277b1eca7e9f8d28eb3bd621f2fb3297a60bf",
+      "sha256": "006e8627e0e15da4ea94e46448c87053402f901d2586a5a4d762f58a1a4c1e0f",
+      "bytes": 8474,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "20125c32c5e7434094720b0ed7014e8b",
+  "date": "2026-10-26T19:05:14.941125+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/20125c32c5e7434094720b0ed7014e8b.log",
+      "sourceId": "3ea3473de07b72e029114f2e981b9e21184d262c5300e03a91633ce232cfe863",
+      "sha256": "619605844500265b7260902c5f10ae280ac2c33cb2eaaff3a345f924a739d1e2",
+      "bytes": 5790,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/20125c32c5e7434094720b0ed7014e8b/docs/diario-ia/qa-resultados/yuna/dialogos-auto-final.json",
+      "sourceId": "8b71532301bdc43d16e0b5f526501e141a64730ca2d9bf7271ad177a53140482",
+      "sha256": "05c76bd90622d78682d72bd8e5ccaa9ac9a624f8c597e63d71b611920ba8c214",
+      "bytes": 7451,
+      "metadataOnly": false
+    }
+  ]
+}

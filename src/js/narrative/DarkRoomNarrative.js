@@ -5,6 +5,8 @@ import { FLOOR_Y, platforms, phase3Platforms, exitDoor, trueExitDoor, getEscapeS
 export function updateStandbyNarrative(context, dt) {
   const { state, baby, fairy, canvas, audio, uiFeedback, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, saveProgress, beginToyRoomIntroduction } = context;
 
+      state.standbyDialogueTimer=(state.standbyDialogueTimer??0)+dt;
+      if(state.standbyDialogueTimer>=240){context.confirmStandby?.();return;}
       baby.vx = 0;
       baby.vy = 0;
       baby.animTime = 0;

@@ -1,3 +1,4 @@
+import {offerDialogue,setDialogueBounds} from '../narrative/DialogueFlow.js';
 import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
 import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
 import { isMobileDevice } from '../controllers/MobileZoom.js';
@@ -378,6 +379,7 @@ export class DialogueRenderer {
   /** Caixa compartilhada entre fases; a narrativa controla o avanço e os tempos. */
   renderDialogue(ctx, canvas, dialogue, options = {}) {
     if (!ctx || !canvas || !dialogue?.text) return;
+    if(!offerDialogue(canvas,dialogue.text,options.onAdvance))return;
     const { speaker = 'fairy', speakerName = 'NANDA', mood = 'normal', tick = 0,
       speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
       text: dialogueText, advancePrompt = '', emphasis: plotTwistActive = false,
@@ -422,6 +424,7 @@ export class DialogueRenderer {
       renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
     const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor, options.separateScene === false ? false : undefined);
 
+    setDialogueBounds(canvas,ctx,boxX,boxY,boxW,boxH);
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);
     bgGrad.addColorStop(0, 'rgba(26, 20, 38, 0.97)');

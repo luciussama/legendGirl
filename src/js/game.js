@@ -1,3 +1,4 @@
+import {beginDialogueFrame,endDialogueFrame,installDialogueAdvance} from './narrative/DialogueFlow.js';
 import { DarkRoomContact } from './environment/DarkRoomContact.js';
 import { createRuntimeContext } from './runtime/RuntimeContext.js';
 import { updatePortalNarrative } from './narrative/DarkRoomNarrative.js';
@@ -1063,10 +1064,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // --- RENDERIZAÇÃO ---
   function render() {
-    renderDarkRoom({
+    beginDialogueFrame(canvas);try{renderDarkRoom({
       ...runtimeContext,
       ctx, canvas, toyRoomIntroduction, opening, assets, lighting, fairyRenderer, cameraPresentation, camera, androidFraming, mobilePresentation, baby, fairy, cameraX: state.cameraX, cameraY: state.cameraY, cameraZoom: state.cameraZoom, targetCameraY: state.targetCameraY, targetScrollSpeed: state.targetScrollSpeed, isPhase3: state.isPhase3, plotTwistActive: state.plotTwistActive, phase3TutorialActive: state.phase3TutorialActive, truePortalTransitionActive: state.truePortalTransitionActive, tick: state.tick, gameWon: state.gameWon, transitionWipeAlpha: state.transitionWipeAlpha, inputHandler, recordCameraQa, drawBackgroundWall, drawSceneryItems, drawPlatforms, drawExitDoor, drawTrueExitDoor, drawTutorialArrow, drawSpeedRibbons, drawBabyJumpDust, drawFairy, drawBabyManaStyle, applyDarkAtmosphereWithLights, drawEscapeBanner, drawCutsceneDialogue, state
-    });
+    });}finally{endDialogueFrame(canvas);}
   }
 
   let isPaused = false;
@@ -1260,8 +1261,27 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     toggleMute: () => audio.toggleMute()
   });
 
+  /** Encaminha apenas a fala visível; nunca avança física ou ações de combate. */
+  function advanceDialogue(event){
+    if(isPaused||!state.gameStarted)return false;
+    if(opening.active)return opening.advanceDialogue();
+    if(toyRoomIntroduction.active)return toyRoomIntroduction.advanceDialogue();
+    if(state.currentPhaseMode==='toy-room'){
+      const room=state.toyRoomInstance?.instance;
+      if(room?.garden?.active)return room.garden.requestDialogueAdvance(event);
+      if(room?.introBannerTimer>0){room.introBannerTimer=0;return true;}
+      if(room?.victoryBannerTimer>0){room.victoryBannerTimer=0;return true;}
+      if(room?.story?.advanceDialogue())return true;
+      return false;
+    }
+    if(state.isStandbyActive){confirmStandby();return true;}
+    if(state.cutsceneActive){if(state.cutsceneStep===1&&state.cutsceneTimer<210)state.cutsceneTimer=210;else if(state.cutsceneStep===1)advanceCutscene();else finishCutscene();return true;}
+    if(state.plotTwistActive&&state.plotTwistStep>=4){if(state.plotTwistStep===4)advancePlotTwist();else if(state.plotTwistTimer<210)state.plotTwistTimer=210;else finishPlotTwistAndStartTutorial();return true;}
+    return false;
+  }
+  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
   const runtimeContext = createRuntimeContext({ state, audio, camera, assets, input: inputHandler, effects: particles, campaign });
-  const narrativeContext = { ...runtimeContext, state, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, saveProgress, beginToyRoomIntroduction };
+  const narrativeContext = { ...runtimeContext, state, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, confirmStandby, saveProgress, beginToyRoomIntroduction };
 
   // Desenho inicial para renderizar o cenário por trás da tela de título
   render();
@@ -1270,6 +1290,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state,
     audio,
     toyRoomIntroduction,
+    advanceDialogue,
     camera,
     lighting,
     particles,
@@ -1303,6 +1324,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     saveProgress,
     newCampaign,
     destroy() {
+      removeDialogueAdvance();
       saveProgress();
       toyRoomIntroduction.cancel();
       window.removeEventListener('pagehide', saveProgress);

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bd17b8b43b1c4dbdd0c0323079e762af5270aa2a607115411d83305d6e3fa9bc",
+  "path": "qa-execucoes/1ec726553c1549f98714a1adadcfa198.log",
+  "sha256": "5d27bb0f071c065132c4a8ec4492a30cb002cc4ad7a0398bf8b39136beb81084",
+  "capturedAt": "2026-10-26T18:27:22.298192+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jardim:encontros-v9:browser",
+    "exitCode": 0,
+    "package": "20261026T182709-3f7ea66826bd"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jardim:encontros-v9:browser\n> node docs/diario-ia/qa/encontros-v9/visual-browser.mjs\n\n[{\"format\":\"desktop\",\"samples\":[{\"age\":0,\"right\":-41.47861013514921,\"width\":960},{\"age\":0.15,\"right\":-16.86006418406032,\"width\":960},{\"age\":0.35,\"right\":68.72858985699713,\"width\":960},{\"age\":0.65,\"right\":215.34543622657657,\"width\":960},{\"age\":0.85,\"right\":257.16608798503876,\"width\":960}],\"positions\":[{\"label\":\"B\",\"x\":6355,\"y\":410,\"phase\":\"patrol\"},{\"label\":\"A\",\"x\":6715,\"y\":410,\"phase\":\"patrol\"}]},{\"format\":\"retrato\",\"samples\":[{\"age\":0,\"right\":-42.08914119354449,\"width\":540},{\"age\":0.15,\"right\":-29.99125543120317,\"width\":540},{\"age\":0.35,\"right\":12.065958713879809,\"width\":540},{\"age\":0.65,\"right\":84.11352146160789,\"width\":540},{\"age\":0.85,\"right\":104.66441714763641,\"width\":540}],\"positions\":[{\"label\":\"B\",\"x\":6355,\"y\":410,\"phase\":\"patrol\"},{\"label\":\"A\",\"x\":6715,\"y\":410,\"phase\":\"patrol\"}]},{\"format\":\"paisagem\",\"samples\":[{\"age\":0,\"right\":-41.47776020294987,\"width\":1169},{\"age\":0.15,\"right\":-10.659486052580178,\"width\":1169},{\"age\":0.35,\"right\":96.49064875254408,\"width\":1169},{\"age\":0.65,\"right\":280.0460137769114,\"width\":1169},{\"age\":0.85,\"right\":332.40436923503876,\"width\":1169}],\"positions\":[{\"label\":\"B\",\"x\":6355,\"y\":410,\"phase\":\"patrol\"},{\"label\":\"A\",\"x\":6715,\"y\":410,\"phase\":\"patrol\"}]}]\n"
+}

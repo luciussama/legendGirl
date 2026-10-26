@@ -1,3 +1,4 @@
+import {beginDialogueFrame,endDialogueFrame} from '../narrative/DialogueFlow.js';
 import { GardenPhase } from '../garden/GardenPhase.js';
 import { createToyRoomTutorialContext } from './ToyRoomTutorialContext.js';
 import { ToyRoomPersistence } from './ToyRoomPersistence.js';
@@ -364,11 +365,13 @@ export class ToyRoomPhase {
 
   /** Desenha o modo ativo; o renderer 3D compõe sua saída no canvas já existente. */
   render(options = {}) {
+    beginDialogueFrame(this.canvas);try{
     if (this.garden?.active && !options.arenaBackdrop) {this.garden.render();return;}
     if (this.chase?.active && !options.arenaBackdrop) { this.chase.render(); return; }
     if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
     if (this.battle.state && !options.arenaBackdrop) { this.battle.render(); return; }
     return renderToyRoomScene(createToyRoomSceneFrame(this), options);
+    }finally{endDialogueFrame(this.canvas);}
   }
 
   startTutorial() { this.tutorial.start(); }
