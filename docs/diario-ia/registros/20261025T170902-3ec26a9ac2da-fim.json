@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T170902-3ec26a9ac2da-fim",
+  "sessionId": "20261025T170902-3ec26a9ac2da",
+  "type": "fim",
+  "date": "2026-10-25T17:09:17.216348+00:00",
+  "title": "Registrar dano da abelha definido pelo usuário",
+  "actor": "Codex",
+  "summary": "Usuário definiu que abelha causa 1 ponto de dano na menina como os bichos atuais. Registrado contato lateral/por baixo com dano e tratamento atual de proteção temporária; pisão descendente continua derrotando a abelha. Próxima definição iterativa: derrota ou evasão da minhoca.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: somente decisão documental, sem mudança de runtime."
+  ],
+  "pending": [
+    "Aguardar decisão sobre pisão na minhoca; demais definições de comportamento e equilíbrio permanecem abertas."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "cf108cd7a457c2c435d1fc6a6098b9674a8c13b19efc97233a18201c9f30bd0e",
+  "path": "qa-execucoes/684bf78d726c434a84efda6e02c8977c/docs/diario-ia/qa-resultados/jardim-v2/desktop-cantos-terra.png",
+  "sha256": "d21fc098b796856265d4ac82a22ac2174bdf5c839de8299eb05231836bd87794",
+  "capturedAt": "2026-10-25T03:30:19.281656+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-cantos-terra.png\", \"sha256\": \"205478800a8a73f667e125997e25d7469f947e331ff6af1faba4583501b5abdf\", \"bytes\": 1075053, \"binaryRetained\": false}"
+}

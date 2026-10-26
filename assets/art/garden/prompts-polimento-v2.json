@@ -1,0 +1,19 @@
+{
+  "data": "2026-10-26",
+  "ferramenta": "image_gen integrada",
+  "sessao": "20261026T161022-c730f1437be6",
+  "artes": [
+    {
+      "arquivo": "source/besouro-camadas-v2.png",
+      "referencia": "source/insetos-v1.png",
+      "prompt": "Use case: illustration-story. Asset: sprite em camadas para jogo infantil 2D. Referência: besouro azul/verde das duas células da esquerda/início, preservar exatamente identidade, pintura delicada de livro infantil e vista lateral olhando à direita. Criar uma única prancha horizontal transparente com DOIS elementos totalmente separados, largas margens: metade esquerda UM corpo completo estável do besouro, cabeça antenas patas e carapaças azuis verdes abertas, SEM asas membranosas; metade direita UM par de asas translúcidas peroladas do mesmo besouro, isoladas com raiz comum à direita. Corpo voo horizontal, simpático e inofensivo. Nada de abelha/minhoca. Sem texto, sem sombra projetada, fundo realmente transparente. As asas serão articuladas por código, não desenhar asas atrás do corpo.",
+      "preparo": "prepare-garden-beetle.js; corpo e asas medidos, âncora e escala fixas."
+    },
+    {
+      "arquivo": "source/menina-medo-v2.png",
+      "referencia": "source/menina-medo-v1.png",
+      "prompt": "Use case: illustration-story. Asset: prancha de oito poses completas de animação de corrida de medo infantil. Referência é a menina Yuna da prancha enviada, manter rigorosamente identidade rosto cabelo castanho duas maria-chiquinhas laços rosa, camiseta amarelo claro, vestido jardineira turquesa com doces e tênis rosa/branco. Criar grade 4 colunas x 2 linhas, OITO quadros consecutivos de UM ciclo de corrida em vista lateral direita, pés e cabelos inteiros com margens e células sem sobreposição. Medo INTENSO e engraçado de criança com inseto: olhos muito arregalados, sobrancelhas erguidas, boca aberta assustada, gotas de suor nas têmporas. Passadas MUITO longas e exageradas, pernas alternando esticadas muito à frente/atrás e flexionadas em recuperação, tronco inclinado e braços desajeitados buscando equilíbrio, impressão de que vai tropeçar sem realmente cair. Mesma altura de cabeça, escala e proporções em todos quadros. Não repetir a mesma pose. Mesma pintura detalhada suave de livro infantil. Fundo realmente transparente sem chão, sombras, textos nem numeração. Uma menina por célula, todos quadros ocupam igual espaço com margem de 30px.",
+      "preparo": "prepare-garden-fear.js; poses completas com margens, escala registrada pela altura e aproximação da sola inferior ao apoio original; contato físico continua no atlas original. Variantes intermediárias com pernas sobrepostas foram rejeitadas."
+    }
+  ]
+}

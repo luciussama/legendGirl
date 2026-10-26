@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "8cf3c4cdcce8cc10e82597483b17d4137359a453dcd95f01b67145e7f2373fc0",
+  "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-vegetacao.png",
+  "sha256": "b6e4fde40f0e4ec756ab3080bbf48f179afe8213161b0d9e81a0faa4e50154fb",
+  "capturedAt": "2026-10-25T03:45:01.529580+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-vegetacao.png\", \"sha256\": \"1bcd1fc9ebf1abb0aca8a633991d6a8f095f99f6f1b1a3a29e23ae42714a94e8\", \"bytes\": 2192422, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "2fda91cb2ce94818ab244e41ef2a794c",
+  "date": "2026-10-26T12:28:45.092649+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/2fda91cb2ce94818ab244e41ef2a794c.log",
+      "sourceId": "f8d217e975b5be4e15096194d803605d26b41fd99195d0417367f71d674386f1",
+      "sha256": "9dd2692b7789b67475fbf65118c56de5d7687e35f78ea2fbd41117ba294e72dc",
+      "bytes": 5773,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/2fda91cb2ce94818ab244e41ef2a794c/docs/diario-ia/qa-resultados/yuna/correcao-cenas-abelha.json",
+      "sourceId": "9f314f63ba9c968053472396196dcdff459d7304675d9710f5ca2fde65cc5795",
+      "sha256": "07246a8597eca3093955da4fb7b08f8c51c279848015221789fad80a30dd2e9f",
+      "bytes": 7423,
+      "metadataOnly": false
+    }
+  ]
+}

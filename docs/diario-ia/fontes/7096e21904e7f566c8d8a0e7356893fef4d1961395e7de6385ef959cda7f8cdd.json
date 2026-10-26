@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "7096e21904e7f566c8d8a0e7356893fef4d1961395e7de6385ef959cda7f8cdd",
+  "path": "qa-execucoes/684bf78d726c434a84efda6e02c8977c/docs/diario-ia/qa-resultados/jardim-v2/paisagem-cantos-terra.png",
+  "sha256": "c17b30b310d97bf707eb4588d2f33c6d3311ff14a34c5fedfdce34c4db6a4c18",
+  "capturedAt": "2026-10-25T03:30:19.313635+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/paisagem-cantos-terra.png\", \"sha256\": \"21f6e61ecd06cfcab188e80e8882adde068a75ebc160064c71cdee3fcf50af94\", \"bytes\": 1465868, \"binaryRetained\": false}"
+}

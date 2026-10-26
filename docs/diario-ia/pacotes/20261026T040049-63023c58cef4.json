@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T040049-63023c58cef4",
+  "date": "2026-10-26T04:00:49.167118+00:00",
+  "title": "Host real iniciado pelo seletor oficial de fases",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/phase.html",
+      "sourceId": "0675c817b24250753d32a8d35d0f7729e1bb99149c6a0bd5815e6c0355b61d1a",
+      "sha256": "7cfd9546f81f34c247333930f9434bd902610fc24765bcd6b7faadd86af3aab4",
+      "bytes": 509,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/dominio.mjs",
+      "sourceId": "acddb35674840e4ae1f612a944c961104773c3f62ca14c7f772a77e6b2a5eae7",
+      "sha256": "af413d50c4c202140cc6625b01acacab063283f83c301cdb05a5bd6c96d71c3c",
+      "bytes": 4813,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+      "sourceId": "0db1b2bf5114dad1343c381c41dfe6939f2b23d6889ff3f8045856e482100950",
+      "sha256": "99fa904a0c82808424e8121cf1cfb86ca5a3e082efe2d59943cb1b7b5aab65d1",
+      "bytes": 7353,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/piloto-base.mjs",
+      "sourceId": "33278426b3c546c7e12e95c985df7f4f7046889631f6572757f9b0ba2d1ccf0f",
+      "sha256": "8d4b1a15fe317a301406614931028932c80c50f5c8ac621681363e4fdcd9b40a",
+      "bytes": 2719,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/host-browser.mjs",
+      "sourceId": "658139703c4b2e50b36be514579722c86cf40ae9068ac55f56ce46be46c09d0b",
+      "sha256": "596ffdf463ea69cf2e7e56605948cd7bf72dd2fbdf122e47be4d1c395183ab34",
+      "bytes": 6470,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:host:browser": "node docs/diario-ia/qa/yuna/host-browser.mjs"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T134608-201eafbeefe2",
+  "date": "2026-10-26T13:46:08.205470+00:00",
+  "title": "Quiz do jardim: resposta 1, fala de Nanda e medo visual exagerado",
+  "files": [
+    {
+      "path": "docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json",
+      "sourceId": "c91e01b0addd786963fcc5e5188b994917cc3f59f5d47f598568ba4c08fbc6e8",
+      "sha256": "1ebf9caa9c97a1762d9b4be201e8a8046367ed82d75e29a78324cf0a3a608fa1",
+      "bytes": 10964,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

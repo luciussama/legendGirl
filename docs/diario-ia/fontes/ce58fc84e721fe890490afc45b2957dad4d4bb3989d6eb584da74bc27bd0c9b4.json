@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "ce58fc84e721fe890490afc45b2957dad4d4bb3989d6eb584da74bc27bd0c9b4",
+  "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/desktop-rio.png",
+  "sha256": "8db6e615459e8b42a864df9e5bd6d05e3415f6b6acc91037ee54a86f56703474",
+  "capturedAt": "2026-10-25T03:27:00.666132+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:vegetacao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/vegetacao-rios/desktop-rio.png\", \"sha256\": \"b99a1104e4a4f346fe9171bd0184c120fc58e47a43ae864db3a6b719cd7f7426\", \"bytes\": 2027876, \"binaryRetained\": false}"
+}

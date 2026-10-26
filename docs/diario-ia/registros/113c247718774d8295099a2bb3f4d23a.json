@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "113c247718774d8295099a2bb3f4d23a",
+  "type": "qa",
+  "date": "2026-10-26T16:29:05.331390+00:00",
+  "title": "QA temporário: test:yuna:domain",
+  "exitCode": 0,
+  "sourceId": "8c49ffde85f5a93a524bbabd56849aff35a945d73b002ffab99cb3834a146883",
+  "package": "20261026T162616-f4fd1bed17a6"
+}

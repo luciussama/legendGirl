@@ -1,0 +1,47 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T121252-497ef70a7db2-fim",
+  "sessionId": "20261026T121252-497ef70a7db2",
+  "type": "fim",
+  "date": "2026-10-26T12:36:01.779731+00:00",
+  "title": "Corrigir cenas animadas do jardim e estabilidade do voo da abelha",
+  "actor": "Codex",
+  "summary": "Corrigidas as duas solicitações. Cenas revistas a partir de ToyRoomIntroduction, OpeningSequence e ChaseIntroRenderer; GardenCinematic compõe dois cenários sem atores, oito atuações transparentes, planos, expressão de receio, voo/pouso de Nanda e poses de comer. Antigas pinturas estáticas preservadas, fora do manifesto ativo. Jogo executado no host oficial antes/depois: tremor vinha da troca de corpo/proporção entre pinturas da abelha; novo GardenBeeRenderer mantém corpo/âncora/escala fixos e articula somente as asas, com aviso gradual. Física e regras preservadas. Novos recortes isolam componentes alfa para evitar fragmentos vizinhos; fontes, derivados e prompts image_gen preservados. Documentação/contexto atualizados e pacote final 20261026T123451-ff83e5360a40 guarda oito fontes e hashes/tamanhos de 142 capturas descartadas. Sem commit, push ou publicação.",
+  "checks": [
+    "Host oficial por RAF: voo original e corrigido observados e comparados em 12 quadros cada; corpo estável com asas contínuas.",
+    "Cenas no host oficial: nove momentos em desktop/retrato/paisagem, páginas reais e três trechos animados por RAF com 11 capturas cada; renderer não altera domínio.",
+    "Inspeção crítica ajustou espaço dos corpos em paisagem baixa, chegada dos convidados no retrato e pouso de Nanda sincronizado com a fala; cenas repetidas após ajustes.",
+    "Gameplay completo NORMAL/EASY aprovado; mesmos tempos, tentativas, eventos, apoios e besouros da rodada anterior; quatro nuvens finais percorridas. test:yuna:domain aprovado.",
+    "npm test geral exit 0; test:sprite-review, build, check-assets (78), lint, sintaxe e git diff --check aprovados.",
+    "docs:sprites reconstruído: 470 arquivos, 246 recortes, 29 assinaturas; referência regenerada: 171 módulos, 1129 declarações.",
+    "Primeiro servidor de QA bloqueado pelo sandbox antes do navegador; repetição autorizada pelo revisor automático e executada em servidor local temporário."
+  ],
+  "pending": [
+    "Nenhuma correção solicitada aguarda implementação. Aprovação artística humana, Safari e aparelho físico não homologados nesta execução."
+  ],
+  "files": [
+    "src/js/garden/GardenCinematic.js",
+    "src/js/garden/GardenCinematicArt.js",
+    "src/js/garden/GardenBeeRenderer.js",
+    "src/js/garden/GardenRenderer.js",
+    "scripts/prepare-garden-cinematic.js",
+    "scripts/prepare-garden-art.js",
+    "tools/sprite-review/catalog.js",
+    "assets/art/garden/cinematic",
+    "assets/art/garden/source/abelha-camadas-v2.png",
+    "assets/art/garden/prompts-abelha-camadas-v2.json",
+    "assets/art/garden/runtime/cinematic-atuacao-v1.png",
+    "assets/art/garden/manifest.json",
+    "assets/art/garden/README.md",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/ARQUITETURA.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/sprites/MAPA-SPRITES.md",
+    "docs/sprites/RECORTES.md",
+    "docs/sprites/inventario.json",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/pacotes/20261026T123451-ff83e5360a40.json"
+  ]
+}

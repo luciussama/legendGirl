@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "b557def998444e2aa911bcfb7d8d5ede",
+  "date": "2026-10-26T16:22:40.663435+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/b557def998444e2aa911bcfb7d8d5ede.log",
+      "sourceId": "33347a769946909b2070dfb4d0f5d701f6f44be4612341374a50cab281f5d45e",
+      "sha256": "437e8c74065121972dab8906de0bb6ab56c9b52b2fd713f8f84b0a9b85a7d8cf",
+      "bytes": 5709,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/b557def998444e2aa911bcfb7d8d5ede/docs/diario-ia/qa-resultados/yuna/E3-falas-manuais.json",
+      "sourceId": "d1e30bc2b46c920e76bcfaec133d17c09811509e06ed3d0c2cecb100b990b8df",
+      "sha256": "f0a77efdd48b09aab750ac054b4e400d0ba4a819c5881c9817cd64667cb7e17a",
+      "bytes": 7354,
+      "metadataOnly": false
+    }
+  ]
+}

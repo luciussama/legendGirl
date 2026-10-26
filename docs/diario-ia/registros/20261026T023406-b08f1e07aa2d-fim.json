@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T023406-b08f1e07aa2d-fim",
+  "sessionId": "20261026T023406-b08f1e07aa2d",
+  "type": "fim",
+  "date": "2026-10-26T02:34:22.162275+00:00",
+  "title": "Confirmar breve aviso visual da abelha antes do rasante",
+  "actor": "Codex",
+  "summary": "Usuário aprovou pequeno aviso visual da abelha antes do rasante: breve preparação no ar com inclinação do corpo, permitindo reação com salto. Duração numérica não definida; mantidos dano de 1 ponto e derrota por pisão descendente. Próxima decisão: repetição do ataque ou saída após uma passagem.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: atualização documental, sem mudança de runtime."
+  ],
+  "pending": [
+    "Definir comportamento da abelha após sobreviver ao rasante; artes, calibração e integração continuam pendentes."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

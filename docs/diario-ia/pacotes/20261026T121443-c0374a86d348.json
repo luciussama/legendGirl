@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T121443-c0374a86d348",
+  "date": "2026-10-26T12:14:43.445603+00:00",
+  "title": "Observar voo original da abelha no host oficial com RAF e sequencia de quadros",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/revisao-browser.mjs",
+      "sourceId": "2668d1fce57a3ce783333263a9cd4b387baf3f417520d27d5e6cdae74571d572",
+      "sha256": "cfbd30e34c3bfe3999fdb846b17c201a67d025b8f4036f59f4af06c85a019222",
+      "bytes": 4959,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:revisao:browser": "node docs/diario-ia/qa/yuna/revisao-browser.mjs"
+  }
+}

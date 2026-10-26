@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T032655-a051f8c0106d",
+  "sessionId": "20261026T032655-a051f8c0106d",
+  "type": "inicio",
+  "date": "2026-10-26T03:26:55.415227+00:00",
+  "title": "Implementar cenas de Yuna e novos encontros com gameplay crítico por etapa",
+  "actor": "Codex",
+  "branch": "Jardim",
+  "head": "b493b75f1f301d21f954159e789e3da2dbd1ecdc",
+  "workingTree": []
+}

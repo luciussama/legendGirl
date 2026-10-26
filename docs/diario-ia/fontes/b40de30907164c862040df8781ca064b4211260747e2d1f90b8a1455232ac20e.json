@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "b40de30907164c862040df8781ca064b4211260747e2d1f90b8a1455232ac20e",
+  "path": "qa-execucoes/314c93ae02bb4e89b4cfe9562280b7ac/docs/diario-ia/qa-resultados/vegetacao-rios/paisagem-vegetacao.png",
+  "sha256": "9d5b69dc98b253628ba87129c69382014aea7563476347d384330455566b2926",
+  "capturedAt": "2026-10-25T03:27:00.670716+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:vegetacao:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/vegetacao-rios/paisagem-vegetacao.png\", \"sha256\": \"86b6ab0018e2f217a56a239321aa793bd44858885d7b80e086965c80b2528344\", \"bytes\": 814360, \"binaryRetained\": false}"
+}

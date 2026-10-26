@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "4e36f8b7b87aceee158c02850cec13e5a7050ec4e3e8f33fb8ae388dfd6b6853",
+  "path": "qa-execucoes/796c5501aa6a4aaf866eb852e7cc2ce2/docs/qa/toy-room-arena/desktop-arena-robot-ataque.png",
+  "sha256": "9b3624544ff502f425d2dcd5cf524ccafef149f3e424794612215c68ca448051",
+  "capturedAt": "2026-10-25T03:30:52.911710+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-arena-robot-ataque.png\", \"sha256\": \"e5ef589ade0484c80911987d7b5817c1f9095f8eab9fe7795f1bbbb2f651c6c4\", \"bytes\": 1087674, \"binaryRetained\": false}"
+}

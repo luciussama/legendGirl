@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T152458-f9b3755129bb",
+  "date": "2026-10-26T15:24:58.726431+00:00",
+  "title": "Plano final do jardim: seis decisões, etapas de execução posterior e critérios de aceite",
+  "files": [
+    {
+      "path": "docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json",
+      "sourceId": "52647ab04cbc40b3a5c666de97e9e2ce0a38e493264812be15ccb7b5f6758c0a",
+      "sha256": "b75a63b9b15dc21c51f84c64a9cc54e4b12058acb141119e35f8806036f5abe4",
+      "bytes": 24305,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/planos/plano-correcoes-jardim-20261026.md",
+      "sourceId": "551dfc7c01ad9fe37812418aee0252c332036f317c74e68e2881a7b37f957280",
+      "sha256": "8a5903981e785d72e24001ad0279808185c75f4585b7e882488d5d9beb0cb839",
+      "bytes": 17328,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "9e1e167a168548e19f2997627d1e9dd7",
+  "date": "2026-10-26T03:41:53.717943+00:00",
+  "title": "QA temporário: test:yuna:domain",
+  "files": [
+    {
+      "path": "qa-execucoes/9e1e167a168548e19f2997627d1e9dd7.log",
+      "sourceId": "c77b5519910b2af64a7313fdffa450a691446885eddf218a45753ac0efeb2dc6",
+      "sha256": "70006e863c542a678390fc685e32f09d8c568374c7126d6119f1468d66e8b176",
+      "bytes": 185,
+      "metadataOnly": false
+    }
+  ]
+}

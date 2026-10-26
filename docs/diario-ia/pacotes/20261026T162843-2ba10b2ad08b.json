@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T162843-2ba10b2ad08b",
+  "date": "2026-10-26T16:28:43.916466+00:00",
+  "title": "Regressão do avanço manual, migração e cenas nos três formatos",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/polimento/dominio.mjs",
+      "sourceId": "17cb2b148130cc57dfd756fea150131446f8e8584c7b0835135a006bf7748689",
+      "sha256": "c91538f39e6fc2555e2fb5dd00e34ee8f066f17807b4218e69f817d87c048586",
+      "bytes": 2895,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/polimento/cenas-browser.mjs",
+      "sourceId": "767d56543f4fdf41042772c0b55145b8c5f1db470f62db235daff2cf7382ebb8",
+      "sha256": "2bd3376a31321b1bb6fa50622be694ad6500334471ea322c88c57f808ff687b1",
+      "bytes": 6134,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:polimento:domain": "node docs/diario-ia/qa/polimento/dominio.mjs",
+    "test:polimento:cenas:browser": "node docs/diario-ia/qa/polimento/cenas-browser.mjs"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "a20891e57733406d8db3e9d3d4cba7e2",
+  "date": "2026-10-26T16:31:42.987138+00:00",
+  "title": "QA temporário: test:yuna:host:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/a20891e57733406d8db3e9d3d4cba7e2.log",
+      "sourceId": "3cace2862f8aa9ac9aa202e061e5f8ed82eb0f3c560799a10fbe20331b7e1130",
+      "sha256": "0712c97dadabc23313f7964fa8f5a7263fc78afd22748a31d259e1807644cc03",
+      "bytes": 431,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/a20891e57733406d8db3e9d3d4cba7e2/docs/diario-ia/qa-resultados/yuna/host.json",
+      "sourceId": "8837c8ea193402cfd329890ad1d72b8709668701bcd5fb9fe70473f8a57aa1ea",
+      "sha256": "982c581a16c94e6bcae31cdefe33de0ac8aac8943e3653e4a898071a961cfa82",
+      "bytes": 386,
+      "metadataOnly": false
+    }
+  ]
+}

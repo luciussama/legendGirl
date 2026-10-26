@@ -1,5 +1,21 @@
 # Um dia no jardim — artes de produção
 
+## Chegada ao piquenique
+
+`source/piquenique-lateral-v3.png` substitui, na parte jogável, a antiga composição vista de cima. A perspectiva baixa conserva uma toalha estreita e os brinquedos assentados no mesmo plano. Prompt integral da ferramenta integrada image_gen em `prompts-piquenique-lateral-v3.json`. `node scripts/prepare-garden-picnic.js` conserva o alfa, prepara `runtime/piquenique-lateral-v3.png` e gera `GardenPicnicArt.js`. A âncora atravessa o plano da toalha; não usar o último pixel da franja como se fosse a linha inteira do chão. A árvore e a toalha ocupam intervalos horizontais separados. Fontes anteriores ficam preservadas; física, destino e distância dos saltos permanecem iguais.
+
+Nas cenas, o cenário preenche o canvas por trás da narração. Somente o quadro com moldura é opaco; não reservar uma tarja clara de largura total. O enquadramento cinematográfico e o tamanho dos atores respeitam a maior fala de cada cena, evitando mudanças de tamanho a cada parágrafo ou rostos sob o quadro. Isso não altera a câmera jogável.
+
+## Cenas de Yuna e novos insetos
+
+As cenas atuais seguem `ToyRoomIntroduction`: cenário na altura dos olhos, atuação em camadas, planos, voo/pouso da fada e poses de comer. `GardenCinematic.js` compõe as cenas; `GardenNarrative.js` conserva falas/tempos e a revelação do nome por Nanda. `cinematic/casa-sem-atores-v1.png` e `piquenique-sem-yuna-v1.png` são cenários sem Yuna/Nanda pintadas; `atuacao-yuna-nanda-v1.png` fornece oito atuações transparentes. `cinematic/prompts.json` preserva os prompts integrais da ferramenta integrada image_gen. `node scripts/prepare-garden-cinematic.js` isola os componentes alfa, prepara `runtime/cinematic-atuacao-v1.png` e gera `GardenCinematicArt.js`. A câmera cinematográfica não altera a câmera lateral jogável. As antigas composições estáticas em `narrative/` e seus originais no diário permanecem preservadas como referência, fora do manifesto carregado.
+
+`source/insetos-v1.png` contém dois voos de abelha, dois voos de besouro e duas minhocas, com alfa real. Prompt e referência em `prompts-insetos-v1.json`. `node scripts/prepare-garden-insects.js` prepara o atlas `runtime/insetos-v1.png` e `GardenInsectArt.js`. Preservar escala por espécie e margens de asas/antenas. Colisões consideram o corpo exposto, não asas, pedras ou transparência.
+
+O voo atual da abelha usa `source/abelha-camadas-v2.png`, com corpo sem asas e par de asas separado; prompt em `prompts-abelha-camadas-v2.json`. `GardenBeeRenderer.js` mantém uma única pintura/escala/âncora do corpo e articula as asas continuamente pela raiz. O aviso inclina o conjunto gradualmente. As duas antigas poses de abelha ficam preservadas no atlas, mas não são alternadas no jogo. `prepare-garden-cinematic.js` também mede as duas camadas, sem alterar a colisão da abelha.
+
+`source/menina-medo-v1.png` fornece expressão assustada; prompt em `prompts-medo-v1.json`. `node scripts/prepare-garden-fear.js` recompõe quatro pranchas `runtime/medo-menina-*.png`, trocando apenas a região da cabeça. A preparação confere que todo o corpo abaixo do recorte, incluindo as solas, é idêntico às poses físicas originais. O renderer oscila apenas o tronco e acrescenta suor durante o medo. Essa atuação não modifica velocidades, impulsos ou o contrato dos pés. Após reconstruir as poses principais, executar novamente os preparadores de medo e insetos e reconstruir o mapa de sprites.
+
 Direção: dia claro no jardim, rolagem lateral, destino sob uma árvore. Os desenhos enviados pelo usuário orientam grama, madeira, pedras, água, nuvens, formigas, lagartas e uma roda de quatro apoios; não são um mapa obrigatório.
 
 A menina mantém a identidade e o detalhamento de `characters/girl-v2`: rosto, cabelo castanho e marias-chiquinhas. A roupa foi adaptada da foto enviada: camiseta amarela, vestido salopete turquesa estampado com doces, botões amarelos e calçado rosa/branco. A fotografia pessoal não foi copiada para o repositório. A referência foi usada como direção de vestuário; não se trata de retrato fotográfico.
@@ -23,3 +39,10 @@ A lagarta após o primeiro pisão usa duas pinturas escarlates de `source/lagart
 `source/terra-continua-v1.png` fornece somente o material terroso contínuo do subsolo, gerado com `image_gen` integrada. Prompt integral em `prompts-terra-v1.json`. O renderer reduz a pintura inteira a um tile de 512 px, sem esticar tiras das raízes ou espelhar desenhos reconhecíveis. A folhagem e as raízes próximas à superfície conservam as ilustrações anteriores; cantos usam pontas naturais. Morros arredondados compartilham a mesma função de altura na física e no desenho. O preparador preserva esse recurso no manifesto sem recalcular a imagem.
 
 O contrato atual de contato substitui as meias larguras históricas acima: `scripts/prepare-garden-contact.js` mede 28 poses, sapatos por coluna e os tampos de madeira/pedra/nuvem. Dados em `GardenContactData.js`, física em `GardenContact.js`. O renderer compartilha a seleção de pose com a física; apoio parcial real é válido e transparência não é chão. Reexecute o preparador após trocar pinturas, revise o contrato e registre qualquer mudança física no diário.
+
+
+## Parede vegetal e rios naturais
+
+`source/parede-vegetal-v1.png` reveste toda a face e as laterais do chão de terra com vegetação contínua. O renderer prepara um tile de 320 px e dissolve a cobertura baixa nele; retira a antiga placa terrosa da grama alta durante a carga. A geometria e as pequenas faixas altas permanecem. `source/terra-continua-v1.png` é preservada e usada discretamente no leito submerso.
+
+`source/vida-aquatica-v1.png` é uma prancha de seis elementos gerada por `image_gen` integrada, com fundo técnico magenta: pilar, três peixes e duas plantas. `node scripts/prepare-garden-visuals.js` remove o fundo e recompõe `runtime/vida-aquatica-v1.png` e `GardenVisualArt.js`. Prompts integrais e referências aprovadas em `prompts-vegetacao-rios-v1.json`. Execute esse preparador antes de `prepare-garden-art.js` ao reconstruir todas as artes. Os pilares prolongam os tampos existentes até o leito; recortes aquáticos são decoração e não alteram contatos. Peixes pequenos percorrem órbitas lentas em cada rio, com quantidade limitada e descarte fora da tela. Não recalcular `GardenContactData.js` para trocar somente estes detalhes decorativos.

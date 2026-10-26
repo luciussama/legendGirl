@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "b9e4564f11121428265e64ce4fe98845a4711fec22b1348af912cb48fdd73427",
+  "path": "docs/diario-ia/qa/vegetacao-rios/validar-campanha.mjs",
+  "sha256": "b4f760a60074415b23cbb53b740ccf0342180caecb027073f718cf14083c4a80",
+  "capturedAt": "2026-10-25T03:40:28.262046+00:00",
+  "origin": {
+    "type": "qa-arquivado"
+  },
+  "encoding": "utf-8",
+  "content": "import {spawn} from 'node:child_process';import {mkdtemp,rm} from 'node:fs/promises';import os from 'node:os';import path from 'node:path';\nconst profile=await mkdtemp(path.join(os.tmpdir(),'legendgirl-campanha-'));\nconst chrome=spawn('/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',['--headless=new','--mute-audio','--no-first-run','--no-default-browser-check','--autoplay-policy=no-user-gesture-required','--remote-debugging-port=9222','--user-data-dir='+profile,'about:blank'],{stdio:'ignore'});\ntry{for(let i=0;i<100;i++){try{await fetch('http://127.0.0.1:9222/json/version');break;}catch{}await new Promise(r=>setTimeout(r,100));}\nfor(const name of ['test:debug-phases:browser']){console.log('VALIDANDO',name);const code=await new Promise(resolve=>{const p=spawn('npm',['run','journal:qa','--',name],{stdio:'inherit'});p.once('exit',resolve);});if(code)console.log('FALHA PRESERVADA',name,code);}\n}finally{chrome.kill();await new Promise(r=>chrome.once('exit',r));await rm(profile,{recursive:true,force:true});}\n"
+}

@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "02f4ee851400be3a1eb383ba3ed92913b7e4551f9887dd41be6af2259918f7cf",
+  "path": "qa-execucoes/37e0ee0aaded417ea6d4720d75da5f5b/docs/diario-ia/qa-resultados/jardim-v2/desktop-morro-duplo.png",
+  "sha256": "da82d59e0c10c8028faca380bd02c7076748ee709bc6c1eddcd879d046a725d9",
+  "capturedAt": "2026-10-25T03:19:41.816999+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:garden:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/qa-resultados/jardim-v2/desktop-morro-duplo.png\", \"sha256\": \"143ae51056c5b237c6613db3b06f1f364e21f0a445c7458ae9b042e05479e93a\", \"bytes\": 1113873, \"binaryRetained\": false}"
+}

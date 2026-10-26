@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ba12f34fc22122691014a156d3c644fc8632d7d284667fde92d62ce6ec153b8e",
+  "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-morro.png",
+  "sha256": "5e22c6457bec1ceec2f2102581ffbd350bcf14f95a5685f783480979691d9da9",
+  "capturedAt": "2026-10-25T03:45:01.522959+00:00",
+  "origin": {
+    "type": "registro-de-evidencia"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-morro.png\", \"sha256\": \"9f3fb742c96c6847104af0b236b1f63aa13fc1c4645a639b531b3df13ca50b45\", \"bytes\": 2204028, \"type\": \"evidencia-regeneravel\", \"binaryRetained\": false}"
+}

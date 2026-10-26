@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "id": "2337e8e52597cdeb7b812470f63065c237d8a2f9ef4553a0c61bbd0657032642",
+  "path": "qa-execucoes/ea5310e855634d01bdd4f784a4e030cc/docs/qa/toy-room-arena/desktop-vitoria.png",
+  "sha256": "e3cf68b45c0ebc700bfb99ce95ac63c3e63a006380597ee298254469ea05f92c",
+  "capturedAt": "2026-10-25T03:32:53.158300+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:toy-room:arena:browser"
+  },
+  "encoding": "utf-8",
+  "content": "{\"path\": \"docs/qa/toy-room-arena/desktop-vitoria.png\", \"sha256\": \"781bb7a90e11e80004e8a70730ce5618dbbff4f13b6a8cb074f2b6d506a46d38\", \"bytes\": 1129940, \"binaryRetained\": false}"
+}

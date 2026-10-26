@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T032655-a051f8c0106d-cenas-abelhas",
+  "sessionId": "20261026T032655-a051f8c0106d",
+  "type": "checkpoint",
+  "date": "2026-10-26T03:45:52.041509+00:00",
+  "actor": "Codex",
+  "title": "Cenas e abelhas implementadas; minhocas em integração",
+  "summary": "Cenas narrativas integradas, paisagem baixa ajustada após inspeção. Abelhas em atlas transparente, cinco patrulhas com preparo/rasante/retorno e colisão relativa, save v7 migrando v6 sem deslocar. Dois gameplays de etapa completos em NORMAL/EASY. Cenas: NORMAL 6,1789 min com 2 retries, EASY 5,2228 sem retry; abelhas: NORMAL 6,1481 com 2 retries, EASY ~5,23 sem retry. Tempos incluem 50s da abertura e tentativas. Nenhum ajuste de mapa/física/câmera. Minhocas em andamento; besouros e arte de medo ainda pendentes.",
+  "checks": [
+    "Domínio abelha aprovado: preparo, retorno, pisão, dano único, varredura, restore e migração.",
+    "Inspeção de folhas integrais e cenas desktop/retrato/paisagem realizada.",
+    "Primeiro harness no host teve interferência; isolado para usar GardenPhase de produção. Um relatório EASY usou dificuldade NORMAL no adaptador, corrigido e repetido. Falhas preservadas."
+  ],
+  "pending": [
+    "Concluir minhocas e gameplay antes do besouro; preparar medo; domínio, saves, host real e suíte final."
+  ]
+}

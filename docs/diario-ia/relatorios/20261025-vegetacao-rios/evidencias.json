@@ -1,0 +1,44 @@
+[
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-morro.png",
+    "sha256": "9f3fb742c96c6847104af0b236b1f63aa13fc1c4645a639b531b3df13ca50b45",
+    "bytes": 2204028,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-rio.png",
+    "sha256": "901ef55c558288f5e64ca145c6e0debe35411fc9b37f0edeb3a6420bed03725b",
+    "bytes": 2024648,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/desktop-vegetacao.png",
+    "sha256": "1bcd1fc9ebf1abb0aca8a633991d6a8f095f99f6f1b1a3a29e23ae42714a94e8",
+    "bytes": 2192422,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/paisagem-vegetacao.png",
+    "sha256": "1c1725a2012ce87fd0ba1241f8e4da4b4f9fddd95575a1e5c55dc7a40570dffc",
+    "bytes": 814045,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/reproducao-folha-0.png",
+    "sha256": "a4cb2e28c13f525e484053bb564aec782e8c634e58f45e455d2ffc8ca4451b6c",
+    "bytes": 2414442,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/reproducao-folha-1.png",
+    "sha256": "80e32eea8a5a8d13305e6b6c97a49a5d2358bf60fcb027219adb6817478b8e56",
+    "bytes": 2347106,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  },
+  {
+    "path": "docs/diario-ia/relatorios/20261025-vegetacao-rios/evidencias/retrato-rio.png",
+    "sha256": "5b7379e27a4982397dec6e9fa2ae62100aa00f01c046902bcc8626f96baa6f89",
+    "bytes": 705704,
+    "origem": "Captura da versão final do jogo renderizada em Chrome; não é imagem conceitual."
+  }
+]

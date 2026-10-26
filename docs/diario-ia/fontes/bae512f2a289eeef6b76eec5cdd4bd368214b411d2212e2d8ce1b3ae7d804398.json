@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "bae512f2a289eeef6b76eec5cdd4bd368214b411d2212e2d8ce1b3ae7d804398",
+  "path": "qa-execucoes/afef30114c16492598592586b29c861b.log",
+  "sha256": "f29044eee0ad9b63df97b0c923934d8425d74da421e4553f43bdc5f4f688d68f",
+  "capturedAt": "2026-10-26T04:03:34.828564+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:yuna:host:browser",
+    "exitCode": 0,
+    "package": "20261026T040314-be860b3fe161"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:yuna:host:browser\n> node docs/diario-ia/qa/yuna/host-browser.mjs\n\n{\"resultado\":\"gameplay real do checkpoint final até o piquenique, por teclado e RAF\",\"nuvens\":[\"nuvem-final-0\",\"nuvem-final-1\",\"nuvem-final-2\",\"nuvem-final-3\"],\"pausa\":true,\"restoreDuranteMedo\":true,\"duracaoObservada\":6.013799999997108,\"rafP95\":16.700000000000728,\"rafP99\":16.800000000000182,\"amostras\":586,\"final\":\"COMPLETE\"}\n"
+}

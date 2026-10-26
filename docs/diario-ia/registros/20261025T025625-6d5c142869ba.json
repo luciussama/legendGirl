@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T025625-6d5c142869ba",
+  "sessionId": "20261025T025625-6d5c142869ba",
+  "type": "inicio",
+  "date": "2026-10-25T02:56:25.463597+00:00",
+  "title": "Criar amostra de patamares totalmente revestidos de vegetação",
+  "actor": "Codex",
+  "branch": "Jardim",
+  "head": "12d4bff098fc2c315364c777e9e52515a759fdee",
+  "workingTree": [
+    " M docs/diario-ia/CONTEXTO-ATUAL.md",
+    "?? docs/diario-ia/arte/amostras-terra-v2/",
+    "?? docs/diario-ia/fontes/ffa3b0df6739c36f8d8a3a29f2177c91f88aafe3f397fb554e143cf399bbf1b8.json",
+    "?? docs/diario-ia/registros/20261025T025036-06cc014c14a8-fim.json",
+    "?? docs/diario-ia/registros/20261025T025036-06cc014c14a8.json",
+    "?? docs/diario-ia/registros/20261025T025245-134b22d080d4-fim.json",
+    "?? docs/diario-ia/registros/20261025T025245-134b22d080d4.json"
+  ]
+}

@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T034552-18b3f66acab4",
+  "date": "2026-10-26T03:45:52.043688+00:00",
+  "title": "QA de minhocas por proximidade e capturas de encontros",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/phase.html",
+      "sourceId": "0675c817b24250753d32a8d35d0f7729e1bb99149c6a0bd5815e6c0355b61d1a",
+      "sha256": "7cfd9546f81f34c247333930f9434bd902610fc24765bcd6b7faadd86af3aab4",
+      "bytes": 509,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/dominio.mjs",
+      "sourceId": "d5ff83f728bd747292cf5bc7ce3e93ac4f5f1853f2f8636dbcb8230f6b370eaa",
+      "sha256": "472aa1ccaab73f58d43a902e99f3173c2ae994e80b2060f0b3c7c01517d54a0f",
+      "bytes": 2445,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+      "sourceId": "f59e1f2c6ec9100a28a06f98c60a99ddcbfbd9ed81810319396f3c693165499f",
+      "sha256": "08658c81a04bba181cd90f2118e56df740904f487e6ed3f63168e173d6462680",
+      "bytes": 7133,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/piloto-base.mjs",
+      "sourceId": "3fd02d8fb946a13069a03f6cd7e261171a34879210b4978fbe1605c5059dafa6",
+      "sha256": "f7c53e2443ac74a8f9255a141a8ad9339d194e52fdfd47debdd02d1d2d2bb5ca",
+      "bytes": 2671,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:browser": "node docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+    "test:yuna:domain": "node docs/diario-ia/qa/yuna/dominio.mjs"
+  }
+}

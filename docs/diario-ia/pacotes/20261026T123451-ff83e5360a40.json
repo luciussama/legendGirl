@@ -1,0 +1,71 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T123451-ff83e5360a40",
+  "date": "2026-10-26T12:34:51.417816+00:00",
+  "title": "Correções de Yuna: cenas em camadas, voo estável e avaliação crítica do jogo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/yuna/phase.html",
+      "sourceId": "0675c817b24250753d32a8d35d0f7729e1bb99149c6a0bd5815e6c0355b61d1a",
+      "sha256": "7cfd9546f81f34c247333930f9434bd902610fc24765bcd6b7faadd86af3aab4",
+      "bytes": 509,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/dominio.mjs",
+      "sourceId": "acddb35674840e4ae1f612a944c961104773c3f62ca14c7f772a77e6b2a5eae7",
+      "sha256": "af413d50c4c202140cc6625b01acacab063283f83c301cdb05a5bd6c96d71c3c",
+      "bytes": 4813,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+      "sourceId": "612c3333a15a6a5e6a5dd3db1f005a8ea6ee7f90f1f15615697385178288f4a7",
+      "sha256": "51ae6443415977025511f6b44dc89236d6a318fe6aa6698a01db34e239aaaf73",
+      "bytes": 8182,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/piloto-base.mjs",
+      "sourceId": "33278426b3c546c7e12e95c985df7f4f7046889631f6572757f9b0ba2d1ccf0f",
+      "sha256": "8d4b1a15fe317a301406614931028932c80c50f5c8ac621681363e4fdcd9b40a",
+      "bytes": 2719,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/host-browser.mjs",
+      "sourceId": "0b6b706600e23dbf3d164f4b0b1c38f5e04f5a80908689f70debdb99cc50013a",
+      "sha256": "3cc2793ef20627b4462cf6b6221bb9b16b36b4ffd28bb926ffec95d156617abc",
+      "bytes": 6659,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/revisao-browser.mjs",
+      "sourceId": "2668d1fce57a3ce783333263a9cd4b387baf3f417520d27d5e6cdae74571d572",
+      "sha256": "cfbd30e34c3bfe3999fdb846b17c201a67d025b8f4036f59f4af06c85a019222",
+      "bytes": 4959,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/avaliacao-correcao-cenas-abelha.json",
+      "sourceId": "bb82ddd336636a900031d66caa501318cc0c72d57910d49c139eb795f6ce66a3",
+      "sha256": "3ae6fc8916b2fd0d41828d7e2e199e94e1050b5a2f10598f7578bf8bccde8ac1",
+      "bytes": 48729,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/yuna/cenas-camadas-browser.mjs",
+      "sourceId": "74c4be4a87fd37e272664edb83e480058cebeb1cbdbd6a2a85b454cf0d71ff26",
+      "sha256": "5aa8006ddd3d3c4c1e841e7a30d3d8a2f96037bef6e1419482d13f36e782997f",
+      "bytes": 5397,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:yuna:revisao:browser": "node docs/diario-ia/qa/yuna/revisao-browser.mjs",
+    "test:yuna:cenas:browser": "node docs/diario-ia/qa/yuna/cenas-camadas-browser.mjs",
+    "test:yuna:browser": "node docs/diario-ia/qa/yuna/gameplay-browser.mjs",
+    "test:yuna:domain": "node docs/diario-ia/qa/yuna/dominio.mjs",
+    "test:yuna:host:browser": "node docs/diario-ia/qa/yuna/host-browser.mjs"
+  }
+}

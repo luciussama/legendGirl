@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "67e6e03305004e70957a5b7832f45a5a",
+  "date": "2026-10-26T16:24:45.996456+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/67e6e03305004e70957a5b7832f45a5a.log",
+      "sourceId": "4b684d89f93da13fcbcd26c45d32705010058446da64319858a7ce103aee06f5",
+      "sha256": "b4c9619fd8d39cefb6b8d2384ea899927b02797ce868f21505b26b5eb42175ae",
+      "bytes": 5696,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/67e6e03305004e70957a5b7832f45a5a/docs/diario-ia/qa-resultados/yuna/E5-pistas.json",
+      "sourceId": "844b4d470b7d1f08784476d656bc0b174064bcb6dda62bf85ecae50f99e8a077",
+      "sha256": "533304b8b6e0af06ede28017e6ee85e94542f6cf2234aba8bb0f46a77df711fe",
+      "bytes": 7355,
+      "metadataOnly": false
+    }
+  ]
+}

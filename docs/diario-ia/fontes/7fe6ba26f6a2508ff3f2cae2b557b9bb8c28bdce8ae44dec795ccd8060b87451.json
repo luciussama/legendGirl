@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "7fe6ba26f6a2508ff3f2cae2b557b9bb8c28bdce8ae44dec795ccd8060b87451",
+  "path": "assets/art/garden/prompts-insetos-v1.json",
+  "sha256": "5ae87a560dbde5ee0276c7efc800106fcba07d9f885b35d39501085198bc4274",
+  "capturedAt": "2026-10-26T03:35:46.843537+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"ferramenta\": \"image_gen integrada\",\n  \"referencia\": \"docs/diario-ia/arte/amostras-inimigos/abelha-besouro-minhoca-v1.png\",\n  \"prompt\": \"Uso: illustration-story, atlas de produção para jogo 2D. Use a prancha de referência SOMENTE para preservar exatamente o estilo pintado, identidade e cores dos três bichos aprovados. Produza uma prancha HORIZONTAL com grade regular de 3 COLUNAS por 2 LINHAS, 6 células iguais. Fundo totalmente transparente real, sem letras, nomes, molduras, sombras de chão, cenário ou marcas. Cada bicho inteiro isolado no CENTRO de sua célula com margem transparente ampla, nada cruzando células. Mesma escala por espécie entre seus dois quadros. Linha superior: coluna 1 abelhinha dourada listrada marrom em voo lateral olhando DIREITA, asas abertas altas; coluna 2 MESMA abelhinha em voo rasante lateral para DIREITA, asas baixas; coluna 3 BESOURO azul/verde da referência VOANDO para DIREITA, casco aberto revelando asas transparentes estendidas, perninhas suspensas, expressão inofensiva curiosa. Linha inferior: coluna 1 MESMO besouro VOANDO para DIREITA com asas em outra fase do batimento; coluna 2 minhoca rosada/terracota erguida verticalmente com cabeça olhando DIREITA e corpo saindo de um pequeno buraco oval com pouquíssimas pedrinhas naturais; coluna 3 MESMA minhoca erguida em leve curva diferente, saindo do MESMO pequeno buraco. Minhoca sem pernas, sem antenas. Buraco só decoração da base, nenhuma placa retangular de solo ou ilha. Reproduzir anatomia fofa da referência, sem transformar bichos em horror. O atlas deve conter EXATAMENTE 2 abelhas, 2 besouros voando, 2 minhocas, nos seis lugares especificados, sem qualquer outro objeto. Resolução ampla para recortar em grade, desenho nítido de livro infantil consistente. Transparência também entre asas e pernas; não desenhar xadrez.\",\n  \"arquivo\": \"source/insetos-v1.png\"\n}\n"
+}

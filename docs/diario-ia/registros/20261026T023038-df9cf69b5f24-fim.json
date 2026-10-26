@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T023038-df9cf69b5f24-fim",
+  "sessionId": "20261026T023038-df9cf69b5f24",
+  "type": "fim",
+  "date": "2026-10-26T02:31:04.217998+00:00",
+  "title": "Repetir perseguição do besouro após retorno ao checkpoint",
+  "actor": "Codex",
+  "summary": "Usuário definiu repetir perseguição do besouro após queda e retorno ao checkpoint. Encontro rearma na nova tentativa, inclusive nas nuvens finais, mantendo os seis segundos e demais regras já aprovadas; não fica permanentemente consumido pela tentativa fracassada. Próxima definição: preparação visual da abelha antes do rasante.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: decisão exclusivamente documental, sem implementação."
+  ],
+  "pending": [
+    "Definir sinal de preparação do rasante da abelha; artes, calibração e integração continuam pendentes."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

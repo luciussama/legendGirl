@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "70edc826724a02515118f06aebf1844dbf32210fe86a07380845246627605d51",
+  "path": "qa-execucoes/4c025df4c99d45c3bc3be5d87c87a1eb.log",
+  "sha256": "470bb0a6f7a50815a5854ee66751ff5de4e0605a8939a048ebc87b3e4906debb",
+  "capturedAt": "2026-10-25T03:42:52.507678+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:debug-phases:browser",
+    "exitCode": 0,
+    "package": "zzzzzz-20261014T165444-b09f6261e88e"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:debug-phases:browser\n> node scripts/test-debug-phase-select-browser.js\n\nAPROVADO: desktop — três fases, troca repetida durante jogo, arena com espada, seletor dentro da tela, teclado isolado e save preservado.\nAPROVADO: android — três fases, troca repetida durante jogo, arena com espada, seletor dentro da tela, teclado isolado e save preservado.\n"
+}

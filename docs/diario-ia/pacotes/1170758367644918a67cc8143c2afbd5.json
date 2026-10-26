@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "1170758367644918a67cc8143c2afbd5",
+  "date": "2026-10-26T16:16:36.088990+00:00",
+  "title": "QA temporário: test:yuna:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/1170758367644918a67cc8143c2afbd5.log",
+      "sourceId": "49696cfd0fa894409a49b16c56608aad7b5bac9bd650b7d5bce869d70e8f3628",
+      "sha256": "1a0def7e372118a4c01d1e8029bfe9a8c60621d0537600784ca3a61dbdf2868e",
+      "bytes": 5747,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/1170758367644918a67cc8143c2afbd5/docs/diario-ia/qa-resultados/yuna/E2-medo.json",
+      "sourceId": "a974e0ab92829737aa8f2f4d350d91ccea65e831ae537cd567a7bb0371a95194",
+      "sha256": "2b9cab3a92b8d878c5aac18c7daf37e25bd1919168060a3cb761dc2267fe31b7",
+      "bytes": 7425,
+      "metadataOnly": false
+    }
+  ]
+}

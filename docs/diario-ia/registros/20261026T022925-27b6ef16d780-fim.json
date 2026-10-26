@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T022925-27b6ef16d780-fim",
+  "sessionId": "20261026T022925-27b6ef16d780",
+  "type": "fim",
+  "date": "2026-10-26T02:29:46.912737+00:00",
+  "title": "Definir urgência visual do medo sem aumento de velocidade",
+  "actor": "Codex",
+  "summary": "Usuário definiu velocidade normal e urgência puramente visual: passadas desajeitadas, rosto de medo e gotas de suor. Sem bônus de velocidade ou mudança de salto, física ou câmera; mantidos corrida automática para frente e pulo manual nos seis segundos já acordados. Novas poses ainda precisam ser preparadas e avaliadas.",
+  "checks": [
+    "git diff --check aprovado; alterações preexistentes preservadas.",
+    "Testes de gameplay não executados: registro exclusivamente documental, sem mudança de runtime."
+  ],
+  "pending": [
+    "Definir repetição dos encontros após retorno ao checkpoint. Arte de medo, calibração, assistência e integração continuam pendentes."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "20261025T033235-574d888a620d",
+  "date": "2026-10-25T03:32:35.770298+00:00",
+  "title": "Atualizar fixtures legadas: base absoluta da arena, lista atual de fases e piloto da perseguição já validado no domínio",
+  "files": [
+    {
+      "path": "tests/toy-room-arena.html",
+      "sourceId": "15b15a0bdaa0b527584fa5fe2372e938d7841b90e9c61bfb4128444626b5368a",
+      "sha256": "e70cd83265e2867d41ca2f1d722066ebe963b6ab7e42eb0af784093491c1c191",
+      "bytes": 2728,
+      "metadataOnly": false
+    },
+    {
+      "path": "scripts/test-debug-phase-select-browser.js",
+      "sourceId": "cac36dd15fc44002304fd5eb9f117a97e3d9b6cf777e1717ba904235f28259f1",
+      "sha256": "1452f8adce440ceb7a273bf0c7f53b36edfaad63282fec8d8211d501e8e91607",
+      "bytes": 5221,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/perseguicao-20261019/navegador-browser.js",
+      "sourceId": "ec838ba87301c7b55dc729714ce708808ea9237c01601023d2d62262e1f6cef3",
+      "sha256": "0908221b13079a0fe34d3d601553f92638e2dd3aac2efacd3a7b1a113d69c149",
+      "bytes": 8649,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {}
+}

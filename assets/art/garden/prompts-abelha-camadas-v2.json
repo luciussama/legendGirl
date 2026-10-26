@@ -1,0 +1,6 @@
+{
+  "tool": "image_gen integrada",
+  "reference": "source/insetos-v1.png",
+  "file": "source/abelha-camadas-v2.png",
+  "prompt": "Use case: identity-preserve. Asset: two independent cutout animation layers for the cute bee in the supplied reference. Make a horizontal atlas of TWO well separated objects on genuine transparent background, no scenery, no glow, no shadow backdrop. LEFT half: only the first reference bee's fuzzy yellow and brown striped BODY, smiling face with big brown eyes, cheeks, antennae and all six little legs, facing right in 3/4 side view, natural hovering posture. REMOVE ALL WINGS from the body cleanly; keep fuzzy back intact. RIGHT half: a single detached pair of pearly translucent golden-veined bee wings matching that first bee, together like an open fan, with their narrow attachment roots meeting at the bottom right corner of the wing silhouette, broad rounded tips pointing upper-left and upper-right. Nothing else in the right half. The two objects must not touch, large clean empty gap at central division. Fine detailed handpainted warm storybook style exactly matching reference; fixed body will be used for every animation frame and wings will rotate independently at the shared root. No alternate bee poses. No text, numbers, grid or border. Transparent RGBA background."
+}

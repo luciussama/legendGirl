@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "f18b1a3fc9fb4b2d9d2d41c8cf37f246",
+  "date": "2026-10-26T12:31:17.711255+00:00",
+  "title": "QA temporário: test:yuna:cenas:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/f18b1a3fc9fb4b2d9d2d41c8cf37f246.log",
+      "sourceId": "016c62274a83f43a8794ea4a711cf58756dc4506449894c329e44eb986ebf403",
+      "sha256": "18e275c5a303b02650157bb786845232c92d1df7f90e438a0189336bf378fcc3",
+      "bytes": 469,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/f18b1a3fc9fb4b2d9d2d41c8cf37f246/docs/diario-ia/qa-resultados/yuna/cenas-camadas.json",
+      "sourceId": "d707ee1aaeb534e0fba8f9f2cf370bbce05adc33afa670076203ea46af9cbeec",
+      "sha256": "a45174f369e9df61c1c349f9f515695d329bc3107cb29673f0a024838c117bd8",
+      "bytes": 499,
+      "metadataOnly": false
+    }
+  ]
+}

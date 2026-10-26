@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "69698b762088d8ae4f5d8db003f4fffcd869870430a1f0aa3b8460925d815f50",
+  "path": "qa-execucoes/e583739c33a9435884de0b0047923e63.log",
+  "sha256": "d9b830e212cbdc8f67d25fc5ca83477c54442a5df6e70ba91b5cda8453a6cc4e",
+  "capturedAt": "2026-10-26T16:29:05.406514+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:polimento:domain",
+    "exitCode": 0,
+    "package": "20261026T162843-2ba10b2ad08b"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:polimento:domain\n> node docs/diario-ia/qa/polimento/dominio.mjs\n\nAPROVADO: espera, entrada mantida, avanço único, skip somente visto, migração 7→8 sem mudar corpos/encontros, leitura restaurada, permanência animada e hashes de física/mapa.\n"
+}

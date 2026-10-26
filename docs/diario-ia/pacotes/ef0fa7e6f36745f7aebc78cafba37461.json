@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "ef0fa7e6f36745f7aebc78cafba37461",
+  "date": "2026-10-26T12:32:00.482547+00:00",
+  "title": "QA temporário: test:sprite-review",
+  "files": [
+    {
+      "path": "qa-execucoes/ef0fa7e6f36745f7aebc78cafba37461.log",
+      "sourceId": "6185cf152c698db025752361e408bce3b7a09f48405873495c80d477a916ec86",
+      "sha256": "4d2a6ac5a6378541ff8166a80a2c1d7bf80417ca407617be541f677102b5c6d5",
+      "bytes": 229,
+      "metadataOnly": false
+    }
+  ]
+}

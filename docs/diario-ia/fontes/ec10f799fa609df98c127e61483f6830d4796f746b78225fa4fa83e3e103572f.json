@@ -1,0 +1,12 @@
+{
+  "schemaVersion": 1,
+  "id": "ec10f799fa609df98c127e61483f6830d4796f746b78225fa4fa83e3e103572f",
+  "path": "assets/art/garden/manifest.json",
+  "sha256": "03aae3f5617c6eb772e2ac3e6c2869c99a25ed47d156aacc1afdde2f8445e852",
+  "capturedAt": "2026-10-26T03:32:20.143028+00:00",
+  "origin": {
+    "type": "workspace"
+  },
+  "encoding": "utf-8",
+  "content": "{\n  \"version\": 1,\n  \"images\": [\n    \"cenario-v1.png\",\n    \"runtime/menina-corrida-v1.png\",\n    \"runtime/menina-acoes-v1.png\",\n    \"runtime/menina-desconforto-v1.png\",\n    \"runtime/menina-pedrinhas-v2.png\",\n    \"source/objetos-v1.png\",\n    \"source/ambiente-v2.png\",\n    \"source/lagarta-vermelha-v1.png\",\n    \"source/terra-continua-v1.png\",\n    \"../toy-room/stage3/illustrated-fairy-v1.png\",\n    \"source/parede-vegetal-v1.png\",\n    \"runtime/vida-aquatica-v1.png\",\n    \"narrative/abertura-yuna-v1.png\",\n    \"narrative/piquenique-descanso-v2.png\"\n  ]\n}\n"
+}
