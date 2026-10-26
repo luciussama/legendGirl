@@ -1,5 +1,12 @@
 # Contexto compartilhado vigente
 
+## Integração local da Jardim na main — 26/10/2026
+
+Sessão `20261026T194453-8fcc664efc46`: usuário solicitou commit das alterações, merge na main e exclusão da branch após conferir a integração. Alterações existentes de produção, documentação, artes e acervo preservadas no commit `01cbad9f`. Referências remotas atualizadas por fetch; main local avançada de `085d6118` para `origin/main` (`519fb04e`), que já continha os commits anteriores da Jardim. Merge local sem conflitos em `7e3c1c2e`; ancestralidade da Jardim e igualdade integral das árvores verificadas antes da exclusão local da branch. `git branch -d` recusou por comparar com o upstream antigo; exclusão com `-D` somente após reconfirmar ancestralidade na main.
+
+`npm test` completo exit 0 antes do commit. Build, check-assets (78), lint e diff --check aprovados; build/assets/lint repetidos após merge. A árvore integrada é idêntica à árvore testada, sem necessidade de repetir a suíte completa. Nenhuma alteração de implementação nesta sessão. Branch ativa main; `origin/Jardim` preservada. Sem push, exclusão remota ou publicação neste pedido. Pendências de homologação humana/aparelho físico/Safari das sessões anteriores permanecem.
+
+
 ## Correções concluídas e padrão global de diálogos — 26/10/2026
 
 Sessão `20261026T181721-3f1802024697`. Pedidos implementados e verificados tecnicamente. **Regra geral vigente:** falas de narrador/personagens avançam automaticamente nos tempos autorados, com clique/toque opcional para adiantar um balão. Substitui a espera manual escolhida anteriormente no quiz; não reintroduzir essa espera ao retomar. Especificação permanente em [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md), também vinculada no README obrigatório do diário e no manual de desenvolvimento. Fonte canônica `46f2ea04d124489ca490d040ec76d2867024ffd30db5ac46af5cd64b5f395681`.

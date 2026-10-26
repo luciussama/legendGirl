@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T194453-8fcc664efc46-fim",
+  "sessionId": "20261026T194453-8fcc664efc46",
+  "type": "fim",
+  "date": "2026-10-26T19:46:46.603454+00:00",
+  "title": "Commit das alterações da Jardim, merge na main e exclusão da branch",
+  "actor": "Codex",
+  "summary": "Commit 01cbad9f criado com alterações acumuladas e acervo; main atualizada por fast-forward para origin/main 519fb04e e merge sem conflitos 7e3c1c2e. Ancestralidade e igualdade integral das árvores confirmadas; Jardim excluída localmente após confirmação. Recusa inicial de branch -d por upstream remoto antigo resolvida com -D após nova verificação. Sem push/exclusão remota/publicação.",
+  "checks": [
+    "npm test completo: exit 0 antes do commit; resultados individuais preservados pelo executor no diário.",
+    "Build, check-assets (78), lint e git diff --check aprovados; build/assets/lint repetidos após merge. Árvores Jardim/main idênticas antes da exclusão."
+  ],
+  "pending": [
+    "origin/Jardim preservada e main local ainda não enviada ao remoto; push/publicação não incluídos no escopo local. Homologação humana/física/Safari anterior permanece pendente."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md"
+  ]
+}
