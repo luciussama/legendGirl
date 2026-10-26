@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "d9e519c315394936aa28464cd4489c87",
+  "type": "qa",
+  "date": "2026-10-26T18:55:00.841650+00:00",
+  "title": "QA temporário: test:jardim:v9:integral:browser",
+  "exitCode": 0,
+  "sourceId": "5abdf8b4f6efbbeb92ec29ccdc2caf22b340cdf0cb4d85f6c094a5e5263df823",
+  "package": "20261026T184646-28483fcfceef"
+}

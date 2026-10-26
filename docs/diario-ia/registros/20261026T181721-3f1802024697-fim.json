@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T181721-3f1802024697-fim",
+  "sessionId": "20261026T181721-3f1802024697",
+  "type": "fim",
+  "date": "2026-10-26T19:19:10.210865+00:00",
+  "title": "Corrigir entrada branca, rasantes alternados da abelha e chegada do besouro",
+  "actor": "Codex",
+  "summary": "Corrigida tela branca reproduzida na descida: condição booleana explícita e fade limitado a 0,45 s. Abelha alterna parábolas A/B com repouso fixo, aviso, dano e pisão preservados; save v9 migra voo v8 sem desaparecer. Besouro entra fora da borda esquerda por 0,85 s visuais, mantendo seis segundos. Incorporada instrução posterior do usuário: padrão global de falas automáticas pelos tempos autorados, com clique/toque opcional de um balão; substitui espera manual do quiz. DialogueFlow atende narrador/personagens/aberturas/história/cenas do quarto e jardim; clique no quadro durante gameplay preserva controles, entrada consumida não gera salto/ataque. Especificação geral permanente no diário, README obrigatório, manual e contexto. Pacote final 20261026T191720-af271a2d9050: 16 fontes verificadas, QA crítico, falhas reais e metadados de 399 capturas descartadas; produção/histórico/trabalho prévio preservados. Sem commit/push/publicação.",
+  "checks": [
+    "Reprodução antes/depois no host por teclado: quadros opacos em 1 e 2 s da descida corrigidos, casa/Yuna/chão visíveis e RUNNING alcançado. Inspeção dos insetos em desktop/retrato/paisagem.",
+    "Domínio: parábolas A→B→A espelhadas, repouso, aviso, save em voo, migração v8→v9, dano/pisão/minhoca/seis segundos aprovados; mapa/contato/salto/gravidade/câmera preservados.",
+    "Percursos completos: Normal 5,30583 min/2 retries; Fácil 4,47278 min/0 retry/1 resgate. Host real Chrome/RAF completo 404,4052 s/4 retries, p95 16,7 ms. Primeiro piloto falhou após terceira derrota por driver sem espera do modal EASY; fonte/resultado preservados e espera corrigida.",
+    "Padrão global aprovado em domínio e host desktop/retrato: avanço automático, clique/toque de um balão, personagens/narradores do despertar/sala/castelo/porta falsa/brinquedos/jardim, acolhimento automático, PULAR preservado. Fixture inicial de pulo corrigida para amostrar liberação da entrada anterior, mantendo falha no acervo.",
+    "npm test final exit 0; build/check-assets 78/lint/sintaxe/diff aprovados. Mapa 478 imagens/249 recortes/29 assinaturas; referência 175 módulos/1146 declarações. Especificação fonte 46f2ea04d124489ca490d040ec76d2867024ffd30db5ac46af5cd64b5f395681."
+  ],
+  "pending": [
+    "Sem implementação pendente destes pedidos. Aparelho físico/Safari/escuta e aprovação humana de arte/conforto não homologados."
+  ],
+  "files": [
+    "docs/diario-ia/padroes/DIALOGOS-E-CENAS.md",
+    "docs/diario-ia/README.md",
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/qa/encontros-v9/avaliacao-final.json",
+    "docs/diario-ia/pacotes/20261026T191720-af271a2d9050.json",
+    "src/js/narrative/DialogueFlow.js",
+    "src/js/narrative/PoeticNarrator.js",
+    "src/js/narrative/DarkRoomNarrative.js",
+    "src/js/ui/DialogueRenderer.js",
+    "src/js/game.js",
+    "src/js/cinematics/OpeningSequence.js",
+    "src/js/cinematics/ToyRoomIntroduction.js",
+    "src/js/toy-room/ToyRoomStory.js",
+    "src/js/toy-room/ToyRoomPhase.js",
+    "src/js/state/GameState.js",
+    "src/js/state/StateVariables.js",
+    "src/js/garden/GardenEncounters.js",
+    "src/js/garden/GardenRenderer.js",
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenCinematic.js",
+    "src/js/garden/GardenPhase.js",
+    "docs/garden/GUIA-JARDIM.md",
+    "assets/art/garden/README.md",
+    "docs/ARQUITETURA.md",
+    "docs/MANUAL-DESENVOLVIMENTO.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/REFERENCIA-METODOS.md",
+    "docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json",
+    "docs/diario-ia/planos/plano-correcoes-jardim-20261026.md"
+  ]
+}

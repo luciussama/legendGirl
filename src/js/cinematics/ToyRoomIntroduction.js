@@ -51,6 +51,13 @@ export class ToyRoomIntroduction {
       this.assets = null; this.departure = null;
     }
   }
+  advanceDialogue(){
+    if(!this.active||!this.dialogue)return false;
+    const stage=this.stage;
+    if(stage.id==='TR_006'&&stage.time<3.1)this.time+=3.9-stage.time;
+    else this.time+=stage.duration-stage.time;
+    return true;
+  }
   prepare({ assets, phase, departure, audio }) {
     this.assets = assets || phase?.assets;
     this.departure = departure;

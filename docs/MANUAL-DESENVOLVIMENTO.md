@@ -606,3 +606,7 @@ A ação de exploração não solta brinquedos no chão: conserva `carriedItem` 
 Use a bandeira → Um dia no jardim. Leia [GUIA-JARDIM](garden/GUIA-JARDIM.md) e o [README das artes](../assets/art/garden/README.md). Reconstrua recortes com `node scripts/prepare-garden-art.js`. O manifesto dedicado é carregado pela fase, sem aumentar o preload de todas as cenas. Física/apoios ficam em `GardenLevel`/`GardenSimulation`; pintura não altera essas medidas. Preservar controle simultâneo por toque, origem dos pés, câmera lateral, transporte pela roda, snapshot e descarte ao trocar de fase.
 
 No jardim v2, preserve a distinção entre grama lenta e pedrinhas rápidas sem derrapagem, a fatalidade NORMAL e a recuperação imortal EASY. `clouds`, `fairy`, `trail`, `safeGround` e `recovery` são domínio serializável. Não restaure apoio em nuvem ausente. O mapa tem consultas espaciais; evite varrer todas as plataformas a cada subpasso. Na pintura do chão fixo, repita somente o miolo da textura e mantenha o preenchimento contínuo, sem laterais internas.
+
+## Padrão de diálogos
+
+Ao criar ou alterar cenas, consultar [padrões de diálogos e cenas](diario-ia/padroes/DIALOGOS-E-CENAS.md): manter avanço automático e duração autorada, oferecer clique/toque para adiantar um balão e consumir a entrada sem ações de gameplay. O diário registra a decisão geral do usuário e substitui a antiga espera manual do jardim.

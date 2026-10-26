@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "256a02b3ba084d8ca78f48f267e0ed1f",
+  "date": "2026-10-26T19:08:46.572155+00:00",
+  "title": "QA temporário: test:arena:especial",
+  "files": [
+    {
+      "path": "qa-execucoes/256a02b3ba084d8ca78f48f267e0ed1f.log",
+      "sourceId": "5289257a2deb12a5096c59cadb7993863416a91b0dc0aa5e690f6bdaf4677452",
+      "sha256": "24225259007d98749b9570c3b877b2002ea55976140556fa6eb25e881cec99b8",
+      "bytes": 259,
+      "metadataOnly": false
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {installDialogueAdvance} from '../narrative/DialogueFlow.js';
 import {createGardenState,restoreGardenState,stepGarden,retryGarden} from './GardenSimulation.js';
 import {GardenRenderer} from './GardenRenderer.js';
 import {GardenInput} from './GardenInput.js';
@@ -6,9 +7,17 @@ import {GardenAudio} from './GardenAudio.js';
 export class GardenPhase {
   constructor({canvas,audio,enabled=()=>true,difficulty='NORMAL',campaign=false}){
     this.canvas=canvas;this.enabled=enabled;this.difficulty=difficulty;this.campaign=campaign;this.state=createGardenState(difficulty);this.ready=false;this.error=null;this.disposed=false;this.paused=false;
+    this.removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>this.ready&&!this.paused&&this.enabled(),isModal:()=>Boolean(this.reading()),advance:event=>this.requestDialogueAdvance(event)});
     this.onBlur=()=>this.setPaused(true);this.onFocus=()=>{if(this.enabled())this.setPaused(false);};
     this.onVisibility=()=>{if(document.hidden)this.onBlur();else this.onFocus();};
     this.renderer=new GardenRenderer(canvas);this.audio=new GardenAudio(audio);this.input=new GardenInput(canvas,()=>this.ready&&!this.paused&&this.enabled(),()=>this.renderer.controls(),()=>this.audio.unlock(),()=>this.reading());
+  }
+  requestDialogueAdvance(event={}){
+    if(event.pointerType==='touch')this.input.touch=true;
+    const reading=this.reading();if(!this.ready||this.paused||this.error||!this.enabled()||!reading)return false;
+    const box=reading.skipBox,rect=this.canvas.getBoundingClientRect(),x=(event.clientX-rect.left)*this.canvas.width/rect.width,y=(event.clientY-rect.top)*this.canvas.height/rect.height;
+    if(reading.seen&&box&&x>=box.x&&x<=box.x+box.w&&y>=box.y&&y<=box.y+box.h)this.input.skipQueued=true;else this.input.advanceQueued=true;
+    this.input.blockJumpUntilRelease=true;return true;
   }
   reading(){const s=this.state;return s.stage==='INTRO'&&!s.story.openingDone?{seen:s.story.seenOpening,skipBox:this.renderer.storyControls?.skip}:s.stage==='COMPLETE'&&!s.story.endingDone?{seen:s.story.seenEnding,skipBox:this.renderer.storyControls?.skip}:null;}
   get active(){return !this.disposed;}
@@ -18,5 +27,5 @@ export class GardenPhase {
   setPaused(value){this.paused=Boolean(value);this.input.clear();this.audio.update(this.state,this.paused||!this.ready||this.disposed||Boolean(this.error));}
   snapshot(){return{version:1,state:JSON.parse(JSON.stringify(this.state))};}
   retry(){const retried=retryGarden(this.state,this.difficulty);if(retried)this.setPaused(false);return retried;}
-  destroy(){if(this.disposed)return;this.disposed=true;window.removeEventListener('blur',this.onBlur);window.removeEventListener('focus',this.onFocus);document.removeEventListener('visibilitychange',this.onVisibility);this.input.destroy();this.audio.destroy();this.renderer.destroy();}
+  destroy(){if(this.disposed)return;this.disposed=true;this.removeDialogueAdvance();window.removeEventListener('blur',this.onBlur);window.removeEventListener('focus',this.onFocus);document.removeEventListener('visibilitychange',this.onVisibility);this.input.destroy();this.audio.destroy();this.renderer.destroy();}
 }

@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "c1cbe7469ef84431b9cd7140a17a29dc",
+  "date": "2026-10-26T18:40:39.991151+00:00",
+  "title": "QA temporário: test:polimento:integral:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/c1cbe7469ef84431b9cd7140a17a29dc.log",
+      "sourceId": "2c2dcc29094014b0b727b52655d8cb52d85886c23a14a1a7da2b3ff44c41a91b",
+      "sha256": "9bf28859fab1435923fd8a579a9b8935a9c7fd02b7b03a9651e063e2bbaf3a1f",
+      "bytes": 934,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/c1cbe7469ef84431b9cd7140a17a29dc/docs/diario-ia/qa-resultados/yuna/auditoria-integral.json",
+      "sourceId": "cc9716744162f0b51cbbb72ba71f55f79b7183cc57691445d0367869e5ac776d",
+      "sha256": "599e5658baa5a1808af3507d53e5461f71b669cf1719005684b67e4ccf12a243",
+      "bytes": 6153997,
+      "metadataOnly": false
+    }
+  ]
+}

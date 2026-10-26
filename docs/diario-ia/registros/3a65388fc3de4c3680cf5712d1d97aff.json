@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "3a65388fc3de4c3680cf5712d1d97aff",
+  "type": "qa",
+  "date": "2026-10-26T18:25:27.885754+00:00",
+  "title": "QA temporário: test:polimento:domain",
+  "exitCode": 0,
+  "sourceId": "7624dbce58e656448c3d4677a3dab288902ccf86de4e02af2728fada611dd225",
+  "package": "20261026T182323-06a417f9e75a"
+}

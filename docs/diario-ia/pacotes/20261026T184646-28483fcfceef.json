@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T184646-28483fcfceef",
+  "date": "2026-10-26T18:46:46.560735+00:00",
+  "title": "QA global dos diálogos e correção da espera no driver após oferta EASY",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/integral-browser.mjs",
+      "sourceId": "4a6c61500627067f541feb3e8891206360e9980f9bd32649c5f22fd68210398d",
+      "sha256": "4f4a6e6c3b73476f9bdca4ecd78d19f8dde7a032c586b28d237c0b17b529c7b6",
+      "bytes": 8193,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "df9aafc453c6e1464ebb06c41fecb004257c37b29b05828e18e48fc6b803b422",
+      "sha256": "88131dd9b09b39a802323c31a2da48d34ce3d5c6912ec4269d7a429cbe2ab69a",
+      "bytes": 5419,
+      "metadataOnly": false
+    },
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/gameplay-real-interrompido-no-driver.json",
+      "sourceId": "1f5e49b0940781f5609a97bc18777cbbc087519b9b5c9ed3a56212235718227d",
+      "sha256": "599e5658baa5a1808af3507d53e5461f71b669cf1719005684b67e4ccf12a243",
+      "bytes": 6153997,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+    "test:jardim:v9:integral:browser": "node docs/diario-ia/qa/encontros-v9/integral-browser.mjs"
+  }
+}

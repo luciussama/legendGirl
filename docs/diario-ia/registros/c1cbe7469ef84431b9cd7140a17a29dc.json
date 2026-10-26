@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "c1cbe7469ef84431b9cd7140a17a29dc",
+  "type": "qa",
+  "date": "2026-10-26T18:40:39.991151+00:00",
+  "title": "QA temporário: test:polimento:integral:browser",
+  "exitCode": 1,
+  "sourceId": "2c2dcc29094014b0b727b52655d8cb52d85886c23a14a1a7da2b3ff44c41a91b",
+  "package": "20261026T175644-13af101a87d6"
+}

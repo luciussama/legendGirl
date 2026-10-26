@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T191015-7ea151b8dc13",
+  "date": "2026-10-26T19:10:15.272924+00:00",
+  "title": "Fixture móvel amostra a liberação da entrada da cena antes de testar novo pulo",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "c60939bc8e647a9aa9db75efe804a7085df79c9d4dab34549ba82bf122ac3509",
+      "sha256": "7d44445e3ce501c0f38d61167473f7f87fc88881d2894ab42c6e850baa7c38c3",
+      "bytes": 8383,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs"
+  }
+}

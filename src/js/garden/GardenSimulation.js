@@ -11,7 +11,7 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:8,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:9,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{animationTime:0,balancePose:null,x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
@@ -49,7 +49,7 @@ export function retryGarden(s,difficulty=s.difficulty){
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3,4,5,6,7,8].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4,5,6,7,8,9].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
@@ -81,7 +81,7 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
     const target=GARDEN_PLATFORM_BY_ID.get(r.to.id);if(r.to.x<target.x||r.to.x>target.x+target.w||Math.abs(r.to.y-gardenContactHeight(target,out.player,r.to.x))>.001||r.from.x<0||r.from.x>C.width||Math.abs(r.from.y)>10000||target.type==='cloud')throw new TypeError('Destino de resgate inválido.');
     out.recovery={from:{x:r.from.x,y:r.from.y},to:{x:r.to.x,y:r.to.y,id:target.id},kind:r.kind};out.fairy.mode='rescue';
   }
-  if(saved.version>=7)out.encounters=restoreGardenEncounters(saved.encounters);
+  if(saved.version>=7)out.encounters=restoreGardenEncounters(saved.encounters,saved.version);
   if(out.encounters.panic&&out.stage!=='RUNNING')throw new TypeError('Pânico fora da jogabilidade.');
   if(difficulty==='EASY'&&out.stage==='GAME_OVER')beginRecovery(out,'fall',[]);
   out.defeated+=out.encounters.bees.filter(e=>!e.alive).length;
@@ -163,8 +163,8 @@ function tick(s,input,dt,events){
   if(reading){
     const cards=intro?GARDEN_OPENING:GARDEN_ENDING,indexKey=intro?'openingIndex':'endingIndex',doneKey=intro?'openingDone':'endingDone',seenKey=intro?'seenOpening':'seenEnding';
     s.story.cardAge+=dt;
-    if(advance||input.skip&&s.story[seenKey]){
-      if(input.skip&&s.story[seenKey]||s.story[indexKey]===cards.length-1){s.story[doneKey]=true;s.story[seenKey]=true;if(intro)s.age=0;events.push({type:'scene-seen',scene:intro?'opening':'ending'});}
+    if(advance||s.story.cardAge>=cards[s.story[indexKey]].duration||input.skip&&s.story[seenKey]){
+      if(input.skip&&s.story[seenKey]||s.story[indexKey]===cards.length-1){s.story[indexKey]=cards.length-1;s.story[doneKey]=true;s.story[seenKey]=true;if(intro)s.age=0;events.push({type:'scene-seen',scene:intro?'opening':'ending'});}
       else{s.story[indexKey]++;s.story.cardAge=0;}
     }
     fairyTick(s,dt,[]);return;

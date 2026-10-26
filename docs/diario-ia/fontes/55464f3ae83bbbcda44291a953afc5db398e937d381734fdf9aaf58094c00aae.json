@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "55464f3ae83bbbcda44291a953afc5db398e937d381734fdf9aaf58094c00aae",
+  "path": "qa-execucoes/ecd930bee7e541d783ad759df1590601.log",
+  "sha256": "c887303e0be235f6165e1959f191c30fa44b3affc6149fec32f801775a23b90e",
+  "capturedAt": "2026-10-26T19:05:13.358900+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:dialogos:padrao:browser",
+    "exitCode": 0,
+    "package": "20261026T190426-093372ce7251"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:dialogos:padrao:browser\n> node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs\n\n{\"aberturaAutomatica\":true,\"acolhimentoAutomatico\":true,\"casteloNarradorEPersonagens\":true,\"reviravoltaNarradorEPersonagens\":true,\"narradorPorClique\":true,\"salaPersonagemNarradorToque\":true,\"retornoDeBrinquedos\":true,\"jardimAutomaticoEToque\":true}\n"
+}

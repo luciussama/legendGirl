@@ -1,0 +1,46 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T161022-c730f1437be6-fim",
+  "sessionId": "20261026T161022-c730f1437be6",
+  "type": "fim",
+  "date": "2026-10-26T17:58:52.801702+00:00",
+  "title": "Executar correções E0–E7 do jardim conforme quiz",
+  "actor": "Codex",
+  "summary": "Executadas E0–E7 conforme seis decisões do quiz. Besouro em camadas estável, HUD legível, narrador no primeiro encontro e Nanda em todos; medo completo com passadas exageradas, cenas manuais com save v8/migração, skip visto dentro da moldura e piquenique permanente; abertura sem deslizamento, comida suavizada, pistas naturais e composição por setor. Preservados tapete/diálogo anteriores, física, câmera, mapa e encontros. Primeiros preparos visuais rejeitados e corrigidos, sem esconder falhas. Pacote final 20261026T175644-13af101a87d6: 15 fontes verificadas e metadados de 548 capturas descartadas. Plano/quiz/contexto atualizados. Commit do usuário d6e82e88 preservado; sem commit/push/publicação por esta IA.",
+  "checks": [
+    "Gameplays completos Normal/Fácil por etapa E1–E6 e E7; inspeção desktop/retrato/paisagem. Passe final Normal 5,3286 min/2 retries e Fácil 4,4081 min/0 retry ou resgate.",
+    "Gameplay integral em host Chrome/RAF: 352,9972 s de parede, 2 retries, COMPLETE após leitura final, RAF p95 16,7 ms. Teclado nas quatro nuvens: 6,0069 s ativos de medo, pausa/restore aprovados.",
+    "Leitura sem autoavanço, tecla mantida, toque, skip visto por toque, pausa, save/leitura e migração 7→8 aprovados. Hashes GardenLevel/GardenContact/GardenEncounters inalterados.",
+    "npm test exit 0 após E6; refinamentos posteriores cobertos por domínio/host/cenas e E7. Build/check-assets 78/lint/sintaxe/diff/sprite-review aprovados; mapa 478/249/29 e referência 174/1134."
+  ],
+  "pending": [
+    "Sem implementação pendente do plano. Aparelho físico, Safari, escuta e aprovação humana de arte/conforto não homologados."
+  ],
+  "files": [
+    "docs/diario-ia/CONTEXTO-ATUAL.md",
+    "docs/diario-ia/planos/plano-correcoes-jardim-20261026.md",
+    "docs/diario-ia/planos/quiz-correcoes-jardim-20261026.json",
+    "docs/diario-ia/qa/polimento/avaliacao-final.json",
+    "docs/diario-ia/pacotes/20261026T175644-13af101a87d6.json",
+    "src/js/garden/GardenSimulation.js",
+    "src/js/garden/GardenInput.js",
+    "src/js/garden/GardenPhase.js",
+    "src/js/garden/GardenRenderer.js",
+    "src/js/garden/GardenCinematic.js",
+    "src/js/garden/GardenBeeRenderer.js",
+    "src/js/garden/GardenBeetleRenderer.js",
+    "src/js/garden/GardenBeetleArt.js",
+    "src/js/garden/GardenFearArt.js",
+    "scripts/prepare-garden-beetle.js",
+    "scripts/prepare-garden-fear.js",
+    "scripts/prepare-garden-art.js",
+    "assets/art/garden/prompts-polimento-v2.json",
+    "assets/art/garden/manifest.json",
+    "tools/sprite-review/catalog.js",
+    "docs/garden/GUIA-JARDIM.md",
+    "docs/sprites/GUIA-DESIGNERS.md",
+    "docs/ARQUITETURA.md",
+    "docs/DIARIO-HUMANO.md",
+    "docs/REFERENCIA-METODOS.md"
+  ]
+}

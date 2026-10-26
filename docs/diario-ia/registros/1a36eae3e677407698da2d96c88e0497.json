@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "1a36eae3e677407698da2d96c88e0497",
+  "type": "qa",
+  "date": "2026-10-26T19:45:29.780780+00:00",
+  "title": "QA temporário: test:saltos:bailarina",
+  "exitCode": 0,
+  "sourceId": "be783d671bad63d56960927db52cbbd17d5683b2c626bfc0515cc4525a7fe33d",
+  "package": "20261021T011044-adf1e2755452"
+}

@@ -71,6 +71,7 @@ export function createDefaultStateVariables() {
     isStandbyActive: false,
     isStandbyTransitioning: false,
     standbyTransitionTimer: 0,
+    standbyDialogueTimer: 0,
     standbyTransitionProgress: 0,
     standbyStandUpProgress: 0,
     standbyDialogueAlpha: 1.0,

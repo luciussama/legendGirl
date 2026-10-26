@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "31d6270031666a81a9aa6efc76d36f1f5f98e9b75845cf0757e83bb9d0f19981",
+  "path": "qa-execucoes/d4fe91b7211040ea8728d9ef19dce364.log",
+  "sha256": "5ad332292cd609aba9b109c1dff2735c63cf20e3e9bddb26ce603c6207e1c583",
+  "capturedAt": "2026-10-26T18:22:08.151767+00:00",
+  "origin": {
+    "type": "execucao-qa",
+    "command": "test:jardim:entrada:browser",
+    "exitCode": 0,
+    "package": "20261026T181909-ccbaffe56001"
+  },
+  "encoding": "utf-8",
+  "content": "\n> o-quarto-dos-brinquedos@1.0.0 test:jardim:entrada:browser\n> node docs/diario-ia/qa/encontros-v9/entrada-browser.mjs depois\n\n[{\"label\":\"cena\",\"stage\":\"INTRO\",\"age\":0.5833666666666668,\"index\":0,\"done\":false,\"pale\":0.1715622076707203},{\"label\":\"descida-04\",\"stage\":\"INTRO\",\"age\":0.3782666666666669,\"index\":8,\"done\":true,\"pale\":0.16333021515434987},{\"label\":\"descida-10\",\"stage\":\"INTRO\",\"age\":0.9949666666666648,\"index\":8,\"done\":true,\"pale\":0.15416276894293732},{\"label\":\"descida-20\",\"stage\":\"INTRO\",\"age\":2.0281666666666616,\"index\":8,\"done\":true,\"pale\":0.1537885874649205},{\"label\":\"jogavel\",\"stage\":\"RUNNING\",\"age\":0.3416666666666669,\"index\":8,\"done\":true,\"pale\":0.06248830682881197}]\n"
+}

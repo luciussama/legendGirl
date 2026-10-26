@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "id": "5415f27bccdd432cbb4b3048d1e4941c",
+  "type": "qa",
+  "date": "2026-10-26T19:08:11.206454+00:00",
+  "title": "QA temporário: test:dialogos:padrao:browser",
+  "exitCode": 1,
+  "sourceId": "5122256af0c779a5889d2f1dbbc0de39d1ab6137c82556bb8ca8e8be70cfce7c",
+  "package": "20261026T190725-a713f8a4b8af"
+}

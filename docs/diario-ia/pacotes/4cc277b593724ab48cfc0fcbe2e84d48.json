@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "id": "4cc277b593724ab48cfc0fcbe2e84d48",
+  "date": "2026-10-26T18:43:22.059842+00:00",
+  "title": "QA temporário: test:polimento:domain",
+  "files": [
+    {
+      "path": "qa-execucoes/4cc277b593724ab48cfc0fcbe2e84d48.log",
+      "sourceId": "3a54e53929890d154e505852c8df512eb1decdc7828fb3d040ec001296716029",
+      "sha256": "50f3919c2c75b9429ed6bfec48edc00da9663e20fee05c2cb6ce6b536813ca0a",
+      "bytes": 309,
+      "metadataOnly": false
+    }
+  ]
+}

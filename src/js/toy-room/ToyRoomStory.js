@@ -312,6 +312,16 @@ export class ToyRoomStory {
     });
   }
 
+  advanceDialogue(){
+    if(!this.narrativeBeat())return false;const state=this.state;
+    if(state.investigationStage==='COLLECTING'){
+      const index=RETURN_DIALOGUE_BEATS.findIndex(b=>state.returnDialogueElapsed>=b.start&&state.returnDialogueElapsed<b.end);
+      state.returnDialogueElapsed=RETURN_DIALOGUE_BEATS[index+1]?.start??360;
+    }else if(state.investigationStage==='INVESTIGATION'){
+      let end=0;for(const beat of INVESTIGATION_BEATS){end+=beat.duration;if(end>state.investigationElapsed){state.investigationElapsed=end;break;}}
+    }else if(state.investigationStage==='PICKUP')state.swordPickupElapsed=state.swordPickupElapsed<120?120:SWORD_PICKUP_DURATION;
+    return true;
+  }
   narrativeBeat() {
     const state = this.state;
     if (state.returnDialogueElapsed >= 0 && state.returnDialogueElapsed < 360 &&

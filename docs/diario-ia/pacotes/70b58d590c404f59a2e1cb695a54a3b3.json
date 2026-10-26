@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "id": "70b58d590c404f59a2e1cb695a54a3b3",
+  "date": "2026-10-26T19:11:00.541343+00:00",
+  "title": "QA temporário: test:dialogos:padrao:browser",
+  "files": [
+    {
+      "path": "qa-execucoes/70b58d590c404f59a2e1cb695a54a3b3.log",
+      "sourceId": "0d2b31ef83c801f5d3ec4ebaa63350e3d680f1c5ce485a975c57391cf8bfc282",
+      "sha256": "227b38923bf6b4ba370fc54b3c72749b8904261c279ab00d15731959884e4ef0",
+      "bytes": 413,
+      "metadataOnly": false
+    },
+    {
+      "path": "qa-execucoes/70b58d590c404f59a2e1cb695a54a3b3/docs/diario-ia/qa-resultados/yuna/dialogos-padrao.json",
+      "sourceId": "37054e7ada098820f1653ec123a47a394ddc81a848aac3d44c88ecf4c51686a2",
+      "sha256": "114d4a35fc5603a15fdf28a68654829bba8630a08f6f3f3c387372598ebd1e45",
+      "bytes": 327,
+      "metadataOnly": false
+    }
+  ]
+}

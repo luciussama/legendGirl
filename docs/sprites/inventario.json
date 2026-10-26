@@ -1044,13 +1044,13 @@
         },
         {
           "file": "src/js/cinematics/OpeningSequence.js",
-          "line": 98,
+          "line": 105,
           "type": "runtime",
           "alias": "opening-waking-up"
         },
         {
           "file": "src/js/game.js",
-          "line": 687,
+          "line": 688,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -3056,8 +3056,8 @@
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -3072,8 +3072,8 @@
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -3088,8 +3088,8 @@
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -3104,8 +3104,8 @@
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 424599,
-      "sha256": "b0d092913485b5aebb04435c68b49924ed671ca79e1cb037c090eae187c6d433",
+      "bytes": 424617,
+      "sha256": "889099d88c8c98e3463162c2430b472f4e55156bf729774cb97dc4884811ae84",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -15616,7 +15616,7 @@
         },
         {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 114,
+          "line": 121,
           "type": "runtime",
           "alias": "toy-room-intro-girl-v1"
         }
@@ -15647,7 +15647,7 @@
         },
         {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 160,
+          "line": 167,
           "type": "runtime",
           "alias": "toy-room-intro-room-v1"
         }
@@ -16264,7 +16264,7 @@
         },
         {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
-          "line": 129,
+          "line": 136,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         },
@@ -16294,7 +16294,7 @@
         },
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 73,
+          "line": 74,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         }
@@ -25632,15 +25632,15 @@
       "parentId": "8a06fd38747657b40cd188e8"
     },
     {
-      "id": "bbaad49dda2a1cc897511594",
+      "id": "34cfcfd61225b9bf7daba99e",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 1",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25651,21 +25651,21 @@
       "region": {
         "x": 4,
         "y": 4,
-        "width": 438,
+        "width": 338,
         "height": 256
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "934f08ce6c8cbef409a3aa32",
+      "id": "dbeea5b0fe90023bb36b7456",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 2",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25676,21 +25676,21 @@
       "region": {
         "x": 516,
         "y": 4,
-        "width": 438,
+        "width": 338,
         "height": 257
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "67433ff84810c137c23bbda1",
+      "id": "742a65cf53d99b9acaaf3fab",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 3",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25701,21 +25701,21 @@
       "region": {
         "x": 1028,
         "y": 4,
-        "width": 443,
+        "width": 343,
         "height": 255
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "79fe7f772b52f5b896cd63d5",
+      "id": "e3b1dfc5cfe2a0aa864db731",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 4",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25726,21 +25726,21 @@
       "region": {
         "x": 1540,
         "y": 4,
-        "width": 449,
+        "width": 349,
         "height": 255
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "44eb4fe126eb4f3166a09577",
+      "id": "9a4795a8e7bdbd0e96f289ff",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 5",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25751,21 +25751,21 @@
       "region": {
         "x": 4,
         "y": 516,
-        "width": 445,
+        "width": 345,
         "height": 251
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "9991280751d6f51e47701fee",
+      "id": "3de0975e015409a2af3deae1",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 6",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25776,21 +25776,21 @@
       "region": {
         "x": 516,
         "y": 516,
-        "width": 445,
+        "width": 345,
         "height": 257
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "4923c3973eba966c7a3e73ba",
+      "id": "0b33663efd6855e104f7af36",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 7",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25801,21 +25801,21 @@
       "region": {
         "x": 1028,
         "y": 516,
-        "width": 447,
+        "width": 347,
         "height": 257
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "cb475e9dbddc9b56046b11ae",
+      "id": "f8c4e53c2b5361c99d91c85e",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-corrida-v1.png",
       "title": "jardim · medo · menina-corrida-v1 · quadro 8",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 812629,
-      "sha256": "e6592e62adfd9d0ebc84eaf4c16fcdf7523e3a0f82a7fa97a324a9a91bd88cbc",
+      "bytes": 806648,
+      "sha256": "4011d31983fea16a6af901fce39b529d82532eec55d5db27d7be3463e962273b",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25826,21 +25826,21 @@
       "region": {
         "x": 1540,
         "y": 516,
-        "width": 455,
+        "width": 355,
         "height": 255
       },
       "parentId": "5d42541ac67257e9e5f550a2"
     },
     {
-      "id": "4cbc10127bcd02d941726d84",
+      "id": "f30ac8d3a23387bc62cb507d",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 1",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25851,21 +25851,21 @@
       "region": {
         "x": 4,
         "y": 4,
-        "width": 459,
+        "width": 359,
         "height": 243
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "14cf09259197f9949745ae16",
+      "id": "05ebbe3b56baae7966665224",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 2",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25876,21 +25876,21 @@
       "region": {
         "x": 516,
         "y": 4,
-        "width": 453,
+        "width": 353,
         "height": 247
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "3a2c6deb1395b6968bed7a63",
+      "id": "1648fc8939eebf315ac48c5f",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 3",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25901,21 +25901,21 @@
       "region": {
         "x": 1028,
         "y": 4,
-        "width": 456,
+        "width": 356,
         "height": 211
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "062bd39792c6c933c55ce0d6",
+      "id": "2303a9027188d2ece2efa37c",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 4",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25926,21 +25926,21 @@
       "region": {
         "x": 1540,
         "y": 4,
-        "width": 455,
+        "width": 355,
         "height": 244
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "909168b6225f3f940ce4d282",
+      "id": "5848b1454fa15e470c05c79f",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 5",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25951,21 +25951,21 @@
       "region": {
         "x": 4,
         "y": 516,
-        "width": 458,
+        "width": 358,
         "height": 249
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "221722606eecd170018de8d3",
+      "id": "6f2730517dec5d5726fa393e",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 6",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -25976,21 +25976,21 @@
       "region": {
         "x": 516,
         "y": 516,
-        "width": 461,
+        "width": 361,
         "height": 251
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "fba06199bac3b4cedccc10ed",
+      "id": "d0f0227ef0791b074d1754f6",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 7",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26001,21 +26001,21 @@
       "region": {
         "x": 1028,
         "y": 516,
-        "width": 482,
+        "width": 382,
         "height": 190
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "792dc97fa52c235f38ff94b5",
+      "id": "254900d7f3d94050b2a73e2b",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-acoes-v1.png",
       "title": "jardim · medo · menina-acoes-v1 · quadro 8",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 728695,
-      "sha256": "13f36f088d0f14e885bfec7acc99067cb68d798df94502af56e7294f4ecc6ef8",
+      "bytes": 728708,
+      "sha256": "cb6d48b06b696a2f5f184add345dcd11ad349d2ea2855d93da014daf21e85195",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26026,21 +26026,21 @@
       "region": {
         "x": 1540,
         "y": 516,
-        "width": 440,
+        "width": 340,
         "height": 256
       },
       "parentId": "4ae80a35beb38eb847251429"
     },
     {
-      "id": "cf604aa6c33ce80452dec542",
+      "id": "412b201e86c72a6d1d0b5962",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 1",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26051,21 +26051,21 @@
       "region": {
         "x": 4,
         "y": 4,
-        "width": 451,
+        "width": 351,
         "height": 258
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "8c5b7108a2a95cc75eade6dc",
+      "id": "fcccce3418a77f27a2233056",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 2",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26076,21 +26076,21 @@
       "region": {
         "x": 516,
         "y": 4,
-        "width": 443,
+        "width": 343,
         "height": 257
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "56eb9ee2a414a14a5e9bb4d3",
+      "id": "9e63b69fe6ff826f0a511f32",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 3",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26101,21 +26101,21 @@
       "region": {
         "x": 1028,
         "y": 4,
-        "width": 456,
+        "width": 356,
         "height": 255
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "6638d0eb6cf6929742ea00fd",
+      "id": "c1a6350926ad4f536ec02841",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 4",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26126,21 +26126,21 @@
       "region": {
         "x": 1540,
         "y": 4,
-        "width": 443,
+        "width": 343,
         "height": 257
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "f442d08d4f28f7df3cb02651",
+      "id": "8e4bef8296c90f0201e43f86",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 5",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26151,21 +26151,21 @@
       "region": {
         "x": 4,
         "y": 516,
-        "width": 475,
+        "width": 375,
         "height": 250
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "5c13ca57f584faba562d6a1a",
+      "id": "6ea4a7989adc279565fa111b",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 6",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26176,21 +26176,21 @@
       "region": {
         "x": 516,
         "y": 516,
-        "width": 478,
+        "width": 378,
         "height": 245
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "ac58243ef78a0fc5434b1de8",
+      "id": "5553720644e92ce458e13d27",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 7",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26201,21 +26201,21 @@
       "region": {
         "x": 1028,
         "y": 516,
-        "width": 468,
+        "width": 368,
         "height": 205
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "e576800bba52c1554f24c14f",
+      "id": "803471885315961961f94c95",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-desconforto-v1.png",
       "title": "jardim · medo · menina-desconforto-v1 · quadro 8",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 792715,
-      "sha256": "fa7834e5563ca1b7239382e7d6aa036e129bd3569f8b709ff8d0a3b911487cc7",
+      "bytes": 788337,
+      "sha256": "cfc77d7f34b6ad5b40b05bb9651b62d11ccb438488252afea6e61d9b93251bd6",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26226,21 +26226,21 @@
       "region": {
         "x": 1540,
         "y": 516,
-        "width": 438,
+        "width": 338,
         "height": 256
       },
       "parentId": "2bf937fd05397b15f7d14509"
     },
     {
-      "id": "26d39461db3be849ac024736",
+      "id": "3fe2e7843897c3990a262e09",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-pedrinhas-v2.png",
       "title": "jardim · medo · menina-pedrinhas-v2 · quadro 1",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 424599,
-      "sha256": "b0d092913485b5aebb04435c68b49924ed671ca79e1cb037c090eae187c6d433",
+      "bytes": 424617,
+      "sha256": "889099d88c8c98e3463162c2430b472f4e55156bf729774cb97dc4884811ae84",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26251,21 +26251,21 @@
       "region": {
         "x": 4,
         "y": 4,
-        "width": 524,
+        "width": 424,
         "height": 254
       },
       "parentId": "2c8c205a59487b106fa89421"
     },
     {
-      "id": "50334ad531c398f4a3f26261",
+      "id": "956e5a2671e70eb2cc09993d",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-pedrinhas-v2.png",
       "title": "jardim · medo · menina-pedrinhas-v2 · quadro 2",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 424599,
-      "sha256": "b0d092913485b5aebb04435c68b49924ed671ca79e1cb037c090eae187c6d433",
+      "bytes": 424617,
+      "sha256": "889099d88c8c98e3463162c2430b472f4e55156bf729774cb97dc4884811ae84",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26276,21 +26276,21 @@
       "region": {
         "x": 516,
         "y": 4,
-        "width": 476,
+        "width": 376,
         "height": 256
       },
       "parentId": "2c8c205a59487b106fa89421"
     },
     {
-      "id": "5b2c8bf455e97f85e7189eff",
+      "id": "1faf101677bd56ebfef2b5c2",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-pedrinhas-v2.png",
       "title": "jardim · medo · menina-pedrinhas-v2 · quadro 3",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 424599,
-      "sha256": "b0d092913485b5aebb04435c68b49924ed671ca79e1cb037c090eae187c6d433",
+      "bytes": 424617,
+      "sha256": "889099d88c8c98e3463162c2430b472f4e55156bf729774cb97dc4884811ae84",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26301,21 +26301,21 @@
       "region": {
         "x": 1028,
         "y": 4,
-        "width": 554,
+        "width": 454,
         "height": 259
       },
       "parentId": "2c8c205a59487b106fa89421"
     },
     {
-      "id": "fb62c3e3b494dead0f17295b",
+      "id": "4d22baf3cad7b3eff861c70d",
       "kind": "region",
       "path": "assets/art/garden/runtime/medo-v2-menina-pedrinhas-v2.png",
       "title": "jardim · medo · menina-pedrinhas-v2 · quadro 4",
       "format": "png",
       "width": 2048,
       "height": 1024,
-      "bytes": 424599,
-      "sha256": "b0d092913485b5aebb04435c68b49924ed671ca79e1cb037c090eae187c6d433",
+      "bytes": 424617,
+      "sha256": "889099d88c8c98e3463162c2430b472f4e55156bf729774cb97dc4884811ae84",
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
@@ -26326,7 +26326,7 @@
       "region": {
         "x": 1540,
         "y": 4,
-        "width": 473,
+        "width": 373,
         "height": 262
       },
       "parentId": "2c8c205a59487b106fa89421"
@@ -30675,13 +30675,13 @@
         "variant": "baby:normal",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30699,13 +30699,13 @@
         "variant": "baby:happy",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30723,13 +30723,13 @@
         "variant": "baby:shocked",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30747,13 +30747,13 @@
         "variant": "baby:annoyed",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30771,13 +30771,13 @@
         "variant": "baby:determined",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30795,13 +30795,13 @@
         "variant": "fairy:normal",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30819,13 +30819,13 @@
         "variant": "fairy:happy",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30843,13 +30843,13 @@
         "variant": "fairy:shocked",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30867,13 +30867,13 @@
         "variant": "fairy:annoyed",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],
@@ -30891,13 +30891,13 @@
         "variant": "fairy:determined",
         "preview": "portrait"
       },
-      "sha256": "f9724ab1b1b64f1b7de37394fe1a725326a168757091372e436f930e5c6985e4",
+      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 28,
+          "line": 29,
           "type": "runtime"
         }
       ],

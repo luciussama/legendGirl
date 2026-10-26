@@ -1,0 +1,18 @@
+{
+  "schemaVersion": 1,
+  "id": "20261026T190426-093372ce7251",
+  "date": "2026-10-26T19:04:26.978329+00:00",
+  "title": "Cobertura do acolhimento automático sem interação e leitura por clique",
+  "files": [
+    {
+      "path": "docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs",
+      "sourceId": "f6f39a83e02a4d96be3e46d66bb31a87dc21339f51cdef5a12441001e66b2006",
+      "sha256": "d16861bcbc63444d8bfd7595c7f6f982515aee28d03c5a7a081b6b40b8f28260",
+      "bytes": 6669,
+      "metadataOnly": false
+    }
+  ],
+  "qaCommands": {
+    "test:dialogos:padrao:browser": "node docs/diario-ia/qa/encontros-v9/dialogos-browser.mjs"
+  }
+}
