@@ -1,7 +1,0 @@
-{
-  "schemaVersion": 1,
-  "id": "67adb8c4e0c9691c9fefca64e89461c09595fa4d",
-  "date": "2026-09-28T14:47:42-03:00",
-  "title": "ci: simplify deployment and remove build scripts",
-  "sources": []
-}

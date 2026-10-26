@@ -1,7 +1,7 @@
 # Materiais pictóricos da perseguição
 
 Direção aprovada pelo usuário em 20/10/2026, a partir do estudo do armário em
-`docs/diario-ia/arte/20261020-armario-pictorico-v1.png`. Os quatro atlas iniciais, o decorativo v3 e o urso v2 são artes
+`docs/diario-ia/arte/20261020-armario-pictorico-v1.png`, preservada no banco do diário. Para consultar a referência, use `npm run journal:extract -- docs/diario-ia/arte/20261020-armario-pictorico-v1.png --output /tmp/armario-pictorico-v1.png`. Os quatro atlas iniciais, o decorativo v3 e o urso v2 são artes
 consumidas pelo jogo: conservar os PNGs. As ilustrações originais não foram
 sobrescritas. Geração pela ferramenta integrada image_gen, uma chamada por objeto;
 referências, procedência e prompts integrais em `prompts.json`.

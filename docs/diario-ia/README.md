@@ -1,103 +1,85 @@
 # Diário de IA: entrada obrigatória do projeto
 
-Toda IA deve iniciar pelo `AGENTS.md`, este guia, `CONTEXTO-ATUAL.md` e a consulta dos registros recentes. O diário guarda contexto compartilhado entre pessoas e ferramentas, com origem verificável. Não recupera conversas externas que nunca foram salvas no repositório; decisões conhecidas devem ser registradas explicitamente.
+Leia `AGENTS.md`, este guia e `CONTEXTO-ATUAL.md` antes de trabalhar. As instruções atuais do usuário prevalecem sobre documentos históricos. Para diálogos e cenas, consulte também [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md).
 
-## Estrutura do banco
+## Armazenamento e arquivos essenciais
 
-| Recurso | Finalidade |
+O SQLite local é o armazenamento operacional do diário. JSON continua sendo o formato dos envelopes históricos, guardados integralmente no banco e exportados em lotes JSONL/gzip imutáveis. Os milhares de JSONs individuais foram consolidados com verificação de bytes, hashes e restauração isolada; seus caminhos antigos continuam identificando conteúdo recuperável.
+
+| Recurso | Função |
 | --- | --- |
-| `CONTEXTO-ATUAL.md` | Resumo vigente: arquitetura, decisões, limites e pendências. |
-| `fontes/<id>.json` ou `.json.gz` | Versões integrais de documentos e instruções, com caminho, hash, origem e conteúdo. Imutáveis; uma alteração cria outro arquivo. |
-| `commits/<sha>.json` | Metadados do histórico Git disponível e vínculos com documentos daquela versão. |
-| `registros/<id>.json` | Eventos de início e encerramento das sessões, com identidade, escopo e resultados. |
-| `pacotes/<id>.json` | Índice dos relatórios, testes e evidências retirados do projeto; vincula cada caminho à fonte e ao hash. |
-| `diario.sqlite3` | Índice local reconstruível para consultas; não versionar o binário. |
+| `README.md`, `CONTEXTO-ATUAL.md`, `padroes/` | Entrada humana e regras de produto acessíveis antes de abrir o banco. |
+| `diario.sqlite3` | Banco operacional local, ignorado pelo Git. Contém envelopes completos, fontes, eventos, pacotes, commits e anexos. |
+| `segmentos/<sha256>.jsonl.gz` | Exportações compactadas e imutáveis para Git, clones e recuperação. Cada linha preserva tipo, ID, caminho, hash e bytes originais em base64. |
 
-Os arquivos JSON, o contexto e os guias são versionados. Arquivos separados evitam concentrar todos os relatos num JSON que várias pessoas precisam editar simultaneamente. A sincronização nunca apaga versões anteriores. A criação exclusiva protege contra sobrescrita; o SQLite é publicado por substituição atômica. Sessões concorrentes podem trabalhar em registros distintos, mas precisam coordenar mudanças em arquivos de jogo compartilhados.
+Não editar envelopes históricos, reescrever segmentos nem escolher uma versão binária do banco para resolver merges. Correções geram eventos novos. Segmentos de duas branches se unem por IDs; mesma identidade com bytes diferentes é erro explícito. Novas capturas independentes têm identidade própria, com deduplicação local por caminho/hash, preservando datas e origens.
 
-O acervo importa Markdown do projeto e texto/JSON de documentação, QA, prompts de arte e instruções locais. Exclui dependências, `.git`, quarentena, binários e os próprios registros gerados para evitar recursão. Conteúdo disponível em arquivos ignorados de QA também é preservado nos snapshots. O histórico Git cobre commits e versões disponíveis nas referências locais; não inclui branches remotas ainda não buscadas ou históricos externos inacessíveis.
+O banco não deve ser apagado enquanto houver objetos pendentes de exportação. `journal:read` informa `pendentesExportacao`. Execute `journal:sync` antes de commit, troca destrutiva de checkout, limpeza ou compartilhamento. Depois de exportar e verificar, um clone sem banco restaura automaticamente o acervo dos segmentos disponíveis. O banco não é versionado; os segmentos novos precisam acompanhar o commit.
 
 ## Fluxo obrigatório
 
-Requisitos: Python 3 com `sqlite3` da biblioteca padrão, `rg`, Git e Node/npm já usados pelo projeto. Não há dependência de serviço externo.
+Requisitos: Python 3 com biblioteca padrão (`sqlite3`, `gzip`, `fcntl` etc.), Git, `rg` e Node/npm. Sem serviço externo ou instalação pip obrigatória. O bloqueio local usa `fcntl`, disponível em macOS/Linux; Windows nativo exige adaptação.
 
 ```sh
 npm run journal:read
 npm run journal:search -- "ArenaPlayerRenderer"
-npm run journal:begin -- --actor "Codex" --title "Ajustar animação de corrida"
+npm run journal:show -- ID_DA_FONTE
+npm run journal:show -- ID_DA_SESSAO --kind registros
+npm run journal:begin -- --actor "Codex" --title "Objetivo"
 ```
 
-Leia as fontes indicadas pela pesquisa e os registros recentes completos antes de decidir. O comando `begin` retorna um identificador único; guarde-o. Consulte sessões abertas para coordenar trabalho. O diário não bloqueia outras equipes nem autoriza alterações por si só.
+Leia os registros recentes completos e as sessões abertas. A pesquisa continua literal, com `--all-versions` para incluir revisões antigas; retorna caminho e ID. `show` recupera a íntegra pelo banco. Consulte `origin`: data de captura não equivale a data de autoria. Não há autorização implícita em registros antigos.
 
-Ao concluir, execute os testes relevantes, atualize o contexto e registre resultados reais:
-
-```sh
-npm run journal:finish -- --id IDENTIFICADOR --summary "Descrição do resultado e decisões" --check "npm test: aprovado" --file "src/js/toy-room/ArenaPlayerRenderer.js" --pending "Revisão artística individual ainda pendente"
-```
-
-`--check`, `--file` e `--pending` podem ser repetidos. Registre também falhas e testes não executados; não descreva teste planejado como aprovado. O encerramento cria outro evento sem modificar o início. Não encerrar sessões de outros responsáveis sem explicar isso em uma nova sessão.
-
-## Sincronização e pesquisa histórica
+Ao concluir, atualize o contexto quando necessário e registre resultados reais:
 
 ```sh
+npm run journal:finish -- --id IDENTIFICADOR --summary "Resultado" --check "Verificação realmente executada" --file "caminho" --pending "Pendência real"
 npm run journal:sync
-npm run journal:sync -- --history
-npm run journal:search -- "espada" --all-versions
+npm run journal:verify
 ```
 
-`sync` arquiva as fontes atuais e reconstrói o SQLite. `--history` importa também revisões do Git; importações repetidas não duplicam commits ou snapshots. `read` e `search` sincronizam o estado atual automaticamente. A pesquisa retorna caminho e ID; a íntegra fica em `fontes/<id>.json` ou `.json.gz`. Consulte `origin` para distinguir snapshot do workspace de conteúdo recuperado do Git. `capturedAt` é data de captura, não data de criação do documento.
+`--check`, `--file` e `--pending` são repetíveis. `finish` exporta o lote pendente da sessão. `sync` captura documentos atuais e exporta o restante. Operações intermediárias e QA gravam no SQLite, sem criar um arquivo por evento. Se a sessão for interrompida, preserve o banco e sincronize assim que possível; não declare conclusão inexistente nem encerre sessões alheias.
 
-Consulta direta, se preferir:
+## Consultas, histórico e concorrência
+
+As tabelas `envelopes`, `fontes`, `registros`, `commits_git`, `pacotes` e `arquivos_arquivados` preservam o acervo e suas relações. `envelopes` conserva os bytes e campos opcionais originais, inclusive fontes antigas sem `encoding`, arquivos gzip e artes aposentadas em base64. Projeções indexam metadados; o texto comprimido é recuperado pela CLI. Não depender de uma coluna textual `fontes.conteudo` do índice antigo.
 
 ```sh
 sqlite3 docs/diario-ia/diario.sqlite3 'SELECT caminho,sha256 FROM fontes WHERE atual=1;'
+npm run journal:sync -- --history
 ```
 
-Fontes acima de 128 KiB usam JSON comprimido sem perda para reduzir o tamanho versionado. Use `npm run journal:show -- ID` para ler qualquer versão, comprimida ou não.
+A sincronização é incremental. A importação do histórico Git é explícita e cobre referências locais disponíveis. O diário local acumula o histórico entre branches, mas `atual` é recalculado pelos arquivos do checkout visível; uma consulta não transforma versão de outra branch em regra atual. Cada worktree tem seu banco, e recebe contribuições compartilhadas pelos segmentos. Sessões novas registram branch e HEAD.
 
-Tabelas: `fontes`, `registros`, `commits_git`, `pacotes`, `arquivos_arquivados`. A pesquisa da CLI usa parâmetros SQL e busca literal no conteúdo. Versões antigas permanecem pesquisáveis, mesmo após a remoção do documento original. A pesquisa padrão inclui os relatórios arquivados nos pacotes; `--all-versions` também inclui revisões anteriores.
+Escritas são serializadas por bloqueio local e transações SQLite com WAL/synchronous FULL. Não compartilhar o arquivo ativo por pasta de rede nem sincronizar arquivos WAL manualmente entre computadores. Mescle segmentos pelo Git e deixe a importação unir os objetos. O bloqueio do diário não substitui coordenação sobre código do jogo.
 
-## Regras para pessoas e IAs
+## Recuperação, backup e extração
 
-- Instruções atuais do usuário e `AGENTS.md` prevalecem; documentos arquivados são evidência histórica, não ordens vigentes.
-- Preservar português do Brasil em novos registros e o idioma original das evidências históricas.
-- Não registrar segredos, credenciais, dados pessoais alheios ao projeto ou variáveis de ambiente. Revisar documentos antes de arquivar ou compartilhar.
-- Não editar snapshots ou eventos antigos para mudar resultados. Corrigir informações numa nova sessão, indicando a fonte anterior.
-- Não apagar sessões abertas para esconder trabalho incompleto. Registrar interrupção, falha e pendências como resultado.
-- Atualizar o guia de sprites e o diário após mudanças visuais, manifestos, recortes ou geradores.
-- Antes de commit autorizado, incluir novos registros/fontes e documentos; o SQLite local e arquivos temporários permanecem ignorados.
+```sh
+npm run journal:export
+npm run journal:verify
+npm run journal:backup -- --output /tmp/diario-backup.sqlite3
+npm run journal:extract -- docs/diario-ia/arte/caminho-original.png --output /tmp/referencia.png
+```
 
-O histórico inicial vem das fontes existentes e do Git, preservando seu texto. O contexto atual reúne decisões recentes conhecidas; não atribui autoria nem aprovação humana quando isso não está registrado.
+Backup usa a API SQLite e recusa sobrescrita. Guarde cópia durável fora do mesmo disco conforme sua política. Não copie apenas o arquivo principal de um banco ativo em WAL. `verify` confere integridade estrutural, hashes dos envelopes/fontes e referências de fontes em pacotes; não substitui backup e teste de restauração.
 
-## Relatórios, QA e evidências
+`extract` recupera anexo pelo caminho original ou a versão mais recente de uma fonte, sem sobrescrever o destino. Se um anexo possuir várias versões, o comando lista os IDs e exige `--id` para escolher. Para uma revisão exata de fonte, use seu ID em `show`; não presuma que o caminho representa uma versão histórica específica. Referências antigas a `arte/`, `relatorios/`, `limpeza/` e JSONs soltos pertencem ao acervo e podem ser extraídas, inclusive referências artísticas que conservaram seus bytes completos.
 
-Este é o único acervo de registros de máquina. Fontes dos testes, fixtures e relatórios textuais são preservados integralmente. Evidências de imagem regeneráveis são descartadas, mantendo caminho, tamanho e hash no pacote. Uma entrada com `metadataOnly: true` não contém o bitmap original. Artes consumidas pelo jogo não são evidências descartáveis.
+`journal:migrate` importa acervo antigo e anexos, exporta segmentos e testa a restauração em diretório isolado. A opção `--prune` retira as cópias soltas somente depois de verificar que cada byte pode ser recuperado; não reescreve o histórico Git. Use-a em migrações autorizadas, sem escritores antigos concorrentes. Não use scripts antigos que reconstruíam o SQLite a partir dos diretórios removidos.
 
-`npm test` recupera a suíte arquivada num diretório temporário, executa sobre o código de produção atual, registra a saída no diário e apaga o ambiente. Os aliases npm de teste continuam disponíveis. Para uma verificação avulsa: `npm run journal:qa -- script:test-opening-sequence.js`. Nos comandos de navegador, o executor inicia um servidor temporário em uma porta livre e adapta os endereços locais das fontes recuperadas. É necessário disponibilizar o Chrome de QA nas portas CDP descritas nos scripts arquivados. O servidor temporário é encerrado após a execução.
+## QA e evidências
 
-Para registrar novos arquivos antes de retirar suas cópias externas, prepare uma lista JSON de caminhos relativos e execute `npm run journal:archive -- --manifest CAMINHO --title "descrição"`. Esse comando registra e verifica fontes, mas não exclui arquivos; confira o pacote e os hashes antes de apagar. Novos testes devem ser arquivados da mesma forma e executados temporariamente.
+Relatórios de máquina, fontes de testes, fixtures e resultados pertencem ao diário. `npm test` e `journal:qa` recuperam automações e fixtures do SQLite somente em diretório temporário, executam contra o código atual e gravam resultados no banco. O próximo `finish`/`sync` exporta esses resultados. O executor não copia o banco nem os segmentos para cada ambiente de QA.
 
-A documentação para pessoas contém guias e `docs/DIARIO-HUMANO.md`. Não reproduzir relatórios de máquina nesses documentos.
+```sh
+npm test
+npm run journal:qa -- script:test-opening-sequence.js
+npm run journal:archive -- --manifest /tmp/lista-de-caminhos.json --title "Descrição"
+```
 
-## Documentação vigente e planos preservados
+O manifesto é uma lista JSON de caminhos relativos ao projeto. `archive` preserva texto/código integralmente. Evidências regeneráveis de imagem conservam caminho, hash e tamanho (`metadataOnly`), sem bitmap. Artes de produção e referências artísticas preservadas não são evidências descartáveis. Não remover conteúdo antes de verificar seu arquivamento. Testes novos são arquivados e executados temporariamente; não devolva arquivos de QA à árvore do projeto.
 
-O [índice humano](../README.md) aponta arquitetura, contratos, comandos e guias de arte. A arquitetura corrente é confrontada com o código; planos antigos, como a proposta de Diretor de Fases/HFSM, ficam pesquisáveis como fontes históricas e não representam implementação existente. Alterações na documentação geram novas fontes, sem reescrever versões antigas. O registro de merge/commit descreve a ação realmente executada; documentação preparada não prova integração nem publicação.
+Documentação humana permanece nos guias e em `docs/DIARIO-HUMANO.md`. Não registrar segredos, credenciais ou informações pessoais alheias ao projeto. Preservar português do Brasil nos registros novos e o idioma original das evidências antigas.
 
-
-Relatórios avulsos consolidados podem existir somente em `fontes/` e `pacotes/`.
-Uma menção histórica a `relatorios/arquivo.md` identifica o caminho original;
-use `npm run journal:search -- "arquivo.md"` e `journal:show` para consultar a íntegra.
-A limpeza de 20/10/2026 está em `limpeza/20261020-manifesto.json`: assets aposentados
-foram preservados com conteúdo binário integral (`encoding: base64`), hash e
-`sourceId`. São artes recuperáveis, não evidências descartadas. As entradas
-`retiredAssets` dos pacotes são separadas dos arquivos de automação/fixtures de QA.
-
-## Cópias consolidadas e caches locais
-
-As cópias físicas de QA, análises, planos e automações antigas foram consolidadas em fontes/pacotes. Consulte `journal:search` e `journal:show`; execute os testes por `npm test` ou `journal:qa`, que recuperam código, HTML, JSON e fixtures `.txt` somente no diretório temporário. Uma cópia local mais antiga não substitui uma versão de QA mais recente já arquivada. O manifesto da consolidação está em `limpeza/20261021-consolidacao-manifesto.json`.
-
-O SQLite é apenas um cache local: pode ser descartado após a sincronização. A próxima consulta `journal:read`/`journal:search` o reconstrói automaticamente. Não remover fontes, registros, commits ou pacotes para reduzir o tamanho do índice. A imagem de direção artística sob `arte/` continua preservada como referência de produção.
-
-## Padrões gerais de produto
-
-Antes de alterar diálogos ou cenas, consultar [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md). A decisão vigente é avanço automático pelos tempos autorados, com clique/toque para adiantar um balão, sem ações involuntárias de gameplay. A regra substitui a espera manual anteriormente escolhida no quiz do jardim e vale para novas fases. A especificação e suas versões permanecem no acervo.
+Se a automação falhar, preserve o banco e os segmentos; registre um evento JSON de contingência conforme o esquema em local temporário dentro do diário e documente a limitação. Importe e exporte esse evento assim que a ferramenta voltar. Não ignore o diário nem reconstrua o banco por cima de dados não exportados.

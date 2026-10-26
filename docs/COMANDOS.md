@@ -112,7 +112,8 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 
 | Arquivo | Responsabilidade / efeito |
 | --- | --- |
-| [ai-journal.py](../scripts/ai-journal.py) | CLI do diário, SQLite reconstruível, fontes/eventos/pacotes imutáveis e importação do histórico Git. |
+| [ai-journal.py](../scripts/ai-journal.py) | CLI do diário, SQLite incremental, envelopes completos e segmentos JSONL/gzip imutáveis para Git/recuperação. Usa journal_store.py. |
+| [journal_store.py](../scripts/journal_store.py) | Transações, envelopes imutáveis, importação/união de segmentos, hashes, verificação e exportação incremental. |
 | [apply-sprite-review.js](../scripts/apply-sprite-review.js) | Aplica decisões da classificação visual; pode remover recursos conforme a seleção. |
 | [build-dark-room-atlas.js](../scripts/build-dark-room-atlas.js) | Consolida sprites em prancha e metadados do quarto; sobrescreve derivados. |
 | [build-sprite-guide.js](../scripts/build-sprite-guide.js) | Regenera os quatro mapas/inventário de arte; análise estática não identifica todos os usos dinâmicos. |
@@ -179,7 +180,7 @@ A verificação desta revisão está em `npm run journal:qa -- test:docs:equaliz
 
 `npm run journal:qa -- test:arena:saida-direta` verifica o último golpe, ausência de texto na vitória e restauração durante a saída. `npm run journal:qa -- test:arena:saida-direta:browser` cobre o corte até BEAR_DOWN sem legenda em três formatos, no Chrome isolado/CDP 9222. A fonte de `script:test-arena-chase-transition.js` também foi atualizada no acervo para a perseguição e a saída vigentes.
 
-Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O índice SQLite local pode ser descartado e será reconstruído pela próxima consulta ao diário.
+Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O banco SQLite local só pode ser removido após exportar todas as pendências com `journal:sync`; clones restauram o acervo pelos segmentos compactados disponíveis. Use `journal:verify`, `journal:backup` e `journal:extract` para verificação, backup consistente e extração de anexos.
 
 `npm run journal:qa -- test:arena:sons` verifica eventos dos ataques e lançamento único do especial com restore. `npm run journal:qa -- test:arena:sons:browser` usa Chrome isolado e servidor temporário para decodificar os dez MP3s, renderizar trechos offline e conferir ganho mestre, mudo, pausa e liberação de vozes.
 

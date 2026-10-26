@@ -163,7 +163,7 @@ As bibliotecas internas (GameState, renderizadores, contextos, controllers e cin
 
 ## Infraestrutura do diário e novas dependências internas
 
-Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é índice reconstruível e não é backend de campanha nem binário versionado.
+Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é armazenamento operacional local do diário, com envelopes JSON completos e exportações JSONL/gzip imutáveis para Git/recuperação. Não é backend de campanha nem binário versionado. Exportar pendências antes de remover o banco; o bloqueio local usa fcntl (macOS/Linux).
 
 As extrações de contexto, movimento, efeitos, cena, tutorial, história e persistência não adicionaram pacotes npm. Todos os módulos internos e seus exports estão no [catálogo da arquitetura](ARQUITETURA.md); as automações e seus efeitos estão em [COMANDOS](COMANDOS.md). Os valores acima descrevem o lockfile do projeto, não a versão mais recente de cada pacote na internet.
 
