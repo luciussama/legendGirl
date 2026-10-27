@@ -1,5 +1,11 @@
 # Contexto compartilhado vigente
 
+## Commit da documentação e integração na principal — 26/10/2026
+
+Sessão `20261027T001621-cbc9172ccbcd` (data local: 26/10). Usuário solicitou commit das alterações e merge na “master”. O repositório não possui master: a branch principal local/remota é `main`, indicada também por `origin/HEAD`. Referências atualizadas por fetch; main e origin/main estavam em `d235ffab`. Alterações existentes de documentação, gerador e acervo, inclusive a edição já presente em `DIALOGOS-E-CENAS.md`, foram preservadas no commit `baba6c27` da `work-refactor`.
+
+Merge local sem conflitos em `4e837bb9`, integrando também o commit anterior de diário incremental `24cfcb2c`, já pertencente à branch. Ancestralidade do commit de documentação e igualdade integral das árvores main/work-refactor verificadas; nenhuma resolução manual ou mudança de implementação. `git diff --check` e integridade do diário aprovados; validações documentais/build/assets/lint da revisão anterior continuam aplicáveis à árvore idêntica, sem repetir gameplay. Branch ativa `main`; `work-refactor` preservada. Sem push, exclusão de branch ou publicação. Este encerramento e seus segmentos são versionados separadamente para preservar o resultado real da integração.
+
 ## Documentação confrontada com a implementação — 26/10/2026
 
 Sessão `20261026T234338-06e16b6cdbbb`, branch `work-refactor`, HEAD `24cfcb2c`. Usuário solicitou inspecionar o código, identificar diferenças em relação à documentação e atualizá-la. Inventário da árvore cobre 224 arquivos de código/configuração/página/estilos, incluindo 175 módulos de `src/js`, 33 ferramentas e apoio local; Three.js distribuído permanece idêntico ao pacote instalado. Leitura dos contratos e histórico Git orientou a revisão dos fluxos alterados; não se trata de uma auditoria de segurança nem de nova homologação de gameplay.
