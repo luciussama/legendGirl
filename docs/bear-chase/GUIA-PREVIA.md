@@ -1,6 +1,6 @@
 # Perseguição no quarto em 3D
 
-Revisão: 21/10/2026. Na campanha, a vitória sobre o urso na arena inicia a fuga sob fade, sem mostrar a sala intermediária. O save retoma a etapa salva. Consulte o [manual da transição](MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
+Revisão: 26/10/2026. Na campanha, a vitória sobre o urso na arena inicia a fuga sob fade, sem mostrar a sala intermediária. O save retoma a etapa salva. Consulte o [manual da transição](MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
 
 Para acesso isolado de debug, execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D**.
 Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva
@@ -22,6 +22,8 @@ selecionada. O contador de impactos existente é a fonte das vidas restantes.
 A perseguição encadeia urso caído, aproximação da menina, levantar, fuga, corrida, alcance e
 ida ao baú. A pista tem 720 unidades de percurso, com velocidade crescente e seis
 trechos de avaliação; a duração depende do ritmo e dos tropeços.
+
+Depois de COMPLETE, a campanha mantém o resultado por 150 ticks (2,5 s na referência de 60 Hz) e abre [Um dia no jardim](../garden/GUIA-JARDIM.md). `ToyRoomPhase.startGarden` descarta a perseguição e seu renderer antes de preparar a fase 2D. A prévia de debug permanece em COMPLETE até escolher outra fase. O save passa a guardar `toyRoomGarden`, prioritário na restauração da sala; a conclusão da prévia não inicia essa transição de campanha.
 
 A abertura é inteiramente ilustrada: urso caído, aproximação lenta da menina e
 levantar do urso usam poses pintadas, com a cena da cama como referência de linguagem.

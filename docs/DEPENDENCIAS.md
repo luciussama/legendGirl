@@ -1,6 +1,6 @@
 # Dicionário de bibliotecas e dependências
 
-Revisão: 22/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
+Revisão: 26/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
 
 ## Dependências npm diretas
 
@@ -40,6 +40,15 @@ Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outro
 - [scripts/prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js)
 - [scripts/prepare-combat-remediation.js](../scripts/prepare-combat-remediation.js)
 - [scripts/prepare-damage-sprites.js](../scripts/prepare-damage-sprites.js)
+- [scripts/prepare-garden-art.js](../scripts/prepare-garden-art.js)
+- [scripts/prepare-garden-beetle.js](../scripts/prepare-garden-beetle.js)
+- [scripts/prepare-garden-cinematic.js](../scripts/prepare-garden-cinematic.js)
+- [scripts/prepare-garden-contact.js](../scripts/prepare-garden-contact.js)
+- [scripts/prepare-garden-fear.js](../scripts/prepare-garden-fear.js)
+- [scripts/prepare-garden-insects.js](../scripts/prepare-garden-insects.js)
+- [scripts/prepare-garden-picnic.js](../scripts/prepare-garden-picnic.js)
+- [scripts/prepare-garden-visuals.js](../scripts/prepare-garden-visuals.js)
+- [scripts/prepare-illustrated-girl.js](../scripts/prepare-illustrated-girl.js)
 - [scripts/prepare-polish-sequence.js](../scripts/prepare-polish-sequence.js)
 - [scripts/recreate-production-assets.js](../scripts/recreate-production-assets.js)
 - [scripts/refine-platform8.js](../scripts/refine-platform8.js)
@@ -163,7 +172,7 @@ As bibliotecas internas (GameState, renderizadores, contextos, controllers e cin
 
 ## Infraestrutura do diário e novas dependências internas
 
-Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é índice reconstruível e não é backend de campanha nem binário versionado.
+Python 3 com `sqlite3`, `json`, `gzip`, `hashlib`, `subprocess`, `tempfile` e demais módulos padrão atende o acervo/executor; não há instalação pip obrigatória. `rg` e Git são ferramentas locais usadas pela automação. SQLite é armazenamento operacional local do diário, com envelopes JSON completos e exportações JSONL/gzip imutáveis para Git/recuperação. Não é backend de campanha nem binário versionado. Exportar pendências antes de remover o banco; o bloqueio local usa fcntl (macOS/Linux).
 
 As extrações de contexto, movimento, efeitos, cena, tutorial, história e persistência não adicionaram pacotes npm. Todos os módulos internos e seus exports estão no [catálogo da arquitetura](ARQUITETURA.md); as automações e seus efeitos estão em [COMANDOS](COMANDOS.md). Os valores acima descrevem o lockfile do projeto, não a versão mais recente de cada pacote na internet.
 
@@ -172,3 +181,5 @@ As extrações de contexto, movimento, efeitos, cena, tutorial, história e pers
 Os dez efeitos da arena são MP3s locais decodificados com `AudioContext.decodeAudioData` e tocados por `AudioBufferSourceNode` no ganho mestre. `ArenaSoundEffects` não adiciona dependência npm nem serviço externo. `Image.decode`, `WebGLRenderer.initTexture`, render target/leitura de pixels e `compileAsync` pertencem ao navegador/Three.js já distribuído; validam o cenário da fuga antes da arrancada. A abertura ilustrada cobre esse carregamento. Os novos testes de áudio, título, defesa estacionária e carregamento criam Chrome isolado com perfil temporário e CDP em porta livre; os demais mantêm os pré-requisitos próprios indicados nas fontes.
 
 A tipografia narrativa usa Caveat variável (Google Fonts), distribuída localmente em `assets/fonts/Caveat-Variable.ttf` sob SIL Open Font License 1.1 (`Caveat-LICENSE.txt`). Não há requisição de fonte externa durante o jogo.
+
+O jardim continua em Canvas 2D, sem biblioteca de física ou animação externa. Carrega `assets/art/garden/manifest.json` somente ao entrar, usa `GardenContactData` pré-calculado e mantém sua trilha local `assets/audio/Blues Shuffle Loop.mp3` em HTMLAudio, com sinais sintetizados. Camadas de atuação e asas articuladas são compostas pelo código local. Os preparadores acima dependem de pngjs, mas não executam no navegador nem adicionam pacotes. O diário depende ainda de `fcntl` para bloqueio entre processos e usa SQLite WAL/transações; Windows nativo exige adaptação desse bloqueio.

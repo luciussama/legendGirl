@@ -14,7 +14,7 @@ As cenas atuais seguem `ToyRoomIntroduction`: cenário na altura dos olhos, atua
 
 O voo atual da abelha usa `source/abelha-camadas-v2.png`, com corpo sem asas e par de asas separado; prompt em `prompts-abelha-camadas-v2.json`. `GardenBeeRenderer.js` mantém uma única pintura/escala/âncora do corpo e articula as asas continuamente pela raiz. O aviso inclina o conjunto gradualmente. As duas antigas poses de abelha ficam preservadas no atlas, mas não são alternadas no jogo. `prepare-garden-cinematic.js` também mede as duas camadas, sem alterar a colisão da abelha.
 
-`source/menina-medo-v1.png` fornece expressão assustada; prompt em `prompts-medo-v1.json`. `node scripts/prepare-garden-fear.js` recompõe quatro pranchas `runtime/medo-menina-*.png`, trocando apenas a região da cabeça. A preparação confere que todo o corpo abaixo do recorte, incluindo as solas, é idêntico às poses físicas originais. O renderer oscila apenas o tronco e acrescenta suor durante o medo. Essa atuação não modifica velocidades, impulsos ou o contrato dos pés. Após reconstruir as poses principais, executar novamente os preparadores de medo e insetos e reconstruir o mapa de sprites.
+`source/menina-medo-v1.png` e `prompts-medo-v1.json` preservam a primeira proposta, que trocava somente a cabeça. O preparador atual não reproduz esse método: usa `source/menina-medo-v2.png` para atuação completa e gera `runtime/medo-v2-*` com recortes próprios em `FEAR_FRAMES`, conforme a seção de polimento abaixo. As referências físicas continuam nos atlas originais e em `GardenContactData`; não se exige igualdade dos pixels do corpo entre pinturas diferentes.
 
 Direção: dia claro no jardim, rolagem lateral, destino sob uma árvore. Os desenhos enviados pelo usuário orientam grama, madeira, pedras, água, nuvens, formigas, lagartas e uma roda de quatro apoios; não são um mapa obrigatório.
 
@@ -22,7 +22,7 @@ A menina mantém a identidade e o detalhamento de `characters/girl-v2`: rosto, c
 
 As artes foram geradas com a ferramenta integrada `image_gen`. Prompts e referências em `prompts.json`; fontes preservadas em `source/`. `cenario-v1.png` é a pintura distante. A prancha de objetos contém grama, madeira, pedra, nuvem, duas poses da formiga, duas da lagarta e árvore. Duas pranchas da menina fornecem 16 poses: repouso/corrida, salto/subida/ápice/descida, reação, comemoração e brincadeira sentada.
 
-Execute `node scripts/prepare-garden-art.js` para reconstruir `runtime/`, `frames.json`, `manifest.json` e `GardenArt.js`. Redução em alfa pré-multiplicado evita franjas; as figuras não são redimensionadas por pose. Objetos e poses são separados pelo alfa conectado para conservar a copa e a pose sentada inteiras mesmo atravessando a grade nominal. A menina usa altura de referência comum de 256 px e pés registrados na última linha opaca. A fonte de locomoção tem envelope das sandálias aproximadamente -30,73 a +29,29 px na apresentação de 92 px; a física desta revisão usa meia largura de 31 px, explicitamente configurada, sem depender de leitura de imagem no gameplay.
+`node scripts/prepare-garden-art.js` reconstrói pranchas base em `runtime/`, `frames.json`, `manifest.json` e `GardenArt.js`; os derivados complementares têm preparadores próprios, listados adiante. Redução em alfa pré-multiplicado evita franjas; as figuras não são redimensionadas por pose. Objetos e poses são separados pelo alfa conectado para conservar a copa e a pose sentada inteiras mesmo atravessando a grade nominal. A menina usa altura de referência comum de 256 px e pés registrados na última linha opaca. As meias larguras usadas nas primeiras revisões foram substituídas pelo contrato atual de solas por coluna; não usar a largura de uma prancha como nova hitbox.
 
 O manifesto dedicado é carregado apenas ao entrar no jardim. As artes anteriores permanecem preservadas. Alterar somente os pixels não autoriza recalibrar plataformas ou física. Novos recortes exigem reconstrução do inventário com `npm run docs:sprites` e registro no diário.
 
@@ -30,7 +30,7 @@ O manifesto dedicado é carregado apenas ao entrar no jardim. As artes anteriore
 
 `source/menina-desconforto-v1.png` acrescenta oito poses: quatro passos altos/lentos, duas corridas tensas, salto assimétrico e repouso preocupado. `source/ambiente-v2.png` fornece casa, grama alta, banco de pedrinhas e piquenique com urso/dinossauro/robô/trem, pão na chapa e suco. Foram criados pela ferramenta integrada `image_gen`, com prompts integrais em `prompts-v2.json`, sem substituir as fontes v1. O preparador conserva o alfa, recorta por componentes conectados (as silhuetas ultrapassam a grade nominal) e produz os metadados usados pelo renderer. O manifesto inclui também a fada ilustrada compartilhada de `../toy-room/stage3/illustrated-fairy-v1.png`.
 
-O envelope das poses novas exigiu meia largura física de 36 px: a consulta do alfa na região inferior de todas as poses encontrou extremos de aproximadamente -35,22/+35,94 px na apresentação de 92 px. É uma mudança explícita de gameplay desta revisão; não deve ser recalibrada automaticamente ao trocar a pintura. Os pés permanecem ancorados e o renderer não escala a personagem por terreno.
+Na revisão histórica dessas poses, o envelope inferior motivou uma meia largura de 36 px. O contrato atual usa os perfis de `GardenContactData` e `GardenContact`, descritos abaixo; esse número histórico não define o apoio vigente. Os pés permanecem ancorados e o renderer não escala a personagem por terreno. Trocar a pintura não autoriza recalibrar física automaticamente.
 
 A lagarta após o primeiro pisão usa duas pinturas escarlates de `source/lagarta-vermelha-v1.png`, geradas com `image_gen` a partir do atlas original; prompt em `prompts-lagarta-vermelha.json`. O corpo do chão fixo usa base opaca e repetição do interior das texturas; bordas arredondadas são exclusivas de apoios isolados. No final, árvore e raízes ficam no plano posterior do gramado, e o tapete se apoia no plano frontal do chão, sem cobrir as raízes.
 
@@ -54,3 +54,19 @@ O contrato atual de contato substitui as meias larguras históricas acima: `scri
 Cenas conservam pinturas e oito atuações anteriores. A abertura usa plano fixo e corte para a descida, e o piquenique interpola brevemente as poses da mordida com âncora comum. A leitura automática com avanço opcional não governa o relógio dos gestos; manter somente a moldura sobre o cenário inteiro, com instrução de avanço/skip dentro dela.
 
 As mesmas pinturas da abelha e do besouro são preservadas nesta revisão: abelha alterna arcos entre A/B e mantém posição de repouso, sem sumir; besouro começa fora da borda esquerda do viewport. A transição da abertura limita a camada de fade aos primeiros 0,45 s da descida. Não recalcular contato da menina nem alterar fontes para esses ajustes de comportamento.
+
+## Reconstrução dos derivados atuais
+
+Execute na raiz somente quando houver mudança de arte autorizada. Preserve fontes e prompts; os comandos sobrescrevem derivados e alguns manifestos.
+
+1. `node scripts/prepare-garden-visuals.js`: atlas aquático e `GardenVisualArt`.
+2. `node scripts/prepare-garden-insects.js`: atlas de insetos e `GardenInsectArt`.
+3. `node scripts/prepare-garden-art.js`: pranchas base, frames e manifesto dedicado. Esse comando reescreve a lista de imagens; mantenha as entradas complementares atuais.
+4. `node scripts/prepare-garden-cinematic.js`: oito atuações, metadados das asas/corpo da abelha e entradas cinematográficas no manifesto.
+5. `node scripts/prepare-garden-beetle.js`: metadados das camadas do besouro e entrada no manifesto.
+6. `node scripts/prepare-garden-picnic.js`: recorte lateral e âncora do piquenique.
+7. `node scripts/prepare-garden-fear.js`: quatro pranchas de medo completo e `FEAR_FILES`/`FEAR_FRAMES`, com base registrada nos apoios originais.
+8. `node scripts/prepare-garden-contact.js`: somente se mudar pintura física de poses/apoios; medir as 28 poses originais e superfícies, revisar os efeitos de contato e registrar a alteração de gameplay. Uma troca apenas decorativa ou de atuação de medo não exige regenerar esses dados.
+9. `npm run docs:sprites`: atualizar mapa, recortes e inventário; executar QA específico de contato, encontros/cenas e percurso pelo diário.
+
+O manifesto precisa resolver todos os recursos antes de liberar a fase. Não executar essa sequência para atualizar somente a documentação.

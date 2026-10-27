@@ -1,6 +1,6 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **21/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **26/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
 
 Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS, Canvas 2D e Three.js/WebGL 2 na perseguição; Node.js/Express serve os arquivos. Three.js atende à renderização 3D, com importação tardia. Não há compilação para `dist/`, backend de campanha ou contas de jogador.
 
@@ -28,6 +28,8 @@ Repositório de referência: [luciussama/legendGirl no GitHub](https://github.co
 18. [Modo de batalha da Toy Room — design oficial](#modo-de-batalha-da-toy-room--design-oficial)
 19. [Inimigos da Toy Room — design oficial](#inimigos-da-toy-room--design-oficial)
 20. [Urso, chefe final — design oficial](#urso-chefe-final--design-oficial)
+21. [Desenvolver o jardim](#desenvolver-o-jardim)
+22. [Padrão de diálogos](#padrão-de-diálogos)
 
 ## Primeiro dia e preparação
 
@@ -55,7 +57,7 @@ npm run build
 
 Esses comandos não cobrem todas as ferramentas extras de QA. Confira os testes específicos na seção de validação. Registre falhas anteriores à sua alteração, sem modificar referências para fazê-las desaparecer.
 
-Jogue a sequência abertura → castelo → fuga → porta falsa → plot twist → subida final → portal → sala de brinquedos. Nas fases de plataforma, o jogo conduz o deslocamento horizontal: toque/clique, Espaço ou seta para cima controlam salto/avanço de diálogo. O botão X do gamepad é o índice 2. Na sala, WASD/setas e joystick virtual controlam movimento; Espaço/E/Enter/F e o botão virtual acionam interação. Na Toy Room, o analógico esquerdo move e X (índice 2) interage; no primeiro salto da Dark Room, a nova pressão de A (índice 0) conclui o tutorial. P pausa; M alterna áudio.
+Jogue a sequência abertura → castelo → fuga do quarto → porta falsa → retorno → portal → sala de brinquedos → investigação/espada → arena → perseguição 3D → jardim → piquenique. Nos percursos do quarto, o jogo conduz o deslocamento horizontal: toque/clique, Espaço ou seta para cima controlam salto/avanço de diálogo. O botão X do gamepad é o índice 2. Na sala, WASD/setas e joystick virtual controlam movimento; Espaço/E/Enter/F e o botão virtual pegam ou entregam ao baú. Na Toy Room, o analógico esquerdo move e X (índice 2) interage; no primeiro salto da Dark Room, a nova pressão de A (índice 0) conclui o tutorial. No jardim, A/D/setas controlam direção e Espaço/W/cima controlam salto; durante o besouro, somente o pulo é manual. P pausa; M alterna áudio. Falas avançam automaticamente; clique/toque adianta um quadro sem acionar gameplay.
 
 ## Fontes e convenções
 
@@ -121,12 +123,14 @@ flowchart TD
 | --- | --- |
 | `start`, `newCampaign`, `hasProgress`, `saveProgress` | Início/restauração, limpeza da campanha, consulta e gravação. `newCampaign` é destrutivo para o progresso local; a UI já pede confirmação ao jogador. |
 | `doJump(inputSource)`, `isGrounded`, `isCutsceneActive`, `setLastInputDevice` | Entrada contextual: salto ou interação narrativa respeitando bloqueios. |
+| `advanceDialogue(event)` | Encaminha uma fala ao dono atual: abertura, introdução, história, quarto ou jardim. Retorna se houve avanço; não executa salto, coleta ou ataque. |
 | `togglePause`, `setPaused`, `isPaused` | Pausa da atualização; desenho permanece disponível. |
 | `retry`, `resetToStart`, `restartToTitle`, `isGameOver` | Recuperação/derrota e retorno ao menu. |
 | `startToyRoomPhase`, `startToyRoomIntroduction`, `isToyRoomMode` | Transição, introdução e delegação à sala. |
 | `startDebugPhase`, `getDifficulty` | Seletor de fases sem autosave de campanha e consulta de dificuldade normalizada. |
+| `hasSavedCampaign`, `continueOnEasy`, `declineEasyOffer` | Consulta save efetivo e responde à ajuda após derrotas; preserva o progresso da seção ativa. |
 | `setMuted`, `toggleMute`, `isMuted`, `setMasterVolume`, `getMasterVolume`, `pauseMusic`, `resumeMusic` | Controle de áudio usado pela página. |
-| `state`, `toyRoomIntroduction`, `camera`, `lighting`, `particles`, `transitions`, `background`, `platforms`, `hud`, `dialogue`, `assets`, `assetsReady`, `darkRoomAtlas`, `atlasDebugger`, `input`, `audio` | Referências expostas para integração/inspeção; não significam autorização para escrever arbitrariamente no estado. |
+| `state`, `toyRoomIntroduction`, `camera`, `lighting`, `particles`, `transitions`, `background`, `platforms`, `hud`, `dialogue`, `assets`, `assetsReady`, `platformContact`, `darkRoomAtlas`, `atlasDebugger`, `input`, `audio` | Referências expostas para integração/inspeção; não significam autorização para escrever arbitrariamente no estado. |
 | `destroy` | Salva e remove listeners específicos de campanha/entrada/áudio. Não assuma que encerra todo RAF ou todo listener de resize: audite o ciclo de vida ao criar múltiplas instâncias. |
 
 Os métodos internos `update`, `render`, `loop`, `syncViewportFromState` e `syncViewportToState` não são APIs públicas normais. Fixtures recuperadas do diário em `tests/` temporários expõem controles adicionais por instrumentação de código; não leve esses controles ao jogo distribuído.
@@ -156,7 +160,7 @@ Os campos de gameplay de `game.js` são lidos e escritos diretamente em `GameSta
 
 [CampaignProgress](../src/js/state/CampaignProgress.js) usa `legendGirl.campaign.v1` em `localStorage`. `captureState` seleciona chaves dos defaults excluindo referências de runtime, relógios da página, instâncias e entrada transitória. `restoreState` preserva referências de arrays/objetos quando aplicável. `createCampaignProgress(storage)` retorna `read`, `write`, `clear`, valida versão/forma e mantém alternativa em memória quando o armazenamento falha.
 
-O pacote salvo também contém `OpeningSequence.snapshot()`, estado de ativação das plataformas e `ToyRoomPhase.snapshot()` quando relevante. `ToyRoomPhase.restore` religa o objeto carregado por ID; não basta desserializar uma cópia desconectada do brinquedo.
+O pacote salvo também contém `OpeningSequence.snapshot()`, estado de ativação das plataformas e `ToyRoomPhase.snapshot()` quando relevante. `ToyRoomPhase.restore` religa o objeto carregado por ID; não basta desserializar uma cópia desconectada do brinquedo. Na sala, `toyRoomGarden` tem prioridade sobre `toyRoomChaseCampaign`. O envelope de `GardenPhase.snapshot()` tem versão 1 e contém o domínio do jardim em `state.version:9`; nenhuma dessas versões altera a versão 1 do pacote geral da campanha. Recursos, listeners e áudio são reconstruídos pelo dono da fase.
 
 Ao adicionar campo persistente: defina default serializável, revise captura/restauração/validação, teste saves anteriores incompletos, continuidade de narrativa e alternativa sem storage. A versão não tem migração genérica pronta. DOM, nós de áudio, timers e controllers não devem ser serializados como estado da campanha.
 
@@ -273,7 +277,7 @@ A sala distribui as demais responsabilidades entre módulos específicos:
 
 | Módulo | Contrato e cuidados |
 | --- | --- |
-| [ToyRoomInteraction](../src/js/toy-room/ToyRoomInteraction.js) / [contexto](../src/js/toy-room/ToyRoomInteractionContext.js) | Decide proximidade, coleta, soltura e armazenamento; mantém debounce, prioridade arena/combate, ordem dos efeitos, notificação à história e contagem. Getters acessam objetos atuais após restore. |
+| [ToyRoomInteraction](../src/js/toy-room/ToyRoomInteraction.js) / [contexto](../src/js/toy-room/ToyRoomInteractionContext.js) | Decide proximidade, coleta e entrega obrigatória ao baú; bloqueia coleta comum durante investigação/espada. Mantém debounce, prioridade arena/combate, ordem dos efeitos, notificação à história e contagem. Getters acessam objetos atuais após restore. |
 | [ToyRoomEffects](../src/js/toy-room/ToyRoomEffects.js) | Inicializa poeira e emite/atualiza brilhos, confetes, passos e animação do baú nas coleções recebidas. Preservar a ordem das chamadas aleatórias e sua posição no update. |
 | [ToyRoomCompanion](../src/js/toy-room/ToyRoomCompanion.js) | Atualiza tutorial, seleção de brinquedo, voo e rastro da fada. Recebe os atores do quadro e devolve a guia escolhida. Não define o alvo da câmera. |
 | [ToyRoomCamera](../src/js/toy-room/ToyRoomCamera.js) | Calcula câmera e enquadramento com alvo explícito selecionado pela história. A fase publica as coordenadas calculadas; fórmulas, limites e área segura permanecem compartilhados com a apresentação. |
@@ -291,7 +295,7 @@ A sala distribui as demais responsabilidades entre módulos específicos:
 
 `ToyRoomStory` recebe um contrato explícito, construído na fase por [createToyRoomStoryContext](../src/js/toy-room/ToyRoomStoryContext.js). Seus acessos são `world` (consultas geométricas), `actors` (jogador, fada e dificuldade), `exploration` (brinquedos, móveis e ações narrativas), `flow` (tutorial e introdução), `controls` (limpeza), `audio` (coleta e trilha da espada) e `presentation` (assets e apresentação móvel). A narrativa não recebe nem guarda a fase completa. O adaptador concentra o acesso à sala, consulta referências atuais após restauração e mantém os efeitos nos mesmos pontos. Não capturar jogador, fada ou arrays ao construir o contrato; seus getters devem continuar consultando os objetos atuais. O snapshot narrativo contém somente o estado da história. [ToyRoomStoryRenderer](../src/js/toy-room/ToyRoomStoryRenderer.js) resolve os recortes e desenha a espada, o ataque e as falas a partir dos dados do quadro. Não recebe a história inteira nem altera o estado narrativo. `ToyRoomStory.narrativeBeat()` seleciona o conteúdo segundo os mesmos tempos; seus métodos `render*` delegam a apresentação. O export `drawToySword` no módulo anterior e a propriedade `attackFrames` foram preservados para os consumidores do combate.
 
-Móveis e brinquedos iniciais estão no construtor da fase; não procure todo o layout da sala em `config.js`. Adicionar item exige revisar inicialização, interação, contagem de vitória e snapshot/restauração, além do desenho.
+Móveis e brinquedos iniciais são criados por `ToyRoomInitialEntities`, chamado pelo construtor da fase; não procure todo o layout da sala em `config.js`. Adicionar item exige revisar inicialização, interação, contagem de vitória e snapshot/restauração, além do desenho.
 
 ### Modo de batalha da Toy Room — design oficial
 
@@ -488,7 +492,7 @@ Emulação de user agent/viewport no Chrome não executa Safari/WebKit nem GPU e
 
 ## Publicação e integração de mudanças
 
-O [workflow](../.github/workflows/deploy-pages.yml) roda em push para `main` e execução manual. Faz checkout, exige lockfile, configura Node 24, instala com `npm ci`, executa check-assets/lint/test-pages/build, prepara `_site` e publica Pages. **Não roda `npm test` completo atualmente**: execute as regressões relevantes antes de integrar.
+O [workflow](../.github/workflows/deploy-pages.yml) roda em push para `main` e execução manual. Faz checkout, exige lockfile, configura Node 24, instala com `npm ci`, executa check-assets/lint/build, prepara `_site` e publica Pages. **Não roda `npm test` nem o alias `test:pages` atualmente**: execute as regressões relevantes antes de integrar.
 
 GitHub Pages serve arquivos estáticos e não executa Express. Os caminhos devem funcionar na subpasta do repositório.
 
@@ -561,7 +565,7 @@ A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legad
 
 `ToyRoomPersistence` salva `toyRoomChaseCampaign` somente no modo campanha e fora da captura interna da arena. Restore exige sala com arena concluída e sem arena ativa; saves antigos sem esse campo continuam válidos. Retoma a etapa salva, com estado e posição musical, sob fade. O debug não grava essa fuga na campanha. Pausa, foco, erro de contexto e saída precisam respeitar os recursos e listeners do proprietário.
 
-COMPLETE ainda conserva a fase ativa e não oferece navegação final própria. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
+Na campanha, COMPLETE mantém o resultado por 150 ticks (2,5 s na base de 60 Hz) e `ToyRoomPhase` chama `startGarden`. Na prévia de debug, permanece no resultado. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
 
 A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. `prepareFloor` confere uma amostragem 8×8 na GPU e tenta a mesma arte com filtro linear sem mipmaps se necessário; falha definitiva impede arrancada. `prepareVisualResources` envia os mapas e aguarda compilação dos materiais. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.
 
@@ -605,7 +609,15 @@ A ação de exploração não solta brinquedos no chão: conserva `carriedItem` 
 
 Use a bandeira → Um dia no jardim. Leia [GUIA-JARDIM](garden/GUIA-JARDIM.md) e o [README das artes](../assets/art/garden/README.md). Reconstrua recortes com `node scripts/prepare-garden-art.js`. O manifesto dedicado é carregado pela fase, sem aumentar o preload de todas as cenas. Física/apoios ficam em `GardenLevel`/`GardenSimulation`; pintura não altera essas medidas. Preservar controle simultâneo por toque, origem dos pés, câmera lateral, transporte pela roda, snapshot e descarte ao trocar de fase.
 
-No jardim v2, preserve a distinção entre grama lenta e pedrinhas rápidas sem derrapagem, a fatalidade NORMAL e a recuperação imortal EASY. `clouds`, `fairy`, `trail`, `safeGround` e `recovery` são domínio serializável. Não restaure apoio em nuvem ausente. O mapa tem consultas espaciais; evite varrer todas as plataformas a cada subpasso. Na pintura do chão fixo, repita somente o miolo da textura e mantenha o preenchimento contínuo, sem laterais internas.
+O domínio atual é v9. Preserve grama a 100 px/s, chão/madeira/pedra/nuvem a 220 px/s e pedrinhas a 410 px/s, sem derrapagem; saltos de pedrinhas variam deterministicamente. O NORMAL tem queda fatal e checkpoints, enquanto o EASY tem resgate/desorientação sem morte. `clouds`, `fairy`, `trail`, `safeGround`, `recovery`, `encounters`, `story` e `presentation` são serializáveis. Não restaure apoio em nuvem ausente. O mapa tem consultas espaciais e subpassos de até 1/120 s; evite varrer todas as plataformas a cada subpasso.
+
+`GardenContact` compartilha seleção de pose e perfil dos sapatos com o renderer; `GardenContactData` deriva das pinturas originais. A atuação completa de medo usa recortes próprios de `GardenFearArt`, sem substituir a referência física. Morros têm superfícies físicas curvas e pinturas cacheadas na carga; grama alta ocupa pequenas faixas e a vegetação baixa continua até as bordas. Pilares, peixes e plantas não criam apoios. Não usar câmera, zoom ou linhas auxiliares para corrigir saltos.
+
+`GardenEncounters` mantém cinco abelhas com repouso fixo e arcos alternados A/B, quatro minhocas por proximidade e três besouros inofensivos de seis segundos ativos. Aviso/arco/intervalo da abelha duram 0,5/1,25/1,8 s; lateral/baixo causam um ponto e pisão derrota. O besouro entra visualmente de fora da esquerda em 0,85 s, sem mudar duração ou velocidades. `resetGardenPanic` rearma encontros à frente na retomada. A fala de Nanda e a orientação inicial não bloqueiam PULAR.
+
+`GardenNarrative` guarda falas e durações; `GardenCinematic` separa atuação da leitura. O domínio avança os balões automaticamente ou por pulso, e `GardenPhase` trata clique/toque e cenas vistas. O final retira o quadro e conserva o piquenique animado. O save v8 acrescentou leitura/cenas vistas; o v9 acrescenta o trajeto alternado das abelhas e migra voos antigos a partir da posição atual. A versão de configuração `GARDEN.version:7` não é a versão do domínio. Consulte as migrações v1–v9 no guia da fase.
+
+Para reconstruir artes, siga a ordem no [README de produção](../assets/art/garden/README.md) e o catálogo em [COMANDOS](COMANDOS.md#jardim). Os preparadores sobrescrevem derivados e alguns manifestos; não são testes. O diário usa SQLite incremental e segmentos imutáveis; mudanças em guias/contratos devem terminar com registro e `journal:sync`.
 
 ## Padrão de diálogos
 

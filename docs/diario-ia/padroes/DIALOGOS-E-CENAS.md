@@ -1,4 +1,4 @@
-# Padrão vigente de diálogos e cenas
+ # Padrão vigente de diálogos e cenas
 
 Decisão explícita do usuário em 26/10/2026, na sessão `20261026T181721-3f1802024697`. Aplica-se ao jogo inteiro e a novas fases. Substitui a resposta anterior do quiz que mantinha as cenas do jardim esperando indefinidamente uma interação. O histórico dessa resposta não deve ser reescrito.
 

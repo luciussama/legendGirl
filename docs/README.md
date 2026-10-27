@@ -1,6 +1,6 @@
 # Documentação do aplicativo
 
-Revisão: 22/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
+Revisão: 26/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
 
 | Entrada | Conteúdo |
 | --- | --- |
@@ -13,6 +13,8 @@ Revisão: 22/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 | [Primeiro salto](TUTORIAL-PRIMEIRO-SALTO.md) | Fluxo, entradas, apresentação e migração de saves do tutorial do quarto. |
 | [Arena atual](arena/GUIA-ARENA.md) / [valores documentados](arena/configuracao-atual.json) | Perfis legado/arena, HP, combate, IA, controles, retorno, áudio e persistência. |
 | [Perseguição 3D](bear-chase/GUIA-PREVIA.md) | Campanha após a vitória da arena, acesso isolado de debug, abertura ilustrada, pista, vidas, áudio, materiais e dificuldades. |
+| [Um dia no jardim](garden/GUIA-JARDIM.md) | Fase lateral após a perseguição, terrenos, contato dos pés, insetos, cenas, resgates e migrações do save v9. |
+| [Padrão de diálogos e cenas](diario-ia/padroes/DIALOGOS-E-CENAS.md) | Avanço automático, clique/toque de uma fala, temporização, consumo de entrada e separação entre atuação e leitura. |
 | [Manual: vitória da arena para a fuga](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md) | Contrato implementado de fluxo, recuperação de erro, persistência e critérios de manutenção da passagem arena–fuga. |
 | [Animação da menina](arena/GUIA-ANIMACAO.md) / [prompts](arena/animacao-menina-prompts.md) | Poses, dados, âncoras, reação de dano e origem das pranchas. |
 | [Produção de batalha](battle-mode/battle-sprite-production.md) | Origem dos lotes de sprites e integração/derivados atuais. |
@@ -32,5 +34,3 @@ As pastas de arte mantêm guias de origem: [personagem oficial](../assets/art/da
 Ao mudar um contrato, atualize seu proprietário/consumidores na arquitetura e as receitas afetadas no manual. Regere `node scripts/generate-method-reference.js`; após mudanças visuais/de consumidores, regere `npm run docs:sprites`. Novas ferramentas/aliases entram no catálogo de comandos; novas dependências exigem package.json e lockfile coerentes. Se alterar parâmetros da arena, atualize a referência documental derivada dos módulos reais. Preserve o design inicial sem transformar sua história numa aprovação nova.
 
 Registre validações reais e arquivos revisados no diário, sem espalhar relatórios ou fixtures. Links e inventários gerados não substituem a leitura dos contratos: referências dinâmicas, callbacks e ciclo de vida precisam ser explicitados. Teste a publicação em subpasta e os saves quando a integração mudar.
-
-- [Um dia no jardim](garden/GUIA-JARDIM.md): controles, percurso, arte e persistência da fase lateral.

@@ -11,8 +11,9 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 - **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos, recorrência misteriosa, investigação e aquisição da espada.
 - **Arena imaginária:** transformação da mesma sala e quatro inimigos com defesa, esquiva e contra-ataque. Recuar anima a caminhada; durante o golpe inimigo ela firma a base para defender. Cada personagem tem efeitos sonoros próprios. A vitória contra o urso conduz à perseguição.
 - **Perseguição 3D:** abertura ilustrada, corrida automática em um quarto curvo, desvio dos brinquedos lançados pelo urso e ida ao baú quando ele é alcançado.
+- **Um dia no jardim:** Yuna sai de casa com Nanda e atravessa grama, pedrinhas, rios, rodas e nuvens até o piquenique. Abelhas, minhocas e três perseguições de besouro combinam saltos com reações sensoriais; o EASY oferece resgate sem morte.
 - **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A poltrona permanece sobre o tapete ao reenquadrar para celular. A qualidade gráfica está reservada para uma atualização futura.
-- **Narrativa:** abertura da menina acordando, retratos dos personagens e diálogos durante as transições.
+- **Narrativa:** falas avançam automaticamente nos tempos autorados; clique/toque adianta um balão. No jardim, abertura e piquenique têm personagens em camadas e atuação contínua.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
 - **Apresentação móvel:** áreas seguras para diálogos e controles; no retorno após a porta falsa, enquadramento contínuo que não segue o arco de cada salto.
 
@@ -62,18 +63,22 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Fases de plataforma | Espaço ou seta para cima | Saltar ou avançar a interação ativa |
 | Fases de plataforma | Botão X de controle compatível com o mapeamento esperado | Saltar ou avançar a interação ativa |
 | Sala de brinquedos | WASD ou setas | Movimentar a personagem |
-| Sala de brinquedos | Espaço, E, Enter ou F | Pegar, soltar ou guardar um objeto |
-| Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/soltar/guardar |
+| Sala de brinquedos | Espaço, E, Enter ou F | Pegar ou entregar ao baú; o objeto carregado fica nas mãos até a entrega |
+| Sala de brinquedos com gamepad padrão | Analógico esquerdo e nova pressão de X (índice 2) | Movimentar e pegar/entregar |
 | Sala de brinquedos em tela sensível ao toque | Joystick virtual à esquerda e botão de ação à direita | Movimentar e interagir |
 | Arena com teclado | A/D ou esquerda/direita; W/cima; S/baixo; E/Espaço/Enter/F; R | Andar; pular; abaixar; espada; especial |
 | Arena com gamepad padrão | D-pad; A (salto); X (espada); Y (especial) | Combate horizontal; analógico não substitui o D-pad nesse perfil |
 | Arena em touch | Direcional, espada e especial | Andar, pular, abaixar e atacar; especial uma vez por batalha |
 | Perseguição 3D | A/D, esquerda/direita, D-pad ou analógico esquerdo | Desviar lateralmente durante a corrida automática |
 | Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
+| Jardim | A/D ou esquerda/direita; Espaço, W ou cima | Andar e pular; soltar pulo encurta a subida |
+| Jardim em touch/gamepad | ◀ ▶ e PULAR simultâneos; analógico/D-pad e A/X | Andar e pular; durante o besouro, a corrida para frente é automática e só o pulo fica sob controle |
+| Falas narrativas | Clique/toque no quadro; em cenas modais, em qualquer ponto do canvas | Adiantar um balão, sem produzir salto, ataque ou coleta |
+| Cenas do jardim | Enter/Espaço ou A/X; S ou “Pular (S)” após ver a cena | Adiantar uma fala ou pular uma cena já vista |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
 | Interface geral | M / botão de áudio | Alternar o som |
 
-As entradas respeitam os bloqueios das cenas e o estado da personagem. Nas fases de plataforma, o deslocamento horizontal é conduzido pelo jogo; o jogador controla o momento do salto. Durante a fuga, caminhar por muito tempo nos apoios intermediários pode permitir que a rolagem alcance a personagem. Após conquistar o pedestal final, a câmera acompanha a aproximação da porta falsa.
+As entradas respeitam os bloqueios das cenas e o estado da personagem. Nos percursos do quarto, o deslocamento horizontal é conduzido pelo jogo; o jogador controla o momento do salto. No jardim, anda e pula livremente, exceto nas perseguições breves do besouro. Durante a fuga do quarto, caminhar por muito tempo nos apoios intermediários pode permitir que a rolagem alcance a personagem. Após conquistar o pedestal final, a câmera acompanha a aproximação da porta falsa.
 
 ## Arquitetura
 
@@ -103,6 +108,8 @@ flowchart TD
     UI --> Canvas
     Toy --> Chase["BearChasePhase: abertura 2D + corrida WebGL 2"]
     Chase --> Canvas
+    Chase -->|COMPLETE na campanha / 2,5 s| Garden["GardenPhase: jardim 2D e piquenique"]
+    Garden --> Canvas
     Toy --> Canvas
 ```
 
@@ -152,6 +159,8 @@ A iluminação usa um canvas auxiliar e acompanha a transformação real da cena
 
 [`OpeningSequence.js`](src/js/cinematics/OpeningSequence.js) controla o relógio da abertura, falas, poses e revelação do cenário. As seis sequências posteriores do quarto estão em `DarkRoomNarrative`, selecionadas pelo coordenador com `GameState`. `ToyRoomStory` trata recorrência, investigação e espada. `DialogueRenderer` compartilha caixa/retrato entre fases; renderizadores narrativos adaptam conteúdo e tempos.
 
+`DialogueFlow` registra os quadros visíveis e consome a entrada antes do gameplay. `game.advanceDialogue` encaminha cada pedido ao dono da sequência. Durante uma fala não modal, os demais controles continuam funcionando; durante uma cena, o gesto de leitura não atravessa a transição. Consulte o [padrão de diálogos](docs/diario-ia/padroes/DIALOGOS-E-CENAS.md).
+
 [`CampaignProgress.js`](src/js/state/CampaignProgress.js) serializa uma seleção explícita do estado e usa `localStorage`. O jogo salva periodicamente durante a campanha e em eventos de saída/ocultação da página. O registro inclui estado narrativo e, quando aplicável, a sala de brinquedos. Se o armazenamento falhar, existe uma alternativa em memória para a sessão.
 
 O progresso pertence ao navegador e à origem utilizados. Não há conta de usuário, banco de dados ou sincronização de campanha entre dispositivos. `Carregar jogo` restaura o estado e a dificuldade salvos. `Novo jogo` pede confirmação quando há progresso, limpa a campanha e reinicia a abertura com a dificuldade escolhida no título. O botão `Modo fácil` afeta somente a próxima aventura nova.
@@ -189,6 +198,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── effects/           # Efeitos visuais
 │       ├── ui/                # Interface desenhada no canvas
 │       ├── bear-chase/        # Domínio, câmera, modelos, materiais e áudio da perseguição 3D
+│       ├── garden/            # Domínio lateral, contato por pixels, encontros, cenas e áudio do jardim
 │       ├── toy-room/          # Exploração, narrativa, espada e arena
 │       └── debug/             # Ferramentas de inspeção
 ├── scripts/                   # Geração de recursos, documentação, diário e execução de QA temporário
@@ -252,6 +262,8 @@ O modo NORMAL tem alcances próprios nos três percursos de plataformas. Os bloc
 
 Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimigos, mantendo os corações e os sinais dos golpes. Na perseguição, são três vidas no NORMAL e seis no FÁCIL. O NORMAL usa até três brinquedos por lançamento e pares a cada segundo nos 15% finais. Os detalhes estão nos [guias da arena](docs/arena/GUIA-ARENA.md) e da [perseguição](docs/bear-chase/GUIA-PREVIA.md).
 
-A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. O fim da perseguição mantém o resultado na tela e ainda não possui navegação após a conclusão; a derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
+A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. Depois da captura e do retorno ao baú, a campanha apresenta o resultado por 150 ticks (2,5 s na base de 60 Hz) e abre o jardim; a prévia de debug permanece no resultado. A derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
+
+O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v9 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e o piquenique permanece animado.
 
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.

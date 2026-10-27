@@ -1,6 +1,6 @@
 # Comandos, ferramentas e validação
 
-Revisão: 22/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
+Revisão: 26/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
 
 ## Ambiente e funcionamento
 
@@ -64,7 +64,7 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run test:current-art:browser` | `python3 scripts/run-qa-from-journal.py test:current-art:browser` | Percurso de plataformas e cenário atual no navegador. |
 | `npm run docs:sprites` | `node scripts/build-sprite-guide.js` | Regenerar mapa, recortes, desenhos em código e inventário de arte. |
 | `npm run journal:read` | `python3 scripts/ai-journal.py read` | Sincronizar e ler contexto, registros recentes e sessões abertas. |
-| `npm run journal:sync` | `python3 scripts/ai-journal.py sync` | Arquivar fontes atuais e reconstruir SQLite; --history inclui Git local. |
+| `npm run journal:sync` | `python3 scripts/ai-journal.py sync` | Capturar fontes atuais no SQLite incremental e exportar pendências em segmentos imutáveis; --history inclui Git local. |
 | `npm run journal:search` | `python3 scripts/ai-journal.py search` | Pesquisar termo literal; --all-versions inclui versões anteriores. |
 | `npm run journal:begin` | `python3 scripts/ai-journal.py begin` | Abrir sessão com actor/title e devolver ID. |
 | `npm run journal:finish` | `python3 scripts/ai-journal.py finish` | Encerrar sessão por ID com summary/check/file/pending. |
@@ -72,6 +72,11 @@ Os comandos test/verify/review recuperados pelo Python podem depender de navegad
 | `npm run journal:show` | `python3 scripts/ai-journal.py show` | Ler fonte imutável por ID, incluindo JSON comprimido. |
 | `npm run journal:qa` | `python3 scripts/run-qa-from-journal.py` | Recuperar comando/script arquivado, executar temporariamente e registrar resultado. |
 | `npm run journal:archive` | `python3 scripts/ai-journal.py archive` | Arquivar/verificar arquivos do manifesto antes de retirar cópias externas. |
+| `npm run journal:verify` | `python3 scripts/ai-journal.py verify` | Conferir integridade, hashes e referências do acervo. |
+| `npm run journal:export` | `python3 scripts/ai-journal.py export` | Exportar envelopes pendentes para segmentos JSONL/gzip imutáveis. |
+| `npm run journal:backup -- --output /tmp/diario-backup.sqlite3` | `python3 scripts/ai-journal.py backup` | Criar backup consistente sem sobrescrever o destino. |
+| `npm run journal:extract -- CAMINHO --output /tmp/referencia.png` | `python3 scripts/ai-journal.py extract` | Recuperar fonte/anexo; usar --id quando houver múltiplas versões do anexo. |
+| `npm run journal:migrate` | `python3 scripts/ai-journal.py migrate` | Migrar acervo legado e verificar restauração; --prune exige migração autorizada e preservação comprovada. |
 | `npm run test:dialogues` | `python3 scripts/run-qa-from-journal.py test:dialogues` | Contrato dos diálogos compartilhados. |
 | `npm run test:dialogues:browser` | `python3 scripts/run-qa-from-journal.py test:dialogues:browser` | Retratos, caixa, controles, persistência e áreas seguras. |
 | `npm run test:toy-room:camera` | `python3 scripts/run-qa-from-journal.py test:toy-room:camera` | Alvo de câmera da exploração e falas/revelação. |
@@ -112,7 +117,8 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 
 | Arquivo | Responsabilidade / efeito |
 | --- | --- |
-| [ai-journal.py](../scripts/ai-journal.py) | CLI do diário, SQLite reconstruível, fontes/eventos/pacotes imutáveis e importação do histórico Git. |
+| [ai-journal.py](../scripts/ai-journal.py) | CLI do diário, SQLite incremental, envelopes completos e segmentos JSONL/gzip imutáveis para Git/recuperação. Usa journal_store.py. |
+| [journal_store.py](../scripts/journal_store.py) | Transações, envelopes imutáveis, importação/união de segmentos, hashes, verificação e exportação incremental. |
 | [apply-sprite-review.js](../scripts/apply-sprite-review.js) | Aplica decisões da classificação visual; pode remover recursos conforme a seleção. |
 | [build-dark-room-atlas.js](../scripts/build-dark-room-atlas.js) | Consolida sprites em prancha e metadados do quarto; sobrescreve derivados. |
 | [build-sprite-guide.js](../scripts/build-sprite-guide.js) | Regenera os quatro mapas/inventário de arte; análise estática não identifica todos os usos dinâmicos. |
@@ -129,6 +135,14 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js) | Prepara derivados das correções de combate já existentes. |
 | [prepare-combat-remediation.js](../scripts/prepare-combat-remediation.js) | Prepara derivados das remediações visuais do combate. |
 | [prepare-damage-sprites.js](../scripts/prepare-damage-sprites.js) | Extrai/exporta seis poses de dano por ator e gera DamageSpriteFrames. |
+| [prepare-garden-art.js](../scripts/prepare-garden-art.js) | Reconstrói pranchas base, frames.json, manifesto dedicado e GardenArt; sobrescreve a lista do manifesto. |
+| [prepare-garden-contact.js](../scripts/prepare-garden-contact.js) | Mede solas de 28 poses e superfícies por coluna; gera GardenContactData usado pela física. Exige revisão de contato após mudar fontes. |
+| [prepare-garden-insects.js](../scripts/prepare-garden-insects.js) | Extrai seis poses do atlas aprovado e gera runtime/insetos-v1.png e GardenInsectArt. |
+| [prepare-garden-cinematic.js](../scripts/prepare-garden-cinematic.js) | Isola oito atuações, mede corpo/asas da abelha, gera GardenCinematicArt e atualiza o manifesto das cenas. |
+| [prepare-garden-fear.js](../scripts/prepare-garden-fear.js) | Prepara quatro pranchas de medo completo e FEAR_FILES/FEAR_FRAMES; registra apoio original sem recalcular contato físico. |
+| [prepare-garden-beetle.js](../scripts/prepare-garden-beetle.js) | Mede corpo/asas do besouro, gera GardenBeetleArt e inclui a fonte no manifesto. |
+| [prepare-garden-picnic.js](../scripts/prepare-garden-picnic.js) | Recorta o piquenique lateral, gera GardenPicnicArt e registra a âncora no plano da toalha. |
+| [prepare-garden-visuals.js](../scripts/prepare-garden-visuals.js) | Prepara seis recortes aquáticos e GardenVisualArt; decoração sem novos apoios. |
 | [prepare-polish-sequence.js](../scripts/prepare-polish-sequence.js) | Prepara derivados das sequências de refinamento visual. |
 | [recreate-production-assets.js](../scripts/recreate-production-assets.js) | Reconstrói assets de produção a partir das fontes; não é um comando de QA. |
 | [refine-platform8.js](../scripts/refine-platform8.js) | Prepara a arte derivada específica da plataforma 8. |
@@ -167,9 +181,9 @@ As regressões de pouso verificam cruzamento contínuo e exclusões, preservaç�
 
 O executor restaura do acervo arquivos sob `scripts/`, `tests/` e `assets/`, além de código e fixtures `.js`, `.mjs`, `.cjs`, `.py`, `.html`, `.css` e `.json` sob `docs/diario-ia/qa/`. A recuperação ocorre somente no workspace temporário; relatórios Markdown e bitmaps de evidência não são restaurados. Em automações de navegador, as URLs locais também são adaptadas nos módulos `.mjs` e `.cjs` para a porta do servidor temporário. Um painel histórico ainda pode depender de recursos/requisitos próprios; consultar sua fonte antes de usar.
 
-Os painéis de comparação da menina e dos props da perseguição foram arquivados nessa pasta e retirados da árvore ativa. Seus aliases históricos apontam para fontes ausentes: precisam de recuperação manual verificada do pacote, em diretório temporário, ou de uma atualização futura do executor. Não abrir antigas URLs como se fossem páginas atuais. A auditoria documental confirmou essa limitação por leitura do executor e dos pacotes; esses aliases não foram executados nesta revisão.
+Os painéis de comparação da menina e dos props da perseguição foram arquivados e retirados da árvore ativa. O executor pode recuperar código/fixtures nos prefixos e formatos acima; consulte o pacote e o alias antes de executar, pois referências externas a esses prefixos não são restauradas automaticamente. Uma URL antiga não é uma página atual do servidor de produção. Relatórios e bitmaps de evidência não devem ser devolvidos à árvore ativa para reabrir esses painéis.
 
-A verificação desta revisão está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura e exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Resultados pertencem ao diário.
+A verificação está em `npm run journal:qa -- test:docs:equalizacao`: confere cobertura/exports dos módulos, links locais, parâmetros da arena e versões do lockfile. Inclui os guias do jardim e de leitura. Ferramentas, aliases e imports diretos são conferidos contra a captura da árvore de produção arquivada com a automação, pois o executor acrescenta fontes e comandos históricos no workspace temporário. Ao acrescentar ferramentas/aliases, atualize essa captura no acervo. Resultados pertencem ao diário.
 
 `npm run journal:qa -- test:campaign:defeats:browser` cobre a interface real em desktop/retrato/paisagem com derrotas preparadas, respostas nativas, soma entre fases, recarga, oferta, recusa e retomada. Requer Chrome de QA/CDP 9222. Não equivale a um playtest humano completo.
 
@@ -179,7 +193,7 @@ A verificação desta revisão está em `npm run journal:qa -- test:docs:equaliz
 
 `npm run journal:qa -- test:arena:saida-direta` verifica o último golpe, ausência de texto na vitória e restauração durante a saída. `npm run journal:qa -- test:arena:saida-direta:browser` cobre o corte até BEAR_DOWN sem legenda em três formatos, no Chrome isolado/CDP 9222. A fonte de `script:test-arena-chase-transition.js` também foi atualizada no acervo para a perseguição e a saída vigentes.
 
-Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O índice SQLite local pode ser descartado e será reconstruído pela próxima consulta ao diário.
+Após a consolidação das cópias antigas, os testes e painéis de QA devem ser executados pelos aliases ou por `journal:qa`. O executor também recupera as fixtures `.txt` usadas nas comparações históricas; não é necessário restaurar esses arquivos manualmente na árvore do projeto. O banco SQLite local só pode ser removido após exportar todas as pendências com `journal:sync`; clones restauram o acervo pelos segmentos compactados disponíveis. Use `journal:verify`, `journal:backup` e `journal:extract` para verificação, backup consistente e extração de anexos.
 
 `npm run journal:qa -- test:arena:sons` verifica eventos dos ataques e lançamento único do especial com restore. `npm run journal:qa -- test:arena:sons:browser` usa Chrome isolado e servidor temporário para decodificar os dez MP3s, renderizar trechos offline e conferir ganho mestre, mudo, pausa e liberação de vozes.
 
@@ -217,3 +231,12 @@ Os navegadores usam Chrome isolado; fontes e resultados pertencem ao diário.
 - `npm run journal:qa -- test:garden`: terrenos/frenagem, dois pisões, formigas saltadoras, fatalidade NORMAL, recuperação EASY, nuvens, fada e saves.
 - `npm run journal:qa -- test:garden:percurso`: percursos completos NORMAL/EASY; acrescente `--irregular` para variar dt.
 - `npm run journal:qa -- test:garden:browser`: arte/controles reais, chão contínuo, três formatos, transição, save, pausa, resgates e descarte em Chrome isolado.
+
+Para os encontros e cenas atuais, use também os comandos preservados no acervo:
+
+- `npm run journal:qa -- test:jardim:encontros-v9`: repouso/arcos A/B, migração, dano/pisão, minhocas e besouros.
+- `npm run journal:qa -- test:jardim:entrada:browser`: quadros intermediários da saída da abertura e da descida, além do estado final.
+- `npm run journal:qa -- test:dialogos:padrao` e `test:dialogos:padrao:browser`: leitura automática, avanço opcional e isolamento de controles.
+- `npm run journal:qa -- test:jardim:v9:integral:browser`: jardim em RAF real até o encerramento narrativo; piloto de gamepad, avanço opcional das falas e retries oficiais. Inicia Chrome isolado em porta livre.
+
+`test:garden:percurso` e fixtures de passo controlado não medem duração humana ou desempenho do RAF. A simulação do jardim não integra automaticamente todos os contratos de `npm test`: execute os comandos específicos quando alterar esse domínio. A reconstrução de artes segue a ordem do [README de produção](../assets/art/garden/README.md#reconstrução-dos-derivados-atuais); não executar preparadores para uma revisão somente documental.

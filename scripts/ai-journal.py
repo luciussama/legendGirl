@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
-"""Diário compartilhado: fontes e eventos imutáveis; SQLite como índice reconstruível."""
+"""Diário compartilhado: fontes e eventos imutáveis; SQLite incremental e segmentos JSONL compactados."""
 import argparse
+from contextlib import closing
 import base64
 import hashlib
 import gzip
@@ -11,7 +12,13 @@ import sqlite3
 import subprocess
 import sys
 import uuid
+import tempfile
+import shutil
 from datetime import datetime, timezone
+
+# Também funciona quando carregado por importlib no executor temporário.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from journal_store import Store, source_raw
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -51,17 +58,17 @@ def eligible(path):
     if any(part in {'.git', 'node_modules', '.sprite-review-quarantine'} for part in parts):
         return False
     if path.startswith('docs/diario-ia/'):
-        return path in {'docs/diario-ia/README.md', 'docs/diario-ia/CONTEXTO-ATUAL.md'}
+        return path in {'docs/diario-ia/README.md', 'docs/diario-ia/CONTEXTO-ATUAL.md'} or path.startswith('docs/diario-ia/padroes/') and Path(path).suffix == '.md'
     suffix = Path(path).suffix.lower()
     return suffix == '.md' or (path.startswith(('docs/', 'assets/', '.agents/', '.codex/')) and suffix in {'.txt', '.json', '.log'})
 
 def paths(root):
     try:
-        output = subprocess.check_output(['rg', '--files', '--hidden', '--no-ignore', '-g', '!.git/**', '-g', '!node_modules/**', '-g', '!.sprite-review-quarantine/**', '-g', '!docs/diario-ia/fontes/**', '-g', '!docs/diario-ia/registros/**', '-g', '!docs/diario-ia/commits/**'], cwd=root).decode('utf-8')
+        output = subprocess.check_output(['rg', '--files', '--hidden', '--no-ignore', '-g', '!.git/**', '-g', '!node_modules/**', '-g', '!.sprite-review-quarantine/**', '-g', '!docs/diario-ia/fontes/**', '-g', '!docs/diario-ia/registros/**', '-g', '!docs/diario-ia/commits/**', '-g', '!docs/diario-ia/segmentos/**'], cwd=root).decode('utf-8')
         return sorted(path for path in output.splitlines() if eligible(path))
     except (FileNotFoundError, subprocess.CalledProcessError):
         collected = []
-        ignored_dirs = {'.git', 'node_modules', '.sprite-review-quarantine', 'fontes', 'registros', 'commits'}
+        ignored_dirs = {'.git', 'node_modules', '.sprite-review-quarantine', 'fontes', 'registros', 'commits', 'segmentos'}
         for dirpath, dirnames, filenames in os.walk(root):
             dirnames[:] = [d for d in dirnames if d not in ignored_dirs]
             rel_dir = os.path.relpath(dirpath, root)
@@ -73,26 +80,48 @@ def paths(root):
                     collected.append(rel_path)
         return sorted(collected)
 
-def snapshot(root, path, raw, origin):
+def snapshot(root, path, raw, origin, store=None):
+    if store is None:
+        with Store(root) as db:
+            return snapshot(root, path, raw, origin, db)
+    content_hash = digest(raw)
+    previous = store.db.execute('SELECT id FROM fontes WHERE caminho=? AND sha256=? ORDER BY capturado_em,id LIMIT 1', (path, content_hash)).fetchone()
+    if previous:
+        return previous[0]
+    # Capturas independentes em clones podem ter datas/origens diferentes.
+    # Identidade própria evita colisões de envelopes legítimos durante merge;
+    # a deduplicação local continua sendo feita por caminho e hash do conteúdo.
+    identity = digest((path + '\0' + content_hash + '\0' + uuid.uuid4().hex).encode())
     try:
         content = raw.decode('utf-8'); encoding = 'utf-8'
     except UnicodeDecodeError:
         content = base64.b64encode(raw).decode('ascii'); encoding = 'base64'
-    content_hash = digest(raw)
-    identity = digest((path + '\0' + content_hash).encode())
-    data = {'schemaVersion': 1, 'id': identity, 'path': path, 'sha256': content_hash,
-            'capturedAt': now(), 'origin': origin, 'encoding': encoding, 'content': content}
-    payload = (json.dumps(data, ensure_ascii=False, indent=2) + '\n').encode('utf-8')
-    compressed = len(payload) > 131072
-    suffix = '.json.gz' if compressed else '.json'
-    write_payload(root / 'docs/diario-ia/fontes' / (identity + suffix), gzip.compress(payload, mtime=0) if compressed else payload)
+    store.add('fontes', {'schemaVersion': 1, 'id': identity, 'path': path, 'sha256': content_hash,
+        'capturedAt': now(), 'origin': origin, 'encoding': encoding, 'content': content})
     return identity
 
+
+def load_source(root, identity):
+    with Store(root) as db:
+        return db.get('fontes', identity)
+
+
+def list_packages(root):
+    with Store(root) as db:
+        return [json.loads(row[0]) for row in db.db.execute('SELECT dados FROM pacotes ORDER BY data DESC,id DESC')]
+
+
+def save_record(root, kind, data):
+    with Store(root) as db:
+        if not db.add(kind, data):
+            raise ValueError('Registro já existente: ' + data['id'])
+
+
 def import_history(root):
-    directory = root / 'docs/diario-ia/commits'
+    with Store(root) as db:
+        known = {row[0] for row in db.db.execute('SELECT id FROM commits_git')}
     for commit in reversed(git(root, 'rev-list', '--all').splitlines()):
-        target = directory / (commit + '.json')
-        if target.exists():
+        if commit in known:
             continue
         changed = git(root, 'diff-tree', '--root', '--no-commit-id', '--name-only', '-r', commit).splitlines()
         sources = []
@@ -105,40 +134,24 @@ def import_history(root):
             except (subprocess.CalledProcessError, UnicodeDecodeError):
                 continue
         date, title = git(root, 'show', '-s', '--format=%cI%n%s', commit).strip().split('\n', 1)
-        write_new(target, {'schemaVersion': 1, 'id': commit, 'date': date, 'title': title, 'sources': sources})
+        save_record(root, 'commits', {'schemaVersion': 1, 'id': commit, 'date': date, 'title': title, 'sources': sources})
 
-def sync(root, history=False):
-    base = root / 'docs/diario-ia'
-    base.mkdir(parents=True, exist_ok=True)
+
+def sync(root, history=False, export=False):
     if history:
         import_history(root)
+    # O acervo é global neste checkout; as marcas de atualidade representam
+    # exclusivamente os arquivos visíveis nesta sincronização, inclusive branch.
     current = {}
-    for path in paths(root):
-        try:
-            current[path] = snapshot(root, path, (root / path).read_bytes(), {'type': 'workspace'})
-        except UnicodeDecodeError:
-            continue
-    sources = [read_source(path) for path in source_files(base)]
-    records = [json.loads(path.read_text()) for path in sorted((base / 'registros').glob('*.json'))]
-    packages = [json.loads(path.read_text()) for path in sorted((base / 'pacotes').glob('*.json'))]
-    commits = [json.loads(path.read_text()) for path in sorted((base / 'commits').glob('*.json'))]
-    temporary = base / ('diario-' + uuid.uuid4().hex + '.sqlite3.tmp')
-    with sqlite3.connect(temporary) as db:
-        db.executescript('''
-          CREATE TABLE fontes(id TEXT PRIMARY KEY, caminho TEXT, sha256 TEXT, capturado_em TEXT, origem TEXT, conteudo TEXT, atual INTEGER);
-          CREATE INDEX fontes_caminho ON fontes(caminho);
-          CREATE TABLE registros(id TEXT PRIMARY KEY, sessao TEXT, tipo TEXT, data TEXT, titulo TEXT, dados TEXT);
-          CREATE TABLE commits_git(id TEXT PRIMARY KEY, data TEXT, titulo TEXT, fontes TEXT);
-          CREATE TABLE pacotes(id TEXT PRIMARY KEY, data TEXT, titulo TEXT, dados TEXT);
-          CREATE TABLE arquivos_arquivados(caminho TEXT, fonte TEXT, sha256 TEXT, pacote TEXT);
-        ''')
-        db.executemany('INSERT INTO fontes VALUES(?,?,?,?,?,?,?)', [(s['id'], s['path'], s['sha256'], s['capturedAt'], json.dumps(s['origin']), s['content'], int(current.get(s['path']) == s['id'])) for s in sources])
-        db.executemany('INSERT INTO registros VALUES(?,?,?,?,?,?)', [(r['id'], r.get('sessionId', r['id']), r['type'], r['date'], r['title'], json.dumps(r, ensure_ascii=False)) for r in records])
-        db.executemany('INSERT INTO pacotes VALUES(?,?,?,?)', [(p['id'],p['date'],p['title'],json.dumps(p,ensure_ascii=False)) for p in packages])
-        db.executemany('INSERT INTO arquivos_arquivados VALUES(?,?,?,?)', [(f['path'],f['sourceId'],f['sha256'],p['id']) for p in packages for f in p['files']])
-        db.executemany('INSERT INTO commits_git VALUES(?,?,?,?)', [(c['id'], c['date'], c['title'], json.dumps(c['sources'])) for c in commits])
-    os.replace(temporary, base / 'diario.sqlite3')
-    return {'fontesAtuais': len(current), 'versoesPreservadas': len(sources), 'registros': len(records), 'commits': len(commits), 'pacotes': len(packages)}
+    with Store(root) as db:
+        for path in paths(root):
+            current[path] = snapshot(root, path, (root / path).read_bytes(), {'type': 'workspace'}, db)
+        db.db.execute('UPDATE fontes SET atual=0 WHERE atual=1')
+        db.db.executemany('UPDATE fontes SET atual=1 WHERE id=?', [(i,) for i in current.values()])
+        if export:
+            db.export()
+        return db.stats()
+
 
 def begin(root, title, actor):
     sync(root)
@@ -150,28 +163,28 @@ def begin(root, title, actor):
         branch, head, working = None, None, []
     record = {'schemaVersion': 1, 'id': identifier, 'sessionId': identifier, 'type': 'inicio',
               'date': now(), 'title': title, 'actor': actor, 'branch': branch, 'head': head, 'workingTree': working}
-    write_new(root / 'docs/diario-ia/registros' / (identifier + '.json'), record)
+    save_record(root, 'registros', record)
     sync(root)
     return identifier
 
 def finish(root, identifier, summary, checks, pending, files):
-    base = root / 'docs/diario-ia/registros'
-    start = json.loads((base / (identifier + '.json')).read_text())
+    with Store(root) as db:
+        start = db.get('registros', identifier)
     if start['type'] != 'inicio':
         raise ValueError('O identificador precisa corresponder ao início de uma sessão.')
     record = {'schemaVersion': 1, 'id': identifier + '-fim', 'sessionId': identifier, 'type': 'fim',
               'date': now(), 'title': start['title'], 'actor': start['actor'], 'summary': summary,
               'checks': checks, 'pending': pending, 'files': files}
-    if not write_new(base / (identifier + '-fim.json'), record):
-        raise ValueError('A sessão já possui encerramento; nenhum registro foi sobrescrito.')
-    return sync(root)
+    save_record(root, 'registros', record)
+    return sync(root, export=True)
 
 def read(root):
     stats = sync(root)
     context = root / 'docs/diario-ia/CONTEXTO-ATUAL.md'
     print(context.read_text() if context.exists() else 'Contexto atual ainda não registrado.')
     print('\nAcervo:', json.dumps(stats, ensure_ascii=False))
-    with sqlite3.connect(root / 'docs/diario-ia/diario.sqlite3') as db:
+    with Store(root) as storage:
+        db = storage.db
         print('\nRegistros recentes:')
         for row in db.execute('SELECT data,tipo,titulo,sessao FROM registros ORDER BY data DESC LIMIT 8'):
             print(' | '.join(row))
@@ -197,9 +210,94 @@ def archive_artifacts(root, files, title, qa_commands=None):
             source_id = snapshot(root,file,raw,{'type':'qa-arquivado'})
         entries.append({'path':file,'sourceId':source_id,'sha256':digest(raw),'bytes':len(raw),'metadataOnly':metadata_only})
     package = {'schemaVersion':1,'id':identifier,'date':now(),'title':title,'files':entries,'qaCommands':qa_commands or {}}
-    write_new(root / 'docs/diario-ia/pacotes' / (identifier+'.json'), package)
+    save_record(root, 'pacotes', package)
     sync(root)
     return package
+
+
+def extract_file(db, path, output, identity=None):
+    if output.exists():
+        raise ValueError('Extração não sobrescreve arquivo existente.')
+    relative = path.removeprefix('docs/diario-ia/')
+    rows = db.db.execute("SELECT id FROM envelopes WHERE tipo='anexos' AND caminho=?", (relative,)).fetchall()
+    if identity:
+        rows = [r for r in rows if r[0] == identity]
+        if not rows:
+            raise ValueError('Versão de anexo não encontrada: ' + identity)
+    if len(rows) > 1:
+        raise ValueError('Anexo com várias versões; selecione --id: ' + ', '.join(r[0] for r in rows))
+    if rows:
+        raw = db.get_bytes('anexos', rows[0][0])
+    else:
+        row = db.db.execute('SELECT id FROM fontes WHERE caminho=? ORDER BY capturado_em DESC,id DESC LIMIT 1', (path,)).fetchone()
+        if not row:
+            raise ValueError('Caminho não encontrado no acervo: ' + path)
+        raw = source_raw(db.get('fontes', row[0]))
+    output.parent.mkdir(parents=True, exist_ok=True)
+    if not write_payload(output, raw):
+        raise ValueError('Destino de extração já existe.')
+
+
+def migrate(root, db, prune=False):
+    """Consolida e verifica restauração independente antes de retirar cópias."""
+    db.import_legacy()
+    base = root / 'docs/diario-ia'
+    removable = []
+    manifest = []
+    for path in sorted(base.rglob('*')):
+        if not path.is_file():
+            continue
+        rel = path.relative_to(base)
+        if rel.parts[0] in {'segmentos', 'padroes'} or len(rel.parts) == 1:
+            continue
+        if path.is_symlink():
+            raise ValueError('Ligação simbólica não migrada: ' + str(rel))
+        raw = path.read_bytes()
+        if rel.parts[0] in {'fontes', 'registros', 'commits', 'pacotes'}:
+            if not path.name.endswith(('.json', '.json.gz')):
+                raise ValueError('Arquivo inesperado no histórico: ' + str(rel))
+            kind = rel.parts[0]
+            identity = path.name.removesuffix('.gz').removesuffix('.json')
+        else:
+            kind = 'anexos'
+            identity = digest((rel.as_posix() + '\0' + digest(raw)).encode())
+            db.put(kind, identity, rel.as_posix(), raw)
+            if path.suffix in {'.md', '.json', '.txt', '.log', '.py', '.js', '.mjs', '.cjs', '.html', '.css'}:
+                snapshot(root, path.relative_to(root).as_posix(), raw, {'type': 'migracao-anexo'}, db)
+        if db.get_bytes(kind, identity) != raw:
+            raise ValueError('Cópia diverge do envelope: ' + str(rel))
+        removable.append((path, kind, identity, digest(raw)))
+        manifest.append({'path': path.relative_to(root).as_posix(), 'tipo': kind, 'id': identity, 'sha256': digest(raw), 'bytes': len(raw)})
+    snapshot(root, 'docs/diario-ia/migracao/manifesto.json',
+             json.dumps(manifest, ensure_ascii=False, sort_keys=True).encode(), {'type': 'migracao-verificada'}, db)
+    counts = db.verify()
+    db.export()
+    db.db.commit()
+    with tempfile.TemporaryDirectory(prefix='legendgirl-restauracao-') as directory:
+        isolated = Path(directory)
+        target = isolated / 'docs/diario-ia/segmentos'
+        shutil.copytree(base / 'segmentos', target)
+        with Store(isolated) as restored:
+            if restored.verify() != counts:
+                raise ValueError('Contagem divergente após restauração isolada.')
+            original = db.db.execute('SELECT tipo,id,caminho,sha256 FROM envelopes ORDER BY tipo,id').fetchall()
+            recovered = restored.db.execute('SELECT tipo,id,caminho,sha256 FROM envelopes ORDER BY tipo,id').fetchall()
+            if original != recovered:
+                raise ValueError('Envelopes divergentes após restauração isolada.')
+            for path, kind, identity, sha in removable:
+                if digest(path.read_bytes()) != sha or restored.get_bytes(kind, identity) != path.read_bytes():
+                    raise ValueError('Arquivo alterado durante migração: ' + str(path))
+    if prune:
+        for path, kind, identity, sha in removable:
+            if digest(path.read_bytes()) != sha:
+                raise ValueError('Arquivo alterado antes da retirada: ' + str(path))
+            path.unlink()
+        for path in sorted(base.rglob('*'), key=lambda p: len(p.parts), reverse=True):
+            if path.is_dir() and not any(path.iterdir()):
+                path.rmdir()
+    return {'envelopes': counts, 'copiasVerificadas': len(removable),
+            'copiasRetiradas': len(removable) if prune else 0,
+            'restauracaoIsolada': 'aprovada'}
 
 def main():
     parser = argparse.ArgumentParser(description='Diário de IA compartilhado e pesquisável.')
@@ -208,7 +306,12 @@ def main():
     sync_parser = sub.add_parser('sync'); sync_parser.add_argument('--history', action='store_true')
     sub.add_parser('read')
     archive = sub.add_parser('archive'); archive.add_argument('--manifest',type=Path,required=True); archive.add_argument('--title',required=True)
-    show = sub.add_parser('show'); show.add_argument('id')
+    show = sub.add_parser('show'); show.add_argument('id'); show.add_argument('--kind', choices=['fontes','registros','pacotes','commits'], default='fontes')
+    sub.add_parser('verify')
+    sub.add_parser('export')
+    migration = sub.add_parser('migrate'); migration.add_argument('--prune', action='store_true')
+    extract = sub.add_parser('extract'); extract.add_argument('path'); extract.add_argument('--output', type=Path, required=True); extract.add_argument('--id')
+    backup = sub.add_parser('backup'); backup.add_argument('--output', type=Path, required=True)
     search = sub.add_parser('search'); search.add_argument('query'); search.add_argument('--all-versions', action='store_true')
     start = sub.add_parser('begin'); start.add_argument('--title', required=True); start.add_argument('--actor', required=True)
     end = sub.add_parser('finish'); end.add_argument('--id', required=True); end.add_argument('--summary', required=True)
@@ -216,7 +319,7 @@ def main():
         end.add_argument('--' + field, action='append', default=[])
     args = parser.parse_args(); root = args.root.resolve()
     if args.command == 'sync':
-        print(json.dumps(sync(root, args.history), ensure_ascii=False))
+        print(json.dumps(sync(root, args.history, export=True), ensure_ascii=False))
     elif args.command == 'archive':
         files = json.loads(args.manifest.read_text())
         if not isinstance(files,list) or not all(isinstance(file,str) for file in files):
@@ -226,30 +329,47 @@ def main():
     elif args.command == 'read':
         read(root)
     elif args.command == 'show':
-        if not all(char in '0123456789abcdef' for char in args.id) or len(args.id) != 64:
-            raise ValueError('Identificador de fonte inválido.')
-        base = root / 'docs/diario-ia/fontes'
-        path = base / (args.id + '.json')
-        if not path.exists():
-            path = base / (args.id + '.json.gz')
-        print(json.dumps(read_source(path), ensure_ascii=False, indent=2))
+        with Store(root) as db:
+            print(json.dumps(db.get(args.kind, args.id), ensure_ascii=False, indent=2))
     elif args.command == 'begin':
         print(begin(root, args.title, args.actor))
     elif args.command == 'finish':
         print(json.dumps(finish(root, args.id, args.summary, args.check, args.pending, args.file), ensure_ascii=False))
+    elif args.command in {'verify', 'export', 'migrate', 'extract', 'backup'}:
+        with Store(root) as db:
+            if args.command == 'verify':
+                print(json.dumps(db.verify(), ensure_ascii=False))
+            elif args.command == 'export':
+                print(json.dumps(db.export(), ensure_ascii=False))
+            elif args.command == 'migrate':
+                print(json.dumps(migrate(root, db, args.prune), ensure_ascii=False))
+            elif args.command == 'extract':
+                extract_file(db, args.path, args.output, args.id)
+                print('Arquivo recuperado: ' + str(args.output))
+            else:
+                target = args.output.resolve()
+                if target.exists():
+                    raise ValueError('Backup não sobrescreve destino existente.')
+                # Encerra a transação de importação antes da Backup API.
+                db.db.commit()
+                with closing(sqlite3.connect(target)) as destination:
+                    db.db.backup(destination)
+                print('Backup consistente criado: ' + str(target))
     else:
         sync(root)
-        with sqlite3.connect(root / 'docs/diario-ia/diario.sqlite3') as db:
+        with Store(root) as storage:
+            db = storage.db
             query = args.query.replace('\\', '\\\\').replace('%', '\\%').replace('_', '\\_')
-            sql = "SELECT caminho,id,atual FROM fontes WHERE (conteudo LIKE ? ESCAPE '\\' OR caminho LIKE ? ESCAPE '\\')"
+            sql = """SELECT f.caminho,f.id,atual FROM fontes f JOIN envelopes e ON e.tipo='fontes' AND e.id=f.id
+              WHERE (f.caminho LIKE ? ESCAPE '\\' OR journal_content(payload,codec) LIKE ? ESCAPE '\\')"""
             if not args.all_versions:
-                sql += ' AND (atual=1 OR id IN(SELECT fonte FROM arquivos_arquivados))'
-            for path, identity, current in db.execute(sql + ' ORDER BY caminho LIMIT 30', ('%' + query + '%','%' + query + '%')):
+                sql += ' AND (atual=1 OR f.id IN(SELECT fonte FROM arquivos_arquivados))'
+            for path, identity, current in db.execute(sql + ' ORDER BY f.caminho LIMIT 30', ('%' + query + '%','%' + query + '%')):
                 print(('ATUAL' if current else 'HISTÓRICO') + ' | ' + path + ' | ' + identity)
 
 if __name__ == '__main__':
     try:
         main()
-    except (OSError, ValueError, subprocess.CalledProcessError) as error:
+    except (OSError, ValueError, sqlite3.Error, subprocess.CalledProcessError) as error:
         print('Falha no diário: ' + str(error), file=sys.stderr)
         sys.exit(1)

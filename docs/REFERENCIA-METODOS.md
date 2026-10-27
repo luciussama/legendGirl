@@ -556,7 +556,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `reset()` | Método declarado | 44 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `snapshot()` | Método declarado | 48 | Produz captura recuperável do estado específico deste componente. |
 | `restore(saved)` | Método declarado | 51 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `advanceDialogue()` | Método declarado | 59 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `advanceDialogue()` | Método declarado | 59 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
 | `revealing()` | Acessor | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `update(dt)` | Método declarado | 66 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 | `renderFade(ctx, canvas)` | Método declarado | 85 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
@@ -572,7 +572,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `start(context)` | Método declarado | 22 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
 | `stage()` | Acessor | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `update(dt)` | Método declarado | 38 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `advanceDialogue()` | Método declarado | 54 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `advanceDialogue()` | Método declarado | 54 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
 | `prepare({ assets, phase, departure, audio })` | Método declarado | 61 | Prepara contexto visual da introdução; consulte dependências no módulo. |
 | `dialogue()` | Acessor | 71 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `cameraFrame(canvas)` | Método declarado | 83 | Calcula enquadramento narrativo da introdução conforme etapa e relógio. |
@@ -997,7 +997,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `isGameOver()` | API/lambda de objeto | 1258 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 | `isToyRoomMode()` | API/lambda de objeto | 1259 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 | `toggleMute()` | API/lambda de objeto | 1261 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `advanceDialogue(event)` | Função | 1265 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `advanceDialogue(event)` | Função | 1265 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
 | `pauseMusic()` | API/lambda de objeto | 1309 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `resumeMusic()` | API/lambda de objeto | 1310 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `setMasterVolume(v)` | API/lambda de objeto | 1311 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
@@ -1065,11 +1065,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `dialogueBottom(canvas,textCanvas,end)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gardenCinematicMoment(state)` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenCinematicMoment(state)` | Função | 19 | Seleciona atuação e plano pelo progresso narrativo, separado da câmera de gameplay e do relógio da fala. |
 | `actor(ctx,images,index,x,base,height,time,breath=true)` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `actorPair(ctx,images,a,b,x,base,height,time)` | Função | 34 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `fairy(ctx,images,time,x,y,height=145)` | Função | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderGardenCinematic(ctx,canvas,state,images)` | Função | 49 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderGardenCinematic(ctx,canvas,state,images)` | Função | 49 | Compõe cenário, atores em camadas e quadro narrativo; mantém piquenique animado após a leitura. |
 
 ## src/js/garden/GardenCinematicArt.js
 
@@ -1101,10 +1101,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `clamp(n,a,b)` | Função atribuída | 2 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `createGardenEncounters()` | Função | 11 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `tickGardenWorm(e,s,dt)` | Função | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tickGardenBeetles(s,dt,events)` | Função | 21 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `resetGardenPanic(s,targetX)` | Função | 34 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `tickGardenBee(e,s,dt)` | Função | 39 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tickGardenWorm(e,s,dt)` | Função | 15 | Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão. |
+| `tickGardenBeetles(s,dt,events)` | Função | 21 | Ativa corrida automática por seis segundos ativos, acompanha a menina e encerra o besouro inofensivo. |
+| `resetGardenPanic(s,targetX)` | Função | 34 | Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar. |
+| `tickGardenBee(e,s,dt)` | Função | 39 | Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s. |
 | `sweptGardenContact(previous,player,old,enemy)` | Função | 59 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `restoreGardenEncounters(saved,version=9)` | Função | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
@@ -1165,7 +1165,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `constructor({canvas,audio,enabled=()=>true,difficulty='NORMAL',campaign=false})` | Método declarado | 8 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `requestDialogueAdvance(event={})` | Método declarado | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `requestDialogueAdvance(event={})` | Método declarado | 15 | No jardim, enfileira avanço de uma fala ou skip visto e bloqueia pulo até a liberação da entrada. |
 | `reading()` | Método declarado | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `active()` | Acessor | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `start(saved=null)` | Método declarado | 24 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
@@ -1224,16 +1224,16 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `clamp(n,a,b)` | Função atribuída | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `enemyRange(enemy)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createGardenState(difficulty='NORMAL')` | Função | 13 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `createGardenState(difficulty='NORMAL')` | Função | 13 | Cria domínio v9 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis. |
 | `recoverTarget(s,kind)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `beginRecovery(s,kind,events)` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `defeat(s,kind,events)` | Função | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `retryGarden(s,difficulty=s.difficulty)` | Função | 42 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `retryGarden(s,difficulty=s.difficulty)` | Função | 42 | Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros. |
+| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 51 | Valida saves v1–v9 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos. |
 | `fairyTick(s,dt,platforms)` | Função | 101 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `enemyTick(e,s,dt)` | Função | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `tick(s,input,dt,events)` | Função | 154 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 277 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 277 | Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos. |
 
 ## src/js/garden/GardenVisualArt.js
 
@@ -1290,12 +1290,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `flow(canvas)` | Função | 3 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `beginDialogueFrame(canvas)` | Função | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `endDialogueFrame(canvas)` | Função | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `offerDialogue(canvas,text,onAdvance)` | Função | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setDialogueBounds(canvas,ctx,x,y,w,h)` | Função | 13 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getDialogueBounds(canvas)` | Função | 18 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `installDialogueAdvance(canvas,{enabled=()=>true,advance=()=>false,isModal=()=>true}={})` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `beginDialogueFrame(canvas)` | Função | 4 | Inicia o registro dos quadros de diálogo por canvas; composições aninhadas compartilham profundidade e não deixam entrada obsoleta. |
+| `endDialogueFrame(canvas)` | Função | 5 | Encerra um nível da composição de diálogos sem avançar relógios narrativos ou físicos. |
+| `offerDialogue(canvas,text,onAdvance)` | Função | 7 | Registra a fala visível e seu callback de avanço; quadros dispensados ficam ocultos e canvases de medição não criam entrada. |
+| `setDialogueBounds(canvas,ctx,x,y,w,h)` | Função | 13 | Transforma os quatro cantos do quadro para pixels do canvas usados no hit-testing de leitura não modal. |
+| `getDialogueBounds(canvas)` | Função | 18 | Consulta os limites do quadro de diálogo atualmente registrado nesse canvas. |
+| `installDialogueAdvance(canvas,{enabled=()=>true,advance=()=>false,isModal=()=>true}={})` | Função | 19 | Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal. |
 
 ## src/js/narrative/PoeticNarrator.js
 
@@ -1908,7 +1908,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `constructor(context)` | Método declarado | 5 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `triggerAction()` | Método declarado | 7 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `triggerAction()` | Método declarado | 7 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
 | `updateProximity()` | Método declarado | 95 | Atualiza disponibilidade de interação antes do movimento e devolve o baú atual. |
 
 ## src/js/toy-room/ToyRoomInteractionContext.js
@@ -2041,11 +2041,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | 148 | Cria partículas/efeitos no buffer correspondente. |
 | `spawnConfetti(x, y, count = 35)` | Método declarado | 152 | Cria partículas/efeitos no buffer correspondente. |
 | `interaction()` | Acessor | 156 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triggerAction()` | Método declarado | 162 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `triggerAction()` | Método declarado | 162 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
 | `startChasePreview(saved = null)` | Método declarado | 165 | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
 | `startChaseCampaign(saved = null)` | Método declarado | 177 | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
 | `handleCampaignChaseError(chase, message)` | Método declarado | 201 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | 222 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | 222 | Descarta perseguição e controles da sala e inicia GardenPhase com recursos, física e áudio próprios. |
 | `resolveCollisions(px, py, r)` | Método declarado | 231 | Resolve colisões da sala com móveis. |
 | `update(dt = 1.0)` | Método declarado | 238 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 | `updateActiveMode(dt)` | Método declarado | 253 | Avança o estado do subsistema; não é uma operação somente de desenho. |
@@ -2063,7 +2063,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 401 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 | `update(dt)` | API/lambda de objeto | 404 | Avança o estado do subsistema; não é uma operação somente de desenho. |
 | `render()` | API/lambda de objeto | 405 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `triggerAction()` | API/lambda de objeto | 406 | Processa interação da sala: pegar, soltar ou organizar brinquedo. |
+| `triggerAction()` | API/lambda de objeto | 406 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
 | `destroy()` | API/lambda de objeto | 407 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/toy-room/ToyRoomSceneFrame.js
@@ -2113,7 +2113,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `renderWorldObject(ctx)` | Método declarado | 297 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `renderAttackSprite(ctx)` | Método declarado | 301 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `renderHeldObject(ctx)` | Método declarado | 308 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `advanceDialogue()` | Método declarado | 315 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `advanceDialogue()` | Método declarado | 315 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
 | `narrativeBeat()` | Método declarado | 325 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `renderNarrative(ctx, canvas)` | Método declarado | 346 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `renderStoryBeat(ctx, canvas, beat)` | Método declarado | 351 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |

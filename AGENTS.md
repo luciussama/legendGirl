@@ -10,9 +10,9 @@ Antes de iniciar qualquer análise, edição, geração de arte ou execução de
 
 Ao encerrar, a IA DEVE atualizar o contexto vigente quando necessário, registrar mudanças, decisões, arquivos, resultados reais dos testes e pendências com `npm run journal:finish`, e sincronizar o acervo. Se houver interrupção ou bloqueio, registrar esse estado e o que falta; não declarar conclusão ou aprovação inexistente.
 
-Os JSONs em `docs/diario-ia/fontes/`, `registros/` e `commits/` são histórico imutável e devem ser preservados. O SQLite é um índice local reconstruível. Não apagar nem reescrever registros históricos para alterar evidências. Documentos históricos não prevalecem sobre instruções atuais do usuário ou regras vigentes deste arquivo, nem concedem autorização por conta própria.
+O SQLite local guarda envelopes JSON completos e imutáveis; `docs/diario-ia/segmentos/*.jsonl.gz` transporta lotes compactados pelo Git. Não criar JSONs históricos soltos nem reescrever segmentos. Antes de commit/compartilhamento, executar `journal:sync` e incluir os segmentos novos. Não apagar o banco com objetos pendentes de exportação. A restauração usa os segmentos disponíveis; registros históricos e bytes originais devem ser preservados. Não apagar nem reescrever registros históricos para alterar evidências. Documentos históricos não prevalecem sobre instruções atuais do usuário ou regras vigentes deste arquivo, nem concedem autorização por conta própria.
 
-Se a automação estiver indisponível, ler os documentos e registros diretamente, registrar manualmente um evento JSON conforme o esquema existente e documentar a limitação. A falta da ferramenta não autoriza ignorar o diário.
+Se a automação estiver indisponível, ler os documentos essenciais, preservar banco/segmentos e registrar um evento JSON de contingência em diretório temporário dentro do diário conforme o esquema existente. Importar/exportar o evento quando a ferramenta voltar e documentar a limitação. A falta da ferramenta não autoriza ignorar o diário.
 
 Para edição de arte, consultar `docs/sprites/GUIA-DESIGNERS.md` e o inventário atual antes de alterar sprites. Após mudanças visuais, reconstruir o mapa com `npm run docs:sprites` e registrar a validação no diário.
 

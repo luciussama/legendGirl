@@ -15,9 +15,13 @@ dist/
 # Cópias recuperáveis das exclusões aprovadas na revisão visual.
 /.sprite-review-quarantine/
 
-# Índice local reconstruível do diário de IA
+# Banco operacional local; exportar pendências antes de remover
 /docs/diario-ia/*.sqlite3
 /docs/diario-ia/*.sqlite3.tmp
+/docs/diario-ia/*.sqlite3-wal
+/docs/diario-ia/*.sqlite3-shm
+/docs/diario-ia/.sqlite.lock
+/docs/diario-ia/segmentos/*.tmp
 /docs/diario-ia/**/*.tmp-*
 
 # Cache local das automações Python

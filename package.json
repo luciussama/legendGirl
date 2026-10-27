@@ -65,7 +65,12 @@
     "test:arena:especial": "python3 scripts/run-qa-from-journal.py test:arena:especial",
     "test:arena:especial:browser": "python3 scripts/run-qa-from-journal.py test:arena:especial:browser",
     "test:arena:sons": "python3 scripts/run-qa-from-journal.py test:arena:sons",
-    "test:arena:sons:browser": "python3 scripts/run-qa-from-journal.py test:arena:sons:browser"
+    "test:arena:sons:browser": "python3 scripts/run-qa-from-journal.py test:arena:sons:browser",
+    "journal:verify": "python3 scripts/ai-journal.py verify",
+    "journal:export": "python3 scripts/ai-journal.py export",
+    "journal:migrate": "python3 scripts/ai-journal.py migrate",
+    "journal:extract": "python3 scripts/ai-journal.py extract",
+    "journal:backup": "python3 scripts/ai-journal.py backup"
   },
   "dependencies": {
     "express": "^4.21.2",
