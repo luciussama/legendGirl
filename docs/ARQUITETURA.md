@@ -1,6 +1,6 @@
 # Arquitetura e contratos do aplicativo
 
-Revisão: 22/10/2026. Descreve o código atual, incluindo a tela inicial, a fuga de campanha e as correções de pouso e de envio do piso; planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
+Revisão: 26/10/2026. Descreve o código atual: quarto, exploração, arena, perseguição, jardim, leitura compartilhada e diário incremental. Planos históricos não representam componentes implementados. O [manual](MANUAL-DESENVOLVIMENTO.md) explica manutenção e integração; a [referência de métodos](REFERENCIA-METODOS.md) complementa este catálogo com assinaturas. O [catálogo de comandos](COMANDOS.md) cobre automações e QA. Resultados de execução pertencem ao [diário de IA](diario-ia/README.md).
 
 ## Composição e limites
 
@@ -39,6 +39,11 @@ flowchart TD
   CHASE --> SIM[ChaseSimulation / passo fixo]
   CHASE --> WEBGL[ChaseRenderer3D / Three.js]
   CHASE --> CINEMA[ChaseIntroRenderer / Canvas 2D]
+  CHASE -->|COMPLETE na campanha / 150 ticks| GARDEN[GardenPhase]
+  GARDEN --> GDOMAIN[GardenSimulation / GardenLevel / GardenEncounters]
+  GARDEN --> GVIEW[GardenRenderer / GardenCinematic / GardenAudio]
+  GAME --> DIALOGUE[DialogueFlow / dono de cada sequência]
+  GARDEN --> DIALOGUE
   BATTLE --> ACTORS[Controller / IA / regras / contato]
   BATTLE --> VIEW[BattleRenderer / ArenaPlayerRenderer / HUD / FX]
 ```
@@ -67,9 +72,11 @@ O loop normaliza o tempo para 60 Hz e limita dt a 0,5–1,2. Pausa impede update
 | Inimigo ativo | actor, hp/maxHp, x/facing, state/elapsed, attack/index, landed, enrage/enrageShown e campos de resposta/evasão/memória recente. | Apenas um inimigo ativo; ordem train → robot → dinosaur → bear. Perfis de arena e legado têm HP/medidas diferentes. |
 | Arena | status/elapsed/completed, destino de retorno (sala ou fuga), resultado e snapshot da exploração; câmera, FX, áudio e chefe têm snapshots próprios. | `ToyRoomArenaPhase` restaura a exploração com preserveArena para evitar recursão, reconfigura legado/arena, limpa controles e só direciona vitórias à fuga. |
 | Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e no acesso isolado de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a etapa salva sob fade antes de avançar o estado. |
+| Jardim da campanha | `GardenPhase.state`: domínio v9, `story`, `presentation`, `encounters`, jogador, fada, nuvens, inimigos, histórico de apoios e resgate. | `toyRoomGarden` contém `{version:1,state}`; a versão do envelope da fase difere da versão 9 do domínio. Restore da sala prioriza jardim sobre perseguição. Entrada de debug fica fora do save. |
+| Leitura compartilhada | `DialogueFlow`: WeakMap por canvas com quadro atual, limites transformados, profundidade de composição e dispensa visual. | Temporização e índice pertencem ao dono da cena; no jardim, `story` é salvo. DOM, callbacks e listeners nunca entram no snapshot. |
 | Recursos | Imagens, regiões, manifestos e status nos carregadores; poses/âncoras em módulos de dados. | Não são serializados. No quarto, recortes e transparência afetam o perfil extraído por `DarkRoomContact`; exigem QA das superfícies. Demais fases conservam seus contratos de colisão. |
 
-A Toy Room mede 1600 × 1200. Suas ações têm debounce de 250 ms, coleta abaixo de 88 unidades, armazenamento abaixo de 160 e soltura a 42 à frente, com limites existentes. A escolha de interação ocorre antes do movimento do quadro. As entradas têm prioridade teclado → gamepad ativo → toque ativo. Não antecipar contagem ou trocar a ordem das chamadas aleatórias durante uma extração.
+A Toy Room mede 1600 × 1200. Suas ações têm debounce de 250 ms, coleta abaixo de 88 unidades e armazenamento abaixo de 160. O item carregado permanece nas mãos até a entrega ao baú; a primitiva legada de soltura não é uma ação disponível ao jogador. Desde a investigação, `canCollectToys` bloqueia coleta comum e prioriza a espada. A escolha de interação ocorre antes do movimento do quadro. As entradas têm prioridade teclado → gamepad ativo → toque ativo. Não antecipar contagem ou trocar a ordem das chamadas aleatórias durante uma extração.
 
 ## Fluxos, câmeras e persistência
 
@@ -169,7 +176,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [garden/GardenBeetleRenderer.js](../src/js/garden/GardenBeetleRenderer.js) | Voo com corpo único e asas articuladas. | `drawGardenBeetle` |
 | [garden/GardenBeeRenderer.js](../src/js/garden/GardenBeeRenderer.js) | Corpo estável e asas articuladas continuamente, sem alternância de silhuetas. | `drawGardenBee` |
 | [garden/GardenInsectArt.js](../src/js/garden/GardenInsectArt.js) | Atlas de insetos gerado a partir das fontes aprovadas. | `INSECT_FRAMES` |
-| [garden/GardenFearArt.js](../src/js/garden/GardenFearArt.js) | Pranchas de medo com solas originais preservadas. | `FEAR_FILES` |
+| [garden/GardenFearArt.js](../src/js/garden/GardenFearArt.js) | Pranchas e recortes próprios da atuação completa de medo, registrados pelo apoio físico original. | `FEAR_FILES`, `FEAR_FRAMES` |
 | [garden/GardenArt.js](../src/js/garden/GardenArt.js) | Recortes derivados das pinturas do jardim e âncoras da menina; não altera o domínio. | `GARDEN_ART` |
 | [garden/GardenVisualArt.js](../src/js/garden/GardenVisualArt.js) | Recortes decorativos do pilar, peixes e plantas aquáticas, sem contatos físicos. | `AQUATIC_FRAMES` |
 | [garden/GardenAudio.js](../src/js/garden/GardenAudio.js) | MP3 Blues Shuffle Loop em repetição e sinais curtos do jardim, com volume, pausa e descarte. | `GardenAudio` |
@@ -319,7 +326,7 @@ Catálogo e seleção ficam em `docs/sprite-review/`; o JSON histórico de class
 
 Nos três percursos do quarto, `DarkRoomContact` usa contornos opacos da arte a partir da altura nominal e o envelope dos sapatos completos. A descida é varrida no dt real; subida e entrada por baixo não pousam. Urso/livros compartilham apoio contínuo sem renumerar plataformas. EASY conserva margem lateral assistida. Os perfis são preparados após as imagens carregarem; não entram no save. A câmera de gameplay faz somente rolagem lateral, com altura e escala fixas por viewport.
 
-A fuga converte o dt legado para segundos e acumula passos de 1/60 s, limitando a contribuição por atualização a 0,2 s. A revelação de campanha dura 0,4 s e bloqueia simulação/entrada. A sequência é BEAR_DOWN → GIRL_APPROACH → BEAR_RISE → CHASE_START → RUNNING → CAUGHT → CHEST_RETURN → COMPLETE; perder todas as vidas leva a FALLING → GAME_OVER, sem captura. COMPLETE mantém a fase ativa: a navegação final ainda falta. GAME_OVER abre a nova tentativa pela interface da campanha.
+A fuga converte o dt legado para segundos e acumula passos de 1/60 s, limitando a contribuição por atualização a 0,2 s. A revelação de campanha dura 0,4 s e bloqueia simulação/entrada. A sequência é BEAR_DOWN → GIRL_APPROACH → BEAR_RISE → CHASE_START → RUNNING → CAUGHT → CHEST_RETURN → COMPLETE; perder todas as vidas leva a FALLING → GAME_OVER, sem captura. Na campanha, `ToyRoomPhase` acumula 150 ticks em COMPLETE e chama `startGarden`; a prévia isolada permanece no resultado. GAME_OVER abre a nova tentativa pela interface da campanha.
 
 O piso usa a arte existente em `environment-sheet.png`, recorte (27,151) de 186×48. `floorTexture` prepara 256×64 e envia RGBA por DataTexture com nove mipmaps explícitos, linhas invertidas e repetição 9×2. A causa do piso preto relatado no Safari não foi confirmada; a confirmação nesse navegador continua pendente. WebGL 2 permite texturas NPOT: a dimensão anterior, isoladamente, não demonstra defeito.
 
@@ -341,11 +348,13 @@ Na arena, recuo livre usa animação de caminhada. Durante a preparação/janela
 
 ## Jardim: fase lateral do dia seguinte
 
-`src/js/garden/` contém um domínio puro (`GardenSimulation`, `GardenLevel`), controles próprios (`GardenInput`), desenho (`GardenRenderer`, `GardenArt`), trilha MP3 e sinais sintetizados (`GardenAudio`) e composição (`GardenPhase`). É um submodo independente do host da Toy Room; não reutiliza a física top-down nem corpos do quarto. A conclusão da perseguição de campanha abre o jardim após o resultado; debug oferece entrada direta. `toyRoomGarden` persiste domínio e checkpoint, com restauração de recursos/controles. O domínio v9 mantém o mapa v6 com patamares com faces e quinas sólidas, contato dos sapatos por pixels nos objetos isolados e morros arredondados com pequenas faixas de grama e uma seção aérea central com três rodas/nuvens/ilhas de pedrinhas, com seis composições de paisagens e duração aproximada de cinco minutos; checkpoints das versões longas v2/v3 migram para a paisagem correspondente e v4/v5 retomam o mesmo setor seguro. A câmera conserva enquadramento vertical fixo. Abertura desce a escada; queda NORMAL mantém mundo e música ativos antes do menu e da oferta EASY. Curvas gráficas são cacheadas. Dados e detalhes no [guia do jardim](garden/GUIA-JARDIM.md).
+`src/js/garden/` contém domínio puro (`GardenSimulation`, `GardenLevel`, `GardenEncounters`), controles (`GardenInput`), desenho (`GardenRenderer` e metadados de arte), cenas (`GardenNarrative`, `GardenCinematic`), trilha MP3/sinais (`GardenAudio`) e composição (`GardenPhase`). É um submodo da Toy Room com corpos e física independentes da exploração e do quarto. `startGarden` descarta a perseguição, seus controles e áudio antes de preparar o jardim. A campanha chega após o resultado da perseguição; debug oferece entrada direta. `toyRoomGarden` persiste domínio e checkpoint, com recursos e controles reconstruídos ao restaurar.
 
-O jardim v2 inclui perfis por material, nuvens temporárias, lagartas de dois pisões, formigas saltadoras e recuperação imortal do EASY. Estado da fada, histórico de apoios e recuperação pertencem ao domínio, com consultas espaciais no percurso longo. Saves do mapa curto v1 migram para um início seguro. Faixas de terreno fixo são pintadas como massa contínua; o piquenique usa composição própria ao lado das raízes.
+O domínio v9 usa geometria de seis composições, morros arredondados com pequenas faixas de grama, faces/quinas sólidas e seção aérea central com três rodas, nuvens e ilhas de pedrinhas. `GARDEN.version` é 7; não confundir esse metadado de configuração com a versão do save. Consultas espaciais limitam o trabalho por subpasso. O contato usa solas e perfis das pinturas; curvas gráficas são cacheadas na carga. Parede vegetal, pilares, peixes e plantas são apresentação. A câmera conserva enquadramento vertical fixo. Terrenos, nuvens, lagartas de dois pisões, formigas, resgates imortais EASY e migrações v1–v9 estão no [guia do jardim](garden/GUIA-JARDIM.md).
 
-O save v8 do jardim acrescenta progresso manual de leitura (`story`) e apresentação do primeiro aviso do besouro (`presentation`). Migra v7 sem alterar geometria, corpos ou encontros. `GardenInput` entrega pulsos de avanço/skip e consome a entrada da transição; `GardenPhase` coordena cenas vistas no snapshot e no armazenamento local. `GardenCinematic` separa índice/tempo da fala e atuação contínua; suas regiões de skip são retornadas ao renderizador para hit-testing. A última fala mantém a cena animada no piquenique. A orientação de gameplay permanece não modal.
+Cinco abelhas alternam rasantes A→B/B→A com repouso fixo, aviso de 0,5 s, arco de 1,25 s e intervalo de 1,8 s. Quatro minhocas emergem por proximidade e não aceitam pisão. Três besouros inofensivos provocam corrida automática por seis segundos ativos e rearmam na retomada; entram visualmente de fora da borda esquerda em 0,85 s. `GardenFearArt` fornece atuação visual completa sem substituir os dados físicos de contato.
+
+`story` guarda índice/tempo das falas e marcas de cenas vistas; `presentation` guarda a orientação do primeiro besouro. `GardenInput` entrega pulsos de avanço/skip e consome a entrada da transição; `GardenPhase` combina marcas do snapshot com `legendgirl:garden:scenes:v1`. `GardenCinematic` separa atuação contínua de leitura automática com avanço opcional. Depois da abertura, há três segundos de descida pela escada, com fade limitado aos primeiros 0,45 s. Na conclusão, o último quadro desaparece e o piquenique permanece animado. Queda NORMAL mantém mundo e música durante FALLING (2,4 s) e GAME_OVER, antes das opções de tentativa e da oferta EASY.
 
 O fluxo de leitura compartilhado está em `narrative/DialogueFlow.js`: registro dos balões visíveis, captura de clique/toque e consumo da entrada antes de ações físicas. `game.advanceDialogue` encaminha para o dono da sequência, que conserva os tempos automáticos existentes. Aberturas e `ToyRoomStory` oferecem métodos de avanço de uma fala; quarto escuro distingue narrador e personagem dentro da mesma etapa. O jardim avança por prazo ou entrada, com save v9 para os rasantes A/B. Regras vigentes e temporizações: [padrões de diálogos e cenas](diario-ia/padroes/DIALOGOS-E-CENAS.md).
 

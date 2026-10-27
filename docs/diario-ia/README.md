@@ -2,6 +2,8 @@
 
 Leia `AGENTS.md`, este guia e `CONTEXTO-ATUAL.md` antes de trabalhar. As instruções atuais do usuário prevalecem sobre documentos históricos. Para diálogos e cenas, consulte também [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md).
 
+Ao retomar uma sessão interrompida, consulte seu início, os registros completos de QA e os pacotes/fontes associados antes de repetir tarefas. O contexto reúne checkpoints de épocas distintas: uma fila antiga não volta a ser pendência quando uma seção posterior registra sua resolução. Confirme a decisão mais recente nas fontes e no checkout atual. Arquivos temporários de progresso podem pertencer a outra execução; só atribua resultados à execução identificada pelo registro correspondente.
+
 ## Armazenamento e arquivos essenciais
 
 O SQLite local é o armazenamento operacional do diário. JSON continua sendo o formato dos envelopes históricos, guardados integralmente no banco e exportados em lotes JSONL/gzip imutáveis. Os milhares de JSONs individuais foram consolidados com verificação de bytes, hashes e restauração isolada; seus caminhos antigos continuam identificando conteúdo recuperável.
