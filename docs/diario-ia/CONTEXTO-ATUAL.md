@@ -1,10 +1,14 @@
 # Contexto compartilhado vigente
 
-## Integração para teste no celular autorizada — 29/10/2026
+## Ajustes integrados e publicados para teste no celular — 29/10/2026
 
-Usuário solicitou commit e merge na “master” para testar pelo CI/CD. O repositório usa `main` como branch principal e o workflow `deploy-pages.yml` publica no GitHub Pages por push nela; não há branch `master` local/remota. Intenção aplicada à `main`, sem criar uma branch paralela. Sessão `20261029T173254-ad96dbb1329a`.
+Usuário autorizou commit e merge na “master” para usar o CI/CD e jogar no celular. O repositório usa `main` como branch principal, sem `master` local/remota; autorização aplicada à principal real e ao push necessário. Sessão `20261029T173254-ad96dbb1329a`.
 
-Preparação: fetch executado, `origin/main` é ancestral direto da branch atual `QA-Player-feedback`; alteração anterior do usuário `f3b0a21c` preservada. Código de caminhada/diálogos/modelo3D confere com os pacotes que passaram pelas suítes e seis campanhas. Check-assets78/lint/build e teste de páginas aprovados antes do commit. Nenhum novo código de gameplay nesta integração. Commit/merge/push e resultado de deploy serão registrados após efetivação; esta seção não os declara concluídos.
+Commit dos ajustes restantes: `a33ad01f` na `QA-Player-feedback`. Merge explícito sem conflitos na `main`: `824f3010`, incluindo o commit anterior do usuário `f3b0a21c`. Ambas as branches enviadas ao origin sem force-push. Árvore do merge idêntica à branch validada. Caminhada, leitura e modelo3D conferidos por hashes contra seus pacotes de QA; check-assets78/lint/build, teste de páginas, diff e integridade do diário passaram antes de compartilhar. Suíte geral e seis campanhas são as já executadas sobre essas fontes; não foram indevidamente atribuídas a uma nova execução nesta integração.
+
+GitHub Actions `40922807673` concluiu com success para o SHA completo824f301093871a8be25fcc2877eb8003860561c2, publicando no GitHub Pages: https://github.com/luciussama/legendGirl/actions/runs/40922807673 . Endereço confirmado pela API de Pages: https://luciussama.github.io/legendGirl/ . index.html, GirlGait.js, DialogueControls.js, ChaseGirlModel.js e ChaseGirlAnimation.js retornaram HTTP200 e bytes idênticos ao checkout publicado. Resultados integrais e consultas preservados no acervo. Um commit documental de fechamento registra esta publicação; não muda os recursos de produção.
+
+Pendência real: teste humano no celular/Safari e escuta/conforto/diversão, agora viabilizados pela versão publicada. Esta publicação não homologa aparelhos aos quais a IA não teve acesso. Aprovação artística da etapa9 já registrada abaixo; nenhuma nova alteração de gameplay nesta integração.
 
 ## Etapa9 aprovada; próximo passo recomendado — 29/10/2026
 

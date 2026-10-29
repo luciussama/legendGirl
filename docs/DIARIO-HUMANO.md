@@ -236,3 +236,8 @@ Os comandos de leitura foram aprovados pelo usuário. A revisão seguinte compar
 ### 29/10/2026 — aprovação da revisão3D
 
 O usuário aprovou a proporção e a articulação revisadas da menina3D. A etapa encerra a implementação do plano de feedbacks. O próximo passo recomendado é validar a experiência com jogadores e aparelhos reais antes de preparar a versão para publicação.
+
+
+### 29/10/2026 — versão disponível para teste no celular
+
+Os ajustes do ciclo de feedbacks foram integrados à branch principal e publicados pelo CI/CD, conforme autorização do usuário. A versão permite agora a avaliação em celular e a nova rodada com jogadores.
