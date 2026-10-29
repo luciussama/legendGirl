@@ -1,5 +1,6 @@
 import { OFFICIAL_FRAMES } from '../assets/officialCharacter.js';
 import { GIRL_V2_FRAMES, GIRL_V2_REFERENCE_HEIGHT } from '../assets/illustratedGirl.js';
+import { renderGirlRun } from './GirlLocomotion.js';
 
 /** Renderiza somente recortes da ilustração oficial fornecida. */
 export class BabyRenderer {
@@ -105,7 +106,11 @@ export class BabyRenderer {
   render(ctx, baby, state = {}, camX = 0, options = {}) {
     if (!ctx || !baby) return;
     const animation = this.resolveAnimationState(baby, state);
-    this.renderPose(ctx, options.assets || this.assets || state.assets,
+    const assets = options.assets || this.assets || state.assets;
+    if (!baby.controlsLocked && (animation.state === 'run' || animation.state === 'dash' || (animation.state === 'idle' && baby.runBlend > 0))
+      && renderGirlRun(ctx, assets, baby, baby.x - camX + baby.w / 2, baby.y + baby.h,
+        baby.h, baby.facing, options.visualScale ?? 1)) return;
+    this.renderPose(ctx, assets,
       animation.state, animation.frame, baby.x - camX + baby.w / 2,
       baby.y + baby.h, baby.h, baby.facing, options.visualScale ?? 1);
   }

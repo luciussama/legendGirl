@@ -35,10 +35,13 @@ export class HudRenderer {
     const layout = getMobileUILayout(canvas);
     const mobile = isMobileDevice();
     const uiScale = mobile ? layout.scale : 1;
-    const badgeW = Math.min(270 * uiScale, layout.usableWidth - 32 * uiScale);
+    const landscape = mobile && layout.usableWidth > layout.usableHeight;
+    // Reserva as laterais do topo para os três botões HTML também em celulares menores.
+    const badgeW = Math.min(270 * uiScale, layout.usableWidth - 32 * uiScale,
+      landscape ? Math.max(128 * uiScale, layout.usableWidth - 340 * uiScale) : Infinity);
     const badgeH = 42 * uiScale;
-    const badgeX = layout.safeRight - badgeW - 16 * uiScale;
-    const badgeY = layout.safeTop + (mobile ? 72 : 14) * uiScale;
+    const badgeX = landscape ? layout.centerX - badgeW / 2 : layout.safeRight - badgeW - 16 * uiScale;
+    const badgeY = layout.safeTop + (mobile && !landscape ? 72 : 14) * uiScale;
 
     ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
     ctx.strokeStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#c084fc') : (escapeLevel >= 11 ? '#fde047' : '#f59e0b'));
@@ -86,12 +89,29 @@ export class HudRenderer {
       state.escapeBannerTimer--;
       const alpha = Math.min(1.0, state.escapeBannerTimer / 30);
       ctx.fillStyle = `rgba(0, 0, 0, ${0.65 * alpha})`;
-      ctx.fillRect(layout.safeLeft, badgeY + badgeH + 8 * uiScale, layout.usableWidth, 56 * uiScale);
+      const noticeX = landscape ? badgeX : layout.safeLeft;
+      const noticeW = landscape ? badgeW : layout.usableWidth;
+      const noticeY = badgeY + badgeH + 8 * uiScale;
+      ctx.fillRect(noticeX, noticeY, noticeW, 56 * uiScale);
 
       ctx.fillStyle = `rgba(254, 240, 138, ${alpha})`;
-      ctx.font = `bold ${19 * uiScale}px Palatino, Georgia, serif`;
       ctx.textAlign = 'center';
-      ctx.fillText(escapeBannerText, layout.centerX, badgeY + badgeH + 43 * uiScale, layout.usableWidth - 32 * uiScale);
+      if (landscape) {
+        // Mensagem legível no centro, sem atravessar a área ocupada pelos atores.
+        ctx.font = `bold ${12 * uiScale}px Palatino, Georgia, serif`;
+        const lines = [];let line = '';
+        for (const word of escapeBannerText.split(/\s+/)) {
+          const next = line ? line + ' ' + word : word;
+          if (line && ctx.measureText(next).width > noticeW - 20 * uiScale) { lines.push(line);line = word; }
+          else line = next;
+        }
+        if (line) lines.push(line);
+        for (const [index, text] of lines.slice(0,3).entries())
+          ctx.fillText(text, layout.centerX, noticeY + (15 + index * 14) * uiScale, noticeW - 20 * uiScale);
+      } else {
+        ctx.font = `bold ${19 * uiScale}px Palatino, Georgia, serif`;
+        ctx.fillText(escapeBannerText, layout.centerX, badgeY + badgeH + 43 * uiScale, layout.usableWidth - 32 * uiScale);
+      }
     }
 
     // Linhas dinâmicas de vento na tela proporcionais à velocidade de rolagem

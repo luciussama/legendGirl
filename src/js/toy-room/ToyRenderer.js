@@ -28,7 +28,7 @@ export class ToyRenderer {
     const isTargeted = !isCarrying && distToPlayer < 88;
 
     // Sombra suave no chão se o brinquedo não estiver sendo carregado
-    if (!t.isCarried) {
+    if (!t.isCarried && options.groundShadows !== false) {
       ctx.fillStyle = 'rgba(100, 45, 10, 0.3)';
       ctx.beginPath();
       ctx.ellipse(tx, ty + (t.h || 20) / 2 - 2, (t.w || 20) / 2 + 3, 7, 0, 0, Math.PI * 2);

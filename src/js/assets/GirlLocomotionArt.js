@@ -1,0 +1,2 @@
+// Gerado por prepare-girl-locomotion.js; metadados exclusivamente visuais.
+export const GIRL_LOCOMOTION_ART = {"key":"girl-v2-pernas-articuladas-v1","file":"assets/art/characters/girl-v2/runtime/pernas-articuladas-v1.png","legs":[[{"x":10,"y":10,"w":46,"h":108},{"x":138,"y":10,"w":47,"h":108},{"x":266,"y":10,"w":108,"h":74}],[{"x":394,"y":10,"w":46,"h":108},{"x":522,"y":10,"w":48,"h":108},{"x":650,"y":10,"w":108,"h":75}]]};

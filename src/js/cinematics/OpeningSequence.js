@@ -1,4 +1,5 @@
-import {offerDialogue} from '../narrative/DialogueFlow.js';
+import {drawDialogueControls,dialogueControlsHeight} from '../narrative/DialogueControls.js';
+import {offerDialogue,setDialogueBounds} from '../narrative/DialogueFlow.js';
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
 import { getDialogueSafeArea, getDialogueBoxY } from '../ui/DialogueSafeArea.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
@@ -142,12 +143,15 @@ export class OpeningSequence {
         }
         lines.push(current);
       }
-      const height=lines.length*(font+9)+54;
+      const controlScale=canvas.width/(canvas.clientWidth||canvas.width),controlsHeight=dialogueControlsHeight(controlScale);
+      const height=lines.length*(font+9)+54+controlsHeight;
       const y=regions ? regions.panel.y+(regions.panel.height-height)/2 : getDialogueBoxY(safe,height,24,anchor);
       ctx.fillStyle='rgba(7,10,20,0.94)';ctx.beginPath();ctx.roundRect(centerX-width/2,y,width,height,16);ctx.fill();
       ctx.textAlign='center';ctx.fillStyle='#b9c9e7';ctx.font='13px sans-serif';ctx.fillText('NANDA',centerX,y+24);
       ctx.font=`${urgent?'bold ':''}${font}px Georgia, serif`;ctx.fillStyle='#f5eddf';
       lines.forEach((text,i)=>ctx.fillText(text,centerX,y+54+i*(font+9)));
+      drawDialogueControls(ctx,canvas,{left:centerX-width/2+16*controlScale,top:y+height-controlsHeight-4*controlScale,width:width-32*controlScale,scale:controlScale,color:'#b9c9e7'});
+      setDialogueBounds(canvas,ctx,centerX-width/2,y,width,height);
       ctx.restore();
     }
     this.renderFade(ctx,canvas);

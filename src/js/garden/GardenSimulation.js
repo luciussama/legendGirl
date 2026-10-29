@@ -1,3 +1,4 @@
+import {advanceGardenDefeats} from './GardenDefeatPresentation.js';
 import {createGardenEncounters,restoreGardenEncounters,tickGardenBee,tickGardenWorm,tickGardenBeetles,resetGardenPanic,GARDEN_BEETLES,sweptGardenContact} from './GardenEncounters.js';
 import {GARDEN_OPENING_DURATION,GARDEN_OPENING,GARDEN_ENDING} from './GardenNarrative.js';
 import {gardenContactHeight,gardenGirlPose} from './GardenContact.js';
@@ -11,11 +12,20 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:9,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:10,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0,hurtRemaining:0,hurtDirection:1},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{animationTime:0,balancePose:null,x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
     enemies:GARDEN_ENEMIES.map(e=>({...e,hp:e.type==='caterpillar'?2:1,direction:-1,alive:true,defeatAge:0,stompLock:0,hopAge:0,routeIndex:0,attackPhase:'patrol',attackAge:0,retreatDirection:1}))};
+}
+/** A reação visível não altera o deslocamento nem acrescenta danos durante a imunidade. */
+function hurtPlayer(s,source,events){
+  s.hp--;s.immunity=2;s.player.vy=-280;s.player.onGround=false;s.player.support=null;
+  s.presentation.hurtRemaining=.48;
+  s.presentation.hurtDirection=Math.sign(s.player.x-source.x)||-s.player.facing;
+  events.push({type:'hurt',enemy:source.id});
+  if(s.hp<=0){defeat(s,'hurt',events);return true;}
+  return false;
 }
 function recoverTarget(s,kind){
   if(kind==='hurt'){
@@ -36,20 +46,20 @@ function beginRecovery(s,kind,events){
 function defeat(s,kind,events){
   if(s.difficulty==='EASY'){beginRecovery(s,kind,events);return;}
   resetGardenPanic(s,s.checkpoint);
-  s.hp=0;s.stage='FALLING';s.age=0;s.player.onGround=false;s.player.support=null;s.player.vy=kind==='hurt'?-260:Math.max(120,s.player.vy);s.player.vx=kind==='hurt'?-s.player.facing*80:0;events.push({type:kind});
+  s.hp=0;s.stage='FALLING';s.age=0;s.player.onGround=false;s.player.support=null;s.player.vy=kind==='hurt'?-260:Math.max(120,s.player.vy);s.player.vx=kind==='hurt'?-s.player.facing*80:0;if(kind!=='hurt')events.push({type:kind});
 }
 /** Uma tentativa nova conserva os inimigos vencidos e retoma chão firme no checkpoint. */
 export function retryGarden(s,difficulty=s.difficulty){
   if(s.stage!=='GAME_OVER')return false;
   const enemies=s.enemies.map(e=>({...e})),encounters=structuredClone(s.encounters),checkpoint=s.checkpoint,presentation={...s.presentation},story={...s.story};
-  Object.assign(s,createGardenState(difficulty));s.story=story;s.presentation=presentation;s.stage='RUNNING';s.checkpoint=checkpoint;s.enemies=enemies;s.encounters=encounters;s.defeated=enemies.filter(e=>!e.alive).length+encounters.bees.filter(e=>!e.alive).length;
+  Object.assign(s,createGardenState(difficulty));s.story=story;s.presentation={...presentation,hurtRemaining:0,hurtDirection:1};s.stage='RUNNING';s.checkpoint=checkpoint;s.enemies=enemies;s.encounters=encounters;s.defeated=enemies.filter(e=>!e.alive).length+encounters.bees.filter(e=>!e.alive).length;
   const ground=[...GARDEN_PLATFORM_BY_ID.values()].find(p=>p.ground&&checkpoint>=p.x&&checkpoint<=p.x+p.w);
   Object.assign(s.player,{x:checkpoint,y:ground?gardenContactHeight(ground,s.player,checkpoint):C.ground,support:ground?.id??'entrada',terrain:ground?.type??'wood'});
   resetGardenPanic(s,checkpoint);s.safeGround=s.player.support;s.trail=[s.player.support];s.immunity=3;s.fairy.x=checkpoint;s.fairy.progressX=checkpoint;return true;
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3,4,5,6,7,8,9].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4,5,6,7,8,9,10].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
@@ -64,7 +74,7 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
     out.enemies=out.enemies.map(e=>{const currentId=e.id.replace('-gramado-lagarta','-lagarta').replace('-clareira-lagarta','-lagarta-da-saida').replace('-caminho-formiga','-formiga'),legacyId=saved.version>=4?currentId:currentId.replace(/^trecho-(\d+)/,(_,n)=>'trecho-'+(Math.floor(Number(n)/2)*5+(Number(n)%2?3:0))),old=saved.enemies.find(v=>v.id===legacyId);return old&&old.hp<=e.hp?{...e,hp:old.hp,alive:old.alive}:e;});out.defeated=out.enemies.filter(e=>!e.alive).length;return out;
   }
   if(saved.player.x<0||saved.player.x>C.width||Math.abs(saved.player.y)>10000||!GARDEN_CHECKPOINTS.includes(saved.checkpoint)||!Array.isArray(saved.enemies)||saved.enemies.length!==out.enemies.length)throw new TypeError('Estado do jardim incompatível.');
-  if(saved.presentation)out.presentation={beetleHintSeen:saved.presentation.beetleHintSeen===true,hintRemaining:clamp(Number(saved.presentation.hintRemaining)||0,0,6)};
+  if(saved.presentation)out.presentation={beetleHintSeen:saved.presentation.beetleHintSeen===true,hintRemaining:clamp(Number(saved.presentation.hintRemaining)||0,0,6),hurtRemaining:clamp(Number(saved.presentation.hurtRemaining)||0,0,.48),hurtDirection:saved.presentation.hurtDirection===-1?-1:1};
   out.stage=saved.stage;out.time=saved.time;out.age=saved.age;out.hp=clamp(Math.floor(saved.hp),0,difficulty==='EASY'?6:3);out.checkpoint=saved.checkpoint;
   out.immunity=clamp(Number.isFinite(saved.immunity)?saved.immunity:0,0,4);out.jumps=Number.isSafeInteger(saved.jumps)&&saved.jumps>=0?saved.jumps:0;
   if(!saved.clouds||typeof saved.clouds!=='object'||Array.isArray(saved.clouds))throw new TypeError('Nuvens salvas inválidas.');
@@ -114,7 +124,7 @@ function fairyTick(s,dt,platforms){
 }
 function enemyTick(e,s,dt){
   const old={x:e.x,y:e.y};e.stompLock=Math.max(0,e.stompLock-dt);
-  if(!e.alive){e.defeatAge+=dt;return old;}
+  if(!e.alive)return old;
   e.hopAge+=dt;
   if(e.route){
     const period=e.period*.85*(s.difficulty==='EASY'?1.2:1),a=(e.hopAge+e.phase)%period/period;
@@ -153,6 +163,8 @@ function enemyTick(e,s,dt){
 }
 function tick(s,input,dt,events){
   s.time+=dt;s.age+=dt;s.player.animationTime=s.time;
+  advanceGardenDefeats(s,dt);
+  s.presentation.hurtRemaining=Math.max(0,(s.presentation.hurtRemaining||0)-dt);
   if(s.stage==='RUNNING'){
     s.presentation.hintRemaining=Math.max(0,s.presentation.hintRemaining-dt);
     const next=GARDEN_BEETLES.find(b=>!s.encounters.consumed.includes(b.id)&&b.x>=s.player.x&&b.x-s.player.x<780);
@@ -250,7 +262,7 @@ function tick(s,input,dt,events){
       const fraction=clamp(-oldRelative/Math.max(.001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,enemyX=old.x+(e.x-old.x)*fraction;
       if(Math.abs(x-enemyX)<e.w/2+C.halfFoot){e.hp--;e.stompLock=.24;e.alive=e.hp>0;e.defeatAge=0;if(!e.alive)s.defeated++;else{const range=enemyRange(e),preferred=Math.abs(e.x-p.x)>8?Math.sign(e.x-p.x):p.facing;e.attackPhase='retreat';e.attackAge=0;e.retreatDirection=(preferred>0?range.right-e.x:e.x-range.left)>190?preferred:-preferred;e.direction=e.retreatDirection;}p.y=top;p.vy=-480;p.onGround=false;p.support=null;s.coyote=0;events.push({type:e.alive?'enrage':'stomp',enemy:e.id});continue;}
     }
-    if(!s.immunity&&Math.abs(p.x-e.x)<e.w/2+16&&p.y>top+8&&p.y-C.playerHeight<e.y-6){s.hp--;s.immunity=2;p.vy=-280;p.onGround=false;p.support=null;events.push({type:'hurt'});if(s.hp<=0){defeat(s,'hurt',events);return;}}
+    if(!s.immunity&&Math.abs(p.x-e.x)<e.w/2+16&&p.y>top+8&&p.y-C.playerHeight<e.y-6){if(hurtPlayer(s,e,events))return;}
   }
   for(const bee of s.encounters.bees){
     if(Math.abs(bee.homeX-p.x)>1000)continue;
@@ -260,12 +272,12 @@ function tick(s,input,dt,events){
       const fraction=clamp(-oldRelative/Math.max(.001,newRelative-oldRelative),0,1),x=previous.x+(p.x-previous.x)*fraction,bx=old.x+(bee.x-old.x)*fraction;
       if(Math.abs(x-bx)<bee.w/2+C.halfFoot){bee.alive=false;bee.hp=0;bee.defeatAge=0;s.defeated++;p.y=top;p.vy=-480;p.onGround=false;p.support=null;s.coyote=0;events.push({type:'stomp',enemy:bee.id});continue;}
     }
-    if(!s.immunity&&sweptGardenContact(previous,p,old,bee)){s.hp--;s.immunity=2;p.vy=-280;p.onGround=false;p.support=null;events.push({type:'hurt',enemy:bee.id});if(s.hp<=0){defeat(s,'hurt',events);return;}}
+    if(!s.immunity&&sweptGardenContact(previous,p,old,bee)){if(hurtPlayer(s,bee,events))return;}
   }
   for(const worm of s.encounters.worms){
     tickGardenWorm(worm,s,dt);
     if(worm.h>4&&!s.immunity&&sweptGardenContact(previous,p,worm,worm)){
-      s.hp--;s.immunity=2;p.vy=-280;p.onGround=false;p.support=null;events.push({type:'hurt',enemy:worm.id});if(s.hp<=0){defeat(s,'hurt',events);return;}
+      if(hurtPlayer(s,worm,events))return;
     }
   }
   if(p.y>C.waterY&&GARDEN_WATERS.some(v=>p.x>v.x&&p.x<v.x+v.w)||p.y>C.height+100){defeat(s,'fall',events);return;}

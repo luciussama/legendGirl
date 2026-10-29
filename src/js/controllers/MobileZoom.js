@@ -5,6 +5,26 @@ export function isMobileDevice(nav = globalThis.navigator) {
     (nav?.platform === 'MacIntel' && nav?.maxTouchPoints > 1);
 }
 
+/** Composição fixa por viewport: reserva o rodapé ao toque e inclui todo o arco autorado. */
+export function getDarkRoomMobileFrame({ width, height, cameraY, floorY, layout, anticipate = false }) {
+  const fit = Math.min(layout.usableWidth / width, layout.usableHeight / height);
+  const originY = layout.centerY - height * fit / 2;
+  const landscape = layout.usableWidth > layout.usableHeight;
+  const touchCenter = layout.safeBottom - Math.min(60 * layout.scale, layout.usableHeight * .12);
+  const groundScreen = Math.min(layout.safeTop + layout.usableHeight * (landscape ? .75 : .70),
+    touchCenter - 44 * layout.scale);
+  const ground = (groundScreen - originY) / fit;
+  // Retrato conserva também o espaço das mensagens de nível abaixo dos botões.
+  const top = (layout.safeTop + (landscape ? 64 : 178) * layout.scale - originY) / fit;
+  // O topo -64 contém o maior salto do mapa, com folga para a pintura da menina.
+  // Nenhum ator, apoio ou estado aéreo participa desta escolha.
+  const zoom = Math.max(.1, Math.min(.8, (ground - top) / (floorY + 64)));
+  // Abrir o quadro não deve trazer a borda de derrota para o meio da imagem.
+  const x = anticipate ? Math.max(width * .32, width * (1.02 - zoom)) : width * .1;
+  return { zoom, x,
+    y: ground - zoom * (floorY - cameraY) };
+}
+
 export function getMobileZoomFrame({ enabled, width, height, bounds, anchor, margin = 24, stable = false, anticipate = false }) {
   // Gameplay usa a composição fixa, sem consultar limites de atores ou do próximo apoio.
   if (!enabled) return { zoom: 1, x: 0, y: 0 };

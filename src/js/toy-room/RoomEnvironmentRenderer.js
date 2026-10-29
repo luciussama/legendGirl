@@ -10,6 +10,8 @@
  * - Móveis robustos e detalhados (Baú com tampa móvel, estante de livros, poltrona, fortaleza, mesa, cavalinho de pau, armário)
  */
 
+import { TOY_ROOM_WINDOWS } from './ToyRoomLighting.js';
+
 // Traçado decorativo original; não participa da navegação nem das colisões.
 const TRAIN_CIRCUIT = [
   ['moveTo', 350, 420], ['lineTo', 820, 420],
@@ -123,8 +125,7 @@ export class RoomEnvironmentRenderer {
 
     // Janelas em arco na parede trazendo iluminação dourada natural
     const windowImage = options.assets && options.assets.get('toy-room-window-curtains-v1');
-    this.drawArchedWindow(ctx, 520, 30, windowImage);
-    this.drawArchedWindow(ctx, 1280, 30, windowImage);
+    for (const window of TOY_ROOM_WINDOWS) this.drawArchedWindow(ctx, window.x, window.y, windowImage);
 
     // Porta aberta à esquerda (por onde a garotinha emergiu)
     this.drawEntrancePortal(ctx, 50, 550, options.environmentDoor);
@@ -577,10 +578,12 @@ export class RoomEnvironmentRenderer {
 
     if (f.type === 'table' && options.environmentTable) {
       ctx.save();
-      ctx.fillStyle = 'rgba(53, 24, 11, 0.3)';
-      ctx.beginPath();
-      ctx.ellipse(f.x + f.w / 2, f.y + f.h - 2, f.w / 2 + 18, 16, 0, 0, Math.PI * 2);
-      ctx.fill();
+      if (options.groundShadows !== false) {
+        ctx.fillStyle = 'rgba(53, 24, 11, 0.3)';
+        ctx.beginPath();
+        ctx.ellipse(f.x + f.w / 2, f.y + f.h - 2, f.w / 2 + 18, 16, 0, 0, Math.PI * 2);
+        ctx.fill();
+      }
       ctx.drawImage(options.environmentTable, f.x - 4, f.y - 16, f.w + 8, f.h + 28);
       ctx.restore();
       return;
@@ -588,10 +591,12 @@ export class RoomEnvironmentRenderer {
 
     ctx.save();
     // Sombra projetada no chão
-    ctx.fillStyle = 'rgba(80, 35, 10, 0.35)';
-    ctx.beginPath();
-    ctx.ellipse(f.x + f.w / 2, f.y + f.h - 4, f.w / 2 + 12, 18, 0, 0, Math.PI * 2);
-    ctx.fill();
+    if (options.groundShadows !== false) {
+      ctx.fillStyle = 'rgba(80, 35, 10, 0.35)';
+      ctx.beginPath();
+      ctx.ellipse(f.x + f.w / 2, f.y + f.h - 4, f.w / 2 + 12, 18, 0, 0, Math.PI * 2);
+      ctx.fill();
+    }
 
     if (f.type === 'wardrobe') {
       ctx.fillStyle = '#78350f';

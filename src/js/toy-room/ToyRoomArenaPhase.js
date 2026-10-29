@@ -156,7 +156,7 @@ export class ToyRoomArenaPhase {
       this.fx.update(step);
       this.battle.update(step);
       const s = this.battle.state;
-      this.camera.update(step, this.room.player, s.enemy, s.jump, s.combatShake || (this.fx.shake > 0 ? { strength: this.fx.shake, elapsed: 0, duration: 1 } : null));
+      this.camera.update(step, this.room.player, s.enemy, s.jump, s.combatShake || (this.fx.shake > 0 ? { strength: this.fx.shake, elapsed: 0, duration: 1 } : null), s);
       if (s.mode === 'BATTLE' && s.enemy.actor === 'bear' && s.enemy.hp === 0) {
         // O último golpe já entrega a abertura ilustrada; o Urso não volta ao baú aqui.
         if (s.index < BATTLE_ORDER.length) s.history.push({ event: 'DEFEATED', enemy: 'bear' });

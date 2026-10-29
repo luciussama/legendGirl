@@ -1,8 +1,8 @@
 import { getMobileUILayout } from '../ui/MobileUILayout.js';
 import { FLOOR_Y, platforms, phase3Platforms, trueExitDoor } from '../config.js';
-import { getMobileZoomFrame } from '../controllers/MobileZoom.js';
+import { getMobileZoomFrame, getDarkRoomMobileFrame } from '../controllers/MobileZoom.js';
 import { getDarkRoomScrollFrame } from '../controllers/CameraPresentation.js';
-import { renderFirstJumpTutorial } from '../ui/FirstJumpTutorial.js';
+import { renderFirstJumpTutorial, renderDarkRoomTouchHint } from '../ui/FirstJumpTutorial.js';
 import { applyArtFinish } from '../effects/ArtFinish.js';
 import { transitionEffects } from '../effects/index.js';
 
@@ -40,8 +40,10 @@ export function renderDarkRoom(context) {
     let framingOffset = 0;
     let mobileTarget;
     if (lateralScrolling) {
-      mobileTarget = getMobileZoomFrame({ enabled: mobilePresentation.enabled, stable: true,
-        anticipate: isPhase3, width: canvas.width, height: canvas.height });
+      mobileTarget = mobilePresentation.enabled
+        ? getDarkRoomMobileFrame({ width: canvas.width, height: canvas.height, cameraY: scrollFrame.y,
+          floorY: FLOOR_Y, layout: getMobileUILayout(canvas), anticipate: isPhase3 })
+        : getMobileZoomFrame({ enabled: false });
     } else {
       const focusY = (baby.y + fairy.y) / 2 - presentationY;
       const screenY = y => focusY + (y - presentationY - focusY) * renderZoom;
@@ -116,6 +118,8 @@ export function renderDarkRoom(context) {
     // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
     applyArtFinish(ctx, canvas);
     drawEscapeBanner();
+    if (mobilePresentation.enabled && lateralScrolling && !gameWon && !state.isGameOver)
+      renderDarkRoomTouchHint(ctx, canvas, state);
     renderFirstJumpTutorial(ctx, canvas, { state, baby, fairy, platform: platforms[0], cameraX,
       transform: presentationTransform, device: inputHandler.controller.promptDevice });
     drawCutsceneDialogue(presentationTransform);

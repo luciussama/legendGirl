@@ -1,3 +1,4 @@
+import {drawDialogueControls,dialogueControlsHeight} from '../narrative/DialogueControls.js';
 import {offerDialogue,setDialogueBounds} from '../narrative/DialogueFlow.js';
 import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
 import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
@@ -372,7 +373,7 @@ export class DialogueRenderer {
     }
 
     this.renderDialogue(ctx, canvas, { speaker, speakerName, speakerColor, mood,
-      text: dialogueText, advancePrompt, tick, isPortrait, emphasis: plotTwistActive }, options);
+      text: dialogueText, advancePrompt, tick, isPortrait, emphasis: plotTwistActive }, {...options,readingHint:!isStandbyShowing});
     ctx.restore();
   }
 
@@ -419,7 +420,8 @@ export class DialogueRenderer {
     lines = wrapDialogueText(ctx, dialogueText, textMaxW);
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
-    const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48);
+    const controlsHeight=options.readingHint===false?0:dialogueControlsHeight(uiScale);
+    const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48)+controlsHeight;
     const regions = options.separateScene === false ? null :
       renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
     const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor, options.separateScene === false ? false : undefined);
@@ -498,12 +500,12 @@ export class DialogueRenderer {
       }
     });
 
-    // 5. Prompt de avanço (posicionado no canto inferior direito sem sobreposição)
-    const blink = Math.sin(tick * 0.1) * 0.3 + 0.7;
-    ctx.fillStyle = `rgba(253, 224, 71, ${blink})`;
-    ctx.font = `bold ${11.5 * uiScale}px sans-serif`;
-    ctx.textAlign = 'right';
-    ctx.fillText(advancePrompt, boxX + boxW - 14, boxY + boxH - 10);
+    // O aviso temporizado distingue leitura das confirmações de ação/prontidão.
+    if(controlsHeight)drawDialogueControls(ctx,canvas,{left:boxX+14*uiScale,top:boxY+boxH-controlsHeight-5*uiScale,width:boxW-28*uiScale,scale:uiScale,color:'#e2c99c',buttonColor:'#251b30'});
+    else{
+      ctx.fillStyle='#e2c99c';ctx.font=`bold ${11.5*uiScale}px sans-serif`;ctx.textAlign='right';
+      ctx.fillText(advancePrompt,boxX+boxW-14,boxY+boxH-10);
+    }
 
     ctx.restore();
   }

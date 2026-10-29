@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 478,
+    "files": 480,
     "regions": 249,
     "code": 29
   },
@@ -194,13 +194,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -377,6 +377,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -393,6 +399,35 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/runtime"
+    },
+    {
+      "id": "b4d72f3feeae5ff90cc6745c",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/runtime/pernas-articuladas-v1.png",
+      "title": "pernas-articuladas-v1.png",
+      "format": "png",
+      "width": 768,
+      "height": 256,
+      "bytes": 70567,
+      "sha256": "7cda9ed0f11422c5b30838bcc6ad63c12e0adb84a40eaf176a8a2b9bdc59f42f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/assets/GirlLocomotionArt.js",
+          "line": 2,
+          "type": "runtime",
+          "alias": null
         }
       ],
       "hints": [],
@@ -727,6 +762,22 @@
       "family": "assets/art/characters/girl-v2/source"
     },
     {
+      "id": "012d90822bd49a1d30599fc9",
+      "kind": "file",
+      "path": "assets/art/characters/girl-v2/source/pernas-articuladas-v1.png",
+      "title": "pernas-articuladas-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1520264,
+      "sha256": "971a5112f9c0c6b63b4a1762d69ca2d1c979b2182e884c81750fe78c28f3e0fc",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/characters/girl-v2/source"
+    },
+    {
       "id": "4d3102e8ba2dbeeb3b67513b",
       "kind": "file",
       "path": "assets/art/characters/girl-v2/source/saltos.png",
@@ -1044,7 +1095,7 @@
         },
         {
           "file": "src/js/cinematics/OpeningSequence.js",
-          "line": 105,
+          "line": 106,
           "type": "runtime",
           "alias": "opening-waking-up"
         },
@@ -2402,7 +2453,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -15690,7 +15741,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 57,
+          "line": 59,
           "type": "runtime",
           "alias": "toy-room-oak-trim-v1"
         }
@@ -15727,7 +15778,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 139,
+          "line": 140,
           "type": "runtime",
           "alias": "toy-room-oval-rug-v1"
         }
@@ -15764,7 +15815,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 141,
+          "line": 142,
           "type": "runtime",
           "alias": "toy-room-rectangular-rug-v1"
         }
@@ -15813,7 +15864,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 45,
+          "line": 47,
           "type": "runtime",
           "alias": "toy-room-wallpaper-v1"
         }
@@ -15850,7 +15901,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 125,
+          "line": 127,
           "type": "runtime",
           "alias": "toy-room-window-curtains-v1"
         },
@@ -15887,7 +15938,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 145,
+          "line": 146,
           "type": "runtime",
           "alias": "toy-room-wooden-track-v1"
         }
@@ -16010,7 +16061,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 559,
+          "line": 560,
           "type": "runtime",
           "alias": "toy-room-armchair-v1"
         }
@@ -16047,7 +16098,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 543,
+          "line": 544,
           "type": "runtime",
           "alias": "toy-room-block-castle-v1"
         }
@@ -16084,7 +16135,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 542,
+          "line": 543,
           "type": "runtime",
           "alias": "toy-room-bookshelf-v1"
         }
@@ -16282,19 +16333,19 @@
         },
         {
           "file": "src/js/garden/GardenRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/toy-room/ToyRoomEntities.js",
-          "line": 27,
+          "line": 31,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         },
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 74,
+          "line": 75,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         }
@@ -16337,7 +16388,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 544,
+          "line": 545,
           "type": "runtime",
           "alias": "toy-room-oak-cabinet-v1"
         }
@@ -16405,7 +16456,7 @@
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 566,
+          "line": 567,
           "type": "runtime",
           "alias": "toy-room-rocking-horse-v1"
         },
@@ -21342,7 +21393,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21412,7 +21463,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21482,7 +21533,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21552,7 +21603,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21622,7 +21673,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21692,7 +21743,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21762,7 +21813,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21832,7 +21883,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21902,7 +21953,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -21972,7 +22023,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22042,7 +22093,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22112,7 +22163,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22182,7 +22233,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22252,7 +22303,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22322,7 +22373,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22392,7 +22443,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22462,7 +22513,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22532,7 +22583,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22602,7 +22653,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22672,7 +22723,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22742,7 +22793,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22812,7 +22863,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22882,7 +22933,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -22952,7 +23003,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23022,7 +23073,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23092,7 +23143,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23162,7 +23213,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23232,7 +23283,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23302,7 +23353,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23372,7 +23423,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23442,7 +23493,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23512,7 +23563,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23582,7 +23633,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23652,7 +23703,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23722,7 +23773,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23792,7 +23843,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23862,7 +23913,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -23932,7 +23983,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -24002,7 +24053,7 @@
         },
         {
           "file": "src/js/entities/BabyRenderer.js",
-          "line": 88,
+          "line": 89,
           "type": "runtime",
           "alias": "official-character"
         },
@@ -26503,6 +26554,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26517,6 +26574,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26555,6 +26618,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26569,6 +26638,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26607,6 +26682,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26621,6 +26702,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26659,6 +26746,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26673,6 +26766,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26711,6 +26810,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26725,6 +26830,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26763,6 +26874,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26777,6 +26894,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26815,6 +26938,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26829,6 +26958,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26867,6 +27002,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/characters/girl-v2/prompts-pernas-articuladas-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 72,
           "type": "manifesto-runtime",
@@ -26881,6 +27022,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -27770,13 +27917,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -27840,13 +27987,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -27910,13 +28057,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -27980,13 +28127,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28050,13 +28197,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28120,13 +28267,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28190,13 +28337,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28260,13 +28407,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28330,13 +28477,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28400,13 +28547,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28470,13 +28617,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -28540,13 +28687,13 @@
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 110,
+          "line": 120,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
         {
           "file": "src/js/toy-room/BattleRenderer.js",
-          "line": 114,
+          "line": 124,
           "type": "runtime",
           "alias": "girl-v2-arena-base"
         },
@@ -30675,13 +30822,13 @@
         "variant": "baby:normal",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30699,13 +30846,13 @@
         "variant": "baby:happy",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30723,13 +30870,13 @@
         "variant": "baby:shocked",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30747,13 +30894,13 @@
         "variant": "baby:annoyed",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30771,13 +30918,13 @@
         "variant": "baby:determined",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30795,13 +30942,13 @@
         "variant": "fairy:normal",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30819,13 +30966,13 @@
         "variant": "fairy:happy",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30843,13 +30990,13 @@
         "variant": "fairy:shocked",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30867,13 +31014,13 @@
         "variant": "fairy:annoyed",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30891,13 +31038,13 @@
         "variant": "fairy:determined",
         "preview": "portrait"
       },
-      "sha256": "c99dafcfa3653974bfc3475456887974f3022f49f84285ad6d1adcf8db99e3ec",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30915,7 +31062,7 @@
         "variant": "teddy",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -30939,7 +31086,7 @@
         "variant": "train",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -30963,7 +31110,7 @@
         "variant": "robot",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -30987,7 +31134,7 @@
         "variant": "bunny",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -31011,7 +31158,7 @@
         "variant": "duck",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -31035,7 +31182,7 @@
         "variant": "blocks",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -31059,7 +31206,7 @@
         "variant": "drum",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -31083,7 +31230,7 @@
         "variant": "jack",
         "preview": "toy"
       },
-      "sha256": "bd54d6e2b1e6a77d645c53e6b42f6cf9df66d57736938d7f8cd57d8d9de5c876",
+      "sha256": "d35cb1abca0680ed68346321f447d49cbcafa3610eff808d696c4f61b566207a",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
@@ -31107,13 +31254,13 @@
         "variant": "wardrobe",
         "preview": "furniture"
       },
-      "sha256": "f1f8932460a709c2761369ea7c7b0921490ffe0988d8726449093b22fd1480cc",
+      "sha256": "8ecb73751b2aa3ae44f7ea273b3ab69958e4108e576159f8073e26ea9575e0e9",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 538,
+          "line": 539,
           "type": "runtime"
         }
       ],
@@ -31131,13 +31278,13 @@
         "variant": "sem-assets",
         "preview": "room-background"
       },
-      "sha256": "f1f8932460a709c2761369ea7c7b0921490ffe0988d8726449093b22fd1480cc",
+      "sha256": "8ecb73751b2aa3ae44f7ea273b3ab69958e4108e576159f8073e26ea9575e0e9",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
-          "line": 29,
+          "line": 31,
           "type": "runtime"
         }
       ],
@@ -31155,13 +31302,13 @@
         "variant": "sem-assets",
         "preview": "toy-fairy"
       },
-      "sha256": "a4fa93efce9f067c054ed6044cfe843498086c1005b38d1c4db3a51ad58c8f17",
+      "sha256": "1ed75a3fd82922aa3fd19bab1e034c359296cd2863bde680bb18fac234787814",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/toy-room/ToyRoomEntities.js",
-          "line": 24,
+          "line": 28,
           "type": "runtime"
         }
       ],

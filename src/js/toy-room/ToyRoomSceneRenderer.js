@@ -2,6 +2,7 @@ import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
 import { toyRenderer } from './ToyRenderer.js';
 import { toyRoomEntities } from './ToyRoomEntities.js';
 import { toyRoomUI } from './ToyRoomUI.js';
+import { renderToyRoomShadows } from './ToyRoomShadows.js';
 
 /** Compõe cenário, entidades, efeitos e HUD na ordem original de desenho. */
 export function renderToyRoomScene(scene, options = {}) {
@@ -34,6 +35,9 @@ export function renderToyRoomScene(scene, options = {}) {
     environmentDoor: scene.environmentDoor,
     environmentDetails: scene.environmentDetails
   });
+
+  const floorShadows = options.groundShadows !== false && !options.arenaBackdrop;
+  if (floorShadows) renderToyRoomShadows(ctx, scene);
 
   // 2. Poeirinhas de passos
   for (let i = 0; i < scene.footstepPuffs.length; i++) {
@@ -85,13 +89,15 @@ export function renderToyRoomScene(scene, options = {}) {
       roomEnvironmentRenderer.renderFurniture(ctx, node.item, {
         assets: scene.assets,
         environmentChest: scene.environmentChest,
-        environmentTable: scene.environmentTable
+        environmentTable: scene.environmentTable,
+        groundShadows: !floorShadows
       });
     } else if (node.type === 'toy') {
       toyRenderer.renderToy(ctx, node.item, scene.player.x, scene.player.y, Boolean(scene.player.carriedItem), now, {
         assets: scene.assets,
         environmentTeddy: scene.environmentTeddy,
-        environmentTrain: scene.environmentTrain
+        environmentTrain: scene.environmentTrain,
+        groundShadows: !floorShadows
       });
     } else if (node.type === 'player') {
       const showingAttack = scene.story.renderAttackSprite(ctx);

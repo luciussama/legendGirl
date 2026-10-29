@@ -56,10 +56,20 @@ export function renderBattle(battle) {
       const height = {train:90,robot:100,dinosaur:100,bear:130}[e.actor] * (battle.presentation?.enemyScale ?? 1);
       const factor = f.displayScale * height / ((reference.height - 24) * reference.displayScale) * (e.transportScale ?? 1);
       const hitProgress = s.impact?.target === 'enemy' ? Math.min(1, s.impact.elapsed / 8) : 1;
-      const recoil = s.impact?.target === 'enemy' ? -e.facing * (1 - hitProgress) * 7 : 0;
+      const reacting = battle.presentation && !e.carried && (e.state === 'HIT' || e.state === 'DEATH');
+      // Reação apoiada nos pés durante a recuperação existente, inclusive junto às bordas.
+      // Só a pintura inclina/comprime: posição, recuo físico e relógios não mudam.
+      const reaction = reacting ? Math.max(0, 1 - e.elapsed / t.hitRecovery) : 0;
+      const direction = Math.sign(e.knockbackVelocity || (s.impact?.target === 'enemy' ? s.impact.direction : 0) || -e.facing);
+      const space = direction > 0 ? t.right - 40 - e.x : e.x - t.left - 40;
+      const lean = reaction * clamp(space / 40, 0, 1);
+      const recoil = reacting ? direction * Math.min(Math.max(0, space), 12 * reaction)
+        : s.impact?.target === 'enemy' ? -e.facing * (1 - hitProgress) * 7 : 0;
       ctx.save();
-      if (e.state === 'HIT' && Math.floor(e.elapsed / 2) % 2 === 0) ctx.globalAlpha = 0.8;
-      ctx.translate(e.x + recoil, e.y ?? t.ground); ctx.scale(e.facing, 1);
+      if (!battle.presentation && e.state === 'HIT' && Math.floor(e.elapsed / 2) % 2 === 0) ctx.globalAlpha = 0.8;
+      ctx.translate(e.x + recoil, e.y ?? t.ground);
+      if (reacting) { ctx.rotate(direction * .14 * lean); ctx.scale(1 + .07 * reaction, 1 - .09 * reaction); }
+      ctx.scale(e.facing, 1);
       // O derrotado é transportado inerte; não representa caminhada congelada.
       if (e.carried) ctx.rotate(Math.sin(e.progress * Math.PI * 2) * 0.12);
       if (e.actor === 'train' && pose === 'Walk') {

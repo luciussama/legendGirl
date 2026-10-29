@@ -10,7 +10,8 @@ export const DAMAGE_AUDIO_PROFILES = Object.freeze({
 export function scheduleDamageSound(ctx, destination, register, actor, arena = false) {
   const profile = DAMAGE_AUDIO_PROFILES[actor];
   if (!profile) throw new RangeError(`Reação de dano desconhecida: ${actor}`);
-  const now = ctx.currentTime, power = arena ? 1.15 : 1;
+  // O contato da espada fica à frente da reação; mantém margem na soma com morte/música.
+  const now = ctx.currentTime, power = arena ? (actor === 'player' ? 1.15 : .85) : 1;
   const connectVoice = (source, nodes, start, end) => {
     let previous = source;
     for (const node of nodes) { previous.connect(node); previous=node; }

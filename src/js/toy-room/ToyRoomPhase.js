@@ -5,6 +5,7 @@ import { ToyRoomPersistence } from './ToyRoomPersistence.js';
 import { createToyRoomPersistenceContext } from './ToyRoomPersistenceContext.js';
 import { createToyRoomInitialEntities } from './ToyRoomInitialEntities.js';
 import { renderToyRoomScene } from './ToyRoomSceneRenderer.js';
+import { prepareToyRoomShadows } from './ToyRoomShadows.js';
 import { createToyRoomSceneFrame } from './ToyRoomSceneFrame.js';
 import { updateToyRoomCamera, getToyRoomCameraFrame } from './ToyRoomCamera.js';
 import { updateToyRoomCompanion } from './ToyRoomCompanion.js';
@@ -114,6 +115,7 @@ export class ToyRoomPhase {
     this.battle = new ToyRoomBattle(this, { loadAssets: typeof Image !== 'undefined' });
     this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
     this.chase = null;
+    prepareToyRoomShadows(this.assets);
   }
 
   get inputController() {
@@ -279,6 +281,8 @@ export class ToyRoomPhase {
       this.victoryBannerTimer -= dt;
     }
     if (this.story?.update(dt)) {
+      // A narrativa suspende o movimento, mas permite concluir o assentamento visual dos pés.
+      this.player.runBlend = Math.max(0, (this.player.runBlend ?? 0) - Math.max(0, dt) / 8);
       if (this.story.swordEquipped && !this.battle.state && !this.arena?.state.completed) {
         if (this.arena) this.arena.start(); else this.battle.activate();
       }

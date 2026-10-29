@@ -45,10 +45,15 @@ export class ArenaSoundEffects {
 
   play(ctx, destination, event) {
     // Reações e transições interrompem caudas ofensivas do personagem anterior.
-    if (event === 'player_special') this.stop();
+    // O lançamento não corta a cauda da espada iniciada seis quadros antes.
+    if (event === 'player_special') {
+      for (const channel of ['train', 'robot', 'robot_move', 'dinosaur', 'bear', 'block']) this.stop(channel);
+    }
     if (['enemy_return', 'enemy_entry', 'victory', 'defeat', 'player_death'].includes(event)) this.stop();
     const actor = /^(train|robot|dinosaur|bear)_(hit|death)$/.exec(event)?.[1];
     if (actor) { this.stop(actor); this.stop(actor + '_move'); }
+    // A colisão da defesa encerra o soco; sua cauda não compete com o ricochete.
+    if (event === 'sword_block' && this.voices.get('robot')?.event === 'robot_punch') this.stop('robot');
     const profile = ARENA_SOUND_FILES[event];
     const buffer = profile && this.buffers.get(profile.file);
     if (!buffer) return false;
@@ -62,7 +67,7 @@ export class ArenaSoundEffects {
     gain.gain.setValueAtTime(profile.volume, now + Math.max(.008, duration - .06));
     gain.gain.linearRampToValueAtTime(0, now + duration);
     source.connect(gain); gain.connect(destination);
-    const voice = { source, gain };
+    const voice = { source, gain, event };
     this.voices.set(profile.channel, voice);
     source.onended = () => {
       source.disconnect(); gain.disconnect();

@@ -1,5 +1,19 @@
 import { isMobileDevice } from '../controllers/MobileZoom.js';
 import { getDialogueSafeArea } from './DialogueSafeArea.js';
+import { getMobileUILayout } from './MobileUILayout.js';
+
+/** Referência de toque no rodapé livre; a tela inteira continua aceitando o pulo. */
+export function renderDarkRoomTouchHint(ctx, canvas, state) {
+  if (state.gameplayState === 'FIRST_JUMP_TUTORIAL') return;
+  const layout = getMobileUILayout(canvas), unit = layout.scale;
+  const width = Math.min(180 * unit, layout.usableWidth - 24 * unit), height = 40 * unit;
+  const x = layout.centerX - width / 2;
+  const y = layout.safeBottom - Math.min(60 * unit, layout.usableHeight * .12) - height / 2;
+  ctx.save();ctx.fillStyle = 'rgba(15,10,25,.72)';ctx.strokeStyle = 'rgba(245,217,148,.5)';ctx.lineWidth = unit;
+  ctx.beginPath();ctx.roundRect(x,y,width,height,12*unit);ctx.fill();ctx.stroke();
+  ctx.font = `bold ${12*unit}px system-ui, sans-serif`;ctx.fillStyle = '#fff3cb';ctx.textAlign = 'center';ctx.textBaseline = 'middle';
+  ctx.fillText('TOQUE PARA PULAR',layout.centerX,y+height/2,width-16*unit);ctx.restore();
+}
 
 export const FIRST_JUMP_MESSAGES = Object.freeze({
   touch: 'TOQUE NA TELA PARA PULAR', keyboard: 'PRESSIONE ESPAÇO',

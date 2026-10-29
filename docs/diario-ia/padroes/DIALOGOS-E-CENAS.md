@@ -38,6 +38,10 @@ Relógio de atuação e progresso da fala são responsabilidades distintas. Ante
 
 `src/js/narrative/DialogueFlow.js` registra os quadros visíveis por canvas e consome `pointerdown` em captura. `beginDialogueFrame`/`endDialogueFrame` tratam composições aninhadas; quadros ausentes não deixam entradas antigas ativas. Medições em canvases virtuais não registram controles.
 
+`DialogueControls` apresenta dentro da moldura o aviso de avanço automático e o gesto de adiantar uma fala. Nas cenas modais, Enter também adianta uma fala por pressionamento, sem repetição; campos, botões HTML e outros controles interativos conservam seu Enter. No gameplay, o gesto de leitura continua restrito ao quadro. O ciclo completo de pressionar/soltar, inclusive com soltura fora do canvas, e o clique sintético posterior são consumidos quando iniciados na leitura.
+
+O botão separado “Pular cena / já vista · S” do jardim conserva a validação de cena vista no domínio e tem alvo de44CSS. Não há skip global nem autorização para ignorar ações obrigatórias. A medida dos quadros e da área dos atores inclui esse comando; o ajuste de fonte em paisagem não reduz seu alvo.
+
 `PoeticNarrator` e `DialogueRenderer` usam esse contrato. `game.advanceDialogue` encaminha a leitura ao dono atual: `OpeningSequence`, `ToyRoomIntroduction`, história da sala, cenas do quarto ou jardim. Cada dono conserva suas transições e seus tempos. Uma mensagem informativa isolada pode ser dispensada visualmente, conservando a ação que a originou. Mensagens futuras com vários balões precisam fornecer o avanço ao próprio controlador; não criar um segundo listener concorrente.
 
 No jardim, Enter/Espaço e gamepad já existentes continuam disponíveis. O clique/toque padrão não depende deles. Persistir índice da fala e tempo restante/decorrido no domínio quando a fase já oferece save; não salvar DOM, callbacks, imagens ou listeners. Restaurar não deve mudar checkpoint, posição da menina ou inimigos por uma mudança de leitura.
