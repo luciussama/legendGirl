@@ -30,6 +30,6 @@ Gerado por `npm run docs:sprites`. Exclui as 46 assinaturas removidas pela revis
 | [src/js/toy-room/ToyRenderer.js](../../src/js/toy-room/ToyRenderer.js) | renderToy / blocks | [src/js/toy-room/ToyRenderer.js:19](../../src/js/toy-room/ToyRenderer.js) |
 | [src/js/toy-room/ToyRenderer.js](../../src/js/toy-room/ToyRenderer.js) | renderToy / drum | [src/js/toy-room/ToyRenderer.js:19](../../src/js/toy-room/ToyRenderer.js) |
 | [src/js/toy-room/ToyRenderer.js](../../src/js/toy-room/ToyRenderer.js) | renderToy / jack | [src/js/toy-room/ToyRenderer.js:19](../../src/js/toy-room/ToyRenderer.js) |
-| [src/js/toy-room/RoomEnvironmentRenderer.js](../../src/js/toy-room/RoomEnvironmentRenderer.js) | renderFurniture / wardrobe | [src/js/toy-room/RoomEnvironmentRenderer.js:538](../../src/js/toy-room/RoomEnvironmentRenderer.js) |
-| [src/js/toy-room/RoomEnvironmentRenderer.js](../../src/js/toy-room/RoomEnvironmentRenderer.js) | renderBackground / sem-assets | [src/js/toy-room/RoomEnvironmentRenderer.js:29](../../src/js/toy-room/RoomEnvironmentRenderer.js) |
-| [src/js/toy-room/ToyRoomEntities.js](../../src/js/toy-room/ToyRoomEntities.js) | renderFairy / sem-assets | [src/js/toy-room/ToyRoomEntities.js:24](../../src/js/toy-room/ToyRoomEntities.js) |
+| [src/js/toy-room/RoomEnvironmentRenderer.js](../../src/js/toy-room/RoomEnvironmentRenderer.js) | renderFurniture / wardrobe | [src/js/toy-room/RoomEnvironmentRenderer.js:539](../../src/js/toy-room/RoomEnvironmentRenderer.js) |
+| [src/js/toy-room/RoomEnvironmentRenderer.js](../../src/js/toy-room/RoomEnvironmentRenderer.js) | renderBackground / sem-assets | [src/js/toy-room/RoomEnvironmentRenderer.js:31](../../src/js/toy-room/RoomEnvironmentRenderer.js) |
+| [src/js/toy-room/ToyRoomEntities.js](../../src/js/toy-room/ToyRoomEntities.js) | renderFairy / sem-assets | [src/js/toy-room/ToyRoomEntities.js:28](../../src/js/toy-room/ToyRoomEntities.js) |

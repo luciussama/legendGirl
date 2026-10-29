@@ -157,3 +157,57 @@ As falas de abertura e do piquenique passam a avançar por toque/tecla, com anim
 ### Padrão de leitura do jogo
 
 Decisão posterior: preservar os tempos automáticos das falas e permitir clique/toque para adiantar um balão, tanto para narrador quanto personagens. Esse é o padrão geral; substitui a espera manual do jardim. A transição da casa voltou a mostrar a descida, a abelha alterna parábolas entre dois pontos de repouso e o besouro entra por fora da tela. Especificação permanente em `docs/diario-ia/padroes/DIALOGOS-E-CENAS.md`.
+
+
+## 27/10/2026 — Resposta ao dano no jardim
+
+Yuna passa a reagir aos golpes com um recuo visível do tronco, um pequeno sinal de contato e um som de impacto acompanhado da reação da menina. O piscar permanece como indicação de proteção após o golpe. A mudança preserva o caminho dos saltos e o controle; o modo fácil mantém os resgates. Esta é a primeira etapa da revisão dos feedbacks, ainda sujeita à avaliação e aprovação do usuário.
+
+
+## 28/10/2026 — Derrota dos insetos no jardim
+
+Formigas e lagartas deixam um corpo comprimido por um breve intervalo antes de sair gradualmente da cena. Abelhas e formigas das pedras do rio caem girando, em vez de desaparecer logo após o pisão. Os corpos deixam de oferecer risco imediatamente; os saltos de Yuna e a dificuldade permanecem os mesmos. A revisão está em validação e será apresentada para aprovação antes do próximo item da pipeline.
+
+
+## 28/10/2026 — Besouros e chegada à outra margem
+
+As duas fugas do besouro sobre rios passam a terminar quando Yuna pousa com os pés seguros na outra margem, devolvendo o movimento ao jogador. A travessia não perde a corrida automática ao completar seis segundos no ar. O encontro das nuvens finais mantém os seis segundos anteriores, e o pulo continua manual. Saves anteriores retomam na mesma posição; o formato atual conserva fugas mais longas. A revisão será apresentada para aprovação antes dos ajustes da arena.
+
+## 28/10/2026 — Espada e resposta dos brinquedos na arena
+
+A travessia dos besouros foi aprovada pelo usuário. A próxima entrega reforça o corte da espada desde o primeiro ataque, mantém o som durante o lançamento do especial e dá prioridade ao impacto sobre as confirmações de corações. Trem, Robô, Dinossauro e Urso inclinam e comprimem o corpo ao receber o golpe, inclusive quando a borda limita o recuo. A reação reaproveita as pinturas existentes e mantém as regras, os tempos de recuperação e o recuo físico. O enquadramento da arena pertence a outra etapa. A entrega passou pelos testes completos e está registrada no diário de IA para aprovação própria antes da próxima etapa.
+
+### Revisão — soco do Robô
+
+O usuário apontou um punch atrasado na segunda luta. O som vinha da preparação do contra-ataque do Robô, pouco depois de receber a espadada. O soco passa a acompanhar o avanço da luva, e o bloqueio encerra sua cauda para destacar o choque da defesa. A reação ao dano continua no contato da espada. A revisão concluiu a validação de jogabilidade e aguarda o usuário conferir novamente o áudio para aprovação; a próxima tarefa não foi iniciada.
+
+## 28/10/2026 — Espaço para tocar no quarto escuro
+
+O usuário aprovou a revisão do áudio do Robô. A etapa seguinte abre uma área inferior para os dedos no quarto escuro e indica onde tocar para pular, mantendo a tela inteira sensível. Em retrato, a cena sobe sem reduzir a escala anterior; em paisagem, o quadro abre para conter o salto inteiro acima da área de toque. O nível fica no topo central, com largura adaptada a telas menores. A altura e a escala continuam fixas durante cada viewport: salto e pouso não reenquadram a ação. Física, apoios e dificuldade permanecem os mesmos. A implementação concluiu os testes de jogabilidade e foi aprovada pelo usuário. O relatório e as evidências estão no diário de IA.
+
+
+## 28/10/2026 — Aproximação dos lutadores na arena
+
+O usuário aprovou a área de toque do quarto escuro e autorizou a etapa da câmera da arena. O quadro aproxima os lutadores no corpo a corpo e abre quando se afastam, com aproximação mais lenta para reduzir oscilações. Margens conservam as pinturas, os golpes e o salto; HUD e controles mantêm sua área. A abertura para o baú começa na derrota do brinquedo e conserva a troca visível. O corte da espada arco-íris mantém sua sequência. Física, alcance e dificuldade permanecem os mesmos. A entrega concluiu a validação de jogabilidade e foi aprovada pelo usuário. O relatório completo está no diário de IA.
+
+
+## 28/10/2026 — Aprovações consolidadas e revisão da caminhada
+
+Estão aprovados os ajustes de dano e derrota dos insetos no jardim, encerramento das fugas dos besouros nas margens, espada e impacto dos brinquedos (incluindo a revisão do soco do Robô), área útil do quarto móvel e câmera da arena. Decisões, alterações, testes e limitações foram consolidados no diário de IA, preservando os registros anteriores. O usuário autorizou continuar com a caminhada do quarto escuro e da sala de brinquedos: reduzir patinação e revisar os passos com e sem carga, preservando física, peso e câmeras. Essa etapa terá validação completa e aprovação própria antes das sombras2D.
+
+## 28/10/2026 — Passos ligados ao deslocamento
+
+Na sala de brinquedos, a menina passa a repousar quando o móvel ou a parede bloqueia seu movimento; carregar peso e usar o analógico parcialmente também desacelera as passadas. A poeira acompanha o percurso e nasce junto aos pés. No quarto escuro, o relógio da caminhada acompanha o deslocamento apoiado e fica suspenso no ar. As pinturas atuais foram reaproveitadas, sem alterar peso, velocidade, saltos, colisões ou câmeras. A validação e a aprovação desta etapa são registradas separadamente no diário de IA.
+
+## 28/10/2026 — Revisão das pernas após avaliação do usuário
+
+A cadência por distância não resolveu a percepção de corrida: o usuário observou que as pernas ainda pareciam um GIF repetido incorretamente. A etapa foi reaberta. A exploração passou a compor as pernas por articulações contínuas, com fases de apoio e retorno, usando peças pintadas próprias e o corpo/rosto existentes. A corrida rápida também ganha movimento, e a partida/parada deixa as pernas assentarem gradualmente. Com carga, o movimento é mais contido e as mãos acompanham o brinquedo. A avaliação visual desta revisão permanece com o usuário; a próxima etapa aguarda essa aprovação.
+
+## 28/10/2026 — Caminhada aprovada; sombras da sala2D
+
+O usuário aprovou a revisão das pernas (“boa. Pode passar para a próxima tarefa”). A etapa seguinte trata da profundidade visual durante a organização dos brinquedos: contato sob Yuna, móveis e brinquedos e projeções coerentes com as duas janelas. As sombras usam as pinturas existentes, acompanham a carga e os retornos ao chão e aparecem também sobre tapetes. As elipses genéricas são substituídas nesse passe para evitar duplicação; as sombras já pintadas são preservadas. Física, peso, câmera e funcionamento dos objetos continuam os mesmos. A nova apresentação das sombras aguarda avaliação própria do usuário.
+
+
+### 29/10/2026 — aparência das pernas na caminhada
+
+Após apontamento do usuário, a caminhada passou a reaproveitar a pele, as meias e as botas das poses originais. A variante de peças novas deixou de ser carregada; suas fontes continuam preservadas. O movimento contínuo foi mantido e a parada volta à pintura original. A avaliação visual desta correção permanece com o usuário; a próxima etapa não foi iniciada.

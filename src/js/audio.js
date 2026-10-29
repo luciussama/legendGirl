@@ -885,6 +885,14 @@ export function createAudioSystem() {
 
     if (arena) {
       if (effectsPaused || isMuted) return false;
+      // O corte tem resposta imediata mesmo no primeiro golpe, antes de decodificar o MP3.
+      // A amostra acrescenta o timbre; não substitui o início sincronizado do gesto.
+      if (event === 'player_attack') {
+        scheduleSwordSound(state.audioCtx, getDestination() || state.audioCtx.destination,
+          registerActiveNode, event);
+        arenaEffects.play(state.audioCtx, getDestination(), event);
+        return true;
+      }
       if (arenaEffects.play(state.audioCtx, getDestination(), event)) return true;
     }
 
@@ -902,6 +910,8 @@ export function createAudioSystem() {
 
     let [startFrequency, endFrequency, waveform, volume, duration] = profile;
     if (arena) { startFrequency *= 0.7; endFrequency *= 0.65; volume = Math.min(0.24, volume * 1.35); duration *= 1.2; }
+    // A transferência continua audível, abaixo do contato e da reação do brinquedo.
+    if (arena && (event === 'heart_gain' || event === 'heart_loss')) volume *= .25;
     const now = state.audioCtx.currentTime;
     const oscillator = state.audioCtx.createOscillator();
     const gain = state.audioCtx.createGain();

@@ -1,3 +1,4 @@
+import {gardenDefeatFrame} from './GardenDefeatPresentation.js';
 import {beginDialogueFrame,endDialogueFrame} from '../narrative/DialogueFlow.js';
 import {drawGardenBeetle} from './GardenBeetleRenderer.js';
 import {drawGardenBee} from './GardenBeeRenderer.js';
@@ -38,14 +39,14 @@ export class GardenRenderer {
   controls(){return gardenControls(this.canvas,getDialogueSafeArea(this.canvas));}
   /** Somente x acompanha a menina; pulo, terreno e apoio não mudam altura ou escala. */
   frame(state){const {width,height}=this.canvas,safe=getDialogueSafeArea(this.canvas),scale=Math.min((safe.right-safe.left)/680,(safe.bottom-safe.top)/690),worldWidth=width/scale;return{scale,ox:Math.max(0,Math.min(C.width-worldWidth,state.player.x-worldWidth*.36)),oy:(height>width?height*.70:height*.81)-C.ground*scale};}
-  sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0){
+  sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0){
     const def=GARDEN_ART.sets[set],f=(fear?FEAR_FRAMES[set]:def.frames)[index],image=this.images.get(fear?FEAR_FILES[set]:def.file);if(!image)return;
     const scale=height/GARDEN_ART.referenceHeight;ctx.save();ctx.translate(x,y);ctx.scale(flip,1);
-    if(fear){
+    if(fear||reaction){
       // Só o tronco oscila: pernas e sapatos conservam a posição física exata.
       const cut=Math.floor(f.h*.58),base=(-f.anchorY+cut)*scale;
       ctx.drawImage(image,f.x,f.y+cut,f.w,f.h-cut,-f.anchorX*scale,base,f.w*scale,(f.h-cut)*scale);
-      ctx.translate(0,base);ctx.rotate(agitation);ctx.drawImage(image,f.x,f.y,f.w,cut,-f.anchorX*scale,-cut*scale,f.w*scale,cut*scale);
+      ctx.translate(0,base);ctx.rotate(agitation+reaction);ctx.drawImage(image,f.x,f.y,f.w,cut,-f.anchorX*scale,-cut*scale,f.w*scale,cut*scale);
     }else ctx.drawImage(image,f.x,f.y,f.w,f.h,-f.anchorX*scale,-f.anchorY*scale,f.w*scale,f.h*scale);
     ctx.restore();
   }
@@ -262,7 +263,15 @@ export class GardenRenderer {
       const picnic=GARDEN_PICNIC,image=this.images.get(picnic.file),width=400,scale=width/picnic.w;
       if(image)ctx.drawImage(image,picnic.x,picnic.y,picnic.w,picnic.h,C.goal+5,C.ground-picnic.groundAnchorY*scale,width,picnic.h*scale);
     }
-    for(const e of s.enemies){if(e.x<left||e.x>right||!e.alive&&e.defeatAge>.4)continue;ctx.save();ctx.translate(e.x,e.y);ctx.scale(e.direction,1);if(!e.alive){ctx.globalAlpha=Math.max(0,1-e.defeatAge/.4);ctx.scale(1,Math.max(.15,1-e.defeatAge*2));}if(e.type==='caterpillar'&&e.hp===1)this.prop(ctx,Math.floor(s.time*12)%2,-e.w/2,-e.h,e.w,e.h,'lagartaVermelha');else this.prop(ctx,(e.type==='ant'?4:6)+Math.floor(s.time*7)%2,-e.w/2,-e.h,e.w,e.h);ctx.restore();}
+    for(const e of s.enemies){
+      const support=GARDEN_PLATFORM_BY_ID.get(e.supportId),pose=gardenDefeatFrame(e,support?gardenSurfaceY(support,e.x):e.baseY);
+      if(!pose.visible||pose.x<left-100||pose.x>right+100)continue;
+      ctx.save();ctx.globalAlpha=pose.alpha;ctx.translate(pose.x,pose.y);ctx.rotate(pose.rotation);ctx.scale(e.direction,pose.squash);
+      const frame=e.alive?Math.floor(s.time*(e.type==='caterpillar'&&e.hp===1?12:7))%2:0;
+      if(e.type==='caterpillar'&&(e.hp===1||!e.alive))this.prop(ctx,frame,-e.w/2,-e.h,e.w,e.h,'lagartaVermelha');
+      else this.prop(ctx,(e.type==='ant'?4:6)+frame,-e.w/2,-e.h,e.w,e.h);
+      ctx.restore();
+    }
     for(const worm of s.encounters?.worms??[]){
       if(Math.abs(worm.x-s.player.x)>1100)continue;
       const f=INSECT_FRAMES[4],image=this.images.get('runtime/insetos-v1.png'),near=Math.max(0,Math.min(1,(500-Math.abs(worm.x-s.player.x))/180));
@@ -270,13 +279,21 @@ export class GardenRenderer {
       if(image){const scale=72/f.h;ctx.drawImage(image,f.x,f.y+f.h*.82,f.w,f.h*.18,worm.x-f.w*scale/2,worm.y-4,f.w*scale,f.h*.18*scale);}
       if(worm.exposure>0){ctx.save();ctx.beginPath();ctx.rect(worm.x-60,worm.y-80,120,87);ctx.clip();this.insect(ctx,4+Math.floor(s.time*3)%2,worm.x,worm.y+9+(1-worm.exposure)*72,100,72);ctx.restore();}
     }
-    for(const bee of s.encounters?.bees??[]){if(Math.abs(bee.x-s.player.x)>1100||!bee.alive&&bee.defeatAge>.35)continue;drawGardenBee(ctx,this.images,bee,s.time);}
+    for(const bee of s.encounters?.bees??[]){if(Math.abs(bee.x-s.player.x)>1100)continue;drawGardenBee(ctx,this.images,bee,s.time);}
     const beetle=s.encounters?.panic??s.encounters?.exit;
     if(beetle){ctx.save();ctx.globalAlpha=s.encounters.panic?1:Math.max(0,1-beetle.age);const t=Math.max(0,Math.min(1,(beetle.elapsed??1)/.85)),entry=t*t*(3-2*t),x=(f.ox-100)*(1-entry)+beetle.x*entry;drawGardenBeetle(ctx,this.images,{...beetle,x},s.time);ctx.restore();}
     const p=s.player;let {set,index}=gardenGirlPose(p,s.time);
-    if(s.immunity>0&&Math.floor(s.time*10)%2===0)ctx.globalAlpha=.5;
+    const hurt=Math.max(0,s.presentation?.hurtRemaining??0),hurtProgress=1-hurt/.48;
+    const recoil=hurt>0?Math.sin(Math.min(1,hurtProgress/.16)*Math.PI/2)*Math.pow(hurt/.48,.8)*.38*(s.presentation.hurtDirection??1):0;
+    if(!hurt&&s.immunity>0&&Math.floor(s.time*10)%2===0)ctx.globalAlpha=.5;
     if(s.stage==='COMPLETE'){set='menina-acoes-v1';index=s.age<1.5?5:6;}else if(s.stage==='FALLING'||s.stage==='GAME_OVER'||s.stage==='DISORIENTED'){set='menina-acoes-v1';index=4;}
-    ctx.save();ctx.translate(p.x,p.y);if(set==='menina-pedrinhas-v2')ctx.rotate(Math.sin(s.time*11)*.045);this.sprite(ctx,set,index,0,0,C.playerHeight,p.facing,Boolean(s.encounters?.panic),Math.sin(s.time*11)*.045);ctx.restore();ctx.globalAlpha=1;
+    ctx.save();ctx.translate(p.x,p.y);if(set==='menina-pedrinhas-v2')ctx.rotate(Math.sin(s.time*11)*.045);this.sprite(ctx,set,index,0,0,C.playerHeight,p.facing,Boolean(s.encounters?.panic),Math.sin(s.time*11)*.045,recoil*p.facing);ctx.restore();ctx.globalAlpha=1;
+    if(hurt>.28){
+      // Marca o contato no corpo; nunca altera a câmera ou a superfície dos pés.
+      const t=hurtProgress/.42,x=p.x-(s.presentation.hurtDirection??1)*23,y=p.y-58;
+      ctx.save();ctx.globalAlpha=Math.max(0,1-t);ctx.strokeStyle='#fff8d6';ctx.lineWidth=3;ctx.fillStyle='#f5bd53';
+      ctx.beginPath();for(let i=0;i<10;i++){const a=i*Math.PI/5,r=(i%2?4:11)*(1+t*.6),px=x+Math.cos(a)*r,py=y+Math.sin(a)*r;if(i)ctx.lineTo(px,py);else ctx.moveTo(px,py);}ctx.closePath();ctx.stroke();ctx.fill();ctx.restore();
+    }
     if(s.encounters?.panic){ctx.fillStyle='#a5e5f5';ctx.strokeStyle='#579cb8';ctx.lineWidth=.6;for(let i=0;i<3;i++){const t=(s.time*3+i/3)%1,x=p.x-p.facing*(18+t*24),y=p.y-78-t*18;ctx.beginPath();ctx.ellipse(x,y,1.5+2*t,3.2+2*t,-.6*p.facing,0,Math.PI*2);ctx.fill();ctx.stroke();}}
     this.grassFront(ctx,s,platforms);this.effort(ctx,s);this.fairy(ctx,s);ctx.restore();
     const safe=getDialogueSafeArea(canvas),css=width/(canvas.clientWidth||width),u=Math.max(css,Math.min(width/680,height/500)),narration=['INTRO','FALLING','GAME_OVER','RESCUING','DISORIENTED'].includes(s.stage)||s.player.x<500;

@@ -1,11 +1,12 @@
+import {gardenFeet} from './GardenContact.js';
 import {GARDEN_PLATFORM_BY_ID,gardenSurfaceY} from './GardenLevel.js';
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 // Encontros distribuídos em chão amplo, fora dos primeiros saltos e das rodas.
 const homes=['primeiros-bichinhos','trecho-0-clareira','trecho-2-clareira','trecho-6-clareira-relevo-1','trecho-8-clareira'];
 const wormHomes=['pedrinhas-da-roda','trecho-2-pedrinhas','trecho-6-pedrinhas','trecho-8-pedrinhas'];
 export const GARDEN_BEETLES=Object.freeze([
-  {id:'besouro-riacho-1',x:GARDEN_PLATFORM_BY_ID.get('trecho-0-margem').x+120},
-  {id:'besouro-riacho-2',x:GARDEN_PLATFORM_BY_ID.get('trecho-4-margem').x+120},
+  {id:'besouro-riacho-1',x:GARDEN_PLATFORM_BY_ID.get('trecho-0-margem').x+120,safeBank:'trecho-0-clareira'},
+  {id:'besouro-riacho-2',x:GARDEN_PLATFORM_BY_ID.get('trecho-4-margem').x+120,safeBank:'trecho-4-clareira'},
   {id:'besouro-nuvens-finais',x:GARDEN_PLATFORM_BY_ID.get('nuvem-final-0').x-240}
 ].map(Object.freeze));
 export function createGardenEncounters(){
@@ -17,14 +18,16 @@ export function tickGardenWorm(e,s,dt){
   if(distance<280)e.emerging=true;else if(distance>360)e.emerging=false;
   e.exposure=clamp(e.exposure+(e.emerging?1:-1)*dt/.22,0,1);e.h=Math.max(0,e.exposure*72-9);
 }
-/** O besouro é inofensivo: só a direção muda, durante seis segundos ativos. */
+/** Nos rios, o susto termina no pouso seguro da outra margem; nas nuvens, em seis segundos. */
 export function tickGardenBeetles(s,dt,events){
   const e=s.encounters,p=s.player;
   if(e.exit){e.exit.age+=dt;e.exit.x-=240*dt;e.exit.y-=170*dt;if(e.exit.age>=1)e.exit=null;}
   if(e.panic){
-    const q=e.panic;q.remaining=Math.max(0,q.remaining-dt);q.elapsed=6-q.remaining;
+    const q=e.panic;q.elapsed+=dt;q.remaining=Math.max(0,6-q.elapsed);
     const mix=1-Math.exp(-dt*8);q.x+=(p.x-135-q.x)*mix;q.y+=(p.y-70+Math.sin(s.time*16)*6-q.y)*mix;
-    if(q.remaining<=1e-8){e.exit={x:q.x,y:q.y,age:0};events.push({type:'calm',enemy:q.id});e.panic=null;}
+    const definition=GARDEN_BEETLES.find(b=>b.id===q.id),bank=GARDEN_PLATFORM_BY_ID.get(definition?.safeBank),support=GARDEN_PLATFORM_BY_ID.get(p.support);
+    const finished=bank?Boolean(p.onGround&&support?.ground&&gardenFeet(p).left>=bank.x):q.remaining<=1e-8;
+    if(finished){e.exit={x:q.x,y:q.y,age:0};events.push({type:'calm',enemy:q.id});e.panic=null;}
     return;
   }
   const next=GARDEN_BEETLES.find(b=>!e.consumed.includes(b.id)&&p.onGround&&p.x>=b.x&&p.x<b.x+220);
@@ -38,7 +41,7 @@ export function resetGardenPanic(s,targetX){
 /** Rasantes alternam A/B: repouso fixo no ar e parábola baixa em ambos os sentidos. */
 export function tickGardenBee(e,s,dt){
   const old={x:e.x,y:e.y};
-  if(!e.alive){e.defeatAge+=dt;return old;}
+  if(!e.alive)return old;
   e.age+=dt;e.cooldown=Math.max(0,e.cooldown-dt);
   if(e.phase==='patrol'){
     // Repouso significa posição fixa; o bater das asas continua no renderizador.
@@ -62,7 +65,7 @@ export function sweptGardenContact(previous,player,old,enemy){
   for(let i=0;i<2;i++){const d=b[i]-a[i];if(Math.abs(d)<1e-9){if(a[i]<min[i]||a[i]>max[i])return false;}else{const t0=(min[i]-a[i])/d,t1=(max[i]-a[i])/d;enter=Math.max(enter,Math.min(t0,t1));leave=Math.min(leave,Math.max(t0,t1));}}
   return enter<=leave;
 }
-export function restoreGardenEncounters(saved,version=9){
+export function restoreGardenEncounters(saved,version=10){
   const out=createGardenEncounters();
   if(!saved||!Array.isArray(saved.bees)||saved.bees.length!==out.bees.length)throw new TypeError('Encontros do jardim inválidos.');
   out.bees=out.bees.map((e,i)=>{
@@ -87,7 +90,10 @@ export function restoreGardenEncounters(saved,version=9){
     if(!Array.isArray(saved.consumed)||new Set(saved.consumed).size!==saved.consumed.length||saved.consumed.some(id=>!GARDEN_BEETLES.some(b=>b.id===id)))throw new TypeError('Encontros consumidos inválidos.');out.consumed=[...saved.consumed];
   }
   if(saved.panic){
-    const p=saved.panic;if(!out.consumed.includes(p.id)||!['x','y','remaining','elapsed'].every(k=>Number.isFinite(p[k]))||p.remaining<=0||p.remaining>6||Math.abs(p.elapsed+p.remaining-6)>.001||p.x<0||p.x>50000||Math.abs(p.y)>2000)throw new TypeError('Pânico salvo inválido.');out.panic={id:p.id,remaining:p.remaining,elapsed:p.elapsed,x:p.x,y:p.y};
+    const p=saved.panic,river=GARDEN_BEETLES.find(b=>b.id===p.id)?.safeBank;
+    const clockValid=version>=10&&river?p.elapsed>=0&&p.elapsed<=100000&&p.remaining>=0&&p.remaining<=6&&Math.abs(p.remaining-Math.max(0,6-p.elapsed))<=.001:p.remaining>0&&p.remaining<=6&&Math.abs(p.elapsed+p.remaining-6)<=.001;
+    if(!out.consumed.includes(p.id)||!['x','y','remaining','elapsed'].every(k=>Number.isFinite(p[k]))||!clockValid||p.x<0||p.x>50000||Math.abs(p.y)>2000)throw new TypeError('Pânico salvo inválido.');
+    out.panic={id:p.id,remaining:p.remaining,elapsed:p.elapsed,x:p.x,y:p.y};
   }
   if(saved.exit){const e=saved.exit;if(!['x','y','age'].every(k=>Number.isFinite(e[k]))||e.age<0||e.age>1||e.x<0||e.x>50000||Math.abs(e.y)>2000)throw new TypeError('Saída de besouro inválida.');out.exit={x:e.x,y:e.y,age:e.age};}
   return out;

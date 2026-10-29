@@ -753,8 +753,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
     // No NORMAL, o passo de aproximação acompanha o salto, sem frenagem ao sair do apoio.
     if (baby.onGround && !state.isEscapeMode && !state.isPhase3 && state.gameDifficulty !== 'EASY') baby.vx = 2;
+    const walkStartX = baby.x;
+    const walkStartedGrounded = baby.onGround;
     baby.x += baby.vx * dt;
-    baby.animTime += (baby.vx !== 0 ? 0.15 : 0) * dt;
     baby.vy += baby.gravity * dt;
     baby.y += baby.vy * dt;
 
@@ -1007,6 +1008,17 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       }
     } else {
       baby.onGround = false;
+    }
+
+    // Só a distância percorrida sobre o apoio avança os passos. Saltos,
+    // pousos assistidos e reposicionamento no castelo não contam como caminhada.
+    if (dt > 0 && walkStartedGrounded && baby.onGround) {
+      baby.animTime += Math.abs(baby.x - walkStartX) * (0.15 / baby.baseVx);
+    }
+    if (dt > 0) {
+      const running = baby.onGround && Math.abs(baby.vx) > .05;
+      const blend = baby.runBlend ?? 0;
+      baby.runBlend = running ? Math.min(1, blend + dt / 8) : Math.max(0, blend - dt / 8);
     }
 
     // Verifica se passou direto da primeira plataforma sem pular

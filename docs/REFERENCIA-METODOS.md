@@ -26,6 +26,12 @@ Regenerar na raiz: `node scripts/generate-method-reference.js`. Revise também a
 | `clearRegionCache()` | Método declarado | 188 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `createAssetManager(options)` | Função | 193 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
+## src/js/assets/GirlLocomotionArt.js
+
+[Implementação](../src/js/assets/GirlLocomotionArt.js). Contratos exportados/reexportados: `GIRL_LOCOMOTION_ART`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
 ## src/js/assets/currentScenery.js
 
 [Implementação](../src/js/assets/currentScenery.js). Contratos exportados/reexportados: `CURRENT_SCENERY`, `drawCurrentScenery`.
@@ -113,9 +119,9 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `playOrganizeChime()` | Função | 783 | Aciona o som/cue correspondente ou sua delegação de áudio. |
 | `playToyRoomVictory()` | Função | 809 | Aciona o som/cue correspondente ou sua delegação de áudio. |
 | `playCombatSound(event, arena = false)` | Função | 842 | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playArenaMusicBeat(beat)` | Função | 922 | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `stopArenaMusic()` | Função | 940 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `getAudioContext()` | API/lambda de objeto | 990 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `playArenaMusicBeat(beat)` | Função | 932 | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `stopArenaMusic()` | Função | 950 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `getAudioContext()` | API/lambda de objeto | 1000 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/bear-chase/BearChasePhase.js
 
@@ -729,13 +735,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/controllers/MobileZoom.js
 
-[Implementação](../src/js/controllers/MobileZoom.js). Contratos exportados/reexportados: `isMobileDevice`, `getMobileZoomFrame`.
+[Implementação](../src/js/controllers/MobileZoom.js). Contratos exportados/reexportados: `isMobileDevice`, `getDarkRoomMobileFrame`, `getMobileZoomFrame`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `isMobileDevice(nav = globalThis.navigator)` | Função | 2 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getMobileZoomFrame({ enabled, width, height, bounds, anchor, margin = 24, stable = false, anticipate = false })` | Função | 8 | Retorna escala e translações de apresentação a partir dos limites/alvo. |
-| `clamp(value, min, max)` | Função atribuída | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `getDarkRoomMobileFrame({ width, height, cameraY, floorY, layout, anticipate = false })` | Função | 9 | Calcula composição fixa por viewport/safe area, com envelope autorado de salto e rodapé reservado ao toque; não consulta atores. |
+| `getMobileZoomFrame({ enabled, width, height, bounds, anchor, margin = 24, stable = false, anticipate = false })` | Função | 28 | Retorna escala e translações de apresentação a partir dos limites/alvo. |
+| `clamp(value, min, max)` | Função atribuída | 43 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/controllers/ViewportController.js
 
@@ -818,11 +825,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor()` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `setAssets(assets)` | Método declarado | 7 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `resolveAnimationState(baby, state)` | Método declarado | 8 | Escolhe animação oficial conforme ação e flags do estado. |
-| `renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1, visualScale = 1)` | Método declarado | 75 | Desenha recorte ancorado no centro/pés, com escala visual. |
-| `render(ctx, baby, state = {}, camX = 0, options = {})` | Método declarado | 105 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `constructor()` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `setAssets(assets)` | Método declarado | 8 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `resolveAnimationState(baby, state)` | Método declarado | 9 | Escolhe animação oficial conforme ação e flags do estado. |
+| `renderPose(ctx, assets, pose, frameIndex, centerX, feetY, height, facing = 1, visualScale = 1)` | Método declarado | 76 | Desenha recorte ancorado no centro/pés, com escala visual. |
+| `render(ctx, baby, state = {}, camX = 0, options = {})` | Método declarado | 106 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/entities/FairyRenderer.js
 
@@ -831,6 +838,24 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `render(ctx, fairy, state = {}, camX = 0, options = {})` | Método declarado | 18 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+
+## src/js/entities/GirlLocomotion.js
+
+[Implementação](../src/js/entities/GirlLocomotion.js). Contratos exportados/reexportados: `sampleGirlLocomotion`, `drawGirlLocomotion`, `girlLocomotionDistance`, `renderGirlRun`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(value, low, high)` | Função atribuída | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sampleGirlLocomotion(distance, carrying = false, amount = 1)` | Função | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `canvas(width, height)` | Função | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepare(assets)` | Função | 44 | Prepara contexto visual da introdução; consulte dependências no módulo. |
+| `bodyLayer(data, assets, frame)` | Função | 53 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restingLegLayer(data, assets, frame)` | Função | 73 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `legParts(data, assets)` | Função | 86 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawLeg(ctx, parts, leg, index)` | Função | 114 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawGirlLocomotion(ctx, assets, frame, distance, carrying = false, amount = 1)` | Função | 131 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `girlLocomotionDistance(animTime, height, room = false)` | Função | 172 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderGirlRun(ctx, assets, actor, centerX, feetY, height, facing, visualScale = 1, room = false)` | Função | 177 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/entities/index.js
 
@@ -980,40 +1005,40 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `drawCutsceneDialogue(transform)` | Função | 654 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `drawTutorialArrow(camX)` | Função | 667 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `update(dt = 1.0)` | Função | 677 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `onLagBehind()` | API/lambda de objeto | 1057 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render()` | Função | 1066 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `togglePause()` | Função | 1076 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setPaused(value)` | Função | 1095 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `saveProgress()` | Função | 1101 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreProgress(saved)` | Função | 1113 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `newCampaign({ preserveProgress = false } = {})` | Função | 1137 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | 1157 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `saveOnHide()` | Função atribuída | 1192 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `recordCameraQa(transform = null)` | Função | 1210 | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
-| `loop(currentTime = performance.now())` | Função | 1214 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isFirstJumpTutorial()` | API/lambda de objeto | 1254 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGrounded()` | API/lambda de objeto | 1256 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | 1257 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGameOver()` | API/lambda de objeto | 1258 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | 1259 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | 1261 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `advanceDialogue(event)` | Função | 1265 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
-| `pauseMusic()` | API/lambda de objeto | 1309 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `resumeMusic()` | API/lambda de objeto | 1310 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setMasterVolume(v)` | API/lambda de objeto | 1311 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getMasterVolume()` | API/lambda de objeto | 1312 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `setMuted(m)` | API/lambda de objeto | 1313 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `isMuted()` | API/lambda de objeto | 1314 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | 1315 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isPaused()` | API/lambda de objeto | 1316 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `hasProgress()` | API/lambda de objeto | 1319 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `hasSavedCampaign()` | API/lambda de objeto | 1320 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getDifficulty()` | API/lambda de objeto | 1321 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `destroy()` | Método declarado | 1326 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `start(difficulty = 'NORMAL')` | Método declarado | 1337 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `isGrounded()` | API/lambda de objeto | 1359 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | 1360 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | 1369 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `onLagBehind()` | API/lambda de objeto | 1069 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render()` | Função | 1078 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `togglePause()` | Função | 1088 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setPaused(value)` | Função | 1107 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `saveProgress()` | Função | 1113 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restoreProgress(saved)` | Função | 1125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `newCampaign({ preserveProgress = false } = {})` | Função | 1149 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | 1169 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `saveOnHide()` | Função atribuída | 1204 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `recordCameraQa(transform = null)` | Função | 1222 | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
+| `loop(currentTime = performance.now())` | Função | 1226 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isFirstJumpTutorial()` | API/lambda de objeto | 1266 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGrounded()` | API/lambda de objeto | 1268 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | 1269 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGameOver()` | API/lambda de objeto | 1270 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | 1271 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | 1273 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `advanceDialogue(event)` | Função | 1277 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
+| `pauseMusic()` | API/lambda de objeto | 1321 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `resumeMusic()` | API/lambda de objeto | 1322 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setMasterVolume(v)` | API/lambda de objeto | 1323 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getMasterVolume()` | API/lambda de objeto | 1324 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setMuted(m)` | API/lambda de objeto | 1325 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `isMuted()` | API/lambda de objeto | 1326 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | 1327 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isPaused()` | API/lambda de objeto | 1328 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasProgress()` | API/lambda de objeto | 1331 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasSavedCampaign()` | API/lambda de objeto | 1332 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getDifficulty()` | API/lambda de objeto | 1333 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `destroy()` | Método declarado | 1338 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `start(difficulty = 'NORMAL')` | Método declarado | 1349 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `isGrounded()` | API/lambda de objeto | 1371 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | 1372 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | 1381 | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/garden/GardenArt.js
 
@@ -1027,14 +1052,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(host)` | Método declarado | 3 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `unlock()` | Método declarado | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tone(frequency,duration=.25,volume=.035,slide=frequency)` | Método declarado | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `playMusic()` | Método declarado | 11 | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `update(state,paused=false)` | Método declarado | 16 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `event(type)` | Método declarado | 23 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clear()` | Método declarado | 24 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `destroy()` | Método declarado | 25 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(host)` | Método declarado | 4 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `unlock()` | Método declarado | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tone(frequency,duration=.25,volume=.035,slide=frequency)` | Método declarado | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `hurt()` | Método declarado | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `playMusic()` | Método declarado | 23 | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `update(state,paused=false)` | Método declarado | 28 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `event(type)` | Método declarado | 35 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clear()` | Método declarado | 36 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `destroy()` | Método declarado | 37 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenBeeRenderer.js
 
@@ -1042,7 +1068,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `drawGardenBee(ctx,images,bee,time)` | Função | 4 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawGardenBee(ctx,images,bee,time)` | Função | 5 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/garden/GardenBeetleArt.js
 
@@ -1093,20 +1119,30 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
+## src/js/garden/GardenDefeatPresentation.js
+
+[Implementação](../src/js/garden/GardenDefeatPresentation.js). Contratos exportados/reexportados: `gardenDefeatFrame`, `advanceGardenDefeats`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(value,min,max)` | Função atribuída | 1 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gardenDefeatFrame(enemy,groundY=enemy.baseY)` | Função | 3 | Calcula corpo comprimido ou queda visual de inseto derrotado por até 1,6 s, sem alterar coordenadas de colisão. |
+| `advanceGardenDefeats(state,seconds)` | Função | 11 | Avança uma vez por subpasso os relógios visuais dos corpos, inclusive fora da vizinhança e em encerramento. |
+
 ## src/js/garden/GardenEncounters.js
 
 [Implementação](../src/js/garden/GardenEncounters.js). Contratos exportados/reexportados: `GARDEN_BEETLES`, `createGardenEncounters`, `tickGardenWorm`, `tickGardenBeetles`, `resetGardenPanic`, `tickGardenBee`, `sweptGardenContact`, `restoreGardenEncounters`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(n,a,b)` | Função atribuída | 2 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createGardenEncounters()` | Função | 11 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `tickGardenWorm(e,s,dt)` | Função | 15 | Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão. |
-| `tickGardenBeetles(s,dt,events)` | Função | 21 | Ativa corrida automática por seis segundos ativos, acompanha a menina e encerra o besouro inofensivo. |
-| `resetGardenPanic(s,targetX)` | Função | 34 | Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar. |
-| `tickGardenBee(e,s,dt)` | Função | 39 | Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s. |
-| `sweptGardenContact(previous,player,old,enemy)` | Função | 59 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreGardenEncounters(saved,version=9)` | Função | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clamp(n,a,b)` | Função atribuída | 3 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createGardenEncounters()` | Função | 12 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `tickGardenWorm(e,s,dt)` | Função | 16 | Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão. |
+| `tickGardenBeetles(s,dt,events)` | Função | 22 | Ativa corrida automática até o pouso seguro na outra margem dos rios; mantém seis segundos no encontro das nuvens finais. |
+| `resetGardenPanic(s,targetX)` | Função | 37 | Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar. |
+| `tickGardenBee(e,s,dt)` | Função | 42 | Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s. |
+| `sweptGardenContact(previous,player,old,enemy)` | Função | 62 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restoreGardenEncounters(saved,version=10)` | Função | 68 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/garden/GardenFearArt.js
 
@@ -1188,33 +1224,33 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | 30 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | 31 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `controls()` | Método declarado | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | 40 | Calcula pose visual estável sem escrever na simulação. |
-| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0)` | Método declarado | 41 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 52 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundPattern(type)` | Método declarado | 54 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundOutline(ctx,p,bottom)` | Método declarado | 70 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceTile(type,part='middle')` | Método declarado | 79 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 93 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrainBodies(ctx,platforms,bottom)` | Método declarado | 116 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrain(ctx,p,bottom,body=true)` | Método declarado | 125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | 136 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `rockFoot(ctx,p)` | Método declarado | 141 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | 146 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 162 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundJoins(ctx,platforms)` | Método declarado | 177 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grassFront(ctx,s,platforms)` | Método declarado | 185 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `effort(ctx,s)` | Método declarado | 193 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sceneryLayout()` | Método declarado | 201 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `scenery(ctx,s,left,right)` | Método declarado | 216 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,s)` | Método declarado | 222 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | 228 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `message(ctx,text,options)` | Método declarado | 234 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `narrative(ctx,s)` | Método declarado | 239 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 240 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | 306 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | 31 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | 32 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `controls()` | Método declarado | 39 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | 41 | Calcula pose visual estável sem escrever na simulação. |
+| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0)` | Método declarado | 42 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | 53 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundPattern(type)` | Método declarado | 55 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundOutline(ctx,p,bottom)` | Método declarado | 71 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceTile(type,part='middle')` | Método declarado | 80 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | 94 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrainBodies(ctx,platforms,bottom)` | Método declarado | 117 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrain(ctx,p,bottom,body=true)` | Método declarado | 126 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | 137 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rockFoot(ctx,p)` | Método declarado | 142 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | 147 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | 163 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundJoins(ctx,platforms)` | Método declarado | 178 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grassFront(ctx,s,platforms)` | Método declarado | 186 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `effort(ctx,s)` | Método declarado | 194 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sceneryLayout()` | Método declarado | 202 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `scenery(ctx,s,left,right)` | Método declarado | 217 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,s)` | Método declarado | 223 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | 229 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `message(ctx,text,options)` | Método declarado | 235 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `narrative(ctx,s)` | Método declarado | 240 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | 241 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | 323 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenSimulation.js
 
@@ -1222,18 +1258,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(n,a,b)` | Função atribuída | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyRange(enemy)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createGardenState(difficulty='NORMAL')` | Função | 13 | Cria domínio v9 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis. |
-| `recoverTarget(s,kind)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `beginRecovery(s,kind,events)` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `defeat(s,kind,events)` | Função | 36 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `retryGarden(s,difficulty=s.difficulty)` | Função | 42 | Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros. |
-| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 51 | Valida saves v1–v9 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos. |
-| `fairyTick(s,dt,platforms)` | Função | 101 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyTick(e,s,dt)` | Função | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tick(s,input,dt,events)` | Função | 154 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 277 | Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos. |
+| `clamp(n,a,b)` | Função atribuída | 6 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemyRange(enemy)` | Função | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createGardenState(difficulty='NORMAL')` | Função | 14 | Cria domínio v10 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis. |
+| `hurtPlayer(s,source,events)` | Função | 22 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `recoverTarget(s,kind)` | Função | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `beginRecovery(s,kind,events)` | Função | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `defeat(s,kind,events)` | Função | 46 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `retryGarden(s,difficulty=s.difficulty)` | Função | 52 | Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros. |
+| `restoreGardenState(saved,difficulty='NORMAL')` | Função | 61 | Valida saves v1–v10 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos. |
+| `fairyTick(s,dt,platforms)` | Função | 111 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemyTick(e,s,dt)` | Função | 125 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tick(s,input,dt,events)` | Função | 164 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stepGarden(state,input={},seconds=1/60,difficulty=state.difficulty)` | Função | 289 | Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos. |
 
 ## src/js/garden/GardenVisualArt.js
 
@@ -1423,12 +1460,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor()` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `update(dt, player, enemy, jump = 0, impact = null)` | Método declarado | 8 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `envelope(player, enemy, jump)` | Método declarado | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(layout, room, battle)` | Método declarado | 25 | Calcula pose visual estável sem escrever na simulação. |
-| `snapshot()` | Método declarado | 47 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 48 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `constructor()` | Método declarado | 10 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `update(dt, player, enemy, jump = 0, impact = null, battle = null)` | Método declarado | 11 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `envelope(player, enemy, jump, battle = null, anticipate = false)` | Método declarado | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(layout, room, battle)` | Método declarado | 42 | Calcula pose visual estável sem escrever na simulação. |
+| `snapshot()` | Método declarado | 65 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 66 | Reaplica a captura específica; confira referências e dados transitórios. |
 
 ## src/js/toy-room/ArenaCombatContact.js
 
@@ -1622,8 +1659,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `clamp(n, a, b)` | Função atribuída | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `battleAnimationFrame(animation, enemy, duration, tuning = BATTLE_TUNING)` | Função | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `renderBattle(battle)` | Função | 24 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `hearts(hp, max)` | Função atribuída | 127 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderBattleImpact(ctx, impact)` | Função | 160 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `hearts(hp, max)` | Função atribuída | 137 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBattleImpact(ctx, impact)` | Função | 170 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/DamageAudio.js
 
@@ -1632,8 +1669,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `scheduleDamageSound(ctx, destination, register, actor, arena = false)` | Função | 10 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `connectVoice(source, nodes, start, end)` | Função atribuída | 14 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `envelope(volume, start, duration, attack = 0.004)` | Função atribuída | 24 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `connectVoice(source, nodes, start, end)` | Função atribuída | 15 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `envelope(volume, start, duration, attack = 0.004)` | Função atribuída | 25 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/DamageSpriteFrames.js
 
@@ -1678,19 +1715,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderBackground(ctx, roomW, roomH, options = {})` | Método declarado | 29 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawWoodStrip(ctx, image, x, y, width, height, plain = false)` | Método declarado | 156 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawWoodTrim(ctx, image, roomW, roomH)` | Método declarado | 165 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderPerspectiveFloor(ctx, tile, roomW, roomH)` | Método declarado | 180 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawArchedWindow(ctx, wx, wy, windowImage = null)` | Método declarado | 216 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawEntrancePortal(ctx, dx, dy, environmentDoor = null)` | Método declarado | 277 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawCentralMandalaRug(ctx, cx, cy)` | Método declarado | 306 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawFloralPlayMat(ctx, rx, ry, rugImage = null)` | Método declarado | 353 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawBedsideFringeRug(ctx, bx, by, rugImage = null)` | Método declarado | 402 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `traceTrainCircuit(ctx)` | Método declarado | 432 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createWoodenTrackLayer(image)` | Método declarado | 436 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `drawTrainTracks(ctx, trackImage = null)` | Método declarado | 493 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderFurniture(ctx, f, options = {})` | Método declarado | 538 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderBackground(ctx, roomW, roomH, options = {})` | Método declarado | 31 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawWoodStrip(ctx, image, x, y, width, height, plain = false)` | Método declarado | 157 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawWoodTrim(ctx, image, roomW, roomH)` | Método declarado | 166 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderPerspectiveFloor(ctx, tile, roomW, roomH)` | Método declarado | 181 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawArchedWindow(ctx, wx, wy, windowImage = null)` | Método declarado | 217 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawEntrancePortal(ctx, dx, dy, environmentDoor = null)` | Método declarado | 278 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawCentralMandalaRug(ctx, cx, cy)` | Método declarado | 307 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawFloralPlayMat(ctx, rx, ry, rugImage = null)` | Método declarado | 354 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBedsideFringeRug(ctx, bx, by, rugImage = null)` | Método declarado | 403 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `traceTrainCircuit(ctx)` | Método declarado | 433 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createWoodenTrackLayer(image)` | Método declarado | 437 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `drawTrainTracks(ctx, trackImage = null)` | Método declarado | 494 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderFurniture(ctx, f, options = {})` | Método declarado | 539 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/SwordAudio.js
 
@@ -1710,9 +1747,9 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `carriedSprite(toy, options)` | Função | 19 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderToyCarry(ctx, player, options = {})` | Função | 37 | Compõe pose, brinquedo e contatos visuais usando CARRY_PROFILES; sem pose/item devolve false. |
-| `drawBody()` | Função atribuída | 52 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `carriedSprite(toy, options)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderToyCarry(ctx, player, options = {})` | Função | 38 | Compõe pose, brinquedo e contatos visuais usando CARRY_PROFILES; sem pose/item devolve false. |
+| `drawBody()` | Função atribuída | 56 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRenderer.js
 
@@ -1781,16 +1818,16 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `playCombatSound(sound)` | Método declarado | 210 | Aciona o som/cue correspondente ou sua delegação de áudio. |
 | `setEnemyState(state)` | Método declarado | 217 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `beginEnemyAttack(attack)` | Método declarado | 224 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyGuarding()` | Método declarado | 243 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `beginEnemyResponse()` | Método declarado | 247 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startImpact(target, x, y, direction, heavy)` | Método declarado | 255 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `update(dt)` | Método declarado | 264 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `step(dt)` | Método declarado | 295 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `enemyPose(e = this.state.enemy)` | Método declarado | 521 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render()` | Método declarado | 526 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderImpact(ctx, impact)` | Método declarado | 528 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `snapshot()` | Método declarado | 530 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 531 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `enemyGuarding()` | Método declarado | 244 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `beginEnemyResponse()` | Método declarado | 248 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startImpact(target, x, y, direction, heavy)` | Método declarado | 256 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `update(dt)` | Método declarado | 265 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `step(dt)` | Método declarado | 296 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `enemyPose(e = this.state.enemy)` | Método declarado | 527 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render()` | Método declarado | 532 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderImpact(ctx, impact)` | Método declarado | 534 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `snapshot()` | Método declarado | 536 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 537 | Reaplica a captura específica; confira referências e dados transitórios. |
 
 ## src/js/toy-room/ToyRoomCamera.js
 
@@ -1826,8 +1863,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderPlayer(ctx, player, options = {})` | Método declarado | 12 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderFairy(ctx, fairy, options = {})` | Método declarado | 24 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderPlayer(ctx, player, options = {})` | Método declarado | 13 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderFairy(ctx, fairy, options = {})` | Método declarado | 28 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRoomEnvironmentAssets.js
 
@@ -1946,6 +1983,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `victoryBannerTimer()` | Acessor | 29 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `victoryBannerTimer(value)` | Acessor | 30 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
+## src/js/toy-room/ToyRoomLighting.js
+
+[Implementação](../src/js/toy-room/ToyRoomLighting.js). Contratos exportados/reexportados: `TOY_ROOM_WINDOWS`, `getToyRoomFloorLight`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `getToyRoomFloorLight(x, y)` | Função | 7 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+
 ## src/js/toy-room/ToyRoomMovement.js
 
 [Implementação](../src/js/toy-room/ToyRoomMovement.js). Contratos exportados/reexportados: `updateToyRoomMovement`, `resolveToyRoomCollisions`.
@@ -1953,7 +1998,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `updateToyRoomMovement({ player, keysDown, gamepadState, touchState, footstepPuffs, resolveCollisions }, dt)` | Função | 2 | Aplica prioridade das entradas, peso, orientação, passos e integração da exploração. |
-| `resolveToyRoomCollisions({ width, height, furniture }, px, py, r)` | Função | 70 | Limita a posição e resolve móveis na ordem original, conservando o desempate de penetrações. |
+| `resolveToyRoomCollisions({ width, height, furniture }, px, py, r)` | Função | 78 | Limita a posição e resolve móveis na ordem original, conservando o desempate de penetrações. |
 
 ## src/js/toy-room/ToyRoomOrientation.js
 
@@ -2025,46 +2070,46 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {})` | Método declarado | 36 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `inputController()` | Acessor | 119 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setupListeners()` | Método declarado | 126 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getCanvasCoordinates(e)` | Método declarado | 128 | Converte evento de ponteiro para coordenadas internas da sala. |
-| `isActionButtonHit(coords)` | Método declarado | 130 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `handleKeyDown(e)` | Método declarado | 132 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleKeyUp(e)` | Método declarado | 134 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `pollGamepad()` | Método declarado | 136 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onPointerDown(e)` | Método declarado | 138 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerMove(e)` | Método declarado | 140 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerUp(e)` | Método declarado | 142 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `clearInput()` | Método declarado | 144 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `refreshArenaTouchButtons()` | Método declarado | 146 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | 148 | Cria partículas/efeitos no buffer correspondente. |
-| `spawnConfetti(x, y, count = 35)` | Método declarado | 152 | Cria partículas/efeitos no buffer correspondente. |
-| `interaction()` | Acessor | 156 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triggerAction()` | Método declarado | 162 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
-| `startChasePreview(saved = null)` | Método declarado | 165 | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
-| `startChaseCampaign(saved = null)` | Método declarado | 177 | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
-| `handleCampaignChaseError(chase, message)` | Método declarado | 201 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | 222 | Descarta perseguição e controles da sala e inicia GardenPhase com recursos, física e áudio próprios. |
-| `resolveCollisions(px, py, r)` | Método declarado | 231 | Resolve colisões da sala com móveis. |
-| `update(dt = 1.0)` | Método declarado | 238 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `updateActiveMode(dt)` | Método declarado | 253 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `resolveCollisions(x, y, radius)` | API/lambda de objeto | 297 | Resolve colisões da sala com móveis. |
-| `setDifficulty(difficulty)` | Método declarado | 319 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `retryDefeat({ resume = false } = {})` | Método declarado | 327 | Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual. |
-| `updateCamera(dt)` | Método declarado | 352 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `getCameraFrame()` | Método declarado | 360 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `render(options = {})` | Método declarado | 367 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `startTutorial()` | Método declarado | 377 | Inicia orientação guiada da Toy Room se ainda não concluída. |
-| `persistence()` | Acessor | 379 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `snapshot(options)` | Método declarado | 384 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, options)` | Método declarado | 386 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `destroy()` | Método declarado | 389 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 401 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `update(dt)` | API/lambda de objeto | 404 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | API/lambda de objeto | 405 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `triggerAction()` | API/lambda de objeto | 406 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
-| `destroy()` | API/lambda de objeto | 407 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {})` | Método declarado | 37 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `inputController()` | Acessor | 121 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setupListeners()` | Método declarado | 128 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getCanvasCoordinates(e)` | Método declarado | 130 | Converte evento de ponteiro para coordenadas internas da sala. |
+| `isActionButtonHit(coords)` | Método declarado | 132 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `handleKeyDown(e)` | Método declarado | 134 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleKeyUp(e)` | Método declarado | 136 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `pollGamepad()` | Método declarado | 138 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onPointerDown(e)` | Método declarado | 140 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerMove(e)` | Método declarado | 142 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerUp(e)` | Método declarado | 144 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `clearInput()` | Método declarado | 146 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `refreshArenaTouchButtons()` | Método declarado | 148 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | 150 | Cria partículas/efeitos no buffer correspondente. |
+| `spawnConfetti(x, y, count = 35)` | Método declarado | 154 | Cria partículas/efeitos no buffer correspondente. |
+| `interaction()` | Acessor | 158 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triggerAction()` | Método declarado | 164 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
+| `startChasePreview(saved = null)` | Método declarado | 167 | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
+| `startChaseCampaign(saved = null)` | Método declarado | 179 | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
+| `handleCampaignChaseError(chase, message)` | Método declarado | 203 | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | 224 | Descarta perseguição e controles da sala e inicia GardenPhase com recursos, física e áudio próprios. |
+| `resolveCollisions(px, py, r)` | Método declarado | 233 | Resolve colisões da sala com móveis. |
+| `update(dt = 1.0)` | Método declarado | 240 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `updateActiveMode(dt)` | Método declarado | 255 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `resolveCollisions(x, y, radius)` | API/lambda de objeto | 301 | Resolve colisões da sala com móveis. |
+| `setDifficulty(difficulty)` | Método declarado | 323 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `retryDefeat({ resume = false } = {})` | Método declarado | 331 | Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual. |
+| `updateCamera(dt)` | Método declarado | 356 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `getCameraFrame()` | Método declarado | 364 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `render(options = {})` | Método declarado | 371 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `startTutorial()` | Método declarado | 381 | Inicia orientação guiada da Toy Room se ainda não concluída. |
+| `persistence()` | Acessor | 383 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `snapshot(options)` | Método declarado | 388 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved, options)` | Método declarado | 390 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `destroy()` | Método declarado | 393 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | 405 | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `update(dt)` | API/lambda de objeto | 408 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | API/lambda de objeto | 409 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `triggerAction()` | API/lambda de objeto | 410 | Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual. |
+| `destroy()` | API/lambda de objeto | 411 | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/toy-room/ToyRoomSceneFrame.js
 
@@ -2081,7 +2126,22 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `renderToyRoomScene(scene, options = {})` | Função | 7 | Compõe cenário, entidades por Y, efeitos, HUD e falas com os dados do quadro. |
+| `renderToyRoomScene(scene, options = {})` | Função | 8 | Compõe cenário, entidades por Y, efeitos, HUD e falas com os dados do quadro. |
+
+## src/js/toy-room/ToyRoomShadows.js
+
+[Implementação](../src/js/toy-room/ToyRoomShadows.js). Contratos exportados/reexportados: `prepareToyRoomShadows`, `getToyRoomShadowItems`, `renderToyRoomShadows`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `canvas(width, height)` | Função | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `contactStamp()` | Função | 17 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `makeCaster(width, height, draw, rootX = 0, rootY = null)` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `store(scene)` | Função | 84 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `caster(data, scene, type, item)` | Função | 91 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareToyRoomShadows(assets)` | Função | 107 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `getToyRoomShadowItems(scene)` | Função | 118 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `renderToyRoomShadows(ctx, scene)` | Função | 127 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRoomStory.js
 
@@ -2270,15 +2330,16 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/ui/FirstJumpTutorial.js
 
-[Implementação](../src/js/ui/FirstJumpTutorial.js). Contratos exportados/reexportados: `FIRST_JUMP_MESSAGES`, `getFirstJumpTutorialDevice`, `getFirstJumpFeedback`, `renderFirstJumpTutorial`.
+[Implementação](../src/js/ui/FirstJumpTutorial.js). Contratos exportados/reexportados: `renderDarkRoomTouchHint`, `FIRST_JUMP_MESSAGES`, `getFirstJumpTutorialDevice`, `getFirstJumpFeedback`, `renderFirstJumpTutorial`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `getFirstJumpTutorialDevice({ device, nav = globalThis.navigator, coarse } = {})` | Função | 10 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getFirstJumpFeedback(timeMs, reducedMotion = false)` | Função | 21 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `drawInputIcon(ctx, kind, x, y, unit, pulse)` | Função | 26 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `renderFirstJumpTutorial(ctx, canvas, { state, baby, fairy, platform, cameraX, transform, device, timeMs = globalThis.performance?.now?.() \|\| 0, reducedMotion = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches \|\| false })` | Função | 52 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `project(x, y)` | Função atribuída | 61 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderDarkRoomTouchHint(ctx, canvas, state)` | Função | 6 | Desenha indicação de pulo no rodapé móvel sem restringir a área de entrada nem duplicar o tutorial inicial. |
+| `getFirstJumpTutorialDevice({ device, nav = globalThis.navigator, coarse } = {})` | Função | 24 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getFirstJumpFeedback(timeMs, reducedMotion = false)` | Função | 35 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `drawInputIcon(ctx, kind, x, y, unit, pulse)` | Função | 40 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderFirstJumpTutorial(ctx, canvas, { state, baby, fairy, platform, cameraX, transform, device, timeMs = globalThis.performance?.now?.() \|\| 0, reducedMotion = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches \|\| false })` | Função | 66 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `project(x, y)` | Função atribuída | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/ui/HudRenderer.js
 
@@ -2349,4 +2410,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **175 módulos JavaScript**, **1146 declarações nomeadas**.
+Inventário: **180 módulos JavaScript**, **1173 declarações nomeadas**.

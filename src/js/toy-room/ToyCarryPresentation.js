@@ -1,6 +1,7 @@
 import { babyRenderer } from '../entities/BabyRenderer.js';
 import { GIRL_V2_FRAMES, GIRL_V2_REFERENCE_HEIGHT } from '../assets/illustratedGirl.js';
 import { toyRenderer } from './ToyRenderer.js';
+import { drawGirlLocomotion, girlLocomotionDistance, sampleGirlLocomotion } from '../entities/GirlLocomotion.js';
 
 // Medidas exclusivamente visuais; não alteram coleta, peso, velocidade ou colisões.
 export const CARRY_PROFILES = Object.freeze({
@@ -37,7 +38,8 @@ function carriedSprite(toy, options) {
 export function renderToyCarry(ctx, player, options = {}) {
   const toy = player.carriedItem; if (!toy) return;
   const facing = player.facing === 'left' ? -1 : 1;
-  const frameIndex = player.isMoving ? [1, 2, 3, 2][Math.floor((player.animTime || 0) * .9) % 4] : 0;
+  const moving = player.isMoving || player.runBlend > 0;
+  const frameIndex = 0;
   const frame = GIRL_V2_FRAMES.carry[frameIndex], image = options.assets?.get(frame.key);
   if (!image) {
     // A seleção anterior permanece disponível durante a ausência dos novos recursos.
@@ -48,13 +50,22 @@ export function renderToyCarry(ctx, player, options = {}) {
     toyRenderer.renderToy(ctx, { ...toy, x: 0, y: 0, isCarried: true }, 0, 0, true, 0, options); ctx.restore(); return;
   }
   const unit = 80 / GIRL_V2_REFERENCE_HEIGHT;
+  const distance = girlLocomotionDistance(player.animTime, 80, true), amount = player.runBlend ?? 1;
+  const bob = moving ? sampleGirlLocomotion(distance, true, amount).bob : 0;
   ctx.save(); ctx.translate(player.x, player.y + 28); ctx.scale(facing, 1);
-  const drawBody = () => ctx.drawImage(image, frame.x, frame.y, frame.w, frame.h,
-    -frame.anchorX * unit, -frame.anchorY * unit, frame.w * unit, frame.h * unit);
+  const drawBody = () => {
+    if (moving) {
+      ctx.save(); ctx.scale(unit, unit);
+      const drawn = drawGirlLocomotion(ctx, options.assets, frame, distance, true, amount);
+      ctx.restore(); if (drawn) return;
+    }
+    ctx.drawImage(image, frame.x, frame.y, frame.w, frame.h,
+      -frame.anchorX * unit, -frame.anchorY * unit, frame.w * unit, frame.h * unit);
+  };
   drawBody();
   const sprite = carriedSprite(toy, options), profile = CARRY_PROFILES[toy.type] || CARRY_PROFILES.teddy;
   const handX = (frame.w * .965 - frame.anchorX) * unit;
-  const handY = (frame.h * .52 - frame.anchorY) * unit;
+  const handY = (frame.h * .52 - frame.anchorY + bob) * unit;
   if (sprite) {
     const scale = Math.min(profile.maxWidth / sprite.w, profile.maxHeight / sprite.h);
     const width = sprite.w * scale, height = sprite.h * scale;
@@ -69,7 +80,7 @@ export function renderToyCarry(ctx, player, options = {}) {
     [1,.507],[.987,.539],[.925,.555],[.793,.57],[.604,.57],[.539,.55]];
   ctx.save(); ctx.beginPath();
   outline.forEach(([x, y], i) => {
-    const px = (frame.w * x - frame.anchorX) * unit, py = (frame.h * y - frame.anchorY) * unit;
+    const px = (frame.w * x - frame.anchorX) * unit, py = (frame.h * y - frame.anchorY + bob) * unit;
     if (i) ctx.lineTo(px, py); else ctx.moveTo(px, py);
   });
   ctx.closePath(); ctx.clip(); drawBody(); ctx.restore(); ctx.restore();

@@ -236,7 +236,8 @@ export class ToyRoomBattle {
       Bite: 'dinosaur_bite', Rush: 'dinosaur_rush',
       'Bear Hug': 'bear_hug', 'Belly Charge': 'bear_charge', 'Toy Leap': 'bear_leap'
     };
-    this.playCombatSound(sounds[attack]);
+    // Na arena, o soco acompanha a extensão da luva, não o começo da preparação.
+    if (!this.presentation || attack !== 'Rocket Punch') this.playCombatSound(sounds[attack]);
   }
 
   /** A resposta tem preparação visível; a abertura vem após o impacto, nunca por insistência. */
@@ -448,6 +449,11 @@ export class ToyRoomBattle {
       if (e.elapsed >= (profile?.retreatTime??30)) this.setEnemyState('IDLE');
     } else if (e.state === 'ATTACK') {
       const impactEnd = arenaEnemyImpactEnd(e, t);
+      // O transiente do MP3 chega junto à extensão completa, quatro quadros depois.
+      // Cruzar o marco no relógio da simulação evita timers e repetição após restore.
+      const punchSoundAt = t.windup - 4;
+      if (profile && e.attack === 'Rocket Punch' && e.elapsed >= punchSoundAt && e.elapsed - dt < punchSoundAt)
+        this.playCombatSound('robot_punch');
       // Um erro de defesa permite só uma continuação, com nova antecipação completa.
       if (profile && profile.pressureChain !== false && e.actor !== 'train' && e.landed && e.elapsed >= impactEnd && !e.pressureChain) {
         e.pressureChain = 1;
