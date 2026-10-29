@@ -1,6 +1,6 @@
 # Perseguição no quarto em 3D
 
-Revisão: 26/10/2026. Na campanha, a vitória sobre o urso na arena inicia a fuga sob fade, sem mostrar a sala intermediária. O save retoma a etapa salva. Consulte o [manual da transição](MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
+Revisão: 29/10/2026. Na campanha, a vitória sobre o urso na arena inicia a fuga sob fade, sem mostrar a sala intermediária. O save retoma a etapa salva. Consulte o [manual da transição](MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md).
 
 Para acesso isolado de debug, execute `npm run dev` e, no ícone de bandeira, escolha **Perseguição 3D**.
 Para sair, escolha outra fase. Essa execução de debug conserva a campanha salva
@@ -127,9 +127,9 @@ Web Audio ou Three.js. Desenho e som consomem estado/eventos sem decidir dano.
 Resultados e fontes de QA ficam no diário de IA. Emulação e avanço controlado não
 homologam dificuldade humana, Safari ou aparelhos físicos.
 
-## Modelo 3D da protagonista — revisão 4
+## Modelo 3D da protagonista — revisão 5
 
-A revisão atual acompanha a menina ilustrada girl-v2: vestido creme inteiro, barra e faixa rosa, mangas bufantes, laço nas costas, bordado floral, botas marrons e duas marias-chiquinhas curtas com laços. A cabeça foi ajustada mantendo o rig compacto e o apoio das pernas. As costas continuam uma interpretação em volume; não presumir homologação humana de todas as vistas.
+A revisão atual acompanha a menina ilustrada girl-v2: vestido creme inteiro, barra e faixa rosa, mangas bufantes, laço nas costas, bordado floral, botas marrons e duas marias-chiquinhas curtas com laços. Cabeça e cabelo têm escala conjunta menor, enquanto tronco, braços e pernas foram alongados para aproximar a silhueta da pintura. A franja acompanha as têmporas em volume; os cachos laterais deixam de formar placas. As costas continuam uma interpretação em volume; não presumir homologação humana de todas as vistas.
 
 `ChaseGirlPalette.js` e `assets/models/bear-chase/paleta-menina.json` vêm de `node scripts/prepare-chase-palette.js`: regiões do novo `girl-v2/source/locomocao.png`, mediana 7×7, limiar de alfa e hash. A guarda azul da espada conserva seu material anterior, explicitamente registrado. Detalhes rígidos do mesmo material são agrupados por articulação; 120 pétalas de baixa tesselação usam uma única malha instanciada. Dois rabos e pontas recebem movimento secundário sem alterar a simulação. A fada orbital e os dois mapas de sombra conservam seu contrato.
 
@@ -137,7 +137,7 @@ O construtor gera malhas locais; o GLB é intercâmbio em pose neutra, regenerad
 `node scripts/export-chase-girl.js`. A animação não está embutida no GLB. O renderer
 compartilha geometrias e controla descarte. A frente é -Z, pés na origem. Apoio dos
 pés é resolvido por articulações; a inclinação responde à velocidade lateral e
-retorna ao eixo ao parar o desvio. A passada mantém dois apoios por ciclo com os
+retorna ao eixo ao parar o desvio. `ChaseGirlModel.proportions` define os comprimentos de braços e pernas e a altura da sola. O solver de `ChaseGirlAnimation` transforma o alvo do pé para o quadril, resolve os dois segmentos e compensa a orientação completa do tornozelo. Assim, a oscilação e a rotação do quadril preservam o apoio, inclusive no repouso. A espada usa o novo comprimento do antebraço para permanecer na mão. A passada mantém dois apoios por ciclo com os
 intervalos dos passos gravados. Física, obstáculos e hitboxes mantêm seus contratos.
 
 ## Comparação visual para revisão

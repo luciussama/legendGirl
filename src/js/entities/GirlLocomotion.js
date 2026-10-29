@@ -1,39 +1,12 @@
 import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
+import { sampleGirlLocomotion, girlGaitDirection } from './GirlGait.js';
+import { drawGirlUpperBody } from './GirlBodyLayers.js';
+export { sampleGirlLocomotion, girlGaitDirection } from './GirlGait.js';
+export { applyGirlBodyTransform } from './GirlBodyLayers.js';
 
-const TAU = Math.PI * 2;
 const caches = new WeakMap();
 const clamp = (value, low, high) => Math.max(low, Math.min(high, value));
 const smooth = value => value * value * (3 - 2 * value);
-
-/** Trajetória periódica: apoio recua no chão; retorno dobra o joelho e eleva o pé. */
-export function sampleGirlLocomotion(distance, carrying = false, amount = 1) {
-  const reach = 39, stance = .4;
-  const stride = reach * 2 / stance;
-  const phase = ((distance / stride) % 1 + 1) % 1;
-  const blend = smooth(clamp(amount, 0, 1));
-  const bob = -Math.pow(Math.sin(phase * TAU), 2) * (carrying ? 1.5 : 3) * blend;
-  const legs = [0, .5].map((offset, index) => {
-    const t = (phase + offset) % 1, planted = t < stance;
-    const u = planted ? t / stance : (t - stance) / (1 - stance);
-    const restX = index ? 7 : -17;
-    // Hermite conserva também a velocidade na emenda do ciclo, inclusive no contato.
-    const tangent = -2 * reach * (1 - stance) / stance;
-    const swingX = -reach + 2 * reach * smooth(u) + tangent * (2 * u * u * u - 3 * u * u + u);
-    const x = restX + (planted ? reach * (1 - 2 * u) : swingX) * blend;
-    const y = planted ? 0 : -Math.pow(Math.sin(Math.PI * u), 2) * (carrying ? 17 : 30) * blend;
-    const ankle = { x, y: y - 23 };
-    const hip = { x: index ? 7 : -9, y: -65 + bob };
-    const dx = ankle.x - hip.x, dy = ankle.y - hip.y;
-    const length = Math.hypot(dx, dy), upper = 36, lower = 31;
-    const cosine = clamp((upper * upper + length * length - lower * lower) / (2 * upper * length), -1, 1);
-    const along = upper * cosine, across = upper * Math.sqrt(1 - cosine * cosine);
-    const knee = { x: hip.x + dx * .54 + ((dx * along + dy * across) / length - dx * .54) * blend,
-      y: hip.y + dy * .54 + ((dy * along - dx * across) / length - dy * .54) * blend };
-    return { hip, knee, ankle, planted, soleY: y,
-      footAngle: planted ? 0 : -.5 * Math.pow(Math.sin(Math.PI * u), 2) * blend };
-  });
-  return { phase, stride, bob, legs };
-}
 
 function canvas(width, height) {
   const image = document.createElement('canvas'); image.width = width; image.height = height;
@@ -102,11 +75,16 @@ function legParts(data, assets) {
   bootCtx.translate(40, 35); bootCtx.rotate(.38); bootCtx.scale(.85, .85);
   bootCtx.drawImage(source, -22, -21);
   const pixels = bootCtx.getImageData(0, 0, boot.width, boot.height).data;
-  let bottom = 0;
+  let bottom = 0; const contour = [];
   for (let y = 0; y < boot.height; y++) for (let x = 0; x < boot.width; x++) {
-    if (pixels[(y * boot.width + x) * 4 + 3] >= 32) bottom = Math.max(bottom, y + 1);
+    if (pixels[(y * boot.width + x) * 4 + 3] >= 32) { bottom = Math.max(bottom, y + 1); contour.push([x - 40, y + 1]); }
   }
-  data.parts = { skinPattern, boot, bootX: 40, bootY: bottom - 23 };
+  const bootY = bottom - 23;
+  const soles = Array.from({ length: 161 }, (_, i) => {
+    const angle = (i - 80) / 100, sin = Math.sin(angle), cos = Math.cos(angle);
+    return Math.max(...contour.map(([x, y]) => x * sin + (y - bootY) * cos));
+  });
+  data.parts = { skinPattern, boot, bootX: 40, bootY, soles };
   return data.parts;
 }
 
@@ -123,12 +101,15 @@ function drawLeg(ctx, parts, leg, index) {
   ctx.strokeStyle = '#763e29'; ctx.lineWidth = index ? 26 : 24; ctx.stroke();
   ctx.strokeStyle = parts.skinPattern; ctx.lineWidth = index ? 22 : 20; ctx.stroke();
   ctx.restore();
-  ctx.save(); ctx.translate(leg.ankle.x, leg.ankle.y); ctx.rotate(leg.footAngle);
+  const angle = leg.footAngle, at = clamp((angle * 100 + 80), 0, 160);
+  const low = Math.floor(at), high = Math.min(160, low + 1);
+  const sole = parts.soles[low] + (parts.soles[high] - parts.soles[low]) * (at - low);
+  ctx.save(); ctx.translate(leg.ankle.x, leg.soleY - sole); ctx.rotate(angle);
   ctx.drawImage(parts.boot, -parts.bootX, -parts.bootY); ctx.restore();
 }
 
 /** Desenha em coordenadas da pintura (256 px), na origem dos pés, já orientada pelo chamador. */
-export function drawGirlLocomotion(ctx, assets, frame, distance, carrying = false, amount = 1) {
+export function drawGirlLocomotion(ctx, assets, frame, distance, carrying = false, amount = 1, direction = { x: 1, y: 0 }) {
   const data = prepare(assets); if (!data) return false;
   const restingFrame = carrying ? GIRL_V2_FRAMES.carry[0] : GIRL_V2_FRAMES.idle[0];
   if (amount <= 0) {
@@ -138,7 +119,7 @@ export function drawGirlLocomotion(ctx, assets, frame, distance, carrying = fals
     return true;
   }
   const body = bodyLayer(data, assets, frame); if (!body) return false;
-  const pose = sampleGirlLocomotion(distance, carrying, amount);
+  const pose = sampleGirlLocomotion(distance, carrying, amount, direction);
   const parts = legParts(data, assets); if (!parts) return false;
   const legBlend = smooth(clamp(amount * 4, 0, 1));
   if (legBlend < 1) {
@@ -147,24 +128,13 @@ export function drawGirlLocomotion(ctx, assets, frame, distance, carrying = fals
     ctx.drawImage(original, -restingFrame.anchorX, -restingFrame.anchorY); ctx.restore();
   }
   ctx.save(); ctx.globalAlpha *= legBlend;
-  pose.legs.forEach((leg, index) => drawLeg(ctx, parts, leg, index));
+  pose.legs.map((leg, index) => ({ leg, index })).sort((a, b) => a.leg.groundY - b.leg.groundY || a.index - b.index)
+    .forEach(({ leg, index }) => drawLeg(ctx, parts, leg, index));
   ctx.restore();
   const idleFrame = GIRL_V2_FRAMES.idle[0];
-  const idle = !carrying ? bodyLayer(data, assets, idleFrame) : null;
-  if (idle) {
-    // Uma única cabeça: só braços/roupa transitam entre repouso e corrida.
-    // O registro pelo rosto evita duplicar olhos/cabelo durante a parada.
-    const offset = (frame.faceX - frame.anchorX) - (idleFrame.faceX - idleFrame.anchorX);
-    ctx.save(); ctx.beginPath(); ctx.rect(-200, -400, 400, 247 + pose.bob); ctx.clip();
-    ctx.drawImage(idle, -idleFrame.anchorX + offset * amount, -idleFrame.anchorY + pose.bob);
-    ctx.restore();
-    ctx.save(); ctx.beginPath(); ctx.rect(-200, -153 + pose.bob, 400, 180); ctx.clip();
-    ctx.save(); ctx.globalAlpha *= 1 - amount;
-    ctx.drawImage(idle, -idleFrame.anchorX, -idleFrame.anchorY + pose.bob); ctx.restore();
-  }
-  ctx.save(); ctx.globalAlpha *= idle ? amount : 1;
-  ctx.drawImage(body, -frame.anchorX, -frame.anchorY + pose.bob); ctx.restore();
-  if (idle) ctx.restore();
+  const idleBody = carrying ? body : bodyLayer(data, assets, idleFrame);
+  if (!idleBody) return false;
+  drawGirlUpperBody(ctx, assets, frame, body, idleFrame, idleBody, pose, amount, carrying);
   return true;
 }
 
@@ -180,6 +150,6 @@ export function renderGirlRun(ctx, assets, actor, centerX, feetY, height, facing
   const distance = girlLocomotionDistance(actor.animTime, height * visualScale, room);
   ctx.save(); ctx.translate(centerX, feetY); ctx.scale(facing * height / 256 * visualScale, height / 256 * visualScale);
   ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high';
-  const drawn = drawGirlLocomotion(ctx, assets, frame, distance, false, amount);
+  const drawn = drawGirlLocomotion(ctx, assets, frame, distance, false, amount, girlGaitDirection());
   ctx.restore(); return drawn;
 }

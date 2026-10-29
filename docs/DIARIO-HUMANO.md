@@ -211,3 +211,28 @@ O usuário aprovou a revisão das pernas (“boa. Pode passar para a próxima ta
 ### 29/10/2026 — aparência das pernas na caminhada
 
 Após apontamento do usuário, a caminhada passou a reaproveitar a pele, as meias e as botas das poses originais. A variante de peças novas deixou de ser carregada; suas fontes continuam preservadas. O movimento contínuo foi mantido e a parada volta à pintura original. A avaliação visual desta correção permanece com o usuário; a próxima etapa não foi iniciada.
+
+
+### 29/10/2026 — passada com reação do corpo
+
+A revisão da exploração passou a coordenar contato dos pés, absorção do peso e impulso com o quadril e o tronco. A cadência visual foi reduzida sem alterar o deslocamento do jogo. Braços alternam, cabeça compensa parte da inclinação e cabelo/vestido acompanham discretamente. Na sala, o apoio segue a direção percorrida; mãos e brinquedo permanecem juntos durante o transporte. A aparência usa as pinturas existentes. Avaliação visual do usuário ainda pendente.
+
+
+### 29/10/2026 — perspectiva uniforme na caminhada
+
+O usuário aprovou a atuação lateral e apontou contorção ao subir/descer: as pernas mudavam de orientação sem uma vista correspondente do torso. A sala passou a conservar corpo e pernas no mesmo perfil também nos movimentos verticais e diagonais. A caminhada lateral e a primeira fase foram preservadas. O deslocamento continua livre no piso; avaliação visual da correção ainda pendente.
+
+
+### 29/10/2026 — comandos de leitura
+
+A caminhada foi aprovada pelo usuário, que autorizou continuar para a etapa de leitura. Quadros de narrador e personagem passaram a indicar o avanço automático e o gesto de adiantar uma fala. Enter também funciona nas cenas de leitura bloqueadas, sem repetição por tecla mantida. No jardim, a opção de pular uma cena já vista ganhou botão separado dentro da moldura. Os tempos, as ações obrigatórias e os controles de jogo permanecem com seus donos existentes. A etapa está pronta para avaliação visual do usuário. A caminhada aprovada foi preservada; a etapa seguinte aguarda aprovação própria.
+
+
+### 29/10/2026 — proporção da menina na perseguição
+
+Os comandos de leitura foram aprovados pelo usuário. A revisão seguinte compara a menina3D com a pintura: cabeça e cabelo mais contidos, tronco e membros alongados, franja curva e botas apoiadas pela sola. A articulação usa os novos comprimentos e mantém a espada na mão. A mudança é de apresentação; as regras da perseguição são preservadas. A nova interpretação aguarda avaliação artística do usuário.
+
+
+### 29/10/2026 — aprovação da revisão3D
+
+O usuário aprovou a proporção e a articulação revisadas da menina3D. A etapa encerra a implementação do plano de feedbacks. O próximo passo recomendado é validar a experiência com jogadores e aparelhos reais antes de preparar a versão para publicação.

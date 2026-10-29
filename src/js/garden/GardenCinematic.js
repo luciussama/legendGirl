@@ -5,12 +5,12 @@ import {renderPoeticNarration} from '../narrative/PoeticNarrator.js';
 const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
 const dialogueMeasurements=new WeakMap();
 /** Reserva somente o espaço dos atores; a pintura continua por trás de todo o quadro. */
-function dialogueBottom(canvas,textCanvas,end){
-  const key=[textCanvas.width,textCanvas.clientWidth,textCanvas.height,end,globalThis.document?.fonts?.status].join(':');
+function dialogueBottom(canvas,textCanvas,end,seen){
+  const key=[textCanvas.width,textCanvas.clientWidth,textCanvas.height,end,seen,globalThis.document?.fonts?.status].join(':');
   let cache=dialogueMeasurements.get(canvas);
   if(cache?.key!==key){
     const measure=document.createElement('canvas').getContext('2d');
-    const bottom=Math.max(...(end?GARDEN_ENDING:GARDEN_OPENING).map(card=>{const box=renderPoeticNarration(measure,textCanvas,card.text+'\n ',{heading:card.speaker});return box.y+box.height;}));
+    const bottom=Math.max(...(end?GARDEN_ENDING:GARDEN_OPENING).map(card=>{const box=renderPoeticNarration(measure,textCanvas,card.text,{heading:card.speaker,canSkip:seen});return box.y+box.height;}));
     cache={key,bottom};dialogueMeasurements.set(canvas,cache);
   }
   return cache.bottom;
@@ -53,8 +53,9 @@ export function renderGardenCinematic(ctx,canvas,state,images){
   const toolbarBottom=toolbar&&rect?.height?(toolbar.bottom-rect.top)*height/rect.height:0;
   const inset=Math.max(safe.top,toolbarBottom>0?toolbarBottom+12*css:0);
   const lowLandscape=width>height&&(canvas.clientHeight||height)<480;
-  const textCanvas={width:safe.right-safe.left,height:height-inset,clientWidth:(safe.right-safe.left)/(css*(lowLandscape?.8:1))};
-  const maxBottom=inset+dialogueBottom(canvas,textCanvas,m.end)+12*css;
+  const textCanvas={width:safe.right-safe.left,height:height-inset,dialogueControlScale:css,clientWidth:(safe.right-safe.left)/(css*(lowLandscape?.8:1))};
+  const seen=state.story?.[m.end?'seenEnding':'seenOpening'];
+  const maxBottom=inset+dialogueBottom(canvas,textCanvas,m.end,seen)+12*css;
   const v={x:0,y:0,w:width,h:height};
   const portrait=height>width,p=smooth(m.time/m.card.duration),t=state.time;
   const close=m.end?(m.index>=2&&m.index<=7):(m.index===1||m.index>=4&&m.index<=7);
@@ -90,15 +91,10 @@ export function renderGardenCinematic(ctx,canvas,state,images){
     }
   }
   ctx.restore();
-  const done=state.story?.[m.end?'endingDone':'openingDone'],seen=state.story?.[m.end?'seenEnding':'seenOpening'];
-  ctx.save();ctx.translate(safe.left,inset);const box=done?null:renderPoeticNarration(ctx,textCanvas,m.card.text+(done?'':'\n '),{heading:m.card.speaker,advanceCanvas:canvas});
-  let skipBox=null;
-  if(!done&&box){
-    const y=box.y+box.height-18*css;
-    ctx.font=`600 ${12*css}px Georgia`;ctx.fillStyle='#846467';ctx.textAlign='center';
-    ctx.fillText('Avança sozinho • toque/Enter para adiantar',box.x-(seen?35*css:0),y,box.width-(seen?120:35)*css);
-    if(seen){const x=box.x+box.width/2-45*css;ctx.fillText('Pular (S)',x,y);skipBox={x:safe.left+x-35*css,y:inset+y-17*css,w:70*css,h:28*css};}
-  }
+  const done=state.story?.[m.end?'endingDone':'openingDone'];
+  ctx.save();ctx.translate(safe.left,inset);
+  const box=done?null:renderPoeticNarration(ctx,textCanvas,m.card.text,{heading:m.card.speaker,advanceCanvas:canvas,canSkip:seen===true});
+  const skipBox=box?.skip?{...box.skip,x:safe.left+box.skip.x,y:inset+box.skip.y}:null;
   ctx.restore();
   const alpha=Math.min(1,state.age/.45);
   if(alpha<1){ctx.fillStyle=`rgba(237,241,223,${1-alpha})`;ctx.fillRect(0,0,width,height);}

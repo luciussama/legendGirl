@@ -216,10 +216,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(model)` | Método declarado | 6 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `legPose(leg,z,y,hipHeight)` | Método declarado | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `apply(state)` | Método declarado | 16 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fall(state)` | Método declarado | 66 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(model)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `legPose(leg,z,y)` | Método declarado | 13 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `apply(state)` | Método declarado | 27 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fall(state)` | Método declarado | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseGirlModel.js
 
@@ -228,20 +228,21 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `constructor(own)` | Método declarado | 7 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `batchDetails(parent)` | Método declarado | 55 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `shade(geometry)` | Método declarado | 75 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `joint(parent,name,x,y,z)` | Método declarado | 84 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `volume(parent,material,position,scale)` | Método declarado | 88 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `limb(parent,material,length,end,start)` | Método declarado | 92 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildSleeve(parent)` | Método declarado | 97 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cloth(parent,material,profile,full)` | Método declarado | 112 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `silhouette(parent,material,points,depth,position)` | Método declarado | 133 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sweep(parent,material,points,radii)` | Método declarado | 140 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildHair()` | Método declarado | 157 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `bow(parent,position,size)` | Método declarado | 185 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildDressDetails()` | Método declarado | 194 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildFace()` | Método declarado | 208 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildSword()` | Método declarado | 219 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `batchDetails(parent)` | Método declarado | 58 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `shade(geometry)` | Método declarado | 78 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `joint(parent,name,x,y,z)` | Método declarado | 87 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `volume(parent,material,position,scale)` | Método declarado | 91 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `limb(parent,material,length,end,start)` | Método declarado | 95 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildSleeve(parent)` | Método declarado | 100 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cloth(parent,material,profile,full)` | Método declarado | 115 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `silhouette(parent,material,points,depth,position)` | Método declarado | 136 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sweep(parent,material,points,radii)` | Método declarado | 143 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildHair()` | Método declarado | 160 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `curveFringe(mesh)` | Método declarado | 188 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `bow(parent,position,size)` | Método declarado | 194 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildDressDetails()` | Método declarado | 203 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildFace()` | Método declarado | 217 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildSword()` | Método declarado | 228 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseGirlPalette.js
 
@@ -555,18 +556,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor({storage, onReveal = () => {}, onComplete = () => {}, onCue = () => {}} = {})` | Método declarado | 20 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `hasCompleted()` | Método declarado | 30 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `start({ replay = false } = {})` | Método declarado | 35 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `cancel()` | Método declarado | 43 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `reset()` | Método declarado | 44 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `snapshot()` | Método declarado | 48 | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved)` | Método declarado | 51 | Reaplica a captura específica; confira referências e dados transitórios. |
-| `advanceDialogue()` | Método declarado | 59 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
-| `revealing()` | Acessor | 65 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `update(dt)` | Método declarado | 66 | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `renderFade(ctx, canvas)` | Método declarado | 85 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `render(ctx, canvas, {assets, drawRoom, lighting, fairyRenderer})` | Método declarado | 92 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `constructor({storage, onReveal = () => {}, onComplete = () => {}, onCue = () => {}} = {})` | Método declarado | 21 | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `hasCompleted()` | Método declarado | 31 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `start({ replay = false } = {})` | Método declarado | 36 | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `cancel()` | Método declarado | 44 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `reset()` | Método declarado | 45 | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `snapshot()` | Método declarado | 49 | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved)` | Método declarado | 52 | Reaplica a captura específica; confira referências e dados transitórios. |
+| `advanceDialogue()` | Método declarado | 60 | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
+| `revealing()` | Acessor | 66 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `update(dt)` | Método declarado | 67 | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `renderFade(ctx, canvas)` | Método declarado | 86 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `render(ctx, canvas, {assets, drawRoom, lighting, fairyRenderer})` | Método declarado | 93 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/cinematics/ToyRoomIntroduction.js
 
@@ -839,23 +840,49 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `render(ctx, fairy, state = {}, camX = 0, options = {})` | Método declarado | 18 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
-## src/js/entities/GirlLocomotion.js
+## src/js/entities/GirlBodyLayers.js
 
-[Implementação](../src/js/entities/GirlLocomotion.js). Contratos exportados/reexportados: `sampleGirlLocomotion`, `drawGirlLocomotion`, `girlLocomotionDistance`, `renderGirlRun`.
+[Implementação](../src/js/entities/GirlBodyLayers.js). Contratos exportados/reexportados: `applyGirlBodyTransform`, `drawGirlUpperBody`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(value, low, high)` | Função atribuída | 5 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sampleGirlLocomotion(distance, carrying = false, amount = 1)` | Função | 9 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `canvas(width, height)` | Função | 38 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prepare(assets)` | Função | 44 | Prepara contexto visual da introdução; consulte dependências no módulo. |
-| `bodyLayer(data, assets, frame)` | Função | 53 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restingLegLayer(data, assets, frame)` | Função | 73 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `legParts(data, assets)` | Função | 86 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawLeg(ctx, parts, leg, index)` | Função | 114 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawGirlLocomotion(ctx, assets, frame, distance, carrying = false, amount = 1)` | Função | 131 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `girlLocomotionDistance(animTime, height, room = false)` | Função | 172 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderGirlRun(ctx, assets, actor, centerX, feetY, height, facing, visualScale = 1, room = false)` | Função | 177 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `canvas(width, height)` | Função | 3 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `polygon(ctx, points)` | Função | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `layers(assets, frame, body, carrying)` | Função | 12 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `copy()` | Função atribuída | 24 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `applyGirlBodyTransform(ctx, pose)` | Função | 47 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `image(ctx, layer, frame)` | Função | 51 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `arm(ctx, parts, index, angle)` | Função | 53 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clothes(ctx, parts, pose, alpha)` | Função | 60 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawGirlUpperBody(ctx, assets, frame, body, idleFrame, idleBody, pose, amount, carrying)` | Função | 71 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+
+## src/js/entities/GirlGait.js
+
+[Implementação](../src/js/entities/GirlGait.js). Contratos exportados/reexportados: `girlGaitDirection`, `sampleGirlLocomotion`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(v, a, b)` | Função atribuída | 2 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `curve(t, keys)` | Função | 7 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `girlGaitDirection()` | Função | 18 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sampleGirlLocomotion(distance, carrying = false, amount = 1, direction = { x: 1, y: 0 })` | Função | 24 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/entities/GirlLocomotion.js
+
+[Implementação](../src/js/entities/GirlLocomotion.js). Contratos exportados/reexportados: `drawGirlLocomotion`, `girlLocomotionDistance`, `renderGirlRun`, `sampleGirlLocomotion`, `girlGaitDirection`, `applyGirlBodyTransform`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(value, low, high)` | Função atribuída | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `canvas(width, height)` | Função | 11 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepare(assets)` | Função | 17 | Prepara contexto visual da introdução; consulte dependências no módulo. |
+| `bodyLayer(data, assets, frame)` | Função | 26 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restingLegLayer(data, assets, frame)` | Função | 46 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `legParts(data, assets)` | Função | 59 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawLeg(ctx, parts, leg, index)` | Função | 92 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawGirlLocomotion(ctx, assets, frame, distance, carrying = false, amount = 1, direction = { x: 1, y: 0 })` | Função | 112 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `girlLocomotionDistance(animTime, height, room = false)` | Função | 142 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderGirlRun(ctx, assets, actor, centerX, feetY, height, facing, visualScale = 1, room = false)` | Função | 147 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/entities/index.js
 
@@ -1090,7 +1117,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `dialogueBottom(canvas,textCanvas,end)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dialogueBottom(canvas,textCanvas,end,seen)` | Função | 8 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `gardenCinematicMoment(state)` | Função | 19 | Seleciona atuação e plano pelo progresso narrativo, separado da câmera de gameplay e do relógio da fala. |
 | `actor(ctx,images,index,x,base,height,time,breath=true)` | Função | 28 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `actorPair(ctx,images,a,b,x,base,height,time)` | Função | 34 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
@@ -1320,9 +1347,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `updateTutorialRetornoNarrative(context, dt)` | Função | 306 | Demonstra arco da fada e devolve controle no retorno. |
 | `updatePortalNarrative(context, dt)` | Função | 350 | Avança aproximação/íris do portal e dispara introdução da Toy Room. |
 
+## src/js/narrative/DialogueControls.js
+
+[Implementação](../src/js/narrative/DialogueControls.js). Contratos exportados/reexportados: `dialogueControlsHeight`, `drawDialogueControls`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `dialogueControlsHeight(scale=1,canSkip=false)` | Função | 4 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawDialogueControls(ctx,canvas,{left,top,width,scale=1,canSkip=false,color='#846467',buttonColor='#fff5e5'}={})` | Função | 7 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+
 ## src/js/narrative/DialogueFlow.js
 
-[Implementação](../src/js/narrative/DialogueFlow.js). Contratos exportados/reexportados: `beginDialogueFrame`, `endDialogueFrame`, `offerDialogue`, `setDialogueBounds`, `getDialogueBounds`, `installDialogueAdvance`.
+[Implementação](../src/js/narrative/DialogueFlow.js). Contratos exportados/reexportados: `beginDialogueFrame`, `endDialogueFrame`, `offerDialogue`, `setDialogueBounds`, `getDialogueBounds`, `isDialogueModal`, `installDialogueAdvance`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
@@ -1332,7 +1368,9 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `offerDialogue(canvas,text,onAdvance)` | Função | 7 | Registra a fala visível e seu callback de avanço; quadros dispensados ficam ocultos e canvases de medição não criam entrada. |
 | `setDialogueBounds(canvas,ctx,x,y,w,h)` | Função | 13 | Transforma os quatro cantos do quadro para pixels do canvas usados no hit-testing de leitura não modal. |
 | `getDialogueBounds(canvas)` | Função | 18 | Consulta os limites do quadro de diálogo atualmente registrado nesse canvas. |
-| `installDialogueAdvance(canvas,{enabled=()=>true,advance=()=>false,isModal=()=>true}={})` | Função | 19 | Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal. |
+| `isDialogueModal(canvas)` | Função | 19 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `installDialogueAdvance(canvas,{enabled=()=>true,advance=()=>false,isModal=()=>true}={})` | Função | 20 | Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal. |
+| `blur()` | Função atribuída | 44 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/narrative/PoeticNarrator.js
 
@@ -1340,8 +1378,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `getPauseNarration(state)` | Função | 18 | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `renderPoeticNarration(ctx, canvas, text, options = {})` | Função | 25 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `getPauseNarration(state)` | Função | 19 | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `renderPoeticNarration(ctx, canvas, text, options = {})` | Função | 26 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/rendering/DarkRoomRenderPipeline.js
 
@@ -1749,7 +1787,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `carriedSprite(toy, options)` | Função | 20 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `renderToyCarry(ctx, player, options = {})` | Função | 38 | Compõe pose, brinquedo e contatos visuais usando CARRY_PROFILES; sem pose/item devolve false. |
-| `drawBody()` | Função atribuída | 56 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBody()` | Função atribuída | 57 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/toy-room/ToyRenderer.js
 
@@ -2311,12 +2349,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `drawPortrait(pCtx, charType, px, py, radius, mood = 'normal', tick = 0, options = {})` | Método declarado | 29 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `wrapText(pCtx, text, maxWidth)` | Método declarado | 243 | Quebra texto conforme a largura medida pelo contexto. |
-| `renderCutsceneDialogue(ctx, canvas, state = {}, options = {})` | Método declarado | 272 | Compõe falas, retratos, prompts e áreas seguras. |
-| `renderDialogue(ctx, canvas, dialogue, options = {})` | Método declarado | 380 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `drawDialoguePortrait(pCtx, charType, px, py, radius, expression)` | Função atribuída | 387 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `wrapDialogueText(pCtx, text, maxWidth)` | Função atribuída | 389 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawPortrait(pCtx, charType, px, py, radius, mood = 'normal', tick = 0, options = {})` | Método declarado | 30 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `wrapText(pCtx, text, maxWidth)` | Método declarado | 244 | Quebra texto conforme a largura medida pelo contexto. |
+| `renderCutsceneDialogue(ctx, canvas, state = {}, options = {})` | Método declarado | 273 | Compõe falas, retratos, prompts e áreas seguras. |
+| `renderDialogue(ctx, canvas, dialogue, options = {})` | Método declarado | 381 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawDialoguePortrait(pCtx, charType, px, py, radius, expression)` | Função atribuída | 388 | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `wrapDialogueText(pCtx, text, maxWidth)` | Função atribuída | 390 | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/ui/DialogueSafeArea.js
 
@@ -2410,4 +2448,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **180 módulos JavaScript**, **1173 declarações nomeadas**.
+Inventário: **183 módulos JavaScript**, **1190 declarações nomeadas**.

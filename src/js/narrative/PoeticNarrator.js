@@ -1,3 +1,4 @@
+import {drawDialogueControls,dialogueControlsHeight} from './DialogueControls.js';
 import {offerDialogue,setDialogueBounds} from './DialogueFlow.js';
 import { getDialogueSafeArea } from '../ui/DialogueSafeArea.js';
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
@@ -40,7 +41,9 @@ export function renderPoeticNarration(ctx, canvas, text, options = {}) {
     lines.push(line);
   }
   const headingHeight = options.heading ? 30 * scale : 0;
-  const height = lines.length * lineHeight + 38 * scale + headingHeight;
+  const controlScale=canvas.dialogueControlScale??scale;
+  const controlsHeight=options.readingHint===false||options.interactive===false?0:dialogueControlsHeight(controlScale,options.canSkip===true);
+  const height = lines.length * lineHeight + 38 * scale + headingHeight + controlsHeight;
   const regions = options.separateScene
     ? renderMobileDialogueRegion(ctx, canvas, safe, height, options.anchor, 'top') : null;
   const x = (safe.left + safe.right) / 2;
@@ -68,7 +71,8 @@ export function renderPoeticNarration(ctx, canvas, text, options = {}) {
   ctx.font = `600 ${font}px "Caveat", "Segoe Print", cursive`;ctx.fillStyle = '#513e38';
   const start = y + 19 * scale + headingHeight + lineHeight / 2;
   lines.forEach((line, i) => ctx.fillText(line, x, start + i * lineHeight));
+  const controls=controlsHeight?drawDialogueControls(ctx,options.advanceCanvas??canvas,{left:left+18*scale,top:y+height-controlsHeight-6*scale,width:width-36*scale,scale:controlScale,canSkip:options.canSkip===true}):null;
   setDialogueBounds(options.advanceCanvas??canvas,ctx,left,y,width,height);
   ctx.restore();
-  return {x, y, width, height, font, lines};
+  return {x, y, width, height, font, lines, skip:controls?.skip??null};
 }

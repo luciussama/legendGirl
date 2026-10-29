@@ -399,6 +399,12 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [],
@@ -1089,7 +1095,7 @@
         },
         {
           "file": "src/js/cinematics/OpeningSequence.js",
-          "line": 105,
+          "line": 106,
           "type": "runtime",
           "alias": "opening-waking-up"
         },
@@ -16339,7 +16345,7 @@
         },
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 74,
+          "line": 75,
           "type": "runtime",
           "alias": "toy-room-illustrated-fairy-v1"
         }
@@ -26570,6 +26576,12 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
@@ -26626,6 +26638,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26686,6 +26704,12 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
@@ -26742,6 +26766,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26802,6 +26832,12 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
@@ -26858,6 +26894,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -26918,6 +26960,12 @@
           "line": 4,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
         }
       ],
       "hints": [
@@ -26974,6 +27022,12 @@
         {
           "file": "src/js/assets/illustratedGirl.js",
           "line": 4,
+          "type": "runtime",
+          "alias": "girl-v2-locomocao"
+        },
+        {
+          "file": "src/js/entities/GirlBodyLayers.js",
+          "line": 15,
           "type": "runtime",
           "alias": "girl-v2-locomocao"
         }
@@ -30768,13 +30822,13 @@
         "variant": "baby:normal",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30792,13 +30846,13 @@
         "variant": "baby:happy",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30816,13 +30870,13 @@
         "variant": "baby:shocked",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30840,13 +30894,13 @@
         "variant": "baby:annoyed",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30864,13 +30918,13 @@
         "variant": "baby:determined",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30888,13 +30942,13 @@
         "variant": "fairy:normal",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30912,13 +30966,13 @@
         "variant": "fairy:happy",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30936,13 +30990,13 @@
         "variant": "fairy:shocked",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30960,13 +31014,13 @@
         "variant": "fairy:annoyed",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],
@@ -30984,13 +31038,13 @@
         "variant": "fairy:determined",
         "preview": "portrait"
       },
-      "sha256": "6fef3b44f60c2f123f03fed8e902b3b7b3867e5c2620925e20ebba35ee1d7b76",
+      "sha256": "4a126be94101ad7dd0880b9149187d382aae1e4e7ab750dbcc093d13b9f908f7",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/ui/DialogueRenderer.js",
-          "line": 29,
+          "line": 30,
           "type": "runtime"
         }
       ],

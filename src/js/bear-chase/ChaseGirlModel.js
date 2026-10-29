@@ -3,24 +3,26 @@ import { GIRL_PALETTE } from './ChaseGirlPalette.js';
 
 /** Menina da arena reinterpretada em volume; a autoria traseira não é sprite aprovado. */
 export class ChaseGirlModel {
-  /** Modela roupa em regiões distintas, corpo compacto e mechas desenhadas em volume. */
+  /** Distribui as proporções ilustradas entre cabeça, tronco e membros articulados. */
   constructor(own) {
     this.own = own; this.root = new T.Group(); this.root.name = 'Menina3D';
     this.materials = Object.fromEntries(Object.entries(GIRL_PALETTE).map(([name,color]) =>
       [name, own(new T.MeshStandardMaterial({color,vertexColors:true,roughness:1,metalness:0}))]));
     this.sphere = this.shade(new T.SphereGeometry(1, 24, 16));
-    this.pelvis = this.joint(this.root,'Quadril',0,.55,0);
+    this.proportions=Object.freeze({thigh:.22,shin:.22,upperArm:.18,forearm:.20,soleHeight:.119});
+    this.pelvis = this.joint(this.root,'Quadril',0,.63,0);
     this.torso = this.joint(this.pelvis,'Tronco',0,.20,0);
-    this.volume(this.torso,'cream',[0,.12,0],[.21,.21,.14]);
-    this.volume(this.torso,'cream',[0,.135,-.10],[.15,.17,.065]);
+    this.volume(this.torso,'cream',[0,.12,0],[.21,.235,.14]);
+    this.volume(this.torso,'cream',[0,.135,-.10],[.15,.19,.065]);
     this.volume(this.torso,'rose',[0,-.015,0],[.22,.035,.15]);
-    this.skirt = this.joint(this.pelvis,'Saia',0,.15,0);
+    this.skirt = this.joint(this.pelvis,'Saia',0,.13,0);
     // Vestido creme inteiro, com babado rosa e bordado ao redor da barra.
     this.cloth(this.skirt,'pink',[[.35,-.19],[.365,-.16],[.345,-.115]],true);
     this.cloth(this.skirt,'rose',[[.355,-.19],[.37,-.175],[.36,-.16]],true);
     this.cloth(this.skirt,'cream',[[.35,-.145],[.33,-.09],[.26,.04],[.207,.10]],true);
     this.buildDressDetails();
-    this.head = this.joint(this.torso,'Cabeca',0,.35,0);
+    this.head = this.joint(this.torso,'Cabeca',0,.335,0);
+    this.head.scale.setScalar(.86);
     this.volume(this.head,'skin',[0,.09,-.045],[.31,.32,.27]);
     // Bochechas e queixo fazem uma face curta e larga, sem focinho esférico.
 
@@ -30,26 +32,27 @@ export class ChaseGirlModel {
     for(const side of [-1,1]) {
       const shoulder=this.joint(this.torso,side<0?'OmbroE':'OmbroD',side*.235,.21,0);
       this.buildSleeve(shoulder);
-      this.limb(shoulder,'skin',.15,.045,.052);
-      const elbow=this.joint(shoulder,'Cotovelo',0,-.15,0);
-      this.limb(elbow,'skin',.17,.047,.052);
+      this.limb(shoulder,'skin',this.proportions.upperArm,.045,.052);
+      const elbow=this.joint(shoulder,'Cotovelo',0,-this.proportions.upperArm,0);
+      this.limb(elbow,'skin',this.proportions.forearm,.047,.052);
       this.volume(elbow,'skin',[0,0,0],[.046,.046,.046]);
-      const hand=this.volume(elbow,'skin',[0,-.175,-.007],[.058,.056,.050]);
+      const hand=this.volume(elbow,'skin',[0,-this.proportions.forearm-.005,-.007],[.058,.056,.050]);
       this.arms.push({shoulder,elbow,hand});
       const hip=this.joint(this.pelvis,side<0?'PernaE':'PernaD',side*.115,-.035,0);
-      this.limb(hip,'skin',.18,.066,.078);
-      const knee=this.joint(hip,'Joelho',0,-.18,0);
-      this.limb(knee,'skin',.18,.049,.06);
+      this.limb(hip,'skin',this.proportions.thigh,.066,.078);
+      const knee=this.joint(hip,'Joelho',0,-this.proportions.thigh,0);
+      this.limb(knee,'skin',this.proportions.shin,.049,.06);
       this.volume(knee,'skin',[0,0,0],[.062,.056,.062]);
-      const ankle=this.joint(knee,'Tornozelo',0,-.18,0);
-      this.volume(ankle,'boot',[0,-.035,-.045],[.083,.105,.135]);
+      const ankle=this.joint(knee,'Tornozelo',0,-this.proportions.shin,0);
+      this.volume(ankle,'boot',[0,-.035,-.045],[.083,.075,.135]);
+      this.volume(ankle,'boot',[0,.015,.005],[.065,.075,.07]);
       this.volume(ankle,'sole',[0,-.095,-.055],[.087,.024,.143]);
       this.volume(ankle,'cream',[0,.05,0],[.07,.028,.069]);
-      this.legs.push({hip,knee,ankle});
+      this.legs.push({hip,knee,ankle,thigh:this.proportions.thigh,shin:this.proportions.shin});
     }
     this.buildSword();
     this.batchDetails(this.root);
-    this.root.userData.authoring='Revisão 4: vestido creme bordado, babado e faixa rosa, duas marias-chiquinhas com laços; proporções da menina ilustrada girl-v2. Costas interpretadas em volume.';
+    this.root.userData.authoring='Revisão 5: conjunto cabeça/cabelo mais contido, tronco e membros alongados, franja curva e botas apoiadas pela sola; vestido e identidade girl-v2 preservados. Costas interpretadas em volume.';
   }
   /** Agrupa detalhes rígidos do mesmo material por articulação, preservando os pivôs animados. */
   batchDetails(parent) {
@@ -163,10 +166,10 @@ export class ChaseGirlModel {
     }
     const cap=new T.BufferGeometry();cap.setAttribute('position',new T.Float32BufferAttribute(positions,3));cap.setIndex(indices);cap.computeVertexNormals();
     this.head.add(new T.Mesh(this.shade(cap),this.materials.hair));
-    this.silhouette(this.head,'hair',[[-.32,.20],[-.28,.37],[-.13,.44],[.10,.44],[.29,.31],[.28,.13],[.13,.19],[.18,.29],[.04,.22],[-.03,.12],[-.07,.24],[-.23,.12]],.055,[0,0,-.285]);
-    this.silhouette(this.head,'lock',[[-.24,.32],[-.12,.40],[.10,.38],[.18,.32],[.01,.33],[-.09,.26]],.015,[0,0,-.312]);
+    this.curveFringe(this.silhouette(this.head,'hair',[[-.32,.20],[-.28,.37],[-.13,.44],[.10,.44],[.29,.31],[.28,.13],[.13,.19],[.18,.29],[.04,.22],[-.03,.12],[-.07,.24],[-.23,.12]],.055,[0,0,-.285]));
+    this.curveFringe(this.silhouette(this.head,'lock',[[-.24,.32],[-.12,.40],[.10,.38],[.18,.32],[.01,.33],[-.09,.26]],.015,[0,0,-.312]));
     for(const side of [-1,1]) {
-      const tuft=this.silhouette(this.head,'hair',[[-.04,.14],[.05,.19],[.07,-.04],[0,-.11],[-.045,-.04]],.09,[side*.30,.01,-.03]);tuft.rotation.z=side*.08;
+      this.sweep(this.head,'hair',[[side*.29,.20,-.08],[side*.305,.08,-.12],[side*.305,-.045,-.10],[side*.35,-.015,-.08]],[.055,.060,.045,.008]);
     }
     this.pigtails=[];
     for(const side of [-1,1]) {
@@ -180,6 +183,12 @@ export class ChaseGirlModel {
     }
     // Referências preservadas para ferramentas de revisão anteriores.
     this.ponytail=this.pigtails[0].tail;this.tailTip=this.pigtails[0].tip;
+  }
+  /** Faz a franja acompanhar a curvatura das têmporas, evitando a placa reta vista de perfil. */
+  curveFringe(mesh) {
+    const positions=mesh.geometry.attributes.position;
+    for(let i=0;i<positions.count;i++)positions.setZ(i,positions.getZ(i)+.13*(positions.getX(i)/.32)**2);
+    mesh.geometry.computeVertexNormals();
   }
   /** Constrói laço de tecido com duas alças e nó central. */
   bow(parent,position,size) {
@@ -218,7 +227,7 @@ export class ChaseGirlModel {
   /** Recria a espada de madeira e a guarda azulada usada nos quadros de corrida da arena. */
   buildSword() {
     const hand=this.arms[1].elbow;
-    const sword=this.joint(hand,'EspadaDeMadeira',0,-.16,-.045);sword.rotation.x=.9;this.sword=sword;
+    const sword=this.joint(hand,'EspadaDeMadeira',0,-this.proportions.forearm,-.045);sword.rotation.x=.9;this.sword=sword;
     this.silhouette(sword,'cream',[[-.025,0],[-.038,-.43],[0,-.51],[.038,-.43],[.025,0]],.018,[0,-.06,0]);
     this.volume(sword,'guard',[0,-.05,0],[.105,.022,.028]);
     this.volume(sword,'boot',[0,.015,0],[.024,.07,.025]);
