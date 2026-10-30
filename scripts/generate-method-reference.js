@@ -139,6 +139,34 @@ const details={
  getCanvasCoordinates:'Converte evento de ponteiro para coordenadas internas da sala.',
  read:'Lê e valida save da campanha; pode usar memória da sessão.',write:'Serializa save versionado e tenta gravar no storage.',
 };
+Object.assign(details,{
+ dreamClimbContact:'Localiza o contato visual da mão na haste ou no contorno pintado do corpo do inseto, sem usar asas móveis.',
+ dreamClimbPose:'Escolhe quatro poses pela distância escalada e duas para chegar ao topo, com mão ancorada e inclinação do corpo.',
+ drawDreamClimb:'Desenha Yuna pela âncora da mão e conserva a pintura inteira, sem mudar a física ou a pose no lombo.',
+ dreamSpiderContact:'Detecta contato entre o corpo da menina e a silhueta da aranha, incluindo a abertura das patas.',
+ dreamWebCanGrab:'Permite agarrar somente a seda existente, com espaço para os pés acima da aranha.',
+ drawDreamBranch:'Pinta tronco ancorado e galho ao vento, registrado na superfície física sem linhas auxiliares.',
+ drawDreamWeb:'Desenha seda até a aranha móvel e sua pintura, compartilhando a posição da simulação.',
+ prepareDreamIllustrations:'Prepara em cache folhas e galhos pintados nas larguras existentes, registrados nas superfícies físicas.',
+ drawDreamLeaf:'Desenha folha e caule ilustrados; prolonga a base abaixo do viewport sem alterar o apoio.',
+ dreamBeeWingPose:'Calcula abertura e rotação contínuas das asas da abelhinha do bem pelo relógio do sonho.',
+ drawDreamBee:'Pinta o corpo íntegro com cotonete e articula as asas como camada separada.',
+ prepareDreamBeetle:'Recorta e mascara em cache cabeça e patas da pintura original, conservando o casco de apoio.',
+ dreamBeetlePose:'Calcula articulações contínuas de asas, patas e cabeça conforme o tempo e a energia do voo.',
+ drawDreamBeetle:'Desenha asas membranosas e membros articulados em torno do dorso rígido usado pela física.',
+ createDreamState:'Cria domínio3 do sonho lateral com viagens e dano/queda: leitura, relógio, jogador, checkpoint e origem física independente do jardim.',
+ restoreDreamState:'Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime.',
+ advanceDreamDialogue:'Adianta uma fala do sonho e consome o gesto antes de liberar movimento.',
+ retryDream:'Retoma uma folha estável no relógio corrente e reinicia os transportes a partir do checkpoint.',
+ stepDream:'Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira.',
+ dreamNearby:'Consulta células espaciais para limitar física e pintura à vizinhança, sem depender do viewport.',
+ dreamObjectFrame:'Calcula o deslocamento determinístico de hastes e insetos a partir do relógio salvo.',
+ dreamGrassX:'Calcula a curva compartilhada da haste; a ponta recebe vento e o caule abaixo da lâmina mantém a base fixa.',
+ stem:'Desenha a continuação natural do caule abaixo do viewport, conectada à lâmina e sem régua auxiliar.',
+ dreamSurface:'Consulta relevo da folha ou perfil alfa nativo do inseto para apoiar os pés sem régua auxiliar.',
+ dreamControls:'Posiciona os quatro comandos de direção/escalada e PULAR dentro da área segura.',
+ startDream:'Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada.'
+});
 const scopedDetails={
  'ToyRoomEpilogue.js':{
   constructor:'Recebe assets, áudio, callback, origem e save opcional; valida versão/índice/relógios e inicia a música da sala.',

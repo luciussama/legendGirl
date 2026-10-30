@@ -1,6 +1,7 @@
 /** Acesso explícito aos campos persistidos e à retomada dos subsistemas. */
 export function createToyRoomPersistenceContext(room) {
   return {
+    get dream(){return room.dream;},set dream(value){room.dream=value;},startDream:saved=>room.startDream(saved),
     get epilogue(){return room.epilogue;},
     set epilogue(value){room.epilogue=value;},
     startEpilogue:saved=>room.startEpilogue(saved),

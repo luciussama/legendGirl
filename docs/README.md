@@ -14,7 +14,8 @@ Revisão: 29/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 | [Arena atual](arena/GUIA-ARENA.md) / [valores documentados](arena/configuracao-atual.json) | Perfis legado/arena, HP, combate, IA, controles, retorno, áudio e persistência. |
 | [Perseguição 3D](bear-chase/GUIA-PREVIA.md) | Campanha após a vitória da arena, acesso isolado de debug, abertura ilustrada, pista, vidas, áudio, materiais e dificuldades. |
 | [Um dia no jardim](garden/GUIA-JARDIM.md) | Fase lateral após a perseguição, terrenos, contato dos pés, insetos, cenas, resgates e migrações do domínio v11 e desfecho do sono. |
-| [Capítulos e passagem para o sonho](capitulos/ROTEIRO.md) | Gravuras, epílogo do quarto arrumado, sono no piquenique e plano do jardim 3D futuro. |
+| [Capítulos e passagem para o sonho](capitulos/ROTEIRO.md) | Gravuras, epílogo do quarto arrumado, sono no piquenique e passagem para a floresta aérea2D. |
+| [Floresta dos sonhos](dream-forest/GUIA-SONHO.md) | Travessia aérea2D, aderência/escalada, vento, insetos móveis, teias/aranhas, base dos galhos, Misty Blues e persistência. |
 | [Padrão de diálogos e cenas](diario-ia/padroes/DIALOGOS-E-CENAS.md) | Avanço automático, clique/toque de uma fala, temporização, consumo de entrada e separação entre atuação e leitura. |
 | [Manual: vitória da arena para a fuga](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md) | Contrato implementado de fluxo, recuperação de erro, persistência e critérios de manutenção da passagem arena–fuga. |
 | [Animação da menina](arena/GUIA-ANIMACAO.md) / [prompts](arena/animacao-menina-prompts.md) | Poses, dados, âncoras, reação de dano e origem das pranchas. |

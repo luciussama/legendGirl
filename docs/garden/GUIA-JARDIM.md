@@ -6,7 +6,7 @@ Depois da captura do urso e da ida ao baú, a campanha espera 2,5 segundos e abr
 
 A abelha mantém corpo e rosto estáveis durante o voo; somente as asas articuladas batem continuamente. `GardenBeeRenderer` utiliza as camadas de `source/abelha-camadas-v2.png`, em vez de alternar dois desenhos com caixas diferentes. O aviso inclina o conjunto sem trocar sua pintura. O repouso é fixo e os rasantes alternam A/B, conforme os tempos descritos adiante.
 
-O piquenique visto durante os últimos passos usa uma composição lateral de perspectiva baixa, ancorada no plano da toalha e separada das raízes da árvore. Não há alteração da meta nem do chão físico. Nas cenas, a ilustração ocupa o fundo inteiro: só o quadro do diálogo aparece sobre ela, sem faixa clara abaixo ou ao redor. Depois da última fala, a cena permanece no piquenique; não oferecer saída/replay ou antecipar fases futuras ainda inexistentes.
+O piquenique visto durante os últimos passos usa uma composição lateral de perspectiva baixa, ancorada no plano da toalha e separada das raízes da árvore. Não há alteração da meta nem do chão físico. Nas cenas, a ilustração ocupa o fundo inteiro: só o quadro do diálogo aparece sobre ela, sem faixa clara abaixo ou ao redor. Depois da última fala, a cena conserva o sono por quatro segundos antes da floresta dos sonhos; não oferecer saída/replay ou antecipar fases futuras ainda inexistentes.
 
 ## Percurso e controles
 
@@ -108,4 +108,6 @@ O padrão geral vigente é [diálogos e cenas](../diario-ia/padroes/DIALOGOS-E-C
 
 ## Final do capítulo2
 
-Depois das falas do piquenique, Yuna come mais pão na chapa e bebe suco de laranja, fica sonolenta e adormece. Nanda dorme ao lado dela. `GardenCinematic` usa as novas pinturas em `assets/art/chapters/`; olhos e postura são próprios do sono, sem girar uma pose acordada para simular dormir. O [roteiro dos capítulos](../capitulos/ROTEIRO.md) preserva a intenção da futura fase de furtividade no jardim3D; essa fase não é o percurso2D existente.
+Depois das falas do piquenique, Yuna come mais pão na chapa e bebe suco de laranja, fica sonolenta e adormece. Nanda dorme ao lado dela. `GardenCinematic` usa as novas pinturas em `assets/art/chapters/`; olhos e postura são próprios do sono, sem girar uma pose acordada para simular dormir. O [roteiro dos capítulos](../capitulos/ROTEIRO.md) preserva a intenção da floresta aérea2D do sonho; essa fase não é o percurso2D existente.
+
+Após quatro segundos do sono concluído, o coordenador abre a [floresta dos sonhos](../dream-forest/GUIA-SONHO.md), lateral2D e aérea, com gramas escaláveis, vento e insetos móveis. Essa direção substitui o antigo plano3D. O save do piquenique permanece compatível.

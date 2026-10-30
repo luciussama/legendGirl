@@ -1,0 +1,38 @@
+{
+  "version": 1,
+  "tool": "image_gen integrado",
+  "data": "2026-10-30",
+  "assets": [
+    {
+      "file": "assets/art/dream-forest/folha-plataforma-v1.png",
+      "sha256": "61e7a54571bde7bbbb15c20c7184dce3d2e8c53cfc3ff272a70f2df7dd0b1f56",
+      "bytes": 864969,
+      "aprovacaoArtistica": "pendente"
+    },
+    {
+      "file": "assets/art/dream-forest/abelhinha-do-bem-v1.png",
+      "sha256": "5625e91a8e192f20cfa74ee89033ec2644f4e9c556113357c637b7eaabfe108e",
+      "bytes": 1218153,
+      "aprovacaoArtistica": "pendente"
+    }
+  ],
+  "prompts": [
+    {
+      "file": "folha-plataforma-v1.png",
+      "promptOriginal": "Use case: stylized-concept. Asset type: sprite PNG de produção para plataformas de folha gigante em jogo 2D lateral ilustrado. Crie UMA folha gigante com caule, isolada em fundo realmente transparente, sem chão nem cenário. Pintura rica em aquarela/gouache de livro infantil, acabamento artesanal detalhado e compatível com floresta de sonho azul noturna: verdes azulados, jade escuro e reflexos frios de luar discretos. A folha é muito larga e quase horizontal, vista lateral em perspectiva suave, com superfície superior sustentando uma criança minúscula. Silhueta de plataforma: extremidades esquerda e direita afiladas, borda superior muito suavemente convexa (centro só um pouco acima das pontas), sem pontas verticais, sem curvas profundas ou relevos altos no topo. A folha deve parecer botânica e volumosa: nervuras secundárias ramificadas delicadas, textura fibrosa pintada, pequenas variações de pigmento, dobra sutil na borda, espessura orgânica escura sob a lâmina, pequenos desgastes naturais discretos. Evitar folha oval lisa, gradiente vetorial, ícone, plástico brilhante, contorno neon ou uma linha reta auxiliar de pouso. Composição horizontal: folha inteira ocupando quase toda a largura, aproximadamente de x=6% a94%, y=12% a44%; espaço transparente acima e aos lados. Um único caule fino, orgânico, com fibras, nós sutis e pequenas marcas, nasce do meio da face inferior da folha, perto de x=50%, y=40%, e desce com curva S suave até a borda inferior do PNG. Mantenha o caule quase vertical, dentro dos 15% centrais da largura. Caule termina cortado na borda inferior para permitir continuidade abaixo da tela. Iluminação fria coerente com um ambiente místico e levemente spooky; sem flores ou cogumelos sobre a área de pouso, sem gotas ou efeitos soltos acima da borda superior, sem pessoas, insetos, letras, logotipo, sombra projetada fora do sprite ou checkerboard pintado. A folha e caule são o único objeto, com alpha real. Arte final detalhada e limpa, não conceito borrado."
+    },
+    {
+      "file": "abelhinha-do-bem-v1.png",
+      "promptOriginal": "Use case: precise-object-edit. Asset type: atlas PNG transparente de abelhinha amigável para plataforma de jogo 2D. Edite a abelhinha do bem da primeira referência para uma pose lateral com silhueta do CORPO mais próxima da segunda referência (o sprite antigo com asas altas). Preserve absolutamente o sorriso, olhos castanhos, pelos amarelos e marrons pintados e o cotonete branco com haste azul preso ao bumbum. A correção é anatômica e de pose: ABDÔMEN traseiro é uma grande bola felpuda elevada, ocupando os dois terços esquerdos, e CABEÇA menor fica mais baixa à frente/direita, conectada naturalmente ao tórax, como uma abelha fofa inclinando ligeiramente para baixo. O topo peludo do abdômen precisa ser a parte mais alta do corpo, uma corcova arredondada ampla em x=25% a45% da largura, bem acima da cabeça. A cabeça começa aproximadamente 35% da altura do corpo abaixo do topo do abdômen. Ela continua voando para a direita de forma gentil; patas pequenas dobradas abaixo, antenas curtas acima da cabeça. Evitar frente e costas na mesma altura, evitar rosto derretido, corpo comprido em U ou tiras distorcidas. Cotonete sai do bumbum para esquerda no meio da altura do abdômen, algodão branco fofo redondo, nunca ferrão. Metade esquerda da prancha: uma única abelha completa SEM ASAS, incluindo cotonete, antenas e patas, com margens. Metade direita: só o par de asas membranosas translúcidas separado, unido pela raiz inferior. Sem asas no corpo. Fundo com alpha realmente transparente, sem halos, sombra externa, cenário ou checkerboard desenhado. Mesmo estilo de pintura infantil rica em detalhes e textura, mesma identidade, sem texto ou marcas. A silhueta alta do abdômen permite apoiar a personagem sobre o lombo sem deformar o rosto durante a integração.",
+      "references": [
+        "assets/art/dream-forest/abelhinha-do-bem-v1.png (primeira pintura, preservada no diário)",
+        "assets/art/garden/runtime/insetos-v1.png"
+      ]
+    }
+  ],
+  "integracao": "Recortes por alfa e registro visual em cache; fontes integrais preservadas. Física, mapa, perfis e saves não alterados.",
+  "revisao": {
+    "motivo": "Pose com abdômen elevado e cabeça baixa para preservar a pintura inteira em cena, sem deformar o rosto.",
+    "primeiraPinturaPreservada": "0d9ad0500eed46408f9e5cb102d49a07"
+  }
+}

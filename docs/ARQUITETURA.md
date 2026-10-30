@@ -45,6 +45,8 @@ flowchart TD
   GARDEN --> GDOMAIN[GardenSimulation / GardenLevel / GardenEncounters]
   GARDEN --> GVIEW[GardenRenderer / GardenCinematic / GardenAudio]
   GAME --> DIALOGUE[DialogueFlow / dono de cada sequência]
+  GARDEN -->|sono concluído / 4 s| DREAM[DreamPhase / floresta lateral 2D]
+  DREAM --> DIALOGUE
   GARDEN --> DIALOGUE
   BATTLE --> ACTORS[Controller / IA / regras / contato]
   BATTLE --> VIEW[BattleRenderer / ArenaPlayerRenderer / HUD / FX]
@@ -76,6 +78,7 @@ O loop normaliza o tempo para 60 Hz e limita dt a 0,5–1,2. Pausa impede update
 | Fuga da campanha | `toyRoomChaseCampaign` guarda estado versionado e posição musical; ausente em saves anteriores e no acesso isolado de debug. | `ToyRoomPersistence` valida a consistência com `arenaCompleted` e retoma a etapa salva sob fade antes de avançar o estado. |
 | Epílogo do quarto | `ToyRoomEpilogue`: active, index, age, time e origem campaign. | `toyRoomEpilogue` versão 1 salva índice/idade/tempo somente na campanha ativa. A origem da prévia é propagada até o jardim e não contamina o save. |
 | Jardim da campanha | `GardenPhase.state`: domínio v11, `story`, `presentation`, `encounters`, jogador, fada, nuvens, inimigos, histórico de apoios e resgate. | `toyRoomGarden` contém `{version:1,state}`; a versão do envelope da fase difere da versão 11 do domínio. Restore da sala prioriza jardim, epílogo e perseguição, nessa ordem. Entrada de debug fica fora do save. |
+| Sonho da campanha | `DreamPhase.state`: domínio3 com relógio, jogador/aderência, viagens, dano/queda, checkpoint e leitura; migra domínios1/2. | `toyRoomDream` envelope1 e posição musical; restaura antes de jardim/epílogo/fuga. Prévia fica fora do save. |
 | Leitura compartilhada | `DialogueFlow`: WeakMap por canvas com quadro atual, limites transformados, profundidade de composição e dispensa visual. | Temporização e índice pertencem ao dono da cena; no jardim, `story` é salvo. DOM, callbacks e listeners nunca entram no snapshot. |
 | Recursos | Imagens, regiões, manifestos e status nos carregadores; poses/âncoras em módulos de dados. | Não são serializados. No quarto, recortes e transparência afetam o perfil extraído por `DarkRoomContact`; exigem QA das superfícies. Demais fases conservam seus contratos de colisão. |
 
@@ -287,6 +290,16 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF; câmera comum mantém a poltrona no tapete. | `TITLE_SCENE_LAYOUT`, `titleSceneFrame`, `TitleScene` |
 | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. | `TitleScreen` |
 | [ui/index.js](../src/js/ui/index.js) | Ponto de reexportação dos contratos existentes; não cria estado nem um loop próprio. | `HudRenderer`, `hudRenderer`, `DialogueRenderer`, `dialogueRenderer`, `renderFirstJumpTutorial`, `getFirstJumpFeedback`, `getFirstJumpTutorialDevice`, `FIRST_JUMP_MESSAGES` |
+| [dream-forest/DreamArt.js](../src/js/dream-forest/DreamArt.js) | Recortes de escalada e contornos de apoio medidos das pinturas. | `DREAM_CLIMB`, `DREAM_INSECTS`, `DREAM_PROFILES`, `DREAM_LEAF`, `DREAM_BEE`, `DREAM_SPIDER`, `DREAM_BRANCH`, `DREAM_CLIMB_CYCLE`, `DREAM_CLIMB_CONTACTS` |
+| [dream-forest/DreamBeetle.js](../src/js/dream-forest/DreamBeetle.js) | Cache das partes originais e articulação de asas, patas e cabeça, com casco de apoio rígido. | `prepareDreamBeetle`, `dreamBeetlePose`, `drawDreamBeetle` |
+| [dream-forest/DreamIllustratedSprites.js](../src/js/dream-forest/DreamIllustratedSprites.js) | Registro em cache das folhas pintadas, caule ilustrado e asas animadas da abelhinha do bem. | `prepareDreamIllustrations`, `drawDreamLeaf`, `dreamBeeWingPose`, `drawDreamBee`, `drawDreamBranch`, `drawDreamWeb` |
+| [dream-forest/DreamClimb.js](../src/js/dream-forest/DreamClimb.js) | Ciclo visual de subida por distância, mãos no contorno pintado e poses para alcançar o lombo. | `dreamClimbContact`, `dreamClimbPose`, `drawDreamClimb` |
+| [dream-forest/DreamInput.js](../src/js/dream-forest/DreamInput.js) | Eixo vertical e salto separado em teclado/gamepad/toque; reutiliza liberação de GardenInput. | `dreamControls`, `DreamInput` |
+| [dream-forest/DreamLevel.js](../src/js/dream-forest/DreamLevel.js) | Floresta lateral, consultas espaciais e poses determinísticas de gramas/insetos. | `DREAM`, `DREAM_SECTIONS`, `DREAM_OBJECTS`, `DREAM_WIDTH`, `DREAM_BY_ID`, `dreamNearby`, `dreamObjectFrame`, `dreamGrassX`, `dreamSurface` |
+| [dream-forest/DreamPhase.js](../src/js/dream-forest/DreamPhase.js) | Ciclo próprio de carga, áudio configurado, controles, pausa, snapshot e descarte. | `DreamPhase` |
+| [dream-forest/DreamRenderer.js](../src/js/dream-forest/DreamRenderer.js) | Pintura azulada, formas limitadas ao viewport e interface sem renderer3D. | `DreamRenderer` |
+| [dream-forest/DreamWeb.js](../src/js/dream-forest/DreamWeb.js) | Colisão da menina com aranhas e trecho real de seda disponível para escalada. | `dreamSpiderContact`, `dreamWebCanGrab` |
+| [dream-forest/DreamSimulation.js](../src/js/dream-forest/DreamSimulation.js) | Leitura, aderência/escalada, transporte, saltos, checkpoints e domínio serializável. | `DREAM_INTRO`, `createDreamState`, `restoreDreamState`, `advanceDreamDialogue`, `retryDream`, `stepDream` |
 
 ## Integração, recursos e ciclo de vida
 
@@ -382,3 +395,18 @@ Na exploração 2D, `ToyRoomMovement` resolve a posição antes de atualizar `is
 A locomoção exploratória de `BabyRenderer`, `ToyRoomEntities` e `ToyCarryPresentation` usa `GirlLocomotion`. `GirlGait` coordena apoio, absorção do peso, impulso e recuperação por distância, com ciclo de300px da pintura e perspectiva lateral uniforme. A direção física do piso não gira as pernas isoladamente: subida, descida e diagonais usam o mesmo perfil do torso, com espelhamento para esquerda/direita. A cadência não altera velocidade física. O relógio acompanha a distância percorrida; o contorno medido da sola mantém a altura ao girar a bota. `GirlBodyLayers` recorta camadas originais em cache: tronco inclina e comprime no apoio, braços alternam, cabeça compensa parte da rotação e vestido/cabelo têm atraso discreto. Transporte usa a mesma transformação no corpo, mãos, objeto e dedos em primeiro plano. `runBlend` continua apresentação opcional do save, com partida/assentamento em oito ticks e repouso integral original. Textura da pele/calçados e envelopes físicos anteriores são preservados; não há novo bitmap nem dependência da variante de peças novas.
 
 Na exploração da sala, `ToyRoomSceneRenderer` desenha as sombras após piso/tapetes/trilhos e antes dos corpos ordenados por profundidade. `ToyRoomLighting` compartilha as posições das janelas e a diagonal solar dos feixes. `ToyRoomShadows` rasteriza a pintura opaca e mede os apoios somente na preparação, chamada pelo construtor de `ToyRoomPhase`; inclui os oito brinquedos carregados. Máscaras não armazenam posições de mundo. Render consulta as posições vigentes, exclui itens carregados/organizados do piso e combina a carga à silhueta de Yuna. Contatos acompanham a base visível; projeção recebe diagonal, atenuação e desfoque pré-calculado. Tapetes recebem a mesma sombra e os corpos a ocultam. Nenhum Canvas entra no save. O plano de fundo da arena e as chamadas independentes dos renderizadores mantêm o desenho anterior.
+
+
+## Floresta lateral dos sonhos
+
+A decisão atual de 30/10 substitui o antigo plano3D/furtividade por travessia aérea2D de cerca de cinco minutos. `DreamPhase` sucede o sono do jardim e mantém origem, pausa, áudio e persistência próprios. `ToyRoomPersistence` inclui `toyRoomDream` somente em campanha e o restaura antes dos outros modos. `DreamSimulation` e `DreamLevel` compartilham curvas das gramas e contornos medidos dos insetos com o desenho; deslocamentos dos apoios transportam os pés. Detalhes no [guia do sonho](dream-forest/GUIA-SONHO.md).
+
+A continuação dos caules do sonho é desenhada até além da borda inferior do viewport. Aderência testa todos os objetos próximos, com cruzamento relativo e os dois lados da haste, incluindo abaixo da lâmina. `climb.u` conserva a escala antiga e aceita o prolongamento inferior; a face de contato é mantida até saltar. O bloqueio de reagarre restringe somente o objeto de origem.
+
+Quatro besouros substituem os 27 anteriores. `DreamLevel` descreve rotas curvas de altitude variável e indexa todo o corredor do voo. `DreamSimulation` registra o embarque em `rides` e transporta Yuna pelo deslocamento do apoio; `retryDream` reinicia os transportes a partir do checkpoint. O domínio2 migra posições antigas afetadas para folhas estáveis. O envelope de `DreamPhase` continua versão1. `DreamBeetle` articula a pintura em cache sem alterar seu PNG nem o perfil físico.
+
+As folhas estáveis do sonho usam `folha-plataforma-v1.png`, com registro da silhueta em cache nas duas larguras existentes. O caule ilustrado se prolonga abaixo da tela. A abelha do sonho usa corpo com cotonete e asas separadas de `abelhinha-do-bem-v1.png`; o batimento deriva do relógio salvo, sem alterar o apoio. Os perfis físicos anteriores e as pinturas do jardim permanecem preservados.
+
+Após a folha aprovada `rest-4`, seis fios escaláveis acompanham aranhas verticais. `DreamWeb` verifica seda existente e colisão com o corpo; `DreamSimulation` registra um único dano e queda, inclusive antes da recuperação EASY. Fios não carregam a menina com o recolhimento, nem a aranha oferece apoio. Domínio3 inclui hits/fallCause; saves antigos da área substituída retornam à folha. Quatro galhos pintados ao vento formam a base seguinte, com checkpoint na chegada e transporte físico dos pés. O desafio próprio dos galhos continua pendente de direção do usuário.
+
+A escalada usa yuna-escalada-v2.png: quatro poses com flexão/extensão de braços/pernas e duas poses de subida ao topo. DreamClimb ancora a mão ao corpo ilustrado do inseto ou à haste, com inclinação contínua durante o empurrão dos pés. Contornos visuais são medidos por alfa das pinturas, separados de DREAM_PROFILES e dos corpos físicos. O ciclo depende de climb.u e da distância local; repouso/vento não fazem as pernas marcharem. Pose em pé, saltos, colisões e saves permanecem iguais.

@@ -40,11 +40,11 @@ Depois das falas atuais, Yuna come mais pão na chapa e bebe suco de laranja. O 
 
 As duas ficam adormecidas na toalha, com respiração discreta. Não inventar um botão de saída ou um combate para encerrar a cena.
 
-## Regras da futura fase do sonho
+## Direção atual do sonho — revisão de 30/10/2026
 
-O sono prepara a fase 2 descrita pelo usuário, em um jardim 3D. Yuna fica minúscula; formigas, besouros, abelhas e minhocas parecem gigantes. O objetivo é atravessar o jardim usando a grama alta como esconderijo. Ela só pode fugir: sem espada, ataque, pisão ofensivo ou outro recurso de combate.
+O usuário substituiu o plano de jardim 3D por uma **floresta lateral 2D**, considerando o orçamento de GPU. A meta escolhida é cerca de cinco minutos. A travessia é primariamente aérea: Yuna agarra e escala gramas paralelas que curvam com o vento, espera a aproximação e salta entre elas. Insetos gigantes funcionam como plataformas móveis escaláveis. Um trecho usa quatro besouros que partem com Yuna e fazem viagens curvas até o próximo apoio. Depois da folha aprovada após as abelhas, seis aranhinhas descem e sobem deixando seda escalável; tocar no corpo causa dano e queda. A travessia exige sincronizar saltos e termina no grande galho de árvore. A base seguinte permite saltar entre galhos ao vento; seu desafio específico aguarda definição do usuário. Não há combate, espada nem pisão ofensivo.
 
-O usuário confirmou concluir as cenas nesta entrega e preparar o jardim3D para implementação posterior. Para a etapa seguinte, a recomendação é começar com um trecho curto jogável com Yuna, grama alta e uma formiga gigante; os outros tipos entram após validar a base. Não confundir o percurso atual do jardim 2D com essa futura fase, nem apresentar a cena de sono como um jardim 3D já construído. Não foi solicitado um título adicional para o sonho.
+A atmosfera é de sonho, com pintura de floresta gigantesca e luz azulada, mística e levemente spooky. A trilha é **Misty Blues.mp3**, enviada pelo usuário, em loop. Esta decisão substitui os antigos requisitos de 3D e de furtividade como mecânica principal; eles não devem reaparecer por leitura de versões históricas.
 
 ## Contrato das novas cenas
 
@@ -53,25 +53,8 @@ As gravuras duram cinco segundos e permitem adiantar a leitura. As falas do epí
 Pausa congela os relógios; a cena de organização guarda índice e idade no save. A revisão 11 do jardim retoma o sono novo em saves já concluídos da revisão 10, preservando o percurso e as falas já lidas. Os relógios narrativos não avançam física nem corrigem câmeras de gameplay.
 
 
-## Ponto de encaixe da fase futura
+## Passagem para a floresta
 
-O repouso final permanece no jardim2D com `state.stage === 'COMPLETE'` e `state.story.endingDone === true`; o último índice de `GARDEN_ENDING` apresenta as duas personagens dormindo. Esses dados já integram `GardenPhase.snapshot()` e o campo `toyRoomGarden` da campanha. A cena não dispara uma fase inexistente nem depende de um botão provisório.
+Depois de `GardenPhase` chegar a COMPLETE/endingDone, as duas permanecem dormindo por quatro segundos. `ToyRoomPhase` entrega o controle a `DreamPhase`, preservando a origem campanha/prévia. A nova fase tem simulação, controles, áudio, pausa, checkpoint, save/restore e descarte próprios. Saves antigos do piquenique continuam válidos e alcançam o sonho por essa passagem. O seletor “Jardim dos sonhos” permite revisar a entrada sem alterar a campanha salva.
 
-Quando o sonho for construído, `ToyRoomPhase.updateActiveMode` poderá entregar esse estado concluído ao coordenador da nova fase, depois do corte narrativo escolhido. A nova simulação, os controles e os recursos3D devem ter ciclo próprio de carga, pausa, save/restore e descarte, como acontece hoje na passagem entre perseguição e jardim. O sono continuará sendo um ponto de retomada válido para os saves anteriores à nova fase.
-
-A passagem não deve reaproveitar os ataques/pisões do jardim2D: a fase do sonho permite somente fugir e se esconder. Distância do protótipo, detecção, comportamento da grama, câmera e condições de fracasso serão calibrados na implementação específica.
-
-
-A revisão pelo seletor de fases também percorre o epílogo após a perseguição. Ela continua isolada da campanha salva, inclusive ao entrar no jardim; a bandeira permite conferir o encerramento do capítulo sem repetir todas as fases.
-
-## Próximas entregas planejadas
-
-Esta sequência organiza o trabalho futuro; sua implementação começa em uma nova solicitação.
-
-1. **Protótipo curto:** Yuna minúscula, um trecho de jardim 3D, uma formiga gigante e um esconderijo de grama alta. Validar deslocamento, câmera e leitura da escala em desktop e celular antes de ampliar o mapa.
-2. **Fuga e esconderijos:** definir patrulha, percepção, perseguição e perda de contato; a grama deve comunicar quando Yuna está protegida. Calibrar o encontro e a retomada após ser encontrada, sem combate.
-3. **Integração do sonho:** conectar o sono ao novo coordenador; carregar recursos sob demanda, preservar saves antigos e implementar pausa, retomada e descarte do 3D. Definir o corte narrativo sem inventar um novo número de capítulo.
-4. **Variedade e travessia:** acrescentar besouros, abelhas e minhocas gigantes com comportamentos distintos; compor o percurso e seus esconderijos após a base ser validada. Distância, duração, desfecho e condições de fracasso ainda precisam de definição.
-5. **Acabamento e validação:** revisar identidade de Yuna, animação, áudio, legibilidade dos esconderijos, controles de toque e desempenho em aparelho real; testar a passagem desde o piquenique, restauração e isolamento do seletor.
-
-Critério da primeira entrega: conseguir atravessar o trecho evitando a formiga e usando a grama de maneira compreensível, somente com fuga e esconderijo. Não é necessário construir todas as espécies ou o mapa definitivo para avaliar essa base.
+A extremidade atual é um repouso provisório entre os galhos, com ambiente vivo; o desafio dessa parte ainda será definido. Não há um capítulo 3 nem despertar narrativo adicional solicitado. Consulte o [guia da floresta](../dream-forest/GUIA-SONHO.md) para controles e contratos.

@@ -268,3 +268,29 @@ A revisão documental passou a cobrir os módulos e métodos atuais, as classes 
 ### 29/10/2026 — capítulos integrados e publicados
 
 Os capítulos aprovados e a documentação atualizada foram integrados à main e enviados ao GitHub após a validação geral da campanha. A aventura publicada inclui o encerramento do quarto arrumado, as duas gravuras e o sono de Yuna e Nanda no piquenique, pronta para teste humano no celular. O sonho no jardim 3D continua como a próxima construção planejada. Endereço do jogo: https://luciussama.github.io/legendGirl/ .
+
+
+### 30/10/2026 — sonho como floresta aérea2D
+
+O usuário substituiu a proposta3D por uma floresta lateral2D para limitar o custo de GPU e escolheu cerca de cinco minutos. Yuna ganha aderência e escalada: salta entre gramas paralelas ao vento e insetos gigantes, incluindo um trecho de lombos de besouros que se aproximam e se afastam. A atmosfera é azul, mística e levemente spooky, com Misty Blues enviada pelo usuário. O foco anterior em furtividade foi substituído pela travessia aérea, mantendo ausência de combate. Novas pinturas e atuação aguardam avaliação artística; não houve autorização de publicação desta etapa.
+
+
+### 30/10/2026 — gramas enraizadas e recuperação do salto
+
+O usuário apontou que as gramas pareciam flutuar e pediu caules gigantes vindo do chão abaixo da tela. A continuação inferior passou a fazer parte do desenho e da aderência. Yuna também pode se recuperar agarrando a grama seguinte quando perde a anterior; o contato vale pelos dois lados e não exige seguir uma sequência de apoios. A pegada inferior conserva sua altura, sem saltar para a antiga base da lâmina.
+
+## 30/10/2026 — Besouros como transportes do sonho
+
+Reduzidos de 27 para quatro besouros. Yuna sobe no lombo e aguarda uma viagem de 12–14 segundos, com curvas de subida e descida, até o próximo apoio. Cada transporte aguarda no destino; checkpoints recolocam os transportes necessários após quedas. Asas batem, patas articulam e cabeça/antenas se movem usando a pintura existente. O estado do sonho passa à versão2 com migração dos saves anteriores; o envelope permanece1. Entrega local para revisão do usuário, sem publicação.
+
+## 30/10/2026 — Folhas pintadas e abelhinhas do bem
+
+As folhas suspensas receberam textura pintada, nervuras, bordas orgânicas e caule ilustrado. As abelhas do sonho ganharam asas animadas e cotonete branco de haste azul no lugar do ferrão, inspirado na brincadeira da Yuna. Física, mapa e saves anteriores preservados. Recursos próprios do sonho, com fontes e prompts registrados; aprovação artística humana pendente.
+
+## 30/10/2026 — Teias suspensas e galhos
+
+O usuário aprovou o sonho até a folha após as abelhas, mostrada na imagem. O percurso anterior foi preservado. Depois dela, seis aranhinhas sobem e descem do alto, deixando fios escaláveis; tocar na aranha causa dano e queda. É preciso ler o ciclo para saltar entre fios mais espaçados e chegar ao grande galho. A base seguinte tem galhos ilustrados que se movem com o vento; seu desafio específico será definido pelo usuário posteriormente. Saves anteriores dessa área migram para a folha aprovada; os anteriores a ela continuam válidos.
+
+## 30/10/2026 — Braços e pernas na escalada
+
+A pose de escalada passou a se ancorar pelas mãos na pintura do inseto ou na haste. Novo ciclo de quatro poses mostra flexão/extensão dos braços e pernas, com duas poses adicionais para subir no topo. Inclinação do corpo acompanha o empurrão dos pés; esperar segura a pose. A física e a pose já aprovada de Yuna em pé sobre os insetos foram preservadas.

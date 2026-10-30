@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "data": "2026-10-30",
+  "tool": "image_gen integrado",
+  "assets": [
+    {
+      "file": "assets/art/dream-forest/aranhinha-v1.png",
+      "sha256": "7bbb0298fd88767d25a83720acb24433b3efee72f762617fec06187e835b4a28",
+      "bytes": 1594475,
+      "aprovacaoArtistica": "pendente"
+    },
+    {
+      "file": "assets/art/dream-forest/galho-vento-v1.png",
+      "sha256": "364a90fb152a52e7434c4c90bdb368f1bbdb61b968220e030774630029cb585e",
+      "bytes": 1592891,
+      "aprovacaoArtistica": "pendente"
+    }
+  ],
+  "prompts": [
+    {
+      "file": "aranhinha-v1.png",
+      "promptOriginal": "Use case: stylized-concept. Sprite PNG para jogo lateral 2D infantil de floresta de sonho azul. UMA aranhinha ilustrada isolada, corpo inteiro e oito patas completas, vista frontal levemente de cima, suspensa de frente para a câmera. Corpo pequeno azul-índigo e ameixa, abdômen arredondado com manchas discretas, olhos curiosos expressivos, aparência lúdica levemente spooky, sem boca agressiva ou presas assustadoras. Oito patas finas articuladas, quatro de cada lado, abertas em arcos naturais, sem sobreposição confusa, com pinceladas e fibras suaves. Iluminação lunar fria, textura aquarela/gouache rica e contornos orgânicos legíveis. Silhueta horizontal compacta, proporção largura/altura perto de 1,4, bastante margem transparente em todos os lados. A raiz de um único fio ficará no centro superior do abdômen; NÃO desenhar o fio, será animado no jogo. Não incluir teia, fundo, sombra projetada, cenário, textos, marcas, checkerboard ou qualquer outro objeto. Fundo realmente transparente com alpha. Arte final detalhada e polida de livro infantil, não ícone vetorial ou formas geométricas lisas."
+    },
+    {
+      "file": "galho-vento-v1.png",
+      "promptOriginal": "Use case: stylized-concept. Sprite PNG isolado de produção para plataforma de GALHO GIGANTE de árvore em jogo de plataforma lateral 2D, pintura detalhada de livro infantil, aquarela/gouache. Um galho de madeira antiga grosso que nasce de uma seção de tronco vertical no lado ESQUERDO e se estende quase horizontalmente para a DIREITA, bem largo para uma menina minúscula caminhar e pular em cima. Casca sulcada com fibras, rachaduras orgânicas, nós redondos, musgo esparso e pequenos líquens azulados, pintura material rica e nítida. O galho tem volume, espessura e face inferior irregular; a superfície superior de apoio é amplamente contínua, quase horizontal e suavemente arqueada, sem espinhos ou bifurcações altas atravessando o caminho. O tronco ocupa apenas os 15% esquerdos da composição e é cortado pela borda superior e inferior para se prolongar fora da tela; o galho sai dele a cerca de40% da altura e vai até90% da largura, afilando levemente a ponta direita. Nenhum chão, cenário, folha grande ou personagem. Paleta marrom frio, cinza madeira e musgo verde-azulado, luar azul discreto, atmosfera mística de floresta noturna. Perspectiva lateral com leve visão da superfície superior. Desenho natural, sem faixa ou linha auxiliar de plataforma e sem realce neon no topo. Canvas horizontal, fundo realmente transparente com alpha, sem sombra externa, rótulos, logo, checkerboard ou elementos soltos. Arte única inteira pronta para recortes de galho e tronco, detalhada, nunca ícone vetorial simples."
+    }
+  ],
+  "integracao": "Aranhas e galhos ilustrados com alfa real. Fios de seda e posições móveis compartilham geometria com a simulação. Aprovação do usuário termina na folha rest-4; estas artes novas aguardam revisão."
+}
