@@ -12,7 +12,7 @@ function enemyRange(enemy){
 }
 /** Domínio puro em segundos, incluindo fada, terrenos, nuvens e recuperação EASY. */
 export function createGardenState(difficulty='NORMAL'){
-  return {version:10,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0,hurtRemaining:0,hurtDirection:1},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
+  return {version:11,story:{openingIndex:0,endingIndex:0,openingDone:false,endingDone:false,seenOpening:false,seenEnding:false,cardAge:0},storyHeld:false,presentation:{beetleHintSeen:false,hintRemaining:0,hurtRemaining:0,hurtDirection:1},encounters:createGardenEncounters(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',age:0,time:0,hp:difficulty==='EASY'?6:3,checkpoint:120,defeated:0,
     jumpHeld:false,jumpBuffer:0,coyote:0,immunity:0,jumps:0,clouds:{},trail:['entrada'],safeGround:'entrada',recovery:null,
     player:{animationTime:0,balancePose:null,x:GARDEN_HOME.steps[0].x,y:GARDEN_HOME.steps[0].y,vx:0,vy:0,facing:1,onGround:true,support:'entrada',terrain:'wood',airSpeed:C.speed,discomfort:0},
     fairy:{x:120,y:C.ground-135,mode:'follow',idle:0,progressX:120,guideAge:0,target:null},
@@ -59,7 +59,7 @@ export function retryGarden(s,difficulty=s.difficulty){
 }
 /** Migra o mapa antigo para o início seguro; conclusão antiga chega ao piquenique novo. */
 export function restoreGardenState(saved,difficulty='NORMAL'){
-  if(!saved||![1,2,3,4,5,6,7,8,9,10].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
+  if(!saved||![1,2,3,4,5,6,7,8,9,10,11].includes(saved.version)||!stages.includes(saved.stage))throw new TypeError('Save do jardim inválido.');
   const finite=values=>values.every(Number.isFinite);
   if(!saved.player||!finite([saved.age,saved.time,saved.hp,saved.checkpoint,saved.player.x,saved.player.y,saved.player.vx,saved.player.vy])||saved.time<0||saved.age<0)throw new TypeError('Estado do jardim incompatível.');
   const out=createGardenState(difficulty);
@@ -99,6 +99,8 @@ export function restoreGardenState(saved,difficulty='NORMAL'){
     const story=saved.story;
     if(!story||!Number.isInteger(story.openingIndex)||story.openingIndex<0||story.openingIndex>=GARDEN_OPENING.length||!Number.isInteger(story.endingIndex)||story.endingIndex<0||story.endingIndex>=GARDEN_ENDING.length||!Number.isFinite(story.cardAge)||story.cardAge<0||['openingDone','endingDone','seenOpening','seenEnding'].some(k=>typeof story[k]!=='boolean'))throw new TypeError('Leitura salva do jardim inválida.');
     out.story={...story};
+    // A conclusão anterior ganha o novo desfecho sem repetir o percurso nem as falas já lidas.
+    if(saved.version<=10&&out.stage==='COMPLETE'&&out.story.endingDone){out.story.endingIndex=10;out.story.cardAge=0;out.story.endingDone=false;out.story.seenEnding=false;}
   }else{
     const end=out.stage==='COMPLETE',cards=end?GARDEN_ENDING:GARDEN_OPENING;
     let elapsed=0,index=0;while(index<cards.length-1&&elapsed+cards[index].duration<=saved.age){elapsed+=cards[index++].duration;}

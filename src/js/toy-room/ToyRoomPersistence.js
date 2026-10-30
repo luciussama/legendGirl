@@ -12,10 +12,12 @@ export class ToyRoomPersistence {
     if (includeArena && this.context.arena) saved.toyRoomArena = this.context.arena.snapshot();
     if (includeArena && this.context.chase?.campaign) saved.toyRoomChaseCampaign = this.context.chase.snapshot();
     if (includeArena && this.context.garden?.campaign) saved.toyRoomGarden = this.context.garden.snapshot();
+    if(includeArena&&this.context.epilogue?.active&&this.context.epilogue.campaign)saved.toyRoomEpilogue=this.context.epilogue.snapshot();
     return saved;
   }
 
   restore(saved, { preserveArena = false } = {}) {
+    if(!preserveArena)this.context.epilogue=null;
     if (!preserveArena && this.context.garden) {this.context.garden.destroy();this.context.garden=null;}
     if (!preserveArena && this.context.chase) {
       this.context.chase.destroy();
@@ -42,6 +44,8 @@ export class ToyRoomPersistence {
     if (!preserveArena) this.context.arena?.restore(saved.toyRoomArena, saved);
     if (saved.toyRoomGarden) {
       this.context.startGarden(saved.toyRoomGarden);
+    } else if(saved.toyRoomEpilogue){
+      this.context.startEpilogue(saved.toyRoomEpilogue);
     } else if (saved.toyRoomChaseCampaign) {
       if (this.context.arena?.active || !this.context.story.state.arenaCompleted)
         throw new TypeError('Save de campanha incompatível com a etapa da arena.');

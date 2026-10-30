@@ -78,7 +78,11 @@
     "girl-v2-carry": "./assets/art/characters/girl-v2/runtime/carry.png",
     "girl-v2-arena-dano": "./assets/art/characters/girl-v2/runtime/arena-dano.png",
     "girl-v2-arena-agachar": "./assets/art/characters/girl-v2/runtime/arena-agachar.png",
-    "toy-room-chest-open-v2": "./assets/art/toy-room/chest-brinquedos-open-v2.png"
+    "toy-room-chest-open-v2": "./assets/art/toy-room/chest-brinquedos-open-v2.png",
+    "chapter-girl-room": "./assets/art/chapters/menina-quarto-v1.png",
+    "chapter-fairy": "./assets/art/chapters/nanda-gestos-v1.png",
+    "chapter-clean-room": "./assets/art/chapters/quarto-arrumado-v1.png",
+    "chapter-garden": "./assets/art/garden/cinematic/casa-sem-atores-v1.png"
   },
   "spritesheets": {}
 }

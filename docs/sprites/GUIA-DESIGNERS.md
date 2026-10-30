@@ -108,3 +108,8 @@ A prancha `girl-v2/source/pernas-articuladas-v1.png`, prompt, derivado, preparad
 ## Sombras no piso da sala2D
 
 A exploração projeta as silhuetas das artes existentes por `ToyRoomShadows`, sem gerar PNGs novos. Alterar transparência ou a base de um móvel/brinquedo exige revisar os apoios visuais e a projeção. Alfa opaco fornece a silhueta; a penumbra translúcida pintada é preservada e recebe contato adicional mais discreto. Evite incluir sombra opaca longa na arte nova, pois ela pode parecer parte do objeto na máscara. As imagens atuais não foram repintadas. Ao carregar, o brinquedo entra na sombra de Yuna; não desenhar também uma sombra de chão na posição antiga. Tapetes recebem sombra; corpos/móveis a ocultam. Física e câmeras permanecem independentes desse acabamento.
+
+
+## Gravuras e atuação dos capítulos
+
+`assets/art/chapters/` contém a sala arrumada sem objetos soltos no chão, a menina cansada/feliz/confusa, Nanda em facepalm/sono e Yuna sonolenta/adormecida. Fontes anteriores permanecem preservadas. `prepare-chapter-art.js` localiza os vãos transparentes e mede os recortes de `ChapterArt.js`, sem editar os PNGs. `ChapterCard` desenha títulos em cima das gravuras existentes; `ToyRoomEpilogue` e `GardenCinematic` compõem a atuação em camadas. Consulte o [roteiro](../capitulos/ROTEIRO.md) e a proveniência em `assets/art/chapters/prompts.json`.

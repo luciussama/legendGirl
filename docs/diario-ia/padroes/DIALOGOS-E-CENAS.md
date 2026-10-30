@@ -9,20 +9,21 @@ Decisão explícita do usuário em 26/10/2026, na sessão `20261026T181721-3f180
 - Na ausência de tempo autorado, usar quatro segundos como ponto inicial, coerente com o aviso de entrada da sala de brinquedos. O acolhimento de retomada da fada, antes sem prazo, usa esse tempo. Textos extensos precisam de tempo próprio definido e registrado.
 - Durante gameplay, clicar no próprio quadro dispensa/adianta a fala; controles de pulo, direção e ação continuam independentes. Nas cenas bloqueadas para leitura, o clique pode ocorrer em qualquer parte do canvas.
 - Um gesto avança uma vez; segurar não atravessa falas. Consumir a entrada para não produzir salto, ataque, coleta, organização de brinquedos ou movimento na volta ao controle.
-- O quadro desaparece depois da última fala temporizada. A atuação/cena final pode continuar: o piquenique permanece animado, sem inventar botões de saída ou próxima fase.
+- O quadro desaparece depois da última fala temporizada. A atuação/cena final pode continuar: o final do piquenique conserva Yuna e Nanda adormecidas, sem inventar botões de saída ou próxima fase.
 - A opção de pular uma cena inteira já vista é separada do clique de avançar um balão. Preservar essa opção onde existe. Tutoriais que exigem executar uma ação, HUD, indicadores de controle, erros e menus não são balões de história: dispensar texto não executa a ação nem ignora o desafio.
 
 ## Tempos e referências existentes
 
 | Sequência | Temporização autorada que deve ser preservada |
 | --- | --- |
-| Despertar no quarto | Falas em 4–9, 10–13, 14–20, 21–24 e 25–29 segundos; ações/revelação posteriores conservadas. |
+| Despertar no quarto | Falas em 4–9, 10–13, 14–20, 21–24 e 25–29 segundos; ações existentes conservadas; música em 33,5 s, gravura do capítulo 1 em 36–41 s, revelação em 41 s e conclusão em 42,5 s. |
 | Entrada da sala | TR_004 e TR_005: 4 s cada; TR_006: duas falas de 3,1 s com intervalo de 0,8 s; TR_007: 2 s. |
 | Retorno dos brinquedos | 1 s e 4,5 s, com intervalo de 0,5 s. |
 | Investigação/espada | Tempos por beat em `ToyRoomStory.js`; preservar também ações silenciosas e revelação da espada. |
 | Castelo e porta falsa | Relógios existentes em `DarkRoomNarrative.js`; clique separa narrador inicial de 210 ticks e a fala seguinte, sem saltar as duas juntas. |
 | Jardim: saída de casa | 5, 5, 5, 6, 8, 5, 5, 5 e 6 s. |
-| Jardim: piquenique | 6, 6, 5, 5, 8, 5, 4, 3, 6 e 8 s. |
+| Jardim: piquenique | 6, 6, 5, 5, 8, 5, 4, 3, 6 e 8 s; quatro novos quadros de 7 s conduzem ao sono. |
+| Quarto arrumado e capítulo 2 | Falas de 7, 6, 7 e 8 s; facepalm silencioso de 4,5 s; gravura de 5 s. |
 
 Ticks dessas sequências legadas representam a base autorada de 60 Hz; não confundir com segundos. O jardim usa segundos. Pausa/perda de foco segue o contrato da fase e suspende os relógios de leitura; não usar `setTimeout` para avançar falas do jogo.
 

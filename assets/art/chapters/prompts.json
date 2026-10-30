@@ -1,0 +1,55 @@
+{
+  "version": 1,
+  "description": "Pinturas próprias para a separação dos capítulos; títulos e diálogos são desenhados em código.",
+  "assets": [
+    {
+      "file": "menina-quarto-v1.png",
+      "tool": "image_gen integrado",
+      "resumoPrompt": "Três poses da menina no vestido creme: cansada/aliviada, feliz e confusa; identidade da introdução preservada.",
+      "references": [
+        "assets/art/toy-room/introduction/girl-acting-v1.png"
+      ],
+      "sha256": "70aa0f62426a1bcb56edac372b73d2f10da37f6bea84e7570f8b5c98ef21207d",
+      "bytes": 1055030,
+      "aprovacaoArtistica": "aprovada nesta entrega",
+      "dataAprovacao": "2026-10-29"
+    },
+    {
+      "file": "nanda-gestos-v1.png",
+      "tool": "image_gen integrado",
+      "resumoPrompt": "Nanda em duas poses transparentes: facepalm e adormecida; referências de identidade e piquenique.",
+      "references": [
+        "assets/art/toy-room/stage3/illustrated-fairy-v1.png",
+        "assets/art/garden/runtime/cinematic-atuacao-v1.png"
+      ],
+      "sha256": "5fd1dc0736c5ccdea790950c7954a32ba0afee1fa0803a18a4e44fe688e0e06d",
+      "bytes": 1121967,
+      "aprovacaoArtistica": "aprovada nesta entrega",
+      "dataAprovacao": "2026-10-29"
+    },
+    {
+      "file": "yuna-sono-v1.png",
+      "tool": "image_gen integrado",
+      "resumoPrompt": "Yuna com roupa turquesa do jardim: satisfeita e sonolenta; adormecida de lado, sem objetos nem toalha.",
+      "references": [
+        "assets/art/garden/runtime/cinematic-atuacao-v1.png"
+      ],
+      "sha256": "5215aec76ce5d0544b5ee9af83ab2f2be0c4512576b06fdcf18f872833083dab",
+      "bytes": 1508938,
+      "aprovacaoArtistica": "aprovada nesta entrega",
+      "dataAprovacao": "2026-10-29"
+    },
+    {
+      "file": "quarto-arrumado-v1.png",
+      "tool": "image_gen integrado",
+      "resumoPrompt": "Editar o quarto para remover todos os brinquedos e objetos soltos do piso, fechar baú, preservar luz, mobília e tapete.",
+      "references": [
+        "assets/art/toy-room/introduction/room-v1.png"
+      ],
+      "sha256": "a9c19901a947e993cd650664c1b4d805e91a4f1cbdbfd305a7a6cd77595564a5",
+      "bytes": 2407798,
+      "aprovacaoArtistica": "aprovada nesta entrega",
+      "dataAprovacao": "2026-10-29"
+    }
+  ]
+}

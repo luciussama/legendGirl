@@ -1,3 +1,4 @@
+import {renderChapterCard} from '../chapters/ChapterCard.js';
 import {drawDialogueControls,dialogueControlsHeight} from '../narrative/DialogueControls.js';
 import {offerDialogue,setDialogueBounds} from '../narrative/DialogueFlow.js';
 import { renderMobileDialogueRegion } from '../ui/MobileDialogueRegion.js';
@@ -58,22 +59,23 @@ export class OpeningSequence {
     } catch {}
   }
   advanceDialogue(){
+    if(this.active&&this.time>=36&&this.time<41){this.time=41;return true;}
     const index=OPENING_DIALOGUE.findIndex(([from,to])=>this.time>=from&&this.time<to);
     if(!this.active||index<0)return false;
     this.time=OPENING_DIALOGUE[index+1]?.[0]??OPENING_DIALOGUE[index][1];
     return true;
   }
-  get revealing() { return this.time >= 36; }
+  get revealing() { return this.time >= 41; }
   update(dt) {
     if (!this.active) return;
     this.time += Math.max(0, dt) / 60;
-    for (const [at, name] of [[4,'voice'],[21,'shout'],[25,'shout'],[29,'wake'],[36,'reveal']]) {
+    for (const [at, name] of [[4,'voice'],[21,'shout'],[25,'shout'],[29,'wake'],[33.5,'music'],[41,'reveal']]) {
       if (this.time >= at && !this.cues.has(name+at)) {
         this.cues.add(name+at);
         if (name === 'reveal') this.onReveal(); else this.onCue(name);
       }
     }
-    if (this.time >= 37.5) {
+    if (this.time >= 42.5) {
       // Uma revisão não altera a conclusão persistida nem a conclusão em memória.
       if (!this.replay) {
         completedInSession = true; this.completedOverride = true;
@@ -84,13 +86,14 @@ export class OpeningSequence {
     }
   }
   renderFade(ctx, canvas) {
-    const opacity = this.revealing ? 1 - smooth((this.time - 36) / 1.5) :
+    const opacity = this.revealing ? 1 - smooth((this.time - 41) / 1.5) :
       this.time < 2 ? 1 - smooth(this.time / 2) : smooth((this.time - 35) / 1);
     if (!opacity) return;
     ctx.save(); ctx.fillStyle = `rgba(3,5,12,${opacity})`;
     ctx.fillRect(0,0,canvas.width,canvas.height); ctx.restore();
   }
   render(ctx, canvas, {assets, drawRoom, lighting, fairyRenderer}) {
+    if(this.time>=36&&this.time<41){renderChapterCard(ctx,canvas,{image:assets.get('toy-room-intro-room-v1'),number:1,title:'Quarto de brinquedos',age:this.time-36,onAdvance:()=>this.advanceDialogue()});return;}
     const t = this.time, floor = Math.min(470, canvas.height - 90);
     const bedWidth = Math.min(310, canvas.width * 0.55);
     const bedX = Math.max(24, canvas.width * 0.13), bedY = floor - bedWidth * 364 / 510;

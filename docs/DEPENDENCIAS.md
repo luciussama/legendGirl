@@ -1,6 +1,6 @@
 # Dicionário de bibliotecas e dependências
 
-Revisão: 26/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
+Revisão: 29/10/2026. Fontes: package.json, package-lock.json, imports locais, server.js e workflow. Versões abaixo são as resolvidas no lockfile; os intervalos declarados não são versões fixas. Não houve atualização de pacotes nesta revisão. Consulte o [manual do desenvolvedor](MANUAL-DESENVOLVIMENTO.md).
 
 ## Dependências npm diretas
 
@@ -30,6 +30,10 @@ Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outro
 - [tools/sprite-review/catalog.js](../tools/sprite-review/catalog.js)
 
 **pngjs**
+
+- [scripts/prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js)
+
+- [scripts/prepare-chapter-art.js](../scripts/prepare-chapter-art.js)
 
 - [scripts/build-dark-room-atlas.js](../scripts/build-dark-room-atlas.js)
 - [scripts/build-tall-dresser.js](../scripts/build-tall-dresser.js)

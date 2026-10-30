@@ -1,6 +1,6 @@
 # Um dia no jardim
 
-Revisão: 26/10/2026. Fonte: módulos atuais de `src/js/garden/` e integração em `ToyRoomPhase`/`ToyRoomPersistence`.
+Revisão: 29/10/2026. Fonte: módulos atuais de `src/js/garden/` e integração em `ToyRoomPhase`/`ToyRoomPersistence`.
 
 Depois da captura do urso e da ida ao baú, a campanha espera 2,5 segundos e abre o jardim. Para revisar diretamente, use bandeira → **Um dia no jardim**; essa entrada não altera a campanha salva. Na saída da casa, Nanda revela o nome da menina: “Vamos, Yuna, vamos no piquenique, vai ser divertido!”. A narração acolhe alegria, receio dos insetos e desconforto com as texturas. As cenas seguem a introdução da sala de brinquedos: cenário e personagens em camadas na altura dos olhos, atuação, voo da fada e mudanças de plano. Depois da abertura, Yuna desce a escada e a travessia começa. O destino é o piquenique com ursinho, dinossauro, robô e trem, pão na chapa e suco de laranja. Na conclusão, Yuna descansa sentada e come; Nanda pousa e se senta ao lado dela, com pão e suco na escala da própria mãozinha. Texto no topo e enquadramento cinematográfico se adaptam à tela, sem afetar a câmera jogável. Não se usa mais uma única imagem fixa sob as falas.
 
@@ -46,7 +46,7 @@ Nanda acompanha acima da cabeça durante toda a fase. Após sete segundos sem pr
 
 No NORMAL há três corações. Água e queda são fatais mesmo com corações restantes; contato lateral tira um coração e dá imunidade temporária. Bandeirinhas em chão firme conservam o avanço e recuperam os corações. A derrota começa com a queda animada, seguida de “Game Over”; somente depois aparecem “Tentar novamente” e “Desistir”. O cenário e a música continuam durante essa sequência e no menu. Repetir retoma o checkpoint, conservando inimigos já derrotados. A campanha mantém sua oferta do modo fácil a cada três derrotas.
 
-Ao receber dano, Yuna reage com um recuo visual do tronco por até 0,48 s e um pequeno sinal de contato, sem mover as solas nem modificar trajetória, velocidade ou colisões. Durante a reação inicial ela permanece opaca; depois, o piscar indica a imunidade restante. O áudio combina contato e reação curta da menina, respeitando volume, mudo e pausa. Cada contato emite o som uma única vez, inclusive no golpe fatal. O save v10 conserva tempo e direção da reação; saves anteriores à apresentação usam estado neutro, e uma nova tentativa limpa o efeito.
+Ao receber dano, Yuna reage com um recuo visual do tronco por até 0,48 s e um pequeno sinal de contato, sem mover as solas nem modificar trajetória, velocidade ou colisões. Durante a reação inicial ela permanece opaca; depois, o piscar indica a imunidade restante. O áudio combina contato e reação curta da menina, respeitando volume, mudo e pausa. Cada contato emite o som uma única vez, inclusive no golpe fatal. O domínio v11 conserva tempo e direção da reação; saves anteriores à apresentação usam estado neutro, e uma nova tentativa limpa o efeito.
 
 No EASY, a menina nunca morre. Queda e água acionam o resgate animado de Nanda até a última faixa de chão seguro. Um golpe que esgotaria os seis corações causa desorientação e retorno de aproximadamente dois apoios visitados. A recuperação devolve seis corações e quatro segundos de imunidade. Apoios temporários e a roda não são destinos de resgate; esse fluxo não aciona GAME_OVER do host.
 
@@ -54,7 +54,7 @@ No EASY, a menina nunca morre. Queda e água acionam o resgate animado de Nanda 
 
 `GardenLevel` define superfícies, materiais, águas, setores, inimigos, checkpoints e rodas. Consultas por faixas espaciais limitam os apoios considerados a cada subpasso. `GardenSimulation` é puro, usa segundos e subpassos de até 1/120 s, colisão varrida relativa a apoios/inimigos móveis, coyote de 120 ms e buffer de 140 ms. A câmera conserva altura/escala por viewport e acompanha somente x.
 
-`GardenPhase` compõe entrada, simulação, pinturas e áudio. `ToyRoomPhase.startGarden` descarta o 3D. O domínio v10 serializa material/velocidade aérea, relógios das nuvens, vida/saltos dos inimigos, histórico de apoios, chão seguro, guia da fada, recuperação, encontros e leitura. `toyRoomGarden` é prioritário no restore da sala; não contém DOM, imagens, entradas ou nós de áudio. O envelope da fase tem versão 1 (`{version:1,state}`), o domínio usa `state.version:10` e a configuração `GARDEN.version` vale 7. Esses números têm finalidades distintas.
+`GardenPhase` compõe entrada, simulação, pinturas e áudio. `ToyRoomPhase.startGarden` descarta o 3D. O domínio v11 serializa material/velocidade aérea, relógios das nuvens, vida/saltos dos inimigos, histórico de apoios, chão seguro, guia da fada, recuperação, encontros e leitura. `toyRoomGarden` é prioritário no restore da sala; não contém DOM, imagens, entradas ou nós de áudio. O envelope da fase tem versão 1 (`{version:1,state}`), o domínio usa `state.version:11` e a configuração `GARDEN.version` vale 7. Esses números têm finalidades distintas.
 
 | Save de origem | Restauração atual |
 | --- | --- |
@@ -66,6 +66,7 @@ No EASY, a menina nunca morre. Queda e água acionam o resgate animado de Nanda 
 | v8 | Conserva leitura e cenas vistas; abelha em voo migra a partir da posição atual para o arco alternado v9. |
 | v9 | Conserva leitura, corpos, checkpoints e arcos A/B; a perseguição de rio em andamento passa a aguardar a margem, sem mover a menina. |
 | v10 | Conserva os dados anteriores e permite perseguição de rio com tempo decorrido superior a seis segundos, até o pouso seguro; nuvens mantêm o prazo de seis segundos. |
+| v11 | Acrescenta o desfecho do sono; saves v8–v10 já concluídos retomam no quadro10, sem repetir percurso ou falas anteriores. |
 
 Saves sem jardim conservam o fluxo anterior. O render não reinicia encontros. Apoios e destinos incompatíveis são validados pelo domínio, sem aproveitar posições antigas cegamente.
 
@@ -92,14 +93,19 @@ A menina começa na porta/escada da casa e desce até o piso de madeira em uma b
 
 Na abertura e no piquenique, cada fala avança automaticamente pelo prazo autorado. Toque no canvas, Enter ou Espaço adianta uma fala por interação; a atuação continua. O lembrete de avanço opcional fica dentro da moldura, sem faixa de fundo adicional. Cenas já vistas oferecem “Pular (S)” na própria moldura; também aceitam S. Ao terminar ou pular o final, a apresentação fica no piquenique com Yuna e Nanda sentadas/comendo, sem menu ou próxima fase. A abertura usa plano fixo e corte para a descida jogável, evitando o deslizamento da pose.
 
-O save v10 conserva índice da fala, tempo da atuação e cenas vistas, migrando a apresentação v7/v8/v9 sem alterar corpos, checkpoint ou encontros. A marca de cena vista também é conservada localmente no navegador; bloqueio de armazenamento não impede o snapshot. Pausa/perda de foco suspendem atualização e liberam entradas. A entrada de fechar a abertura é consumida antes do retorno ao controle.
+O domínio v11 conserva índice da fala, tempo da atuação e cenas vistas, migrando a apresentação v7/v8/v9 sem alterar corpos, checkpoint ou encontros. A marca de cena vista também é conservada localmente no navegador; bloqueio de armazenamento não impede o snapshot. Pausa/perda de foco suspendem atualização e liberam entradas. A entrada de fechar a abertura é consumida antes do retorno ao controle.
 
 Antes do primeiro encontro efetivamente vivido, o narrador informa que Yuna corre sozinha e o jogador controla o pulo. Em todo encontro, Nanda diz “calma, Yuna, é só um besouro. Ele não vai te fazer mal”. São falas não modais durante gameplay; acompanham a fuga até a margem nos dois rios e por seis segundos no encontro das nuvens. O besouro tem corpo estável e asas articuladas em `GardenBeetleRenderer`; o HUD mantém texto de 12 px CSS no celular. Terra em movimento e preparação mais expressiva das asas da abelha antecipam perigos sem novas falas. Agrupamentos vegetais e borboletas variam por setor e ficam mais esparsos perto dos rios, preservando mapa e dificuldade.
 
 ### Rasantes alternados e entrada dos besouros
 
-As abelhas ficam em repouso fixo no ar entre os ataques, com asas animadas. Depois do aviso de 0,5 s, percorrem uma parábola baixa de A para B em 1,25 s e permanecem em B; o próximo rasante, após o intervalo de 1,8 s e nova aproximação, faz B para A pela mesma parábola. Não há retorno automático separado nem desaparecimento. Dano de 1 ponto e derrota por pisão continuam. O save v10 conserva ponto de repouso, origem/destino, duração e profundidade do arco; saves v8 em voo migram a partir da posição atual da abelha.
+As abelhas ficam em repouso fixo no ar entre os ataques, com asas animadas. Depois do aviso de 0,5 s, percorrem uma parábola baixa de A para B em 1,25 s e permanecem em B; o próximo rasante, após o intervalo de 1,8 s e nova aproximação, faz B para A pela mesma parábola. Não há retorno automático separado nem desaparecimento. Dano de 1 ponto e derrota por pisão continuam. O domínio v11 conserva ponto de repouso, origem/destino, duração e profundidade do arco; saves v8 em voo migram a partir da posição atual da abelha.
 
-O besouro entra pela esquerda a partir de fora do viewport e alcança a posição de perseguição em 0,85 s visuais, incluindo em retrato/paisagem. Essa apresentação não modifica o gatilho, a direção automática ou o pulo. Nos dois rios, o encerramento depende do pouso seguro na margem de destino; nas nuvens finais, mantém os seis segundos ativos. O save v10 conserva `elapsed` real e `remaining` limitado a zero após seis segundos no rio, sem confundir prazo expirado com fuga encerrada.
+O besouro entra pela esquerda a partir de fora do viewport e alcança a posição de perseguição em 0,85 s visuais, incluindo em retrato/paisagem. Essa apresentação não modifica o gatilho, a direção automática ou o pulo. Nos dois rios, o encerramento depende do pouso seguro na margem de destino; nas nuvens finais, mantém os seis segundos ativos. O domínio v11 conserva `elapsed` real e `remaining` limitado a zero após seis segundos no rio, sem confundir prazo expirado com fuga encerrada.
 
 O padrão geral vigente é [diálogos e cenas](../diario-ia/padroes/DIALOGOS-E-CENAS.md): automático pelo prazo de cada fala, com clique/toque opcional para adiantar. O encerramento temporizado retira o último quadro e conserva o piquenique animado.
+
+
+## Final do capítulo2
+
+Depois das falas do piquenique, Yuna come mais pão na chapa e bebe suco de laranja, fica sonolenta e adormece. Nanda dorme ao lado dela. `GardenCinematic` usa as novas pinturas em `assets/art/chapters/`; olhos e postura são próprios do sono, sem girar uma pose acordada para simular dormir. O [roteiro dos capítulos](../capitulos/ROTEIRO.md) preserva a intenção da futura fase de furtividade no jardim3D; essa fase não é o percurso2D existente.

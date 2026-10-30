@@ -16,16 +16,27 @@ const details={
  installDialogueAdvance:'Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal.',
  requestDialogueAdvance:'No jardim, enfileira avanço de uma fala ou skip visto e bloqueia pulo até a liberação da entrada.',
  gardenCinematicMoment:'Seleciona atuação e plano pelo progresso narrativo, separado da câmera de gameplay e do relógio da fala.',
- renderGardenCinematic:'Compõe cenário, atores em camadas e quadro narrativo; mantém piquenique animado após a leitura.',
- createGardenState:'Cria domínio v10 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis.',
- restoreGardenState:'Valida saves v1–v10 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos.',
+ renderGardenCinematic:'Compõe cenário, atores em camadas e quadro narrativo; apresenta sonolência e repouso das duas após a leitura.',
+ createGardenState:'Cria domínio v11 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis.',
+ restoreGardenState:'Valida saves v1–v11 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos.',
  stepGarden:'Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos.',
  retryGarden:'Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros.',
  tickGardenBee:'Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s.',
  tickGardenWorm:'Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão.',
  tickGardenBeetles:'Ativa corrida automática até o pouso seguro na outra margem dos rios; mantém seis segundos no encontro das nuvens finais.',
  resetGardenPanic:'Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar.',
- startGarden:'Descarta perseguição e controles da sala e inicia GardenPhase com recursos, física e áudio próprios.',
+ startGarden:'Encerra epílogo/perseguição, remove entradas da sala e inicia GardenPhase com recursos, física e áudio próprios; conserva a origem campanha/prévia.',
+ startEpilogue:'Descarta a perseguição, limpa entrada e inicia o epílogo recuperável; o callback abre o jardim com a mesma origem campanha/prévia.',
+ renderChapterCard:'Desenha a gravura e o título na área segura; registra avanço da leitura sem avançar a fase por trás.',
+ girlGaitDirection:'Mantém o perfil lateral coerente entre pernas e tronco; o chamador espelha esquerda/direita, sem girar só as pernas ao mover em profundidade.',
+ sampleGirlLocomotion:'Amostra apoio, elevação, joelho, tronco, cabeça, braços e vestido por distância; transportar reduz a oscilação.',
+ drawGirlLocomotion:'Compõe repouso original e membros articulados com transição contínua; retorna false se faltarem fontes.',
+ girlLocomotionDistance:'Converte animTime legado para distância na pintura, com calibração distinta para quarto e sala.',
+ renderGirlRun:'Ancora a menina nos pés, aplica escala/espelhamento e compartilha a atuação entre explorações, sem mudar corpos físicos.',
+ applyGirlBodyTransform:'Aplica translação do quadril, oscilação e rotação do tronco também às mãos e ao brinquedo transportado.',
+ drawGirlUpperBody:'Compõe cabeça estabilizada, cabelo, braços em oposição e vestido com atraso; preserva uma única cabeça na mistura.',
+ dialogueControlsHeight:'Reserva altura para os comandos de leitura e, quando permitido, para o botão separado de pular cena já vista.',
+ drawDialogueControls:'Desenha avanço automático, gesto de adiantar e alvo separado de skip; devolve os limites do botão.',
  advanceDialogue:'Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada.',
  titleSceneFrame:'Calcula uma câmera comum para o quarto da tela inicial, com foco na menina no retrato e poltrona fixa no tapete.',
  floorIsVisible:'Renderiza uma amostra do piso fora da tela e confere o sinal de madeira na GPU.',
@@ -102,7 +113,6 @@ const details={
  prepare:'Prepara contexto visual da introdução; consulte dependências no módulo.',
 
  createGame:'Cria o coordenador e devolve a API de integração com a página.',
- syncLocalsToState:'Copia variáveis locais para GameState antes de delegações/captura.',syncStateToLocals:'Atualiza locais a partir de GameState após operações delegadas.',
  doJump:'Seleciona salto ou avanço narrativo conforme o estado atual.',handleResize:'Dimensiona bitmap e canvases auxiliares a partir do layout CSS.',
  recordCameraQa:'Emite observação optativa de câmera; ativada por cameraQa e callback de teste.',
  getBackgroundViewport:'Inverte a matriz real para determinar os limites visíveis do fundo.',
@@ -129,7 +139,40 @@ const details={
  getCanvasCoordinates:'Converte evento de ponteiro para coordenadas internas da sala.',
  read:'Lê e valida save da campanha; pode usar memória da sessão.',write:'Serializa save versionado e tenta gravar no storage.',
 };
-function describe(name){if(Object.hasOwn(details,name))return details[name];if(name==='constructor')return 'Inicializa dependências e estado da instância; consulte a seção do módulo.';if(name==='destroy')return 'Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.';if(name==='snapshot')return 'Produz captura recuperável do estado específico deste componente.';if(name==='restore')return 'Reaplica a captura específica; confira referências e dados transitórios.';if(name==='update'||name.startsWith('update'))return 'Avança o estado do subsistema; não é uma operação somente de desenho.';if(name==='render'||name.startsWith('render')||name.startsWith('draw'))return 'Compõe desenho da área correspondente; consulte parâmetros e referencial no código.';if(name.startsWith('spawn'))return 'Cria partículas/efeitos no buffer correspondente.';if(name.startsWith('play'))return 'Aciona o som/cue correspondente ou sua delegação de áudio.';if(name.startsWith('handle')||name.startsWith('onPointer'))return 'Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.';if(name.startsWith('start')||name.startsWith('finish')||name.startsWith('advance')||name.startsWith('confirm'))return 'Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio.';if(name.startsWith('get')||name.startsWith('is')||name.startsWith('has'))return 'Consulta/calcula valor específico; forma exata definida pela implementação.';if(name.startsWith('set')||name.startsWith('reset')||name.startsWith('clear'))return 'Configura/reinicializa valores do componente; revise o escopo da mutação.';if(name.startsWith('create'))return 'Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências.';return 'Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado.';}
+const scopedDetails={
+ 'ToyRoomEpilogue.js':{
+  constructor:'Recebe assets, áudio, callback, origem e save opcional; valida versão/índice/relógios e inicia a música da sala.',
+  beat:'Consulta o quadro corrente de TOY_ROOM_EPILOGUE sem avançar a sequência.',
+  snapshot:'Captura versão 1, índice, idade e tempo; a inclusão no save depende da origem no host.',
+  advanceDialogue:'Avança somente fala ou gravura; recusa o plano silencioso de facepalm e cenas encerradas.',
+  next:'Troca o quadro e zera a idade; no último, encerra e chama onComplete uma vez.',
+  update:'Converte dt legado para segundos, avança relógios/fade musical e conclui quadros no tempo autorado.',
+  render:'Compõe quarto arrumado, poses e fala na área segura; aproxima Nanda no facepalm e apresenta a gravura do capítulo 2.'
+ },
+ 'GardenPhase.js':{
+  start:'Restaura domínio opcional, recupera marcas de leitura, carrega recursos e instala entradas/listeners; publica erro de carga sem liberar movimento.',
+  reading:'Consulta abertura ou encerramento ainda em leitura e o alvo de skip já visto; devolve null durante gameplay e sono concluído.',
+  snapshot:'Captura envelope versão 1 com cópia serializável do domínio; não inclui imagens, áudio ou listeners.',
+  destroy:'Descarta avanço de diálogo, eventos de foco/visibilidade, controles, áudio e renderer de forma idempotente.'
+ },
+ 'ToyRoomPersistence.js':{
+  snapshot:'Copia exploração, religa carregado por ID e inclui arena/perseguição/jardim/epílogo conforme origem e includeArena.',
+  restore:'Reaplica exploração e atores, limpa entrada e prioriza jardim, epílogo, perseguição, arena, batalha e tutorial; preserveArena evita reconstrução recursiva.'
+ },
+ 'ToyRoomPhase.js':{
+  updateActiveMode:'Seleciona epílogo, jardim, perseguição ou sala; após 150 ticks de COMPLETE abre o epílogo preservando campaign.',
+  triggerAction:'Encaminha ação à exploração somente fora de epílogo, jardim e perseguição.',
+  destroy:'Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo.'
+ },
+ 'TitleScreen.js':{
+  refresh:'Atualiza disponibilidade de Carregar jogo a partir do save efetivo sem mudar a dificuldade escolhida.',
+  setEasy:'Configura somente a próxima aventura; carregar mantém a dificuldade do save.',
+  requestNew:'Abre confirmação se há progresso; cancelar preserva o save.',
+  navigate:'Move foco com setas entre opções habilitadas e impede propagação ao jogo.',
+  activateFocused:'Aciona o botão focado pelo gamepad sem atravessar os diálogos do menu.'
+ }
+};
+function describe(name,file){const scoped=scopedDetails[path.basename(file)];if(scoped&&Object.hasOwn(scoped,name))return scoped[name];if(Object.hasOwn(details,name))return details[name];if(name==='constructor')return 'Inicializa dependências e estado da instância; consulte a seção do módulo.';if(name==='destroy')return 'Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.';if(name==='snapshot')return 'Produz captura recuperável do estado específico deste componente.';if(name==='restore')return 'Reaplica a captura específica; confira referências e dados transitórios.';if(name==='update'||name.startsWith('update'))return 'Avança o estado do subsistema; não é uma operação somente de desenho.';if(name==='render'||name.startsWith('render')||name.startsWith('draw'))return 'Compõe desenho da área correspondente; consulte parâmetros e referencial no código.';if(name.startsWith('spawn'))return 'Cria partículas/efeitos no buffer correspondente.';if(name.startsWith('play'))return 'Aciona o som/cue correspondente ou sua delegação de áudio.';if(name.startsWith('handle')||name.startsWith('onPointer'))return 'Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.';if(name.startsWith('start')||name.startsWith('finish')||name.startsWith('advance')||name.startsWith('confirm'))return 'Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio.';if(name.startsWith('get')||name.startsWith('is')||name.startsWith('has'))return 'Consulta/calcula valor específico; forma exata definida pela implementação.';if(name.startsWith('set')||name.startsWith('reset')||name.startsWith('clear'))return 'Configura/reinicializa valores do componente; revise o escopo da mutação.';if(name.startsWith('create'))return 'Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências.';return 'Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado.';}
 let document='# Referência de métodos e funções\n\nInventário de `src/js`, gerado a partir da cópia local. Consulte [arquitetura e entidades](ARQUITETURA.md), o [manual](MANUAL-DESENVOLVIMENTO.md) e os [comandos](COMANDOS.md).\n\nAs linhas referem-se ao snapshot local e mudam após edições. O inventário inclui funções, métodos, acessores e funções atribuídas com parâmetros entre parênteses, além dos contratos exportados/reexports. Não é um parser completo: callbacks anônimos e algumas lambdas de parâmetro simples não são declarações separadas aqui; funções exportadas continuam enumeradas no módulo. APIs de fábricas e proprietários de estado estão documentados na arquitetura e no manual. A presença de uma função interna não a torna pública.\n\nRegenerar na raiz: `node scripts/generate-method-reference.js`. Revise também as descrições e o manual após mudar contratos.\n\n';
 let total=0,modules=0;
 for(const file of await files(root)){
@@ -153,7 +196,7 @@ for(const file of await files(root)){
  for(const match of text.matchAll(/export\s*\{([^}]+)\}\s*from/g))for(const item of match[1].split(',')){const name=item.trim().split(/\s+as\s+/).at(-1);if(name)exports.push(name);}
  document+=`## ${relative}\n\n[Implementação](../${relative}).`+(exports.length?' Contratos exportados/reexportados: '+[...new Set(exports)].map(n=>'`'+n+'`').join(', ')+'.':'')+'\n\n';
  if(!declarations.length)document+='Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.\n\n';
- else{document+='| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |\n| --- | --- | ---: | --- |\n';for(const d of declarations)document+=`| \`${d.signature.replaceAll('|','\\|')}\` | ${d.kind} | ${d.line} | ${describe(d.name)} |\n`;document+='\n';}
+ else{document+='| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |\n| --- | --- | ---: | --- |\n';for(const d of declarations)document+=`| \`${d.signature.replaceAll('|','\\|')}\` | ${d.kind} | [${d.line}](../${relative}#L${d.line}) | ${describe(d.name,relative)} |\n`;document+='\n';}
  total+=declarations.length;modules++;
 }
 document+=`Inventário: **${modules} módulos JavaScript**, **${total} declarações nomeadas**.\n`;

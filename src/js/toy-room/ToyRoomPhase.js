@@ -1,3 +1,4 @@
+import {ToyRoomEpilogue} from '../chapters/ToyRoomEpilogue.js';
 import {beginDialogueFrame,endDialogueFrame} from '../narrative/DialogueFlow.js';
 import { GardenPhase } from '../garden/GardenPhase.js';
 import { createToyRoomTutorialContext } from './ToyRoomTutorialContext.js';
@@ -161,10 +162,11 @@ export class ToyRoomPhase {
   }
 
   /** Encaminha ações da sala; a perseguição 3D usa somente seus controles laterais. */
-  triggerAction() { if (!this.garden?.active && !this.chase?.active) return this.interaction.triggerAction(); }
+  triggerAction() { if (!this.epilogue?.active && !this.garden?.active && !this.chase?.active) return this.interaction.triggerAction(); }
 
-  /** Abre a prova isolada sem migrar saves ou antecipar a nova transição de campanha. */
+  /** Revisa a perseguição e suas cenas finais, sem migrar a campanha salva. */
   startChasePreview(saved = null) {
+    this.epilogue=null;this.gardenTransition=0;
     this.chase?.destroy();
     this.clearInput(); this.inputController.removeListeners();
     this.arena?.audioProfile.leave({ resume: false });
@@ -178,6 +180,7 @@ export class ToyRoomPhase {
   /** Inicia a perseguição da campanha sob o fade da vitória, sem reutilizar o seletor de debug. */
   startChaseCampaign(saved = null) {
     if (this.chase?.campaign && this.chase.active) return false;
+    this.epilogue=null;this.gardenTransition=0;
     this.chase?.destroy();
     this.clearInput(); this.inputController.removeListeners();
     this.arena?.audioProfile.leave({ resume: false });
@@ -220,8 +223,16 @@ export class ToyRoomPhase {
     }
   }
 
+  /** Fecha a organização antes do capítulo do jardim, sem devolver controles de exploração. */
+  startEpilogue(saved=null,{campaign=true}={}){
+    this.chase?.destroy();this.chase=null;this.clearInput();this.inputController.removeListeners();
+    this.epilogue=new ToyRoomEpilogue({assets:this.assets,audio:this.audio,saved,campaign,onComplete:()=>this.startGarden(null,{campaign})});
+    this.gameplayState='TOY_ROOM_EPILOGUE';
+  }
+
   /** Abre o dia seguinte com física e roupa próprias, descartando controles do quarto. */
   startGarden(saved = null, { campaign = true } = {}) {
+    this.epilogue=null;
     this.garden?.destroy();this.garden = null;
     this.chase?.destroy();this.chase = null;
     this.clearInput();this.inputController.removeListeners();
@@ -253,13 +264,14 @@ export class ToyRoomPhase {
 
   /** Executa a etapa ativa; a notificação de derrota acontece depois de sua simulação. */
   updateActiveMode(dt) {
+    if(this.epilogue?.active){if(this.isInputEnabled())this.epilogue.update(dt);return;}
     if (this.garden?.active) { this.garden.update(dt);return; }
     if (!this.isInputEnabled()) { this.clearInput(); return; }
     if (this.chase?.active) {
       this.chase.update(dt);
-      if(this.chase.campaign && this.chase.state.stage==='COMPLETE') {
+      if(this.chase.state.stage==='COMPLETE') {
         this.gardenTransition=(this.gardenTransition||0)+dt;
-        if(this.gardenTransition>=150)this.startGarden();
+        if(this.gardenTransition>=150)this.startEpilogue(null,{campaign:this.chase.campaign===true});
       } else this.gardenTransition=0;
       return;
     }
@@ -370,6 +382,7 @@ export class ToyRoomPhase {
   /** Desenha o modo ativo; o renderer 3D compõe sua saída no canvas já existente. */
   render(options = {}) {
     beginDialogueFrame(this.canvas);try{
+    if(this.epilogue?.active&&!options.arenaBackdrop){this.epilogue.render(this.ctx,this.canvas);return;}
     if (this.garden?.active && !options.arenaBackdrop) {this.garden.render();return;}
     if (this.chase?.active && !options.arenaBackdrop) { this.chase.render(); return; }
     if (this.arena?.active && !options.arenaBackdrop) { this.arena.render(); return; }
@@ -391,6 +404,7 @@ export class ToyRoomPhase {
 
   /** Encerra todos os sistemas ativos, incluindo listeners e recursos da perseguição. */
   destroy() {
+    this.epilogue=null;
     this.garden?.destroy();this.garden=null;
     this.chase?.destroy(); this.chase = null;
     this.arena?.audioProfile.leave({ resume: false });
