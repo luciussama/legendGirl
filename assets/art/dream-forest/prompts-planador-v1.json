@@ -1,0 +1,21 @@
+{
+  "date": "2026-10-30",
+  "tool": "image_gen.imagegen",
+  "skill": "imagegen",
+  "approval": "Revisão artística humana pendente",
+  "assets": [
+    {
+      "file": "yuna-planador-v1.png",
+      "prompt": "Create ONE transparent-background game sprite, side view facing RIGHT, matching the little brown curly pigtail girl in the reference image exactly: pink bows, yellow short sleeve shirt, turquoise floral pinafore dress, pink shoes, painterly storybook outlined 2D game art. She is hang gliding beneath ONE large curved teal-green leaf held overhead with BOTH hands visibly gripping its forked stem, arms raised and physically connected to the leaf stem, legs dangling slightly bent in flight, expressive determined happy face. Entire leaf and entire girl visible, no crops. Leaf canopy about twice width of girl, natural veins and gently curled edges. Single coherent pose, no sprite sheet, no text, no scenery, no shadows outside sprite. Preserve her proportions and richly painted illustration style, not pixel art. Native transparent alpha.",
+      "reference": "assets/art/garden/runtime/menina-acoes-v1.png",
+      "sha256": "db17c05d6d6012011ce9e12e7bc9d0ada0f3480616e3b14caa824bc7cd50b9ce",
+      "bytes": 1256924
+    },
+    {
+      "file": "galho-espinhos-v1.png",
+      "prompt": "ONE isolated vertical thorny tree branch game sprite, native transparent background. Branch grows DOWNWARD from a thick base at TOP edge to a narrow curved pointed tip near BOTTOM, dark blue-violet richly painted textured bark, many large sharp rose thorns on both sides silhouette with pale blue tip highlights, a few tiny moss patches, no leaves. Storybook 2D illustrated forest at moonlight matching richly painted children's adventure sprites, readable and detailed, natural organic irregular wood. Full branch occupying tall narrow portrait canvas, no scenery, no text, no ground, no other objects. The top attachment can be cropped at top edge, bottom tip fully visible. No glow or cast shadow outside wood.",
+      "sha256": "51b9a2462a0a9ab62b2f3c28bd1b6f39ea39d9226bc4311730f5e09fd96cb937",
+      "bytes": 1373607
+    }
+  ]
+}

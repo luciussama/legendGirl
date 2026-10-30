@@ -27,3 +27,7 @@ As gramas agora se prolongam em caules contínuos até abaixo do viewport. Essa 
 `yuna-escalada-v2.png` substitui no runtime a prancha antiga, preservada como referência. São quatro poses de flexão/extensão de pernas e braços e duas poses de chegada ao topo, com escala comum. A primeira geração ainda repetia os joelhos altos; o refinamento alterou as duas poses de extensão. Origem, prompts completos e hash em [prompts-escalada-v2.json](prompts-escalada-v2.json). Ferramenta integrada image_gen, alpha real, aprovação artística pendente.
 
 O gerador mede componentes completos para não cortar sapatos entre células. As mãos ancoram o desenho de DreamClimb nos contornos visuais do corpo da abelha/besouro ou na curva da haste. A última mão baixa tem âncora própria, separada do sapato. Fase por distância escalada e inclinação contínua do corpo; as poses no lombo continuam anteriores. Não modificar DREAM_PROFILES, física ou alcance para corrigir a apresentação.
+
+## Planador e espinhos
+
+`yuna-planador-v1.png` mantém mãos e haste conectadas na mesma pintura; `galho-espinhos-v1.png` é o obstáculo de cima/baixo. Gerados pela ferramenta integrada imagegen, com prompts/referência/hashes em `prompts-planador-v1.json`. Aprovação artística humana pendente. `scripts/prepare-dream-glider.js` gera máscaras de alfa opaco para contato, sem alterar os PNGs. O recorte superior da pintura da menina também apresenta a folha antes da coleta.

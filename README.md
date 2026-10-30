@@ -77,7 +77,7 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
 | Jardim | A/D ou esquerda/direita; Espaço, W ou cima | Andar e pular; soltar pulo encurta a subida |
 | Jardim em touch/gamepad | ◀ ▶ e PULAR simultâneos; analógico/D-pad e A/X | Andar e pular; durante o besouro, a corrida para frente é automática e só o pulo fica sob controle |
-| Jardim dos sonhos | A/D ou esquerda/direita; W/S ou cima/baixo; Espaço | Andar, escalar e saltar; aderência automática. Touch e gamepad permitem direção e salto simultâneos. |
+| Jardim dos sonhos | A/D ou esquerda/direita; W/S ou cima/baixo; Espaço | Andar, escalar e saltar; aderência automática. No celular, somente nas teias de aranha, a subida até a altura de preparo é automática. Touch e gamepad permitem direção e salto simultâneos. |
 | Falas narrativas | Clique/toque no quadro; em cenas modais, em qualquer ponto do canvas | Adiantar um balão, sem produzir salto, ataque ou coleta |
 | Cenas do jardim | Enter/Espaço ou A/X; S ou “Pular (S)” após ver a cena | Adiantar uma fala ou pular uma cena já vista |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
@@ -276,3 +276,5 @@ A vitória da arena passa por tela escura e revela o urso caído, com a menina p
 O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v11 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e Yuna e Nanda adormecem; após quatro segundos, começa a floresta dos sonhos. Saves concluídos das revisões 8 a 10 retomam apenas as novas cenas de sono.
 
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.
+
+O sonho continua em um planador de folha: caminhada automática no galho, rajada, controle vertical com inércia e grandes subidas/mergulhos entre espinhos. Dano reinicia o voo no lançamento. Controles e manutenção no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).

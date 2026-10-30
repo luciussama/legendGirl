@@ -739,7 +739,7 @@ A [entrada obrigatória do diário](diario-ia/README.md#regras-obrigatórias-de-
 
 O [guia do sonho](dream-forest/GUIA-SONHO.md) define os controles, o percurso e os saves. O usuário substituiu o plano3D por uma floresta aérea2D; não reutilizar o escopo histórico de furtividade. Acrescentar novas mecânicas em DreamSimulation/DreamLevel, sem compartilhar corpos com o jardim. Os contornos de apoio são medidos por prepare-dream-art.js e usados também no desenho. Manter aderência automática, escalada até o lombo, bloqueio breve de reagarre e checkpoint estável. O salto usa Espaço; W/S e setas verticais são escalada nesta fase.
 
-A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio3 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
+A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio4 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
 
 ### Caules e recuperação de saltos no sonho
 
@@ -757,8 +757,19 @@ Quatro besouros esperam o apoio dos pés para partir; `flight` define destino, d
 
 O limite aprovado é rest-4. Preservar seus 80 objetos anteriores ao editar o fim do sonho. Teias usam `kind:web`, aranha vertical em ciclo de9s e referência fixa para climb.u; não recalcular a pegada com o comprimento variável do fio. `DreamWeb` separa a seda agarrável do contato nocivo. Dano solta a menina e conta uma vez; FALLING também antecede a recuperação EASY. Novas trajetórias precisam oferecer uma janela real de transferência e horários de risco. No domínio3, validar hits/fallCause e migrar posições antigas da área substituída à folha, sem rejeitá-las por ultrapassar a nova extensão antes de migrar.
 
-Galhos são apoios móveis (`kind:branch`), sem agarrar a lateral como um inseto. O checkpoint usa a pose móvel corrente. O repouso final acompanha o vento para evitar pés flutuantes. O desafio dos galhos aguarda instrução do usuário; manter somente esta base. Artes e prompts de aranha/galho estão na pasta do sonho, com medição por prepare-dream-art.js e cache descartado pelo renderer.
+Galhos são apoios móveis (`kind:branch`), sem agarrar a lateral como um inseto. O checkpoint usa a pose móvel corrente. O repouso final acompanha o vento para evitar pés flutuantes. O galho de chegada inicia agora a seção do planador. Artes e prompts de aranha/galho estão na pasta do sonho, com medição por prepare-dream-art.js e cache descartado pelo renderer.
 
 ### Contato visual e ciclo de escalada
 
 `DreamClimb` projeta a mão da pose no contorno visual do inseto ou na haste; não usar o centro do sprite como ponto de pegada. `DREAM_CLIMB_CYCLE` contém seis recortes/âncoras e escala comum; `DREAM_CLIMB_CONTACTS` contém medidas visuais do corpo da abelha e do besouro, sem asas membranosas. O ciclo depende da distância local climb.u, sem relógio de passos em repouso, e possui poses próprias de chegada ao topo. Regenerar por prepare-dream-art.js após trocar fontes; conferir a mão baixa da última pose separadamente do sapato. Manter o ramo de desenho em pé e os dados físicos intactos.
+
+### Ajuda móvel somente na seda
+
+`dreamMobileWebInput` recebe estado, entrada e duração do quadro; no celular, em RUNNING e preso a uma teia, aplica apenas y negativo até pegada250. Usa isMobileDevice já existente, sem tratar viewport estreito ou pointer coarse como celular. Direção vertical explícita e salto manual têm prioridade; demais estados/apoios/desktop devolvem a própria entrada. DreamPhase faz essa adaptação antes de stepDream. Não mover essa ajuda para GardenInput, MobileZoom ou para a física global. Nenhum campo novo é serializado.
+
+
+### Planador do sonho
+
+`DreamGlider` integra os cinco estágios de lançamento/voo/queda/pouso em subpassos, com entrada vertical manual e avanço automático. Preserve os87 objetos até rest-5 ao ajustar este trecho. A função dreamGlideRoute define as alturas dos obstáculos, nunca a posição do jogador. Mudanças fortes de altitude exigem antecipação, velocidade e aceleração suficientes para atravessar. A queda reinicia o lançamento em NORMAL/EASY.
+
+`DreamGliderArt` é gerado por `scripts/prepare-dream-glider.js`; as máscaras usam alfa≥200 para excluir névoa. `dreamGliderPose` compartilha rotação/âncora/escala com o renderer. Preserve contato de mãos/haste na pintura composta. A câmera vertical suavizada é exclusiva do voo e vai no save domínio4; exploração e quarto escuro conservam suas regras. Validar saves em cada estágio, reinício, percurso completo e toque/teclado com test:sonho:planador e test:sonho:planador:browser.

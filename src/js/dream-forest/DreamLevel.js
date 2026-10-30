@@ -1,6 +1,7 @@
+import {DREAM_GLIDE} from './DreamGlider.js';
 import {DREAM_INSECTS} from './DreamArt.js';
 /** Geometria do sonho em Canvas 2D; todas as posições móveis são funções do tempo salvo. */
-export const DREAM = Object.freeze({version:3,height:900,grassRoot:1800,gravity:900,speed:230,jump:470,climbSpeed:145,bodyHeight:88,bodyRadius:16,cell:600});
+export const DREAM = Object.freeze({version:4,height:900,grassRoot:1800,gravity:900,speed:230,jump:470,climbSpeed:145,bodyHeight:88,bodyRadius:16,cell:600});
 export const DREAM_SECTIONS = Object.freeze([
   {name:'Onde a grama toca a lua',kind:'grass',count:24},
   {name:'O sopro entre as folhas',kind:'wind',count:25},
@@ -20,7 +21,7 @@ for(const [section,def] of DREAM_SECTIONS.entries()){
   }
   if(def.kind==='branch'){
     objects.push({id:'rest-5',kind:'branch',x:cursor,y:570,w:560,h:200,checkpoint:true,section,amplitude:14,period:9,phase:.5});cursor+=620;
-    for(let i=0;i<def.count;i++){objects.push({id:'branch-'+i,kind:'branch',x:cursor,y:[535,590][i],w:460,h:180,section,amplitude:26,period:8+i,phase:1.2+i*1.3});cursor+=520;}
+    cursor=DREAM_GLIDE.start+DREAM_GLIDE.length+120;
     continue;
   }
   objects.push({id:'rest-'+section,kind:'leaf',x:cursor,y:650,w:360,h:120,checkpoint:true,section});
@@ -34,7 +35,7 @@ for(const [section,def] of DREAM_SECTIONS.entries()){
   }
   cursor+=0;
 }
-objects.push({id:'dream-finish',kind:'branch',x:cursor,y:550,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
+objects.push({id:'dream-finish',kind:'branch',x:cursor,y:350,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
 for(const [index,o] of objects.entries())if(o.kind==='beetle'){
   const next=objects[index+1],n=Number(o.id.split('-').at(-1));
   o.flight=Object.freeze({toX:next.x-o.w-100,toY:next.kind==='leaf'?next.y-o.h*.7:next.y+35,duration:[12,14,13,14][n],delay:.65,arc:[-170,140,-190,100][n],wave:[65,-70,75,-65][n],next:next.id});

@@ -4,7 +4,7 @@ Direção de 30/10/2026: o usuário substituiu o jardim 3D por uma floresta late
 
 ## Percurso e controles
 
-São seis ambientes: gramas iniciais, vento mais forte, lombos de besouros, abelhas elevatórias, teias com aranhas e a base da passagem por galhos ao vento. A floresta mede 30.018 unidades; a duração depende da leitura do vento e das tentativas. Folhas estáveis são pontos de descanso, e o destino é uma clareira. A narração final dura sete segundos ou pode ser adiantada; depois, o ambiente continua animado sem novo capítulo ou botão de saída. O mapa tem 90 objetos físicos e apenas quatro besouros (antes eram 27). Cada besouro espera Yuna apoiar os pés no lombo, prepara a decolagem por 0,65 s e faz uma viagem de 12–14 s até perto do próximo apoio. As rotas alternam curvas de subida e descida, com aceleração e desaceleração suaves. Ele permanece no destino para permitir o salto; agarrar sua lateral ainda não inicia a viagem. O percurso anterior até a folha após as abelhas foi aprovado e conserva seus 80 objetos; o trecho seguinte foi substituído. Insetos transportam a menina e suas laterais podem ser escaladas.
+São seis ambientes: gramas iniciais, vento mais forte, lombos de besouros, abelhas elevatórias, teias com aranhas e o planador entre galhos e espinhos. A floresta mede 40.148 unidades; a duração depende da leitura do vento e das tentativas. Folhas estáveis são pontos de descanso, e o destino é uma clareira. A narração final dura sete segundos ou pode ser adiantada; depois, o ambiente continua animado sem novo capítulo ou botão de saída. O mapa tem 88 apoios/objetos da travessia e 42 galhos espinhosos do voo e apenas quatro besouros (antes eram 27). Cada besouro espera Yuna apoiar os pés no lombo, prepara a decolagem por 0,65 s e faz uma viagem de 12–14 s até perto do próximo apoio. As rotas alternam curvas de subida e descida, com aceleração e desaceleração suaves. Ele permanece no destino para permitir o salto; agarrar sua lateral ainda não inicia a viagem. O percurso anterior até a folha após as abelhas foi aprovado e conserva seus 80 objetos; o trecho seguinte foi substituído. Insetos transportam a menina e suas laterais podem ser escaladas.
 
 | Dispositivo | Andar / orientar salto | Subir / descer | Saltar |
 | --- | --- | --- | --- |
@@ -20,7 +20,7 @@ O NORMAL tem queda animada e “Tentar novamente” no último descanso, com a o
 
 ## Apresentação e custo
 
-Fundo pintado azul/índigo com névoa, gramas em Canvas, folhas ilustradas e insetos ilustrados e poses próprias de escalada. O besouro usa a pintura original em camadas: asas membranosas batem, três patas articulam alternadamente e cabeça/antenas oscilam. As partes são preparadas em cache uma vez e liberadas ao sair; o casco de apoio conserva a geometria física. Yuna espera em pé durante o transporte. Yuna continua com sua identidade e roupa do jardim. A câmera mantém enquadramento vertical fixo por viewport e só rola lateralmente. O nome do trecho fica abaixo dos controles superiores; os comandos touch têm alvos separados.
+Fundo pintado azul/índigo com névoa, gramas em Canvas, folhas ilustradas e insetos ilustrados e poses próprias de escalada. O besouro usa a pintura original em camadas: asas membranosas batem, três patas articulam alternadamente e cabeça/antenas oscilam. As partes são preparadas em cache uma vez e liberadas ao sair; o casco de apoio conserva a geometria física. Yuna espera em pé durante o transporte. Yuna continua com sua identidade e roupa do jardim. Até o galho de lançamento, a câmera mantém enquadramento vertical fixo por viewport e só rola lateralmente. Somente o planador acompanha a altitude, com suavização; a câmera do quarto escuro não é alterada. O nome do trecho fica abaixo dos controles superiores; os comandos touch têm alvos separados.
 
 A floresta não cria renderer WebGL, modelos 3D, sombras dinâmicas, filtros de tela inteira ou buffers por quadro. Consultas espaciais limitam física e desenho à vizinhança; partículas são catorze pequenos pontos. Recursos são carregados ao entrar e liberados na saída. Isso reduz a carga arquitetural; avaliação de GPU em aparelhos reais ainda depende de homologação no hardware.
 
@@ -34,6 +34,9 @@ O arquivo original **Misty Blues.mp3** enviado pelo usuário foi copiado sem alt
 | `DreamClimb` | Ciclo visual por distância, mãos na pintura e transição para o topo. |
 | `DreamWeb` | Contato corporal com aranhas e disponibilidade real do fio para agarrar. |
 | `DreamSimulation` | Domínio em segundos/subpassos de até 1/120 s, leitura, aderência, escalada, saltos, contorno, queda, checkpoints e conclusão. |
+| `DreamGlider` | Caminhada automática, rajada, voo com inércia, percurso vertical, colisão e reinício. |
+| `DreamGliderArt` | Máscaras de alfa opaco geradas das duas pinturas. |
+| `DreamGliderRenderer` | Folha presa ao galho, Yuna segurando a haste e obstáculos pintados. |
 | `DreamArt` | Recortes e perfis superiores medidos por alfa, gerados de fontes preservadas. |
 | `DreamIllustratedSprites` | Folhas e caules pintados, registro em cache e batimento das asas da abelhinha do bem. |
 | `DreamBeetle` | Cache de partes da pintura original, poses de asas/patas/cabeça e desenho articulado. |
@@ -41,7 +44,7 @@ O arquivo original **Misty Blues.mp3** enviado pelo usuário foi copiado sem alt
 | `DreamInput` | Complementa GardenInput com eixo vertical, teclado, gamepad e toque simultâneo. |
 | `DreamPhase` | Carga, pausa, áudio, save/restore e descarte; recebe apenas host, canvas, dificuldade e origem. |
 
-`toyRoomDream` guarda envelope versão 1, estado versão 3 e posição musical. Estado contém relógio, leitura, checkpoint, progresso, quedas, contatos com aranhas (`hits`), causa da queda (`fallCause`) e jogador (posição, velocidades, apoio, aderência e bloqueio de reagarre). O campo `rides` guarda, para os quatro transportes, `null` antes do embarque ou o instante numérico de partida; posição e fase do voo derivam desse instante e do relógio salvo. Pausa e retomada conservam a viagem. Saves do domínio 1 conservam a migração dos besouros: posições afetadas pela nova seção de besouros retornam à folha `rest-2`, e apoios removidos do trecho misto à `rest-5`; os demais apoios válidos são conservados. Na revisão 3, saves dos domínios 1/2 no trecho substituído retomam na folha `rest-4`; posições anteriores aprovadas continuam válidas. Não serializa imagens, Canvas, áudio, listeners ou ponteiros. No caule inferior, a coordenada de aderência `u` pode ser maior que 1; a altura continua relativa ao comprimento original da lâmina, preservando saves anteriores. `restoreDreamState` valida versões, limites e IDs; a física conserva o relógio das plataformas e o bloqueio de reagarre.
+`toyRoomDream` guarda envelope versão 1, estado versão 4 e posição musical. Estado contém relógio, leitura, checkpoint, progresso, quedas, contatos com aranhas (`hits`), causa da queda (`fallCause`) e jogador (posição, velocidades, apoio, aderência e bloqueio de reagarre). O campo `rides` guarda, para os quatro transportes, `null` antes do embarque ou o instante numérico de partida; posição e fase do voo derivam desse instante e do relógio salvo. Pausa e retomada conservam a viagem. Saves do domínio 1 conservam a migração dos besouros: posições afetadas pela nova seção de besouros retornam à folha `rest-2`, e apoios removidos do trecho misto à `rest-5`; os demais apoios válidos são conservados. Na revisão 3, saves dos domínios 1/2 no trecho substituído retomam na folha `rest-4`; posições anteriores aprovadas continuam válidas. Não serializa imagens, Canvas, áudio, listeners ou ponteiros. No caule inferior, a coordenada de aderência `u` pode ser maior que 1; a altura continua relativa ao comprimento original da lâmina, preservando saves anteriores. `restoreDreamState` valida versões, limites e IDs; a física conserva o relógio das plataformas e o bloqueio de reagarre.
 
 Quatro segundos após o sono concluído no jardim, `ToyRoomPhase.updateActiveMode` inicia `DreamPhase`. Saves antigos do piquenique alcançam essa mesma passagem. Restore prioriza sonho, jardim, epílogo e perseguição. A origem campanha/prévia acompanha a transição; a bandeira “Jardim dos sonhos” fica fora do save da campanha.
 
@@ -65,11 +68,11 @@ A menina escala o fio com os mesmos controles e salta automaticamente para agarr
 
 `climb.u` na teia usa referência fixa de1500 unidades a partir de y=-500, sem puxar a menina quando a aranha muda o comprimento do fio. Pausa congela aranha e seda. Saves retomam a fase do ciclo pelo relógio; `hits`/`fallCause` conservam dano/queda sem repetir o impacto. `DreamWeb` e o renderer usam a mesma posição da aranha.
 
-O outro lado é um grande galho/checkpoint `rest-5`, seguido por três galhos, incluindo a extremidade provisória. Todos usam pintura com casca, musgo e tronco, com deslocamento leve pelo vento e transporte dos pés. A base permite saltar entre eles; o desafio específico dessa parte aguarda definição do usuário. O repouso no último galho conserva o ambiente vivo, sem inventar um novo capítulo ou um despertar.
+O outro lado é o grande galho/checkpoint `rest-5`, preservado com sua pintura, vento e superfície. Ao pousar nele, começa a caminhada automática até a folha e a decolagem descritas abaixo. Os antigos galhos provisórios foram substituídos pelo voo.
 
 `test:sonho:teias` verifica o limite aprovado, travessia, intervalos abertos/fechados, espera perigosa, dano, queda e migração. `test:sonho:teias:browser 1200 720 NORMAL` percorre o novo trecho por teclado após save preparado na folha; aceita os formatos de celular.
 
-A meta de cerca de cinco minutos será recalibrada quando o usuário definir o desafio dos galhos; o segmento atual é uma base para avaliação, e tempos de pilotos automatizados não garantem duração humana.
+A meta continua perto de cinco minutos; leitura dos obstáculos e tentativas mudam a duração humana. Pilotos automatizados não garantem esse tempo.
 
 ## Animação de escalada
 
@@ -78,3 +81,24 @@ A meta de cerca de cinco minutos será recalibrada quando o usuário definir o d
 O ciclo visual percorre quatro poses a cada72 unidades escaladas, calculadas por climb.u. Descer inverte o ciclo; esperar conserva a pose mesmo com vento ou voo do inseto. Uma inclinação contínua acompanha o empurrão dos pés. Os contornos e âncoras são somente apresentação: física, colisões, distâncias, domínio3/envelope1 e animação sobre o lombo foram preservados. As quatro poses antigas ficam como referência, sem voltar ao runtime.
 
 `test:sonho:escalada` verifica âncoras/contatos em pixels reais e fase por distância; `test:sonho:escalada:browser 1200 720 NORMAL` sobe nos dois lados de abelhas/besouros e na haste, com pausa e save. Também aceita os formatos de celular.
+
+## Ajuda exclusiva para celular nas teias
+
+Em dispositivo móvel identificado por `isMobileDevice`, ao agarrar uma teia de aranha Yuna sobe automaticamente até uma altura de preparo para o salto (pegada em y250, pés em314). A subida usa a velocidade normal e para nessa altura; se ela já estiver acima, a ajuda não a reposiciona. O jogador continua escolhendo direção, momento e comando do salto. Subir/descer manualmente tem prioridade; pular não recebe ajuste automático.
+
+A regra vale somente para `kind:web`, em RUNNING. Desktop, mesmo em janela estreita ou com tela de toque, conserva o comportamento anterior; estreitar o viewport ou exibir botões touch não identifica um celular. Gramas, corpos dos insetos, folhas, galhos e outras fases permanecem manuais. Pausa, leitura, queda e conclusão não ativam a ajuda.
+
+`dreamMobileWebInput` adapta apenas a entrada vertical em DreamPhase. Não muda DreamSimulation, mapa, vento, aranhas, alcance do salto ou dificuldade. A identificação do aparelho não é gravada no save: ao restaurar, aplica-se a regra do dispositivo atual. Comando de teste: `test:sonho:teias:mobile` e `test:sonho:teias:mobile:browser 390 844 NORMAL mobile`; o último argumento `desktop` confere isolamento inclusive em janela estreita.
+
+
+## Planador de folha e mudanças de altitude
+
+Ao pousar no galho após as aranhas, Yuna caminha automaticamente a115 unidades/s até a ponta. Há uma única folha presa ali; uma rajada de1,1s a solta e inicia o voo. Mãos, haste e menina pertencem à mesma pintura. O avanço é automático a220 unidades/s; ▲/▼, W/S ou eixo vertical do gamepad manobram. No celular ficam visíveis somente os dois comandos verticais durante o voo.
+
+A resposta é pesada: aceleração vertical limitada a400 unidades/s², velocidade alvo até400 e aproximação gradual. Soltar o comando não freia instantaneamente; há deriva suave de descida. O traçado tem11.200 unidades, cerca de51s de voo sem contar chegada/pouso. Começa com curvas baixas e, da metade ao fim, alterna altitudes de aproximadamente−700 a790, entre subidas altas e mergulhos. O centro do percurso constrói os obstáculos; **não pilota Yuna**. É preciso antecipar as manobras.
+
+São21 pares de galhos espinhosos, com vãos maiores nas mudanças fortes de altitude para permitir a resposta do planador. A colisão compara amostras de alfa opaco das pinturas de Yuna/folha e galhos; névoa e transparência são ignoradas. Inclinação e escala são compartilhadas entre contato e desenho. Não há linhas auxiliares sobre a arte. Tocar um espinho provoca dano e queda; em ambas as dificuldades, a jornada reinicia automaticamente no galho de lançamento. O trecho das aranhas não precisa ser repetido. Ao sair do corredor, há pouso automático de3s no galho final e a narração já existente.
+
+Domínio4/envelope1: `glider` conserva a altura suavizada da câmera e, durante o pouso, sua origem. Os estágios são GLIDE_APPROACH, GLIDE_GUST, GLIDING, GLIDE_FALLING e GLIDE_LANDING. Saves da versão3 na antiga base de galhos retomam no lançamento; posições anteriores permanecem válidas. Pausa congela todo o voo. A ajuda móvel das teias continua exclusiva daquele trecho.
+
+Artes e prompts em `assets/art/dream-forest/prompts-planador-v1.json`. Execute `node scripts/prepare-dream-glider.js` ao trocar as pinturas para reconstruir as máscaras. QA: `npm run journal:qa -- test:sonho:planador` e `test:sonho:planador:browser 1200 720 NORMAL desktop`; formatos390×844 EASY e844×390 NORMAL usam `mobile` no último argumento. O teste parte de save preparado no galho e usa controles nativos; aprovação artística e aparelho físico continuam separados do QA técnico.

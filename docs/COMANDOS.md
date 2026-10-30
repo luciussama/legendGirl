@@ -132,6 +132,7 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [export-chase-girl.js](../scripts/export-chase-girl.js) | Exporta o modelo GLB da menina em pose neutra; não inclui animação. |
 | [prepare-illustrated-girl.js](../scripts/prepare-illustrated-girl.js) | Prepara as pranchas e metadados da menina ilustrada a partir das fontes girl-v2. |
 | [prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js) | Deriva peças articuladas e metadados da pintura original; preserva a identidade das pernas e exige revisão das âncoras. |
+| [prepare-dream-glider.js](../scripts/prepare-dream-glider.js) | Mede silhuetas opacas do planador e espinhos; gera DreamGliderArt.js. |
 | [prepare-dream-art.js](../scripts/prepare-dream-art.js) | Mede escalada, contornos dos insetos e recortes/âncoras de folhas e abelhinha; gera DreamArt.js sem alterar PNGs ou física. |
 | [prepare-chapter-art.js](../scripts/prepare-chapter-art.js) | Mede os recortes por alfa das atuações dos capítulos e gera ChapterArt.js; preserva os pixels das fontes. |
 | [prepare-chase-palette.js](../scripts/prepare-chase-palette.js) | Deriva paleta e metadados das amostras da arte de arena; sobrescreve derivados. |
@@ -274,3 +275,7 @@ A auditoria documental abrangente está no diário: `npm run journal:qa -- test:
 - `npm run journal:qa -- test:sonho:teias`: preservação do percurso aprovado, saltos entre seda, janelas do ciclo, dano/queda, galhos e saves. `test:sonho:teias:browser 1200 720 NORMAL` verifica o trecho por teclado; aceita retrato390×844 EASY e paisagem844×390 NORMAL.
 
 - `npm run journal:qa -- test:sonho:escalada`: âncoras e contatos sobre pixels reais, quatro fases por distância e repouso. `test:sonho:escalada:browser 1200 720 NORMAL` valida subida dos dois lados de insetos, haste, transição ao lombo, pausa e save; aceita formatos móveis.
+
+- `npm run journal:qa -- test:sonho:teias:mobile`: ajuda exclusiva para celular, altura de preparo, prioridade manual e equivalência do desktop/outros apoios. `test:sonho:teias:mobile:browser 390 844 NORMAL mobile` verifica por toque; o último argumento `desktop` testa a mesma janela sem ajuda.
+
+- `npm run journal:qa -- test:sonho:planador`: percurso integral, voo com grandes altitudes, inércia, dano/reinício, migração e saves. `test:sonho:planador:browser 1200 720 NORMAL desktop` verifica a seção por teclado; formatos390×844 EASY e844×390 NORMAL usam `mobile`.

@@ -294,3 +294,11 @@ O usuário aprovou o sonho até a folha após as abelhas, mostrada na imagem. O 
 ## 30/10/2026 — Braços e pernas na escalada
 
 A pose de escalada passou a se ancorar pelas mãos na pintura do inseto ou na haste. Novo ciclo de quatro poses mostra flexão/extensão dos braços e pernas, com duas poses adicionais para subir no topo. Inclinação do corpo acompanha o empurrão dos pés; esperar segura a pose. A física e a pose já aprovada de Yuna em pé sobre os insetos foram preservadas.
+
+## 30/10/2026 — Ajuda móvel nas teias
+
+A pedido do usuário, no celular Yuna sobe sozinha pela teia da aranha até uma altura de preparo para o próximo salto. O salto continua manual, e subir/descer explicitamente tem prioridade. A ajuda não se aplica ao desktop, gramas, insetos ou galhos. Física e demais mecânicas preservadas.
+
+## 30/10/2026 — Planador entre espinhos
+
+Após as aranhas, Yuna caminha até a única folha na ponta do galho. Uma rajada inicia o voo, com manobra vertical pesada e avanço automático. A segunda metade tem grandes subidas e mergulhos entre galhos espinhosos. Contato causa queda e reinício no lançamento, sem repetir as teias. Pouso final automático, saves migrados e ajuda móvel das teias preservada. Artes novas aguardam revisão humana; resultados técnicos ficam no diário de IA.

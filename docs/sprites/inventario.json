@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 491,
+    "files": 493,
     "regions": 249,
     "code": 29
   },
@@ -3139,6 +3139,22 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "f12cfd6e8b4f7b56c4170b17",
+      "kind": "file",
+      "path": "assets/art/dream-forest/galho-espinhos-v1.png",
+      "title": "galho-espinhos-v1.png",
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1373607,
+      "sha256": "51b9a2462a0a9ab62b2f3c28bd1b6f39ea39d9226bc4311730f5e09fd96cb937",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "851a0f3e05f285a365e80a44",
       "kind": "file",
       "path": "assets/art/dream-forest/galho-vento-v1.png",
@@ -3228,6 +3244,22 @@
           "alias": null
         }
       ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "8c40beffb3a0647577b91c9f",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-planador-v1.png",
+      "title": "yuna-planador-v1.png",
+      "format": "png",
+      "width": 1294,
+      "height": 1216,
+      "bytes": 1256924,
+      "sha256": "db17c05d6d6012011ce9e12e7bc9d0ada0f3480616e3b14caa824bc7cd50b9ce",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
       "hints": [],
       "family": "assets/art/dream-forest"
     },
@@ -3536,6 +3568,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -3543,7 +3581,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -3572,7 +3610,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -3697,7 +3735,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24518,7 +24556,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24556,7 +24594,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24594,7 +24632,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24632,7 +24670,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24670,7 +24708,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24708,7 +24746,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24746,7 +24784,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24784,7 +24822,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24815,6 +24853,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -24822,7 +24866,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24853,6 +24897,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -24860,7 +24910,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24891,6 +24941,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -24898,7 +24954,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24929,6 +24985,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -24936,7 +24998,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -24967,6 +25029,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -24974,7 +25042,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -25005,6 +25073,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -25012,7 +25086,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -25043,6 +25117,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -25050,7 +25130,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -25081,6 +25161,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
@@ -25088,7 +25174,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -26130,7 +26216,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
@@ -26168,7 +26254,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 16,
+          "line": 18,
           "type": "runtime",
           "alias": null
         }
