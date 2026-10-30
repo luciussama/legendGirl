@@ -8,7 +8,7 @@ O usuário determinou que **a documentação DEVE ser atualizada a cada nova imp
 
 ## Estado e autorização atuais
 
-Branch local `FEAT-Capitulos`, criada da `main` em `651438bcb0d062ff1839bd9b10bba28fa76ba360`. O usuário autorizou nesta sessão o gameplay geral e, passando, commit, merge na main e sincronização com GitHub. A validação terminou com sucesso; a integração está em andamento. A versão anteriormente publicada na principal inclui o ciclo de melhorias de caminhada, leitura e proporção 3D; os capítulos desta branch ainda não foram publicados. A autorização atual de integração é explícita e pertence à sessão `20261030T011448-c93153dd9260`.
+Checkout atual na `main`. A entrega da `FEAT-Capitulos` foi commitada em `2033b962` e integrada sem conflitos pelo merge `e537799a68ac05333664b76c9911276d5b86595b`. As duas branches foram enviadas ao origin, sem force-push. A árvore do merge era idêntica à fonte validada. A publicação dos capítulos concluiu com sucesso pelo CI/CD e os recursos publicados foram comparados ao checkout. Um commit documental de fechamento registra estes resultados. Autorização explícita de gameplay, commit, merge e sincronização na sessão `20261030T011448-c93153dd9260`.
 
 O usuário disse “Gostei” após a correção do encerramento pela bandeira e pediu documentação, próximos passos e limpeza. A entrega narrativa está aprovada. A instrução de escopo continua sendo: “Então conclui as cenas e deixe preparado para posteriormente fazermos a fase 3D do jardim”. Nenhuma implementação autorizada das cenas ficou pendente; o jardim 3D do sonho ainda não foi iniciado.
 
@@ -73,7 +73,7 @@ Revisados código de `src/js`, ferramentas de `scripts`/`tools`, servidor, manif
 QA novo `test:docs:atual`, pacote vigente `a7489e39137847bf822a2ec8f4bda348`: cobre catálogo único dos módulos, exports, todas as classes declaradas, ferramentas/aliases, imports de dependências, links locais em 36 documentos e reprodução exata da referência. Passou com 186 módulos, 454 contratos, 70 classes, 39 ferramentas, 68 aliases e 5414 links locais na execução final. A primeira tentativa identificou a ausência do link da ferramenta `prepare-illustrated-girl.js`, corrigida. A checagem anterior `test:docs:equalizacao` também passou, incluindo parâmetros da arena e lockfile. Build, check-assets (82), lint, sintaxe do gerador e diff também passaram nesta auditoria. Resultados integrais e fontes ficam no acervo; não há relatórios ou fixtures novos fora dele. Não foram repetidas campanhas por se tratar de documentação e do gerador documental.
 
 
-## Gameplay geral aprovado; integração em andamento — 29/10/2026
+## Gameplay geral e integração concluídos — 29/10/2026
 
 Sessão `20261030T011448-c93153dd9260`. Todas as tarefas autorizadas anteriores estão concluídas; o sonho3D continua futuro. Usuário autorizou commit, merge na main e envio ao GitHub após gameplay geral aprovado.
 
@@ -82,3 +82,10 @@ Executadas seis campanhas novas e contínuas pela interface até o sono/endingDo
 EASY:716,333/719,396/729,614s, zero derrotas anteriores ao jardim e zero retries de fuga/jardim. NORMAL:764,782/765,978/778,605s, zero derrotas anteriores/na fuga e dois retries oficiais do jardim em cada formato. Ordem desktop/retrato/paisagem; tempos incluem tentativas e não são duração humana garantida. Resultados completos: EASY `b7e81685b5cc479abdf0fc9acae889f6`, `c565267ab97e41fa9253572598f0302f`, `59af1e7fb396490d8631edb4f314407d`; NORMAL `bf4b5fa55911420fb41c2778f3be3578`, `4ccf8c922c2a4b74a98f3834dab00480`, `3b097521915a4915a95310a43e74b324`.
 
 npm test completo, capítulos/domínio, epílogo/seletor, auditoria documental, build,82recursos,lint e diff passaram. A limpeza obrigatória preservou/exportou/verificou e removeu67temporários próprios, sendo60bitmaps regeneráveis identificados por caminho/hash/tamanho e7textos integrais; pacote `f045cefddd6a40778b3dd3c396c324eb`. Nada de QA avulso será commitado; artes e documentação de produção mantidas. Aparelho físico/Safari continuam fora desta homologação automatizada.
+
+
+### Publicação confirmada
+
+GitHub Actions [40986294112](https://github.com/luciussama/legendGirl/actions/runs/40986294112) terminou com `success` para o SHA completo do merge e publicou em https://luciussama.github.io/legendGirl/ . Verificação HTTP de18recursos (HTML, manifestos, coordenadores/cenas/persistência e quatro PNGs novos): todos200 e bytes idênticos ao checkout. Resultado completo no pacote `22a07edf75d5443b94f66e44c0edd0fd`. Não foi necessário modificar o runtime durante esta validação. O fechamento documental não altera os recursos do jogo.
+
+A versão está disponível para teste humano no celular. Safari/aparelho físico e escuta externa continuam sem homologação pela IA. O jardim3D do sonho permanece preparado no roteiro, para implementação futura. Nenhuma tarefa autorizada de implementação, documentação ou integração desta entrega ficou pendente.

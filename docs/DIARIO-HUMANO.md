@@ -263,3 +263,8 @@ A próxima construção será o jardim 3D: Yuna minúscula precisa atravessar a 
 ### 29/10/2026 — documentação contínua e preparação de commits
 
 A revisão documental passou a cobrir os módulos e métodos atuais, as classes da perseguição/jardim/capítulos, os fluxos de persistência e as ferramentas de manutenção. O usuário tornou obrigatória a atualização da documentação em cada implementação autorizada. Também determinou que cada pedido de commit inclua a limpeza de relatórios, imagens de aprovação e arquivos dispensáveis, preservando o acervo recuperável e os recursos necessários ao projeto. As regras vigentes estão na entrada obrigatória do diário de IA.
+
+
+### 29/10/2026 — capítulos integrados e publicados
+
+Os capítulos aprovados e a documentação atualizada foram integrados à main e enviados ao GitHub após a validação geral da campanha. A aventura publicada inclui o encerramento do quarto arrumado, as duas gravuras e o sono de Yuna e Nanda no piquenique, pronta para teste humano no celular. O sonho no jardim 3D continua como a próxima construção planejada. Endereço do jogo: https://luciussama.github.io/legendGirl/ .
