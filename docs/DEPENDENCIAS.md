@@ -31,6 +31,8 @@ Lista dos consumidores atuais no workspace. Fontes antigas de QA podem ter outro
 
 **pngjs**
 
+- [scripts/prepare-dream-art.js](../scripts/prepare-dream-art.js)
+
 - [scripts/prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js)
 
 - [scripts/prepare-chapter-art.js](../scripts/prepare-chapter-art.js)
@@ -187,3 +189,5 @@ Os dez efeitos da arena são MP3s locais decodificados com `AudioContext.decodeA
 A tipografia narrativa usa Caveat variável (Google Fonts), distribuída localmente em `assets/fonts/Caveat-Variable.ttf` sob SIL Open Font License 1.1 (`Caveat-LICENSE.txt`). Não há requisição de fonte externa durante o jogo.
 
 O jardim continua em Canvas 2D, sem biblioteca de física ou animação externa. Carrega `assets/art/garden/manifest.json` somente ao entrar, usa `GardenContactData` pré-calculado e mantém sua trilha local `assets/audio/Blues Shuffle Loop.mp3` em HTMLAudio, com sinais sintetizados. Camadas de atuação e asas articuladas são compostas pelo código local. Os preparadores acima dependem de pngjs, mas não executam no navegador nem adicionam pacotes. O diário depende ainda de `fcntl` para bloqueio entre processos e usa SQLite WAL/transações; Windows nativo exige adaptação desse bloqueio.
+
+O sonho usa Canvas2D e recursos locais sob demanda; não acrescenta dependência npm ou pipeline3D. DreamInput estende GardenInput; DreamPhase configura GardenAudio com Misty Blues. O preparador mede alfa usando pngjs já instalado.

@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "tool": "image_gen integrado",
+  "assets": [
+    {
+      "file": "assets/art/dream-forest/floresta-azul-v1.png",
+      "sha256": "fd93ae915f44955c7a13696615291075801dadf92a909366987b2a525e834fce",
+      "bytes": 2582887,
+      "origem": "imagegen integrado; arte nova para a floresta lateral 2D.",
+      "aprovacaoArtistica": "pendente"
+    },
+    {
+      "file": "assets/art/dream-forest/yuna-escalada-v1.png",
+      "sha256": "2e8e1a6cbce62f3a35fc184c6cdb6492a4156172c635e9fef8415adb55f12b49",
+      "bytes": 1239222,
+      "origem": "imagegen integrado; arte nova para a floresta lateral 2D.",
+      "aprovacaoArtistica": "pendente"
+    },
+    {
+      "file": "assets/audio/Misty Blues.mp3",
+      "sha256": "42b618321f01d2aef7a77317f24d615bcd957d409f0ddfd688bd7e525e4d77a0",
+      "bytes": 4542098,
+      "origem": "Arquivo fornecido pelo usuário; cópia sem alteração.",
+      "escolhaDaTrilha": "Arquivo indicado e enviado pelo usuário."
+    }
+  ],
+  "prompts": [
+    {
+      "file": "floresta-azul-v1.png",
+      "resumo": "Floresta gigantesca na altura das copas, pintura de livro infantil, neblina e luz lunar azul/índigo, atmosfera mística e levemente spooky, centro aberto para gameplay aéreo, sem chão/personagens/UI.",
+      "promptOriginal": "Use case: game-background. Create a production panoramic painted background for an existing storybook 2D side-scrolling platform game, horizontal landscape. A gigantic dream forest seen from tiny child's height: immense tree trunks, intertwined distant branches, ferns and mushroom silhouettes, blue moonlight through layered mist, mystical gently spooky atmosphere, deep indigo/navy teal with restrained lavender/cyan glow. Rich hand-painted watercolor/gouache storybook illustration, softly textured natural materials, no outlines like UI. Scene at mid-height in the forest canopy, vast airy open negative space across center for aerial gameplay. No ground plane or continuous path or platforms in foreground, no characters, no insects, no ropes, no text, no interface. Distant forest painting only; playable grass, insects, platforms will be layered separately by game code. Avoid photorealism, 3D rendering, neon effects, horror monsters. Edge-to-edge finished painting, wide composition with matching dark misty tonal values at left/right for repetition. Save selected image file for local game integration."
+    },
+    {
+      "file": "yuna-escalada-v1.png",
+      "reference": "assets/art/garden/runtime/menina-acoes-v1.png",
+      "resumo": "Quatro poses transparentes laterais de Yuna escalando uma haste imaginária, mantendo rosto, cabelo, roupa turquesa e calçados da referência; mãos e pés em apoio, pose de salto lateral.",
+      "promptOriginal": "Create production sprite atlas, reference image is ONLY identity/style reference. SAME Yuna child from supplied turquoise outfit atlas: brown curly twin ponytails and pink bows, large brown eyes, yellow blouse, turquoise floral pinafore and pink shoes; same painted storybook proportions and colors. FOUR full-body side-view poses facing RIGHT, one horizontal row of four clearly separated equally spaced cells with generous transparent padding. She is climbing an imaginary vertical grass stalk just in front of her hands at the right: pose1 holding with both hands at eye/shoulder level, bent knees feet braced; pose2 right hand above head, left hand near cheek, alternate raised knee; pose3 left hand above head, right hand shoulder, opposite raised knee; pose4 reaching right with one arm to leap sideways while one hand still grasps imaginary stalk. Body vertical, face visible in profile, anatomically coherent hands grip, no floaty sitting pose. No grass or rope drawn: invisible support, hands and feet aligned to right side of each sprite. Transparent actual alpha background, no checkerboard, no labels, no text, no shadows outside sprites. Preserve exact identity, outfit and painterly texture, no new character redesign. Four isolated climbing poses, all complete including shoes and hair, uniform scale."
+    }
+  ]
+}

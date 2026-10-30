@@ -13,6 +13,7 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 - **Perseguição 3D:** abertura ilustrada, corrida automática em um quarto curvo, desvio dos brinquedos lançados pelo urso e ida ao baú quando ele é alcançado.
 - **Capítulos:** gravura do quarto após levantar da cama; encerramento no quarto arrumado depois do urso, com a pergunta da menina e o facepalm de Nanda; gravura do jardim antes do percurso seguinte.
 - **Um dia no jardim:** Yuna sai de casa com Nanda e atravessa grama, pedrinhas, rios, rodas e nuvens até o piquenique e o sono de Yuna e Nanda. Abelhas, minhocas e três perseguições de besouro combinam saltos com reações sensoriais; o EASY oferece resgate sem morte.
+- **Jardim dos sonhos:** floresta aérea2D, gramas escaláveis que balançam ao vento e insetos gigantes como apoios móveis; viagens nos besouros, teias com aranhas nocivas e galhos ao vento, atmosfera azulada e Misty Blues.
 - **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A poltrona permanece sobre o tapete ao reenquadrar para celular. A qualidade gráfica está reservada para uma atualização futura.
 - **Narrativa:** falas avançam automaticamente nos tempos autorados; clique/toque adianta um balão. No jardim, abertura e piquenique têm personagens em camadas e atuação contínua.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
@@ -22,7 +23,7 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 
 O [diário humano do projeto](docs/DIARIO-HUMANO.md) apresenta as decisões de produto. Relatórios técnicos, QA e homologações ficam exclusivamente no acervo de IA.
 
-O [roteiro dos capítulos](docs/capitulos/ROTEIRO.md) reúne as cenas entregues e a direção do futuro sonho no jardim 3D, ainda a implementar.
+O [roteiro dos capítulos](docs/capitulos/ROTEIRO.md) reúne as cenas entregues e a passagem para a floresta lateral 2D dos sonhos.
 
 Toda IA deve começar pelo [diário compartilhado](docs/diario-ia/README.md), conforme `AGENTS.md`.
 
@@ -76,6 +77,7 @@ Consulte o [guia técnico do primeiro salto](docs/TUTORIAL-PRIMEIRO-SALTO.md) pa
 | Perseguição 3D em touch | Segurar uma lateral do canvas e arrastar para trocar de lado | Desviar; não há comando de salto ou espada nessa fase |
 | Jardim | A/D ou esquerda/direita; Espaço, W ou cima | Andar e pular; soltar pulo encurta a subida |
 | Jardim em touch/gamepad | ◀ ▶ e PULAR simultâneos; analógico/D-pad e A/X | Andar e pular; durante o besouro, a corrida para frente é automática e só o pulo fica sob controle |
+| Jardim dos sonhos | A/D ou esquerda/direita; W/S ou cima/baixo; Espaço | Andar, escalar e saltar; aderência automática. No celular, somente nas teias de aranha, a subida até a altura de preparo é automática. Touch e gamepad permitem direção e salto simultâneos. |
 | Falas narrativas | Clique/toque no quadro; em cenas modais, em qualquer ponto do canvas | Adiantar um balão, sem produzir salto, ataque ou coleta |
 | Cenas do jardim | Enter/Espaço ou A/X; S ou “Pular (S)” após ver a cena | Adiantar uma fala ou pular uma cena já vista |
 | Interface geral | P / botão de pausa | Pausar ou continuar |
@@ -113,6 +115,8 @@ flowchart TD
     Chase --> Canvas
     Chase -->|COMPLETE / 2,5 s| Epilogue["ToyRoomEpilogue: quarto arrumado + capítulo 2"]
     Epilogue --> Garden["GardenPhase: jardim 2D, piquenique e sono"]
+    Garden -->|sono concluído / 4 s| Dream["DreamPhase: floresta aérea 2D"]
+    Dream --> Canvas
     Garden --> Canvas
     Toy --> Canvas
 ```
@@ -202,6 +206,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── effects/           # Efeitos visuais
 │       ├── ui/                # Interface desenhada no canvas
 │       ├── bear-chase/        # Domínio, câmera, modelos, materiais e áudio da perseguição 3D
+│       ├── dream-forest/      # Floresta aérea2D, escalada, vento, insetos móveis e Misty Blues
 │       ├── garden/            # Domínio lateral, contato por pixels, encontros, cenas e áudio do jardim
 │       ├── toy-room/          # Exploração, narrativa, espada e arena
 │       └── debug/             # Ferramentas de inspeção
@@ -268,6 +273,8 @@ Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimig
 
 A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. Depois da captura e do retorno ao baú, o resultado permanece por 150 ticks (2,5 s na base de 60 Hz), seguido pelo epílogo do quarto arrumado e pela gravura do capítulo 2 antes do jardim. Esse encerramento também aparece pela bandeira, mantendo a prévia isolada da campanha salva. A derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
 
-O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v11 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e Yuna e Nanda permanecem adormecidas. Saves concluídos das revisões 8 a 10 retomam apenas as novas cenas de sono.
+O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v11 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e Yuna e Nanda adormecem; após quatro segundos, começa a floresta dos sonhos. Saves concluídos das revisões 8 a 10 retomam apenas as novas cenas de sono.
 
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.
+
+O sonho continua em um planador de folha: caminhada automática no galho, rajada, controle vertical com inércia e grandes subidas/mergulhos entre espinhos. Dano reinicia o voo no lançamento. Controles e manutenção no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).

@@ -1,3 +1,4 @@
+import {DreamPhase} from '../dream-forest/DreamPhase.js';
 import {ToyRoomEpilogue} from '../chapters/ToyRoomEpilogue.js';
 import {beginDialogueFrame,endDialogueFrame} from '../narrative/DialogueFlow.js';
 import { GardenPhase } from '../garden/GardenPhase.js';
@@ -162,10 +163,11 @@ export class ToyRoomPhase {
   }
 
   /** Encaminha ações da sala; a perseguição 3D usa somente seus controles laterais. */
-  triggerAction() { if (!this.epilogue?.active && !this.garden?.active && !this.chase?.active) return this.interaction.triggerAction(); }
+  triggerAction() { if (!this.dream?.active && !this.epilogue?.active && !this.garden?.active && !this.chase?.active) return this.interaction.triggerAction(); }
 
   /** Revisa a perseguição e suas cenas finais, sem migrar a campanha salva. */
   startChasePreview(saved = null) {
+    this.dream?.destroy();this.dream=null;this.dreamTransition=0;
     this.epilogue=null;this.gardenTransition=0;
     this.chase?.destroy();
     this.clearInput(); this.inputController.removeListeners();
@@ -180,6 +182,7 @@ export class ToyRoomPhase {
   /** Inicia a perseguição da campanha sob o fade da vitória, sem reutilizar o seletor de debug. */
   startChaseCampaign(saved = null) {
     if (this.chase?.campaign && this.chase.active) return false;
+    this.dream?.destroy();this.dream=null;this.dreamTransition=0;
     this.epilogue=null;this.gardenTransition=0;
     this.chase?.destroy();
     this.clearInput(); this.inputController.removeListeners();
@@ -232,6 +235,7 @@ export class ToyRoomPhase {
 
   /** Abre o dia seguinte com física e roupa próprias, descartando controles do quarto. */
   startGarden(saved = null, { campaign = true } = {}) {
+    this.dream?.destroy();this.dream=null;this.dreamTransition=0;
     this.epilogue=null;
     this.garden?.destroy();this.garden = null;
     this.chase?.destroy();this.chase = null;
@@ -239,6 +243,15 @@ export class ToyRoomPhase {
     this.arena?.audioProfile.leave({resume:false});this.audio?.stopAllAudio?.();this.audio?.stopToyRoomMusic?.();
     this.garden = new GardenPhase({canvas:this.canvas,audio:this.audio,enabled:this.isInputEnabled,difficulty:this.gameDifficulty,campaign});
     this.gameplayState='GARDEN';return this.garden.start(saved);
+  }
+
+  /** Transição do sono para o sonho 2D, mantendo a origem da campanha ou da bandeira. */
+  startDream(saved=null,{campaign=true}={}){
+    this.dream?.destroy();this.garden?.destroy();this.chase?.destroy();
+    this.garden=null;this.chase=null;this.epilogue=null;this.dreamTransition=0;
+    this.clearInput();this.inputController.removeListeners();this.arena?.audioProfile.leave({resume:false});this.audio?.stopAllAudio?.();this.audio?.stopToyRoomMusic?.();
+    this.dream=new DreamPhase({canvas:this.canvas,audio:this.audio,enabled:this.isInputEnabled,difficulty:this.gameDifficulty,campaign});
+    this.gameplayState='DREAM_FOREST';return this.dream.start(saved);
   }
 
   resolveCollisions(px, py, r) {
@@ -250,7 +263,9 @@ export class ToyRoomPhase {
   /** Atualiza exclusivamente o modo ativo, sem compartilhar física entre 2D e 3D. */
   update(dt = 1.0) {
     this.updateActiveMode(dt);
-    const defeat = this.garden?.active && this.garden.state.stage === 'GAME_OVER'
+    const defeat = this.dream?.active && this.dream.state.stage === 'GAME_OVER'
+      ? {state:this.dream.state,phase:'dream-forest'}
+      : this.garden?.active && this.garden.state.stage === 'GAME_OVER'
       ? { state:this.garden.state, phase:'garden' }
       : this.chase?.active && this.chase.state.stage === 'GAME_OVER'
       ? { state: this.chase.state, phase: 'bear-chase' }
@@ -264,8 +279,9 @@ export class ToyRoomPhase {
 
   /** Executa a etapa ativa; a notificação de derrota acontece depois de sua simulação. */
   updateActiveMode(dt) {
+    if(this.dream?.active){this.dream.update(dt);return;}
     if(this.epilogue?.active){if(this.isInputEnabled())this.epilogue.update(dt);return;}
-    if (this.garden?.active) { this.garden.update(dt);return; }
+    if (this.garden?.active) { this.garden.update(dt);if(this.isInputEnabled()&&!this.garden.paused&&this.garden.state.story.endingDone&&this.garden.state.stage==='COMPLETE'){this.dreamTransition=(this.dreamTransition||0)+dt;if(this.dreamTransition>=240)this.startDream(null,{campaign:this.garden.campaign===true});}return; }
     if (!this.isInputEnabled()) { this.clearInput(); return; }
     if (this.chase?.active) {
       this.chase.update(dt);
@@ -334,6 +350,7 @@ export class ToyRoomPhase {
   /** Reaplica a dificuldade à etapa atual, conservando atores, posição e narrativa. */
   setDifficulty(difficulty) {
     this.gameDifficulty = normalizeDifficulty(difficulty);
+    if(this.dream?.active){this.dream.difficulty=this.gameDifficulty;this.dream.state.difficulty=this.gameDifficulty;}
     if (this.chase?.active) this.chase.difficulty = this.gameDifficulty;
     if (this.garden?.active) this.garden.difficulty = this.gameDifficulty;
     if (this.arena?.active && !this.arena.state.realityRestored) this.arena.configurePresentation();
@@ -341,6 +358,7 @@ export class ToyRoomPhase {
 
   /** Recupera a tentativa atual; ao aceitar ajuda, conserva o adversário ou percurso. */
   retryDefeat({ resume = false } = {}) {
+    if(this.dream?.active){const retried=this.dream.retry();if(retried)this.reportedDefeat=null;return retried;}
     if (this.garden?.active) {const retried=this.garden.retry();if(retried)this.reportedDefeat=null;return retried;}
     if (this.chase?.active) {
       const retried = this.chase.retry({ resume });
@@ -382,6 +400,7 @@ export class ToyRoomPhase {
   /** Desenha o modo ativo; o renderer 3D compõe sua saída no canvas já existente. */
   render(options = {}) {
     beginDialogueFrame(this.canvas);try{
+    if(this.dream?.active&&!options.arenaBackdrop){this.dream.render();return;}
     if(this.epilogue?.active&&!options.arenaBackdrop){this.epilogue.render(this.ctx,this.canvas);return;}
     if (this.garden?.active && !options.arenaBackdrop) {this.garden.render();return;}
     if (this.chase?.active && !options.arenaBackdrop) { this.chase.render(); return; }
@@ -404,6 +423,7 @@ export class ToyRoomPhase {
 
   /** Encerra todos os sistemas ativos, incluindo listeners e recursos da perseguição. */
   destroy() {
+    this.dream?.destroy();this.dream=null;this.dreamTransition=0;
     this.epilogue=null;
     this.garden?.destroy();this.garden=null;
     this.chase?.destroy(); this.chase = null;

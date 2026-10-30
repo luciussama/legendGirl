@@ -113,3 +113,17 @@ A exploração projeta as silhuetas das artes existentes por `ToyRoomShadows`, s
 ## Gravuras e atuação dos capítulos
 
 `assets/art/chapters/` contém a sala arrumada sem objetos soltos no chão, a menina cansada/feliz/confusa, Nanda em facepalm/sono e Yuna sonolenta/adormecida. Fontes anteriores permanecem preservadas. `prepare-chapter-art.js` localiza os vãos transparentes e mede os recortes de `ChapterArt.js`, sem editar os PNGs. `ChapterCard` desenha títulos em cima das gravuras existentes; `ToyRoomEpilogue` e `GardenCinematic` compõem a atuação em camadas. Consulte o [roteiro](../capitulos/ROTEIRO.md) e a proveniência em `assets/art/chapters/prompts.json`.
+
+## Floresta dos sonhos
+
+Fundo azul e quatro poses próprias de escalada em `assets/art/dream-forest/`, com proveniência e aprovação pendente. DreamArt é gerado por `scripts/prepare-dream-art.js`; também mede o contorno superior das pinturas de besouro, abelha, formiga e minhoca reaproveitadas. DreamRenderer conserva proporções e usa o mesmo perfil da física. Gramas continuam Canvas com curvas compartilhadas. Folhas estáveis agora são sprites registrados na superfície anterior, sem réguas de contato. Consultar o [guia do sonho](../dream-forest/GUIA-SONHO.md).
+
+No sonho, os quatro besouros usam articulação em `DreamBeetle.js`: máscaras de cabeça/patas e recorte original das asas. Alterar a fonte exige revisar pivôs, polígonos e perfil de apoio; o casco deve continuar coerente com a superfície física. Não sobrepor linhas de contato.
+
+`dream-forest/folha-plataforma-v1.png` e `abelhinha-do-bem-v1.png` têm prompts próprios na mesma pasta. A folha conserva o apoio por registro visual em cache; o caule prolonga a pintura abaixo do viewport. Na abelha, manter cotonete conectado ao abdômen, corpo íntegro e asas em camada separada. `prepare-dream-art.js` mede recortes e âncoras; trocar a arte não autoriza recalcular física, hitboxes ou distâncias.
+
+No trecho posterior à folha aprovada rest-4, aranhinha-v1.png é nociva e o fio é escalável. Manter os oito membros dentro do recorte/hazard definido; alterações visuais não recalibram dano ou alcance por conta própria. Galho-vento-v1.png inclui tronco e superfície de madeira; a pintura é registrada no relevo físico em cache. Não desenhar barras ou linhas auxiliares sobre o topo. Prompts em prompts-teias-galhos-v1.json na pasta de arte do sonho.
+
+A escalada atual de Yuna usa yuna-escalada-v2.png, com quatro poses de flexão/extensão e duas de chegada ao topo. Manter mãos e sapatos completos e silhuetas de pernas visivelmente distintas; não aprovar só mudança de braços. prepare-dream-art.js extrai componentes completos, âncoras das mãos e contornos visuais dos insetos. A mão, e não o centro do sprite, ancora o desenho. Os contornos visuais não substituem a física e não usam asas móveis como apoio. A versão1 permanece fonte histórica de identidade.
+
+No planador do sonho, `yuna-planador-v1.png` integra folha, haste e mãos; preserve a conexão ao editar. `galho-espinhos-v1.png` fornece os obstáculos. Reconstruir `DreamGliderArt` com `scripts/prepare-dream-glider.js`: as máscaras de alfa e a âncora/escala em dreamGliderPose acompanham as pinturas. Novas geometrias exigem revisão das passagens; não alterar a física anterior nem desenhar réguas sobre a arte.

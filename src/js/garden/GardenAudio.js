@@ -1,10 +1,10 @@
 import {scheduleDamageSound} from '../toy-room/DamageAudio.js';
 /** Trilha fornecida pelo usuário em loop e sinais curtos, seguindo as opções do host. */
 export class GardenAudio {
-  constructor(host){
+  constructor(host,{track=new URL('../../../assets/audio/Blues Shuffle Loop.mp3',import.meta.url),label='do jardim'}={}){
     this.host=host;this.voices=new Set();this.paused=false;this.disposed=false;this.playPending=false;this.wantsMusic=false;
-    this.music=new Audio(new URL('../../../assets/audio/Blues Shuffle Loop.mp3',import.meta.url));this.music.preload='auto';this.music.loop=true;this.music.volume=0;
-    this.onError=()=>{this.error='A trilha do jardim não pôde ser carregada.';};this.music.addEventListener('error',this.onError);
+    this.music=new Audio(track);this.music.preload='auto';this.music.loop=true;this.music.volume=0;
+    this.onError=()=>{this.error=`A trilha ${label} não pôde ser carregada.`;};this.music.addEventListener('error',this.onError);
   }
   unlock(){if(this.disposed)return;this.host?.initAudio?.();this.playMusic();}
   tone(frequency,duration=.25,volume=.035,slide=frequency){const ctx=this.host?.getAudioContext?.();if(this.disposed||!ctx||ctx.state!=='running'||this.paused||this.host?.isMuted?.())return;const oscillator=ctx.createOscillator(),gain=ctx.createGain();oscillator.type='sine';oscillator.frequency.setValueAtTime(frequency,ctx.currentTime);oscillator.frequency.exponentialRampToValueAtTime(slide,ctx.currentTime+duration);gain.gain.setValueAtTime(volume*(this.host?.getMasterVolume?.()??1),ctx.currentTime);gain.gain.exponentialRampToValueAtTime(.0001,ctx.currentTime+duration);oscillator.connect(gain);gain.connect(ctx.destination);const voice={oscillator,gain};this.voices.add(voice);oscillator.onended=()=>{oscillator.disconnect();gain.disconnect();this.voices.delete(voice);};oscillator.start();oscillator.stop(ctx.currentTime+duration);}

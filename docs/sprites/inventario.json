@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 484,
+    "files": 493,
     "regions": 249,
     "code": 29
   },
@@ -3017,6 +3017,253 @@
       "family": "assets/art/dark-room/sprites"
     },
     {
+      "id": "e111b97d3438dea924e8bcff",
+      "kind": "file",
+      "path": "assets/art/dream-forest/abelhinha-do-bem-v1.png",
+      "title": "abelhinha-do-bem-v1.png",
+      "format": "png",
+      "width": 2032,
+      "height": 774,
+      "bytes": 1218153,
+      "sha256": "5625e91a8e192f20cfa74ee89033ec2644f4e9c556113357c637b7eaabfe108e",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 28,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 25,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 67,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "f66e460b2bab853075a8c9c1",
+      "kind": "file",
+      "path": "assets/art/dream-forest/aranhinha-v1.png",
+      "title": "aranhinha-v1.png",
+      "format": "png",
+      "width": 1484,
+      "height": 1060,
+      "bytes": 1594475,
+      "sha256": "7bbb0298fd88767d25a83720acb24433b3efee72f762617fec06187e835b4a28",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-teias-galhos-v1.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "000216df7b3cf2ec5e28c9e1",
+      "kind": "file",
+      "path": "assets/art/dream-forest/floresta-azul-v1.png",
+      "title": "floresta-azul-v1.png",
+      "format": "png",
+      "width": 1983,
+      "height": 793,
+      "bytes": 2582887,
+      "sha256": "fd93ae915f44955c7a13696615291075801dadf92a909366987b2a525e834fce",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "0e7f730a7d99f0f1de20f1f9",
+      "kind": "file",
+      "path": "assets/art/dream-forest/folha-plataforma-v1.png",
+      "title": "folha-plataforma-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 864969,
+      "sha256": "61e7a54571bde7bbbb15c20c7184dce3d2e8c53cfc3ff272a70f2df7dd0b1f56",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 23,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "f12cfd6e8b4f7b56c4170b17",
+      "kind": "file",
+      "path": "assets/art/dream-forest/galho-espinhos-v1.png",
+      "title": "galho-espinhos-v1.png",
+      "format": "png",
+      "width": 1024,
+      "height": 1536,
+      "bytes": 1373607,
+      "sha256": "51b9a2462a0a9ab62b2f3c28bd1b6f39ea39d9226bc4311730f5e09fd96cb937",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "851a0f3e05f285a365e80a44",
+      "kind": "file",
+      "path": "assets/art/dream-forest/galho-vento-v1.png",
+      "title": "galho-vento-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1592891,
+      "sha256": "364a90fb152a52e7434c4c90bdb368f1bbdb61b968220e030774630029cb585e",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-teias-galhos-v1.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "756c54167ba20414fa3e771d",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-escalada-v1.png",
+      "title": "yuna-escalada-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1239222,
+      "sha256": "2e8e1a6cbce62f3a35fc184c6cdb6492a4156172c635e9fef8415adb55f12b49",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
+          "line": 9,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "5f98baaa6e1ea8814511c573",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "title": "yuna-escalada-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2198784,
+      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 62,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "8c40beffb3a0647577b91c9f",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-planador-v1.png",
+      "title": "yuna-planador-v1.png",
+      "format": "png",
+      "width": 1294,
+      "height": 1216,
+      "bytes": 1256924,
+      "sha256": "db17c05d6d6012011ce9e12e7bc9d0ada0f3480616e3b14caa824bc7cd50b9ce",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "82e631fb937c8a28e7c7059e",
       "kind": "file",
       "path": "assets/art/garden/cenario-v1.png",
@@ -3142,13 +3389,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -3167,8 +3414,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/runtime"
     },
@@ -3311,8 +3565,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/runtime"
     },
@@ -3327,12 +3600,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -3446,8 +3725,21 @@
       "bytes": 1262444,
       "sha256": "7f5993d5d91cbbf8cab2ad7b81de6b5a761b3b4f9c6e5f3aa84665a9b2c03708",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 67,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/source"
     },
@@ -15835,7 +16127,7 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 44,
+          "line": 47,
           "type": "apoio",
           "alias": null
         },
@@ -16452,7 +16744,7 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 21,
+          "line": 22,
           "type": "apoio",
           "alias": null
         },
@@ -24254,12 +24546,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24286,12 +24584,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24318,12 +24622,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24350,12 +24660,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24382,12 +24698,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24414,12 +24736,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24446,12 +24774,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24478,12 +24812,18 @@
       "bytes": 636109,
       "sha256": "da41ba7a0e1ea9898dcd789487df694edfa381b745d2a4ac59239d544e62526f",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
         {
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
           "alias": null
         }
       ],
@@ -24510,8 +24850,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24535,8 +24894,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24560,8 +24938,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24585,8 +24982,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24610,8 +25026,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24635,8 +25070,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24660,8 +25114,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -24685,8 +25158,27 @@
       "bytes": 621886,
       "sha256": "763615f0c58bf0510c2373a1707409d68ad3cd01bfc6cd2d1a6999198d71142d",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-planador-v1.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts.json",
+          "line": 35,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25414,13 +25906,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25452,13 +25944,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25490,13 +25982,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25528,13 +26020,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25566,13 +26058,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25604,13 +26096,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25642,13 +26134,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25680,13 +26172,13 @@
       "references": [
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 22,
+          "line": 23,
           "type": "apoio",
           "alias": null
         },
         {
           "file": "assets/art/chapters/prompts.json",
-          "line": 33,
+          "line": 35,
           "type": "apoio",
           "alias": null
         }
@@ -25714,8 +26206,21 @@
       "bytes": 1262444,
       "sha256": "7f5993d5d91cbbf8cab2ad7b81de6b5a761b3b4f9c6e5f3aa84665a9b2c03708",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 67,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25739,8 +26244,21 @@
       "bytes": 1262444,
       "sha256": "7f5993d5d91cbbf8cab2ad7b81de6b5a761b3b4f9c6e5f3aa84665a9b2c03708",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "scripts/prepare-dream-art.js",
+          "line": 67,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25814,8 +26332,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25839,8 +26364,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25864,8 +26396,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25889,8 +26428,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25914,8 +26460,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25939,8 +26492,15 @@
       "bytes": 1603324,
       "sha256": "09da732fa5e302ed9248a77a82cfeedd9596c9819fa1e8958542dd8d71efb318",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-folhas-abelhinha-v1.json",
+          "line": 29,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],

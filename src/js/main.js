@@ -127,8 +127,8 @@ const game = createGame(canvas, uiFeedback, {
     status.textContent = persisted ? '' : 'Não foi possível salvar neste navegador. O progresso está disponível somente nesta sessão.';
   },
   onGameOver: ({ phase = 'bedroom', offerEasy = false } = {}) => {
-    const chase = phase === 'bear-chase', arena = phase === 'arena', garden = phase === 'garden';
-    gameoverOverlay.querySelector('.gameover-badge').textContent = garden ? '✦ UM DIA NO JARDIM ✦' : chase ? '✦ PERSEGUIÇÃO AO URSO ✦' : arena ? '✦ ARENA ✦' : '✦ QUARTO ESCURO ✦';
+    const chase = phase === 'bear-chase', arena = phase === 'arena', dream = phase === 'dream-forest', garden = phase === 'garden'||dream;
+    gameoverOverlay.querySelector('.gameover-badge').textContent = dream ? '✦ JARDIM DOS SONHOS ✦' : garden ? '✦ UM DIA NO JARDIM ✦' : chase ? '✦ PERSEGUIÇÃO AO URSO ✦' : arena ? '✦ ARENA ✦' : '✦ QUARTO ESCURO ✦';
     gameoverOverlay.querySelector('.gameover-title').textContent = garden ? 'Game Over' : chase
       ? 'A menina não alcançou o urso. Tentar novamente?'
       : arena ? 'A menina não venceu esta batalha. Tentar novamente?' : 'Você não conseguiu sair do quarto.';

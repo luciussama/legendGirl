@@ -47,7 +47,7 @@ A campanha atual percorre abertura e capítulo 1 → quarto escuro/retorno → i
 | Jardim e piquenique | Terrenos, rios, seção aérea, rodas/nuvens, encontros, resgate EASY e domínio v11; Yuna e Nanda adormecem ao final. | [Guia do jardim](garden/GUIA-JARDIM.md). |
 | Leitura e derrotas | Avanço automático, gesto consumido por fala, Enter modal, skip separado de cenas vistas e oferta EASY após três derrotas completas. | [Padrão de diálogos](diario-ia/padroes/DIALOGOS-E-CENAS.md) e fluxo de derrotas. |
 
-O sonho no jardim 3D permanece planejado no roteiro. Publicação ocorre pelo workflow da principal e deve ser distinguida da disponibilidade local da branch.
+O sonho foi implementado como floresta lateral2D, conforme revisão de direção de30/10. Publicação ocorre pelo workflow da principal e deve ser distinguida da disponibilidade local da branch.
 
 ## Primeiro dia e preparação
 
@@ -427,6 +427,9 @@ As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fa
 | `ArenaSoundEffects` | [toy-room/ArenaSoundEffects.js](../src/js/toy-room/ArenaSoundEffects.js) | MP3s por evento/personagem, pré-carga, trechos, ganho por voz e interrupção no mixer mestre; não serializa recursos. |
 | `TitleScene` | [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF; câmera comum mantém a poltrona no tapete. |
 | `TitleScreen` | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. |
+| `DreamInput` | [dream-forest/DreamInput.js](../src/js/dream-forest/DreamInput.js) | Controles verticais e salto separado, mantendo liberação e simultaneidade. |
+| `DreamRenderer` | [dream-forest/DreamRenderer.js](../src/js/dream-forest/DreamRenderer.js) | Fundo e apoios pintados em Canvas2D, sem pipeline3D. |
+| `DreamPhase` | [dream-forest/DreamPhase.js](../src/js/dream-forest/DreamPhase.js) | Carga, áudio Misty Blues, pausa, retomada e descarte. |
 
 Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém assinatura, linha e link de implementação. As tabelas de domínio acima explicam os efeitos e as dependências; use ambas para evitar confundir um renderizador com o dono da regra do jogo.
 
@@ -725,8 +728,48 @@ O encerramento visual usa o mesmo epílogo na campanha e na prévia da bandeira.
 | `ToyRoomEpilogue` | Recebe assets, áudio, callback, save opcional e origem campaign. Valida índice/relógios; `beat` consulta o quadro, `advanceDialogue` respeita o plano silencioso, `update` recebe dt legado e `snapshot` devolve versão 1. |
 | `ToyRoomPhase.startEpilogue` | Descarta a perseguição e suas entradas, inicia a cena e entrega sua conclusão a `startGarden` com a mesma origem. `updateActiveMode` conserva a prioridade modal da cena. |
 | `ToyRoomPersistence` | Captura epílogo ativo apenas na campanha; restaura jardim antes de epílogo e perseguição. A origem de debug nunca se torna campanha por atravessar um corte narrativo. |
-| `GardenSimulation` / `GardenCinematic` | Domínio v11 controla falas/sono e migra conclusões antigas; o renderer apresenta as poses. A fase futura deverá consumir o ponto final salvo, sem reaproveitar o combate do jardim 2D. |
+| `GardenSimulation` / `GardenCinematic` | Domínio v11 controla falas/sono e migra conclusões antigas; o renderer apresenta as poses. DreamPhase recebe esse ponto final após quatro segundos, sem reaproveitar o combate do jardim2D. |
 
 Ao substituir as pinturas, manter `CHAPTER_ART` coerente com as fontes e as âncoras. `prepare-chapter-art.js` encontra separações transparentes, inclusive quando a pose cruza a divisão nominal da prancha; não recortar por grade presumida. A atuação e as aproximações são narrativas e não corrigem física ou câmera de gameplay.
 
 A [entrada obrigatória do diário](diario-ia/README.md#regras-obrigatórias-de-documentação-e-commit) exige atualização documental em cada implementação autorizada e limpeza de relatórios/evidências dispensáveis antes de cada commit solicitado, com preservação verificada no acervo.
+
+
+## Desenvolver a floresta dos sonhos
+
+O [guia do sonho](dream-forest/GUIA-SONHO.md) define os controles, o percurso e os saves. O usuário substituiu o plano3D por uma floresta aérea2D; não reutilizar o escopo histórico de furtividade. Acrescentar novas mecânicas em DreamSimulation/DreamLevel, sem compartilhar corpos com o jardim. Os contornos de apoio são medidos por prepare-dream-art.js e usados também no desenho. Manter aderência automática, escalada até o lombo, bloqueio breve de reagarre e checkpoint estável. O salto usa Espaço; W/S e setas verticais são escalada nesta fase.
+
+A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio4 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
+
+### Caules e recuperação de saltos no sonho
+
+`DreamRenderer.stem` prolonga cada haste abaixo do viewport, sem mudar câmera, impulso ou disposição do mapa. `dreamGrassX` conserva a base fixa e resolve também o trecho inferior. DreamSimulation aceita qualquer grama tocada durante o salto, pelos dois lados; a trava curta vale somente para o objeto abandonado. A posição relativa de saves antigos continua válida, e `climb.u > 1` identifica o caule abaixo da lâmina. Não limitar a pegada ao recorte da folha nem a um índice de próxima plataforma.
+
+### Viagens nos besouros
+
+Quatro besouros esperam o apoio dos pés para partir; `flight` define destino, duração, espera e curvas verticais. `rides` contém somente instantes de embarque ou `null`; sempre passe esse campo a `dreamObjectFrame`, tanto na física quanto no desenho. A consulta espacial cobre a rota inteira. Não reiniciar o voo ao restaurar o save nem ao sair e voltar ao lombo. O retry recoloca os transportes do checkpoint em diante. O domínio1 migra posições incompatíveis para descansos estáveis. `DreamBeetle` prepara partes uma vez, anima asas/patas/cabeça e libera os Canvas no descarte. O dorso físico permanece rígido.
+
+### Sprites das folhas e abelhas do sonho
+
+`DreamIllustratedSprites` prepara as folhas uma vez e desenha o caule pintado; `DreamRenderer.destroy` descarta esses Canvas. A abelhinha usa corpo com cotonete e asas separadas, animadas pelo relógio salvo. Medidas e âncoras ficam em DreamArt, gerado por prepare-dream-art.js; as fontes ficam na pasta de arte do sonho. Conservar os perfis físicos anteriores durante revisões visuais. Verificar apoio, junções, pausa e descarte com `test:sonho:sprites:browser`.
+
+### Teias e base dos galhos
+
+O limite aprovado é rest-4. Preservar seus 80 objetos anteriores ao editar o fim do sonho. Teias usam `kind:web`, aranha vertical em ciclo de9s e referência fixa para climb.u; não recalcular a pegada com o comprimento variável do fio. `DreamWeb` separa a seda agarrável do contato nocivo. Dano solta a menina e conta uma vez; FALLING também antecede a recuperação EASY. Novas trajetórias precisam oferecer uma janela real de transferência e horários de risco. No domínio3, validar hits/fallCause e migrar posições antigas da área substituída à folha, sem rejeitá-las por ultrapassar a nova extensão antes de migrar.
+
+Galhos são apoios móveis (`kind:branch`), sem agarrar a lateral como um inseto. O checkpoint usa a pose móvel corrente. O repouso final acompanha o vento para evitar pés flutuantes. O galho de chegada inicia agora a seção do planador. Artes e prompts de aranha/galho estão na pasta do sonho, com medição por prepare-dream-art.js e cache descartado pelo renderer.
+
+### Contato visual e ciclo de escalada
+
+`DreamClimb` projeta a mão da pose no contorno visual do inseto ou na haste; não usar o centro do sprite como ponto de pegada. `DREAM_CLIMB_CYCLE` contém seis recortes/âncoras e escala comum; `DREAM_CLIMB_CONTACTS` contém medidas visuais do corpo da abelha e do besouro, sem asas membranosas. O ciclo depende da distância local climb.u, sem relógio de passos em repouso, e possui poses próprias de chegada ao topo. Regenerar por prepare-dream-art.js após trocar fontes; conferir a mão baixa da última pose separadamente do sapato. Manter o ramo de desenho em pé e os dados físicos intactos.
+
+### Ajuda móvel somente na seda
+
+`dreamMobileWebInput` recebe estado, entrada e duração do quadro; no celular, em RUNNING e preso a uma teia, aplica apenas y negativo até pegada250. Usa isMobileDevice já existente, sem tratar viewport estreito ou pointer coarse como celular. Direção vertical explícita e salto manual têm prioridade; demais estados/apoios/desktop devolvem a própria entrada. DreamPhase faz essa adaptação antes de stepDream. Não mover essa ajuda para GardenInput, MobileZoom ou para a física global. Nenhum campo novo é serializado.
+
+
+### Planador do sonho
+
+`DreamGlider` integra os cinco estágios de lançamento/voo/queda/pouso em subpassos, com entrada vertical manual e avanço automático. Preserve os87 objetos até rest-5 ao ajustar este trecho. A função dreamGlideRoute define as alturas dos obstáculos, nunca a posição do jogador. Mudanças fortes de altitude exigem antecipação, velocidade e aceleração suficientes para atravessar. A queda reinicia o lançamento em NORMAL/EASY.
+
+`DreamGliderArt` é gerado por `scripts/prepare-dream-glider.js`; as máscaras usam alfa≥200 para excluir névoa. `dreamGliderPose` compartilha rotação/âncora/escala com o renderer. Preserve contato de mãos/haste na pintura composta. A câmera vertical suavizada é exclusiva do voo e vai no save domínio4; exploração e quarto escuro conservam suas regras. Validar saves em cada estágio, reinício, percurso completo e toque/teclado com test:sonho:planador e test:sonho:planador:browser.
