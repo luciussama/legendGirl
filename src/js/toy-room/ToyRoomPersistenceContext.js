@@ -1,6 +1,9 @@
 /** Acesso explícito aos campos persistidos e à retomada dos subsistemas. */
 export function createToyRoomPersistenceContext(room) {
   return {
+    get epilogue(){return room.epilogue;},
+    set epilogue(value){room.epilogue=value;},
+    startEpilogue:saved=>room.startEpilogue(saved),
     get arena() { return room.arena; },
     get battle() { return room.battle; },
     get garden() { return room.garden; },

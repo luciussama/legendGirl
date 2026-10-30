@@ -241,3 +241,25 @@ O usuário aprovou a proporção e a articulação revisadas da menina3D. A etap
 ### 29/10/2026 — versão disponível para teste no celular
 
 Os ajustes do ciclo de feedbacks foram integrados à branch principal e publicados pelo CI/CD, conforme autorização do usuário. A versão permite agora a avaliação em celular e a nova rodada com jogadores.
+
+
+### 29/10/2026 — separação dos capítulos e passagem para o sonho
+
+A aventura passa a apresentar gravuras de abertura para “Quarto de brinquedos” e “Dia de piquenique no jardim”. Depois do urso, uma nova cena mostra a menina cansada no quarto arrumado; sua pergunta sobre voltar a pegar os brinquedos termina no facepalm de Nanda. O piquenique agora conduz ao sono das duas. Os novos diálogos e pinturas aguardam avaliação artística. O jardim3D do sonho foi descrito como travessia de fuga e esconderijos, com Yuna minúscula diante de insetos gigantes; o usuário confirmou que sua construção ficará para depois da conclusão destas cenas.
+
+
+### 29/10/2026 — encerramento acessível pela bandeira
+
+A perseguição iniciada pelo seletor de fases passa a mostrar também o quarto arrumado, a pergunta da menina e o facepalm de Nanda. O percurso de revisão continua separado da campanha salva.
+
+
+### 29/10/2026 — capítulos aprovados e próximo ciclo organizado
+
+O usuário aprovou as cenas entregues, incluindo o encerramento do capítulo 1 acessível pela bandeira. A entrega contempla a música após levantar, as duas gravuras de capítulo, o quarto arrumado com a pergunta da menina e o facepalm de Nanda, e o piquenique que termina com Yuna e Nanda adormecidas. O roteiro consolida a versão atual e o ponto de passagem para o sonho.
+
+A próxima construção será o jardim 3D: Yuna minúscula precisa atravessar a vegetação fugindo e se escondendo de insetos gigantes, sem combate. O plano começa por um trecho com grama alta e uma formiga; depois vêm integração ao sono, outros insetos e ampliação do percurso. A fase ainda não foi implementada. O contexto de IA foi consolidado, preservando a versão anterior no acervo, para evitar retomar filas antigas já resolvidas.
+
+
+### 29/10/2026 — documentação contínua e preparação de commits
+
+A revisão documental passou a cobrir os módulos e métodos atuais, as classes da perseguição/jardim/capítulos, os fluxos de persistência e as ferramentas de manutenção. O usuário tornou obrigatória a atualização da documentação em cada implementação autorizada. Também determinou que cada pedido de commit inclua a limpeza de relatórios, imagens de aprovação e arquivos dispensáveis, preservando o acervo recuperável e os recursos necessários ao projeto. As regras vigentes estão na entrada obrigatória do diário de IA.

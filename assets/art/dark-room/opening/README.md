@@ -27,7 +27,7 @@ Produza a ilustração, sem rótulos ou modelos de apresentação.
 
 ## Execução
 
-A sequência dura 37,5 segundos de jogo, respeita pausa e usa um relógio próprio. A física não avança durante a cena. A cama é apenas uma ilustração temporária, sem colisão nem entrada no layout.
+A sequência dura 42,5 segundos de jogo, respeita pausa e usa um relógio próprio. Após levantar, a música começa em 33,5 s; a gravura do capítulo 1 ocupa 36–41 s, antes da revelação da fase. A gravura permite adiantar a leitura. A física não avança durante a cena. A cama é apenas uma ilustração temporária, sem colisão nem entrada no layout.
 
 A flag `legendGirl.bedroom-opening.completed.v1` é salva em localStorage somente após o fim da apresentação. Uma abertura incompleta pode ser retomada pelo snapshot da campanha. Após a conclusão, a campanha passa pelo primeiro salto se sua flag própria ainda não estiver concluída; completar a abertura não consome esse tutorial. A persistência vale para o mesmo navegador e origem; apagar os dados do site remove a flag. Caso o navegador bloqueie armazenamento, a proteção permanece apenas durante a sessão em memória.
 

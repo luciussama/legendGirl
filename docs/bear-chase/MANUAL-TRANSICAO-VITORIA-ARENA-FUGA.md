@@ -1,6 +1,6 @@
 # Manual: transição da vitória da arena para a fuga
 
-Revisão: 26/10/2026. Contrato implementado no código atual; critérios e validação recomendada permanecem como referência de manutenção.
+Revisão: 29/10/2026. Contrato implementado no código atual; critérios e validação recomendada permanecem como referência de manutenção.
 
 ## Objetivo
 
@@ -28,7 +28,7 @@ da fuga, quando a menina alcança o urso.
    corrida 3D começa.
 8. O percurso prossegue até seu encerramento atual, quando o urso é levado ao
    baú uma única vez.
-9. Na campanha, o resultado COMPLETE permanece por 150 ticks e então abre o jardim; a prévia isolada de debug permanece no resultado. Essa passagem posterior não antecipa a ida ao baú nem pertence ao fade de vitória da arena.
+9. Em campanha ou prévia, o resultado COMPLETE permanece por 150 ticks e então abre o epílogo do quarto arrumado. Depois do facepalm e da gravura do capítulo 2, entra no jardim com a mesma origem, sem gravar a prévia como campanha. Essa passagem posterior não antecipa a ida ao baú nem pertence ao fade de vitória da arena.
 
 A implementação atual usa 30 quadros (0,5 s a 60 Hz) para escurecer a arena e
 0,4 s para revelar a abertura depois que o carregamento termina. Não há texto de saída da fantasia, legenda de vitória ou confirmação por botão; a primeira imagem mostra o Urso caído, sem legenda. A simulação e

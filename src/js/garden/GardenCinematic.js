@@ -1,3 +1,4 @@
+import {CHAPTER_ART} from '../chapters/ChapterArt.js';
 import {GARDEN_ACTING as ART} from './GardenCinematicArt.js';
 import {GARDEN_OPENING,GARDEN_ENDING} from './GardenNarrative.js';
 import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
@@ -35,6 +36,12 @@ function actorPair(ctx,images,a,b,x,base,height,time){
  const cycle=time%3.4,blend=smooth((cycle-.8)/.28)*(1-smooth((cycle-2.2)/.28)),alpha=ctx.globalAlpha;
  ctx.save();ctx.globalAlpha=alpha*(1-blend);actor(ctx,images,a,x,base,height,time,false);ctx.globalAlpha=alpha*blend;actor(ctx,images,b,x,base,height,time,false);ctx.restore();
 }
+/** Sono usa pinturas próprias; a respiração continua depois de terminar a leitura. */
+function sleepingActor(ctx,images,set,file,index,x,base,headScale,time){
+ const image=images.get(file),frame=set.frames[index];if(!image)return;
+ const scale=headScale/set.referenceHeight,breath=1+Math.sin(time*1.4)*.002;
+ ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,x-frame.w*scale/2,base-frame.h*scale*breath,frame.w*scale,frame.h*scale*breath);
+}
 function fairy(ctx,images,time,x,y,height=145){
   const image=images.get('../toy-room/stage3/illustrated-fairy-v1.png');if(!image)return;
   const scale=height/image.height,left=image.width*.24,right=image.width*.77,beat=.72+.28*Math.abs(Math.sin(time*18));
@@ -61,9 +68,10 @@ export function renderGardenCinematic(ctx,canvas,state,images){
   const close=m.end?(m.index>=2&&m.index<=7):(m.index===1||m.index>=4&&m.index<=7);
   const zoom=1+(close?.035:0)+p*.015;
   const scale=Math.max(v.w/1652,v.h/952)*zoom;
-  let focusX=m.end?(portrait?940:1030):(portrait?680:710),focusY=v.h/scale/2;
-  const base=m.end?735:700,maxActorHeight=m.end?440*Math.max(...ART.frames.slice(3,6).map(f=>f.h))/ART.referenceHeight:440;
-  const actorFactor=Math.min(1,Math.max(.35,(base*scale-maxBottom-12*css)/(maxActorHeight*scale)));
+  const sleepShot=m.end&&m.index>=11,sleepBlend=m.index===11?smooth(m.time/2):1;
+  let focusX=m.end?(portrait?940-(sleepShot?90*sleepBlend:0):1030):(portrait?680:710),focusY=v.h/scale/2;
+  const base=m.end?735:700,maxActorHeight=m.end?Math.max(340,440*Math.max(...ART.frames.slice(3,6).map(f=>f.h))/ART.referenceHeight):440;
+  const actorFactor=Math.min(portrait&&sleepShot?1-.3*sleepBlend:1,Math.max(.35,(base*scale-maxBottom-12*css)/(maxActorHeight*scale)));
   // No retrato, o plano de chegada apresenta os convidados antes de chegar a Yuna.
   if(m.end&&m.index===0)focusX=portrait?1250-310*p:focusX+45*(1-p);
   const halfW=v.w/scale/2,halfH=v.h/scale/2;
@@ -84,8 +92,13 @@ export function renderGardenCinematic(ctx,canvas,state,images){
   }else{
     const settling=smooth(state.age/2),base=735-12*(1-settling),eating=m.index>=5;
     // A âncora da cabeça e a base comuns impedem saltos entre as poses de comer.
-    if(eating)actorPair(ctx,images,4,5,895,base,440*actorFactor,t);else actor(ctx,images,3,895,base,440*actorFactor,t);
-    if(m.index<=4){const q=m.index===4?smooth(m.time/2):0;fairy(ctx,images,t,760+25*q,520+135*q,145*actorFactor);}
+    if(m.index>=11){
+      const sleep=m.index>=12,blend=sleep?smooth(m.time/1.8):0;
+      if(sleep&&blend<1){ctx.save();ctx.globalAlpha*=1-blend;sleepingActor(ctx,images,CHAPTER_ART.sleep,'../chapters/yuna-sono-v1.png',0,895,base,340*actorFactor,t);ctx.restore();}
+      ctx.save();ctx.globalAlpha*=sleep?blend:1;sleepingActor(ctx,images,CHAPTER_ART.sleep,'../chapters/yuna-sono-v1.png',sleep?1:0,895,base,340*actorFactor,t);ctx.restore();
+    }else if(eating)actorPair(ctx,images,4,5,895,base,440*actorFactor,t);else actor(ctx,images,3,895,base,440*actorFactor,t);
+    if(m.index>=12){sleepingActor(ctx,images,CHAPTER_ART.fairy,'../chapters/nanda-gestos-v1.png',1,700,710,140*actorFactor,t);}
+    else if(m.index<=4){const q=m.index===4?smooth(m.time/2):0;fairy(ctx,images,t,760+25*q,520+135*q,145*actorFactor);}
     else{
       actorPair(ctx,images,6,7,790,710,210*actorFactor,t+.4);
     }

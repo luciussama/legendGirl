@@ -1,11 +1,120 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 480,
+    "files": 484,
     "regions": 249,
     "code": 29
   },
   "items": [
+    {
+      "id": "b9353edb680ffd5514a83fd6",
+      "kind": "file",
+      "path": "assets/art/chapters/menina-quarto-v1.png",
+      "title": "menina-quarto-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1055030,
+      "sha256": "70aa0f62426a1bcb56edac372b73d2f10da37f6bea84e7570f8b5c98ef21207d",
+      "aliases": [
+        "chapter-girl-room"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 82,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/chapters/ToyRoomEpilogue.js",
+          "line": 37,
+          "type": "runtime",
+          "alias": "chapter-girl-room"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/chapters"
+    },
+    {
+      "id": "9a89cf53c7d7d2617e41a07a",
+      "kind": "file",
+      "path": "assets/art/chapters/nanda-gestos-v1.png",
+      "title": "nanda-gestos-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1121967,
+      "sha256": "5fd1dc0736c5ccdea790950c7954a32ba0afee1fa0803a18a4e44fe688e0e06d",
+      "aliases": [
+        "chapter-fairy"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 83,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/chapters/ToyRoomEpilogue.js",
+          "line": 40,
+          "type": "runtime",
+          "alias": "chapter-fairy"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/chapters"
+    },
+    {
+      "id": "1c3a4e317cae6f829d460033",
+      "kind": "file",
+      "path": "assets/art/chapters/quarto-arrumado-v1.png",
+      "title": "quarto-arrumado-v1.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2407798,
+      "sha256": "a9c19901a947e993cd650664c1b4d805e91a4f1cbdbfd305a7a6cd77595564a5",
+      "aliases": [
+        "chapter-clean-room"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 84,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/chapters/ToyRoomEpilogue.js",
+          "line": 36,
+          "type": "runtime",
+          "alias": "chapter-clean-room"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/chapters"
+    },
+    {
+      "id": "47375aabfc9b5eb68b21d314",
+      "kind": "file",
+      "path": "assets/art/chapters/yuna-sono-v1.png",
+      "title": "yuna-sono-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1508938,
+      "sha256": "5215aec76ce5d0544b5ee9af83ab2f2be0c4512576b06fdcf18f872833083dab",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/chapters"
+    },
     {
       "id": "164386dd061d5ce62b423d31",
       "kind": "file",
@@ -1095,13 +1204,13 @@
         },
         {
           "file": "src/js/cinematics/OpeningSequence.js",
-          "line": 106,
+          "line": 109,
           "type": "runtime",
           "alias": "opening-waking-up"
         },
         {
           "file": "src/js/game.js",
-          "line": 688,
+          "line": 689,
           "type": "runtime",
           "alias": "opening-waking-up"
         }
@@ -2949,9 +3058,24 @@
       "height": 952,
       "bytes": 3064817,
       "sha256": "fa773928e5f21871f6d4ab9c80719d434519b2fdcd201fa7dfab9cf409e41985",
-      "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "aliases": [
+        "chapter-garden"
+      ],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/manifest.json",
+          "line": 85,
+          "type": "manifesto-runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/chapters/ToyRoomEpilogue.js",
+          "line": 29,
+          "type": "runtime",
+          "alias": "chapter-garden"
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/cinematic"
     },
@@ -3014,8 +3138,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/runtime"
     },
@@ -15660,6 +15797,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 10,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 71,
           "type": "manifesto-runtime",
@@ -15691,10 +15834,22 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 44,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/manifest.json",
           "line": 70,
           "type": "manifesto-runtime",
           "alias": null
+        },
+        {
+          "file": "src/js/cinematics/OpeningSequence.js",
+          "line": 96,
+          "type": "runtime",
+          "alias": "toy-room-intro-room-v1"
         },
         {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
@@ -16296,6 +16451,12 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "assets/art/garden/manifest.json",
           "line": 13,
           "type": "apoio",
@@ -16314,6 +16475,12 @@
           "alias": null
         },
         {
+          "file": "src/js/chapters/ToyRoomEpilogue.js",
+          "line": 40,
+          "type": "runtime",
+          "alias": "toy-room-illustrated-fairy-v1"
+        },
+        {
           "file": "src/js/cinematics/ToyRoomIntroduction.js",
           "line": 136,
           "type": "runtime",
@@ -16327,7 +16494,7 @@
         },
         {
           "file": "src/js/garden/GardenCinematic.js",
-          "line": 39,
+          "line": 46,
           "type": "runtime",
           "alias": null
         },
@@ -25243,8 +25410,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25268,8 +25448,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25293,8 +25486,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25318,8 +25524,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25343,8 +25562,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25368,8 +25600,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25393,8 +25638,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],
@@ -25418,8 +25676,21 @@
       "bytes": 2053778,
       "sha256": "d81394369649fdbd4f8ab97de993112b4bea4e8604cea0e5e529cf7286084d07",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 22,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/chapters/prompts.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [
         "Recorte individual: remover exige recompor a prancha e ajustar os metadados; não exclui a imagem inteira."
       ],

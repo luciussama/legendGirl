@@ -1,6 +1,6 @@
 # Manual de desenvolvimento e integração de equipes
 
-Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **26/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
+Projeto: **legendGirl — O Quarto dos Brinquedos**. Revisão documental: **29/10/2026**. Design inicial de batalha preservado com indicação das diferenças para a arena atual.
 
 Este manual reúne as orientações do repositório e as confronta com a implementação disponível no workspace. Destina-se a desenvolvimento, QA, arte e manutenção da publicação. O código usa JavaScript com módulos ES, HTML, CSS, Canvas 2D e Three.js/WebGL 2 na perseguição; Node.js/Express serve os arquivos. Three.js atende à renderização 3D, com importação tardia. Não há compilação para `dist/`, backend de campanha ou contas de jogador.
 
@@ -30,6 +30,24 @@ Repositório de referência: [luciussama/legendGirl no GitHub](https://github.co
 20. [Urso, chefe final — design oficial](#urso-chefe-final--design-oficial)
 21. [Desenvolver o jardim](#desenvolver-o-jardim)
 22. [Padrão de diálogos](#padrão-de-diálogos)
+
+## Funcionalidades e integração vigentes
+
+A campanha atual percorre abertura e capítulo 1 → quarto escuro/retorno → introdução e exploração da sala → arena → perseguição 3D → epílogo do quarto arrumado e capítulo 2 → jardim lateral → piquenique e sono. A bandeira oferece entradas isoladas para revisão; a origem de prévia acompanha as transições sem substituir a campanha salva.
+
+| Área | Implementação atual | Documentação de manutenção |
+| --- | --- | --- |
+| Tela inicial e progresso | Menina lendo, novo/carregar, confirmação de reinício, dificuldade, opções e preferências locais. | `TitleScreen`, `TitleScene` e contrato de `CampaignProgress` neste manual. |
+| Quarto escuro e retorno | Tutorial de primeiro salto, alcances por dificuldade, contato por superfície e câmera de gameplay somente lateral. | [Primeiro salto](TUTORIAL-PRIMEIRO-SALTO.md) e seções de câmera/estado. |
+| Exploração da sala | Oito brinquedos, transporte até o baú, recorrência, investigação e espada; movimento em teclado/toque/gamepad. | Contextos e proprietários em [arquitetura](ARQUITETURA.md). |
+| Atuação 2D e sombras | Pernas por distância, reação de tronco/cabeça/vestido, perfil lateral coerente e brinquedo acompanhando as mãos; sombras assentadas no piso. | Seções de articulação/sombras e [guia de designers](sprites/GUIA-DESIGNERS.md). |
+| Arena | Trem, robô, dinossauro e urso, defesa, esquiva, espada, especial único e efeitos de áudio por personagem. | [Guia da arena](arena/GUIA-ARENA.md) e configuração derivada. |
+| Perseguição | Corrida automática e desvios, abertura obrigatória, vida por dificuldade, piso validado na GPU e protagonista articulada. | [Guia da perseguição](bear-chase/GUIA-PREVIA.md). |
+| Capítulos | Música ao levantar, duas gravuras, epílogo com facepalm, pausa e retomada da cena; entrada também pela bandeira. | [Roteiro](capitulos/ROTEIRO.md) e contratos abaixo. |
+| Jardim e piquenique | Terrenos, rios, seção aérea, rodas/nuvens, encontros, resgate EASY e domínio v11; Yuna e Nanda adormecem ao final. | [Guia do jardim](garden/GUIA-JARDIM.md). |
+| Leitura e derrotas | Avanço automático, gesto consumido por fala, Enter modal, skip separado de cenas vistas e oferta EASY após três derrotas completas. | [Padrão de diálogos](diario-ia/padroes/DIALOGOS-E-CENAS.md) e fluxo de derrotas. |
+
+O sonho no jardim 3D permanece planejado no roteiro. Publicação ocorre pelo workflow da principal e deve ser distinguida da disponibilidade local da branch.
 
 ## Primeiro dia e preparação
 
@@ -107,7 +125,11 @@ flowchart TD
 | Estado | `state/` | Flags narrativas, transições, derrota e captura/restauração da campanha. |
 | Controle | `controllers/` | Entrada, áudio, câmera e ajustes móveis. |
 | Desenho | `environment/`, `entities/`, `effects/`, `ui/` | Materiais, sprites, luzes, transições e texto. |
-| Exploração | `toy-room/` | Sala com câmera, entradas, móveis, colisões e coleta próprios. |
+| Exploração e arena | `toy-room/` | Sala, coleta, combate, persistência e coordenação dos modos posteriores. |
+| Perseguição | `bear-chase/` | Domínio de corrida, Three.js sob demanda, recursos GPU e abertura ilustrada. |
+| Jardim | `garden/` | Plataforma lateral 2D, terrenos, insetos, resgate, cenas e áudio próprios. |
+| Capítulos | `chapters/` | Gravuras, recortes de atuação e epílogo persistível entre perseguição e jardim. |
+| Narrativa compartilhada | `narrative/` | Sequências do quarto, quadros de fala, limites de leitura e consumo do gesto. |
 | Recursos | `assets/` em `src/js/` | Manifesto, imagens, caches, atlas e personagem oficial. |
 | Diagnóstico | `debug/`, `scripts/` e acervo de IA | Overlay de atlas e executor de QA; fixtures/tests só são recuperados temporariamente. |
 
@@ -123,7 +145,7 @@ flowchart TD
 | --- | --- |
 | `start`, `newCampaign`, `hasProgress`, `saveProgress` | Início/restauração, limpeza da campanha, consulta e gravação. `newCampaign` é destrutivo para o progresso local; a UI já pede confirmação ao jogador. |
 | `doJump(inputSource)`, `isGrounded`, `isCutsceneActive`, `setLastInputDevice` | Entrada contextual: salto ou interação narrativa respeitando bloqueios. |
-| `advanceDialogue(event)` | Encaminha uma fala ao dono atual: abertura, introdução, história, quarto ou jardim. Retorna se houve avanço; não executa salto, coleta ou ataque. |
+| `advanceDialogue(event)` | Encaminha uma fala ao dono atual: abertura, introdução, história, quarto, epílogo ou jardim. Retorna se houve avanço; não executa salto, coleta ou ataque. |
 | `togglePause`, `setPaused`, `isPaused` | Pausa da atualização; desenho permanece disponível. |
 | `retry`, `resetToStart`, `restartToTitle`, `isGameOver` | Recuperação/derrota e retorno ao menu. |
 | `startToyRoomPhase`, `startToyRoomIntroduction`, `isToyRoomMode` | Transição, introdução e delegação à sala. |
@@ -227,7 +249,7 @@ Limitar o fundo a `0..canvas.width` sob zoom/offset pode expor transparência; a
 | [ParticleSystem](../src/js/effects/ParticleSystem.js) | `clear`, `spawnBabyJumpDust`, `spawnBabyJumpPuff`, `spawnBabyLandingPuff`, `spawnPhase3Ribbons`, `spawnEscapeRibbons`, `update`, `updateBabyJumpDust`, `updateSpeedRibbons`, `renderSpeedRibbons`, `renderBabyJumpDust`, `render` | Buffers de partículas atualizados por `dt` e desenhados na cena. |
 | [TransitionEffects](../src/js/effects/TransitionEffects.js) | `renderPortalWipe` | Envelope de luz do portal; pode receber `presentationTransform` para coordenadas móveis. |
 | [ArtFinish](../src/js/effects/ArtFinish.js) | `applyArtFinish` | Dessaturação de 12% por composição `saturation`, em tela. |
-| [OpeningSequence](../src/js/cinematics/OpeningSequence.js) | `hasCompleted`, `start`, `cancel`, `reset`, `snapshot`, `restore`, `update`, `renderFade`, `render` | Relógio e cues da abertura; callbacks `onReveal`, `onComplete`, `onCue`. A cena dura 37,5 s de jogo. |
+| [OpeningSequence](../src/js/cinematics/OpeningSequence.js) | `hasCompleted`, `start`, `cancel`, `reset`, `snapshot`, `restore`, `update`, `renderFade`, `render` | Relógio e cues da abertura; callbacks `onReveal`, `onComplete`, `onCue`. A cena dura 42,5 s de jogo, incluindo a gravura do capítulo 1 de 36 a 41 s; a música entra após levantar, em 33,5 s. |
 | [HudRenderer](../src/js/ui/HudRenderer.js) | `renderEscapeBanner` | Mensagens/nível da fuga e subida. |
 | [DialogueRenderer](../src/js/ui/DialogueRenderer.js) | `drawPortrait`, `wrapText`, `renderCutsceneDialogue` | Retratos, quebra de linhas, texto e prompts. |
 | [DialogueSafeArea](../src/js/ui/DialogueSafeArea.js) | `intersectCanvasSafeArea`, `getDialogueSafeArea`, `getDialogueBoxY` | Interseção do canvas com viewport/insets; converte para bitmap. |
@@ -373,6 +395,38 @@ As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fa
 | `ToyRoomUI` | [toy-room/ToyRoomUI.js](../src/js/toy-room/ToyRoomUI.js) | HUD de exploração, joystick, ação, faixas e contagem; consome estado atual de apresentação. |
 | `DialogueRenderer` | [ui/DialogueRenderer.js](../src/js/ui/DialogueRenderer.js) | Caixa/retrato/nome/quebra de texto compartilhados pelas fases e adaptação de falas do quarto. |
 | `HudRenderer` | [ui/HudRenderer.js](../src/js/ui/HudRenderer.js) | Faixas/progresso do percurso lateral em coordenadas de tela. |
+| `BearChasePhase` | [bear-chase/BearChasePhase.js](../src/js/bear-chase/BearChasePhase.js) | Compõe a fuga, adapta o tempo do loop, revela a abertura ilustrada enquanto prepara/verifica o 3D e controla pausa, entradas, snapshot e descarte. |
+| `ChaseAudio` | [bear-chase/ChaseAudio.js](../src/js/bear-chase/ChaseAudio.js) | Controla trilha, passos, ganho, pausa e restauração da posição musical. |
+| `ChaseBearAnimation` | [bear-chase/ChaseBearAnimation.js](../src/js/bear-chase/ChaseBearAnimation.js) | Calcula poses e articulações do urso sem modificar o domínio. |
+| `ChaseBearModel` | [bear-chase/ChaseBearModel.js](../src/js/bear-chase/ChaseBearModel.js) | Constrói o urso volumétrico com materiais e hierarquia próprios. |
+| `ChaseFairyModel` | [bear-chase/ChaseFairyModel.js](../src/js/bear-chase/ChaseFairyModel.js) | Modela núcleo de luz e asas em volume, com órbita ao redor da menina e rastro instanciado. |
+| `ChaseGirlAnimation` | [bear-chase/ChaseGirlAnimation.js](../src/js/bear-chase/ChaseGirlAnimation.js) | Resolve apoios no espaço do quadril com os comprimentos do modelo; anima espada, cabelo, saia e tropeço. |
+| `ChaseGirlModel` | [bear-chase/ChaseGirlModel.js](../src/js/bear-chase/ChaseGirlModel.js) | Constrói malhas, materiais e articulações da menina; compartilha comprimentos e altura da sola em `proportions`. |
+| `ChaseInput` | [bear-chase/ChaseInput.js](../src/js/bear-chase/ChaseInput.js) | Converte teclado, ponteiro e gamepad em intenção lateral; libera listeners. |
+| `ChaseIntroRenderer` | [bear-chase/ChaseIntroRenderer.js](../src/js/bear-chase/ChaseIntroRenderer.js) | Apresenta a introdução ilustrada e o corte de largada em Canvas 2D. |
+| `ChaseLighting` | [bear-chase/ChaseLighting.js](../src/js/bear-chase/ChaseLighting.js) | Compõe luzes de sala e da fada; duas fontes de sombra, com recursos próprios e acompanhamento no percurso. |
+| `ChaseRenderer3D` | [bear-chase/ChaseRenderer3D.js](../src/js/bear-chase/ChaseRenderer3D.js) | Compõe cena WebGL; valida o piso na GPU com alternativa linear, envia mapas, compila materiais, monta modelos e descarta recursos. |
+| `ChaseRoom` | [bear-chase/ChaseRoom.js](../src/js/bear-chase/ChaseRoom.js) | Constrói superfícies e decoração fixa ao longo do traçado. |
+| `ChaseToyModels` | [bear-chase/ChaseToyModels.js](../src/js/bear-chase/ChaseToyModels.js) | Adaptador de compatibilidade para o trem do catálogo. |
+| `BlockCastleProp` | [bear-chase/props/BlockCastleProp.js](../src/js/bear-chase/props/BlockCastleProp.js) | Constrói o castelo de blocos decorativo. |
+| `BlocksProp` | [bear-chase/props/BlocksProp.js](../src/js/bear-chase/props/BlocksProp.js) | Constrói o grupo de blocos arremessável. |
+| `BookshelfProp` | [bear-chase/props/BookshelfProp.js](../src/js/bear-chase/props/BookshelfProp.js) | Constrói a estante decorativa. |
+| `BunnyProp` | [bear-chase/props/BunnyProp.js](../src/js/bear-chase/props/BunnyProp.js) | Constrói o coelho arremessável. |
+| `ChasePropCatalog` | [bear-chase/props/ChasePropCatalog.js](../src/js/bear-chase/props/ChasePropCatalog.js) | Catálogo, instâncias, limites e liberação dos objetos do percurso. |
+| `ChasePropResources` | [bear-chase/props/ChasePropResources.js](../src/js/bear-chase/props/ChasePropResources.js) | Compartilha e controla materiais, texturas e geometrias dos objetos. |
+| `PropParts` | [bear-chase/props/ChasePropResources.js](../src/js/bear-chase/props/ChasePropResources.js) | Compartilha e controla materiais, texturas e geometrias dos objetos. |
+| `OakCabinetProp` | [bear-chase/props/OakCabinetProp.js](../src/js/bear-chase/props/OakCabinetProp.js) | Constrói o armário baixo ilustrado. |
+| `ToyChestProp` | [bear-chase/props/ToyChestProp.js](../src/js/bear-chase/props/ToyChestProp.js) | Constrói o baú articulado usado no encerramento. |
+| `TrainProp` | [bear-chase/props/TrainProp.js](../src/js/bear-chase/props/TrainProp.js) | Constrói o trem volumétrico do catálogo. |
+| `ToyRoomEpilogue` | [chapters/ToyRoomEpilogue.js](../src/js/chapters/ToyRoomEpilogue.js) | Cena do quarto arrumado, leitura, facepalm e passagem ao capítulo2; snapshot próprio. |
+| `DarkRoomContact` | [environment/DarkRoomContact.js](../src/js/environment/DarkRoomContact.js) | Extrai contornos de apoio da arte carregada; resolve sapatos completos, descida varrida e união urso/livros. |
+| `GardenAudio` | [garden/GardenAudio.js](../src/js/garden/GardenAudio.js) | MP3 Blues Shuffle Loop em repetição e sinais curtos do jardim, com volume, pausa e descarte. |
+| `GardenInput` | [garden/GardenInput.js](../src/js/garden/GardenInput.js) | Combina teclado, toque e gamepad; instala e remove controles próprios da fase. |
+| `GardenPhase` | [garden/GardenPhase.js](../src/js/garden/GardenPhase.js) | Compõe domínio, arte, controles e áudio; coordena prontidão, pausa, retry, snapshot e descarte. |
+| `GardenRenderer` | [garden/GardenRenderer.js](../src/js/garden/GardenRenderer.js) | Carrega o manifesto dedicado e desenha pinturas, HUD e controles com câmera somente lateral. |
+| `ArenaSoundEffects` | [toy-room/ArenaSoundEffects.js](../src/js/toy-room/ArenaSoundEffects.js) | MP3s por evento/personagem, pré-carga, trechos, ganho por voz e interrupção no mixer mestre; não serializa recursos. |
+| `TitleScene` | [ui/TitleScene.js](../src/js/ui/TitleScene.js) | Compõe o quarto e a menina lendo com pernas articuladas; observa visibilidade, tamanho e movimento reduzido para controlar seu RAF; câmera comum mantém a poltrona no tapete. |
+| `TitleScreen` | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. |
 
 Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém assinatura, linha e link de implementação. As tabelas de domínio acima explicam os efeitos e as dependências; use ambas para evitar confundir um renderizador com o dono da regra do jogo.
 
@@ -567,7 +621,7 @@ A simulação da fuga usa segundos e passo fixo de 1/60 s, adaptados do dt legad
 
 `ToyRoomPersistence` salva `toyRoomChaseCampaign` somente no modo campanha e fora da captura interna da arena. Restore exige sala com arena concluída e sem arena ativa; saves antigos sem esse campo continuam válidos. Retoma a etapa salva, com estado e posição musical, sob fade. O debug não grava essa fuga na campanha. Pausa, foco, erro de contexto e saída precisam respeitar os recursos e listeners do proprietário.
 
-Na campanha, COMPLETE mantém o resultado por 150 ticks (2,5 s na base de 60 Hz) e `ToyRoomPhase` chama `startGarden`. Na prévia de debug, permanece no resultado. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
+Em campanha ou prévia, COMPLETE mantém o resultado por 150 ticks (2,5 s na base de 60 Hz), e `ToyRoomPhase` chama `startEpilogue`. O epílogo mostra o encerramento e a gravura do capítulo 2 antes de `startGarden`, mantendo a origem campanha/prévia. GAME_OVER oferece nova tentativa pela tela de derrota; o retry reinicia a abertura da perseguição sem retornar ao título.
 
 A preparação RGBA do piso mantém recorte, repetição, luz e geometria existentes. `prepareFloor` confere uma amostragem 8×8 na GPU e tenta a mesma arte com filtro linear sem mipmaps se necessário; falha definitiva impede arrancada. `prepareVisualResources` envia os mapas e aguarda compilação dos materiais. A confirmação no Safari permanece pendente; a validação no Chrome não confirma o resultado no aparelho do usuário. Alterações exclusivamente documentais não exigem regenerar artes ou executar exportadores que sobrescrevem recursos.
 
@@ -615,13 +669,13 @@ A ação de exploração não solta brinquedos no chão: conserva `carriedItem` 
 
 Use a bandeira → Um dia no jardim. Leia [GUIA-JARDIM](garden/GUIA-JARDIM.md) e o [README das artes](../assets/art/garden/README.md). Reconstrua recortes com `node scripts/prepare-garden-art.js`. O manifesto dedicado é carregado pela fase, sem aumentar o preload de todas as cenas. Física/apoios ficam em `GardenLevel`/`GardenSimulation`; pintura não altera essas medidas. Preservar controle simultâneo por toque, origem dos pés, câmera lateral, transporte pela roda, snapshot e descarte ao trocar de fase.
 
-O domínio atual é v10. Preserve grama a 100 px/s, chão/madeira/pedra/nuvem a 220 px/s e pedrinhas a 410 px/s, sem derrapagem; saltos de pedrinhas variam deterministicamente. O NORMAL tem queda fatal e checkpoints, enquanto o EASY tem resgate/desorientação sem morte. `clouds`, `fairy`, `trail`, `safeGround`, `recovery`, `encounters`, `story` e `presentation` são serializáveis. Não restaure apoio em nuvem ausente. O mapa tem consultas espaciais e subpassos de até 1/120 s; evite varrer todas as plataformas a cada subpasso.
+O domínio atual é v11. Preserve grama a 100 px/s, chão/madeira/pedra/nuvem a 220 px/s e pedrinhas a 410 px/s, sem derrapagem; saltos de pedrinhas variam deterministicamente. O NORMAL tem queda fatal e checkpoints, enquanto o EASY tem resgate/desorientação sem morte. `clouds`, `fairy`, `trail`, `safeGround`, `recovery`, `encounters`, `story` e `presentation` são serializáveis. Não restaure apoio em nuvem ausente. O mapa tem consultas espaciais e subpassos de até 1/120 s; evite varrer todas as plataformas a cada subpasso.
 
 `GardenContact` compartilha seleção de pose e perfil dos sapatos com o renderer; `GardenContactData` deriva das pinturas originais. A atuação completa de medo usa recortes próprios de `GardenFearArt`, sem substituir a referência física. Morros têm superfícies físicas curvas e pinturas cacheadas na carga; grama alta ocupa pequenas faixas e a vegetação baixa continua até as bordas. Pilares, peixes e plantas não criam apoios. Não usar câmera, zoom ou linhas auxiliares para corrigir saltos.
 
 `GardenEncounters` mantém cinco abelhas com repouso fixo e arcos alternados A/B, quatro minhocas por proximidade e três besouros inofensivos: dois até a chegada segura à margem oposta do rio e um de seis segundos nas nuvens finais. Aviso/arco/intervalo da abelha duram 0,5/1,25/1,8 s; lateral/baixo causam um ponto e pisão derrota. O besouro entra visualmente de fora da esquerda em 0,85 s, sem mudar velocidades. O fim da fuga nos rios exige apoio em chão firme e os pés inteiros além da margem de destino; expirar o contador de seis segundos não encerra esse encontro. `resetGardenPanic` rearma encontros à frente na retomada. A fala de Nanda e a orientação inicial não bloqueiam PULAR.
 
-`GardenNarrative` guarda falas e durações; `GardenCinematic` separa atuação da leitura. O domínio avança os balões automaticamente ou por pulso, e `GardenPhase` trata clique/toque e cenas vistas. O final retira o quadro e conserva o piquenique animado. O save v8 acrescentou leitura/cenas vistas; o v9 acrescenta o trajeto alternado das abelhas e migra voos antigos a partir da posição atual. A versão de configuração `GARDEN.version:7` não é a versão do domínio. O v10 permite `remaining:0` com fuga de rio ainda ativa e conserva `elapsed` real até o pouso seguro; saves v9 retomam sem mudar posição. Consulte as migrações v1–v10 no guia da fase.
+`GardenNarrative` guarda falas e durações; `GardenCinematic` separa atuação da leitura. O domínio avança os balões automaticamente ou por pulso, e `GardenPhase` trata clique/toque e cenas vistas. O final retira o quadro e conserva Yuna e Nanda adormecidas na toalha. O save v8 acrescentou leitura/cenas vistas; o v9 acrescenta o trajeto alternado das abelhas e migra voos antigos a partir da posição atual. A versão de configuração `GARDEN.version:7` não é a versão do domínio. O v10 permite `remaining:0` com fuga de rio ainda ativa e conserva `elapsed` real até o pouso seguro; saves v9 retomam sem mudar posição. O v11 acrescenta o sono ao piquenique; conclusões v8–v10 retomam no primeiro quadro novo, sem repetir o percurso. Consulte as migrações no guia da fase.
 
 Para reconstruir artes, siga a ordem no [README de produção](../assets/art/garden/README.md) e o catálogo em [COMANDOS](COMANDOS.md#jardim). Os preparadores sobrescrevem derivados e alguns manifestos; não são testes. O diário usa SQLite incremental e segmentos imutáveis; mudanças em guias/contratos devem terminar com registro e `journal:sync`.
 
@@ -651,3 +705,28 @@ Ao criar ou alterar cenas, consultar [padrões de diálogos e cenas](diario-ia/p
 ### Proporções e apoio da menina3D
 
 `ChaseGirlModel.proportions` fornece os comprimentos dos membros e a altura da sola. O modelo e `ChaseGirlAnimation` devem consumir os mesmos valores. Alvos dos pés são definidos no piso, compensando a altura da raiz antes da conversão para o espaço do quadril. O tornozelo compensa a orientação completa da cadeia para conservar o sapato paralelo ao plano local da pista. Ao mudar proporções, revisar também mão/espada, franja em perfil, vista traseira, repouso, tropeço e queda; regenerar `assets/models/bear-chase/menina.glb` com o exportador local. A câmera, o traçado e a simulação não devem ser usados para corrigir a anatomia. A aprovação artística do modelo é específica, além da validação técnica.
+
+
+### Capítulos e encerramento da organização
+
+`ChapterCard` apresenta gravuras e títulos com avanço automático ou um gesto por quadro. `ToyRoomEpilogue` guarda somente índice/idade/tempo, desenha a sala arrumada e o facepalm, e abre o capítulo 2 antes de `startGarden`. O plano silencioso mantém 4,5 s, separado da leitura. `toyRoomEpilogue` é restaurado entre `toyRoomGarden` e `toyRoomChaseCampaign`; a campanha conserva seus dados anteriores. O seletor de capítulos não foi criado: este trabalho é a separação narrativa, conforme [roteiro](capitulos/ROTEIRO.md).
+
+
+### Encerramento da perseguição pelo seletor
+
+O encerramento visual usa o mesmo epílogo na campanha e na prévia da bandeira. O sinal `campaign` é transmitido de `BearChasePhase` para `ToyRoomEpilogue` e, depois, `GardenPhase`. O sinal decide a persistência, não a apresentação da cena. Uma prévia conserva `campaign:false`; seus campos de epílogo/jardim não entram no snapshot de campanha. Reiniciar a perseguição limpa o temporizador da transição anterior.
+
+
+## Contratos de manutenção dos capítulos
+
+| Ponto | Contrato atual |
+| --- | --- |
+| `renderChapterCard(ctx, canvas, options)` | Apresentação sem relógio próprio: recebe idade/duração do dono, desenha imagem/título e registra callback de avanço na área segura. |
+| `ToyRoomEpilogue` | Recebe assets, áudio, callback, save opcional e origem campaign. Valida índice/relógios; `beat` consulta o quadro, `advanceDialogue` respeita o plano silencioso, `update` recebe dt legado e `snapshot` devolve versão 1. |
+| `ToyRoomPhase.startEpilogue` | Descarta a perseguição e suas entradas, inicia a cena e entrega sua conclusão a `startGarden` com a mesma origem. `updateActiveMode` conserva a prioridade modal da cena. |
+| `ToyRoomPersistence` | Captura epílogo ativo apenas na campanha; restaura jardim antes de epílogo e perseguição. A origem de debug nunca se torna campanha por atravessar um corte narrativo. |
+| `GardenSimulation` / `GardenCinematic` | Domínio v11 controla falas/sono e migra conclusões antigas; o renderer apresenta as poses. A fase futura deverá consumir o ponto final salvo, sem reaproveitar o combate do jardim 2D. |
+
+Ao substituir as pinturas, manter `CHAPTER_ART` coerente com as fontes e as âncoras. `prepare-chapter-art.js` encontra separações transparentes, inclusive quando a pose cruza a divisão nominal da prancha; não recortar por grade presumida. A atuação e as aproximações são narrativas e não corrigem física ou câmera de gameplay.
+
+A [entrada obrigatória do diário](diario-ia/README.md#regras-obrigatórias-de-documentação-e-commit) exige atualização documental em cada implementação autorizada e limpeza de relatórios/evidências dispensáveis antes de cada commit solicitado, com preservação verificada no acervo.

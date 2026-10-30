@@ -105,7 +105,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     onComplete: enterFirstJumpTutorial,
     onCue: name => {
       if (name === 'ambience') { audio.initAudio(); audio.pauseMusic(); audio.playOpeningAmbience(); }
-      else if (name === 'wake') { audio.playLevelUpChime(0); audio.startMusic(); }
+      else if (name === 'wake') audio.playLevelUpChime(0);
+      else if (name === 'music') audio.startMusic();
       else audio.playFairyVoiceBlip(name === 'shout' ? 1180 : 780);
     }
   });
@@ -1141,7 +1142,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }));
     if (state.isGameOver) callbacks.onGameOver?.({ phase: 'bedroom', offerEasy: state.easyOfferPending });
     if (state.currentPhaseMode === 'bedroom') {
-      if (opening.active && opening.time < 29) { audio.initAudio(); audio.playOpeningAmbience(); }
+      if (opening.active && opening.time < 33.5) { audio.initAudio(); audio.playOpeningAmbience(); }
       else audio.startMusic();
     }
   }
@@ -1266,7 +1267,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isFirstJumpTutorial: () => state.gameplayState === 'FIRST_JUMP_TUTORIAL',
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !state.isStandbyActive),
-    isCutsceneActive: () => Boolean(opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
+    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
     isGameOver: () => state.isGameOver,
     isToyRoomMode: () => state.currentPhaseMode === 'toy-room',
     setLastInputDevice,
@@ -1280,6 +1281,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if(toyRoomIntroduction.active)return toyRoomIntroduction.advanceDialogue();
     if(state.currentPhaseMode==='toy-room'){
       const room=state.toyRoomInstance?.instance;
+      if(room?.epilogue?.active)return room.epilogue.advanceDialogue();
       if(room?.garden?.active)return room.garden.requestDialogueAdvance(event);
       if(room?.introBannerTimer>0){room.introBannerTimer=0;return true;}
       if(room?.victoryBannerTimer>0){room.victoryBannerTimer=0;return true;}
@@ -1291,7 +1293,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if(state.plotTwistActive&&state.plotTwistStep>=4){if(state.plotTwistStep===4)advancePlotTwist();else if(state.plotTwistTimer<210)state.plotTwistTimer=210;else finishPlotTwistAndStartTutorial();return true;}
     return false;
   }
-  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
+  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.epilogue?.active||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
   const runtimeContext = createRuntimeContext({ state, audio, camera, assets, input: inputHandler, effects: particles, campaign });
   const narrativeContext = { ...runtimeContext, state, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, confirmStandby, saveProgress, beginToyRoomIntroduction };
 
@@ -1369,7 +1371,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     },
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !state.isStandbyActive),
-    isCutsceneActive: () => Boolean(opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
+    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
     setLastInputDevice,
     resetToStart,
     retry: retryGame,

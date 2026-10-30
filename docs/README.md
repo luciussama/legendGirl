@@ -1,6 +1,6 @@
 # Documentação do aplicativo
 
-Revisão: 26/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
+Revisão: 29/10/2026. Use o documento conforme a pergunta; relatórios e evidências de máquina ficam exclusivamente no diário de IA.
 
 | Entrada | Conteúdo |
 | --- | --- |
@@ -13,7 +13,8 @@ Revisão: 26/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 | [Primeiro salto](TUTORIAL-PRIMEIRO-SALTO.md) | Fluxo, entradas, apresentação e migração de saves do tutorial do quarto. |
 | [Arena atual](arena/GUIA-ARENA.md) / [valores documentados](arena/configuracao-atual.json) | Perfis legado/arena, HP, combate, IA, controles, retorno, áudio e persistência. |
 | [Perseguição 3D](bear-chase/GUIA-PREVIA.md) | Campanha após a vitória da arena, acesso isolado de debug, abertura ilustrada, pista, vidas, áudio, materiais e dificuldades. |
-| [Um dia no jardim](garden/GUIA-JARDIM.md) | Fase lateral após a perseguição, terrenos, contato dos pés, insetos, cenas, resgates e migrações do save v9. |
+| [Um dia no jardim](garden/GUIA-JARDIM.md) | Fase lateral após a perseguição, terrenos, contato dos pés, insetos, cenas, resgates e migrações do domínio v11 e desfecho do sono. |
+| [Capítulos e passagem para o sonho](capitulos/ROTEIRO.md) | Gravuras, epílogo do quarto arrumado, sono no piquenique e plano do jardim 3D futuro. |
 | [Padrão de diálogos e cenas](diario-ia/padroes/DIALOGOS-E-CENAS.md) | Avanço automático, clique/toque de uma fala, temporização, consumo de entrada e separação entre atuação e leitura. |
 | [Manual: vitória da arena para a fuga](bear-chase/MANUAL-TRANSICAO-VITORIA-ARENA-FUGA.md) | Contrato implementado de fluxo, recuperação de erro, persistência e critérios de manutenção da passagem arena–fuga. |
 | [Animação da menina](arena/GUIA-ANIMACAO.md) / [prompts](arena/animacao-menina-prompts.md) | Poses, dados, âncoras, reação de dano e origem das pranchas. |
@@ -27,9 +28,11 @@ Revisão: 26/10/2026. Use o documento conforme a pergunta; relatórios e evidên
 
 O design inicial de batalha, seus três JSONs e o diagrama conceitual foram consolidados integralmente no [diário de IA](diario-ia/README.md). Consulte `npm run journal:search -- "battle-mode-rules.md"` ou o nome original; o pacote `documentacao-20261022-d61a324b2364` conserva também o bitmap do diagrama. A configuração vigente fica no guia da arena. O guia de produção de sprites continua disponível por orientar os recursos atuais.
 
-As pastas de arte mantêm guias de origem: [personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md), [abertura](../assets/art/dark-room/opening/README.md), [arte complementar](../assets/art/dark-room/modern/README.md), Toy Room [stage1](../assets/art/toy-room/stage1/README.md)/[stage2](../assets/art/toy-room/stage2/README.md)/[stage3](../assets/art/toy-room/stage3/README.md) e [poses de dano](../assets/art/toy-room/battle/damage-v2/README.md). Prompts/manifestos junto às imagens descrevem origem e recortes, não novas regras físicas.
+As pastas de arte mantêm guias de origem: [personagem oficial](../assets/art/dark-room/OFFICIAL-CHARACTER.md), [abertura](../assets/art/dark-room/opening/README.md), [arte complementar](../assets/art/dark-room/modern/README.md), [capítulos](../assets/art/chapters/README.md), [jardim](../assets/art/garden/README.md), Toy Room [stage1](../assets/art/toy-room/stage1/README.md)/[stage2](../assets/art/toy-room/stage2/README.md)/[stage3](../assets/art/toy-room/stage3/README.md) e [poses de dano](../assets/art/toy-room/battle/damage-v2/README.md). Prompts/manifestos junto às imagens descrevem origem e recortes, não novas regras físicas.
 
 ## Atualizar documentação junto ao código
+
+A atualização documental é obrigatória em cada implementação autorizada, conforme as [regras do diário](diario-ia/README.md#regras-obrigatórias-de-documentação-e-commit). A preparação de commits inclui a limpeza e a preservação ali definidas.
 
 Ao mudar um contrato, atualize seu proprietário/consumidores na arquitetura e as receitas afetadas no manual. Regere `node scripts/generate-method-reference.js`; após mudanças visuais/de consumidores, regere `npm run docs:sprites`. Novas ferramentas/aliases entram no catálogo de comandos; novas dependências exigem package.json e lockfile coerentes. Se alterar parâmetros da arena, atualize a referência documental derivada dos módulos reais. Preserve o design inicial sem transformar sua história numa aprovação nova.
 

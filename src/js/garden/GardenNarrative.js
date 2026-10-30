@@ -21,7 +21,11 @@ export const GARDEN_ENDING=Object.freeze([
   card('YUNA','O jardim foi bonito. E foi muito.',4),
   card('NANDA','Eu sei.',3),
   card('UM LUGAR PARA DESCANSAR','As folhas continuaram conversando lá no alto.\nO pão estava morno. O suco, fresquinho.',6),
-  card('UM LUGAR PARA DESCANSAR','Por enquanto, Yuna não precisava dar mais nenhum passo.\nFicou ali, comendo devagar, com a fada sentada ao seu lado.',8)
+  card('UM LUGAR PARA DESCANSAR','Por enquanto, Yuna não precisava dar mais nenhum passo.\nFicou ali, comendo devagar, com a fada sentada ao seu lado.',8),
+  card('MAIS UM PEDACINHO','Veio outro pão na chapa. E mais um gole de laranja.\nNa toalha, a tarde foi ficando macia.',7),
+  card('A TARDE FECHOU OS OLHOS','A barriga ficou quentinha. As pálpebras, pesadas.\nYuna tentou guardar um último sorriso.',7),
+  card('A TARDE FECHOU OS OLHOS','O sono chegou sem fazer barulho.\nNanda dobrou as asas e se aconchegou ao lado dela.',7),
+  card('UM JARDIM POR DENTRO','Lá fora, o jardim continuou do mesmo tamanho.\nDentro do sonho, uma folha já podia ser floresta.',7)
 ]);
 export const GARDEN_OPENING_DURATION=GARDEN_OPENING.reduce((sum,c)=>sum+c.duration,0);
 export function gardenNarrativeCard(cards,age){

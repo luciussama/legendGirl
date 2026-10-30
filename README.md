@@ -11,7 +11,8 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 - **Sala de brinquedos:** exploração com visão superior, coleta de oito objetos, recorrência misteriosa, investigação e aquisição da espada.
 - **Arena imaginária:** transformação da mesma sala e quatro inimigos com defesa, esquiva e contra-ataque. Recuar anima a caminhada; durante o golpe inimigo ela firma a base para defender. Cada personagem tem efeitos sonoros próprios. A vitória contra o urso conduz à perseguição.
 - **Perseguição 3D:** abertura ilustrada, corrida automática em um quarto curvo, desvio dos brinquedos lançados pelo urso e ida ao baú quando ele é alcançado.
-- **Um dia no jardim:** Yuna sai de casa com Nanda e atravessa grama, pedrinhas, rios, rodas e nuvens até o piquenique. Abelhas, minhocas e três perseguições de besouro combinam saltos com reações sensoriais; o EASY oferece resgate sem morte.
+- **Capítulos:** gravura do quarto após levantar da cama; encerramento no quarto arrumado depois do urso, com a pergunta da menina e o facepalm de Nanda; gravura do jardim antes do percurso seguinte.
+- **Um dia no jardim:** Yuna sai de casa com Nanda e atravessa grama, pedrinhas, rios, rodas e nuvens até o piquenique e o sono de Yuna e Nanda. Abelhas, minhocas e três perseguições de besouro combinam saltos com reações sensoriais; o EASY oferece resgate sem morte.
 - **Tela inicial:** menina lendo, Novo jogo, Carregar jogo, Modo fácil e Opções. A poltrona permanece sobre o tapete ao reenquadrar para celular. A qualidade gráfica está reservada para uma atualização futura.
 - **Narrativa:** falas avançam automaticamente nos tempos autorados; clique/toque adianta um balão. No jardim, abertura e piquenique têm personagens em camadas e atuação contínua.
 - **Progresso local:** opções de continuar e recomeçar a campanha, com confirmação antes do reinício.
@@ -20,6 +21,8 @@ A experiência combina abertura narrativa, diálogos, plataformas ilustradas, il
 ## Manual para novas equipes
 
 O [diário humano do projeto](docs/DIARIO-HUMANO.md) apresenta as decisões de produto. Relatórios técnicos, QA e homologações ficam exclusivamente no acervo de IA.
+
+O [roteiro dos capítulos](docs/capitulos/ROTEIRO.md) reúne as cenas entregues e a direção do futuro sonho no jardim 3D, ainda a implementar.
 
 Toda IA deve começar pelo [diário compartilhado](docs/diario-ia/README.md), conforme `AGENTS.md`.
 
@@ -108,7 +111,8 @@ flowchart TD
     UI --> Canvas
     Toy --> Chase["BearChasePhase: abertura 2D + corrida WebGL 2"]
     Chase --> Canvas
-    Chase -->|COMPLETE na campanha / 2,5 s| Garden["GardenPhase: jardim 2D e piquenique"]
+    Chase -->|COMPLETE / 2,5 s| Epilogue["ToyRoomEpilogue: quarto arrumado + capítulo 2"]
+    Epilogue --> Garden["GardenPhase: jardim 2D, piquenique e sono"]
     Garden --> Canvas
     Toy --> Canvas
 ```
@@ -262,8 +266,8 @@ O modo NORMAL tem alcances próprios nos três percursos de plataformas. Os bloc
 
 Na arena, o FÁCIL amplia o alcance da espada e reduz a agressividade dos inimigos, mantendo os corações e os sinais dos golpes. Na perseguição, são três vidas no NORMAL e seis no FÁCIL. O NORMAL usa até três brinquedos por lançamento e pares a cada segundo nos 15% finais. Os detalhes estão nos [guias da arena](docs/arena/GUIA-ARENA.md) e da [perseguição](docs/bear-chase/GUIA-PREVIA.md).
 
-A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. Depois da captura e do retorno ao baú, a campanha apresenta o resultado por 150 ticks (2,5 s na base de 60 Hz) e abre o jardim; a prévia de debug permanece no resultado. A derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
+A vitória da arena passa por tela escura e revela o urso caído, com a menina portando a espada. O save inclui a perseguição de campanha; o seletor de debug continua isolado. Depois da captura e do retorno ao baú, o resultado permanece por 150 ticks (2,5 s na base de 60 Hz), seguido pelo epílogo do quarto arrumado e pela gravura do capítulo 2 antes do jardim. Esse encerramento também aparece pela bandeira, mantendo a prévia isolada da campanha salva. A derrota oferece nova tentativa nessa fase. A cena obrigatória da menina verificando o urso caído cobre o carregamento do 3D e aguarda, se necessário. A corrida só é liberada após imagens decodificadas, piso validado na GPU, mapas enviados e materiais compilados. A confirmação do piso no Safari do usuário continua pendente.
 
-O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v10 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e o piquenique permanece animado.
+O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente lateral e save de domínio v11 dentro de `toyRoomGarden`. O NORMAL usa três corações e checkpoints; o EASY conserva seis corações e resgates animados de Nanda, sem morte. No fim, as falas se encerram automaticamente e Yuna e Nanda permanecem adormecidas. Saves concluídos das revisões 8 a 10 retomam apenas as novas cenas de sono.
 
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.

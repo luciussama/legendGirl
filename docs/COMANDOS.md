@@ -1,6 +1,6 @@
 # Comandos, ferramentas e validação
 
-Revisão: 26/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
+Revisão: 29/10/2026. Fonte de comandos npm: [package.json](../package.json). Bibliotecas e pré-requisitos estão em [DEPENDENCIAS](DEPENDENCIAS.md); contratos de produção em [ARQUITETURA](ARQUITETURA.md).
 
 ## Ambiente e funcionamento
 
@@ -130,6 +130,9 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [generate-dream-girl-sprites.js](../scripts/generate-dream-girl-sprites.js) | Extrai a personagem oficial preservando pixels da fonte; gera atlas/metadados. |
 | [generate-method-reference.js](../scripts/generate-method-reference.js) | Regenera a referência de contratos e declarações a partir de src/js. |
 | [export-chase-girl.js](../scripts/export-chase-girl.js) | Exporta o modelo GLB da menina em pose neutra; não inclui animação. |
+| [prepare-illustrated-girl.js](../scripts/prepare-illustrated-girl.js) | Prepara as pranchas e metadados da menina ilustrada a partir das fontes girl-v2. |
+| [prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js) | Deriva peças articuladas e metadados da pintura original; preserva a identidade das pernas e exige revisão das âncoras. |
+| [prepare-chapter-art.js](../scripts/prepare-chapter-art.js) | Mede os recortes por alfa das atuações dos capítulos e gera ChapterArt.js; preserva os pixels das fontes. |
 | [prepare-chase-palette.js](../scripts/prepare-chase-palette.js) | Deriva paleta e metadados das amostras da arte de arena; sobrescreve derivados. |
 | [prepare-battle-sprites.js](../scripts/prepare-battle-sprites.js) | Extrai quadros de batalha das pranchas/fontes e prepara manifesto. |
 | [prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js) | Prepara derivados das correções de combate já existentes. |
@@ -234,6 +237,9 @@ Os navegadores usam Chrome isolado; fontes e resultados pertencem ao diário.
 
 Para os encontros e cenas atuais, use também os comandos preservados no acervo:
 
+- `npm run journal:qa -- test:capitulos:dominio`: tempos, avanço, facepalm silencioso, snapshots e migração do final do jardim. `test:capitulos:cenas:browser 390 844` confere a composição e a entrada no host. `test:capitulos:campanha:browser NORMAL 1200 720` percorre a campanha com os capítulos; aceita `EASY` e os formatos `390 844`/`844 390`.
+
+- `npm run journal:qa -- test:epilogo:seletor`: conclusão da perseguição nas origens campanha/prévia, pausa e isolamento do save. `test:epilogo:seletor:browser NORMAL 1200 720` percorre pela bandeira até o epílogo e a entrada do jardim; aceita `EASY` e os formatos `390 844`/`844 390`.
 - `npm run journal:qa -- test:jardim:encontros-v9`: repouso/arcos A/B, migração, dano/pisão, minhocas e besouros.
 - `npm run journal:qa -- test:jardim:entrada:browser`: quadros intermediários da saída da abertura e da descida, além do estado final.
 - `npm run journal:qa -- test:leitura:dominio`, `test:leitura:dirigido:browser` e `test:leitura:relogio:browser`: leitura automática, gestos completos, Enter modal, cenas vistas, pausa e isolamento de controles. As fixtures antigas `test:dialogos:padrao`/`browser` permanecem no histórico; gestos incompletos e esperas fixas não devem ser usados para certificar o contrato atual.
@@ -242,3 +248,16 @@ Para os encontros e cenas atuais, use também os comandos preservados no acervo:
 - `npm run journal:qa -- test:jardim:v9:integral:browser`: jardim em RAF real até o encerramento narrativo; piloto de gamepad, avanço opcional das falas e retries oficiais. Inicia Chrome isolado em porta livre.
 
 `test:garden:percurso` e fixtures de passo controlado não medem duração humana ou desempenho do RAF. A simulação do jardim não integra automaticamente todos os contratos de `npm test`: execute os comandos específicos quando alterar esse domínio. A reconstrução de artes segue a ordem do [README de produção](../assets/art/garden/README.md#reconstrução-dos-derivados-atuais); não executar preparadores para uma revisão somente documental.
+
+## Componentes da revisão local de sprites
+
+Os módulos em `tools/sprite-review/` pertencem à ferramenta de manutenção e são coordenados pelos scripts de catálogo/aplicação e pelo servidor:
+
+| Módulo | Responsabilidade |
+| --- | --- |
+| [catalog.js](../tools/sprite-review/catalog.js) | Levanta arquivos, consumidores, recortes e assinaturas desenhadas em código. |
+| [store.js](../tools/sprite-review/store.js) | Lê catálogo/seleções, valida revisão e instala rotas locais de gravação. |
+| [apply.js](../tools/sprite-review/apply.js) | Simula a aplicação e, com opção explícita, aplica seleções verificadas mantendo recuperação. |
+| [review.js](../tools/sprite-review/review.js) | Interface de filtros, prévia e seleção; usa review.css e index.html próprios. |
+
+A auditoria documental abrangente está no diário: `npm run journal:qa -- test:docs:atual` confere módulos, exports, classes, ferramentas, aliases, links locais e reprodução da referência gerada. `test:docs:equalizacao` complementa a revisão com parâmetros da arena e dependências do lockfile.

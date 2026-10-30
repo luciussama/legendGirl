@@ -2,7 +2,16 @@
 
 Leia `AGENTS.md`, este guia e `CONTEXTO-ATUAL.md` antes de trabalhar. As instruções atuais do usuário prevalecem sobre documentos históricos. Para diálogos e cenas, consulte também [DIALOGOS-E-CENAS.md](padroes/DIALOGOS-E-CENAS.md).
 
-Ao retomar uma sessão interrompida, consulte seu início, os registros completos de QA e os pacotes/fontes associados antes de repetir tarefas. O contexto reúne checkpoints de épocas distintas: uma fila antiga não volta a ser pendência quando uma seção posterior registra sua resolução. Confirme a decisão mais recente nas fontes e no checkout atual. Arquivos temporários de progresso podem pertencer a outra execução; só atribua resultados à execução identificada pelo registro correspondente.
+Ao retomar uma sessão interrompida, consulte seu início, os registros completos de QA e os pacotes/fontes associados antes de repetir tarefas. O contexto vigente resume o estado atual e aponta as fontes de retomada; versões anteriores e checkpoints completos permanecem no acervo. Uma fila antiga não volta a ser pendência quando um registro posterior informa sua resolução. Confirme a decisão mais recente nas fontes e no checkout atual. Arquivos temporários de progresso podem pertencer a outra execução; só atribua resultados à execução identificada pelo registro correspondente.
+
+## Regras obrigatórias de documentação e commit
+
+Determinação do usuário em 29/10/2026, aplicável a todas as próximas sessões:
+
+1. **A cada nova implementação autorizada, a documentação DEVE ser atualizada na mesma entrega.** Conferir funcionalidades, módulos, métodos, contratos, comandos, recursos, persistência e guias afetados. Regenerar os índices pertinentes e registrar no encerramento os documentos atualizados e as verificações realizadas. Uma implementação não está concluída enquanto sua documentação necessária estiver desatualizada.
+2. **A cada pedido de realizar commit, relatórios, imagens de aprovação e outros documentos desnecessários ao projeto DEVEM ser excluídos da árvore de trabalho antes do commit.** A limpeza é parte obrigatória da preparação: localizar esses arquivos em todo o projeto, preservar texto/código integralmente no acervo e verificar a recuperação antes de remover as cópias. Para evidências visuais regeneráveis, registrar caminho, hash e tamanho. Sincronizar o diário e incluir seus novos segmentos no commit. Nenhum relatório avulso ou bitmap descartável de homologação deve integrar a entrega.
+
+A limpeza conserva o código, as artes consumidas pelo jogo, referências artísticas necessárias, ferramentas, documentação de uso/manutenção e o histórico imutável do diário. Banco com exportações pendentes e segmentos nunca são descartados para cumprir essa regra. A preparação documental e a limpeza não concedem autorização para commit, push ou publicação por conta própria.
 
 ## Armazenamento e arquivos essenciais
 
