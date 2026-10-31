@@ -291,3 +291,5 @@ QA do fim do sonho: `npm run journal:qa -- test:sonho:pesadelo` verifica luz/som
 ## Perseguição furtiva ampliada
 
 `npm run journal:qa -- test:sonho:furtividade` verifica prólogo, percurso, lama, saves e desfecho; `test:sonho:furtividade:saltos` compara a detecção aos polígonos de luz durante subidas dos relevos; `test:sonho:furtividade:arte` verifica trilha, alfa e recortes; `test:sonho:furtividade:integral` compara o percurso anterior à continuação. O alias de navegador preparado é `test:sonho:furtividade:browser 1200 720 NORMAL desktop` (390 844 EASY mobile e844 390 NORMAL mobile para emulações). Os aliases anteriores de pesadelo acompanham os testes vigentes. A disponibilidade e os resultados reais constam do diário.
+
+`test:sonho:lagos` cobre quatro lagos, entrada sem botão, nado, seis poses de saída, duas margens e saves. `test:sonho:lagos:browser` percorre a fase final por controles nativos; `test:sonho:lagos:arte:browser` prepara pontos para inspecionar terreno, braçadas e margens. Os resultados reais e a versão executada constam do diário.

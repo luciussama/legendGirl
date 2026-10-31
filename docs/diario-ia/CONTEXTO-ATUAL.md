@@ -1,5 +1,21 @@
 # Contexto compartilhado vigente
 
+## Lagos, consistência artística e preparação do commit — 31/10/2026
+
+Esta seção prevalece sobre a descrição anterior de doze poças e nightmare4. Sessões próprias `20261031T013359-bc162a261b13` e `20261031T080149-3524e0ca858f`. O usuário pediu commit local; base atual f29b42b4, preservados os commits e o trabalho anterior. Sem push autorizado.
+
+Quatro lagos de lama irregulares substituem as poças: afundamento natural em1,1s, nado com quatro poses, mergulho ao parar ou manter ↓ e saída pelas duas margens em1,9s. A saída começa com0,35s de emergência gradual e continua com as seis poses canônicas de escalada. Margens, água desenhada e oclusão usam o mesmo contorno. Três abrigos em troncos nas pontes de terra. Nightmare6 persiste os estados e migra versões anteriores; domínio5/envelope1 preservados. Música Bug attack continua independente da duração da fase. Câmera lateral e física aérea preservadas.
+
+Artes selecionadas: yuna-furtiva-v4, yuna-nado-v2, yuna-susto-em-pe-v2, yuna-despertar-v2 e morro-terra-v1; fontes, variantes e proveniência preservadas. Relevo contínuo de terra, gramas ilustradas sem tubos, pernas articuladas da aranha, fundo sem espelhamento e acabamento do tronco. O pequeno pontilhado claro dos laços no susto permanece uma imperfeição secundária documentada. O cotonete branco da abelha é parte intencional do desenho original.
+
+QA atual: domínio dos lagos `57f8c3c6741d454b878659f4414f8eac` passou NORMAL/EASY em1/60s,0,023s e0,2s, ambas as margens, salvamento e migrações. A falha anterior de agendamento em0,2s foi corrigida no piloto de teste, sem acomodar o jogo. Integral `3042075e392247e8a66d9e4f176283d0` passou nos quatro percursos: NORMAL395,908/395,964s; EASY394,275/394,397s;41514 estados anteriores equivalentes e nenhuma derrota nova furtiva. npm test passou, principal `690dedf78e4b460091eaee42abf0048f`. Documentação `69e014b9c35d42eeb0c5d058af438804`:207 módulos,75 classes,558 contratos,38 documentos,5930 links e referência reproduzível1325 declarações. Mapa reconstruído:511 imagens,282 recortes,29 assinaturas. Build,82 recursos,lint e diff passaram.
+
+QA aéreo nativo completo:232,474s, zero quedas/erros JS/HTTP, campanha `2a758007b0bb46a2a3dce3573ad3c86f`; acabamento reavaliado em `31aa74e6cc8547248d6b8e33d17f0b60` e `44507e2fe7ca442c9d248daac2dbb08f`. Final desktop e retrato390×844 também foram jogados em navegador na versão anterior à última emergência gradual; retrato `36134c27ac3a4c038c9367b5ab655b16`, revisão dirigida desktop `8e4f241f0e844094bf37f19e49b23229`. Material, escala e integração dos lagos foram inspecionados. Estes resultados NÃO certificam visualmente a última saída gradual e a exposição ampliada das braçadas.
+
+PENDENTE: reavaliação visual real da emergência e braçadas finais v6, seguida de decisão global do QA artístico antes da avaliação humana. Não há aprovação artística global nem humana. A última retomada do agente de consistência foi interrompida por limite de uso; sua sessão `20261031T022218-ea8f3bd4e6a2` e as demais sessões alheias não são encerradas por esta preparação. Aparelho físico e Safari também não foram homologados.
+
+Fontes finais e auxiliares temporários serão preservados no acervo antes da limpeza. Evidências PNG regeneráveis conservam caminho, hash e tamanho; artes consumidas pelo jogo e variantes de referência permanecem na árvore. A operação Git ocorre após o encerramento e sincronização das sessões próprias para incluir seus registros neste commit.
+
 ## Prólogo musical, perseguição longa e correção dos relevos — 30/10/2026
 
 Sessão `20261030T204838-33300d036265`, na FEAT-Jardim-dos-Sonhos sobre d9d0d214, sem commit/push. Preservadas as mudanças anteriores do workspace. Esta seção substitui as descrições anteriores de um corredor curto sem salto: o usuário ampliou o final e depois corrigiu a interpretação de plataformas para relevos de terra contínua.

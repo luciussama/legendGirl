@@ -6,6 +6,22 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ mudWaterline:'Interpola a superfície curva do lago, compartilhada pela pintura frontal, corpo e oclusão.',
+ mudLakeAt:'Localiza a área líquida atravessável do lago pelas margens autoradas.',
+ mudBankY:'Retorna a altura de apoio da margem de entrada ou saída.',
+ mudGround:'Mantém fundo sob a lama e conecta as margens à terra firme.',
+ createMudState:'Cria o estado serializável de entrada, nado, braçada e saída da lama.',
+ enterDreamMud:'Inicia afundamento natural pelo contato dos pés ou uma retomada já submersa.',
+ stepDreamMud:'Integra afundamento, deslocamento na lama, emergência e escalada das margens.',
+ mudActor:'Compartilha pose e âncora de pés, superfície ou mão entre desenho e detecção.',
+ mudOccludesPoint:'Oculta pixels abaixo da superfície opaca desenhada do lago.',
+ mudCheckpoint:'Retoma um dos setores de lama dentro de um lago, já protegida.',
+ prepareDreamSpider:'Prepara corpo e oito membros da pintura da aranha sem mudar sua física.',
+ drawDreamSpider:'Articula oito patas da aranha pelo relógio salvo ao trabalhar a seda.',
+ drawDreamGrass:'Deforma material pintado de lâmina e caule na linha física da grama.',
+ prepareDreamBackdrop:'Prepara a pintura do fundo com dissolução das bordas, sem espelhamento.',
+ drawDreamBackdrop:'Compõe a faixa de floresta sem criar árvores bilaterais nas emendas.',
+
  stealthGround:'Retorna o chão contínuo, com topo pintado dos relevos e descida de terra até o caminho.',
  stealthMudAt:'Exige que o corpo inteiro caiba dentro da poça para permitir submersão.',
  stealthPose:'Compartilha o índice da pose abaixada entre pintura, salto e detecção dos olhos.',

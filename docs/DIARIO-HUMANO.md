@@ -322,3 +322,9 @@ A avaliação humana identificou profundidade invertida: a pedra escondia Yuna d
 Usuário acrescentou as falas de Yuna e do narrador, a música Bug attack a partir da aparição da barata e novas formas de abrigo: troncos, relevos e lama. A faixa é a trilha desse trecho; sua duração não define cena nem jogabilidade. A interpretação de esperar a música inteira foi corrigida antes da entrega.
 
 A menina recebe poses próprias abaixadas, com mãos nos ouvidos no abrigo e passos encurvados na ponta dos pés. O solo das elevações permanece contínuo: as fendas de uma primeira versão foram rejeitadas e retiradas. A captura depende de luz real no corpo, com tratamento da borda do abrigo e breve exposição contínua; saltar não é condição automática de derrota. O desfecho do piquenique permanece. Resultado de testes e validação visual pendente são registrados no acervo de IA.
+
+## 31/10/2026 — Lagos e revisão de direção de arte
+
+O usuário rejeitou as pequenas poças e definiu lagos irregulares, afundamento natural, nado e saída com escalada. O final passa a usar quatro lagos de extensões diferentes e troncos de abrigo nas margens. A atuação reutiliza a escalada do sonho e mantém o mesmo figurino básico.
+
+Na revisão pedida de toda a fase, a equipe corrigiu gramas lisas, fundo espelhado, rigidez das aranhas, proporção/emendas dos troncos e galhos e diferenças de calçado. Reavaliações e reprovações intermediárias foram preservadas no diário. A aprovação global não deve ser inferida das aprovações locais: a última emergência gradual das margens ainda deve ser observada em execução antes de encaminhar aprovação artística à avaliação humana. O pedido posterior de commit registra esse estado de trabalho.
