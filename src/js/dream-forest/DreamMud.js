@@ -20,7 +20,7 @@ export function createMudState(){return{mudMode:'dry',mudLakeId:null,mudAge:0,mu
 export function enterDreamMud(n,lake,{side=n.facing,submerged=false}={}){const direction=side<0?-1:1;n.mudLakeId=lake.id;n.mudMode=submerged?'swim':'enter';n.mudAge=0;n.mudSide=direction;n.mudStartX=n.x;n.mudStartY=n.y;n.mudEntryTarget=direction>0?lake.from+85:lake.to-85;n.swimDistance=0;n.grounded=false;n.vy=0;n.vx=0;if(submerged){n.x=clamp(n.x,lake.from+85,lake.to-85);n.mudDepth=1;n.y=mudWaterline(lake,n.x)+147;}}
 /** Nadar desloca o corpo; parado ele afunda, e segurar baixo permite nadar submerso. */
 export function stepDreamMud(n,input,dt){if(n.mudMode==='dry')return false;const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId),old=n.x;n.mudAge+=dt;n.jumpHeld=Boolean(input.jump);n.grounded=false;n.vy=0;
- if(n.mudMode==='enter'){const q=smooth(n.mudAge/.85);n.x=n.mudStartX+(n.mudEntryTarget-n.mudStartX)*q;n.y=n.mudStartY+(mudWaterline(lake,n.x)+80-n.mudStartY)*q;n.mudDepth=q;if(q===1){n.mudMode='swim';n.mudAge=0;}}
+ if(n.mudMode==='enter'){const q=smooth(n.mudAge/1.1);n.x=n.mudStartX+(n.mudEntryTarget-n.mudStartX)*q;n.y=n.mudStartY+(mudWaterline(lake,n.x)+115-n.mudStartY)*q;n.mudDepth=q;if(q===1){n.mudMode='swim';n.mudAge=0;}}
  else if(n.mudMode==='climb'){const q=smooth(n.mudAge/1.55),bank=n.mudSide<0?lake.from:lake.to;n.x=n.mudStartX+(bank+n.mudSide*12-n.mudStartX)*q;n.y=n.mudStartY+(mudBankY(lake,n.mudSide)-n.mudStartY)*q;n.mudDepth=1-q;n.facing=n.mudSide;
   if(q===1){n.mudMode='dry';n.mudLakeId=null;n.mudDepth=0;n.grounded=true;n.y=mudGround(n.x)??850;n.mudAge=0;n.mudSide=0;}}
  else{const direction=clamp(Number(input.x)||0,-1,1),down=input.y>.3,target=down||Math.abs(direction)<.05?1:.68;n.mudDepth+=clamp(target-n.mudDepth,-dt*1.1,dt*1.8);n.x=clamp(n.x+direction*(down?78:105)*dt,lake.from+65,lake.to-65);n.y=mudWaterline(lake,n.x)+80+Math.max(0,n.mudDepth-.68)*210;if(direction)n.facing=direction<0?-1:1;n.swimDistance+=Math.abs(n.x-old);
@@ -30,7 +30,7 @@ export function stepDreamMud(n,input,dt){if(n.mudMode==='dry')return false;const
 /** Pose compartilhada: pés na entrada, linha de água no nado e mão na escalada existente. */
 export function mudActor(n){if(n.mudMode==='dry')return null;const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);let set,index,x=n.x,y=n.y,anchor,kind;
  if(n.mudMode==='climb'){set=ART.bankClimb;const q=clamp(n.mudAge/1.55,0,1);index=q<.65?Math.min(3,Math.floor(q/.65*4)):q<.82?4:5;const f=set.frames[index],scale=160/set.referenceHeight;anchor=f.hand;x=n.mudSide<0?lake.from:lake.to;y=mudBankY(lake,n.mudSide)-15-smooth((q-.82)/.18)*Math.max(0,(f.h-f.hand[1])*scale-15);kind='climb';}
- else if(n.mudMode==='enter'&&n.mudAge<.55){set=ART.stealth;index=0;const f=set.frames[0];anchor=[f.w/2,f.h];kind='enter';}
+ else if(n.mudMode==='enter'&&n.mudAge<.65){set=ART.stealth;index=0;const f=set.frames[0];anchor=[f.w/2,f.h];kind='enter';}
  else{set=ART.swim;index=Math.floor(n.swimDistance/24)%4;const f=set.frames[index];anchor=[f.w*.55,f.h*.65];y=mudWaterline(lake,n.x)+Math.max(0,n.mudDepth-.68)*210+Math.sin(n.time*2.4)*1.5*(1-n.mudDepth);kind='swim';}
  return{set,index,frame:set.frames[index],x,y,scale:160/set.referenceHeight,anchorX:anchor[0],anchorY:anchor[1],facing:n.facing,kind,lake};
 }
