@@ -1,6 +1,6 @@
 # Capítulos e passagem para o sonho
 
-Direção recebida em 29/10/2026. A separação narrativa mantém as fases existentes e acrescenta as cenas abaixo. Cenas, textos e apresentação aprovados pelo usuário em 29/10/2026, após a correção do encerramento pela bandeira. A fase jogável do sonho permanece para uma entrega posterior.
+Direção recebida em 29/10/2026. A separação narrativa mantém as fases existentes e acrescenta as cenas abaixo. Cenas, textos e apresentação aprovados pelo usuário em 29/10/2026, após a correção do encerramento pela bandeira. A fase do sonho e seu desfecho foram implementados nas revisões de30/10 abaixo.
 
 ## Capítulo 1 — Quarto de brinquedos
 
@@ -42,7 +42,7 @@ As duas ficam adormecidas na toalha, com respiração discreta. Não inventar um
 
 ## Direção atual do sonho — revisão de 30/10/2026
 
-O usuário substituiu o plano de jardim 3D por uma **floresta lateral 2D**, considerando o orçamento de GPU. A meta escolhida é cerca de cinco minutos. A travessia é primariamente aérea: Yuna agarra e escala gramas paralelas que curvam com o vento, espera a aproximação e salta entre elas. Insetos gigantes funcionam como plataformas móveis escaláveis. Um trecho usa quatro besouros que partem com Yuna e fazem viagens curvas até o próximo apoio. Depois da folha aprovada após as abelhas, seis aranhinhas descem e sobem deixando seda escalável; tocar no corpo causa dano e queda. A travessia exige sincronizar saltos e termina no grande galho de árvore. A base seguinte permite saltar entre galhos ao vento; seu desafio específico aguarda definição do usuário. Não há combate, espada nem pisão ofensivo.
+O usuário substituiu o plano de jardim 3D por uma **floresta lateral 2D**, considerando o orçamento de GPU. A meta escolhida é cerca de cinco minutos. A travessia é primariamente aérea: Yuna agarra e escala gramas paralelas que curvam com o vento, espera a aproximação e salta entre elas. Insetos gigantes funcionam como plataformas móveis escaláveis. Um trecho usa quatro besouros que partem com Yuna e fazem viagens curvas até o próximo apoio. Depois da folha aprovada após as abelhas, seis aranhinhas descem e sobem deixando seda escalável; tocar no corpo causa dano e queda. A travessia exige sincronizar saltos e termina no grande galho de árvore. Depois do galho, uma folha vira planador: avanço automático, inércia vertical e grandes mudanças de altitude entre espinhos. Não há combate, espada nem pisão ofensivo.
 
 A atmosfera é de sonho, com pintura de floresta gigantesca e luz azulada, mística e levemente spooky. A trilha é **Misty Blues.mp3**, enviada pelo usuário, em loop. Esta decisão substitui os antigos requisitos de 3D e de furtividade como mecânica principal; eles não devem reaparecer por leitura de versões históricas.
 
@@ -57,4 +57,23 @@ Pausa congela os relógios; a cena de organização guarda índice e idade no sa
 
 Depois de `GardenPhase` chegar a COMPLETE/endingDone, as duas permanecem dormindo por quatro segundos. `ToyRoomPhase` entrega o controle a `DreamPhase`, preservando a origem campanha/prévia. A nova fase tem simulação, controles, áudio, pausa, checkpoint, save/restore e descarte próprios. Saves antigos do piquenique continuam válidos e alcançam o sonho por essa passagem. O seletor “Jardim dos sonhos” permite revisar a entrada sem alterar a campanha salva.
 
-A extremidade atual é um repouso provisório entre os galhos, com ambiente vivo; o desafio dessa parte ainda será definido. Não há um capítulo 3 nem despertar narrativo adicional solicitado. Consulte o [guia da floresta](../dream-forest/GUIA-SONHO.md) para controles e contratos.
+O final do voo conduz agora à floresta escura e ao despertar descritos abaixo. Não há capítulo3 adicional. Consulte o [guia da floresta](../dream-forest/GUIA-SONHO.md) para controles e contratos.
+
+
+## Final do pesadelo — direção de 30/10/2026
+
+A aprovação do usuário cobre a entrega até os espinhos. Depois deles, Yuna cai numa floresta com pedras grandes. A câmera se aproxima durante o corte e passa a enquadrar a caminhada no chão. Uma barata enorme ocupa o fundo e patrulha a área; seus olhos projetam luz e as pedras bloqueiam os feixes, formando sombras que escondem a menina. Ser iluminada causa um golpe da barata e game over, com retomada local.
+
+Depois da última pedra, Yuna encontra uma área sem abrigo. A atuação assume o controle: ela para, vê a barata avançar e é alcançada. No exato instante da captura, corta para a toalha do piquenique. Yuna acorda com um grito de susto; Nanda desperta logo depois, acordada por ele. O instante inicial do grito dura1,5s e não pode ser abreviado. Seguem os quadros:
+
+- Narrador,5s: “O susto saiu num grito. Nanda abriu os olhos.”
+- Nanda,5s: “Yuna… estou aqui.”
+- Narrador,7s: “Era a toalha. Era o sol. O pesadelo tinha ficado do outro lado do sono.”
+
+Um gesto adianta somente o quadro atual. A captura final tem6s obrigatórios e não é uma derrota. Após a última fala, a composição permanece viva com as duas acordadas. Esse final substitui o repouso provisório entre galhos; não muda as cenas anteriores do sono ou o percurso aprovado.
+
+### Revisão do final do sonho — 30/10/2026
+
+Após pousar, a música para. Yuna anda olhando para os lados: “Será que os bichos foram embora?” O narrador diz: “Um cheiro repugnante aparece no ar. Cheiro de comida que ninguém quer, cheiro de luz apagada, cheiro de vontade de ir pra casa, cheiro de tristeza.” A barata aparece; começa Bug attack, trilha contínua até a captura. A aproximação tem8s próprios, independentemente da faixa.
+
+Yuna se esconde agachada junto às pedras e troncos, mãos nos ouvidos, e anda encurvada na ponta dos pés. Salta para subir relevos naturais, sempre sustentados por terra contínua. Na parte final da perseguição, mergulha nas poças de lama para escapar dos olhos luminosos. Somente ao acabar o caminho e faltar qualquer abrigo ocorre a captura autorada, seguida do grito no piquenique que acorda Nanda. Tempos, leitura e controles detalhados no guia do sonho.

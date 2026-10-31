@@ -190,4 +190,9 @@ A tipografia narrativa usa Caveat variável (Google Fonts), distribuída localme
 
 O jardim continua em Canvas 2D, sem biblioteca de física ou animação externa. Carrega `assets/art/garden/manifest.json` somente ao entrar, usa `GardenContactData` pré-calculado e mantém sua trilha local `assets/audio/Blues Shuffle Loop.mp3` em HTMLAudio, com sinais sintetizados. Camadas de atuação e asas articuladas são compostas pelo código local. Os preparadores acima dependem de pngjs, mas não executam no navegador nem adicionam pacotes. O diário depende ainda de `fcntl` para bloqueio entre processos e usa SQLite WAL/transações; Windows nativo exige adaptação desse bloqueio.
 
-O sonho usa Canvas2D e recursos locais sob demanda; não acrescenta dependência npm ou pipeline3D. DreamInput estende GardenInput; DreamPhase configura GardenAudio com Misty Blues. O preparador mede alfa usando pngjs já instalado.
+O sonho usa Canvas2D e recursos locais sob demanda; não acrescenta dependência npm ou pipeline3D. DreamInput estende GardenInput; DreamPhase usa DreamAudio, especialização de GardenAudio com Misty Blues, pulsos no pesadelo e a trilha do piquenique ao despertar. O preparador mede alfa usando pngjs já instalado.
+
+
+[prepare-dream-nightmare.js](../scripts/prepare-dream-nightmare.js) usa `pngjs` já instalado para ler alfa e medir recortes, contornos e amostras de corpo. A nova cena usa Canvas2D e Web Audio nativos; não adiciona WebGL ou dependências externas.
+
+A fase final do sonho carrega Bug attack.mp3, fornecida pelo usuário e copiada integralmente. Proveniência/hash em assets/audio/bug-attack-proveniencia.json. Duas pranchas novas de furtividade e abrigos têm alfa real e recortes gerados por prepare-dream-nightmare.js. Nenhuma biblioteca nova foi adicionada.

@@ -1,3 +1,4 @@
+import {DreamNightmareRenderer} from './DreamNightmareRenderer.js';
 import {DREAM_GLIDER_ART} from './DreamGliderArt.js';
 import {drawDreamGlideThorns,drawDreamLaunchLeaf,drawDreamGlider} from './DreamGliderRenderer.js';
 import {drawDreamClimb} from './DreamClimb.js';
@@ -14,7 +15,7 @@ import {DREAM_INTRO} from './DreamSimulation.js';
 const root=new URL('../../../assets/art/',import.meta.url);
 /** Canvas 2D: fundo pintado, recortes existentes e poucos objetos visíveis; sem filtros ou iluminação por pixel. */
 export class DreamRenderer{
-  constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images=new Map();this.disposed=false;this.frames=0;}
+  constructor(canvas){this.canvas=canvas;this.ctx=canvas.getContext('2d');this.images=new Map();this.disposed=false;this.frames=0;this.nightmare=new DreamNightmareRenderer(canvas,this.images);}
   async load(){const files=[...Object.values(DREAM_GLIDER_ART).map(d=>d.file),DREAM_LEAF.file,DREAM_BEE.file,DREAM_BRANCH.file,DREAM_SPIDER.file,'dream-forest/floresta-azul-v1.png',DREAM_CLIMB_CYCLE.file,...new Set(Object.values(DREAM_INSECTS).map(d=>'garden/'+d.file)),'garden/runtime/menina-corrida-v1.png','garden/runtime/menina-acoes-v1.png'];await Promise.all(files.map(async file=>{const image=new Image();image.src=new URL(file,root).href;await image.decode();if(!this.disposed)this.images.set(file,image);}));if(!this.disposed){this.beetleParts=prepareDreamBeetle(this.images.get('garden/source/besouro-camadas-v2.png'));this.illustrations=prepareDreamIllustrations(this.images.get(DREAM_LEAF.file),this.images.get(DREAM_BRANCH.file));}}
   /** Exploração mantém altura fixa; somente o planador acompanha as grandes mudanças de altitude. */
   frame(state){const {width,height}=this.canvas,safe=getDialogueSafeArea(this.canvas),scale=Math.min((safe.right-safe.left)/760,(safe.bottom-safe.top)/920),worldWidth=width/scale;return{scale,left:Math.max(0,Math.min(DREAM_WIDTH-worldWidth,state.player.x-worldWidth*.32)),top:state.glider&&!['GLIDE_APPROACH','GLIDE_GUST'].includes(state.stage)?height*.5-state.glider.cameraY*scale:(height-C.height*scale)/2};}
@@ -28,7 +29,7 @@ export class DreamRenderer{
   girl(ctx,s){const p=s.player,height=C.bodyHeight;if(['GLIDE_GUST','GLIDING','GLIDE_LANDING'].includes(s.stage)){drawDreamGlider(ctx,this.images,s);return;}if(p.climb){drawDreamClimb(ctx,this.images.get(DREAM_CLIMB_CYCLE.file),s);return;}ctx.save();if(s.fallCause==='spider'&&s.stage==='FALLING')ctx.globalAlpha=Math.sin(s.age*45)>0?.45:1;ctx.translate(p.x,p.y);ctx.scale(p.facing,1);
   {const set=GARDEN_ART.sets[s.stage==='COMPLETE'||p.support&&Math.abs(p.vx)<1?'menina-acoes-v1':p.support?'menina-corrida-v1':'menina-acoes-v1'],frame=set.frames[s.stage==='COMPLETE'||p.support&&Math.abs(p.vx)<1?7:p.support?(Math.abs(p.vx)>1?Math.floor(p.animTime)%8:0):p.vy<0?1:3],image=this.images.get('garden/'+set.file),scale=height/frame.h;ctx.drawImage(image,frame.x,frame.y,frame.w,frame.h,-frame.w*scale/2,-height,frame.w*scale,height);}
   ctx.restore();}
-  render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={}){const canvas=this.canvas,ctx=this.ctx,{width,height}=canvas;beginDialogueFrame(canvas);try{
+  render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={}){if(state.nightmare){this.nightmare.render(state,{paused,touch,onAdvance});return;}const canvas=this.canvas,ctx=this.ctx,{width,height}=canvas;beginDialogueFrame(canvas);try{
   this.frames++;const frame=this.frame(state),safe=getDialogueSafeArea(canvas),background=this.images.get('dream-forest/floresta-azul-v1.png');ctx.fillStyle='#0c1a35';ctx.fillRect(0,0,width,height);
   if(background){const scale=Math.max(width/background.width,height/background.height),w=background.width*scale,offset=-(w-width)/2-(state.player.x*.10)%(w*2);for(let i=-1;i<3;i++){ctx.save();ctx.translate(offset+i*w+(i%2?w:0),height/2);if(i%2)ctx.scale(-1,1);ctx.drawImage(background,0,-background.height*scale/2,w,background.height*scale);ctx.restore();}}
   if(!ready||error){ctx.fillStyle='#e2e9f1';ctx.font='18px sans-serif';ctx.textAlign='center';ctx.fillText(error||'A floresta está acordando…',width/2,height/2,width-40);return;}
@@ -43,8 +44,9 @@ export class DreamRenderer{
   const riding=DREAM_BY_ID.get(state.player.support||state.player.climb?.id),rideFrame=riding?.flight?dreamObjectFrame(riding,state.time,state.rides):null;
   if(rideFrame&&state.stage==='RUNNING'){ctx.font=`${Math.max(11,font*.8)}px sans-serif`;ctx.fillText(rideFrame.flightPhase==='ARRIVED'?'O próximo apoio está perto. Prepare o salto.':'Deixe o besouro levar você até o próximo apoio.',width/2,titleY+24,width-40);}
   if(section.kind==='web'&&state.stage==='RUNNING'){ctx.font=`${Math.max(11,font*.8)}px sans-serif`;ctx.fillText('Escale as teias. Evite tocar nas aranhas.',width/2,titleY+24,width-40);}
-  if(state.stage==='INTRO')renderPoeticNarration(ctx,canvas,DREAM_INTRO[state.story.index],{heading:'JARDIM DOS SONHOS',advanceCanvas:canvas,onAdvance});
-  else if(state.stage==='COMPLETE'&&state.age<7)renderPoeticNarration(ctx,canvas,'Entre as folhas, o vento encontrou\num lugar para descansar.',{heading:'ENTRE OS GALHOS',advanceCanvas:canvas,onAdvance});
+  const topInset=touch&&width<height?titleY-safe.top-6:0;
+  if(state.stage==='INTRO')renderPoeticNarration(ctx,canvas,DREAM_INTRO[state.story.index],{heading:'JARDIM DOS SONHOS',advanceCanvas:canvas,onAdvance,topInset});
+  else if(state.stage==='COMPLETE'&&state.age<7)renderPoeticNarration(ctx,canvas,'Entre as folhas, o vento encontrou\num lugar para descansar.',{heading:'ENTRE OS GALHOS',advanceCanvas:canvas,onAdvance,topInset});
   else if(state.stage==='FALLING'){ctx.fillStyle='#e8d9ed';ctx.fillText(state.fallCause==='spider'?'A aranha alcançou Yuna!':'O sonho perdeu o chão…',width/2,height*.45,width-40);}
   if(state.stage==='GLIDING'){ctx.font=`${Math.max(11,font*.8)}px sans-serif`;ctx.fillText('▲/▼ ou W/S: antecipe a curva. A folha demora a responder.',width/2,titleY+24,width-40);}
   if(state.stage==='GLIDE_FALLING'){ctx.fillText('Os espinhos rasgaram o vento… Vamos tentar de novo.',width/2,height*.4,width-40);}
@@ -52,5 +54,5 @@ export class DreamRenderer{
   if(state.stage==='RESCUING'){ctx.fillStyle=`rgba(15,30,65,${Math.sin(Math.min(1,state.age/1.1)*Math.PI)*.9})`;ctx.fillRect(0,0,width,height);}
   if(paused){ctx.fillStyle='rgba(8,16,34,.5)';ctx.fillRect(0,0,width,height);ctx.fillStyle='#edf2f7';ctx.fillText('Pausa',width/2,height/2);}
   }finally{endDialogueFrame(canvas);}}
-  destroy(){this.disposed=true;if(this.beetleParts){this.beetleParts.body.width=0;for(const p of this.beetleParts.parts)p.bitmap.width=0;}this.beetleParts=null;if(this.illustrations){for(const bitmap of [...this.illustrations.leaves.values(),...this.illustrations.branches.values()])bitmap.width=0;}this.illustrations=null;this.images.clear();}
+  destroy(){this.nightmare.destroy();this.disposed=true;if(this.beetleParts){this.beetleParts.body.width=0;for(const p of this.beetleParts.parts)p.bitmap.width=0;}this.beetleParts=null;if(this.illustrations){for(const bitmap of [...this.illustrations.leaves.values(),...this.illustrations.branches.values()])bitmap.width=0;}this.illustrations=null;this.images.clear();}
 }

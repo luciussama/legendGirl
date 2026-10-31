@@ -6,6 +6,20 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ stealthGround:'Retorna o chão contínuo, com topo pintado dos relevos e descida de terra até o caminho.',
+ stealthMudAt:'Exige que o corpo inteiro caiba dentro da poça para permitir submersão.',
+ stealthPose:'Compartilha o índice da pose abaixada entre pintura, salto e detecção dos olhos.',
+ stealthCheckpoint:'Retorna o abrigo de retomada por setor e conserva submersão nos setores de lama.',
+ nightmareControls:'Distribui andar, mergulhar e pular em quatro botões inferiores com toque simultâneo.',
+ migrateNightmare:'Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz.',
+
+ dreamRoachPose:'Deriva passadas em tripés, cabeça, antenas e oscilação corporal do relógio salvo.',
+ dreamRoachPoint:'Transforma os olhos pela mesma junta de cabeça usada na pintura e retorna a posição física.',
+ prepareDreamRoach:'Prepara máscaras da pintura para doze segmentos de patas, cabeça e antenas, sem editar PNGs.',
+ drawDreamRoach:'Compõe a barata original com seis patas articuladas e investigação da cabeça e antenas.',
+ drawDreamRoachReach:'Resolve duas juntas da pata frontal até a menina durante golpe e captura.',
+ destroyDreamRoach:'Libera as superfícies de Canvas usadas pela barata articulada.',
+
  gardenDefeatFrame:'Calcula corpo comprimido ou queda visual de inseto derrotado por até 1,6 s, sem alterar coordenadas de colisão.',
  advanceGardenDefeats:'Avança uma vez por subpasso os relógios visuais dos corpos, inclusive fora da vizinhança e em encerramento.',
  beginDialogueFrame:'Inicia o registro dos quadros de diálogo por canvas; composições aninhadas compartilham profundidade e não deixam entrada obsoleta.',
@@ -140,6 +154,18 @@ const details={
  read:'Lê e valida save da campanha; pode usar memória da sessão.',write:'Serializa save versionado e tenta gravar no storage.',
 };
 Object.assign(details,{
+ nightmarePatrol:'Deriva posição e mira da barata exclusivamente do relógio salvo.',
+ nightmareLights:'Converte os olhos medidos na pintura nas duas origens físicas de luz.',
+ nightmareRayEnd:'Encontra a primeira interseção de um raio com as silhuetas opacas das pedras.',
+ nightmareBeam:'Monta o polígono de luz visível incluindo tangentes e sombras das pedras.',
+ nightmareVisibility:'Confere amostras opacas da pose atual e distingue corpo iluminado de abrigo real.',
+ beginDreamNightmare:'Cria o domínio do trecho final na queda ou na retomada da primeira pedra.',
+ nightmareReading:'Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial.',
+ advanceNightmareDialogue:'Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro.',
+ validateNightmare:'Valida relógio, corpo, leitura e coerência do grito/despertar no save.',
+ stepDreamNightmare:'Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos.',
+ selectTrack:'Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical.',
+ scream:'Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes.',
  dreamGlideRoute:'Interpola alturas para posicionar obstáculos; não dirige a personagem.',
  dreamGliderPose:'Compartilha âncora, escala e inclinação da pintura com a colisão.',
  dreamGliderContact:'Compara alfa opaco do planador e dos galhos próximos, ignorando névoa.',
@@ -163,10 +189,10 @@ Object.assign(details,{
  prepareDreamBeetle:'Recorta e mascara em cache cabeça e patas da pintura original, conservando o casco de apoio.',
  dreamBeetlePose:'Calcula articulações contínuas de asas, patas e cabeça conforme o tempo e a energia do voo.',
  drawDreamBeetle:'Desenha asas membranosas e membros articulados em torno do dorso rígido usado pela física.',
- createDreamState:'Cria domínio4 do sonho lateral com viagens e dano/queda: leitura, relógio, jogador, checkpoint e origem física independente do jardim.',
+ createDreamState:'Cria domínio5 do sonho: travessia aérea preservada e estado separado para furtividade, captura e despertar.',
  restoreDreamState:'Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime.',
  advanceDreamDialogue:'Adianta uma fala do sonho e consome o gesto antes de liberar movimento.',
- retryDream:'Retoma uma folha estável no relógio corrente e reinicia os transportes a partir do checkpoint.',
+ retryDream:'Retoma uma folha e seus transportes; no pesadelo, retorna à primeira pedra sem repetir o voo.',
  stepDream:'Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira.',
  dreamNearby:'Consulta células espaciais para limitar física e pintura à vizinhança, sem depender do viewport.',
  dreamObjectFrame:'Calcula o deslocamento determinístico de hastes e insetos a partir do relógio salvo.',

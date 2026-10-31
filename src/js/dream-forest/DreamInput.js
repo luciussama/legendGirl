@@ -5,6 +5,9 @@ import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
 /** Direcional de escalada e salto separados, com alvos de toque simultâneos. */
 export function dreamControls(canvas){const safe=getDialogueSafeArea(canvas),base=gardenControls(canvas,safe),r=Math.max(23,base.left.r),x=safe.left+r*3.3,y=safe.bottom-r*3.3;return{left:{x:x-r*2.1,y,r},right:{x:x+r*2.1,y,r},up:{x,y:y-r*2.1,r},down:{x,y:y+r*2.1,r},jump:{...base.jump,r:Math.max(28,base.jump.r)}};}
 
+/** Quatro comandos da perseguição junto à borda inferior, sem cobrir os abrigos próximos. */
+export function nightmareControls(canvas){const safe=getDialogueSafeArea(canvas),r=Math.max(24,Math.min((safe.right-safe.left)/11,canvas.height/10,42)),y=safe.bottom-r*1.3;return{left:{x:safe.left+r*1.3,y,r},right:{x:safe.left+r*3.7,y,r},down:{x:safe.right-r*3.7,y,r},jump:{x:safe.right-r*1.3,y,r}};}
+
 /** Só no celular: prepara a altura do salto na seda, sem substituir direção vertical ou salto manuais. */
 export function dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={}){
   const web=state.player.climb&&DREAM_BY_ID.get(state.player.climb.id),dt=Math.min(.2,Math.max(0,Number(seconds)||0));

@@ -429,6 +429,8 @@ As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fa
 | `TitleScreen` | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. |
 | `DreamInput` | [dream-forest/DreamInput.js](../src/js/dream-forest/DreamInput.js) | Controles verticais e salto separado, mantendo liberação e simultaneidade. |
 | `DreamRenderer` | [dream-forest/DreamRenderer.js](../src/js/dream-forest/DreamRenderer.js) | Fundo e apoios pintados em Canvas2D, sem pipeline3D. |
+| `DreamAudio` | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio para silêncio ao pousar, Bug attack da revelação à captura, grito sintetizado e trilha do despertar; respeita pausa/mudo/volume. |
+| `DreamNightmareRenderer` | [dream-forest/DreamNightmareRenderer.js](../src/js/dream-forest/DreamNightmareRenderer.js) | Carga tardia, câmera próxima fixa, barata monumental, sombras compartilhadas e atuação no piquenique. |
 | `DreamPhase` | [dream-forest/DreamPhase.js](../src/js/dream-forest/DreamPhase.js) | Carga, áudio Misty Blues, pausa, retomada e descarte. |
 
 Para cada classe, a [referência de métodos](REFERENCIA-METODOS.md) contém assinatura, linha e link de implementação. As tabelas de domínio acima explicam os efeitos e as dependências; use ambas para evitar confundir um renderizador com o dono da regra do jogo.
@@ -647,7 +649,7 @@ Na arena, `player_attack` sempre agenda `SwordAudio`, somando o MP3 quando dispo
 
 ### Quadro da narração
 
-`PoeticNarrator.renderPoeticNarration` apresenta todas as passagens narradas no topo da área segura, sobre papel creme, dupla moldura rosa/sálvia e pequenas flores. A fonte manuscrita Caveat, peso 600, é servida de `assets/fonts/Caveat-Variable.ttf`, com licença OFL no mesmo diretório; o HTML antecipa seu download e o módulo solicita seu carregamento. Texto castanho e quebra por largura preservam leitura e acentos. O quadro não usa retrato. `DialogueControls` acrescenta dentro da moldura o aviso “Avança sozinho” e a indicação de como adiantar uma fala, com espaço reservado para evitar sobreposição ao texto. A introdução da sala usa a mesma moldura para suas falas, identificando Menina/Nanda.
+`PoeticNarrator.renderPoeticNarration` apresenta todas as passagens narradas no topo da área segura, sobre papel creme, dupla moldura rosa/sálvia e pequenas flores. A fonte manuscrita Caveat, peso 600, é servida de `assets/fonts/Caveat-Variable.ttf`, com licença OFL no mesmo diretório; o HTML antecipa seu download e o módulo solicita seu carregamento. Texto castanho e quebra por largura preservam leitura e acentos. O quadro não usa retrato. A opção `topInset`, em unidades do canvas a partir do topo seguro, reserva espaço para controles do host; sem ela, mantém o posicionamento anterior. No sonho em retrato móvel, o recuo acompanha a borda inferior real da barra global. `DialogueControls` acrescenta dentro da moldura o aviso “Avança sozinho” e a indicação de como adiantar uma fala, com espaço reservado para evitar sobreposição ao texto. A introdução da sala usa a mesma moldura para suas falas, identificando Menina/Nanda.
 
 No celular, `separateScene:true` usa a região superior do painel e apresenta a atuação abaixo. A abertura evita aplicar a divisão duas vezes. As outras conversas conservam seu layout próprio. Opções antigas `center`/`panel` não deslocam mais a narração para centro/rodapé. Validar em `npm run journal:qa -- test:toy-room:intro:browser`; cobre artes, planos, fonte local, quadro seguro e conclusão/cancelamento.
 
@@ -737,9 +739,9 @@ A [entrada obrigatória do diário](diario-ia/README.md#regras-obrigatórias-de-
 
 ## Desenvolver a floresta dos sonhos
 
-O [guia do sonho](dream-forest/GUIA-SONHO.md) define os controles, o percurso e os saves. O usuário substituiu o plano3D por uma floresta aérea2D; não reutilizar o escopo histórico de furtividade. Acrescentar novas mecânicas em DreamSimulation/DreamLevel, sem compartilhar corpos com o jardim. Os contornos de apoio são medidos por prepare-dream-art.js e usados também no desenho. Manter aderência automática, escalada até o lombo, bloqueio breve de reagarre e checkpoint estável. O salto usa Espaço; W/S e setas verticais são escalada nesta fase.
+O [guia do sonho](dream-forest/GUIA-SONHO.md) define os controles, o percurso e os saves. A travessia aprovada continua aérea2D. A furtividade atual é somente o último trecho autorizado em30/10 após os espinhos; não retoma o plano histórico3D. Coordenar os domínios em DreamSimulation e manter o mapa aéreo em DreamLevel, sem compartilhar corpos com o jardim. Os contornos de apoio são medidos por prepare-dream-art.js e usados também no desenho. Manter aderência automática, escalada até o lombo, bloqueio breve de reagarre e checkpoint estável. O salto usa Espaço; W/S e setas verticais são escalada nesta fase.
 
-A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio4 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
+A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio5 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
 
 ### Caules e recuperação de saltos no sonho
 
@@ -772,4 +774,32 @@ Galhos são apoios móveis (`kind:branch`), sem agarrar a lateral como um inseto
 
 `DreamGlider` integra os cinco estágios de lançamento/voo/queda/pouso em subpassos, com entrada vertical manual e avanço automático. Preserve os87 objetos até rest-5 ao ajustar este trecho. A função dreamGlideRoute define as alturas dos obstáculos, nunca a posição do jogador. Mudanças fortes de altitude exigem antecipação, velocidade e aceleração suficientes para atravessar. A queda reinicia o lançamento em NORMAL/EASY.
 
-`DreamGliderArt` é gerado por `scripts/prepare-dream-glider.js`; as máscaras usam alfa≥200 para excluir névoa. `dreamGliderPose` compartilha rotação/âncora/escala com o renderer. Preserve contato de mãos/haste na pintura composta. A câmera vertical suavizada é exclusiva do voo e vai no save domínio4; exploração e quarto escuro conservam suas regras. Validar saves em cada estágio, reinício, percurso completo e toque/teclado com test:sonho:planador e test:sonho:planador:browser.
+`DreamGliderArt` é gerado por `scripts/prepare-dream-glider.js`; as máscaras usam alfa≥200 para excluir névoa. `dreamGliderPose` compartilha rotação/âncora/escala com o renderer. Preserve contato de mãos/haste na pintura composta. A câmera vertical suavizada é exclusiva do voo e vai no save domínio5; exploração e quarto escuro conservam suas regras. Validar saves em cada estágio, reinício, percurso completo e toque/teclado com test:sonho:planador e test:sonho:planador:browser.
+
+
+## Último trecho — perseguição furtiva
+
+Ao pousar na floresta, Misty Blues para. Yuna anda lentamente e olha para os lados. Duas falas avançam automaticamente ou por um gesto, com relógios próprios:
+
+- Yuna (6s): “Será que os bichos foram embora?”
+- Narrador (14s): “Um cheiro repugnante aparece no ar. Cheiro de comida que ninguém quer, cheiro de luz apagada, cheiro de vontade de ir pra casa, cheiro de tristeza.”
+
+A barata aparece e se aproxima durante8s; a partir da aparição começa `assets/audio/Bug attack.mp3`, enviada pelo usuário. Ela é a trilha da fase até a captura, em loop se necessário. Sua duração não define nenhum relógio da cena ou da jogabilidade. Ao despertar, a trilha volta a Blues Shuffle Loop. Mudo, volume, pausa e musicTime continuam pertencendo ao host/envelope.
+
+O percurso tem coordenadas próprias de9.300 unidades, saída em8.750 e velocidade125unidades/s. A duração pretendida é aproximadamente um minuto entre pedras, troncos cortados e relevos, seguido de aproximadamente um minuto de lama; varia com leitura dos feixes e tentativas. Seis pedras e seis cepos/troncos protegem Yuna no começo. Há três elevações de terra com chão contínuo por baixo, que exigem saltar para alcançar os abrigos elevados; não há fendas nem ilhas suspensas. Os pés acompanham o contorno pintado do topo. As laterais são sólidas: andar não transporta a menina para cima do relevo.
+
+Use ◀/▶ ou A/D para andar abaixada e na ponta dos pés; Espaço ou o botão PULAR salta. Na sombra, Yuna se agacha junto à superfície, com as mãos cobrindo os ouvidos. A base do abrigo fica apenas25unidades atrás dos pés. A barata permanece no fundo e Yuna é desenhada depois das pedras e das sombras, visível ao jogador. O enquadramento mantém altura e escala fixas, inclusive durante saltos; só há rolagem lateral.
+
+Na parte final há12 poças de lama opaca. Entre na poça e mantenha ↓/S ou o botão LAMA para mergulhar. O corpo precisa caber dentro da borda. Sob a lama, Yuna para e fica protegida; uma ondulação discreta indica sua posição ao jogador. Soltar o comando permite emergir e seguir para a próxima poça. Não há limite de fôlego. Os quatro botões móveis aceitam direção e salto simultâneos; gamepad conserva eixo e botões equivalentes.
+
+Feixes partem dos olhos articulados e terminam nos contornos opacos dos abrigos. A detecção verifica pixels da pose atual, inclusive no ar, e respeita a oclusão da borda sem a antiga tolerância de meia unidade. Só iluminação contínua gera captura:0,12s no normal e0,24s no fácil. O corpo recebe reflexo quente enquanto iluminado. Pular não causa derrota por si só e também não concede imunidade à luz. EASY usa feixes mais estreitos. Derrota retoma o setor alcançado (pedras, troncos ou um dos dois setores de lama), sem repetir o prólogo e sem reiniciar a trilha.
+
+Ao alcançar o último espaço sem abrigo, há6s de captura autorada, sem game over. Yuna acorda gritando na toalha; Nanda acorda0,55s depois. O susto inicial tem1,5s obrigatório; três falas seguintes duram5/5/7s e aceitam avanço individual. O grito sintetizado é único e não repete em save/load. As duas permanecem acordadas no piquenique ao concluir.
+
+O domínio aéreo continua5 e o envelope1; `state.player` anterior permanece separado. O domínio local usa `nightmare.version=4`, com pés, velocidade vertical, apoio, borda de salto, submersão, exposição à luz, checkpoint de setor e relógios de atuação/leitura. `migrateNightmare` leva os antigos trechos curtos ao primeiro abrigo, conserva desfechos e migra os saves intermediários de versão3 para o solo contínuo. `validateNightmare` rejeita valores incoerentes antes de ajustar a posição de apoio na migração.
+
+`DreamStealthLevel` mantém solo, relevos, abrigos, lama e poses compartilhadas. `DreamNightmare` mantém patrulha, luz, movimento e sequência narrativa. `DreamNightmareRenderer` carrega as fontes sob demanda e a fase aguarda a decodificação antes de simular. `DreamRoach` articula a pintura original em seis patas, cabeça e antenas, com duas juntas no alcance final. Todos usam o relógio salvo, que pausa junto com a fase.
+
+Arte e proveniência: `yuna-furtiva-v2.png` (seis poses), `abrigos-floresta-v2.png` (cepo, tronco, relevo e lama), `prompts-furtividade-v3.json` e `assets/audio/bug-attack-proveniencia.json`. As variantes1 permanecem como fontes de referência e não são consumidas. Preparação: `node scripts/prepare-dream-nightmare.js`; mapa: `npm run docs:sprites`. O preparador mede alfa, contorno do topo e corpos; não modifica os PNGs.
+
+QA recuperável pelo diário: `test:sonho:furtividade`, `test:sonho:furtividade:saltos`, `test:sonho:furtividade:arte`, `test:sonho:furtividade:integral` e `test:sonho:furtividade:browser`. Os aliases `test:sonho:pesadelo` apontam para a revisão vigente. Resultados reais e limitações ficam exclusivamente no diário; automação preparada não equivale a teste executado nem a aprovação artística.

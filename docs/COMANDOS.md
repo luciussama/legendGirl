@@ -132,6 +132,7 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [export-chase-girl.js](../scripts/export-chase-girl.js) | Exporta o modelo GLB da menina em pose neutra; não inclui animação. |
 | [prepare-illustrated-girl.js](../scripts/prepare-illustrated-girl.js) | Prepara as pranchas e metadados da menina ilustrada a partir das fontes girl-v2. |
 | [prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js) | Deriva peças articuladas e metadados da pintura original; preserva a identidade das pernas e exige revisão das âncoras. |
+| [prepare-dream-nightmare.js](../scripts/prepare-dream-nightmare.js) | Mede recortes/silhuetas das pedras, poses do despertar e amostras corporais; gera DreamNightmareArt.js, preservando os PNGs. |
 | [prepare-dream-glider.js](../scripts/prepare-dream-glider.js) | Mede silhuetas opacas do planador e espinhos; gera DreamGliderArt.js. |
 | [prepare-dream-art.js](../scripts/prepare-dream-art.js) | Mede escalada, contornos dos insetos e recortes/âncoras de folhas e abelhinha; gera DreamArt.js sem alterar PNGs ou física. |
 | [prepare-chapter-art.js](../scripts/prepare-chapter-art.js) | Mede os recortes por alfa das atuações dos capítulos e gera ChapterArt.js; preserva os pixels das fontes. |
@@ -279,3 +280,14 @@ A auditoria documental abrangente está no diário: `npm run journal:qa -- test:
 - `npm run journal:qa -- test:sonho:teias:mobile`: ajuda exclusiva para celular, altura de preparo, prioridade manual e equivalência do desktop/outros apoios. `test:sonho:teias:mobile:browser 390 844 NORMAL mobile` verifica por toque; o último argumento `desktop` testa a mesma janela sem ajuda.
 
 - `npm run journal:qa -- test:sonho:planador`: percurso integral, voo com grandes altitudes, inércia, dano/reinício, migração e saves. `test:sonho:planador:browser 1200 720 NORMAL desktop` verifica a seção por teclado; formatos390×844 EASY e844×390 NORMAL usam `mobile`.
+
+
+QA do fim do sonho: `npm run journal:qa -- test:sonho:pesadelo` verifica luz/sombra, derrota/retry, saves e captura/despertar; `test:sonho:pesadelo:browser 1200 720 NORMAL desktop` executa a cena por teclado. Para toque, usar390 844 EASY mobile ou844 390 NORMAL mobile. Fontes e resultados ficam somente no diário.
+
+`test:sonho:pesadelo:arte` confere alfa, hashes, silhuetas e amostras corporais contra os pixels das fontes e reproduz o preparador. `test:sonho:pesadelo:integral` percorre o sonho inteiro em NORMAL/EASY e cadências fixa/irregular, comparando a física aérea ao código aprovado antes do corte novo. Ambos rodam por `npm run journal:qa -- ALIAS` no ambiente temporário.
+
+`test:sonho:pesadelo:ciclo` verifica descarte durante a decodificação e ausência de novas cargas após destroy, sem renderizar ou criar arquivos de evidência.
+
+## Perseguição furtiva ampliada
+
+`npm run journal:qa -- test:sonho:furtividade` verifica prólogo, percurso, lama, saves e desfecho; `test:sonho:furtividade:saltos` compara a detecção aos polígonos de luz durante subidas dos relevos; `test:sonho:furtividade:arte` verifica trilha, alfa e recortes; `test:sonho:furtividade:integral` compara o percurso anterior à continuação. O alias de navegador preparado é `test:sonho:furtividade:browser 1200 720 NORMAL desktop` (390 844 EASY mobile e844 390 NORMAL mobile para emulações). Os aliases anteriores de pesadelo acompanham os testes vigentes. A disponibilidade e os resultados reais constam do diário.
