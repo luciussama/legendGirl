@@ -2,7 +2,8 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
-import {buildCatalog} from '../tools/sprite-review/catalog.js';
+import {DREAM_NIGHTMARE_ART} from '../src/js/dream-forest/DreamNightmareArt.js';
+import {buildCatalog,itemId} from '../tools/sprite-review/catalog.js';
 import {CURRENT_SCENERY} from '../src/js/assets/currentScenery.js';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
 const catalog=await buildCatalog(root);
@@ -15,6 +16,13 @@ for(const [type,spec]of Object.entries(CURRENT_SCENERY)){
  const file=manifest.images[spec.key]?.replace(/^\.\//,'');const item=items.find(item=>item.kind==='file'&&item.path===file);
  if(item){item.usage='runtime';item.references.push({file:'src/js/assets/currentScenery.js',line:1,type:'runtime',symbol:type});}
 }
+// Metadados do pesadelo resolvem caminhos relativos e recortes carregados sob demanda.
+for(const [pose,set]of Object.entries(DREAM_NIGHTMARE_ART)){
+ if(!set.file)continue;const file='assets/art/'+set.file,parent=items.find(item=>item.kind==='file'&&item.path===file);if(!parent)continue;
+ parent.usage='runtime';parent.references.push({file:'src/js/dream-forest/DreamNightmareArt.js',line:2,type:'runtime',symbol:pose},{file:'src/js/dream-forest/DreamNightmareRenderer.js',line:1,type:'runtime'});
+ for(const [index,f]of (set.frames??[]).entries()){const region={x:f.x,y:f.y,width:f.w,height:f.h},id=itemId(file,region);if(!items.some(item=>item.id===id))items.push({...parent,id,kind:'region',title:'pesadelo · '+pose+' · quadro '+(index+1),region,parentId:parent.id});}
+}
+for(const name of ['chao-floresta-sombria-v1.png','floresta-azul-v1.png']){const item=items.find(i=>i.kind==='file'&&i.path==='assets/art/dream-forest/'+name);if(item){item.usage='runtime';item.references.push({file:'src/js/dream-forest/DreamNightmareRenderer.js',line:1,type:'runtime'});}}
 const fileItems=items.filter(item=>item.kind==='file'),regions=items.filter(item=>item.kind==='region'),code=items.filter(item=>item.kind==='code');
 const out=path.join(root,'docs/sprites');await fs.mkdir(out,{recursive:true});
 const relative=file=>'../../'+file;

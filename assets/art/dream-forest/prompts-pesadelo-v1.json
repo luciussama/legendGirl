@@ -1,0 +1,67 @@
+{
+  "schemaVersion": 1,
+  "data": "2026-10-30",
+  "sessao": "20261030T184416-c0d0450a87c1",
+  "skill": "imagegen",
+  "direcao": "Furtividade no fim do sonho, barata monumental e despertar de Yuna no piquenique.",
+  "fontes": [
+    {
+      "arquivo": "assets/art/dream-forest/barata-pesadelo-v1.png",
+      "sha256": "3056a9c51494c90c0215731fec1336122c16e41e82e7f8122f38cc4d88ac99b2",
+      "bytes": 2247585,
+      "ferramenta": "image_gen.imagegen integrada",
+      "modo": "integrado",
+      "fundoTransparente": true,
+      "origemGerada": "/Users/sergio/.codex/generated_images/01a18e01-0805-7d52-baa7-9cc046af2d1c/exec-74418ab3-05f0-4a19-93fb-e0927fc083bc.png",
+      "referencias": [],
+      "promptIntegral": "Use case: illustration-story. Asset type: production game sprite with true transparent alpha, a single enormous nightmare cockroach for a painterly 2D storybook forest. Subject: clearly recognizable COCKROACH, broad flattened reddish dark brown segmented wing cases, large shield behind the head, six long spiny articulated legs, two very long thin antennae, small mouth palps. Frontal three-quarter low view looking toward the viewer, body receding backward; all six legs and antenna tips fit completely inside canvas with generous transparent margins. Two distinct small luminous pale amber eyes on the low head, separated and clearly locatable, no beams painted into the sprite because dynamic light cones are drawn by the game. Face is insect anatomy, not a human face, not cute. Massive imposing silhouette as if it were the moving scenery behind a tiny girl. Hand painted gouache and fine digital storybook detail, textured chitin, deep indigo shadows and muted copper edge lighting, matching a dark blue enchanted forest. Ominous tense nightmare suitable for a storybook adventure, no blood, no gore. Composition: single centered full body cockroach, wide landscape canvas, no ground plane, no cast shadow, no rocks, no trees, no text, no border, no checkerboard baked in. Actual transparent background.",
+      "aprovacaoArtistica": "pendente de revisão do usuário"
+    },
+    {
+      "arquivo": "assets/art/dream-forest/pedras-pesadelo-v1.png",
+      "sha256": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88",
+      "bytes": 2320977,
+      "ferramenta": "image_gen.imagegen integrada",
+      "modo": "integrado",
+      "fundoTransparente": true,
+      "origemGerada": "/Users/sergio/.codex/generated_images/01a18e01-0805-7d52-baa7-9cc046af2d1c/exec-7f5d38fb-c2dd-472d-8aab-f6db14bffe46.png",
+      "referencias": [],
+      "promptIntegral": "Use case: illustration-story. Asset type: transparent sprite atlas for a dark painterly 2D storybook forest stealth game. Exactly THREE separate large natural boulders, arranged horizontally in three equal cells with wide transparent gutters and all silhouettes entirely contained in their cell. The boulders are massive enough to hide a small child: a rounded tall granite rock on the left, a broad angular dark slate rock in the middle, a leaning irregular weathered boulder on the right. Each has a flat convincing ground contact at the same baseline, painted fissures, chips, lichen and just a little moss near base. Front/three quarter view, not top down, human eye height relative to a tiny girl. Hand painted gouache texture and detailed storybook illustration. Deep desaturated blue/gray stone, muted cool purple in cracks, gentle blue moon rim on upper edges. No emitting light, no glowing symbols. Opaque solid objects without holes. No white outlines, no platform lines, no cast shadow, no ground island, no sky, no scenery, no people, no insect. No text, numbers, labels, grid or watermark. Real transparent alpha background, no checker pattern painted into pixels. Wide horizontal canvas.",
+      "aprovacaoArtistica": "pendente de revisão do usuário"
+    },
+    {
+      "arquivo": "assets/art/dream-forest/yuna-despertar-v1.png",
+      "sha256": "437baf6689e8e26bb850e5eac72686f0f12f255dcaeaf477f0810a80d9c73931",
+      "bytes": 2195551,
+      "ferramenta": "image_gen.imagegen integrada",
+      "modo": "integrado",
+      "fundoTransparente": true,
+      "origemGerada": "/Users/sergio/.codex/generated_images/01a18e01-0805-7d52-baa7-9cc046af2d1c/exec-eb3bbd54-46f3-49db-8e6c-9c9735df5e55.png",
+      "referencias": [
+        {
+          "arquivo": "assets/art/chapters/yuna-sono-v1.png",
+          "sha256": "5215aec76ce5d0544b5ee9af83ab2f2be0c4512576b06fdcf18f872833083dab"
+        }
+      ],
+      "promptIntegral": "Use case: identity-preserve. Asset type: a NEW sprite sheet of THREE complete full-body seated acting poses for the child Yuna from the reference. The reference supplies identity, outfit, proportions and painterly quality; create new expressions/gestures, do not alter the reference file. Exactly 3 separate poses left to right, one pose per equal cell with generous transparent gutters. Left: Yuna suddenly jolts awake from a nightmare on a picnic blanket, seated with bent legs, torso upright, both hands flung close to her chest, wide frightened brown eyes and open mouth shouting a startled scream, no tears or injury. Middle: still seated, one hand pressed to her chest, other hand braced on the ground, breathing out, looking sideways toward her fairy companion with relief and surprise. Right: seated quietly, shoulders relaxed, a small relieved tender smile, hand near heart. Same curly chestnut twin ponytails and TWO pink bows; pale yellow puff sleeve shirt, turquoise pinafore covered in colorful candy motifs, pink shoes with white socks. Preserve the exact head shape, childlike proportions, face, outfit and color from the reference. Entire hair, bows, hands, knees and shoes visible with no cropping. All three poses SAME character scale, head size, ground baseline and 3/4 view facing slightly right. Detailed hand painted storybook gouache/digital illustration. No background, no props, no blanket, no cast shadows, no text/letters/watermark. Actual transparent alpha.",
+      "aprovacaoArtistica": "pendente de revisão do usuário"
+    },
+    {
+      "arquivo": "assets/art/dream-forest/yuna-susto-em-pe-v1.png",
+      "sha256": "886e08b37df5d18b2250f92bee2c69fbe7f38f005987af32f91fd6d0e9746e05",
+      "bytes": 1544594,
+      "ferramenta": "image_gen.imagegen integrada",
+      "modo": "integrado",
+      "fundoTransparente": true,
+      "origemGerada": "/Users/sergio/.codex/generated_images/01a18e01-0805-7d52-baa7-9cc046af2d1c/exec-7ee77354-65df-44bb-a6c9-f1479f1aacfd.png",
+      "referencias": [
+        {
+          "arquivo": "assets/art/chapters/yuna-sono-v1.png",
+          "sha256": "5215aec76ce5d0544b5ee9af83ab2f2be0c4512576b06fdcf18f872833083dab"
+        }
+      ],
+      "promptIntegral": "Use case: identity-preserve. Asset type: new transparent production sprite sheet of TWO complete standing frightened acting poses for the storybook child Yuna shown in the reference. The reference supplies the exact face, child proportions, curly chestnut twin ponytails, two pink bows, pale yellow puff sleeve shirt, turquoise pinafore with colorful candy patterns, pink high top shoes and white socks. Both new poses are STANDING STILL on both feet, full body at the same scale and same ground baseline, in two well separated horizontal cells. Left pose: she has stopped in fear, both pink shoes firmly planted, knees slightly bent, shoulders drawn in, hands held tightly near her heart, wide brown eyes looking up and slightly left, mouth open with alarm. Right pose: still standing with both feet planted and visible, leaning backward slightly, both palms raised protectively in front of her face as something huge approaches from above, frightened startled expression. No running stride, no lifted leg, no jumping, no floating, no sitting. All bows, hair, fingers and shoes fit entirely inside their cell with generous transparent margins and a wide clear gutter. Same detailed hand painted storybook gouache style as reference, soft rich color and clean full silhouettes. Gentle cool blue ambient light while maintaining outfit colors. No monster, no props, no background, no shadows, no text, no labels, no borders or watermark. Real transparent alpha background.",
+      "aprovacaoArtistica": "pendente de revisão do usuário"
+    }
+  ]
+}

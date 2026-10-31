@@ -1,0 +1,39 @@
+{
+  "modo": "imagegen integrada",
+  "sessao": "20261030T204838-33300d036265",
+  "fontes": [
+    {
+      "arquivo": "yuna-furtiva-v1.png",
+      "referencia": "yuna-susto-em-pe-v1.png",
+      "prompt": "Use case: illustration-story. Asset type: transparent animation sprite sheet for the existing 2D storybook game. Input image is ONLY the authoritative character identity and painterly style reference. Draw the SAME little girl Yuna, identical brown curly twin pigtails with pink bows, brown eyes, yellow puff sleeve shirt, turquoise candy-patterned pinafore dress, pink/white shoes, same proportions and detailed soft painted outline. NEW poses, not a collage of the reference. Exactly SIX complete isolated poses in ONE HORIZONTAL ROW, generously spaced with fully transparent gaps, equal cells, consistent head size and common shoe baseline, full bodies and no cropped hair/shoes. All face screen RIGHT in side/three-quarter view. Pose1: frightened deep squat, back upright pressed against an INVISIBLE vertical surface behind her, knees folded close, BOTH hands firmly covering ears, elbows close, worried eyes glancing upward toward the threat. Do not paint the surface: girl alone. Poses2,3,4,5: four sequential frames of a very cautious crouched tiptoe walk to the right, knees permanently bent, torso hunched forward, head low, nervous shoulders, hands held near cheeks/chest, feet alternating support on toes with raised heels, subtle step progression, NO upright running pose. Pose6: cautious midair crouched hop, legs tucked, hands protecting head, looking toward landing. Preserve anatomical limb lengths and head scale across all poses, change height by bending joints. Clear expression readable at small size. Soft cool reflected light but original clothes remain readable. No rocks, floor, insect, background, text, numbers, grid or shadows outside the character. Genuine transparent alpha.",
+      "uso": "Variante preservada; poses se tocavam e não foi integrada.",
+      "sha256": "c9f6fa5ffd0ca396946097da3c3ffd601db8751ad7ccad795e6efab108be0efa",
+      "sha256Referencia": "886e08b37df5d18b2250f92bee2c69fbe7f38f005987af32f91fd6d0e9746e05"
+    },
+    {
+      "arquivo": "yuna-furtiva-v2.png",
+      "referencia": "yuna-furtiva-v1.png",
+      "prompt": "Use case: identity-preserve. Edit target: attached six-pose Yuna animation sheet. Preserve exactly the same character, clothes, pose concepts, painterly style and proportions. FIX THE LAYOUT: REPAINT this as a clean THREE COLUMNS BY TWO ROWS atlas on genuine transparent alpha, NOT a single row. Every pose must be fully isolated inside its own rectangular cell with at least 60 pixels of fully transparent gutter all around and between cells. No body, hair, bows, shoes, outline or shadow of any pose may cross a cell border or touch any other pose. Equal cell sizes and consistent head size. Six poses in reading order: 1 hiding in a deep squat with BOTH hands covering ears and her back pressed to an invisible wall, 2 cautious crouched tiptoe left-foot support, 3 crouched tiptoe passing step, 4 crouched tiptoe right-foot support, 5 crouched tiptoe alternate passing step, 6 crouched hop knees tucked. All face right. Walk poses remain hunched and low with raised heels. Full hair and feet must fit with generous margin. Draw only Yuna, no wall, ground, environment, grid, text or labels. Real transparent background.",
+      "uso": "Fonte de produção; seis poses em grade3×2.",
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "sha256Referencia": "c9f6fa5ffd0ca396946097da3c3ffd601db8751ad7ccad795e6efab108be0efa"
+    },
+    {
+      "arquivo": "abrigos-floresta-v1.png",
+      "referencia": "pedras-pesadelo-v1.png",
+      "prompt": "Use case: illustration-story. Asset type: game environment sprites on genuine transparent background. Reference image ONLY establishes the existing detailed painted dark blue forest material/style. Create ONE horizontal sprite sheet containing exactly FOUR isolated large objects with wide transparent gaps, all complete and grounded on the same baseline, no overlap. Left to right: (1) a broad cut tree stump for hiding behind, rough dark brown/blue bark, broad flat slightly slanted cut top with growth rings, flaring roots, a few small moss patches, approximately as wide as tall; (2) a distinct fallen cut trunk lying horizontally, thick gnarled bark, broken roots, circular visible cut end, slightly taller than half its width, large enough to hide a crouched child; (3) an isolated wide flat-topped chunk of forest earth/rock ledge, mossy upper surface and irregular hanging roots and broken rocky underside, suitable as a natural platform to jump onto, width about twice height, NO auxiliary lines; (4) a wide shallow oval puddle of opaque dark brown mud viewed from slightly above at low camera angle, slick dull reflected blue moonlight, thick irregular muddy rim with a few tiny bubbles and wet mud clods, no transparent central hole, size wide enough for a crouched child to hide underneath. Same cool desaturated navy/moonlit palette, painterly storybook texture, natural silhouettes. Object4 must stay separated from object3. No characters, creature, background landscape, painted cast shadows outside objects, text, labels, borders or grid. Real alpha transparency outside the four objects, not a painted checkerboard.",
+      "uso": "Variante preservada; raízes dos dois primeiros objetos se tocavam.",
+      "sha256": "7503eec90bd5369f6c7dd70b79b2167495b9a529eed70d484f54361e75bc2add",
+      "sha256Referencia": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88"
+    },
+    {
+      "arquivo": "abrigos-floresta-v2.png",
+      "referencia": "abrigos-floresta-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit the attached four forest-object sprites preserving the exact materials, shapes, painted style and moonlit blue palette. Recompose into a TWO COLUMNS BY TWO ROWS atlas on genuine transparent alpha, with VERY LARGE transparent gutters. Reading order: upper left cut upright tree stump, upper right fallen cut trunk, lower left flat mossy rock/earth platform with hanging roots, lower right opaque muddy puddle. Each object entirely contained within its own cell with at least 70 pixels of totally transparent margin on ALL sides. No root, moss or outline may cross a cell or touch any other object. Keep every object complete and naturally shaped. Do not add background, fog, gradient, cast shadow, grid, lettering or any other object. The puddle center stays opaque muddy brown; all areas outside object silhouettes must have zero alpha.",
+      "uso": "Fonte de produção; quatro objetos em grade2×2.",
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "sha256Referencia": "7503eec90bd5369f6c7dd70b79b2167495b9a529eed70d484f54361e75bc2add"
+    }
+  ],
+  "observacao": "Não houve transferência de estilo da imagem da internet; somente artes do projeto foram usadas como referência. PNGs preservados, recortes e máscaras medidos em código."
+}

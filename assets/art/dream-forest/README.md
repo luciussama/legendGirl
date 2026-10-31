@@ -31,3 +31,23 @@ O gerador mede componentes completos para não cortar sapatos entre células. As
 ## Planador e espinhos
 
 `yuna-planador-v1.png` mantém mãos e haste conectadas na mesma pintura; `galho-espinhos-v1.png` é o obstáculo de cima/baixo. Gerados pela ferramenta integrada imagegen, com prompts/referência/hashes em `prompts-planador-v1.json`. Aprovação artística humana pendente. `scripts/prepare-dream-glider.js` gera máscaras de alfa opaco para contato, sem alterar os PNGs. O recorte superior da pintura da menina também apresenta a folha antes da coleta.
+
+
+## Furtividade e despertar
+
+`barata-pesadelo-v1.png`, `pedras-pesadelo-v1.png` e `yuna-despertar-v1.png` foram gerados pela skill imagegen/ferramenta integrada com alfa real. Prompts completos, referências, hashes e origem em [prompts-pesadelo-v1.json](prompts-pesadelo-v1.json). A aprovação anterior até os espinhos não aprova automaticamente estas pinturas. `scripts/prepare-dream-nightmare.js` mede recortes, olhos, silhuetas das pedras e amostras das poses jogáveis existentes, gerando `DreamNightmareArt.js`. Os PNGs não são editados pelo preparador. DreamNightmareRenderer carrega as fontes apenas ao entrar no final e libera seus caches no descarte. Cenário do piquenique, Nanda dormindo e fada acordada reutilizam as fontes anteriores.
+
+
+`yuna-susto-em-pe-v1.png` acrescenta duas poses completas, com os pés no chão: mãos junto ao peito e mãos protegendo o rosto. A cena final alterna a caminhada assustada com essas reações antes da captura. Recortes e escala comum são gerados por `prepare-dream-nightmare.js`; as poses não alteram a detecção do trecho jogável. Fonte/prompt preservados em `assets/art/dream-forest/prompts-pesadelo-v1.json`.
+
+## Profundidade da furtividade revisada
+
+A barata ocupa o plano distante; as pedras estão no plano intermediário (base25unidades atrás dos pés) e Yuna no caminho próximo (pés850). O desenho de Yuna vem depois das pedras: o jogador enxerga a personagem protegida. Feixes partem dos olhos articulados e são interrompidos pelos contornos das rochas; a sombra avança para o caminho da frente. O chão pintado `chao-floresta-sombria-v1.png` mantém a paleta azul da floresta existente; proveniência e prompt completo em `assets/art/dream-forest/prompts-profundidade-v1.json`.
+
+`DreamRoach` preserva o PNG original e prepara segmentos em Canvas. Seis patas alternam tripés; cabeça e antenas investigam, e a pata frontal alcança Yuna por duas juntas na captura. A patrulha percorre o fundo acompanhando o avanço lateral da cena, com oscilação e varredura próprias. Pose, olhos físicos e sombras usam o mesmo relógio salvo. A geometria nova usa `nightmare.version=4`; saves do trecho curto retomam no primeiro abrigo e saves da revisão intermediária migram ao solo contínuo. Domínio5/envelope1 e trecho aéreo preservados.
+
+## Poses de abrigo e terreno contínuo
+
+Fontes integradas: `yuna-furtiva-v2.png`, grade3×2, com mãos nos ouvidos, quatro passos abaixados e salto encolhido; `abrigos-floresta-v2.png`, grade2×2, com cepo, tronco cortado, relevo rochoso com terra e lama opaca. Prompts completos, referências, modo integrado e hashes em [prompts-furtividade-v3.json](prompts-furtividade-v3.json). Variantes1 preservadas como referência: poses/raízes se tocavam e não foram integradas.
+
+As elevações são preenchidas até o chão, sem buracos laterais; o perfil superior medido no alfa ancora os pés. A menina se mantém próxima à base dos abrigos. O mergulho oculta o corpo sob lama pintada e conserva uma ondulação para o jogador. Não desenhar hitboxes, linhas de salto ou réguas sobre as ilustrações. Aprovação artística humana permanece separada do QA técnico.

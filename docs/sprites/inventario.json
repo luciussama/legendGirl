@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 493,
-    "regions": 249,
+    "files": 502,
+    "regions": 267,
     "code": 29
   },
   "items": [
@@ -110,8 +110,21 @@
       "bytes": 1508938,
       "sha256": "5215aec76ce5d0544b5ee9af83ab2f2be0c4512576b06fdcf18f872833083dab",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 42,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 59,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/chapters"
     },
@@ -3058,6 +3071,50 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "a9243a139410ef3ac25ed174",
+      "kind": "file",
+      "path": "assets/art/dream-forest/abrigos-floresta-v1.png",
+      "title": "abrigos-floresta-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1317969,
+      "sha256": "7503eec90bd5369f6c7dd70b79b2167495b9a529eed70d484f54361e75bc2add",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "2e5214263f952983ba7f8f89",
+      "kind": "file",
+      "path": "assets/art/dream-forest/abrigos-floresta-v2.png",
+      "title": "abrigos-floresta-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346412,
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "shelters"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "f66e460b2bab853075a8c9c1",
       "kind": "file",
       "path": "assets/art/dream-forest/aranhinha-v1.png",
@@ -3087,6 +3144,68 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "f644cb8721c0e83bb641b4e1",
+      "kind": "file",
+      "path": "assets/art/dream-forest/barata-pesadelo-v1.png",
+      "title": "barata-pesadelo-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2247585,
+      "sha256": "3056a9c51494c90c0215731fec1336122c16e41e82e7f8122f38cc4d88ac99b2",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 9,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "roach"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "a61ee297c51ed94790d2c8aa",
+      "kind": "file",
+      "path": "assets/art/dream-forest/chao-floresta-sombria-v1.png",
+      "title": "chao-floresta-sombria-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2867838,
+      "sha256": "1f86dbdc8b3f5d5a0e2f818374c75ca878f7e7a63d2faac8095018d7c7c9b0c0",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-profundidade-v1.json",
+          "line": 3,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "000216df7b3cf2ec5e28c9e1",
       "kind": "file",
       "path": "assets/art/dream-forest/floresta-azul-v1.png",
@@ -3097,13 +3216,24 @@
       "bytes": 2582887,
       "sha256": "fd93ae915f44955c7a13696615291075801dadf92a909366987b2a525e834fce",
       "aliases": [],
-      "usage": "apoio",
+      "usage": "runtime",
       "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-profundidade-v1.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
         {
           "file": "assets/art/dream-forest/prompts.json",
           "line": 6,
           "type": "apoio",
           "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
         }
       ],
       "hints": [],
@@ -3184,6 +3314,74 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "1535acc7a989ef55a33af689",
+      "kind": "file",
+      "path": "assets/art/dream-forest/pedras-pesadelo-v1.png",
+      "title": "pedras-pesadelo-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2320977,
+      "sha256": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "rocks"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "64608f0db0dcd2ffef526f34",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-despertar-v1.png",
+      "title": "yuna-despertar-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2195551,
+      "sha256": "437baf6689e8e26bb850e5eac72686f0f12f255dcaeaf477f0810a80d9c73931",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "wake"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "756c54167ba20414fa3e771d",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-escalada-v1.png",
@@ -3248,6 +3446,50 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "ec3c7761932123ae82419724",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-furtiva-v1.png",
+      "title": "yuna-furtiva-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 1747199,
+      "sha256": "c9f6fa5ffd0ca396946097da3c3ffd601db8751ad7ccad795e6efab108be0efa",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "2b371b1192712891eeed5c4c",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "yuna-furtiva-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "8c40beffb3a0647577b91c9f",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-planador-v1.png",
@@ -3260,6 +3502,40 @@
       "aliases": [],
       "usage": "nao-localizado",
       "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "c08d8f5c96de06742228519f",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-susto-em-pe-v1.png",
+      "title": "yuna-susto-em-pe-v1.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1544594,
+      "sha256": "886e08b37df5d18b2250f92bee2c69fbe7f38f005987af32f91fd6d0e9746e05",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 50,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fright"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
       "hints": [],
       "family": "assets/art/dream-forest"
     },
@@ -3337,8 +3613,21 @@
       "bytes": 3107519,
       "sha256": "ddfbd20e45e36538a72bbe7ecea3ae6c155303ad265ee27abdabbbd6708b369e",
       "aliases": [],
-      "usage": "nao-localizado",
-      "references": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 92,
+          "type": "runtime",
+          "alias": null
+        }
+      ],
       "hints": [],
       "family": "assets/art/garden/cinematic"
     },
@@ -3580,8 +3869,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -3609,8 +3910,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -3735,7 +4048,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -16779,6 +17092,18 @@
           "alias": "toy-room-illustrated-fairy-v1"
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 97,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/entities/FairyRenderer.js",
           "line": 96,
           "type": "runtime",
@@ -24555,8 +24880,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24593,8 +24930,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24631,8 +24980,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24669,8 +25030,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24707,8 +25080,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24745,8 +25130,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24783,8 +25180,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24821,8 +25230,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24865,8 +25286,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24909,8 +25342,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24953,8 +25398,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -24997,8 +25454,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -25041,8 +25510,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -25085,8 +25566,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -25129,8 +25622,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -25173,8 +25678,20 @@
           "alias": null
         },
         {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 20,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 25,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -26216,7 +26733,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -26254,7 +26771,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         }
@@ -32146,6 +32663,684 @@
       "hints": [
         "Trecho de um renderer compartilhado: classificar este desenho não autoriza excluir o módulo JavaScript inteiro."
       ]
+    },
+    {
+      "id": "970abc28d3f54ca752e1f3a3",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 70,
+        "y": 38,
+        "width": 371,
+        "height": 452
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "b2e9a7d17555faa8fccdae9d",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 568,
+        "y": 34,
+        "width": 407,
+        "height": 461
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "aec44d720b5e116d390a4d0a",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 1050,
+        "y": 34,
+        "width": 407,
+        "height": 461
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "eca3fb899d027db1673b37bf",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 66,
+        "y": 522,
+        "width": 423,
+        "height": 472
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "395fb556d83b12f65c67ae06",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 5",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 555,
+        "y": 519,
+        "width": 425,
+        "height": 468
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "1c0074e88adf0233b78e1902",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-furtiva-v2.png",
+      "title": "pesadelo · stealth · quadro 6",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2571237,
+      "sha256": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "stealth"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 1094,
+        "y": 515,
+        "width": 404,
+        "height": 461
+      },
+      "parentId": "2b371b1192712891eeed5c4c"
+    },
+    {
+      "id": "8e214e385978081c6017621c",
+      "kind": "region",
+      "path": "assets/art/dream-forest/abrigos-floresta-v2.png",
+      "title": "pesadelo · shelters · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346412,
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "shelters"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 90,
+        "y": 97,
+        "width": 618,
+        "height": 410
+      },
+      "parentId": "2e5214263f952983ba7f8f89"
+    },
+    {
+      "id": "bc694c50207b73f0704aea19",
+      "kind": "region",
+      "path": "assets/art/dream-forest/abrigos-floresta-v2.png",
+      "title": "pesadelo · shelters · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346412,
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "shelters"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 836,
+        "y": 137,
+        "width": 620,
+        "height": 370
+      },
+      "parentId": "2e5214263f952983ba7f8f89"
+    },
+    {
+      "id": "ee20ff5f3edec3c569b76b38",
+      "kind": "region",
+      "path": "assets/art/dream-forest/abrigos-floresta-v2.png",
+      "title": "pesadelo · shelters · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346412,
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "shelters"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 80,
+        "y": 618,
+        "width": 645,
+        "height": 335
+      },
+      "parentId": "2e5214263f952983ba7f8f89"
+    },
+    {
+      "id": "ffb6523813185e2b7fbd47ce",
+      "kind": "region",
+      "path": "assets/art/dream-forest/abrigos-floresta-v2.png",
+      "title": "pesadelo · shelters · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2346412,
+      "sha256": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "shelters"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 847,
+        "y": 707,
+        "width": 608,
+        "height": 218
+      },
+      "parentId": "2e5214263f952983ba7f8f89"
+    },
+    {
+      "id": "715e3c384f4a3363346730dc",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-susto-em-pe-v1.png",
+      "title": "pesadelo · fright · quadro 1",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1544594,
+      "sha256": "886e08b37df5d18b2250f92bee2c69fbe7f38f005987af32f91fd6d0e9746e05",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 50,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fright"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 166,
+        "y": 18,
+        "width": 596,
+        "height": 852
+      },
+      "parentId": "c08d8f5c96de06742228519f"
+    },
+    {
+      "id": "65b2de9b48ae2655a04f96e6",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-susto-em-pe-v1.png",
+      "title": "pesadelo · fright · quadro 2",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1544594,
+      "sha256": "886e08b37df5d18b2250f92bee2c69fbe7f38f005987af32f91fd6d0e9746e05",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 50,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fright"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 883,
+        "y": 43,
+        "width": 695,
+        "height": 827
+      },
+      "parentId": "c08d8f5c96de06742228519f"
+    },
+    {
+      "id": "4384ae1a2a4422cecd840c5a",
+      "kind": "region",
+      "path": "assets/art/dream-forest/pedras-pesadelo-v1.png",
+      "title": "pesadelo · rocks · quadro 1",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2320977,
+      "sha256": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "rocks"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 24,
+        "y": 24,
+        "width": 624,
+        "height": 662
+      },
+      "parentId": "1535acc7a989ef55a33af689"
+    },
+    {
+      "id": "217dbc46917566f1397b77ac",
+      "kind": "region",
+      "path": "assets/art/dream-forest/pedras-pesadelo-v1.png",
+      "title": "pesadelo · rocks · quadro 2",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2320977,
+      "sha256": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "rocks"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 685,
+        "y": 143,
+        "width": 792,
+        "height": 540
+      },
+      "parentId": "1535acc7a989ef55a33af689"
+    },
+    {
+      "id": "b40d89c7cab562aca1d174e5",
+      "kind": "region",
+      "path": "assets/art/dream-forest/pedras-pesadelo-v1.png",
+      "title": "pesadelo · rocks · quadro 3",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2320977,
+      "sha256": "6fc234f5054ea18b267489c8ed02e710fa9013b81df8f6184f52a89ec1703a88",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "rocks"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 1515,
+        "y": 28,
+        "width": 624,
+        "height": 660
+      },
+      "parentId": "1535acc7a989ef55a33af689"
+    },
+    {
+      "id": "f316901441a8ca65495f15e4",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-despertar-v1.png",
+      "title": "pesadelo · wake · quadro 1",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2195551,
+      "sha256": "437baf6689e8e26bb850e5eac72686f0f12f255dcaeaf477f0810a80d9c73931",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "wake"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 29,
+        "y": 18,
+        "width": 632,
+        "height": 675
+      },
+      "parentId": "64608f0db0dcd2ffef526f34"
+    },
+    {
+      "id": "175526f9fd1037340ebf7e26",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-despertar-v1.png",
+      "title": "pesadelo · wake · quadro 2",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2195551,
+      "sha256": "437baf6689e8e26bb850e5eac72686f0f12f255dcaeaf477f0810a80d9c73931",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "wake"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 763,
+        "y": 10,
+        "width": 663,
+        "height": 693
+      },
+      "parentId": "64608f0db0dcd2ffef526f34"
+    },
+    {
+      "id": "175eaa4b539f418a3f81d05b",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-despertar-v1.png",
+      "title": "pesadelo · wake · quadro 3",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 2195551,
+      "sha256": "437baf6689e8e26bb850e5eac72686f0f12f255dcaeaf477f0810a80d9c73931",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/dream-forest/prompts-pesadelo-v1.json",
+          "line": 33,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "wake"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 1520,
+        "y": 11,
+        "width": 627,
+        "height": 695
+      },
+      "parentId": "64608f0db0dcd2ffef526f34"
     }
   ]
 }

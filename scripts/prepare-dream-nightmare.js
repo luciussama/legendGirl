@@ -1,0 +1,34 @@
+import fs from 'node:fs';
+import {PNG} from 'pngjs';
+import {DREAM_CLIMB_CYCLE} from '../src/js/dream-forest/DreamArt.js';
+import {GARDEN_ART} from '../src/js/garden/GardenArt.js';
+const root='assets/art/dream-forest';
+/** Isola células pelo vão de alfa e mede silhuetas sem editar as pinturas. */
+function sheet(file,count,outline=false){
+  const image=PNG.sync.read(fs.readFileSync(root+'/'+file)),ink=Array(image.width).fill(0),edges=[0];
+  for(let y=0;y<image.height;y++)for(let x=0;x<image.width;x++)if(image.data[(y*image.width+x)*4+3]>24)ink[x]++;
+  for(let i=1;i<count;i++){const center=i*image.width/count,range=image.width/count*.22;let best=null,start=null;for(let x=Math.floor(center-range);x<=Math.ceil(center+range)+1;x++){if(x<=Math.ceil(center+range)&&ink[x]<=2)start??=x;else if(start!==null){if(!best||x-start>best.end-best.start)best={start,end:x};start=null;}}if(!best)throw Error('Sem separação transparente em '+file);edges.push(Math.floor((best.start+best.end)/2));}
+  edges.push(image.width);const frames=[];
+  for(let i=0;i<count;i++){let x0=image.width,y0=image.height,x1=-1,y1=-1;for(let y=0;y<image.height;y++)for(let x=edges[i];x<edges[i+1];x++)if(image.data[(y*image.width+x)*4+3]>24){x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}if(x1<x0)throw Error('Célula vazia: '+file);const f={x:x0,y:y0,w:x1-x0+1,h:y1-y0+1};
+    if(outline){const left=[],right=[];for(let k=0;k<=24;k++){const y=Math.min(y1,Math.round(y0+(y1-y0)*k/24));let a=x1,b=x0;for(let x=x0;x<=x1;x++)if(image.data[(y*image.width+x)*4+3]>140){a=Math.min(a,x);b=Math.max(b,x);}if(b>=a){left.push([(a-x0)/f.w,(y-y0)/f.h]);right.push([(b-x0)/f.w,(y-y0)/f.h]);}}f.outline=[...left,...right.reverse()].map(p=>p.map(v=>+v.toFixed(5)));}
+    frames.push(f);
+  }
+  return{file:'dream-forest/'+file,width:image.width,height:image.height,referenceHeight:Math.max(...frames.map(f=>f.h)),frames};
+}
+const roach=PNG.sync.read(fs.readFileSync(root+'/barata-pesadelo-v1.png'));
+/** Amostra pixels do corpo para que a luz conte também cabelos e sapatos da pose desenhada. */
+function bodyPoints(set,index){const f=set.frames[index],image=PNG.sync.read(fs.readFileSync('assets/art/garden/'+set.file)),points=[];for(let y=f.y+3;y<f.y+f.h;y+=12){let a=f.x+f.w,b=f.x;for(let x=f.x;x<f.x+f.w;x++)if(image.data[(y*image.width+x)*4+3]>160){a=Math.min(a,x);b=Math.max(b,x);}if(b>=a)for(const x of [a,(a+b)/2,b]){const sourceX=Math.round(x),pixel=(Math.round(y)*image.width+sourceX)*4+3;if(image.data[pixel]>160)points.push([+((sourceX-f.x-f.anchorX)/256*160).toFixed(3),+((y-f.y-f.h)/256*160).toFixed(3)]);}}return points;}
+const bodies={run:GARDEN_ART.sets['menina-corrida-v1'].frames.map((_,i)=>bodyPoints(GARDEN_ART.sets['menina-corrida-v1'],i)),idle:bodyPoints(GARDEN_ART.sets['menina-acoes-v1'],7)};
+/** Grade 3×2 com células independentes: margem é conferida antes de gerar recortes. */
+function gridSheet(file,columns,rows,outline=false){const image=PNG.sync.read(fs.readFileSync(root+'/'+file)),frames=[];for(let i=0;i<columns*rows;i++){const left=i%columns*image.width/columns,top=Math.floor(i/columns)*image.height/rows,right=left+image.width/columns,bottom=top+image.height/rows;let x0=right,y0=bottom,x1=-1,y1=-1;for(let y=top;y<bottom;y++)for(let x=left;x<right;x++)if(image.data[(y*image.width+x)*4+3]>24){x0=Math.min(x0,x);x1=Math.max(x1,x);y0=Math.min(y0,y);y1=Math.max(y1,y);}if(x0<=left+2||x1>=right-3||y0<=top+2||y1>=bottom-3)throw Error('Pose furtiva toca a célula: '+i);const f={x:x0,y:y0,w:x1-x0+1,h:y1-y0+1};if(outline){const a=[],b=[];for(let k=0;k<=24;k++){const y=Math.min(y1,Math.round(y0+(y1-y0)*k/24));let l=x1,r=x0;for(let x=x0;x<=x1;x++)if(image.data[(y*image.width+x)*4+3]>140){l=Math.min(l,x);r=Math.max(r,x);}if(r>=l){a.push([(l-x0)/f.w,(y-y0)/f.h]);b.push([(r-x0)/f.w,(y-y0)/f.h]);}}f.outline=[...a,...b.reverse()].map(p=>p.map(v=>+v.toFixed(5)));}frames.push(f);}return{file:'dream-forest/'+file,width:image.width,height:image.height,frames,referenceHeight:Math.round(Math.max(...frames.map(f=>f.h))/.68)};}
+const stealth=gridSheet('yuna-furtiva-v2.png',3,2),stealthImage=PNG.sync.read(fs.readFileSync('assets/art/'+stealth.file));
+stealth.bodies=stealth.frames.map(f=>{const points=[];for(let y=f.y+2;y<f.y+f.h;y+=7){let a=f.x+f.w,b=f.x;for(let x=f.x;x<f.x+f.w;x++)if(stealthImage.data[(y*stealthImage.width+x)*4+3]>160){a=Math.min(a,x);b=Math.max(b,x);}if(b>=a)for(const q of [a,Math.round((a+b)/2),b])if(stealthImage.data[(y*stealthImage.width+q)*4+3]>160)points.push([+((q-f.x-f.w/2)/stealth.referenceHeight*160).toFixed(3),+((y-f.y-f.h)/stealth.referenceHeight*160).toFixed(3)]);}return points;});
+const shelters=gridSheet('abrigos-floresta-v2.png',2,2,true);
+{const image=PNG.sync.read(fs.readFileSync('assets/art/'+shelters.file)),f=shelters.frames[2];f.surface=Array.from({length:65},(_,i)=>{const x=f.x+Math.round((f.w-1)*i/64);let y=f.y;while(y<f.y+f.h&&image.data[(y*image.width+x)*4+3]<=140)y++;return +((y-f.y)/f.h).toFixed(5);});}
+/** Corpos medidos com a mesma âncora de água/mão usada no desenho. */
+function actorBodies(set,anchor){const image=PNG.sync.read(fs.readFileSync('assets/art/'+set.file));return set.frames.map(f=>{const [ax,ay]=anchor(f),points=[];for(let y=f.y+2;y<f.y+f.h;y+=8)for(let x=f.x+2;x<f.x+f.w;x+=10)if(image.data[(y*image.width+x)*4+3]>160)points.push([+((x-f.x-ax)/set.referenceHeight*160).toFixed(4),+((y-f.y-ay)/set.referenceHeight*160).toFixed(4)]);return points;});}
+const lakes=gridSheet('lagos-lama-v1.png',2,2,true),swim=gridSheet('yuna-nado-v1.png',2,2);swim.referenceHeight=900;swim.bodies=actorBodies(swim,f=>[f.w*.55,f.h*.65]);
+const bankClimb=structuredClone(DREAM_CLIMB_CYCLE);bankClimb.bodies=actorBodies(bankClimb,f=>f.hand);
+const art={lakes,swim,bankClimb,stealth,shelters,fright:sheet('yuna-susto-em-pe-v1.png',2),bodies,roach:{file:'dream-forest/barata-pesadelo-v1.png',width:roach.width,height:roach.height,eyes:[[.385,.526],[.495,.526]],head:[.44,.526]},rocks:sheet('pedras-pesadelo-v1.png',3,true),wake:sheet('yuna-despertar-v1.png',3)};
+fs.writeFileSync('src/js/dream-forest/DreamNightmareArt.js','// Gerado por prepare-dream-nightmare.js; alfa, olhos e recortes de apresentação.\nexport const DREAM_NIGHTMARE_ART='+JSON.stringify(art)+';\n');
+console.log('Pesadelo preparado: lagos irregulares, quatro poses de nado, escalada compartilhada, abrigos e corpos opacos.');

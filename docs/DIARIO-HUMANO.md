@@ -302,3 +302,23 @@ A pedido do usuário, no celular Yuna sobe sozinha pela teia da aranha até uma 
 ## 30/10/2026 — Planador entre espinhos
 
 Após as aranhas, Yuna caminha até a única folha na ponta do galho. Uma rajada inicia o voo, com manobra vertical pesada e avanço automático. A segunda metade tem grandes subidas e mergulhos entre galhos espinhosos. Contato causa queda e reinício no lançamento, sem repetir as teias. Pouso final automático, saves migrados e ajuda móvel das teias preservada. Artes novas aguardam revisão humana; resultados técnicos ficam no diário de IA.
+
+
+## 30/10/2026 — Leitura no celular após o voo
+
+As narrações de entrada e chegada do sonho reservam espaço abaixo dos botões superiores no celular em retrato. Títulos e texto ficam livres da barra de pausa, bandeira e áudio, preservando os tempos de leitura e o voo.
+
+
+## 30/10/2026 — O pesadelo termina na toalha
+
+Usuário aprovou o jogo até os espinhos e definiu o último trecho: queda para a floresta escura com pedras grandes, câmera próxima e furtividade. Uma barata gigantesca patrulha ao fundo; a luz dos olhos é bloqueada pelas pedras, que projetam sombras. Iluminar a menina provoca um golpe e game over. No fim, a falta de abrigo dá lugar à captura autorada: no instante em que a barata a alcança, Yuna acorda assustada na toalha. Seu grito acorda Nanda. A travessia anterior foi preservada, e o despertar reutiliza o mesmo piquenique, com novas poses de Yuna. Novas artes estão sujeitas à revisão do usuário.
+
+## 30/10/2026 — Correção solicitada da cena furtiva
+
+A avaliação humana identificou profundidade invertida: a pedra escondia Yuna do jogador e a barata parecia um recorte estático. A cena passa a colocar barata, pedras e menina em planos distintos, com Yuna sempre desenhada no caminho da frente. A assinatura visual anterior foi preservada; a imagem externa orientou somente a interação espacial. Barata articulada em seis patas, cabeça e antenas, alcance com juntas e piso florestal pintado. A revisão artística humana permanece pendente.
+
+## 30/10/2026 — Prólogo, música e perseguição ampliada
+
+Usuário acrescentou as falas de Yuna e do narrador, a música Bug attack a partir da aparição da barata e novas formas de abrigo: troncos, relevos e lama. A faixa é a trilha desse trecho; sua duração não define cena nem jogabilidade. A interpretação de esperar a música inteira foi corrigida antes da entrega.
+
+A menina recebe poses próprias abaixadas, com mãos nos ouvidos no abrigo e passos encurvados na ponta dos pés. O solo das elevações permanece contínuo: as fendas de uma primeira versão foram rejeitadas e retiradas. A captura depende de luz real no corpo, com tratamento da borda do abrigo e breve exposição contínua; saltar não é condição automática de derrota. O desfecho do piquenique permanece. Resultado de testes e validação visual pendente são registrados no acervo de IA.

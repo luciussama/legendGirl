@@ -1,0 +1,10 @@
+{
+  "ferramenta": "image_gen integrada",
+  "arquivo": "assets/art/dream-forest/chao-floresta-sombria-v1.png",
+  "sha256": "1f86dbdc8b3f5d5a0e2f818374c75ca878f7e7a63d2faac8095018d7c7c9b0c0",
+  "referencia": "assets/art/dream-forest/floresta-azul-v1.png",
+  "sha256Referencia": "fd93ae915f44955c7a13696615291075801dadf92a909366987b2a525e834fce",
+  "prompt": "Use case: illustration-story. Asset type: NEW environment painting for the GROUND of the same 2D storybook blue forest game. The attached image is ONLY a style and palette reference: retain its painterly gouache/digital brushwork, deep indigo, desaturated blue gray and subtle moss colors. Create a wide horizontal low camera view of a continuous forest floor, with clear depth: distant huge dark tree roots across the upper third, a flat mossy middle ground where separate large boulder sprites can stand, and a broad unobstructed slightly lower earthen footpath in the near foreground for a small girl. Fine painted soil, scattered dead leaves, patches of short dark moss, tiny pebbles embedded in earth, roots along rear and outer edges. The ground must connect from the back plane to the near path as one coherent surface, not floating islands or separate rectangular platforms. The near footpath stays open and has sufficient calm detail to read a character and moving cast shadows. Cool blue ambient reflected moonlight, very dark spooky storybook forest, subtle soft depth haze above the rear ground; no bright central light source, no painted light cones or directional cast shadows because those are dynamic. No sky, no moon, no people, no insect, NO large stones or boulders (those are separate game sprites), no UI, no text, no symbols, no border. Compose for lateral scrolling with ground texture continuing gently at both side edges. Wide landscape 3:1 composition.",
+  "transparencia": false,
+  "integracao": "Pintura nova de chão com três planos; sombras calculadas em runtime. Ilustração da internet usada somente como indicação espacial, sem transferência de estilo."
+}

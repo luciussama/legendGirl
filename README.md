@@ -115,7 +115,7 @@ flowchart TD
     Chase --> Canvas
     Chase -->|COMPLETE / 2,5 s| Epilogue["ToyRoomEpilogue: quarto arrumado + capítulo 2"]
     Epilogue --> Garden["GardenPhase: jardim 2D, piquenique e sono"]
-    Garden -->|sono concluído / 4 s| Dream["DreamPhase: floresta aérea 2D"]
+    Garden -->|sono concluído / 4 s| Dream["DreamPhase: sonho 2D, furtividade e despertar"]
     Dream --> Canvas
     Garden --> Canvas
     Toy --> Canvas
@@ -206,7 +206,7 @@ Os arquivos `toyRoom.js` e `input.js` servem como pontos de reexportação para 
 │       ├── effects/           # Efeitos visuais
 │       ├── ui/                # Interface desenhada no canvas
 │       ├── bear-chase/        # Domínio, câmera, modelos, materiais e áudio da perseguição 3D
-│       ├── dream-forest/      # Floresta aérea2D, escalada, vento, insetos móveis e Misty Blues
+│       ├── dream-forest/      # Sonho2D: travessia aérea, furtividade, luz/sombras e despertar
 │       ├── garden/            # Domínio lateral, contato por pixels, encontros, cenas e áudio do jardim
 │       ├── toy-room/          # Exploração, narrativa, espada e arena
 │       └── debug/             # Ferramentas de inspeção
@@ -278,3 +278,8 @@ O [jardim](docs/garden/GUIA-JARDIM.md) tem simulação própria, câmera somente
 Depois de três derrotas completas, somadas entre as partes da campanha no NORMAL, aparece “deseja tentar no fácil?”. Sim mantém a parte atual da aventura e salva a mudança para o FÁCIL; Não mantém a dificuldade. A perseguição informa “A menina não alcançou o urso. Tentar novamente?” e permite reiniciar sua tentativa pela própria tela.
 
 O sonho continua em um planador de folha: caminhada automática no galho, rajada, controle vertical com inércia e grandes subidas/mergulhos entre espinhos. Dano reinicia o voo no lançamento. Controles e manutenção no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).
+
+
+Após os espinhos, o sonho termina em uma floresta escura de furtividade: Yuna se esconde na sombra de grandes pedras enquanto uma barata monumental patrulha com luz nos olhos. Ser descoberta causa game over e retoma apenas esse trecho. Na captura final autorada, ela acorda assustada na toalha do piquenique e seu grito desperta Nanda. Controles, saves e manutenção no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).
+
+O final do sonho inclui o prólogo de Yuna e do cheiro repugnante, a trilha enviada Bug attack desde a aparição da barata, poses furtivas, subidas de relevos com solo contínuo e esconderijos sob a lama. A música não determina o tempo da cena. Controles e saves no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).
