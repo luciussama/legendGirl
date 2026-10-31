@@ -1,0 +1,31 @@
+{
+  "modo": "imagegen integrada",
+  "sessao": "20261031T013359-bc162a261b13",
+  "fontes": [
+    {
+      "arquivo": "lagos-lama-v1.png",
+      "referencia": "abrigos-floresta-v2.png",
+      "prompt": "Use case: illustration-story. Asset type: FOUR large irregular forest MUD LAKE sprites in a clean 2 columns by 2 rows atlas, on genuine transparent alpha. Input image is a STYLE AND PALETTE reference only: match the existing painted blue night forest, bark, moss and soil. Do NOT copy the tiny oval puddle. These must look like broad deep natural muddy lakes recessed INTO the forest earth, large enough for a little girl to SWIM across. Reading order: (1) a long asymmetrical muddy basin with a crooked indentation and one narrow inlet; (2) a much broader kidney-shaped mud lake with a jagged curving shoreline and a small muddy peninsula; (3) a relatively compact but deep crooked two-lobed basin, irregular shape; (4) a sprawling elongated S-curved lake with uneven banks and little inlets. Opaque dark umber/gray-brown liquid, subtle cold blue reflections, gentle painted surface currents and scattered bubbles, NO crystal blue water and no transparent central hole. Mud banks are torn earth, roots and small moss clumps integrated into the surrounding ground; banks slope DOWN into liquid, not a raised dish or rim made of regularly arranged stones. Low oblique side-view game camera, lake surface clearly visible with substantial front-to-back depth, entry and exit banks on left/right. Each lake complete and contained in its own cell, with wide fully transparent gutters at least60px on every side. Distinct silhouettes and different aspect ratios; no perfect ellipses, no symmetry, no identical repeated pools. No characters, creature, background, grid, text, labels, cast shadows or detached ground tiles. Transparent alpha outside the natural shorelines.",
+      "uso": "Referência preservada; detalhes das margens tocavam as divisões.",
+      "sha256": "85d0d677c7b138f8a35b5e0b2348df2694fc0651abaf09de7c56910401f32f22",
+      "sha256Referencia": "85e2f8f5e96a3abcb69abda637ab8d6696c9a0a06635e9c22b2499003e30c116"
+    },
+    {
+      "arquivo": "lagos-lama-v2.png",
+      "referencia": "lagos-lama-v1.png",
+      "prompt": "Use case: precise-object-edit. Edit target: the attached 2x2 atlas of four irregular muddy lakes. Preserve ALL four painted lake shapes, colors, muddy liquid, irregular shorelines, roots and details. Change ONLY layout/scale so every complete lake is fully isolated. The current bottom lakes touch the middle cell border. Scale every lake DOWN to about75 percent of its current cell occupancy and center it within its same cell, keeping a TWO BY TWO grid. Require a very broad fully transparent cross-shaped gutter and at least70px of fully transparent margin between any painted lake/root and each cell border, including the outside canvas. Absolutely no root, moss, shore, water or antialiasing may reach or cross the center vertical or horizontal axes. All four lakes remain complete, no clipping and no merging. Transparent alpha outside the objects. No other changes, no background, gradient, grid or text.",
+      "uso": "Quatro lagos irregulares separados em grade2×2.",
+      "sha256": "f62f0a2c88eeff2a143337d389ffbf2bd99d6e320218a97ad8b95e54949d8498",
+      "sha256Referencia": "85d0d677c7b138f8a35b5e0b2348df2694fc0651abaf09de7c56910401f32f22"
+    },
+    {
+      "arquivo": "yuna-nado-v1.png",
+      "referencia": "yuna-furtiva-v2.png",
+      "prompt": "Use case: illustration-story. Asset type: clean FOUR-FRAME swimming sprite atlas on genuine transparent alpha, 2 columns by 2 rows, generous clear gutters and full figures contained in cells. Input image is the authoritative Yuna identity, clothes and painterly game style reference. Same little girl, brown curly twin pigtails with pink bows, brown eyes, yellow puff sleeves, turquoise candy-patterned pinafore dress, pink-white shoes. Exactly four sequential poses of cautious horizontal breaststroke/dog-paddle swimming to screen RIGHT. Her head and upper shoulders stay at the SAME level and same size across frames; worried attentive expression, mouth above imagined liquid, legs trailing horizontally behind, torso nearly horizontal. Frame1 arms extend forward, knees tuck; frame2 hands sweep outward/back, feet kick; frame3 arms draw toward chest, legs extend; frame4 hands recover forward, knees begin tuck. Real bent joints, distinct limb positions, no standing, crouching, running, flying or climbing poses. Show the COMPLETE body, hands and shoes so the game can hide lower portions behind its dynamic muddy surface. Small muddy stains on lower clothes and shoes; preserve turquoise/yellow identity and no costume change. Do not paint water, mud, bubbles, splash, pool, floor, environment or cast shadow. No text, grid, borders, labels or background. All four fully isolated, no touching sprites, same proportions and head scale. Truly transparent background.",
+      "uso": "Primeira atuação de nado; figurino em correção pela equipe de arte após QA.",
+      "sha256": "152b9a97aa0706de4eaa1fbf0459ea4b169bb22aadbd2f09219da5230ca194e6",
+      "sha256Referencia": "f6e66fd44404e6ff0aed5e8804bb2fada49d47ec446cbdd055d5485be53aac83"
+    }
+  ],
+  "observacao": "A escalada das margens reutiliza yuna-escalada-v2.png sem modificar o PNG, as âncoras ou a jogabilidade aérea."
+}

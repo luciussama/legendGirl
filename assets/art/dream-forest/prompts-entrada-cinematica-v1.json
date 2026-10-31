@@ -1,0 +1,61 @@
+{
+  "modo": "imagegen integrada",
+  "sessao": "20261031T185021-1b19ec3f7ba8",
+  "fontes": [
+    {
+      "papel": "entry",
+      "prompt": "Use case: illustration-story. Asset type: FOUR full-body animation sprites in a clean TWO columns by TWO rows atlas, transparent alpha. Reference image defines EXACT little girl identity, chestnut curly hair, two pink bows, brown eyes, turquoise candy/flower pinafore, yellow puff sleeves, white socks and pink flower shoes, same painted storybook finish. Create a FEET-FIRST JUMP INTO A MUDDY POOL, facing RIGHT in every pose. Reading order: (1) spring preparation on her feet, knees lightly bent, torso upright, arms swept backward, worried determined face; (2) airborne jump with knees lifted toward chest and both arms extended forward for balance, whole body clearly leaping horizontally right; (3) downward fall into water, legs straight DOWN together and pink shoes pointed downward, torso upright, arms raised sideways, tense face; (4) the instant of going under: arms up, shoulders hunched, legs down together, eyes squeezed, full body still drawn so game can conceal immersed parts. Do NOT draw squatting underwater, climbing, swimming horizontally, ropes, water, mud surface, floor or splash: separate splash art will be supplied. Slight mud on shoes/hem. Consistent head size and body scale. Every COMPLETE sprite isolated in its own cell; at least65px fully transparent margins all around and between cells, no limb crosses center axes. No text/grid/background/halo/shadow. Genuine transparent background.",
+      "referencias": [
+        "yuna-furtiva-v4.png"
+      ],
+      "arquivo": "yuna-salto-lama-v1.png",
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "hashesReferencias": {
+        "yuna-furtiva-v4.png": "430ed907779ba9ba22de3829126c70ae37e79ddcc53169bd2cdf529bbe965ad7"
+      }
+    },
+    {
+      "papel": "splash",
+      "prompt": "Use case: illustration-story. Asset type: one transparent game effect sprite, a MUD SPLASH caused by a small person jumping feet-first into a muddy pool. The reference defines the brown opaque mud, cool blue highlights and painted forest style. Draw a broad low asymmetric splash crown with thick dark umber muddy liquid curling outward on both sides and several separated droplets shooting diagonally upward, largest drops near the impact and smaller arcs farther away. The center should be a largely TRANSPARENT opening for compositing a character in the middle. Thick wet sticky brown splashes with subtle cold blue reflected light, not clean blue water, not fire. Low oblique side view matching a 2D storybook game. ONLY the splash and airborne droplets: no lake, bank, stones, ground rectangle, child, insect or background. Broad horizontal silhouette, complete contained effect with80px transparent margin. High quality illustrated texture, genuine transparent alpha, no glow, labels, text, grid or cast shadow.",
+      "referencias": [
+        "lagos-lama-v2.png"
+      ],
+      "arquivo": "respingo-lama-v1.png",
+      "sha256": "0b863e85e0c58c94dfd17a554304b5cbdc3a7bbac8cae6f38ea5c53706505c2f",
+      "hashesReferencias": {
+        "lagos-lama-v2.png": "f62f0a2c88eeff2a143337d389ffbf2bd99d6e320218a97ad8b95e54949d8498"
+      }
+    },
+    {
+      "papel": "background",
+      "prompt": "Use case: illustration-story. Asset type: full-bleed cinematic background painting for a frightening dream sequence, landscape 3:2. Match the reference's richly painted blue night forest, but create an ENTIRELY NEW composition at a small child's EYE LEVEL, a cinematic lens looking ALONG a narrow forest path into darkness, not a side-scrolling platform view. Foreground wet soil and tangled roots at bottom, dense enormous dark tree trunks at left and right framing a deep central vanishing point, barely visible fern silhouettes, desaturated midnight-blue depth and soft thin ground mist. An open dark corridor through the CENTER is needed for large animated characters and also for a center-cropped portrait screen. Moody, ominous, claustrophobic, a faint cold rim light catches roots and leaves, deep black behind the path. Not a beautiful sunny forest, no cyan neon. No actors, people, fairy, cockroach, eyes, water/lakes, game platforms, interface, text or panels. Render a complete coherent illustrated scene with cinematic perspective and dark tactile detail; no borders.",
+      "referencias": [
+        "floresta-azul-v1.png"
+      ],
+      "arquivo": "floresta-cinematica-v1.png",
+      "sha256": "15989b36221a10485ce511b7a15b1e2df46c87e4b866f79e1a9309e6d5160542",
+      "hashesReferencias": {
+        "floresta-azul-v1.png": "fd93ae915f44955c7a13696615291075801dadf92a909366987b2a525e834fce"
+      }
+    },
+    {
+      "papel": "acting",
+      "prompt": "Use case: illustration-story. Asset type: four high-resolution full-body cinematic character acting sprites in a TWO by TWO transparent atlas. Reference is exact identity/style: very young girl with curly chestnut hair, two pink bows, brown eyes, turquoise pinafore with candy/flower motifs and yellow buttons, pale yellow puff sleeves, white socks and pink flower shoes. Preserve these precisely. The girl is alone in a scary dark forest, clothing hem/shoes lightly muddy. Reading order: (1) slow hesitant WALK facing right, one foot forward, arms held slightly away from body, wary face; (2) the opposite step of that SAME cautious walk, same head size/body height and ground line; (3) she STOPS with feet planted and turns head/upper torso to look BACK LEFT over her shoulder, brows raised and mouth just opening in alarm; (4) terror RECOIL with both feet still present, body leaning back, wide eyes looking toward the giant monster above/behind her, hands protect face/chest, no smile. Each pose complete and isolated;65px transparent margins to all cell edges, no limbs cross center axes. Two walking poses must visibly alternate legs while preserving clothing. Film-quality painted storybook illustration matching reference, not pixel art, no scenery, monster, shadow, glow, floor, text or frame. Genuine alpha.",
+      "referencias": [
+        "yuna-furtiva-v4.png"
+      ],
+      "arquivo": "yuna-cinematica-pesadelo-v1.png",
+      "sha256": "c7a1b1f634887ef47746a17632bc0dadaf4f23ff8d9354d4b7a6b8c6f7fa9316",
+      "hashesReferencias": {
+        "yuna-furtiva-v4.png": "430ed907779ba9ba22de3829126c70ae37e79ddcc53169bd2cdf529bbe965ad7"
+      }
+    }
+  ],
+  "atuacaoFinal": {
+    "arquivo": "yuna-cinematica-pesadelo-v2.png",
+    "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+    "referencia": "yuna-cinematica-pesadelo-v1.png",
+    "prompt": "Use case: precise-object-edit. Edit target: the attached 2x2 character atlas. Change ONLY the leg/foot pose in the TOP RIGHT cell: it must be the OPPOSITE step of the TOP LEFT walking pose. In TOP RIGHT, the near leg is now bent backward with heel lifted behind her toward the LEFT; the far leg steps forward toward the RIGHT but remains partly behind the skirt. Both shoes visible and clearly staggered in depth. The TOP LEFT has its near leg extended forward/right; TOP RIGHT must not duplicate that silhouette. Keep the exact head, body, face, arms, outfit, colors, pose scale and anchor baseline of the top-right figure. Keep ALL THREE OTHER CELLS completely unchanged. Preserve genuine transparent background; no added props, grid, text, halo, background, shadow or crop.",
+    "observacao": "Segundo passo corrigido; variante1 preservada. Recortes superiores usam máscara do componente para excluir pixels da pose vizinha."
+  }
+}

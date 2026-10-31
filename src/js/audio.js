@@ -1,3 +1,4 @@
+import {GameSoundEffects,preloadGameSounds} from './audio/GameSoundEffects.js';
 import { scheduleDamageSound } from './toy-room/DamageAudio.js';
 import { scheduleSwordSound } from './toy-room/SwordAudio.js';
 import { scheduleEnemyMovement } from './toy-room/EnemyMovementAudio.js';
@@ -5,6 +6,7 @@ import { ArenaSoundEffects } from './toy-room/ArenaSoundEffects.js';
 
 export function createAudioSystem() {
   const arenaEffects = new ArenaSoundEffects();
+  const gameEffects = new GameSoundEffects();
   let effectsPaused = false;
   const state = {
     audioCtx: null,
@@ -54,7 +56,7 @@ export function createAudioSystem() {
 
   function setMuted(muted) {
     isMuted = Boolean(muted);
-    if (isMuted) arenaEffects.stop();
+    if (isMuted) { arenaEffects.stop(); gameEffects.stop(); }
     if (state.audioCtx && state.masterGainNode) {
       state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
     }
@@ -89,6 +91,7 @@ export function createAudioSystem() {
 
   function clearActiveSounds() {
     arenaEffects.stop();
+    gameEffects.stop();
     activeAudioNodes.forEach(node => {
       try {
         if (typeof node.stop === 'function') node.stop();
@@ -142,6 +145,7 @@ export function createAudioSystem() {
       }
 
       arenaEffects.preload(state.audioCtx);
+      preloadGameSounds(state.audioCtx, ['jump']);
 
       // Inicializa ou retoma a trilha correspondente à fase atual se estiver pausada
       if (isToyRoomMusicWanted) {
@@ -192,64 +196,14 @@ export function createAudioSystem() {
     clearActiveSounds();
   }
 
+  /** Mesmo pulo gravado em todas as fases, inclusive nos saltos longos e na arena. */
   function playJumpSound() {
-    try {
-      if (!state.audioCtx || state.audioCtx.state !== 'running') return;
-
-      const now = state.audioCtx.currentTime;
-      const osc = state.audioCtx.createOscillator();
-      const gain = state.audioCtx.createGain();
-
-      osc.type = 'sine';
-      osc.frequency.setValueAtTime(360, now);
-      osc.frequency.exponentialRampToValueAtTime(620, now + 0.13);
-
-      gain.gain.setValueAtTime(0.12, now);
-      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.14);
-
-      osc.connect(gain);
-      gain.connect(getDestination() || state.audioCtx.destination);
-      registerActiveNode(osc);
-      osc.start(now);
-      osc.stop(now + 0.15);
-    } catch (e) {}
+    if (effectsPaused || isMuted || !state.audioCtx) return false;
+    return gameEffects.play(state.audioCtx, getDestination(), 'jump', {volume:.325});
   }
 
   function playLongJumpSound(progress = 0) {
-    try {
-      if (!state.audioCtx || state.audioCtx.state !== 'running') return;
-
-      const now = state.audioCtx.currentTime;
-      const pitchScale = 1.0 + Math.max(0, Math.min(1, progress)) * 0.48;
-
-      // Camada 1: Varredura profunda e suave, ascendendo à medida que a potência do salto evolui
-      const osc1 = state.audioCtx.createOscillator();
-      const gain1 = state.audioCtx.createGain();
-      osc1.type = 'sine';
-      osc1.frequency.setValueAtTime(420 * pitchScale, now);
-      osc1.frequency.exponentialRampToValueAtTime(840 * pitchScale, now + 0.22);
-      gain1.gain.setValueAtTime(0.16, now);
-      gain1.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
-      osc1.connect(gain1);
-      gain1.connect(getDestination() || state.audioCtx.destination);
-      registerActiveNode(osc1);
-      osc1.start(now);
-      osc1.stop(now + 0.25);
-
-      // Camada 2: Harmônicos agudos cintilantes
-      const osc2 = state.audioCtx.createOscillator();
-      const gain2 = state.audioCtx.createGain();
-      osc2.type = 'triangle';
-      osc2.frequency.setValueAtTime(1050 * pitchScale, now);
-      osc2.frequency.exponentialRampToValueAtTime(1750 * pitchScale, now + 0.18);
-      gain2.gain.setValueAtTime(0.09, now);
-      gain2.gain.exponentialRampToValueAtTime(0.001, now + 0.2);
-      osc2.connect(gain2);
-      gain2.connect(getDestination() || state.audioCtx.destination);
-      registerActiveNode(osc2);
-      osc2.start(now);
-      osc2.stop(now + 0.22);
-    } catch (e) {}
+    return playJumpSound();
   }
 
   function playLevelUpChime(level = 0) {
@@ -702,6 +656,7 @@ export function createAudioSystem() {
   function pauseMusic() {
     effectsPaused = true;
     arenaEffects.stop();
+    gameEffects.stop();
     if (toyRoomAudio && !toyRoomAudio.paused) {
       wasToyRoomAudioPlaying = true;
       try {
@@ -883,6 +838,8 @@ export function createAudioSystem() {
     if (!profile && !swordEvent) throw new RangeError(`Som de combate desconhecido: ${event}`);
     if (!state.audioCtx || state.audioCtx.state !== 'running') return false;
 
+    if (event === 'player_jump') return playJumpSound();
+
     if (arena) {
       if (effectsPaused || isMuted) return false;
       // O corte tem resposta imediata mesmo no primeiro golpe, antes de decodificar o MP3.
@@ -949,6 +906,7 @@ export function createAudioSystem() {
   }
   function stopArenaMusic() {
     arenaEffects.stop();
+    gameEffects.stop();
     for (const voice of arenaVoices) { try { voice.stop(); } catch (_) {} }
     arenaVoices.clear();
   }

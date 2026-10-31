@@ -1,0 +1,26 @@
+{
+  "schemaVersion": 1,
+  "data": "2026-10-31",
+  "sessao": "20261031T020716-bd3a3a2bdfe9",
+  "ferramenta": "image_gen.imagegen integrada, skill imagegen",
+  "tipo": "Edição derivada de material para face de morro contínuo",
+  "prompt": "Use case: style-transfer. Edição derivada da primeira imagem (prancha abrigos-floresta-v2) para extrair e reinterpretar SOMENTE o material de terra/musgo da célula inferior esquerda; a segunda imagem (chão-floresta-sombria) é referência exata de paleta e pincelada. Entregue UMA ÚNICA faixa horizontal LARGA de face lateral de um morro de terra, sem grade, canvas1536×1024. Face de solo contínuo castanho-escuro dessaturado com iluminação ambiente azul noturna discreta, pintura ilustrada de livro infantil igual ao piso de referência. Terra compacta úmida e granular, pequenas pedras EMBUTIDAS, raízes finas EMBUTIDAS por todo volume; nenhuma raiz pode ficar pendurada no vazio. Borda superior irregular e quase horizontal de terra com musgo discreto e poucas folhas baixas, vista lateral com leve topo visível. A massa de terra deve preencher TODA a largura e continuar densa e opaca até a BASE e até as DUAS LATERAIS do canvas; só leve irregularidade orgânica transparente acima da borda superior. A imagem será recortada na forma de relevos de chão contínuo e a base dissolvida no chão pelo jogo. Muito importante: NÃO criar ilha flutuante, bloco isolado, laje, pedestal, falésia com vazio embaixo, objetos soltos, cavernas, raízes suspensas, contorno arredondado de plataforma, fundo com floresta, cenário, personagem, texto ou linha de apoio. Nada deve sugerir uma plataforma separada do chão. Face de terra maciça contínua, sem fechar as laterais num objeto delimitado. Material plano para revestir morros, não perspectiva de maquete.",
+  "referencias": [
+    "assets/art/dream-forest/abrigos-floresta-v2.png",
+    "assets/art/dream-forest/chao-floresta-sombria-v1.png"
+  ],
+  "origemGerada": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-f88312d3-6a6e-4738-9d2d-726ca957088b.png",
+  "arquivo": "assets/art/dream-forest/morro-terra-v1.png",
+  "avaliacao": "Fonte realmente inspecionada: massa de terra contínua até base/laterais, raízes embutidas e musgo na borda; sem ilha separada ou raízes pendentes. Root deve recortar na geometria já existente e dissolver a base com o piso, sem mudar física. Não certifica composição em jogo.",
+  "sha256": "d56ec2e0b1aa256fb97957c25acd97e6d1181f92039c45cbf26088515dd451b6",
+  "bytes": 3296788,
+  "dimensoes": [
+    1536,
+    1024
+  ],
+  "alfa": {
+    "topo": 81,
+    "base": 245,
+    "centro": 248
+  }
+}

@@ -1,0 +1,127 @@
+{
+  "schemaVersion": 1,
+  "data": "2026-10-31",
+  "ferramenta": "image_gen.imagegen integrada, skill imagegen, edição identity-preserve",
+  "sessao": "20261031T014908-23aeed9c4860",
+  "pedido": "Correção autônoma de coerência de figurino após auditoria de direção de arte.",
+  "referencias": [
+    "assets/art/dream-forest/yuna-escalada-v2.png",
+    "assets/art/dream-forest/yuna-planador-v1.png",
+    "assets/art/garden/runtime/menina-acoes-v1.png"
+  ],
+  "restricoes": "Fontes anteriores preservadas. Nenhuma modificação de pixels por ferramenta externa. Âncoras e integração precisam ser recalculadas pelo preparador.",
+  "resultados": [
+    {
+      "key": "swim",
+      "output": "yuna-nado-v2.png",
+      "source": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-ddde873b-ecc5-41b2-91f1-0d2ef2f15093.png",
+      "arquivo": "assets/art/dream-forest/yuna-nado-v2.png",
+      "avaliacao": "Tênis baixos florais e laços lisos corrigidos; mesmas poses e grade preservadas.",
+      "sha256": "22d13e9d6bc0cb828b9cf44d8768264fc06cadcaba002fd76fbd4cdaf50fddae",
+      "bytes": 2311142
+    },
+    {
+      "key": "stealth",
+      "output": "yuna-furtiva-v3.png",
+      "source": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-d068243a-ea9e-4c45-b80d-7822cb991927.png",
+      "arquivo": "assets/art/dream-forest/yuna-furtiva-v3.png",
+      "avaliacao": "Referência intermediária: célula5 com margem superior2px, rejeitada pelo preparador; usar yuna-furtiva-v4.png.",
+      "sha256": "7d8dd1e01251b5ecd7339010e4187e91c45718669cb92e360e17dd482af63027",
+      "bytes": 2521626
+    },
+    {
+      "key": "fright",
+      "output": "yuna-susto-em-pe-v2.png",
+      "source": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-5f7f50db-f4ed-4a43-a6c5-783f5b324574.png",
+      "arquivo": "assets/art/dream-forest/yuna-susto-em-pe-v2.png",
+      "avaliacao": "Tênis baixos florais corrigidos; pequenos pontos claros dos laços persistiram nas tentativas integradas. Não declarar remoção completa.",
+      "sha256": "f5e05cc278dd6211c26b582e9f599c59f46e19783ae11bc20de4fa3490c15987",
+      "bytes": 1491938
+    },
+    {
+      "key": "wake",
+      "output": "yuna-despertar-v2.png",
+      "source": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-c36323ba-e585-4fdb-8bc5-1428246b5dac.png",
+      "arquivo": "assets/art/dream-forest/yuna-despertar-v2.png",
+      "avaliacao": "Tênis baixos florais e laços lisos corrigidos; canvas mudou para2137×736, exige medir novos recortes.",
+      "sha256": "dc45a8487d3f7fd713a9f325a8d8f057381e0925429d5c1e44dfde07e77eb39c",
+      "bytes": 2078652
+    },
+    {
+      "prompt": "Use case: precise-object-edit. Adjust ONLY SPRITE SPACING of the first sprite sheet, which contains SIX poses in a3columns×2rows grid on1536×1024 canvas. Keep exact same poses, faces, plain pink hair bows, floral LOW pink shoes, clothing, expressions and painterly rendering. All six sprites must fit FULLY inside their respective512×512 cells with AT LEAST24 pixels transparent padding on every side of each cell, including top of bottom row. Scale each sprite uniformly around its own cell center to90% current size (same uniform factor for all six, preserve head proportions). NO sprite may touch a cell border. Transparent alpha background. Do not add or remove poses. Keep six poses in original order.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-0d814372-1606-4444-a650-b40cd85fa249.png",
+      "arquivo": "assets/art/dream-forest/yuna-furtiva-v4.png",
+      "avaliacao": "Selecionada após v3 tocar a divisão superior da última célula. Mesmas seis poses com tênis baixos florais e laços lisos. Margens mínimas medidas45/44/54px no topo da linha inferior; todas maiores24px.",
+      "sha256": "430ed907779ba9ba22de3829126c70ae37e79ddcc53169bd2cdf529bbe965ad7",
+      "bytes": 2204107
+    }
+  ],
+  "iteracoes": [
+    {
+      "key": "swim",
+      "etapa": "figurino_",
+      "prompt": "Use case: identity-preserve. Edição precisa de sprite de produção. A primeira imagem é o ALVO a editar; a segunda (yuna-escalada-v2) e terceira (yuna-planador-v1) são APENAS referências do figurino canônico. Altere SOMENTE o calçado e os laços de cabelo no alvo. Substitua as botas rosas de cano alto com cadarços e corações por sapatos/tênis baixos rosas com sola creme, tira rosa e pequena flor branca de miolo amarelo como nas referências; cano abaixo do tornozelo, meias brancas curtas delicadas, sem coração nem cadarço. Torne os laços rosas lisos sem bolinhas, conservando sua forma/posição. Preserve rigorosamente todas as demais áreas: rosto, olhos, cabelo, pele, roupa turquesa com doces e camiseta amarela, mãos, braços, pernas, postura, expressão, escala relativa, silhueta corporal e estilo pintado. Não reproporcione, não redesenhe os rostos. Mantenha canvas e grade do alvo, mesmos centros, margens e separação; todos os sprites completos, sem tocar células vizinhas. Fundo com alfa verdadeiramente transparente sem cenário, sem sombra ambiente ou halo. Sem texto.\nPreserve EXATAMENTE as quatro poses horizontais de nado na grade2×2 do alvo1536×1024, incluindo lama pintada e direção direita.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-e25fadb5-ef04-490d-991c-6c363a4c5312.png"
+    },
+    {
+      "key": "swim",
+      "etapa": "figurino_refine_",
+      "prompt": "Use case: precise-object-edit. A primeira imagem é o alvo já corrigido quase completo. A segunda imagem é referência canônica. Corrija SOMENTE os detalhes ainda errados: elimine TODAS as bolinhas brancas decorativas dos laços de cabelo, deixando laços rosas lisos com sombreado natural (não retirar brilhos de volume sutis); elimine qualquer pequeno coração amarelo remanescente na lateral dos sapatos, deixando só flor branca de miolo amarelo, tira rosa e sola creme. NÃO mudar absolutamente nenhum outro elemento. Preserve os sapatos baixos florais já corretos, os rostos, poses, roupa, lama, proporções, posições, escalas e número de células da primeira imagem. Transparência alfa real. Todos os sprites inteiros, com margem transparente externa e entre células, não encostar na borda. Preserve a grade atual exatamente.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-d41e4e31-d54d-4560-9807-042821f6812e.png"
+    },
+    {
+      "key": "swim",
+      "etapa": "figurino_last_",
+      "prompt": "Precise object edit: remove the SMALL YELLOW HEART shapes from the side of EACH PINK SHOE. Paint over those tiny hearts with the SAME PINK LEATHER as surrounding shoe. Keep the white daisies. Every shoe must have ONLY pink surface, pink strap, white daisy and cream sole. Image1 is edit target, image2 only canonical costume reference. Change NOTHING ELSE. Preserve every face, eye, strand of hair, exact pose, body, clothing, placement, size, canvas dimensions, sprite count, grid, transparent gutters. Transparent alpha background. No text.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-ddde873b-ecc5-41b2-91f1-0d2ef2f15093.png"
+    },
+    {
+      "key": "stealth",
+      "etapa": "figurino_",
+      "prompt": "Use case: identity-preserve. Edição precisa de sprite de produção. A primeira imagem é o ALVO a editar; a segunda (yuna-escalada-v2) e terceira (yuna-planador-v1) são APENAS referências do figurino canônico. Altere SOMENTE o calçado e os laços de cabelo no alvo. Substitua as botas rosas de cano alto com cadarços e corações por sapatos/tênis baixos rosas com sola creme, tira rosa e pequena flor branca de miolo amarelo como nas referências; cano abaixo do tornozelo, meias brancas curtas delicadas, sem coração nem cadarço. Torne os laços rosas lisos sem bolinhas, conservando sua forma/posição. Preserve rigorosamente todas as demais áreas: rosto, olhos, cabelo, pele, roupa turquesa com doces e camiseta amarela, mãos, braços, pernas, postura, expressão, escala relativa, silhueta corporal e estilo pintado. Não reproporcione, não redesenhe os rostos. Mantenha canvas e grade do alvo, mesmos centros, margens e separação; todos os sprites completos, sem tocar células vizinhas. Fundo com alfa verdadeiramente transparente sem cenário, sem sombra ambiente ou halo. Sem texto.\nPreserve EXATAMENTE as seis poses na grade3×2 do alvo1536×1024: abrigo mãos nos ouvidos, quatro passos abaixados e salto encolhido. Não mude nenhuma posição dos pés ou mãos.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-d068243a-ea9e-4c45-b80d-7822cb991927.png"
+    },
+    {
+      "key": "fright",
+      "etapa": "figurino_",
+      "prompt": "Use case: identity-preserve. Edição precisa de sprite de produção. A primeira imagem é o ALVO a editar; a segunda (yuna-escalada-v2) e terceira (yuna-planador-v1) são APENAS referências do figurino canônico. Altere SOMENTE o calçado e os laços de cabelo no alvo. Substitua as botas rosas de cano alto com cadarços e corações por sapatos/tênis baixos rosas com sola creme, tira rosa e pequena flor branca de miolo amarelo como nas referências; cano abaixo do tornozelo, meias brancas curtas delicadas, sem coração nem cadarço. Torne os laços rosas lisos sem bolinhas, conservando sua forma/posição. Preserve rigorosamente todas as demais áreas: rosto, olhos, cabelo, pele, roupa turquesa com doces e camiseta amarela, mãos, braços, pernas, postura, expressão, escala relativa, silhueta corporal e estilo pintado. Não reproporcione, não redesenhe os rostos. Mantenha canvas e grade do alvo, mesmos centros, margens e separação; todos os sprites completos, sem tocar células vizinhas. Fundo com alfa verdadeiramente transparente sem cenário, sem sombra ambiente ou halo. Sem texto.\nPreserve EXATAMENTE as duas poses em pé na grade2×1 do alvo1774×887, sapatos apoiados e expressão assustada.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-5f7f50db-f4ed-4a43-a6c5-783f5b324574.png"
+    },
+    {
+      "key": "fright",
+      "etapa": "figurino_refine_",
+      "prompt": "Use case: precise-object-edit. A primeira imagem é o alvo já corrigido quase completo. A segunda imagem é referência canônica. Corrija SOMENTE os detalhes ainda errados: elimine TODAS as bolinhas brancas decorativas dos laços de cabelo, deixando laços rosas lisos com sombreado natural (não retirar brilhos de volume sutis); elimine qualquer pequeno coração amarelo remanescente na lateral dos sapatos, deixando só flor branca de miolo amarelo, tira rosa e sola creme. NÃO mudar absolutamente nenhum outro elemento. Preserve os sapatos baixos florais já corretos, os rostos, poses, roupa, lama, proporções, posições, escalas e número de células da primeira imagem. Transparência alfa real. Todos os sprites inteiros, com margem transparente externa e entre células, não encostar na borda. Preserve a grade atual exatamente.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-6479a476-810f-4662-81bf-4a50086f9864.png"
+    },
+    {
+      "key": "fright",
+      "etapa": "figurino_last_",
+      "prompt": "Precise object edit: REPLACE ALL HAIR BOWS with PLAIN SOLID PINK fabric bows. There must be ZERO ROUND WHITE DOTS on ANY bow. The current bows have large white polka dots: ERASE all those circular spots and paint them pink. Use the plain smooth bows from reference image2. Do not change hair. Image1 is edit target, image2 only canonical costume reference. Change NOTHING ELSE. Preserve every face, eye, strand of hair, exact pose, body, clothing, placement, size, canvas dimensions, sprite count, grid, transparent gutters. Transparent alpha background. No text.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-cf6a2b26-2e97-4be2-9bbf-f6685d483b10.png"
+    },
+    {
+      "key": "wake",
+      "etapa": "figurino_",
+      "prompt": "Use case: identity-preserve. Edição precisa de sprite de produção. A primeira imagem é o ALVO a editar; a segunda (yuna-escalada-v2) e terceira (yuna-planador-v1) são APENAS referências do figurino canônico. Altere SOMENTE o calçado e os laços de cabelo no alvo. Substitua as botas rosas de cano alto com cadarços e corações por sapatos/tênis baixos rosas com sola creme, tira rosa e pequena flor branca de miolo amarelo como nas referências; cano abaixo do tornozelo, meias brancas curtas delicadas, sem coração nem cadarço. Torne os laços rosas lisos sem bolinhas, conservando sua forma/posição. Preserve rigorosamente todas as demais áreas: rosto, olhos, cabelo, pele, roupa turquesa com doces e camiseta amarela, mãos, braços, pernas, postura, expressão, escala relativa, silhueta corporal e estilo pintado. Não reproporcione, não redesenhe os rostos. Mantenha canvas e grade do alvo, mesmos centros, margens e separação; todos os sprites completos, sem tocar células vizinhas. Fundo com alfa verdadeiramente transparente sem cenário, sem sombra ambiente ou halo. Sem texto.\nPreserve EXATAMENTE as três poses sentadas na grade3×1 do alvo2172×724, pernas dobradas e diferentes expressões.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-3718e3cf-eee7-4e1c-843a-d8cb343d322c.png"
+    },
+    {
+      "key": "wake",
+      "etapa": "figurino_refine_",
+      "prompt": "Use case: precise-object-edit. A primeira imagem é o alvo já corrigido quase completo. A segunda imagem é referência canônica. Corrija SOMENTE os detalhes ainda errados: elimine TODAS as bolinhas brancas decorativas dos laços de cabelo, deixando laços rosas lisos com sombreado natural (não retirar brilhos de volume sutis); elimine qualquer pequeno coração amarelo remanescente na lateral dos sapatos, deixando só flor branca de miolo amarelo, tira rosa e sola creme. NÃO mudar absolutamente nenhum outro elemento. Preserve os sapatos baixos florais já corretos, os rostos, poses, roupa, lama, proporções, posições, escalas e número de células da primeira imagem. Transparência alfa real. Todos os sprites inteiros, com margem transparente externa e entre células, não encostar na borda. Prancha horizontal de três poses sentadas em3colunas×1linha.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-921df166-95d5-4ab0-86f8-71e69463812b.png"
+    },
+    {
+      "key": "wake",
+      "etapa": "figurino_last_",
+      "prompt": "Precise object edit: REPLACE ALL HAIR BOWS with PLAIN SOLID PINK fabric bows. There must be ZERO ROUND WHITE DOTS on ANY bow. The current bows have large white polka dots: ERASE all those circular spots and paint them pink. Use the plain smooth bows from reference image2. Do not change hair. Image1 is edit target, image2 only canonical costume reference. Change NOTHING ELSE. Preserve every face, eye, strand of hair, exact pose, body, clothing, placement, size, canvas dimensions, sprite count, grid, transparent gutters. Transparent alpha background. No text.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-c36323ba-e585-4fdb-8bc5-1428246b5dac.png"
+    },
+    {
+      "key": "fright",
+      "etapa": "ultima_tentativa_lacos",
+      "prompt": "Edit the two-character sprite sheet. Replace the FOUR PINK HAIR BOWS completely with MATTE PLAIN PINK BOWS. NO WHITE PAINT OR SPOTS anywhere inside any bow. Flat pink silk with darker pink fold shadows only. The bows currently have multiple WHITE POLKA DOTS. All those white circular marks MUST DISAPPEAR. Preserve exact bows silhouettes and positions. Do not change the characters' eyes, highlights in eyes, faces, shoes, bodies, clothing, hands or poses. Transparent alpha background and same 2-column sprite sheet canvas dimensions. This is a very local edit to HAIR BOWS ONLY.",
+      "caminhoGerado": "/Users/sergio/.codex/generated_images/01a18fa3-79a0-7762-bcf0-148fb08ef7a3/exec-df5cb452-4a21-4a74-9960-d0d90aef8c8d.png"
+    }
+  ]
+}

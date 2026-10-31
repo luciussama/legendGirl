@@ -1,0 +1,32 @@
+{
+  "modo": "imagegen integrada",
+  "sessao": "20261031T175000-e75c6bdf5baa",
+  "fontes": [
+    {
+      "arquivo": "yuna-saida-lama-v1.png",
+      "referencias": [
+        "yuna-furtiva-v4.png",
+        "yuna-nado-v2.png"
+      ],
+      "prompt": "Use case: illustration-story. Asset type: production game sprite atlas, SIX sequential poses in a 3 columns by 2 rows grid on genuine transparent alpha. Reference images: yuna-furtiva-v4 and yuna-nado-v2 define EXACT character identity, outfit, paint finish and proportions. A very small curly chestnut-haired girl, two PINK bows, brown eyes, turquoise pinafore with yellow buttons and candy/flower motifs over pale yellow puff sleeves, white socks and pink flower shoes. Match these references closely, do not change outfit or age. Primary request: a NEW bank-exit animation after swimming through sticky mud, NOT climbing a rope/tree. All six poses side view facing RIGHT, visible face, same head size and body scale. Palms OPEN and pushing DOWN on a low HORIZONTAL bank just below chest level. Fingers spread, never fists reaching upward. Reading order: (1) nearly horizontal swimmer, hips and legs trailing left, reaches both open palms forward/down to grip the low bank, chin just above wrists; (2) elbows bend, both palms firmly planted forward, chest begins to drag onto bank, legs still trailing behind; (3) a failed pull: shoulders slump and hips sag back down, face strained, palms still planted, looking at the bank; (4) successful push: arms press downward, shoulders rise, one knee comes forward onto bank, trailing leg remains extended toward water; (5) crawling belly-low onto land: one knee under chest, both hands supporting weight forward, trailing muddy shoe being dragged out; (6) low exhausted crouch on both feet, one palm on ground at the side, body leaning forward, ready to stand. A coherent effort sequence with VERY different silhouettes, anatomically plausible weight transfer. Light brown mud smears on knees, hem, fingers and shoes; preserve recognizable garment motifs. No bank, soil, water, ripples, ledge, scenery, rope or props: ONLY each complete girl sprite, including hands and feet; the invisible horizontal support will be supplied by the game. Wide EMPTY transparent gutters, every sprite wholly within its cell with at least45px transparent margins. No background gradient, glow, shadows, grid, labels, text or extra characters. Crisp storybook illustration matching the reference; not pixel art.",
+      "uso": "Primeira variante preservada; poses próximas às divisões nominais.",
+      "sha256": "30ae131a608a73fe860557d9a95ad2ed8caa23d796f6c4870c6be9e9bf535aa6",
+      "hashesReferencias": {
+        "yuna-furtiva-v4.png": "430ed907779ba9ba22de3829126c70ae37e79ddcc53169bd2cdf529bbe965ad7",
+        "yuna-nado-v2.png": "22d13e9d6bc0cb828b9cf44d8768264fc06cadcaba002fd76fbd4cdaf50fddae"
+      }
+    },
+    {
+      "arquivo": "yuna-saida-lama-v2.png",
+      "referencias": [
+        "yuna-saida-lama-v1.png"
+      ],
+      "prompt": "Use case: precise-object-edit. Edit target: the attached six-pose atlas for a little girl climbing out of sticky mud. Preserve the EXACT six character drawings, face, clothing, pink bows, colors, mud and anatomical poses. Fix ONLY layout, separation and scale. The current sprites overlap the cell boundaries. Re-layout into a strict THREE COLUMNS by TWO ROWS grid, each cell the same size. Uniformly REDUCE every complete character to 68 percent of current size, keep the SAME scale for all six, and center each sprite fully inside its own cell. Require at least50px of COMPLETELY TRANSPARENT margin from every sprite to every cell edge; absolutely no hand, hair, shoe, soft pixel or glow may touch or cross the vertical lines at 1/3 and2/3 of canvas width, or the horizontal centerline. Keep all six original poses in their exact reading order, no cropping, no deleting limbs. Genuine transparent alpha background, no gradient, glow, shadow, ledge, water, ground, grid or text.",
+      "uso": "Saída própria da lama: palmas, tentativa, recuo, joelho, arrasto e agachamento. Recortes completos separados pelos vãos de alfa de cada linha; nenhuma pose é cortada pela grade nominal.",
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
+      "hashesReferencias": {
+        "yuna-saida-lama-v1.png": "30ae131a608a73fe860557d9a95ad2ed8caa23d796f6c4870c6be9e9bf535aa6"
+      }
+    }
+  ]
+}
