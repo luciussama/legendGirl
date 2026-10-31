@@ -58,6 +58,16 @@ A apresentação aérea registra a pintura de `folha-plataforma-v1.png` também 
 
 ## Lagos e continuidade de figurino
 
-Fontes integradas atuais: lagos-lama-v2.png (quatro silhuetas irregulares), yuna-nado-v2.png (quatro braçadas), yuna-furtiva-v4.png, yuna-susto-em-pe-v2.png, yuna-despertar-v2.png e morro-terra-v1.png. A terra é recortada na crista física dos relevos e dissolvida no chão; a escalada da margem usa a pintura canônica yuna-escalada-v2 sem alterar suas âncoras. Prompts/hashes em prompts-lagos-v1.json, prompts-consistencia-figurino-v1.json e prompts-morro-v1.json. A variante furtiva-v3 ficou como referência rejeitada por margem insuficiente.
+Fontes integradas atuais: lagos-lama-v2.png (quatro silhuetas irregulares), yuna-nado-v2.png (quatro braçadas), yuna-furtiva-v4.png, yuna-susto-em-pe-v2.png, yuna-despertar-v2.png e morro-terra-v1.png. A terra é recortada na crista física dos relevos e dissolvida no chão; a saída da margem usa yuna-saida-lama-v2, com palmas na terra, tentativa com escorregão, joelho, arrasto e transferência do peso aos pés. Prompts/hashes em prompts-lagos-v1.json, prompts-consistencia-figurino-v1.json e prompts-morro-v1.json. A variante furtiva-v3 ficou como referência rejeitada por margem insuficiente.
 
 O preparador mede corpos do nado pela âncora da superfície e corpos de escalada pela mão. A linha de lama encobre o mesmo corpo consultado pelos olhos. Não editar só a apresentação sem atualizar essas referências. A fonte de susto mantém pequenos pontos pintados nos laços, registrados pela equipe de arte.
+
+`yuna-saida-lama-v2.png` foi criada pela skill imagegen/ferramenta integrada a partir de furtiva-v4 e nado-v2. A primeira variante permanece como referência. Prompts integrais e hashes em [prompts-saida-lama-v1.json](prompts-saida-lama-v1.json). Recortes usam os vãos de alfa de cada linha; poses originais completas, sem reescrever pixels. Aprovação artística humana pendente.
+
+## Entrada na lama e cinemática de captura
+
+`yuna-salto-lama-v1.png` contém impulso, voo, queda e imersão; `respingo-lama-v1.png` fornece a coroa de lama espirrando com gotas. `floresta-cinematica-v1.png` é um cenário próprio em perspectiva na altura dos olhos. `yuna-cinematica-pesadelo-v2.png` tem dois passos distintos, olhar para trás e terror; a variante1 preserva a primeira geração, cuja passada se repetia. A barata original articulada participa de close e captura em planos próprios. Fontes criadas com skill imagegen/ferramenta integrada; [prompts completos e hashes](prompts-entrada-cinematica-v1.json). Aprovação artística humana pendente. O preparador preserva PNGs e mede componentes completos/máscaras superiores.
+
+A saída própria da lama (yuna-saida-lama-v2) recebeu avaliação positiva do usuário em31/10/2026. Essa aprovação é específica da saída; as artes novas do salto e da cinemática aguardam avaliação humana.
+
+Em31/10/2026, a composição dos três relevos foi revista sem editar os PNGs: `DreamNightmareRenderer.prepareTerrain` registra colunas da terra existente na crista física, expõe o barranco no início exato da subida e dissolve a base no piso. A iluminação ambiente é comum ao chão e aos relevos e respeita suas transparências, sem tarja horizontal no cenário. Física e dados de superfície originais preservados.

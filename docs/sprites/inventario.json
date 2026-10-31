@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 511,
-    "regions": 282,
+    "files": 518,
+    "regions": 291,
     "code": 29
   },
   "items": [
@@ -3252,6 +3252,34 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "eddd83114a94ca46dbb7dbd1",
+      "kind": "file",
+      "path": "assets/art/dream-forest/floresta-cinematica-v1.png",
+      "title": "floresta-cinematica-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2505355,
+      "sha256": "15989b36221a10485ce511b7a15b1e2df46c87e4b866f79e1a9309e6d5160542",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicForest"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "0e7f730a7d99f0f1de20f1f9",
       "kind": "file",
       "path": "assets/art/dream-forest/folha-plataforma-v1.png",
@@ -3438,6 +3466,78 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "d6ab75c8bcee6abbbfcb9658",
+      "kind": "file",
+      "path": "assets/art/dream-forest/respingo-lama-v1.png",
+      "title": "respingo-lama-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1812907,
+      "sha256": "0b863e85e0c58c94dfd17a554304b5cbdc3a7bbac8cae6f38ea5c53706505c2f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "splash"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "031b5878ab723a8ef88e9c32",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v1.png",
+      "title": "yuna-cinematica-pesadelo-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2165605,
+      "sha256": "c7a1b1f634887ef47746a17632bc0dadaf4f23ff8d9354d4b7a6b8c6f7fa9316",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "4f6513caa6583074a2995d79",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v2.png",
+      "title": "yuna-cinematica-pesadelo-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114509,
+      "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "64608f0db0dcd2ffef526f34",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-despertar-v1.png",
@@ -3540,7 +3640,7 @@
       "bytes": 2198784,
       "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
       "aliases": [],
-      "usage": "runtime",
+      "usage": "apoio",
       "references": [
         {
           "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
@@ -3559,17 +3659,6 @@
           "line": 62,
           "type": "apoio",
           "alias": null
-        },
-        {
-          "file": "src/js/dream-forest/DreamNightmareArt.js",
-          "line": 2,
-          "type": "runtime",
-          "symbol": "bankClimb"
-        },
-        {
-          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 1,
-          "type": "runtime"
         }
       ],
       "hints": [],
@@ -3738,6 +3827,78 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "35d78b76e1495512e5cbeee6",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v1.png",
+      "title": "yuna-saida-lama-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2340367,
+      "sha256": "30ae131a608a73fe860557d9a95ad2ed8caa23d796f6c4870c6be9e9bf535aa6",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "7d54e8f0da8d359f2bb1d8b7",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
+      "title": "yuna-saida-lama-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "bankClimb"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
+      "id": "90b4c08ae64bc2e576a20679",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-salto-lama-v1.png",
+      "title": "yuna-salto-lama-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1930863,
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "mudJump"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "c08d8f5c96de06742228519f",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-susto-em-pe-v1.png",
@@ -3872,13 +4033,13 @@
       "references": [
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 97,
+          "line": 119,
           "type": "runtime",
           "alias": null
         }
@@ -4131,13 +4292,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -4172,13 +4333,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -17354,13 +17515,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 102,
+          "line": 124,
           "type": "runtime",
           "alias": null
         },
@@ -25142,13 +25303,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25192,13 +25353,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25242,13 +25403,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25292,13 +25453,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25342,13 +25503,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25392,13 +25553,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25442,13 +25603,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25492,13 +25653,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25554,13 +25715,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25616,13 +25777,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25678,13 +25839,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25740,13 +25901,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25802,13 +25963,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25864,13 +26025,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25926,13 +26087,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -25988,13 +26149,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 21,
+          "line": 23,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 26,
+          "line": 28,
           "type": "runtime",
           "alias": null
         },
@@ -32974,6 +33135,321 @@
       ]
     },
     {
+      "id": "b6ff1e1850db49ecd416a846",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-salto-lama-v1.png",
+      "title": "pesadelo · mudJump · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1930863,
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "mudJump"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 281,
+        "y": 13,
+        "width": 365,
+        "height": 437
+      },
+      "parentId": "90b4c08ae64bc2e576a20679"
+    },
+    {
+      "id": "badc5f28075ede22eb50954b",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-salto-lama-v1.png",
+      "title": "pesadelo · mudJump · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1930863,
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "mudJump"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 875,
+        "y": 3,
+        "width": 407,
+        "height": 409
+      },
+      "parentId": "90b4c08ae64bc2e576a20679"
+    },
+    {
+      "id": "18221f14f91fe5e956f73ab9",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-salto-lama-v1.png",
+      "title": "pesadelo · mudJump · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1930863,
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "mudJump"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 269,
+        "y": 464,
+        "width": 391,
+        "height": 516
+      },
+      "parentId": "90b4c08ae64bc2e576a20679"
+    },
+    {
+      "id": "80a2b8b32a978dfc1925ba92",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-salto-lama-v1.png",
+      "title": "pesadelo · mudJump · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1930863,
+      "sha256": "252aa63d5ee97d59b87316b78dafe316efc61b217624ad575cf6b49d0b50e797",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "mudJump"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 895,
+        "y": 476,
+        "width": 368,
+        "height": 540
+      },
+      "parentId": "90b4c08ae64bc2e576a20679"
+    },
+    {
+      "id": "ce52624b3fc02cfe7a1a45e6",
+      "kind": "region",
+      "path": "assets/art/dream-forest/respingo-lama-v1.png",
+      "title": "pesadelo · splash · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1812907,
+      "sha256": "0b863e85e0c58c94dfd17a554304b5cbdc3a7bbac8cae6f38ea5c53706505c2f",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "splash"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 65,
+        "y": 190,
+        "width": 1422,
+        "height": 689
+      },
+      "parentId": "d6ab75c8bcee6abbbfcb9658"
+    },
+    {
+      "id": "ccf10e6fe54bc169cb35b871",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v2.png",
+      "title": "pesadelo · cinematicGirl · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114509,
+      "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 269,
+        "y": 15,
+        "width": 380,
+        "height": 486
+      },
+      "parentId": "4f6513caa6583074a2995d79"
+    },
+    {
+      "id": "595d08491c83fbb1f1384ffd",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v2.png",
+      "title": "pesadelo · cinematicGirl · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114509,
+      "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 909,
+        "y": 14,
+        "width": 379,
+        "height": 485
+      },
+      "parentId": "4f6513caa6583074a2995d79"
+    },
+    {
+      "id": "34fd5674ba8b0b82eddc079b",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v2.png",
+      "title": "pesadelo · cinematicGirl · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114509,
+      "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 280,
+        "y": 496,
+        "width": 412,
+        "height": 510
+      },
+      "parentId": "4f6513caa6583074a2995d79"
+    },
+    {
+      "id": "629a769ae823b8c3f79a3bdc",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v2.png",
+      "title": "pesadelo · cinematicGirl · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2114509,
+      "sha256": "ae8a8aa9d4825e306c5439ff2df7ada411335a2d22e36d61d3190497bff05dab",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "cinematicGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 913,
+        "y": 501,
+        "width": 459,
+        "height": 505
+      },
+      "parentId": "4f6513caa6583074a2995d79"
+    },
+    {
       "id": "54ffb13c3a11b3515486b817",
       "kind": "region",
       "path": "assets/art/dream-forest/morro-terra-v1.png",
@@ -33319,36 +33795,18 @@
       "parentId": "89b55951526a94baa9794adf"
     },
     {
-      "id": "1e21317ab5c04be335d1e6c0",
+      "id": "45c4bf0b3408f4f29ff14fc5",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 1",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33364,44 +33822,26 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 94,
-        "y": 8,
-        "width": 308,
-        "height": 521
+        "x": 23,
+        "y": 137,
+        "width": 521,
+        "height": 285
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
-      "id": "1a6e3db030fae1ff47dd222f",
+      "id": "b9af5d94f093a6e698609887",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 2",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33417,44 +33857,26 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 610,
-        "y": 18,
-        "width": 307,
-        "height": 514
+        "x": 580,
+        "y": 110,
+        "width": 402,
+        "height": 320
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
-      "id": "1d67ff4b6cddd3f13284b858",
+      "id": "0f90f0e258dc0ca73fc4f693",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 3",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33470,44 +33892,26 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 1135,
-        "y": 21,
-        "width": 299,
-        "height": 514
+        "x": 1044,
+        "y": 124,
+        "width": 458,
+        "height": 309
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
-      "id": "d7e12c82d95f748f53eb84b8",
+      "id": "43e3ffc243086c99638b21dd",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 4",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33523,44 +33927,26 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 99,
-        "y": 530,
-        "width": 308,
-        "height": 484
+        "x": 41,
+        "y": 563,
+        "width": 423,
+        "height": 362
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
-      "id": "00afac8d101588a9ee6bbd59",
+      "id": "2e11e5a2124794e9671b3317",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 5",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33576,44 +33962,26 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 653,
-        "y": 535,
-        "width": 335,
-        "height": 467
+        "x": 553,
+        "y": 579,
+        "width": 466,
+        "height": 333
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
-      "id": "113b9cb7f5c238ea9ebc5a50",
+      "id": "48237e47e4791ddb0ac30eb4",
       "kind": "region",
-      "path": "assets/art/dream-forest/yuna-escalada-v2.png",
+      "path": "assets/art/dream-forest/yuna-saida-lama-v2.png",
       "title": "pesadelo · bankClimb · quadro 6",
       "format": "png",
       "width": 1536,
       "height": 1024,
-      "bytes": 2198784,
-      "sha256": "be3dabcf7db8049c1dd8a8b0b6221417eb8394564b6b9704d92cade452d2d279",
+      "bytes": 2189718,
+      "sha256": "35f30b96b160c43a21e67fcd6c01a7e18b8d15e5aad0656ac891a20ca16b3a22",
       "aliases": [],
       "usage": "runtime",
       "references": [
-        {
-          "file": "assets/art/dream-forest/prompts-consistencia-figurino-v1.json",
-          "line": 8,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "assets/art/dream-forest/prompts-escalada-v2.json",
-          "line": 5,
-          "type": "apoio",
-          "alias": null
-        },
-        {
-          "file": "scripts/prepare-dream-art.js",
-          "line": 62,
-          "type": "apoio",
-          "alias": null
-        },
         {
           "file": "src/js/dream-forest/DreamNightmareArt.js",
           "line": 2,
@@ -33629,12 +33997,12 @@
       "hints": [],
       "family": "assets/art/dream-forest",
       "region": {
-        "x": 1152,
-        "y": 568,
-        "width": 302,
-        "height": 442
+        "x": 1153,
+        "y": 577,
+        "width": 345,
+        "height": 344
       },
-      "parentId": "5f98baaa6e1ea8814511c573"
+      "parentId": "7d54e8f0da8d359f2bb1d8b7"
     },
     {
       "id": "4eae59d340d717c6086de84f",

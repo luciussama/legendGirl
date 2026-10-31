@@ -328,3 +328,39 @@ A menina recebe poses próprias abaixadas, com mãos nos ouvidos no abrigo e pas
 O usuário rejeitou as pequenas poças e definiu lagos irregulares, afundamento natural, nado e saída com escalada. O final passa a usar quatro lagos de extensões diferentes e troncos de abrigo nas margens. A atuação reutiliza a escalada do sonho e mantém o mesmo figurino básico.
 
 Na revisão pedida de toda a fase, a equipe corrigiu gramas lisas, fundo espelhado, rigidez das aranhas, proporção/emendas dos troncos e galhos e diferenças de calçado. Reavaliações e reprovações intermediárias foram preservadas no diário. A aprovação global não deve ser inferida das aprovações locais: a última emergência gradual das margens ainda deve ser observada em execução antes de encaminhar aprovação artística à avaliação humana. O pedido posterior de commit registra esse estado de trabalho.
+
+## 31/10/2026 — Luz e saída do pesadelo
+
+Os olhos da barata passam a emitir um feixe suave em camadas. Abrigos recebem luz sobre a pintura; a lama interrompe o volume e recebe um reflexo com ondulações. Ao terminar de subir a última margem, Yuna entra imediatamente na cena de caminhada solitária, seguida da captura e do corte direto para o despertar no piquenique.
+
+## 31/10/2026 — Corpo encoberto pela lama
+
+Corrigido o reaparecimento de pés e partes do corpo sob a margem dos lagos. A parte submersa agora é recortada pela superfície curva antes do desenho, em vez de depender somente da pintura da lama por cima. Entrada, nado e escalada conservam suas trajetórias.
+
+## 31/10/2026 — Sair da lama exige outro movimento
+
+A revisão foi jogada pelas duas margens e pelo último lago. A escalada anterior erguia punhos sem apoio e puxava Yuna verticalmente, como numa haste. Agora ela alcança a margem, pressiona as palmas, cede numa tentativa, traz o joelho e arrasta a perna antes de se agachar. A saída conserva1,9s e usa uma pintura própria, sem substituir a escalada dos insetos e das teias.
+
+## 31/10/2026 — Salto com lama espirrando e final cinematográfico
+
+A entrada deixa de afundar agachada: Yuna salta pelos pés, cai na superfície e levanta uma coroa de lama e gotas. O final corta para cenário e atuação próprios, seguindo os planos ilustrados das outras cinemáticas: caminhada no escuro, reação, close assustador da barata e captura em primeiro plano. O contato corta diretamente para o despertar no piquenique.
+
+## 31/10/2026 — Sons de pulo, lama e insetos
+
+Integrados os três áudios enviados: voz do pulo em todas as fases com salto, contato da lama sincronizado ao respingo e variações de asas para abelhas e besouros, com intensidade por voo, distância e posição. Originais preservados; pausas, mudo e volume seguem os controles do jogo. Os recortes foram verificados tecnicamente; a escuta humana para aprovar timbre e balanço permanece pendente.
+
+## 31/10/2026 — Barrancos legíveis antes da lama e pulo mais baixo
+
+Corrigida a faixa abrupta de cor no piso da perseguição. Os três relevos agora mostram a face de terra a partir do ponto real da subida, com a base integrada ao chão e o topo alinhado aos pés. A orientação de salto aparece somente perto dos barrancos. O som do pulo foi reduzido à metade em todas as fases; lama e asas mantêm seus níveis.
+
+## 31/10/2026 — Novo som das asas dos insetos
+
+O arquivo `wings-bugs2.wav` passa a fornecer as asas dos besouros do jardim e do sonho. Abelhas, incluindo os rasantes, conservam os sons anteriores. O original foi preservado e o loop preparado respeita proximidade, volume, pausa e mudo já existentes.
+
+## 31/10/2026 — Som próprio para todas as abelhas
+
+Aplicado o novo `wings-bee.wav` às abelhas do jardim e do sonho, inclusive aos rasantes. O original foi preservado e preparado em loop; os besouros continuam com `wings-bugs2.wav`. Distância, volume, pausa e mudo mantêm o comportamento existente.
+
+## 31/10/2026 — Mais margem para os dedos no voo
+
+Ampliadas as áreas sensíveis de subir/descer na passagem dos espinhos, exclusivamente no mobile. As setas ficam maiores e têm folga ao redor, com espaço neutro entre elas. Os comandos que não aparecem no voo deixam de capturar toques. Desktop, outros trechos e a física do planador permanecem como antes.

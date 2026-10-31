@@ -293,3 +293,23 @@ QA do fim do sonho: `npm run journal:qa -- test:sonho:pesadelo` verifica luz/som
 `npm run journal:qa -- test:sonho:furtividade` verifica prólogo, percurso, lama, saves e desfecho; `test:sonho:furtividade:saltos` compara a detecção aos polígonos de luz durante subidas dos relevos; `test:sonho:furtividade:arte` verifica trilha, alfa e recortes; `test:sonho:furtividade:integral` compara o percurso anterior à continuação. O alias de navegador preparado é `test:sonho:furtividade:browser 1200 720 NORMAL desktop` (390 844 EASY mobile e844 390 NORMAL mobile para emulações). Os aliases anteriores de pesadelo acompanham os testes vigentes. A disponibilidade e os resultados reais constam do diário.
 
 `test:sonho:lagos` cobre quatro lagos, entrada sem botão, nado, seis poses de saída, duas margens e saves. `test:sonho:lagos:browser` percorre a fase final por controles nativos; `test:sonho:lagos:arte:browser` prepara pontos para inspecionar terreno, braçadas e margens. Os resultados reais e a versão executada constam do diário.
+
+As regressões da iluminação e do corte na última margem estão no acervo: `npm run journal:qa -- test:sonho:luz` valida continuidade, pés no solo, save/load e despertar em NORMAL/EASY; `npm run journal:qa -- test:sonho:luz:browser 1200 720 NORMAL desktop` e `npm run journal:qa -- test:sonho:luz:browser 390 844 EASY mobile` compõem cenas dirigidas de luz, lama e final no Chrome isolado. Esses cenários dirigidos não representam uma campanha integral por entrada nativa.
+
+`npm run journal:qa -- test:sonho:lama:oclusao:browser 1200 720 NORMAL desktop` verifica pixels submersos em64 combinações dos quatro lagos e duas margens, com controle sem recorte para reproduzir o vazamento. Use `390 844 EASY mobile` para inspecionar as mesmas cenas em retrato.
+
+`npm run journal:qa -- test:sonho:lama:saida:browser 1200 720 NORMAL desktop` joga as duas margens e a última saída por teclado nativo, partindo de saves dirigidos válidos; `390 844 EASY mobile` usa toque nativo. `npm run journal:qa -- test:sonho:lama:apoios` confere âncoras em pixels opacos, palmas na terra, convergência aos pés e escala da pose final.
+
+`npm run journal:qa -- test:sonho:entrada:cinematica` verifica salto, impacto, saves, migração nightmare7 e corte do final. `npm run journal:qa -- test:sonho:entrada:cinematica:browser 1200 720 NORMAL desktop` joga salto/impacto e final por teclado; `390 844 EASY mobile` usa toque. Inclui88 amostras raster, respingo real, proibição de câmera de gameplay no final, pausa e restauração do plano.
+
+### Preparação dos sons fornecidos
+
+`python3 scripts/prepare-game-sounds.py` reconstrói impacto e três loops de asas a partir dos originais preservados em `assets/audio/effects/`. Requer macOS/afconvert apenas na preparação. QA preservado: `npm run journal:qa -- test:sons:campanha` (marcos da lama e emissores) e `npm run journal:qa -- test:sons:campanha:browser` (decodificação, saída Web Audio e ciclo de vida). A validação técnica não substitui escuta humana.
+
+Relevo antes dos lagos: `npm run journal:qa -- test:relevos:browser` joga os três saltos por teclado no Chrome com estados iniciais dirigidos e valida crista/câmera/descarte; aceita pasta temporária do diário, largura e altura como argumentos (padrão1200×720). `npm run journal:qa -- test:pulo:volume:browser` verifica ganho0,325 do pulo em quarto/arena/jardim/sonho, inclusive atualização das vozes.
+
+`npm run journal:qa -- test:asas:v2:browser` verifica o novo WAV dos besouros, a separação dos canais de abelhas/rasantes, decodificação em três frequências e ciclo de vida dos sons. O preparo existente também reconstrói esse loop a partir de `assets/audio/effects/source/wings-bugs2.wav`.
+
+`npm run journal:qa -- test:abelhas:audio:browser` verifica que todas as abelhas, incluindo rasantes, usam o novo `wings-bee.wav`, com a fonte dos besouros preservada, decodificação e ciclo de vida de áudio corretos. O alias test:asas:v2:browser acompanha essa mesma fonte atualizada.
+
+Margens de toque do voo: `npm run journal:qa -- test:planador:toque` verifica dimensões CSS, bordas, densidades, arrasto e isolamento; `npm run journal:qa -- test:planador:toque:browser 390 844 mobile` usa toque nativo no Chrome em save dirigido do voo. Aceita `844 390 mobile` para paisagem e `desktop` no terceiro argumento para conferir isolamento em janela estreita. Capturas ficam temporariamente no diário.

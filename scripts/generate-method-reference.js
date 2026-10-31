@@ -6,13 +6,17 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ preloadGameSounds:'Decodifica WAVs fornecidos uma vez por contexto, sem enfileirar reprodução atrasada.',
+ insectEmitters:'Consulta corpos e estados de voo de abelhas e besouros no jardim ou sonho.',
+ audibleInsects:'Seleciona até três emissores por distância, energia de voo e panorâmica.',
+
  mudWaterline:'Interpola a superfície curva do lago, compartilhada pela pintura frontal, corpo e oclusão.',
  mudLakeAt:'Localiza a área líquida atravessável do lago pelas margens autoradas.',
  mudBankY:'Retorna a altura de apoio da margem de entrada ou saída.',
  mudGround:'Mantém fundo sob a lama e conecta as margens à terra firme.',
  createMudState:'Cria o estado serializável de entrada, nado, braçada e saída da lama.',
- enterDreamMud:'Inicia afundamento natural pelo contato dos pés ou uma retomada já submersa.',
- stepDreamMud:'Integra afundamento, deslocamento na lama, emergência e escalada das margens.',
+ enterDreamMud:'Inicia o salto de entrada na lama ou uma retomada já submersa.',
+ stepDreamMud:'Integra arco do salto, impacto/imersão, nado e saída própria das margens.',
  mudActor:'Compartilha pose e âncora de pés, superfície ou mão entre desenho e detecção.',
  mudOccludesPoint:'Oculta pixels abaixo da superfície opaca desenhada do lago.',
  mudCheckpoint:'Retoma um dos setores de lama dentro de um lago, já protegida.',
@@ -215,10 +219,24 @@ Object.assign(details,{
  dreamGrassX:'Calcula a curva compartilhada da haste; a ponta recebe vento e o caule abaixo da lâmina mantém a base fixa.',
  stem:'Desenha a continuação natural do caule abaixo do viewport, conectada à lâmina e sem régua auxiliar.',
  dreamSurface:'Consulta relevo da folha ou perfil alfa nativo do inseto para apoiar os pés sem régua auxiliar.',
- dreamControls:'Posiciona os quatro comandos de direção/escalada e PULAR dentro da área segura.',
+ dreamControls:'Posiciona o direcional normal; no voo mobile entrega somente subir/descer com caixas amplas em pixels CSS.',
  startDream:'Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada.'
 });
 const scopedDetails={
+ 'GameSoundEffects.js':{constructor:'Cria o conjunto limitado de vozes de efeitos gravados.',play:'Reproduz uma amostra já decodificada com ganho, taxa, canal e panorâmica.',update:'Atualiza ganho, panorâmica e taxa de uma voz ativa cancelando rampas anteriores.',stop:'Encerra canais imediatamente ou com fade e libera suas conexões.'},
+ 'GardenAudio.js':{sample:'Dispara pulo ou lama com volume mestre, pausa, mudo e deduplicação curta da vocalização.',updateWings:'Mantém até três emissores próximos de asas e atualiza o ganho das amostras ativas.'},
+ 'DreamNightmareCinematic.js':{nightmareCinematicShot:'Seleciona caminhada, reação, close da criatura e captura por relógio narrativo.',renderNightmareCinematic:'Compõe cenário e atores em planos próprios, sem câmera nem mapa de gameplay.'},
+ 'DreamNightmareRenderer.js':{prepareTerrain:'Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor.',mudClip:'Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal.'},
+ 'DreamNightmareLighting.js':{
+  constructor:'Cria o buffer transitório reutilizado da iluminação, sem estado persistente.',
+  surfaceEnd:'Limita o raio visual ao primeiro abrigo, chão ou superfície curva da lama.',
+  begin:'Prepara o buffer em meia resolução com a transformação fixa do viewport.',
+  air:'Compõe emissão extensa em camadas e penumbra com queda radial de intensidade.',
+  receiver:'Aplica luz sobre a máscara dos abrigos, conservando a textura ilustrada.',
+  ground:'Ilumina terra e relevos com manchas difusas orientadas pela superfície.',
+  water:'Projeta reflexos achatados e ondulações somente sobre a superfície líquida.',
+  destroy:'Libera o buffer de iluminação ao descartar a fase.'
+ },
  'ToyRoomEpilogue.js':{
   constructor:'Recebe assets, áudio, callback, origem e save opcional; valida versão/índice/relógios e inicia a música da sala.',
   beat:'Consulta o quadro corrente de TOY_ROOM_EPILOGUE sem avançar a sequência.',

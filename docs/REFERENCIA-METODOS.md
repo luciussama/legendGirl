@@ -73,55 +73,76 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `createAudioSystem()` | Função | [6](../src/js/audio.js#L6) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `getDestination()` | Função | [18](../src/js/audio.js#L18) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `updateMusicVolumes()` | Função | [32](../src/js/audio.js#L32) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `setMasterVolume(vol)` | Função | [42](../src/js/audio.js#L42) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getMasterVolume()` | Função | [51](../src/js/audio.js#L51) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `setMuted(muted)` | Função | [55](../src/js/audio.js#L55) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `toggleMute()` | Função | [65](../src/js/audio.js#L65) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `getIsMuted()` | Função | [69](../src/js/audio.js#L69) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `registerActiveNode(node)` | Função | [79](../src/js/audio.js#L79) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cleanup()` | Função atribuída | [82](../src/js/audio.js#L82) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clearActiveSounds()` | Função | [90](../src/js/audio.js#L90) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getMusicTrack()` | Função | [102](../src/js/audio.js#L102) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `initAudio()` | Função | [134](../src/js/audio.js#L134) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startMusic()` | Função | [159](../src/js/audio.js#L159) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `stopMusic()` | Função | [179](../src/js/audio.js#L179) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `stopAllAudio()` | Função | [189](../src/js/audio.js#L189) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `playJumpSound()` | Função | [195](../src/js/audio.js#L195) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playLongJumpSound(progress = 0)` | Função | [218](../src/js/audio.js#L218) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playLevelUpChime(level = 0)` | Função | [255](../src/js/audio.js#L255) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playOpeningAmbience()` | Função | [279](../src/js/audio.js#L279) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playFairyVoiceBlip(freq = 920)` | Função | [297](../src/js/audio.js#L297) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playFairyLaugh()` | Função | [320](../src/js/audio.js#L320) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playEscapePowerUp()` | Função | [348](../src/js/audio.js#L348) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playFallFailSound()` | Função | [375](../src/js/audio.js#L375) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playTapeRipSound()` | Função | [398](../src/js/audio.js#L398) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playDramaticTumbleSound()` | Função | [433](../src/js/audio.js#L433) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playBabyThudSound()` | Função | [457](../src/js/audio.js#L457) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playBabyShockVoice()` | Função | [480](../src/js/audio.js#L480) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playFairyFrustratedSound()` | Função | [505](../src/js/audio.js#L505) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playPhase3StartFanfare()` | Função | [529](../src/js/audio.js#L529) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `getToyRoomTrackUrls(track)` | Função | [560](../src/js/audio.js#L560) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getToyRoomAudioElement()` | Função | [570](../src/js/audio.js#L570) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `setToyRoomMusicTrack(track)` | Função | [605](../src/js/audio.js#L605) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `startToyRoomMusic({ fade = 1 } = {})` | Função | [624](../src/js/audio.js#L624) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `setToyRoomMusicFade(value)` | Função | [649](../src/js/audio.js#L649) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `setToyRoomMusicIntensity(value)` | Função | [654](../src/js/audio.js#L654) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `playPortalExitWhoosh()` | Função | [659](../src/js/audio.js#L659) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playSoftMagicBurst()` | Função | [676](../src/js/audio.js#L676) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `stopToyRoomMusic()` | Função | [691](../src/js/audio.js#L691) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `pauseMusic()` | Função | [702](../src/js/audio.js#L702) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `resumeMusic()` | Função | [719](../src/js/audio.js#L719) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `playPickUpSound()` | Função | [735](../src/js/audio.js#L735) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playDropSound()` | Função | [760](../src/js/audio.js#L760) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playOrganizeChime()` | Função | [783](../src/js/audio.js#L783) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playToyRoomVictory()` | Função | [809](../src/js/audio.js#L809) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playCombatSound(event, arena = false)` | Função | [842](../src/js/audio.js#L842) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `playArenaMusicBeat(beat)` | Função | [932](../src/js/audio.js#L932) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `stopArenaMusic()` | Função | [950](../src/js/audio.js#L950) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `getAudioContext()` | API/lambda de objeto | [1000](../src/js/audio.js#L1000) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `createAudioSystem()` | Função | [7](../src/js/audio.js#L7) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `getDestination()` | Função | [20](../src/js/audio.js#L20) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `updateMusicVolumes()` | Função | [34](../src/js/audio.js#L34) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `setMasterVolume(vol)` | Função | [44](../src/js/audio.js#L44) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getMasterVolume()` | Função | [53](../src/js/audio.js#L53) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setMuted(muted)` | Função | [57](../src/js/audio.js#L57) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `toggleMute()` | Função | [67](../src/js/audio.js#L67) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `getIsMuted()` | Função | [71](../src/js/audio.js#L71) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `registerActiveNode(node)` | Função | [81](../src/js/audio.js#L81) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cleanup()` | Função atribuída | [84](../src/js/audio.js#L84) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clearActiveSounds()` | Função | [92](../src/js/audio.js#L92) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getMusicTrack()` | Função | [105](../src/js/audio.js#L105) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `initAudio()` | Função | [137](../src/js/audio.js#L137) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startMusic()` | Função | [163](../src/js/audio.js#L163) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `stopMusic()` | Função | [183](../src/js/audio.js#L183) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stopAllAudio()` | Função | [193](../src/js/audio.js#L193) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `playJumpSound()` | Função | [200](../src/js/audio.js#L200) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playLongJumpSound(progress = 0)` | Função | [205](../src/js/audio.js#L205) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playLevelUpChime(level = 0)` | Função | [209](../src/js/audio.js#L209) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playOpeningAmbience()` | Função | [233](../src/js/audio.js#L233) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playFairyVoiceBlip(freq = 920)` | Função | [251](../src/js/audio.js#L251) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playFairyLaugh()` | Função | [274](../src/js/audio.js#L274) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playEscapePowerUp()` | Função | [302](../src/js/audio.js#L302) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playFallFailSound()` | Função | [329](../src/js/audio.js#L329) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playTapeRipSound()` | Função | [352](../src/js/audio.js#L352) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playDramaticTumbleSound()` | Função | [387](../src/js/audio.js#L387) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playBabyThudSound()` | Função | [411](../src/js/audio.js#L411) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playBabyShockVoice()` | Função | [434](../src/js/audio.js#L434) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playFairyFrustratedSound()` | Função | [459](../src/js/audio.js#L459) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playPhase3StartFanfare()` | Função | [483](../src/js/audio.js#L483) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `getToyRoomTrackUrls(track)` | Função | [514](../src/js/audio.js#L514) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getToyRoomAudioElement()` | Função | [524](../src/js/audio.js#L524) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setToyRoomMusicTrack(track)` | Função | [559](../src/js/audio.js#L559) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `startToyRoomMusic({ fade = 1 } = {})` | Função | [578](../src/js/audio.js#L578) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `setToyRoomMusicFade(value)` | Função | [603](../src/js/audio.js#L603) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `setToyRoomMusicIntensity(value)` | Função | [608](../src/js/audio.js#L608) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `playPortalExitWhoosh()` | Função | [613](../src/js/audio.js#L613) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playSoftMagicBurst()` | Função | [630](../src/js/audio.js#L630) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `stopToyRoomMusic()` | Função | [645](../src/js/audio.js#L645) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `pauseMusic()` | Função | [656](../src/js/audio.js#L656) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `resumeMusic()` | Função | [674](../src/js/audio.js#L674) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `playPickUpSound()` | Função | [690](../src/js/audio.js#L690) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playDropSound()` | Função | [715](../src/js/audio.js#L715) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playOrganizeChime()` | Função | [738](../src/js/audio.js#L738) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playToyRoomVictory()` | Função | [764](../src/js/audio.js#L764) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playCombatSound(event, arena = false)` | Função | [797](../src/js/audio.js#L797) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `playArenaMusicBeat(beat)` | Função | [889](../src/js/audio.js#L889) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `stopArenaMusic()` | Função | [907](../src/js/audio.js#L907) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `getAudioContext()` | API/lambda de objeto | [958](../src/js/audio.js#L958) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+
+## src/js/audio/GameSoundEffects.js
+
+[Implementação](../src/js/audio/GameSoundEffects.js). Contratos exportados/reexportados: `GAME_SOUNDS`, `preloadGameSounds`, `GameSoundEffects`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `preloadGameSounds(ctx,names=Object.keys(GAME_SOUNDS))` | Função | [11](../src/js/audio/GameSoundEffects.js#L11) | Decodifica WAVs fornecidos uma vez por contexto, sem enfileirar reprodução atrasada. |
+| `constructor()` | Método declarado | [24](../src/js/audio/GameSoundEffects.js#L24) | Cria o conjunto limitado de vozes de efeitos gravados. |
+| `play(ctx,destination,name,{volume=.65,rate=1,loop=false,channel=null,pan=0}={})` | Método declarado | [25](../src/js/audio/GameSoundEffects.js#L25) | Reproduz uma amostra já decodificada com ganho, taxa, canal e panorâmica. |
+| `update(channel,volume,pan=0,rate=1)` | Método declarado | [40](../src/js/audio/GameSoundEffects.js#L40) | Atualiza ganho, panorâmica e taxa de uma voz ativa cancelando rampas anteriores. |
+| `stop(channel=null,fade=0)` | Método declarado | [41](../src/js/audio/GameSoundEffects.js#L41) | Encerra canais imediatamente ou com fade e libera suas conexões. |
+
+## src/js/audio/InsectSoundscape.js
+
+[Implementação](../src/js/audio/InsectSoundscape.js). Contratos exportados/reexportados: `insectEmitters`, `audibleInsects`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `insectEmitters(state,scene='garden')` | Função | [3](../src/js/audio/InsectSoundscape.js#L3) | Consulta corpos e estados de voo de abelhas e besouros no jardim ou sonho. |
+| `audibleInsects(state,scene)` | Função | [12](../src/js/audio/InsectSoundscape.js#L12) | Seleciona até três emissores por distância, energia de voo e panorâmica. |
 
 ## src/js/bear-chase/BearChasePhase.js
 
@@ -816,7 +837,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `scream()` | Método declarado | [6](../src/js/dream-forest/DreamAudio.js#L6) | Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes. |
 | `selectTrack(state)` | Método declarado | [10](../src/js/dream-forest/DreamAudio.js#L10) | Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical. |
 | `update(state,paused=false)` | Método declarado | [12](../src/js/dream-forest/DreamAudio.js#L12) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `event(type)` | Método declarado | [13](../src/js/dream-forest/DreamAudio.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `event(type,event={})` | Método declarado | [13](../src/js/dream-forest/DreamAudio.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/dream-forest/DreamBeetle.js
 
@@ -895,11 +916,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `dreamControls(canvas)` | Função | [6](../src/js/dream-forest/DreamInput.js#L6) | Posiciona os quatro comandos de direção/escalada e PULAR dentro da área segura. |
-| `nightmareControls(canvas)` | Função | [9](../src/js/dream-forest/DreamInput.js#L9) | Distribui andar, mergulhar e pular em quatro botões inferiores com toque simultâneo. |
-| `dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={})` | Função | [12](../src/js/dream-forest/DreamInput.js#L12) | Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos. |
-| `constructor(canvas,enabled,unlock,scene)` | Método declarado | [21](../src/js/dream-forest/DreamInput.js#L21) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `sample()` | Método declarado | [22](../src/js/dream-forest/DreamInput.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dreamControls(canvas,{stage=null,mobile=isMobileDevice()}={})` | Função | [6](../src/js/dream-forest/DreamInput.js#L6) | Posiciona o direcional normal; no voo mobile entrega somente subir/descer com caixas amplas em pixels CSS. |
+| `nightmareControls(canvas)` | Função | [19](../src/js/dream-forest/DreamInput.js#L19) | Distribui andar, mergulhar e pular em quatro botões inferiores com toque simultâneo. |
+| `dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={})` | Função | [22](../src/js/dream-forest/DreamInput.js#L22) | Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos. |
+| `constructor(canvas,enabled,unlock,scene)` | Método declarado | [31](../src/js/dream-forest/DreamInput.js#L31) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `sample()` | Método declarado | [32](../src/js/dream-forest/DreamInput.js#L32) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/dream-forest/DreamLevel.js
 
@@ -924,11 +945,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `mudBankY(lake,side)` | Função | [15](../src/js/dream-forest/DreamMud.js#L15) | Retorna a altura de apoio da margem de entrada ou saída. |
 | `mudGround(x)` | Função | [17](../src/js/dream-forest/DreamMud.js#L17) | Mantém fundo sob a lama e conecta as margens à terra firme. |
 | `createMudState()` | Função | [18](../src/js/dream-forest/DreamMud.js#L18) | Cria o estado serializável de entrada, nado, braçada e saída da lama. |
-| `enterDreamMud(n,lake,{side=n.facing,submerged=false}={})` | Função | [20](../src/js/dream-forest/DreamMud.js#L20) | Inicia afundamento natural pelo contato dos pés ou uma retomada já submersa. |
-| `stepDreamMud(n,input,dt)` | Função | [22](../src/js/dream-forest/DreamMud.js#L22) | Integra afundamento, deslocamento na lama, emergência e escalada das margens. |
+| `enterDreamMud(n,lake,{side=n.facing,submerged=false}={})` | Função | [20](../src/js/dream-forest/DreamMud.js#L20) | Inicia o salto de entrada na lama ou uma retomada já submersa. |
+| `stepDreamMud(n,input,dt)` | Função | [22](../src/js/dream-forest/DreamMud.js#L22) | Integra arco do salto, impacto/imersão, nado e saída própria das margens. |
 | `mudActor(n)` | Função | [31](../src/js/dream-forest/DreamMud.js#L31) | Compartilha pose e âncora de pés, superfície ou mão entre desenho e detecção. |
-| `mudOccludesPoint(point)` | Função | [38](../src/js/dream-forest/DreamMud.js#L38) | Oculta pixels abaixo da superfície opaca desenhada do lago. |
-| `mudCheckpoint(index)` | Função | [40](../src/js/dream-forest/DreamMud.js#L40) | Retoma um dos setores de lama dentro de um lago, já protegida. |
+| `mudOccludesPoint(point)` | Função | [40](../src/js/dream-forest/DreamMud.js#L40) | Oculta pixels abaixo da superfície opaca desenhada do lago. |
+| `mudCheckpoint(index)` | Função | [42](../src/js/dream-forest/DreamMud.js#L42) | Retoma um dos setores de lama dentro de um lago, já protegida. |
 
 ## src/js/dream-forest/DreamNightmare.js
 
@@ -945,10 +966,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false}={})` | Função | [57](../src/js/dream-forest/DreamNightmare.js#L57) | Confere amostras opacas da pose atual e distingue corpo iluminado de abrigo real. |
 | `beginDreamNightmare(s,{retry=false,checkpoint=0}={})` | Função | [65](../src/js/dream-forest/DreamNightmare.js#L65) | Cria o domínio do trecho final na queda ou na retomada da primeira pedra. |
 | `migrateNightmare(s)` | Função | [72](../src/js/dream-forest/DreamNightmare.js#L72) | Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz. |
-| `nightmareReading(s)` | Função | [84](../src/js/dream-forest/DreamNightmare.js#L84) | Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial. |
-| `advanceNightmareDialogue(s)` | Função | [86](../src/js/dream-forest/DreamNightmare.js#L86) | Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro. |
-| `validateNightmare(s)` | Função | [93](../src/js/dream-forest/DreamNightmare.js#L93) | Valida relógio, corpo, leitura e coerência do grito/despertar no save. |
-| `stepDreamNightmare(s,input={},seconds=0)` | Função | [103](../src/js/dream-forest/DreamNightmare.js#L103) | Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos. |
+| `nightmareReading(s)` | Função | [85](../src/js/dream-forest/DreamNightmare.js#L85) | Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial. |
+| `advanceNightmareDialogue(s)` | Função | [87](../src/js/dream-forest/DreamNightmare.js#L87) | Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro. |
+| `validateNightmare(s)` | Função | [94](../src/js/dream-forest/DreamNightmare.js#L94) | Valida relógio, corpo, leitura e coerência do grito/despertar no save. |
+| `stepDreamNightmare(s,input={},seconds=0)` | Função | [104](../src/js/dream-forest/DreamNightmare.js#L104) | Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos. |
 
 ## src/js/dream-forest/DreamNightmareArt.js
 
@@ -956,21 +977,49 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
+## src/js/dream-forest/DreamNightmareCinematic.js
+
+[Implementação](../src/js/dream-forest/DreamNightmareCinematic.js). Contratos exportados/reexportados: `nightmareCinematicShot`, `renderNightmareCinematic`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `nightmareCinematicShot(age,portrait=false)` | Função | [5](../src/js/dream-forest/DreamNightmareCinematic.js#L5) | Seleciona caminhada, reação, close da criatura e captura por relógio narrativo. |
+| `girl(ctx,image,index,x,base,height,time,{walking=false,tilt=0}={})` | Função | [10](../src/js/dream-forest/DreamNightmareCinematic.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderNightmareCinematic(ctx,canvas,s,images,rig)` | Função | [15](../src/js/dream-forest/DreamNightmareCinematic.js#L15) | Compõe cenário e atores em planos próprios, sem câmera nem mapa de gameplay. |
+
+## src/js/dream-forest/DreamNightmareLighting.js
+
+[Implementação](../src/js/dream-forest/DreamNightmareLighting.js). Contratos exportados/reexportados: `DreamNightmareLighting`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `constructor()` | Método declarado | [11](../src/js/dream-forest/DreamNightmareLighting.js#L11) | Cria o buffer transitório reutilizado da iluminação, sem estado persistente. |
+| `surfaceEnd(light,angle)` | Método declarado | [13](../src/js/dream-forest/DreamNightmareLighting.js#L13) | Limita o raio visual ao primeiro abrigo, chão ou superfície curva da lama. |
+| `begin(canvas,frame)` | Método declarado | [20](../src/js/dream-forest/DreamNightmareLighting.js#L20) | Prepara o buffer em meia resolução com a transformação fixa do viewport. |
+| `air(ctx,canvas,frame,lights)` | Método declarado | [22](../src/js/dream-forest/DreamNightmareLighting.js#L22) | Compõe emissão extensa em camadas e penumbra com queda radial de intensidade. |
+| `receiver(ctx,light,draw)` | Método declarado | [34](../src/js/dream-forest/DreamNightmareLighting.js#L34) | Aplica luz sobre a máscara dos abrigos, conservando a textura ilustrada. |
+| `ground(ctx,lights)` | Método declarado | [36](../src/js/dream-forest/DreamNightmareLighting.js#L36) | Ilumina terra e relevos com manchas difusas orientadas pela superfície. |
+| `water(ctx,lights,lake,time)` | Método declarado | [38](../src/js/dream-forest/DreamNightmareLighting.js#L38) | Projeta reflexos achatados e ondulações somente sobre a superfície líquida. |
+| `destroy()` | Método declarado | [42](../src/js/dream-forest/DreamNightmareLighting.js#L42) | Libera o buffer de iluminação ao descartar a fase. |
+
 ## src/js/dream-forest/DreamNightmareRenderer.js
 
 [Implementação](../src/js/dream-forest/DreamNightmareRenderer.js). Contratos exportados/reexportados: `DreamNightmareRenderer`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas,shared)` | Método declarado | [18](../src/js/dream-forest/DreamNightmareRenderer.js#L18) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [20](../src/js/dream-forest/DreamNightmareRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(s)` | Método declarado | [33](../src/js/dream-forest/DreamNightmareRenderer.js#L33) | Calcula pose visual estável sem escrever na simulação. |
-| `girl(ctx,s)` | Método declarado | [35](../src/js/dream-forest/DreamNightmareRenderer.js#L35) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `reach(ctx,s)` | Método declarado | [47](../src/js/dream-forest/DreamNightmareRenderer.js#L47) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `forest(s,touch)` | Método declarado | [49](../src/js/dream-forest/DreamNightmareRenderer.js#L49) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `wake(s)` | Método declarado | [95](../src/js/dream-forest/DreamNightmareRenderer.js#L95) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [106](../src/js/dream-forest/DreamNightmareRenderer.js#L106) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [107](../src/js/dream-forest/DreamNightmareRenderer.js#L107) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas,shared)` | Método declarado | [20](../src/js/dream-forest/DreamNightmareRenderer.js#L20) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [22](../src/js/dream-forest/DreamNightmareRenderer.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareTerrain()` | Método declarado | [33](../src/js/dream-forest/DreamNightmareRenderer.js#L33) | Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor. |
+| `frame(s)` | Método declarado | [59](../src/js/dream-forest/DreamNightmareRenderer.js#L59) | Calcula pose visual estável sem escrever na simulação. |
+| `mudClip(ctx,lake)` | Método declarado | [61](../src/js/dream-forest/DreamNightmareRenderer.js#L61) | Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal. |
+| `girl(ctx,s)` | Método declarado | [63](../src/js/dream-forest/DreamNightmareRenderer.js#L63) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `mudSplash(ctx,n)` | Método declarado | [76](../src/js/dream-forest/DreamNightmareRenderer.js#L76) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `reach(ctx,s)` | Método declarado | [78](../src/js/dream-forest/DreamNightmareRenderer.js#L78) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `forest(s,touch)` | Método declarado | [80](../src/js/dream-forest/DreamNightmareRenderer.js#L80) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `wake(s)` | Método declarado | [117](../src/js/dream-forest/DreamNightmareRenderer.js#L117) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [128](../src/js/dream-forest/DreamNightmareRenderer.js#L128) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [129](../src/js/dream-forest/DreamNightmareRenderer.js#L129) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamPhase.js
 
@@ -1372,15 +1421,17 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(host,{track=new URL('../../../assets/audio/Blues Shuffle Loop.mp3',import.meta.url),label='do jardim'}={})` | Método declarado | [4](../src/js/garden/GardenAudio.js#L4) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `unlock()` | Método declarado | [9](../src/js/garden/GardenAudio.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tone(frequency,duration=.25,volume=.035,slide=frequency)` | Método declarado | [10](../src/js/garden/GardenAudio.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `hurt()` | Método declarado | [12](../src/js/garden/GardenAudio.js#L12) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `playMusic()` | Método declarado | [23](../src/js/garden/GardenAudio.js#L23) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `update(state,paused=false)` | Método declarado | [28](../src/js/garden/GardenAudio.js#L28) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `event(type)` | Método declarado | [35](../src/js/garden/GardenAudio.js#L35) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clear()` | Método declarado | [36](../src/js/garden/GardenAudio.js#L36) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `destroy()` | Método declarado | [37](../src/js/garden/GardenAudio.js#L37) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(host,{track=new URL('../../../assets/audio/Blues Shuffle Loop.mp3',import.meta.url),label='do jardim',wingScene='garden'}={})` | Método declarado | [6](../src/js/garden/GardenAudio.js#L6) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `unlock()` | Método declarado | [11](../src/js/garden/GardenAudio.js#L11) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tone(frequency,duration=.25,volume=.035,slide=frequency)` | Método declarado | [12](../src/js/garden/GardenAudio.js#L12) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `hurt()` | Método declarado | [14](../src/js/garden/GardenAudio.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `playMusic()` | Método declarado | [25](../src/js/garden/GardenAudio.js#L25) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `update(state,paused=false)` | Método declarado | [30](../src/js/garden/GardenAudio.js#L30) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `event(type,{mudTakeoff=false}={})` | Método declarado | [37](../src/js/garden/GardenAudio.js#L37) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sample(name,volume,deduplicate=false)` | Método declarado | [39](../src/js/garden/GardenAudio.js#L39) | Dispara pulo ou lama com volume mestre, pausa, mudo e deduplicação curta da vocalização. |
+| `updateWings(state)` | Método declarado | [40](../src/js/garden/GardenAudio.js#L40) | Mantém até três emissores próximos de asas e atualiza o ganho das amostras ativas. |
+| `clear()` | Método declarado | [48](../src/js/garden/GardenAudio.js#L48) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `destroy()` | Método declarado | [49](../src/js/garden/GardenAudio.js#L49) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenBeeRenderer.js
 
@@ -2747,4 +2798,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **207 módulos JavaScript**, **1325 declarações nomeadas**.
+Inventário: **211 módulos JavaScript**, **1348 declarações nomeadas**.

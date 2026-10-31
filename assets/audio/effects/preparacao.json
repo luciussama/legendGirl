@@ -1,0 +1,72 @@
+{
+  "origem": "Arquivos fornecidos pelo usuário em 31/10/2026",
+  "fontes": {
+    "jump-girl.wav": "1b695f0f7b7274f12f787988d3c8ee7ce93f71da1a54dcb03b1596c61ec469a4",
+    "jump-mud.wav": "5aaf937793ae36d411febd4d4e7986a3cdfd6b0c0e869aa0bf6e5cf9627281dc",
+    "source/wings-bugs.wav": "3f14129d07e9291e2d52ae3a0d24b3e0d4359b10ab1bba62970317874288208c",
+    "source/wings-bugs2.wav": "a455779b6e8cc7e26ccdba91a60fc5210f8727d9566654912b221c76e133abc7",
+    "source/wings-bee.wav": "c0fecc6bf3882bf22fd5de545ec287d936eb8abd4efa97afd34e665fd61bb5bb"
+  },
+  "recortes": [
+    {
+      "arquivo": "wings-bee.wav",
+      "inicio": 46,
+      "fim": 52,
+      "canal": 1,
+      "passaAltasHz": 160,
+      "passaBaixasHz": 6500,
+      "ganho": 80,
+      "emendaSegundos": 0.12,
+      "picoPCM": 0.6
+    },
+    {
+      "arquivo": "wings-beetle.wav",
+      "inicio": 54,
+      "fim": 60,
+      "canal": 0,
+      "passaAltasHz": 70,
+      "passaBaixasHz": 3200,
+      "ganho": 46.57996011175632,
+      "emendaSegundos": 0.12,
+      "picoPCM": 0.6
+    },
+    {
+      "arquivo": "wings-dive.wav",
+      "inicio": 34,
+      "fim": 40,
+      "canal": 1,
+      "passaAltasHz": 120,
+      "passaBaixasHz": 5200,
+      "ganho": 74.3157110180826,
+      "emendaSegundos": 0.12,
+      "picoPCM": 0.6
+    },
+    {
+      "arquivo": "wings-insects-v2.wav",
+      "fonte": "source/wings-bugs2.wav",
+      "inicio": 0,
+      "fim": 4.085986394557823,
+      "ganho": 8.560655989469394,
+      "emendaSegundos": 0.12,
+      "picoPCM": 0.55,
+      "uso": "Besouros do jardim e do sonho; exceto abelhas."
+    },
+    {
+      "arquivo": "wings-bee-v2.wav",
+      "fonte": "source/wings-bee.wav",
+      "inicio": 0,
+      "fim": 2.0587301587301585,
+      "ganho": 2.1139085246659213,
+      "emendaSegundos": 0.12,
+      "picoPCM": 0.55,
+      "uso": "Todas as abelhas do jardim e do sonho, incluindo rasantes."
+    },
+    {
+      "arquivo": "mud-impact.wav",
+      "inicio": 0.18,
+      "fim": 2.65,
+      "fadeEntrada": 0.005,
+      "fadeSaida": 0.16
+    }
+  ]
+}

@@ -64,20 +64,21 @@ export function nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false}={}){
 /** A queda é um corte narrativo; a exploração aérea e o seu jogador permanecem preservados. */
 export function beginDreamNightmare(s,{retry=false,checkpoint=0}={}){
   const spawn=retry?stealthCheckpoint(checkpoint):{x:NIGHTMARE.entry-90,mudDepth:0};
-  s.nightmare={...createMudState(),version:6,exposure:0,time:0,x:spawn.x,y:stealthGround(spawn.x),vy:0,grounded:true,jumpHeld:true,mudDepth:spawn.mudDepth,checkpoint:retry?checkpoint:0,roachAppeared:retry,vx:0,facing:1,animTime:0,introIndex:0,introAge:0,arrivalAge:0,wakeIndex:-1,wakeAge:0,fairyAwake:false,screamPlayed:false,strikeSound:false,completed:false};
+  s.nightmare={...createMudState(),version:7,exposure:0,time:0,x:spawn.x,y:stealthGround(spawn.x),vy:0,grounded:true,jumpHeld:true,mudDepth:spawn.mudDepth,checkpoint:retry?checkpoint:0,roachAppeared:retry,vx:0,facing:1,animTime:0,introIndex:0,introAge:0,arrivalAge:0,wakeIndex:-1,wakeAge:0,fairyAwake:false,screamPlayed:false,strikeSound:false,completed:false};
   if(spawn.mudLakeId)enterDreamMud(s.nightmare,DREAM_MUD_LAKES.find(l=>l.id===spawn.mudLakeId),{submerged:true});
   s.stage=retry?'STEALTH':'NIGHTMARE_FALL';s.age=0;s.fallCause=null;
 }
 /** Migra o trecho curto para o primeiro abrigo; desfechos já iniciados continuam no fim novo. */
-export function migrateNightmare(s){const n=s.nightmare;if(!n||n.version===6)return;if(![1,2,3,4,5].includes(n.version))throw TypeError('Versão desconhecida do pesadelo.');
+export function migrateNightmare(s){const n=s.nightmare;if(!n||n.version===7)return;if(![1,2,3,4,5,6].includes(n.version))throw TypeError('Versão desconhecida do pesadelo.');
  if(![n.x,n.time,n.vx,n.animTime].every(Number.isFinite)||n.time<0||n.x<40||n.x>NIGHTMARE.width)throw TypeError('Pesadelo anterior inválido.');
+ if(n.version===6){validateNightmare({...s,nightmare:{...n,version:7}});n.version=7;if(n.mudMode==='enter'&&s.stage==='STEALTH'){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);enterDreamMud(n,lake,{submerged:true});n.exposure=0;}return;}
  if(n.version<3&&n.x>3300)throw TypeError('Posição anterior fora do trecho curto.');
- if(n.version===5){n.version=6;n.mudStartDepth=n.mudDepth;if(n.mudMode==='swim'){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);if(lake)n.x=Math.max(lake.from+75,Math.min(lake.to-75,n.x));}if(n.mudMode==='climb')n.mudAge+=.35;return;}
+ if(n.version===5){n.version=6;n.mudStartDepth=n.mudDepth;if(n.mudMode==='swim'){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);if(lake)n.x=Math.max(lake.from+75,Math.min(lake.to-75,n.x));}if(n.mudMode==='climb')n.mudAge+=.35;migrateNightmare(s);return;}
  const version=n.version,late=['NIGHTMARE_FINAL','NIGHTMARE_STRIKE','NIGHTMARE_WAKE','GAME_OVER','COMPLETE'].includes(s.stage);
  if(version<3){n.x=late?NIGHTMARE.exit+Math.max(0,n.x-2850):NIGHTMARE.entry;Object.assign(n,{y:850,vy:0,grounded:true,jumpHeld:true,mudDepth:0,checkpoint:0,roachAppeared:!['NIGHTMARE_FALL','NIGHTMARE_INTRO'].includes(s.stage),arrivalAge:0,exposure:0});}
  if(version===3)n.exposure=0;
  if(!Number.isFinite(n.y)||n.y<0||n.y>1250)throw TypeError('Altura anterior inválida.');
- Object.assign(n,createMudState());n.version=6;
+ Object.assign(n,createMudState());n.version=7;
  const lake=mudLakeAt(n.x);if(lake&&s.stage==='STEALTH')enterDreamMud(n,lake,{submerged:true});else{n.mudDepth=0;if(n.grounded)n.y=stealthGround(n.x);}
 }
 /** Retorna somente quadros que podem ser adiantados; queda e captura final mantêm a atuação. */
@@ -92,7 +93,7 @@ export function advanceNightmareDialogue(s){
 /** Valida o domínio próprio, inclusive saves no golpe, captura e despertar, sem repetir efeitos. */
 export function validateNightmare(s){
   const n=s.nightmare,stages=['NIGHTMARE_FALL','NIGHTMARE_INTRO','NIGHTMARE_REVEAL','STEALTH','NIGHTMARE_STRIKE','NIGHTMARE_FINAL','NIGHTMARE_WAKE','GAME_OVER','COMPLETE'];
-  if(!n||n.version!==6||!stages.includes(s.stage)||![n.time,n.x,n.vx,n.animTime,n.introAge,n.wakeAge,n.y,n.vy,n.mudDepth,n.arrivalAge,n.exposure,n.mudAge,n.mudStartX,n.mudStartY,n.mudEntryTarget,n.swimDistance,n.mudStartDepth].every(Number.isFinite)||n.exposure<0||n.exposure>1||n.y<0||n.y>1250||Math.abs(n.vy)>1600||n.mudDepth<0||n.mudDepth>1||!Number.isInteger(n.checkpoint)||n.checkpoint<0||n.checkpoint>3||n.arrivalAge<0||n.time<0||n.time>s.time+.01||n.x<40||n.x>NIGHTMARE.width||Math.abs(n.vx)>(s.stage==='NIGHTMARE_FINAL'?300:NIGHTMARE.speed)||n.animTime<0||n.introAge<0||n.wakeAge<0||![-1,1].includes(n.facing)||!Number.isInteger(n.introIndex)||n.introIndex<0||n.introIndex>=NIGHTMARE_INTRO.length||!Number.isInteger(n.wakeIndex)||n.wakeIndex< -1||n.wakeIndex>=NIGHTMARE_WAKE.length||['fairyAwake','screamPlayed','strikeSound','completed','grounded','jumpHeld','roachAppeared'].some(k=>typeof n[k]!=='boolean'))throw TypeError('Pesadelo salvo inválido.');
+  if(!n||n.version!==7||!stages.includes(s.stage)||![n.time,n.x,n.vx,n.animTime,n.introAge,n.wakeAge,n.y,n.vy,n.mudDepth,n.arrivalAge,n.exposure,n.mudAge,n.mudStartX,n.mudStartY,n.mudEntryTarget,n.swimDistance,n.mudStartDepth].every(Number.isFinite)||n.exposure<0||n.exposure>1||n.y<0||n.y>1250||Math.abs(n.vy)>1600||n.mudDepth<0||n.mudDepth>1||!Number.isInteger(n.checkpoint)||n.checkpoint<0||n.checkpoint>3||n.arrivalAge<0||n.time<0||n.time>s.time+.01||n.x<40||n.x>NIGHTMARE.width||Math.abs(n.vx)>(s.stage==='NIGHTMARE_FINAL'?300:NIGHTMARE.speed)||n.animTime<0||n.introAge<0||n.wakeAge<0||![-1,1].includes(n.facing)||!Number.isInteger(n.introIndex)||n.introIndex<0||n.introIndex>=NIGHTMARE_INTRO.length||!Number.isInteger(n.wakeIndex)||n.wakeIndex< -1||n.wakeIndex>=NIGHTMARE_WAKE.length||['fairyAwake','screamPlayed','strikeSound','completed','grounded','jumpHeld','roachAppeared'].some(k=>typeof n[k]!=='boolean'))throw TypeError('Pesadelo salvo inválido.');
   if(!['dry','enter','swim','climb'].includes(n.mudMode)||n.mudAge<0||n.swimDistance<0||n.mudStartDepth<0||n.mudStartDepth>1||![-1,0,1].includes(n.mudSide)||n.mudMode==='dry'&&n.mudLakeId!==null||n.mudMode!=='dry'&&(!DREAM_MUD_LAKES.some(l=>l.id===n.mudLakeId)||n.grounded)||n.mudMode==='climb'&&(!n.mudSide||n.mudAge>1.91))throw TypeError('Travessia de lama salva incoerente.');
   if(n.mudMode!=='dry'){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);if(!['STEALTH','NIGHTMARE_STRIKE','GAME_OVER'].includes(s.stage)||n.mudStartX<lake.from-2||n.mudStartX>lake.to+2||n.mudStartY<0||n.mudStartY>1250||n.mudEntryTarget<lake.from+84||n.mudEntryTarget>lake.to-84||n.x<lake.from-13||n.x>lake.to+13||!n.mudSide||n.mudMode==='enter'&&n.mudAge>1.11||n.mudMode==='swim'&&(n.x<lake.from+74.9||n.x>lake.to-74.9||n.mudDepth<.679))throw TypeError('Corpo salvo fora do lago ou da margem.');}
   if(n.roachAppeared===['NIGHTMARE_FALL','NIGHTMARE_INTRO'].includes(s.stage))throw TypeError('Aparição da barata salva incoerente.');
@@ -112,7 +113,7 @@ export function stepDreamNightmare(s,input={},seconds=0){
     if(s.stage==='NIGHTMARE_REVEAL'){n.arrivalAge+=dt;const old=n.x;n.x=NIGHTMARE.entry-90+90*smooth(n.arrivalAge/3);n.vx=(n.x-old)/dt;n.animTime+=Math.abs(n.x-old)/30;n.facing=n.arrivalAge<3?1:-1;if(s.age>=NIGHTMARE.revealDuration){s.stage='STEALTH';s.age=0;n.facing=1;n.jumpHeld=Boolean(input.jump);}continue;}
     if(s.stage==='NIGHTMARE_STRIKE'){if(before<.72&&s.age>=.72&&!n.strikeSound){n.strikeSound=true;events.push({type:'hurt'});}if(s.age>=1.45){s.stage='GAME_OVER';s.age=0;}continue;}
     if(s.stage==='NIGHTMARE_FINAL'){
-      const previous=n.x;n.x=NIGHTMARE.exit+350*smooth(s.age/2.7);n.vx=(n.x-previous)/dt;n.animTime+=Math.abs(n.x-previous)/30;n.facing=s.age>2.7?-1:1;
+      const previous=n.x;n.x+=350*(smooth(s.age/2.7)-smooth(before/2.7));n.y=stealthGround(n.x);n.vx=(n.x-previous)/dt;n.animTime+=Math.abs(n.x-previous)/30;n.facing=s.age>2.7?-1:1;
       if(s.age>=6){s.stage='NIGHTMARE_WAKE';s.age=0;n.vx=0;n.screamPlayed=true;events.push({type:'nightmare-scream'});}continue;
     }
     if(s.stage==='NIGHTMARE_WAKE'){
@@ -120,7 +121,7 @@ export function stepDreamNightmare(s,input={},seconds=0){
       if(n.wakeIndex<0){if(s.age>=1.5){n.wakeIndex=0;n.wakeAge=0;}}else{n.wakeAge+=dt;if(n.wakeAge>=NIGHTMARE_WAKE[n.wakeIndex].duration)advanceNightmareDialogue(s);}continue;
     }
     if(s.stage==='COMPLETE')continue;
-    const old=n.x,oldY=n.y;
+    const old=n.x,oldY=n.y,mudBefore=n.mudMode,mudAgeBefore=n.mudAge;
     if(!stepDreamMud(n,input,dt)){
       const x=clamp(Number(input.x)||0,-1,1);n.vx=x*NIGHTMARE.speed;
       if(input.jump&&!n.jumpHeld&&n.grounded){n.vy=-NIGHTMARE.jumpSpeed;n.grounded=false;events.push({type:'jump'});}n.jumpHeld=Boolean(input.jump);
@@ -132,9 +133,15 @@ export function stepDreamNightmare(s,input={},seconds=0){
         const wet=mudLakeAt(n.x);if(wet&&n.y>=mudWaterline(wet,n.x)-35)enterDreamMud(n,wet,{side:x<0?-1:1});}
       n.animTime+=Math.abs(n.x-old)/30;if(x)n.facing=x<0?-1:1;
     }
+    // Dispara pelos cruzamentos do relógio salvo, sem repetir ao renderizar ou retomar no meio do salto.
+    if(mudBefore==='enter'&&n.mudMode==='enter'){
+      const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);
+      if(mudAgeBefore<.12&&n.mudAge>=.12&&n.mudStartY>=mudWaterline(lake,n.mudStartX)-24)events.push({type:'jump',mudTakeoff:true});
+      if(mudAgeBefore<.68&&n.mudAge>=.68)events.push({type:'mud-impact'});
+    }
     if(n.x>=2380&&n.grounded&&Math.abs(n.x-2380)<70)n.checkpoint=Math.max(n.checkpoint,1);
     if(n.mudMode==='swim'&&n.mudDepth>=.94){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);n.checkpoint=Math.max(n.checkpoint,lake.index>=2?3:2);}
-    if(n.x>=NIGHTMARE.exit&&n.grounded){s.stage='NIGHTMARE_FINAL';s.age=0;n.vx=0;continue;}
+    if(n.grounded&&n.mudMode==='dry'&&n.x>=DREAM_MUD_LAKES.at(-1).to+11.9){s.stage='NIGHTMARE_FINAL';s.age=0;n.vx=0;n.exposure=0;continue;}
     const illuminated=nightmareVisibility(n,s.difficulty,{onlyLight:true}).lit;
     n.exposure=illuminated?n.exposure+dt:0;
     // Só a iluminação contínua causa golpe. Pular por si só não é uma condição de derrota.
