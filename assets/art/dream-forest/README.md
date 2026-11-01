@@ -74,3 +74,6 @@ Em31/10/2026, a composição dos três relevos foi revista sem editar os PNGs: `
 
 
 A chegada revisada à barata reutiliza morro-terra-v1 no planalto, floresta-cinematica-v1 e as atuações/pedra existentes. Nenhum PNG foi repintado. prepareDreamPlateau recorta a terra abaixo da névoa superior para apoiar os pés no topo plano. DreamRoach revisa pivôs/máscaras dos seis membros, com sobreposição e proteção das juntas. Fontes originais e referência física dos olhos preservadas.
+
+
+A queda sem sustentação consome `yuna-queda-vento-v1.png`, gerada pela ferramenta integrada image_gen com referências canônicas; prompt em `prompts-queda-vento-v1.json`. Quatro poses: preocupação segurando haste, mãos abertas em queda, preparação dos pés e amortecimento agachado. `prepare-dream-nightmare.js` registra componentes completos e rowMask; o renderer usa a floresta cinematográfica existente e a folha recortada em memória. O corredor não apresenta mais a massa retangular do planalto.

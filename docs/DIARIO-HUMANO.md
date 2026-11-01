@@ -369,3 +369,22 @@ Ampliadas as áreas sensíveis de subir/descer na passagem dos espinhos, exclusi
 ## 31/10/2026 — Chegada e peso da barata
 
 Yuna pousa num planalto e entra numa cinemática com música desde o início. A barata emerge das árvores atrás dela, provoca o susto e a fuga até uma pedra. Revistas as pernas e a garra para manter juntas e alcance coerentes; poeira, impactos graves e tremor dão peso aos passos e à captura. EASY usa uma faixa lógica de detecção bem menor, mantendo a aparência da luz.
+
+
+## 31/10/2026 — Queda após o voo, pântano e toque
+
+O pedido corrige o acabamento da chegada: após os espinhos, o vento perde força, a folha escapa e Yuna cai no meio do chão, com preocupação e amortecimento próprios. A barata passa a estar entre planos do pântano, com chão sob as patas e contatos sombreados. Jardim e sonho recebem D-pad amplo com diagonais e botão de pulo maior; asas de todas as abelhas ficam com o dobro do ganho. Resultados e limites de QA são registrados no acervo de IA.
+
+## Próximo passo solicitado — abertura do sonho com Nanda (não executar nesta entrega)
+
+A fase do sonho começará com uma cinemática sem música. Avaliar um zunido estranho, semelhante ao chiado percebido pelo ouvido no silêncio. A música começa somente no final da cinemática, na transição para o jogo.
+
+Yuna se vê naquele ambiente. Ao olhar para trás, encontra Nanda estranhamente do mesmo tamanho que ela. Yuna balança Nanda, tentando acordá-la:
+
+— Nanda, onde estamos? Está frio aqui.
+
+Nanda continua dormindo, sem responder aos estímulos.
+
+— Nanda, estou com medo! Me fale como sair daqui.
+
+Yuna se sente perdida, desacostumada a seguir sem a orientação da irmã fadinha. Sem escolha, decide seguir em frente e deixar Nanda dormindo. Ao terminar a cinemática, começa a fase. Pedido registrado como próxima etapa; sem implementação de cena, zunido, troca musical ou novos diálogos no runtime atual.

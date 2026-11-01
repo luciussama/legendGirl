@@ -884,16 +884,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/dream-forest/DreamGliderRenderer.js
 
-[Implementação](../src/js/dream-forest/DreamGliderRenderer.js). Contratos exportados/reexportados: `drawDreamGlideThorns`, `drawDreamLaunchLeaf`, `drawDreamGlider`, `prepareDreamPlateau`, `drawDreamPlateau`, `drawDreamLandingLeaf`.
+[Implementação](../src/js/dream-forest/DreamGliderRenderer.js). Contratos exportados/reexportados: `drawDreamGlideThorns`, `drawDreamLaunchLeaf`, `drawDreamGlider`, `renderDreamLanding`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `drawDreamGlideThorns(ctx,images,left,right,top,bottom)` | Função | [4](../src/js/dream-forest/DreamGliderRenderer.js#L4) | Desenha galhos espinhosos de cima/baixo sem indicadores de hitbox. |
-| `drawDreamLaunchLeaf(ctx,images,branch,time)` | Função | [6](../src/js/dream-forest/DreamGliderRenderer.js#L6) | Apresenta a única folha ainda presa à ponta do galho. |
-| `drawDreamGlider(ctx,images,state)` | Função | [8](../src/js/dream-forest/DreamGliderRenderer.js#L8) | Desenha menina e folha como pintura íntegra com mãos conectadas. |
-| `prepareDreamPlateau(image)` | Função | [10](../src/js/dream-forest/DreamGliderRenderer.js#L10) | Prepara terra opaca abaixo da névoa da fonte para o topo plano do pouso. |
-| `drawDreamPlateau(ctx,bitmap,frame)` | Função | [15](../src/js/dream-forest/DreamGliderRenderer.js#L15) | Desenha a massa de terra do planalto na altura física do pouso. |
-| `drawDreamLandingLeaf(ctx,images,state)` | Função | [17](../src/js/dream-forest/DreamGliderRenderer.js#L17) | Solta e acomoda a folha ao lado de Yuna depois do contato com o solo. |
+| `drawDreamGlideThorns(ctx,images,left,right,top,bottom)` | Função | [6](../src/js/dream-forest/DreamGliderRenderer.js#L6) | Desenha galhos espinhosos de cima/baixo sem indicadores de hitbox. |
+| `drawDreamLaunchLeaf(ctx,images,branch,time)` | Função | [8](../src/js/dream-forest/DreamGliderRenderer.js#L8) | Apresenta a única folha ainda presa à ponta do galho. |
+| `drawDreamGlider(ctx,images,state)` | Função | [10](../src/js/dream-forest/DreamGliderRenderer.js#L10) | Desenha menina e folha como pintura íntegra com mãos conectadas. |
+| `renderDreamLanding(ctx,canvas,state,images)` | Função | [12](../src/js/dream-forest/DreamGliderRenderer.js#L12) | Compõe fim da sustentação, perda da folha, queda e amortecimento no chão em tela cheia. |
 
 ## src/js/dream-forest/DreamIllustratedSprites.js
 
@@ -919,11 +917,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `dreamControls(canvas,{stage=null,mobile=isMobileDevice()}={})` | Função | [6](../src/js/dream-forest/DreamInput.js#L6) | Posiciona o direcional normal; no voo mobile entrega somente subir/descer com caixas amplas em pixels CSS. |
-| `nightmareControls(canvas)` | Função | [19](../src/js/dream-forest/DreamInput.js#L19) | Distribui andar, mergulhar e pular em quatro botões inferiores com toque simultâneo. |
-| `dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={})` | Função | [22](../src/js/dream-forest/DreamInput.js#L22) | Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos. |
-| `constructor(canvas,enabled,unlock,scene)` | Método declarado | [31](../src/js/dream-forest/DreamInput.js#L31) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `sample()` | Método declarado | [32](../src/js/dream-forest/DreamInput.js#L32) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dreamControls(canvas,{stage=null,mobile=isMobileDevice()}={})` | Função | [7](../src/js/dream-forest/DreamInput.js#L7) | Compartilha D-pad amplo com oito direções e pulo em todos os estágios mobile. |
+| `nightmareControls(canvas)` | Função | [15](../src/js/dream-forest/DreamInput.js#L15) | Compartilha D-pad mobile e mantém quatro alvos no desktop para a perseguição. |
+| `dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={})` | Função | [18](../src/js/dream-forest/DreamInput.js#L18) | Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos. |
+| `constructor(canvas,enabled,unlock,scene)` | Método declarado | [27](../src/js/dream-forest/DreamInput.js#L27) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `sample()` | Método declarado | [28](../src/js/dream-forest/DreamInput.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/dream-forest/DreamLevel.js
 
@@ -1021,18 +1019,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas,shared)` | Método declarado | [22](../src/js/dream-forest/DreamNightmareRenderer.js#L22) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [24](../src/js/dream-forest/DreamNightmareRenderer.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prepareTerrain()` | Método declarado | [35](../src/js/dream-forest/DreamNightmareRenderer.js#L35) | Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor. |
-| `frame(s)` | Método declarado | [61](../src/js/dream-forest/DreamNightmareRenderer.js#L61) | Calcula pose visual estável sem escrever na simulação. |
-| `mudClip(ctx,lake)` | Método declarado | [63](../src/js/dream-forest/DreamNightmareRenderer.js#L63) | Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal. |
-| `girl(ctx,s)` | Método declarado | [65](../src/js/dream-forest/DreamNightmareRenderer.js#L65) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `mudSplash(ctx,n)` | Método declarado | [78](../src/js/dream-forest/DreamNightmareRenderer.js#L78) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `reach(ctx,s)` | Método declarado | [80](../src/js/dream-forest/DreamNightmareRenderer.js#L80) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `forest(s,touch)` | Método declarado | [82](../src/js/dream-forest/DreamNightmareRenderer.js#L82) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `wake(s)` | Método declarado | [122](../src/js/dream-forest/DreamNightmareRenderer.js#L122) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [133](../src/js/dream-forest/DreamNightmareRenderer.js#L133) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [134](../src/js/dream-forest/DreamNightmareRenderer.js#L134) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas,shared)` | Método declarado | [24](../src/js/dream-forest/DreamNightmareRenderer.js#L24) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [26](../src/js/dream-forest/DreamNightmareRenderer.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareTerrain()` | Método declarado | [37](../src/js/dream-forest/DreamNightmareRenderer.js#L37) | Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor. |
+| `frame(s)` | Método declarado | [63](../src/js/dream-forest/DreamNightmareRenderer.js#L63) | Calcula pose visual estável sem escrever na simulação. |
+| `mudClip(ctx,lake)` | Método declarado | [65](../src/js/dream-forest/DreamNightmareRenderer.js#L65) | Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal. |
+| `girl(ctx,s)` | Método declarado | [67](../src/js/dream-forest/DreamNightmareRenderer.js#L67) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `mudSplash(ctx,n)` | Método declarado | [80](../src/js/dream-forest/DreamNightmareRenderer.js#L80) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `reach(ctx,s)` | Método declarado | [82](../src/js/dream-forest/DreamNightmareRenderer.js#L82) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `swampLayers(ctx,frame,front=false)` | Método declarado | [84](../src/js/dream-forest/DreamNightmareRenderer.js#L84) | Distribui troncos e tocos ilustrados em camadas que envolvem a criatura. |
+| `forest(s,touch)` | Método declarado | [86](../src/js/dream-forest/DreamNightmareRenderer.js#L86) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `wake(s)` | Método declarado | [132](../src/js/dream-forest/DreamNightmareRenderer.js#L132) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [143](../src/js/dream-forest/DreamNightmareRenderer.js#L143) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [144](../src/js/dream-forest/DreamNightmareRenderer.js#L144) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamPhase.js
 
@@ -1040,17 +1039,17 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor({canvas,audio,enabled=()=>true,difficulty='NORMAL',campaign=false})` | Método declarado | [9](../src/js/dream-forest/DreamPhase.js#L9) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `active()` | Acessor | [10](../src/js/dream-forest/DreamPhase.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `reading()` | Método declarado | [11](../src/js/dream-forest/DreamPhase.js#L11) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `advanceDialogue()` | Método declarado | [12](../src/js/dream-forest/DreamPhase.js#L12) | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
-| `start(saved=null)` | Método declarado | [13](../src/js/dream-forest/DreamPhase.js#L13) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `update(dt=1)` | Método declarado | [14](../src/js/dream-forest/DreamPhase.js#L14) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | Método declarado | [15](../src/js/dream-forest/DreamPhase.js#L15) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `setPaused(value)` | Método declarado | [16](../src/js/dream-forest/DreamPhase.js#L16) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `snapshot()` | Método declarado | [17](../src/js/dream-forest/DreamPhase.js#L17) | Produz captura recuperável do estado específico deste componente. |
-| `retry()` | Método declarado | [18](../src/js/dream-forest/DreamPhase.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `destroy()` | Método declarado | [19](../src/js/dream-forest/DreamPhase.js#L19) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor({canvas,audio,enabled=()=>true,difficulty='NORMAL',campaign=false})` | Método declarado | [10](../src/js/dream-forest/DreamPhase.js#L10) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `active()` | Acessor | [11](../src/js/dream-forest/DreamPhase.js#L11) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `reading()` | Método declarado | [12](../src/js/dream-forest/DreamPhase.js#L12) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `advanceDialogue()` | Método declarado | [13](../src/js/dream-forest/DreamPhase.js#L13) | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
+| `start(saved=null)` | Método declarado | [14](../src/js/dream-forest/DreamPhase.js#L14) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `update(dt=1)` | Método declarado | [15](../src/js/dream-forest/DreamPhase.js#L15) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | Método declarado | [16](../src/js/dream-forest/DreamPhase.js#L16) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `setPaused(value)` | Método declarado | [17](../src/js/dream-forest/DreamPhase.js#L17) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `snapshot()` | Método declarado | [18](../src/js/dream-forest/DreamPhase.js#L18) | Produz captura recuperável do estado específico deste componente. |
+| `retry()` | Método declarado | [19](../src/js/dream-forest/DreamPhase.js#L19) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `destroy()` | Método declarado | [20](../src/js/dream-forest/DreamPhase.js#L20) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamRenderer.js
 
@@ -1058,15 +1057,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | [19](../src/js/dream-forest/DreamRenderer.js#L19) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [20](../src/js/dream-forest/DreamRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | [22](../src/js/dream-forest/DreamRenderer.js#L22) | Calcula pose visual estável sem escrever na simulação. |
-| `leaf(ctx,f,bottom=C.grassRoot)` | Método declarado | [24](../src/js/dream-forest/DreamRenderer.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grass(ctx,f,bottom=C.grassRoot)` | Método declarado | [26](../src/js/dream-forest/DreamRenderer.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,f,time)` | Método declarado | [27](../src/js/dream-forest/DreamRenderer.js#L27) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `girl(ctx,s)` | Método declarado | [28](../src/js/dream-forest/DreamRenderer.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={})` | Método declarado | [31](../src/js/dream-forest/DreamRenderer.js#L31) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [57](../src/js/dream-forest/DreamRenderer.js#L57) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | [21](../src/js/dream-forest/DreamRenderer.js#L21) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [22](../src/js/dream-forest/DreamRenderer.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | [24](../src/js/dream-forest/DreamRenderer.js#L24) | Calcula pose visual estável sem escrever na simulação. |
+| `leaf(ctx,f,bottom=C.grassRoot)` | Método declarado | [26](../src/js/dream-forest/DreamRenderer.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grass(ctx,f,bottom=C.grassRoot)` | Método declarado | [28](../src/js/dream-forest/DreamRenderer.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,f,time)` | Método declarado | [29](../src/js/dream-forest/DreamRenderer.js#L29) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `girl(ctx,s)` | Método declarado | [30](../src/js/dream-forest/DreamRenderer.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={})` | Método declarado | [33](../src/js/dream-forest/DreamRenderer.js#L33) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [58](../src/js/dream-forest/DreamRenderer.js#L58) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamRoach.js
 
@@ -1557,12 +1556,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `gardenControls(canvas,safe={left:0,right:canvas.width,bottom:canvas.height})` | Função | [2](../src/js/garden/GardenInput.js#L2) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `constructor(canvas,enabled,controls,unlock=()=>{},scene=()=>null)` | Método declarado | [8](../src/js/garden/GardenInput.js#L8) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `install()` | Método declarado | [16](../src/js/garden/GardenInput.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sample()` | Método declarado | [17](../src/js/garden/GardenInput.js#L17) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clear()` | Método declarado | [18](../src/js/garden/GardenInput.js#L18) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `destroy()` | Método declarado | [19](../src/js/garden/GardenInput.js#L19) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `gardenControls(canvas,safe={left:0,right:canvas.width,top:0,bottom:canvas.height},{mobile=isMobileDevice()}={})` | Função | [4](../src/js/garden/GardenInput.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(canvas,enabled,controls,unlock=()=>{},scene=()=>null)` | Método declarado | [11](../src/js/garden/GardenInput.js#L11) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `install()` | Método declarado | [19](../src/js/garden/GardenInput.js#L19) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sample()` | Método declarado | [20](../src/js/garden/GardenInput.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clear()` | Método declarado | [21](../src/js/garden/GardenInput.js#L21) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `destroy()` | Método declarado | [22](../src/js/garden/GardenInput.js#L22) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenInsectArt.js
 
@@ -1625,33 +1624,33 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | [31](../src/js/garden/GardenRenderer.js#L31) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [32](../src/js/garden/GardenRenderer.js#L32) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `controls()` | Método declarado | [39](../src/js/garden/GardenRenderer.js#L39) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | [41](../src/js/garden/GardenRenderer.js#L41) | Calcula pose visual estável sem escrever na simulação. |
-| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0)` | Método declarado | [42](../src/js/garden/GardenRenderer.js#L42) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | [53](../src/js/garden/GardenRenderer.js#L53) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundPattern(type)` | Método declarado | [55](../src/js/garden/GardenRenderer.js#L55) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundOutline(ctx,p,bottom)` | Método declarado | [71](../src/js/garden/GardenRenderer.js#L71) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceTile(type,part='middle')` | Método declarado | [80](../src/js/garden/GardenRenderer.js#L80) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | [94](../src/js/garden/GardenRenderer.js#L94) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrainBodies(ctx,platforms,bottom)` | Método declarado | [117](../src/js/garden/GardenRenderer.js#L117) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrain(ctx,p,bottom,body=true)` | Método declarado | [126](../src/js/garden/GardenRenderer.js#L126) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | [137](../src/js/garden/GardenRenderer.js#L137) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `rockFoot(ctx,p)` | Método declarado | [142](../src/js/garden/GardenRenderer.js#L142) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | [147](../src/js/garden/GardenRenderer.js#L147) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | [163](../src/js/garden/GardenRenderer.js#L163) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundJoins(ctx,platforms)` | Método declarado | [178](../src/js/garden/GardenRenderer.js#L178) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grassFront(ctx,s,platforms)` | Método declarado | [186](../src/js/garden/GardenRenderer.js#L186) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `effort(ctx,s)` | Método declarado | [194](../src/js/garden/GardenRenderer.js#L194) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sceneryLayout()` | Método declarado | [202](../src/js/garden/GardenRenderer.js#L202) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `scenery(ctx,s,left,right)` | Método declarado | [217](../src/js/garden/GardenRenderer.js#L217) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,s)` | Método declarado | [223](../src/js/garden/GardenRenderer.js#L223) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | [229](../src/js/garden/GardenRenderer.js#L229) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `message(ctx,text,options)` | Método declarado | [235](../src/js/garden/GardenRenderer.js#L235) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `narrative(ctx,s)` | Método declarado | [240](../src/js/garden/GardenRenderer.js#L240) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | [241](../src/js/garden/GardenRenderer.js#L241) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [323](../src/js/garden/GardenRenderer.js#L323) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | [32](../src/js/garden/GardenRenderer.js#L32) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [33](../src/js/garden/GardenRenderer.js#L33) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `controls()` | Método declarado | [40](../src/js/garden/GardenRenderer.js#L40) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | [42](../src/js/garden/GardenRenderer.js#L42) | Calcula pose visual estável sem escrever na simulação. |
+| `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0)` | Método declarado | [43](../src/js/garden/GardenRenderer.js#L43) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | [54](../src/js/garden/GardenRenderer.js#L54) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundPattern(type)` | Método declarado | [56](../src/js/garden/GardenRenderer.js#L56) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundOutline(ctx,p,bottom)` | Método declarado | [72](../src/js/garden/GardenRenderer.js#L72) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceTile(type,part='middle')` | Método declarado | [81](../src/js/garden/GardenRenderer.js#L81) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | [95](../src/js/garden/GardenRenderer.js#L95) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrainBodies(ctx,platforms,bottom)` | Método declarado | [118](../src/js/garden/GardenRenderer.js#L118) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrain(ctx,p,bottom,body=true)` | Método declarado | [127](../src/js/garden/GardenRenderer.js#L127) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | [138](../src/js/garden/GardenRenderer.js#L138) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rockFoot(ctx,p)` | Método declarado | [143](../src/js/garden/GardenRenderer.js#L143) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | [148](../src/js/garden/GardenRenderer.js#L148) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | [164](../src/js/garden/GardenRenderer.js#L164) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundJoins(ctx,platforms)` | Método declarado | [179](../src/js/garden/GardenRenderer.js#L179) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grassFront(ctx,s,platforms)` | Método declarado | [187](../src/js/garden/GardenRenderer.js#L187) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `effort(ctx,s)` | Método declarado | [195](../src/js/garden/GardenRenderer.js#L195) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sceneryLayout()` | Método declarado | [203](../src/js/garden/GardenRenderer.js#L203) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `scenery(ctx,s,left,right)` | Método declarado | [218](../src/js/garden/GardenRenderer.js#L218) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,s)` | Método declarado | [224](../src/js/garden/GardenRenderer.js#L224) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | [230](../src/js/garden/GardenRenderer.js#L230) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `message(ctx,text,options)` | Método declarado | [236](../src/js/garden/GardenRenderer.js#L236) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `narrative(ctx,s)` | Método declarado | [241](../src/js/garden/GardenRenderer.js#L241) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | [242](../src/js/garden/GardenRenderer.js#L242) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [324](../src/js/garden/GardenRenderer.js#L324) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenSimulation.js
 
@@ -2821,10 +2820,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `navigate(event)` | Método declarado | [54](../src/js/ui/TitleScreen.js#L54) | Move foco com setas entre opções habilitadas e impede propagação ao jogo. |
 | `activateFocused()` | Método declarado | [63](../src/js/ui/TitleScreen.js#L63) | Aciona o botão focado pelo gamepad sem atravessar os diálogos do menu. |
 
+## src/js/ui/TouchGameControls.js
+
+[Implementação](../src/js/ui/TouchGameControls.js). Contratos exportados/reexportados: `mobileGameControls`, `drawMobileGameControls`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `mobileGameControls(canvas,safe)` | Função | [2](../src/js/ui/TouchGameControls.js#L2) | Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS. |
+| `drawMobileGameControls(ctx,canvas,controls,{dark=false,jumpLabel='PULAR'}={})` | Função | [8](../src/js/ui/TouchGameControls.js#L8) | Desenha D-pad unido, setas diagonais e salto respeitando a área segura. |
+
 ## src/js/ui/index.js
 
 [Implementação](../src/js/ui/index.js). Contratos exportados/reexportados: `HudRenderer`, `hudRenderer`, `DialogueRenderer`, `dialogueRenderer`, `renderFirstJumpTutorial`, `getFirstJumpFeedback`, `getFirstJumpTutorialDevice`, `FIRST_JUMP_MESSAGES`.
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **213 módulos JavaScript**, **1363 declarações nomeadas**.
+Inventário: **214 módulos JavaScript**, **1364 declarações nomeadas**.

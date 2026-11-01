@@ -1,3 +1,5 @@
+import {DREAM_NIGHTMARE_ART as ART} from './DreamNightmareArt.js';
+import {drawNightmareCinematicGirl} from './DreamNightmareCinematic.js';
 import {DREAM_GLIDE_THORNS,dreamGliderPose} from './DreamGlider.js';
 import {DREAM_GLIDER_ART} from './DreamGliderArt.js';
 /** Galhos espinhosos pintados, enraizados fora da tela; nenhuma régua de contato. */
@@ -6,12 +8,14 @@ export function drawDreamGlideThorns(ctx,images,left,right,top,bottom){const d=D
 export function drawDreamLaunchLeaf(ctx,images,branch,time){const d=DREAM_GLIDER_ART.girl,image=images.get(d.file);ctx.save();ctx.translate(branch.x+branch.w*.84,branch.y-18);ctx.rotate(-.15+Math.sin(time*2)*.025);ctx.drawImage(image,0,0,d.width,460,-80,-62,160,62);ctx.restore();}
 /** Mãos e haste estão na mesma pintura, que inclina inteira com o movimento vertical. */
 export function drawDreamGlider(ctx,images,state){const d=DREAM_GLIDER_ART.girl,pose=dreamGliderPose(state.player);ctx.save();ctx.translate(state.player.x,state.player.y);ctx.rotate(pose.angle+(state.stage==='GLIDE_GUST'?Math.sin(state.age*24)*.035:0));ctx.scale(pose.scale,pose.scale);ctx.drawImage(images.get(d.file),-pose.anchorX,-pose.anchorY);ctx.restore();}
-/** Registra a terra pintada em um topo plano; o pouso final não reutiliza uma árvore. */
-export function prepareDreamPlateau(image){
- // A faixa superior contém névoa azul semitransparente; o corte começa na terra opaca, sem deformar colunas.
- const top=Math.round(image.height*.17),bitmap=document.createElement('canvas');bitmap.width=image.width;bitmap.height=image.height-top;bitmap.getContext('2d').drawImage(image,0,top,image.width,image.height-top,0,0,bitmap.width,bitmap.height);return bitmap;
+/** Fim do vento, perda da folha, queda vertical e amortecimento no meio do chão pintado. */
+export function renderDreamLanding(ctx,canvas,state,images){
+ const age=state.age,{width,height}=canvas,scale=Math.max(width/1536,height/1024),halfW=width/scale/2,halfH=height/scale/2,focusX=Math.max(halfW,Math.min(1536-halfW,720)),focusY=Math.max(halfH,Math.min(1024-halfH,height>width?512:620)),startBase=Math.max(550,focusY-halfH+460),groundBase=Math.min(920,focusY+halfH-40),fall=Math.max(0,Math.min(1,(age-.7)/1.7)),base=startBase+(groundBase-startBase)*fall*fall,x=720+Math.sin(age*9)*8*Math.max(0,1-age/1.2),index=age<.75?0:age<1.9?1:age<2.4?2:3;
+ ctx.save();ctx.translate(width/2,height/2);ctx.scale(scale,scale);ctx.translate(-focusX,-focusY);ctx.drawImage(images.get(ART.cinematicForest.file),0,0,1536,1024);
+ // A sombra já está no chão; cresce conforme a menina se aproxima dele.
+ ctx.save();ctx.filter='blur(8px)';ctx.fillStyle=`rgba(0,0,0,${.12+.35*fall})`;ctx.beginPath();ctx.ellipse(720,groundBase,80-35*fall,13,0,0,Math.PI*2);ctx.fill();ctx.restore();
+ if(age<3.05){const set=ART.windFall,f=set.frames[index],k=440/set.referenceHeight;ctx.save();ctx.translate(x,base);ctx.rotate(age<2.4?Math.sin(age*8)*.05:0);ctx.scale(k,k);ctx.translate(-f.anchorX,-f.h);if(f.rowMask){ctx.beginPath();f.rowMask.forEach((r,y)=>y?ctx.lineTo(r[0],y):ctx.moveTo(r[0],y));for(let y=f.rowMask.length-1;y>=0;y--)ctx.lineTo(f.rowMask[y][1]+1,y+1);ctx.closePath();ctx.clip();}else if(f.topMask){ctx.beginPath();ctx.moveTo(0,24);ctx.lineTo(0,f.h);ctx.lineTo(f.w,f.h);ctx.lineTo(f.w,24);for(let i=23;i>=0;i--)ctx.lineTo(f.topMask[i][1]+1,i+1);for(let i=0;i<24;i++)ctx.lineTo(f.topMask[i][0],i);ctx.closePath();ctx.clip();}ctx.filter='brightness(.72) saturate(.85)';ctx.drawImage(images.get(set.file),f.x,f.y,f.w,f.h,0,0,f.w,f.h);ctx.restore();}
+ else drawNightmareCinematicGirl(ctx,images.get(ART.cinematicGirl.file),2,720,groundBase,440,state.time);
+ const released=Math.max(0,age-.75),leaf=DREAM_GLIDER_ART.girl,leafX=720+160*(1-Math.exp(-released)),leafY=age<.75?base-540:startBase-540+35*released+45*released*released;ctx.save();ctx.translate(leafX,leafY);ctx.rotate(released*.7+Math.sin(age*5)*.08);ctx.globalAlpha=Math.max(0,1-(released-1.8)/1);ctx.drawImage(images.get('dream-flight-leaf'),-250,-75,500,216);ctx.restore();
+ if(age>=2.4&&age<3.05){const q=(age-2.4)/.65;ctx.save();ctx.globalAlpha=(1-q)*.22;ctx.filter='blur(8px)';ctx.fillStyle='#8e9183';for(let i=0;i<7;i++){ctx.beginPath();ctx.ellipse(720+Math.cos(i*4)*q*110,groundBase+5-q*30,15+q*20,8+q*10,0,0,Math.PI*2);ctx.fill();}ctx.restore();}ctx.restore();
 }
-/** Uma massa larga de planalto se prolonga para a floresta, com a crista na altura do pouso. */
-export function drawDreamPlateau(ctx,bitmap,frame){if(bitmap)ctx.drawImage(bitmap,frame.x-100,frame.y,2100,1200);}
-/** A folha escapa das mãos depois de tocar o solo e repousa ao lado de Yuna. */
-export function drawDreamLandingLeaf(ctx,images,state){if(state.stage!=='GLIDE_LANDING'||state.age<2.4)return;const q=Math.min(1,(state.age-2.4)/.8),ease=q*q*(3-2*q),d=DREAM_GLIDER_ART.girl;ctx.save();ctx.translate(state.player.x+60*ease,state.player.y-148+140*ease);ctx.rotate(.25*ease);ctx.drawImage(images.get(d.file),0,0,d.width,460,-81,0,193,58*(1-.6*ease));ctx.restore();}

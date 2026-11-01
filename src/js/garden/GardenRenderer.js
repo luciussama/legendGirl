@@ -1,3 +1,4 @@
+import {drawMobileGameControls} from '../ui/TouchGameControls.js';
 import {gardenDefeatFrame} from './GardenDefeatPresentation.js';
 import {beginDialogueFrame,endDialogueFrame} from '../narrative/DialogueFlow.js';
 import {drawGardenBeetle} from './GardenBeetleRenderer.js';
@@ -306,7 +307,7 @@ export class GardenRenderer {
       ctx.font=`bold ${12*css}px Georgia`;ctx.fillStyle='#426951';ctx.textAlign='right';ctx.fillText(Math.min(100,Math.floor(p.x/C.goal*100))+'% do caminho',x+w-12*css,y+24*css);ctx.textAlign='left';ctx.fillText(gardenSection(p.x).name,x+12*css,y+49*css,w-24*css);ctx.restore();
     }
     const mobile=touch||height>width||globalThis.matchMedia?.('(pointer: coarse)').matches;
-    if(mobile){for(const [name,b]of Object.entries(this.controls())){ctx.fillStyle='rgba(255,248,225,.88)';ctx.strokeStyle='#6a9971';ctx.lineWidth=2*u;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#3d6e51';ctx.font=`bold ${name==='jump'?Math.min(17*css,b.r*.45):27*u}px Georgia`;ctx.textAlign='center';ctx.fillText(name==='left'?'◀':name==='right'?'▶':'PULAR',b.x,b.y+7*u);}ctx.textAlign='left';}
+    if(mobile&&!drawMobileGameControls(ctx,canvas,this.controls())){for(const [name,b]of Object.entries(this.controls())){ctx.fillStyle='rgba(255,248,225,.88)';ctx.strokeStyle='#6a9971';ctx.lineWidth=2*u;ctx.beginPath();ctx.arc(b.x,b.y,b.r,0,Math.PI*2);ctx.fill();ctx.stroke();ctx.fillStyle='#3d6e51';ctx.font=`bold ${name==='jump'?Math.min(17*css,b.r*.45):27*u}px Georgia`;ctx.textAlign='center';ctx.fillText(name==='left'?'◀':name==='right'?'▶':'PULAR',b.x,b.y+7*u);}ctx.textAlign='left';}
     if(s.stage==='INTRO')this.message(ctx,'Yuna desce a escada. Nanda vai junto.\nUm pedacinho de cada vez, até o piquenique.',{heading:'UM DIA NO JARDIM'});
     else if(s.stage==='GAME_OVER'||s.stage==='FALLING'&&s.age>=1.1){
       ctx.save();ctx.fillStyle='rgba(32,35,44,.23)';ctx.fillRect(0,0,width,height);ctx.font=`bold ${54*u}px Georgia`;ctx.textAlign='center';ctx.fillStyle='#fff7e7';ctx.shadowColor='#354b3c';ctx.shadowBlur=8;ctx.fillText('Game Over',width/2,height*.43);ctx.restore();

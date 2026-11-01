@@ -146,7 +146,7 @@ QA recuperável: `npm run journal:qa -- test:sonho:lagos` e `test:sonho:lagos:br
 
 Saves nightmare6 em entrada antiga retomam já submersos no mesmo lago, após validação, para evitar um salto reiniciado no meio do afundamento. Demais posições/relógios válidos são conservados; versões anteriores continuam migrando. O domínio aéreo5 e o envelope1 permanecem iguais. `DreamNightmareCinematic` recebe o relógio salvo e compõe quatro planos independentes; não avança a simulação. Pausa e save/load conservam plano, atuação e corte direto ao piquenique.
 
-O pulo gravado usa ganho0,325 antes do volume mestre em todas as fases, metade do nível inicial. Lama e asas conservam seus níveis. `prepareTerrain` reutiliza `morro-terra-v1` em caches registrados no perfil existente; não use o bitmap deformado para recalcular colisões.
+O pulo gravado usa ganho0,325 antes do volume mestre em todas as fases, metade do nível inicial. Lama e asas de besouros conservam seus níveis; abelhas/rasantes recebem multiplicador2 na revisão atual. `prepareTerrain` reutiliza `morro-terra-v1` em caches registrados no perfil existente; não use o bitmap deformado para recalcular colisões.
 
 
 ## Entrada cinematográfica e peso da criatura
@@ -156,3 +156,12 @@ Bug attack inicia no primeiro quadro após o pouso no planalto. Na cena em tela 
 As seis pernas têm joelhos sobre quitina opaca e segmentos sobrepostos. Tripés alternam apoio longo e transferência curta; a captura respeita o sentido e o alcance dos membros. Passos geram poeira, impacto grave e tremor visual, mais forte na captura. Interface, geometria e frame físico permanecem estáveis; pausa/restauração conservam os efeitos pelo relógio salvo.
 
 No EASY, a captura usa só um núcleo de0,045rad dentro do feixe visual existente de0,17rad. NORMAL mantém0,21rad e a regra anterior. Pedras e lama continuam bloqueando luz. QA atual: test:barata:revisao, test:barata:revisao:browser e review:barata:browser.
+
+
+## Fim da sustentação e controles amplos
+
+Após os últimos espinhos, o vento termina. Yuna preocupa-se ainda segurando a folha; ela escapa das mãos, e a menina cai verticalmente para o meio de um terreno já visível. Amortece o pouso e recupera o equilíbrio, sem atravessar uma borda recortada de solo. O trecho é uma cena em tela cheia, com atuação própria; a música Misty Blues continua até a chegada seguinte, quando começa Bug attack.
+
+No pântano, chão sob as patas, sombras, troncos/tocos em camadas e paralaxe lateral integram a criatura ao ambiente. São elementos decorativos; não mudam abrigos ou detecção. Em retrato mobile, Yuna fica acima da área do D-pad por enquadramento fixo.
+
+Jardim e sonho compartilham D-pad grande com oito direções e pulo amplo. No sonho, diagonais combinam os eixos; PULAR é separado. No jardim, cima também salta. No voo apenas subir/descer tem efeito na trajetória. Arrastar pelo centro neutro não perde o contato. Asas de todas as abelhas, incluindo rasantes, têm o dobro do ganho anterior; demais efeitos mantêm os níveis.

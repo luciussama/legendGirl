@@ -86,3 +86,6 @@ O final do pesadelo corta do último lago para uma cinemática na altura dos olh
 ### Chegada à barata — revisão de31/10/2026
 
 Após os espinhos, a folha pousa num planalto. Yuna solta a folha e fica em terra antes do corte cinematográfico, quando Bug attack começa. Mantidas as falas de dúvida e cheiro repugnante, a barata sai por trás das árvores; Yuna olha, se assusta, corre e se esconde numa pedra. A perseguição jogável começa nesse abrigo. Poeira, impactos e tremor mostram o peso da criatura, com contato final mais forte e o despertar já estabelecido.
+
+
+Após os espinhos do voo, o vento termina: Yuna se preocupa, perde a folha e cai no meio de terra firme. Ela amortece o pouso e se levanta, antes da caminhada e da revelação da barata já autoradas. A futura abertura do sonho com Nanda do mesmo tamanho foi apenas solicitada como próximo passo no diário humano; não é uma cena implementada nesta revisão.

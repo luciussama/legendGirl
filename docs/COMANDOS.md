@@ -316,3 +316,6 @@ Margens de toque do voo: `npm run journal:qa -- test:planador:toque` verifica di
 
 
 Revisão da barata: npm run journal:qa -- test:barata:revisao verifica prefixo, pouso/save, juntas, impactos e tolerância EASY. test:barata:revisao:browser aceita1200 720ou390 844e percorre chegada, música, leitura, revelação/abrigo e captura no jogo. review:barata:browser renderiza quadros dirigidos para inspeção, sem inferir aprovação artística.
+
+
+QA do acabamento do voo/pântano/mobile: `npm run journal:qa -- test:acabamento`; toque/cenas com Chrome local: `npm run journal:qa -- test:acabamento:toque:browser LARGURA ALTURA DIRETORIO_DE_EVIDENCIAS`; áudio e ganho dobrado: `npm run journal:qa -- test:acabamento:audio:browser`. Diretórios de evidência somente temporários no diário; registrar resultados e limpar após arquivamento. Esses comandos não certificam aprovação artística ou teste em aparelho físico.

@@ -1,22 +1,18 @@
+import {mobileGameControls} from '../ui/TouchGameControls.js';
 import {isMobileDevice} from '../controllers/MobileZoom.js';
 import {DREAM,DREAM_BY_ID} from './DreamLevel.js';
 import {GardenInput,gardenControls} from '../garden/GardenInput.js';
 import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
-/** Direcional normal; no voo mobile, somente subir/descer com alvos amplos em pixels CSS. */
+/** D-pad de oito direções e pulo amplo no mobile; desktop conserva os alvos anteriores. */
 export function dreamControls(canvas,{stage=null,mobile=isMobileDevice()}={}){
   const safe=getDialogueSafeArea(canvas);
-  if(mobile&&stage==='GLIDING'){
-    const rect=canvas.getBoundingClientRect?.(),sx=canvas.width/(rect?.width||canvas.width),sy=canvas.height/(rect?.height||canvas.height);
-    const w=Math.min(128*sx,safe.right-safe.left-24*sx),h=Math.min(88*sy,(safe.bottom-safe.top-48*sy)/2),gap=16*sy,x=safe.left+12*sx+w/2,downY=safe.bottom-16*sy-h/2;
-    const button=y=>({x,y,r:Math.min(32*sx,32*sy,w*.4,h*.4),hitBox:{left:x-w/2,right:x+w/2,top:y-h/2,bottom:y+h/2}});
-    return{up:button(downY-h-gap),down:button(downY)};
-  }
-  const base=gardenControls(canvas,safe),r=Math.max(23,base.left.r),x=safe.left+r*3.3,y=safe.bottom-r*3.3;
+  if(mobile)return mobileGameControls(canvas,safe);
+  const base=gardenControls(canvas,safe,{mobile:false}),r=Math.max(23,base.left.r),x=safe.left+r*3.3,y=safe.bottom-r*3.3;
   return{left:{x:x-r*2.1,y,r},right:{x:x+r*2.1,y,r},up:{x,y:y-r*2.1,r},down:{x,y:y+r*2.1,r},jump:{...base.jump,r:Math.max(28,base.jump.r)}};
 }
 
-/** Quatro comandos da perseguição junto à borda inferior, sem cobrir os abrigos próximos. */
-export function nightmareControls(canvas){const safe=getDialogueSafeArea(canvas),r=Math.max(24,Math.min((safe.right-safe.left)/11,canvas.height/10,42)),y=safe.bottom-r*1.3;return{left:{x:safe.left+r*1.3,y,r},right:{x:safe.left+r*3.7,y,r},down:{x:safe.right-r*3.7,y,r},jump:{x:safe.right-r*1.3,y,r}};}
+/** D-pad compartilhado no mobile; quatro comandos inferiores no desktop. */
+export function nightmareControls(canvas){const safe=getDialogueSafeArea(canvas);if(isMobileDevice())return mobileGameControls(canvas,safe);const r=Math.max(24,Math.min((safe.right-safe.left)/11,canvas.height/10,42)),y=safe.bottom-r*1.3;return{left:{x:safe.left+r*1.3,y,r},right:{x:safe.left+r*3.7,y,r},down:{x:safe.right-r*3.7,y,r},jump:{x:safe.right-r*1.3,y,r}};}
 
 /** Só no celular: prepara a altura do salto na seda, sem substituir direção vertical ou salto manuais. */
 export function dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds=1/60}={}){
@@ -29,5 +25,5 @@ export function dreamMobileWebInput(state,input,{mobile=isMobileDevice(),seconds
 /** Reaproveita liberação de ponteiros e listeners do jardim; acrescenta eixo vertical para agarrar/escalar. */
 export class DreamInput extends GardenInput{
   constructor(canvas,enabled,unlock,scene){super(canvas,enabled,()=>dreamControls(canvas),unlock,scene);const down=this.down;this.down=e=>{if(this.enabled()&&!this.scene()&&['ArrowDown','KeyS'].includes(e.code)){e.preventDefault();this.keys.add(e.code);this.unlock();}else down(e);};}
-  sample(){const input=super.sample();if(!this.enabled()||this.scene())return{...input,y:0};const has=name=>[...this.pointers.values()].includes(name);let y=Number(this.keys.has('ArrowDown')||this.keys.has('KeyS')||has('down'))-Number(this.keys.has('ArrowUp')||this.keys.has('KeyW')||has('up'));let jump=this.keys.has('Space')||has('jump');let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{/* Teclado e toque permanecem disponíveis. */}for(const p of pads)if(p?.connected){if(Math.abs(p.axes[1]||0)>.2)y=p.axes[1];if(p.buttons[12]?.pressed)y=-1;if(p.buttons[13]?.pressed)y=1;jump||=Boolean(p.buttons[0]?.pressed||p.buttons[2]?.pressed);}return{...input,y,jump:this.blockJumpUntilRelease?false:jump};}
+  sample(){const input=super.sample();if(!this.enabled()||this.scene())return{...input,y:0};const has=name=>[...this.pointers.values()].some(value=>value.split('-').includes(name));let y=Number(this.keys.has('ArrowDown')||this.keys.has('KeyS')||has('down'))-Number(this.keys.has('ArrowUp')||this.keys.has('KeyW')||has('up'));let jump=this.keys.has('Space')||has('jump');let pads=[];try{pads=navigator.getGamepads?.()||[];}catch{/* Teclado e toque permanecem disponíveis. */}for(const p of pads)if(p?.connected){if(Math.abs(p.axes[1]||0)>.2)y=p.axes[1];if(p.buttons[12]?.pressed)y=-1;if(p.buttons[13]?.pressed)y=1;jump||=Boolean(p.buttons[0]?.pressed||p.buttons[2]?.pressed);}return{...input,y,jump:this.blockJumpUntilRelease?false:jump};}
 }

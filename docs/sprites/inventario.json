@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 518,
-    "regions": 291,
+    "files": 519,
+    "regions": 295,
     "code": 29
   },
   "items": [
@@ -3827,6 +3827,34 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "72d3916481efd58807d2a0c8",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-queda-vento-v1.png",
+      "title": "yuna-queda-vento-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2227446,
+      "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "windFall"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "35d78b76e1495512e5cbeee6",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-saida-lama-v1.png",
@@ -4033,13 +4061,13 @@
       "references": [
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 124,
+          "line": 134,
           "type": "runtime",
           "alias": null
         }
@@ -4292,19 +4320,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -4333,19 +4361,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -4470,7 +4498,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -17515,13 +17543,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 129,
+          "line": 139,
           "type": "runtime",
           "alias": null
         },
@@ -17539,7 +17567,7 @@
         },
         {
           "file": "src/js/garden/GardenRenderer.js",
-          "line": 19,
+          "line": 20,
           "type": "runtime",
           "alias": null
         },
@@ -25303,19 +25331,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25353,19 +25381,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25403,19 +25431,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25453,19 +25481,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25503,19 +25531,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25553,19 +25581,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25603,19 +25631,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25653,19 +25681,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25715,19 +25743,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25777,19 +25805,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25839,19 +25867,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25901,19 +25929,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -25963,19 +25991,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -26025,19 +26053,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -26087,19 +26115,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -26149,19 +26177,19 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 25,
+          "line": 27,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -27203,7 +27231,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -27241,7 +27269,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 20,
+          "line": 22,
           "type": "runtime",
           "alias": null
         }
@@ -33133,6 +33161,146 @@
       "hints": [
         "Trecho de um renderer compartilhado: classificar este desenho não autoriza excluir o módulo JavaScript inteiro."
       ]
+    },
+    {
+      "id": "f05de95e72d6f23b8f9d2e92",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-queda-vento-v1.png",
+      "title": "pesadelo · windFall · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2227446,
+      "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "windFall"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 247,
+        "y": 16,
+        "width": 431,
+        "height": 543
+      },
+      "parentId": "72d3916481efd58807d2a0c8"
+    },
+    {
+      "id": "22967307fd117936cee7a307",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-queda-vento-v1.png",
+      "title": "pesadelo · windFall · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2227446,
+      "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "windFall"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 913,
+        "y": 26,
+        "width": 470,
+        "height": 526
+      },
+      "parentId": "72d3916481efd58807d2a0c8"
+    },
+    {
+      "id": "ea9b0311e950787fd28305cf",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-queda-vento-v1.png",
+      "title": "pesadelo · windFall · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2227446,
+      "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "windFall"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 308,
+        "y": 547,
+        "width": 445,
+        "height": 453
+      },
+      "parentId": "72d3916481efd58807d2a0c8"
+    },
+    {
+      "id": "7f05a74bc137035a276ffb73",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-queda-vento-v1.png",
+      "title": "pesadelo · windFall · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2227446,
+      "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "windFall"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 863,
+        "y": 572,
+        "width": 500,
+        "height": 421
+      },
+      "parentId": "72d3916481efd58807d2a0c8"
     },
     {
       "id": "b6ff1e1850db49ecd416a846",

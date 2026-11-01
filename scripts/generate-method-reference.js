@@ -6,11 +6,11 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ mobileGameControls:'Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS.',
+ drawMobileGameControls:'Desenha D-pad unido, setas diagonais e salto respeitando a área segura.',
+ renderDreamLanding:'Compõe fim da sustentação, perda da folha, queda e amortecimento no chão em tela cheia.',
  solveRoachLeg:'Resolve duas juntas com comprimentos e flexão preservados, normalizando ângulos.',
  dreamRoachLegPoints:'Retorna quadril, joelho e ponta dos segmentos rígidos pelas rotações usadas no desenho.',
- prepareDreamPlateau:'Prepara terra opaca abaixo da névoa da fonte para o topo plano do pouso.',
- drawDreamPlateau:'Desenha a massa de terra do planalto na altura física do pouso.',
- drawDreamLandingLeaf:'Solta e acomoda a folha ao lado de Yuna depois do contato com o solo.',
  nightmareEntranceMoment:'Seleciona chegada, leitura, emergência, susto, fuga e abrigo pelo relógio salvo.',
  renderNightmareEntrance:'Compõe a entrada em planos próprios, com árvores em primeiro plano e diálogos padrão.',
  drawNightmareCinematicGirl:'Desenha atuações mantendo recorte, escala e âncora dos pés.',
@@ -42,7 +42,7 @@ const details={
  stealthMudAt:'Exige que o corpo inteiro caiba dentro da poça para permitir submersão.',
  stealthPose:'Compartilha o índice da pose abaixada entre pintura, salto e detecção dos olhos.',
  stealthCheckpoint:'Retorna o abrigo de retomada por setor e conserva submersão nos setores de lama.',
- nightmareControls:'Distribui andar, mergulhar e pular em quatro botões inferiores com toque simultâneo.',
+ nightmareControls:'Compartilha D-pad mobile e mantém quatro alvos no desktop para a perseguição.',
  migrateNightmare:'Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz.',
 
  dreamRoachPose:'Deriva passadas em tripés, cabeça, antenas e oscilação corporal do relógio salvo.',
@@ -231,14 +231,14 @@ Object.assign(details,{
  dreamGrassX:'Calcula a curva compartilhada da haste; a ponta recebe vento e o caule abaixo da lâmina mantém a base fixa.',
  stem:'Desenha a continuação natural do caule abaixo do viewport, conectada à lâmina e sem régua auxiliar.',
  dreamSurface:'Consulta relevo da folha ou perfil alfa nativo do inseto para apoiar os pés sem régua auxiliar.',
- dreamControls:'Posiciona o direcional normal; no voo mobile entrega somente subir/descer com caixas amplas em pixels CSS.',
+ dreamControls:'Compartilha D-pad amplo com oito direções e pulo em todos os estágios mobile.',
  startDream:'Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada.'
 });
 const scopedDetails={
  'GameSoundEffects.js':{constructor:'Cria o conjunto limitado de vozes de efeitos gravados.',play:'Reproduz uma amostra já decodificada com ganho, taxa, canal e panorâmica.',update:'Atualiza ganho, panorâmica e taxa de uma voz ativa cancelando rampas anteriores.',stop:'Encerra canais imediatamente ou com fade e libera suas conexões.'},
  'GardenAudio.js':{sample:'Dispara pulo ou lama com volume mestre, pausa, mudo e deduplicação curta da vocalização.',updateWings:'Mantém até três emissores próximos de asas e atualiza o ganho das amostras ativas.'},
  'DreamNightmareCinematic.js':{nightmareCinematicShot:'Seleciona caminhada, reação, close da criatura e captura por relógio narrativo.',renderNightmareCinematic:'Compõe cenário e atores em planos próprios, sem câmera nem mapa de gameplay.'},
- 'DreamNightmareRenderer.js':{prepareTerrain:'Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor.',mudClip:'Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal.'},
+ 'DreamNightmareRenderer.js':{swampLayers:'Distribui troncos e tocos ilustrados em camadas que envolvem a criatura.',prepareTerrain:'Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor.',mudClip:'Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal.'},
  'DreamNightmareLighting.js':{
   constructor:'Cria o buffer transitório reutilizado da iluminação, sem estado persistente.',
   surfaceEnd:'Limita o raio visual ao primeiro abrigo, chão ou superfície curva da lama.',

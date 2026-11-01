@@ -35,7 +35,7 @@ for(const [section,def] of DREAM_SECTIONS.entries()){
   }
   cursor+=0;
 }
-objects.push({id:'dream-finish',kind:'plateau',x:cursor,y:350,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
+objects.push({id:'dream-finish',kind:'plateau',x:cursor,y:2400,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
 for(const [index,o] of objects.entries())if(o.kind==='beetle'){
   const next=objects[index+1],n=Number(o.id.split('-').at(-1));
   o.flight=Object.freeze({toX:next.x-o.w-100,toY:next.kind==='leaf'?next.y-o.h*.7:next.y+35,duration:[12,14,13,14][n],delay:.65,arc:[-170,140,-190,100][n],wave:[65,-70,75,-65][n],next:next.id});

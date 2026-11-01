@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen",
+  "skill": "imagegen",
+  "date": "2026-10-31",
+  "file": "yuna-queda-vento-v1.png",
+  "references": [
+    "yuna-planador-v1.png",
+    "yuna-cinematica-pesadelo-v2.png"
+  ],
+  "prompt": "Use case: illustration-story. Asset type: transparent game animation sprite sheet, 2 columns by 2 rows, four separate full-body poses with generous transparent gutters. Use referenced girl as strict identity and outfit reference: brown curly pigtails pink bows, brown eyes, pale yellow blouse, teal floral pinafore skirt with pink spiral flowers, white socks, pink flower shoes. Same painterly children's book polished style. Sequence of losing lift during a leaf flight: top-left girl still holding only a SHORT GREEN LEAF STEM overhead with both hands, knees hanging, expression worried brows raised mouth tense; top-right hands open above her head, having just lost stem, falling upright terrified, hair and skirt lifted upward by descent, legs slightly spread beneath; bottom-left girl bracing for landing feet down knees flexed, arms forward concerned eyes downward; bottom-right deep landing squat one hand touching ground, other out for balance, worried but relieved. NO LEAF CANOPY painted in any pose (leaf will be separate animated layer). No ground, no scenery, no shadows, no lettering or grid. All four complete heads/hands/shoes visible, no overlap or clipping. Genuine alpha transparent background. Keep proportions and costume exactly consistent across poses, never add shorts or leggings.",
+  "sha256": "49dd3a2742e32c5d26ebd982591f99c2b4b9d69ca28ce00eb2f55d921fe6a475",
+  "bytes": 2227446
+}

@@ -828,19 +828,27 @@ O ganho de `jump-girl` em `audio.js` e GardenAudio é0,325 antes do volume mestr
 
 As asas de insetos não abelhas agora usam `source/wings-bugs2.wav`, preparado como `wings-insects-v2.wav` pelo mesmo script. O canal `beetle` resolve ambos os cenários; `bee` e `dive` pertencem às abelhas e usam ambos `wings-bee-v2.wav`, preparado do novo `source/wings-bee.wav` fornecido pelo usuário. O recorte antigo `wings-beetle.wav` permanece como referência, fora do runtime. O rasante conserva a intensidade de voo existente, mas usa a mesma nova gravação de todas as abelhas. Não usar a fonte de besouros nesse canal.
 
-### Margem dos controles móveis do planador
+### Controles móveis compartilhados
 
-`dreamControls(canvas,{stage,mobile})` usa dois comandos exclusivos em GLIDING e dispositivo móvel: subir/descer, círculos visíveis de até32CSS de raio dentro de caixas sensíveis de até128×88CSS, separadas por16CSS. A caixa inferior fica16CSS acima da área segura. Conversões por getBoundingClientRect mantêm a margem física do dedo sob diferentes densidades. Em área muito curta, a altura se adapta para não sobrepor comandos.
-
-O descritor opcional `hitBox:{left,right,top,bottom}` é interpretado em coordenadas do canvas por GardenInput; alvos existentes sem essa propriedade preservam o círculo com a tolerância anterior. DreamPhase fornece o estágio também à resolução da entrada; DreamRenderer usa o mesmo layout. Não retornar esquerda/direita/pulo invisíveis no voo móvel. Arrasto, multitoque, liberação, cancelamento e pausa mantêm o ciclo de vida da entrada. O ajuste não modifica o planador ou a colisão dos espinhos. QA: test:planador:toque e test:planador:toque:browser no acervo.
-
+O layout amplo atual usa TouchGameControls no jardim, planador e demais trechos do sonho. GardenInput interpreta hitBox em coordenadas de canvas, captura multitoque e nomes compostos para diagonais. O centro neutro conserva a captura; pausa/cancelamento liberam todos os ponteiros. Círculos sem hitBox e teclado/gamepad conservam o contrato anterior. Consulte o acabamento abaixo para dimensões e QA.
 
 ### Entrada, articulação e impactos da barata
 
-O apoio final plateau é estático/plano e não permite escalada. O pouso termina antes da troca de domínio; a folha solta e Yuna permanece em terra. DreamNightmareEntrance reutiliza as pinturas cinematográficas, atuações e pedra do projeto em planos próprios. As falas mantêm seus tempos; Bug attack toca desde o primeiro quadro. A pré-carga começa no fim do voo.
+O apoio final plateau é estático/plano e não permite escalada. A queda após o fim da sustentação e a folha escapando terminam antes da troca de domínio; Yuna amortece e permanece em terra. DreamNightmareEntrance reutiliza as pinturas cinematográficas, atuações e pedra do projeto em planos próprios. As falas mantêm seus tempos; Bug attack toca desde o primeiro quadro. A pré-carga começa no fim do voo.
 
 ROACH_JOINTS precisa manter os joelhos sobre quitina opaca. As divisões seguem o eixo da perna, com14pixels de sobreposição e junta circular de32pixels de raio. solveRoachLeg conserva a flexão, normaliza ângulos e limita o alcance. A passada interna é reposicionada dentro do alcance para não fazer o pé flutuar. A captura aproxima o corpo para alcançar a menina sem esticar os ossos.
 
 DreamRoachEffects usa o relógio salvo, sem timers ou sorteio não persistido. Eventos de impacto cruzam marcos sem repetir após restauração. Tremor é deslocamento da composição em pixels CSS, preservando frame físico e controles; o buffer de luz recebe o mesmo deslocamento. Vozes graves seguem o ciclo de vida de GardenAudio.
 
 detection:true em nightmareVisibility aplica0,045rad somente à captura EASY. A consulta visual e nightmareLights conservam os feixes existentes. Domínio5/envelope1/nightmare7 e identificadores dos estágios continuam compatíveis; NIGHTMARE_FALL passa a significar chegada em terra.
+
+
+### Acabamento do pouso e controles mobile
+
+GLIDE_LANDING é uma cena própria em DreamGliderRenderer.renderDreamLanding: usa floresta-cinematica-v1 e quatro poses de yuna-queda-vento-v1. O vento acaba, Yuna perde a folha em0,75s, cai até2,4s, amortece e se levanta antes do corte em3,6s. O preparador mede componentes e rowMask completo, excluindo pixels de outras poses; a folha é recortada em memória sem cortar sua ponta. O apoio lógico final está emy2400, abaixo dos limites do voo; a descida é monotônica e permanece nos limites do save. Nenhum bloco de terra é desenhado no corredor.
+
+TouchGameControls.mobileGameControls converte por eixo com getBoundingClientRect: D-pad de168–192CSS, oito células contíguas, centro neutro e salto sensível de96CSS. drawMobileGameControls desenha o mesmo descritor nos dois cenários. GardenInput mantém nomes compostos e captura durante passagem pelo centro; DreamInput lê os componentes como eixos sem fazer cima virar pulo. No jardim, cima/diagonais superiores também saltam. Teclado/gamepad e layout desktop conservam seus contratos. NIGHTMARE mobile em retrato tem rodapé reservado por frame fixo de viewport; não segue saltos ou apoios.
+
+O chão preparado do pântano usa apenas a faixa central de solo, sem árvores duplicadas sobre as patas. Camadas de troncos/tocos e sombras de contato envolvem a barata; paralaxe do fundo acompanha apenas rolagem lateral. Não recalcular NIGHTMARE_ROCKS, nightmarePatrol ou nightmareLights a partir da composição decorativa.
+
+GardenAudio.updateWings aplica multiplicador2 apenas a bee/dive, antes do volume mestre, tanto ao criar quanto ao atualizar canais. Não normalizar novamente os WAVs nem alterar besouros/pulo/lama. QA recuperável: test:acabamento, test:acabamento:toque:browser e test:acabamento:audio:browser.

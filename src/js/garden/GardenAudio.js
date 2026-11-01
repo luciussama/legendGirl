@@ -41,7 +41,7 @@ export class GardenAudio {
     const ctx=this.host?.getAudioContext?.();if(!ctx||ctx.state!=='running')return;
     if(this.samplesContext!==ctx){this.samplesContext=ctx;preloadGameSounds(ctx);}
     const audible=audibleInsects(state,this.wingScene),wanted=new Set();
-    for(const e of audible){const channel=`asa-${e.id}-${e.kind}`;wanted.add(channel);const volume=e.volume*(this.host?.getMasterVolume?.()??1);this.samples.play(ctx,ctx.destination,e.kind,{volume,rate:e.rate,pan:e.pan,loop:true,channel});this.samples.update(channel,volume,e.pan,e.rate);}
+    for(const e of audible){const channel=`asa-${e.id}-${e.kind}`;wanted.add(channel);const volume=e.volume*(e.kind==='bee'||e.kind==='dive'?2:1)*(this.host?.getMasterVolume?.()??1);this.samples.play(ctx,ctx.destination,e.kind,{volume,rate:e.rate,pan:e.pan,loop:true,channel});this.samples.update(channel,volume,e.pan,e.rate);}
     for(const [key,v] of this.samples.voices)if(v.loop&&!wanted.has(key))this.samples.stop(key,.12);
     for(const [key,v] of this.samples.voices)if(!v.loop)this.samples.update(key,(v.name==='mud'?.8:.325)*(this.host?.getMasterVolume?.()??1));
   }
