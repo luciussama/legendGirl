@@ -1,3 +1,5 @@
+import {renderNightmareEntrance} from './DreamNightmareEntrance.js';
+import {drawRoachDust,roachScreenShake} from './DreamRoachEffects.js';
 import {renderNightmareCinematic} from './DreamNightmareCinematic.js';
 import {DreamNightmareLighting} from './DreamNightmareLighting.js';
 import {DREAM_MUD_LAKES,mudActor,mudLakeAt,mudWaterline} from './DreamMud.js';
@@ -78,6 +80,7 @@ export class DreamNightmareRenderer{
   reach(ctx,s){const q=s.stage==='NIGHTMARE_FINAL'?smooth((s.age-4.4)/1.6):smooth((s.age-.15)/.57);drawDreamRoachReach(ctx,this.roach,nightmarePatrol(s.nightmare,s.stage,s.age),{x:s.nightmare.x,y:s.nightmare.y-65},q);}
   /** Fundo escuro, barata monumental e cones recortados; pedras ficam no plano intermediário e a menina permanece visível no caminho da frente. */
   forest(s,touch){const ctx=this.ctx,canvas=this.canvas,{width,height}=canvas,n=s.nightmare,frame=this.frame(s),background=this.images.get('dream-forest/floresta-azul-v1.png');
+    const stompAge=s.stage==='NIGHTMARE_STRIKE'&&s.age>=.72?s.age-.72:-1,shake=n.roachAppeared?roachScreenShake(n.time,nightmarePatrol(n,s.stage,s.age).velocity??140,stompAge):{x:0,y:0};const pixel=width/(canvas.clientWidth||width);shake.x*=pixel;shake.y*=pixel;ctx.save();ctx.translate(shake.x,shake.y);
     const bgScale=Math.max(width/background.width,height/background.height);ctx.drawImage(background,(width-background.width*bgScale)/2,(height-background.height*bgScale)/2,background.width*bgScale,background.height*bgScale);ctx.fillStyle='rgba(1,5,15,.86)';ctx.fillRect(0,0,width,height);
     ctx.save();ctx.translate(-frame.left*frame.scale,frame.top);ctx.scale(frame.scale,frame.scale);
     const p=nightmarePatrol(n,s.stage,s.age),reaching=s.stage==='NIGHTMARE_FINAL'&&s.age>4.4||s.stage==='NIGHTMARE_STRIKE'&&s.age>.15;
@@ -87,7 +90,7 @@ export class DreamNightmareRenderer{
     const environment=this.images.get(ART.shelters.file),lakes=this.images.get(ART.lakes.file);
     for(const lake of DREAM_MUD_LAKES){if(lake.paintX+lake.w<frame.left||lake.paintX>frame.left+width/frame.scale)continue;const f=ART.lakes.frames[lake.frame];ctx.drawImage(lakes,f.x,f.y,f.w,f.h,lake.paintX,lake.top,lake.w,lake.h);}
     const lights=s.stage==='NIGHTMARE_FINAL'&&s.age<2.7?[]:nightmareLights(n,s.difficulty,s.stage,s.age);
-    this.lighting.air(ctx,canvas,frame,lights);
+    this.lighting.air(ctx,canvas,{...frame,left:frame.left-shake.x/frame.scale,top:frame.top+shake.y},lights);
     for(const light of lights){const glow=ctx.createRadialGradient(light.x,light.y,0,light.x,light.y,30);glow.addColorStop(0,'#fff5cf');glow.addColorStop(.2,'#ffd385');glow.addColorStop(1,'rgba(255,177,59,0)');ctx.fillStyle=glow;ctx.beginPath();ctx.arc(light.x,light.y,30,0,Math.PI*2);ctx.fill();}
     const stones=this.images.get(ART.rocks.file);
     for(const r of NIGHTMARE_ROCKS){if(r.x+r.w/2<frame.left-30||r.x-r.w/2>frame.left+width/frame.scale+30)continue;const source=r.kind==='rock'?ART.rocks:ART.shelters,f=source.frames[r.frame];ctx.fillStyle='rgba(0,0,0,.4)';ctx.beginPath();ctx.ellipse(r.x,r.base+4,r.w*.48,12,0,0,Math.PI*2);ctx.fill();ctx.drawImage(r.kind==='rock'?stones:environment,f.x,f.y,f.w,f.h,r.x-r.w/2,r.base-r.h,r.w,r.h);}
@@ -95,6 +98,7 @@ export class DreamNightmareRenderer{
     this.lighting.ground(ctx,lights);
     // Yuna está do lado do jogador: nem pedra nem sombra voltam a cobrir a sua pintura.
     if(n.mudMode==='dry'&&!mudLakeAt(n.x)){const ground=stealthGround(n.x);ctx.fillStyle='rgba(0,0,0,.3)';ctx.beginPath();ctx.ellipse(n.x,ground+2,32,6,0,0,Math.PI*2);ctx.fill();}
+    if(n.roachAppeared)drawRoachDust(ctx,this.roach,p,n.time,{stompAge,stompPoint:{x:n.x-50,y:n.y}});
     this.girl(ctx,s);
     // A margem e a lama frontal são da mesma pintura; ocultam o corpo conforme o trajeto curvo.
     for(const lake of DREAM_MUD_LAKES){if(lake.paintX+lake.w<frame.left||lake.paintX>frame.left+width/frame.scale)continue;const f=ART.lakes.frames[lake.frame];ctx.save();ctx.beginPath();lake.path.forEach(([u,v],i)=>i?ctx.lineTo(lake.paintX+u*lake.w,lake.top+v*lake.h):ctx.moveTo(lake.paintX+u*lake.w,lake.top+v*lake.h));ctx.lineTo(lake.to,lake.top+lake.h);ctx.lineTo(lake.from,lake.top+lake.h);ctx.closePath();ctx.clip();ctx.drawImage(lakes,f.x,f.y,f.w,f.h,lake.paintX,lake.top,lake.w,lake.h);ctx.restore();}
@@ -103,6 +107,7 @@ export class DreamNightmareRenderer{
     if(s.stage==='STEALTH'&&n.mudMode!=='dry'){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId),surface=mudWaterline(lake,n.x),stroke=1+Math.min(1,Math.abs(n.vx)/78);ctx.strokeStyle='rgba(156,168,159,.35)';ctx.lineWidth=1.3;for(let i=0;i<2;i++){ctx.beginPath();ctx.ellipse(n.x-n.facing*(10+i*14),surface+4+i*2,12*stroke+i*8+Math.sin(n.time*3)*2,3+i,0,.12,Math.PI*1.8);ctx.stroke();}}
 
     if(s.stage==='NIGHTMARE_STRIKE'||s.stage==='NIGHTMARE_FINAL')this.reach(ctx,s);
+    ctx.restore();
     ctx.restore();
     const rect=canvas.getBoundingClientRect(),bar=document.querySelector('.top-controls-bar')?.getBoundingClientRect(),safe=getDialogueSafeArea(canvas),css=width/(canvas.clientWidth||width),titleY=Math.max(safe.top+24*css,bar?(bar.bottom-rect.top)*height/rect.height+24*css:0);
     ctx.textAlign='center';ctx.fillStyle='#c5c9d0';ctx.font=`${Math.min(17*css,width/27)}px Georgia,serif`;
@@ -125,6 +130,6 @@ export class DreamNightmareRenderer{
     ctx.restore();
     if(s.stage==='NIGHTMARE_WAKE'&&n.wakeIndex>=0){const card=NIGHTMARE_WAKE[n.wakeIndex],rect=canvas.getBoundingClientRect(),bar=document.querySelector('.top-controls-bar')?.getBoundingClientRect(),topInset=portrait&&bar?(bar.bottom-rect.top)*height/rect.height-safe.top+12*css:0;renderPoeticNarration(ctx,canvas,card.text,{heading:card.speaker,onAdvance:this.onAdvance,topInset});}
   }
-  render(s,{paused=false,touch=false,onAdvance=()=>{}}={}){const ctx=this.ctx,{width,height}=this.canvas;this.onAdvance=onAdvance;beginDialogueFrame(this.canvas);try{ctx.fillStyle='#030711';ctx.fillRect(0,0,width,height);if(!this.ready){ctx.fillStyle='#d7d1bf';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText(this.error||'Entrando na floresta escura…',width/2,height/2,width-30);return;}if(s.stage==='NIGHTMARE_WAKE'||s.stage==='COMPLETE')this.wake(s);else if(s.stage==='NIGHTMARE_FINAL')renderNightmareCinematic(ctx,this.canvas,s,this.images,this.roach);else this.forest(s,touch);if(paused){ctx.fillStyle='rgba(2,5,14,.5)';ctx.fillRect(0,0,width,height);ctx.fillStyle='#ede5d6';ctx.font='20px sans-serif';ctx.textAlign='center';ctx.fillText('Pausa',width/2,height/2);}}finally{endDialogueFrame(this.canvas);}}
+  render(s,{paused=false,touch=false,onAdvance=()=>{}}={}){const ctx=this.ctx,{width,height}=this.canvas;this.onAdvance=onAdvance;beginDialogueFrame(this.canvas);try{ctx.fillStyle='#030711';ctx.fillRect(0,0,width,height);if(!this.ready){ctx.fillStyle='#d7d1bf';ctx.font='16px sans-serif';ctx.textAlign='center';ctx.fillText(this.error||'Entrando na floresta escura…',width/2,height/2,width-30);return;}if(s.stage==='NIGHTMARE_WAKE'||s.stage==='COMPLETE')this.wake(s);else if(['NIGHTMARE_FALL','NIGHTMARE_INTRO','NIGHTMARE_REVEAL'].includes(s.stage))renderNightmareEntrance(ctx,this.canvas,s,this.images,this.roach,{onAdvance});else if(s.stage==='NIGHTMARE_FINAL')renderNightmareCinematic(ctx,this.canvas,s,this.images,this.roach);else this.forest(s,touch);if(paused){ctx.fillStyle='rgba(2,5,14,.5)';ctx.fillRect(0,0,width,height);ctx.fillStyle='#ede5d6';ctx.font='20px sans-serif';ctx.textAlign='center';ctx.fillText('Pausa',width/2,height/2);}}finally{endDialogueFrame(this.canvas);}}
   destroy(){this.disposed=true;this.lighting.destroy();destroyDreamRoach(this.roach);this.roach=null;if(this.floor){this.floor.width=1;this.floor.height=1;}this.floor=null;if(this.warm){this.warm.width=1;this.warm.height=1;}this.warm=null;for(const ground of this.terrain??[]){ground.canvas.width=1;ground.canvas.height=1;}this.terrain=[];this.images.clear();for(const c of this.dark.values()){c.width=1;c.height=1;}this.dark.clear();this.ready=false;}
 }

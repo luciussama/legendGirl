@@ -6,6 +6,18 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ solveRoachLeg:'Resolve duas juntas com comprimentos e flexão preservados, normalizando ângulos.',
+ dreamRoachLegPoints:'Retorna quadril, joelho e ponta dos segmentos rígidos pelas rotações usadas no desenho.',
+ prepareDreamPlateau:'Prepara terra opaca abaixo da névoa da fonte para o topo plano do pouso.',
+ drawDreamPlateau:'Desenha a massa de terra do planalto na altura física do pouso.',
+ drawDreamLandingLeaf:'Solta e acomoda a folha ao lado de Yuna depois do contato com o solo.',
+ nightmareEntranceMoment:'Seleciona chegada, leitura, emergência, susto, fuga e abrigo pelo relógio salvo.',
+ renderNightmareEntrance:'Compõe a entrada em planos próprios, com árvores em primeiro plano e diálogos padrão.',
+ drawNightmareCinematicGirl:'Desenha atuações mantendo recorte, escala e âncora dos pés.',
+ roachFootfall:'Consulta contato dos tripés no relógio determinístico de passadas.',
+ roachScreenShake:'Produz tremor transitório da composição em pixels CSS sem mudar o frame físico.',
+ drawRoachDust:'Projeta poeira nos contatos das patas e na propagação do impacto final.',
+
  preloadGameSounds:'Decodifica WAVs fornecidos uma vez por contexto, sem enfileirar reprodução atrasada.',
  insectEmitters:'Consulta corpos e estados de voo de abelhas e besouros no jardim ou sonho.',
  audibleInsects:'Seleciona até três emissores por distância, energia de voo e panorâmica.',
@@ -35,7 +47,7 @@ const details={
 
  dreamRoachPose:'Deriva passadas em tripés, cabeça, antenas e oscilação corporal do relógio salvo.',
  dreamRoachPoint:'Transforma os olhos pela mesma junta de cabeça usada na pintura e retorna a posição física.',
- prepareDreamRoach:'Prepara máscaras da pintura para doze segmentos de patas, cabeça e antenas, sem editar PNGs.',
+ prepareDreamRoach:'Prepara doze segmentos rígidos e seis juntas protegidas, cabeça e antenas, sem editar PNGs.',
  drawDreamRoach:'Compõe a barata original com seis patas articuladas e investigação da cabeça e antenas.',
  drawDreamRoachReach:'Resolve duas juntas da pata frontal até a menina durante golpe e captura.',
  destroyDreamRoach:'Libera as superfícies de Canvas usadas pela barata articulada.',
@@ -178,7 +190,7 @@ Object.assign(details,{
  nightmareLights:'Converte os olhos medidos na pintura nas duas origens físicas de luz.',
  nightmareRayEnd:'Encontra a primeira interseção de um raio com as silhuetas opacas das pedras.',
  nightmareBeam:'Monta o polígono de luz visível incluindo tangentes e sombras das pedras.',
- nightmareVisibility:'Confere amostras opacas da pose atual e distingue corpo iluminado de abrigo real.',
+ nightmareVisibility:'Consulta silhueta/oclusão e um núcleo lógico menor somente na captura EASY, mantendo a luz.',
  beginDreamNightmare:'Cria o domínio do trecho final na queda ou na retomada da primeira pedra.',
  nightmareReading:'Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial.',
  advanceNightmareDialogue:'Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro.',

@@ -4033,13 +4033,13 @@
       "references": [
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 119,
+          "line": 124,
           "type": "runtime",
           "alias": null
         }
@@ -4292,13 +4292,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -4333,13 +4333,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -17515,13 +17515,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 124,
+          "line": 129,
           "type": "runtime",
           "alias": null
         },
@@ -25303,13 +25303,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25353,13 +25353,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25403,13 +25403,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25453,13 +25453,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25503,13 +25503,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25553,13 +25553,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25603,13 +25603,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25653,13 +25653,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25715,13 +25715,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25777,13 +25777,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25839,13 +25839,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25901,13 +25901,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -25963,13 +25963,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -26025,13 +26025,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -26087,13 +26087,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },
@@ -26149,13 +26149,13 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 23,
+          "line": 25,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 28,
+          "line": 30,
           "type": "runtime",
           "alias": null
         },

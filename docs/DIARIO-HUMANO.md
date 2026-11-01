@@ -364,3 +364,8 @@ Aplicado o novo `wings-bee.wav` às abelhas do jardim e do sonho, inclusive aos 
 ## 31/10/2026 — Mais margem para os dedos no voo
 
 Ampliadas as áreas sensíveis de subir/descer na passagem dos espinhos, exclusivamente no mobile. As setas ficam maiores e têm folga ao redor, com espaço neutro entre elas. Os comandos que não aparecem no voo deixam de capturar toques. Desktop, outros trechos e a física do planador permanecem como antes.
+
+
+## 31/10/2026 — Chegada e peso da barata
+
+Yuna pousa num planalto e entra numa cinemática com música desde o início. A barata emerge das árvores atrás dela, provoca o susto e a fuga até uma pedra. Revistas as pernas e a garra para manter juntas e alcance coerentes; poeira, impactos graves e tremor dão peso aos passos e à captura. EASY usa uma faixa lógica de detecção bem menor, mantendo a aparência da luz.

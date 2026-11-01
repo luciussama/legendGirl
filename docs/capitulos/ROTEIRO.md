@@ -81,3 +81,8 @@ Yuna se esconde agachada junto às pedras e troncos, mãos nos ouvidos, e anda e
 Na floresta do sonho, a saída completa pela margem direita do quarto lago dispara imediatamente a cena em todo o canvas: Yuna caminha sozinha no escuro, a barata surge e a pega. O instante da captura corta diretamente para Yuna acordando na toalha do piquenique. A luz dos olhos tem laterais difusas, penumbra nos abrigos e reflexo sobre a lama.
 
 O final do pesadelo corta do último lago para uma cinemática na altura dos olhos, em cenário próprio: Yuna caminha sozinha (0–2,2s), olha para trás (até3,1s), o rosto enorme da barata é revelado em close (até4,1s), e a criatura avança e a captura (até6s). Corte direto para a toalha de piquenique. Esse plano não desenha o mapa, as poças nem os controles da exploração.
+
+
+### Chegada à barata — revisão de31/10/2026
+
+Após os espinhos, a folha pousa num planalto. Yuna solta a folha e fica em terra antes do corte cinematográfico, quando Bug attack começa. Mantidas as falas de dúvida e cheiro repugnante, a barata sai por trás das árvores; Yuna olha, se assusta, corre e se esconde numa pedra. A perseguição jogável começa nesse abrigo. Poeira, impactos e tremor mostram o peso da criatura, com contato final mais forte e o despertar já estabelecido.

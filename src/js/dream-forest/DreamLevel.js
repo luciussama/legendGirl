@@ -35,7 +35,7 @@ for(const [section,def] of DREAM_SECTIONS.entries()){
   }
   cursor+=0;
 }
-objects.push({id:'dream-finish',kind:'branch',x:cursor,y:350,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
+objects.push({id:'dream-finish',kind:'plateau',x:cursor,y:350,w:560,h:200,checkpoint:true,section:5,finish:true,amplitude:18,period:9,phase:2});
 for(const [index,o] of objects.entries())if(o.kind==='beetle'){
   const next=objects[index+1],n=Number(o.id.split('-').at(-1));
   o.flight=Object.freeze({toX:next.x-o.w-100,toY:next.kind==='leaf'?next.y-o.h*.7:next.y+35,duration:[12,14,13,14][n],delay:.65,arc:[-170,140,-190,100][n],wave:[65,-70,75,-65][n],next:next.id});
@@ -58,6 +58,7 @@ export function dreamObjectFrame(o,time,rides={}){
     else{spiderY=-180;spiderPhase='HIGH';}
     return{...o,sway:0,spiderY,spiderPhase};
   }
+  if(o.kind==='plateau')return{...o,sway:0};
   if(o.kind==='branch'){const angle=time*Math.PI*2/o.period+o.phase;return{...o,anchorX:o.x,x:o.x+Math.sin(angle)*o.amplitude,y:o.y+Math.sin(angle*.85)*12,sway:0};}
   if(o.flight){
     const started=rides[o.id],active=Number.isFinite(started),age=active?Math.max(0,time-started):0,progress=active?Math.max(0,Math.min(1,(age-o.flight.delay)/o.flight.duration)):0,q=progress**3*(progress*(progress*6-15)+10);
@@ -71,6 +72,7 @@ export function dreamGrassX(frame,y){const u=Math.max(0,Math.min(1,(y-frame.y)/f
 /** Superfície natural da folha ou contorno medido dos insetos, nunca uma régua desenhada. */
 export function dreamSurface(frame,x,profiles={}){
   const u=Math.max(0,Math.min(1,(x-frame.x)/frame.w));
+  if(frame.kind==='plateau')return frame.y;
   if(frame.kind==='branch')return frame.y+12*Math.sin(Math.PI*u)+5*(2*u-1);
   if(frame.kind==='leaf')return frame.y+30*Math.pow((u-.5)*2,2);
   const profile=profiles[frame.kind];if(!profile)return frame.y+frame.h*(.12+.35*Math.pow((u-.5)*2,2));

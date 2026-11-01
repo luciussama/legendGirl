@@ -48,7 +48,7 @@ O arquivo original **Misty Blues.mp3** enviado pelo usuário foi copiado sem alt
 | `DreamNightmare` | Patrulha, raios/sombras, furtividade, golpe, captura e despertar. |
 | `DreamNightmareArt` | Silhuetas, olhos e amostras opacas das poses, gerados das fontes. |
 | `DreamNightmareRenderer` | Carga tardia, apresentação próxima e composição do piquenique. |
-| `DreamAudio` | Misty Blues, silêncio de chegada, Bug attack e trilha do despertar. |
+| `DreamAudio` | Misty Blues no voo, Bug attack desde a cinemática de chegada e trilha do despertar. |
 | `DreamPhase` | Carga, pausa, áudio, save/restore e descarte; recebe apenas host, canvas, dificuldade e origem. |
 
 `toyRoomDream` guarda envelope versão 1, estado versão 5 e posição musical. Estado contém relógio, leitura, checkpoint, progresso, quedas, contatos com aranhas (`hits`), causa da queda (`fallCause`) e jogador (posição, velocidades, apoio, aderência e bloqueio de reagarre). O campo `rides` guarda, para os quatro transportes, `null` antes do embarque ou o instante numérico de partida; posição e fase do voo derivam desse instante e do relógio salvo. Pausa e retomada conservam a viagem. Saves do domínio 1 conservam a migração dos besouros: posições afetadas pela nova seção de besouros retornam à folha `rest-2`, e apoios removidos do trecho misto à `rest-5`; os demais apoios válidos são conservados. Na revisão 3, saves dos domínios 1/2 no trecho substituído retomam na folha `rest-4`; posições anteriores aprovadas continuam válidas. Não serializa imagens, Canvas, áudio, listeners ou ponteiros. No caule inferior, a coordenada de aderência `u` pode ser maior que 1; a altura continua relativa ao comprimento original da lâmina, preservando saves anteriores. `restoreDreamState` valida versões, limites e IDs; a física conserva o relógio das plataformas e o bloqueio de reagarre.
@@ -104,7 +104,7 @@ Ao pousar no galho após as aranhas, Yuna caminha automaticamente a115 unidades/
 
 A resposta é pesada: aceleração vertical limitada a400 unidades/s², velocidade alvo até400 e aproximação gradual. Soltar o comando não freia instantaneamente; há deriva suave de descida. O traçado tem11.200 unidades, cerca de51s de voo sem contar chegada/pouso. Começa com curvas baixas e, da metade ao fim, alterna altitudes de aproximadamente−700 a790, entre subidas altas e mergulhos. O centro do percurso constrói os obstáculos; **não pilota Yuna**. É preciso antecipar as manobras.
 
-São21 pares de galhos espinhosos, com vãos maiores nas mudanças fortes de altitude para permitir a resposta do planador. A colisão compara amostras de alfa opaco das pinturas de Yuna/folha e galhos; névoa e transparência são ignoradas. Inclinação e escala são compartilhadas entre contato e desenho. Não há linhas auxiliares sobre a arte. Tocar um espinho provoca dano e queda; em ambas as dificuldades, a jornada reinicia automaticamente no galho de lançamento. O trecho das aranhas não precisa ser repetido. Ao sair do corredor, a coordenação inicia a queda narrativa para a floresta escura, substituindo o antigo pouso final.
+São21 pares de galhos espinhosos, com vãos maiores nas mudanças fortes de altitude para permitir a resposta do planador. A colisão compara amostras de alfa opaco das pinturas de Yuna/folha e galhos; névoa e transparência são ignoradas. Inclinação e escala são compartilhadas entre contato e desenho. Não há linhas auxiliares sobre a arte. Tocar um espinho provoca dano e queda; em ambas as dificuldades, a jornada reinicia automaticamente no galho de lançamento. O trecho das aranhas não precisa ser repetido. Depois dos espinhos, Yuna pousa em um planalto de terra:2,4s de trajetória e1,2s em chão firme, soltando a folha antes do corte para a cinemática.
 
 Domínio5/envelope1: `glider` conserva a altura suavizada da câmera e, durante o pouso, sua origem. Os estágios são GLIDE_APPROACH, GLIDE_GUST, GLIDING, GLIDE_FALLING e GLIDE_LANDING. Saves da versão3 na antiga base de galhos retomam no lançamento; posições anteriores permanecem válidas. Pausa congela todo o voo. A ajuda móvel das teias continua exclusiva daquele trecho.
 
@@ -147,3 +147,12 @@ QA recuperável: `npm run journal:qa -- test:sonho:lagos` e `test:sonho:lagos:br
 Saves nightmare6 em entrada antiga retomam já submersos no mesmo lago, após validação, para evitar um salto reiniciado no meio do afundamento. Demais posições/relógios válidos são conservados; versões anteriores continuam migrando. O domínio aéreo5 e o envelope1 permanecem iguais. `DreamNightmareCinematic` recebe o relógio salvo e compõe quatro planos independentes; não avança a simulação. Pausa e save/load conservam plano, atuação e corte direto ao piquenique.
 
 O pulo gravado usa ganho0,325 antes do volume mestre em todas as fases, metade do nível inicial. Lama e asas conservam seus níveis. `prepareTerrain` reutiliza `morro-terra-v1` em caches registrados no perfil existente; não use o bitmap deformado para recalcular colisões.
+
+
+## Entrada cinematográfica e peso da criatura
+
+Bug attack inicia no primeiro quadro após o pouso no planalto. Na cena em tela cheia, Yuna caminha em terra; as duas falas existentes conservam6/14s e avanço automático/individual. A barata emerge por trás das árvores, assusta Yuna, que corre e se esconde numa pedra. Só então começam os controles da perseguição. A revelação conserva8s. NIGHTMARE_FALL é o nome legado da chegada, sem animação de queda.
+
+As seis pernas têm joelhos sobre quitina opaca e segmentos sobrepostos. Tripés alternam apoio longo e transferência curta; a captura respeita o sentido e o alcance dos membros. Passos geram poeira, impacto grave e tremor visual, mais forte na captura. Interface, geometria e frame físico permanecem estáveis; pausa/restauração conservam os efeitos pelo relógio salvo.
+
+No EASY, a captura usa só um núcleo de0,045rad dentro do feixe visual existente de0,17rad. NORMAL mantém0,21rad e a regra anterior. Pedras e lama continuam bloqueando luz. QA atual: test:barata:revisao, test:barata:revisao:browser e review:barata:browser.

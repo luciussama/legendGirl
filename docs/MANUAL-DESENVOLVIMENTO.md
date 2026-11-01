@@ -430,7 +430,7 @@ As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fa
 | `TitleScreen` | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. |
 | `DreamInput` | [dream-forest/DreamInput.js](../src/js/dream-forest/DreamInput.js) | Controles verticais e salto separado, mantendo liberação e simultaneidade. |
 | `DreamRenderer` | [dream-forest/DreamRenderer.js](../src/js/dream-forest/DreamRenderer.js) | Fundo e apoios pintados em Canvas2D, sem pipeline3D. |
-| `DreamAudio` | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio para silêncio ao pousar, Bug attack da revelação à captura, grito sintetizado e trilha do despertar; respeita pausa/mudo/volume. |
+| `DreamAudio` | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio para Bug attack desde o início da cinemática até a captura, grito sintetizado e trilha do despertar; respeita pausa/mudo/volume. |
 | `DreamNightmareLighting` | [dream-forest/DreamNightmareLighting.js](../src/js/dream-forest/DreamNightmareLighting.js) | Volume suave, resposta dos abrigos e reflexos superficiais em buffer reutilizado. |
 | `DreamNightmareRenderer` | [dream-forest/DreamNightmareRenderer.js](../src/js/dream-forest/DreamNightmareRenderer.js) | Carga tardia, câmera próxima fixa, barata monumental, sombras compartilhadas e atuação no piquenique. |
 | `DreamPhase` | [dream-forest/DreamPhase.js](../src/js/dream-forest/DreamPhase.js) | Carga, áudio Misty Blues, pausa, retomada e descarte. |
@@ -833,3 +833,14 @@ As asas de insetos não abelhas agora usam `source/wings-bugs2.wav`, preparado c
 `dreamControls(canvas,{stage,mobile})` usa dois comandos exclusivos em GLIDING e dispositivo móvel: subir/descer, círculos visíveis de até32CSS de raio dentro de caixas sensíveis de até128×88CSS, separadas por16CSS. A caixa inferior fica16CSS acima da área segura. Conversões por getBoundingClientRect mantêm a margem física do dedo sob diferentes densidades. Em área muito curta, a altura se adapta para não sobrepor comandos.
 
 O descritor opcional `hitBox:{left,right,top,bottom}` é interpretado em coordenadas do canvas por GardenInput; alvos existentes sem essa propriedade preservam o círculo com a tolerância anterior. DreamPhase fornece o estágio também à resolução da entrada; DreamRenderer usa o mesmo layout. Não retornar esquerda/direita/pulo invisíveis no voo móvel. Arrasto, multitoque, liberação, cancelamento e pausa mantêm o ciclo de vida da entrada. O ajuste não modifica o planador ou a colisão dos espinhos. QA: test:planador:toque e test:planador:toque:browser no acervo.
+
+
+### Entrada, articulação e impactos da barata
+
+O apoio final plateau é estático/plano e não permite escalada. O pouso termina antes da troca de domínio; a folha solta e Yuna permanece em terra. DreamNightmareEntrance reutiliza as pinturas cinematográficas, atuações e pedra do projeto em planos próprios. As falas mantêm seus tempos; Bug attack toca desde o primeiro quadro. A pré-carga começa no fim do voo.
+
+ROACH_JOINTS precisa manter os joelhos sobre quitina opaca. As divisões seguem o eixo da perna, com14pixels de sobreposição e junta circular de32pixels de raio. solveRoachLeg conserva a flexão, normaliza ângulos e limita o alcance. A passada interna é reposicionada dentro do alcance para não fazer o pé flutuar. A captura aproxima o corpo para alcançar a menina sem esticar os ossos.
+
+DreamRoachEffects usa o relógio salvo, sem timers ou sorteio não persistido. Eventos de impacto cruzam marcos sem repetir após restauração. Tremor é deslocamento da composição em pixels CSS, preservando frame físico e controles; o buffer de luz recebe o mesmo deslocamento. Vozes graves seguem o ciclo de vida de GardenAudio.
+
+detection:true em nightmareVisibility aplica0,045rad somente à captura EASY. A consulta visual e nightmareLights conservam os feixes existentes. Domínio5/envelope1/nightmare7 e identificadores dos estágios continuam compatíveis; NIGHTMARE_FALL passa a significar chegada em terra.

@@ -1,6 +1,6 @@
 import {DREAM_MUD_LAKES,createMudState,enterDreamMud,stepDreamMud,mudActor,mudOccludesPoint,mudLakeAt,mudWaterline} from './DreamMud.js';
 import {STEALTH_LEVEL,STEALTH_COVERS,stealthGround,stealthMudAt,stealthPose,stealthCheckpoint} from './DreamStealthLevel.js';
-import {dreamRoachPose,dreamRoachPoint} from './DreamRoach.js';
+import {dreamRoachPose,dreamRoachPoint,ROACH_STEP_SECONDS} from './DreamRoach.js';
 import {DREAM_NIGHTMARE_ART as ART} from './DreamNightmareArt.js';
 
 export const NIGHTMARE=Object.freeze({...STEALTH_LEVEL,rockGround:825,bodyHeight:160,range:2100,revealDuration:8});
@@ -24,7 +24,7 @@ export function nightmarePatrol(n,stage='STEALTH',age=0){
   const final=stage==='NIGHTMARE_FINAL',strike=stage==='NIGHTMARE_STRIKE',reveal=stage==='NIGHTMARE_REVEAL',approach=smooth(age/NIGHTMARE.revealDuration);
   const x=final||strike?n.x-160*(1-smooth(age/4)):n.x+180*Math.sin(n.time*.4-1.2);
   const scale=reveal?.32+.68*approach:final?1+smooth((age-2.6)/3)*.35:strike?1+smooth(age/1.3)*.25:1,velocity=final||strike?n.vx:n.vx+72*Math.cos(n.time*.4-1.2),pose=dreamRoachPose(n.time,velocity);
-  return{x,y:(reveal?50+190*approach:240)+pose.lift,width:1900*scale,aim:final||strike?n.x:x+720*Math.sin(n.time*.6-1),scale,pose};
+  return{x,y:(reveal?50+190*approach:240)+pose.lift,width:1900*scale,velocity,aim:final||strike?n.x:x+720*Math.sin(n.time*.6-1),scale,pose};
 }
 /** Os olhos medidos na pintura são também a origem exata dos dois feixes físicos. */
 export function nightmareLights(n,difficulty='NORMAL',stage='STEALTH',age=0){
@@ -54,10 +54,10 @@ export function nightmareBeam(light){
   angles.sort((a,b)=>a-b);return[{x:light.x,y:light.y},...angles.map(a=>nightmareRayEnd(light,a))];
 }
 /** Cabelo, tronco e pés contam; uma pedra protege somente os trechos realmente na sombra. */
-export function nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false}={}){
+export function nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false,detection=false}={}){
   const actor=mudActor(n),lights=nightmareLights(n,difficulty),points=actor?actor.set.bodies[actor.index]:ART.stealth.bodies[stealthPose(n)];
   let lit=false,covered=true;
-  for(const light of lights)for(const [x,y] of points){const point=actor?{x:actor.x+x*actor.facing,y:actor.y+y}:{x:n.x+x*n.facing,y:n.y+y};if(mudOccludesPoint(point))continue;const dx=point.x-light.x,dy=point.y-light.y,distance=Math.hypot(dx,dy),angle=Math.atan2(dy,dx),inside=Math.abs(angleDifference(angle,light.angle))<=light.half&&distance<NIGHTMARE.range;if(onlyLight&&!inside)continue;const blocked=nightmareRayEnd(light,angle,distance+1).distance<distance-.00001;covered&&=blocked;if(!blocked&&inside){lit=true;if(onlyLight)return{lit:true,covered:false};}}
+  for(const light of lights)for(const [x,y] of points){const point=actor?{x:actor.x+x*actor.facing,y:actor.y+y}:{x:n.x+x*n.facing,y:n.y+y};if(mudOccludesPoint(point))continue;const dx=point.x-light.x,dy=point.y-light.y,distance=Math.hypot(dx,dy),angle=Math.atan2(dy,dx),half=detection&&difficulty==='EASY'?.045:light.half,inside=Math.abs(angleDifference(angle,light.angle))<=half&&distance<NIGHTMARE.range;if(onlyLight&&!inside)continue;const blocked=nightmareRayEnd(light,angle,distance+1).distance<distance-.00001;covered&&=blocked;if(!blocked&&inside){lit=true;if(onlyLight)return{lit:true,covered:false};}}
 
   return{lit,covered};
 }
@@ -107,12 +107,14 @@ export function stepDreamNightmare(s,input={},seconds=0){
   let remaining=clamp(seconds,0,.2);
   while(remaining>1e-8){
     if(s.stage==='GAME_OVER')break;
-    const dt=Math.min(1/120,remaining),before=s.age;remaining-=dt;s.time+=dt;s.age+=dt;if(s.stage!=='NIGHTMARE_INTRO')n.time+=dt;
+    const dt=Math.min(1/120,remaining),before=s.age,beforeTime=n.time;remaining-=dt;s.time+=dt;s.age+=dt;if(s.stage!=='NIGHTMARE_INTRO')n.time+=dt;
+    if(n.roachAppeared&&!['NIGHTMARE_WAKE','COMPLETE','GAME_OVER'].includes(s.stage)&&!(s.stage==='NIGHTMARE_FINAL'&&s.age<2.7)&&Math.floor(n.time/(ROACH_STEP_SECONDS/2))>Math.floor(beforeTime/(ROACH_STEP_SECONDS/2))&&(['NIGHTMARE_REVEAL','NIGHTMARE_FINAL'].includes(s.stage)||Math.abs(nightmarePatrol(n,s.stage,s.age).velocity)>10))events.push({type:'roach-step'});
     if(s.stage==='NIGHTMARE_FALL'){if(s.age>=1.8){s.stage='NIGHTMARE_INTRO';s.age=0;}continue;}
     if(s.stage==='NIGHTMARE_INTRO'){n.introAge+=dt;n.arrivalAge+=dt;const old=n.x;n.x=NIGHTMARE.entry-90+90*smooth(n.arrivalAge/3);n.vx=(n.x-old)/dt;n.animTime+=Math.abs(n.x-old)/30;n.facing=n.arrivalAge<3?1:Math.sin(n.arrivalAge*1.4)<0?-1:1;if(n.introAge>=NIGHTMARE_INTRO[n.introIndex].duration)advanceNightmareDialogue(s);continue;}
     if(s.stage==='NIGHTMARE_REVEAL'){n.arrivalAge+=dt;const old=n.x;n.x=NIGHTMARE.entry-90+90*smooth(n.arrivalAge/3);n.vx=(n.x-old)/dt;n.animTime+=Math.abs(n.x-old)/30;n.facing=n.arrivalAge<3?1:-1;if(s.age>=NIGHTMARE.revealDuration){s.stage='STEALTH';s.age=0;n.facing=1;n.jumpHeld=Boolean(input.jump);}continue;}
-    if(s.stage==='NIGHTMARE_STRIKE'){if(before<.72&&s.age>=.72&&!n.strikeSound){n.strikeSound=true;events.push({type:'hurt'});}if(s.age>=1.45){s.stage='GAME_OVER';s.age=0;}continue;}
+    if(s.stage==='NIGHTMARE_STRIKE'){if(before<.72&&s.age>=.72&&!n.strikeSound){n.strikeSound=true;events.push({type:'hurt'},{type:'roach-stomp'});}if(s.age>=1.45){s.stage='GAME_OVER';s.age=0;}continue;}
     if(s.stage==='NIGHTMARE_FINAL'){
+      if(before<5.65&&s.age>=5.65)events.push({type:'roach-stomp'});
       const previous=n.x;n.x+=350*(smooth(s.age/2.7)-smooth(before/2.7));n.y=stealthGround(n.x);n.vx=(n.x-previous)/dt;n.animTime+=Math.abs(n.x-previous)/30;n.facing=s.age>2.7?-1:1;
       if(s.age>=6){s.stage='NIGHTMARE_WAKE';s.age=0;n.vx=0;n.screamPlayed=true;events.push({type:'nightmare-scream'});}continue;
     }
@@ -142,7 +144,7 @@ export function stepDreamNightmare(s,input={},seconds=0){
     if(n.x>=2380&&n.grounded&&Math.abs(n.x-2380)<70)n.checkpoint=Math.max(n.checkpoint,1);
     if(n.mudMode==='swim'&&n.mudDepth>=.94){const lake=DREAM_MUD_LAKES.find(l=>l.id===n.mudLakeId);n.checkpoint=Math.max(n.checkpoint,lake.index>=2?3:2);}
     if(n.grounded&&n.mudMode==='dry'&&n.x>=DREAM_MUD_LAKES.at(-1).to+11.9){s.stage='NIGHTMARE_FINAL';s.age=0;n.vx=0;n.exposure=0;continue;}
-    const illuminated=nightmareVisibility(n,s.difficulty,{onlyLight:true}).lit;
+    const illuminated=nightmareVisibility(n,s.difficulty,{onlyLight:true,detection:true}).lit;
     n.exposure=illuminated?n.exposure+dt:0;
     // Só a iluminação contínua causa golpe. Pular por si só não é uma condição de derrota.
     if(n.exposure>=(s.difficulty==='EASY'?.24:.12)){s.stage='NIGHTMARE_STRIKE';s.age=0;n.vx=0;n.vy=0;s.hits++;s.falls++;s.fallCause='roach';events.push({type:'nightmare-detected'});}

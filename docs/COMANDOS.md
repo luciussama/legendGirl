@@ -313,3 +313,6 @@ Relevo antes dos lagos: `npm run journal:qa -- test:relevos:browser` joga os tr�
 `npm run journal:qa -- test:abelhas:audio:browser` verifica que todas as abelhas, incluindo rasantes, usam o novo `wings-bee.wav`, com a fonte dos besouros preservada, decodificação e ciclo de vida de áudio corretos. O alias test:asas:v2:browser acompanha essa mesma fonte atualizada.
 
 Margens de toque do voo: `npm run journal:qa -- test:planador:toque` verifica dimensões CSS, bordas, densidades, arrasto e isolamento; `npm run journal:qa -- test:planador:toque:browser 390 844 mobile` usa toque nativo no Chrome em save dirigido do voo. Aceita `844 390 mobile` para paisagem e `desktop` no terceiro argumento para conferir isolamento em janela estreita. Capturas ficam temporariamente no diário.
+
+
+Revisão da barata: npm run journal:qa -- test:barata:revisao verifica prefixo, pouso/save, juntas, impactos e tolerância EASY. test:barata:revisao:browser aceita1200 720ou390 844e percorre chegada, música, leitura, revelação/abrigo e captura no jogo. review:barata:browser renderiza quadros dirigidos para inspeção, sem inferir aprovação artística.

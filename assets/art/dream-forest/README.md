@@ -71,3 +71,6 @@ O preparador mede corpos do nado pela âncora da superfície e corpos de escalad
 A saída própria da lama (yuna-saida-lama-v2) recebeu avaliação positiva do usuário em31/10/2026. Essa aprovação é específica da saída; as artes novas do salto e da cinemática aguardam avaliação humana.
 
 Em31/10/2026, a composição dos três relevos foi revista sem editar os PNGs: `DreamNightmareRenderer.prepareTerrain` registra colunas da terra existente na crista física, expõe o barranco no início exato da subida e dissolve a base no piso. A iluminação ambiente é comum ao chão e aos relevos e respeita suas transparências, sem tarja horizontal no cenário. Física e dados de superfície originais preservados.
+
+
+A chegada revisada à barata reutiliza morro-terra-v1 no planalto, floresta-cinematica-v1 e as atuações/pedra existentes. Nenhum PNG foi repintado. prepareDreamPlateau recorta a terra abaixo da névoa superior para apoiar os pés no topo plano. DreamRoach revisa pivôs/máscaras dos seis membros, com sobreposição e proteção das juntas. Fontes originais e referência física dos olhos preservadas.
