@@ -1,0 +1,31 @@
+{
+  "data": "2026-11-01",
+  "ferramenta": "image_gen integrada",
+  "skill": "imagegen",
+  "referencias": [
+    "assets/art/brinquedao/modulos-brinquedao-v1.png",
+    "assets/art/brinquedao/jardim-brinquedao-v1.png"
+  ],
+  "prompts": {
+    "background": "Use case: illustration-story. Asset type: wide 1536x1024 background painting for the INSIDE of a giant children's soft-play brinquedão. Match the attached project's sunny painterly storybook craftsmanship and teal coral sunshine-yellow padded vinyl. Enclosed warm play pavilion with large rope safety nets, quilted padded columns, translucent colored plastic tube slides winding high overhead and in the middle distance, distant pools of colorful plastic balls. Sunlight filters softly through the garden-facing net walls and translucent roof; interior feels safe, bright and playful, clearly INSIDE a structure, not the outdoor garden. Side-view platform game background. Keep foreground bottom third and center airy for playable tubes/pools and characters, with soft distant details and layered perspective. No people, animals, text, logos, water, masonry, pixel art or flat vector shapes.",
+    "tubes": "Use case: illustration-story. Asset type: transparent game sprite sheet of TWO COMPLETE SEPARATE playground tube modules, one ABOVE the other with at least 100 fully transparent pixels of gutter. Top module: ONE very long perfectly horizontal STRAIGHT CLOSED cylindrical translucent-plastic tube slide in strict side elevation, about six times as long as its diameter. Warm illustrated yellow underside/floor, teal reinforced outer edges, soft dimensional material highlights. A broad clear transparent cutaway viewing window along the center allows a character to be composited visibly INSIDE. Both end collars join top and bottom so the entire tube remains one connected object. No supporting legs, background, shadows outside, characters or text. Bottom module: ONE circular tube entrance portal in front three-quarter view, large visible hollow dark interior opening, thick rounded teal/coral/yellow padded rim, grounded flat lower lip; complete with no tube extending behind it. Keep the two objects far apart, nothing clipped. Match the attached existing painterly soft-play kit exactly, rich material texture and natural soft light, never flat vector art.",
+    "fish": "Use case: illustration-story. Asset type: transparent game sprite sheet, FOUR COMPLETE SEPARATE wind-up RUBBER TOY fish in a strict 2x2 square grid, at least 80 transparent pixels between poses. Match the attached project's painterly storybook soft-play materials. Top-left: cute coral-and-yellow chubby toy fish facing RIGHT, springing upward, visible manufactured seam and tiny winding key connected to its back, rounded fins and big friendly eye. Top-right: the SAME coral fish bending downward for landing, still facing right. Bottom-left: a second teal-and-orange rounded toy fish facing right in upward jumping pose. Bottom-right: SAME teal fish bending downward for landing. It must be obvious these are plastic/rubber bath TOYS, not living realistic fish. No sharp teeth, spikes, weapons, water, bubbles, balls, scene, ground, text, labels, shadow outside, or extra objects. Generous alpha margins around complete fins/tails/key, one connected silhouette per pose, no touching cells. Rich dimensional painted texture matching the reference."
+  },
+  "arquivos": [
+    {
+      "caminho": "assets/art/brinquedao/interior-brinquedao-v1.png",
+      "sha256": "c1cf98ccf25a335c6568f50561f10904f46d219dc8f7e5ee234421899b034201",
+      "bytes": 2781811
+    },
+    {
+      "caminho": "assets/art/brinquedao/tubos-interior-v1.png",
+      "sha256": "227afb2cbf4ccdfafe81a79ce582a6ae1f0d138753a24f308f38e181475fd046",
+      "bytes": 1597830
+    },
+    {
+      "caminho": "assets/art/brinquedao/peixinhos-brinquedo-v1.png",
+      "sha256": "9a8a6266b045c6261061515c63879630b2df22e915f2692fdc23575228897171",
+      "bytes": 2037265
+    }
+  ]
+}

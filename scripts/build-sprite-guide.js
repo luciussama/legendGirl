@@ -2,6 +2,7 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
+import {BRINQUEDAO_ART} from '../src/js/brinquedao/BrinquedaoArt.js';
 import {DREAM_NIGHTMARE_ART} from '../src/js/dream-forest/DreamNightmareArt.js';
 import {buildCatalog,itemId} from '../tools/sprite-review/catalog.js';
 import {CURRENT_SCENERY} from '../src/js/assets/currentScenery.js';
@@ -21,6 +22,12 @@ for(const [pose,set]of Object.entries(DREAM_NIGHTMARE_ART)){
  if(!set.file)continue;const file='assets/art/'+set.file,parent=items.find(item=>item.kind==='file'&&item.path===file);if(!parent)continue;
  parent.usage='runtime';parent.references.push({file:'src/js/dream-forest/DreamNightmareArt.js',line:2,type:'runtime',symbol:pose},{file:'src/js/dream-forest/DreamNightmareRenderer.js',line:1,type:'runtime'});
  for(const [index,f]of (set.frames??[]).entries()){const region={x:f.x,y:f.y,width:f.w,height:f.h},id=itemId(file,region);if(!items.some(item=>item.id===id))items.push({...parent,id,kind:'region',title:'pesadelo · '+pose+' · quadro '+(index+1),region,parentId:parent.id});}
+}
+// O brinquedão também resolve pranchas por metadados, sem referências literais no carregador.
+for(const [part,set]of Object.entries(BRINQUEDAO_ART)){
+ const file='assets/art/'+set.file,parent=items.find(item=>item.kind==='file'&&item.path===file);if(!parent)continue;
+ parent.usage='runtime';parent.references.push({file:'src/js/brinquedao/BrinquedaoArt.js',line:2,type:'runtime',symbol:part},{file:'src/js/brinquedao/BrinquedaoRenderer.js',line:1,type:'runtime'});
+ for(const [index,f]of(set.frames??[]).entries()){const region={x:f.x,y:f.y,width:f.w,height:f.h},id=itemId(file,region);if(!items.some(item=>item.id===id))items.push({...parent,id,kind:'region',title:'brinquedão · '+part+' · quadro '+(index+1),region,parentId:parent.id});}
 }
 for(const name of ['chao-floresta-sombria-v1.png','floresta-azul-v1.png']){const item=items.find(i=>i.kind==='file'&&i.path==='assets/art/dream-forest/'+name);if(item){item.usage='runtime';item.references.push({file:'src/js/dream-forest/DreamNightmareRenderer.js',line:1,type:'runtime'});}}
 const fileItems=items.filter(item=>item.kind==='file'),regions=items.filter(item=>item.kind==='region'),code=items.filter(item=>item.kind==='code');

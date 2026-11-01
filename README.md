@@ -283,3 +283,12 @@ O sonho continua em um planador de folha: caminhada automática no galho, rajada
 Após os espinhos, o sonho termina em uma floresta escura de furtividade: Yuna se esconde na sombra de grandes pedras enquanto uma barata monumental patrulha com luz nos olhos. Ser descoberta causa game over e retoma apenas esse trecho. Na captura final autorada, ela acorda assustada na toalha do piquenique e seu grito desperta Nanda. Controles, saves e manutenção no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).
 
 O final do sonho inclui o prólogo de Yuna e do cheiro repugnante, a trilha enviada Bug attack desde a aparição da barata, poses furtivas, subidas de relevos com solo contínuo e esconderijos sob a lama. A música não determina o tempo da cena. Controles e saves no [guia do sonho](docs/dream-forest/GUIA-SONHO.md).
+
+O [Brinquedão](docs/brinquedao/GUIA-BRINQUEDAO.md) sucede o despertar do pesadelo: convite de Nanda em cinemática, jardim ensolarado, circuito rápido de passarelas coloridas, pontes de madeira, escorregadores e piscinas de bolinhas, com trilha própria. Pode ser revisto desde a entrada pela bandeira de fases.
+
+A continuação do Brinquedão amplia a corrida até camas elásticas e castelos com pontes que cedem, elástico lateral e rampa reversa que lança Yuna para uma região mais alta. O desafio pede ajuste no ar e saltos sobre vãos; sair da estrutura causa Game Over com retomada no último terraço.
+
+As quedas do Brinquedão agora têm uma segunda chance: plataformas inferiores, calhas com camas elásticas nas laterais e lonas de retorno ao percurso alto. É possível recuperar o controle depois das rebatidas antes de cair fora da estrutura.
+
+
+Brinquedão ganhou três seções internas: nove tubos curvos rápidos alternam com nove piscinas estratégicas, peixinhos de corda, dois corações e retry na piscina atual. Veja o [guia](docs/brinquedao/GUIA-BRINQUEDAO.md).

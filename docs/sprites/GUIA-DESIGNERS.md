@@ -158,3 +158,16 @@ A queda após o planador usa yuna-queda-vento-v1: quatro componentes completos m
 
 
 Abertura do sonho: yuna-abertura-sonho-v1 fornece olhar para trás, duas poses ajoelhadas com mãos de contato e partida hesitante. Dados openingGirl em DreamNightmareArt são preparados por prepare-dream-nightmare.js, incluindo rowMask e hand por pose. Prompt/referências em prompts-abertura-sonho-v1.json. Nanda usa a pose adormecida existente de nanda-gestos-v1, em escala corporal comparável à menina; não usar a altura das asas como régua de tamanho. Conferir os dois rostos visíveis, contato de mãos e pés/joelhos inteiros em retrato e paisagem.
+
+## Brinquedão e descoberta de Nanda
+
+Arte do novo circuito em `assets/art/brinquedao/`; [origem e funções](../../assets/art/brinquedao/README.md). `prepare-brinquedao.js` gera BrinquedaoArt; Terrain/Renderer preparam material e máscaras em memória. A prancha v2 é a fonte das quatro atuações; v1 permanece como referência. Passarelas, postes, pontes e escorregadores têm materiais pintados, sem réguas de contato.
+
+`assets/art/dream-forest/yuna-olhar-nanda-v2.png` corrige a torção da pose de descoberta. Cabeça, ombros, tronco e pés devem compartilhar a mesma orientação; não girar pescoço separadamente. `prepare-dream-nightmare.js` mede `openingLook` como componente completo. Cabelo, mãos, vestido e sapatos não devem ser cortados.
+
+A continuação usa `atracoes-elasticas-v1.png`: lona, torre de castelo, painel elástico inclinado e rampa reversa, todos em componentes separados. prepare-brinquedao mede suas máscaras; BrinquedaoAttractions prepara os recortes em memória. Lonas e painel respondem visualmente ao relógio de impacto salvo. BrinquedaoTerrain mantém postes fixos e deixa as peças das pontes caírem. A pose sentada se ancora no assento ao descer/subir rampas. O catálogo gerado agora resolve BRINQUEDAO_ART para marcar recursos em runtime e catalogar os12recortes das três pranchas.
+
+Na recuperação inferior, calhas em U reutilizam o escorregador pintado com amostragem espelhada nas duas metades. BrinquedaoAttractions gira a lona existente para formar18camas laterais, preservando molas e apoios para fora. Compressão e recuo usam o relógio do impacto; o corpo inteiro inclina brevemente sem separar cabeça/pescoço. Não foram gerados ou alterados PNGs nesta expansão; reconstruir o mapa para atualizar consumidores e referências.
+
+
+Interior do Brinquedão: interior-brinquedao-v1.png é o fundo coberto e ensolarado; tubos-interior-v1.png tem cilindro reto e boca isolados em alfa; peixinhos-brinquedo-v1.png tem quatro poses completas de peixes de corda. Os tubos são curvados em memória, com cantos arredondados para conservar material e volume. Não pintar trajetórias ou réguas sobre as superfícies. Prompts e hashes estão em assets/art/brinquedao/prompts-interior-v1.json.

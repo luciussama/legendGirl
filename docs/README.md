@@ -38,3 +38,8 @@ A atualização documental é obrigatória em cada implementação autorizada, c
 Ao mudar um contrato, atualize seu proprietário/consumidores na arquitetura e as receitas afetadas no manual. Regere `node scripts/generate-method-reference.js`; após mudanças visuais/de consumidores, regere `npm run docs:sprites`. Novas ferramentas/aliases entram no catálogo de comandos; novas dependências exigem package.json e lockfile coerentes. Se alterar parâmetros da arena, atualize a referência documental derivada dos módulos reais. Preserve o design inicial sem transformar sua história numa aprovação nova.
 
 Registre validações reais e arquivos revisados no diário, sem espalhar relatórios ou fixtures. Links e inventários gerados não substituem a leitura dos contratos: referências dinâmicas, callbacks e ciclo de vida precisam ser explicitados. Teste a publicação em subpasta e os saves quando a integração mudar.
+
+[Brinquedão](brinquedao/GUIA-BRINQUEDAO.md): convite após o pesadelo, circuito rápido, materiais, áudio, controles, persistência e manutenção.
+
+
+O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) inclui o interior em três seções, tubos e piscinas com peixinhos, domínio4 e contratos de retomada.

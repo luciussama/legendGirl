@@ -571,6 +571,179 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `constructor(resources)` | Método declarado | [6](../src/js/bear-chase/props/TrainProp.js#L6) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `create()` | Método declarado | [51](../src/js/bear-chase/props/TrainProp.js#L51) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
+## src/js/brinquedao/BrinquedaoArt.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoArt.js). Contratos exportados/reexportados: `BRINQUEDAO_ART`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
+## src/js/brinquedao/BrinquedaoAttractions.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoAttractions.js). Contratos exportados/reexportados: `prepareBrinquedaoAttractions`, `drawBrinquedaoCastles`, `drawBrinquedaoSpring`, `drawBrinquedaoElastic`, `drawBrinquedaoSideMats`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `prepareBrinquedaoAttractions(image)` | Função | [6](../src/js/brinquedao/BrinquedaoAttractions.js#L6) | Extrai as quatro pinturas completas e mede o contorno da rampa sem sobrescrever PNGs. |
+| `drawBrinquedaoCastles(ctx,parts,left,right)` | Função | [8](../src/js/brinquedao/BrinquedaoAttractions.js#L8) | Compõe torres acolchoadas sob seus terraços físicos. |
+| `drawBrinquedaoSpring(ctx,image,p,s)` | Função | [10](../src/js/brinquedao/BrinquedaoAttractions.js#L10) | Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes. |
+| `drawBrinquedaoElastic(ctx,parts,s,left,right)` | Função | [12](../src/js/brinquedao/BrinquedaoAttractions.js#L12) | Compõe o painel oblíquo e seu recuo após contato. |
+| `drawBrinquedaoSideMats(ctx,parts,s,left,right)` | Função | [15](../src/js/brinquedao/BrinquedaoAttractions.js#L15) | Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto. |
+
+## src/js/brinquedao/BrinquedaoAudio.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoAudio.js). Contratos exportados/reexportados: `BrinquedaoAudio`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
+## src/js/brinquedao/BrinquedaoCinematic.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoCinematic.js). Contratos exportados/reexportados: `drawBrinquedaoGirl`, `drawBrinquedaoFairy`, `renderBrinquedaoCinematic`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `drawBrinquedaoGirl(ctx,images,index,x,base,height,{flip=1,tilt=0,time=0,seat=false}={})` | Função | [8](../src/js/brinquedao/BrinquedaoCinematic.js#L8) | Apresenta a atuação completa com escala comum, pés e máscara da prancha. |
+| `drawBrinquedaoFairy(ctx,image,x,y,height,time)` | Função | [10](../src/js/brinquedao/BrinquedaoCinematic.js#L10) | Compõe Nanda em tamanho habitual com batimento das asas. |
+| `renderBrinquedaoCinematic(ctx,canvas,s,images,onAdvance)` | Função | [12](../src/js/brinquedao/BrinquedaoCinematic.js#L12) | Compõe piquenique, convite e jardim com enquadramento narrativo e leitura segura. |
+
+## src/js/brinquedao/BrinquedaoExtension.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoExtension.js). Contratos exportados/reexportados: `BRINQUEDAO_EXTENSION_TRACKS`, `BRINQUEDAO_ELASTIC`, `brinquedaoDeathY`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `add(id,from,to,y,end,kind,extra={})` | Função atribuída | [3](../src/js/brinquedao/BrinquedaoExtension.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `brinquedaoDeathY(x)` | Função | [24](../src/js/brinquedao/BrinquedaoExtension.js#L24) | Retorna o limite inferior de queda da região baixa ou dos castelos altos. |
+
+## src/js/brinquedao/BrinquedaoFish.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoFish.js). Contratos exportados/reexportados: `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `brinquedaoFishSpecs(section,leg)` | Função | [2](../src/js/brinquedao/BrinquedaoFish.js#L2) | Distribui dois, três ou quatro peixes e seus períodos por seção e piscina. |
+| `brinquedaoFishPose(spec,time)` | Função | [3](../src/js/brinquedao/BrinquedaoFish.js#L3) | Calcula aviso, ponto de emergência e arco alternado do peixe de corda. |
+| `brinquedaoFishTouches(player,fish)` | Função | [5](../src/js/brinquedao/BrinquedaoFish.js#L5) | Testa contato da elipse central do peixe com o tronco, somente durante o salto. |
+
+## src/js/brinquedao/BrinquedaoInterior.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoInterior.js). Contratos exportados/reexportados: `createBrinquedaoInterior`, `beginBrinquedaoInterior`, `retryBrinquedaoInterior`, `stepBrinquedaoInterior`, `validateBrinquedaoInterior`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(v,a,b)` | Função atribuída | [3](../src/js/brinquedao/BrinquedaoInterior.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createBrinquedaoInterior()` | Função | [5](../src/js/brinquedao/BrinquedaoInterior.js#L5) | Cria seção, tubo, corpo local, dois corações e relógios serializáveis. |
+| `beginBrinquedaoInterior(s)` | Função | [6](../src/js/brinquedao/BrinquedaoInterior.js#L6) | Encerra o movimento externo e abre o primeiro tubo antes da chegada. |
+| `retryBrinquedaoInterior(s)` | Função | [8](../src/js/brinquedao/BrinquedaoInterior.js#L8) | Retoma na borda da piscina atual com dois corações restaurados. |
+| `stepBrinquedaoInterior(s,input,seconds)` | Função | [10](../src/js/brinquedao/BrinquedaoInterior.js#L10) | Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão. |
+| `validateBrinquedaoInterior(s)` | Função | [23](../src/js/brinquedao/BrinquedaoInterior.js#L23) | Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo. |
+
+## src/js/brinquedao/BrinquedaoInteriorRenderer.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoInteriorRenderer.js). Contratos exportados/reexportados: `prepareBrinquedaoInterior`, `drawBrinquedaoInteriorDoor`, `renderBrinquedaoInterior`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `crops(image,set)` | Função | [9](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareBrinquedaoInterior(images)` | Função | [11](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L11) | Recorta módulos de tubo e peixes completos em canvases reutilizáveis. |
+| `drawBrinquedaoInteriorDoor(ctx,parts)` | Função | [13](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L13) | Desenha a entrada acolchoada no antigo terraço final. |
+| `fish(ctx,parts,spec,pose)` | Função | [14](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `pad(ctx,parts,x,width)` | Função | [15](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `poolBack(ctx,r,i)` | Função | [16](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `poolFront(ctx,r,i)` | Função | [20](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tube(ctx,r,index,center,worldW,worldH)` | Função | [21](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBrinquedaoInterior(r,s,{touch=false,paused=false}={})` | Função | [25](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L25) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
+
+## src/js/brinquedao/BrinquedaoLevel.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoLevel.js). Contratos exportados/reexportados: `BRINQUEDAO`, `BRINQUEDAO_TRACKS`, `BRINQUEDAO_STEPS`, `BRINQUEDAO_BY_ID`, `BRINQUEDAO_CHECKPOINTS`, `BRINQUEDAO_SECTIONS`, `brinquedaoSurface`, `brinquedaoSlope`, `brinquedaoMainAt`, `brinquedaoNearby`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `brinquedaoSurface(p,x)` | Função | [15](../src/js/brinquedao/BrinquedaoLevel.js#L15) | Consulta a altura contínua autorada do apoio, inclusive pontes e bolinhas. |
+| `brinquedaoSlope(p,x)` | Função | [16](../src/js/brinquedao/BrinquedaoLevel.js#L16) | Mede inclinação local para gravidade tangencial e pose da descida. |
+| `brinquedaoMainAt(x)` | Função | [17](../src/js/brinquedao/BrinquedaoLevel.js#L17) | Localiza a pista principal correspondente à coordenada horizontal. |
+| `brinquedaoNearby(left,right)` | Função | [18](../src/js/brinquedao/BrinquedaoLevel.js#L18) | Seleciona estruturas visíveis sem alterar sua simulação. |
+
+## src/js/brinquedao/BrinquedaoObstacles.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoObstacles.js). Contratos exportados/reexportados: `createBrinquedaoObstacles`, `brinquedaoBridgeSolid`, `contactBrinquedao`, `hitBrinquedaoElastic`, `launchBrinquedaoSky`, `validateBrinquedaoObstacles`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `createBrinquedaoObstacles()` | Função | [5](../src/js/brinquedao/BrinquedaoObstacles.js#L5) | Cria relógios de pontes/lonas e contagens de impacto sem recursos de apresentação. |
+| `brinquedaoBridgeSolid(s,p)` | Função | [6](../src/js/brinquedao/BrinquedaoObstacles.js#L6) | Consulta se a peça ainda oferece apoio após contato, incluindo tolerância EASY. |
+| `contactBrinquedao(s,track,events)` | Função | [8](../src/js/brinquedao/BrinquedaoObstacles.js#L8) | Registra apoio, ativa ponte ou aplica impulso descendente da lona, com reforço por PULAR. |
+| `hitBrinquedaoElastic(s,previous,events)` | Função | [15](../src/js/brinquedao/BrinquedaoObstacles.js#L15) | Exige cruzamento e altura do painel lateral para transferir energia à rampa. |
+| `launchBrinquedaoSky(s,events)` | Função | [17](../src/js/brinquedao/BrinquedaoObstacles.js#L17) | Converte a saída real do lábio em velocidade horizontal e vertical, liberando controle aéreo. |
+| `validateBrinquedaoObstacles(s)` | Função | [18](../src/js/brinquedao/BrinquedaoObstacles.js#L18) | Confere referências e relógios de contato, rejeitando apoio em ponte caída. |
+
+## src/js/brinquedao/BrinquedaoPhase.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoPhase.js). Contratos exportados/reexportados: `BrinquedaoPhase`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `active()` | Acessor | [10](../src/js/brinquedao/BrinquedaoPhase.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+
+## src/js/brinquedao/BrinquedaoRecovery.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoRecovery.js). Contratos exportados/reexportados: `BRINQUEDAO_RECOVERY_TRACKS`, `BRINQUEDAO_SIDE_MATS`, `brinquedaoRicochetAge`, `hitBrinquedaoSideMat`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `add(id,from,to,y,end,kind,extra={})` | Função atribuída | [3](../src/js/brinquedao/BrinquedaoRecovery.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `brinquedaoRicochetAge(s)` | Função | [27](../src/js/brinquedao/BrinquedaoRecovery.js#L27) | Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção. |
+| `hitBrinquedaoSideMat(s,previous,events)` | Função | [29](../src/js/brinquedao/BrinquedaoRecovery.js#L29) | Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte. |
+
+## src/js/brinquedao/BrinquedaoRenderer.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoRenderer.js). Contratos exportados/reexportados: `BrinquedaoRenderer`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
+## src/js/brinquedao/BrinquedaoSimulation.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoSimulation.js). Contratos exportados/reexportados: `createBrinquedaoState`, `restoreBrinquedaoState`, `recoverBrinquedao`, `stepBrinquedao`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `clamp(v,a,b)` | Função atribuída | [7](../src/js/brinquedao/BrinquedaoSimulation.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createBrinquedaoState(difficulty='NORMAL')` | Função | [9](../src/js/brinquedao/BrinquedaoSimulation.js#L9) | Cria domínio4 com convite, corpo externo, interior e relógios das atrações. |
+| `restoreBrinquedaoState(saved,difficulty)` | Função | [14](../src/js/brinquedao/BrinquedaoSimulation.js#L14) | Valida domínio4 e interior; migra saves1/2/3, abrindo o interior após a chegada antiga. |
+| `recoverBrinquedao(s)` | Função | [29](../src/js/brinquedao/BrinquedaoSimulation.js#L29) | Retoma o último terraço após queda/derrota e rearma as pontes futuras. |
+| `stepBrinquedao(s,input={},seconds=0)` | Função | [37](../src/js/brinquedao/BrinquedaoSimulation.js#L37) | Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota. |
+
+## src/js/brinquedao/BrinquedaoStory.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoStory.js). Contratos exportados/reexportados: `BRINQUEDAO_INTRO`, `advanceBrinquedaoStory`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `advanceBrinquedaoStory(s)` | Função | [12](../src/js/brinquedao/BrinquedaoStory.js#L12) | Avança uma fala ou encerra a leitura consumindo o gesto de pulo. |
+
+## src/js/brinquedao/BrinquedaoTerrain.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`, `drawBrinquedaoBallsFront`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `prepareBrinquedaoParts(image,slide)` | Função | [6](../src/js/brinquedao/BrinquedaoTerrain.js#L6) | Extrai módulos completos e mede o topo pintado para registrar o material. |
+| `pillar(ctx,x,y,parts)` | Função | [9](../src/js/brinquedao/BrinquedaoTerrain.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoTerrain(ctx,parts,left,right,s,attractions)` | Função | [11](../src/js/brinquedao/BrinquedaoTerrain.js#L11) | Projeta pinturas de acolchoado, madeira e escorregador sobre as curvas físicas. |
+| `drawBrinquedaoBallsFront(ctx,parts,p,time,player)` | Função | [27](../src/js/brinquedao/BrinquedaoTerrain.js#L27) | Compõe a frente opaca das bolinhas e seu movimento ao redor do corpo. |
+
+## src/js/brinquedao/BrinquedaoTubes.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoTubes.js). Contratos exportados/reexportados: `BRINQUEDAO_INSIDE`, `BRINQUEDAO_TUBES`, `brinquedaoTubePose`, `brinquedaoInsideFloor`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `buildTube(index)` | Função | [4](../src/js/brinquedao/BrinquedaoTubes.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `push(x,y)` | Função atribuída | [5](../src/js/brinquedao/BrinquedaoTubes.js#L5) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `line(point)` | Função atribuída | [6](../src/js/brinquedao/BrinquedaoTubes.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `brinquedaoTubePose(index,u)` | Função | [13](../src/js/brinquedao/BrinquedaoTubes.js#L13) | Consulta posição e tangente pelo comprimento amostrado da curva. |
+| `brinquedaoInsideFloor(x)` | Função | [14](../src/js/brinquedao/BrinquedaoTubes.js#L14) | Conecta as bordas elevadas ao fundo da piscina por rampas suaves. |
+
 ## src/js/chapters/ChapterArt.js
 
 [Implementação](../src/js/chapters/ChapterArt.js). Contratos exportados/reexportados: `CHAPTER_ART`.
@@ -1432,37 +1605,37 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `onLagBehind()` | API/lambda de objeto | [1070](../src/js/game.js#L1070) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `render()` | Função | [1079](../src/js/game.js#L1079) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `togglePause()` | Função | [1089](../src/js/game.js#L1089) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setPaused(value)` | Função | [1109](../src/js/game.js#L1109) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `saveProgress()` | Função | [1115](../src/js/game.js#L1115) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `restoreProgress(saved)` | Função | [1127](../src/js/game.js#L1127) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `newCampaign({ preserveProgress = false } = {})` | Função | [1151](../src/js/game.js#L1151) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | [1171](../src/js/game.js#L1171) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `saveOnHide()` | Função atribuída | [1207](../src/js/game.js#L1207) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `recordCameraQa(transform = null)` | Função | [1225](../src/js/game.js#L1225) | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
-| `loop(currentTime = performance.now())` | Função | [1229](../src/js/game.js#L1229) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isFirstJumpTutorial()` | API/lambda de objeto | [1269](../src/js/game.js#L1269) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGrounded()` | API/lambda de objeto | [1271](../src/js/game.js#L1271) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | [1272](../src/js/game.js#L1272) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isGameOver()` | API/lambda de objeto | [1273](../src/js/game.js#L1273) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | [1274](../src/js/game.js#L1274) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | [1276](../src/js/game.js#L1276) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `advanceDialogue(event)` | Função | [1280](../src/js/game.js#L1280) | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
-| `pauseMusic()` | API/lambda de objeto | [1326](../src/js/game.js#L1326) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `resumeMusic()` | API/lambda de objeto | [1327](../src/js/game.js#L1327) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setMasterVolume(v)` | API/lambda de objeto | [1328](../src/js/game.js#L1328) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getMasterVolume()` | API/lambda de objeto | [1329](../src/js/game.js#L1329) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `setMuted(m)` | API/lambda de objeto | [1330](../src/js/game.js#L1330) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `isMuted()` | API/lambda de objeto | [1331](../src/js/game.js#L1331) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `toggleMute()` | API/lambda de objeto | [1332](../src/js/game.js#L1332) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `isPaused()` | API/lambda de objeto | [1333](../src/js/game.js#L1333) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `hasProgress()` | API/lambda de objeto | [1336](../src/js/game.js#L1336) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `hasSavedCampaign()` | API/lambda de objeto | [1337](../src/js/game.js#L1337) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `getDifficulty()` | API/lambda de objeto | [1338](../src/js/game.js#L1338) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `destroy()` | Método declarado | [1343](../src/js/game.js#L1343) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
-| `start(difficulty = 'NORMAL')` | Método declarado | [1354](../src/js/game.js#L1354) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `isGrounded()` | API/lambda de objeto | [1376](../src/js/game.js#L1376) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isCutsceneActive()` | API/lambda de objeto | [1377](../src/js/game.js#L1377) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `isToyRoomMode()` | API/lambda de objeto | [1386](../src/js/game.js#L1386) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setPaused(value)` | Função | [1110](../src/js/game.js#L1110) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `saveProgress()` | Função | [1116](../src/js/game.js#L1116) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `restoreProgress(saved)` | Função | [1128](../src/js/game.js#L1128) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `newCampaign({ preserveProgress = false } = {})` | Função | [1152](../src/js/game.js#L1152) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `startDebugPhase(phase, difficulty = state.gameDifficulty)` | Função | [1172](../src/js/game.js#L1172) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `saveOnHide()` | Função atribuída | [1209](../src/js/game.js#L1209) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `recordCameraQa(transform = null)` | Função | [1227](../src/js/game.js#L1227) | Emite observação optativa de câmera; ativada por cameraQa e callback de teste. |
+| `loop(currentTime = performance.now())` | Função | [1231](../src/js/game.js#L1231) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isFirstJumpTutorial()` | API/lambda de objeto | [1271](../src/js/game.js#L1271) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGrounded()` | API/lambda de objeto | [1273](../src/js/game.js#L1273) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | [1274](../src/js/game.js#L1274) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isGameOver()` | API/lambda de objeto | [1275](../src/js/game.js#L1275) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | [1276](../src/js/game.js#L1276) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | [1278](../src/js/game.js#L1278) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `advanceDialogue(event)` | Função | [1282](../src/js/game.js#L1282) | Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada. |
+| `pauseMusic()` | API/lambda de objeto | [1329](../src/js/game.js#L1329) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `resumeMusic()` | API/lambda de objeto | [1330](../src/js/game.js#L1330) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setMasterVolume(v)` | API/lambda de objeto | [1331](../src/js/game.js#L1331) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getMasterVolume()` | API/lambda de objeto | [1332](../src/js/game.js#L1332) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `setMuted(m)` | API/lambda de objeto | [1333](../src/js/game.js#L1333) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `isMuted()` | API/lambda de objeto | [1334](../src/js/game.js#L1334) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `toggleMute()` | API/lambda de objeto | [1335](../src/js/game.js#L1335) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `isPaused()` | API/lambda de objeto | [1336](../src/js/game.js#L1336) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasProgress()` | API/lambda de objeto | [1339](../src/js/game.js#L1339) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `hasSavedCampaign()` | API/lambda de objeto | [1340](../src/js/game.js#L1340) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `getDifficulty()` | API/lambda de objeto | [1341](../src/js/game.js#L1341) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `destroy()` | Método declarado | [1346](../src/js/game.js#L1346) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `start(difficulty = 'NORMAL')` | Método declarado | [1357](../src/js/game.js#L1357) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `isGrounded()` | API/lambda de objeto | [1379](../src/js/game.js#L1379) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isCutsceneActive()` | API/lambda de objeto | [1380](../src/js/game.js#L1380) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `isToyRoomMode()` | API/lambda de objeto | [1389](../src/js/game.js#L1389) | Consulta/calcula valor específico; forma exata definida pela implementação. |
 
 ## src/js/garden/GardenArt.js
 
@@ -2454,7 +2627,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `constructor(context)` | Método declarado | [3](../src/js/toy-room/ToyRoomPersistence.js#L3) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `snapshot({ includeArena = true } = {})` | Método declarado | [5](../src/js/toy-room/ToyRoomPersistence.js#L5) | Copia exploração, religa carregado por ID e inclui arena/perseguição/jardim/epílogo conforme origem e includeArena. |
-| `restore(saved, { preserveArena = false } = {})` | Método declarado | [20](../src/js/toy-room/ToyRoomPersistence.js#L20) | Reaplica exploração e atores, limpa entrada e prioriza jardim, epílogo, perseguição, arena, batalha e tutorial; preserveArena evita reconstrução recursiva. |
+| `restore(saved, { preserveArena = false } = {})` | Método declarado | [21](../src/js/toy-room/ToyRoomPersistence.js#L21) | Reaplica exploração e atores, limpa entrada e prioriza jardim, epílogo, perseguição, arena, batalha e tutorial; preserveArena evita reconstrução recursiva. |
 
 ## src/js/toy-room/ToyRoomPersistenceContext.js
 
@@ -2463,47 +2636,48 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `createToyRoomPersistenceContext(room)` | Função | [2](../src/js/toy-room/ToyRoomPersistenceContext.js#L2) | Adapta campos serializados e retomada dos subsistemas, inclusive após substituição dos atores. |
-| `dream()` | Acessor | [4](../src/js/toy-room/ToyRoomPersistenceContext.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `epilogue()` | Acessor | [5](../src/js/toy-room/ToyRoomPersistenceContext.js#L5) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `epilogue(value)` | Acessor | [6](../src/js/toy-room/ToyRoomPersistenceContext.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `arena()` | Acessor | [8](../src/js/toy-room/ToyRoomPersistenceContext.js#L8) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `battle()` | Acessor | [9](../src/js/toy-room/ToyRoomPersistenceContext.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `garden()` | Acessor | [10](../src/js/toy-room/ToyRoomPersistenceContext.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `garden(value)` | Acessor | [11](../src/js/toy-room/ToyRoomPersistenceContext.js#L11) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `chase()` | Acessor | [13](../src/js/toy-room/ToyRoomPersistenceContext.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `chase(value)` | Acessor | [14](../src/js/toy-room/ToyRoomPersistenceContext.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraX()` | Acessor | [15](../src/js/toy-room/ToyRoomPersistenceContext.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraX(value)` | Acessor | [16](../src/js/toy-room/ToyRoomPersistenceContext.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraY()` | Acessor | [17](../src/js/toy-room/ToyRoomPersistenceContext.js#L17) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cameraY(value)` | Acessor | [18](../src/js/toy-room/ToyRoomPersistenceContext.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `clearInput()` | API/lambda de objeto | [19](../src/js/toy-room/ToyRoomPersistenceContext.js#L19) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `fairy()` | Acessor | [20](../src/js/toy-room/ToyRoomPersistenceContext.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(value)` | Acessor | [21](../src/js/toy-room/ToyRoomPersistenceContext.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `furniture()` | Acessor | [22](../src/js/toy-room/ToyRoomPersistenceContext.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `furniture(value)` | Acessor | [23](../src/js/toy-room/ToyRoomPersistenceContext.js#L23) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gameplayState()` | Acessor | [24](../src/js/toy-room/ToyRoomPersistenceContext.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `gameplayState(value)` | Acessor | [25](../src/js/toy-room/ToyRoomPersistenceContext.js#L25) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introAlpha()` | Acessor | [26](../src/js/toy-room/ToyRoomPersistenceContext.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introAlpha(value)` | Acessor | [27](../src/js/toy-room/ToyRoomPersistenceContext.js#L27) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introBannerTimer()` | Acessor | [28](../src/js/toy-room/ToyRoomPersistenceContext.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `introBannerTimer(value)` | Acessor | [29](../src/js/toy-room/ToyRoomPersistenceContext.js#L29) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `lastActionTime()` | Acessor | [30](../src/js/toy-room/ToyRoomPersistenceContext.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `lastActionTime(value)` | Acessor | [31](../src/js/toy-room/ToyRoomPersistenceContext.js#L31) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `organizedCount()` | Acessor | [32](../src/js/toy-room/ToyRoomPersistenceContext.js#L32) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `organizedCount(value)` | Acessor | [33](../src/js/toy-room/ToyRoomPersistenceContext.js#L33) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `player()` | Acessor | [34](../src/js/toy-room/ToyRoomPersistenceContext.js#L34) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `player(value)` | Acessor | [35](../src/js/toy-room/ToyRoomPersistenceContext.js#L35) | Aciona o som/cue correspondente ou sua delegação de áudio. |
-| `startTutorial()` | API/lambda de objeto | [36](../src/js/toy-room/ToyRoomPersistenceContext.js#L36) | Inicia orientação guiada da Toy Room se ainda não concluída. |
-| `story()` | Acessor | [38](../src/js/toy-room/ToyRoomPersistenceContext.js#L38) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toyRoomTutorialCompleted()` | Acessor | [39](../src/js/toy-room/ToyRoomPersistenceContext.js#L39) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toyRoomTutorialCompleted(value)` | Acessor | [40](../src/js/toy-room/ToyRoomPersistenceContext.js#L40) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toys()` | Acessor | [41](../src/js/toy-room/ToyRoomPersistenceContext.js#L41) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `toys(value)` | Acessor | [42](../src/js/toy-room/ToyRoomPersistenceContext.js#L42) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tutorial()` | Acessor | [43](../src/js/toy-room/ToyRoomPersistenceContext.js#L43) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerActive()` | Acessor | [44](../src/js/toy-room/ToyRoomPersistenceContext.js#L44) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerActive(value)` | Acessor | [45](../src/js/toy-room/ToyRoomPersistenceContext.js#L45) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerTimer()` | Acessor | [46](../src/js/toy-room/ToyRoomPersistenceContext.js#L46) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `victoryBannerTimer(value)` | Acessor | [47](../src/js/toy-room/ToyRoomPersistenceContext.js#L47) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `brinq()` | Acessor | [4](../src/js/toy-room/ToyRoomPersistenceContext.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `dream()` | Acessor | [5](../src/js/toy-room/ToyRoomPersistenceContext.js#L5) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `epilogue()` | Acessor | [6](../src/js/toy-room/ToyRoomPersistenceContext.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `epilogue(value)` | Acessor | [7](../src/js/toy-room/ToyRoomPersistenceContext.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `arena()` | Acessor | [9](../src/js/toy-room/ToyRoomPersistenceContext.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `battle()` | Acessor | [10](../src/js/toy-room/ToyRoomPersistenceContext.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `garden()` | Acessor | [11](../src/js/toy-room/ToyRoomPersistenceContext.js#L11) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `garden(value)` | Acessor | [12](../src/js/toy-room/ToyRoomPersistenceContext.js#L12) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chase()` | Acessor | [14](../src/js/toy-room/ToyRoomPersistenceContext.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `chase(value)` | Acessor | [15](../src/js/toy-room/ToyRoomPersistenceContext.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraX()` | Acessor | [16](../src/js/toy-room/ToyRoomPersistenceContext.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraX(value)` | Acessor | [17](../src/js/toy-room/ToyRoomPersistenceContext.js#L17) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraY()` | Acessor | [18](../src/js/toy-room/ToyRoomPersistenceContext.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cameraY(value)` | Acessor | [19](../src/js/toy-room/ToyRoomPersistenceContext.js#L19) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `clearInput()` | API/lambda de objeto | [20](../src/js/toy-room/ToyRoomPersistenceContext.js#L20) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `fairy()` | Acessor | [21](../src/js/toy-room/ToyRoomPersistenceContext.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(value)` | Acessor | [22](../src/js/toy-room/ToyRoomPersistenceContext.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `furniture()` | Acessor | [23](../src/js/toy-room/ToyRoomPersistenceContext.js#L23) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `furniture(value)` | Acessor | [24](../src/js/toy-room/ToyRoomPersistenceContext.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gameplayState()` | Acessor | [25](../src/js/toy-room/ToyRoomPersistenceContext.js#L25) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `gameplayState(value)` | Acessor | [26](../src/js/toy-room/ToyRoomPersistenceContext.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introAlpha()` | Acessor | [27](../src/js/toy-room/ToyRoomPersistenceContext.js#L27) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introAlpha(value)` | Acessor | [28](../src/js/toy-room/ToyRoomPersistenceContext.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introBannerTimer()` | Acessor | [29](../src/js/toy-room/ToyRoomPersistenceContext.js#L29) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `introBannerTimer(value)` | Acessor | [30](../src/js/toy-room/ToyRoomPersistenceContext.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `lastActionTime()` | Acessor | [31](../src/js/toy-room/ToyRoomPersistenceContext.js#L31) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `lastActionTime(value)` | Acessor | [32](../src/js/toy-room/ToyRoomPersistenceContext.js#L32) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `organizedCount()` | Acessor | [33](../src/js/toy-room/ToyRoomPersistenceContext.js#L33) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `organizedCount(value)` | Acessor | [34](../src/js/toy-room/ToyRoomPersistenceContext.js#L34) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `player()` | Acessor | [35](../src/js/toy-room/ToyRoomPersistenceContext.js#L35) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `player(value)` | Acessor | [36](../src/js/toy-room/ToyRoomPersistenceContext.js#L36) | Aciona o som/cue correspondente ou sua delegação de áudio. |
+| `startTutorial()` | API/lambda de objeto | [37](../src/js/toy-room/ToyRoomPersistenceContext.js#L37) | Inicia orientação guiada da Toy Room se ainda não concluída. |
+| `story()` | Acessor | [39](../src/js/toy-room/ToyRoomPersistenceContext.js#L39) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toyRoomTutorialCompleted()` | Acessor | [40](../src/js/toy-room/ToyRoomPersistenceContext.js#L40) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toyRoomTutorialCompleted(value)` | Acessor | [41](../src/js/toy-room/ToyRoomPersistenceContext.js#L41) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toys()` | Acessor | [42](../src/js/toy-room/ToyRoomPersistenceContext.js#L42) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `toys(value)` | Acessor | [43](../src/js/toy-room/ToyRoomPersistenceContext.js#L43) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tutorial()` | Acessor | [44](../src/js/toy-room/ToyRoomPersistenceContext.js#L44) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerActive()` | Acessor | [45](../src/js/toy-room/ToyRoomPersistenceContext.js#L45) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerActive(value)` | Acessor | [46](../src/js/toy-room/ToyRoomPersistenceContext.js#L46) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerTimer()` | Acessor | [47](../src/js/toy-room/ToyRoomPersistenceContext.js#L47) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `victoryBannerTimer(value)` | Acessor | [48](../src/js/toy-room/ToyRoomPersistenceContext.js#L48) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/toy-room/ToyRoomPhase.js
 
@@ -2511,48 +2685,49 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {})` | Método declarado | [39](../src/js/toy-room/ToyRoomPhase.js#L39) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `inputController()` | Acessor | [123](../src/js/toy-room/ToyRoomPhase.js#L123) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `setupListeners()` | Método declarado | [130](../src/js/toy-room/ToyRoomPhase.js#L130) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `getCanvasCoordinates(e)` | Método declarado | [132](../src/js/toy-room/ToyRoomPhase.js#L132) | Converte evento de ponteiro para coordenadas internas da sala. |
-| `isActionButtonHit(coords)` | Método declarado | [134](../src/js/toy-room/ToyRoomPhase.js#L134) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `handleKeyDown(e)` | Método declarado | [136](../src/js/toy-room/ToyRoomPhase.js#L136) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `handleKeyUp(e)` | Método declarado | [138](../src/js/toy-room/ToyRoomPhase.js#L138) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `pollGamepad()` | Método declarado | [140](../src/js/toy-room/ToyRoomPhase.js#L140) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `onPointerDown(e)` | Método declarado | [142](../src/js/toy-room/ToyRoomPhase.js#L142) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerMove(e)` | Método declarado | [144](../src/js/toy-room/ToyRoomPhase.js#L144) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `onPointerUp(e)` | Método declarado | [146](../src/js/toy-room/ToyRoomPhase.js#L146) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `clearInput()` | Método declarado | [148](../src/js/toy-room/ToyRoomPhase.js#L148) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `refreshArenaTouchButtons()` | Método declarado | [150](../src/js/toy-room/ToyRoomPhase.js#L150) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | [152](../src/js/toy-room/ToyRoomPhase.js#L152) | Cria partículas/efeitos no buffer correspondente. |
-| `spawnConfetti(x, y, count = 35)` | Método declarado | [156](../src/js/toy-room/ToyRoomPhase.js#L156) | Cria partículas/efeitos no buffer correspondente. |
-| `interaction()` | Acessor | [160](../src/js/toy-room/ToyRoomPhase.js#L160) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triggerAction()` | Método declarado | [166](../src/js/toy-room/ToyRoomPhase.js#L166) | Encaminha ação à exploração somente fora de epílogo, jardim e perseguição. |
-| `startChasePreview(saved = null)` | Método declarado | [169](../src/js/toy-room/ToyRoomPhase.js#L169) | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
-| `startChaseCampaign(saved = null)` | Método declarado | [183](../src/js/toy-room/ToyRoomPhase.js#L183) | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
-| `handleCampaignChaseError(chase, message)` | Método declarado | [209](../src/js/toy-room/ToyRoomPhase.js#L209) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
-| `startEpilogue(saved=null,{campaign=true}={})` | Método declarado | [230](../src/js/toy-room/ToyRoomPhase.js#L230) | Descarta a perseguição, limpa entrada e inicia o epílogo recuperável; o callback abre o jardim com a mesma origem campanha/prévia. |
-| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | [237](../src/js/toy-room/ToyRoomPhase.js#L237) | Encerra epílogo/perseguição, remove entradas da sala e inicia GardenPhase com recursos, física e áudio próprios; conserva a origem campanha/prévia. |
-| `startDream(saved=null,{campaign=true}={})` | Método declarado | [249](../src/js/toy-room/ToyRoomPhase.js#L249) | Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada. |
-| `resolveCollisions(px, py, r)` | Método declarado | [257](../src/js/toy-room/ToyRoomPhase.js#L257) | Resolve colisões da sala com móveis. |
-| `update(dt = 1.0)` | Método declarado | [264](../src/js/toy-room/ToyRoomPhase.js#L264) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `updateActiveMode(dt)` | Método declarado | [281](../src/js/toy-room/ToyRoomPhase.js#L281) | Seleciona epílogo, jardim, perseguição ou sala; após 150 ticks de COMPLETE abre o epílogo preservando campaign. |
-| `resolveCollisions(x, y, radius)` | API/lambda de objeto | [329](../src/js/toy-room/ToyRoomPhase.js#L329) | Resolve colisões da sala com móveis. |
-| `setDifficulty(difficulty)` | Método declarado | [351](../src/js/toy-room/ToyRoomPhase.js#L351) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
-| `retryDefeat({ resume = false } = {})` | Método declarado | [360](../src/js/toy-room/ToyRoomPhase.js#L360) | Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual. |
-| `updateCamera(dt)` | Método declarado | [386](../src/js/toy-room/ToyRoomPhase.js#L386) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `getCameraFrame()` | Método declarado | [394](../src/js/toy-room/ToyRoomPhase.js#L394) | Consulta/calcula valor específico; forma exata definida pela implementação. |
-| `render(options = {})` | Método declarado | [401](../src/js/toy-room/ToyRoomPhase.js#L401) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `startTutorial()` | Método declarado | [413](../src/js/toy-room/ToyRoomPhase.js#L413) | Inicia orientação guiada da Toy Room se ainda não concluída. |
-| `persistence()` | Acessor | [415](../src/js/toy-room/ToyRoomPhase.js#L415) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `snapshot(options)` | Método declarado | [420](../src/js/toy-room/ToyRoomPhase.js#L420) | Produz captura recuperável do estado específico deste componente. |
-| `restore(saved, options)` | Método declarado | [422](../src/js/toy-room/ToyRoomPhase.js#L422) | Reaplica a captura específica; confira referências e dados transitórios. |
-| `destroy()` | Método declarado | [425](../src/js/toy-room/ToyRoomPhase.js#L425) | Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo. |
-| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | [439](../src/js/toy-room/ToyRoomPhase.js#L439) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `update(dt)` | API/lambda de objeto | [442](../src/js/toy-room/ToyRoomPhase.js#L442) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render()` | API/lambda de objeto | [443](../src/js/toy-room/ToyRoomPhase.js#L443) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `triggerAction()` | API/lambda de objeto | [444](../src/js/toy-room/ToyRoomPhase.js#L444) | Encaminha ação à exploração somente fora de epílogo, jardim e perseguição. |
-| `destroy()` | API/lambda de objeto | [445](../src/js/toy-room/ToyRoomPhase.js#L445) | Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo. |
+| `constructor(canvas, audio, uiFeedback, onReturnToTitle, options = {})` | Método declarado | [40](../src/js/toy-room/ToyRoomPhase.js#L40) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `inputController()` | Acessor | [124](../src/js/toy-room/ToyRoomPhase.js#L124) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `setupListeners()` | Método declarado | [131](../src/js/toy-room/ToyRoomPhase.js#L131) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `getCanvasCoordinates(e)` | Método declarado | [133](../src/js/toy-room/ToyRoomPhase.js#L133) | Converte evento de ponteiro para coordenadas internas da sala. |
+| `isActionButtonHit(coords)` | Método declarado | [135](../src/js/toy-room/ToyRoomPhase.js#L135) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `handleKeyDown(e)` | Método declarado | [137](../src/js/toy-room/ToyRoomPhase.js#L137) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `handleKeyUp(e)` | Método declarado | [139](../src/js/toy-room/ToyRoomPhase.js#L139) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `pollGamepad()` | Método declarado | [141](../src/js/toy-room/ToyRoomPhase.js#L141) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `onPointerDown(e)` | Método declarado | [143](../src/js/toy-room/ToyRoomPhase.js#L143) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerMove(e)` | Método declarado | [145](../src/js/toy-room/ToyRoomPhase.js#L145) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `onPointerUp(e)` | Método declarado | [147](../src/js/toy-room/ToyRoomPhase.js#L147) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `clearInput()` | Método declarado | [149](../src/js/toy-room/ToyRoomPhase.js#L149) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `refreshArenaTouchButtons()` | Método declarado | [151](../src/js/toy-room/ToyRoomPhase.js#L151) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `spawnSparkles(x, y, count = 12, hue = '#facc15')` | Método declarado | [153](../src/js/toy-room/ToyRoomPhase.js#L153) | Cria partículas/efeitos no buffer correspondente. |
+| `spawnConfetti(x, y, count = 35)` | Método declarado | [157](../src/js/toy-room/ToyRoomPhase.js#L157) | Cria partículas/efeitos no buffer correspondente. |
+| `interaction()` | Acessor | [161](../src/js/toy-room/ToyRoomPhase.js#L161) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triggerAction()` | Método declarado | [167](../src/js/toy-room/ToyRoomPhase.js#L167) | Encaminha ação à exploração somente fora de epílogo, jardim e perseguição. |
+| `startChasePreview(saved = null)` | Método declarado | [170](../src/js/toy-room/ToyRoomPhase.js#L170) | Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha. |
+| `startChaseCampaign(saved = null)` | Método declarado | [185](../src/js/toy-room/ToyRoomPhase.js#L185) | Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação. |
+| `handleCampaignChaseError(chase, message)` | Método declarado | [212](../src/js/toy-room/ToyRoomPhase.js#L212) | Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners. |
+| `startEpilogue(saved=null,{campaign=true}={})` | Método declarado | [233](../src/js/toy-room/ToyRoomPhase.js#L233) | Descarta a perseguição, limpa entrada e inicia o epílogo recuperável; o callback abre o jardim com a mesma origem campanha/prévia. |
+| `startGarden(saved = null, { campaign = true } = {})` | Método declarado | [241](../src/js/toy-room/ToyRoomPhase.js#L241) | Encerra epílogo/perseguição, remove entradas da sala e inicia GardenPhase com recursos, física e áudio próprios; conserva a origem campanha/prévia. |
+| `startDream(saved=null,{campaign=true}={})` | Método declarado | [254](../src/js/toy-room/ToyRoomPhase.js#L254) | Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada. |
+| `startBrinquedao(saved=null,{campaign=true}={})` | Método declarado | [264](../src/js/toy-room/ToyRoomPhase.js#L264) | Descarta os modos anteriores, conserva a origem da campanha e abre convite e circuito. |
+| `resolveCollisions(px, py, r)` | Método declarado | [270](../src/js/toy-room/ToyRoomPhase.js#L270) | Resolve colisões da sala com móveis. |
+| `update(dt = 1.0)` | Método declarado | [277](../src/js/toy-room/ToyRoomPhase.js#L277) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `updateActiveMode(dt)` | Método declarado | [296](../src/js/toy-room/ToyRoomPhase.js#L296) | Seleciona epílogo, jardim, perseguição ou sala; após 150 ticks de COMPLETE abre o epílogo preservando campaign. |
+| `resolveCollisions(x, y, radius)` | API/lambda de objeto | [345](../src/js/toy-room/ToyRoomPhase.js#L345) | Resolve colisões da sala com móveis. |
+| `setDifficulty(difficulty)` | Método declarado | [367](../src/js/toy-room/ToyRoomPhase.js#L367) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `retryDefeat({ resume = false } = {})` | Método declarado | [377](../src/js/toy-room/ToyRoomPhase.js#L377) | Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual. |
+| `updateCamera(dt)` | Método declarado | [404](../src/js/toy-room/ToyRoomPhase.js#L404) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `getCameraFrame()` | Método declarado | [412](../src/js/toy-room/ToyRoomPhase.js#L412) | Consulta/calcula valor específico; forma exata definida pela implementação. |
+| `render(options = {})` | Método declarado | [419](../src/js/toy-room/ToyRoomPhase.js#L419) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `startTutorial()` | Método declarado | [432](../src/js/toy-room/ToyRoomPhase.js#L432) | Inicia orientação guiada da Toy Room se ainda não concluída. |
+| `persistence()` | Acessor | [434](../src/js/toy-room/ToyRoomPhase.js#L434) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `snapshot(options)` | Método declarado | [439](../src/js/toy-room/ToyRoomPhase.js#L439) | Produz captura recuperável do estado específico deste componente. |
+| `restore(saved, options)` | Método declarado | [441](../src/js/toy-room/ToyRoomPhase.js#L441) | Reaplica a captura específica; confira referências e dados transitórios. |
+| `destroy()` | Método declarado | [444](../src/js/toy-room/ToyRoomPhase.js#L444) | Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo. |
+| `createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, options)` | Função | [459](../src/js/toy-room/ToyRoomPhase.js#L459) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `update(dt)` | API/lambda de objeto | [462](../src/js/toy-room/ToyRoomPhase.js#L462) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render()` | API/lambda de objeto | [463](../src/js/toy-room/ToyRoomPhase.js#L463) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `triggerAction()` | API/lambda de objeto | [464](../src/js/toy-room/ToyRoomPhase.js#L464) | Encaminha ação à exploração somente fora de epílogo, jardim e perseguição. |
+| `destroy()` | API/lambda de objeto | [465](../src/js/toy-room/ToyRoomPhase.js#L465) | Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo. |
 
 ## src/js/toy-room/ToyRoomSceneFrame.js
 
@@ -2862,4 +3037,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **217 módulos JavaScript**, **1371 declarações nomeadas**.
+Inventário: **234 módulos JavaScript**, **1430 declarações nomeadas**.

@@ -80,3 +80,7 @@ A queda sem sustentação consome `yuna-queda-vento-v1.png`, gerada pela ferrame
 
 
 A abertura usa `yuna-abertura-sonho-v1.png`, ferramenta integrada image_gen, com prompt/referências em `prompts-abertura-sonho-v1.json`. Quatro poses completas da menina, preservando figurino e expressão preocupada. Componentes/rowMask e âncoras das mãos são preparados em openingGirl; Nanda dormindo é a pintura canônica já existente em chapters/nanda-gestos-v1. A floresta cinematográfica também é reutilizada. Nenhuma pintura anterior foi sobrescrita.
+
+## Descoberta de Nanda — pose corrigida
+
+`yuna-olhar-nanda-v2.png` substitui a apresentação em pé que torcia cabeça e corpo. Pintura integral com braços abraçados, preocupação e orientação esquerda em três quartos coerente. Criada pela skill imagegen/ferramenta integrada image_gen; [prompt, referências e hash](prompts-olhar-nanda-v2.json). O gerador mede `openingLook`; o renderer ancora a pintura completa nos pés. A prancha original é preservada para as outras atuações.

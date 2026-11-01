@@ -14,11 +14,12 @@ export class ToyRoomPersistence {
     if (includeArena && this.context.garden?.campaign) saved.toyRoomGarden = this.context.garden.snapshot();
     if(includeArena&&this.context.epilogue?.active&&this.context.epilogue.campaign)saved.toyRoomEpilogue=this.context.epilogue.snapshot();
     if(includeArena&&this.context.dream?.campaign)saved.toyRoomDream=this.context.dream.snapshot();
+    if(includeArena&&this.context.brinq?.campaign)saved.toyRoomBrinquedao=this.context.brinq.snapshot();
     return saved;
   }
 
   restore(saved, { preserveArena = false } = {}) {
-    if(!preserveArena){this.context.dream?.destroy();this.context.dream=null;this.context.epilogue=null;}
+    if(!preserveArena){this.context.brinq?.destroy();this.context.brinq=null;this.context.dream?.destroy();this.context.dream=null;this.context.epilogue=null;}
     if (!preserveArena && this.context.garden) {this.context.garden.destroy();this.context.garden=null;}
     if (!preserveArena && this.context.chase) {
       this.context.chase.destroy();
@@ -43,7 +44,8 @@ export class ToyRoomPersistence {
     this.context.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.context.battle.restore(saved.toyRoomBattle);
     if (!preserveArena) this.context.arena?.restore(saved.toyRoomArena, saved);
-    if(saved.toyRoomDream){this.context.startDream(saved.toyRoomDream);}
+    if(saved.toyRoomBrinquedao){this.context.startBrinquedao(saved.toyRoomBrinquedao);}
+    else if(saved.toyRoomDream){this.context.startDream(saved.toyRoomDream);}
     else if (saved.toyRoomGarden) {
       this.context.startGarden(saved.toyRoomGarden);
     } else if(saved.toyRoomEpilogue){

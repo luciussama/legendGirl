@@ -395,3 +395,20 @@ Yuna se sente perdida, desacostumada a seguir sem a orientação da irmã fadinh
 O acabamento anterior recebeu commit local67735a9f. A main integrou a branch e o histórico já conhecido de origin/main no merge69c53536. A nova abertura foi desenvolvida na branch feat/abertura-sonho, a partir dessa main; nenhum push foi solicitado.
 
 A etapa antes reservada foi autorizada em seguida e implementada: Yuna encontra Nanda do mesmo tamanho, tenta acordá-la, diz as duas falas documentadas e segue sozinha. Nanda conserva os olhos fechados. O início fica sem música, com zunido discreto; Misty Blues entra somente na transição para a fase. A atuação tem poses próprias e os diálogos seguem o padrão do projeto. Resultados de QA e limites permanecem no diário de IA.
+
+## 01/11/2026 — Brinquedão depois do pesadelo
+
+Nanda anima Yuna com um convite para o Brinquedão. A fase é uma pausa alegre no jardim ensolarado: velocidade, passarelas acolchoadas coloridas, escorregadores, piscinas de bolinhas e pontes de madeira. A imagem enviada do Sonic orienta somente o circuito, sem reutilização de sua aparência. A trilha fornecida começa no convite. Quedas são amortecidas e não há novos inimigos nesta etapa.
+
+Na abertura do sonho, substituir a pose de descoberta que torcia pescoço e corpo por uma pintura anatômica coerente, preservando a identidade de Yuna e a encenação de Nanda adormecida. Não compensar defeitos anatômicos rotacionando partes isoladas da personagem.
+
+## 01/11/2026 — Camas elásticas, castelos e risco no Brinquedão
+
+A continuação liga o fim da corrida a um escorregador gigante, camas elásticas, torres de castelo com pontes que caem, outro escorregador, elástico lateral e rampa reversa que lança para uma região mais alta. O objetivo é manter velocidade e controlar os saltos, incluindo direção no ar e altura ao tocar a lona. Os vãos passam a ter risco real de Game Over, com retomada no último terraço. EASY dá mais tempo nas pontes, mantendo o risco de cair. Preservar a pintura alegre do brinquedão e revelar o céu de forma gradual durante a subida.
+
+## 01/11/2026 — Segunda chance e descontrole no Brinquedão
+
+Antes da falha definitiva, quedas das alturas podem alcançar apoios inferiores. Escorregadores em calha e camas elásticas laterais devolvem Yuna de um lado para o outro, com subidas e descidas pelo embalo. O jogador pode recuperar a direção, saltar pela borda e usar uma lona para voltar ao percurso alto. Preservar o risco ao perder também esses apoios, sem transformar a recuperação numa cinemática ou reposicionar a personagem automaticamente.
+
+
+01/11/2026 — Brinquedão interno: três seções alternam nove tubos curvos velozes com nove piscinas de bolinhas. Peixinhos de corda exigem esperar o mergulho; dois acertos causam derrota, com retomada na piscina atual. Interior claro e acolchoado, desenhos próprios do projeto e corações visíveis. Revisão artística e da dificuldade pelo jogador permanece aberta.

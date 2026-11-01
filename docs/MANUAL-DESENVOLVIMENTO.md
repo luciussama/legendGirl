@@ -868,3 +868,32 @@ DreamOpeningRenderer reserva a maior altura das falas, aplica fonte menor em pai
 DreamSilence mantém três fontes por contexto: ruído determinístico filtrado e dois senos. update ajusta um ganho comum; stop encerra/desconecta tudo. DreamAudio.clear cobre também essa camada. A música só entra nos últimos1,2s da partida; nenhum emissor do mapa toca antes da jogabilidade. Testar início normal, avanço por toque/Enter, mínimo da atuação, pausa/mudo/mestre, save/load e saída sem pulo. Aliases: test:sonho:abertura, test:sonho:abertura:browser e review:sonho:abertura:browser.
 
 Entradas diretas beginDreamGlide e beginDreamNightmare também encerram opening/tutorial explicitamente. Isso mantém válidos os saves iniciados por ferramentas de depuração, sem carregar uma abertura ativa para outro estágio. Fixtures que pulam diretamente para pouso precisam representar a abertura já encerrada.
+
+## Brinquedão e pose da abertura
+
+| Classe | Responsabilidade e ciclo de vida |
+| --- | --- |
+| `BrinquedaoPhase` | Carrega recursos, instala entrada, suspende/desfaz a fase e produz snapshots. |
+| `BrinquedaoRenderer` | Prepara caches, compõe cenas/circuito e libera imagens ao sair. |
+| `BrinquedaoAudio` | Estende GardenAudio com trilha enviada, pausa/mudo e descarte. |
+
+Consulte o [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) para circuito, contratos, cinemática, parâmetros e persistência. `node scripts/prepare-brinquedao.js` mede quatro módulos e quatro poses completas, registra o escorregador e gera BrinquedaoArt; depois reconstruir o mapa de sprites. A bandeira Brinquedão abre a entrada em prévia, sem salvar campanha. O fluxo normal entra após o despertar completo do sonho.
+
+A descoberta de Nanda usa a pose inteira `yuna-olhar-nanda-v2.png`, cabeça, pescoço e corpo orientados de forma coerente. Regenerar com `node scripts/prepare-dream-nightmare.js`; não tentar corrigir torção girando apenas a cabeça. Original, falas, física e poses de contato permanecem preservados. QA dirigido: `review:sonho:pose:browser` pelo diário.
+
+## Continuação vertical do Brinquedão
+
+O [guia](brinquedao/GUIA-BRINQUEDAO.md) descreve a geometria e o domínio2. Extension define apoios/vãos; Obstacles resolve contato descendente, pontes e impulsos; Attractions apresenta as pinturas e deformações. Não há classes novas nesses três módulos. A câmera acompanha altitude somente na continuação, com escala fixa, sem alterar a física ou as câmeras de outras fases.
+
+Snapshots do domínio1 migram para2; uma chegada antiga concluída continua na mesma posição. Novos saves incluem relógios das pontes/lonas, parede, bounces/launches e failures. Pausa/carga suspende esses relógios. Retry rearma as pontes futuras e limpa a marca de derrota reportada para que a próxima tentativa também apresente Game Over. A integração passa por ToyRoomPhase, createGame.isGameOver e o identificador brinquedao na tela de derrota de main.
+
+O gerador prepare-brinquedao mede também a prancha de atrações. build-sprite-guide agora resolve BRINQUEDAO_ART, incluindo os recortes e consumidores dinâmicos; reconstruir após editar as fontes. Consulte os prompts e hashes junto à pintura. Testes e capturas somente pelo diário.
+
+## Recuperação inferior do Brinquedão
+
+BrinquedaoRecovery reúne a geometria secundária e a colisão varrida das lonas laterais. Calhas têm bowlDepth e usam material pintado espelhado sobre a curva; recovery permite conectar patamares sem tratá-los como checkpoints principais. As lonas vertical:true amortecem vx e aplicam impulso de retorno. Consulte o [guia](brinquedao/GUIA-BRINQUEDAO.md) para controles e limites.
+
+Domínio3 recebe saves1/2, conserva relógios existentes e cria os novos timestamps nulos. Validar mapas completos de bumpers e números inteiros de ricochets/recoveryLandings. Renderer/Attractions reutilizam as pinturas em memória; não editar PNG para girar uma lona em gameplay. Recuo do corpo inteiro não deve torcer cabeça/pescoço. A resposta reduzida após impacto é breve e não remove o controle.
+
+
+Interior do Brinquedão: BrinquedaoTubes parametriza curvas por comprimento; BrinquedaoFish calcula avisos/ciclos/contato; BrinquedaoInterior integra corpo local e dois acertos por tentativa. BrinquedaoSimulation delega INTERIOR e migra o domínio3 para4. Retry usa a piscina atual, restaurando os corações. BrinquedaoInteriorRenderer recorta os dois módulos e quatro peixes e deforma o cilindro pintado em memória. Executar prepare-brinquedao e docs:sprites após alterar arte; testar interior e migração pelo diário.

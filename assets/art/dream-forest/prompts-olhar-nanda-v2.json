@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen",
+  "skill": "imagegen",
+  "date": "2026-11-01",
+  "file": "yuna-olhar-nanda-v2.png",
+  "references": [
+    "yuna-abertura-sonho-v1.png",
+    "yuna-cinematica-pesadelo-v2.png"
+  ],
+  "prompt": "Use case: illustration-story. Asset: a single complete full-body game sprite of Yuna, true transparent background. Preserve exactly the girl identity and outfit from references: brown eyes, curly brown pigtails with pink bows, pale yellow blouse, teal pinafore with pink spiral flowers, white socks and pink flower shoes. She has stopped in a cold strange forest, worried and hugging her own upper arms. CRITICAL ANATOMY CORRECTION: natural relaxed neck with head centered over the spine, not twisted; head, shoulders, chest, pelvis, knees and both feet consistently face toward the LEFT in a coherent LEFT THREE-QUARTER view. Eyes look slightly down-left at a sleeping sister who is NOT in this asset. No looking backward over shoulder, no body facing right with head facing left, no extreme torsion. Both shoes rest on the same level. Gentle sad worried expression, not angry. Painterly children's book quality of reference. Generous transparent margin around complete hair, hands and shoes. One girl only; no scene, ground, shadows, text, marks or other objects.",
+  "artifacts": [
+    {
+      "file": "yuna-olhar-nanda-v2.png",
+      "sha256": "40a47c0a9f80377411fb2b009210f9e04bfb42f3d8444af998f3aa1c129cc3c6",
+      "bytes": 1639041
+    }
+  ]
+}

@@ -322,3 +322,22 @@ QA do acabamento do voo/pântano/mobile: `npm run journal:qa -- test:acabamento`
 
 
 Abertura do sonho: `npm run journal:qa -- test:sonho:abertura` valida prazos, saves/migrações, falas e física congelada. `npm run journal:qa -- test:sonho:abertura:browser LARGURA ALTURA DIRETORIO` percorre a cena por RAF e entradas nativas no Chrome local, incluindo áudio e pausa. `review:sonho:abertura:browser` renderiza momentos para inspeção. Evidências somente temporárias dentro do diário; arquivar e conferir antes da limpeza. Os aliases de planador/integral começam após a nova abertura para comparar a física anterior.
+
+## Brinquedão e revisão da pose
+
+`node scripts/prepare-brinquedao.js` gera recortes/máscaras de quatro módulos, quatro poses e referência do escorregador em BrinquedaoArt. Não modifica as pinturas originais. Depois executar `npm run docs:sprites`.
+
+`npm run journal:qa -- test:brinquedao:dominio` verifica percursos NORMAL/EASY em três cadências, subpassos, embalo, três saltos obrigatórios, bolinhas, recuperação e snapshots. `npm run journal:qa -- test:brinquedao:browser LARGURA ALTURA DIRETORIO` percorre a entrada oficial e o circuito por RAF/teclado, com pausa, áudio e restauração; em retrato Android também testa toque diagonal. `review:brinquedao:browser` aceita os mesmos argumentos e prepara quadros dirigidos para inspeção. `review:sonho:pose:browser` confere a anatomia corrigida na abertura. Evidências temporárias somente no diário, com arquivamento/verificação antes da limpeza.
+
+Gerador [scripts/prepare-brinquedao.js](../scripts/prepare-brinquedao.js): componentes completos e máscaras de apresentação, sem sobrescrever PNGs.
+
+`npm run journal:qa -- test:brinquedao:transicao:browser LARGURA ALTURA DIRETORIO` parte de save válido no despertar, verifica pausa, falas, passagem ao convite de campanha e restauração completa da sala.
+
+Continuação de camas elásticas: `npm run journal:qa -- test:brinquedao:elastico` cobre domínio2, seis impulsos/castelos, pontes, parede/rampa, controle obrigatório, derrota/retry e migração. `npm run journal:qa -- test:brinquedao:elastico:browser LARGURA ALTURA DIRETORIO` percorre toda a fase por RAF/teclado, salva sobre ponte frágil e confere Game Over e retry pelo botão. `review:brinquedao:elastico:browser` prepara quadros dirigidos nos três formatos. Os aliases test:brinquedao:dominio e test:brinquedao:browser passam a usar as fontes atuais dessa continuação; versões anteriores seguem preservadas.
+
+`npm run journal:qa -- test:brinquedao:prefixo` compara o corpo e os relógios da corrida inicial com as fontes preservadas da entrega anterior, antes da entrada da continuação.
+
+Recuperação inferior: `npm run journal:qa -- test:brinquedao:recuperacao` verifica apoios baixos, rebatidas alternadas, subidas/descidas, saída controlada, retorno às torres e migração2. `npm run journal:qa -- test:brinquedao:recuperacao:browser LARGURA ALTURA DIRETORIO` deixa a física produzir as rebatidas por RAF, salva no movimento e retoma a direção/pulo até um castelo. `review:brinquedao:recuperacao:browser` prepara os apoios e lonas para inspeção nos três formatos. Fontes/capturas somente no diário.
+
+
+QA interno do Brinquedão pelo diário: `npm run journal:qa -- test:brinquedao:interior`; `npm run journal:qa -- test:brinquedao:interior:browser LARGURA ALTURA DIRETORIO`; `npm run journal:qa -- review:brinquedao:interior:browser LARGURA ALTURA DIRETORIO`. Percurso puro, teclado/RAF e quadros dirigidos, respectivamente. Fontes e evidências somente no diário.

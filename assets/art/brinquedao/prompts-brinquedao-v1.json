@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen",
+  "skill": "imagegen",
+  "date": "2026-11-01",
+  "visualReference": "Identidade de Yuna e pintura do jardim do próprio projeto. Nenhum pixel nem aparência visual do Sonic foi usado.",
+  "circuitReferenceOnly": "/Users/sergio/Downloads/Sonic1_MD_Map_GHZ_chunks.png",
+  "prompts": {
+    "background": "Use case: illustration-story. Asset type: wide game background painting, 1536x1024 landscape. A joyous outdoor Brazilian children's giant playground in a sunny enchanted garden. Match the warm painterly storybook illustration style, soft natural sunlight, leafy trees, flowers and pale picket fence in the reference. In the middle distance stands an elaborate brinquedão: colorful padded cylindrical posts, teal coral sunshine-yellow soft walkways at several levels, rope safety nets, cheerful canopy towers and long curved OPEN playground slides connecting elevated decks, wooden rope footbridges, pools filled ONLY with colorful plastic balls. Leave the bottom quarter as open sunlit lawn with no large obstacle, and the sky / central space airy so foreground gameplay pieces can be composited. Side view / low perspective like a detailed hand-painted platform adventure. No characters, no text, no logos, no mechanical loops, no checkerboard terrain, no pixel art, no water, no cliffs or stone platforms. It must be a real playful structure built on the garden lawn, with its posts grounded, coherent scale and construction, painterly material texture, not flat vector shapes.",
+    "kit": "Use case: illustration-story. Asset type: transparent reusable game environment sprite sheet with FOUR separate modules, in a generous 2x2 layout with broad transparent gutters. Match reference's polished sunny painterly children's book style. Top-left: a long straight horizontal soft playground walkway with a thick teal/coral/yellow padded top, quilted vinyl front face, rounded cylindrical end caps, supported by two padded posts and side safety net behind the walking surface. Top-right: a horizontal wooden plank rope bridge, taut low-sag deck with visible wooden slats, rope side rail and two padded colorful anchor posts, side view. Bottom-left: a wide shallow rectangular ball-pit trough in side view, rounded colorful padded rim filled densely with bright red yellow blue green plastic balls; no water. Bottom-right: a tall playground tower support with padded colorful posts, rope net panels, small striped fabric canopy and wooden ladder, side view; no floor terrain. All objects complete, no overlap or clipping, NO characters, no lettering/grid/shadows/background. True transparent alpha. Preserve natural illustrated walking surfaces; no hitbox markings. Not pixel art, no grass blocks, no landscape within the modules.",
+    "girl": "Use case: illustration-story. Asset type: transparent 2x2 full-body sprite acting sheet. Exact Yuna from reference: brown curly pigtails with pink bows, brown eyes, pale yellow blouse, teal floral pinafore with pink spiral flowers, white socks, pink flower shoes. Four isolated full-body poses with broad transparent gutters and identical head scale. Top-left sitting with knees close, shoulders drooping, hands in lap, frightened and discouraged after waking from nightmare. Top-right standing with relaxed natural neck, head torso hips knees and shoes ALL facing right three-quarter, listening with tentative hopeful expression, one hand on chest. Bottom-left standing facing right with bright excited smile and hands clapped together, shoulders/neck anatomically coherent. Bottom-right seated as if going down an open playground slide, feet forward to the right, both legs clearly together in front with full soles visible, arms lifted in joy, laughing. No twisting head backward, no other people, no scenery/ground/slide/text/marks/shadows; genuine transparent alpha. Painterly children's book quality and exact canonical outfit, no leggings or shorts.",
+    "girlSpacing": "Edit only sprite spacing/layout. Preserve the four exact character identities, outfits, expressions and poses from the attached sprite sheet. The top-left sad girl's shoe touches the bottom-left girl's hair, which is unusable for game extraction. Re-layout in a strict 2 columns by 2 rows grid, on a SQUARE canvas. Each complete pose centered in its own cell, with AT LEAST 60 pixels of fully transparent space between every pair of poses. Reduce ALL four figures uniformly enough to fit their cells, same head size between poses, do not crop any hair/finger/shoe. Preserve transparent background. No overlapping or touching pixels between poses. Keep all four current poses and canonical clothing unchanged, no scenery, shadows, letters or labels.",
+    "slide": "Use case: illustration-story. Asset: a single large reusable transparent playground slide in exact side elevation, high on the LEFT and low on the RIGHT, complete and fully visible. Match the attached painterly padded playground kit exactly: warm sunlight, detailed polished plastic and soft vinyl texture, teal coral and sunshine yellow, subtly hand-painted storybook craftsmanship. A long OPEN S-shaped descending slide with a gentle flat entry at upper left, rounded yellow sliding trough, coral front fascia and teal rounded safety lips, flat run-out lower right; about three times wider than its vertical drop. No loops, spirals, ladders, tower, canopy, characters, scenery, lettering or shadows outside the object. TWO solid padded support posts go DOWN from the underside of the slide toward a common ground level, never above the sliding trough; everything else is transparent. Sliding/contact surface along the upper edge must be clearly readable in side view, not hidden by walls. Generous alpha margin around the entire slide and feet of its posts. No flat vector stripes: rich illustrated material texture and soft dimensional highlights consistent with reference."
+  },
+  "files": [
+    "jardim-brinquedao-v1.png",
+    "modulos-brinquedao-v1.png",
+    "yuna-brinquedao-v1.png",
+    "yuna-brinquedao-v2.png",
+    "escorregador-v1.png"
+  ],
+  "variants": "A prancha v1 foi preservada como referência; a v2 separa as quatro poses completas e é consumida pelo jogo.",
+  "artifacts": [
+    {
+      "file": "jardim-brinquedao-v1.png",
+      "sha256": "f2a1804459c9bb416cfebea1fd2131e8659fbfdb5da578acf4d87a042f8ebd16",
+      "bytes": 3339580
+    },
+    {
+      "file": "modulos-brinquedao-v1.png",
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "bytes": 1730575
+    },
+    {
+      "file": "yuna-brinquedao-v1.png",
+      "sha256": "3f598e678878164999a2697c88d3887205822502b6cda1b026b272e38008f572",
+      "bytes": 2238037
+    },
+    {
+      "file": "yuna-brinquedao-v2.png",
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "bytes": 1724509
+    },
+    {
+      "file": "escorregador-v1.png",
+      "sha256": "8e36a0c41a25aa45991e2b4109cb62f3425af177ec22ee7d934a39fe8050fd92",
+      "bytes": 954039
+    }
+  ]
+}

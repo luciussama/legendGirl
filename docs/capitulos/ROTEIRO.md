@@ -102,3 +102,22 @@ Nanda não responde. Depois de uma pausa, Yuna insiste:
 — Nanda, estou com medo! Me fale como sair daqui.
 
 Perdida sem a orientação da irmã fadinha, Yuna hesita e decide seguir sozinha, deixando Nanda dormindo. A música começa no escurecimento final e a jogabilidade assume. A cena possui sete momentos de3/6/7/3/7/8/4s, com leitura automática e avanço individual que conserva o mínimo dos gestos.
+
+## Brinquedão: o convite depois do pesadelo
+
+Depois de acordar do susto, Yuna continua abraçada a si mesma, assustada e desanimada: “Eu não gostei daquele sonho…”. Nanda a tranquiliza: “Eu estou aqui, Yuna. Já passou.” Para animá-la, convida: “Vamos ao Brinquedão? A gente pode escorregar e mergulhar nas bolinhas!” Yuna pergunta se a irmã vai junto. Nanda promete acompanhá-la até o último escorregador. A música começa nesse convite. O jardim é alegre e ensolarado; Nanda tem novamente seu tamanho habitual.
+
+A cinemática corta do piquenique para o brinquedão, com atuação em camadas e leitura automática. O circuito começa em passarelas acolchoadas coloridas, desce em escorregadores até piscinas de bolinhas e atravessa pontes de madeira. A chegada encerra esse passeio com a narração “Entre uma ponte e um escorregador, o dia voltou a caber num sorriso.” Não há um capítulo posterior definido por esta implementação.
+
+### Continuação do passeio: camas elásticas e castelos
+
+Ao terminar a corrida inicial, Yuna desce por um escorregador gigante até um conjunto de camas elásticas. Os impulsos levam às torres de castelo acolchoadas; as pontes cedem sob os pés. Da terceira torre, a queda encontra outro escorregador e um painel elástico lateral que devolve energia para a rampa reversa. O lançamento leva ao céu, até camas e castelos mais altos.
+
+O jogador controla direção e altura dos impulsos, atravessa pontes antes de caírem e salta vãos. Errar os apoios e cair do brinquedão causa Game Over; a tentativa volta ao último terraço alcançado. Não há cinemática intermediária que retire esse controle nem capítulo posterior definido por essa extensão.
+
+### Uma segunda chance antes de cair do Brinquedão
+
+Abaixo das torres, Yuna pode encontrar plataformas e escorregadores de recuperação. Calhas inferiores têm camas elásticas nas paredes: o embalo a devolve de uma lateral à outra, subindo e descendo antes de recuperar a direção. Frear e saltar pela borda dá acesso a patamares e lonas que a lançam de volta às torres. Perder também esses apoios ainda causa Game Over. Essa recuperação acontece na jogabilidade, mantendo a sensação de descontrole.
+
+
+Antes da chegada do Brinquedão: três seções internas, cada qual com três tubos de curvas rápidas e três piscinas de bolinhas com peixinhos de brinquedo. A velocidade dá lugar à espera e ao controle dos saltos. Dois acertos encerram a tentativa; a retomada é na piscina atual. Só depois da nona piscina Yuna volta ao jardim.

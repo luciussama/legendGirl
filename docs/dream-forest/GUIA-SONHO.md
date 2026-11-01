@@ -177,3 +177,9 @@ O sonho agora começa com uma cinemática em tela cheia, antes do percurso. Yuna
 Não toca música durante a descoberta e os pedidos; há apenas um zunido baixo de silêncio inquietante. Misty Blues entra na transição final da partida e continua no gameplay. Toda fala avança sozinha; um gesto adianta apenas a fala atual, preservando o mínimo da atuação. Não é necessário clicar para a fase começar. Orientações de escalada/lombo aparecem depois, enquanto o jogador já controla Yuna.
 
 O save usa domínio6/envelope1/nightmare7. Abertura guarda momento, tempo, relógio de atuação e dispensa da fala. Saves anteriores mantêm seu percurso sem repetir a cena. QA recuperável: test:sonho:abertura, test:sonho:abertura:browser e review:sonho:abertura:browser.
+
+## Correção da descoberta e continuação
+
+A pose em pé usada ao encontrar Nanda passou a `yuna-olhar-nanda-v2.png`: preocupação com braços abraçados e orientação coerente entre rosto, pescoço, ombros e pés. `openingLook` tem escala e recorte próprios. Ajoelhar, contato das mãos, partida, falas e física conservam seus contratos. [Prompt e origem](../../assets/art/dream-forest/prompts-olhar-nanda-v2.json).
+
+Ao concluir o despertar depois da captura, a campanha abre o [convite ao Brinquedão](../brinquedao/GUIA-BRINQUEDAO.md), conservando a origem campanha/prévia e descartando o áudio do pesadelo.

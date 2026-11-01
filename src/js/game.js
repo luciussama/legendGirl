@@ -190,7 +190,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   function isGameOver() {
     if (state.currentPhaseMode !== 'toy-room') return state.isGameOver;
     const room = state.toyRoomInstance?.instance;
-    return Boolean(room?.dream?.active ? room.dream.state.stage === 'GAME_OVER' : room?.garden?.active ? room.garden.state.stage === 'GAME_OVER' : room?.chase?.active ? room.chase.state.stage === 'GAME_OVER' : room?.battle.state?.mode === 'DEFEAT');
+    return Boolean(room?.brinq?.active ? room.brinq.state.stage === 'GAME_OVER' : room?.dream?.active ? room.dream.state.stage === 'GAME_OVER' : room?.garden?.active ? room.garden.state.stage === 'GAME_OVER' : room?.chase?.active ? room.chase.state.stage === 'GAME_OVER' : room?.battle.state?.mode === 'DEFEAT');
   }
 
   /** Publica uma derrota por tentativa e conserva a oferta de ajuda no save. */
@@ -1092,6 +1092,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.toyRoomInstance?.instance.chase?.setPaused(isPaused);
     state.toyRoomInstance?.instance.garden?.setPaused(isPaused);
     state.toyRoomInstance?.instance.dream?.setPaused(isPaused);
+    state.toyRoomInstance?.instance.brinq?.setPaused(isPaused);
     if (isPaused) {
       state.toyRoomInstance?.instance.clearInput();
       if (audio && typeof audio.pauseMusic === 'function') {
@@ -1169,7 +1170,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   /** Reproduz a entrada da fase para revisão, sem gravar sobre a campanha normal. */
   function startDebugPhase(phase, difficulty = state.gameDifficulty) {
-    if (!['bedroom','toy-room','arena','bear-chase','garden','dream-forest'].includes(phase)) return false;
+    if (!['bedroom','toy-room','arena','bear-chase','garden','dream-forest','brinquedao'].includes(phase)) return false;
     saveProgress();
     newCampaign({ preserveProgress:true });
     state.gameDifficulty = normalizeDifficulty(difficulty);
@@ -1181,6 +1182,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       startToyRoomIntroduction();
     } else {
       startToyRoomPhase();
+      if(phase==='brinquedao')state.toyRoomInstance.instance.startBrinquedao(null,{campaign:false});
       if(phase==='dream-forest')state.toyRoomInstance.instance.startDream(null,{campaign:false});
       if (phase === 'garden') state.toyRoomInstance.instance.startGarden(null,{campaign:false});
       if (phase === 'bear-chase') {
@@ -1269,7 +1271,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     isFirstJumpTutorial: () => state.gameplayState === 'FIRST_JUMP_TUTORIAL',
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !state.isStandbyActive),
-    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
+    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.brinq?.reading() || state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
     isGameOver: () => state.isGameOver,
     isToyRoomMode: () => state.currentPhaseMode === 'toy-room',
     setLastInputDevice,
@@ -1284,6 +1286,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if(state.currentPhaseMode==='toy-room'){
       const room=state.toyRoomInstance?.instance;
       if(room?.epilogue?.active)return room.epilogue.advanceDialogue();
+      if(room?.brinq?.active)return room.brinq.advanceDialogue();
       if(room?.dream?.active)return room.dream.advanceDialogue();
       if(room?.garden?.active)return room.garden.requestDialogueAdvance(event);
       if(room?.introBannerTimer>0){room.introBannerTimer=0;return true;}
@@ -1296,7 +1299,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if(state.plotTwistActive&&state.plotTwistStep>=4){if(state.plotTwistStep===4)advancePlotTwist();else if(state.plotTwistTimer<210)state.plotTwistTimer=210;else finishPlotTwistAndStartTutorial();return true;}
     return false;
   }
-  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.epilogue?.active||state.toyRoomInstance?.instance?.dream?.reading()||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
+  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.epilogue?.active||state.toyRoomInstance?.instance?.brinq?.reading()||state.toyRoomInstance?.instance?.dream?.reading()||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
   const runtimeContext = createRuntimeContext({ state, audio, camera, assets, input: inputHandler, effects: particles, campaign });
   const narrativeContext = { ...runtimeContext, state, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, confirmStandby, saveProgress, beginToyRoomIntroduction };
 
@@ -1374,7 +1377,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     },
     doJump,
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !state.isStandbyActive),
-    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
+    isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.brinq?.reading() || state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
     setLastInputDevice,
     resetToStart,
     retry: retryGame,

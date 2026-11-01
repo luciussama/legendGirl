@@ -46,6 +46,7 @@ flowchart TD
   GARDEN --> GVIEW[GardenRenderer / GardenCinematic / GardenAudio]
   GAME --> DIALOGUE[DialogueFlow / dono de cada sequência]
   GARDEN -->|sono concluído / 4 s| DREAM[DreamPhase / floresta lateral 2D]
+  DREAM -->|despertar completo / 1 s| BRINQ[BrinquedaoPhase / convite e circuito]
   DREAM --> DIALOGUE
   GARDEN --> DIALOGUE
   BATTLE --> ACTORS[Controller / IA / regras / contato]
@@ -79,6 +80,7 @@ O loop normaliza o tempo para 60 Hz e limita dt a 0,5–1,2. Pausa impede update
 | Epílogo do quarto | `ToyRoomEpilogue`: active, index, age, time e origem campaign. | `toyRoomEpilogue` versão 1 salva índice/idade/tempo somente na campanha ativa. A origem da prévia é propagada até o jardim e não contamina o save. |
 | Jardim da campanha | `GardenPhase.state`: domínio v11, `story`, `presentation`, `encounters`, jogador, fada, nuvens, inimigos, histórico de apoios e resgate. | `toyRoomGarden` contém `{version:1,state}`; a versão do envelope da fase difere da versão 11 do domínio. Restore da sala prioriza jardim, epílogo e perseguição, nessa ordem. Entrada de debug fica fora do save. |
 | Sonho da campanha | `DreamPhase.state`: domínio5 com travessia aérea, viagens, dano/queda e domínio próprio do pesadelo/despertar; migra domínios1/2/3/4. | `toyRoomDream` envelope1 e posição musical; restaura antes de jardim/epílogo/fuga. Prévia fica fora do save. |
+| Brinquedão da campanha | `BrinquedaoPhase.state`: domínio4, corpo, apoio, embalo, checkpoints e história. | `toyRoomBrinquedao` envelope1 e posição musical, restaurado antes dos modos anteriores; prévia não salva. |
 | Leitura compartilhada | `DialogueFlow`: WeakMap por canvas com quadro atual, limites transformados, profundidade de composição e dispensa visual. | Temporização e índice pertencem ao dono da cena; no jardim, `story` é salvo. DOM, callbacks e listeners nunca entram no snapshot. |
 | Recursos | Imagens, regiões, manifestos e status nos carregadores; poses/âncoras em módulos de dados. | Não são serializados. No quarto, recortes e transparência afetam o perfil extraído por `DarkRoomContact`; exigem QA das superfícies. Demais fases conservam seus contratos de colisão. |
 
@@ -322,6 +324,26 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio: zunido na abertura, transição para Misty Blues, Bug attack na chegada da barata, grito e despertar. | `DreamAudio` |
 | [dream-forest/DreamSimulation.js](../src/js/dream-forest/DreamSimulation.js) | Leitura, aderência/escalada, transporte, saltos, checkpoints e domínio serializável. | `DREAM_INTRO`, `createDreamState`, `restoreDreamState`, `advanceDreamDialogue`, `retryDream`, `stepDream` |
 
+| [brinquedao/BrinquedaoArt.js](../src/js/brinquedao/BrinquedaoArt.js) | Recortes, máscaras e recursos derivados do gerador. | `BRINQUEDAO_ART` |
+| [brinquedao/BrinquedaoAudio.js](../src/js/brinquedao/BrinquedaoAudio.js) | GardenAudio especializado com trilha enviada e sem emissores de asas. | `BrinquedaoAudio` |
+| [brinquedao/BrinquedaoCinematic.js](../src/js/brinquedao/BrinquedaoCinematic.js) | Atores e cenário em camadas, enquadramento narrativo e leitura segura. | `drawBrinquedaoGirl`, `drawBrinquedaoFairy`, `renderBrinquedaoCinematic` |
+| [brinquedao/BrinquedaoLevel.js](../src/js/brinquedao/BrinquedaoLevel.js) | Circuito, curvas, materiais, desníveis e checkpoints próprios. | `BRINQUEDAO`, `BRINQUEDAO_TRACKS`, `BRINQUEDAO_STEPS`, `BRINQUEDAO_BY_ID`, `BRINQUEDAO_CHECKPOINTS`, `BRINQUEDAO_SECTIONS`, `brinquedaoSurface`, `brinquedaoSlope`, `brinquedaoMainAt`, `brinquedaoNearby` |
+| [brinquedao/BrinquedaoPhase.js](../src/js/brinquedao/BrinquedaoPhase.js) | Carga, entrada, pausa, snapshot e descarte da fase. | `BrinquedaoPhase` |
+| [brinquedao/BrinquedaoRenderer.js](../src/js/brinquedao/BrinquedaoRenderer.js) | Composição lateral inicial, altitude na continuação e escala fixa por viewport, HUD e controles. | `BrinquedaoRenderer` |
+| [brinquedao/BrinquedaoSimulation.js](../src/js/brinquedao/BrinquedaoSimulation.js) | Estado serializável, embalo, salto, colisões, bolinhas e recuperação. | `createBrinquedaoState`, `restoreBrinquedaoState`, `recoverBrinquedao`, `stepBrinquedao` |
+| [brinquedao/BrinquedaoStory.js](../src/js/brinquedao/BrinquedaoStory.js) | Sete momentos do convite com avanço automático ou unitário. | `BRINQUEDAO_INTRO`, `advanceBrinquedaoStory` |
+| [brinquedao/BrinquedaoTerrain.js](../src/js/brinquedao/BrinquedaoTerrain.js) | Caches de material pintado registrados sobre superfícies físicas. | `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`, `drawBrinquedaoBallsFront` |
+
+| [brinquedao/BrinquedaoExtension.js](../src/js/brinquedao/BrinquedaoExtension.js) | Segunda metade: trampolins, castelos, pontes que cedem, rampa e limites dos vãos. | `BRINQUEDAO_EXTENSION_TRACKS`, `BRINQUEDAO_ELASTIC`, `brinquedaoDeathY` |
+| [brinquedao/BrinquedaoObstacles.js](../src/js/brinquedao/BrinquedaoObstacles.js) | Contatos e impulsos físicos, colapso e relógios serializados das atrações. | `createBrinquedaoObstacles`, `brinquedaoBridgeSolid`, `contactBrinquedao`, `hitBrinquedaoElastic`, `launchBrinquedaoSky`, `validateBrinquedaoObstacles` |
+| [brinquedao/BrinquedaoAttractions.js](../src/js/brinquedao/BrinquedaoAttractions.js) | Caches dos novos componentes e composição pintada de castelos, lonas e painel elástico. | `prepareBrinquedaoAttractions`, `drawBrinquedaoCastles`, `drawBrinquedaoSpring`, `drawBrinquedaoElastic`, `drawBrinquedaoSideMats` |
+
+| [brinquedao/BrinquedaoRecovery.js](../src/js/brinquedao/BrinquedaoRecovery.js) | Apoios inferiores, calhas e colisão varrida de lonas laterais, com impulso e recuo persistidos. | `BRINQUEDAO_RECOVERY_TRACKS`, `BRINQUEDAO_SIDE_MATS`, `brinquedaoRicochetAge`, `hitBrinquedaoSideMat` |
+| [brinquedao/BrinquedaoTubes.js](../src/js/brinquedao/BrinquedaoTubes.js) | Trajetórias arredondadas e piso interno. | `BRINQUEDAO_INSIDE`, `BRINQUEDAO_TUBES`, `brinquedaoTubePose`, `brinquedaoInsideFloor` |
+| [brinquedao/BrinquedaoFish.js](../src/js/brinquedao/BrinquedaoFish.js) | Peixes de corda, aviso e dano. | `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches` |
+| [brinquedao/BrinquedaoInterior.js](../src/js/brinquedao/BrinquedaoInterior.js) | Três seções, dois acertos e retry na piscina. | `createBrinquedaoInterior`, `beginBrinquedaoInterior`, `retryBrinquedaoInterior`, `stepBrinquedaoInterior`, `validateBrinquedaoInterior` |
+| [brinquedao/BrinquedaoInteriorRenderer.js](../src/js/brinquedao/BrinquedaoInteriorRenderer.js) | Portal, tubos, peixes, bolinhas e corações. | `prepareBrinquedaoInterior`, `drawBrinquedaoInteriorDoor`, `renderBrinquedaoInterior` |
+
 ## Integração, recursos e ciclo de vida
 
 A tela inicial usa `TitleScreen` para as escolhas e `TitleScene` para a pintura
@@ -485,3 +507,27 @@ Domínio6 acrescenta story.opening:{index,age,time,dismissed} e story.tutorial. 
 DreamOpeningRenderer mede antecipadamente todas as molduras para reservar os rostos, inclusive em paisagem. A pintura da floresta, Nanda dormindo em nanda-gestos-v1 e quatro poses novas de Yuna são camadas independentes. Escala é calibrada pelo corpo/cabeças, sem usar a caixa das asas para fazer Nanda minúscula. Mãos e reação ao balanço compartilham a âncora no corpo da irmã; Nanda conserva os olhos fechados. A partida escurece a cena em1,2s.
 
 DreamAudio mantém música pausada durante a abertura e suprime asas do gameplay. DreamSilence combina ruído bandpass1100Hz e senos2450/3120Hz em ganhos suaves, com volume mestre. Na partida, a partir de2,8s, o zunido cede à Misty Blues por1,2s; RUNNING já tem a faixa ativa. Pausa/mudo/descarte param e desconectam os nós. Nenhum WAV novo foi criado.
+
+## Brinquedão após o despertar
+
+`ToyRoomPhase.updateActiveMode` prioriza `brinq`. O sonho concluído com `nightmare.completed` abre o convite após60 ticks disponíveis, sem avançar durante pausa. `startBrinquedao` descarta outros modos, remove a entrada da sala e conserva a origem da campanha. `ToyRoomPersistence` e seu contexto incluem `toyRoomBrinquedao` antes dos modos anteriores. `game.js` encaminha leitura, pausa e acesso de debug.
+
+`BrinquedaoPhase`, `BrinquedaoRenderer` e `BrinquedaoAudio` são as três novas classes. Level/Simulation/Story/Terrain/Cinematic são módulos funcionais; Art contém dados derivados. A entrada reutiliza GardenInput e o áudio estende GardenAudio. O domínio próprio não altera a física do jardim ou sonho. Corpo, checkpoint e relógios são serializados; recursos e entrada são transitórios. Detalhes no [guia](brinquedao/GUIA-BRINQUEDAO.md).
+
+A nova pose `openingLook` corrige a torção anatômica na descoberta de Nanda. `prepare-dream-nightmare` mede o componente completo e DreamOpeningRenderer o ancora nos pés, preservando física, falas e gestos ajoelhados.
+
+## Brinquedão: impulsos e vãos com derrota
+
+O domínio2 amplia o circuito para35.600unidades, conservando o envelope1 e migrando a antiga chegada concluída para RUNNING. Extension é a fonte de geometria; Obstacles resolve contatos descendentes, energia do painel lateral, lançamento no lábio e solidez das pontes por relógio. Simulation usa os mesmos subpassos para detectar impactos sem atravessar a lona ou o painel em velocidades altas. Não existe chão substituto nos vãos; conexão entre apoios exige proximidade real.
+
+Attractions mede/extrai a prancha nova em memória e compõe castelos, deformação das lonas e painel. Terrain projeta o material da rampa, mantém postes e faz as peças de madeira caírem/rodarem após perder apoio. Renderer segue a altitude apenas na continuação, sem mudar escala ou física, dissolvendo a borda do jardim ao revelar o céu. Quarto escuro e outras fases mantêm suas câmeras.
+
+GAME_OVER congela o domínio, pausa áudio e é reportado uma vez por tentativa pela ToyRoom. createGame consulta esse modo, main identifica BRINQUEDÃO e retryDefeat limpa a marca de notificação após retomar o terraço. Persistência guarda bridges/springs/wall/bounces/launches e failures; pausa/carga não consomem prazos. Detalhes e controles no [guia atualizado](brinquedao/GUIA-BRINQUEDAO.md).
+
+## Recuperação inferior do Brinquedão
+
+BrinquedaoRecovery fornece geometria secundária marcada recovery/upper, separada dos apoios usados por checkpoints. Level combina os dados; Simulation conecta os patamares inferiores e aplica colisão lateral antes de integrar os novos impulsos. Calhas usam curva em U e materiais espelhados sobre a curva física. Camas laterais são componentes da lona existente girados em memória, com apoio/molas para fora e superfície para dentro.
+
+Domínio3 acrescenta bumpers/ricochets/recoveryLandings, migra saves1/2 e permite os impulsos maiores das lonas de retorno. Pausa e carga suspendem o relógio comum. O limite fatal mais baixo permite cair nesses apoios; os demais vãos continuam sujeitos a derrota. Corpo inteiro e lona recebem recuo breve, mantendo cabeça e tronco juntos. A direção permanece disponível, com resposta reduzida durante0,18s após impacto. Não foram criadas classes ou dependências novas.
+
+O estágio INTERIOR delega a BrinquedaoInterior, com nove tubos/piscinas e dois danos por tentativa. Corpo e relógios locais são persistidos no domínio4/envelope1. COMPLETE antigo migra para a entrada; COMPLETE4 exige o interior concluído. O renderer projeta o material do tubo na trajetória e compõe peixes entre camadas de bolinhas.
