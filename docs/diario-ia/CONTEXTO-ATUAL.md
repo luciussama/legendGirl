@@ -1,5 +1,13 @@
 # Contexto compartilhado vigente
 
+## Abertura commitada e integrada na main — 01/11/2026
+
+Sessão `20261101T131828-3f9b87c9f441`. Pedido explícito de commit de tudo e merge na principal. O repositório tem main e não possui master; usada a main já estabelecida nas entregas anteriores. Commit8c11ef83 (“Adiciona abertura do sonho com Yuna e Nanda”) contém todos os30 arquivos pendentes, incluindo arte, código, documentação e segmentos. Merge local de feat/abertura-sonho para main concluído por fast-forward, sem conflitos; ancestralidade verificada. Nenhum push/publicação.
+
+Varredura incluindo ignorados não encontrou cópias de QA, relatórios avulsos, fixtures ou capturas descartáveis para remover. Preservadas as artes e o acervo. Build e diff passaram novamente; auditoria documental atual aprovada (217 módulos/78 classes/584 contratos/6057 links, referência reproduzível). Não houve nova edição de runtime nesta preparação; suíte e QA de domínio/navegador da implementação continuam identificados abaixo. Diário sincronizado e integridade conferida antes do commit. Este encerramento será incluído em commit documental na própria main, para conservar o resultado real da operação sem deixar alterações pendentes.
+
+A abertura não está mais pendente de commit/merge; as referências abaixo descrevem o momento da implementação anterior. Próxima etapa de produto: avaliação humana da cena e continuidade a definir pelo usuário.
+
 ## Commit, merge na main e abertura do sonho — 01/11/2026
 
 Sessão `20261101T025948-e526b9b8d329`. Pedido atual autoriza executar a abertura antes apenas planejada. Commit anterior concluído:67735a9f (“Aprimora queda do planador, pântano e controles mobile”). Main recebeu fast-forward da FEAT-Jardim-dos-Sonhos e depois merge69c53536 com a referência local origin/main, preservando seus merges sem diferenças de conteúdo ou conflitos. Nenhum fetch/push/publicação. Nova implementação está na branch feat/abertura-sonho, criada a partir dessa main; ainda não foi criado outro commit nem feito merge da abertura.
