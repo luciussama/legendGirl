@@ -388,3 +388,10 @@ Nanda continua dormindo, sem responder aos estímulos.
 — Nanda, estou com medo! Me fale como sair daqui.
 
 Yuna se sente perdida, desacostumada a seguir sem a orientação da irmã fadinha. Sem escolha, decide seguir em frente e deixar Nanda dormindo. Ao terminar a cinemática, começa a fase. Pedido registrado como próxima etapa; sem implementação de cena, zunido, troca musical ou novos diálogos no runtime atual.
+
+
+## 01/11/2026 — Commit, main e abertura do sonho
+
+O acabamento anterior recebeu commit local67735a9f. A main integrou a branch e o histórico já conhecido de origin/main no merge69c53536. A nova abertura foi desenvolvida na branch feat/abertura-sonho, a partir dessa main; nenhum push foi solicitado.
+
+A etapa antes reservada foi autorizada em seguida e implementada: Yuna encontra Nanda do mesmo tamanho, tenta acordá-la, diz as duas falas documentadas e segue sozinha. Nanda conserva os olhos fechados. O início fica sem música, com zunido discreto; Misty Blues entra somente na transição para a fase. A atuação tem poses próprias e os diálogos seguem o padrão do projeto. Resultados de QA e limites permanecem no diário de IA.

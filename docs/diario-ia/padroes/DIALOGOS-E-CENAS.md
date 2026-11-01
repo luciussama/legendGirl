@@ -55,3 +55,8 @@ No jardim, Enter/Espaço e gamepad já existentes continuam disponíveis. O cliq
 4. Testar pausa/foco, save/load, cena já vista e repetição de encontros.
 5. Inspecionar os quadros intermediários de entrada e saída, não apenas os estados inicial/final. A regressão da tela branca do jardim apareceu justamente durante a descida de três segundos.
 6. Executar pelo diário em ambiente temporário; preservar fontes, resultados e metadados de capturas. Não atribuir aprovação artística humana a testes técnicos.
+
+
+## Abertura do sonho com Nanda — 01/11/2026
+
+Sete momentos de3/6/7/3/7/8/4s. Quatro quadros de narrador/Yuna avançam automaticamente; gesto dispensa apenas o quadro atual. Se um gesto chega antes do mínimo do movimento, o texto desaparece e o gesto de acordar/olhar termina pelo relógio de atuação antes do próximo quadro. Momentos silenciosos não aceitam avanço. Isso preserva a atuação e evita que cliques atravessem vários momentos. A música permanece ausente até os últimos1,2s da partida; controles de gameplay só entram no final. A INTRO legada conserva seus prazos em saves anteriores.

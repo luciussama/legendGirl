@@ -319,3 +319,6 @@ Revisão da barata: npm run journal:qa -- test:barata:revisao verifica prefixo, 
 
 
 QA do acabamento do voo/pântano/mobile: `npm run journal:qa -- test:acabamento`; toque/cenas com Chrome local: `npm run journal:qa -- test:acabamento:toque:browser LARGURA ALTURA DIRETORIO_DE_EVIDENCIAS`; áudio e ganho dobrado: `npm run journal:qa -- test:acabamento:audio:browser`. Diretórios de evidência somente temporários no diário; registrar resultados e limpar após arquivamento. Esses comandos não certificam aprovação artística ou teste em aparelho físico.
+
+
+Abertura do sonho: `npm run journal:qa -- test:sonho:abertura` valida prazos, saves/migrações, falas e física congelada. `npm run journal:qa -- test:sonho:abertura:browser LARGURA ALTURA DIRETORIO` percorre a cena por RAF e entradas nativas no Chrome local, incluindo áudio e pausa. `review:sonho:abertura:browser` renderiza momentos para inspeção. Evidências somente temporárias dentro do diário; arquivar e conferir antes da limpeza. Os aliases de planador/integral começam após a nova abertura para comparar a física anterior.

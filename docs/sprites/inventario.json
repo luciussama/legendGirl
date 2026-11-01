@@ -1,8 +1,8 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 519,
-    "regions": 295,
+    "files": 520,
+    "regions": 299,
     "code": 29
   },
   "items": [
@@ -3494,6 +3494,34 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "f56b93f96fa8c89c7f6c00cc",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
+      "title": "yuna-abertura-sonho-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2195832,
+      "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "031b5878ab723a8ef88e9c32",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-cinematica-pesadelo-v1.png",
@@ -4332,7 +4360,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -4373,7 +4401,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -4498,7 +4526,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25343,7 +25371,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25393,7 +25421,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25443,7 +25471,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25493,7 +25521,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25543,7 +25571,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25593,7 +25621,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25643,7 +25671,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25693,7 +25721,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25755,7 +25783,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25817,7 +25845,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25879,7 +25907,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -25941,7 +25969,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -26003,7 +26031,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -26065,7 +26093,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -26127,7 +26155,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -26189,7 +26217,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -27231,7 +27259,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -27269,7 +27297,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamRenderer.js",
-          "line": 22,
+          "line": 23,
           "type": "runtime",
           "alias": null
         }
@@ -33161,6 +33189,146 @@
       "hints": [
         "Trecho de um renderer compartilhado: classificar este desenho não autoriza excluir o módulo JavaScript inteiro."
       ]
+    },
+    {
+      "id": "6ea88074e403bf9acedf6c55",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
+      "title": "pesadelo · openingGirl · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2195832,
+      "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 286,
+        "y": 8,
+        "width": 414,
+        "height": 540
+      },
+      "parentId": "f56b93f96fa8c89c7f6c00cc"
+    },
+    {
+      "id": "695298af952e70cc48be2a31",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
+      "title": "pesadelo · openingGirl · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2195832,
+      "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 825,
+        "y": 43,
+        "width": 497,
+        "height": 459
+      },
+      "parentId": "f56b93f96fa8c89c7f6c00cc"
+    },
+    {
+      "id": "1f15f921fb14d2785b89874c",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
+      "title": "pesadelo · openingGirl · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2195832,
+      "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 235,
+        "y": 545,
+        "width": 519,
+        "height": 447
+      },
+      "parentId": "f56b93f96fa8c89c7f6c00cc"
+    },
+    {
+      "id": "a4fa813ea1bf2f8ffea2791c",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
+      "title": "pesadelo · openingGirl · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2195832,
+      "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingGirl"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 908,
+        "y": 503,
+        "width": 385,
+        "height": 501
+      },
+      "parentId": "f56b93f96fa8c89c7f6c00cc"
     },
     {
       "id": "f05de95e72d6f23b8f9d2e92",

@@ -1,3 +1,4 @@
+import {DREAM_OPENING_BEATS,advanceDreamOpening,stepDreamOpening} from './DreamOpening.js';
 import {beginDreamNightmare,stepDreamNightmare,validateNightmare,advanceNightmareDialogue,migrateNightmare} from './DreamNightmare.js';
 import {beginDreamGlide,stepDreamGlide} from './DreamGlider.js';
 import {dreamSpiderContact,dreamWebCanGrab} from './DreamWeb.js';
@@ -13,12 +14,12 @@ function createDreamRides(){return Object.fromEntries(DREAM_OBJECTS.filter(o=>o.
 function boardDreamBeetle(s,id,events){if(DREAM_BY_ID.get(id)?.flight&&s.rides[id]===null){s.rides[id]=s.time;events.push({type:'beetle-boarded',id});}}
 function placeDreamCheckpoint(s){const o=dreamObjectFrame(DREAM_BY_ID.get(s.checkpoint),s.time,s.rides);Object.assign(s.player,{x:o.x+o.w*.45,y:dreamSurface(o,o.x+o.w*.45),vx:0,vy:0,support:o.id,climb:null,lock:null,lockTime:0,jumpHeld:true});}
 /** Estado puro, sem Canvas, áudio ou entradas persistidas. */
-export function createDreamState(difficulty='NORMAL'){return{version:5,nightmare:null,glider:null,hits:0,fallCause:null,rides:createDreamRides(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',time:0,age:0,story:{index:0,age:0},checkpoint:'rest-0',progress:0,falls:0,player:{x:130,y:650,vx:0,vy:0,facing:1,support:'rest-0',climb:null,lock:null,lockTime:0,jumpHeld:false,animTime:0}};}
+export function createDreamState(difficulty='NORMAL'){return{version:6,nightmare:null,glider:null,hits:0,fallCause:null,rides:createDreamRides(),difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'OPENING',time:0,age:0,story:{index:0,age:0,tutorial:false,opening:{index:0,age:0,time:0,dismissed:false}},checkpoint:'rest-0',progress:0,falls:0,player:{x:130,y:650,vx:0,vy:0,facing:1,support:'rest-0',climb:null,lock:null,lockTime:0,jumpHeld:false,animTime:0}};}
 /** Valida referências/limites e reconstrói apenas dados; snapshots inválidos não criam corpos fora do mapa. */
 export function restoreDreamState(saved,difficulty){
-  if(!saved||![1,2,3,4,5].includes(saved.version)||!['INTRO','RUNNING','FALLING','GAME_OVER','RESCUING','COMPLETE','GLIDE_APPROACH','GLIDE_GUST','GLIDE_LANDING','GLIDING','GLIDE_FALLING','NIGHTMARE_FALL','NIGHTMARE_INTRO','NIGHTMARE_REVEAL','STEALTH','NIGHTMARE_STRIKE','NIGHTMARE_FINAL','NIGHTMARE_WAKE'].includes(saved.stage)||!DREAM_BY_ID.get(saved.checkpoint)?.checkpoint)throw TypeError('Sonho salvo inválido.');
+  if(!saved||![1,2,3,4,5,6].includes(saved.version)||!['OPENING','INTRO','RUNNING','FALLING','GAME_OVER','RESCUING','COMPLETE','GLIDE_APPROACH','GLIDE_GUST','GLIDE_LANDING','GLIDING','GLIDE_FALLING','NIGHTMARE_FALL','NIGHTMARE_INTRO','NIGHTMARE_REVEAL','STEALTH','NIGHTMARE_STRIKE','NIGHTMARE_FINAL','NIGHTMARE_WAKE'].includes(saved.stage)||!DREAM_BY_ID.get(saved.checkpoint)?.checkpoint)throw TypeError('Sonho salvo inválido.');
   const p=saved.player;if(!p||![p.x,p.y,p.vx,p.vy,p.animTime,saved.time,saved.age,saved.progress,saved.falls].every(Number.isFinite)||p.x<0||p.x>(saved.version<3?39214:DREAM_WIDTH)||p.y<(saved.version>=4?-2000:0)||p.y>3000||saved.time<0||saved.age<0||saved.progress<0||saved.progress>1||!Number.isSafeInteger(saved.falls)||saved.falls<0||Math.abs(p.vx)>1500||Math.abs(p.vy)>2500||![-1,1].includes(p.facing)||!Number.isInteger(saved.story?.index)||saved.story.index<0||saved.story.index>=DREAM_INTRO.length||!Number.isFinite(saved.story.age)||saved.story.age<0||p.climb?.side!==undefined&&![-1,1].includes(p.climb.side))throw TypeError('Corpo ou leitura salva do sonho inválidos.');
-  const out=structuredClone(saved);out.version=5;out.difficulty=difficulty==='EASY'?'EASY':'NORMAL';
+  const out=structuredClone(saved);out.version=6;out.difficulty=difficulty==='EASY'?'EASY':'NORMAL';
   if(saved.version===1){
     out.rides=createDreamRides();
     const id=p.support||p.climb?.id||p.lock||'',oldMixed=/^dream-5-(1|7|13|19|25)$/.test(id),changedSection=p.x>DREAM_SECTIONS[2].start+360&&p.x<DREAM_SECTIONS[3].start;
@@ -41,10 +42,13 @@ export function restoreDreamState(saved,difficulty){
   if(saved.version<5){out.nightmare=null;if(saved.version===4&&saved.stage==='COMPLETE')beginDreamNightmare(out);}
   migrateNightmare(out);
   if(out.nightmare)validateNightmare(out);else if(out.stage.startsWith('NIGHTMARE_')||out.stage==='STEALTH'||out.stage==='COMPLETE')throw TypeError('Trecho do pesadelo ausente.');
+  if(saved.version<6){out.story.opening=null;out.story.tutorial=false;if(out.stage==='OPENING')throw TypeError('Abertura ausente em save antigo.');}
+  const opening=out.story.opening;
+  if(out.stage==='OPENING'&&(!opening||!Number.isInteger(opening.index)||opening.index<0||opening.index>=DREAM_OPENING_BEATS.length||!Number.isFinite(opening.age)||opening.age<0||opening.age>DREAM_OPENING_BEATS[opening.index].duration||!Number.isFinite(opening.time)||opening.time<0||typeof opening.dismissed!=='boolean')||out.stage!=='OPENING'&&opening!==null&&opening!==undefined||typeof out.story.tutorial!=='boolean')throw TypeError('Abertura salva do sonho inválida.');
   out.player.jumpHeld=false;return out;
 }
 /** Um gesto adianta uma fala; o fim libera a travessia sem herdar um salto. */
-export function advanceDreamDialogue(s){if(s.nightmare)return advanceNightmareDialogue(s);if(s.stage==='COMPLETE'&&s.age<7){s.age=7;return true;}if(s.stage!=='INTRO')return false;if(s.story.index<DREAM_INTRO.length-1){s.story.index++;s.story.age=0;}else{s.stage='RUNNING';s.age=0;s.player.jumpHeld=true;}return true;}
+export function advanceDreamDialogue(s){if(s.stage==='OPENING')return advanceDreamOpening(s);if(s.stage==='RUNNING'&&s.story.tutorial){if(s.story.index<2){s.story.index++;s.story.age=0;}else{s.story.tutorial=false;s.story.age=7;}return true;}if(s.nightmare)return advanceNightmareDialogue(s);if(s.stage==='COMPLETE'&&s.age<7){s.age=7;return true;}if(s.stage!=='INTRO')return false;if(s.story.index<DREAM_INTRO.length-1){s.story.index++;s.story.age=0;}else{s.stage='RUNNING';s.age=0;s.player.jumpHeld=true;}return true;}
 /** Retoma a folha no relógio corrente e recoloca os transportes necessários ao alcance. */
 export function retryDream(s){if(s.nightmare){if(s.stage!=='GAME_OVER')return false;beginDreamNightmare(s,{retry:true,checkpoint:s.nightmare.checkpoint});return true;}if(!['GAME_OVER','RESCUING'].includes(s.stage))return false;const checkpoint=DREAM_BY_ID.get(s.checkpoint);for(const o of DREAM_OBJECTS)if(o.flight&&o.x>=checkpoint.x)s.rides[o.id]=null;placeDreamCheckpoint(s);s.stage='RUNNING';s.age=0;s.fallCause=null;return true;}
 /** Um contato solta a teia, emite dano uma vez e conserva a queda também no EASY. */
@@ -64,6 +68,8 @@ export function stepDream(s,input={},seconds=0){
   const events=[];let remaining=Math.max(0,Math.min(.2,seconds));
   if(s.stage==='GAME_OVER')return events;
  if(s.stage==='COMPLETE'){const o=DREAM_BY_ID.get(s.player.support),before=o&&dreamObjectFrame(o,s.time,s.rides);s.time+=remaining;s.age+=remaining;if(o?.kind==='branch'){const after=dreamObjectFrame(o,s.time,s.rides);s.player.x+=after.x-before.x;s.player.y=dreamSurface(after,s.player.x);}return events;}
+  if(s.stage==='OPENING'){stepDreamOpening(s,input,remaining);return events;}
+  if(s.stage==='RUNNING'&&s.story.tutorial){s.story.age+=remaining;if(s.story.age>=7)advanceDreamDialogue(s);}
   if(s.stage==='INTRO'){s.story.age+=remaining;if(input.advance||s.story.age>=7)advanceDreamDialogue(s);return events;}
   while(remaining>1e-8){if(s.stage==='GAME_OVER'||s.stage==='COMPLETE')break;const dt=Math.min(1/120,remaining);remaining-=dt;const previousTime=s.time;s.time+=dt;s.age+=dt;const p=s.player;
   if(s.stage.startsWith('GLIDE')||s.stage==='GLIDING'){const branch=dreamObjectFrame(DREAM_BY_ID.get('rest-5'),s.time,s.rides);stepDreamGlide(s,input,dt,branch,dreamSurface,events,dreamObjectFrame(DREAM_BY_ID.get('dream-finish'),s.time,s.rides));if(s.stage==='COMPLETE'){beginDreamNightmare(s);events.splice(0,events.length,...events.filter(e=>e.type!=='complete'));events.push({type:'nightmare-start'});return events;}s.progress=Math.max(s.progress,Math.min(1,p.x/(DREAM_WIDTH-300)));continue;}

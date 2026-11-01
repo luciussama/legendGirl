@@ -1,0 +1,14 @@
+{
+  "schemaVersion": 1,
+  "tool": "image_gen",
+  "skill": "imagegen",
+  "date": "2026-11-01",
+  "file": "yuna-abertura-sonho-v1.png",
+  "references": [
+    "yuna-cinematica-pesadelo-v2.png",
+    "yuna-queda-vento-v1.png"
+  ],
+  "prompt": "Use case: illustration-story. Asset type: transparent 2x2 game sprite acting sheet. Reference images establish exact Yuna identity/outfit and painterly quality. Create FOUR separate complete full-body poses with generous transparent space, same head size and proportions: top left standing turned to look behind her LEFT shoulder, cold worried face and hugging herself; top right kneeling facing RIGHT, both arms reaching far RIGHT with hands open at shoulder height to gently shake another person's shoulders, pleading worried face; bottom left kneeling facing RIGHT, one hand still extended RIGHT at shoulder height, other near her mouth, scared begging expression; bottom right standing facing RIGHT in hesitant first step away, sad worried face, looking back LEFT over shoulder. Girl only, NO other person. No ground, scenery, shadows, glow, text or lines. True transparent alpha. Brown eyes, curly brown pigtails with pink bows, pale yellow puff sleeve blouse, teal floral pinafore skirt with pink spiral flowers, white socks and pink flower shoes identical to reference. Full hair/hands/shoes must be visible, poses must not touch or overlap. Do not add wings to girl, leggings or shorts. The two kneeling poses have the same hands contact position on their RIGHT side for a companion to be composited there.",
+  "sha256": "f3785c40737c1ea91c0102e68e546a17cf9b4f1efb6e939b1a69a3d083ec3d0b",
+  "bytes": 2195832
+}

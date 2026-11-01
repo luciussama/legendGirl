@@ -89,3 +89,16 @@ Após os espinhos, a folha pousa num planalto. Yuna solta a folha e fica em terr
 
 
 Após os espinhos do voo, o vento termina: Yuna se preocupa, perde a folha e cai no meio de terra firme. Ela amortece o pouso e se levanta, antes da caminhada e da revelação da barata já autoradas. A futura abertura do sonho com Nanda do mesmo tamanho foi apenas solicitada como próximo passo no diário humano; não é uma cena implementada nesta revisão.
+
+
+## Abertura do sonho — implementada em 01/11/2026
+
+Sem música, um zunido discreto acompanha a floresta fria. Yuna olha para trás e encontra Nanda dormindo, com o mesmo tamanho dela. A menina ajoelha e balança a irmã.
+
+— Nanda, onde estamos? Está frio aqui.
+
+Nanda não responde. Depois de uma pausa, Yuna insiste:
+
+— Nanda, estou com medo! Me fale como sair daqui.
+
+Perdida sem a orientação da irmã fadinha, Yuna hesita e decide seguir sozinha, deixando Nanda dormindo. A música começa no escurecimento final e a jogabilidade assume. A cena possui sete momentos de3/6/7/3/7/8/4s, com leitura automática e avanço individual que conserva o mínimo dos gestos.

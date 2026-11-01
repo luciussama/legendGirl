@@ -833,11 +833,12 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(host)` | Método declarado | [4](../src/js/dream-forest/DreamAudio.js#L4) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `scream()` | Método declarado | [6](../src/js/dream-forest/DreamAudio.js#L6) | Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes. |
-| `selectTrack(state)` | Método declarado | [10](../src/js/dream-forest/DreamAudio.js#L10) | Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical. |
-| `update(state,paused=false)` | Método declarado | [12](../src/js/dream-forest/DreamAudio.js#L12) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `event(type,event={})` | Método declarado | [13](../src/js/dream-forest/DreamAudio.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(host)` | Método declarado | [6](../src/js/dream-forest/DreamAudio.js#L6) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `scream()` | Método declarado | [8](../src/js/dream-forest/DreamAudio.js#L8) | Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes. |
+| `selectTrack(state)` | Método declarado | [12](../src/js/dream-forest/DreamAudio.js#L12) | Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical. |
+| `update(state,paused=false)` | Método declarado | [14](../src/js/dream-forest/DreamAudio.js#L14) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `clear()` | Método declarado | [20](../src/js/dream-forest/DreamAudio.js#L20) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
+| `event(type,event={})` | Método declarado | [21](../src/js/dream-forest/DreamAudio.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/dream-forest/DreamBeetle.js
 
@@ -966,11 +967,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `nightmareBeam(light)` | Função | [51](../src/js/dream-forest/DreamNightmare.js#L51) | Monta o polígono de luz visível incluindo tangentes e sombras das pedras. |
 | `nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false,detection=false}={})` | Função | [57](../src/js/dream-forest/DreamNightmare.js#L57) | Consulta silhueta/oclusão e um núcleo lógico menor somente na captura EASY, mantendo a luz. |
 | `beginDreamNightmare(s,{retry=false,checkpoint=0}={})` | Função | [65](../src/js/dream-forest/DreamNightmare.js#L65) | Cria o domínio do trecho final na queda ou na retomada da primeira pedra. |
-| `migrateNightmare(s)` | Função | [72](../src/js/dream-forest/DreamNightmare.js#L72) | Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz. |
-| `nightmareReading(s)` | Função | [85](../src/js/dream-forest/DreamNightmare.js#L85) | Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial. |
-| `advanceNightmareDialogue(s)` | Função | [87](../src/js/dream-forest/DreamNightmare.js#L87) | Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro. |
-| `validateNightmare(s)` | Função | [94](../src/js/dream-forest/DreamNightmare.js#L94) | Valida relógio, corpo, leitura e coerência do grito/despertar no save. |
-| `stepDreamNightmare(s,input={},seconds=0)` | Função | [104](../src/js/dream-forest/DreamNightmare.js#L104) | Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos. |
+| `migrateNightmare(s)` | Função | [73](../src/js/dream-forest/DreamNightmare.js#L73) | Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz. |
+| `nightmareReading(s)` | Função | [86](../src/js/dream-forest/DreamNightmare.js#L86) | Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial. |
+| `advanceNightmareDialogue(s)` | Função | [88](../src/js/dream-forest/DreamNightmare.js#L88) | Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro. |
+| `validateNightmare(s)` | Função | [95](../src/js/dream-forest/DreamNightmare.js#L95) | Valida relógio, corpo, leitura e coerência do grito/despertar no save. |
+| `stepDreamNightmare(s,input={},seconds=0)` | Função | [105](../src/js/dream-forest/DreamNightmare.js#L105) | Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos. |
 
 ## src/js/dream-forest/DreamNightmareArt.js
 
@@ -1033,6 +1034,26 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [143](../src/js/dream-forest/DreamNightmareRenderer.js#L143) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `destroy()` | Método declarado | [144](../src/js/dream-forest/DreamNightmareRenderer.js#L144) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
+## src/js/dream-forest/DreamOpening.js
+
+[Implementação](../src/js/dream-forest/DreamOpening.js). Contratos exportados/reexportados: `DREAM_OPENING_BEATS`, `dreamOpeningBeat`, `advanceDreamOpening`, `stepDreamOpening`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `dreamOpeningBeat(s)` | Função | [12](../src/js/dream-forest/DreamOpening.js#L12) | Consulta o momento autorado a partir do índice persistido da abertura. |
+| `advanceDreamOpening(s)` | Função | [14](../src/js/dream-forest/DreamOpening.js#L14) | Dispensa uma fala visível preservando o mínimo de atuação do momento. |
+| `stepDreamOpening(s,input,seconds)` | Função | [16](../src/js/dream-forest/DreamOpening.js#L16) | Avança os sete momentos e libera a travessia sem herdar o pulo da leitura. |
+
+## src/js/dream-forest/DreamOpeningRenderer.js
+
+[Implementação](../src/js/dream-forest/DreamOpeningRenderer.js). Contratos exportados/reexportados: `renderDreamOpening`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `openingLayout(ctx,canvas)` | Função | [9](../src/js/dream-forest/DreamOpeningRenderer.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `actor(ctx,image,f,x,base,k,{flip=false,hand=null}={})` | Função | [10](../src/js/dream-forest/DreamOpeningRenderer.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderDreamOpening(ctx,canvas,s,images,{onAdvance=()=>{}}={})` | Função | [12](../src/js/dream-forest/DreamOpeningRenderer.js#L12) | Compõe Yuna, Nanda adormecida, mãos em contato, moldura e transição final. |
+
 ## src/js/dream-forest/DreamPhase.js
 
 [Implementação](../src/js/dream-forest/DreamPhase.js). Contratos exportados/reexportados: `DreamPhase`.
@@ -1057,15 +1078,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | [21](../src/js/dream-forest/DreamRenderer.js#L21) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [22](../src/js/dream-forest/DreamRenderer.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `frame(state)` | Método declarado | [24](../src/js/dream-forest/DreamRenderer.js#L24) | Calcula pose visual estável sem escrever na simulação. |
-| `leaf(ctx,f,bottom=C.grassRoot)` | Método declarado | [26](../src/js/dream-forest/DreamRenderer.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grass(ctx,f,bottom=C.grassRoot)` | Método declarado | [28](../src/js/dream-forest/DreamRenderer.js#L28) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,f,time)` | Método declarado | [29](../src/js/dream-forest/DreamRenderer.js#L29) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `girl(ctx,s)` | Método declarado | [30](../src/js/dream-forest/DreamRenderer.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={})` | Método declarado | [33](../src/js/dream-forest/DreamRenderer.js#L33) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [58](../src/js/dream-forest/DreamRenderer.js#L58) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `constructor(canvas)` | Método declarado | [22](../src/js/dream-forest/DreamRenderer.js#L22) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [23](../src/js/dream-forest/DreamRenderer.js#L23) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `frame(state)` | Método declarado | [25](../src/js/dream-forest/DreamRenderer.js#L25) | Calcula pose visual estável sem escrever na simulação. |
+| `leaf(ctx,f,bottom=C.grassRoot)` | Método declarado | [27](../src/js/dream-forest/DreamRenderer.js#L27) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grass(ctx,f,bottom=C.grassRoot)` | Método declarado | [29](../src/js/dream-forest/DreamRenderer.js#L29) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,f,time)` | Método declarado | [30](../src/js/dream-forest/DreamRenderer.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `girl(ctx,s)` | Método declarado | [31](../src/js/dream-forest/DreamRenderer.js#L31) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(state,{ready=true,error=null,paused=false,onAdvance=()=>{},touch=false}={})` | Método declarado | [34](../src/js/dream-forest/DreamRenderer.js#L34) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [60](../src/js/dream-forest/DreamRenderer.js#L60) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamRoach.js
 
@@ -1101,21 +1122,27 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `cloud(ctx,x,y,age,power,seed)` | Função | [7](../src/js/dream-forest/DreamRoachEffects.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `drawRoachDust(ctx,rig,p,time,{stompAge=-1,stompPoint=null}={})` | Função | [9](../src/js/dream-forest/DreamRoachEffects.js#L9) | Projeta poeira nos contatos das patas e na propagação do impacto final. |
 
+## src/js/dream-forest/DreamSilence.js
+
+[Implementação](../src/js/dream-forest/DreamSilence.js). Contratos exportados/reexportados: `DreamSilence`.
+
+Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
+
 ## src/js/dream-forest/DreamSimulation.js
 
 [Implementação](../src/js/dream-forest/DreamSimulation.js). Contratos exportados/reexportados: `DREAM_INTRO`, `createDreamState`, `restoreDreamState`, `advanceDreamDialogue`, `retryDream`, `stepDream`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `createDreamRides()` | Função | [12](../src/js/dream-forest/DreamSimulation.js#L12) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
-| `boardDreamBeetle(s,id,events)` | Função | [13](../src/js/dream-forest/DreamSimulation.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `placeDreamCheckpoint(s)` | Função | [14](../src/js/dream-forest/DreamSimulation.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createDreamState(difficulty='NORMAL')` | Função | [16](../src/js/dream-forest/DreamSimulation.js#L16) | Cria domínio5 do sonho: travessia aérea preservada e estado separado para furtividade, captura e despertar. |
-| `restoreDreamState(saved,difficulty)` | Função | [18](../src/js/dream-forest/DreamSimulation.js#L18) | Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime. |
-| `advanceDreamDialogue(s)` | Função | [47](../src/js/dream-forest/DreamSimulation.js#L47) | Adianta uma fala do sonho e consome o gesto antes de liberar movimento. |
-| `retryDream(s)` | Função | [49](../src/js/dream-forest/DreamSimulation.js#L49) | Retoma uma folha e seus transportes; no pesadelo, retorna à primeira pedra sem repetir o voo. |
-| `hitDreamSpider(s,near,events)` | Função | [51](../src/js/dream-forest/DreamSimulation.js#L51) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `stepDream(s,input={},seconds=0)` | Função | [62](../src/js/dream-forest/DreamSimulation.js#L62) | Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira. |
+| `createDreamRides()` | Função | [13](../src/js/dream-forest/DreamSimulation.js#L13) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `boardDreamBeetle(s,id,events)` | Função | [14](../src/js/dream-forest/DreamSimulation.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `placeDreamCheckpoint(s)` | Função | [15](../src/js/dream-forest/DreamSimulation.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createDreamState(difficulty='NORMAL')` | Função | [17](../src/js/dream-forest/DreamSimulation.js#L17) | Cria domínio5 do sonho: travessia aérea preservada e estado separado para furtividade, captura e despertar. |
+| `restoreDreamState(saved,difficulty)` | Função | [19](../src/js/dream-forest/DreamSimulation.js#L19) | Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime. |
+| `advanceDreamDialogue(s)` | Função | [51](../src/js/dream-forest/DreamSimulation.js#L51) | Adianta uma fala do sonho e consome o gesto antes de liberar movimento. |
+| `retryDream(s)` | Função | [53](../src/js/dream-forest/DreamSimulation.js#L53) | Retoma uma folha e seus transportes; no pesadelo, retorna à primeira pedra sem repetir o voo. |
+| `hitDreamSpider(s,near,events)` | Função | [55](../src/js/dream-forest/DreamSimulation.js#L55) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `stepDream(s,input={},seconds=0)` | Função | [66](../src/js/dream-forest/DreamSimulation.js#L66) | Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira. |
 
 ## src/js/dream-forest/DreamSpiderPuppet.js
 
@@ -2835,4 +2862,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **214 módulos JavaScript**, **1364 declarações nomeadas**.
+Inventário: **217 módulos JavaScript**, **1371 declarações nomeadas**.

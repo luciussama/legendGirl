@@ -430,7 +430,10 @@ As classes declaradas em `src/js` estão listadas abaixo. Entidades como baby/fa
 | `TitleScreen` | [ui/TitleScreen.js](../src/js/ui/TitleScreen.js) | Coordena novo jogo, carregamento, modo fácil, opções e confirmação de reinício por callbacks do coordenador principal. |
 | `DreamInput` | [dream-forest/DreamInput.js](../src/js/dream-forest/DreamInput.js) | Controles verticais e salto separado, mantendo liberação e simultaneidade. |
 | `DreamRenderer` | [dream-forest/DreamRenderer.js](../src/js/dream-forest/DreamRenderer.js) | Fundo e apoios pintados em Canvas2D, sem pipeline3D. |
-| `DreamAudio` | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio para Bug attack desde o início da cinemática até a captura, grito sintetizado e trilha do despertar; respeita pausa/mudo/volume. |
+| `DreamOpening` | [dream-forest/DreamOpening.js](../src/js/dream-forest/DreamOpening.js) | Momento, fala, mínimo de atuação e liberação do controle. |
+| `DreamOpeningRenderer` | [dream-forest/DreamOpeningRenderer.js](../src/js/dream-forest/DreamOpeningRenderer.js) | Cena em tela cheia, contato das mãos, Nanda adormecida e moldura. |
+| `DreamSilence` | [dream-forest/DreamSilence.js](../src/js/dream-forest/DreamSilence.js) | Zunido sintetizado com pausa/mudo/volume/descarte. |
+| `DreamAudio` | [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Zunido e transição musical na abertura, Bug attack na chegada da barata, grito e despertar; pausa/mudo/volume comuns. |
 | `DreamNightmareLighting` | [dream-forest/DreamNightmareLighting.js](../src/js/dream-forest/DreamNightmareLighting.js) | Volume suave, resposta dos abrigos e reflexos superficiais em buffer reutilizado. |
 | `DreamNightmareRenderer` | [dream-forest/DreamNightmareRenderer.js](../src/js/dream-forest/DreamNightmareRenderer.js) | Carga tardia, câmera próxima fixa, barata monumental, sombras compartilhadas e atuação no piquenique. |
 | `DreamPhase` | [dream-forest/DreamPhase.js](../src/js/dream-forest/DreamPhase.js) | Carga, áudio Misty Blues, pausa, retomada e descarte. |
@@ -743,7 +746,7 @@ A [entrada obrigatória do diário](diario-ia/README.md#regras-obrigatórias-de-
 
 O [guia do sonho](dream-forest/GUIA-SONHO.md) define os controles, o percurso e os saves. A travessia aprovada continua aérea2D. A furtividade atual é somente o último trecho autorizado em30/10 após os espinhos; não retoma o plano histórico3D. Coordenar os domínios em DreamSimulation e manter o mapa aéreo em DreamLevel, sem compartilhar corpos com o jardim. Os contornos de apoio são medidos por prepare-dream-art.js e usados também no desenho. Manter aderência automática, escalada até o lombo, bloqueio breve de reagarre e checkpoint estável. O salto usa Espaço; W/S e setas verticais são escalada nesta fase.
 
-A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio5 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
+A origem acompanha jardim→sonho após240ticks de repouso final. `toyRoomDream` tem envelope1/domínio6 e posição musical; restauração prioriza sonho antes de jardim. Recursos são sob demanda, e destroy libera eventos, controles, música e imagens. GardenAudio continua com a trilha anterior por padrão e aceita `track`/`label` para o sonho. Não importar Three.js nesta fase. Nova arte precisa atualizar o inventário e preservar fontes/proveniência.
 
 ### Caules e recuperação de saltos no sonho
 
@@ -852,3 +855,16 @@ TouchGameControls.mobileGameControls converte por eixo com getBoundingClientRect
 O chão preparado do pântano usa apenas a faixa central de solo, sem árvores duplicadas sobre as patas. Camadas de troncos/tocos e sombras de contato envolvem a barata; paralaxe do fundo acompanha apenas rolagem lateral. Não recalcular NIGHTMARE_ROCKS, nightmarePatrol ou nightmareLights a partir da composição decorativa.
 
 GardenAudio.updateWings aplica multiplicador2 apenas a bee/dive, antes do volume mestre, tanto ao criar quanto ao atualizar canais. Não normalizar novamente os WAVs nem alterar besouros/pulo/lama. QA recuperável: test:acabamento, test:acabamento:toque:browser e test:acabamento:audio:browser.
+
+
+### Abertura com Nanda, domínio6
+
+createDreamState inicia OPENING com story.opening:{index:0,age:0,time:0,dismissed:false}. DreamOpening.stepDreamOpening recebe somente o delta já limitado pela simulação; não altera player, rides ou time do mundo. Cada momento tem duration e min. advanceDreamOpening marca apenas dismissed; a troca espera o mínimo da atuação. Pausa é controlada por DreamPhase. No fim, RUNNING recebe jumpHeld e a entrada é limpa. As orientações antigas de gramas/lombos aparecem durante o controle, sem outra tela modal.
+
+restoreDreamState aceita versões1–6. Saves antigos não passam a exigir uma abertura nem voltam ao início; mantêm INTRO legada quando já estavam nela. Validar campos de opening apenas como estado autorado; fixtures que começam depois da abertura devem defini-lo como null e tutorial:false. As regressões de voo/comparação física usam explicitamente esse ponto de entrada.
+
+DreamOpeningRenderer reserva a maior altura das falas, aplica fonte menor em paisagem baixa e conserva os atores abaixo da moldura. openingGirl tem componentes completos, rowMask e âncoras manuais das mãos, preparados por prepare-dream-nightmare.js. Nanda reutiliza CHAPTER_ART.fairy.frames[1] e permanece dormindo; as asas não definem o tamanho corporal.
+
+DreamSilence mantém três fontes por contexto: ruído determinístico filtrado e dois senos. update ajusta um ganho comum; stop encerra/desconecta tudo. DreamAudio.clear cobre também essa camada. A música só entra nos últimos1,2s da partida; nenhum emissor do mapa toca antes da jogabilidade. Testar início normal, avanço por toque/Enter, mínimo da atuação, pausa/mudo/mestre, save/load e saída sem pulo. Aliases: test:sonho:abertura, test:sonho:abertura:browser e review:sonho:abertura:browser.
+
+Entradas diretas beginDreamGlide e beginDreamNightmare também encerram opening/tutorial explicitamente. Isso mantém válidos os saves iniciados por ferramentas de depuração, sem carregar uma abertura ativa para outro estágio. Fixtures que pulam diretamente para pouso precisam representar a abertura já encerrada.

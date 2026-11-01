@@ -316,7 +316,10 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [dream-forest/DreamNightmareEntrance.js](../src/js/dream-forest/DreamNightmareEntrance.js) | Chegada em terra, revelação atrás das árvores, susto e fuga até a pedra. | `nightmareEntranceMoment`, `renderNightmareEntrance` |
 | [dream-forest/DreamRoachEffects.js](../src/js/dream-forest/DreamRoachEffects.js) | Contatos dos tripés, poeira e tremor determinísticos da composição. | `roachFootfall`, `roachScreenShake`, `drawRoachDust` |
 | [dream-forest/DreamNightmareRenderer.js](../src/js/dream-forest/DreamNightmareRenderer.js) | Carga tardia, enquadramento fixo, barrancos registrados no solo físico, ambiente sem tarjas de cor, barata, iluminação e piquenique. | `DreamNightmareRenderer` |
-| [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio: Bug attack desde o início da cinemática até a captura, grito único e trilha do despertar. | `DreamAudio` |
+| [dream-forest/DreamOpening.js](../src/js/dream-forest/DreamOpening.js) | Sete momentos autorados, leitura por fala e duração mínima de atuação antes da travessia. | `DREAM_OPENING_BEATS`, `dreamOpeningBeat`, `advanceDreamOpening`, `stepDreamOpening` |
+| [dream-forest/DreamOpeningRenderer.js](../src/js/dream-forest/DreamOpeningRenderer.js) | Cena própria de Yuna e Nanda em escala comum, contato das mãos e saída solitária. | `renderDreamOpening` |
+| [dream-forest/DreamSilence.js](../src/js/dream-forest/DreamSilence.js) | Ruído filtrado e dois parciais suaves; ciclo de vida controlado por pausa, mudo e descarte. | `DreamSilence` |
+| [dream-forest/DreamAudio.js](../src/js/dream-forest/DreamAudio.js) | Especializa GardenAudio: zunido na abertura, transição para Misty Blues, Bug attack na chegada da barata, grito e despertar. | `DreamAudio` |
 | [dream-forest/DreamSimulation.js](../src/js/dream-forest/DreamSimulation.js) | Leitura, aderência/escalada, transporte, saltos, checkpoints e domínio serializável. | `DREAM_INTRO`, `createDreamState`, `restoreDreamState`, `advanceDreamDialogue`, `retryDream`, `stepDream` |
 
 ## Integração, recursos e ciclo de vida
@@ -434,7 +437,7 @@ A escalada usa yuna-escalada-v2.png: quatro poses com flexão/extensão de braç
 
 A revisão5 conserva esse domínio aéreo e acrescenta `state.nightmare` para o último trecho. DreamSimulation completa o pouso no planalto antes de abrir a cinemática de entrada em DreamNightmare. O renderer próximo usa câmera fixa por viewport no STEALTH e recorta os feixes pelas mesmas silhuetas da detecção. A captura final autorada termina em NIGHTMARE_WAKE/COMPLETE, na toalha, dentro de DreamPhase; não reinicia GardenPhase nem a passagem do sono para o sonho. DreamAudio seleciona a trilha a partir desse estágio e as flags salvas evitam repetir o grito.
 
-O trecho final usa nightmare7 no domínio5/envelope1. A subida dos relevos exige salto e a câmera não participa da correção dos pés. O solo é contínuo; a oclusão dos abrigos e os pixels da pose também valem no ar. Exposição contínua à luz, e não o estado de salto, dispara a captura. A faixa Bug attack começa na aparição e toca em loop sem governar a duração da cena. Contratos de controle/estado no guia do sonho.
+O trecho final usa nightmare7 no domínio6/envelope1. A subida dos relevos exige salto e a câmera não participa da correção dos pés. O solo é contínuo; a oclusão dos abrigos e os pixels da pose também valem no ar. Exposição contínua à luz, e não o estado de salto, dispara a captura. A faixa Bug attack começa na aparição e toca em loop sem governar a duração da cena. Contratos de controle/estado no guia do sonho.
 
 DreamMud persiste modo dry/enter/swim/climb, lago ativo, origem e profundidade da transição e distância de braçada no domínio local6. Saves anteriores migram para uma posição protegida dentro do lago quando necessário; domínio aéreo5 e envelope1 continuam preservados. A massa dos morros usa pintura de terra contínua sobre a mesma crista física.
 
@@ -471,3 +474,14 @@ nightmareVisibility com detection:true estreita apenas o núcleo lógico do EASY
 O pântano usa uma faixa central de chão pintado em camadas dissolvidas, sob as patas, sombras nos contatos e troncos/tocos que cruzam a silhueta da barata. O fundo tem paralaxe lateral discreta; objetos decorativos não entram na colisão nem na oclusão física. Retrato mobile reserva208CSS no rodapé por um enquadramento fixo por viewport. Feixes físicos, rig, alcance, apoios e dificuldade permanecem iguais.
 
 GardenInput interpreta nomes compostos (up-left etc.) simultaneamente nos eixos. O centro do D-pad é neutro, mantendo a captura para retomar o arrasto; outro dedo pode continuar em PULAR. Jardim interpreta cima como pulo, incluindo diagonais; sonho separa eixo vertical de PULAR. GardenAudio multiplica somente bee/dive por2, incluindo vozes ativas, antes do ganho mestre. Besouros/pulo/lama conservam seus níveis; pausa/mudo/descarte continuam comuns.
+
+
+## Abertura do sonho com Nanda
+
+Novos jogos começam em OPENING. DreamOpening mantém sete momentos de3/6/7/3/7/8/4s: desorientação, descoberta, primeira tentativa, silêncio, pedido de ajuda, decisão e partida. As duas falas de Yuna são as autoradas pelo usuário. O gesto dispensa somente a fala visível; se o mínimo da atuação ainda não terminou, o movimento continua em silêncio antes do próximo momento. Sem gesto, cada fala avança pelo prazo. Na saída, controles são limpos e jumpHeld impede salto herdado. As duas orientações mecânicas antigas aparecem como narração não modal durante a primeira jogabilidade.
+
+Domínio6 acrescenta story.opening:{index,age,time,dismissed} e story.tutorial. O relógio contínuo de atuação é distinto do tempo do momento/fala. Saves1–5 conservam gameplay ou a INTRO legada, sem repetir a nova abertura. Envelope1 e nightmare7 não mudam. Restore valida índices, durações e tipos; OPENING não move o mundo físico.
+
+DreamOpeningRenderer mede antecipadamente todas as molduras para reservar os rostos, inclusive em paisagem. A pintura da floresta, Nanda dormindo em nanda-gestos-v1 e quatro poses novas de Yuna são camadas independentes. Escala é calibrada pelo corpo/cabeças, sem usar a caixa das asas para fazer Nanda minúscula. Mãos e reação ao balanço compartilham a âncora no corpo da irmã; Nanda conserva os olhos fechados. A partida escurece a cena em1,2s.
+
+DreamAudio mantém música pausada durante a abertura e suprime asas do gameplay. DreamSilence combina ruído bandpass1100Hz e senos2450/3120Hz em ganhos suaves, com volume mestre. Na partida, a partir de2,8s, o zunido cede à Misty Blues por1,2s; RUNNING já tem a faixa ativa. Pausa/mudo/descarte param e desconectam os nós. Nenhum WAV novo foi criado.

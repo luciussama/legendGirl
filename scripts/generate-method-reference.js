@@ -6,6 +6,10 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ dreamOpeningBeat:'Consulta o momento autorado a partir do índice persistido da abertura.',
+ advanceDreamOpening:'Dispensa uma fala visível preservando o mínimo de atuação do momento.',
+ stepDreamOpening:'Avança os sete momentos e libera a travessia sem herdar o pulo da leitura.',
+ renderDreamOpening:'Compõe Yuna, Nanda adormecida, mãos em contato, moldura e transição final.',
  mobileGameControls:'Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS.',
  drawMobileGameControls:'Desenha D-pad unido, setas diagonais e salto respeitando a área segura.',
  renderDreamLanding:'Compõe fim da sustentação, perda da folha, queda e amortecimento no chão em tela cheia.',

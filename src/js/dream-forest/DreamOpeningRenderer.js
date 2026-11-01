@@ -1,0 +1,22 @@
+import {DREAM_OPENING_BEATS,dreamOpeningBeat} from './DreamOpening.js';
+import {DREAM_NIGHTMARE_ART as ART} from './DreamNightmareArt.js';
+import {CHAPTER_ART} from '../chapters/ChapterArt.js';
+import {getDialogueSafeArea} from '../ui/DialogueSafeArea.js';
+import {renderPoeticNarration} from '../narrative/PoeticNarrator.js';
+const smooth=t=>{t=Math.max(0,Math.min(1,t));return t*t*(3-2*t);};
+const layouts=new WeakMap();
+/** Mede todas as falas antes da atuação para manter personagens e rostos abaixo da moldura. */
+function openingLayout(ctx,canvas){const {width,height}=canvas,safe=getDialogueSafeArea(canvas),css=width/(canvas.clientWidth||width),rect=canvas.getBoundingClientRect(),bar=document.querySelector('.top-controls-bar')?.getBoundingClientRect(),inset=Math.max(safe.top,bar?(bar.bottom-rect.top)*height/rect.height+12*css:0),low=width>height&&(canvas.clientHeight||height)<480,virtual={width:safe.right-safe.left,height:height-inset,clientWidth:(safe.right-safe.left)/(css*(low?.8:1)),dialogueControlScale:css},key=[width,height,css,inset,safe.left,safe.right].join('/');let cached=layouts.get(canvas);if(cached?.key!==key){ctx.save();ctx.globalAlpha=0;let bottom=0;for(const b of DREAM_OPENING_BEATS)if(b.text){const box=renderPoeticNarration(ctx,virtual,b.text,{heading:b.speaker,interactive:false});bottom=Math.max(bottom,box.y+box.height+48*css);}ctx.restore();cached={key,bottom};layouts.set(canvas,cached);}return{safe,css,inset,virtual,bottom:inset+cached.bottom};}
+function actor(ctx,image,f,x,base,k,{flip=false,hand=null}={}){ctx.save();ctx.translate(x,base);ctx.scale(flip?-k:k,k);ctx.translate(hand?-hand[0]:-f.anchorX,hand?-hand[1]:-f.h);if(f.rowMask){ctx.beginPath();f.rowMask.forEach((r,y)=>y?ctx.lineTo(r[0],y):ctx.moveTo(r[0],y));for(let y=f.rowMask.length-1;y>=0;y--)ctx.lineTo(f.rowMask[y][1]+1,y+1);ctx.closePath();ctx.clip();}ctx.filter='brightness(.76) saturate(.8)';ctx.drawImage(image,f.x,f.y,f.w,f.h,0,0,f.w,f.h);ctx.restore();}
+/** Nanda permanece dormindo; o balanço suave vem das mãos de Yuna, em escala humana comum. */
+export function renderDreamOpening(ctx,canvas,s,images,{onAdvance=()=>{}}={}){
+ const {width,height}=canvas,o=s.story.opening,b=dreamOpeningBeat(s),portrait=height>width,layout=openingLayout(ctx,canvas),scale=Math.max(width/1536,height/1024),halfW=width/scale/2,halfH=height/scale/2,focusY=Math.max(halfH,Math.min(1024-halfH,portrait?512:['shake','plead'].includes(b.shot)?660:620)),focusX=Math.max(halfW,Math.min(1536-halfW,b.shot==='lost'?930:b.shot==='discover'?930-130*smooth(o.age/2):800)),base=920,bottom=height/2+(base-focusY)*scale,factor=Math.min(portrait?.68:1,Math.max(.25,(bottom-layout.bottom-18*layout.css)/(500*scale))),girlScale=440/ART.openingGirl.referenceHeight*factor,fairyScale=girlScale*.9,contact=b.shot==='shake'||b.shot==='plead',t=o.time??o.age,shake=contact?Math.sin(o.age*8)*3*factor:0,nandaX=720,nandaBase=base,ff=CHAPTER_ART.fairy.frames[1],visible=true,leaflight=.96+Math.sin(t*.6)*.025;
+ ctx.save();ctx.translate(width/2,height/2);ctx.scale(scale,scale);ctx.translate(-focusX,-focusY);ctx.drawImage(images.get(ART.cinematicForest.file),0,0,1536,1024);ctx.fillStyle=`rgba(2,10,24,${1-leaflight})`;ctx.fillRect(0,0,1536,1024);
+ if(visible){ctx.save();ctx.filter='blur(8px)';ctx.fillStyle='rgba(0,0,0,.45)';ctx.beginPath();ctx.ellipse(nandaX,nandaBase,ff.w*fairyScale*.44,12*factor,0,0,Math.PI*2);ctx.fill();ctx.restore();ctx.save();ctx.translate(nandaX,nandaBase);ctx.rotate(shake*.002);ctx.scale(1,1+Math.sin(t*1.4)*.002);actor(ctx,images.get('chapters/nanda-gestos-v1.png'),ff,0,0,fairyScale);ctx.restore();}
+ const girl=images.get(ART.openingGirl.file),frames=ART.openingGirl.frames;
+ if(contact){const f=frames[b.shot==='shake'?1:2],shoulder={x:nandaX+(1370-ff.x-ff.anchorX)*fairyScale+shake,y:nandaBase+(615-ff.y-ff.h)*fairyScale};actor(ctx,girl,f,shoulder.x,shoulder.y,girlScale,{flip:true,hand:f.hand});}
+ else{const departing=b.shot==='leave',q=departing?smooth(o.age/4):0,x=departing?970+310*factor*q:b.shot==='lost'?930+40*smooth(o.age/3):970;actor(ctx,girl,frames[departing||b.shot==='lost'?3:0],x,base+(departing?Math.sin(o.age*7)*2*factor:0),girlScale);}
+ ctx.restore();
+ if(b.text&&!o.dismissed){ctx.save();ctx.translate(layout.safe.left,layout.inset);renderPoeticNarration(ctx,layout.virtual,b.text,{heading:b.speaker,advanceCanvas:canvas,onAdvance});ctx.restore();}
+ if(b.shot==='leave'&&o.age>2.8){ctx.fillStyle=`rgba(5,13,30,${smooth((o.age-2.8)/1.2)})`;ctx.fillRect(0,0,width,height);}
+}

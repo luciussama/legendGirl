@@ -77,3 +77,6 @@ A chegada revisada à barata reutiliza morro-terra-v1 no planalto, floresta-cine
 
 
 A queda sem sustentação consome `yuna-queda-vento-v1.png`, gerada pela ferramenta integrada image_gen com referências canônicas; prompt em `prompts-queda-vento-v1.json`. Quatro poses: preocupação segurando haste, mãos abertas em queda, preparação dos pés e amortecimento agachado. `prepare-dream-nightmare.js` registra componentes completos e rowMask; o renderer usa a floresta cinematográfica existente e a folha recortada em memória. O corredor não apresenta mais a massa retangular do planalto.
+
+
+A abertura usa `yuna-abertura-sonho-v1.png`, ferramenta integrada image_gen, com prompt/referências em `prompts-abertura-sonho-v1.json`. Quatro poses completas da menina, preservando figurino e expressão preocupada. Componentes/rowMask e âncoras das mãos são preparados em openingGirl; Nanda dormindo é a pintura canônica já existente em chapters/nanda-gestos-v1. A floresta cinematográfica também é reutilizada. Nenhuma pintura anterior foi sobrescrita.

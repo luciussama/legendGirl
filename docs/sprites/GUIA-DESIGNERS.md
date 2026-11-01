@@ -155,3 +155,6 @@ No pouso após os espinhos, a queda ocupa uma cena própria sobre o chão cinema
 
 
 A queda após o planador usa yuna-queda-vento-v1: quatro componentes completos medidos em windFall, com rowMask de cada linha para excluir cabelo/sapato da pose vizinha. Preservar preocupação, mãos abertas na perda da folha, pernas de amortecimento e figurino. Fonte, referências e prompt em prompts-queda-vento-v1.json. Não reapresentar morro-terra como retângulo no fim do voo. O D-pad é desenho Canvas compartilhado, sem bitmap novo. O pântano compõe o solo central e os troncos existentes em planos, sem mudar silhuetas físicas.
+
+
+Abertura do sonho: yuna-abertura-sonho-v1 fornece olhar para trás, duas poses ajoelhadas com mãos de contato e partida hesitante. Dados openingGirl em DreamNightmareArt são preparados por prepare-dream-nightmare.js, incluindo rowMask e hand por pose. Prompt/referências em prompts-abertura-sonho-v1.json. Nanda usa a pose adormecida existente de nanda-gestos-v1, em escala corporal comparável à menina; não usar a altura das asas como régua de tamanho. Conferir os dois rostos visíveis, contato de mãos e pés/joelhos inteiros em retrato e paisagem.

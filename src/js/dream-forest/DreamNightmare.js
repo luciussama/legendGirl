@@ -63,6 +63,7 @@ export function nightmareVisibility(n,difficulty='NORMAL',{onlyLight=false,detec
 }
 /** A queda é um corte narrativo; a exploração aérea e o seu jogador permanecem preservados. */
 export function beginDreamNightmare(s,{retry=false,checkpoint=0}={}){
+  s.story.opening=null;s.story.tutorial=false;
   const spawn=retry?stealthCheckpoint(checkpoint):{x:NIGHTMARE.entry-90,mudDepth:0};
   s.nightmare={...createMudState(),version:7,exposure:0,time:0,x:spawn.x,y:stealthGround(spawn.x),vy:0,grounded:true,jumpHeld:true,mudDepth:spawn.mudDepth,checkpoint:retry?checkpoint:0,roachAppeared:retry,vx:0,facing:1,animTime:0,introIndex:0,introAge:0,arrivalAge:0,wakeIndex:-1,wakeAge:0,fairyAwake:false,screamPlayed:false,strikeSound:false,completed:false};
   if(spawn.mudLakeId)enterDreamMud(s.nightmare,DREAM_MUD_LAKES.find(l=>l.id===spawn.mudLakeId),{submerged:true});

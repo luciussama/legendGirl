@@ -35,6 +35,9 @@ O arquivo original **Misty Blues.mp3** enviado pelo usuário foi copiado sem alt
 | `DreamLevel` | Mapa, setores, consultas espaciais e poses móveis determinísticas pelo tempo. |
 | `DreamClimb` | Ciclo visual por distância, mãos na pintura e transição para o topo. |
 | `DreamWeb` | Contato corporal com aranhas e disponibilidade real do fio para agarrar. |
+| `DreamOpening` | Sete momentos autorados, leitura e mínimos de atuação. |
+| `DreamOpeningRenderer` | Cena própria de Yuna e Nanda, contato das mãos e moldura. |
+| `DreamSilence` | Zunido discreto e descarte dos nós de áudio. |
 | `DreamSimulation` | Domínio em segundos/subpassos de até 1/120 s, leitura, aderência, escalada, saltos, contorno, queda, checkpoints e conclusão. |
 | `DreamGlider` | Caminhada automática, rajada, voo com inércia, percurso vertical, colisão e reinício. |
 | `DreamGliderArt` | Máscaras de alfa opaco geradas das duas pinturas. |
@@ -51,7 +54,7 @@ O arquivo original **Misty Blues.mp3** enviado pelo usuário foi copiado sem alt
 | `DreamAudio` | Misty Blues no voo, Bug attack desde a cinemática de chegada e trilha do despertar. |
 | `DreamPhase` | Carga, pausa, áudio, save/restore e descarte; recebe apenas host, canvas, dificuldade e origem. |
 
-`toyRoomDream` guarda envelope versão 1, estado versão 5 e posição musical. Estado contém relógio, leitura, checkpoint, progresso, quedas, contatos com aranhas (`hits`), causa da queda (`fallCause`) e jogador (posição, velocidades, apoio, aderência e bloqueio de reagarre). O campo `rides` guarda, para os quatro transportes, `null` antes do embarque ou o instante numérico de partida; posição e fase do voo derivam desse instante e do relógio salvo. Pausa e retomada conservam a viagem. Saves do domínio 1 conservam a migração dos besouros: posições afetadas pela nova seção de besouros retornam à folha `rest-2`, e apoios removidos do trecho misto à `rest-5`; os demais apoios válidos são conservados. Na revisão 3, saves dos domínios 1/2 no trecho substituído retomam na folha `rest-4`; posições anteriores aprovadas continuam válidas. Não serializa imagens, Canvas, áudio, listeners ou ponteiros. No caule inferior, a coordenada de aderência `u` pode ser maior que 1; a altura continua relativa ao comprimento original da lâmina, preservando saves anteriores. `restoreDreamState` valida versões, limites e IDs; a física conserva o relógio das plataformas e o bloqueio de reagarre.
+`toyRoomDream` guarda envelope versão 1, estado versão 6 e posição musical. Estado contém relógio, leitura, checkpoint, progresso, quedas, contatos com aranhas (`hits`), causa da queda (`fallCause`) e jogador (posição, velocidades, apoio, aderência e bloqueio de reagarre). O campo `rides` guarda, para os quatro transportes, `null` antes do embarque ou o instante numérico de partida; posição e fase do voo derivam desse instante e do relógio salvo. Pausa e retomada conservam a viagem. Saves do domínio 1 conservam a migração dos besouros: posições afetadas pela nova seção de besouros retornam à folha `rest-2`, e apoios removidos do trecho misto à `rest-5`; os demais apoios válidos são conservados. Na revisão 3, saves dos domínios 1/2 no trecho substituído retomam na folha `rest-4`; posições anteriores aprovadas continuam válidas. Não serializa imagens, Canvas, áudio, listeners ou ponteiros. No caule inferior, a coordenada de aderência `u` pode ser maior que 1; a altura continua relativa ao comprimento original da lâmina, preservando saves anteriores. `restoreDreamState` valida versões, limites e IDs; a física conserva o relógio das plataformas e o bloqueio de reagarre.
 
 Quatro segundos após o sono concluído no jardim, `ToyRoomPhase.updateActiveMode` inicia `DreamPhase`. Saves antigos do piquenique alcançam essa mesma passagem. Restore prioriza sonho, jardim, epílogo e perseguição. A origem campanha/prévia acompanha a transição; a bandeira “Jardim dos sonhos” fica fora do save da campanha.
 
@@ -165,3 +168,12 @@ Após os últimos espinhos, o vento termina. Yuna preocupa-se ainda segurando a 
 No pântano, chão sob as patas, sombras, troncos/tocos em camadas e paralaxe lateral integram a criatura ao ambiente. São elementos decorativos; não mudam abrigos ou detecção. Em retrato mobile, Yuna fica acima da área do D-pad por enquadramento fixo.
 
 Jardim e sonho compartilham D-pad grande com oito direções e pulo amplo. No sonho, diagonais combinam os eixos; PULAR é separado. No jardim, cima também salta. No voo apenas subir/descer tem efeito na trajetória. Arrastar pelo centro neutro não perde o contato. Asas de todas as abelhas, incluindo rasantes, têm o dobro do ganho anterior; demais efeitos mantêm os níveis.
+
+
+## Abertura com Yuna e Nanda — 01/11/2026
+
+O sonho agora começa com uma cinemática em tela cheia, antes do percurso. Yuna sente frio naquele ambiente e vê Nanda, estranhamente do mesmo tamanho. Ajoelha-se e a balança: “Nanda, onde estamos? Está frio aqui.” A irmã continua dormindo. “Nanda, estou com medo! Me fale como sair daqui.” Sem orientação, Yuna decide seguir e deixa Nanda dormindo.
+
+Não toca música durante a descoberta e os pedidos; há apenas um zunido baixo de silêncio inquietante. Misty Blues entra na transição final da partida e continua no gameplay. Toda fala avança sozinha; um gesto adianta apenas a fala atual, preservando o mínimo da atuação. Não é necessário clicar para a fase começar. Orientações de escalada/lombo aparecem depois, enquanto o jogador já controla Yuna.
+
+O save usa domínio6/envelope1/nightmare7. Abertura guarda momento, tempo, relógio de atuação e dispensa da fala. Saves anteriores mantêm seu percurso sem repetir a cena. QA recuperável: test:sonho:abertura, test:sonho:abertura:browser e review:sonho:abertura:browser.

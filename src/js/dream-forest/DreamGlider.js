@@ -11,7 +11,7 @@ export function dreamGliderPose(p){return{scale:88/700,anchorX:650,anchorY:1180,
 /** Confere amostras opacas das duas pinturas; névoa/transparência não causam dano. */
 export function dreamGliderContact(p){const pose=dreamGliderPose(p),cos=Math.cos(pose.angle),sin=Math.sin(pose.angle);for(const o of DREAM_GLIDE_THORNS){if(p.x+180<o.x||p.x-180>o.x+o.w)continue;for(let j=0;j<girl.mask.length;j++){if(girl.mask[j]!=='1')continue;const a=((j%girl.columns+.5)*girl.width/girl.columns-pose.anchorX)*pose.scale,b=((Math.floor(j/girl.columns)+.5)*girl.height/girl.rows-pose.anchorY)*pose.scale,x=p.x+a*cos-b*sin,y=p.y+a*sin+b*cos,u=(x-o.x)/o.w,v=o.side<0?(y-o.y)/o.h:1-(y-o.y)/o.h;const sourceV=v<0?((v*thorn.height%80)+80)%80/thorn.height:v;if(u>=0&&u<1&&sourceV>=0&&sourceV<1&&thorn.mask[Math.floor(sourceV*thorn.rows)*thorn.columns+Math.floor(u*thorn.columns)]==='1')return true;}}return false;}
 /** Estado exclusivo do voo; câmera acompanha altitude só nesta seção e é restaurável. */
-export function beginDreamGlide(s){s.stage='GLIDE_APPROACH';s.age=0;s.glider={cameraY:450};s.checkpoint='rest-5';s.fallCause=null;s.player.climb=null;}
+export function beginDreamGlide(s){s.story.opening=null;s.story.tutorial=false;s.stage='GLIDE_APPROACH';s.age=0;s.glider={cameraY:450};s.checkpoint='rest-5';s.fallCause=null;s.player.climb=null;}
 /** Caminhada, rajada, voo pesado e queda com reinício automático no galho de lançamento. */
 export function stepDreamGlide(s,input,dt,branch,surface,events,finish){const p=s.player,g=s.glider,tip=branch.x+branch.w*.84;
  if(s.stage==='GLIDE_APPROACH'){p.x=Math.min(tip,p.x+115*dt);p.y=surface(branch,p.x);p.vx=115;p.vy=0;p.facing=1;p.animTime+=115*dt/32;if(p.x>=tip){s.stage='GLIDE_GUST';s.age=0;p.vx=0;}return;}
