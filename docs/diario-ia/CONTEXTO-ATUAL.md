@@ -1,5 +1,11 @@
 # Contexto compartilhado vigente
 
+## Primeira versão do Brinquedão commitada e integrada — 02/11/2026
+
+Por pedido explícito do usuário, a primeira revisão visual foi commitada e mesclada na `main` local. Commit `cdfc1114` (`Refina direção de arte do Brinquedão`); merge commit `bcce092a` (`Merge branch 'FEAT-BRINQUEDAO'`). Merge sem conflitos. A `main` está quatro commits à frente de `origin/main`; não foi feito push.
+
+Suíte completa `npm test`, `test:brinquedao:sprints`, `test:docs:atual`, `npm run build`, `npm run lint`, `npm run check-assets`, `journal:verify` e verificação de diff passaram. Após o merge, `npm run build` passou novamente. Os segmentos e registros do diário foram sincronizados e incluídos; nenhum relatório ou bitmap de QA temporário fora do diário entrou no commit. A revisão artística humana continua pendente; o merge não constitui aprovação humana nem homologação física/Safari.
+
 ## Sprints artísticas P1–P3 implementadas — 02/11/2026
 
 Sessão `20261102T170351-df7913245c7f`, branch FEAT-BRINQUEDAO, base1f9d4c84. Usuário autorizou implementar o plano e, depois, realizar commit das alterações. Trabalho pendente de sessões anteriores preservado; não encerrada sessão alheia. O parecer reprovado abaixo corresponde à versão anterior; esta entrega implementa suas correções e passa por QA técnico, sem presumir aprovação artística humana.
