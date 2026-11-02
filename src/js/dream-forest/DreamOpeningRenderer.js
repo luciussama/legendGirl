@@ -15,7 +15,7 @@ export function renderDreamOpening(ctx,canvas,s,images,{onAdvance=()=>{}}={}){
  if(visible){ctx.save();ctx.filter='blur(8px)';ctx.fillStyle='rgba(0,0,0,.45)';ctx.beginPath();ctx.ellipse(nandaX,nandaBase,ff.w*fairyScale*.44,12*factor,0,0,Math.PI*2);ctx.fill();ctx.restore();ctx.save();ctx.translate(nandaX,nandaBase);ctx.rotate(shake*.002);ctx.scale(1,1+Math.sin(t*1.4)*.002);actor(ctx,images.get('chapters/nanda-gestos-v1.png'),ff,0,0,fairyScale);ctx.restore();}
  const girl=images.get(ART.openingGirl.file),frames=ART.openingGirl.frames;
  if(contact){const f=frames[b.shot==='shake'?1:2],shoulder={x:nandaX+(1370-ff.x-ff.anchorX)*fairyScale+shake,y:nandaBase+(615-ff.y-ff.h)*fairyScale};actor(ctx,girl,f,shoulder.x,shoulder.y,girlScale,{flip:true,hand:f.hand});}
- else{const departing=b.shot==='leave',q=departing?smooth(o.age/4):0,x=departing?970+310*factor*q:b.shot==='lost'?930+40*smooth(o.age/3):970;actor(ctx,girl,frames[departing||b.shot==='lost'?3:0],x,base+(departing?Math.sin(o.age*7)*2*factor:0),girlScale);}
+ else{const departing=b.shot==='leave',q=departing?smooth(o.age/4):0,x=departing?970+310*factor*q:b.shot==='lost'?930+40*smooth(o.age/3):970;if(departing||b.shot==='lost')actor(ctx,girl,frames[3],x,base+(departing?Math.sin(o.age*7)*2*factor:0),girlScale);else actor(ctx,images.get(ART.openingLook.file),ART.openingLook.frames[0],x,base,440/ART.openingLook.referenceHeight*factor);}
  ctx.restore();
  if(b.text&&!o.dismissed){ctx.save();ctx.translate(layout.safe.left,layout.inset);renderPoeticNarration(ctx,layout.virtual,b.text,{heading:b.speaker,advanceCanvas:canvas,onAdvance});ctx.restore();}
  if(b.shot==='leave'&&o.age>2.8){ctx.fillStyle=`rgba(5,13,30,${smooth((o.age-2.8)/1.2)})`;ctx.fillRect(0,0,width,height);}

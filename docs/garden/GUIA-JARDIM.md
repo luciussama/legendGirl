@@ -111,3 +111,6 @@ O padrão geral vigente é [diálogos e cenas](../diario-ia/padroes/DIALOGOS-E-C
 Depois das falas do piquenique, Yuna come mais pão na chapa e bebe suco de laranja, fica sonolenta e adormece. Nanda dorme ao lado dela. `GardenCinematic` usa as novas pinturas em `assets/art/chapters/`; olhos e postura são próprios do sono, sem girar uma pose acordada para simular dormir. O [roteiro dos capítulos](../capitulos/ROTEIRO.md) preserva a intenção da floresta aérea2D do sonho; essa fase não é o percurso2D existente.
 
 Após quatro segundos do sono concluído, o coordenador abre a [floresta dos sonhos](../dream-forest/GUIA-SONHO.md), lateral2D e aérea, com gramas escaláveis, vento e insetos móveis. Essa direção substitui o antigo plano3D. O save do piquenique permanece compatível.
+
+
+No medo e no recuo, a atuação usa inclinação contínua da pintura inteira, mantendo a base dos sapatos. Não há corte rígido entre tronco e pernas; contato e física permanecem os mesmos.

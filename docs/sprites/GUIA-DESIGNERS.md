@@ -158,3 +158,38 @@ A queda após o planador usa yuna-queda-vento-v1: quatro componentes completos m
 
 
 Abertura do sonho: yuna-abertura-sonho-v1 fornece olhar para trás, duas poses ajoelhadas com mãos de contato e partida hesitante. Dados openingGirl em DreamNightmareArt são preparados por prepare-dream-nightmare.js, incluindo rowMask e hand por pose. Prompt/referências em prompts-abertura-sonho-v1.json. Nanda usa a pose adormecida existente de nanda-gestos-v1, em escala corporal comparável à menina; não usar a altura das asas como régua de tamanho. Conferir os dois rostos visíveis, contato de mãos e pés/joelhos inteiros em retrato e paisagem.
+
+## Brinquedão e descoberta de Nanda
+
+Arte do novo circuito em `assets/art/brinquedao/`; [origem e funções](../../assets/art/brinquedao/README.md). `prepare-brinquedao.js` gera BrinquedaoArt; Terrain/Renderer preparam material e máscaras em memória. A prancha v2 é a fonte das quatro atuações; v1 permanece como referência. Passarelas, postes, pontes e escorregadores têm materiais pintados, sem réguas de contato.
+
+`assets/art/dream-forest/yuna-olhar-nanda-v2.png` corrige a torção da pose de descoberta. Cabeça, ombros, tronco e pés devem compartilhar a mesma orientação; não girar pescoço separadamente. `prepare-dream-nightmare.js` mede `openingLook` como componente completo. Cabelo, mãos, vestido e sapatos não devem ser cortados.
+
+A continuação usa `atracoes-elasticas-v1.png`: lona, torre de castelo, painel elástico inclinado e rampa reversa, todos em componentes separados. prepare-brinquedao mede suas máscaras; BrinquedaoAttractions prepara os recortes em memória. Lonas e painel respondem visualmente ao relógio de impacto salvo. BrinquedaoTerrain mantém postes fixos e deixa as peças das pontes caírem. A pose sentada se ancora no assento ao descer/subir rampas. O catálogo gerado agora resolve BRINQUEDAO_ART para marcar recursos em runtime e catalogar os12recortes das três pranchas.
+
+Na recuperação inferior, calhas em U reutilizam o escorregador pintado com amostragem espelhada nas duas metades. BrinquedaoAttractions gira a lona existente para formar18camas laterais, preservando molas e apoios para fora. Compressão e recuo usam o relógio do impacto; o corpo inteiro inclina brevemente sem separar cabeça/pescoço. Não foram gerados ou alterados PNGs nesta expansão; reconstruir o mapa para atualizar consumidores e referências.
+
+
+Interior do Brinquedão: interior-brinquedao-v1.png é o fundo coberto e ensolarado; tubos-interior-v1.png tem cilindro reto e boca isolados em alfa; peixinhos-brinquedo-v1.png tem quatro poses completas de peixes de corda. Os tubos são curvados em memória, com cantos arredondados para conservar material e volume. Não pintar trajetórias ou réguas sobre as superfícies. Prompts e hashes estão em assets/art/brinquedao/prompts-interior-v1.json.
+
+
+Revisão do Brinquedão: piranhas-brinquedo-v2.png substitui o peixe sorridente no runtime, com quatro poses completas (alerta/bote em coral e teal). Alpha real; fonte anterior preservada. Portais devem apoiar a base no mesmo piso ilustrado e alinhar o cilindro ao centro da boca. O renderer não deve manter um tubo reto extra sobre a curva de entrada/saída. As nove piscinas usam recortes existentes projetados sobre rampas e bacias próprias; não adicionar marcações técnicas de pouso.
+
+As entradas e piscinas internas têm colunas acolchoadas e base inferior pintada, além do alinhamento do bocal. O assento de Yuna acompanha o diâmetro do tubo; a pose de saída começa apenas dentro da boca, sem atravessar a parede do cilindro.
+
+
+Brinquedão: sem novos PNGs. Triângulo recorta (9,0,43,28) de stacking-blocks-v1.png; os15blocos usam blocos-atlas-v1.png. Peixes existentes saltam sob pontes, sem perseguição. A queda desloca/roda o bloco real; a superfície de contato acompanha o topo pintado. Chegada é um portal com faixa e bandeirolas do mesmo estilo. Piscinas de bolinhas não integram a jogabilidade atual.
+
+
+## Continuidade e revisão de direção de arte
+
+Conferir conexões entre peças em escala de jogo: materiais devem continuar nas emendas, apoios devem tocar a estrutura e mudanças de altura devem mostrar um degrau construído. Ao adaptar ilustrações a curvas, separar a faixa de material dos postes originais e interpolar coordenadas/tangentes; não repetir uma peça inteira deformada em cada trecho. Entradas e saídas de objetos animados devem ocorrer fora do enquadramento ou por oclusão física visível. Na floresta escura, poses de furtividade, susto, salto na lama, nado e escalada recebem o mesmo ambiente das poses de corrida. Conferir luz direta separadamente, preservando transparência e leitura da silhueta.
+
+As amostras de revisão e pareceres ficam no diário. Aprovação técnica dos enquadramentos revisados e aprovação humana da equipe são estados distintos; registrar o responsável e o escopo antes de declarar aprovação global. Comparativos devem usar os mesmos estados, viewport e relógios.
+
+Atuações de susto/recuo do jardim conservam a pintura inteira: inclinação contínua ancorada nos sapatos substitui o corte de tronco. Não criar articulação rígida atravessando braços ou vestido.
+
+
+### Brinquedão: temas internos e funções visuais
+
+As pinturas internas v2 ficam em assets/art/brinquedao/interior-{blocos,bolinhas,musical,espuma}-v2.png, com versõesJPEG para runtime e proveniência em prompts-interiores-v2.json. Cada pintura tem centro limpo e brinquedos apoiados nas regiões periféricas. BrinquedaoLook aplica atmosfera/material na carga; preservar a proporção e o alfa do piso ao atenuar redes. Advertência fica na face do triângulo; rachaduras/fibras pertencem à madeira das pontes frágeis. Não desenhar réguas de pouso. Presilhas e bocal arredondado devem acompanhar os encontros reais sem criar novas plataformas, alterar colisores ou vetor de lançamento.

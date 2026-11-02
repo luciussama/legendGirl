@@ -1,0 +1,13 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-11-01",
+  "tool": "image_gen",
+  "skill": "imagegen",
+  "file": "atracoes-elasticas-v1.png",
+  "references": [
+    "modulos-brinquedao-v1.png"
+  ],
+  "prompt": "Use case: illustration-story. Asset type: transparent game environment sprite sheet, four COMPLETE SEPARATE objects in a strict square 2x2 grid with at least 80 transparent pixels of gutter; no object touches another. Match the attached existing brinquedão kit's rich painterly storybook material, cheerful sunny garden lighting, teal/coral/yellow padded vinyl, wood, safety ropes. Top-left: ONE broad rectangular trampoline, pure SIDE ELEVATION with shallow visible oval dark woven jumping mat, thick teal and yellow padded rim, visible small metal springs around mat, four short padded legs; no enclosing net or poles above the mat. Top-right: ONE tall soft-play CASTLE tower, side elevation, padded battlements at its upper sides, a broad OPEN flat walkable top deck at center, cylindrical quilted coral/teal side walls under the deck, arched toy window/door below, wood and rope accents. It is a colorful play castle, never stone masonry. Bottom-left: ONE inclined lateral elastic rebound panel, sturdy teal padded frame with taut orange elastic web membrane, angled upward-facing like a 45-degree bank to deflect a child from a low slide into an upward ramp; no arrow symbols. Bottom-right: ONE reverse launching slide, side elevation, LOW at LEFT and curves steeply UP toward a high open lip at RIGHT, yellow riding trough, coral fascia and teal rounded safety lips, short padded supports only BELOW surface. Complete structural pieces with transparent background, no ground, scenery, character, shadows outside the objects, text, labels or symbols. Broad transparent gutters, nothing cropped. Match reference style without copying its four objects.",
+  "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+  "bytes": 1465460
+}

@@ -1,11 +1,506 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 520,
-    "regions": 299,
+    "files": 539,
+    "regions": 318,
     "code": 29
   },
   "items": [
+    {
+      "id": "1ccfb8811f71e916856efb60",
+      "kind": "file",
+      "path": "assets/art/brinquedao/atracoes-elasticas-v1.png",
+      "title": "atracoes-elasticas-v1.png",
+      "format": "png",
+      "width": 1360,
+      "height": 1156,
+      "bytes": 1465460,
+      "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "attractions"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "e4e7277ff7ccee0a59acec4f",
+      "kind": "file",
+      "path": "assets/art/brinquedao/escorregador-v1.png",
+      "title": "escorregador-v1.png",
+      "format": "png",
+      "width": 2172,
+      "height": 724,
+      "bytes": 954039,
+      "sha256": "8e36a0c41a25aa45991e2b4109cb62f3425af177ec22ee7d934a39fe8050fd92",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "slide"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "5eaab635aa4e2cf34ef87e09",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-blocos-v2.jpg",
+      "title": "interior-blocos-v2.jpg",
+      "format": "jpg",
+      "width": 1774,
+      "height": 887,
+      "bytes": 454185,
+      "sha256": "ab791a73b96083c20cf4e4e9efc2bb204b78626f9fc56e2cd14fd21c00b5685f",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 17,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "e08a1ef00aedac977e70243d",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-blocos-v2.png",
+      "title": "interior-blocos-v2.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1991000,
+      "sha256": "ad212309aece0c2081b609a1f755949d5590ee47097c184b72b6f2d118b99432",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "3811f7748aa8e02d3bf16c53",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-bolinhas-v2.jpg",
+      "title": "interior-bolinhas-v2.jpg",
+      "format": "jpg",
+      "width": 1672,
+      "height": 941,
+      "bytes": 536211,
+      "sha256": "661eb1306c7809c8ea67644ef75919771ffa231f83cf2161327632541fc8733a",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 31,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "91eca739881942c3e8234f9c",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-bolinhas-v2.png",
+      "title": "interior-bolinhas-v2.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2251394,
+      "sha256": "c3c63da6f63b3a94080b329281726965d3d8cbf5112ca1f5995c0679113dd919",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 27,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "f92c5ea97f19797dcaa2c14f",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-brinquedao-v1.png",
+      "title": "interior-brinquedao-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2781811,
+      "sha256": "c1cf98ccf25a335c6568f50561f10904f46d219dc8f7e5ee234421899b034201",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 16,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "insideBackground"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "bced643317452db910812fd4",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-espuma-v2.jpg",
+      "title": "interior-espuma-v2.jpg",
+      "format": "jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 491187,
+      "sha256": "c723a9d19ad9ef3e2631b7035f7cc14b0f2743eed9163aabe2648d2711f64f8e",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 59,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "eea1928acd8dad991149b177",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-espuma-v2.png",
+      "title": "interior-espuma-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2131141,
+      "sha256": "cc33043a86b56b7fc2c8f5fb296209190f28dcacd6c8e9d6a3bba21ca0a18e04",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 55,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "76ce6e165b5d3ad6eaa07276",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-musical-v2.jpg",
+      "title": "interior-musical-v2.jpg",
+      "format": "jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 510212,
+      "sha256": "3af47a60c431b92da35f666d7bc73a0401e54a32ffd723a9098b7f61a03126a2",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 45,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "bbd8463f32b496487e4b5e31",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-musical-v2.png",
+      "title": "interior-musical-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2218714,
+      "sha256": "577a194c400e857f2cb1bb31367b30f5857f253a57bd685358cb66ef7b70052d",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 41,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "e297154965dfce637716a1d8",
+      "kind": "file",
+      "path": "assets/art/brinquedao/jardim-brinquedao-v1.png",
+      "title": "jardim-brinquedao-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 3339580,
+      "sha256": "f2a1804459c9bb416cfebea1fd2131e8659fbfdb5da578acf4d87a042f8ebd16",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "background"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "7f9eca2f77f215f6bf81c7f5",
+      "kind": "file",
+      "path": "assets/art/brinquedao/modulos-brinquedao-v1.png",
+      "title": "modulos-brinquedao-v1.png",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 1730575,
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 8,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "kit"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "018ba5ac4ae7d5de362c8e95",
+      "kind": "file",
+      "path": "assets/art/brinquedao/peixinhos-brinquedo-v1.png",
+      "title": "peixinhos-brinquedo-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2037265,
+      "sha256": "9a8a6266b045c6261061515c63879630b2df22e915f2692fdc23575228897171",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 26,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 7,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "fbc2668c05f1217123275747",
+      "kind": "file",
+      "path": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+      "title": "piranhas-brinquedo-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211337,
+      "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fish"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "cdfe379ae6d1bf0bb62cb08f",
+      "kind": "file",
+      "path": "assets/art/brinquedao/tubos-interior-v1.png",
+      "title": "tubos-interior-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1597830,
+      "sha256": "227afb2cbf4ccdfafe81a79ce582a6ae1f0d138753a24f308f38e181475fd046",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "insideTubes"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "f1e084f7b839b6d4aa3d9eaf",
+      "kind": "file",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v1.png",
+      "title": "yuna-brinquedao-v1.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2238037,
+      "sha256": "3f598e678878164999a2697c88d3887205822502b6cda1b026b272e38008f572",
+      "aliases": [],
+      "usage": "nao-localizado",
+      "references": [],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "930cd832e5c22587bdd5a4b7",
+      "kind": "file",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v2.png",
+      "title": "yuna-brinquedao-v2.png",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1724509,
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "girl"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
     {
       "id": "b9353edb680ffd5514a83fd6",
       "kind": "file",
@@ -3832,6 +4327,34 @@
       "family": "assets/art/dream-forest"
     },
     {
+      "id": "d19d494a5f7f25a3de241644",
+      "kind": "file",
+      "path": "assets/art/dream-forest/yuna-olhar-nanda-v2.png",
+      "title": "yuna-olhar-nanda-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1639041,
+      "sha256": "40a47c0a9f80377411fb2b009210f9e04bfb42f3d8444af998f3aa1c129cc3c6",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingLook"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest"
+    },
+    {
       "id": "8c40beffb3a0647577b91c9f",
       "kind": "file",
       "path": "assets/art/dream-forest/yuna-planador-v1.png",
@@ -4088,6 +4611,18 @@
       "usage": "runtime",
       "references": [
         {
+          "file": "src/js/brinquedao/BrinquedaoCinematic.js",
+          "line": 13,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -4095,7 +4630,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 134,
+          "line": 137,
           "type": "runtime",
           "alias": null
         }
@@ -4347,6 +4882,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -4385,6 +4926,12 @@
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -16578,6 +17125,18 @@
           "line": 6,
           "type": "runtime",
           "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
+          "line": 18,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
         }
       ],
       "hints": [],
@@ -17558,6 +18117,36 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoCinematic.js",
+          "line": 13,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
+          "line": 35,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
+          "line": 36,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 32,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/chapters/ToyRoomEpilogue.js",
           "line": 40,
           "type": "runtime",
@@ -17577,7 +18166,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 139,
+          "line": 142,
           "type": "runtime",
           "alias": null
         },
@@ -17801,6 +18390,18 @@
         {
           "file": "src/js/bear-chase/props/ChasePropCatalog.js",
           "line": 19,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
+          "line": 19,
+          "type": "runtime",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25358,6 +25959,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25405,6 +26012,12 @@
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -25458,6 +26071,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25505,6 +26124,12 @@
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -25558,6 +26183,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25605,6 +26236,12 @@
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -25658,6 +26295,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25705,6 +26348,12 @@
           "file": "assets/art/garden/prompts-medo-v1.json",
           "line": 3,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -25770,6 +26419,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25829,6 +26484,12 @@
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -25894,6 +26555,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -25953,6 +26620,12 @@
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -26018,6 +26691,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -26077,6 +26756,12 @@
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -26142,6 +26827,12 @@
           "alias": null
         },
         {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
+          "alias": null
+        },
+        {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
           "line": 27,
           "type": "runtime",
@@ -26201,6 +26892,12 @@
           "file": "assets/art/dream-forest/prompts.json",
           "line": 35,
           "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 21,
+          "type": "runtime",
           "alias": null
         },
         {
@@ -33191,6 +33888,41 @@
       ]
     },
     {
+      "id": "5e693be4307588085774c25e",
+      "kind": "region",
+      "path": "assets/art/dream-forest/yuna-olhar-nanda-v2.png",
+      "title": "pesadelo · openingLook · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1639041,
+      "sha256": "40a47c0a9f80377411fb2b009210f9e04bfb42f3d8444af998f3aa1c129cc3c6",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/dream-forest/DreamNightmareArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "openingLook"
+        },
+        {
+          "file": "src/js/dream-forest/DreamNightmareRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/dream-forest",
+      "region": {
+        "x": 422,
+        "y": 21,
+        "width": 690,
+        "height": 980
+      },
+      "parentId": "d19d494a5f7f25a3de241644"
+    },
+    {
       "id": "6ea88074e403bf9acedf6c55",
       "kind": "region",
       "path": "assets/art/dream-forest/yuna-abertura-sonho-v1.png",
@@ -35077,6 +35809,720 @@
         "height": 693
       },
       "parentId": "1faebef73712514bd57a4429"
+    },
+    {
+      "id": "6e203d0f6fca2c815aa68e4d",
+      "kind": "region",
+      "path": "assets/art/brinquedao/modulos-brinquedao-v1.png",
+      "title": "brinquedão · kit · quadro 1",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 1730575,
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 8,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "kit"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 33,
+        "y": 32,
+        "width": 884,
+        "height": 322
+      },
+      "parentId": "7f9eca2f77f215f6bf81c7f5"
+    },
+    {
+      "id": "93cc0e413de77b3f4e2af034",
+      "kind": "region",
+      "path": "assets/art/brinquedao/modulos-brinquedao-v1.png",
+      "title": "brinquedão · kit · quadro 2",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 1730575,
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 8,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "kit"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 926,
+        "y": 30,
+        "width": 696,
+        "height": 327
+      },
+      "parentId": "7f9eca2f77f215f6bf81c7f5"
+    },
+    {
+      "id": "e4023b0ca1be00cecc1ed3fa",
+      "kind": "region",
+      "path": "assets/art/brinquedao/modulos-brinquedao-v1.png",
+      "title": "brinquedão · kit · quadro 3",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 1730575,
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 8,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "kit"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 25,
+        "y": 677,
+        "width": 1058,
+        "height": 220
+      },
+      "parentId": "7f9eca2f77f215f6bf81c7f5"
+    },
+    {
+      "id": "0896e9a0a3505d352bd2654a",
+      "kind": "region",
+      "path": "assets/art/brinquedao/modulos-brinquedao-v1.png",
+      "title": "brinquedão · kit · quadro 4",
+      "format": "png",
+      "width": 1653,
+      "height": 952,
+      "bytes": 1730575,
+      "sha256": "74307ee1a8b176ef6115ef31abcddcd9b35ca901907461bd8f2f315e17d0988a",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 6,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 8,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "kit"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 1116,
+        "y": 354,
+        "width": 503,
+        "height": 564
+      },
+      "parentId": "7f9eca2f77f215f6bf81c7f5"
+    },
+    {
+      "id": "ebfed8328213feb864cd9b18",
+      "kind": "region",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v2.png",
+      "title": "brinquedão · girl · quadro 1",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1724509,
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "girl"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 122,
+        "y": 63,
+        "width": 473,
+        "height": 503
+      },
+      "parentId": "930cd832e5c22587bdd5a4b7"
+    },
+    {
+      "id": "fb6aac39533a5645095c945f",
+      "kind": "region",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v2.png",
+      "title": "brinquedão · girl · quadro 2",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1724509,
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "girl"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 687,
+        "y": 42,
+        "width": 414,
+        "height": 591
+      },
+      "parentId": "930cd832e5c22587bdd5a4b7"
+    },
+    {
+      "id": "dfe42ab66386119beaa86448",
+      "kind": "region",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v2.png",
+      "title": "brinquedão · girl · quadro 3",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1724509,
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "girl"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 88,
+        "y": 630,
+        "width": 429,
+        "height": 575
+      },
+      "parentId": "930cd832e5c22587bdd5a4b7"
+    },
+    {
+      "id": "42929be1bda8a5ccd1393714",
+      "kind": "region",
+      "path": "assets/art/brinquedao/yuna-brinquedao-v2.png",
+      "title": "brinquedão · girl · quadro 4",
+      "format": "png",
+      "width": 1254,
+      "height": 1254,
+      "bytes": 1724509,
+      "sha256": "4ff63f9832772ef27043fb194f44b46987af500c78f447523e6101b2aa811f9b",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "girl"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 624,
+        "y": 711,
+        "width": 581,
+        "height": 464
+      },
+      "parentId": "930cd832e5c22587bdd5a4b7"
+    },
+    {
+      "id": "74c2695e35ea35ef7ec02abc",
+      "kind": "region",
+      "path": "assets/art/brinquedao/atracoes-elasticas-v1.png",
+      "title": "brinquedão · attractions · quadro 1",
+      "format": "png",
+      "width": 1360,
+      "height": 1156,
+      "bytes": 1465460,
+      "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "attractions"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 23,
+        "y": 321,
+        "width": 754,
+        "height": 277
+      },
+      "parentId": "1ccfb8811f71e916856efb60"
+    },
+    {
+      "id": "60b9ed193bf9ce80591e7661",
+      "kind": "region",
+      "path": "assets/art/brinquedao/atracoes-elasticas-v1.png",
+      "title": "brinquedão · attractions · quadro 2",
+      "format": "png",
+      "width": 1360,
+      "height": 1156,
+      "bytes": 1465460,
+      "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "attractions"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 833,
+        "y": 20,
+        "width": 507,
+        "height": 579
+      },
+      "parentId": "1ccfb8811f71e916856efb60"
+    },
+    {
+      "id": "0bd13118532185218130cd28",
+      "kind": "region",
+      "path": "assets/art/brinquedao/atracoes-elasticas-v1.png",
+      "title": "brinquedão · attractions · quadro 3",
+      "format": "png",
+      "width": 1360,
+      "height": 1156,
+      "bytes": 1465460,
+      "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "attractions"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 67,
+        "y": 675,
+        "width": 585,
+        "height": 450
+      },
+      "parentId": "1ccfb8811f71e916856efb60"
+    },
+    {
+      "id": "bf5e2972b51ad19fdfe02eec",
+      "kind": "region",
+      "path": "assets/art/brinquedao/atracoes-elasticas-v1.png",
+      "title": "brinquedão · attractions · quadro 4",
+      "format": "png",
+      "width": 1360,
+      "height": 1156,
+      "bytes": 1465460,
+      "sha256": "928dd4d316f54f19ab6328eb22b6394ecf30ba490ae0f538be6cfc3ec5129240",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "attractions"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 745,
+        "y": 640,
+        "width": 596,
+        "height": 476
+      },
+      "parentId": "1ccfb8811f71e916856efb60"
+    },
+    {
+      "id": "9d718b995611ce1aef4d439c",
+      "kind": "region",
+      "path": "assets/art/brinquedao/tubos-interior-v1.png",
+      "title": "brinquedão · insideTubes · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1597830,
+      "sha256": "227afb2cbf4ccdfafe81a79ce582a6ae1f0d138753a24f308f38e181475fd046",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "insideTubes"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 10,
+        "y": 161,
+        "width": 1516,
+        "height": 230
+      },
+      "parentId": "cdfe379ae6d1bf0bb62cb08f"
+    },
+    {
+      "id": "4b0ea9da4cc5760113da94fd",
+      "kind": "region",
+      "path": "assets/art/brinquedao/tubos-interior-v1.png",
+      "title": "brinquedão · insideTubes · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 1597830,
+      "sha256": "227afb2cbf4ccdfafe81a79ce582a6ae1f0d138753a24f308f38e181475fd046",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interior-v1.json",
+          "line": 21,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "insideTubes"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 512,
+        "y": 528,
+        "width": 483,
+        "height": 397
+      },
+      "parentId": "cdfe379ae6d1bf0bb62cb08f"
+    },
+    {
+      "id": "6f68fe735b40e36b8bbf6070",
+      "kind": "region",
+      "path": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+      "title": "brinquedão · fish · quadro 1",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211337,
+      "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fish"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 159,
+        "y": 23,
+        "width": 636,
+        "height": 456
+      },
+      "parentId": "fbc2668c05f1217123275747"
+    },
+    {
+      "id": "ce6f3571df311f97ca7851ce",
+      "kind": "region",
+      "path": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+      "title": "brinquedão · fish · quadro 2",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211337,
+      "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fish"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 879,
+        "y": 39,
+        "width": 613,
+        "height": 429
+      },
+      "parentId": "fbc2668c05f1217123275747"
+    },
+    {
+      "id": "7677705c6b62105493f4eb93",
+      "kind": "region",
+      "path": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+      "title": "brinquedão · fish · quadro 3",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211337,
+      "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fish"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 141,
+        "y": 524,
+        "width": 650,
+        "height": 459
+      },
+      "parentId": "fbc2668c05f1217123275747"
+    },
+    {
+      "id": "69bd447442c696d1f0a41cfa",
+      "kind": "region",
+      "path": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+      "title": "brinquedão · fish · quadro 4",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2211337,
+      "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+      "aliases": [],
+      "usage": "runtime",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-piranhas-v2.json",
+          "line": 12,
+          "type": "apoio",
+          "alias": null
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoArt.js",
+          "line": 2,
+          "type": "runtime",
+          "symbol": "fish"
+        },
+        {
+          "file": "src/js/brinquedao/BrinquedaoRenderer.js",
+          "line": 1,
+          "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao",
+      "region": {
+        "x": 876,
+        "y": 529,
+        "width": 619,
+        "height": 438
+      },
+      "parentId": "fbc2668c05f1217123275747"
     }
   ]
 }

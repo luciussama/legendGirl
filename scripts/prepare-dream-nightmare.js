@@ -42,6 +42,7 @@ const hillImage=PNG.sync.read(fs.readFileSync(root+'/morro-terra-v1.png'));
 const hills={file:'dream-forest/morro-terra-v1.png',width:hillImage.width,height:hillImage.height,frames:[{x:0,y:100,w:hillImage.width,h:hillImage.height-100}]};
 const windFall=isolatedActors('yuna-queda-vento-v1.png',4,true);
 const openingGirl=isolatedActors('yuna-abertura-sonho-v1.png',4,true);openingGirl.frames[1].hand=[1280-openingGirl.frames[1].x,260-openingGirl.frames[1].y];openingGirl.frames[2].hand=[725-openingGirl.frames[2].x,713-openingGirl.frames[2].y];
-const art={openingGirl,windFall,mudJump,splash,cinematicGirl,cinematicForest,hills,lakes,swim,bankClimb,stealth,shelters,fright:sheet('yuna-susto-em-pe-v2.png',2),bodies,roach:{file:'dream-forest/barata-pesadelo-v1.png',width:roach.width,height:roach.height,eyes:[[.385,.526],[.495,.526]],head:[.44,.526]},rocks:sheet('pedras-pesadelo-v1.png',3,true),wake:sheet('yuna-despertar-v2.png',3)};
+const openingLook=isolatedActors('yuna-olhar-nanda-v2.png',1,true);
+const art={openingLook,openingGirl,windFall,mudJump,splash,cinematicGirl,cinematicForest,hills,lakes,swim,bankClimb,stealth,shelters,fright:sheet('yuna-susto-em-pe-v2.png',2),bodies,roach:{file:'dream-forest/barata-pesadelo-v1.png',width:roach.width,height:roach.height,eyes:[[.385,.526],[.495,.526]],head:[.44,.526]},rocks:sheet('pedras-pesadelo-v1.png',3,true),wake:sheet('yuna-despertar-v2.png',3)};
 fs.writeFileSync('src/js/dream-forest/DreamNightmareArt.js','// Gerado por prepare-dream-nightmare.js; alfa, olhos e recortes de apresentação.\nexport const DREAM_NIGHTMARE_ART='+JSON.stringify(art)+';\n');
 console.log('Pesadelo preparado: lagos irregulares, quatro poses de nado, saída própria da lama, abrigos e corpos opacos.');

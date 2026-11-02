@@ -196,3 +196,5 @@ O sonho usa Canvas2D e recursos locais sob demanda; não acrescenta dependência
 [prepare-dream-nightmare.js](../scripts/prepare-dream-nightmare.js) usa `pngjs` já instalado para ler alfa e medir recortes, contornos e amostras de corpo. A nova cena usa Canvas2D e Web Audio nativos; não adiciona WebGL ou dependências externas.
 
 A fase final do sonho carrega Bug attack.mp3, fornecida pelo usuário e copiada integralmente. Proveniência/hash em assets/audio/bug-attack-proveniencia.json. Duas pranchas novas de furtividade e abrigos têm alfa real e recortes gerados por prepare-dream-nightmare.js. Nenhuma biblioteca nova foi adicionada.
+
+O gerador [prepare-brinquedao.js](../scripts/prepare-brinquedao.js) usa pngjs para medir alfa, componentes completos e máscaras; não adiciona dependência nova.
