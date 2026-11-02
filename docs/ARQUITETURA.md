@@ -330,9 +330,10 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [brinquedao/BrinquedaoLevel.js](../src/js/brinquedao/BrinquedaoLevel.js) | Circuito, curvas, materiais, desníveis e checkpoints próprios. | `BRINQUEDAO`, `BRINQUEDAO_TRACKS`, `BRINQUEDAO_STEPS`, `BRINQUEDAO_BY_ID`, `BRINQUEDAO_CHECKPOINTS`, `BRINQUEDAO_SECTIONS`, `brinquedaoSurface`, `brinquedaoSlope`, `brinquedaoMainAt`, `brinquedaoNearby` |
 | [brinquedao/BrinquedaoPhase.js](../src/js/brinquedao/BrinquedaoPhase.js) | Carga, entrada, pausa, snapshot e descarte da fase. | `BrinquedaoPhase` |
 | [brinquedao/BrinquedaoRenderer.js](../src/js/brinquedao/BrinquedaoRenderer.js) | Composição lateral inicial, altitude na continuação e escala fixa por viewport, HUD e controles. | `BrinquedaoRenderer` |
+| [brinquedao/BrinquedaoLook.js](../src/js/brinquedao/BrinquedaoLook.js) | Atmosfera em cache, quatro pinturas temáticas, desgaste preventivo, perigo, blocos chanfrados e encaixes; sem domínio persistido. | `BRINQUEDAO_LOOK_THEMES`, `BrinquedaoLook` |
 | [brinquedao/BrinquedaoSimulation.js](../src/js/brinquedao/BrinquedaoSimulation.js) | Estado serializável, embalo, salto, colisões, bolinhas e recuperação. | `createBrinquedaoState`, `restoreBrinquedaoState`, `recoverBrinquedao`, `stepBrinquedao` |
 | [brinquedao/BrinquedaoStory.js](../src/js/brinquedao/BrinquedaoStory.js) | Sete momentos do convite com avanço automático ou unitário. | `BRINQUEDAO_INTRO`, `advanceBrinquedaoStory` |
-| [brinquedao/BrinquedaoTerrain.js](../src/js/brinquedao/BrinquedaoTerrain.js) | Caches de material pintado registrados sobre superfícies físicas. | `prepareBrinquedaoParts`, `drawBrinquedaoTerrain` |
+| [brinquedao/BrinquedaoTerrain.js](../src/js/brinquedao/BrinquedaoTerrain.js) | Caches de material pintado registrados sobre superfícies físicas. | `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`, `drawBrinquedaoSurfaceStrip` |
 
 | [brinquedao/BrinquedaoExtension.js](../src/js/brinquedao/BrinquedaoExtension.js) | Segunda metade: trampolins, castelos, pontes que cedem, rampa e limites dos vãos. | `BRINQUEDAO_EXTENSION_TRACKS`, `BRINQUEDAO_ELASTIC`, `brinquedaoDeathY` |
 | [brinquedao/BrinquedaoObstacles.js](../src/js/brinquedao/BrinquedaoObstacles.js) | Contatos e impulsos físicos, colapso e relógios serializados das atrações. | `createBrinquedaoObstacles`, `brinquedaoBridgeSolid`, `contactBrinquedao`, `hitBrinquedaoElastic`, `launchBrinquedaoSky`, `validateBrinquedaoObstacles` |
@@ -341,7 +342,7 @@ Cada arquivo de `src/js` tem uma linha abaixo. A coluna de contratos enumera dec
 | [brinquedao/BrinquedaoRecovery.js](../src/js/brinquedao/BrinquedaoRecovery.js) | Apoios inferiores, calhas e colisão varrida de lonas laterais, com impulso e recuo persistidos. | `BRINQUEDAO_RECOVERY_TRACKS`, `BRINQUEDAO_SIDE_MATS`, `brinquedaoOutletReady`, `brinquedaoOutletFlight`, `brinquedaoRicochetAge`, `hitBrinquedaoSideMat` |
 | [brinquedao/BrinquedaoTubes.js](../src/js/brinquedao/BrinquedaoTubes.js) | Trajetórias arredondadas e piso interno. | `BRINQUEDAO_INSIDE`, `BRINQUEDAO_TUBES`, `brinquedaoTubePose` |
 | [brinquedao/BrinquedaoGauntlet.js](../src/js/brinquedao/BrinquedaoGauntlet.js) | Pista/triângulo, sequência de lonas e colapso dos blocos. | `BRINQUEDAO_GAUNTLET`, `BRINQUEDAO_REBOUNDS`, `brinquedaoBlockSolid`, `brinquedaoTriangleTouches`, `brinquedaoReboundPose` |
-| [brinquedao/BrinquedaoFish.js](../src/js/brinquedao/BrinquedaoFish.js) | Peixes saltadores de pontos fixos nas pontes externas. | `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`, `brinquedaoFishImpactAge` |
+| [brinquedao/BrinquedaoFish.js](../src/js/brinquedao/BrinquedaoFish.js) | Peixes de pontos fixos: arco físico preservado e entrada/saída visual contínua fora do enquadramento, lateral no mobile. | `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`, `brinquedaoFishImpactAge`, `brinquedaoFishEntryPose` |
 | [brinquedao/BrinquedaoInterior.js](../src/js/brinquedao/BrinquedaoInterior.js) | Três seções, dois acertos e retry na piscina. | `createBrinquedaoInterior`, `beginBrinquedaoInterior`, `retryBrinquedaoInterior`, `stepBrinquedaoInterior`, `validateBrinquedaoInterior` |
 | [brinquedao/BrinquedaoInteriorRenderer.js](../src/js/brinquedao/BrinquedaoInteriorRenderer.js) | Portal, tubos, peixes, bolinhas e corações. | `prepareBrinquedaoInterior`, `drawBrinquedaoInteriorDoor`, `renderBrinquedaoInterior` |
 
@@ -513,7 +514,7 @@ DreamAudio mantém música pausada durante a abertura e suprime asas do gameplay
 
 `ToyRoomPhase.updateActiveMode` prioriza `brinq`. O sonho concluído com `nightmare.completed` abre o convite após60 ticks disponíveis, sem avançar durante pausa. `startBrinquedao` descarta outros modos, remove a entrada da sala e conserva a origem da campanha. `ToyRoomPersistence` e seu contexto incluem `toyRoomBrinquedao` antes dos modos anteriores. `game.js` encaminha leitura, pausa e acesso de debug.
 
-`BrinquedaoPhase`, `BrinquedaoRenderer` e `BrinquedaoAudio` são as três novas classes. Level/Simulation/Story/Terrain/Cinematic são módulos funcionais; Art contém dados derivados. A entrada reutiliza GardenInput e o áudio estende GardenAudio. O domínio próprio não altera a física do jardim ou sonho. Corpo, checkpoint e relógios são serializados; recursos e entrada são transitórios. Detalhes no [guia](brinquedao/GUIA-BRINQUEDAO.md).
+`BrinquedaoPhase`, `BrinquedaoRenderer`, `BrinquedaoAudio` e `BrinquedaoLook` são as classes da fase. Level/Simulation/Story/Terrain/Cinematic são módulos funcionais; Art contém dados derivados. A entrada reutiliza GardenInput e o áudio estende GardenAudio. O domínio próprio não altera a física do jardim ou sonho. Corpo, checkpoint e relógios são serializados; recursos e entrada são transitórios. Detalhes no [guia](brinquedao/GUIA-BRINQUEDAO.md).
 
 A nova pose `openingLook` corrige a torção anatômica na descoberta de Nanda. `prepare-dream-nightmare` mede o componente completo e DreamOpeningRenderer o ancora nos pés, preservando física, falas e gestos ajoelhados.
 
@@ -534,3 +535,11 @@ Domínio3 acrescenta bumpers/ricochets/recoveryLandings, migra saves1/2 e permit
 O estágio INTERIOR delega à corrida de quatro tubos, domínio7/interior3. Não há piscinas ou IA de perseguição. O primeiro obstáculo reinicia a tentativa; a sequência lateral é automática; o colapso causa Game Over; o quarto tubo conclui na chegada.
 
 Domínio7/interior3: os relógios preservam o impacto externo, os voos automáticos e a onda de colapso. Migração1–6 converte piscinas antigas e remove estados de perseguição antes da validação.
+
+
+A composição do Brinquedão reutiliza `drawBrinquedaoSurfaceStrip` entre terreno externo e pistas internas; coordenadas interpoladas e tangentes afins evitam costuras serrilhadas. A faixa das calhas é preparada em memória sem os postes da fonte, compartilhada por rampas ascendentes/descendentes e recuperações. Ordenação visual por profundidade e espelhos acolchoados dos degraus não alteram o domínio7. `DreamNightmareRenderer` prepara o mesmo ambiente noturno para as poses furtivas e de lama, com sombra de contato apenas no apoio seco e luz direta independente.
+
+GardenRenderer.sprite inclina a pintura inteira por cisalhamento suave ancorado nos pés durante medo/recuo; não corta nem gira o tronco separadamente. Identidade, atlas e perfil físico são preservados.
+
+
+Sprints artísticas P1–P3: BrinquedaoLook prepara fundos em resolução limitada a960px de largura, contraste/desaturação, filtro de redes por coluna e materiais sem operações de pixels por quadro. A máscara das redes conserva a opacidade do piso. Quatro JPEGs opacos novos são consumidos; PNGs originais/prompts ficam preservados. Renderer descarta as imagens temáticas de alta resolução após o preparo e libera todos os canvases ao sair. A aproximação móvel dos peixes usa Hermite lateral acima dos botões; o arco ativo/corpo de dano permanece idêntico. Em retrato, o enquadramento inicial reserva espaço fixo para esse arco; em paisagem, preserva o enquadramento anterior e chega pela faixa acima dos controles. Escala, entrada, física e impulso permanecem os mesmos.

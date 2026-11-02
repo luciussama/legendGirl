@@ -588,7 +588,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `drawBrinquedaoSpring(ctx,image,p,s)` | Função | [11](../src/js/brinquedao/BrinquedaoAttractions.js#L11) | Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes. |
 | `drawBrinquedaoElastic(ctx,parts,s,left,right)` | Função | [13](../src/js/brinquedao/BrinquedaoAttractions.js#L13) | Compõe o painel oblíquo e seu recuo após contato. |
 | `drawBrinquedaoSideMats(ctx,parts,s,left,right)` | Função | [16](../src/js/brinquedao/BrinquedaoAttractions.js#L16) | Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto. |
-| `drawBrinquedaoBridgeFish(ctx,parts,s,left,right)` | Função | [19](../src/js/brinquedao/BrinquedaoAttractions.js#L19) | Desenha peixes que saltam em pontos fixos das pontes, sem perseguir Yuna. |
+| `drawBrinquedaoBridgeFish(ctx,parts,s,left,right,bottom=0,entry=null)` | Função | [19](../src/js/brinquedao/BrinquedaoAttractions.js#L19) | Desenha o arco contínuo, com aproximação lateral acima dos controles no mobile e sem alterar contato. |
 
 ## src/js/brinquedao/BrinquedaoAudio.js
 
@@ -617,14 +617,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoFish.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoFish.js). Contratos exportados/reexportados: `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`, `brinquedaoFishImpactAge`.
+[Implementação](../src/js/brinquedao/BrinquedaoFish.js). Contratos exportados/reexportados: `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`, `brinquedaoFishImpactAge`, `brinquedaoFishEntryPose`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `brinquedaoFishSpecs(bridge)` | Função | [2](../src/js/brinquedao/BrinquedaoFish.js#L2) | Define dois pontos fixos de salto e fases dos peixes por ponte. |
-| `brinquedaoFishPose(spec,time)` | Função | [3](../src/js/brinquedao/BrinquedaoFish.js#L3) | Calcula salto periódico independente da posição da menina. |
-| `brinquedaoFishTouches(player,fish)` | Função | [5](../src/js/brinquedao/BrinquedaoFish.js#L5) | Testa contato da elipse central do peixe com o tronco, somente durante o salto. |
-| `brinquedaoFishImpactAge(s)` | Função | [6](../src/js/brinquedao/BrinquedaoFish.js#L6) | Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo. |
+| `brinquedaoFishPose(spec,time,depth=1600)` | Função | [4](../src/js/brinquedao/BrinquedaoFish.js#L4) | Preserva o arco de contato e prolonga entrada/saída visual até fora da tela, com tangentes contínuas. |
+| `brinquedaoFishTouches(player,fish)` | Função | [11](../src/js/brinquedao/BrinquedaoFish.js#L11) | Testa contato da elipse central do peixe com o tronco, somente durante o salto. |
+| `brinquedaoFishImpactAge(s)` | Função | [12](../src/js/brinquedao/BrinquedaoFish.js#L12) | Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo. |
+| `brinquedaoFishEntryPose(spec,time,bounds)` | Função | [15](../src/js/brinquedao/BrinquedaoFish.js#L15) | Interpola só a aproximação/saída visual lateral no mobile, sem alterar o arco ativo ou o dano. |
 
 ## src/js/brinquedao/BrinquedaoGauntlet.js
 
@@ -658,19 +659,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `crops(image,set)` | Função | [9](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prepareBrinquedaoInterior(images)` | Função | [10](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L10) | Recorta módulos de tubo e peixes completos em canvases reutilizáveis. |
-| `drawBrinquedaoInteriorDoor(ctx,parts,kit)` | Função | [12](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L12) | Desenha a entrada acolchoada no antigo terraço final. |
-| `pad(ctx,r,from,to,y)` | Função | [13](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `column(ctx,r,x,top,bottom)` | Função | [14](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `portal(ctx,r,x,floor,incoming,shaft=true)` | Função | [15](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `block(ctx,r,x,y,w,index,age)` | Função | [17](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L17) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triangle(ctx,r)` | Função | [18](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `finishGate(ctx,r)` | Função | [19](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L19) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `reboundRoom(ctx,r)` | Função | [20](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `room(ctx,r,i,index,preview=false)` | Função | [21](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tube(ctx,r,index,center,worldW,worldH)` | Função | [24](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderBrinquedaoInterior(r,s,{touch=false,paused=false,onAdvance=()=>{}}={})` | Função | [26](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L26) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
+| `crops(image,set)` | Função | [10](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareBrinquedaoInterior(images)` | Função | [11](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L11) | Recorta módulos de tubo e peixes completos em canvases reutilizáveis. |
+| `drawBrinquedaoInteriorDoor(ctx,parts,kit)` | Função | [13](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L13) | Desenha a entrada acolchoada no antigo terraço final. |
+| `pad(ctx,r,from,to,y)` | Função | [14](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `column(ctx,r,x,top,bottom)` | Função | [15](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `portal(ctx,r,x,floor,incoming,shaft=true)` | Função | [16](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `block(ctx,r,x,y,w,index,age)` | Função | [18](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triangle(ctx,r)` | Função | [19](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L19) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `finishGate(ctx,r)` | Função | [21](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L21) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `reboundRoom(ctx,r)` | Função | [22](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `room(ctx,r,i,index,preview=false)` | Função | [23](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L23) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tube(ctx,r,index,center,worldW,worldH,front=false)` | Função | [26](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L26) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBrinquedaoInterior(r,s,{touch=false,paused=false,onAdvance=()=>{}}={})` | Função | [28](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L28) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
 
 ## src/js/brinquedao/BrinquedaoLevel.js
 
@@ -682,6 +683,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `brinquedaoSlope(p,x)` | Função | [16](../src/js/brinquedao/BrinquedaoLevel.js#L16) | Mede inclinação local para gravidade tangencial e pose da descida. |
 | `brinquedaoMainAt(x)` | Função | [17](../src/js/brinquedao/BrinquedaoLevel.js#L17) | Localiza a pista principal correspondente à coordenada horizontal. |
 | `brinquedaoNearby(left,right)` | Função | [18](../src/js/brinquedao/BrinquedaoLevel.js#L18) | Seleciona estruturas visíveis sem alterar sua simulação. |
+
+## src/js/brinquedao/BrinquedaoLook.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoLook.js). Contratos exportados/reexportados: `BRINQUEDAO_LOOK_THEMES`, `BrinquedaoLook`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `canvas(w,h)` | Função | [9](../src/js/brinquedao/BrinquedaoLook.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rounded(ctx,x,y,w,h,r,fill)` | Função | [10](../src/js/brinquedao/BrinquedaoLook.js#L10) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/brinquedao/BrinquedaoObstacles.js
 
@@ -744,13 +754,17 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoTerrain.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`.
+[Implementação](../src/js/brinquedao/BrinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoSurfaceStrip`, `drawBrinquedaoTerrain`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `prepareBrinquedaoParts(image,slide)` | Função | [6](../src/js/brinquedao/BrinquedaoTerrain.js#L6) | Extrai módulos completos e mede o topo pintado para registrar o material. |
-| `pillar(ctx,x,y,parts)` | Função | [9](../src/js/brinquedao/BrinquedaoTerrain.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawBrinquedaoTerrain(ctx,parts,left,right,s,attractions)` | Função | [11](../src/js/brinquedao/BrinquedaoTerrain.js#L11) | Projeta pinturas de acolchoado, madeira e escorregador sobre as curvas físicas. |
+| `pillar(ctx,x,y,parts)` | Função | [12](../src/js/brinquedao/BrinquedaoTerrain.js#L12) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceAt(part,x)` | Função | [14](../src/js/brinquedao/BrinquedaoTerrain.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoSurfaceStrip(ctx,part,sx,nextSx,x,nextX,y,nextY,k,height)` | Função | [16](../src/js/brinquedao/BrinquedaoTerrain.js#L16) | Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico. |
+| `stepJoint(ctx,parts,step)` | Função | [22](../src/js/brinquedao/BrinquedaoTerrain.js#L22) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoTerrain(ctx,parts,left,right,s,attractions,look=null)` | Função | [29](../src/js/brinquedao/BrinquedaoTerrain.js#L29) | Projeta pinturas de acolchoado, madeira e escorregador sobre as curvas físicas. |
+| `drawConnections(ctx,parts,look,left,right)` | Função | [48](../src/js/brinquedao/BrinquedaoTerrain.js#L48) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/brinquedao/BrinquedaoTubes.js
 
@@ -1218,13 +1232,13 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `frame(s)` | Método declarado | [63](../src/js/dream-forest/DreamNightmareRenderer.js#L63) | Calcula pose visual estável sem escrever na simulação. |
 | `mudClip(ctx,lake)` | Método declarado | [65](../src/js/dream-forest/DreamNightmareRenderer.js#L65) | Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal. |
 | `girl(ctx,s)` | Método declarado | [67](../src/js/dream-forest/DreamNightmareRenderer.js#L67) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `mudSplash(ctx,n)` | Método declarado | [80](../src/js/dream-forest/DreamNightmareRenderer.js#L80) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `reach(ctx,s)` | Método declarado | [82](../src/js/dream-forest/DreamNightmareRenderer.js#L82) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `swampLayers(ctx,frame,front=false)` | Método declarado | [84](../src/js/dream-forest/DreamNightmareRenderer.js#L84) | Distribui troncos e tocos ilustrados em camadas que envolvem a criatura. |
-| `forest(s,touch)` | Método declarado | [86](../src/js/dream-forest/DreamNightmareRenderer.js#L86) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `wake(s)` | Método declarado | [132](../src/js/dream-forest/DreamNightmareRenderer.js#L132) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [143](../src/js/dream-forest/DreamNightmareRenderer.js#L143) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [144](../src/js/dream-forest/DreamNightmareRenderer.js#L144) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `mudSplash(ctx,n)` | Método declarado | [83](../src/js/dream-forest/DreamNightmareRenderer.js#L83) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `reach(ctx,s)` | Método declarado | [85](../src/js/dream-forest/DreamNightmareRenderer.js#L85) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `swampLayers(ctx,frame,front=false)` | Método declarado | [87](../src/js/dream-forest/DreamNightmareRenderer.js#L87) | Distribui troncos e tocos ilustrados em camadas que envolvem a criatura. |
+| `forest(s,touch)` | Método declarado | [89](../src/js/dream-forest/DreamNightmareRenderer.js#L89) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `wake(s)` | Método declarado | [135](../src/js/dream-forest/DreamNightmareRenderer.js#L135) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{paused=false,touch=false,onAdvance=()=>{}}={})` | Método declarado | [146](../src/js/dream-forest/DreamNightmareRenderer.js#L146) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [147](../src/js/dream-forest/DreamNightmareRenderer.js#L147) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/dream-forest/DreamOpening.js
 
@@ -1848,28 +1862,28 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `controls()` | Método declarado | [40](../src/js/garden/GardenRenderer.js#L40) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `frame(state)` | Método declarado | [42](../src/js/garden/GardenRenderer.js#L42) | Calcula pose visual estável sem escrever na simulação. |
 | `sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0)` | Método declarado | [43](../src/js/garden/GardenRenderer.js#L43) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | [54](../src/js/garden/GardenRenderer.js#L54) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundPattern(type)` | Método declarado | [56](../src/js/garden/GardenRenderer.js#L56) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundOutline(ctx,p,bottom)` | Método declarado | [72](../src/js/garden/GardenRenderer.js#L72) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceTile(type,part='middle')` | Método declarado | [81](../src/js/garden/GardenRenderer.js#L81) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | [95](../src/js/garden/GardenRenderer.js#L95) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrainBodies(ctx,platforms,bottom)` | Método declarado | [118](../src/js/garden/GardenRenderer.js#L118) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `terrain(ctx,p,bottom,body=true)` | Método declarado | [127](../src/js/garden/GardenRenderer.js#L127) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | [138](../src/js/garden/GardenRenderer.js#L138) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `rockFoot(ctx,p)` | Método declarado | [143](../src/js/garden/GardenRenderer.js#L143) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | [148](../src/js/garden/GardenRenderer.js#L148) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | [164](../src/js/garden/GardenRenderer.js#L164) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `groundJoins(ctx,platforms)` | Método declarado | [179](../src/js/garden/GardenRenderer.js#L179) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `grassFront(ctx,s,platforms)` | Método declarado | [187](../src/js/garden/GardenRenderer.js#L187) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `effort(ctx,s)` | Método declarado | [195](../src/js/garden/GardenRenderer.js#L195) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sceneryLayout()` | Método declarado | [203](../src/js/garden/GardenRenderer.js#L203) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `scenery(ctx,s,left,right)` | Método declarado | [218](../src/js/garden/GardenRenderer.js#L218) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `fairy(ctx,s)` | Método declarado | [224](../src/js/garden/GardenRenderer.js#L224) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | [230](../src/js/garden/GardenRenderer.js#L230) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `message(ctx,text,options)` | Método declarado | [236](../src/js/garden/GardenRenderer.js#L236) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `narrative(ctx,s)` | Método declarado | [241](../src/js/garden/GardenRenderer.js#L241) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | [242](../src/js/garden/GardenRenderer.js#L242) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [324](../src/js/garden/GardenRenderer.js#L324) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `prop(ctx,index,x,y,w,h,setName='objetos')` | Método declarado | [51](../src/js/garden/GardenRenderer.js#L51) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundPattern(type)` | Método declarado | [53](../src/js/garden/GardenRenderer.js#L53) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundOutline(ctx,p,bottom)` | Método declarado | [69](../src/js/garden/GardenRenderer.js#L69) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceTile(type,part='middle')` | Método declarado | [78](../src/js/garden/GardenRenderer.js#L78) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundSurface(ctx,p,joinedLeft,joinedRight)` | Método declarado | [92](../src/js/garden/GardenRenderer.js#L92) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrainBodies(ctx,platforms,bottom)` | Método declarado | [115](../src/js/garden/GardenRenderer.js#L115) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `terrain(ctx,p,bottom,body=true)` | Método declarado | [124](../src/js/garden/GardenRenderer.js#L124) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `aquaticSprite(ctx,index,x,y,w,h,flip=1)` | Método declarado | [135](../src/js/garden/GardenRenderer.js#L135) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `rockFoot(ctx,p)` | Método declarado | [140](../src/js/garden/GardenRenderer.js#L140) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `riverLife(ctx,s,water,left,right,bottom)` | Método declarado | [145](../src/js/garden/GardenRenderer.js#L145) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `waterFront(ctx,s,left,right,bottom,platforms)` | Método declarado | [161](../src/js/garden/GardenRenderer.js#L161) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `groundJoins(ctx,platforms)` | Método declarado | [176](../src/js/garden/GardenRenderer.js#L176) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `grassFront(ctx,s,platforms)` | Método declarado | [184](../src/js/garden/GardenRenderer.js#L184) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `effort(ctx,s)` | Método declarado | [192](../src/js/garden/GardenRenderer.js#L192) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sceneryLayout()` | Método declarado | [200](../src/js/garden/GardenRenderer.js#L200) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `scenery(ctx,s,left,right)` | Método declarado | [215](../src/js/garden/GardenRenderer.js#L215) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `fairy(ctx,s)` | Método declarado | [221](../src/js/garden/GardenRenderer.js#L221) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `insect(ctx,index,x,y,width,height,direction=1)` | Método declarado | [227](../src/js/garden/GardenRenderer.js#L227) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `message(ctx,text,options)` | Método declarado | [233](../src/js/garden/GardenRenderer.js#L233) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `narrative(ctx,s)` | Método declarado | [238](../src/js/garden/GardenRenderer.js#L238) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `render(s,{ready=true,error=null,touch=false,paused=false}={})` | Método declarado | [239](../src/js/garden/GardenRenderer.js#L239) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `destroy()` | Método declarado | [321](../src/js/garden/GardenRenderer.js#L321) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/garden/GardenSimulation.js
 
@@ -3056,4 +3070,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **235 módulos JavaScript**, **1442 declarações nomeadas**.
+Inventário: **236 módulos JavaScript**, **1449 declarações nomeadas**.

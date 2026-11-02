@@ -1,0 +1,66 @@
+{
+  "data": "2026-11-02",
+  "ferramenta": "image_gen integrada",
+  "skill": "/Users/sergio/.codex/skills/.system/imagegen/SKILL.md",
+  "referencia": "assets/art/brinquedao/interior-brinquedao-v1.png",
+  "tipo": "novas composições; referência apenas de estilo; fontes anteriores preservadas",
+  "aprovacaoHumana": "pendente",
+  "imagens": [
+    {
+      "tema": "blocos",
+      "prompt": "Use case: illustration-story. Asset type: wide landscape opaque illustrated BACKGROUND for a fast 2D side-scrolling children's playground game. The input is STYLE REFERENCE ONLY. Create a brand new coherent composition, not a recolor. A distant children's building-block workshop: large rounded interlocking toy blocks arranged as supported architectural arches and storage alcoves along the walls, no toy piles in the central floor. Maintain the reference's rich hand-painted storybook dimensional padded vinyl, warm wood, garden daylight and rounded child-safe craftsmanship. Palette: warm ivory, honey yellow and faded coral. The scene is indoors within a sunlit garden playground, warm translucent skylights and distant greenery. Essential game-readability art direction: distant background only, subdued saturation, soft edges, low local contrast, no hard dark outlines. Keep the central horizontal band and middle lower area visually quiet with broad pale softly shaded wall/floor masses; put recognizable large thematic toys toward upper and side regions, not fine mesh or busy grids. Side-on broad room composition, no close foreground props or horizontal ledges that could be mistaken for playable platforms. All pictured objects have believable attachments/supports. No characters, text, logos, icons, UI, warning symbols, sharp hazards or small high-contrast patterns. One complete landscape painting, no grid, no panels.",
+      "origem": "/Users/sergio/.codex/generated_images/01a192fe-0cd1-7df2-83aa-98caf5a32b91/exec-f569e1a3-6293-4bbc-9e49-cfd61940c101.png",
+      "arquivo": "assets/art/brinquedao/interior-blocos-v2.png",
+      "sha256": "ad212309aece0c2081b609a1f755949d5590ee47097c184b72b6f2d118b99432",
+      "bytes": 1991000,
+      "runtime": {
+        "arquivo": "assets/art/brinquedao/interior-blocos-v2.jpg",
+        "sha256": "ab791a73b96083c20cf4e4e9efc2bb204b78626f9fc56e2cd14fd21c00b5685f",
+        "bytes": 454185,
+        "preparo": "sips: JPEG opaco, qualidade86, proporções e dimensões preservadas; PNG original mantido"
+      }
+    },
+    {
+      "tema": "bolinhas",
+      "prompt": "Use case: illustration-story. Asset type: wide landscape opaque illustrated BACKGROUND for a fast 2D side-scrolling children's playground game. The input is STYLE REFERENCE ONLY. Create a brand new coherent composition, not a recolor. A distant marble-run playroom: broad gentle curved marble tracks fixed to the back wall, a few large toy balls resting in supported channel turns, sparse curved painted architecture. Maintain the reference's rich hand-painted storybook dimensional padded vinyl, warm wood, garden daylight and rounded child-safe craftsmanship. Palette: soft aqua, seafoam, cream and muted honey. The scene is indoors within a sunlit garden playground, warm translucent skylights and distant greenery. Essential game-readability art direction: distant background only, subdued saturation, soft edges, low local contrast, no hard dark outlines. Keep the central horizontal band and middle lower area visually quiet with broad pale softly shaded wall/floor masses; put recognizable large thematic toys toward upper and side regions, not fine mesh or busy grids. Side-on broad room composition, no close foreground props or horizontal ledges that could be mistaken for playable platforms. All pictured objects have believable attachments/supports. No characters, text, logos, icons, UI, warning symbols, sharp hazards or small high-contrast patterns. One complete landscape painting, no grid, no panels.",
+      "origem": "/Users/sergio/.codex/generated_images/01a192fe-0cd1-7df2-83aa-98caf5a32b91/exec-69cbaace-abb4-4c96-84cf-c79a4092a05d.png",
+      "arquivo": "assets/art/brinquedao/interior-bolinhas-v2.png",
+      "sha256": "c3c63da6f63b3a94080b329281726965d3d8cbf5112ca1f5995c0679113dd919",
+      "bytes": 2251394,
+      "runtime": {
+        "arquivo": "assets/art/brinquedao/interior-bolinhas-v2.jpg",
+        "sha256": "661eb1306c7809c8ea67644ef75919771ffa231f83cf2161327632541fc8733a",
+        "bytes": 536211,
+        "preparo": "sips: JPEG opaco, qualidade86, proporções e dimensões preservadas; PNG original mantido"
+      }
+    },
+    {
+      "tema": "musical",
+      "prompt": "Use case: illustration-story. Asset type: wide landscape opaque illustrated BACKGROUND for a fast 2D side-scrolling children's playground game. The input is STYLE REFERENCE ONLY. Create a brand new coherent composition, not a recolor. A distant musical playroom: giant wooden xylophone bars firmly mounted on the back wall, rounded drum-shaped storage bins and a few spring toys resting on distant shelves, no floating musical-note icons. Maintain the reference's rich hand-painted storybook dimensional padded vinyl, warm wood, garden daylight and rounded child-safe craftsmanship. Palette: dusty lavender, cream, muted teal and soft coral. The scene is indoors within a sunlit garden playground, warm translucent skylights and distant greenery. Essential game-readability art direction: distant background only, subdued saturation, soft edges, low local contrast, no hard dark outlines. Keep the central horizontal band and middle lower area visually quiet with broad pale softly shaded wall/floor masses; put recognizable large thematic toys toward upper and side regions, not fine mesh or busy grids. Side-on broad room composition, no close foreground props or horizontal ledges that could be mistaken for playable platforms. All pictured objects have believable attachments/supports. No characters, text, logos, icons, UI, warning symbols, sharp hazards or small high-contrast patterns. One complete landscape painting, no grid, no panels.",
+      "origem": "/Users/sergio/.codex/generated_images/01a192fe-0cd1-7df2-83aa-98caf5a32b91/exec-a4107b32-c761-41b8-9216-1677d8035dcd.png",
+      "arquivo": "assets/art/brinquedao/interior-musical-v2.png",
+      "sha256": "577a194c400e857f2cb1bb31367b30f5857f253a57bd685358cb66ef7b70052d",
+      "bytes": 2218714,
+      "runtime": {
+        "arquivo": "assets/art/brinquedao/interior-musical-v2.jpg",
+        "sha256": "3af47a60c431b92da35f666d7bc73a0401e54a32ffd723a9098b7f61a03126a2",
+        "bytes": 510212,
+        "preparo": "sips: JPEG opaco, qualidade86, proporções e dimensões preservadas; PNG original mantido"
+      }
+    },
+    {
+      "tema": "espuma",
+      "prompt": "Use case: illustration-story. Asset type: wide landscape opaque illustrated BACKGROUND for a fast 2D side-scrolling children's playground game. The input is STYLE REFERENCE ONLY. Create a brand new coherent composition, not a recolor. A distant foam-play room: soft rounded foam arches and mounds, a low distant ball-pit enclosure along the sides; airy cloudlike padded forms integrated into supported walls. Maintain the reference's rich hand-painted storybook dimensional padded vinyl, warm wood, garden daylight and rounded child-safe craftsmanship. Palette: warm pale rose, cream, apricot and seafoam. The scene is indoors within a sunlit garden playground, warm translucent skylights and distant greenery. Essential game-readability art direction: distant background only, subdued saturation, soft edges, low local contrast, no hard dark outlines. Keep the central horizontal band and middle lower area visually quiet with broad pale softly shaded wall/floor masses; put recognizable large thematic toys toward upper and side regions, not fine mesh or busy grids. Side-on broad room composition, no close foreground props or horizontal ledges that could be mistaken for playable platforms. All pictured objects have believable attachments/supports. No characters, text, logos, icons, UI, warning symbols, sharp hazards or small high-contrast patterns. One complete landscape painting, no grid, no panels.",
+      "origem": "/Users/sergio/.codex/generated_images/01a192fe-0cd1-7df2-83aa-98caf5a32b91/exec-a86c4636-42e0-4192-9ea0-cee7afbf8dc7.png",
+      "arquivo": "assets/art/brinquedao/interior-espuma-v2.png",
+      "sha256": "cc33043a86b56b7fc2c8f5fb296209190f28dcacd6c8e9d6a3bba21ca0a18e04",
+      "bytes": 2131141,
+      "runtime": {
+        "arquivo": "assets/art/brinquedao/interior-espuma-v2.jpg",
+        "sha256": "c723a9d19ad9ef3e2631b7035f7cc14b0f2743eed9163aabe2648d2711f64f8e",
+        "bytes": 491187,
+        "preparo": "sips: JPEG opaco, qualidade86, proporções e dimensões preservadas; PNG original mantido"
+      }
+    }
+  ]
+}

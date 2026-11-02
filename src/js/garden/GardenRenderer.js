@@ -43,12 +43,9 @@ export class GardenRenderer {
   sprite(ctx,set,index,x,y,height,flip=1,fear=false,agitation=0,reaction=0){
     const def=GARDEN_ART.sets[set],f=(fear?FEAR_FRAMES[set]:def.frames)[index],image=this.images.get(fear?FEAR_FILES[set]:def.file);if(!image)return;
     const scale=height/GARDEN_ART.referenceHeight;ctx.save();ctx.translate(x,y);ctx.scale(flip,1);
-    if(fear||reaction){
-      // Só o tronco oscila: pernas e sapatos conservam a posição física exata.
-      const cut=Math.floor(f.h*.58),base=(-f.anchorY+cut)*scale;
-      ctx.drawImage(image,f.x,f.y+cut,f.w,f.h-cut,-f.anchorX*scale,base,f.w*scale,(f.h-cut)*scale);
-      ctx.translate(0,base);ctx.rotate(agitation+reaction);ctx.drawImage(image,f.x,f.y,f.w,cut,-f.anchorX*scale,-cut*scale,f.w*scale,cut*scale);
-    }else ctx.drawImage(image,f.x,f.y,f.w,f.h,-f.anchorX*scale,-f.anchorY*scale,f.w*scale,f.h*scale);
+    // A inclinação contínua mantém os sapatos no apoio sem fatiar tronco, braços ou vestido.
+    if(fear||reaction)ctx.transform(1,0,Math.tan(agitation+reaction)*.3,1,0,0);
+    ctx.drawImage(image,f.x,f.y,f.w,f.h,-f.anchorX*scale,-f.anchorY*scale,f.w*scale,f.h*scale);
     ctx.restore();
   }
   prop(ctx,index,x,y,w,h,setName='objetos'){const set=GARDEN_ART.sets[setName],f=set.frames[index],image=this.images.get(set.file);if(image)ctx.drawImage(image,f.x,f.y,f.w,f.h,x,y,w,h??w*f.h/f.w);}

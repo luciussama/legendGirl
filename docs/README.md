@@ -42,7 +42,7 @@ Registre validações reais e arquivos revisados no diário, sem espalhar relat�
 [Brinquedão](brinquedao/GUIA-BRINQUEDAO.md): convite após o pesadelo, circuito rápido, materiais, áudio, controles, persistência e manutenção.
 
 
-O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) inclui o interior em três seções, tubos e piscinas com peixinhos, domínio4 e contratos de retomada.
+O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) documenta as quatro passagens internas, materiais P1–P3, temas ilustrados, domínio7/interior3 e contratos de retomada.
 
 
 

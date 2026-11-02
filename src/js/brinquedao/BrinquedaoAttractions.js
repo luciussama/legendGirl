@@ -1,4 +1,4 @@
-import {brinquedaoFishSpecs,brinquedaoFishPose} from './BrinquedaoFish.js';
+import {brinquedaoFishSpecs,brinquedaoFishPose,brinquedaoFishEntryPose} from './BrinquedaoFish.js';
 import {BRINQUEDAO_SIDE_MATS,brinquedaoOutletReady} from './BrinquedaoRecovery.js';
 import {BRINQUEDAO_ART as ART} from './BrinquedaoArt.js';
 import {BRINQUEDAO_TRACKS} from './BrinquedaoLevel.js';
@@ -15,5 +15,11 @@ export function drawBrinquedaoElastic(ctx,parts,s,left,right){const p=BRINQUEDAO
 /** Camas verticais nas extremidades usam a mesma lona pintada, com molas e apoios voltados para fora. */
 export function drawBrinquedaoSideMats(ctx,parts,s,left,right){const image=parts[0].canvas;for(const wall of BRINQUEDAO_SIDE_MATS){if(wall.x<left-100||wall.x>right+100)continue;const age=s.obstacles.bumpers[wall.id]===null?100:s.time-s.obstacles.bumpers[wall.id],compression=age<.24?Math.sin(age/.24*Math.PI)*.16:0,k=(wall.bottom-wall.top)/image.width;ctx.save();ctx.translate(wall.x,(wall.top+wall.bottom)/2);ctx.rotate(-wall.side*Math.PI/2+(wall.side>0&&brinquedaoOutletReady(s,wall.group)?Math.PI/4:0));ctx.scale(1,1-compression);ctx.drawImage(image,-image.width*k/2,-image.height*.31*k,image.width*k,image.height*k);ctx.restore();}}
 
-/** Peixes pulam em trajetórias fixas sob as pontes, sem mirar ou seguir a personagem. */
-export function drawBrinquedaoBridgeFish(ctx,parts,s,left,right){for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge'&&t.to>=left&&t.from<=right))for(const spec of brinquedaoFishSpecs(bridge)){const p=brinquedaoFishPose(spec,s.time);if(!p.active&&!p.warning)continue;const image=parts[2+(spec.facing<0?2:0)+(p.active?1:0)].canvas,w=102,k=w/image.width;ctx.save();ctx.translate(p.x,p.warning&&!p.active?spec.y+65:p.y);ctx.rotate(p.angle*p.facing);ctx.scale(p.facing,1);ctx.drawImage(image,-image.width*.55*k,-image.height*.6*k,w,image.height*k);ctx.restore();}}
+/** Entrada e saída ficam abaixo da borda inferior; o trecho de contato conserva a trajetória física. */
+export function drawBrinquedaoBridgeFish(ctx,parts,s,left,right,bottom=0,entry=null){
+ for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge'&&t.to>=left-150&&t.from<=right+150))for(const spec of brinquedaoFishSpecs(bridge)){
+  const depth=Math.max(1600,bottom-spec.y+200),p=entry?brinquedaoFishEntryPose(spec,s.time,entry):brinquedaoFishPose(spec,s.time,depth);if(!p.visible)continue;
+  const image=parts[2+(spec.facing<0?2:0)+1].canvas,w=102,k=w/image.width;
+  ctx.save();ctx.translate(p.x,p.y);ctx.rotate(p.angle*p.facing);ctx.scale(p.facing,1);ctx.drawImage(image,-image.width*.55*k,-image.height*.6*k,w,image.height*k);ctx.restore();
+ }
+}

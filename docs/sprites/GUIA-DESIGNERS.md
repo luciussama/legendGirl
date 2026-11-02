@@ -179,3 +179,17 @@ As entradas e piscinas internas têm colunas acolchoadas e base inferior pintada
 
 
 Brinquedão: sem novos PNGs. Triângulo recorta (9,0,43,28) de stacking-blocks-v1.png; os15blocos usam blocos-atlas-v1.png. Peixes existentes saltam sob pontes, sem perseguição. A queda desloca/roda o bloco real; a superfície de contato acompanha o topo pintado. Chegada é um portal com faixa e bandeirolas do mesmo estilo. Piscinas de bolinhas não integram a jogabilidade atual.
+
+
+## Continuidade e revisão de direção de arte
+
+Conferir conexões entre peças em escala de jogo: materiais devem continuar nas emendas, apoios devem tocar a estrutura e mudanças de altura devem mostrar um degrau construído. Ao adaptar ilustrações a curvas, separar a faixa de material dos postes originais e interpolar coordenadas/tangentes; não repetir uma peça inteira deformada em cada trecho. Entradas e saídas de objetos animados devem ocorrer fora do enquadramento ou por oclusão física visível. Na floresta escura, poses de furtividade, susto, salto na lama, nado e escalada recebem o mesmo ambiente das poses de corrida. Conferir luz direta separadamente, preservando transparência e leitura da silhueta.
+
+As amostras de revisão e pareceres ficam no diário. Aprovação técnica dos enquadramentos revisados e aprovação humana da equipe são estados distintos; registrar o responsável e o escopo antes de declarar aprovação global. Comparativos devem usar os mesmos estados, viewport e relógios.
+
+Atuações de susto/recuo do jardim conservam a pintura inteira: inclinação contínua ancorada nos sapatos substitui o corte de tronco. Não criar articulação rígida atravessando braços ou vestido.
+
+
+### Brinquedão: temas internos e funções visuais
+
+As pinturas internas v2 ficam em assets/art/brinquedao/interior-{blocos,bolinhas,musical,espuma}-v2.png, com versõesJPEG para runtime e proveniência em prompts-interiores-v2.json. Cada pintura tem centro limpo e brinquedos apoiados nas regiões periféricas. BrinquedaoLook aplica atmosfera/material na carga; preservar a proporção e o alfa do piso ao atenuar redes. Advertência fica na face do triângulo; rachaduras/fibras pertencem à madeira das pontes frágeis. Não desenhar réguas de pouso. Presilhas e bocal arredondado devem acompanhar os encontros reais sem criar novas plataformas, alterar colisores ou vetor de lançamento.

@@ -418,3 +418,13 @@ Antes da falha definitiva, quedas das alturas podem alcançar apoios inferiores.
 
 
 01/11/2026 — Revisão de direção do Brinquedão: piscinas suspensas substituídas por pontes rápidas com peixes saltadores e arremesso teatral ao acertar. Interior com quatro tubos: triângulo que exige salto em velocidade, sequência automática de camas laterais, ponte de blocos que desaba e chegada final. Retiradas as piscinas internas e a perseguição de piranhas.
+
+
+### Direção de arte e continuidade — 02/11/2026
+
+Revisão transversal solicitada para preservar coerência entre peças, materiais, apoios e animações. No Brinquedão, eliminar aparições dos peixes dentro da tela, deformações e emendas abruptas das calhas, deixando os desníveis construídos sem mudar o salto. No pesadelo, aplicar ambiente noturno consistente a todas as poses jogáveis. Comparativos visuais da implementação e amostras por fase ficam no diário de IA para a equipe avaliar; a revisão técnica não representa aprovação humana.
+
+
+### Implementação artística P1–P3 do Brinquedão — 02/11/2026
+
+Aplicado o plano aprovado pelo usuário: hierarquia de fundo, personagens legíveis no tubo, aviso de fragilidade/perigo, entrada dos peixes fora dos controles, blocos chanfrados e encaixes/bocal arredondado. Quatro ambientes internos ilustrados variam o tema sem trocar as mecânicas. Física, colisores e impulso são preservados; o retrato móvel reserva espaço visual fixo para o arco. Originais de arte mantidos e versões leves consumidas pelo jogo. A revisão da equipe continua distinta do QA automatizado.

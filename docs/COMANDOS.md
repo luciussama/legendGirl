@@ -347,3 +347,11 @@ Validação dos ajustes do Brinquedão: `npm run journal:qa -- test:brinquedao:a
 
 
 Nova corrida do Brinquedão pelo diário: test:brinquedao:corrida (sucesso/triângulo/rebotes/queda), test:brinquedao:pontes (trajeto e arremesso), test:brinquedao:corrida:migracao (save/restore), test:brinquedao:corrida:browser e test:brinquedao:corrida:toque:browser (percurso inteiro), review:brinquedao:corrida:browser (quadros dirigidos). Os comandos de navegador recebem largura/altura/diretório no diário.
+
+
+Revisão de continuidade e direção de arte, recuperável pelo diário: `npm run journal:qa -- test:arte:continuidade` verifica arco/contatos dos peixes e bordas fora da tela; `review:arte:emendas:browser` gera comparativos nas mesmas posições; `review:arte:projeto:browser` visita entradas oficiais e estados dirigidos das fases. Os dois últimos recebem largura, altura e diretório de evidências dentro do diário. `--direto` no último limita a execução aos quadros dirigidos; não equivale a uma campanha jogada.
+
+Perfil do Brinquedão: `npm run journal:qa -- test:brinquedao:desempenho:browser LARGURA ALTURA DIRETORIO CPU`. Compara referências no Chrome, com métricas de CPU/RAF e contagem de chamadas Canvas; saída no diário, sem equivalência presumida com celular físico.
+
+
+Sprints P1–P3 do Brinquedão: `npm run journal:qa -- test:brinquedao:sprints` preserva os onze módulos físicos e o arco de contato; `test:brinquedao:sprints:materiais:browser` confere opacidade do piso/blocos, contraste, temas, área dos controles e descarte; `review:brinquedao:sprints:browser` gera comparativos antes/depois e cinza. Os dois últimos recebem largura, altura e pasta de evidências no diário. As fontes dos testes são recuperadas temporariamente pelo executor.

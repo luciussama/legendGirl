@@ -29,7 +29,7 @@ export class DreamNightmareRenderer{
     if(this.disposed)return;
     this.roach=prepareDreamRoach(this.images.get(ART.roach.file));
     this.prepareTerrain();
-    for(const file of ['garden/runtime/menina-corrida-v1.png','garden/runtime/menina-acoes-v1.png']){const image=this.images.get(file),canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);ctx.globalCompositeOperation='source-atop';ctx.fillStyle='rgba(12,25,46,.22)';ctx.fillRect(0,0,canvas.width,canvas.height);this.dark.set(file,canvas);}
+    for(const file of ['garden/runtime/menina-corrida-v1.png','garden/runtime/menina-acoes-v1.png',ART.stealth.file,ART.fright.file,ART.mudJump.file,ART.swim.file,ART.bankClimb.file]){const image=this.images.get(file),canvas=document.createElement('canvas');canvas.width=image.width;canvas.height=image.height;const ctx=canvas.getContext('2d');ctx.drawImage(image,0,0);ctx.globalCompositeOperation='source-atop';ctx.fillStyle='rgba(12,25,46,.22)';ctx.fillRect(0,0,canvas.width,canvas.height);this.dark.set(file,canvas);}
     {const image=this.images.get(ART.stealth.file);this.warm=document.createElement('canvas');this.warm.width=image.width;this.warm.height=image.height;const ctx=this.warm.getContext('2d');ctx.drawImage(image,0,0);ctx.globalCompositeOperation='source-atop';ctx.fillStyle='rgba(255,210,132,.6)';ctx.fillRect(0,0,image.width,image.height);}
     this.ready=true;
   })().catch(e=>{this.error='Não foi possível abrir a floresta escura: '+e.message;throw e;});return this.loading;}
@@ -65,11 +65,14 @@ export class DreamNightmareRenderer{
   mudClip(ctx,lake){ctx.beginPath();ctx.moveTo(lake.from-512,lake.top-1024);ctx.lineTo(lake.from-512,mudWaterline(lake,lake.from));for(const [u,v] of lake.path)ctx.lineTo(lake.paintX+u*lake.w,lake.top+v*lake.h);ctx.lineTo(lake.to+512,mudWaterline(lake,lake.to));ctx.lineTo(lake.to+512,lake.top-1024);ctx.closePath();ctx.clip();}
   /** A pose desenhada tem a mesma escala e as mesmas amostras opacas usadas pela detecção. */
   girl(ctx,s){const n=s.nightmare,fear=['NIGHTMARE_STRIKE','GAME_OVER'].includes(s.stage)||s.stage==='NIGHTMARE_FINAL'&&s.age>=2.7,moving=Math.abs(n.vx)>1;
-    const wet=mudActor(n);ctx.save();try{if(wet&&(n.mudMode!=='enter'||n.mudAge>=.68))this.mudClip(ctx,wet.lake);
-    if(wet&&s.stage==='STEALTH'){const f=wet.frame;ctx.save();ctx.translate(wet.x,wet.y);ctx.scale(wet.facing*wet.scale,wet.scale);ctx.drawImage(this.images.get(wet.set.file),f.x,f.y,f.w,f.h,-wet.anchorX,-wet.anchorY,f.w,f.h);ctx.restore();return;}
+    const wet=mudActor(n);ctx.save();try{
+    // A sombra de contato prende o corpo ao mesmo chão dos abrigos, sem acompanhar poses aéreas.
+    if(!wet&&n.grounded&&s.stage==='STEALTH'){ctx.save();ctx.translate(n.x,n.y+2);ctx.scale(1,.24);const shade=ctx.createRadialGradient(0,0,3,0,0,46);shade.addColorStop(0,'rgba(0,3,10,.5)');shade.addColorStop(1,'rgba(0,3,10,0)');ctx.fillStyle=shade;ctx.fillRect(-46,-46,92,92);ctx.restore();}
+    if(wet&&(n.mudMode!=='enter'||n.mudAge>=.68))this.mudClip(ctx,wet.lake);
+    if(wet&&s.stage==='STEALTH'){const f=wet.frame;ctx.save();ctx.translate(wet.x,wet.y);ctx.scale(wet.facing*wet.scale,wet.scale);ctx.drawImage(this.dark.get(wet.set.file),f.x,f.y,f.w,f.h,-wet.anchorX,-wet.anchorY,f.w,f.h);ctx.restore();return;}
     let set=GARDEN_ART.sets[moving?'menina-corrida-v1':'menina-acoes-v1'],index=moving?Math.floor(n.animTime)%8:7,file='garden/'+set.file,frame=set.frames[index],image=this.dark.get(file),referenceHeight=GARDEN_ART.referenceHeight;
-    if(fear){if(s.stage==='NIGHTMARE_FINAL'&&s.age<2.7){file='garden/'+FEAR_FILES['menina-acoes-v1'];frame=FEAR_FRAMES['menina-acoes-v1'][[0,1,3,4][Math.floor(n.animTime)%4]];image=this.images.get(file);}else{const f=ART.fright.frames[s.stage==='NIGHTMARE_FINAL'&&s.age>4.4?1:0];frame={...f,anchorX:f.w/2};image=this.images.get(ART.fright.file);referenceHeight=ART.fright.referenceHeight;}}
-    if(['STEALTH','NIGHTMARE_REVEAL'].includes(s.stage)){const f=ART.stealth.frames[stealthPose(n)];frame={...f,anchorX:f.w/2};image=this.images.get(ART.stealth.file);referenceHeight=ART.stealth.referenceHeight;}
+    if(fear){if(s.stage==='NIGHTMARE_FINAL'&&s.age<2.7){file='garden/'+FEAR_FILES['menina-acoes-v1'];frame=FEAR_FRAMES['menina-acoes-v1'][[0,1,3,4][Math.floor(n.animTime)%4]];image=this.images.get(file);}else{const f=ART.fright.frames[s.stage==='NIGHTMARE_FINAL'&&s.age>4.4?1:0];frame={...f,anchorX:f.w/2};image=this.dark.get(ART.fright.file);referenceHeight=ART.fright.referenceHeight;}}
+    if(['STEALTH','NIGHTMARE_REVEAL'].includes(s.stage)){const f=ART.stealth.frames[stealthPose(n)];frame={...f,anchorX:f.w/2};image=this.dark.get(ART.stealth.file);referenceHeight=ART.stealth.referenceHeight;}
     let x=n.x,y=n.y,angle=0;
     if(s.stage==='NIGHTMARE_FALL'){y-=620*(1-smooth(s.age/1.65));angle=-.14*(1-smooth(s.age/1.65));}
     if(s.stage==='NIGHTMARE_STRIKE'&&s.age>.72){const q=smooth((s.age-.72)/.7);x+=100*q;y-=Math.sin(q*Math.PI)*45;angle=q*.65;}

@@ -874,6 +874,7 @@ Entradas diretas beginDreamGlide e beginDreamNightmare também encerram opening/
 | Classe | Responsabilidade e ciclo de vida |
 | --- | --- |
 | `BrinquedaoPhase` | Carrega recursos, instala entrada, suspende/desfaz a fase e produz snapshots. |
+| `BrinquedaoLook` | Prepara os fundos e materiais P1–P3, suaviza redes/reflexos, desenha perigo/chanfros/encaixes e libera seus canvases. |
 | `BrinquedaoRenderer` | Prepara caches, compõe cenas/circuito e libera imagens ao sair. |
 | `BrinquedaoAudio` | Estende GardenAudio com trilha enviada, pausa/mudo e descarte. |
 
@@ -901,3 +902,6 @@ Domínio3 recebe saves1/2, conserva relógios existentes e cria os novos timesta
 
 
 Brinquedão atual: domínio7/interior3. Gauntlet fornece triângulo, seis voos laterais automáticos e15blocos com colapso temporizado. Os peixes só existem nas três pontes externas, por fase temporal fixa; Fish não recebe alvo nem mantém perseguição. Interior migra saves antigos para um dos quatro tubos e conclui na linha de chegada. Blocos caídos perdem apoio físico; o renderer usa o mesmo prazo. O triângulo reinicia a primeira corrida sem Game Over; retry da queda retoma o terceiro tubo. BrinquedaoPools foi arquivado e removido do runtime.
+
+
+O acabamento P1–P3 do Brinquedão está em BrinquedaoLook. Acrescentar temas em BRINQUEDAO_LOOK_THEMES, carregá-los pelo Renderer e manter o preparo na carga. Não colocar imagens/cache no snapshot. O vidro frontal só se repete perto da personagem, com opacidade0,035, e a máscara interna acompanha a tangente. Os onze módulos de física e persistência ficam protegidos pelo QA de hashes; não trocar a trajetória ativa do peixe para resolver apresentação móvel.

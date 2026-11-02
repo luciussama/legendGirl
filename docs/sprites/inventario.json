@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "counts": {
-    "files": 531,
+    "files": 539,
     "regions": 318,
     "code": 29
   },
@@ -63,6 +63,98 @@
       "family": "assets/art/brinquedao"
     },
     {
+      "id": "5eaab635aa4e2cf34ef87e09",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-blocos-v2.jpg",
+      "title": "interior-blocos-v2.jpg",
+      "format": "jpg",
+      "width": 1774,
+      "height": 887,
+      "bytes": 454185,
+      "sha256": "ab791a73b96083c20cf4e4e9efc2bb204b78626f9fc56e2cd14fd21c00b5685f",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 17,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "e08a1ef00aedac977e70243d",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-blocos-v2.png",
+      "title": "interior-blocos-v2.png",
+      "format": "png",
+      "width": 1774,
+      "height": 887,
+      "bytes": 1991000,
+      "sha256": "ad212309aece0c2081b609a1f755949d5590ee47097c184b72b6f2d118b99432",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 13,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "3811f7748aa8e02d3bf16c53",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-bolinhas-v2.jpg",
+      "title": "interior-bolinhas-v2.jpg",
+      "format": "jpg",
+      "width": 1672,
+      "height": 941,
+      "bytes": 536211,
+      "sha256": "661eb1306c7809c8ea67644ef75919771ffa231f83cf2161327632541fc8733a",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 31,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "91eca739881942c3e8234f9c",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-bolinhas-v2.png",
+      "title": "interior-bolinhas-v2.png",
+      "format": "png",
+      "width": 1672,
+      "height": 941,
+      "bytes": 2251394,
+      "sha256": "c3c63da6f63b3a94080b329281726965d3d8cbf5112ca1f5995c0679113dd919",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 27,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
       "id": "f92c5ea97f19797dcaa2c14f",
       "kind": "file",
       "path": "assets/art/brinquedao/interior-brinquedao-v1.png",
@@ -82,6 +174,12 @@
           "alias": null
         },
         {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 5,
+          "type": "apoio",
+          "alias": null
+        },
+        {
           "file": "src/js/brinquedao/BrinquedaoArt.js",
           "line": 2,
           "type": "runtime",
@@ -91,6 +189,98 @@
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
           "line": 1,
           "type": "runtime"
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "bced643317452db910812fd4",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-espuma-v2.jpg",
+      "title": "interior-espuma-v2.jpg",
+      "format": "jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 491187,
+      "sha256": "c723a9d19ad9ef3e2631b7035f7cc14b0f2743eed9163aabe2648d2711f64f8e",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 59,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "eea1928acd8dad991149b177",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-espuma-v2.png",
+      "title": "interior-espuma-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2131141,
+      "sha256": "cc33043a86b56b7fc2c8f5fb296209190f28dcacd6c8e9d6a3bba21ca0a18e04",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 55,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "76ce6e165b5d3ad6eaa07276",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-musical-v2.jpg",
+      "title": "interior-musical-v2.jpg",
+      "format": "jpg",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 510212,
+      "sha256": "3af47a60c431b92da35f666d7bc73a0401e54a32ffd723a9098b7f61a03126a2",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 45,
+          "type": "apoio",
+          "alias": null
+        }
+      ],
+      "hints": [],
+      "family": "assets/art/brinquedao"
+    },
+    {
+      "id": "bbd8463f32b496487e4b5e31",
+      "kind": "file",
+      "path": "assets/art/brinquedao/interior-musical-v2.png",
+      "title": "interior-musical-v2.png",
+      "format": "png",
+      "width": 1536,
+      "height": 1024,
+      "bytes": 2218714,
+      "sha256": "577a194c400e857f2cb1bb31367b30f5857f253a57bd685358cb66ef7b70052d",
+      "aliases": [],
+      "usage": "apoio",
+      "references": [
+        {
+          "file": "assets/art/brinquedao/prompts-interiores-v2.json",
+          "line": 41,
+          "type": "apoio",
+          "alias": null
         }
       ],
       "hints": [],
@@ -4428,7 +4618,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -4440,7 +4630,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 134,
+          "line": 137,
           "type": "runtime",
           "alias": null
         }
@@ -4693,7 +4883,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -4740,7 +4930,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -16938,13 +17128,13 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
-          "line": 17,
+          "line": 18,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         }
@@ -17934,25 +18124,25 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
-          "line": 33,
+          "line": 35,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
-          "line": 34,
+          "line": 36,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 30,
+          "line": 32,
           "type": "runtime",
           "alias": null
         },
@@ -17976,7 +18166,7 @@
         },
         {
           "file": "src/js/dream-forest/DreamNightmareRenderer.js",
-          "line": 139,
+          "line": 142,
           "type": "runtime",
           "alias": null
         },
@@ -18205,13 +18395,13 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoInteriorRenderer.js",
-          "line": 18,
+          "line": 19,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25770,7 +25960,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25826,7 +26016,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25882,7 +26072,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25938,7 +26128,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -25994,7 +26184,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26050,7 +26240,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26106,7 +26296,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26162,7 +26352,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26230,7 +26420,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26298,7 +26488,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26366,7 +26556,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26434,7 +26624,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26502,7 +26692,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26570,7 +26760,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26638,7 +26828,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },
@@ -26706,7 +26896,7 @@
         },
         {
           "file": "src/js/brinquedao/BrinquedaoRenderer.js",
-          "line": 19,
+          "line": 21,
           "type": "runtime",
           "alias": null
         },

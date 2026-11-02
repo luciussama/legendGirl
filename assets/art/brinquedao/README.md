@@ -1,5 +1,16 @@
 # Arte do Brinquedão
 
+## Atual: fundos internos v2 e acabamento P1–P3
+
+[Oficina dos Blocos](interior-blocos-v2.jpg), [Pista das Bolinhas](interior-bolinhas-v2.jpg), [Salão Musical](interior-musical-v2.jpg) e [Nuvens de Espuma](interior-espuma-v2.jpg).
+
+Quatro composições novas, geradas pela ferramenta image_gen integrada com a skill imagegen, usando interior-brinquedao-v1 apenas como referência de estilo: interior-blocos-v2, interior-bolinhas-v2, interior-musical-v2 e interior-espuma-v2. PNGs preservam a pintura original; JPEGs opacos qualidade86 são os recursos leves de runtime (quatro arquivos somam1.991.795bytes). Não há objetos móveis ou colisores nessas pinturas. [Prompts integrais, referências, origens e hashes](prompts-interiores-v2.json). Aprovação artística humana permanece pendente.
+
+BrinquedaoLook prepara os fundos em memória sem alterar os arquivos, respeitando proporção, contraste/desaturação e descarte. Também reutiliza materiais anteriores para redes suaves sem piso transparente, madeira gasta das pontes frágeis, advertência no triângulo, chanfros dos blocos e presilhas/bocal da rampa. O arco físico dos peixes e as superfícies permanecem preservados. O gerador BrinquedaoArt continua medindo as pranchas anteriores; os quatro temas são declarados em BRINQUEDAO_LOOK_THEMES.
+
+## Fontes e evolução anterior
+
+
 Pinturas produzidas com a skill imagegen e ferramenta integrada image_gen em 01/11/2026. [Prompts integrais e hashes](prompts-brinquedao-v1.json). Identidade de Yuna, figurino e linguagem pictórica seguem as fontes do próprio projeto. A imagem do Sonic enviada é exclusivamente referência de circuito; não foi usada como fonte visual nem incorporada aos recursos.
 
 `jardim-brinquedao-v1.png` é o jardim ao fundo. `modulos-brinquedao-v1.png` reúne passarela acolchoada, ponte de madeira, piscina de bolinhas e torre. `escorregador-v1.png` fornece material ilustrado para as descidas. `yuna-brinquedao-v2.png` contém tristeza, esperança, alegria e descida sentada, com componentes separados; `yuna-brinquedao-v1.png` conserva a primeira variante de referência, sem uso em runtime.

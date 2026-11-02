@@ -6,11 +6,13 @@ async function files(dir){const entries=await fs.readdir(dir,{withFileTypes:true
 const skip=new Set(['if','for','while','switch','catch','with','return','super']);
 function parameterEnd(text,start){let level=0,quote=null,escaped=false;for(let i=start;i<text.length;i++){const c=text[i];if(quote){if(escaped)escaped=false;else if(c==='\\')escaped=true;else if(c===quote)quote=null;continue;}if(c==='"'||c==="'"||c==='`'){quote=c;continue;}if(c==='(')level++;if(c===')'&&--level===0)return i;}return -1;}
 const details={
+ brinquedaoFishEntryPose:'Interpola só a aproximação/saída visual lateral no mobile, sem alterar o arco ativo ou o dano.',
+ drawBrinquedaoSurfaceStrip:'Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico.',
  brinquedaoBlockSolid:'Consulta a onda de queda pelo relógio salvo e prazo do bloco.',
  brinquedaoTriangleTouches:'Testa tronco/pés contra o perfil triangular visível.',
  brinquedaoReboundPose:'Liga duas lonas pelo voo automático, independente dos controles.',
  brinquedaoFishImpactAge:'Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo.',
- drawBrinquedaoBridgeFish:'Desenha peixes que saltam em pontos fixos das pontes, sem perseguir Yuna.',
+ drawBrinquedaoBridgeFish:'Desenha o arco contínuo, com aproximação lateral acima dos controles no mobile e sem alterar contato.',
  brinquedaoOutletReady:'Consulta a abertura da saída após duas rebatidas da calha.',
  brinquedaoOutletFlight:'Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem.',
  createBrinquedaoInterior:'Cria os quatro tubos, corpo da corrida e relógios dos desafios, sem peixes internos.',
@@ -19,7 +21,7 @@ const details={
  stepBrinquedaoInterior:'Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão.',
  validateBrinquedaoInterior:'Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo.',
  brinquedaoFishSpecs:'Define dois pontos fixos de salto e fases dos peixes por ponte.',
- brinquedaoFishPose:'Calcula salto periódico independente da posição da menina.',
+ brinquedaoFishPose:'Preserva o arco de contato e prolonga entrada/saída visual até fora da tela, com tangentes contínuas.',
  brinquedaoFishTouches:'Testa contato da elipse central do peixe com o tronco, somente durante o salto.',
  brinquedaoTubePose:'Consulta posição e tangente pelo comprimento amostrado da curva.',
  prepareBrinquedaoInterior:'Recorta módulos de tubo e peixes completos em canvases reutilizáveis.',
