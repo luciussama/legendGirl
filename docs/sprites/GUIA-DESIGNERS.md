@@ -171,3 +171,11 @@ Na recuperação inferior, calhas em U reutilizam o escorregador pintado com amo
 
 
 Interior do Brinquedão: interior-brinquedao-v1.png é o fundo coberto e ensolarado; tubos-interior-v1.png tem cilindro reto e boca isolados em alfa; peixinhos-brinquedo-v1.png tem quatro poses completas de peixes de corda. Os tubos são curvados em memória, com cantos arredondados para conservar material e volume. Não pintar trajetórias ou réguas sobre as superfícies. Prompts e hashes estão em assets/art/brinquedao/prompts-interior-v1.json.
+
+
+Revisão do Brinquedão: piranhas-brinquedo-v2.png substitui o peixe sorridente no runtime, com quatro poses completas (alerta/bote em coral e teal). Alpha real; fonte anterior preservada. Portais devem apoiar a base no mesmo piso ilustrado e alinhar o cilindro ao centro da boca. O renderer não deve manter um tubo reto extra sobre a curva de entrada/saída. As nove piscinas usam recortes existentes projetados sobre rampas e bacias próprias; não adicionar marcações técnicas de pouso.
+
+As entradas e piscinas internas têm colunas acolchoadas e base inferior pintada, além do alinhamento do bocal. O assento de Yuna acompanha o diâmetro do tubo; a pose de saída começa apenas dentro da boca, sem atravessar a parede do cilindro.
+
+
+Brinquedão: sem novos PNGs. Triângulo recorta (9,0,43,28) de stacking-blocks-v1.png; os15blocos usam blocos-atlas-v1.png. Peixes existentes saltam sob pontes, sem perseguição. A queda desloca/roda o bloco real; a superfície de contato acompanha o topo pintado. Chegada é um portal com faixa e bandeirolas do mesmo estilo. Piscinas de bolinhas não integram a jogabilidade atual.

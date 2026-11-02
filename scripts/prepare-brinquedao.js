@@ -7,7 +7,7 @@ function isolatedActors(file,count,fullMask=false){const image=PNG.sync.read(fs.
 const kit=isolatedActors('modulos-brinquedao-v1.png',4,true),girl=isolatedActors('yuna-brinquedao-v2.png',4,true);
 const slideImage=PNG.sync.read(fs.readFileSync(root+'/escorregador-v1.png'));
 const attractions=isolatedActors('atracoes-elasticas-v1.png',4,true);
-const insideTubes=isolatedActors('tubos-interior-v1.png',2,true),fish=isolatedActors('peixinhos-brinquedo-v1.png',4,true);
+const insideTubes=isolatedActors('tubos-interior-v1.png',2,true),fish=isolatedActors('piranhas-brinquedo-v2.png',4,true);
 const insideImage=PNG.sync.read(fs.readFileSync(root+'/interior-brinquedao-v1.png'));
 const art={kit,girl,attractions,insideTubes,fish,insideBackground:{file:'brinquedao/interior-brinquedao-v1.png',width:insideImage.width,height:insideImage.height},slide:{file:'brinquedao/escorregador-v1.png',width:slideImage.width,height:slideImage.height},background:{file:'brinquedao/jardim-brinquedao-v1.png',width:1536,height:1024}};
 fs.writeFileSync('src/js/brinquedao/BrinquedaoArt.js','// Gerado por prepare-brinquedao.js; componentes completos e máscaras de apresentação.\nexport const BRINQUEDAO_ART='+JSON.stringify(art)+';\n');

@@ -579,15 +579,16 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoAttractions.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoAttractions.js). Contratos exportados/reexportados: `prepareBrinquedaoAttractions`, `drawBrinquedaoCastles`, `drawBrinquedaoSpring`, `drawBrinquedaoElastic`, `drawBrinquedaoSideMats`.
+[Implementação](../src/js/brinquedao/BrinquedaoAttractions.js). Contratos exportados/reexportados: `prepareBrinquedaoAttractions`, `drawBrinquedaoCastles`, `drawBrinquedaoSpring`, `drawBrinquedaoElastic`, `drawBrinquedaoSideMats`, `drawBrinquedaoBridgeFish`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `prepareBrinquedaoAttractions(image)` | Função | [6](../src/js/brinquedao/BrinquedaoAttractions.js#L6) | Extrai as quatro pinturas completas e mede o contorno da rampa sem sobrescrever PNGs. |
-| `drawBrinquedaoCastles(ctx,parts,left,right)` | Função | [8](../src/js/brinquedao/BrinquedaoAttractions.js#L8) | Compõe torres acolchoadas sob seus terraços físicos. |
-| `drawBrinquedaoSpring(ctx,image,p,s)` | Função | [10](../src/js/brinquedao/BrinquedaoAttractions.js#L10) | Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes. |
-| `drawBrinquedaoElastic(ctx,parts,s,left,right)` | Função | [12](../src/js/brinquedao/BrinquedaoAttractions.js#L12) | Compõe o painel oblíquo e seu recuo após contato. |
-| `drawBrinquedaoSideMats(ctx,parts,s,left,right)` | Função | [15](../src/js/brinquedao/BrinquedaoAttractions.js#L15) | Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto. |
+| `prepareBrinquedaoAttractions(image)` | Função | [7](../src/js/brinquedao/BrinquedaoAttractions.js#L7) | Extrai as quatro pinturas completas e mede o contorno da rampa sem sobrescrever PNGs. |
+| `drawBrinquedaoCastles(ctx,parts,left,right)` | Função | [9](../src/js/brinquedao/BrinquedaoAttractions.js#L9) | Compõe torres acolchoadas sob seus terraços físicos. |
+| `drawBrinquedaoSpring(ctx,image,p,s)` | Função | [11](../src/js/brinquedao/BrinquedaoAttractions.js#L11) | Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes. |
+| `drawBrinquedaoElastic(ctx,parts,s,left,right)` | Função | [13](../src/js/brinquedao/BrinquedaoAttractions.js#L13) | Compõe o painel oblíquo e seu recuo após contato. |
+| `drawBrinquedaoSideMats(ctx,parts,s,left,right)` | Função | [16](../src/js/brinquedao/BrinquedaoAttractions.js#L16) | Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto. |
+| `drawBrinquedaoBridgeFish(ctx,parts,s,left,right)` | Função | [19](../src/js/brinquedao/BrinquedaoAttractions.js#L19) | Desenha peixes que saltam em pontos fixos das pontes, sem perseguir Yuna. |
 
 ## src/js/brinquedao/BrinquedaoAudio.js
 
@@ -616,13 +617,24 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoFish.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoFish.js). Contratos exportados/reexportados: `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`.
+[Implementação](../src/js/brinquedao/BrinquedaoFish.js). Contratos exportados/reexportados: `brinquedaoFishSpecs`, `brinquedaoFishPose`, `brinquedaoFishTouches`, `brinquedaoFishImpactAge`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `brinquedaoFishSpecs(section,leg)` | Função | [2](../src/js/brinquedao/BrinquedaoFish.js#L2) | Distribui dois, três ou quatro peixes e seus períodos por seção e piscina. |
-| `brinquedaoFishPose(spec,time)` | Função | [3](../src/js/brinquedao/BrinquedaoFish.js#L3) | Calcula aviso, ponto de emergência e arco alternado do peixe de corda. |
+| `brinquedaoFishSpecs(bridge)` | Função | [2](../src/js/brinquedao/BrinquedaoFish.js#L2) | Define dois pontos fixos de salto e fases dos peixes por ponte. |
+| `brinquedaoFishPose(spec,time)` | Função | [3](../src/js/brinquedao/BrinquedaoFish.js#L3) | Calcula salto periódico independente da posição da menina. |
 | `brinquedaoFishTouches(player,fish)` | Função | [5](../src/js/brinquedao/BrinquedaoFish.js#L5) | Testa contato da elipse central do peixe com o tronco, somente durante o salto. |
+| `brinquedaoFishImpactAge(s)` | Função | [6](../src/js/brinquedao/BrinquedaoFish.js#L6) | Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo. |
+
+## src/js/brinquedao/BrinquedaoGauntlet.js
+
+[Implementação](../src/js/brinquedao/BrinquedaoGauntlet.js). Contratos exportados/reexportados: `BRINQUEDAO_GAUNTLET`, `BRINQUEDAO_REBOUNDS`, `brinquedaoBlockSolid`, `brinquedaoTriangleTouches`, `brinquedaoReboundPose`.
+
+| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
+| --- | --- | ---: | --- |
+| `brinquedaoBlockSolid(i,index,time,difficulty='NORMAL')` | Função | [5](../src/js/brinquedao/BrinquedaoGauntlet.js#L5) | Consulta a onda de queda pelo relógio salvo e prazo do bloco. |
+| `brinquedaoTriangleTouches(p)` | Função | [7](../src/js/brinquedao/BrinquedaoGauntlet.js#L7) | Testa tronco/pés contra o perfil triangular visível. |
+| `brinquedaoReboundPose(index,u)` | Função | [9](../src/js/brinquedao/BrinquedaoGauntlet.js#L9) | Liga duas lonas pelo voo automático, independente dos controles. |
 
 ## src/js/brinquedao/BrinquedaoInterior.js
 
@@ -631,11 +643,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `clamp(v,a,b)` | Função atribuída | [3](../src/js/brinquedao/BrinquedaoInterior.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createBrinquedaoInterior()` | Função | [5](../src/js/brinquedao/BrinquedaoInterior.js#L5) | Cria seção, tubo, corpo local, dois corações e relógios serializáveis. |
-| `beginBrinquedaoInterior(s)` | Função | [6](../src/js/brinquedao/BrinquedaoInterior.js#L6) | Encerra o movimento externo e abre o primeiro tubo antes da chegada. |
-| `retryBrinquedaoInterior(s)` | Função | [8](../src/js/brinquedao/BrinquedaoInterior.js#L8) | Retoma na borda da piscina atual com dois corações restaurados. |
-| `stepBrinquedaoInterior(s,input,seconds)` | Função | [10](../src/js/brinquedao/BrinquedaoInterior.js#L10) | Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão. |
-| `validateBrinquedaoInterior(s)` | Função | [23](../src/js/brinquedao/BrinquedaoInterior.js#L23) | Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo. |
+| `body()` | Função atribuída | [4](../src/js/brinquedao/BrinquedaoInterior.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createBrinquedaoInterior()` | Função | [6](../src/js/brinquedao/BrinquedaoInterior.js#L6) | Cria os quatro tubos, corpo da corrida e relógios dos desafios, sem peixes internos. |
+| `beginBrinquedaoInterior(s)` | Função | [7](../src/js/brinquedao/BrinquedaoInterior.js#L7) | Encerra o movimento externo e abre o primeiro tubo antes da chegada. |
+| `enterTube(i,leg)` | Função | [8](../src/js/brinquedao/BrinquedaoInterior.js#L8) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `retryBrinquedaoInterior(s)` | Função | [10](../src/js/brinquedao/BrinquedaoInterior.js#L10) | Retoma o terceiro tubo após a queda dos blocos. |
+| `finish(s,events)` | Função | [11](../src/js/brinquedao/BrinquedaoInterior.js#L11) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `stepBrinquedaoInterior(s,input,seconds)` | Função | [13](../src/js/brinquedao/BrinquedaoInterior.js#L13) | Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão. |
+| `validateBrinquedaoInterior(s)` | Função | [32](../src/js/brinquedao/BrinquedaoInterior.js#L32) | Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo. |
 
 ## src/js/brinquedao/BrinquedaoInteriorRenderer.js
 
@@ -644,14 +659,18 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `crops(image,set)` | Função | [9](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prepareBrinquedaoInterior(images)` | Função | [11](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L11) | Recorta módulos de tubo e peixes completos em canvases reutilizáveis. |
-| `drawBrinquedaoInteriorDoor(ctx,parts)` | Função | [13](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L13) | Desenha a entrada acolchoada no antigo terraço final. |
-| `fish(ctx,parts,spec,pose)` | Função | [14](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `pad(ctx,parts,x,width)` | Função | [15](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `poolBack(ctx,r,i)` | Função | [16](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L16) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `poolFront(ctx,r,i)` | Função | [20](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tube(ctx,r,index,center,worldW,worldH)` | Função | [21](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderBrinquedaoInterior(r,s,{touch=false,paused=false}={})` | Função | [25](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L25) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
+| `prepareBrinquedaoInterior(images)` | Função | [10](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L10) | Recorta módulos de tubo e peixes completos em canvases reutilizáveis. |
+| `drawBrinquedaoInteriorDoor(ctx,parts,kit)` | Função | [12](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L12) | Desenha a entrada acolchoada no antigo terraço final. |
+| `pad(ctx,r,from,to,y)` | Função | [13](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L13) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `column(ctx,r,x,top,bottom)` | Função | [14](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L14) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `portal(ctx,r,x,floor,incoming,shaft=true)` | Função | [15](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L15) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `block(ctx,r,x,y,w,index,age)` | Função | [17](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L17) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triangle(ctx,r)` | Função | [18](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L18) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `finishGate(ctx,r)` | Função | [19](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L19) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `reboundRoom(ctx,r)` | Função | [20](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L20) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `room(ctx,r,i,index,preview=false)` | Função | [21](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L21) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tube(ctx,r,index,center,worldW,worldH)` | Função | [24](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L24) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBrinquedaoInterior(r,s,{touch=false,paused=false,onAdvance=()=>{}}={})` | Função | [26](../src/js/brinquedao/BrinquedaoInteriorRenderer.js#L26) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
 
 ## src/js/brinquedao/BrinquedaoLevel.js
 
@@ -673,9 +692,9 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `createBrinquedaoObstacles()` | Função | [5](../src/js/brinquedao/BrinquedaoObstacles.js#L5) | Cria relógios de pontes/lonas e contagens de impacto sem recursos de apresentação. |
 | `brinquedaoBridgeSolid(s,p)` | Função | [6](../src/js/brinquedao/BrinquedaoObstacles.js#L6) | Consulta se a peça ainda oferece apoio após contato, incluindo tolerância EASY. |
 | `contactBrinquedao(s,track,events)` | Função | [8](../src/js/brinquedao/BrinquedaoObstacles.js#L8) | Registra apoio, ativa ponte ou aplica impulso descendente da lona, com reforço por PULAR. |
-| `hitBrinquedaoElastic(s,previous,events)` | Função | [15](../src/js/brinquedao/BrinquedaoObstacles.js#L15) | Exige cruzamento e altura do painel lateral para transferir energia à rampa. |
-| `launchBrinquedaoSky(s,events)` | Função | [17](../src/js/brinquedao/BrinquedaoObstacles.js#L17) | Converte a saída real do lábio em velocidade horizontal e vertical, liberando controle aéreo. |
-| `validateBrinquedaoObstacles(s)` | Função | [18](../src/js/brinquedao/BrinquedaoObstacles.js#L18) | Confere referências e relógios de contato, rejeitando apoio em ponte caída. |
+| `hitBrinquedaoElastic(s,previous,events)` | Função | [14](../src/js/brinquedao/BrinquedaoObstacles.js#L14) | Exige cruzamento e altura do painel lateral para transferir energia à rampa. |
+| `launchBrinquedaoSky(s,events)` | Função | [16](../src/js/brinquedao/BrinquedaoObstacles.js#L16) | Converte a saída real do lábio em velocidade horizontal e vertical, liberando controle aéreo. |
+| `validateBrinquedaoObstacles(s)` | Função | [17](../src/js/brinquedao/BrinquedaoObstacles.js#L17) | Confere referências e relógios de contato, rejeitando apoio em ponte caída. |
 
 ## src/js/brinquedao/BrinquedaoPhase.js
 
@@ -687,13 +706,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoRecovery.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoRecovery.js). Contratos exportados/reexportados: `BRINQUEDAO_RECOVERY_TRACKS`, `BRINQUEDAO_SIDE_MATS`, `brinquedaoRicochetAge`, `hitBrinquedaoSideMat`.
+[Implementação](../src/js/brinquedao/BrinquedaoRecovery.js). Contratos exportados/reexportados: `BRINQUEDAO_RECOVERY_TRACKS`, `BRINQUEDAO_SIDE_MATS`, `brinquedaoOutletReady`, `brinquedaoOutletFlight`, `brinquedaoRicochetAge`, `hitBrinquedaoSideMat`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `add(id,from,to,y,end,kind,extra={})` | Função atribuída | [3](../src/js/brinquedao/BrinquedaoRecovery.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `brinquedaoRicochetAge(s)` | Função | [27](../src/js/brinquedao/BrinquedaoRecovery.js#L27) | Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção. |
-| `hitBrinquedaoSideMat(s,previous,events)` | Função | [29](../src/js/brinquedao/BrinquedaoRecovery.js#L29) | Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte. |
+| `brinquedaoOutletReady(s,group)` | Função | [31](../src/js/brinquedao/BrinquedaoRecovery.js#L31) | Consulta a abertura da saída após duas rebatidas da calha. |
+| `brinquedaoOutletFlight(s)` | Função | [33](../src/js/brinquedao/BrinquedaoRecovery.js#L33) | Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem. |
+| `brinquedaoRicochetAge(s)` | Função | [35](../src/js/brinquedao/BrinquedaoRecovery.js#L35) | Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção. |
+| `hitBrinquedaoSideMat(s,previous,events)` | Função | [37](../src/js/brinquedao/BrinquedaoRecovery.js#L37) | Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte. |
 
 ## src/js/brinquedao/BrinquedaoRenderer.js
 
@@ -707,11 +728,11 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `clamp(v,a,b)` | Função atribuída | [7](../src/js/brinquedao/BrinquedaoSimulation.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createBrinquedaoState(difficulty='NORMAL')` | Função | [9](../src/js/brinquedao/BrinquedaoSimulation.js#L9) | Cria domínio4 com convite, corpo externo, interior e relógios das atrações. |
-| `restoreBrinquedaoState(saved,difficulty)` | Função | [14](../src/js/brinquedao/BrinquedaoSimulation.js#L14) | Valida domínio4 e interior; migra saves1/2/3, abrindo o interior após a chegada antiga. |
-| `recoverBrinquedao(s)` | Função | [29](../src/js/brinquedao/BrinquedaoSimulation.js#L29) | Retoma o último terraço após queda/derrota e rearma as pontes futuras. |
-| `stepBrinquedao(s,input={},seconds=0)` | Função | [37](../src/js/brinquedao/BrinquedaoSimulation.js#L37) | Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota. |
+| `clamp(v,a,b)` | Função atribuída | [8](../src/js/brinquedao/BrinquedaoSimulation.js#L8) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `createBrinquedaoState(difficulty='NORMAL')` | Função | [10](../src/js/brinquedao/BrinquedaoSimulation.js#L10) | Cria domínio7 com pontes rápidas, impacto externo e corrida de quatro tubos. |
+| `restoreBrinquedaoState(saved,difficulty)` | Função | [15](../src/js/brinquedao/BrinquedaoSimulation.js#L15) | Valida domínio7/interior3 e migra saves1–6, convertendo piscinas e progresso antigo. |
+| `recoverBrinquedao(s)` | Função | [35](../src/js/brinquedao/BrinquedaoSimulation.js#L35) | Retoma o último terraço após queda/derrota e rearma as pontes futuras. |
+| `stepBrinquedao(s,input={},seconds=0)` | Função | [43](../src/js/brinquedao/BrinquedaoSimulation.js#L43) | Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota. |
 
 ## src/js/brinquedao/BrinquedaoStory.js
 
@@ -723,26 +744,24 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/BrinquedaoTerrain.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`, `drawBrinquedaoBallsFront`.
+[Implementação](../src/js/brinquedao/BrinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoTerrain`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `prepareBrinquedaoParts(image,slide)` | Função | [6](../src/js/brinquedao/BrinquedaoTerrain.js#L6) | Extrai módulos completos e mede o topo pintado para registrar o material. |
 | `pillar(ctx,x,y,parts)` | Função | [9](../src/js/brinquedao/BrinquedaoTerrain.js#L9) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `drawBrinquedaoTerrain(ctx,parts,left,right,s,attractions)` | Função | [11](../src/js/brinquedao/BrinquedaoTerrain.js#L11) | Projeta pinturas de acolchoado, madeira e escorregador sobre as curvas físicas. |
-| `drawBrinquedaoBallsFront(ctx,parts,p,time,player)` | Função | [27](../src/js/brinquedao/BrinquedaoTerrain.js#L27) | Compõe a frente opaca das bolinhas e seu movimento ao redor do corpo. |
 
 ## src/js/brinquedao/BrinquedaoTubes.js
 
-[Implementação](../src/js/brinquedao/BrinquedaoTubes.js). Contratos exportados/reexportados: `BRINQUEDAO_INSIDE`, `BRINQUEDAO_TUBES`, `brinquedaoTubePose`, `brinquedaoInsideFloor`.
+[Implementação](../src/js/brinquedao/BrinquedaoTubes.js). Contratos exportados/reexportados: `BRINQUEDAO_INSIDE`, `BRINQUEDAO_TUBES`, `brinquedaoTubePose`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `buildTube(index)` | Função | [4](../src/js/brinquedao/BrinquedaoTubes.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `push(x,y)` | Função atribuída | [5](../src/js/brinquedao/BrinquedaoTubes.js#L5) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `line(point)` | Função atribuída | [6](../src/js/brinquedao/BrinquedaoTubes.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `brinquedaoTubePose(index,u)` | Função | [13](../src/js/brinquedao/BrinquedaoTubes.js#L13) | Consulta posição e tangente pelo comprimento amostrado da curva. |
-| `brinquedaoInsideFloor(x)` | Função | [14](../src/js/brinquedao/BrinquedaoTubes.js#L14) | Conecta as bordas elevadas ao fundo da piscina por rampas suaves. |
+| `buildTube(index)` | Função | [5](../src/js/brinquedao/BrinquedaoTubes.js#L5) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `push(x,y)` | Função atribuída | [6](../src/js/brinquedao/BrinquedaoTubes.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `line(point)` | Função atribuída | [7](../src/js/brinquedao/BrinquedaoTubes.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `brinquedaoTubePose(index,u)` | Função | [14](../src/js/brinquedao/BrinquedaoTubes.js#L14) | Consulta posição e tangente pelo comprimento amostrado da curva. |
 
 ## src/js/chapters/ChapterArt.js
 
@@ -3037,4 +3056,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.
 
-Inventário: **234 módulos JavaScript**, **1430 declarações nomeadas**.
+Inventário: **235 módulos JavaScript**, **1442 declarações nomeadas**.

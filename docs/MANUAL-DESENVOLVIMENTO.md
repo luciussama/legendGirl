@@ -896,4 +896,8 @@ BrinquedaoRecovery reúne a geometria secundária e a colisão varrida das lonas
 Domínio3 recebe saves1/2, conserva relógios existentes e cria os novos timestamps nulos. Validar mapas completos de bumpers e números inteiros de ricochets/recoveryLandings. Renderer/Attractions reutilizam as pinturas em memória; não editar PNG para girar uma lona em gameplay. Recuo do corpo inteiro não deve torcer cabeça/pescoço. A resposta reduzida após impacto é breve e não remove o controle.
 
 
-Interior do Brinquedão: BrinquedaoTubes parametriza curvas por comprimento; BrinquedaoFish calcula avisos/ciclos/contato; BrinquedaoInterior integra corpo local e dois acertos por tentativa. BrinquedaoSimulation delega INTERIOR e migra o domínio3 para4. Retry usa a piscina atual, restaurando os corações. BrinquedaoInteriorRenderer recorta os dois módulos e quatro peixes e deforma o cilindro pintado em memória. Executar prepare-brinquedao e docs:sprites após alterar arte; testar interior e migração pelo diário.
+
+
+
+
+Brinquedão atual: domínio7/interior3. Gauntlet fornece triângulo, seis voos laterais automáticos e15blocos com colapso temporizado. Os peixes só existem nas três pontes externas, por fase temporal fixa; Fish não recebe alvo nem mantém perseguição. Interior migra saves antigos para um dos quatro tubos e conclui na linha de chegada. Blocos caídos perdem apoio físico; o renderer usa o mesmo prazo. O triângulo reinicia a primeira corrida sem Game Over; retry da queda retoma o terceiro tubo. BrinquedaoPools foi arquivado e removido do runtime.

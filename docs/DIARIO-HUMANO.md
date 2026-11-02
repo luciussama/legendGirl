@@ -412,3 +412,9 @@ Antes da falha definitiva, quedas das alturas podem alcançar apoios inferiores.
 
 
 01/11/2026 — Brinquedão interno: três seções alternam nove tubos curvos velozes com nove piscinas de bolinhas. Peixinhos de corda exigem esperar o mergulho; dois acertos causam derrota, com retomada na piscina atual. Interior claro e acolchoado, desenhos próprios do projeto e corações visíveis. Revisão artística e da dificuldade pelo jogador permanece aberta.
+
+
+01/11/2026 — Ajustes do Brinquedão após QA e análise humana: calhas abrem saída após duas rebatidas; rampas ligam as recuperações inferiores. Interior refeito com nove tubos e nove piscinas diferentes, portas apoiadas na estrutura e piranhas que perseguem/avisam/mordem. O jogador pode saltar os botes e usar ilhas de respiro. Revisão do jogador continua separada da validação técnica.
+
+
+01/11/2026 — Revisão de direção do Brinquedão: piscinas suspensas substituídas por pontes rápidas com peixes saltadores e arremesso teatral ao acertar. Interior com quatro tubos: triângulo que exige salto em velocidade, sequência automática de camas laterais, ponte de blocos que desaba e chegada final. Retiradas as piscinas internas e a perseguição de piranhas.

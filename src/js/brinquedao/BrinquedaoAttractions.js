@@ -1,4 +1,5 @@
-import {BRINQUEDAO_SIDE_MATS} from './BrinquedaoRecovery.js';
+import {brinquedaoFishSpecs,brinquedaoFishPose} from './BrinquedaoFish.js';
+import {BRINQUEDAO_SIDE_MATS,brinquedaoOutletReady} from './BrinquedaoRecovery.js';
 import {BRINQUEDAO_ART as ART} from './BrinquedaoArt.js';
 import {BRINQUEDAO_TRACKS} from './BrinquedaoLevel.js';
 import {BRINQUEDAO_ELASTIC} from './BrinquedaoExtension.js';
@@ -12,4 +13,7 @@ export function drawBrinquedaoSpring(ctx,image,p,s){const age=s.obstacles.spring
 export function drawBrinquedaoElastic(ctx,parts,s,left,right){const p=BRINQUEDAO_ELASTIC;if(p.x<left-200||p.x>right+200)return;const image=parts[2].canvas,age=s.obstacles.wall===null?100:s.time-s.obstacles.wall,compress=age<.25?Math.sin(age/.25*Math.PI)*.12:0;ctx.save();ctx.translate(p.x,p.y+70);ctx.scale(1-compress,1);ctx.drawImage(image,-170,-90,225,225*image.height/image.width);ctx.restore();}
 
 /** Camas verticais nas extremidades usam a mesma lona pintada, com molas e apoios voltados para fora. */
-export function drawBrinquedaoSideMats(ctx,parts,s,left,right){const image=parts[0].canvas;for(const wall of BRINQUEDAO_SIDE_MATS){if(wall.x<left-100||wall.x>right+100)continue;const age=s.obstacles.bumpers[wall.id]===null?100:s.time-s.obstacles.bumpers[wall.id],compression=age<.24?Math.sin(age/.24*Math.PI)*.16:0,k=(wall.bottom-wall.top)/image.width;ctx.save();ctx.translate(wall.x,(wall.top+wall.bottom)/2);ctx.rotate(-wall.side*Math.PI/2);ctx.scale(1,1-compression);ctx.drawImage(image,-image.width*k/2,-image.height*.31*k,image.width*k,image.height*k);ctx.restore();}}
+export function drawBrinquedaoSideMats(ctx,parts,s,left,right){const image=parts[0].canvas;for(const wall of BRINQUEDAO_SIDE_MATS){if(wall.x<left-100||wall.x>right+100)continue;const age=s.obstacles.bumpers[wall.id]===null?100:s.time-s.obstacles.bumpers[wall.id],compression=age<.24?Math.sin(age/.24*Math.PI)*.16:0,k=(wall.bottom-wall.top)/image.width;ctx.save();ctx.translate(wall.x,(wall.top+wall.bottom)/2);ctx.rotate(-wall.side*Math.PI/2+(wall.side>0&&brinquedaoOutletReady(s,wall.group)?Math.PI/4:0));ctx.scale(1,1-compression);ctx.drawImage(image,-image.width*k/2,-image.height*.31*k,image.width*k,image.height*k);ctx.restore();}}
+
+/** Peixes pulam em trajetórias fixas sob as pontes, sem mirar ou seguir a personagem. */
+export function drawBrinquedaoBridgeFish(ctx,parts,s,left,right){for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge'&&t.to>=left&&t.from<=right))for(const spec of brinquedaoFishSpecs(bridge)){const p=brinquedaoFishPose(spec,s.time);if(!p.active&&!p.warning)continue;const image=parts[2+(spec.facing<0?2:0)+(p.active?1:0)].canvas,w=102,k=w/image.width;ctx.save();ctx.translate(p.x,p.warning&&!p.active?spec.y+65:p.y);ctx.rotate(p.angle*p.facing);ctx.scale(p.facing,1);ctx.drawImage(image,-image.width*.55*k,-image.height*.6*k,w,image.height*k);ctx.restore();}}

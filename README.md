@@ -291,4 +291,8 @@ A continuação do Brinquedão amplia a corrida até camas elásticas e castelos
 As quedas do Brinquedão agora têm uma segunda chance: plataformas inferiores, calhas com camas elásticas nas laterais e lonas de retorno ao percurso alto. É possível recuperar o controle depois das rebatidas antes de cair fora da estrutura.
 
 
-Brinquedão ganhou três seções internas: nove tubos curvos rápidos alternam com nove piscinas estratégicas, peixinhos de corda, dois corações e retry na piscina atual. Veja o [guia](docs/brinquedao/GUIA-BRINQUEDAO.md).
+
+
+
+
+Brinquedão: as piscinas jogáveis foram substituídas por pontes rápidas com peixes saltadores. O interior segue quatro tobogãs: triângulo em velocidade, rebatidas automáticas, ponte de blocos que cai e chegada. [Guia](docs/brinquedao/GUIA-BRINQUEDAO.md).

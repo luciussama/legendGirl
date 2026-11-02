@@ -3,7 +3,7 @@ export const BRINQUEDAO_INTRO=Object.freeze([
  {speaker:'Narrador',text:'O grito tinha passado.\nO medo, ainda não.',duration:5,pose:0},
  {speaker:'Yuna',text:'Eu não gostei daquele sonho…',duration:5,pose:0},
  {speaker:'Nanda',text:'Já passou, Yuna. Estou aqui com você.',duration:5,pose:0},
- {speaker:'Nanda',text:'Vamos ao Brinquedão? A gente pode escorregar e mergulhar nas bolinhas!',duration:7,pose:1},
+ {speaker:'Nanda',text:'Vamos ao Brinquedão? A gente pode correr pelas pontes e voar nos tobogãs!',duration:7,pose:1},
  {speaker:'Yuna',text:'Você vai comigo?',duration:4,pose:1},
  {speaker:'Nanda',text:'Até o último escorregador!',duration:4,pose:2},
  {speaker:'Narrador',text:'Naquele convite cabia\num pouquinho de coragem.',duration:5,pose:2}

@@ -341,3 +341,9 @@ Recuperação inferior: `npm run journal:qa -- test:brinquedao:recuperacao` veri
 
 
 QA interno do Brinquedão pelo diário: `npm run journal:qa -- test:brinquedao:interior`; `npm run journal:qa -- test:brinquedao:interior:browser LARGURA ALTURA DIRETORIO`; `npm run journal:qa -- review:brinquedao:interior:browser LARGURA ALTURA DIRETORIO`. Percurso puro, teclado/RAF e quadros dirigidos, respectivamente. Fontes e evidências somente no diário.
+
+
+Validação dos ajustes do Brinquedão: `npm run journal:qa -- test:brinquedao:ajuste`; regressão interna `test:brinquedao:interior`; navegador dirigido dos retornos `test:brinquedao:ajuste:saidas:browser`; percurso completo `test:brinquedao:ajuste:browser`; D-pad/PULAR emulado `test:brinquedao:ajuste:toque:browser`; revisão dos nove layouts `review:brinquedao:interior:browser`. Aliases de navegador recebem largura, altura e diretório de evidência dentro do diário.
+
+
+Nova corrida do Brinquedão pelo diário: test:brinquedao:corrida (sucesso/triângulo/rebotes/queda), test:brinquedao:pontes (trajeto e arremesso), test:brinquedao:corrida:migracao (save/restore), test:brinquedao:corrida:browser e test:brinquedao:corrida:toque:browser (percurso inteiro), review:brinquedao:corrida:browser (quadros dirigidos). Os comandos de navegador recebem largura/altura/diretório no diário.

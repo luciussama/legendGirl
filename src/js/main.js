@@ -132,7 +132,7 @@ const game = createGame(canvas, uiFeedback, {
     gameoverOverlay.querySelector('.gameover-title').textContent = garden ? 'Game Over' : chase
       ? 'A menina não alcançou o urso. Tentar novamente?'
       : arena ? 'A menina não venceu esta batalha. Tentar novamente?' : 'Você não conseguiu sair do quarto.';
-    gameoverOverlay.querySelector('.gameover-sub').textContent = brinq ? (game.state.toyRoomInstance?.instance?.brinq?.state.interior?'Os peixinhos acertaram Yuna duas vezes. Tente novamente a partir desta piscina.':'Yuna caiu do Brinquedão. Tente de novo a partir do último terraço.') : garden ? 'A aventura recomeça no último ponto de descanso.' : chase
+    gameoverOverlay.querySelector('.gameover-sub').textContent = brinq ? (game.state.toyRoomInstance?.instance?.brinq?.state.interior?'A ponte de blocos caiu! Corra antes que ela desmonte.':'Yuna caiu do Brinquedão. Tente de novo a partir do último terraço.') : garden ? 'A aventura recomeça no último ponto de descanso.' : chase
       ? 'A fadinha está pronta para acompanhar uma nova tentativa.'
       : arena ? 'A aventura continua. Você pode tentar outra vez.' : 'A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.';
     if (btnRetry) btnRetry.textContent = garden ? 'Tentar novamente' : 'Tentar de novo';

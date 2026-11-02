@@ -14,3 +14,9 @@ A recuperação inferior reutiliza as fontes existentes: o escorregador forma ca
 
 
 Interior v1: interior-brinquedao-v1.png, tubos-interior-v1.png e peixinhos-brinquedo-v1.png foram criados com image_gen integrada seguindo as pinturas do projeto. O gerador mede dois componentes de tubo e quatro peixes em alfa real. O renderer projeta o cilindro sobre nove trajetórias e intercala peixes com a frente das bolinhas. Prompts completos e hashes: prompts-interior-v1.json.
+
+
+piranhas-brinquedo-v2.png: quatro poses em alfa real, duas cores, alerta e mordida, criadas com image_gen integrada. Prompts/referências/hashes em prompts-piranhas-v2.json. O gerador mede componentes completos. A prancha antiga de peixinhos fica preservada; o runtime consome a v2. Relevo, variações dos nove tubos e torres de entrada reutilizam pintura existente em memória.
+
+
+A corrida de quatro tobogãs reutiliza kit, tubos, lonas e peixes existentes. Não houve nova geração/edição de PNG. O triângulo e a ponte de blocos usam as pinturas de brinquedos já presentes em toy-room/stage3/stacking-blocks-v1.png e toy-room/bear-chase/materials/blocos-atlas-v1.png. Os recursos antigos de piscinas ficam preservados como fonte; não são desenhados como piscinas jogáveis.

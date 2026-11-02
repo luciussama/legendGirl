@@ -121,3 +121,9 @@ Abaixo das torres, Yuna pode encontrar plataformas e escorregadores de recupera�
 
 
 Antes da chegada do Brinquedão: três seções internas, cada qual com três tubos de curvas rápidas e três piscinas de bolinhas com peixinhos de brinquedo. A velocidade dá lugar à espera e ao controle dos saltos. Dois acertos encerram a tentativa; a retomada é na piscina atual. Só depois da nona piscina Yuna volta ao jardim.
+
+
+No Brinquedão, as calhas passam do descontrole para uma saída à direita após duas rebatidas. A torre do terraço abre nove tubos diferentes entre nove piscinas com relevos e ilhas. Piranhas de corda perseguem Yuna, avisam e mordem num bote; cabe saltar, recuar e usar os refúgios antes do próximo trecho veloz. Dois acertos encerram a tentativa.
+
+
+Brinquedão atual: pontes externas rápidas com peixes que saltam, nunca perseguem. Depois, quatro tobogãs: salto do triângulo/restart, lonas laterais automáticas sem dano, ponte de blocos com prazo/Game Over, linha de chegada final. Piscinas internas e perseguição foram retiradas.

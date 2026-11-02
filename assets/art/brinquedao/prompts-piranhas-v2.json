@@ -1,0 +1,16 @@
+{
+  "data": "2026-11-01",
+  "ferramenta": "image_gen integrada",
+  "skill": "imagegen",
+  "prompt": "Use case: illustration-story. Asset type: transparent 2x2 game sprite sheet FOUR COMPLETE SEPARATE wind-up TOY PIRANHAS, matching the attached painterly soft-play game material and palette. The old friendly fish sheet is STYLE REFERENCE ONLY: replace happy timid expressions with clearly aggressive determined eyebrows, focused forward eyes, open biting jaws and small white triangular rubber teeth. Row1: coral/yellow toy piranha in alert swimming pose facing RIGHT, and SAME fish lunging forward biting facing RIGHT. Row2: teal/orange toy piranha in alert swimming pose facing RIGHT and SAME fish lunging/biting facing RIGHT. Big connected fins and tiny golden winding key attached to the back. Four separate full silhouettes in strict2x2 grid, wide100px transparent gutters and generous outer alpha margins; no parts touch, no crop. No water, balls, scene, characters, text, labels, blood, gore, or glow outside silhouettes. Real alpha background. Rich illustrated painted dimensional rubber/plastic craftsmanship matching the playground reference. These enemies should look ready to pursue and bite rather than smiling or fleeing.",
+  "referencias": [
+    "assets/art/brinquedao/peixinhos-brinquedo-v1.png",
+    "assets/art/brinquedao/modulos-brinquedao-v1.png"
+  ],
+  "origem": "/Users/sergio/.codex/generated_images/01a192fe-0cd1-7df2-83aa-98caf5a32b91/exec-d8ada719-d226-41d3-bf24-699fd01afdab.png",
+  "arquivo": {
+    "caminho": "assets/art/brinquedao/piranhas-brinquedo-v2.png",
+    "sha256": "edafa14952995e730f8f54cb6c6f69aec19fba57ef215d534d9de7ffeab3d300",
+    "bytes": 2211337
+  }
+}

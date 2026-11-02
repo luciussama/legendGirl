@@ -43,3 +43,8 @@ Registre validações reais e arquivos revisados no diário, sem espalhar relat�
 
 
 O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) inclui o interior em três seções, tubos e piscinas com peixinhos, domínio4 e contratos de retomada.
+
+
+
+
+O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) cobre a corrida de quatro tubos e os peixes que saltam nas pontes externas, sem piscinas jogáveis.
