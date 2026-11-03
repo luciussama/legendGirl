@@ -173,12 +173,12 @@ Na recuperação inferior, calhas em U reutilizam o escorregador pintado com amo
 Interior do Brinquedão: interior-brinquedao-v1.png é o fundo coberto e ensolarado; tubos-interior-v1.png tem cilindro reto e boca isolados em alfa; peixinhos-brinquedo-v1.png tem quatro poses completas de peixes de corda. Os tubos são curvados em memória, com cantos arredondados para conservar material e volume. Não pintar trajetórias ou réguas sobre as superfícies. Prompts e hashes estão em assets/art/brinquedao/prompts-interior-v1.json.
 
 
-Revisão do Brinquedão: piranhas-brinquedo-v2.png substitui o peixe sorridente no runtime, com quatro poses completas (alerta/bote em coral e teal). Alpha real; fonte anterior preservada. Portais devem apoiar a base no mesmo piso ilustrado e alinhar o cilindro ao centro da boca. O renderer não deve manter um tubo reto extra sobre a curva de entrada/saída. As nove piscinas usam recortes existentes projetados sobre rampas e bacias próprias; não adicionar marcações técnicas de pouso.
+Revisão do Brinquedão: use a prancha de peixes existente somente nas três pontes externas. A investida começa perto de Yuna, tem alvo travado e não entra pelas laterais da tela. Portais alinham piso e centro da boca; a prévia da segunda transição não desenha um eixo reto duplicado sobre a curva. O interior atual tem quatro tubos e não usa piscinas.
 
-As entradas e piscinas internas têm colunas acolchoadas e base inferior pintada, além do alinhamento do bocal. O assento de Yuna acompanha o diâmetro do tubo; a pose de saída começa apenas dentro da boca, sem atravessar a parede do cilindro.
+As entradas dos tubos têm colunas acolchoadas e base inferior pintada, além do alinhamento do bocal. O assento de Yuna acompanha o diâmetro do tubo; a pose de saída começa apenas dentro da boca, sem atravessar a parede do cilindro.
 
 
-Brinquedão: sem novos PNGs. Triângulo recorta (9,0,43,28) de stacking-blocks-v1.png; os15blocos usam blocos-atlas-v1.png. Peixes existentes saltam sob pontes, sem perseguição. A queda desloca/roda o bloco real; a superfície de contato acompanha o topo pintado. Chegada é um portal com faixa e bandeirolas do mesmo estilo. Piscinas de bolinhas não integram a jogabilidade atual.
+Brinquedão: sem novos PNGs nesta correção. Triângulo recorta (9,0,43,28) de stacking-blocks-v1.png; os15blocos usam blocos-atlas-v1.png. Peixes existentes só saltam quando Yuna se aproxima; a investida é curta, com alvo travado, e não entra pelas laterais da tela. Pilares das pontes terminam em pés visíveis e pontes não recebem apoios no meio do vão. A queda desloca/roda o bloco real; a superfície de contato acompanha o topo pintado. Chegada é um portal com faixa e bandeirolas do mesmo estilo. Piscinas de bolinhas não integram a jogabilidade atual.
 
 
 ## Continuidade e revisão de direção de arte

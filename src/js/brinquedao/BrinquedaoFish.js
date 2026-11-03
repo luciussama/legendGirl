@@ -1,23 +1,34 @@
-/** Peixes das pontes saltam em pontos fixos. Sua trajetória nunca depende da menina. */
-export function brinquedaoFishSpecs(bridge){return[.34,.72].map((u,id)=>({id:bridge.id+'-'+id,x:bridge.from+(bridge.to-bridge.from)*u,y:bridge.y,period:2.7+id*.35,air:1.05,offset:id*1.4+(bridge.from%997)/600,facing:id?-1:1}));}
-/** Mantém o salto de contato e prolonga a entrada/saída até abaixo da tela, sem aparições no aviso. */
-export function brinquedaoFishPose(spec,time,depth=1600){
- const clock=((time+spec.offset)%spec.period+spec.period)%spec.period,active=clock<spec.air,lead=.6,local=clock>=spec.period-lead?clock-spec.period:clock,u=local/spec.air;
- const tail=local<0?-local:Math.max(0,local-spec.air),speed=250*Math.PI/spec.air,extra=Math.max(0,depth-speed*lead)/(lead*lead);
- const y=active?spec.y+100-Math.sin(u*Math.PI)*250:spec.y+100+speed*tail+extra*tail*tail;
- return{id:spec.id,x:spec.x+Math.sin(u*Math.PI*2)*40,y,active,visible:local>=-lead&&local<=spec.air+lead,u,facing:spec.facing,angle:-Math.cos(Math.max(0,Math.min(1,u))*Math.PI)*.45};
+import {BRINQUEDAO_TRACKS,brinquedaoSurface} from './BrinquedaoLevel.js';
+
+export const BRINQUEDAO_FISH_ATTACK=Object.freeze({range:150,maxLunge:320,lead:.26,height:180,activeFrom:.36,activeTo:.64});
+
+/** Dois peixes por ponte usam posições fixas; só saltam quando Yuna se aproxima. */
+export function brinquedaoFishSpecs(bridge){return[.34,.72].map((u,id)=>({id:bridge.id+'-'+id,bridgeId:bridge.id,x:bridge.from+(bridge.to-bridge.from)*u,y:bridge.y,period:2.7+id*.35,air:.64,facing:id?-1:1}));}
+
+/** O alvo é fixado no início; o salto curto intercepta o caminho sem perseguir a personagem. */
+export function updateBrinquedaoFishAttack(s){
+ const attack=s.obstacles.fishAttack;
+ if(attack.id!==null){const spec=BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge').flatMap(brinquedaoFishSpecs).find(f=>f.id===attack.id);if(s.time-attack.startedAt>=spec.air){attack.id=null;attack.startedAt=null;attack.targetX=null;}return false;}
+ if(s.stage!=='RUNNING'||s.time<attack.nextAt||brinquedaoFishImpactAge(s)<=1.6)return false;
+ const p=s.player,candidates=[];
+ for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge')){
+  if(p.support!==bridge.id&&p.support!==null||p.x<bridge.from-BRINQUEDAO_FISH_ATTACK.range||p.x>bridge.to+BRINQUEDAO_FISH_ATTACK.range)continue;
+  const surface=brinquedaoSurface(bridge,Math.max(bridge.from,Math.min(bridge.to,p.x)));if(Math.abs(p.y-surface)>220)continue;
+  for(const spec of brinquedaoFishSpecs(bridge))if(Math.abs(p.x-spec.x)<=BRINQUEDAO_FISH_ATTACK.range)candidates.push({bridge,spec});
+ }
+ candidates.sort((a,b)=>Math.abs(a.spec.x-p.x)-Math.abs(b.spec.x-p.x));
+ const candidate=candidates[0];if(!candidate)return false;
+ const {bridge,spec}=candidate,predicted=p.x+p.vx*BRINQUEDAO_FISH_ATTACK.lead,delta=Math.max(-BRINQUEDAO_FISH_ATTACK.maxLunge,Math.min(BRINQUEDAO_FISH_ATTACK.maxLunge,predicted-spec.x));
+ attack.id=spec.id;attack.startedAt=s.time;attack.targetX=Math.max(bridge.from+35,Math.min(bridge.to-35,spec.x+delta));attack.nextAt=s.time+spec.period;return true;
 }
+
+/** A pose percorre apenas a investida curta e não aparece atravessando a tela. */
+export function brinquedaoFishPose(spec,time,depth=1600,attack=null){
+ if(attack?.id!==spec.id||!Number.isFinite(attack.startedAt)||!Number.isFinite(attack.targetX))return{id:spec.id,x:spec.x,y:spec.y+depth,active:false,visible:false,u:0,facing:spec.facing,angle:0};
+ const age=time-attack.startedAt,visible=age>=0&&age<=spec.air,u=Math.max(0,Math.min(1,age/spec.air)),q=u*u*(3-2*u),delta=attack.targetX-spec.x;
+ return{id:spec.id,x:spec.x+delta*q,y:spec.y+100-Math.sin(u*Math.PI)*BRINQUEDAO_FISH_ATTACK.height,active:visible&&u>=BRINQUEDAO_FISH_ATTACK.activeFrom&&u<=BRINQUEDAO_FISH_ATTACK.activeTo,visible,u,facing:Math.sign(delta)||spec.facing,angle:-Math.cos(u*Math.PI)*.38};
+}
+
 /** Apenas o corpo durante o salto causa o arremesso; cauda e aviso não causam contato. */
 export function brinquedaoFishTouches(player,fish){if(!fish.active)return false;const x=Math.max(player.x-17,Math.min(player.x+17,fish.x)),y=Math.max(player.y-86,Math.min(player.y-6,fish.y));return((x-fish.x)/31)**2+((y-fish.y)/24)**2<=1;}
 export function brinquedaoFishImpactAge(s){return s.obstacles.fishImpact.at===null?Infinity:s.time-s.obstacles.fishImpact.at;}
-
-/** Apenas a aproximação visual usa as bordas laterais; o arco ativo e a colisão são idênticos. */
-export function brinquedaoFishEntryPose(spec,time,bounds){
- const p=brinquedaoFishPose(spec,time);if(!p.visible||p.active||!bounds)return p;
- const before=p.u<0,t=Math.max(0,Math.min(1,before?(p.u*spec.air+.6)/.6:(p.u*spec.air-spec.air)/.6)),h00=2*t*t*t-3*t*t+1,h10=t*t*t-2*t*t+t,h01=-2*t*t*t+3*t*t,h11=t*t*t-t*t;
- const edge=spec.facing>0?bounds.left-150:bounds.right+150,end=spec.facing>0?bounds.right+150:bounds.left-150,base=spec.y+100,dy=250*Math.PI/spec.air*.6,dx=40*2*Math.PI/spec.air*.6;
- const startY=Math.min(base,bounds.floor-160),v=Math.max(0,Math.min(1,before?(t-.6)/.4:t/.4)),a=2*v*v*v-3*v*v+1,b=v*v*v-2*v*v+v,c=-2*v*v*v+3*v*v,d=v*v*v-v*v;
- // A aproximação fica acima dos botões até alcançar o corredor central no modo paisagem.
- const y=before?a*startY+c*base-d*dy*.4:a*base+b*dy*.4+c*startY;
- return{...p,x:before?h00*edge+h01*spec.x+h11*dx:h00*spec.x+h10*dx+h01*end,y};
-}

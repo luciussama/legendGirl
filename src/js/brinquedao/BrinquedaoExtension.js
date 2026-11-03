@@ -3,7 +3,9 @@ const tracks=[];
 const add=(id,from,to,y,end,kind,extra={})=>tracks.push({id,from,to,y,end,kind,...extra});
 add('escorrega-gigante',14800,17000,550,1350,'slide');
 for(const [i,x,towerY] of [[1,17000,850],[2,19180,850],[3,21350,800]]){
- add('cama-'+i,x,x+560,1350,1350,'spring',{impulse:i===3?1400:1350});
+ const options={impulse:i===3?1400:1350};
+ if(i===2)options.supportSides=Object.freeze(['right']);
+ add('cama-'+i,x,x+560,1350,1350,'spring',options);
  const tower=x+800;
  add('castelo-'+i,tower,tower+600,towerY,towerY,'castle');
  for(let j=0;j<4;j++)add(`ponte-cai-${i}-${j}`,tower+600+j*150,tower+750+j*150,towerY,towerY,'fragile',{delay:.28});

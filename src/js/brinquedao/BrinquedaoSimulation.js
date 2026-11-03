@@ -1,4 +1,4 @@
-import {brinquedaoFishSpecs,brinquedaoFishPose,brinquedaoFishTouches,brinquedaoFishImpactAge} from './BrinquedaoFish.js';
+import {brinquedaoFishSpecs,brinquedaoFishPose,brinquedaoFishTouches,brinquedaoFishImpactAge,updateBrinquedaoFishAttack} from './BrinquedaoFish.js';
 import {beginBrinquedaoInterior,retryBrinquedaoInterior,stepBrinquedaoInterior,validateBrinquedaoInterior} from './BrinquedaoInterior.js';
 import {brinquedaoRicochetAge,hitBrinquedaoSideMat,brinquedaoOutletFlight} from './BrinquedaoRecovery.js';
 import {BRINQUEDAO as C,BRINQUEDAO_TRACKS,BRINQUEDAO_BY_ID,BRINQUEDAO_CHECKPOINTS,BRINQUEDAO_STEPS,brinquedaoMainAt,brinquedaoSurface,brinquedaoSlope} from './BrinquedaoLevel.js';
@@ -6,14 +6,14 @@ import {BRINQUEDAO_INTRO,advanceBrinquedaoStory} from './BrinquedaoStory.js';
 import {brinquedaoDeathY} from './BrinquedaoExtension.js';
 import {createBrinquedaoObstacles,validateBrinquedaoObstacles,brinquedaoBridgeSolid,contactBrinquedao,hitBrinquedaoElastic,launchBrinquedaoSky} from './BrinquedaoObstacles.js';
 const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
-/** Domínio7: física independente, relógios das atrações e derrota por sair da estrutura. */
+/** Domínio8: física independente, ataques reativos dos peixes e relógios das atrações. */
 export function createBrinquedaoState(difficulty='NORMAL'){
  const p=brinquedaoMainAt(120);
- return{version:7,interior:null,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',time:0,age:0,checkpoint:0,returns:0,failures:0,progress:0,obstacles:createBrinquedaoObstacles(),story:{index:0,age:0,endingDone:false},player:{x:120,y:brinquedaoSurface(p,120),vx:0,vy:0,facing:1,support:p.id,mode:'walk',animTime:0,jumpHeld:false,coyote:0,buffer:0}};
+ return{version:8,interior:null,difficulty:difficulty==='EASY'?'EASY':'NORMAL',stage:'INTRO',time:0,age:0,checkpoint:0,returns:0,failures:0,progress:0,obstacles:createBrinquedaoObstacles(),story:{index:0,age:0,endingDone:false},player:{x:120,y:brinquedaoSurface(p,120),vx:0,vy:0,facing:1,support:p.id,mode:'walk',animTime:0,jumpHeld:false,coyote:0,buffer:0}};
 }
 /** Saves1/2/3/4 preservam percurso e relógios; a chegada externa antiga abre o interior. */
 export function restoreBrinquedaoState(saved,difficulty){
- if(!saved||![1,2,3,4,5,6,7].includes(saved.version))throw TypeError('Brinquedão salvo inválido.');
+ if(!saved||![1,2,3,4,5,6,7,8].includes(saved.version))throw TypeError('Brinquedão salvo inválido.');
  const s=structuredClone(saved);
  if(s.version===1){if(s.player?.x>14800||s.checkpoint>3)throw TypeError('Percurso antigo do Brinquedão inválido.');s.version=2;s.obstacles=createBrinquedaoObstacles();s.failures=0;s.progress=Math.max(0,Math.min(1,(s.player?.x??0)/(C.width-220)));if(s.stage==='COMPLETE'){s.stage='RUNNING';s.age=0;s.story.endingDone=false;}}
  if(s.version===2){const fresh=createBrinquedaoObstacles();if(!s.obstacles||!s.obstacles.springs)throw TypeError('Atrações antigas salvas inválidas.');s.obstacles={...fresh,...s.obstacles,springs:{...fresh.springs,...s.obstacles.springs},bumpers:fresh.bumpers,ricochets:0,recoveryLandings:0};s.version=3;}
@@ -22,6 +22,7 @@ export function restoreBrinquedaoState(saved,difficulty){
  if(s.version===5)s.version=6;
  if(s.version===6){s.version=7;s.obstacles.fishImpact={hits:0,at:null};if(s.player?.mode==='balls'){const track=BRINQUEDAO_BY_ID.get(s.player.support);if(track?.kind==='fish-bridge'){s.player.y=brinquedaoSurface(track,s.player.x);s.player.mode='walk';}}
   if(s.interior&&s.interior.version!==3){const old=s.interior,leg=Math.max(0,Math.min(3,Math.floor(((old.section??0)*3+(old.leg??0))*4/9)));beginBrinquedaoInterior(s);s.interior.leg=leg;s.interior.checkpoint=leg;if(saved.stage==='COMPLETE'){s.stage='COMPLETE';s.interior.mode='finish';s.interior.leg=3;s.interior.complete=true;s.interior.u=1;s.interior.player.x=880;s.progress=1;}else if(saved.stage==='GAME_OVER'){s.stage='GAME_OVER';s.interior.leg=2;s.interior.checkpoint=2;s.interior.mode='blocks';s.interior.player.y=1340;}}}
+ if(s.version===7){s.version=8;s.obstacles.fishAttack=createBrinquedaoObstacles().fishAttack;}
 
  if(!['INTRO','RUNNING','RECOVER','GAME_OVER','COMPLETE','INTERIOR'].includes(s.stage)||![s.time,s.age,s.progress].every(Number.isFinite)||s.time<0||s.age<0||s.progress<0||s.progress>1||!Number.isInteger(s.checkpoint)||s.checkpoint<0||s.checkpoint>=BRINQUEDAO_CHECKPOINTS.length||![s.returns,s.failures].every(v=>Number.isSafeInteger(v)&&v>=0))throw TypeError('Brinquedão salvo inválido.');
  const p=s.player,t=s.story;
@@ -77,7 +78,8 @@ export function stepBrinquedao(s,input={},seconds=0){
     if(p.vy>=0){const candidates=BRINQUEDAO_TRACKS.filter(t=>p.x>=t.from&&p.x<=t.to&&brinquedaoBridgeSolid(s,t)&&previous.y<=brinquedaoSurface(t,previous.x)+2&&p.y>=brinquedaoSurface(t,p.x)).sort((a,b)=>brinquedaoSurface(a,p.x)-brinquedaoSurface(b,p.x));if(candidates.length)contactBrinquedao(s,candidates[0],events);}
    }
   }
-  if(brinquedaoFishImpactAge(s)>1.6){for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge'&&p.x>=t.from-90&&p.x<=t.to+90)){if(!brinquedaoFishSpecs(bridge).some(spec=>brinquedaoFishTouches(p,brinquedaoFishPose(spec,s.time))))continue;s.obstacles.fishImpact.hits++;s.obstacles.fishImpact.at=s.time;p.vx=-Math.max(650,Math.min(1000,Math.abs(p.vx)*.95));p.vy=-660;p.support=null;p.mode='air';p.coyote=0;p.buffer=0;events.push({type:'hurt'});break;}}
+  updateBrinquedaoFishAttack(s);
+  if(brinquedaoFishImpactAge(s)>1.6){for(const bridge of BRINQUEDAO_TRACKS.filter(t=>t.kind==='fish-bridge'&&p.x>=t.from-90&&p.x<=t.to+90)){if(!brinquedaoFishSpecs(bridge).some(spec=>brinquedaoFishTouches(p,brinquedaoFishPose(spec,s.time,1600,s.obstacles.fishAttack))))continue;s.obstacles.fishImpact.hits++;s.obstacles.fishImpact.at=s.time;p.vx=-Math.max(650,Math.min(1000,Math.abs(p.vx)*.95));p.vy=-660;p.support=null;p.mode='air';p.coyote=0;p.buffer=0;events.push({type:'hurt'});break;}}
   s.progress=Math.max(s.progress,Math.min(.55,.55*p.x/(C.width-220)));
   // Só terraços realmente alcançados viram checkpoint; sobrevoar uma torre não basta.
   const checkpoint=BRINQUEDAO_CHECKPOINTS.findLastIndex(x=>p.x>=x&&(x<14800||p.support===brinquedaoMainAt(x)?.id));
