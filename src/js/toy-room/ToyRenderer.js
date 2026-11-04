@@ -86,7 +86,7 @@ export class ToyRenderer {
       blocks: ['toy-room-stacking-blocks-v1', 32, 50, 22],
       drum: ['toy-room-enchanted-drum-v1', 36, 30, 16],
       jack: ['toy-room-fairy-jack-box-v1', 28, 51, 26]
-    }[t.type];
+    } [t.type];
     const toyImage = illustratedToy && options.assets?.get(illustratedToy[0]);
     if (toyImage) {
       // Conserva a área anterior e a base usada pelas mãos, sem deformar o material ilustrado.

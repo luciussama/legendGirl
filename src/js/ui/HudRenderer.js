@@ -1,5 +1,9 @@
-import { getMobileUILayout } from './MobileUILayout.js';
-import { isMobileDevice } from '../controllers/MobileZoom.js';
+import {
+  getMobileUILayout
+} from './MobileUILayout.js';
+import {
+  isMobileDevice
+} from '../controllers/MobileZoom.js';
 /**
  * HudRenderer.js
  * Renderiza componentes de HUD de alta resolução no espaço de tela:
@@ -99,14 +103,19 @@ export class HudRenderer {
       if (landscape) {
         // Mensagem legível no centro, sem atravessar a área ocupada pelos atores.
         ctx.font = `bold ${12 * uiScale}px Palatino, Georgia, serif`;
-        const lines = [];let line = '';
+        const lines = [];
+        let line = '';
         for (const word of escapeBannerText.split(/\s+/)) {
           const next = line ? line + ' ' + word : word;
-          if (line && ctx.measureText(next).width > noticeW - 20 * uiScale) { lines.push(line);line = word; }
-          else line = next;
+          if (line && ctx.measureText(next)
+            .width > noticeW - 20 * uiScale) {
+            lines.push(line);
+            line = word;
+          } else line = next;
         }
         if (line) lines.push(line);
-        for (const [index, text] of lines.slice(0,3).entries())
+        for (const [index, text] of lines.slice(0, 3)
+          .entries())
           ctx.fillText(text, layout.centerX, noticeY + (15 + index * 14) * uiScale, noticeW - 20 * uiScale);
       } else {
         ctx.font = `bold ${19 * uiScale}px Palatino, Georgia, serif`;

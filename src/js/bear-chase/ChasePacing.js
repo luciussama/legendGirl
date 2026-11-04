@@ -1,4 +1,7 @@
-import { CHASE_CONFIG as C, clamp } from './ChaseConfig.js';
+import {
+  CHASE_CONFIG as C,
+  clamp
+} from './ChaseConfig.js';
 
 /** Interpola uma transição sem mudanças bruscas na velocidade ou na distância do urso. */
 export function smoothProgress(value) {
@@ -23,7 +26,9 @@ export function chasePacing(distance, difficulty = 'NORMAL') {
   const approach = smoothProgress(progress / .94);
   const closing = smoothProgress((progress - .94) / .06);
   return {
-    intensity, speed, closing,
+    intensity,
+    speed,
+    closing,
     gap: (C.initialGap - (difficulty === 'EASY' ? 7 : 10) * approach) * (1 - closing) + 1.2 * closing,
     interval: difficulty !== 'EASY' && progress >= C.finalPressureStart ? C.finalDropInterval : 3.5 - 1.75 * intensity,
     flight: C.flight - .27 * intensity,

@@ -1,5 +1,13 @@
 /** Enquadramento visual: nunca participa da simulação nem altera coordenadas do mundo. */
-export function androidFrameOffset({ enabled, height, cssHeight, bottomInset = 0, topInset = 0, feetY, topY }) {
+export function androidFrameOffset({
+  enabled,
+  height,
+  cssHeight,
+  bottomInset = 0,
+  topInset = 0,
+  feetY,
+  topY
+}) {
   if (!enabled || !height || !cssHeight) return 0;
   const scale = height / cssHeight;
   // Reserva para o polegar mesmo quando o navegador não informa os insets do sistema.
@@ -21,13 +29,23 @@ export function createAndroidFraming(canvas) {
     document.body.appendChild(probe);
   }
   return {
+    /**
+     * Calcula o deslocamento visual adicional para respeitar a área segura do Android, limitado para não
+     * retirar do enquadramento o conteúdo do topo.
+     */
     offset(feetY, topY) {
       if (!enabled) return 0;
       const style = probe ? getComputedStyle(probe) : null;
-      return androidFrameOffset({ enabled, height: canvas.height,
-        cssHeight: canvas.getBoundingClientRect().height,
+      return androidFrameOffset({
+        enabled,
+        height: canvas.height,
+        cssHeight: canvas.getBoundingClientRect()
+          .height,
         bottomInset: parseFloat(style?.paddingBottom) || 0,
-        topInset: parseFloat(style?.paddingTop) || 0, feetY, topY });
+        topInset: parseFloat(style?.paddingTop) || 0,
+        feetY,
+        topY
+      });
     }
   };
 }

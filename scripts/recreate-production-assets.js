@@ -9,60 +9,168 @@
 import fs from 'fs';
 import path from 'path';
 import jpeg from 'jpeg-js';
-import { PNG } from 'pngjs';
+import {
+  PNG
+} from 'pngjs';
 
-const SHEETS = [
-  {
+const SHEETS = [{
     path: 'src/assets/images/dr_platforms_a_1790109919135.jpg',
-    items: [
-      { name: 'giant_bear', alias: 'giant_bear', crop: [32, 56, 352, 432] },
-      { name: 'open_books', alias: 'open_books', crop: [400, 152, 280, 304] },
-      { name: 'vanity_table', alias: 'vanity_table', crop: [696, 32, 304, 480] },
-      { name: 'cardboard_box', alias: 'cardboard_box', crop: [16, 584, 424, 352] },
-      { name: 'messy_blocks', alias: 'messy_blocks', crop: [440, 664, 240, 256] },
-      { name: 'toy_drum', alias: 'toy_drum', crop: [704, 624, 296, 304] }
+    items: [{
+        name: 'giant_bear',
+        alias: 'giant_bear',
+        crop: [32, 56, 352, 432]
+      },
+      {
+        name: 'open_books',
+        alias: 'open_books',
+        crop: [400, 152, 280, 304]
+      },
+      {
+        name: 'vanity_table',
+        alias: 'vanity_table',
+        crop: [696, 32, 304, 480]
+      },
+      {
+        name: 'cardboard_box',
+        alias: 'cardboard_box',
+        crop: [16, 584, 424, 352]
+      },
+      {
+        name: 'messy_blocks',
+        alias: 'messy_blocks',
+        crop: [440, 664, 240, 256]
+      },
+      {
+        name: 'toy_drum',
+        alias: 'toy_drum',
+        crop: [704, 624, 296, 304]
+      }
     ]
   },
   {
     path: 'src/assets/images/dr_platforms_b_1790109930444.jpg',
-    items: [
-      { name: 'satin_cushion', alias: 'satin_cushion', crop: [8, 80, 408, 304] },
-      { name: 'music_box', alias: 'music_box', crop: [408, 40, 304, 352] },
-      { name: 'block_castle', alias: 'block_castle', crop: [744, 64, 264, 328] },
-      { name: 'stepped_dresser', alias: 'stepped_dresser', crop: [40, 408, 440, 576] },
-      { name: 'train_trestle', alias: 'train_trestle', crop: [488, 408, 464, 352] },
-      { name: 'wall_shelf', alias: 'wall_shelf', crop: [592, 704, 392, 288] }
+    items: [{
+        name: 'satin_cushion',
+        alias: 'satin_cushion',
+        crop: [8, 80, 408, 304]
+      },
+      {
+        name: 'music_box',
+        alias: 'music_box',
+        crop: [408, 40, 304, 352]
+      },
+      {
+        name: 'block_castle',
+        alias: 'block_castle',
+        crop: [744, 64, 264, 328]
+      },
+      {
+        name: 'stepped_dresser',
+        alias: 'stepped_dresser',
+        crop: [40, 408, 440, 576]
+      },
+      {
+        name: 'train_trestle',
+        alias: 'train_trestle',
+        crop: [488, 408, 464, 352]
+      },
+      {
+        name: 'wall_shelf',
+        alias: 'wall_shelf',
+        crop: [592, 704, 392, 288]
+      }
     ]
   },
   {
     path: 'src/assets/images/dr_platforms_c_1790109940179.jpg',
-    items: [
-      { name: 'mushroom_lamp', alias: 'mushroom_lamp', crop: [56, 48, 288, 344] },
-      { name: 'dollhouse_roof', alias: 'dollhouse_roof', crop: [376, 24, 592, 344] },
-      { name: 'wardrobe_portal', alias: 'wardrobe_portal', crop: [72, 408, 560, 200] },
-      { name: 'spinning_globe', alias: 'spinning_globe', crop: [720, 368, 216, 312] },
-      { name: 'floating_books', alias: 'floating_books', crop: [64, 640, 496, 328] },
-      { name: 'kite_frame', alias: 'kite_frame', crop: [576, 688, 416, 280] }
+    items: [{
+        name: 'mushroom_lamp',
+        alias: 'mushroom_lamp',
+        crop: [56, 48, 288, 344]
+      },
+      {
+        name: 'dollhouse_roof',
+        alias: 'dollhouse_roof',
+        crop: [376, 24, 592, 344]
+      },
+      {
+        name: 'wardrobe_portal',
+        alias: 'wardrobe_portal',
+        crop: [72, 408, 560, 200]
+      },
+      {
+        name: 'spinning_globe',
+        alias: 'spinning_globe',
+        crop: [720, 368, 216, 312]
+      },
+      {
+        name: 'floating_books',
+        alias: 'floating_books',
+        crop: [64, 640, 496, 328]
+      },
+      {
+        name: 'kite_frame',
+        alias: 'kite_frame',
+        crop: [576, 688, 416, 280]
+      }
     ]
   },
   {
     path: 'src/assets/images/dr_platforms_d_1790109949739.jpg',
-    items: [
-      { name: 'chandelier_crystals', alias: 'chandelier_crystals', crop: [112, 8, 296, 336] },
-      { name: 'curtain_rod', alias: 'curtain_rod', crop: [496, 40, 496, 352] },
-      { name: 'cuckoo_clock', alias: 'cuckoo_clock', crop: [80, 360, 200, 336] },
-      { name: 'salto_final_sign', alias: 'salto_final_sign', crop: [632, 400, 328, 304] },
-      { name: 'grand_portal_pedestal', alias: 'grand_portal_pedestal', crop: [248, 632, 520, 368] }
+    items: [{
+        name: 'chandelier_crystals',
+        alias: 'chandelier_crystals',
+        crop: [112, 8, 296, 336]
+      },
+      {
+        name: 'curtain_rod',
+        alias: 'curtain_rod',
+        crop: [496, 40, 496, 352]
+      },
+      {
+        name: 'cuckoo_clock',
+        alias: 'cuckoo_clock',
+        crop: [80, 360, 200, 336]
+      },
+      {
+        name: 'salto_final_sign',
+        alias: 'salto_final_sign',
+        crop: [632, 400, 328, 304]
+      },
+      {
+        name: 'grand_portal_pedestal',
+        alias: 'grand_portal_pedestal',
+        crop: [248, 632, 520, 368]
+      }
     ]
   },
   {
     path: 'src/assets/images/dr_scenery_props_1790109959135.jpg',
-    items: [
-      { name: 'mandala_rug', alias: 'mandala_rug', crop: [56, 24, 472, 472] },
-      { name: 'false_door', alias: 'false_door', crop: [648, 40, 296, 384] },
-      { name: 'floor_tiles', alias: 'floor_tiles', crop: [56, 520, 464, 472] },
-      { name: 'retro_robot', alias: 'retro_robot', crop: [776, 448, 176, 312] },
-      { name: 'plush_bunny', alias: 'plush_bunny', crop: [544, 728, 224, 264] }
+    items: [{
+        name: 'mandala_rug',
+        alias: 'mandala_rug',
+        crop: [56, 24, 472, 472]
+      },
+      {
+        name: 'false_door',
+        alias: 'false_door',
+        crop: [648, 40, 296, 384]
+      },
+      {
+        name: 'floor_tiles',
+        alias: 'floor_tiles',
+        crop: [56, 520, 464, 472]
+      },
+      {
+        name: 'retro_robot',
+        alias: 'retro_robot',
+        crop: [776, 448, 176, 312]
+      },
+      {
+        name: 'plush_bunny',
+        alias: 'plush_bunny',
+        crop: [544, 728, 224, 264]
+      }
     ]
   }
 ];
@@ -103,7 +211,12 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
   while (qHead < queue.length) {
     const qx = queue[qHead++];
     const qy = queue[qHead++];
-    for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
+    for (const [dx, dy] of [
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1]
+      ]) {
       const nx = qx + dx;
       const ny = qy + dy;
       if (nx >= 0 && nx < cw && ny >= 0 && ny < ch) {
@@ -121,7 +234,10 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
 
   // Monta a imagem RGBA removendo a influência do fundo branco nas bordas semitransparentes.
   const rawRgba = new Uint8Array(cw * ch * 4);
-  let minX = cw, maxX = 0, minY = ch, maxY = 0;
+  let minX = cw,
+    maxX = 0,
+    minY = ch,
+    maxY = 0;
   let hasContent = false;
 
   for (let y = 0; y < ch; y++) {
@@ -141,8 +257,14 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
       } else {
         // Verifica se o pixel está na borda para aplicar suavização.
         let nearOutside = false;
-        for (const [dx, dy] of [[-1, 0], [1, 0], [0, -1], [0, 1]]) {
-          const nx = x + dx, ny = y + dy;
+        for (const [dx, dy] of [
+            [-1, 0],
+            [1, 0],
+            [0, -1],
+            [0, 1]
+          ]) {
+          const nx = x + dx,
+            ny = y + dy;
           if (nx < 0 || nx >= cw || ny < 0 || ny >= ch || isOutside[ny * cw + nx]) {
             nearOutside = true;
             break;
@@ -150,7 +272,9 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
         }
 
         let alpha = 255;
-        let outR = r, outG = g, outB = b;
+        let outR = r,
+          outG = g,
+          outB = b;
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
         if (nearOutside && brightness > 210) {
@@ -182,7 +306,11 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
   }
 
   if (!hasContent) {
-    return { width: cw, height: ch, data: rawRgba };
+    return {
+      width: cw,
+      height: ch,
+      data: rawRgba
+    };
   }
 
   // Recorta a margem transparente mantendo uma borda de segurança de 2 px.
@@ -202,28 +330,45 @@ function extractSprite(sheetData, sheetW, sheetH, crop) {
     trimmed.set(rawRgba.subarray(srcRow, srcRow + tw * 4), dstRow);
   }
 
-  return { width: tw, height: th, data: trimmed };
+  return {
+    width: tw,
+    height: th,
+    data: trimmed
+  };
 }
 
 function savePng(filename, width, height, data) {
-  const png = new PNG({ width, height });
+  const png = new PNG({
+    width,
+    height
+  });
   png.data = Buffer.from(data.buffer, data.byteOffset, data.byteLength);
-  fs.mkdirSync(path.dirname(filename), { recursive: true });
+  fs.mkdirSync(path.dirname(filename), {
+    recursive: true
+  });
   fs.writeFileSync(filename, PNG.sync.write(png));
 }
 
 async function run() {
   console.log('Recriando recursos individuais de produção a partir das pranchas geradas...');
   const outDir = 'assets/art/dark-room/sprites';
-  fs.mkdirSync(outDir, { recursive: true });
+  fs.mkdirSync(outDir, {
+    recursive: true
+  });
 
   const extractedSprites = [];
 
   for (const sheet of SHEETS) {
     console.log(`Carregando prancha: ${sheet.path}...`);
     const imgData = fs.readFileSync(sheet.path);
-    const decoded = jpeg.decode(imgData, { useTArray: true });
-    const { width: sw, height: sh, data } = decoded;
+    const decoded = jpeg.decode(imgData, {
+      useTArray: true
+    });
+    const {
+      width: sw,
+      height: sh,
+      data
+    } = decoded;
 
     for (const item of sheet.items) {
       console.log(`  Extraindo ${item.name}...`);
@@ -363,4 +508,5 @@ export function getDarkRoomAtlasRegion(key) {
   console.log('Arquivo atualizado: src/js/assets/darkRoomAtlas.js');
 }
 
-run().catch(console.error);
+run()
+  .catch(console.error);

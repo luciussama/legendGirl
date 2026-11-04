@@ -1,11 +1,15 @@
-import { PropParts } from './ChasePropResources.js';
+import {
+  PropParts
+} from './ChasePropResources.js';
 
 /** Estante baixa de duas fileiras, com livros volumétricos e estrutura de carvalho. */
 export class BookshelfProp {
   /** Constrói o móvel largo da referência, apoiado em Y=0 e com a frente em +Z. */
   constructor(resources) {
-    const p = new PropParts(), wood = resources.pictorialMaterial('cabinet', 0);
-    const trim = resources.pictorialMaterial('cabinet', 1), top = resources.pictorialMaterial('cabinet', 2);
+    const p = new PropParts(),
+      wood = resources.pictorialMaterial('cabinet', 0);
+    const trim = resources.pictorialMaterial('cabinet', 1),
+      top = resources.pictorialMaterial('cabinet', 2);
     const brass = resources.pictorialMaterial('cabinet', 3);
     const paper = resources.material('papel-livros', '#e6cb95');
     const covers = [0, 3, 2, 1].map(region => resources.pictorialMaterial('blocks', region));
@@ -17,8 +21,10 @@ export class BookshelfProp {
     for (let row = 0; row < 2; row++) {
       const floor = .145 + row * .43;
       for (let book = 0; book < 15; book++) {
-        const x = -.97 + book * .137, h = .27 + [0, .065, .025, .05][(book + row) % 4];
-        const cover = covers[(book + row * 2) % covers.length], width = .105;
+        const x = -.97 + book * .137,
+          h = .27 + [0, .065, .025, .05][(book + row) % 4];
+        const cover = covers[(book + row * 2) % covers.length],
+          width = .105;
         // Miolo, capas e lombada são sólidos; filetes dourados fazem parte da encadernação.
         p.box(paper, [x, floor + h / 2, .02], [width - .016, h - .018, .33], .004);
         for (const dx of [-width / 2, width / 2]) p.box(cover, [x + dx, floor + h / 2, .025], [.014, h, .37], .004);
@@ -29,5 +35,7 @@ export class BookshelfProp {
     this.prototype = resources.bake(p.parts, 'Estante baixa — duas fileiras de livros', true);
   }
   /** Clona só a hierarquia, compartilhando atlas, materiais e geometrias do catálogo. */
-  create() { return this.prototype.clone(true); }
+  create() {
+    return this.prototype.clone(true);
+  }
 }

@@ -8,4 +8,3 @@ export function nearestToyGuide(player, toys, previous) {
   if (available.includes(previous) && nearest && distance(previous) <= distance(nearest) + 6) return previous;
   return nearest;
 }
-

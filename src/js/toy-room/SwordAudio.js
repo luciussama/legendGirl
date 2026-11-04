@@ -5,18 +5,24 @@ export function scheduleSwordSound(ctx, destination, register, event) {
   const now = ctx.currentTime;
   const voice = (source, nodes, duration, delay = 0) => {
     let previous = source;
-    for (const node of nodes) { previous.connect(node); previous = node; }
+    for (const node of nodes) {
+      previous.connect(node);
+      previous = node;
+    }
     previous.connect(destination);
     register(source);
     source.addEventListener('ended', () => {
       source.disconnect();
       for (const node of nodes) node.disconnect();
-    }, { once: true });
+    }, {
+      once: true
+    });
     source.start(now + delay);
     source.stop(now + delay + duration);
   };
   const envelope = (volume, duration, attack = 0.003, delay = 0) => {
-    const gain = ctx.createGain(), start = now + delay;
+    const gain = ctx.createGain(),
+      start = now + delay;
     gain.gain.setValueAtTime(0.0001, start);
     gain.gain.exponentialRampToValueAtTime(volume, start + attack);
     gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
@@ -24,19 +30,24 @@ export function scheduleSwordSound(ctx, destination, register, event) {
   };
   const noise = (volume, duration, frequency, end, attack = 0.003) => {
     const buffer = ctx.createBuffer(1, Math.ceil(ctx.sampleRate * duration), ctx.sampleRate);
-    const samples = buffer.getChannelData(0); let seed = 74821;
+    const samples = buffer.getChannelData(0);
+    let seed = 74821;
     for (let i = 0; i < samples.length; i++) {
       seed = (Math.imul(seed, 1664525) + 1013904223) >>> 0;
       samples[i] = seed / 2147483648 - 1;
     }
-    const source = ctx.createBufferSource(); source.buffer = buffer;
-    const filter = ctx.createBiquadFilter(); filter.type = 'bandpass'; filter.Q.value = 0.7;
+    const source = ctx.createBufferSource();
+    source.buffer = buffer;
+    const filter = ctx.createBiquadFilter();
+    filter.type = 'bandpass';
+    filter.Q.value = 0.7;
     filter.frequency.setValueAtTime(frequency, now);
     filter.frequency.exponentialRampToValueAtTime(end, now + duration);
     voice(source, [filter, envelope(volume, duration, attack)], duration);
   };
   const tone = (frequency, end, volume, duration, type = 'sine', delay = 0) => {
-    const oscillator = ctx.createOscillator(); oscillator.type = type;
+    const oscillator = ctx.createOscillator();
+    oscillator.type = type;
     oscillator.frequency.setValueAtTime(frequency, now + delay);
     oscillator.frequency.exponentialRampToValueAtTime(end, now + delay + duration);
     voice(oscillator, [envelope(volume, duration, 0.003, delay)], duration + 0.01, delay);

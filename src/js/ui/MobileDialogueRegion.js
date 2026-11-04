@@ -1,4 +1,6 @@
-import { isMobileDevice } from '../controllers/MobileZoom.js';
+import {
+  isMobileDevice
+} from '../controllers/MobileZoom.js';
 
 const scenes = new WeakMap();
 
@@ -11,9 +13,18 @@ export function getMobileDialogueRegions(safe, contentHeight, placement = 'botto
     const panelTop = safe.top + gap;
     const sceneY = panelTop + panelHeight + gap;
     return {
-      scene: { x: safe.left, y: sceneY, width: safe.right - safe.left,
-        height: Math.max(1, safe.bottom - gap - sceneY) },
-      panel: { x: safe.left, y: panelTop, width: safe.right - safe.left, height: panelHeight },
+      scene: {
+        x: safe.left,
+        y: sceneY,
+        width: safe.right - safe.left,
+        height: Math.max(1, safe.bottom - gap - sceneY)
+      },
+      panel: {
+        x: safe.left,
+        y: panelTop,
+        width: safe.right - safe.left,
+        height: panelHeight
+      },
       boxY: panelTop + 12
     };
   }
@@ -22,9 +33,18 @@ export function getMobileDialogueRegions(safe, contentHeight, placement = 'botto
   const panelHeight = Math.max(180, contentHeight + 24);
   const panelTop = bottom - panelHeight;
   return {
-    scene: { x: safe.left, y: safe.top + gap, width: safe.right - safe.left,
-      height: Math.max(1, panelTop - gap - (safe.top + gap)) },
-    panel: { x: safe.left, y: panelTop, width: safe.right - safe.left, height: panelHeight },
+    scene: {
+      x: safe.left,
+      y: safe.top + gap,
+      width: safe.right - safe.left,
+      height: Math.max(1, panelTop - gap - (safe.top + gap))
+    },
+    panel: {
+      x: safe.left,
+      y: panelTop,
+      width: safe.right - safe.left,
+      height: panelHeight
+    },
     boxY: panelTop + (panelHeight - contentHeight) / 2
   };
 }
@@ -34,7 +54,10 @@ export function renderMobileDialogueRegion(ctx, canvas, safe, contentHeight, anc
   if (!isMobileDevice() || typeof document === 'undefined') return null;
   const layout = getMobileDialogueRegions(safe, contentHeight, placement);
   let scene = scenes.get(canvas);
-  if (!scene) { scene = document.createElement('canvas'); scenes.set(canvas, scene); }
+  if (!scene) {
+    scene = document.createElement('canvas');
+    scenes.set(canvas, scene);
+  }
   if (scene.width !== canvas.width) scene.width = canvas.width;
   if (scene.height !== canvas.height) scene.height = canvas.height;
   const source = scene.getContext('2d');
@@ -51,7 +74,9 @@ export function renderMobileDialogueRegion(ctx, canvas, safe, contentHeight, anc
   ctx.fillStyle = '#08070b';
   ctx.fillRect(0, 0, canvas.width, canvas.height);
   ctx.save();
-  ctx.beginPath();ctx.rect(region.x, region.y, region.width, region.height);ctx.clip();
+  ctx.beginPath();
+  ctx.rect(region.x, region.y, region.width, region.height);
+  ctx.clip();
   ctx.translate(canvas.width / 2, region.y + region.height / 2);
   ctx.scale(scale, scale);
   ctx.drawImage(scene, -canvas.width / 2, -focusY);

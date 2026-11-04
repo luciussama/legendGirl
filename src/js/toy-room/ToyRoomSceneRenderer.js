@@ -1,8 +1,18 @@
-import { roomEnvironmentRenderer } from './RoomEnvironmentRenderer.js';
-import { toyRenderer } from './ToyRenderer.js';
-import { toyRoomEntities } from './ToyRoomEntities.js';
-import { toyRoomUI } from './ToyRoomUI.js';
-import { renderToyRoomShadows } from './ToyRoomShadows.js';
+import {
+  roomEnvironmentRenderer
+} from './RoomEnvironmentRenderer.js';
+import {
+  toyRenderer
+} from './ToyRenderer.js';
+import {
+  toyRoomEntities
+} from './ToyRoomEntities.js';
+import {
+  toyRoomUI
+} from './ToyRoomUI.js';
+import {
+  renderToyRoomShadows
+} from './ToyRoomShadows.js';
 
 /** Compõe cenário, entidades, efeitos e HUD na ordem original de desenho. */
 export function renderToyRoomScene(scene, options = {}) {
@@ -19,8 +29,11 @@ export function renderToyRoomScene(scene, options = {}) {
     const zoom = Math.min(scene.canvas.width / scene.ROOM_W, scene.canvas.height / scene.ROOM_H) * 0.94;
     const x = (scene.canvas.width - scene.ROOM_W * zoom) / 2 + scene.cameraX * zoom;
     const y = (scene.canvas.height - scene.ROOM_H * zoom) / 2 + scene.cameraY * zoom;
-    frame = { x: frame.x + (x - frame.x) * blend,
-      y: frame.y + (y - frame.y) * blend, zoom: frame.zoom + (zoom - frame.zoom) * blend };
+    frame = {
+      x: frame.x + (x - frame.x) * blend,
+      y: frame.y + (y - frame.y) * blend,
+      zoom: frame.zoom + (zoom - frame.zoom) * blend
+    };
   }
   ctx.translate(frame.x, frame.y);
   ctx.scale(frame.zoom, frame.zoom);
@@ -72,7 +85,10 @@ export function renderToyRoomScene(scene, options = {}) {
   }
 
   if (scene.story.state.sword?.visible) {
-    renderList.push({ type: 'story-sword', y: scene.story.state.sword.y });
+    renderList.push({
+      type: 'story-sword',
+      y: scene.story.state.sword.y
+    });
   }
 
   renderList.push({
@@ -116,7 +132,9 @@ export function renderToyRoomScene(scene, options = {}) {
   }
 
   // 4. Fadinha companheira
-  toyRoomEntities.renderFairy(ctx, scene.fairy, { assets: scene.assets });
+  toyRoomEntities.renderFairy(ctx, scene.fairy, {
+    assets: scene.assets
+  });
 
   // 5. Rastro de brilho da fada
   for (let i = 0; i < scene.fairy.particles.length; i++) {

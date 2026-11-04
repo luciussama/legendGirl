@@ -10,14 +10,20 @@
  * - Móveis robustos e detalhados (Baú com tampa móvel, estante de livros, poltrona, fortaleza, mesa, cavalinho de pau, armário)
  */
 
-import { TOY_ROOM_WINDOWS } from './ToyRoomLighting.js';
+import {
+  TOY_ROOM_WINDOWS
+} from './ToyRoomLighting.js';
 
 // Traçado decorativo original; não participa da navegação nem das colisões.
 const TRAIN_CIRCUIT = [
-  ['moveTo', 350, 420], ['lineTo', 820, 420],
-  ['quadraticCurveTo', 980, 420, 980, 580], ['lineTo', 980, 920],
-  ['quadraticCurveTo', 980, 1040, 840, 1040], ['lineTo', 440, 1040],
-  ['quadraticCurveTo', 320, 1040, 320, 920], ['lineTo', 320, 560],
+  ['moveTo', 350, 420],
+  ['lineTo', 820, 420],
+  ['quadraticCurveTo', 980, 420, 980, 580],
+  ['lineTo', 980, 920],
+  ['quadraticCurveTo', 980, 1040, 840, 1040],
+  ['lineTo', 440, 1040],
+  ['quadraticCurveTo', 320, 1040, 320, 920],
+  ['lineTo', 320, 560],
   ['quadraticCurveTo', 320, 420, 350, 420]
 ];
 
@@ -154,6 +160,7 @@ export class RoomEnvironmentRenderer {
     }
   }
 
+  /** Repete a textura em segmentos para cobrir a faixa sem esticá-la horizontalmente. */
   drawWoodStrip(ctx, image, x, y, width, height, plain = false) {
     const sourceHeight = plain ? image.height * 0.24 : image.height;
     for (let offset = 0; offset < width; offset += 324) {
@@ -163,6 +170,7 @@ export class RoomEnvironmentRenderer {
     }
   }
 
+  /** Aplica moldura de madeira às quatro bordas, girando a textura nas laterais. */
   drawWoodTrim(ctx, image, roomW, roomH) {
     ctx.save();
     this.drawWoodStrip(ctx, image, 0, 0, roomW, 54);
@@ -178,6 +186,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Preenche o piso com faixas progressivamente maiores para simular profundidade. */
   renderPerspectiveFloor(ctx, tile, roomW, roomH) {
     const floorTop = 240;
     const floorHeight = roomH - floorTop;
@@ -214,6 +223,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Desenha janela arqueada com alternativa vetorial e feixe de luz no piso. */
   drawArchedWindow(ctx, wx, wy, windowImage = null) {
     ctx.save();
     if (windowImage) {
@@ -275,6 +285,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Apresenta a porta fornecida ou compõe o portal ilustrado de reserva. */
   drawEntrancePortal(ctx, dx, dy, environmentDoor = null) {
     if (environmentDoor) {
       ctx.drawImage(environmentDoor, dx, dy, 88, 136);
@@ -304,6 +315,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Compõe o tapete circular ornamental usado quando não há arte externa. */
   drawCentralMandalaRug(ctx, cx, cy) {
     ctx.save();
     ctx.fillStyle = 'rgba(120, 53, 15, 0.25)';
@@ -351,6 +363,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Desenha o tapete oval com a arte disponível ou com a composição floral de reserva. */
   drawFloralPlayMat(ctx, rx, ry, rugImage = null) {
     ctx.save();
     ctx.fillStyle = 'rgba(53, 24, 11, 0.34)';
@@ -400,6 +413,7 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Desenha o tapete retangular e suas franjas sem ampliar sua área de base. */
   drawBedsideFringeRug(ctx, bx, by, rugImage = null) {
     ctx.save();
     ctx.fillStyle = 'rgba(120, 53, 15, 0.2)';
@@ -430,10 +444,12 @@ export class RoomEnvironmentRenderer {
     ctx.restore();
   }
 
+  /** Reexecuta no contexto de desenho os comandos do circuito decorativo compartilhado. */
   traceTrainCircuit(ctx) {
     for (const [method, ...args] of TRAIN_CIRCUIT) ctx[method](...args);
   }
 
+  /** Amostra o circuito em trechos orientados e mascara a arte à largura original do trilho. */
   createWoodenTrackLayer(image) {
     const layer = document.createElement('canvas');
     layer.width = 684;
@@ -445,14 +461,19 @@ export class RoomEnvironmentRenderer {
     const points = [];
     for (const [method, ...args] of TRAIN_CIRCUIT) {
       if (method !== 'quadraticCurveTo') {
-        points.push({ x: args[0], y: args[1] });
+        points.push({
+          x: args[0],
+          y: args[1]
+        });
       } else {
         const start = points[points.length - 1];
         for (let i = 1; i <= 40; i++) {
           const t = i / 40;
           const u = 1 - t;
-          points.push({ x: u * u * start.x + 2 * u * t * args[0] + t * t * args[2],
-            y: u * u * start.y + 2 * u * t * args[1] + t * t * args[3] });
+          points.push({
+            x: u * u * start.x + 2 * u * t * args[0] + t * t * args[2],
+            y: u * u * start.y + 2 * u * t * args[1] + t * t * args[3]
+          });
         }
       }
     }
@@ -491,6 +512,7 @@ export class RoomEnvironmentRenderer {
     return layer;
   }
 
+  /** Desenha o traçado do trem e reutiliza a camada texturizada enquanto a imagem não mudar. */
   drawTrainTracks(ctx, trackImage = null) {
     ctx.save();
     ctx.strokeStyle = 'rgba(53, 24, 11, 0.38)';
@@ -543,7 +565,7 @@ export class RoomEnvironmentRenderer {
       shelf: ['toy-room-bookshelf-v1', 0],
       fortress: ['toy-room-block-castle-v1', 15],
       wardrobe: ['toy-room-oak-cabinet-v1', 0]
-    }[f.type];
+    } [f.type];
     const furnitureImage = illustratedFurniture && options.assets?.get(illustratedFurniture[0]);
     if (furnitureImage) {
       // A ilustração e sua sombra cabem na área anterior; proporção e colisões são preservadas.

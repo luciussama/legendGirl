@@ -1,5 +1,7 @@
 import * as T from '../../../vendor/three/three.module.js';
-import { PropParts } from './ChasePropResources.js';
+import {
+  PropParts
+} from './ChasePropResources.js';
 
 /** Coelho sentado de pelúcia rosa, com focinho creme, orelhas separadas e costuras. */
 export class BunnyProp {
@@ -36,9 +38,12 @@ export class BunnyProp {
   }
   /** Esculpe um volume elipsoidal fechado, sem cartões e com normais suaves. */
   ellipsoid(parts, material, position, scale, tilt = 0) {
-    const geometry = new T.SphereGeometry(1, 20, 14); geometry.scale(...scale);
+    const geometry = new T.SphereGeometry(1, 20, 14);
+    geometry.scale(...scale);
     parts.add(geometry, material, position, [0, 0, tilt]);
   }
   /** Instancia uma hierarquia que compartilha material e geometria com os demais coelhos. */
-  create() { return this.prototype.clone(true); }
+  create() {
+    return this.prototype.clone(true);
+  }
 }

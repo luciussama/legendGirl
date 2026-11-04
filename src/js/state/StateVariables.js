@@ -1,4 +1,7 @@
-import { createBabyState, createFairyState } from '../config.js';
+import {
+  createBabyState,
+  createFairyState
+} from '../config.js';
 
 /**
  * Estruturas e valores iniciais padrão para o GameState

@@ -6,9 +6,15 @@ import {
   getEscapeStats,
   getPhase3Stats
 } from '../config.js';
-import { createDefaultStateVariables } from './StateVariables.js';
+import {
+  createDefaultStateVariables
+} from './StateVariables.js';
 
 export class GameState {
+  /**
+   * Armazena canvas, feedback e callbacks e completa a instância com os valores padrão do domínio do
+   * jogo.
+   */
   constructor(canvas, uiFeedback, callbacks = {}) {
     this.canvas = canvas;
     this.uiFeedback = uiFeedback;
@@ -18,29 +24,42 @@ export class GameState {
     Object.assign(this, createDefaultStateVariables());
   }
 
+  /**
+   * Aceita somente teclado, controle ou toque e guarda o dispositivo válido mais recente para orientar
+   * os avisos.
+   */
   setLastInputDevice(dev) {
     if (dev === 'keyboard' || dev === 'gamepad' || dev === 'touch') {
       this.lastUsedInputDevice = dev;
     }
   }
 
+  /**
+   * Prioriza o último dispositivo usado; sem registro, escolhe toque em telas de ponteiro grosso e
+   * teclado como alternativa.
+   */
   getActivePromptDevice() {
     if (this.lastUsedInputDevice === 'gamepad') return 'gamepad';
     if (this.lastUsedInputDevice === 'touch') return 'touch';
     if (typeof window !== 'undefined') {
       try {
         const gps = navigator.getGamepads ? navigator.getGamepads() : null;
-        if (gps && Array.from(gps).some(gp => gp && gp.connected)) {
+        if (gps && Array.from(gps)
+          .some(gp => gp && gp.connected)) {
           if (this.lastUsedInputDevice === 'gamepad') return 'gamepad';
         }
       } catch (e) {}
-      if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
+      if (window.matchMedia && window.matchMedia('(pointer: coarse)')
+        .matches) {
         return 'touch';
       }
     }
     return 'keyboard';
   }
 
+  /**
+   * Cria partículas/efeitos no buffer correspondente.
+   */
   spawnFairySparkles(x, y, count = 2) {
     const fairyHues = [48, 52, 192, 330, 280];
     for (let i = 0; i < count; i++) {
@@ -63,6 +82,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Cria partículas/efeitos no buffer correspondente.
+   */
   spawnFairyFlightDust(fx, fy, fvx, fvy) {
     const fairyHues = [48, 52, 192, 330, 280]; // Dourado quente, ciano etéreo, rosa, violeta
     const chosenHue = fairyHues[Math.floor(Math.random() * fairyHues.length)];
@@ -83,6 +105,9 @@ export class GameState {
     });
   }
 
+  /**
+   * Avança o estado do subsistema; não é uma operação somente de desenho.
+   */
   updateFairyParticles() {
     for (let i = this.fairy.particles.length - 1; i >= 0; i--) {
       const p = this.fairy.particles[i];
@@ -96,6 +121,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Inicia a standby preparation e prepara o estado necessário para a sequência subsequente.
+   */
   startStandbyPreparation(audio) {
     this.isStandbyActive = true;
     this.standbyDialogueTimer = 0;
@@ -132,6 +160,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Inicia a transição de prontidão uma única vez, anima a fada e dispara voz e brilhos de incentivo.
+   */
   confirmStandby(audio) {
     if (!this.isStandbyActive || this.isStandbyTransitioning) return;
     this.isStandbyActive = false;
@@ -150,6 +181,10 @@ export class GameState {
     }
   }
 
+  /**
+   * Reinicializa a baby physics body para permitir uma nova execução sem reaproveitar dados transitórios
+   * antigos.
+   */
   resetBabyPhysicsBody(targetX, targetY, facing = 1) {
     this.baby.x = targetX;
     this.baby.y = targetY;
@@ -172,6 +207,10 @@ export class GameState {
     this.lastTime = performance.now();
   }
 
+  /**
+   * Entra em derrota apenas uma vez, para o movimento, interrompe sons, atualiza a interface e notifica
+   * o callback.
+   */
   triggerGameOver(audio) {
     if (this.isGameOver) return;
     this.isGameOver = true;
@@ -197,6 +236,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Fecha a derrota e retoma do checkpoint da subida, limpando efeitos sonoros e restaurando a música.
+   */
   retryGame(audio) {
     this.isGameOver = false;
     const overlay = document.getElementById('gameover-overlay');
@@ -212,6 +254,9 @@ export class GameState {
     this.resetToStart(true, false, audio);
   }
 
+  /**
+   * Encerra a sala de brinquedos, interrompe o áudio e retorna o estado e a interface à tela inicial.
+   */
   restartToTitle(audio) {
     this.isGameOver = false;
     this.gameStarted = false;
@@ -240,6 +285,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Exibe a mensagem de falha e agenda sua substituição pelo convite inicial após o intervalo definido.
+   */
   showFailMessage() {
     if (this.uiFeedback) {
       this.uiFeedback.innerText = 'Falhou ao seguir a fadinha... Ela voltou para esperar você.';
@@ -256,6 +304,9 @@ export class GameState {
     }, 2800);
   }
 
+  /**
+   * Inicia a castle cutscene e prepara o estado necessário para a sequência subsequente.
+   */
   startCastleCutscene(audio) {
     if (audio) audio.clearActiveSounds();
     this.cutsceneActive = true;
@@ -272,6 +323,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Avança a cutscene para a próxima etapa sem repetir o estado já consumido.
+   */
   advanceCutscene(audio) {
     if (this.cutsceneStep === 1) {
       this.cutsceneStep = 2;
@@ -284,6 +338,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Conclui a cutscene e libera o fluxo para a etapa seguinte.
+   */
   finishCutscene(audio) {
     if (audio) audio.clearActiveSounds();
     this.cutsceneActive = false;
@@ -321,6 +378,9 @@ export class GameState {
     this.spawnFairySparkles(this.baby.x + this.baby.w / 2, this.baby.y + this.baby.h / 2, 30);
   }
 
+  /**
+   * Inicia a plot twist cutscene e prepara o estado necessário para a sequência subsequente.
+   */
   startPlotTwistCutscene(audio) {
     if (audio) audio.clearActiveSounds();
     this.plotTwistActive = true;
@@ -347,6 +407,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Avança a plot twist para a próxima etapa sem repetir o estado já consumido.
+   */
   advancePlotTwist(audio) {
     if (this.plotTwistStep === 4) {
       // Avança para o diálogo e vaivém da fadinha no ar
@@ -363,6 +426,9 @@ export class GameState {
     }
   }
 
+  /**
+   * Conclui a plot twist and start tutorial e libera o fluxo para a etapa seguinte.
+   */
   finishPlotTwistAndStartTutorial(audio) {
     if (audio) audio.clearActiveSounds();
     // Mantém os vetores compartilhados, mas descarta os rastros visuais da fase anterior.
@@ -402,6 +468,9 @@ export class GameState {
     this.spawnFairySparkles(this.baby.x + this.baby.w / 2, this.baby.y + this.baby.h / 2, 35);
   }
 
+  /**
+   * Inicia a true portal transition e prepara o estado necessário para a sequência subsequente.
+   */
   startTruePortalTransition(audio) {
     if (this.truePortalTransitionActive) return;
     this.truePortalTransitionActive = true;
@@ -424,11 +493,20 @@ export class GameState {
     this.spawnFairySparkles(trueExitDoor.x + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2, 40);
   }
 
+  /**
+   * Reinicializa a to start para permitir uma nova execução sem reaproveitar dados transitórios antigos.
+   */
   resetToStart(failedMidClimb = false, shouldPlayFailSound = true, audio) {
     if (audio) audio.clearActiveSounds();
     // Redefine a iluminação em todas as plataformas para retornarem ao estado de penumbra
-    platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
-    phase3Platforms.forEach(p => { p.isLanded = false; p.lightAlpha = 0; });
+    platforms.forEach(p => {
+      p.isLanded = false;
+      p.lightAlpha = 0;
+    });
+    phase3Platforms.forEach(p => {
+      p.isLanded = false;
+      p.lightAlpha = 0;
+    });
 
     if (failedMidClimb && this.isPhase3) {
       // Checkpoint: recomeça do ponto em que a menina se levanta no início dessa subida

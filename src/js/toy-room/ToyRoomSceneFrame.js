@@ -22,6 +22,7 @@ export function createToyRoomSceneFrame(room) {
     fairy: room.fairy,
     footstepPuffs: room.footstepPuffs,
     furniture: room.furniture,
+    /** Resolve o enquadramento no momento do render para acompanhar mudanças de alvo. */
     getCameraFrame: () => room.getCameraFrame(),
     introAlpha: room.introAlpha,
     introBannerTimer: room.introBannerTimer,

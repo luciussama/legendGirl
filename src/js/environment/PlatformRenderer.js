@@ -12,45 +12,222 @@ import {
   trueExitDoor as defaultTrueExitDoor,
   DEBUG_COLLISIONS
 } from '../config.js';
-import { darkRoomAtlas } from '../assets/index.js';
-import { drawStorybookPlatform, drawContactEdge } from './StorybookPlatforms.js';
+import {
+  darkRoomAtlas
+} from '../assets/index.js';
+import {
+  drawStorybookPlatform,
+  drawContactEdge
+} from './StorybookPlatforms.js';
 
 const REMOVED_PLATFORM_FALLBACKS = new Set(["block_castle", "chandelier_crystals", "cuckoo_clock", "curtain_rod", "dollhouse_roof", "floating_books", "giant_bear", "grand_portal_pedestal", "kite_frame", "messy_blocks", "mushroom_lamp", "music_box", "open_books", "satin_cushion", "small_dresser", "spinning_globe", "stepped_dresser", "toy_drum", "train_trestle", "vanity_table", "wall_shelf", "wardrobe_ledge"]);
 
 export const PLATFORM_SURFACES = {
-  giant_bear: { surfaceY: 139, surfaceX: 460, surfaceW: 1000, origW: 1922, origH: 818, bottom: 755, floorFit: true },
-  open_books: { surfaceY: 2, surfaceX: 2, surfaceW: 272, origW: 276, origH: 300, floorFit: true },
-  vanity_table: { surfaceY: 250, surfaceX: 2, surfaceW: 294, origW: 298, origH: 475, floorFit: true },
-  small_dresser: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411, floorFit: true },
-  cardboard_box: { surfaceY: 0, surfaceX: 2, surfaceW: 414, origW: 418, origH: 411 },
-  messy_blocks: { surfaceY: 4, surfaceX: 60, surfaceW: 98, origW: 235, origH: 253, floorFit: true },
-  toy_drum: { surfaceY: 100, surfaceX: 35, surfaceW: 210, origW: 292, origH: 296, support: 'stand' },
-  satin_cushion: { surfaceY: 145, surfaceX: 550, surfaceW: 880, origW: 1983, origH: 793, bottom: 660, support: 'stand' },
-  stepped_dresser: { surfaceY: 46, surfaceX: 25, surfaceW: 250, origW: 304, origH: 484, floorFit: true },
-  music_box: { surfaceY: 192, surfaceX: 23, surfaceW: 154, origW: 259, origH: 322, support: 'stand' },
-  block_castle: { surfaceY: 227, surfaceX: 125, surfaceW: 80, origW: 436, origH: 572 },
-  train_trestle: { surfaceY: 205, surfaceX: 2, surfaceW: 444, origW: 464, origH: 350, clipBottom: 205, support: 'table' },
-  wall_shelf: { surfaceY: 205, surfaceX: 14, surfaceW: 374, origW: 392, origH: 286, clipBottom: 205, support: 'shelf', excludeRects: [[0, 0, 104, 34], [0, 34, 15, 14]] },
+  giant_bear: {
+    surfaceY: 139,
+    surfaceX: 460,
+    surfaceW: 1000,
+    origW: 1922,
+    origH: 818,
+    bottom: 755,
+    floorFit: true
+  },
+  open_books: {
+    surfaceY: 2,
+    surfaceX: 2,
+    surfaceW: 272,
+    origW: 276,
+    origH: 300,
+    floorFit: true
+  },
+  vanity_table: {
+    surfaceY: 250,
+    surfaceX: 2,
+    surfaceW: 294,
+    origW: 298,
+    origH: 475,
+    floorFit: true
+  },
+  small_dresser: {
+    surfaceY: 0,
+    surfaceX: 2,
+    surfaceW: 414,
+    origW: 418,
+    origH: 411,
+    floorFit: true
+  },
+  cardboard_box: {
+    surfaceY: 0,
+    surfaceX: 2,
+    surfaceW: 414,
+    origW: 418,
+    origH: 411
+  },
+  messy_blocks: {
+    surfaceY: 4,
+    surfaceX: 60,
+    surfaceW: 98,
+    origW: 235,
+    origH: 253,
+    floorFit: true
+  },
+  toy_drum: {
+    surfaceY: 100,
+    surfaceX: 35,
+    surfaceW: 210,
+    origW: 292,
+    origH: 296,
+    support: 'stand'
+  },
+  satin_cushion: {
+    surfaceY: 145,
+    surfaceX: 550,
+    surfaceW: 880,
+    origW: 1983,
+    origH: 793,
+    bottom: 660,
+    support: 'stand'
+  },
+  stepped_dresser: {
+    surfaceY: 46,
+    surfaceX: 25,
+    surfaceW: 250,
+    origW: 304,
+    origH: 484,
+    floorFit: true
+  },
+  music_box: {
+    surfaceY: 192,
+    surfaceX: 23,
+    surfaceW: 154,
+    origW: 259,
+    origH: 322,
+    support: 'stand'
+  },
+  block_castle: {
+    surfaceY: 227,
+    surfaceX: 125,
+    surfaceW: 80,
+    origW: 436,
+    origH: 572
+  },
+  train_trestle: {
+    surfaceY: 205,
+    surfaceX: 2,
+    surfaceW: 444,
+    origW: 464,
+    origH: 350,
+    clipBottom: 205,
+    support: 'table'
+  },
+  wall_shelf: {
+    surfaceY: 205,
+    surfaceX: 14,
+    surfaceW: 374,
+    origW: 392,
+    origH: 286,
+    clipBottom: 205,
+    support: 'shelf',
+    excludeRects: [
+      [0, 0, 104, 34],
+      [0, 34, 15, 14]
+    ]
+  },
   // O abajur completo fica atrás da mesa que serve de apoio, alinhado pela base.
-  mushroom_lamp: { surfaceY: 342, surfaceX: -86, surfaceW: 460, origW: 288, origH: 342, support: 'shelf', cap: true },
-  dollhouse_roof: { surfaceY: 104, surfaceX: 112, surfaceW: 380, origW: 582, origH: 337, support: 'house', cap: true },
-  spinning_globe: { surfaceY: 863, surfaceX: 50, surfaceW: 1145, origW: 1245, origH: 1263 },
-  kite_frame: { surfaceY: -275, surfaceX: 0, surfaceW: 490, origW: 490, origH: 322, support: 'shelf' },
+  mushroom_lamp: {
+    surfaceY: 342,
+    surfaceX: -86,
+    surfaceW: 460,
+    origW: 288,
+    origH: 342,
+    support: 'shelf',
+    cap: true
+  },
+  dollhouse_roof: {
+    surfaceY: 104,
+    surfaceX: 112,
+    surfaceW: 380,
+    origW: 582,
+    origH: 337,
+    support: 'house',
+    cap: true
+  },
+  spinning_globe: {
+    surfaceY: 863,
+    surfaceX: 50,
+    surfaceW: 1145,
+    origW: 1245,
+    origH: 1263
+  },
+  kite_frame: {
+    surfaceY: -275,
+    surfaceX: 0,
+    surfaceW: 490,
+    origW: 490,
+    origH: 322,
+    support: 'shelf'
+  },
   // Os pés ficam dentro das páginas ilustradas; a curvatura delas é intencionalmente decorativa.
-  floating_books: { surfaceY: 2, surfaceX: 2, surfaceW: 406, origW: 410, origH: 279 },
-  chandelier_crystals: { surfaceY: 205, surfaceX: 3, surfaceW: 287, origW: 292, origH: 335 },
-  curtain_rod: { surfaceY: 2, surfaceX: 2, surfaceW: 487, origW: 491, origH: 351 },
-  cuckoo_clock: { surfaceY: -60, surfaceX: 0, surfaceW: 194, origW: 196, origH: 334 },
-  wardrobe_ledge: { surfaceY: 72, surfaceX: 3, surfaceW: 557, origW: 560, origH: 200 },
-  grand_portal_pedestal: { surfaceY: 330, surfaceX: 3, surfaceW: 515, origW: 518, origH: 365, excludeRects: [[404, 0, 114, 34]] }
+  floating_books: {
+    surfaceY: 2,
+    surfaceX: 2,
+    surfaceW: 406,
+    origW: 410,
+    origH: 279
+  },
+  chandelier_crystals: {
+    surfaceY: 205,
+    surfaceX: 3,
+    surfaceW: 287,
+    origW: 292,
+    origH: 335
+  },
+  curtain_rod: {
+    surfaceY: 2,
+    surfaceX: 2,
+    surfaceW: 487,
+    origW: 491,
+    origH: 351
+  },
+  cuckoo_clock: {
+    surfaceY: -60,
+    surfaceX: 0,
+    surfaceW: 194,
+    origW: 196,
+    origH: 334
+  },
+  wardrobe_ledge: {
+    surfaceY: 72,
+    surfaceX: 3,
+    surfaceW: 557,
+    origW: 560,
+    origH: 200
+  },
+  grand_portal_pedestal: {
+    surfaceY: 330,
+    surfaceX: 3,
+    surfaceW: 515,
+    origW: 518,
+    origH: 365,
+    excludeRects: [
+      [404, 0, 114, 34]
+    ]
+  }
 };
 
 export class PlatformRenderer {
+  /**
+   * Define recursos e opções de renderização das plataformas, usando as listas canônicas quando nenhuma
+   * lista é fornecida.
+   */
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
     this.assets = options.assets || null;
   }
 
+  /**
+   * Atualiza a fonte de imagens consultada ao compor plataformas e objetos do quarto.
+   */
   setAssets(assets) {
     this.assets = assets;
   }
@@ -61,14 +238,15 @@ export class PlatformRenderer {
    */
   drawAtlasPlatformSprite(ctx, assets, style, sx, p, tick = 0) {
     if (!assets) return false;
-    const styleClean = style === 'true_portal_balcony' ? 'grand_portal_pedestal' : (style || '').toLowerCase();
+    const styleClean = style === 'true_portal_balcony' ? 'grand_portal_pedestal' : (style || '')
+      .toLowerCase();
     const individualKey = 'dark-room-sprite-' + styleClean.replace(/_/g, '-');
     let sprite = assets.get(individualKey);
     let region = darkRoomAtlas && (darkRoomAtlas[styleClean] || darkRoomAtlas[style]);
 
     if (!sprite && region) {
       sprite = assets.getRegion('dark-room-production-spritesheet', region) ||
-               assets.getRegion('dark-room-environment-sheet', region);
+        assets.getRegion('dark-room-environment-sheet', region);
     }
     if (!sprite) return false;
 
@@ -94,9 +272,9 @@ export class PlatformRenderer {
 
     const platX = p.standRegion ? p.standRegion.x : p.x;
     const platW = p.standRegion ? p.standRegion.w : p.w;
-    const platY = (p.surfaceTopY !== undefined)
-      ? p.surfaceTopY
-      : ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
+    const platY = (p.surfaceTopY !== undefined) ?
+      p.surfaceTopY :
+      ((p.standRegion && p.standRegion.y !== undefined) ? p.standRegion.y : p.y);
     const camXFromSx = p.x - sx;
     const sxSurface = platX - camXFromSx;
 
@@ -173,7 +351,9 @@ export class PlatformRenderer {
         ctx.fillRect(leg1X - 3, this.floorY, legW + 6, 3);
         ctx.fillRect(leg2X - 3, this.floorY, legW + 6, 3);
       } else {
-        const left = dx + 4, width = dw - 8, top = dy + Math.round((s.bottom ?? spriteH) * scaleY) - 2;
+        const left = dx + 4,
+          width = dw - 8,
+          top = dy + Math.round((s.bottom ?? spriteH) * scaleY) - 2;
         const legHeight = Math.max(0, this.floorY - top - 8);
         ctx.fillStyle = '#291b20';
         ctx.fillRect(left + 8, top + 7, 7, legHeight);
@@ -346,7 +526,8 @@ export class PlatformRenderer {
       // pilastras clássicas com cantoneiras de cantaria, cornija intermediária em dente de serra,
       // quatro janelas de guilhotina com iluminação mágica quente de lamparina interior e cortinas,
       // e pórtico de entrada clássico com porta de mogno almofadada, bandeira em arco bandeira semicircular e puxadores de latão.
-      const left = dx + 13, width = dw - 26;
+      const left = dx + 13,
+        width = dw - 26;
       const top = dy + Math.round(dh * 0.72);
       const floor = this.floorY;
       const houseH = floor - top;
@@ -580,70 +761,112 @@ export class PlatformRenderer {
     if (styleClean === 'wardrobe_ledge') {
       // Armário fixado à parede abaixo da cornija existente. A cornija mantém
       // seu plano original de pouso; as portas e ferragens de fixação fazem parte do cenário.
-      const left=sxSurface+3, top=platY+8, width=platW-6, height=128;
-      const wood=ctx.createLinearGradient(left,top,left+width,top);
-      wood.addColorStop(0,'#382419');wood.addColorStop(.18,'#98643b');
-      wood.addColorStop(.5,'#634025');wood.addColorStop(.86,'#855431');
-      wood.addColorStop(1,'#342218');ctx.fillStyle=wood;
-      ctx.fillRect(left,top,width,height);
-      ctx.fillStyle='#241b17';ctx.fillRect(left+5,top+7,width-10,height-16);
-      const doorW=(width-15)/2;
-      for(let door=0;door<2;door++) {
-        const x=left+6+door*(doorW+3);
-        const face=ctx.createLinearGradient(x,top,x+doorW,top);
-        face.addColorStop(0,'#a57346');face.addColorStop(.3,'#704729');
-        face.addColorStop(1,'#493021');ctx.fillStyle=face;
-        ctx.fillRect(x,top+8,doorW,height-18);
-        for(const [offset,panelH] of [[15,48],[70,35]]) {
-          ctx.fillStyle='#b17c49';ctx.fillRect(x+3,top+offset,doorW-6,panelH);
-          ctx.fillStyle='#38251c';ctx.fillRect(x+4,top+offset+1,doorW-8,panelH-2);
-          ctx.fillStyle='#795030';ctx.fillRect(x+5,top+offset+3,doorW-10,panelH-6);
-          for(let grain=0;grain<3;grain++) {
-            ctx.beginPath();ctx.moveTo(x+7+grain*4,top+offset+6);
-            ctx.lineTo(x+6+grain*4,top+offset+panelH-8);
-            ctx.strokeStyle='#654029';ctx.lineWidth=.7;ctx.stroke();
+      const left = sxSurface + 3,
+        top = platY + 8,
+        width = platW - 6,
+        height = 128;
+      const wood = ctx.createLinearGradient(left, top, left + width, top);
+      wood.addColorStop(0, '#382419');
+      wood.addColorStop(.18, '#98643b');
+      wood.addColorStop(.5, '#634025');
+      wood.addColorStop(.86, '#855431');
+      wood.addColorStop(1, '#342218');
+      ctx.fillStyle = wood;
+      ctx.fillRect(left, top, width, height);
+      ctx.fillStyle = '#241b17';
+      ctx.fillRect(left + 5, top + 7, width - 10, height - 16);
+      const doorW = (width - 15) / 2;
+      for (let door = 0; door < 2; door++) {
+        const x = left + 6 + door * (doorW + 3);
+        const face = ctx.createLinearGradient(x, top, x + doorW, top);
+        face.addColorStop(0, '#a57346');
+        face.addColorStop(.3, '#704729');
+        face.addColorStop(1, '#493021');
+        ctx.fillStyle = face;
+        ctx.fillRect(x, top + 8, doorW, height - 18);
+        for (const [offset, panelH] of [
+            [15, 48],
+            [70, 35]
+          ]) {
+          ctx.fillStyle = '#b17c49';
+          ctx.fillRect(x + 3, top + offset, doorW - 6, panelH);
+          ctx.fillStyle = '#38251c';
+          ctx.fillRect(x + 4, top + offset + 1, doorW - 8, panelH - 2);
+          ctx.fillStyle = '#795030';
+          ctx.fillRect(x + 5, top + offset + 3, doorW - 10, panelH - 6);
+          for (let grain = 0; grain < 3; grain++) {
+            ctx.beginPath();
+            ctx.moveTo(x + 7 + grain * 4, top + offset + 6);
+            ctx.lineTo(x + 6 + grain * 4, top + offset + panelH - 8);
+            ctx.strokeStyle = '#654029';
+            ctx.lineWidth = .7;
+            ctx.stroke();
           }
         }
-        const handleX=door===0?x+doorW-4:x+2;
-        ctx.fillStyle='#342b20';ctx.fillRect(handleX-1,top+58,4,8);
-        ctx.fillStyle='#c19b57';ctx.fillRect(handleX,top+59,2,5);
-        for(const y of [top+22,top+94]) {
-          ctx.fillStyle='#a48550';ctx.fillRect(door===0?x:x+doorW-2,y,2,6);
+        const handleX = door === 0 ? x + doorW - 4 : x + 2;
+        ctx.fillStyle = '#342b20';
+        ctx.fillRect(handleX - 1, top + 58, 4, 8);
+        ctx.fillStyle = '#c19b57';
+        ctx.fillRect(handleX, top + 59, 2, 5);
+        for (const y of [top + 22, top + 94]) {
+          ctx.fillStyle = '#a48550';
+          ctx.fillRect(door === 0 ? x : x + doorW - 2, y, 2, 6);
         }
       }
-      ctx.fillStyle='#a67546';ctx.fillRect(left,top+height-5,width,3);
-      ctx.fillStyle='#3d291e';ctx.fillRect(left+2,top+height-2,width-4,5);
-      for(const x of [left+7,left+width-11]) {
-        ctx.fillStyle='#55402b';ctx.fillRect(x,top+height+3,4,9);
-        ctx.fillStyle='#a8874c';ctx.fillRect(x+1,top+height+6,2,2);
+      ctx.fillStyle = '#a67546';
+      ctx.fillRect(left, top + height - 5, width, 3);
+      ctx.fillStyle = '#3d291e';
+      ctx.fillRect(left + 2, top + height - 2, width - 4, 5);
+      for (const x of [left + 7, left + width - 11]) {
+        ctx.fillStyle = '#55402b';
+        ctx.fillRect(x, top + height + 3, 4, 9);
+        ctx.fillStyle = '#a8874c';
+        ctx.fillRect(x + 1, top + height + 6, 2, 2);
       }
     }
 
     const falseDoorPedestal = style === 'grand_portal_pedestal';
     if (styleClean === 'cuckoo_clock') {
       // O trilho de fixação à parede e as mísulas ficam atrás do relógio suspenso.
-      ctx.fillStyle='#493022';ctx.fillRect(sxSurface+5,platY+7,platW-10,14);
-      ctx.fillStyle='#805334';ctx.fillRect(sxSurface+7,platY+9,platW-14,9);
-      for (const x of [sxSurface+10,sxSurface+platW-12]) {
-        ctx.beginPath();ctx.moveTo(x,platY+9);ctx.lineTo(x,platY+31);
-        ctx.lineTo(x+6,platY+12);
-        ctx.strokeStyle='#3d291e';ctx.lineWidth=5;ctx.stroke();
-        ctx.strokeStyle='#8d603d';ctx.lineWidth=2;ctx.stroke();
-        ctx.fillStyle='#b39a68';ctx.fillRect(x-1,platY+13,2,2);
+      ctx.fillStyle = '#493022';
+      ctx.fillRect(sxSurface + 5, platY + 7, platW - 10, 14);
+      ctx.fillStyle = '#805334';
+      ctx.fillRect(sxSurface + 7, platY + 9, platW - 14, 9);
+      for (const x of [sxSurface + 10, sxSurface + platW - 12]) {
+        ctx.beginPath();
+        ctx.moveTo(x, platY + 9);
+        ctx.lineTo(x, platY + 31);
+        ctx.lineTo(x + 6, platY + 12);
+        ctx.strokeStyle = '#3d291e';
+        ctx.lineWidth = 5;
+        ctx.stroke();
+        ctx.strokeStyle = '#8d603d';
+        ctx.lineWidth = 2;
+        ctx.stroke();
+        ctx.fillStyle = '#b39a68';
+        ctx.fillRect(x - 1, platY + 13, 2, 2);
       }
-      const center=sxSurface+platW/2;
-      ctx.beginPath();ctx.moveTo(center,platY+15);ctx.lineTo(center,dy+10);
-      ctx.strokeStyle='#463b2a';ctx.lineWidth=3;ctx.stroke();
-      ctx.strokeStyle='#ad8c4e';ctx.lineWidth=1;ctx.stroke();
+      const center = sxSurface + platW / 2;
+      ctx.beginPath();
+      ctx.moveTo(center, platY + 15);
+      ctx.lineTo(center, dy + 10);
+      ctx.strokeStyle = '#463b2a';
+      ctx.lineWidth = 3;
+      ctx.stroke();
+      ctx.strokeStyle = '#ad8c4e';
+      ctx.lineWidth = 1;
+      ctx.stroke();
     }
     const clipSprite = falseDoorPedestal || s.trimAboveSupport || s.clipBottom !== undefined || s.excludeRects;
     if (clipSprite) {
       const clipTop = (falseDoorPedestal || s.trimAboveSupport) ? platY : dy;
       const clipEnd = dy + (s.clipBottom ?? spriteH) * scaleY;
-      ctx.save();ctx.beginPath();ctx.rect(dx, clipTop, dw, clipEnd - clipTop);
+      ctx.save();
+      ctx.beginPath();
+      ctx.rect(dx, clipTop, dw, clipEnd - clipTop);
       // Exclui os objetos vizinhos incorporados ao recorte do atlas, sem
       // esticar a ilustração nem alterar a geometria de colisão.
-      for (const [x, y, w, h] of (falseDoorPedestal ? [] : s.excludeRects) || []) {
+      for (const [x, y, w, h] of(falseDoorPedestal ? [] : s.excludeRects) || []) {
         ctx.rect(dx + x * dw / spriteW, dy + y * dh / spriteH,
           w * dw / spriteW, h * dh / spriteH);
       }
@@ -684,52 +907,84 @@ export class PlatformRenderer {
       ctx.fillRect(ridgeX, ridgeY + 3, ridgeW, 1);
     }
     if (s.support === 'shelf' && styleClean !== 'kite_frame') {
-      drawContactEdge(ctx,sxSurface,platY,platW,'wood',12);
-      for (const xx of [sxSurface+9,sxSurface+platW-17]) {
-        ctx.fillStyle='#493021';ctx.fillRect(xx,platY+12,8,26);
-        ctx.fillStyle='#b6854e';ctx.fillRect(xx+1,platY+12,2,23);
-        ctx.beginPath();ctx.moveTo(xx+6,platY+33);ctx.lineTo(xx+16,platY+12);
-        ctx.lineWidth=4;ctx.strokeStyle='#493021';ctx.stroke();
-        ctx.lineWidth=1.5;ctx.strokeStyle='#b6854e';ctx.stroke();
+      drawContactEdge(ctx, sxSurface, platY, platW, 'wood', 12);
+      for (const xx of [sxSurface + 9, sxSurface + platW - 17]) {
+        ctx.fillStyle = '#493021';
+        ctx.fillRect(xx, platY + 12, 8, 26);
+        ctx.fillStyle = '#b6854e';
+        ctx.fillRect(xx + 1, platY + 12, 2, 23);
+        ctx.beginPath();
+        ctx.moveTo(xx + 6, platY + 33);
+        ctx.lineTo(xx + 16, platY + 12);
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = '#493021';
+        ctx.stroke();
+        ctx.lineWidth = 1.5;
+        ctx.strokeStyle = '#b6854e';
+        ctx.stroke();
       }
     }
     if (styleClean === 'kite_frame') {
       // Prateleira com cabideiro: painel traseiro visível, ganchos de metal e uma argola
       // que conecta a pipa ao gancho esquerdo. Todas as ferragens ficam abaixo do apoio.
-      const wood = ctx.createLinearGradient(0,platY+10,0,platY+34);
-      wood.addColorStop(0,'#684327');wood.addColorStop(.45,'#8b5a32');
-      wood.addColorStop(1,'#42291e');ctx.fillStyle=wood;
-      ctx.fillRect(sxSurface+3,platY+10,platW-6,24);
-      for (let row=0;row<5;row++) {
-        ctx.beginPath();ctx.moveTo(sxSurface+6,platY+15+row*3);
-        ctx.lineTo(sxSurface+platW-7,platY+16+row*3);
-        ctx.strokeStyle=row%2?'#704527':'#986337';ctx.lineWidth=.6;ctx.stroke();
+      const wood = ctx.createLinearGradient(0, platY + 10, 0, platY + 34);
+      wood.addColorStop(0, '#684327');
+      wood.addColorStop(.45, '#8b5a32');
+      wood.addColorStop(1, '#42291e');
+      ctx.fillStyle = wood;
+      ctx.fillRect(sxSurface + 3, platY + 10, platW - 6, 24);
+      for (let row = 0; row < 5; row++) {
+        ctx.beginPath();
+        ctx.moveTo(sxSurface + 6, platY + 15 + row * 3);
+        ctx.lineTo(sxSurface + platW - 7, platY + 16 + row * 3);
+        ctx.strokeStyle = row % 2 ? '#704527' : '#986337';
+        ctx.lineWidth = .6;
+        ctx.stroke();
       }
       // Tampo espesso de madeira, sem guia de pouso separado sobre a superfície.
-      drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
-      for (const offset of [13,platW/2,platW-13]) {
-        const x=sxSurface+offset;
-        ctx.fillStyle='#382f25';ctx.fillRect(x-3,platY+15,6,12);
-        ctx.fillStyle='#9a8054';ctx.fillRect(x-2,platY+16,4,9);
-        ctx.fillStyle='#322b24';ctx.fillRect(x-.7,platY+17,1.4,1.4);
-        ctx.beginPath();ctx.moveTo(x,platY+23);ctx.lineTo(x,platY+30);
-        ctx.lineTo(x-2,platY+32);ctx.lineTo(x-4,platY+30);ctx.lineTo(x-4,platY+27);
-        ctx.strokeStyle='#30291f';ctx.lineWidth=3;ctx.stroke();
-        ctx.strokeStyle='#b29a6b';ctx.lineWidth=1.3;ctx.stroke();
+      drawContactEdge(ctx, sxSurface, platY, platW, 'wood', 10);
+      for (const offset of [13, platW / 2, platW - 13]) {
+        const x = sxSurface + offset;
+        ctx.fillStyle = '#382f25';
+        ctx.fillRect(x - 3, platY + 15, 6, 12);
+        ctx.fillStyle = '#9a8054';
+        ctx.fillRect(x - 2, platY + 16, 4, 9);
+        ctx.fillStyle = '#322b24';
+        ctx.fillRect(x - .7, platY + 17, 1.4, 1.4);
+        ctx.beginPath();
+        ctx.moveTo(x, platY + 23);
+        ctx.lineTo(x, platY + 30);
+        ctx.lineTo(x - 2, platY + 32);
+        ctx.lineTo(x - 4, platY + 30);
+        ctx.lineTo(x - 4, platY + 27);
+        ctx.strokeStyle = '#30291f';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+        ctx.strokeStyle = '#b29a6b';
+        ctx.lineWidth = 1.3;
+        ctx.stroke();
       }
       // A argola fechada é distinta do suporte e alcança a ponta da pipa.
-      const tipX=dx+38*scale, tipY=dy+3*scaleY;
-      const hookX=sxSurface+11;
-      ctx.beginPath();ctx.moveTo(tipX,tipY);
-      ctx.lineTo(hookX-3,platY+36);ctx.lineTo(hookX-3,platY+30);
-      ctx.lineTo(hookX,platY+28);ctx.lineTo(hookX+3,platY+31);
-      ctx.lineTo(hookX+2,platY+37);ctx.lineTo(tipX,tipY);
-      ctx.strokeStyle='#d1b37b';ctx.lineWidth=1;ctx.stroke();
+      const tipX = dx + 38 * scale,
+        tipY = dy + 3 * scaleY;
+      const hookX = sxSurface + 11;
+      ctx.beginPath();
+      ctx.moveTo(tipX, tipY);
+      ctx.lineTo(hookX - 3, platY + 36);
+      ctx.lineTo(hookX - 3, platY + 30);
+      ctx.lineTo(hookX, platY + 28);
+      ctx.lineTo(hookX + 3, platY + 31);
+      ctx.lineTo(hookX + 2, platY + 37);
+      ctx.lineTo(tipX, tipY);
+      ctx.strokeStyle = '#d1b37b';
+      ctx.lineWidth = 1;
+      ctx.stroke();
     }
     if (styleClean === 'cuckoo_clock') {
       // Este tampo robusto de madeira faz parte da fixação à parede, não é uma guia de salto.
-      drawContactEdge(ctx,sxSurface,platY,platW,'wood',10);
-      ctx.fillStyle='#513420';ctx.fillRect(sxSurface+3,platY+10,platW-6,3);
+      drawContactEdge(ctx, sxSurface, platY, platW, 'wood', 10);
+      ctx.fillStyle = '#513420';
+      ctx.fillRect(sxSurface + 3, platY + 10, platW - 6, 3);
     }
     return true;
   }
@@ -759,9 +1014,9 @@ export class PlatformRenderer {
       const right = cameraMatrix ? cameraMatrix.a * (sx + p.w) + cameraMatrix.e : sx + p.w;
       if (right < -80 || left > canvas.width + 80) return;
 
-      const isDebugHitbox = !options.contactMask && ((typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean')
-        ? window.DEBUG_COLLISIONS
-        : (typeof DEBUG_COLLISIONS === 'boolean' ? DEBUG_COLLISIONS : false));
+      const isDebugHitbox = !options.contactMask && ((typeof window !== 'undefined' && typeof window.DEBUG_COLLISIONS === 'boolean') ?
+        window.DEBUG_COLLISIONS :
+        (typeof DEBUG_COLLISIONS === 'boolean' ? DEBUG_COLLISIONS : false));
 
       const platX = p.standRegion ? p.standRegion.x : p.x;
       const platW = p.standRegion ? p.standRegion.w : p.w;
@@ -1008,8 +1263,10 @@ export class PlatformRenderer {
           ctx.strokeStyle = '#d97706';
           ctx.lineWidth = 2;
           ctx.beginPath();
-          ctx.moveTo(sx + 12, p.y + 3); ctx.lineTo(sx + p.w - 12, p.y - 6);
-          ctx.moveTo(sx + 12, p.y - 6); ctx.lineTo(sx + p.w - 12, p.y + 3);
+          ctx.moveTo(sx + 12, p.y + 3);
+          ctx.lineTo(sx + p.w - 12, p.y - 6);
+          ctx.moveTo(sx + 12, p.y - 6);
+          ctx.lineTo(sx + p.w - 12, p.y + 3);
           ctx.stroke();
           break;
         }
@@ -1103,7 +1360,8 @@ export class PlatformRenderer {
           ctx.strokeStyle = '#cbd5e1';
           ctx.lineWidth = 1.4;
           ctx.beginPath();
-          ctx.moveTo(sx + p.w / 2, p.y); ctx.lineTo(sx + p.w / 2, p.y - 7);
+          ctx.moveTo(sx + p.w / 2, p.y);
+          ctx.lineTo(sx + p.w / 2, p.y - 7);
           ctx.stroke();
           ctx.fillStyle = '#ef4444';
           ctx.beginPath();

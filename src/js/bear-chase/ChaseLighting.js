@@ -1,5 +1,7 @@
 import * as T from '../../vendor/three/three.module.js';
-import { routePoint } from './ChaseRoute.js';
+import {
+  routePoint
+} from './ChaseRoute.js';
 
 /**
  * Compõe a iluminação da perseguição sem modificar a simulação ou as colisões.
@@ -43,7 +45,12 @@ export class ChaseLighting {
     // Limites em unidades da cena, vistos pela câmera da luz, não pela câmera do jogo.
     // Um volume grande demais perde detalhe e inclui objetos distantes no passe de sombras.
     Object.assign(this.front.shadow.camera, {
-      left: -12.5, right: 12.5, top: 24, bottom: -24, near: .5, far: 80,
+      left: -12.5,
+      right: 12.5,
+      top: 24,
+      bottom: -24,
+      near: .5,
+      far: 80,
     });
     // bias/normalBias afastam a comparação da própria superfície, evitando manchas de auto-sombra.
     // Valores excessivos separam a sombra dos pés; radius controla a filtragem da borda em PCF.
@@ -76,12 +83,18 @@ export class ChaseLighting {
     // Um SpotLight amplo substitui a sombra da janela dominante. Uma luz pontual
     // com sombra exigiria seis faces; aqui são apenas dois mapas ativos no total.
     this.fairy = new T.SpotLight('#c9f3ff', 1.8, 7.5, 1.08, .48, 2);
-    this.fairy.name = 'LuzDaFadinha'; this.fairy.castShadow = true;
-    this.fairy.shadow.camera.near = .12; this.fairy.shadow.camera.far = 7.5;
-    this.fairy.shadow.bias = -.00012; this.fairy.shadow.normalBias = .008;
-    this.fairy.shadow.radius = 2; this.fairy.shadow.intensity = .82;
-    this.fairyOrigin = new T.Vector3(); this.fairyTarget = new T.Vector3();
-    owner.scene.add(this.fairy, this.fairy.target); this.lights.push(this.fairy);
+    this.fairy.name = 'LuzDaFadinha';
+    this.fairy.castShadow = true;
+    this.fairy.shadow.camera.near = .12;
+    this.fairy.shadow.camera.far = 7.5;
+    this.fairy.shadow.bias = -.00012;
+    this.fairy.shadow.normalBias = .008;
+    this.fairy.shadow.radius = 2;
+    this.fairy.shadow.intensity = .82;
+    this.fairyOrigin = new T.Vector3();
+    this.fairyTarget = new T.Vector3();
+    owner.scene.add(this.fairy, this.fairy.target);
+    this.lights.push(this.fairy);
     this.resize(false);
 
     owner.scene.traverse(object => {
@@ -214,13 +227,17 @@ export class ChaseLighting {
 
     // A máscara das vidraças continua projetada; seu passe de sombra passa à fada.
     for (const light of this.windows) {
-      light.shadow.intensity = 0; light.castShadow = false;
+      light.shadow.intensity = 0;
+      light.castShadow = false;
     }
     this.owner.fairy.updateWorldMatrix(true, false);
-    this.fairyOrigin.set(0, 0, 0).applyMatrix4(this.owner.fairy.matrixWorld);
+    this.fairyOrigin.set(0, 0, 0)
+      .applyMatrix4(this.owner.fairy.matrixWorld);
     this.owner.girlModel.torso.updateWorldMatrix(true, false);
-    this.fairyTarget.set(0, .06, 0).applyMatrix4(this.owner.girlModel.torso.matrixWorld);
-    this.fairy.position.copy(this.fairyOrigin); this.fairy.target.position.copy(this.fairyTarget);
+    this.fairyTarget.set(0, .06, 0)
+      .applyMatrix4(this.owner.girlModel.torso.matrixWorld);
+    this.fairy.position.copy(this.fairyOrigin);
+    this.fairy.target.position.copy(this.fairyTarget);
     this.fairy.target.updateMatrixWorld();
     this.fairy.intensity = 1.8 * (1 + Math.sin(state.time * 3.6) * .055);
   }

@@ -1,8 +1,7 @@
 // Recortes da arte conceitual de combate, extraídos sem redesenhar os quadros.
 export const BATTLE_GIRL_SOURCE_SHA256 = '51f0fdc9f0d29b4ca351918cf436f23ec4f347237b58aeb17d1f9a72d70306db';
 export const BATTLE_GIRL_FRAMES = {
-  "idle": [
-    {
+  "idle": [{
       "file": "girl/runtime/idle-01.png",
       "width": 296,
       "height": 303,
@@ -31,8 +30,7 @@ export const BATTLE_GIRL_FRAMES = {
       "anchorY": 304
     }
   ],
-  "run": [
-    {
+  "run": [{
       "file": "girl/runtime/run-01.png",
       "width": 291,
       "height": 311,
@@ -47,8 +45,7 @@ export const BATTLE_GIRL_FRAMES = {
       "anchorY": 310
     }
   ],
-  "jump": [
-    {
+  "jump": [{
       "file": "girl/runtime/jump-01.png",
       "width": 266,
       "height": 340,
@@ -63,8 +60,7 @@ export const BATTLE_GIRL_FRAMES = {
       "anchorY": 345
     }
   ],
-  "fall": [
-    {
+  "fall": [{
       "file": "girl/runtime/fall-01.png",
       "width": 264,
       "height": 345,
@@ -79,17 +75,14 @@ export const BATTLE_GIRL_FRAMES = {
       "anchorY": 340
     }
   ],
-  "crouch": [
-    {
-      "file": "girl/runtime/crouch-01.png",
-      "width": 282,
-      "height": 333,
-      "anchorX": 141,
-      "anchorY": 333
-    }
-  ],
-  "attack": [
-    {
+  "crouch": [{
+    "file": "girl/runtime/crouch-01.png",
+    "width": 282,
+    "height": 333,
+    "anchorX": 141,
+    "anchorY": 333
+  }],
+  "attack": [{
       "file": "girl/runtime/attack-01.png",
       "width": 262,
       "height": 306,
@@ -125,13 +118,11 @@ export const BATTLE_GIRL_FRAMES = {
       "anchorY": 306
     }
   ],
-  "damage": [
-    {
-      "file": "girl/runtime/damage-01.png",
-      "width": 262,
-      "height": 306,
-      "anchorX": 131,
-      "anchorY": 306
-    }
-  ]
+  "damage": [{
+    "file": "girl/runtime/damage-01.png",
+    "width": 262,
+    "height": 306,
+    "anchorX": 131,
+    "anchorY": 306
+  }]
 };

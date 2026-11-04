@@ -1,5 +1,11 @@
 // Dimensionamento de apresentação; não atualiza física nem câmera lógica.
-export function createViewportController({ canvas, darkCanvas, lighting, host, onOrientation }) {
+export function createViewportController({
+  canvas,
+  darkCanvas,
+  lighting,
+  host,
+  onOrientation
+}) {
   function resize() {
     const rect = (canvas && typeof canvas.getBoundingClientRect === 'function') ? canvas.getBoundingClientRect() : null;
     const w = (rect && rect.width > 0) ? rect.width : (host.innerWidth || 960);
@@ -22,5 +28,7 @@ export function createViewportController({ canvas, darkCanvas, lighting, host, o
     darkCanvas.height = canvas.height;
     lighting.resize(canvas.width, canvas.height);
   }
-  return { resize };
+  return {
+    resize
+  };
 }

@@ -1,13 +1,26 @@
-import { pickUpToy, storeToyInChest } from './ToyRoomToyActions.js';
+import {
+  pickUpToy,
+  storeToyInChest
+} from './ToyRoomToyActions.js';
 
 /** Decide coleta, armazenamento e disponibilidade do botão de ação. */
 export class ToyRoomInteraction {
-  constructor(context) { this.context = context; }
+  /** Recebe o contexto compartilhado para decidir e executar interações da exploração. */
+  constructor(context) {
+    this.context = context;
+  }
 
+  /** Prioriza combate, entrega ao baú e coleta; aplica debounce e publica feedback da ação. */
   triggerAction() {
     if (!this.context.isInputEnabled() || this.context.story?.inputLocked) return;
-    if (this.context.arena?.active) { this.context.arena.attack(); return; }
-    if (this.context.battle?.state) { this.context.battle.attack(); return; }
+    if (this.context.arena?.active) {
+      this.context.arena.attack();
+      return;
+    }
+    if (this.context.battle?.state) {
+      this.context.battle.attack();
+      return;
+    }
     const now = performance.now();
     if (now - this.context.lastActionTime < this.context.ACTION_DEBOUNCE_MS) {
       return;
@@ -91,7 +104,7 @@ export class ToyRoomInteraction {
     this.context.story?.attack();
   }
 
-
+  /** Atualiza os indicadores de proximidade e retorna a referência do baú, se existir. */
   updateProximity() {
     // Verificação de proximidade interativa para enriquecer o feedback do Botão de Ação
     let canInteract = false;

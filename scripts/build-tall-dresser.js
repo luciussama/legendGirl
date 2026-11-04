@@ -1,5 +1,7 @@
 import fs from 'fs';
-import { PNG } from 'pngjs';
+import {
+  PNG
+} from 'pngjs';
 
 const src = PNG.sync.read(fs.readFileSync('assets/art/dark-room/platforms/stepped_dresser.png'));
 const W = src.width; // 304
@@ -27,7 +29,10 @@ function copyNonTransparent(srcPng, sx, sy, sw, sh, dstPng, dx, dy) {
 }
 
 const dstH = 484;
-const dst = new PNG({ width: W, height: dstH });
+const dst = new PNG({
+  width: W,
+  height: dstH
+});
 dst.data.fill(0);
 
 // 1. Corpo base sólido da cômoda (caixa de madeira maciça escura com laterais chanfradas)
@@ -126,11 +131,17 @@ for (let y = 0; y <= 78; y++) {
       const lipT = (y - frontY) / (lipBottomY - frontY);
       let r, g, b;
       if (lipT < 0.22) {
-        r = 225; g = 148; b = 76; // Destaque chanfrado no topo
+        r = 225;
+        g = 148;
+        b = 76; // Destaque chanfrado no topo
       } else if (lipT < 0.65) {
-        r = 142; g = 72; b = 32;  // Corpo entalhado da moldura
+        r = 142;
+        g = 72;
+        b = 32; // Corpo entalhado da moldura
       } else {
-        r = 48; g = 18; b = 8;    // Sombra projetada sob o tampo
+        r = 48;
+        g = 18;
+        b = 8; // Sombra projetada sob o tampo
       }
       const grain = Math.sin(x * 0.2) * 5;
       dst.data[dIdx] = Math.min(255, Math.max(0, r + grain));

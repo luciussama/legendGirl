@@ -1,4 +1,6 @@
-import { PropParts } from './ChasePropResources.js';
+import {
+  PropParts
+} from './ChasePropResources.js';
 
 /** Locomotiva de madeira pintada e vagão verde, derivados da prancha atual. */
 export class TrainProp {
@@ -22,7 +24,8 @@ export class TrainProp {
     p.cylinder(dark, [0, .876, .51], .058, .058, .007);
     p.box(red, [0, .39, -.09], [.43, .24, .38]);
     p.box(wood, [0, .515, -.09], [.37, .035, .30]);
-    for (const x of [-.195, .195]) for (const z of [-.25, .065]) p.box(red, [x, .64, z], [.055, .29, .055]);
+    for (const x of [-.195, .195])
+      for (const z of [-.25, .065]) p.box(red, [x, .64, z], [.055, .29, .055]);
     p.box(red, [0, .71, -.25], [.40, .13, .05]);
     p.box(blue, [0, .816, -.09], [.54, .075, .46], .025);
     // Engate e caçamba têm fundo e paredes reais, incluindo a vista traseira interpretada.
@@ -48,5 +51,7 @@ export class TrainProp {
     this.prototype.scale.setScalar(.72);
   }
   /** Instancia somente a hierarquia; geometria e materiais pertencem ao proprietário externo. */
-  create() { return this.prototype.clone(true); }
+  create() {
+    return this.prototype.clone(true);
+  }
 }

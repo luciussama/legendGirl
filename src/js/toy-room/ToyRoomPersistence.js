@@ -1,10 +1,17 @@
 /** Preserva o formato dos saves e a ordem de restauração da sala e dos modos. */
 export class ToyRoomPersistence {
-  constructor(context) { this.context = context; }
+  /** Armazena referências ao contexto cuja exploração e modos serão serializados. */
+  constructor(context) {
+    this.context = context;
+  }
 
-  snapshot({ includeArena = true } = {}) {
+  /** Produz cópia serializável da exploração e, opcionalmente, das campanhas ativas. */
+  snapshot({
+    includeArena = true
+  } = {}) {
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
-      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
+      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'
+    ];
     const saved = JSON.parse(JSON.stringify(Object.fromEntries(keys.map(key => [key, this.context[key]]))));
     saved.carriedItemId = this.context.player.carriedItem?.id ?? null;
     saved.toyRoomStory = this.context.story.snapshot();
@@ -12,21 +19,34 @@ export class ToyRoomPersistence {
     if (includeArena && this.context.arena) saved.toyRoomArena = this.context.arena.snapshot();
     if (includeArena && this.context.chase?.campaign) saved.toyRoomChaseCampaign = this.context.chase.snapshot();
     if (includeArena && this.context.garden?.campaign) saved.toyRoomGarden = this.context.garden.snapshot();
-    if(includeArena&&this.context.epilogue?.active&&this.context.epilogue.campaign)saved.toyRoomEpilogue=this.context.epilogue.snapshot();
-    if(includeArena&&this.context.dream?.campaign)saved.toyRoomDream=this.context.dream.snapshot();
-    if(includeArena&&this.context.brinq?.campaign)saved.toyRoomBrinquedao=this.context.brinq.snapshot();
+    if (includeArena && this.context.epilogue?.active && this.context.epilogue.campaign) saved.toyRoomEpilogue = this.context.epilogue.snapshot();
+    if (includeArena && this.context.dream?.campaign) saved.toyRoomDream = this.context.dream.snapshot();
+    if (includeArena && this.context.brinq?.campaign) saved.toyRoomBrinquedao = this.context.brinq.snapshot();
     return saved;
   }
 
-  restore(saved, { preserveArena = false } = {}) {
-    if(!preserveArena){this.context.brinq?.destroy();this.context.brinq=null;this.context.dream?.destroy();this.context.dream=null;this.context.epilogue=null;}
-    if (!preserveArena && this.context.garden) {this.context.garden.destroy();this.context.garden=null;}
+  /** Reaplica exploração e modos salvos respeitando a precedência e o ciclo de vida de cada campanha. */
+  restore(saved, {
+    preserveArena = false
+  } = {}) {
+    if (!preserveArena) {
+      this.context.brinq?.destroy();
+      this.context.brinq = null;
+      this.context.dream?.destroy();
+      this.context.dream = null;
+      this.context.epilogue = null;
+    }
+    if (!preserveArena && this.context.garden) {
+      this.context.garden.destroy();
+      this.context.garden = null;
+    }
     if (!preserveArena && this.context.chase) {
       this.context.chase.destroy();
       this.context.chase = null;
     }
     const keys = ['cameraX', 'cameraY', 'introAlpha', 'introBannerTimer', 'victoryBannerActive',
-      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'];
+      'victoryBannerTimer', 'player', 'fairy', 'furniture', 'toys', 'organizedCount', 'toyRoomTutorialCompleted'
+    ];
     for (const key of keys) {
       if (key in saved) this.context[key] = JSON.parse(JSON.stringify(saved[key]));
     }
@@ -44,11 +64,13 @@ export class ToyRoomPersistence {
     this.context.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.context.battle.restore(saved.toyRoomBattle);
     if (!preserveArena) this.context.arena?.restore(saved.toyRoomArena, saved);
-    if(saved.toyRoomBrinquedao){this.context.startBrinquedao(saved.toyRoomBrinquedao);}
-    else if(saved.toyRoomDream){this.context.startDream(saved.toyRoomDream);}
-    else if (saved.toyRoomGarden) {
+    if (saved.toyRoomBrinquedao) {
+      this.context.startBrinquedao(saved.toyRoomBrinquedao);
+    } else if (saved.toyRoomDream) {
+      this.context.startDream(saved.toyRoomDream);
+    } else if (saved.toyRoomGarden) {
       this.context.startGarden(saved.toyRoomGarden);
-    } else if(saved.toyRoomEpilogue){
+    } else if (saved.toyRoomEpilogue) {
       this.context.startEpilogue(saved.toyRoomEpilogue);
     } else if (saved.toyRoomChaseCampaign) {
       if (this.context.arena?.active || !this.context.story.state.arenaCompleted)

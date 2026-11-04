@@ -1,7 +1,12 @@
 import express from 'express';
-import { createReviewStore, installReviewRoutes } from './tools/sprite-review/store.js';
+import {
+  createReviewStore,
+  installReviewRoutes
+} from './tools/sprite-review/store.js';
 import path from 'path';
-import { fileURLToPath } from 'url';
+import {
+  fileURLToPath
+} from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -32,4 +37,3 @@ app.use(express.static(__dirname));
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Servidor em execução em http://0.0.0.0:${PORT}`);
 });
-

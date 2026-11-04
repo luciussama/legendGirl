@@ -21,7 +21,10 @@ export class TransitionEffects {
     if (!ctx || !canvas || transitionWipeAlpha <= 0 || !trueExitDoor) return;
 
     ctx.save();
-    const point = presentationTransform?.transformPoint({ x: trueExitDoor.x + trueExitDoor.w / 2 - cameraX, y: trueExitDoor.y + trueExitDoor.h / 2 });
+    const point = presentationTransform?.transformPoint({
+      x: trueExitDoor.x + trueExitDoor.w / 2 - cameraX,
+      y: trueExitDoor.y + trueExitDoor.h / 2
+    });
     const originX = point?.x ?? trueExitDoor.x + trueExitDoor.w / 2 - cameraX;
     const originY = point?.y ?? trueExitDoor.y + trueExitDoor.h / 2 - cameraY;
     const maxDist = Math.hypot(canvas.width, canvas.height);

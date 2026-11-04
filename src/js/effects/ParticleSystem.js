@@ -7,6 +7,10 @@
  */
 
 export class ParticleSystem {
+  /**
+   * Reutiliza os vetores de partículas fornecidos ou cria vetores vazios para poeira e rastros de
+   * velocidade.
+   */
   constructor(options = {}) {
     this.babyJumpDust = options.babyJumpDust || [];
     this.speedRibbons = options.speedRibbons || [];
@@ -29,7 +33,7 @@ export class ParticleSystem {
       '233, 213, 255', // Roxo suave de fada
       '186, 230, 253', // Ciano celestial suave
       '251, 207, 232', // Rosa pastel suave
-      '255, 255, 255'  // Branco brilhante
+      '255, 255, 255' // Branco brilhante
     ];
     const count = isEscapeMode ? (escapeLevel >= 6 ? 2 : 1) : 1;
     for (let i = 0; i < count; i++) {
@@ -155,6 +159,9 @@ export class ParticleSystem {
     this.updateSpeedRibbons(dt);
   }
 
+  /**
+   * Avança o estado do subsistema; não é uma operação somente de desenho.
+   */
   updateBabyJumpDust(dt = 1.0) {
     for (let i = this.babyJumpDust.length - 1; i >= 0; i--) {
       const p = this.babyJumpDust[i];
@@ -169,6 +176,9 @@ export class ParticleSystem {
     }
   }
 
+  /**
+   * Avança o estado do subsistema; não é uma operação somente de desenho.
+   */
   updateSpeedRibbons(dt = 1.0) {
     for (let i = this.speedRibbons.length - 1; i >= 0; i--) {
       const r = this.speedRibbons[i];

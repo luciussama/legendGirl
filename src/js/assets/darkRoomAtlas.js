@@ -279,7 +279,12 @@ export const darkRoomAtlas = {
 
 export function validateAtlasRegion(region, sheetW = SHEET_WIDTH, sheetH = SHEET_HEIGHT) {
   if (!region || typeof region !== 'object') return false;
-  const { x, y, width, height } = region;
+  const {
+    x,
+    y,
+    width,
+    height
+  } = region;
   if (typeof x !== 'number' || typeof y !== 'number' || typeof width !== 'number' || typeof height !== 'number') return false;
   if (x < 0 || y < 0 || width <= 0 || height <= 0) return false;
   if (x + width > sheetW || y + height > sheetH) return false;

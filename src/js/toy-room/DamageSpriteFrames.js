@@ -1,8 +1,7 @@
 // Gerado por scripts/prepare-damage-sprites.js; quadros de dor na resolução nativa.
 export const DAMAGE_SPRITE_FRAMES = {
   "girl": {
-    "frames": [
-      {
+    "frames": [{
         "file": "damage-v2/girl/01.png",
         "width": 296,
         "height": 303,
@@ -78,8 +77,7 @@ export const DAMAGE_SPRITE_FRAMES = {
     "loop": false
   },
   "train": {
-    "frames": [
-      {
+    "frames": [{
         "file": "damage-v2/train/01.png",
         "width": 201,
         "height": 139,
@@ -155,8 +153,7 @@ export const DAMAGE_SPRITE_FRAMES = {
     "loop": false
   },
   "robot": {
-    "frames": [
-      {
+    "frames": [{
         "file": "damage-v2/robot/01.png",
         "width": 148,
         "height": 236,
@@ -232,8 +229,7 @@ export const DAMAGE_SPRITE_FRAMES = {
     "loop": false
   },
   "dinosaur": {
-    "frames": [
-      {
+    "frames": [{
         "file": "damage-v2/dinosaur/01.png",
         "width": 218,
         "height": 205,
@@ -309,8 +305,7 @@ export const DAMAGE_SPRITE_FRAMES = {
     "loop": false
   },
   "bear": {
-    "frames": [
-      {
+    "frames": [{
         "file": "damage-v2/bear/01.png",
         "width": 144,
         "height": 177,

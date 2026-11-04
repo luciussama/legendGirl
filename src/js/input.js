@@ -1,1 +1,5 @@
-export { InputController, bindInput } from './controllers/InputController.js';
+export {
+  InputController,
+  bindInput
+}
+from './controllers/InputController.js';

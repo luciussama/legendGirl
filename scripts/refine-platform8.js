@@ -1,12 +1,18 @@
 import fs from 'node:fs';
-import { PNG } from 'pngjs';
+import {
+  PNG
+} from 'pngjs';
 
 // Lê o sprite atual e produz uma versão refinada, sem resíduos.
 const srcPath = 'assets/art/dark-room/sprites/block_castle.png';
 const src = PNG.sync.read(fs.readFileSync(srcPath));
-const W = src.width, H = src.height;
+const W = src.width,
+  H = src.height;
 
-const out = new PNG({ width: W, height: H });
+const out = new PNG({
+  width: W,
+  height: H
+});
 // Inicia com transparência.
 out.data.fill(0);
 
@@ -14,7 +20,7 @@ out.data.fill(0);
 function getSrc(x, y) {
   if (x < 0 || x >= W || y < 0 || y >= H) return [0, 0, 0, 0];
   const idx = (y * W + x) * 4;
-  return [src.data[idx], src.data[idx+1], src.data[idx+2], src.data[idx+3]];
+  return [src.data[idx], src.data[idx + 1], src.data[idx + 2], src.data[idx + 3]];
 }
 
 // 1. Identifica o fundo externo por preenchimento a partir das bordas externas.
@@ -28,19 +34,38 @@ function isWhiteLike(x, y) {
 }
 
 for (let x = 0; x < W; x++) {
-  if (isWhiteLike(x, 0)) { isOuterBg[x] = 1; q.push(x, 0); }
-  if (isWhiteLike(x, H - 1)) { isOuterBg[(H - 1) * W + x] = 1; q.push(x, H - 1); }
+  if (isWhiteLike(x, 0)) {
+    isOuterBg[x] = 1;
+    q.push(x, 0);
+  }
+  if (isWhiteLike(x, H - 1)) {
+    isOuterBg[(H - 1) * W + x] = 1;
+    q.push(x, H - 1);
+  }
 }
 for (let y = 0; y < H; y++) {
-  if (isWhiteLike(0, y) && !isOuterBg[y * W]) { isOuterBg[y * W] = 1; q.push(0, y); }
-  if (isWhiteLike(W - 1, y) && !isOuterBg[y * W + W - 1]) { isOuterBg[y * W + W - 1] = 1; q.push(W - 1, y); }
+  if (isWhiteLike(0, y) && !isOuterBg[y * W]) {
+    isOuterBg[y * W] = 1;
+    q.push(0, y);
+  }
+  if (isWhiteLike(W - 1, y) && !isOuterBg[y * W + W - 1]) {
+    isOuterBg[y * W + W - 1] = 1;
+    q.push(W - 1, y);
+  }
 }
 
 let head = 0;
 while (head < q.length) {
-  const cx = q[head++], cy = q[head++];
-  for (const [dx, dy] of [[-1,0],[1,0],[0,-1],[0,1]]) {
-    const nx = cx + dx, ny = cy + dy;
+  const cx = q[head++],
+    cy = q[head++];
+  for (const [dx, dy] of [
+      [-1, 0],
+      [1, 0],
+      [0, -1],
+      [0, 1]
+    ]) {
+    const nx = cx + dx,
+      ny = cy + dy;
     if (nx >= 0 && nx < W && ny >= 0 && ny < H) {
       const nIdx = ny * W + nx;
       if (!isOuterBg[nIdx] && isWhiteLike(nx, ny)) {
@@ -76,9 +101,9 @@ for (let y = 0; y < H; y++) {
         if (isDomeArch) {
           // Reflexo sutil e delicado do cristal.
           out.data[idx] = 210;
-          out.data[idx+1] = 230;
-          out.data[idx+2] = 245;
-          out.data[idx+3] = 45; // brilho translúcido muito sutil
+          out.data[idx + 1] = 230;
+          out.data[idx + 2] = 245;
+          out.data[idx + 3] = 45; // brilho translúcido muito sutil
         }
         continue;
       }
@@ -94,8 +119,14 @@ for (let y = 0; y < H; y++) {
     // Remove os halos da suavização de bordas sobre o fundo branco:
     // Se o pixel tem alta luminância e toca uma área vazia, ajusta seu alfa para remover o halo branco.
     let hasEmptyNeighbor = false;
-    for (const [ndx, ndy] of [[-1,0],[1,0],[0,-1],[0,1]]) {
-      const nx = x + ndx, ny = y + ndy;
+    for (const [ndx, ndy] of [
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1]
+      ]) {
+      const nx = x + ndx,
+        ny = y + ndy;
       if (nx < 0 || nx >= W || ny < 0 || ny >= H || isOuterBg[ny * W + nx]) {
         hasEmptyNeighbor = true;
         break;
@@ -106,24 +137,24 @@ for (let y = 0; y < H; y++) {
       // Se o pixel pertence à borda de vidro.
       if (y < 175) {
         out.data[idx] = Math.min(200, r);
-        out.data[idx+1] = Math.min(220, g);
-        out.data[idx+2] = Math.min(235, b);
-        out.data[idx+3] = 90; // borda translúcida suave
+        out.data[idx + 1] = Math.min(220, g);
+        out.data[idx + 2] = Math.min(235, b);
+        out.data[idx + 3] = 90; // borda translúcida suave
       } else {
         // Remoção de halos nas bordas de madeira.
         out.data[idx] = 90;
-        out.data[idx+1] = 50;
-        out.data[idx+2] = 30;
-        out.data[idx+3] = 160;
+        out.data[idx + 1] = 50;
+        out.data[idx + 2] = 30;
+        out.data[idx + 3] = 160;
       }
       continue;
     }
 
     // Copia o pixel original do objeto.
     out.data[idx] = r;
-    out.data[idx+1] = g;
-    out.data[idx+2] = b;
-    out.data[idx+3] = a;
+    out.data[idx + 1] = g;
+    out.data[idx + 2] = b;
+    out.data[idx + 3] = a;
   }
 }
 
@@ -136,17 +167,17 @@ for (let y = 280; y <= 285; y++) {
     const idx = (y * W + x) * 4;
     const isEdge = (x === 36 || x === 52 || y === 285);
     out.data[idx] = isEdge ? 45 : 75;
-    out.data[idx+1] = isEdge ? 22 : 40;
-    out.data[idx+2] = isEdge ? 14 : 25;
-    out.data[idx+3] = 255;
+    out.data[idx + 1] = isEdge ? 22 : 40;
+    out.data[idx + 2] = isEdge ? 14 : 25;
+    out.data[idx + 3] = 255;
   }
   for (let x = 149; x <= 165; x++) {
     const idx = (y * W + x) * 4;
     const isEdge = (x === 149 || x === 165 || y === 285);
     out.data[idx] = isEdge ? 45 : 85;
-    out.data[idx+1] = isEdge ? 22 : 48;
-    out.data[idx+2] = isEdge ? 14 : 30;
-    out.data[idx+3] = 255;
+    out.data[idx + 1] = isEdge ? 22 : 48;
+    out.data[idx + 2] = isEdge ? 14 : 30;
+    out.data[idx + 3] = 255;
   }
 }
 

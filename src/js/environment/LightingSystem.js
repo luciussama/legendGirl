@@ -1,4 +1,6 @@
-import { getEscapeGuideTarget } from '../controllers/EscapeFairyGuide.js';
+import {
+  getEscapeGuideTarget
+} from '../controllers/EscapeFairyGuide.js';
 /** Luz local da lua e da fada; atua somente na renderização, sem modificar o estado do jogo. */
 import {
   FLOOR_Y,
@@ -7,23 +9,37 @@ import {
   exitDoor as defaultExitDoor,
   trueExitDoor as defaultTrueExitDoor
 } from '../config.js';
-import { NIGHT_WINDOWS } from './nightWindows.js';
+import {
+  NIGHT_WINDOWS
+} from './nightWindows.js';
 
 // Compensação ambiental restrita aos materiais apontados no QA-002.
 const SOFT_AMBIENT_STYLES = new Set(['messy_blocks', 'toy_drum', 'satin_cushion', 'stepped_dresser']);
 
 export class LightingSystem {
+  /**
+   * Cria ou recebe o canvas auxiliar e seu contexto, reutilizados para compor a máscara de luz sem tocar
+   * na simulação.
+   */
   constructor(options = {}) {
     this.darkCanvas = options.darkCanvas || (typeof document !== 'undefined' ? document.createElement('canvas') : null);
     this.dctx = this.darkCanvas?.getContext('2d');
   }
 
+  /**
+   * Redimensiona o estado e dados do componente para corresponder ao viewport e à escala de apresentação
+   * atuais.
+   */
   resize(width, height) {
     if (!this.darkCanvas) return;
     this.darkCanvas.width = width;
     this.darkCanvas.height = height;
   }
 
+  /**
+   * Aplica o estado e dados do componente ao estado ou à composição atual, respeitando o contrato do
+   * componente.
+   */
   apply(ctx, canvas, state = {}, baby = {}, fairy = {}, camX = 0, camY = 0, options = {}) {
     if (!ctx || !canvas) return;
     if (!this.darkCanvas && typeof document !== 'undefined') {
@@ -36,8 +52,10 @@ export class LightingSystem {
     const tick = state.tick || 0;
     const dramatic = Boolean(state.plotTwistActive);
     const active = state.isPhase3 ? (options.phase3Platforms || defaultPhase3Platforms) : (options.platforms || defaultPlatforms);
-    const fx = fairy.x - camX, fy = fairy.y;
-    const bx = baby.x - camX + baby.w / 2, by = baby.y + baby.h / 2;
+    const fx = fairy.x - camX,
+      fy = fairy.y;
+    const bx = baby.x - camX + baby.w / 2,
+      by = baby.y + baby.h / 2;
 
     // Reconstrói a cada quadro. Manter destination-out ativo aqui apagava gradualmente
     // a máscara de escuridão anterior e deixava todo o quarto uniformemente claro.

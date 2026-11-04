@@ -1,20 +1,33 @@
 const DEFAULT_MANIFEST_URL = './assets/manifest.json';
 
 export class AssetManager {
+  /**
+   * Inicializa manifesto vazio, mapas de imagens e estados e cache de recortes, usando a URL padrão
+   * quando nenhuma é fornecida.
+   */
   constructor(options = {}) {
     this.manifestUrl = options.manifestUrl || DEFAULT_MANIFEST_URL;
-    this.manifest = { version: 1, images: {}, spritesheets: {} };
+    this.manifest = {
+      version: 1,
+      images: {},
+      spritesheets: {}
+    };
     this.images = new Map();
     this.statuses = new Map();
     this.regionCache = new Map();
     this.manifestStatus = 'idle';
   }
 
+  /**
+   * Busca manifesto e atualiza status; rejeita falha.
+   */
   async loadManifest(url = this.manifestUrl) {
     this.manifestStatus = 'loading';
 
     try {
-      const response = await fetch(url, { cache: 'no-cache' });
+      const response = await fetch(url, {
+        cache: 'no-cache'
+      });
       if (!response.ok) {
         throw new Error(`Falha na solicitação do manifesto de recursos: ${response.status}`);
       }
@@ -33,12 +46,18 @@ export class AssetManager {
     }
   }
 
+  /**
+   * Pré-carrega entradas de imagens do manifesto.
+   */
   async preload() {
     const entries = Object.entries(this.manifest.images);
     await Promise.all(entries.map(([key, source]) => this.loadImage(key, source)));
     return this.images;
   }
 
+  /**
+   * Carrega a image para disponibilizá-lo ao componente; falhas seguem o fluxo de carregamento.
+   */
   loadImage(key, source) {
     if (this.images.has(key)) {
       return Promise.resolve(this.images.get(key));
@@ -55,9 +74,9 @@ export class AssetManager {
       const image = new Image();
       image.onload = () => {
         try {
-          const processedImage = key === 'toy-room-environment-sheet'
-            ? this.removeSolidBackground(image, 'dark')
-            : image;
+          const processedImage = key === 'toy-room-environment-sheet' ?
+            this.removeSolidBackground(image, 'dark') :
+            image;
           this.images.set(key, processedImage);
           this.statuses.set(key, 'ready');
           resolve(processedImage);
@@ -75,6 +94,9 @@ export class AssetManager {
     });
   }
 
+  /**
+   * Remove a solid background do conjunto mantido pelo componente e libera os vínculos associados.
+   */
   removeSolidBackground(image, background = 'light') {
     if (typeof document === 'undefined') return image;
 
@@ -85,7 +107,9 @@ export class AssetManager {
     const canvas = document.createElement('canvas');
     canvas.width = width;
     canvas.height = height;
-    const context = canvas.getContext('2d', { willReadFrequently: true });
+    const context = canvas.getContext('2d', {
+      willReadFrequently: true
+    });
     if (!context) return image;
 
     context.drawImage(image, 0, 0);
@@ -111,6 +135,9 @@ export class AssetManager {
     return canvas;
   }
 
+  /**
+   * Valida limites e cacheia recorte do atlas.
+   */
   getRegion(key, region) {
     const source = this.images.get(key);
     if (!source || typeof document === 'undefined' || !region) return null;
@@ -144,13 +171,18 @@ export class AssetManager {
     return canvas;
   }
 
+  /**
+   * Normaliza a character palette antes de seu uso, mantendo a representação aceita pelo componente.
+   */
   normalizeCharacterPalette(image) {
     if (typeof document === 'undefined') return image;
 
     const canvas = document.createElement('canvas');
     canvas.width = image.naturalWidth || image.width;
     canvas.height = image.naturalHeight || image.height;
-    const context = canvas.getContext('2d', { willReadFrequently: true });
+    const context = canvas.getContext('2d', {
+      willReadFrequently: true
+    });
     if (!context) return image;
 
     context.drawImage(image, 0, 0);
@@ -166,18 +198,30 @@ export class AssetManager {
     return canvas;
   }
 
+  /**
+   * Devolve a imagem carregada pela chave ou null quando ela ainda não está disponível.
+   */
   get(key) {
     return this.images.get(key) || null;
   }
 
+  /**
+   * Indica se a chave possui uma imagem registrada no cache.
+   */
   has(key) {
     return this.images.has(key);
   }
 
+  /**
+   * Devolve o estado de carga da chave ou missing quando ela ainda não foi registrada.
+   */
   getStatus(key) {
     return this.statuses.get(key) || 'missing';
   }
 
+  /**
+   * Consulta uma chave ou prontidão do manifesto; sem chave não certifica todas as imagens.
+   */
   isReady(key) {
     if (key) {
       return this.statuses.get(key) === 'ready' && !!this.images.get(key);
@@ -185,6 +229,9 @@ export class AssetManager {
     return this.manifestStatus === 'ready';
   }
 
+  /**
+   * Limpa a region cache e remove os dados temporários que não devem persistir após esta etapa.
+   */
   clearRegionCache() {
     this.regionCache.clear();
   }

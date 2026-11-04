@@ -1,5 +1,10 @@
-import { DAMAGE_SPRITE_FRAMES } from './DamageSpriteFrames.js';
-import { BATTLE_CROUCH_FRAME, BATTLE_TRAIN_BODY } from './BattlePresentation.js';
+import {
+  DAMAGE_SPRITE_FRAMES
+} from './DamageSpriteFrames.js';
+import {
+  BATTLE_CROUCH_FRAME,
+  BATTLE_TRAIN_BODY
+} from './BattlePresentation.js';
 
 // A raiz permanece relativa a este módulo; não depende da URL da página.
 const BATTLE_ASSET_ROOT = new URL('../../../assets/art/toy-room/battle/', import.meta.url);
@@ -17,14 +22,20 @@ export async function loadBattleManifest() {
 
 /** Preenche o cache fornecido sem acessar estado, narrativa ou regras do combate. */
 export async function loadBattleImages(manifest, images) {
-  const files = new Set(Object.values(manifest.actors).flatMap(actor =>
-    Object.values(actor.animations).flatMap(animation => animation.frames.map(frame => frame.file))));
+  const files = new Set(Object.values(manifest.actors)
+    .flatMap(actor =>
+      Object.values(actor.animations)
+      .flatMap(animation => animation.frames.map(frame => frame.file))));
   files.add(BATTLE_CROUCH_FRAME.file);
   files.add(BATTLE_TRAIN_BODY.file);
   await Promise.all([...files].map(file => new Promise((resolve, reject) => {
     const image = new Image();
-    image.onload = () => { images.set(file, image); resolve(); };
+    image.onload = () => {
+      images.set(file, image);
+      resolve();
+    };
     image.onerror = () => reject(Error(`Sprite de combate ausente: ${file}`));
-    image.src = new URL(file, BATTLE_ASSET_ROOT).href;
+    image.src = new URL(file, BATTLE_ASSET_ROOT)
+      .href;
   })));
 }

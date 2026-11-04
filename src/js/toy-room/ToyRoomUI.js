@@ -1,4 +1,6 @@
-import { getMobileUILayout } from '../ui/MobileUILayout.js';
+import {
+  getMobileUILayout
+} from '../ui/MobileUILayout.js';
 /**
  * ToyRoomUI.js
  * Interface de usuário da Sala de Brinquedos:
@@ -8,7 +10,10 @@ import { getMobileUILayout } from '../ui/MobileUILayout.js';
  * - Faixa festiva de celebração de vitória
  */
 
-import { POETIC_LINES, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
+import {
+  POETIC_LINES,
+  renderPoeticNarration
+} from '../narrative/PoeticNarrator.js';
 
 export class ToyRoomUI {
   /**
@@ -23,14 +28,14 @@ export class ToyRoomUI {
     ctx.save();
     const {
       organizedCount = 0,
-      totalToys = 8,
-      isTouchDevice = false,
-      touchState = {},
-      player = {},
-      introAlpha = 0,
-      introBannerTimer = 0,
-      victoryBannerActive = false,
-      victoryBannerTimer = 0
+        totalToys = 8,
+        isTouchDevice = false,
+        touchState = {},
+        player = {},
+        introAlpha = 0,
+        introBannerTimer = 0,
+        victoryBannerActive = false,
+        victoryBannerTimer = 0
     } = state;
 
     // Em telas estreitas, o card fica abaixo dos controles HTML; nas demais, ocupa a esquerda.
@@ -40,7 +45,8 @@ export class ToyRoomUI {
     const narrow = layout.usableWidth / uiScale < 600;
     const progressText = `🧸 Brinquedos Arrumados: ${organizedCount}/${totalToys}`;
     ctx.font = `bold ${13 * uiScale}px Georgia, serif`;
-    const fullTextWidth = ctx.measureText(progressText).width;
+    const fullTextWidth = ctx.measureText(progressText)
+      .width;
     const cardW = Math.min(Math.ceil(fullTextWidth) + 32 * uiScale, layout.usableWidth - (narrow ? 32 : 190) * uiScale);
     const compactCard = cardW < fullTextWidth + 32 * uiScale;
     const cardH = (compactCard ? 62 : 46) * uiScale;
@@ -50,7 +56,7 @@ export class ToyRoomUI {
 
     ctx.fillStyle = 'rgba(26, 16, 38, 0.82)';
     ctx.beginPath();
-      ctx.roundRect(cardX, cardY, cardW, cardH, 12 * uiScale);
+    ctx.roundRect(cardX, cardY, cardW, cardH, 12 * uiScale);
     ctx.fill();
     ctx.strokeStyle = '#facc15';
     ctx.lineWidth = 1.5;
@@ -61,7 +67,9 @@ export class ToyRoomUI {
     if (compactCard) {
       const title = '🧸 Brinquedos';
       const counter = `Arrumados: ${organizedCount}/${totalToys}`;
-      const widest = Math.max(ctx.measureText(title).width, ctx.measureText(counter).width);
+      const widest = Math.max(ctx.measureText(title)
+        .width, ctx.measureText(counter)
+        .width);
       const fontSize = Math.min(13 * uiScale, 13 * uiScale * (cardW - 32 * uiScale) / widest);
       ctx.font = `bold ${fontSize}px Georgia, serif`;
       ctx.fillText(title, cardX + 16 * uiScale, cardY + 19 * uiScale);
@@ -248,13 +256,18 @@ export class ToyRoomUI {
 
     if (introBannerTimer > 0) {
       renderPoeticNarration(ctx, canvas,
-        'Explore livremente o chão colorido e guarde os brinquedos no baú!',
-        { center: true, heading: 'BEM-VINDA À SALA DE BRINQUEDOS!' });
+        'Explore livremente o chão colorido e guarde os brinquedos no baú!', {
+          center: true,
+          heading: 'BEM-VINDA À SALA DE BRINQUEDOS!'
+        });
     }
 
     // Faixa Comemorativa de Vitória
     if (victoryBannerActive && victoryBannerTimer > 0) {
-      renderPoeticNarration(ctx, canvas, POETIC_LINES.ending, {center:true,heading:'UM LUGAR PARA BRINCAR'});
+      renderPoeticNarration(ctx, canvas, POETIC_LINES.ending, {
+        center: true,
+        heading: 'UM LUGAR PARA BRINCAR'
+      });
     }
 
     ctx.restore();

@@ -1,5 +1,12 @@
 /** Movimento da exploração: recebe as referências vigentes a cada atualização, sem reter a fase. */
-export function updateToyRoomMovement({ player, keysDown, gamepadState, touchState, footstepPuffs, resolveCollisions }, dt) {
+export function updateToyRoomMovement({
+  player,
+  keysDown,
+  gamepadState,
+  touchState,
+  footstepPuffs,
+  resolveCollisions
+}, dt) {
   if (!(dt > 0)) return;
   // Vetor de movimentação do jogador
   let moveX = 0;
@@ -75,7 +82,11 @@ export function updateToyRoomMovement({ player, keysDown, gamepadState, touchSta
 }
 
 /** Conserva a ordem dos móveis, os limites da sala e o desempate das penetrações. */
-export function resolveToyRoomCollisions({ width, height, furniture }, px, py, r) {
+export function resolveToyRoomCollisions({
+  width,
+  height,
+  furniture
+}, px, py, r) {
   let nx = px;
   let ny = py;
 
@@ -109,5 +120,8 @@ export function resolveToyRoomCollisions({ width, height, furniture }, px, py, r
     }
   }
 
-  return { x: nx, y: ny };
+  return {
+    x: nx,
+    y: ny
+  };
 }

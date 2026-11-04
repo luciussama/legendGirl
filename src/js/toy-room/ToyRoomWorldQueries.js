@@ -1,19 +1,32 @@
 /** Consultas geométricas da exploração; dependências consultadas novamente após restore. */
-export function createToyRoomWorldQueries({ getDimensions, getPlayer, resolvePosition, getCameraFrame, getCameraBounds }) {
+export function createToyRoomWorldQueries({
+  getDimensions,
+  getPlayer,
+  resolvePosition,
+  getCameraFrame,
+  getCameraBounds
+}) {
   const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
   const key = point => `${point.x},${point.y}`;
+
   function isFree(point, radius = 24) {
     const resolved = resolvePosition(point.x, point.y, radius);
     return resolved.x === point.x && resolved.y === point.y;
   }
 
   function reachableFloor() {
-    const { width, height } = getDimensions();
+    const {
+      width,
+      height
+    } = getDimensions();
     const player = getPlayer();
     const nodes = [];
     for (let x = 120; x <= width - 120; x += 40) {
       for (let y = 320; y <= height - 120; y += 40) {
-        const point = { x, y };
+        const point = {
+          x,
+          y
+        };
         if (isFree(point)) nodes.push(point);
       }
     }
@@ -27,12 +40,23 @@ export function createToyRoomWorldQueries({ getDimensions, getPlayer, resolvePos
     const queue = [start];
     for (let index = 0; index < queue.length; index++) {
       const point = queue[index];
-      for (const [dx, dy] of [[40, 0], [-40, 0], [0, 40], [0, -40]]) {
-        const next = { x: point.x + dx, y: point.y + dy };
+      for (const [dx, dy] of [
+          [40, 0],
+          [-40, 0],
+          [0, 40],
+          [0, -40]
+        ]) {
+        const next = {
+          x: point.x + dx,
+          y: point.y + dy
+        };
         const nextKey = key(next);
         if (!nodesByKey.has(nextKey) || visited.has(nextKey)) continue;
         if (![0.25, 0.5, 0.75].every(amount =>
-          isFree({ x: point.x + dx * amount, y: point.y + dy * amount }))) continue;
+            isFree({
+              x: point.x + dx * amount,
+              y: point.y + dy * amount
+            }))) continue;
         visited.add(nextKey);
         queue.push(next);
       }
@@ -41,7 +65,12 @@ export function createToyRoomWorldQueries({ getDimensions, getPlayer, resolvePos
   }
 
   function viewport(frame = getCameraFrame()) {
-    const { x, y, width, height } = getCameraBounds();
+    const {
+      x,
+      y,
+      width,
+      height
+    } = getCameraBounds();
     return {
       left: x - frame.x / frame.zoom,
       top: y - frame.y / frame.zoom,
@@ -50,5 +79,9 @@ export function createToyRoomWorldQueries({ getDimensions, getPlayer, resolvePos
     };
   }
 
-  return Object.freeze({ isFree, reachableFloor, viewport });
+  return Object.freeze({
+    isFree,
+    reachableFloor,
+    viewport
+  });
 }

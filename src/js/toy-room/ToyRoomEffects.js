@@ -53,7 +53,15 @@ export function initializeToyRoomSunMotes(sunMotes, width, height) {
 
 }
 
-export function updateToyRoomEffects({ chest, sparkles, confetti, footstepPuffs, sunMotes, width, height }, dt) {
+export function updateToyRoomEffects({
+  chest,
+  sparkles,
+  confetti,
+  footstepPuffs,
+  sunMotes,
+  width,
+  height
+}, dt) {
   // Animação da tampa do baú
   if (chest) {
     if (chest.lidOpen > 0) chest.lidOpen = Math.max(0, chest.lidOpen - 0.015 * dt);

@@ -4,9 +4,18 @@
  * Permite visualizar cada sprite individualmente, verificar limites e confirmar ausência de cortes.
  */
 
-import { darkRoomAtlas, SHEET_WIDTH, SHEET_HEIGHT, validateAtlasRegion } from '../assets/darkRoomAtlas.js';
+import {
+  darkRoomAtlas,
+  SHEET_WIDTH,
+  SHEET_HEIGHT,
+  validateAtlasRegion
+} from '../assets/darkRoomAtlas.js';
 
 export class AtlasDebugger {
+  /**
+   * Armazena os recursos e o estado fechado da ferramenta; os elementos da interface são criados somente
+   * quando necessários.
+   */
   constructor(options = {}) {
     this.assets = options.assets || null;
     this.sheetKey = options.sheetKey || 'dark-room-environment-sheet';
@@ -18,6 +27,9 @@ export class AtlasDebugger {
     this.validationResults = [];
   }
 
+  /**
+   * Atualiza a fonte de imagens usada para montar a prévia do atlas.
+   */
   setAssets(assets) {
     this.assets = assets;
   }
@@ -31,13 +43,13 @@ export class AtlasDebugger {
 
     for (const [key, region] of entries) {
       const isValid = validateAtlasRegion(region, SHEET_WIDTH, SHEET_HEIGHT);
-      const boundsError = region.x < 0 || region.y < 0
-        ? 'Coordenada negativa'
-        : (region.x + region.width > SHEET_WIDTH || region.y + region.height > SHEET_HEIGHT)
-          ? 'Ultrapassa limites do sheet'
-          : (region.width <= 0 || region.height <= 0)
-            ? 'Dimensão inválida'
-            : null;
+      const boundsError = region.x < 0 || region.y < 0 ?
+        'Coordenada negativa' :
+        (region.x + region.width > SHEET_WIDTH || region.y + region.height > SHEET_HEIGHT) ?
+        'Ultrapassa limites do sheet' :
+        (region.width <= 0 || region.height <= 0) ?
+        'Dimensão inválida' :
+        null;
 
       results.push({
         key,
@@ -54,11 +66,11 @@ export class AtlasDebugger {
       if (region.items) {
         for (const [subKey, subRegion] of Object.entries(region.items)) {
           const subValid = validateAtlasRegion(subRegion, SHEET_WIDTH, SHEET_HEIGHT);
-          const subError = subRegion.x < 0 || subRegion.y < 0
-            ? 'Coordenada negativa'
-            : (subRegion.x + subRegion.width > SHEET_WIDTH || subRegion.y + subRegion.height > SHEET_HEIGHT)
-              ? 'Ultrapassa limites'
-              : null;
+          const subError = subRegion.x < 0 || subRegion.y < 0 ?
+            'Coordenada negativa' :
+            (subRegion.x + subRegion.width > SHEET_WIDTH || subRegion.y + subRegion.height > SHEET_HEIGHT) ?
+            'Ultrapassa limites' :
+            null;
           results.push({
             key: `${key}.${subKey}`,
             label: `${region.label} > ${subRegion.label || subKey}`,
@@ -173,6 +185,10 @@ export class AtlasDebugger {
     });
   }
 
+  /**
+   * Abre ou fecha a ferramenta de inspeção, criando a interface sob demanda e atualizando a prévia ao
+   * abrir.
+   */
   toggle(forceState = null) {
     this.initDOM();
     this.isOpen = forceState !== null ? forceState : !this.isOpen;
@@ -184,6 +200,9 @@ export class AtlasDebugger {
     }
   }
 
+  /**
+   * Desenha as regiões do atlas na interface de depuração junto aos resultados de validação.
+   */
   render() {
     if (!this.canvas || !this.ctx) return;
 

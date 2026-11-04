@@ -1,8 +1,20 @@
-import { nearestToyGuide } from './ToyRoomOrientation.js';
-import { toyGuideBlend } from '../state/GameDifficulty.js';
+import {
+  nearestToyGuide
+} from './ToyRoomOrientation.js';
+import {
+  toyGuideBlend
+} from '../state/GameDifficulty.js';
 
 /** Atualiza guia, voo e rastro da fada com os atores do quadro atual. */
-export function updateToyRoomCompanion({ player, fairy, toys, tutorial, story, gameDifficulty, guideToy }, dt) {
+export function updateToyRoomCompanion({
+  player,
+  fairy,
+  toys,
+  tutorial,
+  story,
+  gameDifficulty,
+  guideToy
+}, dt) {
   // Atualização da fadinha companheira
   const fairyHoverOffsetX = player.facing === 'left' ? 24 : -24;
   fairy.targetX = player.x + fairyHoverOffsetX + Math.cos(fairy.flutterTime * 0.08) * 12;
@@ -11,14 +23,19 @@ export function updateToyRoomCompanion({ player, fairy, toys, tutorial, story, g
   // O tutorial conserva sua orientação; no gameplay o alvo depende da protagonista.
   guideToy = player.carriedItem || story.canCollectToys === false ? null : nearestToyGuide(player, toys, guideToy);
   const guide = story.guidePosition() || tutorial.guidePosition() || (guideToy && {
-    x: guideToy.x, y: guideToy.y - 105
+    x: guideToy.x,
+    y: guideToy.y - 105
   });
-  if (guide) { fairy.targetX = guide.x; fairy.targetY = guide.y; }
+  if (guide) {
+    fairy.targetX = guide.x;
+    fairy.targetY = guide.y;
+  }
 
   fairy.flutterTime += dt;
   const guideBlend = guide ? toyGuideBlend(gameDifficulty, dt) : 0.12 * dt;
   if (story.state?.sword && (story.state.sword.visible || story.state.investigationStage === 'PICKUP')) {
-    fairy.x = fairy.targetX;fairy.y = fairy.targetY;
+    fairy.x = fairy.targetX;
+    fairy.y = fairy.targetY;
   } else {
     fairy.x += (fairy.targetX - fairy.x) * guideBlend;
     fairy.y += (fairy.targetY - fairy.y) * guideBlend;

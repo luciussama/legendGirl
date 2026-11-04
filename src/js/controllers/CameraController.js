@@ -1,4 +1,6 @@
-import { getDarkRoomScrollFrame } from './CameraPresentation.js';
+import {
+  getDarkRoomScrollFrame
+} from './CameraPresentation.js';
 
 /**
  * CameraController.js
@@ -7,6 +9,10 @@ import { getDarkRoomScrollFrame } from './CameraPresentation.js';
  */
 
 export class CameraController {
+  /**
+   * Inicializa posição, zoom e limites verticais a partir das opções, mantendo separadas as coordenadas
+   * atuais e as de destino.
+   */
   constructor(options = {}) {
     this.x = options.x || 0;
     this.y = options.y || 0;
@@ -17,6 +23,10 @@ export class CameraController {
     this.floorY = options.floorY || 450;
   }
 
+  /**
+   * Reinicializa o estado e dados do componente para permitir uma nova execução sem reaproveitar dados
+   * transitórios antigos.
+   */
   reset(x = 0, y = 0, zoom = 1.0) {
     this.x = x;
     this.y = y;
@@ -25,6 +35,9 @@ export class CameraController {
     this.targetZoom = zoom;
   }
 
+  /**
+   * Define o zoom de destino e, quando solicitado, aplica-o imediatamente.
+   */
   setZoom(zoom, immediate = false) {
     this.targetZoom = zoom;
     if (immediate) {
@@ -32,6 +45,9 @@ export class CameraController {
     }
   }
 
+  /**
+   * Define os destinos de posição; no modo imediato também sincroniza a posição atual e a altura-alvo.
+   */
   setPosition(x, y, immediate = false) {
     this.targetZoom = immediate ? this.zoom : this.targetZoom;
     if (immediate) {
@@ -170,11 +186,19 @@ export class CameraController {
     }
 
     // O viewport define a altura uma única vez; o salto não dirige a câmera nem recebe correções dela.
-    this.y = this.targetY = getDarkRoomScrollFrame({ x: this.x, width: canvas.width, height: canvas.height }).y;
+    this.y = this.targetY = getDarkRoomScrollFrame({
+        x: this.x,
+        width: canvas.width,
+        height: canvas.height
+      })
+      .y;
 
     this.syncToState(state);
   }
 
+  /**
+   * Sincroniza a from state com o estado corrente para que os consumidores observem a mesma versão.
+   */
   syncFromState(state) {
     if (!state) return;
     this.x = state.cameraX;
@@ -184,6 +208,9 @@ export class CameraController {
     this.targetZoom = state.targetCameraZoom;
   }
 
+  /**
+   * Sincroniza a to state com o estado corrente para que os consumidores observem a mesma versão.
+   */
   syncToState(state) {
     if (!state) return;
     state.cameraX = this.x;

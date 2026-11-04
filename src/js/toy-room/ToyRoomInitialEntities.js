@@ -29,8 +29,7 @@ export function createToyRoomInitialEntities() {
   };
 
   // Móveis e Obstáculos do Cenário
-  const furniture = [
-    {
+  const furniture = [{
       id: 'toy-chest',
       type: 'chest',
       x: 1040,
@@ -92,8 +91,7 @@ export function createToyRoomInitialEntities() {
   ];
 
   // Brinquedos Interativos
-  const toys = [
-    {
+  const toys = [{
       id: 'teddy',
       name: 'Ursinho Pipoca',
       type: 'teddy',
@@ -199,5 +197,10 @@ export function createToyRoomInitialEntities() {
     }
   ];
 
-  return { player, fairy, furniture, toys };
+  return {
+    player,
+    fairy,
+    furniture,
+    toys
+  };
 }

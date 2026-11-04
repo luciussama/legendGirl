@@ -1,13 +1,32 @@
-import { specialCameraFrame } from './ArenaSpecialAttack.js';
-import { arenaActorBounds } from './ArenaScale.js';
-import { arenaMobileControlsLayout } from '../ui/MobileUILayout.js';
+import {
+  specialCameraFrame
+} from './ArenaSpecialAttack.js';
+import {
+  arenaActorBounds
+} from './ArenaScale.js';
+import {
+  arenaMobileControlsLayout
+} from '../ui/MobileUILayout.js';
 
 // Envelopes de pintura, incluindo as poses mais largas/altas; não são hitboxes.
-const ENEMY_FRAME = { train: [540, 340], robot: [460, 280], dinosaur: [400, 290], bear: [450, 425] };
+const ENEMY_FRAME = {
+  train: [540, 340],
+  robot: [460, 280],
+  dinosaur: [400, 290],
+  bear: [450, 425]
+};
 
 /** Câmera suave em coordenadas lógicas; todos os atores cabem na área jogável. */
 export class ArenaCamera {
-  constructor() { this.x = 800; this.y = 510; this.width = 1300; this.shake = 0; this.time = 0; }
+  /** Começa enquadrada no centro da arena, com tremor e tempo zerados. */
+  constructor() {
+    this.x = 800;
+    this.y = 510;
+    this.width = 1300;
+    this.shake = 0;
+    this.time = 0;
+  }
+  /** Suaviza centro, largura e altura para conter atores, ataques e impactos. */
   update(dt, player, enemy, jump = 0, impact = null, battle = null) {
     const step = Math.max(0, Math.min(12, Number.isFinite(dt) ? dt : 0));
     if (!step) return;
@@ -22,23 +41,35 @@ export class ArenaCamera {
     this.time += step;
     this.shake = impact ? Math.max(0, impact.strength * (1 - impact.elapsed / impact.duration)) : this.shake * Math.exp(-step / 5);
   }
+  /** Calcula os limites de pintura a considerar, incluindo transições e alcance de ataques. */
   envelope(player, enemy, jump, battle = null, anticipate = false) {
     const [width, height] = ENEMY_FRAME[enemy?.actor] ?? ENEMY_FRAME.robot;
     const p = arenaActorBounds(player.x, 690, jump, 240, 420);
     const e = arenaActorBounds(enemy?.x ?? 1120, 690, 0, height, width);
-    const envelope = { left: Math.min(p.left, e.left), right: Math.max(p.right, e.right), top: Math.min(p.top, e.top) };
+    const envelope = {
+      left: Math.min(p.left, e.left),
+      right: Math.max(p.right, e.right),
+      top: Math.min(p.top, e.top)
+    };
     // O baú e a trajetória de transporte pedem panorama; a morte antecipa a abertura.
     if (battle?.transition || (anticipate && enemy?.state === 'DEATH')) {
-      envelope.left = Math.min(0, envelope.left); envelope.right = Math.max(1600, envelope.right);
+      envelope.left = Math.min(0, envelope.left);
+      envelope.right = Math.max(1600, envelope.right);
       envelope.top = Math.min(110, envelope.top);
     }
-    const reach = { 'Laser Beam': 620, 'Steam Blast': 620, 'Rocket Punch': 520 }[enemy?.attack];
+    const reach = {
+      'Laser Beam': 620,
+      'Steam Blast': 620,
+      'Rocket Punch': 520
+    } [enemy?.attack];
     if (reach && enemy.state === 'ATTACK' && (anticipate || enemy.elapsed >= 44)) {
       const tip = enemy.x + enemy.facing * reach;
-      envelope.left = Math.min(envelope.left, tip); envelope.right = Math.max(envelope.right, tip);
+      envelope.left = Math.min(envelope.left, tip);
+      envelope.right = Math.max(envelope.right, tip);
     }
     return envelope;
   }
+  /** Converte o enquadramento lógico em transformação adequada ao layout e aos controles. */
   frame(layout, room, battle) {
     const mobile = room.mobilePresentation || room.isTouchDevice;
     const landscape = mobile && layout.usableWidth > layout.usableHeight;
@@ -47,8 +78,8 @@ export class ArenaCamera {
     const left = landscape ? controls.dpad.x + controls.dpad.hitRadius + 12 * controls.unit : layout.safeLeft;
     const right = landscape ? controls.sword.x - controls.sword.width / 2 - 12 * controls.unit : layout.safeRight;
     const top = layout.safeTop + 150 * layout.scale;
-    const bottom = Math.max(top + 40, controls && !landscape
-      ? controls.dpad.y - controls.dpad.hitRadius - 24 * controls.unit : layout.safeBottom - 24 * layout.scale);
+    const bottom = Math.max(top + 40, controls && !landscape ?
+      controls.dpad.y - controls.dpad.hitRadius - 24 * controls.unit : layout.safeBottom - 24 * layout.scale);
     const envelope = this.envelope(room.player, battle.enemy, battle.jump, battle);
     const span = Math.max(760, this.width, envelope.right - envelope.left + 120);
     const cx = Math.max(envelope.right - span / 2 + 60, Math.min(envelope.left + span / 2 - 60, this.x));
@@ -58,10 +89,31 @@ export class ArenaCamera {
     const scale = Math.max(0.01, Math.min((right - left) / span, (bottom - top) / height));
     const shakeX = Math.sin(this.time * 2.7) * this.shake * scale;
     const shakeY = Math.cos(this.time * 2.1) * this.shake * scale * 0.3;
-    return specialCameraFrame({ scale, ox: (left + right) / 2 - cx * scale + shakeX,
+    return specialCameraFrame({
+      scale,
+      ox: (left + right) / 2 - cx * scale + shakeX,
       oy: (top + bottom) / 2 - (viewTop + 750) / 2 * scale + shakeY,
-      top, bottom, left, right, envelope }, room, battle);
+      top,
+      bottom,
+      left,
+      right,
+      envelope
+    }, room, battle);
   }
-  snapshot() { return { x: this.x, y: this.y, width: this.width, shake: this.shake, time: this.time }; }
-  restore(saved) { if (saved) for (const key of ['x','y','width','shake','time']) if (Number.isFinite(saved[key])) this[key] = saved[key]; }
+  /** Registra a posição e os relógios necessários para continuar o enquadramento. */
+  snapshot() {
+    return {
+      x: this.x,
+      y: this.y,
+      width: this.width,
+      shake: this.shake,
+      time: this.time
+    };
+  }
+  /** Reaplica somente valores numéricos válidos, preservando o estado padrão restante. */
+  restore(saved) {
+    if (saved)
+      for (const key of ['x', 'y', 'width', 'shake', 'time'])
+        if (Number.isFinite(saved[key])) this[key] = saved[key];
+  }
 }

@@ -1,37 +1,67 @@
-import { drawCurrentScenery } from '../assets/currentScenery.js';
-import { NIGHT_WINDOWS } from './nightWindows.js';
+import {
+  drawCurrentScenery
+} from '../assets/currentScenery.js';
+import {
+  NIGHT_WINDOWS
+} from './nightWindows.js';
 /**
  * BackgroundRenderer.js
  * Renderiza a parede de fundo atmosférica do berçário vitoriano, lambris de madeira,
  * padrões de papel de parede, janelas e itens decorativos detalhados do quarto.
  */
 
-import { FLOOR_Y, roomScenery as defaultRoomScenery } from '../config.js';
-import { darkRoomAtlas } from '../assets/index.js';
+import {
+  FLOOR_Y,
+  roomScenery as defaultRoomScenery
+} from '../config.js';
+import {
+  darkRoomAtlas
+} from '../assets/index.js';
 
 /** Limites visíveis no espaço de desenho, incluindo zoom e translação já aplicados ao contexto. */
 export function getBackgroundViewport(ctx, canvas) {
   const m = ctx.getTransform?.();
   const determinant = m ? m.a * m.d - m.b * m.c : 0;
   if (!Number.isFinite(determinant) || Math.abs(determinant) < 1e-12) {
-    return { left: 0, right: canvas.width, top: 0, bottom: canvas.height };
+    return {
+      left: 0,
+      right: canvas.width,
+      top: 0,
+      bottom: canvas.height
+    };
   }
-  const corners = [[0, 0], [canvas.width, 0], [0, canvas.height], [canvas.width, canvas.height]]
-    .map(([x, y]) => ({ x: (m.d * (x - m.e) - m.c * (y - m.f)) / determinant,
-      y: (-m.b * (x - m.e) + m.a * (y - m.f)) / determinant }));
+  const corners = [
+      [0, 0],
+      [canvas.width, 0],
+      [0, canvas.height],
+      [canvas.width, canvas.height]
+    ]
+    .map(([x, y]) => ({
+      x: (m.d * (x - m.e) - m.c * (y - m.f)) / determinant,
+      y: (-m.b * (x - m.e) + m.a * (y - m.f)) / determinant
+    }));
   // Uma unidade de margem evita uma costura de antialiasing na extremidade do canvas.
-  return { left: Math.floor(Math.min(...corners.map(p => p.x))) - 1,
+  return {
+    left: Math.floor(Math.min(...corners.map(p => p.x))) - 1,
     right: Math.ceil(Math.max(...corners.map(p => p.x))) + 1,
     top: Math.floor(Math.min(...corners.map(p => p.y))) - 1,
-    bottom: Math.ceil(Math.max(...corners.map(p => p.y))) + 1 };
+    bottom: Math.ceil(Math.max(...corners.map(p => p.y))) + 1
+  };
 }
 
 export class BackgroundRenderer {
+  /**
+   * Define a altura do piso e a fonte de recursos usada pelo cenário, permitindo omitir imagens até sua
+   * carga.
+   */
   constructor(options = {}) {
     this.floorY = options.floorY ?? FLOOR_Y;
     this.assets = options.assets || null;
   }
 
+  /**
+   * Substitui a fonte de imagens consultada pelo renderizador de cenário.
+   */
   setAssets(assets) {
     this.assets = assets;
   }
@@ -147,8 +177,8 @@ export class BackgroundRenderer {
 
     if (!region) return false;
     const sprite = assets.get('dark-room-sprite-' + type.replace(/_/g, '-')) ||
-                   assets.getRegion('dark-room-production-spritesheet', region) ||
-                   assets.getRegion(sheetKey, region);
+      assets.getRegion('dark-room-production-spritesheet', region) ||
+      assets.getRegion(sheetKey, region);
     if (!sprite) return false;
 
     ctx.drawImage(sprite, Math.round(sx - dw / 2), Math.round(floorY + yOffset), dw, dh);
@@ -167,8 +197,10 @@ export class BackgroundRenderer {
     const FLOOR_Y = this.floorY;
     const tick = options.tick || 0;
     const viewport = getBackgroundViewport(ctx, canvas);
-    const left = Math.min(0, viewport.left), right = Math.max(canvas.width, viewport.right);
-    const top = Math.min(-600, viewport.top), bottom = Math.max(canvas.height + 600, viewport.bottom);
+    const left = Math.min(0, viewport.left),
+      right = Math.max(canvas.width, viewport.right);
+    const top = Math.min(-600, viewport.top),
+      bottom = Math.max(canvas.height + 600, viewport.bottom);
     const span = right - left;
 
     // Fundo atmosférico profundo do berçário, mantendo a assinatura lúdica da playroom em tom escuro
@@ -295,10 +327,18 @@ export class BackgroundRenderer {
     });
 
     // Ganchos de parede com itens pendurados
-    const wallPegs = [
-      { x: 300, item: 'wizard_hat' },
-      { x: 1250, item: 'cape' },
-      { x: 2200, item: 'scarf' }
+    const wallPegs = [{
+        x: 300,
+        item: 'wizard_hat'
+      },
+      {
+        x: 1250,
+        item: 'cape'
+      },
+      {
+        x: 2200,
+        item: 'scarf'
+      }
     ];
     wallPegs.forEach(peg => {
       const sx = peg.x - camX * 0.45;
@@ -344,11 +384,26 @@ export class BackgroundRenderer {
     });
 
     // Desenhos em giz de cera emoldurados na parede
-    const wallDrawings = [
-      { x: 420, y: 140, type: 'sun' },
-      { x: 980, y: 130, type: 'castle' },
-      { x: 1600, y: 140, type: 'rainbow' },
-      { x: 2360, y: 130, type: 'cat' }
+    const wallDrawings = [{
+        x: 420,
+        y: 140,
+        type: 'sun'
+      },
+      {
+        x: 980,
+        y: 130,
+        type: 'castle'
+      },
+      {
+        x: 1600,
+        y: 140,
+        type: 'rainbow'
+      },
+      {
+        x: 2360,
+        y: 130,
+        type: 'cat'
+      }
     ];
     wallDrawings.forEach(d => {
       const sx = d.x - camX * 0.45;
@@ -541,7 +596,7 @@ export class BackgroundRenderer {
 
       // 1. Tenta desenhar com o sprite do atlas de arte do dark-room
       if (drawCurrentScenery(ctx, assets, item.type, sx, FLOOR_Y) ||
-          this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
+        this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
         ctx.restore();
         return;
       }

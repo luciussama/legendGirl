@@ -1,30 +1,93 @@
 import {
-  createStoryAttackFrames, renderStoryWorldObject, renderStoryAttackSprite,
-  renderStoryHeldObject, renderStoryBeat
+  createStoryAttackFrames,
+  renderStoryWorldObject,
+  renderStoryAttackSprite,
+  renderStoryHeldObject,
+  renderStoryBeat
 } from './ToyRoomStoryRenderer.js';
-export { drawToySword } from './ToyRoomStoryRenderer.js';
+export {
+  drawToySword
+}
+from './ToyRoomStoryRenderer.js';
 
 const FLOOR_SPAWN_POINTS = Object.freeze(
-  [140, 300, 460, 620, 780, 940, 1100, 1260, 1420].flatMap(x =>
-    [330, 410, 490, 570, 650, 730, 810, 890, 970, 1050].map(y => ({ x, y })))
+  [140, 300, 460, 620, 780, 940, 1100, 1260, 1420].flatMap(x => [330, 410, 490, 570, 650, 730, 810, 890, 970, 1050].map(y => ({
+    x,
+    y
+  })))
 );
 
-const INVESTIGATION_BEATS = Object.freeze([
-  { duration: 180, speaker: 'NANDA', text: 'Tem alguma coisa estranha...', focus: 'toys' },
-  { duration: 60, text: '', focus: 'toys' },
-  { duration: 240, speaker: 'MENINA', text: 'Estamos vendo os mesmos brinquedos de novo.', focus: 'toys' },
-  { duration: 360, text: 'Os brinquedos continuavam voltando.\nComo se o quarto esquecesse que alguém tinha acabado de guardá-los.', focus: 'toys' },
-  { duration: 120, text: '', focus: 'sword' },
-  { duration: 300, text: 'Foi então que uma coisa nova apareceu.\nOu talvez estivesse ali desde sempre.', focus: 'sword', reveal: true },
-  { duration: 90, speaker: 'MENINA', text: 'Hm?', focus: 'sword' },
-  { duration: 180, speaker: 'NANDA', text: 'Que brinquedo é esse?', focus: 'sword' },
-  { duration: 150, speaker: 'MENINA', text: 'Eu não lembro dele.', focus: 'sword' },
-  { duration: 150, speaker: 'NANDA', text: 'E eu lembraria.', focus: 'sword' }
+const INVESTIGATION_BEATS = Object.freeze([{
+    duration: 180,
+    speaker: 'NANDA',
+    text: 'Tem alguma coisa estranha...',
+    focus: 'toys'
+  },
+  {
+    duration: 60,
+    text: '',
+    focus: 'toys'
+  },
+  {
+    duration: 240,
+    speaker: 'MENINA',
+    text: 'Estamos vendo os mesmos brinquedos de novo.',
+    focus: 'toys'
+  },
+  {
+    duration: 360,
+    text: 'Os brinquedos continuavam voltando.\nComo se o quarto esquecesse que alguém tinha acabado de guardá-los.',
+    focus: 'toys'
+  },
+  {
+    duration: 120,
+    text: '',
+    focus: 'sword'
+  },
+  {
+    duration: 300,
+    text: 'Foi então que uma coisa nova apareceu.\nOu talvez estivesse ali desde sempre.',
+    focus: 'sword',
+    reveal: true
+  },
+  {
+    duration: 90,
+    speaker: 'MENINA',
+    text: 'Hm?',
+    focus: 'sword'
+  },
+  {
+    duration: 180,
+    speaker: 'NANDA',
+    text: 'Que brinquedo é esse?',
+    focus: 'sword'
+  },
+  {
+    duration: 150,
+    speaker: 'MENINA',
+    text: 'Eu não lembro dele.',
+    focus: 'sword'
+  },
+  {
+    duration: 150,
+    speaker: 'NANDA',
+    text: 'E eu lembraria.',
+    focus: 'sword'
+  }
 ]);
 const INVESTIGATION_DURATION = INVESTIGATION_BEATS.reduce((total, beat) => total + beat.duration, 0);
-const RETURN_DIALOGUE_BEATS = Object.freeze([
-  { start: 0, end: 60, speaker: 'NANDA', text: 'Estranho...' },
-  { start: 90, end: 360, speaker: 'MENINA', text: 'Acho que esse brinquedo já tinha sido guardado.' }
+const RETURN_DIALOGUE_BEATS = Object.freeze([{
+    start: 0,
+    end: 60,
+    speaker: 'NANDA',
+    text: 'Estranho...'
+  },
+  {
+    start: 90,
+    end: 360,
+    speaker: 'MENINA',
+    text: 'Acho que esse brinquedo já tinha sido guardado.'
+  }
 ]);
 const SWORD_PICKUP_DURATION = 300;
 const SWORD_ATTACK_DURATION = 12;
@@ -44,6 +107,7 @@ export const createToyRoomStoryState = () => ({
 });
 
 const distance = (a, b) => Math.hypot(a.x - b.x, a.y - b.y);
+
 function outsideViewport(point, viewport, margin = 72) {
   return point.x + margin < viewport.left || point.x - margin > viewport.right ||
     point.y + margin < viewport.top || point.y - margin > viewport.bottom;
@@ -60,7 +124,16 @@ function getBeat(beats, elapsed) {
 
 /** Coordena a recorrência dos brinquedos e o arco narrativo da espada de brinquedo. */
 export class ToyRoomStory {
-  constructor({ world, actors, exploration, flow, controls, audio, presentation }) {
+  /** Recebe domínios da sala e inicializa narrativa, sprites de ataque e pontos alcançáveis. */
+  constructor({
+    world,
+    actors,
+    exploration,
+    flow,
+    controls,
+    audio,
+    presentation
+  }) {
     this.world = world;
     this.actors = actors;
     this.exploration = exploration;
@@ -75,6 +148,7 @@ export class ToyRoomStory {
     this.refreshReachablePoints();
   }
 
+  /** Filtra posições de surgimento para manter brinquedos retornados em chão navegável. */
   refreshReachablePoints() {
     const reachable = this.world.reachableFloor();
     this.reachablePoints = FLOOR_SPAWN_POINTS.filter(point =>
@@ -82,27 +156,34 @@ export class ToyRoomStory {
       reachable.some(node => distance(node, point) <= 30));
   }
 
+  /** Guarda o viewport anterior para evitar retorno de brinquedos dentro da câmera. */
   recordViewport(frame) {
     this.lastViewport = this.world.viewport(frame);
   }
 
+  /** Agenda o retorno de brinquedos e inicia a recorrência quando a coleta está perto do fim. */
   onToyStored(toy) {
     const state = this.state;
     if (!state.recurrenceActive) {
       if (state.investigationStage !== 'COLLECTING') return;
-      if (this.exploration.toys.filter(item => !item.isOrganized).length <= 2) {
+      if (this.exploration.toys.filter(item => !item.isOrganized)
+        .length <= 2) {
         state.recurrenceActive = true;
       }
       return;
     }
 
-    state.pendingReturns.push({ toyId: toy.id, remaining: 90 });
+    state.pendingReturns.push({
+      toyId: toy.id,
+      remaining: 90
+    });
     if (state.investigationStage === 'COLLECTING' && (toy.returnGeneration || 0) > 0) {
       state.returnedToyCount++;
       if (state.returnedToyCount === 2) state.returnDialogueElapsed = 0;
     }
   }
 
+  /** Avança investigação, coleta, falas e ataque, retornando se a narrativa bloqueia movimento. */
   update(dt) {
     const state = this.state;
     if (state.returnDialogueElapsed >= 0) {
@@ -140,6 +221,7 @@ export class ToyRoomStory {
     return false;
   }
 
+  /** Devolve brinquedos após o atraso apenas em pontos livres fora da visão e dos atores. */
   updateReturns(dt) {
     const state = this.state;
     if (!state.recurrenceActive || !state.pendingReturns.length ||
@@ -173,24 +255,37 @@ export class ToyRoomStory {
     state.pendingReturns.shift();
   }
 
+  /** Inicia a investigação somente sem item carregado e com espaço válido junto ao baú. */
   beginInvestigation() {
-    const { player } = this.actors;
+    const {
+      player
+    } = this.actors;
     // A investigação espera a entrega atual; nenhuma cena força o brinquedo a cair.
     if (player.carriedItem) return false;
     const chest = this.exploration.furniture.find(item => item.id === 'toy-chest');
     if (!chest) return false;
     // À direita do baú, no piso logo abaixo da janela direita (centro x=1360).
-    const sword = { x: chest.x + chest.w + 130, y: chest.y + chest.h + 25 };
+    const sword = {
+      x: chest.x + chest.w + 130,
+      y: chest.y + chest.h + 25
+    };
     if (!this.world.isFree(sword, 48)) return false;
     this.state.investigationStage = 'INVESTIGATION';
     this.state.investigationElapsed = 0;
-    this.state.sword = { ...sword, visible: false };
+    this.state.sword = {
+      ...sword,
+      visible: false
+    };
     this.clearInput();
     return true;
   }
 
+  /** Avança a descoberta da espada e guia a fada sem deslocar o jogador. */
   updateInvestigation(dt) {
-    const { player, fairy } = this.actors;
+    const {
+      player,
+      fairy
+    } = this.actors;
     const state = this.state;
     state.investigationElapsed = Math.min(INVESTIGATION_DURATION,
       state.investigationElapsed + dt);
@@ -203,9 +298,9 @@ export class ToyRoomStory {
     }
 
     const toys = this.exploration.toys.filter(toy => !toy.isOrganized && !toy.isCarried);
-    const focus = beat.focus === 'sword' || !toys.length
-      ? state.sword
-      : toys[Math.floor(state.investigationElapsed / 180) % toys.length];
+    const focus = beat.focus === 'sword' || !toys.length ?
+      state.sword :
+      toys[Math.floor(state.investigationElapsed / 180) % toys.length];
     if (beat.reveal && state.sword) state.sword.visible = true;
 
     if (state.sword?.visible) {
@@ -225,14 +320,18 @@ export class ToyRoomStory {
     player.isMoving = false;
   }
 
+  /** Mantém a fada sobre a espada revelada enquanto o jogador precisa encontrá-la. */
   updateSwordGuide() {
-    const { fairy } = this.actors;
+    const {
+      fairy
+    } = this.actors;
     const target = this.state.sword;
     if (!target) return;
     fairy.targetX = fairy.x = target.x;
     fairy.targetY = fairy.y = target.y - 80;
   }
 
+  /** Detecta coleta da espada e aciona a pose, áudio e faixa musical correspondentes. */
   updateAfterMovement() {
     const state = this.state;
     if (state.investigationStage !== 'SEEKING_SWORD' || !state.sword ||
@@ -247,19 +346,23 @@ export class ToyRoomStory {
     this.audio.useSwordTrack();
   }
 
+  /** Descarta entrada pendente ao bloquear ou concluir uma etapa narrativa. */
   clearInput() {
     this.controls.clear();
   }
 
+  /** Indica se investigação ou coleta da espada impede comandos de movimento. */
   get inputLocked() {
     return this.state.investigationStage === 'INVESTIGATION' ||
       this.state.investigationStage === 'PICKUP';
   }
 
+  /** Expõe se a espada foi equipada para habilitar o combate subsequente. */
   get swordEquipped() {
     return this.state.swordEquipped;
   }
 
+  /** Inicia um golpe narrativo quando a espada está equipada e o intervalo terminou. */
   attack() {
     const state = this.state;
     if (!state.swordEquipped || state.attackElapsed > 0) return false;
@@ -273,55 +376,81 @@ export class ToyRoomStory {
     return this.state.investigationStage === 'COLLECTING' && !this.state.sword?.visible && !this.state.swordEquipped;
   }
 
+  /** Retorna o alvo de orientação para a espada ou para a entrega do brinquedo ao baú. */
   guidePosition() {
     if (this.state.sword && (this.state.sword.visible || this.state.investigationStage === 'PICKUP')) {
-      return { x: this.state.sword.x, y: this.state.sword.y - 80 };
+      return {
+        x: this.state.sword.x,
+        y: this.state.sword.y - 80
+      };
     }
     if (this.actors.player.carriedItem) {
       const chest = this.exploration.furniture.find(item => item.id === 'toy-chest');
-      if (chest) return { x: chest.x + chest.w / 2, y: chest.y - 75 };
+      if (chest) return {
+        x: chest.x + chest.w / 2,
+        y: chest.y - 75
+      };
     }
     return null;
   }
 
+  /** Seleciona o ator que deve servir de alvo à câmera durante a descoberta da espada. */
   cameraTarget() {
     // Única exceção: a descoberta da espada. Nas demais falas e na exploração,
     // a fada pode guiar livremente sem deslocar o enquadramento da menina.
     if (this.state.investigationStage === 'INVESTIGATION' && this.state.sword?.visible &&
-        getBeat(INVESTIGATION_BEATS, this.state.investigationElapsed)?.reveal) {
+      getBeat(INVESTIGATION_BEATS, this.state.investigationElapsed)
+      ?.reveal) {
       return this.actors.fairy;
     }
     return this.actors.player;
   }
 
+  /** Desenha o objeto narrativo correspondente ao estado atual da espada. */
   renderWorldObject(ctx) {
     return renderStoryWorldObject(ctx, this.state);
   }
 
+  /** Compõe o sprite temporário do golpe usando os quadros carregados da apresentação. */
   renderAttackSprite(ctx) {
     return renderStoryAttackSprite(ctx, {
-      state: this.state, player: this.actors.player, attackFrames: this.attackFrames,
+      state: this.state,
+      player: this.actors.player,
+      attackFrames: this.attackFrames,
       attackDuration: SWORD_ATTACK_DURATION
     });
   }
 
+  /** Compõe a espada ou objeto mantido pelo jogador conforme a etapa narrativa. */
   renderHeldObject(ctx) {
     return renderStoryHeldObject(ctx, {
-      state: this.state, player: this.actors.player, attackFrames: this.attackFrames,
+      state: this.state,
+      player: this.actors.player,
+      attackFrames: this.attackFrames,
       attackDuration: SWORD_ATTACK_DURATION
     });
   }
 
-  advanceDialogue(){
-    if(!this.narrativeBeat())return false;const state=this.state;
-    if(state.investigationStage==='COLLECTING'){
-      const index=RETURN_DIALOGUE_BEATS.findIndex(b=>state.returnDialogueElapsed>=b.start&&state.returnDialogueElapsed<b.end);
-      state.returnDialogueElapsed=RETURN_DIALOGUE_BEATS[index+1]?.start??360;
-    }else if(state.investigationStage==='INVESTIGATION'){
-      let end=0;for(const beat of INVESTIGATION_BEATS){end+=beat.duration;if(end>state.investigationElapsed){state.investigationElapsed=end;break;}}
-    }else if(state.investigationStage==='PICKUP')state.swordPickupElapsed=state.swordPickupElapsed<120?120:SWORD_PICKUP_DURATION;
+  /** Avança a fala ou a etapa corrente sem pular a duração de uma cena inteira. */
+  advanceDialogue() {
+    if (!this.narrativeBeat()) return false;
+    const state = this.state;
+    if (state.investigationStage === 'COLLECTING') {
+      const index = RETURN_DIALOGUE_BEATS.findIndex(b => state.returnDialogueElapsed >= b.start && state.returnDialogueElapsed < b.end);
+      state.returnDialogueElapsed = RETURN_DIALOGUE_BEATS[index + 1]?.start ?? 360;
+    } else if (state.investigationStage === 'INVESTIGATION') {
+      let end = 0;
+      for (const beat of INVESTIGATION_BEATS) {
+        end += beat.duration;
+        if (end > state.investigationElapsed) {
+          state.investigationElapsed = end;
+          break;
+        }
+      }
+    } else if (state.investigationStage === 'PICKUP') state.swordPickupElapsed = state.swordPickupElapsed < 120 ? 120 : SWORD_PICKUP_DURATION;
     return true;
   }
+  /** Consulta a fala ativa da recorrência, da investigação ou da coleta da espada. */
   narrativeBeat() {
     const state = this.state;
     if (state.returnDialogueElapsed >= 0 && state.returnDialogueElapsed < 360 &&
@@ -335,35 +464,45 @@ export class ToyRoomStory {
       const beat = getBeat(INVESTIGATION_BEATS, state.investigationElapsed);
       if (beat?.text) return beat;
     } else if (state.investigationStage === 'PICKUP') {
-      const text = state.swordPickupElapsed < 120
-        ? 'Ela não estava procurando por aquilo.'
-        : 'Mas algumas coisas parecem encontrar a gente primeiro.';
-      return { text };
+      const text = state.swordPickupElapsed < 120 ?
+        'Ela não estava procurando por aquilo.' :
+        'Mas algumas coisas parecem encontrar a gente primeiro.';
+      return {
+        text
+      };
     }
     return null;
   }
 
+  /** Desenha a fala apenas quando há um trecho narrativo ativo. */
   renderNarrative(ctx, canvas) {
     const beat = this.narrativeBeat();
     if (beat) this.renderStoryBeat(ctx, canvas, beat);
   }
 
+  /** Encaminha o trecho narrativo ao renderer com assets e relógio atuais. */
   renderStoryBeat(ctx, canvas, beat) {
     return renderStoryBeat(ctx, canvas, beat, {
-      mobile: this.presentation.mobile, assets: this.presentation.assets,
+      mobile: this.presentation.mobile,
+      assets: this.presentation.assets,
       tick: this.state.investigationElapsed
     });
   }
 
+  /** Mescla estado salvo aos padrões e revalida retornos, áudio e pontos navegáveis. */
   restore(saved) {
-    this.state = { ...createToyRoomStoryState(), ...(saved || {}) };
-    this.state.pendingReturns = Array.isArray(this.state.pendingReturns)
-      ? this.state.pendingReturns
-      : [];
+    this.state = {
+      ...createToyRoomStoryState(),
+      ...(saved || {})
+    };
+    this.state.pendingReturns = Array.isArray(this.state.pendingReturns) ?
+      this.state.pendingReturns :
+      [];
     if (this.state.swordEquipped || this.state.investigationStage === 'PICKUP') {
       this.audio.useSwordTrack();
     }
-    if (!saved && this.exploration.toys.filter(toy => !toy.isOrganized).length <= 2) {
+    if (!saved && this.exploration.toys.filter(toy => !toy.isOrganized)
+      .length <= 2) {
       this.state.recurrenceActive = true;
     }
     this.refreshReachablePoints();
@@ -371,6 +510,7 @@ export class ToyRoomStory {
     this.lastViewport = null;
   }
 
+  /** Produz uma cópia independente do estado narrativo persistível. */
   snapshot() {
     return JSON.parse(JSON.stringify(this.state));
   }

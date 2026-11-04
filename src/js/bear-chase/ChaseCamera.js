@@ -1,6 +1,15 @@
-import { CHASE_CONFIG as C, clamp } from './ChaseConfig.js';
-import { chaseIntensity, smoothProgress } from './ChasePacing.js';
-import { isChaseDefeat, CHASE_FALL_DURATION } from './ChaseHealth.js';
+import {
+  CHASE_CONFIG as C,
+  clamp
+} from './ChaseConfig.js';
+import {
+  chaseIntensity,
+  smoothProgress
+} from './ChasePacing.js';
+import {
+  isChaseDefeat,
+  CHASE_FALL_DURATION
+} from './ChaseHealth.js';
 
 /**
  * Calcula a câmera no referencial da pista; o renderer converte os pontos para a sala curva.

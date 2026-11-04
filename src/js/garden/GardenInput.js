@@ -1,23 +1,208 @@
-import {isMobileDevice} from '../controllers/MobileZoom.js';
-import {mobileGameControls} from '../ui/TouchGameControls.js';
+import {
+  isMobileDevice
+} from '../controllers/MobileZoom.js';
+import {
+  mobileGameControls
+} from '../ui/TouchGameControls.js';
 /** Controles no sistema do canvas: D-pad e pulo amplos em mobile, círculos no desktop. */
-export function gardenControls(canvas,safe={left:0,right:canvas.width,top:0,bottom:canvas.height},{mobile=isMobileDevice()}={}) {
-  if(mobile)return mobileGameControls(canvas,safe);
-  const unit=Math.min((safe.right-safe.left)/680,canvas.height/520),radius=44*unit,y=safe.bottom-64*unit;
-  return {left:{x:safe.left+62*unit,y,r:radius},right:{x:safe.left+162*unit,y,r:radius},jump:{x:safe.right-72*unit,y,r:radius*1.16}};
+export function gardenControls(canvas, safe = {
+  left: 0,
+  right: canvas.width,
+  top: 0,
+  bottom: canvas.height
+}, {
+  mobile = isMobileDevice()
+} = {}) {
+  if (mobile) return mobileGameControls(canvas, safe);
+  const unit = Math.min((safe.right - safe.left) / 680, canvas.height / 520),
+    radius = 44 * unit,
+    y = safe.bottom - 64 * unit;
+  return {
+    left: {
+      x: safe.left + 62 * unit,
+      y,
+      r: radius
+    },
+    right: {
+      x: safe.left + 162 * unit,
+      y,
+      r: radius
+    },
+    jump: {
+      x: safe.right - 72 * unit,
+      y,
+      r: radius * 1.16
+    }
+  };
 }
 /** Entrada simultânea com alvos circulares ou hitBox explícita; pausa/cancelamento liberam tudo. */
 export class GardenInput {
-  constructor(canvas,enabled,controls,unlock=()=>{},scene=()=>null) {
-    this.scene=scene;this.advanceQueued=false;this.skipQueued=false;this.padHeld=false;this.blockJumpUntilRelease=false;this.canvas=canvas;this.enabled=enabled;this.controls=controls;this.unlock=unlock;this.keys=new Set();this.pointers=new Map();this.boxPointers=new Set();this.touch=false;this.installed=false;
-    this.down=e=>{if(this.enabled()&&this.scene()&&['Enter','Space','KeyS'].includes(e.code)){e.preventDefault();if(!e.repeat){if(e.code==='KeyS')this.skipQueued=true;else this.advanceQueued=true;this.blockJumpUntilRelease=true;}this.unlock();return;}if(!this.enabled()||!['ArrowLeft','ArrowRight','ArrowUp','KeyA','KeyD','KeyW','Space'].includes(e.code))return;e.preventDefault();this.keys.add(e.code);this.unlock();};
-    this.up=e=>this.keys.delete(e.code);this.blur=()=>this.clear();this.visibility=()=>{if(document.hidden)this.clear();};
-    this.pointer=e=>{if(!this.enabled()||e.button>0)return;const rect=canvas.getBoundingClientRect(),x=(e.clientX-rect.left)*canvas.width/rect.width,y=(e.clientY-rect.top)*canvas.height/rect.height;if(this.scene()){e.preventDefault();this.touch=true;const b=this.scene().skipBox;if(this.scene().seen&&b&&x>=b.x&&x<=b.x+b.w&&y>=b.y&&y<=b.y+b.h)this.skipQueued=true;else this.advanceQueued=true;this.blockJumpUntilRelease=true;this.unlock();return;}const hit=Object.entries(this.controls()).find(([,b])=>b.hitBox?x>=b.hitBox.left&&x<=b.hitBox.right&&y>=b.hitBox.top&&y<=b.hitBox.bottom:Math.hypot(x-b.x,y-b.y)<b.r*1.25);if(!hit)return;const [button,bounds]=hit;e.preventDefault();this.touch=true;this.pointers.set(e.pointerId,button);if(bounds.hitBox)this.boxPointers.add(e.pointerId);canvas.setPointerCapture?.(e.pointerId);this.unlock();};
-    this.release=e=>{this.boxPointers.delete(e.pointerId);this.pointers.delete(e.pointerId);if(canvas.hasPointerCapture?.(e.pointerId))canvas.releasePointerCapture(e.pointerId);};
-    this.move=e=>{if(this.pointers.has(e.pointerId)||this.boxPointers.has(e.pointerId)){this.pointers.delete(e.pointerId);this.pointer(e);}};
+  /** Configura dependências de entrada e filas independentes para avançar e pular cenas. */
+  constructor(canvas, enabled, controls, unlock = () => {}, scene = () => null) {
+    this.scene = scene;
+    this.advanceQueued = false;
+    this.skipQueued = false;
+    this.padHeld = false;
+    this.blockJumpUntilRelease = false;
+    this.canvas = canvas;
+    this.enabled = enabled;
+    this.controls = controls;
+    this.unlock = unlock;
+    this.keys = new Set();
+    this.pointers = new Map();
+    this.boxPointers = new Set();
+    this.touch = false;
+    this.installed = false;
+    this.down = e => {
+      if (this.enabled() && this.scene() && ['Enter', 'Space', 'KeyS'].includes(e.code)) {
+        e.preventDefault();
+        if (!e.repeat) {
+          if (e.code === 'KeyS') this.skipQueued = true;
+          else this.advanceQueued = true;
+          this.blockJumpUntilRelease = true;
+        }
+        this.unlock();
+        return;
+      }
+      if (!this.enabled() || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'KeyA', 'KeyD', 'KeyW', 'Space'].includes(e.code)) return;
+      e.preventDefault();
+      this.keys.add(e.code);
+      this.unlock();
+    };
+    this.up = e => this.keys.delete(e.code);
+    this.blur = () => this.clear();
+    this.visibility = () => {
+      if (document.hidden) this.clear();
+    };
+    this.pointer = e => {
+      if (!this.enabled() || e.button > 0) return;
+      const rect = canvas.getBoundingClientRect(),
+        x = (e.clientX - rect.left) * canvas.width / rect.width,
+        y = (e.clientY - rect.top) * canvas.height / rect.height;
+      if (this.scene()) {
+        e.preventDefault();
+        this.touch = true;
+        const b = this.scene()
+          .skipBox;
+        if (this.scene()
+          .seen && b && x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) this.skipQueued = true;
+        else this.advanceQueued = true;
+        this.blockJumpUntilRelease = true;
+        this.unlock();
+        return;
+      }
+      const hit = Object.entries(this.controls())
+        .find(([, b]) => b.hitBox ? x >= b.hitBox.left && x <= b.hitBox.right && y >= b.hitBox.top && y <= b.hitBox.bottom : Math.hypot(x - b.x, y - b.y) < b.r * 1.25);
+      if (!hit) return;
+      const [button, bounds] = hit;
+      e.preventDefault();
+      this.touch = true;
+      this.pointers.set(e.pointerId, button);
+      if (bounds.hitBox) this.boxPointers.add(e.pointerId);
+      canvas.setPointerCapture?.(e.pointerId);
+      this.unlock();
+    };
+    this.release = e => {
+      this.boxPointers.delete(e.pointerId);
+      this.pointers.delete(e.pointerId);
+      if (canvas.hasPointerCapture?.(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
+    };
+    this.move = e => {
+      if (this.pointers.has(e.pointerId) || this.boxPointers.has(e.pointerId)) {
+        this.pointers.delete(e.pointerId);
+        this.pointer(e);
+      }
+    };
   }
-  install(){if(this.installed||typeof window==='undefined')return;this.installed=true;window.addEventListener('keydown',this.down);window.addEventListener('keyup',this.up);window.addEventListener('blur',this.blur);document.addEventListener('visibilitychange',this.visibility);this.canvas.addEventListener('pointerdown',this.pointer,{passive:false});this.canvas.addEventListener('pointermove',this.move,{passive:false});for(const name of ['pointerup','pointercancel','lostpointercapture'])this.canvas.addEventListener(name,this.release);}
-  sample(){if(!this.enabled()){this.clear();return{x:0,jump:false};}const has=name=>[...this.pointers.values()].some(value=>value.split('-').includes(name));let x=Number(this.keys.has('ArrowRight')||this.keys.has('KeyD')||has('right'))-Number(this.keys.has('ArrowLeft')||this.keys.has('KeyA')||has('left'));let jump=this.keys.has('Space')||this.keys.has('ArrowUp')||this.keys.has('KeyW')||has('jump')||has('up');let pads=[];try{pads=globalThis.navigator?.getGamepads?.()??[];}catch{/* Teclado/toque continuam disponíveis quando o navegador bloqueia gamepads. */}for(const p of pads)if(p?.connected){const axis=p.axes[0]??0;if(Math.abs(axis)>.2)x=axis;if(p.buttons[14]?.pressed)x=-1;if(p.buttons[15]?.pressed)x=1;jump||=Boolean(p.buttons[0]?.pressed||p.buttons[2]?.pressed);}const narrative=this.scene(),pressed=jump;let advance=this.advanceQueued,skip=this.skipQueued;this.advanceQueued=false;this.skipQueued=false;if(narrative){advance||=pressed&&!this.padHeld;this.padHeld=pressed;if(advance)this.blockJumpUntilRelease=true;return{x:0,jump:false,advance,skip};}this.padHeld=pressed;if(this.blockJumpUntilRelease){if(!jump)this.blockJumpUntilRelease=false;jump=false;}return{x,jump};}
-  clear(){this.advanceQueued=false;this.skipQueued=false;this.keys.clear();for(const id of new Set([...this.pointers.keys(),...this.boxPointers]))if(this.canvas.hasPointerCapture?.(id))this.canvas.releasePointerCapture(id);this.pointers.clear();this.boxPointers.clear();}
-  destroy(){this.clear();if(!this.installed)return;this.installed=false;window.removeEventListener('keydown',this.down);window.removeEventListener('keyup',this.up);window.removeEventListener('blur',this.blur);document.removeEventListener('visibilitychange',this.visibility);this.canvas.removeEventListener('pointerdown',this.pointer);this.canvas.removeEventListener('pointermove',this.move);for(const name of ['pointerup','pointercancel','lostpointercapture'])this.canvas.removeEventListener(name,this.release);}
+  /** Instala teclado, foco, visibilidade e ponteiros uma única vez. */
+  install() {
+    if (this.installed || typeof window === 'undefined') return;
+    this.installed = true;
+    window.addEventListener('keydown', this.down);
+    window.addEventListener('keyup', this.up);
+    window.addEventListener('blur', this.blur);
+    document.addEventListener('visibilitychange', this.visibility);
+    this.canvas.addEventListener('pointerdown', this.pointer, {
+      passive: false
+    });
+    this.canvas.addEventListener('pointermove', this.move, {
+      passive: false
+    });
+    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) this.canvas.addEventListener(name, this.release);
+  }
+  /** Amostra teclado, toque, gamepad e cena; consome gestos narrativos sem virar pulo. */
+  sample() {
+    if (!this.enabled()) {
+      this.clear();
+      return {
+        x: 0,
+        jump: false
+      };
+    }
+    const has = name => [...this.pointers.values()].some(value => value.split('-')
+      .includes(name));
+    let x = Number(this.keys.has('ArrowRight') || this.keys.has('KeyD') || has('right')) - Number(this.keys.has('ArrowLeft') || this.keys.has('KeyA') || has('left'));
+    let jump = this.keys.has('Space') || this.keys.has('ArrowUp') || this.keys.has('KeyW') || has('jump') || has('up');
+    let pads = [];
+    try {
+      pads = globalThis.navigator?.getGamepads?.() ?? [];
+    } catch {
+      /* Teclado/toque continuam disponíveis quando o navegador bloqueia gamepads. */ }
+    for (const p of pads)
+      if (p?.connected) {
+        const axis = p.axes[0] ?? 0;
+        if (Math.abs(axis) > .2) x = axis;
+        if (p.buttons[14]?.pressed) x = -1;
+        if (p.buttons[15]?.pressed) x = 1;
+        jump ||= Boolean(p.buttons[0]?.pressed || p.buttons[2]?.pressed);
+      } const narrative = this.scene(),
+      pressed = jump;
+    let advance = this.advanceQueued,
+      skip = this.skipQueued;
+    this.advanceQueued = false;
+    this.skipQueued = false;
+    if (narrative) {
+      advance ||= pressed && !this.padHeld;
+      this.padHeld = pressed;
+      if (advance) this.blockJumpUntilRelease = true;
+      return {
+        x: 0,
+        jump: false,
+        advance,
+        skip
+      };
+    }
+    this.padHeld = pressed;
+    if (this.blockJumpUntilRelease) {
+      if (!jump) this.blockJumpUntilRelease = false;
+      jump = false;
+    }
+    return {
+      x,
+      jump
+    };
+  }
+  /** Zera entradas/fila e libera qualquer captura de ponteiro que ainda esteja ativa. */
+  clear() {
+    this.advanceQueued = false;
+    this.skipQueued = false;
+    this.keys.clear();
+    for (const id of new Set([...this.pointers.keys(), ...this.boxPointers]))
+      if (this.canvas.hasPointerCapture?.(id)) this.canvas.releasePointerCapture(id);
+    this.pointers.clear();
+    this.boxPointers.clear();
+  }
+  /** Limpa estado e remove todos os listeners instalados no canvas e no documento. */
+  destroy() {
+    this.clear();
+    if (!this.installed) return;
+    this.installed = false;
+    window.removeEventListener('keydown', this.down);
+    window.removeEventListener('keyup', this.up);
+    window.removeEventListener('blur', this.blur);
+    document.removeEventListener('visibilitychange', this.visibility);
+    this.canvas.removeEventListener('pointerdown', this.pointer);
+    this.canvas.removeEventListener('pointermove', this.move);
+    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) this.canvas.removeEventListener(name, this.release);
+  }
 }

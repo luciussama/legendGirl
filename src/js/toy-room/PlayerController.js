@@ -1,11 +1,16 @@
-import { arenaEnemyImpactEnd } from './ArenaCombatRules.js';
+import {
+  arenaEnemyImpactEnd
+} from './ArenaCombatRules.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
 /** Movimento lateral original; os parâmetros pertencem à instância de combate. */
 export class PlayerController {
+  /** Integra salto, guarda, deslocamento e limites da sala a partir da entrada da batalha. */
   update(battle, dt) {
-    const s = battle.state, r = battle.room, t = battle.tuning;
+    const s = battle.state,
+      r = battle.room,
+      t = battle.tuning;
     const input = battle.input();
     if (input.up && !s.upHeld && s.jump === 0) {
       s.jumpVelocity = t.jumpSpeed;
@@ -14,9 +19,11 @@ export class PlayerController {
     s.upHeld = input.up;
     const wasAirborne = s.jump > 0;
     if (s.jumpVelocity !== 0 || s.jump > 0) {
-      s.jump += s.jumpVelocity * dt; s.jumpVelocity -= t.gravity * dt;
+      s.jump += s.jumpVelocity * dt;
+      s.jumpVelocity -= t.gravity * dt;
       if (s.jump <= 0) {
-        s.jump = 0; s.jumpVelocity = 0;
+        s.jump = 0;
+        s.jumpVelocity = 0;
         if (wasAirborne) battle.playCombatSound('player_land');
       }
     }
@@ -29,18 +36,18 @@ export class PlayerController {
     else if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
     const facing = r.player.facing === 'right' ? 1 : -1;
     // Recuo livre usa caminhada; durante o golpe inimigo, firma os pés para defender.
-    s.guarding = Boolean(battle.presentation && input.x * facing < -0.18
-      && s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0
-      && s.enemy?.hp > 0 && s.enemy.state === 'ATTACK'
-      && s.enemy.elapsed < arenaEnemyImpactEnd(s.enemy, t));
+    s.guarding = Boolean(battle.presentation && input.x * facing < -0.18 &&
+      s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0 &&
+      s.enemy?.hp > 0 && s.enemy.state === 'ATTACK' &&
+      s.enemy.elapsed < arenaEnemyImpactEnd(s.enemy, t));
     r.player.isMoving = Boolean(input.x && !s.guarding && !s.crouching && s.playerHitTime <= 0);
     if (s.playerHitTime > 0 && s.playerKnockback) {
       const travel = t.knockbackDistance ? (1 - Math.pow(0.82, dt)) / 0.18 : dt;
       r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
       s.playerKnockback *= Math.pow(0.82, dt);
     } else if (!s.guarding && !s.crouching && input.x && s.playerHitTime <= 0) {
-      const moveScale = battle.presentation && s.cooldown > 0
-        ? (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
+      const moveScale = battle.presentation && s.cooldown > 0 ?
+        (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
       r.player.x = clamp(r.player.x + input.x * t.speed * moveScale * dt, t.left + 35, t.right - 35);
     }
     const e = s.enemy;

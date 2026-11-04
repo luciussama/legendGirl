@@ -1,46 +1,143 @@
-import {beginDialogueFrame,endDialogueFrame,installDialogueAdvance} from './narrative/DialogueFlow.js';
-import { DarkRoomContact } from './environment/DarkRoomContact.js';
-import { createRuntimeContext } from './runtime/RuntimeContext.js';
-import { updatePortalNarrative } from './narrative/DarkRoomNarrative.js';
-import { updateTutorialRetornoNarrative } from './narrative/DarkRoomNarrative.js';
-import { updateReviravoltaNarrative } from './narrative/DarkRoomNarrative.js';
-import { updateCasteloNarrative } from './narrative/DarkRoomNarrative.js';
-import { updateTransicaoStandbyNarrative } from './narrative/DarkRoomNarrative.js';
-import { updateStandbyNarrative } from './narrative/DarkRoomNarrative.js';
-import { renderDarkRoom } from './rendering/DarkRoomRenderPipeline.js';
-import { createViewportController } from './controllers/ViewportController.js';
-import { createCameraQaObserver } from './debug/CameraQaObserver.js';
-import { createCampaignProgress, captureState, restoreState } from './state/CampaignProgress.js';
-import { normalizeDifficulty } from './state/GameDifficulty.js';
-import { recordCampaignDefeat, clearCampaignDefeat } from './state/CampaignDefeats.js';
-import { createDefaultStateVariables } from './state/StateVariables.js';
-import { OpeningSequence } from './cinematics/OpeningSequence.js';
-import { ToyRoomIntroduction } from './cinematics/ToyRoomIntroduction.js';
-import { getEscapeGuideTarget, updateEscapeFairyGuide } from './controllers/EscapeFairyGuide.js';
-import { GAME_CONFIG, FLOOR_Y, platforms, exitDoor, phase3Platforms, trueExitDoor, roomScenery, createBabyState, createFairyState, CUTSCENE_DIALOGUE, getEscapeStats, getPhase3Stats, getApproachJumpSpeed } from './config.js';
-import { createAudioController } from './controllers/AudioController.js';
-import { isMobileDevice } from './controllers/MobileZoom.js';
-import { createAndroidFraming } from './controllers/AndroidFraming.js';
-import { CameraPresentation } from './controllers/CameraPresentation.js';
-import { createCameraController } from './controllers/CameraController.js';
-import { bindInput, InputController } from './controllers/InputController.js';
-import { createToyRoom } from './toyRoom.js';
-import { createGameState } from './state/GameState.js';
-import { babyRenderer, fairyRenderer } from './entities/index.js';
-import { backgroundRenderer, platformRenderer, createLightingSystem } from './environment/index.js';
-import { createParticleSystem, transitionEffects } from './effects/index.js';
-import { hudRenderer, dialogueRenderer } from './ui/index.js';
-import { createAssetManager, darkRoomAtlas } from './assets/index.js';
-import { createAtlasDebugger } from './debug/AtlasDebugger.js';
+import {
+  beginDialogueFrame,
+  endDialogueFrame,
+  installDialogueAdvance
+} from './narrative/DialogueFlow.js';
+import {
+  DarkRoomContact
+} from './environment/DarkRoomContact.js';
+import {
+  createRuntimeContext
+} from './runtime/RuntimeContext.js';
+import {
+  updatePortalNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  updateTutorialRetornoNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  updateReviravoltaNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  updateCasteloNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  updateTransicaoStandbyNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  updateStandbyNarrative
+} from './narrative/DarkRoomNarrative.js';
+import {
+  renderDarkRoom
+} from './rendering/DarkRoomRenderPipeline.js';
+import {
+  createViewportController
+} from './controllers/ViewportController.js';
+import {
+  createCameraQaObserver
+} from './debug/CameraQaObserver.js';
+import {
+  createCampaignProgress,
+  captureState,
+  restoreState
+} from './state/CampaignProgress.js';
+import {
+  normalizeDifficulty
+} from './state/GameDifficulty.js';
+import {
+  recordCampaignDefeat,
+  clearCampaignDefeat
+} from './state/CampaignDefeats.js';
+import {
+  createDefaultStateVariables
+} from './state/StateVariables.js';
+import {
+  OpeningSequence
+} from './cinematics/OpeningSequence.js';
+import {
+  ToyRoomIntroduction
+} from './cinematics/ToyRoomIntroduction.js';
+import {
+  getEscapeGuideTarget,
+  updateEscapeFairyGuide
+} from './controllers/EscapeFairyGuide.js';
+import {
+  GAME_CONFIG,
+  FLOOR_Y,
+  platforms,
+  exitDoor,
+  phase3Platforms,
+  trueExitDoor,
+  roomScenery,
+  createBabyState,
+  createFairyState,
+  CUTSCENE_DIALOGUE,
+  getEscapeStats,
+  getPhase3Stats,
+  getApproachJumpSpeed
+} from './config.js';
+import {
+  createAudioController
+} from './controllers/AudioController.js';
+import {
+  isMobileDevice
+} from './controllers/MobileZoom.js';
+import {
+  createAndroidFraming
+} from './controllers/AndroidFraming.js';
+import {
+  CameraPresentation
+} from './controllers/CameraPresentation.js';
+import {
+  createCameraController
+} from './controllers/CameraController.js';
+import {
+  bindInput,
+  InputController
+} from './controllers/InputController.js';
+import {
+  createToyRoom
+} from './toyRoom.js';
+import {
+  createGameState
+} from './state/GameState.js';
+import {
+  babyRenderer,
+  fairyRenderer
+} from './entities/index.js';
+import {
+  backgroundRenderer,
+  platformRenderer,
+  createLightingSystem
+} from './environment/index.js';
+import {
+  createParticleSystem,
+  transitionEffects
+} from './effects/index.js';
+import {
+  hudRenderer,
+  dialogueRenderer
+} from './ui/index.js';
+import {
+  createAssetManager,
+  darkRoomAtlas
+} from './assets/index.js';
+import {
+  createAtlasDebugger
+} from './debug/AtlasDebugger.js';
 
 export function createGame(canvas, uiFeedback, callbacks = {}) {
   const ctx = canvas.getContext('2d');
   const assets = createAssetManager();
   const platformContact = new DarkRoomContact(platformRenderer, assets);
-  const assetsReady = assets.loadManifest().then(() => assets.preload()).then(() => {
-    platformContact.prepare([...platforms, ...phase3Platforms]);
+  const assetsReady = assets.loadManifest()
+    .then(() => assets.preload())
+    .then(() => {
+      platformContact.prepare([...platforms, ...phase3Platforms]);
+    });
+  const atlasDebugger = createAtlasDebugger({
+    assets
   });
-  const atlasDebugger = createAtlasDebugger({ assets });
   assetsReady.then(() => {
     atlasDebugger.setAssets(assets);
   });
@@ -52,17 +149,27 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   babyRenderer.setAssets?.(assets);
   const audio = createAudioController();
   const state = createGameState(canvas, uiFeedback, {
-    ...callbacks, onGameOver: () => reportDefeat('bedroom')
+    ...callbacks,
+    onGameOver: () => reportDefeat('bedroom')
   });
   const campaign = createCampaignProgress();
   let lastSaveTime = 0;
   let debugSession = false;
-  const camera = createCameraController({ floorY: FLOOR_Y });
+  const camera = createCameraController({
+    floorY: FLOOR_Y
+  });
   const cameraPresentation = new CameraPresentation();
   const androidFraming = createAndroidFraming(canvas);
-  const mobilePresentation = { enabled: isMobileDevice() };
-  const lighting = createLightingSystem({ floorY: FLOOR_Y });
-  const particles = createParticleSystem({ babyJumpDust: state.babyJumpDust, speedRibbons: state.speedRibbons });
+  const mobilePresentation = {
+    enabled: isMobileDevice()
+  };
+  const lighting = createLightingSystem({
+    floorY: FLOOR_Y
+  });
+  const particles = createParticleSystem({
+    babyJumpDust: state.babyJumpDust,
+    speedRibbons: state.speedRibbons
+  });
   const baby = state.baby;
   const fairy = state.fairy;
 
@@ -75,7 +182,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   let introductionOverview = 0;
   const toyRoomIntroduction = new ToyRoomIntroduction({
     onComplete: () => {
-      startToyRoomPhase({ fromIntroduction: true });
+      startToyRoomPhase({
+        fromIntroduction: true
+      });
     },
     onEvent: name => {
       callbacks.onNarrativeEvent?.(name);
@@ -84,14 +193,22 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   });
 
+  /** Captura o quadro atual e inicia a introdução com controles da menina bloqueados. */
   function beginToyRoomIntroduction() {
     if (typeof toyRoomIntroduction !== 'undefined' && toyRoomIntroduction.active) return;
     render();
     const departure = document.createElement('canvas');
-    departure.width = canvas.width; departure.height = canvas.height;
-    departure.getContext('2d').drawImage(canvas, 0, 0);
+    departure.width = canvas.width;
+    departure.height = canvas.height;
+    departure.getContext('2d')
+      .drawImage(canvas, 0, 0);
     baby.controlsLocked = true;
-    toyRoomIntroduction.start({ assets, departure, audio, canvas });
+    toyRoomIntroduction.start({
+      assets,
+      departure,
+      audio,
+      canvas
+    });
   }
 
   let isPortrait = false;
@@ -104,16 +221,20 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     onReveal: beginOpeningGameplay,
     onComplete: enterFirstJumpTutorial,
     onCue: name => {
-      if (name === 'ambience') { audio.initAudio(); audio.pauseMusic(); audio.playOpeningAmbience(); }
-      else if (name === 'wake') audio.playLevelUpChime(0);
+      if (name === 'ambience') {
+        audio.initAudio();
+        audio.pauseMusic();
+        audio.playOpeningAmbience();
+      } else if (name === 'wake') audio.playLevelUpChime(0);
       else if (name === 'music') audio.startMusic();
       else audio.playFairyVoiceBlip(name === 'shout' ? 1180 : 780);
     }
   });
 
+  /** Libera a jogabilidade após a abertura sem deslocar o corpo físico inicial. */
   function beginOpeningGameplay() {
-    // A sequência nunca move o corpo físico real. Libera-o na mesma
-    // coordenada inicial existente, com a velocidade normal de corrida já definida.
+    // A sequência não move o corpo físico real: libera-o na posição inicial,
+    // com a velocidade normal de corrida já definida.
     state.isStandbyActive = false;
     state.isStandbyTransitioning = false;
     baby.isCrouching = false;
@@ -121,14 +242,21 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     baby.respawnLandingPending = false;
     baby.onGround = true;
     baby.vx = baby.baseVx;
-    state.cameraX = 0; state.cameraY = 0; state.cameraZoom = 1; state.targetCameraZoom = 1;
-    fairy.x = baby.x + 65; fairy.y = baby.y - 50;
-    fairy.vx = 0; fairy.vy = 0;
-    syncViewportToState(); camera.syncFromState(state);
+    state.cameraX = 0;
+    state.cameraY = 0;
+    state.cameraZoom = 1;
+    state.targetCameraZoom = 1;
+    fairy.x = baby.x + 65;
+    fairy.y = baby.y - 50;
+    fairy.vx = 0;
+    fairy.vy = 0;
+    syncViewportToState();
+    camera.syncFromState(state);
     if (uiFeedback) uiFeedback.innerText = GAME_CONFIG.uiMessage;
     state.lastTime = performance.now();
   }
 
+  /** Entra no tutorial de salto sem avançar a simulação até a primeira entrada válida. */
   function enterFirstJumpTutorial() {
     if (state.firstJumpTutorialCompleted) {
       state.gameplayState = 'GAMEPLAY_NORMAL';
@@ -145,28 +273,34 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // A orientação conserva os pontos originais de publicação/restauração do viewport.
   // Os demais campos de gameplay são lidos e escritos diretamente em GameState.
+  /** Atualiza a cópia local da orientação a partir do estado publicado. */
   function syncViewportFromState() {
     isPortrait = state.isPortrait;
   }
 
+  /** Publica no estado a orientação mantida pelo adaptador de viewport. */
   function syncViewportToState() {
     state.isPortrait = isPortrait;
   }
 
+  /** Registra no estado o dispositivo que forneceu a entrada mais recente. */
   function setLastInputDevice(dev) {
     state.setLastInputDevice(dev);
   }
 
+  /** Delega ao estado a escolha do dispositivo cujas instruções devem aparecer. */
   function getActivePromptDevice() {
     return state.getActivePromptDevice();
   }
 
+  /** Sincroniza orientação e solicita ao estado o início da preparação em standby. */
   function startStandbyPreparation() {
     syncViewportToState();
     state.startStandbyPreparation(audio);
     syncViewportFromState();
   }
 
+  /** Confirma a saída do standby por meio do estado, mantendo a orientação sincronizada. */
   function confirmStandby() {
     syncViewportToState();
     state.confirmStandby(audio);
@@ -174,12 +308,14 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // Reinicialização rígida dos componentes de física para evitar acúmulo vetorial ou picos de delta
+  /** Reinicializa o corpo físico na posição e direção pedidas, sem acumular velocidades. */
   function resetBabyPhysicsBody(targetX, targetY, facing = 1) {
     syncViewportToState();
     state.resetBabyPhysicsBody(targetX, targetY, facing);
     syncViewportFromState();
   }
 
+  /** Encaminha a derrota ao estado e sincroniza a orientação resultante. */
   function triggerGameOver() {
     syncViewportToState();
     state.triggerGameOver(audio);
@@ -198,9 +334,13 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     recordCampaignDefeat(state);
     state.toyRoomInstance?.instance.clearInput();
     saveProgress();
-    callbacks.onGameOver?.({ phase, offerEasy: state.easyOfferPending });
+    callbacks.onGameOver?.({
+      phase,
+      offerEasy: state.easyOfferPending
+    });
   }
 
+  /** Reinicia uma tentativa derrotada; retorna falso se não houver derrota elegível. */
   function retryGame() {
     if (!isGameOver() || state.easyOfferPending) return false;
     clearCampaignDefeat(state);
@@ -225,11 +365,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     clearCampaignDefeat(state);
     const room = state.toyRoomInstance?.instance;
     room?.setDifficulty('EASY');
-    isPaused = false; state.isPaused = false;
-    if (state.currentPhaseMode === 'toy-room') room.retryDefeat({ resume: true });
+    isPaused = false;
+    state.isPaused = false;
+    if (state.currentPhaseMode === 'toy-room') room.retryDefeat({
+      resume: true
+    });
     else {
       cameraPresentation.reset();
-      syncViewportToState(); state.retryGame(audio); syncViewportFromState();
+      syncViewportToState();
+      state.retryGame(audio);
+      syncViewportFromState();
     }
     state.lastTime = performance.now();
     saveProgress();
@@ -242,6 +387,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     saveProgress();
   }
 
+  /** Persiste a campanha, encerra as cenas em andamento e retorna ao título. */
   function restartToTitle() {
     saveProgress();
     toyRoomIntroduction.cancel();
@@ -255,6 +401,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // Atalho do menu para testar a mesma introdução usada na saída do portal.
+  /** Abre a introdução da sala de brinquedos pelo atalho de revisão, sem campanha nova. */
   function startToyRoomIntroduction() {
     if (toyRoomIntroduction.active) return;
     opening.cancel();
@@ -275,7 +422,10 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     }
   }
 
-  function startToyRoomPhase({ fromIntroduction = false } = {}) {
+  /** Cria a sala de brinquedos e conecta callbacks de derrota, retorno e entrada. */
+  function startToyRoomPhase({
+    fromIntroduction = false
+  } = {}) {
     if (!fromIntroduction) toyRoomIntroduction.cancel();
     state.isGameOver = false;
     state.gameWon = false;
@@ -293,9 +443,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.currentPhaseMode = 'toy-room';
     state.toyRoomInstance = createToyRoom(canvas, audio, uiFeedback, () => {
       restartToTitle();
-    }, { assets, gameDifficulty: state.gameDifficulty,
+    }, {
+      assets,
+      gameDifficulty: state.gameDifficulty,
       isInputEnabled: () => !isPaused && !state.easyOfferPending && !isGameOver(),
-      onDefeat: reportDefeat });
+      onDefeat: reportDefeat
+    });
 
     if (fromIntroduction) {
       state.toyRoomInstance.instance.introAlpha = 1;
@@ -318,9 +471,16 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
   // Adaptação de Resolução e Viewport (Zero distorção em Dispositivos Móveis e Desktop)
   const viewportController = createViewportController({
-    canvas, darkCanvas, lighting, host: window,
-    onOrientation: portrait => { isPortrait = portrait; }
+    canvas,
+    darkCanvas,
+    lighting,
+    host: window,
+    onOrientation: portrait => {
+      isPortrait = portrait;
+    }
   });
+
+  /** Delega o redimensionamento ao controlador responsável pelo viewport. */
   function handleResize() {
     viewportController.resize();
   }
@@ -338,28 +498,33 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   const speedRibbons = state.speedRibbons;
   const babyJumpDust = state.babyJumpDust;
 
+  /** Inicia a transição narrativa do portal com o estado de viewport sincronizado. */
   function startTruePortalTransition() {
     syncViewportToState();
     state.startTruePortalTransition(audio);
     syncViewportFromState();
   }
 
+  /** Solicita ao estado a apresentação da mensagem de falha vigente. */
   function showFailMessage() {
     state.showFailMessage();
   }
 
+  /** Inicia a cena do castelo preservando a orientação publicada no estado. */
   function startCastleCutscene() {
     syncViewportToState();
     state.startCastleCutscene(audio);
     syncViewportFromState();
   }
 
+  /** Avança a etapa narrativa do castelo pelo controlador de estado. */
   function advanceCutscene() {
     syncViewportToState();
     state.advanceCutscene(audio);
     syncViewportFromState();
   }
 
+  /** Finaliza a cena do castelo e aplica as transições associadas no estado. */
   function finishCutscene() {
     syncViewportToState();
     state.finishCutscene(audio);
@@ -367,24 +532,28 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- CENA DA REVIRAVOLTA (TRANSIÇÃO PARA A FASE 3) ---
+  /** Prepara a cena da reviravolta antes de delegar sua progressão narrativa. */
   function startPlotTwistCutscene() {
     syncViewportToState();
     state.startPlotTwistCutscene(audio);
     syncViewportFromState();
   }
 
+  /** Avança a etapa atual da reviravolta sem atualizar a simulação principal. */
   function advancePlotTwist() {
     syncViewportToState();
     state.advancePlotTwist(audio);
     syncViewportFromState();
   }
 
+  /** Encerra a reviravolta e inicia o tutorial de retorno em uma única transição. */
   function finishPlotTwistAndStartTutorial() {
     syncViewportToState();
     state.finishPlotTwistAndStartTutorial(audio);
     syncViewportFromState();
   }
 
+  /** Restaura o ponto inicial e o viewport, permitindo controlar som e origem da falha. */
   function resetToStart(failedMidClimb = false, shouldPlayFailSound = true) {
     cameraPresentation.reset();
     syncViewportToState();
@@ -392,6 +561,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     syncViewportFromState();
   }
 
+  /** Valida a origem e o estado de jogo antes de aplicar um salto ou avançar uma cena. */
   function doJump(inputSource) {
     if (typeof toyRoomIntroduction !== 'undefined' && toyRoomIntroduction.active) return;
     if (opening.active) return;
@@ -487,9 +657,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         const nextP = platforms[10];
         const nextCenterX = nextP.standRegion ? nextP.standRegion.x + nextP.standRegion.w / 2 : nextP.x + nextP.w / 2;
         const targetX = nextCenterX - baby.w / 2;
-        const targetY = (nextP.surfaceTopY !== undefined)
-          ? nextP.surfaceTopY
-          : ((nextP.standRegion && nextP.standRegion.y !== undefined) ? nextP.standRegion.y : nextP.y);
+        const targetY = (nextP.surfaceTopY !== undefined) ?
+          nextP.surfaceTopY :
+          ((nextP.standRegion && nextP.standRegion.y !== undefined) ? nextP.standRegion.y : nextP.y);
         const deltaY = (targetY - baby.h) - baby.y;
         const grav = baby.gravity || 0.28;
         const disc = Math.max(0, baby.vy * baby.vy + 2 * grav * deltaY);
@@ -537,45 +707,60 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- SISTEMA DE POEIRA MÁGICA DA FADA ---
+  /** Encaminha posição e velocidade da fada ao sistema de partículas de voo. */
   function spawnFairyFlightDust(fx, fy, fvx, fvy) {
     state.spawnFairyFlightDust(fx, fy, fvx, fvy);
   }
 
+  /** Emite um grupo de brilhos na posição indicada, com quantidade configurável. */
   function spawnFairySparkles(x, y, count = 2) {
     state.spawnFairySparkles(x, y, count);
   }
 
+  /** Avança a vida e a posição das partículas próprias da fada. */
   function updateFairyParticles() {
     state.updateFairyParticles();
   }
 
   // --- SISTEMA DE RASTRO SUTIL DO SALTO DA MENINA ---
+  /** Gera poeira de salto levando em conta a velocidade e o nível de fuga atual. */
   function spawnBabyJumpDust(bx, bw, by, bh, bvx) {
     particles.spawnBabyJumpDust(bx, bw, by, bh, bvx, state.isEscapeMode, state.escapeLevel);
   }
 
+  /** Emite a nuvem de partida do salto sem alterar a trajetória física. */
   function spawnBabyJumpPuff(x, y, count = 5) {
     particles.spawnBabyJumpPuff(x, y, count);
   }
 
+  /** Emite o efeito de aterrissagem no ponto de contato calculado pela física. */
   function spawnBabyLandingPuff(x, y) {
     particles.spawnBabyLandingPuff(x, y);
   }
 
+  /** Atualiza poeira e rastros mesmo quando a jogabilidade está em pausa narrativa. */
   function updateBabyJumpDust(dt = 1.0) {
     // Avança o tempo de vida da poeira e dos rastros de velocidade, inclusive durante cenas e tutoriais.
     particles.update(dt);
   }
 
   // --- RENDERIZADORES DE CENÁRIO (Modularizados em /environment) ---
+  /** Desenha a parede de fundo usando a coordenada horizontal da câmera. */
   function drawBackgroundWall(camX) {
-    backgroundRenderer.renderWall(ctx, canvas, camX, { tick: state.tick, assets });
+    backgroundRenderer.renderWall(ctx, canvas, camX, {
+      tick: state.tick,
+      assets
+    });
   }
 
+  /** Compõe os elementos de cenário com o deslocamento lateral vigente. */
   function drawSceneryItems(camX) {
-    backgroundRenderer.renderScenery(ctx, canvas, roomScenery, camX, { assets });
+    backgroundRenderer.renderScenery(ctx, canvas, roomScenery, camX, {
+      assets
+    });
   }
 
+  /** Renderiza apenas o conjunto de plataformas da fase ativa e seus estados visuais. */
   function drawPlatforms(camX) {
     platformRenderer.renderPlatforms(ctx, canvas, camX, {
       isPhase3: state.isPhase3,
@@ -587,6 +772,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
+  /** Desenha a saída falsa considerando revelação, deslocamento e rotação atuais. */
   function drawExitDoor(camX) {
     platformRenderer.renderExitDoor(ctx, canvas, camX, {
       exitDoor,
@@ -598,6 +784,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     });
   }
 
+  /** Desenha o portal verdadeiro com o ângulo de abertura narrativo atual. */
   function drawTrueExitDoor(camX) {
     platformRenderer.renderTrueExitDoor(ctx, canvas, camX, {
       trueExitDoor,
@@ -608,18 +795,29 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- RENDERIZADORES DE ENTIDADES E PERSONAGENS (Modularizados em /entities) ---
+  /** Desenha a menina e aplica escala somente na aproximação inicial, sem mover os pés físicos. */
   function drawBabyManaStyle(camX) {
     syncViewportToState();
     // Ajuste de arte exclusivo da primeira etapa; o ponto de contato dos pés não muda.
-    babyRenderer.render(ctx, baby, state, camX, { assets, visualScale: !state.isEscapeMode && !state.isPhase3 ? 1.08 : 1 });
+    babyRenderer.render(ctx, baby, state, camX, {
+      assets,
+      visualScale: !state.isEscapeMode && !state.isPhase3 ? 1.08 : 1
+    });
   }
 
+  /** Desenha a fada com acesso às plataformas e à menina para compor sua pose. */
   function drawFairy(camX) {
     syncViewportToState();
-    fairyRenderer.render(ctx, fairy, state, camX, { canvas, baby, platforms, assets });
+    fairyRenderer.render(ctx, fairy, state, camX, {
+      canvas,
+      baby,
+      platforms,
+      assets
+    });
   }
 
   // --- ILUMINAÇÃO DINÂMICA ATMOSFÉRICA (Modularizada em /environment) ---
+  /** Aplica iluminação atmosférica usando a câmera e os apoios de ambas as fases. */
   function applyDarkAtmosphereWithLights(camX, camY = 0) {
     syncViewportToState();
     lighting.apply(ctx, canvas, state, baby, fairy, camX, camY, {
@@ -631,40 +829,61 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- RENDERIZAÇÃO DE EFEITOS DE PARTÍCULAS (Modularizada em /effects) ---
+  /** Compõe os rastros de velocidade no referencial da câmera. */
   function drawSpeedRibbons(camX) {
     particles.renderSpeedRibbons(ctx, canvas, camX);
   }
 
+  /** Desenha poeira de salto e rastros sem participar da resolução de colisões. */
   function drawBabyJumpDust(camX) {
     particles.renderBabyJumpDust(ctx, canvas, camX);
   }
 
   // --- RENDERIZAÇÃO DE INTERFACE E HUD (Modularizada em /ui) ---
+  /** Apresenta a faixa de progressão de fuga sobre a cena atual. */
   function drawEscapeBanner() {
     hudRenderer.renderEscapeBanner(ctx, canvas, state, state.cameraX, baby);
   }
 
+  /** Desenha o retrato de diálogo usando humor, escala e relógio visual atuais. */
   function drawDialoguePortrait(pCtx, charType, px, py, radius, mood = 'normal') {
-    dialogueRenderer.drawPortrait(pCtx, charType, px, py, radius, mood, state.tick, { assets });
+    dialogueRenderer.drawPortrait(pCtx, charType, px, py, radius, mood, state.tick, {
+      assets
+    });
   }
 
+  /** Quebra o texto em linhas que respeitam a largura disponível no diálogo. */
   function wrapDialogueText(pCtx, text, maxWidth) {
     return dialogueRenderer.wrapText(pCtx, text, maxWidth);
   }
 
+  /** Renderiza a fala da cena e limita sua âncora ao espaço dos personagens transformados. */
   function drawCutsceneDialogue(transform) {
     dialogueRenderer.renderCutsceneDialogue(ctx, canvas, state, {
       assets,
       getActivePromptDevice,
       characterAnchor: {
-        top: Math.min(transform.transformPoint({x:baby.x-state.cameraX,y:baby.y-20}).y,
-          transform.transformPoint({x:fairy.x-state.cameraX,y:fairy.y-28}).y),
-        bottom: transform.transformPoint({x:baby.x-state.cameraX,y:baby.y+baby.h}).y
+        top: Math.min(transform.transformPoint({
+            x: baby.x - state.cameraX,
+            y: baby.y - 20
+          })
+          .y,
+          transform.transformPoint({
+            x: fairy.x - state.cameraX,
+            y: fairy.y - 28
+          })
+          .y),
+        bottom: transform.transformPoint({
+            x: baby.x - state.cameraX,
+            y: baby.y + baby.h
+          })
+          .y
       }
     });
   }
 
   // --- GUIA VISUAL DE TUTORIAL (Modularizado em /environment) ---
+  /** Desenha a indicação visual do próximo salto no sistema de coordenadas da câmera. */
   function drawTutorialArrow(camX) {
     platformRenderer.renderTutorialArrow(ctx, canvas, camX, {
       isPhase3: state.isPhase3,
@@ -675,8 +894,12 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- LOOP DE ATUALIZAÇÃO DO JOGO ---
+  /** Avança narrativa, física, colisões, progressão e efeitos usando delta em quadros. */
   function update(dt = 1.0) {
-    if (toyRoomIntroduction.active) { toyRoomIntroduction.update(dt); return; }
+    if (toyRoomIntroduction.active) {
+      toyRoomIntroduction.update(dt);
+      return;
+    }
     // O tutorial pausa relógio, IA, câmera e progressão antes de qualquer atualização.
     if (state.gameplayState === 'FIRST_JUMP_TUTORIAL') return;
     state.tick++;
@@ -882,8 +1105,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (landedIdx !== -1) {
       const landedPlat = activePlatforms[landedIdx];
       landedPlat.isLanded = true;
-      const landingY = landedIdx === contact?.index ? contact.y
-        : (landedPlat.surfaceTopY ?? landedPlat.standRegion?.y ?? landedPlat.y);
+      const landingY = landedIdx === contact?.index ? contact.y :
+        (landedPlat.surfaceTopY ?? landedPlat.standRegion?.y ?? landedPlat.y);
       baby.y = landingY - baby.h;
       baby.vy = 0;
       if (!state.isEscapeMode && !state.isPhase3) {
@@ -1068,7 +1291,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     camera.syncFromState(state);
     camera.update(dt, state, canvas, {
       onLagBehind: () => triggerGameOver(),
-      escapeEndPlatformX: platforms.at(-1).x,
+      escapeEndPlatformX: platforms.at(-1)
+        .x,
       exitDoorX: trueExitDoor.x,
       exitDoorW: trueExitDoor.w
     });
@@ -1076,11 +1300,57 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   }
 
   // --- RENDERIZAÇÃO ---
+  /** Compõe a fase ativa com escopo de diálogo temporário e encerra-o mesmo se o desenho falhar. */
   function render() {
-    beginDialogueFrame(canvas);try{renderDarkRoom({
-      ...runtimeContext,
-      ctx, canvas, toyRoomIntroduction, opening, assets, lighting, fairyRenderer, cameraPresentation, camera, androidFraming, mobilePresentation, baby, fairy, cameraX: state.cameraX, cameraY: state.cameraY, cameraZoom: state.cameraZoom, targetCameraY: state.targetCameraY, targetScrollSpeed: state.targetScrollSpeed, isPhase3: state.isPhase3, plotTwistActive: state.plotTwistActive, phase3TutorialActive: state.phase3TutorialActive, truePortalTransitionActive: state.truePortalTransitionActive, tick: state.tick, gameWon: state.gameWon, transitionWipeAlpha: state.transitionWipeAlpha, inputHandler, recordCameraQa, drawBackgroundWall, drawSceneryItems, drawPlatforms, drawExitDoor, drawTrueExitDoor, drawTutorialArrow, drawSpeedRibbons, drawBabyJumpDust, drawFairy, drawBabyManaStyle, applyDarkAtmosphereWithLights, drawEscapeBanner, drawCutsceneDialogue, state
-    });}finally{endDialogueFrame(canvas);}
+    beginDialogueFrame(canvas);
+    try {
+      renderDarkRoom({
+        ...runtimeContext,
+        ctx,
+        canvas,
+        toyRoomIntroduction,
+        opening,
+        assets,
+        lighting,
+        fairyRenderer,
+        cameraPresentation,
+        camera,
+        androidFraming,
+        mobilePresentation,
+        baby,
+        fairy,
+        cameraX: state.cameraX,
+        cameraY: state.cameraY,
+        cameraZoom: state.cameraZoom,
+        targetCameraY: state.targetCameraY,
+        targetScrollSpeed: state.targetScrollSpeed,
+        isPhase3: state.isPhase3,
+        plotTwistActive: state.plotTwistActive,
+        phase3TutorialActive: state.phase3TutorialActive,
+        truePortalTransitionActive: state.truePortalTransitionActive,
+        tick: state.tick,
+        gameWon: state.gameWon,
+        transitionWipeAlpha: state.transitionWipeAlpha,
+        inputHandler,
+        recordCameraQa,
+        drawBackgroundWall,
+        drawSceneryItems,
+        drawPlatforms,
+        drawExitDoor,
+        drawTrueExitDoor,
+        drawTutorialArrow,
+        drawSpeedRibbons,
+        drawBabyJumpDust,
+        drawFairy,
+        drawBabyManaStyle,
+        applyDarkAtmosphereWithLights,
+        drawEscapeBanner,
+        drawCutsceneDialogue,
+        state
+      });
+    } finally {
+      endDialogueFrame(canvas);
+    }
   }
 
   let isPaused = false;
@@ -1107,24 +1377,31 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     return isPaused;
   }
 
+  /** Define a pausa explicitamente sem repetir efeitos quando o estado já coincide. */
   function setPaused(value) {
     const shouldPause = Boolean(value);
     if (isPaused === shouldPause) return isPaused;
     return togglePause();
   }
 
+  /** Salva campanha, abertura e snapshots da fase; ignora sessões de depuração. */
   function saveProgress() {
     if (debugSession || !state.gameStarted || toyRoomIntroduction.active) return;
     syncViewportToState();
     const persisted = campaign.write({
-      state: captureState(state), opening: opening.snapshot(),
-      platforms: [platforms, phase3Platforms].map(group => group.map(p => ({ isLanded: !!p.isLanded, lightAlpha: p.lightAlpha || 0 }))),
+      state: captureState(state),
+      opening: opening.snapshot(),
+      platforms: [platforms, phase3Platforms].map(group => group.map(p => ({
+        isLanded: !!p.isLanded,
+        lightAlpha: p.lightAlpha || 0
+      }))),
       toyRoom: state.toyRoomInstance?.instance.snapshot() || null
     });
     callbacks.onSaveStatus?.(persisted);
     lastSaveTime = performance.now();
   }
 
+  /** Restaura estado, progressos visuais e cena a partir do envelope salvo. */
   function restoreProgress(saved) {
     cameraPresentation.reset();
     state.gameDifficulty = normalizeDifficulty(saved.state.gameDifficulty);
@@ -1135,56 +1412,93 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     restoreState(state, saved.state);
     state.gameStarted = true;
     state.lastTime = performance.now();
-    state.lastJumpTime = 0; state.lastDialogueAdvanceTime = 0; state.standbyActivatedTime = 0;
+    state.lastJumpTime = 0;
+    state.lastDialogueAdvanceTime = 0;
+    state.standbyActivatedTime = 0;
     syncViewportFromState();
     camera.syncFromState(state);
     opening.restore(saved.opening);
     [platforms, phase3Platforms].forEach((group, index) => group.forEach((p, i) => {
-      Object.assign(p, saved.platforms?.[index]?.[i] || { isLanded: false, lightAlpha: 0 });
+      Object.assign(p, saved.platforms?.[index]?.[i] || {
+        isLanded: false,
+        lightAlpha: 0
+      });
     }));
-    if (state.isGameOver) callbacks.onGameOver?.({ phase: 'bedroom', offerEasy: state.easyOfferPending });
+    if (state.isGameOver) callbacks.onGameOver?.({
+      phase: 'bedroom',
+      offerEasy: state.easyOfferPending
+    });
     if (state.currentPhaseMode === 'bedroom') {
-      if (opening.active && opening.time < 33.5) { audio.initAudio(); audio.playOpeningAmbience(); }
-      else audio.startMusic();
+      if (opening.active && opening.time < 33.5) {
+        audio.initAudio();
+        audio.playOpeningAmbience();
+      } else audio.startMusic();
     }
   }
 
-  function newCampaign({ preserveProgress = false } = {}) {
-    toyRoomIntroduction.cancel(); introductionOverview = 0;
+  /** Descarta o estado de gameplay e seus recursos; pode preservar o save para revisão. */
+  function newCampaign({
+    preserveProgress = false
+  } = {}) {
+    toyRoomIntroduction.cancel();
+    introductionOverview = 0;
     state.gameStarted = false;
     cameraPresentation.reset();
     debugSession = preserveProgress;
     if (preserveProgress) opening.cancel();
-    else { campaign.clear(); opening.reset(); }
-    state.toyRoomInstance?.destroy(); state.toyRoomInstance = null;
+    else {
+      campaign.clear();
+      opening.reset();
+    }
+    state.toyRoomInstance?.destroy();
+    state.toyRoomInstance = null;
     audio.stopAllAudio();
     clearTimeout(failMessageTimer);
     restoreState(state, captureState(createDefaultStateVariables()));
-    state.toyRoomInstance = null; state.gameStarted = false;
-    state.lastTime = performance.now(); state.lastJumpTime = 0; state.lastDialogueAdvanceTime = 0;
-    state.standbyActivatedTime = 0; state.failMessageTimer = null;
-    syncViewportFromState(); camera.syncFromState(state);
-    isPaused = false; state.isPaused = false;
-    [platforms, phase3Platforms].forEach(group => group.forEach(p => { p.isLanded = false; p.lightAlpha = 0; }));
+    state.toyRoomInstance = null;
+    state.gameStarted = false;
+    state.lastTime = performance.now();
+    state.lastJumpTime = 0;
+    state.lastDialogueAdvanceTime = 0;
+    state.standbyActivatedTime = 0;
+    state.failMessageTimer = null;
+    syncViewportFromState();
+    camera.syncFromState(state);
+    isPaused = false;
+    state.isPaused = false;
+    [platforms, phase3Platforms].forEach(group => group.forEach(p => {
+      p.isLanded = false;
+      p.lightAlpha = 0;
+    }));
   }
 
   /** Reproduz a entrada da fase para revisão, sem gravar sobre a campanha normal. */
   function startDebugPhase(phase, difficulty = state.gameDifficulty) {
-    if (!['bedroom','toy-room','arena','bear-chase','garden','dream-forest','brinquedao'].includes(phase)) return false;
+    if (!['bedroom', 'toy-room', 'arena', 'bear-chase', 'garden', 'dream-forest', 'brinquedao'].includes(phase)) return false;
     saveProgress();
-    newCampaign({ preserveProgress:true });
+    newCampaign({
+      preserveProgress: true
+    });
     state.gameDifficulty = normalizeDifficulty(difficulty);
     state.gameStarted = true;
     audio.initAudio();
     if (phase === 'bedroom') {
-      opening.start({ replay: true });
+      opening.start({
+        replay: true
+      });
     } else if (phase === 'toy-room') {
       startToyRoomIntroduction();
     } else {
       startToyRoomPhase();
-      if(phase==='brinquedao')state.toyRoomInstance.instance.startBrinquedao(null,{campaign:false});
-      if(phase==='dream-forest')state.toyRoomInstance.instance.startDream(null,{campaign:false});
-      if (phase === 'garden') state.toyRoomInstance.instance.startGarden(null,{campaign:false});
+      if (phase === 'brinquedao') state.toyRoomInstance.instance.startBrinquedao(null, {
+        campaign: false
+      });
+      if (phase === 'dream-forest') state.toyRoomInstance.instance.startDream(null, {
+        campaign: false
+      });
+      if (phase === 'garden') state.toyRoomInstance.instance.startGarden(null, {
+        campaign: false
+      });
       if (phase === 'bear-chase') {
         const room = state.toyRoomInstance.instance;
         room.startChasePreview();
@@ -1194,7 +1508,8 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
         room.tutorial.finish();
         room.story.state.investigationStage = 'EQUIPPED';
         room.story.state.swordEquipped = true;
-        room.introAlpha = 0; room.introBannerTimer = 0;
+        room.introAlpha = 0;
+        room.introBannerTimer = 0;
         audio.setToyRoomMusicTrack('sword');
         room.arena.start();
       }
@@ -1202,32 +1517,60 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state.lastTime = performance.now();
     // O debug não salva campanha, mas deve publicar a fase no estado da simulação.
     syncViewportToState();
-    if (!state.loopStarted) { state.loopStarted = true; requestAnimationFrame(loop); }
+    if (!state.loopStarted) {
+      state.loopStarted = true;
+      requestAnimationFrame(loop);
+    }
     return true;
   }
 
-  const saveOnHide = () => { if (document.visibilityState === 'hidden') saveProgress(); };
+  /** Persiste a campanha quando o documento deixa de estar visível. */
+  const saveOnHide = () => {
+    if (document.visibilityState === 'hidden') saveProgress();
+  };
   window.addEventListener('pagehide', saveProgress);
   document.addEventListener('visibilitychange', saveOnHide);
 
   const cameraQaObserver = createCameraQaObserver({
     host: window,
     snapshot: transform => ({
-      cameraX: state.cameraX, cameraY: state.cameraY, cameraZoom: state.cameraZoom, playerX: baby.x, playerY: baby.y,
-      fairyX: fairy.x, fairyY: fairy.y, onGround: baby.onGround,
-      platform: baby.currentPlatformIndex, phase3: state.isPhase3,
+      cameraX: state.cameraX,
+      cameraY: state.cameraY,
+      cameraZoom: state.cameraZoom,
+      playerX: baby.x,
+      playerY: baby.y,
+      fairyX: fairy.x,
+      fairyY: fairy.y,
+      onGround: baby.onGround,
+      platform: baby.currentPlatformIndex,
+      phase3: state.isPhase3,
       narrative: Boolean(opening.active || state.isStandbyActive || state.isStandbyTransitioning ||
         state.cutsceneActive || state.plotTwistActive || state.phase3TutorialActive || state.truePortalTransitionActive),
-      plotTwistActive: state.plotTwistActive, plotTwistStep: state.plotTwistStep, phase3TutorialActive: state.phase3TutorialActive, truePortalTransitionActive: state.truePortalTransitionActive,
-      width: canvas.width, height: canvas.height,
-      cssWidth: canvas.getBoundingClientRect().width, cssHeight: canvas.getBoundingClientRect().height,
-      transform: transform ? {a: transform.a, d: transform.d, e: transform.e, f: transform.f} : null
+      plotTwistActive: state.plotTwistActive,
+      plotTwistStep: state.plotTwistStep,
+      phase3TutorialActive: state.phase3TutorialActive,
+      truePortalTransitionActive: state.truePortalTransitionActive,
+      width: canvas.width,
+      height: canvas.height,
+      cssWidth: canvas.getBoundingClientRect()
+        .width,
+      cssHeight: canvas.getBoundingClientRect()
+        .height,
+      transform: transform ? {
+        a: transform.a,
+        d: transform.d,
+        e: transform.e,
+        f: transform.f
+      } : null
     })
   });
+
+  /** Registra uma amostra de câmera e personagem no observador de QA, quando ativo. */
   function recordCameraQa(transform = null) {
     cameraQaObserver.record(transform);
   }
 
+  /** Executa o ciclo de frame, limitando atualização e mantendo a apresentação sincronizada. */
   function loop(currentTime = performance.now()) {
     if (state.gameStarted && currentTime - lastSaveTime >= 1000) saveProgress();
     const elapsed = currentTime - state.lastTime;
@@ -1235,7 +1578,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
 
     if (isPaused) {
       if (state.currentPhaseMode === 'toy-room' && state.toyRoomInstance) {
-        state.toyRoomInstance.instance.render({ overviewBlend: introductionOverview });
+        state.toyRoomInstance.instance.render({
+          overviewBlend: introductionOverview
+        });
       } else {
         render();
       }
@@ -1256,7 +1601,9 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     if (state.currentPhaseMode === 'toy-room' && state.toyRoomInstance) {
       state.toyRoomInstance.update(dt);
       introductionOverview = Math.max(0, introductionOverview - dt / 90);
-      state.toyRoomInstance.instance.render({ overviewBlend: introductionOverview });
+      state.toyRoomInstance.instance.render({
+        overviewBlend: introductionOverview
+      });
       requestAnimationFrame(loop);
       return;
     }
@@ -1279,29 +1626,81 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
   });
 
   /** Encaminha apenas a fala visível; nunca avança física ou ações de combate. */
-  function advanceDialogue(event){
-    if(isPaused||!state.gameStarted)return false;
-    if(opening.active)return opening.advanceDialogue();
-    if(toyRoomIntroduction.active)return toyRoomIntroduction.advanceDialogue();
-    if(state.currentPhaseMode==='toy-room'){
-      const room=state.toyRoomInstance?.instance;
-      if(room?.epilogue?.active)return room.epilogue.advanceDialogue();
-      if(room?.brinq?.active)return room.brinq.advanceDialogue();
-      if(room?.dream?.active)return room.dream.advanceDialogue();
-      if(room?.garden?.active)return room.garden.requestDialogueAdvance(event);
-      if(room?.introBannerTimer>0){room.introBannerTimer=0;return true;}
-      if(room?.victoryBannerTimer>0){room.victoryBannerTimer=0;return true;}
-      if(room?.story?.advanceDialogue())return true;
+  function advanceDialogue(event) {
+    if (isPaused || !state.gameStarted) return false;
+    if (opening.active) return opening.advanceDialogue();
+    if (toyRoomIntroduction.active) return toyRoomIntroduction.advanceDialogue();
+    if (state.currentPhaseMode === 'toy-room') {
+      const room = state.toyRoomInstance?.instance;
+      if (room?.epilogue?.active) return room.epilogue.advanceDialogue();
+      if (room?.brinq?.active) return room.brinq.advanceDialogue();
+      if (room?.dream?.active) return room.dream.advanceDialogue();
+      if (room?.garden?.active) return room.garden.requestDialogueAdvance(event);
+      if (room?.introBannerTimer > 0) {
+        room.introBannerTimer = 0;
+        return true;
+      }
+      if (room?.victoryBannerTimer > 0) {
+        room.victoryBannerTimer = 0;
+        return true;
+      }
+      if (room?.story?.advanceDialogue()) return true;
       return false;
     }
-    if(state.isStandbyActive){confirmStandby();return true;}
-    if(state.cutsceneActive){if(state.cutsceneStep===1&&state.cutsceneTimer<210)state.cutsceneTimer=210;else if(state.cutsceneStep===1)advanceCutscene();else finishCutscene();return true;}
-    if(state.plotTwistActive&&state.plotTwistStep>=4){if(state.plotTwistStep===4)advancePlotTwist();else if(state.plotTwistTimer<210)state.plotTwistTimer=210;else finishPlotTwistAndStartTutorial();return true;}
+    if (state.isStandbyActive) {
+      confirmStandby();
+      return true;
+    }
+    if (state.cutsceneActive) {
+      if (state.cutsceneStep === 1 && state.cutsceneTimer < 210) state.cutsceneTimer = 210;
+      else if (state.cutsceneStep === 1) advanceCutscene();
+      else finishCutscene();
+      return true;
+    }
+    if (state.plotTwistActive && state.plotTwistStep >= 4) {
+      if (state.plotTwistStep === 4) advancePlotTwist();
+      else if (state.plotTwistTimer < 210) state.plotTwistTimer = 210;
+      else finishPlotTwistAndStartTutorial();
+      return true;
+    }
     return false;
   }
-  const removeDialogueAdvance=installDialogueAdvance(canvas,{enabled:()=>!isPaused&&state.gameStarted&&!state.isGameOver,isModal:()=>Boolean(opening.active||toyRoomIntroduction.active||state.currentPhaseMode!=='toy-room'&&(state.isStandbyActive||state.cutsceneActive||state.plotTwistActive)||state.toyRoomInstance?.instance?.epilogue?.active||state.toyRoomInstance?.instance?.brinq?.reading()||state.toyRoomInstance?.instance?.dream?.reading()||state.toyRoomInstance?.instance?.garden?.reading()||state.toyRoomInstance?.instance?.story?.inputLocked),advance:advanceDialogue});
-  const runtimeContext = createRuntimeContext({ state, audio, camera, assets, input: inputHandler, effects: particles, campaign });
-  const narrativeContext = { ...runtimeContext, state, baby, fairy, canvas, audio, uiFeedback, spawnBabyLandingPuff, spawnFairyFlightDust, spawnFairySparkles, updateFairyParticles, updateBabyJumpDust, advanceCutscene, finishCutscene, advancePlotTwist, finishPlotTwistAndStartTutorial, startStandbyPreparation, confirmStandby, saveProgress, beginToyRoomIntroduction };
+  const removeDialogueAdvance = installDialogueAdvance(canvas, {
+    enabled: () => !isPaused && state.gameStarted && !state.isGameOver,
+    isModal: () => Boolean(opening.active || toyRoomIntroduction.active || state.currentPhaseMode !== 'toy-room' && (state.isStandbyActive || state.cutsceneActive || state.plotTwistActive) || state.toyRoomInstance?.instance?.epilogue?.active || state.toyRoomInstance?.instance?.brinq?.reading() || state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.garden?.reading() || state.toyRoomInstance?.instance?.story?.inputLocked),
+    advance: advanceDialogue
+  });
+  const runtimeContext = createRuntimeContext({
+    state,
+    audio,
+    camera,
+    assets,
+    input: inputHandler,
+    effects: particles,
+    campaign
+  });
+  const narrativeContext = {
+    ...runtimeContext,
+    state,
+    baby,
+    fairy,
+    canvas,
+    audio,
+    uiFeedback,
+    spawnBabyLandingPuff,
+    spawnFairyFlightDust,
+    spawnFairySparkles,
+    updateFairyParticles,
+    updateBabyJumpDust,
+    advanceCutscene,
+    finishCutscene,
+    advancePlotTwist,
+    finishPlotTwistAndStartTutorial,
+    startStandbyPreparation,
+    confirmStandby,
+    saveProgress,
+    beginToyRoomIntroduction
+  };
 
   // Desenho inicial para renderizar o cenário por trás da tela de título
   render();
@@ -1310,6 +1709,7 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     state,
     audio,
     toyRoomIntroduction,
+    /** Encaminha a ação somente ao diálogo ativo e evita avançar física durante a leitura. */
     advanceDialogue,
     camera,
     lighting,
@@ -1326,23 +1726,42 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
     atlasDebugger,
     input: inputHandler,
     audio,
+    /** Pausa a música se o controlador de áudio ainda estiver disponível. */
     pauseMusic: () => audio && typeof audio.pauseMusic === 'function' && audio.pauseMusic(),
+    /** Retoma a música solicitada pelo modo atual, sem alterar o estado de gameplay. */
     resumeMusic: () => audio && typeof audio.resumeMusic === 'function' && audio.resumeMusic(),
+    /** Define o volume mestre do áudio e propaga o ajuste às trilhas. */
     setMasterVolume: (v) => audio.setMasterVolume(v),
+    /** Consulta o volume mestre configurado no controlador de áudio. */
     getMasterVolume: () => audio.getMasterVolume(),
+    /** Altera o estado de mudo e devolve o resultado do controlador de áudio. */
     setMuted: (m) => audio.setMuted(m),
+    /** Consulta se os efeitos e as trilhas estão silenciados. */
     isMuted: () => audio.isMuted(),
+    /** Alterna o mudo sem expor o estado interno do controlador de áudio. */
     toggleMute: () => audio.toggleMute(),
+    /** Consulta o estado de pausa mantido pela sessão principal do jogo. */
     isPaused: () => isPaused,
+    /** Alterna a pausa da simulação e sincroniza os componentes dependentes. */
     togglePause,
+    /** Define explicitamente a pausa da simulação e sincroniza o estado público. */
     setPaused,
+    /** Informa se existe progresso recuperável ou uma abertura já concluída. */
     hasProgress: () => Boolean(campaign.read() || opening.hasCompleted()),
+    /** Informa se há uma campanha salva, sem contar apenas a abertura concluída. */
     hasSavedCampaign: () => Boolean(campaign.read()),
-    getDifficulty: () => normalizeDifficulty(state.gameStarted ? state.gameDifficulty : campaign.read()?.state.gameDifficulty ?? state.gameDifficulty),
+    /** Resolve a dificuldade efetiva da sessão ou da campanha salva. */
+    getDifficulty: () => normalizeDifficulty(state.gameStarted ? state.gameDifficulty : campaign.read()
+      ?.state.gameDifficulty ?? state.gameDifficulty),
+    /** Aceita a oferta de ajuda e retoma a tentativa atual em EASY. */
     continueOnEasy,
+    /** Recusa a oferta de ajuda sem mudar a dificuldade escolhida. */
     declineEasyOffer,
+    /** Persiste o estado recuperável da campanha ativa. */
     saveProgress,
+    /** Inicia uma campanha nova e limpa o progresso anterior de acordo com o fluxo do jogo. */
     newCampaign,
+    /** Remove listeners e encerra os recursos de áudio e da sala antes de descartar o jogo. */
     destroy() {
       removeDialogueAdvance();
       saveProgress();
@@ -1351,9 +1770,11 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       document.removeEventListener('visibilitychange', saveOnHide);
       opening.cancel();
       if (inputHandler && typeof inputHandler.destroy === 'function') inputHandler.destroy();
-      state.toyRoomInstance?.destroy();state.toyRoomInstance=null;
+      state.toyRoomInstance?.destroy();
+      state.toyRoomInstance = null;
       if (audio && typeof audio.destroy === 'function') audio.destroy();
     },
+    /** Inicia ou restaura a sessão e garante que o ciclo de atualização esteja ativo. */
     start(difficulty = 'NORMAL') {
       debugSession = false;
       const saved = campaign.read();
@@ -1375,17 +1796,29 @@ export function createGame(canvas, uiFeedback, callbacks = {}) {
       }
       saveProgress();
     },
+    /** Solicita o salto usando a origem de entrada para aplicar as regras correspondentes. */
     doJump,
+    /** Consulta se a personagem pode receber uma nova entrada de salto. */
     isGrounded: () => Boolean(!opening.active && baby && baby.onGround && !baby.controlsLocked && !baby.respawnLandingPending && !baby.isCrouching && !state.isStandbyActive),
+    /** Consulta se uma fala ou cena modal está bloqueando a jogabilidade. */
     isCutsceneActive: () => Boolean(state.toyRoomInstance?.instance?.brinq?.reading() || state.toyRoomInstance?.instance?.dream?.reading() || state.toyRoomInstance?.instance?.epilogue?.active || opening.active || state.cutsceneActive || state.isStandbyActive || (state.plotTwistActive && state.plotTwistStep >= 4)),
+    /** Registra o dispositivo de entrada mais recente para selecionar as instruções adequadas. */
     setLastInputDevice,
+    /** Reposiciona e reinicializa o corpo físico no ponto inicial da tentativa. */
     resetToStart,
+    /** Reinicia a fase após uma derrota válida, preservando a campanha. */
     retry: retryGame,
+    /** Encerra a sessão atual e retorna à tela de título. */
     restartToTitle,
+    /** Consulta se a fase ou modo de jogo atual chegou ao estado de derrota. */
     isGameOver,
+    /** Abre a sala de brinquedos, opcionalmente após a introdução narrativa. */
     startToyRoomPhase,
+    /** Reproduz a introdução da sala de brinquedos sem reiniciar a campanha. */
     startToyRoomIntroduction,
+    /** Inicia a fase de depuração solicitada, sem alterar o fluxo normal do menu. */
     startDebugPhase,
+    /** Consulta se a sessão atual está executando a sala de brinquedos. */
     isToyRoomMode: () => state.currentPhaseMode === 'toy-room'
   };
 }

@@ -4,7 +4,9 @@
  * auréola pulsante, rastro de poeira estelar e feixe guia da cinemática.
  */
 
-import { platforms as defaultPlatforms } from '../config.js';
+import {
+  platforms as defaultPlatforms
+} from '../config.js';
 
 export class FairyRenderer {
   /**
@@ -19,7 +21,9 @@ export class FairyRenderer {
     if (!ctx || !fairy) return;
 
     const canvasWidth = options.canvasWidth || options.canvas?.width || 960;
-    const canvas = options.canvas || { width: canvasWidth };
+    const canvas = options.canvas || {
+      width: canvasWidth
+    };
     const baby = options.baby || state.baby || {};
     const platforms = options.platforms || defaultPlatforms;
     const tick = state.tick || 0;

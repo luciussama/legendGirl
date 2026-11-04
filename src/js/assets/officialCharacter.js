@@ -1,8 +1,7 @@
 // Extraído da prancha oficial por scripts/generate-dream-girl-sprites.js
 export const OFFICIAL_SOURCE_SHA256 = 'be0a7e571078311054d8da48e7f1c858e6e1a769f984ca3c2a5453d8238cb627';
 export const OFFICIAL_FRAMES = {
-  "idle": [
-    {
+  "idle": [{
       "x": 0,
       "y": 0,
       "w": 34,
@@ -129,8 +128,7 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "run": [
-    {
+  "run": [{
       "x": 310,
       "y": 0,
       "w": 33,
@@ -257,8 +255,7 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "jump": [
-    {
+  "jump": [{
       "x": 634,
       "y": 0,
       "w": 35,
@@ -343,8 +340,7 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "jump_short": [
-    {
+  "jump_short": [{
       "x": 849,
       "y": 0,
       "w": 32,
@@ -373,24 +369,21 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "high_jump": [
-    {
-      "x": 918,
-      "y": 0,
-      "w": 33,
-      "h": 42,
-      "anchorX": 16.5,
-      "anchorY": 42,
-      "source": [
-        953,
-        251,
-        33,
-        42
-      ]
-    }
-  ],
-  "fall": [
-    {
+  "high_jump": [{
+    "x": 918,
+    "y": 0,
+    "w": 33,
+    "h": 42,
+    "anchorX": 16.5,
+    "anchorY": 42,
+    "source": [
+      953,
+      251,
+      33,
+      42
+    ]
+  }],
+  "fall": [{
       "x": 953,
       "y": 0,
       "w": 33,
@@ -475,24 +468,21 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "dash": [
-    {
-      "x": 142,
-      "y": 57,
-      "w": 75,
-      "h": 55,
-      "anchorX": 52,
-      "anchorY": 55,
-      "source": [
-        914,
-        439,
-        75,
-        55
-      ]
-    }
-  ],
-  "teleport": [
-    {
+  "dash": [{
+    "x": 142,
+    "y": 57,
+    "w": 75,
+    "h": 55,
+    "anchorX": 52,
+    "anchorY": 55,
+    "source": [
+      914,
+      439,
+      75,
+      55
+    ]
+  }],
+  "teleport": [{
       "x": 219,
       "y": 57,
       "w": 56,
@@ -521,116 +511,102 @@ export const OFFICIAL_FRAMES = {
       ]
     }
   ],
-  "damage": [
-    {
-      "x": 328,
-      "y": 57,
-      "w": 48,
-      "h": 73,
-      "anchorX": 24,
-      "anchorY": 73,
-      "source": [
-        553,
-        571,
-        48,
-        73
-      ]
-    }
-  ],
-  "collect": [
-    {
-      "x": 378,
-      "y": 57,
-      "w": 56,
-      "h": 75,
-      "anchorX": 28,
-      "anchorY": 75,
-      "source": [
-        620,
-        569,
-        56,
-        75
-      ]
-    }
-  ],
-  "interact": [
-    {
-      "x": 436,
-      "y": 57,
-      "w": 35,
-      "h": 61,
-      "anchorX": 17.5,
-      "anchorY": 61,
-      "source": [
-        561,
-        438,
-        35,
-        61
-      ]
-    }
-  ],
-  "lying_down": [
-    {
-      "x": 107,
-      "y": 57,
-      "w": 33,
-      "h": 38,
-      "anchorX": 16.5,
-      "anchorY": 38,
-      "source": [
-        806,
-        339,
-        33,
-        38
-      ]
-    }
-  ],
-  "crouch": [
-    {
-      "x": 634,
-      "y": 0,
-      "w": 35,
-      "h": 42,
-      "anchorX": 17.5,
-      "anchorY": 42,
-      "source": [
-        569,
-        251,
-        35,
-        42
-      ]
-    }
-  ],
-  "push": [
-    {
-      "x": 0,
-      "y": 0,
-      "w": 34,
-      "h": 49,
-      "anchorX": 17,
-      "anchorY": 49,
-      "source": [
-        568,
-        65,
-        34,
-        49
-      ]
-    }
-  ],
-  "climb": [
-    {
-      "x": 0,
-      "y": 0,
-      "w": 34,
-      "h": 49,
-      "anchorX": 17,
-      "anchorY": 49,
-      "source": [
-        568,
-        65,
-        34,
-        49
-      ]
-    }
-  ]
+  "damage": [{
+    "x": 328,
+    "y": 57,
+    "w": 48,
+    "h": 73,
+    "anchorX": 24,
+    "anchorY": 73,
+    "source": [
+      553,
+      571,
+      48,
+      73
+    ]
+  }],
+  "collect": [{
+    "x": 378,
+    "y": 57,
+    "w": 56,
+    "h": 75,
+    "anchorX": 28,
+    "anchorY": 75,
+    "source": [
+      620,
+      569,
+      56,
+      75
+    ]
+  }],
+  "interact": [{
+    "x": 436,
+    "y": 57,
+    "w": 35,
+    "h": 61,
+    "anchorX": 17.5,
+    "anchorY": 61,
+    "source": [
+      561,
+      438,
+      35,
+      61
+    ]
+  }],
+  "lying_down": [{
+    "x": 107,
+    "y": 57,
+    "w": 33,
+    "h": 38,
+    "anchorX": 16.5,
+    "anchorY": 38,
+    "source": [
+      806,
+      339,
+      33,
+      38
+    ]
+  }],
+  "crouch": [{
+    "x": 634,
+    "y": 0,
+    "w": 35,
+    "h": 42,
+    "anchorX": 17.5,
+    "anchorY": 42,
+    "source": [
+      569,
+      251,
+      35,
+      42
+    ]
+  }],
+  "push": [{
+    "x": 0,
+    "y": 0,
+    "w": 34,
+    "h": 49,
+    "anchorX": 17,
+    "anchorY": 49,
+    "source": [
+      568,
+      65,
+      34,
+      49
+    ]
+  }],
+  "climb": [{
+    "x": 0,
+    "y": 0,
+    "w": 34,
+    "h": 49,
+    "anchorX": 17,
+    "anchorY": 49,
+    "source": [
+      568,
+      65,
+      34,
+      49
+    ]
+  }]
 };

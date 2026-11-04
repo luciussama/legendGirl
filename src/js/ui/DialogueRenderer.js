@@ -1,10 +1,28 @@
-import {drawDialogueControls,dialogueControlsHeight} from '../narrative/DialogueControls.js';
-import {offerDialogue,setDialogueBounds} from '../narrative/DialogueFlow.js';
-import { renderMobileDialogueRegion } from './MobileDialogueRegion.js';
-import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
-import { isMobileDevice } from '../controllers/MobileZoom.js';
-import { getDialogueSafeArea, getDialogueBoxY } from './DialogueSafeArea.js';
-import { getPauseNarration, renderPoeticNarration } from '../narrative/PoeticNarrator.js';
+import {
+  drawDialogueControls,
+  dialogueControlsHeight
+} from '../narrative/DialogueControls.js';
+import {
+  offerDialogue,
+  setDialogueBounds
+} from '../narrative/DialogueFlow.js';
+import {
+  renderMobileDialogueRegion
+} from './MobileDialogueRegion.js';
+import {
+  GIRL_V2_FRAMES
+} from '../assets/illustratedGirl.js';
+import {
+  isMobileDevice
+} from '../controllers/MobileZoom.js';
+import {
+  getDialogueSafeArea,
+  getDialogueBoxY
+} from './DialogueSafeArea.js';
+import {
+  getPauseNarration,
+  renderPoeticNarration
+} from '../narrative/PoeticNarrator.js';
 
 /**
  * DialogueRenderer.js
@@ -66,11 +84,17 @@ export class DialogueRenderer {
     const portrait = GIRL_V2_FRAMES[portraitPose][0];
     const girlImage = charType !== 'fairy' && options.assets?.get(portrait.key);
     if (girlImage) {
-      pCtx.save(); pCtx.beginPath(); pCtx.arc(px, py, radius - 5, 0, Math.PI * 2); pCtx.clip();
-      const headHeight = Math.min(122, portrait.h), scale = (radius * 2 - 8) / headHeight;
+      pCtx.save();
+      pCtx.beginPath();
+      pCtx.arc(px, py, radius - 5, 0, Math.PI * 2);
+      pCtx.clip();
+      const headHeight = Math.min(122, portrait.h),
+        scale = (radius * 2 - 8) / headHeight;
       pCtx.drawImage(girlImage, portrait.x, portrait.y, portrait.w, headHeight,
         px - portrait.faceX * scale, py - headHeight * scale / 2, portrait.w * scale, headHeight * scale);
-      pCtx.restore(); pCtx.restore(); return;
+      pCtx.restore();
+      pCtx.restore();
+      return;
     }
     const fairyImage = charType === 'fairy' && options.assets?.get('toy-room-illustrated-fairy-v1');
     if (fairyImage) {
@@ -128,8 +152,10 @@ export class DialogueRenderer {
         pCtx.strokeStyle = '#991b1b';
         pCtx.lineWidth = 1.3;
         pCtx.beginPath();
-        pCtx.moveTo(px - 6, py - 6.5); pCtx.lineTo(px - 1.5, py - 4.5);
-        pCtx.moveTo(px + 6, py - 6.5); pCtx.lineTo(px + 1.5, py - 4.5);
+        pCtx.moveTo(px - 6, py - 6.5);
+        pCtx.lineTo(px - 1.5, py - 4.5);
+        pCtx.moveTo(px + 6, py - 6.5);
+        pCtx.lineTo(px + 1.5, py - 4.5);
         pCtx.stroke();
 
         pCtx.strokeStyle = '#dc2626';
@@ -249,7 +275,8 @@ export class DialogueRenderer {
     for (let i = 0; i < words.length; i++) {
       const word = words[i];
       const testLine = currentLine ? `${currentLine} ${word}` : word;
-      const testWidth = pCtx.measureText(testLine).width;
+      const testWidth = pCtx.measureText(testLine)
+        .width;
       if (testWidth > maxWidth && currentLine) {
         lines.push(currentLine);
         currentLine = word;
@@ -292,7 +319,10 @@ export class DialogueRenderer {
     // Usa somente o tempo das pausas já existentes; nunca dispara durante travessias.
     const narration = getPauseNarration(state);
     if (narration) {
-      renderPoeticNarration(ctx, canvas, narration, {separateScene:true,anchor:options.characterAnchor});
+      renderPoeticNarration(ctx, canvas, narration, {
+        separateScene: true,
+        anchor: options.characterAnchor
+      });
       return;
     }
 
@@ -372,26 +402,42 @@ export class DialogueRenderer {
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     }
 
-    this.renderDialogue(ctx, canvas, { speaker, speakerName, speakerColor, mood,
-      text: dialogueText, advancePrompt, tick, isPortrait, emphasis: plotTwistActive }, {...options,readingHint:!isStandbyShowing});
+    this.renderDialogue(ctx, canvas, {
+      speaker,
+      speakerName,
+      speakerColor,
+      mood,
+      text: dialogueText,
+      advancePrompt,
+      tick,
+      isPortrait,
+      emphasis: plotTwistActive
+    }, {
+      ...options,
+      readingHint: !isStandbyShowing
+    });
     ctx.restore();
   }
 
   /** Caixa compartilhada entre fases; a narrativa controla o avanço e os tempos. */
   renderDialogue(ctx, canvas, dialogue, options = {}) {
     if (!ctx || !canvas || !dialogue?.text) return;
-    if(!offerDialogue(canvas,dialogue.text,options.onAdvance))return;
-    const { speaker = 'fairy', speakerName = 'NANDA', mood = 'normal', tick = 0,
-      speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
-      text: dialogueText, advancePrompt = '', emphasis: plotTwistActive = false,
-      isPortrait = canvas.height > canvas.width || canvas.height / canvas.width > 0.85 } = dialogue;
+    if (!offerDialogue(canvas, dialogue.text, options.onAdvance)) return;
+    const {
+      speaker = 'fairy', speakerName = 'NANDA', mood = 'normal', tick = 0,
+        speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
+        text: dialogueText, advancePrompt = '', emphasis: plotTwistActive = false,
+        isPortrait = canvas.height > canvas.width || canvas.height / canvas.width > 0.85
+    } = dialogue;
     const drawDialoguePortrait = (pCtx, charType, px, py, radius, expression) =>
       this.drawPortrait(pCtx, charType, px, py, radius, expression, tick, options);
     const wrapDialogueText = (pCtx, text, maxWidth) => this.wrapText(pCtx, text, maxWidth);
     ctx.save();
     ctx.textBaseline = 'alphabetic';
     // 2. Dimensionamento adaptativo do container e quebra de palavras para evitar transbordamento
-    const safe = { ...getDialogueSafeArea(canvas) };
+    const safe = {
+      ...getDialogueSafeArea(canvas)
+    };
     if (Number.isFinite(options.bottom)) safe.bottom = Math.min(safe.bottom, options.bottom);
     const originalBoxW = Math.min(canvas.width - 24, 760);
     const boxW = Math.min(originalBoxW, safe.right - safe.left - 2 * Math.max(12, safe.marginX));
@@ -402,7 +448,8 @@ export class DialogueRenderer {
     const textMaxW = boxW - (textX - boxX) - 20;
 
     // Escala dinâmica de tamanho de fonte e quebra de linha
-    const uiScale = canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.().width || canvas.width);
+    const uiScale = canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.()
+      .width || canvas.width);
     let fontSize = (isPortrait ? 14.5 : 16) * uiScale;
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
     const originalTextMaxW = originalBoxW - (textX - boxX) - 20;
@@ -420,13 +467,13 @@ export class DialogueRenderer {
     lines = wrapDialogueText(ctx, dialogueText, textMaxW);
     const lineHeight = Math.round(fontSize * 1.44);
     const contentH = lines.length * lineHeight;
-    const controlsHeight=options.readingHint===false?0:dialogueControlsHeight(uiScale);
-    const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48)+controlsHeight;
+    const controlsHeight = options.readingHint === false ? 0 : dialogueControlsHeight(uiScale);
+    const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48) + controlsHeight;
     const regions = options.separateScene === false ? null :
       renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
     const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor, options.separateScene === false ? false : undefined);
 
-    setDialogueBounds(canvas,ctx,boxX,boxY,boxW,boxH);
+    setDialogueBounds(canvas, ctx, boxX, boxY, boxW, boxH);
     // Desenha o container da caixa de diálogo
     const bgGrad = ctx.createLinearGradient(boxX, boxY, boxX, boxY + boxH);
     bgGrad.addColorStop(0, 'rgba(26, 20, 38, 0.97)');
@@ -447,11 +494,22 @@ export class DialogueRenderer {
     ctx.stroke();
 
     // Joias decorativas nos cantos
-    const corners = [
-      { x: boxX + 7, y: boxY + 7 },
-      { x: boxX + boxW - 7, y: boxY + 7 },
-      { x: boxX + 7, y: boxY + boxH - 7 },
-      { x: boxX + boxW - 7, y: boxY + boxH - 7 }
+    const corners = [{
+        x: boxX + 7,
+        y: boxY + 7
+      },
+      {
+        x: boxX + boxW - 7,
+        y: boxY + 7
+      },
+      {
+        x: boxX + 7,
+        y: boxY + boxH - 7
+      },
+      {
+        x: boxX + boxW - 7,
+        y: boxY + boxH - 7
+      }
     ];
     ctx.fillStyle = '#facc15';
     corners.forEach(c => {
@@ -483,12 +541,14 @@ export class DialogueRenderer {
         if (parts[0]) {
           ctx.fillStyle = '#fef9c3';
           ctx.fillText(parts[0], curX, curY);
-          curX += ctx.measureText(parts[0]).width;
+          curX += ctx.measureText(parts[0])
+            .width;
         }
         ctx.fillStyle = '#f472b6';
         ctx.font = `bold italic ${fontSize}px Palatino, Georgia, serif`;
         ctx.fillText('*risos*', curX, curY);
-        curX += ctx.measureText('*risos*').width;
+        curX += ctx.measureText('*risos*')
+          .width;
         ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
         if (parts[1]) {
           ctx.fillStyle = '#fef9c3';
@@ -501,10 +561,19 @@ export class DialogueRenderer {
     });
 
     // O aviso temporizado distingue leitura das confirmações de ação/prontidão.
-    if(controlsHeight)drawDialogueControls(ctx,canvas,{left:boxX+14*uiScale,top:boxY+boxH-controlsHeight-5*uiScale,width:boxW-28*uiScale,scale:uiScale,color:'#e2c99c',buttonColor:'#251b30'});
-    else{
-      ctx.fillStyle='#e2c99c';ctx.font=`bold ${11.5*uiScale}px sans-serif`;ctx.textAlign='right';
-      ctx.fillText(advancePrompt,boxX+boxW-14,boxY+boxH-10);
+    if (controlsHeight) drawDialogueControls(ctx, canvas, {
+      left: boxX + 14 * uiScale,
+      top: boxY + boxH - controlsHeight - 5 * uiScale,
+      width: boxW - 28 * uiScale,
+      scale: uiScale,
+      color: '#e2c99c',
+      buttonColor: '#251b30'
+    });
+    else {
+      ctx.fillStyle = '#e2c99c';
+      ctx.font = `bold ${11.5*uiScale}px sans-serif`;
+      ctx.textAlign = 'right';
+      ctx.fillText(advancePrompt, boxX + boxW - 14, boxY + boxH - 10);
     }
 
     ctx.restore();

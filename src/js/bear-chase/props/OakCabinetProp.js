@@ -1,4 +1,6 @@
-import { PropParts } from './ChasePropResources.js';
+import {
+  PropParts
+} from './ChasePropResources.js';
 
 /** Armário baixo de carvalho: duas portas, molduras, ferragens e painéis completos. */
 export class OakCabinetProp {
@@ -15,7 +17,8 @@ export class OakCabinetProp {
     p.box(top, [0, 1.14, 0], [2.12, .115, .81], .035);
     p.box(edge, [0, 1.065, .015], [2.00, .055, .73]);
     p.box(wood, [0, .17, .015], [2.04, .14, .74], .023);
-    for (const x of [-.90, .90]) for (const z of [-.265, .275]) p.box(edge, [x, .07, z], [.17, .14, .18], .022);
+    for (const x of [-.90, .90])
+      for (const z of [-.265, .275]) p.box(edge, [x, .07, z], [.17, .14, .18], .022);
     for (const x of [-.947, .947]) p.box(wood, [x, .62, .365], [.12, .86, .08], .016);
     p.box(edge, [0, .62, .355], [.045, .87, .085], .006);
     for (const x of [-.46, .46]) {
@@ -45,5 +48,7 @@ export class OakCabinetProp {
     this.prototype = resources.bake(p.parts, 'Armário baixo de carvalho — piloto');
   }
   /** Cria outra instância sem duplicar malhas, texturas ou materiais do proprietário externo. */
-  create() { return this.prototype.clone(true); }
+  create() {
+    return this.prototype.clone(true);
+  }
 }

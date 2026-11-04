@@ -5,6 +5,10 @@
  */
 
 export class InputController {
+  /**
+   * Guarda o jogo, prepara o controle de repetição e os estados de borda dos botões e instala listeners
+   * e leitura contínua do controle.
+   */
   constructor(game, options = {}) {
     this.game = game;
     this.minInputInterval = options.minInputInterval || 140; // Intervalo mínimo contra toques repetidos (ms)
@@ -25,16 +29,26 @@ export class InputController {
     this.init();
   }
 
+  /**
+   * Instala listeners de ponteiro, teclado e desconexão do controle; não os registra quando o ambiente
+   * não oferece window.
+   */
   init() {
     if (typeof window === 'undefined') return;
 
-    window.addEventListener('pointerdown', this.boundHandlePointerDown, { passive: false });
+    window.addEventListener('pointerdown', this.boundHandlePointerDown, {
+      passive: false
+    });
     window.addEventListener('keydown', this.boundHandleKeyDown);
     window.addEventListener('gamepaddisconnected', this.boundHandleGamepadDisconnected);
 
     this.startGamepadPollingLoop();
   }
 
+  /**
+   * Recusa pulo após derrota, no quarto de brinquedos, durante o intervalo antirrepetição ou no ar fora
+   * de cenas autorizadas; então encaminha uma única ação.
+   */
   triggerJump(source) {
     if (!this.game) return;
 
@@ -60,6 +74,9 @@ export class InputController {
     }
   }
 
+  /**
+   * Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.
+   */
   handlePointerDown(event) {
     if (!this.game) return;
     if ((this.game.isGameOver && this.game.isGameOver()) || (this.game.isToyRoomMode && this.game.isToyRoomMode())) {
@@ -68,7 +85,8 @@ export class InputController {
 
     // Registra o tipo de dispositivo
     if (typeof this.game.setLastInputDevice === 'function') {
-      const isTouch = event.pointerType === 'touch' || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)').matches);
+      const isTouch = event.pointerType === 'touch' || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)')
+        .matches);
       this.promptDevice = event.pointerType === 'mouse' ? 'mouse' : isTouch ? 'touch' : 'mouse';
       this.game.setLastInputDevice(isTouch ? 'touch' : 'keyboard');
     }
@@ -100,6 +118,9 @@ export class InputController {
     this.triggerJump(this.promptDevice);
   }
 
+  /**
+   * Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.
+   */
   handleKeyDown(event) {
     // Ignora repetição automática do teclado ao segurar a tecla
     if (event.repeat) {
@@ -139,6 +160,10 @@ export class InputController {
   // Botão 1: B (Direita)
   // Botão 2: X (Esquerda) -> Botão de Pulo Solicitado
   // Botão 3: Y (Superior)
+  /**
+   * Lê controles conectados e detecta a borda de pressão: A confirma o primeiro salto e X aciona o pulo
+   * normal uma vez por pressionamento.
+   */
   pollGamepad() {
     if (this.isDestroyed) return;
     if (typeof navigator === 'undefined' || typeof navigator.getGamepads !== 'function') {
@@ -188,18 +213,27 @@ export class InputController {
     }
   }
 
+  /**
+   * Lê os controles a cada quadro e agenda a próxima leitura enquanto o controlador não foi descartado.
+   */
   gamepadLoop() {
     if (this.isDestroyed) return;
     this.pollGamepad();
     this.gamepadPollRafId = requestAnimationFrame(this.boundGamepadLoop);
   }
 
+  /**
+   * Inicia a gamepad polling loop e prepara o estado necessário para a sequência subsequente.
+   */
   startGamepadPollingLoop() {
     if (typeof requestAnimationFrame === 'function') {
       this.gamepadPollRafId = requestAnimationFrame(this.boundGamepadLoop);
     }
   }
 
+  /**
+   * Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.
+   */
   handleGamepadDisconnected(event) {
     if (event && event.gamepad) {
       this.prevGamepadButtonX.delete(event.gamepad.index);
@@ -207,6 +241,9 @@ export class InputController {
     }
   }
 
+  /**
+   * Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.
+   */
   destroy() {
     this.isDestroyed = true;
     if (this.gamepadPollRafId && typeof cancelAnimationFrame === 'function') {
@@ -230,7 +267,14 @@ export function bindInput(game) {
   const controller = new InputController(game);
   return {
     controller,
+    /**
+     * Lê controles conectados e detecta a borda de pressão: A confirma o primeiro salto e X aciona o pulo
+     * normal uma vez por pressionamento.
+     */
     pollGamepad: () => controller.pollGamepad(),
+    /**
+     * Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.
+     */
     destroy: () => controller.destroy()
   };
 }
