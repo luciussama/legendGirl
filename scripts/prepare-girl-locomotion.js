@@ -1,21 +1,19 @@
 // Prepara peças isoladas para a articulação visual; não recalibra os pés físicos.
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 
 const root = 'assets/art/characters/girl-v2';
-const input = PNG.sync.read(fs.readFileSync(root + '/source/pernas-articuladas-v1.png'));
+const input = PNG.sync.read(fs.readFileSync(root + '/source/legs-articulated-v1.png'));
 const output = new PNG({
   width: 768,
-  height: 256
+  height: 256,
 });
 const parts = [];
 for (let row = 0; row < 2; row++) {
   const leg = [];
   for (let column = 0; column < 3; column++) {
-    const x0 = column * input.width / 3,
-      y0 = row * input.height / 2;
+    const x0 = (column * input.width) / 3,
+      y0 = (row * input.height) / 2;
     let left = input.width,
       top = input.height,
       right = 0,
@@ -39,8 +37,8 @@ for (let row = 0; row < 2; row++) {
     // Reamostragem em alfa pré-multiplicado, preservando o alfa da geração.
     for (let dy = 0; dy < h; dy++)
       for (let dx = 0; dx < w; dx++) {
-        const sx = left + (dx + .5) / scale - .5,
-          sy = top + (dy + .5) / scale - .5;
+        const sx = left + (dx + 0.5) / scale - 0.5,
+          sy = top + (dy + 0.5) / scale - 0.5;
         const ix = Math.floor(sx),
           iy = Math.floor(sy),
           fx = sx - ix,
@@ -65,17 +63,22 @@ for (let row = 0; row < 2; row++) {
       x,
       y,
       w,
-      h
+      h,
     });
   }
   parts.push(leg);
 }
-const file = root + '/runtime/pernas-articuladas-v1.png';
+const file = root + '/runtime/legs-articulated-v1.png';
 fs.writeFileSync(file, PNG.sync.write(output));
-fs.writeFileSync('src/js/assets/GirlLocomotionArt.js', '// Gerado por prepare-girl-locomotion.js; metadados exclusivamente visuais.\n' +
-  'export const GIRL_LOCOMOTION_ART = ' + JSON.stringify({
-    key: 'girl-v2-pernas-articuladas-v1',
-    file,
-    legs: parts
-  }) + ';\n');
+fs.writeFileSync(
+  'src/js/assets/girlLocomotionArt.js',
+  '// Gerado por prepare-girl-locomotion.js; metadados exclusivamente visuais.\n' +
+    'export const GIRL_LOCOMOTION_ART = ' +
+    JSON.stringify({
+      key: 'girl-v2-legs-articulated-v1',
+      file,
+      legs: parts,
+    }) +
+    ';\n',
+);
 console.log('Articulação preparada: seis peças; atlas768×256.');

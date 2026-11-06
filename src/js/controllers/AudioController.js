@@ -4,9 +4,7 @@
  * gerenciamento de mudo em segundo plano/mudança de visibilidade da aba e controles de volume master.
  */
 
-import {
-  createAudioSystem
-} from '../audio.js';
+import { createAudioSystem } from '../audio.js';
 
 export class AudioController {
   /**
@@ -149,7 +147,10 @@ export class AudioController {
    * Informa se o usuário silenciou o jogo ou se o próprio sistema de áudio está mudo.
    */
   isMuted() {
-    return this.isMutedByUser || (this.system && typeof this.system.isMuted === 'function' && this.system.isMuted());
+    return (
+      this.isMutedByUser ||
+      (this.system && typeof this.system.isMuted === 'function' && this.system.isMuted())
+    );
   }
 
   /**
@@ -307,18 +308,18 @@ export class AudioController {
   /**
    * Aciona o som/cue correspondente ou sua delegação de áudio.
    */
-  playBabyThudSound() {
-    if (this.system && typeof this.system.playBabyThudSound === 'function') {
-      this.system.playBabyThudSound();
+  playPlayerThudSound() {
+    if (this.system && typeof this.system.playPlayerThudSound === 'function') {
+      this.system.playPlayerThudSound();
     }
   }
 
   /**
    * Aciona o som/cue correspondente ou sua delegação de áudio.
    */
-  playBabyShockVoice() {
-    if (this.system && typeof this.system.playBabyShockVoice === 'function') {
-      this.system.playBabyShockVoice();
+  playPlayerShockVoice() {
+    if (this.system && typeof this.system.playPlayerShockVoice === 'function') {
+      this.system.playPlayerShockVoice();
     }
   }
 

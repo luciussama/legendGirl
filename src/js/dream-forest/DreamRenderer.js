@@ -1,30 +1,16 @@
-import {
-  renderDreamOpening
-} from './DreamOpeningRenderer.js';
-import {
-  DREAM_NIGHTMARE_ART as NIGHT_ART
-} from './DreamNightmareArt.js';
-import {
-  drawMobileGameControls
-} from '../ui/TouchGameControls.js';
-import {
-  prepareDreamSpider
-} from './DreamSpiderPuppet.js';
-import {
-  DreamNightmareRenderer
-} from './DreamNightmareRenderer.js';
-import {
-  DREAM_GLIDER_ART
-} from './DreamGliderArt.js';
+import { renderDreamOpening } from './dreamOpeningRenderer.js';
+import { DREAM_NIGHTMARE_ART as NIGHT_ART } from './dreamNightmareArt.js';
+import { drawMobileGameControls } from '../ui/touchGameControls.js';
+import { prepareDreamSpider } from './dreamSpiderPuppet.js';
+import { DreamNightmareRenderer } from './DreamNightmareRenderer.js';
+import { DREAM_GLIDER_ART } from './dreamGliderArt.js';
 import {
   drawDreamGlideThorns,
   drawDreamLaunchLeaf,
   drawDreamGlider,
-  renderDreamLanding
-} from './DreamGliderRenderer.js';
-import {
-  drawDreamClimb
-} from './DreamClimb.js';
+  renderDreamLanding,
+} from './dreamGliderRenderer.js';
+import { drawDreamClimb } from './dreamClimb.js';
 import {
   prepareDreamIllustrations,
   drawDreamLeaf,
@@ -33,47 +19,31 @@ import {
   drawDreamWeb,
   drawDreamGrass,
   prepareDreamBackdrop,
-  drawDreamBackdrop
-} from './DreamIllustratedSprites.js';
-import {
-  prepareDreamBeetle,
-  drawDreamBeetle
-} from './DreamBeetle.js';
+  drawDreamBackdrop,
+} from './dreamIllustratedSprites.js';
+import { prepareDreamBeetle, drawDreamBeetle } from './dreamBeetle.js';
 import {
   DREAM as C,
   DREAM_WIDTH,
   DREAM_SECTIONS,
   DREAM_BY_ID,
   dreamNearby,
-  dreamObjectFrame
-} from './DreamLevel.js';
+  dreamObjectFrame,
+} from './dreamLevel.js';
 import {
   DREAM_CLIMB_CYCLE,
   DREAM_INSECTS,
   DREAM_LEAF,
   DREAM_BEE,
   DREAM_BRANCH,
-  DREAM_SPIDER
-} from './DreamArt.js';
-import {
-  GARDEN_ART
-} from '../garden/GardenArt.js';
-import {
-  renderPoeticNarration
-} from '../narrative/PoeticNarrator.js';
-import {
-  beginDialogueFrame,
-  endDialogueFrame
-} from '../narrative/DialogueFlow.js';
-import {
-  getDialogueSafeArea
-} from '../ui/DialogueSafeArea.js';
-import {
-  dreamControls
-} from './DreamInput.js';
-import {
-  DREAM_INTRO
-} from './DreamSimulation.js';
+  DREAM_SPIDER,
+} from './dreamArt.js';
+import { GARDEN_ART } from '../garden/gardenArt.js';
+import { renderPoeticNarration } from '../narrative/poeticNarrator.js';
+import { beginDialogueFrame, endDialogueFrame } from '../narrative/dialogueFlow.js';
+import { getDialogueSafeArea } from '../ui/dialogueSafeArea.js';
+import { dreamControls } from './DreamInput.js';
+import { DREAM_INTRO } from './dreamSimulation.js';
 const root = new URL('../../../assets/art/', import.meta.url);
 /** Canvas 2D: fundo pintado, recortes existentes e poucos objetos visíveis; sem filtros ou iluminação por pixel. */
 export class DreamRenderer {
@@ -93,17 +63,32 @@ export class DreamRenderer {
    * carregamento.
    */
   async load() {
-    const files = [NIGHT_ART.openingLook.file, NIGHT_ART.openingGirl.file, 'chapters/nanda-gestos-v1.png', NIGHT_ART.windFall.file, NIGHT_ART.cinematicGirl.file, NIGHT_ART.cinematicForest.file, ...Object.values(DREAM_GLIDER_ART)
-      .map(d => d.file), DREAM_LEAF.file, DREAM_BEE.file, DREAM_BRANCH.file, DREAM_SPIDER.file, 'dream-forest/floresta-azul-v1.png', DREAM_CLIMB_CYCLE.file, ...new Set(Object.values(DREAM_INSECTS)
-        .map(d => 'garden/' + d.file)), 'garden/runtime/menina-corrida-v1.png', 'garden/runtime/menina-acoes-v1.png'
+    const files = [
+      NIGHT_ART.openingLook.file,
+      NIGHT_ART.openingGirl.file,
+      'chapters/nanda-gestures-v1.png',
+      NIGHT_ART.windFall.file,
+      NIGHT_ART.cinematicGirl.file,
+      NIGHT_ART.cinematicForest.file,
+      ...Object.values(DREAM_GLIDER_ART).map((d) => d.file),
+      DREAM_LEAF.file,
+      DREAM_BEE.file,
+      DREAM_BRANCH.file,
+      DREAM_SPIDER.file,
+      'dream-forest/forest-blue-v1.png',
+      DREAM_CLIMB_CYCLE.file,
+      ...new Set(Object.values(DREAM_INSECTS).map((d) => 'garden/' + d.file)),
+      'garden/runtime/girl-running-v1.png',
+      'garden/runtime/girl-actions-v1.png',
     ];
-    await Promise.all(files.map(async file => {
-      const image = new Image();
-      image.src = new URL(file, root)
-        .href;
-      await image.decode();
-      if (!this.disposed) this.images.set(file, image);
-    }));
+    await Promise.all(
+      files.map(async (file) => {
+        const image = new Image();
+        image.src = new URL(file, root).href;
+        await image.decode();
+        if (!this.disposed) this.images.set(file, image);
+      }),
+    );
     if (!this.disposed) {
       const leaf = document.createElement('canvas');
       leaf.width = DREAM_GLIDER_ART.girl.width;
@@ -121,21 +106,27 @@ export class DreamRenderer {
       lc.drawImage(this.images.get(DREAM_GLIDER_ART.girl.file), 0, 0);
       this.images.set('dream-flight-leaf', leaf);
       this.spiderParts = prepareDreamSpider(this.images.get(DREAM_SPIDER.file));
-      this.beetleParts = prepareDreamBeetle(this.images.get('garden/source/besouro-camadas-v2.png'));
-      this.backdrop = prepareDreamBackdrop(this.images.get('dream-forest/floresta-azul-v1.png'));
-      this.illustrations = prepareDreamIllustrations(this.images.get(DREAM_LEAF.file), this.images.get(DREAM_BRANCH.file));
+      this.beetleParts = prepareDreamBeetle(this.images.get('garden/source/beetle-layers-v2.png'));
+      this.backdrop = prepareDreamBackdrop(this.images.get('dream-forest/forest-blue-v1.png'));
+      this.illustrations = prepareDreamIllustrations(
+        this.images.get(DREAM_LEAF.file),
+        this.images.get(DREAM_BRANCH.file),
+      );
     }
   }
   /** Exploração mantém altura fixa; somente o planador acompanha as grandes mudanças de altitude. */
   frame(state) {
-    const {
-      width,
-      height
-    } = this.canvas, safe = getDialogueSafeArea(this.canvas), scale = Math.min((safe.right - safe.left) / 760, (safe.bottom - safe.top) / 920), worldWidth = width / scale;
+    const { width, height } = this.canvas,
+      safe = getDialogueSafeArea(this.canvas),
+      scale = Math.min((safe.right - safe.left) / 760, (safe.bottom - safe.top) / 920),
+      worldWidth = width / scale;
     return {
       scale,
-      left: Math.max(0, Math.min(DREAM_WIDTH - worldWidth, state.player.x - worldWidth * .32)),
-      top: state.glider && !['GLIDE_APPROACH', 'GLIDE_GUST'].includes(state.stage) ? height * .5 - state.glider.cameraY * scale : (height - C.height * scale) / 2
+      left: Math.max(0, Math.min(DREAM_WIDTH - worldWidth, state.player.x - worldWidth * 0.32)),
+      top:
+        state.glider && !['GLIDE_APPROACH', 'GLIDE_GUST'].includes(state.stage)
+          ? height * 0.5 - state.glider.cameraY * scale
+          : (height - C.height * scale) / 2,
     };
   }
   /** Sprite registrado no relevo físico anterior, com caule pintado até fora da tela. */
@@ -172,7 +163,10 @@ export class DreamRenderer {
   girl(ctx, s) {
     const p = s.player,
       height = C.bodyHeight;
-    if (['GLIDE_GUST', 'GLIDING'].includes(s.stage) || s.stage === 'GLIDE_LANDING' && s.age < 2.4) {
+    if (
+      ['GLIDE_GUST', 'GLIDING'].includes(s.stage) ||
+      (s.stage === 'GLIDE_LANDING' && s.age < 2.4)
+    ) {
       drawDreamGlider(ctx, this.images, s);
       return;
     }
@@ -181,15 +175,44 @@ export class DreamRenderer {
       return;
     }
     ctx.save();
-    if (s.fallCause === 'spider' && s.stage === 'FALLING') ctx.globalAlpha = Math.sin(s.age * 45) > 0 ? .45 : 1;
+    if (s.fallCause === 'spider' && s.stage === 'FALLING')
+      ctx.globalAlpha = Math.sin(s.age * 45) > 0 ? 0.45 : 1;
     ctx.translate(p.x, p.y);
     ctx.scale(p.facing, 1);
     {
-      const set = GARDEN_ART.sets[s.stage === 'COMPLETE' || p.support && Math.abs(p.vx) < 1 ? 'menina-acoes-v1' : p.support ? 'menina-corrida-v1' : 'menina-acoes-v1'],
-        frame = set.frames[s.stage === 'COMPLETE' || p.support && Math.abs(p.vx) < 1 ? 7 : p.support ? (Math.abs(p.vx) > 1 ? Math.floor(p.animTime) % 8 : 0) : p.vy < 0 ? 1 : 3],
+      const set =
+          GARDEN_ART.sets[
+            s.stage === 'COMPLETE' || (p.support && Math.abs(p.vx) < 1)
+              ? 'girl-actions-v1'
+              : p.support
+                ? 'girl-running-v1'
+                : 'girl-actions-v1'
+          ],
+        frame =
+          set.frames[
+            s.stage === 'COMPLETE' || (p.support && Math.abs(p.vx) < 1)
+              ? 7
+              : p.support
+                ? Math.abs(p.vx) > 1
+                  ? Math.floor(p.animTime) % 8
+                  : 0
+                : p.vy < 0
+                  ? 1
+                  : 3
+          ],
         image = this.images.get('garden/' + set.file),
         scale = height / frame.h;
-      ctx.drawImage(image, frame.x, frame.y, frame.w, frame.h, -frame.w * scale / 2, -height, frame.w * scale, height);
+      ctx.drawImage(
+        image,
+        frame.x,
+        frame.y,
+        frame.w,
+        frame.h,
+        (-frame.w * scale) / 2,
+        -height,
+        frame.w * scale,
+        height,
+      );
     }
     ctx.restore();
   }
@@ -197,33 +220,27 @@ export class DreamRenderer {
    * Compõe o quadro do sonho a partir do estado atual, delegando cada trecho narrativo ao renderizador
    * correspondente.
    */
-  render(state, {
-    ready = true,
-    error = null,
-    paused = false,
-    onAdvance = () => {},
-    touch = false
-  } = {}) {
+  render(
+    state,
+    { ready = true, error = null, paused = false, onAdvance = () => {}, touch = false } = {},
+  ) {
     if (state.nightmare) {
       this.nightmare.render(state, {
         paused,
         touch,
-        onAdvance
+        onAdvance,
       });
       return;
     }
     const canvas = this.canvas,
       ctx = this.ctx,
-      {
-        width,
-        height
-      } = canvas;
+      { width, height } = canvas;
     beginDialogueFrame(canvas);
     try {
       this.frames++;
       if (ready && state.stage === 'OPENING') {
         renderDreamOpening(ctx, canvas, state, this.images, {
-          onAdvance
+          onAdvance,
         });
         if (paused) {
           ctx.fillStyle = 'rgba(2,5,14,.5)';
@@ -241,10 +258,11 @@ export class DreamRenderer {
       }
       const frame = this.frame(state),
         safe = getDialogueSafeArea(canvas),
-        background = this.images.get('dream-forest/floresta-azul-v1.png');
+        background = this.images.get('dream-forest/forest-blue-v1.png');
       ctx.fillStyle = '#0c1a35';
       ctx.fillRect(0, 0, width, height);
-      if (background && this.backdrop) drawDreamBackdrop(ctx, this.backdrop, width, height, state.player.x);
+      if (background && this.backdrop)
+        drawDreamBackdrop(ctx, this.backdrop, width, height, state.player.x);
       if (!ready || error) {
         ctx.fillStyle = '#e2e9f1';
         ctx.font = '18px sans-serif';
@@ -259,92 +277,171 @@ export class DreamRenderer {
       for (const o of dreamNearby(frame.left - 400, frame.left + width / frame.scale + 400)) {
         const f = dreamObjectFrame(o, state.time, state.rides);
         if (f.x + f.w < frame.left - 200 || f.x > frame.left + width / frame.scale + 200) continue;
-        if (f.kind === 'grass') this.grass(ctx, f, Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200));
-        else if (f.kind === 'leaf') this.leaf(ctx, f, Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200));
-        else if (f.kind === 'web') drawDreamWeb(ctx, this.images.get(DREAM_SPIDER.file), f, state.time, this.spiderParts);
+        if (f.kind === 'grass')
+          this.grass(ctx, f, Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200));
+        else if (f.kind === 'leaf')
+          this.leaf(ctx, f, Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200));
+        else if (f.kind === 'web')
+          drawDreamWeb(ctx, this.images.get(DREAM_SPIDER.file), f, state.time, this.spiderParts);
         else if (f.kind === 'plateau') continue;
-        else if (f.kind === 'branch') drawDreamBranch(ctx, this.images.get(DREAM_BRANCH.file), this.illustrations, f, Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200), -frame.top / frame.scale - 150);
+        else if (f.kind === 'branch')
+          drawDreamBranch(
+            ctx,
+            this.images.get(DREAM_BRANCH.file),
+            this.illustrations,
+            f,
+            Math.max(C.grassRoot, (height - frame.top) / frame.scale + 200),
+            -frame.top / frame.scale - 150,
+          );
         else this.insect(ctx, f, state.time);
         count++;
       }
-      drawDreamGlideThorns(ctx, this.images, frame.left, frame.left + width / frame.scale, -frame.top / frame.scale - 100, (height - frame.top) / frame.scale + 100);
+      drawDreamGlideThorns(
+        ctx,
+        this.images,
+        frame.left,
+        frame.left + width / frame.scale,
+        -frame.top / frame.scale - 100,
+        (height - frame.top) / frame.scale + 100,
+      );
       if (!state.glider || state.stage === 'GLIDE_APPROACH') {
         const branch = dreamObjectFrame(DREAM_BY_ID.get('rest-5'), state.time, state.rides);
-        if (branch.x >= frame.left - 600 && branch.x <= frame.left + width / frame.scale) drawDreamLaunchLeaf(ctx, this.images, branch, state.time);
+        if (branch.x >= frame.left - 600 && branch.x <= frame.left + width / frame.scale)
+          drawDreamLaunchLeaf(ctx, this.images, branch, state.time);
       }
       if (state.stage !== 'RESCUING') this.girl(ctx, state);
       ctx.restore();
       this.visibleObjects = count;
       // Brumas e vaga-lumes são limitados a poucas formas, sem sombras dinâmicas nem buffers por quadro.
       ctx.fillStyle = 'rgba(100,142,198,.08)';
-      ctx.fillRect(0, height * .68, width, height * .32);
+      ctx.fillRect(0, height * 0.68, width, height * 0.32);
       for (let i = 0; i < 14; i++) {
-        ctx.globalAlpha = .25 + .25 * Math.sin(state.time + i);
+        ctx.globalAlpha = 0.25 + 0.25 * Math.sin(state.time + i);
         ctx.fillStyle = '#b7d9d5';
         ctx.beginPath();
-        ctx.arc((i * 139 - state.player.x * .06 + Math.sin(state.time * .4 + i) * 15 + width * 10) % width, height * (.18 + (i % 6) * .12), 1.6, 0, Math.PI * 2);
+        ctx.arc(
+          (i * 139 - state.player.x * 0.06 + Math.sin(state.time * 0.4 + i) * 15 + width * 10) %
+            width,
+          height * (0.18 + (i % 6) * 0.12),
+          1.6,
+          0,
+          Math.PI * 2,
+        );
         ctx.fill();
       }
       ctx.globalAlpha = 1;
-      const section = [...DREAM_SECTIONS].reverse()
-        .find(d => state.player.x >= d.start) || DREAM_SECTIONS[0],
+      const section =
+          [...DREAM_SECTIONS].reverse().find((d) => state.player.x >= d.start) || DREAM_SECTIONS[0],
         font = Math.min(18, width / 30);
       ctx.font = `${font}px Georgia,serif`;
       ctx.textAlign = 'center';
       ctx.fillStyle = '#e1dfe8';
       const rect = canvas.getBoundingClientRect(),
-        bar = globalThis.document?.querySelector('.top-controls-bar')
-        ?.getBoundingClientRect(),
-        titleY = Math.max(safe.top + 22, bar ? (bar.bottom - rect.top) * height / rect.height + 22 : 0);
-      ctx.fillText(state.stage === 'GLIDE_LANDING' ? 'O planalto da floresta' : section.name, width / 2, titleY, width - 45);
+        bar = globalThis.document?.querySelector('.top-controls-bar')?.getBoundingClientRect(),
+        titleY = Math.max(
+          safe.top + 22,
+          bar ? ((bar.bottom - rect.top) * height) / rect.height + 22 : 0,
+        );
+      ctx.fillText(
+        state.stage === 'GLIDE_LANDING' ? 'O planalto da floresta' : section.name,
+        width / 2,
+        titleY,
+        width - 45,
+      );
       const riding = DREAM_BY_ID.get(state.player.support || state.player.climb?.id),
         rideFrame = riding?.flight ? dreamObjectFrame(riding, state.time, state.rides) : null;
       if (rideFrame && state.stage === 'RUNNING') {
-        ctx.font = `${Math.max(11,font*.8)}px sans-serif`;
-        ctx.fillText(rideFrame.flightPhase === 'ARRIVED' ? 'O próximo apoio está perto. Prepare o salto.' : 'Deixe o besouro levar você até o próximo apoio.', width / 2, titleY + 24, width - 40);
+        ctx.font = `${Math.max(11, font * 0.8)}px sans-serif`;
+        ctx.fillText(
+          rideFrame.flightPhase === 'ARRIVED'
+            ? 'O próximo apoio está perto. Prepare o salto.'
+            : 'Deixe o besouro levar você até o próximo apoio.',
+          width / 2,
+          titleY + 24,
+          width - 40,
+        );
       }
       if (section.kind === 'web' && state.stage === 'RUNNING') {
-        ctx.font = `${Math.max(11,font*.8)}px sans-serif`;
-        ctx.fillText('Escale as teias. Evite tocar nas aranhas.', width / 2, titleY + 24, width - 40);
+        ctx.font = `${Math.max(11, font * 0.8)}px sans-serif`;
+        ctx.fillText(
+          'Escale as teias. Evite tocar nas aranhas.',
+          width / 2,
+          titleY + 24,
+          width - 40,
+        );
       }
       const topInset = touch && width < height ? titleY - safe.top - 6 : 0;
-      if (state.stage === 'RUNNING' && state.story.tutorial) renderPoeticNarration(ctx, canvas, DREAM_INTRO[state.story.index], {
-        heading: 'CAMINHO DO SONHO',
-        advanceCanvas: canvas,
-        onAdvance,
-        topInset
-      });
-      else if (state.stage === 'INTRO') renderPoeticNarration(ctx, canvas, DREAM_INTRO[state.story.index], {
-        heading: 'JARDIM DOS SONHOS',
-        advanceCanvas: canvas,
-        onAdvance,
-        topInset
-      });
-      else if (state.stage === 'COMPLETE' && state.age < 7) renderPoeticNarration(ctx, canvas, 'Entre as folhas, o vento encontrou\num lugar para descansar.', {
-        heading: 'ENTRE OS GALHOS',
-        advanceCanvas: canvas,
-        onAdvance,
-        topInset
-      });
+      if (state.stage === 'RUNNING' && state.story.tutorial)
+        renderPoeticNarration(ctx, canvas, DREAM_INTRO[state.story.index], {
+          heading: 'CAMINHO DO SONHO',
+          advanceCanvas: canvas,
+          onAdvance,
+          topInset,
+        });
+      else if (state.stage === 'INTRO')
+        renderPoeticNarration(ctx, canvas, DREAM_INTRO[state.story.index], {
+          heading: 'JARDIM DOS SONHOS',
+          advanceCanvas: canvas,
+          onAdvance,
+          topInset,
+        });
+      else if (state.stage === 'COMPLETE' && state.age < 7)
+        renderPoeticNarration(
+          ctx,
+          canvas,
+          'Entre as folhas, o vento encontrou\num lugar para descansar.',
+          {
+            heading: 'ENTRE OS GALHOS',
+            advanceCanvas: canvas,
+            onAdvance,
+            topInset,
+          },
+        );
       else if (state.stage === 'FALLING') {
         ctx.fillStyle = '#e8d9ed';
-        ctx.fillText(state.fallCause === 'spider' ? 'A aranha alcançou Yuna!' : 'O sonho perdeu o chão…', width / 2, height * .45, width - 40);
+        ctx.fillText(
+          state.fallCause === 'spider' ? 'A aranha alcançou Yuna!' : 'O sonho perdeu o chão…',
+          width / 2,
+          height * 0.45,
+          width - 40,
+        );
       }
       if (state.stage === 'GLIDING') {
-        ctx.font = `${Math.max(11,font*.8)}px sans-serif`;
-        ctx.fillText('▲/▼ ou W/S: antecipe a curva. A folha demora a responder.', width / 2, titleY + 24, width - 40);
+        ctx.font = `${Math.max(11, font * 0.8)}px sans-serif`;
+        ctx.fillText(
+          '▲/▼ ou W/S: antecipe a curva. A folha demora a responder.',
+          width / 2,
+          titleY + 24,
+          width - 40,
+        );
       }
       if (state.stage === 'GLIDE_FALLING') {
-        ctx.fillText('Os espinhos rasgaram o vento… Vamos tentar de novo.', width / 2, height * .4, width - 40);
+        ctx.fillText(
+          'Os espinhos rasgaram o vento… Vamos tentar de novo.',
+          width / 2,
+          height * 0.4,
+          width - 40,
+        );
       }
-      if (touch && ['RUNNING', 'GLIDING'].includes(state.stage) && !drawMobileGameControls(ctx, canvas, dreamControls(canvas, {
-          stage: state.stage
-        }), {
-          dark: true
-        })) {
-        for (const [name, b] of Object.entries(dreamControls(canvas, {
-            stage: state.stage
-          }))) {
+      if (
+        touch &&
+        ['RUNNING', 'GLIDING'].includes(state.stage) &&
+        !drawMobileGameControls(
+          ctx,
+          canvas,
+          dreamControls(canvas, {
+            stage: state.stage,
+          }),
+          {
+            dark: true,
+          },
+        )
+      ) {
+        for (const [name, b] of Object.entries(
+          dreamControls(canvas, {
+            stage: state.stage,
+          }),
+        )) {
           if (state.stage === 'GLIDING' && !['up', 'down'].includes(name)) continue;
           ctx.fillStyle = 'rgba(9,22,45,.72)';
           ctx.beginPath();
@@ -353,18 +450,22 @@ export class DreamRenderer {
           ctx.strokeStyle = 'rgba(186,217,224,.55)';
           ctx.stroke();
           ctx.fillStyle = '#e0eded';
-          ctx.font = `${name==='jump'?12:22}px sans-serif`;
-          ctx.fillText({
-            left: '◀',
-            right: '▶',
-            up: '▲',
-            down: '▼',
-            jump: 'PULAR'
-          } [name], b.x, b.y + 6);
+          ctx.font = `${name === 'jump' ? 12 : 22}px sans-serif`;
+          ctx.fillText(
+            {
+              left: '◀',
+              right: '▶',
+              up: '▲',
+              down: '▼',
+              jump: 'PULAR',
+            }[name],
+            b.x,
+            b.y + 6,
+          );
         }
       }
       if (state.stage === 'RESCUING') {
-        ctx.fillStyle = `rgba(15,30,65,${Math.sin(Math.min(1,state.age/1.1)*Math.PI)*.9})`;
+        ctx.fillStyle = `rgba(15,30,65,${Math.sin(Math.min(1, state.age / 1.1) * Math.PI) * 0.9})`;
         ctx.fillRect(0, 0, width, height);
       }
       if (paused) {
@@ -394,7 +495,13 @@ export class DreamRenderer {
     }
     this.spiderParts = null;
     if (this.illustrations) {
-      for (const bitmap of [...this.illustrations.leaves.values(), ...this.illustrations.branches.values(), this.illustrations.grass, this.illustrations.stem]) bitmap.width = 0;
+      for (const bitmap of [
+        ...this.illustrations.leaves.values(),
+        ...this.illustrations.branches.values(),
+        this.illustrations.grass,
+        this.illustrations.stem,
+      ])
+        bitmap.width = 0;
     }
     this.illustrations = null;
     if (this.backdrop) this.backdrop.width = 0;

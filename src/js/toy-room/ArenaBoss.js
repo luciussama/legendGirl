@@ -22,7 +22,7 @@ export class ArenaBoss {
   snapshot() {
     return {
       introduced: this.introduced,
-      titleTime: this.titleTime
+      titleTime: this.titleTime,
     };
   }
   /** Reaplica o estado serializado, sem alterar a batalha quando não há save. */

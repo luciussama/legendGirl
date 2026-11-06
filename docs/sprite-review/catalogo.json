@@ -17,8 +17,8 @@
     {
       "id": "8eed9c7122a86a8739bf90e5",
       "kind": "file",
-      "path": "assets/art/dark-room/corrections/false_door.png",
-      "title": "false_door.png",
+      "path": "assets/art/dark-room/corrections/false-door.png",
+      "title": "false-door.png",
       "format": "png",
       "width": 1150,
       "height": 1368,
@@ -144,8 +144,8 @@
     {
       "id": "c01db0d72daa28bac05b3bbf",
       "kind": "file",
-      "path": "assets/art/dark-room/modern/block_castle.png",
-      "title": "block_castle.png",
+      "path": "assets/art/dark-room/modern/block-castle.png",
+      "title": "block-castle.png",
       "format": "png",
       "width": 1254,
       "height": 1254,
@@ -175,8 +175,8 @@
     {
       "id": "7387332fae28f5df3f425355",
       "kind": "file",
-      "path": "assets/art/dark-room/modern/globe_table.png",
-      "title": "globe_table.png",
+      "path": "assets/art/dark-room/modern/globe-table.png",
+      "title": "globe-table.png",
       "format": "png",
       "width": 1245,
       "height": 1263,
@@ -200,8 +200,8 @@
     {
       "id": "5c88e46a0f178665dd8c7478",
       "kind": "file",
-      "path": "assets/art/dark-room/modern/spinning_top.png",
-      "title": "spinning_top.png",
+      "path": "assets/art/dark-room/modern/spinning-top.png",
+      "title": "spinning-top.png",
       "format": "png",
       "width": 1254,
       "height": 1254,
@@ -303,8 +303,8 @@
     {
       "id": "920dec5dec13ca684f813d75",
       "kind": "file",
-      "path": "assets/art/dark-room/platforms/giant_bear.png",
-      "title": "giant_bear.png",
+      "path": "assets/art/dark-room/platforms/giant-bear.png",
+      "title": "giant-bear.png",
       "format": "png",
       "width": 1922,
       "height": 818,
@@ -316,7 +316,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 11,
           "type": "apoio",
           "alias": null
@@ -346,8 +346,8 @@
     {
       "id": "b231fec9cb57ca23541dd196",
       "kind": "file",
-      "path": "assets/art/dark-room/platforms/satin_cushion.png",
-      "title": "satin_cushion.png",
+      "path": "assets/art/dark-room/platforms/satin-cushion.png",
+      "title": "satin-cushion.png",
       "format": "png",
       "width": 1983,
       "height": 793,
@@ -359,7 +359,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 60,
           "type": "apoio",
           "alias": null
@@ -383,8 +383,8 @@
     {
       "id": "8fca82df742f84f3c86bd14b",
       "kind": "file",
-      "path": "assets/art/dark-room/platforms/stacked_books.png",
-      "title": "stacked_books.png",
+      "path": "assets/art/dark-room/platforms/stacked-books.png",
+      "title": "stacked-books.png",
       "format": "png",
       "width": 276,
       "height": 300,
@@ -396,7 +396,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 18,
           "type": "apoio",
           "alias": null
@@ -420,8 +420,8 @@
     {
       "id": "81199fa818f22c32de0017f9",
       "kind": "file",
-      "path": "assets/art/dark-room/platforms/stepped_dresser.png",
-      "title": "stepped_dresser.png",
+      "path": "assets/art/dark-room/platforms/stepped-dresser.png",
+      "title": "stepped-dresser.png",
       "format": "png",
       "width": 304,
       "height": 484,
@@ -433,7 +433,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 74,
           "type": "apoio",
           "alias": null
@@ -488,7 +488,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -572,8 +572,8 @@
     {
       "id": "069d395b2a5e7dd27d435314",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/block_castle.png",
-      "title": "block_castle.png",
+      "path": "assets/art/dark-room/sprites/block-castle.png",
+      "title": "block-castle.png",
       "format": "png",
       "width": 259,
       "height": 322,
@@ -585,7 +585,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 67,
           "type": "apoio",
           "alias": null
@@ -615,8 +615,8 @@
     {
       "id": "a4534fa5989ea67a4bf77a87",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/cardboard_box.png",
-      "title": "cardboard_box.png",
+      "path": "assets/art/dark-room/sprites/cardboard-box.png",
+      "title": "cardboard-box.png",
       "format": "png",
       "width": 418,
       "height": 411,
@@ -628,7 +628,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 32,
           "type": "apoio",
           "alias": null
@@ -652,8 +652,8 @@
     {
       "id": "97aa81089a1c8b89623f1e18",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/chandelier_crystals.png",
-      "title": "chandelier_crystals.png",
+      "path": "assets/art/dark-room/sprites/chandelier-crystals.png",
+      "title": "chandelier-crystals.png",
       "format": "png",
       "width": 292,
       "height": 335,
@@ -665,7 +665,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 137,
           "type": "apoio",
           "alias": null
@@ -768,8 +768,8 @@
     {
       "id": "6d17952651e0ecda9e2ea4f5",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/cuckoo_clock.png",
-      "title": "cuckoo_clock.png",
+      "path": "assets/art/dark-room/sprites/cuckoo-clock.png",
+      "title": "cuckoo-clock.png",
       "format": "png",
       "width": 196,
       "height": 334,
@@ -781,7 +781,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 151,
           "type": "apoio",
           "alias": null
@@ -805,8 +805,8 @@
     {
       "id": "82566c853ee8e564c01bf9dd",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/curtain_rod.png",
-      "title": "curtain_rod.png",
+      "path": "assets/art/dark-room/sprites/curtain-rod.png",
+      "title": "curtain-rod.png",
       "format": "png",
       "width": 491,
       "height": 351,
@@ -818,7 +818,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 144,
           "type": "apoio",
           "alias": null
@@ -842,8 +842,8 @@
     {
       "id": "d4a30c330d32a42e11639115",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/dollhouse_roof.png",
-      "title": "dollhouse_roof.png",
+      "path": "assets/art/dark-room/sprites/dollhouse-roof.png",
+      "title": "dollhouse-roof.png",
       "format": "png",
       "width": 582,
       "height": 337,
@@ -855,7 +855,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 102,
           "type": "apoio",
           "alias": null
@@ -1054,8 +1054,8 @@
     {
       "id": "89817ce34305413707a48580",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/false_door.png",
-      "title": "false_door.png",
+      "path": "assets/art/dark-room/sprites/false-door.png",
+      "title": "false-door.png",
       "format": "png",
       "width": 292,
       "height": 382,
@@ -1065,25 +1065,25 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 179,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 228,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 235,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 242,
           "type": "apoio",
           "alias": null
@@ -1119,8 +1119,8 @@
     {
       "id": "ab65ac6e8301433ed7469595",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/floating_books.png",
-      "title": "floating_books.png",
+      "path": "assets/art/dark-room/sprites/floating-books.png",
+      "title": "floating-books.png",
       "format": "png",
       "width": 490,
       "height": 322,
@@ -1132,7 +1132,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 130,
           "type": "apoio",
           "alias": null
@@ -1156,8 +1156,8 @@
     {
       "id": "cc004290397d034fc5978e78",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/floor_tiles.png",
-      "title": "floor_tiles.png",
+      "path": "assets/art/dark-room/sprites/floor-tiles.png",
+      "title": "floor-tiles.png",
       "format": "png",
       "width": 457,
       "height": 465,
@@ -1169,7 +1169,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 186,
           "type": "apoio",
           "alias": null
@@ -1193,8 +1193,8 @@
     {
       "id": "f719dcfaf8e79f4a34c426a8",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/giant_bear.png",
-      "title": "giant_bear.png",
+      "path": "assets/art/dark-room/sprites/giant-bear.png",
+      "title": "giant-bear.png",
       "format": "png",
       "width": 352,
       "height": 432,
@@ -1209,8 +1209,8 @@
     {
       "id": "09caf77b13f5010eed975bc9",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/grand_portal_pedestal.png",
-      "title": "grand_portal_pedestal.png",
+      "path": "assets/art/dark-room/sprites/grand-portal-pedestal.png",
+      "title": "grand-portal-pedestal.png",
       "format": "png",
       "width": 518,
       "height": 365,
@@ -1222,19 +1222,19 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 165,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 214,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 221,
           "type": "apoio",
           "alias": null
@@ -1270,8 +1270,8 @@
     {
       "id": "d5f87c9c251cde89773c71b1",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/kite_frame.png",
-      "title": "kite_frame.png",
+      "path": "assets/art/dark-room/sprites/kite-frame.png",
+      "title": "kite-frame.png",
       "format": "png",
       "width": 410,
       "height": 279,
@@ -1283,7 +1283,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 123,
           "type": "apoio",
           "alias": null
@@ -1307,8 +1307,8 @@
     {
       "id": "da54391c29217f5b9c548e0b",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/mandala_rug.png",
-      "title": "mandala_rug.png",
+      "path": "assets/art/dark-room/sprites/mandala-rug.png",
+      "title": "mandala-rug.png",
       "format": "png",
       "width": 469,
       "height": 470,
@@ -1320,25 +1320,25 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 172,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 249,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 256,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 263,
           "type": "apoio",
           "alias": null
@@ -1380,8 +1380,8 @@
     {
       "id": "9bc8e8a5afbcdff23398152b",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/messy_blocks.png",
-      "title": "messy_blocks.png",
+      "path": "assets/art/dark-room/sprites/messy-blocks.png",
+      "title": "messy-blocks.png",
       "format": "png",
       "width": 235,
       "height": 253,
@@ -1393,7 +1393,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 46,
           "type": "apoio",
           "alias": null
@@ -1417,8 +1417,8 @@
     {
       "id": "373dffdec198e3f886c85b52",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/mushroom_lamp.png",
-      "title": "mushroom_lamp.png",
+      "path": "assets/art/dark-room/sprites/mushroom-lamp.png",
+      "title": "mushroom-lamp.png",
       "format": "png",
       "width": 288,
       "height": 342,
@@ -1430,7 +1430,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 95,
           "type": "apoio",
           "alias": null
@@ -1454,8 +1454,8 @@
     {
       "id": "cfd3471dad554213c5852f40",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/music_box.png",
-      "title": "music_box.png",
+      "path": "assets/art/dark-room/sprites/music-box.png",
+      "title": "music-box.png",
       "format": "png",
       "width": 304,
       "height": 351,
@@ -1549,8 +1549,8 @@
     {
       "id": "822c1109da2fa621ac29709a",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/open_books.png",
-      "title": "open_books.png",
+      "path": "assets/art/dark-room/sprites/open-books.png",
+      "title": "open-books.png",
       "format": "png",
       "width": 276,
       "height": 300,
@@ -1565,8 +1565,8 @@
     {
       "id": "96f25e6b5e0b93f22f8c281f",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/plush_bunny.png",
-      "title": "plush_bunny.png",
+      "path": "assets/art/dark-room/sprites/plush-bunny.png",
+      "title": "plush-bunny.png",
       "format": "png",
       "width": 223,
       "height": 260,
@@ -1578,7 +1578,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 200,
           "type": "apoio",
           "alias": null
@@ -1602,8 +1602,8 @@
     {
       "id": "6ed6283e1527074c2aee80d8",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/retro_robot.png",
-      "title": "retro_robot.png",
+      "path": "assets/art/dark-room/sprites/retro-robot.png",
+      "title": "retro-robot.png",
       "format": "png",
       "width": 174,
       "height": 311,
@@ -1615,13 +1615,13 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 193,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 270,
           "type": "apoio",
           "alias": null
@@ -1651,8 +1651,8 @@
     {
       "id": "3b6e4984cc6ed9410d5c72c6",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/salto_final_sign.png",
-      "title": "salto_final_sign.png",
+      "path": "assets/art/dark-room/sprites/jump-final-sign.png",
+      "title": "jump-final-sign.png",
       "format": "png",
       "width": 327,
       "height": 304,
@@ -1664,7 +1664,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 158,
           "type": "apoio",
           "alias": null
@@ -1688,8 +1688,8 @@
     {
       "id": "8f7e3905019809ac6e8457bc",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/satin_cushion.png",
-      "title": "satin_cushion.png",
+      "path": "assets/art/dark-room/sprites/satin-cushion.png",
+      "title": "satin-cushion.png",
       "format": "png",
       "width": 408,
       "height": 298,
@@ -1704,8 +1704,8 @@
     {
       "id": "0df1698fb9b47ed221189fe4",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/small_dresser.png",
-      "title": "small_dresser.png",
+      "path": "assets/art/dark-room/sprites/small-dresser.png",
+      "title": "small-dresser.png",
       "format": "png",
       "width": 418,
       "height": 411,
@@ -1717,7 +1717,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 39,
           "type": "apoio",
           "alias": null
@@ -1741,8 +1741,8 @@
     {
       "id": "2a2f130a1e6323fd5ccd9257",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/spinning_globe.png",
-      "title": "spinning_globe.png",
+      "path": "assets/art/dark-room/sprites/spinning-globe.png",
+      "title": "spinning-globe.png",
       "format": "png",
       "width": 214,
       "height": 309,
@@ -1752,7 +1752,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 116,
           "type": "apoio",
           "alias": null
@@ -1770,8 +1770,8 @@
     {
       "id": "ada87b82366f55041c5ad5c9",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/stepped_dresser.png",
-      "title": "stepped_dresser.png",
+      "path": "assets/art/dark-room/sprites/stepped-dresser.png",
+      "title": "stepped-dresser.png",
       "format": "png",
       "width": 436,
       "height": 572,
@@ -1786,8 +1786,8 @@
     {
       "id": "bb9edf75037de5226a991291",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/toy_drum.png",
-      "title": "toy_drum.png",
+      "path": "assets/art/dark-room/sprites/toy-drum.png",
+      "title": "toy-drum.png",
       "format": "png",
       "width": 292,
       "height": 296,
@@ -1799,7 +1799,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 53,
           "type": "apoio",
           "alias": null
@@ -1823,8 +1823,8 @@
     {
       "id": "1b61e272a41794faf44362d8",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/train_trestle.png",
-      "title": "train_trestle.png",
+      "path": "assets/art/dark-room/sprites/train-trestle.png",
+      "title": "train-trestle.png",
       "format": "png",
       "width": 464,
       "height": 350,
@@ -1836,7 +1836,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 81,
           "type": "apoio",
           "alias": null
@@ -1866,8 +1866,8 @@
     {
       "id": "671a0454a5a141c3ae1963e8",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/vanity_table.png",
-      "title": "vanity_table.png",
+      "path": "assets/art/dark-room/sprites/vanity-table.png",
+      "title": "vanity-table.png",
       "format": "png",
       "width": 298,
       "height": 475,
@@ -1879,7 +1879,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 25,
           "type": "apoio",
           "alias": null
@@ -1903,8 +1903,8 @@
     {
       "id": "1bd1465b88252ea04ef13a76",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/wall_shelf.png",
-      "title": "wall_shelf.png",
+      "path": "assets/art/dark-room/sprites/wall-shelf.png",
+      "title": "wall-shelf.png",
       "format": "png",
       "width": 392,
       "height": 286,
@@ -1916,7 +1916,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 88,
           "type": "apoio",
           "alias": null
@@ -1940,8 +1940,8 @@
     {
       "id": "d1e0087b4907338d6cddf79a",
       "kind": "file",
-      "path": "assets/art/dark-room/sprites/wardrobe_portal.png",
-      "title": "wardrobe_portal.png",
+      "path": "assets/art/dark-room/sprites/wardrobe-portal.png",
+      "title": "wardrobe-portal.png",
       "format": "png",
       "width": 560,
       "height": 200,
@@ -1953,13 +1953,13 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 109,
           "type": "apoio",
           "alias": null
         },
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 207,
           "type": "apoio",
           "alias": null
@@ -7728,7 +7728,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 24,
           "type": "apoio",
           "alias": null
@@ -7757,7 +7757,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 23,
           "type": "apoio",
           "alias": null
@@ -7786,7 +7786,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 4,
           "type": "apoio",
           "alias": null
@@ -7821,7 +7821,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 5,
           "type": "apoio",
           "alias": null
@@ -7856,7 +7856,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 6,
           "type": "apoio",
           "alias": null
@@ -7891,7 +7891,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 7,
           "type": "apoio",
           "alias": null
@@ -7926,7 +7926,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 8,
           "type": "apoio",
           "alias": null
@@ -7961,7 +7961,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 9,
           "type": "apoio",
           "alias": null
@@ -7990,7 +7990,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 10,
           "type": "apoio",
           "alias": null
@@ -8025,7 +8025,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 11,
           "type": "apoio",
           "alias": null
@@ -8060,7 +8060,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 12,
           "type": "apoio",
           "alias": null
@@ -8095,7 +8095,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 13,
           "type": "apoio",
           "alias": null
@@ -8130,7 +8130,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 14,
           "type": "apoio",
           "alias": null
@@ -8165,7 +8165,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 15,
           "type": "apoio",
           "alias": null
@@ -8200,7 +8200,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 16,
           "type": "apoio",
           "alias": null
@@ -8235,7 +8235,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 17,
           "type": "apoio",
           "alias": null
@@ -8270,7 +8270,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 18,
           "type": "apoio",
           "alias": null
@@ -8305,7 +8305,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 19,
           "type": "apoio",
           "alias": null
@@ -8334,7 +8334,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 20,
           "type": "apoio",
           "alias": null
@@ -14320,15 +14320,15 @@
     {
       "id": "d37f1d60a2fdc2f17d02d147",
       "kind": "file",
-      "path": "assets/art/toy-room/chest-brinquedos-v1.png",
-      "title": "chest-brinquedos-v1.png",
+      "path": "assets/art/toy-room/chest-toys-v1.png",
+      "title": "chest-toys-v1.png",
       "format": "png",
       "width": 1302,
       "height": 1208,
       "bytes": 1789879,
       "sha256": "05abb55ab920a2821430f563a7969411c18dbb1b06b2453e7acfd31ac026b0d7",
       "aliases": [
-        "toy-room-chest-brinquedos-v1"
+        "toy-room-chest-toys-v1"
       ],
       "usage": "runtime",
       "references": [
@@ -14354,7 +14354,7 @@
           "file": "src/js/toy-room/ToyRoomPhase.js",
           "line": 44,
           "type": "runtime",
-          "alias": "toy-room-chest-brinquedos-v1"
+          "alias": "toy-room-chest-toys-v1"
         }
       ],
       "hints": [],
@@ -16002,7 +16002,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16108,7 +16108,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16214,7 +16214,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16320,7 +16320,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16426,7 +16426,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16532,7 +16532,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16638,7 +16638,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16744,7 +16744,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16850,7 +16850,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -16956,7 +16956,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17062,7 +17062,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17168,7 +17168,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17274,7 +17274,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17380,7 +17380,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17486,7 +17486,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17592,7 +17592,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17698,7 +17698,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17804,7 +17804,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -17910,7 +17910,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18016,7 +18016,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18122,7 +18122,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18228,7 +18228,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18334,7 +18334,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18440,7 +18440,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18546,7 +18546,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18652,7 +18652,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18758,7 +18758,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -18864,7 +18864,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/dark-room/darkRoomAtlas.json",
+          "file": "assets/art/dark-room/dark-room-atlas.json",
           "line": 2,
           "type": "apoio",
           "alias": null
@@ -24068,7 +24068,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 24,
           "type": "apoio",
           "alias": null
@@ -24106,7 +24106,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 24,
           "type": "apoio",
           "alias": null
@@ -24144,7 +24144,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 24,
           "type": "apoio",
           "alias": null
@@ -24182,7 +24182,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 24,
           "type": "apoio",
           "alias": null
@@ -24220,7 +24220,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 23,
           "type": "apoio",
           "alias": null
@@ -24258,7 +24258,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 23,
           "type": "apoio",
           "alias": null
@@ -24296,7 +24296,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 23,
           "type": "apoio",
           "alias": null
@@ -24334,7 +24334,7 @@
       "usage": "runtime",
       "references": [
         {
-          "file": "assets/art/toy-room/battle/girl/animation-v2/proveniencia.json",
+          "file": "assets/art/toy-room/battle/girl/animation-v2/provenance.json",
           "line": 23,
           "type": "apoio",
           "alias": null

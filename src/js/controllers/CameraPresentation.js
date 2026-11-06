@@ -1,19 +1,14 @@
-import {
-  FLOOR_Y
-} from '../config.js';
+import { FLOOR_Y } from '../config.js';
 
 /** Enquadramento de gameplay por viewport: só a coordenada horizontal pode rolar. */
-export function getDarkRoomScrollFrame({
-  x,
-  width,
-  height
-}) {
-  const y = width <= 600 && height > FLOOR_Y + 90 ?
-    FLOOR_Y - (height - 110) :
-    Math.min(0, FLOOR_Y - height + 16);
+export function getDarkRoomScrollFrame({ x, width, height }) {
+  const y =
+    width <= 600 && height > FLOOR_Y + 90
+      ? FLOOR_Y - (height - 110)
+      : Math.min(0, FLOOR_Y - height + 16);
   return {
     x,
-    y
+    y,
   };
 }
 
@@ -44,45 +39,44 @@ export class CameraPresentation {
    */
   snapshot() {
     return {
-      pose: this.pose ? {
-        ...this.pose
-      } : null,
-      layout: this.layout ? {
-        ...this.layout
-      } : null
+      pose: this.pose
+        ? {
+            ...this.pose,
+          }
+        : null,
+      layout: this.layout
+        ? {
+            ...this.layout,
+          }
+        : null,
     };
   }
   /**
    * Reaplica a captura específica; confira referências e dados transitórios.
    */
   restore(saved) {
-    this.pose = saved?.pose ? {
-      ...saved.pose
-    } : null;
-    this.layout = saved?.layout ? {
-      ...saved.layout
-    } : null;
+    this.pose = saved?.pose
+      ? {
+          ...saved.pose,
+        }
+      : null;
+    this.layout = saved?.layout
+      ? {
+          ...saved.layout,
+        }
+      : null;
   }
 
   /**
    * Interpola entrada do enquadramento móvel.
    */
-  mobileFrame({
-    target,
-    enabled,
-    stable,
-    anticipate,
-    tick,
-    width,
-    height,
-    fixed = false
-  }) {
+  mobileFrame({ target, enabled, stable, anticipate, tick, width, height, fixed = false }) {
     if (fixed || !enabled || !stable) {
       this.layout = {
         ...target,
         tick,
         key: null,
-        untilTick: tick
+        untilTick: tick,
       };
       return target;
     }
@@ -92,7 +86,7 @@ export class CameraPresentation {
         ...target,
         key,
         tick,
-        untilTick: tick
+        untilTick: tick,
       };
       return target;
     }
@@ -103,7 +97,7 @@ export class CameraPresentation {
         ...target,
         key,
         tick,
-        untilTick
+        untilTick,
       };
       return target;
     }
@@ -123,51 +117,41 @@ export class CameraPresentation {
       y: step(previous.y, target.y, height),
       key,
       tick,
-      untilTick
+      untilTick,
     };
     return {
       zoom: this.layout.zoom,
       x: this.layout.x,
-      y: this.layout.y
+      y: this.layout.y,
     };
   }
 
   /** Só interpola cortes narrativos; gameplay devolve a pose fixa recebida. */
-  frame({
-    x,
-    y,
-    active,
-    narrative,
-    tick,
-    width,
-    height,
-    cssWidth,
-    cssHeight,
-    zoom
-  }) {
+  frame({ x, y, active, narrative, tick, width, height, cssWidth, cssHeight, zoom }) {
     if (!this.pose || !active || !narrative) {
       this.pose = {
         x,
         y,
         lead: 0,
-        tick
+        tick,
       };
       return {
         x,
-        y
+        y,
       };
     }
     const dt = Math.max(0, Math.min(1.2, tick - this.pose.tick));
-    if (!dt) return {
-      x: this.pose.x,
-      y: this.pose.y
-    };
+    if (!dt)
+      return {
+        x: this.pose.x,
+        y: this.pose.y,
+      };
     const blend = 1 - Math.pow(0.65, dt);
     const move = (from, to, dimension, cssDimension) => {
-      const tolerance = 0.5 * dimension / Math.max(1, cssDimension) / zoom;
+      const tolerance = (0.5 * dimension) / Math.max(1, cssDimension) / zoom;
       const error = to - from;
       const delta = Math.abs(error) <= tolerance ? error : error * blend;
-      const limit = dimension / zoom * 0.03 * dt;
+      const limit = (dimension / zoom) * 0.03 * dt;
       return from + Math.max(-limit, Math.min(limit, delta));
     };
     const nextX = move(this.pose.x, x, width, cssWidth);
@@ -176,11 +160,11 @@ export class CameraPresentation {
       x: nextX,
       y: nextY,
       lead: 0,
-      tick
+      tick,
     };
     return {
       x: nextX,
-      y: nextY
+      y: nextY,
     };
   }
 }

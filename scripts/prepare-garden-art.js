@@ -1,8 +1,6 @@
 // Prepara recortes com alfa a partir das pranchas de produção, sem alterar as fontes.
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 const root = 'assets/art/garden';
 
 function connectedCrops(props, count, rows) {
@@ -29,7 +27,12 @@ function connectedCrops(props, count, rows) {
       y0 = Math.min(y0, y);
       x1 = Math.max(x1, x + 1);
       y1 = Math.max(y1, y + 1);
-      for (const next of [x ? n - 1 : -1, x + 1 < props.width ? n + 1 : -1, y ? n - props.width : -1, y + 1 < props.height ? n + props.width : -1])
+      for (const next of [
+        x ? n - 1 : -1,
+        x + 1 < props.width ? n + 1 : -1,
+        y ? n - props.width : -1,
+        y + 1 < props.height ? n + props.width : -1,
+      ])
         if (next >= 0 && !seen[next] && props.data[next * 4 + 3] >= 24) {
           seen[next] = 1;
           queue[tail++] = next;
@@ -40,46 +43,48 @@ function connectedCrops(props, count, rows) {
       y: Math.max(0, y0 - 2),
       w: Math.min(props.width, x1 + 2) - Math.max(0, x0 - 2),
       h: Math.min(props.height, y1 + 2) - Math.max(0, y0 - 2),
-      area
+      area,
     });
   }
   components.sort((a, b) => b.area - a.area);
   const objects = components.slice(0, count);
-  if (objects.length !== count || objects.some(p => p.area < 1000)) throw Error('Objetos do jardim desconectados ou ausentes.');
-  objects.sort((a, b) => Math.floor((a.y + a.h / 2) / (props.height / rows)) - Math.floor((b.y + b.h / 2) / (props.height / rows)) || a.x - b.x);
-  return objects.map(({
-    area,
-    ...frame
-  }) => frame);
+  if (objects.length !== count || objects.some((p) => p.area < 1000))
+    throw Error('Objetos do jardim desconectados ou ausentes.');
+  objects.sort(
+    (a, b) =>
+      Math.floor((a.y + a.h / 2) / (props.height / rows)) -
+        Math.floor((b.y + b.h / 2) / (props.height / rows)) || a.x - b.x,
+  );
+  return objects.map(({ area, ...frame }) => frame);
 }
 const sets = {};
 fs.mkdirSync(root + '/runtime', {
-  recursive: true
+  recursive: true,
 });
 for (const [name, reference, count = 8, columns = 4] of [
-    ['menina-corrida-v1', 0],
-    ['menina-acoes-v1', 7],
-    ['menina-desconforto-v1', 7],
-    ['menina-pedrinhas-v2', 1, 4, 2]
-  ]) {
+  ['girl-running-v1', 0],
+  ['girl-actions-v1', 7],
+  ['girl-discomfort-v1', 7],
+  ['girl-pebbles-v2', 1, 4, 2],
+]) {
   const source = PNG.sync.read(fs.readFileSync(root + '/source/' + name + '.png')),
     regions = connectedCrops(source, count, count / columns),
     ratio = 256 / regions[reference].h;
   const cell = 384,
     out = new PNG({
       width: cell * columns,
-      height: cell * count / columns
+      height: (cell * count) / columns,
     });
   const frames = regions.map((f, index) => {
     const w = Math.round(f.w * ratio),
       h = Math.round(f.h * ratio);
     if (w > cell - 20 || h > cell - 20) throw Error('Pose do jardim excedeu a célula.');
-    const x = index % columns * cell + 10,
+    const x = (index % columns) * cell + 10,
       y = Math.floor(index / columns) * cell + 10;
     for (let yy = 0; yy < h; yy++)
       for (let xx = 0; xx < w; xx++) {
-        const sx = f.x + (xx + .5) / ratio - .5,
-          sy = f.y + (yy + .5) / ratio - .5,
+        const sx = f.x + (xx + 0.5) / ratio - 0.5,
+          sy = f.y + (yy + 0.5) / ratio - 0.5,
           ix = Math.floor(sx),
           iy = Math.floor(sy),
           fx = sx - ix,
@@ -110,47 +115,74 @@ for (const [name, reference, count = 8, columns = 4] of [
       w,
       h,
       anchorX: w / 2,
-      anchorY: bottom
+      anchorY: bottom,
     };
   });
   fs.writeFileSync(root + '/runtime/' + name + '.png', PNG.sync.write(out));
   sets[name] = {
     file: 'runtime/' + name + '.png',
-    frames
+    frames,
   };
 }
 // A copa da árvore pode ultrapassar a grade nominal: o alfa conectado conserva a silhueta inteira.
-const props = PNG.sync.read(fs.readFileSync(root + '/source/objetos-v1.png'));
+const props = PNG.sync.read(fs.readFileSync(root + '/source/objects-v1.png'));
 sets.objetos = {
-  file: 'source/objetos-v1.png',
-  frames: connectedCrops(props, 9, 3)
+  file: 'source/objects-v1.png',
+  frames: connectedCrops(props, 9, 3),
 };
 // Componentes conectados preservam a casa/grama que ultrapassam a divisão nominal da prancha.
-const scenery = PNG.sync.read(fs.readFileSync(root + '/source/ambiente-v2.png'));
+const scenery = PNG.sync.read(fs.readFileSync(root + '/source/ambient-v2.png'));
 sets.ambiente = {
-  file: 'source/ambiente-v2.png',
-  frames: connectedCrops(scenery, 4, 2)
+  file: 'source/ambient-v2.png',
+  frames: connectedCrops(scenery, 4, 2),
 };
-const red = PNG.sync.read(fs.readFileSync(root + '/source/lagarta-vermelha-v1.png'));
+const red = PNG.sync.read(fs.readFileSync(root + '/source/caterpillar-red-v1.png'));
 sets.lagartaVermelha = {
-  file: 'source/lagarta-vermelha-v1.png',
-  frames: connectedCrops(red, 2, 1)
+  file: 'source/caterpillar-red-v1.png',
+  frames: connectedCrops(red, 2, 1),
 };
-fs.writeFileSync(root + '/manifest.json', JSON.stringify({
-  version: 1,
-  images: ['cenario-v1.png', ...Object.values(sets)
-    .map(s => s.file), 'source/terra-continua-v1.png', 'source/parede-vegetal-v1.png', 'runtime/vida-aquatica-v1.png', '../toy-room/stage3/illustrated-fairy-v1.png', 'runtime/insetos-v1.png', 'cinematic/casa-sem-atores-v1.png', 'cinematic/piquenique-sem-yuna-v1.png', 'runtime/cinematic-atuacao-v1.png', 'source/abelha-camadas-v2.png', 'source/besouro-camadas-v2.png', 'runtime/piquenique-lateral-v3.png', ...Object.keys(sets)
-    .filter(name => name.startsWith('menina-'))
-    .map(name => 'runtime/medo-v2-' + name + '.png')
-  ]
-}, null, 2) + '\n');
+fs.writeFileSync(
+  root + '/manifest.json',
+  JSON.stringify(
+    {
+      version: 1,
+      images: [
+        'scenery-v1.png',
+        ...Object.values(sets).map((s) => s.file),
+        'source/soil-continuous-v1.png',
+        'source/wall-plant-v1.png',
+        'runtime/life-aquatic-v1.png',
+        '../toy-room/stage3/illustrated-fairy-v1.png',
+        'runtime/insects-v1.png',
+        'cinematic/house-without-actors-v1.png',
+        'cinematic/picnic-without-yuna-v1.png',
+        'runtime/cinematic-acting-v1.png',
+        'source/bee-layers-v2.png',
+        'source/beetle-layers-v2.png',
+        'runtime/picnic-lateral-v3.png',
+        ...Object.keys(sets)
+          .filter((name) => name.startsWith('girl-'))
+          .map((name) => 'runtime/medo-v2-' + name + '.png'),
+      ],
+    },
+    null,
+    2,
+  ) + '\n',
+);
 const metadata = {
   referenceHeight: 256,
-  sets
+  sets,
 };
 fs.writeFileSync(root + '/frames.json', JSON.stringify(metadata, null, 2) + '\n');
-fs.writeFileSync('src/js/garden/GardenArt.js', '// Gerado por scripts/prepare-garden-art.js; fontes e prompts preservados.\nexport const GARDEN_ART = ' + JSON.stringify(metadata) + ';\n');
-console.log('Jardim: 28 poses, nove objetos, quatro elementos de ambiente, duas poses de lagarta vermelha e metadados preparados.');
+fs.writeFileSync(
+  'src/js/garden/gardenArt.js',
+  '// Gerado por scripts/prepare-garden-art.js; fontes e prompts preservados.\nexport const GARDEN_ART = ' +
+    JSON.stringify(metadata) +
+    ';\n',
+);
+console.log(
+  'Jardim: 28 poses, nove objetos, quatro elementos de ambiente, duas poses de lagarta vermelha e metadados preparados.',
+);
 
 // Atualiza o contrato físico a partir das mesmas pinturas recém-preparadas.
 await import('./prepare-garden-contact.js');

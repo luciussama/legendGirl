@@ -1,16 +1,14 @@
 // Extrai a prancha gerada e remove somente o fundo técnico magenta.
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 const root = 'assets/art/garden',
-  source = PNG.sync.read(fs.readFileSync(root + '/source/vida-aquatica-v1.png'));
+  source = PNG.sync.read(fs.readFileSync(root + '/source/life-aquatic-v1.png'));
 const sprites = [];
 for (let cell = 0; cell < 6; cell++) {
-  const x0 = Math.floor(cell % 3 * source.width / 3),
-    x1 = Math.floor((cell % 3 + 1) * source.width / 3),
-    y0 = Math.floor(Math.floor(cell / 3) * source.height / 2),
-    y1 = Math.floor((Math.floor(cell / 3) + 1) * source.height / 2);
+  const x0 = Math.floor(((cell % 3) * source.width) / 3),
+    x1 = Math.floor((((cell % 3) + 1) * source.width) / 3),
+    y0 = Math.floor((Math.floor(cell / 3) * source.height) / 2),
+    y1 = Math.floor(((Math.floor(cell / 3) + 1) * source.height) / 2);
   let left = x1,
     top = y1,
     right = x0,
@@ -37,18 +35,18 @@ for (let cell = 0; cell < 6; cell++) {
     left,
     top,
     w,
-    h
+    h,
   });
 }
 // Preserva resolução da pintura e margem transparente de dois pixels por recorte.
 const out = new PNG({
     width: 1536,
-    height: 1024
+    height: 1024,
   }),
   frames = [];
 for (let i = 0; i < sprites.length; i++) {
   const f = sprites[i],
-    x = i % 3 * 512 + 4,
+    x = (i % 3) * 512 + 4,
     y = Math.floor(i / 3) * 512 + 4;
   if (f.w > 504 || f.h > 504) throw Error('Recorte aquático excede célula.');
   PNG.bitblt(source, out, f.left, f.top, f.w, f.h, x, y);
@@ -56,9 +54,14 @@ for (let i = 0; i < sprites.length; i++) {
     x,
     y,
     w: f.w,
-    h: f.h
+    h: f.h,
   });
 }
-fs.writeFileSync(root + '/runtime/vida-aquatica-v1.png', PNG.sync.write(out));
-fs.writeFileSync('src/js/garden/GardenVisualArt.js', '// Gerado por prepare-garden-visuals.js; recortes apenas decorativos.\nexport const AQUATIC_FRAMES = ' + JSON.stringify(frames) + ';\n');
+fs.writeFileSync(root + '/runtime/life-aquatic-v1.png', PNG.sync.write(out));
+fs.writeFileSync(
+  'src/js/garden/gardenVisualArt.js',
+  '// Gerado por prepare-garden-visuals.js; recortes apenas decorativos.\nexport const AQUATIC_FRAMES = ' +
+    JSON.stringify(frames) +
+    ';\n',
+);
 console.log('Seis recortes aquáticos preparados; nenhuma geometria física alterada.');

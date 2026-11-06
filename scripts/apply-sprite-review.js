@@ -1,20 +1,24 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {
-  fileURLToPath
-} from 'node:url';
-import {
-  applySelections
-} from '../tools/sprite-review/apply.js';
+import { fileURLToPath } from 'node:url';
+import { applySelections } from '../tools/sprite-review/apply.js';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const catalog = JSON.parse(await fs.readFile(path.join(root, 'docs/sprite-review/catalogo.json'), 'utf8'));
-const selection = JSON.parse(await fs.readFile(path.join(root, 'docs/sprite-review/selecoes-exclusao.json'), 'utf8'));
+const catalog = JSON.parse(
+  await fs.readFile(path.join(root, 'docs/sprite-review/catalogo.json'), 'utf8'),
+);
+const selection = JSON.parse(
+  await fs.readFile(path.join(root, 'docs/sprite-review/selecoes-exclusao.json'), 'utf8'),
+);
 const result = await applySelections({
   root,
   catalog,
   selection,
   apply: process.argv.includes('--apply'),
-  includeReferenced: process.argv.includes('--include-referenced')
+  includeReferenced: process.argv.includes('--include-referenced'),
 });
 console.log(JSON.stringify(result, null, 2));
-console.log(result.applied ? 'Exclusões aplicadas com cópia recuperável na quarentena.' : 'Simulação: nenhum arquivo foi excluído. Use --apply para aplicar o plano revisado.');
+console.log(
+  result.applied
+    ? 'Exclusões aplicadas com cópia recuperável na quarentena.'
+    : 'Simulação: nenhum arquivo foi excluído. Use --apply para aplicar o plano revisado.',
+);

@@ -4,9 +4,7 @@
  * auréola pulsante, rastro de poeira estelar e feixe guia da cinemática.
  */
 
-import {
-  platforms as defaultPlatforms
-} from '../config.js';
+import { platforms as defaultPlatforms } from '../config.js';
 
 export class FairyRenderer {
   /**
@@ -22,9 +20,9 @@ export class FairyRenderer {
 
     const canvasWidth = options.canvasWidth || options.canvas?.width || 960;
     const canvas = options.canvas || {
-      width: canvasWidth
+      width: canvasWidth,
     };
-    const baby = options.baby || state.baby || {};
+    const player = options.player || state.player || {};
     const platforms = options.platforms || defaultPlatforms;
     const tick = state.tick || 0;
     const cutsceneActive = Boolean(state.cutsceneActive);
@@ -82,16 +80,18 @@ export class FairyRenderer {
 
     // Faíscas guias sutis apontando para a próxima plataforma
     if (tick % 4 === 0) {
-      const nextP = platforms[baby.currentPlatformIndex + 1];
+      const nextP = platforms[player.currentPlatformIndex + 1];
       if (nextP) {
-        const guideAngle = Math.atan2((nextP.y - 20) - fairy.y, (nextP.x + 30) - fairy.x);
+        const guideAngle = Math.atan2(nextP.y - 20 - fairy.y, nextP.x + 30 - fairy.x);
         const gDist = 12 + Math.random() * 18;
         ctx.fillStyle = 'rgba(250, 204, 21, 0.8)';
         ctx.beginPath();
         ctx.arc(
           fx + Math.cos(guideAngle) * gDist + (Math.random() - 0.5) * 6,
           fy + Math.sin(guideAngle) * gDist + (Math.random() - 0.5) * 6,
-          1.6, 0, Math.PI * 2
+          1.6,
+          0,
+          Math.PI * 2,
         );
         ctx.fill();
       }

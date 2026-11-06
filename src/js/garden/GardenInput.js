@@ -1,18 +1,16 @@
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
-import {
-  mobileGameControls
-} from '../ui/TouchGameControls.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
+import { mobileGameControls } from '../ui/touchGameControls.js';
 /** Controles no sistema do canvas: D-pad e pulo amplos em mobile, círculos no desktop. */
-export function gardenControls(canvas, safe = {
-  left: 0,
-  right: canvas.width,
-  top: 0,
-  bottom: canvas.height
-}, {
-  mobile = isMobileDevice()
-} = {}) {
+export function gardenControls(
+  canvas,
+  safe = {
+    left: 0,
+    right: canvas.width,
+    top: 0,
+    bottom: canvas.height,
+  },
+  { mobile = isMobileDevice() } = {},
+) {
   if (mobile) return mobileGameControls(canvas, safe);
   const unit = Math.min((safe.right - safe.left) / 680, canvas.height / 520),
     radius = 44 * unit,
@@ -21,18 +19,18 @@ export function gardenControls(canvas, safe = {
     left: {
       x: safe.left + 62 * unit,
       y,
-      r: radius
+      r: radius,
     },
     right: {
       x: safe.left + 162 * unit,
       y,
-      r: radius
+      r: radius,
     },
     jump: {
       x: safe.right - 72 * unit,
       y,
-      r: radius * 1.16
-    }
+      r: radius * 1.16,
+    },
   };
 }
 /** Entrada simultânea com alvos circulares ou hitBox explícita; pausa/cancelamento liberam tudo. */
@@ -53,7 +51,7 @@ export class GardenInput {
     this.boxPointers = new Set();
     this.touch = false;
     this.installed = false;
-    this.down = e => {
+    this.down = (e) => {
       if (this.enabled() && this.scene() && ['Enter', 'Space', 'KeyS'].includes(e.code)) {
         e.preventDefault();
         if (!e.repeat) {
@@ -64,35 +62,41 @@ export class GardenInput {
         this.unlock();
         return;
       }
-      if (!this.enabled() || !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'KeyA', 'KeyD', 'KeyW', 'Space'].includes(e.code)) return;
+      if (
+        !this.enabled() ||
+        !['ArrowLeft', 'ArrowRight', 'ArrowUp', 'KeyA', 'KeyD', 'KeyW', 'Space'].includes(e.code)
+      )
+        return;
       e.preventDefault();
       this.keys.add(e.code);
       this.unlock();
     };
-    this.up = e => this.keys.delete(e.code);
+    this.up = (e) => this.keys.delete(e.code);
     this.blur = () => this.clear();
     this.visibility = () => {
       if (document.hidden) this.clear();
     };
-    this.pointer = e => {
+    this.pointer = (e) => {
       if (!this.enabled() || e.button > 0) return;
       const rect = canvas.getBoundingClientRect(),
-        x = (e.clientX - rect.left) * canvas.width / rect.width,
-        y = (e.clientY - rect.top) * canvas.height / rect.height;
+        x = ((e.clientX - rect.left) * canvas.width) / rect.width,
+        y = ((e.clientY - rect.top) * canvas.height) / rect.height;
       if (this.scene()) {
         e.preventDefault();
         this.touch = true;
-        const b = this.scene()
-          .skipBox;
-        if (this.scene()
-          .seen && b && x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h) this.skipQueued = true;
+        const b = this.scene().skipBox;
+        if (this.scene().seen && b && x >= b.x && x <= b.x + b.w && y >= b.y && y <= b.y + b.h)
+          this.skipQueued = true;
         else this.advanceQueued = true;
         this.blockJumpUntilRelease = true;
         this.unlock();
         return;
       }
-      const hit = Object.entries(this.controls())
-        .find(([, b]) => b.hitBox ? x >= b.hitBox.left && x <= b.hitBox.right && y >= b.hitBox.top && y <= b.hitBox.bottom : Math.hypot(x - b.x, y - b.y) < b.r * 1.25);
+      const hit = Object.entries(this.controls()).find(([, b]) =>
+        b.hitBox
+          ? x >= b.hitBox.left && x <= b.hitBox.right && y >= b.hitBox.top && y <= b.hitBox.bottom
+          : Math.hypot(x - b.x, y - b.y) < b.r * 1.25,
+      );
       if (!hit) return;
       const [button, bounds] = hit;
       e.preventDefault();
@@ -102,12 +106,12 @@ export class GardenInput {
       canvas.setPointerCapture?.(e.pointerId);
       this.unlock();
     };
-    this.release = e => {
+    this.release = (e) => {
       this.boxPointers.delete(e.pointerId);
       this.pointers.delete(e.pointerId);
       if (canvas.hasPointerCapture?.(e.pointerId)) canvas.releasePointerCapture(e.pointerId);
     };
-    this.move = e => {
+    this.move = (e) => {
       if (this.pointers.has(e.pointerId) || this.boxPointers.has(e.pointerId)) {
         this.pointers.delete(e.pointerId);
         this.pointer(e);
@@ -123,12 +127,13 @@ export class GardenInput {
     window.addEventListener('blur', this.blur);
     document.addEventListener('visibilitychange', this.visibility);
     this.canvas.addEventListener('pointerdown', this.pointer, {
-      passive: false
+      passive: false,
     });
     this.canvas.addEventListener('pointermove', this.move, {
-      passive: false
+      passive: false,
     });
-    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) this.canvas.addEventListener(name, this.release);
+    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture'])
+      this.canvas.addEventListener(name, this.release);
   }
   /** Amostra teclado, toque, gamepad e cena; consome gestos narrativos sem virar pulo. */
   sample() {
@@ -136,26 +141,35 @@ export class GardenInput {
       this.clear();
       return {
         x: 0,
-        jump: false
+        jump: false,
       };
     }
-    const has = name => [...this.pointers.values()].some(value => value.split('-')
-      .includes(name));
-    let x = Number(this.keys.has('ArrowRight') || this.keys.has('KeyD') || has('right')) - Number(this.keys.has('ArrowLeft') || this.keys.has('KeyA') || has('left'));
-    let jump = this.keys.has('Space') || this.keys.has('ArrowUp') || this.keys.has('KeyW') || has('jump') || has('up');
+    const has = (name) =>
+      [...this.pointers.values()].some((value) => value.split('-').includes(name));
+    let x =
+      Number(this.keys.has('ArrowRight') || this.keys.has('KeyD') || has('right')) -
+      Number(this.keys.has('ArrowLeft') || this.keys.has('KeyA') || has('left'));
+    let jump =
+      this.keys.has('Space') ||
+      this.keys.has('ArrowUp') ||
+      this.keys.has('KeyW') ||
+      has('jump') ||
+      has('up');
     let pads = [];
     try {
       pads = globalThis.navigator?.getGamepads?.() ?? [];
     } catch {
-      /* Teclado/toque continuam disponíveis quando o navegador bloqueia gamepads. */ }
+      /* Teclado/toque continuam disponíveis quando o navegador bloqueia gamepads. */
+    }
     for (const p of pads)
       if (p?.connected) {
         const axis = p.axes[0] ?? 0;
-        if (Math.abs(axis) > .2) x = axis;
+        if (Math.abs(axis) > 0.2) x = axis;
         if (p.buttons[14]?.pressed) x = -1;
         if (p.buttons[15]?.pressed) x = 1;
         jump ||= Boolean(p.buttons[0]?.pressed || p.buttons[2]?.pressed);
-      } const narrative = this.scene(),
+      }
+    const narrative = this.scene(),
       pressed = jump;
     let advance = this.advanceQueued,
       skip = this.skipQueued;
@@ -169,7 +183,7 @@ export class GardenInput {
         x: 0,
         jump: false,
         advance,
-        skip
+        skip,
       };
     }
     this.padHeld = pressed;
@@ -179,7 +193,7 @@ export class GardenInput {
     }
     return {
       x,
-      jump
+      jump,
     };
   }
   /** Zera entradas/fila e libera qualquer captura de ponteiro que ainda esteja ativa. */
@@ -203,6 +217,7 @@ export class GardenInput {
     document.removeEventListener('visibilitychange', this.visibility);
     this.canvas.removeEventListener('pointerdown', this.pointer);
     this.canvas.removeEventListener('pointermove', this.move);
-    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture']) this.canvas.removeEventListener(name, this.release);
+    for (const name of ['pointerup', 'pointercancel', 'lostpointercapture'])
+      this.canvas.removeEventListener(name, this.release);
   }
 }

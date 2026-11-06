@@ -1,6 +1,4 @@
-import {
-  clamp
-} from './ChaseConfig.js';
+import { clamp } from './chaseConfig.js';
 
 /** Entrada exclusiva da perseguição; o host desliga os listeners antigos antes de instalar. */
 export class ChaseInput {
@@ -21,7 +19,8 @@ export class ChaseInput {
   /** Instala apenas uma vez os eventos que pertencem a esta fase. */
   install() {
     if (this.installed) return;
-    if (typeof window === 'undefined') throw new Error('A entrada da perseguição exige uma janela de navegador.');
+    if (typeof window === 'undefined')
+      throw new Error('A entrada da perseguição exige uma janela de navegador.');
     this.installed = true;
     window.addEventListener('keydown', this.keyDown);
     window.addEventListener('keyup', this.keyUp);
@@ -48,7 +47,8 @@ export class ChaseInput {
   }
   /** Mantém esquerda/direita com um dedo, permitindo arrastar para mudar de direção. */
   onPointer(event) {
-    if (!this.enabled() || (event.type !== 'pointerdown' && !this.pointers.has(event.pointerId))) return;
+    if (!this.enabled() || (event.type !== 'pointerdown' && !this.pointers.has(event.pointerId)))
+      return;
     if (event.type === 'pointerdown' && event.target !== this.canvas) return;
     const rect = this.canvas.getBoundingClientRect();
     this.touch = true;
@@ -64,11 +64,12 @@ export class ChaseInput {
   /** Produz intenção lateral comum a teclado, toque e gamepad padrão. */
   sample() {
     if (!this.enabled()) return 0;
-    const key = Number(this.keys.has('KeyD') || this.keys.has('ArrowRight')) -
+    const key =
+      Number(this.keys.has('KeyD') || this.keys.has('ArrowRight')) -
       Number(this.keys.has('KeyA') || this.keys.has('ArrowLeft'));
     if (key) return key;
     if (this.pointers.size) return [...this.pointers.values()].at(-1);
-    let pads = [];
+    let pads;
     try {
       pads = navigator.getGamepads?.() || [];
     } catch (_) {
@@ -76,8 +77,11 @@ export class ChaseInput {
     }
     for (const pad of pads) {
       if (!pad?.connected || (pad.mapping && pad.mapping !== 'standard')) continue;
-      const x = Number(Boolean(pad.buttons[15]?.pressed)) - Number(Boolean(pad.buttons[14]?.pressed)) || pad.axes[0] || 0;
-      if (Math.abs(x) > .18) {
+      const x =
+        Number(Boolean(pad.buttons[15]?.pressed)) - Number(Boolean(pad.buttons[14]?.pressed)) ||
+        pad.axes[0] ||
+        0;
+      if (Math.abs(x) > 0.18) {
         this.unlock();
         return clamp(x, -1, 1);
       }
@@ -90,7 +94,8 @@ export class ChaseInput {
       try {
         if (this.canvas.hasPointerCapture?.(id)) this.canvas.releasePointerCapture(id);
       } catch (_) {
-        /* Captura já liberada. */ }
+        /* Captura já liberada. */
+      }
     }
     this.pointers.clear();
     this.keys.clear();

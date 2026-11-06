@@ -3,7 +3,7 @@
   "direcaoAprovada": "docs/diario-ia/arte/20261020-armario-pictorico-v1.png",
   "artefatos": [
     {
-      "arquivo": "armario-atlas-v1.png",
+      "arquivo": "cabinet-atlas-v1.png",
       "dimensoes": [
         1254,
         1254
@@ -13,7 +13,7 @@
       "quadrantes": 4
     },
     {
-      "arquivo": "blocos-atlas-v1.png",
+      "arquivo": "blocks-atlas-v1.png",
       "dimensoes": [
         1254,
         1254
@@ -23,7 +23,7 @@
       "quadrantes": 4
     },
     {
-      "arquivo": "coelho-atlas-v1.png",
+      "arquivo": "bunny-atlas-v1.png",
       "dimensoes": [
         1254,
         1254
@@ -33,7 +33,7 @@
       "quadrantes": 4
     },
     {
-      "arquivo": "trem-atlas-v1.png",
+      "arquivo": "train-atlas-v1.png",
       "dimensoes": [
         1254,
         1254

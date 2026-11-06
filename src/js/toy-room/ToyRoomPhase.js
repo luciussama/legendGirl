@@ -1,69 +1,28 @@
-import {
-  BrinquedaoPhase
-} from '../brinquedao/BrinquedaoPhase.js';
-import {
-  DreamPhase
-} from '../dream-forest/DreamPhase.js';
-import {
-  ToyRoomEpilogue
-} from '../chapters/ToyRoomEpilogue.js';
-import {
-  beginDialogueFrame,
-  endDialogueFrame
-} from '../narrative/DialogueFlow.js';
-import {
-  GardenPhase
-} from '../garden/GardenPhase.js';
-import {
-  createToyRoomTutorialContext
-} from './ToyRoomTutorialContext.js';
-import {
-  ToyRoomPersistence
-} from './ToyRoomPersistence.js';
-import {
-  createToyRoomPersistenceContext
-} from './ToyRoomPersistenceContext.js';
-import {
-  createToyRoomInitialEntities
-} from './ToyRoomInitialEntities.js';
-import {
-  renderToyRoomScene
-} from './ToyRoomSceneRenderer.js';
-import {
-  prepareToyRoomShadows
-} from './ToyRoomShadows.js';
-import {
-  createToyRoomSceneFrame
-} from './ToyRoomSceneFrame.js';
-import {
-  updateToyRoomCamera,
-  getToyRoomCameraFrame
-} from './ToyRoomCamera.js';
-import {
-  updateToyRoomCompanion
-} from './ToyRoomCompanion.js';
+import { BrinquedaoPhase } from '../brinquedao/BrinquedaoPhase.js';
+import { DreamPhase } from '../dream-forest/DreamPhase.js';
+import { ToyRoomEpilogue } from '../chapters/ToyRoomEpilogue.js';
+import { beginDialogueFrame, endDialogueFrame } from '../narrative/dialogueFlow.js';
+import { GardenPhase } from '../garden/GardenPhase.js';
+import { createToyRoomTutorialContext } from './toyRoomTutorialContext.js';
+import { ToyRoomPersistence } from './ToyRoomPersistence.js';
+import { createToyRoomPersistenceContext } from './toyRoomPersistenceContext.js';
+import { createToyRoomInitialEntities } from './toyRoomInitialEntities.js';
+import { renderToyRoomScene } from './toyRoomSceneRenderer.js';
+import { prepareToyRoomShadows } from './toyRoomShadows.js';
+import { createToyRoomSceneFrame } from './toyRoomSceneFrame.js';
+import { updateToyRoomCamera, getToyRoomCameraFrame } from './toyRoomCamera.js';
+import { updateToyRoomCompanion } from './toyRoomCompanion.js';
 import {
   spawnToyRoomSparkles,
   spawnToyRoomConfetti,
   initializeToyRoomSunMotes,
-  updateToyRoomEffects
-} from './ToyRoomEffects.js';
-import {
-  ToyRoomInteraction
-} from './ToyRoomInteraction.js';
-import {
-  createToyRoomInteractionContext
-} from './ToyRoomInteractionContext.js';
-import {
-  updateToyRoomMovement,
-  resolveToyRoomCollisions
-} from './ToyRoomMovement.js';
-import {
-  ToyRoomInputController
-} from './ToyRoomInputController.js';
-import {
-  createToyRoomInputContext
-} from './ToyRoomInputContext.js';
+  updateToyRoomEffects,
+} from './toyRoomEffects.js';
+import { ToyRoomInteraction } from './ToyRoomInteraction.js';
+import { createToyRoomInteractionContext } from './toyRoomInteractionContext.js';
+import { updateToyRoomMovement, resolveToyRoomCollisions } from './toyRoomMovement.js';
+import { ToyRoomInputController } from './ToyRoomInputController.js';
+import { createToyRoomInputContext } from './toyRoomInputContext.js';
 /**
  * ToyRoomPhase.js
  * Controlador principal da Fase da Sala de Brinquedos (estilo Top-Down 2D Legend of Mana).
@@ -71,33 +30,15 @@ import {
  * resolução de colisões, mecânicas de pegar e guardar, efeitos de partículas e controles responsivos.
  */
 
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
-import {
-  createToyRoomEnvironmentAssets
-} from './ToyRoomEnvironmentAssets.js';
-import {
-  ToyRoomTutorial
-} from './ToyRoomTutorial.js';
-import {
-  normalizeDifficulty
-} from '../state/GameDifficulty.js';
-import {
-  ToyRoomStory
-} from './ToyRoomStory.js';
-import {
-  createToyRoomStoryContext
-} from './ToyRoomStoryContext.js';
-import {
-  ToyRoomArenaPhase
-} from './ToyRoomArenaPhase.js';
-import {
-  ToyRoomBattle
-} from './ToyRoomBattle.js';
-import {
-  BearChasePhase
-} from '../bear-chase/BearChasePhase.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
+import { createToyRoomEnvironmentAssets } from './toyRoomEnvironmentAssets.js';
+import { ToyRoomTutorial } from './ToyRoomTutorial.js';
+import { normalizeDifficulty } from '../state/gameDifficulty.js';
+import { ToyRoomStory } from './ToyRoomStory.js';
+import { createToyRoomStoryContext } from './toyRoomStoryContext.js';
+import { ToyRoomArenaPhase } from './ToyRoomArenaPhase.js';
+import { ToyRoomBattle } from './ToyRoomBattle.js';
+import { BearChasePhase } from '../bear-chase/BearChasePhase.js';
 
 export class ToyRoomPhase {
   /** Compõe os sistemas da sala e mantém a perseguição 3D inativa até seleção explícita. */
@@ -114,7 +55,7 @@ export class ToyRoomPhase {
     this.onDefeat = options.onDefeat;
     this.reportedDefeat = null;
     this.bindInputs = options.bindInputs !== false;
-    this.createChasePhase = options.createChasePhase || (config => new BearChasePhase(config));
+    this.createChasePhase = options.createChasePhase || ((config) => new BearChasePhase(config));
     Object.assign(this, createToyRoomEnvironmentAssets(this.assets));
 
     // Dimensões da Sala
@@ -159,14 +100,14 @@ export class ToyRoomPhase {
       currentY: 0,
       vectorX: 0,
       vectorY: 0,
-      pointerId: null
+      pointerId: null,
     };
     this.arenaTouchPointers = new Map();
     this.arenaTouchButtons = {
       left: false,
       right: false,
       up: false,
-      down: false
+      down: false,
     };
     this.arenaSpecialButtons = new Map();
 
@@ -186,11 +127,11 @@ export class ToyRoomPhase {
       x: 0,
       y: 0,
       active: false,
-      buttons: new Map()
+      buttons: new Map(),
     };
     this.story = new ToyRoomStory(createToyRoomStoryContext(this));
     this.battle = new ToyRoomBattle(this, {
-      loadAssets: typeof Image !== 'undefined'
+      loadAssets: typeof Image !== 'undefined',
     });
     this.arena = options.arenaEnabled !== false ? new ToyRoomArenaPhase(this) : null;
     this.chase = null;
@@ -272,13 +213,21 @@ export class ToyRoomPhase {
 
   /** Cria a interação sob demanda para usar o contexto atualizado da exploração. */
   get interaction() {
-    if (!this._interaction) this._interaction = new ToyRoomInteraction(createToyRoomInteractionContext(this));
+    if (!this._interaction)
+      this._interaction = new ToyRoomInteraction(createToyRoomInteractionContext(this));
     return this._interaction;
   }
 
   /** Encaminha ações da sala; a perseguição 3D usa somente seus controles laterais. */
   triggerAction() {
-    if (!this.brinq?.active && !this.dream?.active && !this.epilogue?.active && !this.garden?.active && !this.chase?.active) return this.interaction.triggerAction();
+    if (
+      !this.brinq?.active &&
+      !this.dream?.active &&
+      !this.epilogue?.active &&
+      !this.garden?.active &&
+      !this.chase?.active
+    )
+      return this.interaction.triggerAction();
   }
 
   /** Revisa a perseguição e suas cenas finais, sem migrar a campanha salva. */
@@ -294,7 +243,7 @@ export class ToyRoomPhase {
     this.clearInput();
     this.inputController.removeListeners();
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.audio?.stopAllAudio?.();
     this.audio?.stopToyRoomMusic?.();
@@ -302,7 +251,7 @@ export class ToyRoomPhase {
       canvas: this.canvas,
       audio: this.audio,
       enabled: this.isInputEnabled,
-      difficulty: this.gameDifficulty
+      difficulty: this.gameDifficulty,
     });
     this.gameplayState = 'BEAR_CHASE_PREVIEW';
     return this.chase.start(saved);
@@ -322,7 +271,7 @@ export class ToyRoomPhase {
     this.clearInput();
     this.inputController.removeListeners();
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.audio?.stopAllAudio?.();
     this.audio?.stopToyRoomMusic?.();
@@ -335,7 +284,7 @@ export class ToyRoomPhase {
         difficulty: this.gameDifficulty,
         campaign: true,
         /** Recupera a sala caso a preparação da campanha falhe. */
-        onCampaignError: message => this.handleCampaignChaseError(chase, message)
+        onCampaignError: (message) => this.handleCampaignChaseError(chase, message),
       });
     } catch (error) {
       const message = `Não foi possível preparar a fuga: ${error.message}`;
@@ -360,8 +309,7 @@ export class ToyRoomPhase {
     if (typeof document !== 'undefined') {
       const dialog = document.getElementById('chase-error-dialog');
       if (dialog) {
-        document.getElementById('chase-error-message')
-          .textContent = message;
+        document.getElementById('chase-error-message').textContent = message;
         if (!dialog.open) dialog.showModal();
       }
     }
@@ -372,9 +320,7 @@ export class ToyRoomPhase {
   }
 
   /** Fecha a organização antes do capítulo do jardim, sem devolver controles de exploração. */
-  startEpilogue(saved = null, {
-    campaign = true
-  } = {}) {
+  startEpilogue(saved = null, { campaign = true } = {}) {
     this.brinq?.destroy();
     this.brinq = null;
     this.chase?.destroy();
@@ -387,17 +333,16 @@ export class ToyRoomPhase {
       saved,
       campaign,
       /** Abre o jardim ao concluir o epílogo, mantendo o modo de campanha. */
-      onComplete: () => this.startGarden(null, {
-        campaign
-      })
+      onComplete: () =>
+        this.startGarden(null, {
+          campaign,
+        }),
     });
     this.gameplayState = 'TOY_ROOM_EPILOGUE';
   }
 
   /** Encerra modos incompatíveis e abre o jardim com a campanha e save fornecidos. */
-  startGarden(saved = null, {
-    campaign = true
-  } = {}) {
+  startGarden(saved = null, { campaign = true } = {}) {
     this.brinq?.destroy();
     this.brinq = null;
     this.dream?.destroy();
@@ -411,7 +356,7 @@ export class ToyRoomPhase {
     this.clearInput();
     this.inputController.removeListeners();
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.audio?.stopAllAudio?.();
     this.audio?.stopToyRoomMusic?.();
@@ -420,16 +365,14 @@ export class ToyRoomPhase {
       audio: this.audio,
       enabled: this.isInputEnabled,
       difficulty: this.gameDifficulty,
-      campaign
+      campaign,
     });
     this.gameplayState = 'GARDEN';
     return this.garden.start(saved);
   }
 
   /** Transição do sono para o sonho 2D, mantendo a origem da campanha ou da bandeira. */
-  startDream(saved = null, {
-    campaign = true
-  } = {}) {
+  startDream(saved = null, { campaign = true } = {}) {
     this.brinq?.destroy();
     this.brinq = null;
     this.dream?.destroy();
@@ -442,7 +385,7 @@ export class ToyRoomPhase {
     this.clearInput();
     this.inputController.removeListeners();
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.audio?.stopAllAudio?.();
     this.audio?.stopToyRoomMusic?.();
@@ -451,16 +394,14 @@ export class ToyRoomPhase {
       audio: this.audio,
       enabled: this.isInputEnabled,
       difficulty: this.gameDifficulty,
-      campaign
+      campaign,
     });
     this.gameplayState = 'DREAM_FOREST';
     return this.dream.start(saved);
   }
 
   /** Depois do pesadelo, abre o convite ensolarado e o circuito do Brinquedão. */
-  startBrinquedao(saved = null, {
-    campaign = true
-  } = {}) {
+  startBrinquedao(saved = null, { campaign = true } = {}) {
     this.brinq?.destroy();
     this.dream?.destroy();
     this.garden?.destroy();
@@ -474,7 +415,7 @@ export class ToyRoomPhase {
     this.clearInput();
     this.inputController.removeListeners();
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.audio?.stopAllAudio?.();
     this.audio?.stopToyRoomMusic?.();
@@ -483,7 +424,7 @@ export class ToyRoomPhase {
       audio: this.audio,
       enabled: this.isInputEnabled,
       difficulty: this.gameDifficulty,
-      campaign
+      campaign,
     });
     this.gameplayState = 'BRINQUEDAO';
     return this.brinq.start(saved);
@@ -491,40 +432,48 @@ export class ToyRoomPhase {
 
   /** Aplica limites da sala e colisões da mobília à posição consultada. */
   resolveCollisions(px, py, r) {
-    return resolveToyRoomCollisions({
-      width: this.ROOM_W,
-      height: this.ROOM_H,
-      furniture: this.furniture
-    }, px, py, r);
+    return resolveToyRoomCollisions(
+      {
+        width: this.ROOM_W,
+        height: this.ROOM_H,
+        furniture: this.furniture,
+      },
+      px,
+      py,
+      r,
+    );
   }
 
   /** Atualiza exclusivamente o modo ativo, sem compartilhar física entre 2D e 3D. */
   update(dt = 1.0) {
     this.updateActiveMode(dt);
-    const defeat = this.brinq?.active && this.brinq.state.stage === 'GAME_OVER' ?
-      {
-        state: this.brinq.state,
-        phase: 'brinquedao'
-      } :
-      this.dream?.active && this.dream.state.stage === 'GAME_OVER' ?
-      {
-        state: this.dream.state,
-        phase: 'dream-forest'
-      } :
-      this.garden?.active && this.garden.state.stage === 'GAME_OVER' ?
-      {
-        state: this.garden.state,
-        phase: 'garden'
-      } :
-      this.chase?.active && this.chase.state.stage === 'GAME_OVER' ?
-      {
-        state: this.chase.state,
-        phase: 'bear-chase'
-      } :
-      this.battle.state?.mode === 'DEFEAT' ? {
-        state: this.battle.state,
-        phase: 'arena'
-      } : null;
+    const defeat =
+      this.brinq?.active && this.brinq.state.stage === 'GAME_OVER'
+        ? {
+            state: this.brinq.state,
+            phase: 'brinquedao',
+          }
+        : this.dream?.active && this.dream.state.stage === 'GAME_OVER'
+          ? {
+              state: this.dream.state,
+              phase: 'dream-forest',
+            }
+          : this.garden?.active && this.garden.state.stage === 'GAME_OVER'
+            ? {
+                state: this.garden.state,
+                phase: 'garden',
+              }
+            : this.chase?.active && this.chase.state.stage === 'GAME_OVER'
+              ? {
+                  state: this.chase.state,
+                  phase: 'bear-chase',
+                }
+              : this.battle.state?.mode === 'DEFEAT'
+                ? {
+                    state: this.battle.state,
+                    phase: 'arena',
+                  }
+                : null;
     if (defeat && this.reportedDefeat !== defeat.state) {
       this.reportedDefeat = defeat.state;
       this.clearInput();
@@ -540,11 +489,17 @@ export class ToyRoomPhase {
     }
     if (this.dream?.active) {
       this.dream.update(dt);
-      if (this.isInputEnabled() && !this.dream.paused && this.dream.state.stage === 'COMPLETE' && this.dream.state.nightmare?.completed) {
+      if (
+        this.isInputEnabled() &&
+        !this.dream.paused &&
+        this.dream.state.stage === 'COMPLETE' &&
+        this.dream.state.nightmare?.completed
+      ) {
         this.brinqTransition = (this.brinqTransition || 0) + dt;
-        if (this.brinqTransition >= 60) this.startBrinquedao(null, {
-          campaign: this.dream.campaign
-        });
+        if (this.brinqTransition >= 60)
+          this.startBrinquedao(null, {
+            campaign: this.dream.campaign,
+          });
       }
       return;
     }
@@ -554,11 +509,17 @@ export class ToyRoomPhase {
     }
     if (this.garden?.active) {
       this.garden.update(dt);
-      if (this.isInputEnabled() && !this.garden.paused && this.garden.state.story.endingDone && this.garden.state.stage === 'COMPLETE') {
+      if (
+        this.isInputEnabled() &&
+        !this.garden.paused &&
+        this.garden.state.story.endingDone &&
+        this.garden.state.stage === 'COMPLETE'
+      ) {
         this.dreamTransition = (this.dreamTransition || 0) + dt;
-        if (this.dreamTransition >= 240) this.startDream(null, {
-          campaign: this.garden.campaign === true
-        });
+        if (this.dreamTransition >= 240)
+          this.startDream(null, {
+            campaign: this.garden.campaign === true,
+          });
       }
       return;
     }
@@ -570,9 +531,10 @@ export class ToyRoomPhase {
       this.chase.update(dt);
       if (this.chase.state.stage === 'COMPLETE') {
         this.gardenTransition = (this.gardenTransition || 0) + dt;
-        if (this.gardenTransition >= 150) this.startEpilogue(null, {
-          campaign: this.chase.campaign === true
-        });
+        if (this.gardenTransition >= 150)
+          this.startEpilogue(null, {
+            campaign: this.chase.campaign === true,
+          });
       } else this.gardenTransition = 0;
       return;
     }
@@ -616,15 +578,18 @@ export class ToyRoomPhase {
 
     const chest = this.interaction.updateProximity();
 
-    updateToyRoomMovement({
-      player: this.player,
-      keysDown: this.keysDown,
-      gamepadState: this.gamepadState,
-      touchState: this.touchState,
-      footstepPuffs: this.footstepPuffs,
-      /** Reusa as colisões da sala para manter deslocamento fora dos móveis. */
-      resolveCollisions: (x, y, radius) => this.resolveCollisions(x, y, radius)
-    }, dt);
+    updateToyRoomMovement(
+      {
+        player: this.player,
+        keysDown: this.keysDown,
+        gamepadState: this.gamepadState,
+        touchState: this.touchState,
+        footstepPuffs: this.footstepPuffs,
+        /** Reusa as colisões da sala para manter deslocamento fora dos móveis. */
+        resolveCollisions: (x, y, radius) => this.resolveCollisions(x, y, radius),
+      },
+      dt,
+    );
     this.story?.updateAfterMovement();
 
     // Posição do brinquedo carregado acima da cabeça
@@ -633,25 +598,31 @@ export class ToyRoomPhase {
       this.player.carriedItem.y = this.player.y - 38 + Math.sin(this.player.animTime * 1.5) * 3;
     }
 
-    this.guideToy = updateToyRoomCompanion({
-      player: this.player,
-      fairy: this.fairy,
-      toys: this.toys,
-      tutorial: this.tutorial,
-      story: this.story,
-      gameDifficulty: this.gameDifficulty,
-      guideToy: this.guideToy
-    }, dt);
+    this.guideToy = updateToyRoomCompanion(
+      {
+        player: this.player,
+        fairy: this.fairy,
+        toys: this.toys,
+        tutorial: this.tutorial,
+        story: this.story,
+        gameDifficulty: this.gameDifficulty,
+        guideToy: this.guideToy,
+      },
+      dt,
+    );
 
-    updateToyRoomEffects({
-      chest,
-      sparkles: this.sparkles,
-      confetti: this.confetti,
-      footstepPuffs: this.footstepPuffs,
-      sunMotes: this.sunMotes,
-      width: this.ROOM_W,
-      height: this.ROOM_H
-    }, dt);
+    updateToyRoomEffects(
+      {
+        chest,
+        sparkles: this.sparkles,
+        confetti: this.confetti,
+        footstepPuffs: this.footstepPuffs,
+        sunMotes: this.sunMotes,
+        width: this.ROOM_W,
+        height: this.ROOM_H,
+      },
+      dt,
+    );
 
     this.updateCamera(dt);
   }
@@ -673,9 +644,7 @@ export class ToyRoomPhase {
   }
 
   /** Recupera a tentativa atual; ao aceitar ajuda, conserva o adversário ou percurso. */
-  retryDefeat({
-    resume = false
-  } = {}) {
+  retryDefeat({ resume = false } = {}) {
     if (this.brinq?.active) {
       const retried = this.brinq.retry();
       if (retried) this.reportedDefeat = null;
@@ -693,7 +662,7 @@ export class ToyRoomPhase {
     }
     if (this.chase?.active) {
       const retried = this.chase.retry({
-        resume
+        resume,
       });
       if (retried) this.reportedDefeat = null;
       return retried;
@@ -709,7 +678,7 @@ export class ToyRoomPhase {
         playerKnockback: 0,
         attackTime: 0,
         cooldown: 0,
-        immunity: this.battle.tuning.immunity
+        immunity: this.battle.tuning.immunity,
       });
       s.player.hp = s.player.maxHp;
       this.story.state.attackElapsed = 0;
@@ -726,14 +695,17 @@ export class ToyRoomPhase {
 
   /** Atualiza apenas a rolagem da exploração usando o alvo narrativo ou o jogador. */
   updateCamera(dt) {
-    const camera = updateToyRoomCamera({
-      target: this.story.cameraTarget() || this.player,
-      canvas: this.canvas,
-      width: this.ROOM_W,
-      height: this.ROOM_H,
-      cameraX: this.cameraX,
-      cameraY: this.cameraY
-    }, dt);
+    const camera = updateToyRoomCamera(
+      {
+        target: this.story.cameraTarget() || this.player,
+        canvas: this.canvas,
+        width: this.ROOM_W,
+        height: this.ROOM_H,
+        cameraX: this.cameraX,
+        cameraY: this.cameraY,
+      },
+      dt,
+    );
     this.cameraX = camera.cameraX;
     this.cameraY = camera.cameraY;
   }
@@ -745,7 +717,7 @@ export class ToyRoomPhase {
       canvas: this.canvas,
       cameraX: this.cameraX,
       cameraY: this.cameraY,
-      mobilePresentation: this.mobilePresentation
+      mobilePresentation: this.mobilePresentation,
     });
   }
 
@@ -794,7 +766,8 @@ export class ToyRoomPhase {
 
   /** Cria a camada de persistência sob demanda para reutilizar o contexto da sala. */
   get persistence() {
-    if (!this._persistence) this._persistence = new ToyRoomPersistence(createToyRoomPersistenceContext(this));
+    if (!this._persistence)
+      this._persistence = new ToyRoomPersistence(createToyRoomPersistenceContext(this));
     return this._persistence;
   }
 
@@ -821,7 +794,7 @@ export class ToyRoomPhase {
     this.chase?.destroy();
     this.chase = null;
     this.arena?.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.clearInput();
     if (this.audio && this.audio.stopToyRoomMusic) {
@@ -842,6 +815,6 @@ export function createToyRoom(canvas, audio, uiFeedback, onReturnToTitle, option
     triggerAction: () => toyRoom.triggerAction(),
     /** Encerra a instância e remove os recursos associados. */
     destroy: () => toyRoom.destroy(),
-    instance: toyRoom
+    instance: toyRoom,
   };
 }

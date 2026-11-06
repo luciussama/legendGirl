@@ -1,22 +1,13 @@
-import {
-  drawCurrentScenery
-} from '../assets/currentScenery.js';
-import {
-  NIGHT_WINDOWS
-} from './nightWindows.js';
+import { drawCurrentScenery } from '../assets/currentScenery.js';
+import { NIGHT_WINDOWS } from './nightWindows.js';
 /**
  * BackgroundRenderer.js
  * Renderiza a parede de fundo atmosférica do berçário vitoriano, lambris de madeira,
  * padrões de papel de parede, janelas e itens decorativos detalhados do quarto.
  */
 
-import {
-  FLOOR_Y,
-  roomScenery as defaultRoomScenery
-} from '../config.js';
-import {
-  darkRoomAtlas
-} from '../assets/index.js';
+import { FLOOR_Y, roomScenery as defaultRoomScenery } from '../config.js';
+import { darkRoomAtlas } from '../assets/index.js';
 
 /** Limites visíveis no espaço de desenho, incluindo zoom e translação já aplicados ao contexto. */
 export function getBackgroundViewport(ctx, canvas) {
@@ -27,25 +18,24 @@ export function getBackgroundViewport(ctx, canvas) {
       left: 0,
       right: canvas.width,
       top: 0,
-      bottom: canvas.height
+      bottom: canvas.height,
     };
   }
   const corners = [
-      [0, 0],
-      [canvas.width, 0],
-      [0, canvas.height],
-      [canvas.width, canvas.height]
-    ]
-    .map(([x, y]) => ({
-      x: (m.d * (x - m.e) - m.c * (y - m.f)) / determinant,
-      y: (-m.b * (x - m.e) + m.a * (y - m.f)) / determinant
-    }));
+    [0, 0],
+    [canvas.width, 0],
+    [0, canvas.height],
+    [canvas.width, canvas.height],
+  ].map(([x, y]) => ({
+    x: (m.d * (x - m.e) - m.c * (y - m.f)) / determinant,
+    y: (-m.b * (x - m.e) + m.a * (y - m.f)) / determinant,
+  }));
   // Uma unidade de margem evita uma costura de antialiasing na extremidade do canvas.
   return {
-    left: Math.floor(Math.min(...corners.map(p => p.x))) - 1,
-    right: Math.ceil(Math.max(...corners.map(p => p.x))) + 1,
-    top: Math.floor(Math.min(...corners.map(p => p.y))) - 1,
-    bottom: Math.ceil(Math.max(...corners.map(p => p.y))) + 1
+    left: Math.floor(Math.min(...corners.map((p) => p.x))) - 1,
+    right: Math.ceil(Math.max(...corners.map((p) => p.x))) + 1,
+    top: Math.floor(Math.min(...corners.map((p) => p.y))) - 1,
+    bottom: Math.ceil(Math.max(...corners.map((p) => p.y))) + 1,
   };
 }
 
@@ -74,10 +64,10 @@ export class BackgroundRenderer {
     if (!assets || !darkRoomAtlas) return false;
     const sheetKey = 'dark-room-environment-sheet';
 
-    let region = null;
-    let dw = 40;
-    let dh = 40;
-    let yOffset = 0;
+    let region;
+    let dw;
+    let dh;
+    let yOffset;
 
     switch (type) {
       case 'fluffy_rug': {
@@ -176,7 +166,8 @@ export class BackgroundRenderer {
     }
 
     if (!region) return false;
-    const sprite = assets.get('dark-room-sprite-' + type.replace(/_/g, '-')) ||
+    const sprite =
+      assets.get('dark-room-sprite-' + type.replace(/_/g, '-')) ||
       assets.getRegion('dark-room-production-spritesheet', region) ||
       assets.getRegion(sheetKey, region);
     if (!sprite) return false;
@@ -250,7 +241,7 @@ export class BackgroundRenderer {
       for (let p = 0; p < 5; p++) {
         const t = (p + 0.5) / 5;
         const px = sx + t * 180;
-        const py = 70 + (4 * t * (1 - t)) * 40;
+        const py = 70 + 4 * t * (1 - t) * 40;
         ctx.fillStyle = colors[(Math.floor(gx / 180) * 5 + p) % colors.length];
         ctx.beginPath();
         ctx.moveTo(px - 7, py);
@@ -327,20 +318,21 @@ export class BackgroundRenderer {
     });
 
     // Ganchos de parede com itens pendurados
-    const wallPegs = [{
+    const wallPegs = [
+      {
         x: 300,
-        item: 'wizard_hat'
+        item: 'wizard_hat',
       },
       {
         x: 1250,
-        item: 'cape'
+        item: 'cape',
       },
       {
         x: 2200,
-        item: 'scarf'
-      }
+        item: 'scarf',
+      },
     ];
-    wallPegs.forEach(peg => {
+    wallPegs.forEach((peg) => {
       const sx = peg.x - camX * 0.45;
       if (sx < left - 60 || sx > right + 60) return;
 
@@ -384,28 +376,29 @@ export class BackgroundRenderer {
     });
 
     // Desenhos em giz de cera emoldurados na parede
-    const wallDrawings = [{
+    const wallDrawings = [
+      {
         x: 420,
         y: 140,
-        type: 'sun'
+        type: 'sun',
       },
       {
         x: 980,
         y: 130,
-        type: 'castle'
+        type: 'castle',
       },
       {
         x: 1600,
         y: 140,
-        type: 'rainbow'
+        type: 'rainbow',
       },
       {
         x: 2360,
         y: 130,
-        type: 'cat'
-      }
+        type: 'cat',
+      },
     ];
-    wallDrawings.forEach(d => {
+    wallDrawings.forEach((d) => {
       const sx = d.x - camX * 0.45;
       if (sx < left - 70 || sx > right + 70) return;
 
@@ -479,7 +472,7 @@ export class BackgroundRenderer {
 
     // Prateleira alta flutuante na parede com brinquedos em miniatura
     const wallShelves = [580, 1400, 2100];
-    wallShelves.forEach(wx => {
+    wallShelves.forEach((wx) => {
       const sx = wx - camX * 0.4;
       if (sx < left - 120 || sx > right + 120) return;
 
@@ -538,8 +531,10 @@ export class BackgroundRenderer {
     ctx.fillRect(left, FLOOR_Y, span, Math.max(canvas.height + 700, viewport.bottom) - FLOOR_Y);
 
     const assets = options.assets || this.assets || null;
-    const floorTileRegion = darkRoomAtlas && (darkRoomAtlas.floorTiles?.plank || darkRoomAtlas.floorTiles);
-    const floorTileSprite = assets && floorTileRegion && assets.getRegion('dark-room-environment-sheet', floorTileRegion);
+    const floorTileRegion =
+      darkRoomAtlas && (darkRoomAtlas.floorTiles?.plank || darkRoomAtlas.floorTiles);
+    const floorTileSprite =
+      assets && floorTileRegion && assets.getRegion('dark-room-environment-sheet', floorTileRegion);
 
     if (floorTileSprite) {
       const tileW = 140;
@@ -595,8 +590,10 @@ export class BackgroundRenderer {
       ctx.save();
 
       // 1. Tenta desenhar com o sprite do atlas de arte do dark-room
-      if (drawCurrentScenery(ctx, assets, item.type, sx, FLOOR_Y) ||
-        this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)) {
+      if (
+        drawCurrentScenery(ctx, assets, item.type, sx, FLOOR_Y) ||
+        this.drawAtlasSceneryItem(ctx, assets, item.type, sx, item, FLOOR_Y)
+      ) {
         ctx.restore();
         return;
       }

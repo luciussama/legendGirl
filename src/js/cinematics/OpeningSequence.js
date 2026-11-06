@@ -1,32 +1,14 @@
-import {
-  renderChapterCard
-} from '../chapters/ChapterCard.js';
-import {
-  drawDialogueControls,
-  dialogueControlsHeight
-} from '../narrative/DialogueControls.js';
-import {
-  offerDialogue,
-  setDialogueBounds
-} from '../narrative/DialogueFlow.js';
-import {
-  renderMobileDialogueRegion
-} from '../ui/MobileDialogueRegion.js';
-import {
-  getDialogueSafeArea,
-  getDialogueBoxY
-} from '../ui/DialogueSafeArea.js';
-import {
-  applyArtFinish
-} from '../effects/ArtFinish.js';
-import {
-  POETIC_LINES,
-  renderPoeticNarration
-} from '../narrative/PoeticNarrator.js';
+import { renderChapterCard } from '../chapters/chapterCard.js';
+import { drawDialogueControls, dialogueControlsHeight } from '../narrative/dialogueControls.js';
+import { offerDialogue, setDialogueBounds } from '../narrative/dialogueFlow.js';
+import { renderMobileDialogueRegion } from '../ui/mobileDialogueRegion.js';
+import { getDialogueSafeArea, getDialogueBoxY } from '../ui/dialogueSafeArea.js';
+import { applyArtFinish } from '../effects/artFinish.js';
+import { POETIC_LINES, renderPoeticNarration } from '../narrative/poeticNarrator.js';
 
 export const OPENING_STORAGE_KEY = 'legendGirl.bedroom-opening.completed.v1';
 let completedInSession = false;
-const smooth = t => {
+const smooth = (t) => {
   t = Math.max(0, Math.min(1, t));
   return t * t * (3 - 2 * t);
 };
@@ -35,7 +17,7 @@ export const OPENING_DIALOGUE = [
   [10, 13, POETIC_LINES.openingYesterday, 'narrator'],
   [14, 20, POETIC_LINES.openingPath, 'narrator'],
   [21, 24, 'LEVANTA, SUA PREGUIÇOSA!'],
-  [25, 29, 'SENÃO A GENTE NÃO SAI DAQUI NUNQUINHA!']
+  [25, 29, 'SENÃO A GENTE NÃO SAI DAQUI NUNQUINHA!'],
 ];
 
 /** Relógio narrativo independente; nunca controla nem avança a física da personagem. */
@@ -44,12 +26,7 @@ export class OpeningSequence {
    * Recebe armazenamento e callbacks da abertura e inicializa relógio e marcadores de falas e efeitos já
    * disparados.
    */
-  constructor({
-    storage,
-    onReveal = () => {},
-    onComplete = () => {},
-    onCue = () => {}
-  } = {}) {
+  constructor({ storage, onReveal = () => {}, onComplete = () => {}, onCue = () => {} } = {}) {
     if (storage === undefined) {
       try {
         storage = globalThis.localStorage;
@@ -78,9 +55,7 @@ export class OpeningSequence {
   /**
    * Inicia o estado e dados do componente e prepara o estado necessário para a sequência subsequente.
    */
-  start({
-    replay = false
-  } = {}) {
+  start({ replay = false } = {}) {
     if (this.active) return true;
     if (!replay && this.hasCompleted()) return false;
     this.replay = replay;
@@ -118,7 +93,7 @@ export class OpeningSequence {
       active: this.active,
       time: this.time,
       cues: [...this.cues],
-      completed: this.hasCompleted()
+      completed: this.hasCompleted(),
     };
   }
   /**
@@ -162,13 +137,13 @@ export class OpeningSequence {
     if (!this.active) return;
     this.time += Math.max(0, dt) / 60;
     for (const [at, name] of [
-        [4, 'voice'],
-        [21, 'shout'],
-        [25, 'shout'],
-        [29, 'wake'],
-        [33.5, 'music'],
-        [41, 'reveal']
-      ]) {
+      [4, 'voice'],
+      [21, 'shout'],
+      [25, 'shout'],
+      [29, 'wake'],
+      [33.5, 'music'],
+      [41, 'reveal'],
+    ]) {
       if (this.time >= at && !this.cues.has(name + at)) {
         this.cues.add(name + at);
         if (name === 'reveal') this.onReveal();
@@ -183,7 +158,8 @@ export class OpeningSequence {
         try {
           this.storage?.setItem(OPENING_STORAGE_KEY, '1');
         } catch {
-          /* alternativa restrita à sessão */ }
+          /* alternativa restrita à sessão */
+        }
       }
       this.active = false;
       this.onComplete();
@@ -193,8 +169,11 @@ export class OpeningSequence {
    * Desenha a camada de transição com opacidade derivada do relógio da abertura, sem avançar a cena.
    */
   renderFade(ctx, canvas) {
-    const opacity = this.revealing ? 1 - smooth((this.time - 41) / 1.5) :
-      this.time < 2 ? 1 - smooth(this.time / 2) : smooth((this.time - 35) / 1);
+    const opacity = this.revealing
+      ? 1 - smooth((this.time - 41) / 1.5)
+      : this.time < 2
+        ? 1 - smooth(this.time / 2)
+        : smooth((this.time - 35) / 1);
     if (!opacity) return;
     ctx.save();
     ctx.fillStyle = `rgba(3,5,12,${opacity})`;
@@ -205,12 +184,7 @@ export class OpeningSequence {
    * Compõe o quadro correspondente ao relógio narrativo, delegando fala, arte e iluminação; não altera a
    * simulação.
    */
-  render(ctx, canvas, {
-    assets,
-    drawRoom,
-    lighting,
-    fairyRenderer
-  }) {
+  render(ctx, canvas, { assets, drawRoom, lighting, fairyRenderer }) {
     if (this.time >= 36 && this.time < 41) {
       renderChapterCard(ctx, canvas, {
         image: assets.get('toy-room-intro-room-v1'),
@@ -221,7 +195,7 @@ export class OpeningSequence {
          * Encaminha a ação de avançar ao controlador da abertura, que consome a fala sem disparar ações de
          * gameplay.
          */
-        onAdvance: () => this.advanceDialogue()
+        onAdvance: () => this.advanceDialogue(),
       });
       return;
     }
@@ -229,10 +203,15 @@ export class OpeningSequence {
       floor = Math.min(470, canvas.height - 90);
     const bedWidth = Math.min(310, canvas.width * 0.55);
     const bedX = Math.max(24, canvas.width * 0.13),
-      bedY = floor - bedWidth * 364 / 510;
+      bedY = floor - (bedWidth * 364) / 510;
     const entry = smooth((t - 1.5) / 2.5),
       urgent = t >= 21 && t < 29;
-    const fx = bedX + 80 + (urgent ? 0 : Math.sin(t * 1.4) * 28) + (1 - entry) * 180 + smooth((t - 32) / 2) * 100;
+    const fx =
+      bedX +
+      80 +
+      (urgent ? 0 : Math.sin(t * 1.4) * 28) +
+      (1 - entry) * 180 +
+      smooth((t - 32) / 2) * 100;
     const fy = bedY + (urgent ? 75 : 30) + Math.sin(t * 2) * 4;
     const fairy = {
       x: fx,
@@ -242,14 +221,14 @@ export class OpeningSequence {
       floatAngle: t,
       flutterPhase: t * (urgent ? 30 : 18),
       particles: [],
-      spinAnim: 0
+      spinAnim: 0,
     };
     const child = {
       x: bedX + 65,
       y: bedY + 75,
       w: 38,
       h: 44,
-      currentPlatformIndex: -1
+      currentPlatformIndex: -1,
     };
     ctx.save();
     const zoom = 1 + (urgent ? 0.07 * smooth((t - 21) / 0.8) : 0);
@@ -261,35 +240,60 @@ export class OpeningSequence {
     if (sheet) {
       const frame = t < 29 ? 0 : t < 30.5 ? 1 : t < 32.5 ? 2 : 3;
       // O recorte e a linha de base compartilhados mantêm a cama fixa em todas as poses do despertar.
-      ctx.drawImage(sheet, frame * 543 + 20, 200, 510, 364, bedX, bedY, bedWidth, bedWidth * 364 / 510);
+      ctx.drawImage(
+        sheet,
+        frame * 543 + 20,
+        200,
+        510,
+        364,
+        bedX,
+        bedY,
+        bedWidth,
+        (bedWidth * 364) / 510,
+      );
     }
     ctx.save();
     ctx.globalAlpha = entry;
-    fairyRenderer.render(ctx, fairy, {
-      tick: Math.floor(t * 60)
-    }, 0, {
-      canvas,
-      baby: child,
-      platforms: [],
-      assets
-    });
+    fairyRenderer.render(
+      ctx,
+      fairy,
+      {
+        tick: Math.floor(t * 60),
+      },
+      0,
+      {
+        canvas,
+        player: child,
+        platforms: [],
+        assets,
+      },
+    );
     ctx.restore();
-    lighting.apply(ctx, canvas, {
-      tick: Math.floor(t * 60),
-      plotTwistActive: true
-    }, child, {
-      ...fairy,
-      y: fy + (1 - entry) * 900
-    }, 0, 0, {
-      platforms: []
-    });
+    lighting.apply(
+      ctx,
+      canvas,
+      {
+        tick: Math.floor(t * 60),
+        plotTwistActive: true,
+      },
+      child,
+      {
+        ...fairy,
+        y: fy + (1 - entry) * 900,
+      },
+      0,
+      0,
+      {
+        platforms: [],
+      },
+    );
     ctx.restore();
     const line = OPENING_DIALOGUE.find(([from, to]) => t >= from && t < to);
     applyArtFinish(ctx, canvas);
     const safe = getDialogueSafeArea(canvas);
     const anchor = {
       top: canvas.height / 2 + (Math.min(bedY, fy - 28) - canvas.height / 2) * zoom,
-      bottom: canvas.height / 2 + (floor - canvas.height / 2) * zoom
+      bottom: canvas.height / 2 + (floor - canvas.height / 2) * zoom,
     };
     // Mantém a divisão estável também nos intervalos entre as falas da abertura.
     if (line?.[3] === 'narrator') {
@@ -300,7 +304,7 @@ export class OpeningSequence {
          * Encaminha a ação de avançar ao controlador da abertura, que consome a fala sem disparar ações de
          * gameplay.
          */
-        onAdvance: () => this.advanceDialogue()
+        onAdvance: () => this.advanceDialogue(),
       });
       this.renderFade(ctx, canvas);
       return;
@@ -308,17 +312,20 @@ export class OpeningSequence {
     const regions = renderMobileDialogueRegion(ctx, canvas, safe, 156, anchor);
     if (line && offerDialogue(canvas, line[2], () => this.advanceDialogue())) {
       ctx.save();
-      const width = Math.min(680, canvas.width - 40, safe.right - safe.left - 2 * Math.max(20, safe.marginX)),
+      const width = Math.min(
+          680,
+          canvas.width - 40,
+          safe.right - safe.left - 2 * Math.max(20, safe.marginX),
+        ),
         font = canvas.width < 600 ? 20 : 23;
       const centerX = (safe.left + safe.right) / 2;
-      ctx.font = `${urgent?'bold ':''}${font}px Georgia, serif`;
+      ctx.font = `${urgent ? 'bold ' : ''}${font}px Georgia, serif`;
       const lines = [];
       for (const paragraph of line[2].split('\n')) {
         let current = '';
         for (const word of paragraph.split(' ')) {
           const next = current ? current + ' ' + word : word;
-          if (ctx.measureText(next)
-            .width > width - 40 && current) {
+          if (ctx.measureText(next).width > width - 40 && current) {
             lines.push(current);
             current = word;
           } else current = next;
@@ -328,7 +335,9 @@ export class OpeningSequence {
       const controlScale = canvas.width / (canvas.clientWidth || canvas.width),
         controlsHeight = dialogueControlsHeight(controlScale);
       const height = lines.length * (font + 9) + 54 + controlsHeight;
-      const y = regions ? regions.panel.y + (regions.panel.height - height) / 2 : getDialogueBoxY(safe, height, 24, anchor);
+      const y = regions
+        ? regions.panel.y + (regions.panel.height - height) / 2
+        : getDialogueBoxY(safe, height, 24, anchor);
       ctx.fillStyle = 'rgba(7,10,20,0.94)';
       ctx.beginPath();
       ctx.roundRect(centerX - width / 2, y, width, height, 16);
@@ -337,7 +346,7 @@ export class OpeningSequence {
       ctx.fillStyle = '#b9c9e7';
       ctx.font = '13px sans-serif';
       ctx.fillText('NANDA', centerX, y + 24);
-      ctx.font = `${urgent?'bold ':''}${font}px Georgia, serif`;
+      ctx.font = `${urgent ? 'bold ' : ''}${font}px Georgia, serif`;
       ctx.fillStyle = '#f5eddf';
       lines.forEach((text, i) => ctx.fillText(text, centerX, y + 54 + i * (font + 9)));
       drawDialogueControls(ctx, canvas, {
@@ -345,7 +354,7 @@ export class OpeningSequence {
         top: y + height - controlsHeight - 4 * controlScale,
         width: width - 32 * controlScale,
         scale: controlScale,
-        color: '#b9c9e7'
+        color: '#b9c9e7',
       });
       setDialogueBounds(canvas, ctx, centerX - width / 2, y, width, height);
       ctx.restore();

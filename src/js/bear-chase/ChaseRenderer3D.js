@@ -1,60 +1,32 @@
 import * as T from '../../vendor/three/three.module.js';
-import {
-  ChaseBearModel
-} from './ChaseBearModel.js';
-import {
-  PICTORIAL_ATLASES
-} from './props/PictorialMaterialAssets.js';
-import {
-  ToyChestProp
-} from './props/ToyChestProp.js';
-import {
-  ChasePropCatalog
-} from './props/ChasePropCatalog.js';
-import {
-  ChaseToyModels
-} from './ChaseToyModels.js';
-import {
-  ChaseGirlModel
-} from './ChaseGirlModel.js';
-import {
-  ChaseGirlAnimation
-} from './ChaseGirlAnimation.js';
-import {
-  ChaseFairyModel
-} from './ChaseFairyModel.js';
-import {
-  CHASE_CONFIG as C,
-  clamp
-} from './ChaseConfig.js';
+import { ChaseBearModel } from './ChaseBearModel.js';
+import { PICTORIAL_ATLASES } from './props/pictorialMaterialAssets.js';
+import { ToyChestProp } from './props/ToyChestProp.js';
+import { ChasePropCatalog } from './props/ChasePropCatalog.js';
+import { ChaseToyModels } from './ChaseToyModels.js';
+import { ChaseGirlModel } from './ChaseGirlModel.js';
+import { ChaseGirlAnimation } from './ChaseGirlAnimation.js';
+import { ChaseFairyModel } from './ChaseFairyModel.js';
+import { CHASE_CONFIG as C, clamp } from './chaseConfig.js';
 
-import {
-  ChaseLighting
-} from './ChaseLighting.js';
-import {
-  ChaseRoom
-} from './ChaseRoom.js';
-import {
-  chaseCameraFrame
-} from './ChaseCamera.js';
-import {
-  routePoint,
-  routeFrame
-} from './ChaseRoute.js';
+import { ChaseLighting } from './ChaseLighting.js';
+import { ChaseRoom } from './ChaseRoom.js';
+import { chaseCameraFrame } from './chaseCamera.js';
+import { routePoint, routeFrame } from './chaseRoute.js';
 
 const ART = new URL('../../../assets/art/', import.meta.url);
 
 /** Carrega uma imagem local com falha explícita, sem recorrer a artes aposentadas. */
 async function imageFile(path) {
   const image = new Image();
-  image.src = new URL(path, ART)
-    .href;
+  image.src = new URL(path, ART).href;
   try {
     await image.decode();
   } catch {
     throw new Error('Arte da perseguição ausente ou inválida: ' + path);
   }
-  if (!image.naturalWidth || !image.naturalHeight) throw new Error('Arte da perseguição vazia: ' + path);
+  if (!image.naturalWidth || !image.naturalHeight)
+    throw new Error('Arte da perseguição vazia: ' + path);
   return image;
 }
 
@@ -64,14 +36,14 @@ export class ChaseRenderer3D {
   constructor() {
     this.renderer = new T.WebGLRenderer({
       antialias: true,
-      alpha: false
+      alpha: false,
     });
     this.renderer.setPixelRatio(1);
     this.renderer.outputColorSpace = T.SRGBColorSpace;
     this.scene = new T.Scene();
     this.scene.background = new T.Color('#f3dfb8');
     this.scene.fog = new T.Fog('#f3dfb8', 48, 100);
-    this.camera = new T.PerspectiveCamera(57, 1, .1, 130);
+    this.camera = new T.PerspectiveCamera(57, 1, 0.1, 130);
     this.resources = new Set();
     this.segments = [];
     this.toys = new Map();
@@ -80,7 +52,7 @@ export class ChaseRenderer3D {
     this.chest = null;
     this.ready = false;
     this.contextLost = false;
-    this.onLost = event => {
+    this.onLost = (event) => {
       event.preventDefault();
       this.contextLost = true;
     };
@@ -102,7 +74,8 @@ export class ChaseRenderer3D {
       source = document.createElement('canvas');
       source.width = crop.w;
       source.height = crop.h;
-      source.getContext('2d')
+      source
+        .getContext('2d')
         .drawImage(image, crop.x, crop.y, crop.w, crop.h, 0, 0, crop.w, crop.h);
     }
     const texture = this.own(new T.Texture(source));
@@ -126,22 +99,26 @@ export class ChaseRenderer3D {
     context.drawImage(image, 27, 151, 186, 48, 0, 0, source.width, source.height);
     this.floorSource = source;
     const levels = [];
-    for (let width = source.width, height = source.height;; width = Math.max(1, width / 2), height = Math.max(1, height / 2)) {
+    for (
+      let width = source.width, height = source.height;
+      ;
+      width = Math.max(1, width / 2), height = Math.max(1, height / 2)
+    ) {
       const canvas = document.createElement('canvas');
       canvas.width = width;
       canvas.height = height;
       const ctx = canvas.getContext('2d');
       ctx.drawImage(source, 0, 0, width, height);
-      const pixels = ctx.getImageData(0, 0, width, height)
-        .data;
+      const pixels = ctx.getImageData(0, 0, width, height).data;
       const data = new Uint8Array(pixels.length),
         stride = width * 4;
       // DataTexture recebe bytes sem flipY do DOM: inverte as linhas explicitamente.
-      for (let y = 0; y < height; y++) data.set(pixels.subarray(y * stride, (y + 1) * stride), (height - y - 1) * stride);
+      for (let y = 0; y < height; y++)
+        data.set(pixels.subarray(y * stride, (y + 1) * stride), (height - y - 1) * stride);
       levels.push({
         data,
         width,
-        height
+        height,
       });
       if (width === 1 && height === 1) break;
     }
@@ -162,11 +139,11 @@ export class ChaseRenderer3D {
     const target = new T.WebGLRenderTarget(8, 8);
     const material = new T.MeshBasicMaterial({
       map: this.floor,
-      toneMapped: false
+      toneMapped: false,
     });
     const geometry = new T.PlaneGeometry(2, 2),
       scene = new T.Scene();
-    const camera = new T.OrthographicCamera(-1, 1, 1, -1, .1, 2);
+    const camera = new T.OrthographicCamera(-1, 1, 1, -1, 0.1, 2);
     camera.position.z = 1;
     scene.add(new T.Mesh(geometry, material));
     const previous = this.renderer.getRenderTarget();
@@ -179,8 +156,7 @@ export class ChaseRenderer3D {
       let visible = 0;
       for (let i = 0; i < pixels.length; i += 4)
         if (pixels[i] > 10 && pixels[i] > pixels[i + 2] * 1.2 && pixels[i + 3] > 200) visible++;
-      return this.renderer.getContext()
-        .getError() === 0 && visible >= 48;
+      return this.renderer.getContext().getError() === 0 && visible >= 48;
     } finally {
       this.renderer.setRenderTarget(previous);
       target.dispose();
@@ -204,7 +180,8 @@ export class ChaseRenderer3D {
     previous.dispose();
     this.resources.delete(previous);
     this.floorMode = 'linear';
-    if (!this.floorIsVisible()) throw new Error('O piso de madeira não pôde ser preparado no dispositivo.');
+    if (!this.floorIsVisible())
+      throw new Error('O piso de madeira não pôde ser preparado no dispositivo.');
   }
   /** Envia todos os mapas e compila materiais antes da primeira apresentação do 3D. */
   async prepareVisualResources() {
@@ -214,22 +191,27 @@ export class ChaseRenderer3D {
     for (const texture of this.resources) {
       if (!texture.isTexture) continue;
       const image = texture.image;
-      if (!image || !image.width || !image.height) throw new Error('Textura visual da perseguição incompleta.');
+      if (!image || !image.width || !image.height)
+        throw new Error('Textura visual da perseguição incompleta.');
       this.renderer.initTexture(texture);
-      if (gl.getError() !== gl.NO_ERROR) throw new Error('Falha ao enviar uma textura visual da perseguição.');
+      if (gl.getError() !== gl.NO_ERROR)
+        throw new Error('Falha ao enviar uma textura visual da perseguição.');
     }
     await this.renderer.compileAsync(this.scene, this.camera);
-    if (gl.isContextLost() || gl.getError() !== gl.NO_ERROR) throw new Error('Falha ao preparar os materiais da perseguição.');
+    if (gl.isContextLost() || gl.getError() !== gl.NO_ERROR)
+      throw new Error('Falha ao preparar os materiais da perseguição.');
   }
   /** Cria material ilustrado sem alterar paleta por iluminação física especular. */
   material(texture, color = '#ffffff') {
-    return this.own(new T.MeshBasicMaterial({
-      map: texture || null,
-      color,
-      side: T.DoubleSide,
-      transparent: Boolean(texture),
-      alphaTest: texture ? .12 : 0
-    }));
+    return this.own(
+      new T.MeshBasicMaterial({
+        map: texture || null,
+        color,
+        side: T.DoubleSide,
+        transparent: Boolean(texture),
+        alphaTest: texture ? 0.12 : 0,
+      }),
+    );
   }
   /** Acrescenta uma superfície ou objeto com geometria realmente tridimensional. */
   mesh(parent, geometry, material, x, y, z) {
@@ -240,19 +222,22 @@ export class ChaseRenderer3D {
   }
   /** Cria um plano de personagem com âncora inferior e proporções nativas. */
   actor(texture, width, height) {
-    const actor = this.mesh(this.scene, new T.PlaneGeometry(width, height), this.material(texture), 0, height / 2, 0);
+    const actor = this.mesh(
+      this.scene,
+      new T.PlaneGeometry(width, height),
+      this.material(texture),
+      0,
+      height / 2,
+      0,
+    );
     actor.userData.height = height;
     return actor;
   }
   /** Carrega somente as referências visuais usadas pela janela da prova. */
   async load() {
     const paths = {
-      ...Object.fromEntries(Object.values(PICTORIAL_ATLASES)
-        .map(({
-          key,
-          path
-        }) => [key, path])),
-      bearAtlas: 'toy-room/bear-chase/materials/urso-atlas-v2.png',
+      ...Object.fromEntries(Object.values(PICTORIAL_ATLASES).map(({ key, path }) => [key, path])),
+      bearAtlas: 'toy-room/bear-chase/materials/bear-atlas-v2.png',
       env: 'toy-room/environment-sheet.png',
       wall: 'toy-room/stage1/wallpaper-v1.png',
       trim: 'toy-room/stage1/oak-trim-v1.png',
@@ -267,13 +252,15 @@ export class ChaseRenderer3D {
     if (this.disposed) return;
     this.floor = this.floorTexture(env);
     this.prepareFloor();
-    const loaded = await Promise.all(Object.entries(paths)
-      .filter(([key]) => key !== 'env')
-      .map(async ([key, path]) => [key, await imageFile(path)]));
+    const loaded = await Promise.all(
+      Object.entries(paths)
+        .filter(([key]) => key !== 'env')
+        .map(async ([key, path]) => [key, await imageFile(path)]),
+    );
     if (this.disposed) return;
     const images = {
       env,
-      ...Object.fromEntries(loaded)
+      ...Object.fromEntries(loaded),
     };
     this.propCatalog = new ChasePropCatalog(images, this.resources);
     this.toyModels = new ChaseToyModels(this.propCatalog);
@@ -285,32 +272,34 @@ export class ChaseRenderer3D {
     this.trim.repeat.set(1, 1);
     this.decoration = {
       rug: this.texture(images.rug),
-      window: this.texture(images.window)
+      window: this.texture(images.window),
     };
     this.materials = {
       floor: this.material(this.floor),
       wall: this.material(this.wall),
       trim: this.material(this.trim),
       wood: this.material(null, '#9d5c32'),
-      ceiling: this.material(null, '#fff0d8')
+      ceiling: this.material(null, '#fff0d8'),
     };
     // Superfícies opacas não participam da ordenação de transparência da sala inteira.
     for (const key of ['floor', 'wall', 'trim', 'ceiling']) {
       const previous = this.materials[key];
-      this.materials[key] = this.own(new T.MeshStandardMaterial({
-        map: previous.map,
-        color: previous.color,
-        roughness: 1,
-        metalness: 0,
-        side: T.DoubleSide,
-        alphaTest: key === 'trim' ? .12 : 0
-      }));
+      this.materials[key] = this.own(
+        new T.MeshStandardMaterial({
+          map: previous.map,
+          color: previous.color,
+          roughness: 1,
+          metalness: 0,
+          side: T.DoubleSide,
+          alphaTest: key === 'trim' ? 0.12 : 0,
+        }),
+      );
       previous.dispose();
       this.resources.delete(previous);
     }
     this.prepareRoomResources();
     this.room = new ChaseRoom(this);
-    this.girlModel = new ChaseGirlModel(resource => this.own(resource));
+    this.girlModel = new ChaseGirlModel((resource) => this.own(resource));
     this.girlAnimation = new ChaseGirlAnimation(this.girlModel);
     this.girl = this.girlModel.root;
     this.scene.add(this.girl);
@@ -322,14 +311,24 @@ export class ChaseRenderer3D {
     gradient.addColorStop(1, 'rgba(65,35,25,0)');
     shadowCtx.fillStyle = gradient;
     shadowCtx.fillRect(0, 0, 64, 64);
-    this.contactShadow = this.mesh(this.scene, new T.PlaneGeometry(.85, .55), this.material(this.texture(shadowCanvas)), 0, .025, 0);
+    this.contactShadow = this.mesh(
+      this.scene,
+      new T.PlaneGeometry(0.85, 0.55),
+      this.material(this.texture(shadowCanvas)),
+      0,
+      0.025,
+      0,
+    );
     this.contactShadow.rotation.x = -Math.PI / 2;
     this.contactShadow.material.alphaTest = 0;
     this.contactShadow.material.depthWrite = false;
-    this.bearModel = new ChaseBearModel(resource => this.own(resource), this.texture(images.bearAtlas));
+    this.bearModel = new ChaseBearModel(
+      (resource) => this.own(resource),
+      this.texture(images.bearAtlas),
+    );
     this.bear = this.bearModel.root;
     this.scene.add(this.bear);
-    this.fairyModel = new ChaseFairyModel(resource => this.own(resource));
+    this.fairyModel = new ChaseFairyModel((resource) => this.own(resource));
     this.fairy = this.fairyModel.root;
     this.scene.add(this.fairy);
     this.chest = this.propCatalog.create('chest');
@@ -344,14 +343,16 @@ export class ChaseRenderer3D {
   prepareRoomResources() {
     this.roomMaterials = {
       window: this.material(this.decoration.window),
-      rug: this.own(new T.MeshStandardMaterial({
-        map: this.decoration.rug,
-        roughness: 1,
-        metalness: 0,
-        side: T.DoubleSide,
-        transparent: true,
-        alphaTest: .12
-      }))
+      rug: this.own(
+        new T.MeshStandardMaterial({
+          map: this.decoration.rug,
+          roughness: 1,
+          metalness: 0,
+          side: T.DoubleSide,
+          transparent: true,
+          alphaTest: 0.12,
+        }),
+      ),
     };
   }
   /** Posiciona uma entidade no traçado preservando sua pose local e a altura de animação. */
@@ -386,8 +387,15 @@ export class ChaseRenderer3D {
       // Grupos densos usam a largura real do modelo, preservando proporções e o vão visível.
       mesh.scale.setScalar(obstacle.fitWidth ? obstacle.width / mesh.userData.visualWidth : 1);
       mesh.rotation.set(0, 0, 0);
-      const centeredLateral = lateral - (obstacle.fitWidth ? mesh.userData.visualCenterX * mesh.scale.x : 0);
-      this.placeOnRoute(mesh, distance, centeredLateral, (1 - t) * 1.2 + Math.sin(t * Math.PI) * 1.4, true);
+      const centeredLateral =
+        lateral - (obstacle.fitWidth ? mesh.userData.visualCenterX * mesh.scale.x : 0);
+      this.placeOnRoute(
+        mesh,
+        distance,
+        centeredLateral,
+        (1 - t) * 1.2 + Math.sin(t * Math.PI) * 1.4,
+        true,
+      );
       mesh.visible = !obstacle.hit;
     }
     for (const [id, mesh] of this.toys)
@@ -400,7 +408,7 @@ export class ChaseRenderer3D {
   render(ctx, canvas, state) {
     if (!this.ready || this.contextLost) return;
     const width = Math.min(canvas.width, 1440),
-      height = Math.round(width * canvas.height / canvas.width);
+      height = Math.round((width * canvas.height) / canvas.width);
     if (this.renderer.domElement.width !== width || this.renderer.domElement.height !== height) {
       this.renderer.setSize(width, height, false);
       this.camera.aspect = width / height;
@@ -412,23 +420,34 @@ export class ChaseRenderer3D {
     this.girlAnimation.apply(state);
     this.placeOnRoute(this.girl, state.distance, state.x, this.girl.position.y, true);
     this.contactShadow.rotation.set(-Math.PI / 2, 0, 0);
-    this.placeOnRoute(this.contactShadow, state.distance, state.x, .025, true);
+    this.placeOnRoute(this.contactShadow, state.distance, state.x, 0.025, true);
     this.bearModel.apply(state);
     this.fairyModel.apply(state, this.girlModel);
     this.chest.visible = ['CAUGHT', 'CHEST_RETURN', 'COMPLETE'].includes(state.stage);
-    this.chest.position.set(4.74, 0, -state.gap - .3);
-    const progress = state.stage === 'CHEST_RETURN' ? clamp(state.age / C.stages.CHEST_RETURN, 0, 1) : 0;
-    const opening = state.stage === 'CAUGHT' ? clamp(state.age / .6, 0, 1) :
-      state.stage === 'CHEST_RETURN' ? 1 - clamp((progress - .78) / .22, 0, 1) : 0;
+    this.chest.position.set(4.74, 0, -state.gap - 0.3);
+    const progress =
+      state.stage === 'CHEST_RETURN' ? clamp(state.age / C.stages.CHEST_RETURN, 0, 1) : 0;
+    const opening =
+      state.stage === 'CAUGHT'
+        ? clamp(state.age / 0.6, 0, 1)
+        : state.stage === 'CHEST_RETURN'
+          ? 1 - clamp((progress - 0.78) / 0.22, 0, 1)
+          : 0;
     ToyChestProp.setOpening(this.chest, opening);
     if (state.stage === 'CHEST_RETURN') {
       const t = 1 - (1 - progress) ** 3;
       this.bear.position.x = state.bearX + (4.74 - state.bearX) * t;
-      this.bear.position.z = -state.gap - .3 * t;
+      this.bear.position.z = -state.gap - 0.3 * t;
     }
-    this.placeOnRoute(this.bear, state.distance - this.bear.position.z, this.bear.position.x, this.bear.position.y, true);
+    this.placeOnRoute(
+      this.bear,
+      state.distance - this.bear.position.z,
+      this.bear.position.x,
+      this.bear.position.y,
+      true,
+    );
     this.chest.rotation.set(0, -Math.PI / 2, 0);
-    this.placeOnRoute(this.chest, state.distance + state.gap + .3, 4.74, 0);
+    this.placeOnRoute(this.chest, state.distance + state.gap + 0.3, 4.74, 0);
     this.updateToys(state);
     this.lighting.update(state, portrait);
     this.renderer.render(this.scene, this.camera);
@@ -441,10 +460,7 @@ export class ChaseRenderer3D {
       this.camera.fov = frame.fov;
       this.camera.updateProjectionMatrix();
     }
-    const {
-      position,
-      target
-    } = frame;
+    const { position, target } = frame;
     const camera = routePoint(state.distance - position.z, position.x, position.y);
     this.camera.position.set(camera.x, camera.y, camera.z);
     const look = routePoint(target.s, target.x, target.y);

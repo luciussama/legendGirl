@@ -36,7 +36,7 @@ a aprovação humana individual de toda nova textura/modelo.
 
 ## Urso da perseguição
 
-`urso-atlas-v2.png` é o atlas 2×2 do personagem, baseado no urso da arena:
+`bear-atlas-v2.png` é o atlas 2×2 do personagem, baseado no urso da arena:
 pelúcia ocre, creme do focinho/palmas, tecido vermelho do laço e castanho escuro.
 A primeira interpretação `urso-atlas-v1.png`, com fibras maiores, foi aposentada
 e preservada integralmente no diário. O atlas decorativo v2 também foi retirado

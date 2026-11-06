@@ -1,8 +1,8 @@
 {
   "referenceHeight": 256,
   "sets": {
-    "menina-corrida-v1": {
-      "file": "runtime/menina-corrida-v1.png",
+    "girl-running-v1": {
+      "file": "runtime/girl-running-v1.png",
       "frames": [
         {
           "x": 10,
@@ -70,8 +70,8 @@
         }
       ]
     },
-    "menina-acoes-v1": {
-      "file": "runtime/menina-acoes-v1.png",
+    "girl-actions-v1": {
+      "file": "runtime/girl-actions-v1.png",
       "frames": [
         {
           "x": 10,
@@ -139,8 +139,8 @@
         }
       ]
     },
-    "menina-desconforto-v1": {
-      "file": "runtime/menina-desconforto-v1.png",
+    "girl-discomfort-v1": {
+      "file": "runtime/girl-discomfort-v1.png",
       "frames": [
         {
           "x": 10,
@@ -208,8 +208,8 @@
         }
       ]
     },
-    "menina-pedrinhas-v2": {
-      "file": "runtime/menina-pedrinhas-v2.png",
+    "girl-pebbles-v2": {
+      "file": "runtime/girl-pebbles-v2.png",
       "frames": [
         {
           "x": 10,
@@ -246,7 +246,7 @@
       ]
     },
     "objetos": {
-      "file": "source/objetos-v1.png",
+      "file": "source/objects-v1.png",
       "frames": [
         {
           "x": 20,
@@ -305,7 +305,7 @@
       ]
     },
     "ambiente": {
-      "file": "source/ambiente-v2.png",
+      "file": "source/ambient-v2.png",
       "frames": [
         {
           "x": 11,
@@ -334,7 +334,7 @@
       ]
     },
     "lagartaVermelha": {
-      "file": "source/lagarta-vermelha-v1.png",
+      "file": "source/caterpillar-red-v1.png",
       "frames": [
         {
           "x": 165,

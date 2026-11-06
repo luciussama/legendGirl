@@ -16,7 +16,15 @@ export class ToyRenderer {
    * @param {boolean} isCarrying
    * @param {number} [time]
    */
-  renderToy(ctx, t, playerX = 0, playerY = 0, isCarrying = false, time = performance.now(), options = {}) {
+  renderToy(
+    ctx,
+    t,
+    playerX = 0,
+    playerY = 0,
+    isCarrying = false,
+    time = performance.now(),
+    options = {},
+  ) {
     if (!ctx || !t || t.isOrganized) return;
 
     ctx.save();
@@ -74,7 +82,7 @@ export class ToyRenderer {
     const bunnyImage = t.type === 'bunny' && options.assets?.get('toy-room-cotton-bunny-v1');
     if (bunnyImage) {
       // Preserva a base e a largura anteriores sem deformar a ilustração de pelúcia.
-      const bunnyHeight = Math.min(66, 32 * bunnyImage.height / bunnyImage.width);
+      const bunnyHeight = Math.min(66, (32 * bunnyImage.height) / bunnyImage.width);
       ctx.drawImage(bunnyImage, tx - 16, ty + 26 - bunnyHeight, 32, bunnyHeight);
       ctx.restore();
       return;
@@ -85,13 +93,15 @@ export class ToyRenderer {
       duck: ['toy-room-royal-duck-v1', 44, 47, 22],
       blocks: ['toy-room-stacking-blocks-v1', 32, 50, 22],
       drum: ['toy-room-enchanted-drum-v1', 36, 30, 16],
-      jack: ['toy-room-fairy-jack-box-v1', 28, 51, 26]
-    } [t.type];
+      jack: ['toy-room-fairy-jack-box-v1', 28, 51, 26],
+    }[t.type];
     const toyImage = illustratedToy && options.assets?.get(illustratedToy[0]);
     if (toyImage) {
       // Conserva a área anterior e a base usada pelas mãos, sem deformar o material ilustrado.
-      const scale = Math.min(illustratedToy[1] / toyImage.width,
-        illustratedToy[2] / toyImage.height);
+      const scale = Math.min(
+        illustratedToy[1] / toyImage.width,
+        illustratedToy[2] / toyImage.height,
+      );
       const width = toyImage.width * scale;
       const height = toyImage.height * scale;
       ctx.drawImage(toyImage, tx - width / 2, ty + illustratedToy[3] - height, width, height);

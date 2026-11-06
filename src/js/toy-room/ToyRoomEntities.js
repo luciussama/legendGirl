@@ -1,12 +1,6 @@
-import {
-  babyRenderer
-} from '../entities/BabyRenderer.js';
-import {
-  renderToyCarry
-} from './ToyCarryPresentation.js';
-import {
-  renderGirlRun
-} from '../entities/GirlLocomotion.js';
+import { girlRenderer } from '../entities/GirlRenderer.js';
+import { renderToyCarry } from './toyCarryPresentation.js';
+import { renderGirlRun } from '../entities/girlLocomotion.js';
 
 /** Renderização dos sprites oficiais da protagonista e da fada acompanhante. */
 
@@ -22,13 +16,34 @@ export class ToyRoomEntities {
       renderToyCarry(ctx, player, options);
       return;
     }
-    if (!options.swordEquipped && (player.isMoving || player.runBlend > 0) &&
-      renderGirlRun(ctx, options.assets, player, player.x, player.y + 28, 80,
-        player.facing === 'left' ? -1 : 1, 1, true)) return;
+    if (
+      !options.swordEquipped &&
+      (player.isMoving || player.runBlend > 0) &&
+      renderGirlRun(
+        ctx,
+        options.assets,
+        player,
+        player.x,
+        player.y + 28,
+        80,
+        player.facing === 'left' ? -1 : 1,
+        1,
+        true,
+      )
+    )
+      return;
     const pose = (options.swordEquipped ? 'sword_' : '') + (player.isMoving ? 'run' : 'idle');
     const frame = Math.floor((player.animTime || 0) * 0.9);
-    babyRenderer.renderPose(ctx, options.assets, pose, frame,
-      player.x, player.y + 28, 80, player.facing === 'left' ? -1 : 1);
+    girlRenderer.renderPose(
+      ctx,
+      options.assets,
+      pose,
+      frame,
+      player.x,
+      player.y + 28,
+      80,
+      player.facing === 'left' ? -1 : 1,
+    );
   }
 
   /** Desenha a fada ilustrada com escala de corpo estável ou usa a composição vetorial de reserva. */

@@ -131,7 +131,7 @@ homologam dificuldade humana, Safari ou aparelhos físicos.
 
 A revisão atual acompanha a menina ilustrada girl-v2: vestido creme inteiro, barra e faixa rosa, mangas bufantes, laço nas costas, bordado floral, botas marrons e duas marias-chiquinhas curtas com laços. Cabeça e cabelo têm escala conjunta menor, enquanto tronco, braços e pernas foram alongados para aproximar a silhueta da pintura. A franja acompanha as têmporas em volume; os cachos laterais deixam de formar placas. As costas continuam uma interpretação em volume; não presumir homologação humana de todas as vistas.
 
-`ChaseGirlPalette.js` e `assets/models/bear-chase/paleta-menina.json` vêm de `node scripts/prepare-chase-palette.js`: regiões do novo `girl-v2/source/locomocao.png`, mediana 7×7, limiar de alfa e hash. A guarda azul da espada conserva seu material anterior, explicitamente registrado. Detalhes rígidos do mesmo material são agrupados por articulação; 120 pétalas de baixa tesselação usam uma única malha instanciada. Dois rabos e pontas recebem movimento secundário sem alterar a simulação. A fada orbital e os dois mapas de sombra conservam seu contrato.
+`chaseGirlPalette.js` e `assets/models/bear-chase/palette-girl.json` vêm de `node scripts/prepare-chase-palette.js`: regiões do novo `girl-v2/source/locomotion.png`, mediana 7×7, limiar de alfa e hash. A guarda azul da espada conserva seu material anterior, explicitamente registrado. Detalhes rígidos do mesmo material são agrupados por articulação; 120 pétalas de baixa tesselação usam uma única malha instanciada. Dois rabos e pontas recebem movimento secundário sem alterar a simulação. A fada orbital e os dois mapas de sombra conservam seu contrato.
 
 O construtor gera malhas locais; o GLB é intercâmbio em pose neutra, regenerado por
 `node scripts/export-chase-girl.js`. A animação não está embutida no GLB. O renderer
@@ -191,7 +191,7 @@ passa a seguir o novo traçado e os novos padrões intencionalmente.
 Os quatro atlas anteriores continuam nos modelos já existentes. Após reprovação
 dos oito objetos decorativos, suas formas foram reconstruídas e receberam um
 atlas próprio 4×4: madeira/crina/sela, borracha, esmalte/latão, pelúcia, tecidos,
-laca e pele do tambor. `decorativos-atlas-v3.png` é a versão consumida; o estudo v2 foi aposentado e preservado no acervo. Texturas geradas pela ferramenta integrada image_gen, com
+laca e pele do tambor. `decorative-atlas-v3.png` é a versão consumida; o estudo v2 foi aposentado e preservado no acervo. Texturas geradas pela ferramenta integrada image_gen, com
 prompts junto aos PNGs. Fontes originais preservadas; sem CLI/API paga separada.
 A revisão dos modelos ainda aguarda avaliação artística humana; a iluminação atual está descrita abaixo.
 
@@ -266,13 +266,13 @@ são controles de orçamento; desempenho em GPU móvel física ainda exige medi�
 `ChaseBearModel` constrói a pelúcia com material pictórico derivado da arte da
 arena; `ChaseBearAnimation` resolve a pose sem decidir eventos de jogo. A corrida
 inclui joelhos, tornozelos, transferência de peso, contrabalanço e movimento de
-orelhas/laço. O atlas consumido é `urso-atlas-v2.png`; prompts ficam ao lado dele.
+orelhas/laço. O atlas consumido é `bear-atlas-v2.png`; prompts ficam ao lado dele.
 A locomoção é cinemática e não usa bloqueio horizontal físico das patas.
 
 
 ## Intensificação da perseguição
 
-`ChasePacing.js` concentra a progressão: após os primeiros 15% da pista, a
+`chasePacing.js` concentra a progressão: após os primeiros 15% da pista, a
 velocidade-base cresce suavemente de 8 para 12. Rampas e tropeços continuam
 influenciando o avanço. O urso perde distância gradualmente e a aproximação final
 se intensifica nos últimos 6%, sem parar a passada da menina antes da captura.
@@ -284,7 +284,7 @@ preserva tempo para reagir depois do pouso. No FÁCIL, a folga longitudinal é m
 Nos trechos rápidos, as saídas sucessivas exigem no máximo uma mudança de faixa;
 quando falta espaço para um lançamento seguro, o urso encerra os ataques.
 
-`ChaseCamera.js` calcula a câmera sem modificar a simulação. Ela avança em direção
+`chaseCamera.js` calcula a câmera sem modificar a simulação. Ela avança em direção
 às costas da menina e baixa suavemente, com oscilação vertical pequena ligada ao
 deslocamento. O campo de visão abre discretamente para preservar leitura periférica.
 No retrato, há folga adaptativa quando os atores ocupam faixas diferentes. A captura

@@ -4,12 +4,12 @@ export const GAME_CONFIG = {
   canvasWidth: 960,
   canvasHeight: 540,
   floorY: 470,
-  uiMessage: 'Toque na tela para dar um pulinho e seguir a fadinha'
+  uiMessage: 'Toque na tela para dar um pulinho e seguir a fadinha',
 };
 
 export const FLOOR_Y = GAME_CONFIG.floorY;
 
-export function createBabyState() {
+export function createPlayerState() {
   return {
     x: 60,
     y: FLOOR_Y - 44,
@@ -26,21 +26,21 @@ export function createBabyState() {
     animTime: 0,
     currentPlatformIndex: -1,
     isEscaping: false,
-    longJumpUnlocked: false
+    longJumpUnlocked: false,
   };
 }
 
 export const CUTSCENE_DIALOGUE = {
-  step1: "A porta é por ali. Anda, vem comigo!",
-  step2: "Daqui parece perto. Lá embaixo, não.",
-  plotTwistBaby: "Mas era ali. Eu tinha certeza.",
-  plotTwistFairy: "Eu também achei. Droga... Vamos olhar por ali."
+  step1: 'A porta é por ali. Anda, vem comigo!',
+  step2: 'Daqui parece perto. Lá embaixo, não.',
+  plotTwistPlayer: 'Mas era ali. Eu tinha certeza.',
+  plotTwistFairy: 'Eu também achei. Droga... Vamos olhar por ali.',
 };
 
 // EASY conserva os alcances originais. NORMAL corre a 2 px/quadro e usa
 // alcances fixos próprios, sem frear no ar nem ajustar a mira pela posição do comando.
 const APPROACH_AIR_SPEEDS = Object.freeze([
-  1.42, 1.42, 1.42, 1.42, 1.42, 1.8, 1.95, 1.42, 1.42, 1.42
+  1.42, 1.42, 1.42, 1.42, 1.42, 1.8, 1.95, 1.42, 1.42, 1.42,
 ]);
 const NORMAL_APPROACH_AIR_SPEEDS = Object.freeze([2, 2, 2, 2, 2.3301, 2.835, 2.8474, 2.3259, 2, 2]);
 export function getApproachJumpSpeed(platformIndex, difficulty = 'NORMAL') {
@@ -51,16 +51,15 @@ export function getApproachJumpSpeed(platformIndex, difficulty = 'NORMAL') {
 // Retorno pós-clímax: entrada pelo chão, quinze apoios e chegada ao portal.
 // A janela inicial é menor que a da fuga; o final conserva uma margem utilizável.
 const PHASE3_AIR_SPEEDS = Object.freeze([
-  1.1088, 1.5883, 1.9809, 2.3397, 2.7594, 3.0715, 3.5089, 3.9311,
-  4.3560, 4.7501, 5.1968, 5.5080, 5.9376, 6.3539, 6.7577, 7.2345
+  1.1088, 1.5883, 1.9809, 2.3397, 2.7594, 3.0715, 3.5089, 3.9311, 4.356, 4.7501, 5.1968, 5.508,
+  5.9376, 6.3539, 6.7577, 7.2345,
 ]);
 const NORMAL_PHASE3_AIR_SPEEDS = Object.freeze([
-  1.1088, 2.1955, 2.597, 2.9772, 3.4119, 3.7886, 4.2255, 4.6508,
-  5.0562, 5.4318, 5.8662, 6.2336, 6.6358, 7.0325, 7.4001, 7.9344
+  1.1088, 2.1955, 2.597, 2.9772, 3.4119, 3.7886, 4.2255, 4.6508, 5.0562, 5.4318, 5.8662, 6.2336,
+  6.6358, 7.0325, 7.4001, 7.9344,
 ]);
 const NORMAL_ESCAPE_AIR_SPEEDS = Object.freeze([
-  1.85, 2.4745, 2.652, 2.8212, 2.8537, 3.2233, 3.3327, 3.55,
-  3.7454, 3.8936, 4.3348, 4.6646
+  1.85, 2.4745, 2.652, 2.8212, 2.8537, 3.2233, 3.3327, 3.55, 3.7454, 3.8936, 4.3348, 4.6646,
 ]);
 
 /**
@@ -74,15 +73,16 @@ export function getEscapeStats(level, difficulty = 'NORMAL') {
   const t = lvl / 11; // 0.0 a 1.0
   return {
     levelIndex: lvl,
-    jumpPower: -7.20 - t * 2.10, // -7.20 a -9.30 px/frame (ápice vertical controlado)
+    jumpPower: -7.2 - t * 2.1, // -7.20 a -9.30 px/frame (ápice vertical controlado)
     // Alcance fixo por nível, calibrado para janelas de saída cada vez menores.
-    airVx: difficulty === 'EASY' ? [1.85, 2.176, 2.255, 2.354, 2.360, 2.627, 2.703,
-      2.886, 3.082, 3.288, 3.732, 4.080
-    ][lvl] : NORMAL_ESCAPE_AIR_SPEEDS[lvl],
-    runVx: 1.65 + t * 1.10, // 1.65 a 2.75 px/frame
-    scrollSpeed: 1.50 + t * 2.25, // 1.50 a 3.75 px/frame
+    airVx:
+      difficulty === 'EASY'
+        ? [1.85, 2.176, 2.255, 2.354, 2.36, 2.627, 2.703, 2.886, 3.082, 3.288, 3.732, 4.08][lvl]
+        : NORMAL_ESCAPE_AIR_SPEEDS[lvl],
+    runVx: 1.65 + t * 1.1, // 1.65 a 2.75 px/frame
+    scrollSpeed: 1.5 + t * 2.25, // 1.50 a 3.75 px/frame
     pitchMult: 1.0 + t * 0.55, // multiplicador de tom sonoro de 1.0x a 1.55x
-    trailIntensity: 1 + Math.floor(t * 3) // 1 a 4 partículas por emissão
+    trailIntensity: 1 + Math.floor(t * 3), // 1 a 4 partículas por emissão
   };
 }
 
@@ -96,12 +96,14 @@ export function getPhase3Stats(level, fromFloor = false, difficulty = 'NORMAL') 
   const t = lvl / 14; // 0.0 a 1.0
   return {
     levelIndex: lvl,
-    jumpPower: -7.40 - t * 2.20, // -7.40 a -9.60 px/frame (arco suave e elegante sem ultrapassar o teto)
-    airVx: -(difficulty === 'EASY' ? PHASE3_AIR_SPEEDS : NORMAL_PHASE3_AIR_SPEEDS)[fromFloor ? 0 : lvl + 1],
-    runVx: -(1.90 + t * 1.60), // -1.90 a -3.50 px/frame
-    scrollSpeed: -(1.80 + t * 2.40), // -1.80 a -4.20 px/frame
+    jumpPower: -7.4 - t * 2.2, // -7.40 a -9.60 px/frame (arco suave e elegante sem ultrapassar o teto)
+    airVx: -(difficulty === 'EASY' ? PHASE3_AIR_SPEEDS : NORMAL_PHASE3_AIR_SPEEDS)[
+      fromFloor ? 0 : lvl + 1
+    ],
+    runVx: -(1.9 + t * 1.6), // -1.90 a -3.50 px/frame
+    scrollSpeed: -(1.8 + t * 2.4), // -1.80 a -4.20 px/frame
     pitchMult: 1.0 + t * 0.65,
-    trailIntensity: 1 + Math.floor(t * 4)
+    trailIntensity: 1 + Math.floor(t * 4),
   };
 }
 
@@ -121,7 +123,7 @@ export function createFairyState() {
     particles: [],
     beaconGlow: 0,
     spinAnim: 0,
-    investigateAngle: 0
+    investigateAngle: 0,
   };
 }
 
@@ -134,7 +136,7 @@ export const platforms = [
     h: 60,
     style: 'giant_bear',
     contactGroup: 'urso-livros',
-    label: 'Cabeça do Urso de Pelúcia'
+    label: 'Cabeça do Urso de Pelúcia',
   },
   {
     x: 380,
@@ -143,7 +145,7 @@ export const platforms = [
     h: 65,
     style: 'open_books',
     contactGroup: 'urso-livros',
-    label: 'Pilha de Livros Ilustrados'
+    label: 'Pilha de Livros Ilustrados',
   },
   {
     x: 530,
@@ -152,7 +154,7 @@ export const platforms = [
     h: 85,
     surfaceTopY: 393,
     style: 'vanity_table',
-    label: 'Penteadeira Encantada'
+    label: 'Penteadeira Encantada',
   },
   {
     x: 695,
@@ -160,7 +162,7 @@ export const platforms = [
     w: 115,
     h: 105,
     style: 'small_dresser',
-    label: 'Cômoda Pequena de Madeira'
+    label: 'Cômoda Pequena de Madeira',
   },
   {
     x: 850,
@@ -174,8 +176,8 @@ export const platforms = [
       x: 881,
       y: 351,
       w: 50,
-      h: 125
-    }
+      h: 125,
+    },
   },
   {
     x: 1010,
@@ -189,8 +191,8 @@ export const platforms = [
       x: 1030,
       y: 330,
       w: 71,
-      h: 145
-    }
+      h: 145,
+    },
   },
   {
     x: 1165,
@@ -204,8 +206,8 @@ export const platforms = [
       x: 1203,
       y: 309,
       w: 44,
-      h: 165
-    }
+      h: 165,
+    },
   },
   {
     x: 1325,
@@ -213,7 +215,7 @@ export const platforms = [
     w: 125,
     h: 185,
     style: 'stepped_dresser',
-    label: 'Gavetas da Cômoda'
+    label: 'Gavetas da Cômoda',
   },
   {
     x: 1475,
@@ -226,8 +228,8 @@ export const platforms = [
       x: 1485,
       y: 267,
       w: 90,
-      h: 205
-    }
+      h: 205,
+    },
   },
   {
     x: 1588,
@@ -241,8 +243,8 @@ export const platforms = [
       x: 1636,
       y: 236,
       w: 28,
-      h: 244
-    }
+      h: 244,
+    },
   },
 
   // SEQUÊNCIA EXATA DE 12 PLATAFORMAS DEPOIS DA CENA
@@ -259,8 +261,8 @@ export const platforms = [
       x: 1860,
       y: 244,
       w: 115,
-      h: 230
-    }
+      h: 230,
+    },
   },
   // 2/12 (distância livre de 80px)
   {
@@ -274,8 +276,8 @@ export const platforms = [
       x: 2055,
       y: 236,
       w: 110,
-      h: 238
-    }
+      h: 238,
+    },
   },
   // 3/12 (distância livre de 92px)
   {
@@ -290,8 +292,8 @@ export const platforms = [
       x: 2257,
       y: 224,
       w: 105,
-      h: 250
-    }
+      h: 250,
+    },
   },
   // 4/12 (distância livre de 105px)
   {
@@ -300,7 +302,7 @@ export const platforms = [
     w: 100,
     h: 264,
     style: 'dollhouse_roof',
-    label: '4/12 Telhado da Casa de Bonecas'
+    label: '4/12 Telhado da Casa de Bonecas',
   },
   // 5/12 (distância livre de 120px)
   {
@@ -309,7 +311,7 @@ export const platforms = [
     w: 95,
     h: 256,
     style: 'spinning_globe',
-    label: '5/12 Globo Terrestre Ilustrado'
+    label: '5/12 Globo Terrestre Ilustrado',
   },
   // 6/12 (distância livre de 135px)
   {
@@ -318,7 +320,7 @@ export const platforms = [
     w: 90,
     h: 278,
     style: 'kite_frame',
-    label: '6/12 Pipa Encantada de Bambu'
+    label: '6/12 Pipa Encantada de Bambu',
   },
   // 7/12 (distância livre de 152px)
   {
@@ -327,7 +329,7 @@ export const platforms = [
     w: 85,
     h: 290,
     style: 'floating_books',
-    label: '7/12 Livro de Gravuras Flutuante'
+    label: '7/12 Livro de Gravuras Flutuante',
   },
   // 8/12 (distância livre de 170px)
   {
@@ -336,7 +338,7 @@ export const platforms = [
     w: 80,
     h: 306,
     style: 'chandelier_crystals',
-    label: '8/12 Lustre de Cristais'
+    label: '8/12 Lustre de Cristais',
   },
   // 9/12 (distância livre de 192px)
   {
@@ -345,7 +347,7 @@ export const platforms = [
     w: 76,
     h: 316,
     style: 'curtain_rod',
-    label: '9/12 Varão de Cortina Estrelada'
+    label: '9/12 Varão de Cortina Estrelada',
   },
   // 10/12 (distância livre de 218px)
   {
@@ -354,7 +356,7 @@ export const platforms = [
     w: 75,
     h: 306,
     style: 'cuckoo_clock',
-    label: '10/12 Relógio Cuco Vintage'
+    label: '10/12 Relógio Cuco Vintage',
   },
   // 11/12 (distância livre de 245px)
   {
@@ -363,7 +365,7 @@ export const platforms = [
     w: 72,
     h: 318,
     style: 'wardrobe_ledge',
-    label: '11/12 Beiral do Grande Guarda-Roupa'
+    label: '11/12 Beiral do Grande Guarda-Roupa',
   },
   // 12/12 (distância livre de 278px: o grande abismo final vencido no ápice do Pulo Máximo)
   {
@@ -372,15 +374,15 @@ export const platforms = [
     w: 270,
     h: 326,
     style: 'grand_portal_pedestal',
-    label: '12/12 O Portal dos Sonhos (Saída)'
-  }
+    label: '12/12 O Portal dos Sonhos (Saída)',
+  },
 ];
 
 export const exitDoor = {
   x: 4770,
   y: 148 - 120,
   w: 86,
-  h: 120
+  h: 120,
 };
 
 // ==========================================
@@ -389,7 +391,7 @@ export const exitDoor = {
 // ==========================================
 export const phase3Platforms = [
   // PLATAFORMAS INICIAIS (1 A 5):
-  // Zona segura com grande buffer de chão plano antes da primeira plataforma (x = 4040, baby surge em 4640).
+  // Zona segura com grande buffer de chão plano antes da primeira plataforma (x = 4040, a personagem surge em 4640).
   // Os apoios continuam largos; o alcance fixo de cada salto exige precisão crescente já após o clímax.
   // 1/15 (Início da escalada nos brinquedos caídos)
   {
@@ -398,7 +400,7 @@ export const phase3Platforms = [
     w: 130,
     h: 50,
     style: 'toppled_blocks',
-    label: '1/15 Pilha de Blocos Tombada'
+    label: '1/15 Pilha de Blocos Tombada',
   },
   // 2/15 (distância livre de 72px, alcance perfeito com nível 0)
   {
@@ -407,7 +409,7 @@ export const phase3Platforms = [
     w: 120,
     h: 68,
     style: 'floppy_ragdoll',
-    label: '2/15 Boneca de Pano Desconjuntada'
+    label: '2/15 Boneca de Pano Desconjuntada',
   },
   // 3/15 (distância livre de 95px, alcance seguro com nível 1)
   {
@@ -416,7 +418,7 @@ export const phase3Platforms = [
     w: 115,
     h: 86,
     style: 'spilled_crayons_box',
-    label: '3/15 Caixa de Giz de Cera Aberta'
+    label: '3/15 Caixa de Giz de Cera Aberta',
   },
   // 4/15 (distância livre de 118px, alcance seguro com nível 2)
   {
@@ -425,7 +427,7 @@ export const phase3Platforms = [
     w: 110,
     h: 104,
     style: 'crooked_fairytales',
-    label: '4/15 Pilha Torta de Contos de Fada'
+    label: '4/15 Pilha Torta de Contos de Fada',
   },
   // 5/15 (distância livre de 145px, alcance seguro com nível 3)
   {
@@ -434,7 +436,7 @@ export const phase3Platforms = [
     w: 105,
     h: 122,
     style: 'dented_drum',
-    label: '5/15 Tamborzinho Amassado'
+    label: '5/15 Tamborzinho Amassado',
   },
 
   // PLATAFORMAS INTERMEDIÁRIAS (6 A 10):
@@ -446,7 +448,7 @@ export const phase3Platforms = [
     w: 98,
     h: 140,
     style: 'slumped_bear',
-    label: '6/15 Urso de Pelúcia Desmoronado'
+    label: '6/15 Urso de Pelúcia Desmoronado',
   },
   // 7/15 (distância livre de 200px, ritmo intermediário com nível 5)
   {
@@ -455,7 +457,7 @@ export const phase3Platforms = [
     w: 90,
     h: 157,
     style: 'tilted_xylophone',
-    label: '7/15 Xilofone Colorido Inclinado'
+    label: '7/15 Xilofone Colorido Inclinado',
   },
   // 8/15 (distância livre de 230px, ritmo firme com nível 6)
   {
@@ -464,7 +466,7 @@ export const phase3Platforms = [
     w: 84,
     h: 174,
     style: 'derailed_train',
-    label: '8/15 Locomotiva Descarrilada'
+    label: '8/15 Locomotiva Descarrilada',
   },
   // 9/15 (distância livre de 260px, ritmo acelerado com nível 7)
   {
@@ -473,7 +475,7 @@ export const phase3Platforms = [
     w: 78,
     h: 191,
     style: 'wobbly_card_house',
-    label: '9/15 Castelo de Cartas Bamboleante'
+    label: '9/15 Castelo de Cartas Bamboleante',
   },
   // 10/15 (distância livre de 290px, ritmo empolgante com nível 8)
   {
@@ -482,7 +484,7 @@ export const phase3Platforms = [
     w: 74,
     h: 207,
     style: 'leaning_music_box',
-    label: '10/15 Caixa de Música Desregulada'
+    label: '10/15 Caixa de Música Desregulada',
   },
 
   // PLATAFORMAS FINAIS (11 A 15):
@@ -494,7 +496,7 @@ export const phase3Platforms = [
     w: 70,
     h: 223,
     style: 'loose_robot',
-    label: '11/15 Robô de Lata Desparafusado'
+    label: '11/15 Robô de Lata Desparafusado',
   },
   // 12/15 (distância livre de 355px, timing refinado com nível 10)
   {
@@ -503,7 +505,7 @@ export const phase3Platforms = [
     w: 65,
     h: 239,
     style: 'spinning_top',
-    label: '12/15 Pião de Madeira Rodopiante'
+    label: '12/15 Pião de Madeira Rodopiante',
   },
   // 13/15 (distância livre de 390px, salto largo com nível 11)
   {
@@ -512,7 +514,7 @@ export const phase3Platforms = [
     w: 60,
     h: 254,
     style: 'floating_spool',
-    label: '13/15 Carretel com Fita Flutuante'
+    label: '13/15 Carretel com Fita Flutuante',
   },
   // 14/15 (distância livre de 425px, limiar de precisão com nível 12)
   {
@@ -521,7 +523,7 @@ export const phase3Platforms = [
     w: 56,
     h: 269,
     style: 'unbalanced_mobile',
-    label: '14/15 Móbile Desequilibrado'
+    label: '14/15 Móbile Desequilibrado',
   },
   // 15/15 (distância livre de 460px, o grande salto culminante com nível 13)
   {
@@ -530,7 +532,7 @@ export const phase3Platforms = [
     w: 50,
     h: 283,
     style: 'levitating_grimoire',
-    label: '15/15 Livro de Feitiços no Vácuo (O Grande Salto!)'
+    label: '15/15 Livro de Feitiços no Vácuo (O Grande Salto!)',
   },
 
   // Plataforma do Portal Definitivo (onde repousa a Verdadeira Porta) (distância livre de 480px, pouso triunfante no terraço)
@@ -540,222 +542,222 @@ export const phase3Platforms = [
     w: 270,
     h: 326,
     style: 'true_portal_balcony',
-    label: 'O Verdadeiro Portal dos Sonhos'
-  }
+    label: 'O Verdadeiro Portal dos Sonhos',
+  },
 ];
 
 export const trueExitDoor = {
   x: -1334,
   y: 144 - 120,
   w: 92,
-  h: 120
+  h: 120,
 };
 
 export const roomScenery = [
   // Ala esquerda caótica (Fase 3)
   {
     x: -1700,
-    type: 'striped_rug'
+    type: 'striped_rug',
   },
   {
     x: -1550,
-    type: 'open_story_book'
+    type: 'open_story_book',
   },
   {
     x: -1400,
-    type: 'spilled_marbles'
+    type: 'spilled_marbles',
   },
   {
     x: -1250,
-    type: 'retro_robot'
+    type: 'retro_robot',
   },
   {
     x: -1100,
-    type: 'toy_soldier'
+    type: 'toy_soldier',
   },
   {
     x: -950,
-    type: 'fluffy_rug'
+    type: 'fluffy_rug',
   },
   {
     x: -800,
-    type: 'cardboard_box_floor'
+    type: 'cardboard_box_floor',
   },
   {
     x: -650,
-    type: 'wooden_horse'
+    type: 'wooden_horse',
   },
   {
     x: -500,
-    type: 'spilled_crayons'
+    type: 'spilled_crayons',
   },
   {
     x: -350,
-    type: 'toy_car'
+    type: 'toy_car',
   },
   {
     x: -200,
-    type: 'striped_socks'
+    type: 'striped_socks',
   },
   {
     x: -50,
-    type: 'fluffy_rug'
+    type: 'fluffy_rug',
   },
   // Ala central e direita (Fases 1 e 2)
   {
     x: 90,
-    type: 'fluffy_rug'
+    type: 'fluffy_rug',
   },
   {
     x: 130,
-    type: 'dropped_sweater'
+    type: 'dropped_sweater',
   },
   {
     x: 170,
-    type: 'spilled_crayons'
+    type: 'spilled_crayons',
   },
   {
     x: 280,
-    type: 'paper_airplane'
+    type: 'paper_airplane',
   },
   {
     x: 340,
-    type: 'striped_socks'
+    type: 'striped_socks',
   },
   {
     x: 460,
-    type: 'toy_car'
+    type: 'toy_car',
   },
   {
     x: 520,
-    type: 'striped_rug'
+    type: 'striped_rug',
   },
   {
     x: 610,
-    type: 'scattered_blocks'
+    type: 'scattered_blocks',
   },
   {
     x: 740,
-    type: 'cardboard_box_floor'
+    type: 'cardboard_box_floor',
   },
   {
     x: 820,
-    type: 'dinosaur_felt'
+    type: 'dinosaur_felt',
   },
   {
     x: 920,
-    type: 'slinky'
+    type: 'slinky',
   },
   {
     x: 1040,
-    type: 'wooden_spinning_top'
+    type: 'wooden_spinning_top',
   },
   {
     x: 1130,
-    type: 'plush_bunny'
+    type: 'plush_bunny',
   },
   {
     x: 1220,
-    type: 'puzzle_pieces'
+    type: 'puzzle_pieces',
   },
   {
     x: 1370,
-    type: 'toy_train'
+    type: 'toy_train',
   },
   {
     x: 1440,
-    type: 'open_story_book'
+    type: 'open_story_book',
   },
   {
     x: 1550,
-    type: 'spilled_marbles'
+    type: 'spilled_marbles',
   },
   {
     x: 1670,
-    type: 'toy_soldier'
+    type: 'toy_soldier',
   },
   {
     x: 1780,
-    type: 'retro_robot'
+    type: 'retro_robot',
   },
   {
     x: 1910,
-    type: 'jack_in_box'
+    type: 'jack_in_box',
   },
   {
     x: 2020,
-    type: 'rattle'
+    type: 'rattle',
   },
   {
     x: 2150,
-    type: 'windup_mouse'
+    type: 'windup_mouse',
   },
   {
     x: 2320,
-    type: 'cradle'
+    type: 'cradle',
   },
   {
     x: 2480,
-    type: 'giant_spool'
+    type: 'giant_spool',
   },
   {
     x: 2620,
-    type: 'wooden_horse'
+    type: 'wooden_horse',
   },
   {
     x: 2800,
-    type: 'striped_rug'
+    type: 'striped_rug',
   },
   {
     x: 2980,
-    type: 'spilled_marbles'
+    type: 'spilled_marbles',
   },
   {
     x: 3140,
-    type: 'toy_car'
+    type: 'toy_car',
   },
   {
     x: 3300,
-    type: 'paper_airplane'
+    type: 'paper_airplane',
   },
   {
     x: 3480,
-    type: 'scattered_blocks'
+    type: 'scattered_blocks',
   },
   {
     x: 3660,
-    type: 'toy_soldier'
+    type: 'toy_soldier',
   },
   {
     x: 3840,
-    type: 'retro_robot'
+    type: 'retro_robot',
   },
   {
     x: 4020,
-    type: 'dinosaur_felt'
+    type: 'dinosaur_felt',
   },
   {
     x: 4200,
-    type: 'plush_bunny'
+    type: 'plush_bunny',
   },
   {
     x: 4380,
-    type: 'slinky'
+    type: 'slinky',
   },
   {
     x: 4560,
-    type: 'fluffy_rug'
+    type: 'fluffy_rug',
   },
   {
     x: 4740,
-    type: 'open_story_book'
+    type: 'open_story_book',
   },
   {
     x: 4900,
-    type: 'toy_car'
+    type: 'toy_car',
   },
   {
     x: 5060,
-    type: 'striped_rug'
-  }
+    type: 'striped_rug',
+  },
 ];

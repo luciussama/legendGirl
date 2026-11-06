@@ -132,10 +132,10 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [export-chase-girl.js](../scripts/export-chase-girl.js) | Exporta o modelo GLB da menina em pose neutra; não inclui animação. |
 | [prepare-illustrated-girl.js](../scripts/prepare-illustrated-girl.js) | Prepara as pranchas e metadados da menina ilustrada a partir das fontes girl-v2. |
 | [prepare-girl-locomotion.js](../scripts/prepare-girl-locomotion.js) | Deriva peças articuladas e metadados da pintura original; preserva a identidade das pernas e exige revisão das âncoras. |
-| [prepare-dream-nightmare.js](../scripts/prepare-dream-nightmare.js) | Mede recortes/silhuetas das pedras, poses do despertar e amostras corporais; gera DreamNightmareArt.js, preservando os PNGs. |
-| [prepare-dream-glider.js](../scripts/prepare-dream-glider.js) | Mede silhuetas opacas do planador e espinhos; gera DreamGliderArt.js. |
-| [prepare-dream-art.js](../scripts/prepare-dream-art.js) | Mede escalada, contornos dos insetos e recortes/âncoras de folhas e abelhinha; gera DreamArt.js sem alterar PNGs ou física. |
-| [prepare-chapter-art.js](../scripts/prepare-chapter-art.js) | Mede os recortes por alfa das atuações dos capítulos e gera ChapterArt.js; preserva os pixels das fontes. |
+| [prepare-dream-nightmare.js](../scripts/prepare-dream-nightmare.js) | Mede recortes/silhuetas das pedras, poses do despertar e amostras corporais; gera dreamNightmareArt.js, preservando os PNGs. |
+| [prepare-dream-glider.js](../scripts/prepare-dream-glider.js) | Mede silhuetas opacas do planador e espinhos; gera dreamGliderArt.js. |
+| [prepare-dream-art.js](../scripts/prepare-dream-art.js) | Mede escalada, contornos dos insetos e recortes/âncoras de folhas e abelhinha; gera dreamArt.js sem alterar PNGs ou física. |
+| [prepare-chapter-art.js](../scripts/prepare-chapter-art.js) | Mede os recortes por alfa das atuações dos capítulos e gera chapterArt.js; preserva os pixels das fontes. |
 | [prepare-chase-palette.js](../scripts/prepare-chase-palette.js) | Deriva paleta e metadados das amostras da arte de arena; sobrescreve derivados. |
 | [prepare-battle-sprites.js](../scripts/prepare-battle-sprites.js) | Extrai quadros de batalha das pranchas/fontes e prepara manifesto. |
 | [prepare-combat-corrections.js](../scripts/prepare-combat-corrections.js) | Prepara derivados das correções de combate já existentes. |
@@ -143,7 +143,7 @@ Os dois primeiros comparam exatamente imagens, recursos de runtime e estados com
 | [prepare-damage-sprites.js](../scripts/prepare-damage-sprites.js) | Extrai/exporta seis poses de dano por ator e gera DamageSpriteFrames. |
 | [prepare-garden-art.js](../scripts/prepare-garden-art.js) | Reconstrói pranchas base, frames.json, manifesto dedicado e GardenArt; sobrescreve a lista do manifesto. |
 | [prepare-garden-contact.js](../scripts/prepare-garden-contact.js) | Mede solas de 28 poses e superfícies por coluna; gera GardenContactData usado pela física. Exige revisão de contato após mudar fontes. |
-| [prepare-garden-insects.js](../scripts/prepare-garden-insects.js) | Extrai seis poses do atlas aprovado e gera runtime/insetos-v1.png e GardenInsectArt. |
+| [prepare-garden-insects.js](../scripts/prepare-garden-insects.js) | Extrai seis poses do atlas aprovado e gera runtime/insects-v1.png e GardenInsectArt. |
 | [prepare-garden-cinematic.js](../scripts/prepare-garden-cinematic.js) | Isola oito atuações, mede corpo/asas da abelha, gera GardenCinematicArt e atualiza o manifesto das cenas. |
 | [prepare-garden-fear.js](../scripts/prepare-garden-fear.js) | Prepara quatro pranchas de medo completo e FEAR_FILES/FEAR_FRAMES; registra apoio original sem recalcular contato físico. |
 | [prepare-garden-beetle.js](../scripts/prepare-garden-beetle.js) | Mede corpo/asas do besouro, gera GardenBeetleArt e inclui a fonte no manifesto. |

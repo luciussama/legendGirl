@@ -1,6 +1,4 @@
-import {
-  getDarkRoomScrollFrame
-} from './CameraPresentation.js';
+import { getDarkRoomScrollFrame } from './CameraPresentation.js';
 
 /**
  * CameraController.js
@@ -69,7 +67,7 @@ export class CameraController {
   update(dt, state, canvas, callbacks = {}) {
     if (!state || !canvas) return;
 
-    const baby = state.baby;
+    const player = state.player;
     const fairy = state.fairy;
     const isWide = canvas.width > 600;
 
@@ -77,7 +75,7 @@ export class CameraController {
     if (state.isStandbyActive) {
       this.targetZoom = 1.25;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
-      const targetCam = baby.x - (isWide ? canvas.width * 0.35 : canvas.width * 0.25);
+      const targetCam = player.x - (isWide ? canvas.width * 0.35 : canvas.width * 0.25);
       this.x += (targetCam - this.x) * 0.08;
       this.syncToState(state);
       return;
@@ -87,7 +85,7 @@ export class CameraController {
     if (state.isStandbyTransitioning) {
       this.targetZoom = 1.0;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
-      const targetCam = baby.x - (isWide ? 190 : 130);
+      const targetCam = player.x - (isWide ? 190 : 130);
       this.x += (targetCam - this.x) * 0.08;
       this.syncToState(state);
       return;
@@ -97,7 +95,7 @@ export class CameraController {
     if (state.cutsceneActive) {
       this.targetZoom = 1.45;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
-      const cutsceneCamTarget = (baby.x + fairy.x) / 2 - (isWide ? 240 : 150);
+      const cutsceneCamTarget = (player.x + fairy.x) / 2 - (isWide ? 240 : 150);
       this.x += (cutsceneCamTarget - this.x) * 0.08;
       this.syncToState(state);
       return;
@@ -107,7 +105,7 @@ export class CameraController {
     if (state.plotTwistActive) {
       this.targetZoom = 1.25;
       this.zoom += (this.targetZoom - this.zoom) * 0.07;
-      const targetCam = baby.x - (isWide ? 220 : 140);
+      const targetCam = player.x - (isWide ? 220 : 140);
       this.x += (targetCam - this.x) * 0.08;
       this.syncToState(state);
       return;
@@ -117,7 +115,7 @@ export class CameraController {
     if (state.phase3TutorialActive) {
       this.targetZoom = 1.0;
       this.zoom += (this.targetZoom - this.zoom) * 0.08;
-      const tutorialCam = baby.x - (isWide ? canvas.width - 240 : canvas.width - 150);
+      const tutorialCam = player.x - (isWide ? canvas.width - 240 : canvas.width - 150);
       this.x += (tutorialCam - this.x) * 0.08;
       this.syncToState(state);
       return;
@@ -143,11 +141,11 @@ export class CameraController {
       // Fase 3: Subida caótica para a esquerda
       state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
       this.x += state.currentScrollSpeed * dt;
-      const targetCamX = baby.x - (isWide ? canvas.width - 250 : canvas.width - 160);
+      const targetCamX = player.x - (isWide ? canvas.width - 250 : canvas.width - 160);
       this.x += (targetCamX - this.x) * 0.08 * dt;
 
       // Verifica se a menininha ficou muito para trás da tela em movimento para a direita
-      if (baby.x > this.x + canvas.width + 50) {
+      if (player.x > this.x + canvas.width + 50) {
         if (typeof callbacks.onLagBehind === 'function') {
           callbacks.onLagBehind();
         }
@@ -158,19 +156,23 @@ export class CameraController {
       // Fase 2: Fuga com rolagem automática para frente
       // A região horizontal do pedestal final encerra a pressão da aproximação.
       // Altura, pouso e índice do apoio não selecionam o enquadramento.
-      if (Number.isFinite(callbacks.escapeEndPlatformX) && baby.x + baby.w >= callbacks.escapeEndPlatformX) {
-        const targetCamX = baby.x - (isWide ? 170 : 120);
+      if (
+        Number.isFinite(callbacks.escapeEndPlatformX) &&
+        player.x + player.w >= callbacks.escapeEndPlatformX
+      ) {
+        const targetCamX = player.x - (isWide ? 170 : 120);
         this.x += (targetCamX - this.x) * 0.09 * dt;
       } else {
-        state.currentScrollSpeed += (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
+        state.currentScrollSpeed +=
+          (state.targetScrollSpeed - state.currentScrollSpeed) * 0.05 * dt;
         this.x += state.currentScrollSpeed * dt;
-        const targetCamX = baby.x - (isWide ? 170 : 120);
+        const targetCamX = player.x - (isWide ? 170 : 120);
         if (targetCamX > this.x) {
           this.x += (targetCamX - this.x) * 0.09 * dt;
         }
 
         // Verifica se a menininha ficou para trás da tela em movimento para a esquerda
-        if (baby.x < this.x - 25) {
+        if (player.x < this.x - 25) {
           if (typeof callbacks.onLagBehind === 'function') {
             callbacks.onLagBehind();
           }
@@ -180,18 +182,17 @@ export class CameraController {
       }
     } else {
       // Fase 1: Rastreamento frontal suave padrão
-      let targetCamX = baby.x - (isWide ? 180 : 120);
+      let targetCamX = player.x - (isWide ? 180 : 120);
       if (targetCamX < 0) targetCamX = 0;
       this.x += (targetCamX - this.x) * 0.08;
     }
 
     // O viewport define a altura uma única vez; o salto não dirige a câmera nem recebe correções dela.
     this.y = this.targetY = getDarkRoomScrollFrame({
-        x: this.x,
-        width: canvas.width,
-        height: canvas.height
-      })
-      .y;
+      x: this.x,
+      width: canvas.width,
+      height: canvas.height,
+    }).y;
 
     this.syncToState(state);
   }
@@ -222,17 +223,25 @@ export class CameraController {
 
   /**
    * Aplica a transformação da câmera (centralização do zoom + translação) ao Contexto 2D do Canvas
-   * @param {CanvasRenderingContext2D} ctx 
-   * @param {HTMLCanvasElement} canvas 
-   * @param {object} baby Estado do jogador
+   * @param {CanvasRenderingContext2D} ctx
+   * @param {HTMLCanvasElement} canvas
+   * @param {object} player Estado do jogador
    * @param {object} fairy Estado da fadinha
    */
-  applyTransform(ctx, canvas, baby, fairy, presentationY = this.y, presentationX = this.x, sourceX = this.x) {
+  applyTransform(
+    ctx,
+    canvas,
+    player,
+    fairy,
+    presentationY = this.y,
+    presentationX = this.x,
+    sourceX = this.x,
+  ) {
     if (!ctx) return;
 
-    if (this.zoom !== 1.0 && baby && fairy) {
-      const focusX = (baby.x + fairy.x) / 2 - presentationX;
-      const focusY = (baby.y + fairy.y) / 2 - presentationY;
+    if (this.zoom !== 1.0 && player && fairy) {
+      const focusX = (player.x + fairy.x) / 2 - presentationX;
+      const focusY = (player.y + fairy.y) / 2 - presentationY;
       ctx.translate(focusX, focusY);
       ctx.scale(this.zoom, this.zoom);
       ctx.translate(-focusX, -focusY);

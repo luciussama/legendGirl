@@ -10,9 +10,7 @@
  * - Móveis robustos e detalhados (Baú com tampa móvel, estante de livros, poltrona, fortaleza, mesa, cavalinho de pau, armário)
  */
 
-import {
-  TOY_ROOM_WINDOWS
-} from './ToyRoomLighting.js';
+import { TOY_ROOM_WINDOWS } from './toyRoomLighting.js';
 
 // Traçado decorativo original; não participa da navegação nem das colisões.
 const TRAIN_CIRCUIT = [
@@ -24,7 +22,7 @@ const TRAIN_CIRCUIT = [
   ['lineTo', 440, 1040],
   ['quadraticCurveTo', 320, 1040, 320, 920],
   ['lineTo', 320, 560],
-  ['quadraticCurveTo', 320, 420, 350, 420]
+  ['quadraticCurveTo', 320, 420, 350, 420],
 ];
 
 export class RoomEnvironmentRenderer {
@@ -131,7 +129,8 @@ export class RoomEnvironmentRenderer {
 
     // Janelas em arco na parede trazendo iluminação dourada natural
     const windowImage = options.assets && options.assets.get('toy-room-window-curtains-v1');
-    for (const window of TOY_ROOM_WINDOWS) this.drawArchedWindow(ctx, window.x, window.y, windowImage);
+    for (const window of TOY_ROOM_WINDOWS)
+      this.drawArchedWindow(ctx, window.x, window.y, windowImage);
 
     // Porta aberta à esquerda (por onde a garotinha emergiu)
     this.drawEntrancePortal(ctx, 50, 550, options.environmentDoor);
@@ -142,14 +141,21 @@ export class RoomEnvironmentRenderer {
     } else {
       this.drawCentralMandalaRug(ctx, 800, 700);
     }
-    this.drawFloralPlayMat(ctx, 1180, 520,
-      options.assets && options.assets.get('toy-room-oval-rug-v1'));
-    this.drawBedsideFringeRug(ctx, 280, 920,
-      options.assets && options.assets.get('toy-room-rectangular-rug-v1'));
+    this.drawFloralPlayMat(
+      ctx,
+      1180,
+      520,
+      options.assets && options.assets.get('toy-room-oval-rug-v1'),
+    );
+    this.drawBedsideFringeRug(
+      ctx,
+      280,
+      920,
+      options.assets && options.assets.get('toy-room-rectangular-rug-v1'),
+    );
 
     // Circuito de trilhos de trem de madeira
-    this.drawTrainTracks(ctx,
-      options.assets && options.assets.get('toy-room-wooden-track-v1'));
+    this.drawTrainTracks(ctx, options.assets && options.assets.get('toy-room-wooden-track-v1'));
 
     if (options.environmentDetails) {
       options.environmentDetails.forEach((detail) => {
@@ -165,8 +171,17 @@ export class RoomEnvironmentRenderer {
     const sourceHeight = plain ? image.height * 0.24 : image.height;
     for (let offset = 0; offset < width; offset += 324) {
       const partWidth = Math.min(324, width - offset);
-      ctx.drawImage(image, 0, 0, image.width * partWidth / 324, sourceHeight,
-        x + offset, y, partWidth, height);
+      ctx.drawImage(
+        image,
+        0,
+        0,
+        (image.width * partWidth) / 324,
+        sourceHeight,
+        x + offset,
+        y,
+        partWidth,
+        height,
+      );
     }
   }
 
@@ -463,7 +478,7 @@ export class RoomEnvironmentRenderer {
       if (method !== 'quadraticCurveTo') {
         points.push({
           x: args[0],
-          y: args[1]
+          y: args[1],
         });
       } else {
         const start = points[points.length - 1];
@@ -472,29 +487,29 @@ export class RoomEnvironmentRenderer {
           const u = 1 - t;
           points.push({
             x: u * u * start.x + 2 * u * t * args[0] + t * t * args[2],
-            y: u * u * start.y + 2 * u * t * args[1] + t * t * args[3]
+            y: u * u * start.y + 2 * u * t * args[1] + t * t * args[3],
           });
         }
       }
     }
     const lengths = [0];
     for (let i = 1; i < points.length; i++) {
-      lengths.push(lengths[i - 1] + Math.hypot(points[i].x - points[i - 1].x,
-        points[i].y - points[i - 1].y));
+      lengths.push(
+        lengths[i - 1] + Math.hypot(points[i].x - points[i - 1].x, points[i].y - points[i - 1].y),
+      );
     }
     const total = lengths[lengths.length - 1];
     const count = Math.ceil(total / 30);
     let segment = 1;
     for (let i = 0; i < count; i++) {
-      const distance = i * total / count;
+      const distance = (i * total) / count;
       while (segment < lengths.length - 1 && lengths[segment] < distance) segment++;
       const start = points[segment - 1];
       const end = points[segment];
-      const fraction = (distance - lengths[segment - 1]) /
-        (lengths[segment] - lengths[segment - 1]);
+      const fraction =
+        (distance - lengths[segment - 1]) / (lengths[segment] - lengths[segment - 1]);
       ctx.save();
-      ctx.translate(start.x + (end.x - start.x) * fraction,
-        start.y + (end.y - start.y) * fraction);
+      ctx.translate(start.x + (end.x - start.x) * fraction, start.y + (end.y - start.y) * fraction);
       ctx.rotate(Math.atan2(end.y - start.y, end.x - start.x));
       ctx.drawImage(image, -16, -12, 32, 24);
       ctx.restore();
@@ -564,18 +579,25 @@ export class RoomEnvironmentRenderer {
     const illustratedFurniture = {
       shelf: ['toy-room-bookshelf-v1', 0],
       fortress: ['toy-room-block-castle-v1', 15],
-      wardrobe: ['toy-room-oak-cabinet-v1', 0]
-    } [f.type];
+      wardrobe: ['toy-room-oak-cabinet-v1', 0],
+    }[f.type];
     const furnitureImage = illustratedFurniture && options.assets?.get(illustratedFurniture[0]);
     if (furnitureImage) {
       // A ilustração e sua sombra cabem na área anterior; proporção e colisões são preservadas.
       const topExtension = illustratedFurniture[1];
-      const scale = Math.min((f.w + 24) / furnitureImage.width,
-        (f.h + 14 + topExtension) / furnitureImage.height);
+      const scale = Math.min(
+        (f.w + 24) / furnitureImage.width,
+        (f.h + 14 + topExtension) / furnitureImage.height,
+      );
       const width = furnitureImage.width * scale;
       const height = furnitureImage.height * scale;
-      ctx.drawImage(furnitureImage, f.x + (f.w - width) / 2,
-        f.y + f.h + 14 - height, width, height);
+      ctx.drawImage(
+        furnitureImage,
+        f.x + (f.w - width) / 2,
+        f.y + f.h + 14 - height,
+        width,
+        height,
+      );
       return;
     }
 
@@ -586,7 +608,8 @@ export class RoomEnvironmentRenderer {
       return;
     }
 
-    const rockingHorseImage = f.type === 'rocking-horse' && options.assets?.get('toy-room-rocking-horse-v1');
+    const rockingHorseImage =
+      f.type === 'rocking-horse' && options.assets?.get('toy-room-rocking-horse-v1');
     if (rockingHorseImage) {
       // Cabeça, assento e base cabem na área anterior do brinquedo e sua sombra.
       ctx.drawImage(rockingHorseImage, f.x - 12, f.y, f.w + 24, f.h + 21);

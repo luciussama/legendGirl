@@ -4,7 +4,7 @@ export const GAME_SOUNDS = Object.freeze({
   mud: new URL('../../../assets/audio/effects/mud-impact.wav', import.meta.url),
   bee: new URL('../../../assets/audio/effects/wings-bee-v2.wav', import.meta.url),
   beetle: new URL('../../../assets/audio/effects/wings-insects-v2.wav', import.meta.url),
-  dive: new URL('../../../assets/audio/effects/wings-bee-v2.wav', import.meta.url)
+  dive: new URL('../../../assets/audio/effects/wings-bee-v2.wav', import.meta.url),
 });
 const caches = new WeakMap();
 /** Compartilha decodificação por contexto; nunca agenda efeitos atrasados após o carregamento. */
@@ -15,30 +15,31 @@ export function preloadGameSounds(ctx, names = Object.keys(GAME_SOUNDS)) {
     cache = new Map();
     caches.set(ctx, cache);
   }
-  return Promise.all(names.map(name => {
-    if (!cache.has(name)) {
-      const entry = {
-        buffer: null
-      };
-      cache.set(name, entry);
-      entry.promise = fetch(GAME_SOUNDS[name])
-        .then(r => {
-          if (!r.ok) throw Error(`HTTP ${r.status}`);
-          return r.arrayBuffer();
-        })
-        .then(data => ctx.decodeAudioData(data))
-        .then(buffer => {
-          entry.buffer = buffer;
-          return true;
-        })
-        .catch(error => {
-          console.warn(`Não foi possível carregar o som ${name}:`, error);
-          return false;
-        });
-    }
-    return cache.get(name)
-      .promise;
-  }));
+  return Promise.all(
+    names.map((name) => {
+      if (!cache.has(name)) {
+        const entry = {
+          buffer: null,
+        };
+        cache.set(name, entry);
+        entry.promise = fetch(GAME_SOUNDS[name])
+          .then((r) => {
+            if (!r.ok) throw Error(`HTTP ${r.status}`);
+            return r.arrayBuffer();
+          })
+          .then((data) => ctx.decodeAudioData(data))
+          .then((buffer) => {
+            entry.buffer = buffer;
+            return true;
+          })
+          .catch((error) => {
+            console.warn(`Não foi possível carregar o som ${name}:`, error);
+            return false;
+          });
+      }
+      return cache.get(name).promise;
+    }),
+  );
 }
 /** Vozes curtas e asas contínuas, com canais limitados, panorâmica e encerramento explícito. */
 export class GameSoundEffects {
@@ -50,16 +51,13 @@ export class GameSoundEffects {
   }
 
   /** Reproduz uma amostra ou mantém uma voz contínua no canal solicitado. */
-  play(ctx, destination, name, {
-    volume = .65,
-    rate = 1,
-    loop = false,
-    channel = null,
-    pan = 0
-  } = {}) {
-    const buffer = caches.get(ctx)
-      ?.get(name)
-      ?.buffer;
+  play(
+    ctx,
+    destination,
+    name,
+    { volume = 0.65, rate = 1, loop = false, channel = null, pan = 0 } = {},
+  ) {
+    const buffer = caches.get(ctx)?.get(name)?.buffer;
     if (!ctx || ctx.state !== 'running' || !buffer) return false;
     const key = channel ?? `efeito-${this.serial++}`;
     if (channel && this.voices.has(key)) return true;
@@ -72,7 +70,7 @@ export class GameSoundEffects {
     source.loop = loop;
     source.playbackRate.value = rate;
     gain.gain.setValueAtTime(loop ? 0 : volume, ctx.currentTime);
-    if (loop) gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + .09);
+    if (loop) gain.gain.linearRampToValueAtTime(volume, ctx.currentTime + 0.09);
     panner.pan.value = pan;
     source.connect(gain);
     gain.connect(panner);
@@ -83,7 +81,7 @@ export class GameSoundEffects {
       panner,
       loop,
       name,
-      ctx
+      ctx,
     };
     this.voices.set(key, voice);
     source.onended = () => {
@@ -93,7 +91,7 @@ export class GameSoundEffects {
       panner.disconnect();
       if (this.voices.get(key) === voice) this.voices.delete(key);
     };
-    source.start(ctx.currentTime, loop ? (this.serial++ * .731) % buffer.duration : 0);
+    source.start(ctx.currentTime, loop ? (this.serial++ * 0.731) % buffer.duration : 0);
     return true;
   }
 
@@ -102,9 +100,9 @@ export class GameSoundEffects {
     const v = this.voices.get(channel);
     if (!v) return;
     v.gain.gain.cancelAndHoldAtTime(v.ctx.currentTime);
-    v.gain.gain.setTargetAtTime(volume, v.ctx.currentTime, .06);
-    v.panner.pan.setTargetAtTime(pan, v.ctx.currentTime, .06);
-    v.source.playbackRate.setTargetAtTime(rate, v.ctx.currentTime, .1);
+    v.gain.gain.setTargetAtTime(volume, v.ctx.currentTime, 0.06);
+    v.panner.pan.setTargetAtTime(pan, v.ctx.currentTime, 0.06);
+    v.source.playbackRate.setTargetAtTime(rate, v.ctx.currentTime, 0.1);
   }
 
   /** Interrompe vozes selecionadas, opcionalmente aplicando um fade-out. */

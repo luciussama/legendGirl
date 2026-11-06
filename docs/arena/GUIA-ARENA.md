@@ -4,9 +4,9 @@ Revisão: 28/10/2026. Esta é a descrição do runtime atual. O design inicial e
 
 O fluxo é exploração, espada, transformação, arena heroica, combate e fuga após a vitória. A arena reinterpreta a Toy Room; não substitui a sala nem cria um jogo de luta separado.
 
-`ToyRoomPhase.js` controla a exploração. `ToyRoomArenaPhase.js` gerencia transformação, arena e retorno. `ToyRoomArenaBuilder.js` deriva as estruturas da sala. `ArenaEnvironment.js` desenha o cenário heroico e reutiliza os materiais dos móveis. A câmera, o controller, o HUD, os efeitos e o perfil de áudio da arena têm responsabilidades próprias.
+`ToyRoomPhase.js` controla a exploração. `ToyRoomArenaPhase.js` gerencia transformação, arena e retorno. `ToyRoomArenaBuilder.js` deriva as estruturas da sala. `arenaEnvironment.js` desenha o cenário heroico e reutiliza os materiais dos móveis. A câmera, o controller, o HUD, os efeitos e o perfil de áudio da arena têm responsabilidades próprias.
 
-`ToyRoomBattle.js` mantém a simulação e coordena o combate. `BattleConfig.js` fornece os parâmetros compartilhados sem carregar a implementação da batalha; `BattleAssets.js` carrega o manifesto e as imagens existentes; `BattleRenderer.js` apresenta inimigos, combate legado, HUD e impactos. Os métodos públicos `render` e `renderImpact` e os exports anteriores de `ToyRoomBattle.js` permanecem compatíveis. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
+`ToyRoomBattle.js` mantém a simulação e coordena o combate. `battleConfig.js` fornece os parâmetros compartilhados sem carregar a implementação da batalha; `battleAssets.js` carrega o manifesto e as imagens existentes; `battleRenderer.js` apresenta inimigos, combate legado, HUD e impactos. Os métodos públicos `render` e `renderImpact` e os exports anteriores de `ToyRoomBattle.js` permanecem compatíveis. `ArenaPlayerRenderer.js` cuida da apresentação da menina. Alterações visuais preservam colisões, apoios e dificuldade. Salvar e carregar precisa funcionar antes, durante e depois da transformação e do combate.
 
 Os carregadores preservam as URLs relativas ao módulo e os manifestos atuais. Antes de mover qualquer arquivo de código, verificar também essa resolução, os recortes, as âncoras e os consumidores das imagens. A separação de responsabilidades não autoriza excluir assets ou substituir sprites por desenhos procedurais.
 
@@ -56,7 +56,7 @@ A câmera da arena aproxima os lutadores próximos e abre o quadro quando se afa
 
 ## Espada arco-íris
 
-`ArenaSpecialAttack.js` coordena um uso por batalha completa (Trem até Urso), em NORMAL e EASY. A espada recebe uma aura de sete cores; a menina assume a pose de preparação; do quadro 12 ao 88, um corte de anime coloca os dois olhos em primeiro plano, com sobrancelhas tensas e reflexos arco-íris. A faixa ilustrada entra rapidamente, avança suavemente sobre o olhar e sai antes do golpe, cobrindo cenário e HUD durante a carga. Após 78 quadros de carga, a câmera retorna rapidamente ao panorama até o quadro 88. O corte lança o raio no quadro 94; ele chega ao alvo no 118, seguido da dissipação até o 156. O relógio avança na simulação, sem depender da quantidade de desenhos.
+`arenaSpecialAttack.js` coordena um uso por batalha completa (Trem até Urso), em NORMAL e EASY. A espada recebe uma aura de sete cores; a menina assume a pose de preparação; do quadro 12 ao 88, um corte de anime coloca os dois olhos em primeiro plano, com sobrancelhas tensas e reflexos arco-íris. A faixa ilustrada entra rapidamente, avança suavemente sobre o olhar e sai antes do golpe, cobrindo cenário e HUD durante a carga. Após 78 quadros de carga, a câmera retorna rapidamente ao panorama até o quadro 88. O corte lança o raio no quadro 94; ele chega ao alvo no 118, seguido da dissipação até o 156. O relógio avança na simulação, sem depender da quantidade de desenhos.
 
 Durante a sequência, física, ataques comuns e IA ficam suspensos, preservando posição e salto. O raio alcança o inimigo atual em qualquer distância da arena, atravessando sua proteção: Trem, Robô e Dinossauro ficam com zero HP; o Urso fica com exatamente um coração, inclusive quando já está com um. O especial não transfere corações à menina. Depois do efeito, continuam as reações e transições normais do combate.
 
@@ -84,12 +84,12 @@ Na arena, `Rocket Punch` emite `robot_punch` ao cruzar `windup - 4` (quadro 50),
 
 | Ação | Arquivo |
 | --- | --- |
-| Corte e bloqueio da espada | `girl attack.mp3`, `girl defence.mp3` |
-| Lançamento do raio (quadro 94) | `girl special attack.mp3` |
-| Investida e vapor do Trem | `train horn.mp3`, `train steam attack.mp3` |
-| Movimento, laser e soco do Robô | `robot noises.mp3`, `robot laser attack.mp3`, `robot punch.mp3` |
-| Mordida e corrida do Dinossauro | `dinossaur attack.mp3` |
-| Abraço, investida e salto do Urso | `bear attack.mp3` |
+| Corte e bloqueio da espada | `girl-attack.mp3`, `girl-defence.mp3` |
+| Lançamento do raio (quadro 94) | `girl-special-attack.mp3` |
+| Investida e vapor do Trem | `train-horn.mp3`, `train-steam-attack.mp3` |
+| Movimento, laser e soco do Robô | `robot-noises.mp3`, `robot-laser-attack.mp3`, `robot-punch.mp3` |
+| Mordida e corrida do Dinossauro | `dinossaur-attack.mp3` |
+| Abraço, investida e salto do Urso | `bear-attack.mp3` |
 
 Os arquivos originais são preservados. Pontos de início removem o silêncio inicial e trechos com saída suave limitam as caudas ao gesto. Ataques substituem a voz anterior do mesmo personagem; o ruído do Robô não reinicia enquanto o trecho anterior estiver tocando. Dano e troca de inimigo encerram suas caudas. O evento `player_special` acontece apenas ao cruzar o lançamento na simulação, inclusive após restore, sem serializar buffers ou fontes.
 
@@ -109,4 +109,4 @@ As derrotas da arena entram na contagem geral da campanha. A cada três perdas n
 
 ## Baú aberto e entrada dos adversários
 
-A arena usa `chest-brinquedos-open-v2.png`, com tampa levantada e cavidade escura. `ArenaEnvironment` desenha a pintura completa atrás dos adversários e sua parede frontal/lateral depois deles, antes da menina. `transitionPlacement` primeiro eleva o brinquedo dentro da caixa e depois o conduz ao ponto original da arena; o retorno percorre a trajetória inversa. Escala cresce de 0,16 a 1. O relógio da transição, os pontos de combate, a física e a dificuldade permanecem os existentes. A exploração conserva o baú fechado anterior.
+A arena usa `chest-toys-open-v2.png`, com tampa levantada e cavidade escura. `ArenaEnvironment` desenha a pintura completa atrás dos adversários e sua parede frontal/lateral depois deles, antes da menina. `transitionPlacement` primeiro eleva o brinquedo dentro da caixa e depois o conduz ao ponto original da arena; o retorno percorre a trajetória inversa. Escala cresce de 0,16 a 1. O relógio da transição, os pontos de combate, a física e a dificuldade permanecem os existentes. A exploração conserva o baú fechado anterior.

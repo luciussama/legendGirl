@@ -1,0 +1,74 @@
+{
+  "source": "assets/art/characters/girl-v2/source/locomotion.png",
+  "sha256": "0b1abca48453378a15b437c2363dfc0113c7fbb01e8dc7e35617aa942ffe9696",
+  "method": "Mediana por canal de janela com alfa ≥ 240 7×7; amostras regionais, sujeitas à revisão artística.",
+  "points": {
+    "skin": [
+      240,
+      180
+    ],
+    "cream": [
+      200,
+      250
+    ],
+    "pink": [
+      220,
+      360
+    ],
+    "rose": [
+      240,
+      360
+    ],
+    "hair": [
+      140,
+      140
+    ],
+    "lock": [
+      115,
+      70
+    ],
+    "boot": [
+      180,
+      470
+    ],
+    "sole": [
+      140,
+      450
+    ],
+    "white": [
+      220,
+      250
+    ],
+    "eye": [
+      221,
+      159
+    ],
+    "black": [
+      225,
+      145
+    ],
+    "blush": [
+      220,
+      180
+    ],
+    "guard": [
+      200,
+      250
+    ]
+  },
+  "colors": {
+    "skin": "#fcc592",
+    "cream": "#fee9cb",
+    "pink": "#fa7d77",
+    "rose": "#b83d47",
+    "hair": "#552110",
+    "lock": "#723117",
+    "boot": "#944d2e",
+    "sole": "#481c0e",
+    "white": "#fde8c9",
+    "eye": "#521a07",
+    "black": "#1a0201",
+    "blush": "#fda778",
+    "guard": "#74858b"
+  }
+}

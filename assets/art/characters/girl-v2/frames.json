@@ -1,10 +1,10 @@
 {
   "referenceHeight": 256,
   "sets": {
-    "locomocao": {
-      "key": "girl-v2-locomocao",
-      "file": "assets/art/characters/girl-v2/runtime/locomocao.png",
-      "source": "assets/art/characters/girl-v2/source/locomocao.png",
+    "locomotion": {
+      "key": "girl-v2-locomotion",
+      "file": "assets/art/characters/girl-v2/runtime/locomotion.png",
+      "source": "assets/art/characters/girl-v2/source/locomotion.png",
       "frames": [
         {
           "x": 12,
@@ -112,10 +112,10 @@
         }
       ]
     },
-    "saltos": {
-      "key": "girl-v2-saltos",
-      "file": "assets/art/characters/girl-v2/runtime/saltos.png",
-      "source": "assets/art/characters/girl-v2/source/saltos.png",
+    "jumps": {
+      "key": "girl-v2-jumps",
+      "file": "assets/art/characters/girl-v2/runtime/jumps.png",
+      "source": "assets/art/characters/girl-v2/source/jumps.png",
       "frames": [
         {
           "x": 12,
@@ -223,10 +223,10 @@
         }
       ]
     },
-    "acoes": {
-      "key": "girl-v2-acoes",
-      "file": "assets/art/characters/girl-v2/runtime/acoes.png",
-      "source": "assets/art/characters/girl-v2/source/acoes.png",
+    "actions": {
+      "key": "girl-v2-actions",
+      "file": "assets/art/characters/girl-v2/runtime/actions.png",
+      "source": "assets/art/characters/girl-v2/source/actions.png",
       "frames": [
         {
           "x": 12,
@@ -497,10 +497,10 @@
         }
       ]
     },
-    "arena-acoes": {
-      "key": "girl-v2-arena-acoes",
-      "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
-      "source": "assets/art/characters/girl-v2/source/arena-acoes-v2.png",
+    "arena-actions": {
+      "key": "girl-v2-arena-actions",
+      "file": "assets/art/characters/girl-v2/runtime/arena-actions.png",
+      "source": "assets/art/characters/girl-v2/source/arena-actions-v2.png",
       "frames": [
         {
           "x": 12,
@@ -660,10 +660,10 @@
         }
       ]
     },
-    "arena-defesa": {
-      "key": "girl-v2-arena-defesa",
-      "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
-      "source": "assets/art/characters/girl-v2/source/arena-defesa-v2.png",
+    "arena-defense": {
+      "key": "girl-v2-arena-defense",
+      "file": "assets/art/characters/girl-v2/runtime/arena-defense.png",
+      "source": "assets/art/characters/girl-v2/source/arena-defense-v2.png",
       "frames": [
         {
           "x": 12,
@@ -745,10 +745,10 @@
         }
       ]
     },
-    "arena-dano": {
-      "key": "girl-v2-arena-dano",
-      "file": "assets/art/characters/girl-v2/runtime/arena-dano.png",
-      "source": "assets/art/characters/girl-v2/source/arena-dano.png",
+    "arena-damage": {
+      "key": "girl-v2-arena-damage",
+      "file": "assets/art/characters/girl-v2/runtime/arena-damage.png",
+      "source": "assets/art/characters/girl-v2/source/arena-damage.png",
       "frames": [
         {
           "x": 12,
@@ -830,10 +830,10 @@
         }
       ]
     },
-    "arena-agachar": {
-      "key": "girl-v2-arena-agachar",
-      "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
-      "source": "assets/art/characters/girl-v2/source/arena-agachar.png",
+    "arena-crouch": {
+      "key": "girl-v2-arena-crouch",
+      "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png",
+      "source": "assets/art/characters/girl-v2/source/arena-crouch.png",
       "frames": [
         {
           "x": 12,

@@ -1,12 +1,6 @@
-import {
-  PlayerController
-} from './PlayerController.js';
-import {
-  BATTLE_TUNING
-} from './BattleConfig.js';
-import {
-  ARENA_SWORD
-} from './ArenaCombatRules.js';
+import { PlayerController } from './PlayerController.js';
+import { BATTLE_TUNING } from './battleConfig.js';
+import { ARENA_SWORD } from './arenaCombatRules.js';
 
 /** Parâmetros próprios da fantasia; não modifica a configuração da exploração. */
 export const ARENA_TUNING = Object.freeze({
@@ -27,7 +21,7 @@ export const ARENA_TUNING = Object.freeze({
   guardMoveScale: 0,
   blockRecovery: ARENA_SWORD.blockRecovery,
   // Dois passos de 14 quadros na velocidade da menina: separação clara após o golpe.
-  knockbackDistance: 6.2 * 14 * 2
+  knockbackDistance: 6.2 * 14 * 2,
 });
 export class ArenaPlayerController extends PlayerController {
   /** Reaproveita a locomoção da arena e deriva a passada visual do movimento resultante. */

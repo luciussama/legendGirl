@@ -1,32 +1,33 @@
-import {
-  BRINQUEDAO_ART as ART
-} from './BrinquedaoArt.js';
+import { BRINQUEDAO_ART as ART } from './brinquedaoArt.js';
 
-export const BRINQUEDAO_LOOK_THEMES = Object.freeze([{
-    name: 'Oficina dos blocos',
-    wash: '#f6e8c9',
-    accent: '#c68443',
-    file: 'brinquedao/interior-blocos-v2.jpg'
-  },
-  {
-    name: 'Pista das bolinhas',
-    wash: '#d8efeb',
-    accent: '#4c9eab',
-    file: 'brinquedao/interior-bolinhas-v2.jpg'
-  },
-  {
-    name: 'Salão musical',
-    wash: '#e7e1f2',
-    accent: '#8c72a8',
-    file: 'brinquedao/interior-musical-v2.jpg'
-  },
-  {
-    name: 'Nuvens de espuma',
-    wash: '#f5e4df',
-    accent: '#c58791',
-    file: 'brinquedao/interior-espuma-v2.jpg'
-  }
-].map(Object.freeze));
+export const BRINQUEDAO_LOOK_THEMES = Object.freeze(
+  [
+    {
+      name: 'Oficina dos blocos',
+      wash: '#f6e8c9',
+      accent: '#c68443',
+      file: 'brinquedao/interior-blocks-v2.jpg',
+    },
+    {
+      name: 'Pista das bolinhas',
+      wash: '#d8efeb',
+      accent: '#4c9eab',
+      file: 'brinquedao/interior-balls-v2.jpg',
+    },
+    {
+      name: 'Salão musical',
+      wash: '#e7e1f2',
+      accent: '#8c72a8',
+      file: 'brinquedao/interior-musical-v2.jpg',
+    },
+    {
+      name: 'Nuvens de espuma',
+      wash: '#f5e4df',
+      accent: '#c58791',
+      file: 'brinquedao/interior-foam-v2.jpg',
+    },
+  ].map(Object.freeze),
+);
 
 function canvas(w, h) {
   const c = document.createElement('canvas');
@@ -52,22 +53,23 @@ export class BrinquedaoLook {
     this.sky = this.copy(this.outside);
     const c = this.sky.getContext('2d');
     c.globalCompositeOperation = 'destination-in';
-    const g = c.createLinearGradient(0, 0, 0, this.sky.height * .24);
+    const g = c.createLinearGradient(0, 0, 0, this.sky.height * 0.24);
     g.addColorStop(0, 'transparent');
     g.addColorStop(1, '#000');
     c.fillStyle = g;
     c.fillRect(0, 0, this.sky.width, this.sky.height);
-    for (const theme of BRINQUEDAO_LOOK_THEMES) this.backgrounds.push(this.grade(images.get(theme.file), theme.wash, true));
+    for (const theme of BRINQUEDAO_LOOK_THEMES)
+      this.backgrounds.push(this.grade(images.get(theme.file), theme.wash, true));
     this.quiet = {
       canvas: this.copy(parts[0].canvas),
-      surface: parts[0].surface
+      surface: parts[0].surface,
     };
     const q = this.quiet.canvas.getContext('2d'),
       net = q.getImageData(0, 0, this.quiet.canvas.width, this.quiet.canvas.height);
     for (let x = 0; x < this.quiet.canvas.width; x++)
       for (let y = 0; y < this.quiet.canvas.height; y++) {
         const u = Math.max(0, Math.min(1, (y - (parts[0].surface[x] - 70)) / 40)),
-          alpha = .22 + .78 * u * u * (3 - 2 * u);
+          alpha = 0.22 + 0.78 * u * u * (3 - 2 * u);
         net.data[(y * this.quiet.canvas.width + x) * 4 + 3] *= alpha;
       }
     q.putImageData(net, 0, 0);
@@ -78,7 +80,7 @@ export class BrinquedaoLook {
     const w = this.well.getContext('2d'),
       shade = w.createRadialGradient(160, 95, 10, 160, 95, 150);
     shade.addColorStop(0, 'rgba(20,44,55,.76)');
-    shade.addColorStop(.6, 'rgba(20,44,55,.58)');
+    shade.addColorStop(0.6, 'rgba(20,44,55,.58)');
     shade.addColorStop(1, 'rgba(20,44,55,0)');
     w.fillStyle = shade;
     w.fillRect(0, 0, 320, 190);
@@ -86,20 +88,19 @@ export class BrinquedaoLook {
   /** Clona um canvas e registra a cópia para descarte no encerramento. */
   copy(source) {
     const c = canvas(source.width, source.height);
-    c.getContext('2d')
-      .drawImage(source, 0, 0);
+    c.getContext('2d').drawImage(source, 0, 0);
     this.canvases.push(c);
     return c;
   }
   /** Ajusta cor e foco da pintura para o ambiente interno ou externo. */
   grade(source, wash, inside) {
-    const c = canvas(960, Math.round(960 * source.height / source.width)),
+    const c = canvas(960, Math.round((960 * source.height) / source.width)),
       ctx = c.getContext('2d');
     this.canvases.push(c);
-    ctx.filter = `blur(${inside?1.1:1.4}px) saturate(${inside?.78:.68}) contrast(${inside?.82:.8})`;
+    ctx.filter = `blur(${inside ? 1.1 : 1.4}px) saturate(${inside ? 0.78 : 0.68}) contrast(${inside ? 0.82 : 0.8})`;
     ctx.drawImage(source, 0, 0, c.width, c.height);
     ctx.filter = 'none';
-    ctx.globalAlpha = inside ? .1 : .14;
+    ctx.globalAlpha = inside ? 0.1 : 0.14;
     ctx.fillStyle = wash;
     ctx.fillRect(0, 0, 960, 640);
     ctx.globalAlpha = 1;
@@ -120,7 +121,7 @@ export class BrinquedaoLook {
     ctx.drawImage(part.canvas, 0, 0);
     ctx.filter = 'none';
     // Rachaduras e fibras pertencem às ripas; não marcam a hitbox nem a superfície de salto.
-    for (const u of [.24, .4, .58, .76]) {
+    for (const u of [0.24, 0.4, 0.58, 0.76]) {
       const x = Math.floor(c.width * u),
         y = part.surface[x] + 3;
       ctx.strokeStyle = '#513c29';
@@ -142,7 +143,7 @@ export class BrinquedaoLook {
     }
     return {
       canvas: c,
-      surface: part.surface
+      surface: part.surface,
     };
   }
   /** Atenua reflexos no interior do tubo sem apagar moldura, abraçadeiras ou piso. */
@@ -153,9 +154,9 @@ export class BrinquedaoLook {
     ctx.globalCompositeOperation = 'source-atop';
     const g = ctx.createLinearGradient(0, 0, 0, c.height);
     g.addColorStop(0, 'rgba(27,61,67,0)');
-    g.addColorStop(.22, 'rgba(27,61,67,.26)');
-    g.addColorStop(.67, 'rgba(27,61,67,.26)');
-    g.addColorStop(.84, 'rgba(27,61,67,0)');
+    g.addColorStop(0.22, 'rgba(27,61,67,.26)');
+    g.addColorStop(0.67, 'rgba(27,61,67,.26)');
+    g.addColorStop(0.84, 'rgba(27,61,67,0)');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, c.width, c.height);
     return c;
@@ -166,23 +167,23 @@ export class BrinquedaoLook {
     ctx.translate(pose.x, pose.y);
     ctx.rotate(pose.angle);
     ctx.beginPath();
-    ctx.roundRect(-150, -diameter * .35, 300, diameter * .7, 35);
+    ctx.roundRect(-150, -diameter * 0.35, 300, diameter * 0.7, 35);
     ctx.clip();
-    ctx.drawImage(this.well, -160, -diameter * .42, 320, diameter * .84);
+    ctx.drawImage(this.well, -160, -diameter * 0.42, 320, diameter * 0.84);
     ctx.restore();
   }
   /** Desenha bloco em queda com textura, sombra e acabamento musical. */
   block(ctx, image, x, y, w, index, age) {
     const cell = image.width / 2,
-      sx = index % 2 * cell + 12,
-      sy = Math.floor(index / 2) % 2 * cell + 12,
+      sx = (index % 2) * cell + 12,
+      sy = (Math.floor(index / 2) % 2) * cell + 12,
       colors = ['#d96650', '#efbd43', '#328f87', '#4d7d9f'];
     ctx.save();
     ctx.translate(x, y + Math.max(0, age) ** 2 * 620);
-    ctx.rotate(Math.max(0, age) * .7 * (index % 2 ? 1 : -1));
+    ctx.rotate(Math.max(0, age) * 0.7 * (index % 2 ? 1 : -1));
     ctx.fillStyle = 'rgba(32,49,51,.2)';
     ctx.beginPath();
-    ctx.ellipse(w / 2, 111, w * .46, 8, 0, 0, Math.PI * 2);
+    ctx.ellipse(w / 2, 111, w * 0.46, 8, 0, 0, Math.PI * 2);
     ctx.fill();
     ctx.save();
     ctx.beginPath();
@@ -190,13 +191,13 @@ export class BrinquedaoLook {
     ctx.clip();
     ctx.fillStyle = colors[index % 4];
     ctx.fillRect(0, 0, w, 108);
-    ctx.globalAlpha = .23;
+    ctx.globalAlpha = 0.23;
     ctx.drawImage(image, sx, sy, cell - 24, cell - 24, 0, 0, w, 108);
     ctx.globalAlpha = 1;
     const g = ctx.createLinearGradient(0, 0, 0, 108);
     g.addColorStop(0, 'rgba(255,249,214,.35)');
-    g.addColorStop(.18, 'rgba(255,249,214,.08)');
-    g.addColorStop(.84, 'rgba(30,49,52,.08)');
+    g.addColorStop(0.18, 'rgba(255,249,214,.08)');
+    g.addColorStop(0.84, 'rgba(30,49,52,.08)');
     g.addColorStop(1, 'rgba(30,49,52,.32)');
     ctx.fillStyle = g;
     ctx.fillRect(0, 0, w, 108);
@@ -206,9 +207,9 @@ export class BrinquedaoLook {
     // A marca musical é estampada na face, abaixo do apoio, e liga os blocos ao salão.
     ctx.fillStyle = 'rgba(34,55,57,.4)';
     ctx.beginPath();
-    ctx.ellipse(w * .5, 69, 9, 6, -.3, 0, Math.PI * 2);
+    ctx.ellipse(w * 0.5, 69, 9, 6, -0.3, 0, Math.PI * 2);
     ctx.fill();
-    ctx.fillRect(w * .5 + 6, 43, 3, 26);
+    ctx.fillRect(w * 0.5 + 6, 43, 3, 26);
     ctx.restore();
   }
   /** Compõe a rampa triangular texturizada sobre a superfície física fornecida. */
@@ -223,11 +224,11 @@ export class BrinquedaoLook {
     ctx.clip();
     const g = ctx.createLinearGradient(-t.width / 2, -t.height, t.width / 2, 0);
     g.addColorStop(0, '#fff0a4');
-    g.addColorStop(.5, '#e9b44c');
+    g.addColorStop(0.5, '#e9b44c');
     g.addColorStop(1, '#b8533d');
     ctx.fillStyle = g;
     ctx.fillRect(-t.width / 2, -t.height, t.width, t.height);
-    ctx.globalAlpha = .15;
+    ctx.globalAlpha = 0.15;
     ctx.drawImage(image, 9, 0, 43, 28, -t.width / 2, -t.height, t.width, t.height);
     ctx.globalAlpha = 1;
     ctx.strokeStyle = '#793c32';
@@ -257,10 +258,20 @@ export class BrinquedaoLook {
     ctx.beginPath();
     ctx.roundRect(-w / 2, -12, w, h, launch ? 25 : 13);
     ctx.clip();
-    ctx.drawImage(image, image.width * .48, image.height * .72, image.width * .13, image.height * .26, -w / 2, -12, w, h);
+    ctx.drawImage(
+      image,
+      image.width * 0.48,
+      image.height * 0.72,
+      image.width * 0.13,
+      image.height * 0.26,
+      -w / 2,
+      -12,
+      w,
+      h,
+    );
     const g = ctx.createLinearGradient(-w / 2, 0, w / 2, 0);
     g.addColorStop(0, 'rgba(29,71,72,.35)');
-    g.addColorStop(.4, 'rgba(255,250,214,.2)');
+    g.addColorStop(0.4, 'rgba(255,250,214,.2)');
     g.addColorStop(1, 'rgba(29,71,72,.3)');
     ctx.fillStyle = g;
     ctx.fillRect(-w / 2, -12, w, h);

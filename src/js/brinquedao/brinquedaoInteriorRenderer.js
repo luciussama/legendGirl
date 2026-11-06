@@ -1,0 +1,424 @@
+import { drawBrinquedaoSurfaceStrip } from './brinquedaoTerrain.js';
+import { BRINQUEDAO_ART as ART } from './brinquedaoArt.js';
+import { BRINQUEDAO_TUBES, brinquedaoTubePose } from './brinquedaoTubes.js';
+import {
+  BRINQUEDAO_GAUNTLET as C,
+  BRINQUEDAO_REBOUNDS,
+  brinquedaoBlockSolid,
+} from './brinquedaoGauntlet.js';
+import { drawBrinquedaoGirl, drawBrinquedaoFairy } from './brinquedaoCinematic.js';
+import { drawMobileGameControls } from '../ui/touchGameControls.js';
+import { getDialogueSafeArea } from '../ui/dialogueSafeArea.js';
+import { renderPoeticNarration } from '../narrative/poeticNarrator.js';
+const meshes = BRINQUEDAO_TUBES.map((t, index) =>
+  Array.from(
+    {
+      length: Math.ceil(t.length / 8),
+    },
+    (_, n) => brinquedaoTubePose(index, (n * 8) / t.length),
+  ),
+);
+
+function crops(image, set) {
+  return set.frames.map((f) => {
+    const canvas = document.createElement('canvas');
+    canvas.width = f.w;
+    canvas.height = f.h;
+    const ctx = canvas.getContext('2d');
+    ctx.beginPath();
+    f.rowMask.forEach((r, y) => (y ? ctx.lineTo(r[0], y) : ctx.moveTo(r[0], y)));
+    for (let y = f.rowMask.length - 1; y >= 0; y--) ctx.lineTo(f.rowMask[y][1] + 1, y + 1);
+    ctx.closePath();
+    ctx.clip();
+    ctx.drawImage(image, f.x, f.y, f.w, f.h, 0, 0, f.w, f.h);
+    return {
+      canvas,
+    };
+  });
+}
+export function prepareBrinquedaoInterior(images) {
+  return [
+    ...crops(images.get(ART.insideTubes.file), ART.insideTubes),
+    ...crops(images.get(ART.fish.file), ART.fish),
+  ];
+}
+/** Torre e boca permanecem apoiadas no terraço de entrada. */
+export function drawBrinquedaoInteriorDoor(ctx, parts, kit) {
+  const mouth = parts[1].canvas,
+    tower = kit[3].canvas,
+    w = 520,
+    h = (w * tower.height) / tower.width;
+  ctx.drawImage(tower, 35380 - w / 2, -1250 - h + 35, w, h);
+  ctx.drawImage(
+    mouth,
+    35275,
+    -1250 - (210 * mouth.height) / mouth.width + 8,
+    210,
+    (210 * mouth.height) / mouth.width,
+  );
+}
+
+function pad(ctx, r, from, to, y) {
+  const part = r.look.quiet,
+    image = part.canvas,
+    k = 220 / image.height;
+  for (let x = from; x < to; x += 5) {
+    const nx = Math.min(to, x + 5),
+      sx = image.width * (0.15 + (0.7 * (x - from)) / (to - from)),
+      nsx = image.width * (0.15 + (0.7 * (nx - from)) / (to - from));
+    drawBrinquedaoSurfaceStrip(ctx, part, sx, nsx, x, nx, y, y, k, image.height);
+  }
+}
+
+function column(ctx, r, x, top, bottom) {
+  const im = r.parts[4].canvas;
+  if (bottom > top)
+    ctx.drawImage(
+      im,
+      im.width * 0.087,
+      im.height * 0.31,
+      im.width * 0.039,
+      im.height * 0.53,
+      x - 18,
+      top,
+      36,
+      bottom - top,
+    );
+}
+
+function portal(ctx, r, x, floor, incoming, shaft = true) {
+  const a = r.insideParts[0].canvas,
+    m = r.insideParts[1].canvas,
+    w = 230;
+  if (shaft)
+    ctx.drawImage(
+      a,
+      a.width * 0.16,
+      0,
+      a.width * 0.68,
+      a.height,
+      incoming ? x - 1100 : x,
+      floor - 205,
+      1100,
+      210,
+    );
+  ctx.drawImage(m, x - w / 2, floor - (w * m.height) / m.width + 10, w, (w * m.height) / m.width);
+}
+/** Blocos usam a madeira colorida já pintada para o projeto, com topo e face reais. */
+function block(ctx, r, x, y, w, index, age) {
+  r.look.block(
+    ctx,
+    r.images.get('toy-room/bear-chase/materials/blocks-atlas-v1.png'),
+    x,
+    y,
+    w,
+    index,
+    age,
+  );
+}
+
+function triangle(ctx, r) {
+  r.look.triangle(ctx, r.images.get('toy-room/stage3/stacking-blocks-v1.png'), C.triangle, C.floor);
+}
+
+function finishGate(ctx, r) {
+  for (const x of [140, 750, 1110, 1660]) column(ctx, r, x, C.floor + 55, 1450);
+  pad(ctx, r, 0, C.finishWidth, C.floor);
+  for (const x of [750, 1110]) {
+    column(ctx, r, x, C.floor - 330, C.floor + 65);
+    ctx.fillStyle = '#f6d252';
+    ctx.beginPath();
+    ctx.arc(x, C.floor - 330, 20, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.fillStyle = '#fff3c9';
+  ctx.beginPath();
+  ctx.moveTo(750, C.floor - 320);
+  ctx.quadraticCurveTo(930, C.floor - 290, 1110, C.floor - 320);
+  ctx.lineTo(1110, C.floor - 225);
+  ctx.quadraticCurveTo(930, C.floor - 205, 750, C.floor - 225);
+  ctx.fill();
+  ctx.fillStyle = '#426b54';
+  ctx.font = 'bold 38px Georgia';
+  ctx.textAlign = 'center';
+  ctx.fillText('CHEGADA', 930, C.floor - 250);
+  for (let n = 0; n < 8; n++) {
+    ctx.fillStyle = n % 2 ? '#fff7df' : '#4a9b8c';
+    ctx.fillRect(825 + n * 26, C.floor + 3, 26, 25);
+  }
+}
+
+function reboundRoom(ctx, r, preview = false) {
+  for (const x of [75, 1190]) column(ctx, r, x, 540, 2310);
+  for (let n = 0; n < BRINQUEDAO_REBOUNDS.length - 1; n++) {
+    const [x, y] = BRINQUEDAO_REBOUNDS[n],
+      side = n % 2 ? 1 : -1,
+      im = r.attractions[0].canvas,
+      w = 280,
+      h = (w * im.height) / im.width;
+    ctx.save();
+    ctx.translate(x, y - 35);
+    ctx.rotate((-side * Math.PI) / 2);
+    ctx.drawImage(im, -w / 2, -h * 0.31, w, h);
+    ctx.restore();
+  }
+  pad(ctx, r, 1480, 1950, 1960);
+  portal(ctx, r, 1660, 1960, false, !preview);
+}
+
+function room(ctx, r, i, index, preview = false) {
+  if (index === 1) {
+    reboundRoom(ctx, r, preview);
+    portal(ctx, r, 140, C.floor, true, !preview);
+    return;
+  }
+  if (index === 3) {
+    finishGate(ctx, r);
+    portal(ctx, r, 140, C.floor, true, !preview);
+    return;
+  }
+  if (index === 0) {
+    pad(ctx, r, 0, C.runWidth, C.floor);
+    triangle(ctx, r);
+  } else {
+    const b = C.blocks;
+    pad(ctx, r, 0, b.from, C.floor);
+    pad(ctx, r, b.to, C.runWidth, C.floor);
+    for (let n = 0; n < b.count; n++) {
+      const at =
+          i.bridgeStarted === null
+            ? 0
+            : i.now -
+              i.bridgeStarted -
+              (b.delay + n * b.step) * (i.difficulty === 'EASY' ? 1.3 : 1),
+        age = preview || brinquedaoBlockSolid(i, n, i.now, i.difficulty) ? 0 : Math.max(0, at);
+      if (age < 1.4)
+        block(
+          ctx,
+          r,
+          b.from + (n * (b.to - b.from)) / b.count,
+          C.floor,
+          (b.to - b.from) / b.count + 1,
+          n,
+          age,
+        );
+    }
+  }
+  for (const x of [140, C.runWidth - 140]) column(ctx, r, x, C.floor + 60, 1290);
+  portal(ctx, r, 140, C.floor, true, !preview);
+  portal(ctx, r, C.runWidth - 140, C.floor, false, !preview);
+}
+
+function tube(ctx, r, index, center, worldW, worldH, front = false) {
+  const image = r.look.tube,
+    sw = image.width * 0.68,
+    h = BRINQUEDAO_TUBES[index].diameter;
+  for (const p of meshes[index]) {
+    if (front && Math.hypot(p.x - center.x, p.y - center.y) > 180) continue;
+    if (
+      Math.abs(p.x - center.x) > worldW * 0.75 + 180 ||
+      Math.abs(p.y - center.y) > worldH * 0.75 + 180
+    )
+      continue;
+    const sx = image.width * 0.16 + ((p.distance % 680) / 680) * sw;
+    ctx.save();
+    ctx.translate(p.x, p.y);
+    ctx.rotate(p.angle);
+    ctx.drawImage(image, sx, 0, Math.max(1, (sw * 8) / 680), image.height, -1, -h / 2, 10, h);
+    ctx.restore();
+  }
+}
+/** Quatro descidas contínuas; pista lisa, torre automática, blocos e chegada. */
+export function renderBrinquedaoInterior(
+  r,
+  s,
+  { touch = false, paused = false, onAdvance = () => {} } = {},
+) {
+  const { canvas, ctx } = r,
+    { width, height } = canvas,
+    i = s.interior,
+    index = i.leg,
+    safe = getDialogueSafeArea(canvas),
+    css = width / (canvas.clientWidth || width),
+    portrait = height > width,
+    reserve = portrait ? 205 * css : 40 * css,
+    k = Math.min((safe.right - safe.left) / 950, (safe.bottom - safe.top - reserve) / 1050),
+    ww = width / k,
+    wh = height / k,
+    pose = brinquedaoTubePose(index, i.u),
+    anchor = safe.top + (safe.bottom - safe.top - reserve) * 0.52,
+    bg = r.look.backgrounds[index],
+    bk = Math.max(width / bg.width, height / bg.height) * 1.1;
+  ctx.save();
+  ctx.drawImage(
+    bg,
+    (width - bg.width * bk) / 2 +
+      Math.sin((i.mode === 'tube' ? pose.x : i.player.x) / 1500 + index) * 30,
+    (height - bg.height * bk) / 2 + Math.sin(index) * 35,
+    bg.width * bk,
+    bg.height * bk,
+  );
+  ctx.restore();
+  const running = i.mode !== 'tube',
+    followY = i.mode === 'ricochet' ? i.player.y - 100 : C.floor - 100,
+    blend = running ? Math.min(1, i.age / 0.35) : 0,
+    left = running ? i.player.x - ww * 0.38 : pose.x - ww * 0.42,
+    top = running
+      ? (anchor - followY * k) * (1 - blend) +
+        (i.mode === 'ricochet'
+          ? anchor - followY * k
+          : safe.bottom - reserve - (C.floor + 65) * k) *
+          blend
+      : anchor - pose.y * k;
+  ctx.save();
+  ctx.translate(-left * k, top);
+  ctx.scale(k, k);
+  const view = {
+    ...i,
+    difficulty: s.difficulty,
+    now: s.time,
+    clockOffset: s.time - i.time,
+  };
+  if (i.mode === 'tube') {
+    const end = brinquedaoTubePose(index, 1);
+    if (i.u > 0.88) {
+      ctx.save();
+      ctx.translate(end.x - 140, end.y - (C.floor - 100));
+      room(ctx, r, view, index, true);
+      ctx.restore();
+    }
+    if (i.u < 0.07) {
+      ctx.save();
+      if (index > 0) {
+        const previous = index - 1,
+          exitX = previous === 1 ? 1660 : C.runWidth - 140,
+          exitY = previous === 1 ? 1960 : C.floor;
+        ctx.translate(-exitX, -exitY + 100);
+        room(
+          ctx,
+          r,
+          {
+            ...view,
+            bridgeStarted: null,
+          },
+          previous,
+          true,
+        );
+      } else {
+        pad(ctx, r, -650, 110, 100);
+        for (const x of [-500, -200, 70]) column(ctx, r, x, 155, 450);
+        pad(ctx, r, -650, 110, 430);
+        const tower = r.parts[3].canvas,
+          w = 440,
+          h = (w * tower.height) / tower.width;
+        ctx.drawImage(tower, -w / 2, 130 - h, w, h);
+        portal(ctx, r, 0, 100, false, false);
+      }
+      ctx.restore();
+    }
+
+    tube(ctx, r, index, pose, ww, wh);
+    r.look.focus(ctx, pose, BRINQUEDAO_TUBES[index].diameter);
+    ctx.save();
+    ctx.translate(pose.x, pose.y);
+    ctx.rotate(pose.angle);
+    drawBrinquedaoGirl(ctx, r.images, 3, 0, 30 + (BRINQUEDAO_TUBES[index].diameter - 196) / 2, 96, {
+      seat: true,
+      time: i.time,
+    });
+    ctx.restore();
+    ctx.save();
+    ctx.globalAlpha = 0.035;
+    tube(ctx, r, index, pose, ww, wh, true);
+    ctx.restore();
+    drawBrinquedaoFairy(
+      ctx,
+      r.images.get('toy-room/stage3/illustrated-fairy-v1.png'),
+      pose.x - 90,
+      pose.y - 45,
+      43,
+      i.time,
+    );
+  } else {
+    room(ctx, r, view, index);
+    ctx.save();
+    if (i.mode === 'ricochet' || i.mode === 'hit') {
+      ctx.translate(i.player.x, i.player.y - 45);
+      ctx.rotate(
+        i.mode === 'hit' ? Math.sin(i.age * 10) * 1.1 : Math.sin(i.age * 8 + i.bounce) * 0.65,
+      );
+      ctx.translate(-i.player.x, -i.player.y + 45);
+    }
+    r.girl(ctx, {
+      ...s,
+      player: {
+        ...i.player,
+        support: i.player.grounded ? 'pista-interna' : null,
+        mode: i.player.grounded ? 'walk' : 'air',
+      },
+    });
+    ctx.restore();
+    drawBrinquedaoFairy(
+      ctx,
+      r.images.get('toy-room/stage3/illustrated-fairy-v1.png'),
+      i.player.x - 95,
+      i.player.y - 135,
+      49,
+      i.time,
+    );
+  }
+  ctx.restore();
+  const rect = canvas.getBoundingClientRect(),
+    bar = document.querySelector('.top-controls-bar')?.getBoundingClientRect(),
+    y = Math.max(
+      safe.top + 24 * css,
+      bar ? ((bar.bottom - rect.top) * height) / rect.height + 24 * css : 0,
+    ),
+    boxW = Math.min(safe.right - safe.left - 20 * css, 590 * css);
+  ctx.fillStyle = 'rgba(255,250,230,.94)';
+  ctx.beginPath();
+  ctx.roundRect((width - boxW) / 2, y - 22 * css, boxW, 81 * css, 14 * css);
+  ctx.fill();
+  ctx.textAlign = 'center';
+  ctx.fillStyle = '#426b54';
+  ctx.font = `bold ${17 * css}px Georgia`;
+  ctx.fillText(`BRINQUEDÃO · TOBOGÃ ${index + 1}/4`, width / 2, y, boxW - 20 * css);
+  ctx.font = `${14 * css}px sans-serif`;
+  const hint =
+    i.mode === 'tube'
+      ? BRINQUEDAO_TUBES[index].name
+      : i.mode === 'sprint'
+        ? 'Mantenha → e pule o triângulo!'
+        : i.mode === 'hit'
+          ? 'Tropeçou! A corrida vai recomeçar.'
+          : i.mode === 'ricochet'
+            ? 'Segure-se! As lonas levam ao próximo cano.'
+            : i.mode === 'blocks'
+              ? 'Corra →! Os blocos estão caindo!'
+              : 'Você chegou ao final do Brinquedão!';
+  ctx.fillText(hint, width / 2, y + 29 * css, boxW - 20 * css);
+  if (touch && s.stage === 'INTERIOR' && !['ricochet', 'hit'].includes(i.mode))
+    drawMobileGameControls(ctx, canvas, r.controls());
+  if (i.mode === 'hit') {
+    ctx.fillStyle = `rgba(255,244,216,${Math.max(0, i.age - 0.45) * 1.5})`;
+    ctx.fillRect(0, 0, width, height);
+  }
+  if (s.stage === 'COMPLETE' && !s.story.endingDone)
+    renderPoeticNarration(
+      ctx,
+      canvas,
+      'Entre uma ponte e um escorregador,\no dia voltou a caber num sorriso.',
+      {
+        heading: 'BRINQUEDÃO CONCLUÍDO',
+        onAdvance,
+        topInset: y - safe.top + 65 * css,
+      },
+    );
+  if (paused) {
+    ctx.fillStyle = 'rgba(31,58,48,.38)';
+    ctx.fillRect(0, 0, width, height);
+    ctx.fillStyle = '#fff9df';
+    ctx.font = '22px Georgia';
+    ctx.fillText('Pausa', width / 2, height / 2);
+  }
+}

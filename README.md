@@ -134,7 +134,7 @@ O coordenador também seleciona o modo ativo: o quarto usa seu fluxo de platafor
 | Módulo | Responsabilidade |
 | --- | --- |
 | [`config.js`](src/js/config.js) | Configuração do chão, plataformas, portas, estados iniciais e progressão de atributos |
-| [`StateVariables.js`](src/js/state/StateVariables.js) | Valores iniciais das variáveis da campanha |
+| [`stateVariables.js`](src/js/state/stateVariables.js) | Valores iniciais das variáveis da campanha |
 | [`GameState.js`](src/js/state/GameState.js) | Operações de estado, reinícios, derrota, prontidão e transições narrativas |
 | [`game.js`](src/js/game.js) | Integração de movimento, salto, resolução de pousos e gatilhos de progressão |
 | [`InputController.js`](src/js/controllers/InputController.js) | Entradas de ponteiro, teclado e leitura de gamepad para as fases de plataforma |
@@ -169,7 +169,7 @@ A iluminação usa um canvas auxiliar e acompanha a transformação real da cena
 
 `DialogueFlow` registra os quadros visíveis e consome a entrada antes do gameplay. `game.advanceDialogue` encaminha cada pedido ao dono da sequência. Durante uma fala não modal, os demais controles continuam funcionando; durante uma cena, o gesto de leitura não atravessa a transição. Consulte o [padrão de diálogos](docs/diario-ia/padroes/DIALOGOS-E-CENAS.md).
 
-[`CampaignProgress.js`](src/js/state/CampaignProgress.js) serializa uma seleção explícita do estado e usa `localStorage`. O jogo salva periodicamente durante a campanha e em eventos de saída/ocultação da página. O registro inclui estado narrativo e, quando aplicável, a sala de brinquedos. Se o armazenamento falhar, existe uma alternativa em memória para a sessão.
+[`campaignProgress.js`](src/js/state/campaignProgress.js) serializa uma seleção explícita do estado e usa `localStorage`. O jogo salva periodicamente durante a campanha e em eventos de saída/ocultação da página. O registro inclui estado narrativo e, quando aplicável, a sala de brinquedos. Se o armazenamento falhar, existe uma alternativa em memória para a sessão.
 
 O progresso pertence ao navegador e à origem utilizados. Não há conta de usuário, banco de dados ou sincronização de campanha entre dispositivos. `Carregar jogo` restaura o estado e a dificuldade salvos. `Novo jogo` pede confirmação quando há progresso, limpa a campanha e reinicia a abertura com a dificuldade escolhida no título. O botão `Modo fácil` afeta somente a próxima aventura nova.
 
@@ -296,3 +296,7 @@ As quedas do Brinquedão agora têm uma segunda chance: plataformas inferiores, 
 
 
 Brinquedão: as piscinas jogáveis foram substituídas por pontes rápidas com peixes saltadores. O interior segue quatro tobogãs: triângulo em velocidade, rebatidas automáticas, ponte de blocos que cai e chegada. [Guia](docs/brinquedao/GUIA-BRINQUEDAO.md).
+
+### Convenções de código
+
+Consulte [as convenções](docs/CONVENCOES-CODIGO.md). Use `npm run lint`, `npm run format:check` e `npm run format` para qualidade e formatação. A suíte `npm run journal:qa -- test:naming:e2e:browser` verifica a integração em desktop e Android emulado após cada etapa da padronização. Ela abre Chrome isolado temporário, não usa o perfil pessoal e não equivale a uma travessia completa de campanha.

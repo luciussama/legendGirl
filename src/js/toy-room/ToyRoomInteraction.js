@@ -1,7 +1,4 @@
-import {
-  pickUpToy,
-  storeToyInChest
-} from './ToyRoomToyActions.js';
+import { pickUpToy, storeToyInChest } from './toyRoomToyActions.js';
 
 /** Decide coleta, armazenamento e disponibilidade do botão de ação. */
 export class ToyRoomInteraction {
@@ -30,15 +27,19 @@ export class ToyRoomInteraction {
     // Enquanto carrega, somente a entrega ao baú pode liberar as mãos.
     if (this.context.player.carriedItem) {
       const item = this.context.player.carriedItem;
-      const chest = this.context.furniture.find(f => f.id === 'toy-chest');
+      const chest = this.context.furniture.find((f) => f.id === 'toy-chest');
       const chestCenterX = chest.x + chest.w / 2;
       const chestCenterY = chest.y + chest.h / 2;
-      const distToChest = Math.hypot(this.context.player.x - chestCenterX, this.context.player.y - chestCenterY);
+      const distToChest = Math.hypot(
+        this.context.player.x - chestCenterX,
+        this.context.player.y - chestCenterY,
+      );
 
       if (distToChest < 160) {
         storeToyInChest(this.context.player, chest);
 
-        if (this.context.audio && this.context.audio.playOrganizeChime) this.context.audio.playOrganizeChime();
+        if (this.context.audio && this.context.audio.playOrganizeChime)
+          this.context.audio.playOrganizeChime();
         chest.lidOpen = 1.0;
         chest.glowAlpha = 1.0;
         this.context.spawnSparkles(chestCenterX, chest.y + 30, 24, '#fde047');
@@ -46,12 +47,17 @@ export class ToyRoomInteraction {
 
         this.context.story?.onToyStored(item);
         this.context.organizedCount++;
-        if (this.context.organizedCount >= this.context.toys.length && !this.context.story?.state.recurrenceActive) {
+        if (
+          this.context.organizedCount >= this.context.toys.length &&
+          !this.context.story?.state.recurrenceActive
+        ) {
           this.context.victoryBannerActive = true;
           this.context.victoryBannerTimer = 360;
-          if (this.context.audio && this.context.audio.playToyRoomVictory) this.context.audio.playToyRoomVictory();
+          if (this.context.audio && this.context.audio.playToyRoomVictory)
+            this.context.audio.playToyRoomVictory();
           if (this.context.uiFeedback) {
-            this.context.uiFeedback.innerText = '🌟 PARABÉNS! Todos os brinquedos foram carinhosamente guardados no baú!';
+            this.context.uiFeedback.innerText =
+              '🌟 PARABÉNS! Todos os brinquedos foram carinhosamente guardados no baú!';
             this.context.uiFeedback.style.color = '#fde047';
           }
         } else {
@@ -92,7 +98,8 @@ export class ToyRoomInteraction {
     if (closestToy) {
       pickUpToy(this.context.player, closestToy);
       if (this.context.tutorial.active) this.context.tutorial.finish();
-      if (this.context.audio && this.context.audio.playPickUpSound) this.context.audio.playPickUpSound();
+      if (this.context.audio && this.context.audio.playPickUpSound)
+        this.context.audio.playPickUpSound();
       this.context.spawnSparkles(this.context.player.x, this.context.player.y - 30, 16, '#38bdf8');
       if (this.context.uiFeedback) {
         this.context.uiFeedback.innerText = `✋ Você pegou: ${closestToy.name}! Leve até o Baú de Brinquedos!`;
@@ -110,11 +117,14 @@ export class ToyRoomInteraction {
     let canInteract = false;
     let isNearChest = false;
 
-    const chest = this.context.furniture.find(f => f.id === 'toy-chest');
+    const chest = this.context.furniture.find((f) => f.id === 'toy-chest');
     if (chest) {
       const chestCenterX = chest.x + chest.w / 2;
       const chestCenterY = chest.y + chest.h / 2;
-      const distToChest = Math.hypot(this.context.player.x - chestCenterX, this.context.player.y - chestCenterY);
+      const distToChest = Math.hypot(
+        this.context.player.x - chestCenterX,
+        this.context.player.y - chestCenterY,
+      );
       if (distToChest < 160) {
         isNearChest = true;
         if (this.context.player.carriedItem) canInteract = true;
@@ -124,7 +134,11 @@ export class ToyRoomInteraction {
     if (!this.context.player.carriedItem && this.context.story?.canCollectToys !== false) {
       for (let i = 0; i < this.context.toys.length; i++) {
         const t = this.context.toys[i];
-        if (!t.isOrganized && !t.isCarried && Math.hypot(this.context.player.x - t.x, this.context.player.y - t.y) < 88) {
+        if (
+          !t.isOrganized &&
+          !t.isCarried &&
+          Math.hypot(this.context.player.x - t.x, this.context.player.y - t.y) < 88
+        ) {
           canInteract = true;
           break;
         }

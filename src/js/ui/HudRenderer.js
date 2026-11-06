@@ -1,9 +1,5 @@
-import {
-  getMobileUILayout
-} from './MobileUILayout.js';
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
+import { getMobileUILayout } from './mobileUILayout.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
 /**
  * HudRenderer.js
  * Renderiza componentes de HUD de alta resolução no espaço de tela:
@@ -20,9 +16,9 @@ export class HudRenderer {
    * @param {HTMLCanvasElement} canvas
    * @param {object} state
    * @param {number} [cameraX]
-   * @param {object} [baby]
+   * @param {object} [player]
    */
-  renderEscapeBanner(ctx, canvas, state = {}, cameraX = 0, baby = {}) {
+  renderEscapeBanner(ctx, canvas, state = {}, cameraX = 0, player = {}) {
     if (!ctx || !canvas) return;
     const isEscapeMode = Boolean(state.isEscapeMode);
     const isPhase3 = Boolean(state.isPhase3);
@@ -41,27 +37,54 @@ export class HudRenderer {
     const uiScale = mobile ? layout.scale : 1;
     const landscape = mobile && layout.usableWidth > layout.usableHeight;
     // Reserva as laterais do topo para os três botões HTML também em celulares menores.
-    const badgeW = Math.min(270 * uiScale, layout.usableWidth - 32 * uiScale,
-      landscape ? Math.max(128 * uiScale, layout.usableWidth - 340 * uiScale) : Infinity);
+    const badgeW = Math.min(
+      270 * uiScale,
+      layout.usableWidth - 32 * uiScale,
+      landscape ? Math.max(128 * uiScale, layout.usableWidth - 340 * uiScale) : Infinity,
+    );
     const badgeH = 42 * uiScale;
-    const badgeX = landscape ? layout.centerX - badgeW / 2 : layout.safeRight - badgeW - 16 * uiScale;
+    const badgeX = landscape
+      ? layout.centerX - badgeW / 2
+      : layout.safeRight - badgeW - 16 * uiScale;
     const badgeY = layout.safeTop + (mobile && !landscape ? 72 : 14) * uiScale;
 
     ctx.fillStyle = 'rgba(15, 12, 24, 0.92)';
-    ctx.strokeStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#c084fc') : (escapeLevel >= 11 ? '#fde047' : '#f59e0b'));
-    ctx.lineWidth = (isPhase3 ? (phase3Level >= 14 ? 2.4 : 1.6) : (escapeLevel >= 11 ? 2.2 : 1.5));
+    ctx.strokeStyle = isPhase3
+      ? phase3Level >= 14
+        ? '#fde047'
+        : '#c084fc'
+      : escapeLevel >= 11
+        ? '#fde047'
+        : '#f59e0b';
+    ctx.lineWidth = isPhase3 ? (phase3Level >= 14 ? 2.4 : 1.6) : escapeLevel >= 11 ? 2.2 : 1.5;
     ctx.beginPath();
     ctx.roundRect(badgeX, badgeY, badgeW, badgeH, 12);
     ctx.fill();
     ctx.stroke();
 
-    ctx.fillStyle = (isPhase3 ? (phase3Level >= 14 ? '#fde047' : '#f5d0fe') : (escapeLevel >= 11 ? '#fde047' : '#fef08a'));
+    ctx.fillStyle = isPhase3
+      ? phase3Level >= 14
+        ? '#fde047'
+        : '#f5d0fe'
+      : escapeLevel >= 11
+        ? '#fde047'
+        : '#fef08a';
     ctx.font = `bold ${12 * uiScale}px sans-serif`;
     ctx.textAlign = 'left';
     if (isPhase3) {
-      ctx.fillText(`🌪️ SUBIDA CAÓTICA: NÍVEL ${phase3Level + 1}/15`, badgeX + 14 * uiScale, badgeY + 18 * uiScale, badgeW - 28 * uiScale);
+      ctx.fillText(
+        `🌪️ SUBIDA CAÓTICA: NÍVEL ${phase3Level + 1}/15`,
+        badgeX + 14 * uiScale,
+        badgeY + 18 * uiScale,
+        badgeW - 28 * uiScale,
+      );
     } else {
-      ctx.fillText(`⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`, badgeX + 14 * uiScale, badgeY + 18 * uiScale, badgeW - 28 * uiScale);
+      ctx.fillText(
+        `⚡ FUGA: PULO NÍVEL ${escapeLevel + 1}/12`,
+        badgeX + 14 * uiScale,
+        badgeY + 18 * uiScale,
+        badgeW - 28 * uiScale,
+      );
     }
 
     // Mini barra de progresso para a evolução do pulo
@@ -107,30 +130,38 @@ export class HudRenderer {
         let line = '';
         for (const word of escapeBannerText.split(/\s+/)) {
           const next = line ? line + ' ' + word : word;
-          if (line && ctx.measureText(next)
-            .width > noticeW - 20 * uiScale) {
+          if (line && ctx.measureText(next).width > noticeW - 20 * uiScale) {
             lines.push(line);
             line = word;
           } else line = next;
         }
         if (line) lines.push(line);
-        for (const [index, text] of lines.slice(0, 3)
-          .entries())
-          ctx.fillText(text, layout.centerX, noticeY + (15 + index * 14) * uiScale, noticeW - 20 * uiScale);
+        for (const [index, text] of lines.slice(0, 3).entries())
+          ctx.fillText(
+            text,
+            layout.centerX,
+            noticeY + (15 + index * 14) * uiScale,
+            noticeW - 20 * uiScale,
+          );
       } else {
         ctx.font = `bold ${19 * uiScale}px Palatino, Georgia, serif`;
-        ctx.fillText(escapeBannerText, layout.centerX, badgeY + badgeH + 43 * uiScale, layout.usableWidth - 32 * uiScale);
+        ctx.fillText(
+          escapeBannerText,
+          layout.centerX,
+          badgeY + badgeH + 43 * uiScale,
+          layout.usableWidth - 32 * uiScale,
+        );
       }
     }
 
     // Linhas dinâmicas de vento na tela proporcionais à velocidade de rolagem
-    const intensityFactor = isPhase3 ? (phase3Level / 14) : (escapeLevel / 11);
+    const intensityFactor = isPhase3 ? phase3Level / 14 : escapeLevel / 11;
     ctx.strokeStyle = `rgba(255, 255, 255, ${0.08 + Math.min(0.18, intensityFactor * 0.14)})`;
     ctx.lineWidth = 1.4 + intensityFactor * 0.9;
     const speedTime = tick * (12 + Math.abs(currentScrollSpeed) * 3);
     const streakCount = 5 + Math.floor(intensityFactor * 4);
     for (let i = 0; i < streakCount; i++) {
-      const sx = (speedTime + i * 140) % (canvas.width + 220) - 100;
+      const sx = ((speedTime + i * 140) % (canvas.width + 220)) - 100;
       const sy = 50 + i * 65;
       const streakLen = 60 + Math.abs(currentScrollSpeed) * 18;
       ctx.beginPath();
@@ -147,7 +178,7 @@ export class HudRenderer {
 
     if (isPhase3) {
       // Na Fase 3: jogadora se move para a esquerda, câmera para a esquerda. Se ficar para trás à direita:
-      const distToRight = (cameraX + canvas.width) - (baby.x || 0);
+      const distToRight = cameraX + canvas.width - (player.x || 0);
       if (distToRight < 170) {
         const danger = (170 - distToRight) / 170;
         const shadowGrad = ctx.createLinearGradient(canvas.width, 0, canvas.width - 130, 0);
@@ -158,7 +189,7 @@ export class HudRenderer {
       }
     } else {
       // Na Fase 2: Alerta sombrio na borda esquerda se o bebê estiver ficando para trás da câmera acelerada
-      const distToLeft = (baby.x || 0) - cameraX;
+      const distToLeft = (player.x || 0) - cameraX;
       if (distToLeft < 170) {
         const danger = (170 - distToLeft) / 170;
         const shadowGrad = ctx.createLinearGradient(0, 0, 130, 0);

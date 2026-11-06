@@ -1,10 +1,2 @@
-export {
-  BabyRenderer,
-  babyRenderer
-}
-from './BabyRenderer.js';
-export {
-  FairyRenderer,
-  fairyRenderer
-}
-from './FairyRenderer.js';
+export { GirlRenderer, girlRenderer } from './GirlRenderer.js';
+export { FairyRenderer, fairyRenderer } from './FairyRenderer.js';

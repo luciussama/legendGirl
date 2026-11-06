@@ -1,10 +1,10 @@
 // Gerado por scripts/prepare-illustrated-girl.js; só contém metadados visuais.
 export const GIRL_V2_REFERENCE_HEIGHT = 256;
 export const GIRL_V2_SETS = {
-  "locomocao": {
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png",
-    "source": "assets/art/characters/girl-v2/source/locomocao.png",
+  "locomotion": {
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png",
+    "source": "assets/art/characters/girl-v2/source/locomotion.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -103,10 +103,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "saltos": {
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png",
-    "source": "assets/art/characters/girl-v2/source/saltos.png",
+  "jumps": {
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png",
+    "source": "assets/art/characters/girl-v2/source/jumps.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -205,10 +205,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "acoes": {
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png",
-    "source": "assets/art/characters/girl-v2/source/acoes.png",
+  "actions": {
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png",
+    "source": "assets/art/characters/girl-v2/source/actions.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -457,10 +457,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "arena-acoes": {
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png",
-    "source": "assets/art/characters/girl-v2/source/arena-acoes-v2.png",
+  "arena-actions": {
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png",
+    "source": "assets/art/characters/girl-v2/source/arena-actions-v2.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -607,10 +607,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "arena-defesa": {
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png",
-    "source": "assets/art/characters/girl-v2/source/arena-defesa-v2.png",
+  "arena-defense": {
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png",
+    "source": "assets/art/characters/girl-v2/source/arena-defense-v2.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -685,10 +685,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "arena-dano": {
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png",
-    "source": "assets/art/characters/girl-v2/source/arena-dano.png",
+  "arena-damage": {
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png",
+    "source": "assets/art/characters/girl-v2/source/arena-damage.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -763,10 +763,10 @@ export const GIRL_V2_SETS = {
       }
     }]
   },
-  "arena-agachar": {
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png",
-    "source": "assets/art/characters/girl-v2/source/arena-agachar.png",
+  "arena-crouch": {
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png",
+    "source": "assets/art/characters/girl-v2/source/arena-crouch.png",
     "frames": [{
       "x": 12,
       "y": 12,
@@ -885,8 +885,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 12,
@@ -899,8 +899,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 12,
@@ -913,8 +913,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 332,
     "y": 12,
@@ -927,8 +927,8 @@ export const GIRL_V2_FRAMES = {
       "left": -36,
       "right": 40
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 332,
     "y": 12,
@@ -941,8 +941,8 @@ export const GIRL_V2_FRAMES = {
       "left": -36,
       "right": 40
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 332,
     "y": 12,
@@ -955,8 +955,8 @@ export const GIRL_V2_FRAMES = {
       "left": -36,
       "right": 40
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 12,
@@ -969,8 +969,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 12,
@@ -983,8 +983,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 12,
@@ -997,8 +997,8 @@ export const GIRL_V2_FRAMES = {
       "left": -35.5,
       "right": 40.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }],
   "run": [{
     "x": 652,
@@ -1012,8 +1012,8 @@ export const GIRL_V2_FRAMES = {
       "left": -63,
       "right": 69
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 972,
     "y": 12,
@@ -1026,8 +1026,8 @@ export const GIRL_V2_FRAMES = {
       "left": -69.5,
       "right": 84.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1040,8 +1040,8 @@ export const GIRL_V2_FRAMES = {
       "left": -66,
       "right": 43
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1054,8 +1054,8 @@ export const GIRL_V2_FRAMES = {
       "left": -66,
       "right": 43
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 332,
     "y": 332,
@@ -1068,8 +1068,8 @@ export const GIRL_V2_FRAMES = {
       "left": -56.5,
       "right": 78.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 652,
     "y": 332,
@@ -1082,8 +1082,8 @@ export const GIRL_V2_FRAMES = {
       "left": -77,
       "right": 32
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 972,
     "y": 332,
@@ -1096,8 +1096,8 @@ export const GIRL_V2_FRAMES = {
       "left": -79.5,
       "right": 90.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 972,
     "y": 332,
@@ -1110,8 +1110,8 @@ export const GIRL_V2_FRAMES = {
       "left": -79.5,
       "right": 90.5
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }, {
     "x": 652,
     "y": 12,
@@ -1124,8 +1124,8 @@ export const GIRL_V2_FRAMES = {
       "left": -63,
       "right": 69
     },
-    "key": "girl-v2-locomocao",
-    "file": "assets/art/characters/girl-v2/runtime/locomocao.png"
+    "key": "girl-v2-locomotion",
+    "file": "assets/art/characters/girl-v2/runtime/locomotion.png"
   }],
   "jump": [{
     "x": 12,
@@ -1139,8 +1139,8 @@ export const GIRL_V2_FRAMES = {
       "left": -54.5,
       "right": 20.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 12,
     "y": 12,
@@ -1153,8 +1153,8 @@ export const GIRL_V2_FRAMES = {
       "left": -54.5,
       "right": 20.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1167,8 +1167,8 @@ export const GIRL_V2_FRAMES = {
       "left": -64.5,
       "right": 9.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1181,8 +1181,8 @@ export const GIRL_V2_FRAMES = {
       "left": -64.5,
       "right": 9.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 652,
     "y": 12,
@@ -1195,8 +1195,8 @@ export const GIRL_V2_FRAMES = {
       "left": -33.5,
       "right": 46.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 652,
     "y": 12,
@@ -1209,8 +1209,8 @@ export const GIRL_V2_FRAMES = {
       "left": -33.5,
       "right": 46.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "jump_short": [{
     "x": 12,
@@ -1224,8 +1224,8 @@ export const GIRL_V2_FRAMES = {
       "left": -54.5,
       "right": 20.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1238,8 +1238,8 @@ export const GIRL_V2_FRAMES = {
       "left": -64.5,
       "right": 9.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "high_jump": [{
     "x": 652,
@@ -1253,8 +1253,8 @@ export const GIRL_V2_FRAMES = {
       "left": -33.5,
       "right": 46.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "fall": [{
     "x": 972,
@@ -1268,8 +1268,8 @@ export const GIRL_V2_FRAMES = {
       "left": -41.5,
       "right": 19.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 972,
     "y": 12,
@@ -1282,8 +1282,8 @@ export const GIRL_V2_FRAMES = {
       "left": -41.5,
       "right": 19.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1296,8 +1296,8 @@ export const GIRL_V2_FRAMES = {
       "left": -1.5,
       "right": 86.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1310,8 +1310,8 @@ export const GIRL_V2_FRAMES = {
       "left": -1.5,
       "right": 86.5
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 332,
     "y": 332,
@@ -1324,8 +1324,8 @@ export const GIRL_V2_FRAMES = {
       "left": -37,
       "right": 47
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }, {
     "x": 332,
     "y": 332,
@@ -1338,8 +1338,8 @@ export const GIRL_V2_FRAMES = {
       "left": -37,
       "right": 47
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "dash": [{
     "x": 652,
@@ -1353,8 +1353,8 @@ export const GIRL_V2_FRAMES = {
       "left": -75,
       "right": 116
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "crouch": [{
     "x": 972,
@@ -1368,8 +1368,8 @@ export const GIRL_V2_FRAMES = {
       "left": -47,
       "right": 72
     },
-    "key": "girl-v2-saltos",
-    "file": "assets/art/characters/girl-v2/runtime/saltos.png"
+    "key": "girl-v2-jumps",
+    "file": "assets/art/characters/girl-v2/runtime/jumps.png"
   }],
   "collect": [{
     "x": 12,
@@ -1383,8 +1383,8 @@ export const GIRL_V2_FRAMES = {
       "left": -76.5,
       "right": 32.5
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "push": [{
     "x": 332,
@@ -1398,8 +1398,8 @@ export const GIRL_V2_FRAMES = {
       "left": -89,
       "right": 53
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1412,8 +1412,8 @@ export const GIRL_V2_FRAMES = {
       "left": -89,
       "right": 53
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1426,8 +1426,8 @@ export const GIRL_V2_FRAMES = {
       "left": -89,
       "right": 53
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "climb": [{
     "x": 652,
@@ -1441,8 +1441,8 @@ export const GIRL_V2_FRAMES = {
       "left": -58.5,
       "right": -11.5
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "interact": [{
     "x": 972,
@@ -1456,8 +1456,8 @@ export const GIRL_V2_FRAMES = {
       "left": -67,
       "right": 53
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }, {
     "x": 972,
     "y": 12,
@@ -1470,8 +1470,8 @@ export const GIRL_V2_FRAMES = {
       "left": -67,
       "right": 53
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "lying_down": [{
     "x": 12,
@@ -1485,8 +1485,8 @@ export const GIRL_V2_FRAMES = {
       "left": -126,
       "right": 134
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "teleport": [{
     "x": 332,
@@ -1500,8 +1500,8 @@ export const GIRL_V2_FRAMES = {
       "left": -40.5,
       "right": 41.5
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }, {
     "x": 652,
     "y": 332,
@@ -1514,8 +1514,8 @@ export const GIRL_V2_FRAMES = {
       "left": -32,
       "right": 43
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "damage": [{
     "x": 972,
@@ -1529,8 +1529,8 @@ export const GIRL_V2_FRAMES = {
       "left": -41.5,
       "right": 53.5
     },
-    "key": "girl-v2-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/acoes.png"
+    "key": "girl-v2-actions",
+    "file": "assets/art/characters/girl-v2/runtime/actions.png"
   }],
   "carry": [{
     "x": 12,
@@ -1715,8 +1715,8 @@ export const GIRL_V2_FRAMES = {
       "left": -73.5,
       "right": 40.5
     },
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png"
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png"
   }],
   "sword_crouchCycle": [{
     "x": 12,
@@ -1730,8 +1730,8 @@ export const GIRL_V2_FRAMES = {
       "left": -58,
       "right": 78
     },
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png"
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1744,8 +1744,8 @@ export const GIRL_V2_FRAMES = {
       "left": -42,
       "right": 70
     },
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png"
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1758,8 +1758,8 @@ export const GIRL_V2_FRAMES = {
       "left": -49,
       "right": 53
     },
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png"
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png"
   }, {
     "x": 332,
     "y": 332,
@@ -1772,8 +1772,8 @@ export const GIRL_V2_FRAMES = {
       "left": -73.5,
       "right": 40.5
     },
-    "key": "girl-v2-arena-agachar",
-    "file": "assets/art/characters/girl-v2/runtime/arena-agachar.png"
+    "key": "girl-v2-arena-crouch",
+    "file": "assets/art/characters/girl-v2/runtime/arena-crouch.png"
   }],
   "sword_attack": [{
     "x": 12,
@@ -1787,8 +1787,8 @@ export const GIRL_V2_FRAMES = {
       "left": -68.5,
       "right": 71.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1801,8 +1801,8 @@ export const GIRL_V2_FRAMES = {
       "left": -85.5,
       "right": 93.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 652,
     "y": 12,
@@ -1815,8 +1815,8 @@ export const GIRL_V2_FRAMES = {
       "left": -124.5,
       "right": 104.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 972,
     "y": 12,
@@ -1829,8 +1829,8 @@ export const GIRL_V2_FRAMES = {
       "left": -112.5,
       "right": 100.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1843,8 +1843,8 @@ export const GIRL_V2_FRAMES = {
       "left": -53,
       "right": 57
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }],
   "sword_jump": [{
     "x": 332,
@@ -1858,8 +1858,8 @@ export const GIRL_V2_FRAMES = {
       "left": -53.5,
       "right": 21.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 652,
     "y": 332,
@@ -1872,8 +1872,8 @@ export const GIRL_V2_FRAMES = {
       "left": -29,
       "right": 48
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }],
   "sword_fall": [{
     "x": 972,
@@ -1887,8 +1887,8 @@ export const GIRL_V2_FRAMES = {
       "left": -52.5,
       "right": 47.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }, {
     "x": 12,
     "y": 652,
@@ -1901,8 +1901,8 @@ export const GIRL_V2_FRAMES = {
       "left": -64.5,
       "right": 61.5
     },
-    "key": "girl-v2-arena-acoes",
-    "file": "assets/art/characters/girl-v2/runtime/arena-acoes.png"
+    "key": "girl-v2-arena-actions",
+    "file": "assets/art/characters/girl-v2/runtime/arena-actions.png"
   }],
   "sword_damage": [{
     "x": 12,
@@ -1916,8 +1916,8 @@ export const GIRL_V2_FRAMES = {
       "left": -48.5,
       "right": 77.5
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }, {
     "x": 332,
     "y": 12,
@@ -1930,8 +1930,8 @@ export const GIRL_V2_FRAMES = {
       "left": -44.5,
       "right": 77.5
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }, {
     "x": 652,
     "y": 12,
@@ -1944,8 +1944,8 @@ export const GIRL_V2_FRAMES = {
       "left": -32,
       "right": 83
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }, {
     "x": 12,
     "y": 332,
@@ -1958,8 +1958,8 @@ export const GIRL_V2_FRAMES = {
       "left": -115.5,
       "right": 30.5
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }, {
     "x": 332,
     "y": 332,
@@ -1972,8 +1972,8 @@ export const GIRL_V2_FRAMES = {
       "left": -85.5,
       "right": 77.5
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }, {
     "x": 652,
     "y": 332,
@@ -1986,8 +1986,8 @@ export const GIRL_V2_FRAMES = {
       "left": -71,
       "right": 90
     },
-    "key": "girl-v2-arena-dano",
-    "file": "assets/art/characters/girl-v2/runtime/arena-dano.png"
+    "key": "girl-v2-arena-damage",
+    "file": "assets/art/characters/girl-v2/runtime/arena-damage.png"
   }],
   "sword_guard": [{
     "x": 12,
@@ -2001,8 +2001,8 @@ export const GIRL_V2_FRAMES = {
       "left": -94,
       "right": 37
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }, {
     "x": 332,
     "y": 12,
@@ -2015,8 +2015,8 @@ export const GIRL_V2_FRAMES = {
       "left": -55,
       "right": 80
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }, {
     "x": 652,
     "y": 12,
@@ -2029,8 +2029,8 @@ export const GIRL_V2_FRAMES = {
       "left": -59,
       "right": 82
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }, {
     "x": 12,
     "y": 332,
@@ -2043,8 +2043,8 @@ export const GIRL_V2_FRAMES = {
       "left": -62.5,
       "right": 78.5
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }, {
     "x": 332,
     "y": 332,
@@ -2057,8 +2057,8 @@ export const GIRL_V2_FRAMES = {
       "left": -56.5,
       "right": 81.5
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }, {
     "x": 652,
     "y": 332,
@@ -2071,8 +2071,8 @@ export const GIRL_V2_FRAMES = {
       "left": -71,
       "right": 84
     },
-    "key": "girl-v2-arena-defesa",
-    "file": "assets/art/characters/girl-v2/runtime/arena-defesa.png"
+    "key": "girl-v2-arena-defense",
+    "file": "assets/art/characters/girl-v2/runtime/arena-defense.png"
   }]
 };
 export const GIRL_V2_FOOT_BOUNDS = {

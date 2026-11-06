@@ -1,7 +1,5 @@
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 const root = 'assets/art/brinquedao';
 /** Mede componentes completos e máscaras de linhas; não altera os PNGs de produção. */
 function isolatedActors(file, count, fullMask = false) {
@@ -28,27 +26,38 @@ function isolatedActors(file, count, fullMask = false) {
       y0 = Math.min(y0, y);
       y1 = Math.max(y1, y);
       for (const [dx, dy] of [
-          [-1, 0],
-          [1, 0],
-          [0, -1],
-          [0, 1],
-          [-1, -1],
-          [1, 1],
-          [-1, 1],
-          [1, -1]
-        ]) {
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1],
+        [-1, -1],
+        [1, 1],
+        [-1, 1],
+        [1, -1],
+      ]) {
         const nx = x + dx,
           ny = y + dy,
           next = ny * image.width + nx;
-        if (nx < 0 || nx >= image.width || ny < 0 || ny >= image.height || seen[next] || image.data[next * 4 + 3] <= 24) continue;
+        if (
+          nx < 0 ||
+          nx >= image.width ||
+          ny < 0 ||
+          ny >= image.height ||
+          seen[next] ||
+          image.data[next * 4 + 3] <= 24
+        )
+          continue;
         seen[next] = 1;
         queue[tail++] = next;
       }
     }
     if (tail > 2000) {
-      const topMask = Array.from({
-        length: 24
-      }, () => [image.width, 0]);
+      const topMask = Array.from(
+        {
+          length: 24,
+        },
+        () => [image.width, 0],
+      );
       for (let k = 0; k < tail; k++) {
         const x = queue[k] % image.width,
           y = Math.floor(queue[k] / image.width) - y0;
@@ -57,12 +66,17 @@ function isolatedActors(file, count, fullMask = false) {
           topMask[y][1] = Math.max(topMask[y][1], x - x0);
         }
       }
-      const rowMask = fullMask ? Array.from({
-        length: y1 - y0 + 1
-      }, () => [image.width, 0]) : null;
+      const rowMask = fullMask
+        ? Array.from(
+            {
+              length: y1 - y0 + 1,
+            },
+            () => [image.width, 0],
+          )
+        : null;
       if (rowMask)
         for (let k = 0; k < tail; k++) {
-          const x = queue[k] % image.width - x0,
+          const x = (queue[k] % image.width) - x0,
             y = Math.floor(queue[k] / image.width) - y0;
           rowMask[y][0] = Math.min(rowMask[y][0], x);
           rowMask[y][1] = Math.max(rowMask[y][1], x);
@@ -73,49 +87,60 @@ function isolatedActors(file, count, fullMask = false) {
         w: x1 - x0 + 1,
         h: y1 - y0 + 1,
         topMask,
-        ...(rowMask ? {
-          rowMask
-        } : {})
+        ...(rowMask
+          ? {
+              rowMask,
+            }
+          : {}),
       });
     }
   }
-  if (parts.length !== count) throw Error('Componentes inesperados em ' + file + ': ' + JSON.stringify(parts.map(p => ({
-    x: p.x,
-    y: p.y,
-    w: p.w,
-    h: p.h
-  }))));
-  parts.sort((a, b) => (a.y + a.h / 2) - (b.y + b.h / 2));
-  const frames = [...parts.slice(0, count / 2)
-    .sort((a, b) => a.x - b.x), ...parts.slice(count / 2)
-    .sort((a, b) => a.x - b.x)
+  if (parts.length !== count)
+    throw Error(
+      'Componentes inesperados em ' +
+        file +
+        ': ' +
+        JSON.stringify(
+          parts.map((p) => ({
+            x: p.x,
+            y: p.y,
+            w: p.w,
+            h: p.h,
+          })),
+        ),
+    );
+  parts.sort((a, b) => a.y + a.h / 2 - (b.y + b.h / 2));
+  const frames = [
+    ...parts.slice(0, count / 2).sort((a, b) => a.x - b.x),
+    ...parts.slice(count / 2).sort((a, b) => a.x - b.x),
   ];
   for (const f of frames) {
     let left = f.x + f.w,
       right = f.x;
-    for (let y = f.y + Math.floor(f.h * .94); y < f.y + f.h; y++)
+    for (let y = f.y + Math.floor(f.h * 0.94); y < f.y + f.h; y++)
       for (let x = f.x; x < f.x + f.w; x++)
         if (image.data[(y * image.width + x) * 4 + 3] > 160) {
           left = Math.min(left, x);
           right = Math.max(right, x);
-        } f.foot = [(left + right) / 2 - f.x, f.h];
+        }
+    f.foot = [(left + right) / 2 - f.x, f.h];
     f.anchorX = f.w / 2;
   }
   return {
     file: 'brinquedao/' + file,
     width: image.width,
     height: image.height,
-    referenceHeight: Math.max(...frames.map(f => f.h)),
-    frames
+    referenceHeight: Math.max(...frames.map((f) => f.h)),
+    frames,
   };
 }
 
-const kit = isolatedActors('modulos-brinquedao-v1.png', 4, true),
+const kit = isolatedActors('modules-brinquedao-v1.png', 4, true),
   girl = isolatedActors('yuna-brinquedao-v2.png', 4, true);
-const slideImage = PNG.sync.read(fs.readFileSync(root + '/escorregador-v1.png'));
-const attractions = isolatedActors('atracoes-elasticas-v1.png', 4, true);
-const insideTubes = isolatedActors('tubos-interior-v1.png', 2, true),
-  fish = isolatedActors('piranhas-brinquedo-v2.png', 4, true);
+const slideImage = PNG.sync.read(fs.readFileSync(root + '/slide-v1.png'));
+const attractions = isolatedActors('attractions-elastic-v1.png', 4, true);
+const insideTubes = isolatedActors('tubes-interior-v1.png', 2, true),
+  fish = isolatedActors('piranhas-toy-v2.png', 4, true);
 const insideImage = PNG.sync.read(fs.readFileSync(root + '/interior-brinquedao-v1.png'));
 const art = {
   kit,
@@ -126,18 +151,23 @@ const art = {
   insideBackground: {
     file: 'brinquedao/interior-brinquedao-v1.png',
     width: insideImage.width,
-    height: insideImage.height
+    height: insideImage.height,
   },
   slide: {
-    file: 'brinquedao/escorregador-v1.png',
+    file: 'brinquedao/slide-v1.png',
     width: slideImage.width,
-    height: slideImage.height
+    height: slideImage.height,
   },
   background: {
-    file: 'brinquedao/jardim-brinquedao-v1.png',
+    file: 'brinquedao/garden-brinquedao-v1.png',
     width: 1536,
-    height: 1024
-  }
+    height: 1024,
+  },
 };
-fs.writeFileSync('src/js/brinquedao/BrinquedaoArt.js', '// Gerado por prepare-brinquedao.js; componentes completos e máscaras de apresentação.\nexport const BRINQUEDAO_ART=' + JSON.stringify(art) + ';\n');
+fs.writeFileSync(
+  'src/js/brinquedao/brinquedaoArt.js',
+  '// Gerado por prepare-brinquedao.js; componentes completos e máscaras de apresentação.\nexport const BRINQUEDAO_ART=' +
+    JSON.stringify(art) +
+    ';\n',
+);
 console.log('Brinquedão preparado: cenário externo e interno, tubos, Yuna e peixinhos completos.');

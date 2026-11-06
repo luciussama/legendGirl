@@ -2,11 +2,9 @@ import {
   getMobileUILayout,
   hitArenaMobileControl,
   isActionControlHit,
-  arenaDirectionVector
-} from '../ui/MobileUILayout.js';
-import {
-  TOY_ROOM_INPUT
-} from './ToyRoomInputBindings.js';
+  arenaDirectionVector,
+} from '../ui/mobileUILayout.js';
+import { TOY_ROOM_INPUT } from './toyRoomInputBindings.js';
 
 /** Processa entradas da sala e da arena; consulta o estado atual pelo contrato recebido. */
 export class ToyRoomInputController {
@@ -22,7 +20,7 @@ export class ToyRoomInputController {
       window.addEventListener('keydown', this.context.handlers.onKeyDown);
       window.addEventListener('keyup', this.context.handlers.onKeyUp);
       window.addEventListener('pointermove', this.context.handlers.handlePointerMove, {
-        passive: false
+        passive: false,
       });
       window.addEventListener('pointerup', this.context.handlers.handlePointerUp);
       window.addEventListener('pointercancel', this.context.handlers.handlePointerUp);
@@ -31,23 +29,29 @@ export class ToyRoomInputController {
     if (this.context.canvas) {
       this.context.canvas.addEventListener('uilayoutchange', this.context.handlers.handlePointerUp);
       this.context.canvas.addEventListener('pointerdown', this.context.handlers.handlePointerDown, {
-        passive: false
+        passive: false,
       });
-      this.context.canvas.addEventListener('lostpointercapture', this.context.handlers.handlePointerUp);
+      this.context.canvas.addEventListener(
+        'lostpointercapture',
+        this.context.handlers.handlePointerUp,
+      );
     }
   }
 
   /** Converte coordenadas de ponteiro/toque para o bitmap e informa também a posição relativa. */
   getCanvasCoordinates(e) {
-    if (!this.context.canvas) return {
-      x: 0,
-      y: 0,
-      relX: 0.5,
-      relY: 0.5
-    };
+    if (!this.context.canvas)
+      return {
+        x: 0,
+        y: 0,
+        relX: 0.5,
+        relY: 0.5,
+      };
     const rect = this.context.canvas.getBoundingClientRect();
-    const clientX = e.clientX !== undefined ? e.clientX : (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-    const clientY = e.clientY !== undefined ? e.clientY : (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+    const clientX =
+      e.clientX !== undefined ? e.clientX : e.touches && e.touches[0] ? e.touches[0].clientX : 0;
+    const clientY =
+      e.clientY !== undefined ? e.clientY : e.touches && e.touches[0] ? e.touches[0].clientY : 0;
     const scaleX = rect.width > 0 ? this.context.canvas.width / rect.width : 1;
     const scaleY = rect.height > 0 ? this.context.canvas.height / rect.height : 1;
     const x = (clientX - rect.left) * scaleX;
@@ -58,7 +62,7 @@ export class ToyRoomInputController {
       x,
       y,
       relX,
-      relY
+      relY,
     };
   }
 
@@ -109,7 +113,8 @@ export class ToyRoomInputController {
     for (const pad of pads) {
       if (!pad || pad.connected === false || (pad.mapping && pad.mapping !== 'standard')) continue;
       connected.add(pad.index);
-      const held = index => Boolean(pad.buttons?.[index]?.pressed || pad.buttons?.[index]?.value > 0.5);
+      const held = (index) =>
+        Boolean(pad.buttons?.[index]?.pressed || pad.buttons?.[index]?.value > 0.5);
       const dpadX = Number(held(15)) - Number(held(14));
       const dpadY = Number(held(13)) - Number(held(12));
       const x = arenaCombat ? dpadX : dpadX || pad.axes?.[0] || 0;
@@ -120,7 +125,8 @@ export class ToyRoomInputController {
       const jump = arenaCombat && held(0);
       const special = arenaCombat && held(3);
       const wasSpecial = this.state.arenaSpecialButtons.get(pad.index) || false;
-      if (moving || pressed || jump || special || !input.buttons.has(pad.index)) this.context.setDevice('GAMEPAD');
+      if (moving || pressed || jump || special || !input.buttons.has(pad.index))
+        this.context.setDevice('GAMEPAD');
       if (moving && !input.active) {
         input.x = x;
         input.y = y;
@@ -155,7 +161,10 @@ export class ToyRoomInputController {
     const layout = getMobileUILayout(this.context.canvas);
     if (!layout.contains(coords.x, coords.y)) return;
 
-    if (this.context.isArenaCombat() && (this.context.mobile || e.pointerType === 'touch' || this.state.isTouchDevice)) {
+    if (
+      this.context.isArenaCombat() &&
+      (this.context.mobile || e.pointerType === 'touch' || this.state.isTouchDevice)
+    ) {
       const control = hitArenaMobileControl(layout, coords.x, coords.y);
       if (control) {
         if (e.preventDefault && e.cancelable !== false) e.preventDefault();
@@ -165,9 +174,16 @@ export class ToyRoomInputController {
         else {
           const pointerId = e.pointerId ?? 'touch';
           if (this.state.arenaTouchPointers.size) return;
-          this.state.arenaTouchPointers.set(pointerId, arenaDirectionVector(layout, coords.x, coords.y));
+          this.state.arenaTouchPointers.set(
+            pointerId,
+            arenaDirectionVector(layout, coords.x, coords.y),
+          );
           this.refreshArenaTouchButtons();
-          if (this.context.canvas && typeof this.context.canvas.setPointerCapture === 'function' && typeof e.pointerId === 'number') {
+          if (
+            this.context.canvas &&
+            typeof this.context.canvas.setPointerCapture === 'function' &&
+            typeof e.pointerId === 'number'
+          ) {
             try {
               this.context.canvas.setPointerCapture(e.pointerId);
             } catch (_) {}
@@ -195,7 +211,11 @@ export class ToyRoomInputController {
     if (coords.x < layout.safeLeft + layout.usableWidth * 0.55) {
       if (this.state.touchState.active) return;
       if (e.preventDefault && e.cancelable) e.preventDefault();
-      if (this.context.canvas && typeof this.context.canvas.setPointerCapture === 'function' && e.pointerId !== undefined) {
+      if (
+        this.context.canvas &&
+        typeof this.context.canvas.setPointerCapture === 'function' &&
+        e.pointerId !== undefined
+      ) {
         try {
           this.context.canvas.setPointerCapture(e.pointerId);
         } catch (_) {}
@@ -222,23 +242,32 @@ export class ToyRoomInputController {
     if (this.state.arenaTouchPointers.has(pointerId)) {
       if (e.preventDefault && e.cancelable) e.preventDefault();
       const coords = this.getCanvasCoordinates(e);
-      this.state.arenaTouchPointers.set(pointerId, arenaDirectionVector(getMobileUILayout(this.context.canvas), coords.x, coords.y));
+      this.state.arenaTouchPointers.set(
+        pointerId,
+        arenaDirectionVector(getMobileUILayout(this.context.canvas), coords.x, coords.y),
+      );
       this.refreshArenaTouchButtons();
       return;
     }
     if (!this.state.touchState.active) return;
-    if (e.pointerId !== undefined && this.state.touchState.pointerId !== null && e.pointerId !== this.state.touchState.pointerId) return;
+    if (
+      e.pointerId !== undefined &&
+      this.state.touchState.pointerId !== null &&
+      e.pointerId !== this.state.touchState.pointerId
+    )
+      return;
 
     if (e.preventDefault && e.cancelable) e.preventDefault();
     const coords = this.getCanvasCoordinates(e);
-    this.state.touchState.currentX = this.state.touchState.startX + coords.x - this.state.touchState.pointerStartX;
-    this.state.touchState.currentY = this.state.touchState.startY + coords.y - this.state.touchState.pointerStartY;
+    this.state.touchState.currentX =
+      this.state.touchState.startX + coords.x - this.state.touchState.pointerStartX;
+    this.state.touchState.currentY =
+      this.state.touchState.startY + coords.y - this.state.touchState.pointerStartY;
 
     const dx = this.state.touchState.currentX - this.state.touchState.startX;
     const dy = this.state.touchState.currentY - this.state.touchState.startY;
     const dist = Math.hypot(dx, dy);
-    const controlScale = getMobileUILayout(this.context.canvas)
-      .action.scale;
+    const controlScale = getMobileUILayout(this.context.canvas).action.scale;
     const deadzone = 8 * controlScale;
     const maxRadius = 50 * controlScale;
 
@@ -269,9 +298,17 @@ export class ToyRoomInputController {
     else this.state.arenaTouchPointers.delete(pointerId);
     this.refreshArenaTouchButtons();
     if (this.state.touchState.active) {
-      if (e.pointerId === undefined || this.state.touchState.pointerId === null || e.pointerId === this.state.touchState.pointerId) {
+      if (
+        e.pointerId === undefined ||
+        this.state.touchState.pointerId === null ||
+        e.pointerId === this.state.touchState.pointerId
+      ) {
         const pointerId = e.pointerId ?? this.state.touchState.pointerId;
-        if (this.context.canvas && typeof this.context.canvas.releasePointerCapture === 'function' && typeof pointerId === 'number') {
+        if (
+          this.context.canvas &&
+          typeof this.context.canvas.releasePointerCapture === 'function' &&
+          typeof pointerId === 'number'
+        ) {
           try {
             this.context.canvas.releasePointerCapture(pointerId);
           } catch (_) {}
@@ -303,10 +340,17 @@ export class ToyRoomInputController {
   /** Recalcula os botões direcionais da arena a partir dos vetores de toque ativos. */
   refreshArenaTouchButtons() {
     const values = [...this.state.arenaTouchPointers.values()];
-    const vectors = values.filter(value => value && typeof value === 'object');
+    const vectors = values.filter((value) => value && typeof value === 'object');
     for (const direction of Object.keys(this.state.arenaTouchButtons)) {
-      const active = vectors.some(v => direction === 'left' ? v.x < -.18 : direction === 'right' ? v.x > .18 :
-        direction === 'up' ? v.y < -.18 : v.y > .18);
+      const active = vectors.some((v) =>
+        direction === 'left'
+          ? v.x < -0.18
+          : direction === 'right'
+            ? v.x > 0.18
+            : direction === 'up'
+              ? v.y < -0.18
+              : v.y > 0.18,
+      );
       this.state.arenaTouchButtons[direction] = values.includes(direction) || active;
     }
   }
@@ -322,9 +366,18 @@ export class ToyRoomInputController {
       window.removeEventListener('blur', this.context.handlers.handleBlur);
     }
     if (this.context.canvas) {
-      this.context.canvas.removeEventListener('uilayoutchange', this.context.handlers.handlePointerUp);
-      this.context.canvas.removeEventListener('pointerdown', this.context.handlers.handlePointerDown);
-      this.context.canvas.removeEventListener('lostpointercapture', this.context.handlers.handlePointerUp);
+      this.context.canvas.removeEventListener(
+        'uilayoutchange',
+        this.context.handlers.handlePointerUp,
+      );
+      this.context.canvas.removeEventListener(
+        'pointerdown',
+        this.context.handlers.handlePointerDown,
+      );
+      this.context.canvas.removeEventListener(
+        'lostpointercapture',
+        this.context.handlers.handlePointerUp,
+      );
     }
   }
 }
