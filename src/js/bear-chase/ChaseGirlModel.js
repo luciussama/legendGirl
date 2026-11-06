@@ -1,7 +1,7 @@
 import * as T from '../../vendor/three/three.module.js';
 import { GIRL_PALETTE } from './chaseGirlPalette.js';
 
-/** Menina da arena reinterpretada em volume; a autoria traseira não é sprite aprovado. */
+/** Menina girl-v2 em volume, com cachos, expressão e figurino guiados pelo sprite oficial. */
 export class ChaseGirlModel {
   /** Distribui as proporções ilustradas entre cabeça, tronco e membros articulados. */
   constructor(own) {
@@ -21,6 +21,9 @@ export class ChaseGirlModel {
         ),
       ]),
     );
+    this.materials.blush.transparent = true;
+    this.materials.blush.opacity = 0.36;
+    this.materials.blush.depthWrite = false;
     this.sphere = this.shade(new T.SphereGeometry(1, 24, 16));
     this.proportions = Object.freeze({
       thigh: 0.22,
@@ -70,7 +73,15 @@ export class ChaseGirlModel {
     this.buildDressDetails();
     this.head = this.joint(this.torso, 'Cabeca', 0, 0.335, 0);
     this.head.scale.setScalar(0.86);
-    this.volume(this.head, 'skin', [0, 0.09, -0.045], [0.31, 0.32, 0.27]);
+    const face = this.volume(this.head, 'skin', [0, 0.09, -0.045], [0.31, 0.32, 0.27]);
+    const faceGeometry = new T.SphereGeometry(1, 48, 32),
+      facePositions = faceGeometry.attributes.position;
+    for (let i = 0; i < facePositions.count; i++) {
+      const y = facePositions.getY(i);
+      facePositions.setX(i, facePositions.getX(i) * (0.9 + (0.1 * (y + 1)) / 2));
+    }
+    faceGeometry.computeVertexNormals();
+    face.geometry = this.shade(faceGeometry);
     // Bochechas e queixo fazem uma face curta e larga, sem focinho esférico.
 
     for (const side of [-1, 1])
@@ -113,6 +124,20 @@ export class ChaseGirlModel {
       this.volume(ankle, 'boot', [0, 0.015, 0.005], [0.065, 0.075, 0.07]);
       this.volume(ankle, 'sole', [0, -0.095, -0.055], [0.087, 0.024, 0.143]);
       this.volume(ankle, 'cream', [0, 0.05, 0], [0.07, 0.028, 0.069]);
+      for (let n = 0; n < 3; n++) {
+        const y = 0.017 - n * 0.024,
+          z = -0.075 - n * 0.018;
+        this.sweep(
+          ankle,
+          'cream',
+          [
+            [-0.028, y, z],
+            [0, y - 0.006, z - 0.007],
+            [0.028, y, z],
+          ],
+          [0.003, 0.004, 0.003],
+        );
+      }
       this.legs.push({
         hip,
         knee,
@@ -124,7 +149,7 @@ export class ChaseGirlModel {
     this.buildSword();
     this.batchDetails(this.root);
     this.root.userData.authoring =
-      'Revisão 5: conjunto cabeça/cabelo mais contido, tronco e membros alongados, franja curva e botas apoiadas pela sola; vestido e identidade girl-v2 preservados. Costas interpretadas em volume.';
+      'Revisão 6: face afunilada, olhos castanhos com pálpebras, sorriso, cachos em mechas nas três vistas, laços com pontas, gola e botas detalhadas. Proporções articuladas e apoios conservados; costas são interpretação sujeita à revisão humana.';
   }
   /** Agrupa detalhes rígidos do mesmo material por articulação, preservando os pivôs animados. */
   batchDetails(parent) {
@@ -153,6 +178,7 @@ export class ChaseGirlModel {
       const geometry = this.own(new T.BufferGeometry());
       for (const [name, array] of Object.entries(values))
         geometry.setAttribute(name, new T.Float32BufferAttribute(array, 3));
+      geometry.normalizeNormals();
       const merged = new T.Mesh(geometry, material);
       merged.name = 'DetalhesAgrupados';
       parent.add(merged);
@@ -193,11 +219,14 @@ export class ChaseGirlModel {
   limb(parent, material, length, end, start) {
     const geometry = new T.LatheGeometry(
       [
-        [0, 0],
+        [0, 0.045],
+        [start * 0.75, 0.03],
         [start, 0.005],
         [start * 0.95, -length * 0.28],
         [end, -length * 0.85],
-        [0, -length],
+        [end * 0.95, -length],
+        [end * 0.65, -length - 0.025],
+        [0, -length - 0.045],
       ]
         .reverse()
         .map(([r, y]) => new T.Vector2(r, y)),
@@ -319,25 +348,28 @@ export class ChaseGirlModel {
   /** Varre uma mecha curva afunilada para conservar volume nas vistas laterais e traseiras. */
   sweep(parent, material, points, radii) {
     const curve = new T.CatmullRomCurve3(points.map((p) => new T.Vector3(...p)));
-    const frames = curve.computeFrenetFrames(32, false),
+    const fine = Math.max(...radii) <= 0.02,
+      segments = fine ? 12 : 24,
+      sides = fine ? 6 : 10;
+    const frames = curve.computeFrenetFrames(segments, false),
       positions = [],
       indices = [];
-    for (let i = 0; i <= 32; i++) {
-      const t = i / 32,
+    for (let i = 0; i <= segments; i++) {
+      const t = i / segments,
         p = curve.getPointAt(t),
         f = t * (radii.length - 1),
         k = Math.min(radii.length - 2, Math.floor(f));
       const radius = T.MathUtils.lerp(radii[k], radii[k + 1], f - k);
-      for (let j = 0; j <= 12; j++) {
-        const angle = (j / 12) * Math.PI * 2;
+      for (let j = 0; j <= sides; j++) {
+        const angle = (j / sides) * Math.PI * 2;
         const v = p
           .clone()
           .addScaledVector(frames.normals[i], Math.cos(angle) * radius)
           .addScaledVector(frames.binormals[i], Math.sin(angle) * radius);
         positions.push(v.x, v.y, v.z);
-        if (i < 32 && j < 12) {
-          const a = i * 13 + j,
-            b = a + 13;
+        if (i < segments && j < sides) {
+          const a = i * (sides + 1) + j,
+            b = a + sides + 1;
           indices.push(a, a + 1, b, a + 1, b + 1, b);
         }
       }
@@ -353,7 +385,7 @@ export class ChaseGirlModel {
     const positions = [],
       indices = [],
       rows = 16,
-      columns = 48;
+      columns = 80;
     for (let row = 0; row <= rows; row++)
       for (let col = 0; col <= columns; col++) {
         const phi = (col / columns) * Math.PI * 2,
@@ -374,6 +406,21 @@ export class ChaseGirlModel {
     cap.setIndex(indices);
     cap.computeVertexNormals();
     this.head.add(new T.Mesh(this.shade(cap), this.materials.hair));
+    // Mechas seguem a calota de frente a nuca: conservam relevo também na câmera de costas.
+    for (let n = 0; n < 30; n++) {
+      const phi = (n / 30) * Math.PI * 2,
+        limit = 1.18 + (Math.cos(phi) + 1) * 0.56,
+        points = Array.from({ length: 7 }, (_, j) => {
+          const theta = 0.12 + (j / 6) * (limit - 0.16),
+            angle = phi + 0.08 * Math.sin(theta * 2);
+          return [
+            Math.sin(theta) * Math.sin(angle) * 0.354,
+            0.17 + Math.cos(theta) * 0.324,
+            Math.sin(theta) * Math.cos(angle) * 0.305,
+          ];
+        });
+      this.sweep(this.head, n % 3 ? 'hair' : 'lock', points, [0.001, 0.004, 0.006, 0.004, 0.001]);
+    }
     this.curveFringe(
       this.silhouette(
         this.head,
@@ -444,7 +491,7 @@ export class ChaseGirlModel {
           [side * 0.1, -0.29, 0.14],
           [side * 0.02, -0.31, 0.13],
         ],
-        [0.07, 0.125, 0.13, 0.1, 0.025],
+        [0.05, 0.075, 0.075, 0.05, 0.015],
       );
       this.sweep(
         tail,
@@ -468,7 +515,25 @@ export class ChaseGirlModel {
         ],
         [0.07, 0.05, 0.002],
       );
-      this.bow(tail, [0, 0.055, -0.04], 0.075);
+      // Cachos independentes quebram a massa lisa das marias-chiquinhas sem mudar seus pivôs.
+      for (let n = 0; n < 7; n++) {
+        const z = -0.08 + n * 0.045,
+          spread = 0.025 * Math.sin(n * 1.7);
+        this.sweep(
+          tail,
+          n % 2 ? 'hair' : 'lock',
+          [
+            [side * 0.02, 0.005, z],
+            [side * (0.095 + spread), -0.08, z - 0.015],
+            [side * (0.13 + spread), -0.19, z + 0.015],
+            [side * 0.075, -0.29, z + 0.04],
+            [side * 0.02, -0.24, z + 0.025],
+            [side * 0.07, -0.21, z + 0.005],
+          ],
+          [0.018, 0.043, 0.041, 0.028, 0.012, 0.001],
+        );
+      }
+      this.bow(tail, [0, 0.055, -0.1], 0.09);
       this.pigtails.push({
         tail,
         tip,
@@ -489,6 +554,7 @@ export class ChaseGirlModel {
   /** Constrói laço de tecido com duas alças e nó central. */
   bow(parent, position, size) {
     const pivot = this.joint(parent, 'LacoRosa', ...position);
+    if (position[2] > 0) pivot.rotation.y = Math.PI;
     for (const side of [-1, 1]) {
       const loop = this.volume(
         pivot,
@@ -499,6 +565,20 @@ export class ChaseGirlModel {
       loop.rotation.z = side * 0.28;
     }
     this.volume(pivot, 'rose', [0, 0, -size * 0.12], [size * 0.24, size * 0.28, size * 0.3]);
+    for (const side of [-1, 1])
+      this.silhouette(
+        pivot,
+        'pink',
+        [
+          [0, 0],
+          [side * size * 0.35, -size * 0.4],
+          [side * size * 0.75, -size * 1.15],
+          [side * size * 0.28, -size],
+          [0, -size * 1.05],
+        ],
+        0.003,
+        [side * size * 0.12, 0, 0],
+      );
   }
   /** Repete o bordado em uma só chamada de desenho e acrescenta o laço traseiro. */
   buildDressDetails() {
@@ -524,25 +604,66 @@ export class ChaseGirlModel {
         flowers.setMatrixAt(index++, transform.matrix);
       }
     this.skirt.add(flowers);
-    this.bow(this.torso, [0, -0.015, 0.16], 0.105);
-    this.bow(this.torso, [0, 0.255, -0.145], 0.045);
+    this.bow(this.torso, [0, -0.015, 0.24], 0.105);
+    for (const side of [-1, 1]) {
+      const collar = this.volume(
+        this.torso,
+        'cream',
+        [side * 0.065, 0.26, -0.147],
+        [0.077, 0.03, 0.026],
+      );
+      collar.rotation.z = side * 0.24;
+    }
+    this.bow(this.torso, [0, 0.23, -0.17], 0.045);
   }
-  /** Desenha olhos menos circulares, nariz discreto e sobrancelhas da expressão de corrida. */
+  /** Olhos castanhos amendoados, pálpebras e sorriso preservam a expressão do sprite. */
   buildFace() {
     for (const side of [-1, 1]) {
-      this.volume(this.head, 'white', [side * 0.135, 0.1, -0.304], [0.074, 0.062, 0.015]);
-      this.volume(this.head, 'eye', [side * 0.13, 0.09, -0.319], [0.034, 0.054, 0.01]);
-      this.volume(this.head, 'white', [side * 0.13 - 0.009, 0.112, -0.33], [0.011, 0.013, 0.004]);
-      const brow = this.volume(
+      this.volume(this.head, 'white', [side * 0.132, 0.1, -0.297], [0.064, 0.079, 0.008]);
+      this.volume(this.head, 'eye', [side * 0.132, 0.093, -0.307], [0.045, 0.066, 0.006]);
+      this.volume(this.head, 'black', [side * 0.132, 0.095, -0.313], [0.026, 0.05, 0.003]);
+      this.volume(this.head, 'white', [side * 0.132 - 0.012, 0.123, -0.318], [0.012, 0.016, 0.003]);
+      this.volume(this.head, 'white', [side * 0.132 + 0.014, 0.065, -0.317], [0.005, 0.007, 0.002]);
+      this.sweep(
         this.head,
         'hair',
-        [side * 0.13, 0.183, -0.283],
-        [0.072, 0.016, 0.016],
+        [
+          [side * 0.071, 0.12, -0.304],
+          [side * 0.1, 0.172, -0.302],
+          [side * 0.153, 0.181, -0.286],
+          [side * 0.196, 0.15, -0.266],
+        ],
+        [0.003, 0.008, 0.009, 0.001],
       );
-      brow.rotation.z = side * 0.17;
+      this.sweep(
+        this.head,
+        'hair',
+        [
+          [side * 0.075, 0.208, -0.27],
+          [side * 0.13, 0.225, -0.267],
+          [side * 0.182, 0.21, -0.247],
+        ],
+        [0.002, 0.006, 0.001],
+      );
+      const cheek = this.volume(
+        this.head,
+        'blush',
+        [side * 0.19, -0.018, -0.263],
+        [0.043, 0.017, 0.004],
+      );
+      cheek.rotation.y = -side * 0.42;
     }
-    this.volume(this.head, 'skin', [0, 0.025, -0.33], [0.028, 0.029, 0.022]);
-    this.volume(this.head, 'rose', [0, -0.073, -0.3], [0.04, 0.007, 0.006]);
+    this.volume(this.head, 'skin', [0, 0.015, -0.321], [0.018, 0.02, 0.012]);
+    this.sweep(
+      this.head,
+      'rose',
+      [
+        [-0.043, -0.067, -0.286],
+        [0, -0.082, -0.294],
+        [0.043, -0.065, -0.286],
+      ],
+      [0.002, 0.006, 0.001],
+    );
   }
   /** Recria a espada de madeira e a guarda azulada usada nos quadros de corrida da arena. */
   buildSword() {

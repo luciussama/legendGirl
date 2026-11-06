@@ -31,3 +31,7 @@ piranhas-toy-v2.png: quatro poses em alfa real, duas cores, alerta e mordida, cr
 
 
 A corrida de quatro tobogãs reutiliza kit, tubos, lonas e peixes existentes. Não houve nova geração/edição de PNG. O triângulo e a ponte de blocos usam as pinturas de brinquedos já presentes em toy-room/stage3/stacking-blocks-v1.png e toy-room/bear-chase/materials/blocks-atlas-v1.png. Os recursos antigos de piscinas ficam preservados como fonte; não são desenhados como piscinas jogáveis.
+
+## Integração visual de novembro
+
+Os PNGs originais permanecem intactos. Terrain mantém a espessura das calhas pela normal e repete apenas o centro das passarelas acolchoadas em escala estável. As pontes preservam a suspensão completa; os espelhos dos degraus têm recorte arredondado. InteriorRenderer compartilha o desenho dos pilares e ancora suas alturas nas lonas existentes. BrinquedaoLook prepara fundos com menor contraste/saturação para separar decoração e percurso. Mudanças pertencem à apresentação em memória, sem recalibrar colisões.

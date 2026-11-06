@@ -437,3 +437,7 @@ Na transição visual do segundo tubo, a prévia da sala de retorno desenhava ju
 ## 06/11/2026 — Convenções de código e recursos
 
 Código e nomes próprios de arquivos técnicos passam a seguir inglês, preservando nomes de personagens e locais. Comentários, documentação e o jogo permanecem em português. ESLint e Prettier verificam as fontes próprias. A protagonista usa `player` nas regras e `girl` na arte; campanhas v1 continuam legíveis pelo adaptador do formato v2. Os assets foram renomeados com atualização dos consumidores, preservando os bytes de imagens e áudios e os registros originais de proveniência. Resultados e limites dos testes por etapa estão no diário de IA. Consulte [Convenções de código](CONVENCOES-CODIGO.md).
+
+## 06/11/2026 — Continuidade visual das fases
+
+O Brinquedão recebe redes em escala estável, calhas com espessura consistente, degraus arredondados e pilares internos ancorados nas lonas. Os tobogãs têm projeção contínua das pinturas nas curvas; os fundos decorativos ficam mais discretos. A menina3D ganha expressão, cachos, laços e acabamento do figurino guiados pelos sprites oficiais, e o teto recebe reboco texturizado. No quarto escuro, o papel de parede ilustrado e a luz refletida próxima à fada revelam melhor os materiais, mantendo a atmosfera noturna. As mudanças são visuais e conservam física, dificuldade e regras de câmera.

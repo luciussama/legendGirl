@@ -127,9 +127,11 @@ Web Audio ou Three.js. Desenho e som consomem estado/eventos sem decidir dano.
 Resultados e fontes de QA ficam no diário de IA. Emulação e avanço controlado não
 homologam dificuldade humana, Safari ou aparelhos físicos.
 
-## Modelo 3D da protagonista — revisão 5
+## Modelo 3D da protagonista — revisão 6
 
-A revisão atual acompanha a menina ilustrada girl-v2: vestido creme inteiro, barra e faixa rosa, mangas bufantes, laço nas costas, bordado floral, botas marrons e duas marias-chiquinhas curtas com laços. Cabeça e cabelo têm escala conjunta menor, enquanto tronco, braços e pernas foram alongados para aproximar a silhueta da pintura. A franja acompanha as têmporas em volume; os cachos laterais deixam de formar placas. As costas continuam uma interpretação em volume; não presumir homologação humana de todas as vistas.
+A revisão6 usa o sprite oficial girl-v2 como referência de identidade: face afunilada, olhos castanhos com brilho e pálpebras, sorriso discreto, cachos em mechas também nas costas, laços com pontas, gola e cadarços. O núcleo das marias-chiquinhas foi reduzido para que as mechas definam a silhueta. Os membros têm terminação arredondada sobreposta às articulações para reduzir frestas durante a passada. Vestido creme/rosa, paleta regional, pivôs, comprimentos dos membros e altura da sola permanecem iguais. O GLB deve ser reexportado após mudanças no construtor; as costas continuam interpretação sujeita à revisão humana.
+
+Os detalhes são agrupados por material e articulação. O contrato temporário `test:art:rig`, arquivado no diário, verifica o apoio em120 poses, paleta, volume, estado imutável, dados finitos e orçamento de geometria. `test:bear-chase:girl:glb` verifica o arquivo de intercâmbio e os dois pivôs de marias-chiquinhas.
 
 `chaseGirlPalette.js` e `assets/models/bear-chase/palette-girl.json` vêm de `node scripts/prepare-chase-palette.js`: regiões do novo `girl-v2/source/locomotion.png`, mediana 7×7, limiar de alfa e hash. A guarda azul da espada conserva seu material anterior, explicitamente registrado. Detalhes rígidos do mesmo material são agrupados por articulação; 120 pétalas de baixa tesselação usam uma única malha instanciada. Dois rabos e pontas recebem movimento secundário sem alterar a simulação. A fada orbital e os dois mapas de sombra conservam seu contrato.
 
@@ -307,3 +309,9 @@ A mudança é de compatibilidade do envio da textura. O arquivo de arte, as táb
 COMPLETE mantém o resultado por2,5s depois da ida ao baú e abre a cena final do capítulo1, tanto na campanha quanto pelo seletor. GAME_OVER termina sem captura e oferece retry da fase pela interface. A cada três derrotas no NORMAL, somadas à campanha, surge a oferta do fácil. Aceitar retoma a distância/posição da fuga com seis vidas e dois segundos de imunidade; recusar mantém a dificuldade e a tentativa encerrada. A abertura obrigatória funciona como carregamento: aparece antes do preparo 3D e aguarda junto ao urso caído quando necessário. A arrancada permanece bloqueada até a prontidão visual. A validação de textura e a alternativa de compatibilidade foram verificadas no Chrome; a confirmação do defeito relatado no Safari continua dependendo do navegador do usuário.
 
 Além dos módulos da tabela, `ChasePacing`, `ChaseCamera`, `ChaseLighting` e `ChaseBearAnimation` isolam ritmo, enquadramento, iluminação e articulações. As fábricas específicas de objetos, primitivas e atlas estão descritas no [catálogo completo](../ARQUITETURA.md#catálogo-completo-dos-módulos-javascript). Aprovação técnica não substitui avaliação artística de modelos, novas poses e materiais.
+
+## Acabamento do teto
+
+`ChaseRenderer3D.plasterTexture` prepara reboco creme fosco em uma DataTexture periódica128×128, com variações suaves de cor e relevo. A repetição acompanha as UVs contínuas da sala: aproximadamente cinco metros por módulo, sem placas nem linhas de emenda. O material recebe iluminação e usa o mesmo mapa como relevo discreto. A textura é determinística, construída uma vez e liberada pelo registro de recursos; não exige download, altera geometria ou participa da simulação.
+
+A tesselação das mechas acompanha sua espessura: detalhes finos usam12 segmentos/6 lados e volumes maiores24 segmentos/10 lados. O agrupamento por articulação conserva as chamadas de desenho e os recursos são liberados ao encerrar a fase.

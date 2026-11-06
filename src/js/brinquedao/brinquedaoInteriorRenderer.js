@@ -1,4 +1,4 @@
-import { drawBrinquedaoSurfaceStrip } from './brinquedaoTerrain.js';
+import { drawBrinquedaoSurfaceStrip, drawBrinquedaoPillar } from './brinquedaoTerrain.js';
 import { BRINQUEDAO_ART as ART } from './brinquedaoArt.js';
 import { BRINQUEDAO_TUBES, brinquedaoTubePose } from './brinquedaoTubes.js';
 import {
@@ -13,9 +13,9 @@ import { renderPoeticNarration } from '../narrative/poeticNarrator.js';
 const meshes = BRINQUEDAO_TUBES.map((t, index) =>
   Array.from(
     {
-      length: Math.ceil(t.length / 8),
+      length: Math.ceil(t.length / 8) + 1,
     },
-    (_, n) => brinquedaoTubePose(index, (n * 8) / t.length),
+    (_, n) => brinquedaoTubePose(index, Math.min(n * 8, t.length) / t.length),
   ),
 );
 
@@ -71,19 +71,7 @@ function pad(ctx, r, from, to, y) {
 }
 
 function column(ctx, r, x, top, bottom) {
-  const im = r.parts[4].canvas;
-  if (bottom > top)
-    ctx.drawImage(
-      im,
-      im.width * 0.087,
-      im.height * 0.31,
-      im.width * 0.039,
-      im.height * 0.53,
-      x - 18,
-      top,
-      36,
-      bottom - top,
-    );
+  if (bottom > top) drawBrinquedaoPillar(ctx, { x, top, bottom }, r.parts);
 }
 
 function portal(ctx, r, x, floor, incoming, shaft = true) {
@@ -149,7 +137,12 @@ function finishGate(ctx, r) {
 }
 
 function reboundRoom(ctx, r, preview = false) {
-  for (const x of [75, 1190]) column(ctx, r, x, 540, 2310);
+  // Cada coluna começa no primeiro apoio que de fato sustenta, sem um toco acima da lona.
+  for (const [x, top] of [
+    [75, 850],
+    [1190, 1030],
+  ])
+    column(ctx, r, x, top, 2310);
   for (let n = 0; n < BRINQUEDAO_REBOUNDS.length - 1; n++) {
     const [x, y] = BRINQUEDAO_REBOUNDS[n],
       side = n % 2 ? 1 : -1,
@@ -209,23 +202,55 @@ function room(ctx, r, i, index, preview = false) {
   portal(ctx, r, C.runWidth - 140, C.floor, false, !preview);
 }
 
+/** Projeta a pintura em dois triângulos com bordas compartilhadas, sem fatias giradas sobrepostas. */
+function tubeQuad(ctx, image, sx, sw, corners) {
+  for (const indices of [
+    [0, 1, 2],
+    [0, 2, 3],
+  ]) {
+    const points = indices.map((i) => corners[i]),
+      center = points.reduce((c, p) => ({ x: c.x + p.x / 3, y: c.y + p.y / 3 }), { x: 0, y: 0 });
+    ctx.save();
+    ctx.beginPath();
+    points.forEach((p, i) => {
+      // Margem subpixel fecha o antialiasing entre triângulos, sem desenhar contornos na arte.
+      const dx = p.x - center.x,
+        dy = p.y - center.y,
+        k = 1 + 0.32 / Math.max(1, Math.hypot(dx, dy));
+      ctx[i ? 'lineTo' : 'moveTo'](center.x + dx * k, center.y + dy * k);
+    });
+    ctx.closePath();
+    ctx.clip();
+    const [a, b, c, d] = corners;
+    if (indices[1] === 1) ctx.transform(b.x - a.x, b.y - a.y, c.x - b.x, c.y - b.y, a.x, a.y);
+    else ctx.transform(c.x - d.x, c.y - d.y, d.x - a.x, d.y - a.y, a.x, a.y);
+    ctx.drawImage(image, sx, 0, sw, image.height, 0, 0, 1, 1);
+    ctx.restore();
+  }
+}
+
 function tube(ctx, r, index, center, worldW, worldH, front = false) {
   const image = r.look.tube,
     sw = image.width * 0.68,
-    h = BRINQUEDAO_TUBES[index].diameter;
-  for (const p of meshes[index]) {
+    radius = BRINQUEDAO_TUBES[index].diameter / 2,
+    samples = meshes[index];
+  for (let n = 0; n < samples.length - 1; n++) {
+    const p = samples[n],
+      next = samples[n + 1];
     if (front && Math.hypot(p.x - center.x, p.y - center.y) > 180) continue;
     if (
       Math.abs(p.x - center.x) > worldW * 0.75 + 180 ||
       Math.abs(p.y - center.y) > worldH * 0.75 + 180
     )
       continue;
-    const sx = image.width * 0.16 + ((p.distance % 680) / 680) * sw;
-    ctx.save();
-    ctx.translate(p.x, p.y);
-    ctx.rotate(p.angle);
-    ctx.drawImage(image, sx, 0, Math.max(1, (sw * 8) / 680), image.height, -1, -h / 2, 10, h);
-    ctx.restore();
+    const distance = Math.round(p.distance / 8) * 8,
+      sx = image.width * 0.16 + ((distance % 680) / 680) * sw,
+      width = ((next.distance - p.distance) / 680) * sw,
+      edge = (pose, side) => ({
+        x: pose.x - Math.sin(pose.angle) * radius * side,
+        y: pose.y + Math.cos(pose.angle) * radius * side,
+      });
+    tubeQuad(ctx, image, sx, width, [edge(p, -1), edge(next, -1), edge(next, 1), edge(p, 1)]);
   }
 }
 /** Quatro descidas contínuas; pista lisa, torre automática, blocos e chegada. */

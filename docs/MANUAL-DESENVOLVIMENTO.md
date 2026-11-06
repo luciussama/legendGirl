@@ -907,3 +907,7 @@ Brinquedão atual: domínio8/interior3. Gauntlet fornece triângulo, seis voos l
 
 
 O acabamento P1–P3 do Brinquedão está em BrinquedaoLook. Acrescentar temas em BRINQUEDAO_LOOK_THEMES, carregá-los pelo Renderer e manter o preparo na carga. Não colocar imagens/cache no snapshot. O vidro frontal só se repete perto da personagem, com opacidade0,035, e a máscara interna acompanha a tangente. Os onze módulos de física e persistência ficam protegidos pelo QA de hashes; não trocar a trajetória ativa do peixe para resolver apresentação móvel.
+
+## Continuidade pictórica do quarto escuro
+
+`BackgroundRenderer.renderWall` reutiliza discretamente `toy-room-wallpaper-v1` sobre a parede lilás; conserva guirlandas, janelas e decoração. `LightingSystem.apply` acrescenta rebatimento amplo e fraco junto à fada e revela mais volume dos objetos próximos à menina. Objetos distantes continuam escuros. Não há aumento uniforme de exposição, nova luz emitida pela menina, linha auxiliar de contato ou alteração da câmera. A iluminação apenas lê posições e estados existentes; saltos, colisões e dificuldade permanecem sob os mesmos controladores.

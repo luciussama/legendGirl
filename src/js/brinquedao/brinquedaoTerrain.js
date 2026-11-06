@@ -87,12 +87,13 @@ export function prepareBrinquedaoParts(image, slide) {
   slidePart.ribbon = {
     canvas: ribbon,
     surface: Array(240).fill(22),
+    normalThickness: true,
   };
   parts.push(slidePart);
   return parts;
 }
 
-function pillar(ctx, support, parts, viewportBottom) {
+export function drawBrinquedaoPillar(ctx, support, parts, viewportBottom) {
   const { x, top, bottom } = support,
     image = parts[4].canvas,
     renderBottom = Number.isFinite(viewportBottom) ? Math.max(bottom, viewportBottom + 64) : bottom;
@@ -133,7 +134,8 @@ function pillar(ctx, support, parts, viewportBottom) {
 }
 
 function trackSupports(ctx, p, parts, viewportBottom) {
-  for (const support of brinquedaoSupports(p)) pillar(ctx, support, parts, viewportBottom);
+  for (const support of brinquedaoSupports(p))
+    drawBrinquedaoPillar(ctx, support, parts, viewportBottom);
 }
 /** Amostra contínua evita os degraus de pixels causados por arredondar cada coluna da ilustração. */
 function surfaceAt(part, x) {
@@ -177,7 +179,12 @@ export function drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, n
     w = nextX - x;
   if (w <= 0) return;
   ctx.save();
-  ctx.transform(1, (nextY - y - (nextAnchor - anchor) * k) / w, 0, 1, x, y - anchor * k);
+  const slope = (nextY - y - (nextAnchor - anchor) * k) / w,
+    angle = Math.atan(slope),
+    normalX = part.normalThickness ? -Math.sin(angle) : 0,
+    normalY = part.normalThickness ? Math.cos(angle) : 1;
+  // A espessura da calha acompanha a normal; o topo continua registrado na curva física.
+  ctx.transform(1, slope, normalX, normalY, x - normalX * anchor * k, y - normalY * anchor * k);
   ctx.drawImage(
     part.canvas,
     sx,
@@ -201,7 +208,7 @@ function stepJoint(ctx, parts, step, viewportBottom) {
     x = step.x,
     y = step.top,
     h = step.bottom - step.top;
-  pillar(
+  drawBrinquedaoPillar(
     ctx,
     {
       x,
@@ -213,16 +220,10 @@ function stepJoint(ctx, parts, step, viewportBottom) {
   );
   ctx.save();
   ctx.beginPath();
-  ctx.moveTo(x + 32, y + 8);
-  ctx.lineTo(x + 32, y + h + 58);
-  ctx.lineTo(x - 30, y + h + 58);
-  ctx.lineTo(x - 30, y + h + 8);
-  ctx.quadraticCurveTo(x - 9, y + h + 5, x - 9, y + h - 16);
-  ctx.lineTo(x - 9, y + 25);
-  ctx.quadraticCurveTo(x - 9, y + 8, x + 8, y + 8);
-  ctx.closePath();
+  ctx.roundRect(x - 18, y + 10, 36, h + 42, 17);
   ctx.clip();
-  ctx.drawImage(im, sx, sy, 90, sh, x - 30, y + 8, 62, h + 50);
+  // O espelho do degrau é uma peça arredondada; não amplia uma face inteira como um remendo.
+  ctx.drawImage(im, sx, sy, 90, sh, x - 18, y + 10, 36, h + 42);
   ctx.restore();
 }
 /** Madeira, redes e acolchoados são material real do brinquedo, sem marcações auxiliares de salto. */
@@ -295,27 +296,57 @@ export function drawBrinquedaoTerrain(
             ? parts[1]
             : (look?.quiet ?? parts[0]),
       image = part.canvas,
-      margin = 0.15,
+      margin = p.kind === 'pad' ? 0.28 : 0.15,
       sw = image.width * (1 - 2 * margin),
       height = p.kind === 'fragile' ? 145 : ['bridge', 'fish-bridge'].includes(p.kind) ? 215 : 250,
       k = height / image.height;
-    // Registra o topo pintado no apoio físico; postes e rede permanecem atrás dos pés.
-    for (let x = Math.max(p.from, left - 6); x < p.to && x < right + 6; x += 4) {
-      const nx = Math.min(p.to, x + 4),
-        sx = image.width * margin + (sw * (x - p.from)) / (p.to - p.from),
-        nsx = image.width * margin + (sw * (nx - p.from)) / (p.to - p.from);
-      drawBrinquedaoSurfaceStrip(
-        ctx,
-        part,
-        sx,
-        nsx,
-        x,
-        nx,
-        brinquedaoSurface(p, x),
-        brinquedaoSurface(p, nx),
-        k,
-        image.height,
-      );
+    // Mantém a densidade de ripas e redes; reflexões unem o material sem alongar seus detalhes.
+    const tiled = p.kind === 'pad',
+      tile = tiled ? sw * k : p.to - p.from,
+      textureScale = tiled ? k : tile / sw;
+    for (let x = Math.max(p.from, left - 6); x < p.to && x < right + 6;) {
+      const distance = x - p.from,
+        cell = Math.floor(distance / tile),
+        offset = distance - cell * tile,
+        width = Math.min(4, p.to - x, tile - offset),
+        nx = x + Math.max(0.00001, width),
+        reverse = tiled && cell % 2 === 1,
+        sx = image.width * margin + (reverse ? sw - offset / textureScale : offset / textureScale),
+        nsx = sx + ((reverse ? -1 : 1) * width) / k;
+      if (width > 0.00001) {
+        if (reverse) {
+          ctx.save();
+          ctx.translate(x + nx, 0);
+          ctx.scale(-1, 1);
+          drawBrinquedaoSurfaceStrip(
+            ctx,
+            part,
+            nsx,
+            sx,
+            x,
+            nx,
+            brinquedaoSurface(p, nx),
+            brinquedaoSurface(p, x),
+            k,
+            image.height,
+          );
+          ctx.restore();
+        } else {
+          drawBrinquedaoSurfaceStrip(
+            ctx,
+            part,
+            sx,
+            nsx,
+            x,
+            nx,
+            brinquedaoSurface(p, x),
+            brinquedaoSurface(p, nx),
+            k,
+            image.height,
+          );
+        }
+      }
+      x = nx;
     }
     ctx.restore();
     if (p.upper && !p.recovery && p.kind === 'pad') {

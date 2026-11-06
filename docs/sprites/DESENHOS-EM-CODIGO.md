@@ -4,14 +4,14 @@ Gerado por `npm run docs:sprites`. Exclui as 46 assinaturas removidas pela revis
 
 | Módulo | Função / variante | Referências |
 | --- | --- | --- |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / striped_rug | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / open_story_book | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / spilled_marbles | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / retro_robot | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / rattle | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / windup_mouse | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / cradle | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
-| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / giant_spool | [src/js/environment/BackgroundRenderer.js:580](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / striped_rug | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / open_story_book | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / spilled_marbles | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / retro_robot | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / rattle | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / windup_mouse | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / cradle | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
+| [src/js/environment/BackgroundRenderer.js](../../src/js/environment/BackgroundRenderer.js) | renderScenery / giant_spool | [src/js/environment/BackgroundRenderer.js:605](../../src/js/environment/BackgroundRenderer.js) |
 | [src/js/ui/DialogueRenderer.js](../../src/js/ui/DialogueRenderer.js) | drawPortrait / player:normal | [src/js/ui/DialogueRenderer.js:30](../../src/js/ui/DialogueRenderer.js) |
 | [src/js/ui/DialogueRenderer.js](../../src/js/ui/DialogueRenderer.js) | drawPortrait / player:happy | [src/js/ui/DialogueRenderer.js:30](../../src/js/ui/DialogueRenderer.js) |
 | [src/js/ui/DialogueRenderer.js](../../src/js/ui/DialogueRenderer.js) | drawPortrait / player:shocked | [src/js/ui/DialogueRenderer.js:30](../../src/js/ui/DialogueRenderer.js) |

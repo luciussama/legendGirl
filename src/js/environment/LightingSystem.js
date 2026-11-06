@@ -105,14 +105,15 @@ export class LightingSystem {
     // Visibilidade ampla e muito sutil do material, sem desenhar linha de pouso ou contorno
     // sobre a ilustração. O estado de ativação existente é apenas lido, sem alteração.
     for (const p of active) {
-      const x = p.x - camX + p.w / 2;
+      const x = p.x - camX + p.w / 2,
+        proximity = Math.max(0, 1 - Math.abs(x - bx) / 420);
       if (x < -p.w - 180 || x > canvas.width + p.w + 180) continue;
       pool(
         x,
         p.y + Math.min(p.h * 0.25, 28),
         Math.max(65, p.w * 0.8),
-        78,
-        0.17 + Math.min(1, p.lightAlpha || 0) * 0.055,
+        78 + proximity * 36,
+        0.17 + proximity * 0.12 + Math.min(1, p.lightAlpha || 0) * 0.055,
       );
       if (!state.isPhase3 && SOFT_AMBIENT_STYLES.has(p.style)) {
         // Recupera discretamente os tons das bases e tampos com transição ampla,
@@ -122,8 +123,10 @@ export class LightingSystem {
       }
     }
 
-    // A fada é a fonte próxima mais intensa. Não há cone de luz nem foco com bordas rígidas.
+    // Rebatimento amplo e fraco revela materiais próximos sem iluminar o quarto por inteiro.
+    // A fada continua sendo a fonte próxima mais intensa, sem foco de borda rígida.
     const breath = Math.sin(tick * 0.025) * 3;
+    pool(fx, fy - 35, 290 + breath, 225 + breath, 0.22);
     pool(fx, fy, 162 + breath, 140 + breath, 0.94);
     pool(fx, fy, 32, 32, 0.7);
     // Durante a fuga, projeta imediatamente a orientação da fada à frente enquanto

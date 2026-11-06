@@ -97,10 +97,10 @@ export class BrinquedaoLook {
     const c = canvas(960, Math.round((960 * source.height) / source.width)),
       ctx = c.getContext('2d');
     this.canvases.push(c);
-    ctx.filter = `blur(${inside ? 1.1 : 1.4}px) saturate(${inside ? 0.78 : 0.68}) contrast(${inside ? 0.82 : 0.8})`;
+    ctx.filter = `blur(${inside ? 1.1 : 1.4}px) saturate(${inside ? 0.58 : 0.48}) contrast(${inside ? 0.68 : 0.66})`;
     ctx.drawImage(source, 0, 0, c.width, c.height);
     ctx.filter = 'none';
-    ctx.globalAlpha = inside ? 0.1 : 0.14;
+    ctx.globalAlpha = inside ? 0.19 : 0.23;
     ctx.fillStyle = wash;
     ctx.fillRect(0, 0, 960, 640);
     ctx.globalAlpha = 1;

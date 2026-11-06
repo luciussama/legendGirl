@@ -206,6 +206,31 @@ export class BackgroundRenderer {
       ctx.fillRect(x - bgOffset, stripeTop, 40, FLOOR_Y - stripeTop);
     }
 
+    // A mesma pintura da sala liga os ambientes; a mistura lilás conserva o quarto noturno.
+    const wallpaper = (options.assets || this.assets)?.get('toy-room-wallpaper-v1');
+    if (wallpaper) {
+      const tile = 320,
+        offset = (camX * 0.15) % tile;
+      ctx.save();
+      ctx.globalAlpha = 0.12;
+      for (let x = Math.floor(left / tile) * tile - tile; x < right + tile; x += tile)
+        for (let y = Math.floor(top / tile) * tile; y < FLOOR_Y; y += tile) {
+          const height = Math.min(tile, FLOOR_Y - y);
+          ctx.drawImage(
+            wallpaper,
+            0,
+            0,
+            wallpaper.width,
+            (wallpaper.height * height) / tile,
+            x - offset,
+            y,
+            tile,
+            height,
+          );
+        }
+      ctx.restore();
+    }
+
     // Reflexo ambiente frio quase imperceptível; a luz principal permanece localizada.
     const topGlow = ctx.createLinearGradient(0, 0, 0, FLOOR_Y);
     topGlow.addColorStop(0, 'rgba(150, 175, 220, 0.015)');

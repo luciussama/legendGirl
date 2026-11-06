@@ -2427,7 +2427,7 @@
         },
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 537,
+          "line": 562,
           "type": "runtime",
           "alias": "dark-room-environment-sheet"
         },
@@ -17799,7 +17799,7 @@
       "references": [
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 240,
+          "line": 269,
           "type": "runtime",
           "alias": null
         }
@@ -17834,7 +17834,7 @@
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 111,
+          "line": 99,
           "type": "runtime",
           "alias": null
         }
@@ -18226,7 +18226,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 243,
+          "line": 272,
           "type": "runtime",
           "alias": null
         },
@@ -18306,7 +18306,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 244,
+          "line": 273,
           "type": "runtime",
           "alias": null
         },
@@ -18349,9 +18349,15 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 242,
+          "line": 271,
           "type": "runtime",
           "alias": null
+        },
+        {
+          "file": "src/js/environment/BackgroundRenderer.js",
+          "line": 210,
+          "type": "runtime",
+          "alias": "toy-room-wallpaper-v1"
         },
         {
           "file": "src/js/toy-room/RoomEnvironmentRenderer.js",
@@ -18392,7 +18398,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 245,
+          "line": 274,
           "type": "runtime",
           "alias": null
         },
@@ -18552,7 +18558,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 248,
+          "line": 277,
           "type": "runtime",
           "alias": null
         },
@@ -18675,7 +18681,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 247,
+          "line": 276,
           "type": "runtime",
           "alias": null
         },
@@ -18836,13 +18842,13 @@
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 336,
+          "line": 361,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 363,
+          "line": 388,
           "type": "runtime",
           "alias": null
         },
@@ -18927,7 +18933,7 @@
         },
         {
           "file": "src/js/bear-chase/ChaseRenderer3D.js",
-          "line": 246,
+          "line": 275,
           "type": "runtime",
           "alias": null
         },
@@ -19101,7 +19107,7 @@
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 121,
+          "line": 109,
           "type": "runtime",
           "alias": null
         },
@@ -41675,13 +41681,13 @@
         "variant": "striped_rug",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41699,13 +41705,13 @@
         "variant": "open_story_book",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41723,13 +41729,13 @@
         "variant": "spilled_marbles",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41747,13 +41753,13 @@
         "variant": "retro_robot",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41771,13 +41777,13 @@
         "variant": "rattle",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41795,13 +41801,13 @@
         "variant": "windup_mouse",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41819,13 +41825,13 @@
         "variant": "cradle",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],
@@ -41843,13 +41849,13 @@
         "variant": "giant_spool",
         "preview": "scenery"
       },
-      "sha256": "85dded2cbadcab8cfdde377683033371dbc0d7a2a43f81d6dc58a8d34c7ec86d",
+      "sha256": "d57073c364d1d1e37f1584408501d9ca9ac2d3ef93e1b7361621fc7a3de92117",
       "family": "Assinaturas desenhadas por código",
       "usage": "runtime",
       "references": [
         {
           "file": "src/js/environment/BackgroundRenderer.js",
-          "line": 580,
+          "line": 605,
           "type": "runtime"
         }
       ],

@@ -233,21 +233,21 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `constructor(own)` | Método declarado | [7](../src/js/bear-chase/ChaseGirlModel.js#L7) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `batchDetails(parent)` | Método declarado | [130](../src/js/bear-chase/ChaseGirlModel.js#L130) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `shade(geometry)` | Método declarado | [162](../src/js/bear-chase/ChaseGirlModel.js#L162) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `joint(parent, name, x, y, z)` | Método declarado | [177](../src/js/bear-chase/ChaseGirlModel.js#L177) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `volume(parent, material, position, scale)` | Método declarado | [185](../src/js/bear-chase/ChaseGirlModel.js#L185) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `limb(parent, material, length, end, start)` | Método declarado | [193](../src/js/bear-chase/ChaseGirlModel.js#L193) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildSleeve(parent)` | Método declarado | [211](../src/js/bear-chase/ChaseGirlModel.js#L211) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `cloth(parent, material, profile, full)` | Método declarado | [236](../src/js/bear-chase/ChaseGirlModel.js#L236) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `silhouette(parent, material, points, depth, position)` | Método declarado | [292](../src/js/bear-chase/ChaseGirlModel.js#L292) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `sweep(parent, material, points, radii)` | Método declarado | [320](../src/js/bear-chase/ChaseGirlModel.js#L320) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildHair()` | Método declarado | [352](../src/js/bear-chase/ChaseGirlModel.js#L352) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `curveFringe(mesh)` | Método declarado | [483](../src/js/bear-chase/ChaseGirlModel.js#L483) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `bow(parent, position, size)` | Método declarado | [490](../src/js/bear-chase/ChaseGirlModel.js#L490) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildDressDetails()` | Método declarado | [504](../src/js/bear-chase/ChaseGirlModel.js#L504) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildFace()` | Método declarado | [531](../src/js/bear-chase/ChaseGirlModel.js#L531) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `buildSword()` | Método declarado | [548](../src/js/bear-chase/ChaseGirlModel.js#L548) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `batchDetails(parent)` | Método declarado | [155](../src/js/bear-chase/ChaseGirlModel.js#L155) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `shade(geometry)` | Método declarado | [188](../src/js/bear-chase/ChaseGirlModel.js#L188) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `joint(parent, name, x, y, z)` | Método declarado | [203](../src/js/bear-chase/ChaseGirlModel.js#L203) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `volume(parent, material, position, scale)` | Método declarado | [211](../src/js/bear-chase/ChaseGirlModel.js#L211) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `limb(parent, material, length, end, start)` | Método declarado | [219](../src/js/bear-chase/ChaseGirlModel.js#L219) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildSleeve(parent)` | Método declarado | [240](../src/js/bear-chase/ChaseGirlModel.js#L240) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `cloth(parent, material, profile, full)` | Método declarado | [265](../src/js/bear-chase/ChaseGirlModel.js#L265) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `silhouette(parent, material, points, depth, position)` | Método declarado | [321](../src/js/bear-chase/ChaseGirlModel.js#L321) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `sweep(parent, material, points, radii)` | Método declarado | [349](../src/js/bear-chase/ChaseGirlModel.js#L349) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildHair()` | Método declarado | [384](../src/js/bear-chase/ChaseGirlModel.js#L384) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `curveFringe(mesh)` | Método declarado | [548](../src/js/bear-chase/ChaseGirlModel.js#L548) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `bow(parent, position, size)` | Método declarado | [555](../src/js/bear-chase/ChaseGirlModel.js#L555) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildDressDetails()` | Método declarado | [584](../src/js/bear-chase/ChaseGirlModel.js#L584) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildFace()` | Método declarado | [620](../src/js/bear-chase/ChaseGirlModel.js#L620) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `buildSword()` | Método declarado | [669](../src/js/bear-chase/ChaseGirlModel.js#L669) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/bear-chase/ChaseInput.js
 
@@ -308,20 +308,21 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `constructor()` | Método declarado | [36](../src/js/bear-chase/ChaseRenderer3D.js#L36) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `own(resource)` | Método declarado | [66](../src/js/bear-chase/ChaseRenderer3D.js#L66) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `texture(image, crop = null)` | Método declarado | [71](../src/js/bear-chase/ChaseRenderer3D.js#L71) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `floorTexture(image)` | Método declarado | [94](../src/js/bear-chase/ChaseRenderer3D.js#L94) | Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada. |
-| `floorIsVisible()` | Método declarado | [138](../src/js/bear-chase/ChaseRenderer3D.js#L138) | Renderiza uma amostra do piso fora da tela e confere o sinal de madeira na GPU. |
-| `prepareFloor()` | Método declarado | [168](../src/js/bear-chase/ChaseRenderer3D.js#L168) | Valida o piso e tenta a mesma arte com filtro linear sem mipmaps quando necessário. |
-| `prepareVisualResources()` | Método declarado | [187](../src/js/bear-chase/ChaseRenderer3D.js#L187) | Envia todos os mapas à GPU e aguarda compilação dos materiais antes de liberar a corrida. |
-| `material(texture, color = '#ffffff')` | Método declarado | [205](../src/js/bear-chase/ChaseRenderer3D.js#L205) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `mesh(parent, geometry, material, x, y, z)` | Método declarado | [217](../src/js/bear-chase/ChaseRenderer3D.js#L217) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `actor(texture, width, height)` | Método declarado | [224](../src/js/bear-chase/ChaseRenderer3D.js#L224) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `load()` | Método declarado | [237](../src/js/bear-chase/ChaseRenderer3D.js#L237) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `prepareRoomResources()` | Método declarado | [343](../src/js/bear-chase/ChaseRenderer3D.js#L343) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `placeOnRoute(object, distance, lateral, height = 0, alignSlope = false)` | Método declarado | [359](../src/js/bear-chase/ChaseRenderer3D.js#L359) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `updateToys(state)` | Método declarado | [368](../src/js/bear-chase/ChaseRenderer3D.js#L368) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `render(ctx, canvas, state)` | Método declarado | [408](../src/js/bear-chase/ChaseRenderer3D.js#L408) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `presentCamera(state, portrait)` | Método declarado | [457](../src/js/bear-chase/ChaseRenderer3D.js#L457) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `destroy()` | Método declarado | [470](../src/js/bear-chase/ChaseRenderer3D.js#L470) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `plasterTexture()` | Método declarado | [88](../src/js/bear-chase/ChaseRenderer3D.js#L88) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `floorTexture(image)` | Método declarado | [123](../src/js/bear-chase/ChaseRenderer3D.js#L123) | Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada. |
+| `floorIsVisible()` | Método declarado | [167](../src/js/bear-chase/ChaseRenderer3D.js#L167) | Renderiza uma amostra do piso fora da tela e confere o sinal de madeira na GPU. |
+| `prepareFloor()` | Método declarado | [197](../src/js/bear-chase/ChaseRenderer3D.js#L197) | Valida o piso e tenta a mesma arte com filtro linear sem mipmaps quando necessário. |
+| `prepareVisualResources()` | Método declarado | [216](../src/js/bear-chase/ChaseRenderer3D.js#L216) | Envia todos os mapas à GPU e aguarda compilação dos materiais antes de liberar a corrida. |
+| `material(texture, color = '#ffffff')` | Método declarado | [234](../src/js/bear-chase/ChaseRenderer3D.js#L234) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `mesh(parent, geometry, material, x, y, z)` | Método declarado | [246](../src/js/bear-chase/ChaseRenderer3D.js#L246) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `actor(texture, width, height)` | Método declarado | [253](../src/js/bear-chase/ChaseRenderer3D.js#L253) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `load()` | Método declarado | [266](../src/js/bear-chase/ChaseRenderer3D.js#L266) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `prepareRoomResources()` | Método declarado | [374](../src/js/bear-chase/ChaseRenderer3D.js#L374) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `placeOnRoute(object, distance, lateral, height = 0, alignSlope = false)` | Método declarado | [390](../src/js/bear-chase/ChaseRenderer3D.js#L390) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updateToys(state)` | Método declarado | [399](../src/js/bear-chase/ChaseRenderer3D.js#L399) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `render(ctx, canvas, state)` | Método declarado | [439](../src/js/bear-chase/ChaseRenderer3D.js#L439) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `presentCamera(state, portrait)` | Método declarado | [488](../src/js/bear-chase/ChaseRenderer3D.js#L488) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `destroy()` | Método declarado | [501](../src/js/bear-chase/ChaseRenderer3D.js#L501) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/bear-chase/ChaseRoom.js
 
@@ -725,14 +726,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `drawBrinquedaoInteriorDoor(ctx, parts, kit)` | Função | [46](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L46) | Desenha a entrada acolchoada no antigo terraço final. |
 | `pad(ctx, r, from, to, y)` | Função | [61](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L61) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `column(ctx, r, x, top, bottom)` | Função | [73](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L73) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `portal(ctx, r, x, floor, incoming, shaft = true)` | Função | [89](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L89) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `block(ctx, r, x, y, w, index, age)` | Função | [108](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L108) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `triangle(ctx, r)` | Função | [120](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L120) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `finishGate(ctx, r)` | Função | [124](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L124) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
-| `reboundRoom(ctx, r, preview = false)` | Função | [151](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L151) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `room(ctx, r, i, index, preview = false)` | Função | [169](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L169) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tube(ctx, r, index, center, worldW, worldH, front = false)` | Função | [212](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L212) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderBrinquedaoInterior(r, s, { touch = false, paused = false, onAdvance = () => {} } = {},)` | Função | [232](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L232) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
+| `portal(ctx, r, x, floor, incoming, shaft = true)` | Função | [77](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L77) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `block(ctx, r, x, y, w, index, age)` | Função | [96](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L96) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `triangle(ctx, r)` | Função | [108](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L108) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `finishGate(ctx, r)` | Função | [112](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L112) | Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio. |
+| `reboundRoom(ctx, r, preview = false)` | Função | [139](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L139) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `room(ctx, r, i, index, preview = false)` | Função | [162](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L162) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tubeQuad(ctx, image, sx, sw, corners)` | Função | [206](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L206) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `tube(ctx, r, index, center, worldW, worldH, front = false)` | Função | [232](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L232) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBrinquedaoInterior(r, s, { touch = false, paused = false, onAdvance = () => {} } = {},)` | Função | [257](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L257) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
 
 ## src/js/brinquedao/brinquedaoLevel.js
 
@@ -797,19 +799,19 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/brinquedaoTerrain.js
 
-[Implementação](../src/js/brinquedao/brinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoSurfaceStrip`, `drawBrinquedaoTerrain`.
+[Implementação](../src/js/brinquedao/brinquedaoTerrain.js). Contratos exportados/reexportados: `prepareBrinquedaoParts`, `drawBrinquedaoPillar`, `drawBrinquedaoSurfaceStrip`, `drawBrinquedaoTerrain`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `prepareBrinquedaoParts(image, slide)` | Função | [14](../src/js/brinquedao/brinquedaoTerrain.js#L14) | Extrai módulos completos e mede o topo pintado para registrar o material. |
-| `pillar(ctx, support, parts, viewportBottom)` | Função | [95](../src/js/brinquedao/brinquedaoTerrain.js#L95) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `trackSupports(ctx, p, parts, viewportBottom)` | Função | [135](../src/js/brinquedao/brinquedaoTerrain.js#L135) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceAt(part, x)` | Função | [139](../src/js/brinquedao/brinquedaoTerrain.js#L139) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawPaddedEnd(ctx, part, p, x, side)` | Função | [146](../src/js/brinquedao/brinquedaoTerrain.js#L146) | Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico. |
-| `drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, nextY, k, height)` | Função | [174](../src/js/brinquedao/brinquedaoTerrain.js#L174) | Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico. |
-| `stepJoint(ctx, parts, step, viewportBottom)` | Função | [195](../src/js/brinquedao/brinquedaoTerrain.js#L195) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawBrinquedaoTerrain(ctx, parts, left, right, s, attractions, look = null, viewportBottom = null,)` | Função | [229](../src/js/brinquedao/brinquedaoTerrain.js#L229) | Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas. |
-| `drawConnections(ctx, parts, look, left, right)` | Função | [333](../src/js/brinquedao/brinquedaoTerrain.js#L333) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBrinquedaoPillar(ctx, support, parts, viewportBottom)` | Função | [96](../src/js/brinquedao/brinquedaoTerrain.js#L96) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `trackSupports(ctx, p, parts, viewportBottom)` | Função | [136](../src/js/brinquedao/brinquedaoTerrain.js#L136) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceAt(part, x)` | Função | [141](../src/js/brinquedao/brinquedaoTerrain.js#L141) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawPaddedEnd(ctx, part, p, x, side)` | Função | [148](../src/js/brinquedao/brinquedaoTerrain.js#L148) | Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico. |
+| `drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, nextY, k, height)` | Função | [176](../src/js/brinquedao/brinquedaoTerrain.js#L176) | Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico. |
+| `stepJoint(ctx, parts, step, viewportBottom)` | Função | [202](../src/js/brinquedao/brinquedaoTerrain.js#L202) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoTerrain(ctx, parts, left, right, s, attractions, look = null, viewportBottom = null,)` | Função | [230](../src/js/brinquedao/brinquedaoTerrain.js#L230) | Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas. |
+| `drawConnections(ctx, parts, look, left, right)` | Função | [364](../src/js/brinquedao/brinquedaoTerrain.js#L364) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/brinquedao/brinquedaoTubes.js
 
@@ -1581,8 +1583,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `setAssets(assets)` | Método declarado | [55](../src/js/environment/BackgroundRenderer.js#L55) | Configura/reinicializa valores do componente; revise o escopo da mutação. |
 | `drawAtlasSceneryItem(ctx, assets, type, sx, item, floorY)` | Método declarado | [63](../src/js/environment/BackgroundRenderer.js#L63) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 | `renderWall(ctx, canvas, camX = 0, options = {})` | Método declarado | [186](../src/js/environment/BackgroundRenderer.js#L186) | Desenha parede, parallax, piso e rodapé com cobertura do viewport. |
-| `renderScenery(ctx, canvas, scenery = defaultRoomScenery, camX = 0, options = {})` | Método declarado | [580](../src/js/environment/BackgroundRenderer.js#L580) | Desenha objetos decorativos do piso. |
-| `render(ctx, canvas, camX = 0, options = {})` | Método declarado | [759](../src/js/environment/BackgroundRenderer.js#L759) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `renderScenery(ctx, canvas, scenery = defaultRoomScenery, camX = 0, options = {})` | Método declarado | [605](../src/js/environment/BackgroundRenderer.js#L605) | Desenha objetos decorativos do piso. |
+| `render(ctx, canvas, camX = 0, options = {})` | Método declarado | [784](../src/js/environment/BackgroundRenderer.js#L784) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/environment/DarkRoomContact.js
 
@@ -1607,7 +1609,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `resize(width, height)` | Método declarado | [36](../src/js/environment/LightingSystem.js#L36) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `apply(ctx, canvas, state = {}, player = {}, fairy = {}, camX = 0, camY = 0, options = {})` | Método declarado | [46](../src/js/environment/LightingSystem.js#L46) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `pool(x, y, rx, ry, strength)` | Função atribuída | [90](../src/js/environment/LightingSystem.js#L90) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `createLightingSystem(options = {})` | Função | [220](../src/js/environment/LightingSystem.js#L220) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
+| `createLightingSystem(options = {})` | Função | [223](../src/js/environment/LightingSystem.js#L223) | Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências. |
 
 ## src/js/environment/PlatformRenderer.js
 
@@ -3204,4 +3206,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `mobileGameControls(canvas, safe)` | Função | [2](../src/js/ui/touchGameControls.js#L2) | Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS. |
 | `drawMobileGameControls(ctx, canvas, controls, { dark = false, jumpLabel = 'PULAR' } = {},)` | Função | [58](../src/js/ui/touchGameControls.js#L58) | Desenha D-pad unido, setas diagonais e salto respeitando a área segura. |
 
-Inventário: **236 módulos JavaScript**, **1579 declarações nomeadas**.
+Inventário: **236 módulos JavaScript**, **1581 declarações nomeadas**.

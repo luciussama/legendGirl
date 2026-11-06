@@ -84,6 +84,35 @@ export class ChaseRenderer3D {
     texture.anisotropy = Math.min(4, this.renderer.capabilities.getMaxAnisotropy());
     return texture;
   }
+  /** Prepara reboco fosco periódico; grão e manchas suaves não deixam emendas na repetição. */
+  plasterTexture() {
+    const size = 128,
+      pixels = new Uint8Array(size * size * 4);
+    for (let y = 0; y < size; y++)
+      for (let x = 0; x < size; x++) {
+        const u = (x / size) * Math.PI * 2,
+          v = (y / size) * Math.PI * 2,
+          grain =
+            4 * Math.sin(3 * u + 1.5 * Math.sin(v)) +
+            3 * Math.cos(5 * v + 0.7 * Math.sin(u)) +
+            2 * Math.sin(11 * u + 9 * v) +
+            1.5 * Math.sin(47 * u + 31 * v),
+          i = (y * size + x) * 4;
+        pixels[i] = 242 + grain;
+        pixels[i + 1] = 231 + grain;
+        pixels[i + 2] = 211 + grain;
+        pixels[i + 3] = 255;
+      }
+    const texture = this.own(new T.DataTexture(pixels, size, size));
+    texture.colorSpace = T.SRGBColorSpace;
+    texture.wrapS = texture.wrapT = T.RepeatWrapping;
+    texture.repeat.set(2.2, 1);
+    texture.magFilter = T.LinearFilter;
+    texture.minFilter = T.LinearMipmapLinearFilter;
+    texture.generateMipmaps = true;
+    texture.needsUpdate = true;
+    return texture;
+  }
   /**
    * Prepara a madeira repetida como bytes RGBA e níveis completos de redução.
    * Evita depender do upload de canvas e da geração de mipmaps sRGB pelo driver.
@@ -279,7 +308,7 @@ export class ChaseRenderer3D {
       wall: this.material(this.wall),
       trim: this.material(this.trim),
       wood: this.material(null, '#9d5c32'),
-      ceiling: this.material(null, '#fff0d8'),
+      ceiling: this.material(this.plasterTexture()),
     };
     // Superfícies opacas não participam da ordenação de transparência da sala inteira.
     for (const key of ['floor', 'wall', 'trim', 'ceiling']) {
@@ -287,6 +316,8 @@ export class ChaseRenderer3D {
       this.materials[key] = this.own(
         new T.MeshStandardMaterial({
           map: previous.map,
+          bumpMap: key === 'ceiling' ? previous.map : null,
+          bumpScale: key === 'ceiling' ? 0.025 : 1,
           color: previous.color,
           roughness: 1,
           metalness: 0,
