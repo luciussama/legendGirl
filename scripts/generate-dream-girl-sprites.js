@@ -2,48 +2,39 @@
 import fs from 'node:fs';
 import crypto from 'node:crypto';
 import jpeg from 'jpeg-js';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 
 const sourcePath = 'assets/art/dark-room/official-sprites.png';
 const bytes = fs.readFileSync(sourcePath);
 const source = bytes[0] === 0xff ? jpeg.decode(bytes) : PNG.sync.read(bytes);
-if (source.width !== 1024 || source.height !== 682) throw new Error('Esperada a prancha oficial de 1024×682; revise as coordenadas de recorte para outros tamanhos.');
-const rows = (edges, top, bottom) => edges.slice(0, -1)
-  .map((x, i) => [x + 2, top, edges[i + 1] - 2, bottom]);
+if (source.width !== 1024 || source.height !== 682)
+  throw new Error(
+    'Esperada a prancha oficial de 1024×682; revise as coordenadas de recorte para outros tamanhos.',
+  );
+const rows = (edges, top, bottom) =>
+  edges.slice(0, -1).map((x, i) => [x + 2, top, edges[i + 1] - 2, bottom]);
 const cells = {
   idle: rows([562, 610, 659, 707, 755, 803, 852, 900, 948, 994], 62, 114),
   run: rows([562, 610, 659, 707, 755, 803, 852, 900, 948, 994], 137, 194),
   jump: rows([562, 610, 657, 704, 751, 799, 846], 217, 293),
   jump_short: [
     [855, 246, 896, 293],
-    [900, 233, 943, 292]
+    [900, 233, 943, 292],
   ],
-  high_jump: [
-    [953, 248, 992, 293]
-  ],
+  high_jump: [[953, 248, 992, 293]],
   fall: rows([562, 610, 657, 704, 751, 799, 846], 317, 377),
-  dash: [
-    [900, 427, 997, 503]
-  ],
+  dash: [[900, 427, 997, 503]],
   teleport: [
     [690, 533, 752, 660],
-    [761, 533, 814, 593]
+    [761, 533, 814, 593],
   ],
-  damage: [
-    [552, 556, 609, 658]
-  ],
-  collect: [
-    [619, 556, 676, 658]
-  ],
-  interact: [
-    [560, 430, 596, 502]
-  ],
+  damage: [[552, 556, 609, 658]],
+  collect: [[619, 556, 676, 658]],
+  interact: [[560, 430, 596, 502]],
 };
 const atlas = new PNG({
   width: 1024,
-  height: 1024
+  height: 1024,
 });
 const frames = {};
 let dx = 0,
@@ -55,7 +46,7 @@ for (const [state, rects] of Object.entries(cells)) {
       h = bottom - top;
     const pixels = new PNG({
       width: w,
-      height: h
+      height: h,
     });
     PNG.bitblt(source, pixels, left, top, w, h, 0, 0);
     // Propaga o preenchimento somente pelo pergaminho conectado à borda do recorte. Os valores RGB dos pixels
@@ -67,8 +58,12 @@ for (const [state, rects] of Object.entries(cells)) {
     for (let y = 1; y < h - 1; y++) {
       border.push(y * w, y * w + w - 1);
     }
-    const bg = [0, 1, 2].map(c => border.map(p => pixels.data[p * 4 + c])
-      .sort((a, b) => a - b)[Math.floor(border.length / 2)]);
+    const bg = [0, 1, 2].map(
+      (c) =>
+        border.map((p) => pixels.data[p * 4 + c]).sort((a, b) => a - b)[
+          Math.floor(border.length / 2)
+        ],
+    );
     const visited = new Uint8Array(w * h),
       queue = [];
     const add = (x, y) => {
@@ -124,7 +119,7 @@ for (const [state, rects] of Object.entries(cells)) {
       h: th,
       anchorX: tw / 2,
       anchorY: th,
-      source: [left + x0, top + y0, tw, th]
+      source: [left + x0, top + y0, tw, th],
     };
     if (state === 'dash') frame.anchorX = 966 - (left + x0);
     if (state === 'teleport') {
@@ -144,5 +139,8 @@ frames.push = [frames.idle[0]];
 frames.climb = [frames.idle[0]];
 const output = 'assets/art/dark-room/sprites/official-character.png';
 fs.writeFileSync(output, PNG.sync.write(atlas));
-fs.writeFileSync('src/js/assets/officialCharacter.js', `// Extraído da prancha oficial por scripts/generate-dream-girl-sprites.js\nexport const OFFICIAL_SOURCE_SHA256 = '${crypto.createHash('sha256').update(bytes).digest('hex')}';\nexport const OFFICIAL_FRAMES = ${JSON.stringify(frames,null,2)};\n`);
+fs.writeFileSync(
+  'src/js/assets/officialCharacter.js',
+  `// Extraído da prancha oficial por scripts/generate-dream-girl-sprites.js\nexport const OFFICIAL_SOURCE_SHA256 = '${crypto.createHash('sha256').update(bytes).digest('hex')}';\nexport const OFFICIAL_FRAMES = ${JSON.stringify(frames, null, 2)};\n`,
+);
 console.log(`Quadros oficiais extraídos para ${output}`);

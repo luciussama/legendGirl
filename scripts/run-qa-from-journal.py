@@ -46,7 +46,9 @@ with tempfile.TemporaryDirectory(prefix='legendgirl-qa-') as directory:
             continue
         # Recupera somente código/fixtures e especificações exigidas pelos testes, não antigos relatórios Markdown.
         fixture = entry['path'].startswith('docs/diario-ia/qa/') and Path(entry['path']).suffix in {'.js','.mjs','.cjs','.py','.html','.css','.json','.txt'}
-        if not entry['path'].startswith(('scripts/','tests/','assets/')) and not fixture:
+        test_script = entry['path'].startswith('scripts/') and Path(entry['path']).name.startswith(('test-', 'review-', 'verify-', 'capture-', 'audit-', 'analyze-', 'qa-'))
+        test_asset = entry['path'].startswith('assets/qa-testers/')
+        if not (test_script or test_asset or entry['path'].startswith('tests/') or fixture):
             continue
         path = (workspace / entry['path']).resolve()
         if not path.is_relative_to(workspace.resolve()):

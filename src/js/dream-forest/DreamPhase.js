@@ -1,44 +1,23 @@
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
-import {
-  DREAM_GLIDE
-} from './DreamGlider.js';
-import {
-  DreamAudio
-} from './DreamAudio.js';
-import {
-  nightmareReading
-} from './DreamNightmare.js';
-import {
-  DreamInput,
-  dreamMobileWebInput,
-  dreamControls,
-  nightmareControls
-} from './DreamInput.js';
-import {
-  DreamRenderer
-} from './DreamRenderer.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
+import { DREAM_GLIDE } from './dreamGlider.js';
+import { DreamAudio } from './DreamAudio.js';
+import { nightmareReading } from './dreamNightmare.js';
+import { DreamInput, dreamMobileWebInput, dreamControls, nightmareControls } from './DreamInput.js';
+import { DreamRenderer } from './DreamRenderer.js';
 import {
   createDreamState,
   restoreDreamState,
   advanceDreamDialogue,
   stepDream,
-  retryDream
-} from './DreamSimulation.js';
+  retryDream,
+} from './dreamSimulation.js';
 /** Sonho lateral isolado: carga sob demanda, ciclo de vida e origem de campanha próprios. */
 export class DreamPhase {
   /**
    * Cria o estado e os serviços do sonho com a dificuldade e a origem recebidas; coordena carregamento,
    * entrada, áudio e renderização.
    */
-  constructor({
-    canvas,
-    audio,
-    enabled = () => true,
-    difficulty = 'NORMAL',
-    campaign = false
-  }) {
+  constructor({ canvas, audio, enabled = () => true, difficulty = 'NORMAL', campaign = false }) {
     this.canvas = canvas;
     this.enabled = enabled;
     this.campaign = campaign;
@@ -50,15 +29,23 @@ export class DreamPhase {
     this.paused = false;
     this.renderer = new DreamRenderer(canvas);
     this.audio = new DreamAudio(audio);
-    this.input = new DreamInput(canvas, () => this.ready && !this.paused && this.enabled(), () => this.audio.unlock(), () => this.reading());
-    this.input.controls = () => this.state.nightmare ? nightmareControls(canvas) : dreamControls(canvas, {
-      stage: this.state.stage
-    });
+    this.input = new DreamInput(
+      canvas,
+      () => this.ready && !this.paused && this.enabled(),
+      () => this.audio.unlock(),
+      () => this.reading(),
+    );
+    this.input.controls = () =>
+      this.state.nightmare
+        ? nightmareControls(canvas)
+        : dreamControls(canvas, {
+            stage: this.state.stage,
+          });
     this.onBlur = () => this.setPaused(true);
     this.onFocus = () => {
       if (this.enabled()) this.setPaused(false);
     };
-    this.onVisibility = () => document.hidden ? this.onBlur() : this.onFocus();
+    this.onVisibility = () => (document.hidden ? this.onBlur() : this.onFocus());
   }
   /**
    * Indica se a instância ainda está ativa; após o descarte, retorna falso.
@@ -72,9 +59,13 @@ export class DreamPhase {
    */
   reading() {
     if (this.state.nightmare) return nightmareReading(this.state);
-    return this.state.stage === 'OPENING' || this.state.stage === 'INTRO' || this.state.stage === 'COMPLETE' && this.state.age < 7 ? {
-      seen: false
-    } : null;
+    return this.state.stage === 'OPENING' ||
+      this.state.stage === 'INTRO' ||
+      (this.state.stage === 'COMPLETE' && this.state.age < 7)
+      ? {
+          seen: false,
+        }
+      : null;
   }
   /**
    * Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva
@@ -105,7 +96,8 @@ export class DreamPhase {
       window.addEventListener('focus', this.onFocus);
       document.addEventListener('visibilitychange', this.onVisibility);
       this.audio.selectTrack(this.state);
-      if (Number.isFinite(saved?.musicTime) && saved.musicTime >= 0) this.audio.music.currentTime = saved.musicTime;
+      if (Number.isFinite(saved?.musicTime) && saved.musicTime >= 0)
+        this.audio.music.currentTime = saved.musicTime;
     } catch (e) {
       this.error = 'Não foi possível abrir o sonho: ' + e.message;
       this.input.destroy();
@@ -120,22 +112,26 @@ export class DreamPhase {
       this.audio.update(this.state, true);
       return;
     }
-    if (!this.renderer.nightmare.loading && (this.state.stage === 'GLIDE_LANDING' || this.state.stage === 'GLIDING' && this.state.player.x > DREAM_GLIDE.start + DREAM_GLIDE.length - 2000)) this.renderer.nightmare.load()
-      .catch(e => {
+    if (
+      !this.renderer.nightmare.loading &&
+      (this.state.stage === 'GLIDE_LANDING' ||
+        (this.state.stage === 'GLIDING' &&
+          this.state.player.x > DREAM_GLIDE.start + DREAM_GLIDE.length - 2000))
+    )
+      this.renderer.nightmare.load().catch((e) => {
         this.error = e.message;
       });
     if (this.state.nightmare && !this.renderer.nightmare.ready) {
-      this.renderer.nightmare.load()
-        .catch(e => {
-          this.error = e.message;
-        });
+      this.renderer.nightmare.load().catch((e) => {
+        this.error = e.message;
+      });
       this.input.clear();
       this.audio.update(this.state, true);
       return;
     }
     const seconds = Math.max(0, dt) / 60,
       input = dreamMobileWebInput(this.state, this.input.sample(), {
-        seconds
+        seconds,
       });
     const wasOpening = this.state.stage === 'OPENING';
     for (const event of stepDream(this.state, input, seconds)) this.audio.event(event.type, event);
@@ -149,7 +145,10 @@ export class DreamPhase {
    * Atualiza o áudio conforme prontidão e pausa e delega a composição do estado atual ao renderizador.
    */
   render() {
-    this.audio.update(this.state, !this.ready || this.disposed || this.paused || Boolean(this.error) || !this.enabled());
+    this.audio.update(
+      this.state,
+      !this.ready || this.disposed || this.paused || Boolean(this.error) || !this.enabled(),
+    );
     this.renderer.render(this.state, {
       ready: this.ready,
       error: this.error,
@@ -159,7 +158,7 @@ export class DreamPhase {
        * e consumo de entrada.
        */
       onAdvance: () => this.advanceDialogue(),
-      touch: this.input.touch || isMobileDevice() || this.canvas.clientWidth < 900
+      touch: this.input.touch || isMobileDevice() || this.canvas.clientWidth < 900,
     });
   }
   /**
@@ -178,7 +177,7 @@ export class DreamPhase {
     return {
       version: 1,
       state: structuredClone(this.state),
-      musicTime: Number.isFinite(this.audio.music.currentTime) ? this.audio.music.currentTime : 0
+      musicTime: Number.isFinite(this.audio.music.currentTime) ? this.audio.music.currentTime : 0,
     };
   }
   /**

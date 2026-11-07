@@ -1,0 +1,189 @@
+import { BRINQUEDAO_SIDE_MATS } from './brinquedaoRecovery.js';
+import { BRINQUEDAO_TRACKS, BRINQUEDAO_BY_ID, brinquedaoSurface } from './brinquedaoLevel.js';
+import { BRINQUEDAO_ELASTIC } from './brinquedaoExtension.js';
+import { brinquedaoFishSpecs } from './brinquedaoFish.js';
+/** Relógios persistidos fazem pontes e lonas retomarem a mesma deformação após pausa/save. */
+export function createBrinquedaoObstacles() {
+  return {
+    fishImpact: {
+      hits: 0,
+      at: null,
+    },
+    fishAttack: {
+      id: null,
+      startedAt: null,
+      targetX: null,
+      nextAt: 0,
+    },
+    outlets: Object.fromEntries(
+      [1, 2, 3].map((id) => [
+        id,
+        {
+          hits: 0,
+          launch: null,
+        },
+      ]),
+    ),
+    bridges: Object.fromEntries(
+      BRINQUEDAO_TRACKS.filter((p) => p.kind === 'fragile').map((p) => [p.id, null]),
+    ),
+    springs: Object.fromEntries(
+      BRINQUEDAO_TRACKS.filter((p) => p.kind === 'spring').map((p) => [p.id, null]),
+    ),
+    bumpers: Object.fromEntries(BRINQUEDAO_SIDE_MATS.map((p) => [p.id, null])),
+    ricochets: 0,
+    recoveryLandings: 0,
+    wall: null,
+    bounces: 0,
+    launches: 0,
+  };
+}
+export function brinquedaoBridgeSolid(s, p) {
+  return (
+    p.kind !== 'fragile' ||
+    s.obstacles.bridges[p.id] === null ||
+    s.time - s.obstacles.bridges[p.id] < p.delay * (s.difficulty === 'EASY' ? 1.6 : 1)
+  );
+}
+/** O impulso vem do contato descendente; direção no ar continua sob controle do jogador. */
+export function contactBrinquedao(s, track, events) {
+  const p = s.player;
+  p.support = track.id;
+  p.y = brinquedaoSurface(track, p.x);
+  p.vy = 0;
+  p.mode = ['slide', 'reverse'].includes(track.kind) ? 'slide' : 'walk';
+  if (track.recovery) s.obstacles.recoveryLandings++;
+  if (track.kind === 'fragile' && s.obstacles.bridges[track.id] === null) {
+    s.obstacles.bridges[track.id] = s.time;
+    events.push({
+      type: 'bridge-creak',
+    });
+  }
+  if (track.kind === 'spring') {
+    s.obstacles.springs[track.id] = s.time;
+    s.obstacles.bounces++;
+    if (track.vertical) p.vx = 0;
+    p.support = null;
+    p.mode = 'air';
+    p.vy = -track.impulse * (p.jumpHeld ? 1.12 : 1);
+    p.coyote = 0;
+    p.buffer = 0;
+    events.push({
+      type: 'spring',
+    });
+  }
+}
+/** A parede inclinada devolve a energia para a rampa ascendente, em contato real com a saída. */
+export function hitBrinquedaoElastic(s, previous, events) {
+  const p = s.player,
+    b = BRINQUEDAO_ELASTIC;
+  if (
+    p.support !== 'rampa-reversa' &&
+    previous.x <= b.x &&
+    p.x >= b.x &&
+    p.y >= b.y - 35 &&
+    p.y <= b.y + 90 &&
+    p.vx > 0
+  ) {
+    s.obstacles.wall = s.time;
+    p.x = b.x;
+    p.y = b.y;
+    p.vx = b.impulse;
+    p.vy = 0;
+    p.support = 'rampa-reversa';
+    p.mode = 'slide';
+    events.push({
+      type: 'elastic-wall',
+    });
+    return true;
+  }
+  return false;
+}
+/** A inclinação do lábio transforma embalo em lançamento; não corrige a posição no ar. */
+export function launchBrinquedaoSky(s, events) {
+  const p = s.player;
+  s.obstacles.launches++;
+  p.support = null;
+  p.mode = 'air';
+  p.x = 26700;
+  p.y = -150;
+  p.vx = Math.max(650, Math.min(850, Math.abs(p.vx) * 0.43));
+  p.vy = -1550;
+  p.coyote = 0;
+  p.buffer = 0;
+  events.push({
+    type: 'sky-launch',
+  });
+}
+export function validateBrinquedaoObstacles(s) {
+  const data = s.obstacles,
+    expected = createBrinquedaoObstacles();
+  if (!data) throw TypeError('Atrações salvas ausentes.');
+  for (const key of ['bridges', 'springs', 'bumpers']) {
+    const map = data[key];
+    if (
+      !map ||
+      Object.keys(map).length !== Object.keys(expected[key]).length ||
+      Object.keys(map).some((id) => !Object.hasOwn(expected[key], id)) ||
+      Object.values(map).some((t) => t !== null && (!Number.isFinite(t) || t < 0 || t > s.time))
+    )
+      throw TypeError('Relógios de atrações salvos inválidos.');
+  }
+  if (
+    (data.wall !== null && (!Number.isFinite(data.wall) || data.wall < 0 || data.wall > s.time)) ||
+    !Number.isSafeInteger(data.bounces) ||
+    data.bounces < 0 ||
+    !Number.isSafeInteger(data.launches) ||
+    data.launches < 0
+  )
+    throw TypeError('Impulsos salvos inválidos.');
+  if (![data.ricochets, data.recoveryLandings].every((n) => Number.isSafeInteger(n) && n >= 0))
+    throw TypeError('Histórico de recuperação salvo inválido.');
+  if (
+    !data.outlets ||
+    Object.keys(data.outlets).length !== 3 ||
+    [1, 2, 3].some((id) => {
+      const o = data.outlets[id];
+      return (
+        !o ||
+        !Number.isInteger(o.hits) ||
+        o.hits < 0 ||
+        o.hits > 2 ||
+        (o.launch !== null &&
+          (!Number.isFinite(o.launch) || o.launch < 0 || o.launch > s.time || o.hits !== 2))
+      );
+    })
+  )
+    throw TypeError('Saídas de recuperação salvas inválidas.');
+  if (
+    !data.fishImpact ||
+    !Number.isSafeInteger(data.fishImpact.hits) ||
+    data.fishImpact.hits < 0 ||
+    (data.fishImpact.at !== null &&
+      (!Number.isFinite(data.fishImpact.at) ||
+        data.fishImpact.at < 0 ||
+        data.fishImpact.at > s.time))
+  )
+    throw TypeError('Impacto de peixe salvo inválido.');
+  const attack = data.fishAttack,
+    specs = BRINQUEDAO_TRACKS.filter((p) => p.kind === 'fish-bridge').flatMap(brinquedaoFishSpecs),
+    spec = specs.find((f) => f.id === attack?.id),
+    validAttack =
+      attack &&
+      Number.isFinite(attack.nextAt) &&
+      attack.nextAt >= 0 &&
+      attack.nextAt <= s.time + 3.1 &&
+      (attack.id === null
+        ? attack.startedAt === null && attack.targetX === null
+        : spec &&
+          Number.isFinite(attack.startedAt) &&
+          attack.startedAt >= 0 &&
+          attack.startedAt <= s.time &&
+          s.time - attack.startedAt <= spec.air + 0.02 &&
+          Number.isFinite(attack.targetX) &&
+          Math.abs(attack.targetX - spec.x) <= 320 &&
+          attack.nextAt >= attack.startedAt + spec.period - 0.02);
+  if (!validAttack) throw TypeError('Investida de peixe salva inválida.');
+  const track = BRINQUEDAO_BY_ID.get(s.player.support);
+  if (track && !brinquedaoBridgeSolid(s, track)) throw TypeError('Apoio salvo em ponte já caída.');
+}

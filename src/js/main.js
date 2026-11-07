@@ -1,9 +1,5 @@
-import {
-  attachMobileUILayout
-} from './ui/MobileUILayout.js';
-import {
-  TitleScreen
-} from './ui/TitleScreen.js';
+import { attachMobileUILayout } from './ui/mobileUILayout.js';
+import { TitleScreen } from './ui/TitleScreen.js';
 // Previne que rejeições assíncronas do navegador ou iframes acionem o coletor de erros da plataforma
 window.addEventListener('unhandledrejection', (event) => {
   if (event) {
@@ -17,19 +13,15 @@ window.addEventListener('error', (event) => {
   }
 });
 
-import {
-  createGame
-} from './game.js';
-import {
-  DEBUG_COLLISIONS
-} from './config.js';
+import { createGame } from './game.js';
+import { DEBUG_COLLISIONS } from './config.js';
 
 const canvas = document.getElementById('gameCanvas');
 attachMobileUILayout(canvas);
 const uiFeedback = document.getElementById('ui-feedback') || {
   innerText: '',
   textContent: '',
-  style: {}
+  style: {},
 };
 const startOverlay = document.getElementById('start-overlay');
 const difficultySelect = document.getElementById('game-difficulty');
@@ -131,30 +123,48 @@ let isActionLocked = false;
 let lastActionTime = 0;
 
 const game = createGame(canvas, uiFeedback, {
-  onSaveStatus: persisted => {
+  onSaveStatus: (persisted) => {
     const status = document.getElementById('campaign-save-status');
     status.hidden = persisted;
-    status.textContent = persisted ? '' : 'Não foi possível salvar neste navegador. O progresso está disponível somente nesta sessão.';
+    status.textContent = persisted
+      ? ''
+      : 'Não foi possível salvar neste navegador. O progresso está disponível somente nesta sessão.';
   },
-  onGameOver: ({
-    phase = 'bedroom',
-    offerEasy = false
-  } = {}) => {
+  onGameOver: ({ phase = 'bedroom', offerEasy = false } = {}) => {
     const brinq = phase === 'brinquedao',
       chase = phase === 'bear-chase',
       arena = phase === 'arena',
       dream = phase === 'dream-forest',
       garden = phase === 'garden' || dream || brinq;
-    gameoverOverlay.querySelector('.gameover-badge')
-      .textContent = brinq ? '✦ BRINQUEDÃO ✦' : dream ? '✦ JARDIM DOS SONHOS ✦' : garden ? '✦ UM DIA NO JARDIM ✦' : chase ? '✦ PERSEGUIÇÃO AO URSO ✦' : arena ? '✦ ARENA ✦' : '✦ QUARTO ESCURO ✦';
-    gameoverOverlay.querySelector('.gameover-title')
-      .textContent = garden ? 'Game Over' : chase ?
-      'A menina não alcançou o urso. Tentar novamente?' :
-      arena ? 'A menina não venceu esta batalha. Tentar novamente?' : 'Você não conseguiu sair do quarto.';
-    gameoverOverlay.querySelector('.gameover-sub')
-      .textContent = brinq ? (game.state.toyRoomInstance?.instance?.brinq?.state.interior ? 'A ponte de blocos caiu! Corra antes que ela desmonte.' : 'Yuna caiu do Brinquedão. Tente de novo a partir do último terraço.') : garden ? 'A aventura recomeça no último ponto de descanso.' : chase ?
-      'A fadinha está pronta para acompanhar uma nova tentativa.' :
-      arena ? 'A aventura continua. Você pode tentar outra vez.' : 'A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.';
+    gameoverOverlay.querySelector('.gameover-badge').textContent = brinq
+      ? '✦ BRINQUEDÃO ✦'
+      : dream
+        ? '✦ JARDIM DOS SONHOS ✦'
+        : garden
+          ? '✦ UM DIA NO JARDIM ✦'
+          : chase
+            ? '✦ PERSEGUIÇÃO AO URSO ✦'
+            : arena
+              ? '✦ ARENA ✦'
+              : '✦ QUARTO ESCURO ✦';
+    gameoverOverlay.querySelector('.gameover-title').textContent = garden
+      ? 'Game Over'
+      : chase
+        ? 'A menina não alcançou o urso. Tentar novamente?'
+        : arena
+          ? 'A menina não venceu esta batalha. Tentar novamente?'
+          : 'Você não conseguiu sair do quarto.';
+    gameoverOverlay.querySelector('.gameover-sub').textContent = brinq
+      ? game.state.toyRoomInstance?.instance?.brinq?.state.interior
+        ? 'A ponte de blocos caiu! Corra antes que ela desmonte.'
+        : 'Yuna caiu do Brinquedão. Tente de novo a partir do último terraço.'
+      : garden
+        ? 'A aventura recomeça no último ponto de descanso.'
+        : chase
+          ? 'A fadinha está pronta para acompanhar uma nova tentativa.'
+          : arena
+            ? 'A aventura continua. Você pode tentar outra vez.'
+            : 'A penumbra engoliu o caminho... Mas a luz da fadinha ainda chama por você.';
     if (btnRetry) btnRetry.textContent = garden ? 'Tentar novamente' : 'Tentar de novo';
     if (btnRestart) btnRestart.textContent = garden ? 'Desistir' : 'Voltar ao início';
     // Reativa os botões e exibe a tela de sobreposição de forma limpa
@@ -190,12 +200,11 @@ const game = createGame(canvas, uiFeedback, {
       startOverlay.style.pointerEvents = 'auto';
       startOverlay.classList.remove('hidden');
     }
-  }
+  },
 });
 
 function startGame(event) {
-  if (restartCampaignDialog.open || document.getElementById('title-options-dialog')
-    .open) return;
+  if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open) return;
   if (event) {
     event.preventDefault();
     event.stopPropagation();
@@ -318,7 +327,12 @@ function handleToyRoomSwitch(event) {
   }
 
   // Proteção absoluta: impede mudar de fase se o jogo já estiver rodando ou o menu estiver fechado
-  if (started || isStarting || (startOverlay && (startOverlay.classList.contains('hidden') || startOverlay.style.display === 'none'))) {
+  if (
+    started ||
+    isStarting ||
+    (startOverlay &&
+      (startOverlay.classList.contains('hidden') || startOverlay.style.display === 'none'))
+  ) {
     return;
   }
 
@@ -356,12 +370,12 @@ titleScreen = new TitleScreen({
     lastActionTime = 0;
     startGame();
   },
-  onLoad: () => startGame()
+  onLoad: () => startGame(),
 });
 
 // A escolha modal não deixa teclas ou cliques atravessarem para o gameplay.
 for (const type of ['keydown', 'keyup', 'pointerdown', 'click']) {
-  easyModeDialog.addEventListener(type, event => event.stopPropagation());
+  easyModeDialog.addEventListener(type, (event) => event.stopPropagation());
 }
 easyModeDialog.addEventListener('close', () => {
   if (easyModeDialog.returnValue === 'yes' && game.continueOnEasy()) {
@@ -375,8 +389,9 @@ easyModeDialog.addEventListener('close', () => {
 
 // Mantém atalhos de gameplay fora do diálogo de recuperação; Escape conserva o fechamento nativo.
 for (const type of ['keydown', 'keyup']) {
-  document.getElementById('chase-error-dialog')
-    .addEventListener(type, event => event.stopPropagation());
+  document
+    .getElementById('chase-error-dialog')
+    .addEventListener(type, (event) => event.stopPropagation());
 }
 
 if (debugPhaseSelect) {
@@ -385,31 +400,33 @@ if (debugPhaseSelect) {
     if (!debugPhasePanel || !debugPhaseToggle) return;
     debugPhasePanel.hidden = !open;
     debugPhaseToggle.setAttribute('aria-expanded', String(open));
-    if (open) debugPhaseSelect.focus({
-      preventScroll: true
-    });
-    else if (restoreFocus) debugPhaseToggle.focus({
-      preventScroll: true
-    });
+    if (open)
+      debugPhaseSelect.focus({
+        preventScroll: true,
+      });
+    else if (restoreFocus)
+      debugPhaseToggle.focus({
+        preventScroll: true,
+      });
   };
-  debugPhaseToggle?.addEventListener('click', event => {
+  debugPhaseToggle?.addEventListener('click', (event) => {
     event.stopPropagation();
     setDebugPhaseMenuOpen(debugPhasePanel.hidden);
   });
   // Interagir com a ferramenta não dispara atalhos nem movimento da partida.
-  menu?.addEventListener('keydown', event => {
+  menu?.addEventListener('keydown', (event) => {
     event.stopPropagation();
     if (event.key === 'Escape') {
       event.preventDefault();
       setDebugPhaseMenuOpen(false, true);
     }
   });
-  menu?.addEventListener('keyup', event => event.stopPropagation());
-  menu?.addEventListener('pointerdown', event => event.stopPropagation());
-  document.addEventListener('pointerdown', event => {
+  menu?.addEventListener('keyup', (event) => event.stopPropagation());
+  menu?.addEventListener('pointerdown', (event) => event.stopPropagation());
+  document.addEventListener('pointerdown', (event) => {
     if (!menu?.contains(event.target)) setDebugPhaseMenuOpen(false);
   });
-  debugPhaseSelect.addEventListener('change', async event => {
+  debugPhaseSelect.addEventListener('change', async (event) => {
     event.stopPropagation();
     const phase = debugPhaseSelect.value;
     if (!phase || restartCampaignDialog.open || isStarting) return;
@@ -449,8 +466,12 @@ if (btnRestart) {
 }
 
 window.addEventListener('keydown', (event) => {
-  if (restartCampaignDialog.open || document.getElementById('title-options-dialog')
-    .open || event.target.closest?.('button, a, input, select, dialog')) return;
+  if (
+    restartCampaignDialog.open ||
+    document.getElementById('title-options-dialog').open ||
+    event.target.closest?.('button, a, input, select, dialog')
+  )
+    return;
   // Evita disparo contínuo por repetição de tecla pressionada
   if (event.repeat) {
     return;
@@ -463,7 +484,12 @@ window.addEventListener('keydown', (event) => {
   }
 
   if (!started) {
-    if (event.code === 'Space' || event.code === 'ArrowUp' || event.code === 'Enter' || event.code === 'Digit1') {
+    if (
+      event.code === 'Space' ||
+      event.code === 'ArrowUp' ||
+      event.code === 'Enter' ||
+      event.code === 'Digit1'
+    ) {
       event.preventDefault();
       titleScreen.requestNew();
     }
@@ -471,7 +497,12 @@ window.addEventListener('keydown', (event) => {
   }
 
   if (game.isGameOver && game.isGameOver()) {
-    if (event.code === 'Space' || event.key === ' ' || event.code === 'Enter' || event.code === 'ArrowUp') {
+    if (
+      event.code === 'Space' ||
+      event.key === ' ' ||
+      event.code === 'Enter' ||
+      event.code === 'ArrowUp'
+    ) {
       handleRetry(event);
     } else if (event.code === 'Escape' || event.code === 'KeyR') {
       handleRestart(event);
@@ -486,8 +517,7 @@ let prevOverlayButtonB = false;
 let prevOverlayDirection = 0;
 
 function pollOverlayGamepad() {
-  if (restartCampaignDialog.open || document.getElementById('title-options-dialog')
-    .open) return;
+  if (restartCampaignDialog.open || document.getElementById('title-options-dialog').open) return;
   if (typeof navigator === 'undefined' || typeof navigator.getGamepads !== 'function') return;
   let gamepads;
   try {
@@ -507,10 +537,12 @@ function pollOverlayGamepad() {
     const isXPressed = Boolean(btnX && (btnX.pressed || btnX.value > 0.5));
     const isBPressed = Boolean(gp.buttons[1]?.pressed || gp.buttons[1]?.value > 0.5);
     if (easyModeDialog.open) {
-      const direction = Number(Boolean(gp.buttons[15]?.pressed)) - Number(Boolean(gp.buttons[14]?.pressed)) || gp.axes?.[0] || 0;
-      if (Math.abs(direction) > .5 && Math.abs(prevOverlayDirection) <= .5)
-        document.getElementById(direction > 0 ? 'btn-accept-easy' : 'btn-decline-easy')
-        .focus();
+      const direction =
+        Number(Boolean(gp.buttons[15]?.pressed)) - Number(Boolean(gp.buttons[14]?.pressed)) ||
+        gp.axes?.[0] ||
+        0;
+      if (Math.abs(direction) > 0.5 && Math.abs(prevOverlayDirection) <= 0.5)
+        document.getElementById(direction > 0 ? 'btn-accept-easy' : 'btn-decline-easy').focus();
       if (isBPressed && !prevOverlayButtonB) easyModeDialog.close('no');
       else if ((isAPressed && !prevOverlayButtonA) || (isXPressed && !prevOverlayButtonX))
         easyModeDialog.close(document.activeElement?.id === 'btn-accept-easy' ? 'yes' : 'no');

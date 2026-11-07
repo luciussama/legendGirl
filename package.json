@@ -14,7 +14,7 @@
     "dev": "node server.js",
     "build": "node scripts/validate-production.js",
     "start": "node server.js",
-    "lint": "node --check server.js && node --check scripts/check-assets.js",
+    "lint": "eslint src/js scripts tools server.js eslint.config.js",
     "check-assets": "node scripts/check-assets.js",
     "review:dark-room": "python3 scripts/run-qa-from-journal.py review:dark-room",
     "test:tutorial:browser": "python3 scripts/run-qa-from-journal.py test:tutorial:browser",
@@ -70,12 +70,22 @@
     "journal:export": "python3 scripts/ai-journal.py export",
     "journal:migrate": "python3 scripts/ai-journal.py migrate",
     "journal:extract": "python3 scripts/ai-journal.py extract",
-    "journal:backup": "python3 scripts/ai-journal.py backup"
+    "journal:backup": "python3 scripts/ai-journal.py backup",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier --write \"src/js/**/*.js\" \"scripts/**/*.js\" \"tools/**/*.js\" \"*.js\" package.json .prettierrc.json",
+    "format:check": "prettier --check \"src/js/**/*.js\" \"scripts/**/*.js\" \"tools/**/*.js\" \"*.js\" package.json .prettierrc.json"
   },
   "dependencies": {
     "express": "^4.21.2",
     "jpeg-js": "^0.4.4",
     "pngjs": "^7.0.0",
     "three": "0.186.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "eslint": "10.14.0",
+    "eslint-config-prettier": "10.1.8",
+    "globals": "17.14.0",
+    "prettier": "3.9.10"
   }
 }

@@ -4,11 +4,9 @@ import {
   phase3Platforms,
   trueExitDoor,
   getEscapeStats,
-  getPhase3Stats
+  getPhase3Stats,
 } from '../config.js';
-import {
-  createDefaultStateVariables
-} from './StateVariables.js';
+import { createDefaultStateVariables } from './stateVariables.js';
 
 export class GameState {
   /**
@@ -44,13 +42,11 @@ export class GameState {
     if (typeof window !== 'undefined') {
       try {
         const gps = navigator.getGamepads ? navigator.getGamepads() : null;
-        if (gps && Array.from(gps)
-          .some(gp => gp && gp.connected)) {
+        if (gps && Array.from(gps).some((gp) => gp && gp.connected)) {
           if (this.lastUsedInputDevice === 'gamepad') return 'gamepad';
         }
       } catch (e) {}
-      if (window.matchMedia && window.matchMedia('(pointer: coarse)')
-        .matches) {
+      if (window.matchMedia && window.matchMedia('(pointer: coarse)').matches) {
         return 'touch';
       }
     }
@@ -77,7 +73,7 @@ export class GameState {
         wobble: Math.random() * Math.PI * 2,
         wobbleSpeed: 0.08 + Math.random() * 0.08,
         life: 1.0,
-        decay: 0.02 + Math.random() * 0.02
+        decay: 0.02 + Math.random() * 0.02,
       });
     }
   }
@@ -101,7 +97,7 @@ export class GameState {
       wobble: Math.random() * Math.PI * 2,
       wobbleSpeed: 0.06 + Math.random() * 0.06,
       life: 1.0,
-      decay: 0.018 + Math.random() * 0.015
+      decay: 0.018 + Math.random() * 0.015,
     });
   }
 
@@ -134,25 +130,27 @@ export class GameState {
     this.standbyDialogueAlpha = 1.0;
     this.standbyActivatedTime = performance.now();
 
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.isCrouching = true;
-    this.baby.controlsLocked = true;
-    this.baby.onGround = true;
-    this.baby.respawnLandingPending = false;
-    this.baby.animTime = 0;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.isCrouching = true;
+    this.player.controlsLocked = true;
+    this.player.onGround = true;
+    this.player.respawnLandingPending = false;
+    this.player.animTime = 0;
 
     // Posiciona a fadinha flutuando logo acima da menininha, emitindo luz reconfortante
-    const fairyOffsetX = this.baby.facing === -1 ? -18 : 18;
-    this.fairy.x = this.baby.x + fairyOffsetX;
-    this.fairy.y = this.baby.y - 75;
+    const fairyOffsetX = this.player.facing === -1 ? -18 : 18;
+    this.fairy.x = this.player.x + fairyOffsetX;
+    this.fairy.y = this.player.y - 75;
     this.fairy.vx = 0;
     this.fairy.vy = 0;
     this.fairy.spinAnim = 0;
 
     this.targetCameraZoom = 1.25;
     this.cameraZoom = 1.25;
-    const targetCam = this.baby.x - (this.canvas.width > 600 ? this.canvas.width * 0.35 : this.canvas.width * 0.25);
+    const targetCam =
+      this.player.x -
+      (this.canvas.width > 600 ? this.canvas.width * 0.35 : this.canvas.width * 0.25);
     this.cameraX = targetCam;
 
     if (audio) {
@@ -182,25 +180,25 @@ export class GameState {
   }
 
   /**
-   * Reinicializa a baby physics body para permitir uma nova execução sem reaproveitar dados transitórios
+   * Reinicializa o corpo físico da personagem para permitir uma nova execução sem reaproveitar dados transitórios
    * antigos.
    */
-  resetBabyPhysicsBody(targetX, targetY, facing = 1) {
-    this.baby.x = targetX;
-    this.baby.y = targetY;
+  resetPlayerPhysicsBody(targetX, targetY, facing = 1) {
+    this.player.x = targetX;
+    this.player.y = targetY;
     // 1. Zeração rígida de velocidade linear e forças externas
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.facing = facing;
-    this.baby.isShocked = false;
-    this.baby.isLyingDown = false;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.facing = facing;
+    this.player.isShocked = false;
+    this.player.isLyingDown = false;
     // 2. O estado de apoio no chão (onGround) SÓ deve ser validado após o solucionador de colisão confirmar contato com piso/plataforma
-    this.baby.onGround = false;
-    this.baby.respawnLandingPending = true;
-    this.baby.controlsLocked = false;
+    this.player.onGround = false;
+    this.player.respawnLandingPending = true;
+    this.player.controlsLocked = false;
     // Limpa buffers de impulso e fitas de movimento ativas
     this.speedRibbons.length = 0;
-    this.babyJumpDust.length = 0;
+    this.playerJumpDust.length = 0;
     // 3. Tempo de tolerância (240ms) prevenindo acúmulo de entrada de pulo ou clique acidental no renascimento
     this.lastJumpTime = performance.now() + 240;
     // 4. Reinicia o relógio de delta time para eliminar picos de frame rate
@@ -215,10 +213,10 @@ export class GameState {
     if (this.isGameOver) return;
     this.isGameOver = true;
     // Interrompe imediatamente qualquer velocidade de queda na derrota
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.onGround = false;
-    this.baby.respawnLandingPending = true;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.onGround = false;
+    this.player.respawnLandingPending = true;
     if (audio) {
       audio.clearActiveSounds();
       audio.playFallFailSound();
@@ -314,8 +312,8 @@ export class GameState {
     this.cutsceneStep = 1;
     this.cutsceneTimer = 0;
     this.targetCameraZoom = 1.45;
-    this.baby.vx = 0;
-    this.baby.vy = 0;
+    this.player.vx = 0;
+    this.player.vy = 0;
     if (audio) audio.playFairyVoiceBlip(880);
     if (this.uiFeedback) {
       this.uiFeedback.innerText = 'A fadinha quer falar com você! Toque na tela para conversar.';
@@ -349,22 +347,25 @@ export class GameState {
     this.targetCameraZoom = 1.0;
     this.escapeLevel = 0;
     const stats = getEscapeStats(0, this.gameDifficulty);
-    this.baby.isEscaping = true;
-    this.baby.longJumpUnlocked = true;
+    this.player.isEscaping = true;
+    this.player.longJumpUnlocked = true;
     // Efeito de gameplay escondido para a segunda parte:
     // Posiciona no topo estreito do castelo e aguarda a pessoa apertar para o pulo
     const castle = platforms[9];
-    const castleCenterX = castle.standRegion ? castle.standRegion.x + castle.standRegion.w / 2 : castle.x + castle.w / 2;
-    this.baby.x = castleCenterX - this.baby.w / 2;
-    this.baby.y = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y) - this.baby.h;
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.onGround = true;
-    this.baby.controlsLocked = false;
-    this.baby.isCrouching = false;
-    this.baby.respawnLandingPending = false;
-    this.baby.currentPlatformIndex = 9;
-    this.baby.jumpPower = stats.jumpPower;
+    const castleCenterX = castle.standRegion
+      ? castle.standRegion.x + castle.standRegion.w / 2
+      : castle.x + castle.w / 2;
+    this.player.x = castleCenterX - this.player.w / 2;
+    this.player.y =
+      (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y) - this.player.h;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.onGround = true;
+    this.player.controlsLocked = false;
+    this.player.isCrouching = false;
+    this.player.respawnLandingPending = false;
+    this.player.currentPlatformIndex = 9;
+    this.player.jumpPower = stats.jumpPower;
     this.currentScrollSpeed = 0;
     this.targetScrollSpeed = 0;
     this.lastJumpTime = performance.now() + 240;
@@ -375,7 +376,11 @@ export class GameState {
       this.uiFeedback.innerText = '⚡ MODO FUGA! Toque na tela para saltar no trem!';
       this.uiFeedback.style.color = '#fef08a';
     }
-    this.spawnFairySparkles(this.baby.x + this.baby.w / 2, this.baby.y + this.baby.h / 2, 30);
+    this.spawnFairySparkles(
+      this.player.x + this.player.w / 2,
+      this.player.y + this.player.h / 2,
+      30,
+    );
   }
 
   /**
@@ -390,12 +395,12 @@ export class GameState {
     this.fakeDoorRevealed = true;
     this.fakeDoorSlideY = 0;
     this.fakeDoorRotation = 0;
-    this.baby.isShocked = true;
-    this.baby.isLyingDown = false;
-    this.baby.vx = 0;
-    this.baby.vy = 2.2;
-    this.baby.onGround = false;
-    this.baby.controlsLocked = true;
+    this.player.isShocked = true;
+    this.player.isLyingDown = false;
+    this.player.vx = 0;
+    this.player.vy = 2.2;
+    this.player.onGround = false;
+    this.player.controlsLocked = true;
     this.targetCameraZoom = 1.25;
     if (audio) {
       audio.playTapeRipSound();
@@ -432,30 +437,31 @@ export class GameState {
   finishPlotTwistAndStartTutorial(audio) {
     if (audio) audio.clearActiveSounds();
     // Mantém os vetores compartilhados, mas descarta os rastros visuais da fase anterior.
-    this.babyJumpDust.length = 0;
+    this.playerJumpDust.length = 0;
     this.speedRibbons.length = 0;
     this.plotTwistActive = false;
     this.plotTwistStep = 0;
     this.isPhase3 = true;
     this.isEscapeMode = false;
     // A menina se levanta do chão e permanece parada com controles bloqueados
-    this.baby.isShocked = false;
-    this.baby.isLyingDown = false;
-    this.baby.facing = -1; // Inverte orientação: voltada para a esquerda!
-    this.baby.x = 4640;
-    this.baby.y = FLOOR_Y - this.baby.h;
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.onGround = true;
-    this.baby.currentPlatformIndex = -1;
-    this.baby.controlsLocked = true; // Bloqueio temporário durante demonstração visual
+    this.player.isShocked = false;
+    this.player.isLyingDown = false;
+    this.player.facing = -1; // Inverte orientação: voltada para a esquerda!
+    this.player.x = 4640;
+    this.player.y = FLOOR_Y - this.player.h;
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.onGround = true;
+    this.player.currentPlatformIndex = -1;
+    this.player.controlsLocked = true; // Bloqueio temporário durante demonstração visual
     this.phase3TutorialActive = true;
     this.phase3TutorialProgress = 0;
     this.targetCameraZoom = 1.0;
     this.cameraZoom = 1.0;
-    this.cameraX = this.baby.x - (this.canvas.width > 600 ? this.canvas.width - 250 : this.canvas.width - 150);
-    this.fairy.x = this.baby.x - 20;
-    this.fairy.y = this.baby.y - 15;
+    this.cameraX =
+      this.player.x - (this.canvas.width > 600 ? this.canvas.width - 250 : this.canvas.width - 150);
+    this.fairy.x = this.player.x - 20;
+    this.fairy.y = this.player.y - 15;
     this.fairy.vx = 0;
     this.fairy.vy = 0;
     if (audio) audio.playPhase3StartFanfare();
@@ -465,7 +471,11 @@ export class GameState {
       this.uiFeedback.innerText = '✨ Observe a fadinha indicando a trajetória do salto...';
       this.uiFeedback.style.color = '#fef08a';
     }
-    this.spawnFairySparkles(this.baby.x + this.baby.w / 2, this.baby.y + this.baby.h / 2, 35);
+    this.spawnFairySparkles(
+      this.player.x + this.player.w / 2,
+      this.player.y + this.player.h / 2,
+      35,
+    );
   }
 
   /**
@@ -478,10 +488,10 @@ export class GameState {
     this.trueDoorOpenAngle = 0;
     this.transitionWipeAlpha = 0;
     // Bloqueia imediatamente as entradas de pulo no modo de rolagem lateral
-    this.baby.controlsLocked = true;
-    this.baby.vx = -1.2;
-    this.baby.vy = 0;
-    this.baby.facing = -1;
+    this.player.controlsLocked = true;
+    this.player.vx = -1.2;
+    this.player.vy = 0;
+    this.player.facing = -1;
     if (audio) {
       audio.clearActiveSounds();
       audio.playLevelUpChime(14);
@@ -490,7 +500,11 @@ export class GameState {
       this.uiFeedback.innerText = '✨ O Verdadeiro Portal dos Sonhos se abriu!';
       this.uiFeedback.style.color = '#fde047';
     }
-    this.spawnFairySparkles(trueExitDoor.x + trueExitDoor.w / 2, trueExitDoor.y + trueExitDoor.h / 2, 40);
+    this.spawnFairySparkles(
+      trueExitDoor.x + trueExitDoor.w / 2,
+      trueExitDoor.y + trueExitDoor.h / 2,
+      40,
+    );
   }
 
   /**
@@ -499,23 +513,23 @@ export class GameState {
   resetToStart(failedMidClimb = false, shouldPlayFailSound = true, audio) {
     if (audio) audio.clearActiveSounds();
     // Redefine a iluminação em todas as plataformas para retornarem ao estado de penumbra
-    platforms.forEach(p => {
+    platforms.forEach((p) => {
       p.isLanded = false;
       p.lightAlpha = 0;
     });
-    phase3Platforms.forEach(p => {
+    phase3Platforms.forEach((p) => {
       p.isLanded = false;
       p.lightAlpha = 0;
     });
 
     if (failedMidClimb && this.isPhase3) {
       // Checkpoint: recomeça do ponto em que a menina se levanta no início dessa subida
-      this.resetBabyPhysicsBody(4640, FLOOR_Y - this.baby.h, -1);
-      this.baby.currentPlatformIndex = -1;
+      this.resetPlayerPhysicsBody(4640, FLOOR_Y - this.player.h, -1);
+      this.player.currentPlatformIndex = -1;
       this.phase3TutorialActive = false;
       this.phase3Level = 0;
       const stats = getPhase3Stats(0, false, this.gameDifficulty);
-      this.baby.jumpPower = stats.jumpPower;
+      this.player.jumpPower = stats.jumpPower;
       this.currentScrollSpeed = stats.scrollSpeed;
       this.targetScrollSpeed = stats.scrollSpeed;
       if (shouldPlayFailSound && audio) {
@@ -530,18 +544,20 @@ export class GameState {
       const castle = platforms[9];
       castle.isLanded = true;
       castle.lightAlpha = 1.0;
-      const castleCenterX = castle.standRegion ? castle.standRegion.x + castle.standRegion.w / 2 : castle.x + castle.w / 2;
-      const castleY = (castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y);
-      this.resetBabyPhysicsBody(castleCenterX - this.baby.w / 2, castleY - this.baby.h, 1);
+      const castleCenterX = castle.standRegion
+        ? castle.standRegion.x + castle.standRegion.w / 2
+        : castle.x + castle.w / 2;
+      const castleY = castle.surfaceTopY !== undefined ? castle.surfaceTopY : castle.y;
+      this.resetPlayerPhysicsBody(castleCenterX - this.player.w / 2, castleY - this.player.h, 1);
       this.escapeLevel = 0;
       const stats = getEscapeStats(0, this.gameDifficulty);
-      this.baby.jumpPower = stats.jumpPower;
-      this.baby.currentPlatformIndex = 9;
-      this.baby.longJumpUnlocked = true;
-      this.baby.isEscaping = true;
+      this.player.jumpPower = stats.jumpPower;
+      this.player.currentPlatformIndex = 9;
+      this.player.longJumpUnlocked = true;
+      this.player.isEscaping = true;
       this.isEscapeMode = true;
-      this.baby.vx = 0;
-      this.baby.vy = 0;
+      this.player.vx = 0;
+      this.player.vy = 0;
       this.currentScrollSpeed = 0;
       this.targetScrollSpeed = 0;
       this.escapeBannerTimer = 0;
@@ -553,13 +569,13 @@ export class GameState {
       return;
     }
 
-    this.resetBabyPhysicsBody(60, FLOOR_Y - this.baby.h, 1);
-    this.baby.vx = 0;
-    this.baby.vy = 0;
-    this.baby.jumpPower = -7.2;
-    this.baby.currentPlatformIndex = -1;
-    this.baby.longJumpUnlocked = false;
-    this.baby.isEscaping = false;
+    this.resetPlayerPhysicsBody(60, FLOOR_Y - this.player.h, 1);
+    this.player.vx = 0;
+    this.player.vy = 0;
+    this.player.jumpPower = -7.2;
+    this.player.currentPlatformIndex = -1;
+    this.player.longJumpUnlocked = false;
+    this.player.isEscaping = false;
     this.isEscapeMode = false;
     this.escapeLevel = 0;
     this.currentScrollSpeed = 1.5;

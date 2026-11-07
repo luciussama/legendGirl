@@ -1,58 +1,20 @@
-import {
-  beginArenaSpecial,
-  renderArenaSpecialBeam
-} from './ArenaSpecialAttack.js';
-import {
-  beginArenaPlayerAttack,
-  updateArenaPlayerAnimation
-} from './ArenaPlayerAnimation.js';
-import {
-  arenaEnemyContact
-} from './ArenaCombatContact.js';
-import {
-  ArenaBoss
-} from './ArenaBoss.js';
-import {
-  renderArenaEnemyPresence
-} from './ArenaEnemies.js';
-import {
-  renderArenaHUD
-} from './ArenaHUD.js';
-import {
-  ArenaAudioProfile
-} from './ArenaAudioProfile.js';
-import {
-  ImpactFX
-} from './ImpactFX.js';
-import {
-  ArenaPlayerController
-} from './ArenaPlayerController.js';
-import {
-  PlayerController
-} from './PlayerController.js';
-import {
-  BATTLE_ORDER,
-  BATTLE_TUNING
-} from './BattleConfig.js';
-import {
-  ArenaCamera
-} from './ArenaCamera.js';
-import {
-  ARENA_SCALE
-} from './ArenaScale.js';
-import {
-  renderArenaEnvironment,
-  renderArenaTemple
-} from './ArenaEnvironment.js';
-import {
-  ArenaPlayerRenderer
-} from './ArenaPlayerRenderer.js';
-import {
-  ToyRoomArenaBuilder
-} from './ToyRoomArenaBuilder.js';
-import {
-  arenaDifficulty
-} from './ArenaDifficulty.js';
+import { beginArenaSpecial, renderArenaSpecialBeam } from './arenaSpecialAttack.js';
+import { beginArenaPlayerAttack, updateArenaPlayerAnimation } from './arenaPlayerAnimation.js';
+import { arenaEnemyContact } from './arenaCombatContact.js';
+import { ArenaBoss } from './ArenaBoss.js';
+import { renderArenaEnemyPresence } from './arenaEnemies.js';
+import { renderArenaHUD } from './arenaHUD.js';
+import { ArenaAudioProfile } from './ArenaAudioProfile.js';
+import { ImpactFX } from './ImpactFX.js';
+import { ArenaPlayerController } from './ArenaPlayerController.js';
+import { PlayerController } from './PlayerController.js';
+import { BATTLE_ORDER, BATTLE_TUNING } from './battleConfig.js';
+import { ArenaCamera } from './ArenaCamera.js';
+import { ARENA_SCALE } from './arenaScale.js';
+import { renderArenaEnvironment, renderArenaTemple } from './arenaEnvironment.js';
+import { ArenaPlayerRenderer } from './ArenaPlayerRenderer.js';
+import { ToyRoomArenaBuilder } from './ToyRoomArenaBuilder.js';
+import { arenaDifficulty } from './arenaDifficulty.js';
 export const ARENA_TRANSFORMATION_DURATION = 180;
 export const ARENA_VICTORY_FADE_DURATION = 30;
 
@@ -65,7 +27,7 @@ export class ToyRoomArenaPhase {
     this.state = {
       status: 'IDLE',
       elapsed: 0,
-      completed: false
+      completed: false,
     };
     this.exploration = null;
     this.boss = new ArenaBoss();
@@ -74,12 +36,10 @@ export class ToyRoomArenaPhase {
     this.camera = new ArenaCamera();
     this.playerRenderer = new ArenaPlayerRenderer();
     this.assetError = null;
-    this.readyPromise = this.playerRenderer.load()
-      .catch(error => {
-        this.assetError = error.message;
-      });
-    this.layout = new ToyRoomArenaBuilder()
-      .build(room);
+    this.readyPromise = this.playerRenderer.load().catch((error) => {
+      this.assetError = error.message;
+    });
+    this.layout = new ToyRoomArenaBuilder().build(room);
   }
 
   /** Indica se a transformação, o combate ou o retorno ainda estão em andamento. */
@@ -91,12 +51,12 @@ export class ToyRoomArenaPhase {
   start() {
     if (this.active || this.state.completed) return false;
     this.exploration = this.room.snapshot({
-      includeArena: false
+      includeArena: false,
     });
     this.state = {
       status: 'TRANSFORMING',
       elapsed: 0,
-      completed: false
+      completed: false,
     };
     this.room.clearInput();
     this.configurePresentation();
@@ -112,7 +72,7 @@ export class ToyRoomArenaPhase {
     this.battle.playerController = new ArenaPlayerController();
     this.battle.presentation = {
       /** Atualiza animação de ataque e emite rastro quando a espada está em movimento. */
-      updateAnimation: dt => {
+      updateAnimation: (dt) => {
         const state = this.battle.state;
         if (updateArenaPlayerAnimation(state, this.room.player, dt)) {
           const direction = state.playerAnimation.attackDirection;
@@ -125,20 +85,22 @@ export class ToyRoomArenaPhase {
       /** Desenha HUD com estado da batalha e apresentação do guardião. */
       renderHUD: (ctx, layout, state) => renderArenaHUD(ctx, this.room, state, layout, this.boss),
       /** Calcula o enquadramento usando o layout e o estado corrente do combate. */
-      cameraFrame: layout => this.camera.frame(layout, this.room, this.battle.state),
+      cameraFrame: (layout) => this.camera.frame(layout, this.room, this.battle.state),
       /** Encaminha sons e sincroniza sinais visuais disparados pelos eventos de combate. */
-      onSound: sound => {
+      onSound: (sound) => {
         this.audioProfile.sound(sound);
-        if (sound === 'player_attack') beginArenaPlayerAttack(this.battle.state, this.room.story.state.attackDirection);
+        if (sound === 'player_attack')
+          beginArenaPlayerAttack(this.battle.state, this.room.story.state.attackDirection);
         const kind = sound === 'player_jump' ? 'jump' : sound === 'player_land' ? 'land' : null;
-        if (kind) this.fx.emit(kind, this.room.player.x, kind === 'trail' ? 580 : 680, kind === 'land');
+        if (kind)
+          this.fx.emit(kind, this.room.player.x, kind === 'trail' ? 580 : 680, kind === 'land');
       },
       /** Cria efeito visual na posição de um impacto. */
       onImpact: (x, y, heavy) => this.fx.emit('impact', x, y, heavy),
       /** Cria efeito de bloqueio no ponto de contato. */
       onBlock: (x, y) => this.fx.emit('block', x, y),
       /** Compõe efeitos transitórios junto ao feixe do ataque especial. */
-      renderFX: ctx => {
+      renderFX: (ctx) => {
         this.fx.render(ctx);
         renderArenaSpecialBeam(ctx, this.room, this.battle.state, this.battle.tuning.ground);
       },
@@ -146,23 +108,23 @@ export class ToyRoomArenaPhase {
       /** Fornece a origem de transporte derivada da mobília convertida da sala. */
       transportOrigin: () => this.layout.transportOrigin,
       /** Desenha o templo sobre o fundo quando um ator está em transição. */
-      renderForeground: ctx => {
+      renderForeground: (ctx) => {
         if (this.battle.state.transition) renderArenaTemple(ctx, this.room, this.layout, true);
       },
       /** Compõe o ambiente temático da arena sem alterar o cenário de exploração. */
-      renderBackground: ctx => renderArenaEnvironment(ctx, this.room, this.layout, this.state.elapsed),
+      renderBackground: (ctx) =>
+        renderArenaEnvironment(ctx, this.room, this.layout, this.state.elapsed),
       /** Desenha a personagem com o renderer e os recursos carregados para a arena. */
-      renderPlayer: (ctx, state, ground) => this.playerRenderer.render(ctx, this.room, state, ground)
+      renderPlayer: (ctx, state, ground) =>
+        this.playerRenderer.render(ctx, this.room, state, ground),
     };
   }
 
   /** Restaura a exploração depois do resultado, podendo manter o áudio suspenso sob um fade. */
-  restoreReality({
-    resumeAudio = true
-  } = {}) {
+  restoreReality({ resumeAudio = true } = {}) {
     if (this.state.realityRestored || !this.exploration) return;
     this.room.restore(this.exploration, {
-      preserveArena: true
+      preserveArena: true,
     });
     this.state.realityRestored = true;
     this.battle.state = null;
@@ -184,7 +146,7 @@ export class ToyRoomArenaPhase {
     }
     this.room.gameplayState = 'TOY_ROOM_GAMEPLAY';
     this.audioProfile.leave({
-      resume: resumeAudio
+      resume: resumeAudio,
     });
   }
 
@@ -206,7 +168,7 @@ export class ToyRoomArenaPhase {
     this.state.result = {
       outcome: s.mode,
       hp: s.player.hp,
-      history: JSON.parse(JSON.stringify(s.history))
+      history: JSON.parse(JSON.stringify(s.history)),
     };
     this.state.status = 'RETURNING';
     this.state.destination = s.mode === 'VICTORY' ? 'CHASE' : 'ROOM';
@@ -226,7 +188,7 @@ export class ToyRoomArenaPhase {
         this.state.transitionElapsed += step;
         if (this.state.transitionElapsed >= ARENA_VICTORY_FADE_DURATION) {
           this.restoreReality({
-            resumeAudio: false
+            resumeAudio: false,
           });
           this.state.status = 'COMPLETE';
           this.state.completed = true;
@@ -241,7 +203,13 @@ export class ToyRoomArenaPhase {
     }
     if (this.state.status === 'TRANSFORMING') {
       this.room.clearInput();
-      if (this.state.elapsed >= ARENA_TRANSFORMATION_DURATION && this.battle.ready && this.playerRenderer.ready && !this.battle.error && !this.assetError) {
+      if (
+        this.state.elapsed >= ARENA_TRANSFORMATION_DURATION &&
+        this.battle.ready &&
+        this.playerRenderer.ready &&
+        !this.battle.error &&
+        !this.assetError
+      ) {
         this.state.status = 'COMBAT';
         this.battle.activate();
         this.room.gameplayState = 'TOY_ROOM_ARENA';
@@ -253,17 +221,28 @@ export class ToyRoomArenaPhase {
       this.fx.update(step);
       this.battle.update(step);
       const s = this.battle.state;
-      this.camera.update(step, this.room.player, s.enemy, s.jump, s.combatShake || (this.fx.shake > 0 ? {
-        strength: this.fx.shake,
-        elapsed: 0,
-        duration: 1
-      } : null), s);
+      this.camera.update(
+        step,
+        this.room.player,
+        s.enemy,
+        s.jump,
+        s.combatShake ||
+          (this.fx.shake > 0
+            ? {
+                strength: this.fx.shake,
+                elapsed: 0,
+                duration: 1,
+              }
+            : null),
+        s,
+      );
       if (s.mode === 'BATTLE' && s.enemy.actor === 'bear' && s.enemy.hp === 0) {
         // O último golpe já entrega a abertura ilustrada; o Urso não volta ao baú aqui.
-        if (s.index < BATTLE_ORDER.length) s.history.push({
-          event: 'DEFEATED',
-          enemy: 'bear'
-        });
+        if (s.index < BATTLE_ORDER.length)
+          s.history.push({
+            event: 'DEFEATED',
+            enemy: 'bear',
+          });
         s.index = BATTLE_ORDER.length;
         s.transition = null;
         s.mode = 'VICTORY';
@@ -279,10 +258,7 @@ export class ToyRoomArenaPhase {
     if (this.state.status === 'RETURNING') {
       if (this.state.destination === 'CHASE') {
         this.battle.render();
-        const {
-          ctx,
-          canvas
-        } = this.room;
+        const { ctx, canvas } = this.room;
         const alpha = Math.min(1, this.state.transitionElapsed / ARENA_VICTORY_FADE_DURATION);
         ctx.save();
         ctx.fillStyle = `rgba(20,14,19,${alpha})`;
@@ -290,16 +266,15 @@ export class ToyRoomArenaPhase {
         ctx.restore();
         return;
       }
-      if (this.state.realityRestored) this.room.render({
-        arenaBackdrop: true
-      });
+      if (this.state.realityRestored)
+        this.room.render({
+          arenaBackdrop: true,
+        });
       else this.battle.render();
-      const {
-        ctx,
-        canvas
-      } = this.room, p = this.state.returnElapsed / 180;
+      const { ctx, canvas } = this.room,
+        p = this.state.returnElapsed / 180;
       ctx.save();
-      ctx.fillStyle = `rgba(24,14,38,${Math.sin(p*Math.PI)*0.95})`;
+      ctx.fillStyle = `rgba(24,14,38,${Math.sin(p * Math.PI) * 0.95})`;
       ctx.fillRect(0, 0, canvas.width, canvas.height);
       ctx.restore();
       return;
@@ -315,10 +290,7 @@ export class ToyRoomArenaPhase {
       }
       return;
     }
-    const {
-      ctx,
-      canvas
-    } = this.room;
+    const { ctx, canvas } = this.room;
     const progress = Math.min(1, this.state.elapsed / ARENA_TRANSFORMATION_DURATION);
     const zoom = 1 + Math.sin(progress * Math.PI) * 0.22;
     const shake = Math.sin(this.state.elapsed * 1.9) * 5 * Math.sin(progress * Math.PI);
@@ -327,7 +299,7 @@ export class ToyRoomArenaPhase {
     ctx.scale(zoom, zoom);
     ctx.translate(-canvas.width / 2, -canvas.height / 2);
     this.room.render({
-      arenaBackdrop: true
+      arenaBackdrop: true,
     });
     ctx.restore();
     ctx.save();
@@ -336,31 +308,38 @@ export class ToyRoomArenaPhase {
     ctx.fillStyle = '#ffe9ac';
     ctx.textAlign = 'center';
     ctx.font = 'bold 24px Georgia';
-    ctx.fillText(this.assetError || this.battle.error || 'O quarto desperta na sua imaginação…', canvas.width / 2, canvas.height * 0.46, canvas.width - 32);
+    ctx.fillText(
+      this.assetError || this.battle.error || 'O quarto desperta na sua imaginação…',
+      canvas.width / 2,
+      canvas.height * 0.46,
+      canvas.width - 32,
+    );
     ctx.restore();
   }
 
   /** Copia o estado da arena e os subsistemas necessários para continuar a sessão. */
   snapshot() {
-    return JSON.parse(JSON.stringify({
-      version: 1,
-      state: this.state,
-      exploration: this.exploration,
-      camera: this.camera.snapshot(),
-      fx: this.fx.snapshot(),
-      audio: this.audioProfile.snapshot(),
-      boss: this.boss.snapshot()
-    }));
+    return JSON.parse(
+      JSON.stringify({
+        version: 1,
+        state: this.state,
+        exploration: this.exploration,
+        camera: this.camera.snapshot(),
+        fx: this.fx.snapshot(),
+        audio: this.audioProfile.snapshot(),
+        boss: this.boss.snapshot(),
+      }),
+    );
   }
   /** Reinicializa componentes e valida/aplica a arena salva ou o save legado da sala. */
   restore(saved, roomSave = null) {
     this.audioProfile.leave({
-      resume: false
+      resume: false,
     });
     this.state = {
       status: 'IDLE',
       elapsed: 0,
-      completed: false
+      completed: false,
     };
     this.camera = new ArenaCamera();
     this.fx = new ImpactFX();
@@ -383,16 +362,18 @@ export class ToyRoomArenaPhase {
         state: {
           status: 'COMBAT',
           elapsed: 0,
-          completed: false
+          completed: false,
         },
         exploration,
         audio: {
-          mode: 'ARENA'
-        }
+          mode: 'ARENA',
+        },
       };
     }
     if (saved) {
-      if (!['IDLE', 'TRANSFORMING', 'COMBAT', 'RETURNING', 'COMPLETE'].includes(saved.state?.status))
+      if (
+        !['IDLE', 'TRANSFORMING', 'COMBAT', 'RETURNING', 'COMPLETE'].includes(saved.state?.status)
+      )
         throw new TypeError('Estado da arena inválido no save.');
       this.state = JSON.parse(JSON.stringify(saved.state));
       this.camera.restore(saved.camera);
@@ -405,15 +386,14 @@ export class ToyRoomArenaPhase {
       this.state = {
         status: 'COMPLETE',
         elapsed: 0,
-        completed: true
+        completed: true,
       };
     }
     if (this.state.completed) {
       this.room.audio?.startToyRoomMusic?.();
       this.room.audio?.setToyRoomMusicFade?.(1);
     }
-    this.layout = new ToyRoomArenaBuilder()
-      .build(this.room);
+    this.layout = new ToyRoomArenaBuilder().build(this.room);
     this.room.clearInput();
   }
   /** Encaminha o ataque ao sistema de combate enquanto a arena estiver ativa. */

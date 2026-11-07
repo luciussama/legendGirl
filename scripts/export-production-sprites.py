@@ -503,7 +503,7 @@ def main():
             atlas_dict[alias_k] = atlas_dict[target_k]
 
     import json
-    atlas_json_path = 'assets/art/dark-room/darkRoomAtlas.json'
+    atlas_json_path = 'assets/art/dark-room/dark-room-atlas.json'
     with open(atlas_json_path, 'w') as f:
         json.dump({
             'sheet': 'assets/art/dark-room/production-spritesheet.png',
@@ -546,9 +546,9 @@ export function getDarkRoomAtlasRegion(key) {{
   return null;
 }}
 """
-    with open('src/js/assets/darkRoomAtlas.js', 'w') as f:
+    with open('src/js/assets/dark-room-atlas.js', 'w') as f:
         f.write(js_content)
-    print('Arquivo atualizado: src/js/assets/darkRoomAtlas.js!')
+    print('Arquivo atualizado: src/js/assets/dark-room-atlas.js!')
 
 if __name__ == '__main__':
     main()

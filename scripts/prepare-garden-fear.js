@@ -1,19 +1,15 @@
 // Prepara atuação completa; os sapatos de apoio continuam sendo os quadros físicos.
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
-import {
-  GARDEN_ART
-} from '../src/js/garden/GardenArt.js';
+import { PNG } from 'pngjs';
+import { GARDEN_ART } from '../src/js/garden/gardenArt.js';
 const root = 'assets/art/garden',
-  source = PNG.sync.read(fs.readFileSync(root + '/source/menina-medo-v2.png'));
+  source = PNG.sync.read(fs.readFileSync(root + '/source/girl-fear-v2.png'));
 const poses = [];
 for (let i = 0; i < 8; i++) {
-  const a = Math.floor(i % 4 * source.width / 4),
-    b = Math.floor((i % 4 + 1) * source.width / 4),
-    c = Math.floor(Math.floor(i / 4) * source.height / 2),
-    d = Math.floor((Math.floor(i / 4) + 1) * source.height / 2);
+  const a = Math.floor(((i % 4) * source.width) / 4),
+    b = Math.floor((((i % 4) + 1) * source.width) / 4),
+    c = Math.floor((Math.floor(i / 4) * source.height) / 2),
+    d = Math.floor(((Math.floor(i / 4) + 1) * source.height) / 2);
   let left = b,
     top = d,
     right = a,
@@ -30,23 +26,23 @@ for (let i = 0; i < 8; i++) {
     x: left,
     y: top,
     w: right - left + 1,
-    h: bottom - top + 1
+    h: bottom - top + 1,
   });
 }
 const files = {},
   frames = {};
 for (const [name, set] of Object.entries(GARDEN_ART.sets)) {
-  if (!name.startsWith('menina-')) continue;
+  if (!name.startsWith('girl-')) continue;
   const original = PNG.sync.read(fs.readFileSync(root + '/' + set.file)),
     out = new PNG({
       width: 2048,
-      height: 1024
+      height: 1024,
     });
   frames[name] = set.frames.map((f, i) => {
-    const pose = poses[(name === 'menina-corrida-v1' ? i + 6 : i + 2) % 8],
+    const pose = poses[(name === 'girl-running-v1' ? i + 6 : i + 2) % 8],
       pad = 90,
       w = f.w + pad * 2,
-      x = i % 4 * 512 + 4,
+      x = (i % 4) * 512 + 4,
       y = Math.floor(i / 4) * 512 + 4;
     // A pose completa é registrada pela sola mais baixa, sem combinar membros
     // de pinturas diferentes. A referência física continua no atlas original.
@@ -58,17 +54,18 @@ for (const [name, set] of Object.entries(GARDEN_ART.sets)) {
           if (img.data[((box.y + py) * img.width + box.x + px) * 4 + 3] > 64) {
             sum += px;
             count++;
-          } return count ? sum / count : box.w / 2;
+          }
+      return count ? sum / count : box.w / 2;
     };
     const targetSole = soleCenter(original, f),
       sourceSole = soleCenter(source, pose),
       scaleY = f.h / pose.h,
       scaleX = Math.min(scaleY, (f.w + 65) / pose.w),
-      start = pad + f.anchorX - pose.w * .5 * scaleX;
+      start = pad + f.anchorX - pose.w * 0.5 * scaleX;
     for (let py = 0; py < f.h; py++)
       for (let px = 0; px < w; px++) {
         const t = py / f.h,
-          q = Math.max(0, Math.min(1, (t - .62) / .32)),
+          q = Math.max(0, Math.min(1, (t - 0.62) / 0.32)),
           shift = (targetSole - (start - pad + sourceSole * scaleX)) * q * q * (3 - 2 * q);
         const sx = Math.floor(pose.x + (px - start - shift) / scaleX),
           sy = Math.min(source.height - 1, Math.floor(pose.y + py / scaleY));
@@ -83,18 +80,29 @@ for (const [name, set] of Object.entries(GARDEN_ART.sets)) {
       w,
       h: f.h,
       anchorX: f.anchorX + pad,
-      anchorY: f.anchorY
+      anchorY: f.anchorY,
     };
   });
   const file = 'runtime/medo-v2-' + name + '.png';
   fs.writeFileSync(root + '/' + file, PNG.sync.write(out));
   files[name] = file;
 }
-fs.writeFileSync('src/js/garden/GardenFearArt.js', '// Gerado por prepare-garden-fear.js; atuação completa e apoio original.\nexport const FEAR_FILES=' + JSON.stringify(files) + ';\nexport const FEAR_FRAMES=' + JSON.stringify(frames) + ';\n');
+fs.writeFileSync(
+  'src/js/garden/gardenFearArt.js',
+  '// Gerado por prepare-garden-fear.js; atuação completa e apoio original.\nexport const FEAR_FILES=' +
+    JSON.stringify(files) +
+    ';\nexport const FEAR_FRAMES=' +
+    JSON.stringify(frames) +
+    ';\n',
+);
 const path = root + '/manifest.json',
   manifest = JSON.parse(fs.readFileSync(path));
-manifest.images = manifest.images.filter(f => !f.startsWith('runtime/medo-') || f.startsWith('runtime/medo-v2-'));
+manifest.images = manifest.images.filter(
+  (f) => !f.startsWith('runtime/medo-') || f.startsWith('runtime/medo-v2-'),
+);
 for (const file of Object.values(files))
   if (!manifest.images.includes(file)) manifest.images.push(file);
 fs.writeFileSync(path, JSON.stringify(manifest, null, 2) + '\n');
-console.log('Quatro pranchas de medo completo preparadas; envelope visual adaptado às solas físicas originais.');
+console.log(
+  'Quatro pranchas de medo completo preparadas; envelope visual adaptado às solas físicas originais.',
+);

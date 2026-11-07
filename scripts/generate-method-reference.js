@@ -4,9 +4,19 @@ import path from 'node:path';
 const root = path.resolve('src/js');
 async function files(dir) {
   const entries = await fs.readdir(dir, {
-    withFileTypes: true
+    withFileTypes: true,
   });
-  return (await Promise.all(entries.map(e => e.isDirectory() ? files(path.join(dir, e.name)) : e.name.endsWith('.js') ? [path.join(dir, e.name)] : [])))
+  return (
+    await Promise.all(
+      entries.map((e) =>
+        e.isDirectory()
+          ? files(path.join(dir, e.name))
+          : e.name.endsWith('.js')
+            ? [path.join(dir, e.name)]
+            : [],
+      ),
+    )
+  )
     .flat()
     .sort();
 }
@@ -34,86 +44,126 @@ function parameterEnd(text, start) {
   return -1;
 }
 const details = {
-  brinquedaoSupports: 'Gera os apoios configurados por lado em cada estrutura e elimina os que um percurso sobreposto colocaria no vão central de uma ponte.',
-  validateBrinquedaoStructure: 'Valida apoios configurados, conexões contínuas, atalhos, degraus coincidentes e tangentes suaves nas curvas.',
-  springSupportSides: 'Resolve os lados de apoio configurados para cada lona, preservando ambos por padrão.',
+  brinquedaoSupports:
+    'Gera os apoios configurados por lado em cada estrutura e elimina os que um percurso sobreposto colocaria no vão central de uma ponte.',
+  validateBrinquedaoStructure:
+    'Valida apoios configurados, conexões contínuas, atalhos, degraus coincidentes e tangentes suaves nas curvas.',
+  springSupportSides:
+    'Resolve os lados de apoio configurados para cada lona, preservando ambos por padrão.',
   brinquedaoFoundationY: 'Consulta a altura da faixa de fundação para um apoio.',
-  updateBrinquedaoFishAttack: 'Dispara a investida quando Yuna se aproxima e trava o alvo até o fim do salto.',
-  drawBrinquedaoSurfaceStrip: 'Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico.',
+  updateBrinquedaoFishAttack:
+    'Dispara a investida quando Yuna se aproxima e trava o alvo até o fim do salto.',
+  drawBrinquedaoSurfaceStrip:
+    'Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico.',
   brinquedaoBlockSolid: 'Consulta a onda de queda pelo relógio salvo e prazo do bloco.',
   brinquedaoTriangleTouches: 'Testa tronco/pés contra o perfil triangular visível.',
   brinquedaoReboundPose: 'Liga duas lonas pelo voo automático, independente dos controles.',
-  brinquedaoFishImpactAge: 'Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo.',
-  drawBrinquedaoBridgeFish: 'Desenha investidas curtas perto de Yuna; a pose é compartilhada com o contato físico.',
+  brinquedaoFishImpactAge:
+    'Consulta o tempo desde o golpe para arremesso, proteção e rotação do corpo.',
+  drawBrinquedaoBridgeFish:
+    'Desenha investidas curtas perto de Yuna; a pose é compartilhada com o contato físico.',
   brinquedaoOutletReady: 'Consulta a abertura da saída após duas rebatidas da calha.',
-  brinquedaoOutletFlight: 'Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem.',
-  createBrinquedaoInterior: 'Cria os quatro tubos, corpo da corrida e relógios dos desafios, sem peixes internos.',
+  brinquedaoOutletFlight:
+    'Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem.',
+  createBrinquedaoInterior:
+    'Cria os quatro tubos, corpo da corrida e relógios dos desafios, sem peixes internos.',
   beginBrinquedaoInterior: 'Encerra o movimento externo e abre o primeiro tubo antes da chegada.',
   retryBrinquedaoInterior: 'Retoma o terceiro tubo após a queda dos blocos.',
-  stepBrinquedaoInterior: 'Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão.',
-  validateBrinquedaoInterior: 'Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo.',
+  stepBrinquedaoInterior:
+    'Alterna curvas rápidas e piscinas manuais, integrando dano, proteção e conclusão.',
+  validateBrinquedaoInterior:
+    'Confere referências, relógios, corpo, dano e compatibilidade do estágio salvo.',
   brinquedaoFishSpecs: 'Define dois pontos fixos de ataque por ponte.',
   brinquedaoFishPose: 'Calcula o salto curto e o alvo travado no lançamento.',
   brinquedaoFishTouches: 'Testa contato do corpo do peixe somente na janela ativa da investida.',
   brinquedaoTubePose: 'Consulta posição e tangente pelo comprimento amostrado da curva.',
-  prepareBrinquedaoInterior: 'Recorta módulos de tubo e peixes completos em canvases reutilizáveis.',
+  prepareBrinquedaoInterior:
+    'Recorta módulos de tubo e peixes completos em canvases reutilizáveis.',
   drawBrinquedaoInteriorDoor: 'Desenha a entrada acolchoada no antigo terraço final.',
-  renderBrinquedaoInterior: 'Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles.',
+  renderBrinquedaoInterior:
+    'Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles.',
 
-  brinquedaoRicochetAge: 'Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção.',
-  hitBrinquedaoSideMat: 'Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte.',
-  drawBrinquedaoSideMats: 'Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto.',
+  brinquedaoRicochetAge:
+    'Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção.',
+  hitBrinquedaoSideMat:
+    'Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte.',
+  drawBrinquedaoSideMats:
+    'Gira as lonas pintadas nas extremidades das calhas e apresenta compressão por impacto.',
 
   brinquedaoDeathY: 'Retorna o limite inferior de queda da região baixa ou dos castelos altos.',
-  createBrinquedaoObstacles: 'Cria relógios de pontes/lonas e contagens de impacto sem recursos de apresentação.',
-  brinquedaoBridgeSolid: 'Consulta se a peça ainda oferece apoio após contato, incluindo tolerância EASY.',
-  contactBrinquedao: 'Registra apoio, ativa ponte ou aplica impulso descendente da lona, com reforço por PULAR.',
-  hitBrinquedaoElastic: 'Exige cruzamento e altura do painel lateral para transferir energia à rampa.',
-  launchBrinquedaoSky: 'Converte a saída real do lábio em velocidade horizontal e vertical, liberando controle aéreo.',
-  validateBrinquedaoObstacles: 'Confere referências e relógios de contato, rejeitando apoio em ponte caída.',
-  prepareBrinquedaoAttractions: 'Extrai as quatro pinturas completas e mede o contorno da rampa sem sobrescrever PNGs.',
+  createBrinquedaoObstacles:
+    'Cria relógios de pontes/lonas e contagens de impacto sem recursos de apresentação.',
+  brinquedaoBridgeSolid:
+    'Consulta se a peça ainda oferece apoio após contato, incluindo tolerância EASY.',
+  contactBrinquedao:
+    'Registra apoio, ativa ponte ou aplica impulso descendente da lona, com reforço por PULAR.',
+  hitBrinquedaoElastic:
+    'Exige cruzamento e altura do painel lateral para transferir energia à rampa.',
+  launchBrinquedaoSky:
+    'Converte a saída real do lábio em velocidade horizontal e vertical, liberando controle aéreo.',
+  validateBrinquedaoObstacles:
+    'Confere referências e relógios de contato, rejeitando apoio em ponte caída.',
+  prepareBrinquedaoAttractions:
+    'Extrai as quatro pinturas completas e mede o contorno da rampa sem sobrescrever PNGs.',
   drawBrinquedaoCastles: 'Compõe torres acolchoadas sob seus terraços físicos.',
-  drawBrinquedaoSpring: 'Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes.',
+  drawBrinquedaoSpring:
+    'Deforma a lona pelo relógio persistido do impacto, mantendo os pés físicos independentes.',
   drawBrinquedaoElastic: 'Compõe o painel oblíquo e seu recuo após contato.',
 
-  startBrinquedao: 'Descarta os modos anteriores, conserva a origem da campanha e abre convite e circuito.',
-  createBrinquedaoState: 'Cria domínio8 com ataques reativos, pontes rápidas e corrida de quatro tubos.',
-  restoreBrinquedaoState: 'Valida domínio8/interior3 e migra saves1–7, convertendo piscinas e progresso antigo.',
+  startBrinquedao:
+    'Descarta os modos anteriores, conserva a origem da campanha e abre convite e circuito.',
+  createBrinquedaoState:
+    'Cria domínio8 com ataques reativos, pontes rápidas e corrida de quatro tubos.',
+  restoreBrinquedaoState:
+    'Valida domínio8/interior3 e migra saves1–7, convertendo piscinas e progresso antigo.',
   recoverBrinquedao: 'Retoma o último terraço após queda/derrota e rearma as pontes futuras.',
-  stepBrinquedao: 'Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota.',
+  stepBrinquedao:
+    'Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota.',
   advanceBrinquedaoStory: 'Avança uma fala ou encerra a leitura consumindo o gesto de pulo.',
   brinquedaoSurface: 'Consulta a altura do apoio e curvas com tangentes suaves nas extremidades.',
   brinquedaoSlope: 'Mede inclinação local para gravidade tangencial e pose da descida.',
   brinquedaoMainAt: 'Localiza a pista principal correspondente à coordenada horizontal.',
   brinquedaoNearby: 'Seleciona estruturas visíveis sem alterar sua simulação.',
-  prepareBrinquedaoParts: 'Extrai módulos completos e mede o topo pintado para registrar o material.',
-  drawBrinquedaoTerrain: 'Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas.',
-  drawPaddedEnd: 'Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico.',
+  prepareBrinquedaoParts:
+    'Extrai módulos completos e mede o topo pintado para registrar o material.',
+  drawBrinquedaoTerrain:
+    'Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas.',
+  drawPaddedEnd:
+    'Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico.',
   drawBrinquedaoGirl: 'Apresenta a atuação completa com escala comum, pés e máscara da prancha.',
   drawBrinquedaoFairy: 'Compõe Nanda em tamanho habitual com batimento das asas.',
-  renderBrinquedaoCinematic: 'Compõe piquenique, convite e jardim com enquadramento narrativo e leitura segura.',
+  renderBrinquedaoCinematic:
+    'Compõe piquenique, convite e jardim com enquadramento narrativo e leitura segura.',
 
   dreamOpeningBeat: 'Consulta o momento autorado a partir do índice persistido da abertura.',
   advanceDreamOpening: 'Dispensa uma fala visível preservando o mínimo de atuação do momento.',
   stepDreamOpening: 'Avança os sete momentos e libera a travessia sem herdar o pulo da leitura.',
   renderDreamOpening: 'Compõe Yuna, Nanda adormecida, mãos em contato, moldura e transição final.',
-  mobileGameControls: 'Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS.',
+  mobileGameControls:
+    'Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS.',
   drawMobileGameControls: 'Desenha D-pad unido, setas diagonais e salto respeitando a área segura.',
-  renderDreamLanding: 'Compõe fim da sustentação, perda da folha, queda e amortecimento no chão em tela cheia.',
+  renderDreamLanding:
+    'Compõe fim da sustentação, perda da folha, queda e amortecimento no chão em tela cheia.',
   solveRoachLeg: 'Resolve duas juntas com comprimentos e flexão preservados, normalizando ângulos.',
-  dreamRoachLegPoints: 'Retorna quadril, joelho e ponta dos segmentos rígidos pelas rotações usadas no desenho.',
-  nightmareEntranceMoment: 'Seleciona chegada, leitura, emergência, susto, fuga e abrigo pelo relógio salvo.',
-  renderNightmareEntrance: 'Compõe a entrada em planos próprios, com árvores em primeiro plano e diálogos padrão.',
+  dreamRoachLegPoints:
+    'Retorna quadril, joelho e ponta dos segmentos rígidos pelas rotações usadas no desenho.',
+  nightmareEntranceMoment:
+    'Seleciona chegada, leitura, emergência, susto, fuga e abrigo pelo relógio salvo.',
+  renderNightmareEntrance:
+    'Compõe a entrada em planos próprios, com árvores em primeiro plano e diálogos padrão.',
   drawNightmareCinematicGirl: 'Desenha atuações mantendo recorte, escala e âncora dos pés.',
   roachFootfall: 'Consulta contato dos tripés no relógio determinístico de passadas.',
-  roachScreenShake: 'Produz tremor transitório da composição em pixels CSS sem mudar o frame físico.',
+  roachScreenShake:
+    'Produz tremor transitório da composição em pixels CSS sem mudar o frame físico.',
   drawRoachDust: 'Projeta poeira nos contatos das patas e na propagação do impacto final.',
 
-  preloadGameSounds: 'Decodifica WAVs fornecidos uma vez por contexto, sem enfileirar reprodução atrasada.',
+  preloadGameSounds:
+    'Decodifica WAVs fornecidos uma vez por contexto, sem enfileirar reprodução atrasada.',
   insectEmitters: 'Consulta corpos e estados de voo de abelhas e besouros no jardim ou sonho.',
   audibleInsects: 'Seleciona até três emissores por distância, energia de voo e panorâmica.',
 
-  mudWaterline: 'Interpola a superfície curva do lago, compartilhada pela pintura frontal, corpo e oclusão.',
+  mudWaterline:
+    'Interpola a superfície curva do lago, compartilhada pela pintura frontal, corpo e oclusão.',
   mudLakeAt: 'Localiza a área líquida atravessável do lago pelas margens autoradas.',
   mudBankY: 'Retorna a altura de apoio da margem de entrada ou saída.',
   mudGround: 'Mantém fundo sob a lama e conecta as margens à terra firme.',
@@ -129,119 +179,205 @@ const details = {
   prepareDreamBackdrop: 'Prepara a pintura do fundo com dissolução das bordas, sem espelhamento.',
   drawDreamBackdrop: 'Compõe a faixa de floresta sem criar árvores bilaterais nas emendas.',
 
-  stealthGround: 'Retorna o chão contínuo, com topo pintado dos relevos e descida de terra até o caminho.',
+  stealthGround:
+    'Retorna o chão contínuo, com topo pintado dos relevos e descida de terra até o caminho.',
   stealthMudAt: 'Exige que o corpo inteiro caiba dentro da poça para permitir submersão.',
   stealthPose: 'Compartilha o índice da pose abaixada entre pintura, salto e detecção dos olhos.',
-  stealthCheckpoint: 'Retorna o abrigo de retomada por setor e conserva submersão nos setores de lama.',
-  nightmareControls: 'Compartilha D-pad mobile e mantém quatro alvos no desktop para a perseguição.',
-  migrateNightmare: 'Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz.',
+  stealthCheckpoint:
+    'Retorna o abrigo de retomada por setor e conserva submersão nos setores de lama.',
+  nightmareControls:
+    'Compartilha D-pad mobile e mantém quatro alvos no desktop para a perseguição.',
+  migrateNightmare:
+    'Migra o trecho curto e os saves intermediários para o terreno contínuo e exposição à luz.',
 
-  dreamRoachPose: 'Deriva passadas em tripés, cabeça, antenas e oscilação corporal do relógio salvo.',
-  dreamRoachPoint: 'Transforma os olhos pela mesma junta de cabeça usada na pintura e retorna a posição física.',
-  prepareDreamRoach: 'Prepara doze segmentos rígidos e seis juntas protegidas, cabeça e antenas, sem editar PNGs.',
-  drawDreamRoach: 'Compõe a barata original com seis patas articuladas e investigação da cabeça e antenas.',
+  dreamRoachPose:
+    'Deriva passadas em tripés, cabeça, antenas e oscilação corporal do relógio salvo.',
+  dreamRoachPoint:
+    'Transforma os olhos pela mesma junta de cabeça usada na pintura e retorna a posição física.',
+  prepareDreamRoach:
+    'Prepara doze segmentos rígidos e seis juntas protegidas, cabeça e antenas, sem editar PNGs.',
+  drawDreamRoach:
+    'Compõe a barata original com seis patas articuladas e investigação da cabeça e antenas.',
   drawDreamRoachReach: 'Resolve duas juntas da pata frontal até a menina durante golpe e captura.',
   destroyDreamRoach: 'Libera as superfícies de Canvas usadas pela barata articulada.',
 
-  gardenDefeatFrame: 'Calcula corpo comprimido ou queda visual de inseto derrotado por até 1,6 s, sem alterar coordenadas de colisão.',
-  advanceGardenDefeats: 'Avança uma vez por subpasso os relógios visuais dos corpos, inclusive fora da vizinhança e em encerramento.',
-  beginDialogueFrame: 'Inicia o registro dos quadros de diálogo por canvas; composições aninhadas compartilham profundidade e não deixam entrada obsoleta.',
-  endDialogueFrame: 'Encerra um nível da composição de diálogos sem avançar relógios narrativos ou físicos.',
-  offerDialogue: 'Registra a fala visível e seu callback de avanço; quadros dispensados ficam ocultos e canvases de medição não criam entrada.',
-  setDialogueBounds: 'Transforma os quatro cantos do quadro para pixels do canvas usados no hit-testing de leitura não modal.',
+  gardenDefeatFrame:
+    'Calcula corpo comprimido ou queda visual de inseto derrotado por até 1,6 s, sem alterar coordenadas de colisão.',
+  advanceGardenDefeats:
+    'Avança uma vez por subpasso os relógios visuais dos corpos, inclusive fora da vizinhança e em encerramento.',
+  beginDialogueFrame:
+    'Inicia o registro dos quadros de diálogo por canvas; composições aninhadas compartilham profundidade e não deixam entrada obsoleta.',
+  endDialogueFrame:
+    'Encerra um nível da composição de diálogos sem avançar relógios narrativos ou físicos.',
+  offerDialogue:
+    'Registra a fala visível e seu callback de avanço; quadros dispensados ficam ocultos e canvases de medição não criam entrada.',
+  setDialogueBounds:
+    'Transforma os quatro cantos do quadro para pixels do canvas usados no hit-testing de leitura não modal.',
   getDialogueBounds: 'Consulta os limites do quadro de diálogo atualmente registrado nesse canvas.',
-  installDialogueAdvance: 'Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal.',
-  requestDialogueAdvance: 'No jardim, enfileira avanço de uma fala ou skip visto e bloqueia pulo até a liberação da entrada.',
-  gardenCinematicMoment: 'Seleciona atuação e plano pelo progresso narrativo, separado da câmera de gameplay e do relógio da fala.',
-  renderGardenCinematic: 'Compõe cenário, atores em camadas e quadro narrativo; apresenta sonolência e repouso das duas após a leitura.',
-  createGardenState: 'Cria domínio v11 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis.',
-  restoreGardenState: 'Valida saves v1–v11 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos.',
-  stepGarden: 'Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos.',
-  retryGarden: 'Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros.',
-  tickGardenBee: 'Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s.',
-  tickGardenWorm: 'Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão.',
-  tickGardenBeetles: 'Ativa corrida automática até o pouso seguro na outra margem dos rios; mantém seis segundos no encontro das nuvens finais.',
-  resetGardenPanic: 'Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar.',
-  startGarden: 'Encerra epílogo/perseguição, remove entradas da sala e inicia GardenPhase com recursos, física e áudio próprios; conserva a origem campanha/prévia.',
-  startEpilogue: 'Descarta a perseguição, limpa entrada e inicia o epílogo recuperável; o callback abre o jardim com a mesma origem campanha/prévia.',
-  renderChapterCard: 'Desenha a gravura e o título na área segura; registra avanço da leitura sem avançar a fase por trás.',
-  girlGaitDirection: 'Mantém o perfil lateral coerente entre pernas e tronco; o chamador espelha esquerda/direita, sem girar só as pernas ao mover em profundidade.',
-  sampleGirlLocomotion: 'Amostra apoio, elevação, joelho, tronco, cabeça, braços e vestido por distância; transportar reduz a oscilação.',
-  drawGirlLocomotion: 'Compõe repouso original e membros articulados com transição contínua; retorna false se faltarem fontes.',
-  girlLocomotionDistance: 'Converte animTime legado para distância na pintura, com calibração distinta para quarto e sala.',
-  renderGirlRun: 'Ancora a menina nos pés, aplica escala/espelhamento e compartilha a atuação entre explorações, sem mudar corpos físicos.',
-  applyGirlBodyTransform: 'Aplica translação do quadril, oscilação e rotação do tronco também às mãos e ao brinquedo transportado.',
-  drawGirlUpperBody: 'Compõe cabeça estabilizada, cabelo, braços em oposição e vestido com atraso; preserva uma única cabeça na mistura.',
-  dialogueControlsHeight: 'Reserva altura para os comandos de leitura e, quando permitido, para o botão separado de pular cena já vista.',
-  drawDialogueControls: 'Desenha avanço automático, gesto de adiantar e alvo separado de skip; devolve os limites do botão.',
-  advanceDialogue: 'Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada.',
-  titleSceneFrame: 'Calcula uma câmera comum para o quarto da tela inicial, com foco na menina no retrato e poltrona fixa no tapete.',
+  installDialogueAdvance:
+    'Instala pointerdown em captura; consome um gesto e avança uma fala, preservando controles fora do quadro não modal.',
+  requestDialogueAdvance:
+    'No jardim, enfileira avanço de uma fala ou skip visto e bloqueia pulo até a liberação da entrada.',
+  gardenCinematicMoment:
+    'Seleciona atuação e plano pelo progresso narrativo, separado da câmera de gameplay e do relógio da fala.',
+  renderGardenCinematic:
+    'Compõe cenário, atores em camadas e quadro narrativo; apresenta sonolência e repouso das duas após a leitura.',
+  createGardenState:
+    'Cria domínio v11 com jogador, encontros, nuvens, leitura, apresentação, fada e recuperação serializáveis.',
+  restoreGardenState:
+    'Valida saves v1–v11 e migra geometria, encontros e leitura para o domínio atual sem serializar recursos.',
+  stepGarden:
+    'Converte entrada em subpassos de até 1/120 s; atualiza leitura, movimento, contato, encontros, recuperação e eventos.',
+  retryGarden:
+    'Retoma GAME_OVER no checkpoint, conserva inimigos vencidos e leitura, e rearma encontros futuros.',
+  tickGardenBee:
+    'Mantém repouso fixo, aviso de 0,5 s e rasantes A/B de 1,25 s, com intervalo de 1,8 s.',
+  tickGardenWorm:
+    'Controla exposição da minhoca por proximidade com limites distintos para emergir e recolher; o buraco não remove chão.',
+  tickGardenBeetles:
+    'Ativa corrida automática até o pouso seguro na outra margem dos rios; mantém seis segundos no encontro das nuvens finais.',
+  resetGardenPanic:
+    'Limpa perseguição/saída, rearma gatilhos futuros e recoloca abelhas vivas no repouso ao retomar.',
+  startGarden:
+    'Encerra epílogo/perseguição, remove entradas da sala e inicia GardenPhase com recursos, física e áudio próprios; conserva a origem campanha/prévia.',
+  startEpilogue:
+    'Descarta a perseguição, limpa entrada e inicia o epílogo recuperável; o callback abre o jardim com a mesma origem campanha/prévia.',
+  renderChapterCard:
+    'Desenha a gravura e o título na área segura; registra avanço da leitura sem avançar a fase por trás.',
+  girlGaitDirection:
+    'Mantém o perfil lateral coerente entre pernas e tronco; o chamador espelha esquerda/direita, sem girar só as pernas ao mover em profundidade.',
+  sampleGirlLocomotion:
+    'Amostra apoio, elevação, joelho, tronco, cabeça, braços e vestido por distância; transportar reduz a oscilação.',
+  drawGirlLocomotion:
+    'Compõe repouso original e membros articulados com transição contínua; retorna false se faltarem fontes.',
+  girlLocomotionDistance:
+    'Converte animTime legado para distância na pintura, com calibração distinta para quarto e sala.',
+  renderGirlRun:
+    'Ancora a menina nos pés, aplica escala/espelhamento e compartilha a atuação entre explorações, sem mudar corpos físicos.',
+  applyGirlBodyTransform:
+    'Aplica translação do quadril, oscilação e rotação do tronco também às mãos e ao brinquedo transportado.',
+  drawGirlUpperBody:
+    'Compõe cabeça estabilizada, cabelo, braços em oposição e vestido com atraso; preserva uma única cabeça na mistura.',
+  dialogueControlsHeight:
+    'Reserva altura para os comandos de leitura e, quando permitido, para o botão separado de pular cena já vista.',
+  drawDialogueControls:
+    'Desenha avanço automático, gesto de adiantar e alvo separado de skip; devolve os limites do botão.',
+  advanceDialogue:
+    'Adianta uma fala pelo controlador da sequência sem executar salto, coleta ou ataque; conserva temporização autorada.',
+  titleSceneFrame:
+    'Calcula uma câmera comum para o quarto da tela inicial, com foco na menina no retrato e poltrona fixa no tapete.',
   floorIsVisible: 'Renderiza uma amostra do piso fora da tela e confere o sinal de madeira na GPU.',
-  prepareFloor: 'Valida o piso e tenta a mesma arte com filtro linear sem mipmaps quando necessário.',
-  prepareVisualResources: 'Envia todos os mapas à GPU e aguarda compilação dos materiais antes de liberar a corrida.',
+  prepareFloor:
+    'Valida o piso e tenta a mesma arte com filtro linear sem mipmaps quando necessário.',
+  prepareVisualResources:
+    'Envia todos os mapas à GPU e aguarda compilação dos materiais antes de liberar a corrida.',
 
-  renderArenaSpecialCloseup: 'Compõe um corte de anime com ambos os olhos, entrada/saída rápidas e energia; não avança a simulação.',
-  renderSpecialCloseup: 'Apresenta o close dramático usando a textura pré-carregada com as poses da menina.',
-  beginArenaSpecial: 'Consome o uso único e inicia a carga da espada na arena quando a ativação é válida.',
-  updateArenaSpecial: 'Avança a encenação com física/IA suspensas e aplica dano único na chegada do raio.',
+  renderArenaSpecialCloseup:
+    'Compõe um corte de anime com ambos os olhos, entrada/saída rápidas e energia; não avança a simulação.',
+  renderSpecialCloseup:
+    'Apresenta o close dramático usando a textura pré-carregada com as poses da menina.',
+  beginArenaSpecial:
+    'Consome o uso único e inicia a carga da espada na arena quando a ativação é válida.',
+  updateArenaSpecial:
+    'Avança a encenação com física/IA suspensas e aplica dano único na chegada do raio.',
   specialCameraFrame: 'Aproxima do rosto durante a carga e retorna ao panorama antes do corte.',
-  renderSpecialSwordAura: 'Envolve a lâmina existente em sete cores e partículas sem redesenhar o sprite.',
-  renderArenaSpecialBeam: 'Desenha a viagem do raio até o alvo e os anéis do impacto, sem alterar estado.',
+  renderSpecialSwordAura:
+    'Envolve a lâmina existente em sete cores e partículas sem redesenhar o sprite.',
+  renderArenaSpecialBeam:
+    'Desenha a viagem do raio até o alvo e os anéis do impacto, sem alterar estado.',
   renderArenaRoom: 'Compõe parede, madeira repetida e rodapé existentes, sem alterar colisões.',
   renderArenaStructure: 'Apoia o móvel na base visual do layout e reutiliza sua ilustração.',
-  recordCampaignDefeat: 'Conta uma derrota completa por tentativa e oferece EASY a cada terceira perda no NORMAL.',
-  clearCampaignDefeat: 'Libera a próxima tentativa e limpa a oferta pendente sem zerar a contagem da campanha.',
+  recordCampaignDefeat:
+    'Conta uma derrota completa por tentativa e oferece EASY a cada terceira perda no NORMAL.',
+  clearCampaignDefeat:
+    'Libera a próxima tentativa e limpa a oferta pendente sem zerar a contagem da campanha.',
   reportDefeat: 'Deduplica, salva e publica a derrota da fase ativa com a oferta de ajuda.',
-  continueOnEasy: 'Aplica EASY às instâncias atuais e retoma a seção/adversário/percurso com progresso preservado.',
+  continueOnEasy:
+    'Aplica EASY às instâncias atuais e retoma a seção/adversário/percurso com progresso preservado.',
   declineEasyOffer: 'Recusa a oferta sem alterar dificuldade, contagem ou progresso.',
   retryDefeat: 'Recupera a fase derrotada; a ajuda preserva o adversário ou percurso atual.',
 
-  floorTexture: 'Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada.',
-  getPhase3ScrollFrame: 'Calcula a rolagem visual do retorno pelo progresso horizontal do cenário, sem seguir salto ou pouso.',
-  startChaseCampaign: 'Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação.',
-  startChasePreview: 'Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha.',
-  stepChase: 'Avança o domínio em segundos: sequência, movimento, colisão, vidas, lançamentos e eventos.',
-  chasePacing: 'Deriva ritmo por progresso/dificuldade e fixa pares a cada segundo no final do NORMAL.',
+  floorTexture:
+    'Prepara o recorte de madeira em DataTexture RGBA 256×64, com nove mipmaps explícitos e orientação preservada.',
+  getPhase3ScrollFrame:
+    'Calcula a rolagem visual do retorno pelo progresso horizontal do cenário, sem seguir salto ou pouso.',
+  startChaseCampaign:
+    'Prepara a fuga da campanha sob fade, desliga entradas da sala e recupera falhas de preparação.',
+  startChasePreview:
+    'Inicia o acesso isolado de debug à perseguição, sem salvar essa fase na campanha.',
+  stepChase:
+    'Avança o domínio em segundos: sequência, movimento, colisão, vidas, lançamentos e eventos.',
+  chasePacing:
+    'Deriva ritmo por progresso/dificuldade e fixa pares a cada segundo no final do NORMAL.',
   chaseLives: 'Deriva as vidas restantes dos impactos e do limite da dificuldade.',
 
-  arenaDifficulty: 'Seleciona os perfis originais do NORMAL ou alcance ampliado e menor agressividade no EASY.',
-  chasePattern: 'Distribui brinquedos por progresso e dificuldade; no NORMAL usa até três objetos e pares finais com corredor amplo.',
-  getApproachJumpSpeed: 'Consulta o alcance fixo da aproximação por apoio e dificuldade, sem mirar pela posição do comando.',
-  getEscapeStats: 'Consulta impulso, corrida e efeitos da fuga; o alcance aéreo varia entre NORMAL e EASY.',
-  getPhase3Stats: 'Consulta atributos do retorno por nível e dificuldade; fromFloor distingue a entrada pelo chão.',
+  arenaDifficulty:
+    'Seleciona os perfis originais do NORMAL ou alcance ampliado e menor agressividade no EASY.',
+  chasePattern:
+    'Distribui brinquedos por progresso e dificuldade; no NORMAL usa até três objetos e pares finais com corredor amplo.',
+  getApproachJumpSpeed:
+    'Consulta o alcance fixo da aproximação por apoio e dificuldade, sem mirar pela posição do comando.',
+  getEscapeStats:
+    'Consulta impulso, corrida e efeitos da fuga; o alcance aéreo varia entre NORMAL e EASY.',
+  getPhase3Stats:
+    'Consulta atributos do retorno por nível e dificuldade; fromFloor distingue a entrada pelo chão.',
 
-  createToyRoomTutorialContext: 'Expõe oito campos atuais ao tutorial; setters somente para conclusão e modo.',
-  createToyRoomInputContext: 'Adapta entrada, Canvas e callbacks sem copiar os dados usados por HUD/combate.',
-  createToyRoomInteractionContext: 'Fornece referências atuais e efeitos específicos para as decisões de interação.',
-  createToyRoomPersistenceContext: 'Adapta campos serializados e retomada dos subsistemas, inclusive após substituição dos atores.',
-  createToyRoomStoryContext: 'Restringe a narrativa a mundo, atores, exploração, fluxo, controles, áudio e apresentação.',
-  createToyRoomWorldQueries: 'Cria consultas de piso/viewport com acessos explícitos às referências atuais.',
+  createToyRoomTutorialContext:
+    'Expõe oito campos atuais ao tutorial; setters somente para conclusão e modo.',
+  createToyRoomInputContext:
+    'Adapta entrada, Canvas e callbacks sem copiar os dados usados por HUD/combate.',
+  createToyRoomInteractionContext:
+    'Fornece referências atuais e efeitos específicos para as decisões de interação.',
+  createToyRoomPersistenceContext:
+    'Adapta campos serializados e retomada dos subsistemas, inclusive após substituição dos atores.',
+  createToyRoomStoryContext:
+    'Restringe a narrativa a mundo, atores, exploração, fluxo, controles, áudio e apresentação.',
+  createToyRoomWorldQueries:
+    'Cria consultas de piso/viewport com acessos explícitos às referências atuais.',
   createToyRoomSceneFrame: 'Monta dados e callbacks atuais para desenhar uma cena da sala.',
-  createToyRoomInitialEntities: 'Cria jogador, fada, móveis e brinquedos independentes por instância, preservando o catálogo.',
-  createToyRoomEnvironmentAssets: 'Resolve recortes ambientais existentes sem acessar regras ou estado da exploração.',
-  updateToyRoomMovement: 'Aplica prioridade das entradas, peso, orientação, passos e integração da exploração.',
-  resolveToyRoomCollisions: 'Limita a posição e resolve móveis na ordem original, conservando o desempate de penetrações.',
-  updateToyRoomCompanion: 'Atualiza guia, tutorial, voo e rastro da fada; devolve o brinquedo-guia atual.',
+  createToyRoomInitialEntities:
+    'Cria jogador, fada, móveis e brinquedos independentes por instância, preservando o catálogo.',
+  createToyRoomEnvironmentAssets:
+    'Resolve recortes ambientais existentes sem acessar regras ou estado da exploração.',
+  updateToyRoomMovement:
+    'Aplica prioridade das entradas, peso, orientação, passos e integração da exploração.',
+  resolveToyRoomCollisions:
+    'Limita a posição e resolve móveis na ordem original, conservando o desempate de penetrações.',
+  updateToyRoomCompanion:
+    'Atualiza guia, tutorial, voo e rastro da fada; devolve o brinquedo-guia atual.',
   updateToyRoomEffects: 'Avança coleções de partículas e animação do baú recebidas no quadro.',
-  updateToyRoomCamera: 'Calcula coordenadas da câmera da sala a partir do alvo narrativo explícito.',
+  updateToyRoomCamera:
+    'Calcula coordenadas da câmera da sala a partir do alvo narrativo explícito.',
   getToyRoomCameraFrame: 'Calcula zoom e enquadramento da sala com alvo/câmera/layout atuais.',
-  renderToyRoomScene: 'Compõe cenário, entidades por Y, efeitos, HUD e falas com os dados do quadro.',
-  renderToyRoomTutorial: 'Desenha mensagens e ponteiro da orientação sem receber tutorial nem sala.',
-  updateProximity: 'Atualiza disponibilidade de interação antes do movimento e devolve o baú atual.',
-  loadBattleManifest: 'Carrega o manifesto de remediação e substitui as sequências Hit pelos quadros nativos de dano.',
-  loadBattleImages: 'Preenche o cache de imagens da batalha, com erro explícito para recursos ausentes.',
-  renderToyCarry: 'Compõe pose, brinquedo e contatos visuais usando CARRY_PROFILES; sem pose/item devolve false.',
-  createRuntimeContext: 'Agrega referências existentes; não cria serviços nem executa lógica de jogo.',
+  renderToyRoomScene:
+    'Compõe cenário, entidades por Y, efeitos, HUD e falas com os dados do quadro.',
+  renderToyRoomTutorial:
+    'Desenha mensagens e ponteiro da orientação sem receber tutorial nem sala.',
+  updateProximity:
+    'Atualiza disponibilidade de interação antes do movimento e devolve o baú atual.',
+  loadBattleManifest:
+    'Carrega o manifesto de remediação e substitui as sequências Hit pelos quadros nativos de dano.',
+  loadBattleImages:
+    'Preenche o cache de imagens da batalha, com erro explícito para recursos ausentes.',
+  renderToyCarry:
+    'Compõe pose, brinquedo e contatos visuais usando CARRY_PROFILES; sem pose/item devolve false.',
+  createRuntimeContext:
+    'Agrega referências existentes; não cria serviços nem executa lógica de jogo.',
   createViewportController: 'Cria resize com Canvas, iluminação, host e callback de orientação.',
-  createCameraQaObserver: 'Cria observador opcional ativado por cameraQa; lê snapshot sem alterar câmera.',
-  renderDarkRoom: 'Compõe apresentação, camadas e interface; update de simulação permanece em game.js.',
+  createCameraQaObserver:
+    'Cria observador opcional ativado por cameraQa; lê snapshot sem alterar câmera.',
+  renderDarkRoom:
+    'Compõe apresentação, camadas e interface; update de simulação permanece em game.js.',
   updateStandbyNarrative: 'Mantém pose de espera, fada, partículas e foco narrativo de standby.',
-  updateTransicaoStandbyNarrative: 'Avança saída de standby, postura, alfa e retorno do enquadramento.',
-  updateCasteloNarrative: 'Sequencia encontro no castelo, diálogos e liberação da fuga.',
-  updateReviravoltaNarrative: 'Avança queda/checagem e diálogos da porta falsa; coordena atores e zoom.',
-  updateTutorialRetornoNarrative: 'Demonstra arco da fada e devolve controle no retorno.',
+  updateStandbyTransitionNarrative:
+    'Avança saída de standby, postura, alfa e retorno do enquadramento.',
+  updateCastleNarrative: 'Sequencia encontro no castelo, diálogos e liberação da fuga.',
+  updatePlotTwistNarrative:
+    'Avança queda/checagem e diálogos da porta falsa; coordena atores e zoom.',
+  updateReturnTutorialNarrative: 'Demonstra arco da fada e devolve controle no retorno.',
   updatePortalNarrative: 'Avança aproximação/íris do portal e dispara introdução da Toy Room.',
-  beginToyRoomIntroduction: 'Captura saída e cria sala de apresentação sem input antes da fase ativa.',
+  beginToyRoomIntroduction:
+    'Captura saída e cria sala de apresentação sem input antes da fase ativa.',
   startTutorial: 'Inicia orientação guiada da Toy Room se ainda não concluída.',
   nearest: 'Seleciona brinquedo elegível mais próximo do jogador para orientar coleta.',
   guidePosition: 'Retorna posição visual da fada acima do brinquedo-alvo do tutorial.',
@@ -261,19 +397,23 @@ const details = {
   applyTransform: 'Compõe foco/zoom e diferença entre pose original e visual no contexto.',
   frame: 'Calcula pose visual estável sem escrever na simulação.',
   mobileFrame: 'Interpola entrada do enquadramento móvel.',
-  getDarkRoomMobileFrame: 'Calcula composição fixa por viewport/safe area, com envelope autorado de salto e rodapé reservado ao toque; não consulta atores.',
-  renderDarkRoomTouchHint: 'Desenha indicação de pulo no rodapé móvel sem restringir a área de entrada nem duplicar o tutorial inicial.',
+  getDarkRoomMobileFrame:
+    'Calcula composição fixa por viewport/safe area, com envelope autorado de salto e rodapé reservado ao toque; não consulta atores.',
+  renderDarkRoomTouchHint:
+    'Desenha indicação de pulo no rodapé móvel sem restringir a área de entrada nem duplicar o tutorial inicial.',
   getMobileZoomFrame: 'Retorna escala e translações de apresentação a partir dos limites/alvo.',
   androidFrameOffset: 'Calcula elevação visual Android com reservas e proteção do topo.',
   getEscapeGuideTarget: 'Seleciona centro de chegada do próximo apoio ou porta.',
   updateEscapeFairyGuide: 'Atualiza posição/velocidade da guia com amortecimento crítico.',
   captureState: 'Seleciona estado serializável da campanha.',
   restoreState: 'Restaura valores preservando referências de objetos/arrays existentes.',
-  createCampaignProgress: 'Cria leitura, gravação e limpeza do progresso local com alternativa em memória.',
+  createCampaignProgress:
+    'Cria leitura, gravação e limpeza do progresso local com alternativa em memória.',
   loadManifest: 'Busca manifesto e atualiza status; rejeita falha.',
   preload: 'Pré-carrega entradas de imagens do manifesto.',
   getRegion: 'Valida limites e cacheia recorte do atlas.',
-  isReady: 'Consulta uma chave ou prontidão do manifesto; sem chave não certifica todas as imagens.',
+  isReady:
+    'Consulta uma chave ou prontidão do manifesto; sem chave não certifica todas as imagens.',
   resolveAnimationState: 'Escolhe animação oficial conforme ação e flags do estado.',
   renderPose: 'Desenha recorte ancorado no centro/pés, com escala visual.',
   renderCutsceneDialogue: 'Compõe falas, retratos, prompts e áreas seguras.',
@@ -283,7 +423,8 @@ const details = {
   renderPortalWipe: 'Desenha transição do portal usando matriz de apresentação quando fornecida.',
   applyArtFinish: 'Aplica dessaturação em coordenadas de tela.',
   validateAllRegions: 'Confere recortes do atlas contra imagens carregadas.',
-  triggerAction: 'Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual.',
+  triggerAction:
+    'Processa interação contextual da sala: pegar ou entregar ao baú; prioriza espada/combate e não oferece soltura manual.',
   resolveCollisions: 'Resolve colisões da sala com móveis.',
   getCanvasCoordinates: 'Converte evento de ponteiro para coordenadas internas da sala.',
   read: 'Lê e valida save da campanha; pode usar memória da sessão.',
@@ -294,14 +435,20 @@ Object.assign(details, {
   nightmareLights: 'Converte os olhos medidos na pintura nas duas origens físicas de luz.',
   nightmareRayEnd: 'Encontra a primeira interseção de um raio com as silhuetas opacas das pedras.',
   nightmareBeam: 'Monta o polígono de luz visível incluindo tangentes e sombras das pedras.',
-  nightmareVisibility: 'Consulta silhueta/oclusão e um núcleo lógico menor somente na captura EASY, mantendo a luz.',
+  nightmareVisibility:
+    'Consulta silhueta/oclusão e um núcleo lógico menor somente na captura EASY, mantendo a luz.',
   beginDreamNightmare: 'Cria o domínio do trecho final na queda ou na retomada da primeira pedra.',
-  nightmareReading: 'Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial.',
-  advanceNightmareDialogue: 'Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro.',
+  nightmareReading:
+    'Identifica quadros adiáveis sem permitir saltar a captura final ou o susto inicial.',
+  advanceNightmareDialogue:
+    'Adianta uma leitura da furtividade ou do despertar, consumindo apenas um quadro.',
   validateNightmare: 'Valida relógio, corpo, leitura e coerência do grito/despertar no save.',
-  stepDreamNightmare: 'Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos.',
-  selectTrack: 'Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical.',
-  scream: 'Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes.',
+  stepDreamNightmare:
+    'Integra caminhada, luz/detecção, golpe fatal, captura autorada e despertar em subpassos.',
+  selectTrack:
+    'Seleciona a faixa do sonho ou do piquenique pelo estágio antes de restaurar a posição musical.',
+  scream:
+    'Agenda vocalização sintetizada de susto com formantes, volume do host e descarte das vozes.',
   dreamGlideRoute: 'Interpola alturas para posicionar obstáculos; não dirige a personagem.',
   dreamGliderPose: 'Compartilha âncora, escala e inclinação da pintura com a colisão.',
   dreamGliderContact: 'Compara alfa opaco do planador e dos galhos próximos, ignorando névoa.',
@@ -310,53 +457,82 @@ Object.assign(details, {
   drawDreamGlideThorns: 'Desenha galhos espinhosos de cima/baixo sem indicadores de hitbox.',
   drawDreamLaunchLeaf: 'Apresenta a única folha ainda presa à ponta do galho.',
   drawDreamGlider: 'Desenha menina e folha como pintura íntegra com mãos conectadas.',
-  dreamMobileWebInput: 'Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos.',
-  dreamClimbContact: 'Localiza o contato visual da mão na haste ou no contorno pintado do corpo do inseto, sem usar asas móveis.',
-  dreamClimbPose: 'Escolhe quatro poses pela distância escalada e duas para chegar ao topo, com mão ancorada e inclinação do corpo.',
-  drawDreamClimb: 'Desenha Yuna pela âncora da mão e conserva a pintura inteira, sem mudar a física ou a pose no lombo.',
-  dreamSpiderContact: 'Detecta contato entre o corpo da menina e a silhueta da aranha, incluindo a abertura das patas.',
-  dreamWebCanGrab: 'Permite agarrar somente a seda existente, com espaço para os pés acima da aranha.',
-  drawDreamBranch: 'Pinta tronco ancorado e galho ao vento, registrado na superfície física sem linhas auxiliares.',
-  drawDreamWeb: 'Desenha seda até a aranha móvel e sua pintura, compartilhando a posição da simulação.',
-  prepareDreamIllustrations: 'Prepara em cache folhas e galhos pintados nas larguras existentes, registrados nas superfícies físicas.',
-  drawDreamLeaf: 'Desenha folha e caule ilustrados; prolonga a base abaixo do viewport sem alterar o apoio.',
-  dreamBeeWingPose: 'Calcula abertura e rotação contínuas das asas da abelhinha do bem pelo relógio do sonho.',
+  dreamMobileWebInput:
+    'Somente em celular e teias: sobe até a altura de preparo com velocidade normal, preservando comandos manuais e entrada original nos outros casos.',
+  dreamClimbContact:
+    'Localiza o contato visual da mão na haste ou no contorno pintado do corpo do inseto, sem usar asas móveis.',
+  dreamClimbPose:
+    'Escolhe quatro poses pela distância escalada e duas para chegar ao topo, com mão ancorada e inclinação do corpo.',
+  drawDreamClimb:
+    'Desenha Yuna pela âncora da mão e conserva a pintura inteira, sem mudar a física ou a pose no lombo.',
+  dreamSpiderContact:
+    'Detecta contato entre o corpo da menina e a silhueta da aranha, incluindo a abertura das patas.',
+  dreamWebCanGrab:
+    'Permite agarrar somente a seda existente, com espaço para os pés acima da aranha.',
+  drawDreamBranch:
+    'Pinta tronco ancorado e galho ao vento, registrado na superfície física sem linhas auxiliares.',
+  drawDreamWeb:
+    'Desenha seda até a aranha móvel e sua pintura, compartilhando a posição da simulação.',
+  prepareDreamIllustrations:
+    'Prepara em cache folhas e galhos pintados nas larguras existentes, registrados nas superfícies físicas.',
+  drawDreamLeaf:
+    'Desenha folha e caule ilustrados; prolonga a base abaixo do viewport sem alterar o apoio.',
+  dreamBeeWingPose:
+    'Calcula abertura e rotação contínuas das asas da abelhinha do bem pelo relógio do sonho.',
   drawDreamBee: 'Pinta o corpo íntegro com cotonete e articula as asas como camada separada.',
-  prepareDreamBeetle: 'Recorta e mascara em cache cabeça e patas da pintura original, conservando o casco de apoio.',
-  dreamBeetlePose: 'Calcula articulações contínuas de asas, patas e cabeça conforme o tempo e a energia do voo.',
-  drawDreamBeetle: 'Desenha asas membranosas e membros articulados em torno do dorso rígido usado pela física.',
-  createDreamState: 'Cria domínio5 do sonho: travessia aérea preservada e estado separado para furtividade, captura e despertar.',
-  restoreDreamState: 'Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime.',
+  prepareDreamBeetle:
+    'Recorta e mascara em cache cabeça e patas da pintura original, conservando o casco de apoio.',
+  dreamBeetlePose:
+    'Calcula articulações contínuas de asas, patas e cabeça conforme o tempo e a energia do voo.',
+  drawDreamBeetle:
+    'Desenha asas membranosas e membros articulados em torno do dorso rígido usado pela física.',
+  createDreamState:
+    'Cria domínio5 do sonho: travessia aérea preservada e estado separado para furtividade, captura e despertar.',
+  restoreDreamState:
+    'Valida estágio, números e IDs do sonho; reconstrói dados e conserva o bloqueio breve de reagarre, sem recursos de runtime.',
   advanceDreamDialogue: 'Adianta uma fala do sonho e consome o gesto antes de liberar movimento.',
-  retryDream: 'Retoma uma folha e seus transportes; no pesadelo, retorna à primeira pedra sem repetir o voo.',
-  stepDream: 'Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira.',
-  dreamNearby: 'Consulta células espaciais para limitar física e pintura à vizinhança, sem depender do viewport.',
-  dreamObjectFrame: 'Calcula o deslocamento determinístico de hastes e insetos a partir do relógio salvo.',
-  dreamGrassX: 'Calcula a curva compartilhada da haste; a ponta recebe vento e o caule abaixo da lâmina mantém a base fixa.',
+  retryDream:
+    'Retoma uma folha e seus transportes; no pesadelo, retorna à primeira pedra sem repetir o voo.',
+  stepDream:
+    'Avança subpassos1/120s: vento, aderência, escalada, salto, transporte, superfície medida, queda/recuperação e clareira.',
+  dreamNearby:
+    'Consulta células espaciais para limitar física e pintura à vizinhança, sem depender do viewport.',
+  dreamObjectFrame:
+    'Calcula o deslocamento determinístico de hastes e insetos a partir do relógio salvo.',
+  dreamGrassX:
+    'Calcula a curva compartilhada da haste; a ponta recebe vento e o caule abaixo da lâmina mantém a base fixa.',
   stem: 'Desenha a continuação natural do caule abaixo do viewport, conectada à lâmina e sem régua auxiliar.',
-  dreamSurface: 'Consulta relevo da folha ou perfil alfa nativo do inseto para apoiar os pés sem régua auxiliar.',
+  dreamSurface:
+    'Consulta relevo da folha ou perfil alfa nativo do inseto para apoiar os pés sem régua auxiliar.',
   dreamControls: 'Compartilha D-pad amplo com oito direções e pulo em todos os estágios mobile.',
-  startDream: 'Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada.'
+  startDream:
+    'Descarta modos anteriores, entradas e áudio; abre o sonho2D com a origem campanha/prévia preservada.',
 });
 const scopedDetails = {
   'GameSoundEffects.js': {
     constructor: 'Cria o conjunto limitado de vozes de efeitos gravados.',
     play: 'Reproduz uma amostra já decodificada com ganho, taxa, canal e panorâmica.',
     update: 'Atualiza ganho, panorâmica e taxa de uma voz ativa cancelando rampas anteriores.',
-    stop: 'Encerra canais imediatamente ou com fade e libera suas conexões.'
+    stop: 'Encerra canais imediatamente ou com fade e libera suas conexões.',
   },
   'GardenAudio.js': {
-    sample: 'Dispara pulo ou lama com volume mestre, pausa, mudo e deduplicação curta da vocalização.',
-    updateWings: 'Mantém até três emissores próximos de asas e atualiza o ganho das amostras ativas.'
+    sample:
+      'Dispara pulo ou lama com volume mestre, pausa, mudo e deduplicação curta da vocalização.',
+    updateWings:
+      'Mantém até três emissores próximos de asas e atualiza o ganho das amostras ativas.',
   },
-  'DreamNightmareCinematic.js': {
-    nightmareCinematicShot: 'Seleciona caminhada, reação, close da criatura e captura por relógio narrativo.',
-    renderNightmareCinematic: 'Compõe cenário e atores em planos próprios, sem câmera nem mapa de gameplay.'
+  'dreamNightmareCinematic.js': {
+    nightmareCinematicShot:
+      'Seleciona caminhada, reação, close da criatura e captura por relógio narrativo.',
+    renderNightmareCinematic:
+      'Compõe cenário e atores em planos próprios, sem câmera nem mapa de gameplay.',
   },
   'DreamNightmareRenderer.js': {
     swampLayers: 'Distribui troncos e tocos ilustrados em camadas que envolvem a criatura.',
-    prepareTerrain: 'Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor.',
-    mudClip: 'Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal.'
+    prepareTerrain:
+      'Registra a pintura dos barrancos no perfil físico e aplica ambiente comum ao piso, sem tarja de cor.',
+    mudClip:
+      'Recorta o corpo pela superfície curva da lama, sem depender do alfa da pintura frontal.',
   },
   'DreamNightmareLighting.js': {
     constructor: 'Cria o buffer transitório reutilizado da iluminação, sem estado persistente.',
@@ -366,72 +542,100 @@ const scopedDetails = {
     receiver: 'Aplica luz sobre a máscara dos abrigos, conservando a textura ilustrada.',
     ground: 'Ilumina terra e relevos com manchas difusas orientadas pela superfície.',
     water: 'Projeta reflexos achatados e ondulações somente sobre a superfície líquida.',
-    destroy: 'Libera o buffer de iluminação ao descartar a fase.'
+    destroy: 'Libera o buffer de iluminação ao descartar a fase.',
   },
   'ToyRoomEpilogue.js': {
-    constructor: 'Recebe assets, áudio, callback, origem e save opcional; valida versão/índice/relógios e inicia a música da sala.',
+    constructor:
+      'Recebe assets, áudio, callback, origem e save opcional; valida versão/índice/relógios e inicia a música da sala.',
     beat: 'Consulta o quadro corrente de TOY_ROOM_EPILOGUE sem avançar a sequência.',
-    snapshot: 'Captura versão 1, índice, idade e tempo; a inclusão no save depende da origem no host.',
-    advanceDialogue: 'Avança somente fala ou gravura; recusa o plano silencioso de facepalm e cenas encerradas.',
+    snapshot:
+      'Captura versão 1, índice, idade e tempo; a inclusão no save depende da origem no host.',
+    advanceDialogue:
+      'Avança somente fala ou gravura; recusa o plano silencioso de facepalm e cenas encerradas.',
     next: 'Troca o quadro e zera a idade; no último, encerra e chama onComplete uma vez.',
-    update: 'Converte dt legado para segundos, avança relógios/fade musical e conclui quadros no tempo autorado.',
-    render: 'Compõe quarto arrumado, poses e fala na área segura; aproxima Nanda no facepalm e apresenta a gravura do capítulo 2.'
+    update:
+      'Converte dt legado para segundos, avança relógios/fade musical e conclui quadros no tempo autorado.',
+    render:
+      'Compõe quarto arrumado, poses e fala na área segura; aproxima Nanda no facepalm e apresenta a gravura do capítulo 2.',
   },
   'GardenPhase.js': {
-    start: 'Restaura domínio opcional, recupera marcas de leitura, carrega recursos e instala entradas/listeners; publica erro de carga sem liberar movimento.',
-    reading: 'Consulta abertura ou encerramento ainda em leitura e o alvo de skip já visto; devolve null durante gameplay e sono concluído.',
-    snapshot: 'Captura envelope versão 1 com cópia serializável do domínio; não inclui imagens, áudio ou listeners.',
-    destroy: 'Descarta avanço de diálogo, eventos de foco/visibilidade, controles, áudio e renderer de forma idempotente.'
+    start:
+      'Restaura domínio opcional, recupera marcas de leitura, carrega recursos e instala entradas/listeners; publica erro de carga sem liberar movimento.',
+    reading:
+      'Consulta abertura ou encerramento ainda em leitura e o alvo de skip já visto; devolve null durante gameplay e sono concluído.',
+    snapshot:
+      'Captura envelope versão 1 com cópia serializável do domínio; não inclui imagens, áudio ou listeners.',
+    destroy:
+      'Descarta avanço de diálogo, eventos de foco/visibilidade, controles, áudio e renderer de forma idempotente.',
   },
   'ToyRoomPersistence.js': {
-    snapshot: 'Copia exploração, religa carregado por ID e inclui arena/perseguição/jardim/epílogo conforme origem e includeArena.',
-    restore: 'Reaplica exploração e atores, limpa entrada e prioriza jardim, epílogo, perseguição, arena, batalha e tutorial; preserveArena evita reconstrução recursiva.'
+    snapshot:
+      'Copia exploração, religa carregado por ID e inclui arena/perseguição/jardim/epílogo conforme origem e includeArena.',
+    restore:
+      'Reaplica exploração e atores, limpa entrada e prioriza jardim, epílogo, perseguição, arena, batalha e tutorial; preserveArena evita reconstrução recursiva.',
   },
   'ToyRoomPhase.js': {
-    updateActiveMode: 'Seleciona epílogo, jardim, perseguição ou sala; após 150 ticks de COMPLETE abre o epílogo preservando campaign.',
+    updateActiveMode:
+      'Seleciona epílogo, jardim, perseguição ou sala; após 150 ticks de COMPLETE abre o epílogo preservando campaign.',
     triggerAction: 'Encaminha ação à exploração somente fora de epílogo, jardim e perseguição.',
-    destroy: 'Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo.'
+    destroy:
+      'Descarta os modos posteriores e os recursos/listeners próprios da sala; encerra o epílogo ativo.',
   },
   'TitleScreen.js': {
-    refresh: 'Atualiza disponibilidade de Carregar jogo a partir do save efetivo sem mudar a dificuldade escolhida.',
+    refresh:
+      'Atualiza disponibilidade de Carregar jogo a partir do save efetivo sem mudar a dificuldade escolhida.',
     setEasy: 'Configura somente a próxima aventura; carregar mantém a dificuldade do save.',
     requestNew: 'Abre confirmação se há progresso; cancelar preserva o save.',
     navigate: 'Move foco com setas entre opções habilitadas e impede propagação ao jogo.',
-    activateFocused: 'Aciona o botão focado pelo gamepad sem atravessar os diálogos do menu.'
-  }
+    activateFocused: 'Aciona o botão focado pelo gamepad sem atravessar os diálogos do menu.',
+  },
 };
 
 function describe(name, file) {
   const scoped = scopedDetails[path.basename(file)];
   if (scoped && Object.hasOwn(scoped, name)) return scoped[name];
   if (Object.hasOwn(details, name)) return details[name];
-  if (name === 'constructor') return 'Inicializa dependências e estado da instância; consulte a seção do módulo.';
-  if (name === 'destroy') return 'Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.';
-  if (name === 'snapshot') return 'Produz captura recuperável do estado específico deste componente.';
-  if (name === 'restore') return 'Reaplica a captura específica; confira referências e dados transitórios.';
-  if (name === 'update' || name.startsWith('update')) return 'Avança o estado do subsistema; não é uma operação somente de desenho.';
-  if (name === 'render' || name.startsWith('render') || name.startsWith('draw')) return 'Compõe desenho da área correspondente; consulte parâmetros e referencial no código.';
+  if (name === 'constructor')
+    return 'Inicializa dependências e estado da instância; consulte a seção do módulo.';
+  if (name === 'destroy')
+    return 'Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.';
+  if (name === 'snapshot')
+    return 'Produz captura recuperável do estado específico deste componente.';
+  if (name === 'restore')
+    return 'Reaplica a captura específica; confira referências e dados transitórios.';
+  if (name === 'update' || name.startsWith('update'))
+    return 'Avança o estado do subsistema; não é uma operação somente de desenho.';
+  if (name === 'render' || name.startsWith('render') || name.startsWith('draw'))
+    return 'Compõe desenho da área correspondente; consulte parâmetros e referencial no código.';
   if (name.startsWith('spawn')) return 'Cria partículas/efeitos no buffer correspondente.';
   if (name.startsWith('play')) return 'Aciona o som/cue correspondente ou sua delegação de áudio.';
-  if (name.startsWith('handle') || name.startsWith('onPointer')) return 'Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.';
-  if (name.startsWith('start') || name.startsWith('finish') || name.startsWith('advance') || name.startsWith('confirm')) return 'Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio.';
-  if (name.startsWith('get') || name.startsWith('is') || name.startsWith('has')) return 'Consulta/calcula valor específico; forma exata definida pela implementação.';
-  if (name.startsWith('set') || name.startsWith('reset') || name.startsWith('clear')) return 'Configura/reinicializa valores do componente; revise o escopo da mutação.';
-  if (name.startsWith('create')) return 'Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências.';
+  if (name.startsWith('handle') || name.startsWith('onPointer'))
+    return 'Trata evento ou entrada; revise bloqueios e ciclo de vida de listeners.';
+  if (
+    name.startsWith('start') ||
+    name.startsWith('finish') ||
+    name.startsWith('advance') ||
+    name.startsWith('confirm')
+  )
+    return 'Executa a etapa correspondente do fluxo; revise seus efeitos de estado e áudio.';
+  if (name.startsWith('get') || name.startsWith('is') || name.startsWith('has'))
+    return 'Consulta/calcula valor específico; forma exata definida pela implementação.';
+  if (name.startsWith('set') || name.startsWith('reset') || name.startsWith('clear'))
+    return 'Configura/reinicializa valores do componente; revise o escopo da mutação.';
+  if (name.startsWith('create'))
+    return 'Fábrica/estrutura inicial; consulte o objeto retornado e suas dependências.';
   return 'Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado.';
 }
-let document = '# Referência de métodos e funções\n\nInventário de `src/js`, gerado a partir da cópia local. Consulte [arquitetura e entidades](ARQUITETURA.md), o [manual](MANUAL-DESENVOLVIMENTO.md) e os [comandos](COMANDOS.md).\n\nAs linhas referem-se ao snapshot local e mudam após edições. O inventário inclui funções, métodos, acessores e funções atribuídas com parâmetros entre parênteses, além dos contratos exportados/reexports. Não é um parser completo: callbacks anônimos e algumas lambdas de parâmetro simples não são declarações separadas aqui; funções exportadas continuam enumeradas no módulo. APIs de fábricas e proprietários de estado estão documentados na arquitetura e no manual. A presença de uma função interna não a torna pública.\n\nRegenerar na raiz: `node scripts/generate-method-reference.js`. Revise também as descrições e o manual após mudar contratos.\n\n';
+let document =
+  '# Referência de métodos e funções\n\nInventário de `src/js`, gerado a partir da cópia local. Consulte [arquitetura e entidades](ARQUITETURA.md), o [manual](MANUAL-DESENVOLVIMENTO.md) e os [comandos](COMANDOS.md).\n\nAs linhas referem-se ao snapshot local e mudam após edições. O inventário inclui funções, métodos, acessores e funções atribuídas com parâmetros entre parênteses, além dos contratos exportados/reexports. Não é um parser completo: callbacks anônimos e algumas lambdas de parâmetro simples não são declarações separadas aqui; funções exportadas continuam enumeradas no módulo. APIs de fábricas e proprietários de estado estão documentados na arquitetura e no manual. A presença de uma função interna não a torna pública.\n\nRegenerar na raiz: `node scripts/generate-method-reference.js`. Revise também as descrições e o manual após mudar contratos.\n\n';
 let total = 0,
   modules = 0;
 for (const file of await files(root)) {
   const text = await fs.readFile(file, 'utf8'),
-    relative = path.relative(process.cwd(), file)
-    .split(path.sep)
-    .join('/');
+    relative = path.relative(process.cwd(), file).split(path.sep).join('/');
   const declarations = [];
   let offset = 0;
-  for (const [index, line] of text.split('\n')
-    .entries()) {
+  for (const [index, line] of text.split('\n').entries()) {
     let match = line.match(/^\s*(?:export\s+)?(?:async\s+)?function\s+([\w$]+)\s*\(/),
       kind = 'Função';
     if (!match) {
@@ -454,37 +658,54 @@ for (const file of await files(root)) {
       const start = offset + line.indexOf('(', match.index),
         end = parameterEnd(text, start);
       if (end >= 0) {
-        const tail = text.slice(end + 1)
-          .trimStart();
-        if (['Função', 'Método declarado', 'Acessor'].includes(kind) ? tail.startsWith('{') : tail.startsWith('=>')) {
-          const args = text.slice(start + 1, end)
+        const tail = text.slice(end + 1).trimStart();
+        if (
+          ['Função', 'Método declarado', 'Acessor'].includes(kind)
+            ? tail.startsWith('{')
+            : tail.startsWith('=>')
+        ) {
+          const args = text
+            .slice(start + 1, end)
             .replace(/\s+/g, ' ')
             .trim();
           declarations.push({
             name: match[1],
             signature: `${match[1]}(${args})`,
             kind,
-            line: index + 1
+            line: index + 1,
           });
         }
       }
     }
     offset += line.length + 1;
   }
-  const exports = [...text.matchAll(/^export\s+(?:async\s+)?(?:const|let|class|function)\s+([\w$]+)/gm)].map(m => m[1]);
+  const exports = [
+    ...text.matchAll(/^export\s+(?:async\s+)?(?:const|let|class|function)\s+([\w$]+)/gm),
+  ].map((m) => m[1]);
   for (const match of text.matchAll(/export\s*\{([^}]+)\}\s*from/g))
     for (const item of match[1].split(',')) {
-      const name = item.trim()
+      const name = item
+        .trim()
         .split(/\s+as\s+/)
         .at(-1);
       if (name) exports.push(name);
     }
-  document += `## ${relative}\n\n[Implementação](../${relative}).` + (exports.length ? ' Contratos exportados/reexportados: ' + [...new Set(exports)].map(n => '`' + n + '`')
-    .join(', ') + '.' : '') + '\n\n';
-  if (!declarations.length) document += 'Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.\n\n';
+  document +=
+    `## ${relative}\n\n[Implementação](../${relative}).` +
+    (exports.length
+      ? ' Contratos exportados/reexportados: ' +
+        [...new Set(exports)].map((n) => '`' + n + '`').join(', ') +
+        '.'
+      : '') +
+    '\n\n';
+  if (!declarations.length)
+    document +=
+      'Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funções descritas no ponto de origem.\n\n';
   else {
-    document += '| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |\n| --- | --- | ---: | --- |\n';
-    for (const d of declarations) document += `| \`${d.signature.replaceAll('|','\\|')}\` | ${d.kind} | [${d.line}](../${relative}#L${d.line}) | ${describe(d.name,relative)} |\n`;
+    document +=
+      '| Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |\n| --- | --- | ---: | --- |\n';
+    for (const d of declarations)
+      document += `| \`${d.signature.replaceAll('|', '\\|')}\` | ${d.kind} | [${d.line}](../${relative}#L${d.line}) | ${describe(d.name, relative)} |\n`;
     document += '\n';
   }
   total += declarations.length;

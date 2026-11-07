@@ -1,24 +1,21 @@
-import {
-  NIGHTMARE,
-  nightmareBeam,
-  nightmareRayEnd
-} from './DreamNightmare.js';
-import {
-  DREAM_MUD_LAKES,
-  mudWaterline
-} from './DreamMud.js';
-import {
-  stealthGround
-} from './DreamStealthLevel.js';
+import { NIGHTMARE, nightmareBeam, nightmareRayEnd } from './dreamNightmare.js';
+import { DREAM_MUD_LAKES, mudWaterline } from './dreamMud.js';
+import { stealthGround } from './dreamStealthLevel.js';
 
-const surfaceHeight = x => {
-  const lake = DREAM_MUD_LAKES.find(l => x >= l.from && x <= l.to);
+const surfaceHeight = (x) => {
+  const lake = DREAM_MUD_LAKES.find((l) => x >= l.from && x <= l.to);
   return lake ? mudWaterline(lake, x) : stealthGround(x);
 };
 // Limite conservador para não marchar raios no espaço acima de qualquer superfície.
-const surfaceMinimum = Math.min(...Array.from({
-  length: Math.ceil(NIGHTMARE.width / 2) + 1
-}, (_, i) => surfaceHeight(i * 2))) - 16;
+const surfaceMinimum =
+  Math.min(
+    ...Array.from(
+      {
+        length: Math.ceil(NIGHTMARE.width / 2) + 1,
+      },
+      (_, i) => surfaceHeight(i * 2),
+    ),
+  ) - 16;
 
 /** Luz em camadas: volume no ar, penumbra e resposta difusa/especular dos materiais. */
 export class DreamNightmareLighting {
@@ -35,7 +32,11 @@ export class DreamNightmareLighting {
       dx = Math.cos(angle),
       dy = Math.sin(angle);
     if (dy <= 0) return end;
-    for (let d = Math.max(8, Math.floor((surfaceMinimum - light.y) / dy / 8) * 8); d <= end.distance + 8; d += 8) {
+    for (
+      let d = Math.max(8, Math.floor((surfaceMinimum - light.y) / dy / 8) * 8);
+      d <= end.distance + 8;
+      d += 8
+    ) {
       const far = Math.min(d, end.distance);
       if (light.y + dy * far < surfaceHeight(light.x + dx * far)) continue;
       let lo = Math.max(0, far - 8),
@@ -48,7 +49,7 @@ export class DreamNightmareLighting {
       return {
         x: light.x + dx * hi,
         y: light.y + dy * hi,
-        distance: hi
+        distance: hi,
       };
     }
     return end;
@@ -64,7 +65,14 @@ export class DreamNightmareLighting {
     const c = this.ctx;
     c.setTransform(1, 0, 0, 1, 0, 0);
     c.clearRect(0, 0, w, h);
-    c.setTransform(frame.scale / 2, 0, 0, frame.scale / 2, -frame.left * frame.scale / 2, frame.top / 2);
+    c.setTransform(
+      frame.scale / 2,
+      0,
+      0,
+      frame.scale / 2,
+      (-frame.left * frame.scale) / 2,
+      frame.top / 2,
+    );
     return c;
   }
   /** Cones em camadas com emissão extensa: bordas suaves e sombra de contato preservada. */
@@ -75,27 +83,36 @@ export class DreamNightmareLighting {
       for (let source = -1; source <= 1; source++) {
         const emitter = {
             ...light,
-            x: light.x + source * 5
+            x: light.x + source * 5,
           },
           samples = nightmareBeam(emitter)
-          .slice(1)
-          .map(p => {
-            const angle = Math.atan2(p.y - emitter.y, p.x - emitter.x);
-            return {
-              angle,
-              point: this.surfaceEnd(emitter, angle)
-            };
-          });
+            .slice(1)
+            .map((p) => {
+              const angle = Math.atan2(p.y - emitter.y, p.x - emitter.x);
+              return {
+                angle,
+                point: this.surfaceEnd(emitter, angle),
+              };
+            });
         for (let layer = 1; layer <= 12; layer++) {
-          const half = light.half * (.18 + .82 * layer / 12),
+          const half = light.half * (0.18 + (0.82 * layer) / 12),
             from = light.angle - half,
             to = light.angle + half,
-            points = [this.surfaceEnd(emitter, from), ...samples.filter(p => p.angle > from && p.angle < to)
-              .map(p => p.point), this.surfaceEnd(emitter, to)
+            points = [
+              this.surfaceEnd(emitter, from),
+              ...samples.filter((p) => p.angle > from && p.angle < to).map((p) => p.point),
+              this.surfaceEnd(emitter, to),
             ];
-          const g = c.createRadialGradient(emitter.x, emitter.y, 8, emitter.x, emitter.y, NIGHTMARE.range);
+          const g = c.createRadialGradient(
+            emitter.x,
+            emitter.y,
+            8,
+            emitter.x,
+            emitter.y,
+            NIGHTMARE.range,
+          );
           g.addColorStop(0, 'rgba(255,225,169,.018)');
-          g.addColorStop(.35, 'rgba(235,218,179,.009)');
+          g.addColorStop(0.35, 'rgba(235,218,179,.009)');
           g.addColorStop(1, 'rgba(212,220,202,0)');
           c.fillStyle = g;
           c.beginPath();
@@ -109,7 +126,7 @@ export class DreamNightmareLighting {
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
     ctx.globalCompositeOperation = 'screen';
-    ctx.filter = `blur(${Math.max(.6,frame.scale*2)}px)`;
+    ctx.filter = `blur(${Math.max(0.6, frame.scale * 2)}px)`;
     ctx.drawImage(this.buffer, 0, 0, canvas.width, canvas.height);
     ctx.restore();
   }
@@ -129,8 +146,7 @@ export class DreamNightmareLighting {
     c.fillStyle = g;
     c.beginPath();
     c.moveTo(light.x, light.y);
-    for (const p of nightmareBeam(light)
-        .slice(1)) {
+    for (const p of nightmareBeam(light).slice(1)) {
       const a = Math.atan2(p.y - light.y, p.x - light.x);
       c.lineTo(p.x + Math.cos(a) * 45, p.y + Math.sin(a) * 45);
     }
@@ -140,12 +156,17 @@ export class DreamNightmareLighting {
     const edge = light.half / (Math.PI * 2),
       angular = c.createConicGradient(light.angle - Math.PI, light.x, light.y);
     angular.addColorStop(0, 'rgba(255,226,162,0)');
-    angular.addColorStop(.5 - edge, 'rgba(255,226,162,0)');
-    angular.addColorStop(.5, 'rgba(255,226,162,.9)');
-    angular.addColorStop(.5 + edge, 'rgba(255,226,162,0)');
+    angular.addColorStop(0.5 - edge, 'rgba(255,226,162,0)');
+    angular.addColorStop(0.5, 'rgba(255,226,162,.9)');
+    angular.addColorStop(0.5 + edge, 'rgba(255,226,162,0)');
     angular.addColorStop(1, 'rgba(255,226,162,0)');
     c.fillStyle = angular;
-    c.fillRect(light.x - NIGHTMARE.range, light.y - NIGHTMARE.range, NIGHTMARE.range * 2, NIGHTMARE.range * 2);
+    c.fillRect(
+      light.x - NIGHTMARE.range,
+      light.y - NIGHTMARE.range,
+      NIGHTMARE.range * 2,
+      NIGHTMARE.range * 2,
+    );
     c.restore();
     ctx.save();
     ctx.setTransform(1, 0, 0, 1, 0, 0);
@@ -160,16 +181,21 @@ export class DreamNightmareLighting {
     ctx.globalCompositeOperation = 'soft-light';
     for (const light of lights)
       for (let i = 1; i < 24; i++) {
-        const angle = light.angle - light.half + 2 * light.half * i / 24,
+        const angle = light.angle - light.half + (2 * light.half * i) / 24,
           p = this.surfaceEnd(light, angle);
-        if (DREAM_MUD_LAKES.some(l => p.x >= l.from && p.x <= l.to) || Math.abs(p.y - stealthGround(p.x)) > 1) continue;
-        const strength = Math.sin(Math.PI * i / 24) ** 2 * Math.max(0, 1 - p.distance / NIGHTMARE.range);
+        if (
+          DREAM_MUD_LAKES.some((l) => p.x >= l.from && p.x <= l.to) ||
+          Math.abs(p.y - stealthGround(p.x)) > 1
+        )
+          continue;
+        const strength =
+          Math.sin((Math.PI * i) / 24) ** 2 * Math.max(0, 1 - p.distance / NIGHTMARE.range);
         ctx.save();
         ctx.translate(p.x, p.y);
         ctx.rotate(Math.atan2(stealthGround(p.x + 4) - stealthGround(p.x - 4), 8));
-        ctx.scale(1, .28);
+        ctx.scale(1, 0.28);
         const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 55);
-        g.addColorStop(0, `rgba(255,222,160,${strength*.18})`);
+        g.addColorStop(0, `rgba(255,222,160,${strength * 0.18})`);
         g.addColorStop(1, 'rgba(255,222,160,0)');
         ctx.fillStyle = g;
         ctx.fillRect(-55, -55, 110, 110);
@@ -181,31 +207,37 @@ export class DreamNightmareLighting {
   water(ctx, lights, lake, time) {
     ctx.save();
     ctx.beginPath();
-    lake.path.forEach(([u, v], i) => i ? ctx.lineTo(lake.paintX + u * lake.w, lake.top + v * lake.h) : ctx.moveTo(lake.paintX + u * lake.w, lake.top + v * lake.h));
-    ctx.lineTo(lake.to, lake.top + lake.h * .82);
-    ctx.lineTo(lake.from, lake.top + lake.h * .82);
+    lake.path.forEach(([u, v], i) =>
+      i
+        ? ctx.lineTo(lake.paintX + u * lake.w, lake.top + v * lake.h)
+        : ctx.moveTo(lake.paintX + u * lake.w, lake.top + v * lake.h),
+    );
+    ctx.lineTo(lake.to, lake.top + lake.h * 0.82);
+    ctx.lineTo(lake.from, lake.top + lake.h * 0.82);
     ctx.closePath();
     ctx.clip();
     ctx.globalCompositeOperation = 'screen';
     for (const light of lights)
       for (let i = 0; i <= 32; i++) {
-        const angle = light.angle - light.half + 2 * light.half * i / 32,
+        const angle = light.angle - light.half + (2 * light.half * i) / 32,
           p = this.surfaceEnd(light, angle);
-        if (p.x < lake.from || p.x > lake.to || Math.abs(p.y - mudWaterline(lake, p.x)) > 1) continue;
-        const strength = Math.pow(Math.sin(Math.PI * i / 32), 2) * Math.max(0, 1 - p.distance / NIGHTMARE.range);
+        if (p.x < lake.from || p.x > lake.to || Math.abs(p.y - mudWaterline(lake, p.x)) > 1)
+          continue;
+        const strength =
+          Math.pow(Math.sin((Math.PI * i) / 32), 2) * Math.max(0, 1 - p.distance / NIGHTMARE.range);
         ctx.save();
         ctx.translate(p.x, p.y + 5);
-        ctx.scale(1, .2);
+        ctx.scale(1, 0.2);
         const g = ctx.createRadialGradient(0, 0, 0, 0, 0, 62);
-        g.addColorStop(0, `rgba(255,226,160,${strength*.14})`);
+        g.addColorStop(0, `rgba(255,226,160,${strength * 0.14})`);
         g.addColorStop(1, 'rgba(237,210,151,0)');
         ctx.fillStyle = g;
         ctx.fillRect(-62, -62, 124, 124);
         ctx.restore();
         for (let r = 0; r < 5; r++) {
-          const x = p.x + Math.sin(time * 1.7 + r * 2 + i * .6) * (3 + r),
+          const x = p.x + Math.sin(time * 1.7 + r * 2 + i * 0.6) * (3 + r),
             y = p.y + 3 + r * 4;
-          ctx.strokeStyle = `rgba(255,231,175,${strength*.12*(1-r/6)})`;
+          ctx.strokeStyle = `rgba(255,231,175,${strength * 0.12 * (1 - r / 6)})`;
           ctx.lineWidth = 1.1;
           ctx.beginPath();
           ctx.ellipse(x, y, 7 + r * 2, 1, 0, 0, Math.PI);

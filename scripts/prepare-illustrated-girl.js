@@ -1,31 +1,26 @@
 // Prepara atlas em resolução de jogo; preserva as pranchas de arte e os sprites oficiais anteriores.
 import fs from 'node:fs';
 import path from 'node:path';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 
 const ROOT = 'assets/art/characters/girl-v2';
 const REFERENCE_HEIGHT = 256;
 const definitions = [
-  ['locomocao', 'locomocao.png', 8, 4, 2, 460],
-  ['saltos', 'saltos.png', 8, 4, 2, 460],
-  ['acoes', 'acoes.png', 8, 4, 2, 460],
+  ['locomotion', 'locomotion.png', 8, 4, 2, 460],
+  ['jumps', 'jumps.png', 8, 4, 2, 460],
+  ['actions', 'actions.png', 8, 4, 2, 460],
   ['arena-base', 'arena-base-v3.png', 12, 4, 3, 336],
-  ['arena-acoes', 'arena-acoes-v2.png', 12, 4, 3, 310],
-  ['arena-defesa', 'arena-defesa-v2.png', 6, 3, 2, 472],
-  ['arena-dano', 'arena-dano.png', 6, 3, 2, 460],
-  ['arena-agachar', 'arena-agachar.png', 4, 2, 2, 510],
-  ['carry', '../../../toy-room/stage2/carry-v2/poses.png', 4, 4, 1, 609]
+  ['arena-actions', 'arena-actions-v2.png', 12, 4, 3, 310],
+  ['arena-defense', 'arena-defense-v2.png', 6, 3, 2, 472],
+  ['arena-damage', 'arena-damage.png', 6, 3, 2, 460],
+  ['arena-crouch', 'arena-crouch.png', 4, 2, 2, 510],
+  ['carry', '../../../toy-room/stage2/carry-v2/poses.png', 4, 4, 1, 609],
 ];
 
 /** Separa figuras conectadas, inclusive quando uma pose horizontal ultrapassa a divisão nominal da célula. */
 function components(image, expected) {
-  const {
-    width,
-    height,
-    data
-  } = image, labels = new Int32Array(width * height);
+  const { width, height, data } = image,
+    labels = new Int32Array(width * height);
   const queue = new Int32Array(width * height),
     found = [];
   let id = 0;
@@ -37,7 +32,7 @@ function components(image, expected) {
       x: width,
       y: height,
       right: 0,
-      bottom: 0
+      bottom: 0,
     };
     let head = 0,
       tail = 1;
@@ -52,7 +47,12 @@ function components(image, expected) {
       item.y = Math.min(item.y, y);
       item.right = Math.max(item.right, x + 1);
       item.bottom = Math.max(item.bottom, y + 1);
-      for (const next of [x ? p - 1 : -1, x + 1 < width ? p + 1 : -1, y ? p - width : -1, y + 1 < height ? p + width : -1]) {
+      for (const next of [
+        x ? p - 1 : -1,
+        x + 1 < width ? p + 1 : -1,
+        y ? p - width : -1,
+        y + 1 < height ? p + width : -1,
+      ]) {
         if (next < 0 || labels[next] || data[next * 4 + 3] < 24) continue;
         labels[next] = id;
         queue[tail++] = next;
@@ -62,12 +62,13 @@ function components(image, expected) {
   }
   found.sort((a, b) => b.area - a.area);
   const selected = found.slice(0, expected);
-  if (selected.length !== expected || selected.some(p => p.area < 1000)) throw Error('Quantidade de poses inválida.');
-  if (found[expected]?.area > selected.at(-1)
-    .area * .15) throw Error('Parte relevante desconectada: revisar a prancha.');
+  if (selected.length !== expected || selected.some((p) => p.area < 1000))
+    throw Error('Quantidade de poses inválida.');
+  if (found[expected]?.area > selected.at(-1).area * 0.15)
+    throw Error('Parte relevante desconectada: revisar a prancha.');
   return {
     selected,
-    labels
+    labels,
   };
 }
 
@@ -81,7 +82,7 @@ function resizeFigure(image, labels, figure, scale) {
     height = Math.max(1, Math.round(sh * scale));
   const out = new PNG({
     width,
-    height
+    height,
   });
   const belongs = (x, y) => {
     const label = labels[y * image.width + x];
@@ -91,14 +92,21 @@ function resizeFigure(image, labels, figure, scale) {
       for (let dx = -2; dx <= 2; dx++) {
         const nx = x + dx,
           ny = y + dy;
-        if (nx >= 0 && nx < image.width && ny >= 0 && ny < image.height && labels[ny * image.width + nx] === figure.id) return true;
+        if (
+          nx >= 0 &&
+          nx < image.width &&
+          ny >= 0 &&
+          ny < image.height &&
+          labels[ny * image.width + nx] === figure.id
+        )
+          return true;
       }
     return false;
   };
   for (let y = 0; y < height; y++)
     for (let x = 0; x < width; x++) {
-      const sx = x0 + (x + .5) / scale - .5,
-        sy = y0 + (y + .5) / scale - .5;
+      const sx = x0 + (x + 0.5) / scale - 0.5,
+        sy = y0 + (y + 0.5) / scale - 0.5;
       const ix = Math.floor(sx),
         iy = Math.floor(sy),
         fx = sx - ix,
@@ -109,7 +117,8 @@ function resizeFigure(image, labels, figure, scale) {
         for (let dx = 0; dx < 2; dx++) {
           const px = ix + dx,
             py = iy + dy;
-          if (px < 0 || py < 0 || px >= image.width || py >= image.height || !belongs(px, py)) continue;
+          if (px < 0 || py < 0 || px >= image.width || py >= image.height || !belongs(px, py))
+            continue;
           const offset = (py * image.width + px) * 4;
           const weight = (dx ? fx : 1 - fx) * (dy ? fy : 1 - fy),
             a = image.data[offset + 3] * weight;
@@ -132,7 +141,7 @@ function measure(image) {
       if (image.data[(y * image.width + x) * 4 + 3]) bottom = y + 1;
   // O centro da saia/tronco registra o corpo sem oscilar com a passada das botas.
   const centers = [];
-  for (let y = Math.floor(image.height * .67); y < image.height * .77; y++) {
+  for (let y = Math.floor(image.height * 0.67); y < image.height * 0.77; y++) {
     let a = image.width,
       b = -1;
     for (let x = 0; x < image.width; x++)
@@ -144,7 +153,7 @@ function measure(image) {
   }
   centers.sort((a, b) => a - b);
   const anchorX = centers[Math.floor(centers.length / 2)] ?? image.width / 2;
-  for (let y = Math.floor(bottom - image.height * .16); y < bottom; y++)
+  for (let y = Math.floor(bottom - image.height * 0.16); y < bottom; y++)
     for (let x = 0; x < image.width; x++)
       if (image.data[(y * image.width + x) * 4 + 3] >= 96) {
         left = Math.min(left, x);
@@ -167,32 +176,38 @@ function measure(image) {
     anchorY: bottom,
     feet: {
       left: left - anchorX,
-      right: right - anchorX
-    }
+      right: right - anchorX,
+    },
   };
 }
 
 fs.mkdirSync(ROOT + '/runtime', {
-  recursive: true
+  recursive: true,
 });
 const sets = {};
 for (const [name, file, count, columns, rows, referenceHeight] of definitions) {
   const source = path.normalize(ROOT + '/source/' + file);
   const image = PNG.sync.read(fs.readFileSync(source));
-  const {
-    selected,
-    labels
-  } = components(image, count);
-  selected.sort((a, b) => Math.floor((a.y + a.bottom) / 2 / (image.height / rows)) - Math.floor((b.y + b.bottom) / 2 / (image.height / rows)) || a.x - b.x);
-  const figures = selected.map(p => resizeFigure(image, labels, p, REFERENCE_HEIGHT / referenceHeight));
-  const cellW = Math.max(320, Math.ceil((Math.max(...figures.map(p => p.width)) + 24) / 32) * 32);
-  const cellH = Math.max(320, Math.ceil((Math.max(...figures.map(p => p.height)) + 24) / 32) * 32);
+  const { selected, labels } = components(image, count);
+  selected.sort(
+    (a, b) =>
+      Math.floor((a.y + a.bottom) / 2 / (image.height / rows)) -
+        Math.floor((b.y + b.bottom) / 2 / (image.height / rows)) || a.x - b.x,
+  );
+  const figures = selected.map((p) =>
+    resizeFigure(image, labels, p, REFERENCE_HEIGHT / referenceHeight),
+  );
+  const cellW = Math.max(320, Math.ceil((Math.max(...figures.map((p) => p.width)) + 24) / 32) * 32);
+  const cellH = Math.max(
+    320,
+    Math.ceil((Math.max(...figures.map((p) => p.height)) + 24) / 32) * 32,
+  );
   const sheet = new PNG({
     width: cellW * columns,
-    height: cellH * rows
+    height: cellH * rows,
   });
   const frames = figures.map((p, i) => {
-    const x = i % columns * cellW + 12,
+    const x = (i % columns) * cellW + 12,
       y = Math.floor(i / columns) * cellH + 12;
     PNG.bitblt(p, sheet, 0, 0, p.width, p.height, x, y);
     return {
@@ -200,7 +215,7 @@ for (const [name, file, count, columns, rows, referenceHeight] of definitions) {
       y,
       w: p.width,
       h: p.height,
-      ...measure(p)
+      ...measure(p),
     };
   });
   const output = ROOT + '/runtime/' + name + '.png';
@@ -209,51 +224,71 @@ for (const [name, file, count, columns, rows, referenceHeight] of definitions) {
     key: 'girl-v2-' + name,
     file: output,
     source,
-    frames
+    frames,
   };
   console.log('Preparado:', name, frames.length, 'poses;', sheet.width, '×', sheet.height);
 }
-const frame = (name, indexes) => indexes.map(i => ({
-  ...sets[name].frames[i],
-  key: sets[name].key,
-  file: sets[name].file
-}));
+const frame = (name, indexes) =>
+  indexes.map((i) => ({
+    ...sets[name].frames[i],
+    key: sets[name].key,
+    file: sets[name].file,
+  }));
 const frames = {
-  idle: frame('locomocao', [0, 0, 0, 1, 1, 1, 0, 0, 0]),
-  run: frame('locomocao', [2, 3, 4, 4, 5, 6, 7, 7, 2]),
-  jump: frame('saltos', [0, 0, 1, 1, 2, 2]),
-  jump_short: frame('saltos', [0, 1]),
-  high_jump: frame('saltos', [2]),
-  fall: frame('saltos', [3, 3, 4, 4, 5, 5]),
-  dash: frame('saltos', [6]),
-  crouch: frame('saltos', [7]),
-  collect: frame('acoes', [0]),
-  push: frame('acoes', [1, 1, 1]),
-  climb: frame('acoes', [2]),
-  interact: frame('acoes', [3, 3]),
-  lying_down: frame('acoes', [4]),
-  teleport: frame('acoes', [5, 6]),
-  damage: frame('acoes', [7]),
+  idle: frame('locomotion', [0, 0, 0, 1, 1, 1, 0, 0, 0]),
+  run: frame('locomotion', [2, 3, 4, 4, 5, 6, 7, 7, 2]),
+  jump: frame('jumps', [0, 0, 1, 1, 2, 2]),
+  jump_short: frame('jumps', [0, 1]),
+  high_jump: frame('jumps', [2]),
+  fall: frame('jumps', [3, 3, 4, 4, 5, 5]),
+  dash: frame('jumps', [6]),
+  crouch: frame('jumps', [7]),
+  collect: frame('actions', [0]),
+  push: frame('actions', [1, 1, 1]),
+  climb: frame('actions', [2]),
+  interact: frame('actions', [3, 3]),
+  lying_down: frame('actions', [4]),
+  teleport: frame('actions', [5, 6]),
+  damage: frame('actions', [7]),
   carry: frame('carry', [0, 1, 2, 3]),
   sword_idle: frame('arena-base', [0, 1, 2, 3]),
   sword_run: frame('arena-base', [4, 5, 6, 7]),
-  sword_crouch: frame('arena-agachar', [3]),
-  sword_crouchCycle: frame('arena-agachar', [0, 1, 2, 3]),
-  sword_attack: frame('arena-acoes', [0, 1, 2, 3, 4]),
-  sword_jump: frame('arena-acoes', [5, 6]),
-  sword_fall: frame('arena-acoes', [7, 8]),
-  sword_damage: frame('arena-dano', [0, 1, 2, 3, 4, 5]),
-  sword_guard: frame('arena-defesa', [0, 1, 2, 3, 4, 5])
+  sword_crouch: frame('arena-crouch', [3]),
+  sword_crouchCycle: frame('arena-crouch', [0, 1, 2, 3]),
+  sword_attack: frame('arena-actions', [0, 1, 2, 3, 4]),
+  sword_jump: frame('arena-actions', [5, 6]),
+  sword_fall: frame('arena-actions', [7, 8]),
+  sword_damage: frame('arena-damage', [0, 1, 2, 3, 4, 5]),
+  sword_guard: frame('arena-defense', [0, 1, 2, 3, 4, 5]),
 };
 const footBounds = {};
-for (const [name, list] of Object.entries(frames)) footBounds[name] = {
-  left: Math.min(...list.map(f => f.feet.left)),
-  right: Math.max(...list.map(f => f.feet.right))
-};
-fs.writeFileSync(ROOT + '/frames.json', JSON.stringify({
-  referenceHeight: REFERENCE_HEIGHT,
-  sets
-}, null, 2) + '\n');
-fs.writeFileSync('src/js/assets/illustratedGirl.js', '// Gerado por scripts/prepare-illustrated-girl.js; só contém metadados visuais.\n' +
-  'export const GIRL_V2_REFERENCE_HEIGHT = 256;\n' + 'export const GIRL_V2_SETS = ' + JSON.stringify(sets) + ';\n' +
-  'export const GIRL_V2_FRAMES = ' + JSON.stringify(frames) + ';\n' + 'export const GIRL_V2_FOOT_BOUNDS = ' + JSON.stringify(footBounds) + ';\n');
+for (const [name, list] of Object.entries(frames))
+  footBounds[name] = {
+    left: Math.min(...list.map((f) => f.feet.left)),
+    right: Math.max(...list.map((f) => f.feet.right)),
+  };
+fs.writeFileSync(
+  ROOT + '/frames.json',
+  JSON.stringify(
+    {
+      referenceHeight: REFERENCE_HEIGHT,
+      sets,
+    },
+    null,
+    2,
+  ) + '\n',
+);
+fs.writeFileSync(
+  'src/js/assets/illustratedGirl.js',
+  '// Gerado por scripts/prepare-illustrated-girl.js; só contém metadados visuais.\n' +
+    'export const GIRL_V2_REFERENCE_HEIGHT = 256;\n' +
+    'export const GIRL_V2_SETS = ' +
+    JSON.stringify(sets) +
+    ';\n' +
+    'export const GIRL_V2_FRAMES = ' +
+    JSON.stringify(frames) +
+    ';\n' +
+    'export const GIRL_V2_FOOT_BOUNDS = ' +
+    JSON.stringify(footBounds) +
+    ';\n',
+);

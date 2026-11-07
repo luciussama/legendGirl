@@ -1,7 +1,5 @@
 import * as T from '../../../vendor/three/three.module.js';
-import {
-  PropParts
-} from './ChasePropResources.js';
+import { PropParts } from './ChasePropResources.js';
 
 /** Castelo de blocos de madeira, com portais vazados e torres apoiadas em colunas. */
 export class BlockCastleProp {
@@ -13,33 +11,34 @@ export class BlockCastleProp {
       green = resources.pictorialMaterial('blocks', 2);
     const blue = resources.pictorialMaterial('blocks', 3),
       orange = resources.pictorialMaterial('blocks', 1, '#ea9d6c');
-    for (const [index, x] of [-.78, .78].entries()) {
-      p.box(blue, [x, .085, 0], [.66, .17, .61], .02);
-      for (const dx of [-.19, .19]) p.cylinder(yellow, [x + dx, .315, .02], .092, .092, .29);
-      p.box(orange, [x, .51, 0], [.72, .13, .63]);
-      this.portal(p, index ? red : blue, [x, .575, 0], .56, .45, .48, .15, .27);
-      this.portal(p, yellow, [x, 1.025, 0], .56, .43, .48, .14, .26);
+    for (const [index, x] of [-0.78, 0.78].entries()) {
+      p.box(blue, [x, 0.085, 0], [0.66, 0.17, 0.61], 0.02);
+      for (const dx of [-0.19, 0.19]) p.cylinder(yellow, [x + dx, 0.315, 0.02], 0.092, 0.092, 0.29);
+      p.box(orange, [x, 0.51, 0], [0.72, 0.13, 0.63]);
+      this.portal(p, index ? red : blue, [x, 0.575, 0], 0.56, 0.45, 0.48, 0.15, 0.27);
+      this.portal(p, yellow, [x, 1.025, 0], 0.56, 0.43, 0.48, 0.14, 0.26);
       const shape = new T.Shape();
-      shape.moveTo(-.37, 0);
-      shape.lineTo(.37, 0);
-      shape.lineTo(0, .44);
+      shape.moveTo(-0.37, 0);
+      shape.lineTo(0.37, 0);
+      shape.lineTo(0, 0.44);
       shape.closePath();
       const roof = new T.ExtrudeGeometry(shape, {
-        depth: .61,
-        bevelEnabled: false
+        depth: 0.61,
+        bevelEnabled: false,
       });
-      roof.translate(0, 0, -.305);
+      roof.translate(0, 0, -0.305);
       const positions = roof.getAttribute('position'),
         uv = roof.getAttribute('uv');
-      for (let i = 0; i < uv.count; i++) uv.setXY(i, positions.getX(i) / .74 + .5, positions.getY(i) / .44);
+      for (let i = 0; i < uv.count; i++)
+        uv.setXY(i, positions.getX(i) / 0.74 + 0.5, positions.getY(i) / 0.44);
       p.add(roof, index ? blue : red, [x, 1.455, 0]);
     }
     this.centralWall(p, orange, yellow, green);
-    for (const x of [-.40, .40]) p.box(green, [x, .095, .01], [.22, .19, .45]);
+    for (const x of [-0.4, 0.4]) p.box(green, [x, 0.095, 0.01], [0.22, 0.19, 0.45]);
     for (let i = 0; i < 5; i++) {
-      const x = -.40 + i * .20;
-      p.box(green, [x, 1.005, 0], [.195, .13, .40], .008);
-      if (i % 2 === 0) p.box(green, [x, 1.13, 0], [.17, .13, .40], .008);
+      const x = -0.4 + i * 0.2;
+      p.box(green, [x, 1.005, 0], [0.195, 0.13, 0.4], 0.008);
+      if (i % 2 === 0) p.box(green, [x, 1.13, 0], [0.17, 0.13, 0.4], 0.008);
     }
     this.prototype = resources.bake(p.parts, 'Castelo de blocos — portais vazados', true);
   }
@@ -48,35 +47,35 @@ export class BlockCastleProp {
     // Os espaços de montagem fazem a separação surgir do volume, sem linhas desenhadas sobre a pintura.
     for (const side of [-1, 1]) {
       for (let row = 0; row < 3; row++)
-        parts.box(orange, [side * .407, .19 + row * .205, -.015], [.156, .190, .37], .012);
-      parts.box(green, [side * .365, .315, .035], [.19, .41, .41], .018);
+        parts.box(orange, [side * 0.407, 0.19 + row * 0.205, -0.015], [0.156, 0.19, 0.37], 0.012);
+      parts.box(green, [side * 0.365, 0.315, 0.035], [0.19, 0.41, 0.41], 0.018);
     }
     for (let i = 0; i < 5; i++) {
-      const width = i % 2 ? .175 : .180;
-      parts.box(orange, [-.4 + i * .20, .875, 0], [width, .18, .38], .013);
+      const width = i % 2 ? 0.175 : 0.18;
+      parts.box(orange, [-0.4 + i * 0.2, 0.875, 0], [width, 0.18, 0.38], 0.013);
     }
     // Cinco peças radiais douradas abraçam a abertura, como blocos individuais encaixados.
     for (let i = 0; i < 5; i++) {
-      const start = i * Math.PI / 5 + .018,
-        end = (i + 1) * Math.PI / 5 - .018;
+      const start = (i * Math.PI) / 5 + 0.018,
+        end = ((i + 1) * Math.PI) / 5 - 0.018;
       const shape = new T.Shape();
-      shape.absarc(0, .40, .405, start, end, false);
-      shape.lineTo(.27 * Math.cos(end), .40 + .27 * Math.sin(end));
-      shape.absarc(0, .40, .27, end, start, true);
+      shape.absarc(0, 0.4, 0.405, start, end, false);
+      shape.lineTo(0.27 * Math.cos(end), 0.4 + 0.27 * Math.sin(end));
+      shape.absarc(0, 0.4, 0.27, end, start, true);
       shape.closePath();
       const geometry = new T.ExtrudeGeometry(shape, {
-        depth: .40,
+        depth: 0.4,
         bevelEnabled: true,
-        bevelSize: .006,
-        bevelThickness: .006,
+        bevelSize: 0.006,
+        bevelThickness: 0.006,
         bevelSegments: 1,
-        curveSegments: 8
+        curveSegments: 8,
       });
-      geometry.translate(0, 0, -.20);
+      geometry.translate(0, 0, -0.2);
       const pos = geometry.getAttribute('position'),
         uv = geometry.getAttribute('uv');
-      for (let n = 0; n < uv.count; n++) uv.setXY(n, pos.getX(n) / .82 + .5, pos.getY(n) / .82);
-      parts.add(geometry, yellow, [0, .10, .025]);
+      for (let n = 0; n < uv.count; n++) uv.setXY(n, pos.getX(n) / 0.82 + 0.5, pos.getY(n) / 0.82);
+      parts.add(geometry, yellow, [0, 0.1, 0.025]);
     }
   }
   /** Esculpe um bloco com arco atravessando toda a profundidade, sem uma janela preta colada. */
@@ -94,12 +93,12 @@ export class BlockCastleProp {
     const geometry = new T.ExtrudeGeometry(shape, {
       depth,
       bevelEnabled: false,
-      curveSegments: 12
+      curveSegments: 12,
     });
     geometry.translate(0, 0, -depth / 2);
     const pos = geometry.getAttribute('position'),
       uv = geometry.getAttribute('uv');
-    for (let i = 0; i < uv.count; i++) uv.setXY(i, pos.getX(i) / width + .5, pos.getY(i) / height);
+    for (let i = 0; i < uv.count; i++) uv.setXY(i, pos.getX(i) / width + 0.5, pos.getY(i) / height);
     parts.add(geometry, material, position);
   }
   /** Instancia outra montagem sem duplicar os recursos pintados. */

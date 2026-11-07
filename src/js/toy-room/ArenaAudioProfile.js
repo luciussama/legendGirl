@@ -35,9 +35,7 @@ export class ArenaAudioProfile {
     else this.audio?.playCombatSound?.(event);
   }
   /** Encerra a camada da arena e, se solicitado, retoma a música da sala. */
-  leave({
-    resume = true
-  } = {}) {
+  leave({ resume = true } = {}) {
     this.audio?.stopArenaMusic?.();
     this.audio?.setToyRoomMusicIntensity?.(1);
     if (this.mode !== 'ROOM' && resume) {
@@ -51,7 +49,7 @@ export class ArenaAudioProfile {
     return {
       mode: this.mode,
       beat: this.beat,
-      clock: this.clock
+      clock: this.clock,
     };
   }
   /** Restaura relógios salvos e reaplica o perfil musical correspondente ao modo. */

@@ -1,0 +1,285 @@
+import { getMobileUILayout } from '../ui/mobileUILayout.js';
+import { FLOOR_Y, platforms, phase3Platforms, trueExitDoor } from '../config.js';
+import { getMobileZoomFrame, getDarkRoomMobileFrame } from '../controllers/mobileZoom.js';
+import { getDarkRoomScrollFrame } from '../controllers/CameraPresentation.js';
+import { renderFirstJumpTutorial, renderDarkRoomTouchHint } from '../ui/firstJumpTutorial.js';
+import { applyArtFinish } from '../effects/artFinish.js';
+import { transitionEffects } from '../effects/index.js';
+
+// Composição visual: a atualização da simulação permanece no fluxo do jogo.
+export function renderDarkRoom(context) {
+  const {
+    ctx,
+    canvas,
+    toyRoomIntroduction,
+    opening,
+    assets,
+    lighting,
+    fairyRenderer,
+    cameraPresentation,
+    camera,
+    androidFraming,
+    mobilePresentation,
+    player,
+    fairy,
+    cameraX,
+    cameraY,
+    cameraZoom,
+    isPhase3,
+    plotTwistActive,
+    phase3TutorialActive,
+    truePortalTransitionActive,
+    tick,
+    gameWon,
+    transitionWipeAlpha,
+    inputHandler,
+    recordCameraQa,
+    drawBackgroundWall,
+    drawSceneryItems,
+    drawPlatforms,
+    drawExitDoor,
+    drawTrueExitDoor,
+    drawTutorialArrow,
+    drawSpeedRibbons,
+    drawPlayerJumpDust,
+    drawFairy,
+    drawPlayerManaStyle,
+    applyDarkAtmosphereWithLights,
+    drawEscapeBanner,
+    drawCutsceneDialogue,
+    state,
+  } = context;
+
+  if (toyRoomIntroduction.active) {
+    toyRoomIntroduction.render(ctx, canvas);
+    return;
+  }
+  if (opening.active && !opening.revealing) {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    recordCameraQa();
+    opening.render(ctx, canvas, {
+      assets,
+      lighting,
+      fairyRenderer,
+      /**
+       * Compõe o quarto na ordem de camadas definida pela pipeline, compartilhando viewport e transformações
+       * da cena.
+       */
+      drawRoom: () => {
+        drawBackgroundWall(0);
+        drawSceneryItems(0);
+        drawPlatforms(0);
+      },
+    });
+    return;
+  }
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+  // A translação de apresentação fica fora da câmera usada pela física.
+  const cameraNarrative = Boolean(
+    opening.active ||
+    plotTwistActive ||
+    phase3TutorialActive ||
+    truePortalTransitionActive ||
+    state.cutsceneActive ||
+    state.isStandbyActive ||
+    state.isStandbyTransitioning,
+  );
+  // Normaliza a pose efetivamente desenhada também nos ramos narrativos que atualizam valores locais.
+  const renderCameraX = cameraX + (1 - camera.zoom) * (camera.x - cameraX);
+  const lateralScrolling = !cameraNarrative;
+  const scrollFrame = lateralScrolling
+    ? getDarkRoomScrollFrame({
+        x: cameraX,
+        width: canvas.width,
+        height: canvas.height,
+      })
+    : {
+        x: renderCameraX,
+        y: camera.y,
+      };
+  const presentation = cameraPresentation.frame({
+    ...scrollFrame,
+    active: !lateralScrolling && (isPhase3 || plotTwistActive),
+    narrative: cameraNarrative,
+    tick,
+    width: canvas.width,
+    height: canvas.height,
+    cssWidth: canvas.getBoundingClientRect().width,
+    cssHeight: canvas.getBoundingClientRect().height,
+    zoom: camera.zoom,
+  });
+  const presentationY = presentation.y;
+  const presentationX = lateralScrolling || isPhase3 || plotTwistActive ? presentation.x : cameraX;
+  const renderZoom = lateralScrolling ? 1 : camera.zoom;
+  let framingOffset = 0;
+  let mobileTarget;
+  if (lateralScrolling) {
+    mobileTarget = mobilePresentation.enabled
+      ? getDarkRoomMobileFrame({
+          width: canvas.width,
+          height: canvas.height,
+          cameraY: scrollFrame.y,
+          floorY: FLOOR_Y,
+          layout: getMobileUILayout(canvas),
+          anticipate: isPhase3,
+        })
+      : getMobileZoomFrame({
+          enabled: false,
+        });
+  } else {
+    const focusY = (player.y + fairy.y) / 2 - presentationY;
+    const screenY = (y) => focusY + (y - presentationY - focusY) * renderZoom;
+    const visiblePlatforms = (isPhase3 ? phase3Platforms : platforms).filter(
+      (p) => p.x + p.w >= cameraX && p.x <= cameraX + canvas.width && screenY(p.y) >= 0,
+    );
+    const topY = Math.min(
+      screenY(player.y - 20),
+      screenY(fairy.y - 24),
+      ...visiblePlatforms.map((p) => screenY(p.y - 64)),
+    );
+    framingOffset = androidFraming.offset(screenY(FLOOR_Y), topY);
+    const focusX = (player.x + fairy.x) / 2 - presentationX;
+    const screenX = (x) => focusX + (x - presentationX - focusX) * renderZoom;
+    const activePlatforms = isPhase3 ? phase3Platforms : platforms;
+    const next = activePlatforms[player.currentPlatformIndex + 1];
+    const points = [
+      [player.x - 12, player.y - 20],
+      [player.x + player.w + 12, player.y + player.h + 8],
+      [fairy.x - 28, fairy.y - 28],
+      [fairy.x + 28, fairy.y + 28],
+    ];
+    if (next) {
+      const support = next.standRegion || next;
+      const y = next.surfaceTopY ?? support.y;
+      // Apoios largos podem continuar além da tela; preserva a região de chegada do salto.
+      const landingWidth = Math.min(support.w, 96);
+      const landingX = isPhase3 ? support.x + support.w - landingWidth : support.x;
+      points.push([landingX, y - 24], [landingX + landingWidth, y + 24]);
+    }
+    const bounds = {
+      left: Math.min(...points.map((p) => screenX(p[0]))),
+      right: Math.max(...points.map((p) => screenX(p[0]))),
+      top: Math.min(...points.map((p) => screenY(p[1]) - framingOffset)),
+      bottom: Math.max(...points.map((p) => screenY(p[1]) - framingOffset)),
+    };
+    mobileTarget = getMobileZoomFrame({
+      enabled: mobilePresentation.enabled,
+      stable: isPhase3 || plotTwistActive,
+      anticipate: isPhase3,
+      width: canvas.width,
+      height: canvas.height,
+      bounds,
+      anchor: {
+        x: screenX(player.x + player.w / 2),
+        y: screenY(player.y + player.h) - framingOffset,
+      },
+    });
+  }
+  const mobileFrame = cameraPresentation.mobileFrame({
+    target: mobileTarget,
+    fixed: lateralScrolling,
+    enabled: mobilePresentation.enabled,
+    stable: lateralScrolling || isPhase3 || plotTwistActive,
+    anticipate: isPhase3,
+    tick,
+    width: canvas.width,
+    height: canvas.height,
+  });
+  ctx.save();
+  if (mobilePresentation.enabled) {
+    // Encaixa a apresentação na região visível sem alterar câmera ou física da simulação.
+    const layout = getMobileUILayout(canvas);
+    const fit = Math.min(layout.usableWidth / canvas.width, layout.usableHeight / canvas.height);
+    ctx.translate(
+      layout.centerX - (canvas.width * fit) / 2,
+      layout.centerY - (canvas.height * fit) / 2,
+    );
+    ctx.scale(fit, fit);
+  }
+  ctx.translate(mobileFrame.x, mobileFrame.y);
+  ctx.scale(mobileFrame.zoom, mobileFrame.zoom);
+  ctx.translate(0, -framingOffset);
+  if (lateralScrolling) {
+    // A matriz de gameplay não consulta arco, pouso, fada, apoio nem zoom narrativo.
+    ctx.translate(cameraX - presentationX, -presentationY);
+  } else {
+    camera.applyTransform(ctx, canvas, player, fairy, presentationY, presentation.x, cameraX);
+  }
+  recordCameraQa(ctx.getTransform());
+
+  drawBackgroundWall(cameraX);
+  drawSceneryItems(cameraX);
+  drawPlatforms(cameraX);
+  drawExitDoor(cameraX);
+  if (isPhase3) {
+    drawTrueExitDoor(cameraX);
+    drawTutorialArrow(cameraX);
+  }
+  drawSpeedRibbons(cameraX);
+  drawPlayerJumpDust(cameraX);
+  drawFairy(cameraX);
+  drawPlayerManaStyle(cameraX);
+  applyDarkAtmosphereWithLights(cameraX, cameraY);
+
+  const presentationTransform = ctx.getTransform();
+  ctx.restore();
+
+  // Elementos de interface (HUD) renderizados em coordenadas nítidas de tela
+  applyArtFinish(ctx, canvas);
+  drawEscapeBanner();
+  if (mobilePresentation.enabled && lateralScrolling && !gameWon && !state.isGameOver)
+    renderDarkRoomTouchHint(ctx, canvas, state);
+  renderFirstJumpTutorial(ctx, canvas, {
+    state,
+    player,
+    fairy,
+    platform: platforms[0],
+    cameraX,
+    transform: presentationTransform,
+    device: inputHandler.controller.promptDevice,
+  });
+  drawCutsceneDialogue(presentationTransform);
+  if (opening.active) opening.renderFade(ctx, canvas);
+
+  // Transição de íris do portal verdadeiro (envelope de luz dourada para a Sala de Brinquedos)
+  transitionEffects.renderPortalWipe(
+    ctx,
+    canvas,
+    cameraX,
+    cameraY + framingOffset,
+    trueExitDoor,
+    transitionWipeAlpha,
+    tick,
+    mobilePresentation.enabled ? presentationTransform : null,
+  );
+
+  if (gameWon) {
+    ctx.save();
+    ctx.fillStyle = 'rgba(255, 250, 240, 0.92)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#db2777';
+    ctx.font = 'bold 30px Palatino, Georgia, serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(
+      'O VERDADEIRO PORTAL DOS SONHOS FOI ALCANÇADO!',
+      canvas.width / 2,
+      canvas.height / 2 - 25,
+    );
+
+    ctx.fillStyle = '#26242c';
+    ctx.font = '17px Palatino, Georgia, serif';
+    ctx.fillText(
+      'A menininha e a fada venceram a grande bagunça e atravessaram para o mundo dos sonhos!',
+      canvas.width / 2,
+      canvas.height / 2 + 18,
+    );
+    ctx.fillText(
+      'Toque na tela para brincar novamente desde o começo.',
+      canvas.width / 2,
+      canvas.height / 2 + 56,
+    );
+    ctx.restore();
+  }
+}

@@ -33,17 +33,17 @@ export class DreamSilence {
       noise.loop = true;
       filter.type = 'bandpass';
       filter.frequency.value = 1100;
-      filter.Q.value = .6;
-      noiseGain.gain.value = .018;
+      filter.Q.value = 0.6;
+      noiseGain.gain.value = 0.018;
       noise.connect(filter);
       filter.connect(noiseGain);
       noiseGain.connect(output);
       const sources = [noise],
         gains = [noiseGain];
       for (const [frequency, gain] of [
-          [2450, .008],
-          [3120, .004]
-        ]) {
+        [2450, 0.008],
+        [3120, 0.004],
+      ]) {
         const tone = ctx.createOscillator(),
           level = ctx.createGain();
         tone.frequency.value = frequency;
@@ -55,16 +55,16 @@ export class DreamSilence {
       }
       output.gain.value = 0;
       output.connect(ctx.destination);
-      sources.forEach(n => n.start());
+      sources.forEach((n) => n.start());
       this.nodes = {
         ctx,
         output,
         filter,
         sources,
-        gains
+        gains,
       };
     }
-    this.nodes.output.gain.setTargetAtTime(volume, ctx.currentTime, .12);
+    this.nodes.output.gain.setTargetAtTime(volume, ctx.currentTime, 0.12);
   }
   /**
    * Interrompe o estado e dados do componente e encerra os recursos ativos sob responsabilidade do
@@ -72,12 +72,7 @@ export class DreamSilence {
    */
   stop() {
     if (!this.nodes) return;
-    const {
-      sources,
-      gains,
-      filter,
-      output
-    } = this.nodes;
+    const { sources, gains, filter, output } = this.nodes;
     this.nodes = null;
     for (const n of sources) {
       try {
@@ -85,7 +80,7 @@ export class DreamSilence {
       } catch {}
       n.disconnect();
     }
-    gains.forEach(n => n.disconnect());
+    gains.forEach((n) => n.disconnect());
     filter.disconnect();
     output.disconnect();
   }

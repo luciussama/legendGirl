@@ -1,9 +1,7 @@
 import fs from 'fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 
-const src = PNG.sync.read(fs.readFileSync('assets/art/dark-room/platforms/stepped_dresser.png'));
+const src = PNG.sync.read(fs.readFileSync('assets/art/dark-room/platforms/stepped-dresser.png'));
 const W = src.width; // 304
 
 function copyNonTransparent(srcPng, sx, sy, sw, sh, dstPng, dx, dy) {
@@ -18,9 +16,15 @@ function copyNonTransparent(srcPng, sx, sy, sw, sh, dstPng, dx, dy) {
         const normSa = sa / 255;
         const outA = normSa + da * (1 - normSa);
         if (outA > 0) {
-          dstPng.data[dIdx] = Math.round((srcPng.data[sIdx] * normSa + dstPng.data[dIdx] * da * (1 - normSa)) / outA);
-          dstPng.data[dIdx + 1] = Math.round((srcPng.data[sIdx + 1] * normSa + dstPng.data[dIdx + 1] * da * (1 - normSa)) / outA);
-          dstPng.data[dIdx + 2] = Math.round((srcPng.data[sIdx + 2] * normSa + dstPng.data[dIdx + 2] * da * (1 - normSa)) / outA);
+          dstPng.data[dIdx] = Math.round(
+            (srcPng.data[sIdx] * normSa + dstPng.data[dIdx] * da * (1 - normSa)) / outA,
+          );
+          dstPng.data[dIdx + 1] = Math.round(
+            (srcPng.data[sIdx + 1] * normSa + dstPng.data[dIdx + 1] * da * (1 - normSa)) / outA,
+          );
+          dstPng.data[dIdx + 2] = Math.round(
+            (srcPng.data[sIdx + 2] * normSa + dstPng.data[dIdx + 2] * da * (1 - normSa)) / outA,
+          );
           dstPng.data[dIdx + 3] = Math.round(outA * 255);
         }
       }
@@ -31,7 +35,7 @@ function copyNonTransparent(srcPng, sx, sy, sw, sh, dstPng, dx, dy) {
 const dstH = 484;
 const dst = new PNG({
   width: W,
-  height: dstH
+  height: dstH,
 });
 dst.data.fill(0);
 
@@ -161,9 +165,9 @@ for (let y = 1; y < 78; y++) {
         dst.data[((y - 1) * W + x) * 4 + 3],
         dst.data[((y + 1) * W + x) * 4 + 3],
         dst.data[(y * W + (x - 1)) * 4 + 3],
-        dst.data[(y * W + (x + 1)) * 4 + 3]
+        dst.data[(y * W + (x + 1)) * 4 + 3],
       ];
-      if (neighbors.some(a => a === 0)) {
+      if (neighbors.some((a) => a === 0)) {
         dst.data[idx] = Math.round(dst.data[idx] * 0.42);
         dst.data[idx + 1] = Math.round(dst.data[idx + 1] * 0.42);
         dst.data[idx + 2] = Math.round(dst.data[idx + 2] * 0.42);
@@ -173,5 +177,5 @@ for (let y = 1; y < 78; y++) {
 }
 
 // Salva tanto como preview quanto no caminho oficial do jogo
-fs.writeFileSync('assets/art/dark-room/platforms/stepped_dresser.png', PNG.sync.write(dst));
-console.log('Sucesso! Novo sprite salvo em assets/art/dark-room/platforms/stepped_dresser.png');
+fs.writeFileSync('assets/art/dark-room/platforms/stepped-dresser.png', PNG.sync.write(dst));
+console.log('Sucesso! Novo sprite salvo em assets/art/dark-room/platforms/stepped-dresser.png');

@@ -2,7 +2,7 @@
 
 Referência oficial: `../environment-assets-concept.png`.
 
-Arquivos de produção: `block_castle.png` e `spinning_top.png`, RGBA transparentes,
+Arquivos de produção: `block-castle.png` e `spinning-top.png`, RGBA transparentes,
 1254 × 1254. Originais gerados foram copiados sem edição de pixels; recorte,
 proporção e alinhamento ocorrem somente no renderer visual. Os PNGs permanecem
 no repositório e são carregados pelo manifesto.
@@ -52,7 +52,7 @@ posição solicitada no prompt foi obedecida exatamente. As regiões de apoio de
 produção não foram alteradas.
 
 
-### globe_table.png
+### globe-table.png
 Sprite gerado com imagegen a partir da referência do globo sobre mesa enviada pelo usuário. Fundo transparente; globo atrás de uma faixa livre do tampo. Calibração visual: apoio do PNG em x=50..1195, y=863; resolução 1245×1263. A largura de jogo continua em 95 px. Sem linha de marcação de salto sobreposta.
 
 Integração atual: PlatformRenderer/BackgroundRenderer e currentScenery consomem as artes conforme o manifesto e o [inventário](../../../../docs/sprites/inventario.json). Os relatos de geração acima registram a produção original; variantes aposentadas pela revisão posterior não devem ser restauradas por inferência. As transformações de CameraPresentation/MobileZoom e a composição em DarkRoomRenderPipeline não mudam a geometria de apoio.

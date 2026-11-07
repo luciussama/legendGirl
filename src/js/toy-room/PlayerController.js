@@ -1,6 +1,4 @@
-import {
-  arenaEnemyImpactEnd
-} from './ArenaCombatRules.js';
+import { arenaEnemyImpactEnd } from './arenaCombatRules.js';
 
 const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
@@ -36,23 +34,49 @@ export class PlayerController {
     else if (input.x) r.player.facing = input.x > 0 ? 'right' : 'left';
     const facing = r.player.facing === 'right' ? 1 : -1;
     // Recuo livre usa caminhada; durante o golpe inimigo, firma os pés para defender.
-    s.guarding = Boolean(battle.presentation && input.x * facing < -0.18 &&
-      s.jump === 0 && !s.crouching && s.attackTime <= 0 && s.playerHitTime <= 0 &&
-      s.enemy?.hp > 0 && s.enemy.state === 'ATTACK' &&
-      s.enemy.elapsed < arenaEnemyImpactEnd(s.enemy, t));
+    s.guarding = Boolean(
+      battle.presentation &&
+      input.x * facing < -0.18 &&
+      s.jump === 0 &&
+      !s.crouching &&
+      s.attackTime <= 0 &&
+      s.playerHitTime <= 0 &&
+      s.enemy?.hp > 0 &&
+      s.enemy.state === 'ATTACK' &&
+      s.enemy.elapsed < arenaEnemyImpactEnd(s.enemy, t),
+    );
     r.player.isMoving = Boolean(input.x && !s.guarding && !s.crouching && s.playerHitTime <= 0);
     if (s.playerHitTime > 0 && s.playerKnockback) {
       const travel = t.knockbackDistance ? (1 - Math.pow(0.82, dt)) / 0.18 : dt;
-      r.player.x = clamp(r.player.x + s.playerHitDirection * s.playerKnockback * travel, t.left + 35, t.right - 35);
+      r.player.x = clamp(
+        r.player.x + s.playerHitDirection * s.playerKnockback * travel,
+        t.left + 35,
+        t.right - 35,
+      );
       s.playerKnockback *= Math.pow(0.82, dt);
     } else if (!s.guarding && !s.crouching && input.x && s.playerHitTime <= 0) {
-      const moveScale = battle.presentation && s.cooldown > 0 ?
-        (s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1 : 1;
-      r.player.x = clamp(r.player.x + input.x * t.speed * moveScale * dt, t.left + 35, t.right - 35);
+      const moveScale =
+        battle.presentation && s.cooldown > 0
+          ? ((s.attackTime > 0 ? t.attackMoveScale : t.recoveryMoveScale) ?? 1)
+          : 1;
+      r.player.x = clamp(
+        r.player.x + input.x * t.speed * moveScale * dt,
+        t.left + 35,
+        t.right - 35,
+      );
     }
     const e = s.enemy;
-    if (!battle.presentation && e && e.hp > 0 && e.state !== 'DEATH' && !s.transition && s.jump <= 55) {
-      const minDist = battle.getEnemyCollisionDistance ? battle.getEnemyCollisionDistance(e.actor) : 54;
+    if (
+      !battle.presentation &&
+      e &&
+      e.hp > 0 &&
+      e.state !== 'DEATH' &&
+      !s.transition &&
+      s.jump <= 55
+    ) {
+      const minDist = battle.getEnemyCollisionDistance
+        ? battle.getEnemyCollisionDistance(e.actor)
+        : 54;
       if (r.player.x < e.x && r.player.x > e.x - minDist) {
         r.player.x = e.x - minDist;
       } else if (r.player.x > e.x && r.player.x < e.x + minDist) {

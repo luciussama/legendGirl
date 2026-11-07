@@ -1,10 +1,8 @@
 // Recorta a nova composição lateral sem modificar o original ou os apoios físicos.
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
+import { PNG } from 'pngjs';
 const root = 'assets/art/garden',
-  image = PNG.sync.read(fs.readFileSync(root + '/source/piquenique-lateral-v3.png'));
+  image = PNG.sync.read(fs.readFileSync(root + '/source/picnic-lateral-v3.png'));
 if (image.data[3] !== 0) throw Error('O piquenique precisa de fundo transparente.');
 let left = image.width,
   top = image.height,
@@ -22,19 +20,24 @@ const w = right - left + 1,
   h = bottom - top + 1,
   out = new PNG({
     width: w + 8,
-    height: h + 8
+    height: h + 8,
   });
 PNG.bitblt(image, out, left, top, w, h, 4, 4);
 const art = {
-  file: 'runtime/piquenique-lateral-v3.png',
+  file: 'runtime/picnic-lateral-v3.png',
   x: 4,
   y: 4,
   w,
   h,
-  groundAnchorY: Math.round(h * .85)
+  groundAnchorY: Math.round(h * 0.85),
 };
 fs.writeFileSync(root + '/' + art.file, PNG.sync.write(out));
-fs.writeFileSync('src/js/garden/GardenPicnicArt.js', '// Gerado por prepare-garden-picnic.js; a âncora fica no plano da toalha.\nexport const GARDEN_PICNIC=' + JSON.stringify(art) + ';\n');
+fs.writeFileSync(
+  'src/js/garden/gardenPicnicArt.js',
+  '// Gerado por prepare-garden-picnic.js; a âncora fica no plano da toalha.\nexport const GARDEN_PICNIC=' +
+    JSON.stringify(art) +
+    ';\n',
+);
 const path = root + '/manifest.json',
   manifest = JSON.parse(fs.readFileSync(path));
 if (!manifest.images.includes(art.file)) manifest.images.push(art.file);

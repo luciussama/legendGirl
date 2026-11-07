@@ -48,3 +48,5 @@ O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) documenta as quatro passa
 
 
 O [guia do Brinquedão](brinquedao/GUIA-BRINQUEDAO.md) cobre a corrida de quatro tubos e os peixes que saltam nas pontes externas, sem piscinas jogáveis.
+
+- [Convenções de código](CONVENCOES-CODIGO.md): idioma, nomenclatura, glossário e ESLint/Prettier.

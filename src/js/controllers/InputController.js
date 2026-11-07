@@ -37,7 +37,7 @@ export class InputController {
     if (typeof window === 'undefined') return;
 
     window.addEventListener('pointerdown', this.boundHandlePointerDown, {
-      passive: false
+      passive: false,
     });
     window.addEventListener('keydown', this.boundHandleKeyDown);
     window.addEventListener('gamepaddisconnected', this.boundHandleGamepadDisconnected);
@@ -53,7 +53,10 @@ export class InputController {
     if (!this.game) return;
 
     // Ignora entrada se o jogo terminou ou se estiver no modo Quarto de Brinquedos
-    if ((this.game.isGameOver && this.game.isGameOver()) || (this.game.isToyRoomMode && this.game.isToyRoomMode())) {
+    if (
+      (this.game.isGameOver && this.game.isGameOver()) ||
+      (this.game.isToyRoomMode && this.game.isToyRoomMode())
+    ) {
       return;
     }
 
@@ -63,8 +66,14 @@ export class InputController {
     }
 
     // No gameplay normal (fora de cutscenes e do modo de prontidão), garante que a personagem esteja no chão para evitar pulo duplo no ar
-    const inCutscene = typeof this.game.isCutsceneActive === 'function' && this.game.isCutsceneActive();
-    if (!inCutscene && !this.game.isFirstJumpTutorial?.() && typeof this.game.isGrounded === 'function' && !this.game.isGrounded()) {
+    const inCutscene =
+      typeof this.game.isCutsceneActive === 'function' && this.game.isCutsceneActive();
+    if (
+      !inCutscene &&
+      !this.game.isFirstJumpTutorial?.() &&
+      typeof this.game.isGrounded === 'function' &&
+      !this.game.isGrounded()
+    ) {
       return;
     }
 
@@ -79,14 +88,20 @@ export class InputController {
    */
   handlePointerDown(event) {
     if (!this.game) return;
-    if ((this.game.isGameOver && this.game.isGameOver()) || (this.game.isToyRoomMode && this.game.isToyRoomMode())) {
+    if (
+      (this.game.isGameOver && this.game.isGameOver()) ||
+      (this.game.isToyRoomMode && this.game.isToyRoomMode())
+    ) {
       return;
     }
 
     // Registra o tipo de dispositivo
     if (typeof this.game.setLastInputDevice === 'function') {
-      const isTouch = event.pointerType === 'touch' || (typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(pointer: coarse)')
-        .matches);
+      const isTouch =
+        event.pointerType === 'touch' ||
+        (typeof window !== 'undefined' &&
+          window.matchMedia &&
+          window.matchMedia('(pointer: coarse)').matches);
       this.promptDevice = event.pointerType === 'mouse' ? 'mouse' : isTouch ? 'touch' : 'mouse';
       this.game.setLastInputDevice(isTouch ? 'touch' : 'keyboard');
     }
@@ -104,8 +119,10 @@ export class InputController {
     // Se um overlay interativo estiver realmente visível e ativo, ignora o pulo
     const startOv = document.getElementById('start-overlay');
     const goOv = document.getElementById('gameover-overlay');
-    const isStartVisible = startOv && !startOv.classList.contains('hidden') && startOv.style.display !== 'none';
-    const isGameOverVisible = goOv && !goOv.classList.contains('hidden') && goOv.style.display !== 'none';
+    const isStartVisible =
+      startOv && !startOv.classList.contains('hidden') && startOv.style.display !== 'none';
+    const isGameOverVisible =
+      goOv && !goOv.classList.contains('hidden') && goOv.style.display !== 'none';
 
     if (isStartVisible || isGameOverVisible) {
       return;
@@ -114,7 +131,13 @@ export class InputController {
     if (event.cancelable) {
       event.preventDefault();
     }
-    if (this.game.isFirstJumpTutorial?.() && event.pointerType === 'mouse' && event.button != null && event.button !== 0) return;
+    if (
+      this.game.isFirstJumpTutorial?.() &&
+      event.pointerType === 'mouse' &&
+      event.button != null &&
+      event.button !== 0
+    )
+      return;
     this.triggerJump(this.promptDevice);
   }
 
@@ -140,7 +163,11 @@ export class InputController {
       return;
     }
 
-    if (this.game && ((this.game.isGameOver && this.game.isGameOver()) || (this.game.isToyRoomMode && this.game.isToyRoomMode()))) {
+    if (
+      this.game &&
+      ((this.game.isGameOver && this.game.isGameOver()) ||
+        (this.game.isToyRoomMode && this.game.isToyRoomMode()))
+    ) {
       return;
     }
 
@@ -275,6 +302,6 @@ export function bindInput(game) {
     /**
      * Remove os recursos/listeners previstos na implementação; audite o ciclo de vida.
      */
-    destroy: () => controller.destroy()
+    destroy: () => controller.destroy(),
   };
 }

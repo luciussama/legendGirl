@@ -1,32 +1,28 @@
 import fs from 'node:fs';
-import {
-  PNG
-} from 'pngjs';
-import {
-  GARDEN_ART
-} from '../src/js/garden/GardenArt.js';
+import { PNG } from 'pngjs';
+import { GARDEN_ART } from '../src/js/garden/gardenArt.js';
 const root = 'assets/art/dream-forest';
 /** Isola células pelo vão de alfa e mede silhuetas sem editar as pinturas. */
 function sheet(file, count, outline = false) {
   const image = PNG.sync.read(fs.readFileSync(root + '/' + file)),
-    ink = Array(image.width)
-    .fill(0),
+    ink = Array(image.width).fill(0),
     edges = [0];
   for (let y = 0; y < image.height; y++)
     for (let x = 0; x < image.width; x++)
       if (image.data[(y * image.width + x) * 4 + 3] > 24) ink[x]++;
   for (let i = 1; i < count; i++) {
-    const center = i * image.width / count,
-      range = image.width / count * .22;
+    const center = (i * image.width) / count,
+      range = (image.width / count) * 0.22;
     let best = null,
       start = null;
     for (let x = Math.floor(center - range); x <= Math.ceil(center + range) + 1; x++) {
       if (x <= Math.ceil(center + range) && ink[x] <= 2) start ??= x;
       else if (start !== null) {
-        if (!best || x - start > best.end - best.start) best = {
-          start,
-          end: x
-        };
+        if (!best || x - start > best.end - best.start)
+          best = {
+            start,
+            end: x,
+          };
         start = null;
       }
     }
@@ -47,30 +43,32 @@ function sheet(file, count, outline = false) {
           x1 = Math.max(x1, x);
           y0 = Math.min(y0, y);
           y1 = Math.max(y1, y);
-        } if (x1 < x0) throw Error('Célula vazia: ' + file);
+        }
+    if (x1 < x0) throw Error('Célula vazia: ' + file);
     const f = {
       x: x0,
       y: y0,
       w: x1 - x0 + 1,
-      h: y1 - y0 + 1
+      h: y1 - y0 + 1,
     };
     if (outline) {
       const left = [],
         right = [];
       for (let k = 0; k <= 24; k++) {
-        const y = Math.min(y1, Math.round(y0 + (y1 - y0) * k / 24));
+        const y = Math.min(y1, Math.round(y0 + ((y1 - y0) * k) / 24));
         let a = x1,
           b = x0;
         for (let x = x0; x <= x1; x++)
           if (image.data[(y * image.width + x) * 4 + 3] > 140) {
             a = Math.min(a, x);
             b = Math.max(b, x);
-          } if (b >= a) {
+          }
+        if (b >= a) {
           left.push([(a - x0) / f.w, (y - y0) / f.h]);
           right.push([(b - x0) / f.w, (y - y0) / f.h]);
         }
       }
-      f.outline = [...left, ...right.reverse()].map(p => p.map(v => +v.toFixed(5)));
+      f.outline = [...left, ...right.reverse()].map((p) => p.map((v) => +v.toFixed(5)));
     }
     frames.push(f);
   }
@@ -78,11 +76,11 @@ function sheet(file, count, outline = false) {
     file: 'dream-forest/' + file,
     width: image.width,
     height: image.height,
-    referenceHeight: Math.max(...frames.map(f => f.h)),
-    frames
+    referenceHeight: Math.max(...frames.map((f) => f.h)),
+    frames,
   };
 }
-const roach = PNG.sync.read(fs.readFileSync(root + '/barata-pesadelo-v1.png'));
+const roach = PNG.sync.read(fs.readFileSync(root + '/roach-nightmare-v1.png'));
 /** Amostra pixels do corpo para que a luz conte também cabelos e sapatos da pose desenhada. */
 function bodyPoints(set, index) {
   const f = set.frames[index],
@@ -95,29 +93,33 @@ function bodyPoints(set, index) {
       if (image.data[(y * image.width + x) * 4 + 3] > 160) {
         a = Math.min(a, x);
         b = Math.max(b, x);
-      } if (b >= a)
+      }
+    if (b >= a)
       for (const x of [a, (a + b) / 2, b]) {
         const sourceX = Math.round(x),
           pixel = (Math.round(y) * image.width + sourceX) * 4 + 3;
-        if (image.data[pixel] > 160) points.push([+((sourceX - f.x - f.anchorX) / 256 * 160)
-          .toFixed(3), +((y - f.y - f.h) / 256 * 160)
-          .toFixed(3)
-        ]);
+        if (image.data[pixel] > 160)
+          points.push([
+            +(((sourceX - f.x - f.anchorX) / 256) * 160).toFixed(3),
+            +(((y - f.y - f.h) / 256) * 160).toFixed(3),
+          ]);
       }
   }
   return points;
 }
 const bodies = {
-  run: GARDEN_ART.sets['menina-corrida-v1'].frames.map((_, i) => bodyPoints(GARDEN_ART.sets['menina-corrida-v1'], i)),
-  idle: bodyPoints(GARDEN_ART.sets['menina-acoes-v1'], 7)
+  run: GARDEN_ART.sets['girl-running-v1'].frames.map((_, i) =>
+    bodyPoints(GARDEN_ART.sets['girl-running-v1'], i),
+  ),
+  idle: bodyPoints(GARDEN_ART.sets['girl-actions-v1'], 7),
 };
 /** Grade 3×2 com células independentes: margem é conferida antes de gerar recortes. */
 function gridSheet(file, columns, rows, outline = false) {
   const image = PNG.sync.read(fs.readFileSync(root + '/' + file)),
     frames = [];
   for (let i = 0; i < columns * rows; i++) {
-    const left = i % columns * image.width / columns,
-      top = Math.floor(i / columns) * image.height / rows,
+    const left = ((i % columns) * image.width) / columns,
+      top = (Math.floor(i / columns) * image.height) / rows,
       right = left + image.width / columns,
       bottom = top + image.height / rows;
     let x0 = right,
@@ -131,30 +133,33 @@ function gridSheet(file, columns, rows, outline = false) {
           x1 = Math.max(x1, x);
           y0 = Math.min(y0, y);
           y1 = Math.max(y1, y);
-        } if (x0 <= left + 2 || x1 >= right - 3 || y0 <= top + 2 || y1 >= bottom - 3) throw Error('Pose furtiva toca a célula: ' + i);
+        }
+    if (x0 <= left + 2 || x1 >= right - 3 || y0 <= top + 2 || y1 >= bottom - 3)
+      throw Error('Pose furtiva toca a célula: ' + i);
     const f = {
       x: x0,
       y: y0,
       w: x1 - x0 + 1,
-      h: y1 - y0 + 1
+      h: y1 - y0 + 1,
     };
     if (outline) {
       const a = [],
         b = [];
       for (let k = 0; k <= 24; k++) {
-        const y = Math.min(y1, Math.round(y0 + (y1 - y0) * k / 24));
+        const y = Math.min(y1, Math.round(y0 + ((y1 - y0) * k) / 24));
         let l = x1,
           r = x0;
         for (let x = x0; x <= x1; x++)
           if (image.data[(y * image.width + x) * 4 + 3] > 140) {
             l = Math.min(l, x);
             r = Math.max(r, x);
-          } if (r >= l) {
+          }
+        if (r >= l) {
           a.push([(l - x0) / f.w, (y - y0) / f.h]);
           b.push([(r - x0) / f.w, (y - y0) / f.h]);
         }
       }
-      f.outline = [...a, ...b.reverse()].map(p => p.map(v => +v.toFixed(5)));
+      f.outline = [...a, ...b.reverse()].map((p) => p.map((v) => +v.toFixed(5)));
     }
     frames.push(f);
   }
@@ -163,7 +168,7 @@ function gridSheet(file, columns, rows, outline = false) {
     width: image.width,
     height: image.height,
     frames,
-    referenceHeight: Math.round(Math.max(...frames.map(f => f.h)) / .68)
+    referenceHeight: Math.round(Math.max(...frames.map((f) => f.h)) / 0.68),
   };
 }
 /** Mede componentes completos de atuação, sem cortar cabelos pela grade nominal. */
@@ -191,27 +196,38 @@ function isolatedActors(file, count, fullMask = false) {
       y0 = Math.min(y0, y);
       y1 = Math.max(y1, y);
       for (const [dx, dy] of [
-          [-1, 0],
-          [1, 0],
-          [0, -1],
-          [0, 1],
-          [-1, -1],
-          [1, 1],
-          [-1, 1],
-          [1, -1]
-        ]) {
+        [-1, 0],
+        [1, 0],
+        [0, -1],
+        [0, 1],
+        [-1, -1],
+        [1, 1],
+        [-1, 1],
+        [1, -1],
+      ]) {
         const nx = x + dx,
           ny = y + dy,
           next = ny * image.width + nx;
-        if (nx < 0 || nx >= image.width || ny < 0 || ny >= image.height || seen[next] || image.data[next * 4 + 3] <= 24) continue;
+        if (
+          nx < 0 ||
+          nx >= image.width ||
+          ny < 0 ||
+          ny >= image.height ||
+          seen[next] ||
+          image.data[next * 4 + 3] <= 24
+        )
+          continue;
         seen[next] = 1;
         queue[tail++] = next;
       }
     }
     if (tail > 2000) {
-      const topMask = Array.from({
-        length: 24
-      }, () => [image.width, 0]);
+      const topMask = Array.from(
+        {
+          length: 24,
+        },
+        () => [image.width, 0],
+      );
       for (let k = 0; k < tail; k++) {
         const x = queue[k] % image.width,
           y = Math.floor(queue[k] / image.width) - y0;
@@ -220,12 +236,17 @@ function isolatedActors(file, count, fullMask = false) {
           topMask[y][1] = Math.max(topMask[y][1], x - x0);
         }
       }
-      const rowMask = fullMask ? Array.from({
-        length: y1 - y0 + 1
-      }, () => [image.width, 0]) : null;
+      const rowMask = fullMask
+        ? Array.from(
+            {
+              length: y1 - y0 + 1,
+            },
+            () => [image.width, 0],
+          )
+        : null;
       if (rowMask)
         for (let k = 0; k < tail; k++) {
-          const x = queue[k] % image.width - x0,
+          const x = (queue[k] % image.width) - x0,
             y = Math.floor(queue[k] / image.width) - y0;
           rowMask[y][0] = Math.min(rowMask[y][0], x);
           rowMask[y][1] = Math.max(rowMask[y][1], x);
@@ -236,40 +257,43 @@ function isolatedActors(file, count, fullMask = false) {
         w: x1 - x0 + 1,
         h: y1 - y0 + 1,
         topMask,
-        ...(rowMask ? {
-          rowMask
-        } : {})
+        ...(rowMask
+          ? {
+              rowMask,
+            }
+          : {}),
       });
     }
   }
   if (parts.length !== count) throw Error('Quantidade de poses isoladas inválida em ' + file);
-  parts.sort((a, b) => (a.y + a.h / 2) - (b.y + b.h / 2));
-  const frames = [...parts.slice(0, count / 2)
-    .sort((a, b) => a.x - b.x), ...parts.slice(count / 2)
-    .sort((a, b) => a.x - b.x)
+  parts.sort((a, b) => a.y + a.h / 2 - (b.y + b.h / 2));
+  const frames = [
+    ...parts.slice(0, count / 2).sort((a, b) => a.x - b.x),
+    ...parts.slice(count / 2).sort((a, b) => a.x - b.x),
   ];
   for (const f of frames) {
     let left = f.x + f.w,
       right = f.x;
-    for (let y = f.y + Math.floor(f.h * .94); y < f.y + f.h; y++)
+    for (let y = f.y + Math.floor(f.h * 0.94); y < f.y + f.h; y++)
       for (let x = f.x; x < f.x + f.w; x++)
         if (image.data[(y * image.width + x) * 4 + 3] > 160) {
           left = Math.min(left, x);
           right = Math.max(right, x);
-        } f.foot = [(left + right) / 2 - f.x, f.h];
+        }
+    f.foot = [(left + right) / 2 - f.x, f.h];
     f.anchorX = f.w / 2;
   }
   return {
     file: 'dream-forest/' + file,
     width: image.width,
     height: image.height,
-    referenceHeight: Math.max(...frames.map(f => f.h)),
-    frames
+    referenceHeight: Math.max(...frames.map((f) => f.h)),
+    frames,
   };
 }
-const stealth = gridSheet('yuna-furtiva-v4.png', 3, 2),
+const stealth = gridSheet('yuna-stealth-v4.png', 3, 2),
   stealthImage = PNG.sync.read(fs.readFileSync('assets/art/' + stealth.file));
-stealth.bodies = stealth.frames.map(f => {
+stealth.bodies = stealth.frames.map((f) => {
   const points = [];
   for (let y = f.y + 2; y < f.y + f.h; y += 7) {
     let a = f.x + f.w,
@@ -278,34 +302,39 @@ stealth.bodies = stealth.frames.map(f => {
       if (stealthImage.data[(y * stealthImage.width + x) * 4 + 3] > 160) {
         a = Math.min(a, x);
         b = Math.max(b, x);
-      } if (b >= a)
+      }
+    if (b >= a)
       for (const q of [a, Math.round((a + b) / 2), b])
-        if (stealthImage.data[(y * stealthImage.width + q) * 4 + 3] > 160) points.push([+((q - f.x - f.w / 2) / stealth.referenceHeight * 160)
-          .toFixed(3), +((y - f.y - f.h) / stealth.referenceHeight * 160)
-          .toFixed(3)
-        ]);
+        if (stealthImage.data[(y * stealthImage.width + q) * 4 + 3] > 160)
+          points.push([
+            +(((q - f.x - f.w / 2) / stealth.referenceHeight) * 160).toFixed(3),
+            +(((y - f.y - f.h) / stealth.referenceHeight) * 160).toFixed(3),
+          ]);
   }
   return points;
 });
-const shelters = gridSheet('abrigos-floresta-v2.png', 2, 2, true);
+const shelters = gridSheet('shelters-forest-v2.png', 2, 2, true);
 {
   const image = PNG.sync.read(fs.readFileSync('assets/art/' + shelters.file)),
     f = shelters.frames[2];
-  f.surface = Array.from({
-    length: 65
-  }, (_, i) => {
-    const x = f.x + Math.round((f.w - 1) * i / 64);
-    let y = f.y;
-    while (y < f.y + f.h && image.data[(y * image.width + x) * 4 + 3] <= 140) y++;
-    return +((y - f.y) / f.h)
-      .toFixed(5);
-  });
+  f.surface = Array.from(
+    {
+      length: 65,
+    },
+    (_, i) => {
+      const x = f.x + Math.round(((f.w - 1) * i) / 64);
+      let y = f.y;
+      while (y < f.y + f.h && image.data[(y * image.width + x) * 4 + 3] <= 140) y++;
+      return +((y - f.y) / f.h).toFixed(5);
+    },
+  );
 }
 /** Corpos medidos com a mesma âncora de água/mão usada no desenho. */
 function actorBodies(set, anchor) {
   const image = PNG.sync.read(fs.readFileSync('assets/art/' + set.file));
-  return set.frames.map(f => {
-    const [ax, ay] = anchor(f), points = [];
+  return set.frames.map((f) => {
+    const [ax, ay] = anchor(f),
+      points = [];
     for (let y = f.y + 2; y < f.y + f.h; y += 8) {
       let a = f.x + f.w,
         b = f.x;
@@ -313,32 +342,33 @@ function actorBodies(set, anchor) {
         if (image.data[(y * image.width + x) * 4 + 3] > 160) {
           a = Math.min(a, x);
           b = Math.max(b, x);
-        } if (b >= a)
+        }
+      if (b >= a)
         for (const x of [a, Math.round((a + b) / 2), b])
-          if (image.data[(y * image.width + x) * 4 + 3] > 160) points.push([+((x - f.x - ax) / set.referenceHeight * 160)
-            .toFixed(4), +((y - f.y - ay) / set.referenceHeight * 160)
-            .toFixed(4)
-          ]);
+          if (image.data[(y * image.width + x) * 4 + 3] > 160)
+            points.push([
+              +(((x - f.x - ax) / set.referenceHeight) * 160).toFixed(4),
+              +(((y - f.y - ay) / set.referenceHeight) * 160).toFixed(4),
+            ]);
     }
     return points;
   });
 }
 
-const lakes = gridSheet('lagos-lama-v2.png', 2, 2, true),
-  swim = gridSheet('yuna-nado-v2.png', 2, 2);
+const lakes = gridSheet('lakes-mud-v2.png', 2, 2, true),
+  swim = gridSheet('yuna-swimming-v2.png', 2, 2);
 swim.referenceHeight = 900;
 swim.frames.forEach((f, i) => {
-  f.water = [f.w * .55, f.h * [.84, .82, .8, .84][i]];
+  f.water = [f.w * 0.55, f.h * [0.84, 0.82, 0.8, 0.84][i]];
 });
-swim.bodies = actorBodies(swim, f => f.water);
+swim.bodies = actorBodies(swim, (f) => f.water);
 // Cada linha tem vãos transparentes próprios: não cortar a mão que ultrapassa a grade nominal.
-const exitImage = PNG.sync.read(fs.readFileSync(root + '/yuna-saida-lama-v2.png')),
+const exitImage = PNG.sync.read(fs.readFileSync(root + '/yuna-exit-mud-v2.png')),
   exitFrames = [];
 for (let row = 0; row < 2; row++) {
-  const ink = Array(exitImage.width)
-    .fill(0),
-    top = row * exitImage.height / 2,
-    bottom = (row + 1) * exitImage.height / 2;
+  const ink = Array(exitImage.width).fill(0),
+    top = (row * exitImage.height) / 2,
+    bottom = ((row + 1) * exitImage.height) / 2;
   for (let y = top; y < bottom; y++)
     for (let x = 0; x < exitImage.width; x++)
       if (exitImage.data[(y * exitImage.width + x) * 4 + 3] > 24) ink[x]++;
@@ -347,9 +377,9 @@ for (let row = 0; row < 2; row++) {
   for (let x = 0; x <= exitImage.width; x++)
     if (x < exitImage.width && ink[x]) start ??= x;
     else if (start !== null) {
-    spans.push([start, x - 1]);
-    start = null;
-  }
+      spans.push([start, x - 1]);
+      start = null;
+    }
   if (spans.length !== 3) throw Error('Saída da lama precisa de três poses isoladas por linha.');
   for (const [x0, x1] of spans) {
     let y0 = bottom,
@@ -359,11 +389,12 @@ for (let row = 0; row < 2; row++) {
         if (exitImage.data[(y * exitImage.width + x) * 4 + 3] > 24) {
           y0 = Math.min(y0, y);
           y1 = Math.max(y1, y);
-        } exitFrames.push({
+        }
+    exitFrames.push({
       x: x0,
       y: y0,
       w: x1 - x0 + 1,
-      h: y1 - y0 + 1
+      h: y1 - y0 + 1,
     });
   }
 }
@@ -373,7 +404,7 @@ const contacts = [
     [1444, 416],
     [418, 876],
     [972, 894],
-    [1452, 893]
+    [1452, 893],
   ],
   feet = [
     [95, 390],
@@ -381,48 +412,50 @@ const contacts = [
     [1100, 405],
     [231, 906],
     [791, 897],
-    [1251, 917]
+    [1251, 917],
   ];
 const bankClimb = {
-  file: 'dream-forest/yuna-saida-lama-v2.png',
+  file: 'dream-forest/yuna-exit-mud-v2.png',
   width: exitImage.width,
   height: exitImage.height,
   referenceHeight: 530,
-  frames: exitFrames
+  frames: exitFrames,
 };
 bankClimb.frames.forEach((f, i) => {
   f.hand = [contacts[i][0] - f.x, contacts[i][1] - f.y];
   f.foot = [feet[i][0] - f.x, feet[i][1] - f.y];
   f.support = i === 5 ? f.foot : f.hand;
 });
-bankClimb.bodies = actorBodies(bankClimb, f => f.support);
-const mudJump = isolatedActors('yuna-salto-lama-v1.png', 4);
-mudJump.bodies = actorBodies(mudJump, f => f.foot);
-const splash = gridSheet('respingo-lama-v1.png', 1, 1),
-  cinematicGirl = isolatedActors('yuna-cinematica-pesadelo-v2.png', 4),
-  cinematicImage = PNG.sync.read(fs.readFileSync(root + '/floresta-cinematica-v1.png')),
+bankClimb.bodies = actorBodies(bankClimb, (f) => f.support);
+const mudJump = isolatedActors('yuna-jump-mud-v1.png', 4);
+mudJump.bodies = actorBodies(mudJump, (f) => f.foot);
+const splash = gridSheet('splash-mud-v1.png', 1, 1),
+  cinematicGirl = isolatedActors('yuna-cinematic-nightmare-v2.png', 4),
+  cinematicImage = PNG.sync.read(fs.readFileSync(root + '/forest-cinematic-v1.png')),
   cinematicForest = {
-    file: 'dream-forest/floresta-cinematica-v1.png',
+    file: 'dream-forest/forest-cinematic-v1.png',
     width: cinematicImage.width,
-    height: cinematicImage.height
+    height: cinematicImage.height,
   };
-const hillImage = PNG.sync.read(fs.readFileSync(root + '/morro-terra-v1.png'));
+const hillImage = PNG.sync.read(fs.readFileSync(root + '/hill-soil-v1.png'));
 const hills = {
-  file: 'dream-forest/morro-terra-v1.png',
+  file: 'dream-forest/hill-soil-v1.png',
   width: hillImage.width,
   height: hillImage.height,
-  frames: [{
-    x: 0,
-    y: 100,
-    w: hillImage.width,
-    h: hillImage.height - 100
-  }]
+  frames: [
+    {
+      x: 0,
+      y: 100,
+      w: hillImage.width,
+      h: hillImage.height - 100,
+    },
+  ],
 };
-const windFall = isolatedActors('yuna-queda-vento-v1.png', 4, true);
-const openingGirl = isolatedActors('yuna-abertura-sonho-v1.png', 4, true);
+const windFall = isolatedActors('yuna-fall-wind-v1.png', 4, true);
+const openingGirl = isolatedActors('yuna-opening-dream-v1.png', 4, true);
 openingGirl.frames[1].hand = [1280 - openingGirl.frames[1].x, 260 - openingGirl.frames[1].y];
 openingGirl.frames[2].hand = [725 - openingGirl.frames[2].x, 713 - openingGirl.frames[2].y];
-const openingLook = isolatedActors('yuna-olhar-nanda-v2.png', 1, true);
+const openingLook = isolatedActors('yuna-looking-nanda-v2.png', 1, true);
 const art = {
   openingLook,
   openingGirl,
@@ -437,20 +470,27 @@ const art = {
   bankClimb,
   stealth,
   shelters,
-  fright: sheet('yuna-susto-em-pe-v2.png', 2),
+  fright: sheet('yuna-fright-standing-v2.png', 2),
   bodies,
   roach: {
-    file: 'dream-forest/barata-pesadelo-v1.png',
+    file: 'dream-forest/roach-nightmare-v1.png',
     width: roach.width,
     height: roach.height,
     eyes: [
-      [.385, .526],
-      [.495, .526]
+      [0.385, 0.526],
+      [0.495, 0.526],
     ],
-    head: [.44, .526]
+    head: [0.44, 0.526],
   },
-  rocks: sheet('pedras-pesadelo-v1.png', 3, true),
-  wake: sheet('yuna-despertar-v2.png', 3)
+  rocks: sheet('rocks-nightmare-v1.png', 3, true),
+  wake: sheet('yuna-waking-v2.png', 3),
 };
-fs.writeFileSync('src/js/dream-forest/DreamNightmareArt.js', '// Gerado por prepare-dream-nightmare.js; alfa, olhos e recortes de apresentação.\nexport const DREAM_NIGHTMARE_ART=' + JSON.stringify(art) + ';\n');
-console.log('Pesadelo preparado: lagos irregulares, quatro poses de nado, saída própria da lama, abrigos e corpos opacos.');
+fs.writeFileSync(
+  'src/js/dream-forest/dreamNightmareArt.js',
+  '// Gerado por prepare-dream-nightmare.js; alfa, olhos e recortes de apresentação.\nexport const DREAM_NIGHTMARE_ART=' +
+    JSON.stringify(art) +
+    ';\n',
+);
+console.log(
+  'Pesadelo preparado: lagos irregulares, quatro poses de nado, saída própria da lama, abrigos e corpos opacos.',
+);

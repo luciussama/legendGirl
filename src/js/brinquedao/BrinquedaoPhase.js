@@ -1,34 +1,18 @@
-import {
-  GardenInput
-} from '../garden/GardenInput.js';
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
-import {
-  BrinquedaoAudio
-} from './BrinquedaoAudio.js';
-import {
-  BrinquedaoRenderer
-} from './BrinquedaoRenderer.js';
+import { GardenInput } from '../garden/GardenInput.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
+import { BrinquedaoAudio } from './BrinquedaoAudio.js';
+import { BrinquedaoRenderer } from './BrinquedaoRenderer.js';
 import {
   createBrinquedaoState,
   restoreBrinquedaoState,
   stepBrinquedao,
-  recoverBrinquedao
-} from './BrinquedaoSimulation.js';
-import {
-  advanceBrinquedaoStory
-} from './BrinquedaoStory.js';
+  recoverBrinquedao,
+} from './brinquedaoSimulation.js';
+import { advanceBrinquedaoStory } from './brinquedaoStory.js';
 /** Fase isolada com circuito próprio, pausa, leitura, áudio e persistência de campanha. */
 export class BrinquedaoPhase {
   /** Inicializa simulação isolada e cria os serviços de apresentação e entrada. */
-  constructor({
-    canvas,
-    audio,
-    enabled = () => true,
-    difficulty = 'NORMAL',
-    campaign = false
-  }) {
+  constructor({ canvas, audio, enabled = () => true, difficulty = 'NORMAL', campaign = false }) {
     this.canvas = canvas;
     this.enabled = enabled;
     this.campaign = campaign;
@@ -40,12 +24,18 @@ export class BrinquedaoPhase {
     this.paused = false;
     this.renderer = new BrinquedaoRenderer(canvas);
     this.audio = new BrinquedaoAudio(audio);
-    this.input = new GardenInput(canvas, () => this.ready && !this.error && !this.paused && this.enabled(), () => this.renderer.controls(), () => this.audio.unlock(), () => this.reading());
+    this.input = new GardenInput(
+      canvas,
+      () => this.ready && !this.error && !this.paused && this.enabled(),
+      () => this.renderer.controls(),
+      () => this.audio.unlock(),
+      () => this.reading(),
+    );
     this.onBlur = () => this.setPaused(true);
     this.onFocus = () => {
       if (this.enabled()) this.setPaused(false);
     };
-    this.onVisibility = () => document.hidden ? this.onBlur() : this.onFocus();
+    this.onVisibility = () => (document.hidden ? this.onBlur() : this.onFocus());
   }
   /** Indica se a fase ainda não foi descartada. */
   get active() {
@@ -53,9 +43,12 @@ export class BrinquedaoPhase {
   }
   /** Expõe se a etapa atual aceita leitura ou avanço narrativo. */
   reading() {
-    return this.state.stage === 'INTRO' || this.state.stage === 'COMPLETE' && !this.state.story.endingDone ? {
-      seen: false
-    } : null;
+    return this.state.stage === 'INTRO' ||
+      (this.state.stage === 'COMPLETE' && !this.state.story.endingDone)
+      ? {
+          seen: false,
+        }
+      : null;
   }
   /** Avança a fala e impede que o mesmo gesto seja interpretado como salto. */
   advanceDialogue() {
@@ -78,7 +71,8 @@ export class BrinquedaoPhase {
       window.addEventListener('blur', this.onBlur);
       window.addEventListener('focus', this.onFocus);
       document.addEventListener('visibilitychange', this.onVisibility);
-      if (Number.isFinite(saved?.musicTime) && saved.musicTime >= 0) this.audio.music.currentTime = saved.musicTime;
+      if (Number.isFinite(saved?.musicTime) && saved.musicTime >= 0)
+        this.audio.music.currentTime = saved.musicTime;
     } catch (e) {
       this.error = 'Não foi possível abrir o Brinquedão: ' + e.message;
       this.input.destroy();
@@ -92,7 +86,8 @@ export class BrinquedaoPhase {
       return;
     }
     const wasIntro = this.state.stage === 'INTRO';
-    for (const event of stepBrinquedao(this.state, this.input.sample(), Math.max(0, dt) / 60)) this.audio.event(event.type);
+    for (const event of stepBrinquedao(this.state, this.input.sample(), Math.max(0, dt) / 60))
+      this.audio.event(event.type);
     if (wasIntro && this.state.stage !== 'INTRO') {
       this.input.clear();
       this.input.blockJumpUntilRelease = true;
@@ -101,14 +96,17 @@ export class BrinquedaoPhase {
   }
   /** Sincroniza áudio e compõe cena, interior ou circuito conforme o estado atual. */
   render() {
-    this.audio.update(this.state, !this.ready || Boolean(this.error) || this.paused || this.disposed || !this.enabled());
+    this.audio.update(
+      this.state,
+      !this.ready || Boolean(this.error) || this.paused || this.disposed || !this.enabled(),
+    );
     this.renderer.render(this.state, {
       ready: this.ready,
       error: this.error,
       paused: this.paused,
       touch: this.input.touch || isMobileDevice(),
       /** Encaminha a confirmação narrativa e impede que o mesmo gesto vire pulo. */
-      onAdvance: () => this.advanceDialogue()
+      onAdvance: () => this.advanceDialogue(),
     });
   }
   /** Pausa a trilha e limpa entradas retidas ao mudar o foco da página. */
@@ -122,7 +120,7 @@ export class BrinquedaoPhase {
     return {
       version: 1,
       state: structuredClone(this.state),
-      musicTime: Number.isFinite(this.audio.music.currentTime) ? this.audio.music.currentTime : 0
+      musicTime: Number.isFinite(this.audio.music.currentTime) ? this.audio.music.currentTime : 0,
     };
   }
   /** Retoma somente em recuperação/derrota e devolve a personagem ao checkpoint válido. */

@@ -1,7 +1,4 @@
-import {
-  CHASE_FALL_DURATION,
-  isChaseDefeat
-} from './ChaseHealth.js';
+import { CHASE_FALL_DURATION, isChaseDefeat } from './chaseHealth.js';
 
 const ROOT = new URL('../../../assets/audio/bear-chase/', import.meta.url);
 
@@ -16,8 +13,8 @@ export class ChaseAudio {
     this.buffers = new Map();
     this.voices = new Map();
     this.indices = {
-      menina: 0,
-      urso: 0
+      girl: 0,
+      bear: 0,
     };
     this.started = false;
     this.paused = false;
@@ -35,38 +32,43 @@ export class ChaseAudio {
     this.host?.initAudio?.();
     const ctx = this.host?.getAudioContext?.();
     if (!ctx || this.loading || this.disposed) return;
-    this.loading = Promise.all(['menina', 'urso'].flatMap(actor => Array.from({
-        length: 6
-      }, async (_, i) => {
-        const key = actor + '-' + String(i + 1)
-          .padStart(2, '0');
-        const response = await fetch(new URL('passos/' + key + '.wav', ROOT));
-        if (!response.ok) throw new Error('Passo não encontrado: ' + key);
-        const buffer = await ctx.decodeAudioData(await response.arrayBuffer());
-        if (!this.disposed) this.buffers.set(key, buffer);
-      })))
-      .catch(() => {
-        this.error = 'Alguns passos não puderam ser carregados.';
-      });
+    this.loading = Promise.all(
+      ['girl', 'bear'].flatMap((actor) =>
+        Array.from(
+          {
+            length: 6,
+          },
+          async (_, i) => {
+            const key = actor + '-' + String(i + 1).padStart(2, '0');
+            const response = await fetch(new URL('footsteps/' + key + '.wav', ROOT));
+            if (!response.ok) throw new Error('Passo não encontrado: ' + key);
+            const buffer = await ctx.decodeAudioData(await response.arrayBuffer());
+            if (!this.disposed) this.buffers.set(key, buffer);
+          },
+        ),
+      ),
+    ).catch(() => {
+      this.error = 'Alguns passos não puderam ser carregados.';
+    });
   }
   /** Toca uma variação de passo com ganho limitado, acompanhando a distância do urso. */
   step(actor, gap) {
     const ctx = this.host?.getAudioContext?.();
-    if (this.paused || this.host?.isMuted?.() || ctx?.state !== 'running' || this.voices.size >= 8) return;
+    if (this.paused || this.host?.isMuted?.() || ctx?.state !== 'running' || this.voices.size >= 8)
+      return;
     const index = this.indices[actor]++ % 6;
-    const buffer = this.buffers.get(actor + '-' + String(index + 1)
-      .padStart(2, '0'));
+    const buffer = this.buffers.get(actor + '-' + String(index + 1).padStart(2, '0'));
     if (!buffer) return;
     const source = ctx.createBufferSource(),
       gain = ctx.createGain();
     source.buffer = buffer;
-    const distanceGain = actor === 'urso' ? Math.max(.12, 1 / (1 + gap * .12)) : .6;
-    gain.gain.value = distanceGain * .65 * (this.host?.getMasterVolume?.() ?? 1);
+    const distanceGain = actor === 'bear' ? Math.max(0.12, 1 / (1 + gap * 0.12)) : 0.6;
+    gain.gain.value = distanceGain * 0.65 * (this.host?.getMasterVolume?.() ?? 1);
     source.connect(gain);
     gain.connect(ctx.destination);
     this.voices.set(source, {
       gain,
-      level: distanceGain * .65
+      level: distanceGain * 0.65,
     });
     source.onended = () => {
       source.disconnect();
@@ -84,24 +86,35 @@ export class ChaseAudio {
       this.host?.stopArenaMusic?.();
       this.started = true;
     }
-    const fade = state.stage === 'FALLING' ? Math.max(0, 1 - state.age / CHASE_FALL_DURATION) :
-      state.stage === 'CAUGHT' ? Math.max(0, 1 - state.age / 1.4) :
-      ['CHEST_RETURN', 'COMPLETE', 'GAME_OVER'].includes(state.stage) ? 0 : 1;
+    const fade =
+      state.stage === 'FALLING'
+        ? Math.max(0, 1 - state.age / CHASE_FALL_DURATION)
+        : state.stage === 'CAUGHT'
+          ? Math.max(0, 1 - state.age / 1.4)
+          : ['CHEST_RETURN', 'COMPLETE', 'GAME_OVER'].includes(state.stage)
+            ? 0
+            : 1;
     const muted = this.host?.isMuted?.();
-    this.music.volume = (muted ? 0 : this.host?.getMasterVolume?.() ?? 1) * .35 * fade;
+    this.music.volume = (muted ? 0 : (this.host?.getMasterVolume?.() ?? 1)) * 0.35 * fade;
     // Atualiza também vozes existentes ao mutar: pausa imediatamente evita caudas audíveis.
     if (muted || isChaseDefeat(state.stage)) this.stopSteps();
     else
-      for (const {
-          gain,
-          level
-        }
-        of this.voices.values()) gain.gain.value = level * (this.host?.getMasterVolume?.() ?? 1);
-    if (this.started && !this.paused && fade > 0 && !muted && this.music.paused && !this.playPending) {
+      for (const { gain, level } of this.voices.values())
+        gain.gain.value = level * (this.host?.getMasterVolume?.() ?? 1);
+    if (
+      this.started &&
+      !this.paused &&
+      fade > 0 &&
+      !muted &&
+      this.music.paused &&
+      !this.playPending
+    ) {
       this.playPending = true;
-      this.music.play()
+      this.music
+        .play()
         .catch(() => {
-          /* Nova interação permite tentar novamente. */ })
+          /* Nova interação permite tentar novamente. */
+        })
         .finally(() => {
           this.playPending = false;
         });
@@ -114,7 +127,8 @@ export class ChaseAudio {
       try {
         source.stop();
       } catch (_) {
-        /* Fonte já encerrada. */ }
+        /* Fonte já encerrada. */
+      }
     }
     this.voices.clear();
   }
@@ -130,19 +144,22 @@ export class ChaseAudio {
   snapshot() {
     return {
       time: this.music.currentTime || 0,
-      started: this.started
+      started: this.started,
     };
   }
   /** Retoma posição quando os metadados ficam disponíveis, sem disparar reprodução. */
   restore(saved) {
     this.started = Boolean(saved?.started);
     const seek = () => {
-      if (!this.disposed) this.music.currentTime = Math.max(0, Number(saved?.time) || 0) % (this.music.duration || 94.08);
+      if (!this.disposed)
+        this.music.currentTime =
+          Math.max(0, Number(saved?.time) || 0) % (this.music.duration || 94.08);
     };
     if (this.music.readyState) seek();
-    else this.music.addEventListener('loadedmetadata', seek, {
-      once: true
-    });
+    else
+      this.music.addEventListener('loadedmetadata', seek, {
+        once: true,
+      });
   }
   /** Libera elementos e buffers próprios sem alterar outros recursos de áudio do jogo. */
   destroy() {

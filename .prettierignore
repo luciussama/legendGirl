@@ -1,0 +1,20 @@
+node_modules/
+src/vendor/
+assets/
+docs/
+.agents/
+.venv/
+dist/
+package-lock.json
+# Metadados regeneráveis: a formatação é determinada pelos preparadores.
+src/js/assets/illustratedGirl.js
+src/js/assets/darkRoomAtlas.js
+src/js/assets/girlLocomotionArt.js
+src/js/garden/*Art.js
+src/js/garden/gardenContactData.js
+src/js/dream-forest/dreamArt.js
+src/js/dream-forest/dreamGliderArt.js
+src/js/dream-forest/dreamNightmareArt.js
+src/js/brinquedao/brinquedaoArt.js
+src/js/chapters/chapterArt.js
+src/js/toy-room/battlePlayerBounds.js

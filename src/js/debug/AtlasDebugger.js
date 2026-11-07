@@ -8,7 +8,7 @@ import {
   darkRoomAtlas,
   SHEET_WIDTH,
   SHEET_HEIGHT,
-  validateAtlasRegion
+  validateAtlasRegion,
 } from '../assets/darkRoomAtlas.js';
 
 export class AtlasDebugger {
@@ -43,13 +43,14 @@ export class AtlasDebugger {
 
     for (const [key, region] of entries) {
       const isValid = validateAtlasRegion(region, SHEET_WIDTH, SHEET_HEIGHT);
-      const boundsError = region.x < 0 || region.y < 0 ?
-        'Coordenada negativa' :
-        (region.x + region.width > SHEET_WIDTH || region.y + region.height > SHEET_HEIGHT) ?
-        'Ultrapassa limites do sheet' :
-        (region.width <= 0 || region.height <= 0) ?
-        'Dimensão inválida' :
-        null;
+      const boundsError =
+        region.x < 0 || region.y < 0
+          ? 'Coordenada negativa'
+          : region.x + region.width > SHEET_WIDTH || region.y + region.height > SHEET_HEIGHT
+            ? 'Ultrapassa limites do sheet'
+            : region.width <= 0 || region.height <= 0
+              ? 'Dimensão inválida'
+              : null;
 
       results.push({
         key,
@@ -59,18 +60,20 @@ export class AtlasDebugger {
         width: region.width,
         height: region.height,
         valid: isValid,
-        error: boundsError
+        error: boundsError,
       });
 
       // Valida sub-regiões se existirem
       if (region.items) {
         for (const [subKey, subRegion] of Object.entries(region.items)) {
           const subValid = validateAtlasRegion(subRegion, SHEET_WIDTH, SHEET_HEIGHT);
-          const subError = subRegion.x < 0 || subRegion.y < 0 ?
-            'Coordenada negativa' :
-            (subRegion.x + subRegion.width > SHEET_WIDTH || subRegion.y + subRegion.height > SHEET_HEIGHT) ?
-            'Ultrapassa limites' :
-            null;
+          const subError =
+            subRegion.x < 0 || subRegion.y < 0
+              ? 'Coordenada negativa'
+              : subRegion.x + subRegion.width > SHEET_WIDTH ||
+                  subRegion.y + subRegion.height > SHEET_HEIGHT
+                ? 'Ultrapassa limites'
+                : null;
           results.push({
             key: `${key}.${subKey}`,
             label: `${region.label} > ${subRegion.label || subKey}`,
@@ -79,7 +82,7 @@ export class AtlasDebugger {
             width: subRegion.width,
             height: subRegion.height,
             valid: subValid,
-            error: subError
+            error: subError,
           });
         }
       }
@@ -140,7 +143,8 @@ export class AtlasDebugger {
     `;
 
     const controls = document.createElement('div');
-    controls.style.cssText = 'margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;';
+    controls.style.cssText =
+      'margin-bottom: 16px; display: flex; gap: 10px; flex-wrap: wrap; align-items: center;';
     controls.innerHTML = `
       <span style="font-size: 13px; color: #e2e8f0; font-weight: bold;">Status da Validação:</span>
       <span id="atlas-test-status" style="background: #10b981; color: #fff; padding: 4px 10px; border-radius: 4px; font-size: 12px; font-weight: bold;">
@@ -207,7 +211,7 @@ export class AtlasDebugger {
     if (!this.canvas || !this.ctx) return;
 
     const results = this.validateAllRegions();
-    const allValid = results.every(r => r.valid);
+    const allValid = results.every((r) => r.valid);
     const statusEl = document.getElementById('atlas-test-status');
     if (statusEl) {
       if (allValid) {
@@ -219,7 +223,9 @@ export class AtlasDebugger {
       }
     }
 
-    const sheet = this.assets ? (this.assets.get('dark-room-production-spritesheet') || this.assets.get(this.sheetKey)) : null;
+    const sheet = this.assets
+      ? this.assets.get('dark-room-production-spritesheet') || this.assets.get(this.sheetKey)
+      : null;
     const padding = 16;
     const cardWidth = 320;
     const cardHeight = 260;
@@ -261,7 +267,11 @@ export class AtlasDebugger {
       ctx.fillStyle = '#94a3b8';
       ctx.font = '11px ui-monospace, monospace';
       ctx.fillText(`key: ${item.key}`, cardX + 10, cardY + 38);
-      ctx.fillText(`x:${item.x} y:${item.y} w:${item.width} h:${item.height}`, cardX + 10, cardY + 52);
+      ctx.fillText(
+        `x:${item.x} y:${item.y} w:${item.width} h:${item.height}`,
+        cardX + 10,
+        cardY + 52,
+      );
 
       // Área do Sprite
       const spriteAreaX = cardX + 10;
@@ -278,13 +288,17 @@ export class AtlasDebugger {
 
       if (sheet) {
         // Obter região
-        const regCanvas = this.assets ? (
-          this.assets.get('dark-room-sprite-' + item.key.replace(/_/g, '-')) ||
-          this.assets.getRegion('dark-room-production-spritesheet', item) ||
-          this.assets.getRegion(this.sheetKey, item)
-        ) : null;
+        const regCanvas = this.assets
+          ? this.assets.get('dark-room-sprite-' + item.key.replace(/_/g, '-')) ||
+            this.assets.getRegion('dark-room-production-spritesheet', item) ||
+            this.assets.getRegion(this.sheetKey, item)
+          : null;
         if (regCanvas) {
-          const scale = Math.min((spriteAreaW - 16) / item.width, (spriteAreaH - 16) / item.height, 1.2);
+          const scale = Math.min(
+            (spriteAreaW - 16) / item.width,
+            (spriteAreaH - 16) / item.height,
+            1.2,
+          );
           const dw = item.width * scale;
           const dh = item.height * scale;
           const dx = spriteAreaX + (spriteAreaW - dw) / 2;

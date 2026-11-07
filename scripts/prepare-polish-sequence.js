@@ -1,11 +1,7 @@
 // Recorta uma única sequência; nunca redesenha poses nem altera parâmetros de combate.
 import fs from 'node:fs/promises';
-import {
-  createHash
-} from 'node:crypto';
-import {
-  PNG
-} from 'pngjs';
+import { createHash } from 'node:crypto';
+import { PNG } from 'pngjs';
 
 function isolate(png) {
   const size = png.width * png.height,
@@ -13,10 +9,15 @@ function isolate(png) {
     seen = new Uint8Array(size);
   const queue = new Int32Array(size),
     components = [];
-  const neighbors = n => {
+  const neighbors = (n) => {
     const x = n % png.width,
       y = Math.floor(n / png.width);
-    return [x ? n - 1 : -1, x < png.width - 1 ? n + 1 : -1, y ? n - png.width : -1, y < png.height - 1 ? n + png.width : -1];
+    return [
+      x ? n - 1 : -1,
+      x < png.width - 1 ? n + 1 : -1,
+      y ? n - png.width : -1,
+      y < png.height - 1 ? n + png.width : -1,
+    ];
   };
   for (let i = 0; i < size; i++) {
     if (seen[i] || png.data[i * 4 + 3] < 128) continue;
@@ -51,14 +52,13 @@ function isolate(png) {
       x,
       y,
       right,
-      bottom
+      bottom,
     });
   }
   // Propaga a propriedade das bordas transparentes sem misturar desenhos vizinhos.
   let head = 0,
     tail = 0;
-  for (let i = 0; i < size; i++)
-    if (labels[i]) queue[tail++] = i;
+  for (let i = 0; i < size; i++) if (labels[i]) queue[tail++] = i;
   while (head < tail) {
     const n = queue[head++];
     for (const k of neighbors(n))
@@ -79,7 +79,7 @@ function isolate(png) {
     }
   return {
     labels,
-    components
+    components,
   };
 }
 
@@ -90,17 +90,15 @@ const landmarks = JSON.parse(landmarksText);
 const sheet = PNG.sync.read(await fs.readFile(`${root}/polish/${stem}.png`));
 const manifest = JSON.parse(await fs.readFile(`${root}/remediation/manifest.json`, 'utf8'));
 const previous = manifest.actors[actor].animations[animation];
-if (landmarks.length !== previous.frames.length) throw Error('A quantidade de quadros não pode mudar neste passe.');
-const {
-  labels,
-  components
-} = isolate(sheet);
-if (components.length !== landmarks.length) throw Error('Quantidade de corpos completos incompatível.');
-components.sort((a, b) => (a.y + a.bottom) - (b.y + b.bottom));
+if (landmarks.length !== previous.frames.length)
+  throw Error('A quantidade de quadros não pode mudar neste passe.');
+const { labels, components } = isolate(sheet);
+if (components.length !== landmarks.length)
+  throw Error('Quantidade de corpos completos incompatível.');
+components.sort((a, b) => a.y + a.bottom - (b.y + b.bottom));
 const sorted = [];
 for (let start = 0; start < components.length; start += columns)
-  sorted.push(...components.slice(start, start + columns)
-    .sort((a, b) => a.x - b.x));
+  sorted.push(...components.slice(start, start + columns).sort((a, b) => a.x - b.x));
 const frames = [];
 for (let i = 0; i < landmarks.length; i++) {
   const c = sorted[i],
@@ -110,7 +108,7 @@ for (let i = 0; i < landmarks.length; i++) {
     bottom = c.bottom;
   const out = new PNG({
     width: right - left + 25,
-    height: bottom - top + 25
+    height: bottom - top + 25,
   });
   for (let y = top; y <= bottom; y++)
     for (let x = left; x <= right; x++) {
@@ -120,7 +118,7 @@ for (let i = 0; i < landmarks.length; i++) {
     }
   const file = `polish/${stem}/${String(i + 1).padStart(2, '0')}.png`;
   await fs.mkdir(`${root}/polish/${stem}`, {
-    recursive: true
+    recursive: true,
   });
   await fs.writeFile(`${root}/${file}`, PNG.sync.write(out));
   // A escala e a referência corporal são declaradas pela revisão, nunca pelo centro do punho.
@@ -131,21 +129,21 @@ for (let i = 0; i < landmarks.length; i++) {
     height: out.height,
     anchor: {
       x: mark.x - left + 12,
-      y: mark.y - top + 12
+      y: mark.y - top + 12,
     },
     bodyReference: 'torso-ground',
     bodyLandmark: mark,
     displayScale: mark.scale,
     source: `polish/${stem}.png`,
-    sha256: createHash('sha256')
-      .update(out.data)
-      .digest('hex')
+    sha256: createHash('sha256').update(out.data).digest('hex'),
   });
 }
 manifest.actors[actor].animations[animation] = {
   ...previous,
   frames,
-  polish: stem
+  polish: stem,
 };
 await fs.writeFile(`${root}/remediation/manifest.json`, JSON.stringify(manifest, null, 2) + '\n');
-console.log(`Candidato aplicado isoladamente: ${actor}/${animation}. Validação e playtest obrigatórios.`);
+console.log(
+  `Candidato aplicado isoladamente: ${actor}/${animation}. Validação e playtest obrigatórios.`,
+);

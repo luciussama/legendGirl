@@ -1,28 +1,10 @@
-import {
-  drawDialogueControls,
-  dialogueControlsHeight
-} from '../narrative/DialogueControls.js';
-import {
-  offerDialogue,
-  setDialogueBounds
-} from '../narrative/DialogueFlow.js';
-import {
-  renderMobileDialogueRegion
-} from './MobileDialogueRegion.js';
-import {
-  GIRL_V2_FRAMES
-} from '../assets/illustratedGirl.js';
-import {
-  isMobileDevice
-} from '../controllers/MobileZoom.js';
-import {
-  getDialogueSafeArea,
-  getDialogueBoxY
-} from './DialogueSafeArea.js';
-import {
-  getPauseNarration,
-  renderPoeticNarration
-} from '../narrative/PoeticNarrator.js';
+import { drawDialogueControls, dialogueControlsHeight } from '../narrative/dialogueControls.js';
+import { offerDialogue, setDialogueBounds } from '../narrative/dialogueFlow.js';
+import { renderMobileDialogueRegion } from './mobileDialogueRegion.js';
+import { GIRL_V2_FRAMES } from '../assets/illustratedGirl.js';
+import { isMobileDevice } from '../controllers/mobileZoom.js';
+import { getDialogueSafeArea, getDialogueBoxY } from './dialogueSafeArea.js';
+import { getPauseNarration, renderPoeticNarration } from '../narrative/poeticNarrator.js';
 
 /**
  * DialogueRenderer.js
@@ -38,7 +20,7 @@ export class DialogueRenderer {
   /**
    * Desenha o retrato vetorial ilustrado do personagem com expressões de humor
    * @param {CanvasRenderingContext2D} pCtx
-   * @param {string} charType 'fairy' ou 'baby'
+   * @param {string} charType 'fairy' ou 'player'
    * @param {number} px
    * @param {number} py
    * @param {number} radius
@@ -80,7 +62,14 @@ export class DialogueRenderer {
     pCtx.arc(px, py, radius - 3, 0, Math.PI * 2);
     pCtx.stroke();
 
-    const portraitPose = mood === 'angry' ? 'sword_idle' : mood === 'happy' ? 'collect' : mood === 'sad' ? 'damage' : 'idle';
+    const portraitPose =
+      mood === 'angry'
+        ? 'sword_idle'
+        : mood === 'happy'
+          ? 'collect'
+          : mood === 'sad'
+            ? 'damage'
+            : 'idle';
     const portrait = GIRL_V2_FRAMES[portraitPose][0];
     const girlImage = charType !== 'fairy' && options.assets?.get(portrait.key);
     if (girlImage) {
@@ -90,8 +79,17 @@ export class DialogueRenderer {
       pCtx.clip();
       const headHeight = Math.min(122, portrait.h),
         scale = (radius * 2 - 8) / headHeight;
-      pCtx.drawImage(girlImage, portrait.x, portrait.y, portrait.w, headHeight,
-        px - portrait.faceX * scale, py - headHeight * scale / 2, portrait.w * scale, headHeight * scale);
+      pCtx.drawImage(
+        girlImage,
+        portrait.x,
+        portrait.y,
+        portrait.w,
+        headHeight,
+        px - portrait.faceX * scale,
+        py - (headHeight * scale) / 2,
+        portrait.w * scale,
+        headHeight * scale,
+      );
       pCtx.restore();
       pCtx.restore();
       return;
@@ -275,8 +273,7 @@ export class DialogueRenderer {
     for (let i = 0; i < words.length; i++) {
       const word = words[i];
       const testLine = currentLine ? `${currentLine} ${word}` : word;
-      const testWidth = pCtx.measureText(testLine)
-        .width;
+      const testWidth = pCtx.measureText(testLine).width;
       if (testWidth > maxWidth && currentLine) {
         lines.push(currentLine);
         currentLine = word;
@@ -308,11 +305,15 @@ export class DialogueRenderer {
     const plotTwistActive = Boolean(state.plotTwistActive);
     const plotTwistStep = state.plotTwistStep || 0;
     const tick = state.tick || 0;
-    const isPortrait = Boolean(state.isPortrait ?? (canvas.height > canvas.width || (canvas.width > 0 && canvas.height / canvas.width > 0.85)));
+    const isPortrait = Boolean(
+      state.isPortrait ??
+      (canvas.height > canvas.width || (canvas.width > 0 && canvas.height / canvas.width > 0.85)),
+    );
 
     const getActivePromptDevice = options.getActivePromptDevice || (() => 'touch');
 
-    const isStandbyShowing = isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);
+    const isStandbyShowing =
+      isStandbyActive || (isStandbyTransitioning && standbyDialogueAlpha > 0.01);
     // Exibe diálogo apenas quando cutscene estiver ativa, durante standby ou nos passos 4 (Bebê) e 5 (Fada) da reviravolta
     if (!cutsceneActive && (!plotTwistActive || plotTwistStep < 4) && !isStandbyShowing) return;
 
@@ -321,7 +322,7 @@ export class DialogueRenderer {
     if (narration) {
       renderPoeticNarration(ctx, canvas, narration, {
         separateScene: true,
-        anchor: options.characterAnchor
+        anchor: options.characterAnchor,
       });
       return;
     }
@@ -345,7 +346,6 @@ export class DialogueRenderer {
       ctx.moveTo(0, canvas.height - 42);
       ctx.lineTo(canvas.width, canvas.height - 42);
       ctx.stroke();
-
     }
 
     // Determina o interlocutor ativo, texto e expressão
@@ -373,7 +373,7 @@ export class DialogueRenderer {
         advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
       }
     } else if (plotTwistActive && plotTwistStep === 4) {
-      speaker = 'baby';
+      speaker = 'player';
       speakerName = 'MENINA';
       speakerColor = '#fed7aa';
       mood = 'shocked';
@@ -394,7 +394,7 @@ export class DialogueRenderer {
       dialogueText = '"A porta é por ali. Anda, vem comigo!"';
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     } else if (cutsceneStep === 2) {
-      speaker = 'baby';
+      speaker = 'player';
       speakerName = 'MENINA';
       speakerColor = '#fed7aa';
       mood = 'normal';
@@ -402,20 +402,25 @@ export class DialogueRenderer {
       advancePrompt = 'Toque / Espaço / (X) para continuar ➔';
     }
 
-    this.renderDialogue(ctx, canvas, {
-      speaker,
-      speakerName,
-      speakerColor,
-      mood,
-      text: dialogueText,
-      advancePrompt,
-      tick,
-      isPortrait,
-      emphasis: plotTwistActive
-    }, {
-      ...options,
-      readingHint: !isStandbyShowing
-    });
+    this.renderDialogue(
+      ctx,
+      canvas,
+      {
+        speaker,
+        speakerName,
+        speakerColor,
+        mood,
+        text: dialogueText,
+        advancePrompt,
+        tick,
+        isPortrait,
+        emphasis: plotTwistActive,
+      },
+      {
+        ...options,
+        readingHint: !isStandbyShowing,
+      },
+    );
     ctx.restore();
   }
 
@@ -424,10 +429,15 @@ export class DialogueRenderer {
     if (!ctx || !canvas || !dialogue?.text) return;
     if (!offerDialogue(canvas, dialogue.text, options.onAdvance)) return;
     const {
-      speaker = 'fairy', speakerName = 'NANDA', mood = 'normal', tick = 0,
-        speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
-        text: dialogueText, advancePrompt = '', emphasis: plotTwistActive = false,
-        isPortrait = canvas.height > canvas.width || canvas.height / canvas.width > 0.85
+      speaker = 'fairy',
+      speakerName = 'NANDA',
+      mood = 'normal',
+      tick = 0,
+      speakerColor = speaker === 'fairy' ? '#fef08a' : '#fed7aa',
+      text: dialogueText,
+      advancePrompt = '',
+      emphasis: plotTwistActive = false,
+      isPortrait = canvas.height > canvas.width || canvas.height / canvas.width > 0.85,
     } = dialogue;
     const drawDialoguePortrait = (pCtx, charType, px, py, radius, expression) =>
       this.drawPortrait(pCtx, charType, px, py, radius, expression, tick, options);
@@ -436,7 +446,7 @@ export class DialogueRenderer {
     ctx.textBaseline = 'alphabetic';
     // 2. Dimensionamento adaptativo do container e quebra de palavras para evitar transbordamento
     const safe = {
-      ...getDialogueSafeArea(canvas)
+      ...getDialogueSafeArea(canvas),
     };
     if (Number.isFinite(options.bottom)) safe.bottom = Math.min(safe.bottom, options.bottom);
     const originalBoxW = Math.min(canvas.width - 24, 760);
@@ -448,8 +458,8 @@ export class DialogueRenderer {
     const textMaxW = boxW - (textX - boxX) - 20;
 
     // Escala dinâmica de tamanho de fonte e quebra de linha
-    const uiScale = canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.()
-      .width || canvas.width);
+    const uiScale =
+      canvas.width / (canvas.clientWidth || canvas.getBoundingClientRect?.().width || canvas.width);
     let fontSize = (isPortrait ? 14.5 : 16) * uiScale;
     ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
     const originalTextMaxW = originalBoxW - (textX - boxX) - 20;
@@ -469,9 +479,19 @@ export class DialogueRenderer {
     const contentH = lines.length * lineHeight;
     const controlsHeight = options.readingHint === false ? 0 : dialogueControlsHeight(uiScale);
     const boxH = Math.max(isPortrait ? 122 : 110, contentH + 52, portR * 2 + 48) + controlsHeight;
-    const regions = options.separateScene === false ? null :
-      renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
-    const boxY = regions?.boxY ?? getDialogueBoxY(safe, boxH, 12, options.characterAnchor, options.separateScene === false ? false : undefined);
+    const regions =
+      options.separateScene === false
+        ? null
+        : renderMobileDialogueRegion(ctx, canvas, safe, boxH, options.characterAnchor);
+    const boxY =
+      regions?.boxY ??
+      getDialogueBoxY(
+        safe,
+        boxH,
+        12,
+        options.characterAnchor,
+        options.separateScene === false ? false : undefined,
+      );
 
     setDialogueBounds(canvas, ctx, boxX, boxY, boxW, boxH);
     // Desenha o container da caixa de diálogo
@@ -483,7 +503,7 @@ export class DialogueRenderer {
     ctx.roundRect(boxX, boxY, boxW, boxH, 12);
     ctx.fill();
 
-    ctx.strokeStyle = (plotTwistActive ? '#ef4444' : '#d97706');
+    ctx.strokeStyle = plotTwistActive ? '#ef4444' : '#d97706';
     ctx.lineWidth = 2.4;
     ctx.stroke();
 
@@ -494,25 +514,26 @@ export class DialogueRenderer {
     ctx.stroke();
 
     // Joias decorativas nos cantos
-    const corners = [{
+    const corners = [
+      {
         x: boxX + 7,
-        y: boxY + 7
+        y: boxY + 7,
       },
       {
         x: boxX + boxW - 7,
-        y: boxY + 7
+        y: boxY + 7,
       },
       {
         x: boxX + 7,
-        y: boxY + boxH - 7
+        y: boxY + boxH - 7,
       },
       {
         x: boxX + boxW - 7,
-        y: boxY + boxH - 7
-      }
+        y: boxY + boxH - 7,
+      },
     ];
     ctx.fillStyle = '#facc15';
-    corners.forEach(c => {
+    corners.forEach((c) => {
       ctx.beginPath();
       ctx.arc(c.x, c.y, 2.8, 0, Math.PI * 2);
       ctx.fill();
@@ -541,37 +562,37 @@ export class DialogueRenderer {
         if (parts[0]) {
           ctx.fillStyle = '#fef9c3';
           ctx.fillText(parts[0], curX, curY);
-          curX += ctx.measureText(parts[0])
-            .width;
+          curX += ctx.measureText(parts[0]).width;
         }
         ctx.fillStyle = '#f472b6';
         ctx.font = `bold italic ${fontSize}px Palatino, Georgia, serif`;
         ctx.fillText('*risos*', curX, curY);
-        curX += ctx.measureText('*risos*')
-          .width;
+        curX += ctx.measureText('*risos*').width;
         ctx.font = `italic ${fontSize}px Palatino, Georgia, serif`;
         if (parts[1]) {
           ctx.fillStyle = '#fef9c3';
           ctx.fillText(parts[1], curX, curY);
         }
       } else {
-        ctx.fillStyle = (speaker === 'fairy' && mood === 'annoyed' && lineIdx === 0) ? '#fde047' : '#fef9c3';
+        ctx.fillStyle =
+          speaker === 'fairy' && mood === 'annoyed' && lineIdx === 0 ? '#fde047' : '#fef9c3';
         ctx.fillText(lineStr, textX, curY);
       }
     });
 
     // O aviso temporizado distingue leitura das confirmações de ação/prontidão.
-    if (controlsHeight) drawDialogueControls(ctx, canvas, {
-      left: boxX + 14 * uiScale,
-      top: boxY + boxH - controlsHeight - 5 * uiScale,
-      width: boxW - 28 * uiScale,
-      scale: uiScale,
-      color: '#e2c99c',
-      buttonColor: '#251b30'
-    });
+    if (controlsHeight)
+      drawDialogueControls(ctx, canvas, {
+        left: boxX + 14 * uiScale,
+        top: boxY + boxH - controlsHeight - 5 * uiScale,
+        width: boxW - 28 * uiScale,
+        scale: uiScale,
+        color: '#e2c99c',
+        buttonColor: '#251b30',
+      });
     else {
       ctx.fillStyle = '#e2c99c';
-      ctx.font = `bold ${11.5*uiScale}px sans-serif`;
+      ctx.font = `bold ${11.5 * uiScale}px sans-serif`;
       ctx.textAlign = 'right';
       ctx.fillText(advancePrompt, boxX + boxW - 14, boxY + boxH - 10);
     }

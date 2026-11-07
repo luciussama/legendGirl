@@ -89,9 +89,9 @@ Não há transição normal `GAMEPLAY_NORMAL → FIRST_JUMP_TUTORIAL` nem `FIRST
 | `game.js`: `doJump(inputSource)` | Valida origem e condições do salto; aplica o impulso existente. Somente depois de aceitá-lo libera controles, marca conclusão, muda o estado, renova `lastTime` e chama `saveProgress`. |
 | `game.js`: `isFirstJumpTutorial()` | Consulta fornecida à API de entrada utilizada pelo controller; retorna se o estado é `FIRST_JUMP_TUTORIAL`. |
 | [InputController](../src/js/controllers/InputController.js) | Filtra ponteiros, teclado e bordas do gamepad; encaminha a origem para `doJump`. |
-| [BabyRenderer](../src/js/entities/BabyRenderer.js): `resolveAnimationState` | Durante a espera seleciona `idle`, frame 0. |
-| [FirstJumpTutorial](../src/js/ui/FirstJumpTutorial.js) | Detecta instrução, calcula feedback e desenha painel compacto, ícone e seta; não escreve na simulação. Exportado também por `ui/index.js`. |
-| [StateVariables](../src/js/state/StateVariables.js) / [CampaignProgress](../src/js/state/CampaignProgress.js) | Defaults, captura, restauração e migração dos campos persistentes. |
+| [BabyRenderer](../src/js/entities/GirlRenderer.js): `resolveAnimationState` | Durante a espera seleciona `idle`, frame 0. |
+| [FirstJumpTutorial](../src/js/ui/firstJumpTutorial.js) | Detecta instrução, calcula feedback e desenha painel compacto, ícone e seta; não escreve na simulação. Exportado também por `ui/index.js`. |
+| [StateVariables](../src/js/state/stateVariables.js) / [CampaignProgress](../src/js/state/campaignProgress.js) | Defaults, captura, restauração e migração dos campos persistentes. |
 
 O bloqueio `baby.controlsLocked` é excepcionalmente permitido em `doJump` para aceitar o salto do próprio tutorial. Outros bloqueios e as verificações de solo/impulso continuam válidos. Não usar `isGrounded()` isoladamente para concluir que o tutorial não pode saltar: essa consulta normal considera controles bloqueados; o controller delega a validação final a `doJump` nesse estado.
 

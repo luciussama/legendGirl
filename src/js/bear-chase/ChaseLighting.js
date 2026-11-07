@@ -1,7 +1,5 @@
 import * as T from '../../vendor/three/three.module.js';
-import {
-  routePoint
-} from './ChaseRoute.js';
+import { routePoint } from './chaseRoute.js';
 
 /**
  * Compõe a iluminação da perseguição sem modificar a simulação ou as colisões.
@@ -49,18 +47,18 @@ export class ChaseLighting {
       right: 12.5,
       top: 24,
       bottom: -24,
-      near: .5,
+      near: 0.5,
       far: 80,
     });
     // bias/normalBias afastam a comparação da própria superfície, evitando manchas de auto-sombra.
     // Valores excessivos separam a sombra dos pés; radius controla a filtragem da borda em PCF.
-    this.front.shadow.bias = -.00025;
-    this.front.shadow.normalBias = .035;
+    this.front.shadow.bias = -0.00025;
+    this.front.shadow.normalBias = 0.035;
     this.front.shadow.radius = 3;
     owner.scene.add(this.front, this.front.target);
     this.lights.push(this.front);
 
-    this.reflected = new T.DirectionalLight('#dce9ff', .35);
+    this.reflected = new T.DirectionalLight('#dce9ff', 0.35);
     owner.scene.add(this.reflected, this.reflected.target);
 
     this.cookie = this.windowMask();
@@ -68,13 +66,13 @@ export class ChaseLighting {
     for (let i = 0; i < 3; i++) {
       // SpotLight: cor, intensidade, alcance, abertura em radianos, penumbra e decaimento.
       // O alcance local evita iluminar/projetar sombras através de vários trechos da curva.
-      const light = new T.SpotLight('#ffe7ba', 100, 18, .69, .45, 2);
+      const light = new T.SpotLight('#ffe7ba', 100, 18, 0.69, 0.45, 2);
       light.castShadow = false;
       light.map = this.cookie;
-      light.shadow.bias = -.0002;
-      light.shadow.normalBias = .025;
+      light.shadow.bias = -0.0002;
+      light.shadow.normalBias = 0.025;
       light.shadow.radius = 2;
-      light.shadow.camera.near = .3;
+      light.shadow.camera.near = 0.3;
       light.shadow.camera.far = 18;
       owner.scene.add(light, light.target);
       this.windows.push(light);
@@ -82,22 +80,22 @@ export class ChaseLighting {
     }
     // Um SpotLight amplo substitui a sombra da janela dominante. Uma luz pontual
     // com sombra exigiria seis faces; aqui são apenas dois mapas ativos no total.
-    this.fairy = new T.SpotLight('#c9f3ff', 1.8, 7.5, 1.08, .48, 2);
+    this.fairy = new T.SpotLight('#c9f3ff', 1.8, 7.5, 1.08, 0.48, 2);
     this.fairy.name = 'LuzDaFadinha';
     this.fairy.castShadow = true;
-    this.fairy.shadow.camera.near = .12;
+    this.fairy.shadow.camera.near = 0.12;
     this.fairy.shadow.camera.far = 7.5;
-    this.fairy.shadow.bias = -.00012;
-    this.fairy.shadow.normalBias = .008;
+    this.fairy.shadow.bias = -0.00012;
+    this.fairy.shadow.normalBias = 0.008;
     this.fairy.shadow.radius = 2;
-    this.fairy.shadow.intensity = .82;
+    this.fairy.shadow.intensity = 0.82;
     this.fairyOrigin = new T.Vector3();
     this.fairyTarget = new T.Vector3();
     owner.scene.add(this.fairy, this.fairy.target);
     this.lights.push(this.fairy);
     this.resize(false);
 
-    owner.scene.traverse(object => {
+    owner.scene.traverse((object) => {
       if (!object.isMesh) return;
       if (object.userData.fairyLuminous) return;
       const solid = !object.material.transparent;
@@ -202,10 +200,13 @@ export class ChaseLighting {
     // A altura de 28 evita a luz rasante que fazia a parede curva sombrear a pista inteira.
     this.place(this.front, bearS + 12, -1, 28, bearS - 8, 0);
 
-    const windows = this.owner.room.decorations.filter(object => object.userData.windowIndex !== undefined);
+    const windows = this.owner.room.decorations.filter(
+      (object) => object.userData.windowIndex !== undefined,
+    );
     for (let slot = 0; slot < 3; slot++) {
       let index = slot;
-      while (index < windows.length && windows[index].userData.routeDistance < state.distance - 22) index += 3;
+      while (index < windows.length && windows[index].userData.routeDistance < state.distance - 22)
+        index += 3;
       const light = this.windows[slot];
       const win = windows[index];
       if (!win) {
@@ -220,8 +221,8 @@ export class ChaseLighting {
       const fadeIn = T.MathUtils.smoothstep(53 - delta, 0, 16);
       const fadeOut = T.MathUtils.smoothstep(delta + 22, 0, 14);
       light.intensity = 100 * fadeIn * fadeOut;
-      light.visible = light.intensity > .01;
-      this.place(light, s, side * 5.2, 3.65, s + 5, -side * 1.7, .15);
+      light.visible = light.intensity > 0.01;
+      this.place(light, s, side * 5.2, 3.65, s + 5, -side * 1.7, 0.15);
       light.userData.windowDistance = s;
     }
 
@@ -231,15 +232,13 @@ export class ChaseLighting {
       light.castShadow = false;
     }
     this.owner.fairy.updateWorldMatrix(true, false);
-    this.fairyOrigin.set(0, 0, 0)
-      .applyMatrix4(this.owner.fairy.matrixWorld);
+    this.fairyOrigin.set(0, 0, 0).applyMatrix4(this.owner.fairy.matrixWorld);
     this.owner.girlModel.torso.updateWorldMatrix(true, false);
-    this.fairyTarget.set(0, .06, 0)
-      .applyMatrix4(this.owner.girlModel.torso.matrixWorld);
+    this.fairyTarget.set(0, 0.06, 0).applyMatrix4(this.owner.girlModel.torso.matrixWorld);
     this.fairy.position.copy(this.fairyOrigin);
     this.fairy.target.position.copy(this.fairyTarget);
     this.fairy.target.updateMatrixWorld();
-    this.fairy.intensity = 1.8 * (1 + Math.sin(state.time * 3.6) * .055);
+    this.fairy.intensity = 1.8 * (1 + Math.sin(state.time * 3.6) * 0.055);
   }
 
   /**
@@ -249,7 +248,7 @@ export class ChaseLighting {
    * @param {T.Object3D} root Raiz do brinquedo recém-adicionado à cena.
    */
   prepareObject(root) {
-    root.traverse(object => {
+    root.traverse((object) => {
       if (!object.isMesh) return;
       object.castShadow = !object.material.transparent;
       object.receiveShadow = true;

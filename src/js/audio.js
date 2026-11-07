@@ -1,19 +1,8 @@
-import {
-  GameSoundEffects,
-  preloadGameSounds
-} from './audio/GameSoundEffects.js';
-import {
-  scheduleDamageSound
-} from './toy-room/DamageAudio.js';
-import {
-  scheduleSwordSound
-} from './toy-room/SwordAudio.js';
-import {
-  scheduleEnemyMovement
-} from './toy-room/EnemyMovementAudio.js';
-import {
-  ArenaSoundEffects
-} from './toy-room/ArenaSoundEffects.js';
+import { GameSoundEffects, preloadGameSounds } from './audio/GameSoundEffects.js';
+import { scheduleDamageSound } from './toy-room/damageAudio.js';
+import { scheduleSwordSound } from './toy-room/swordAudio.js';
+import { scheduleEnemyMovement } from './toy-room/enemyMovementAudio.js';
+import { ArenaSoundEffects } from './toy-room/ArenaSoundEffects.js';
 
 export function createAudioSystem() {
   const arenaEffects = new ArenaSoundEffects();
@@ -22,7 +11,7 @@ export function createAudioSystem() {
   const state = {
     audioCtx: null,
     musicTrack: null,
-    masterGainNode: null
+    masterGainNode: null,
   };
 
   let masterVolume = 1.0;
@@ -34,7 +23,10 @@ export function createAudioSystem() {
     if (!state.masterGainNode) {
       try {
         state.masterGainNode = state.audioCtx.createGain();
-        state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+        state.masterGainNode.gain.setValueAtTime(
+          isMuted ? 0 : masterVolume,
+          state.audioCtx.currentTime,
+        );
         state.masterGainNode.connect(state.audioCtx.destination);
       } catch (e) {
         return state.audioCtx.destination;
@@ -50,7 +42,10 @@ export function createAudioSystem() {
       state.musicTrack.volume = Math.max(0, Math.min(1, 0.55 * effectiveVol));
     }
     if (toyRoomAudio) {
-      toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * effectiveVol * toyRoomMusicFade * toyRoomMusicIntensity));
+      toyRoomAudio.volume = Math.max(
+        0,
+        Math.min(1, 0.58 * effectiveVol * toyRoomMusicFade * toyRoomMusicIntensity),
+      );
     }
   }
 
@@ -58,7 +53,10 @@ export function createAudioSystem() {
   function setMasterVolume(vol) {
     masterVolume = Math.max(0, Math.min(1, typeof vol === 'number' ? vol : 1.0));
     if (state.audioCtx && state.masterGainNode) {
-      state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+      state.masterGainNode.gain.setValueAtTime(
+        isMuted ? 0 : masterVolume,
+        state.audioCtx.currentTime,
+      );
     }
     updateMusicVolumes();
     return masterVolume;
@@ -77,7 +75,10 @@ export function createAudioSystem() {
       gameEffects.stop();
     }
     if (state.audioCtx && state.masterGainNode) {
-      state.masterGainNode.gain.setValueAtTime(isMuted ? 0 : masterVolume, state.audioCtx.currentTime);
+      state.masterGainNode.gain.setValueAtTime(
+        isMuted ? 0 : masterVolume,
+        state.audioCtx.currentTime,
+      );
     }
     updateMusicVolumes();
     return isMuted;
@@ -115,7 +116,7 @@ export function createAudioSystem() {
   function clearActiveSounds() {
     arenaEffects.stop();
     gameEffects.stop();
-    activeAudioNodes.forEach(node => {
+    activeAudioNodes.forEach((node) => {
       try {
         if (typeof node.stop === 'function') node.stop();
         if (typeof node.disconnect === 'function') node.disconnect();
@@ -129,17 +130,20 @@ export function createAudioSystem() {
   function getMusicTrack() {
     if (!state.musicTrack) {
       try {
-        const fallbackUrl = new URL('../../assets/audio/High-Frequency%20Violin.mp3', import.meta.url)
-          .href;
-        const primaryUrl = new URL('../../assets/audio/High-Frequency%20Violin.mp3', import.meta.url)
-          .href;
+        const fallbackUrl = new URL(
+          '../../assets/audio/High-Frequency%20Violin.mp3',
+          import.meta.url,
+        ).href;
+        const primaryUrl = new URL(
+          '../../assets/audio/High-Frequency%20Violin.mp3',
+          import.meta.url,
+        ).href;
         state.musicTrack = new Audio(primaryUrl);
         state.musicTrack.onerror = () => {
           if (state.musicTrack && state.musicTrack.src !== fallbackUrl) {
             state.musicTrack.src = fallbackUrl;
             if (isMusicWanted && !isToyRoomMusicWanted) {
-              state.musicTrack.play()
-                .catch(() => {});
+              state.musicTrack.play().catch(() => {});
             }
           }
         };
@@ -151,8 +155,7 @@ export function createAudioSystem() {
         state.musicTrack.addEventListener('ended', () => {
           if (isMusicWanted && !isToyRoomMusicWanted) {
             state.musicTrack.currentTime = 0;
-            state.musicTrack.play()
-              .catch(() => {});
+            state.musicTrack.play().catch(() => {});
           }
         });
       } catch (error) {
@@ -166,12 +169,11 @@ export function createAudioSystem() {
   function initAudio() {
     try {
       if (!state.audioCtx) {
-        state.audioCtx = new(window.AudioContext || window.webkitAudioContext)();
+        state.audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       }
 
       if (state.audioCtx && state.audioCtx.state === 'suspended') {
-        state.audioCtx.resume()
-          .catch(() => {});
+        state.audioCtx.resume().catch(() => {});
       }
 
       arenaEffects.preload(state.audioCtx);
@@ -180,13 +182,11 @@ export function createAudioSystem() {
       // Inicializa ou retoma a trilha correspondente à fase atual se estiver pausada
       if (isToyRoomMusicWanted) {
         if (toyRoomAudio && toyRoomAudio.paused) {
-          toyRoomAudio.play()
-            .catch(() => {});
+          toyRoomAudio.play().catch(() => {});
         }
       } else if (isMusicWanted) {
         if (state.musicTrack && state.musicTrack.paused) {
-          state.musicTrack.play()
-            .catch(() => {});
+          state.musicTrack.play().catch(() => {});
         }
       }
     } catch (e) {}
@@ -200,16 +200,14 @@ export function createAudioSystem() {
       stopToyRoomMusic(); // Garante que a música da sala de brinquedos pare
 
       if (state.audioCtx && state.audioCtx.state === 'suspended') {
-        state.audioCtx.resume()
-          .catch(() => {});
+        state.audioCtx.resume().catch(() => {});
       }
 
       const track = getMusicTrack();
       if (track) {
         track.volume = Math.max(0, Math.min(1, 0.55 * (isMuted ? 0 : masterVolume)));
         if (track.paused) {
-          track.play()
-            .catch(() => {});
+          track.play().catch(() => {});
         }
       }
     } catch (e) {}
@@ -237,7 +235,7 @@ export function createAudioSystem() {
   function playJumpSound() {
     if (effectsPaused || isMuted || !state.audioCtx) return false;
     return gameEffects.play(state.audioCtx, getDestination(), 'jump', {
-      volume: .325
+      volume: 0.325,
     });
   }
 
@@ -460,7 +458,7 @@ export function createAudioSystem() {
   }
 
   /** Sintetiza um impacto grave e curto para o contato da menina com o chão. */
-  function playBabyThudSound() {
+  function playPlayerThudSound() {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
@@ -484,7 +482,7 @@ export function createAudioSystem() {
   }
 
   /** Produz dois tons ascendentes para a reação de surpresa da menina. */
-  function playBabyShockVoice() {
+  function playPlayerShockVoice() {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
@@ -571,11 +569,9 @@ export function createAudioSystem() {
     const fileName = track === 'sword' ? 'Circular Dissonance (1).mp3' : 'The Circle Game.mp3';
     const encodedFileName = encodeURIComponent(fileName);
     return [
-      new URL(`../../assets/audio/${encodedFileName}`, import.meta.url)
-      .href,
-      new URL(`../audio/${encodedFileName}`, import.meta.url)
-      .href,
-      `/src/audio/${encodedFileName}`
+      new URL(`../../assets/audio/${encodedFileName}`, import.meta.url).href,
+      new URL(`../audio/${encodedFileName}`, import.meta.url).href,
+      `/src/audio/${encodedFileName}`,
     ];
   }
 
@@ -594,20 +590,24 @@ export function createAudioSystem() {
           }
           toyRoomAudio.src = currentTrackUrls[toyRoomTrackFallbackIndex];
           if (isToyRoomMusicWanted && !isMuted) {
-            toyRoomAudio.play()
-              .catch(() => {});
+            toyRoomAudio.play().catch(() => {});
           }
         };
         toyRoomAudio.loop = true;
-        toyRoomAudio.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
+        toyRoomAudio.volume = Math.max(
+          0,
+          Math.min(
+            1,
+            0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity,
+          ),
+        );
         toyRoomAudio.preload = 'auto';
 
         // Loop contínuo e sem interrupções
         toyRoomAudio.addEventListener('ended', () => {
           if (isToyRoomMusicWanted && !isMuted) {
             toyRoomAudio.currentTime = 0;
-            toyRoomAudio.play()
-              .catch(() => {});
+            toyRoomAudio.play().catch(() => {});
           }
         });
       } catch (err) {
@@ -631,17 +631,17 @@ export function createAudioSystem() {
     audioEl.src = primaryUrl;
     audioEl.currentTime = 0;
     audioEl.load();
-    audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
+    audioEl.volume = Math.max(
+      0,
+      Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity),
+    );
     if (isToyRoomMusicWanted && !isMuted) {
-      audioEl.play()
-        .catch(() => {});
+      audioEl.play().catch(() => {});
     }
   }
 
   /** Ativa a trilha da sala com fade inicial e encerra música e efeitos da fase anterior. */
-  function startToyRoomMusic({
-    fade = 1
-  } = {}) {
+  function startToyRoomMusic({ fade = 1 } = {}) {
     effectsPaused = false;
     if (toyRoomMusicTrack !== 'theme') setToyRoomMusicTrack('theme');
     toyRoomMusicFade = Math.max(0, Math.min(1, fade));
@@ -650,19 +650,20 @@ export function createAudioSystem() {
     clearActiveSounds(); // Limpa efeitos sonoros remanescentes da fase anterior
 
     if (state.audioCtx && state.audioCtx.state === 'suspended') {
-      state.audioCtx.resume()
-        .catch(() => {});
+      state.audioCtx.resume().catch(() => {});
     }
 
     const audioEl = getToyRoomAudioElement();
     if (audioEl) {
       audioEl.loop = true;
-      audioEl.volume = Math.max(0, Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity));
+      audioEl.volume = Math.max(
+        0,
+        Math.min(1, 0.58 * (isMuted ? 0 : masterVolume) * toyRoomMusicFade * toyRoomMusicIntensity),
+      );
       if (audioEl.paused && !isMuted) {
-        audioEl.play()
-          .catch(() => {
-            // Bloqueio de reprodução automática prevenido até a primeira interação
-          });
+        audioEl.play().catch(() => {
+          // Bloqueio de reprodução automática prevenido até a primeira interação
+        });
       }
     }
   }
@@ -685,9 +686,14 @@ export function createAudioSystem() {
     try {
       if (!state.audioCtx || state.audioCtx.state !== 'running') return;
       const now = state.audioCtx.currentTime;
-      const buffer = state.audioCtx.createBuffer(1, state.audioCtx.sampleRate * 0.8, state.audioCtx.sampleRate);
+      const buffer = state.audioCtx.createBuffer(
+        1,
+        state.audioCtx.sampleRate * 0.8,
+        state.audioCtx.sampleRate,
+      );
       const data = buffer.getChannelData(0);
-      for (let i = 0; i < data.length; i++) data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
+      for (let i = 0; i < data.length; i++)
+        data[i] = (Math.random() * 2 - 1) * (1 - i / data.length);
       const source = state.audioCtx.createBufferSource(),
         filter = state.audioCtx.createBiquadFilter(),
         gain = state.audioCtx.createGain();
@@ -781,14 +787,12 @@ export function createAudioSystem() {
     if (isMuted) return;
     if (isToyRoomMusicWanted && toyRoomAudio) {
       if (wasToyRoomAudioPlaying || toyRoomAudio.paused) {
-        toyRoomAudio.play()
-          .catch(() => {});
+        toyRoomAudio.play().catch(() => {});
         wasToyRoomAudioPlaying = false;
       }
     } else if (isMusicWanted && state.musicTrack) {
       if (wasMusicTrackPlaying || state.musicTrack.paused) {
-        state.musicTrack.play()
-          .catch(() => {});
+        state.musicTrack.play().catch(() => {});
         wasMusicTrackPlaying = false;
       }
     }
@@ -878,34 +882,35 @@ export function createAudioSystem() {
       const now = state.audioCtx.currentTime;
 
       // Fanfarra triunfante e festiva
-      const notes = [{
+      const notes = [
+        {
           f: 523.25,
           t: 0.0,
-          d: 0.18
+          d: 0.18,
         },
         {
           f: 659.25,
           t: 0.16,
-          d: 0.18
+          d: 0.18,
         },
         {
           f: 783.99,
           t: 0.32,
-          d: 0.18
+          d: 0.18,
         },
         {
           f: 1046.5,
           t: 0.48,
-          d: 0.55
+          d: 0.55,
         },
         {
           f: 1318.5,
           t: 0.72,
-          d: 0.85
-        }
+          d: 0.85,
+        },
       ];
 
-      notes.forEach(n => {
+      notes.forEach((n) => {
         const startTime = now + n.t;
         const osc = state.audioCtx.createOscillator();
         const gain = state.audioCtx.createGain();
@@ -962,7 +967,7 @@ export function createAudioSystem() {
       victory: [523, 1047, 'triangle', 0.16, 0.7],
       defeat: [220, 55, 'sawtooth', 0.16, 0.65],
       heart_gain: [660, 990, 'sine', 0.11, 0.22],
-      heart_loss: [240, 100, 'triangle', 0.12, 0.22]
+      heart_loss: [240, 100, 'triangle', 0.12, 0.22],
     };
     const swordEvent = arena && ['player_attack', 'sword_impact', 'sword_block'].includes(event);
     const profile = sounds[event];
@@ -976,24 +981,42 @@ export function createAudioSystem() {
       // O corte tem resposta imediata mesmo no primeiro golpe, antes de decodificar o MP3.
       // A amostra acrescenta o timbre; não substitui o início sincronizado do gesto.
       if (event === 'player_attack') {
-        scheduleSwordSound(state.audioCtx, getDestination() || state.audioCtx.destination,
-          registerActiveNode, event);
+        scheduleSwordSound(
+          state.audioCtx,
+          getDestination() || state.audioCtx.destination,
+          registerActiveNode,
+          event,
+        );
         arenaEffects.play(state.audioCtx, getDestination(), event);
         return true;
       }
       if (arenaEffects.play(state.audioCtx, getDestination(), event)) return true;
     }
 
-    if (swordEvent) return scheduleSwordSound(state.audioCtx, getDestination() || state.audioCtx.destination,
-      registerActiveNode, event);
+    if (swordEvent)
+      return scheduleSwordSound(
+        state.audioCtx,
+        getDestination() || state.audioCtx.destination,
+        registerActiveNode,
+        event,
+      );
 
     if (event.endsWith('_hit')) {
-      return scheduleDamageSound(state.audioCtx, getDestination() || state.audioCtx.destination,
-        registerActiveNode, event.slice(0, -4), arena);
+      return scheduleDamageSound(
+        state.audioCtx,
+        getDestination() || state.audioCtx.destination,
+        registerActiveNode,
+        event.slice(0, -4),
+        arena,
+      );
     }
     if (event.endsWith('_walk') && event !== 'player_walk') {
-      return scheduleEnemyMovement(state.audioCtx, getDestination() || state.audioCtx.destination,
-        registerActiveNode, event.slice(0, -5));
+      return scheduleEnemyMovement(
+        state.audioCtx,
+        getDestination() || state.audioCtx.destination,
+        registerActiveNode,
+        event.slice(0, -5),
+      );
     }
 
     let [startFrequency, endFrequency, waveform, volume, duration] = profile;
@@ -1004,7 +1027,7 @@ export function createAudioSystem() {
       duration *= 1.2;
     }
     // A transferência continua audível, abaixo do contato e da reação do brinquedo.
-    if (arena && (event === 'heart_gain' || event === 'heart_loss')) volume *= .25;
+    if (arena && (event === 'heart_gain' || event === 'heart_loss')) volume *= 0.25;
     const now = state.audioCtx.currentTime;
     const oscillator = state.audioCtx.createOscillator();
     const gain = state.audioCtx.createGain();
@@ -1029,9 +1052,9 @@ export function createAudioSystem() {
     const now = state.audioCtx.currentTime;
     // Reforço percussivo discreto, sem uma segunda melodia disputando a música da espada.
     for (const [frequency, waveform, volume, duration] of [
-        [beat % 4 === 0 ? 80 : 120, 'sine', beat % 4 === 0 ? 0.1 : 0.055, 0.12],
-        [beat % 2 === 0 ? 650 : 950, 'triangle', 0.018, 0.045]
-      ]) {
+      [beat % 4 === 0 ? 80 : 120, 'sine', beat % 4 === 0 ? 0.1 : 0.055, 0.12],
+      [beat % 2 === 0 ? 650 : 950, 'triangle', 0.018, 0.045],
+    ]) {
       const osc = state.audioCtx.createOscillator(),
         gain = state.audioCtx.createGain();
       osc.type = waveform;
@@ -1101,9 +1124,9 @@ export function createAudioSystem() {
     /** Combina assobio e ruído para acentuar uma queda dramática. */
     playDramaticTumbleSound,
     /** Emite o impacto grave do pouso da menina. */
-    playBabyThudSound,
+    playPlayerThudSound,
     /** Toca a voz aguda de surpresa da menina. */
-    playBabyShockVoice,
+    playPlayerShockVoice,
     /** Emite a sequência acelerada associada à frustração da fada. */
     playFairyFrustratedSound,
     /** Marca o início da terceira fase com uma fanfarra crescente. */
@@ -1139,7 +1162,7 @@ export function createAudioSystem() {
     /** Encaminha o evento de combate ao efeito correspondente, respeitando o contexto ativo. */
     playCombatSound,
     /** Usa a variação de arena do efeito de combate para o evento informado. */
-    playArenaSound: event => playCombatSound(event, true),
+    playArenaSound: (event) => playCombatSound(event, true),
     /** Agenda o pulso musical correspondente ao compasso da arena. */
     playArenaMusicBeat,
     /** Para a trilha específica da arena e libera seus nós ativos. */
@@ -1155,6 +1178,6 @@ export function createAudioSystem() {
     /** Alterna o estado de mudo e devolve o novo valor. */
     toggleMute,
     /** Expõe o contexto Web Audio atual, que pode ainda não ter sido inicializado. */
-    getAudioContext: () => state.audioCtx
+    getAudioContext: () => state.audioCtx,
   };
 }

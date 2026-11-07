@@ -6,7 +6,7 @@ export const TITLE_SCENE_LAYOUT = Object.freeze({
   height: 1080,
   chairX: 1056,
   chairY: 162,
-  chairScale: Math.min(1920 * .43 / 701, 1080 * .78 / 703)
+  chairScale: Math.min((1920 * 0.43) / 701, (1080 * 0.78) / 703),
 });
 
 /** Reenquadra o quarto inteiro: no retrato, o recorte se aproxima da menina. */
@@ -17,7 +17,7 @@ export function titleSceneFrame(width, height) {
   return {
     scale,
     x: Math.max(width - 1920 * scale, Math.min(0, width / 2 - focusX * scale)),
-    y: (height - 1080 * scale) / 2
+    y: (height - 1080 * scale) / 2,
   };
 }
 
@@ -37,7 +37,7 @@ export class TitleScene {
     this.observer = new MutationObserver(this.sync);
     this.observer.observe(overlay, {
       attributes: true,
-      attributeFilter: ['class', 'style']
+      attributeFilter: ['class', 'style'],
     });
     this.resize = new ResizeObserver(this.sync);
     this.resize.observe(overlay);
@@ -48,16 +48,17 @@ export class TitleScene {
   /** Carrega as duas pinturas locais; uma falha deixa o menu operacional com o fundo CSS. */
   async load() {
     try {
-      await Promise.all([
-        ['room', 'reading-room-v1.png'],
-        ['girl', 'reading-girl-layers-v1.png']
-      ].map(async ([key, name]) => {
-        const image = new Image();
-        image.src = new URL(name, ART)
-          .href;
-        await image.decode();
-        if (!this.disposed) this.images[key] = image;
-      }));
+      await Promise.all(
+        [
+          ['room', 'reading-room-v1.png'],
+          ['girl', 'reading-girl-layers-v1.png'],
+        ].map(async ([key, name]) => {
+          const image = new Image();
+          image.src = new URL(name, ART).href;
+          await image.decode();
+          if (!this.disposed) this.images[key] = image;
+        }),
+      );
       this.sync();
     } catch (error) {
       console.warn('Não foi possível preparar a ilustração animada do menu:', error.message);
@@ -68,7 +69,13 @@ export class TitleScene {
   sync() {
     if (this.frame !== null) cancelAnimationFrame(this.frame);
     this.frame = null;
-    if (this.disposed || document.hidden || this.overlay.classList.contains('hidden') || this.overlay.style.display === 'none') return;
+    if (
+      this.disposed ||
+      document.hidden ||
+      this.overlay.classList.contains('hidden') ||
+      this.overlay.style.display === 'none'
+    )
+      return;
     if (!this.images.room || !this.images.girl) return;
     this.render(this.motion.matches ? 0 : performance.now() / 1000);
     if (!this.motion.matches) this.frame = requestAnimationFrame(this.tick);
@@ -87,8 +94,18 @@ export class TitleScene {
     ctx.save();
     ctx.translate(origin.x + (knee.x - 175) * scale, origin.y + (knee.y - 15) * scale);
     ctx.rotate(angle);
-    ctx.scale(scale * .58, scale * .58);
-    ctx.drawImage(this.images.girl, source.x, source.y, source.w, source.h, -source.pivot, -5, source.w, source.h);
+    ctx.scale(scale * 0.58, scale * 0.58);
+    ctx.drawImage(
+      this.images.girl,
+      source.x,
+      source.y,
+      source.w,
+      source.h,
+      -source.pivot,
+      -5,
+      source.w,
+      source.h,
+    );
     ctx.restore();
   }
 
@@ -114,31 +131,55 @@ export class TitleScene {
     const scale = TITLE_SCENE_LAYOUT.chairScale;
     const origin = {
       x: TITLE_SCENE_LAYOUT.chairX,
-      y: TITLE_SCENE_LAYOUT.chairY
+      y: TITLE_SCENE_LAYOUT.chairY,
     };
-    ctx.drawImage(this.images.girl, 175, 15, 702, 704, origin.x, origin.y, 702 * scale, 704 * scale);
+    ctx.drawImage(
+      this.images.girl,
+      175,
+      15,
+      702,
+      704,
+      origin.x,
+      origin.y,
+      702 * scale,
+      704 * scale,
+    );
     const swing = this.motion.matches ? 0 : Math.sin(time * 2.6);
     // Os joelhos já pertencem à pintura sentada; somente meias e sapatos entram nas camadas móveis.
-    this.leg(ctx, {
-      x: 1078,
-      y: 405,
-      w: 193,
-      h: 220,
-      pivot: 123
-    }, {
-      x: 491,
-      y: 482
-    }, -.10 + swing * .13, scale, origin);
-    this.leg(ctx, {
-      x: 1752,
-      y: 408,
-      w: 190,
-      h: 221,
-      pivot: 76
-    }, {
-      x: 565,
-      y: 486
-    }, .08 - swing * .11, scale, origin);
+    this.leg(
+      ctx,
+      {
+        x: 1078,
+        y: 405,
+        w: 193,
+        h: 220,
+        pivot: 123,
+      },
+      {
+        x: 491,
+        y: 482,
+      },
+      -0.1 + swing * 0.13,
+      scale,
+      origin,
+    );
+    this.leg(
+      ctx,
+      {
+        x: 1752,
+        y: 408,
+        w: 190,
+        h: 221,
+        pivot: 76,
+      },
+      {
+        x: 565,
+        y: 486,
+      },
+      0.08 - swing * 0.11,
+      scale,
+      origin,
+    );
     ctx.restore();
   }
 

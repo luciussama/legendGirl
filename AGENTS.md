@@ -18,6 +18,11 @@ Para edição de arte, consultar `docs/sprites/GUIA-DESIGNERS.md` e o inventári
 
 # Idioma do projeto
 
+- Código próprio: nomes de arquivos, classes, funções, métodos e variáveis em inglês; preservar nomes próprios como Yuna, Nanda e Brinquedao.
+- Classes e seus arquivos usam PascalCase; funções, variáveis e módulos funcionais usam camelCase; constantes de domínio usam UPPER_SNAKE_CASE; diretórios e assets usam kebab-case. Respeitar convenções de cada linguagem e nomes exigidos por ferramentas.
+- Vocabulário da protagonista: `player` para a entidade jogável e `girl` para arte; `baby` permanece apenas onde for necessário ler contratos históricos de save.
+- Validar convenções com ESLint e formatação com Prettier. Após cada etapa de implementação desta padronização, executar E2E e registrar o resultado real no diário.
+
 - Escrever comentários, documentação, mensagens de interface, registros, diagnósticos de testes e descrições de automações em português do Brasil.
 - Preservar nomes de APIs, identificadores, comandos, caminhos, formatos e referências técnicas que dependam da grafia original.
 - Não traduzir dependências externas nem reescrever registros históricos de execução para alterar o idioma das evidências.

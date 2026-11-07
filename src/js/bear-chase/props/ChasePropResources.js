@@ -1,7 +1,5 @@
 import * as T from '../../../vendor/three/three.module.js';
-import {
-  PICTORIAL_ATLASES
-} from './PictorialMaterialAssets.js';
+import { PICTORIAL_ATLASES } from './pictorialMaterialAssets.js';
 
 /** Materiais e malhas compartilhados pelo catálogo, com propriedade GPU explícita. */
 export class ChasePropResources {
@@ -29,7 +27,7 @@ export class ChasePropResources {
     if (painted) {
       const pixels = ctx.getImageData(0, 0, 128, 128);
       for (let i = 0; i < pixels.data.length; i += 4) {
-        const value = Math.round(180 + pixels.data[i] * .29);
+        const value = Math.round(180 + pixels.data[i] * 0.29);
         pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;
       }
       ctx.putImageData(pixels, 0, 0);
@@ -48,7 +46,7 @@ export class ChasePropResources {
     ctx.drawImage(image, 45, 75, 8, 10, 0, 0, 64, 64);
     const pixels = ctx.getImageData(0, 0, 64, 64);
     for (let i = 0; i < pixels.data.length; i += 4) {
-      const value = Math.round(190 + pixels.data[i] * .25);
+      const value = Math.round(190 + pixels.data[i] * 0.25);
       pixels.data[i] = pixels.data[i + 1] = pixels.data[i + 2] = value;
       pixels.data[i + 3] = 255;
     }
@@ -61,14 +59,21 @@ export class ChasePropResources {
   }
   /** Cria materiais foscos de paleta regional; o veio vem da fonte, sem ruído aleatório. */
   material(name, color, wood = false, texture = null) {
-    if (wood && !this.textures.has(wood)) this.textures.set(wood, this.woodTexture(wood === 'painted'));
-    if (!this.materials.has(name)) this.materials.set(name, this.own(new T.MeshStandardMaterial({
-      color,
-      map: texture || (wood ? this.textures.get(wood) : null),
-      roughness: .95,
-      metalness: 0,
-      envMapIntensity: 0,
-    })));
+    if (wood && !this.textures.has(wood))
+      this.textures.set(wood, this.woodTexture(wood === 'painted'));
+    if (!this.materials.has(name))
+      this.materials.set(
+        name,
+        this.own(
+          new T.MeshStandardMaterial({
+            color,
+            map: texture || (wood ? this.textures.get(wood) : null),
+            roughness: 0.95,
+            metalness: 0,
+            envMapIntensity: 0,
+          }),
+        ),
+      );
     return this.materials.get(name);
   }
   /** Seleciona uma região do atlas do próprio objeto; a malha recebe UVs com margem contra vazamento. */
@@ -86,19 +91,26 @@ export class ChasePropResources {
       this.textures.set(textureKey, texture);
     }
     if (!this.materials.has(materialKey)) {
-      const material = this.own(new T.MeshStandardMaterial({
-        map: this.textures.get(textureKey),
-        color: tint,
-        roughness: .95,
-        metalness: 0,
-        envMapIntensity: 0
-      }));
+      const material = this.own(
+        new T.MeshStandardMaterial({
+          map: this.textures.get(textureKey),
+          color: tint,
+          roughness: 0.95,
+          metalness: 0,
+          envMapIntensity: 0,
+        }),
+      );
       const columns = descriptor.columns || 2,
         rows = descriptor.rows || 2;
       const pad = 8 / Math.min(image.width, image.height),
         col = region % columns,
         row = Math.floor(region / columns);
-      material.userData.atlasRect = [col / columns + pad, 1 - (row + 1) / rows + pad, 1 / columns - 2 * pad, 1 / rows - 2 * pad];
+      material.userData.atlasRect = [
+        col / columns + pad,
+        1 - (row + 1) / rows + pad,
+        1 / columns - 2 * pad,
+        1 / rows - 2 * pad,
+      ];
       material.userData.pictorialAsset = asset;
       material.userData.pictorialRegion = region;
       this.materials.set(materialKey, material);
@@ -111,12 +123,19 @@ export class ChasePropResources {
     texture.colorSpace = T.SRGBColorSpace;
     texture.anisotropy = 4;
     texture.needsUpdate = true;
-    const material = this.own(new T.MeshStandardMaterial({
-      map: texture,
-      roughness: 1,
-      metalness: 0
-    }));
-    material.userData.atlasRect = [105 / image.width, 1 - 210 / image.height, 45 / image.width, 30 / image.height];
+    const material = this.own(
+      new T.MeshStandardMaterial({
+        map: texture,
+        roughness: 1,
+        metalness: 0,
+      }),
+    );
+    material.userData.atlasRect = [
+      105 / image.width,
+      1 - 210 / image.height,
+      45 / image.width,
+      30 / image.height,
+    ];
     return material;
   }
   /** Mescla peças imóveis por material ou atlas, preserva tintas por vértice e descarta as cópias intermediárias. */
@@ -124,28 +143,27 @@ export class ChasePropResources {
     const root = new T.Group();
     root.name = name;
     const batches = new Map();
-    for (const {
-        geometry,
-        material,
-        position,
-        rotation
-      }
-      of parts) {
+    for (const { geometry, material, position, rotation } of parts) {
       const g = geometry.index ? geometry.toNonIndexed() : geometry;
-      const matrix = new T.Matrix4()
-        .compose(new T.Vector3(...position),
-          new T.Quaternion()
-          .setFromEuler(new T.Euler(...rotation)), new T.Vector3(1, 1, 1));
+      const matrix = new T.Matrix4().compose(
+        new T.Vector3(...position),
+        new T.Quaternion().setFromEuler(new T.Euler(...rotation)),
+        new T.Vector3(1, 1, 1),
+      );
       g.applyMatrix4(matrix);
       if (material.userData.atlasRect) {
-        const [u, v, w, h] = material.userData.atlasRect, uv = g.getAttribute('uv');
-        for (let i = 0; i < uv.count; i++) uv.setXY(i, u + Math.max(0, Math.min(1, uv.getX(i))) * w,
-          v + Math.max(0, Math.min(1, uv.getY(i))) * h);
+        const [u, v, w, h] = material.userData.atlasRect,
+          uv = g.getAttribute('uv');
+        for (let i = 0; i < uv.count; i++)
+          uv.setXY(
+            i,
+            u + Math.max(0, Math.min(1, uv.getX(i))) * w,
+            v + Math.max(0, Math.min(1, uv.getY(i))) * h,
+          );
       }
       let outputMaterial = material;
       if (combineAtlas) {
-        const color = new Float32Array(g.getAttribute('position')
-          .count * 3);
+        const color = new Float32Array(g.getAttribute('position').count * 3);
         for (let i = 0; i < color.length; i += 3) {
           color[i] = material.color.r;
           color[i + 1] = material.color.g;
@@ -155,15 +173,13 @@ export class ChasePropResources {
         outputMaterial = this.combinedMaterial(material);
       }
       if (!batches.has(outputMaterial)) batches.set(outputMaterial, []);
-      batches.get(outputMaterial)
-        .push(g);
+      batches.get(outputMaterial).push(g);
       if (g !== geometry) geometry.dispose();
     }
     for (const [material, geometries] of batches) {
       const merged = this.own(new T.BufferGeometry());
       for (const key of ['position', 'normal', 'uv', ...(combineAtlas ? ['color'] : [])]) {
-        const values = geometries.flatMap(g => Array.from(g.getAttribute(key)
-          .array));
+        const values = geometries.flatMap((g) => Array.from(g.getAttribute(key).array));
         merged.setAttribute(key, new T.Float32BufferAttribute(values, key === 'uv' ? 2 : 3));
       }
       merged.computeBoundingBox();
@@ -183,13 +199,14 @@ export class ChasePropResources {
       material.vertexColors = true;
       material.userData = {
         pictorialAsset: source.userData.pictorialAsset,
-        atlasRects: []
+        atlasRects: [],
       };
       this.materials.set(key, material);
     }
     const material = this.materials.get(key),
       rect = source.userData.atlasRect;
-    if (rect && !material.userData.atlasRects.some(r => r.every((v, i) => v === rect[i]))) material.userData.atlasRects.push([...rect]);
+    if (rect && !material.userData.atlasRects.some((r) => r.every((v, i) => v === rect[i])))
+      material.userData.atlasRects.push([...rect]);
     return material;
   }
   /** Libera as malhas/texturas compartilhadas somente quando o catálogo é encerrado. */
@@ -218,13 +235,14 @@ export class PropParts {
       geometry,
       material,
       position,
-      rotation
+      rotation,
     });
     return this;
   }
   /** Modela uma peça de madeira com arestas arredondadas reais, sem contorno sobreposto. */
-  box(material, position, size, radius = .015) {
-    const [w, h, d] = size, r = Math.min(radius, w / 4, h / 4, d / 4);
+  box(material, position, size, radius = 0.015) {
+    const [w, h, d] = size,
+      r = Math.min(radius, w / 4, h / 4, d / 4);
     const shape = new T.Shape();
     shape.moveTo(-w / 2 + r, -h / 2 + r);
     shape.lineTo(w / 2 - r, -h / 2 + r);
@@ -238,7 +256,7 @@ export class PropParts {
       bevelSize: r,
       bevelSegments: 2,
       steps: 1,
-      curveSegments: 1
+      curveSegments: 1,
     });
     g.translate(0, 0, -d / 2 + r);
     // UVs por face evitam que coordenadas do extrusor estiquem ou repitam o veio nos triângulos.
@@ -252,16 +270,24 @@ export class PropParts {
       const nx = Math.abs(normals.getX(i)),
         ny = Math.abs(normals.getY(i)),
         nz = Math.abs(normals.getZ(i));
-      if (nz >= nx && nz >= ny) uv.setXY(i, x / w + .5, y / h + .5);
-      else if (ny >= nx) uv.setXY(i, x / w + .5, z / d + .5);
-      else uv.setXY(i, z / d + .5, y / h + .5);
+      if (nz >= nx && nz >= ny) uv.setXY(i, x / w + 0.5, y / h + 0.5);
+      else if (ny >= nx) uv.setXY(i, x / w + 0.5, z / d + 0.5);
+      else uv.setXY(i, z / d + 0.5, y / h + 0.5);
     }
-    if (position[0] < 0)
-      for (let i = 0; i < uv.count; i++) uv.setX(i, 1 - uv.getX(i));
+    if (position[0] < 0) for (let i = 0; i < uv.count; i++) uv.setX(i, 1 - uv.getX(i));
     return this.add(g, material, position);
   }
   /** Constrói cilindros fechados, incluindo rodas, eixos, caldeira e ferragens. */
-  cylinder(material, position, top, bottom, height, rotation = [0, 0, 0], segments = 20, axialGrain = false) {
+  cylinder(
+    material,
+    position,
+    top,
+    bottom,
+    height,
+    rotation = [0, 0, 0],
+    segments = 20,
+    axialGrain = false,
+  ) {
     const geometry = new T.CylinderGeometry(top, bottom, height, segments);
     if (axialGrain) {
       const uv = geometry.getAttribute('uv');

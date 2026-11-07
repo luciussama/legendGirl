@@ -61,9 +61,17 @@ Fundos são reduzidos em cache para960px de largura mantendo proporção. Imagen
 
 ## Arte e manutenção
 
-Os peixes reutilizam a prancha de brinquedos existente. Triângulo: topo de `toy-room/stage3/stacking-blocks-v1.png`; blocos: material pintado `toy-room/bear-chase/materials/blocos-atlas-v1.png`. As quatro pinturas internas v2 foram criadas com image_gen integrada/skill imagegen; PNGs de origem preservados, JPEGs86 usados em runtime. Prompts completos e hashes em `assets/art/brinquedao/prompts-interiores-v2.json`. Os antigos recursos de piscinas permanecem como fontes preservadas, sem piscinas jogáveis. `BrinquedaoPools` foi arquivado no diário antes da remoção do runtime. Após alterações visuais, reconstruir o mapa com `npm run docs:sprites`; não desenhar linhas auxiliares de hitbox sobre os objetos.
+Os peixes reutilizam a prancha de brinquedos existente. Triângulo: topo de `toy-room/stage3/stacking-blocks-v1.png`; blocos: material pintado `toy-room/bear-chase/materials/blocks-atlas-v1.png`. As quatro pinturas internas v2 foram criadas com image_gen integrada/skill imagegen; PNGs de origem preservados, JPEGs86 usados em runtime. Prompts completos e hashes em `assets/art/brinquedao/prompts-interiores-v2.json`. Os antigos recursos de piscinas permanecem como fontes preservadas, sem piscinas jogáveis. `BrinquedaoPools` foi arquivado no diário antes da remoção do runtime. Após alterações visuais, reconstruir o mapa com `npm run docs:sprites`; não desenhar linhas auxiliares de hitbox sobre os objetos.
 
 QA recuperável: `test:brinquedao:corrida`, `test:brinquedao:pontes`, `test:brinquedao:corrida:migracao`, `test:brinquedao:corrida:browser`, `test:brinquedao:corrida:toque:browser` e `review:brinquedao:corrida:browser`. Navegadores recebem largura, altura e diretório de evidência dentro do diário. Casos de sucesso e falha são registrados separadamente; emulação não equivale a aparelho físico.
 
 
 Desempenho: `npm run journal:qa -- test:brinquedao:desempenho:browser LARGURA ALTURA DIRETORIO CPU` mede tempo de submissão Canvas, chamadas de desenho e intervalos RAF em cinco estados dirigidos (ponte, rampas, calha, tubo e blocos), comparando o commit de referência com a revisão. O fator de CPU é uma emulação do Chrome; não mede um aparelho físico nem substitui teste da GPU/dispositivo do usuário. A cadência de desenho deve ser analisada separadamente da velocidade do domínio. Resultados e amostras ficam exclusivamente no diário.
+
+## Acabamento e leitura do circuito
+
+As calhas conservam espessura visual pela normal da curva, mantendo o topo na superfície física. Passarelas acolchoadas repetem a região central da pintura em escala fixa; redes não são alongadas pelo comprimento do percurso. Pontes de madeira conservam a composição inteira da suspensão. Os espelhos dos degraus são arredondados, mantendo o salto de100 unidades. As colunas internas reutilizam o acabamento arredondado dos apoios externos e começam na primeira lona que sustentam, sem tocos acima do conjunto.
+
+`drawBrinquedaoPillar` é o consumidor comum dos apoios pintados. A graduação de fundos reduz contraste e saturação dos brinquedos decorativos. O fundo preto é diagnóstico temporário de QA; não é uma opção normal do jogo. Física, câmeras, obstáculos, checkpoints e saves não mudam por esse acabamento.
+
+Os tobogãs internos projetam a pintura em quadriláteros de bordas compartilhadas, divididos em dois triângulos. As bordas seguem as normais da trajetória existente; a última amostra coincide com o fim do tubo. Isso evita sobrepor fatias giradas nas curvas e conserva o diâmetro visual, sem mudar comprimento, velocidade ou a pose física da menina.

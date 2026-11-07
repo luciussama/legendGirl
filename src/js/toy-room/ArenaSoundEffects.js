@@ -3,97 +3,97 @@ const ROOT = new URL('../../../assets/audio/arena/', import.meta.url);
 // Trechos curtos acompanham os gestos; os MP3s originais permanecem intactos.
 export const ARENA_SOUND_FILES = Object.freeze({
   player_attack: {
-    file: 'girl attack.mp3',
-    offset: .1,
+    file: 'girl-attack.mp3',
+    offset: 0.1,
     channel: 'sword',
-    duration: .48,
-    volume: .65
+    duration: 0.48,
+    volume: 0.65,
   },
   sword_block: {
-    file: 'girl defence.mp3',
-    offset: .04,
+    file: 'girl-defence.mp3',
+    offset: 0.04,
     channel: 'block',
-    duration: .55,
-    volume: .6
+    duration: 0.55,
+    volume: 0.6,
   },
   player_special: {
-    file: 'girl special attack.mp3',
-    offset: .05,
+    file: 'girl-special-attack.mp3',
+    offset: 0.05,
     channel: 'special',
     duration: 1.06,
-    volume: .7
+    volume: 0.7,
   },
   train_charge: {
-    file: 'train horn.mp3',
+    file: 'train-horn.mp3',
     offset: 1.26,
     channel: 'train',
     duration: 1.1,
-    volume: .45
+    volume: 0.45,
   },
   train_steam: {
-    file: 'train steam attack.mp3',
-    offset: .08,
+    file: 'train-steam-attack.mp3',
+    offset: 0.08,
     channel: 'train',
-    duration: .9,
-    volume: .55
+    duration: 0.9,
+    volume: 0.55,
   },
   robot_walk: {
-    file: 'robot noises.mp3',
-    offset: .08,
+    file: 'robot-noises.mp3',
+    offset: 0.08,
     channel: 'robot_move',
-    duration: .45,
-    volume: .22,
-    keepPlaying: true
+    duration: 0.45,
+    volume: 0.22,
+    keepPlaying: true,
   },
   robot_laser: {
-    file: 'robot laser attack.mp3',
-    offset: .13,
+    file: 'robot-laser-attack.mp3',
+    offset: 0.13,
     channel: 'robot',
     duration: 1.15,
-    volume: .5
+    volume: 0.5,
   },
   robot_punch: {
-    file: 'robot punch.mp3',
-    offset: .35,
+    file: 'robot-punch.mp3',
+    offset: 0.35,
     channel: 'robot',
-    duration: .7,
-    volume: .6
+    duration: 0.7,
+    volume: 0.6,
   },
   dinosaur_bite: {
-    file: 'dinossaur attack.mp3',
-    offset: .025,
+    file: 'dinossaur-attack.mp3',
+    offset: 0.025,
     channel: 'dinosaur',
-    duration: .8,
-    volume: .5
+    duration: 0.8,
+    volume: 0.5,
   },
   dinosaur_rush: {
-    file: 'dinossaur attack.mp3',
-    offset: .025,
+    file: 'dinossaur-attack.mp3',
+    offset: 0.025,
     channel: 'dinosaur',
     duration: 1.1,
-    volume: .5
+    volume: 0.5,
   },
   bear_hug: {
-    file: 'bear attack.mp3',
-    offset: .08,
+    file: 'bear-attack.mp3',
+    offset: 0.08,
     channel: 'bear',
-    duration: .78,
-    volume: .65
+    duration: 0.78,
+    volume: 0.65,
   },
   bear_charge: {
-    file: 'bear attack.mp3',
-    offset: .08,
+    file: 'bear-attack.mp3',
+    offset: 0.08,
     channel: 'bear',
-    duration: .78,
-    volume: .65
+    duration: 0.78,
+    volume: 0.65,
   },
   bear_leap: {
-    file: 'bear attack.mp3',
-    offset: .08,
+    file: 'bear-attack.mp3',
+    offset: 0.08,
     channel: 'bear',
-    duration: .78,
-    volume: .65
-  }
+    duration: 0.78,
+    volume: 0.65,
+  },
 });
 
 /** Amostras da arena no mixer mestre, sem disparar efeitos atrasados após o carregamento. */
@@ -108,16 +108,17 @@ export class ArenaSoundEffects {
   /** Decodifica cada arquivo distinto uma vez e mantém falhas de carga como avisos. */
   preload(ctx) {
     if (!ctx || this.loading) return this.loading;
-    this.loading = Promise.all([...new Set(Object.values(ARENA_SOUND_FILES)
-      .map(p => p.file))].map(async file => {
-      try {
-        const response = await fetch(new URL(file, ROOT));
-        if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        this.buffers.set(file, await ctx.decodeAudioData(await response.arrayBuffer()));
-      } catch (error) {
-        console.warn(`Não foi possível carregar o efeito da arena: ${file}`, error);
-      }
-    }));
+    this.loading = Promise.all(
+      [...new Set(Object.values(ARENA_SOUND_FILES).map((p) => p.file))].map(async (file) => {
+        try {
+          const response = await fetch(new URL(file, ROOT));
+          if (!response.ok) throw new Error(`HTTP ${response.status}`);
+          this.buffers.set(file, await ctx.decodeAudioData(await response.arrayBuffer()));
+        } catch (error) {
+          console.warn(`Não foi possível carregar o efeito da arena: ${file}`, error);
+        }
+      }),
+    );
     return this.loading;
   }
 
@@ -128,7 +129,8 @@ export class ArenaSoundEffects {
       try {
         voice.source.stop();
       } catch {
-        /* Fonte já encerrada. */ }
+        /* Fonte já encerrada. */
+      }
       voice.source.disconnect();
       voice.gain.disconnect();
       this.voices.delete(key);
@@ -140,18 +142,19 @@ export class ArenaSoundEffects {
     // Reações e transições interrompem caudas ofensivas do personagem anterior.
     // O lançamento não corta a cauda da espada iniciada seis quadros antes.
     if (event === 'player_special') {
-      for (const channel of ['train', 'robot', 'robot_move', 'dinosaur', 'bear', 'block']) this.stop(channel);
+      for (const channel of ['train', 'robot', 'robot_move', 'dinosaur', 'bear', 'block'])
+        this.stop(channel);
     }
-    if (['enemy_return', 'enemy_entry', 'victory', 'defeat', 'player_death'].includes(event)) this.stop();
-    const actor = /^(train|robot|dinosaur|bear)_(hit|death)$/.exec(event)
-      ?.[1];
+    if (['enemy_return', 'enemy_entry', 'victory', 'defeat', 'player_death'].includes(event))
+      this.stop();
+    const actor = /^(train|robot|dinosaur|bear)_(hit|death)$/.exec(event)?.[1];
     if (actor) {
       this.stop(actor);
       this.stop(actor + '_move');
     }
     // A colisão da defesa encerra o soco; sua cauda não compete com o ricochete.
-    if (event === 'sword_block' && this.voices.get('robot')
-      ?.event === 'robot_punch') this.stop('robot');
+    if (event === 'sword_block' && this.voices.get('robot')?.event === 'robot_punch')
+      this.stop('robot');
     const profile = ARENA_SOUND_FILES[event];
     const buffer = profile && this.buffers.get(profile.file);
     if (!buffer) return false;
@@ -163,15 +166,15 @@ export class ArenaSoundEffects {
       duration = Math.min(buffer.duration - profile.offset, profile.duration);
     source.buffer = buffer;
     gain.gain.setValueAtTime(0, now);
-    gain.gain.linearRampToValueAtTime(profile.volume, now + Math.min(.008, duration / 4));
-    gain.gain.setValueAtTime(profile.volume, now + Math.max(.008, duration - .06));
+    gain.gain.linearRampToValueAtTime(profile.volume, now + Math.min(0.008, duration / 4));
+    gain.gain.setValueAtTime(profile.volume, now + Math.max(0.008, duration - 0.06));
     gain.gain.linearRampToValueAtTime(0, now + duration);
     source.connect(gain);
     gain.connect(destination);
     const voice = {
       source,
       gain,
-      event
+      event,
     };
     this.voices.set(profile.channel, voice);
     source.onended = () => {

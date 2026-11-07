@@ -1,8 +1,6 @@
 import fs from 'node:fs/promises';
 import path from 'node:path';
-import {
-  fileURLToPath
-} from 'node:url';
+import { fileURLToPath } from 'node:url';
 
 const projectRoot = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const manifestPath = path.join(projectRoot, 'assets', 'manifest.json');
@@ -10,7 +8,7 @@ const manifestPath = path.join(projectRoot, 'assets', 'manifest.json');
 const manifest = JSON.parse(await fs.readFile(manifestPath, 'utf8'));
 const entries = [
   ...Object.entries(manifest.images || {}),
-  ...Object.entries(manifest.spritesheets || {})
+  ...Object.entries(manifest.spritesheets || {}),
 ];
 const missing = [];
 
