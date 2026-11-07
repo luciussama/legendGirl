@@ -355,3 +355,9 @@ Perfil do Brinquedão: `npm run journal:qa -- test:brinquedao:desempenho:browser
 
 
 Sprints P1–P3 do Brinquedão: `npm run journal:qa -- test:brinquedao:sprints` preserva os onze módulos físicos e o arco de contato; `test:brinquedao:sprints:materiais:browser` confere opacidade do piso/blocos, contraste, temas, área dos controles e descarte; `review:brinquedao:sprints:browser` gera comparativos antes/depois e cinza. Os dois últimos recebem largura, altura e pasta de evidências no diário. As fontes dos testes são recuperadas temporariamente pelo executor.
+
+## Inspeção das melhorias de direção de arte
+
+As fontes de QA ficam no diário e são recuperadas apenas no workspace temporário. `npm run journal:qa -- review:art:implementation:browser stage1` compara o Brinquedão em fundo normal/preto e em retrato. Use `stage2` para modelo/sprites e perseguição, `stage3` para conferir também o teto, `stage4` para quarto/jardim e `stage5` para detalhes das curvas internas. Capturas vão para `/tmp/legendgirl-art-stageN`; após inspeção, registre caminho, hash e tamanho no diário e descarte os bitmaps regeneráveis. O fundo preto não integra a apresentação normal.
+
+`npm run journal:qa -- test:art:rig` verifica solas em120 poses, paleta, volume, geometria finita e estado imutável da menina3D. `npm run journal:qa -- test:bear-chase:girl:glb` verifica o intercâmbio exportado. O roteiro integrado de entradas públicas, controles, pausa e save/load em desktop e Android emulado é recuperado por `npm run journal:qa -- test:naming:e2e:browser`; o nome histórico do alias foi conservado.

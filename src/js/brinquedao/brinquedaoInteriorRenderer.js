@@ -208,23 +208,29 @@ function tubeQuad(ctx, image, sx, sw, corners) {
     [0, 1, 2],
     [0, 2, 3],
   ]) {
-    const points = indices.map((i) => corners[i]),
-      center = points.reduce((c, p) => ({ x: c.x + p.x / 3, y: c.y + p.y / 3 }), { x: 0, y: 0 });
+    const points = indices.map((i) => corners[i]);
     ctx.save();
     ctx.beginPath();
     points.forEach((p, i) => {
-      // Margem subpixel fecha o antialiasing entre triângulos, sem desenhar contornos na arte.
-      const dx = p.x - center.x,
-        dy = p.y - center.y,
-        k = 1 + 0.32 / Math.max(1, Math.hypot(dx, dy));
-      ctx[i ? 'lineTo' : 'moveTo'](center.x + dx * k, center.y + dy * k);
+      const before = points[(i + 2) % 3],
+        after = points[(i + 1) % 3],
+        ax = p.x - before.x,
+        ay = p.y - before.y,
+        bx = after.x - p.x,
+        by = after.y - p.y,
+        al = Math.hypot(ax, ay),
+        bl = Math.hypot(bx, by),
+        nx = ay / al + by / bl,
+        ny = -ax / al - bx / bl,
+        k = 0.85 / Math.max(0.000001, 1 + (ax * bx + ay * by) / (al * bl));
+      ctx[i ? 'lineTo' : 'moveTo'](p.x + nx * k, p.y + ny * k);
     });
     ctx.closePath();
     ctx.clip();
     const [a, b, c, d] = corners;
     if (indices[1] === 1) ctx.transform(b.x - a.x, b.y - a.y, c.x - b.x, c.y - b.y, a.x, a.y);
     else ctx.transform(c.x - d.x, c.y - d.y, d.x - a.x, d.y - a.y, a.x, a.y);
-    ctx.drawImage(image, sx, 0, sw, image.height, 0, 0, 1, 1);
+    ctx.drawImage(image, sx - sw * 0.15, 0, sw * 1.3, image.height, -0.15, -0.005, 1.3, 1.01);
     ctx.restore();
   }
 }

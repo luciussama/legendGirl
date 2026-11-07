@@ -18842,13 +18842,13 @@
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 361,
+          "line": 367,
           "type": "runtime",
           "alias": null
         },
         {
           "file": "src/js/brinquedao/brinquedaoInteriorRenderer.js",
-          "line": 388,
+          "line": 394,
           "type": "runtime",
           "alias": null
         },

@@ -733,8 +733,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `reboundRoom(ctx, r, preview = false)` | Função | [139](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L139) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `room(ctx, r, i, index, preview = false)` | Função | [162](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L162) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `tubeQuad(ctx, image, sx, sw, corners)` | Função | [206](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L206) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `tube(ctx, r, index, center, worldW, worldH, front = false)` | Função | [232](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L232) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `renderBrinquedaoInterior(r, s, { touch = false, paused = false, onAdvance = () => {} } = {},)` | Função | [257](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L257) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
+| `tube(ctx, r, index, center, worldW, worldH, front = false)` | Função | [238](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L238) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `renderBrinquedaoInterior(r, s, { touch = false, paused = false, onAdvance = () => {} } = {},)` | Função | [263](../src/js/brinquedao/brinquedaoInteriorRenderer.js#L263) | Compõe tubos translúcidos, piscinas em camadas, peixes, corações e controles. |
 
 ## src/js/brinquedao/brinquedaoLevel.js
 
