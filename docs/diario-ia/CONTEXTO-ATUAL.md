@@ -8,7 +8,7 @@ O percurso incluiu relógio controlado por subpassos normais em parte dos trecho
 
 Suíte `npm test`, matriz de domínio (quatro jardins e quatro sonhos completos NORMAL/EASY/cadências), migração, rig/GLB, E2E desktop/Android emulado, percurso integral do Brinquedão por toque390×844 e documentação aprovados. Build/82 recursos/format/lint0 erros e75 avisos legados;581 imports com grafia exata; diff limpo. Falhas de fixtures/espera do E2E foram corrigidas somente na automação e revalidadas. Nenhum código de produção alterado nesta sessão. Parecer completo: `docs/diario-ia/analises/release-20261106/validacao.md`, fonte `de5db49b31d0aab3904d0f4d6434d8c1e21bbd217f04bbff6f5bfc0606d8cd27`. Fontes, resultados, saves reais e hashes de evidências no acervo; bitmaps temporários descartados. Sem QA avulso para incluir no commit; arte e dependências preservadas.
 
-Próximo passo autorizado: registrar as alterações finais, integrar à main alinhada com origin/main e excluir a branch local/remota após preservar seu histórico. A operação Git ainda não foi executada neste registro.
+Integração concluída: entrega `d077b286`, merge `0f3b66a8` publicado em `origin/main`. A branch `ANALISE-PROJETO` foi excluída localmente e no origin após confirmar sua ancestralidade. Código e assets da main coincidem com a entrega validada. O registro final do diário será incluído em commit documental posterior ao merge; nenhum código adicional muda nessa atualização.
 
 ## Melhorias visuais executadas por prioridade — 06/11/2026
 
