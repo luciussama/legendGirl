@@ -16,7 +16,7 @@ const add = (id, from, to, y, end, kind, extra = {}) =>
 for (const [i, from, flat, to, y, end] of [
   [1, 17600, 17950, 19000, 1770, 1500],
   [2, 19750, 20100, 21180, 1800, 1500],
-  [3, 22000, 22400, 23300, 1900, 1200],
+  [3, 22000, 22400, 23350, 1900, 1200],
 ]) {
   add('apoio-inferior-' + i, from, flat, y, y, 'pad');
   add('retorno-inferior-' + i, flat, to, y, end, 'slide');
@@ -24,14 +24,8 @@ for (const [i, from, flat, to, y, end] of [
 // Rampas desenhadas ligam a segunda chance ao próximo brinquedo, sem vão oculto.
 add('ligacao-inferior-1', 19000, 19180, 1500, 1350, 'slide');
 add('ligacao-inferior-2', 21180, 21350, 1500, 1350, 'slide');
-add(
-  'ligacao-inferior-3',
-  23300,
-  23580,
-  1200,
-  1050 + 650 * (280 / 1800) ** 2 * (3 - (2 * 280) / 1800),
-  'slide',
-);
+add('patamar-retorno-3', 23350, 23750, 1200, 1200, 'pad');
+add('ligacao-inferior-3', 23750, 25100, 1200, 1700, 'slide');
 for (const [i, from, to, y, depth] of [
   [1, 26900, 28400, 350, 500],
   [2, 29200, 30500, 200, 500],

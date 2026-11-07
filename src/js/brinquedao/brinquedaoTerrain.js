@@ -89,6 +89,26 @@ export function prepareBrinquedaoParts(image, slide) {
     surface: Array(240).fill(22),
     normalThickness: true,
   };
+  const startCapCanvas = document.createElement('canvas');
+  startCapCanvas.width = 116;
+  startCapCanvas.height = 202;
+  startCapCanvas.getContext('2d').drawImage(canvas, 60, 14, 116, 202, 0, 0, 116, 202);
+  slidePart.startCap = {
+    canvas: startCapCanvas,
+    w: 116,
+    h: 202,
+    anchorY: 82,
+  };
+  const endCapCanvas = document.createElement('canvas');
+  endCapCanvas.width = 99;
+  endCapCanvas.height = 158;
+  endCapCanvas.getContext('2d').drawImage(canvas, 2050, 544, 99, 158, 0, 0, 99, 158);
+  slidePart.endCap = {
+    canvas: endCapCanvas,
+    w: 99,
+    h: 158,
+    anchorY: 22,
+  };
   parts.push(slidePart);
   return parts;
 }
@@ -133,9 +153,15 @@ export function drawBrinquedaoPillar(ctx, support, parts, viewportBottom) {
   ctx.restore();
 }
 
-function trackSupports(ctx, p, parts, viewportBottom) {
-  for (const support of brinquedaoSupports(p))
+function trackSupports(ctx, p, parts, viewportBottom, drawnSupports = null) {
+  for (const support of brinquedaoSupports(p)) {
+    if (drawnSupports) {
+      const existing = drawnSupports.find((s) => Math.abs(s.x - support.x) < 80);
+      if (existing && existing.top <= support.top + 30) continue;
+      drawnSupports.push({ x: support.x, top: support.top });
+    }
     drawBrinquedaoPillar(ctx, support, parts, viewportBottom);
+  }
 }
 /** Amostra contínua evita os degraus de pixels causados por arredondar cada coluna da ilustração. */
 function surfaceAt(part, x) {
@@ -171,6 +197,33 @@ function drawPaddedEnd(ctx, part, p, x, side) {
   ctx.clip();
   ctx.drawImage(image, sx, sourceTop, sampleWidth, sourceHeight, -width / 2, y, width, height);
   ctx.restore();
+}
+/** Terminais arredondados do escorrega fecham extremidades sem cortes retos expostos. */
+function drawSlideEnd(ctx, part, p, x, side) {
+  const k = 0.78;
+  if (side < 0) {
+    const cap = part.startCap;
+    if (!cap) return;
+    const w = cap.w * k,
+      h = cap.h * k,
+      ay = cap.anchorY * k;
+    ctx.save();
+    ctx.translate(x, brinquedaoSurface(p, x));
+    ctx.rotate(Math.atan(brinquedaoSlope(p, x)));
+    ctx.drawImage(cap.canvas, -w * 0.22, -ay, w, h);
+    ctx.restore();
+  } else {
+    const cap = part.endCap;
+    if (!cap) return;
+    const w = cap.w * k,
+      h = cap.h * k,
+      ay = cap.anchorY * k;
+    ctx.save();
+    ctx.translate(x, brinquedaoSurface(p, x));
+    ctx.rotate(Math.atan(brinquedaoSlope(p, x)));
+    ctx.drawImage(cap.canvas, -w * 0.88, -ay, w, h);
+    ctx.restore();
+  }
 }
 /** Deforma cada faixa por uma transformação afim, conservando a tangente entre suas extremidades. */
 export function drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, nextY, k, height) {
@@ -237,16 +290,17 @@ export function drawBrinquedaoTerrain(
   look = null,
   viewportBottom = null,
 ) {
+  const drawnSupports = [];
   for (const p of brinquedaoNearby(left - 150, right + 150).sort(
     (a, b) => Math.max(b.y, b.end) - Math.max(a.y, a.end),
   )) {
     if (p.kind === 'spring') {
-      trackSupports(ctx, p, parts, viewportBottom);
+      trackSupports(ctx, p, parts, viewportBottom, drawnSupports);
       drawBrinquedaoSpring(ctx, attractions[0].canvas, p, s);
       continue;
     }
 
-    trackSupports(ctx, p, parts, viewportBottom);
+    trackSupports(ctx, p, parts, viewportBottom, drawnSupports);
     if (p.kind === 'slide' || p.kind === 'reverse') {
       const k = 0.78,
         part = parts[4].ribbon,
@@ -274,6 +328,29 @@ export function drawBrinquedaoTerrain(
           image.height,
         );
         x = nx;
+      }
+      // Terminais arredondados nativos para calhas e escorregadores sem cortes secos expostos.
+      const hasPrecedingConnected = BRINQUEDAO_TRACKS.some(
+        (a) =>
+          a !== p &&
+          !['fragile', 'spring'].includes(a.kind) &&
+          p.from >= a.from &&
+          p.from <= a.to &&
+          Math.abs(brinquedaoSurface(a, p.from) - brinquedaoSurface(p, p.from)) < 2,
+      );
+      if (!hasPrecedingConnected && p.from >= left - 100 && p.from <= right + 100) {
+        drawSlideEnd(ctx, parts[4], p, p.from, -1);
+      }
+      const hasSucceedingConnected = BRINQUEDAO_TRACKS.some(
+        (b) =>
+          b !== p &&
+          !['fragile', 'spring'].includes(b.kind) &&
+          p.to >= b.from &&
+          p.to <= b.to &&
+          Math.abs(brinquedaoSurface(b, p.to) - brinquedaoSurface(p, p.to)) < 2,
+      );
+      if (!hasSucceedingConnected && p.to >= left - 100 && p.to <= right + 100) {
+        drawSlideEnd(ctx, parts[4], p, p.to, 1);
       }
       continue;
     }
@@ -349,10 +426,20 @@ export function drawBrinquedaoTerrain(
       x = nx;
     }
     ctx.restore();
-    if (p.upper && !p.recovery && p.kind === 'pad') {
+    if (p.kind === 'pad') {
       const endPart = look?.quiet ?? parts[0];
-      drawPaddedEnd(ctx, endPart, p, p.from, -1);
-      drawPaddedEnd(ctx, endPart, p, p.to, 1);
+      const hasPrev = BRINQUEDAO_TRACKS.some(
+        (a) => a !== p && a.to === p.from && Math.abs(brinquedaoSurface(a, p.from) - p.y) < 2,
+      );
+      if ((!hasPrev || (p.upper && !p.recovery)) && p.from >= left - 100 && p.from <= right + 100) {
+        drawPaddedEnd(ctx, endPart, p, p.from, -1);
+      }
+      const hasNext = BRINQUEDAO_TRACKS.some(
+        (b) => b !== p && b.from === p.to && Math.abs(brinquedaoSurface(b, p.to) - p.end) < 2,
+      );
+      if ((!hasNext || (p.upper && !p.recovery)) && p.to >= left - 100 && p.to <= right + 100) {
+        drawPaddedEnd(ctx, endPart, p, p.to, 1);
+      }
     }
   }
   for (const step of BRINQUEDAO_STEPS)
@@ -363,27 +450,38 @@ export function drawBrinquedaoTerrain(
 /** Presilhas cobrem somente encontros reais; o bocal arredondado conserva o fim físico da rampa. */
 function drawConnections(ctx, parts, look, left, right) {
   if (!look) return;
-  if (!parts.connections)
-    parts.connections = BRINQUEDAO_TRACKS.filter((p) =>
-      ['slide', 'reverse'].includes(p.kind),
-    ).flatMap((p) =>
-      [p.from, p.to]
-        .filter((x) =>
-          BRINQUEDAO_TRACKS.some(
-            (a) =>
-              a !== p &&
-              !['fragile', 'spring'].includes(a.kind) &&
-              x >= a.from &&
-              x <= a.to &&
-              Math.abs(brinquedaoSurface(a, x) - brinquedaoSurface(p, x)) < 2,
-          ),
-        )
-        .map((x) => ({
-          x,
-          y: brinquedaoSurface(p, x),
-          angle: Math.atan(brinquedaoSlope(p, x)),
-        })),
-    );
+  if (!parts.connections) {
+    const pointsMap = new Map();
+    for (const p of BRINQUEDAO_TRACKS.filter((t) => ['slide', 'reverse'].includes(t.kind))) {
+      for (const x of [p.from, p.to]) {
+        const connected = BRINQUEDAO_TRACKS.some(
+          (a) =>
+            a !== p &&
+            !['fragile', 'spring'].includes(a.kind) &&
+            x >= a.from &&
+            x <= a.to &&
+            Math.abs(brinquedaoSurface(a, x) - brinquedaoSurface(p, x)) < 2,
+        );
+        if (connected) {
+          const slope = brinquedaoSlope(p, x);
+          if (pointsMap.has(x)) {
+            pointsMap.get(x).angles.push(Math.atan(slope));
+          } else {
+            pointsMap.set(x, {
+              x,
+              y: brinquedaoSurface(p, x),
+              angles: [Math.atan(slope)],
+            });
+          }
+        }
+      }
+    }
+    parts.connections = Array.from(pointsMap.values()).map((e) => ({
+      x: e.x,
+      y: e.y,
+      angle: e.angles.reduce((sum, a) => sum + a, 0) / e.angles.length,
+    }));
+  }
   for (const v of parts.connections)
     if (v.x > left - 80 && v.x < right + 80) look.joint(ctx, v.x, v.y, v.angle);
   const p = BRINQUEDAO_TRACKS.find((p) => p.id === 'rampa-reversa');

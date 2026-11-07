@@ -582,8 +582,8 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `constructor(host)` | Método declarado | [5](../src/js/brinquedao/BrinquedaoAudio.js#L5) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
 | `update(state, paused = false)` | Método declarado | [12](../src/js/brinquedao/BrinquedaoAudio.js#L12) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `updateWings()` | Método declarado | [19](../src/js/brinquedao/BrinquedaoAudio.js#L19) | Avança o estado do subsistema; não é uma operação somente de desenho. |
-| `event(type)` | Método declarado | [23](../src/js/brinquedao/BrinquedaoAudio.js#L23) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `updateWings()` | Método declarado | [26](../src/js/brinquedao/BrinquedaoAudio.js#L26) | Avança o estado do subsistema; não é uma operação somente de desenho. |
+| `event(type)` | Método declarado | [30](../src/js/brinquedao/BrinquedaoAudio.js#L30) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 
 ## src/js/brinquedao/BrinquedaoLook.js
 
@@ -602,7 +602,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `block(ctx, image, x, y, w, index, age)` | Método declarado | [176](../src/js/brinquedao/BrinquedaoLook.js#L176) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `triangle(ctx, image, t, floor)` | Método declarado | [216](../src/js/brinquedao/BrinquedaoLook.js#L216) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `joint(ctx, x, y, angle = 0, launch = false)` | Método declarado | [250](../src/js/brinquedao/BrinquedaoLook.js#L250) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `destroy()` | Método declarado | [292](../src/js/brinquedao/BrinquedaoLook.js#L292) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `destroy()` | Método declarado | [297](../src/js/brinquedao/BrinquedaoLook.js#L297) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/brinquedao/BrinquedaoPhase.js
 
@@ -629,14 +629,14 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `constructor(canvas)` | Método declarado | [44](../src/js/brinquedao/BrinquedaoRenderer.js#L44) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
-| `load()` | Método declarado | [54](../src/js/brinquedao/BrinquedaoRenderer.js#L54) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `constructor(canvas)` | Método declarado | [42](../src/js/brinquedao/BrinquedaoRenderer.js#L42) | Inicializa dependências e estado da instância; consulte a seção do módulo. |
+| `load()` | Método declarado | [52](../src/js/brinquedao/BrinquedaoRenderer.js#L52) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `backdrop(s, frame)` | Método declarado | [91](../src/js/brinquedao/BrinquedaoRenderer.js#L91) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `controls()` | Método declarado | [133](../src/js/brinquedao/BrinquedaoRenderer.js#L133) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `frame(s, touch = false)` | Método declarado | [137](../src/js/brinquedao/BrinquedaoRenderer.js#L137) | Calcula pose visual estável sem escrever na simulação. |
 | `girl(ctx, s)` | Método declarado | [165](../src/js/brinquedao/BrinquedaoRenderer.js#L165) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `render(s, { ready = true, error = null, paused = false, touch = false, onAdvance = () => {} } = {},)` | Método declarado | [207](../src/js/brinquedao/BrinquedaoRenderer.js#L207) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `destroy()` | Método declarado | [397](../src/js/brinquedao/BrinquedaoRenderer.js#L397) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
+| `destroy()` | Método declarado | [332](../src/js/brinquedao/BrinquedaoRenderer.js#L332) | Remove os recursos/listeners previstos na implementação; audite o ciclo de vida. |
 
 ## src/js/brinquedao/brinquedaoArt.js
 
@@ -659,14 +659,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 
 ## src/js/brinquedao/brinquedaoCinematic.js
 
-[Implementação](../src/js/brinquedao/brinquedaoCinematic.js). Contratos exportados/reexportados: `drawBrinquedaoGirl`, `drawBrinquedaoFairy`, `renderBrinquedaoCinematic`.
+[Implementação](../src/js/brinquedao/brinquedaoCinematic.js). Contratos exportados/reexportados: `drawBrinquedaoGirl`, `drawBrinquedaoFairy`, `renderBrinquedaoCinematic`, `renderBrinquedaoEndingCinematic`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `smooth(t)` | Função atribuída | [6](../src/js/brinquedao/brinquedaoCinematic.js#L6) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawBrinquedaoGirl(ctx, images, index, x, base, height, { flip = 1, tilt = 0, time = 0, seat = false } = {},)` | Função | [11](../src/js/brinquedao/brinquedaoCinematic.js#L11) | Apresenta a atuação completa com escala comum, pés e máscara da prancha. |
-| `drawBrinquedaoFairy(ctx, image, x, y, height, time)` | Função | [36](../src/js/brinquedao/brinquedaoCinematic.js#L36) | Compõe Nanda em tamanho habitual com batimento das asas. |
-| `renderBrinquedaoCinematic(ctx, canvas, s, images, onAdvance)` | Função | [79](../src/js/brinquedao/brinquedaoCinematic.js#L79) | Compõe piquenique, convite e jardim com enquadramento narrativo e leitura segura. |
+| `smooth(t)` | Função atribuída | [7](../src/js/brinquedao/brinquedaoCinematic.js#L7) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoGirl(ctx, images, index, x, base, height, { flip = 1, tilt = 0, time = 0, seat = false } = {},)` | Função | [12](../src/js/brinquedao/brinquedaoCinematic.js#L12) | Apresenta a atuação completa com escala comum, pés e máscara da prancha. |
+| `drawBrinquedaoFairy(ctx, image, x, y, height, time)` | Função | [37](../src/js/brinquedao/brinquedaoCinematic.js#L37) | Compõe Nanda em tamanho habitual com batimento das asas. |
+| `renderBrinquedaoCinematic(ctx, canvas, s, images, onAdvance)` | Função | [80](../src/js/brinquedao/brinquedaoCinematic.js#L80) | Compõe piquenique, convite e jardim com enquadramento narrativo e leitura segura. |
+| `renderBrinquedaoEndingCinematic(ctx, canvas, s, images, onAdvance)` | Função | [179](../src/js/brinquedao/brinquedaoCinematic.js#L179) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/brinquedao/brinquedaoExtension.js
 
@@ -675,7 +676,7 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `add(id, from, to, y, end, kind, extra = {})` | Função atribuída | [3](../src/js/brinquedao/brinquedaoExtension.js#L3) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `brinquedaoDeathY(x)` | Função | [74](../src/js/brinquedao/brinquedaoExtension.js#L74) | Retorna o limite inferior de queda da região baixa ou dos castelos altos. |
+| `brinquedaoDeathY(x)` | Função | [75](../src/js/brinquedao/brinquedaoExtension.js#L75) | Retorna o limite inferior de queda da região baixa ou dos castelos altos. |
 
 ## src/js/brinquedao/brinquedaoFish.js
 
@@ -772,10 +773,10 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `add(id, from, to, y, end, kind, extra = {})` | Função atribuída | [4](../src/js/brinquedao/brinquedaoRecovery.js#L4) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `brinquedaoOutletReady(s, group)` | Função | [79](../src/js/brinquedao/brinquedaoRecovery.js#L79) | Consulta a abertura da saída após duas rebatidas da calha. |
-| `brinquedaoOutletFlight(s)` | Função | [83](../src/js/brinquedao/brinquedaoRecovery.js#L83) | Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem. |
-| `brinquedaoRicochetAge(s)` | Função | [97](../src/js/brinquedao/brinquedaoRecovery.js#L97) | Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção. |
-| `hitBrinquedaoSideMat(s, previous, events)` | Função | [102](../src/js/brinquedao/brinquedaoRecovery.js#L102) | Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte. |
+| `brinquedaoOutletReady(s, group)` | Função | [73](../src/js/brinquedao/brinquedaoRecovery.js#L73) | Consulta a abertura da saída após duas rebatidas da calha. |
+| `brinquedaoOutletFlight(s)` | Função | [77](../src/js/brinquedao/brinquedaoRecovery.js#L77) | Consulta o breve lançamento até a lona, preservando impulso e permitindo frenagem. |
+| `brinquedaoRicochetAge(s)` | Função | [91](../src/js/brinquedao/brinquedaoRecovery.js#L91) | Consulta o tempo desde a última rebatida para recuo e retomada gradual da direção. |
+| `hitBrinquedaoSideMat(s, previous, events)` | Função | [96](../src/js/brinquedao/brinquedaoRecovery.js#L96) | Exige cruzamento lateral e sobreposição ao corpo para devolver impulso sem teleporte. |
 
 ## src/js/brinquedao/brinquedaoSimulation.js
 
@@ -785,17 +786,17 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | --- | --- | ---: | --- |
 | `clamp(v, a, b)` | Função atribuída | [39](../src/js/brinquedao/brinquedaoSimulation.js#L39) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
 | `createBrinquedaoState(difficulty = 'NORMAL')` | Função | [41](../src/js/brinquedao/brinquedaoSimulation.js#L41) | Cria domínio8 com ataques reativos, pontes rápidas e corrida de quatro tubos. |
-| `restoreBrinquedaoState(saved, difficulty)` | Função | [76](../src/js/brinquedao/brinquedaoSimulation.js#L76) | Valida domínio8/interior3 e migra saves1–7, convertendo piscinas e progresso antigo. |
-| `recoverBrinquedao(s)` | Função | [236](../src/js/brinquedao/brinquedaoSimulation.js#L236) | Retoma o último terraço após queda/derrota e rearma as pontes futuras. |
-| `stepBrinquedao(s, input = {}, seconds = 0)` | Função | [260](../src/js/brinquedao/brinquedaoSimulation.js#L260) | Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota. |
+| `restoreBrinquedaoState(saved, difficulty)` | Função | [78](../src/js/brinquedao/brinquedaoSimulation.js#L78) | Valida domínio8/interior3 e migra saves1–7, convertendo piscinas e progresso antigo. |
+| `recoverBrinquedao(s)` | Função | [238](../src/js/brinquedao/brinquedaoSimulation.js#L238) | Retoma o último terraço após queda/derrota e rearma as pontes futuras. |
+| `stepBrinquedao(s, input = {}, seconds = 0)` | Função | [262](../src/js/brinquedao/brinquedaoSimulation.js#L262) | Integra embalo, saltos manuais, degraus, pistas, lonas, pontes e lançamentos em subpassos; detecta perda dos apoios e derrota. |
 
 ## src/js/brinquedao/brinquedaoStory.js
 
-[Implementação](../src/js/brinquedao/brinquedaoStory.js). Contratos exportados/reexportados: `BRINQUEDAO_INTRO`, `advanceBrinquedaoStory`.
+[Implementação](../src/js/brinquedao/brinquedaoStory.js). Contratos exportados/reexportados: `BRINQUEDAO_INTRO`, `BRINQUEDAO_ENDING`, `advanceBrinquedaoStory`.
 
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
-| `advanceBrinquedaoStory(s)` | Função | [49](../src/js/brinquedao/brinquedaoStory.js#L49) | Avança uma fala ou encerra a leitura consumindo o gesto de pulo. |
+| `advanceBrinquedaoStory(s)` | Função | [88](../src/js/brinquedao/brinquedaoStory.js#L88) | Avança uma fala ou encerra a leitura consumindo o gesto de pulo. |
 
 ## src/js/brinquedao/brinquedaoTerrain.js
 
@@ -804,14 +805,15 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | Método / assinatura | Tipo | Linha | Responsabilidade / ponto de atenção |
 | --- | --- | ---: | --- |
 | `prepareBrinquedaoParts(image, slide)` | Função | [14](../src/js/brinquedao/brinquedaoTerrain.js#L14) | Extrai módulos completos e mede o topo pintado para registrar o material. |
-| `drawBrinquedaoPillar(ctx, support, parts, viewportBottom)` | Função | [96](../src/js/brinquedao/brinquedaoTerrain.js#L96) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
-| `trackSupports(ctx, p, parts, viewportBottom)` | Função | [136](../src/js/brinquedao/brinquedaoTerrain.js#L136) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `surfaceAt(part, x)` | Função | [141](../src/js/brinquedao/brinquedaoTerrain.js#L141) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawPaddedEnd(ctx, part, p, x, side)` | Função | [148](../src/js/brinquedao/brinquedaoTerrain.js#L148) | Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico. |
-| `drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, nextY, k, height)` | Função | [176](../src/js/brinquedao/brinquedaoTerrain.js#L176) | Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico. |
-| `stepJoint(ctx, parts, step, viewportBottom)` | Função | [202](../src/js/brinquedao/brinquedaoTerrain.js#L202) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
-| `drawBrinquedaoTerrain(ctx, parts, left, right, s, attractions, look = null, viewportBottom = null,)` | Função | [230](../src/js/brinquedao/brinquedaoTerrain.js#L230) | Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas. |
-| `drawConnections(ctx, parts, look, left, right)` | Função | [364](../src/js/brinquedao/brinquedaoTerrain.js#L364) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBrinquedaoPillar(ctx, support, parts, viewportBottom)` | Função | [116](../src/js/brinquedao/brinquedaoTerrain.js#L116) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `trackSupports(ctx, p, parts, viewportBottom, drawnSupports = null)` | Função | [156](../src/js/brinquedao/brinquedaoTerrain.js#L156) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `surfaceAt(part, x)` | Função | [167](../src/js/brinquedao/brinquedaoTerrain.js#L167) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawPaddedEnd(ctx, part, p, x, side)` | Função | [174](../src/js/brinquedao/brinquedaoTerrain.js#L174) | Finaliza as pontas dos atalhos com espuma arredondada dentro dos limites do apoio físico. |
+| `drawSlideEnd(ctx, part, p, x, side)` | Função | [202](../src/js/brinquedao/brinquedaoTerrain.js#L202) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
+| `drawBrinquedaoSurfaceStrip(ctx, part, sx, nextSx, x, nextX, y, nextY, k, height)` | Função | [229](../src/js/brinquedao/brinquedaoTerrain.js#L229) | Compõe a faixa ilustrada com amostragem contínua e transformação afim pela tangente, sem modificar o apoio físico. |
+| `stepJoint(ctx, parts, step, viewportBottom)` | Função | [255](../src/js/brinquedao/brinquedaoTerrain.js#L255) | Ponto de implementação nomeado; contrato e efeitos devem ser lidos no módulo vinculado. |
+| `drawBrinquedaoTerrain(ctx, parts, left, right, s, attractions, look = null, viewportBottom = null,)` | Função | [283](../src/js/brinquedao/brinquedaoTerrain.js#L283) | Projeta acolchoados, madeira, escorregadores e pilares além do limite visível sobre as curvas físicas. |
+| `drawConnections(ctx, parts, look, left, right)` | Função | [451](../src/js/brinquedao/brinquedaoTerrain.js#L451) | Compõe desenho da área correspondente; consulte parâmetros e referencial no código. |
 
 ## src/js/brinquedao/brinquedaoTubes.js
 
@@ -3206,4 +3208,4 @@ Sem declarações nomeadas extraídas; módulo de dados/reexportação ou funç�
 | `mobileGameControls(canvas, safe)` | Função | [2](../src/js/ui/touchGameControls.js#L2) | Distribui oito direções em células contíguas de pelo menos56CSS e salto de96CSS. |
 | `drawMobileGameControls(ctx, canvas, controls, { dark = false, jumpLabel = 'PULAR' } = {},)` | Função | [58](../src/js/ui/touchGameControls.js#L58) | Desenha D-pad unido, setas diagonais e salto respeitando a área segura. |
 
-Inventário: **236 módulos JavaScript**, **1581 declarações nomeadas**.
+Inventário: **236 módulos JavaScript**, **1583 declarações nomeadas**.

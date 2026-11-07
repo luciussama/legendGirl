@@ -18,9 +18,7 @@ import { BRINQUEDAO_ART as ART } from './brinquedaoArt.js';
 import {
   BRINQUEDAO as C,
   BRINQUEDAO_TRACKS,
-  BRINQUEDAO_SECTIONS,
   BRINQUEDAO_CHECKPOINTS,
-  BRINQUEDAO_STEPS,
   BRINQUEDAO_BY_ID,
   brinquedaoSurface,
   brinquedaoSlope,
@@ -30,13 +28,13 @@ import {
   drawBrinquedaoGirl,
   drawBrinquedaoFairy,
   renderBrinquedaoCinematic,
+  renderBrinquedaoEndingCinematic,
 } from './brinquedaoCinematic.js';
 import { GARDEN_ART } from '../garden/gardenArt.js';
 import { gardenControls } from '../garden/GardenInput.js';
 import { drawMobileGameControls } from '../ui/touchGameControls.js';
 import { getDialogueSafeArea } from '../ui/dialogueSafeArea.js';
 import { beginDialogueFrame, endDialogueFrame } from '../narrative/dialogueFlow.js';
-import { renderPoeticNarration } from '../narrative/poeticNarrator.js';
 const root = new URL('../../../assets/art/', import.meta.url);
 /** Materiais ilustrados; câmera lateral inicial e altitude na continuação, com escala fixa por viewport. */
 export class BrinquedaoRenderer {
@@ -67,6 +65,8 @@ export class BrinquedaoRenderer {
       'garden/runtime/girl-actions-v1.png',
       'toy-room/stage3/stacking-blocks-v1.png',
       'toy-room/bear-chase/materials/blocks-atlas-v1.png',
+      'chapters/yuna-sleeping-v1.png',
+      'chapters/nanda-gestures-v1.png',
     ];
     await Promise.all(
       files.map(async (file) => {
@@ -222,6 +222,10 @@ export class BrinquedaoRenderer {
         ctx.fillText(error || 'Abrindo o Brinquedão…', width / 2, height / 2, width - 30);
         return;
       }
+      if (s.stage === 'COMPLETE') {
+        renderBrinquedaoEndingCinematic(ctx, canvas, s, this.images, onAdvance);
+        return;
+      }
       if (s.interior) {
         renderBrinquedaoInterior(this, s, {
           touch,
@@ -306,80 +310,11 @@ export class BrinquedaoRenderer {
           s.time,
         );
         ctx.restore();
-        const safe = getDialogueSafeArea(canvas),
-          css = width / (canvas.clientWidth || width),
-          rect = canvas.getBoundingClientRect(),
-          bar = document.querySelector('.top-controls-bar')?.getBoundingClientRect(),
-          top = Math.max(
-            safe.top + 26 * css,
-            bar ? ((bar.bottom - rect.top) * height) / rect.height + 24 * css : 0,
-          ),
-          section = BRINQUEDAO_SECTIONS.findLast((v) => s.player.x >= v.x);
-        const hudWidth = Math.min(safe.right - safe.left - 20 * css, 520 * css);
-        ctx.fillStyle = 'rgba(255,250,230,.84)';
-        ctx.beginPath();
-        ctx.roundRect((width - hudWidth) / 2, top - 23 * css, hudWidth, 60 * css, 14 * css);
-        ctx.fill();
-        ctx.textAlign = 'center';
-        ctx.fillStyle = '#426b54';
-        ctx.font = `bold ${17 * css}px Georgia`;
-        ctx.fillText(
-          s.stage === 'COMPLETE' ? 'De volta ao jardim' : section.name,
-          width / 2,
-          top,
-          width - 32 * css,
-        );
-        ctx.font = `${12 * css}px sans-serif`;
-        if (
-          s.stage === 'RUNNING' &&
-          BRINQUEDAO_STEPS.some((v) => v.x - s.player.x > 0 && v.x - s.player.x < 280)
-        )
-          ctx.fillText(
-            'Salte para a passarela mais alta!',
-            width / 2,
-            top + 24 * css,
-            width - 30 * css,
-          );
-        else if (s.stage === 'RUNNING' && s.player.x >= 14800) {
-          const lower =
-            BRINQUEDAO_BY_ID.get(s.player.support)?.recovery ||
-            (s.player.x >= 26800 && s.player.y > 0);
-          const hint =
-            s.player.x >= 34080 && !lower
-              ? 'Entre na torre para descer aos tubos.'
-              : lower
-                ? 'Após duas rebatidas, siga → para a lona de saída.'
-                : s.player.x < 23300
-                  ? 'PULAR na lona dá mais altura!'
-                  : s.player.x < 26700
-                    ? 'Pegue embalo e suba a rampa!'
-                    : 'Ajuste no ar. As pontes cedem!';
-          ctx.fillText(hint, width / 2, top + 24 * css, width - 30 * css);
-        } else if (s.stage === 'RUNNING' && s.age < 8)
-          ctx.fillText(
-            touch
-              ? 'Use o direcional e PULAR. Pegue embalo nas descidas!'
-              : 'A/D ou ← → · Espaço para pular · Pegue embalo nas descidas!',
-            width / 2,
-            top + 24 * css,
-            width - 30 * css,
-          );
         if (touch && s.stage === 'RUNNING') drawMobileGameControls(ctx, canvas, this.controls());
         if (s.stage === 'RECOVER') {
           ctx.fillStyle = `rgba(255,249,219,${Math.sin((s.age / 0.75) * Math.PI) * 0.8})`;
           ctx.fillRect(0, 0, width, height);
         }
-        if (s.stage === 'COMPLETE' && !s.story.endingDone)
-          renderPoeticNarration(
-            ctx,
-            canvas,
-            'Entre uma ponte e um escorregador,\no dia voltou a caber num sorriso.',
-            {
-              heading: 'UM POUCO MAIS LEVE',
-              onAdvance,
-              topInset: top - safe.top,
-            },
-          );
       }
       if (paused) {
         ctx.fillStyle = 'rgba(31,58,48,.38)';

@@ -8,12 +8,19 @@ export class BrinquedaoAudio extends GardenAudio {
       label: 'do Brinquedão',
     });
   }
-  /** Mantém a trilha em pausa na introdução inicial e na derrota. */
+  /** Mantém a trilha em pausa na introdução inicial e na derrota; esmaece suavemente na conclusão. */
   update(state, paused = false) {
     super.update(
       state,
       paused || state.stage === 'GAME_OVER' || (state.stage === 'INTRO' && state.story.index < 3),
     );
+    if (!paused && state?.stage === 'COMPLETE' && state.age > 8.5 && this.music) {
+      const fade = Math.max(0, 1 - Math.min(1, (state.age - 8.5) / 3.0));
+      this.music.volume = Math.max(
+        0,
+        Math.min(1, (this.host?.getMasterVolume?.() ?? 1) * 0.35 * fade),
+      );
+    }
   }
   /** Não mantém loops de insetos herdados do áudio do jardim. */
   updateWings() {

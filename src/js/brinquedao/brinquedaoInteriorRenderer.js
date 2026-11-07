@@ -404,30 +404,7 @@ export function renderBrinquedaoInterior(
     y = Math.max(
       safe.top + 24 * css,
       bar ? ((bar.bottom - rect.top) * height) / rect.height + 24 * css : 0,
-    ),
-    boxW = Math.min(safe.right - safe.left - 20 * css, 590 * css);
-  ctx.fillStyle = 'rgba(255,250,230,.94)';
-  ctx.beginPath();
-  ctx.roundRect((width - boxW) / 2, y - 22 * css, boxW, 81 * css, 14 * css);
-  ctx.fill();
-  ctx.textAlign = 'center';
-  ctx.fillStyle = '#426b54';
-  ctx.font = `bold ${17 * css}px Georgia`;
-  ctx.fillText(`BRINQUEDÃO · TOBOGÃ ${index + 1}/4`, width / 2, y, boxW - 20 * css);
-  ctx.font = `${14 * css}px sans-serif`;
-  const hint =
-    i.mode === 'tube'
-      ? BRINQUEDAO_TUBES[index].name
-      : i.mode === 'sprint'
-        ? 'Mantenha → e pule o triângulo!'
-        : i.mode === 'hit'
-          ? 'Tropeçou! A corrida vai recomeçar.'
-          : i.mode === 'ricochet'
-            ? 'Segure-se! As lonas levam ao próximo cano.'
-            : i.mode === 'blocks'
-              ? 'Corra →! Os blocos estão caindo!'
-              : 'Você chegou ao final do Brinquedão!';
-  ctx.fillText(hint, width / 2, y + 29 * css, boxW - 20 * css);
+    );
   if (touch && s.stage === 'INTERIOR' && !['ricochet', 'hit'].includes(i.mode))
     drawMobileGameControls(ctx, canvas, r.controls());
   if (i.mode === 'hit') {

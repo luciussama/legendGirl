@@ -26,7 +26,7 @@ import {
   brinquedaoSurface,
   brinquedaoSlope,
 } from './brinquedaoLevel.js';
-import { BRINQUEDAO_INTRO, advanceBrinquedaoStory } from './brinquedaoStory.js';
+import { BRINQUEDAO_INTRO, BRINQUEDAO_ENDING, advanceBrinquedaoStory } from './brinquedaoStory.js';
 import { brinquedaoDeathY } from './brinquedaoExtension.js';
 import {
   createBrinquedaoObstacles,
@@ -55,6 +55,8 @@ export function createBrinquedaoState(difficulty = 'NORMAL') {
     story: {
       index: 0,
       age: 0,
+      endingIndex: 0,
+      endingAge: 0,
       endingDone: false,
     },
     player: {
@@ -271,7 +273,12 @@ export function stepBrinquedao(s, input = {}, seconds = 0) {
   if (s.stage === 'COMPLETE') {
     s.age += total;
     s.time += total;
-    if (s.age >= 6) s.story.endingDone = true;
+    s.story.endingAge = (s.story.endingAge ?? 0) + total;
+    const endingIdx = Math.min(BRINQUEDAO_ENDING.length - 1, Math.max(0, s.story.endingIndex ?? 0));
+    const beat = BRINQUEDAO_ENDING[endingIdx];
+    if (input.advance || s.story.endingAge >= beat.duration) {
+      advanceBrinquedaoStory(s);
+    }
     return events;
   }
   if (s.stage === 'RECOVER') {

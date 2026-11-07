@@ -36,7 +36,8 @@ for (const [i, x, towerY] of [
       },
     );
 }
-add('escorrega-queda', 23300, 25100, 1050, 1700, 'slide');
+add('castelo-queda', 23350, 23750, 800, 800, 'castle');
+add('escorrega-queda', 23750, 25100, 800, 1700, 'slide');
 add('rampa-reversa', 25100, 26700, 1700, -150, 'reverse');
 for (const [i, x, y, tx, ty, impulse] of [
   [1, 27700, -650, 28580, -1000, 1150],
@@ -46,10 +47,10 @@ for (const [i, x, y, tx, ty, impulse] of [
   add('cama-alta-' + i, x, x + 650, y, y, 'spring', {
     impulse,
   });
-  const width = i === 2 ? 400 : 600;
+  const width = 600;
   add('castelo-alto-' + i, tx, tx + width, ty, ty, 'castle');
-  const bridgeX = tx + width + (i === 2 ? 120 : 0),
-    bridgeY = ty - (i === 2 ? 130 : 0);
+  const bridgeX = tx + width,
+    bridgeY = ty;
   for (let j = 0; j < 4; j++)
     add(
       `ponte-alta-${i}-${j}`,

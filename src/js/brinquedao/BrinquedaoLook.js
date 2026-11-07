@@ -248,33 +248,38 @@ export class BrinquedaoLook {
   }
   /** Desenha a junção tubular e destaca a saída quando ela serve de lançamento. */
   joint(ctx, x, y, angle = 0, launch = false) {
-    const image = this.parts[0].canvas;
+    const slideImage = this.parts[4]?.canvas ?? this.parts[0].canvas;
     ctx.save();
     ctx.translate(x, y);
     ctx.rotate(angle);
-    const w = launch ? 54 : 30,
-      h = launch ? 126 : 108;
+    const w = launch ? 54 : 26,
+      h = launch ? 126 : 118;
     ctx.save();
     ctx.beginPath();
-    ctx.roundRect(-w / 2, -12, w, h, launch ? 25 : 13);
+    ctx.roundRect(-w / 2, -14, w, h, launch ? 25 : 12);
     ctx.clip();
-    ctx.drawImage(
-      image,
-      image.width * 0.48,
-      image.height * 0.72,
-      image.width * 0.13,
-      image.height * 0.26,
-      -w / 2,
-      -12,
-      w,
-      h,
-    );
+    if (this.parts[4]?.canvas) {
+      ctx.drawImage(slideImage, 330, 70, 32, 150, -w / 2, -14, w, h);
+    } else {
+      ctx.drawImage(
+        slideImage,
+        slideImage.width * 0.48,
+        slideImage.height * 0.72,
+        slideImage.width * 0.13,
+        slideImage.height * 0.26,
+        -w / 2,
+        -14,
+        w,
+        h,
+      );
+    }
     const g = ctx.createLinearGradient(-w / 2, 0, w / 2, 0);
-    g.addColorStop(0, 'rgba(29,71,72,.35)');
-    g.addColorStop(0.4, 'rgba(255,250,214,.2)');
-    g.addColorStop(1, 'rgba(29,71,72,.3)');
+    g.addColorStop(0, 'rgba(29,71,72,.4)');
+    g.addColorStop(0.35, 'rgba(255,250,214,.25)');
+    g.addColorStop(0.7, 'rgba(29,71,72,.2)');
+    g.addColorStop(1, 'rgba(29,71,72,.45)');
     ctx.fillStyle = g;
-    ctx.fillRect(-w / 2, -12, w, h);
+    ctx.fillRect(-w / 2, -14, w, h);
     ctx.restore();
     if (launch) {
       ctx.fillStyle = '#e9b849';
